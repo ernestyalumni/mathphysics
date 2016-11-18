@@ -1,0 +1,525 @@
+% 12tensors.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+
+
+
+\subsection*{ Multilinear Algebra }
+
+
+
+$F: V_1 \times \dots \times V_k \to W$ multilinear if $\forall \, i$, linear in each variable, $F(v_1 \dots a v_1 + a' v_i' \dots v_k) = aF(v_1 \dots v_i \dots v_k) + a'F(v_1 \dots v_i' \dots v_k)$
+
+multilinear function of 2 variables is bilinear.  \\
+
+$L(V_1, \dots V_k; W)$ - set of all multilinear maps from $V_1 \times \dots \times V_k$ to $W$ \\
+
+$\lbrace T: \underbrace{V\times \dots \times V}_{k \text{times }} \to \mathbb{R} \rbrace = T^k(V)$  \\
+
+$S\in T^k(V), \, T\in T^l(V)$  \\
+tensor product $S\otimes T: V \times \dots \times V \to \mathbb{R}$, covariant $(k+l)$-tensor
+
+\[
+  S \otimes T(x_1 \dots x_{k+l}) = S(x_1 \dots x_k) T(x_{k+1} \dots x_{k+l}) \\ 
+\]
+
+\exercisehead{12.3}  
+\[
+\begin{gathered}
+  F(v_1 \dots av_i + bw_i \dots v_k) G(v_{k+1} \dots v_{k+l}) = aF(v_1 \dots v_i \dots v_k) G + b F(v_1 \dots w_i \dots v_k)G = \\
+  =  aF\otimes G(v_1 \dots v_i \dots v_k \dots v_{k+l}) + bF\otimes G(v_1 \dots w_i \dots v_k \dots v_{k+l}) = F\otimes G( v_1 \dots a v_i  + b w_i \dots v_k, v_{k+1} \dots v_{k+l} ) \\ 
+    F(v_1 \dots v_k) G(v_{k+1} \dots av_{k+i} + bw_{k+i} \dots v_{k+l}) = \\
+    = F(v_1 \dots v_k)(aG(v_{k+1} \dots v_{k+i}, v_{k+i +1} \dots v_{k+l} ) + bG(v_{k+1 } \dots w_{k+i} v_{k+i +1} \dots v_{k+l }) = \\ 
+    = aF\otimes G(v_{k+1} \dots v_{k+i} , v_{k+i +1} \dots v_{k+l }) + bF\otimes G(v_1 \dots w_{k+i}, v_{k+i + 1} \dots v_{k+l} ) = \\
+    = F\otimes G(v_1 \dots v_k, v_{k+1} \dots av_{k+i} + b w_{k+i} \dots v_{k+i +1} \dots v_{k+l })
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+(F\otimes G) \otimes H = (F\otimes G)(x_1 \dots x_{k+l}H(x_{k+l+1} \dots x_{k+l+m }) = F(x_1 \dots x_k) G(x_{k+1} \dots x_{k+l} ) H(x_{k+l+1} \dots x_{k+l+m}) = \\
+= F(x_1 \dots x_k)(G\otimes H)(x_{k+1} \dots x_{k+l+m}) = F\otimes (G\otimes H)(x_1 \dots x_{k+l+m})
+\end{gathered}
+\]
+
+
+\begin{proposition}[12.4](A Basis for the Space of Multilinear Functions)  Let $V$ real vector space of dim. $n$, $(E_i)$ any basis for $V$, $\epsilon^i$ dual basis.\\
+set of all $k$-tensors of form $\epsilon^{i_1} \otimes \dots \otimes \epsilon^{i_k}$, \, $1\leq i_1 \dots i_k \leq n$ basis for $T^k(V)$, \, dim. $n^k$
+\end{proposition}
+
+\begin{proof} Let $\mathcal{B} = \lbrace \epsilon^{i_1} \otimes \dots \otimes \epsilon^{i_k} | 1 \leq i_1 \dots i_k \leq n \rbrace$ \\
+
+Suppose arbitrary $T \in T^k(V)$  \\
+Define $T_{i_1 \dots i_k} = T(E_{i_1} \dots E_{i_k} )$
+
+\[
+T_{i_1 \dots i_k} \epsilon^{i_1} \otimes \dots \otimes \epsilon^{i_k}(E_{j_1} \dots E_{j_k} ) \underbrace{=}_{ \text{ (by definition) } }T_{i_1 \dots i_k} \epsilon^{i_1}(E_{j_1}) \dots \epsilon^{i_k}(E_{j_k}) = T_{i_1 \dots i_k}\delta^{i_1}_{j_1} \dots \delta^{i_k}_{j_k} = T_{j_1 \dots j_k} = T(E_{j_1} \dots E_{j_k} )
+\]
+$T$ spanned by $\mathcal{B}$
+
+\end{proof}
+
+
+
+
+
+\subsubsection*{ Abstract Tensor Products of Vector Spaces }
+
+
+
+free vector space on $S$, $\mathbb{R}\langle S \rangle = \lbrace \mathcal{F} \rbrace$ \\
+\quad \quad finite formal linear combination - function $\mathcal{F} : S \to \mathbb{R}$ s.t. $\mathcal{F}(s) = 0$ for all but finite many $s \in S$ \\
+\quad \quad $\forall \, \mathcal{F} \in \mathbb{R} \langle S \rangle$, $\mathcal{F} = \sum_{i=1}^m a_i x_i$, \, $x_1 \dots x_m \in S$ s.t. $\mathcal{F}(x_i) \neq 0$, $a_i = \mathcal{F}(x_i)$
+
+\exercisehead{12.6} (Characteristic Property of Free Vector Spaces)
+
+\[
+\begin{aligned}
+  F : S & \to W \\ 
+  & x \mapsto w \in W 
+\end{aligned}
+\]
+Consider $w\in W$ and $w = \sum c_{\alpha} w_{\alpha}$, $w_{\alpha} = F(x_{\alpha})$; $x_{\alpha} \in S$, $w_{\alpha} \in W$.  
+
+Consider $\overline{F}:\mathbb{R}\langle S \rangle \to W$, \, $\sum_{i=1}^m c_i x_i \mapsto \sum_{I=1}^m c_i F(x_i) = \sum_{i=1}^m c_i w_i \in W$
+
+Let $w= v$, $\begin{aligned} & \quad \\ & w = \sum_{I=1}^m c_i w_i = \sum_{i=1}^m c_i F(x_i) \\ & v = \sum_{i=1}^n b_i v_i = \sum_{i=1}^n b_i F(y_i) \end{aligned}$
+
+$w - v =0$ so for a vector space, this implies $w_i = v_i$, $m=n$, 
+\[
+\sum_{i=1}^m (c_i-b_i)w_i = 0, \quad \quad c_i = b_i
+\]
+
+$\mathcal{R} \equiv$ subspace of free vector space $\mathbb{R}\langle V \times W \rangle $ spanned by 
+\begin{equation}
+\begin{gathered}
+  a(v,w) - a(v, w) \\
+  a(v,w) - (v,aw) \\
+(v,w) + (v',w) - (v+v',w) \\
+  (v,w) + (v,w') - (v,w+w')
+\end{gathered} (12.4)
+\end{equation}
+
+tensor product of $V, W$ 
+\[
+V\otimes W = \mathbb{R} \langle V \times W \rangle / \mathcal{R}
+\]
+equivalence class of element $(v,w)$ if $v\otimes w \in V\otimes W$
+
+\begin{proposition}[12.7] (Characteristic Property of the Tensor Product Space)
+  If bilinear $A: V \times W \to X$, $\exists \, !, \, \widetilde{A} : V\otimes W \to X$, any vector space $X$  s.t.
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+    V\times W  & X  \\
+    V\otimes W  &   \\ };
+  \path[-stealth]
+  (m-1-1) edge node [right] {$A$} (m-1-2)
+  edge node [left] { $\pi$} (m-2-1)
+  (m-2-1) edge node [below] {$\widetilde{A}$} (m-1-2);
+\end{tikzpicture}  (12.6)
+
+$\pi(v,w) = V\otimes W$
+\end{proposition}
+
+\begin{proof}
+By characteristic property of free vector space, $A: V\times W \to X$ extends uniquely to linear $\overline{A} : \mathbb{R} \langle V \times W \rangle \to X$
+
+\[
+\overline{A}(v,w) = A(v,w) \text{ if } (v,w) \in V\times W \subset \mathbb{R}\langle V \times W \rangle
+\]
+
+$A$ bilinear
+
+\[
+\begin{aligned}
+  \overline{A}(av,w) = A(av,w) = aA(v,w) = a\overline{A}(v,w) = \overline{A}(a(v,w)) \\ 
+  \overline{A}(v,aw) = A(v,aw) = aA(v,w)  = \overline{A}(a(v,w)) \\ 
+  \overline{A}(v+v',w)  = A(v+v',w) = A(v,w) +  A(v',w) = \overline{A}(v,w) = \overline{A}(a(v',w)) \\ 
+\end{aligned}
+\]
+\end{proof}
+
+Likewise for (12.4) 
+
+subspace $\mathcal{R} \subset \text{ker}{\overline{A}}$
+
+$\therefore \, \overline{A}$ descends to linear $\widetilde{A} : V\otimes W = \mathbb{R} \langle V\times W \rangle / \mathcal{R} \to X$ s.t. \\
+$\widetilde{A} \circ \pi = \overline{A}$, $\pi: \mathbb{R}\langle V \times W \rangle \to V\otimes W$
+
+uniqueness from $\forall \, v \otimes w \in V \otimes W$, $v\otimes w =$ linear combination of $v\otimes w$ \\
+$\widetilde{A}$ uniquely determined on $\widetilde{A}(v\otimes w) = \overline{A}(v,w) = A(v,w)$
+
+
+\begin{proposition}[11.4] (\textbf{Other Properties of Tensor Products}).  Let $V, W$, and $X$ be finite-dimensional real vector spaces 
+\begin{enumerate}
+  \item[(a)] $V^* \otimes W^*$ canonically isomorphic to $B(V,W)$, bilinear maps from $V\times W$ into $\mathbb{R}$
+  \item[(b)] if $\begin{aligned} & \quad \\ & (E_i) \text{ basis for $V$ } \\ & (F_j) \text{ basis for $W$ } \end{aligned}$, then $\lbrace E_i \otimes F_j \rbrace$ basis is basis for $V\otimes W$, $\therefore \, \text{dim}{(V\otimes W)} = \text{dim}{V} \text{dim}{W}$
+  \item[(c)] $\exists \, !$ \, isomorphism $\begin{aligned} & \quad \\ & V\otimes (W\otimes X) \to (V \otimes W) \otimes X \\ & v\otimes (w \otimes x) \mapsto (v\otimes w)\otimes x \end{aligned}$
+\end{enumerate}
+\end{proposition}
+
+
+
+\begin{proof}
+\begin{enumerate}
+\item[(a)] canonical isomorphism (basis independence) construction between $V^* \otimes W^*$ and $B(V,W)$ (space of bilinear maps) \\
+
+Define $\begin{aligned} & \quad \\
+  & \Phi : V^* \times W^* \to B(V,W) \\
+  & \Phi(\omega, \eta)(v,w) = \omega(v) \eta(\omega) \end{aligned}$
+
+$\Phi$ bilinear (easy to check).  
+
+Prop. 11.3  $\forall \, $ bilinear $A: V\times W \to X$, $\exists \, ! \widetilde{A} : V\otimes W \to X$, any vector space $X$ s.t. $\widetilde{A} \pi = A$
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+    V^*\times W^*  & X  \\
+    V^* \bigotimes W^*  &   \\ };
+  \path[-stealth]
+  (m-1-1) edge node [auto] {$\Phi$} (m-1-2)
+  edge node [left] { $\pi$} (m-2-1)
+  (m-2-1) edge node [below] {$\widetilde{\Phi}$} (m-1-2);
+\end{tikzpicture} 
+
+i.e. descends uniquely to linear $\widetilde{\Phi} : V^* \otimes W^* \to B(V,W)$
+
+Let $\begin{aligned} & \quad \\
+  & (e_i) \\ 
+  & (f_j) \end{aligned}$ be bases for $\begin{aligned} & \quad \\ 
+  & V, \\
+  & W \end{aligned}$ \quad $\begin{aligned} & \quad \\ 
+  & (\epsilon^i) \\ 
+  & (\phi^j) \end{aligned}$ \quad dual basis 
+
+since $V^* \otimes W^*$ spanned by elements of the form $\omega \otimes \eta$, $\begin{aligned} & \quad \\ & \omega \in V^* \\
+ & \eta \in W^* \end{aligned}$ \\
+$\forall \, \tau \in V^* \otimes W^*$, \, $\tau = \tau_{ij} \epsilon^i \otimes \varphi^j $
+
+Define $\begin{aligned} & \quad \\
+  & \Psi : B(V, W) \to V^* \otimes W^* \\
+  & \Phi(b) = b(e_k,  f_l) \epsilon^k \otimes \varphi^l 
+\end{aligned}$
+
+\[
+\begin{gathered}
+  \Psi \widetilde{\Phi}(\tau) = \widetilde{\Phi}(\tau)(e_k , f_l) \epsilon^k \otimes \varphi^l = \tau_{ij} \widetilde{\Phi}(\epsilon^i \otimes \varphi^j)(e_k , f_l) \epsilon^k \otimes \varphi^l = \tau_{ij} \Phi( \epsilon^i , \varphi^j) (e_k , f_l) \epsilon^k \otimes \varphi^l = \\
+= \tau_{ij} \epsilon^i(e_k) \varphi^j(f_l) \epsilon^k\otimes \varphi^l = \tau_{kl} \epsilon^k \otimes \varphi^l = \tau
+\end{gathered}
+\]
+
+For $\begin{aligned} & \quad \\ 
+  & v \in V \\ 
+  & w \in W \end{aligned}$
+\[
+\begin{gathered}
+  \widetilde{\Phi} \circ \Psi(b)(v,w) = \widetilde{\Phi} b(e_j,f_k) \epsilon^j \otimes \varphi^k(v,w) = b(e_j , f_k) \widetilde{\Phi}(\epsilon^j \otimes \varphi^k)(v,w) = \\
+  = b(e_j, f_k) \Phi(e^i, \varphi^k)(v,w) = b(e_j, f_k) e^i(v) \varphi^k(w) = b(e_j, f_k) v^i \varphi^k = b(v,w)
+\end{gathered}
+\]
+
+\item[(b)]
+Given $\begin{aligned}
+  & \lbrace e_i | i \in I \rbrace = \mathcal{B}_U \\ 
+  & \lbrace f_j | j \in J \rbrace = \mathcal{B}_U \\ 
+\end{aligned}$
+
+By the bilinearity of tensor product: $a_i e_i \otimes b_j f_j  = a_i b_j e_i \otimes f_j$ 
+
+Consider dual basis elements $\begin{aligned} & \quad \\
+  & e^*_k(e_i) = \delta_{ik} \\
+   & f^*_l(f_j) = \delta_{jl} \end{aligned}$ and \quad 
+
+$\begin{aligned} & \quad \\ 
+  & U \times V \to K \\
+  & (u,v) \mapsto e^*_k(u) \cdot f^*_l(v) \end{aligned}$
+
+induces $\begin{aligned} & \quad \\ 
+  & U\otimes V \to K \\ 
+   & u \otimes v \mapsto e^*_k(u) \cdot f_l^*(v) \end{aligned}$
+
+\[
+e_i \otimes f_j \mapsto \delta_{ik} \delta_{jl}
+\]
+\[
+c_{ij} e_i \otimes f_j = 0 = c_{ij} \delta_{ik} \delta_{jl} = c_{kl} = 0 \quad \quad \forall \, k,l \text{ so } e_i\otimes f_j \text{ form a basis }
+\]
+
+\end{enumerate}
+\end{proof}
+
+
+
+\begin{corollary}[11.5] $V$ finite-dim. real vector space, space $T^k(V)$ of covariant $k$-tensors on $V$ canonically isomorphic to $k$-fold tensor product $V^* \otimes \dots \otimes V^*$
+\end{corollary}
+
+\exercisehead{11.3} Prove Corollary 11.5.  
+
+It's enough to consider the basis (good strategy).  
+
+$T^k(V)$ basis $\mathcal{B} = \lbrace \epsilon^{i_1} \otimes \dots \otimes \epsilon^{i_k} | 1 \leq i_1 \dots i_k \leq n \rbrace$ (Prop. 11.2) $\text{dim}{n^k}$
+
+Use Prop. 11.4(b).  Surely $V^*$ finite-dim. real vector space as well, on its own, even though it's a dual basis. 
+
+Prop.11.4(b) if $\begin{aligned} & \quad \\ 
+& (E_i) \text{ basis for $V$ } \\ 
+  & (E_j) \text{ basis for $W$ } \end{aligned}$, \quad then $\lbrace E_i \otimes E_j \rbrace$ basis for $V\otimes W$ and $\text{dim}{ (V\otimes W)} = \text{dim}{V} \text{dim}{W}$
+
+basis for $V^* \otimes \dots \otimes V^* = \lbrace \epsilon^{i_1} \otimes \dots \otimes \epsilon^{i_k} | 1 \leq i_1 \dots i_k \leq n \rbrace$, \quad $\text{dim}{ (V^* \otimes \dots \otimes V^*) } = n^k$
+
+dimensions are same.  isomorphic.  
+
+%\fcdice{12}
+\staveXXIX
+
+
+%$\mathcal{T}$
+
+
+\begin{lemma}[11.7] Let smooth $M$, suppose $\begin{aligned} & \quad \\ & \sigma \in \mathcal{T}^k(M) \\ & \tau \in \mathcal{T}^l(M) \end{aligned}$ \quad \, $f\in C^{\infty}(M)$  \\
+
+Then $f\sigma$, $\sigma \otimes \tau$ also smooth tensor fields whose 
+
+\[
+\begin{gathered}
+  (f\sigma)_{i_1 \dots i_k} = f \sigma_{i_1 \dots \sigma_k } \\ 
+  (\sigma \otimes \tau)_{i_1 \dots i_{k+l} } = \sigma_{i_1 \dots i_k} \tau_{i_{k+1} \dots i_{k+l} }
+\end{gathered}
+\]
+\end{lemma}
+
+\exercisehead{11.7}
+
+Prove Lemma 11.7.  Note $T^0M = T_0M = M \times \mathbb{R}$
+
+\[
+\begin{gathered}
+  f\sigma( p, e^{(1)}_{i_1} , \dots , e^{(k)}_{i_k} ) = f(p) \sigma( e^{(1)}_{i_1} \dots e^{(k)}_{i_k} ) = f(p) \sigma_{i_1 \dots i_k} = (f\sigma)_{i_1 \dots i_k}
+\end{gathered}
+\]
+
+
+Suppose smooth $F:M \to N$ \\
+$\forall \, $ smooth covariant $k$-tensor field $\sigma$ on $N$, \\
+define $k$-tensor field $F^*\sigma$ on $M$ by 
+\[
+(F^* \sigma)_p = F^*(\sigma_{F(p)})
+\]
+explicitly, if $X_1 \dots X_k \in T_pM$, then
+\[
+(F^* \sigma)_p(X_1 \dots X_k) = \sigma_{F(g)}(F_* X_1 \dots F_* X_k)
+\]
+
+
+\begin{proposition}[11.9] (The properties of Tensor Field Pullbacks)
+Suppose smooth $\begin{aligned} & \quad \\ 
+  & F:M \to N \\
+  & G:N \to P \end{aligned}$, \quad $\begin{aligned} & \quad \\ 
+  & \sigma \in \mathcal{T}^k(N) \\ 
+  & \tau \in \mathcal{T}^l(N) \end{aligned}$, \quad $f\in C^{\infty}(N)$ 
+\begin{enumerate}
+  \item[(a)] $F^*(f\sigma) = (f\circ F) F^* \sigma$
+\item[(b)] $F^*(\sigma \otimes \tau) = F^*\sigma \otimes F^*\tau$ 
+\item[(c)] $F^*\sigma$ smooth tensor field 
+\item[(d)] $F^*:\mathcal{T}^k(N) \to \mathcal{T}^k(M)$ linear over $\mathbb{R}$
+\item[(e)] $(GF)^* = F^* G^*$ 
+\item[(f)] $(\text{Id}_N)^*\sigma = \sigma$
+\end{enumerate}
+\end{proposition}
+
+\exercisehead{11.9} Prove Prop. 11.9
+
+\begin{corollary}[11.10] Let smooth $F:M \to N$, $\sigma \in \mathcal{T}^k(N)$ \\
+If $p\in M$, smooth coordinates $(y^j)$ for $N$ on neighborhood of $F(p)$, then $F^*\sigma$ near $p$ 
+\[
+F^*(\sigma_{j_1 \dots j_k} dy^{j_1} \otimes \dots \otimes dy^{j_k} ) = (\sigma_{j_1 \dots j_k } \circ F ) d(y^{j_1 } \circ F) \otimes \dots \otimes d(y^{j_k} \circ F)
+\]
+\end{corollary}
+
+
+20130919
+
+However, in the special case of a diffeomorphism, tensor fields of any variance can be pushed forward and pulled back at will (see Problem 11-6)
+
+\subsection*{Symmetric Tensors}
+
+20130919
+
+\exercisehead{11.10}
+
+\[
+T_{i_1 \dots i_k} = T(E_{i_1} \dots E_{i_k} ) = T(E_{i_1} \dots E_{i_s} \dots E_{i_r} \dots E_{i_k} ) = T_{i_1 \dots i_s \dots i_r \dots i_k } \quad \quad \, r<s
+\]
+
+\staveXXIX
+
+set of symmetric covariant $k$-tensors on $V$ by $\sum^k(V)$ \\
+
+define $\,^{\sigma}T^(X_1 \dots X_k)^ = T(X_{\sigma(1)} \dots X_{ \sigma(k)})$ \\
+
+define $\text{Sym}T = \frac{1}{k!}  \sum_{\sigma \in S_k} \,^{\sigma}T$ \\
+
+If $\begin{aligned} & \quad \\ 
+  & S \in \sum^k(V) \\ 
+  & T\in \sum^l(V) \end{aligned}$, \, define $ST = \text{Sym}{ (S\otimes T)}$
+
+\[
+ST(X_1 \dots X_{k+l}) = \frac{1}{ (k+l)!} \sum_{ \sigma \in S_{k+l} } S(X_{\sigma(1)} \dots X_{\sigma(k)} ) T(X_{\sigma(k+1)}, \dots , X_{\sigma(k+l) } )
+\]
+
+\begin{proposition}[12.15] (Properties of the Symmetric Product)
+\begin{enumerate}
+\item[(a)]
+\item[(b)] if $\omega, \eta$ covectors, $ \omega \eta = \frac{1}{2} ( \omega \otimes \eta + \eta \otimes \omega)$
+\end{enumerate}
+\end{proposition}
+
+20130919
+\exercisehead{12.16} Prove Proposition 12.15
+
+\begin{enumerate}
+\item[(a)]
+\item[(b)] \[
+\begin{gathered}
+  \omega \eta(e_i, e_j) = \frac{1}{2} ( \omega(e_i) \eta(e_j) + \omega(e_j) \eta(e_i)  ) = \frac{1}{2} ( \omega(e_i) \eta(e_j) + \eta(e_i) \omega(e_j)) = \frac{1}{2} ( \omega \otimes \eta + \eta \otimes \omega)(e_i ,e_j)
+\end{gathered}
+\]
+
+direct application of definition of $ST \equiv \text{Sym}{(S\otimes T)}$ and $S\otimes T(X_1 \dots X_{k+l} ) = S(X_1 \dots X_k) T(X_{k+1} \dots X_{k+l})$ definition of tensor product.  
+
+\end{enumerate}
+
+\subsubsection*{Alternating Tensors}
+
+
+
+
+
+\subsubsection*{Lie Derivatives of Tensor Fields}
+
+
+
+\begin{lemma}[12.30] smooth $M,V,A$, $\exists \, $ (12.8) $\forall \, p \in M$, and defines $\mathcal{L}_VA$ as smooth tensor field on $M$
+\end{lemma}
+
+\exercisehead{12.31}
+
+Suppose smooth $M$, smooth $V$, smooth covariant tensor $A$
+
+$I = (i_1 \dots i_k)$ \\
+\quad \, $i_i = 1 \dots \text{dim}{M}$ \\
+
+$\theta_t(p) = y$ (notation) 
+
+\[
+A = A(y) = A(\theta_t(p)) = A_I(y) dy^I = A_I(\theta_t(p)) dy^I
+\]
+with $A_I$ smooth function of $\theta_t(p) = y$
+
+
+\[
+v_1 = \delta^{j_1}_{ \, \, i_1} \frac{ \partial }{ \partial x^{j_1}} \quad \quad \, v^{j_1}_{ (1)} = \delta^{j_1}_{ i_1}
+\]
+
+
+\[
+d(\theta_t)^*_p(A_{\theta_t(p)}) \frac{ \partial }{ \partial x^I} = A_{\theta_t(p)}(d(\theta_t)_p \frac{ \partial }{ \partial x^I } )
+\]
+$d(\theta_t)_p = \frac{ \partial y^i}{ \partial x^j}$
+
+\[
+d(\theta_t)_p v_1  = \frac{ \partial y^{i_1}}{ \partial x^{j_1}} v^{j_1}_{(1)} \frac{ \partial }{ \partial y^{i_1}}
+\]
+
+
+\[
+\Longrightarrow \frac{ \partial y^{k_1} }{ \partial x^{j_1} } \delta^{j_1}_{i_1} \frac{ \partial }{ \partial y^{k_1}} = \frac{ \partial y^{j_1}}{ \partial x^{i_1}} \frac{ \partial }{ \partial y^{j_1}} 
+\]
+
+$\frac{ \partial }{ \partial x^I} = \frac{ \partial }{ \partial x^{i_1} } \otimes \dots \otimes \frac{ \partial }{ \partial x^{i_k} }$
+
+\[
+d(\theta_t)_p \frac{ \partial }{ \partial x^I} = d(\theta_t)_pv_1 \dots d(\theta_t)_pv_k =  \frac{ \partial y^J}{ \partial x^I} \frac{ \partial }{ \partial y^J}
+\]
+
+
+%\[
+%dx^I = dx^{i_1} \otimes \dots \otimes dx^{i_k} = \delta^{i_1}_{ \, \, j_1} dx^{j_1} \otimes \dots \otimes \delta^{i_k}_{ \, \, j_k} dx^{j_k} = \delta^I_{ \, \, J} dx^J
+%\]
+
+%\[
+%\frac{ \partial y^{i_1}}{ \partial x^{j_1} } dx^{j_1} \otimes \dots \otimes \frac{ \partial y^{i_k}}{ \partial x^{j_k}} dx^{j_k} = \frac{ \partial y^I}{ \partial x^J} dx^J
+%\]
+
+
+
+%\[
+%A_{\theta_t(p)}( d(\theta_t)_p \frac{ \partial }{ \partial x^I}  ) = A_K(y) dy^K \frac{ \partial y^J}{ \partial x^I} \frac{ \partial }{ \partial y^J} = A_J(y) \frac{ \partial y^J}{ \partial x^I}
+%\]
+%\[
+%d(\theta_t)^*_p(A)
+%\]
+
+\[
+\begin{gathered}
+  A_{\theta_t(p)}(d(\theta_t)_p(v_1) \dots d(\theta_t)_p(v_k) ) = A_J(\theta_t(p))\frac{ \partial y^J}{ \partial x^I} 
+\end{gathered}
+\]
+\[
+\begin{aligned}
+  & d(\theta_t)^*_p(A_{\theta_t(p)}) = A^*_J dx^J \\ 
+  &  d(\theta_t)^*_p(A_{\theta_t(p)}) \frac{ \partial }{ \partial x^I} = A_I^* = A_J \frac{ \partial y^J}{ \partial x^I }
+\end{aligned}
+\]
+
+\[
+\Longrightarrow ( \mathcal{L}_VA)_p = \left. \frac{d}{dt} \right|_{t=0} (\theta_t^* A)_p = \left. \frac{d}{dt} \right|_{t=0} A_J \left. \frac{ \partial \theta^J(t,x) }{ \partial x^I } \right|_p dx^I
+\]
+$A_J = A_J(\theta_t(p)) = A_J(\theta(t,x))$
+
+$\theta$ smooth in $t,x$, so $A_J$ smooth in $t$ and $x$  \\
+
+so since $\left. \left( \mathcal{L}_VA\right)_I \right|_p$ smooth $\forall \, I \in \lbrace (i_1 \dots i_k) | i_i = 1 \dots \text{dim}{M}, \, i = 1 \dots k \rbrace$, \\
+\quad $\left. (\mathcal{L}_VA)  \right|_p$ smooth tensor field on $M$
+
+
+
+\hrulefill
+
+
+\begin{proposition}[12.32]
+  \begin{enumerate}
+\item[(a)] $\mathcal{L}_V f = Vf$ 
+\item[(b)] $\mathcal{L}_V(fA) = (\mathcal{L}_Vf )A + f\mathcal{L}_VA$
+\item[(c)] $\mathcal{L}_V(A\otimes B) = (\mathcal{L}_VA) \otimes B + A \otimes \mathcal{L}_V B$ 
+\item[(d)] If $X_1 \dots X_k$ smooth vector fields, $A$ smooth $k$-tensor field, 
+\begin{equation}
+  \mathcal{L}_V(A(X_1 \dots X_k)) = (\mathcal{L}_VA)(X_1 \dots X_k) + A(\mathcal{L}_VX_1 \dots X_k) + \dots + A(X_1 \dots \mathcal{L}_VX_k) \quad \quad \quad \, (12.9)
+\end{equation}
+\end{enumerate}
+
+\end{proposition}
+
+\begin{corollary}[12.33]
+\begin{equation}
+  (\mathcal{L}_VA)(X_1 \dots X_k) = V(A(X_1 \dots X_k))  - A([V,X_1], X_2 \dots X_k) - \dots - A(X_1 \dots X_{k-1}, [V,X_k]) \quad \quad \quad \, (12.10)
+\end{equation}
+\end{corollary}
+
+
+

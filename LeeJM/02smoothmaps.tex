@@ -1,0 +1,308 @@
+% 02smoothmaps.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+ 
+
+\subsection*{Smooth Functions and Smooth Maps}
+
+\begin{definition}
+ \textbf{smooth function } $f$, $f:M \to \mathbb{R}^k$, if $\forall \, p \in M$,  $\exists \, $ smooth chart $(U,\varphi)$, $U \ni p$, s.t. $f\circ \varphi^{-1}$ smooth on $\varphi(U) \subseteq \mathbb{R}^n$, $f\circ \varphi^{-1}: \varphi(U) \to \mathbb{R}^k$
+\end{definition}
+EY : 20150717 Recall, smooth chart just means that the chart belongs to maximal smooth atlas, and smooth in that the transition maps are smooth.  
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+M & \mathbb{R}^k \\
+};
+  \path[->]
+  (m-1-1) edge node [above] {$f$} (m-1-2)
+  ;
+\end{tikzpicture} 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+U & f(U) \subset \mathbb{R}^k  \\
+\varphi(U) \subset \mathbb{R}^n &    \\
+};
+  \path[->]
+  (m-1-1) edge node [above] {$f$} (m-1-2)
+          edge node [left] {$\varphi$} (m-2-1)
+  (m-2-1) edge [bend right] node [right] {$\varphi^{-1}$} (m-1-1)
+          edge node [below] {$f\circ \varphi^{-1}$} (m-1-2)
+          ;
+\end{tikzpicture} 
+
+
+
+\exercisehead{2.3} Given $f: M \to \mathbb{R}^k$ smooth, \\
+Consider $p \in M$.  $M$ smooth manifold, so $\exists \, $ chart $(U,\varphi)$ s.t. $p \in U$ \\
+$\varphi : U \subset M \to \mathbb{R}^m$ \\
+$\varphi$ homeomorphism, $\varphi(U)$ open in $\mathbb{R}^m$  
+$\varphi^{-1}: \varphi(U) \to M$
+
+Consider another smooth chart $(V,\psi)$, $p\in V$ so that $UV \neq \emptyset$
+\[
+\begin{gathered}
+  f\psi^{-1} : \psi(UV) \to \mathbb{R}^k \\ 
+  f\psi^{-1}(y^1 \dots y^m ) = (f\psi^{-1})_i(y^1 \dots y^m) , \quad \, i = 1\dots k \\
+  f\psi^{-1} = f\varphi^{-1}\varphi \psi^{-1} = (f\varphi^{-1}) \varphi \psi^{-1}
+\end{gathered}
+\]
+$\varphi \psi^{-1}$ $C^{\infty}$ (diffeomorphisms are smooth).  $f\varphi^{-1}$ is smooth.  $f\psi^{-1}$ also smooth.  
+
+\subsubsection*{Smooth Maps Between Manifolds}
+
+\begin{definition}
+  Let $M,N$ be smooth manifolds.  \\
+  \textbf{smooth map } $F$, $F:M \to N$ if $\forall \, p \in M$, $\exists \, $ smooth charts $\begin{aligned} & \quad \\
+    & (U,\varphi) \quad \, U \ni p \\
+    & (V,\psi) \quad \, V \ni F(p) \end{aligned}$
+
+s.t. $F(U) \subseteq V$ and \\
+\phantom{s.t. } $\psi \circ F \circ \varphi^{-1}$ smooth from $\varphi(U)$ to $\psi(V)$.  
+\end{definition}
+
+i.e. 
+
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+M &  N \\
+};
+  \path[->]
+  (m-1-1) edge node [above] {$F$} (m-1-2)
+  ;
+\end{tikzpicture} 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+U & F(U) \subseteq V  \\
+\varphi(U) \subset \mathbb{R}^m & \psi(V) \subseteq \mathbb{R}^n    \\
+};
+  \path[->]
+  (m-1-1) edge node [above] {$F$} (m-1-2)
+          edge node [left] {$\varphi$} (m-2-1)
+  (m-1-2) edge node [auto] {$\psi$} (m-2-2)
+  (m-2-1) edge [bend right] node [right] {$\varphi^{-1}$} (m-1-1)
+          edge node [auto] {$\psi \circ F \circ \varphi^{-1} $} (m-2-2)
+          ;
+\end{tikzpicture} 
+
+
+\exercisehead{2.6}
+
+smooth $F: M \to N$  \\
+$(U,\varphi)$, $(U',\varphi')$ smooth chart for $M$
+$(V,\psi)$, $(V',\psi')$ smooth chart for $N$
+
+\[
+\begin{gathered}
+  \psi' F(\varphi')^{-1} = \psi' \psi^{-1} \psi F \varphi^{-1} \varphi (\varphi')^{-1} = (\psi' \psi^{-1}) ( \psi F \varphi^{-1})(\varphi (\varphi')^{-1})
+\end{gathered}
+\]
+$\psi' \psi^{-1}$, $\varphi (\varphi')^{-1}$ aresmooth (in fact diffeomorphisms).  \\
+$\psi F \varphi^{-1}$ given to be smooth.  
+
+So $\psi' F(\varphi')^{-1}$ smooth.  
+
+
+\textbf{Example} 2.5. (\textbf{Smooth Maps})
+
+\begin{enumerate}
+\item[(a)] inclusion $i: S^n \hookrightarrow \mathbb{R}^{n+1}$ 
+\item[(b)]
+\[
+\begin{aligned}
+  & \varphi_i^{\pm}:S^n \to B_1^n(0) \subset \mathbb{R}^n \quad \, \text{($B_1^n(0)$ disk of radius 1; $\varphi_i^{\pm} $ is like a projection of a half hemisphere to a plane)} \\
+  & \varphi_i^{\pm}(x_1 \dots x_{n+1}) = (x_1 \dots \widehat{x}_i \dots x_{n+1} ) \\ 
+  & (\varphi_i^{\pm})^{-1}(y_1 \dots y_n) = (y_1 \dots y_{i-1}, \pm \sqrt{ 1 - |y|^2 } , y_i \dots y_n ) \quad \, |y|^2 = y_1^2 + \dots + y_n^2 
+\end{aligned}
+\]
+\[
+\begin{aligned}
+  & \widehat{i} : \mathbb{R}^n \hookrightarrow \mathbb{R}^{n+1} \\ 
+  & \widehat{i}(u_1 \dots u_n) = i (\varphi_i^{\pm})^{-1}(u^1 \dots u^n) = (u^1 \dots u^{i-1}, \pm \sqrt{ 1 - |u|^2 } , u_i \dots u_n )  \quad \, |u|^2 =  (u^1)^2  + \dots + (u^n)^2 
+\end{aligned}
+\]
+$\widehat{i}$ is coordinate representation, and clearly, from the above formula, is smooth.  
+\item[(c)] $\pi : \mathbb{R}^{n+1} - 0 \to \mathbb{R}P^n$ smooth because
+\[
+\widehat{\pi}(x^1 \dots x^{n+1})  = \varphi_i \pi(x^1 \dots x^{n+1}) = \varphi_i[x^1 \dots x^{n+1}] = \left( \frac{x^1 }{ x^i } \dots \frac{ \widehat{x}^i}{ x^i } \dots \frac{x^{n+1}}{ x^i } \right)
+\]
+$\varphi_i : U_i \to \mathbb{R}^n$
+\item[(d)] $p : S^n \to \mathbb{R}P^n$ is restriction of $\pi: \mathbb{R}^{n+1} - 0 \to \mathbb{R}P^n$ to $S^n \subset \mathbb{R}^{n+1} -0$.  $\left. \pi \right|_{S^n} = p$ \\
+$p = \pi i$ $\pi,i$ smooth, so $p$ smooth.  \\
+$p^{-1} = i^{-1} \pi^{-1}$.  $|x|^2 = (x^1)^2 + \dots + (x^{n+1})^2$
+
+On $\mathbb{R}P^n$,
+\[
+\begin{gathered}
+  pp^{-1}[x^1 \dots x^{n+1} ] = p i^{-1} \pi^{-1}[x^1 \dots x^{n+1} ] = \pi^{-1}\left( \frac{x^1}{ |x| } \dots \frac{x^{n+1}}{ |x| } \right) = \pi i\left( \frac{x^1}{|x|} \dots \frac{x^{n+1}}{ |x|} \right) = \left[ \frac{x^1}{ |x|} \dots \frac{x^{n+1}}{ |x|} \right] = [x^1 \dots x^{n+1} ] \\
+  pp^{-1}[tx^1 \dots tx^{n+1} ] = \pi^{-1}\left( \frac{tx^1}{ |t||x|} \dots \frac{t x^{n+1}}{ |t||x| } \right) = [x^1 \dots x^{n+1} ] \\ 
+   p^{-1}p(x^1 \dots x^{n+1} ) = p^{-1}[x^1 \dots x^{n+1}] = (x^1 \dots x^{n+1}, \text{ as } (x^1)^2 + \dots + (x^{n+1})^2 = 1
+\end{gathered}
+\]
+
+$p$ bijective, smooth, and 
+\[
+\begin{gathered}
+  \widehat{\pi}^{-1} = \pi^{-1}\varphi_i^{-1}(y^1 \dots y^n) = \pi^{-1}(y^1 \dots y^{i-1}, 1, y^i, y^i \dots y^n ) = (y^1 \dots y^{-1}, 1, y^i \dots y^n) \text{ smooth } \\
+ \widehat{i}^{-1}(x^1 \dots x^{n+1}) = (\varphi_i^{\pm})(i^{-1}(x^1 \dots x^{n+1} ) ) = (\varphi_i^{\pm})\left( \frac{x^1}{ |x|} \dots \frac{x^{n+1}}{ |x|} \right) = \left( \frac{x^1}{ |x|} \dots \frac{ \widehat{ x}^i}{ |x|} \dots \frac{x^{n+1}}{ |x|} \right)
+\end{gathered}
+\]
+with $|x|^2 = (x^1)^2 + \dots + (x^{n+1})^2$
+
+$\widehat{i}^{-1}$ smooth.  
+
+So $p^{-1} = i^{-1} \pi^{-1}$ smooth.  
+
+$p$ diffeomorphism.  
+
+\end{enumerate}
+
+\subsubsection*{ Diffeomorphisms }
+
+\subsection*{ Lie Groups }
+
+Lie group - smooth manifold $G$, with $\begin{aligned} & \quad \\ 
+  & m : G \times G \to G \\ 
+  & m(g,h) = gh \end{aligned}$ \quad \quad $\begin{aligned} & \quad \\
+  & i : G \to G \\
+  & i(g) = g^{-1} \end{aligned}$ \quad \quad $m,i$ smooth.  
+
+\exercisehead{2.10}
+\[
+\begin{aligned}
+  & f:G\times G \to G \\ 
+  & (g,h) \mapsto gh^{-1}
+\end{aligned}
+\]
+
+\[
+\begin{gathered}
+  m(g,h) = f(g,h^{-1}) = gh \quad \quad (\exists \, h^{-1} \text{ since } G \text{ is a group}) \\
+  f(e,g) = eg^{-1} = g^{-1} = i(g)
+\end{gathered}
+\]
+
+So $m,i$ smooth as $f$ is smooth.  
+
+\textbf{Example 2.8 (Lie Group Homomorphisms)}
+
+\begin{enumerate}
+\item[(a)]
+\item[(b)]
+\item[(c)]
+\item[(d)]
+\item[(e)]
+\item[(f)] $C_g: G\to G$ conjugation.  
+\[
+C_g(h) = ghg^{-1}
+\]
+$C_g$ smooth because Lie group multiplication is smooth.  
+
+Suppose $hl = m$
+\[
+C_g(hl) = ghlg^{-1} = ghg^{-1}g l g^{-1} = C_g(m) = C_g(h) C_g(l)
+\]
+\end{enumerate}
+
+\subsection*{ Smooth Covering Maps }
+
+\subsection*{ Partitions of Unity }
+
+\begin{theorem}[2.23] \textbf{(Existence of Partitions of Unity)}.  Suppose $M$ is a smooth manifold with or without boundary, and $\chi = (X_{\alpha})_{\alpha \in A}$ is any indexed open cover of $M$.  
+
+Then $\exists \,$ smooth partition of unity subordinate to $\chi$
+\end{theorem}
+
+\begin{proof}
+  
+\end{proof}
+
+
+\subsubsection*{Applications of Partitions of Unity}
+
+
+\begin{lemma}[2.26]
+Suppose $M$ smooth manifold with or without boundary. \\
+closed $A \subseteq M$ \\
+$f:A \to \mathbb{R}^k$ smooth function. \\
+
+$\forall \, $ open $U$, $U \supset A$, \\
+\quad $\exists \, $ smooth $\widetilde{f} : M \to \mathbb{R}^k$ s.t. $\left. \widetilde{f}\right|_A = f$ and $\text{supp}{ \widetilde{f}}\subseteq U$
+\end{lemma}
+
+\begin{proof}
+Given $\begin{aligned} & \quad \\ 
+  & A \subseteq M \\
+  & f: A \to \mathbb{R}^k \\
+  & \forall \, U \supseteq A \end{aligned}$
+
+$\forall \, p \in A$, choose neighborhood $W_p$ of $p$, smooth $\widetilde{f}_p:W_p \to \mathbb{R}^k$ s.t. $\widetilde{f}_p = f$ on $W_p \bigcap A$ \\
+
+Replace $W_p $ by $W_p \bigcap U$, so $W_p \subseteq U$
+
+$\lbrace W_p | p \in A \rbrace \bigcup \lbrace M \backslash A\rbrace$ open cover of $M$
+
+Let $\lbrace \psi_p | p \in A\rbrace \bigcup \lbrace \psi_0 \rbrace$ smooth partition of unity subordinate to this cover, with $\text{supp}{\psi_p} \subseteq W_p$, $\text{supp}{\psi_0} \subseteq M\backslash A$ (Thm.2.23, Existence of Partition of Unity)
+
+$\forall \, p \in A$, $\psi_p \widetilde{f}_p$ smooth on $W_p$, and $\psi_p \widetilde{f}_p$ has smooth extension to all of $M$ if $\psi_p \widetilde{f}_p = 0 $ on $M \backslash \text{supp}{\psi_p}$  \\
+\quad on open $W_p \backslash \text{supp}{\psi_p}$, they agree
+
+define $\widetilde{f} : M \to \mathbb{R}^k$ 
+\[
+\widetilde{f}(x) = \sum_{ p \in A} \psi_p(x) \widetilde{f}_p(x)
+\]
+
+$\lbrace \text{supp}{ \psi_p} \rbrace$ locally finite, so $\sum_{p \in A} \psi_p \widetilde{f}_p(x)$ has only finite number of nonzero terms in neighborhood of $\forall \, x \in M$, so $\widetilde{f}(x)$ smooth
+
+If $x\in A$, $\psi_0(x) =0$, $\widetilde{f}_p(x)  = f(x)$ \quad \, $\forall \, p $ s.t. $\psi_p(x) \neq 0$, so 
+\[
+\widetilde{f}(x) = \sum_{p \in A} \psi_p(x) f(x) = (\psi_0(x) + \sum_{p\in A} \psi_p(x) )f(x) = f(x)
+\]
+so $\widetilde{f}$ extension of $f$.  
+
+Lemma 1.13(b), so $\text{supp}{\widetilde{f}} = \overline{ \bigcup_{p\in A} \text{supp}{\psi_p} } = \bigcup_{p\in A} \text{supp}{\psi_p} \subseteq U$
+
+
+
+\end{proof}
+
+
+\subsection*{ Problems}
+
+\problemhead{2-11}
+
+$G$ connected Lie group.   \\
+$U \subset G$ neighborhood of identity $e$.  
+
+Let $H \leq G$ subgroup generated by $U$.  (cf. wikipedia - Generating set of a group $U$ of $H$ s.t. $\forall \, h \in H$, $h = $ finite combination of $u$'s $\in U$, $u^{-1}$'s) \\
+$hU \subset H$.  $\forall \, h \in H$ \\
+$hU$ open neighborhood of $h$, since multiplication by $h$ is cont. ($U$ open, so $h^{-1}(hU)$ open) \\
+So $h$ open. 
+
+Let $g\in H^c$, $U' = \lbrace u^{-1} | u \in U \brace$.  $i(u) = u^{-1}$.  $i$ inversion map, cont.  $i(U) = i^{-1}(U) = U'$ open.   \\
+$gU' \subset H^c$ (otherwise $g\in H$, for if $h \in gU' \bigcap H$, $g \in hU \subset H$) \\
+$H^c$ open, so $H$ closed.  \\
+$H$ open and closed, so since $G$ connected, $H=G$.  $U$ generates $G$.  
+
+
+

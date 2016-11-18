@@ -1,0 +1,464 @@
+% 14differentialforms.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+
+
+\subsection*{ The Geometry of Volume Measurement}
+
+\subsection*{ The Algebra of Alternating Tensors }
+
+\[
+\begin{gathered}
+  \text{Alt}: T^k(V) \to \Lambda^k(V) \\ 
+  (\text{Alt}{T})(X_1 \dots X_k) = \frac{1}{k!} \sum_{ \sigma \in S_k} (\text{sgn}{\sigma}) T(X_{\sigma{(1)}} \dots X_{\sigma{(k)} } )
+\end{gathered}
+\]
+
+
+
+\exercisehead{12.2} If $T$ alternating, by Exercise 12.1, $T(X_{\sigma(1)} \dots X_{\sigma{(k)} } ) = (\text{sgn}{\sigma})T(X_1 \dots X_k)$
+
+\[
+\begin{gathered}
+  \frac{1}{k!} \sum_{\sigma \in S_k} (\text{sgn}{\sigma}) T(X_{\sigma{(1)} } \dots T_{\sigma{(k)} } ) = \frac{1}{k!} \sum_{\sigma \in S_k} (\text{sgn}{\sigma})(\text{sgn}{\sigma}) T(X_1 \dots X_k)  = \frac{1}{k!} \sum_{\sigma \in S_k} T(X_1 \dots X_k) = T(X_1 \dots X_k) \Longrightarrow \text{Alt}{T} = T
+\end{gathered}
+\]  
+
+
+
+\subsubsection*{ Elementary Alternating Tensors }
+
+\[
+\begin{aligned}
+  & I = (i_1 \dots i_k) \\ 
+  & I_{\sigma} = (i_{\sigma(1)} \dots i_{\sigma(k)} ) \quad \quad \quad \sigma \in S_k
+\end{aligned} 
+\]
+\[
+\delta_I^{ \, \, J} = \begin{cases} \text{sgn}{\sigma} & \begin{gathered} \text{ if $I$ and $J$ has no repeated indices }\\ 
+    \text{ and $J = I_{\sigma}$ for some $\sigma \in S_k$ } \end{gathered} \\
+  0 & \begin{gathered} \text{ if $I$ and $J$ has repeated index } \\
+    \text{ or $J \neq I_{\sigma} \quad \, \forall \, \sigma \in S_k $ } \end{gathered}
+\end{cases}
+\]
+Let $V$ vector space, $(\epsilon^1 \dots \epsilon^n)$ basis for $V^*$ 
+
+define covariant $k$-tensor $\epsilon^I$ by 
+\[
+\epsilon^I(x_1 \dots x_k) = \text{det}{ \left( \begin{matrix} \epsilon^{i_1}(X_1)  & \dots & \epsilon^{i_k}(X_k) \\ 
+    \vdots & & \vdots \\ \epsilon^{i_k}(X_1) & \dots  & \epsilon^{i_k}(X_k) \end{matrix} \right) } = \text{det}{ \left( \begin{matrix} X_1^{\, i_1} & \dots & X_k^{\, i_k }  \\ \vdots &  & \vdots \\ X_1^{i_k} & \dots & X_k^{i_k} \end{matrix} \right) }
+\]
+
+denote sum over only increasing multi-indice
+\[
+\sum'_I T_I \epsilon^I = \sum_{ \lbrace I : 1\leq i_1 < \dots < i_k \leq n \rbrace } T_I \epsilon^I
+\]
+
+\begin{proposition}[12.5] for $k\leq n$
+
+$\lbrace \epsilon =  \epsilon^I : I \text{ an increasing multi-index of length $k$ } \rbrace$ is a basis for $\Lambda^k(V)$ 
+\end{proposition}
+\[
+\Longrightarrow \text{dim}{ \Lambda^k(V) }= \binom{n}{k} 
+\]
+
+
+
+\begin{lemma}{12.6} $\omega \in \Lambda^n(V)$ 
+
+If linear $T: V \to V$, $X_1 \dots X_n \in V$ 
+\begin{equation}
+  \omega(TX_1 \dots TX_n) = \text{det}{T} \omega(X_1 \dots X_n) \quad \quad \quad (12.2) 
+\end{equation}
+
+\end{lemma}
+
+\begin{proof}
+  By Prop. 12.5, $\mathcal{E} = \lbrace \epsilon^I | I \text{ increasing multi-index of length $k$ } \rbrace \text{ basis for $\Lambda^k(V)$ }$
+\[
+\omega = c\epsilon^{1 \dots n} \quad \quad \quad \binom{n}{n} =1 
+\]
+By multilinearity of $\omega(TX_1 \dots TX_n)$ and $(\text{det}{T}) \omega(X_1 \dots X_n)$, it suffices to verify it in special case
+\[
+X_i = E_i, \quad i = 1 \dots n
+\]
+\end{proof}
+
+\[
+\begin{gathered}
+  \text{det}{T} \omega(X_1 \dots X_n) = \text{det}{T} c\epsilon^{1\dots n}(E_1 \dots E_n) = c\text{det}{T} \\ 
+  \omega(TE_1 \dots TE_n) = c\epsilon^{1\dots n}(T_1 \dots T_n) = c\text{det}{( \epsilon^j(T_i)) } = c\text{det}{ (\epsilon^j(T_i^{ \, \, k}e_k) ) } = c\text{det}{T_i^{\, \, j}} \\ 
+\text{ where, recall } \epsilon^I(X_1 \dots X_k) = \text{det}{X_j}^{ \, \, i_k}
+\end{gathered}
+\]
+
+
+
+
+\subsubsection*{ The Wedge Product }
+
+\begin{lemma}[14.10]
+  \begin{equation}
+    \epsilon^I \wedge \epsilon^J = \epsilon^{IJ}
+\end{equation}
+\end{lemma}
+
+\subsection*{ Differential Forms on Manifolds }
+
+Recall $T^k T^*M$ bundle of covariant $k$-tensors on $M$ \\
+\quad alternating tensors $\Lambda^k T^*M \subset T^k T^*M$ \\
+
+\[
+\Lambda^k T^*M = \coprod_{ p \in M} \Lambda^k{ ( T^*_p M )}
+\]
+
+\exercisehead{14.14} 
+
+$\Lambda^k T^*M$ smooth subbundle of $T^kT^*M$
+
+EY : 20140501 EY? ???
+
+\hrulefill
+
+denote section
+
+\[
+\Omega^k{ (M) } = \Gamma{ (\Lambda^k T^* M ) }
+\]
+
+
+
+in any smooth chart, $k$ form $\omega$ can be written locally as 
+\[
+\omega = \sum_I' \omega_I dx^{i_1} \wedge \dots \wedge dx^{i_k} = \sum_I' \omega_I dx^I
+\]
+
+%By Lemma 12.4(c)
+By Lemma 14.7(c)
+\[
+dx^{i_1} \wedge \dots \wedge dx^{i_k} \left( \frac{ \partial }{ \partial x^{j_1} } \dots \frac{ \partial }{ \partial x^{j_k} } \right) = \delta^I_{\, \, J}
+\]
+component functions $\omega^I$ of $\omega$ determined by 
+\[
+\omega^I = \omega\left( \frac{ \partial }{ \partial x^{i_1} } \dots \frac{ \partial }{ \partial x^{i_k} } \right)
+\]
+
+\[
+(F^* \omega)(v_1 \dots v_k) = \omega( dF(v_1) \dots dF(v_k) )
+\]
+
+\[
+\begin{aligned}
+  & e_i \in TM \\ 
+  & f_j \in TN
+\end{aligned}
+\]
+\[
+F(x) = F^j(x) = y^j( x^i)
+\]
+
+\[
+\begin{aligned}
+  & F_*(v) = w = w^j f_j \\ 
+  & F_*(v) = vF = v^i \frac{ \partial F^j}{ \partial x^i } f_j
+\end{aligned} \quad \quad \, \Longrightarrow w^j = v^i \frac{ \partial^j F}{ \partial x^i}
+\]
+
+\[
+(F^*\omega)(v_1 \dots v_k)  = \omega(F_*v_1 \dots F*v_k) = \omega(v_1 F \dots v_k F)
+\]
+\[
+(F^*\omega) = (F^* \omega)_{ \underline{I}} dx^{ \underline{I}}
+\]
+\[
+(F^* \omega) e_I = (F^* \omega)_{\underline{I}}
+\]
+\[
+\omega(dF(e_I)) = \omega(F_* e_I) = \omega_{\underline{J}}(DF)^{\underline{J}}_{ \, \, I }
+\]
+
+\[
+\begin{gathered}
+  F_*e_I = (F_* e_I)^J f_J = (DF)^J_{ \, \, I } f_J \\ 
+ (F^* \omega)_{\underline{I}} = \omega_{\underline{J}} (DF)^{\underline{J}}_{ \, \, I } 
+\end{gathered}
+\]
+
+
+
+\begin{lemma}[14.16]
+\begin{enumerate}
+  \item[(a)] $F^* : \Omega^k(N) \to \Omega^k(M)$ linear over $\mathbb{R}$ 
+\item[(b)] $F^*(\omega \wedge \eta) = (F^* \omega) \wedge (F^* \eta)$
+\item[(c)] in any smooth chart 
+\[
+F^*( \omega_{\underline{I}} dy^{\underline{I}} ) = (\omega_{\underline{I}} F) ( dy^{ \underline{I}} F)
+\]
+\end{enumerate}
+\end{lemma}
+
+
+
+\exercisehead{14.17}
+
+$\omega, \eta \in \Omega^k(N)$ \quad \quad \, $\begin{aligned} & \quad \\
+  & F^* \omega = \alpha \\
+  & F^* \eta = \beta \end{aligned}$
+
+
+\[
+\begin{aligned}
+  & (F^* \omega)  = (F^* \omega)_{\underline{I}} e^{\underline{I}} = \alpha_{\underline{I}} e^{ \underline{I}} \\ 
+  &  (F^* \eta) = (F^* \eta)_{\underline{J}} e^{ \underline{J}} = \beta_{\underline{J}} e^{\underline{J}}
+\end{aligned}
+\]
+\begin{enumerate}
+\item[(a)] \[
+\begin{gathered}
+  \alpha + \beta  = F^* \omega + F^*\eta = (\alpha_{\underline{I}} + \beta_{\underline{I}} ) dx^{\underline{I}} = (\omega(dF(e_{\underline{I}} ) ) + \eta( dF(e_{\underline{I}})) )dx^{\underline{I}} = (\omega+ \eta) dF(e_I) dx^{\underline{I}} = F^*(\omega + \eta)(e_{\underline{I}})dx^{\underline{I}} = \\
+  = F^*(\omega+ \eta)
+\end{gathered}
+\]
+\[
+F^*c\omega = c \omega DF = c F^*\omega
+\]
+\item[(b)] \[
+\begin{aligned}
+  & \alpha \wedge \eta = \alpha_{\underline{I}} \beta_{\underline{J}} e^{ \underline{I}} \wedge e^{ \underline{J}} \\
+  & \alpha \wedge \eta = (\alpha \wedge \eta)_{\underline{K}} e^{ \underline{K}}  \\
+  & (\alpha \wedge \eta)_{\underline{K}} = \alpha_{\underline{I}} \beta_{\underline{J}} \delta^{ \underline{I} \underline{J}}_{ \underline{K}}  \\
+& \omega \wedge \eta = \omega_{\underline{I}} f^{\underline{I}} \wedge \eta_{\underline{J}} f^{\underline{J}} = \omega_{\underline{I}} \eta_{\underline{J}} f^{\underline{I}} \wedge f^{\underline{J}}
+\end{aligned}
+\]
+
+\[
+F^*(\omega \wedge \eta) e_{\underline{K}} = (\omega \wedge \eta) DF e_{\wedge{K}} = \omega_{\underline{I}} \eta_{\underline{J}} f^{ \underline{I}} \wedge f^{\underline{J}} DF^K_{ \underline{K}} f_L = \omega_{\underline{I}} \eta_{\underline{J}} DF^L_{\underline{K}} \delta^{ \underline{I} \underline{J}}_L = \omega_{\underline{I}} \eta_{\underline{J}} DF^{ \underline{I}\underline{J}}_{\underline{K}}
+\]
+In the last equality, $\underline{I} \underline{J}$ in $DF^{\underline{I}\underline{J}}_{\underline{K}}$ is some permutation of $\underline{I}\underline{J}$
+
+
+\[
+\begin{gathered}
+  (F^*\omega) \wedge (F^* \eta) e_{\underline{K}} = \omega_{\underline{J}} DF^{\underline{J}}_{\underline{I}} \eta_{\underline{L}} DF^{\underline{L}}_{ \underline{M}} (e^{\underline{I}} \wedge e^{\underline{M}} ) e_{\underline{K}} = \omega_{\underline{J}} \eta_{\underline{L}} DF^{\underline{J}}_{\underline{I}} DF^{\underline{L}}_{\underline{M}} \delta^{\underline{I}\underline{M}}_{\underline{K}}     = \omega_{\underline{I}} \eta_{\underline{J}} DF^{\underline{I}}_{\underline{L}} DF^{\underline{J}}_{\underline{M}} \delta^{\underline{L} \underline{M}}_{\underline{K}}
+\end{gathered}
+\]
+\item[(c)]
+\end{enumerate}
+
+
+\subsection*{ Exterior Derivatives }
+
+$\forall \, $ manifold, $\exists \, $ differential operator
+\[
+d: \mathcal{A}^k(M) \to \mathcal{A}^{k+1}(M)
+\]
+s.t. $d(d\omega ) =0 \quad \, \forall \, \omega$
+
+necessary: if smooth $k$-form $\omega = d\eta$, some $(k-1)$ form $\eta$, then $d\omega =0$
+
+in coordinates
+\begin{equation}
+  d \left( \sum_J' \omega_J dx^J \right) = \sum_J' d\omega_J \wedge dx^J \quad \quad \quad (12.15)
+\end{equation}
+
+\begin{equation}
+  d\left( \sum_J' \omega_J dx^{j_1} \wedge \dots \wedge dx^{j_k} \right) = \sum_J' \sum_i \frac{ \partial \omega_J}{ \partial x^i} dx^i \wedge dx^{j_1} \wedge \dots \wedge dx^{j_k} \quad \quad \quad (12.16)
+\end{equation}
+
+
+\begin{theorem}[12.14] (The Exterior Derivative) 
+
+$\forall \, $ smooth $M$, $\exists \, !$ linear $d: \mathcal{A}^k(M) \to \mathcal{A}^{k+1}(M)$ s.t. 
+\begin{enumerate}
+\item[(i)] if $f$ smooth, $f\in \mathbb{R}$ (0-form), then differential $df$, defined 
+\[
+df(X) = Xf
+\]
+\item[(ii)] if $\begin{aligned} & \quad \\ & \omega \in \mathcal{A}^k(M) \\ & \eta \in \mathcal{A}^l(M) \end{aligned}$, then $d(\omega \wedge \eta) = d\omega \wedge \eta + (-1)^k \omega \wedge d\eta $
+\item[(iii)] $d^2 =0$
+\end{enumerate}
+\begin{enumerate}
+  \item[(a)] $\forall \, $ smooth coordinate chart, $d$ given by (12.15) 
+  \item[(b)] $d$ local; if $\omega = \omega'$ on open $U \subset M$, then $d\omega = d\omega'$ on $U$
+  \item[(c)] $d$ commutes with restriction if $U \subset M$ any open set
+    \begin{equation}
+      d(\left. \omega \right|_U ) = \left. d(\omega ) \right|_U \quad \quad \quad (12.17)
+    \end{equation}
+\end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+  Suppose $M$ covered by a single chart.  
+
+define $d$ by (12.15) 
+\[
+d\left( \sum_J' \omega_J dx^J \right) = \sum_J' d\omega_J \wedge dx^J \quad \quad \quad (12.15) 
+\]
+\[
+df(X) = df(X^i e_i ) = X^i f(e_i)
+\]
+
+$d$ linear, (i) satisfied.  
+
+Consider $\begin{aligned} & \quad \\ & \omega = fdx^I \\ & \eta = gdx^J \end{aligned}$ 
+\[
+\begin{gathered}
+  d(\omega \wedge \eta) = d((fdx^I ) \wedge (g dx^J)) = d(fg dx^I \wedge dx^J) = (gdf + fdg) \wedge dx^I \wedge dx^J = \\
+   = (df \wedge dx^I) \wedge (gdx^J) + (-1)^k( fdx^I ) \wedge (dg \wedge dx^J) = d\omega \wedge \eta + (-1)^k \omega \wedge d\eta
+\end{gathered}
+\]
+(ii) proved.  
+
+0-form
+
+\[
+\begin{gathered}
+  d(df) = d \left( \frac{ \partial f}{ \partial x^j} dx^j \right) = \frac{ \partial^2 f}{ \partial x^i \partial x^j} dx^i \wedge dx^j = \sum_{ i < j } \partial^2_{ij} f dx^i \wedge dx^j + \sum_{j < k } \partial^2_{ij} f dx^j \wedge dx^i = \\
+   = \sum_{i < j } \left( \frac{ \partial^2 f}{ \partial x^i \partial x^j} - \frac{ \partial^2 f}{ \partial x^j \partial x^i } \right) dx^i \wedge dx^j = 0 
+\end{gathered}
+\]
+
+for $k$-form, use $k=0$ case, (ii)
+
+\[
+\begin{gathered}
+  d(d\omega) = d\left( \sum_J' d\omega_J \wedge dx^{j_1} \wedge \dots \wedge dx^{j_k} \right) = \\
+  = \sum_J' d(d \omega_J) \wedge dx^{j_1} \wedge \dots \wedge dx^{j_k} + \sum_J' \sum_{i=1}^k (-1)^i d\omega_J \wedge dx^{j_1} \wedge \dots \wedge d(dx^{j_i}) \wedge \dots \wedge dx^{j_k} = 0 
+\end{gathered}
+\]
+
+from (12.17), $d( \left. \omega \right|_U ) = \left. (d\omega ) \right|_U$
+\[
+\left. (d_U \omega) \right|_{UU'} = d_{UU'} \omega = \left. (d_{U'} \omega) \right|_{UU'}
+\]
+Suppose $\exists \, $ another operator $\widetilde{d} : \mathcal{A}^k(M) \to \mathcal{A}^{k+1}(M)$
+
+$\eta = \omega - \omega'$, let $p\in U$. 
+
+Let $\varphi \in \mathcal{C}^{\infty}(M)$ smooth bump function, $\varphi =1$ in neighborhood of $p$, supported in $U$.  
+
+Then $\varphi \eta =0 $ in $M$, so 
+\[
+ 0 = \widetilde{d}(\varphi \eta)_p = d\varphi_p \wedge \eta_p  + \varphi(p) \widetilde{d}\eta_p = \widetilde{d}\eta_p
+\]
+because $\varphi \equiv 1$ in neighborhood of $p$
+
+$p$ arbitrary, so $d\eta = 0$ on $U$.  $d\omega = d\omega'$ (locality)
+
+\end{proof}
+
+Antiderivation of degree $g \in \mathbb{Z}$ on $\mathbb{Z}$-graded $\mathbb{R}$-algebra $A = \bigoplus_{k \in \mathbb{Z}} A_k $ in $\mathbb{R}$-linear $D: A \to A$
+\[
+D(A_k) = A_{k +g}
+\]
+
+s.t.
+\[
+D(a_k a_l) = (Da_k) a_l + (-1)^k a_k(Da_l) \quad \quad a_k \in \mathcal{A}_k, \, a_l \in A_l
+\]
+
+Example 12.15.  
+\[
+\omega = P dx + Q dy + R dz
+\]
+Recall 
+\[
+d\left( \sum'_J \omega_J dx^J \right) = \sum_J' d\omega_J \wedge dx^J
+\]
+
+\[
+\begin{gathered}
+  d\omega  = dP \wedge dx + dQ \wedge dy + dR \wedge dz = \\
+   =\left( \frac{ \partial P }{ \partial x} dx + \frac{ \partial P }{ \partial y} dy + \frac{ \partial P }{ \partial z} dz \right) \wedge dx + \left( \frac{ \partial Q}{ \partial x} dx + \frac{ \partial Q}{ \partial y} dy + \frac{ \partial Q}{ \partial dz }dz \right) \wedge dy + \left( \frac{ \partial R}{ \partial x} dx + \frac{ \partial R}{ \partial y} dy + \frac{ \partial R}{ \partial z} dz \right) \wedge dz  \\
+= \left( \frac{ \partial Q}{ \partial x} - \frac{ \partial P }{ \partial y} \right) dx \wedge dy + \left( \frac{ \partial R}{ \partial x} - \frac{ \partial P }{ \partial z} \right) dx \wedge dz + \left( \frac{ \partial R}{ \partial y} - \frac{ \partial Q}{ \partial z } \right) dy \wedge dz
+\end{gathered}
+\]
+
+
+\subsubsection*{An Invariant Formula for the Exterior Derivative}
+
+\begin{proposition}[14.29 (Exterior Derivative of a 1-Form)]
+  \begin{equation}
+    d\omega(X,Y) = X(\omega(Y)) - Y(\omega(X)) - \omega([X,Y])
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+  $\forall \, \omega \in \Omega^1(M)$, $\omega = udv$ for some $u,v \in C^{\infty}(M)$
+  \[
+\begin{aligned}
+  & d\omega(X,Y) = d(udv)(X,Y) = du \wedge dv(X,Y) = du(X) dv(Y) - dv(X)du(Y) = X(u)Y(v) - X(v)Y(u) \\ 
+  & X(udv(Y))= X(uY(v)) = X(u)Y(v) + uXY(v) \\
+  & Y(udv(X))= Y(uX(v)) = Y(u)X(v) + uYX(v) \\
+  & udv([X,Y]) = uXYv - uYXv \\
+  & \Longrightarrow d\omega(X,Y) = X(\omega(Y)) - Y(\omega(X)) - \omega([X,Y])
+\end{aligned}
+\]
+\end{proof}
+
+\begin{proposition}[14.30]
+  Let smooth manifold $M$ of $\text{dim}M = n$, \\
+  Let $(E_i)$ smooth local frame for $M$, let $(\epsilon^i)$ dual coframe. \\
+  Let $d\epsilon^i = \sum_{j<k} b^i_{jk} \epsilon^j \wedge \epsilon^k $ \\
+  \phantom{Let }$[E_j,E_k] = c^i_{jk} E_i$
+
+Then $b^i_{jk} = -c^i_{jk}$
+\end{proposition}
+
+Proof is Exercise 14.31.  
+
+\exercisehead{14.31}
+
+\begin{proof}
+  Assume $j <k$ without loss of generality.  
+  \[
+\begin{gathered}
+  d\epsilon^i(E_j,E_k) = \sum_{j' < k'} b^i_{j'k'}(\delta^{j'}_j \delta^{k'}_k - \delta^{j'}_k \delta^{k'}_j = b^i_{jk} = E_j \delta^i_k - E_k \delta^i_j - c^i_{jk} \\
+  \Longrightarrow b^i_{jk} = -c^i_{jk}
+\end{gathered}
+\]
+\end{proof}
+
+\subsubsection*{Lie Derivatives of Differential Forms}
+
+
+\begin{proposition}[14.33]
+  Suppose $M$ smooth manifold, $V \in \mathfrak{X}(M)$, $\omega, \eta \in \Omega^*(M)$ 
+\[
+\mathcal{L}_V(\omega \wedge \eta) = (\mathcal{L}_V \omega) \wedge \eta + \omega \wedge (\mathcal{L}_V \eta)
+\]
+\end{proposition}
+
+\begin{theorem}[14.35] (Cartan's Magic Formula) 
+
+\[
+\mathcal{L}_V \omega = V \righthalfcup (d\omega) + d(V\righthalfcup \omega) = 
+\]
+
+EY
+
+\[
+= i_V(d\omega) + d(i_V\omega)
+\]
+\end{theorem}
+
+\begin{corollary}[14.36] (The Lie Derivative Commutes with $d$)
+\[
+\mathcal{L}_V(d\omega) = d(\mathcal{L}_V\omega)
+\]
+\end{corollary}
+

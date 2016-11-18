@@ -1,0 +1,194 @@
+% 04submersionsimmersionsembeddings.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+
+
+
+
+\emph{rank} - dim. of its image \\
+
+\emph{smooth immersions} - whose differentials are injective everywhere \\
+\emph{smooth embeddings} - injective smooth immersions that are also homeomorphisms onto their images 
+
+\subsection*{Maps of Constant Rank}
+
+Suppose smooth manifolds $M,N$ with or without boundary.  
+
+%If smooth $F:M\to N$, rank of $F$ at $p\in M$ to be rank of linear $F_*:T_pM \to T_{F(p)}N$, \, $\text{dim}{\Im{F_*}}$ with $\Im{F_*} \subset T_{F(p)}N$ \\
+%If $F$ has same rank $k$ at every pt., $F$ has constant rank, $\text{rank}{F} =k$ \\
+
+\textbf{rank of $F$ at $p$ } - given smooth $F: M \to N$, \, $p\in M$, \\
+\quad rank of linear $dF_p : T_pM \to T_{F(p)}N$, i.e. rank of Jacobian of $F$ or dim. of $\text{Im}{ dF_p} \subseteq T_{F(p)}N$ \\
+\textbf{constant rank } - if $F$ has same rank $r$ at any pt. 
+
+smooth $F:M \to N$ smooth submersion if $F_*$ surjective at every pt.  $\Longleftrightarrow \text{rank}{F} = \text{dim}{N} \quad \, (\text{dim}{M} \geq \text{dim}{N})$ \\
+\phantom{smooth $F:M \to N$} smooth immersion if $F_*$ injective at every pt. $\Longleftrightarrow \text{rank}{F} = \text{dim}{M} \quad \, (\text{dim}{M} \leq \text{dim}{N})$
+
+
+EY : 20150717 I get confused between the rank of $F$ and the rank of $DF$.  I'm going to rewrite the above in my notation:
+
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+M & N \\
+};
+  \path[->]
+  (m-1-1) edge node [above] {$F$} (m-1-2)
+  ;
+\end{tikzpicture} \quad \quad \quad \, \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+T_pM &  T_{F(p)}N \\
+p &  F(p) \\
+};
+  \path[|->]
+  (m-2-1) edge node [above] {$$} (m-1-1)
+          edge node [auto]  {$F$} (m-2-2)
+  (m-2-2) edge node [auto]  {$$} (m-1-2);
+  \path[->]
+  (m-1-1) edge node [above] {$DF_p$} (m-1-2);
+\end{tikzpicture}
+
+Let \quad \, $\begin{aligned} & \quad \\
+ &  \text{dim}M = \text{dim}T_pM = m \\
+ &  \text{dim}N = \text{dim}T_{F(p)}N = n 
+\end{aligned}$
+
+Now $DF_p : T_pM \to \text{im}(DF_p) \subseteq T_{F(p)}N$
+
+Let $r = \text{rank}DF_p = \text{dim}\text{im}(DF_p)$.  
+
+$r\leq n$ (clearly, since $\text{im}(DF_p) \subseteq T_{F(p)}N$)
+
+Recall nullity-rank theorem: For linear $T: V \to T(V) = \text{im}T$, \\
+\phantom{Recall} $\text{dim}\text{im}T + \text{ker}T = \text{dim}V$ \\
+\phantom{Recall} $\Longrightarrow \text{dim}\text{im}T = \text{dim}V - \text{ker}T \leq \text{dim}V$.  \\
+$\Longrightarrow r \leq m$
+
+\begin{definition}
+        For smooth $F: M \to N$ \\
+        \textbf{smooth submersion} $F$ if $dF$ surjective $\Longleftrightarrow  \text{rank}DF_p = \text{dim} T_{F(p)}N$ i.e. $r=n$ \\
+        \textbf{smooth immersion} $F$ if $dF$ injective $\Longleftrightarrow  \text{rank}DF_p = \text{dim} T_{p}M$ i.e. $r=m$ \\
+\end{definition}
+
+\exercisehead{4.4} cf. \url{http://www.math.ucla.edu/~iacoley/hw/diffhwfall/HW%202.pdf} For $q=F(p)$,
+
+If $DF_p$, $DG_q$ surjective, $DG_q\circ DF_p = D(G\circ F)_p$ surjective.  $G\circ F$ smooth submersion.  \\
+If $DF_p$, $DG_q$ injective, $DG_q\circ DF_p = D(G\circ F)_p$ injective.  $G\circ F$ smooth immersion.   \\
+
+It'd be instructive to view this as a commutative diagram.  For 
+
+$\begin{aligned} & \quad \\ 
+                 & F: M \to N \\        
+                 & G : N \to P \\
+                 & p \in M \\
+                 & q = F(p) \in N \\
+                 & G(q) \in P \end{aligned}$ \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+T_pM & T_{F(p)}M  &  T_{G(q)}P = T_{G\circ F(p)}P \\
+p & F(p) & G(q) \\ 
+};
+  \path[->]
+  (m-1-1) edge node [above] {$DF_p$} (m-1-2)
+  edge[bend left=25] node [above] {$D(G\circ F) = DG_q\circ DF_p$} (m-1-3)
+  edge node [auto] {$$} (m-2-1)
+  (m-1-2) edge node [above] {$DG_q$} (m-1-3)
+  edge node [auto] {$$} (m-2-2)
+  (m-1-3) edge node [auto] {$$} (m-2-3)
+  (m-2-1) edge node [above] {$F$} (m-2-2)
+  edge[bend right=25] node [below] {$G\circ F$} (m-2-3)
+  (m-2-2) edge node [above] {$G$} (m-2-3)  
+;
+\end{tikzpicture} 
+
+
+
+
+\subsection*{ The Inverse Function Theorem and Its Friends }
+
+\begin{theorem}[7.6] (\textbf{Inverse Function Theorem}). Suppose open $U,V \subset \mathbb{R}^n$, smooth $F: U \to V$ \\
+If $DF(p)$ nonsingular, $p \in U$, $\exists \, $ connected neighborhood $\begin{aligned} & \quad \\ & U_0 \subset U \ni p \\ & V_0 \subset V \ni F(p) \end{aligned}$
+
+s.t. $\left. F \right|_{U_0} : U_0 \to V_0$ diffeomorphism.  
+\end{theorem}
+
+Let $X$ metric space.  $G:X \to X$ contraction if $\exists \, \lambda <1$ s.t. $d(G(x), G(y)) \leq \lambda d(x,y)$, \, $\forall \, x, y \in X$.  \\
+Clearly, $\forall \, $ contraction is cont.  
+
+\begin{lemma}[7.7] (Contraction Lemma)
+Let $X$ complete metric space \\
+$\forall \,$ contraction $G: X \to X$, \, $\exists \, !$ fixed pt., i.e. $x\in X$ s.t. $G(x) = x$
+\end{lemma}
+
+\begin{theorem}[7.9] (Implicit Function Theorem)
+  Let open $U \subset \mathbb{R}^n \times \mathbb{R}^k$, $(x,y) = (x^1 \dots x^n, y^1 \dots y^k)$ coordinates on $U$.  \\
+
+Suppose $\Phi : U \to \mathbb{R}^k$ smooth.  $(a,b) \in U$, $c = \Phi(a,b)$
+
+If $k\times k$ matrix 
+\[
+\frac{ \partial \Phi^i }{ \partial y^j }(a,b)
+\]
+nonsingular, \\
+then $\exists \, $ neighborhoods $\begin{aligned} & \quad \\ 
+  & V_0 \subset \mathbb{R}^n \\ 
+  & W_0 \subset \mathbb{R}^k \end{aligned}$,  \\
+smooth $F: V_0 \to W_0$ s.t. \\
+$(\Phi^{-1}(c) ) V_0 \times W_0$ is the graph of $F$, i.e. $\Phi(x,y) = c$, $\forall \, (x,y) \in V_0 \times W_0$ iff $y= F(x)$
+
+
+\end{theorem}
+
+
+
+\subsection*{Embeddings}
+
+\begin{definition}
+\textbf{smooth embedding} of $M$ into $N$, $F$, if \\
+\phantom{ \quad \, } smooth immersion $F: M\to N$ and \\
+\phantom{ \quad \quad \, } $F$ topological embedding i.e. $F$ homeomorphism onto its image $F(M) \subseteq N$ in subspace topology.  
+
+\end{definition}
+
+\exercisehead{4.16}
+
+Let $\begin{aligned} & \quad \\
+    & F : M \to N \\
+    & G:N \to P \end{aligned}$.  \\
+$F,G$ smooth immersions so $G\circ F$ smooth immersion (cf. Exercise 4.4, idea is composition of $DF, DG$ is injective).  \\
+Now $(G \circ F)(M) = G(F(M))$ \\
+$F,G$ bijective onto $F(M)$, $G(N)$.  $G$ bijective on $F(M) \subseteq N$ onto $G(F(M))$.  Then $G\circ F$ bijective on $M$ onto $G(F(M))$ \\
+$F,G$ cont., so $G\circ F $ cont.  \\
+$F^{-1},G^{-1}$ cont., so $(G\circ F)^{-1}= F^{-1} \circ G^{-1}$ cont.  \\
+$G\circ F$ homeomorphism onto $G\circ F(M) \subseteq P$.  
+
+So $G\circ F$ is a smooth embedding.  
+
+
+\begin{proposition}[4.22]
+        Suppose smooth manifolds $M,N$, with or without boundaries, and \\
+injective smooth immersion $F:M\to N$
+
+If any of the following holds, then $F$ is a smooth embedding. 
+\begin{enumerate}
+        \item[(a)] $F$ open or closed map
+        \item[(b)] $F$ proper map
+        \item[(c)] $M$ compact
+        \item[(d)] $M$ has empty boundary and $\text{dim}M = \text{dim}N$
+\end{enumerate}
+\end{proposition}

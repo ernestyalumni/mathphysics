@@ -1,0 +1,215 @@
+% BReviewofLinearAlgebra.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+
+
+
+\section{Review of Linear Algebra }
+
+\subsection{Linear Maps}
+
+\exercisehead{B.1}
+\begin{enumerate}
+  \item[(a)]
+\item[(b)]
+\item[(c)]
+\item[(d)] \textbf{Want}: if $(v_1 \dots v_k)$ linearly dependent $k$-tuple in $V$, $v_1 \neq 0$, \\
+then some $v_i = \sum_{j=1}^{i-1} c^j v_j$ \\
+\begin{proof}
+$(v_1 \dots v_k)$ linearly dependent, so if $\sum_{i=1}^k a^i v_i = 0$, $a^i$ not all equal to $0$.  \\
+
+Suppose for fixed $i$, $2\leq i \leq k$, $a^{i+1} = \dots =a^k=0$. \\
+\quad Indeed, suppose for $\sum_{i=1}^k a^i v_i = 0$, $a^2 = \dots = a^k = 0$.  $a^1 v_1 =0$, $v_1 \neq 0$, $a^1 =0$.  Then $(v_1 \dots v_k)$ linearly independent.  Contradiction.  
+
+if $i=2$, \\
+\phantom{\quad} $a^1 v_1 + a^2 v_2 =0$ \\
+\phantom{\quad \,} $\Longrightarrow v_2  = \frac{-a^1}{a^2} v_1$ \\
+
+if $i=k$, $v_k = \frac{ -\sum_{i=1}^{k-1} a^i v_i }{ a^k}$  \\
+
+So in general, $v_i = \frac{ -\sum_{j=1}^{i-1} a^j v_j }{ a^i}$
+\end{proof}
+\end{enumerate}
+
+\exercisehead{B.9}
+given $(E_1 \dots E_n)$ basis for $V$ \\
+\phantom{ \quad } $\exists \, \lbrace i_1 \dots i_k \rbrace \subset \lbrace 1 \dots n \rbrace$ s.t. \\
+\phantom{ \quad \, } $ \text{span}(E_{i_1} \dots E_{i_k} )$ is complement to $S$ \\
+
+Hence $\forall \, $ subspace $S \subseteq V$, $\exists \, $ complementary subspace $T$ in $V$, so $V = S \oplus T$
+
+\begin{proof}
+$\forall \, $ subspace $S$ is itself a vector space, closed under addition and multiplication. \\
+\phantom{ \quad } Hence $S$ has basis $(F_1 \dots F_m)$ with $\text{dim}S = m$ \\
+
+Consider ordered $(m+n)$-tuple 
+\[
+(F_1 \dots F_m, E_1 \dots E_n)
+\]
+
+$(F_1 \dots F_m, E_1 \dots E_n)$ linearly dependent in $V$, by linear algebra. 
+
+For $j_1 \in \lbrace 1 \dots n \rbrace$, $E_{j_1}$ linear combination of previous vectors (cf. Exercise B.1(d)) \\
+\phantom{ \quad } eliminate $E_{j_1}$ : $(F_1 \dots F_m, E_1 \dots \widehat{E}_{j_1} \dots E_n )$. \\
+
+Repeat, until there are $n-m$ $E$ basis vectors left, labeled $i_1 \dots i_{n-m}$ (hence \textbf{use Exercise B.1(d)} many and enough times, $m$ times)
+\[
+\Longrightarrow (F_1 \dots F_m, E_{i_1} \dots E_{i_{n-m}} )
+\]
+By linear algebra, $(F_1 \dots F_m, E_{i_1} \dots E_{i_{n-m}})$ a basis for $V$, linearly independent. The procedure wouldn't have ``overshot'' by a Thm. (see Apostol's \textbf{Calculus} Vol. 2, first few chapters, linear algebra part) \\
+
+$\forall \, v\in V$, $v= a^iF_i  + b^{i_j} E_{i_j}$ with $a^i F_i \in S$.  Then $b^{i_j} E_{i_j} \in T$.  \\
+\phantom{ \quad } since $V = S\oplus T$, $T$ complement to $S$
+
+$\Longrightarrow $ given fixed basis of $V$, $(E_1 \dots E_n)$, subspace $S \subseteq V$, $S$ having basis $(F_1 \dots F_m)$, $S$ has complementary subspace in $V$, $T$, \\
+\phantom{ \quad } s.t. basis of $T$ is $(E_{i_1} \dots E_{i_{n-m}})$ and $V = S\oplus T$
+
+\end{proof}
+
+
+\exercisehead{B.13}  Suppose $\exists \, $ linear $T: V \to W $ s.t. $T(E_i) = w_i$, \quad \, $i = 1 \dots n$ \\
+Suppose $\exists \, $ linear $T':V \to W$ s.t. $T'(E_i)= w_i$, \quad \, $i = 1 \dots n$
+
+Let $x\in V$, so $x  = x^i E_i$ (the key idea is that with a basis, the vector space is completely determined, vectors in the vector space are spanned by the basis elements)
+\[
+(T-T')(x) \equiv T(x) - T'(x)  = x^i w_i - x^i w_i = 0
+\]
+$T(x) = T'(x)$\quad \, $\forall \, x \in V$ \\
+so $T=T'$.  $T$ unique.  
+
+$T$ exists by construction.
+\hrulefill
+
+
+\textbf{ affine subspace } of $V$ parallel to $S$, linear subspace $S \subseteq V$, $v + S = \lbrace v + w | w \in S \rbrace$, some fixed $v \in V$ \\
+
+\textbf{affine map } $F: V \to W$ if $F(v) = w + Tv$ for some $T: V \to W$, some fixed $w\in W$ \\
+
+\exercisehead{B.16}
+
+Let $a,b \in \mathbb{C}$, $x, y \in F(V)$ \\
+
+Now 
+\[
+F(V) = \lbrace y | y = w + Tv = F(v), \, v \in V, \text{ fixed } w \in W , \text{ some } T \rbrace
+\]
+
+\subsubsection{Change of Basis}
+
+
+
+
+\exercisehead{B.22} Suppose $V,W, X$ finite-dim. vector spaces \\
+$S:V\to W$, \, $T:W \to X$
+
+\begin{enumerate}
+\item[(a)] $\text{rank}S \leq \text{dim}V$ \quad \, $\text{rank}S = \text{dim}V$ iff $S$ injective
+\item[(b)] $\text{rank}S \leq \text{dim}W$ \quad \, $\text{rank}S = \text{dim}W$ iff $S$ surjective
+\item[(c)] if $\text{dim}V = \text{dim}W$ and $S$ either injective or surjective, then $S$ isomorphism 
+\item[(d)] $\text{rank}TS \leq \text{rank}S$ \quad \, $\text{rank}TS = \text{rank}S$ iff $\text{im}S \bigcap \text{ker}T = 0$ 
+\item[(e)] $\text{rank}TS \leq \text{rank}T$ \quad \, $\text{rank}TS = \text{rank}T$ iff $\text{im}S + \text{ker}T = W$
+\item[(f)] if $S$ isomorphism, then $\text{rank}TS = \text{rank}T$
+\item[(g)] if $T$ isomorphism, then $\text{rank}TS = \text{rank}S$
+\end{enumerate}
+
+EY : Exercise B.22(d) is useful for showing the chart and atlas of a Grassmannian manifold, found in the More examples, for smooth manifolds.  
+
+\begin{proof}
+\begin{enumerate}
+\item[(a)]
+\item[(b)]
+\item[(c)]
+\item[(d)] Now 
+\[
+\begin{aligned}
+  & \text{dim}V = \text{rank}TS + \text{nullity}TS \\ 
+  &  \text{dim}V = \text{rank}S + \text{nullity}S
+\end{aligned}
+\]
+$\text{ker}S \subseteq \text{ker}TS$, clearly, so $\text{nullity}S \leq \text{nullity}TS$ 
+\[
+\Longrightarrow \boxed{ \text{rank}TS \leq \text{rank}S } 
+\]
+
+If $\text{rank}TS = \text{rank}S$, \\
+\phantom{ \quad } then $\text{nullity}S = \text{nullity}TS$ \\
+\phantom{ \, } Suppose $w \in \text{Im}S \bigcap \text{ker}T$, $w \neq 0$ \\
+\phantom{ \quad } Then $\exists \,  v\in S$, s.t. $w = S(v)$ and $T(w)=0$ \\
+\phantom{ \quad \, } Then $T(w) = TS(v) =0$.  So $v\in \text{ker}TS$ \\
+\phantom{ \quad \quad \, } $v\notin \text{ker}S$ since $w = S(v) \neq 0$ \\
+\phantom{ \quad \quad \, } This implies $\text{nullity}TS > \text{nullity}S$.  Contradiction. \\
+$\Longrightarrow \text{Im}S \bigcap \text{ker}T =0$ \\
+
+If $\text{Im}S \bigcap \text{ker}T =0$, \\
+\phantom{ \quad } Consider $v \in \text{ker}TS$.  Then $TS(v)=0$.  \\
+\phantom{ \quad  Consider $v \in \text{ker}TS$}.  Then $S(v)  \in \text{ker}T$ \\
+\phantom{ \quad  } $S(v) =0$; otherwise, $S(v) \in \text{Im}S$, contradicting given $\text{Im}S \bigcap \text{ker}T =0$ \\
+\phantom{ \quad \quad } $v\in \text{ker}S$ \\
+
+$\text{ker}TS \subseteq \text{ker}S$\\
+$\Longrightarrow \text{ker}TS = \text{ker}S$ \\
+So $\text{nullity}TS = \text{nullity}S$  \\
+$\Longrightarrow \text{rank}TS = \text{rank}S$ 
+
+\item[(e)]
+\item[(f)]
+\item[(g)]
+\end{enumerate}
+\end{proof}
+
+
+
+\subsection*{Inner Products and Norms}
+
+
+\subsubsection*{Norms}
+
+If $V$ real vector space, \\
+\phantom{\quad } norm on $V$, $v \mapsto |v| \in \mathbb{R}$ s.t.
+\begin{enumerate}
+\item[(i)] \textsc{Positivity} $|v| \geq 0$, \, $\forall \, v \in V$, $|v| =0$ iff $v=0$ 
+\item[(ii)] \textsc{Homogeneity} $|cv| = |c| |v|$ \quad \, $\forall \, c \in \mathbb{R}$, $v\in V$
+\item[(iii)] \textsc{Triangle Inequality} $|v+w | \leq |v| + |w|$, \, $\forall \, v,w \in V$
+\end{enumerate}
+
+2 norms $| \, \cdot \, |_1$, $| \, \cdot \, |_2$ on vector space $V$ equivalent if $\exists \, $ constants $c,C >0$ s.t. 
+\[
+c|v|_1 \leq |v|_2 \leq C|v|_1 \quad \quad \, \forall \, v \in V
+\]
+
+\exercisehead{B.49} $\forall \, x \in V$, \\
+Consider $B_r(x) = \{ y \in V | |y-x|_2 < r \}$ \\
+\phantom{ \quad } Note $y-x \in V$ as $V$ is a vector space
+
+\[
+\begin{gathered}
+  c|y-x|_1 \leq |y-x|_2 \leq C |y-x|_1 \\ 
+ c|y-x|_1 \leq |y-x_2| < r \\
+ |y-x|_1 < \frac{r}{c}
+\end{gathered}
+\]
+Now suppose $S \subseteq V$ open in $| \, \cdot \, |_2$ \\
+\phantom{ \quad } But $S$ also open in $| \, \cdot \, |_1$ as $\exists \, \frac{r}{c'} >0$ s.t. $B_{\frac{r}{c'}}(x) \subseteq S$ for the exact same pts. as $S$ \\
+so $| \, \cdot \, |_1, | \, \cdot \, |_2$ equivalent norms yield the same metric topology.  
+
+EY : 20141220
+
+
+
+\subsection*{Direct Products and Direct Sums}
+
+
+

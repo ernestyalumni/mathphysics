@@ -1,0 +1,397 @@
+
+\subsection{Symplectic Tensors}
+
+\exercisehead{22.1}
+
+{\scriptsize{\url{http://math.stackexchange.com/questions/342267/non-degenerate-bilinear-forms-and-invertible-matrices}}} (shout out to Branimir Cacic for the answer)  gave me a hint at how to approach this exercise, even though the original question was for symmetric bilinear forms.  
+
+Let $\lbrace e_1 \dots e_n \rbrace$ be (some) basis of $V$ \\
+Let $\lbrace f^1 \dots f^n \rbrace$ be dual basis of $V$ s.t. $f^i(e_j)=\delta^i_{ \,\, j}$
+
+Now
+\[
+\begin{aligned}
+  & \widehat{\omega}(e_i) = (\widehat{\omega}(e_i))_jf^j \\
+  & \widehat{\omega}(e_i)e_j = (\widehat{\omega}(e_i))_j = i_{e_i}\omega(e_j) = \omega(e_i,e_j) \equiv \omega_{ij}
+\end{aligned}
+\]
+so $\omega_{ij} = (\widehat{\omega}(e_i))_j$ (i.e. matrix $\omega_{ij}$ is precisely $(\widehat{\omega}(e_i))_j$.  
+
+If $\omega_{ij}$ nonsingular, i.e. $\exists \, \omega^{-1}_{ki}$ s.t. $\omega^{-1}_{ki} \omega_{ij} = \omega_{ki}\omega^{-1}_{kj} = \delta_{kj}$ (by def.)
+
+If $\widehat{\omega}$ invertible, $\widehat{\omega}^{-1} \widehat{\omega}(v) = v$
+\[
+\begin{gathered}
+  \widehat{\omega}^{-1}\widehat{\omega}(e_i) = \widehat{\omega}^{-1}(\widehat{\omega}(e_i))_j f^j = (\widehat{\omega}(e_i))_j \widehat{\omega}^{-1}(f^j) = (\widehat{\omega}(e_i))_j(\widehat{\omega}^{-1}(f^j))^k e_k = e_i \\
+\Longrightarrow (\widehat{\omega}(e_i))_j(\widehat{\omega}^{-1}(f^j))^k = \delta_i^{ \, \, k}
+\end{gathered}
+\]
+So if $\omega_{ij}$ nonsingular, $(\widehat{\omega}^{-1}(f^j))^k$ exists and $(\widehat{\omega}(f^j))^k = \omega^{-1}_{jk}$ \\
+\phantom{So } if $\widehat{\omega}$ invertible, $\omega^{-1}_{jk}$ exists and is given by $\omega^{-1}_{jk} = (\widehat{\omega}(f^j))^k$
+
+
+So the (a) $\Longleftrightarrow$(c) part of the exercise is done.  
+
+Show (a) $\Longleftrightarrow$(b) and we're done.
+
+If $\widehat{\omega}:V\to V^*$ linear isomorphism,  
+\[
+\text{ker}\widehat{\omega}=0
+\]
+
+Suppose $\nexists \, w \in V$ s.t. $\omega(v,w)\neq 0$ (proof by contradiction strategy) \\
+Then $\forall \, w \in V$, $\omega(v,w) =0$  \\
+$\omega(v,w) = 0 = \widehat{\omega}(v)(w) \quad \, \forall \, w \in V$.  \\
+Then $v=0$.  Contradiction.  
+
+(b) $\Longrightarrow $ (a): if $\forall \, v \neq 0$, $\exists \, w \in V$ s.t. $\omega(v,w) \neq 0$ \\
+then if $\forall \, w \in V$, $\omega(v,w) =0$, then $v=0$ \\
+$\omega(v,w) = \widehat{\omega}(v)(w) = 0$ implies $v=0$, $\forall \, w \in V$.  \\
+Then $\text{ker}\widehat{\omega}=0$.  So $\widehat{\omega}$ linear isomorphism.  So $\omega$ nondegenerate.  
+
+\exercisehead{22.4} There was a proof of this in Konstantin Athanassopoulos, \textbf{Notes on Symplectic Geometry}, Iraklion, 2013
+\url{http://www.math.uoc.gr/~athanako/symplectic.pdf}
+
+Recall that \\
+$S^{\perp} = \lbrace v \in V | \omega(v,w) =0 \quad \, \forall \, w \in S \rbrace$ \\
+$(S^{\perp})^{\perp} = \lbrace u \in V | \omega(u,v)=0 \quad \, \forall \, v \in S^{\perp}\rbrace$
+
+Let $s\in S$.  $\omega(s,v)=0 \quad \, \forall \, v \in S^{\perp}$, by def. of $S^{\perp}$ \\
+$\begin{aligned} & \quad \\
+  & s\in (S^{\perp})^{\perp} \\ 
+  \Longrightarrow & S \subseteq (S^{\perp})^{\perp} \end{aligned}$
+
+Then $\text{dim}S \leq \text{dim}(S^{\perp})^{\perp}$ with equality iff $S= (S^{\perp})^{\perp}$
+
+Now by Lemma 22.3, \\
+$\text{dim}S + \text{dim}S^{\perp} = \text{dim}V$, $\forall \, $ linear subspace $S\subseteq V$ \\
+$\text{dim}S^{\perp} + \text{dim}(S^{\perp})^{\perp} = \text{dim}V = \text{dim}S + \text{dim}S^{\perp} \Longrightarrow \text{dim}S = \text{dim}(S^{\perp})^{\perp}$ \\
+ 
+$\text{dim}S \leq \text{dim} (S^{\perp})^{\perp}$ with equality iff $S= (S^{\perp})^{\perp}$
+
+
+
+
+\subsection{Symplectic Structures on Manifolds}
+
+\exercisehead{22.10} $F:N\to M$ smooth immersion.  Recall definition: $F_*$ injective.  Recall Appendix B, Exercise B.22 (EY: 20150512 This exercise is \textbf{very useful}; I can't emphasize that enough).  $F_*$ injective so $\text{rank}F_* = \text{dim}N$. (implying $\text{ker}F_*=0$).  
+
+Recall that $F$ isotropic if \\
+
+$(F_*)_p(T_pN) \subseteq T_{F(p)}M$ isotropic, i.e. 
+
+\[
+(F_*)_p(T_pN) \subseteq ((F_*)_p(T_pN))^{\perp}
+\]
+
+Consider $X,Y \in T_pN$, with $X,Y$ nonzero.  Then, as $F_*$ injective, $Z,W \in ((F_*)_p(T_pN))$ nonzero, for $\begin{aligned}
+& \quad \\
+  & Z = (F_*)_pX \\
+  & W = (F_*)_pY \end{aligned}$
+
+Suppose $\omega(Z,W)=0$, $\forall \, W \in (F_*)_p(T_pN)$.  $Z \in ((F_*)_p(T_pN))^{\perp}$.  
+
+\[
+\omega(Z,W) = \omega((F_*)_pX, (F_*)_pY) = (F^*)_p\omega(X,Y)=0
+\]
+
+If $F$ isotropic, then this is the case $\forall \, Z \in ((F_*)_p(T_pN)) \subseteq ((F_*)_p(T_pN))^{\perp}$.  
+
+Then since $(F^*)_p\omega(X,Y)=0$ \, $\forall \, p \in N$, $\forall \, X,Y \in T_pN$, then $F^*\omega=0$.  
+
+If $F$ symplectic, $(F_*)_p(T_pN) \cap ((F_*)_p(T_pN))^{\perp}=0$
+
+Likewise, for the reverse.  
+
+If $F$ symplectic, 
+
+\[
+(F_*)_p(T_pN) \cap ((F_*)_p(T_pN))^{\perp}=0
+\]
+For $ X,Y \in T_pN$, suppose
+
+\[
+F_p^*\omega(X,Y) = \omega((F_*)_pX, (F_*)_pY) =0 
+\]
+
+This implies $(F_*)_pX \in (F_*)_p(T_pN) \cap ((F_*)_p(T_pN))^{\perp}$
+
+Then 
+
+since $F_*$ immersion, $X,Y=0$.  So $F^*\omega$ is nondegenerate and so is a symplectic form.  
+
+
+\subsubsection{the Canonical Symplectic Form on the Cotangent Bundle}
+
+\begin{quote}
+The most important symplectic manifolds are total spaces of cotangent bundles, which carry canonical symplectic structures that we now define.
+\end{quote}
+
+
+\subsection{The Darboux Theorem}
+
+\subsection{Hamiltonian Vector Fields}
+
+\textbf{Hamiltonian vector field} of $f$
+\[
+X_f = \widehat{\omega}^{-1}(df)
+\]
+
+Hamiltonian vector field of $f$ in Darboux coordinates:
+\begin{equation}
+  X_f = \sum_{i=1}^n \left( \frac{ \partial f}{ \partial y^i} \frac{ \partial }{ \partial x^i } - \frac{ \partial f}{ \partial x^i} \frac{\partial}{ \partial y^i} \right)
+\end{equation}
+(22.9)
+
+
+
+smooth $X \in \mathfrak{X}(M)$ \textbf{symplectic} if $\omega$ invariant under flow of $X$, i.e. $\mathcal{L}_X \omega =0$
+
+
+\subsubsection{Poisson Brackets}
+
+$f \in C^{\infty}(M)$ \textbf{conserved quantity} if $f$ constant on every integral curve of $X_H$.  
+
+smooth $V \in \mathfrak{X}(M)$ \textbf{infinitesimal symmetry} of $(M,\omega,H)$ if $\omega,H$ invariant under flow of $V$, i.e. EY (20150521) 
+\[
+\begin{aligned}
+  & \mathcal{L}_V \omega = 0
+  & \mathcal{L}_V H = 0
+\end{aligned}
+\]
+
+\begin{proposition}[22.21]
+Let $(M,\omega,H)$ Hamiltonian system
+\begin{enumerate}
+\item[(a)] $f \in C^{\infty}(M)$ conserved quantity iff $\lbrace f,H\brace =0$
+\item[(b)] infinitesimal symmetries of $(M, \omega,H)$ are precisely symplectic fields $V$ s.t. $VH=0$ 
+\item[(c)] if $\theta$ flow of infinitesimal symmetry and $\gamma$ trajectory of system
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+This is the solution to Problem 22-18.  
+
+\begin{enumerate}
+\item[(a)] if $f\in C^{\infty}(M)$ conserved quantity, by def. $f$ constant on every integral curve of $X_H$
+\[
+\lbrace f,H\rbrace = \frac{ \partial f}{ \partial x^i} \frac{ \partial H}{ \partial y^i} - \frac{ \partial f}{ \partial y^i} \frac{ \partial H}{ \partial x^i} = X_H f = 0 
+\]
+for 
+\[
+X_H = \frac{ \partial H}{ \partial y^i} \frac{ \partial }{ \partial x^i} - \frac{ \partial H}{ \partial x^i} \frac{ \partial }{ \partial y^i} 
+\] 
+likewise, if $\lbrace f,H \rbrace =0$, then $X_Hf =0$, $X_Hf = \mathcal{L}_{X_H} f= 0 $, so $f$ constant on flow of $X_H$
+\item[(b)] Recall smooth $V \in \mathfrak{X}(M)$ infinitesimal symmetry of $(M,\omega,H)$ if $\omega, H$ invariant under flow of $V$, i.e. 
+\[
+\begin{aligned}
+  & \mathcal{L}_V \omega =0 
+  &  \mathcal{L}_VH = 0 
+\end{aligned}
+\]
+smooth $V\in \mathfrak{X}(M)$ symplectic if $\omega$ invariant under flow of $V$, i.e. $\mathcal{L}_V\omega =0$
+\[
+\mathcal{L}_VH = VH = 0
+\]
+\item[(c)] EY : 20150521 I'm not sure how to go about this because what is a trajectory?
+
+$\gamma: I \to M$
+
+$\theta$ flow of an infinitesimal symmetry, so (collecting facts)
+
+\[
+\begin{aligned}
+  & \mathcal{L}_{\dot{\theta}}\omega = di_{\dot{\theta}}\omega + i_{\dot{\theta}}d\omega = di_{\dot{\theta}}\omega \quad \, (\omega \text{ closed so } i_{\dot{\theta}}d\omega) \\ 
+  & \dot{\theta}H = 0 
+\end{aligned}
+\]
+
+Now $\theta_s \circ \gamma : I \to M$
+
+\[
+\frac{d}{dt}(\theta_s \circ \gamma)(t) = (D\theta_s)(\gamma(t)) \dot{\gamma}(t) = V_{s,\gamma(t)} \dot{\gamma}(t)
+\]
+\end{enumerate}
+\end{proof}
+
+\problemhead{22.1} 
+
+\begin{proof}
+\begin{enumerate}
+  \item[(a)] If $S$ symplectic, $S \cap S^{\perp} = 0$.  $S=(S^{\perp})^{\perp}$ so $(S^{\perp})^{\perp} \cap S^{\perp} =0$.  $S^{\perp}$ symplectic.  \\
+If $S^{\perp}$ symplectic, $S^{\perp} \cap (S^{\perp})^{\perp} = 0$.  $S=(S^{\perp})^{\perp}$ so $(S^{\perp})^{\perp} =S \cap S^{\perp} =0$.  $S$ symplectic.  \\
+  \item[(b)] Suppose for $s\in S\cap S^{\perp}$, $s\neq 0$.  Then as $s\in S^{\perp}$, $\omega(s,w)=0 \, \forall \, \, w \in S^{\perp}$. 
+
+Then $\omega(s,s)=0$.  But $\omega$ nondegenerate so $s=0$.  Contradiction.  
+
+Suppose $S$ symplectic.  For $\left. \omega \right|_S(s,t) = \omega(s,t)=0$, for some $s \in S$, $\forall \, t \in S$, then $S\cap S^{\perp}=0$ implies that $s,t=0$.  Then $\left. \omega \right|_S$ nondegenerate.  
+
+
+  \item[(c)] If $S$ isotropic, $S\subseteq S^{\perp}$ so that $\omega(s,t)=0$ \, $\forall \, t \in S$ (def. of $S^{\perp}$).  $\left. \omega \right|_S =0$ as $\omega(s,t)=0$, \, $\forall \, s,t \in S$.  
+
+If $\left. \omega \right|_S =0$, then $\forall \, s,t \in S$, $\omega(s,t)=0 \, \, \forall \, t\in S$.  By def. of $S^{\perp}$, $S\subseteq S^{\perp}$.  
+  \item[(d)] if $S$ coisotropic, $S\supseteq S^{\perp}$.  $S^{\perp} \subseteq S=(S^{\perp})^{\perp}$.  Then $S^{\perp}$ isotropic.  
+
+If $S^{\perp}$ isotropic, $S^{\perp} \subseteq (S^{\perp})^{\perp} = S$, so $S$ coisotropic.  
+  \item[(e)] If $S$ Lagrangian, $\forall \, s \in S$, $s\in S^{\perp}$, so that $\omega(s,t) = 0$ \, $\forall \, t \in S$.  Then $\left. \omega \right|_S =0$, (i.e. identically $0$).  \\
+
+$\text{dim}S + \text{dim}S^{\perp} = 2\text{dim}S = \text{dim}V $ by Lemma 22.3, so $\text{dim}S = \frac{1}{2} \text{dim}V$.  
+
+If $\text{dim}S = \frac{1}{2} \text{dim}V$, $\text{dim}S^{\perp} = \frac{1}{2} \text{dim}V = \text{dim}S$.  $\left. \omega \right|_S =0$, so $S$ isotropic, i.e. $S\subseteq S^{\perp}$.  $\text{dim}S \leq \text{dim}S^{\perp}$, with equality iff $S=S^{\perp}$.  
+\end{enumerate}
+\end{proof}
+
+
+
+\problemhead{22.-17} Given Hamiltonian system $(T^*Q, \omega,E)$.  
+
+Recall that 
+\[
+\begin{aligned}
+  q(t) & = (q_1^1(t),q_1^2(t), q_1^3(t) \dots q^1_n(t),q_n^2(t),q_n^3(t))=0 \\
+  & = (q^1(t) \dots q^{3n}(t))
+\end{aligned}
+\]
+
+Now $p(t) = (p_1^1,p_1^2,p_1^3\dots p_n^1,p_n^2,p_n^3)$ and \\
+$p_i(t)=M_{ij}\dot{q}^j(t)$ with 
+
+$M_{ij}$ $3n \times 3n$ diagonal matrix $(m_1,m_1,m_1,m_2,m_2,m_2 \dots m_n, m_n, m_n)$
+
+Now $E \in C^{\infty}(T^*Q)$ where 
+\[
+E(q,p) = V(q) + K(p) = V(q) + \frac{1}{2} M^{ij}p_i p_j
+\]
+
+\begin{enumerate}
+\item[(a)] Let $\mathbf{u} = (u^1,u^2,u^3)$ 
+
+\[
+\begin{aligned}
+  & P : T^*Q \to \mathbb{R} \\ 
+  & \begin{aligned} P(q,p) & = \mathbf{u}\cdot \mathbf{p}_1 + \mathbf{u}\cdot \mathbf{p}_2 \\ 
+      & = u^1p_1^1 + u^2p_1^2 + u^3 p_1^3 +u^1p_2^1 + u^2 p_2^2 + u^3 p_2^3 \end{aligned}
+\end{aligned}
+\]
+
+ Recall Prop. 22.21, Let $(M,\omega, H)$ Hamiltonian system
+\begin{enumerate}
+\item[(a)] $f \in C^{\infty}(M)$ conserved quantity iff $\lbrace f, H\rbrace =0$
+\end{enumerate}
+
+Now in Darboux coordinates,
+\[
+\lbrace f, g \rbrace = \sum_{i=1}^n \frac{ \partial f}{ \partial x^i} \frac{ \partial g}{ \partial y^i } - \frac{ \partial f}{ \partial y^i } \frac{ \partial g}{ \partial x^i}
+\]
+(22.16)
+
+For 
+\[
+E = V(|\mathbf{q}_2 - \mathbf{q}_1|) + \frac{1}{2} M^{ij}p_ip_j
+\]
+
+note that 
+
+\[
+\begin{aligned}
+  & V(| \mathbf{q}_2 - \mathbf{q}_1|) = V(r) \text{ with } \\ 
+  & r = \sqrt{ (q_2^1 - q_1^1)^2 + \dots + (q_2^3 - q_1^3)^2 } \\ 
+  & \frac{ \partial V}{ \partial q_i^j} = \frac{ \partial V}{ \partial r} \frac{1}{2} \frac{1}{r}(2)(q_2^j - q_1^j)(-1)^i = \frac{ \partial V}{ \partial r} \frac{1}{r} (q_2^j-q_1^j)(-1)^i
+\end{aligned}
+\]
+
+
+
+then
+\[
+\begin{aligned}
+  & \frac{ \partial E}{ \partial p_i^j} = \frac{p_i^j}{m_i} \\ 
+  & \frac{ \partial E}{ \partial q_i^j} = \frac{ \partial V}{ \partial r} \frac{1}{r}(-1)^i (q_2^j-q_1^j)
+\end{aligned}
+\]
+with $r = |\mathbf{q}_2 - \mathbf{q}_1| = \sqrt{ (q_2^1- q_1^1)^2 + \dots + (q_2^3- q_1^3)^2 }$
+
+\[
+P = \mathbf{u}\cdot (\mathbf{p}_1 + \mathbf{p}_2) = u^i p^i_1 + u^i p_2^i
+\]
+\[
+\begin{aligned}
+\frac{ \partial P}{ \partial p_i^j} = u^j  \\ 
+ \frac{ \partial P}{ \partial q }=  0
+\end{aligned}
+\]
+
+\[
+\lbrace P,E \rbrace =0 - u^j \frac{ \partial V}{ \partial r} \frac{1}{r} (-1)^i(q_2^j-q_1^j) = -\mathbf{u}\cdot(\mathbf{q}_2-\mathbf{q}_1) \frac{ \partial V}{ \partial r} \frac{1}{r}(-1) + -\mathbf{u}\cdot (\mathbf{q}_2-\mathbf{q}_1) \frac{ \partial V}{ \partial r} \frac{1}{r} = 0 
+\]
+
+\item[(b)] 
+\[
+L(q,p) = q_1^1 p_1^2 - q_1^2 p_1^1 + q_2^1p_2^2 - q_2^2 p_2^1 
+\]
+\[
+\begin{aligned}
+  & \frac{ \partial L}{ \partial q_i^j } = p_i^k \epsilon^{jk} \\ 
+  & \frac{ \partial L}{ \partial p_i^k } = q_i^j \epsilon^{jk}
+\end{aligned}
+\]
+
+
+\[
+\begin{gathered}
+  \lbrace L, E \rbrace = p_i^k \epsilon^{jk} \frac{p_i^j}{m_i} - q_i^k \epsilon^{kj} \frac{ \partial V}{ \partial r} \frac{1}{r} (-1)^i (q_2^j - q_1^j) = \frac{ p_i^2 p_i^1}{m_i} - \frac{ p_i^1 p_i^2}{m_i} -  q_i^k \epsilon^{kj} \frac{ \partial V}{ \partial r} \frac{1}{r} (-1)^i (q^j_2 - q^j_1) = \\
+  = 0 - \frac{ \partial V}{ \partial r} \frac{1}{r} ( -q_1^2(q_2^1- q_1^1 )(-1) + q_1^1 (q_2^2 - q_1^2)(-1) - q_2^2 (q_2^1 - q_1^1) + q_2^1 (q_2^2 - q_1^2) ) = 0 
+\end{gathered}
+\]
+
+
+
+\end{enumerate}
+
+
+\problemhead{22-18}
+
+\begin{enumerate}
+\item[(a)] if $f\in C^{\infty}(M)$ conserved quantity, by def. $f$ constant on every integral curve of $X_H$
+\[
+\lbrace f,H\rbrace = \frac{ \partial f}{ \partial x^i} \frac{ \partial H}{ \partial y^i} - \frac{ \partial f}{ \partial y^i} \frac{ \partial H}{ \partial x^i} = X_H f = 0 
+\]
+for 
+\[
+X_H = \frac{ \partial H}{ \partial y^i} \frac{ \partial }{ \partial x^i} - \frac{ \partial H}{ \partial x^i} \frac{ \partial }{ \partial y^i} 
+\] 
+likewise, if $\lbrace f,H \rbrace =0$, then $X_Hf =0$, $X_Hf = \mathcal{L}_{X_H} f= 0 $, so $f$ constant on flow of $X_H$
+\item[(b)] Recall smooth $V \in \mathfrak{X}(M)$ infinitesimal symmetry of $(M,\omega,H)$ if $\omega, H$ invariant under flow of $V$, i.e. 
+\[
+\begin{aligned}
+  & \mathcal{L}_V \omega =0 
+  &  \mathcal{L}_VH = 0 
+\end{aligned}
+\]
+smooth $V\in \mathfrak{X}(M)$ symplectic if $\omega$ invariant under flow of $V$, i.e. $\mathcal{L}_V\omega =0$
+\[
+\mathcal{L}_VH = VH = 0
+\]
+\item[(c)] EY : 20150521 I'm not sure how to go about this because what is a trajectory?
+
+$\gamma: I \to M$
+
+$\theta$ flow of an infinitesimal symmetry, so (collecting facts)
+
+\[
+\begin{aligned}
+  & \mathcal{L}_{\dot{\theta}}\omega = di_{\dot{\theta}}\omega + i_{\dot{\theta}}d\omega = di_{\dot{\theta}}\omega \quad \, (\omega \text{ closed so } i_{\dot{\theta}}d\omega) \\ 
+  & \dot{\theta}H = 0 
+\end{aligned}
+\]
+
+Now $\theta_s \circ \gamma : I \to M$
+
+\[
+\frac{d}{dt}(\theta_s \circ \gamma)(t) = (D\theta_s)(\gamma(t)) \dot{\gamma}(t) = V_{s,\gamma(t)} \dot{\gamma}(t)
+\]
+\end{enumerate}
+
+
+
+

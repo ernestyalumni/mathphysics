@@ -1,0 +1,51 @@
+% AReviewofTopology.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+
+\section*{Review of Topology}
+
+\subsection*{Topological Spaces}
+
+Let $X$ set \\
+topology on $X = $ collection $\tau = \lbrace U | U \subseteq X \rbrace$, $U$ called open subsets s.t.
+\begin{enumerate}
+\item[(i)] $X, \emptyset$ open 
+\item[(ii)] $\bigcup_{\alpha} U_{\alpha}$ is open, $\forall \, U_{\alpha}$ open subset
+\item[(iii)] $\bigcap_{i=1}^n U_i$ is open
+\end{enumerate}
+
+$(X,\tau)$ topological space
+
+
+\textbf{Example A.5. (Metric Spaces)}
+metric space $=$ set $M$ with metric $d: M \times M \to \mathbb{R}$ s.t. $\forall \, x, y, z \in M$
+\begin{enumerate}
+\item[(i)] \textsc{Positivity} $d(x,y) \geq 0$, $d(x,y) =0$ iff $x=y$ 
+\item[(ii)] \textsc{Symmetry} $d(x,y) =d(y,x)$
+\item[(iii)] \textsc{Triangle inequality} $d(x,z) \leq d(x,y) + d(y,z)$
+\end{enumerate}
+
+if $M$ metric space, $x\in M$, $r>0$ \\
+\phantom{\quad } \textbf{open ball of radius $r$ around $x$ } 
+\[
+B_r(x) = \{ y \in M | d(x,y) < r \}
+\]
+\phantom{\quad \quad } \textbf{closed ball of radius $r$ }
+\[
+\underline{B}_r(x) = \{ y \in M | d(x,y) \leq r \}
+\]
+\textbf{metric topology on $M$ } defined by declaring $S \subseteq M$ open iff $\forall \, x \in S$, $\exists \, r >0$ s.t. $B_r(x) \subseteq S$
+

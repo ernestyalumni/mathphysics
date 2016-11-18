@@ -1,0 +1,679 @@
+% 01smoothmanifolds.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+ 
+
+
+
+
+
+
+\subsection*{Topological Manifolds }
+
+$M$ topological manifold of $\text{dim}{n}$, or topological $n$-manifold 
+\begin{itemize}
+\item locally Euclidean, $\text{dim}{n}$ - $\forall \, p \in M$, $\exists \, $ neighborhood $U \equiv U_p$ s.t. $U_p \approx^{\text{homeo}} \text{ open } V \subset \mathbb{R}^n$ 
+\end{itemize}
+
+
+\exercisehead{1.1} Recall, $M$ locally Euclidean $\dim{n}$ $\forall \, p \in M$, $\exists \,$ neighborhood homeomorphic to open subset. \\
+open subset $\mathcal{O} \subseteq \mathbb{R}^n$ homeomorphic to open ball and $\mathcal{O}$ homeomorphic is $\mathbb{R}^n$ since $\mathbb{R}^n$ homeomorphic to open ball.  
+
+To see this explicitly, that open ball $B_{\epsilon}(x_0) \subseteq \mathbb{R}^n $ homeomorphic to $\mathbb{R}^n$
+
+Consider $\begin{aligned} & \quad \\ 
+  & T: B_{\epsilon}(x_0) \to \mathbb{R}^n \\ 
+  & T(B_{\epsilon}(x_0)) = B_{\epsilon}(0) \\ 
+  & T(x) = x- x_0 \end{aligned}$  \\
+$T^{-1}(x) = x+x_0$.  Clearly $T$ homeomorphism.  
+
+Consider $\begin{aligned} & \quad \\
+& \lambda : \mathbb{R}^n \to \mathbb{R}^n \\
+  & \lambda(x) = \lambda x \\
+  & \lambda^{-1}(x) = \frac{1}{ \lambda } x \end{aligned}$ for $\lambda >0$.  Clearly $\lambda$ homeomorphism.  
+
+Consider $B \equiv B_1(0)$.  
+
+Consider $\begin{aligned} & \quad \\ 
+  & g: \mathbb{R}^n \to \mathbb{R}^n \\
+  & g(x) = \frac{x}{ 1 + |x| } \end{aligned}$ 
+
+$g$ cont.  
+
+Let $\begin{aligned} & \quad \\
+  & f:B \to \mathbb{R}^n \\
+  & f(x) = \frac{x}{ 1 - |x| } \end{aligned} $ 
+
+How was $f$ guessed at?
+
+$|g(x) | = \left| \frac{x}{1 + |x| } \right| = \frac{r}{ 1 + r}$ .  Note $0 \leq |g(x) | <1$ \\
+So $g(\mathbb{R}^n) = B$
+
+For $|g(x)| = |y|$, $y \in B$, $|y|(1+r) = r$, \, $r = \frac{ |y| }{ 1 - |y| }$
+
+This is well-defined, since $0 \leq |y| < 1$ and $0 < 1 - |y| \leq 1$
+\[
+\begin{aligned}
+  & gf(x) =\frac{  \frac{ x}{ 1 - |x| } }{ 1 + \frac{|x|}{ 1 - |x| } } = x \\ 
+  & fg(x) = \frac{ \frac{x}{ 1 + |x| } }{ 1 - \frac{|x| }{ 1 + |x| } } = x
+\end{aligned}
+\]
+$f$ homeomorphism between $B$ and $\mathbb{R}^n$.  $B$ and $\mathbb{R}^n$ homeomorphic.  So an open ball in $\mathbf{R}^n$ is homeomorphic to $\mathbb{R}^n$
+
+\hrulefill
+
+In practice, both the Hausdorff and second countability properties are usually easy to check, especially for spaces that are built out of other manifolds, because both properties are inherited by subspaces and products (Lemmas A.5 and A.8).  In particular, it follows easily that any open subset of a topological $n$-manifold is itself a topological $n$-manifold (with the subspace topology, of course).  
+
+\subsubsection*{Coordinate Charts}
+
+chart on $M$, $(U, \varphi)$ where open $U \subset M$ and \\
+homeomorphism $\varphi : U \to \mathbb{R}^n$, $\varphi(U)$ open.  
+
+
+
+
+
+
+\subsubsection*{Examples of Topological Manifolds}
+
+Example 1.3. (Graphs of Continuous Functions) \\
+Let open $U \subset \mathbb{R}^n$ \\
+Let $F: U \to \mathbb{R}^k$ cont. \\
+graph of $F$: $\Gamma(F) = \lbrace (x,y) \in \mathbb{R}^n \times \mathbb{R}^k | x \in U , y = F(x) \rbrace$ with subspace topology. \\
+$\pi_1 : \mathbb{R}^n \times \mathbb{R}^k \to \mathbb{R}^n$ projection onto first factor. \\
+$\varphi_k:\Gamma(F) \to U$ restriction of $\pi_1$ to $\Gamma(F)$ \\
+$\varphi_F(x,y) = x$, $(x,y) \in \Gamma(F)$ \\
+
+\textbf{Example 1.4 (Spheres)} $S^n = \lbrace x \in \mathbb{R}^{n+1} | |x| = 1 \rbrace$ \\
+Hausdorff and second countable because it's topological subspace of $\mathbb{R}^n$   \\
+
+
+\textbf{Example 1.5 (Projective Spaces)}
+
+$U_i \subset \mathbb{R}^{n+1} - 0$ where $x^i \neq 0$  \\
+$V_i = \pi(U_i)$  
+
+Let $a\in U_i$. 
+\[
+|x-a|^2 = (x^1 - a^1)^2 + \dots + (x^i - a^i)^2 + \dots + (x^{n+1} - a^{n+1})^2 < \frac{ (n+1) \epsilon^2 }{ n + 1 } = \epsilon^2
+\]
+$\forall \, a^i \in \mathbb{R}$, $\exists \,  x^i$, s.t. $(x^i - a^i)^2 < \frac{ \epsilon^2}{ n +1}$, by choice of $0< x^i < a^i + \frac{ \epsilon}{ \sqrt{ n+ 1} }$ with $0<x^i$ for $i=i$ index.  \\
+$U_i$ indeed open set, \emph{saturated open set}.  
+
+open $U_i \subset \mathbb{R}^{n+1} - 0$, $x^i \neq 0$
+ 
+From Lemma A.10, recall
+(d) restriction of $\pi$ to any saturated open or closed subset of $X$ is a quotient map.  
+
+natural map $\pi: \mathbb{R}^{n+1} - 0 \to \mathbb{R}P^n$ given quotient topology.  
+
+By Tu, Prop. 7.14, $\sim $ on $\mathbb{R}^{n+1} - 0  \to \mathbb{R}P^n$ open equivalence relation.  \\
+$\Longrightarrow  \left. \pi \right|_{U_i}(U_i) = V_i$ open.  
+
+\[
+\begin{aligned}
+   & \varphi_i : V_i \to \mathbb{R}^n \\ 
+& \varphi_i [ x^1 \dots x^{n+1} ] = \left( \frac{ x^1 }{ x^i } \dots \frac{ x^{i-1}}{ x^i } , \frac{ x^{i+1}}{ x^i} \dots \frac{x^{n+1}}{ x^i} \right)
+\end{aligned}
+\]
+
+$\varphi_i$ well-defined since 
+\[
+\varphi_i[tx^1 \dots tx^{n+1}] = \left( \frac{ tx^1 }{ tx^i } \dots \frac{ t\widehat{x}^i }{ tx^i } \dots \frac{ tx^{n+1}}{ tx^i } \right)= \left( \frac{x^1}{ x^i } \dots \frac{ \widehat{x}^i }{ x^i } \dots \frac{ x^{n+1}}{ x^i } \right) = \varphi_i[x^1 \dots x^{n+1} ]
+\]
+
+$\varphi_i$ cont. since $\varphi_i \pi$ cont.  
+
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+    U_i \subset \mathbb{R}^{n+1} - 0 &  \\
+    V_i \subset \mathbb{R}P^n  & \mathbb{R}^n  \\ };
+  \path[-stealth]
+  (m-1-1) edge node [right] {$\varphi_i \pi$} (m-2-2)
+  edge node [left] { $\pi$} (m-2-1)
+  (m-2-1) edge node [below] {$\varphi$} (m-2-2);
+\end{tikzpicture}
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    & \varphi_i : U_i \subset \mathbb{R}P^n \to \mathbb{R}^n \\ 
+    & \varphi_i[x^1 \dots x^{n+1} ] = \left( \frac{x^1}{x^i} \dots \frac{ \widehat{x}^i }{ x^i } \dots \frac{x^{n+1}}{ x^i } \right) \\
+    & \varphi^{-1}_i(u^1 \dots u^n) = [ u^1 \dots u^{i-1}, 1 , u^i \dots u^n ]
+\end{aligned} \\ 
+  \varphi_i^{-1} \varphi_i[x^1 \dots x^{n+1} ] = \left[ \frac{x^1 }{ x^i } \dots \frac{x^{i-1}}{ x^i } , 1 , \frac{x^{i+1}}{ x^i} \dots \frac{x^{n+1}}{ x^i } \right] = [x^1 \dots x^{i-1}, x^i , x^{i+1} \dots x^{n+1} ] \\
+  \varphi_i \varphi^{-1}_i(u^1 \dots u^n) = (u^1 \dots u^{i-1} , u^i  \dots u^n )
+\end{gathered}
+\]
+cont. $\varphi_i$ bijective, $\varphi_i^{-1}$ cont. $\varphi_i$ homeomorphism.  
+
+From a previous edition: 
+
+\exercisehead{1.2} 
+
+
+Let $ \begin{aligned} & \quad \\ 
+  & \phi_t : \mathbb{R}^{n+1}\backslash \lbrace  0 \rbrace \to \mathbb{R}^{n+1} \backslash \lbrace 0 \rbrace \\ 
+  & \phi_t(x) = tx \end{aligned}$ \\
+$\phi_t$ invertible, $\phi_t^{-1} = \phi_{\frac{1}{t}}$ \\
+$\phi_t$, $\phi_t^{-1}$ \, $C^1$ (and $C^{\infty}$), $\phi_t$ homeomorphism.  \\
+
+Let $U$ open in $\mathbb{R}^{n+1}\backslash \lbrace 0 \rbrace$.  Then $\phi_t(U)$ open in $\mathbb{R}^{n+1}\backslash \lbrace 0 \rbrace$.  \\
+Thus $\pi^{-1}([U]) = \bigcup_{t \in \mathbb{R}} \phi_t(U)$ open in $\mathbb{R}^{n+1}\backslash \lbrace 0 \rbrace$.  \\
+Thus $[U]$ open in $\mathbb{R}P^n$.  $\sim$ open.  \\
+
+Note $\begin{aligned} & \quad  \\
+  & \pi : \mathbb{R}^{n+1} \backslash \lbrace 0 \rbrace \to \mathbb{R}P^n \\
+  & \pi(x) = \frac{x}{ \| x\| } \end{aligned}$ \\
+$\mathbb{R}^n$ 2nd. countable, $\mathbb{R}P^n$ 2nd. countable.  
+
+
+\exercisehead{1.3}
+
+$S^n$ compact. \\
+$\pi :\mathbb{R}^{n+1}\backslash \lbrace 0 \rbrace \to \mathbb{R}P^n$ \\
+$\pi(x) = [ \frac{x}{ \| x \| } ]$ \\
+Let $x \in \mathbb{R}P^n$ \\
+\phantom{Let } $y = \frac{x}{ \| x \| } \in S^n$ and $ \left. \pi \right|_{S^n}(y) = [x]$ \\
+$\left. \pi \right|_{S^n}$ surjective.  
+
+
+
+\exercisehead{1.6}
+
+First, note that $\sim $ on $\mathbb{R}^{n+1} -0$ in the definition of $\mathbb{R}P^n$ is an open $\sim$ i.e. open equivalence relation.  
+
+This is because of the following:
+$\forall \, U \subset \mathbb{R}^{n+1}-0$, \\
+$\pi^{-1}(\pi(U)) = \bigcup_{t\in \mathbb{R}} tU$, set of all pts. equivalent to some pt. of $U$.  \\
+multiplication by $t\in \mathbb{R}$ homeomorphism of $\mathbb{R}^{n+1} - 0$, so $tU$ open $\forall \, t \in \mathbb{R}$.  \\
+$\pi^{-1}(\pi(U))$ open i.e. $\pi(U)$ open (for $\pi$ is cont.).  
+
+
+Let $X = \mathbb{R}^{n+1} -0$.  \\
+Consider $R = \lbrace ( x,y) \in X \times X | x\sim y \text{ or } y = tx \text{ for some } t \in \mathbb{R} \rbrace$ 
+
+$y = tx$ means $y_i = tx_i$ \, $\forall \, i = 0\dots n$.  Then $\frac{ x_i}{y_i} = \frac{ x_j}{ y_j}$ \, $\forall \, i,j = 0 \dots n$.  Hence $x_i y_j - y_i x_j = 0$ \, $\forall \, i , j$.  
+
+Let $\begin{aligned} & \quad \\ 
+  & f : X \times X \to \mathbb{R} \\
+  & f(x,y) = \sum_{ i \neq j} (x_i y_j - y_i x_j)^2 \end{aligned}$  
+
+\[
+\begin{aligned}
+  & \frac{ \partial f}{ \partial x_i} = \sum_{i \neq j } 2 (x_i y_j - y_i x_j) ( y_j - y_j) = 0 \\
+  & \frac{ \partial f}{ \partial y_j} = \sum_{j \neq i } 2 (x_i y_j - y_i x_j) ( x_i - x_i) = 0 
+\end{aligned}
+\]
+
+Nevertheless, $f$ is $C^1$ so $f$ cont.  
+
+So $f^{-1}(0) = R$. 
+
+$0$ closed, so $f^{-1}(0) = R$ closed.  By theorem, since $\sim$ open, $\mathbb{R}P^n = \mathbb{R}^{n+1} - 0 / \sim$ Hausdorff.  
+
+cf. \url{http://math.stackexchange.com/questions/336272/the-real-projective-space-rpn-is-second-countable}
+
+topological space is second countable if its topology has countable basis.  \\
+\quad $\mathbb{R}^n$ second countable since $\mathcal{B} = \lbrace B_r{ ( q)} | r,q \in \mathbb{Q} \rbrace$ is a countable basis.  $\forall \, x \in \mathbb{R}^n$ \\
+
+If $X$ is second countable, with countable basis $\mathcal{B}$, 
+\begin{enumerate}
+\item If $Y \subseteq X$, $Y$ also second countable with countable basis $\lbrace B | B \in \mathcal{B}, \, Y \bigcap B \neq \emptyset \rbrace$
+\item If $Z == X/\sim $, $\lbrace \lbrace [x] | x \in B \rbrace | B \in \mathcal{B} \rbrace$ is a countable basis for $Z$ since $\mathcal{B}$ countable.  \\
+
+It is a basis since 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+X = \bigcup_{B \in \mathcal{B}} B    \\
+Z = X/ \sim = \pi{ \left( \bigcup_{B \in \mathcal{B}} B \right) } = \bigcup_{B \in \mathcal{B}} \pi{ (B)} = \bigcup_{ B \in \mathcal{B}} \lbrace [x] | x  \in B \rbrace \\
+  };
+%  \path[-stealth]
+  \path[->]
+  (m-1-1) edge node [right] {$\pi$} (m-2-1);
+\end{tikzpicture}
+
+
+\end{enumerate}
+
+Now let $Y = \mathbb{R}^n-0$ and \\
+\phantom{Now let } $Z = \mathbb{R}P^n = \mathbb{R}^n-0 / \sim$
+
+\exercisehead{1.7}
+
+$S^n$ compact so $S^n/\lbrace \pm \rbrace$ compact by Theorem, as $\pi_S(S^n) = S^n/ \lbrace \pm \rbrace$, as $\pi_S$ cont. surjective ($\forall \, [x] \in S^n/\lbrace \pm \rbrace$, $\exists \, x \in S^n$ s.t. $\pi_S(S^n) = [x]$) \\
+$g$ cont. bijective as defined above so since $g(S^n/\lbrace \pm \rbrace) = \mathbb{R}P^n$, $\mathbb{R}P^n$ compact.  
+
+
+\textbf{Example 1.8 (Product Manifolds)}
+\[
+\begin{aligned}
+  & M_1 = \bigcup_{\alpha \in \mathfrak{A}_1} U_{\alpha}^{(1)} \\ 
+  & M_i = \bigcup_{\alpha \in \mathfrak{A}_i} U_{\alpha}^{(i)} 
+\end{aligned} \quad \quad \quad \, 
+M_1 \times \dots \times M_n = \bigcup_{ \begin{aligned} & \alpha_1 \in \mathfrak{A}_1 \\ 
+& \vdots \\ 
+    & \alpha_n \in \mathfrak{A}_n \end{aligned} }  U_{\alpha_1} \times \dots \times U_{\alpha_n} \quad \quad \, (\text{by def.})
+\]
+
+$\forall \, p = (p_1 \dots p_n) \in M_1 \times \dots M_n$, consider $p_i \in M_i$.  Choose coordinate chart $(U_{j_i}, \varphi_{j_i})$, $\varphi_i(U_i) \subset \mathbb{R}^{n_i}$.  Then,  \\
+
+Consider $\varphi : U_1 \times \dots \times U_n \to \mathbb{R}^{m_1} \times \dots \times \mathbb{R}^{m_n} = \mathbb{R}^{ m_1 + \dots + m_n}$, $(U_1 \times \dots \times U_n, \varphi_1 \times \dots \times \varphi_n)$ \\
+$\varphi = \varphi_1 \times \dots \times \varphi_n$\\
+$\varphi$ also a homeomorphism.  $\begin{gathered} \varphi \psi^{-1} \\ (\varphi_1 \times \dots \times \varphi_n) \circ(\psi_1 \times \dots \times \psi_n)^{-1} \end{gathered}$ also a diffeomorphism, cont. bijective and $C^{\infty}$ \\
+$\lbrace (U, \varphi)  = (U_1 \times \dots \times U_n, \varphi_1 \times \dots \times \varphi_n) | (U_i, \varphi_i) \in \lbrace (U_i, \varphi_i) | U_i \in M_i \rbrace \rbrace$ also an atlas.  
+
+
+
+\subsubsection*{Topological Properties of Manifolds}
+
+\begin{lemma}[1.10]
+$\forall \, $ topological $M$, $M$ has countable basis of precompact coordinate balls
+\end{lemma}
+
+\begin{proof}
+  First consider $M$ can be covered by single chart.  \\
+Suppose $\varphi : M \to \widehat{U} \subseteq \mathbb{R}^n$ global coordinate map. \\
+Let $\mathcal{B} = \lbrace B_r(x) | \text{ open } B_r(x) \subseteq \mathbb{R}^n \text{ s.t. } r\in \mathbb{Q}, \, x \in \mathbb{Q}, \, \text{ i.e. $x$ rational coordinates }, B_{r'}(x) \subseteq \widehat{U}, \text{ for some } r' > r \rbrace$ \\
+Clearly, $\forall \, B_r(x)$ precompact in $\widehat{U}$ \\
+\quad \, $\mathcal{B}$ countable basis for topology of $\widehat{U}$
+
+$\varphi$ homeomorphism, it follows $\lbrace \varphi^{-1}(B) | B \in \mathcal{B} \rbrace$ countable basis for $M$
+
+Let $M$ arbitrary, \\
+\quad By def., $\forall \, p \in M$, $p \in $ domain $U$ of a chart
+
+Prop. A.16, $\forall \, $ open cover of second-countable space has countable subcover. \\
+\quad $M$ covered by countably many charts $\lbrace (U_i, \varphi_i) \rbrace$ \\
+$\forall \, U_i$, $U_i$ has countable basis of coordinate balls precompact in $U_i$ \\
+union of all these coordinates bases is countable basis for $M$.   \\
+
+If $V \subseteq U_i$ one of these balls,  \\
+\quad then $\overline{V}$ compact in $U_i$.  $M$ Hausdorff, so $\overline{V}$ closed.  \\
+\quad $\overline{V}$ in $M$ is same as $\overline{V}$ in $U_i$, so $V$ precompact in $M$.   
+\end{proof}
+
+\subsubsection*{Connectivity}
+
+\subsubsection*{Local Compactness and Paracompactness}
+
+
+
+\subsubsection*{Fundamental Groups of Manifolds}
+
+
+
+
+
+\subsection*{Smooth Structures}
+
+If open $U \subset \mathbb{R}^n$, $V \subset \mathbb{R}^m$, \\
+$F:U \to V$ smooth (or $C^{\infty}$) if $\forall \, $ cont. partial derivative of all orders exists.  \\
+
+$F$ diffeomorphism if $F$ \emph{smooth}, bijective, and has a \emph{smooth} inverse.  \\
+Diffeomorphism is a homeomorphism.  \\
+
+$(U, \varphi), (V,\psi)$ smoothly compatible if $UV = \emptyset$ or 
+\[
+\psi \varphi^{-1}: \varphi(UV) \to \psi(UV) \quad \quad \, \text{ diffeomorphism }
+\]
+
+atlas $\mathcal{A} \equiv \lbrace (U, \varphi ) \rbrace$ s.t. $\bigcup U = M$.  Smooth atlas if $\forall \, (U,\varphi), (V, \psi) \in \mathcal{A}$, $(U,\varphi), (V,\psi)$ smoothly compatible.  \\
+
+Smooth structure on topological $n$-manifold $M$ is a maximal smooth atlas.   \\
+
+Smooth manifold $(M, \mathcal{A})$ where $M$ topological manifold, $\mathcal{A}$ smooth structure on $M$.   \\
+
+
+\begin{proposition}[1.17] Let $M$ topological manifold. 
+\begin{enumerate}
+\item[(a)] $\forall \, $ smooth atlas for $M$ is contained in ! maximal smooth atlas.  
+\item[(b)] 2 smooth atlases for $M$ determine the same maximal smooth atlas iff union is smooth atlas.  
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Let $\mathcal{A}$ smooth atlas for $M$   \\
+$\overline{ \mathcal{A} } \equiv $ set of all charts that are smoothly compatible with every chart in $\mathcal{A}$ 
+
+\textbf{Want}: $\overline{ \mathcal{A}}$ smooth atlas, i.e. $\forall \, (U, \varphi), (V \psi) \in \overline{\mathcal{A}}$, $\psi \varphi^{-1} : \varphi(UV) \to \psi(UV)$ smooth.  
+
+Let $x = \varphi(p) \in \varphi(UV)$ \\
+$p\in M$, so $\exists \,$ some chart $(W, \theta) \in \mathcal{A}$ s.t. $p \in W$.  \\
+By given, $\theta \varphi^{-1}, \psi \theta^{-1}$ smooth where they're defined.   \\
+$p \in UVW$, so $\psi \varphi^{-1} = \psi \theta^{-1} \theta \varphi^{-1}$ smooth on $x$.  \\
+Thus $\psi \varphi^{-1}$ smooth in a neighborhood of each pt. in $\varphi(UV)$.  Thus $\overline{\mathcal{A}}$ smooth atlas.  
+
+To check maximal, 
+
+
+\end{proof}
+
+
+
+
+\subsection*{Local Coordinate Representations}
+
+\begin{proposition}[1.19]
+  $\forall \, $ smooth $M$ has countable basis of regular coordinate balls
+\end{proposition}
+
+\exercisehead{1.20}
+
+smooth manifold $M$ has smooth structure \\
+\quad Suppose single smooth chart $\varphi$ has entire $M$ as domain
+\[
+\varphi: M \to \widehat{U} \subseteq \mathbb{R}^n
+\]
+
+Let $\widehat{B} = \lbrace \widehat{B}_r(x) \subseteq \mathbb{R}^n | r \in \mathbb{Q}, \, x \in \mathbb{Q}, \, \widehat{B}_{r'}(x) \subseteq \widehat{U} \text{ for some } r' > r \rbrace$ \\
+
+\quad $\forall \, \widehat{B}_r(x)$ precompact in $\widehat{U}$ \\
+\quad $\widehat{\mathcal{B}}$ countable basis for topology of $\widehat{U}$
+
+$\varphi$ homeomorphism, 
+
+\quad Let $\begin{aligned}
+  & \quad \\
+  & \varphi^{-1}( \widehat{B}_r{(0)}) = B \\
+  & \varphi^{-1}{(\widehat{B}_{r'}{(0)} )} = B' \end{aligned}$
+
+$\varphi$ homeomorphism and since $\widehat{B}$ countable basis, $\lbrace B \rbrace$ countable basis of regular coordinate basis. \\
+
+Suppose arbitrary smooth structure.  \\
+\quad By def., $\forall \, p \in M$, $p$ in some chart domain \\
+\quad Prop. A.16., $\forall \, $ open cover of second countable space has countable subcover \\
+\quad $M$ covered by countably many charts $\lbrace (U_i, \varphi_i) \rbrace$ \\
+
+$\forall \, U_i , \, U_i$ has countable basis of coordinate balls precompact in $U_i$ \\
+union of all these coordinate charts is countable basis for $M$.  
+
+If $V \subseteq U_i$, 1 of these balls,  \\
+$\begin{aligned}
+  & \quad \\ 
+  & \varphi(V) = B_r(0) \\ 
+  & \varphi{(\overline{V})} = \overline{B}_r(0)
+\end{aligned}$
+
+and $\varphi(B') = B_{r'}{(0)}$, $r' > r$ for countable basis for $U_i$ \\
+So $V$ regular coordinate ball.
+
+
+\hrulefill
+
+
+
+\subsection*{Examples of Smooth Manifolds}
+
+
+
+
+
+
+\subsubsection*{More Examples}
+
+
+
+\textbf{Example 1.25 (Spaces of Matrices) } Let $M(m\times n,\mathbb{R}) \equiv $ set of $m\times n$ matrices with real entries.  
+
+\textbf{Example 1.26 (Open Submanifolds)}
+
+$\forall \, $ open subset $U \subseteq M$ is itself a $\text{dim}{M}$ manifold. \\
+EY : \emph{ $\forall \, $ open subset $U \subseteq M$ is itself a $\text{dim}{M}$ manifold. }
+
+
+\textbf{Example 1.27 (The General Linear Group) }
+
+general linear group $GL(n,\mathbb{R}) = \lbrace A | \text{det}{A} \neq 0 \rbrace$ \\
+\quad $\text{det}:A \to \mathbb{R}$ is cont. (by def. of $\text{det}{A} = \epsilon^{ i_1 \dots i_n}a_{1 i_1} \dots a_{n i_n}$ \\
+\quad $\text{det}^{-1}{ ( \mathbb{R} - 0 )}$ is open since $\mathbb{R}-0$ open so $GL(n,\mathbb{R})$ open \\
+\quad $GL(n,\mathbb{R}) \subseteq M(n,\mathbb{R})$, $M(n,\mathbb{R})$ $n^2$-dim. vector space. \\
+\quad \quad so $GL(n,\mathbb{R})$ smooth $n^2$-dim. manifold.  
+
+\textbf{Example 1.28 (Matrices of Full Rank)}
+
+Suppose $m <n$ \\
+
+Let $M_n(m\times n, \mathbb{R}) \subseteq M(m\times n, \mathbb{R})$ with matrices of rank $m$ \\
+if $A \in M_m(m\times n, \mathbb{R})$, \\
+\quad $\text{rank}{A}=m$ 
+
+means that $A$ has some nonsingular $m \times m$ submatrix.  (EY 20140205 ???)
+
+
+
+
+\textbf{Example 1.31 (Spheres)} 
+
+\[
+\begin{aligned}
+  & \varphi_i^{\pm} : S^n \to B_1^n(0) \subset \mathbb{R}^n \quad \, (B_1^n(0) \text{ disk of radius $1$}) \\
+  & \varphi_i^{\pm}(x_1 \dots x_{n+1}) = (x_1 \dots \widehat{x}_i \dots x_{n+1} )= (y_1 \dots y_n)
+\end{aligned}
+\]
+Note $x_1^2 + \dots + x_i^2 + \dots + x_{n+1}^2 = 1$.  \quad \, $x_i = \pm \sqrt{ 1 - (x_1^2 + \dots + \widehat{x}_i^2 + \dots + x_{n+1}^2 ) }$
+
+\[
+\begin{aligned}
+  & (\varphi_i^{\pm})^{-1}(y_1 \dots y_n) = (y_1 \dots \pm \sqrt{ 1 - (y_1^2 + \dots + y_n^2) } \dots y_n) = (y_1 \dots y_{i-1}, \pm \sqrt{ 1-  |y|^2 }, y_i\dots y_n ) \\ 
+ & \varphi_i^{\pm} (\varphi_j^{\pm})^{-1}(y_1 \dots y_n ) = (y_1 \dots \widehat{y}_i \dots y_{j-1} , \pm \sqrt{ 1 - |y|^2 }, y_j \dots y_n) \\ 
+ & \varphi_i^{\pm} (\varphi_j^{\mp})^{-1}(y_1 \dots y_n ) = (y_1 \dots \widehat{y}_i \dots y_{j-1} , \mp \sqrt{ 1 - |y|^2 }, y_j \dots y_n) \\ 
+\end{aligned}
+\]
+\[
+\varphi_j^{\pm}(\varphi_i^{\mp})^{-1} \varphi_i^{\pm} (\varphi_j^{\pm})^{-1}(y_1 \dots y_n) = \varphi_j^{\pm}(y_1 \dots \pm y_i \dots y_{j-1}, \pm \sqrt{ 1 - |y|^2 } \dots y_n ) = (y_1 \dots \pm y_i \dots y_j \dots y_n)
+\]
+This is symmetrical in $i,j$ and so true if $i,j$ reverse.  \\
+
+So $\varphi_i^{\pm}(\varphi_j^{\pm})^{-1}$ diff. and bijective.  Likewise for $\varphi_i^{\pm}(\varphi_j^{\mp})^{-1}$.  \\
+So $\begin{aligned} & \varphi_i^{\pm} (\varphi_j^{\pm})^{-1} \\ 
+  & \varphi_i^{\pm} (\varphi_j^{\mp})^{-1} \end{aligned}$ diffeomorphisms.  
+
+\begin{lemma}[1.35] \textbf{(Smooth Manifold Chart Lemma)}
+Let $M$ be a set, suppose given $\lbrace U_{\alpha} | U_{\alpha} \subset M \rbrace$, given maps $\varphi_{\alpha}: U_{\alpha} \to \mathbb{R}^n$ s.t.
+\begin{enumerate}
+\item[(i)] $\forall \, \alpha$, $\varphi_{\alpha}$ bijection between $U_{\alpha}$ and open $\varphi_{\alpha}(U_{\alpha}) \subseteq \mathbb{R}^n$
+\item[(ii)] $\forall \, \alpha, \beta$, $\varphi_{\alpha}(U_{\alpha} \bigcap U_{\beta})$, $\varphi_{\beta}(U_{\alpha} \bigcap U_{\beta})$ open in $\mathbb{R}^n$
+\end{enumerate}
+\end{lemma}
+
+
+\textbf{Example 1.36 (Grassmann Manifolds)}
+
+%$G_k(V) = $ set of all $k$-dim. linear subspaces of $V$, $\text{dim}{V} = n \geq k $
+
+%Let $P,Q$ complementary subspaces of $V$, $\begin{aligned} & \quad \\ & \text{dim}{P} = k \\ & \text{dim}{Q} = n- k \end{aligned}$
+
+%direct sum decomposition $V = P \oplus Q$  
+
+%graph of any linear $X: P \to Q$
+
+%\[
+%\Gamma(X) = \lbrace v + X v | v \in P \rbrace \subset V
+%\]
+%$k$-dim. subspace
+
+%Now $\Gamma(X) Q = \emptyset$ since $\Gamma(A) \subset P \oplus Q$ and $P$ and $Q$ are complementary.  
+
+%If $KQ = \emptyset$, then $K \subset P \oplus Q$, $P\neq 0$.  
+
+$G_k(V) = \lbrace S | S \subseteq V \rbrace$ \quad \, $S$ $k$-dim. linear subspace of $V$ \\
+$\text{dim}V = n$, $V$ vector space  \\
+
+if $V = \mathbb{R}^n$, $G_k(\mathbb{R}^n) \equiv G_{k,n} \equiv G(k,n)$ (notation) \quad \, $G_1(\mathbb{R}^{n+1}) = \mathbb{R}P^n$
+
+Let $V = P \oplus Q$, \, $\begin{aligned}
+  & \text{dim}P =k \\
+  & \text{dim}Q = n-k \end{aligned}$ \\
+
+linear $X: P \to Q$ 
+
+\[
+\Gamma(X) = \lbrace v + Xv | v \in P \rbrace , \quad \, \Gamma(X) \subseteq V, \, \text{dim}\Gamma(X) = k
+\]
+$\Gamma(X) \bigcap Q = 0$ since $\forall \, w \in \Gamma(X)$, $w$ has a $P$ piece, and $Q$ complementary to $P$ \\
+
+Converse: $\forall \, $ subspace $S \subseteq V$, s.t. $S\bigcap Q = 0$ \\
+\quad \, let $\begin{aligned}
+  & \quad \\ 
+  & \pi_P : V \to P \\ 
+  & \pi_Q: V \to Q
+\end{aligned}$ \quad \, projections by direct sum decomposition $V = P\oplus Q$ \\
+
+$\left. \pi_P \right|_S : S \to P$ isomorphism  \\
+$\Longrightarrow X = ( \left. \pi_Q \right|_S ) \cdot ( \left. \pi_P \right|_S)^{-1}$, \, $X: P \to Q$ \\
+
+Let $v\in P$.  $v+ Xv = v +  \left. \pi_Q \right|_S (  \left. \pi_P \right|_S)^{-1} v$.  Let $v  \in \left. \pi_P \right|_S (S)$ \quad \, $\Gamma(X) = S$ \\
+
+
+Let $L(P;Q) = \lbrace f | \text{ linear } f : P \to Q \rbrace$, \, $L(P;Q)$ vector space \\
+$U_Q \subseteq G_k(V)$, \, $U_Q = \lbrace S | \text{dim}S =k, \, S \text{ subspace }, \, S \bigcap Q = 0 \rbrace$ \\
+$\begin{aligned}
+  & \Gamma : L(P;Q) \to U_Q \\
+  & X \mapsto \Gamma(X) \end{aligned}$ \\
+
+$\Gamma$ bijection by above \\
+$\varphi = \Gamma^{-1} : U_Q \to L(P;Q)$  \\
+
+By choosing bases for $P,Q$, identify $L(P;Q)$ with $M((n-k)k; \mathbb{R})$ and hence with $\mathbb{R}^{k(n-k)}$ \\
+
+think of $(U_Q, \varphi)$ as coordinate chart. \\
+$\varphi(U_Q) = L(P;Q)$
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Problems}
+
+\problemhead{1.7} (This was Problem 1.5 in previous editions)
+
+\[
+S^n = \lbrace ( x_1 \dots x_{n+1} \rbrace \in \mathbb{R}^{n+1} | \sum_{i=1}^{n+1} x_i^2 = 1 \rbrace \subset \mathbb{R}^{n+1}
+\]
+
+Let $\begin{aligned} & \quad \\
+  & N = (0 \dots 0, 1) \\ 
+  & S = (0 \dots 0, -1) \end{aligned}$ \quad \, $x\in S^n$. 
+\begin{enumerate}
+\item[(a)]
+ Consider $t(x-N) + N = tx + (1-t)N$ when $x_{n+1} =0$ 
+\[
+\begin{gathered}
+  tx_{n+1} + (1-t) = 0 \text{ or } tx_{n+1} + -1 + t = 0 \\ 
+  \Longrightarrow \frac{ 1}{ 1- x_{n+1} } = t \quad \left( \text{ or } \frac{1}{ 1 + x_{n+1} } \right)
+\end{gathered}
+\]
+
+\[
+\begin{aligned}
+  & \pi_1: S^n - N \to \mathbb{R}^n \\ 
+  & \pi_1(x_1 \dots x_{n+1}) = \left( \frac{x_1}{ 1 - x_{n+1} } \dots \frac{x_n}{ 1 - x_{n+1} } , 0 \right) \\ 
+  & \pi_2 : S^n -S \to \mathbb{R}^n \\ 
+  & \pi_2(x_1 \dots x_{n+1}) = \left( \frac{x_1}{ 1 + x_{n+1}} \dots \frac{x_n}{ 1 + x_{n+1} }, 0 \right)
+\end{aligned}
+\]
+Note that $-\pi_2(-x) = \pi_1$ and $\pi_1 \equiv \sigma$, $\pi_2 \equiv \widetilde{\sigma}$ in Massey's notation.  
+\item[(b)] Note, for $y_i = \frac{x_i}{ 1 - x_{n+1}}$
+\[
+\begin{gathered}
+  y_1^2 + \dots +y_n^2 = |y|^2 = \frac{1-  x_{n+1}^2}{ (1-x_{n+1})^2 } = \frac{1+ x_{n+1}}{ 1- x_{n+1}} \text{ or } x_{n+1}  = \frac{ |y|^2 - 1 }{ |y|^2 + 1 }  \\
+  x_i = y _i (1- x_{n+1}) = \frac{2y_i}{ 1 + |y|^2 }
+\end{gathered}
+\]
+
+\[
+\begin{aligned}
+  & \pi_1^{-1}: \mathbb{R}^n \to S^n - N \\ 
+  & \pi_1^{-1}(y_1 \dots y_n) = \left( \frac{2y_1}{ 1 + |y|^2 } \dots \frac{2y_n}{1+ |y|^2 } , \frac{ |y|^2 - 1 }{ |y|^2 + 1 } \right) \\ 
+  & \pi_2^{-1}(y_1 \dots y_n) = \left( \frac{2y_1}{ 1 + |y|^2 } \dots \frac{2y_n}{1+ |y|^2 } , \frac{ 1 - |y|^2  }{ |y|^2 + 1 } \right)
+\end{aligned}
+\]
+
+$\pi_1,\pi_2$ diff., bijective, and $(S^n - N ) \bigcup (S^n-S) = S^n$ \\
+
+\item[(c)] Computing the transition maps for the stereographic projections.
+
+
+Consider $(S^n - N)(S^n-S) = S^n - N \bigcup S$ 
+\[
+\begin{aligned}
+  & \pi_1 \pi_2^{-1}(y_1 \dots y_n) = \left( \frac{y_1 }{ |y|^2} \dots \frac{y_n}{|y|^2} , 0 \right) \\ 
+  & \pi_2 \pi_1^{-1}(y_1 \dots y_n) = \left( \frac{y_1 }{ |y|^2} \dots \frac{y_n}{|y|^2} , 0 \right) 
+\end{aligned}
+\]
+since, for example, 
+\[
+\begin{gathered}
+\frac{   \frac{2y_i }{ 1 + |y|^2} }{ 1 - \frac{ 1 - |y|^2}{ 1 + |y|^2 }} = \frac{y_i }{ |y|^2 }
+\end{gathered}
+\]
+
+
+
+$\pi_1 \pi_2^{-1}$ bijective and $C^{\infty}$, $\pi_1 \pi_2^{-1}$ diffeomorphism.   \\
+
+$\lbrace (S^n-N, \pi_1), (S^n - S, \pi_2) \rbrace$ \, $C^{\infty}$ atlas or differentiable structure.  
+\[
+\begin{aligned}
+  & \partial_j \frac{y_i}{ |y|^2} = \frac{ - 2y_i y_j }{ (y_1^2 + \dots + y_n^2 )^2 } \\ 
+  & \partial_j \frac{ y_j}{ |y|^2} = \frac{ (y_1^2 + \dots + y_n^2) - 2y_j^2 }{ |y|^4} = \frac{ y_1^2 + \dots + \widehat{y}_j^2 + \dots + y_n^2 - y_j^2 }{ |y|^4}
+\end{aligned}
+\]
+\[
+\text{det}{ (\partial_j \pi_1 \pi_2^{-1}(y) ) } = \sum_{ \sigma \in S_n} \text{sgn}{ (\sigma)} \partial_{\sigma_1} \frac{y_1}{ |y|^2} \dots \partial_{\sigma_n} \frac{y_n}{|y|^2} = 0 \text{ only if $y=0$. But that's excluded }
+\]
+\item[(d)] Consider $\begin{gathered}
+  \lbrace ( S^n\backslash, \pi_1), (S^n \backslash S, \pi_2) \rbrace \\ 
+  \mathcal{A} = \lbrace (U_i^{\pm}, \varphi_i^{\pm}) \rbrace \end{gathered}$  \\
+
+Now 
+\[
+\begin{aligned}
+  & S^n \backslash N \bigcap U_i^+ = \begin{cases} U_i^+ & \text{ if } i \neq n + 1 \\ U_{n+1}^+ \backslash N & \text{ if } i = n+1 \end{cases} \\ 
+  & S^n \backslash N \bigcap U_i^- = U_i^-
+\end{aligned}
+\]
+
+\[
+\pi_1(\varphi_i^{\pm})^{-1}(y_1 \dots y_n) = \pi_1(y_1 \dots y_{i-1}, \pm \sqrt{ 1 - |y|^2 }, y_i \dots y_n) = \left( \frac{y_1 }{ 1 - y_n} \dots \frac{y_{i-1} }{ 1 - y_n}, \frac{ \pm \sqrt{ 1 - |y|^2 } }{ 1 - y_n } , \frac{y_i}{ 1 - y_n} \dots \frac{y_{n-1}}{ 1 - y_n }, 0 \right)
+\]
+
+Note $-1< y_n <1$ on $\varphi_i^{\pm}(S^n\backslash \bigcap U_i^{\pm})$
+\[
+\varphi_i^{\pm} \pi_1^{-1}(y_1 \dots y_n) = \varphi_i^{\pm}\left( \frac{ 2y_1}{ 1 + |y|^2} \dots \frac{2y_n}{ 1 + |y|^2} , \frac{|y|^2 - 1 }{ |y|^2 + 1 } \right) = \left( \frac{2y_1 }{ 1 + |y|^2} \dots \frac{ 2 \widehat{y}_i }{ 1 + |y|^2 } \dots \frac{ 2y_n }{ 1 + |y|^2 }, \frac{|y|^2 -1}{ |y|^2 + 1 } \right)
+\]
+$\pi_{1,2}(\varphi_i^{\pm})^{-1}, \varphi_i^{\pm}\pi_{1,2}^{-1}$ are diffeomorphisms (bijective and differentiable).  
+
+So $\lbrace(S^n\backslash N, \pi_1), (S^n\backslash S , \pi_2) \rbrace \bigcup \mathcal{A}$ also a $C^{\infty}$ atlas.  \\
+So $\lbrace(S^n\backslash N, \pi_1), (S^n\backslash S , \pi_2) \rbrace$ ,  $\mathcal{A}$ equivalent.  
+
+
+
+\end{enumerate}
+

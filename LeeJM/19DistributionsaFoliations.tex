@@ -1,0 +1,189 @@
+% 19DistributionsaFoliations.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+%
+%These notes are open-source, governed by the Creative Common license.  Use of these notes is governed by the Caltech Honor Code: ``No member of the Caltech community shall take unfair advantage of any other member of the Caltech community.'' \\
+%
+
+\subsection*{Distributions and Involutivity}
+
+\textbf{distribution on $M$ of rank $k$} is rank-$k$ subbundle of $TM$, \textbf{smooth distribution} if it's smooth subbundle \\
+Often rank-$k$ distribution described by specifying $\forall \, p \in M$ linear subspace $D_p \subseteq T_pM$ of $\text{dim}D_p = k$, \\
+\phantom{\quad \quad \,} $D = \bigcup_{p \in M} D_p$
+
+Lemma 10.32, local frame criterion for subbundles, that $D$ smooth distribution iff $\forall \, p \in M$, $\exists \, $ open $U \ni p$ on which $\exists \, $ smooth vector fields $X_1 \dots X_k : U \to TM$ s.t. $\left. X_1 \right|_q \dots \left. X_k \right|_q$ is basis for $D_q$ $\forall \, q \in U$
+
+\subsubsection*{Integral Manifolds and Involutivity}
+
+Suppose smooth distribution $D \subseteq TM$ \\
+\textbf{integral manifold of $D$} : immersed submanifold $N \neq \emptyset$, $N \subseteq M$ if $T_pN = D_p$ $\forall \, p \in N$
+
+\textbf{Example 19.1 (Distributions and Integral Manifolds)}
+
+\begin{enumerate}
+\item[(a)] 
+\item[(b)]
+\item[(c)]
+\item[(d)]
+\end{enumerate}
+
+$D$ \textbf{involutive} if $\forall \, $ pair of smooth local sections of $D$ (i.e. smooth vector fields $X,Y$ defined on open subset of $M$ s.t. $X_p, Y_p \in D_p$ \, $\forall \, p$) \\
+
+\textbf{integrable} : smooth distribution $D$ on $M$ integrable if $\forall \, p \in M$, $p$ in integral manifold of $D$, i.e. \\
+\phantom{\quad \quad \, } $T_p M = D_p$
+
+\begin{proposition}[19.3] $\forall \, $ integrable distribution is involutive. \end{proposition}
+
+\begin{proof} Let $D \subseteq TM$ is integrable distribution. \\
+suppose smooth local sections of $D$, $X,Y$ on some open $U\subseteq M$. \\
+$\forall \, p \in U$, let $N$ integral manifold of $D$, $N \ni p$ \\
+$X,Y$ sections of $D$, so $X,Y$ tangent to $N$ \\
+By Corollary 8.32, $[X,Y]$ also tangent to $N$, so $[X,Y]_p \in D_p$
+\end{proof}
+
+
+
+\subsubsection*{Involutivity and Differential Forms}
+
+\begin{lemma}[19.5] (\textbf{1-form Criterion for Smooth Distributions}) Suppose smooth $n$-dim. manifold $M$, distribution $D \subseteq TM$, rank $k$  \\ 
+$D$ smooth iff $\forall \, p \in M$, $\exists \, $ neighborhood $U$ on which $\exists \, $ smooth 1-forms $\omega^1 \dots \omega^{n-k}$ s.t. $\forall \, q \in U$, 
+\begin{equation}
+  D_q = \text{ker} \left. \omega^1 \right|_q \bigcap \dots \bigcap \left. \text{ker} \omega^{n-k} \right|_q  \quad \quad \quad \, (19.1)
+\end{equation}
+\end{lemma}
+ \begin{proof}
+By Prop. 10.15, complete forms $\omega^1 \dots \omega^{n-k}$ to smooth coframe $(\omega^1 \dots \omega^n)$ \quad \, $\forall \, p$ \\
+if $(E_1 \dots E_n)$ dual frame, easy to sheet that $D$ locally spanned by $E_{n-k+1 }, \dots , E_n$, so smooth by local frame criterion.  
+
+Converse, suppose $D$ smooth. \\
+$\forall \, $ open $U \ni p \in M$, $\exists \, $ smooth vector fields $Y_1 \dots Y_k$ spanning $D$. \\
+By Prop. 16.5, complete $Y_1 \dots Y_k$ to smooth local frame $(Y_1 \dots Y_n)$ for $M$ in open $U\ni p$ \\
+with dual coframe $(\epsilon^1 \dots \epsilon^n)$, it follows easily that $D$ characterized locally by $D_q = \text{ker} \left. \epsilon^{k+1} \right|_q \bigcap \dots \bigcap \text{ker} \left. \epsilon^n \right|_q$ 
+
+\end{proof}
+
+
+if $D$ rank-$k$ distribution on smooth $n$-manifold $M$, any \\
+\phantom{if $D$ } $n-k$ linearly independent 1-forms $\omega^1 \dots \omega^{n-k}$ on open $U\subseteq M$ s.t. (19.1) 
+\[
+D_q = \left. \text{ker}\omega^1 \right|_q \bigcap \dots \bigcap \left. \text{ker}\omega^{n-k} \right|_q = \lbrace X | X=X^iX_i, \, i =1 \dots k, \, \omega^1(X) = 0\rbrace \bigcap \dots \bigcap \lbrace X | \omega^{n-k}(X) = 0\rbrace
+\]
+$\forall \, q \in U$ are \textbf{local defining forms} for $D$
+
+
+
+\begin{proposition}[19.8] \textbf{(Local Coframe Criterion for Involutivity)}
+  Let $D$ smooth distribution of rank $k$ on smooth $n$-manifold $M$ \\
+let $\omega^1 \dots \omega^{n-k}$ smooth defining forms for $D$ on open $U \subseteq M$. 
+
+The following are equivalent:
+\begin{enumerate}
+\item[(a)] $D$ is involutive on $U$ 
+\item[(b)] $d\omega^1 \dots d\omega^{n-k}$ annihilate $D$
+\item[(c)] $\exists \, $ smooth 1-forms $\lbrace \alpha^i_j | i, j =1 \dots n-k \rbrace$ s.t. 
+\[
+d\omega^i = \sum_{j=1}^{n-k} \omega^j \wedge \alpha^i_j \quad \quad \, \forall \, i = 1 \dots n-k
+\]
+\end{enumerate}
+\end{proposition}
+
+\exercisehead{19.9} Prove the preceding proposition, 19.8.  
+
+\begin{proof}
+(a) $\Longrightarrow$ (b) 
+
+On open $U\subseteq M$, $\forall \, q \in U$, $\omega^i$ smooth defining form for $D$, $i=1\dots k$, and $\omega^i(X) = 0$ \, $\forall \, X \in D_q$  \\
+\phantom{ On open } Then $d\omega^i$ also annihilates $D$ on $U$ (Thm. 19.7 1-form Criterion for Involutivity (19.3) ) \\
+$d\omega^1 \dots d\omega^{n-k}$ annihilate $D$
+
+(b) $\Longrightarrow $ (c)
+
+$d\omega^i \in \Omega^2_q(M)$, $\forall \, q \in U$ \\
+By Lemma 19.6, smooth $p$-form $\eta$ on $U$ annihilates $D$ iff $\eta$ ofform $\eta = \sum_{i=1}^{n-k} \omega^i\wedge \beta^i$, for $(p-1)$ forms $\beta^1 \dots \beta^{n-k}$ on $U$ \\
+$d\omega^i$ annihilates $D$ \\
+\phantom{\quad \, } $\Longrightarrow d\omega^i = \sum_{j=1}^{n-k} \omega^j \wedge \beta_j^i \quad \quad \, \beta^i_{ \, j} $ smooth 1-forms on $U$, $i,j=1\dots n-k$
+
+(c) $\Longrightarrow $ (a) 
+
+Use Thm. 19.7 Proof
+\[
+\omega^i([X,Y]) = X(\omega^i(Y)) - Y(\omega^i(X)) - d\omega^i(X,Y)  = 0 -0 - d\omega^i(X,Y)
+\]
+\[
+d\omega^i(X,Y) - \sum_{j=1}^{n-k} \omega^j \wedge \alpha^i_{ \, j}(X,Y) = \sum_{j=1}^{n-k} \omega^j(X) \alpha^i_{ \, j }(Y) - \alpha^i_{ \, j}\omega^j(Y) = 0 - 0 = 0 
+\]
+where I used this local formula:
+\[
+(\alpha \wedge \beta)_p(v,w) = \alpha_p(v) \beta_p(w) - \alpha_p(w) \beta_p(v)
+\]
+$\omega^i([X,Y]) = 0$ so $[X,Y] \in \text{ker}\omega^i$ \quad \, $\forall \, i = 1 \dots n-k$
+
+\end{proof}
+
+
+
+\subsection*{Problems}
+
+\problemhead{19-3}
+
+Let $\omega \in \Omega^1(M)$ \\
+integrating factor $\mu $ for $\omega \equiv \mu \in C^{\infty}(M)$, $\mu > 0$, and $\mu \omega $ exact on $U$, i.e. $\mu \omega = df$, for some $f \in \mathcal{C}^{\infty}(M)$
+
+\begin{enumerate}
+\item[(a)] If $\omega \neq 0$ on $U$, \\
+Suppose $\omega$ admits an integrating factor $\mu$.  
+
+\[
+d\omega \wedge \omega = d\left( \frac{df}{\mu} \right) \wedge \frac{df}{\mu} = \left( \frac{d^2 f}{ \mu} + -\frac{df}{\mu^2} \frac{ \partial \mu }{ \partial x^i } dx^i \wedge df \right) \wedge \frac{df}{\mu} = 0 
+\]
+as $d^2f =0$ and $df\wedge df =0$
+
+If $d\omega \wedge \omega =0$, consider $\mu \in \mathcal{C}^{\infty}(M)$ s.t. $\mu >0$ (i.e. positive) on open $U\subseteq M$ (build it up with partitions of unity if need to).  
+
+Now, using the formula for exterior differentiation, 
+\[
+d(\mu \omega) = d\mu \wedge \omega + (-1)^0 \mu d\omega 
+\]
+so that 
+\[
+d (\mu \omega) \wedge \omega = d\mu \wedge \omega \wedge \omega + \mu d\omega \wedge \omega = 0 + \mu d\omega \wedge \omega = 0 + 0 = 0 
+\]
+
+$\omega$ nonzero, so $d(\mu \omega) =0$.  EY : 20150221 I'm not sure about this statement. Surely, locally,
+
+\[
+d(\mu \omega) \wedge \omega = \frac{1}{2} ( d(\mu \omega) )_{ij} \omega_k dx^i \wedge dx^j \wedge dx^k = d(\mu \omega)_{ \underline{I}} \omega_k dx^{\underline{I}} \wedge dx^k
+\]
+with $\underline{I} = (i_1,i_2)$ and $i_1 < i_2$.  
+
+By considering every $k \neq \underline{I}$, then I think one can conclude, component by component, that $d(\mu \omega) =0$. 
+
+Then, consider a compact submanifold $B$, $\text{dim}{B} =3$ that is a submersion of $U$.  Then use Stoke's theorem in the following:
+
+\[
+\int_B d(\mu \omega) = \int_{\partial B} \mu \omega = 0 \Longrightarrow \mu \omega = df
+\]
+
+So 
+\[
+\boxed{ \begin{gathered} \text{ If } \omega \neq 0 \text{ on } U \\
+    \omega \text{ admits an integrating factor $\mu$ } \text{ iff } d\omega \wedge \omega  =0  \end{gathered} }
+\]
+
+EY 20150221 : I didn't use Frobenius' theorem for the converse.  Should I have?
+\item[(b)] If $\text{dim}{M}=2$, $d\omega \wedge \omega =0$ (immediately) \\
+Then $\omega $ admits an integrating factor by the above solution.
+\end{enumerate}

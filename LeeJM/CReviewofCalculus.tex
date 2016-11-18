@@ -1,0 +1,72 @@
+% CReviewofCalculus.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+
+\section{Review of Calculus}
+
+\subsection*{Total and Partial Derivatives}
+
+\begin{proposition}[C.3] (The Chain Rule for Total Derivatives)
+
+Suppose $V,W,X$ finite-dim. vector spaces
+
+open $\begin{aligned}
+  & \quad \\ 
+  & U \subseteq V \\
+  & \widetilde{U} \subseteq W \end{aligned}$
+
+maps $\begin{aligned}
+  & \quad \\
+  & F : U \to \widetilde{U} \\
+  & G: \widetilde{U} \to X \end{aligned}$
+
+if $F$ diff. at $a\in U$, $G$ diff. at $F(a) \in \widetilde{U}$, \\
+\phantom{ \quad } then $GF$ diff. at $a$
+\[
+D(GF)(a) = DG(F(a)) \circ DF(a)
+\]
+\end{proposition}
+
+\begin{proposition}[C.4] Suppose $\begin{aligned}
+    & \quad \\ 
+    & U \subseteq \mathbb{R}^n \\
+    & V\subseteq \mathbb{R}^m \end{aligned}$, \quad \, $F: U \to V$ diffeomorphism \\
+Then $m=n$ and \\
+\phantom{ \quad } $\forall \, a \in U$, $DF(a)$ invertible, with 
+\[
+DF(a)^{-1} = D(F^{-1})(F(a))
+\]
+\end{proposition}
+
+\begin{proof}
+$F^{-1}F = 1_U$  \\
+Chain rule implies $\forall \, a \in U$, 
+
+\begin{equation}
+  1_{\mathbb{R}^n} = D(1_U)(a) = D(F^{-1}F)(a) = DF^{-1}(F(a))DF(a) \quad \quad \, (C.5)
+\end{equation}
+
+Similarly $FF^{-1}=1_V$ implies
+\[
+DF(a)DF^{-1}(F(a)) = 1_{\mathbb{R}^m}
+\]
+so thus
+\[
+DF(a)^{-1}=D(F^{-1})(F(a))
+\]
+\end{proof}
+
+

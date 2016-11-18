@@ -1,0 +1,642 @@
+% 08VectorFields.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+% 
+% Caltech Honor Code and the spirit of Open Source/Creative Commons 
+%
+
+
+
+
+\exercisehead{4.1} 
+Consider $ \begin{aligned} & \quad \\ 
+  & 1 : \mathbb{R}^n \to \mathbb{R}^n \\ & x^i(x) = x^i \end{aligned}$, \quad \, smooth structure on $\mathbb{R}^n$, that's open.  
+
+Consider $\begin{aligned} & \quad \\ 
+  & F: T\mathbb{R}^n \to \mathbb{R}^{2n} \\
+& F(x^1 \dots x^n, v^1 \dots v^n ) = (x^1 \dots x^n, v^1 \dots v^n) \end{aligned}$ \\
+$F= F^{-1}$, so clearly $F = 1_{T\mathbb{R}^n} $ is cont., bijective, and it's inverse cont. and smooth.  $F$ diffeomorphism.  
+
+\exercisehead{4.2}  $F:M \to N$.  Consider (3.6)
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    & (U , \varphi) \subset M \quad \quad \, \varphi = (x^1 \dots x^m) \\ 
+    & (V, \psi ) \subset N \quad \quad \, \psi = (y^1 \dots y^n) 
+\end{aligned}  \quad \quad \quad \, \begin{aligned} & X = X^i \frac{ \partial }{ \partial x^i } \\ 
+    & Y = Y^j \frac{ \partial }{ \partial y^j } \end{aligned}
+\end{gathered}
+\]
+
+\[
+(F_* X)(f) = Y^j \frac{ \partial }{ \partial y^j} f = X(fF) = X^i \frac{ \partial }{ \partial x^i } fF = X^i \frac{ \partial (f\psi^{-1})}{ \partial y^j} \frac{ \partial }{ \partial x^i } (\psi F^j \varphi^{-1})(\varphi(p)) = X^i \frac{ \partial F^j}{ \partial x^i }(p) \frac{ \partial f}{ \partial y^j}
+\]
+where
+\[
+fF = f\psi^{-1} \psi F\varphi^{-1} \varphi \Longrightarrow fF(p) = (f\psi^{-1})(y) (\psi F\varphi^{-1})(\varphi(p))
+\]
+(a serious case of abuse of notation)
+
+For $F_*X$, 
+\[
+Y^j = X^i \frac{ \partial F^j}{ \partial x^i}
+\]
+
+\[
+F_* \left. \frac{ \partial }{ \partial x^i } \right|_p = F_* \frac{ \partial }{ \partial x^i} = \delta_i^{ \, \, k } \frac{ \partial F^j}{ \partial x^k} \frac{ \partial }{ \partial y^j} = \frac{ \partial F^j}{ \partial x^i } \frac{ \partial }{ \partial y^j} = \frac{ \partial F^j}{ \partial x^i}(p) \left. \frac{ \partial }{ \partial y^j } \right|_{F(p)}
+\]
+with $X^k = \delta_i^{\, \, k}$
+
+\[
+\begin{aligned}
+  &  F_* : TM \to TN \\
+  & F_*( x^1 \dots x^n, v^1 \dots v^n) = (y^1(x) \dots y^n(x), v^i \frac{ \partial F^1}{ \partial x^i} \dots v^i \frac{ \partial F^n}{ \partial x^i} )
+\end{aligned}
+\]
+Clearly $F_*$ smooth since $F$ smooth.  
+
+\begin{lemma}[4.8] Suppose smooth $F: M \to N$, \, $\begin{aligned} & \quad \\ & Y \in \tau(M) \\ & Z \in \tau(N) \end{aligned}$ \\
+$Y,Z$, $F$-related iff $\forall \, $ smooth $\mathbb{R}$-valued $f$ on open $V \subset N$, 
+\[
+Y(fF) = (Zf) F \quad \quad \quad (4.4) 
+\]
+\end{lemma}
+
+\begin{proof}
+  $\forall \, p \in M$, $\forall \, $ smooth $\mathbb{R}$-valued $f$, $f$ defined near $F(p)$
+\[
+\begin{gathered}
+  Y(fF)(p) = Y_p(fF) = (F_* Y_p)f \quad \quad \quad (F_*Y)f = Y(fF) \\ 
+  (Zf)F(p) = (Zf)(F(p)) = Z_{F(p)}f  
+\end{gathered}
+\]
+if $(Zf) F(p) = Y(fF)(p) = Zf = (F_*Y) f $ 
+\[
+(Zf)F = Y(fF) \Longleftrightarrow Z = F_* Y \text{ i.e. iff $Y, Z$ \, $F$-related }
+\] 
+
+\end{proof}
+
+
+
+\subsubsection*{ Vector Fields on a Manifold with Boundary}
+
+\subsection*{ Lie Brackets }
+
+\begin{lemma}[4.12] Lie bracket of smooth vector fields $V,W$, $\begin{aligned} & \quad \\
+    & [V, W ] : C^{\infty} M \to C^{\infty} M \\ 
+    & [V, W ] f = VW f - WV f \end{aligned}$ \quad is a smooth vector fields.  
+\end{lemma}
+
+\begin{proof}
+  By Prop. 4.7.  ($M$ smooth, map $\mathcal{Y} : C^{\infty}M \to C^{\infty} M$ is a derivation iff $\mathcal{Y} f = Yf$, $Y$ some smooth vector field $Y \in \tau(M)$.  \\
+Suffices to show $[V,W]$ derivation of $C^{\infty}M$  
+\[
+\begin{gathered}
+  [V,W] (fg) = V(W(fg)) -  W(V(fg)) = V(fWg + gWf) - W( fVg  + gVf) = \\
+   = VfWg + fVW g + Vg Wf + gVWf - WfVg - fWVg - WgVf - gWVf  = \\
+   =fVWg + gVWf - fWV g - gWVf = f[V,W] g + g[V,W]f
+\end{gathered}
+\]
+\end{proof}
+
+
+extremely useful coordinate formula for Lie bracket 
+\begin{lemma}[4.13]
+  Let $\begin{aligned} & \quad \\
+    & V = V^i \frac{ \partial }{ \partial x^i} \\ 
+    & W = W^j \frac{ \partial }{ \partial x^j} \end{aligned}$ \quad \quad $\begin{aligned}
+    & [V,W] = \left( V^i \frac{ \partial W^j}{ \partial x^i } - W^i \frac{ \partial V^j}{ \partial x^i } \right) \frac{ \partial }{ \partial x^j } \quad \quad \quad (45) \\ 
+    & [V,W]  = (VW^j - WV^j) \frac{\partial }{ \partial x^j} \quad \quad \quad (46) \end{aligned}$
+
+\end{lemma}
+
+\begin{proof}
+  $[V,W]$ smooth vector field already, its values are determined locally $\left. ([V,W] f ) \right|_U = [V,W] ( \left. f \right|_U )$  \\
+It suffices to compute in a single smooth chart.  
+\[
+\begin{gathered}
+[V,W] f = V^i \frac{ \partial }{ \partial x^i } \left( W^j \frac{ \partial f}{ \partial x^j} \right) - W^j \frac{ \partial }{ \partial x^j} \left( V^i \frac{ \partial f}{ \partial x^i }\right) = V^i \frac{ \partial W^i}{ \partial x^i } \frac{ \partial f}{ \partial x^j} + V^i W^j \frac{ \partial^2 f}{ \partial x^i \partial x^j } - W^j \frac{ \partial V^i }{ \partial x^j} \frac{ \partial f}{ \partial x^i } - W^j V^i \frac{ \partial^2 f}{ \partial x^j  \partial x^i } = \\
+= \left( V^i \frac{ \partial W^j}{ \partial x^i } - W^i \frac{ \partial V^j}{ \partial x^i} \right) \frac{ \partial f}{ \partial x^j}
+\end{gathered}
+\]
+
+\end{proof}
+
+\exercisehead{4.6}
+
+For Lemma 4.15 (Properties of the Lie Bracket), part (d), 
+
+the point is to use the derivative properties of the vector fields.  
+
+\[
+\begin{gathered}
+  \left[fV, gW \right] h = fV( gW h ) - gW (fVh) = (fVg)(Wh) + g(fV(Wh)) - (gWf)(Vh) - f(gW)(Vh) = \\
+  = g( f VW) h - (fgWV)h +   f(Vg)W h - g(Wf)Vh
+\end{gathered}
+\]
+
+\begin{proposition}[4.16] (Naturality of the Lie Bracket)
+  Let smooth $F:M \to N$, \quad $\begin{aligned} & \quad \\ & V_1, V_2 \in \tau(M) \\ & W_1, W_2 \in \tau(N) \end{aligned}$, \quad $V_i$ \, $F$-related to $W_i$, $i=1,2$.  
+
+Then $[V_1, V_2 ]$ $F$-related to $[W_1, W_2]$
+
+\end{proposition}
+
+\begin{proof}
+Use Lemma 4.8, and given $V_i$, \, $F$-related to $W_i$  
+
+\[
+\begin{aligned}
+  & V_1 V_2 (fF) = V_1 (W_2 f) F = W_1 W_2 fF \\ 
+  & V_2 V_1 (fF) = (W_2 W_1 f) F
+\end{aligned} \quad \quad \Longrightarrow [V_1, V_2](fF) = ( [W_1, W_2] f)F
+\]
+So $[V_1, V_2]$ , \, $F$-related to $[W_1, W_2]$
+\end{proof}
+
+\begin{corollary}[4.17]
+  Suppose $F: M \to N$ diffeomorphism, $V_1, V_2 \in \tau(M)$ \\
+Then $F_*[V_1, V_2] = [F_* V_1, F_* V_2 ]$
+
+\end{corollary}
+
+\begin{proof} $F$ diffeomorphism.  Then Lemma 4.9, $\exists \, $ push-forward (or alternatively, by Prop. 4.16, $W_i = F_* V_i$ i.e. $F$-related).  
+\[
+F_*[V_1, V_2 ] = [W_1, W_2 ] =  [F_* V_1, F_*V_2]
+\]
+\end{proof}
+
+\subsection*{ The Lie Algebra of a Lie Group }
+
+\[
+L_g = m i_g 
+\]
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+%    U_i \subset \mathbb{R}^{n+1} - 0 &  \\
+%    V_i \subset \mathbb{R}P^n  & \mathbb{R}^n  \\ };
+G & G \times G & G   \\  };
+%  \path[-stealth]
+  \path[->]
+  (m-1-1) edge node [right] {$i_g$} (m-1-2)
+  (m-1-2) edge node [below] {$m$} (m-1-3);
+\end{tikzpicture}
+
+$i_g(h) = (g,h)$, $m$ is multiplication, follows $L_g$ smooth.  
+
+$L_g$ diffeomorphism of $G$, since $L_{g^{-1}}$ smooth inverse. 
+
+$\forall \, $ 2 pts. $g_1, g_2 \in G$, \, $\exists \, ! \, L_{g_2 g_1^{-1}}$ s.t. $L_{g_2 g_1^{-1}} g_1 = g_2$  many important properties of Lie groups follow from $L_{g_2 g_1^{-1}}$ as diffeomorphism.  
+
+vector field $X$ on $G$ \emph{left invariant} if 
+\begin{equation}
+  (L_g)_* X_{g'} = X_{gg'} \quad \quad \forall \, g, g' \in G \quad \quad \quad (4.8)
+\end{equation}
+
+$L_g$ diffeomorphism.  
+\[
+(L_g)_*(aX+ bY) = a(L_g)_*X + b(L_g)_* Y
+\]
+set of all smooth left-invariant vector fields on $G$ is a linear subspace $\tau(M)$, \emph{ and } closed under Lie bracket.  
+
+\begin{lemma}[4.18] 
+Let $G$ Lie group, suppose $X,Y$ smooth left-invariant vector fields on $G$ \\
+Then $[X,Y]$ also left invariant.  
+\end{lemma}
+
+\begin{proof}
+  Given $\begin{aligned} & \quad \\ & (L_g)_*X = X \\ & (L_g)_* Y = Y \end{aligned}$ by def. of left-invariance.  
+\end{proof}
+
+
+
+
+
+
+
+
+
+\subsection*{Vector Fields on Manifolds}
+
+\begin{lemma}[8.6] \textbf{(Extension Lemma for Vector Fields)} \\
+  $M$ smooth manifold with or without boundary \\
+$A \subseteq M$ closed subset. \\
+Suppose $X$ smooth vector field along $A$.  \\
+Give open $U \supset A$, $\exists \, $ smooth global vector field $\widetilde{X}$ on $M$ s.t. $\left. \widetilde{X} \right|_A = X$ and $\text{supp}{\widetilde{X}} \subseteq U$
+\end{lemma}
+
+\exercisehead{8.9}
+
+\begin{enumerate}
+\item[(a)] $\forall \, p \in M$, \, $\begin{aligned} & \quad \\
+  & X_p = X^i(p) \frac{ \partial }{ \partial x^i} \\
+  & Y_p = Y^i(p) \frac{ \partial }{ \partial x^i } \end{aligned}$ \\
+$f,g \in C^{\infty}{(M)}$
+
+\[
+\begin{aligned}
+  & (fX)_p = f(p)X_p = f(p) X^i(p) \frac{ \partial }{ \partial x^i } \\ 
+  & (gY)_p = g(p)Y_p = g(p)Y^i(p) \frac{ \partial }{ \partial x^i }
+\end{aligned}
+\]
+\[
+(fX + gY)_p  = f(p)X_p + g(p)Y_p = f(p) X^i(p) \frac{ \partial}{ \partial x^i} + g(p)Y^i(p) \frac{ \partial }{ \partial x^i } = (f(p)X^i(p) + g(p) Y^i(p)) \frac{ \partial }{ \partial x^i }
+\]
+$f(p)X^i(p) + g(p)Y^i(p)$ smooth so $(fX+gY)_p$ smooth.
+\item[(b)] Let $g=f$ 
+\[
+(fX+fY)_p = f(p)X_p + f(p)Y_p = f(p)X^i(p) \frac{ \partial }{ \partial x^i} + f(p)Y^i(p)\frac{ \partial}{\partial x^i} = f(p)(X^i(p) + Y^i(p))\frac{ \partial }{ \partial x^i } = (f(X+Y))_p
+\]
+Let $Y=X$ so $\forall \, p$, 
+\[
+(fX+gX)_p  = f(p)X_p + g(p)X_p = f(p)X^i(p)\frac{ \partial}{ \partial x^i} +g(p)X^i(p) \frac{ \partial }{ \partial x^i} = (f(p) + g(p))X^i(p)\frac{ \partial }{ \partial x^i } = ((f+g)X)_p
+\]
+
+\[
+(g(fX))_p = g(p)(fX)_p= g(p)f(p)X_p = ((gf)X)_p
+\]
+Let $f=1$, $g=0$, $1X=X$
+\end{enumerate}
+
+
+
+
+
+\hrulefill
+
+\subsubsection*{Local and Global Frames}
+
+\subsubsection*{Vector Fields as Derivations of $C^{\infty}(M)$}
+
+if $X \in \mathfrak{X}(M)$, smooth $f$ defined on open $U\subseteq M$, obtain
+\[
+\begin{aligned}
+  & Xf : U \to \mathbb{R} \\  
+  & (Xf)(p) = X_p F
+\end{aligned}
+\]
+From J. Lee: (Be careful not to confuse the notations $fX$ and $Xf$: the former is the smooth \emph{vector field} on $U$ obtained by multiplying $X$ by $f$, while the latter is the real-valued \emph{function} on $U$ obtained by applying the vector field $X$ to the smooth function $f$)
+
+\begin{proposition}[8.14]
+$X: M \to TM$ 
+
+equivalent
+\begin{enumerate}
+\item[(a)] $X$ smooth 
+\item[(b)] $\forall \, f \in C^{\infty}(M)$, $Xf $ smooth on $M$ 
+\item[(c)] $\forall \, $ open $U \subseteq M$, $\forall \, f \in C^{\infty}(M)$, $Xf \in C^{\infty}(U)$
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  (a) $\Longrightarrow $ (b), assume $X$ smooth, \\
+let $f\in C^{\infty}(M)$ \\
+$M$ manifold, $\forall \, p \in M$, choose smooth $x^i$ on open $U\ni p$ \\
+Then $\forall \, x \in U$, 
+\[
+Xf(x) = \left( \left. X^i(x) \frac{ \partial }{ \partial x^i} \right|_x \right) f = X^i(x) \frac{ \partial f}{ \partial x^i}(x)
+\]
+$X^i$ smooth on $U$ by Prop. 8.1, $Xf$ smooth in $U$
+\end{proof}
+
+\subsection*{Vector Fields and Smooth Maps}
+
+\begin{proposition}[8.16]
+  Suppose smooth $F:M\to N$, \quad \, $\begin{aligned} & \quad \\ 
+    & X \in \mathfrak{X}(M) \\
+    & Y \in \mathfrak{X}(N) \end{aligned}$ \\
+
+Then $X,Y$ $F$-related iff $\forall \, $ smooth $h$, defined on open $V \subset N$ 
+\[
+X(hF) = (Yh)F
+\]
+
+
+
+\end{proposition}
+
+\begin{proof}
+$\forall \, p \in M$, $\forall \, $ smooth $h$ defined on open $V \ni F(p)$ 
+\[
+\begin{aligned}
+  & X(hF)(p) = X_p(hF) = dF_p(X_p)h \\ 
+  & (Yh)F(p) = Yh(F(p)) = Y_{F(p)}h
+\end{aligned}
+\]
+$X(hF) = (Yh)F$ \quad \, $\forall \, h \in C^{\infty}(N)$ iff $dF_p(X_p) = Y_{F(p)}$ \, $\forall \, p$
+
+
+
+
+\end{proof}
+
+
+
+
+\begin{proposition}[8.19]
+  smooth $M,N$, diffeomorphism $F:M \to N$ \\
+$\forall \, X \in \mathfrak{X}(M)$, $\exists \, !$ smooth vector field on $N$ $F$-related to $X$
+\end{proposition}
+
+\begin{proof}
+$\forall \, p \in M$, $F(p) = q\in N$  \\
+
+define $Y$ by 
+\[
+\begin{aligned}
+  & Y_q = dF_{F^{-1}(q)}(X_{F^{-1}(q)} ) = dF_p(X_p) \\ 
+  \Longrightarrow & Y_{F(p)} = dF_p(X_p) 
+\end{aligned}
+\]
+$Y: N \to TN$ 
+\[
+Y = N \xrightarrow{F^{-1}} M \xrightarrow{X} TM \xrightarrow{dF} TN
+\]
+$Y = dF \circ X \circ F^{-1}$
+
+$dF, X, F^{-1}$ smooth.  $Y$ smooth. 
+\end{proof}
+\textbf{pushforward} of $X$ by $F$, denote $F_*X$ 
+\begin{equation}
+  (F_*X)_q = dF_{F^{-1}(q)}(X_{F^{-1}(q) } ) \quad \quad \quad \, (8.7)
+\end{equation}
+$(F_*X)_q = dF_p(X_p)$
+
+
+
+\begin{corollary}[8.21]
+  Suppose diffeomorphism $F: M \to N$, $X \in \mathfrak{X}(M)$ \\
+  $\forall \, h \in C^{\infty}(N)$
+\[
+((F_*X)h) \circ F = X(h\circ F)
+\]
+\end{corollary}
+
+
+\subsubsection*{Vector Fields and Submanifolds}
+
+
+\subsection*{Lie Brackets}
+
+\begin{proposition}[8.26] \textbf{(Coordinate Formula for the Lie Bracket)}
+  \begin{equation}
+    [X,Y] = \left( X^i \frac{ \partial Y^j}{ \partial x^i } - Y^i \frac{ \partial X^j}{ \partial x^i } \right) \frac{\partial}{ \partial x^j }  \quad \quad \quad \, (8.8)
+\end{equation}
+\end{proposition}
+
+\subsection*{The Lie Algebra of a Lie Group}
+
+Recall that $G$ acts smoothly and transitively on itself by left translation:
+\[
+L_g(h) = gh
+\]
+
+$X$ on $G$ \textbf{left-invariant} if 
+\begin{equation}
+d(L_g)_{g'}(X_{g'}) = X_{gg'} \quad \, \forall \, g, g' \in G \quad \quad \quad \, (8.12)
+\end{equation}
+
+$L_g$ diffeomorphism, so 
+\[
+(L_g)_*X = X \quad \quad \, \forall \, g \in G
+\]
+
+
+
+
+
+\textbf{Example 8.36 (Lie Algebras)}
+
+\begin{enumerate}
+\item[(a)]
+\item[(b)]
+\item[(c)]
+\item[(d)]
+\item[(e)]
+\item[(f)] $\forall \, $ vector $V$ becomes Lie algebra if $[,]=0$ \\
+such a Lie algebra is \textbf{abelian}
+\end{enumerate}
+
+$\text{Lie}{G}$ Lie algebra of all smooth left-invariant vector fields on Lie Group $G$ \textbf{ Lie algebra of $G$ }
+
+
+
+\begin{theorem}[8.37] $\begin{aligned}  & \quad \\
+    & \epsilon : \text{Lie}{(G)} \to T_eG \\ 
+    & \epsilon(X) = X_e \end{aligned}$
+
+$\epsilon$ vector space isomorphism
+\end{theorem}
+
+\begin{proof}
+  If $\epsilon(X) = X_e = 0$ for some $X \in \text{Lie}{(G)}$
+
+left invariant $d(L_g)_{g'}(X_{g'}) = X_{gg'}$
+\[
+d(L_g)_e(X_e) = X_g=0 \quad \, \forall \, g \in G, \text{ so } X= 0 
+\]
+$\epsilon$ injective
+
+Let $V \in T_eG$ arbitrary. \\
+\quad define (rough) vector field $v^L$ on $G$ by 
+\begin{equation}
+  \left. v^L \right|_g = d(L_g)_e(v) \quad \quad \quad \, (8.13)
+\end{equation}
+
+\end{proof}
+
+
+
+
+
+\textbf{Example 8.40}
+\begin{enumerate}
+\item[(a)] $L_b(x) = b + x$  \quad \quad \, $bx = b + x$ \quad \quad \, $y = x + b$ \\
+
+$d(L_g) = 1$ \\
+$X_x = X^i \frac{ \partial }{ \partial x^i }$ \\
+$d(L_b)_x X_x = 1 X_x = X_x = \widetilde{X}^i \frac{ \partial }{ \partial (x+b)} = \widetilde{X}^i(x+b) \frac{ \partial }{ \partial x} = X^i(x) \frac{ \partial }{ \partial x^i }$
+
+$X^i$ constants \\
+
+$[X,Y]=0$ if $X,Y$ constants. 
+
+lie algebra of $\mathbb{R}^n$ abelian (cf. Example 8.36, (f))
+\item[(b)]
+\item[(c)]
+\end{enumerate}
+
+\begin{proposition}[8.41] \textbf{(Lie Algebra of the General Linear Group)}
+  \begin{equation}
+    \text{Lie}{(GL(n,\mathbb{R}))} \to T_{1_n}GL(n,\mathbb{R}) \to \mathfrak{gl}{(n,\mathbb{R})} \quad \quad \, (8.14)
+\end{equation}
+is isomorphism
+\end{proposition}
+
+\begin{proof}
+global coordinates $X^i_{ \, \, j}$ on $GL(n,\mathbb{R})$
+
+natural isomorphism
+\[
+\begin{gathered}
+  T_1GL(n,\mathbb{R}) \longleftrightarrow \mathfrak{gl}(n,\mathbb{R}) \\
+  A^i_{ \, \, j } \left. \frac{ \partial }{ \partial X^i_{ \, \, j }} \right|_{1_n} \longleftrightarrow (A^i_{ \, \, j})
+\end{gathered}
+\]
+
+
+Recall 
+\[
+d(L_g)_{g'}(X_{g'}) = X_{gg'}
+\]
+Recall Lie algebra of all smooth left invariant vector fields on $G$ \\ 
+Recall (8.13)
+\begin{equation}
+\left. v \right|_g = d(L_g)_e(v) \quad \quad \quad \, (8.13)
+\end{equation}
+
+$L_X$ is restriction to $GL(n,\mathbb{R})$ of linear map $A \mapsto XA$ on $\mathfrak{gl}{(n,\mathbb{R})}$  
+
+\[
+\begin{aligned}
+  & L_X g = Xg = X^i_{ \, \, k } g^k_{ \, \, j } \\ 
+  & L_X 1 = X1 = X^i_{ \, \, k } \delta^k_{ \, \, j } = X^i_{ \, \, j } = X
+\end{aligned}
+\]
+
+$X^i_{ \, \, j}$ global coordinates on $GL(n,\mathbb{R})$, so
+\[
+\left. \frac{ \partial }{ \partial X^i_{\, \, j}} \right|_1 = \left. \frac{ \partial }{ \partial X^i_{\, \, j}} \right|_X
+\]
+
+\[
+DL_X = \frac{ \partial}{ \partial A^k_{ \, \, j} } ( XA)^i_{ \, \, j} = \frac{ \partial }{ \partial A^k_{ \, \, l} } X^i_{ \, \, m} A^m_{ \, \, j} = X^i_{ \, \, m} \delta^m_{ \, \, k } \delta^l_{ \, \, j } = X^i_{ \, \, k } \delta^i_{ \, \, j}
+\]
+
+\[
+(DL_X)_1(A) = ((DL_X)^{i \, \, \, l }_{ \, \, j \, \, \, k } A^k_{\, \, l} \left. \frac{ \partial }{ \partial X^i_{ \, \, j } } \right|_X = ( X^i_{ \, \, k } \delta^l_{ \, \, j} A^k_{ \, \, l } ) \left. \frac{ \partial }{ \partial X^i_{ \, \, j } }\right|_X = (X^i_{ \, \, k} A^k_{ \, \, j} ) \left. \frac{ \partial }{ \partial X^i_{ \, \, j} } \right|_X
+\]
+
+
+\end{proof}
+
+
+
+
+\subsection*{Problems}
+
+\problemhead{8-1}
+
+$\forall \, p \in A$, choose neighborhood $W_p$ of $p$, smooth $\widetilde{X}:A \to TM$ s.t. $\widetilde{X} = X$ on $W_p \bigcap A$
+
+Replace $W_p$ by $W_p \bigcap U$, so $W_p \subseteq U$
+
+$\lbrace W_p | p \in A \rbrace \bigcup \lbrace M \backslash A \rbrace$ open cover of $M$
+
+Let $\lbrace \psi_p | p \in A \rbrace \bigcup \lbrace \psi_0 \rbrace$ smooth partition of unity subordinate to this cover, with $\text{supp}{\psi_p} \subseteq W_p$, $\text{supp}{\psi_0} \subseteq M \backslash A$
+
+$\forall \, p \in A$, $(U_p,x^i)$ smooth coordinate chart
+
+\[
+\begin{gathered}
+  X_p = \left. X^i(p) \frac{ \partial }{ \partial x^i } \right|_p \\ 
+  X^i: U_p \to \mathbb{R}
+\end{gathered}
+\]
+
+$\psi_p \widetilde{X}^i(p)$ smooth on $W_p$
+
+$\psi_p\widetilde{X}^i(p)$ has smooth extension to all of $M$ if $\psi_p \widetilde{X}^i(p) =0$ on $M\backslash \text{supp}{\psi_p}$ \\
+
+on open $W_p \backslash \text{supp}{ \psi_p}$, they agree
+
+define $\widetilde{X}^i:M \to \mathbb{R}$ 
+\[
+\widetilde{X}^i(x) = \sum_{p \in A} \psi_p(x) \widetilde{X}^i(p)
+\]
+
+$\lbrace \text{supp}{\psi_p} \rbrace$ locally finite, so $\sum_{p\in A} \psi_p(x) \widetilde{X}^i(p)$ has only finite number of nonzero terms in neighborhood of $\forall \, x \in M$, so $\widetilde{X}^i(x)$ smooth
+
+If $x\in A$, $\psi_0(x) = 0$, $\widetilde{X}^i(x) = X^i(x)$ \quad \, $\forall \, p $ s.t. $\psi_p(x) \neq 0$, so 
+\[
+\widetilde{X}^i(x) = \sum_{p\in A} \psi_p(x) X^i(x) = (\psi_0(x) + \sum_{p\in A} \psi_p(x)) X^i(x) = X^i(x)
+\]
+so $\widetilde{X}^i$ extension of $X$
+
+
+\hrulefill
+
+\problemhead{8-2} \textsc{Euler's Homogeneous Function Theorem} 
+$y = \lambda x$
+\[
+\frac{ \partial f}{ \partial y^i } \frac{ \partial y^i}{ \partial \lambda} = x^i \frac{ \partial f}{ \partial y^i} = x^i \frac{ \partial f}{ \partial ( \lambda x^i)} = \frac{d}{d\lambda} f(y) = \frac{d}{d\lambda} f(\lambda x) = \frac{d}{d\lambda} ( \lambda^c f(x)) = c \lambda^{c-1} f(x)
+\]
+
+$\lambda = 1$
+
+\[
+\boxed{ x^i \frac{ \partial f}{ \partial x^i } = V_x f(x) = cf(x) }
+\]
+
+
+\hrulefill
+
+
+
+
+\problemhead{8-29}
+
+\[
+\begin{aligned}
+  & \mathfrak{o}{(n)} = \lbrace A \in \mathfrak{gl}(n,\mathbb{R}) | A^T + A = 0 \rbrace \\ 
+  & \mathfrak{o}{(3)} = \lbrace A \in \mathfrak{gl}(3,\mathbb{R}) | A^T + A = 0 \rbrace 
+\end{aligned}
+\]
+
+
+\[
+\begin{aligned}
+& \mathfrak{su}(n) = \lbrace A \in \mathfrak{gl}(n,\mathbb{C}) | A^* + A = 0 , \text{tr}A = 0 \brace \\ 
+& \mathfrak{su}(2) = \lbrace A \in \mathfrak{gl}(2,\mathbb{C}) | A^* + A = 0 , \text{tr}A = 0 \brace \\ 
+\end{aligned}
+\]
+
+$\forall \, A \in \mathfrak{su}(2)$, $A$ is of the form, for $a,b,c \in \mathbb{R}$, 
+\[
+A = \left( \begin{matrix} ia & b + ic \\ 
+  -b + i c & -ia \end{matrix} \right)
+\]
+$\forall \, B \in \mathfrak{o}(3)$, $B$ is of the form 
+\[
+B = \left( \begin{matrix}  & a & b \\ 
+  -a & & c \\ 
+  -b & -c & \end{matrix} \right)
+\]
+Then the following identification, $F$ is clearly an isomorphism, as its 1-to-1 and onto:
+\[
+\begin{aligned}
+  & F : \mathfrak{su}(2) \to \mathfrak{o}(3) \\ 
+  & F\left( \begin{matrix} ia & b + ic \\ 
+    -b + ic & -ia \end{matrix} \right) = \left( \begin{matrix} & a & b \\ 
+    -a & & c \\
+    -b & -c & \end{matrix} \right)
+\end{aligned}
+\]
+

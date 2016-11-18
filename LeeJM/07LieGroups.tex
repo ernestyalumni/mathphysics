@@ -1,0 +1,84 @@
+% file: 07LieGroups.tex
+% 07LieGroups Chapter 7 Lie Groups of Introduction to Smooth Manifolds J. Lee, latest edition (as of 20150331)
+% Typeset with LaTeX format
+% cf. Math Into Latex Third Edition pp. 290
+% This file has my modifications
+% Fund Science! & Help Ernest in Physics Research! : quantum super-A-polynomials - researched by Ernest Yeung \\
+% http://igg.me/at/ernestyalumni2014 
+% Facebook      : ernestyalumni 
+% github        : ernestyalumni
+% gmail         : ernestyalumni 
+% linkedin      : ernestyalumni 
+% tumblr        : ernestyalumni 
+% twitter       : ernestyalumni 
+% wordpress.com : ernestyalumni
+% youtube       : ernestyalumni 
+% Patreon       : ernestyalumni
+% Tilt/Open     : ernestyalumni
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.
+% 
+% This code is open-source, governed by the Creative Common license.  Use of this code is governed by the Caltech Honor Code: ``No member of the Caltech community shall take unfair advantage of any other member of the Caltech community.'' 
+% 
+
+\subsection*{Basic Definitions}
+
+\textbf{Lie group} smooth manifold $G$ s.t. multiplication map $\begin{aligned} & \quad \\ 
+  & m : G \times G \to G \\
+  & m(g,h) = gh \end{aligned}$ \\
+inversion map $\begin{aligned} & \quad \\ 
+  & i : G \to G \\
+  & i(g) = g^{-1} \end{aligned}$ 
+smooth.
+
+\begin{proposition}[7.1]
+If $(g,h) \mapsto gh^{-1}$ smooth, $G$ Lie group
+\end{proposition}
+\exercisehead{7.2}
+\begin{proof}
+  $\forall \, g,h \in G$, $gh^2 \in G$ since $G$ group \\
+$(gh^2,h) \mapsto gh$ smooth.  Define $m(g,h) = (gh^2,h) \mapsto gh$.  So $m$ smooth.  \\
+$1\in G$ since $G$ group.  $(1,g) \mapsto g^{-1}$ smooth so $i(g) = g^{-1}$, defined this way, smooth.  
+\end{proof}
+
+\textbf{Example 7.3 (Lie Groups)}.  
+\begin{enumerate}
+\item[(a)]$A \in GL(n,\mathbb{R})$
+\[
+\begin{aligned}
+  & (AB)_{ij} = A_{ik} B_{kj} \quad \quad \, \begin{aligned} & \quad \\ 
+    & \frac{ \partial (AB)_{ij} }{ \partial A_{lm} } = \delta_{il} \delta_{km} B_{kj} = \delta_{il} B_{mj} \\ 
+    & \frac{ \partial (AB)_{ij} }{ \partial B_{lm} } = A_{ik} \delta_{lk} \delta_{mj} = A_{il} \delta_{mj} \end{aligned} \\
+  & (A^{-1})_{ij} = \frac{1}{ \text{det}(A)} \text{adj}(A)_{ij} = \frac{1}{ \text{det}(A) } C^T_{ij} = \frac{1}{ \text{det}(A)}(-1)^{i+j}\text{det}A_{ji}
+\end{aligned}
+\]
+$AB,A^{-1}$ smooth functions of the entires of $A_{ij}$, $B_{kl}$, $A_{ij}$ respectively.
+\item[(b)]
+\item[(c)]
+\end{enumerate}
+
+\subsection*{Lie Group Homomorphisms}
+
+\textbf{Example 7.4 (Lie Group Homomorphisms)}
+
+\begin{enumerate}
+\item[(a)]
+\item[(b)]
+\item[(c)]
+\item[(d)]
+\item[(e)]
+\item[(f)] \textbf{conjugation} by $g$
+\[
+\begin{aligned}
+  & C_g : G \to G \\ 
+  & C_g(h) = ghg^{-1}
+\end{aligned}
+\]
+$H \subseteq G$ \textbf{normal} if $C_g(H) = H$, \, $\forall \, g \in G$
+\end{enumerate}
+
+\begin{theorem}[7.5]
+  Every Lie group homomorphism has constant rank.
+\end{theorem}
+
+

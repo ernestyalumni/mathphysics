@@ -1,0 +1,571 @@
+% 03tangentvectors.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+
+
+\subsection*{Tangent Vectors}
+
+
+
+\subsubsection*{Geometric Tangent Vectors}
+
+Now, 1 thing that a Euclidean tangent vector provides is a means of taking ``directional derivatives'' of a function. \\
+e.g. $\forall \, v_a \in \mathbb{R}^n_a$, $v_a$ yields $\begin{aligned} & \quad \\ 
+  & \left. D_v \right|_a : C^{\infty}\mathbb{R}^n \to \mathbb{R} \\ 
+  & \left. D_v \right|_a f  =   D_v f(a) = \left. \frac{d}{dt} \right|_{t=0}f(a+tv) \end{aligned}$ (3.1)
+
+which takes the directional derivative in the direction $v$ at $a$.  
+
+$\left. D_v \right|_a$ linear and $\left. D_v \right|_a(fg) = f(a) \left. D_v \right|_a g + g(a) \left. D_v\right|_a f$ \quad \, (3.1)
+\[
+\left. \frac{d}{dt} \right|_{t=0} f(a+tv) = v^i \frac{\partial f}{ \partial x^i}(a)
+\]
+
+\[
+ \left. D_v \right|_a f = v^i \frac{ \partial f}{ \partial x^i}(a)
+\]
+
+If $v_a = \left. e_j \right|_a$, 
+\[
+\left. D_v \right|_a f = \frac{ \partial f}{ \partial x^i}(a)
+\]
+
+derivation at $a$, a linear $X: C^{\infty}\mathbb{R}^n \to \mathbb{R}$, $a\in \mathbb{R}^n$
+\[
+X(fg) = f(a) Xg + g(a) Xf
+\]
+$T_a\mathbb{R}^n$ set of all derivations of $C^{\infty}\mathbb{R}^n$ at $a$.  $T_a\mathbb{R}^n$ vector space.  
+
+\begin{lemma}[3.1] $X(c) =0$, $0$ const., $X(fg) = 0$ if $f(a) = g(a) =0$ \end{lemma}
+
+
+\begin{proposition}[3.2] $\forall\, a \in \mathbb{R}^n$, map $v_a \mapsto \left. D_v \right|_a$ isomorphism from $\mathbb{R}^n_a $ onto $T_a\mathbb{R}^n$ \end{proposition}
+
+\begin{proof} $v_a \mapsto \left. D_v \right|_a$ linear.  
+
+\[
+\begin{gathered}
+  \left. D_{bv+cw } \right|_a f = D_{bv + cw} f(a) = \left. \frac{d}{dt} \right|_{t=0} f(a + t(bv + cw) ) = (bv^i + cw^i ) \frac{ \partial f}{ \partial x^j}(a) = bv^j \frac{ \partial f}{ \partial x^j}(a) + cw^i \frac{ \partial f}{ \partial x^i}(a) = \\
+   = b  \left. \frac{d}{dt} \right|_{t=0} f(a+tv) + c \left. \frac{d}{dt} \right|_{t=0} f(a+tw)= b \left. D_v \right|_a f + c \left. D_w\right|_a f = ( \left. b D_v \right|_a + c \left. D_w \right|_a ) f
+\end{gathered}
+\]
+injective: $v_a \in \mathbb{R}_a^n$, write $v_a = \left. v^i e_i  \right|_a$
+
+take $f$ to be $j$th coordinate function $x^j:  \mathbb{R}^n \to \mathbb{R}$, thought of as a smooth function on $\mathbb{R}^n$ 
+\[
+0 = \left. D_v \right|_a(x^j) = v^i \delta_i^j = v^j \quad \, \forall \, j
+\]
+Then $v_a=0$
+
+surjective, let $X \in T_a\mathbb{R}^n$ \\
+define $v^i = X(x^i)$ \\
+We'll show $X = \left. D_v \right|_a$, $v = v^ie_i$
+
+Let $f$ be any smooth function on $\mathbb{R}^n$, $f: \mathbb{R}^n \to \mathbb{R}$.  \\
+By Taylor's formula with remainder (Thm. A.58), $\exists \,$ smooth $g_1 \dots g_n$ on $\mathbb{R}^n$ s.t. $g_i(a) =0$
+\[
+f(x) = f(a) + \sum_{i=1}^n \frac{ \partial f}{ \partial x^i}(a) (x^i - a^i) + \sum_{i=1}^n g_i(x) (x^i - a^i)
+\]
+
+
+Recall Lemma 3.1, and note $x^i - a^i = 0$ if $x=a$
+\[
+\begin{gathered}
+  \begin{aligned}
+    Xf & = X(f(a)) + \sum_{i=1}^n X \left( \frac{ \partial f}{ \partial x^i }(a) (x^i - a^i ) \right) + \sum_{i=1}^n X(g_i(x)(x^i -a^i) )  = 0 + \sum_{i=1}^n \frac{ \partial f}{ \partial x^i}(a) \left( X(x^i) - X(a^i) \right) = \\
+     & = \sum_{i=1}^n X(x^i) \frac{ \partial f}{ \partial x^j}(a)  = v^i \frac{ \partial f}{ \partial x^i }(a) = \left. D_v \right|_a f
+  \end{aligned} \\
+\Longrightarrow X = \left. D_v \right|_a
+\end{gathered}
+\]
+
+
+
+
+
+\end{proof}
+
+\begin{corollary}[3.3]
+$\forall \, a \in \mathbb{R}^n$, $n$ derivatives.  $ \left. \frac{ \partial }{ \partial x^1 } \right|_a \dots \left. \frac{ \partial }{ \partial x^n} \right|_a$ defined by $ \left. \frac{ \partial }{ \partial x^i} \right|_a f = \frac{ \partial f}{ \partial x^i}(a)$ form a basis for $T_a \mathbb{R}^n$, $\text{dim}{ T_a \mathbb{R}^n} = n$
+\end{corollary}
+
+\begin{proof}
+as above, $\forall \, X \in T_a\mathbb{R}^n$, $X$ derivation.  $Xf = v^i \left. \frac{ \partial }{ \partial x^i } \right|_a f $, so $\lbrace  \left. \frac{ \partial }{ \partial x^i } \right|_a \rbrace$ spans $T_a \mathbb{R}^n$
+
+for linear independence, $0 = v^i \left. \frac{ \partial }{ \partial x^i } \right|_a f$.  Then $v^i = 0$, \, $\forall \, i$
+
+Note $\left. \frac{ \partial }{ \partial x^i } \right|_a = \left. D_{e_i} \right|_a$ with $e_i = \delta_i^{\, \, j} e_j$.  
+
+\end{proof}
+
+\subsubsection*{Tangent Vectors on a Manifold}
+
+linear $X: C^{\infty}M  \to \mathbb{R}$ derivation at $p$ if $X(fg) = f(p) Xg + g(p) Xf$.  $\forall\, f,g \in C^{\infty}M$  \\
+tangent space $T_pM = $ set of all derivations of $C^{\infty}M$
+
+\exercisehead{3.1} Lemma 3.4
+\begin{enumerate}
+\item[(a)] $f$ const. So let $f=0$.  
+\[
+X(cf) = cX(f) = X(ff) = f(p) Xf + f(p) Xf = 2X(cf) \Longrightarrow X(f) = 0 
+\]
+\item[(b)] if $f(p) = g(p) = 0 $, $X(fg) = 0$, by definition.  
+\end{enumerate}
+
+
+\subsection*{Pushforwards}
+
+Let smooth $F: M \to N$  \\ $\forall \, p \in M$, define $F_* : T_p M \to T_{F(p)}N$, pushforward
+\[
+(F_*X)(f) = X(fF)
+\]
+$f\in C^{\infty}N$, $fF \in C^{\infty}M$, so $X(fF)$ makes sense.  
+
+\[
+(F_*X)(fg) = X( (fg) F) = X((fF)(gF) ) = fF(p) X(gF) + gF(p) X(fF) = f(F(p)) (F_*X)g + g(F(p)) (F_*X)(f)
+\]
+
+\begin{lemma}[3.5] (\textbf{Properties of Pushforwards})
+\begin{enumerate}
+  \item[(a)] 
+\[
+ (F_* X)( af + bg) = X((af + bg) F) = aX(fF) + bX(gF) = aF_*X(f) + bF_*X(g)
+\]
+$F_*X$ linear
+  \item[(b)] 
+\[
+gf_* = g_* f_*:T_pM \to T_{gf(p)}P
+\]  
+\end{enumerate}
+\end{lemma}
+
+\exercisehead{3.2} 
+\begin{enumerate}
+\item[(a)]
+\item[(b)]$\begin{aligned} & \quad \\ 
+  f : & M \to N \\
+  g : & N \to P \\ 
+  gf : & M \to P \end{aligned}$ \quad \, Consider $\begin{aligned} & \quad \\ 
+  p \in M , & (U, \varphi) \subset M  \\
+  q = f(p) \in N , & (V, \psi) \subset N \\
+  r = g(q) \in P , & (W, \chi) \subset P \end{aligned}$ \quad \, $\begin{aligned} & \quad \\ 
+  & V \in T_pM \\
+  & W \in T_qN \\
+  & X \in T_{g(q)}P \end{aligned}$ \quad \, $\begin{aligned} & \quad \\ 
+  & V = V^{\alpha} \frac{ \partial }{ \partial x^{\alpha} } \\ 
+  & W = W^{\beta} \frac{ \partial }{ \partial y^{\beta} } \\ 
+  & X = X^{\gamma} \frac{ \partial }{ \partial z^{\gamma} } \end{aligned}$
+
+\[
+\begin{gathered}
+\begin{aligned}
+  & f_*V \in T_{f(p)}N \\ 
+  & f_*V[h] = V[hf] \\ 
+  & f_*V[h\psi^{-1}(y)] = V[hf\varphi^{-1}(x)]
+\end{aligned} \quad \quad \, \begin{aligned}
+  & g_*W \in T_{g(q)}P \\ 
+  & g_*W[k] = W[kg] \\ 
+  & g_*W[k\chi^{-1}(z)] = W[kg\psi^{-1}(y)]
+\end{aligned}  \quad \quad \, \begin{aligned}
+  & gf_*V \in T_{gf(p)}P \\ 
+  & gf_*V[l] = V[lgf] \\ 
+  & gf_*V[l\chi^{-1}(z)] = V[lgf\varphi^{-1}(x)]
+\end{aligned} \\
+\end{gathered}
+\]
+
+\[
+\Longrightarrow g_*(f_*V)[l] = f_* V[lg] = V[lgf] = gf_*V[l]
+\]
+
+In coordinates, 
+\[
+\begin{gathered}
+  g_*(f_*V)[l\chi^{-1}(z) ] = f_*V[lg\psi^{-1}(y)] = W^{\alpha} \frac{ \partial }{ \partial y^{\alpha}}[ lg\psi^{-1}(y)] = V^{\mu} \frac{ \partial y^{\alpha} }{ \partial x^{\mu} } \frac{ \partial }{ \partial y^{\alpha} } [lg\psi^{-1}(y)] = V^{\mu} \frac{ \partial (y^{\alpha}f\varphi^{-1}(x)) }{ \partial x^{\mu} } \frac{ \partial }{ \partial y^{\alpha} } [lg\psi^{-1}(y) ] \\
+  gf_*V[l \chi^{-1}(z) ] = V[lgf\varphi^{-1}(x) ] = V^{\alpha} \frac{ \partial }{ \partial x^{\alpha} }( lgf\varphi^{-1}(x)) \\
+  \Longrightarrow  \frac{ \partial }{ \partial x^{\mu} }( lgf\varphi^{-1}(x)) = \frac{ \partial (y^{\alpha}f\varphi^{-1}(x)) }{ \partial x^{\mu} } \frac{ \partial }{ \partial y^{\alpha} } [lg\psi^{-1}(y) ]
+\end{gathered}
+\]
+Chain rule is reobtained.
+
+\hrulefill
+
+Alternatively,
+
+Let $\begin{aligned} & \quad \\ 
+  & F: M \to N \\ 
+  & G: N \to P \end{aligned}$ \quad \quad \, $p\in M$
+
+$\begin{aligned} & \quad \\ 
+  & GF : M \to P \\
+  & (GF)_*: T_pM \to T_{GF(p)}P \end{aligned}$.  $h\in C^{\infty}P$
+
+Now consider 
+
+\[
+G_* (F_*X)(h) = F_* X(hG) = X(hGF)\Longrightarrow G_* F_* = (GF)_*
+\]
+
+\item[(c)] \[
+(1_M)_* X(f) = X(f1) = X(f)
+\]
+so $(1_M)_* = 1_{T_pM }$
+\item[(d)]
+Now
+\[
+\begin{aligned}
+  & M \xrightarrow{F} N \\ 
+  & T_pM \xrightarrow{ F_*} T_{F(p)}N
+\end{aligned}
+\]
+cf. Tu, pp. 80, 8 Tangent Space, Corollary 8.7.  If $F: M \to N$, $p\in M$, $F$ diffeomorphism, \\
+\phantom{cf. Tu, pp. 80, 8 Tangent Space, Corollary 8.7. } $F_*: T_p M \to T_{F(p)}N$ isomorphism.  
+
+\begin{proof}
+  To say that $F$ is a diffeomorphism, means that it has a differentiable inverse $G: N \to M$ s.t. 
+\[
+\begin{aligned}
+  & GF = 1_M \\ 
+  & FG = 1_N 
+\end{aligned} \quad \quad \quad \, 
+ \begin{aligned}
+   & (GF)_* = G_* F_* = (1_M)_* = 1_{T_pM} \\ 
+   & (FG)_* = F_* G_* = (1_N)_* = 1_{T_{F(p)}N}
+\end{aligned}
+\]
+So then $F_*, G_*$ are isomorphisms, bijective homomorphism.  
+\end{proof}
+\end{enumerate}
+
+
+identify $T_pU$ with $T_pM$ $\forall \, p \in U$.   Since the action of a derivation on a function depends only on the values of the function in an arbitrary small neighborhood.  
+In particular, this means that any tangent vector $X \in T_pM$ can be unambiguously applied to functions defined only in a neighborhood of $p$ not necessarily on all of $M$ (note partition of unity, bump functions).  
+
+\begin{proposition}[3.7] open submanifold $U \subset M$, inclusion $i: U \hookrightarrow M$.  $\forall \, p \in U$, $i_* : T_pU \to T_p M$ isomorphism. \end{proposition}
+
+\exercisehead{3.3} If $F: M \to N$ local diffeomorphism, 
+
+$\forall \, p \in M$, $\exists \, $ open $U \ni p$ s.t. $F(U)$ open in $N$ and $\left. F\right|_U : U \to F(U)$ diffeomorphism.  
+
+Consider $G: F(U) \to U$, $G$ diff. (smooth) inverse of $\left. F \right|_U$.  
+
+$F(p) \in $ open $F(U)$  
+
+\[
+\begin{aligned}
+  ( \left. F \right|_U )_*    &    : T_pU \to T_{ F(p)}F(U) \\ 
+  (G)_*                       &    : T_{F(p)}F(U) \to T_pU \\ 
+  (FG)_*                      & = (1_{F(U)} )_* = 1_{T_{F(P)}}F(U) = ( \left. F \right|_U )_* G_* \\
+  (GF)_*    & = (1_U)_* = 1_{T_pU} = G_* (  \left. F \right|_U)_*
+\end{aligned}
+\]
+Then $( \left. F \right|_U)_*$, $G_*$ are isomorphisms between $T_pU \to T_{F(p)}F(U)$.  This must be true $\forall \, p \in M$, so $F_* : T_pM \to T_{F(p)}N$ isomorphism $\forall \, p \in M$
+
+I think the idea for a local diffeomorphism is that ``$F_* : T_p M \to T_{F(p)}F(M)$''. 
+
+
+
+\subsection*{Computations in Coordinates}
+
+\subsubsection*{Change of Coordinates}
+
+
+
+
+
+
+
+\subsection*{The Tangent Bundle }
+
+%\begin{lemma}[4.1] $TM$ has smooth structure making it $2n$-dim. smooth manifold.  \\
+%$\pi :TM \to M$ smooth \end{lemma}
+
+\begin{proposition}[3.18] $TM$ has smooth structure making it $2n$-dim. smooth manifold.  \\
+$\pi :TM \to M$ smooth \end{proposition}
+
+
+\begin{proof}
+$\forall \, $ chart $(U, \varphi) $ for $M$, $\varphi = (x^1 \dots x^n)$  \\
+Define $\widetilde{\varphi} : \pi^{-1}(U) \to \mathbb{R}^{2n}$
+\[
+\widetilde{\varphi}\left( v^i \left. \frac{ \partial }{ \partial x^i } \right|_p \right) = (x^1(p) \dots x^n(p), v^1 \dots v^n)
+\]
+$\widetilde{\varphi}(\pi^{-1}(U)) = \varphi(U) \times \mathbb{R}^n$, which is open \\
+$\widetilde{\varphi}$ bijection since
+\[
+\begin{aligned}
+  & \widetilde{\varphi}^{-1}(x^1 \dots x^n, v^1 \dots v^n) = v^i \left. \frac{ \partial }{ \partial x^i} \right|_{\varphi^{-1}(x)} \\ 
+  & \widetilde{\varphi} \widetilde{\varphi}^{-1} = 1_{\mathbb{R}^{2n}}, \, \widetilde{\varphi}^{-1} \widetilde{\varphi} = 1_{ \pi^{-1}(U) \subset T_pM }
+\end{aligned}
+\]
+
+Suppose charts $\begin{aligned} & \quad \\ 
+  & (U, \varphi) \\ 
+  & (V, \psi ) \end{aligned}$ for $M$, \\
+$\begin{aligned} & \quad \\ 
+  & (\pi^{-1}(U), \widetilde{\varphi}) \\ 
+  & ( \pi^{-1}(V), \widetilde{\psi} ) \end{aligned}$ on $TM$ ($\widetilde{\varphi}, \widetilde{\psi}$ homeomorphisms, cont. bijective, cont. inverse, $\pi$ cont., $\begin{aligned} & \quad \\ 
+  & \pi^{-1}(U) \\ & \pi^{-1}(V) \end{aligned}$ open) 
+
+$\begin{aligned} & \quad \\ 
+  & \widetilde{\varphi}( \pi^{-1}(U) \pi^{-1}(V) ) = \varphi(UV) \times \mathbb{R}^n \\
+  & \widetilde{\psi}(\pi^{-1}(U) \pi^{-1}(V)) =  \psi(UV)\times \mathbb{R}^n \end{aligned}$ open in $\mathbb{R}^{2n}$
+
+\[
+\begin{aligned}
+  & \widetilde{\psi} \widetilde{\varphi}^{-1} : \varphi(UV) \times \mathbb{R}^n \to \psi(UV) \times \mathbb{R}^n \\ 
+  & \widetilde{\psi} \widetilde{\varphi}^{-1}(x^1 \dots x^n, v^1 \dots v^n) = (y^1(x) \dots y^n(x), \frac{ \partial y^1}{ \partial x^j}(x) v^j \dots \frac{ \partial y^n}{ \partial x^j}(x) v^j )
+\end{aligned}
+\]
+
+$\widetilde{\psi} \widetilde{\varphi}^{-1}$ clearly smooth. 
+
+Choose countable cover $\lbrace U_i \rbrace$ of $M$ by smooth coordinate domains.  \\
+$\lbrace \pi^{-1}(U_i) \rbrace$ countable cover of $TM$ by coordinate domains.  
+
+fiber of $\pi$ : $\pi^{-1}( \lbrace p \rbrace)$ (fiber is like a preimage of a singleton set) \\
+Consider $\widetilde{x}, \widetilde{y} \in \pi^{-1}(\lbrace p \rbrace)$, then $\widetilde{x}, \widetilde{y} \in \widetilde{\varphi}$ (lie in 1 chart) \\
+If $(p,X), (q,Y)$ lie in different fibers, $\exists \, $ disjoint smooth coordinate domains $U,V$ for $M$ ($M$ Hausdorff) s.t. $\begin{aligned} & \quad \\ 
+  & p \in U \\
+  & q \in V \end{aligned}$ and  \\
+$\pi^{-1}(U), \pi^{-1}(V)$ disjoint, smooth coordinate neighborhoods s.t. $\begin{aligned} & \quad \\ 
+  & \pi^{-1}(U) \ni (p,X) \\ 
+  & \pi^{-1}(V) \ni (q,Y) \end{aligned}$
+
+$\pi(x,v) = x$, so $\pi$ smooth.  
+
+\end{proof}
+
+
+
+
+\subsubsection*{The Tangent Space to a Manifold with Boundary}
+
+
+define pushforward by $F$ at $p\in M$ to be linear $F_*:T_pM \to T_{F(p)}N$ defined by $(F_*X)f = X(fF)$
+
+\begin{lemma}[3.10] If $M^n$ with boundary, $p\in \partial M$, \\
+then $T_pM$ $n$-dim. vector space with basis $\left( \left. \frac{ \partial }{ \partial x^1 } \right|_p \dots \left. \frac{ \partial }{ \partial x^n } \right|_p \right)$ in any smooth chart. 
+\end{lemma}
+
+\begin{proof} $T_pM$ vector space with basis $\left( \left. \frac{ \partial }{ \partial x^i} \right|_p \right)$  
+
+$\forall \, $ smooth coordinate map $\varphi$, $\varphi_* : T_p M \to T_{ \varphi(p)} \mathbb{H}^n$ isomorphism by the same argument as manifolds.  \\
+$\forall \, a \in \partial \mathbb{H}^n$, $T_a H^n$ $n$-dim. and spanned by $\left( \left. \frac{ \partial }{ \partial x^i } \right|_p \right)$.  
+
+Consider inclusion $i : \mathbb{H}^n \hookrightarrow \mathbb{R}^n$.  Show $i_*: T_a \mathbb{H}^n \to T_a \mathbb{R}^n$ isomorphism.  \\
+Suppose $i_*X =0$.  \\
+Let smooth $f \in \mathbb{R}$ on neighborhood of $a$ in $\mathbb{H}^n$ \\
+Let $\widetilde{f}$ extension of $f$ to smooth function on an open subset of $\mathbb{R}^n$ (by extension lemma) 
+\[
+\begin{gathered}
+  \widetilde{f} \circ i = f \\ 
+  Xf = X(\widetilde{f} i ) = (i_* X)\widetilde{f} = 0
+\end{gathered}
+\]
+Then $X=0$.  So $i_*$ injective.  
+
+If arbitrary $Y \in T_a \mathbb{R}^n$, define $X \in T_a \mathbb{H}^n$, by 
+\[
+\begin{gathered}
+Xf = Y \widetilde{f} \quad \quad \quad Y^i \left. \frac{ \partial }{ \partial x^i} \right|_a \widetilde{f} = Y^i \frac{ \partial \widetilde{f}}{ \partial x^i}(a)
+\end{gathered}
+\]
+This is well-defined because by cont. the derivatives of $\widetilde{f}$ at $a$ are determined by those of $f$ in $\mathbb{H}^n$
+\[
+\begin{aligned}
+  X(fg) & = Y(\widetilde{f} \widetilde{g}) = Y^i \left. \frac{ \partial}{ \partial x^i} \right|_a (\widetilde{f} \widetilde{g}) = Y^i \frac{ \partial \widetilde{f}(a)}{ \partial x^i} \widetilde{g}(a)  + Y^i \widetilde{f}(a) \frac{ \partial \widetilde{g} }{ \partial x^i }(a) = \widetilde{g}(a) Y(\widetilde{f}) + \widetilde{f}(a) Y(\widetilde{g}) = \\ 
+  & = g(a) Xf + f(a) Xg
+\end{aligned}
+\]
+$X$ derivation at $a$.  $Y = i_* X$, so $i_*$ surjective.  
+
+$i_*$ isomorphism.  
+
+
+\end{proof}
+
+\subsection*{ Tangent Vectors to Curves}
+
+tangent vector to $\gamma$ at $t_0 \in J \subset \mathbb{R}$ 
+\[
+\begin{aligned}
+  & \gamma'(t_0) = \gamma_* \left( \left. \frac{d}{dt} \right|_{t_0} \right) \in T_{\gamma(t_0)}M \\ 
+\end{aligned}
+\]
+Tangent vectors act on functions by
+
+\[
+\begin{aligned}
+  & \gamma'(t_0) f = \left( \left. \gamma_*  \frac{d}{dt} \right|_{t_0} \right) f = \left. \frac{d}{dt} \right|_{t_0}(f\gamma) = \frac{d(f\gamma)}{ dt}(t_0)
+\end{aligned}
+\]
+
+
+$\begin{aligned}
+  & \quad \\
+  & \gamma : I \to M \\
+  & \gamma_* : T_{t_0} \mathbb{R} \to T_p M \\
+  & \dot{\gamma} : I \to T_p M \\
+\end{aligned}$
+
+
+
+For $(U,x^i)$, $p\in U$
+\[
+\begin{gathered}
+\dot{\gamma}(t_0) f = \gamma_* \left( \left. \frac{d}{dt}  \right|_{t_0} \right) f = \left. \frac{d}{dt} \right|_{t_0} (f\gamma) = \left. \frac{d}{dt} \right|_{t_0} (f (x^i)^{-1} x^i \gamma ) = \left. \frac{d}{dt} \right|_{t_0} ( f( \gamma^i)(t) )  =  \left. \frac{ \partial f}{  \partial x^i } \right|_p \left. \frac{ d \gamma^i }{ dt} \right|_{t_0} = \dot{\gamma}^i \left. \frac{ \partial f}{ \partial x^i } \right|_p  \\
+\Longrightarrow \dot{ \gamma}(t_0) = \left. \dot{\gamma}^i(t_0) \frac{ \partial}{ \partial x^i} \right|_p
+\end{gathered}
+\]
+
+
+\begin{lemma}[3.11] Let $p\in M$.  $\forall \, X \in T_p M$, $X$ tangent vector is some smooth curve in $M$. \end{lemma}
+
+\begin{proof}
+Let $(U,\varphi)$, \, $p \in U$, \, $X = X^i \left. \frac{ \partial }{ \partial x^i} \right|_p$
+
+Define $\gamma: (-\epsilon, \epsilon) \to U$ by $\gamma(t) = (tX^1 \dots tX^n)$ i.e. $\gamma(t) = \varphi^{-1}(t X^1 \dots tX^n)$  \\
+$\gamma(0) = p$,  \, $\gamma'(0) = X^i \left. \frac{ \partial }{ \partial x^i} \right|_{\gamma(0)} = X$
+
+
+\end{proof}
+
+
+tangent vectors to curves behave well under composition with smooth maps.  
+
+\begin{proposition}[3.12] (The tangent vector to a composite curve)
+ Let smooth $F: M \to N$, smooth curve $\gamma : J \to M$
+
+$\forall\, t_0 \in J$, tangent vector $F\gamma:J\to N$, $t=t_0$ given by 
+\[
+(F\gamma)'(t_0) = F_*(\gamma'(t_0))
+\]
+\end{proposition}
+
+\begin{proof}
+\[
+(F\gamma)'(t_0) = \left. (F\gamma)_* \frac{d}{dt} \right|_{t_0} = F_* \gamma_* \left. \frac{d}{dt} \right|_{t_0} = F_*(\gamma'(t_0))
+\]
+(use def. of tangent vector to a curve)
+\end{proof}
+
+Use it to compute pushforwards. \\
+Suppose $F:M \to N$.  $F_* = $ ? \\
+$\forall \, X \in T_pM$, choose smooth $\gamma$ whose tangent vector at $t=0$ is $X$, 
+\[
+F_* X = (F\gamma)'(0) \quad \quad \, (3.10)
+\]
+
+Indeed, Lemma 3.11 $\begin{aligned} & \quad \\ 
+  & \gamma(0) = p \\ 
+  & \dot{\gamma}(0) = X \end{aligned}$
+\[
+F_*(\gamma'(0)) = F_*X = \dot{ (F\gamma)}(0)
+\]
+
+\subsection*{ Alternative Definitions of the Tangent Space}
+
+smooth function element $(f,U)$, open $U \subset M$, smooth $f:U \to \mathbb{R}$\\
+$\forall \, p \in M$, $(f,U) \sim (g,V)$, if $f\equiv g$ on some neighborhood $W \ni p$
+\[
+\begin{gathered}
+  [ (f,U)] = \text{ germ of $f$ at $p$} \\ 
+ \lbrace [ (f,U) ] \rbrace \text{ at $p$ } = C_p^{\infty}
+\end{gathered}
+\]
+
+$C^{\infty}_p$ real vector space.  
+\[
+\begin{gathered}
+  \left[ (f,U) \right] + [(g,V)] = [(f+g, UV) ] \\ 
+ c[(f,U)] = [(cf, U) ] \\ 
+ [(f,U)] [(g,V)] = [ (fg, UV)] 
+\end{gathered}
+\]
+
+
+Denote $[ (f,U)] = [f]_p$ \\
+$T_p M = $ set of all derivations, linear $X: C_p^{\infty} \to \mathbb{R}$ s.t. 
+\[
+X[fg]_p = f(p) X[g]_p + g(p) X[f]_p
+\]
+
+By Prop. 3.6. $Xf = Xg$ if $f=g$ on some neighborhood $W$ of $p$ ($\psi \in C^{\infty}M$ smooth bump function with support needed).  
+
+This space is isomorphic to the tangent space as we've defined it (Prob. 3-7).  
+
+
+
+
+\subsection*{Problems}
+
+\problemhead{3-1} $M$ connected.  \\
+$X \in T_pM$
+\[
+F_*X(fg) = X((fg)F) = X((fF)(gF)) = f(F(p)) X(gF) + g(F(p))X(fF) = 0 
+\]
+
+Let $g= f \in C^{\infty}M$.  $f(F(p))X(fF) = 0$ $X(fF) =0$.  $fF$ const. by properties of tangent vector $X$.  $f$ arbitrary, so $F$ const.  
+
+\problemhead{3-3} $M^m$ diffeomorphic to $N^n$ by $F$.  \\
+$T_pM$ isomorphic to $T_{F(p)}N$.  Then $\text{dim}{ (T_pM)} = \text{dim}{ (T_{F(p)}N)}$  $m=n$  \\
+cf. Tu, Corollary 8.8.  Indeed for $\begin{aligned} & \quad \\ 
+  & (U,\varphi), \, U \ni p \\ 
+  & (V, \psi ), \, V\ni F(p) \end{aligned}$ \quad \, $\begin{aligned} & \quad \\ 
+  & (\psi F \varphi^{-1}):\mathbb{R}^m \to \mathbb{R}^n \text{ is a diffeomorphism } \\ 
+  & (\psi F \varphi^{-1})_* : T_{ \varphi(p)} \mathbb{R}^m \to T_{\psi(F(p))} \mathbb{R}^n \text{ is an isomorphism } \end{aligned}$
+
+
+cf. wj32 has some good solutions specifically for Lee (2012) \url{http://wj32.org/wp/wp-content/uploads/2012/12/Introduction-to-Smooth-Manifolds.pdf}
+\problemhead{3-4} 
+
+Adapted from wj32 \url{http://wj32.org/wp/wp-content/uploads/2012/12/Introduction-to-Smooth-Manifolds.pdf}
+
+Now clearly $\forall \, p \in S^1 $ $\exists \, p \in S^1$, $\exists \, (U,\theta) \in \mathcal{A}_{S^1}$ s.t. $\begin{aligned} & \quad \\
+  & \theta : U \to \mathbb{R} \\
+  & \theta(p) \in \mathbb{R}
+\end{aligned}$ \quad \, $U \ni p$.  $T_p S^1 \ni \left. \frac{ \partial }{ \partial \theta} \right|_p$.  
+
+Define $F: S^1 \times \mathbb{R} \to TS^1$ s.t. 
+\[
+(p,r) \mapsto r \left. \frac{ \partial }{ \partial \theta } \right|_p \text{ for } U\ni p, \, \left. \frac{ \partial }{ \partial \theta}\right|_p \in T_pU
+\]
+
+Consider smooth chart $(U,\theta)$, $U\ni p$, $\begin{aligned} & \quad \\
+  & \widehat{\theta}:U\times \mathbb{R} \to \mathbb{R}\times \mathbb{R} \\
+  & \widehat{\theta}(p,r)  = (\theta(p),r) \end{aligned}$ 
+
+The strategy is to think of the map from $\mathbb{R}^2$ to $\mathbb{R}^2$.  So consider
+\[
+F=F\circ \widehat{\theta}^{-1}\widehat{\theta}
+\]
+
+Consider smooth chart $\xi_{\theta}:TU \to \mathbb{R}^2$  
+\[
+\xi_{\theta}:X \mapsto ((\theta \circ \pi)(X), (d\theta)_{\pi(X)}X)
+\]
+
+\[
+\begin{gathered}
+  F\circ \widehat{\theta}^{-1}(\theta,r) = r \left. \frac{ \partial }{ \partial \theta }\right|_p \\ 
+\xi_{\theta} \circ F\circ \widehat{\theta}^{-1}(\theta,r) = \left( \theta\circ \pi \left( r \frac{ \partial }{ \partial \theta }\right)_p , (d\theta)_{\pi(r\left. \frac{ \partial }{ \partial \theta }\right|_p ) }\left( \left. r \frac{ \partial }{ \partial \theta }\right|_p  \right) \right)= (\theta(p),r)
+\end{gathered}
+\]
+$F^{-1}:X_p \in T_pS^1 \mapsto (p,r)$ where $X_p = \left. r\frac{ \partial }{ \partial \theta }\right|_p$
+
+$\xi_{\theta}\circ F \circ \widehat{\theta}^{-1}$ clearly smooth and bijective.  $F$ diffeomorphism.  
+

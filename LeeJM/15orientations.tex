@@ -1,0 +1,132 @@
+\subsection*{ Orientations of Vector Spaces }
+
+\exercisehead{13.1} 
+\[
+\begin{gathered}
+  (E_1 \dots E_n) \sim (E_1 \dots E_n) \\ 
+  E_i = \delta_i^{\, \, j } E_j \\ 
+  \text{det}{ (\delta_i^{\, \, j} )} = 1 
+\end{gathered}
+\]
+
+If $E_i = B_i^{\, \, j} \widetilde{E}_j$, \, $\text{det}{B_i^{\, \, j }} >0$,  
+% \[
+%(B^{-1})_i^{\, \, k} E_k = (B^{-1})_i^{\, \, k } B_k^{\, \, j} \widetilde{E}_j = E_
+% #\]
+
+$\text{det}{(BB^{-1})} = \text{det}{B} \text{det}{B^{-1}} = 1$.  $\text{det}{B^{-1}} >0$ since $\text{det}{B} >0$.  
+
+If $E_i = B_i^{\, \, j} \widetilde{E}_j$  
+\[
+\begin{aligned}
+  & \widetilde{ \widetilde{E}}_i = A_i^{\, \, j} E_j \\ 
+  & \widetilde{ \widetilde{E}}_i = A_i^{\, \, k } B_k^{\, \, j} \widetilde{E}_j \quad \quad \text{det}{AB} = \text{det}{A} \text{det}{B} >0
+\end{aligned}
+\]
+So it's an equivalence relation and since $\text{det}{B} \neq 0$, $\text{det}{B} >0$ or $\text{det}{B} <0$ and as above there are only 2 equivalence classes; $\text{det}{A} \gtrless 0$
+
+\subsection*{ Orientations of Manifolds }
+
+lcaol frame $(E_i)$ for $M$ is (positively) oriented if $(\left. E_1 \right|_p \dots \left. E_n \right|_p)$ positively oriented basis for $T_pM$.  $\forall \, p \in U$  
+
+cont. if $\forall \, p \in M$, $p\in $ domain of oriented local frame.  
+
+orientation of $M$ is cont., pointwise orientation.  
+
+$M$ orinetable if $\exists \, $ orientation to $M$
+
+\exercisehead{13.2}  connected domain $U$.  Consider some $\Omega \in \Lambda^m(V)$,  consider 
+\[
+\begin{aligned}
+  & U \to \mathbb{R} \\ 
+  & p \mapsto ( \left. E_1 \right|_p \dots \left. E_n \right|_p ) \mapsto \Omega( \left. E_1 \right|_p \dots \left. E_n \right|_p ) = \text{det}{ ( \left.  \epsilon^i(E_j) \right|_p ) }
+\end{aligned}
+\]
+
+$\text{det}$ cont. function s.t. $\text{det} = \begin{cases} +1 \\ -1 \end{cases}$ on $U$.  $U$ connected so $\forall \, $ cont. functions from $X$ to $\lbrace 0, 1 \rbrace$ or, the same, $\lbrace 1 , -1 \rbrace$, constant.  \\
+So $\Omega( \left. E_1 \right|_p \dots \left. E_n \right|_p ) = \text{det}{ ( \left. \epsilon^i (E_j) \right|_p )}$ constant on $U$, otherwise $U$ separated.  
+
+\begin{proposition}[13.4] 
+$\text{dim}{M} = m \geq 1$ 
+
+$\forall \, m$-form $\Omega$ on $M$, $\Omega\neq 0$ determines a unique orientation of $M$ s.t. $\Omega$ positively oriented $\forall \, p \in M$, \\
+Conversely, if $M$ given orientation, then $\exists \, $ smooth $m$-form $\Omega$ on $M$ that's positively oriented $\forall \, p \in M$
+\end{proposition}
+
+$F:M \to N$ local diffeomorphism.  
+
+$\forall \, p \in M$, $\exists \, (U, \varphi)$ chart and consider $U_F \subset U$ s.t. $F(U_F)$ open, $\left. F\right|_{U_F} : U_F \to F(U_F)$ diffeomorphism.  
+
+For $F(p) \in N$, $\exists \, (V, \psi)$ chart and consider $F(U_F) \cap V$
+
+$\psi F\varphi^{-1}(x^1 \dots x^m) = F^j(x^1 \dots x^m)$ \quad \quad $\text{det}{(\partial_i F^j)} >0$ suppose.  
+
+
+\subsection*{The Orientation Covering}
+
+\subsection*{Orientations of Hypersurfaces }
+
+interior multiplication or contraction with $X$
+\[
+i_X\omega(Y_1 \dots Y_{k-1}) = \omega(X,Y_1 \dots Y_{k-1})
+\]
+$i_X \omega$ obtained by inserting $X$ into the first slot.
+
+Notation $X \righthalfcup \omega = i_X \omega$
+
+
+
+
+
+
+
+
+
+Suppose $M$ smooth manifold \\
+\phantom{Suppose} $S\subset M$ submanifolds (immersed or embedded)
+
+vector field along $S$ is cont. $N: S \to TM$ s.t. $N_p \in T_pM$ \quad $\forall \, p \in S$
+
+(Note difference between vector field along $S$ and vector field on $S$, s.t. $N_p \in T_pS \, \forall \, p$)
+
+$N_p \in T_pM$, $p\in S$ transverse to $S$ if $T_pM$ spanned by $N_p, T_pS$
+
+Similarly, vector field $N$ along $S$ transverse to $S$ if $N_p$ transverse to $S$, \, $\forall \, p \in S$
+
+
+
+
+\begin{proposition}[15.21, 13.12 in previous version] Suppose $M$ oriented smooth $m$-manifold \\
+\phantom{Proposition 13.12 Suppose  } $S$ immersed hypersurface in $M$.  \\
+\phantom{Proposition 13.12 Suppose  } $N$ transverse vector field along $S$.  
+
+Then $S$ has unique orientation s.t. $\forall \, p \in S$, $(E_1 \dots E_{n-1})$ oriented basis for $T_pS$ iff $(N_p, E_1 \dots E_{n-1})$ oriented basis for $T_pM$
+
+If $\Omega$ orientation form for $M$, \\
+then $\left. (N \righthalfcup \Omega) \right|_S \equiv \left. i_N\Omega \right|_S $ orientation form for $S$ with respect to this orientation.  
+\end{proposition}
+
+Recall that smooth hypersurface $S$ is $S\subseteq M$ equipped with $i: S \hookrightarrow M$, smooth immersion, i.e. $Di$ injective.  
+
+Now orientation form $\omega = dN_p \wedge dE_1 \wedge \dots \wedge dE_{n-1}$, then \\
+$i_{N_p} \omega  =dE_1 \wedge \dots \wedge dE_{n-1}$
+\[
+i^*_S (i_{N_p}\omega) = i^*_S (dE_1 \wedge \dots \wedge dE_{n-1}) = i^*_S(dE_1) \wedge \dots \wedge i^*_S(dE_{n-1}) = d(i^*_SE_1) \wedge \dots \wedge d(i_S^*E_{n-1})
+\]
+
+
+
+\begin{proof} Let $\Omega$ \\
+\phantom{proof Let } $\omega  = \left. (N \righthalfcup \Omega) \right|_S$ $m-1$ form.  
+
+$(E_1 \dots E_{n-1}) $ basis for $T_pS$ \\
+$N$ transverse to $S$ implies $(N_p, E_1 \dots E_{n-1})$ basis for $T_pM$.  
+
+$\Omega$ orientation form so $\Omega$ nonvanishing.  
+\[
+\omega_p(E_1 \dots E_{n-1}) = \Omega_p(N_p, E_1 \dots E_{n-1}) \neq 0
+\]
+since $\omega_p(E_1 \dots E_{n-1}) >0$ iff $\Omega_p(N_p, E_1 \dots E_n) >0$,  \\
+orientation determined by $\omega$ is the 1 defined in the statement of the proposition.  
+
+\end{proof}

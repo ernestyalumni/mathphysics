@@ -1,0 +1,638 @@
+% 13riemannianmetrics.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+% ernestyalumni.tilt.com                                               
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% tilt.com    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+
+\subsection*{Riemannian Manifolds}
+
+Riemannian metric on $M$ - smooth symmetric 2-tensor field positive definite at each pt.   \\
+
+Riemannian manifold - pair $(M,g)$ \\
+
+If $g$ on $M$, then $\forall \, p \in M$, $g_p$ inner product on $T_pM$.  Because of this, we will often use the notation $\langle X, Y\rangle_g$ to denote 
+
+\[
+g_p(X,Y) \in \mathbb{R} \quad \, \forall \, X, Y \in T_pM
+\]
+
+$\forall \, $ smooth, local coordinates $(x^i)$, write Riemannian metric
+\[
+g=g_{ij} dx^i \otimes dx^j
+\]
+
+where $g_{ij}$ symmetric positive definite matrix of smooth functions.  $g_{ij} = g_{ji}$
+
+\[
+\begin{gathered}
+  g = g_{ij} dx^i \otimes dx^j = \frac{1}{2} (g_{ij} dx^i \otimes dx^j + g_{ji} dx^i \otimes dx^j ) = \frac{1}{2} (g_{ij} dx^i \otimes dx^j + g_{ij} dx^j \otimes dx^i ) = \\
+  = g_{ij} dx^i dx^j \quad \, (\text{by Prop. 12.15(b)}) \quad \, \text{Notice that $dx^idx^j$ is symmetrized!}
+\end{gathered}
+\]
+
+
+\textbf{Example 13.1 (The Euclidean Metric)}  Euclidean metric on $\mathbb{R}^n$, defined in standard coordinates
+\[
+g = \delta_{ij} dx^i dx^j
+\]
+
+It is common to use the abbreviation $\omega^2$ for the symmetric product of a tensor $\omega$ with itself, so the Euclidean metric can also be writen 
+\[
+\overline{g} = (dx^1)^2 + \dots + (dx^n)^2 
+\]
+
+Applied to $v,w \in T_p\mathbb{R}^n$ 
+\[
+\overline{g}_p(v,w) = \delta_{ij} v^i w^j = \sum_{i=1}^n v^i w^i = v\cdot w
+\]
+under coordinate change, use Corollary 11.10
+
+\begin{proposition}[13.3] \textbf{(Existence of Riemannian Metrics)} \\
+                          $\forall \, $ smooth manifold $M$, $M$ with or without $\partial M$, $\exists \, $ Riemannian metric $g$
+\end{proposition}
+
+\begin{proof}
+Choose covering of $M$ by smooth coordinate charts $(U_{\alpha}, \varphi_{\alpha})$ \\
+$\overline{g}$ Euclidean metric \\
+$\forall \, U_{\alpha}$, $\exists \, $ Riemannian metric $g_{\alpha} = \varphi_{\alpha}^* \overline{g}$ 
+\[
+\varphi_{\alpha} : U_{\alpha} \to \mathbb{R}^n
+\]
+Let $\lbrace \psi_{\alpha} \rbrace$ smooth partition of unity subordinate to cover $\lbrace U_{\alpha} \rbrace$
+
+Define $g= \sum_{\alpha} \psi_{\alpha} g_{\alpha}$
+
+s.t. $\forall \, g_{\alpha}$, $\psi_{\alpha} g_{\alpha} = 0$ outside $\text{supp}{\psi_{\alpha}}$
+
+By local finiteness, $\exists \, $ only finitely many $\psi_{\alpha} g_{\alpha} \neq 0$ in neighborhood of each pt. 
+
+so $g= \sum_{\alpha} \psi_{\alpha} g_{\alpha}$ defines a smooth tensor field
+
+
+\end{proof}
+
+
+defined on Riemannian manifold $(M,g)$
+
+\begin{itemize}
+  \item length or norm of $X \in T_pM$ defined
+
+\[
+|X|_g = \langle X, X \rangle_g^{1/2} = g_p(X,X)^{1/2}
+\]
+\item angle between $X,Y \in T_pM$, $X,Y \neq 0$ is unique $\theta \in [0,\pi]$ satisfying 
+\[
+\cos{\theta} = \frac{ \langle X,Y \rangle_g }{ |X|_g |Y|_g}
+\]
+\item $X,Y \in T_pM$ orthogonal if $\langle X,Y\rangle_g = 0$
+\item If $\gamma:[a,b] \to M$ piecewise smooth curve segment, length of $\gamma$ is 
+\[
+L_g(\gamma) = \int_a^b |\gamma'(t)|_g dt
+\]
+\end{itemize}
+
+Just as we did in Chapter 8 for $\mathbb{R}^n$ \\ % (pp. 253), \\
+\quad define orthonormal frame for $M$ to be local frame $(E_1 \dots E_n)$ defined on some open subset $U \subset M$ s.t. \\
+\quad \quad $( \left. E_1 \right|_p \dots \left. E_n \right|_p )$ orthonormal basis for $T_pM$ \quad \, $\forall \, p \in U$, or equivalently s.t. $\langle E_i, E_j \rangle_g = \delta_{ij}$ \\
+
+Example 13.14.  coordinate frame $\left( \frac{ \partial }{ \partial x^i} \right)$ global orthonormal frame on $\mathbb{R}^n$
+
+\begin{corollary}[13.8] (Existence of Local Orthonormal Frames).  Let $(M,g)$ Riemannian manifold. \\
+$\forall \, p \in M$, $\exists \, $ smooth orthonormal frame on neighborhood of $p$.
+\end{corollary}
+
+
+
+Observe Corollary 13.8.  doesn't show that $\exists \, $ smooth coordinates near $p$ for which coordinate frame is orthonormal. \\
+
+\subsubsection*{Pullback Metrics}
+
+Suppose $\begin{aligned} & \quad \\ 
+  & (M,g) \\
+  & (\widetilde{M}, \widetilde{g}) \end{aligned}$ \quad Riemannian manifolds.  \\
+
+isometry - smooth $F: M \to \widetilde{M}$ if $F$ diffeomorphism s.t. $F^* \widetilde{g} = g$ \\
+if $\exists \, $ isometry $F$, $M, \widetilde{M}$ isometric. \\
+$F$ local isometry is $\forall \, p \in M$, $\exists \, $ neighborhood $U$ s.t. $\left. F \right|_U$ isometry of $U$ onto open $\widetilde{U} \subset M$ \\
+$g$ on $M$ flat if $\forall \, p \in M$, $\exists \,$ neighborhood $U\subset M$ s.t. $(U , \left. g \right|_U)$ isometric to open $\widetilde{U} \subset \mathbb{R}^n$ with Euclidean metric.   \\
+
+
+\staveXXIX
+
+
+Prob. 11-14 shows $\exists \, $ only if metric flat.
+
+
+\subsubsection*{Riemannian Submanifolds}
+
+\subsection*{Riemannian Submanifolds}
+
+$S\subset M$ \\
+define $ \left. g \right|_S = i^* g$, for $i:S \hookrightarrow M$
+\[
+( \left. g \right|_S)(X,Y) = i^* g(X,Y) = g( i_* X,i_* Y) = g(X,Y)
+\]
+
+20131023 EY
+
+in general, $S \subset M$ \\
+$F:S \to M$
+e.g. $\begin{aligned} & \quad \\ 
+  & F(u^1, u^2) = (x^1, x^2, x^3 ) \\ 
+  & F(u^1 \dots u^s ) = (x^1 \dots x^m) \text{ s.t. } s\leq m \quad (\text{for this case}) \end{aligned}$
+
+Note 
+\[
+x^i = x^i(u^1 \dots u^s ) \text{ or e.g. } x^2 = x^2(u^1, u^2 )
+\]
+
+Recall these facts about pullbacks and pushforwards.  
+
+\[
+\begin{aligned}
+  & F^*: T_{F(p)}M \to T_pS \quad (\text{pullback!}) \\ 
+  & F_*: T_pS \to T_{F(p)}M \quad (\text{push forward; remember we can only pushforward if $F$ diffeomorphism, i.e. $F,F^{-1}$ diff. and $F$ bijective}) \\
+  &  F^*: \tau^2(M) \to \tau^2(S) \quad (\text{can always pullback tensors; in this case (rank 2)})
+\end{aligned}
+\]
+
+Consider charts $(U,u)$, $p\in U\subset S$, $(V,x)$, \, $F(p) \in V \subset M$, $V \subset F(U)$ \\
+\quad For $f:M \to \mathbb{R}$, i.e. $f\in \mathcal{C}^{\infty}(M)$ \\
+\quad $fF: S \to \mathbb{R}$ i.e. $fF \in \mathcal{C}^{\infty}(S)$ 
+\[
+fF = f(x^i)^{-1}x^i F(u^j)^{-1} u^j = (f(x^i)^{-1})(x^i F(u^j)^{-1})u^j = f(x^i(u^j))
+\]
+
+Consider $\overline{g}(x_i,x_j)$ \\
+\phantom{Consider } $\overline{g} = \delta_{ij} dx^i dx^j$ ($\overline{g}$ as a tensor (rank 2) in its local coordinate form, with coordinates $y^i$.  So $\overline{g}$ is (like, or is) a Euclidean metric)
+
+
+\[
+F_* E_i(f) = E_i(fF) = \omega^k_{(i)} \frac{ \partial }{ \partial x^k}f = \frac{ \partial }{ \partial u^i} f(F(u)) = \frac{ \partial f}{ \partial x^k } \frac{ \partial x^k }{ \partial u^i } \quad \quad \, \omega_{(i)}^k = \frac{ \partial x^k}{ \partial u^i }
+\]
+
+By definition, for  \\
+\quad $F^*\overline{g}(x^{(i)}, x^{(j)})$ on by (notation) $F^*g(A,B)$, \, $A,B \in T_pS$ \\
+\quad $F^*\overline{g}(E_i, E_j) = \overline{g}(F_* E_i, F_* E_j)$
+
+\[
+\begin{gathered}
+  F^*\overline{g}(E_i,E_j) = \overset{\circ}{g}(E_i, E_j) = \overset{\circ}{g}_{ij} = \overline{g}(F_* E_i, F_* E_j) = \overline{g}{ \left( \frac{ \partial x^k}{ \partial u^i } \frac{ \partial }{ \partial x^k} , \frac{ \partial x^l }{ \partial u^j } \frac{ \partial }{ \partial x^l } \right) } = \\
+  = \overline{g}_{kl} \frac{ \partial x^k}{ \partial u^i } \frac{ \partial x^l }{ \partial u^j }
+\end{gathered}
+\]
+
+Formula for pullback of metric on $M$ to metric on $S$ i.e. formula for metric on $S$
+\[
+\boxed{ (F^* \overline{g} )_{ij} = \overset{\circ}{g}_{ij} = \overline{g}_{kl} \frac{ \partial x^k}{ \partial u^i } \frac{ \partial x^l }{ \partial u^j } }
+\]
+
+For $\overline{g}_{kl} = \delta_{kl}$ (Euclidean metric)
+
+\[
+\overset{\circ}{g}_{ij} = \frac{ \partial x^k}{ \partial u^i } \frac{ \partial x^k}{ \partial u^j } = \left( \frac{ \partial x^i }{ \partial u^k } \right)^T \frac{ \partial x^k}{ \partial u^j } = (D_u x)^T (D_u x) \equiv (D_u x)^2 
+\]
+
+$\overset{\circ}{g}_{ij}$ is just the square of the Jacobian (The square of the Jacobian is the metric in $S^1$).  
+
+Then you could get the matrix form of the metric.  \\
+
+
+
+
+
+
+Example 13.16
+
+$\overset{ \circ}{g} = \left. \overline{g} \right|_{S^n}$  \quad \, $S^n \hookrightarrow \mathbb{R}^{n+1}$ round metric (or standard metric) on sphere. 
+
+
+
+
+It's usually easiest to compute the induced metric on a Riemannian submanifold in terms of local parametrizations (see Chapter 5)
+
+
+Example 13.17 \textbf{(Induced Metrics in Graph Coordinates.)} \\
+Let open $U \subset \mathbb{R}^n$ \\
+\phantom{ Let open } $M \subset \mathbb{R}^{n+1}$ graph of smooth $f:U \to \mathbb{R}$ \\
+
+Then $X:U\to \mathbb{R}^{n+1}$ \\
+\phantom{ Then }$X(u^1 \dots u^n) = (u^1 \dots u^n, f(u))$ smooth (global) parametrization of $M$
+
+induced metric on $M$,
+
+$\overline{g} = \delta_{ij} dy^i dy^j$ (note $y^i$ local coordinates on $\mathbb{R}^{n+1}$)
+
+Recall Prop.11.9. $F^*(\sigma \otimes \tau) = F^*\sigma \otimes F^*\tau$ \\
+Corollary 11.10.  $F:M \to N$, \\
+$F^*(\sigma_{j_1 \dots j_k} dy^{j_1} \otimes \dots \otimes dy^{j_k} ) = (\sigma_{j_1 \dots j_k} \circ F) d(y^j F) \otimes \dots \otimes d(y^{j_k}F)$ 
+
+\[
+\begin{gathered}
+  X^* \overline{g} = (\delta_{ij} \circ X) d(y^i X) d(y^jX) = (du^1)^2 + \dots + (du^n)^2 + (df)^2 \\
+  X^*\overline{g}_p(E_i , E_j) = \overline{g}_{X(p)}(X_* E_i, X_* E_j) 
+\end{gathered}
+\]
+
+
+\subsubsection*{The Normal Bundle}
+
+Suppose $(M,g)$, Riemannian submanifold $S\subset M$ \\
+\quad $\forall \, p \in S$, vector $N \in T_pN$ normal to $S$ if $N$ orthogonal to $T_pS$ with respect to $g$ \\
+\quad \quad $N_p S\subset T_pM$, $N_pS = $ all vectors normal to $S$ at $p = \lbrace N | \langle N, X \rangle_g = 0, \, \forall \, X \in T_pS \rbrace$ normal space to $S$ at $p$ \\
+
+
+
+\subsection*{The Riemannian Distance Function}
+
+\exercisehead{13.23}
+\[
+L_g(\gamma) = \int_a^b |\gamma'(t)|_g dt = \int_a^c |\gamma'(t)|_g dt  + \int_c^b |\gamma'(t) |_g dt = L_g(\left. \gamma \right|_{ [a,c] } ) + L_g( \left. \gamma \right|_{[c,b]} )
+\]
+
+
+\exercisehead{13.24}
+
+On every coordinate patch, consider on some interval $I \subset \mathbb{R}$ parametrizing curve $\gamma$ on $M$ and $\widetilde{\gamma}$ on $\widetilde{M}$ in the same way, and that $F^* \widetilde{\gamma} = \widetilde{\gamma}$
+
+\[
+\begin{gathered}
+  L_{\widetilde{g}}(F\circ \gamma) = \int_I |F\gamma |_{\widetilde{g}} ds = \int_I  ( \widetilde{g}( \dot{ F \gamma(t) }, \dot{ F\gamma(t)} )^{1/2} ds = \int_I \left( \widetilde{g} ( \dot{ \gamma}^i \frac{ \partial y^j}{ \partial x^i } \frac{ \partial }{ \partial y^j }, \dot{\gamma}^k \frac{ \partial y^l}{ \partial x^k} \frac{ \partial }{ \partial y^l } ) \right)^{1/2} ds = \int_I (\dot{\gamma}^i \dot{\gamma}^k )^{1/2} \left( \widetilde{g}_{jl} \frac{ \partial y^j}{ \partial x^i } \frac{ \partial y^l}{ \partial x^i} \right)^{1/2} ds = \\
+   = \int_I ( F^* \widetilde{g}(\dot{\gamma}(t), \dot{\gamma}(t) ) )^{1/2} dt = \int_I (g ( \dot{\gamma}(t), \dot{\gamma}(t) ))^{1/2} = L_g(\gamma)
+\end{gathered}
+\]
+
+Rather, think in terms of a coordinate-free manner.
+
+\[
+\begin{gathered}
+  L_g(\gamma) = \int_a^b |\gamma(t)|_g dt = \int_a^b (g(\dot{\gamma}(t), \dot{\gamma}(t)) )^{1/2} dt = \int_a^b dt ( F^*\widetilde{g}(\dot{\gamma}(t), \dot{\gamma}(t) ) )^{1/2} = \int_a^b dt (\widetilde{g}(F_* \dot{\gamma}(t), F_* \dot{\gamma}(t) ))^{1/2} = \\
+  = \int_a^b | \dot{F\gamma}(t) |_{\widetilde{g}} dt = L_{\widetilde{g}}(F\gamma)
+\end{gathered}
+\]
+
+
+
+
+
+
+
+\begin{proposition}[13.25] \textbf{(Parameter independence of Length)} \\
+Let $(M, g)$, $\gamma:[a,b] \to M$ \, piecewise smooth curve segment \\
+If $\widetilde{\gamma}$ any reparametrization of $\gamma$, then $L_g(\widetilde{\gamma}) = L_g(\gamma)$
+\end{proposition}
+
+\begin{proof}
+  Suppose $\gamma$ smooth. \\
+\phantom{Suppose} $\varphi : [c,d] \to [a,b]$ diffeomorphism s.t. $\widetilde{\gamma} = \gamma \circ \varphi$ \\
+$\varphi$ \emph{diffeomorphism} \emph{implies} $\varphi' >0$ or $\varphi' <0$ everywhere.   \\
+
+(Recall diffeomorphism (cf. wikipedia) \emph{differentiable}, bijective, inverse \emph{differentiable}; so $DF$, Jacobian \emph{matrix}, bijective, 
+$F$ differentiable, so it can't be $0$ at any pt. (linear algebra, need $\exists \, $ inverse)) \\
+
+Assume $\varphi' >0$
+\[
+\begin{gathered}
+  L_g(\widetilde{\gamma}) = \int_c^d |\widetilde{\gamma}'(t) |_g dt = \int_c^d \left| \frac{d}{dt} (\gamma \circ \varphi ) \right|_g  dt = \int_c^d | \gamma'(\varphi(t)) \dot{\varphi} |_g dt = \int_a^b |\gamma'(\varphi(t)) |_g \dot{\varphi} dt = \int_a^b |\gamma'(s)|_g = \\
+  = \int_a^b |\gamma'(s)|_g ds = L_g(\gamma)
+\end{gathered}
+\]
+
+where second-to-last equality follows from change of variables formula for ordinary integrals.
+
+
+
+
+\end{proof}
+
+
+If $(M,g)$ connected Riemannian manifold \\
+$d_g(p,q)$ (Riemannian) distance between $p,q$ - infinum of $L_g(\gamma)$ over all piecewise smooth curve segments $\gamma$ from $p$ to $q$.   \\
+
+The key is the following technical lemma, which shows that any Riemannian metric is locally comparable to Euclidean metric in coordinates.
+
+\begin{lemma}[13.28] Let $g$ on open $U\subset \mathbb{R}^n$ \\
+For compact $K \subset U$, $\exists \, $ constants $c,C$ s.t. $\begin{aligned} & \quad \\
+  & \forall \, x \in K \\
+  & \forall \, v\in T_x\mathbb{R}^n \end{aligned}$
+
+\[
+c|v|_{\overline{g}} \leq |v|_g \leq C |v|_{\overline{g}}
+\]
+
+\end{lemma}
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}[13.29] (Riemannian Manifolds as Metric Spaces)
+
+Let connected $(M,g)$ \\
+with $d_g(p,q)$; $M$ metric space whose metric topology same as original manifold topology.
+\end{theorem}
+
+
+
+
+local orthonormal frame $(E_1 \dots E_n)$ for $M$ on open $U\subset M$ is adapted to $S$ if first $k$ vectors $( \left. E_1 \right|_p \dots \left. E_k \right|_p)$ span $T_pS \quad \, \forall \, p \in S$. \\
+\quad follows $( \left. E_{k+1} \right|_p \dots \left. E_n \right|_p )$ span $N_pS$ \\
+
+Prop. 11.24 proved exactly some way as counterpart for submanifolds of $\mathbb{R}^n$ (Prop. 10.17)
+
+\begin{proposition}[11.24] (Existence of Adapted Orthonormal Fames)
+Let $S\subset M$ embedded Riemannian submanifold  \\
+\quad $\forall \, p \in S$, $\exists \, $ smooth adapted orthonormal frame on neighborhood $U \ni p \subset M$
+\end{proposition}
+
+Recall $F:M \to N$ immersion if $DF$ injective everywhere, $F$ embedding if $F$ injective (homeomorphism onto its image) and $F$ immersion.
+
+
+normal bundle to $S$  
+\[
+NS  = \coprod_{p \in S} N_p S
+\]
+
+
+
+\subsection*{The Tangent-Cotangent Isomorphism}
+
+EY 20140521, Below, in between the lines, are my notes off the previous edition.  It's frustrating to not be able to obtain instantly the most up-to-date edition automatically, online, available freely for download.  Notation had changed.  It's important to me to keep up-to-date with the latest notation; it's not trivial (cf. Zee, A.; Srednicki's QFT vs. previous QFT notation)
+
+\hrulefill
+
+Given $(M,g)$ define bundle map $\widetilde{g}:TM \to T^*M$ \\
+\quad \, $\forall \, p \in M$, $\forall \, X_p \in T_pM$, \, $\widetilde{g}(X_p) \in T_p^*M$ be covector defined $\widetilde{g}(X_p)(Y_p) = g_p(X_p,Y_p)$ \quad $\forall \, Y_p \in T_pM$ \\
+
+To see this is a smooth bundle map, consider its action on smooth vector fields:
+
+\[
+\widetilde{g}(X)(Y) = g(X,Y) \quad \, \forall \, X,Y \in \tau(M)
+\]
+
+Because $\widetilde{g}(X)(Y)$ linear over $C^{\infty}(M)$ as a function of $Y$, \\
+\quad from Prob. 6-8, $\widetilde{g}(X)$ smooth covector field. \\
+\quad because $\widetilde{g}(X)$ linear over $C^{\infty}(M)$ as a function of $X$, $\widetilde{g}$ smooth bundle map by def. by Prop. 5.16. \\
+
+Use same symbol: pointwise bundle map $\widetilde{g}:TM \to T^*M$ \\
+\phantom{Use same symbol:} linear map on sections $\widetilde{g}: \mathcal{T}(M) \to \mathcal{T}^*(M)$  \\
+
+$\widetilde{g}$ injective: $\widetilde{g}(X_p) = 0$ implies $0 = \widetilde{g}(X_p)(X_p) = \langle X_p, X_p \rangle_g$ so $X_p =0$
+
+By dim., $\widetilde{g}$ bijective, so it's a bundle isomorphism (Prob. 5-9) \\
+
+If $X,Y$ smooth vector fields, 
+\[
+\begin{aligned}
+  & \widetilde{g}(X)(Y) = g_{ij} X^i Y^j \\ 
+  &  \widetilde{g}(X) = g_{ij} X^i dy^j
+\end{aligned}
+\]
+
+customary to denote $X_j = g_{ij} X^i$ so $\widetilde{g}(X) = X_j dy^j$ \\
+
+$\widetilde{g}^{-1}:T_p^*M\to T_pM$ is inverse of $(g_{ij})$ (Because $(g_{ij})$ matrix of the isomorphism $\widetilde{g}$, it is invertible \, $\forall \, p$) \\
+\quad let $(g^{ij})$ inverse of $g_{ij}(p)$ so $g^{ij}g_{jk} = g_{kj} g^{ji} = \delta^i_k$
+
+Thus for covector field $\omega \in \mathcal{T}^*M$, 
+\[
+\widetilde{g}^{-1}(\omega) = \omega^i \frac{ \partial}{ \partial x^i},  \quad \, \omega^i = g^{ij} \omega_j 
+\]
+
+$\omega^i$ is a vector, which we visualize as a (sharp) arrow, while $X_j$ covector, which we visualize by means of its (flat) level sets.  \\
+
+$\forall \, $ smooth $f$ on $(M,g)$, \, $f\in \mathbb{R}$, define vector field \quad \, $\text{grad}{f} =  \widetilde{g}^{-1}(df)$ \\
+
+$\forall \, X \in \mathcal{T}(M)$
+
+\[
+\langle \text{grad}{f}, X\rangle_g = \widetilde{g} (\text{grad}{f})(X) = df(X) = Xf
+\]
+
+thus $\langle \text{grad}{f}, X\rangle_g = Xf$ \quad \, $\forall \, X \in \mathcal{\chi}(M)$ \\
+\phantom{thus } or equivalently $\langle \text{grad}{f}, \cdot \rangle_g = df$
+
+\[
+\text{grad}{f} = g^{ij} \frac{ \partial f}{ \partial x^i} \frac{ \partial }{ \partial x^j}
+\]
+\hrulefill
+
+
+bundle isomorphism $\widehat{g} : TM \to T^*M$  \\
+
+$\begin{aligned}
+  & \quad \\ 
+  & \forall \, p \in M \\
+  & \forall \, v \in T_pM \end{aligned}$ \quad \quad \, $\begin{aligned} & \quad \\ 
+  & \widehat{g}(v) \in T_p^*M \text{ defined by } \\
+  & \widehat{g}(v)(w) = g_p(v,w) \quad \, \forall \, w \in T_p M \end{aligned}$
+
+\[
+\widehat{g}(X)(Y) = g(X,Y) \quad \quad \, \forall \, X,Y \in \mathfrak{X}(M)
+\]
+
+
+$\widehat{g}(X)(Y)$ linear over $C^{\infty}(M)$ as a function of $Y$, Lemma 12.24 $\Longrightarrow \widehat{g}(X)$ smooth covector field
+
+$g=g_{ij}dx^i dx^j$ 
+
+\[
+\widehat{g}(X)(Y) = g_{ij}X^i Y^j \Longrightarrow \widehat{g}(X) = g_{ij}X^i dx^j = X_j dx^j \text{ where } X_j = g_{ij}X^i
+\]
+
+$X^{\flat} = \widehat{g}(X)$
+
+
+Now
+\[
+\widehat{g}^{-1}:T_p^*M \to T_pM
+\]
+$\forall \, $ covector field $\omega \in \mathfrak{X}^*(M)$
+
+\[
+\widehat{g}^{-1}(\omega) = \omega^i \frac{ \partial x^i}, \quad \, \omega^i = g^{ij}\omega_j
+\]
+
+$omega^{\sharp} = \widehat{g}^{-1}(\omega)$
+
+
+gradient of $f$ by $\text{grad}{f} = (df)^{\sharp} = \widehat{g}^{-1}(df)$
+
+$\forall \, X \in \mathfrak{X}(M)$
+
+\[
+\langle \text{grad}f, X\rangle_g = \widehat{g}(\text{grad}f)(X) = df(X) =Xf
+\]
+
+or
+
+$\langle \text{grad}f, \cdot \rangle_g = df$
+
+$\text{grad}f = g^{ij} \frac{ \partial f}{ \partial x^i} \frac{ \partial }{ \partial x^j}$ \quad \, so $\text{grad}f$ is smooth
+
+
+
+
+\subsection*{ Problems }
+
+
+
+\problemhead{11-1} Recall $\forall $ bilinear $A : V\times W \to Y$, $\exists \, !$ \, linear $\widetilde{A} : Z \to Y$ s.t. 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+    V\times W  & Z  \\
+    V\otimes W  &   \\ };
+  \path[-stealth]
+  (m-1-1) edge node [right] {$\widetilde{\pi}$} (m-1-2)
+  edge node [left] { $\otimes$} (m-2-1)
+  (m-2-1) edge node [below] {$\exists \, ! \, \pi$} (m-1-2);
+\end{tikzpicture} 
+
+is the universal property s.t. $\pi \otimes = \widetilde{\pi}$
+
+Suppose bilinear $\widetilde{\pi} : V\times W \to Z$ s.t., \\
+\quad \, $\forall \, $ bilinear $A: V\times W \to Y$, $\exists \, !$ linear $\widetilde{A} : Z \to Y$ s.t. 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+    V\times W  & Y  \\
+    Z  &   \\ };
+  \path[-stealth]
+  (m-1-1) edge node [auto] {$A$} (m-1-2)
+  edge node [left] { $\widetilde{Z}$} (m-2-1)
+  (m-2-1) edge node [below] {$\widetilde{A}$} (m-1-2);
+\end{tikzpicture} 
+
+Consider 
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+    V\times W  & Z  \\
+    V\otimes W  &   \\ };
+  \path[->,font=\scriptsize]
+  (m-1-1) edge node [auto] {$\widetilde{\pi}$} (m-1-2)
+  edge node [left] { $\otimes$} (m-2-1)
+  (m-1-2) edge node [above] {$\lambda$} (m-2-1)
+  (m-2-1.2) edge node [below] {$\widetilde{\Phi}$} (m-1-2.south east);
+\end{tikzpicture} 
+
+$\Phi \otimes = \widetilde{\pi}$ (by universal property) \\
+\[
+\Phi(v\otimes w) = \widetilde{\pi}(v,w)
+\]
+$\exists \, ! $ linear $\lambda : Z \to V\otimes W$ 
+\[
+\begin{aligned}
+  & \lambda \circ \widetilde{\pi} = \otimes \\  
+  & \lambda \otimes \widetilde{\pi}(v,w) = v\otimes w
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+  & \Phi \lambda ( \widetilde{\pi}(v,w) ) = \Phi(v\otimes w) = \widetilde{\pi}(v,w) \\ 
+  & \Phi \lambda = \text{id}_{Z} \\ 
+  & \lambda \Phi(v\otimes w) = \lambda \widetilde{\pi}(v,w) = v\otimes w \\ 
+  & \lambda \Phi = \text{id}_{V\otimes W}
+\end{aligned}
+\]
+So $\Phi$ is an isomorphism between $Z, V\otimes W$.  As $\lambda $ is unique, so is $\Phi$
+
+
+
+\problemhead{11-2}
+
+tensor product of $U,V$ is vector space $U\otimes V$ with bilinear map $\begin{aligned} & \quad \\ 
+  \otimes : & U \times V \to U\otimes V \\ 
+  & (u,v) \mapsto u\otimes v \end{aligned}$ \\
+with universal property with any vector space $W$.  
+
+$K \cong k 1$ 
+
+By bilinearity, 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em]
+  {
+    U \otimes K  & U\otimes 1 & U  \\
+    u\otimes k  & ku \otimes 1 & ku   \\ };
+  \path[->]
+  (m-1-1) edge node [auto] {$$} (m-1-2)
+  (m-1-2) edge node [left] { $$} (m-1-3);
+  \path[|->]
+  (m-2-1) edge node [auto] {$$} (m-2-2)
+  (m-2-2) edge node [above] {$$} (m-2-3);
+  \path[|->]
+  (m-2-3) edge node [bend right] {$q$} (m-2-2);
+\end{tikzpicture} 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em]
+  {
+    u\otimes k  & ku \otimes 1 & ku   \\ };
+%  \path[->]
+%  (m-1-1) edge node [auto] {$$} (m-1-2)
+%  (m-1-2) edge node [left] { $$} (m-1-3)
+  \path[|->]
+  (m-1-1) edge  (m-1-2)
+  (m-1-2) edge  (m-1-3)
+%  \path[|->]
+  (m-1-3) edge node [bend left] {$q$} (m-1-2);
+\end{tikzpicture} 
+
+$q: U \to U\otimes 1$ \\
+$u \mapsto u\otimes 1$
+
+then $U\otimes K \simeq U$
+
+
+\problemhead{11-3} $\begin{aligned} & \quad \\
+  & U^* \times V \to \text{Hom}{(U,V)} \\
+  & (u^*, v) \to ( u \to u^*(u), v) \end{aligned}$ induces a natural homomorphism (injective), $U^* \otimes V \to \text{Hom}{(U,V)}$ 
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em]
+  {
+    U^* \otimes V  & \text{Hom}{(U,V)}    \\ };
+%  \path[->]
+%  (m-1-1) edge node [auto] {$$} (m-1-2)
+%  (m-1-2) edge node [left] { $$} (m-1-3)
+  \path[->]
+  (m-1-1) edge  (m-1-2)
+    edge node [auto] {$\otimes$} (m-2-1);
+%  \path[|->]
+    \path[dotted,->] 
+  (m-2-1) edge  (m-1-2);
+\end{tikzpicture} 
+
+If $\text{dim}{U}, \, \text{dim}{V} < \infty$, 
+
+for arbitrary $v_i \in V$, \, $\begin{aligned} & \quad \\
+  & \sum_i e_i^* \otimes v_i \in U^* \otimes V \\
+  & e_j \to e_i^*(e_j)v_i = v_j \end{aligned}$ 
+
+$\sum_i e_i^* \otimes v_i$ corresponds to homomorphism $U\to V$ mapping $e_i \to v_i$ 
+
+$U^* \otimes V \to \text{Hom}{(U,V)}$ surjective.  
+
+$\text{dim}{U^* \otimes V} = \text{dim}{U^*} \text{dim}{V}$
+
+isomorphism by dim. reason. 
+

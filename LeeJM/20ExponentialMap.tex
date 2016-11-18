@@ -1,0 +1,86 @@
+\subsection{One-Parameter Subgroups and the Exponential Map}
+
+\subsubsection{One-Parameter Subgroups}
+
+\begin{theorem}[20.1]\textbf{(Characterizations of One-Parameter Subgroups)}
+\end{theorem}
+
+
+\begin{proposition}[20.8] \textbf{(Properties of Exponential Map)} Let $\begin{aligned} & \quad \\ 
+    & G \quad \, & \text{ Lie group } \\
+    & \mathfrak{g} \quad \, & \text{ Lie algebra } \end{aligned}$
+
+\begin{enumerate}
+\item[(a)] $\exp: \mathfrak{g} \to g$ smooth
+\item[(b)] $\forall \, X \in \mathfrak{g}$, $s,t\in \mathbb{R}$, $\exp{(s+t)}X = \exp{sX}\exp{tX}$
+\item[(c)] $\forall \, X \in \mathfrak{g}$, $(\exp{X})^{-1} = \exp{(-X)}$
+\item[(d)] $\forall \, X \in \mathfrak{g}$, $n\in \mathbb{Z}$, $(\exp{X})^n = \exp{(nX)}$
+\item[(e)] differential $(d\exp)_0:T_0\mathfrak{g} \to T_eG$ is identity, under canonical identifications of both $T_0\mathfrak{g}$ and $T_eG$ with $\mathfrak{g}$ itself.
+\item[(f)] $\exp$ restricts to diffeomorphism from some neighborhood of $0$ in $\mathfrak{g}$ to neighborhood of $e$ in $G$.  
+\item[(g)] if $\Phi:G\to H$ lie group homomorphism, following commutes
+
+
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3em, column sep=2em, minimum width=1em]
+  {
+ \mathfrak{g}  &   \mathfrak{h}      \\
+G     &   H   \\ };
+%  \path[-stealth]
+\path[->]
+  (m-1-1) edge node [above] {$\Phi_*$} (m-1-2)
+edge node [left] {$\exp$} (m-2-1)
+(m-1-2) edge node [auto] {$\exp$} (m-2-2)
+  (m-2-1) edge node [auto] {$\Phi$} (m-2-2);
+\end{tikzpicture}
+
+\item[(h)] flow $\theta$ of left-invariant vector field $X$, $\theta_t = R_{\exp{tX}}$
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+\item[(a)]
+\item[(b)]
+\item[(c)]
+\item[(d)]
+\item[(e)] Let $X\in \mathfrak{g}$ arbitrary, let $\begin{aligned} & \quad \\ 
+  & \sigma: \mathbb{R} \to \mathfrak{g} \\
+  & \sigma(t) = tX \\
+  & \dot{\sigma}(0) = X \end{aligned}$
+
+
+
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3em, column sep=2em, minimum width=1em]
+  {
+ \mathfrak{g}  &   G      \\
+T_0\mathfrak{g}     &   T_eG   \\ };
+%  \path[-stealth]
+\path[->]
+  (m-1-1) edge node [above] {$\exp$} (m-1-2)
+edge node [left] {$$} (m-2-1)
+(m-1-2) edge node [auto] {$(d\exp)_0$} (m-2-2)
+  (m-2-1) edge node [auto] {$$} (m-2-2);
+\end{tikzpicture}
+
+\[
+(d\exp )_0(X) = (d\exp )_0(\dot{\sigma}(0)) = (\exp \circ \sigma)'(0) = (\exp{ (tX)})'(0) = \left. \frac{d}{dt} \right|_{t=0} \exp{ (tX)}= X
+\]
+\item[(f)] $(d\exp )_0 =1$ and so by inverse function thm., $\exists \, (d\exp)_0^{-1}=1^{-1}=1$, and so $\begin{aligned} & \quad \\
+  & U \ni 0 \\
+  & U \subseteq \mathfrak{g} \end{aligned} \xrightarrow{ \simeq } \begin{aligned} & \quad \\ 
+  & V \ni e \\
+  & V \subseteq G \end{aligned}$
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\end{proof}

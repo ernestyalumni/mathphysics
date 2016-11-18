@@ -1,0 +1,129 @@
+% 16integrationonmanifolds.tex
+% Fund Science! & Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung
+%                                               
+% http://igg.me/at/ernestyalumni2014                                                                             
+%                                                              
+% Facebook     : ernestyalumni  
+% github       : ernestyalumni                                                                     
+% gmail        : ernestyalumni                                                                     
+% google       : ernestyalumni                                                                                   
+% linkedin     : ernestyalumni                                                                             
+% tumblr       : ernestyalumni                                                               
+% twitter      : ernestyalumni                                                             
+% youtube      : ernestyalumni                                                                
+% indiegogo    : ernestyalumni                                                                        
+%
+% Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University.                  
+
+
+\subsection*{Integration of Functions on Riemannian Manifolds}
+
+\begin{proposition}[16.28]
+  $(M,g)$ oriented Riemannian manifold with or without $\partial$ \\
+Suppose $f$ compactly supported cont. on $M$, $f\in \mathbb{R}$, $f\geq 0$ \\
+Then $\int_M f dV_g \geq 0$ \\
+\phantom{Then } $\int_M f dV_g = 0$ iff $f=0$
+\end{proposition}
+
+\begin{proof}
+  If $f$ supported in \\
+\quad \, domain of single oriented smooth chart $(U,\varphi)$  \\
+
+By Prop. 15.31
+
+
+\[
+\int_M f dV_g = \int_{ \varphi{(U)}} f(x) \sqrt{ \text{det}{ (g_{ij} ) } } dx^1 \dots dx^n \geq 0
+\]
+
+
+
+
+\end{proof}
+
+\exercisehead{16.29} given oriented Riemannian manifold $(M,g)$ \\
+\quad compact supported cont. $f: M \to \mathbb{R}$ \\
+
+Then if $f$ supported in \\
+\phantom{Then } domain of single oriented smooth chart $(U,\varphi)$ 
+
+\[
+\left| \int_M f dV_g \right| = \left| \int_{ \varphi{ (U)} } f(x) \sqrt{ \text{det}{ (g_{ij} )} } dx^1 \dots dx^n \right| \geq \int_{\varphi{ (U)} } |f(x) | \sqrt{ \text{det}{ (g_{ij})} } dx^1 \dots dx^n = \int_M |f| dV_g
+\]
+
+where inequality above is from some thm. in calculus.  
+
+\hrulefill
+
+\subsection*{The Divergence Theorem}
+
+
+\begin{equation}
+  \begin{aligned}
+    & * : C^{\infty}{ (M)} \to \Omega^n{ (N) } \\  
+    & * f = f dV_g 
+\end{aligned} \quad \quad \quad \, (16.10)
+\end{equation}
+smooth bundle isomorphism 
+
+EY : 20140501 smooth bundle isomorphism? 
+
+smooth bundle isomorphism
+
+\[
+\begin{aligned}
+  & \beta : \mathfrak{X}{(M)} \to \Omega^{n-1}{ (M) } \\ 
+  &  \beta(X) = X \righthalfcup dV_g
+\end{aligned}
+\]
+
+technical lemma
+\begin{lemma}[16.30]
+  $(M,g)$ oriented Riemannian manifold with or without $\partial$ \\
+  Suppose $S \subseteq M$ immersed hypersurface with orientation by \\
+\phantom{Suppose } unit normal vector field $N$ and \\
+\phantom{Suppose } $\widetilde{g}$ induced metric on $S$ \\
+
+If $X$ any vector field along $S$, 
+
+\begin{equation}
+  i^*_S{ (\beta{ (X)} )}  = \langle X, N \rangle_g dV_{\widetilde{g}} \quad \quad \quad \, (16.12)
+\end{equation}
+
+
+
+\end{lemma}
+
+\begin{proof}
+Define vector fields $X^T$, $X^{\perp}$ along $S$
+
+\[
+\begin{aligned}
+&  X^{\perp} = \langle X, N\rangle_g N \\ 
+&  X^T =  X - X^{\perp}
+\end{aligned}
+\]
+
+\[
+\beta(X) = X \righthalfcup dV_g = X^{\perp} \righthalfcup dV_g + X^T \righthalfcup dV_g
+\]
+
+pull back to $S$
+
+Prop. 15.32
+
+
+\[
+i^*_S{ (X^{\perp} \righthalfcup dV_g) }  = \langle X, N \rangle_g i^*_S{ (N \righthalfcup dV_g) } = \langle X, N \rangle_g dV_{ \widetilde{g}}
+\]
+
+If $X_1 \dots X_{n-1}$ any vectors tangent to $S$
+
+\[
+(X^T \righthalfcup dV_g){ (X_1 \dots X_{n-1} ) } = dV_g{ (X^T, X_1 \dots X_{n-1} ) } = 0 
+\]
+
+
+
+\end{proof}
+

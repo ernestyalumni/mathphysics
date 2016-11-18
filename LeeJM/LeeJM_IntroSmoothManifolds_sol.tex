@@ -1,0 +1,573 @@
+%
+% LeeJM_IntroSmoothManifolds_sol.tex 
+%
+\documentclass[twoside]{amsart}
+\usepackage{amssymb,latexsym}
+\usepackage{MnSymbol}
+\usepackage{times}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue}
+%\usepackage{simpsons}
+%\usepackage{epsdice}
+\usepackage{staves} 
+
+\usetikzlibrary{matrix,arrows}
+%\usepackage{graphics}
+
+\oddsidemargin-0.85cm
+\evensidemargin-0.65cm
+\topmargin-2.05cm     %I recommend adding these three lines to increase the 
+\textwidth19.05cm   %amount of usable space on the page (and save trees)
+\textheight25.05cm  
+\parindent0.0em
+
+%This next line (when uncommented) allow you to use encapsulated
+%postscript files for figures in your document
+%\usepackage{epsfig}
+
+%plain makes sure that we have page numbers
+\pagestyle{plain}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{axiom}{Axiom}
+\newtheorem{lemma}{Lemma}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\title{Solutions to \textbf{Introduction to Smooth Manifolds} by John M. Lee, 2012, Springer.  }
+
+\author{
+  Ernest Yeung - M\"{u}nchen
+       }
+\date{l'estate 2012}
+
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+  {\bigskip\bigskip
+   \noindent{\small\bf Question #1.}
+   \bigskip}
+
+\newcommand{\problemhead}[1]
+  {
+   \noindent{\small\bf Problem #1.}
+   }
+
+\newcommand{\exercisehead}[1]
+  { \smallskip
+   \noindent{\small\bf Exercise #1.}
+  }
+
+\newcommand{\solutionhead}[1]
+  {
+   \noindent{\small\bf Solution #1.}   }
+
+\setcounter{tocdepth}{1} % TableofContents list headings depth
+
+
+%-----------------------------------
+\begin{document}
+%-----------------------------------
+
+\maketitle
+
+\noindent linkedin     : ernestyalumni \\
+wordpress.com          : ernestyalumni \\
+
+
+Ernest Yeung was supported by Mr. and Mrs. C.W. Yeung, Prof. Robert A. Rosenstone, Michael Drown, Arvid Kingl, Mr\
+. and Mrs. Valerie Cheng, and the Foundation for Polish Sciences, Warsaw University during his Masters thesis work on quantum super-A-polynomials (cf. \href{github:qsApoly}{https://github.com/ernestyalumni/qSApoly/blob/master/LaTeX\_and\_pdf/qsuperApoly.pdf}).                  
+
+John M. Lee.  \textbf{Introduction to Smooth Manifolds}.  2012. Springer.   ISBN-10: 0-387-95495-3 (hardcover), ISBN-13: 978-0387-95448-6  \\
+
+\tableofcontents
+
+\section{Smooth Manifolds}
+\input{01smoothmanifolds}
+
+
+
+\section{Smooth Maps}
+\input{02smoothmaps}
+
+
+
+
+
+\section{Tangent Vectors}
+\input{03tangentvectors}
+
+
+
+\section{Submersions, Immersions, and Embeddings}
+\input{04submersionsimmersionsembeddings}
+
+\section{Submanifolds}
+\input{05submanifolds}
+
+
+\section{The Cotangent Bundle}
+
+
+\subsection*{ Covectors }
+
+$V$ finite-dim. vector space
+
+\emph{covector} on $V$ - real-valued linear functional on $V$, i.e. linear map $\omega : V\to \mathbb{R}$
+
+
+
+\exercisehead{6.1} Suppose $\sum a_i \epsilon^i = A = 0$.  Consider arbitrary $v= v^i e_i$.  $A(v) = \sum a_i \epsilon^i (v^j e_j) = \sum a_i v^i = 0 $
+
+$v$ arbitrary so let $v = \delta_k^{\, \, j} e_j$.  $\forall \, i, \, a_i =0$.  linearly independent.  
+
+Consider linear map $\omega: V \to \mathbb{R}$, a covector.  
+\[
+\begin{gathered}
+  \omega (v^i e_i ) = v^i(\omega( e_i)) = k \in \mathbb{R} \\
+  \omega(e_i) = \omega_j \delta^j_{\, \, i} = \omega_j \epsilon^j( e_i)
+\end{gathered}
+\]
+So $\omega$ spanned by $\omega_j \epsilon^j$.  Done.  
+
+
+
+\exercisehead{6.2} $X \in V$ 
+
+\[
+\begin{gathered}
+  (A^* \omega)(aX + bY) = \omega(A (aX + bY)) = a\omega(AX) + b \omega(AY) \in \mathbb{R} \text{ since } \omega: W^* \to \mathbb{R}
+\end{gathered}
+\]
+linear map $A^* \omega :V \to \mathbb{R}$ is a functional.
+
+\[
+A^*(a\omega + b\nu)(X) = (a\omega + b\nu )(AX) = a\omega(AX)+ b \nu(AX) \in \mathbb{R}
+\]
+
+\exercisehead{6.3}
+
+\begin{enumerate}
+\item[(a)] \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+    X  & Y & Z  \\ };
+  \path[->]
+  (m-1-1) edge node [auto] {$A$} (m-1-2)
+  (m-1-2) edge node [auto] { $B$} (m-1-3);
+%  (m-2-1) edge node [below] {$\widetilde{A}$} (m-1-2);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+    X^*  & Y^* & Z^*  \\ };
+  \path[->]
+  (m-1-2) edge node [auto] {$A^*$} (m-1-1)
+  (m-1-3) edge node [auto] { $B^*$} (m-1-2);
+%  (m-2-1) edge node [below] {$\widetilde{A}$} (m-1-2);
+\end{tikzpicture}
+
+
+$(BA)^* : Z^* \to X^*$
+\[
+((BA)^* \zeta)(x) = \zeta(BAx) = (\zeta B)(Ax) = (B^* \zeta)(Ax) = (A^* B^*)\zeta(x)
+\]
+
+\item[(b)]
+\[
+(Id_V)^*(\nu(x)) = \nu(1x) = \nu(x)
+\]
+\end{enumerate}
+
+\subsection*{ Tangent Covectors on Manifolds}
+
+
+
+\subsection*{ The Cotangent Bundle}
+
+\begin{proposition}[6.5] Let $M$ smooth manifold, $T^*M = \coprod_{p \in M} T_p^*M$ \\
+with $\begin{aligned} & \quad \\ 
+  & \pi : T^*M \to M \\ 
+  & \omega \in T^*_pM \to p \end{aligned}$
+
+natural vector space structure on each fiber, \\
+$\exists \, !$ smooth manifold structure making $T*M$ rank-$n$ vector bundle over $M$, \\
+s.t. all coordinate covectors are smooth local sections
+\end{proposition}
+
+\subsection*{ The Differential of a Function }
+
+
+
+\section{Lie Groups}
+
+\input{07LieGroups}
+
+
+\section{Vector Fields}
+
+\input{08VectorFields}
+
+\section{Integral Curves and Flows }
+
+\input{09IntegralCurvesandFlows}
+
+
+
+\section{Vector Bundles }
+
+\subsection*{Vector Bundles }
+
+\textbf{ (real) vector bundle of rank $k$ over $M$ } is topological space $E$, \\
+\quad surjective cont. $\pi: E \to M$ s.t.
+\begin{enumerate}
+\item[(i)] $\forall \, p \in M$, $E_p = \pi^{-1}(p)$ endowed with structure of $k$-dim. real vector space
+\item[(ii)] $\forall \, p \in M$, \\
+  $\exists \, $ neighborhood $U \ni p$ \\
+  $ \exists \, $ homeomorphism $\Phi : \pi^{-1}{(U)} \to U \times \mathbb{R}^k$ (local trivialization of $E$ over $U$) \\
+
+s.t. 
+
+\begin{itemize}
+\item $\pi_U \circ \Phi = \pi$ (where $\pi_U : U \times \mathbb{R}^k \to U$) 
+\item $\forall \, q\in U$, $\left. \Phi \right|_{E_q}$ is vector space isomorphism from $E_q$ to $\lbrace q \rbrace \times \mathbb{R}^k \cong \mathbb{R}^k$
+\end{itemize}
+\end{enumerate}
+
+if $M, E$ smooth manifolds with or without boundary, $\pi$ smooth, local trivializations $\Phi$ can be chosen to be diffeomorphisms, \\
+$E$ \textbf{smooth vector bundle}, \\
+$\forall \, \Phi$ that's a diffeomorphism onto its image a \textbf{ smooth local trivialization} \\
+
+(real) line bundle - rank 1 vector bundle 
+
+complex vector bundle - $\mathbb{R}^k$ replaced by $\mathbb{C}^k$
+
+\exercisehead{10.1} Suppose $E$ smooth vector bundle over $M$. \\
+$\pi$ surjective by def.  
+
+EY : 20140204
+
+submersion at $p \in M$, $F$, if for differentiable manifolds $M, N$, differentiable $F: M \to N$, \\
+\quad differential $DF_p : T_p M \to T_{F(p)}N$ \\
+\quad \, is surjective \\
+
+By def., $\forall \, p \in M$, $\exists \, U, \Phi$ \\
+\quad $\Phi$ vector space isomorphism and can be chosen to be diffeomorphism \\
+\quad $\Phi$ diffeomorphism if $\Phi$ bijection, $\Phi^{-1}$ differentiable \\
+
+$\begin{aligned}
+& \quad \\ 
+  & \Phi: \pi^{-1}(U) \to U \times \mathbb{R}^k \\
+  & D\Phi : T\pi^{-1}(U) \to T(U \times \mathbb{R}^k ) = TU \times T\mathbb{R}^k 
+\end{aligned}$ \\
+
+$\begin{aligned} 
+  & \quad \\
+  & \pi_U : U \times \mathbb{R}^k \to U \\
+  & D\pi_U : T(U \times \mathbb{R}^k ) \to TU \end{aligned}$  \\
+
+$\begin{gathered}
+\pi:\pi^{-1}(U) \to U \\
+\pi = \pi_U \circ \Phi \end{gathered}$ \\
+
+So by chain rule, 
+
+\[
+D\pi = D\pi_U D\Phi
+\]
+\[
+D\pi : T\pi^{-1}(U) \to TU
+\]
+$D\pi_U$ clearly a surjection.  
+
+$D\Phi$ bijection. 
+
+So $D\pi$ a surjection.  
+
+\hrulefill
+
+\section{The Cotangent Bundle}
+
+\subsection*{Covectors}
+
+\exercisehead{11.2} For linear $\omega : V \to \mathbb{R}$, $\omega \in V^*$ 
+\[
+\begin{gathered}
+\omega(E_j) = \omega( \delta^i_{ \, j} E_i) = \delta^i_{ \, j } \omega(E_i) = \omega(E_i) \epsilon^i(E_j) \\
+\Longrightarrow \omega = \omega(E_i)\epsilon^i
+\end{gathered}
+\]
+So $\omega$ spanned by $\epsilon^i$, \, $i = 1 \dots n$
+
+Suppose $0 = \omega_i \epsilon^i$.  Then $\forall \, x \in V$, \[
+\omega_i \epsilon^i(x^j E_j) = \omega_i x^j \delta^i_{ \, j } = \omega_i x^i = \omega(E_i) x^i = \omega(x) = 0 
+\]
+Then $\omega=0$ since $\omega(x) =0, \, \forall\, x \in V$.  So $\epsilon^i$ form a linear basis of $V^*$.  
+
+By theorem, $\text{dim}{ V^*} = \text{dim}{V}$
+
+
+
+\section{Lie Group Actions}
+
+\subsection{ Group Actions }
+
+action $G$ on $M$ cont. if $\begin{aligned} & \quad \\ & G \times M \to M \\ & (g,p) \mapsto gp \end{aligned}$ or $\begin{aligned} & \quad \\ & M \times G \to M \\ & (p,g) \mapsto pg \end{aligned}$ cont.  
+
+For cont. action, $\theta_g$ homeomorphism, since $\exists \, $ cont. inverse $\theta_{g^{-1}}$.  $\theta_g : M \to M$
+
+orbit \\
+$\forall \, p \in M$, orbit of $p = Gp = \lbrace gp | g \in G \rbrace$ 
+
+action $\theta$ transitive if $\forall \, p, q \in M$, $\exists \, g$ s.t. $gp = q$, i.e. $Gp = M$
+
+isotropy group of $p$, $G_p = \lbrace g \in G | gp = p \rbrace$ 
+
+action $\theta$ is free if the only element of $G$ that fixes any element of $M$ is $e$, \\
+i.e. if $g \cdot p = p$, $ p \in M$, $g=e$.  \\ 
+i.e. $G_p = 1$ \, $\forall \, p \in M$
+
+Example 9.1 (Lie Group Actions)
+\begin{enumerate}
+\item[(a)] trivial action of $G$ on $M$ is $gp = p$ \, $\forall \, g \in G$, \, $G_p = G$
+\item[(b)] action of $GL(n,\mathbb{R}) $ on $\mathbb{R}^n$, $(A,x) \mapsto Ax$; $x \in \mathbb{R}^n$ column matrix.  \\
+$Ax $ smooth, because components of $Ax$ depend polynomially on matrix entries of $A$ and components of $x$.  \\
+Exactly only 2 orbits : $0, \mathbb{R}^n - 0$ \, ($\forall \, y =0$, $y\in \mathbb{R}^n$, $\begin{aligned} & \quad \\ 
+  & Ax  =y \\ 
+  & x = A^{-1}y \end{aligned}$ ) 
+\item[(c)] $O(n) \times \mathbb{R}^n \to \mathbb{R}^n$  \\
+orbits : $0, S^{n-1}(R)$, \, $\forall \, R >0$.  To show this, complete $\frac{v}{ |v|}, \frac{v'}{|v'|}$, \, $\forall \, v , v' \neq 0$, to orthonormal bases.  Let $A, A'$ columsn be these orthonormal bases 
+\[
+A' A^{-1}(v) = v'
+\]
+\item[(d)] $O(n) \times S^{n-1} \to S^{n-1}$.  $O(n)$ transitive action of $O(n)$ on $S^{n-1}$.  \\
+action $O(n) \times S^{n-1} \to S^{n-1}$ smooth by Corollary 8.25, $S^{n-1}$ embedded submanifold of $\mathbb{R}^n$
+
+\end{enumerate}
+
+
+
+
+
+\subsubsection*{Representations}
+
+If $G$ Lie group, \\
+(finite-dim.) representation of $G$ is a Lie group homomorphism 
+\[
+\rho : G \to GL(V)
+\]
+$\forall \, $ representation $\rho$ yields or smooth left action of $G$ on $V$, 
+\[
+g\cdot v = \rho(g) v , \quad \quad \, \forall \, g \in G, \, v \in V
+\]
+
+
+\subsection*{Equivariant Maps }
+
+\subsection*{Proper Actions}
+
+\subsection*{Quotient of Manifolds by Group Actions}
+
+Suppose Lie group $G$ acts on manifold $M$ \\
+$p\sim q$ if $\exists \, g \in G$ s.t. $gp = q$ \quad equivalence classes are exactly the orbits of $G$ in $M$  
+
+$M/G$ set of orbits, with quotient topology, orbit space of the action
+
+
+
+
+
+\section{Tensors}
+\input{12tensors}
+
+
+
+\section{ Riemannian Metrics}
+\input{13riemannianmetrics}
+
+
+\section{Differential Forms}
+\input{14differentialforms}
+
+\section{Orientations}
+\input{15orientations}
+
+
+\section{Integration on Manifolds}
+\input{16integrationonmanifolds}
+
+
+\section{De Rham Cohomology}
+
+$d\omega = 0$ closed \\
+$\omega = d\eta$ exact.   \\
+
+Prop. 6.24 smooth 1-form conservative iff exact.
+
+\subsection*{ The de Rham Cohomology Groups}
+
+closed 1-form 
+\begin{equation}
+\omega = \frac{ x dy - y dx}{ x^2 + y^2 }  \quad \quad \quad \, (15.1)
+\end{equation}
+
+Suppose 
+\[
+\begin{gathered}
+\begin{aligned}
+  x & = r\cos{\theta} \\ 
+  y & = r s_{\theta} 
+\end{aligned} \quad \quad \, \begin{aligned}
+  dx & = c_{\theta}dr + -r s_{\theta} d\theta \\ 
+  dy & = s_{\theta} dr + rc_{\theta} d\theta
+\end{aligned} \\
+d\alpha = \omega = \frac{ x dy - y dx}{ x^2 + y^2 } = \frac{ x}{ x^2 + y^2 } - \frac{y}{x^2 + y^2} dx = \frac{1}{r} c_{\theta} ( s_{\theta} dr + rc_{\theta} d\theta ) - \frac{s_{\theta}}{r} ( c_{\theta} dr - rs_{\theta} d\theta) = d\theta 
+\end{gathered}
+\]
+
+$M$ smooth manifold
+
+$d: \mathcal{A}^p(M) \to \mathcal{A}^{p+1}(M)$ linear, $\text{ker}$, $\text{im}$ linear subspaces.  \\
+$\mathcal{Z}^p(M) = \text{ker}{ [ d : \mathcal{A}^p(M) \to \mathcal{A}^{p+1}(M)] } = \lbrace \text{ closed $p$-forms on $M$ } \rbrace$ \\
+$\mathcal{B}^p(M) = \text{im}{ [ d: \mathcal{A}^{p-1}(M) \to \mathcal{A}^p(M)]} = \lbrace \text{ exact $p$-forms on $M$ } \rbrace$
+
+
+By convention, $\mathcal{A}^p(M)$ zero vector space, $p < 0$ or $p>n = \text{dim}{M}$
+
+e.g.
+
+\[
+\begin{aligned}
+  \mathcal{B}^0(M)=0 \\ 
+  \mathcal{Z}^n(M) = \mathcal{A}^n(M)
+\end{aligned}
+\]
+
+$d^2=0$ so \\
+$\forall \, $ exact form closed.  $\mathcal{B}^p(M) \subset \mathcal{Z}^p(m)$
+
+\[
+H^p_{dR}(M) = \frac{\mathcal{Z}^p(M)}{ \mathcal{B}^p(M) }
+\]
+
+
+\subsection*{Homotopy Invariance}
+
+\begin{lemma}[15.4] (Existence of a Homotopy Operator)
+  $\forall \, $ smooth manifold $M$, $\exists \, $ homotopy operator $\mathcal{i}_0^*$, $\mathcal{i}^*_1$
+\end{lemma}
+
+\begin{proof} $\forall \, p$, define linear $h: \mathcal{A}^p(M\times I) \to \mathcal{A}^{p -1}(M)$ s.t. 
+\begin{equation}
+h(d\omega ) + d(h \omega) = \mathcal{i}^*_1 \omega - \mathcal{i}_0^*\omega  \quad \quad \, (15.5)
+\end{equation}
+
+
+define $h\omega = \int_0^1 \left( \frac{ \partial }{\partial t} \lrcorner \omega \right) dt$
+
+
+$h \omega$ \, $(p-1)$ form on $M$ whose action on $X_1 \dots X_{p-1} \in T_qM$ is 
+\[
+(h\omega)_q(X_1  \dots X_{p-1}) = \int_0^1 \left( \frac{ \partial }{ \partial t} \lrcorner \omega(q,t) \right)(X_1 \dots X_{p-1} ) dt = \int_0^1 \omega_{(q,t)}\left( \frac{ \partial}{\partial t}, X_1 \dots X_{p-1} \right) dt 
+\]
+
+choose smooth local coordinates $(x^i)$ on $M$.
+
+Consider separately $\begin{aligned} & \quad \\ 
+  \omega  & = f(x,t) dt \wedge dx^{i_1} \wedge \dots \wedge dx^{i_{p-1} } \\  
+  \omega & = f(x,t) dx^{i_1} \wedge \dots \wedge dx^{i_p } \end{aligned}$
+
+
+\end{proof}
+
+%\section{The de Rham Theorem}
+
+\section{Distributions and Foliations}
+\input{19DistributionsaFoliations}
+
+
+\section{The Exponential Map}
+\input{20ExponentialMap}
+
+
+\section{Quotient Manifolds}
+
+\subsection*{ Problems }
+
+\problemhead{21-6}
+
+Suppose Lie group $G$ acts smoothly, freely, and properly on smooth manifold $M$
+
+
+\section{Symplectic Manifolds}
+
+\input{22SymplecticManifolds}
+
+
+
+
+\begin{appendix}
+
+
+\section{Review of Topology}
+
+\subsection*{Topological Spaces}
+
+\begin{itemize}
+  \item \textbf{neighborhood of $p$} open subset $\mathcal{O}$ containing $p$
+\end{itemize}
+
+
+
+\subsubsection*{Bases and Countability}
+
+Suppose $X$ topological space.
+
+\textbf{basis for topology of $X$ } \[
+\mathcal{B} = \lbrace B | \text{ open } B \subseteq X, \, \forall \,  \text{ open } \mathcal{O} \subset X, \, \mathcal{O} = \bigcup_{\alpha} B_{\alpha} \rbrace
+\]
+
+\textbf{neighborhood basis at $p$ } $\mathcal{B}_p = \lbrace \text{neighborhoods } B_p \text{ of $p$ } | \forall \, \mathcal{O} \text{ of } p,  B_p \subset \mathcal{O}, \, B_p \in \mathcal{B}_p \text{ for at least 1 } \rbrace$
+
+$X$ \textbf{first countable }- if $\exists \, $ countable neighborhood basis $\forall \, p$
+
+\textbf{second countable } if $\exists \, $ countable basis
+
+\begin{proposition}[A.16]  Let $X$ second countable topological space. \\
+$\forall \, $ open cover of $X$ has countable subcover
+\end{proposition}
+
+\begin{proof}
+  $X$ second countable. $\exists \, $ countable basis $\mathcal{B}$ for $X$ \\
+Let $\mathcal{U}$ arbitrary open cover of $X$. \\
+Let $\mathcal{B}' \subseteq \mathcal{B}$ s.t. $\mathcal{B}' = \lbrace  B | B \in \mathcal{B}, B\subseteq U \text{ for some } U \in \mathcal{U} \rbrace$ \\
+
+$\forall \, B \in \mathcal{B}'$, choose particular $U_B \in \mathcal{U}$ containing $B$ \\
+
+$\lbrace U_B | B \in \mathcal{B}'\rbrace$ countable \\
+
+$\forall \, x \in X$ , $\exists \, V \in \mathcal{U}$, $x\in V$ \\
+$\mathcal{B} $ basis, s.t. $\exists \, B \in \mathcal{B}$ s.t. $x\in B \subseteq V$ \\
+then $B \in \mathcal{B}'$, so $x\in B \subseteq U_B$
+\end{proof} 
+
+\subsection*{Subspaces, Products, Disjoint Unions, and Quotients }
+
+\input{AReviewofTopology}
+
+\input{BReviewofLinearAlgebra}
+
+\input{CReviewofCalculus}
+
+\end{appendix}
+
+\end{document}
+

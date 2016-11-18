@@ -1,0 +1,42 @@
+
+\subsubsection*{Examples of Embedded Submanifolds }
+
+\begin{lemma}[8.6] (\textbf{Graphs as Submanifolds}). 
+If open $U \subset \mathbb{R}^n$, smooth $F: U \to \mathbb{R}^k$, \\
+then graph of $F$ is an embedded $n$-dim. submanifold of $\mathbb{R}^{n+k}$
+\end{lemma}
+
+\begin{proof}
+  Define $\begin{aligned} 
+    & \quad \\
+    & \varphi: U \times \mathbb{R}^k \to U \times \mathbb{R}^k \\ 
+    & \varphi(x,y) = (x,y - F(x)) \end{aligned}$
+
+$\varphi$ clearly smooth. \\
+$\varphi$ diffeomorphism because its inverse can be written explicitly
+\[
+\varphi^{-1}(u,v) = (u ,  v + F(u))
+\]
+
+$\varphi( \Gamma(F))$ is the slice $\lbrace (u,v) : v = 0 \rbrace $ of $U\times \mathbb{R}^k$, so graph $\Gamma(F)$ is an embedded submanifold.  
+
+
+
+\end{proof}
+
+
+
+\subsubsection*{Level Sets}
+
+
+\subsection*{Immersed Submanifolds}
+
+\begin{definition}
+  \textbf{immersed submanifold } of $M$, $S$, is $S\subseteq M$, with topology (not necessarily subspace topology) with respect to which it's a topological manifold (without boundary), and \\
+\phantom{ \quad \quad \, }   smooth structure with respect to inclusion map $i : S \hookrightarrow M$ is smooth immersion (recall $Di \equiv i_*$ injective $\Longleftrightarrow \text{rank}Di = \text{dim}S$ \\
+
+$\text{codim}S = \text{dim}M - \text{dim}S$ \\
+
+\textbf{smooth hypersurface} is immersed submanifold of codimension $1$.  
+\end{definition}
+

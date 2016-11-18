@@ -1,0 +1,1003 @@
+
+
+\subsection*{Integral Curves }
+
+If smooth curve $ \begin{aligned} & \quad \\ 
+ c:  & I \to M \\  
+ c(t) & = p \end{aligned}$ \\
+$\forall \, t \in I ,  \, c' \equiv c'(t) \in T_{c(t)}M \equiv T_p M$ \\
+
+If $X$ vector field on $M$, \\
+integral curve of $X$ is differentiable $c: I  \to M$ s.t. \\
+\quad $\forall \, t \in I$, $c'(t) \equiv \dot{c} = X_{c(t)} = X_p$  \\
+
+EY  \\
+\[
+\begin{aligned}
+  & c:I \to M \\ 
+  & c(t) = p  \\
+  & \varphi c(t) = \varphi(p) \Longrightarrow \begin{aligned} & c^i(t) = x^i(t) \\
+    & \dot{c}^i(t) = \dot{x}^i(t) \end{aligned} \\
+  X_p = X^i(p) \frac{ \partial }{ \partial x^i } \equiv X^i \frac{ \partial }{ \partial x^i } = \dot{c}^i \frac{ \partial }{ \partial x^i } 
+\end{aligned}
+\]
+
+\[
+\begin{gathered}
+  f: M \to \mathbb{R} \\ 
+  X_p f = X_p f(p) = X_pf \varphi^{-1} \varphi(p) = X_(f\varphi^{-1})(x^j) = X^i \frac{ \partial f}{ \partial x^i }(x^j) \equiv X^i(p)  \frac{ \partial f}{ \partial x^i}(x^j) = \dot{c}^i \left. \frac{ \partial f}{ \partial x^i} \right|_p = \frac{d}{dt}( f \circ c)(t)
+\end{gathered}
+\]
+
+
+
+
+Example 9.1.  (Integral Curves)
+
+\begin{enumerate}
+\item[(a)] Let $X = \frac{ \partial }{ \partial x}$, $(x,y) \in \mathbb{R}^2$ 
+
+\[
+\begin{gathered}
+  c(t) = (x(t), y(t)) = x \partial_x + y\partial_y \\ 
+  c' = \dot{x} \partial_x + \dot{y} \partial_y = \partial_y   \Longrightarrow \dot{y} = 0 \quad \, y = b \\
+  \dot{x} = 1 \quad \quad \, x = a+t \\ 
+  c = (a+t ,b) 
+\end{gathered}
+\]
+
+
+\item[(b)] $X = x\partial_x - y \partial_x$.  Comparing the components of these vectors, we see that this is equivalent to 
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    \dot{x} & = -y \\
+    \dot{y}  & = x \end{aligned} \Longrightarrow \begin{aligned}
+    y & = a \sin{t} + b\cos{t} \\ 
+    x & = a\cos{t} - b\sin{t} \end{aligned}
+\end{gathered}
+\]
+
+
+
+\end{enumerate}
+
+
+\begin{proposition}[9.2] Let smooth vector field $X$ on smooth $M$, \\
+$\forall \, p \in M$, $\exists \, \epsilon > 0 $, $\exists \, $ smooth $c:(-\epsilon, \epsilon) \to M$ i.e. integral curve of $X$ starting at $p$ \end{proposition}
+
+\begin{proof}
+  existence from Thm. D.1
+\end{proof}
+
+
+\begin{lemma}[9.3] (Rescaling Lemma) 
+$\widetilde{ c}(t) = c(at)$ integral curve of $aX$, where $\widetilde{I} = \lbrace t | at \in I \rbrace$
+\end{lemma}
+\begin{proof} Let smooth $f$ defined in neighborhood of $\widetilde{c}(t_0)$ \\
+e.g. of rescaling  - $2t = 2\cdot 1 = 2 \quad \, a=2$ 
+
+\[
+\begin{gathered}
+  \widetilde{c}(t) = c(at) = c(\tau) = p \in M \\ 
+  \dot{ \widetilde{c}}(t) f = \frac{d}{dt} (f\circ \widetilde{c})(t) = \frac{d}{dt} (f\varphi^{-1})( \varphi\widetilde{c}(t)) = \frac{d}{dt} (f\varphi^{-1})(\varphi c(at) ) = \frac{d}{dt} (f\varphi^{-1})(c^i(at)) = \left. \frac{ \partial f}{ \partial x^i} \right|_p \frac{dc^i}{ d\tau}(\tau)a = a \frac{d}{d \tau}(f\circ c)(\tau) = aX_p f
+\end{gathered}
+\]
+
+
+\end{proof}
+
+\begin{lemma}[9.4] (Translation Lemma)
+\[
+\begin{aligned}
+  & \widetilde{I} = \lbrace t | t + a \in I \rbrace \\ 
+  & \widetilde{c}(t) = c(t+a)
+\end{aligned}
+\]
+
+
+
+\end{lemma}
+
+\exercisehead{9.5}
+\begin{proof}
+\[  
+\begin{aligned}
+&  \widetilde{c}(t) = c(t+a) = c(\tau) = p \in M \\ 
+&  \dot{ \widetilde{c}}(t) f = \frac{d}{dt} (f\circ \widetilde{c})(t) = \frac{d}{dt} f(\widetilde{c}(t)) = \frac{d}{dt} f(c(t+a) ) = \left. \frac{ \partial f}{ \partial x^i } \right|_p \frac{d c^i(\tau) }{ d\tau } = \dot{c}^i(\tau)  \left. \frac{ \partial f}{ \partial x^i } \right|_p = X^i_p \left. \frac{ \partial f}{ \partial x^i} \right|_p = X_p f
+\end{aligned}
+\]
+\end{proof}
+
+
+
+
+\begin{proposition}[9.6] (Naturality of Integral curves)
+  Suppose smooth $F: M \to N$ \\
+  \quad Then $\begin{aligned} & \quad \\ 
+    & X \in \mathfrak{X}(M) \\
+    & Y \in \mathfrak{X}(N) \end{aligned}$ \quad \, $F$-related iff $F$ takes integral curves of $X$ to integral curves of $Y$
+\end{proposition}
+
+\begin{proof}
+Recall 
+\[
+X,Y \, F-\text{related means } \, dF(X) =Y
+\]
+
+Let $\gamma = Fc$ 
+\[
+\dot{\gamma} = \frac{d}{dt} (F\circ c)(t) = (dF)(\dot{c}) = dF(X) = Y
+\]
+
+$\Longrightarrow \gamma $ integral curve of $Y$ \\
+
+if $\gamma = Fc$ integral curve of $Y$, $\dot{\gamma} = Y$.  \quad $q = F(p)$.  $p=c(t)$
+
+\[
+\begin{gathered}
+  Yg= Y_qg = Y^j \left. \frac{ \partial g}{ \partial y^j } \right|_q = \dot{\gamma}^j(t) \left. \frac{ \partial g}{ \partial y^j } \right|_{F(p)} = \frac{d}{dt} (F\circ c ) \left. \frac{ \partial g}{ \partial y^j } \right|_{F(p)} = \frac{ \partial y^j}{ \partial x^k } \dot{c}^k(t) \left. \frac{ \partial g}{ \partial y^j } \right|_q = \frac{ \partial y^j}{ \partial x^k} X^k_p \left. \frac{ \partial g}{ \partial y^j } \right|_q = (F_* X)g = dF(X)g \\
+\Longrightarrow dF(X) = Y
+\end{gathered}
+\]
+\end{proof}
+
+
+\subsection*{Flows }
+
+
+Let $X \in \mathfrak{X}(M)$ \\
+Suppose $\forall \, p \in M$, $\exists \, !$ \, integral curve starting at $p$, $\phi^{(p)}: \mathbb{R} \to M$ \\
+$\forall \, t \in \mathbb{R}$, define $\begin{aligned} & \quad \\
+  & \phi_t: M \to M \\
+  & \phi_t(p) = \phi^{(p)}(t) \end{aligned}$
+
+\[
+\theta_0(p) = \theta^{(p)}(0) = p
+\]
+
+EY: $\phi_t$ pushes $p$ to $\phi^{(p)}(t)$ over time interval $t$ \\
+
+translation lemma implies $t\mapsto \phi^{(p)}(t+s)$ is integral curve of $X$ starting at $q = \phi^{(p)}(s)$  \\
+
+assuming uniqueness of integral curves, $\phi^{(p)}(t) = \phi^{(p)}(t+s)$, so 
+
+\[
+\begin{gathered}
+  \phi_t \circ \phi_s(p) = \phi_{t+s}(p) \\ 
+  \phi_0(p) = \phi^{(p)}(0) = p 
+\end{gathered}
+\]
+
+$\Longrightarrow \phi : \mathbb{R}\times M \to M$ is an action of additive group $\mathbb{R}$ on $M$.  \\
+
+define \emph{ global flow } on $M$ (1-parameter group action) - cont. left $\mathbb{R}$-action on $M$, i.e. \\
+\quad cont. $\phi : \mathbb{R} \times M \to M$ s.t. $\forall \, s,t \in \mathbb{R}$, $\forall \, p M$ 
+
+\begin{equation}
+\begin{aligned}
+& \phi(t, \phi(s,p) ) = \phi(t+s, p )
+& \phi(0,p) = p 
+\end{aligned} \quad \quad \quad \, (9.2)
+\end{equation}
+
+given global flow $\phi$ \\
+
+$\forall \, t \in \mathbb{R}$, define cont. $\begin{aligned} & \quad \\
+  & \phi_t: M \to M \\
+  & \phi_t(p) \to \phi(t,p)
+\end{aligned}$  
+\[
+\xrightarrow{ (9.2) } \begin{gathered}
+  \phi_t \cdot \phi_s = \phi_{t+s} \\ 
+  \phi_0 = 1_M
+\end{gathered}
+\]
+
+$\phi_t : M \to M$ homeomorphism; if flow smooth, $\phi_t$ diffeomorphism.   \\
+
+$\forall \, p \in M$, define $ \begin{aligned} & \quad \\ & \phi^{(p)}:\mathbb{R} \to M \\ & \phi^{(p)}(t) = \phi(t,p) \end{aligned}$ \\
+
+$\phi^{(p)}$ is orbit of $p$ under group action.  
+
+smooth global flow $\theta:\mathbb{R} \times M \to M$ \\
+\quad $\forall \, p \in M$, define $V_p \in T_pM$
+\[
+V_p = (\theta^{(p)})'(0)
+\]
+
+
+\begin{proposition}[9.7] Let smooth global flow $\phi: \mathbb{R}\times M \to M$ on smooth $M$ \\
+infinitesimal generator $X$ of $\phi$ \quad $\begin{aligned} & \quad \\
+  & p \mapsto X_p \\
+  & X_p  = \dot{\phi}^{(p)}(0) \end{aligned}$ \quad is smooth vector field on $M$, and $\forall \, \phi^{(p)}$, $\phi^{(p)}$ integral curve of $X$ 
+\end{proposition}
+
+\begin{proof}
+  Show $X$ smooth.  Use Prop. 8.14,  \\
+$f$ smooth on open $U\subseteq M$, $f:U\to \mathbb{R}$ 
+
+\[
+Xf(p) = X_pf = \dot{\phi}^{(p)}(0) f \equiv ( \dot{\phi}^{(p)}(0) )[f] = \left. \frac{d}{dt} ( f\circ \phi^{(p)} ) \right|_{t=0} = \frac{ \partial }{ \partial t} \left. (f\circ \phi(t,p) ) \right|_{t=0} 
+\]
+
+$f\circ \phi(t,p) = f(\phi(t,p))$ smooth function of $(t,p)$ by composition, so $\partial_t(f\circ \phi)$ smooth. So $Xf$ smooth, so $X$ smooth.   \\
+
+Let $q = \phi^{(p)}(a) = \phi_a(p)$ 
+
+\begin{equation}
+  \phi^{(q)}(t) = \phi_t(q) = \phi_t( \phi_a(p)) = \phi_{t+a}(p) = \phi^{(p)}(t+a) \quad \quad \quad \, (9.4)
+\end{equation}
+
+\begin{equation}
+  X_qf = \dot{\phi}^{(q)}(0)f = \dot{\phi}^{(q)}(0)[f] = \frac{d}{dt} \left. (f \circ \phi^{(q)}(t)) \right|_{t=0} = \frac{d}{dt} \left. (f\circ \phi^{(p)}(t+a) ) \right|_{t=0} = \dot{\phi}^{(p)}(a) f = X_{ \phi^{(p)}(a) } f \quad \quad \quad \, (9.5)
+\end{equation}
+
+\end{proof}
+
+So by def., $\phi^{(p)}(t)$ integral curve of $X$
+
+
+\subsubsection*{ The Fundamental Theorem on Flows }
+
+flow domain for $M$ is open $\mathcal{D} \subseteq \mathbb{R} \times M$ s.t. $\forall \, p \in M$, $\mathcal{D}^{(p)} = \lbrace t \in \mathbb{R} | (t,p) \in \mathcal{D} \rbrace$ is an open interval containing $0$.  \\
+
+\textbf{flow} on $M$ is cont. $\phi : \mathcal{D} \to M$ s.t. group laws : 
+\begin{equation}
+  \forall \, p \in M, \, \phi(0, p ) = p \quad \quad \quad \, (9.6)
+\end{equation}
+
+\begin{equation}
+  \begin{aligned} & \quad \\ 
+    & \forall \, s \in \mathcal{D}^{(p)} \\ 
+    & \forall \, t \in \mathcal{D}^{ (\phi(s,p))} \end{aligned} \quad \text{ s.t. } s + t \in \mathcal{D}^{(p)}, \quad \quad \, \phi(t, \phi(s,p) ) = \phi(t+s, p ) \quad \quad \quad \, (9.7)
+\end{equation}
+
+\begin{proposition}[9.11] If $\phi: \mathcal{D} \to M$ smooth flow, \\
+then infinitesimal generator $X$ of $\phi$ smooth vector field and $\forall \, \phi^{(p)}$ integral curve of $X$
+\end{proposition}
+
+\begin{proof}
+Recall that  \\
+\emph{infinitesimal generator} $X$ of $\phi$, $\begin{aligned} & \quad \\ 
+  & p \mapsto X_p \\
+  & X_p = \dot{\phi}(0) \end{aligned}$ \quad now on open $\mathcal{D}$, $\mathcal{D} \subseteq \mathbb{R} \times M$ s.t. $\forall \, p \in M$, $\mathcal{D}^{(p)} = \lbrace t \in \mathbb{R} | (t,p) \in \mathcal{D} \rbrace$ open, \\
+
+given $\phi$ smooth flow, \\
+\quad $\phi(t,q)$ defined and smooth $\forall \, (t,q)$ sufficiently close to $(0,p)$ since $\mathcal{D}$ open.  With $f$ smooth on open $U$ in this open neighborhood of $(0,p)$, 
+
+\[
+\Longrightarrow Xf(p) = \left. \frac{ \partial }{ \partial t } (f \circ \phi(t,p)) \right|_{t=0}
+\]
+
+$f\phi$ smooth (by composition), so $\partial_t f\phi$ smooth, so $X$ smooth itself around $\forall \, p \in M$.   \\
+
+Suppose $t\in \mathcal{D}^{(p)}$ \\
+$\mathcal{D}^{(p)}$, $\mathcal{D}^{ (\phi_t(p))} = \mathcal{D}^{(q)}$ open (by def.)
+
+$\phi_{\Delta t}\phi_t(p) = \phi_{ \Delta t + t }(p)$ by def. of flow. 
+
+
+
+
+
+
+
+
+
+\end{proof}
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=4.8em, minimum width=2em]
+  {
+\mathfrak{X}(M) &  \\
+M &  \\
+\mathcal{D} &       M \\
+\mathcal{D}^{(p)} & \\
+};
+  \path[->]
+  (m-2-1) edge node [above] {$$} (m-1-1)
+  edge node [above] {$\phi_t$} (m-3-2)
+  (m-3-1) edge node [auto] {$$} (m-2-1)
+  edge node [below left] {$\phi$} (m-3-2)
+  edge node [auto] {$$} (m-4-1)
+  (m-4-1) edge node [below] {$\phi^{(p)}$} (m-3-2)
+  (m-3-2) edge node [right] {$\left. \frac{ \partial }{ \partial t} \right|_{t=0} = \left. \frac{d}{dt} \right|_{t=0}$} (m-1-1)
+;
+\end{tikzpicture} \quad \quad \quad \, \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=4.8em, minimum width=2em]
+  {
+X_p &  \\
+p &  \\
+(t,p)       &       \phi(t,p) = \phi^{(p)}(t) = \phi_t(p) \\
+t & \\
+};
+  \path[|->]
+  (m-2-1) edge node [above] {$$} (m-1-1)
+  edge node [above] {$\phi_t$} (m-3-2)
+  (m-3-1) edge node [auto] {$$} (m-2-1)
+  edge node [below left] {$\phi$} (m-3-2)
+  edge node [auto] {$$} (m-4-1)
+  (m-4-1) edge node [below] {$\phi^{(p)}$} (m-3-2)
+  (m-3-2) edge node [right] {$\left. \frac{ \partial }{ \partial t} \right|_{t=0} = \left. \frac{d}{dt} \right|_{t=0}$} (m-1-1)
+;
+\end{tikzpicture}
+
+
+
+
+
+\begin{theorem}[9.12] (Fundamental Theorem on Flows)
+  Let smooth vector field $X$ on smooth manifold $M$.  \\
+$\exists \, ! \, \, $ smooth maximal flow $\phi : \mathcal{D} \to M$ whose infinitesimal generator is $X$ (recall $\begin{aligned} & \quad \\ 
+    & p \mapsto X_p \\
+    & X_p = \dot{\phi}{(0)} \end{aligned}$) s.t. 
+\begin{enumerate}
+\item[(a)] $\forall \, p \in M$, curve $\phi^{(p)} : \mathcal{D}^{(p)} \to M$ is unique maximal integral curve of $X$ starting at $p$. 
+\item[(b)] If $s\in \mathcal{D}^{(p)}$, then $\mathcal{D}^{(\phi(s,p))}$ is interval $\mathcal{D}^{(p)}-s = \lbrace t - s | t\in \mathcal{D}^{(p)} \rbrace$
+\item[(c)] $\forall \, t \in \mathbb{R}$, $M_t$ open in $M$, and $\phi_t:M_t \to M_{-t}$ diffeomorphism with inverse $\phi_{-t}$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+From Proposition 9.2 ($\forall \, p \in M$, $\exists \, \epsilon > 0$, \, $\exists \, $ smooth $c:(-\epsilon, \epsilon) \to M$, i.e. integral curve $X$ starting at $p$) \\
+
+Suppose $c,\widetilde{c} : I \to M$ \, 2 integral curves of $X$, open $I$ s.t. $c(t_0) = \widetilde{c}(t_0)$ for some $t_0 \in I$ \\
+Let $S = \lbrace t | t \in I, \text{ s.t. } c(t) = \widetilde{c}(t) \rbrace$ \\
+Clearly $S \neq \emptyset$ since $c(t_0) = \widetilde{c}(t_0)$ \quad (hypothesis) \\
+\quad $S$ closed in $I$ by continuity (of $c, \widetilde{c}$) \\
+Suppose $t_1 \in S$ \\
+\quad $c(t_1) = \widetilde{c}(t_1)=p$
+Then in smooth coordinate neighborhood around $p=c(t_1)$, \, $c, \widetilde{c}$ both solutions to same ODE with same initial conditions $c(t_1) = \widetilde{c}(t_1) = p$ \\
+
+By uniqueness part of Thm. D.1, $c\equiv \widetilde{c}$ on interval containing $t_1$ \\
+\quad $\Longrightarrow S $ \, open in $I$. \\
+Since $I$ connected, $S=I$ \quad ($S$ clopen) \\
+$c= \widetilde{c} \quad \, \forall \, t \in I$ \\
+Thus, $\forall \, c , \widetilde{c}$ \, that agrees at 1 pt. agree on common domain.   \\ 
+
+$\forall \, p \in M$, let $\mathcal{D}^{(p)} = \bigcup_{\alpha} I_{\alpha}$, open $I_{\alpha} \subseteq \mathbb{R}$ 
+\quad s.t. $0 \in I_{\alpha}$, and integral curve $\begin{aligned} & \quad \\ 
+  & c_{\alpha} : I_{\alpha} \to M \\
+  & c_{\alpha}(0) = p \end{aligned}$ \, starting at $p$ is defined.  \\
+
+define $\begin{aligned} & \quad \\ 
+  & \phi^{(p)}: \mathcal{D}^{(p)} \to M  \\
+  & \phi^{(p)}(t) = c(t) \end{aligned}$ \, where $c$ is any integral curve s.t. $c(0) = p$ and $c$ defined on $I_{\alpha}$ s.t. $0,t \in I_{\alpha}$. \\
+
+since all integral curves agree at $t$ by argument above, $\phi^{(p)}$ well-defined \\
+\quad \quad and is obviously unique maximal integral curve starting at $p$.   \\
+
+
+Let $\mathcal{D} = \lbrace (t,p) \in \mathbb{R} \times M | t \in \mathcal{D}^{(p)} \rbrace$ \\
+define $\begin{aligned} & \quad \\ 
+  & \phi :\mathcal{D} \to M \\
+  & \phi{(t,p)} = \phi^{(p)}{(t)} \equiv \phi_t{(p)} \end{aligned}$ (notation for last statement)  \\
+
+By def. $\phi$ satisfies (a): $\forall \, p \in M$, $\exists \, ! \, $ maximal integral curve of $X$, $\phi^{(p)}$, starting at $p$.  \\
+
+Fix $p\in M$, $s \in \mathcal{D}^{(p)}$ \\
+write $q = \phi{ (s,p) } = \phi^{(p)}(s)$ \\
+
+define $\begin{aligned} & \quad \\ 
+  & \widetilde{c}: \mathcal{D}^{(p)} -s \to M \\
+  & \widetilde{c}(t) = \phi^{(p)}(t+s) \, \text{ s.t. } \, \widetilde{c}{(0)} = \phi^{(p)}(s) = q \end{aligned}$ \\
+
+By translation lemma (9.4), $\begin{aligned} & \quad \\
+  & \widetilde{c}{(t)} = c{(t+s)} \\
+  & \widetilde{I} = \lbrace t | t+s \in I \rbrace \end{aligned}$ \quad \, e.g. $\begin{aligned} & \quad \\ 
+  & I = (-2,6) , \, \, s = 1 \\
+  & \widetilde{I} = (-3,5) \end{aligned}$ \quad \, $\widetilde{c}(t)$ also integral curve of $X$.  
+
+By uniqueness of ODE solutions, \\
+\quad $\widetilde{c}$ agrees with $\phi^{(q)}$ on their common domain, \\
+\quad \quad equivalent to second group law (9.7) 
+\[
+\widetilde{c}{(t)} = \phi^{(p)}{ (t+s)} = \phi{(t+s,p)} = \phi^{(q)}{(t)} = \phi{(t,q)} = \phi{(t,\phi{(s,p) }) }
+\]
+
+
+
+\end{proof}
+
+
+\begin{lemma}[9.19] \textbf{(Escape Lemma)}
+Suppose smooth $M$, $V\in \mathfrak{X}(M)$.  \\
+If $\gamma: J \to M$ maximal integral curve of $V$ s.t. domain $J$ has finite least upper bound $b$, \\
+\phantom{ \quad \, } then $\forall \, t_0 \in J$, $\gamma([t_0,b))$ not contained in any compact subset of $M$
+\end{lemma}
+
+\begin{proof}
+See Problem 9-6.  Solution there.  
+\end{proof}
+
+\subsection*{Flowouts}
+
+Suppose smooth $M$, $S\subseteq M$ embedded $k$-dim. submanifold. \\
+smooth $V \in \mathfrak{X}(M)$ s.t. $V$ nowhere tangent to $S$.  \\
+Let $\theta:\mathcal{D} \to M$ be flow of $V$  \\
+Let $\mathcal{O} = (\mathbb{R}\times S) \bigcap \mathcal{D}$ \\
+\phantom{Let } $\Phi= \left. \theta \right|_{\mathcal{O}}$
+\begin{enumerate}
+\item[(a)] $\Phi : \mathcal{O} \to M$ immersion 
+\item[(b)] $\frac{ \partial }{ \partial t} \in \mathfrak{X}(\mathcal{O})$ is $\Phi$-related to $V$
+\item[(c)] $\exists \, $ smooth $\delta >0$, $\delta : S \to \mathbb{R}$ s.t. \\
+$\left. \Phi \right|_{\mathcal{O}_{\delta}}$ injective, where $\mathcal{O}_{\delta} \subseteq \mathcal{O}$ flow domain.  
+\begin{equation}
+  \mathcal{O}_{\delta} = \lbrace (t,p) \in \mathcal{O} | |t| < \delta(p) \rbrace \quad \quad \quad \, (9.9)
+\end{equation}
+Thus $\Phi(\mathcal{O}_{\delta})$ immersed submanifold of $M$ containing $S$. $V$ tangent to $\Phi(\mathcal{O}_{\delta})$
+\item[(d)] If $S$ codim. $1$, $\left. \Phi \right|_{\mathcal{O}_{\delta}}$ diffeomorphism onto open submanifold of $M$
+\end{enumerate}
+
+\subsection*{Flows and Flowouts on Manifolds with Boundary }
+
+\subsection*{Lie Derivatives }
+
+\begin{equation}
+  D_vW(p) = \left. \frac{d}{dt} \right|_{t=0} W_{p+tv} = \lim_{t\to 0} \frac{ W_{p+tv} - W_p }{t} \quad \quad \quad \, (9.15)
+\end{equation}
+
+\[
+D_vW(p) = D_vW^i(p) \left. \frac{ \partial }{ \partial x^i } \right|_p
+\]
+
+\textbf{Lie derivative of $W$ with respect to $V$ }
+
+\begin{equation}
+  (\mathcal{L}_VW)_p = \left. \frac{d}{dt} \right|_{t=0} d(\theta_{-t})_{\theta_t(p)}(W_{\theta_t(p)}) = \lim_{t \to 0} \frac{ d(\theta_{-t})_{\theta_t(p)}(W_{\theta_t(p)}) - W_p }{ t } \quad \quad \quad \, (9.16)
+\end{equation}
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=6.8em, minimum width=2em]
+  {
+\mathfrak{X}(M) & \mathfrak{X}(M)  \\
+\mathfrak{X}(M) &   \\
+M    &       M \\
+};
+  \path[->]
+  (m-3-1) edge node [above] {$$} (m-2-1)
+  edge node [above] {$\phi_t$} (m-3-2)
+  (m-3-2) edge node [auto] {$$} (m-1-2)
+  edge [bend left] node [auto] {$\phi_{-t}$} (m-3-1)
+  (m-1-2) edge node [above] {$d(\phi_{-t})=(\phi_{-t})_*$} (m-1-1)
+;
+\end{tikzpicture} \quad \quad \quad \, \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=6.8em, minimum width=2em]
+  {
+d(\phi_{-t})_{\phi_t(p)}(W_{\phi_t(p)}) & W_{\phi_t(p)}  \\
+W_p   &    \\
+p    &       \phi_t(p) \\
+};
+  \path[|->]
+  (m-3-1) edge node [above] {$$} (m-2-1)
+  edge node [above] {$\phi_t$} (m-3-2)
+  (m-3-2) edge node [auto] {$$} (m-1-2)
+  edge [bend left] node [auto] {$\phi_{-t}$} (m-3-1)
+  (m-1-2) edge node [above] {$d(\phi_{-t})=(\phi_{-t})_*$} (m-1-1)
+;
+\end{tikzpicture}
+
+
+
+
+\begin{lemma}[9.36]
+  Suppose smooth $M$ with or without $\partial$, \, $V, W \in \mathfrak{X}(M)$ \\
+If $\partial M \neq \emptyset$, assume $v$ trangent to $\partial M$ \\
+Then $\exists \, $ smooth $(\mathcal{L}_VW)_p$ \, $\forall \, p \in M$
+\end{lemma}
+
+\begin{proof}
+  $\forall \, (t,x ) \in J_0 \times U_0$, \\
+  matrix $d(\theta_{-t})_{\theta_t(x)}: T_{\theta_t(x)}M \to T_xM$
+\[
+\left( \frac{ \partial \theta^i}{ \partial x^j}(-t, \theta(t,x)) \right)
+\]
+
+Therefore,
+\[
+d(\theta_{-t})_{\theta_t(x)}(W_{\theta_t(x)}) = \frac{ \partial \theta^i}{ \partial x^j}(-t,\theta(t,x)) W^j(\theta(t,x)) \left. \frac{ \partial }{ \partial x^i} \right|_x
+\]
+
+\end{proof}
+
+\exercisehead{9.37}
+
+Given $V = v^i \frac{ \partial }{ \partial x^i}$ with constant coefficients (i.e. $v^i$ constant)
+
+\[
+\begin{aligned}
+  & \dot{\theta}^{(x)}(t) = V \\ 
+  & \dot{\theta}^i(t) = v^i  \\
+  & \theta^i(t)= v^it + x^i
+\end{aligned} \quad \quad \Longrightarrow \quad 
+\frac{ \partial \theta^i}{ \partial x^j} = \delta^i_{ \, \, j}
+\]
+
+\[
+\begin{gathered}
+\frac{d}{dt} W^i(\theta(t,x))  = \frac{ \partial W^i}{ \partial y^j}(v^j) 
+\end{gathered}
+\]
+
+From the proof of Lemma 9.36, 
+\[
+\begin{gathered}
+  d(\theta_{-t})_{\theta_t(x)}(W_{\theta_t(x)}) = \frac{ \partial \theta^i}{ \partial x^j}(-t,\theta(t,x)) W^j(\theta(t,x)) \left. \frac{ \partial }{ \partial x^i} \right|_x = \\
+ = \delta^i_{ \, \, j} W^j(\theta(t,x)) \left. \frac{ \partial }{ \partial x^i} \right|_x  = W^i(\theta(t,x)) \left. \frac{ \partial }{ \partial x^i} \right|_x
+\end{gathered}
+\]
+From (9.16)
+\[
+\begin{gathered}
+  (\mathcal{L}_VW)_p = \left. \frac{d}{dt} \right|_{t=0} d(\theta_{-t})_{\theta_t(p)}(W_{ \theta_t(p) } ) = v^j \frac{ \partial W^i}{ \partial x^j} \left. \frac{ \partial }{ \partial x^i} \right|_p = D_VW^i(p) \left. \frac{ \partial }{ \partial x^i} \right|_p = D_VW(p)
+\end{gathered}
+\]
+
+\hrulefill
+
+\begin{theorem}[9.38] If smooth $M$, and $V,W \in \mathfrak{X}(M)$, 
+\[
+\mathcal{L}_VW = [V,W]
+\]
+\end{theorem}
+
+
+
+\begin{corollary}[9.39]
+  \begin{enumerate}
+    \item[(a)]
+    \item[(b)]
+    \item[(c)]
+    \item[(d)]
+    \item[(e)]
+\end{enumerate}
+\end{corollary}
+
+\exercisehead{9.40}
+
+  \begin{enumerate}
+    \item[(a)] \[
+\mathcal{L}_VW = [V,W] = -[W,V] = \mathcal{L}_WV
+\]
+    \item[(b)]
+    \item[(c)]
+    \item[(d)]
+    \item[(e)]
+\end{enumerate}
+
+
+\hrulefill
+
+
+Prop. 9.41 is about derivative of $d(\theta_{-t})_{\theta_t(p)}(W_{\theta_t(p)})$ at other times
+
+\begin{proposition}[9.41] Suppose smooth $M$ with or without $\partial$ and $V, W \in \mathfrak{X}(M)$ \\
+If $\partial M \neq \emptyset$, assume $V$ tangent to $\partial M$ \\
+Let $\theta$ flow of $V$.  \\
+
+$\forall \, (t_0,p)$ in domain of $\theta$
+
+\[
+\left. \frac{d}{dt} \right|_{t=t_0} d(\theta_{-t})_{\theta_t(p)}(W_{\theta_t(p)})  = d(\theta_{-t_0}) ( (\mathcal{L}_VW)_{\theta_{t_0}(p)} )
+\]
+\end{proposition}
+
+
+\subsection*{ Commuting Vector Fields }
+
+
+\subsection*{ Time-Dependent Vector Fields }
+
+Let smooth manifold $M$ 
+
+\textbf{time-dependent vector field on $M$}, $V$ \\ 
+\quad cont. $V: J \times M \to TM$, interval $J \subseteq \mathbb{R}$ \\
+\quad \quad s.t. 
+\[
+V(t,p) \in T_p M \quad \, \forall \, (t,p) \in J \times M
+\]
+i.e. $\forall \, t \in J$, \\
+$\begin{aligned}
+  & V_t : M \to TM \\
+  & V_t(p) = V(t,p) \end{aligned}$ is a vector field on $M$
+
+EY : 20150226
+
+\textbf{time-dependent vector field on $M$}, $V$ is \\
+\phantom{ \quad \quad \, }  $\begin{aligned}
+& \quad \\
+ \text{ cont. } & V : J \times M \to TM \quad \, \text{ interval } J \subseteq \mathbb{R} \\
+  & V(t,p) \in T_p M \quad \, \forall \, (t,p) \in J \times M \end{aligned}$
+
+i.e.  $\forall \, t \in J$ \\
+$\begin{aligned}
+& \quad \\
+  & V_t : M \to TM \\
+  & V_t(p) = V(t,p ) \in \mathfrak{X}(M) \end{aligned}$
+
+
+\textbf{integral curve of $V$ } is diff. $\begin{aligned} 
+& \quad \\
+  & \gamma : J_0 \to M \\
+  & \dot{\gamma}(t) = V(t,\gamma(t)) \quad \, \forall \, t \in J_0 \end{aligned}$ \quad \, where $J_0 \subset J $ s.t. 
+
+$\forall \, X \in \mathfrak{X}(M)$, determines time dependent vector field $V: \mathbb{R} \times M \to TM$ by 
+\[
+V(t,p) = X_p
+\]
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.2em, column sep=4.8em, minimum width=3.2em]
+  {
+& \mathfrak{X}(\mathbb{R}\times M) = T\mathbb{R}\oplus TM     & TM   \\
+J \times M & \mathbb{R} \times M &  M\\
+& \mathcal{E} \subseteq J \times J \times M         &       M \\
+& \mathcal{E}^{(t_0,p)}                            & \\
+};
+  \path[->]
+  (m-2-2) edge node [left] {$\widetilde{V}$} (m-1-2)
+         edge node [auto] {$V$} (m-1-3)
+          edge node [above] {$$} (m-2-3)
+  (m-3-2) edge node [auto] {$$} (m-2-2)
+          edge node [auto] {$$} (m-2-3)
+          edge node [below left] {$\psi$} (m-3-3)
+          edge node [auto] {$$} (m-4-2)
+          edge node [auto] {$\widetilde{\theta}$} (m-2-1)
+  (m-4-2) edge node [below] {$\psi^{(t_0,p)}$} (m-3-3)
+  (m-2-3) edge node [right] {$\psi_{tt_0}$} (m-3-3)
+          edge node [right] {$X$} (m-1-3)
+  (m-1-3) edge node [above] {$\oplus T\mathbb{R}$} (m-1-2)
+  (m-2-1) edge node [above] {$t=t_0$} (m-2-2)
+          edge node [auto] {$\left. \frac{ \partial }{ \partial t} \right|_{t=t_0}$} (m-1-2)
+;
+\end{tikzpicture} \quad \quad \quad \, 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.2em, column sep=4.8em, minimum width=3.2em]
+  {
+& \left. \frac{ \partial }{ \partial t} \right|_{t=t_0} \widetilde{\theta} = \widetilde{V}_{(t_0,p)} = \left( \left. \frac{ \partial }{ \partial s} \right|_{t_0}, V(t_0,p) \right) & V(t_0,p) = X_p  \\
+\widetilde{\theta}(t,(t_0,p)) = (\alpha(t,(t_0,p)), \beta(t,(t_0,p)))  & (t_0,p)        & p  \\
+& (t,t_0,p)       &       \psi(t,t_0,p) = \psi^{(t_0,p)}(t)  \\
+& t & \\
+};
+  \path[|->]
+ (m-2-2) edge node [left] {$\widetilde{V}$} (m-1-2)
+         edge node [auto] {$V$} (m-1-3)
+          edge node [above] {$$} (m-2-3)
+  (m-3-2) edge node [auto] {$$} (m-2-2)
+          edge node [auto] {$$} (m-2-3)
+          edge node [below left] {$\psi$} (m-3-3)
+          edge node [auto] {$$} (m-4-2)
+          edge node [auto] {$\widetilde{\theta}$} (m-2-1)
+  (m-4-2) edge node [below] {$\psi^{(t_0,p)}$} (m-3-3)
+  (m-2-3) edge node [right] {$\psi_{tt_0}$} (m-3-3)
+          edge node [right] {$X$} (m-1-3)
+  (m-1-3) edge node [above] {$+ \left. \frac{\partial}{\partial s} \right|_{t_0}$} (m-1-2)
+  (m-2-1) edge node [above] {$t=t_0$} (m-2-2)
+          edge node [auto] {$\left. \frac{ \partial }{ \partial t} \right|_{t=t_0}$} (m-1-2)
+; 
+\end{tikzpicture}
+
+with \[
+\begin{gathered}
+\left. \frac{ \partial }{ \partial t}\right|_{t=t_0} \widetilde{\theta}( t,(t_0,p)) = \left. \left( \frac{ \partial \alpha }{\partial t}(t,(t_0,p)), \frac{\partial \beta}{ \partial t}(t,(t_0,p))  \right)\right|_{t=t_0} = (1, V(t_0,p))
+\end{gathered}
+\]
+
+EY : 20150725 I don't like Lee's choice of notation.  Let me rewrite the above diagrams:
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.2em, column sep=4.8em, minimum width=3.2em]
+  {
+& \mathfrak{X}(\mathbb{R}\times M) = T\mathbb{R}\oplus TM     & TM   \\
+J \times M & \mathbb{R} \times M &  M\\
+& \mathcal{E} \subseteq J \times J \times M         &       M \\
+& \mathcal{E}^{(t,p)}                            & \\
+};
+  \path[->]
+  (m-2-2) edge node [left] {$\widetilde{V}$} (m-1-2)
+         edge node [auto] {$V$} (m-1-3)
+          edge node [above] {$$} (m-2-3)
+  (m-3-2) edge node [auto] {$$} (m-2-2)
+          edge node [auto] {$$} (m-2-3)
+          edge node [below left] {$\psi$} (m-3-3)
+          edge node [auto] {$$} (m-4-2)
+          edge node [auto] {$\widetilde{\theta}$} (m-2-1)
+  (m-4-2) edge node [below] {$\psi^{(t,p)}$} (m-3-3)
+  (m-2-3) edge node [right] {$\psi_{st}$} (m-3-3)
+          edge node [right] {$V_t$} (m-1-3)
+  (m-1-3) edge node [above] {$\oplus T\mathbb{R}$} (m-1-2)
+  (m-2-1) edge node [above] {$s=0$} (m-2-2)
+          edge node [auto] {$\left. \frac{ \partial }{ \partial s} \right|_{s=0}$} (m-1-2)
+;
+\end{tikzpicture} \quad \quad \quad \, 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.2em, column sep=4.8em, minimum width=3.2em]
+  {
+& \left. \frac{ \partial }{ \partial s} \right|_{s=0} \widetilde{\theta} = \widetilde{V}_{(t,p)} = \left( \left. \frac{ \partial }{ \partial t} \right|_{s=0}, V(t,p) \right) & V(t,p) = V_t(p)  \\
+\widetilde{\theta}(s,(t,p)) = (\alpha(s,(t,p)), \beta(s,(t,p)))  & (t,p)        & p  \\
+& (s,t,p)       &       \psi(s,t,p) = \psi^{(t,p)}(s)  \\
+& s & \\
+};
+  \path[|->]
+ (m-2-2) edge node [left] {$\widetilde{V}$} (m-1-2)
+         edge node [auto] {$V$} (m-1-3)
+          edge node [above] {$$} (m-2-3)
+  (m-3-2) edge node [auto] {$$} (m-2-2)
+          edge node [auto] {$$} (m-2-3)
+          edge node [below left] {$\psi$} (m-3-3)
+          edge node [auto] {$$} (m-4-2)
+          edge node [auto] {$\widetilde{\theta}$} (m-2-1)
+  (m-4-2) edge node [below] {$\psi^{(t,p)}$} (m-3-3)
+  (m-2-3) edge node [right] {$\psi_{st}$} (m-3-3)
+          edge node [right] {$V_t$} (m-1-3)
+  (m-1-3) edge node [above] {$+ \left. \frac{\partial}{\partial t} \right|_{s=0}$} (m-1-2)
+  (m-2-1) edge node [above] {$s=0$} (m-2-2)
+          edge node [auto] {$\left. \frac{ \partial }{ \partial s} \right|_{s=0}$} (m-1-2)
+; 
+\end{tikzpicture}
+
+with \[
+\begin{gathered}
+\left. \frac{ \partial }{ \partial s}\right|_{s=0} \widetilde{\theta}( s,(t,p)) = \left. \left( \frac{ \partial \alpha }{\partial s}(s,(t,p)), \frac{\partial \beta}{ \partial s}(s,(t,p))  \right)\right|_{s=0} = (1, V(t,p))
+\end{gathered}
+\]
+
+
+\begin{theorem}[9.48] \textbf{(Fundamental Theorem on Time-Dependent Flows)} \\
+Let $M$ smooth manifold \\
+open $J \subseteq \mathbb{R}$ \\
+$V: J \times M \to TM$ smooth time-dependent vector field on $M$ \\
+$\exists \, $ open $\mathcal{E} \subseteq J\times J \times M$, smooth $\psi : \mathcal{E} \to M$ called time-dependent flow of $V$ s.t. 
+
+\begin{enumerate}
+\item[(a)] $\forall \, t_0 \in J$, \, $\forall \, p \in M$, \\
+open $\mathcal{E}^{(t_0,p)} = \lbrace t \in J | (t,t_0, p) \in \mathcal{E}_0 \rbrace$ s.t. $t_0 \in \mathcal{E}^{(t_0, p)}$ \\
+smooth curve $\begin{aligned}
+  & \quad \\ 
+  & \psi^{(t_0,p)}: \mathcal{E}^{(t_0,p)} \to M \\
+  & \psi^{(t_0,p)}(t) = \psi(t,t_0,p) \end{aligned}$ \\
+is unique maximal integral curve of $V$ with $\psi^{(t_0,p)}(t_0) = p$
+\item[(b)] If $ \begin{aligned}
+  & \quad \\ 
+  & t_1 \in \mathcal{E}^{(t_0,p)} \\
+  & q = \psi^{(t_0,p)}(t_1) \end{aligned}$
+
+then $\begin{aligned}
+  & \quad \\
+  & \mathcal{E}^{(t_1,q)} = \mathcal{E}^{(t_0,p)} \text{ and } \\
+  & \psi^{(t_1,q)} = \psi^{(t_0,p)} \end{aligned}$
+\item[(c)] $\forall \, (t_1,t_0) \in J \times J $ \\
+$M_{t_1,t_0} = \lbrace p \in M | (t_1,t_0, p) \in \mathcal{E} \rbrace$ open in $M$ and \\
+  $\begin{aligned}
+  & \quad \\
+  & \psi_{t_1t_0} : M_{t_1t_0} \to M \\
+  & \psi_{t_1t_0}(p) = \psi(t_1,t_0,p) \end{aligned}$
+is a diffeomorphism from $M_{t_1t_0}$ onto $M_{t_0t_1}$ with inverse $\psi_{t_0t_1}$
+\item[(d)] If $p \in M_{t_1t_0} $, $\psi_{t_1t_0}(p) \in M_{t_0t_1}$, \\
+then $p\in M_{t_2 t_0}$ and 
+\begin{equation}
+\psi_{t_2t_1} \psi_{t_1t_0}(p) = \psi_{t_2t_0}(p) \quad \quad \quad \, (9.18)
+\end{equation}
+\end{enumerate}
+
+\end{theorem}
+
+\begin{proof}
+Consider smooth vector field $\begin{aligned} 
+& \quad  \\
+  & \widetilde{V} \in \mathfrak{X}(J \times M ) \text{ defined by } \\
+  & \widetilde{V}_{(s,p)} = \left( \left. \frac{ \partial }{ \partial s } \right|_s, V(s,p) \right) \end{aligned}$ \\
+
+identify $T_{(s,p)}(J \times M)$ with $T_sJ \oplus T_pM$ (Prop. 3.14)
+
+Let $\begin{aligned}
+& \quad \\ 
+  & \widetilde{\theta} : \widetilde{\mathcal{D}} \to J \times M \\
+  & \widetilde{\theta}(t,(s,p)) = (\alpha(t,(s,p)) , \beta(t,(s,p)) ) \end{aligned}$ \quad \, flow of $\widetilde{V}$
+
+then $\begin{aligned} 
+ & \quad \\
+  & \alpha: \widetilde{D} \to J \\
+  & \beta: \widetilde{D} \to M \end{aligned}$ s.t. 
+
+\[
+\begin{aligned}
+  & \frac{ \partial \alpha}{ \partial t}(t,(s,p) ) = 1 \quad \quad \, & \alpha(0,(s,p)) = s \\ 
+  & \frac{ \partial \beta}{ \partial t}(t,(s,p)) = V(\alpha(t,(s,p)), \beta(t,(s,p))) \quad \quad \, & \beta(0,(s,p)) = p 
+\end{aligned}
+\]
+$\Longrightarrow \alpha(t,(s,p)) = t+s$ so 
+\begin{equation}
+  \frac{ \partial \beta}{ \partial t}(t,(s,p)) = V(t+s,\beta(t,(s,p)) \quad \quad \quad \, (9.19)
+\end{equation}
+\end{proof}
+
+
+Let $\begin{aligned}
+  & \quad \\
+  & \mathcal{E} \subseteq \mathbb{R} \times J \times M \text{ defined } \\
+  & \mathcal{E} = \lbrace (t,t_0, p) | (t-t_0, (t_0,p) ) \in \widetilde{\mathcal{D}} \rbrace \end{aligned}$
+
+$\mathcal{E}$ open because $\widetilde{\mathcal{D}}$ is. \\
+since $\alpha: \widetilde{D} \to J$, if $(t,t_0, p) \in \mathcal{E}$, then $t= \alpha(t-t_0,(t_0,p)) \in J$, implies $\mathcal{E} \subseteq J \times J \times M$ \\
+$\mathcal{E}$ open so $M_{t_1t_0} = \lbrace p \in M | (t_1,t_0, p) \in \mathcal{E} \rbrace$ open. 
+
+define $\begin{aligned} & \quad \\ 
+  & \psi : \mathcal{E} \to M \\
+  & \psi(t,t_0,p) = \beta(t-t_0,(t_0,p))
+\end{aligned}$
+
+EY : 20150725 Remark: Out of the proof immediately above, there are a number of takeaways that really \emph{should} be mentioned.  
+
+Let's collect the facts:
+\[
+\begin{aligned}
+  & \widetilde{\theta}(s,(t,p)) = (\alpha(s,(t,p)), \beta(s,(t,p)) ) := \widetilde{\theta}^{(t,p)}(s) \\ 
+  & \widetilde{\theta}(0,(t,p)) = (\alpha(0,(t,p)), \beta(0,(t,p)) ) = (t,p) \\ 
+  & \frac{ \partial \alpha}{ \partial s}(s,(t,p)) = 1 \\
+  & \frac{ \partial \beta }{ \partial s}(s,(t,p)) = V(\alpha(s,(t,p)), \beta(s,(t,p))) \text{ so } \\ 
+  & \alpha(s,(t,p)) = s+t \\ 
+  & \frac{ \partial \beta}{ \partial s}(s,(t,p)) = V(s+t,\beta(s,(t,p)) ) \\
+  & \left. \frac{ \partial }{ \partial s} \right|_{s=0} \widetilde{\theta}(s,(t,p)) = \left. \left( \frac{ \partial \alpha }{ \partial s}(s,(t,p)) , \frac{ \partial \beta}{ \partial s}(s,(t,p)) \right) \right|_{s=0} = (1,V(t,p)) = \frac{d\widetilde{\theta}^{(t,p)}}{ds}(s=0) := \widetilde{V}_{(t,p)}
+\end{aligned}
+\]
+
+Also, we can write the flow $\widetilde{\theta}_s$ as
+\[
+\widetilde{\theta}^{(t,p)}(s) = \widetilde{\theta}(s,(t,p)) = \widetilde{\theta}_s(t,p) = (\alpha(s,(t,p)),\beta(s,(t,p))) = (s+t, \beta(s,(t,p)))
+\]
+
+Now consider the Lie derivative:
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=6.8em, minimum width=2em]
+  {
+\mathfrak{X}(\mathbb{R} \times M) & \mathfrak{X}(\mathbb{R} \times M)  \\
+\mathfrak{X}(\mathbb{R} \times M) &   \\
+J\times M    &       J\times M \\
+};
+  \path[->]
+  (m-3-1) edge node [above] {$$} (m-2-1)
+  edge node [above] {$\widetilde{\theta}_s$} (m-3-2)
+  (m-3-2) edge node [auto] {$$} (m-1-2)
+  edge [bend left] node [auto] {$\widetilde{\theta}_{-s}$} (m-3-1)
+  (m-1-2) edge node [above] {$d(\widetilde{\theta}_{-s})=(\widetilde{\theta}_{-s})_*$} (m-1-1)
+;
+\end{tikzpicture} \quad \quad \quad \, \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=6.8em, minimum width=2em]
+  {
+d(\widetilde{\theta}_{-s})_{\widetilde{\theta}_s(t,p)}(W_{\widetilde{\theta}_s(t,p)}) & W_{\widetilde{\theta}_s(t,p)}  \\
+W_{(t,p)}   &    \\
+(t,p)    &       \widetilde{\theta}_s(t,p) \\
+};
+  \path[|->]
+  (m-3-1) edge node [above] {$$} (m-2-1)
+  edge node [above] {$\widetilde{\theta}_s$} (m-3-2)
+  (m-3-2) edge node [auto] {$$} (m-1-2)
+  edge [bend left] node [auto] {$\widetilde{\theta}_{-s}$} (m-3-1)
+  (m-1-2) edge node [above] {$d(\widetilde{\theta}_{-s})=(\widetilde{\theta}_{-s})_*$} (m-1-1)
+;
+\end{tikzpicture}
+
+with $\widetilde{\theta}$ being the flow of $\widetilde{V}$.  Let's define the Lie derivative:
+
+\begin{equation}
+\begin{gathered}
+  \mathcal{L}_{\widetilde{V}}W = (\mathcal{L}_{\widetilde{V}}W)_{(t,p)} = \left. \frac{d}{ds} \right|_{s=0}(d\widetilde{\theta}_{-s})_{\widetilde{\theta}_s(t,p)}(W_{\widetilde{\theta}_s(t,p)})   = \lim_{s\to 0} \frac{ (d\widetilde{\theta}_{-s})_{\widetilde{\theta}_s(t,p)}( W_{\widetilde{\theta}_s(t,p)}) - W_{\widetilde{\theta}_s(t,p)} }{s}
+\end{gathered}
+\end{equation}
+
+
+Use Case 1 of the proof of Lee's Theorem 9.38, for showing $\mathcal{L}_VW = [V,W]$.  \\
+Let open neighborhood $U \subseteq J \times M$, with $(t,p) \in U$.  On open $U$, choose smooth coordinates $(t,u^i)$ on $U$.  By Theorem 9.22, that at a regular point $p\in M$, $\exists \, (u^i)$ coordinates s.t. $V_p = \frac{ \partial }{ \partial u^1}$, then consider 
+
+\[
+\widetilde{V} = \frac{ \partial }{ \partial t} + \frac{ \partial }{ \partial u^1} \in \mathfrak{X}(\mathbb{R} \times M)
+\]
+with $V(t)(p) = \frac{ \partial }{ \partial u^1} \in \mathfrak{X}(M)$.  (Remember, $V(t)$ is a vector-field that is time-dependent, but is on $M$.  I will use this as a justification for using Thm. 9.22).  
+
+Now the flow $\widetilde{\theta}_s$ takes on these forms:
+\[
+\begin{gathered}
+  \widetilde{\theta}^{(t,p)}(s) = \widetilde{\theta}(s,(t,p)) = \widetilde{\theta}_s(t,p) = \\
+  = (\alpha(s,(t,p)) , \beta(s,(t,p))) = (s+t, \beta(s,(t,p)) )
+\end{gathered}
+\]
+Given these conditions, that \\
+$\beta(0,(t,p)) = p = (u^1,u^2, \dots u^n)$ and 
+\[
+\left. \frac{ \partial \beta}{ \partial s}(s, (t,p)) \right|_{s=0} = V(t,p) = \frac{ \partial }{ \partial u^1} = \left. \frac{d}{ds} \beta^{(t,p)}(s) \right|_{s=0}
+\]
+then a $\beta$ that satisfies these conditions above is 
+\[
+\beta(s,(t,p)) = \beta_s(t,p) = (u^1 + s, u^2 \dots u^n)
+\]
+so that we can conclude that 
+\[
+\widetilde{\theta}_s(t,p) = (t+s, u^1 + s, u^2 , \dots , u^n)
+\]
+
+For fixed $s$, then
+\[
+d(\widetilde{\theta}_{-s})_{\widetilde{\theta}_s(t,p)} =1_{T_{\widetilde{\theta}_s(t,p)}(\mathbb{R}\times M)}
+\]
+so that 
+\[
+\begin{gathered}
+  d(\widetilde{\theta}_{-s})_{\widetilde{\theta}_s(t,p)}(W_{\widetilde{\theta}_s(t,p)}) = d(\widetilde{\theta}_{-s})_{\widetilde{\theta}_s(t,p)} \cdot W^j(t+s,u^1 +s, u^2 \dots u^n) \left. \frac{ \partial }{ \partial u^j} \right|_{\widetilde{\theta}_s(t,p)} = W^j(t+s,u^1+s, u^2 \dots u^n) \left. \frac{ \partial }{ \partial u^j} \right|_{(t,p)} \\
+\Longrightarrow \left. \frac{d}{ds} \right|_{s=0} W^j(t+s,u^1+s, u^2 \dots u^n) \left. \frac{ \partial }{ \partial u^j} \right|_{(t,p)} = \left( \frac{\partial }{ \partial t} W^j(t,u^1 \dots u^n) + \frac{ \partial }{ \partial u^1 } W^j(t,u^1 \dots u^n) \right) \left. \frac{ \partial}{ \partial u^j} \right|_{(t,p)}
+\end{gathered}
+\]
+
+
+Thus, we can conclude that 
+\begin{equation}
+  \boxed{ \mathcal{L}_{\widetilde{V}}W = \mathcal{L}_{ \frac{ \partial }{ \partial t} +V}W = \left( \mathcal{L}_{ \frac{ \partial}{ \partial t} V } W \right)_{(t,p)} = \left( \left( \frac{ \partial }{ \partial t} + V \right) W^j \right) \left. \frac{ \partial }{ \partial x^j} \right|_{(t,p)} }
+\end{equation}
+
+\subsection*{First-Order Partial Differential Equations }
+
+
+
+\subsection*{ Problems }
+
+
+\problemhead{9-21} Note that from wikipedia, 
+
+ambient isotopy \\
+Let $N, M$ manifolds, \\
+\quad $g,h$ embeddings of $N$ in $M$ 
+
+cont. map $F: M \times [0,1] \to M$ s.t.  \\
+$F: g\mapsto h$ \\
+if $F_0 = 1$ \\
+\phantom{ if } $F_t$ homeomorphism, $F_t: M \to M$ \\
+\phantom{ if } $F_1 : g \mapsto h$ \\
+
+\textbf{smooth isotopy} of $M$ is smooth $H: M \times J \to M$, \, $J \subseteq R$ interval s.t. \\
+\quad \, $\forall \, t \in J$, $\begin{aligned} & \quad \\
+  & H_t : M \to M \\
+  & H_t(p) = H(p,t) \end{aligned}$ is a diffeomorphism.  
+
+Suppose open interval $J \subseteq \mathbb{R}$ \\
+\phantom{Suppose } smooth isotopy $H:M \times J \to M$ \\
+
+EY : 20140206 
+
+By definition \\
+$\forall \, t, \, \begin{aligned} & \quad \\
+  & H_t : M \to M \\
+  & H_t(p) = H(p,t) \end{aligned}$
+
+Then $DH_t = (H_t)_*$ \\
+\[
+DH_t : TM \to TM
+\]
+
+I tried, 
+
+for some time $t$, consider $H(x^i(p),t) = y^j(x^i,t)$ 
+\[
+\frac{ \partial H(p,t)}{ \partial t } = \frac{ \partial y^j(x^i,t) }{ \partial t }
+\]
+
+Consider integral curve $x = x(t)$ s.t. $\dot{x} = X(t)$ 
+
+\[
+\begin{gathered}
+  \dot{y} = \frac{dy}{dt} = \frac{d}{dt} y(x(t),t) = \frac{ \partial y^j}{ \partial x^i }\dot{x}^i = (DH_t)X \\
+\begin{aligned}
+  & (H_t)_* : TM \to TM \\ 
+  & DH_t : X \mapsto \dot{y} = Y
+\end{aligned}
+\end{gathered}
+\]
+
+
+
+$\psi(t,t_0,p) = H_t \circ H_{t_0}^{-1}(p)$ domain $J \times J \times M$ ??
+
