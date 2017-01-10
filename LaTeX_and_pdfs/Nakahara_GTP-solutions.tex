@@ -1,0 +1,4372 @@
+%Nakahara_GTP-solutions.tex
+%LaTeX
+%\documentclass[twoside]{article}
+\documentclass[twoside]{amsart}
+%This makes the margins little smaller than the default
+%\usepackage{fullpage}
+%fullpage is not installed on andrew, so we'll just use these lines.
+\oddsidemargin-0.80cm
+\evensidemargin-0.10cm
+\topmargin-1.6cm     %I recommend adding these three lines to increase the 
+\textwidth17.55cm   %amount of usable space on the page (and save trees)
+\textheight23.85cm  
+
+
+%if you need more complicated math stuff, you should use the next line
+\usepackage{amsmath}
+%This next line defines a variety of special math symbols which you
+%may need
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{mathtools}
+\usepackage{hyperref}
+
+%This next line (when uncommented) allow you to use encapsulated
+%postscript files for figures in your document
+%\usepackage{epsfig}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+
+
+%plain makes sure that we have page numbers
+\pagestyle{plain}
+
+
+\title{
+Solutions to \emph{Geometry,Topology,Physics} by Mikio Nakahara, 2003.  
+}
+\author{
+  Ernest Yeung
+       }
+\date{zima 2012}
+
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+  {\bigskip\bigskip
+   \noindent{\large\bf Question #1.}
+   \bigskip}
+
+\newcommand{\problemhead}[1]
+  {\smallskip
+   \noindent{\large\bf Problem #1.}
+   }
+
+\newcommand{\exercisehead}[1]
+  {\smallskip
+   \noindent{\large\bf Exercise #1.}
+   }
+
+\newcommand{\solutionhead}[1]
+  {\smallskip
+   \noindent{\large\bf Solution #1.}
+   }
+
+
+%-----------------------------------
+\begin{document}
+%-----------------------------------
+
+\maketitle
+
+Fund Science! \& Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung \\
+
+\url{http://igg.me/at/ernestyalumni2014} \\
+
+\noindent Facebook  : ernestyalumni \\
+gmail        : ernestyalumni \\
+google       : ernestyalumni \\
+linkedin     : ernestyalumni \\
+tumblr       : ernestyalumni \\
+twitter      : ernestyalumni \\
+weibo        : ernestyalumni \\ 
+youtube      : ernestyalumni \\
+indiegogo    : ernestyalumni \\
+
+
+%-----------------------------------%-----------------------------------%-----------------------------------%-----------------------------------%-----------------------------------
+Solutions for \emph{Geometry, Topology, and Physics}.  Mikio Nakahara.  Institute of Physics Publishing.  2003.  ISBN 0 7503 0606 8
+%-----------------------------------%-----------------------------------%-----------------------------------%-----------------------------------%-----------------------------------
+
+\section{Quantum Physics}
+
+\subsection{Analytical mechanics}
+
+\subsubsection{Newtonian mechanics}
+
+\subsubsection{Lagrangian formalism}
+
+$\mathcal{L}$ independent of coordinate $q_k$; $q_k$ cyclic.  \\
+
+$q_k(t) \to q_k(t) + \delta q_k(t)$
+\begin{equation}
+S[q(t), \dot{q}(t) ] = \int_{t_i}^{t_f} L(q,\dot{q}) dt \quad \quad \quad \, (1.3)
+\end{equation}
+
+\[
+\delta S = \int_{t_i}^{t_f} \sum_k \delta q_k \left( \frac{ \partial L}{ \partial q_k} - \frac{d}{dt} \frac{ \partial L}{ \partial \dot{q}_k } \right) + \sum_k \left[ \delta_k \frac{ \partial L}{ \partial \dot{q}_k} \right]_{t_i}^{t_f} = 0 
+\]
+Note that 
+\[
+- \int \delta q_k \frac{d}{dt} \frac{ \partial L}{ \partial \dot{q}_k } + \delta q_k \left. \frac{ \partial L}{ \partial \dot{q}_k} \right|_{t_i}^{t_f} = \int \delta \dot{q}_k \frac{ \partial L}{ \partial \dot{q}_k }
+\]
+with $p_k = \frac{ \partial L}{ \partial \dot{q}_k}$.  
+\begin{equation}
+\Longrightarrow \delta q_k(t_i) p^k(t_i) = \delta q_k(t_f) p^k(t_f)
+\end{equation}
+since $t_i,t_f$ arbitrary, $\delta q_k(t) p^k(t)$ independent of $t$ and hence conserved.
+
+\subsubsection{Hamiltonian formalism}
+
+\exercisehead{1.1}  $A = A(q,p), B(q,p)$ defined on phase space of $H = H(q,p)$
+\[
+\begin{aligned}
+  [A, c_1 B_1 + c_2 B_2 ] & = \partial_{q_k} A \partial_{p_k} (c_1 B_1 + c_2 B_2) - \partial_{p_k} A \partial_{q_k} ( c_1 B_1 + c_2 B_2) = \\
+  & = c_1 \partial_{q_k} A \partial_{p_k} B_1 - c_1 \partial_{p_k} A \partial_{q_k} B_1 + c_2 \partial_{q_k} A \partial_{p_k} B_2 - c_2 \partial_{p_k} A \partial_{q_k} B_2 = \\
+  & = c_1 [ A,B_1] + c_2 [A,B_2]
+\end{aligned}
+\]
+
+\[
+[A,B] = \partial_{q_k} A \partial_{p_k} B - \partial_{p_k} A \partial_{q_k} B = - (\partial_{q_k} B \partial_{p_k} A - \partial_{p_k} B \partial_{q_k} A ) = - [B,A]
+\]
+
+\[
+\begin{aligned}
+  [[A,B],C] & = \partial_{q_k} ( \partial_{q_l} A \partial_{p_l} B - \partial_{p_l} A \partial_{q_l} B ) \partial_{p_k} C - \partial_{p_k} ( \partial_{q_l} A \partial_{p_l} B - \partial_{p_l} A \partial_{q_l} B ) \partial_{q_k} C =  \\ 
+  & = \partial^2_{q_k q_l} A \partial_{p_l} B \partial_{p_k} C - \partial^2_{q_k q_l} B \partial_{p_k} C \partial_{p_l} A + \\
+  & \phantom{ = } + \partial^2_{q_k p_l} B \partial_{q_l} A \partial_{p_k} C - \partial^2_{q_k p_l} A \partial_{q_l} B \partial_{p_k} C + \\
+  & \phantom{ = } + \partial^2_{p_k p_l} A \partial_{q_k} C \partial_{q_l} B - \partial^2_{p_k p_l } B \partial_{q_k} C \partial_{q_l} A + \\ 
+  & \phantom{ = } + \partial^2_{q_l p_k} B \partial_{q_k} C \partial_{p_l}A - \partial^2_{q_l p_k} A \partial_{q_k} C \partial_{p_l} B
+\end{aligned}
+\]
+\[
+\Longrightarrow [[A,B], C ] + [[C,A], B] + [[B,C], A] = 0
+\]
+
+\begin{equation}
+  \frac{dA}{dt} = \sum_k \left( \frac{ dA}{ dq_k } \frac{ dq}{ dt} + \frac{dA}{ dp_k } \frac{dp_k}{dt} \right) = \sum_k \left( \frac{dA}{ dq_k} \frac{ \partial H}{ \partial p_k} - \frac{ dA}{ d p_k} \frac{ \partial H}{ \partial q_k} \right) = [A,H] \quad \quad \quad \, (1.23)
+\end{equation}
+
+
+\subsection{ Canonical quantization }
+\subsubsection{Hilbert space, bras, and kets}
+\subsubsection{Axioms of canonical quantization}
+
+A3. Poisson bracket in classical mechanics is replaced by commutator. 
+\begin{equation}
+  [ \widehat{A}, \widehat{B} ] \equiv \widehat{A} \widehat{B} - \widehat{B} \widehat{A} \quad \quad \quad \, (1.31)
+\end{equation}
+
+
+
+\subsection*{Problems}
+
+\problemhead{1.1} $H = \int d^n x \left[ \frac{1}{2} \left( \frac{ \partial \phi }{ \partial t} \right)^2 + \frac{1}{2} ( \nabla \phi )^2 + V(\phi) \right]$  \\
+
+If $\phi$ time independent, $H[\phi] = H_1[\phi] + H_2[\phi]$  
+\[
+\begin{aligned}
+  & H_1[\phi] \equiv \frac{1}{2} \int d^n x ( \nabla x )^2 \\ 
+  & H_2[\phi] \equiv \int d^n x V(\phi)
+\end{aligned}
+\]
+\begin{enumerate}
+\item[(1)] $\phi(x) \to \phi(\lambda x)$
+\[
+\begin{gathered}
+  (\nabla \phi)^2 = \partial_j \phi \partial^j \phi = \lambda^{-2} \partial_i \phi \partial^i \phi = \lambda^{-2} (\nabla \phi)^2 \\ 
+  \frac{ \partial }{ \partial x^i}  = \frac{ \partial y^i}{ \partial x^i } \frac{ \partial}{ \partial y^i } = \lambda \frac{ \partial }{ \partial y^i } \\ 
+  d^n y = \lambda^n d^n x
+\end{gathered}
+\]
+\item[(2)] $
+  \begin{aligned}
+    & H_1[\phi] \to \lambda^{n-2} H_1[\phi] \\
+    & H_2[\phi] \to \lambda^n H_2[\phi] 
+\end{aligned}$
+\[
+\Longrightarrow \partial_{\lambda} H = (n-2) H_1 + n H_2 = 0 \text{ or } (2-n) H_1 - nH_2 = 0 
+\]
+\item[(3)]
+\end{enumerate}
+
+
+
+\subsubsection{ Heisenberg equation, Heisenberg picture and Schr\"{o}dinger picture}
+
+\subsubsection{Wavefunction}
+
+\subsubsection{Harmonic oscillator}
+
+\subsection{ Path integral quantization of a Bose particle}
+
+\subsubsection{Path integral quantization}
+
+\subsubsection{Imaginary time and partition function}
+
+\subsubsection{Time-ordered product and generating functional }
+
+\subsection{ Harmonic oscillator} 
+
+\subsubsection{Transition amplitude}
+
+\subsubsection{Partition function}
+
+\subsection{ Path integral quantization of a Fermi particle }
+
+\subsection{ Quantization of a scalar field}
+
+\subsection{ Quantization of a Dirac field}
+
+\subsection{ Gauge theories }
+
+\subsubsection{ Abelian gauge theories}
+
+\begin{align}
+  & \nabla \cdot B = 0   & (1.241a) \\
+  & \frac{ \partial B}{ \partial t } + \nabla \times E = 0  & (1.241b) \\ 
+  & \nabla \cdot E = \rho & (1.241c) \\
+  & \frac{ \partial E}{ \partial t}  - \nabla \times B = -j  & (1.241d) 
+\end{align}
+
+\[
+A_{\mu} = ( - \phi, A )
+\]
+
+\[
+\begin{aligned}
+  & B = \nabla \times A \\ 
+  & E = \frac{ \partial A}{ \partial t} - \nabla \phi \quad \quad \quad \, (1.242) 
+\end{aligned}
+\]
+
+\exercisehead{1.11}
+
+\[
+\begin{gathered}
+  \nabla \cdot B = 0 = \partial_i B_i = \partial_i (\nabla \times A)_i = \partial_i \epsilon_{ijk} \partial_j A_k = \epsilon_{ijk} \partial_i \partial_j A_k  = \\
+  = \partial_1 \partial_2 A_3 - \partial_1 \partial_3 A_2 + \partial_2 \partial_3 A_1 - \partial_2 \partial_1 A_3 + \partial_3 \partial_1 A_2 - \partial_3 \partial_2 A_1 = \partial_1 F_{23} + \partial_2 F_{31} + \partial_3 F_{12} = 0 
+\end{gathered}
+\]
+
+Watch out for convention.
+
+\[
+\partial_{\mu} = \left( \frac{ \partial }{ \partial t }, \nabla \right)
+\]
+
+\[
+\begin{gathered}
+  \frac{ \partial B}{ \partial t} + \nabla \times E = \partial_0 \epsilon_{ijk} \partial_j A_k + \epsilon_{ijk} \partial_j E_k = \epsilon_{ijk} \partial_0 \partial_j A_k + \epsilon_{ijk} \partial_j  \left(  \partial_0 A_k - \partial_k \phi  \right)  = \epsilon_{ikj} \partial_0 \partial_k A_j + \epsilon_{ijk} \partial_j \partial_0 A_k + \epsilon_{ijk} \partial_j \partial_k A_0 = \\
+  = \epsilon_{ikj} \partial_0 \partial_k A_j + \epsilon_{ijk} \partial_j \partial_0 A_k + \epsilon_{ikj} \partial_j \partial_k A_0 = 
+\end{gathered}
+\]
+Fix $i$.
+\[
+\begin{gathered}
+  \Longrightarrow = \partial_0 \partial_k A_j - \partial_0 \partial_j A_k +  \partial_j \partial_0 A_k - \partial_k \partial_0 A_j + \partial_j \partial_k A_0   - \partial_k \partial_j A_0
+\end{gathered}
+\]
+
+
+\exercisehead{1.12} 
+
+\[
+\begin{gathered}
+  \mathcal{L} = (D^{\mu} \phi)^{\dag} ( D_{\mu} \phi ) + m^2 \phi^{\dag} \phi \\
+  \begin{aligned}
+    & \phi' = e^{- i e \alpha(x)} \phi \\ 
+    & (\phi')^{\dag} = \phi^{\dag} e^{ i e \alpha(x) }
+\end{aligned} \\ 
+  A_{\mu}' = A_{\mu} -  \partial_{\mu} \alpha(x)  \quad \quad \, (1.257)
+\end{gathered}
+\]
+Now easily
+\[
+\phi^{\dag} e^{i e \alpha(x) } e^{-i e \alpha(x) } \phi = \phi^{\dag} \phi 
+\]
+\[
+\begin{gathered}
+\begin{aligned}
+  & D_{\mu} = \partial_{\mu} - ie A_{\mu} \\ 
+  & D_{\mu} \phi = \partial_{\mu} \phi - ie A_{\mu} \phi
+\end{aligned}  \\
+\partial_{\mu} ( e^{-i e \alpha} \phi ) - i e( A_{\mu} - \partial_{\mu} \alpha ) e^{-i e \alpha } \phi = - e \partial_{\mu} \alpha \phi e^{-i e \alpha } + e^{-i e \alpha} \partial_{\mu} \phi - ie A_{\mu} e^{-i e \alpha} \phi + i e \partial_{\mu} \alpha e^{-ie \alpha } \phi = e^{-i e \alpha (x) } ( D_{\mu} \phi )
+\end{gathered}
+\]
+\[
+\begin{gathered}
+  \begin{aligned}
+    & D^{\mu} \phi = \partial^{\mu} \phi - i e A^{\mu} \phi \\ 
+    & (D^{\mu} \phi)^{\dag} = \partial^{\mu} \phi^{\dag} + i e A^{\mu} \phi^{\dag}
+\end{aligned} \\ 
+(D^{\mu} \phi)^{\dag} \to \partial^{\mu} ( \phi^{\dag} e^{ie \alpha} ) + ie(A^{\mu} - \partial^{\mu} \alpha )\phi^{\dag} e^{ie \alpha} = \partial^{\mu} \phi^{\dag} e^{ie \alpha } + \phi^{\dag} ( ie \partial^{\mu} \alpha ) e^{ie \alpha} + ie A^{\mu} \phi^{\dag} e^{ie \alpha} - ie \partial^{\mu} \alpha \phi^{\dag} e^{ie \alpha} = (D^{\mu} \phi)^{\dag} e^{ie \alpha }
+\end{gathered}
+\]
+Clearly $\mathcal{L}$ is invariant.  
+
+
+\subsubsection{ Non-Abelian gauge theories }
+
+
+
+
+\subsubsection{ Higgs fields }
+
+\subsection{ Magnetic monopoles}
+
+\subsection{ Instantons }
+
+\subsubsection{ Introduction}
+
+\subsubsection{ The (anti-)self-dual solution }
+
+\section{Mathematical Preliminaries}
+
+\subsection{Maps}
+
+\subsubsection{Definitions}
+
+\exercisehead{2.1}
+
+$D = [-\pi/2, \pi/2]$, \, $R = [-1.1]$ \,  $f(x) = \sin{(x)}$ is bijective on $D$ to $R$
+
+\exercisehead{2.2}
+
+$f:x \to x^2$, $g: \to \exp{x}$
+
+\[
+f \circ g(x) = exp{(2x)}   \, \quad \, g \circ f(x) = \exp{x^2}
+\]
+
+\exercisehead{2.3} Consider $f(x) = f(y)$ 
+\[
+gf(x) = x = gf(y) = y \Longrightarrow x =y
+\]
+$f$ injective.
+\[
+\forall \, x \in X, \, x = g\circ f(x) = g(f(x)) = g(y) \text{ since } f:X\to Y. \text{ so } \, \exists \, y \in Y, \, \text{ s.t. } g(y) = x
+\]
+$g$ surjective.  
+
+\exercisehead{2.4} 
+\[
+\begin{aligned}
+  & a^{-1}: E^n \to E^n \\ 
+  & a^{-1}(x) = x - a \\
+  & a^{-1}a(x) = (x+a) - a = x \\
+  & aa^{-1}(x) = (x-a) + a = x 
+\end{aligned} \quad \quad \quad \, \begin{aligned}
+  R^{-1}(x) = R^T x
+  & R^{-1}R(x) = R^T R x = 1 x = x \\ 
+  & RR^{-1}(x) = RR^Tx = 1x = x \\ 
+  & (R^T R)_{ij} = R^T_{ik} R_{kj} = R_{ki} R_{kj} = \delta_{ij} \\ 
+  & (RR^T)_{ij} = R_{ik} R^T_{kj} = R_{ik} R_{jk} = R^T_{ki} R^T_{kj} = \delta_{ij}
+\end{aligned} 
+\]
+20120306 check above.
+
+\[
+\begin{aligned}
+  & (R,a)(x) = Rx + a \\ 
+  & (R,a)^{-1}(x) = R^T(x-a) \\ 
+  & (Ra)^{-1} Ra(x) = R^T(Rx + a- a) = x \\ 
+  & (Ra)(Ra)^{-1}(x) = R(R^T(x-a))  + a = x 
+\end{aligned}
+\]
+
+
+
+\subsubsection{Equivalence relation and equivalence class}
+
+\exercisehead{2.5} $m \sim m$ since $\frac{m}{2} = \frac{m}{2}$ \\
+$m \sim n$. Then $n\sim m$ since remainder of $n$ by 2 is the same as the remainder of $m$ divided by 2. \\
+$m \sim n$, $n\sim p$.  $m\sim p$ since remainder of $m$ by 2 is the same as the remainder of $m$ by 2 which is the same as the remainder of $p$ by 2.  
+
+\exercisehead{2.6} $H = \lbrace \tau \in \mathcal{C} | Im{\tau} \geq 0 \rbrace$ \\
+$SL(2,\mathbb{Z}) \equiv \lbrace \left( \begin{matrix} a & b \\ c & d \end{matrix} \right) | a,b, c, d \in \mathbb{Z}, \, ad - bc = 1 \rbrace$ \\
+$\tau \sim \tau'$ if $\exists \, A = \left( \begin{matrix} a & b  \\ c & d \end{matrix} \right) \in SL(2,\mathbb{Z})$ s.t. $\tau' =  \frac{ a\tau + b}{ c\tau + d }$ \\
+
+Note that 
+\[
+\left( \begin{matrix} a & b \\ c & d \end{matrix} \right) \left( \begin{matrix} \tau \\ 1 \end{matrix} \right) = \left( \begin{matrix} a\tau + b \\ c \tau + d \end{matrix} \right) 
+\]
+\[
+\tau \sim \tau \text{ since } \left( \begin{matrix} 1 & \\ & 1 \end{matrix} \right) \left( \begin{matrix} \tau \\ 1 \end{matrix} \right) = \left( \begin{matrix} \tau \\ 1 \end{matrix} \right) 
+\]
+
+If $\tau \sim \tau'$ s.t. $\tau' = \frac{ a\tau + b}{ c\tau +d }$.  Consider $\left( \begin{matrix} d & - b \\ -c & a \end{matrix} \right)$   \\
+
+$\tau' \sim \tau$ since 
+\[
+\left( \begin{matrix} d & -b \\ -c & a \end{matrix} \right) \left( \begin{matrix} \tau' \\ 1 \end{matrix} \right) = \left( \begin{matrix} d\tau' - b  \\ -c\tau' + a \end{matrix} \right) \quad \quad \quad \, \frac{ d \tau' - b }{ -c\tau' + a } = \frac{ d \left( \frac{ a \tau + b }{ c\tau + d } \right) - b }{ -c \left( \frac{ a\tau + b }{ c\tau + d } \right) + a } = \frac{ ad \tau - bc \tau }{ ad-bc } = \tau 
+\]
+Given $\tau \sim \tau'$, $\tau' \sim \tau''$
+\[
+\begin{aligned}
+  & \left( \begin{matrix} a & b \\ c & d \end{matrix} \right) \left( \begin{matrix} \tau \\ 1 \end{matrix} \right) = \left( \begin{matrix} \tau' \\ 1 \end{matrix} \right) \\ 
+  & \left( \begin{matrix} e & f \\ g & h \end{matrix} \right) \left( \begin{matrix} \tau' \\ 1 \end{matrix} \right) = \left( \begin{matrix} \tau'' \\ 1 \end{matrix} \right) 
+\end{aligned} \quad \quad \Longrightarrow \left( \begin{matrix} e & f \\ g & h \end{matrix} \right) \left( \begin{matrix} a & b \\ c & d \end{matrix} \right) \left( \begin{matrix} \tau \\ 1 \end{matrix} \right) = \left( \begin{matrix} \tau'' \\ 1 \end{matrix} \right) = \left( \begin{matrix} a e + cf & be + df \\ ag + ch & bg + d h \end{matrix} \right) \left( \begin{matrix} \tau \\ 1 \end{matrix} \right) 
+\]
+\[
+(ae + cf) (bg - dh) - (ag+ch) (be +df) = abeg + adeh + bcfg + cdfh - abeg - adfg - bceh - cdfh = 1 
+\]
+
+Example 2.6. \\
+$g \sim g'$ if $\exists \, h \in H$ s.t. $g' = gh$ \\
+$[g] = \lbrace gh | h \in H \rbrace \equiv gH$ (left) coset. \\
+quotient space $\equiv G/H$ \\
+if $H$ normal subgroup of $G$, $ghg^{-1} \in H$, \, $\forall \, g \in G$, $h \in H$, then $G/H$ quotient group.  \\
+Since
+\[
+(g')^{-1} h g' = h'' \in H \quad \, \Longrightarrow hg' = g'h''
+\]
+\[
+\Longrightarrow ghg'h' = gg' h'' h' = gg'h'''
+\]
+$[g][g'] = [gg']$ well-defined.  \\
+
+Note $[e]$, $[g]^{-1} = [g^{-1}]$
+
+\exercisehead{2.7} $a,b \in G$ conjugate to each other, $a\simeq b$, if $\exists \, g \in G$ s.t. $b = gag^{-1}$
+$a\simeq a$ since $a = eae^{-1} = a$ \\
+If $a\simeq b$, $g^{-1}bg = a$ and $g^{-1} \in G$, so $b\simeq a$. \\
+If $a \simeq b$ and $b\simeq c$, then $c = hbh^{-1}$, so $c = hg a g^{-1} h^{-1}$ and $(hg)^{-1} = g^{-1}h^{-1}$.  
+
+
+\subsection{Vector spaces}
+
+\subsubsection{Vectors and vector spaces}
+
+\subsubsection{Linear maps, images and kernels}
+
+\begin{theorem}[2.1] If linear $f: V \to W$, 
+\[
+\text{dim}{V} = \text{dim}{ (\text{ker}{f}) } + \text{dim}{ (\text{im}{f} ) }
+\]
+\end{theorem}
+
+\begin{proof}
+  $\text{ker}{f}$, $\text{im}{f}$ vector spaces.  \\
+
+Let basis of $\text{ker}{f}$ be $\lbrace g_1 \dots g_r \rbrace$ \\
+\phantom{Let } basis of $\text{im}{f}$ be $\lbrace h_1' \dots h_s' \rbrace$ \\
+$\forall \, i \, (1 \leq i \leq s)$, $h_i \in V$ s.t. $f(h_i) = h_i'$ \\
+
+Consider $\lbrace g_1 \dots g_r, h_1 \dots h_s \rbrace$ \\
+
+Let arbitrary $v\in V$ \\
+$f(v) \in \text{im}{f}$, so $f(v) = c^i h_i' = c^i f(h_i)$ \\
+by linearity $f(v- c^i h_i) = 0$, \\
+so $v - c^i h_i \in \text{ker}{f}$ \\
+so $\forall \, $ arbitrary $v\in V$, $v$ linear combination of $\lbrace g_1 \dots g_r, h_1 \dots h_s \rbrace$
+\end{proof}
+
+\exercisehead{2.8}
+
+\begin{enumerate}
+ \item[(1)] If $x_1, x_2 \in ker{f}$, then for $x_1 + x_2$
+\[
+\text{ by linearity of $f$, } f(x_1 + x_2) = f(x_1) + f(x_2) = 0 + 0 = 0 \quad \, \Longrightarrow x_1 + x_2 \in ker{f}
+\]
+\[
+f(cx_1) = cf(x_1) = 0 \quad \, \Longrightarrow cx_1 \in ker{f}
+\]
+Under closure of addition and multiplication, $ker{f}$ is a vector space.   \\
+
+If $w_1, \, w_2 \in im{f}$, 
+\[
+\begin{aligned} w_1 & = f(x_1) \\ w_2 & = f(x_2) \end{aligned} \text{ for some } x_1, x_2 \in V
+\]
+\[
+w_1 + w_2 = f(x_1) + f(x_2) = f(x_1 + x_2) \in im{f} \text{ since $f$ linear and since } x_1 + x_2 \in V
+\]
+
+\[
+cw_1 = cf(x_1) = f(cx_1) \in im{f} \text{ since } cx_1 \in V
+\]
+\item[(2)] If $f:V \to V$ isomorphism, $f$ bijective. $f(0)=0$ always for a linear map. Consider $x \in ker{f}$. So $f(x) =0$.  $f(x) = f(0)$, so $x=0$.  \\
+Since $f$ linear, if $f(x) = f(y)$, $f(x) - f(y) = f(x-y) =0$.  Since $ker{f} =0$, $x-y =0$ so $x=y$.  $f$ bijective so $f$ an isomorphism.  
+\end{enumerate}
+
+\subsubsection{Dual vector space}
+
+\[
+f(\mathbf{v}) = f_i \alpha^i(v^j \mathbf{e}_j ) = f_i v^j \alpha^i(\mathbf{e}_j) = f_i v^i \quad \quad \, (2.12)
+\]
+
+Use notation $\langle, \rangle : V^* \times V \to K$ \\
+
+$f: V \to W$ \\
+$g: W \to K$ \\
+$g\in W^*$ \\
+$g\circ f : V \to K$ (Note $g\circ f$ on $V$, key observation) \\
+$g\circ f \equiv h \in V^*$ 
+\[
+h(\mathbf{v}) \equiv g(f(\mathbf{v})) \quad \, \mathbf{v} \in V \quad \, (2.13)
+\]
+
+Given $g \in W^*$, $f:V \to W$ induces map $h\in V^*$ \\
+$f^*: W^* \to V^*$ \\
+$f^*:g \mapsto h = f^*(g) = g\circ f$ \quad \, $h$ is the pullback of $g$ by $f^*$
+
+
+\exercisehead{2.9} 
+
+Given $f_i = A_i^{\, k} e_k$, 
+\[
+\alpha^j f_i = A_i^{\, k} \alpha^j e_k = A_i^{\, j}
+\]
+\[
+\beta^j A_j^{ \, i} = \beta^j \alpha^i f_j = \alpha^i \Longrightarrow \alpha^i = \beta^j A_j^{\, i }
+\]
+
+\subsubsection{Inner product and adjoint}
+
+isomorphism $g:V \to V^*$, $g\in GL(m,K)$ 
+\[
+g:v^j \to g_{ij} v^j \quad \quad \, (2.14)
+\]
+$g(v_1, v_2) \equiv \langle gv_1, v_2 \rangle$ 
+\[
+g(v_1, v_2) = v_1^{\, i} g_{ji} v_2^{\, j} \quad \quad \, (2.16)
+\]
+$W = W(n,\mathbb{R})$, $\lbrace f_{\alpha} \rbrace$ basis $G:W \to W^*$ \\
+
+Given $f:V \to W$ \\
+adjoint of $f$, $\widetilde{f}$ 
+\[
+G(w,fv) = g(v,\widetilde{f}w) \quad \quad \, (2.17)
+\]
+where $v\in V$, $w\in W$ 
+\[
+w^{\alpha} G_{\alpha \beta} f^{\beta}_{\, i} v^i = v^i g_{ij} \widetilde{f}^j_{\, \alpha} w^{\alpha} \quad \quad \, (2.18)
+\]
+$G_{\alpha \beta} f^{\beta}_{\, i} = g_{ij} \widetilde{f}^j_{\, \alpha} $
+\[
+\widetilde{f} = g^{-1} f^t G^t \quad \quad \, (2.19)
+\]
+
+\exercisehead{2.10} (cf. wikipedia, ``Rank'') Consider a $m\times n$ matrix $A$ with column rank $A$ (maximum number of linearly independent column vectors of $A$).   \\
+
+$dim$. of column space of $A = r$.  Then let $c_1 \dots c_r$ basis.  \\
+Place $c_i$'s as column vectors to form $m \times r$ matrix $C = [ c_1 \dots c_r ]$ \\
+$\exists \, r \times m$ matrix $R$ s.t. $A = CR$.  \quad \, $r_{ij}$ \, $\begin{aligned} & \quad  \\ i & = 1 \dots r \\ j & = 1 \dots m \end{aligned}$ \\
+
+$A=CR$, so $\forall \, $ row vector of $A$ is a linear combination of row vectors of $R$, so row space of $A$ contained in row space of $R$.  \\
+
+row rank $A \leq $ row rank $R$.  \\
+
+$R$ has $r$ rows, $a_{ij} = c_{ik} r_{kj}$ \, $j= 1 \dots n$.  row rank $R \leq r = $ column rank $A$ \\
+row rank $A \leq $ column rank $A$ \\
+row rank $A^T \leq $ column rank $A^T$
+$\Longrightarrow $ row rank $A = $ column rank $A$ or $\operatorname{rank}{(A)} = \operatorname{rank}{(A^T)}$ \\
+
+Likewise for $NfM$ by following the same arguments.  
+
+\exercisehead{2.11} \begin{enumerate}
+\item[(a)] $g(v_1,v_2) = \overline{v}_1^{ \, i } g_{ij} v_2^{\, j }$ \\
+\[
+\overline{g(v_2,v_1)} = \overline{ \overline{v}_2^{ \, i} g_{ij} v_1^{ \, j} } = v_2^{ \, i } \overline{g}_{ij} \overline{v}_1^{\, j} = \overline{v}_1^{\, j} g_{ji} v_2^{\, i} = g(v_1,v_2)
+\]
+\[
+g(v,\widetilde{f}w) = \overline{v}^i g_{ij} \widetilde{f}_{jk} w^k = \overline{G(w,fv)} = \overline{ \overline{w}^{\alpha} G_{\alpha \beta} f_{\beta \gamma} v^{\gamma} } = w^{\alpha} \overline{G}_{\alpha \beta} \overline{f}_{\beta \gamma} \overline{v}^{\gamma} = \overline{G}_{k\beta} \overline{f}_{\beta i} \overline{v}^i w^k
+\]
+\[
+\Longrightarrow g_{ij} \widetilde{f}_{jk} = \overline{G}_{k \beta} \overline{f}_{\beta i }  = f^{\dag}_{i \beta} G_{\beta k}^{\dag} 
+\]
+\[
+\Longrightarrow \widetilde{f} = g^{-1} f^{\dag} G^{\dag}
+\]
+\item[(b)]
+\end{enumerate}
+
+\subsubsection{Tensors} 
+
+tensor $T$ of type $(p,q)$ maps $p$ dual vectors and $q$ vectors to $\mathbb{R}$
+
+\begin{equation}
+  T: \overset{p}{\bigotimes} V^* \overset{q}{\bigotimes} V \to \mathbb{R}
+\end{equation}
+
+
+\exercisehead{2.12} $\begin{aligned} & \quad \\ & f:V \to W \\ & f(v) = w \end{aligned}$, so $f(v) \in W$.  \\
+Then tensor identified with dual vector of $W^*$.  Since $f:V$, Then $(1,1)$.  
+
+\subsection{Topological spaces}
+
+\subsubsection{Definitions}
+
+\exercisehead{2.13}
+
+$\tau_{\mathbb{R}} = \lbrace (a,b) | a,b \in \lbrace \mathbb{R}, \pm \infty \rbrace \rbrace$ \\
+
+$\bigcap_{n=1}^{\infty} (a,b + \frac{1}{n} ) = (a,b]$.  Then $\lbrace b \rbrace \in \tau_{\mathbb{R}}$, $\forall \, b \in \mathbb{R}$.  \\
+
+So then $\forall \, $ subset $Y \subset X$ is open.  Discrete topology.  
+
+
+\subsubsection{Continuous maps}
+
+\exercisehead{2.14} If $\begin{aligned} & \quad \\ 
+  & f: \mathbb{R} \to \mathbb{R} \\ 
+  & f(x) = x^2 \end{aligned}$ then $(-\epsilon, + \epsilon) \mapsto [0, \epsilon^2]$ 
+
+\subsubsection{Neighborhoods and Hausdorff spaces}
+
+\exercisehead{2.15} Let $X = \lbrace \text{John}, \text{Paul}, \text{Ringo}, \text{George}\rbrace$.   \\
+\[
+\begin{aligned} & \quad \\ 
+& U_0 = \emptyset \\ 
+& U_1  = \lbrace \text{John} \rbrace \\
+& U_2 = \lbrace \text{John}, \text{Paul} \rbrace \\
+& U_3 = X \end{aligned} \quad \quad \quad \, \begin{aligned} & U_1 \bigcup U_2 = U_2 \\ & U_1 U_2 = U_1 \end{aligned}
+\]
+
+Consider John and Ringo. Only neighborhood with open set is $X$ for Ringo.  Then $XU_{\text{John}} \neq \emptyset$
+
+
+\exercisehead{2.16} $\forall \, a, b$, consider $\left( \frac{3a - b}{2}, \frac{a+b}{2} \right)$, $\left( \frac{b+a}{2}, \frac{3b - a}{2} \right)$
+
+
+
+\subsubsection{Closed set}
+
+\subsubsection{Compactness}
+
+\subsubsection{Connectedness}
+
+\subsection{Homeomorphisms and topological invariants}
+
+\subsubsection{Homeomorphisms}
+
+\subsubsection{Topological invariants}
+
+\exercisehead{2.18} $f:S^1 \to E$ \\
+$\begin{aligned} & \quad \\ 
+  & f(x,y) = (ax,by) \\ 
+  & f^{-1}(x,y) = \left( \frac{x}{a}, \frac{y}{b} \right) \end{aligned}$ \quad \, $ff^{-1} = f^{-1}f = 1$ bijective and cont. 
+
+\subsubsection{Homotopy type}
+
+\subsubsection{Euler characteristic: an example}
+
+
+\section{Homology Groups} 
+
+\subsection{Abelian groups}
+
+\subsubsection{Elementary group theory}
+
+e.g. $f: \mathbb{Z} \to \mathbb{Z}_2 = \lbrace 0 , 1 \rbrace$ \\
+$\begin{aligned}
+  & f(2n) = 0 \\ 
+  & f(2n+1) = 1 \end{aligned}$  \\
+homomorphism $f(2m+1 +2n) = f(2(m+n) + 1) = 1 = 1 + 0 = f(2m+1) + f(2n)$ \\
+$k\mathbb{Z} \equiv \lbrace kn | n \in \mathbb{Z} \rbrace$, $k \in \mathbb{N}$ subgroup of $\mathbb{Z}$, $\mathbb{Z}_2 = \lbrace 0 ,1 \rbrace$ not a subgroup.  \\
+
+Let $H$ subgroup of $G$, $\forall \, x, y \in G$, $x\sim y$ if $x- y \in H$ \\
+group operation in $G/H$ naturally induced: $[x] + [y] = [x+y]$ \\
+$G/H$ group since $H$ always a normal subgroup of $G$.  \\
+\quad $aH = Ha \, \forall \, a \in G$ \\
+\quad \, if $aH = Ha$ \, $\forall \, a \in G$, normal indeed.  \\
+\quad $aH = a + x - y = x - y + a = Ha$ (since $G$ abelian) \\
+
+If $H = G$, $0-x \in G$, \, $\forall \, x \in G$, $G/G = \lbrace  0 \rbrace$ \\
+If $H = \lbrace 0 \rbrace$, $G/H = G$ since $x-y = 0$ iff $x=y$  \\
+
+Ex. 3.1. Let us work out the quotient group $\mathbb{Z}/ k\mathbb{Z}$.  \\
+$km - kn = k (m-n) \in k \mathbb{Z}$  \, $[km ] = [kn]$ \\
+
+$\forall \, j$, \, $1 \leq j \leq k-1$, $(km + j) - (kn +j) = k(m-n) \in k \mathbb{Z}$.  $[km + j ] = [kn +j ]$ \\
+$\forall \, j, l$, $0\leq j , l \leq k -1$, $j\neq l$, $(km+j) - (kn +l) = k(m-n) + (j-l ) \notin k\mathbb{Z}$.  Never belong to the same equivalence class.  \\
+
+$\Longrightarrow \mathbb{Z}. k \mathbb{Z} = \lbrace [0], \dots, [k-1] \rbrace$.  \\
+Define isomorphism $\begin{aligned} & \quad \\ 
+  & \varphi : \mathbb{Z}/ k\mathbb{Z} \to \mathbb{Z}_k \\
+  & \varphi([j]) = j \end{aligned}$, then $\mathbb{Z}/ k\mathbb{Z} \simeq \mathbb{Z}_k$  
+
+\begin{lemma}[3.1] Let $f:G_1 \to G_2$ homomorphism.  Then
+\begin{enumerate}
+\item[(a)] $\ker{f} = \lbrace x | x \in G_1, f(x) = \rbrace$ subgroup of $G$.  Note: $\ker{f}$ \textbf{normal subgroup} of $G_1$, \\
+$\begin{gathered}
+  f(gxg^{-1}) = f(g)f(x) f(g^{-1}) = 1 \, \forall \, g \in G, \, x\in \ker{f}  \, \Longrightarrow \ker{f} \text{ normal subgroup }
+\end{gathered}$
+\item[(b)] $\text{im}{f} = \lbrace x | x \in f(G_1) \subset G_2 \rbrace$ subgroup of $G_2$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+\item[(a)] Let $x,y \in \ker{f}$ \\
+$xy \in \ker{f}$ since $f(xy) = f(x) f(y) = 1\cdot 1 = 1$ \\
+Note $1 \in \ker{f}$ since $f(1) = f(1\cdot 1 ) = f(1) f(1) \Longrightarrow f(1) = 1$ \\
+$x^{-1} \in \ker{f}$ since $f(x^{-1}\cdot x) = f(x^{-1})f(x) = f(x^{-1}) 1 = f(1) = 1$ \, $f(x^{-1})= 1$
+\item[(b)] Let $\begin{aligned} & \quad \\ 
+  & y_1 = f(x_1) \\ 
+  & y_2  = f(x_2) \end{aligned}$ \quad \, $\begin{aligned} & \quad \\ 
+  & y_1,y_2 \in \text{im}(f) \\
+  & x_1, x_2 \in G_1 \end{aligned}$ \quad \, \\
+$\begin{gathered}
+  y_1 y_2 = f(x_1) f(x_2) = f(x_1x_2) \quad x_1 x_2 \in G_1 \quad y_1 y_2 \in \text{im}{f} \\
+  1 \in \text{im}{f} \text{ since } f(1) = 1 \, (\text{or } f(x_1) = f(x_1 \cdot 1) = f(x_1) f(1); \, \text{ so } f(1) = 1 \text{ and } 1 \in \text{im}{f}) \\ 
+  1 = f(xx^{-1}) = f(x) f(x^{-1}) = yf(x^{-1}) \Longrightarrow f(x^{-1}) = y^{-1} \text{ and } y^{-1} \in \text{im}{f} \text{ since } x^{-1} \in G 
+\end{gathered}$
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[3.1] (Fundamental Thm. of homomorphism) 
+\[
+G_1/ \ker{f} \simeq \text{im}{f} 
+\]
+\end{theorem}
+
+\begin{proof} By Lemma 3.1, both sides are groups. \end{proof}
+
+Define.  $\begin{aligned} & \quad \\ 
+  & \varphi: G_1/ \ker{f} \to \text{im}{f} \\
+  & \varphi([x]) = f(x) \end{aligned}$. \quad \, $\varphi$ well-defined since $\forall \, x' \in [x]$, $\exists \, h \in \ker{f}$ s.t. $ \begin{gathered} x' = x + h \\ 
+  f(x') = f(x) f(h) = f(x) \end{gathered}$ \\
+
+\[
+\varphi([x]+ [u]) = \varphi([x+y]) =  f(x+y) = f(x) + f(y) = \varphi([x]) + \varphi([y]) 
+\]
+$\varphi$ 1-to-1: if $\varphi([x]) = \varphi([y])$, then $f(x) = f(y)$ or $f(x) - f(y) = f(x-y) = 0$.  $x-y \in \ker{f}$ so $[x] = [y]$ \\
+$\varphi$ onto: if $y \in \text{im}{f}$, $\exists \, x \in G_1$ s.t. $f(x) = y = \varphi([x])$ 
+
+\subsubsection{Finitely generated Abelian groups and free Abelian groups}
+
+\begin{lemma}[3.2] Let $G$ be free Abelian group of rank $r$, 
+\[
+G = \lbrace n_1 x_1 + \dots + n_r x_r | n_i \in \mathbb{Z}, \, 1 \leq i \leq r, \, n_1 x_1 + \dots + n_r x_r = 0 \text{ only if } n_1 = \dots = n_r = 0 \rbrace \equiv \text{ free Abelian group of rank $r$ } 
+\]
+Let subgroup $H$.  Choose $p$ generators $x_1 \dots x_p$ of $r$ generators of $G$ so generate $H$.  
+\[
+H \simeq k_1 \mathbb{Z} \oplus \dots \oplus k_p \mathbb{Z} \text{ and } H \text{ rank } p
+\]
+\end{lemma} 
+
+\begin{proof}
+\[
+\begin{gathered}
+  f: \underbrace{\mathbb{Z} \oplus \dots \oplus \mathbb{Z} }_{m} \to G \\ 
+  f(n_1 \dots n_m) = n_1 x_1 + \dots + n_m x_m \quad \, (\text{surjective homomorphism})
+\end{gathered}
+\]
+From Thm. 3.1. $ \underbrace{\mathbb{Z} \oplus \dots \oplus \mathbb{Z}}_{ m } / \ker{f} \simeq G$ \\
+
+$\ker{f}$ subgroup of $\underbrace{ \mathbb{Z} \oplus \dots \oplus \mathbb{Z} }_{m}$, so Lemma 3.2, $\ker{f} \simeq k_1 \mathbb{Z} \mathbb{Z} \oplus \dots \oplus k_p \mathbb{Z}$  
+
+\[
+G \simeq \underbrace{ \mathbb{Z} \oplus \dots \oplus \mathbb{Z} }_{m} / \ker{f} \simeq \underbrace{ \mathbb{Z} \oplus \dots \oplus \mathbb{Z} }_{m} /(k_1 \mathbb{Z} \oplus \dots \oplus k_p \mathbb{Z} ) \simeq \underbrace{ \mathbb{Z} \oplus \dots \oplus \mathbb{Z} }_{m-p} \oplus Z_{k_1} \oplus \dots \oplus \mathbb{Z}_{k_p}
+\]
+
+
+
+\end{proof}
+
+
+
+\subsection{Simplexes and simplicial complexes}
+
+\subsubsection{Simplexes}
+
+number of $q$-faces in $r$-simplex is $\binom{r+1}{q+1}$ \\
+
+$r+1$ \, $p_0 \dots p_r$ pts., choose $p_{i_0} \dots p_{i_q}$ pts.  
+
+\subsubsection{Simplicial complexes and polyhedra}
+
+Example 3.5. Fig. 3.5(b) not a triangulation of a cylinder.  \\
+$\begin{aligned} & \quad \\ 
+  & \sigma_2 = \langle p_0 p_1 p_2 \rangle \\ 
+  & \sigma_2' = \langle p_2 p_3 p_0 \rangle \end{aligned}$ \\
+$\sigma_2 \sigma_2' \neq \emptyset$\\
+$\sigma_2 \sigma_2' = \langle p_0 \rangle \bigcup \langle p_2 \rangle$ \quad \, $\sigma_2 \sigma_2'$ is not an actual face.  
+
+
+
+\subsection{Homology groups of simplicial complexes}
+
+\subsubsection{Oriented simplexes}
+
+\subsubsection{Chain group, Cycle group and boundary group}
+
+\begin{definition}[3.2] $r$-chain group $C_r(K)$ of simplicial complex $K$ is free Abelian group generated by oriented $r$-simplexes of $K$ element of $C_r(K)$ is $r$-chain.\end{definition}
+
+Let $I_r$ $r$- simplexes in $K$, $\sigma_{r,i}$ ($1 \leq i \leq I_r$) 
+\begin{equation}
+c = \sum_{i=1}^{I_r} c_i \sigma_{r,i} \quad \, c_i \in \mathbb{Z}, \text{ coefficients of $c$ } \quad \quad \quad \, (3.15)
+\end{equation}
+
+addition of 2 $r$-chains $\begin{aligned} & \quad \\ 
+  & c = \sum_i c_i \sigma_{r,i} \\ 
+  & c' = \sum_i c_i' \sigma_{r,i} \end{aligned}$ \quad \quad \, $c + c' = \sum_i (c_i + c'_i) \sigma_{r,i} \quad \quad \, (3.16)$ \\
+
+inverse $-c  =\sum_i ( - c_i) \sigma_{r,i}$ 
+
+\begin{equation}
+C_r(K) \simeq \underbrace{\mathbb{Z} \oplus \dots \oplus \mathbb{Z}}_{ I_r} \quad \quad \, (3.17) \text{ free Abelian group of rank $I_r$}
+\end{equation}
+
+
+$0$-simplex has no boundary: $\partial_0 p_0 = 0$ \quad \, (3.18) \\
+
+Fig. 3.7(a) oriented 1 simplex.  
+\[
+\partial_1 (p_0 p_1) + \partial_1 (p_1 p_2) = p_1 - p_0 + p_2 - p_1 = p_2 - p_0 = \partial_1 (p_2 p_0)
+\]
+
+Fig. 3.7(b) triangle. 
+\[
+\partial_1 (p_0 p_1) + \partial_1 (p_1 p_2) + \partial_1 (p_2 p_0) = p_1 - p_0 + p_2 - p_1 + p_0 - p_2 = 0 
+\]
+
+Let $\sigma_r(p_0 \dots p_r)$ oriented $r$-simplex.
+\begin{equation}
+\partial_r \sigma_r \equiv \sum_{i=0}^r (-1)^i (p_0 p_1 \dots \widehat{p}_i \dots p_r ) \quad \quad \quad (3.20)
+\end{equation}
+
+
+$K \equiv n$-dim. simplicial complex. \\
+
+chain complex $C(K)$.  \\
+$i$ inclusion map $i: 0 \hookrightarrow C_n(K)$
+\begin{equation}
+0 \xrightarrow{i} C_n(K) \xrightarrow{\partial_n} C_{n-1}(K) \xrightarrow{\partial_{n-1}} \dots \xrightarrow{\partial_2} C_1(K) \xrightarrow{\partial_1} C_0(K) \xrightarrow{\partial_0} 0 \quad \quad \, (3.23)
+\end{equation}
+
+\begin{definition}[3.3] If $c \in C_r(K)$, $\partial_r c = 0$, $c$ \, $r$-cycle. 
+\[
+\boxed{ Z_r(K) = \lbrace c | \partial_r c =0 \rbrace  = \ker{\partial_r} \equiv r-\text{cycle group} }
+\]
+if $r =0$, $\partial_0 c =0$, $Z_0(K) = C_0(K)$
+\end{definition}
+
+\begin{definition}[3.4] If $\exists \, d \in C_{r+1}(K)$, $c = \partial_{r+1} d \quad \quad \quad \, (3.25)$, $c$ \, $r$-boundary
+\[
+\boxed{ B_r(K) = \text{im}{\partial_{r+1}} \equiv r-\text{boundary group} \quad \quad \quad \, B_n(K) =0  }
+\]
+\end{definition}
+
+\begin{theorem}[3.3] 
+\begin{equation}
+  B_r(K) \subset Z_r(K) \quad \, (\subset C_r(K)) \quad \quad \quad \, (3.27)
+\end{equation}
+\end{theorem}
+
+\begin{proof} 
+\[  
+\forall \, c \in B_r(K), \, \exists \, d \in c_{r+1}(K) \, \text{ s.t. } c = \partial_{r+1}d \quad \quad \, \partial_r c  = \partial_r \partial_{r+1} d = 0 \, (\text{Lemma } 3.3, \, \partial^2 d =0) \quad \, c \in Z_r(K)
+\]
+\end{proof}
+
+\subsubsection{Homology groups}
+
+\exercisehead{3.1}
+  $K = \lbrace p_0, p_1 \rbrace$. $I_r = I_0 = 2$ \, $0-$simplexes.  $c=  c_1 p_0 + c_2 p_1$ \, $0-$chains.  \\
+\[
+\begin{gathered}
+  c_0(K) \simeq \mathbb{Z} \oplus \mathbb{Z} \\
+  \partial_0 c = 0 \quad \, \forall \, c \in C_0(K) \quad \, C_0(K) = Z_r(K) \\
+  B_0(K) = \text{im}{\partial_1} =0 \\
+  \Longrightarrow H_0(K) = \mathbb{Z} \oplus \mathbb{Z} 
+\end{gathered}
+\]
+if $r\neq 0$, $Z_r(K) = 0$ since there are no other simplexes than $0-$simplexes.  $H_r(K) =0$
+\begin{equation}
+\Longrightarrow H_r(K) = \begin{cases} \mathbb{Z} \oplus \mathbb{Z} & (r=0) \\ 
+  \lbrace 0 \rbrace & (r\neq 0) \end{cases} \quad \quad \quad \, (3.34)
+\end{equation}
+
+Ex. 3.7. $k = \lbrace p_0, p_1, (p_0 p_1) \rbrace$ \\
+\[
+\begin{aligned}
+  & C_0(K)  = \lbrace i p_0 + j p_1 | i,j \in \mathbb{Z} \rbrace \\ 
+  & C_1(K) = \lbrace k(p_0 p_1) | k \in \mathbb{Z}
+\end{aligned}
+\]
+
+$B_1(K) = 0$, since $(p_0 p_1)$ not a boundary of any simplex in $K$ i.e. $\exists \, d \in K$ s.t. $\partial_2 d = (p_0 p_1)$, since $\nexists \, $ 2-simplex 
+\[
+H_1(K) = Z_1(K)/ B_1(K) = Z_1(K)
+\]
+
+If $z = m(p_0 p1_) \in \mathbb{Z}_1(K)$, 
+\[
+\partial_1 z = m (p_1-  p_0) = 0 \Longrightarrow m = 0 \quad \, Z_1(K) = 0 
+\]
+\begin{equation}
+  H_1(K) = 0 \quad \quad \quad \, (3.35)
+\end{equation}
+$Z_0(K) = C_0(K)$ \\
+
+Define surjective (onto) homomorphism.  $\begin{aligned} & \quad  \\ 
+  & f: Z_0(K) \to \mathbb{Z} \\
+  & f(ip_0 + jp_1) = i+ j \end{aligned}$ 
+\[
+\begin{gathered}
+  \ker{f} = f^{-1}(0) = B_0(K) \\ 
+  \partial_1(k(p_0 p_1)) = kp_1 - k p_0 \text{ and } f(kp_1 - k p_0) = 0
+\end{gathered}
+\]
+
+Thm. 3.1.  $Z_0(K)/\ker{f} \simeq \text{im}{f} = \mathbb{Z}$.  
+\begin{equation}
+  H_0(K) = Z_0(K)/ B_0(K) \simeq \mathbb{Z} \quad \quad \quad \, (3.30)
+\end{equation}
+
+Ex. 3.8.  Triangulation of $S^1$ (\textbf{triangulation of circle}) 
+\[
+\begin{gathered}
+  K = \lbrace p_0, p_1, p_2, (p_0 p_1), (p_1 p_2), (p_2 p_0) \rbrace \\ 
+  B_1(K) = 0 \quad \, (\text{no 2-simplices in $K$}) \quad \quad \, H_1(K) = Z_1(K)/B_1(K) = Z_1(K) \\ 
+  \partial_1 z = \partial_1( i (p_0 p_1) + j (p_1 p_2) + k (p_2 p_0)) = i (p_1 - p_0 + j (p_2 - p_1) + k(p_0 - p_2) = (k-i) p_0 + (i-j) p_1 + (j-k) p_2 = 0 \\
+ \Longrightarrow i =j = k \\
+  Z_1(K) = \lbrace i ((p_0 p_1) + (p_1p_2) + (p_2 p_0) ) | i \in \mathbb{Z} \rbrace \simeq \mathbb{Z} \Longrightarrow H_1(K) = Z_1(K) \simeq \mathbb{Z} \quad \quad \, (3.37)
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+  Z_0(K) = C_0(K) \\ 
+  B_0(K) = \lbrace \partial_1 [ l (p_0 p_1) + m (p_1 p_2) + n (p_2 p_0) ] | l,m,n \in \mathbb{Z} \rbrace = \lbrace (n-l) p_0 + (l-m) p_1 + (m-n) p_2 | l, m ,n \in \mathbb{Z} \rbrace
+\end{gathered}
+\]
+
+\exercisehead{3.2} Let $K = \lbrace p_0, p_1, p_2, p_3, (p_0 p_1), (p_1 p_2), (p_2 p_3), (p_3 p_0) \rbrace$ \\
+$B_1(K) = 0 \quad \, (KC_2(K) = \emptyset)$ \\
+ $H_1(K) = Z_1(K)$ 
+\[
+\partial_1 ( i (p_0 p_1 ) + j (p_1 p_2) + k (p_2 p_0) + l (p_3 p_0) ) = (l- i) p_0 + (i-j) p_1 + (j-k) p_2 + (k-l) p_3
+\]
+$\partial_1 c = 0$ if $i = l =j =k$, $Z_1(K) \simeq \mathbb{Z}$.  $H_1(K) \simeq \mathbb{Z}$ \\
+
+$Z_0(K) = C_0(K)$ \quad $(\partial_0 p_i = 0)$ \\
+Define surjective homomorphism $\begin{aligned} & \quad \\ 
+  & f: C_0(K) \mapsto \mathbb{Z} \\ 
+  & f(ip_0 + j p_1 + k p_2 + l p_3) = i + j + k + l \end{aligned}$ 
+\[
+B_0(K) = \lbrace ap_0 + bp_1 + cp_2 + dp_3 | d = -(a+b+c) \rbrace \quad \quad \quad \, \begin{aligned}
+  & a = l - i \\
+  & b = i - j \\
+  & c = j-k \\ 
+  & d = k- l = - (a+b+c) \end{aligned}
+\]
+
+\[
+\begin{gathered}
+  \Longrightarrow B_0(K) = \ker{f} \\
+  H_0(K) = Z_0(K)/B_0(K) = C_0(K)/\ker{f} \simeq \text{im}{f} = \mathbb{Z}
+\end{gathered}
+\]
+
+\exercisehead{3.3} $B_2(K) =0$ \quad $KC_2(K) = \emptyset$
+\[
+\begin{gathered}
+   \partial_2 c_2 = \partial_2 ( i (p_0 p_1 p_2) + j (p_0 p_1 p_3)  + k (p_0 p_2 p_3) + l (p_1 p_2 p_3) ) = \\
+   = ( i + l ) (p_1 p_2) +  ( -i + k ) (p_0 p_2) +  ( i + j ) (p_0 p_1) +  ( -j + -k ) (p_0 p_3) +  ( j -l ) (p_1 p_3) +  ( k + l ) (p_2 p_3) = 0 \\
+   \Longrightarrow i =k = -l = -j \Longrightarrow Z_2(K) \simeq \mathbb{Z} \text{ so } \boxed{ H_2(K) \simeq \mathbb{Z} }
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+  \partial_1 c_1 = \partial_1 (a(p_0p_1) + b(p_0p_2) + c(p_0p_3) + d(p_1p_2) + e(p_1p_3) + f(p_2p_3)) = \\
+  = (-a-b-c) p_0 + (a-d-e) p_1 + (b+d-f) p_2 + (c+e+f) p_3 = 0 
+\end{gathered}
+\]
+By linear algebra,
+\[
+\left[ \begin{matrix} -1 & - 1 & -1 &  & & \\ 
+    1 & & & -1 & -1 & \\
+    & 1 & & 1 & & -1 \\ 
+    & & 1 &  & 1 & 1 \end{matrix} \right] \left[ \begin{matrix} a \\ b \\ c \\ d \\ e \\ f \end{matrix} \right] = 0 \Longrightarrow \left[ \begin{matrix} 1 & & & -1 & -1 & \\ 
+    & 1 & 1 & 1 & 1 &  \\
+    & 1 & & 1 & & -1 \\ 
+    & & 1 & & 1 & 1 \end{matrix} \right] \Longrightarrow \begin{aligned} & a = d + e \\ 
+  & b = -d + f \\ 
+  & c = -e -f \end{aligned}
+\]
+
+If 
+\[
+\begin{aligned}
+  & a = i + j \\ 
+  & b = -i + k \\ 
+  & c = -j -k \\ 
+  & d = i + l \\
+  & e = j - l \\
+  & f = k + l 
+\end{aligned}
+\]
+
+Then $B_1(K) = Z_1(K)$.  Then $Z_1(K)/B_1(K) = 0$ by algebra.  $\boxed{ H_1(K) = 0 }$ \\
+
+Let $\begin{aligned} & \quad \\ 
+  & f: Z_0(K) \to \mathbb{Z}  \\
+  & f(ip_0 + jp_1 + k p_2 + l p_3) = i + j +k + l \end{aligned}$ \\
+
+$\ker{f} = B_0(K)$ since if
+\[
+\begin{aligned}
+  & i = - ( a + b+ c) \\ 
+  & j = a-  d  -e \\ 
+  & k = b + d - f \\ 
+  & l = c + e+ f 
+\end{aligned}
+\]
+then $i+j + k + l =0$ 
+\[
+Z_0(K)/ \ker{f} \simeq \text{im}{f} = \mathbb{Z} \Longrightarrow \boxed{ H_0 \simeq \mathbb{Z}}
+\]
+
+\subsubsection{Computation of $H_0(K)$}
+
+\begin{theorem}[3.5] Let $K$ be \emph{connected} simplicial complex.  Then
+\begin{equation}
+  H_0(K) \simeq \mathbb{Z} \quad \quad \quad \, (3.43)
+\end{equation}
+\end{theorem}
+
+\subsubsection{More homology computations}
+
+Example 3.10.  Fig. 3.8. triangulation of M\"{o}bius strip. \\
+$B_2(K) =0$ \, $\partial_2 z =0$ each $(p_0 p_2), (p_1 p_4), (p_2 p_3), (p_4p_5), (p_3 p_1), (p_5p_0)$ appear only once.  $Z_2(K)=0$ 
+\begin{equation}
+H_2(K)= 0 \quad \quad \quad \quad \, (3.44)
+\end{equation}
+
+$H_1(K) = Z_1(K)/B_1(K)$.  $\ker{\partial_1}$ consists of closed loops. (closes on itself so $\partial_1 c_1 =0$) \\
+
+Note $z \sim z'$ if $z - z' = \partial_2 c_2 \in B_1(K)$ \\
+easily verify, $H_1(K)$ generated by just $[z]$.  $H_1(K) = \lbrace i [z] | i \in \mathbb{Z} \rbrace \simeq \mathbb{Z} \quad \quad \, (3.45)$ \\
+
+Example 3.11. projective plane $\mathbb{R}P^2$ \\
+ 
+Example $H_2(K)$ from a slightly different view pt.  Add all 2-simplexes in $K$ with same coefficient
+\[
+z \equiv \sum_{i=1}^{10} m \sigma_{2,i}, \quad \quad \, m \in \mathbb{Z}
+\]
+
+Observe that each 1-simplex of $K$ is a common face of exactly 2 2-simplices.  
+\begin{equation}
+  \partial_2 z = 2m (p_3 p_5) + 2m (p_5 p_4) + 2m (p_4 p_3) \quad \quad \quad \, (3.47)
+\end{equation}
+
+$Z_2(K) =0$ since $\partial_2 z = 0$ if $m=0$ \\
+Note, any 1-cycle homologous to a multiple of $z = (p_3 p_5) + (p_5 p_4) + (p_4 p_3)$ \\
+even multiples of $z$ is a boundary of 2-chain by Eq. 3.4.7.  
+\begin{equation}
+  H_1(K) = \lbrace [z] | [z] + [z] \sim [0] \rbrace \simeq \mathbb{Z}_2 \quad \quad \quad \, (3.48)
+\end{equation}
+
+This example shows that a homology group is not necessarily free Abelian.   \\
+
+Example 3.12. surface of the torus has no boundary, but it's not a boundary of some 3-chain.  \\
+Thus, $H_2(T^2)$ freely generated by 1 generator, surface itself, $H_2(T^2) \simeq \mathbb{Z}$ \\
+closed loops $a,a'$ homologous since $a'-a = \partial d$ bounds shaded area Fig. 3.10 (could think of $a$ running backwards) \\
+See Figure 3.12, triangulation of the Klein bottle (clear from there). \\
+inner 1 simplices cancel out to leave only outer 1-simplexes (1 side of the ``square'')
+\[
+\begin{gathered}
+  \begin{aligned}
+    z & = \sum m \sigma_{2,i} \\ 
+    \partial_2 z & = -2ma  \end{aligned} \\ 
+  a = (p_0 p_1 ) + (p_1 p_2 ) + ( p_2 p_0)
+\end{gathered}
+\]
+$\partial_2z =0$ if $m=0$ 
+\begin{equation}
+  H_2(K) = Z_2(K) \simeq 0 \quad \quad \quad \, (3.50)
+\end{equation}
+\[
+b = (p_0 p_3) + (p_3 p_4) + (p_4p_0)
+\]
+1-cycle \, $\begin{aligned} & \quad \\ 
+  c_1 & = ia + ib \\
+  \partial_1 c_1 & = 0 \text{ closed } \end{aligned}$ \\
+Now $\partial_2 z = + 2 m a$ so 
+\[
+2ma \sim 0
+\]
+Thus, $H_1(K)$ generated by 2 cycles $a,b$ s.t. $a+a =0$ (remember $a$ is ``glued backwards'')
+\begin{equation}
+  H_1(K) = \lbrace i [a] + j[b] | i,j \in \mathbb{Z} \rbrace \simeq \mathbb{Z}_2 \oplus \mathbb{Z} \quad \quad \, (3.51) 
+\end{equation}
+\subsection{General properties of homology groups}
+
+\subsubsection{Connectedness and homology groups}
+
+\begin{theorem}[3.6] Let $K  = \bigcup_{k=1}^N K_i$, $K_i K_j \neq \emptyset$.  $K_i$ connected components.  \\
+Then 
+\[
+H_r(K) = \bigoplus_{i=1}^N H_r(K_i)
+\]
+\end{theorem}
+
+\begin{proof}
+  $C_r(K) = \bigoplus_{i=1}^N C_r(K_i)$ (rearrange cycles) \\
+  since $Z_r(K_i) \supset B_r(K_i)$, $H_r(K_i)$ well-defined.  
+\end{proof}
+
+\subsubsection{Structure of homology groups}
+
+\begin{definition}[3.6] Let $K$ simplicial complex.  
+\begin{equation}
+  b_r(K) \equiv \dim{H_r(K;\mathbb{R})} \quad (\text{$i$th Betti number}) \quad \quad \quad \, (3.56)
+\end{equation}
+\end{definition}
+
+\begin{theorem}[3.7] (The Euler-Poincar\`{e} theorem) Let $K$ $n-$dim. simplicial complex, $I_r$ number of $r$-simplexes in $K$.  
+\begin{equation}
+  \chi(K) \equiv \sum_{i=0}^n (-1)^r I_r = \sum_{r=0}^n (-1)^r b_r(K) \quad \quad \quad \, (3.57)
+\end{equation}
+\end{theorem}
+
+\problemhead{3.1}
+
+Let $S^2$ with $h$ handles and $q$ holes $=X$ 
+\[
+C_3(X) \bigcap X= \emptyset \text{ so } B_2(X) = 0 \quad \, Z_2(X) \simeq \mathbb{Z} \, (1 \text{ surface }) \, \boxed{ H_2(X) \simeq \mathbb{Z} \quad \, b_2(X) = 1 }
+\]
+
+$h$ handles.  Think of $T^2$.  \\
+$q$ holes.  For orientable case, the first hole does not change the homology, i.e.
+\[
+\partial c_1 =0 \text{ but for } d = \sum_{\sigma_2 \in C_2(X)} m\sigma_2, \, \partial d = c_1 \quad \, c_1 = 0
+\]
+
+\[
+\boxed{ H_1(X) = \mathbb{Z}^{2h + q -1} }
+\]
+
+The sphere is connected (and note compact).  $\boxed{ H_0(X) = \mathbb{Z} }$
+
+\problemhead{3.2}
+
+Each cross cap hole contributes to $H_1(X)$ a 1 cycle $z_q$ s.t. $2z_q \sim 0$.  Thus, 
+\[
+\boxed{ H_1(X) = \mathbb{Z}_2^q }
+\]
+Otherwise, 
+\[
+\boxed{ \begin{aligned}
+    & H_2(X) = \mathbb{Z} \\ 
+    & H_0(X) = \mathbb{Z} \end{aligned} }
+\]
+
+
+
+
+
+
+
+
+\section{Homotopy Groups}
+
+
+
+
+
+\section{Manifolds}
+
+\subsection{Manifolds}
+
+\subsubsection{Heuristic introduction}
+
+\subsubsection{Definitions}
+
+\subsubsection{Examples}
+
+\exercisehead{5.1} 
+
+\[
+S^n = \lbrace ( x_1 \dots x_{n+1} \rbrace \in \mathbb{R}^{n+1} | \sum_{i=1}^{n+1} x_i^2 = 1 \rbrace \subset \mathbb{R}^{n+1}
+\]
+
+Let $\begin{aligned} & \quad \\
+  & N = (0 \dots 0, 1) \\ 
+  & S = (0 \dots 0, -1) \end{aligned}$ \quad \, $x\in S^n$.  Consider $t(x-N) + N = tx + (1-t)N$ when $x_{n+1} =0$ 
+\[
+\begin{gathered}
+  tx_{n+1} + (1-t) = 0 \text{ or } tx_{n+1} + -1 + t = 0 \\ 
+  \Longrightarrow \frac{ 1}{ 1- x_{n+1} } = t \quad \left( \text{ or } \frac{1}{ 1 + x_{n+1} } \right)
+\end{gathered}
+\]
+
+\[
+\begin{aligned}
+  & \pi_1: S^n - N \to \mathbb{R}^n \\ 
+  & \pi_1(x_1 \dots x_{n+1}) = \left( \frac{x_1}{ 1 - x_{n+1} } \dots \frac{x_n}{ 1 - x_{n+1} } , 0 \right) \\ 
+  & \pi_2 : S^n -S \to \mathbb{R}^n \\ 
+  & \pi_2(x_1 \dots x_{n+1}) = \left( \frac{x_1}{ 1 + x_{n+1}} \dots \frac{x_n}{ 1 + x_{n+1} }, 0 \right)
+\end{aligned}
+\]
+Note, for $y_i = \frac{x_i}{ 1 - x_{n+1}}$
+\[
+\begin{gathered}
+  y_1^2 + \dots +y_n^2 = |y|^2 = \frac{1-  x_{n+1}^2}{ (1-x_{n+1})^2 } = \frac{1+ x_{n+1}}{ 1- x_{n+1}} \text{ or } x_{n+1}  = \frac{ |y|^2 - 1 }{ |y|^2 + 1 }  \\
+  x_i = y _i (1- x_{n+1}) = \frac{2y_i}{ 1 + |y|^2 }
+\end{gathered}
+\]
+
+\[
+\begin{aligned}
+  & \pi_1^{-1}: \mathbb{R}^n \to S^n - N \\ 
+  & \pi_1^{-1}(y_1 \dots y_n) = \left( \frac{2y_1}{ 1 + |y|^2 } \dots \frac{2y_n}{1+ |y|^2 } , \frac{ |y|^2 - 1 }{ |y|^2 + 1 } \right) \\ 
+  & \pi_2^{-1}(y_1 \dots y_n) = \left( \frac{2y_1}{ 1 + |y|^2 } \dots \frac{2y_n}{1+ |y|^2 } , \frac{ 1 - |y|^2  }{ |y|^2 + 1 } \right)
+\end{aligned}
+\]
+
+$\pi_1,\pi_2$ diff. injective, and $(S^n - N ) \bigcup (S^n-S) = S^n$ \\
+
+Consider $(S^n - N)(S^n-S) = S^n - N \bigcup S$ 
+\[
+\begin{aligned}
+  & \pi_1 \pi_2^{-1}(y_1 \dots y_n) = \left( \frac{y_1 }{ |y|^2} \dots \frac{y_n}{|y|^2} , 0 \right) \\ 
+  & \pi_2 \pi_1^{-1}(y_1 \dots y_n) = \left( \frac{y_1 }{ |y|^2} \dots \frac{y_n}{|y|^2} , 0 \right) 
+\end{aligned}
+\]
+since, for example, 
+\[
+\begin{gathered}
+\frac{   \frac{2y_i }{ 1 + |y|^2} }{ 1 - \frac{ 1 - |y|^2}{ 1 + |y|^2 }} = \frac{y_i }{ |y|^2 }
+\end{gathered}
+\]
+
+
+
+$\pi_1 \pi_2^{-1}$ bijective and $C^{\infty}$, $\pi_1 \pi_2^{-1}$ diffeomorphism.   \\
+
+$\lbrace (S^n-N, \pi_1), (S^n - S, \pi_2) \rbrace$ \, $C^{\infty}$ atlas or differentiable structure.  
+
+
+\subsection{The calculus on manifolds}
+
+
+
+\subsubsection{Differentiable maps}
+
+\exercisehead{5.2} If $f:M\to N$ smooth, \\
+Consider $\begin{aligned} & \quad \\ 
+& (U'_a, \varphi'_a) \in \mathcal{A} \\ 
+& (V'_b, \psi'_b)\in\mathcal{B}\end{aligned}$ \, s.t. $f(U_a') \subseteq V_b'$ \\
+
+Consider 
+\[
+\psi'_b f(\varphi_a')^{-1} = \psi_b'(\psi_{\beta}^{-1} \psi_{\beta}) f (\varphi_{\alpha}^{-1} \varphi_{\alpha}) (\varphi'_a)^{-1} = (\psi_b'\psi_{\beta}^{-1})(\psi_{\beta} f \varphi_{\alpha}^{-1})(\varphi_{\alpha} \varphi'_a)^{-1}
+\]
+
+$\begin{aligned} & \quad \\ 
+  & U_{\alpha} U_a' \neq \emptyset \\ 
+  & V_{\beta}V'_b \neq \emptyset \end{aligned}$ since $\begin{gathered} \quad \\ 
+  x \in U_{\alpha}, U_a' \\ 
+  f(x) \in V_{\beta} V'_{\beta} \end{gathered}$ \\
+
+Then $(\psi_b' \psi_{\beta}^{-1}), (\varphi_{\alpha} \varphi'_a)^{-1}$ , \, $C^{\infty}$ (def. of atlas) and $(\psi_{\beta} f \varphi_{\alpha}^{-1})$ \, $C^{\infty}$ (given).  \\
+So $\psi_b' f(\varphi_a')^{-1}$ \, $C^{\infty}$
+
+\subsubsection{Vectors}
+
+curve $c:I \to M$ \\
+\phantom{curve } $f:M \to \mathbb{R}$ 
+
+\[
+\frac{d}{dt} \left. f(c(t)) \right|_{t=0} \quad \quad \quad \, (5.18)
+\]
+
+for $p = c(0) \in (U, \varphi) = (U, x^1 \dots x^n)$, \, $fc = f\varphi^{-1}\varphi c$
+\[
+\frac{d}{dt} \left. f(c(t)) \right|_{t=0} =   \frac{ \partial (f\varphi^{-1}) }{ \partial x^{\mu} }(x) \left. \frac{ d (x^{\mu}(c)) }{ dt}(t) \right|_{t=0} = \frac{ \partial f}{ \partial x^{\mu}} \left. \frac{dx^{\mu}(c(t)) }{dt} \right|_{t=0} = \left. \frac{ \partial f}{ \partial x^{\mu} } \frac{d c^{\mu}}{dt} \right|_{t=0} \quad \quad \, (\text{abuse of notation})
+\]
+
+Note that abuse of notation: $ \left. \frac{ dx^{\mu} }{dt}(c(t)) \right|_{t=0 } \equiv \left. \frac{d x^{\mu} ( \varphi{ (c(t))  }) }{dt} \right|_{t=0}$
+
+$ \left. \frac{df(c(t))}{dt} \right|_{t=0}$ obtained by differential operator $X$ to $f$
+\[
+X = X^{\mu}\left( \frac{ \partial }{ \partial x^{\mu} } \right) \quad \quad \, \left( X^{\mu} = \left. \frac{dx^{\mu}(c(t))}{dt} \right|_{t=0} \right) \quad \quad \quad \, (5.20)
+\]
+\[
+\left. \frac{df(c(t))}{ dt} \right|_{t=0} = X^{\mu} \left( \frac{ \partial f}{ \partial x^{\mu} } \right) = X[f] \quad \quad \quad \, (5.21)
+\]
+
+
+
+Introduce equivalence class of curves in $M$.  \\
+curves $c_1(t) \sim c_2(t)$ if 
+\begin{enumerate}
+\item[(1)] $c_1(0) = c_2(0) = p$ 
+\item[(2)] $
+\left. \frac{dx^{\mu}{ (c_1(t)) } }{ dt} \right|_{t=0} = \left. \frac{dx^{\mu}(c_2(t)) }{ dt} \right|_{t=0}
+$
+\end{enumerate}
+
+Identify tangent vector $X$ with $[c(t)]$.  
+
+$T_p M$, tangent space of $M$ at $p$, all $[c]$ at $p \in M$ 
+
+Use Sec. 2.2's theory of vector spaces to analyze $T_pM$ 
+
+\hrulefill
+
+Recall curve $c(t) : \mathbb{R} \to M$,  \\
+\phantom{Recall curve }  $f: M \to \mathbb{R}$
+
+Now tangent vector at $c(0)$ was, recall
+\[
+\left. \frac{df(c(t))}{ dt} \right|_{t=0} = \frac{ \partial f}{ \partial x^{\mu}}  \left. \frac{ dx^{\mu}(c(t))}{ dt} \right|_{t=0} = \left. \frac{dx^{\mu}(c(t))}{ dt} \right|_{t=0} \frac{ \partial f}{ \partial x^{\mu} }
+\]
+Let $X^{\mu} = \left. \frac{dx^{\mu}(c(t))}{ dt} \right|_{t=0}$
+
+\[
+\begin{gathered}
+X[f] \equiv \left. \frac{df(c(t))}{ dt} \right|_{t=0} \\
+\Longrightarrow X = x^{\mu} \frac{ \partial}{ \partial x^{\mu}} \end{gathered}
+\]
+
+So tangent vector $X$ is spanned by $\frac{ \partial }{ \partial x^{\mu} }$
+
+Suppose $a^{\mu} \frac{ \partial }{ \partial x^{\mu} } =0$ 
+\[
+a^{\mu} \frac{ \partial }{ \partial x^{\mu}} x^{\nu} = a^{\mu} \delta_{\mu}^{ \, \, \nu } = a^{\nu} = 0 
+\]
+
+
+So $\lbrace \frac{ \partial }{ \partial x^{\mu}} \rbrace$ linearly independent.  
+
+$\lbrace \frac{ \partial }{ \partial x^{m}} \rbrace$ a basis.  
+
+\hrulefill
+
+(cf. wikipedia) Consider short $\varphi : U \to \mathbb{R}^n$, $p\in U$, define map  $ \begin{aligned} & \quad \\ 
+  & ( d\varphi)_p : T_x M \to \mathbb{R}^n \\ 
+  & (d\varphi)_p( [c(0 ) ]) = \frac{d}{dt} ( \varphi ( c(0 )) ) \end{aligned}$ 
+
+Consider $c(0) = p = c(t)$ \, $\forall \, t $ s.t. $c(t) \in U$.   \\
+Surely $\varphi(c(t)) = $ const. (for $\varphi$ is a well-defined function)  \\
+$\frac{d}{dt} \varphi(c(t)) = 0$.  For $[c(0)] = [p]$, $ (d\varphi)_p ([p ]) = 0$ \, $\forall \, $ chart $\varphi$ \, $(d\varphi)_p$ injective.  \\
+Consider $a^i e_i \in \mathbb{R}^n$ 
+\[
+a^i = \frac{d}{dt} ( \varphi^i(c(0)) ) \equiv \left. \frac{d}{dt} x^i(c(t)) \right|_{t=0}
+\]
+
+$f: M \to \mathbb{R} \in C^{\infty}(M)$ if $f\varphi^{-1} \in C^{\infty}$.  $\forall \, $ chart $\varphi : U \to \mathbb{R}^n$ 
+
+derivation at $p$ is linear $D : C^{\infty}(M) \to \mathbb{R}$ \, ( or $\begin{aligned} & \quad \\ 
+  & X: C^{\infty}(M) \to \mathbb{R} \\ 
+  & X[f] =\left.  \frac{df(c(t)) }{ dt} \right|_{t=0} \end{aligned}$ ).  These derivations form a vector space, tangent space $T_pM$. 
+
+\[
+\left. \frac{df(c(t))}{dt}  \right|_{t=0} = \frac{ \partial g}{ \partial x^{\mu} }(x^{\nu}) \frac{dx^{\mu}(c(t)) }{ dt} = \frac{dx^{\mu}(c(t)) }{dt} \frac{ \partial}{ \partial x^{\mu} } f
+\]
+$g(x^{\nu}) = (f\cdot \varphi^{-1})(x^{\nu})$
+
+Consider $p\in U_i U_j$, \, $\begin{aligned} & \quad \\
+  & x = \varphi_i(p) \\ 
+  & y = \varphi_j(p) \end{aligned}$ 
+
+\[
+\begin{gathered}
+  X = X^{\mu} \frac{ \partial }{ \partial x^{\mu} } = Y^{\nu} \frac{ \partial }{ \partial y^{\nu}} \\ 
+  Y^{\nu} = X^{\mu} \frac{ \partial y^{\nu} }{ \partial x^{\mu} } \quad \quad \quad \, (5.23)
+\end{gathered}
+\]
+
+
+
+\subsubsection{One-forms}
+
+$\begin{aligned}
+  & \omega \in T_p^*M \\ 
+  & \omega : T_p M \to \mathbb{R} \end{aligned}$ \quad \textbf{cotangent vector or 1-form}.  \\
+
+\textbf{ differential } $df \in T_p^*M$ on $V \in T_pM$
+\[
+\langle df , V \rangle = V[f] = V^{\mu} \frac{ \partial f}{ \partial x^{\mu} } \in \mathbb{R} \quad \quad \quad \, (5.24)
+\]
+
+arbitrary 1-form $\omega$
+\[
+\omega = \omega_{\mu} dx^{\mu} \quad \quad \quad \, (5.26)
+\]
+
+inner product defined
+\[
+\begin{aligned}
+  & \langle \, , \, \rangle : T_p^*M \times T_pM \to \mathbb{R} \\
+  & \langle \omega, V \rangle = \omega_{\mu} V^{\mu} \langle dx^{\mu}, \frac{ \partial}{ \partial x^{\nu} } \rangle = \omega_{\mu} V^{\mu} \quad \quad \, (5.27) 
+\end{aligned}
+\]
+
+For $p \in U_iU_j$, $\begin{aligned} & \quad \\ 
+  & x = \varphi_i(p) \\ 
+  & y = \varphi_j(p) \end{aligned}$ \\
+
+$\begin{aligned}
+  & \quad \\
+  & dy^{\nu} \in T_p^*M \text{ so } \\
+  & dy^{\nu} = \omega_{\mu} dx^{\mu} \end{aligned}$ so
+\[
+\begin{gathered}
+\langle dy^{\nu} , \frac{ \partial }{ \partial x^{\gamma} } \rangle = \delta^{\mu \gamma} \frac{ \partial y^{\nu} }{ \partial x^{\mu} } = \frac{ \partial y^{\nu} }{ \partial x^{\gamma} } = \omega_{\mu} \langle dx^{\mu}, \partial_{x^{\gamma}} \rangle = \omega_{\gamma} \\
+\Longrightarrow dy^{\nu} = \frac{ \partial y^{\nu} }{ \partial x^{\mu} } dx^{\mu} 
+\end{gathered}
+\]
+
+\[
+\omega = \omega_{\mu} dx^{\mu} = \psi_{\nu} dy^{\nu} = \psi_{\nu} \frac{ \partial y^{\nu}}{ \partial x^{\mu}  } dx^{\mu} \text{ or } \omega_{\mu} = \psi_{\nu} \frac{ \partial y^{\nu }}{ \partial x^{\mu}}
+\]
+
+
+\subsubsection{Tensors}
+
+$\tau^q_{r, p }(M)$ set of type $(q,r)$ tensors at $p\in M$.  
+
+element of $\tau^q_{r, p }(M)$
+\[
+T = T^{\mu_1 \dots \mu_q }_{\phantom{\mu_1 \dots \mu_q} \nu_1 \dots \nu_r } \frac{ \partial }{ \partial x^{\mu_1} } \dots \frac{ \partial}{ \partial x^{\mu_q} } dx^{\nu_1 } \dots dx^{\nu_r} \quad \quad \quad (5.29)
+\]
+$T: \otimes^q T_p^*M \otimes^r T_pM \to \mathbb{R}$
+
+Let $\begin{aligned} & \quad \\ 
+  & V_i = V_i^{\mu} \frac{ \partial }{ \partial x^{\mu }} \quad \quad ( 1 \leq i \leq r) \\ 
+  & \omega_i = \omega_{i \mu} dx^{\mu} \quad \quad ( 1 \leq i \leq q ) \end{aligned}$
+
+\[
+T(\omega_1 \dots \omega_q, V_1 \dots V_r) = T^{\mu_1 \dots \mu_q }_{\phantom{\mu_1 \dots \mu_q} \nu_1 \dots \nu_r } \omega_{1 \mu_1} \dots \omega_{q \mu_q} V_1^{\nu_1} \dots V_r^{\nu_r}
+\]
+
+%\[
+%T(\omega_1 \dots a_i \omega_i + b_i \psi_i \dots \omega_q; V_1 \dots c_j V_j + d_j W_j \dots V_r) = T^{\mu_1 \dots \mu_q}_{\phantom{\mu_1 \dots \mu_q} \nu_1 \dots nu_r } \omega_{1 \mu_1} \dots ( a_i \omega_{i \mu_i} + b_i \psi_{i \mu_i} ) \dots \omega_{q \mu_q} V_1^{\nu_1} \dots \omega_j V_j^{\nu_j} 
+%\]
+
+\[
+\begin{gathered}
+  T(\omega_1 \dots a_i \omega_i + b_i \psi_i \dots \omega_q, V_1 \dots V_r) = T^{\mu_1 \dots \mu_q}_{\phantom{\mu_1 \dots \mu_q} \nu_1 \dots \nu_r } \omega_{1 \mu_1} \dots (q_i \omega_{i \mu_i} + b_i \psi_{i \mu_i} ) \dots \omega_{q \mu_q} , V_1^{\nu_1} \dots V_r^{\nu_r} ) =  \\
+  = a_i T^{\mu_1 \dots \mu_q}_{\phantom{\mu_1 \dots \mu_q} \nu_1 \dots \nu_r } \omega_{1 \mu_1} \dots \omega_{i \mu_i} \dots \omega_{q \mu_q} , V_1^{\nu_1} \dots V_r^{\nu_r} + b_i T^{\mu_1 \dots \mu_q}_{\phantom{\mu_1 \dots \mu_q} \nu_1 \dots \nu_r } \omega_{1 \mu_1} \dots \psi_{i \mu_i} \dots \omega_{q \mu_q} , V_1^{\nu_1} \dots V_r^{\nu_r} = \\
+  = a_i T(\omega_1 \dots \omega_i \dots \omega_q, V_1 \dots V_r) + b_i T(\omega_1 \dots \psi_i \dots \omega_q, V_1 \dots V_r)
+\end{gathered}
+\]
+\[
+\begin{gathered}
+  T(\omega_1 \dots \omega_q, V_1 \dots c_j V_j + d_j W_j \dots V_r) = T^{ \mu_1 \dots \mu_q}_{\phantom{\mu_1 \dots \mu_q} \nu_1 \dots \nu_r} \omega_{1\mu_1} \dots \omega_{q \mu_q} V_1^{\nu_1} \dots (c_j V_j^{\nu_j} + d_j W_j^{\nu_j} \dots V_r = \\
+  = c_j T^{\mu_1 \dots \mu_q}_{\phantom{\mu_1 \dots \mu_q} \nu_1 \dots \nu_r } \omega_{1 \mu_1} \dots \omega_{q \mu_q}  V_1^{\nu_1} \dots V_j^{\nu_j} \dots V_r + d_j T^{\mu_1 \dots \mu_q}_{\phantom{\mu_1 \dots \mu_q} \nu_1 \dots \nu_r } \omega_{1 \mu_1} \dots \omega_{q \mu_q}  V_1^{\nu_1} \dots W_j^{\nu_j} \dots V_r = \\
+      = c_j T(\omega_1 \dots \omega_q, V_1 \dots V_j \dots V_r) + d_j T(\omega_1 \dots \omega_q, V_1 \dots W_j \dots V_r)
+\end{gathered}
+\]
+
+\subsubsection{Tensor fields}
+
+vector field - vector assigned smooth $\forall \, p \in M$ \\
+\quad i.e. $V$ vector field if $V[f] \in \mathcal{F}(M)$ \quad \, $\forall \, f \in \mathcal{F}(M)$ \\
+
+tensor field of type $(q,r)$, \, $\tau^q_{r,p}(M)$ \, $\forall \, p \in M$ \\
+$\tau_1^0(M)$ set of dual vector fields $\equiv \Omega^1(M)$ \\
+$\tau_0^0(M) = \mathcal{F}(M)$
+
+\subsubsection{ Induced maps}
+
+smooth $f:M \to N$ \\
+
+differential $f_*:T_pM \to T_{f(p)}N$ \\
+By def. of tangent vector as directional derivative along a curve, \\
+\quad if $g \in \mathcal{F}(N)$, $fg \in \mathcal{F}(M)$ \\
+vector $V \in T_pM$ acts on $gf$ to give number $V[gf]$ \\
+
+define $\begin{aligned} & \quad \\
+  & f_* V \in T_{f(p)}N  \\
+  & (f_*V)[g] = V[gf] \quad \quad \, (5.31) \end{aligned}$ \\
+
+or for $\begin{aligned} & \quad \\ 
+  & (U,\varphi) \subset M \\ 
+  & (V, \psi) \subset N \end{aligned}$ 
+
+\[
+(f_*V)[g\psi^{-1}(y) ] \equiv V[gf\varphi^{-1}(x) ] \quad \quad \quad \, (5.32)
+\]
+
+Let $V = V^{\mu} \frac{ \partial }{ \partial x^{\mu} }$, \, $f_* V = W^{\alpha} \frac{ \partial }{ \partial y^{\alpha} }$
+\[
+W^{\alpha} \frac{ \partial }{ \partial y^{\alpha} } [ g\psi^{-1}(y) ] = V^{\mu} \frac{ \partial }{ \partial x^{\mu} }[gf\varphi^{-1}(x) ]
+\]
+
+With $y = \psi(f(p))$, \\
+take $g= y^{\alpha}$ 
+\[
+W^{\alpha} = V^{\mu} \frac{ \partial y^{\alpha} }{ \partial x^{\mu} } \quad \quad \quad \, (5.33)
+\]
+
+$f(p) = f\varphi^{-1}(x)$
+\[
+V^{\mu} \frac{ \partial }{ \partial x^{\mu} }[ y^{\alpha} f \varphi^{-1}(x) ] = V^{\mu} \frac{ \partial }{ \partial x^{\mu} }[y^{\alpha} ]
+\]
+
+\hrulefill
+20121030
+
+Consider smooth $\begin{aligned} & \quad \\ 
+  & f: M \to N \\
+  & f_* : T_p M \to T_{f(p)}N \end{aligned}$  
+
+\[
+\begin{aligned}
+  & (U , \varphi) \subset M \quad \quad \, \varphi = x^{\mu} \\ 
+  & (V, \psi ) \subset N \quad \quad \, \psi = y^{\nu} \end{aligned}
+\]
+
+\[
+\begin{aligned}
+  & \psi f \varphi^{-1} : \varphi(U) \subseteq \mathbb{R}^m \to \mathbb{R}^n \\ 
+  & \psi f\varphi^{-1} \equiv f^{\nu}(x^{\mu })
+\end{aligned} \quad \quad \, \begin{aligned} 
+  & X \in T_p M \\
+  & Y \in T_{f(p)} N \end{aligned} \quad \quad \, \begin{aligned} 
+  X & = X^{\mu} \frac{ \partial }{ \partial x^{\mu } } \\
+  Y & = Y^{\nu} \frac{ \partial }{ \partial y^{\nu } } \end{aligned}
+\]
+
+\[
+\begin{aligned}
+  & f_* X \in T_{f(p)} N \\ 
+  & f_* X   = Y^{\nu} \frac{ \partial }{ \partial y^{\nu }}
+\end{aligned}
+\]
+\[
+\begin{aligned}
+  & g \in \mathcal{F}(N) \\ 
+  & g: N \to \mathbb{R}
+\end{aligned} \quad \quad \, 
+\begin{aligned}
+  & g\psi^{-1}: \psi(N) \to \mathbb{R} \\ 
+  & g\psi^{-1} \equiv g(y^{\nu} )
+\end{aligned} 
+\]
+\[
+\begin{aligned}
+  & gf : M \to \mathbb{R} \\ 
+  & gf \in \mathcal{F}(M)
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+  & (f_* X)[g] \equiv X[gf] \\ 
+  & (f_* X)[g] = Y^{\nu} \frac{ \partial g}{ \partial y^{\nu }}(y) = X^{\mu} \frac{ \partial }{ \partial x^{\mu }}[gf]  = X^{\mu} \frac{ \partial }{ \partial x^{\mu } } g( f^{\nu}(x) ) = X^{\mu} \frac{ \partial g}{ \partial y^{\nu} }(y) \frac{ \partial f^{\nu} }{ \partial x^{\mu} }(x)
+\end{aligned}
+\]
+\[
+\Longrightarrow \boxed{ Y^{\nu} = X^{\mu } \frac{ \partial f^{\nu }}{ \partial x^{\mu }}  = X^{\mu} \frac{ \partial y^{\nu} }{ \partial x^{\mu }} }
+\]
+where
+\[
+\begin{aligned}
+  & gf = g \psi^{-1} \psi f \varphi^{-1} \\ 
+  & g\psi^{-1} \psi f \varphi^{-1} : \varphi(U) \to \mathbb{R} \\ 
+  & g\psi^{-1} \psi f \varphi^{-1} = g(f^{\nu}(x) ) 
+\end{aligned}
+\]
+
+
+\exercisehead{5.3}
+
+$\begin{aligned} & \quad \\ 
+  f : & M \to N \\
+  g : & N \to P \\ 
+  gf : & M \to P \end{aligned}$ \quad \, Consider $\begin{aligned} & \quad \\ 
+  p \in M , & (U, \varphi) \subset M  \\
+  q = f(p) \in N , & (V, \psi) \subset N \\
+  r = g(q) \in P , & (W, \chi) \subset P \end{aligned}$ \quad \, $\begin{aligned} & \quad \\ 
+  & V \in T_pM \\
+  & W \in T_qN \\
+  & X \in T_{g(q)}P \end{aligned}$ \quad \, $\begin{aligned} & \quad \\ 
+  & V = V^{\alpha} \frac{ \partial }{ \partial x^{\alpha} } \\ 
+  & W = W^{\beta} \frac{ \partial }{ \partial y^{\beta} } \\ 
+  & X = X^{\gamma} \frac{ \partial }{ \partial z^{\gamma} } \end{aligned}$
+
+\[
+\begin{gathered}
+\begin{aligned}
+  & f_*V \in T_{f(p)}N \\ 
+  & f_*V[h] = V[hf] \\ 
+  & f_*V[h\psi^{-1}(y)] = V[hf\varphi^{-1}(x)]
+\end{aligned} \quad \quad \, \begin{aligned}
+  & g_*W \in T_{g(q)}P \\ 
+  & g_*W[k] = W[kg] \\ 
+  & g_*W[k\chi^{-1}(z)] = W[kg\psi^{-1}(y)]
+\end{aligned}  \quad \quad \, \begin{aligned}
+  & gf_*V \in T_{gf(p)}P \\ 
+  & gf_*V[l] = V[lgf] \\ 
+  & gf_*V[l\chi^{-1}(z)] = V[lgf\varphi^{-1}(x)]
+\end{aligned} \\
+\end{gathered}
+\]
+
+\[
+\Longrightarrow g_*(f_*V)[l] = f_* V[lg] = V[lgf] = gf_*V[l]
+\]
+
+In coordinates, 
+\[
+\begin{gathered}
+  g_*(f_*V)[l\chi^{-1}(z) ] = f_*V[lg\psi^{-1}(y)] = W^{\alpha} \frac{ \partial }{ \partial y^{\alpha}}[ lg\psi^{-1}(y)] = V^{\mu} \frac{ \partial y^{\alpha} }{ \partial x^{\mu} } \frac{ \partial }{ \partial y^{\alpha} } [lg\psi^{-1}(y)] = V^{\mu} \frac{ \partial (y^{\alpha}f\varphi^{-1}(x)) }{ \partial x^{\mu} } \frac{ \partial }{ \partial y^{\alpha} } [lg\psi^{-1}(y) ] \\
+  gf_*V[l \chi^{-1}(z) ] = V[lgf\varphi^{-1}(x) ] = V^{\alpha} \frac{ \partial }{ \partial x^{\alpha} }( lgf\varphi^{-1}(x)) \\
+  \Longrightarrow  \frac{ \partial }{ \partial x^{\mu} }( lgf\varphi^{-1}(x)) = \frac{ \partial (y^{\alpha}f\varphi^{-1}(x)) }{ \partial x^{\mu} } \frac{ \partial }{ \partial y^{\alpha} } [lg\psi^{-1}(y) ]
+\end{gathered}
+\]
+Chain rule is reobtained. \\
+
+\[
+\begin{aligned}
+  & f: M \to N \\ 
+  & f^* : T^*_{f(p)}N \to T^*_p M \quad \quad \, \text{ \textbf{ pull back }}
+  & \langle f^* \omega, V \rangle = \langle \omega, f_* V \rangle \\
+  & \begin{aligned}
+      & \omega \in T^*_{f(p)}N \\ 
+      & V \in T_p M \end{aligned}
+\end{aligned}
+\]
+
+
+tensor of type $(0,r)$ $f^*: \tau^0_{r, f(p)}(N) \to \tau^0_{r,p}(M)$
+
+\hrulefill 
+
+20121030
+
+pullback
+
+\[
+\begin{gathered}
+\begin{aligned}
+  & f: M \to N \\ 
+  & f^* : T^*_{f(p)} N \to T^*_p M \end{aligned} \quad \quad \, \begin{aligned} & X \in T_pM \\ 
+  & X = X^{\mu} \frac{ \partial }{ \partial x^{\mu } } \end{aligned} \\ 
+\begin{aligned}
+  & (U , \varphi ) \subset M \quad \, \varphi = x^{\mu} \\ 
+  & ( V, \psi ) \subset N  \quad \quad \, \psi = y^{\nu } \end{aligned} \quad \quad \, 
+\begin{aligned}
+  & \omega \in T^*_{f(p)} N \\ 
+  & \omega = \omega_{\alpha}dy^{\alpha}
+\end{aligned}
+\end{gathered}
+\]
+
+\[
+\begin{aligned}
+  & f^* \omega \in T^*_pM \text{ so } \\ 
+  & f^* \omega = \psi_{\beta} dx^{\beta} 
+\end{aligned}
+\]
+
+\[
+\begin{gathered}
+  \langle f^* \omega, X \rangle = \langle \psi_{\beta} dx^{\beta}, X^{\mu} \frac{ \partial }{ \partial x^{\mu }} \rangle = \psi_{\mu} X^{\mu} = \langle \omega, f_* X \rangle = \langle \omega_{\alpha} dy^{\alpha}, Y^{\nu} \frac{ \partial }{ \partial y^{\nu }} \rangle = \\
+  = \langle \omega_{\alpha} dy^{\alpha}, X^{\mu} \frac{ \partial y^{\nu }}{ \partial x^{\mu} } \frac{ \partial }{ \partial y^{\nu} } \rangle = \omega_{\nu} X^{\mu} \frac{ \partial y^{\nu }}{ \partial x^{\mu }}
+\end{gathered}
+\]
+\[
+\boxed{ \psi_{\mu} = \omega_{\nu} \frac{ \partial y^{\nu }}{ \partial x^{\mu }} = \frac{ \partial y^{\nu }}{ \partial x^{\mu }} \omega_{\nu} }
+\]
+
+\exercisehead{5.4} 
+\[
+\begin{aligned}
+  & \omega = \omega_{\alpha} dy^{\alpha} \in T^*_{f(p)}N \\ 
+  & f^*\omega = \xi_{\mu} dx^{\mu} \in T_p^* M
+\end{aligned}
+ \quad \quad \, \begin{aligned}
+& V \in T_p M \\ 
+ & V = V^{\mu} \frac{ \partial }{ \partial x^{\mu}}
+\end{aligned}
+\]
+
+\[
+\begin{gathered}
+  \langle f^* \omega , V \rangle = \langle \xi_{\mu} dx^{\mu}, V^{\nu} \frac{ \partial }{ \partial x^{\nu}} \rangle = \xi_{\mu} V^{\mu} = \\
+    = \langle \omega, f_* V \rangle = \langle \omega_{\alpha} dy^{\alpha} , W^{\beta} \frac{ \partial }{ \partial y^{\beta}} \rangle = \langle \omega_{\alpha} dy^{\alpha} , V^{\mu} \frac{ \partial y^{\beta}}{ dx^{\mu} } \frac{ \partial }{ \partial y^{\beta}} \rangle = \omega_{\alpha} V^{\mu} \frac{ \partial y^{\beta}}{ \partial x^{\mu} } \delta^{\alpha}_{ \, \beta} = \omega_{\alpha} V^{\mu} \frac{ \partial y^{ \alpha} }{ \partial x^{\mu} } = \\
+    \Longrightarrow \boxed{  \xi_{\mu} = \omega_{\alpha} \frac{ \partial y^{\alpha} }{ \partial x^{\mu} } }
+\end{gathered}
+\]
+
+\exercisehead{5.5} \[
+(gf)^*: T^*_{ gf(p)}P \to T^*_p M
+\]
+\[
+\begin{gathered}
+  \langle (gf)^* \chi, V \rangle = \langle \chi, (gf)_* V \rangle = \langle \chi, g_* f_*V \rangle = \langle g^* \chi, f_* V \rangle = \langle f^* g^* \chi, V \rangle \\
+  \Longrightarrow (gf)^* = f^* g^*
+\end{gathered}
+\]
+with
+\[
+\begin{aligned}
+  & \begin{aligned}
+      & g^* : T^*_{g(q)}P \to T^*_q N \\ 
+  & \langle g^* \omega , W \rangle = \langle \omega, g_* W \rangle 
+\end{aligned} \quad \, 
+  & \begin{aligned}
+      & f^* : T^*_{f(p)}N \to T^*_p M \\ 
+      & \langle f^* \nu , V \rangle = \langle \nu, f_* V \rangle
+    \end{aligned}
+\end{aligned}
+\]
+
+\subsubsection{ Submanifolds}
+
+\begin{definition}[5.3] (Immersion, submanifold, embedding) \\
+Let smooth $f: M \to N $ \\
+$\text{dim}{M} \leq \text{dim}{N}$ 
+
+\begin{enumerate}
+\item[(a)] immersion $f$ if $f_* : T_pM \to T_{f(p)} N$ injection (1-to-1) i.e. 
+\[
+\text{rank}{f_*} = \text{dim}{M}
+\]
+\item[(b)] embedding $f$ if $f$ injection and immersion \\
+$f(M)$ submanifold of $N$.  
+\end{enumerate}
+\end{definition}
+
+\subsection{ Flow and Lie derivatives }
+
+
+Let vector field $X$ in $M$.  \\
+integral curve $x(t)$ of $X$ is a curve in $M$, tangent vector at $x(t)$ is $\left. X \right|_x$ 
+\[
+\frac{dx^{\mu}}{ dt} = X^{\mu}(x(t))
+\]
+where $x^{\mu}$ is $\mu$th component of $\varphi(x(t))$, $X = X^{\mu} \frac{ \partial }{ \partial x^{\mu }}$
+
+
+Note the abus of notation: $x$ used to denote a pt. in $M$ as well as its coordinates.  
+
+Let $\sigma(t,x_0)$ integral curve of $X$ which passes a pt. $x_0$ at $t=0$.  
+\begin{gather}
+  \frac{d}{dt} \sigma^{\mu}(t,x_0) = X^{\mu}(\sigma(t,x_0)) \quad \quad \, (5.40a) \\ 
+  \sigma^{\mu}(0, x_0) = x_0^{\mu} \quad \quad \, (5.40b) \text{ initial condition }
+\end{gather}
+
+$\sigma : \mathbb{R} \times M \to M$.  Flow generated by $X \in \mathcal{X}(M)$ s.t. 
+\[
+\sigma(t, \sigma^{\mu}(s,x_0) ) = \sigma( t+ s ,x_0)
+\]
+
+The previous was true because of the following.  From uniqueness of ODEs.
+\[
+\begin{gathered}
+  \begin{gathered} 
+    \frac{d}{dt} \sigma^{\mu}(t, \sigma^{\mu}(s,x_0) ) = X^{\mu}( \sigma(t, \sigma^{\mu}(s,x_0)) ) \\ 
+    \sigma^{\mu}(0 , \sigma(s,x_0) ) = \sigma(s,x_0) \end{gathered} \\ 
+  \begin{gathered}
+    \frac{d}{dt} \sigma^{\mu}( t+ s ,x_0) = \frac{d}{d (t+s) } \sigma^{\mu}(t+s , x_0 ) = X^{\mu}(\sigma(t+s, x_0)) \\ 
+    \sigma( 0 + s, x_0) = \sigma(s,x_0)
+\end{gathered}
+\end{gathered}
+\]
+
+\begin{theorem}[5.1] $\forall \, x \in M$, $\exists \, $ differentiable $\sigma: \mathbb{R} \times M \to M$ s.t. 
+\begin{enumerate}
+\item[(i)] $\sigma(0,x) = x$ 
+\item[(ii)] $t \mapsto \sigma(t,x)$ solution of (5.40a), (5.40b) 
+\item[(iii)] $\sigma(t, \sigma^{\mu}(s,x)) = \sigma(t+s,x)$
+\end{enumerate}
+\end{theorem}
+
+Example 5.9. Let $M = \mathbb{R}^2$, $X((x,y)) = -y \frac{ \partial}{\partial x} + x \frac{ \partial }{ \partial y }$
+\[
+X((x,y))[f] = -y \frac{ \partial f}{ \partial x} + x \frac{ \partial f}{ \partial y } = \frac{df(\sigma(t)) }{ dt} = \frac{ dx^{\mu}(c(t)) }{ dt} \frac{ \partial f}{ \partial x^{\mu} }
+\]
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    \frac{dx}{dt} & = -y \\ 
+    \frac{dy}{dt} & = x 
+\end{aligned} \quad \quad \, \frac{ d^2y }{dt^2} = -y \Longrightarrow \begin{aligned} y & = Ac(t) = Bs(t) \\ x & = - As(t) + Bc(t) \end{aligned} \quad \quad \, \Longrightarrow \begin{aligned} A & = y \\ B & = x \end{aligned} \\ 
+  \begin{aligned}
+    x & =  x \cos{(t) } -y \sin{(t) }  \\
+    y & = x \sin{(t) } + y \cos{(t)}
+\end{aligned}
+\end{gathered}
+\]
+
+\exercisehead{5.7}
+
+\[
+\begin{gathered}
+  \begin{gathered}
+    X = y \frac{ \partial }{ \partial x } + x \frac{ \partial }{ \partial y} \\ 
+    X[f] = y \frac{ \partial f}{ \partial x} + x \frac{ \partial f}{ \partial y} = \frac{ dx^{\mu} }{dt} \frac{ \partial f}{ \partial x^{\mu} }
+\end{gathered} \\
+\begin{aligned}
+  \frac{dx}{dt} & = y \\ 
+  \frac{dy}{dt} & = x 
+\end{aligned} \quad \quad \, \begin{aligned}
+  \ddot{x} & = x \\ 
+  \ddot{y} & = y \end{aligned} \quad \quad \, \begin{aligned}
+x & = Ae^t + Be^{-t} \\ 
+y & = Ae^t - Be^{-t} \end{aligned}
+\end{gathered}
+\]
+
+
+
+\subsubsection{ One-parameter group of transformations}
+
+For fixed $t\in \mathbb{R}$, flow $\sigma(t,x)$ is a diffeomorphism from $M$ to $M$, $\sigma_t : M \to M$ \\
+$\sigma_t$ made into a commutative group by 
+\begin{enumerate}
+\item[(i)] $\sigma_t(\sigma_s(X)) = \sigma_{t+s}(X)$ i.e. $\sigma_t \circ \sigma_s = \sigma_{t+s}$ 
+\item[(ii)] $\sigma_0 = 1$ 
+\item[(iii)] $\sigma_{-t} = (\sigma_t)^{-1}$
+\end{enumerate}
+
+Under action $\sigma_{\epsilon}$, infinitesimal $\epsilon$, from (5.40a), (5.40b)
+\[
+\sigma_{\epsilon}^{\mu}(x) = \sigma^{\mu}(\epsilon, x) = x^{\mu} + \epsilon X^{\mu}(x)
+\]
+So vector field $X$ is the infinitesimal generator of transformation $\sigma_{\epsilon}$
+
+Given a vector field $X$, corresponding flow $\sigma$ of referred to as exponentiation of $X$
+\[
+\sigma^{\mu}(t,x) = \exp{ (tX) } x^{\mu} \quad \quad \quad \, (5.43)
+\]
+
+Since 
+\[
+\begin{gathered}
+\sigma^{\mu}(t,x) = x^{\mu} + t \left. \frac{d}{ds} \sigma^{\mu}(s,x) \right|_{s=0} + \frac{t^2}{2!} \left. \left( \frac{d}{ds} \right)^2 \sigma^{\mu}(s,x) \right|_{s=0} + \dots = \left[ 1 + t \frac{d}{ds} + \frac{t^2}{2!} \left( \frac{d}{ds} \right)^2 + \dots \right] \left. \sigma^{\mu}(s,x) \right|_{s=0} = \\
+= \exp{ \left( t \frac{d}{ds} \right) } \left. \sigma^{\mu}(s,x) \right|_{s =0 } \quad \quad \, (5.44) 
+\end{gathered}
+\]
+
+Properties
+\begin{enumerate}
+\item[(i)] $\sigma(0,x) = x = \exp{ ( 0X) } x $ \quad \quad \quad \, (5.45a) 
+\item[(ii)] $\frac{ d\sigma (t,x) }{ dt} = X\exp{(tX)}x = \frac{d}{dt} [ \exp{ (tX) } x ]$ \quad \quad \quad \, (5.45b)
+\item[(iii)] $\sigma(t,\sigma(s,x) ) = \sigma(t, \exp{(sX)} x) = \exp{ (tX)} \exp{(sX) }x = \exp{ [ (t+s) X ] }x = \sigma(t+s,x)$
+\end{enumerate}
+
+\subsubsection{ Lie derivatives } 
+
+Let $\sigma(t,x)$, $\tau(t,x)$ be 2 flows generated by vector fields $X,Y$ 
+\[
+\begin{aligned}
+  & \frac{ d\sigma^{\mu}(s,x) }{ ds} = X^{\mu}(\sigma(s,x)) \quad \quad \quad \, (5.46a) \\ 
+  & \frac{d\tau^{\mu}(t,x) }{ dt} = Y^{\mu}(\tau(t,x) ) \quad \quad \quad \, (5.46b)
+\end{aligned}
+\]
+
+evaluate change of $Y$ along $\sigma(s,x)$  \\
+Compare $Y$ at $x$ and at $x' = \sigma_{\epsilon}(x)$ nearby \\
+But components of $Y$ at 2 pts. belong to different tangent spaces $T_pM, T_{\sigma_{\epsilon}(x) } M$ \\
+map $\left. Y \right|_{\sigma_{\epsilon}(x) }$ to $T_xM$ by 
+\[
+( \sigma_{-\epsilon })_* : T_{\sigma_{ \epsilon(x)} } M \to T_x M
+\]
+Lie derivative of vector field $Y$ along flow $\sigma$ of $X$
+
+\begin{equation}
+  \mathcal{L}_x Y = \lim_{\epsilon \to 0 } \frac{1}{ \epsilon } \left[  ( \sigma_{-\epsilon })_* \left. Y \right|_{\sigma_{\epsilon(x)} } - \left. Y \right|_x \right] \quad \quad \quad \, (5.47)
+\end{equation}
+
+
+\[
+\begin{gathered}
+  (\sigma_{-\epsilon})_* : T_{\sigma_{ \epsilon }(x) } M \to T_x M \\ 
+  ((\sigma_{-\epsilon})_* Y ) [g] = Y [ g(\sigma_{-\epsilon} ) ]
+\end{gathered}
+\]
+
+\exercisehead{5.8 }
+
+\[
+\begin{gathered}
+  \begin{gathered}
+    (\sigma_{\epsilon})_* : T_{ \sigma_{-\epsilon }(x) } M \to T_x M \\
+\mathcal{L}_X Y =     \lim_{ \epsilon \to 0 } \frac{1}{ \epsilon } \left[ \left. Y \right|_x -  \left. (\sigma_{\epsilon })_* Y \right|_{ \sigma_{ - \epsilon}(x) } \right]
+\end{gathered} \\
+    \begin{gathered}
+    (\sigma_{\epsilon})_* : T_{ x } M \to T_{\sigma_{\epsilon}(x)} M \\
+ \mathcal{L}_X Y =    \lim_{ \epsilon \to 0 } \frac{1}{ \epsilon } \left[ \left. Y \right|_{\sigma_{\epsilon}(x)} -  \left. (\sigma_{\epsilon })_* Y \right|_{ x } \right]
+\end{gathered} 
+\end{gathered}
+\]
+
+
+Let $(U, \varphi)$ be a chart with coordinates $x$ \\
+Let $ \begin{aligned} & \quad \\ 
+  & X = X^{\mu} \frac{ \partial }{ \partial x^{\mu } } \\
+  & Y = Y^{\mu} \frac{ \partial }{ \partial x^{\mu} } \end{aligned}$   
+\[
+\begin{gathered}
+  \sigma_{ \epsilon}(x) = x^{\mu} +  \epsilon X^{\mu}(x) \\ 
+  \left. Y \right|_{ \sigma_{\epsilon }(x) } = \left. Y^{\mu}(x^{\nu} + \epsilon X^{\nu}(x)) \right|_{x + \epsilon X} \simeq \left. \left[ Y^{\mu}(x) + \epsilon X^{\nu}(x) \partial_{\nu} Y^{\mu }(x) \right] e_{\mu} \right|_{x + \epsilon X}
+\end{gathered}
+\]
+$\lbrace e_{\mu} = \frac{ \partial }{ \partial x^{\mu} } \rbrace$ is the coordinate basis.  
+
+Consider Fig. 5.12.  Note the need to ``pullback'' vector $Y$ to $x$.  
+
+
+$(\sigma_{-\epsilon})_*$ at $\sigma_{\epsilon}(x)$ to $x$.  
+
+Recall that 
+\[
+\begin{aligned}
+  & \sigma_{-\epsilon} : M \to M \\ 
+  & (\sigma_{- \epsilon})_* : T_{ \sigma_{\epsilon}(x) } M \to T_x M \\ 
+  & ((\sigma_{-\epsilon})_* Y)[g] = Y[g(\sigma_{-\epsilon }) ] 
+\end{aligned}
+\]
+
+\[
+\begin{gathered}
+  \left. Y \right|_{ \sigma_{\epsilon}(x) } = \left. Y^{\mu} (x^{\nu} + \epsilon X^{\nu}(x) ) \frac{ \partial }{ \partial x^{\mu} } \right|_{x + \epsilon X} \simeq \left. \left[ Y^{\mu}(x) + \epsilon X^{\nu} \partial_{\nu} Y^{\mu}(x) \right] \frac{ \partial }{ \partial x^{\mu} } \right|_{x + \epsilon X } \\ 
+    \text{ Now } \left. (\sigma_{-\epsilon})_* Y \right|_{ \sigma_{\epsilon}(x) } = W^{\alpha} \frac{ \partial }{ \partial x^{\alpha }} = Y^{\mu} \frac{ \partial }{ \partial x^{\mu}} \sigma_{-\epsilon}^{\alpha} \frac{ \partial }{ \partial x^{\alpha }} \\
+    \Longrightarrow W^{\alpha} =\left.  Y^{\mu}  \right|_{ \sigma_{\epsilon}(x) } \frac{ \partial }{ \partial x^{\mu }} \sigma^{\alpha}_{-\epsilon } = \\
+    = (Y^{\mu}(x) + \epsilon X^{\nu} \partial_{\nu} Y^{\mu}(x)) \frac{ \partial }{ \partial x^{\mu} } (x^{\alpha}  - \epsilon X^{\alpha} ) = [ Y^{\mu}(x) + \epsilon X^{\nu} \partial_{\nu} Y^{\mu}(x)] ( \delta_{\mu}^{ \, \, \alpha} - \epsilon \partial_{\mu} X^{\alpha} ) = \\
+    = Y^{\alpha}(x) + \epsilon X^{\nu} \partial_{\nu} Y^{\alpha}(x) - \epsilon Y^{\mu} \partial_{\mu} X^{\alpha} + \mathcal{O}(\epsilon^2 ) 
+\end{gathered} 
+\]
+So the first order term is 
+\[
+\epsilon (X^{\nu} \partial_{\nu} Y^{ \alpha}(x) - Y^{\nu} \partial_{\nu} X^{\alpha} )
+\]
+
+\exercisehead{5.9}
+
+Given $\begin{aligned}
+  & \quad \\ 
+  & X = X^{\mu} \frac{ \partial }{ \partial x^{\mu }} \\ 
+  & Y = Y^{\mu} \frac{ \partial }{ \partial x^{\mu }}\end{aligned}$ \\
+
+Lie bracket $[X,Y]$.  $[X,Y]f = X[Y[f]] - Y[X[f]]$.  
+
+\[
+\begin{gathered}
+  [X,Y] f = \left[ X^{\nu} \frac{ \partial Y^{\mu}}{ \partial x^{\nu }} - Y^{\nu} \frac{ \partial X^{\mu} }{ \partial x^{\nu }} \right] \frac{ \partial f }{ \partial x^{\mu }} \\ 
+  \Longrightarrow \boxed{ [X,Y] = \left[ X^{\mu} \frac{ \partial Y^{\nu }}{ \partial x^{\mu} } - Y^{\mu} \frac{ \partial X^{\nu }}{ \partial x^{\mu} } \right] \frac{ \partial }{ \partial x^{\nu }} }
+\end{gathered}
+\]
+This is the \textbf{local form of the Lie bracket} 
+
+$\Longrightarrow \mathcal{L}_XY = [X,Y]$  (5.49b).  $[X,Y]$ indeed 1st.-order derivative and indeed a vector field.  
+
+\exercisehead{5.10}  
+\begin{enumerate}
+\item[(a)] bilinearity
+
+Want: $\begin{aligned}
+  & [X, c_1 Y_1 + c_2 Y_2 ] = c_1[X,Y_1] + c_2 [ X,Y_2 ] \\ 
+  & [c_1 X_1 + c_2 X_2, Y ] = c_1 [X_1, Y] + c_2 [ X_2, Y ] 
+  \end{aligned}$
+
+\[
+\begin{aligned}
+ [X, c_1 Y_1 + c_2 Y_2 ] & = X^{\mu} \frac{ \partial}{ \partial x^{\mu} } ( c_1 Y_1 + c_2 Y_2)^{\nu} - ( c_1 Y_1 + c_2 Y_2)^{\mu}  \frac{ \partial X^{\nu} }{ \partial x^{\mu} } = \\
+   & = c_1 \left( X^{\mu} \frac{ \partial Y_1^{\nu} }{ \partial x^{\mu}  } - Y_1^{\mu} \frac{ \partial X^{\nu }}{ \partial x^{\mu }} \right) + c_2 \left( X^{\mu} \frac{ \partial Y_2^{\nu} }{  \partial x^{\mu} } - Y_2^{\mu} \frac{ \partial X^{\nu }}{ \partial x^{\mu} } \right) = c_1 [ X,Y_1] + c_2[ X,Y_2]  \\
+   [c_1 X_1 + c_2 X_2, Y ] & = (c_1 X_1 + c_2 X_2)^{\mu} \frac{ \partial Y^{\nu}}{ \partial x^{\mu} } - Y^{\mu} \frac{ \partial }{ \partial x^{\mu} }( c_1 X_1 + c_2 X_2)^{\nu} = \\
+   & = c_1 \left( X_1^{\mu} \frac{ \partial Y^{\nu}}{ \partial x^{\mu} } - Y^{\mu} \frac{ \partial X_1^{\nu}}{ \partial x^{\mu }} \right) + c_2 \left( X_2^{\mu} \frac{ \partial Y^{\nu }}{ \partial x^{\mu }} - Y^{\mu} \frac{ \partial X_2^{\nu }}{ \partial x^{\mu}} \right) = c_1 [X_1, Y] + c_2 [ X_2, Y ] 
+\end{aligned}
+\]
+\item[(b)] \[
+[Y,X] = Y^{\mu} \frac{ \partial X^{\nu}}{ \partial x^{\mu} } - X^{\mu} \frac{ \partial Y^{\nu }}{ \partial x^{\mu }} = - \left( X^{\mu} \frac{ \partial Y^{\nu }}{ \partial x^{\mu} } - Y^{\mu} \frac{ \partial X^{\nu}}{ \partial x^{\mu }} \right) = - [ X,Y]
+\]
+\item[(c)] Want: 
+\[
+[[X,Y],Z] + [[Z,X],Y] + [[Y,Z], X] = 0 
+\]
+Now
+\[
+\begin{gathered}
+  [[X,Y],Z] \\
+  [X,Y]^{\mu} \frac{ \partial Z^{\nu}}{ \partial x^{\mu }} - Z^{\mu} \frac{ \partial}{ \partial x^{\mu}} [X,Y]^{\nu} = (X^a \partial_a Y^{\mu} - Y^a \partial_a X^{\mu} ) \partial_{\mu}Z^{\nu} - Z^{\mu} ( \partial_{\mu}X^a \partial_a  Y^{\nu} + X^a \partial^2_{\mu a} Y^{\nu} - \partial_{\mu} Y^a\partial_a X^{\nu} - Y^a \partial^2_{\mu a} X^{\nu} ) = \\
+  = X^a \partial_a Y^{\mu} \partial_{\mu} Z^{\nu} - Y^a \partial_a X^{\mu} \partial_{\mu} Z^{\nu} - Z^{\mu} \partial_{\mu} X^a \partial_a Y^{\nu} -Z^{\mu}X^a \partial^2_{\mu a} Y^{\nu} + Z^{\mu} \partial_{\mu} Y^a \partial_a X^{\nu} + Z^{\mu} Y^a \partial^2_{\mu a} X^{\nu} 
+\end{gathered}
+\]
+Likewise,
+\[
+\begin{gathered}
+%  \begin{gathered}
+    [[Z,X],Y]^{\nu}    = Z^a \partial_a X^{\mu} \partial_{\mu} Y^{\nu} - X^a \partial_a Z^{\mu} \partial_{\mu} Y^{\nu} - Y^{\mu} \partial_{\mu} Z^a \partial_a X^{\nu} - Y^{\mu} Z^a \partial^2_{\mu a} X^{\nu} + Y^{\mu} \partial_{\mu} X^a \partial_a Z^{\nu} + Y^{\mu} X^a \partial^2_{\mu a} Z^{\nu} \\
+%\end{gathered}
+    [[Y,Z],X]^{\nu}    = Y^a \partial_a Z^{\mu} \partial_{\mu} X^{\nu} - Z^a \partial_a Y^{\mu} \partial_{\mu} X^{\nu} - X^{\mu} \partial_{\mu} Y^a \partial_a Z^{\nu} - X^{\mu} Y^a \partial^2_{\mu a} Z^{\nu} + X^{\mu} \partial_{\mu} Z^a \partial_a Y^{\nu} + X^{\mu} Z^a \partial^2_{\mu a} Y^{\nu} 
+\end{gathered}
+\]
+All the 18 terms cancel.  
+
+\end{enumerate}
+
+
+
+
+
+
+\subsection{ Differential forms }
+
+symmetry operation on tensor \quad 
+
+$\omega \in \tau^0_{r,p}(M)$
+
+\begin{equation}
+P \omega(v_1 \dots v_r) \equiv \omega(v_{P(1)} \dots v_{P(r)} ) \quad \quad \quad (5.59)
+\end{equation}
+
+$v_i \in T_p M$, $P \in S_r$, symmetry group of order $r$
+
+\[
+\begin{gathered}
+  \omega(e_{\mu_1} \dots e_{\mu_r} ) = \omega_{\mu_1 \dots \mu_r} \\
+  P\omega(e_{\mu_1} \dots e_{\mu_r} ) = \omega_{ \mu_{P(1)} \dots \mu_{ P(r)}  }
+\end{gathered}
+\]
+
+symmetrizer $\mathcal{S}$, $\omega \in \tau_{r,p}^0(M)$
+
+\[
+S_{\omega} = \frac{1}{r!} \sum_{P \in S_r} P\omega \quad \quad \quad (5.60)
+\]
+
+anti-symmetrizer $\mathcal{A}$
+\[
+\mathcal{A} \omega = \frac{1}{r!} \sum_{ P \in S_r} \text{sgn}{(P)} P\omega
+\]
+
+
+
+
+\subsubsection{ Definitions}
+
+\begin{definition}[5.4] diff. form or $r$-form, totally antisymmetric tensor of type $(0,r)$ \\
+define wedge product $\wedge$ of $r$ \, 1-forms by the totally antisymm. tensor product
+\begin{equation}
+dx^{\mu_1} \wedge dx^{\mu_2} \wedge \dots \wedge dx^{\mu_r} = \sum_{P\in S_r} \text{sgn}{(P)} dx^{\mu} \quad \quad \quad (5.62) 
+\end{equation}
+\end{definition}
+
+
+
+
+% \subsubsection{ Definitions }
+
+%\begin{definition}[5.4] differential form of order $r$ or $r$-form is a totally antisymmetric tensor of type $(0,r)$
+%\end{definition}
+
+%define 
+
+
+
+%\begin{equation}
+%  dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r} = \sum_{ p \in S_r} \text{sgn}{(p)} dx^{\mu_{p(1)}} \wedge \dots \wedge dx^{\mu_{p(r)}}  \quad \quad \quad (5.62)
+%\end{equation}
+
+
+e.g.
+
+\[
+\begin{gathered}
+  dx^{\mu} \wedge dx^{\nu} = dx^{\mu} \otimes dx^{\nu} - dx^{\nu} \otimes dx^{\mu} \\ 
+  dx^{\lambda} \wedge dx^{\mu} \wedge dx^{\nu} = dx^{\lambda} dx^{\mu} dx^{\nu} + dx^{\nu} dx^{\lambda} dx^{\mu} + dx^{\mu} dx^{\nu} dx^{\lambda} - dx^{\lambda} dx^{\nu} dx^{\mu} - dx^{\nu} dx^{\mu} dx^{\lambda} - dx^{\mu} dx^{\lambda} dx^{\nu}
+\end{gathered}
+\]
+
+
+\begin{enumerate}
+  \item[(i)]
+  \item[(ii)] \[
+    \begin{gathered}
+      dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r} = \text{sgn}{ (P)} dx^{\mu_{P(1)} } \wedge \dots \wedge dx^{\mu_{ P(r)} } \\ 
+      \sum_{ Q \in S_r} \text{sgn}{ (Q)} dx^{\mu_{Q(1) } } dx^{\mu_{Q(2) } } \ldots dx^{\mu_{Q(r)}}  = \sum_{Q \in S_r} \text{sgn}{ (Q) } ( \text{sgn}(P))^2 dx^{\mu_{Q(P(1)) }} \dots dx^{\mu_{Q(P(r)) } } = \\
+       = ( \text{sgn}{ P } ) \sum_{Q \in  S_r } \text{sgn}{(Q)} \text{sgn}{ P } dx^{\mu_{Q(P(1)) }} \ldots dx^{ \mu_{Q(P(r)) } }
+\end{gathered}
+\]
+\end{enumerate}
+
+
+vector space of $r$-forms at $p\in M$ by $\Omega_p^r(M)$ \\
+set of $r$-forms (5.62) forms basis of $\Omega_p^r(M)$
+
+\[
+\omega \in \Omega_p^r(M)
+\]
+
+
+\begin{equation}
+  \omega = \frac{1}{r!} \omega_{\mu_1 \dots \mu_r} dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r} \quad \quad \quad (5.63)
+\end{equation}
+
+
+
+
+$\omega_{\mu_1 \dots \mu_r}$ totally antisymmetric, reflecting antisymmetry of basis
+
+$\binom{m}{r}$ choices of $(\mu_1 \dots \mu_r)$ out of $(1 \dots n)$ in (5.62)
+
+\[
+\text{dim}{ \Omega_p^r(M) } = \binom{m}{r}
+\]
+since $\binom{m}{r} = \binom{m}{m-r}$, $\Omega_p^r(M) \simeq \Omega_p^{m-r}(M)$
+
+Let $\begin{aligned} & \quad \\ & \omega \in \Omega_p^q(M)  \\ & \xi \in \Omega_p^r(M) \end{aligned}$
+
+action of $(q+r)$-form $\omega \wedge \xi $ on $q+r$ vectors 
+
+\begin{equation}
+  (\omega \wedge \xi )(v_1 \dots v_{q+r} ) = \frac{1}{q! r!} \sum_{ p \in S_{q+r}} \text{sgn}{(P)} \omega( v_{p(1)} \dots v_{p(q)} ) \xi(v_{p(q+1)} \dots v_{ p(q+r) } ) \quad \quad \quad (5.65)
+\end{equation}
+
+with this product, define 
+\begin{equation}
+\Omega_p^*(M) \equiv \bigoplus_{k=0}^m \Omega_p^k(M) \quad \quad \quad (5.66)
+\end{equation}
+
+\exercisehead{5.13} \[
+\begin{aligned}
+  & x = r\cos{\theta} \\ 
+  & y = r\sin{\theta}
+\end{aligned} \quad \quad \quad \begin{aligned} & r = \sqrt{ x^2 + y^2 } \\ & \theta = \arctan{ \left( \frac{y}{x} \right) } \end{aligned}
+\]
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    & \partial_r x = c_{\theta} \\ 
+    & \partial_r y = s_{\theta} 
+  \end{aligned} \quad \quad \begin{aligned}
+    & \partial_{\theta} x = -rs_{\theta} \\ 
+    & \partial_{\theta} y = rc_{\theta}
+\end{aligned} \quad \quad \begin{aligned}
+    \partial_x r = \frac{x}{r} \quad \quad \partial_y r = \frac{y}{r} \\
+    \begin{aligned}
+      & \partial_x \theta = \frac{ \frac{-y}{x^2} }{ 1 + \frac{y^2}{x^2} } = \frac{-y}{ x^2 + y^2 } \\
+      & \partial_y \theta = \frac{x}{ x^2 + y^2 }
+\end{aligned}
+\end{aligned} \\
+\begin{aligned}
+  dx \wedge dy = (c_{\theta} dr + - rs_{\theta} d\theta ) \wedge (s_{\theta}dr + rc_{\theta} d\theta ) = rc_{\theta}^2 dr \wedge d\theta + rs_{\theta}^2 dr \wedge d\theta = rdr \wedge d\theta
+\end{aligned}
+\end{gathered}
+\]
+
+
+
+\exercisehead{5.14} 
+\[
+\xi \wedge \xi = (v_1 \wedge \dots \wedge v_q) \wedge (v_1 \wedge \dots \wedge v_q) = (-1)^q v_1 \wedge ( v_1 \wedge \dots \wedge v_q) \wedge ( v_2 \wedge \dots \wedge v_q) = (-1)^{q^2} \xi \wedge \xi = -\xi \wedge \xi \text{ if $q$ odd }
+\]
+
+\subsubsection{ Exterior derivatives }
+
+\begin{definition}[5.5] exterior derivatives 
+\[
+\begin{aligned}
+  & d_r : \Omega^r(M) \to \Omega^{r+1}(M) \\ 
+  & \omega = \frac{1}{r!} \omega_{ \mu_1 \dots \mu_r} dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r} \\  
+  & d_r \omega = \frac{1}{r!} \left( \frac{ \partial }{ \partial x^{\nu }} \omega_{\mu_1 \dots \mu_r} \right) dx^{\nu} \wedge dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r} \quad \quad \quad (5.68)
+\end{aligned}
+\]
+\end{definition}
+
+
+Example 5.10.  in 3-dim. 
+\[
+\begin{aligned}
+  & \omega_0 = f(x,y,z) \\ 
+  & \omega_1 = \omega_x(x,y,z) dx + \omega_y(x,y,z)dy + \omega_z(x,y,z) dz \\ 
+  & \omega_2 = \omega_{xy}(x,y,z) dx \wedge dy + \omega_{yz}(x,y,z) dy \wedge dz + \omega_{zx}(x,y,z) dz \wedge dx \\ 
+  & \omega_3 = \omega_{xyz}(x,y,z) dx \wedge dy \wedge dz
+\end{aligned}
+\]
+
+Recall
+
+\[
+\omega = \frac{1}{r!} \omega_{ \mu_1 \dots \mu_r} dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r}
+\]
+
+e.g.
+
+\[
+\omega_{12} dx^1 \wedge dx^2 + \omega_{13} dx^1 \wedge dx^3 + \omega_{21} dx^2 \wedge dx^1 + \dots = (\omega_{12} - \omega_{21} ) dx^1 \wedge dx^2 + \dots 
+\]
+$\omega_{\mu_1 \dots \mu_r}$ itself must be antisymmetrized. 
+
+
+\[
+d\omega = \frac{1}{r!} \left( \frac{ \partial \omega_{ \mu_1 \dots \mu_r} }{ \partial x^{\nu} } \right) dx^{\nu} \wedge dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r}
+\]
+\begin{enumerate}
+\item[(i)]
+\[
+d\omega_0 = \frac{ \partial f}{ \partial x} dx + \frac{ \partial f}{ \partial y} dy + \frac{ \partial f}{ \partial z} dz
+\]
+\item[(ii)]
+\[
+\begin{aligned}
+  d\omega_1 & = \frac{1}{1!} \left( \frac{ \partial \omega_x}{ \partial y} dy \wedge dx  + \frac{ \partial \omega_x}{ \partial z} dz \wedge dx + \frac{ \partial \omega_y}{ \partial x} dx \wedge dy + \frac{ \partial \omega_y}{ \partial z} dz \wedge dy + \frac{ \partial \omega_z}{ \partial x} dx \wedge dz + \frac{ \partial \omega_z}{ \partial y} dy \wedge dz \right)  =  \\
+  & = \left( \frac{ \partial \omega_y }{ \partial x} - \frac{ \partial \omega_x}{ \partial y} \right) dx \wedge dy + \left( \frac{ \partial \omega_z}{ \partial y} - \frac{ \partial \omega_y}{ \partial z} \right) dy \wedge dz + \left( \frac{ \partial \omega_x}{ \partial z} - \frac{ \partial \omega_z}{ \partial x} \right) dz \wedge dx 
+\end{aligned}
+\]
+\item[(iii)]
+\[
+\begin{aligned}
+  d\omega_2 & = \frac{1}{2!} \left( \frac{ \partial \omega_{xy} }{ \partial z} dz \wedge dx \wedge dy + \frac{ \partial \omega_{yx} }{ \partial z} dz \wedge dy \wedge dx + \frac{ \partial \omega_{yz} }{ \partial x} dx \wedge dy \wedge dz + \frac{ \partial \omega_{zy} }{ \partial x} dx \wedge dz \wedge dy + \dots \right) = \\ 
+& = \left( \frac{ \partial \omega_{yz} }{ \partial x} + \frac{ \partial \omega_{zx} }{ \partial y} + \frac{ \partial \omega_{xy} }{ \partial z} \right) dx \wedge dy \wedge dz
+\end{aligned}
+\]
+\end{enumerate}
+
+\exercisehead{5.15} 20130929
+
+$\begin{aligned} & \quad \\ 
+  & \xi \in \Omega^q(M) \\
+  & \omega \in \Omega^r(M) \end{aligned}$ \quad \quad $\xi \wedge \omega = \xi_{i_1 \dots i_q} \omega_{j_1 \dots j_r} dx^{i_1} \wedge \dots \wedge dx^{i_q} \wedge dx^{j_1} \wedge \dots \wedge dx^{j_r}$
+
+
+\[
+\begin{gathered}
+  d(\xi \wedge \omega) = \frac{1}{ (q+r)!} \frac{ \partial ( \xi_{i_1 \dots i_q} \omega_{j_1 \dots j_r} )}{ \partial x^{\nu} }dx^{\nu} \wedge dx^{i_1} \wedge \dots \wedge dx^{i_q} \wedge dx^{j_1} \wedge \dots \wedge dx^{j_r} = \\ 
+    = \frac{1}{(q+r)!} ( \partial_{\nu} \xi_{i_1 \dots i_q} \omega_{j_1 \dots j_r} + \xi_{i_1 \dots i_q} \partial_{\nu} \omega_{j_1 \dots j_r} ) dx^{\nu} \wedge dx^{i_1} \wedge \dots = \\
+    = \frac{1}{ (q+r)!} \lbrace \partial_{\nu} \xi_{i_1 \dots i_q} \omega_{j_1 \dots j_r} dx^{\nu} \wedge dx^{i_1} \wedge \dots \wedge dx^{i_q} \wedge dx^{j_1} \wedge \dots \wedge dx^{j_r} + \\
+    + \xi_{i_1 \dots i_q} \partial_{\nu} \omega_{j_1 \dots j_r} dx^{i_1} \wedge \dots \wedge dx^{i_q} \wedge dx^{\nu} \wedge dx^{j_1} \wedge \dots \wedge dx^{j_r} (-1)^q \rbrace 
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+  d\xi \wedge \omega + (-1)^q \xi \wedge d\omega = \\
+  = \frac{1}{q!} \frac{ \partial \xi_{i_1 \dots i_q} }{ \partial x^{\nu} } dx^{\nu} \wedge dx^{i_1} \wedge \dots \wedge dx^{i_q} \wedge \omega_{j_1 \dots j_r} dx^{j_1} \wedge \dots \wedge dx^{j_r} 
+\end{gathered}
+\]
+
+decomposable forms 
+\[
+\begin{aligned}
+  & \xi = f dx_{i_1} \wedge \dots \wedge dx_{i_q} = fdx_I \\ 
+  & \omega = gdx_{j_1} \wedge \dots \wedge dx_{j_q} = gdx_I
+\end{aligned}
+\]
+\[
+\begin{gathered}
+  d(\xi \wedge \omega) = d(fdx_I \wedge g dx_J) = d(fg) \wedge dx_2 \wedge dx_J = (fdg = gdf ) \wedge dx_2 \wedge dx_J = \\
+  = df \wedge dx_I \wedge g dx_J + (-1)^q fdx_I \wedge dg \wedge dx_J = d\xi \wedge \omega + \xi \wedge d\omega
+\end{gathered}
+\]
+
+$\begin{aligned}
+  & X = X^{\mu} \partial_{x^{\mu }} \in \mathcal{X}{(M)} \\ 
+  & Y = Y^{\nu} \partial_{x^{\nu }}\end{aligned}$ \quad \quad \quad $\omega = \omega_{\mu} dx^{\mu} \in \Omega^1(M)$
+
+\[
+\begin{gathered}
+  X[\omega(Y)] - Y[\omega(X)] - \omega([X,Y]) = \frac{ \partial \omega_{\mu} }{ \partial x^{\nu }} ( X^{\nu} Y^{\mu} - X^{\mu} Y^{\nu} ) \\ 
+  [X,Y] = [X^{\mu} \partial_{x^{\mu}} Y^{\nu} - Y^{\mu} \partial_{x^{\mu}} X^{\nu} ] \partial_{x^{\nu} } \\ 
+ \omega([X,Y]) = \omega_{\nu} ( X^{\mu} \partial_{\mu} Y^{\nu} - Y^{\mu} \partial_{\mu} X^{\nu} ) \\
+ \begin{aligned}
+   & X[\omega(Y)] = X^{\mu} \partial_{\mu} ( \omega_{\nu} Y^{\nu} ) = X^{\mu} \partial_{\mu} \omega_{\nu} Y^{\nu} + X^{\mu} \omega_{\nu} \partial_{\mu} Y^{\nu} \\ 
+   & Y[\omega(X)] = Y^{\mu} \partial_{\mu} (\omega_{\nu} X^{\nu} ) = Y^{\mu} \partial_{\mu} \omega_{\nu} X^{\nu} + Y^{\mu} \omega_{\nu} \partial_{\mu} X^{\nu}
+\end{aligned} \\
+\Longrightarrow X[\omega(Y)] - Y[\omega(X) ] - \omega([X,Y]) = X^{\mu} \partial_{\mu} \omega_{\nu} Y^{\nu} - Y^{\mu} \partial_{\mu} \omega_{\nu} X^{\nu} = \partial_{\mu} \omega_{\nu} (X^{\mu} Y^{\nu}  - Y^{\mu} X^{\nu }) 
+\end{gathered}
+\]
+
+Suppose 
+\[
+d\omega(X_1 \dots X_{p+1}) = \sum_{i=1}^r (-1)^{i+1} X_i \omega(X_1 \dots \widehat{X}_i \dots X_{i+1}) + \sum_{ i < j } (-1)^{i+1} \omega([X_i, X_j], X_1 \dots \widehat{X}_i \dots \widehat{X}_j \dots X_{i+1}) \quad \quad \quad (5.71)
+\]
+
+for $r$-form $\omega \in \Omega^r(M)$
+
+\[
+\begin{gathered}
+  \omega = \frac{1}{r!} \omega_{\mu_1 \dots \mu_r} dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r} \\ 
+  d\omega = \frac{1}{r!} \left( \frac{ \partial}{ \partial x^{\nu} }\omega_{\mu_1 \dots \mu_r}  \right) dx^{\nu} \wedge dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r}
+\end{gathered}
+\]
+
+\subsubsection{ Interior product and Lie derivative of forms }
+
+interior product $i_X : \Omega^r(M) \to \Omega^{r-1}(M)$ where $X \in \chi(M)$ \\
+
+Let $\omega \in \Omega^r(M)$, define
+
+\begin{equation}
+  i_X \omega(X_1 \dots X_{r-1}) \equiv \omega(X,X_1 \dots X_{r-1} ) \quad \quad \quad \, (5.78)
+\end{equation}
+
+with
+\[
+\begin{aligned}
+  & X = X^{\mu} \frac{ \partial}{ \partial x^{ \mu} } \\ 
+  &  \omega = \frac{1}{r!} \omega_{\mu_1 \dots \mu_r} dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r}
+\end{aligned}
+\]
+
+\begin{equation}
+  i_X \omega = \frac{1}{ (r-1)!} X^{\nu} \omega_{\nu \mu_2 \dots \mu_r} dx^{\mu_2} \wedge \dots \wedge dx^{\mu_r} = \frac{1}{r!} \sum_{s=1}^r X^{\mu_s} \omega_{ \mu_1 \dots \mu_s \dots \mu_r }(-1)^{s-1} dx^{\mu_1} \wedge \dots \wedge \widehat{ dx^{\mu_s} } \wedge \dots \wedge dx^{\mu_r} \quad \quad \quad \, (5.79)
+\end{equation}
+
+cf. wikipedia
+
+$i_X: \Omega^p(M) \to \Omega^{p-1}(M)$ \quad \quad \, $i_X$ a map that sends a $p$-form $\omega$ to the $(p-1)$ form $i_X \omega$
+
+\[
+(i_X \omega)(X_1 \dots X_{p-1}) = \omega(X,X_1 \dots X_{p-1} )
+\]
+
+$\alpha$ 1-form $i_X\alpha = \alpha(X)$
+
+
+for $\begin{aligned} & \quad \\ 
+  & \beta \in \Omega^p(M) \\ 
+  & \gamma \in \Omega^q(M) \end{aligned}$
+
+\[
+i_X(\beta \wedge \gamma) = (i_X \beta) \wedge \gamma + (-1)^p \beta \wedge (i_X \gamma )
+\]
+
+\[
+i_X \omega = \frac{1}{ (p-1)!} X^i \omega_{ii_2 \dots i_p} dx^{i_2} \wedge \dots \wedge dx^{i_p} = \frac{1}{ p!} \sum_{s=1}^p X^{i_s} \omega_{ i_1 \dots i_s \dots i_p }(-1)^{s-1} dx^{i_1} \wedge \dots \wedge \widehat{dx^{i_s}} \wedge \dots \wedge dx^{i_r}
+\]
+
+\[
+\begin{aligned}
+  & i_{\partial_x}(dx \wedge dy) = \frac{1}{ (2-1)!} dy = dy \\ 
+  & i_{\partial_x}(dy \wedge dz) = 0 \\  
+  & i_{\partial_x}( dz \wedge dx) = \delta^i_{ \, \, 1 } \epsilon_{31} dx^3 = -dz
+\end{aligned}
+\]
+
+
+%%%%%%%% interior product on 1-form
+
+Let $\omega$ 1-form.  $i_X \omega = \omega(X)$
+
+\[
+\begin{gathered}
+  (di_X + i_X d)\omega = d(X^{\mu} \omega_{\mu} ) + i_X [ \frac{1}{2} (\partial_{\mu} \omega_{\nu} - \partial_{\nu} \omega_{\mu} ) dx^{\mu} \wedge dx^{\nu} ] = \\
+  = (\omega_{\mu} \partial_{\nu} X^{\mu} + X^{\mu} \partial_{\nu} \omega_{\mu} ) dx^{\nu} + \frac{1}{2} ( X^{\mu} \partial_{\mu} \omega_{\nu} dx^{\nu} - X^{\nu} \partial_{\nu} \omega_{\mu} dx^{\mu} )
+\end{gathered}
+\]
+using, recall,
+\[
+i_X \omega = \frac{1}{ (p-1)!} X^i \omega_{i i_2 \dots i_p } dx^{i_2} \wedge \dots \wedge dx^{i_p}
+\]
+
+Recall (5.55): $\mathcal{L}_X\omega = (X^{\nu} \partial_{\nu} \omega_{\mu} + \partial_{\mu} X^{\nu} \omega_{\nu} ) dx^{\mu}$
+
+\begin{equation}
+  \mathcal{L}_X \omega = (di_X + i_X d) \omega \quad \quad \quad \, (5.80)
+\end{equation}
+
+for $r$-form, $\omega = \frac{1}{r!} \omega_{\mu_1 \dots \mu_r} dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r}$
+
+\begin{equation}
+  \mathcal{L}_X\omega = \lim_{ \epsilon \to 0} \frac{1}{\epsilon} ( (\sigma_{\epsilon})^* \left. \omega \right|_{ \sigma_{\epsilon}(X) } - \left. \omega  \right|_X ) = X^{\nu} \frac{1}{r!} \partial_{\nu} \omega_{ \mu_1 \dots \mu_r} dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r} + \sum_{s=1}^r \partial_{\mu_s} X^{\nu} \frac{1}{r!} \omega_{ \mu_1 \dots (s \to \nu ) \dots \mu_r} dx^{\mu_1} \wedge \dots \wedge dx^{\mu_r} \quad \quad \, (5.81)
+\end{equation}
+
+
+
+
+
+
+
+
+%%%%%%% Example 5.12 % Hamiltonian phase space
+
+Ex.5.12.  $(q^{\mu}, p_{\mu})$ tangent bundle!!!   \\
+symplectic 2 form 
+\begin{equation}
+  \omega = dp_{\mu} \wedge dq^{\mu} \quad \quad \quad \, (5.88)
+\end{equation}
+
+
+1-form $\theta = q^{\mu} dp_{\mu}$ \quad \quad \, or (???) $\theta = p_{\mu} dq^{\mu}$
+
+\[
+\omega = d\theta
+\]
+Given $f(q,p)$ in phase space
+
+define Hamiltonian vector field 
+\[
+X_f = \frac{ \partial f}{ \partial p_{\mu}} \frac{ \partial }{ \partial q^{\mu} } - \frac{ \partial f}{ \partial q^{\mu} } \frac{ \partial }{ \partial p_{\mu} } \quad \quad \, (5.91)
+\]
+
+\[
+i_{X_f} \omega = \frac{ - \partial f}{ \partial p_{\mu}} dp_{\mu} - \frac{ \partial f}{ \partial q^{\mu} } dq^{\mu} = -df
+\]
+\[
+i_X \omega = \frac{1}{ (p-1)!} X^i \omega_{ ii_2 \dots i_p} dx^{i_2} \wedge \dots \wedge dx^{i_p}
+\]
+
+Consider vector field generated by Hamiltonian
+
+\begin{equation}
+  X_H = \frac{ \partial H }{ \partial p_{\mu}} \frac{ \partial }{ \partial q^{\mu} } - \frac{ \partial H}{ \partial q^{\mu} } \frac{ \partial }{ \partial p_{\mu} } \quad \quad \, (5.92)
+\end{equation}
+
+Hamilton's eqns. of motion.
+\[
+\begin{aligned}
+  & \dot{q}^{\mu} = \frac{ \partial H}{ \partial p_{\mu} } \\
+  & \dot{p}_{\mu} = \frac{ - \partial H}{ \partial q^{\mu }} 
+\end{aligned} \quad \quad \, (5.93) \quad \quad \text{(Hamilton's eqn. of motion)}
+\]
+
+\begin{equation}
+X_H = \dot{q}^{\mu} \frac{ \partial }{ \partial q^{\mu} } + \dot{p}_{\mu} \frac{ \partial }{ \partial p_{\mu} } = \frac{d}{dt} \quad \quad \quad (5.94)
+\end{equation}
+
+symplectic 2-form $\omega$ left-invariant along flow generated by $X_H$
+
+\[
+\mathcal{L}_{X_H}\omega = d(i_{X_H} \omega ) + i_{X_H}(d\omega) = d(i_{X_H} \omega ) = - d^2 H = 0 
+\]
+
+used $(di_X + i_X d) \omega = \mathcal{L}_X \omega \quad \quad (5.82)$ 
+
+Conversely, if $X$ satisfies $\mathcal{L}_X \omega=0$, $\exists \, $ Hamiltonian $H$ s.t. Hamilton's eqn. of motion is satisfied along the flow generated by $X$
+
+from $\mathcal{L}_X \omega = d(i_X \omega ) = 0$ and hence by Poincar\'{e}'s lemma, $\exists \,  H(q,p)$ s.t. 
+\[
+i_X \omega = -dH
+\]
+
+
+\subsection{ Integration of differential forms }
+
+\subsubsection{ Orientation }
+
+integration of differential form over manifold $M$ defined only when $M$ is ``orientable''
+
+Let $M$ connected $m$-dim. differential manifold \\
+$\forall \, p \in M$, $T_pM$ spanned by basis $\lbrace \frac{ \partial }{ \partial x^{\mu} } \rbrace$, $x^{\mu}$ local coordinate on chart $U_i \ni p$ \\
+Let $U_j$ another chart s.t. $U_i \cap U_j \neq \emptyset$ with local cordinates $y^{\alpha}$. \\
+If $p \in U_i \cap U_j$, $T_pM$ spanned by either $\lbrace e_{\mu} \rbrace = \lbrace \frac{ \partial }{ \partial x^{\mu} }$, or $\lbrace \widetilde{e}_{\alpha} \rbrace = \lbrace \frac{ \partial }{ \partial y^{\alpha} } \rbrace$
+\begin{equation}
+  \frac{ \partial }{ \partial y^{\alpha} } = \frac{ \partial x^{\mu} }{ \partial y^{\alpha}} \frac{ \partial }{ \partial x^{\mu} } \quad \quad \, (5.97)
+\end{equation}
+
+If $J = \text{det}{ \left( \frac{ \partial x^{\mu} }{ \partial y^{\alpha}} \right)} >0$ on $U_i \cap U_j$, $\lbrace e_{\mu} \rbrace$, $\lbrace \widetilde{e}_{\alpha} \rbrace$ define same orientation on $U_i \cap U_j$
+
+If $J <0$, opposite orientation.  
+
+
+
+\begin{definition}[5.6]
+$M$ connected manifold covered by $\lbrace U_i \rbrace$ \\
+manifold $M$ orientable if $\forall \, $ overlapping charts $U_i, \, U_j$, $\exists \, $ local coordinates $\begin{aligned} & \quad \\
+  & \lbrace x^{\mu} \rbrace \text{ for } U_i \\ 
+  & \lbrace y^{\alpha} \rbrace \text{ for } U_j \end{aligned}$ s.t. $J = \text{det}{ \left( \frac{ \partial x^{\mu} }{ \partial y^{\alpha}} \right) } > 0$
+\end{definition}
+
+If $M$ nonorientable, $J$ can't be positive in all interactions of charts.  
+
+If $m$-dim. $M$ orientable, $\exists \, m$-form $\omega$ s.t. $\omega\neq 0$ \\
+This $m$-form $\omega$ is volume element \\
+2 vol. elements $\omega, \omega'$ equivalent if $\exists \, $ strictly positive $h \in \mathcal{F}(M)$ s.t. $\omega = h\omega'$ \\
+take $m$-form
+\begin{equation}
+  \omega = h(p) dx^1 \wedge \dots \wedge dx^m \quad \quad \quad \, (5.98)
+\end{equation}
+with positive-definite $h(p)$ on chart $(U,\varphi)$, $x = \varphi(p)$
+
+If $M$ orientable, extend $\omega$ throughout $M$ s.t. component $h$ positive definite on chart $U_i$ \\
+If $M$ orientable, $\omega$ vol. element. 
+
+Let $p\in U_i \cap U_j \neq \emptyset$, $\begin{aligned} & \quad \\
+  & x^{\mu} \text{ coordinates of $U_i$ } \\ 
+& y^{\alpha} \text{ coordinates of $U_j$ } \end{aligned}$
+
+\[
+\begin{gathered}
+  \omega = h(p) \frac{ \partial x^1}{ \partial y^{\mu_1} } dy^{\mu_1} \wedge \dots \wedge \frac{ \partial x^m}{ \partial y^{\mu_m} }dy^{\mu_m} = h(p) \text{det}{ \left( \frac{ \partial x^{\mu} }{ \partial y^{\nu} } \right) } dy^1 \wedge \dots \wedge dy^m \\
+ \text{det}{ \left( \frac{ \partial x^i }{ \partial y^j } \right) } = \sum_{ \sigma \in S_n} \text{sgn}{ (\sigma)} \frac{ \partial x^1}{ \partial y^{\sigma_1} } \dots \frac{ \partial x^m}{ \partial y^{\sigma_m}} = \sum^m_{ i_1\dots i_m = 1} \epsilon_{i_1 \dots i_m} \frac{ \partial x^1}{ \partial y^{i_1} } \dots \frac{ \partial x^m}{ \partial y^{i_m} } = \epsilon_{i_1 \dots i_m } \frac{ \partial x^1}{ \partial y^{i_1} } \dots \frac{ \partial x^m}{ \partial y^{i_m}} \\
+\frac{ \partial x^1}{ \partial y^{i_1}} \dots \frac{ \partial x^m}{ \partial y^{i_m} } dy^{i_1} \wedge \dots \wedge dy^{i_m} = \frac{ \partial x^1}{ \partial y^{i_1}} \dots \frac{ \partial x^m}{ \partial y^{i_m}} \epsilon^{i_1 \dots i_m} dy^1 \wedge \dots \wedge dy^{i_m} = \text{det}{ \left( \frac{ \partial x^i}{ \partial y^j} \right) } dy^1 \wedge \dots \wedge dy^{i_m}
+\end{gathered}
+\]
+
+
+
+
+\subsubsection{ Integration of forms }
+
+integration of function $f:M \to \mathbb{R}$ over oriented $M$ \\
+take vol. element $\omega$ \\
+in coordinate neighborhood $U_i$, \, $x=\varphi(p)$, $p\in U_i$
+
+\begin{equation}
+  \int_{U_i} f\omega \equiv \int_{\varphi{ (U_i)} } f(\varphi_i^{-1}(x)) h(\varphi_i^{-1}(x)) dx^1 \dots dx^m \quad \quad \, (5.100)
+\end{equation}
+
+\begin{definition}[5.7]
+  open covering $\lbrace U_i \rbrace$ of $M$ s.t. $\forall \, p \in M$, $p$ covered by a finite number of $U_i$.  $M$ paracompact.  
+\end{definition}
+
+If diff. $\epsilon_i(p)$ s.t. \begin{enumerate}
+\item[(i)] $0\leq \epsilon_i(p) \leq 1$ 
+\item[(ii)] $\epsilon_i(p) =0 $ if $p \notin U_i$ 
+\item[(iii)] $\epsilon_1(p) + \epsilon_2(p) + \dots = 1$ \quad \, $\forall p \in M$
+\end{enumerate}
+
+$\lbrace \epsilon(p) \rbrace$ partition of unity subordinate to covering $\lbrace U_i \rbrace$
+
+from (iii), 
+\begin{equation}
+  f(p) = \sum_i f(p) \epsilon_i(p) = \sum_i f_i(p) \quad \quad \quad \, (5.101)
+\end{equation}
+
+$f_i(p) \equiv f(p) \epsilon_i(p)$, \, $f_i(p) =0$ \, $\forall \, p \notin U_i$
+
+ Hence, $\forall \, p \in M$, paracompactness ensures in (5.101),  $f_i(p) < \infty  $, finite, in sum $\sum_i$
+
+define
+\begin{equation}
+\int_M f \omega \equiv \sum_i \int_{U_i} f_i \omega \quad \quad \quad \, (5.102)
+\end{equation}
+
+Although a different atlas $\lbrace (V_i, \psi_i)\rbrace$ gives different coordinates and different partition of unity, integral defined by (5.102) same.  
+
+Ex. 5.13. $S^1$.  $\begin{aligned} & \quad \\ & U_1 = S^1 - \lbrace (1,0) \rbrace \\ & U_2 = S^1 - \lbrace (-1,0) \rbrace \end{aligned}$ \quad \quad \, $\begin{aligned} & \quad \\ & \epsilon_1(\theta) = \sin^2{ \left( \frac{ \theta}{2} \right) } \\ \epsilon_2(\theta) = \cos^2{ \left( \frac{\theta}{2} \right) } \end{aligned}$ \quad \quad \, $\epsilon_1 + \epsilon_2 = 1 $ on $S^1$
+
+$f= \cos^2{\theta}$
+
+\[
+\begin{aligned}
+  & \int_0^{2\pi} d\theta \cos^2{\theta} = \pi \\ 
+  & \int_S^1 d\theta \cos^2{\theta} = \int_0^{2\pi } d\theta \sin^2{\frac{ \theta}{2} } \cos^2{\theta} + \int_{-\pi}^{\pi} d\theta \cos^2{  \frac{ \theta}{2} } \cos^2{\theta} = \frac{ \pi}{2} + \frac{\pi}{2} = \pi
+\end{aligned}
+\]
+
+\subsection{ Lie groups and Lie algebras }
+
+\subsubsection{ Lie groups } 
+
+Take $x,y,z \in \mathbb{R} -0$ s.t. $xy=z$ \quad \quad $xy=z$ \quad \, $\frac{ \partial z}{ \partial x } = y \neq 0$
+
+\exercisehead{5.19}\begin{enumerate}
+\item[(a)] $\mathbb{R}^+ = \lbrace x \in \mathbb{R} | x > 0 \rbrace$ \quad \quad \, $\frac{ \partial }{ \partial x} x^{-1} = -x^{-2} \neq 0 $ \, diff.
+
+\item[(b)] 
+\[
+\begin{gathered}
+\partial_x z  = \partial_x ( x+y)  = 1   \\
+\partial_x( x^{-1} ) = \partial_x (-x) = -1 
+\end{gathered}
+\] \quad diff. 
+\item[(c)] \[
+\begin{gathered}
+  (a,b) + (x,y) = (a+x, b+y) \quad \quad \, Dg =Dg(x) = \left[ \begin{matrix} a & \\ & b \end{matrix} \right] \\
+  (x,y)^{-1} = (-x, -y) \quad \quad \, D(x,y)^{-1} = \left[ \begin{matrix} -1 & \\ & -1 \end{matrix} \right]
+\end{gathered}
+\]
+\end{enumerate}
+
+Lorentz group 
+\[
+O(1,3) = \lbrace M \in GL(4,\mathbb{R}) | M \eta M^T = \eta \rbrace  \quad \quad \eta = \text{diag}{ ( -1, 1, 1, 1 ) }
+\]
+\exercisehead{5.20} 20130801
+\[
+\text{det}{ M \eta M^T } = (\text{det}{M})^2 \text{det}{\eta} = \text{det}{ \eta} \quad \quad \, (\text{det}{M} )^2 = 1 \quad \quad \, \text{det}{M} = \pm 1
+\]
+
+if $UMU^T = \text{diag}{ ( \lambda_1, \lambda_2, \lambda_3, \lambda_5) } = \lambda_1 \lambda_2 \lambda_3 \lambda_4 = (\text{det}{U})^2 \text{det}{M} = (\pm 1) (\text{det}{U} )^2$
+
+$(0,0)$ entry of $M\eta M^T$
+\[
+-m_0^2 + m_1^2 + m_2^2 + m_3^2 = 1 
+\]$M$ unbounded so $O(1,3)$ noncompact
+
+\begin{theorem}{5.2} Every closed subgroup $M$ of a Lie group $G$ is a Lie subgroup
+\end{theorem}
+
+e.g. $O(n)$, $SL(n,\mathbb{R})$, $SO(n)$ Lie subgroups of $GL(n,\mathbb{R})$
+
+$SL(n,\mathbb{R})$ closed subgroup, consider $ \begin{aligned} & f: GL(n, \mathbb{R}) \to \mathbb{R} \\ 
+  & A \mapsto \text{det}{A} \end{aligned}$
+
+$f$ cont. $\lbrace 1 \rbrace$ closed $f^{-1}(1) = SL(n,\mathbb{R})$ so $SL(n,\mathbb{R})$ closed.  By Thm. 5.2., $SL(n, \mathbb{R}) $ Lie subgroup. 
+
+Let $G$ Lie group. \\
+\phantom{Let } $H$ Lie subgroup.
+
+Define $g\sim g'$ if $\exists \, h \in H$ s.t. $g' = gh$ 
+\[
+[g] = \lbrace gh | h \in G \rbrace
+\]
+
+coset space $G /H$ is a manifold (not necessarily a Lie group)
+
+if $H$ normal subgroup of $G$, i.e. $ghg^{-1} \in H$, \, $\forall \, \begin{aligned} & \\ 
+  & g \in G \\
+  & h \in H \end{aligned}$, then $G/H$ Lie groupp \\
+
+take $[g], [g'] \in G/H$ \\
+Let $gh, g'h'$ representative of $[g], [g']$, resp. 
+
+\[
+\begin{gathered}
+  [g][g'] = gh g'h' = gg' h'' h' \in [gg'] \\ 
+  g^{-1} h \\
+  [g][g^{-1} ] = gh g^{-1} h' = gg^{-1} h'' h' = e h'' h' = h'' h' \in [e]
+\end{gathered}
+\]
+
+
+
+
+
+\subsubsection{ Lie algebras }
+
+left-translation  \\
+$L_g:G \to G$ \\
+$L_gh = gh = x^{ik}{(g)} x^{kj}{(h)} = x^{ij}{(gh)}$ \\
+$L_eh = eh = x^{ik}{ (e)} x^{kj}{ (h)} = \delta^{ik} x^{kj}{(h)} = x^{ij}{(h)} = 1h = h$ \\
+$L_ge = ge = x^{ik}{(g)}x^{kj}{(e)} = x^{ik}{(g)}  \delta^{kj} = x^{ik}{(g)} = g1 = g $ \\
+$L_{g*} : T_hG \to T_{gh}G$
+
+Pushforward?  \\
+Recall local coordinate form of pushforward 
+\[
+\begin{aligned}
+  & X \equiv X_h \in T_h G \\ 
+  & X_h = X_h^{ij} \left. \frac{ \partial }{ \partial x^{ij} } \right|_h 
+\end{aligned}
+\]
+\[
+L_{g*}X_h \equiv L_{g*} X = X_h^{kl} \frac{ \partial x^{ij}{ (gh) } }{ \partial x^{kl}{(h)} } \left. \frac{ \partial }{ \partial x^{ij} } \right|_{gh} = X^{ij}_{gh} \left. \frac{ \partial }{ \partial x^{ij} } \right|_{gh}
+\]
+Note that $x^{ik}{ (g)} x^{kj}{ (h)} = x^{ij}{ (gh)}$
+\[
+\Longrightarrow \frac{ \partial x^{ij}{(gh)} }{ \partial x^{kl}{ (h)} } = x^{im}{(g)} \delta^{km} \delta^{jl} = x^{ik}{ (g)} \delta^{jl} = \begin{cases} 0 & \text{ if } j\neq l \\ x^{ik} & \text{ if } j =l \end{cases}
+\]
+
+so
+\[
+\begin{gathered}
+  L_{g*} X_h = X_h^{kl} \frac{ \partial x^{ij}{(gh)} }{ \partial x^{kl}{(h)} } \left. \frac{ \partial }{ \partial x^{ij} } \right|_{gh} = X^{kl}_h x^{ik}{(g)} \delta^{jl} \left. \frac{ \partial }{ \partial x^{ij} } \right|_{gh} = X^{kj}_h x^{ik}{(g)} \left. \frac{ \partial }{ \partial x^{ij}} \right|_{gh} = x^{ik}{(g)} X^{kj}_h \left. \frac{ \partial }{ \partial x^{ij}} \right|_{gh}
+\end{gathered}
+\]
+
+santiy check: $L_{e*}X_h = eX_h = X_h$
+
+Consider left-invariant vector fields  \\
+\quad $L_{g*} X = X$ \, $\forall \, g$ (cf. wikipedia) \\
+\quad $L_{g*} \left. X \right|_h = X_{gh}$ (cf. Nakahara) \\
+
+
+\exercisehead{5.21} 
+
+\begin{equation}
+  L_{a^*} \left. X \right|_g = X^{\mu}(g) \frac{ \partial x^{\nu}(ag) }{ \partial x^{\mu}(g) } \left. \frac{ \partial }{ \partial x^{\nu} } \right|_{ag} = x^{\nu}(ag) \left. \frac{ \partial }{ \partial x^{\nu }} \right|_{ag} \quad \quad \, (5.110)
+\end{equation}
+
+\[
+\begin{gathered}
+  L_{a*} \left. X \right|_g = \left. X \right|_{ag}
+\end{gathered} \quad \quad \quad \begin{gathered}
+  L_a g = ag \\
+  \begin{aligned} 
+    y^i & = y^i(x^j ) = a_{ij} x^j \\
+    \partial_j y^i & = a_{ij}
+\end{aligned}
+\end{gathered}
+\]
+
+\[
+d(y(x)) X^{\mu}(g) \left. \frac{ \partial }{ \partial x^{\mu} } \right|_g = X^{\mu}(g) \left. \frac{ \partial }{ \partial x^{\mu} } \right|_g y^{\nu}
+\]
+
+
+
+Recall that 
+\[
+\begin{aligned}
+  & V = V^{\mu} \frac{ \partial }{ \partial x^{\mu}} \\ 
+  & f_* V = W^{\alpha} \frac{ \partial }{ \partial y^{\alpha }}
+\end{aligned} \quad \quad \, W^{\alpha} = V^{\mu} \frac{ \partial y^{\alpha }}{ \partial x^{\mu}} 
+\]
+
+
+\[
+L_{a*} \left. X \right|_g = X^{\mu}(g) \frac{ \partial y^{\nu}(ag) }{ \partial x^{\mu} } \left. \frac{ \partial }{ \partial y^{\nu} } \right|_{ag} = \left. X \right|_{ag} = Y^{\nu} \left. \frac{ \partial }{ \partial y^{\nu}} \right|_{ag}
+\]
+
+
+$V \in T_e G$ defines unique left invariant vector field $X_V$ 
+\begin{equation}
+\left. X_V \right|_g = L_{g*} V \quad \quad g \in G \quad \quad \quad (5.111)
+\end{equation}
+
+
+
+$\mathbb{g} \equiv $ set of left invariant vector fields on $G$ \\
+$T_eG \to \mathbb{g}$ is an isomorphism \\
+$V \mapsto X_V$ \\
+$\mathbb{g} \subset \chi(G)$ \\
+
+
+Lie Bracket (Sec. 5.3) also defined on $\mathbb{g}$ 
+
+\[
+\begin{gathered}
+  g, ag = L_ag \in G \\ 
+  X,Y \in \mathbb{g}
+\end{gathered}
+\]
+
+\begin{equation}
+\left. L_{a*}[ X,Y]  \right|_g = [ L_{a*} \left. X \right|_g, L_{a*} \left. Y \right|_g ] = \left. [X,Y] \right|_{ag} \quad \quad \quad (5.112)
+\end{equation}
+so $[X,Y] \in \mathbb{g}$ \\
+
+e.g. $GL(n,\mathbb{R})$ coordinates given by $n^2$ entries $x^{ij}$ of the matrix.  
+
+\[
+\begin{aligned}
+  & g = \lbrace x^{ij}(g) \rbrace 
+  & a = \lbrace x^{ij}(a) \rbrace
+\end{aligned} \, \in GL(n, \mathbb{R}) \quad \quad \, L_a g = ag = x^{ik}(a) x^{kj}(g)
+\]
+
+take $V = V^{ij} \left. \frac{ \partial }{ \partial x^{ij} } \right|_e \in T_eG$ 
+
+\begin{equation}
+\begin{aligned}
+  \left. X_V \right|_g & = L_{g^*} V = V^{ij} \left. \frac{ \partial }{ \partial x^{ij} } \right|_e x^{kl}(g) x^{lm}(e) \left. \frac{ \partial }{ \partial x^{km}} \right|_g = v^{ij} x^{kl}(g) \delta_i^l \delta^m_j \left. \frac{ \partial }{ \partial x^{km}} \right|_g = V^{ij} x^{ki}(g) \left. \frac{ \partial }{ \partial x^{kj} } \right|_g = \\
+  & = x^{ki}(g) V^{ij} \left. \frac{ \partial }{ \partial x^{kj} } \right|_g = (gV)^{kj} \left. \frac{ \partial }{ \partial x^{kj} } \right|_g \quad \quad \quad (5.113)
+\end{aligned}
+\end{equation}
+
+\[
+\begin{aligned}
+  & V = V^{ij} \left. \frac{ \partial }{ \partial x^{ij} } \right|_e \\ 
+  &  W = W^{ij} \left. \frac{ \partial }{ \partial x^{ij} } \right|_e 
+\end{aligned} \quad \quad \quad 
+\]
+\[
+\left. [X_V, X_W ] \right|_g = x^{ki}(g) V^{ij} \left. \frac{ \partial }{ \partial x^{kj} } \right|_g x^{ca}(g) W^{ab} \left. \frac{ \partial }{ \partial x^{cb} } \right|_g - (V \leftrightarrow W ) = 
+\]
+\begin{equation}
+  =  x^{ij}(g) [ V^{jk} W^{kl} - W^{jk} V^{kl} ] \left. \frac{ \partial }{ \partial x^{il} } \right|_g = ( g[V,W[)^{ij} \left. \frac{ \partial }{ \partial x^{ij} } \right|_g \quad \quad \quad (5.114)
+\end{equation}
+
+\begin{equation}
+  \Longrightarrow L_{g*}V = gV \quad \quad \quad (5.115) 
+\end{equation}
+
+\begin{equation}
+  \left. [ X_V, X_W ] \right|_g = L_{g*}[V,W] = g[V,W] \quad \quad \quad (5.116)
+\end{equation}
+
+
+\begin{definition}[5.11]
+  $\mathbb{g} \equiv $ set of left-invariant vector fields with Lie bracket $[ \, , \, ] : \mathbb{g} \times \mathbb{g} \to \mathbb{g}$  \quad \, Lie algebra of Lie group $G$
+\end{definition}
+
+\hrulefill
+
+20141117 EY recap: Recapping,
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    & L_a : G \to G \\
+    & L_a g = ag \end{aligned} \quad \quad \, \begin{aligned}
+    & R_a : G \to G \\ 
+    & R_a g = ga \end{aligned}
+\end{gathered}
+\]
+$L_a$, $R_a$ are diffeomorphisms; indeed $L_{a^{-1}} = (L_a)^{-1}$, $R_{a^{-1}} = (R_a)^{-1}$ \quad \, $\forall \, a \in G$
+
+$\forall \, X_g = T_gG$, \\
+locally $X_g = X_g^i \frac{ \partial }{ \partial g^i }$ \\
+
+$L_{a*} : T_gG \to T_{ag}G$ \\
+locally, $L_{a*} X_g = X^i_g \frac{ \partial (ag)^j}{ \partial g^i} \frac{ \partial}{ \partial (ag)^j}$ (because that's what pushforwards do) 
+
+Note the abuse of notation above.
+
+\textbf{if} $X_g$ is \textbf{left-invariant}, 
+\[
+L_{a*} X_g = X_{ag}
+\] 
+this implies
+\[
+X^i_g \frac{ \partial (ag)^j}{ \partial g^i} = X^j_{ag}
+\]
+
+Now isomorphisms can be shown so that
+\[
+T_1G = \mathfrak{g} = \lbrace X | X \in TG, \, \forall \, a,g \in G, L_{a*} X_g = X_{ag} \rbrace \text{ i.e. set of left-invariant vector fields}
+\]
+indeed, for instance, $\forall \, V \in T_1G$, locally $V  = V^i \left. \frac{ \partial }{ \partial x^i} \right|_1$, 
+\[
+\begin{gathered}
+  L_{g*} V = X \\ 
+  L_{a*}X = L_{a*} L_{g*} V = L_{ag*} V = X_{ag}
+\end{gathered}
+\]
+uniqueness can be shown in either cases, note. 
+
+\emph{Specialize} to the case of $G = GL(n)$
+
+\[
+\begin{aligned}
+  & (L_ag)^{ij} = a^{ik} g^{kj} \\ 
+  & X_g = X^{ij}_g \frac{ \partial }{ \partial g^{ij} } \\ 
+  & L_{a*} X_g = X^{ij}_g \frac{ \partial (ag)^{kl} }{ \partial g^{ij}} \frac{ \partial }{ \partial (ag)^{kl} } = X^{ij}_g a^{ki} \frac{ \partial }{ \partial (ag)^{kj} } = (aX_g)^{kj} \frac{ \partial }{ \partial (ag)^{kj}}
+\end{aligned}
+\]
+where I used the following calculation:
+\[
+(ag)^{kl} = a^{km} g^{ml} \Longrightarrow \frac{ \partial (ag)^{kl}}{ \partial g^{ij}} = a^{ki} \delta^{jl}
+\]
+
+If $X_g$ left invariant,
+\[
+aX_g=X_{ag}
+\]
+
+
+
+\hrulefill
+
+e.g. $\mathbf{so}(n)$ Lie algebra of $SO(n)$
+
+e.g. 5.15 
+\begin{enumerate}
+\item[(a)] $G = \mathbb{R}$  \quad \quad \, define $La : x \mapsto x + a$,  \quad \, left invariance field $X = \frac{ \partial }{ \partial x }$  
+
+\[
+L_{a*} \left. X \right|_x = \frac{ \partial (a+x) }{ \partial x} \frac{ \partial }{ \partial (a+ x) } = \frac{ \partial }{ \partial (x+a) } = \left. X \right|_{x+a}
+\]
+
+$X = \frac{ \partial }{ \partial \theta}$ \quad unique left vector field on $G = SO(2) = \lbrace e^{i \theta} | 0 \leq \theta \leq 2 \pi \rbrace$ 
+
+\[
+\frac{ \partial ( \phi + \theta ) }{ \partial \theta } \frac{ \partial }{ \partial (\phi + \theta ) } = \frac{ \partial }{ \partial ( \phi + \theta ) }
+\]
+
+\item[(b)] Let $\mathbf{gl}{ (n, \mathbb{R})}$   \quad curves $\begin{aligned} & \quad \\ 
+  & c : (-\epsilon , \epsilon ) \\ 
+  & c(0 ) = 1 \end{aligned}$ $ \, \to GL(n, \mathbb{R})$ \quad \quad $c(s) = 1 + sA + \mathcal{O}(s^2)$ \quad near $s=0$, $A$ \, $n\times n$ matrix of real entries 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+\subsubsection{The one-parameter subgroup }
+
+\subsubsection{Frames and structure equation }
+
+$\lbrace V_1 \dots V_n \rbrace$ basis of $T_1G = \mathfrak{g}$
+
+
+
+\begin{equation}
+[X_a, X_b] = c_{ab}^c X_c  \quad \quad \quad \, (5.133)
+\end{equation}
+
+From local form of the Lie bracket, cf. Exercise 5.9 
+\[
+[X,Y] = \left( X^{\mu} \frac{ \partial Y^{\nu}}{ \partial x^{\mu }} - Y^{\mu} \frac{ \partial X^{\nu}}{ \partial x^{\mu} } \right) \frac{ \partial }{ \partial x^{\nu}}
+\]
+
+\[
+[V_a,V_b] = \left( V_a^i \frac{ \partial V_b^j}{ \partial x^i} - V_b^i \frac{ \partial V_a^j}{ \partial x^i} \right) \frac{ \partial }{ \partial x^j} = c^c_{ab}V_c = c^c_{ab} X_c^j \frac{ \partial }{ \partial x^j}
+\]
+
+dual basis to $\lbrace X_a \rbrace$, $\lbrace \theta^a \rbrace$ s.t. $\langle \theta^a, X_b \rangle = \delta^a_{ \, \, b}$ \\
+dual basis satisfies \textbf{Maurer-Cartan's structure equation}
+\[
+d\theta^a(X_b,X_c) = X_b \delta^a_{ \, \, c} - X_c \delta^a_{ \, \, b} - \theta^a([X_b,X_c]) = X_b\delta^a_{ \, \, c} - X_c \delta^a_{ \, \, b} - \theta^a(c^d_{bc} X_d ) = X_b \delta^a_{ \, \, c} - X_c \delta^a_{ \, \, b} - c^a_{bc} = -c^a_{bc}
+\]
+where I used $d\omega(X,Y) = X\omega(Y) - Y\omega(X) - \omega([X,Y])$, cf. wikipedia ``exterior derivative'', etc.
+
+\begin{equation}
+  d\theta^a = \frac{-1}{2}c^a_{bc} \theta^b \wedge \theta^c \quad \quad \quad \, (5.136)
+\end{equation}
+
+
+%canonical 1-form, \textbf{Maurer-Cartan form on $G$ }
+
+%\begin{equation}
+%\begin{aligned}
+%  & \theta : T_gG \to T_e G \\ 
+%  & \theta : X \mapsto (L_{g^{-1}})_* X = (L_g)^{-1}_* X, \quad \, X \in \, T_gG
+%\end{aligned} \quad \quad \quad \, (5.137)
+%\end{equation}
+
+define Lie algebra valued 1-form $\theta: T_gG \to T_1G$, \textbf{canonical 1-form} or \textbf{Maurer-Cartan form} on $G$ \\
+\[
+\theta \in \Omega^1(G;\mathfrak{g})
+\]
+\begin{equation}
+  \theta : X \mapsto (L_{g^{-1}})_* X = (L_g)^{-1}_* X \text{ where } X \in T_gG \quad \quad \quad \, (5.137)
+\end{equation}
+
+\begin{theorem}[5.3] 
+\begin{enumerate}
+\item[(a)] canonical 1-form is $\theta = V_a \otimes \theta^a$, where $\lbrace V_a \rbrace$ basis of $T_1G = \mathfrak{g}$, $\lbrace \theta^a \rbrace$ dual basis of $T^*_gG$
+
+EY : 20141117 here's where Nakahara has a mistake, $\theta$ isn't at $e$ but at $g$
+\item[(b)] where \\
+$d\theta = V_a\otimes d\theta^a$ and 
+\begin{equation}
+  [ \theta \wedge \theta ] \equiv [ V_{a} , V_{b} ] \otimes \theta^{a} \wedge \theta^{b} \quad \quad \quad \, (5.140)
+\end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+\item[(a)] $\forall \, Y = Y^a X_a \in T_gG$
+\[
+\theta(Y) = (L_{g^{-1}})_* Y = (L_g)^{-1}_* Y = Y^a(L_{g^{-1}})_* X_a = Y^a (L_{g^{-1}})_* (L_g)_* V_a = Y^a V_a
+\]
+On the other hand
+\[
+(V_a \otimes \theta^a)(Y) = V_a \otimes \theta^a(Y^b X_b) = V_a (Y^b(\theta^a(X_b))) = Y^a V_a
+\]
+
+EY : 20141117 note that Nakahara, I believe, made a mistake with thinking $\theta^a$ is a dual basis at $e$, not $g$
+
+Thus
+\[
+\boxed{ \theta = V_a \otimes \theta^a }
+\]
+
+
+\item[(b)] Now $[V_a,V_b] = c^c_{ab}V_c$
+\[
+\begin{aligned}
+  & d\theta + \frac{1}{2} [ \theta \wedge \theta ] = 0 \\
+  & \frac{1}{2} [ \theta \wedge \theta ] = \frac{1}{2} [V_a,V_b] \otimes \theta^a \wedge \theta^b = \frac{1}{2} V_c \otimes c^c_{ab} \theta^a \wedge \theta^b \\ 
+  & d\theta = V_c \otimes d\theta^c = V_c \otimes \frac{-1}{2} c^c_{ab} \theta^a \wedge \theta^b 
+\end{aligned}
+\]
+\[
+\Longrightarrow \boxed{ d\theta + \frac{1}{2} [ \theta \wedge \theta ] = 0  }
+\]
+\end{enumerate}
+\end{proof}
+
+\hrulefill
+
+20141117 EY's recap:
+
+$c^{c}_{ab}$ independent of $g \in G$
+
+$\forall \, g\in G$, $\forall \, \theta^a$ in dual basis for $T_g^*G$ (also $\mathfrak{g}^*$), $\theta^a \in T_g^*G$, \\
+$\forall \, d\theta^a \in \Omega^2_g(G)$, then 
+\[
+d\theta^a = \frac{-1}{2} c^a_{bc} \theta^b \wedge \theta^c
+\]
+is satisfied, \textbf{Maurer-Cartan's structure equation}.
+
+
+\hrulefill
+
+
+\subsection{ The action of Lie groups on manifolds }
+
+
+
+
+\subsubsection{ Definitions} 
+
+
+\subsubsection{ Orbits and isotropy groups }
+
+
+\subsubsection{ Induced vector fields }
+
+\subsubsection{ The adjoint representation }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{de Rham Cohomology Groups}
+
+$r$-form $\omega$ in $\mathbb{R}^r$
+
+\[
+\omega = a(x) dx^1 \wedge dx^2 \wedge \dots \wedge dx^r
+\]
+
+define integration of $\omega$ over $\overline{\sigma}_r$ 
+
+\begin{equation}
+\int_{ \overline{\sigma}_r } \omega \equiv \int_{ \overline{\sigma}_r } a(x) dx^1 dx^2 \dots dx^r \quad \quad \quad \, (6.2)
+\end{equation}
+
+\[
+\int_{ \overline{\sigma}_2} \omega = \int_{ \overline{\sigma}_2 } dx dy = \int_0^1 dx \int_0^{1-x} dy = \frac{1}{2}
+\]
+
+\[
+\int_0^1 dx \int_0^{1-x}dy \int_0^{1-y-x} dz = \int_0^1 dx \int_0^{1-x} dy (1-y-x) = \frac{1}{6}
+\]
+
+Let smooth $f:\sigma_r \to M$
+
+$s_r = f(\sigma_r) \subset M$ (singular) $r$-simplex in $M$
+
+define integration of $r$-form $\omega$ over $r$-chain in $M$
+
+\begin{equation}
+\int_{s_r} \omega = \int_{ \overline{\sigma}_r } f^* \omega \quad \quad \quad \, (6.6)
+\end{equation}
+
+
+general $r$-chain $c = \sum_i a_i s_{r,i}  \in C_r(M)$
+
+\begin{equation}
+  \int_c \omega = \sum_i a_i \int_{s_{r,i} } \omega \quad \quad \quad \, (6.7)
+\end{equation}
+
+\subsection{ Stokes' theorem }
+
+\begin{theorem}[Stokes' thm.]
+$\begin{aligned}
+& \omega \in \Omega^{r-1}(M) \\ 
+& c\in C_r(M)
+\end{aligned}$
+
+then
+\begin{equation}
+\int_c d\omega = \int_{\partial c} \omega \quad \quad \quad \, (6.8)
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+$c$ linear combination of $r$-simplexes \\
+suffices to prove (6.8) for $r$-simplex $s_r$ in $M$ 
+
+Let $f:\overline{\sigma}_r \to M$ s.t. $f(\overline{\sigma}_r) = s_r$
+
+\[
+\int_{s_r} d\omega = \int_{ \overline{\sigma}_r} f^*(d\omega) = \int_{\overline{\sigma}_r} d(f^* \omega)
+\]
+
+using (5.75)
+
+Also we have 
+
+\[
+\int_{\partial s_r} \omega = \int_{ \partial \overline{\sigma}_r } f^* \omega
+\]
+\end{proof}
+
+
+
+\subsubsection{ Preliminary consideration }
+
+
+\subsubsection{ Stokes' theorem }
+
+\subsection{ de Rham cohomology groups }
+
+
+
+
+
+\section{Riemannian Geometry}
+
+\subsection{ Riemannian manifolds and pseudo-Riemannian manifolds }
+
+\subsubsection{ Metric tensor }
+
+\begin{definition}[7.1]
+\begin{enumerate}
+  \item[(i)] $  g_p(U,V) = g_p(V,U) $
+\end{enumerate}
+\end{definition}
+
+Since $g \in \tau_2^0(M)$ (2 covariant indices, type (0,2) tensor)
+
+Recall from Ch. 5, 5.2.3, 1-forms, 
+$df \in T_p^* M$ on $V \in T_p M$ defined. 
+\[
+\langle df, V \rangle = V[f] = V^{\mu} \frac{ \partial f}{ \partial x^{\mu} } \in \mathbb{R}
+\]
+
+If $\exists \, $ metric $g$
+\[
+g_p : T_p M \otimes T_p M \to \mathbb{R}
+\]
+define
+\[
+\begin{aligned}
+  g_p(U, \, ) : & T_p M \to \mathbb{R} \\
+  & V \mapsto g_p(U,V)
+\end{aligned}
+\]
+Then $g_p(U, \, )$ identified with 1-form $\omega_U \in T_p^*M$ 
+
+Similarly, $\omega \in T_p^*M$ induces $V_{\omega} \in T_pM$ by $\langle \omega, U \rangle = g(V_{\omega}, U)$ 
+
+Thus $g_p$ isomorphism between $T_pM$ and $T_p^*M$
+
+Consider $\begin{aligned} & \quad \\ 
+  & V = v^{\alpha} \frac{ \partial }{ \partial x^{\alpha }} \quad \quad \, \text{(since $v \in T_pM$)} \\
+  & \omega = \omega_{\alpha} dx^{\alpha} \quad \quad \, \text{(since $\omega \in T^*_pM$)} \\
+\end{aligned}$
+
+For arbitrary $U \in T_p M$
+\[
+g_p(V,U) = g_p( v^{\beta} \frac{ \partial }{ \partial x^{\beta} }, U ) = v^{\beta} g_p\left( \frac{ \partial }{ \partial x^{\beta} }, U \right) = \omega \cdot U  = \omega_{\alpha}dx^{\alpha}(U) 
+\]
+
+Let $U = U^{\lambda} \frac{ \partial }{ \partial x^{\lambda }}$
+
+\[
+\begin{gathered}
+  \Longrightarrow v^{\beta} U^{\lambda} g_p\left( \frac{  \partial }{ \partial x^{\beta} }, \frac{ \partial }{ \partial x^{\lambda} } \right) = \omega_{\alpha} dx^{\alpha} U^{\lambda} \frac{ \partial }{ \partial x^{\lambda }} = \omega_{\alpha} U^{\lambda} dx^{\alpha} \left( \frac{ \partial }{ \partial x^{\lambda }} \right) = \omega_{\alpha} U^{\lambda} \frac{ \partial x^{\alpha }}{ \partial x^{\lambda }} = \omega_{\alpha} U^{\alpha } = \\
+  = v^{\beta} U^{\lambda} g_{\beta \lambda} = v^{\beta} g_{\beta \alpha } U^{\alpha } \\
+  \Longrightarrow \omega_{\alpha} = g_{\alpha \beta} v^{\beta}
+\end{gathered}
+\]
+
+\[
+g_p = g_{\mu \nu}(p) dx^{\mu} \otimes dx^{\nu} \quad \quad \, (7.1a)
+\]
+\[
+g_{\mu \nu}(p) = g_p \left( \frac{ \partial }{ \partial x^{\mu }} , \frac{ \partial }{ \partial x^{\nu }} \right) = g_{\nu \mu}(p) \quad \, (p \in M) \quad \quad \, (7.1b)
+\]
+
+since $(g_{\mu \nu})$ has maximal rank (if $g_p(U,U) = 0$, $U=0$, so kernel is $0$), $g_{\mu \nu}$ has inverse $g^{\mu \nu}$
+
+isomorphism between $T_p M$ and $T_p^*M$ expressed as $\omega_{\mu} = g_{\mu \nu} U^{\nu}$, $U^{\mu} = g^{\mu \nu} \omega_{\nu}$ \quad \, (7.2)
+
+Take an infinitesimal displacement $dx^{\mu} \frac{ \partial }{ \partial x^{\mu} } \in T_p M$ 
+\[
+ds^2 = g \left( dx^{\mu} \frac{ \partial }{ \partial x^{\mu} }, dx^{\nu} \frac{ \partial }{ \partial x^{\nu} }\right) = g_{\mu \nu} dx^{\mu} dx^{\nu} \quad \quad \, (7.3)
+\]
+
+\exercisehead{7.1} 
+
+\[
+\left( \begin{matrix} - \frac{1}{ \sqrt{2} } & - \frac{1}{ \sqrt{2 }} & & \\ 
+   - \frac{1}{ \sqrt{2}} &  \frac{1}{ \sqrt{2}} & & \\
+  & & 1 & \\
+  & & & 1 \end{matrix} \right) \left( \begin{matrix} & 1 & & \\
+  1 & & & \\
+  & & 1 &  \\
+  & & & 1 \end{matrix} \right)  \left( \begin{matrix}  \frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{2 }} & & \\ 
+  \frac{1}{ \sqrt{2}} & - \frac{1}{ \sqrt{2}} & & \\
+  & & 1 & \\
+  & & & 1 \end{matrix} \right) = \left( \begin{matrix} -1 & & & \\ & 1 & & \\ & & 1 & \\ & & & 1 \end{matrix} \right)
+\]
+
+Consider the light-cone basis
+
+\[
+\lbrace e_+ , e_-, e_2, e_3 \rbrace
+\]
+\[
+e_{\pm} \equiv \frac{e_1 \pm e_0 }{ \sqrt{2}}
+\]
+\[
+\begin{aligned}
+  & g(e_{\pm} , e_{\pm} ) = \frac{1}{2} g( e_1 \pm e_0 , e_1 \pm e_0 ) = \frac{1}{2} ( 1 + (-1) ) = 0 \\
+  &  g(e_{\pm} , e_{\mp} ) = \frac{1}{2} g(e_1 \pm e_0 , e_1 \mp e_0 ) = \frac{1}{2} ( 1 - (-1) ) = 1 
+\end{aligned} \quad \quad \, \begin{aligned}
+  & g_{++} = g_{--} = 0 \\ 
+  & g_{+-} = g_{-+} = 1 \end{aligned}
+\]
+Indeed the light cone metric is $\left( \begin{matrix} & 1  & & \\ 1 & & & \\ & & 1 & \\ & & & 1 \end{matrix} \right)$
+\[
+\begin{aligned}
+  & \omega_{\mu} = g_{\mu \nu} U^{\nu} \\ 
+  & \omega_+ = V^- \\ 
+  & \omega_- = V^+ \\ 
+  & \omega_2 = V^2 \\ 
+  & \omega_3 = V^3
+\end{aligned}
+\]
+
+\subsubsection{ Induced metric }
+
+Let $M$ be $m$-dim. submanifold of $n$-dim. Riemannian manifold $N$ with metric $g_N$.  \\
+If $f: M \to N$ embedding which induces the submanifold structure of $M$.  (Sec. 5.2).  \\
+(recall, smooth $f:M\to N$, $\text{dim}{ M } \leq N$, $f$ immersion if $f_*: T_pM \to T_{f(p)}N$ injection, so rank $f_* = \text{dim}{M}$.  $f$ embedding if $f$ immersion and $f$ injection.  Also $f(M)$ submanifold of $N$).  
+
+- pullback $f^*$ induces natural metric $g_M = f^* g_N$ on $M$
+\begin{equation}
+  g_{M \mu \nu}(x) = g_{ N \alpha \beta} \frac{ \partial f^{\alpha }}{ \partial x^{\mu }} \frac{ \partial f^{\beta} }{ \partial x^{\nu }} \quad \quad \quad \, (7.5)
+\end{equation}
+
+Recall the pullback: $\begin{aligned} & \quad \\ 
+  & f^* : T^*_{f(p)}N \to T_p^*M \\
+  & \omega \in T^*_{f(p)}N \\
+  & V \in T_p M \end{aligned}$ \quad \quad \, $\begin{aligned} & \quad \\ 
+  & \langle f^* \omega , V \rangle = \langle \omega, f_* V \rangle \\
+  & \text{ and } \\
+  & f_* V[g] = V[gf], \quad \, g\in \mathcal{F}(N) \end{aligned}$
+
+Now $\begin{gathered} 
+  g_N: T_{f(p) } N \otimes T_{f(p)} N \to \mathbb{R} \\
+  g_N(U, \, ) \in T^*_{f(p)} N \end{gathered}$ 
+
+\[
+\langle f^* g_N(U, \, ) , V \rangle = \langle g_N(U, \, ), f_* V \rangle  = \langle g_N(U, \, ), V^{\mu} \frac{ \partial f^{\nu} }{ \partial x^{\mu} } \frac{ \partial }{ \partial y^{\nu}} \rangle 
+\]
+For 
+\[
+f_* V[g] = V[gf] = V^{\mu} \frac{ \partial }{ \partial x^{\mu} } [gf] = V^{\mu} \frac{ \partial g}{ \partial y^{\nu}} \frac{ \partial f^{\nu } }{ \partial x^{\mu }} = V^{\mu} \frac{ \partial f^{\nu }}{ \partial x^{\mu} } \frac{ \partial g}{ \partial y^{\nu} }
+\]
+with $gf(x^{\mu})$
+so then (20121026)
+\[
+\begin{gathered}
+  g_N\left(U, V^{\mu} \frac{ \partial }{ \partial y^{\nu }} \right) \frac{ \partial f^{\nu} }{ \partial x^{\mu }} = g_N(U, V^{\nu} \frac{ \partial }{ \partial y^{\beta} } ) \frac{ \partial f^{\beta} }{ \partial x^{\nu }} \\ 
+  \Longrightarrow g_N(f(x)) \frac{ \partial f^{\alpha }}{ \partial x^{\mu} } \frac{ \partial f^{\beta}}{ \partial x^{\nu }}
+\end{gathered}
+\]
+with $U \in T_{f(p)}N$
+
+For example, 
+\[
+\begin{gathered}
+  f: (\theta, \phi) \mapsto ( s_{\theta} c_{\varphi} , s_{\theta} s_{\varphi }, c_{\theta} ) \\ 
+  \nabla f = \left| \begin{matrix} c_{\theta} c_{\varphi} & - s_{\theta} s_{\varphi} \\ 
+    c_{\theta} s_{\varphi} & s_{\theta} c_{\varphi} \\ 
+    -s_{\theta} & 0 \end{matrix} \right|
+\end{gathered}
+\]
+
+\[
+g_{\mu \nu} dx^{\mu} \otimes dx^{\nu} = \delta_{\alpha \beta} \frac{ \partial f^{\alpha }}{ \partial x^{\mu }} \frac{ \partial f^{\beta}}{ \partial x^{\nu} }dx^{\mu} \otimes dx^{\nu} = d\theta \otimes d\theta + s^2_{\theta} d\varphi \otimes d\varphi
+\]
+
+\exercisehead{7.2} Let $f: T^2 \to \mathbb{R}^3$.  Embedding of torus into $(\mathbb{R}^3, \delta)$ defined by 
+\[
+f:(\theta, \varphi) \mapsto ((R+\cos{\theta} ) \cos{\varphi}, ( R+ rc_{\theta} ) s_{\varphi}, rs_{\theta} ), \quad \, R>r 
+\]
+\[
+\nabla f = \left| \begin{matrix} -r s_{\theta} c_{\varphi } & - (R+ rc_{\theta} ) s_{\varphi} \\ 
+  -r s_{\theta} s_{\varphi} & (R+ rc_{\theta} ) c_{\varphi} \\ 
+  rc_{\theta} & 0 \end{matrix} \right|
+\]
+\[
+g_{\mu \nu} dx^{\mu} \otimes dx^{\nu} = \delta_{\alpha \beta} \frac{ \partial f^{\alpha }}{ \partial x^{\mu} } \frac{ \partial f^{\beta} }{ \partial x^{\nu} } dx^{\mu} \otimes dx^{\nu} = r^2 d\theta \otimes d\theta + (R+rc_{\theta})^2 d\varphi \otimes d\varphi = g_{\theta \theta} d\theta \otimes d\theta + g_{\varphi \varphi }d\varphi \otimes d\varphi 
+\]
+
+
+
+
+\subsection{ Parallel transport, connection and covariant derivative }
+
+\subsubsection{ Heuristic introduction }
+
+\subsubsection{ Affine connections }
+
+\[
+\nabla_X (fY) = X[f]Y + f\nabla_X Y \quad \quad \quad (7.13d)
+\]
+
+\[
+\nabla_{\nu} e_{\mu} = \nabla_{e_{\nu}} e_{\mu} = e_{\lambda} \Gamma^{\lambda}_{ \, \, \nu \mu} \quad \quad \quad (7.14)
+\]
+\[
+\nabla_V W = V^{\mu} \nabla_{\mu} ( W^{\nu} \partial_{\nu} ) = V^{\mu} ( \partial_{\mu} W^{\nu} \partial_{\nu} + W^{\nu} \nabla_{\mu} \partial_{\nu} ) = V^{\mu} ((\partial_{\mu} W^{\nu} ) \partial_{\nu} + W^{\nu} \Gamma^{\lambda}_{\, \, \mu \nu } \partial_{\lambda} ) = V^{\mu} ( \partial_{\mu} W^{\lambda} + W^{\nu} \Gamma^{\lambda}_{\, \, \mu \nu } ) \partial_{\lambda} = V^{\mu} \nabla_{\mu} W^{\lambda} \partial_{\lambda}
+\]
+
+\[
+\nabla_{\mu} ( W^{\lambda} \partial_{\lambda} ) = ( \partial_{\mu} W^{\lambda} ) \partial_{\lambda} + W^{\lambda} ( \nabla_{\mu} \partial_{\lambda} ) = \partial_{\mu} W^{\lambda} \partial_{\lambda} + W^{\lambda} \Gamma^a_{\, \, \mu \lambda} \partial_a = (\partial_{\mu} W^{\lambda} + W^b \Gamma^{\lambda}_{ \, \, \mu b} ) \partial_{\lambda}
+\]
+
+\subsubsection{ Parallel transport and geodesics }
+
+\[
+\nabla_V X = 0 \quad \quad \quad (7.18a)
+\]
+
+$X$ parallel transported along $c(t)$ where $V = \frac{d}{dt} = \left. \frac{dx^{\mu}(c(t))}{ dt} \partial_{\mu} \right|_{c(t)}$
+
+Now
+\[
+\dot{X} = \partial_{\mu}X \dot{c}^{\mu} = \partial_{\mu} X V^{\mu}
+\]
+where $X=X(c(t))$.  So
+
+\[
+\begin{gathered}
+\nabla_V X = V^{\mu} ( \partial_{\mu} X^{\lambda} + X^{\nu} \Gamma^{\lambda}_{ \, \, \mu \nu } ) \partial_{\lambda} = 0  \\
+\Longrightarrow V^{\mu} \partial_{\mu} X^{\lambda} + \Gamma^{\lambda}_{ \, \, \mu \nu} V^{\mu} X^{\nu} = 0 \text{ or } \dot{X} + \Gamma^{\lambda}_{\, \, \mu \nu } \frac{dx^{\mu}(c(t))}{ dt} X^{\nu} = 0 
+\end{gathered}
+\]
+
+If 
+\[
+\nabla_V V =0 \quad \quad \quad (7.19a)
+\]
+
+tangent vector $V(t)$ itself is parallel transported along $c(t)$.  $c(t)$ \emph{geodesic}.  
+
+
+\exercisehead{7.3} Recall what left-invariant means.  A left-invariant vector field is such that 
+\[
+L_{a*} \left. X\right|_g = \left. X\right|_{ag}
+\]
+
+Recall
+
+\[
+\frac{d^2 x^{\mu} }{dt^2} + \Gamma^{\mu}_{ \, \nu \lambda} \frac{dx^{\nu}}{ dt} \frac{dx^{\lambda}}{ dt} = 0 \quad \quad \, (7.19b)
+\]
+
+affine reparametrization
+
+\[
+t\to at +b \quad \quad \, (a,b \in \mathbb{R})
+\]
+
+Recall 
+\[
+\frac{dx^{\mu}}{dt} \to \frac{dt}{dt'} \frac{dx^{\mu} }{dt}
+\]
+
+In this case, $\frac{dt}{dt'} = \frac{1}{a}$.  So under this affine reparametrization
+\[
+\frac{d^2 x^{\mu}}{dt^2} = \frac{d}{dt} \left( \frac{dx^{\mu}}{dt} \right) \to \frac{1}{a} \frac{d}{dt} \left( \frac{dx^{\mu} }{ dt'} \right) = \frac{1}{a^2} \frac{d^2 x^{\mu} }{dt^2}
+\]
+
+So
+\[
+\begin{gathered}
+  \frac{d^2 x^{\mu}}{dt^2} + \Gamma^{\mu}_{ \, \nu \lambda} \frac{dx^{\nu} }{dt} \frac{dx^{\lambda}}{dt} \to   \frac{1}{a^2} \frac{d^2 x^{\mu}}{dt^2} + \Gamma^{\mu}_{ \, \nu \lambda} \frac{1}{a} \frac{dx^{\nu} }{dt} \frac{1}{a} \frac{dx^{\lambda}}{dt} = \frac{1}{a^2} \left( \frac{d^2 x^{\mu} }{ dt^2} + \Gamma^{\mu }_{ \, \nu \lambda} \frac{dx^{\nu }}{dt} \frac{dx^{\lambda} }{dt} \right) = 0 
+\end{gathered}
+\]
+
+\subsubsection{ The covariant derivative of tensor fields }
+
+Define 
+\[
+\nabla_X f = X[f] \quad \quad \quad (7.21)
+\]
+
+\[
+\begin{aligned}
+  & \nabla_X (fY) = X[f] Y + f\nabla_X Y \quad \quad \quad (7.13d) \\ 
+  & \nabla_X (fY) = (\nabla_X f) Y + f\nabla_X Y \quad \quad \quad (7.13d') \\ 
+\end{aligned}
+\]
+
+Require this 
+\begin{equation}
+  \nabla_X (T_1 \otimes T_2 ) = (\nabla_X T_1) \otimes T_2 + T_1 \otimes (\nabla_X Y_2) \quad \quad \quad (7.22)
+\end{equation}
+
+$\langle \omega, Y \rangle \in \mathcal{C}^{\infty}M$, $Y \in \mathcal{X}(M)$
+
+\[
+X[\langle \omega, Y \rangle ] = \nabla_X[ \langle \omega, Y \rangle ] = \langle \nabla_X \omega, Y \rangle + \langle \omega, \nabla_X Y \rangle
+\]
+
+\[
+\begin{aligned}
+  & \langle \nabla_X \omega, Y \rangle = (\nabla_X \omega)_i Y^i \\ 
+  & \langle \omega, \nabla_X Y \rangle = \omega_i X^{\mu} ( \partial_{\mu} Y^i + Y^{\nu} \Gamma^i_{\mu \nu } ) \\
+  & X[ \langle \omega , Y \rangle ] = X(\omega_i Y^i ) = X^i \partial_j \omega_i Y^i + X^j \omega_i \partial_j Y^i 
+\end{aligned}
+\]
+
+\[
+X^j \partial_j \omega_i Y^i + X^j \omega_i \partial_j Y^i = (\nabla_X \omega)_i Y^i + \omega_i X^{\mu} ( \partial_{\mu} Y^i ) + \omega_j X^{\mu} Y^i \Gamma^j_{ \mu i }
+\]
+\[
+(\nabla_X \omega)_{\nu} = X^{\mu} \partial_{\mu} \omega_{\nu} - X^{\mu} \Gamma^{\lambda}_{ \mu \nu} \omega_{\lambda} \quad \quad \quad (7.23)
+\]
+
+$\begin{aligned} & \quad \\ & X = \partial_{\mu} \\ & X^{\nu} = \delta^{\nu}_{ \, \, \mu } \end{aligned}$  
+
+\[
+(\nabla_{\mu} \omega)_{\nu} = \partial_{\mu} \omega_{\nu} - \Gamma_{\mu \nu}^{ \lambda}\omega_{\lambda} \quad \quad \quad (7.24)
+\]
+
+Recall $\nabla_{\nu} e_{\mu} \equiv \nabla_{e_{\nu}} e_{\mu} = e_{\lambda} \Gamma^{\lambda}_{\nu \mu} $ \quad \quad (7.14)
+\[
+\begin{aligned}
+  & \omega = \delta_j^{ \, \, i } dx^j = dx^i \\ 
+  & (\nabla_{\mu} dx^i )_{\nu} = \partial_{\mu} \delta_{\nu}^{ \, \, i } - \Gamma^{\lambda}_{\mu \nu} \delta_{\lambda}^{ \, \, i} = - \Gamma^i_{\mu \nu}
+\end{aligned}
+\]
+\[
+\nabla_{\mu} dx^{\nu} = - \Gamma^{\nu}_{\mu \lambda} dx^{\lambda}
+\]
+
+\[
+\nabla_{\nu} t^{\lambda_1 \dots \lambda_p }_{ \mu_1 \dots \mu_q} = \partial_{\nu} t^{\lambda_1 \dots \lambda_p}_{ \mu_1 \dots \mu_q} + \Gamma^{\lambda_1}_{ \, \nu \kappa } t^{\kappa \nu_2 \dots \lambda_p }_{\mu_1 \dots \mu_q} + \dots + \Gamma^{\lambda_p}_{ \nu \kappa} t^{\lambda_1 \dots \lambda_{p-1} \kappa }_{ \mu_1 \dots \mu_q} - \Gamma^{\kappa}_{ \nu \mu_1} t^{\lambda_1 \dots \lambda_p }_{ \kappa \mu_2 \dots \mu_q} - \dots - \Gamma^{\kappa}_{ \nu \mu_q} t^{\lambda_1 \dots \lambda_p }_{\mu_1 \dots \mu_{q-1} \kappa } \quad \quad \quad (7.26)
+\]
+
+Metric tensor.  $g:TM \times_M TM \to \mathbb{R}$ restriction to a fiber, $g_p : T_p M \times T_pM \to \mathbb{R}$
+
+\exercisehead{7.4}
+
+\[
+\nabla_{\lambda} g_{\mu \nu} = \partial_{\lambda} g_{\mu \nu} - \Gamma^{\kappa}_{\lambda \mu} g_{\kappa \nu } - \Gamma^{\kappa}_{\lambda \nu} g_{\mu \kappa }
+\]
+
+Notice that $g(X) : \mathcal{X}(M) \to C^{\infty}(M)$ \\
+so $g(X)$ a 1-form. \\
+
+as a 1-form
+\[
+\begin{gathered}
+  \nabla_a (g(e_i)) = \nabla_a(g_{ik} \sigma^k) = (\nabla_a g_{ik})\sigma^k + g_{ik} \nabla_a \sigma^k = (\nabla_a g_{ik}) \sigma^k + g_{ik} (- \omega_{aj}^k \sigma^j)
+\end{gathered}
+\]
+
+
+as tensor product, using rules.
+\[
+\nabla_a (g(e_i)) = (\nabla_a g)e_i + g\nabla_a e_i  = (\nabla_a g) e_i + g \omega_{ai}^j e_j 
+\]
+
+subtract the 2 facts above.
+
+\[
+\begin{gathered}
+  (\nabla_a g) e_i = ( \nabla_a g_{ik})\sigma^k - g_{ij} \omega^j_{ak} \sigma^k - g_{jk} \omega^j_{ai} \sigma^k  \\
+  \Longrightarrow \boxed{ (\nabla_a g)_{ij} =  (\nabla_a g_{ij} ) - g_{ik} \omega_{aj}^k - g_{kj} \omega_{ai}^k  }
+\end{gathered}
+\]
+
+
+
+
+
+\subsubsection{ The transformation properties of connection coefficients }
+
+another chart $(U, \psi)$, or $UV \neq \emptyset$.  $y = \psi(p)$
+
+Let $\lbrace  \partial_{y_a} \rbrace$ \\
+$\partial_{y^a} = \delta^b_{\, \, a} \partial_{y_b}$
+
+Recall 
+\[
+\begin{gathered}
+\nabla_VX = V^{\mu} ( \partial_{\mu} X^{\lambda} + X^{\nu} \Gamma^{\lambda}_{\mu \nu} ) \partial_{\lambda} = 0 \\
+\nabla_{\nu} \partial_{\mu} = \Gamma^{\lambda}_{ \nu \mu} \partial_{\lambda}  \quad \quad \quad (7.14) \\
+\nabla_a \partial_b = \widetilde{\Gamma}^c_{ab} \partial_c \quad \quad \quad (7.28)
+\end{gathered}
+\]
+
+$\partial_a = \frac{ \partial x^{\nu} }{ \partial y^{\mu} } \partial_{\nu}$
+
+
+\[
+\begin{gathered}
+  \nabla_a \partial_b = \nabla_a \left( \frac{ \partial x^{\mu }}{ \partial y^b } \partial_{\mu} \right) = \frac{ \partial^2 x^{\mu }}{ \partial y^a \partial y^b } \partial_{\mu} + \frac{ \partial x^{\mu }}{ \partial y^b} \nabla_a \partial_{\mu} = \frac{ \partial^2 x^{\mu }}{ \partial y^a \partial y^b } \partial_{\mu} + \frac{ \partial x^{\mu}}{ \partial y^b} \left( \frac{ \partial x^{\nu} }{ \partial y^a} \Gamma^{\lambda}_{\nu \mu } \partial_{\lambda} \right)  \\
+\nabla_a \partial_{\mu} = \frac{ \partial x^{\nu } }{ \partial y^a} ( \partial_{\nu} \delta_{\mu}^{ \, \, \nu} + \delta_{\mu}^{ \, \, \rho } \Gamma^{\lambda}_{\nu \rho } ) \partial_{\lambda} = \frac{ \partial x^{\nu } }{ \partial y^a} \Gamma^{\lambda}_{\nu \mu} \partial_{\lambda}
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+  \frac{ \partial^2 x^{\nu }}{ \partial y^a \partial y^b } \partial_{\nu} + \frac{ \partial x^{\mu}}{ \partial y^b} \frac{ \partial x^{\lambda} }{ \partial y^a } \Gamma^{\nu}_{ \lambda \mu } \partial_{\nu} = \widetilde{\Gamma}^c_{ab} \frac{ \partial x^{\nu }}{ \partial y^c} \partial_{\nu} \\  
+  \widetilde{\Gamma}^c_{ab} = \frac{ \partial x^{\lambda}}{ \partial y^a } \frac{ \partial x^{\mu} }{ \partial y^b } \frac{ \partial y^c}{ \partial x^{\nu} } \Gamma^{\nu}_{\lambda \mu } + \frac{ \partial y^c}{ \partial x^{\nu }} \frac{ \partial^2 x^{\nu }}{ \partial y^a \partial y^b } \quad \quad \quad (7.29)
+\end{gathered}
+\]
+
+
+
+\subsubsection{ The metric connection }
+
+\subsection{ Curvature and torsion }
+
+\subsubsection{ Definitions }
+
+\subsubsection{ Geometrical meaning of the Riemann tensor and the torsion tensor }
+
+\subsubsection{ The Ricci tensor and the scalar curvature }
+
+\subsection{ Levi-Civita connections }
+
+\subsubsection{ The fundamental theorem }
+
+\subsubsection{ The Levi-Civita connection in the classical geometry of surfaces }
+
+\subsubsection{ Geodesics }
+
+\subsubsection{ The normal coordinate system }
+
+\subsubsection{ Riemann curvature tensor with Levi-Civita connection}
+
+\subsection{ Holonomy }
+
+\subsection{ Isometries and conformal transformations }
+
+\subsubsection{ Isometries }
+
+\subsubsection{ Conformal transformations }
+
+\subsection{ Killing vector fields and conformal Killing vector fields }
+
+\subsubsection{ Killing vector fields }
+
+\subsubsection{ Conformal Killing vector fields }
+
+\subsection{ Non-coordinate bases }
+
+\subsection{ Differential forms and Hodge theory }
+
+
+
+
+\section{Complex Manifolds}
+
+\subsection{ Complex manifolds }
+
+\subsection{ Calculus on complex manifolds }
+
+
+
+\section{Fibre bundles}
+
+\subsection{ Tangent bundles }
+
+$\pi^{-1}(p) = T_p M$, fibre at $p$
+
+section of $TM$, \, $s: M \to TM$ s.t. $\pi \circ s = 1_M$
+
+local section $s_i : U_i \to TU_i$ on chart $U_i$.  
+
+\[
+\Longrightarrow \begin{aligned} &  s(p) = X \equiv \left. X \right|_p \equiv U \in TM \\
+ & \pi(u) = p \end{aligned}
+\]
+
+
+
+
+
+\subsection{ Fibre bundles }
+
+
+\subsubsection{ Definitions}
+
+
+\begin{definition}[9.1] (diff.) fibre bundle $(E, \pi , M, F , G)$ 
+\begin{enumerate}
+\item[(i)] diff. manifold $E$ total space.  
+\item[(ii)] diff. manifold $M$ base space. 
+\item[(iii)] diff. manifold $F$ fibre (or typical fibre)
+\item[(iv)] surjection $\pi : E \to M$ projection.  \\
+\phantom{surjection} $\pi^{-1}(p) = F_p \simeq F$ fibre at $p$.  
+\item[(v)] Lie group $G$ structure group.  Left action on $F$.   
+\item[(vi)] open cover $\lbrace U_i \rbrace $ of $M$, diffeomorphism $\Phi_i : U_i \times F \to \pi^{-1}(U_i)$ s.t. 
+\[
+\pi \Phi_i(p, f) = p 
+\]
+$\Phi_i$ local trivialization since $\Phi_i^{-1} : \pi^{-1}(U_i)$ onto direct product $U_i \times F$
+\item[(vii)]  $\Phi_i(p,f) = \Phi_{i,p}(f)$, $\Phi_{i,p} : F \to F_p$ diffeomorphism.  \\
+on $U_i U_j \neq \emptyset$, $t_{ij}(p) \equiv \Phi_{i,p}^{-1} \Phi_{j, p } : F \to F$, require $t_{ij}(p) \in G$ \\
+Then $\Phi_i, \Phi_j$ related by smooth $t_{ij} : U_i U_j \to G$ as 
+\[
+\Phi_j(p,f ) = \Phi_i(p,t_{ij}(p) f ) \quad \quad \quad (9.4)
+\]
+$t_{ij}$ transition functions.  
+\end{enumerate}
+\end{definition}
+
+coordinate bundle $(E, \pi, M , F, G, \lbrace U_i \rbrace, \lbrace \Phi_i \rbrace)$, $\lbrace U_i \rbrace$ specified covering of $M$.  
+
+Take chart $U_i$ of $M$.  
+
+$\pi^{-1}(U_i)$ diffeomorphic to $U_i \times F$.  
+
+$\Phi_i^{-1} : \pi^{-1}(U_i) \to U_i \times F$ diffeomorphism.  
+
+Let $u$ s.t. $\pi(u) = p \in U_i U_j$.  
+\[
+\begin{aligned}
+  & \Phi_i^{-1}(u) = ( p , f_i ) \\ 
+  & \Phi_j^{-1}(u) = ( p , f_j )
+\end{aligned}
+\]
+
+$\exists \, t_{ij} : U_i U_j \to G$, s.t. $f_i = t_{ij}(p) f_j$
+
+
+possible set of transition functions is far from unique.  
+
+Let $\lbrace \phi_i \rbrace, \lbrace \widetilde{\phi}_i \rbrace$ be 2 sets of local trivializations giving rise to the same fiber bundle.  
+
+\[
+\begin{aligned}
+  & t_{ij}(p) = \phi^{-1}_{i,p} \phi_{j,p}  \quad \quad \quad \, (9.7a) \\ 
+  & \widetilde{t}_{ij}(p) = \widetilde{\phi}^{-1}_{i,p} \widetilde{\phi}_{j,p} \quad \quad \quad \, (9.7b)
+\end{aligned}
+\]
+
+define $\begin{aligned} & \quad \quad \\ 
+  & g_i(p) : F \to F \quad \quad \quad \, \forall \, p \in M \\ 
+  & g_i(p) \equiv \phi^{-1}_{i,p} \circ \widetilde{\phi}_{i,p} \end{aligned}$
+
+require $g_i(p)$ homeomorphism s.t. $g_i(p) \in G$.  
+
+
+
+\subsubsection{ Reconstruction of fibre bundles }
+
+
+\subsubsection{ Bundle maps }
+
+
+\subsubsection{ Equivalent bundles }
+
+
+\subsubsection{ Pullback bundles }
+
+
+
+\subsubsection{ Homotopy axiom }
+
+
+
+
+
+\subsection{ Vector bundles }
+
+
+\subsubsection{ Definitions and examples }
+
+
+
+\subsubsection{ Frames }
+
+
+\subsubsection{ Cotangent bundles and dual bundles }
+
+
+
+\subsubsection{ Sections of vector bundles }
+
+
+
+\subsubsection{ The product bundle and Whitney sum bundle }
+
+
+
+\subsubsection{ Tensor product bundles }
+
+
+
+
+\subsection{ Principal bundles }
+
+
+
+
+\subsubsection{ Definitions }
+
+$\Phi_i: U_i \times G \to \pi^{-1}(U_i)$ local trivialization
+
+right action
+
+$\Phi_i^{-1}(ua) = (p,g_i a) $ \\
+$ua = \Phi_i(p,g_i a)$ \\
+$\forall \, a \in G, \, u \in \pi^{-1}(p)$ \\
+
+Since the right action commutes with the left action  
+
+EY : ??? Since the right action commutes with the left action   ??? \\
+Theodore Frankel says: cf. pp. 455, Proof of Theorem 17.8, 
+\[
+g_ja = \tau_{ji}(p)g_i a = \tau_{ji} g_i a 
+\]
+i.e.
+\[
+ua = \Phi_j(p, g_ja) = \Phi_j(p,\tau_{ji}(p)g_ia ) = \Phi_i(p, g_ia)
+\]
+
+
+
+if $p \in U_i \bigcap U_j$
+\[
+ua = \Phi_j(p,g_j a) = \Phi_j(p, \tau_{ji}(p) g_i a) = \Phi_i(p,g_i a)
+\]
+since $\tau_{ji} = \Phi_j^{-1} \Phi_i$
+
+Thus right multiplication defined without reference to local trivializations.  Notation of this : i.e. $P\times G \to P$ or $(u,a) \mapsto ua$
+
+
+
+
+$\pi(ua) = \pi(u)$
+
+EY : 
+\[
+\boxed{ \pi(ua) = \pi(u) }
+\]
+
+right action of $G$ on $\pi^{-1}(p)$ transitive since $G$ acts on $G$ transitively on the right and $F_p = \pi^{-1}(p)$ diffeomorphic to $G$ \\
+
+cf. wikipedia Group action, types of action
+
+action of $G$ on $X$, \\
+transitive if $X \neq \emptyset $, $\forall \, x , y \in X, \, \exists \, g \in G$ s.t. $gx = y$ \\
+free if given $g,h\in G$, $\exists \, x \in X$, with $gx  = hx$ implies $g=h$ i.e. if $gx = x$, (i.e. if $g$ has at least 1 fixed pt.), then $g=e$ \\
+
+For $u \in \pi^{-1}(p)$, $p \in U_i$, $\exists \, !, \, g_U \in G$ s.t. $u = s_i(p)g_u$ \\
+define $\Phi_i^{-1}(u) = (p, g_u)$   \\
+
+$t_{ji} = \Phi_j^{-1}\Phi_i(p) \equiv \Phi_j^{-1} \Phi_i$
+
+\[
+\begin{aligned}
+  & (p,e) = \Phi_i^{-1}(s_i(p)) = \Phi_i^{-1}(u) \\ 
+  &  ug = \Phi_i(p,e)g = \Phi_i(p,g)
+\end{aligned}
+\]
+
+
+
+\emph{Example 9.7}
+
+Let $P$ be principal bundle with fiber $U(1) = S^1$, base space $S^2$ \\
+This principal bundle represents the topological setting of the \textbf{magnetic monopole}.   \\
+
+$G = U(1) = S^1$ \\
+$M=S^2$ \\
+
+\[
+\begin{aligned}
+  & \Phi_N : U_N \times S^1 \to \pi^{-1}{ (U_N) } \\ 
+  & \Phi_S : U_S \times S^1 \to \pi^{-1}{ (U_S) } 
+\end{aligned}
+\]
+
+Let $u\in \pi^{-1}{ (x)}$ 
+\[
+u = \Phi_N(x,e^{i \alpha_N} ) = \Phi_S( x, e^{ i \alpha_S } )
+\]
+
+\[
+\begin{aligned}
+  & \tau_{NS} = \Phi_N^{-1} \Phi_S \\ 
+  & \tau_{NS}g_S = g_N
+\end{aligned}
+\]
+
+then $\tau_{NS} = e^{ i (\alpha_N - \alpha_S)}$
+
+Now $\tau_{NS}: U_S \times G \to U_N \times G$  
+
+But on equator, $S^1$
+
+uniquely define $\tau_{NS}(p)$ on equator 
+
+\[
+\tau_{NS}(p) = e^{i n \phi } \quad \, n \in \mathbb{Z}
+\]
+
+EY : why like this? but surely
+\[
+n\phi = \alpha_N - \alpha_S 
+\]
+(from EY)
+
+Note that 
+
+\[
+e^{in\phi}  \to e^{ i n (\phi + 2 \pi m ) } = e^{in \phi } e^{i \pi 2mn }
+\]
+surely (EY)
+
+
+\emph{Example 9.8}. If we identify all the infinite points of the Euclidean space $\mathbb{R}^m$, the 1-point compactification $S^m = \mathbb{R}^m \bigcup \lbrace \infty \rbrace$ is obtained.  \\
+If a trivial $G$ bundle is defined over $\mathbb{R}^m$ we shall have a new $G$ bundle over $S^m$ after compactification, which is not necessarily trivial.  
+
+
+\[
+A = \left( \begin{matrix} u & v \\ 
+  -v^* & u^* \end{matrix} \right)
+\]
+
+$\begin{aligned}
+  & u = t+iz \\
+  & v = y + ix \end{aligned}$
+
+\[
+\begin{gathered}
+  \pi_3(SU(2)) \cong \pi_3(S^3) \cong \mathbb{Z} \\ 
+  \pi_3(S^3) = \lbrace [f] | f: S^3 \to X = S^3 \rbrace
+\end{gathered}
+\]
+
+$\pi_3(S^3)$ classifies maps from $S^3$ to $SU(2) \cong S^3$
+
+
+\begin{equation}
+  \begin{aligned}
+    & f:S^3 \to S^3 \cong SU(2) \\ 
+    & f(x,y,z,t) \mapsto \left( \begin{matrix} t + iz & y + ix \\ 
+      -y +ix & t-iz \end{matrix} \right) = t1 + i (x \sigma_x + y \sigma_y + z \sigma_z ) \quad \quad \quad \, (9.47)
+\end{aligned}
+\end{equation}
+
+$p = (x,y,z,t) \in U_N \bigcap U_S$ \\
+$R = (x^2 + y^2 + z^2 + t^2)^{1/2}$ \\
+
+$\tau_{NS}{(p)} = \frac{1}{R}(t1 + ix^i \sigma_i)$
+
+\[
+\begin{aligned}
+  & \Phi_N^{-1}(u) = (p,g_N) \\ 
+  & \Phi_S^{-1}(u) = (p,g_S)
+\end{aligned}
+\]
+where $g_N, g_S \in SU(2)$
+
+
+
+\subsubsection{ Associated bundles }
+
+principal fiber bundle $P(M,G)$ \\
+Let $G$ act on manifold $F$ on left  \\
+
+define action of $g \in G$ on $P\times F$ by 
+\[
+(u,f) \mapsto (ug, g^{-1}f), \quad \, \begin{aligned} & \quad \\
+  & u \in P \\
+& f \in F \end{aligned}
+\]
+
+\textbf{associated fiber bundle } \, $(E, \pi, M, G, F, P)$ is equivalence class $P \times F/ G$ which 
+\[
+(u, f) \sim ( ug, g^{-1}f)
+\]
+
+e.g.  
+
+Consider $F$ $k$-dim. vector space $V$ \\
+\quad $\rho$ \, $k$-dim. representation of $G$
+
+$P\times \rho V$ 
+\[
+(u,v) \sim (ug, \rho(g)^{-1} v) \text{ of } P \times V, \quad \, \begin{aligned} 
+  & u \in P \\
+& g \in G \\
+  & v \in V \end{aligned}
+\]
+
+e.g. $P(M,GL(k, \mathbb{R}))$
+
+associated vector bundle over $M$ with fiber $\mathbb{R}^k$
+
+$E = P \times_{\rho} V$ \quad \, $\begin{aligned}
+  & \quad \\
+  & \pi_E : E \to M \\
+  & \pi_E(u,v) = \pi(u) 
+\end{aligned}$ \\
+
+$\pi(u) = \pi(ug)$ implies 
+
+\[
+\pi_E(ug, \rho(g)^{-1}v) = \pi(ug) = \pi_E(u,v)
+\]
+
+local trivialization $\Phi_i : U_i \times V \to \pi^{-1}_E(U_i)$
+
+
+transition function of $E$ given by $\rho(t_{ij}(p))$ where $t_{ij}(p)$ is that of $p$
+
+
+
+
+\subsubsection{ Triviality of bundles }
+
+
+\subsection*{ Problems }
+
+
+
+
+\section{Connections on Fibre Bundles}
+
+\subsection{Connections on principal bundles }
+
+
+
+\subsubsection{}
+
+\subsubsection{}
+
+\subsubsection{ The local connection form and gauge potential }
+
+Let $\lbrace U_i \rbrace$ open covering of $M$ \\
+\phantom{ Let } $\sigma_i$ local section defined on each $U_i$   \\ 
+
+introduce Lie algebra-valued 1-form $\mathcal{A}_i$ on $U_i$
+
+\begin{equation}
+  \mathcal{A}_i \equiv \sigma_i^* \omega \in \mathfrak{g} \otimes \Omega^1(U_i) \quad \quad \quad \, (10.6)
+\end{equation}
+
+
+$\omega \in \mathfrak{g} \otimes T^*P$ \\
+
+Remember $\omega \in \mathfrak{g} \otimes T^*P$ \\
+\phantom{Remember } $\pi \sigma = 1$ \\
+\phantom{Remember } $\pi \sigma(p) = p$, \, $p \in U \subset M$ \\
+
+given Lie algebra valued 1-form $A_i$ on $U_i$, we can reconstruct connection 1-form $\omega$ s.t. $\sigma_i^* \omega = A_i$ i.e.
+
+\begin{theorem}[10.1]
+  given $\mathfrak{g}$-valued 1-form $A_i$ on $U_i$, $A_i \in \mathfrak{g} \otimes \Omega^1(U_i)$, \\
+\phantom{given} local section $\sigma_i:U_i \to \pi^{-1}(U_i)$ \\
+
+$\exists \, $ connection 1-form $\omega$ s.t. $A_i = \sigma_i^* \omega$
+
+\end{theorem}
+
+\begin{proof}
+define $\mathfrak{g}$ valued 1-form $\omega$ on $P$ 
+\begin{equation}
+  \omega_i \equiv g_i^{-1} \pi^* A_i g_i + g_i^{-1} d_P g_i \quad \quad \quad \, (10.7)
+\end{equation}
+
+$d_P$ exterior derivative on $P$ \\
+
+$g_i$ canonical local trivialization $\Phi_i^{-1}(u) = (p,g_i)$ \quad \, $u = \sigma_i(p)g_i$ \\
+
+for $X \in T_pM$, 
+
+\[
+\begin{gathered}
+  \sigma_i^*\omega_i(X) = \omega_i(\sigma_{i*}X) = g_i^{-1} \pi^* A_i g_i(\sigma_{i*} X) + g_i^{-1} d_P g_i(\sigma_{i*}X) = \\
+  = \pi^*A_i(\sigma_{i*} X) + d_Pg_i(\sigma_{i*}X) = A_i(\pi_* \sigma_{i*}X) + d_Pg_i(\sigma_{i*} X)
+\end{gathered}
+\]
+\end{proof}
+
+
+
+
+
+
+\subsubsection{ Horizontal lift and parallel transport }
+
+\begin{theorem}[10.2] Let $\gamma:[0,1] \to M$, $u_0 \in \pi^{-1}(\gamma(0))$ \\
+Then $\exists \, ! \, $ horizontal lift $\widetilde{\gamma}(t)$ in $P$ s.t. $\widetilde{\gamma}{(0)} = u_0$ 
+\end{theorem}
+
+
+
+\begin{equation}
+  g_i(\gamma(t)) = g_i(t) = \mathcal{P}\exp{ \left( -\int_0^t A_{i \mu} \frac{dx^{\mu} }{dt} dt \right) } = \mathcal{P}\exp{ \left( - \int_{\gamma(0)}^{\gamma(t)} A_{i\mu}(\gamma(t))dx^{\mu} \right) } \quad \quad \quad \, (10.14)
+\end{equation}
+
+\subsection{Holonomy}
+
+\subsubsection{Definitions}
+
+loop $\gamma \subset M$ defines \emph{transformation} $\tau_{\gamma}: \pi^{-1}(p) \to \pi^{-1}(p)$ on fiber \\
+following from (10.18), EY : ??? , transformation compatible with right action
+
+\begin{equation}
+  R_g \Gamma(\widetilde{\gamma}) = \Gamma(\widetilde{\gamma})R_g \quad \quad \quad \, (10.18)
+\end{equation}
+
+\begin{equation}
+  \tau_{\gamma}(ug) = \tau_{\gamma}(u)g  \quad \quad \quad \, (10.21)
+\end{equation}
+
+
+\[
+C_p(M) = \lbrace \gamma: [0,1] \to M | \gamma(0)=  \gamma(1) = p \rbrace
+\]
+
+subgroup of structure group $G$, \textbf{holonomy group} at $u$ is 
+\begin{equation}
+ \Phi_u \equiv \lbrace g \in G | \tau_{\gamma}(u) = ug, \, \gamma \in C_p(M) \rbrace   \quad \quad \quad \, (10.22)
+\end{equation}
+
+
+
+\exercisehead{10.6} 
+
+
+solution already found!  Recall
+
+\begin{equation}
+  g_i(\gamma(t)) = g_i(t) = \mathcal{P}\exp{ \left( -\int_0^t A_{i \mu} \frac{dx^{\mu} }{dt} dt \right) } = \mathcal{P}\exp{ \left( - \int_{\gamma(0)}^{\gamma(t)} A_{i\mu}(\gamma(t))dx^{\mu} \right) } \quad \quad \quad \, (10.14)
+\end{equation}
+
+\[
+g_i(\gamma(1)) = g_i(1) = \mathcal{P}\exp{ \left( -\int_0^1 A_{i \mu} \frac{dx^{\mu} }{dt} dt \right) } = \mathcal{P}\exp{ \left( - \int_{\gamma(0)}^{\gamma(1)} A_{i\mu}(\gamma(t)) dx^{\mu} \right) } = \mathcal{P}\exp{ \left( - \oint A_{i\mu} dx^{\mu} \right) }
+\]
+
+
+\begin{equation}
+  g_{\gamma} = \mathcal{P} \exp{ \left( - \oint_{\gamma} A_{i \mu } dx^{\mu}  \right) } \quad \quad \quad \, (10.26)
+\end{equation}
+
+\hrulefill
+
+
+\section{Characteristic Classes}
+
+% e.g. Sec. 10.5, $SU(2)$ bundle over $S^4$ classified by homotopy group $\pi_3(SU(2)) \cong \mathbb{Z}$ \\
+% also, $\pi_3(SU(2))$ evaluated by integrating $\text{tr}{ \mathcal{F}^2} \in H^4(S^4)$ over $S^4$ (Thm. 10.7)
+
+e.g. cf. Sec. 10.5, $SU(2)$ bundle over $S^4$ classified by $\pi_3(SU(2)) \cong \mathbb{Z}$ \\
+number $n \in \mathbb{Z}$ tells us how transition functions twist local pieces of the bundle when glued together.  \\
+cf. Thm. 10.7, $\pi_3(SU(2))$ evaluated by integrating $\text{tr}{ F^2} \in H^4(S^4)$ over $S^4$
+
+
+\subsection{Invariant polynomials and the Chern-Weil homomorphism }
+
+
+
+
+
+\subsubsection{Invariant polynomials}
+
+$M(k,\mathbb{C})$ - set of complex $k\times k$ matrices  \\
+
+Let $S^r(M(k,\mathbb{C}))$ denote vector space of symmetric $r$-linear $\mathbb{C}$-valued functions on $M(k,\mathbb{C})$, i.e. \\
+\quad \quad \, $\widetilde{P}: \bigotimes^r M(k,\mathbb{C}) \to \mathbb{C}$ \\
+\quad \quad \quad \, $\widetilde{P} \in S^k(M(k,\mathbb{C}))$ 
+
+\begin{equation}
+  \widetilde{P}{ (a_1 \dots a_i \dots a_j \dots a_r ) } =\widetilde{ P}{ (a_1 \dots a_j \dots a_i \dots a_r) } \quad \quad \quad \, 1\leq i , j \leq r \quad \quad \quad \, (11.1)
+\end{equation}
+where $a_p \in GL(k,\mathbb{C})$ \\
+
+$\widetilde{P} \in S^r(\mathfrak{g})$ invariant if $\forall \, g \in G$, $A_i \in \mathfrak{g}$, 
+
+\begin{equation}
+  \widetilde{P}{ (\text{Ad}_g{A_1} \dots \text{Ad}_g{A_r})} = \widetilde{P}(A_1 \dots A_r) \quad \quad \quad \, (11.3)
+\end{equation}
+
+where
+
+\[
+\text{Ad}_gA_i = g^{-1} A_i g
+\]
+
+e.g. 
+\begin{equation}
+  \widetilde{P}(A_1 \dots A_r) = \text{str}{ (A_1 \dots A_r)}  \equiv \frac{1}{r!} \sum_P \text{tr}{ (A_{ P(1)} \dots A_{P(r)} ) }
+\end{equation}
+
+
+invariant polynomial $P$ of degree $r$
+
+\begin{equation}
+  P(A) \equiv \widetilde{P}( \underbrace{ A \dots A }_{ r } ) \quad \quad \, A \in \mathfrak{g}, \quad \, \widetilde{P} \in I^r(G) \quad \quad \quad \, (11.6)
+\end{equation}
+
+Conversely $P$ defines invariant and symmetric $r$-linear form $\widetilde{P}$ by 
+\[
+\begin{gathered}
+  P(t_1A_1 + \dots + t_r A_r ) \\ 
+  \widetilde{P}(t_1 A_1 + \dots + t_r A_r \dots t_1 A_1 + \dots + t_r A_r ) \Longrightarrow t_1 \dots t_r \widetilde{P}(A_1 \dots A_r) \text{ term }
+\end{gathered}
+\]
+$\frac{1}{r!} \widetilde{P}(A_1 \dots A_r)$ term the polarization of $P$
+
+
+In the previous chapter, introduced local gauge potential $A$, field strength $F$ on a principal bundle.  \\
+\quad We have shown these geometrical objects describe the associated vector bundles as well. \\
+\quad Since the set of connections $A_i$ describes the twisting of a fiber bundle, the non-triviality of a principal bundle is equally shared by associated vector bundle \\
+\quad \quad In fact, if (10.57) employed as definition of local connection in a vector bundle, it can be defined even without reference to the principal bundle with which it is originally associated \\
+Later we encounter situations in which use of vector bundles is essential (the Whitney sum bundle, the splitting principle, etc.)
+
+\begin{theorem}[11.1] (Chern-Weil theorem)
+
+Let invariant polynomial $P$
+
+\begin{enumerate}
+\item[(a)] $dP(F) = 0$ 
+\item[(b)] $F,F'$ curvature 2-forms corresponding to different connections $A, A'$.  Then $P(F')- P(F)$ exact.
+\end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+\begin{enumerate}
+\item[(a)] Consider invariant polynomial $P_r(F)$ homogeneous of degree $r$, since any invariant polynomial can be decomposed into homogeneous polynomials 
+
+\[
+\begin{aligned}
+  & \Omega_i = X_i \eta_i \\ 
+  & d\Omega_i = X_i d\eta_i
+\end{aligned}
+\]
+
+\begin{equation}
+  \sum_{i=1}^r (-1)^{ p ( p_1 + \dots + p_i ) } \widetilde{P}_r( \Omega_1 \dots [\Omega_i, A ] \dots \Omega_r ) = 0 \quad \quad \quad \, (11.12)
+\end{equation}
+
+
+
+\item[(b)] Let $A, A'$ 2 connections on $E$, $F, F'$ respective field strength \\
+
+Define interpolating gauge potential $A_t$ 
+
+\begin{equation}
+  A_t \equiv A + t \theta \quad \quad \, \theta \equiv ( A' - A) \quad \quad \, 0 \leq t \leq 1 \quad \quad \quad \, (11.15)
+\end{equation}
+
+
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    & F_1 = F+ D\theta + \theta^2 \\
+    & F_0 = F \\ 
+    & F' = dA' + (A')^2 \\ 
+    & F = dA + A^2 
+\end{aligned}  \quad \quad \quad \, \begin{gathered} F_1 - F_0 = D\theta + \theta^2 = d\theta + [A, \theta] +  \theta^2 = F' - F \end{gathered} \\
+\begin{gathered}
+  F' - F = d\theta + (A')^2 - A^2 \\ 
+D\theta = d\theta + [A, \theta ] = d\theta + A \wedge \theta + \theta \wedge A \\ 
+A \wedge \theta +  \theta \wedge A = A \wedge ( A' - A) + (A' - A) \wedge A = A\wedge A' - A^2 + A' \wedge A - A^2 \\
+\theta^2 = (A' - A) \wedge (A' - A) = (A')^2 - A' \wedge A - A \wedge A' + A^2
+\end{gathered}
+\end{gathered}
+\]
+
+\begin{equation}
+  P_r(F') - P_r(F) = P_r(F_1) - P_r(F_0) = \int_0^1 dt \frac{d}{dt}P_r(F_t)=  r\int_0^1 dt \widetilde{P}_r\left( \frac{dF_t}{dt}, F_t \dots F_t\right) \quad \quad \quad \, (11.17)
+\end{equation}
+
+\begin{equation}
+  \frac{d}{dt} P_r(F_t) = r \widetilde{P}_r( D\theta, F_t \dots F_t) + 2rt \widetilde{P}_r(\theta^2, F_t \dots F_t) \quad \quad \quad \, (11.18)
+\end{equation}
+
+
+Use (11.12) and $\begin{aligned} & \quad \\ 
+  & \Omega_1 = A = \theta \\ 
+  & \Omega_2 = \dots = \Omega_m = F_t \end{aligned}$ \quad \quad \, $\begin{aligned} & \quad \\ 
+  & p_1 = 1 \\
+  & p_2 = \dots = p_r = 2 \end{aligned}$ 
+
+\[
+\begin{gathered}
+  \sum_{i=1}^r (-1)^{ p ( p_1 + \dots + p_i ) } \widetilde{p}_r( \Omega_1 \dots [\Omega_i , A ] \dots \Omega_r ) = 0 \Longrightarrow \widetilde{P}_r( [\theta , A ] , F_t \dots F_t) + (r-1) \widetilde{P}_r( \theta, [F_t, \theta]  , F_t \dots F_t) = 0 
+\end{gathered}
+\]
+
+From (11.18), (11.19) and the previous identity, we obtain
+\[
+\frac{d}{dt} P_r(F_t) = rd[ \widetilde{P}_r(\theta, F_t \dots F_t) ]
+\]
+
+\[
+\begin{aligned}
+  & P_r(F') - P_r(F) = \int_0^1 dt \frac{d}{dt} P_r(F_t) = \int_0^1 dt r d[\widetilde{P}_r(\theta, F_t \dots F_t) ] 
+\end{aligned} 
+\]
+
+\begin{equation}
+   P_r(F') - P_r(F) = d \left[ r \int_0^1 \widetilde{P}_r(A'-A, F_t \dots F_t) dt \right] \quad \quad \quad \, (11.20)
+\end{equation}
+
+$P_r(F')$ differs from $P_r(F)$ by an exact form.  
+
+\end{enumerate}
+\end{proof}
+
+
+transgression $TP_r(A',A)$ of $P_r$
+
+
+\begin{equation}
+TP_r(A',A) \equiv r \int_0^1 dt \widetilde{P}_r{ (A' \dots A, F_t \dots F_t ) }  \quad \quad \quad \, (11.21)
+\end{equation}
+
+$\widetilde{P}_r$ is polarization of $P$. \\
+
+Let $\text{dim}{M} = m$ \\
+$P_m(F')$ differs from $P_m(F)$ by an exact form, integrals over $M$ without boundary, should be same
+
+\begin{equation}
+  \int_M P_m(F') - \int_M P_m(F) = \int_M dTP_m(A',A) = \int_{\partial M} P_m(A',A) = 0 \quad \quad \quad \, (11.22)
+\end{equation}
+
+
+As proved, invariant polynomial closed and in general nontrivial.  \\
+Accordingly, defines cohomology class of $M$ \\
+
+Thm. 11.1(b) ($F$, $F'$ curvature 2-forms corresponding to different connections $A$, $A'$, difference $P(F')- P(F)$ is exact) ensures that this cohomology class is independent of the gauge potential chosen. \\
+The cohomology class thus defines is called the \textbf{characteristic class}. \\
+The characteristic class defined by an invariant polynomial $P$ is denoted by $\chi_E(P)$ where $E$ is a fiber bundle on which connections and curvatures are defined.   \\
+
+\emph{Remark}: Since a principal bundle and its associated bundles share the same gauge potentials and field strengths, the Chern-Weil theorem applies equally to both bundles.  Accordingly, $E$ can be either a principal bundle or a vector bundle.
+
+\subsection{Chern classes}
+
+\url{http://www.johno.dk/mathematics/fiberbundlestryk.pdf}
+
+\begin{definition}[9.7]
+\emph{characteristic class} $c$ (with $\mathbb{R}$ coefficients) for principal $G$-bundle associates to every principal $G$-bundle $(E,\pi,M)$ cohomology class $c(E) \in H^*_{dR}(M)$ s.t. $\forall \, $ bundle map ($\overline{f}, f$):$(E',\pi', M') \to (E,\pi,M)$ (EY $\overline{f}$ is just the induced $f$ when you go up to $E$ level, vs. $M$ to $M'$ level) we have
+\[
+c(E') = f^*(c(E))
+\]
+if $c(E) \in H^l_{dR}(M)$ then $c$ has degree $l$
+\end{definition}
+
+
+
+
+\subsection{}
+
+
+
+\subsection{}
+
+\subsection{Chern-Simons form}
+
+
+\subsubsection{ Definition }
+
+Let $P_j(F)$ be an arbitrary $2j$-form characteristic class. \\
+\phantom{Let } $P_j(F)$ closed, so by Poincar\'{e}'s lemma, it's locally exact. \\
+\begin{equation}
+  P_j(F) = dQ_{2j-1}(A,F) \quad \quad \quad \, (11.100)
+\end{equation}
+
+\[
+Q_{2j-1}(A,F) \in \mathfrak{g} \otimes \Omega^{2j-1}(M)
+\]
+
+This can't be true globally. \\
+\quad otherwise, if $P_j=dQ_{2j-1}$ globally on manifold $M$ with no boundary, 
+\[
+\int_M P_{m/2} = \int_M dQ_{m-1} = \int_{\partial M} Q_{m-1} = 0 
+\]
+$m = \text{dim}{M}$
+
+$2j-1$  from $Q_{2j-1}(A,F)$ is the Chern-Simons form of $P_j(F)$
+
+From Pf. of Thm. 11.2(b),  \\
+\quad $Q$ is given by the transgression of $P_j$,
+
+\begin{equation}
+  Q_{2j-1}(A,F) = TP_j(A,0) = j \int_0^1 \widetilde{P}_j(A, F_t \dots F_t)dt \quad \quad \quad \, (11.101)
+\end{equation}
+
+where $\widetilde{P}_j$ polarization of $P_j$, $F= dA + A^2$ \\
+\quad set $A'=F' =0$
+
+of course $A'=0$ only on local chart over which bundle is trivial.  
+
+Suppose $\text{dim}{M} = m = 2l$ s.t. $\partial M \neq \emptyset$.  By Stoke's 
+
+\begin{equation}
+  \int_M P_l(F) = \int_M dQ_{m-1}{ (A, F)} = \int_{\partial M} Q_{m-1}{ (A, F) } \quad \quad \quad \, (11.102)
+\end{equation}
+
+$\int_M P_l(F) \in \mathbb{Z}$ and so does $\int_{ \partial M } Q_{m-1}{ (A, F) }$
+
+Thus $Q_{m-1}$ is a characteristic class in its own right and describes the topology of boundary $\partial M$
+
+
+
+
+
+\subsubsection{ The Chern-Simons form of the Chern character}
+
+Chern character $\text{ch}_j{(F)}$ \\
+\quad connection $A_t$ which interpolates between $0$ and $A$, 
+
+\begin{equation}
+  A_t = tA \quad \quad \quad \, (11.103)
+\end{equation}
+
+the corresponding curvature is 
+
+\begin{equation}
+  F_t = A_t^2 + dA_t = t dA + t^2 A^2 = tF + (t^2- t)A^2 \quad \quad \quad \, (11.104)
+\end{equation}
+
+(11.21)
+
+\begin{equation}
+  Q_{2j-1}(A, F) = \frac{1}{ (j-1)!} \left( \frac{i}{ 2\pi } \right)^j \int_0^1 dt \text{str}{ (A, F^{j-1}_t )}
+\end{equation}
+
+\begin{equation}
+  Q_1(A,F) = \frac{i}{2\pi} \int_0^1 dt \text{str}{ (A, F_t^0) } = \frac{i}{2\pi} \text{tr}{A} \quad \quad \quad \, (11.106a)
+\end{equation}
+
+\begin{equation}
+  \begin{gathered} 
+    Q_3(A,F) = \left( \frac{i}{2\pi} \right)^2 \int_0^1 dt \text{str}{ (A, F_t) } = \left( \frac{i}{2\pi} \right)^2 \int_0^1 dt \text{str}{ (A, tF + (t^2 - t) A^2) } = \\
+    = \left( \frac{i}{2\pi} \right)^2 \int_0^1 dt \text{str}{ (A, t dA + tA^2 + (t^2 - t) A^2 )}    = \frac{1}{2} \left( \frac{i}{2\pi  } \right)^2 \text{tr}{ ( A dA + \frac{2}{3} A^3 ) }
+\end{gathered}
+\end{equation}
+
+
+
+
+
+
+\section{Index Theorems}
+
+
+
+
+\section{Anomalies in Gauge Field Theories}
+
+
+
+
+\section{Bosonic String Theory}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
