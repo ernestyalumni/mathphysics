@@ -71,19 +71,18 @@ Solutions to \emph{Geometry,Topology,Physics} by Mikio Nakahara, 2003.
 
 \maketitle
 
-Fund Science! \& Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung \\
+\href{https://github.com/ernestyalumni/mathphysics/blob/master/LaTeX_and_pdfs/Nakahara_GTP-solutions.tex}{Permanent home} of this \verb|Nakahara GTP-solutions.tex| and \verb|.pdf| files on \verb|github|, \url{https://github.com/ernestyalumni/mathphysics/blob/master/LaTeX_and_pdfs/Nakahara_GTP-solutions.tex}.  \textbf{Go here} for the latest version; if you came here from anywhere else (such as Google Drive), then the version of solutions most likely will be outdated.  
 
-\url{http://igg.me/at/ernestyalumni2014} \\
+From the beginning of 2016, I decided to cease all explicit crowdfunding for any of my materials on physics, math.  I failed to raise \emph{any} funds from previous crowdfunding efforts.  I decided that if I was going to live in \emph{abundance}, I must lose a scarcity attitude.  I am committed to keeping all of my material \textbf{open-sourced}.  I give all my stuff \emph{for free}.   
 
-\noindent Facebook  : ernestyalumni \\
-gmail        : ernestyalumni \\
-google       : ernestyalumni \\
+In the beginning of 2017, I received a very generous donation from a reader from Norway who found these notes useful, through \emph{PayPal}.  If you find these notes useful, feel free to donate directly and easily through \href{https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ernestsaveschristmas%2bpaypal%40gmail%2ecom&lc=US&item_name=ernestyalumni&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted}{PayPal}, which won't go through a 3rd. party such as indiegogo, kickstarter, patreon.  Otherwise, under the \emph{open-source MIT license}, feel free to copy, edit, paste, make your own versions, share, use as you wish.    
+
+\noindent gmail        : ernestyalumni \\
 linkedin     : ernestyalumni \\
 tumblr       : ernestyalumni \\
 twitter      : ernestyalumni \\
-weibo        : ernestyalumni \\ 
 youtube      : ernestyalumni \\
-indiegogo    : ernestyalumni \\
+
 
 
 %-----------------------------------%-----------------------------------%-----------------------------------%-----------------------------------%-----------------------------------
@@ -3542,7 +3541,123 @@ $\partial_a = \frac{ \partial x^{\nu} }{ \partial y^{\mu} } \partial_{\nu}$
 
 \section{Complex Manifolds}
 
-\subsection{ Complex manifolds }
+\subsection{Complex manifolds }
+
+\subsubsection{}
+
+\subsubsection{Examples}
+
+\emph{Example 8.3}
+Consider 
+\[
+\mathbb{C}P^n
+\]
+
+$z=(z^0 \dots z^n) \in \mathbb{C}^{n+1}$ defines complex line through $0$ if $z\neq 0$.
+
+$z\sim w$ if $\exists \, a \neq 0$, $a\in \mathbb{C}$, s.t. $w=az$
+
+Then $\mathbb{C}P^n := (\mathbb{C}^{n+1} - \lbrace 0 \rbrace ) /\sim$.
+
+$z^0, z^1, \dots z^n$ are homogeneous coordinates, $\equiv [ z^0, z^1 \dots z^n ]$.
+
+\[
+(z^0 , \dots z^n) \sim (\lambda z^0, \dots , \lambda z^n) \qquad \, (\lambda \neq 0)
+\]
+chart $U_{\mu} \subset \mathbb{C}^{n+1}-\lbrace 0 \rbrace$ s.t. $z^{\mu} \neq 0$.
+
+In chart $U_{\mu}$, \\
+inhomogeneous coordinates defined by $\xi^{\nu}_{ (\mu)} := \frac{z^{\nu}}{ z^{\mu} } \xi^{\lambda}_{ (\nu) }$.
+
+$\psi_{ \mu \nu}$ is multiplication by $z^{\nu}/ z^{\mu}$ which is, of course, holomorphic.
+
+EY: In summary, 
+\begin{equation}
+\begin{gathered}
+  \text{ chart atlas } \lbrace (U_{\mu}, (\xi^{\nu}_{ (\mu) } )_{ \nu \neq \mu } ) \rbrace \qquad \, \mu = 0 , 1 , \dots n, \, \nu \neq \mu , \, U_{\mu} \subset \mathbb{C}^{n+1}- \lbrace 0 \rbrace \text{ s.t. } z^{\mu} \neq 0 \\
+\text{ inhomogeneous coordinates } \xi_{ (\mu) }^{\nu} = \frac{ z^{\nu} }{ z^{\mu}} , \qquad \, \nu \neq \mu \\
+\text{ transition maps: } \text{ on } U_{\mu} \cap U_{\nu} \neq \emptyset , \\
+\qquad \, \text{ holomorphic } \begin{aligned} & \quad \\
+  &  \psi_{\mu \nu} : \mathbb{C}^n \to \mathbb{C}^n \\
+  & \xi^{\lambda}_{ (\nu  ) } \mapsto \xi^{\lambda}_{( \mu ) } = \frac{z^{\nu} }{ z^{\mu} } \xi^{\lambda}_{(\nu) }
+  \end{aligned}
+  \end{gathered}
+\end{equation}
+
+
+e.g. $n=1$.
+
+\[
+\begin{aligned}
+& U_0 \subset \mathbb{C}^2 - \lbrace 0 \rbrace , \, z^0 \neq 0 \, \qquad \,  & \xi^1_{(0)} = \frac{z^1}{z^0} \\ 
+  & U_1 \subset \mathbb{C}^2 - \lbrace 0 \rbrace , \, z^1 \neq 0 \, \qquad \,  & \xi^0_{(1)} = \frac{z^0}{z^1}   
+\end{aligned}
+\]
+\[
+\begin{aligned}
+& \psi_{10} : \mathbb{C} \to \mathbb{C} \\
+& \xi_{(1)}^0 = \frac{z^0}{z^1} = 1/\xi^1_{(0)}
+  \end{aligned}
+\]
+otherwise, trying to plug this in results in a senseless result, 1:
+\[
+ \xi_{(0)}^1 = \frac{z^1}{z^0} \mapsto \xi^1_{(1)} = \frac{z^0}{z^1} \xi^1_{ (0)} = 1 
+\]
+or, by changing, over simplifying notation, for $(z,w) \in \mathbb{C}^2$,
+\[
+\begin{aligned}
+& U \subset \mathbb{C}^2 - \lbrace 0 \rbrace , \, z \neq 0 \, \qquad \,  & Z = w/z  \\ 
+  & V \subset \mathbb{C}^2 - \lbrace 0 \rbrace , \, w \neq 0 \, \qquad \,  & W = z/w    
+\end{aligned}
+\]
+and so, simply,
+\[
+W = 1/Z = W(Z)
+\]
+
+e.g. $n=2$  
+
+\[
+\begin{aligned}
+& U_0 \subset \mathbb{C}^2 - \lbrace 0 \rbrace , \, z^0 \neq 0 \, \qquad \,  & \xi^1_{(0)} = \frac{z^1}{z^0},  \xi^2_{(0)} = \frac{z^2}{z^0}  \\ 
+  & U_1 \subset \mathbb{C}^2 - \lbrace 0 \rbrace , \, z^1 \neq 0 \, \qquad \,  & \xi^0_{(1)} = \frac{z^0}{z^1} , \xi^2_{(1)} = \frac{z^2}{z^1}   \\
+  & U_2 \subset \mathbb{C}^2 - \lbrace 0 \rbrace , \, z^2 \neq 0 \, \qquad \,  & \xi^0_{(2)} = \frac{z^0}{z^2} , \xi^1_{(2)} = \frac{z^1}{z^2}  
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+& \begin{aligned}
+& \psi_{10} : \mathbb{C}^2 \to \mathbb{C}^2 \\
+    & \xi_{(1)}^0 = \frac{z^0}{z^1} = 1/\xi^1_{(0)} \\
+    & \xi_{(0)}^2 \mapsto \xi_{(1)}^2 = \frac{z^0}{z^1} \xi^2_{(0)} = \xi^2_{(0)} / \xi^1_{(0)} 
+  \end{aligned} \\
+  &  \begin{aligned}
+& \psi_{20} : \mathbb{C}^2 \to \mathbb{C}^2 \\
+       & \xi^0_{(2)} = 1/ \xi^2_{(0)} \\
+       & \xi^1_{(2)} =  \xi^1_{(0)} / \xi^2_{(0)} 
+     \end{aligned} \\
+    &  \begin{aligned}
+& \psi_{21} : \mathbb{C}^2 \to \mathbb{C}^2 \\
+       & \xi^0_{(2)} = \xi^0_{(1)} / \xi^2_{(1)}  \\ 
+       & \xi^1_{(2)} =  1/ \xi^2_{(1)} \\
+       \end{aligned} 
+\end{aligned}
+\]
+
+I will try to write the ``embedding'' (not proved yet) into $\mathbb{C}^3$:
+\[
+\begin{aligned}
+  & \varphi_0^{-1}, \varphi_1^{-1}, \varphi_2^{-1} : \mathbb{C}^2 \to U_0 \subset \mathbb{C}^3/0, z^0 \neq 0 ,  U_1 \subset \mathbb{C}^3/0, z^1 \neq 0, U_2 \subset \mathbb{C}^3/0, z^2 \neq 0 \\
+  & \varphi_0^{-1}:(Z,W) = (1,Z,W) \\ 
+  & \varphi_1^{-1}:(Z,W) = (Z,1,W) \\ 
+  & \varphi_2^{-1}:(Z,W) = (Z,W,1) 
+\end{aligned}
+\]
+
+
+
+
 
 \subsection{ Calculus on complex manifolds }
 
