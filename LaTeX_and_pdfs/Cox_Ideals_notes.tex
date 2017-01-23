@@ -1,0 +1,214 @@
+%
+% Cox_Ideals_notes.tex
+%
+\documentclass[twoside]{amsart}
+\usepackage{amssymb,latexsym}
+\usepackage{MnSymbol}
+\usepackage{times}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue}
+%\usepackage{simpsons}
+%\usepackage{epsdice}
+\usepackage{staves} 
+
+\usetikzlibrary{matrix,arrows}
+%\usepackage{graphics}
+
+\oddsidemargin-0.85cm
+\evensidemargin-0.65cm
+\topmargin-2.05cm     %I recommend adding these three lines to increase the 
+\textwidth19.05cm   %amount of usable space on the page (and save trees)
+\textheight25.05cm  
+\parindent0.0em
+
+%This next line (when uncommented) allow you to use encapsulated
+%postscript files for figures in your document
+%\usepackage{epsfig}
+
+%plain makes sure that we have page numbers
+\pagestyle{plain}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{axiom}{Axiom}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\title{Notes and Solutions to \emph{Ideals, Varieties, and Algorithms} by David A. Cox, John Little, Donal O'Shea  }
+
+\author{
+  Ernest Yeung - M\"{u}nchen
+       }
+\date{Marz 2014, jaro, primavera}
+
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+  {\bigskip\bigskip
+   \noindent{\small\bf Question #1.}
+   \bigskip}
+
+\newcommand{\problemhead}[1]
+  {
+   \noindent{\small\bf Problem #1.}
+   }
+
+\newcommand{\exercisehead}[1]
+  { \smallskip
+   \noindent{\small\bf Exercise #1.}
+  }
+
+\newcommand{\solutionhead}[1]
+  {
+   \noindent{\small\bf Solution #1.}
+   }
+
+
+%-----------------------------------
+\begin{document}
+%-----------------------------------
+
+\maketitle
+
+Fund Science! \& Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung \\
+
+\url{http://igg.me/at/ernestyalumni2014} \\
+
+\noindent Facebook  : ernestyalumni \\
+gmail        : ernestyalumni \\
+google       : ernestyalumni \\
+linkedin     : ernestyalumni \\
+tumblr       : ernestyalumni \\
+twitter      : ernestyalumni \\
+weibo        : ernestyalumni \\ 
+youtube      : ernestyalumni \\
+indiegogo    : ernestyalumni \\
+
+David Cox, John Little, Donal O'Shea. \textbf{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}, Third Edition, Springer
+
+\section{Geometry, Algebra, and Algorithms}
+
+\subsection{Polynomials and Affine Space}
+
+fields are important is that linear algebra works over \emph{any} field
+
+\begin{definition}[2] set of all polynomials in $x_1 , \dots , x_n$ with coefficients in $k$, denoted $k[x_1, \dots , x_n]$
+
+\end{definition}
+
+polynomial $f$ \emph{divides} polynomial $g$ provided $g= fh$ for some $h \in k[x_1, \dots , x_n ]$
+
+$k[x_1, \dots, x_n]$ satisfies all field axioms except for existence of multiplicative inverses; commutative ring, $k[x_1, \dots , x_n]$ \emph{polynomial ring}
+
+
+\subsubsection*{Exercises for 1 }
+
+\exercisehead{1}
+$\mathbb{F}_2$ commutative ring since it's an abelian group under addition, commutative in multiplication, and multiplicative identity exists, namely $1$.  It is a field since for $1\neq 0$, the multiplicative identity is $1$.  
+
+\exercisehead{2}
+\begin{enumerate}
+\item[(a)]
+\item[(b)]
+\item[(c)]
+\end{enumerate}
+
+
+
+
+\subsection{Affine Varieties }
+
+
+\subsection{Parametrizations of Affine Varieties}
+
+
+\subsection{Ideals}
+
+
+
+\subsection{Polynomials of One Variable}
+
+
+
+
+\section{Groebner Bases}
+
+\subsection{Introduction}
+
+
+
+
+\subsection{Orderings on the Monomials in $k[x_1, \dots , x_n]$ }
+
+
+
+
+\subsection{A Division Algorithm in $k[x_1, \dots , x_n ]$ }
+
+
+
+\subsection{Monomial Ideals and Dickson's Lemma }
+
+
+\subsection{The Hilbert Basis Theorem and Groebner Bases}
+
+
+\subsection{Properties of Groebner Bases}
+
+
+
+\subsection{Buchberger's Algorithm}
+
+
+
+
+
+
+\section{Elimination Theory}
+
+
+
+\subsection{The Elimination and Extension Theorems}
+
+
+\subsection{The Geometry of Elimination}
+
+
+
+\section{The Algebra-Geometry Dictionary}
+
+
+\subsection{Hilbert's Nullstellensatz}
+
+
+\subsection{Radical Ideals and the Ideal-Variety Correspondence}
+
+
+
+\section{Polynomial and Rational Functions on a Variety}
+
+
+\subsection{Polynomial Mappings }
+
+
+\section{Robotics and Automatic Geometric Theorem Proving}
+
+
+
+\subsection{Geometric Description of Robots }
+
+
+
+
+
+
+
+
+\end{document}
+

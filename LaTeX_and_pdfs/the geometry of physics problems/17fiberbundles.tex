@@ -1,0 +1,110 @@
+% 17fiberbundles.tex
+
+\begin{quote}
+  A vector bundle is a family of vector spaces parameterized by points in the base space. How do we parameterize a family of manifolds, say Lie groups?
+\end{quote}
+
+\section{ 17.1. Fiber Bundles and Principal Bundles }
+
+\subsection{ 17.1a. Fiber Bundles }
+
+\subsection{ 17.1b. Principal Bundles and Frame Bundles }
+
+frame $\mathbf{e}$ at $p$ chosen
+
+\begin{equation}
+  f(p) = e_{\alpha}(p) g_{\alpha}(p) \quad \quad \quad \, (17.4)
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+  & \Phi_{\alpha} : U_{\alpha} \times G \to \pi^{-1}(U_{\alpha}) \\ 
+  & \Phi_{\alpha}(p,g) = e_{\alpha}(p) g = (e_{\alpha})_i g^i_{ \, \, j } = f_j
+\end{aligned}
+\end{equation}
+
+in an overlap, the same frame (17.4) will have another representation
+
+\begin{equation}
+  \mathbf{f}(p) = \mathbf{e}_{\beta}{(p)} g_{\beta}(p) \quad \quad \quad \, (17.5)
+\end{equation}
+
+\[
+\begin{gathered}
+  e_{\beta}(p) = e_{\alpha}(p) \tau_{\alpha \beta}(p) \\ 
+  \tau_{\alpha \beta}(p) \equiv \tau_{\alpha \beta} \\ 
+  g_{\alpha}(p) = \tau_{\alpha \beta}(p) g_{\beta}(p)
+\end{gathered}
+\]
+
+diffeomorphism 
+\[
+\tau_{\alpha \beta}(p)  : G \to G
+\]
+left translation of $G$ by (transition) matrix $\tau_{\alpha \beta}(p)$
+
+
+
+\subsection{ 17.1c. Action of the Structure Group on a Principal Bundle}
+
+Let $\mathbf{f} = (\mathbf{f}_1 \dots \mathbf{f}_n)$ frame at $p$, $\mathbf{f} \in P$
+
+\begin{theorem}[17.8]
+  \[
+(f \in P , g\in G) \to (fg) \in P 
+\]
+freely when $g\neq e$ and 
+\[
+\pi(fg) = \pi(f)
+\]
+i.e. preserves fibers
+\end{theorem}
+
+Proof:
+  $\pi(\mathbf{f}) = p$ \\
+
+$\Phi_{\alpha} : U_{\alpha} \times G \to \pi^{-1}(U_{\alpha})$ \quad \quad \, local trivialization \\
+$\Phi_{\alpha}(p,g_{\alpha}) = \mathbf{f} \Longrightarrow \Phi_{\alpha}^{-1}(\mathbf{f}) = (p,g_{\alpha})$ 
+\quad $\exists \, ! \, g_{\alpha}$ for $\mathbf{f}$
+
+Let $g \in G$, 
+
+right action of $g$ on $\pi^{-1}(U_{\alpha})$ is (locally action)
+
+\[
+\Phi_{\alpha}(p,g_{\alpha}g) = fg
+\]
+
+if $p \in U_{\alpha} \bigcap U_{\beta}$ 
+
+\[
+\begin{gathered}
+  fg = \Phi_{\beta}(p,g_{\beta}g) = \Phi_{\beta}(p, \tau_{\beta \alpha}(p)g_{\alpha} g ) = \Phi_{\alpha}(p,g_{\alpha} g) 
+\end{gathered}
+\]
+$\tau_{\beta \alpha} = \Phi_{\beta}^{-1} \Phi_{\alpha}$
+
+\hrulefill
+
+We see in this proof that the essential point is that \emph{left translations} in $G$ (say by $\tau_{\beta \alpha}$) \emph{ commute with right translations} (say by $g$).  
+
+
+
+\subsection{ 17.2. }
+
+
+\subsection{ 17.3. Chern's Proof of the Gauss-Bonnet-Poincar\'{e} Theorem }
+
+
+\subsubsection{ 17.3a. A Connection in the Frame Bundle of a Surface }
+
+
+\begin{equation}
+  \omega \left( \frac{d\mathbf{x}}{dt} \right) \in \mathfrak{g} = \mathfrak{u}{ (1) } \quad \quad \quad \, (17.14)
+\end{equation}
+
+
+
+
+
+

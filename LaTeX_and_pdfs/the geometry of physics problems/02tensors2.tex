@@ -1,0 +1,247 @@
+\subsubsection{2.4 Tensors}
+
+\paragraph{2.4(2)(i)\quad Contraction invariant under base transformation}
+\beq{
+	\tensor{A}{^\prime^i_i}
+	= A(\d x'^i,\vec \partial'_i)
+	= A\left(\pdq{x'^i}{x^j}\d x^j,\pdq{x^k}{x'^i} \vec \partial_k\right)
+	= \underbrace{\pdq{x'^i}{x^j} \pdq{x^k}{x'^i}}_{\pdq{x^k}{x^j} = \delta^k_j} \underbrace{A\left(\mathrm dx^j,\vec \partial_k\right)}_{= \tensor{A}{^j_k}}
+	= \tensor{A}{^j_j}
+}
+This is the transformation law of a scalar.
+
+\paragraph{2.4(2)(ii)\quad Non-invariant ``contraction''}
+\beq{%
+	\sum_i A'_{ii}
+	&= \sum_i A(\vec \partial'_i, \vec \partial'_i)
+	= \sum_i A\left(\pdq{x^j}{x'^i} \vec \partial_j, \pdq{x^k}{x'^i} \vec \partial_k\right)
+	= \sum_i \pdq{x^j}{x'^i} \pdq{x^k}{x'^i} \underbrace{A(\vec \partial_j, \vec \partial_k)}_{= A_{jk}} \\
+	&= \sum_i \pdq{x^j}{x'^i} \pdq{x^k}{x'^i} A_{jk}
+	\neq \sum_iA_{ii}
+}
+Since the differential quotients do not cancel out, the value of \(\sum_i A_{ii}\) is dependant on coordinates; a coordinate-dependant number is neither a scalar nor any other sort of tensor.
+
+\paragraph{2.4(3)(i)\quad  Transformation behavior of a contraction}
+\beq{
+	g'_{ji}v'^i
+	= \pdq{x^k}{x'^j} \pdq{x^\ell}{x'^i} g_{k\ell} \pdq{x'^i}{x^m} v^m
+	= \pdq{x^k}{x'^j} \underbrace{\pdq{x^\ell}{x'^i} \pdq{x'^i}{x^m}}_{=\delta^\ell_m} g_{k\ell} v^m
+	= \pdq{x^k}{x'^j} g_{k\ell} v^\ell
+}
+Thus, \(g_{ji}v^i\) transforms like a vector.
+
+\paragraph{2.4(3)(ii)\quad  Tensor?}
+\beq{
+	\partial'_j v'^i
+	&= \pdq{}{x'^j} \left(\pdq{x'^i}{x^k} v^k\right)
+	= \pdq{^2 x'^i}{x^\ell \partial x^k} \pdq{x^\ell}{x'^j} v^k + \pdq{x'^i}{x^k} \pdq{v^k}{x'^j}
+	= \pdq{^2 x'^i}{x^\ell \partial x^k} \pdq{x^\ell}{x'^j} v^k + \pdq{x'^i}{x^k} \underbrace{\pdq{v^k}{x^\ell}}_{= \partial_\ell v^k} \pdq{x^\ell}{x'^j}
+	\\
+	&= \underbrace{\pdq{^2 x'^i}{x^\ell \partial x^k} \pdq{x^\ell}{x'^j} v^k}_{\neq 0} + \pdq{x^\ell}{x'^j} \pdq{x'^i}{x^k} \partial_\ell v^k
+}
+Although the second term is the correct tensor transformation law, the first term prevents \(\partial_j v^i\) from forming a tensor.
+
+\paragraph{2.4(3)(iii)\quad  Tensor? -- second attempt}
+\ \\
+Using the result of (ii), one gets
+\beq{
+	\partial'_j v'^i - \partial'_i v'^j
+	&= \pdq{^2 x'^i}{x^\ell \partial x^k} \pdq{x^\ell}{x'^j} v^k + \pdq{x^\ell}{x'^j} \pdq{x'^i}{x^k} \partial_\ell v^k - \pdq{^2 x'^j}{x^\ell \partial x^k} \pdq{x^\ell}{x'^i} v^k - \pdq{x^\ell}{x'^i} \pdq{x'^j}{x^k} \partial_\ell v^k
+	\\
+	&= \left(\pdq{^2 x'^i}{x^\ell \partial x^k} \pdq{x^\ell}{x'^j} v^k - \pdq{^2 x'^j}{x^\ell \partial x^k} \pdq{x^\ell}{x'^i} v^k\right) + \left(\pdq{x^\ell}{x'^j} \pdq{x'^i}{x^k} \partial_\ell v^k - \pdq{x^\ell}{x'^i} \pdq{x'^j}{x^k} \partial_\ell v^k\right)
+	\\
+	&\neq 0 + \pdq{x^\ell}{x'^j} \pdq{x'^i}{x^k} \left(\partial_\ell v^k - \partial_k v^\ell\right)
+}
+
+
+\subsubsection{2.5 The Graﬂmann or Exterior Algebra}
+
+\paragraph{2.5(1)\quad Basis expansion of a form}
+\beq{
+	\left(a_J \mathrm dx^J\right)\left(\vec \partial_K\right)
+	= a_J \mathrm dx^J \left(\vec \partial_K\right)
+	= a_J \delta^J_K
+	= a_K
+	= \alpha \left(\vec \partial_K\right)
+}
+Since this is true for all \(\vec \partial_K\), \(\alpha = a_J \mathrm dx^J\).
+
+\paragraph{2.5(2)\quad Components of $\alpha^1\wedge\beta^2$}
+\beq{
+	(\alpha^1\wedge\beta^2)_{i<j<k} = \sum_{l,m<n}\delta_{ijk}^{lmn}\alpha_l\beta_{mn}
+}
+All summands where \(ijk\) is not a permutation of \(lmn\) vanish, so there are 6 possible permutations left:
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ccc|ccc|ccc|ccc|ccc|ccc}
+		&(A)& & &(B)& & &(C)& & &(D)& & &(E)& & &(F)& \\
+		\hline
+		i&=&l & i&=&m & i&=&n & i&=&l & i&=&n & i&=&m \\
+		j&=&m & j&=&n & j&=&l & j&=&n & j&=&m & j&=&l \\
+		k&=&n & k&=&l & k&=&m & k&=&m & k&=&l & k&=&n
+	\end{tabular}
+\end{table}
+Of these 6, (C), (D) and (E) contradict \(i<j<k\) (given by the problem) with respect to \(m<n\) (from the definition of the wedge product), leaving only 3 summands. Thus,
+\beq{
+	(\alpha^1\wedge\beta^2)_{i<j<k} &= \sum_{l,m<n}\delta_{ijk}^{lmn}\alpha_l\beta_{mn} = \underbrace{\delta_{ijk}^{ijk}}_{(A)\rightarrow+1}\alpha_i\beta_{jk} + \underbrace{\delta_{ijk}^{kij}}_{(B)\rightarrow+1}\alpha_k\beta_{ij} + \underbrace{\delta_{ijk}^{jik}}_{(F)\rightarrow-1}\alpha_j\underbrace{\beta_{ik}}_{-\beta_{ki}} \\
+	&= \alpha_i\beta_{jk}+\alpha_j\beta_{ki}+\alpha_k\beta_{ij} \; .
+}
+
+
+\subsubsection{2.6 Exterior Differentiation}
+
+\paragraph{2.6(1)\quad Differential of a 3-Form in $\mathbb R^4$}
+\beq{
+	\beta^3
+	&= \beta_J \mathrm dx^J
+	= \sum_{i<j<k} \beta_{ijk} \mathrm dx^i \wedge \mathrm dx^j \wedge \mathrm dx^k
+	\\
+	&=
+		  \beta_{123} \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^3
+		+ \beta_{124} \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^4
+		\\ &\qquad
+		+ \beta_{134} \mathrm dx^1 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+		+ \beta_{234} \mathrm dx^2 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+	\\
+	\Rightarrow \mathrm d\beta^3
+	&=
+		  \mathrm d\beta_{123} \wedge \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^3
+		+ \mathrm d\beta_{124} \wedge \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^4
+		\\ &\qquad
+		+ \mathrm d\beta_{134} \wedge \mathrm dx^1 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+		+ \mathrm d\beta_{234} \wedge \mathrm dx^2 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+	\\
+	&=
+		  \pdq{\beta_{123}}{x^i} \; \mathrm dx^i \wedge \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^3
+		+ \pdq{\beta_{124}}{x^i} \; \mathrm dx^i \wedge \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^4
+		\\ &\qquad
+		+ \pdq{\beta_{134}}{x^i} \; \mathrm dx^i \wedge \mathrm dx^1 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+		+ \pdq{\beta_{234}}{x^i} \; \mathrm dx^i \wedge \mathrm dx^2 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+	\\
+	&=
+		  \pdq{\beta_{123}}{x^4} \; \mathrm dx^4 \wedge \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^3
+		+ \pdq{\beta_{124}}{x^3} \; \mathrm dx^3 \wedge \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^4
+		\\ &\qquad
+		+ \pdq{\beta_{134}}{x^2} \; \mathrm dx^2 \wedge \mathrm dx^1 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+		+ \pdq{\beta_{234}}{x^1} \; \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+	\\
+	&=
+		  \pdq{(-\beta_{123})}{x^4} \; \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+		+ \pdq{\beta_{124}}{x^3}    \; \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+		\\ &\qquad
+		+ \pdq{(-\beta_{134})}{x^2} \; \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+		+ \pdq{\beta_{234}}{x^1}    \; \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+	\\
+	&\qquad \text{}\rightarrow\text{rename components: } \beta_{234}\rightarrow \beta_1,\,-\beta_{134}\rightarrow \beta_2,\,\beta_{124}\rightarrow \beta_3,\,-\beta_{123}\rightarrow \beta_4
+	\\
+	&=
+		  \left(
+		  \pdq{\beta_1}{x^1}
+		+ \pdq{\beta_2}{x^2}
+		+ \pdq{\beta_3}{x^3}
+		+ \pdq{\beta_4}{x^4}
+		  \right)
+		\; \mathrm dx^1 \wedge \mathrm dx^2 \wedge \mathrm dx^3 \wedge \mathrm dx^4
+}
+In cartesian coordinates, this says something like \(d(\vec B \cdot \d \vec V) = \div \vec B \; \d H\) (``H: Hyperspace volume'').
+
+
+\subsubsection{2.7 Pull-Backs}
+
+
+
+\paragraph{2.7(1)\quad Proof of homomorphism}\ \\
+Notation: Let \((F_* \vec v_I) = (F_* \vec v_{i_1},\,F_* \vec v_{i_2},\, ...)\)\ .
+\beq{
+	F^*(\alpha \wedge \beta)\left(\vec v_I\right)
+	 &=(\alpha \wedge \beta)\left(F_* \vec v_I\right)
+	  = \sum_{J,K} \delta_I^{JK} \alpha\!\left(F_* \vec v_J \right) \, \beta\!\left(F_* \vec v_K \right)
+	  = \alpha\!\left(F_* \vec v_J \right) \wedge \beta\!\left(F_* \vec v_K \right)
+	  \\
+	  &=\left(F^* \alpha\!\left(\vec v_J \right)\right) \wedge \left(F^* \beta\!\left(\vec v_K \right)\right)
+	    \quad \forall \, \vec v_I (= \vec v_{JK})
+	\\ \Rightarrow
+	F^*(\alpha \wedge \beta)
+	 &= (F^*\alpha) \wedge (F^*\beta)
+}
+
+
+
+\paragraph{2.7(2)\quad Pull-back onto a surface}
+\ \\
+Let \((u,v) = (y^1,y^2)\).
+\beq{
+	\beta^2 &= \beta_{12} \d x^1 \wedge \d x^2 + \beta_{13} \d x^1 \wedge \d x^3 + \beta_{23} \d x^2 \wedge \d x^3
+	\\
+	\Rightarrow i^*\beta
+		&= \beta_{12} \pdq{x^1}{y^i} \d y^i \wedge \pdq{x^2}{y^j} \d y^j + \beta_{13} \pdq{x^1}{y^i} \d y^i \wedge \pdq{x^3}{y^j} \d y^j + \beta_{23} \pdq{x^2}{y^i} \d y^i \wedge \pdq{x^3}{y^j} \d y^j
+		\\
+		&= \beta_{12} \left( \cancel{\pdq{x^1}{y^1} \d y^1 \wedge \pdq{x^2}{y^1} \d y^1} + \pdq{x^1}{y^1} \d y^1 \wedge \pdq{x^2}{y^2} \d y^2 \right.
+			\\ &\qquad
+			+ \left. \pdq{x^1}{y^2} \d y^2 \wedge \pdq{x^2}{y^1} \d y^1 + \cancel{\pdq{x^1}{y^2} \d y^2 \wedge \pdq{x^2}{y^2} \d y^2} \right)
+			\\ &\qquad
+			+ \beta_{13} \left( \cancel{\pdq{x^1}{y^1} \d y^1 \wedge \pdq{x^3}{y^1} \d y^1} + \pdq{x^1}{y^1} \d y^1 \wedge \pdq{x^3}{y^2} \d y^2 \right.
+			\\ &\qquad
+			+ \left. \pdq{x^1}{y^2} \d y^2 \wedge \pdq{x^3}{y^1} \d y^1 + \cancel{\pdq{x^1}{y^2} \d y^2 \wedge \pdq{x^3}{y^2} \d y^2} \right)
+			\\ &\qquad
+			+ \beta_{23} \left( \cancel{\pdq{x^2}{y^1} \d y^1 \wedge \pdq{x^3}{y^1} \d y^1} + \pdq{x^2}{y^1} \d y^1 \wedge \pdq{x^3}{y^2} \d y^2 \right.
+			\\ &\qquad
+			+ \left. \pdq{x^2}{y^2} \d y^2 \wedge \pdq{x^3}{y^1} \d y^1 + \cancel{\pdq{x^2}{y^2} \d y^2 \wedge \pdq{x^3}{y^2} \d y^2} \right)
+		\\
+		&= \left(\beta_{12} \left(\pdq{x^1}{y^1}\pdq{x^2}{y^2} - \pdq{x^1}{y^2}\pdq{x^2}{y^1}\right) + \beta_{13} \left(\pdq{x^1}{y^1}\pdq{x^3}{y^2} - \pdq{x^1}{y^2}\pdq{x^3}{y^1}\right)\right.
+		 \\ &\qquad
+		 + \left.\beta_{23} \left(\pdq{x^2}{y^1}\pdq{x^3}{y^2} - \pdq{x^2}{y^2}\pdq{x^3}{y^1}\right)\right) \d y^1 \wedge \d y^2
+}
+If one now defines, by renaming the components of \(\beta\) again (\(\beta_{23}\rightarrow\beta_1,\,-\beta_{13}=\beta_{31}\rightarrow\beta_2,\,\beta_{12}\rightarrow\beta_3\)), \(\vec b = (\beta_1,\beta_2,\beta_3)\), the last term can be identified as \(\vec b \cdot \vec n \, \d y^1 \wedge \d y^2\), and one gets the desired expression
+\beq{
+	i^*\beta = \vec b \cdot \vec n \, \d u \wedge \d v \;.
+}
+
+
+
+\subsubsection{2.10 Interior Products and Vector Analysis}
+
+\paragraph{2.10(2)\quad Components of the interior product}
+\ \\
+Let \(\alpha = \alpha_J \mathrm dx^J\). In general we have the expansion
+\beq{
+	i_{\vec v} \alpha
+	= i_{v^j \vec \partial_j} \left(\alpha\left(\vec\partial_k, \vec\partial_L\right) \mathrm dx^k \wedge \mathrm dx^L \right)
+	= v^j \alpha\left(\vec\partial_j,\vec\partial_L\right) \mathrm dx^L
+	= v^j \alpha_{jL} \mathrm dx^L
+}
+For a single component this yields
+\beq{
+	\left(i_{\vec v} \alpha\right)_K
+	= \left(v^j \alpha_{jL} \mathrm dx^L\right) (\vec\partial_K)
+	= v^j \alpha_{jL} \mathrm dx^L (\vec\partial_K)
+	= v^j \alpha_{jL} \delta^L_K
+	= v^j \alpha_{jK}
+}
+
+\paragraph{2.10(4)\quad Vector analysis in $\mathbb R^3$} %heavy spacing, typesetting yaaay! :D
+\beq{
+	\grad(fg) &\Leftrightarrow \d(f^0\wedge g^0) = \d f \wedge g + f \wedge \d g = \overbrace{(\d f)}^{\Leftrightarrow \grad f} \!\!\! g + f \!\!\! \overbrace{(\d g)}^{\Leftrightarrow \grad g} \Leftrightarrow f \grad g + g \grad f 
+	\\
+	\div(f\,\vec B) &\Leftrightarrow \d(f \wedge \beta^2) = \underbrace{\overbrace{\d f}^{\Leftrightarrow \grad f} \!\!\!\! \wedge \, \beta^2}_{\Leftrightarrow \grad(f)\cdot \vec B} \, + \; f \wedge \!\!\! \underbrace{\d \beta^2}_{\Leftrightarrow \div \vec B} \Leftrightarrow f \div \vec B + \langle \grad f,\vec B\rangle
+	\\
+	\rot(f\vec A) &\Leftrightarrow \d(f \wedge \alpha^1) = \!\!\! \underbrace{\overbrace{\d f}^{\Leftrightarrow \grad f} \!\!\!\! \wedge \, \alpha^1}_{\Leftrightarrow \grad(f)\cross\vec A} + \; \underbrace{f \;\; \wedge \!\! \overbrace{\d \alpha^1}^{\Leftrightarrow \rot(\vec A)}}_{\Leftrightarrow f \rot(\vec A)} = f \rot \vec A + \grad(f)\cross\vec B
+	\\
+	\langle\vec A\cross\vec B,\vec C\cross\vec D\rangle &\Leftrightarrow (\text{no idea})
+}
+
+\paragraph{2.10(5)\quad Basis expansion of the cross product}
+\beq{
+	\vec v \cross \vec B &\Leftrightarrow -i_{\vec v}\beta^2
+	\\
+	&= -i_{\vec v} i_{\vec B} \vol^3 
+	\\
+	&= - v^k B^l i_{\vec \partial_k} i_{\vec \partial_l} \vol^3
+	\\
+	&= - v^k B^l \vol^3(\vec \partial_l,\vec \partial_k,\vec \partial_m) \d x^m
+	\\
+	&= \sqrt{g} \; v^k B^l \varepsilon_{klm} \d x^m
+}
+
+If you're wondering how the ``identification stuff'' works, read the chapter about the Hodge star operator, it's around page 360. I have no idea why Frankel placed it that late. You might also be interested in the definition of the cross product in 3.1(3)(i).

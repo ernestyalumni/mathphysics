@@ -1,0 +1,89 @@
+% 20YangMillsFields.tex
+
+\subsection{20.1. Noether's Theorem for Internal Symmetries }
+
+\begin{quote}
+\emph{How do symmetries yield conservation laws?}
+\end{quote}
+
+$\phi$ $N$-tuple $\phi^a(t,\mathbf{x}) = \phi^a(x)$, local representation of a section of some vector bundle $E$, 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {    
+    E  &   \\     
+    M &    \\ };
+  \path[->]  (m-1-1) edge node [auto] {$\pi$} (m-2-1);
+\end{tikzpicture}
+
+%\begin{tikzpicture}
+%  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+%  {
+%    U_i \subset \mathbb{R}^{n+1} - 0 &  \\
+%    V_i \subset \mathbb{R}P^n  & \mathbb{R}^n  \\ };
+%  \path[-stealth]
+%  (m-1-1) edge node [right] {$\varphi_i \pi$} (m-2-2)
+%  edge node [left] { $\pi$} (m-2-1)
+%  (m-2-1) edge node [below] {$\varphi$} (m-2-2);
+%\end{tikzpicture}
+
+In the case of a Dirac electorn, we have seen that $E$ is the bundle of complex 4-component Dirac spinors over a perhaps curved spacetime. If $E$ is not a trivial bundle (or if we insist on using curvilinear coordinates) we shall have to deal with the fact that $\partial_j \phi^a$ do not form a tensor.  
+
+\subsubsection{ 20.1a. The Tensorial Nature of Lagrange's Equations }
+
+Let $M^{n+1}$ (pseudo-) Riemannian manifold, let $E$ vector bundle over $M$; for definiteness, let fiber be $\mathbb{R}^N$. \\
+section of this bundle over $U \subset M$ is described by $N$ real-valued functions $\lbrace \phi^a_U \rbrace$, \\
+\quad where $\phi_V = c_{VU}\phi_U$ and \\
+\quad \quad $c_{VU}(x)$ is $N\times N$ transition matrix function, $c^a_{VUb}$.   \\
+
+notation $\begin{gathered} \quad \\
+  \lbrace \Phi^a \rbrace \\ 
+  \lbrace \Phi^a_{\alpha} \rbrace \\
+\Phi^a_{\alpha} = \tau_{\alpha \beta} \Phi_{\beta} \end{gathered}$ \\
+
+Lagrangian $L_0(x, \phi, \phi_x) \equiv L_0(x,\Phi, \partial_j \Phi^a)$
+
+
+
+\subsection{20.2. Weyl's Gauge Invariance Revisited}
+
+\subsubsection{ 20.2a. The Dirac Lagrangian }
+
+\subsubsection{ 20.2b. Weyl's Gauge Invariance Revisited}
+
+\subsubsection{ 20.2c. The Electromagnetic Lagrangian }
+
+Instead of considering a change of (spacetime) coordinates $x$, we shall look at a change of the \emph{field} (fiber) coordinate $\psi$, i.e. \emph{a gauge transformation}.  
+
+Since the phase of $\psi$ is not measurable, we \emph{should} be able to have invariance under a \emph{local} gauge transformation, where $\alpha = \alpha(x)$ varies with the spacetime point $x$!  \\
+\quad Clearly the Dirac equation and Lagrangian are \emph{not} invariant under such a substitution because of the appearance of terms involving $d\alpha$.  \\
+\quad It must be that \emph{there is some background field that is interacting with the electron}.  This background field will manifest itself through the appearance of the connection.  
+
+
+
+
+
+
+\subsection{ The Yang-Mills Nucleon }
+
+\begin{quote}
+  How did the groups $SU(2)$ and $SU(3)$ appear in particle physics?
+\end{quote}
+
+
+
+\subsubsection{ 20.3a. The Heisenberg Nucleon }
+
+\subsubsection{ 20.3b. The Yang-Mills Nucleon }
+
+\subsubsection{ 20.3c. A Remark on Terminology }
+
+We have related the connection matrices $\omega$ to the gauge potentials $A$ by 
+\[
+\omega = -i q A
+\]
+$q$ is called a generalized \textbf{charge}.  
+
+
+
+

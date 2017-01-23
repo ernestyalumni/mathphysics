@@ -1,0 +1,142 @@
+\usepackage{tensor}
+%	Full documentation: http://ftp.uni-erlangen.de/mirrors/CTAN/macros/latex/contrib/tensor/tensor.pdf
+%	Usage of tensor package:
+%	Indices only: \indices{^a_{bc}}
+%	Tensor: \tensor[indices before]{tensor name}{indices after}
+%
+\usepackage{cancel} % usage: [\cancel \bcancel \xcancel \cancelto{}]{text}
+%
+\usepackage{color}
+\definecolor{grey}{rgb}{0.6,0.6,0.6}
+
+
+
+
+
+
+% CUSTOM(IZED) COMMANDS
+\renewcommand{\d}{\mathrm d}                                     % differential
+\newcommand{\tdq}[2]{\frac{\d #1}{\d #2}}                        % total differential quotient
+\newcommand{\pdq}[2]{\frac{\partial #1}{\partial #2}}            % partial differential quotient
+\newcommand{\vpdq}[1]{\frac{\vec\partial}{\vec\partial #1}}      % bold partial differential quotient
+\newcommand{\vdq}[2]{\frac{\delta #1}{\delta #2}}                % variational differential quotient
+\newcommand{\beq}[1]{\begin{align*}#1\end{align*}}               % block equation without numbering
+\newcommand{\beqN}[1]{\begin{align}#1\end{align}}                % block equation with numbering. Use \notag to suppress numbering the numering locally.
+\newcommand{\ieq}[1]{\(#1\)}                                     % inline equation
+\newcommand{\cross}{\times}                                      % cross product
+\renewcommand{\vec}[1]{\boldsymbol{\mathrm{#1}}}                 % print vectors bold/non-italic
+\newcommand{\vol}{\operatorname{vol}}                            % volume form
+\renewcommand{\inf}{\infty}                                      % infinity
+\newcommand{\FT}{\mathcal F}                                     % Fourier transformation
+\newcommand{\iFT}{\mathcal F^{-1}}                               % inverse Fourier transformation
+\newcommand{\infint}{\int_{-\inf}^\inf}                          % integral from -inf to inf
+\newcommand{\refTheorem}[1]{\{\ref{#1}\}}
+\newcommand{\refEqn}[1]{(\ref{#1})}
+\renewcommand{\i}{\mathrm i}                                     % imaginary unit
+\renewcommand{\H}{\mathcal{H}}                                   % Hamiltonian
+\renewcommand{\L}{\mathcal{L}}                                   % Lie derivative
+
+% Redefinition of basic functions so parentheses are automatically added
+\newcommand\nfunc[2]{\operatorname{#1}\left(#2\right)}           % named function
+%\renewcommand\exp[1]{\nfunc{exp}{#1}}                            % exp
+\renewcommand\sin[1]{\nfunc{sin}{#1}}                            % sin
+\renewcommand\cos[1]{\nfunc{cos}{#1}}                            % cos
+\renewcommand\tan[1]{\nfunc{tan}{#1}}                            % tan
+\renewcommand\cot[1]{\nfunc{cot}{#1}}                            % cot
+\renewcommand\Re[1]{\nfunc{Re}{#1}}                              % Re
+\renewcommand\Im[1]{\nfunc{Im}{#1}}                              % Im
+\newcommand\Res[1]{\nfunc{Res}{#1}}                              % Res
+\renewcommand\div[1]{\nfunc{div}{#1}}                            % div
+\newcommand\grad[1]{\nfunc{grad}{#1}}                            % grad
+\newcommand\curl[1]{\nfunc{curl}{#1}}                            % curl
+\newcommand\rot[1]{\nfunc{rot}{#1}}                              % rot = curl
+\newcommand\sign[1]{\nfunc{sign}{#1}}                            % rot = curl
+\renewcommand\deg[1]{\nfunc{deg}{#1}}                            % degree
+\newcommand\supp[1]{\nfunc{supp}{#1}}                            % support
+\newcommand\tr[1]{\nfunc{Tr}{#1}}                                % trace
+\renewcommand\det[1]{\nfunc{det}{#1}}                            % determinant
+\usepackage{dsfont}\newcommand{\unity}{\mathds{1}}               % identity matrix/operator
+\newcommand{\identical}{\equiv}                                  % identical
+
+%\renewcommand{\matrix}[1]{\begin{matrix}#1\end{matrix}}          % matrix without parentheses
+\newcommand{\matrixp}[1]{\begin{pmatrix}#1\end{pmatrix}}         % matrix with normal braces
+\newcommand{\Cases}[1]{\begin{cases}#1\end{cases}}               % piecewise functions etc
+\newcommand{\const}{\mathrm{const.}}
+
+
+
+
+
+
+
+% Cyrillic stuff
+% thought to be used in mathmode
+\newcommand\cyrillic[1]{{\fontencoding{OT2}\fontfamily{wncyr}\selectfont #1}}
+\newcommand\mathcyr[1]{\text{\cyrillic{#1}}}
+                                    % a     (identical to a)
+                                    % A     (identical to A)
+\newcommand\be{\mathcyr{b}}         % be    (resembles delta)
+\newcommand\Be{\mathcyr{B}}         % Be    (resembles b)
+\newcommand\ve{\mathcyr{v}}         % ve    (small B)
+                                    % Ve    (identical to B)
+\renewcommand\ge{\mathcyr{g}}       % ge    (small Gamma)
+                                    % Ge    (identical to Gamma)
+\newcommand\de{\mathcyr{d}}         % de    (somewhat edgy-A-looking)
+\newcommand\De{\mathcyr{D}}         % De    (larger version of de)
+                                    % ye    (identical to e)
+                                    % Ye    (identical to E)
+\newcommand\zhe{\mathcyr{zh}}       % zhe   (resembles asterisk)
+\newcommand\Zhe{\mathcyr{Zh}}       % Zhe   (larger version of zhe)
+                                    % dze   (identical to s)
+                                    % Dze   (identical to S)
+                                    % ze    (almost identical to 3)
+                                    % Ze    (larger version of ze)
+\newcommand\invn{\mathcyr{i}}       % -     (inverted N)
+\newcommand\Invn{\mathcyr{I}}       % -     (larger version of invn)
+                                    % k     (identical to kappa)
+                                    % K     (identical to Kappa)
+\newcommand\el{\mathcyr{l}}         % el    (resembles pi)
+\newcommand\El{\mathcyr{L}}         % El    (resembles Pi)
+\newcommand\emm{\mathcyr{m}}        % em    (small M)
+                                    % Em    (identical to M)
+\newcommand\en{\mathcyr{n}}         % en    (small N)
+                                    % En    (identical to N)
+                                    % o     (identical to o)
+                                    % O     (identical to O)
+\newcommand\pe{\mathcyr{p}}         % pe    (small Pi)
+                                    % Pe    (identical to Pi)
+                                    % koppa (identical to c)
+                                    % Koppa (identical to C)
+                                    % er    (identical to p)
+                                    % Er    (identical to P)
+\newcommand\te{\mathcyr{t}}         % te    (small T)
+                                    % Te    (identical to T)
+                                    % tshe  (identical to hbar)
+\newcommand\Tshe{\mathcyr{C1}}      % Tshe  (T+h)
+                                    % ef    (almost identical to varphi)
+                                    % Ef    (identical ti Phi)
+                                    % kha   (identical to x)
+                                    % Kha   (identical to X)
+\newcommand\tse{\mathcyr{ts}}       % tse   (small upside-down Pi with some kind of a hook)
+\newcommand\Tse{\mathcyr{Ts}}       % Tse   (larger version of tse)
+\newcommand\che{\mathcyr{ch}}       % che   (turn h by 180°)
+\newcommand\Che{\mathcyr{Ch}}       % Che   (larger version of che)
+\newcommand\sha{\mathcyr{sh}}       % sha   (small upside-down triple pi)
+\newcommand\Sha{\mathcyr{Sh}}       % Sha   (larger version of sha)
+\newcommand\shta{\mathcyr{shch}}    % shta  (sha with hook)
+\newcommand\Shta{\mathcyr{Shch}}    % Shtaa (Sha with hook)
+\newcommand\yer{\mathcyr{p2}}       % yer   (hard sign, small b with a hook)
+\newcommand\Yer{\mathcyr{P2}}       % Yer   (larger version of yer)
+                                    % yeri  (bI. that's two characters. gtfo.)
+                                    % yat   (more b with more hooks, no, i'm out)
+\newcommand\yu{\mathcyr{yu}}        % yu    (|-O)
+\newcommand\Yu{\mathcyr{Yu}}        % Yu    (larger version of yu)
+\newcommand\ya{\mathcyr{ya}}        % ya    (mirrored R)
+\newcommand\Ya{\mathcyr{Ya}}        % Ya    (larger version of ya)
+% test all letters: \be\Be\ve\ge\de\De\zhe\Zhe\invn\Invn\el\El\em\en\pe\te\Tshe\tse\Tse\che\Che\sha\Sha\shta\Shta\yer\Yer\yu\Yu\ya\Ya
+% end cyrillic stuff
+
+% enabled by package amsthm
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}

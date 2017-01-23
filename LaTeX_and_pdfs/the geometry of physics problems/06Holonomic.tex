@@ -1,0 +1,90 @@
+% 06Holonomic.tex
+
+\subsection{6.1. The Robenius Integrability Condition}
+
+Can one always find a surface orthogonal to a family of curves in $\mathbb{R}^3$?
+
+\subsection{6.2. Integrability and Constraints}
+
+\subsection{6.3. Heuristic Thermodynamics via Caratheodory}
+
+Can one go adiabatically from some state to any nearby state?
+
+\subsubsection{6.3a. Introduction}
+
+
+
+\subsubsection{6.3b. The First Law of Thermodynamics}
+
+Consider system of regions of fluids separated by ``diathermous'' membranes \\
+\phantom{\quad \, } allow only passage of heat, not fluids \\
+
+assume system connected \\
+assume each state in thermal equilibrium
+
+Let $p_i,v_i$ (uniform) pressure and volume of $i$th region \\
+\phantom{\quad \, } at thermal equilibrium, ``equations of state'' $p_iv_i = n_iRT_i$ \\
+\phantom{\quad \quad \, } $p_i v_i = n_iRT_i$ eliminate all but 1 pressure
+\[
+\Longrightarrow p_1, v_1,v_2, \dots v_n
+\]
+assume globally defined energy function $U$
+
+path in $M^{n+1}$ represents sequence of states each in equilibrium, i.e. assume very slow changes in time, quasi-static irreversible processes, e.g. ``stirring'' \\
+on $M$, $\text{dim}{M} = n+1$, assume $\exists \, $ work 1-form $W$, work done by system 
+\[
+W = p_i dv_i = p_i(U,v_1\dots v_n)dv_i \quad \quad \, i=1 \dots n 
+\]
+heat 1-form, heat added or removed from system, assume $Q \neq 0$
+\[
+Q = \sum_{i=0}^n Q_i(U,v_1 \dots v_n) dv_i \quad \, (v_0 = U)
+\]
+
+1st. law of thermodynamics 
+\[
+dU = Q-W
+\]
+energy conservation 
+
+\subsubsection*{6.3c. Some Elementary Changes of State}
+
+1. Heating at constant volume. 
+
+\phantom{\quad \, } path $\gamma_I \in M$, $\text{dim}M = n+1$ s.t. $dv_1 = \dots = dv_n =0$.  $W=0$
+\phantom{\quad \, } $dU = Q_0 dU$.  $\dot{\gamma}_I = c_0 \frac{\partial}{ \partial U}$
+
+2. Quasi-static adiabatic process.  No heat exchanged,
+\[
+Q(\dot{\gamma}_{\text{II}}) = 0 \quad \, \text{ so } dU = -W
+\]
+
+3. Stirring at constant volume adiabatic, but not quasistatic  \\
+\phantom{\quad \, } $Q,W$ makes no sense but \\
+\phantom{\quad \, } work is being done by (or on) system, $U(y') - U(x)$, difference of internal energy \\
+assume connected mechanical manifold $V$, $\text{dim}V =n$ \\
+\phantom{assume } diff. $\pi:M \to V$ \\
+\phantom{assume diff} $\pi$ onto \\
+\phantom{assume diff} $\pi_*$ onto \\
+\phantom{assume diff} $\pi$ submersion
+
+By main thm. on submanifolds of Sec. 1.3d, \\
+\phantom{\quad \, } if $v\in V$, then $\pi^{-1}(v)$ 1-dim. embedded submanifold of $M$ \\
+\phantom{\quad \quad \, } assume $\forall \, \pi^{-1}(v)$ connected, we're assuming given any pair of states \\
+\phantom{\quad \quad \quad \, } lying on $\pi^{-1}(v)$, 1 of them can be obtained by other by ``heating at constant volume''
+
+assume $W$ on $M$ is $0$ when $\left. W \right|_{\pi^{-1}(v)} =0$ \\
+on the other hand, $Q \neq 0$ on $\pi^{-1}(v)$; $dU = Q \neq 0$ (first law) \\
+\phantom{\quad \, } $(U,v^1 \dots v^n)$ local coordinate system for $M$ ($U$ global coordinate)
+
+\subsubsection{6.3d. The Second Law of Thermodynamics} 
+
+cyclic process starts and ends at the same state
+
+Kelvin 2nd. law of thermodynamics \\
+\phantom{\quad \, } $\nexists $ quasistatic cyclic process can $Q$ converted entirely into $W$  \\
+
+Caratheodory (1909) 2nd. law of thermodynamics \\
+\phantom{\quad \, } $\forall \, $ neighborhood $N \ni $ state $x$, $\exists \, y$ not accessible from $x$ via quasistatic adiabatic paths, i.e. paths s.t. $Q=0$
+
+
+

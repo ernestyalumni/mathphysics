@@ -1,0 +1,698 @@
+%
+% Cox_UsingAG_poznamky.tex 
+%
+\documentclass[twoside]{amsart}
+\usepackage{amssymb,latexsym}
+\usepackage{MnSymbol}
+\usepackage{times}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue}
+%\usepackage{simpsons}
+%\usepackage{epsdice}
+\usepackage{staves} 
+
+\usetikzlibrary{matrix,arrows}
+%\usepackage{graphics}
+
+\oddsidemargin-0.85cm
+\evensidemargin-0.65cm
+\topmargin-2.05cm     %I recommend adding these three lines to increase the 
+\textwidth19.05cm   %amount of usable space on the page (and save trees)
+\textheight25.05cm  
+\parindent0.0em
+
+%This next line (when uncommented) allow you to use encapsulated
+%postscript files for figures in your document
+%\usepackage{epsfig}
+
+%plain makes sure that we have page numbers
+\pagestyle{plain}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{axiom}{Axiom}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\title{Notes and Solutions to \textbf{Using Algebraic Geometry} by David A. Cox, John Little, Donal O'Shea. Springer, Second Edition.  }
+
+\author{
+  Ernest Yeung - Praha
+       }
+\date{zima 2014}
+
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+  {\bigskip\bigskip
+   \noindent{\small\bf Question #1.}
+   \bigskip}
+
+\newcommand{\problemhead}[1]
+  {
+   \noindent{\small\bf Problem #1.}
+   }
+
+\newcommand{\exercisehead}[1]
+  { \smallskip
+   \noindent{\small\bf Exercise #1.}
+  }
+
+\newcommand{\solutionhead}[1]
+  {
+   \noindent{\small\bf Solution #1.}
+   }
+
+
+%-----------------------------------
+\begin{document}
+%-----------------------------------
+
+\maketitle
+
+Fund Science! \& Help Ernest finish his Physics Research! : quantum super-A-polynomials - a thesis by Ernest Yeung \\
+
+\url{http://igg.me/at/ernestyalumni2014} \\
+
+\noindent Facebook  : ernestyalumni \\
+gmail        : ernestyalumni \\
+google       : ernestyalumni \\
+linkedin     : ernestyalumni \\
+tumblr       : ernestyalumni \\
+twitter      : ernestyalumni \\
+weibo        : ernestyalumni \\ 
+youtube      : ernestyalumni \\
+indiegogo    : ernestyalumni \\
+
+\textbf{Using Algebraic Geometry}.  David A. Cox.  John Little. Donal O'Shea. Second Edition.  Springer.  2005.  ISBN 0-387-20706-6 QA564.C6883 2004
+
+\section{ Introduction }
+
+\subsection{ Polynomials and Ideals }
+
+\emph{monomial } 
+
+\begin{equation}
+  (1.1) \quad \quad \, x_1^{\alpha_1} \dots x_n^{\alpha_n}
+\end{equation}
+
+total degree of $x^{\alpha}$ is $\alpha_1 + \dots + \alpha_n \equiv |\alpha|$ \\
+
+
+
+field $k$, $k[x_1 \dots x_n]$ collection of all polynomials in $x_1 \dots x_n$ with coefficients $k$.   \\
+
+polynomials in $k[x_1 \dots x_n]$ can be added and multiplied as usual, so $k[x_1 \dots x_n]$ has structure of commutative ring (with identity) \\
+however, only nonzero constant polynomials have multiplicative inverses in $k[x_1 \dots x_n]$, so $k[x_1 \dots x_n]$ not a field \\
+\quad however set of rational functions $\lbrace f/g | f,g \in k[x_1 \dots x_n], \, g\neq 0\rbrace$ is a field, denoted $k(x_1 \dots x_n)$ \\
+
+so
+\[
+f = \sum_{\alpha} c_{\alpha}x^{\alpha}
+\]
+where $c_{\alpha} \in k$
+
+so
+
+\[
+f \in k [x_1 \dots x_n ] = \lbrace f | f = \sum_{\alpha} c_{\alpha} x^{\alpha} , x^{\alpha} = x_1^{\alpha_1} \dots x_n^{\alpha_n}, c_{\alpha} \in k \rbrace
+\]
+
+$f$ homogeneous if all monomials have same total degrees
+
+polynomial $f$ is homogeneous if all monomials have the \emph{same total degree} \\
+
+Given a collection of polynomials $f_1 \dots f_s \in k[x_1 \dots x_n]$, we can consider all polynomials which can be built up from these by multiplication by arbitrary polynomials and by taking sums
+
+\begin{definition}[1.3] Let $f_1 \dots f_s \in k[x_1 \dots x_n]$ \\
+Let $\langle f_1 \dots f_s \rangle = \lbrace p_1 f_1  + \dots + p_s f_s | p_i \in k[x_1 \dots x_n] \text{ for } i = 1 \dots s \rbrace$
+\end{definition}
+
+
+\exercisehead{1} 
+\begin{enumerate}
+\item[(a)] $x^2 = x \cdot ( x  -y^2 ) + y \cdot ( xy )$  
+\item[(b)] 
+\[
+ p \cdot ( x - y^2 ) = p x - p y^2
+\]
+and for $p xy = (py)x$
+\item[(c)] 
+\[
+p(y) ( x - y^2) = p(y)x - p(y) y^2 \notin \langle x^2, xy \rangle
+\]
+\end{enumerate}
+
+\exercisehead{2} 
+\[
+\begin{gathered}
+  \sum_{i=1}^s p_i f_i  + \sum_{j=1}^s q_j f_j = \sum_{i=1}^s (p_i + q_i )f_i, \quad \, p_i + q_i \in k[x_1 \dots x_n] \end{gathered}
+\]
+$\langle f_1 \dots f_s \rangle$ closed under sums in $k[x_1 \dots x_n]$ \\
+
+If $f\in \langle f_1 \dots f_s \rangle$, \\
+\phantom{If }$ p \in k [x_1 \dots x_n]$
+
+\[
+\begin{gathered}
+p\cdot f = p \sum_{i=1}^s q_j f_j = \sum_{i=1}^s pq_j f_j, \quad \, pq_j \in k[x_1 \dots x_n] \text{ so }  \\
+p\cdot f \in \langle f_1 \dots f_s \rangle
+\end{gathered}
+\]
+
+Done.  \\
+
+The 2 properties in Ex. 2 are defining properties of ideals in the ring $k[x_1 \dots x_n]$
+
+\begin{definition}[1.5]
+Let $I \subset k[x_1 \dots x_n]$, \, $I \neq \emptyset$ \\
+$I$ ideal if 
+\begin{enumerate}
+\item[(a)] $f+ g \in I$, \, $\forall \, f,g \in I$ 
+\item[(b)] $pf \in I$, \, $\forall \, f \in I$, arbitrary $p \in k[x_1 \dots x_n]$
+\end{enumerate}
+\end{definition}
+
+Thus $\langle f_1 \dots f_s\rangle$ is an ideal by Ex. 2.  \\
+
+we call it the ideal generated by $f_1 \dots f_s$.  
+
+\exercisehead{3} Suppose $\exists \, $ ideal $J$, $f_1 \dots f_s \in J$ s.t. $J \subset \langle f_1 \dots f_s \rangle$ \\
+if $f\in \langle f_1 \dots f_s \rangle$, $f = \sum_{i=1}^s p_i f_i$, \, $p_i \in k[x_1 \dots x_n]$ \\
+
+$\forall \, i = 1 \dots s$, $p_i f_i \in J$ and so $\sum_{i=1}^s p_i f_i \in J$, by def. of $J$ as an ideal.
+
+\[
+\langle f_1 \dots f_s \rangle \subseteq J \quad \quad \, \Longrightarrow J = \langle f_1 \dots f_s \rangle
+\]
+
+$\Longrightarrow \langle f_1 \dots f_s \rangle$ is smallest ideal in $k[x_1 \dots x_n]$ containing $f_1 \dots f_s$
+
+
+\exercisehead{4} For $\begin{aligned} & \quad \\
+  & I = \langle f_1 \dots f_s \rangle \\
+  & J = \langle g_1 \dots g_t \rangle \end{aligned}$ \\
+
+ $I = J$ iff $s=t$ and $\forall \, f \in I$, $f = \sum_{i=1}^t q_i g_i$ and if $ 0  = \sum_{i=1}^t q_i g_i$, $q_i =0$, \, $\forall \, i = 1 \dots t$, and if $0 = \sum_{i=1}^s p_i f_i$, \, $p_i = 0$, \, $\forall \,  i = 1 \dots s$
+
+
+\begin{definition}[1.6]
+\[
+\sqrt{I} = \lbrace g \in k[x_1\dots x_n] | g^m \in I \text{ for some } m \geq 1 \rbrace
+\]
+\end{definition}
+
+e.g. $x+y \in \sqrt{ \langle x^2 + 3 xy , 3xy + y^2 \rangle }$
+
+in $\mathbb{Q}[x,y]$ since 
+
+\[
+(x+y)^3 =x(x^2 + 3xy) + y(3xy + y^2) \in \langle x^2 + 3xy, 3xy + y^2\rangle
+\]
+
+
+%\begin{definition}[1.6]
+%\[
+%\sqrt{I } = \lbrace g \in k[x_1 \dots x_n ] | g^m \in I \text{ for some m } \geq 1 \rbrace
+%\]
+%\end{definition}
+
+%e.g. $x+y \in \sqrt{ \langle x^2 + 3xy, 3xy + y^2 \rangle }$
+
+%in $\mathbb{Q}[x,y]$ since
+
+%\[
+%(x+y)^3 = x(x^2 + 3xy) + y(3xy + y^2) \in \langle x^2 + 3xy, 3xy + y^2 \rangle
+%\]
+
+\begin{itemize}
+\item (Radical Ideal Property) $\forall \, $ ideal $I\subset k[x_1 \dots x_n]$, $\sqrt{I}$ ideal, $\sqrt{I} \supset I$
+\item \textbf{(Hilbert basis Thm.)} $\forall \, $ ideal $I\subset k[x_1\dots x_n]$ \\
+$\exists \, $ finite generating set, \\
+i.e. $\exists \, \lbrace f_1 \dots f_2 \rbrace \subset k [x_1 \dots x_n]$ s.t. $I=\langle f_1 \dots f_s \rangle$
+\item (Division Algorithm in $k[x]$) $\forall \, f,g \in  k[x]$ (EY : in 1 variable) \\
+$\forall \, f, g \in k[x]$ (in 1 variable )\\
+$f= qg + r$, $\exists \, !$ quotient $q$, $\exists \, $ remainder $r$
+\end{itemize}
+
+\subsection{}
+
+\subsection{Gr\"obner Bases}
+
+\begin{definition}[3.1]
+  Gr\"obner basis for $I$ $\equiv G = \lbrace g_1 \dots g_k \rbrace \subset I$ s.t. $\forall \, f \in I$, $\text{LT}(f)$ divisible by $\text{LT}(g_i)$ for some $i$
+\end{definition}
+
+\begin{itemize}
+\item (Uniqueness of Remainders) let ideal $I\subset k[x_1 \dots x_n]$ \\
+division of $f\in k[x_1 \dots x_n]$ by Gr\"o bner basis for $I$, produces $f=g+r$, $g\in I$, and no term in $r$ divisible by any element of $\text{LT}(I)$
+\end{itemize}
+
+
+
+
+
+\subsection{Affine Varieties}
+
+affine $n$-dim. space over $k$ \quad \, $k^n = \lbrace (a_1 \dots a_n ) | a_1 \dots a_n \in k \rbrace$
+
+$\forall \, $ polynomial $f\in k[x_1 \dots x_n ]$, $(a_1 \dots a_n) \in k^n$ \\
+\phantom{ \quad } $f: k^n \to k$ \\
+\phantom{ \quad } $f(a_1 \dots a_n)$ s.t. $x_i = a_i$ i.e. \\
+
+if $f= \sum_{\alpha} c_{\alpha} x^{\alpha}$ for $c_{\alpha} \in k$, then  \\
+\phantom{ \quad } $f(a_1 \dots a_n) =\sum_{\alpha} c_{\alpha}a^{\alpha} \in k$, where $a^{\alpha} = a_1^{\alpha_1} \dots a_n^{\alpha_n}$
+
+\begin{definition}[4.1]
+affine variety $\mathbf{V}(f_1 \dots f_s) = \lbrace ( a_1 \dots a_n) | (a_1 \dots a_n) \in k^n, \, f_1(x_1 \dots x_n) = \dots = f_s(x_1 \dots x_n) = 0 \rbrace$ \\
+subset $V\subset k^n$ is affine variety if $V = V(f_1 \dots f_s)$ for some $\lbrace f_i \rbrace$, polynomial $f_i \in k[x_1 \dots x_n]$
+\end{definition}
+
+\begin{itemize}
+  \item (Equal Ideals Have Equal Varieties) If $\langle f_1 \dots f_s \rangle = \langle g_1 \dots g_t \rangle$ in $k[x_1 \dots x_n]$, then $\mathbf{V}(f_1 \dots f_s) = \mathbf{V}(g_1 \dots g_t)$
+\end{itemize}
+
+so, recap \\
+if $\langle f_1 \dots f_s \rangle = \langle g_1 \dots g_t \rangle $ in $k[x_1 \dots x_n]$, \\
+then $V(f_1 \dots f_s) = V(g_1 \dots g_t)$   \\
+
+Recall Hilbert basis Thm. $\forall \, $ ideal $I \subset k[x_1 \dots x_n]$ 
+\[
+I= \langle f_1 \dots f_s \rangle
+\]
+$\Longrightarrow $ if $I=J$, then $V(I) = V(J)$
+
+think of $V$ defined by $I$, rather than $f_1 = \dots = f_s =0$
+
+\exercisehead{3}
+
+Recall Def. 1.5 Let $I\subset k[x_1 \dots x_n]$ \\
+$I$ ideal if $\begin{aligned} & \quad \\
+  & f + g \in I  \quad \, \forall \, f,g \in I \\
+  & pf \in I, \quad \, \forall \, f \in I \text{ arbitrary } p \in k[x_1 \dots x_n]
+\end{aligned}$
+
+Let $f,g \in I(V)$ 
+\[
+\begin{gathered}
+  (f+g)(a_1 \dots a_n) = f(a_1 \dots a_n) + g(a_1 \dots a_n) = 0 + 0 = 0 \quad \quad \, f+g \in I(V) \\ 
+  pf(a_1 \dots a_n) = p(a_1 \dots a_n) f(a_1 \dots a_n) = 0 \quad \quad \, pf \in I(V)
+\end{gathered}
+\]
+Then $I(V)$ an ideal.
+
+%\exercisehead{3} Recall Def. 1.5. Let $I \subset k[x_1 \dots x_n]$, $I$ ideal if $\begin{aligned} & \quad \\
+%  & f+g \in I \quad \, \forall \, f,g\in I \\
+%  & pf \in I , \quad \, \forall \, f \in I, \text{ arbitrary } p \in k[x_1 \dots x_n ] \end{aligned}$
+
+%Let $f,g \in I(V)$ 
+%\[
+
+$V = V(x^2)$ in $\mathbb{R}^2$ \\
+$I=\langle x^2 \rangle$ in $\mathbb{R}[x,y]$, \, $I= \lbrace px^2 | p \in k[x,y]\rbrace$ \\
+\phantom{ \quad } $I \subset I(V)$, since $px^2 = 0$ for $x^2=0$, $(0,b)$, \, $b\in \mathbb{R}$ \\
+But $p(x,y) = x\in I(V)$, as 
+\[
+I(V) = \lbrace f \in k[x_1 \dots x_n] | f(a_1 \dots a_n)=0, \, \forall \, (a_1\dots a_n) \in V\rbrace
+\]
+\phantom{ \quad \quad } $p(0,b) = x = 0$
+
+But $x\notin I$
+
+\exercisehead{4} $I\subset \sqrt{I}$
+
+Recall Def. 1.6 $\sqrt{I} = \lbrace g \in k[x_1 \dots x_n] |g^m \in I \text{ for some } m\geq 1\rbrace$ \\
+$\forall \, f \in I$, $f=f^1$, $m=1$, so $f\in \sqrt{I}$, \quad \, $I\subset \sqrt{I}$ \\
+\phantom{\quad \quad } Hilbert basis thm., $\forall \, $ ideal $I\subset k[x_1 \dots x_n]$ s.t. $I=\langle f_1 \dots f_s \rangle$ \\
+\phantom{\quad } $V(I) = \lbrace (a_1 \dots a_n) |(a_1 \dots a_n) \in k^n, \, f_1(a_1\dots a_n) = \dots = f_s(a_1\dots a_n)=0\brace$ \\
+$\mathbf{I}(\mathbf{V}(I)) = \lbrace f \in k[x_1 \dots x_n] | f(a_1 \dots a_n) =0 \quad \, \forall \, (a_1 \dots a_n) \in V(I) \rbrace$ \\
+Let $g\in \sqrt{I}$, \, $g^m \in I$, \, $g^m=g^{m-1}g$  \\
+\phantom{\quad \quad \,} $g^m(a_1 \dots a_n) =0 = g^{m-1}(a_1 \dots a_n)g(a_1 \dots a_n) =0$.  Then $g(a_1 \dots a_n)=0$ or $g^{m-1}(a_1\dots a_m)=0$ \\
+\phantom{\quad }as $g^m\in I$, and $V(I)$ is s.t. $f_1(a_1 \dots a_n) = \dots = f_s(a_1 \dots a_n)=0$ for $I=\langle f_1 \dots f_s \rangle$
+
+\begin{itemize}
+  \item (Strong Nullstellensatz) if $k$ algebraically closed (e.g. $\mathbb{C}$), $I$ ideal in $k[x_1 \dots x_n]$, then 
+\[
+\mathbf{I}(\mathbf{V}(I) = \sqrt{I}
+\]
+\item (Ideal-variety correspondence) Let $k$ arbitrary field
+\[
+\begin{aligned}
+  & I \subset I(V(I)) \\ 
+  & V(I(V)) = V \quad \, \forall \, V
+\end{aligned}
+\]
+\end{itemize}
+
+\subsection*{Additional Exercises for Sec.4}
+
+\exercisehead{6}
+
+
+
+\section{ Solving Polynomial Equations}
+
+\subsection{}
+
+\subsection{Finite-Dimensional Algebras}
+
+Gr\"obner basis $G = \lbrace g_1 \dots g_t \rbrace$ of ideal $I\subset k[x_1\dots x_n]$, \\
+recall def.: Gr\"obner basis $G = \lbrace g_1 \dots g_t\rbrace \subset I$ of ideal $I$, \, $\forall \, f \in I$, $\text{LT}(f)$ divisible by $\text{LT}(g_i)$ for some $i$ \\
+\phantom{\quad \, } $f \in k[x_1\dots x_n]$ divide by $G$ produces $f=g+r$, $g\in I$, $r$ not divisible by any $\text{LT}(I)$ uniqueness of $r$ \\
+$f\in k[x_1 \dots x_n]$ divide by $G$, 
+
+Recall from Ch. 1, divide $f\in k[x_1 \dots x_n]$ by $G$, the division algorithm yields
+
+\begin{equation}
+  (2.1)  \quad \quad \quad \, f = h_1 g_1 + \dots + h_t g_t + \overline{f}^G
+\end{equation}
+where remainder $\overline{f}^G$ is a linear combination of monomials $x^{\alpha} \notin \langle \text{LT}(I) \rangle $ \\
+\phantom{\quad } since Gr\"obner basis, $f\in I$ iff $\overline{f}^G=0$
+
+$\forall \, f \in k[x_1\dots x_n]$, we have coset $[f] = f+I = \lbrace f +h|h\in I\rbrace$ s.t. $[f]=[g]$ iff $f- g \in I$
+
+We have a 1-to-1 correspondence 
+\[
+\begin{gathered}
+\text{remainders } \leftrightarrow \text{ cosets } \\
+\overline{f}^G \leftrightarrow [f]
+\end{gathered}
+\]
+algebraic
+\[
+\begin{aligned}
+  & \overline{f}^G + \overline{g}^G \leftrightarrow [f] + [g] \\ 
+  & \overline{ \overline{f}^G \cdot \overline{g}^G } \leftrightarrow [f]\cdot [g]
+\end{aligned}
+\]
+$B = \lbrace x^{\alpha} | x^{\alpha} \notin \langle \text{LT}(I) \rangle \rbrace$ is a basis of $A$, basis monomials, standard monomials
+
+20141023 EY's take
+
+$\forall \, [f] \in A = k[x_1 \dots x_n]/I$, \, $[f] = p_ib_i$; \, $b_i \in B = \lbrace x^{\alpha} | x^{\alpha} \notin \langle \text{LT}(I) \rangle \rbrace$ \\
+For $I = \langle G \rangle$ \\
+\phantom{\quad } e.g. $G=\lbrace x^2 + \frac{3}{2} xy + \frac{1}{2} y^2 - \frac{3}{2} x - \frac{3}{2} y, xy^2-x, y^3-y \rbrace$ \\
+$\langle \text{LT}(I) \rangle = \langle x^2, xy^2,y^3 \rangle$ \\
+e.g. $B=\lbrace 1,x,y,xy,y^2\rbrace$ \\
+\phantom{\quad } $[f]\cdot[g] = [fg]$ \\
+e.g. $f=x, \, g=xy, \, [fg] = [x^2y]$ \\
+now $f=h_1g_1 + \dots +h_tg_t+ \overline{f}^G$
+
+\subsection{}
+
+\subsection{Solving Equations via Eigenvalues and Eigenvectors}
+
+
+\section{ Resultants }
+
+\section{Computation in Local Rings}
+
+\subsection{Local Rings}
+
+
+\begin{definition}[1.1]
+  \[
+k[x_1 \dots x_n]_{\langle x_1 \dots x_n \rangle} \equiv \lbrace \frac{f}{g} | \text{ rational functions } \frac{f}{g} \text{ of } x_1 \dots x_n \text{ with } g(p) \neq 0 \text{ at } p \rbrace
+\]
+\end{definition}
+
+main properties of $k[x_1 \dots x_n]_{\langle x_1 \dots x_n \rangle }$
+
+\begin{proposition}[1.2]
+  Let $R= k[x_1 \dots x_n]_{\langle x_1 \dots x_n \rangle }$.  Then
+\begin{enumerate}
+\item[(a)] $R$ subring of field of rational functions $k(x_1 \dots x_n) \supset k[x_1 \dots x_n]$
+\item[(b)] Let $M=\langle x_1 \dots x_n \rangle \subset R$ (ideal generated by $x_1 \dots X_n$ in $R$) \\
+Then $\forall \, \frac{f}{g} \in R \backslash M$, $\frac{f}{g}$ unit in $R$ (i.e. multiplicative inverse in $R$)
+\item[(c)] $M$ maximal ideal in $R$
+\end{enumerate}
+\end{proposition}
+
+
+\exercisehead{1} if $p=(a_1 \dots a_n) \in k^n$, $R = \lbrace \frac{f}{g} | f,g\in k[x_1 \dots x_n] , \, g(p) \neq 0 \rbrace$ 
+\begin{enumerate}
+\item[(a)] $R$ subring of field of rational functions $k(x_1 \dots x_n)$ 
+\item[(b)] Let $M$ ideal generated by $x_1 - a_1 \dots x_n -a_n$ in $R$  \\
+Then $\forall \, \frac{f}{g} \in R\backslash M$, $\frac{f}{g}$ unit in $R$ (i.e. multiplicative inverse in $R$)
+\item[(c)]  $M$ maximal ideal in $R$
+\end{enumerate}
+
+
+\begin{proof}
+let $p = (a_1 \dots a_n) \in k^n$ \\
+let $g_1(p) \neq 0$, $g_2(p) \neq 0$ 
+\[
+\begin{gathered}
+  \frac{f_1}{g_1 } + \frac{f_2}{g_2} = \frac{f_1 g_2 + f_2 g_1}{ g_1 g_2 } \quad \quad \,  g_1(p)g_2(p) \neq 0 \text{ so } \frac{f_1}{g_1} + \frac{f_2}{g_2} \in R \\
+ \frac{f_1}{g_1} \cdot \frac{f_2}{g_2} = \frac{f_1 f_2}{g_1 g_2} \quad \quad \, g_1(p) g_2(p) \neq 0 \text{ so } \frac{f_1}{g_1}\frac{f_2}{g_2} \in R
+\end{gathered}
+\]
+$f= \frac{f}{I} \in R$, \quad \, $\forall \, f\in k[x_1 \dots x_n]$, so $k[x_1 \dots x_n]\subset R$
+
+\end{proof}
+
+EY : 20141027, to recap, 
+
+Let $V = k^n$ \\
+Let $p = (a_1 \dots a_n)$ \\
+single pt. $\lbrace p \rbrace$ is (an example of) a variety \\
+$I(\lbrace p \rbrace) = \lbrace x_1 -a_1 \dots x_n -a_n \rangle \subset k[x_1 \dots x_n]$ \\
+
+$R \equiv k[x_1 \dots x_n]_{\langle x_1 - a_1 \dots x_n-a_n \rangle }$ 
+\[
+R = \lbrace \frac{f}{g} | \text{ rational function $\frac{f}{g}$ of $x_1 \dots x_n$, $g(p) \neq 0$, $p=(a_1 \dots a_n) $ } \rbrace
+\]
+
+Prop. 1.2. properties 
+
+\begin{enumerate}
+\item[(a)] $R$ subring of field of rational functions $k(x_1 \dots x_n)$ \quad \, $k(x_1 \dots x_n) \subset R$ 
+\item[(b)] $M = \langle x_1 \dots a_1 \dots x_n -a_n \rangle \subset R$.  ideal generated by $x_1 - a_1 \dots x_n-a_n$ \\
+Then $\forall \, \frac{f}{g} \in R\backslash M$, $\frac{f}{g}$ unit in $R$ ( $\exists \, $ multiplicative inverse in $R$ )
+\item[(c)] $M$ maximal ideal in $R$. \\
+in $R$ we allow denominators that are not elements of this ideal $I(\lbrace p \rbrace)$ 
+\end{enumerate}
+
+\begin{definition}[1.3] local ring is a ring that has exactly 1 maximal ideal \end{definition}
+
+\begin{proposition}[1.4] ring $R$ with proper ideal $M\subset R$ is local ring if $\forall \, \frac{f}{g} \in R\backslash M$ is unit in $R$
+\end{proposition}
+
+localization Ex. 8, Ex. 9 \\
+parametrization
+
+\exercisehead{2} \[
+\begin{aligned}
+  & x = x(t) = \frac{-2t^2 }{1+t^2} \\ 
+ &  y = y(t) = \frac{2t}{1+t^2}
+\end{aligned}
+\]
+$k[t]_{\langle t \rangle}$ \quad \, $\frac{-2t^2}{1+t^2}$ rational function of $t$.  $1+t^2 \neq 0$
+
+if $k = \mathbb{C}$ or $\mathbb{R}$ \\
+
+Consider set of convergent power series in $n$ variables \\
+
+\begin{equation}
+(1.5) \quad \quad \,   k\lbrace x_1 \dots x_n \rbrace = \lbrace \sum_{\alpha \in \mathbb{Z}^n_{\geq 0}} c_{\alpha} x^{\alpha} | c_{\alpha} \in k, \text{ series converges in some open $U\ni 0 \in k^n $ } \rbrace
+\end{equation}
+
+Consider set $k[[x_1 \dots x_n]]$ of formal power series
+
+\begin{equation}
+  (1.6) \quad \quad \, k[[x_1 \dots x_n]] = \lbrace \sum_{\alpha \in \mathbb{Z}^n_{\geq 0}} c_{\alpha} x^{\alpha} | c_{\alpha} \in k \rbrace \text{ series need not converge }
+\end{equation} 
+
+
+variety $V$ \\
+
+$k[x_1\dots x_n]/\mathbf{I}(V)$ \phantom{ \quad \quad \quad } variety $V$
+
+
+\subsection{Multiplicities and Milnor Numbers}
+
+
+if $I$ ideal in $k[x_1\dots x_n]$, then denote $Ik[x_1\dots x_n]_{\langle x_1 \dots x_n \rangle}$ ideal generated by $I$ in larger ring $k[x_1\dots x_n]_{\langle x_1 \dots x_n \rangle}$
+
+\begin{definition}[2.1] Let $I$ $0$-dim. ideal in $k[x_1 \dots x_n]$, so $V(I)$ consists of finitely many pts. in $k^n$.  \\
+Assume $(0 \dots 0) \in V(I)$ \\
+multiplicity of $(0\dots 0)\in V(I)$ is 
+\[
+\text{dim}_k{ k[x_1\dots x_n]_{\langle x_1\dots x_n \rangle}} / Ik[x_!\dots x_n]_{\langle x_1 \dots x_n \rangle}
+\]
+\end{definition}
+
+
+generally, if $p=(a_1 \dots a_n) \in V(I)$ \\
+multiplicity of $p$, $m(p) = \text{dim}{ k[x_1 \dots x_n]_M } / Ik[x_1 \dots x_n]_M$
+
+\[
+\text{dim}{ k[x_1 \dots x_n]_M } / Ik[x_1 \dots x_n]_M
+\]
+
+localizing $k[x_1 \dots x_n]$ at maximal ideal $M = I(\lbrace p \rbrace) = \langle x_1 - a_1 \dots x_n-a_n \rangle$
+
+
+\section{}
+
+\section{}
+
+\section{ Polytopes, Resultants, and Equations }
+
+\section{ Polyhedral Regions and Polynomials }
+
+\subsection{ Integer Programming }
+
+Prop. 1.12. \\
+
+Suppose 2 customers $A, B$ ship to same location \\
+\quad A: ship 400 kg pallet taking up $2 \, m^3$ volume \\
+\quad B: ship 500 kg pallet taking up $3 \, m^3$ volume \\
+
+shipping firm trucks carry up to 3700 \, kg, up to $20 \, m^3$ \\
+
+B's product more perishable, paying \$ 15 per pallet \\
+
+A pays \$ 11 per pallet
+
+How many pallets from A, B each in truck to maximize revenues?
+
+\begin{equation}
+(1.1) \quad \quad \, \begin{gathered}
+    4A + 5B \leq 37 \\
+    2A  + 3B \leq 20 \\
+    A, B \in \mathbb{Z}^*_{ \geq 0 } \end{gathered}
+\end{equation}
+
+maximize $11 A + 15 B$ \\
+
+integer programming. \\
+max. or min. value of some linear function 
+
+\[
+l(A_1 \dots A_n) = \sum_{i=1}^n c_i A_i 
+\]
+
+on set $(A_1 \dots A_n) \in \mathbb{Z}^n_{ \geq 0}$ s.t. 
+
+
+3. Finally, by introducing additional variables; rewrite linear constraint inequalities as equalities. The new variables are called ``slack variables''
+
+\begin{equation}
+(1.4) \quad \quad \, a_{ij} A_j = b_i, \quad \, A_j \in \mathbb{Z}_{\geq 0}
+\end{equation}
+
+introduce indeterminate $z_i$, \, $\forall \, $ equation in (1.4)
+
+\[
+z_i^{a_{ij} A_j} = z_i^{b_i}
+\]
+
+$m$ constraints
+
+\[
+\prod_{i=1}^m z_i^{a_{ij}A_j} = \prod_{i=1}^m z_i^{b_i} = \left( \prod_{i=1}^m z_i^{a_{ij}} \right)^{ A_j}
+\]
+
+\begin{proposition}[1.6]
+  Let $k$ field, define $\varphi: k[w_1 \dots w_n] \to k[z_1 \dots z_m]$ by 
+\[
+\varphi(w_j) = \prod_{i=1}^m z_i^{a_{ij}} \quad \quad \quad \, \forall \, j = 1 \dots n 
+\]
+
+and 
+
+\[
+\varphi(g(w_1 \dots w_n) ) = g(\varphi(w_1) \dots \varphi(w_n))
+\]
+$\forall \, $ general polynomial $g\in k[w_1 \dots w_n]$
+
+Then $(A_1 \dots A_n)$ integer pt. in feasible region iff $\varphi: w_1^{A_1} \dots w_n^{A_n} \mapsto z_1^{b_1} \dots z_m^{b_m}$
+
+
+
+\end{proposition}
+
+\exercisehead{3}
+
+Now 
+
+\[
+\begin{gathered}
+\varphi(w_j) = \prod_{i=1}^m z_i^{a_{ij}} \\
+z_i^{a_{ij} A_j} = z_i^{b_i}
+\end{gathered}
+\]
+
+If $(A_1 \dots A_n)$ an integer pt. in feasible region, $a_{ij} A_j = b_i$
+
+\[
+\begin{gathered}
+z_i^{a_{ij}A_j } = z_i^{b_i} = \prod_{j=1}^n z_i^{a_{ij} A_j} \Longrightarrow \prod_{j=1}^n \prod_{i=1}^m (z_i^{a_{ij} })^{A_j} = \prod_{i=1}^m z_i^{b_i} = \prod_{j=1}^n \varphi(w_j)^{ A_j} = \prod_{j=1}^n \varphi(w_j)^{A_j} = \varphi\left( \prod_{j=1}^n w_j^{ A_j } \right) = \prod_{i=1}^m z_i^{b_i}
+\end{gathered}
+\]
+since $\varphi(g(w_1 \dots w_n)) = g(\varphi(w_1) \dots \varphi(w_n))$ \\
+
+If $\varphi: \prod_{j=1}^n w_j^{A_j} \mapsto \prod_{i=1}^m z_i^{b_i}$
+
+\[
+\varphi\left( \prod_{j=1}^n w_j^{A_j} \right) = \prod_{j=1}^n (\varphi(w_j))^{A_j} = \prod_{i=1}^m z_i^{b_i} = \prod_{j=1}^n \left( \prod_{i=1}^m z_i^{a_{ij}} \right)^{ A_j} \Longrightarrow \prod_{j=1}^n z_i^{a_{ij} A_j} = z_i^{b_i}
+\]
+or $a_{ij}A_j = b_i$.  So $(A_1\dots A_n)$ integer pt.  
+
+
+
+
+\exercisehead{4} 
+\[
+\prod_{i=1}^m z_i^{b_i} = \prod_{i=1}^m \prod_{j=1}^n z_i^{ a_{ij} A_j } = \prod_{j=1}^n \left( \prod_{i=1}^m z_i^{a_{ij}} \right)^{A_j} = \prod_{j=1}^n \varphi(w_j)^{A_j} = \varphi\left( \prod_{j=1}^n w_j^{A_j} \right)
+\]
+So if given $(b_1 \dots b_m) \in \mathbb{Z}^m$, and for a given $a_{ij}$, $a_{ij}A_j = b_i$ \\
+
+For $m\leq n$, then $a_{ij}$ is surjective, so $\exists \, A_j$ s.t. $\prod_{i=1}^m z_i^{b_i} = \varphi\left( \prod_{j=1}^n w_j^{A_j} \right)$
+
+
+
+\begin{proposition}[1.8]
+Suppose $f_1 \dots f_n \in k[z_1 \dots z_m]$ given \\
+Fix monomial order in $k[z_1 \dots z_n, w_1 \dots w_n ]$ with elimination property: \\
+$\forall \, $ monomial containing 1 of $z_i$ greater than any monomial containing only $w_j$ \\
+
+Let $\mathcal{G}$ Gr\"{o}bner basis for ideal
+\[
+I = \langle f_1 - w_1 \dots f_n - w_n \rangle \subset k[z_1 \dots z_m, w_1 \dots w_n]
+\]
+$\forall \, f \in k[z_1 \dots z_m]$, let $\overline{f}^{ \mathcal{G}}$ be remainder on division of $f$ by $\mathcal{G}$ \\
+Then
+\begin{enumerate}
+\item[(a)] polynomial $f$ s.t. $f\in k[f_1 \dots f_n]$ iff $g= \overline{f}^{ \mathcal{G}} \in k[w_1 \dots w_n]$
+\item[(b)] if $\begin{aligned} & \quad \\
+  & f \in k [f_1 \dots f_n ] \\
+  & g = \overline{f}^{\mathcal{G}}\in k[ w_1 \dots w_n] \end{aligned}$ \quad as in part (a), \\
+
+then $f = g(f_1 \dots f_n)$ , giving an expression for $f$ as polynomial in $f_j$
+\item[(c)] if $\forall \, f_i, f$ monomials, $f\in k[f_1 \dots f_n]$, \\
+then $g$ also a monomial.  
+\end{enumerate}
+\end{proposition}
+
+
+
+\subsection{ Integer Programming and Combinatorics }
+
+
+
+\section{ Algebraic Coding Theory }
+
+
+\section{ The Berlekamp-Massey-Sakata Decoding Algorithm }
+
+
+\end{document}
+

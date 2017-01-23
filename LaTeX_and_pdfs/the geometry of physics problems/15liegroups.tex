@@ -1,0 +1,100 @@
+\subsection{15.1 Lie Groups, Invariant Vector Fields and Forms}
+
+\subsubsection{15.1a Lie Groups}
+
+Topological $GL(n,\mathbb{R})$ is an open subset of $\mathbb{R}^{n^2}$ and as such is a $n^2$-dim. manifold. \\
+(cf. pp. 392) \\
+\subsubsection*{Examples}
+4. $G = Sl(n,\mathbb{R})$.  $Sl(n,\mathbb{R})$ subgroup of $Gl(n,\mathbb{R})$, $\text{det}{x} = 1$.  Prob. 1.1(3). Submanifold of $\text{dim}{Sl(n,\mathbb{R})} = n^2 - 1$ \\
+5. $G = O(n)$, Sec. 1.1. Submanifold of $\text{dim}{\frac{n(n-1)}{2} }$.  \\
+6. $G = U(n)$.  Sec. 1. submanifold of complex $n^2$ space or real $2n^2$ space.  \\
+8. $G = T^n$ abelian group of diagonal matrices of form $z = \text{diag}{[e^{i\theta_1} \dots e^{i \theta_n}]}$ (15.2) \\
+\phantom{8. } This group is topologically $S^1 \times \dots \times S^1$, $n$-torus.  Since circle connected, $T^n$ connected.  From this, $U(n)$ also connected!  
+
+\subsubsection{15.1b. Invariant Vector Fields and Forms}
+
+\subsection{15.2 One-parameter subgroups}
+
+
+
+
+
+\paragraph{15.2(1) Generator of rotations}
+\beq{
+	   e^{\vartheta J}
+	&= \sum_{k=0}^\inf \frac{\vartheta^kJ^k}{k!}
+	 = \sum_{k=0}^\inf \frac{\vartheta^{2k}J^{2k}}{(2k)!} + \sum_{k=0}^\inf \frac{\vartheta^{2k+1}J^{2k+1}}{(2k+1)!}
+	 = \sum_{k=0}^\inf \frac{\vartheta^{2k}(J^2)^k}{(2k)!} + \sum_{k=0}^\inf \frac{\vartheta^{2k+1}J(J^2)^k}{(2k+1)!} \\
+	&= I\sum_{k=0}^\inf \frac{\vartheta^{2k}(-1)^k}{(2k)!} + J\sum_{k=0}^\inf \frac{\vartheta^{2k+1}(-1)^k}{(2k+1)!}
+	 = I\cos\vartheta + J\sin\vartheta
+}
+
+
+
+
+
+
+\paragraph{15.2(2) Generator of A(1)}
+
+\beq{
+	X &= \matrixp{a&b\\0&0} \\
+	X^2 &= \matrixp{a&b\\0&0}\matrixp{a&b\\0&0} = \matrixp{aa&ab\\0&0} = a\matrixp{a&b\\0&0} = aX \\
+	\Rightarrow X^n &= \Cases{I & n=0\\a^{n-1}X & n>0}
+}
+\beq{
+	\Rightarrow e^{tX}
+	&= \sum_{k=0}^\inf \frac1{k!}t^kX^k
+	 = I + \sum_{k=1}^\inf \frac1{k!}t^ka^{k-1}X
+	 = I + \frac1aX\sum_{k=1}^\inf \frac1{k!}t^ka^k \\
+	&= I + \frac1aX\left(\sum_{k=0}^\inf \frac1{k!}t^ka^k - \frac{t^0a^0}{0!}\right) 
+	 = \matrixp{1&0\\0&1} + \matrixp{1&\frac ba\\0&0}e^{ta} - \matrixp{1&\frac ba\\0&0} \\
+	&= \matrixp{e^{ta}&\frac bae^{ta}-\frac ba\\0&0}
+}
+
+
+
+
+\paragraph{15.3(1) Maurer-Cartan equations}
+
+\beqN{
+	   \d\sigma^U(\vec X_R,\vec X_S)
+	&= \cancel{\vec X_R(\sigma^U(\vec X_S))} - \cancel{\vec X_S(\sigma^U(\vec X_R))} - \sigma^U([\vec X_R,\vec X_S]) \notag\\
+	&= -\sigma^U(C^T_{RS}\vec X_T) = -C^U_{RS} \label{dsigma_maurer_cartan}
+}
+\beq{
+	\Rightarrow \d\sigma^U = \frac12\d\sigma^U(\vec X_R,\vec X_S)\sigma^R\wedge\sigma^S \overset{(\ref{dsigma_maurer_cartan})}= -\frac12C^U_{RS}\sigma^R\wedge\sigma^S
+}
+\beq{
+	\Rightarrow
+	   0
+	&= \d(\d\sigma^U)(\vec X_L,\vec X_M,\vec X_S) \\
+	&\overset{\text{(4.27)}}= \vec X_L(\d\sigma^U(\vec X_M,\vec X_S)) - \vec X_M(\d\sigma^U(\vec X_L,\vec X_S)) + \vec X_S(\d\sigma^U(\vec X_L,\vec X_M)) \\
+		&\qquad - \d\sigma^U([\vec X_L,\vec X_M],\vec X_S) + \d\sigma^U([\vec X_L,\vec X_S],\vec X_M) - \d\sigma^U([\vec X_M,\vec X_S],\vec X_L) \\
+	&= \cancel{\vec X_L(-C^U_{MS})} - \cancel{\vec X_M(-C^U_{LS})} + \cancel{\vec X_S(-C^U_{LM})} \\
+		&\qquad - \d\sigma^U(C^R_{LM}\vec X_R,\vec X_S) + \d\sigma^U(C^R_{LS}\vec X_R,\vec X_M) - \d\sigma^U(C^R_{MS}\vec X_R,\vec X_L) \\
+	&= C^U_{RS}C^R_{LM} + C^U_{RM}C^R_{SL} + C^U_{RL}C^R_{MS}
+}
+
+
+\subsection{The Lie Algebra of a Lie Group}
+
+\subsubsection{15.3a. The Lie Algebra}
+
+\subsubsection{15.3b. The Exponential Map}
+
+\begin{theorem}[15.27] map $\exp : g \to G$ sending $A \mapsto e^A$ diffeomorphism of some neighborhood of $0\in g$ onto neighborhood of $e \in G$.  
+\end{theorem}
+
+%\begin{proof}
+Pf. \\
+        vector $X \in g$ \\
+        \[
+\exp_*(X) = \left. \frac{d}{dt} (\exp{ tX}) \right|_{t=0} = \frac{d}{dt} \left. \left( 1 + tX + \frac{1}{2} t^2 X^2 + \dots \right) \right|_{t=0} = X
+\]
+
+$\exp{}_* : g \to g$ is the identity, $\exp{}$ local diffeomorphism by inverse function thm. (The Jacobian is nonsingular).   \\
+
+If $G$ not a matrix group, \\
+given $X$ at $e$, $e^{tX} = \exp{(tX)}$ curve through $e$ whose tangent vector at $t=0$ is vector $X$ (recall $e^{tX}$ is the integral curve through $e$ of left invariant vector field $X$).  \\
+Thus $\exp_*{(X)} = X$
+%\end{proof}

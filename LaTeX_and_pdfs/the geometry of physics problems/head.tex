@@ -1,0 +1,136 @@
+%%% DOCUMENTCLASS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\documentclass[10pt, a4paper]{scrartcl}
+%
+% Optionen für {}
+%
+% scrartcl - Artikel mit europäischer Layout-Anpassnug
+% scrreprt - Artikel mit europäischer Layout-Anpassnug
+% scrbook - Buch mit europäischer Layout-Anpassnug
+% scrlettr - Briefe
+%
+% Kapitelstruktur: chapter (nur report/book) - section - subsection - subsubsection
+%
+%
+% Optionen für []
+% 10pt|12pt|14pt - Schriftgröße
+% a4paper - DIN A4
+% fleqn - Linksbündige statt zentrierte Ausrichtung mathematischer Formeln
+% leqno - Gleichungsnummerierungen links statt rechts
+% titlepage|notitlepage - Eigene Seite für Titel/Zusammenfassung verwenden; Standardeinstellung für report/book: titlepage
+% onecolumn|twocolumn - Ein- oder zweispaltiges Layout; nicht für letter/slides verfügbar
+% oneside|twoside - Ein- oder zweiseitiger Druck; Standard für alles außer book: oneside
+%
+%
+%
+%%% DIVERSE PAKETE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\usepackage[a4paper]{geometry}		% Papierformat
+\usepackage[OT2, T1]{fontenc}			% Vektorschriften werden hiermit seltsam rastermäßig dargestellt ...
+\usepackage{lmodern}				% ... jetzt nicht mehr
+\usepackage[latin9]{inputenc}			% Codierung der Eingabe; hier: Latin9/ISO-8859-15
+\usepackage[english]{babel}			% "ngerman, english": Silbentrennung englisch + neue deutsche Rechtschreibung
+\usepackage{amsmath, amssymb, amstext}	% Verbesserte Formeldarstellung, erweiterte mathematischer Zeichenvorrat, \text{}
+\usepackage{makeidx} \makeindex		% Index erstellen; Eintrag erstellen mit \index{Bezeichnung[!Unterbezeichnung[!Unterunterbezeichnung]]}; Index schreiben mit \printindex
+%
+
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue}
+
+%
+%
+% 20110714 EY
+\oddsidemargin-0.85cm
+\evensidemargin-0.55cm
+\topmargin-2.05cm     %I recommend adding these three lines to increase the 
+\textwidth18.65cm   %amount of usable space on the page (and save trees)
+\textheight25.45cm  
+\parindent0.0em
+%
+%%% SILBENTRENNUNG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\hyphenation{Bei-spiel} % Definiert eine selbstdefinierte kontextabhängige Silbentrennung im gesamten Dokument; Für einzelne Fließtextwörter: Bei\-spiel
+%
+%%% KOPF- UND FUßZEILEN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\usepackage{lastpage}
+
+\automark[subsection]{section}
+\ihead{\headmark}
+\ohead{\pagemark}
+\setheadsepline{1pt}
+
+\pagestyle{plain}
+
+
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{axiom}{Axiom}
+\newtheorem{lemma}{Lemma}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{corollary}{Corollary}
+
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definition}
+
+
+
+%\documentclass[twoside]{amsart}
+%\usepackage{amssymb,latexsym}
+%\usepackage{MnSymbol}
+%\usepackage{times}
+%\usepackage{graphics}
+%\usepackage{tikz}
+%\usepackage{hyperref}
+%\hypersetup{colorlinks=true, urlcolor=blue}
+%\usepackage{simpsons}
+%\usepackage{epsdice}
+%\usepackage{staves} 
+
+%\usetikzlibrary{matrix,arrows}
+%\usepackage{graphics}
+
+%\oddsidemargin-0.85cm
+%\evensidemargin-0.65cm
+%\topmargin-2.05cm     %I recommend adding these three lines to increase the 
+%\textwidth19.05cm   %amount of usable space on the page (and save trees)
+%\textheight25.05cm  
+%\parindent0.0em
+
+%This next line (when uncommented) allow you to use encapsulated
+%postscript files for figures in your document
+%\usepackage{epsfig}
+
+%plain makes sure that we have page numbers
+
+
+
+
+
+%\chead{}
+%\ihead{ssad}
+%\cfoot{\pagemark/\pageref{LastPage}}
+%\usepackage{fancyhdr}
+%%\pagestyle{fancy}
+%\fancyhead[L]{}
+%\fancyhead[C]{--~\thepage~--}
+%\fancyhead[R]{}
+%\fancyfoot[L]{}
+%\fancyfoot[C]{}
+%\fancyfoot[R]{}
+%
+%%% SONSTIGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+\setcounter{secnumdepth}{-1}
+% -1 keine Überschrift wird nummeriert
+% 0 Kapitelüberschriften (oder Abschnittsüberschriften im article.sty) werden nummeriert
+% 1 die beiden höchsten Ebenen werden nummeriert
+% 5 alle Überschriften werden nummeriert. (Die Werte 2, 3, 4 ergeben die Zwischenwerte)
+% \linespread{} % Zeilenabstand als Vielfaches von 1

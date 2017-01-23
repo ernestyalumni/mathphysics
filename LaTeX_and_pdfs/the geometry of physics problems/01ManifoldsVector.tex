@@ -1,0 +1,95 @@
+% 01ManifoldsVector.tex
+
+\subsection{Submanifolds of Euclidean Space}
+
+\paragraph{1.1(3)}
+
+Consider for $F(A) = \det{A}$, $F:\mathbb{R^{n^2}} \to \mathbb{R}$, that 
+\[
+\begin{gathered}
+  \det{A + tB } = \det{ A ( 1 + tA^{-1} B)  } = \det{A} \det{  1 + tA^{-1}B}
+\end{gathered}
+\]
+
+How to deal with $\det{1 + tA^{-1}B}$?  Recall that 
+\[
+\det{  1 + tA^{-1}B} = \det{A} ( 1 + t\tr{A^{-1} B})
+\]
+because for $ \det{(1 + tX)}$, 
+
+\[
+\begin{gathered}
+  \det{(1+ tX)} = \det{  \matrixp{1& & \\ &\ddots & \\ && 1 }  +  \matrixp{ t x_{11} & \dots & t x_{1n} \\ \vdots & \ddots & \vdots \\ tx_{n1} & \dots & t x_{nn} }   } = 
+  \det{  \matrixp{ 1 + tx_{11}& \dots & tx_{1n } \\ 
+      \vdots & \ddots & \vdots \\ 
+      tx_{n1} & \dots & 1 + tx_{nn}} } = \\
+  = 1 + t\tr{X} + \mathcal{O}(t^2)
+\end{gathered}
+\]
+since recall $\det{A} = \sum_{\sigma \in S_n} \text{sgn}{(\sigma)} A_{1 \sigma_1} A_{2\sigma_2} \dots A_{n\sigma_n}$, where sum is over all permutations of $\lbrace 1, \dots, n \rbrace$, and so only the $A_{11}\dots A_{nn}$ term would have terms of $\mathcal{O}(t)$.  
+
+So
+\[
+(DF) \cdot B = \frac{d}{dt}  F(x(t)) B = \det{x} \tr{x^{-1} B}
+\]
+For $x_0 \in Sl(n)$, $\det{x_0} = 1$.  Let $B = \frac{r}{n} x$.  Then 
+\[
+(DF)\cdot B = \tr{x^{-1} \frac{r}{n} x  } = r 
+\]
+$DF = F_*$ is surjective $\forall \, x \in Sl(n)$
+
+
+\subsection{Manifolds}
+
+
+
+\subsection{Tangent Vectors and Mappings}
+
+\subsubsection{ Tangent or ``Contravariant Vectors}
+
+\subsubsection{ Vectors as Differential Operators}
+
+
+
+\subsubsection{ The Tangent Space to $M^n$ at a Point }
+
+
+\subsubsection{ Mappings and Submanifolds of Manifolds}
+
+
+\begin{definition} $M^m \subset N^n$ (embedded) submanifold of $N^n$.  If $M$ locally s.t. $F: N^n \to \mathbb{R}^{n-m}$ 
+\[
+\begin{aligned}
+  & F^1(x^1 \dots x^n) = 0 \\ 
+  & \vdots \\ 
+  & F^{n-m}(x^1 \dots x^n) = 0 
+\end{aligned}
+\]
+$n-m$ diff. $F^i$ s.t. $\left| \frac{ \partial F^i}{ \partial x^j} \right| $ has rank $n-m$
+\end{definition}
+
+By implicit function thm., submanifold as graph.  
+\[
+\begin{gathered}
+  (x^1 \dots x^m, y^{m+1} \dots y^n ) \\ 
+  \begin{aligned}
+    & y^{m+1} = f^{m=1}(x^1 \dots x^m)  \\ 
+    & \vdots \\ 
+    & y^n = f^n(x^1 \dots x^m)
+\end{aligned}
+\end{gathered}
+\]
+
+on $F(x) = 0$ 
+
+\begin{theorem}[1.12] Let $F: M^m \to N^n$, $q \in N^n$ s.t. $F^{-1}(q) \subset M^m $, $F^{-1}(q) \neq \emptyset$ \\
+If $F_*$ onto, i.e. $F_*$ rank $n$, $\forall \, F^{-1}(q)$, \\
+$F^{-1}(q)$ ($n-m$)-dim. submanifold of $M^m$
+\end{theorem}
+
+
+
+
+\subsubsection{ Change of Coordinates}
+
+

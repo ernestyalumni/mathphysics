@@ -1,0 +1,204 @@
+\input{head}
+\input{customstuff}
+
+
+\begin{document}
+
+
+\title{The Geometry of Physics --\\Problem Solutions}
+\author{David Luposchainsky, Ernest Yeung}
+\date{\number\day.\,\number\month.\,\number\year}
+\maketitle
+
+\abstract{These are my solutions to problems given in Theodore Frankel's book ``The Geometry of Physics'' (second edition). As I could not find any other sources, I do not know whether they are correct or not, so read with care (especially the index battles). If you have a solution that is not in here already, a better way of showing something, or just some useful comment, I'd like to hear about it\footnote{e-mail: stupid underscore name at gmx dot net}.} \\
+
+20110714 - further solutions begun by Ernest Yeung.
+
+
+\section*{Conventions}
+If not mentioned differently, use the following conventions:
+\begin{itemize}
+	\item Use Einstein summation. Sometimes I'll typeset a \(\sum\) for clarification though.
+	\item The ``\(\rightharpoondown\)'' used in the book will be used implicitly, i.e. multiindices are always assumed to be in ascending order.
+	%\item Abbreviations concerning the metric tensor: \\ \ieq{g:=|\det{\{g_{ij}\}}|}, \ieq{s:=\sign{\det{\{g_{ij}\}}}}
+\end{itemize}
+
+\newpage
+
+\setcounter{tocdepth}{4}
+\tableofcontents
+
+\newpage
+
+\section*{I Manifolds, Tensors and Exterior Forms}
+                   
+\section{Manifolds and Vector Fields}
+ \input{01ManifoldsVector}
+
+                                                                  
+\section{Tensors and Exterior Forms}
+		\input{02tensors}
+
+\section{Integration of Differential Forms}
+		\input{03integration}
+
+\section{The Lie derivative}
+		\input{04liederivative}
+
+\section{The Poincare Lemma and Potentials}
+		\input{05potentials}
+
+\section{6 Holonomic and Nonholonomic Constraints}
+
+\input{06Holonomic}
+
+\section*{II Geometry and Topology}
+
+\section{$\mathbb R^3$ and Minkowski Space}
+		\input{07r3minkowski}
+
+\section{The Geometry of Surfaces in $\mathbb{R}^3$}
+
+\section{9 Covariant Differentiation and Curvature}
+		\input{09covariantdifferentiation}
+
+\section{10 Geodesics}
+
+\section{11 Relativity, Tensors, and Curvature}
+
+\section{12 Curvature and Topology: Synge's Theorem}
+
+\section{13 Betti Numbers and De Rham's Theorem}
+
+\section{14 Harmonic Forms}
+
+\section*{III Lie Groups, Bundles, and Chern Forms}
+
+
+	\section{15. Lie groups}
+		\input{15liegroups}
+	\section{16. Vector Bundles in Geometry and Physics}
+		\input{16vectorbundles}
+
+
+\section{17. Fiber Bundles, Gauss-Bonnet, and Topological Quantization  }
+\input{17fiberbundles}
+
+
+
+\section{18. Connections and Associated Bundles}
+
+\input{18ConnectionsandAssociatedBundles}
+
+
+
+\section{19. The Dirac Equation}
+
+\input{19TheDiracEquation}
+
+\section{20. Yang-Mills Fields }
+
+             \input{20YangMillsFields}
+
+\section{21.}
+
+
+
+
+
+
+
+
+
+\begin{appendix}
+
+\section{A. Elasticity}
+
+
+\subsection{A.a. The Classical Cauchy Stress Tensor and Equations of Motion}
+
+$B(t)$ compact body, might be portion of larger body in motion
+
+mass 3 form 
+\[
+m^3 \equiv \rho \text{ vol }
+\]
+
+mass conservation
+\[
+\frac{d}{dt} \int_{B(t)} m^3 = \int_{B(t)} \mathcal{L}_{\textbf{v} + \frac{ \partial }{ \partial t}} m^3 = 0 
+\]
+$\mathbf{b}$ external force density (per unit mass)
+\[
+\frac{d}{dt} \int_{B(t)} v^i m^3 = \int_{B(t)} b^i m^3 + \int_{ \partial B(t)} t^{ij}n_j da
+\]
+
+\subsection{A.b. Stresses in Terms of Exterior Forms}
+
+$t$ pseudo $(n-1)$ form on $M^n$ with values in tangent bundle $TM$ (vector bundle language)
+
+\begin{equation}
+        \mathbf{t} = \mathbf{e}_r \otimes \mathfrak{t}^r \equiv \mathbf{e}_r \otimes \mathfrak{t}^r_{ \, \, \underline{J}} \sigma^J 
+\end{equation}
+
+\[
+\int_{ \partial B} \mathbf{t} = \int_{\partial B} \mathbf{e}_r \otimes \mathfrak{t}^r = \mathbf{e}_r \int_{\partial B} \mathfrak{t}^r = \mathbf{e}_r \int_{ \partial B} \mathfrak{t}^r_{ \underline{J}} dx^J
+\]
+as total traction that part of body outside $\partial B$ exerts on $B$
+
+(2.73) $\forall \, $  Riemannian $M$, write $(n-1)$ form $\mathfrak{t}^r$ in terms of vector $t^{(r)}$
+
+\[
+\mathfrak{t}^r = i(\mathbf{t}^r) \text{vol} = i (\mathbf{t}^{(r)} ) \sqrt{g} \epsilon_{\underline{I}} dx^I = \sqrt{g} \mathbf{t}^{(r)i} \epsilon_{i \underline{J}} dx^J
+\]
+
+\begin{equation}
+t^r_{ \, \underline{J}}  = \sqrt{g} t^{(r)i} \epsilon_{i \underline{J}} \quad \quad \, (A.6)
+\end{equation}
+\[
+t^{ri} \equiv t^{(r)i} = \frac{1}{\sqrt{g}} t^r_{ \, \, \underline{J}} \epsilon^{i J }
+\]
+relation between stress form $t^r$ and Cauchy's stress tensor $t^{ri}$
+
+assuming $\mathbf{t} = \mathbf{e}_r \otimes \mathfrak{t}^r$ is $(n-1)$ form section of the tangent bundle, thus from (9.31), we have
+
+20141102 EY recall 
+\[
+\nabla \alpha = e \otimes (d\alpha + \omega \wedge \alpha) \quad \quad \quad \, (9.31)
+\]
+and 
+\[
+\begin{gathered}
+        \nabla \alpha = \nabla( e_i \otimes \alpha^i) = (\nabla e_i) \otimes_{\wedge} \alpha^i + e_i \otimes d\alpha^i \\ 
+ \text{ where }  \\
+(\nabla e_i) \otimes_{\wedge} \alpha^i = (e_k \otimes \omega^k_{\, \, i}\otimes_{\wedge} \alpha^i \equiv e_k \otimes ( \omega^k_{\, \, i} \wedge \alpha^i)
+\end{gathered}
+\]
+
+\begin{equation}
+        \nabla t = \nabla (\mathbf{e}_r \otimes \mathfrak{t}^r) = \nabla \mathbf{e}_r \otimes_{\wedge} \mathfrak{t}^r + \mathbf{e}_r \otimes d\mathfrak{t}^r = \mathbf{e}_r \otimes (d\mathfrak{t}^r + \omega^r_{ \, \, s} \wedge \mathfrak{t}^s) = \mathbf{e}_r \otimes \nabla \mathfrak{t}^r \quad \quad \quad \, (A.7)
+\end{equation}
+
+
+\subsection{A.f. Hamilton's Principle in Elasticity}
+
+
+\begin{equation}
+        \delta U = \int_B \delta E_{RC} dX^R \wedge S^C \quad \quad \quad \, (A.24) 
+\end{equation}
+
+\begin{equation}
+        \delta U = \int_B S^{CR} \delta E_{RC} \text{VOL}^n \quad \quad \quad \, (A.25)
+\end{equation}
+
+Hamilton's principle
+\begin{equation}
+\delta \int T dt - \int \delta U dt + \int \delta W dt = 0 \quad \quad \quad \, (A.26)
+\end{equation}
+
+We don't write $\delta \int U dt $ because we don't assume \\
+
+We don't assume that $\exists \, $ stored energy function $U$ so we don't write $\delta \int U dt$, $\exists \, $ only differential $\delta U$
+
+\end{appendix}
+\end{document}

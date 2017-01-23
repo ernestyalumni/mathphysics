@@ -1,0 +1,128 @@
+\emph{ one does not integrate vectors; one integrates forms}.  \\
+If there is extra structure available, for example, a Riemannian metric, then it is possible to rephrase an integration, say of exterior 1-forms or 2-forms, in terms of a vector interations involving ``arc lengths'' or ``surface areas,'' but we shall see that even in this case we are \emph{complicating} a basically simple situation. \\
+\emph{If a line integral of a vector occurs in a problem, then usually a deeper look at the situation will show that the vector in question was in fact a covector, that is, a 1-form}! \\
+For example, the strength of the electric field can be determined by the work done in moving a unit charge very slowly along a small path, that is, by a line integral.  The electric field strength is a 1-form.   \\
+-Theodore Frankel. 
+
+
+\subsubsection{3.1 Integration over a Parameterized Subset}
+
+How does one integrate the Poincar\'{e} 2-form $\omega$ over a surface in phase space? -Theodore Frankel.
+
+\subsubsection{ 3.1a. Integration of a $p$-Form in $\mathbb{R}^p$ }
+
+define integral of a $p$-form over region $(U, o) \subset \mathbb{R}^p$, \\
+orientation $o$; $o(u) = \pm 1$ 
+\begin{equation}
+        \int_{ (U, o )} \alpha = \int a(u) du^1 \wedge \dots \wedge du^p \equiv = \int_U o(u) a(u) du^1 \dots du^p \quad \quad \quad \, (3.1)
+\end{equation}
+
+$(e_1 \dots e_p ) = \left( \frac{ \partial }{ \partial u^1 } \dots \frac{ \partial }{ \partial u^p } \right)$ has same orientation as $o(u)$
+
+
+\subsubsection{ 3.1b. Integration over Parametrized Subsets }
+
+oriented parameterized $p$-subset of manifold $M$ to be pair $(U, o ; F)$, \\
+oriented region $(U, o)$ in $\mathbb{R}^p$ and diff. $F:U \to M$  \\
+
+define 
+\begin{equation}
+\int_{ (U, o ; F)} \alpha^p = \int_{ (U,o)} F^* \alpha^p \quad \quad \quad \, (3.3)
+\end{equation}
+\emph{ we make no requirements on the rank of} $DF$. 
+
+
+\begin{gather}
+        \int_{ (U,o; F)} \alpha^p \equiv \int_{ (U, o )} (F^* \alpha^p ) \left[ \frac{ \partial }{ \partial u^1} \dots \frac{ \partial }{ \partial u^p } \right] du^1 \wedge \dots \wedge du^p = o(u) \int_U (F^* \alpha^p ) \left[ \frac{ \partial }{ \partial u^1 } \dots \frac{ \partial }{ \partial u^p } \right] du^1 \dots du^p  \quad \quad \quad \, (3.4) \\
+        = o(u) \int_U \alpha^p \left[ F_* \frac{ \partial }{ \partial u^1 } \dots F_* \frac{ \partial }{ \partial u^p } \right] du^1 \dots du^p \quad \quad \quad \, (3.5)
+\end{gather}
+
+
+\begin{equation}
+        \int_C \alpha^1 = \int_C a_i dx^i = \int_a^b F^*[a_i dx^i ] = \int_a^b a_j \frac{ dx^j}{dt} dt \quad \quad \quad \, (3.6)
+\end{equation}
+
+
+
+\paragraph{3.1(3)(i)\quad Higher-dimensional cross product}
+\beq{
+	  \vec A_i \cdot (\vec A_1 \cross \cdots \cross \vec A_i \cross \cdots \cross \vec A_{n-1}) := \vol^n(\vec A_i, \vec A_1, \ldots, \vec A_i, \ldots \vec A_{n-1}) = 0
+}
+
+
+
+\subsubsection{3.3 Stokes' Theorem}
+
+\paragraph{3.3(1)\quad ... in $\mathbb R^3$}
+\begin{itemize}
+\item \(p=2\)
+	\beq{
+		\omega^1 &= w_1 \d x^1 + w_2 \d x^2 + w_3 \d x^3
+		\\
+		\Rightarrow \d \omega^1 
+			&= \left(\pdq{w_3}{x^2}+\pdq{w_2}{x^3}\right) \d x^2 \wedge \d x^3 + \left(\pdq{w_3}{x^1}+\pdq{w_1}{x^3}\right) \d x^1 \wedge \d x^3 \\
+				&\qquad + \left(\pdq{w_2}{x^1}+\pdq{w_1}{x^2}\right) \d x^1 \wedge \d x^2
+	}
+	This corresponds to the classical Stokes' Theorem
+	\beq{
+		\int_A \rot{\vec W} \, \d \vec A = \int_{\partial A} \vec W \d \vec s
+	}
+\item \(p=3\)
+	\beq{
+		\omega^2 &= w_{12} \d x^1 \wedge \d x^2 + w_{13} \d x^1 \wedge \d x^3 + w_{23} \d x^2 \wedge \d x^3
+		\\
+		\Rightarrow \d \omega^2
+			&= \left(\pdq{w_{23}}{x^1} + \pdq{w_{31}}{x^2} + \pdq{w_{12}}{x^3}\right) \d x^1 \wedge \d x^2 \wedge \d x^3
+	}
+	This corresponds to Gauﬂ's Law
+	\beq{
+		\int_V \div{\vec W} \, \d V = \int_{\partial V} \vec W \d \vec A
+	}
+\end{itemize}
+
+\paragraph{3.3(2)\quad ... in $\mathbb R^4$}
+\begin{itemize}
+\item \(p=2\)
+	\beq{
+		\omega^1 &= w_1 \d x^1 + w_2 \d x^2 + w_3 \d x^3 + w_4 \d x^4
+		\\
+		\Rightarrow \d \omega^1
+			&= \left(\pdq{w_1}{x^2}-\pdq{w_2}{x^1}\right) \d x^1 \wedge \d x^2
+			 + \left(\pdq{w_1}{x^3}-\pdq{w_3}{x^1}\right) \d x^1 \wedge \d x^3
+			 \\ &\qquad
+			 + \left(\pdq{w_1}{x^4}-\pdq{w_4}{x^1}\right) \d x^1 \wedge \d x^4
+			 + \left(\pdq{w_2}{x^3}-\pdq{w_3}{x^2}\right) \d x^2 \wedge \d x^3
+			 \\ &\qquad
+			 + \left(\pdq{w_2}{x^4}-\pdq{w_4}{x^2}\right) \d x^2 \wedge \d x^4
+			 + \left(\pdq{w_3}{x^4}-\pdq{w_4}{x^3}\right) \d x^3 \wedge \d x^4
+	}
+	It could be said to be some analogon to the classical Stokes' Theorem in \(\mathbb R^4\)
+	\beq{
+		\int_A \curl{\vec W} \, \d \vec A = \int_{\partial A} \vec W \d \vec s
+	}
+\item \(p=3\) %embrace for fugly
+	\beq{
+		\omega^2
+			&= w_{12} \d x^1 \wedge \d x^2 + w_{13} \d x^1 \wedge \d x^3 + w_{14} \d x^1 \wedge \d x^4
+			\\ &\qquad
+			+ w_{23} \d x^2 \wedge \d x^3 + w_{24} \d x^2 \wedge \d x^4 + w_{34} \d x^3 \wedge \d x^4
+		\\
+		\Rightarrow \d \omega^2
+			&= \left( \pdq{w_{12}}{x^3}-\pdq{w_{13}}{x^2}+\pdq{w_{23}}{x^1} \right) \d x^1 \wedge \d x^2 \wedge \d x^3
+			 \\ &\qquad
+			 + \left( \pdq{w_{12}}{x^4}-\pdq{w_{14}}{x^2}+\pdq{w_{24}}{x^1} \right) \d x^1 \wedge \d x^2 \wedge \d x^4
+			 \\ &\qquad
+			 + \left( \pdq{w_{13}}{x^4}-\pdq{w_{14}}{x^3}+\pdq{w_{34}}{x^1} \right) \d x^1 \wedge \d x^3 \wedge \d x^4
+			 \\ &\qquad
+			 + \left( \pdq{w_{23}}{x^4}-\pdq{w_{24}}{x^3}+\pdq{w_{34}}{x^2} \right) \d x^2 \wedge \d x^3 \wedge \d x^4
+	}
+	The classical analogon is of obviously
+	\beq{
+		\int_V \operatorname{wtf} (\vec W) \, \d \vec V = \int_{\partial V} \vec W \d \vec A
+	}
+\item \(p=4\)\\
+	\(\omega^3\) and \(\d \omega^3\) have already been calculated in 2.6(1). Using these forms, one gets a 4-dimensional analogon to Gauﬂ's Theorem
+	\beq{
+		\int_H \div{\vec W} \, \d H = \int_{\partial H} \vec W \d V
+	}
+\end{itemize}

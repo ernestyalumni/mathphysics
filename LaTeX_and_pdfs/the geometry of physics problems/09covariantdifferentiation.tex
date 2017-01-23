@@ -1,0 +1,341 @@
+\subsubsection{9.1 Covariant Differentiation}
+
+\begin{definition}
+affine connection or covariant differentiation is operator $\nabla (X,v) \mapsto \nabla_X v$ \quad \, $\begin{aligned} & \quad \\ 
+       & \text{ vector $X$ at $p$ } \\ 
+       & \text{ vector field $v$ at $p$ } \end{aligned}$
+
+\begin{equation} 
+\begin{gathered}
+\nabla_X (av+ bw) = a\nabla_X v + b \nabla_X w \\ 
+         \nabla_{ aX + bY} v = a\nabla_X v + b\nabla_Y v
+\end{gathered} \quad \quad \quad (9.2)
+\end{equation}
+
+\[
+\begin{gathered}
+\nabla_X (fv) = X(f)v + f\nabla_X v  \quad \quad \, \text{(``Leibniz rule'')}
+\end{gathered}
+\]
+
+demand if $X$ smooth, $\nabla_X v$ smooth vector field. 
+\end{definition}
+
+in our work up until now, we have always used local coordinates $x$ to yield a basis $\frac{ \partial}{ \partial x^i}$ for tangent vectors in a patch $U$.  
+
+For many purposes, however, it is advantageous to use a more general basis.
+
+frame of vector fields in $U$ - $n$ linearly independent smooth vector fields
+\[
+\mathbf{e} = (e_1 \dots e_n)
+\]
+coordinate frame = special case, $e_i = \frac{ \partial }{ \partial x^i}$ for some coordinate system $x$ in $U$
+
+frame $\mathbf{e}$ usually not coordinate frame, since $[e_i, e_j]$ usually not 0 while $[\partial_i, \partial_j] =0$
+
+\begin{theorem}[9.3] frame $\mathbf{e}$ is locally a coordinate frame iff
+\[
+[e_i , e_j] = 0 \quad \, \forall \, i,j
+\]
+\end{theorem}
+
+% \begin{proof} (proof environment not defined)
+Proof: 
+
+We need only show that $[e_i, e_j]=0$ implies $\exists \, $ functions $(x^i)$ such taht 
+\[
+e_i = \frac{ \partial }{ \partial x^i }
+\]
+
+Let $\sigma$ be the dual form basis.  From (4.25)
+
+\begin{equation}
+d\sigma^i(e_j, e_k) = -\sigma^i([e_j, e_k]) \quad \quad \quad \, (9.4)        
+\end{equation}
+
+
+
+
+% \end{proof} (proof environment not defined)
+
+
+
+
+Let $e = (e_1 \dots e_n)$ frame in $U$.  Then $X=e_j X^j$ 
+\begin{equation}
+\begin{aligned}
+        \xrightarrow{ (9.2)} \nabla_X(e_k v^k) & = X(v^k) e_k + v^k \nabla_X e_k = X^j e_j v^k e_k + v^k X^j \nabla_{e_j} e_k = X^j e_j(v^k)e_k + X^j e_i \omega^i_{jk} v^k = \\ 
+        & = X^j e_i \omega^i_{jk} v^k + X^j e_j(v^k)e_k 
+\end{aligned} \quad \quad \quad (9.5)
+\end{equation}
+
+where $\omega^i_{jk}$ defined 
+
+\begin{equation}
+        \nabla_{e_j} e_k = e_i \omega^i_{jk} \quad \quad \quad (9.6)
+\end{equation}
+
+when $e_j = \partial_j$ coordinate frame, $\omega^i_{jk} = \Gamma^i_{jk}$
+
+since $X(v^k) = dv^k(X)$
+
+\[
+\nabla_X v = e_i \lbrace dv^i(X) + X^j\omega^i_{jk} v^k \rbrace
+\]
+
+$\omega^i_{jk}$ coefficients of affine connection.  \\
+
+using dual basis $\sigma$ of 1-forms,
+
+\begin{equation}
+        \nabla_X v = e_i \lbrace dv^i(X) + \omega^i_{jk} \sigma^j(X) v^k \rbrace = e_i \lbrace dv^i + \omega^i_{jk} \sigma^j v^k \rbrace(X) \quad \quad \quad (9.7)
+\end{equation}
+
+i.e.
+
+\begin{equation}
+\boxed{ \nabla_X v = dv(X) + \omega^i_{jk} + \omega^i_{jk} \sigma^j(X) v^ke_i }
+\end{equation}
+
+
+when frame $e$ is coordinate frame $e_i = \partial_i = \frac{ \partial }{ \partial x^i}$, \, $\sigma^i = dx^i$
+
+\[
+\nabla_X v = \partial_i \lbrace \frac{ \partial v^i}{ \partial x^j} + \omega^i_{jk} v^k \rbrace dx^j(X)
+\]
+
+i.e. 
+
+\begin{equation}
+        (\nabla_X v)^i = \left[ \frac{ \partial v^i}{ \partial x^j} + \omega^i_{jk} v^k \right] X^j \quad \quad \quad (9.8)
+\end{equation}
+
+
+since $\nabla_X v$ assumed to be vector, conclude
+
+\begin{equation}
+        \nabla_j v^i = \left. v^i \right|_j \equiv \frac{ \partial v^i}{ \partial x^j} + \omega^i_{jk} v^k \quad \quad \quad (9.9)
+\end{equation}
+
+form the components of a mixed tensor, covariant derivative of vector $v$.  
+
+
+
+
+\subsubsection{9.3 Cartan's Exterior Covariant Differential}
+
+\subsubsection{9.3c. Cartan's Structural Equations}
+
+
+denote \\
+row matrix  $ e \equiv (e_1 \dots e_n) $ \\
+column $\sigma \equiv (\sigma^1 \dots \sigma^n )^T$ \\
+
+$n \times n$ matrix of connection 1-forms $\omega = (\omega^i_{ \, \, j} )$ \\
+
+column vector of torsion 2-forms $\tau = (\tau^1 \dots \tau^n)^T$
+
+
+\subsubsection{9.3d. The Exterior Covariant Differential of a Vector-Valued Form}
+
+$\alpha$ vector-valued $p$-form \\
+locally,
+$\alpha = e_i \otimes \alpha^i$, $\forall \, \alpha^i = a^i_{\, \, \underline{J}}(x) \sigma^J$ locally defined $p$-form \\
+
+\textbf{exterior covariant differential}, vector-valued $(p+1)$ form $\nabla \alpha$ \\
+\phantom{\quad } defined by Leibniz rule
+\[
+\nabla \alpha = \nabla (e_i \otimes \alpha^i) = (\nabla e_i) \otimes_{\wedge} \alpha^i + e_i \otimes d\alpha^i
+\]
+where
+\[
+(\nabla e_i)\otimes_{\wedge} \alpha^i = (e_k \otimes \omega^k_{\, \, i} ) \otimes_{\wedge} \alpha^i \equiv e_k \otimes (\omega^k_{\, \, i} \wedge \alpha^i)
+\]
+
+column of $p$ forms $\alpha = (\alpha^1 \dots \alpha^n)^T$
+
+\begin{equation}
+\nabla \alpha = e\otimes (d\alpha + \omega \wedge \alpha ) \quad \quad \quad \, (9.31)
+\end{equation}
+
+
+\paragraph{9.3(1) Basis expansion of the curvature form}
+\beq{
+	\tensor\theta{^i_j}
+	&= \d\tensor\omega{^i_j} + \tensor\omega{^i_r}\wedge\tensor\omega{^r_j}
+	 = \d\left(\tensor\omega{^i_{\ell j}}\d u^\ell\right) + \left(\tensor\omega{^i_{kr}}\d u^k\right)\wedge \left(\tensor\omega{^r_{\ell j}}\d u^\ell\right) \\
+	&= \underbrace{\left(\partial_k\tensor\omega{^i_{\ell j}} + \tensor\omega{^i_{kr}}\tensor\omega{^r_{\ell j}}\right)}_{\identical\, \text{``}(_{k\ell})\text{''}} \underbrace{\d u^k\wedge\d u^\ell}_{\identical\, \d u^{k\ell}}
+	 = \frac12 \left((_{k\ell})\d u^{k\ell} + (_{k\ell})\d u^{k\ell}\right) \\
+	 	&\qquad\text{(In the second summand, commute the wedge product,} \\
+	 	&\qquad\text{ afterwards rename }k\leftrightarrow \ell\text{)} \\
+	 &= \frac12 \left((_{k\ell})\d u^{k\ell} - (_{\ell k})\d u^{k\ell}\right) \\
+	 &= \frac12 \underbrace{\left(\partial_k\tensor\omega{^i_{\ell j}} - \partial_\ell\tensor\omega{^i_{kj}} + \tensor\omega{^i_{kr}}\tensor\omega{^r_{\ell j}} - \tensor\omega{^i_{\ell r}}\tensor\omega{^r_{kj}}\right)}_{=\tensor R{^i_{jk\ell}}} \d u^k\wedge\d u^\ell \\
+	&= \frac12\tensor R{^i_{jk\ell}} \d u^k\wedge\d u^\ell
+}
+
+
+
+\paragraph{9.3(2) Covariant derivative of the identity form}
+\beq{
+	\vec\nabla\text{``}\d\vec r\text{''}
+	&= \vec\nabla\left(\vec e_i \otimes \sigma^i\right)
+	 = \vec e_i \otimes \underbrace{\left(\d\sigma^i + \tensor\omega{^i_j}\wedge\sigma^j\right)}_{=\tau^i}
+	 = \vec e_i \otimes \tau^i
+}
+\emph{Remark:} The reason for calling \ieq{\vec e_i\otimes\sigma^i} the identity form is because
+\beq{
+	\vec e_i\otimes\sigma^i(\vec v)
+	&= \vec e_i\otimes\sigma^i(v^j\vec e_j)
+	 = \vec e_iv^j\underbrace{\sigma^i(\vec e_j)}_{=\delta^i_j}
+	 = \vec e_iv^i
+	 = \vec v
+}
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{9.4 Change of Basis and Gauge Transformations}
+
+
+
+
+\paragraph{9.4(1) Transformation of the curvature form}\ \\
+For readability, let \ieq{\bar P \equiv P^{-1}}.
+\beq{
+	   \theta'
+	&= \d\omega' + \omega'\wedge\omega' \\
+	&= \d(\bar P\omega P + \bar P\d P) \\
+		&\qquad + (\bar P\omega P + \bar P\d P)\wedge(\bar P\omega P + \bar P\d P) \\
+	&= \d(\bar P\omega P) + \d(\bar P\d P) \\
+		&\qquad + \bar P\omega P\wedge\bar P\omega P + \bar P\omega P\wedge\bar P\d P + \bar P\d P\wedge\bar P\omega P + \bar P\d P\wedge\bar P\d P \\
+	&= \d\bar P\wedge\omega P + \bar P\d\omega P - \bar P\omega\wedge\d P + \d\bar P\wedge\d P + \cancel{\bar P\d^2P} \\
+		&\qquad + \bar P\omega P\wedge\bar P\omega P + \bar P\omega P\wedge\bar P\d P + \bar P\d P\wedge\bar P\omega P + \bar P\d P\wedge\bar P\d P \\
+		&\qquad\text{(Use }0 = \d\unity = \d(\bar P P) = \d\bar P P + \bar P\d P \Leftrightarrow \d\bar P = -\bar P\d P\bar P \text{;} \\
+		&\qquad\text{Also, the matrices ``commute'' with the wedge product, i.e. ``}A\wedge B=AB\wedge\text{'')} \\
+	&= -\bar P\d P\wedge\bar P\omega P + \bar P\d\omega P - \bar P\omega\wedge\d P - \bar P\d P\wedge\bar P\d P \\
+		&\qquad + \bar P\omega\wedge\omega P + \bar P\omega\wedge\d P + \bar P\d P\wedge\bar P\omega P + \bar P\d P\wedge\bar P\d P \\
+	&= \bar P\d\omega P + \bar P\omega\wedge\omega P \\
+	&= \bar P(\d\omega + \omega\wedge\omega) P \\
+	&= \bar P\theta P
+}
+
+And this dear children is why indices should be left away. (Yes, it's the same exercise.)
+
+\beq{
+	   \theta'^i{}_j
+	&= \d\omega'^i{}_j + \omega'^i{}_k\wedge\omega'^k{}_j \\
+	&= \d(\bar P^i{}_l\omega^l{}_m P^m{}_j + \bar P^i{}_l\d P^l{}_j) \\
+		&\qquad + (\bar P^i{}_l\omega^l{}_m P^m{}_k + \bar P^i{}_l\d P^l{}_k)\wedge(\bar P^k{}_n\omega^n{}_o P^o{}_j + \bar P^k{}_n\d P^n{}_j) \\
+	&= \d(\bar P^i{}_l\omega^l{}_m P^m{}_j) + \d(\bar P^i{}_l\d P^l{}_j) \\
+		&\qquad + \bar P^i{}_l\omega^l{}_m P^m{}_k\wedge\bar P^k{}_n\omega^n{}_o P^o{}_j + \bar P^i{}_l\omega^l{}_m P^m{}_k\wedge\bar P^k{}_n\d P^n{}_j \\
+		&\qquad + \bar P^i{}_l\d P^l{}_k\wedge\bar P^k{}_n\omega^n{}_o P^o{}_j + \bar P^i{}_l\d P^l{}_k\wedge\bar P^k{}_n\d P^n{}_j \\
+	&= \d\bar P^i{}_l\wedge\omega^l{}_m P^m{}_j + \bar P^i{}_l\d\omega^l{}_m P^m{}_j - \bar P^i{}_l\omega^l{}_m\wedge\d P^m{}_j + \d\bar P^i{}_l\wedge\d P^l{}_j + \cancel{\bar P^i{}_l\d^2P^l{}_j} \\
+		&\qquad + \bar P^i{}_l\omega^l{}_m P^m{}_k\wedge\bar P^k{}_n\omega^n{}_o P^o{}_j + \bar P^i{}_l\omega^l{}_m P^m{}_k\wedge\bar P^k{}_n\d P^n{}_j \\
+		&\qquad + \bar P^i{}_l\d P^l{}_k\wedge\bar P^k{}_n\omega^n{}_o P^o{}_j + \bar P^i{}_l\d P^l{}_k\wedge\bar P^k{}_n\d P^n{}_j \\
+		&\qquad\text{(Use }0 = \d\delta^i{}_j = \d(\bar P^i{}_k P^k{}_j) = \d\bar P^i{}_k P^k{}_j + \bar P^i{}_k\d P^k{}_j \Leftrightarrow \d\bar P^i{}_j = -\bar P^i{}_k\d P^k{}_l\bar P^l{}_j \text{;} \\
+		&\qquad\text{Also, the matrices ``commute'' with the wedge product, i.e. ``}A^i{}_k\wedge B^k{}_j=A^i{}_kB^k{}_j\wedge\text{'')} \\
+	&= -\bar P^i{}_r\d P^r{}_s\wedge\bar P^s{}_l\omega^l{}_m P^m{}_j + \bar P^i{}_l\d\omega^l{}_m P^m{}_j - \bar P^i{}_l\omega^l{}_m\wedge\d P^m{}_j - \bar P^i{}_r\d P^r{}_s\wedge\bar P^s{}_l\d P^l{}_j \\
+		&\qquad + \bar P^i{}_l\omega^l{}_m\wedge\omega^m{}_o P^o{}_j + \bar P^i{}_l\omega^l{}_m\wedge\d P^m{}_j \\
+		&\qquad + \bar P^i{}_l\d P^l{}_m\wedge\bar P^m{}_n\omega^n{}_o P^o{}_j + \bar P^i{}_l\d P^l{}_k\wedge\bar P^k{}_n\d P^n{}_j \\
+	&= \bar P^i{}_l\d\omega^l{}_m P^m{}_j + \bar P^i{}_l\omega^l{}_m\wedge\omega^m{}_n P^n{}_j \\
+	&= \bar P^i{}_l(\d\omega^l{}_m + \omega^l{}_n\wedge\omega^n{}_m) P^m{}_j \\
+	&= \bar P^i{}_l\theta^l{}_m P^m{}_j
+}
+
+
+
+
+\paragraph{9.4(2) Transformation of the curvature form}\ \\
+The Transformation rule for basis vectors is
+\beq{
+	\vec e'=\vec eP \Leftrightarrow e'_i = e_j \tensor P{^j_i}
+}
+The transformation from cartesian to polar coordinates is given by
+\beq{
+	\matrixp{x\\y} &= \matrixp{x(r,\varphi)\\y(r,\varphi)} = \matrixp{r\cos\varphi\\r\sin\varphi} \\
+	P &= \pdq{(x,y)}{(r,\varphi)} = \matrixp{\pdq xr & \pdq x\varphi \\ \pdq yr & \pdq y\varphi} = \matrixp{\cos\varphi & -r\sin\varphi \\ \sin\varphi & r\cos\varphi}
+}
+Using Mathematica to skip the annoying 2nd semester homework assignment parts of finding the inverse and calculating derivatives,
+\beq{
+	\d P &= \matrixp{-\sin\varphi\d\varphi & -\sin\varphi\d r-r\cos\varphi\d\varphi \\ \cos\varphi\d\varphi & \cos\varphi\d r-r\sin\varphi\d\varphi} \\
+	P^{-1} &= \matrixp{\cos\varphi & \sin\varphi \\ -\frac1r\sin\varphi & \frac1r\cos\varphi}
+}
+Multiplying these two expressions yields, as desired,
+\beq{
+	\omega' = \cancel{P^{-1}\omega P} + P^{-1}\d P = \matrixp{0 & -r\d\varphi \\ \frac1r\d\varphi & \frac1r\d r}
+}
+Since \ieq{\theta=0}, \ieq{\theta'} vanishes as well. This is obvious from the transformation behavior of \ieq{\theta}; direct computation confirms this, as
+\beq{
+	   \theta'
+	&= \d\omega'+\omega'\wedge\omega' \\
+	&= \d\matrixp{0 & -r\d\varphi \\ \frac1r\d\varphi & \frac1r\d r} + \matrixp{0 & -r\d\varphi \\ \frac1r\d\varphi & \frac1r\d r}\wedge\matrixp{0 & -r\d\varphi \\ \frac1r\d\varphi & \frac1r\d r} \\
+	&= \matrixp{\cancel{\d0} & \d(-r\d\varphi) \\ \d\left(\frac1r\d\varphi\right) & \cancel{\d\left(\frac1r\d r\right)}} + \matrixp{\cancel{0\wedge0} - \cancel{r\d\varphi\wedge\frac1r\d\varphi} & \cancel{0\wedge(-r\d\varphi)}-r\d\varphi\wedge\frac1r\d r \\ \cancel{\frac1r\d\varphi\wedge0} + \frac1r\d r\wedge\frac1r\d\varphi & \cancel{\frac1r\d\varphi\wedge(-r\d\varphi)} + \cancel{\frac1r\d r\wedge\frac1r\d r}} \\
+	&= \matrixp{0 & -\d r\wedge\d\varphi \\ -\frac1{r^2}\d r\wedge\d\varphi & 0} + \matrixp{0 & \d r\wedge\d\varphi \\ \frac1{r^2}\d r\wedge\d\varphi & 0} \\
+	&= \matrixp{0&0\\0&0}
+}
+This exercise made the advantage of the matrix notation clear: use the connection coefficients like normal matrices, only that you put a wedge in between their components' differential form ``factors''.
+
+
+
+\subsubsection{}
+
+\subsubsection{ Parallel Displacement and Curvature on a Surface}
+
+When is parallel displacement independent of path?
+
+We saw in Section 8.7 that parallel displacement of a vector between 2 pts. of a surface is path-dependent;  \\
+This phenomenon is referred to as holonomy.
+
+\begin{theorem}[9.61]
+        Let $U\subset M^2$ compact in Riemannian surface with piecewise smooth boundary $\partial U$ \\
+Assume $U$ covered by single orthonormal frame field $e$ (e.g. $U$ contained in coordinate patch) \\
+Let unit vector $\mathbf{v}$ parallel translated around $\partial U$ \\
+\quad $\mathbf{e}$ defined orientation.
+
+Then angle $\Delta \alpha$ between $\mathbf{v}_0, \mathbf{v}_f$ is 
+\[
+\Delta \alpha = \iint K dS = \iint_U K \sigma^1 \wedge \sigma^2
+\]
+\end{theorem}
+
+Proof. parametrize $\partial U$, let $T$ tangent, let $\alpha = \arccos{ \langle e_1, v \rangle }$ \\
+Although $\alpha$ (like $\mathbf{v}$) is not single-valued on $\partial U$, $d\alpha = \left( \frac{ d\alpha}{ds} \right) ds$ well-defined.
+\[
+\Delta \alpha = \arccos{ \langle v_0, v_f \rangle } = \oint_{ \partial U} d\alpha
+\]
+
+For 
+\[
+\mathbf{v} = \mathbf{e}_1 \cos{\alpha} + \mathbf{e}_2 \sin{\alpha}
+\]
+
+then
+
+\[
+\begin{gathered}
+        \nabla v = e(dv + \omega v) = e_1 (dv^1 + \omega_{12} v^2 ) + e_2 ( dv^2 + \omega_{21} v^1 ) = e_1 (-\sin{\alpha} d\alpha + \omega_{12} \sin{\alpha} ) + e_2 ( \cos{\alpha} d\alpha + \omega_{21} \cos{\alpha} ) = \\
+        = (-e_1 \sin{\alpha} + e_2 \cos{\alpha} )( d\alpha - \omega_{12})
+\end{gathered}
+\]
+
+To say that $v$ parallel displaced around $\partial U$ is to say \\
+\quad $\nabla v(T) =0$, i.e. $d\alpha - \omega_{12} =0$ along $\partial U$  \quad (9.62)
+
+\[
+d \alpha(T) = \omega_{12}(T)
+\]
+
+Then 
+\[
+\begin{gathered}
+        \Delta \alpha = \oint_{\partial U} d\alpha = \oint_{\partial U} \omega_{12} = \iint_U d\omega_{12} = \\
+        = \iint_U \theta_{12} = \iint_U K \sigma^1 \wedge \sigma^2 
+\end{gathered}
+\]

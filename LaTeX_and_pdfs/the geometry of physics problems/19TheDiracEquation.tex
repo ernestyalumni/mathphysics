@@ -1,0 +1,406 @@
+% 19TheDiracEquation.tex
+
+\begin{quote}
+Spin is what makes the world go 'round. -Theodore Frankel
+\end{quote}
+
+\subsection{19.1a. The Rotation Group $SO(3)$ of $\mathbb{R}^3$}
+
+\[
+\begin{aligned}
+  & E_1 = \left[ \begin{matrix} & & \\ 
+       & & -1 \\
+      & 1 & \end{matrix} \right] \\
+  & E_2 = \left[ \begin{matrix} & & 1 \\ 
+       & &  \\
+     -1  &  & \end{matrix} \right] \\
+& E_3 = \left[ \begin{matrix} & -1 & \\ 
+     1  & &  \\
+      &  & \end{matrix} \right] 
+\end{aligned}
+\]
+$(E_i)$'s are basis for $\mathfrak{so}(3)$
+
+\[
+[E_i,E_j] = \epsilon_{ijk}E_k
+\]
+$c_{ij}^k = \epsilon_{ijk}$
+
+Consider 1-parameter group of rotations with angular velocity $\omega$, $\omega = \frac{d\theta}{dt}$
+
+\[
+\left. \frac{d \mathbf{r}}{dt} \right|_{t=0} = \omega \times \mathbf{r}(0)
+\]
+
+On the other hand, 1-parameter subgroup is of form $R(t) = e^{tS}$, $S$ skew-symmetric matrix
+\[
+\begin{gathered}
+  r(t) = R(t)r(0) = e^{tS}r(0) \\ 
+  \left. \frac{dr}{dt} \right|_{t=0} = Sr(0) \text{ so } S(r) = \omega \times r \\ 
+ E_j(r) = e_j \times r
+\end{gathered}
+\]
+\begin{equation}
+R(t) = \exp{ (E_j \omega^jt)} \equiv \exp{ (E\cdot \omega t)} \quad \quad \quad \, (19.3) 
+\end{equation}
+
+\begin{equation}
+R(\theta) = \exp{ (\theta E\cdot n ) } \quad \quad \quad \, (19.4)
+\end{equation}
+
+
+
+\subsection{19.1b. $SU(2)$: The Lie Algebra $\mathfrak{su}(2)$}
+
+$\mathfrak{su}(2) = \mathfrak{g} = \lbrace X | X = - X^{\dag}; \text{tr}{(X)} = 0\rbrace$
+
+$i\mathfrak{g} = \lbrace X | X = X^{\dag}; \text{tr}{(X)} = 0 \rbrace$, 
+
+basis 
+\[
+\begin{aligned}
+  & \sigma_1 = \left[ \begin{matrix} & 1 \\ 1 &   \end{matrix} \right] \\
+  & \sigma_2 = \left[ \begin{matrix} & -i \\ i &   \end{matrix} \right] \\
+  & \sigma_3 = \left[ \begin{matrix} 1 &  \\ & -1  \end{matrix} \right] \\
+\end{aligned} \quad \quad \quad \, (19.5)
+\]
+
+\[
+[ \sigma_j , \sigma_k ] = 2i \epsilon_{ijk} \sigma_i \quad \quad \quad \, (19.6)
+\]
+
+We shall see that $SU(2)$ simply connected.
+
+Lie group theory states that $\exists \, $ homomorphism from $SU(2)$ onto $SO(3)$ \quad \, Pf. : Frobenius thm.
+
+$\text{Ad}:SU(2) \to SO(3)$ \\
+Claim: adjoint representation $\text{Ad}(g) = gYg^{-1}$ of $SU(2)$ on 3-dim. Lie algebra $\mathfrak{su}(2)$ yields (Thm. 19.2) standard representation of $SO(3)$ on $\mathbb{R}^3$
+
+\[
+\mathbf{x} = \mathbf{x} \cdot \mathbf{\sigma} = x^R \sigma_R = \left[ \begin{matrix} z & x - iy \\ x+ iy & - z \end{matrix} \right] = x_*
+\]
+inverse
+\[
+\begin{aligned}
+  & x = \frac{1}{2} \text{tr}{ ( x_* \sigma_1 ) }  \\
+  & y = \frac{1}{2} \text{tr}{ ( x_* \sigma_2 ) }  \\
+  & z = \frac{1}{2} \text{tr}{ ( x_* \sigma_3 ) }  \\
+\end{aligned} \quad \quad \quad \, (19.8)
+\]
+
+\[
+\begin{aligned}
+  & \mathbf{e}_1 = \left[ \begin{matrix} 1 \\ 0 \\ 0 \end{matrix} \right] \mapsto \sigma_1 \\ 
+  & \mathbf{e}_2 = \left[ \begin{matrix} 0 \\ 1 \\ 0 \end{matrix} \right] \mapsto \sigma_2 \\ 
+  & \mathbf{e}_3 = \left[ \begin{matrix} 0 \\ 0 \\ 1 \end{matrix} \right] \mapsto \sigma_3 
+\end{aligned}
+\]
+
+$\mathbf{e}_i \cdot \sigma = \sigma_i$
+
+real scalar product in $i\mathfrak{g}$ 
+\[
+\langle h, h' \rangle = \text{tr}(hh')
+\]
+as $\text{tr}{ (\sigma_j \sigma_k)} = 2\delta_{jk}$
+
+Recall, $\forall \, $ Lie group $G$ acts on $\mathfrak{g}$ by adjoint action
+
+\[
+\begin{aligned}
+  & \text{Ad}: G \to Gl(\mathfrak{g}) \\ 
+  & \text{Ad}(g)(X) = gXg^{-1} \quad \quad \, \forall \, X \in \mathfrak{g}
+\end{aligned}
+\]
+
+In this case, $SU(2) = \lbrace u | u^{\dag} u =1 \rbrace$, $\mathfrak{su}(2) = \lbrace X | X^{\dag} = -X, \text{tr}X \rbrace$, $\sigma_i$, $i=1,2,3$ basis for $\mathfrak{su}(2)$
+
+\[
+\begin{aligned}
+  & \begin{aligned}
+  & \text{Ad}: G \to Gl(\mathfrak{g}) \\ 
+  & \text{Ad}(g)(X) = gXg^{-1} \quad \quad \, \forall \, X \in \mathfrak{g}
+\end{aligned} \\
+& \begin{aligned}
+  & \text{Ad}: SU(2) \to \mathfrak{su}(2)  \\ 
+  & \text{Ad}(u)(X) = uXu^{-1} \quad \quad \, \forall \, X \in \mathfrak{su}(2)
+\end{aligned}
+\end{aligned}
+\]
+Consider action of $SU(2)$ on $i\mathfrak{su}(2) = i\mathfrak{g}$ hermitian traceless matrices $X$. We'll still call this $\text{Ad}$
+
+$\forall \, u \in SU(2)$ 
+\[
+\begin{aligned}
+  & \text{Ad}(u) : i\mathfrak{g} \to i\mathfrak{g} \\ 
+  & \text{Ad}(u) : i\mathfrak{su}(2) \to i\mathfrak{su}(2)
+  & x_* \mapsto ux_*u^{-1} \quad \, \forall \, x_* \in i \mathfrak{su}(2)
+\end{aligned}
+\]
+
+$\forall \, u \in SU(2)$, we're associated a $3\times 3$ matrix
+\[
+\text{Ad}(u) : \mathbb{R}^3 \to \mathbb{R}^3 \text{ using } (19.7) \begin{aligned}
+  & \mathbb{R}^3 \to i\mathfrak{g} \\
+  & x \mapsto x\cdot \sigma = x^R \sigma_R = x_* \end{aligned}
+\]
+
+Note $\text{Ad}$ is a representation of $SU(2)$ by $3\times 3$ matrices
+\[
+\text{Ad}(uu')(x_*) = uu'x_* (uu')^{-1} = \text{Ad}(u)\text{Ad}(u')x_*
+\]
+Note
+\[
+\langle \text{Ad}(u)x_* , \text{Ad}(u) x_* \rangle = \text{tr}(ux_*u^{-1}ux_*u^{-1}) \text{tr}(x_* x_*) = \langle x_* x_* \rangle
+\]
+so $\text{Ad}(u) \in O(3)$, $\text{Ad}$ representation of $SU(2)$ by orthogonal $3\times 3$ matrices.
+
+\subsection{19.1c. $SU(2)$ is Topologically the 3-Sphere}
+
+fundamental representation of $SU(2)$ by $2\times 2$ complex unitary matrices $uu^{\dag}=1$
+
+$\left[ \begin{matrix} u_{11} & u_{12} \\ u_{21} & u_{22} \end{matrix} \right]$
+
+Recall that the general form of $SU(2)$ matrices is the following: (cf. wikipedia)
+\[
+SU(2) = \lbrace \left( \begin{matrix} \alpha & - \overline{\beta} \\ \beta & \overline{\alpha} \end{matrix} \right) | \alpha , \beta \in \mathbb{C}, \, |\alpha|^2 + |\beta|^2 = 1 \rbrace
+\]
+$S^3 \subset \mathbb{C}^2 \approx \mathbb{R}^4$
+
+\[
+S^3 = \lbrace (z_1, z_2)^T | |z_1|^2 + |z_2|^2 = 1 \rbrace
+\]
+Note $SU(2) : S^3 \to S^3$ as $UU^{\dag}=1$ \quad \, $\forall \, U \in SU(2)$ i.e. (unitary) \\
+Note $SU(2)$ acts transitively on $S^3$ \\
+
+
+  Pf:
+\[
+\begin{gathered}
+  (1,0)^T \in S^3 , \quad \quad \, u = \left[ \begin{matrix} z_1 & - \overline{z}_2 \\ z_2 & \overline{z}_1 \end{matrix} \right] \in SU(2) \\ 
+ u\left( \begin{matrix} 1 \\ 0 \end{matrix} \right) = \left( \begin{matrix} z_1 \\ z_2 \end{matrix} \right) \quad \quad \, \forall \, \left( \begin{matrix} z_1 \\ z_2 \end{matrix} \right) \in S^3 \text{ i.e. (arbitrary) }
+\end{gathered}
+\]
+
+So any $\left( \begin{matrix} z_1 \\ z_2 \end{matrix} \right) \in S^3$ can be ``reached'' from $\left( \begin{matrix} 1 \\ 0 \end{matrix} \right) \in S^3$ by some $u\in SU(2)$
+
+
+From (17.10), topologically
+\[
+S^3 \approx \frac{SU(2)}{H}
+\]
+where $H$ is stability subgroup of pt. $\left( \begin{matrix} 1 \\ 0 \end{matrix} \right)$
+
+But (19.11), $H = \lbrace 1 \rbrace$
+
+\[
+\Longrightarrow SU(2) \approx S^3
+\]
+
+In fact, 
+
+\[
+\begin{aligned}
+  & SU(2) \to S^3 \\ 
+  & u = \left( \begin{matrix} z_1 & - \overline{z}_2 \\ z_2 & \overline{z}_1 \end{matrix} \right) \mapsto \left( \begin{matrix} z_1 \\ z_2 \end{matrix} \right)
+\end{aligned}
+\]
+In particular $SU(2) =S^3$ connected. \\
+Since $\text{Ad}(u) \in O(3)$ orthogonal matrix, $\text{det}\text{Ad}(u) = \pm 1$ \\
+since $u$ cont., and connected $S^3$, $\text{det}{ \text{Ad}(u)}= + 1$.  Thus $\text{Ad}{(u)} \in SO(3)$
+\[
+\text{Ad}:SU(2) \to SO(3)
+\]
+
+\subsection{$\text{Ad}:SU(2) \to SO(3)$ in More Detail}
+
+\begin{theorem}[19.12]
+representation $Ad:SU(2) \to SO(3)$ given in (19.10)
+\begin{equation}
+\begin{aligned}
+  u \in SU(2) \\ 
+  x_* \in i\mathfrak{su}(2) \\ 
+  x_* \mapsto ux_* u^{-1} 
+\end{aligned} \quad \quad \quad \, (19.10)
+\end{equation}
+is onto, i.e. $\forall \, $ rotation in $\mathbb{R}^3$, of form (19.10)
+
+
+Furthermore, this representation is $2:1$, i.e. $\forall \, $ rotation $R$, $\exists \, $ exactly 2 $\pm u \in SU(2)$, s.t. $\text{Ad}(\pm u) = R$
+\end{theorem}
+
+EY : 20150217 What we have is this:
+
+\[
+\begin{aligned}
+  \mathbb{R}^3 \overset{ \,_* }{=} \mathfrak{su}(2) \\ 
+  (x,y,z) \overset{ \,_* }{ \mapsto } x^R \sigma_R
+\end{aligned} \quad \quad \quad \, x_*^{-1}(X) = \frac{1}{2} ( \text{tr}(X\sigma_1 ), \text{tr}(X\sigma_2 ), \text{tr}(X\sigma_3 ) )^T
+\]
+
+\[
+\begin{aligned}
+  SU(2) \xrightarrow{ \text{Ad } } \text{Gl}(\mathfrak{su}(2)) \\ 
+  u \mapsto \text{Ad}(u) \subset SO(3)
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+  i\mathfrak{su}(2) \xrightarrow{ \text{Ad}(u) } i \mathfrak{su}(2) \\ 
+  x_* \mapsto ux_* u^{-1}
+\end{aligned}
+\]
+
+
+Pf: Let $u(t)$ 1-parameter subgroup of $SU(2)$ \\
+\phantom{Pf: Let } $u(t) = \exp{ \left( \frac{t}{i} h \right)}$, $h$ $2\times 2$ hermitian matrix (i.e. $h=h^{\dag}$), $u(t) \in SU(2)$
+
+$u(t) \to$ 1-parameter subgroup of $SO(3)$ under $ \begin{aligned}
+  & \quad \\ 
+  & i\mathfrak{su}(2) \to \mathbb{R^3} \\
+  & x_* \overset{ \,_*^{-1}}{\mapsto} \mathbf{x} \end{aligned}$
+
+\[
+\text{Ad} u(t) \mathbf{x} \sim \text{Ad}u(t) x_* = e^{-ith} x_* e^{ith}
+\]
+
+\[
+\begin{gathered}
+  \left. \frac{d}{dt} \right|_0 \text{Ad}(u(t)) x_* = \left. \frac{d}{dt} \right|_0 e^{-ith} x_* e^{ith} = -i [h, x_* ] = -i [h^j \sigma_j, x^k\sigma_k] = -ih^jx^k[\sigma_j,\sigma_k] = -ih^jx^k \epsilon_{jki} \sigma^i(2i) =  \\
+=  2\epsilon_{jki} h^jx^k\sigma^i   = 2(h\times x)^i\sigma_i
+\end{gathered}
+\]
+
+EY : 20150217 Keep in mind 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+\mathbb{R}^3  & \mathbb{R}^3 \\
+i\mathfrak{su}(2) & i \mathfrak{su}(2) \\ };
+%  \path[-stealth]
+  \path[->]
+  (m-1-1) edge node [above] {$\text{Ad}(u)$} (m-1-2)
+  (m-2-1) edge node [above] {$\text{Ad}{(u)}$} (m-2-2);
+  \path[==]
+  (m-1-1) edge node [above,rotate=90] {$\simeq$} (m-2-1)
+  (m-1-2) edge node [above,rotate=90] {$\simeq$} (m-2-2);
+\end{tikzpicture}
+
+angular velocity vector of 1-parameter group $\text{Ad}u(t) x \in \mathbb{R}^3$ 
+\[
+\omega = 2h
+\]
+
+From (19.3)
+\begin{equation}
+  R(t) = \exp{ (E_j \omega^j t) } \equiv \exp{ (E\cdot \omega t) } \quad \quad \quad \, (19.3)
+\end{equation}
+
+\begin{equation}
+\text{Ad}\exp{ \left( \frac{\sigma}{i} \cdot \mathbf{h}t \right)} x_* \sim R(t) \mathbf{x} = \exp{ (\mathbf{E} \cdot 2 \mathbf{h}t ) } \mathbf{x} \quad \quad \quad \, (19.13)
+\end{equation}
+or
+
+\[
+ i\mathfrak{su}(2) \xrightarrow{ \text{Ad}\exp{ \left( \frac{\sigma}{i} ht \right)} } i \mathfrak{su}(2)
+\]
+
+\[
+\begin{gathered}
+  i\mathfrak{su}(2) \to \mathbb{R}^3 \\ 
+\boxed{   \text{Ad}\exp{\left( \frac{\sigma}{i} ht \right)}x_* \mapsto R(t) x = \exp{ (E\cdot 2ht) }x   }
+% \frac{1}{2} ( \text{tr}{ (\text{Ad}\exp{\left( \frac{\sigma}{i} ht \right) } x_*\sigma_1 )} , \text{tr}{ (\text{Ad}\exp{\left( \frac{\sigma}{i} ht \right) } )} x_*\sigma_2 , \text{tr}{ (\text{Ad}\exp{\left( \frac{\sigma}{i} ht \right) } x_*\sigma_3  ) } )
+\end{gathered}
+\]
+
+\begin{equation}
+  \text{Ad}_*\left( \frac{\sigma_{\alpha} }{ 2i } \right)  = E_{\alpha} \quad \quad \quad \, (19.14)
+\end{equation}
+
+e.g. $h \in i\mathfrak{su}(2)$ \\
+\phantom{e.g. } $h = \sigma_3$, $h = \left( \begin{matrix} 0 \\ 0 \\ 1 \end{matrix} \right)$
+
+$t=\theta$
+
+$u(t) \in SU(2)$
+\[
+u(t) = \exp{ \left( \frac{t}{i} h \right)} = \exp{ \left( \frac{t}{i} \sigma_3 \right)} = \left[ \begin{matrix} e^{-i\theta}  & \\ & e^{i\theta} \end{matrix} \right] = \exp{ \left( \frac{\theta}{i} \sigma_3 \right)}
+\]
+with $\sigma_3 = \left[ \begin{matrix} 1 & \\ & -1 \end{matrix} \right]$ \\
+
+$\exp{ (E\cdot 2ht )} \in SO(3)$ 
+
+\[
+\overset{\text{Ad}_*\left( \frac{\sigma_{\alpha} }{2i} \right) }{ \mapsto } \exp{ (E\cdot 2h\theta)} = \exp{ (2\theta E_3)} = \exp{ \left[ \begin{matrix} & -2\theta & \\ 2\theta & & \\ & & \end{matrix} \right] } = \left[ \begin{matrix} \cos{2\theta} & -\sin{2\theta} & \\ \sin{2\theta} & \cos{2\theta} & \\ & & 1 \end{matrix} \right]
+\]
+with $\cdot h = E\cdot \sigma_3 = E_3 = \left[ \begin{matrix} & & -1 \\ & 1 & \\ & & \end{matrix} \right]$
+
+For $SU(2)$, for $0\leq \theta 2\pi$, \\
+$\exp{ \left( \frac{\theta \sigma_3}{i} \right) } $ is a simple closed curve, $\left[ \begin{matrix} e^{-i\theta} & \\ & e^{i \theta} \end{matrix} \right]$ \\
+
+$\exp{ \left( 2\theta E_3 \right)}$ yields 2 full rotations \\
+
+$\forall \, $ rotation of $\mathbb{R}^3$ is a rotation about some size, i.e. $R = \exp{ (E\cdot \omega \theta)} \in SO(3)$
+
+By (19.13), 
+\[
+\text{Ad}\exp{ \left( \frac{\sigma}{i} \cdot h t \right) }x_* \mapsto R(t) x = \exp{ (E\cdot 2h t ) } = \exp{ ( E\cdot \omega \theta ) }
+\]
+So that 
+\[
+\text{Ad}\exp{ \left( \frac{\sigma}{2i} \cdot \omega \theta \right) } = R
+\]
+for 
+\[
+\begin{aligned}
+  \omega = 2h \\ 
+  E = \frac{\sigma}{2i}
+\end{aligned}
+\]
+So \text{Ad} onto.  $\text{Ad}: SU(2) \to SO(3)$
+
+If $\text{Ad}(u) = R$, $u=u(t) = \exp{ \left( \frac{t}{i} h \right)} \mapsto R = \exp{ (E\cdot \omega t)}$
+\phantom{If }$\text{Ad}(u)x_* = ux_*u^{-1} \mapsto Rx$ \\ 
+\phantom{If }$\text{Ad}(-u)x_* = u x_*u^{-1} \mapsto Rx$
+
+So $\text{Ad}$ representation is at least $2:1$ i.e. not faithful \\
+
+It's an elementary result of group theory that \\
+\phantom{It's } if $\phi : G \to G'$ homomorphism of $G$ onto $G'$, then $G'$ isomorphic to coset $G/H$, where $H=\phi^{-1}(e')$ is kernel \\
+
+(17.10) fundamental principle, $\forall \, G$ that acts on $G'$ by 
+\[
+(g,g') \mapsto \phi(g)g'
+\]
+and stability subgroup of $e'\in G'$ is kernel $H= \phi^{-1}(e')$ \quad \quad \, $\text{ker}{\phi} = H = \phi^{-1}(e')$ \\
+
+$\text{Ad}:SU(2) \to SO(3)$ \quad \quad \, $\text{ker}{\text{Ad}} = \lbrace \pm 1 \rbrace$
+
+(17.11) $\to SU(2)$ is fiber bundle over $SO(3)$; 
+\[
+\begin{aligned}
+  & p^{-1} : SO(3) \to SU(2) \\ 
+  & p^{-1}(R) \mapsto \lbrace \pm u \rbrace \text{ exactly 2 pts. }
+\end{aligned}
+\]
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+S^3  & SU(2) \\
+\mathbb{R}P^3 & SO(3) \\ };
+  \path[->]
+  (m-1-1) edge node [left] {$p$} (m-2-1)
+  (m-1-2) edge node [left] {$p$} (m-2-2);
+  \path[==]
+  (m-1-1) edge node [above,rotate=0] {$\simeq$} (m-1-2)
+  (m-2-1) edge node [above,rotate=0] {$\simeq$} (m-2-2);
+\end{tikzpicture}
+
+$S^3/p = \mathbb{R}P^3$ \\
+$\begin{aligned}
+  & x\in S^3 \\
+  & x\sim -x\end{aligned}$ \quad \, $[x] = \lbrace x,-x\rbrace$
+

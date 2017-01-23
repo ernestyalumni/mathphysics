@@ -1,0 +1,105 @@
+
+\subsection{7.1 Curvature and Special Relativity}
+
+\subsubsection{7.1.a. Curvature of a Space Curve in $\mathbb{R}^3$}
+
+$\mathbf{x} = \mathbf{x}(t)$ \, \quad $\left( \frac{ds}{dt} \right)^2 = v^2$ \, \quad $s(t) = \int_0^t \| \mathbf{x}(u) \| du$ \\
+$\| \mathbf{v} \| = v$\[
+\begin{aligned}
+        & \dot{ \mathbf{x}} = \frac{d\mathbf{x}}{dt} = \mathbf{v} = \frac{d\mathbf{x}}{ds} \frac{ds}{dt} = \mathbf{T} v \\ 
+        & \mathbf{a} = \ddot{x} = \mathbf{v} = \dot{v} \mathbf{T} + v\dot{\mathbf{T}} = \frac{d^2s}{dt^2} \mathbf{T} + v \frac{d\mathbf{T}}{ds} \frac{ds}{dt} = \dot{v} \mathbf{T} + v^2 \frac{d\mathbf{T}}{ds} \\ 
+        & \mathbf{v} \times \mathbf{a} = v^3 \mathbf{T} \times \frac{d\mathbf{T}}{ds} = v^3 \kappa(s) \mathbf{T} \times \mathbf{n}
+\end{aligned}
+\]
+so 
+\[
+\text{unit tangent vector } \mathbf{T} = \frac{d\mathbf{x}}{ds} = \dot{ \mathbf{x}} \left( \frac{dt}{ds} \right) = \frac{ \mathbf{v}}{v}
+\]
+Note that 
+\[
+\frac{d\mathbf{T}}{ds} \cdot \mathbf{T} = \frac{1}{2} \frac{d}{ds} \left( \mathbf{T} \cdot \mathbf{T} \right) = \frac{1}{2} \frac{d}{ds} (1) = 0 
+\]
+
+Now
+\[
+\frac{d\mathbf{T}}{ds} = \kappa(s) \mathbf{n}(s) \quad \quad \, (7.1)
+\]
+where $\mathbf{n}$ principal normal, $\kappa(s) \geq 0$ curvature of $C$.  
+\[
+\Longrightarrow \kappa = \frac{ \| \mathbf{v} \times \mathbf{a} }{v^3}
+\]
+\paragraph{7.1(1)}\ \\
+\[
+\begin{aligned}
+        & x = \cos{\omega t} \\ 
+        & y = \sin{\omega t} \\ 
+        & z = kt 
+\end{aligned} %\quad \quad \dot{x} = \left( \begin{matrix} - \omega s{\omega t}  \\ \omega c{\omega t} \\ k \end{matrix} \right) \quad \quad \mathbf{a} = \left( \begin{matrix} - \omega^2 c{\omega t} \\ - \omega^2 s{\omega t} \\ 0 \end{matrix} \right) \quad \, v = \sqrt{ \omega^2 + k^2} 
+\]
+
+\[
+\mathbf{v} \times \mathbf{a} = \left| \begin{matrix} \mathbf{e}_x & \mathbf{e}_y & \mathbf{e}_z \\ -\omega s{\omega t} & \omega c{\omega t} & k \\ - \omega^2 c{\omega t} & - \omega^2 s{\omega t} & 0 \end{matrix} \right| = \left( \begin{matrix} k \omega^2 s{(\omega t)} \\ - k \omega^2 c{( \omega t)} \\ \omega^3 \end{matrix} \right)
+\]
+\[
+\Longrightarrow \kappa = \frac{ \| \mathbf{v} \times \mathbf{a} \| }{v^3} = \frac{ \sqrt{ k^2 \omega^4 + \omega^6} }{ \sqrt{ ( \omega^2 + k^2)^3 } } = \frac{ \omega^2}{ \omega^2 + k^2 }
+\]
+
+\paragraph{7.1(2)}\ \\
+
+Given $\mathbf{B} = \mathbf{T} \times \mathbf{n}$, 
+\[
+\frac{d\mathbf{B}}{ ds } = \frac{ d\mathbf{T} }{ds} \times \mathbf{n} + \mathbf{T} \times \frac{d\mathbf{n}}{ ds} = \mathbf{T} \times \frac{d\mathbf{n}}{ ds}
+\]
+so
+\[
+\mathbf{n} \times \frac{d\mathbf{B}}{ds} = \mathbf{n} \times (\mathbf{T} \times \frac{d\mathbf{n}}{ds} ) = \left( \mathbf{n} \times \frac{d\mathbf{n}}{ds} \right) \mathbf{T} - (\mathbf{n} \times \mathbf{T}) \frac{d\mathbf{n}}{ds} = 0 
+\]
+Indeed
+\[
+\begin{aligned}
+        & \mathbf{T} \cdot \frac{d\mathbf{B}}{ds} = 0 \\ 
+        & \mathbf{B} \cdot \frac{d \mathbf{B}}{ds} = \frac{d}{ds} ( \mathbf{B}\cdot \mathbf{B}) = \frac{d}{ds}(1)= 0 
+\end{aligned}
+\]
+
+Then $\frac{d\mathbf{B}}{ds} \parallel \mathbf{n}$. \\
+
+Define torsion $\frac{d\mathbf{B}}{ds} = \tau(s) \mathbf{n}$\\
+
+Using $CAB-BAC$,
+\[
+\begin{gathered}
+        \mathbf{n} \times \mathbf{B} = \mathbf{n} \times (\mathbf{T} \times \mathbf{n} ) = \mathbf{T} \\ 
+        \mathbf{T} \times \mathbf{B} = \mathbf{T} \times (\mathbf{T} \times \mathbf{n} ) = (\mathbf{n} \cdot \mathbf{T} ) \mathbf{T} - ( \mathbf{T} \cdot \mathbf{T} ) \mathbf{n} = - \mathbf{n} \\
+        \Longrightarrow \mathbf{n} = \mathbf{B} \times \mathbf{T}
+\end{gathered}
+\]
+
+So
+\[
+\frac{ d \mathbf{n}}{ d s} = \frac{ d\mathbf{B}}{ds} \times \mathbf{T}  + \mathbf{B} \times \frac{ d\mathbf{T}}{ ds} = \tau \mathbf{n} \times \mathbf{T} + \mathbf{B} \times \kappa \mathbf{n} = \boxed{ - \tau \mathbf{B} + - \kappa \mathbf{T}  = \frac{ d \mathbf{n}}{ds} } 
+\]
+
+
+\subsubsection{7.2 Electromagnetism in Minkowski Space}
+
+\paragraph{7.2(3)\quad Field strength 2-Form}\ \\
+Notation: \ieq{\d x^0 = \d t}; \ieq{\d x^{ij\cdots} = \d x^i \wedge \d x^j \wedge \cdots}. The expansion for \ieq{*F} was taken from (14.20) combined with (3.41).
+\beq{
+	F \wedge F
+		&= (E_i \d x^{i0} + B_{J=\{1,2,3\}} \d x^J) \wedge (E_k \d x^{k0} + B_{L=\{1,2,3\}} \d x^L) \\
+		&= -E_iE_k \bcancel{\d x^{i0k0}} + B_JB_L \bcancel{\d x^{JL}} + E_iB_L \d x^{i0L} + B_JE_k \d x^{Jk0} \\
+		&= -2 E_iB_J \d x^{0iJ} \\
+		&= -2 (E_1B_{23}\d x^{0123} + E_2B_{13}\d x^{0213} + E_3B_{12}\d x^{0312}) \\
+		&= -2 \underbrace{(E_1B_{23} + E_2B_{31} + E_3B_{12})}_{= \langle\vec E, \vec B\rangle}\underbrace{\d x^{0123}}_{= \vol^4} \\
+		&= -2 \, \langle\vec E, \vec B\rangle \vol^4 \\
+	F \wedge *F
+		&= (E_i\d x^{i0}+B_{J=\{1,2,3\}}\d x^J) \wedge (-(\vec*B)_k\d x^{k0} + (\vec*E)_{L=\{1,2,3\}}\d x^L) \\
+		&= - E_iB^{\vec*}_j \bcancel{\d x^{i0k0}} + B_JE^{\vec*}_L \bcancel{\d x^{JL}} + E_iE^{\vec*}_L\d x^{0iL} - B_JB^{\vec*}_k\d x^{0Jk} \\
+		&= B^{\vec*}_kB_J \d x^{0kJ} - E_iE^{\vec*}_L \d x^{0iL} \\
+		&= B^{\vec*}_kB_J \d x^{0kJ} - E_kE^{\vec*}_J \d x^{0kJ} \\
+		&= (B^{\vec*}_kB_J - E_kE^{\vec*}_J) \d x^{0kJ} \\
+			&\qquad\text{(permute k, J so their combination is in increasing order; } \\
+			&\qquad\text{ permuting the double indices of B, E cancels out the minus)} \\
+		&= (\|\vec B\|^2-\|\vec E\|^2) \vol^4
+}

@@ -1,0 +1,49 @@
+% 18ConnectionsandAssociatedBundles.tex
+
+\subsection{ 18.1. Forms with Values in a Lie Algebra}
+
+\begin{quote}
+  What do we mean by $g^{-1} dg$?
+\end{quote}
+
+\subsubsection{ 18.1.a. The Maurer-Cartan Form }
+
+If we think of $\omega$ as being a form that takes its values in the fixed vector space $\mathfrak{g}$, rather than as a matrix of 1-forms, we shall have an equivalent picture that is in many ways more closely related to the terminology used in physics.  
+
+exterior form is differential form
+
+\textbf{ Maurer-Cartan 1-form on $G$}
+
+Let $\lbrace E_R \rbrace$ basis for $\mathfrak{g}$  \\
+\phantom{Let} $\lbrace X_R \rbrace$ left invariant fields on $G$ obtained by left translating $E$'s  \\ 
+\phantom{Let} $\lbrace \sigma^R \rbrace$ left invariant 1-forms on $G$ forming, $\forall \, g \in G$, basis dual to $\lbrace X_R \rbrace$  \\
+
+$\sigma^R(X_S) = \delta^R_{ \, \, S}$
+
+Then 
+\begin{equation}
+  \Omega \equiv E_R \otimes \sigma^R \quad \quad \quad \, (18.1)
+\end{equation} 
+\[
+\Omega(Y_g) = E_R \sigma^R(Y_g) = E_R Y^R 
+\]
+$Y = X_R Y^R$ at $g\in G$, left translates back to 1
+
+$\Omega : T_gG \to T_e G$
+
+cf. Nakahara
+\[
+\Omega : Y \mapsto (L_{g^{-1}})_* Y = (L_g)^{-1}_* Y, \, Y \in T_g G
+\]
+
+Classically, Cartan wrote $\forall \, p \in M$, vector valued 1 form taking each $Y$ vector at $p$ into itself
+\[
+dp = \partial_i \otimes dx^i = \partial_i \otimes \delta^i_{ \, \, j }dx^j
+\]
+\begin{equation}
+  \Omega = g^{-1} dg \quad \quad \quad \, (18.2)
+\end{equation}
+
+$dg$ takes $Y$ at $g$ into $Y$, $g^{-1}$ left transltates $Y$ back to $e$
+
+
