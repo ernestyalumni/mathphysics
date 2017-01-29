@@ -516,6 +516,103 @@ cf. Eq. 1.4 Pr\'{a}staro (1996) \cite{Pras1996}
 
 
 
+\part{Complex Manifolds}
+
+EY : 20170123 I don't see many good books on Complex Manifolds for physicists other than Nakahara's.  I will supplement this section on Complex Manifolds with external links to the notes of other courses that I found useful to myself.
+
+
+\href{http://www.caramdir.at/uploads/math/piii-cm/complex-manifolds.pdf}{Complex Manifolds - Lecture Notes}
+Koppensteiner (2010) \cite{Kopp2010}
+
+
+\href{http://www.staff.science.uu.nl/~vando101/MRIlectures.pdf}{Lectures on Riemannian Geometry, Part II: Complex Manifolds by Stefan Vandoren}
+
+Vandoren (2008) \cite{Vand2008}
+
+
+\part{Morse Theory}
+
+\section{Morse Theory introduction from a physicist}
+
+I needed some physical motivation to understand Morse theory, and so I looked at Hori, et. al. \cite{Hori2003}.  
+
+cf. pp. 43, Sec. 3.4 Morse Theory, from Ch. 3. Differential and Algebraic Topology of Hori, et. al. \cite{Hori2003}.
+
+Consider smooth $f:M \to \mathbb{R}$, with non-degenerate critical points.
+
+If no critical values of $f$ between $a$ and $b$ ($a<b$), then subspace on which $f$ takes values less than $a$ is deformation retract of subspace where $f$ less than $b$, i.e.
+\[
+\lbrace x \in M | f(x) < b\rbrace \times [0,1] \xrightarrow{ F } \lbrace x \in M | f(x) < b\rbrace
+\]
+$\forall \, x \in M$ s.t. $f(x) < b$,
+\[
+\begin{aligned}
+  & F(x,0)  = x \\
+  & F(x,1) \in \lbrace x \in M | f(x) < a \rbrace 
+  \end{aligned} \qquad \qquad \, \text{ and } F(a',1) = a' \qquad \, \forall \, a' \in M \text{ s.t. } f(a') < a
+\]
+
+To show this, consider $-\nabla f/|\nabla f|^2$
+
+Morse lemma: $\forall \, $ critical pt. $p$ s.t. $\exists \, $ choice of coordinates s.t.
+\begin{equation}
+  f  = - (x_1^2 + x_2^2 + \dots + x_{\mu}^2) + x_{\mu + 1}^2 + \dots + x_n^2
+\end{equation}
+where $f(p)=0$ and $p$ is at origin of these coordinates.
+
+\begin{itemize}
+\item difference between
+  \[
+f^{-1}(\lbrace x \leq -\epsilon \rbrace) , \, f^{-1}(\lbrace x \leq + \epsilon \rbrace)
+\]
+can be determined by local analysis and only depends on $\mu$, $\mu \equiv $ ``Morse index'' $=$ number of negative eigenvalues of Hessian of $f$ at critical pt.
+
+Answer: \\
+
+\[
+f^{-1}(\lbrace x \leq + \epsilon \rbrace) \text{ can be obtained from } f^{-1}(\lbrace x \leq -\epsilon \rbrace) \text{ by ``attaching $\mu$-cell'' along boundary $f^{-1}(0)$ }
+\]
+
+\item ``attaching $\mu$-cell$ to $X4 mean, take
+  $\mu$-ball $B_{\mu} = \lbrace |x| \leq 1 \rbrace$ in $\mu$-dim. space, \\
+  identity pts. on boundary $S^{\mu-1}$ with pts. in the space $X$, through \\
+  cont. $f : S^{\mu-1} \to X$, i.e. take
+  \[
+X \coprod B_{\mu}
+\]
+with $x\sim f(x)$ \, $\forall \, x \in \partial B_{\mu} = S^{\mu -1}$.
+
+ 
+\item find homology of $M$,
+  
+  $f$ defines chain complex $C_f^*$, $k$th graded piece $C^{\alpha_k}$, $\alpha_k$ is number of critical pts. with index $k$.
+  \begin{equation}
+\begin{aligned}
+  & \partial : C_p^k \to C^{k-1}_p \\ 
+  & \partial x_a = \sum_b \Delta_{a,b} x_b 
+  \end{aligned}
+    \end{equation}
+  where $\Delta_{a,b} :=$ signed number of lines of gradient flow from $x_a$ to $x_b$, $b$ labels pts. of index $k-1$.
+
+  Gradient flow line is path $x(t)$ s.t. $\dot{x} = \nabla (f)$, with $\begin{aligned} & \quad  \\
+    & x(-\infty) = x_a \\
+    & x(+\infty) = x_b \end{aligned}$
+
+\item  To define this number ($\Delta_{a,b} $?), construct moduli space of such lines of flow (???) \\
+  by intersecting outward and inward flowing path spaces from each critical point, and then show this moduli space is oriented, 0-dim. manifold (pts. with signs)
+
+\item $\partial^2=0$ proof
+
+  $\partial$, boundary of space of paths connecting critical points, whose index differs by $2 =$ union over compositions of paths between critical pts. whose index differs by $1$.
+
+  $\Longrightarrow$ coefficients of $\partial^2$ are sums of signs of pts. in $0$-dim. space, which is boundary of $1$-dim. space.
+
+  These signs must therefore add to $0$, so $\partial^2=0$.  
+  
+  \end{itemize}
+
+Hori, et. al. \cite{Hori2003} is good for physics, but there isn't much thorough, step-by-step explanations of the math.  I will look at Hirsch (1997) \cite{MHirsch1997} and Shastri (2011) \cite{AShastri2011} at the same time.  
+
 
 \end{multicols*}
 
@@ -542,6 +639,17 @@ Morris W. Hirsch, \textbf{Differential Topology} (Graduate Texts in Mathematics)
 Agostino Pr\'{a}staro.  \textbf{Geometry of PDEs and Mechanics}.  World Scientific Publishing Co.  1996.  QC125.2.P73 1996  530.1'55353--dc20.  
 
 Agostino Pr\'{a}staro.  \emph{Dipartimento di Metodi e Modelli Matematici per le Scienze Applicate, Universit\`{a} degli Studi di Roma ``La Sapienza''}.  
+
+\bibitem{Kopp2010}
+  Clemens Koppensteiner.  \emph{Complex Manifolds: Lecture Notes}.  \url{http://www.caramdir.at/uploads/math/piii-cm/complex-manifolds.pdf}
+  
+
+\bibitem{Vand2008}
+Stefan Vandoren. \textbf{Lectures on Riemannian Geometry, Part II: Complex Manifolds}.  \url{http://www.staff.science.uu.nl/~vando101/MRIlectures.pdf} 
+
+\bibitem{Hori2003}
+Kentaro Hori (Author, Editor), Sheldon Katz (Editor), Albrecht Klemm (Editor), Rahul Pandharipande (Editor), Richard Thomas (Editor), Cumrun Vafa (Editor), Ravi Vakil (Editor), Eric Zaslow (Editor).  \textbf{Mirror Symmetry} (Clay Mathematics Monographs, V. 1).  Clay Mathematics Monographs (Book 1).  American Mathematical Society (August 19, 2003).  ISBN-10: 0821829556  ISBN-13: 978-0821829554  \url{https://web.archive.org/web/20060919020706/http://math.stanford.edu/~vakil/files/mirrorfinal.pdf}
+
 
 
 
