@@ -573,7 +573,7 @@ Answer: \\
 f^{-1}(\lbrace x \leq + \epsilon \rbrace) \text{ can be obtained from } f^{-1}(\lbrace x \leq -\epsilon \rbrace) \text{ by ``attaching $\mu$-cell'' along boundary $f^{-1}(0)$ }
 \]
 
-\item ``attaching $\mu$-cell$ to $X4 mean, take
+\item ``attaching $\mu$-cell to $X$ mean, take
   $\mu$-ball $B_{\mu} = \lbrace |x| \leq 1 \rbrace$ in $\mu$-dim. space, \\
   identity pts. on boundary $S^{\mu-1}$ with pts. in the space $X$, through \\
   cont. $f : S^{\mu-1} \to X$, i.e. take
@@ -612,6 +612,163 @@ with $x\sim f(x)$ \, $\forall \, x \in \partial B_{\mu} = S^{\mu -1}$.
   \end{itemize}
 
 Hori, et. al. \cite{Hori2003} is good for physics, but there isn't much thorough, step-by-step explanations of the math.  I will look at Hirsch (1997) \cite{MHirsch1997} and Shastri (2011) \cite{AShastri2011} at the same time.  
+
+\subsection{Introduction, definitions of Morse Functions, for Morse Theory}
+
+cf. Ch. 6, Morse Theory of Hirsch (1997) \cite{MHirsch1997}, Section 1. Morse Functions, pp. 143-
+
+Recall for $TM$, $T_xM \xrightarrow{\varphi}\mathbb{R}^n$.  \\
+Cotangent bundle $T^*M$ defined likewise:
+\[
+T^*_xM \xrightarrow{ \varphi } \text{ dual vector space } (\mathbb{R}^n)^* = L(\mathbb{R}^n,\mathbb{R})
+\]
+i.e.
+\[
+T^*M = \bigcup_{x\in M} (M_x^*) \qquad \qquad \, M_x^* = L(M_x,\mathbb{R})
+\]
+If chart $(\varphi, U)$ on $M$, natural chart on $T^*M$ is
+\[
+\begin{aligned}
+  & T^*U \to \varphi(U) \times (\mathbb{R}^n)^* \\ 
+  & \lambda \in M_x^* \mapsto (\varphi(x), \lambda \varphi_x^{-1} )
+  \end{aligned}
+\]
+
+Projection map
+\[
+\begin{aligned}
+  & p : T^* \to M \\ 
+  & M_x^* \mapsto x
+  \end{aligned}
+\]
+Let $C^{r+1}$ map, $1\leq r \leq \omega$, $f:M \to \mathbb{R}$, $\forall \, x \in M$, linear map $T_x f :M_x \to \mathbb{R}$ belongs to $M_x^*$
+\[
+T_xf = Df_x \in M_x^*
+\]
+Then
+\[
+\begin{aligned}
+  & Df:M \to T^*M \\ 
+  &  x\mapsto Df_x = Df(x)
+  \end{aligned}
+\]
+is $C^r$ section of $T^*M$.  
+
+\begin{definition}
+  \textbf{critical point} $x$ of $f$ is zero of $Df$, i.e. \begin{equation}
+Df(x) = 0 
+  \end{equation} of vector space $M_x^*$.  
+  \end{definition}
+
+Thus, set of critical pts. of $f$ is counter-image of submanifold $Z^* \subset T^*M$ of zeros.  \\
+Note $Z^*\approx M$, codim. of $Z^*$ is $n=\text{dim}M$.  
+
+\begin{definition}
+  \textbf{Morse function} $f$ if $\forall \, $ critical pts. of $f$ are nondegenerate.
+  \end{definition}
+
+Note set of critical pts. closed discrete subset of $M$.  \\
+Let open $U \subset \mathbb{R}^n$, let $C^2$ map $g:U\to \mathbb{R}$, \\
+critical pt. $p\in U$ nondegenerate iff
+\begin{itemize}
+\item linear $D(Dg)(p):\mathbb{R}^n \to (\mathbb{R}^n)^*$ bijective
+\item identify $L(\mathbb{R}^n, (\mathbb{R}^n)^*)$ with space of bilinear maps $\mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$, $\Longrightarrow$ equivalent to condition that symmetric bilinear $D^2g(p) : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ non-degenerate 
+\item $n\times n$ \emph{Hessian matrix}
+  \[
+\left[ \frac{ \partial^2 g}{ \partial x^i  \partial x^j }(p) \right]
+\]
+has rank $n$
+\end{itemize}
+
+Hessian of $g$ at critical pt. $p$ is quadratic form $H_pf$ associated to bilinear form $D^2g(p)$
+\[
+\Longrightarrow H_pf(y) =D^2g(p)(y,y) = \sum_{i,j} \frac{ \partial^2g}{ \partial x^i \partial x^j}(p)y^i y^j
+\]
+
+Let open $V \subset \mathbb{R}^n$, suppose $C^2$ diffeomorphism $h: V\to U$.
+
+Let $q=h^{-1}(p)$, so $q$ is critical pt. of $gh:V\to \mathbb{R}$.
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+    \mathbb{R}^n & \mathbb{R} \\ 
+     \mathbb{R}^n & \\ 
+};
+  \path[->]
+  (m-1-1) edge node [above] {$H_q(gh) $} (m-1-2)
+          edge node [auto] {$Dh(q) $} (m-2-1)
+  (m-2-1) edge node [below] {$H_pg $} (m-1-2)
+  ;
+\end{tikzpicture}  
+
+(quadratic) form $(H_pf)$ invariant under diffeomorphisms.
+
+
+Let $C^2$ $f:M\to \mathbb{R}$.  \\
+$\forall \,$ critical pt. $x$ of $f$, define \\
+Hessian quadratic form
+\[
+\begin{aligned}
+  & H_xf : M_x \to \mathbb{R} \\ 
+  & H_xf : M_x \xrightarrow{ D\varphi_x } \mathbb{R}^n \xrightarrow{ H_{\varphi(x)}(f\varphi^{-1} ) } \mathbb{R}
+\end{aligned}
+\]
+where $\varphi$ is any chart at $x$.
+
+Thus, critical pt. of a $C^2$ real-valued function nondegenerate iff associated Hessian quadratic form is nondegenerate.  
+
+Let $Q$ nondegenerate quadratic form on vector space $E$.
+
+$Q$ negative definite on subspace $F \subset E$ if $Q(x)<0$ whenever $x\in F$ nonzero.
+
+Index of $Q \equiv \text{Ind}Q$, is largest possible dim. of subspace on which $Q$ is negative definite.
+
+
+
+
+
+
+
+
+cf. 1.1. Morse's Lemma of  Ch. 6, pp. 145, Morse Theory of Hirsch (1997) \cite{MHirsch1997}
+
+\begin{lemma}[Morse's Lemma]
+  Let $p\in M$ be nondegenerate critical pt. of index $k$ of $C^{r+2}$ map $f:M\to \mathbb{R}$, $1\leq r \leq \omega$.
+
+  Then $\exists \, C^r$ chart $(\varphi,U)$ at $p$ s.t.
+  \begin{equation}
+    f\varphi^{-1}(u_1 \dots u_n) = f(p) - \sum_{i=1}^k u_i^2 + \sum_{i = k+1}^n u_i^2
+  \end{equation}
+  \end{lemma}
+
+Let ${\,}^TQ \equiv Q^T$ denote tranpose of matrix $Q$.
+
+\begin{lemma}
+  Let $A = \text{diag}\lbrace a_1 , \dots , a_n \rbrace$ diagonal $n\times n$ matrix, with diagonal entries $\pm 1$.
+
+  Then $\exists \, $ neighborhood $N$ of $A$ in vector space of symmetric $n\times n$ matrices, $C^{\infty}$ map
+  \begin{equation}
+P:N \to GL(n,\mathbb{R})
+  \end{equation}
+  s.t. $P(A)=I$, and if $P(B) = Q$, then $Q^T BQ = A$
+\end{lemma}
+
+\begin{proof}
+  Let $B = [b_{ij}]$ be symmetri matrix near $A$ s.t. $b{11} \neq 0$ and $b_{11}$ has same sign as $a_1$.
+
+    Consider $x=Ty$ where
+    \[
+\begin{aligned}
+&  x_1 = \left[ y_1 - \frac{b_{12}}{b_{11}} y_2 - \dots - \frac{b_{1n}}{b_{11}} y_n \right] / \sqrt{ |b_n | } \\ 
+& x_k = y_k \text{ for } k = 2, \dots n 
+  \end{aligned}
+    \]
+  \end{proof}
+
+
+
+
 
 
 \end{multicols*}
