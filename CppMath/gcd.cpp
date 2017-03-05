@@ -2,7 +2,10 @@
  * \brief GCD of 2 integers
  * cf. Chapter 3 Greatest Common Divisor
  * Scheinerman, C++ for Mathematicians Introduction
- * */
+ * 
+ * COMPILATION TIP
+ * 
+ */
 #include "gcd.h"
 #include <iostream>
 using namespace std;

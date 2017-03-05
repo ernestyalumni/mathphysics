@@ -1,6 +1,7 @@
 /* gcd-recursive.cpp
  * cf. Chapter 3 Greatest Common Divisor
  * Scheinerman, C++ for Mathematicians Introduction
+ * pp. 38 Program 3.7: A recursive procedure for gcd
  * */
 #include "gcd.h"
 #include <iostream>
@@ -25,5 +26,6 @@ long gcd(long a, long b) {
 	
 	long c = a%b;
 	
+	// "The previous (sic original) call to gcd goes "on hold" pending this result of gcd(b,c)
 	return gcd(b,c);
 }
