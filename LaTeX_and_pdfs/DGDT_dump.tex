@@ -116,7 +116,7 @@ Everything about Differential Geometry, Differential Topology
 
 \end{abstract}
 
-\part{}
+\part{Manifolds}
 
 
 \section{Inverse Function Theorem}
@@ -452,6 +452,286 @@ Jeffrey Lee (2009) \cite{JLee2009}
 John Lee (2012) \cite{JLee2012}
 
 
+\section{Tensors}
+
+I'll go through Ch.7 \emph{Tensors} of Jeffrey Lee (2009) \cite{JLee2009}.  
+
+\begin{definition}[7.1\cite{JLee2009}] Let $V,W$ be modules over commutative ring $R$, with unity.  
+
+Then, algebraic $W$-valued tensor on $V$ is multilinear map.  
+\begin{equation}
+	\tau: V_1 \times V_2 \times \dots \times V_m \to W
+\end{equation}
+where $V_i = \lbrace V,V^* \rbrace$ \quad \, $ \forall \, i=1,2,\dots m$.  
+
+If for $r,s$ s.t. $r+s =m$, there are $r$ \, $V_i = V^*$, $s \, V_i = V$, tensor is $r$-contravariant, $s$-covariant; also say tensor of total type $\binom{r}{s}$.  
+\end{definition}
+
+EY : 20170404 Note that 
+\[
+\begin{aligned}
+	& ( \tau_{\beta}^{i\alpha} \frac{ \partial }{ \partial x^i } \text{ or } \tau_{\beta}^{i\alpha} e_i )(\omega_j dx^j \text{ or } \omega_je^j  \in V^*) \\ 
+	& ( \tau^{\beta}_{i\alpha} dx^i \text{ or } \tau^{\beta}_{i\alpha} e^i )( X^j \frac{ \partial }{ \partial x^j} \text{ or } X^j e_j  \in V) 
+\end{aligned}
+\]
+
+$\exists \,$ natural map $\begin{aligned} & \quad \\ 
+	& V\to V^{**} \\ 
+& v \mapsto \widetilde{v} \end{aligned}$,  $\begin{aligned} & \quad \\ 
+	& \widetilde{v} : \alpha \mapsto \alpha(v) \end{aligned}$.  If this map is an isomorphism, $V$ is \textbf{reflexive} module, and identify $V$ with $V^{**}$.  
+
+\exercisehead{7.5} Given vector bundle $\pi: E \to M$, open $U\subset M$, consider sections of $\pi$ on $U$, i.e. cont. $s:U\to E$, where $(\pi\circ s)(u)=u$, \, $\forall \, u \in U$.  
+
+Consider $E^* \ni \omega =\omega_i e^i$.  
+
+$\forall \, s\in \Gamma(E)$, $\omega(s) = \omega_i(s(x))^i$, \, $\forall \, x \in U\subset M$.  So define $\widetilde{s}: \omega,x\mapsto \omega(s(x))$, \, $\forall \, x \in U$.  
+
+If $\widetilde{s} =0$, $\widetilde{s}(\omega,x) = \omega(s(x)) =0$ \quad \, $\forall \, \omega \in E^*$, $\forall \, x\in U$, and so $s=0$.  (Let $\omega_i = \delta_{iJ}$ for some $J$, and so $s^J(x) =0$ \quad \, $\forall \, J$).  
+
+$s=0$.  So $\text{ker}(s\mapsto \widetilde{s}) = \lbrace 0 \rbrace$ (so condition for injectivity is fulfilled).  
+
+Since $\widetilde{s}:\omega,x\mapsto \omega(s(x))$, $\forall \, \omega \in E^*$, $\forall \, x \in U$, $s\mapsto \widetilde{s}$ is surjective.  
+
+$s\mapsto \widetilde{s}$ is an isomorphism so $\Gamma(E)$ is a \emph{reflexive} module.  
+
+
+\begin{proposition}
+For $R$ a ring (special case), $\exists \, $ module homomorphism:  \\
+
+tensor product space $\to $ tensor, as a multilinear map, i.e. $\exists$ \,  
+\begin{equation}
+\begin{aligned}
+&	\left( \otimes_{i=1}^r V \right) \otimes \left( \otimes_{j=1}^s V^* \right) \to T^r_{ \, \, s}(V;R)   \\
+& u_1 \otimes \dots \otimes u_r \otimes \beta^1 \otimes \dots \otimes \beta^s \in \left( \otimes^r V \right) \otimes \left( \otimes^s V^* \right) \mapsto (\alpha^1 \dots \alpha^r, v_1 \dots v_s) \mapsto \alpha^1(u_1) \dots \alpha^r(u_r) \beta^1(v_1) \dots \beta^s(v_s)  
+\end{aligned}
+\end{equation}
+\end{proposition}
+
+Indeed, consider 
+\[
+(\alpha^1 \dots \alpha^r, v_1 \dots v_s) \in \underbrace{V^* \times \dots \times V^* }_{r} \times \underbrace{ V\times \dots \times V}_{s} \mapsto \alpha^1(u_1) \dots \alpha^r(u_r) \beta^1(v_1) \dots \beta^s(v_s)
+\]
+and so for 
+\[
+\begin{aligned}
+	& \alpha^i = \alpha^i_{\mu} e^{\mu} , \, & \, i =1,2, \dots r, \, & \, \mu = 1,2, \dots \text{dim}V^* \\ 
+	& v_i = v_i^{\mu} e_{\mu} , \, & \, i = 1,2, \dots s, \, & \, \mu = 1, 2, \dots \text{dim}V 
+\end{aligned} \qquad \, \begin{aligned}
+& \alpha^i(u_i) = \alpha^i_{\mu} u^{\mu}_i \\ 
+ & \beta^i(v_i) = \beta^i_{\mu} v^{\mu}_i
+\end{aligned}
+\]
+So that 
+\[
+\begin{gathered}
+	\alpha^1(u_1) \dots \alpha^r(u_r) \beta^1(v_1) \dots \beta^s(v_s) = \alpha^1_{\alpha_1}u^{\alpha_1}_1 \dots \alpha^r_{\alpha_r} u^{\alpha_r}_r \beta^1_{\mu_1} v^{\mu_1}_1 \dots \beta^s_{\mu_s} v^{\mu_s}_s = \\
+	= (u^{\alpha_1}_1 \dots u_r^{\alpha_r} \beta^1_{\mu_1} \dots \beta^s_{\mu_s})(\alpha^1_{\alpha_1} \dots \alpha^r_{\alpha_r} v_1^{\mu_1} \dots v_s^{\mu_s} )
+\end{gathered}
+\]
+Identify $u_1 \otimes \dots \otimes u_r \otimes \beta^1 \otimes \dots \otimes \beta^s$ with this multiplinear map.  
+
+\begin{proposition}
+If $V$ is finite-dim. vector space, or if $V=\Gamma(E)$, for vector bundle $E\to M$, map
+\begin{equation}
+\left( \otimes_{i=1}^r V \right)  \otimes \left( \otimes_{j=1}^s V^* \right) \to T^r_{ \, \, s}(V;R)
+\end{equation}
+is an isomorphism.  
+\end{proposition}
+
+\begin{definition}
+tensor that can be written as 
+\begin{equation}
+u_1\otimes \dots \otimes u_r \otimes \beta^1 \otimes \dots \otimes \beta^s \equiv u_1\otimes \dots \otimes \beta^s 
+\end{equation}
+is \textbf{simple} or \textbf{decomposable}.  
+\end{definition}
+Now well that not \emph{all} tensors are simple.  
+
+\begin{definition}[7.7\cite{JLee2009}, tensor product]
+$\forall \, S\in T^{r_1}_{ \,\, s_1}(V)$, $\forall \, T \in T^{r_2}_{ \,\, s_2}(V)$, \\
+define tensor product 
+\begin{equation}
+\begin{gathered}
+S\otimes T\in T^{r_1+r_2}_{ \, \, \, s_1+s_2}(V) \\
+	S\otimes T( \theta^1\dots \theta^{r_1 + r_2}, v_1 \dots v_{s_1+s_2}) := S(\theta^1\dots \theta^{r_1}, v_1\dots v_{s_1})T(\theta^{r_1+1}\dots \theta^{r_1+r_2}, v_{s_1+1}\dots v_{s_1 + s_2} )
+\end{gathered}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[7.8\cite{JLee2009}]
+\end{proposition}
+
+
+
+
+
+
+
+\[
+\begin{gathered}
+	\tau^{ i_1 \dots i_r }_{ \phantom{i_1 \dots i_r} j_1 \dots j_s} e_{i_1} \otimes \dots \otimes e_{i_r} \otimes e^{j_1}\otimes \dots \otimes e^{j_s} = \tau(e^{i_1} \dots e^{i_r}, e_{j_1} \dots e_{j_s} )e_{i_1} \otimes \dots \otimes e_{i_r} \otimes e^{j_1} \otimes \dots \otimes e^{j_s} = \tau 
+\end{gathered}
+\]
+So $\lbrace e_{i_1}\otimes \dots \otimes e_{i_r} \otimes e^{j_1} \otimes \dots \otimes e^{j_s} | i_1 \dots i_{r}, j_1\dots j_s \in 1 \dots n \rbrace$ spans $T^r_{\,\, s}(V;R)$
+
+\exercisehead{7.11}  Let basis for $V$ \, $e_1 \dots e_n$, corresponding dual basis for $V^*$ \,  $e^1 \dots e^n$ \\ 
+Let basis for $V$ \, $\overline{e}_1 \dots \overline{e}_n$, corresponding dual basis for $V^*$ \,  $\overline{e}^1 \dots \overline{e}^n$ \\
+s.t. 
+\[
+\begin{aligned}
+	& \overline{e}_i = C^k_{ \,\, i} e_k \\
+	& \overline{e}^i = (C^{-1})^i_{ \, \, k} e^k
+\end{aligned}
+\]
+EY:20170404, keep in mind that
+ 
+\[
+\begin{aligned}
+	&	Ax = e_i A^i_{ \, \, k} e^k(x^j e_j) = e_i A^i_{ \,\,j} x^j = A^i_{ \, \, j} x^j e_i \\ 
+ & Ae_j = e_k A^k_{ \, \, i} e^i (e_j) = A^k_{ \,\, j} e_k = \overline{e}_j
+\end{aligned}
+\]
+\[
+\begin{gathered}
+\overline{\tau}^i_{ \,\, jk} \overline{e}_i \otimes \overline{e}^j \otimes \overline{e}^k = \overline{\tau}^i_{ \, \, jk} C^l_{ \, \, i} e_l (C^{-1})^j_{ \,\, m} e^m(C^{-1})^k_{ \, \, n} e^n = \overline{\tau}^i_{ \, \, jk} C^l_{ \, \, i } (C^{-1})^j_{ \,\, m} (C^{-1})^k_{ \,\, n} = \tau^l_{ \,\, mn}   \\
+\overline{\tau}^i_{ \,\, jk} = C^c_{ \,\, k} C^b_{ \,\, j} (C^{-1})^i_{ \,\, a} \tau^a_{\,\, bc}
+\end{gathered}
+\]
+
+
+
+On Remark 7.13 of Jeffrey Lee (2009) \cite{JLee2009}:  first, egregious typo for $L(V,V)$; it shoudl be $L(V,W)$.  Onward, \\
+for $L(V,W)$, \\
+consider $W\otimes V^* \ni w\otimes \alpha$ s.t.
+\[
+(w\otimes \alpha)(v) = \alpha(v)w\in W, \, \forall \, v\in V, \text{ so } w\otimes \alpha \in L(V,W)
+\]
+
+Now consider (category of) left $R$-module, 
+\begin{equation}
+{\,}_R\textbf{Mod} \ni {\,}_{\text{Mat}_{\mathbb{K}}(N,M) } \mathbb{K}^N
+\end{equation}
+where
+\[
+\begin{aligned}
+	& V=\mathbb{K}^N \\ 
+&	  W = \mathbb{K}^M
+\end{aligned}
+\]
+For $A\in \text{Mat}_{\mathbb{K}}(N,M)$, $x\in \mathbb{K}^N$, 
+\[
+e_i A^i_{ \,\ , \mu} e^{\mu}(x^{\nu} e_{\nu}) = Ax = e_iA^i_{\,\, \mu} x^{\mu} , \quad \, i=1,2,\dots M, \, \mu = 1,2, \dots N
+\]
+\[
+A\in \text{Mat}_{\mathbb{K}}(N,M) \cong W\otimes V^* \cong L(V,W)
+\]
+Consider 
+\[
+\begin{aligned}
+	& \alpha \in (\mathbb{K}^N)^* = V^* \\
+	& w\in \mathbb{K}^M = W
+\end{aligned} \qquad \, \begin{aligned}
+	& \alpha = \alpha_{\mu} e^{\mu} \\ 
+	& w=w^ie_i
+\end{aligned}
+\]
+\[
+\alpha \otimes w = w \otimes \alpha = w^i\alpha_{\mu} e_i \otimes e^{\mu}
+\]
+(remember, isomoprhism between $\text{Mat}_{\mathbb{K}}(N,M)$ and $W\otimes V^*$ guaranteed, if $V,W$ are free $R$-modules, $R=\mathbb{K}$).
+
+Let $V,W$ be left $R$-modules, i.e. $V,W \in {\,}_R\text{\textbf{Mod}}$.  
+\[
+V^* \in \text{\textbf{Mod}}_R
+\]
+For $V^*\otimes W \in \text{\textbf{Mod}}_R\otimes {\,}_R\text{\textbf{Mod}}$  
+\[
+\alpha \in V^*, w\in W
+\]
+\[
+(\alpha \otimes w)(v) = \alpha(v)w, \text{ for } v\in V \in {\,}_R\text{\textbf{Mod}}
+\]
+But $(w\otimes \alpha)(v) = w\alpha(v)$.  
+
+Note $\alpha(v) \in R$.  
+
+Let $V,W$ be right $R$-modules, i.e. $V,W \in \text{\textbf{Mod}}_R$.  
+\[
+V^* \in {\,}_R\text{\textbf{Mod}}
+\]
+For $W\otimes V^* \in \text{\textbf{Mod}}_R \otimes {\,}_R\text{\textbf{Mod}}$.  
+\[
+\alpha \in V^*, \, w\in W
+\]
+\[
+(v)(w\otimes \alpha) = w\alpha(v), \text{ with } \alpha(v)\in R, \, v\in V
+\]
+So $W\otimes V^* \cong L(V,W)$, for $V,W\in \text{\textbf{Mod}}_R$
+
+\begin{definition}[7.20\cite{JLee2009}, \textbf{contraction}]
+Let $(e_1,\dots e_n)$ basis for $V$, $(e^1\dots e^n)$ dual basis.  
+
+If $\tau \in T^r_{ \,\, s}(V)$, then for $k\leq r$, $l\leq s$, define 
+\begin{equation}
+\begin{gathered}
+	C^k_l \tau \in T^{r-1}_{ \, \, s-1}(V) \\ 
+ C^k_l\tau(\theta^1 \dots \theta^{r-1}, w_1\dots w_{s-1}) := \\
+	\sum_{a=1}^n \tau(\theta^1 \dots \underbrace{e^a}_{\text{$k$th position} } \dots \theta^{r-1}, w_1 \dots \underbrace{e_a}_{\text{$i$th position}} \dots w_{s-1}  )
+\end{gathered}
+\end{equation}
+$C^k_l$ is called \textbf{contraction}, for some single $1\leq k \leq r$, some single $1\leq l \leq s$, 
+\[
+C^k_l: T^r_s(V) \to T^{r-1}_{s-1}(V)
+\]
+s.t.
+\[
+(C^k_l\tau)^{i_1\dots \widehat{i}_k\dots i_r }_{ \phantom{i_1\dots \widehat{i}_k\dots i_r} j_1\dots \widehat{j}_l \dots j_s} := \tau^{i_1\dots a \dots i_r}_{ \phantom{i_1\dots a \dots i_r} j_1 \dots a \dots j_s }
+\]
+\end{definition}
+
+Universal mapping properties can be invoked to give a basis free definition of contraction (EY : 20170405???).  
+
+IN general, 
+\[
+\forall \, v_1 \dots v_s \in V, \forall \, \alpha^1 \dots \alpha^r \in V^*
+\]
+so that 
+\[
+\begin{aligned}
+	& v_j = v_j^{\mu} e_{\mu} \\ 
+	& \alpha^i = \alpha^i_{\mu} e^{\mu}
+\end{aligned} \quad \, \begin{aligned}
+	& j=1\dots s, \quad \, \mu = 1,\dots \text{dim}V \\ 
+	& i=1\dots r, \quad \, \mu = 1\dots \text{dim}V^*
+\end{aligned}
+\]
+then $\forall \, \tau \in T^r_{ \,\, s} (V)$, 
+\[
+\begin{gathered}
+	\tau(\alpha^1\dots \alpha^r,v_1\dots v_s) = \tau( \alpha^1_{\mu_1} e^{\mu_1} \dots \alpha^r_{\mu_r} e^{\mu_r} , v_1^{\nu_1} e_{\nu_1} \dots v_s^{\nu_s}e_{\nu_s} ) = \\ 
+	= \alpha^1_{\mu_1} \dots \alpha^r_{\mu_r} v_1^{\nu_1} \dots v_s^{\nu_s} \tau(e^{\mu_1}\dots e^{\mu_r} , e_{\nu_1} \dots e_{\nu_s} ) = \alpha^1_{\mu_1} \dots  \alpha_{\mu_r}^r v_1^{\nu_1} \dots v_s^{\nu_s} \tau^{\mu_1 \dots \mu_r}_{ \phantom{\mu_1 \dots \mu_r} \nu_1\dots \nu_s}
+\end{gathered}
+\]
+which is equivalent to
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=7.8em, column sep=12.8em, minimum width=5.2em]
+  {
+  \tau \in T^r_{\,\,s}(V)  &  \alpha^1 \otimes \dots \otimes \alpha^r \otimes v_1\otimes \dots \otimes v_s \otimes \tau  \\ 
+& \tau(\alpha^1\dots \alpha^r,v_1\dots v_s)  \in R \\ 
+};
+  \path[|->]
+  (m-1-1) edge node [above] {$ \alpha^1\otimes \dots \otimes \alpha^r \otimes v_1 \otimes \dots \otimes v_s \otimes $} (m-1-2)
+  (m-1-2) edge node [left] {$C^1_{ s+1} C^2_{s+2}\dots C^r_{r+s} C^r_1 C_2^{r+1}\dots C_s^{r+s} $} (m-2-2)
+  ;
+\end{tikzpicture}  
+\]
+where I've tried to express the right-$R$-module, "right action" on $\alpha^1 \otimes \dots \otimes \alpha^r \otimes v_1\otimes \dots \otimes v_s \in V^*\otimes \dots \otimes V$.  
+
+
+Conlon (2008) \cite{Conl2008}
+
+
 \part{Pr\'{a}staro}
 
 Pr\'{a}staro (1996) \cite{Pras1996}
@@ -767,6 +1047,26 @@ P:N \to GL(n,\mathbb{R})
   \end{proof}
 
 
+\section{Lagrange multipliers}
+
+From \emph{wikipedia:Lagrange multiplier}, \url{https://en.wikipedia.org/wiki/Lagrange_multiplier},
+find local minima (maxima), pt. $a\in N$, s.t. $\exists \, $ neighborhood $U$ s.t. $f(x) \geq f(a)$ ($f(x) \leq f(a)$) \, $\forall \, x\in U$.
+
+For $f:U\to \mathbb{R}$, open $U\subset \mathbb{R}^n$, find $x\in U$ s.t. $D_xf \equiv Df(x) =0$, check if Hessian $H_x f<0$.
+
+Maxima may not exit since $U$ open.
+
+
+References:
+
+\href{http://www.math.uni.wroc.pl/~karch/analiza_nieliniowa/18_mnozniki-lagrangea.pdf}{Relative Extrema and Lagrange Multipliers}
+
+Other interesting links:
+
+\href{http://oai.cwi.nl/oai/asset/2552/2552A.pdf}{The Lagrange Multiplier Rule on Manifolds and Optimal Control of nonlinear systems}
+
+
+
 
 
 
@@ -807,8 +1107,8 @@ Stefan Vandoren. \textbf{Lectures on Riemannian Geometry, Part II: Complex Manif
 \bibitem{Hori2003}
 Kentaro Hori (Author, Editor), Sheldon Katz (Editor), Albrecht Klemm (Editor), Rahul Pandharipande (Editor), Richard Thomas (Editor), Cumrun Vafa (Editor), Ravi Vakil (Editor), Eric Zaslow (Editor).  \textbf{Mirror Symmetry} (Clay Mathematics Monographs, V. 1).  Clay Mathematics Monographs (Book 1).  American Mathematical Society (August 19, 2003).  ISBN-10: 0821829556  ISBN-13: 978-0821829554  \url{https://web.archive.org/web/20060919020706/http://math.stanford.edu/~vakil/files/mirrorfinal.pdf}
 
-
-
+\bibitem{Conl2008}
+Lawrence Conlon.  \textbf{Differentiable Manifolds} (Modern Birkhäuser Classics).  2nd Edition.  Birkhäuser; 2nd edition (October 10, 2008).  ISBN-13: 978-0817647667
 
 \end{thebibliography}
 
