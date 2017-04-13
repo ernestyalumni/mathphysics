@@ -445,6 +445,284 @@ Use $\psi \circ G$ as the local parametrization of $N$ around pt. $q$.  Shrink $
 
 
 
+\subsection{Submersions} 
+cf. pp. 20, Sec. 4 "Submersions", Ch. 1 of Guillemin and Pollack (2010) \cite{VGuilleminAPollack2010}.  
+
+Consider $X,Y\in \text{\textbf{Man}}$, s.t. $\text{dim}X \geq \text{dim}Y$.  
+
+\begin{definition}[submersion] If $f:X\to Y$, \\
+if $Df_x \equiv df_x$ is \emph{surjective}, $f\equiv $ \textbf{submersion} at $x$.
+\end{definition}
+Recall that,  
+\[
+\begin{gathered}
+	Df_x:T_xX \to T_{f(x)}Y \\
+	\text{dim}T_xX \geq \text{dim}T_{f(x)}Y
+\end{gathered}
+\]
+\[
+\begin{gathered}
+\text{rank}Df_x \leq \text{dim}T_{f(x)}Y, \text{ in general, while } \\
+\text{rank}Df_x = \text{dim}T_{f(x)}Y \text{ iff } Df_x \text{ surjective }
+\end{gathered}
+\]
+
+Canonical submersion is standard projection: \\
+If $\begin{gathered} \quad \\
+\text{dim}X = k \\
+\text{dim}Y = l \end{gathered}$, $k\geq l$, 
+\[
+(a_1 \dots a_k ) \mapsto (a_1 \dots a_l)
+\]
+
+\begin{theorem}[Local Submersion Theorem]
+	Suppose $f:X\to Y$ submersion at $x$, and $y = f(x)$, 
+	Then $\exists \, $ local coordinates around $x$, $y$ s.t. 
+	\[
+	f(x_1\dots x_k) = (x_1 \dots x_l)
+	\]
+	i.e. $f$ locally equivalent to canonical submersion near $x$
+\end{theorem}
+\begin{proof}
+I'll have a side-by-side comparison of my notation and the 1 used in Guillemin and Pollack (2010) \cite{VGuilleminAPollack2010} where I can.	
+
+For charts $(U,\phi), (V,\psi)$ for $X,Y$, respectively, $y=f(x)$ for $x\in X$, 
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	U \subseteq X & Y \supseteq V \\
+	\mathbb{R}^k &  \mathbb{R}^l \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f $} (m-1-2)
+edge node [auto] {$\phi$} (m-2-1)
+(m-1-2) edge node [auto]  {$\psi\circ G$} (m-2-2)
+(m-2-1) edge node [auto] {$\mathfrak{i}$} (m-2-2)
+;
+\end{tikzpicture} \quad \quad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	 x & f(x)=y \\
+	\phi(x)=(a^1\dots a^k) &  g(\phi(x))=g(a^1\dots a^k)=\psi(y) \\
+};
+\path[|->]
+(m-1-1) edge node [above] {$f $} (m-1-2)
+edge node [auto] {$\phi$} (m-2-1)
+(m-1-2) edge node [auto]  {$\psi$} (m-2-2)
+(m-2-1) edge node [auto] {$g$} (m-2-2)
+;
+\end{tikzpicture}
+\]
+$Dg_x$ surjective, so assume it's a $l\times k$ matrix $\left[ \begin{matrix} \mathbf{1}_l & 0 \end{matrix} \right]$.  
+
+Define
+\begin{equation}
+\begin{aligned}
+& G:U \subset \mathbb{R}^k \to \mathbb{R}^k  \\
+& G(a)\equiv G(a^1\dots a^k) := (g(a), a_{l+1}, \dots , a_k)
+\end{aligned}
+\end{equation}
+Now
+\begin{equation}
+DG(a)  = \left[ \begin{matrix} \mathbf{1}_l & 0 \\ & \mathbf{1}_{k-l} \end{matrix} \right] = \mathbf{1}_k
+\end{equation}
+so $G$ local diffeomorphism (at $0$).  
+
+So $\exists \, $ $G^{-1}$ as local diffeomorphism of some $U'$ of $a$ into $U\subset \mathbb{R}^k$.  
+
+By construction, 
+\begin{equation}
+g=\mathbb{P}_l \circ G
+\end{equation}
+where $\mathbb{P}_l$ is the \emph{canonical submersion}, the projection operator onto $\mathbb{R}^l$.  
+\[
+g\circ G^{-1} = \mathbb{P}_l
+\]
+(since $G$ diffeomorphism)
+
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	U\subseteq X &  V\subseteq Y \\
+	\mathbb{R}^k &  \mathbb{R}^l \\
+};
+\path[->]
+(m-2-1) edge node [auto] {$\phi^{-1}\circ G^{-1}  $} (m-1-1)
+edge node [auto] {$\mathbb{P}_l$} (m-2-2)
+(m-1-1) edge node [auto]  {$f$} (m-1-2)
+(m-2-2) edge node [auto] {$\psi^{-1}$} (m-1-2)
+;
+\end{tikzpicture}
+for \\
+$\Longrightarrow $ \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\phi^{-1}\circ G^{-1}(a)\equiv \phi^{-1}\circ G^{-1}(a^1\dots a^k)=x & f(x)=y=\psi^{-1}(a^1\dots a^l) \\
+	(a^1\dots a^k) &  (a^1\dots a^l) \\
+};
+\path[|->]
+(m-2-1) edge node [auto] {$\phi^{-1}\circ G^{-1}  $} (m-1-1)
+edge node [auto] {$\mathbb{P}_l$} (m-2-2)
+(m-1-1) edge node [auto]  {$f$} (m-1-2)
+(m-2-2) edge node [auto] {$\psi^{-1}$} (m-1-2)
+;
+\end{tikzpicture}
+
+
+	\end{proof}
+"An obvious corollary worth noting is that if $f$ is a submersion at $x$, then it is actually a submersion in a whole neighborhood of $x$." Guillemin and Pollack (2010) \cite{VGuilleminAPollack2010}
+
+Suppose $f$ submersion at $x\in f^{-1}(y)$.  
+
+By local submersion theorem
+\[
+f(x_1\dots x_k)=(x_1 \dots x_l)
+\]
+Choose $y=(0, \dots , 0)$. 
+
+Then, near $x$, $f^{-1}(y) = \lbrace (0, \dots 0 , x_{l+1} \dots x_k)\rbrace$ i.e. let $V\ni x$ neighborhood of $x$, define $(x_1 \dots x_k)$ on $V$.  
+
+Then $f^{-1}(y) \bigcap V = \lbrace (0\dots 0 , x_{l+1} , \dots x_k) | x_1 = 0 , \dots x_l = 0\rbrace$.
+
+Thus $x_{l+1}, \dots x_k$ form a coordinate system on open set $f^{-1}(y) \bigcap V \subseteq f^{-1}(y)$.  
+
+Indeed, 
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	U \subseteq X &  V\subseteq Y \\
+	\mathbb{R}^k &  \mathbb{R}^l \\
+};
+\path[->]
+(m-1-1) edge node [auto] {$ f  $} (m-1-2)
+edge node [auto] {$ \phi $} (m-2-1)
+(m-2-1) edge node [auto]  {$\mathbb{P}_l$} (m-2-2)
+(m-1-2) edge node [auto] {$\psi$} (m-2-2)
+;
+\end{tikzpicture} \qquad \, \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	x &  f(x)=y \\
+	\phi(x)=(x^1\dots x^k) &  (x^1\dots x^l) \\
+};
+\path[|->]
+(m-1-1) edge node [auto] {$ f  $} (m-1-2)
+edge node [auto] {$ \phi $} (m-2-1)
+(m-2-1) edge node [auto]  {$\mathbb{P}_l$} (m-2-2)
+(m-1-2) edge node [auto] {$\psi$} (m-2-2)
+;
+\end{tikzpicture} 
+\]
+and now 
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	f^{-1}(y) &  y \\
+	\lbrace (0, \dots 0,x^1\dots x^k) \rbrace &  (0\dots 0) \\
+};
+\path[|->]
+(m-1-2) edge node [auto] {$ f^{-1}  $} (m-1-1)
+edge node [auto] {$ \psi $} (m-2-2)
+(m-2-2) edge node [auto]  {$\mathbb{P}_l^{-1}$} (m-2-1)
+(m-2-1) edge node [auto] {$\phi^{-1}$} (m-1-1)
+;
+\end{tikzpicture} 
+\]
+
+\begin{definition}[regular value]
+	For smooth $f:X\to Y$, $X,Y \in \text{\textbf{Man}}$, \\
+	$y\in Y$ is a \textbf{regular value} for $f$ if $Df_x:T_xX \to T_y Y$ surjective $\forall \, x$ s.t. $f(x)=y$.  
+	
+	$y\in Y$ \textbf{critical value} if $y$ not a regular value of $f$.  
+\end{definition}
+
+
+
+\begin{theorem}[Preimage theorem]
+If $y$ regular value of $f:X\to Y$, \\
+$f^{-1}(y)$ is a submanifold of $X$, with $\text{dim}f^{-1}(y)=\text{dim}X - \text{dim}Y$
+\end{theorem}
+\begin{proof}
+Given $y$ is a regular value of $f:X\to Y$,  \\
+$\forall \, x \in f^{-1}(y)$, $Df_x:T_xX \to T_yY$ is surjective.  By local submersion theorem, 
+\[
+f(x^1 \dots x^k) = (x^1 \dots x^l)=y
+\]	
+Since $x\in f^{-1}(y)$, $(x^1\dots x^k)=(y^1 \dots y^l,x^{l+1}\dots x^k)$.  
+
+For this chart for $(U,\varphi)$, $U\ni x$, consider $(U\cap f^{-1}(y),\psi)$ with $\psi(x) = (x^{l+1}\dots x^k) \quad \, \forall \, x\in U\cap f^{-1}(y)$.  
+
+$\forall \, f^{-1}(y)$ submanifold with $\text{dim}f^{-1}(y) = k-l = \text{dim}X-\text{dim}Y$.  
+	\end{proof}
+
+\emph{Examples for emphasis}
+
+If $\text{dim}X > \text{dim}Y$, \\
+\phantom{\qquad \, } if $y\in Y$, regular value of $f:X\to Y$, \\
+\phantom{\qquad \, \qquad \, } $f$ submersion, $\forall \, x \in f^{-1}(y)$ \\
+If $\text{dim}X = \text{dim}Y$, \\
+\phantom{\qquad \, } $f$ local diffeomorphism $\forall \, x\in f^{-1}(y)$ \\
+If $\text{dim}X < \text{dim}Y$, $\forall \, y\in f(X)$ is a critical value.  
+
+
+\textbf{Example: $O(n)$ as a submanifold of $\text{Mat}(n,n)$}
+
+Given $\text{Mat}(n,n)\equiv M(n) = \lbrace n \times n \text{ matrices } \rbrace$ is a manifold; in fact $\text{Mat}(n,n) \cong \mathbb{R}^{n^2}$, \\
+Consider $O(n) = \lbrace A \in \text{Mat}(n,n) | AA^T = 1\rbrace$.  
+\begin{equation}
+AA^T \in \text{Sym}(n) \equiv S(n) = \lbrace S\in \text{Mat}(n,n) | S^T = S \rbrace = \lbrace \text{ symmetric $n\times n$ matrices } \rbrace
+\end{equation}
+$\text{Sym}(n)$ submanifold of $\text{Mat}(n,n)$, $\text{Sym}(n)$ diffeomorphic to $\mathbb{R}^k$ (i.e. $\text{Sym}(n) \cong \mathbb{R}^k$), $k:= \frac{n (n+1)}{2}$.  
+
+\[
+\begin{aligned}
+	& f:\text{Mat}(n,n) \to \text{Sym}(n) \\
+	& f(A) = AA^T
+\end{aligned}
+\]
+Notice $f$ is smooth, 
+\[
+\begin{gathered}
+f^{-1}(1) = O(n) \\
+Df_A(B) = \lim_{s\to 0} \frac{ f(A+sB) - f(A) }{s} = \lim_{s\to 0} \frac{(A+sB)(A^T + sB^T)- AA^T}{s} = AB^T +BA^T
+\end{gathered}
+\]
+If $Df_A : T_A\text{Mat}(n,n) \to T_{f(A)}\text{Sym}(n)$ surjective when $A\in f^{-1}(1) = O(n)$ (???).  
+
+
+
+
+
+\begin{proposition} If smooth $g_1\dots g_l \in C^{\infty}(X)$ on $X$ are independent $\forall \, x\in X$, s.t. $g_i(x)=0$, $\forall \, i = 1\dots l$, \\
+	then $Z=\lbrace x\in X | g_1(x) = \dots = g_l(x)=0 \rbrace = $ set of "common zeros" is a \emph{submanifold} of $X$ s.t. $\text{dim}Z = \text{dim}X- l$.  
+	
+	Take \emph{note} that $g_1 \dots g_l$ are independent at $x$ means, really, that $D(g_1)_x \dots D(g_l)_x$ are linearly independent on $T_xX$.  
+\end{proposition}
+\begin{proof}
+Suppose smooth $g_1 \dots g_l \in C^{\infty}(X)$ on manifold $X$ s.t. $\text{dim}X = k\geq l$.  
+
+Consider $g=(g_1\dots g_l):X \to \mathbb{R}^l$, $Z\equiv g^{-1}(0)$.  
+
+Since $\forall \, g_i$ smooth, $D(g_i)_x:T_xX \to \mathbb{R}$ linear.  
+
+Now for 
+\[
+Dg_x = (D(g_1)_x \dots D(g_l)_x):T_xX \to \mathbb{R}^l
+\]	
+By rank-nullity theorem (linear algebra), $Dg_x$ surjective iff $\text{rank}Dg_x = l$ i.e. $l$ functionals $D(g_1)_x \dots D(g_l)_x$ are linearly independent on $T_xX$.  
+
+"We express this condition by saying the $l$ functions $g_1\dots g_l$ are independent at $x$."  (Guillemin and Pollack (2010) \cite{VGuilleminAPollack2010})  
+	
+	
+	\end{proof}
+
+
+
+
 Jeffrey Lee (2009) \cite{JLee2009}
 
 
