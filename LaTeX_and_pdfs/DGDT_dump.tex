@@ -10,7 +10,9 @@
 
 \documentclass[10pt]{amsart}
 \pdfoutput=1
-\usepackage{mathtools,amssymb,lipsum,caption}
+%\usepackage{mathtools,amssymb,lipsum,caption}
+\usepackage{mathtools,amssymb,caption}
+
 
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -19,7 +21,7 @@
 \usepackage[table]{xcolor}
 \usepackage{pdfpages}
 %\usepackage[version=3]{mhchem}
-\usepackage{mhchem}
+%\usepackage{mhchem}
 
 \usepackage{tikz}
 \usetikzlibrary{matrix,arrows}
@@ -445,6 +447,284 @@ Use $\psi \circ G$ as the local parametrization of $N$ around pt. $q$.  Shrink $
 
 
 
+\subsection{Submersions} 
+cf. pp. 20, Sec. 4 "Submersions", Ch. 1 of Guillemin and Pollack (2010) \cite{VGuilleminAPollack2010}.  
+
+Consider $X,Y\in \text{\textbf{Man}}$, s.t. $\text{dim}X \geq \text{dim}Y$.  
+
+\begin{definition}[submersion] If $f:X\to Y$, \\
+if $Df_x \equiv df_x$ is \emph{surjective}, $f\equiv $ \textbf{submersion} at $x$.
+\end{definition}
+Recall that,  
+\[
+\begin{gathered}
+	Df_x:T_xX \to T_{f(x)}Y \\
+	\text{dim}T_xX \geq \text{dim}T_{f(x)}Y
+\end{gathered}
+\]
+\[
+\begin{gathered}
+\text{rank}Df_x \leq \text{dim}T_{f(x)}Y, \text{ in general, while } \\
+\text{rank}Df_x = \text{dim}T_{f(x)}Y \text{ iff } Df_x \text{ surjective }
+\end{gathered}
+\]
+
+Canonical submersion is standard projection: \\
+If $\begin{gathered} \quad \\
+\text{dim}X = k \\
+\text{dim}Y = l \end{gathered}$, $k\geq l$, 
+\[
+(a_1 \dots a_k ) \mapsto (a_1 \dots a_l)
+\]
+
+\begin{theorem}[Local Submersion Theorem]
+	Suppose $f:X\to Y$ submersion at $x$, and $y = f(x)$, 
+	Then $\exists \, $ local coordinates around $x$, $y$ s.t. 
+	\[
+	f(x_1\dots x_k) = (x_1 \dots x_l)
+	\]
+	i.e. $f$ locally equivalent to canonical submersion near $x$
+\end{theorem}
+\begin{proof}
+I'll have a side-by-side comparison of my notation and the 1 used in Guillemin and Pollack (2010) \cite{VGuilleminAPollack2010} where I can.	
+
+For charts $(U,\phi), (V,\psi)$ for $X,Y$, respectively, $y=f(x)$ for $x\in X$, 
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	U \subseteq X & Y \supseteq V \\
+	\mathbb{R}^k &  \mathbb{R}^l \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f $} (m-1-2)
+edge node [auto] {$\phi$} (m-2-1)
+(m-1-2) edge node [auto]  {$\psi\circ G$} (m-2-2)
+(m-2-1) edge node [auto] {$\mathfrak{i}$} (m-2-2)
+;
+\end{tikzpicture} \quad \quad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	 x & f(x)=y \\
+	\phi(x)=(a^1\dots a^k) &  g(\phi(x))=g(a^1\dots a^k)=\psi(y) \\
+};
+\path[|->]
+(m-1-1) edge node [above] {$f $} (m-1-2)
+edge node [auto] {$\phi$} (m-2-1)
+(m-1-2) edge node [auto]  {$\psi$} (m-2-2)
+(m-2-1) edge node [auto] {$g$} (m-2-2)
+;
+\end{tikzpicture}
+\]
+$Dg_x$ surjective, so assume it's a $l\times k$ matrix $\left[ \begin{matrix} \mathbf{1}_l & 0 \end{matrix} \right]$.  
+
+Define
+\begin{equation}
+\begin{aligned}
+& G:U \subset \mathbb{R}^k \to \mathbb{R}^k  \\
+& G(a)\equiv G(a^1\dots a^k) := (g(a), a_{l+1}, \dots , a_k)
+\end{aligned}
+\end{equation}
+Now
+\begin{equation}
+DG(a)  = \left[ \begin{matrix} \mathbf{1}_l & 0 \\ & \mathbf{1}_{k-l} \end{matrix} \right] = \mathbf{1}_k
+\end{equation}
+so $G$ local diffeomorphism (at $0$).  
+
+So $\exists \, $ $G^{-1}$ as local diffeomorphism of some $U'$ of $a$ into $U\subset \mathbb{R}^k$.  
+
+By construction, 
+\begin{equation}
+g=\mathbb{P}_l \circ G
+\end{equation}
+where $\mathbb{P}_l$ is the \emph{canonical submersion}, the projection operator onto $\mathbb{R}^l$.  
+\[
+g\circ G^{-1} = \mathbb{P}_l
+\]
+(since $G$ diffeomorphism)
+
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	U\subseteq X &  V\subseteq Y \\
+	\mathbb{R}^k &  \mathbb{R}^l \\
+};
+\path[->]
+(m-2-1) edge node [auto] {$\phi^{-1}\circ G^{-1}  $} (m-1-1)
+edge node [auto] {$\mathbb{P}_l$} (m-2-2)
+(m-1-1) edge node [auto]  {$f$} (m-1-2)
+(m-2-2) edge node [auto] {$\psi^{-1}$} (m-1-2)
+;
+\end{tikzpicture}
+for \\
+$\Longrightarrow $ \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\phi^{-1}\circ G^{-1}(a)\equiv \phi^{-1}\circ G^{-1}(a^1\dots a^k)=x & f(x)=y=\psi^{-1}(a^1\dots a^l) \\
+	(a^1\dots a^k) &  (a^1\dots a^l) \\
+};
+\path[|->]
+(m-2-1) edge node [auto] {$\phi^{-1}\circ G^{-1}  $} (m-1-1)
+edge node [auto] {$\mathbb{P}_l$} (m-2-2)
+(m-1-1) edge node [auto]  {$f$} (m-1-2)
+(m-2-2) edge node [auto] {$\psi^{-1}$} (m-1-2)
+;
+\end{tikzpicture}
+
+
+	\end{proof}
+"An obvious corollary worth noting is that if $f$ is a submersion at $x$, then it is actually a submersion in a whole neighborhood of $x$." Guillemin and Pollack (2010) \cite{VGuilleminAPollack2010}
+
+Suppose $f$ submersion at $x\in f^{-1}(y)$.  
+
+By local submersion theorem
+\[
+f(x_1\dots x_k)=(x_1 \dots x_l)
+\]
+Choose $y=(0, \dots , 0)$. 
+
+Then, near $x$, $f^{-1}(y) = \lbrace (0, \dots 0 , x_{l+1} \dots x_k)\rbrace$ i.e. let $V\ni x$ neighborhood of $x$, define $(x_1 \dots x_k)$ on $V$.  
+
+Then $f^{-1}(y) \bigcap V = \lbrace (0\dots 0 , x_{l+1} , \dots x_k) | x_1 = 0 , \dots x_l = 0\rbrace$.
+
+Thus $x_{l+1}, \dots x_k$ form a coordinate system on open set $f^{-1}(y) \bigcap V \subseteq f^{-1}(y)$.  
+
+Indeed, 
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	U \subseteq X &  V\subseteq Y \\
+	\mathbb{R}^k &  \mathbb{R}^l \\
+};
+\path[->]
+(m-1-1) edge node [auto] {$ f  $} (m-1-2)
+edge node [auto] {$ \phi $} (m-2-1)
+(m-2-1) edge node [auto]  {$\mathbb{P}_l$} (m-2-2)
+(m-1-2) edge node [auto] {$\psi$} (m-2-2)
+;
+\end{tikzpicture} \qquad \, \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	x &  f(x)=y \\
+	\phi(x)=(x^1\dots x^k) &  (x^1\dots x^l) \\
+};
+\path[|->]
+(m-1-1) edge node [auto] {$ f  $} (m-1-2)
+edge node [auto] {$ \phi $} (m-2-1)
+(m-2-1) edge node [auto]  {$\mathbb{P}_l$} (m-2-2)
+(m-1-2) edge node [auto] {$\psi$} (m-2-2)
+;
+\end{tikzpicture} 
+\]
+and now 
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	f^{-1}(y) &  y \\
+	\lbrace (0, \dots 0,x^1\dots x^k) \rbrace &  (0\dots 0) \\
+};
+\path[|->]
+(m-1-2) edge node [auto] {$ f^{-1}  $} (m-1-1)
+edge node [auto] {$ \psi $} (m-2-2)
+(m-2-2) edge node [auto]  {$\mathbb{P}_l^{-1}$} (m-2-1)
+(m-2-1) edge node [auto] {$\phi^{-1}$} (m-1-1)
+;
+\end{tikzpicture} 
+\]
+
+\begin{definition}[regular value]
+	For smooth $f:X\to Y$, $X,Y \in \text{\textbf{Man}}$, \\
+	$y\in Y$ is a \textbf{regular value} for $f$ if $Df_x:T_xX \to T_y Y$ surjective $\forall \, x$ s.t. $f(x)=y$.  
+	
+	$y\in Y$ \textbf{critical value} if $y$ not a regular value of $f$.  
+\end{definition}
+
+
+
+\begin{theorem}[Preimage theorem]
+If $y$ regular value of $f:X\to Y$, \\
+$f^{-1}(y)$ is a submanifold of $X$, with $\text{dim}f^{-1}(y)=\text{dim}X - \text{dim}Y$
+\end{theorem}
+\begin{proof}
+Given $y$ is a regular value of $f:X\to Y$,  \\
+$\forall \, x \in f^{-1}(y)$, $Df_x:T_xX \to T_yY$ is surjective.  By local submersion theorem, 
+\[
+f(x^1 \dots x^k) = (x^1 \dots x^l)=y
+\]	
+Since $x\in f^{-1}(y)$, $(x^1\dots x^k)=(y^1 \dots y^l,x^{l+1}\dots x^k)$.  
+
+For this chart for $(U,\varphi)$, $U\ni x$, consider $(U\cap f^{-1}(y),\psi)$ with $\psi(x) = (x^{l+1}\dots x^k) \quad \, \forall \, x\in U\cap f^{-1}(y)$.  
+
+$\forall \, f^{-1}(y)$ submanifold with $\text{dim}f^{-1}(y) = k-l = \text{dim}X-\text{dim}Y$.  
+	\end{proof}
+
+\emph{Examples for emphasis}
+
+If $\text{dim}X > \text{dim}Y$, \\
+\phantom{\qquad \, } if $y\in Y$, regular value of $f:X\to Y$, \\
+\phantom{\qquad \, \qquad \, } $f$ submersion, $\forall \, x \in f^{-1}(y)$ \\
+If $\text{dim}X = \text{dim}Y$, \\
+\phantom{\qquad \, } $f$ local diffeomorphism $\forall \, x\in f^{-1}(y)$ \\
+If $\text{dim}X < \text{dim}Y$, $\forall \, y\in f(X)$ is a critical value.  
+
+
+\textbf{Example: $O(n)$ as a submanifold of $\text{Mat}(n,n)$}
+
+Given $\text{Mat}(n,n)\equiv M(n) = \lbrace n \times n \text{ matrices } \rbrace$ is a manifold; in fact $\text{Mat}(n,n) \cong \mathbb{R}^{n^2}$, \\
+Consider $O(n) = \lbrace A \in \text{Mat}(n,n) | AA^T = 1\rbrace$.  
+\begin{equation}
+AA^T \in \text{Sym}(n) \equiv S(n) = \lbrace S\in \text{Mat}(n,n) | S^T = S \rbrace = \lbrace \text{ symmetric $n\times n$ matrices } \rbrace
+\end{equation}
+$\text{Sym}(n)$ submanifold of $\text{Mat}(n,n)$, $\text{Sym}(n)$ diffeomorphic to $\mathbb{R}^k$ (i.e. $\text{Sym}(n) \cong \mathbb{R}^k$), $k:= \frac{n (n+1)}{2}$.  
+
+\[
+\begin{aligned}
+	& f:\text{Mat}(n,n) \to \text{Sym}(n) \\
+	& f(A) = AA^T
+\end{aligned}
+\]
+Notice $f$ is smooth, 
+\[
+\begin{gathered}
+f^{-1}(1) = O(n) \\
+Df_A(B) = \lim_{s\to 0} \frac{ f(A+sB) - f(A) }{s} = \lim_{s\to 0} \frac{(A+sB)(A^T + sB^T)- AA^T}{s} = AB^T +BA^T
+\end{gathered}
+\]
+If $Df_A : T_A\text{Mat}(n,n) \to T_{f(A)}\text{Sym}(n)$ surjective when $A\in f^{-1}(1) = O(n)$ (???).  
+
+
+
+
+
+\begin{proposition} If smooth $g_1\dots g_l \in C^{\infty}(X)$ on $X$ are independent $\forall \, x\in X$, s.t. $g_i(x)=0$, $\forall \, i = 1\dots l$, \\
+	then $Z=\lbrace x\in X | g_1(x) = \dots = g_l(x)=0 \rbrace = $ set of "common zeros" is a \emph{submanifold} of $X$ s.t. $\text{dim}Z = \text{dim}X- l$.  
+	
+	Take \emph{note} that $g_1 \dots g_l$ are independent at $x$ means, really, that $D(g_1)_x \dots D(g_l)_x$ are linearly independent on $T_xX$.  
+\end{proposition}
+\begin{proof}
+Suppose smooth $g_1 \dots g_l \in C^{\infty}(X)$ on manifold $X$ s.t. $\text{dim}X = k\geq l$.  
+
+Consider $g=(g_1\dots g_l):X \to \mathbb{R}^l$, $Z\equiv g^{-1}(0)$.  
+
+Since $\forall \, g_i$ smooth, $D(g_i)_x:T_xX \to \mathbb{R}$ linear.  
+
+Now for 
+\[
+Dg_x = (D(g_1)_x \dots D(g_l)_x):T_xX \to \mathbb{R}^l
+\]	
+By rank-nullity theorem (linear algebra), $Dg_x$ surjective iff $\text{rank}Dg_x = l$ i.e. $l$ functionals $D(g_1)_x \dots D(g_l)_x$ are linearly independent on $T_xX$.  
+
+"We express this condition by saying the $l$ functions $g_1\dots g_l$ are independent at $x$."  (Guillemin and Pollack (2010) \cite{VGuilleminAPollack2010})  
+	
+	
+	\end{proof}
+
+
+
+
 Jeffrey Lee (2009) \cite{JLee2009}
 
 
@@ -793,6 +1073,266 @@ y^{\alpha} \in \mathbb{R}^n, \qquad \, A^{\alpha}_{ \, \, \beta} \in GL(n; \math
   \end{equation}
 cf. Eq. 1.4 Pr\'{a}staro (1996) \cite{Pras1996}
   \end{theorem}
+
+
+
+
+
+
+
+\begin{definition}[Conlon, 10.1.2] If $X,Y\in \mathfrak{X}(M)$, $M\subset \mathbb{R}^m$, \textbf{Levi-Civita connection} on $M\subset \mathbb{R}^m$
+	\begin{equation}
+	\begin{aligned}
+	& \nabla : \mathfrak{X}(M) : \mathfrak{X}(M) \to \mathfrak{X}(M) \\
+	\nabla_XY := p(D_XY)
+	\end{aligned}
+	\end{equation}
+	with 
+	\[
+	D_XY := \sum_{j=1}^m X(Y^j) \frac{ \partial }{ \partial x^j} = \sum_{i,j=1}^m X^i \frac{ \partial Y^j}{ \partial x^i} \frac{ \partial }{ \partial x^j} \qquad \,  \begin{aligned} & \quad \\ 
+		& \forall \, X=\sum_{i=1}^m X^i \frac{ \partial }{ \partial x^i},  \\
+		& \forall \, Y=\sum_{i=1}^m Y^i \frac{\partial }{ \partial x^i } \end{aligned}
+	\]
+\end{definition}
+
+\[
+\begin{aligned}
+	& \nabla_{fX}Y = f(D_{fX}Y) = p(fD_XY) = fpD_XY = f\nabla_XY \\ 
+	&  \nabla_X fY = p(D_XfY) = p \left( \sum_{i,j=1}^m \left( X^i f\frac{ \partial Y^j}{ dx^i } + X^i Y^j \frac{ \partial f}{ \partial x^i} \right) \frac{ \partial }{ \partial x^j} \right) = f\nabla_X Y + p \sum_{j=1}^m X(f) Y^j \frac{ \partial }{ \partial x^j} = f\nabla_XY + X(f) p(Y)
+\end{aligned}
+\]
+
+
+\begin{definition}[Conlon, 10.1.4; Christoffel symbols] 
+\begin{equation}
+\begin{gathered}
+	\nabla_{\frac{ \partial }{ \partial x^i} \frac{ \partial }{ \partial x^j} = \Gamma^k_{ij} \frac{ \partial }{ \partial x^k} \qquad \, \text{ (Conlon's notation) }  }   \\
+	\nabla_{\frac{ \partial }{ \partial x^j} \frac{ \partial }{ \partial x^i} = \Gamma^k_{ij} \frac{ \partial }{ \partial x^k} \qquad \, \text{ (F. Schuller's notation) }  }
+\end{gathered}
+\end{equation}
+\end{definition}
+
+
+
+
+
+\begin{definition}[torsion]
+\begin{equation}
+\begin{aligned}
+	& T:\mathfrak{X}(M) \in \mathfrak{X}(M) \to \mathfrak{X}(M) \\ 
+	& T(X,Y) = \nabla_XY - \nabla_Y X - [X,Y] 
+\end{aligned}
+\end{equation}
+If $T=0$, $\nabla$ torsion-free or symmetric.  
+\end{definition}
+\[
+\begin{gathered}
+T(fX,Y) = f\nabla_XY - (f\nabla_Y X + Y(f)X) - \lbrace (fXY - (Y(f)X + fYX) \rbrace = fT(X,Y) \\ 
+T(X,fY) = f\nabla_XY + X(f)Y - f\nabla_Y X   - \lbrace ( ( X(f) Y +fXY) -  fYX \rbrace = fT(X,Y)  
+\end{gathered}
+\]
+Thus, $T(X,Y)$ $C^{\infty}(M)$-bilinear.  
+
+$T\in \tau_1^2 (M)$.  
+
+$T(v,w) \in T_xM$ defined, $\forall \, v,w \in T_xM$, $\forall \, x\in M$.
+
+Thus, torsion is a \textbf{tensor}.
+
+\exercisehead{10.1.7 Conlon}.  
+
+If $T(X,Y)=0$,
+\[
+T(e_i,e_j) = \Gamma^k_{ji} e_k - \Gamma^k_{ij} e_k - 0 = 0 \Longrightarrow \Gamma_{ji}^k = \Gamma^k_{ij}
+\]
+
+If $\Gamma^k_{ij} = \Gamma^k_{ji}$, $T(e_i,e_j)=0$.  
+
+\exercisehead{10.1.8, Conlon} 
+
+If $M\subset \mathbb{R}^m$ smoothly embedded submanifold,  
+$\forall \, \frac{ \partial }{ \partial x^j}, \frac{ \partial }{ \partial x^i} \in T_xM$, spanning $T_xM$, consider $\frac{ \partial }{ \partial x^j} = X^k_j \frac{ \partial }{ \partial \widetilde{x}^k}$, $\frac{ \partial }{ \partial x^i} = X_i^k(\widetilde{x}) \frac{ \partial }{ \partial \widetilde{x}^k}$  
+
+\[
+\begin{gathered}
+	\nabla_{\frac{\partial }{ \partial x^j} } \frac{ \partial }{ \partial x^i} = p D_{ X^k_j \frac{ \partial }{ \partial \widetilde{x}^k } } X^l_i \frac{ \partial }{ \partial \widetilde{x}^l } = p \left( X^k_j \frac{ \partial X^l_i}{  \partial \widetilde{x}^k } \frac{ \partial }{ \partial \widetilde{x}^l } \right) =   X^k_j  p \left( \frac{ \partial X^l_i}{  \partial \widetilde{x}^k } \frac{ \partial }{ \partial \widetilde{x}^l } \right)  \\ 
+	\nabla_{\frac{\partial }{ \partial x^i} } \frac{ \partial }{ \partial x^j} =  X^k_i p \left(  \frac{ \partial X^l_j }{ \partial \widetilde{x}^k }   \frac{ \partial }{ \partial \widetilde{x}^l  } \right) 
+\end{gathered}
+\]
+
+
+
+
+
+
+
+
+
+If $X\in \mathfrak{X}(M)$, smooth $s:[a,b]\to M$, 
+
+then $\forall \, s(t)$, 
+\[
+X'_{s(t)} = \nabla_{\dot{s}(t)} X \in T_{s(t)}M
+\]
+In fact, it's often natural to consider fields $X_{s(t)}$ along $s$, parametrized by parameter $t$, allowing
+\[
+X_{s(t_1)} \neq X_{s(t_2)}
+\]
+each of $s(t_1)=s(t_2)$.  
+
+\begin{definition}[10.1.9] Let smooth $s:[a,b] \to M$.  
+
+Vector field along $s$ is smooth $v:[a,b]\to TM$ s.t. 
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=7.8em, column sep=12.8em, minimum width=5.2em]
+  {
+   &  TM  \\ 
+	\left[ a,b \right] & M \\ 
+};
+  \path[|->]
+  (m-2-1) edge node [above] {$ v $} (m-1-2)
+edge node [above] {$s$} (m-2-2)
+  (m-1-2) edge node [left] {$ \pi $} (m-2-2)
+  ;
+\end{tikzpicture}  
+\]
+commutes.
+
+Note that $v\in \mathfrak{X}(s) \subset \mathfrak{X}(M)$
+\end{definition}
+
+e.g. $(Y|s)(t) = Y_{s(t)}$, restriction of $Y\in \mathfrak{X}(M) $ to $s$.  
+
+e.g. $\dot{s}(t) \in \mathfrak{X}(M)$.  
+
+$\forall \, v,w \in \mathfrak{X}(s)$, $v+w \in \mathfrak{X}(s)$, 
+\[
+\begin{gathered}
+	(fv+gv)(t) := (f(s(t)) + g(s(t)) )v(t) = f(s(t)) v(t) + g(s(t)) v(t) = (f+g)v(t)
+\end{gathered}
+\]
+Likewise, 
+\[
+f(v+w) = fv+fw
+\]
+$\mathfrak{X}(s)$ is a real vector space and $C^{\infty}[a,b]$-module.  
+
+\begin{definition}[10.1.10]
+Let conection $\nabla$ on $M$.  
+
+\textbf{Associated covariant derivative} is operator 
+\[
+\frac{\nabla}{dt} \mathfrak{X}(s) \to \mathfrak{X}(s)
+\]
+$\forall \, $ smooth $s$ on $M$, s.t. 
+\begin{enumerate}
+\item $\frac{\nabla}{dt}$ $\mathbb{R}$-linear 
+\item $\left( \frac{\nabla}{dt} \right)(fv) = \frac{df}{dt} v+ f\frac{\nabla}{dt} v$, $\forall \, f \in C^{\infty}[a,b]$, $\forall \, v\in \mathfrak{X}(s)$  
+\item If $Y\in \mathfrak{X}(M)$, then
+\[
+\frac{\nabla}{dt} (Y|s)(t) = \nabla_{ \dot{s}(t)}Y \in T_{s(t)} M, \quad \, a\leq t \leq b
+\]
+\end{enumerate}
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}[ Conlon Thm. 10.1.11\cite{Conl2008} ]
+	$\forall \, $ connection $\nabla$ on $M$, $\exists \, !$ \, associated covariant derivative $\frac{ \nabla }{dt}$
+\end{theorem}
+
+\begin{proof}
+	Consider arbitrary coordinate chart $(U,x^1 \dots x^n)$.  
+	
+	Consider smooth curve $s:[a,b]\to U$.  
+	
+	Let $v\in \mathfrak{X}(s)$, $v(t) = v^i(t) \frac{ \partial }{ \partial x^i}$; $\dot{s}(t) = s^j \frac{ \partial }{ \partial x^j}$.  
+	\[
+	\begin{gathered}
+	\frac{ \nabla v}{ dt} = \frac{dv^i(t) }{dt}\frac{ \partial }{ \partial x^i} + v^i(t) \frac{ \nabla}{dt} \frac{ \partial }{ \partial x^i} = \frac{ d v^i }{dt}	\frac{ \partial }{ \partial x^i} + v^i \nabla_{ \dot{s}(t) } \frac{ \partial }{ \partial x^i } = \dot{v}^i \frac{ \partial }{ \partial x^i } + v^i\dot{s}^j \Gamma^k_{ij} \frac{ \partial }{ \partial x^k} = \left( \dot{v}^k + v^i \dot{s}^j \Gamma^k_{ij} \right)\frac{ \partial }{ \partial x^k} \end{gathered}
+	\]
+	This is an explicit, local formula in terms of connection, proving uniqueness.  
+	
+	Existence: $\forall \, $ coordinate chart $(U,x^1\dots x^n)$, $\left( \dot{v}^k + v^i \dot{s}^j \Gamma_{ij}^k \right) \frac{ \partial }{ \partial x^k } =: \frac{ \nabla v}{dt}$.  
+	
+	\[
+	\begin{gathered}
+	\frac{\nabla}{dt}(fv) = \dot{f}v^k + f\dot{v}^k + fv^i \dot{s}^j = \dot{f}v + f\frac{ \nabla v}{dt}
+	\end{gathered}
+	\]
+If $f$ constant, then $\frac{\nabla}{dt}$ is $\mathbb{R}$-linear.  	
+
+\end{proof}
+
+Conlon (2008) 
+
+
+
+
+
+\subsubsection{Principal bundle, vector bundle case for parallel transport}  
+
+Recall the 2 different forms or viewpoints for Lie-algebra valued 1-forms, or vector-valued 1-forms, or sections of 1-form-valued endomorphisms:
+\[
+\omega^k_{ \,\, i\mu} dx^{\mu} \equiv \omega^k_{\,\,i} \in \Omega^1(M,\mathfrak{gl}(n,\mathbb{F})) = \Gamma(\mathfrak{gl}(n,\mathbb{R} \otimes \left. T^* M \right|_U ) )
+\] 
+for $\begin{aligned} & \quad \\
+	& i,k = 1\dots n =\text{dim}E \\ 
+	& \mu = 1\dots d =\text{dim}E \end{aligned}$.  
+
+Now
+\[
+D_X\mu = X^{\mu} D_{\frac{\partial }{ \partial x^{\mu}}}\mu = X^{\mu} \left[ \left( \frac{ \partial }{ \partial x^{\mu}} \mu^k \right) e_k + \mu^i \omega^k_{ \,\, i\mu} e_k \right] = \left( X(\mu^k) + \mu^i \omega^k_{ \,\, i}(X) \right) e_k = \left( d\mu^k(X) + \mu^i \omega^k_{ \,\, i}(X) \right) e_k
+\]
+So then define 
+\begin{equation}
+	\begin{aligned}
+		& D: \Gamma(E) \to \Gamma(E) \otimes \Gamma(T^*M) \\
+	& D\mu  = D(\mu^i e_i) = e_k ( d\mu^k +\mu^i \omega^k_{ \,\, i}) \equiv (d+A)\mu
+	\end{aligned}
+\end{equation}
+
+Also, $D$ can be defined for this case:
+\[
+D: \Gamma (\text{End}(E)) \to \Gamma(\text{End}E) \otimes \Gamma(T^*M)
+\]
+Let $\sigma = \sigma^i_{ \,\, j} e_i \otimes e^j \in \Gamma(\text{End}(E))$
+
+\begin{equation}
+\begin{gathered}
+	D\sigma = D(\sigma^i_{ \,\, j} e_i ) \otimes e^j + \sigma^i_{ \,\, j} e_i \otimes D^* e^j = \left( d\sigma^k_{ \,\, j} + \sigma^i A^k_{ \,\, i} \right) e_k \otimes e^j + \sigma^i_{ \,\, j} e_i \otimes (A^*)_k^{ \,\, j} e^k = \\
+	= (d\sigma^k_{ \,\, j} + \sigma^i_{ \,\, j} A^k_{ \,\, i} ) e_k \otimes e^j + \sigma^k_{ \,\, i} e_j \otimes (- A^i_{ \, \, j}) e^j = (d\sigma^k_{ \,\, j} + [A,\sigma]^k_{ \,\, j}) e_k\otimes e^j
+\end{gathered}
+\end{equation}
+cf. Def. 4.1.4 of Jost (2011), pp. 138.  
+
+For $\mu \in \Gamma(E)$, smooth $s:[a,b] \to M$, $X(t) = \dot{s}(t)$,
+\begin{equation}
+D_{\dot{s}(t)}\mu = \dot{s}^{\mu}D_{\frac{ \partial }{ \partial x^{\mu}} } \mu = \dot{s}^{\mu} \left[ \frac{ \partial \mu^k }{ \partial x^{\mu}} e_k + \mu^i \omega^k_{ \, \, i\mu} e_k \right] = \left[ \dot{s}^{\mu} \frac{ \partial \mu^k}{ \partial x^{\mu} } + \dot{s}^{\mu} \mu^i \omega^k_{ \,\, i \mu} \right] e_k =\frac{d}{dt} \mu(s(t)) + \mu^i \dot{s}^{\mu} \omega^k_{ \,\, i \mu} e_k
+\end{equation}
+
+Let $D_{\dot{s}(t)}\mu=0$.  Then, 
+\begin{equation}
+\frac{d}{dt} \mu(s(t)) = -\mu^i \dot{s}^{\mu}\omega^k_{ \,\, i\mu} e_k
+\end{equation}
+
+
+
+
+
+
+
+
 
 
 
