@@ -1137,7 +1137,7 @@ $T(v,w) \in T_xM$ defined, $\forall \, v,w \in T_xM$, $\forall \, x\in M$.
 
 Thus, torsion is a \textbf{tensor}.
 
-\exercisehead{10.1.7 Conlon}.  
+\exercisehead{10.1.7 Conlon (2008)\cite{Conl2008} }.  
 
 If $T(X,Y)=0$,
 \[
@@ -1146,7 +1146,7 @@ T(e_i,e_j) = \Gamma^k_{ji} e_k - \Gamma^k_{ij} e_k - 0 = 0 \Longrightarrow \Gamm
 
 If $\Gamma^k_{ij} = \Gamma^k_{ji}$, $T(e_i,e_j)=0$.  
 
-\exercisehead{10.1.8, Conlon} 
+\exercisehead{10.1.8, Conlon (2008)\cite{Conl2008}} 
 
 If $M\subset \mathbb{R}^m$ smoothly embedded submanifold,  
 $\forall \, \frac{ \partial }{ \partial x^j}, \frac{ \partial }{ \partial x^i} \in T_xM$, spanning $T_xM$, consider $\frac{ \partial }{ \partial x^j} = X^k_j \frac{ \partial }{ \partial \widetilde{x}^k}$, $\frac{ \partial }{ \partial x^i} = X_i^k(\widetilde{x}) \frac{ \partial }{ \partial \widetilde{x}^k}$  
@@ -1245,7 +1245,7 @@ $\forall \, $ smooth $s$ on $M$, s.t.
 
 
 
-\begin{theorem}[ Conlon Thm. 10.1.11\cite{Conl2008} ]
+\begin{theorem}[Conlon Thm. 10.1.11\cite{Conl2008} ]
 	$\forall \, $ connection $\nabla$ on $M$, $\exists \, !$ \, associated covariant derivative $\frac{ \nabla }{dt}$
 \end{theorem}
 
@@ -1272,8 +1272,45 @@ If $f$ constant, then $\frac{\nabla}{dt}$ is $\mathbb{R}$-linear.
 
 \end{proof}
 
-Conlon (2008) 
+\begin{definition}[10.1.12 Conlon (2008)\cite{Conl2008}]
+	Let $(M,\nabla)$.  Let $v\in\mathfrak{X}(s)$ for smooth $s:[a,b] \to M$.  
 
+If $\frac{\nabla v}{dt} \equiv 0$ on $s$, then $v$ is \textbf{parallel } along $s$.  
+\end{definition}
+
+\begin{theorem}[10.1.13] 
+Let $(M,\nabla)$, smooth $s:[a,b]\to M$, $c\in [a,b]$, $v_0 \in T_{s(c)}M$.  
+
+Then $\exists \, !$ parallel field $v\in \mathfrak{X}(s)$ s.t. $v(c) = v_0$.  
+
+$v$ parallel transport along $s$.  
+\end{theorem}
+\begin{proof}
+	\[
+\begin{aligned}
+	& \dot{s}(t) = \dot{s}^j(t) e_j \\ 
+	&  v(t) = v^i(t) e_i  \\
+& v_0 = a^i e_i
+\end{aligned}
+\]
+\[
+0 = \left( \frac{dv^k}{dt}(t) + v^i(t) \dot{s}^j(t) \Gamma^k_{ij}(s(t)) \right) e_k
+\]
+or equivalently
+\begin{equation}
+	\frac{dv^k}{dt} = - v^i \dot{s}^j \Gamma^k_{ij} , \qquad \, 1\leq k \leq n \qquad \, (10.1)
+\end{equation}
+with initial conditions $v^k(c) = a^k$, $1\leq k \leq n$.  
+
+By existence and uniqueness of solutions of O.D.E.  
+
+$\exists \, \epsilon > 0$ s.t. $\exists \, !$ solutions $v^k(t)$.  For $c-\epsilon < t < c+\epsilon$.  
+
+In fact, these ODEs being linear in $v^k$,  by ODE theory (Appendix C, Thm. C.4.1).  
+
+$\nexists \, $ restriction on $\epsilon$, so $\exists \, ! \, v^k(t)$ \, $\forall \, t \in [a,b]$, $1\leq k \leq n$  
+
+\end{proof}
 
 
 
@@ -1325,6 +1362,282 @@ Let $D_{\dot{s}(t)}\mu=0$.  Then,
 \end{equation}
 
 
+Recall, given vector bundle $E\xrightarrow{ \pi} N$, given $\varphi : M\to N$, then pullback 
+\begin{equation}
+	\varphi^* E \to M
+\end{equation}
+i.e. 
+
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\varphi^* E &  E  \\
+	M  &  N  \\
+};
+\path[->]
+(m-1-2) edge node [auto] {$ \varphi^*  $} (m-1-1)
+edge node [auto] {$ \pi $} (m-2-2)
+(m-2-1) edge node [auto]  {$  \varphi $} (m-2-2)
+(m-1-1) edge node [auto] {$\psi$} (m-2-1)
+;
+\end{tikzpicture}
+\qquad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	(\varphi^* E)_x = E_{\varphi(x)}  \\
+	 x\in M \\
+};
+ \path[|->]
+	(m-2-1) edge node [auto] {$$} (m-1-1)
+;
+\end{tikzpicture}
+\]
+i.e. if $s\in \Gamma(E)$, 
+\[
+\varphi^* s = s \circ \varphi \in \Gamma( \varphi^* E)
+\]
+Thus,
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\gamma^* E &  E  \\
+	\left[a,b\right]  &  M  \\
+};
+\path[->]
+(m-1-2) edge node [auto] {$ \gamma^*  $} (m-1-1)
+edge node [auto] {$ \pi $} (m-2-2)
+(m-2-1) edge node [auto]  {$  \gamma $} (m-2-2)
+(m-1-1) edge node [auto] {$ $} (m-2-1)
+;
+\end{tikzpicture}
+\qquad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	(\varphi^* E)_c = E_{\gamma(c)}  \\
+	 c\in  [a,b]\\
+};
+ \path[|->]
+	(m-2-1) edge node [auto] {$$} (m-1-1)
+;
+\end{tikzpicture}
+\]
+
+
+
+
+
+
+
+For 
+\[
+\begin{gathered}
+\dot{v}^k = -v^i \dot{s}^j \Gamma^k_{ \, \, ij}   \\
+v^k(c) = v_0^k \qquad \, 1 \leq k \leq m
+\end{gathered}
+\]
+\[
+\dot{v} = -v^i \dot{s}^j \Gamma_{ij}
+\]
+\[
+\begin{gathered}
+\dot{ (v+w) } = -(v^i + w^i) \dot{s}^j \Gamma_{ij}
+(v+w)(c) = v(c) + w(c) = v_0 + w_0 
+\end{gathered}
+\]
+so $v+w\in \mathfrak{X}(s)$ is parallel transport of $v_0 + w_0$.  
+
+Likewise, $\forall \, a \in \mathbb{F}$, $av \in \mathfrak{X}(s)$ is the parallel transport of $av_0$.  
+
+\[
+\dot{\mu}^k = - \mu^i \dot{s}^{\mu} \omega^k_{ \, \, i \mu} = -\mu^i \omega^k_{ \,\, i}(\dot{s}^{\mu})
+\]
+
+
+Suppose $\gamma^*E$ trivialized over $[a,b]$.  
+
+Closed interval is contractible, so this is always possible.  
+
+For chart $(U,\varphi)$, 
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\gamma^* E   &  E    \\
+	\left[a,b\right]  &  M  \\
+};
+\path[->]
+(m-1-2) edge node [auto] {$ \gamma^*  $} (m-1-1)
+edge node [auto] {$ \pi $} (m-2-2)
+(m-2-1) edge node [auto]  {$  \gamma $} (m-2-2)
+(m-1-1) edge node [auto] {$ $} (m-2-1)
+;
+\end{tikzpicture} \qquad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\left. E \right|_U   &   U\times V  \\
+	U \subset M    &    \\
+};
+\path[->]
+(m-2-1) edge node [auto] {$ \pi^{-1}  $} (m-1-1)
+edge node [auto] {$  $} (m-1-2)
+(m-1-1) edge node [auto]  {$  \psi $} (m-1-2)
+%(m-1-1) edge node [auto] {$ $} (m-2-1)
+;
+\end{tikzpicture}
+\]
+Consider 
+\[
+\begin{aligned}
+& \varphi:[a,b]  \times V \to \gamma^* E \\ 
+& \varphi(t,\cdot ) = \gamma^* \circ \psi^{-1}(\gamma(t), \cdot ) 
+\end{aligned}
+\]
+$\forall \, \mu \in \Gamma( \left. E\right|_{x\in M} )$, \\ 
+$\mu = \mu^i e_i$.  
+
+$\varphi(t,e_i) = \epsilon_i$ is a basis for $\gamma^* E$.  
+
+$\forall \, \sigma \in \Gamma(\gamma^*E)$,  
+\[
+\sigma  = \sigma^i \epsilon_i, \quad \, \sigma^i: [a,b] \to \mathbb{F}
+\]
+\[
+\begin{gathered}
+	\nabla_{ \frac{ \partial }{ \partial x^{\mu} } } \sigma = \frac{ \partial \sigma^k}{ \partial x^{\mu}  } \epsilon_k + \omega^k_{ \, \, j \mu } \sigma^j \epsilon_k = \left( \frac{ \partial \sigma ^k }{ \partial x^{\mu } } + \omega^k_{ \ , \, j \mu} \sigma^j  \right)  \epsilon_k \\ 
+ \nabla \sigma = \epsilon_k \otimes ( d\sigma^k + \omega^k_{ \, \, j \mu} dx^{\mu} \sigma^j ) = \epsilon_k \otimes (d\sigma^k + \omega^k_{ \, \, j} \sigma^j  )  \\
+ \nabla_{ \frac{d}{dt} } \sigma = \epsilon_k \otimes \left( \frac{d\sigma^k }{ dt } + \omega^k_{ \, \, j \mu } \dot{x}^{\mu} \sigma^j  \right)
+\end{gathered}
+\]
+Now
+\[
+\frac{d}{dt} = \dot{x}^{\nu} \frac{ \partial }{ \partial x^{\nu } }
+\]
+Then $\sigma$ parallel along $\gamma$ if 
+\[
+\frac{ d\sigma^k}{ dt} + \omega^k_{ \, \, j\mu} \dot{x}^{\mu} \sigma^j = 0 
+\]
+\begin{definition}[3.1.4 \cite{ClSa2012}]  Parallel transport along $\gamma$ is 
+\begin{equation}
+\begin{aligned}
+	& P_{\gamma} : E_{\gamma(a)} \to E_{\gamma(b)} \\ 
+	& P_{\gamma}(v) \mapsto \sigma(b)
+\end{aligned}
+\end{equation}
+where $\sigma \in \Gamma(\gamma^*E)$, $\sigma$ unique and s.t. $\sigma(a)=v$.  
+\end{definition}
+
+
+
+
+
+
+
+\begin{lemma}[10.1.16\cite{Conl2008}]
+	holonomy 
+	\[
+	h_s:T_xM \to T_{x_0}M
+	\]
+	if $\nabla$ around piecewise smooth loop $s$ is a linear transformation.  
+\end{lemma}
+
+
+
+
+
+
+\begin{lemma}[10.1.18 Conlon (2008)\cite{Conl2008}] 
+	Let piecewise smooth loop $s:[a,b] \to M$ at $x_0$.  
+
+Let weak reparametrization $\widetilde{s} = s\circ r: [c,d] \to M$.  
+
+If reparametrization is orientation-preserving, then $h_{\widetilde{s}} = h_s$, \\
+If reparametrization is orientation-reversing, then $h_{\widetilde{s}} = h^{-1}_s$, 
+
+\end{lemma}
+\begin{proof}
+	Without loss of generality,  assume smooth $s,r$
+\[
+\begin{aligned}
+	& \widetilde{s}(\tau) = s(r(\tau)) \\ 
+	& \widetilde{v}(\tau) = v(r(\tau))
+\end{aligned}
+\]
+\[
+\begin{aligned}
+	& \widetilde{u}^j(\tau) = \frac{dt}{d\tau}(\tau) u^j(r(\tau)) \\ 
+	& \frac{d\widetilde{v}^k}{d\tau} (\tau) = \frac{dr}{d\tau}(\tau) \frac{dv^k}{dt}(r(\tau)) \\ 
+	& \frac{d\widetilde{v}^k }{ d\tau} = -\widetilde{v}^i \widetilde{u}^j \Gamma^k_{ij} 
+\end{aligned}
+\]
+since \[
+\begin{gathered}
+	\frac{dv^k}{dt} = -v^i u^j \Gamma^k_{ij} ; \qquad \, 1\leq k \leq n \\ 
+v^k(c) = a^k; \qquad \, 1\leq k \leq a 
+\end{gathered}
+\]
+\[
+\frac{dr}{d\tau} \frac{dv^k}{ dt} = -v^i \frac{dr}{d\tau} u^j \Gamma^k_{ \, \, ij} = \frac{d\widetilde{v}^k}{d\tau} = -\widetilde{v}^i \widetilde{u}^j \Gamma^k_{ \, \, ij}
+\]
+Thus, if $r(c) = a$, $r(d)=b$
+\[
+h_{\widetilde{s}}(v_0) = \widetilde{v}(d) = v(b) = h_s(v_0)
+\]
+If $r(c)=a$, $r(d)=b$, then 
+\[
+\widetilde{v}(c) = v(b) = h_s(v_0)
+\]
+and 
+\[
+h_{\widetilde{s}}(h_s(v_0)) = h_{\widetilde{s}}(v(b)) = \widetilde{v}(d) = v(a) = v_0
+\]
+At this point, I will switch to my notation because it clarified to me, at least, what was going on, in that a holonomy $h_s$ is \emph{invariant} under orientation-preserving reparametrization, and its inverse is well-defined.  
+
+For $\widetilde{s} = s\circ t:[c,d] \to M$, \\
+piecewise smooth $t$ is reparametrized, i.e. 
+\begin{equation}
+	t:[c,d] \to [a,b]
+\end{equation}  
+Now, 
+\[
+\begin{gathered}
+	\frac{d}{d\tau}\widetilde{s}(\tau) = \frac{d}{d\tau} \widetilde{s}(t(\tau)) = \dot{s}(t) \frac{dt}{d\tau}(\tau) \equiv \dot{s} \frac{dt}{d\tau} \\ 
+v^k(t) = v^k(t(\tau)) = v^k(\tau) \\ 
+ \frac{dv^k}{d\tau}(t(\tau) ) = \frac{dv^k}{dt} \frac{dt}{ d\tau } = \frac{dt}{d\tau}(-v^i( \tau) \dot{s}^j(t) \Gamma^k_{ \,\, ij} ) = -v^i(\tau) \frac{d\widetilde{s}^j }{ d\tau} \Gamma^k_{ \, \, ij} 
+\end{gathered}
+\]
+Consider 
+\[
+h_s(v_0) = v(b)
+\]
+If $\begin{aligned} & \quad \\ 
+	& t(c) = a \\ 
+	& t(d)=b \end{aligned}$, 
+\[
+h_{\widetilde{s}}(v_0) = \widetilde{v}(d) = v(t(d)) = v(b) = h_s(v_0)
+\]
+If $\begin{aligned} & \quad \\ 
+	& t(c) = b \\ 
+	& t(d)=a \end{aligned}$, 
+\[
+\begin{gathered}
+h_{\widetilde{s}}(h_s(v_0) )  = h_{\widetilde{s}}( v(b)) = h_{\widetilde{s}}(v(t(c))) = h_{\widetilde{s}}(\widetilde{v}(c)) = \\
+	= \widetilde{v}(d) = v(t(d)) = v(a) = v_0
+\end{gathered}
+\]
+Thus, 
+\[
+\boxed{ h_{\widetilde{s}}= h_s^{-1} }
+\]
+
+
+\end{proof}
+
+I am working through Conlon (2008) \cite{Conl2008} , Clarke and Santoro (2012) \cite{ClSa2012}, and Schreiber and Waldorf (2007) , concurrently, for holonomy.  
 
 
 
@@ -1647,6 +1960,17 @@ Kentaro Hori (Author, Editor), Sheldon Katz (Editor), Albrecht Klemm (Editor), R
 
 \bibitem{Conl2008}
 Lawrence Conlon.  \textbf{Differentiable Manifolds} (Modern Birkhäuser Classics).  2nd Edition.  Birkhäuser; 2nd edition (October 10, 2008).  ISBN-13: 978-0817647667
+
+
+
+
+\bibitem{ClSa2012}
+Andrew Clarke and Bianca Santoro.  \emph{Holonomy Groups in Riemannian Geometry}.  \href{https://arxiv.org/pdf/1206.3170.pdf}{arXiv:1206.3170 [math.DG]}
+
+\bibitem{ScWa2007}
+Urs Schreiber and Konrad Waldorf.  \emph{Parallel Transport and Functors}.  \href{https://arxiv.org/pdf/0705.0452.pdf}{arXiv:0705.0452 [math.DG]}
+
+
 
 \end{thebibliography}
 
