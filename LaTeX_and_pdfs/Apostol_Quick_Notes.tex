@@ -1,0 +1,4330 @@
+% Apostol_Quick_Notes.tex 
+%
+\documentclass[twoside]{amsart}
+\usepackage{amssymb,amscd,latexsym}
+\usepackage{times}
+%amsmath,amscd,amssymb,amsthm
+%\usepackage{graphics}
+
+%\oddsidemargin1cm
+%\evensidemargin1.0cm
+\topmargin-1.85cm     %I recommend adding these three lines to increase the 
+%\textwidth14.5cm   %amount of usable space on the page (and save trees)
+\textheight24.5cm  
+
+%This next line (when uncommented) allow you to use encapsulated
+%postscript files for figures in your document
+%\usepackage{epsfig}
+
+%plain makes sure that we have page numbers
+\pagestyle{plain}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{axiom}{Axiom}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\title{	Quick Notes on \emph{ Calculus } by Tom Apostol. } 
+
+\author{
+  Ernest Yeung - Praha 10, \v Cesk\`a Republika 
+       }
+%\date{Winter 2006}
+
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+  {\bigskip\bigskip
+   \noindent{\small\bf Question #1.}
+   \bigskip}
+
+\newcommand{\problemhead}[1]
+  {\bigskip\bigskip
+   \noindent{\small\bf Problem #1.}
+   \medskip}
+
+\newcommand{\exercisehead}[1]
+  {\medskip
+   \noindent{\small\bf Exercise #1.}
+   \medskip}
+
+\newcommand{\solutionhead}[1]
+  {\medskip\bigskip
+   \noindent{\small\bf Solution #1.}
+   \medskip}
+
+
+%-----------------------------------
+\begin{document}
+%-----------------------------------
+
+\maketitle
+
+%-----------------------------------%-----------------------------------%-----------------------------------
+\section{ One-dimensional Continuity and Differentiation. }
+%-----------------------------------%-----------------------------------%-----------------------------------
+
+These theorems form the foundation for continuity and will be valuable for differentiation later.  
+
+\begin{theorem}[Bolzano's Theorem]  \quad \\
+Let $f$ be cont. at $\forall x \in [a,b]$.  \\
+Assume $f(a), \, f(b)$ have opposite signs.   \\
+Then $\exists$ at least one $c \in (a,b)$ s.t. $f(c) =0$.  
+\end{theorem} 
+
+\begin{proof}
+  Let $f(a) < 0 , \, f(b) > 0 $.  \\
+  Want: Find one value $c \in (a,b)$ s.t. $f(c)=0$ \\
+  Strategy: find the largest $c$.  \\
+  Let $S = \{ \text{ all $x \in [a,b]$ s.t. $f(x) \leq 0$ } \}$. \\
+$S$ is nonempty since $f(a) < 0$.  $S$ is bounded since all $S \subseteq [a,b]$.  \\
+  $\Longrightarrow S$ has a suprenum.  \\
+Let $c = sup S$.  
+
+If $f(c) > 0, \, \exists (c-\delta, c+\delta)$ s.t. $f>0$ \\
+\phantom{ If } $c-\delta$ is an upper bound on $S$ \\
+\phantom{ If c-d } but $c$ is a least upper bound on $S$.  Contradiction.  
+
+If $f(c) < 0 , \, \exists (c-\delta, c+ \delta)$ s.t. $f<0$ \\
+\phantom{ if } $c + \delta$ is an upper bound on $S$ \\
+\phantom{ if c-d } but $c$ is an upper bound on $S$.  Contradiction.  
+\end{proof}
+
+\begin{theorem}[Sign-preserving Property of Continuous functions] \quad \\
+Let $f$ be cont. at $c$ and suppose that $f(c) \neq 0$.  \\\
+\quad \quad then $\exists (c-\delta, c+\delta)$ s.t. $f$ be on $(c-\delta, c+\delta)$ has the same sign as $f(c)$.  
+\end{theorem}
+
+\begin{proof}
+  Suppose $f(c) >0$.   \\
+  $\forall \epsilon > 0, \, \exists \delta > 0 $ s.t. $f(c) - \epsilon < f(x) < f(c) + \epsilon$ if $c-\delta < x < c+\delta$ (by continuity).  \\
+  Choose $\delta$ for $\epsilon = \frac{f(c)}{2}$.  Then 
+\[
+\frac{f(c)}{2} < f(x) < \frac{3f(c)}{2} \quad \, \forall x \in (c-\delta, c+\delta)
+\]
+Then $f$ has the same sign as $f(c)$.  
+\end{proof}
+
+\begin{theorem}[Intermediate value theorem] \quad \\
+Let $f$ be cont. at each pt. on $[a,b]$.  \\
+Choose any $x_1, x_2 \in [a,b]$ s.t. $x_1 < x_2$.  s.t. $f(x_1) \neq f(x_2)$.  \\
+Then $f$ takes on every value between $f(x_1)$ and $f(x_2)$ somewhere in $(x_1,x_2)$.  
+\end{theorem}
+
+\begin{proof}
+  Suppose $f(x_1) < f(x_2)$  \\
+  \phantom{ Suppose } Let $k$ be any value between $f(x_1)$ and $f(x_2)$ 
+
+Let $g = f-k$ 
+\[
+\begin{aligned}
+  g(x_1) & = f(x_1) - k < 0 \\
+  g(x_2) & = f(x_2) - k > 0 
+\end{aligned}
+\]
+By Bolzano, $\exists c \in (x_1,x_2)$ s.t. $g(c) = 0 \quad \, \Longrightarrow f(c) = k$
+\end{proof}
+
+\begin{theorem}[Mean Value Theorem for Integrals] Let $f$ be cont. on $[a,b]$.  Then $\exists \, c \in (a,b)$ s.t. 
+\[
+f(c) = \frac{1}{ b-a} \int_a^b f(x) dx
+\]
+\end{theorem}
+\begin{proof} Let $\begin{aligned} M & = \max{f} \\ m & = \min{f} \end{aligned}$ on $[a,b]$.   \smallskip \\
+Then $m \leq f(x) \leq M$ or $m\leq \frac{1}{b-a} \int_a^b f(x) = A(f) \leq M$.  \smallskip \\
+By intermediate value theorem, $A(f) = f(c)$, for some $c$ in $[a,b]$. 
+\end{proof}
+
+\begin{theorem}[Second Mean Value Theorem] If $f,g$ cont. on $[a,b]$, $g$ never changes sign in $[a,b]$,then for some $c \in [a,b]$, 
+\[
+\int_a^b f(x)g(x) dx = f(c) \int_a^b g(x) dx
+\]
+\end{theorem}
+\begin{proof} Assume $g\geq 0$ on $[a,b]$.  Suppose $m\leq f \leq M$ on $[a,b]$.  
+\[
+m g \leq fg \leq M \text{ or } m \int_a^b g \leq \int_a^b fg \leq M \int_a^b g 
+\]
+If $\int_a^b g =0$, equality, done.  Else if $\int_a^b g > 0$, 
+\[
+m \leq \int_a^b fg / \int_a^b g \leq M
+\]
+Apply intermediate value theorem $\Longrightarrow f(c) = \int_a^b fg / \int_a^b g$.
+\end{proof}
+\begin{theorem}[Theorem 4.3] \quad \\
+Let $f$ be defined on $I$.  \\
+Assume $f$ has a rel. extrema at an int. pt. $c \in I$.  \\
+If $\exists \, f'(c), \, \, f'(c) = 0$; the converse is not true.  
+\end{theorem}
+\begin{proof}
+$  Q(x) = \frac{ f(x) - f(c) }{ x - c} $ if $ x \neq c, \quad Q(c) = f'(c)$ \\
+$\exists f'(c)$, so $Q(x) \to Q(c)$ as $x \to c$ so $Q$ is continuous at $c$. \\ 
+If $Q(c) > 0$, \quad $\frac{f(x) - f(c)}{ x-c } > 0 $.  For $x - c \gtrless 0$, \quad $f(x) \gtrless f(c)$, thus contradicting the rel. max or rel. min. (no neighborhood about $c$ exists for one!) \\
+If $Q(c) < 0$, \quad $\frac{f(x) - f(c)}{ x-c } < 0 $.  For $x - c \gtrless 0$, \quad $f(x) \lessgtr f(c)$, thus contradicting the rel. max or rel. min. (no neighborhood about $c$ exists for one!) 
+
+Converse is not true: e.g. saddle points.
+\end{proof}
+
+\begin{theorem}[Rolle's Theorem] \quad \\
+Let $f$ be cont. on $[a,b]$, \quad $\exists f'(x) \quad \forall x \in (a,b)$ and let 
+\[
+f(a)=f(b)
+\]
+then $\exists$ at least one $c \in (a,b)$, such that $f'(c) = 0$.  
+\end{theorem}
+
+\begin{proof}
+  Suppose $f'(x) \neq 0 \quad \, \forall x \in (a,b)$.  \\
+  By extreme value theorem, $\exists$ abs. max (min) $M, \, m$ somewhere on $[a,b]$.   \\
+  $M,m$ on endpoints $a,b$ (Thm 4.3).  \\
+  $F(a) = f(b)$, so $m = M$.  $f$ constant on $[a,b]$.  
+Contradict $f'(x) \neq 0$
+\end{proof}
+
+\begin{theorem}[Mean-value theorem for Derivatives]
+  Assume $f$ is cont. everywhere on $[a,b]$, $\exists f'(x) \quad \forall x \in (a,b)$.  \\
+  $\exists$ at least one $c \in (a,b)$ such that 
+\begin{equation}
+  f(b) - f(a) = f'(c) (b-a)
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+  \[
+  \begin{gathered}
+\begin{aligned}
+  &  h(x) = f(x)(b-a) - x(f(b) - f(a)) \\
+  &  h(a) = f(a)b - f(a)a - af(b) + af(a) \\
+  &  h(b) = f(b)(b-a) - b(f(b) - f(a)) = bf(a) - af(b) = h(a) 
+\end{aligned} \\
+    \Longrightarrow \exists c \in (a,b), \text{ such that } h'(c) = 0 = f'(c)(b-a) - (f(b) - f(a)) 
+  \end{gathered}
+  \]
+\end{proof}
+
+\begin{theorem}[Cauchy's Mean-Value Formula]
+  Let $f,g$ cont. on $[a,b]$, $\exists f', \, g' $\quad \, $\forall x \in (a,b)$  \\
+Then $\exists \, c \in (a,b)$.  x
+\begin{equation}
+  f'(c) (g(b) - g(a)) = g'(c) (f(b) - f(a)) \quad \text{ (note how it's symmetrical) }
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+\[
+\begin{gathered}
+\begin{aligned}
+  h(x) & = f(x)(g(b) - g(a)) - g(x)(f(b)-f(a)) \\
+  h(a) & = f(a)(g(b) -g(a)) - g(a)(f(b) - f(a)) = f(a)g(b) - g(a)f(b) \\
+  h(b) & = f(b)(g(b)-g(a)) - g(b)(f(b)-f(a)) \\
+\end{aligned} \\
+\Longrightarrow h'(c) = f'(c) (g(b) - g(a)) - g'(c) (f(b) - f(a)) = 0 \quad \text{ (by Rolle's Thm.) }
+\end{gathered}
+\]
+\end{proof}
+
+
+%-----------------------------------%-----------------------------------%-----------------------------------
+\section{ Polynomial Approximations to functions }
+%-----------------------------------%-----------------------------------%-----------------------------------
+
+%-----------------------------------%-----------------------------------
+\subsection{ The behavior of $\log{x}$ and $e^x$ for large $x$ }
+%-----------------------------------%-----------------------------------
+
+\begin{theorem} If $a,b >0$, 
+\begin{align}
+  & \lim_{x \to +\infty} \frac{ (\log{x})^b}{ x^a } = 0 \\
+  & \lim_{x \to +\infty} \frac{ x^b}{ e^{ax}} = 0 
+\end{align}
+\end{theorem}
+\begin{proof}
+  If $c > 0, \, t \geq 1$, then $t^{-1} \leq t^{c-1}$.  \medskip \\
+  Hence, if $x>1$, 
+\[
+\begin{gathered}
+  0 < \log{x} = \int_1^x \frac{1}{t} dt \leq \int_1^x t^{c-1} dt = \frac{x^c - 1 }{ c } < \frac{x^c }{c}  \\
+  \frac{ (\log{x} )^b }{ x^a } < \frac{ x^{bc-a}}{ c^b} 
+\end{gathered}
+\]
+Let $c = \frac{a}{2b}$.  \medskip \\
+\phantom{ Let } Since $x^{bc-a} = x^{-a/2} \to 0$ as $x\to \infty$, 
+\[
+\frac{ (\log{x})^b }{ x^a } \to 0
+\]
+
+For $\frac{ x^b}{ e^{ax}}$, \medskip \\
+Let $t=e^x, \, x = \ln{t}$, \medskip \\
+\phantom{ Let } Then $\frac{ x^b}{e^{ax}} = \frac{ (\ln{t})^b}{ t^a } $ \\
+\phantom{ Let Then } but $x\to \infty$ as $t\to \infty$, so $\lim_{x\to \infty} \frac{x^b}{ e^{ax}} = 0 $
+\end{proof}
+
+%-----------------------------------%-----------------------------------%-----------------------------------
+\section{ Series }
+%-----------------------------------%-----------------------------------%-----------------------------------
+It's important to make the following distinction:
+\begin{gather*}
+  \text{ If $C$ is satisfied, then $\sum a_n$ converges \quad \quad (sufficient) } \\
+  \text{ If $\sum a_n$ converges, then $C$ is satisfied } \\
+  \text{ $\sum a_n$ converges if and only if $C$ is satisfied }
+\end{gather*}
+Note that the statements ``If $P$, then $Q$'' and ``If $(\text{not} Q)$, then $(\text{not} P)$'' are logically equivalent.  
+
+\begin{theorem}[Divergence Test by $n$th term, or $n$th term, necessary condition for convergence]
+  If $\sum a_n$ converges, $\lim_{n \to \infty} a_n = 0$.  \medskip \\
+  Note the contrapositive: If not $\lim_{n \to \infty} a_n = 0$, then $\sum a_n$ diverges.  
+\end{theorem}
+This theorem is useful for testing divergence through its contrapositive.  
+
+\begin{proof}
+  $s_n = \sum_{j=1}^n a_j$, \quad \quad $a_n = s_n - s_{n-1}$, \\
+  \text{ since } $\lim_{n\to \infty} s_n = \lim_{n\to \infty} s_{n-1}$, \quad $\lim_{n\to \infty} a_n = 0$
+\end{proof}
+
+\begin{theorem}[Integral Test] \quad \\
+Let $f$ be a positive decreasing function, defined for all real $x \geq 1$.  \\
+For $\forall n \geq 1$, let $s_n = \sum_{k=1}^n f(k)$ and $t_n = \int_1^n f(x) dx$.  \\
+Then both sequences  $\{ s_n \}$ and $\{ t_n \}$ converge or both diverge.  
+\end{theorem}
+
+Using the geometric series $\sum x^n$ as a comparison series, Cauchy developed two useful tests known as the root test and the ratio test.  
+
+\begin{theorem}[Ratio test] Let $\sum a_n$ be a series of positive terms such that 
+\[
+\frac{ a_{n+1} }{ a_n } \to L \text{ as } n \to \infty
+\]
+\begin{enumerate}
+  \item If $L <1$, the series converges.  
+  \item If $L >1$, the series diverges.  
+  \item If $L=1$, the test is inconclusive.  
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \quad \\
+  If $L<1$ \medskip \\
+  \phantom{ If } Consider $L< x < 1$ \bigskip \\
+  $x - L > \frac{ a_{j+1} }{ a_j } - L $ since $\lim_{j\to \infty} \frac{ a_{j+1}}{ a_j } = L$ \medskip \\
+  \phantom{ If } $\forall j \geq N $ for some $N = N(x-L) > 0$  
+\[
+x > \frac{ a_{j+1}}{ a_j } \to \frac{ a_{j+1}}{ x^{j+1} } < \frac{ a_j}{x^j }
+\]
+So then $\frac{a_j}{x^j }$ is decreasing with $j$.  Then $\frac{a_j}{x_j} \leq \frac{a_N}{x^N} = C$ or $a_j \leq C x^j$ for $j\geq N$.  By comparison test, $\sum a_j$ converges.  
+\end{proof}
+
+\begin{theorem}[Leibniz's Rule] If $a_j$ is a monotonically decreasing sequence with limit $0$, \medskip \\
+\quad  $\sum_{j=1}^{\infty} (-1)^{j-1} a_j$ converges.  
+
+If $S = \sum_{j=1}^{\infty} a_j, \quad s_n = \sum_{j=1}^n (-1)^{j-1} a_j$, 
+\[
+0 < (-1)^j (S-s_j) < a_{j+1}
+\]
+\end{theorem}
+
+\begin{proof}
+  $s_{2n}$ are monotonically increasing, $s_{2n+1}$ are monotonically decreasing since 
+\[
+\begin{gathered}
+  s_{2n+2} - s_{2n} = a_{2n+1} - a_{2n+2} > 0 \\
+  s_2 < s_{2n}
+\end{gathered}
+\, \begin{gathered}
+  s_{2n+1} - s_{2n-1} = a_{2n+1} - a_{2n} < 0 \\
+  s_1 > s_{2n+1}
+\end{gathered}
+\]
+Since any monotonically increasing or decreasing sequence that's bounded converges, $s_{2n}, s_{2n+1}$ converges.  
+
+Now
+\[
+\lim_{n\to \infty} s_{2n} - \lim_{n\to \infty} s_{2n+1} = \lim_{n\to \infty} (-a_{2n}) = 0 \text{ so } \lim_{n\to \infty} s_{2n}  = \lim_{n \to \infty} s_{2n-1}
+\]
+
+Also, we have
+\[
+\begin{gathered}
+  S - s_{2n} > s_{2n+1} - s_{2n}  = a_{2n+1} 
+\end{gathered}\quad
+\begin{gathered}
+  S-s_{2n-1} > s_{2n} - s_{2n-1} = -a_{2n} \\
+  (-1)(S - s_{2n-1} ) < a_{2n}
+\end{gathered}
+\]
+
+\end{proof}
+
+\begin{theorem} \quad \\
+  Assume $\sum |a_n|$ converges.  \medskip \\
+  \quad Then $\sum a_n$ converges and $|\sum a_j | \leq \sum |a_j |$.  
+\end{theorem}
+
+\begin{proof}
+  Consider $b_j = a_j + |a_j|$.  
+\[
+0 \leq b_j \leq 2 |a_j| \text{ so } \sum b_j \leq 2 \sum |a_j|
+\]
+By comparison test $\sum b_j = \sum a_j + \sum |a_j|$ converges.  Then so does $\sum a_j$
+
+Suppose $a_j = u_j + iv_j$.  \medskip \\
+Since $|u_j| \leq |a_j|$ and $\sum |a_j| $ converges, by comparison test $\sum |u_j|$ converges.  \\
+\phantom{ Since } $\sum u_j$ converges.  
+
+Same with $\sum |v_j|$ converging; $\sum v_j$ converges.  
+
+Then $\sum u_j + iv_j = \sum a_j$ converges.  
+
+Use triangle inequality to show $|\sum a_j| \leq \sum |a_j|$.  
+
+\end{proof}
+
+\begin{theorem}[Apostol Vol.1, Theorem 7.5] Assume $f$ has a cont. $f''$ in some neighborhood of $a$.  Then $\forall \, x \in$ neighborhood,
+\[
+f(x) = f(a) + f'(a)(x-a) + E_1(x), \text{ where } E_1(x) = \int_a^x (x-t) f''(t) dt 
+\]
+\end{theorem}
+\begin{proof} 
+\[
+\begin{aligned}
+  E_1 & = f(x) -f(a) - f'(a)(x-a) = \int_a^x f' - f'(a) \int_a^x dt = \int_a^x (f'(t) -f'(a)) dt = \\
+  & = \int_a^x u dv, \text{ where } \begin{aligned} u & = f'(t) -f'(a) \\ v & = (t-x) \end{aligned} \\
+  \Longrightarrow E_1 & = -\int_a^x f''(t)(t-x) \text{ since } u(a) = 0, \, v(x) =0
+\end{aligned}
+\]
+\end{proof}
+
+\begin{theorem}[Apostol Vol.2, Theorem 7.6] Assume $f$ has cont. $f^{(n+1)}$ on some interval of $a$.  Then $\forall \, x \in $ interval, 
+\[
+f(x) = \sum_{k=0}^n \frac{ f^{(k)}(a) }{k!} (x-a)^k + E_n(x), \text{ where } E_n = \frac{1}{n!} \int_a^x (x-t)^n f^{(n+1)}(t) dt 
+\]
+\end{theorem}
+
+\begin{proof} Proof by induction. $E_{n+1}(x) = E_n(x) - \frac{ f^{(n+1)} (a) }{(n+1)!} (x-a)^{n+1}$.  \smallskip \\
+Note $\frac{ (x-a)^{n+1}}{n+1} = \int_a^x (x-t)^n dt$ \text{ so }
+\[
+\begin{aligned}
+  E_{n+1}(x) & = \frac{1}{n!} \int_a^x (x-t)^n f^{(n+1)}(t) dt - f^{(n+1)}(a) \int_a^x (x-t)^n dt = \frac{1}{n!} \int_a^x (x-t)^n (f^{(n+1)}(t) - f^{(n+1)}(a)) dt = \\ 
+  & = \int_a^x u dv, \text{ where } \begin{aligned} u & = f^{(n+1)}(t) - f^{(n+1)}(a) \\ v & = \frac{- (x-t)^{n+1} }{n+1} \end{aligned}
+\end{aligned}
+\]
+Now $u(a) =0$, $v(x) =0$.  
+\[
+\Longrightarrow E_{n+1}(x) =  - \int_a^x - \frac{ (x-t)^{n+1} }{ (n+1)! } f^{(n+2) }(t) 
+\]
+\end{proof}
+
+Note, by second mean-value theorem for integration, 
+\[
+E_n = \frac{ f^{(n+1)}(c) }{ (n+1)!} (x-a)^{n+1} \text{ for } a < c < x
+\]
+
+\begin{theorem}[Abel's Partial Summation Formula] \quad \\
+  Let $a_n, b_n$ be two sequences of complex numbers.  \\
+  Let $A_n = \sum_{j=1}^n a_j$  \\
+  Then $\sum_{j=1}^n a_j b_j = A_n b_{n+1} + \sum_{j=1}^n A_j (b_j- b_{j+1} )$
+\end{theorem}
+
+\begin{proof}
+  \[
+\begin{gathered}
+  A_0 = 0 \\
+  a_j = A_j - A_{j-1} \quad \quad j =1,2, \dots n \\
+\begin{aligned}
+  \sum_{j=1}^n a_j b_j & = \sum_{j=1}^n (A_j - A_{j-1} ) b_j = \sum_{j=1}^n A_j b_j - \sum_{j=1}^n A_{j-1}b_j = \\
+  & = \sum_{j=1}^n A_j b_j - \sum_{j=2}^{n-1} A_j b_{j+1} = A_n b_{n+1} + \sum_{j=1}^n A_j (b_j - b_{j+1})
+\end{aligned}
+\end{gathered}
+\]
+\end{proof}
+
+\begin{theorem}[Dirichlet's Test]
+Consider $\sum a_n, \,  a_n \in \mathbb{Z}$ such that $\left| \sum_{j=1}^n a_j \right| = \left| A_n \right| \leq M$ \\
+Let $b_n$ be a decreasing sequence converging to zero, i.e. $b_n > b_{n+1}$, \quad $\lim_{n\to \infty} b_n =0$ \\
+Then $\sum a_n b_n$ converges. 
+\end{theorem}
+
+\begin{proof}
+  Since there is an $M > 0 $ such that $|A_j| \leq <, \quad \forall j \in n$
+\[
+\begin{gathered}
+  A_n b_{n+1} \to 0 \text{ as } n \to \infty \\
+  | A_j (b_j - b_{j+1} ) | \leq M (b_j - b_{j+1} )  \text{ but } \sum b_j - b_{j+1} = b_1 \text{ converges } \\
+  \Longrightarrow \sum | A_j (b_j - b_{j+1} ) | \leq \sum M (b_j - b_{j+1} ) = M b_1 \\
+  \text{ since } \sum A_j (b_j - b_{j+1} ) \text{ converges, then $\sum a_j b_j$ converges } 
+\end{gathered}
+\]
+\end{proof}
+
+\begin{theorem}[Abel's test]\quad \\
+Let $\sum a_j$ be a convergent series with $a_j \in \mathbb{C}$.  \\
+\phantom{ Let } $b_n$ monotonically convergent sequence, $b_n \in \mathbb{R}$ \\
+\phantom{Let b} Then $\sum a_n b_n$ converges.  
+\end{theorem}
+
+\begin{proof}
+$\sum a_j$ converges, so $A_j$ converges, so $A_j b_{j+1}$ converges.  \\
+$A_j$ is bounded (by the limit).  \\
+$A_j b_{j+1}$ converges so $\sum A_j(b_j- b_{j+1})$ converges.  \\
+  $\sum a_j b_j $ converges.  
+\end{proof}
+
+\begin{theorem}[Existence of a circle of convergence (Thm. 11.7)]  \quad \\
+Assume $\sum a_j z^j$ $\begin{aligned}
+  & \text{ converges for at least one $z_1 \neq 0 $ } \\
+  & \text{ diverges for at least one $z_2 \neq 0 $ } 
+\end{aligned}$  \bigskip \\
+$\exists \, r > 0 $ s.t. $\sum a_j z^j$ absolutely $\begin{aligned} 
+& \text{ converges for $|z| < r $ } \\
+&  \text{ diverges for $|z| > r $ }
+\end{aligned}$
+\end{theorem}
+
+\begin{proof} \quad \\
+Let $A = \text{ set of all $|z|$ s.t. $\sum a_j z^j$ converges } $ \\
+\quad \, ($A$ is not empty since we've given at least one $z_1$ ) \bigskip \\
+
+Given $\sum a_j z^j$ diverges for $z_2$, $A^c$ (where $A \bigcup A^c = \mathbb{Z}^+$ ) is not empty, \medskip \\
+\phantom{ Give} Suppose $|z_3| \in A$, \quad $|z_3| > |z_2|$ \\
+\phantom{ Given Sup} Then by Thm. 11.6, $\sum a_j z^j$ converges for $z_2$, but $z_2 \in A^c$.  Contradiction.  \medskip \\
+  \phantom{ Given Suppose } $\forall \, z \in A$, $|z| < |z_2|$ \bigskip \\
+
+Since $A$ is a nonempty set of positive numbers that's bounded above, \\
+\phantom{Sinc} there exists a least upper bound (limsup) $r$ \medskip \\
+\phantom{Since th} Thus $\sum a_j z^j$ diverges if $|z| > r$ (by definition of limsup of $A$ ) \bigskip \\
+
+If $|z| < r$, $\exists \, x \in A$ s.t. $|z| < x < r$ \medskip \\
+\phantom{ If } Then by Thm. 11.6, $\sum a_j z^j$ converges absolutely for $z$.  
+\end{proof}
+
+Let's review some of the ideas from this section.  
+
+Sufficient Condition for convergence.  
+\begin{theorem}[Bernstein's Theorem]
+Assume $\forall x \in [0,r], \, f(x), \, f^{(j)}(x) \geq 0 \quad \forall j \in \mathbb{N}$.  \\
+Then if $0 \leq x < r$
+\[
+\sum^{\infty} \frac{f^{(k)}(0)}{k! }x^k \quad \text{ converges }
+\]
+\end{theorem}
+
+\begin{proof} If $x=0$, we're done.  Assume $0< x< r$.  
+\[
+\begin{aligned}
+  f(x) & = \sum_{k=0}^n \frac{ f^{(k)}(0) }{ k! } x^k + E_n(x) \\
+  E_n(x) & = \frac{ x^{n+1}}{n! } \int_0^1 u^n f^{(n+1)}(x-xu) du \\
+  F_n(x) & = \frac{ E_n(x) }{ x^{n+1}} = \frac{1}{n!} \int_0^1 u^n f^{(n+1)}(x-xu) du 
+  \begin{aligned}
+    & \text{ Since } f^{(n+1)} > 0, \quad f^{(n+1)}(x(1-u)) \leq f^{(n+1)}(r(1-u)) \\
+    & \quad \Longrightarrow F_n(x) \leq F_n(r) \Longrightarrow \frac{ E_n(x)}{x^{n+1}} \leq \frac{E_n(r)}{ r^{n+1 }}
+  \end{aligned}
+\end{aligned}
+\]
+  For $f(x) = \sum_{j=0}^n \frac{ f^{(j)}(0)}{j! }x^j + E_n(x) \Longrightarrow E_n(x) \leq \left( \frac{x}{r} \right)^{n+1} E_n(r)$ 
+\[
+f(r) = \sum_{j=0}^n \frac{ f^{(j)}(0)}{j!}r^j + E_n(r) \geq E_n(r) \text{ since } f^{(j)}(0) \geq 0 \quad \forall j 
+\]
+So then $0 \leq E_n(x) \leq \left( \frac{x}{r} \right)^{n+1} f(r) $ \\
+\quad \quad $n \to \infty$ and $f(t)$ will be some non-infinite value, so $E_n(x) \xrightarrow{ n\to \infty} 0$.  
+\end{proof}
+
+\begin{theorem} Let $f$ be represented by $f(x) = \sum_{j=0}^{\infty} a_j (x-a)^j$ in the $(a-r,a+r)$ interval of convergence 
+\begin{enumerate}
+\item $\sum_{j=1}^{\infty} j a_j (x-a)^{j-1}$ also has radius of convergence $r$.  
+\item $f'(x)$ exists $\forall x \in (a-r, a+r)$ and 
+\begin{equation}
+  f'(x) = \sum_{j=1}^{\infty} j a_j (x-a)^{j-1}
+\end{equation}
+\end{enumerate}
+\end{theorem}
+
+
+We can integrate power series (this is significant).  
+\begin{theorem}[Integrability of Power Series] \quad \\
+  Assume $f$ is represented by 
+\[
+f(x) = \sum_{j=0}^{\infty} a_j (x-a)^j 
+\]
+in an open interval $(a-r,a+r)$.  Then $f$ is continuous on this interval, and $\forall \, x \in (a-r, a+r)$
+\begin{equation}
+  \int_a^x f(t) dt = \sum_{j=0}^{\infty} a_j \int_a^x (t-a)^j dt = \sum_{j=0}^{\infty} \frac{a_j}{j+1} (x-a)^{j+1} 
+\end{equation}
+\end{theorem}
+
+%-----------------------------------%-----------------------------------%-----------------------------------
+\section{ Ordinary Differentiation Equations. }
+%-----------------------------------%-----------------------------------%-----------------------------------
+
+\subsection{ Second-Order ODEs}
+\subsubsection{ Complete solution to $L(y) = y'' + ay' + by = 0$ } 
+\begin{theorem}[Theorem 8.7, Complete solution to the Second-Order homogeneous ODE]
+  Let $d= a^2 - 4b$ \medskip \\
+  Then $y = e\left( \frac{-ax}{2} \right) (c_1 u_1 + c_2 u_2), \quad \, \forall \, x \in (-\infty, \infty )$
+\begin{align*}
+  & \text{ if $d=0$, \quad $u_1 = 1, \quad u_2 = x $ } \\
+  & \text{ if $d>0$, \quad $u_1 = e^{kx}, \quad u_2 = e^{-kx} $; \quad $ k =\frac{1}{2}\sqrt{d} $ } \\
+  & \text{ if $d<0$, \quad $u_1 = \cos{(kx)}, \quad u_2 = \sin{(kx)} $; \quad $ k =\frac{1}{2}\sqrt{-d} $ }
+\end{align*}
+\end{theorem}
+
+\subsection{ Nonhomogeneous linear equations of second-order with constant coefficients }
+(Apostol, Vol. 1, Sec. 8.15, pp. 329) \\ \quad \\
+Consider $y'' + ay' + by = R = L(y)$
+
+If $y_1, \, y_2$ are solutions to $L(y) = R$, i.e. $L(y_1) = L(y_2) = R$, \\
+\phantom{ If } then $L(y_1 - y_2) = 0$ \quad \quad \, $\Longrightarrow y_1 - y_2 = y_h = cv_1 + c_2v_2$ \quad \\ \quad \\
+
+Now $v_1 = e\left( \frac{-ax}{2} \right) u_1; \quad \, v_2 = e\left( \frac{-ax}{2} \right)u_2$ \medskip \\
+$W = v_1 v_2' - v_2 v_1' $
+
+\begin{theorem}[Theorem 8.9] Let $v_1, \, v_2$ be solns. to $L(y) = 0$ \medskip \\
+  Let $W = \text{ Wronskian of $v_1, v_2$ } $ \bigskip \\
+  Then $y_1 = \text{ particular soln. s.t. $L(y_1) =R $ } $ 
+\begin{equation}
+y_1 = t_1 v_1 + t_2 v_2 
+\end{equation}
+where 
+\begin{equation*}
+  t_1 = \int v_2 \frac{R}{W}; \quad \quad \, t_2 = \int v_1 \frac{R}{W} 
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \[
+\begin{gathered}
+  \begin{aligned}
+    y_1' & = t_1 v_1' + t_2 v_2' + t_1' v_1 + t_2' v_2 \\
+    y_1'' & = t_1 v_1'' +t_2 v_2'' + t_1' v_1' + t_2' v_2' + (t_1' v_1 +t_2' v_2)' 
+  \end{aligned} \\
+L(y_1) = t_1'v_1' +t_2' v_2' + (t_1' v_1 +t_2' v_2)' + a(t_1' v_1 + t_2' v_2 ) 
+\end{gathered}
+\]
+Cleverly, let
+\[
+\begin{aligned}
+  &  t_1' v_1' + t_2' v_2' = R 
+  & t_1' v_1 + t_2' v_2 = 0 
+\end{aligned}
+\]
+Now since $W = v_1v_2' - v_2v_1' \neq 0 \quad \forall \, x$, 
+\[
+\Longrightarrow t_1' = \frac{-v_2 R}{W} ; \quad \, t_2' = \frac{v_1 R}{W}
+\]
+\end{proof}
+
+\subsection*{ Introduction to homogeneous (of degree zero) ODEs and geometry }
+$f$ homogeneous (of degree zero) if $f(tx,ty) = f(x,y)$, 
+\begin{equation*}
+y' = f(1, \frac{y}{x} )
+\end{equation*}
+e.g. $v = \frac{y}{x}$ 
+\begin{gather}
+  y' = v' x + v = f(1,v) \notag \\
+  \int \frac{dv}{ f(1,v)- v } = \frac{1}{2} x^2 
+\end{gather}
+
+$y' = f(x,y)$ \bigskip \\
+Consider \emph{ isoclines } of the equation, curve where $y'$ is constant.  
+e.g. $y' = \frac{-2y}{x}$; Consider $y=mx$  \quad \quad \, $(1,m) \in L$ \medskip \\
+Suppose there's an integral curve through each pt. of $y=mx$ \quad $\Longrightarrow f(a,b) = f(a,ma) = a^0 f(1,m)$  \medskip \\
+i.e. the integral curve through $(a,b)$ has the same slope as the integral curve through $(1,m)$
+
+\emph{ Similarity transformation } carries set $S$ into a new set $kS$, \\
+\phantom{Sim} by multiplying the coordinates of each point of $S$ by a constant factor $k>0$  \medskip \\
+\phantom{Simila} every line through the origin remains fixed under a similarity transformation \\
+\phantom{Simila} therefore the isoclines of a homogeneous equation don't change under a similarity transformation; \\
+\phantom{Simila} hence the appearance of the direction field doesn't change either.  \\
+\phantom{Similarity tr} this suggests similarity transformations carry integral curves into integral curves
+
+\[
+\begin{gathered}
+\begin{aligned}
+  y & = F(x) \\
+  F'(x) & = f(x,F(x))
+\end{aligned} \\
+\text{ Let } (x,y) \in k S .  \quad \quad \, \text{ Then } \left( \frac{x}{k}, \frac{y}{k} \right) \in S \\
+F\left( \frac{x}{k} \right) = \frac{y}{k } \\
+kS \text{ described by } g(x)  = kF\left( \frac{x}{k} \right); \quad \, g' = F'\left( \frac{x}{k} \right) \\
+F'\left( \frac{x}{k} \right) = f\left( \frac{x}{k}, F\left( \frac{x}{k} \right) \right) = \frac{1}{k^0} f(x, kF\left( \frac{x}{k} \right) ) = f(x,g) 
+\end{gathered}
+\]
+So $g$, integral curve in $kS$ is also in $S$.  
+
+%-----------------------------------%-----------------------------------%-----------------------------------
+\section{ Basic Tricks for Algebra }\label{S:Basic_Tricks_for_Algebra}
+%-----------------------------------%-----------------------------------%-----------------------------------
+In factoring a polynomial consisting of $x^{n}$ and $y^{n}$, consider that for $n$ even, the two factors should be "symmetric" and for $n$ odd, the two factors should have a "cubic" form.  
+
+\section{ Linear Algebra.}\label{S:Linear_Algebra}
+
+\subsection{ Linear Spaces.}\label{subS:Linear_Spaces}
+
+\begin{definition}[Vector Space]\label{D:vector_space}
+A vector space consists of a set $V$ of objects (called vectors), equipped with 2 operations:
+\begin{enumerate}
+  \item vector addition\phantom{cation} \qquad if $x,y \in V, \quad x+y \in V $
+  \item scalar multiplication \qquad $\alpha \in \mathbb{R}, x \in V; \quad \alpha x \in V$
+\end{enumerate}
+such that 10 axioms are satisfied:
+\begin{align}
+  & x+y = y+x \qquad \text{ (commutative law) } \label{A:vector_space_commutativity} \\ 
+  & (x+y)+z = x + (y+z)  \label{A:vector_space_associativity} \\
+  & \exists \, 0 \in V  \text{ such that $0+x=x+0=x$ } \label{A:vector_space_additive_identity_existence} \\ 
+  & \exists \, -x \in V, \quad \forall x \in V  \text{ such that $x + (-x) = (-x) +x = 0 $ } \label{A:vector_space_additive_reciprocal_existence}\\ 
+  & \exists \, 1 \in V \text{ such that } 1 \cdot x = x \label{A:vector_space_multiplicative_identity_existence} \\
+  & (\alpha + \beta) x = \alpha x + \beta y  \label{A:vector_space_scalar_addition_distributivity} \\
+  & \alpha (x+y) = \alpha x + \alpha y  \label{A:vector_space_vector_addition_distributivity} \\
+  & (\alpha \beta ) x = \alpha (\beta x) \label{A:vector_space_scalar_associativity} \\ 
+  & \forall x, y \in V, \quad x+ y \in V \qquad \text{ (closure under vector addition) } \\
+  & \forall x \in V, \quad \alpha x \in V \qquad \text{ (closure under scalar multiplication)  } 
+\end{align}
+\end{definition}
+
+\begin{definition}[Subspace]\label{D:subspace} \quad \\
+A subspace of a vector space $V$ is a nonempty subset $H$ of $V$ such that \\
+\phantom{A sub} $H$ is closed under addition; \phantom{ ltiplication} \quad if $x, y \in H$; \quad $x+y \in H $ \\ 
+\phantom{A sub} $H$ is closed under scalar multiplication \quad if $\alpha \in \mathbb{R}, \quad x \in H; \quad \alpha x \in H $
+\end{definition}
+
+An example of a subspace for $\mathbb{R}^3$.  \\
+\phantom{ An exam} if $L = \{ \lambda \vec{u} | \vec{u} \in L, \lambda \in \mathbb{R} \}$ \\
+\phantom{ An exam i} $\vec{x}, \vec{y} \in L; \quad \alpha \in \mathbb{R} $ \\
+\phantom{ An exam if $L =$} $\vec{x} + \vec{y} = x_1 \vec{u} + y_1 \vec{u} = (x_1 + y_1) \vec{u} \in L $ \\
+\phantom{ An exam i} $\alpha \vec{x} = \alpha (x_1 \vec{u} ) = (\alpha x_1) \vec{u} \in L $ \\
+
+\begin{definition}[Definition of a matrix]\label{D:matrix}
+\begin{equation}
+A = [a_{ij}]_{(mn)} = \left[ 
+\begin{matrix}
+a_{11} & a_{12} & \dots & a_{1n} \\ 
+a_{21} & a_{22} & \dots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \dots & a_{mn} 
+\end{matrix}
+  \right]
+\end{equation}
+with $A$ being an $m \times n$ matrix, $mn$ denotes the size of the matrix.  
+
+We also can define matrix addition easily with this notation:
+\begin{equation}
+A+B = [a_{ij} + b_{ij}]_{(mn)}
+\end{equation}
+
+\end{definition}
+
+\marginpar{ % \scriptsize{ 
+\footnotesize{ Possibly useful notation: \\
+$ (AB)_{ij} = \sum_{k=1}^n a_{ik}b_{kj} $}} 
+%}
+
+\begin{definition}[Matrix Multiplication definition]\label{D:matrix_multiplication}
+  \begin{align*}
+    \mbox{ Let } A & = [a_{ij}]_{(mn)} \mbox{ be an $m \times n $ matrix } \\
+    B & = [b_{ij}]_{(np)} \mbox{ be an $n\times p$ matrix }\\
+    AB & \mbox{ is a $m\times p $ matrix such that }
+  \end{align*}
+
+\begin{equation}
+\boxed{ AB = \left[ \sum_{j=1}^n a_{ij} b_{jk}  \right]_{(mp)} ; \quad (AB)_{ik} = \sum_{j=1}^n (A)_{ij}(B)_{jk} }
+\end{equation}
+
+Note that 
+\begin{gather*}
+\left[ 
+  \begin{matrix}
+a_{11} & a_{12} & \dots & a_{1n} \\ 
+a_{21} & a_{22} & \dots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \dots & a_{mn} 
+    \end{matrix}
+   \right] \left[ 
+\begin{matrix}
+x_{1} \\ x_{2} \\ \vdots \\ x_n 
+\end{matrix}
+\right]
+ = x_1  \left[ \begin{matrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{matrix}  \right] + x_2 \left[ \begin{matrix} a_{12} \\ a_{22} \\ \vdots \\ a_{m2} \end{matrix} \right] + \dots + x_n \left[ \begin{matrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn} \end{matrix}  \right] \\
+Ax = \sum_{j=1}^n x_j [a_{ij}]_{m1}
+\end{gather*}
+\textbf{This is a useful expression for a column space expansion.  }
+
+\end{definition}
+
+\begin{marginpar}{\footnotesize{ Notice that the solution set of the system of homogeneous equations is exactly the nullspace $N$ of the coefficient matrix $A$. }  }
+\end{marginpar}
+\begin{definition}
+The solution set for the equation $Ax=0$ is called the \textbf{nullspace} of $A$.  
+
+\noindent The number of pivot entries of a matrix $A$ is the rank of $A$.  \\
+\phantom{The} rank of $A$ is the number of pivot entries, i.e. number of variables that are dependent on other arbitrary variables.  
+\end{definition}
+
+\begin{definition}\label{D:Invertible_terms}
+Matrices that do not possess inverses are said to be \textbf{ noninvertible } or \textbf{ singular } (In my opinion these words are not useful, they are simply more names upon names, but other people will use these terms).  
+\end{definition}
+
+\subsubsection{Theorems for Linear Spaces}\label{subsubS:Theorems_Linear_Spaces}
+
+\begin{theorem}
+  $S$ spans $\forall \, x \in L(S)$ uniquely iff $S$ spans $0$ uniquely.  
+\end{theorem}
+
+\begin{proof} \quad \\
+  If $S$ spans $\forall \, x \in L(S)$ uniquely, \\
+  \phantom{ If } $S$ spans $0 \in L(S)$ uniquely.  \medskip \\
+  If $S$ spans $0$ uniquely, \\
+  \phantom{ If } Consider $X \in L(S)$.  \\
+  \phantom{ If } Suppose $S$ spans $X$ in two ways, $x = \sum c_j A_j = \sum d_j A_j$ 
+\[
+\Longrightarrow \sum (c_j - d_j) A_j = 0 
+\]
+but $S$ spans $0$ in a unique way, s.t. $c_j - d_j =0$ \quad $\forall \, j \Longrightarrow c_j = d_j$ \\
+$S$ spans $X$ in a unique way.  
+\end{proof}
+
+\begin{theorem}[Apostol's Thm. 12.8 for Vol.1, Thm. 1.5 for Vol.2]\label{T:Apostol_Thm_12.8_Vol01}
+  Let $S = \{ A_1, \dots, A_q \} = $ linear independent set of $q$ elements, $S \subseteq V_N$ \medskip \\
+  Consider $L(S)$, linear span of $S$.   \smallskip \\
+  Then $\forall$ set of $q+1$ elements in $L(S)$, the set is dependent.  
+\end{theorem}
+
+\begin{proof}
+  Consider $q=1$.  \\
+  $\{ A_1 \} = S$, \, $A_1 \neq 0$, since $S$ linear independent.  \medskip \\
+  Consider $B_1, \, B_2 \in L(S)$; $B_1 \neq B_2$ \\
+  \phantom{ consider } then $B_1 = c_1 A_1$, \, $B_2 = c_2 A_2$; \quad $c_1,\, c_2 \neq 0$ \medskip \\
+  Then $c_2 B_1 - c_1 B_2 = 0$, which is a nontrivial representation of $0$, $\{ B_1, B_2 \}$ dependent.   \\
+
+Assume $q-1$ case is true.   \\
+
+Consider any set of $q+1$ elements in $L(S)$, $T = \{ B_1, \dots, B_{q+1} \}$ 
+\[
+B_j = \sum_{k=1}^q a_{jk} A_k \quad \quad \forall \, j = 1, \dots, q+1
+\]
+
+\noindent Case 1. $a_{j1} = 0$, $\forall \, j = 1, \dots, q+1$ \\
+\phantom{ Case } Then $\forall \, j$, $B_j = \sum_{k=2}^q a_{jk}A_k $, \quad $B_j \in L(S')$; $S' = \{ A_2, \dots, A_q \}$ \\
+But $S'$ linear independent and consists of $q-1$ linear independent elements.  By $q-1$ case, $T$ is dependent.  
+
+\noindent Case 2. Not all $a_{j1}$ are zero.  \medskip \\
+Assume $a_{11} \neq 0$ (if necessary, we can renumber the $B$'s to achieve this)
+\[
+\begin{gathered}
+  c_j = a_{j1}/a_{11} \\
+ \begin{aligned} 
+   c_j B_1  & = a_{j1} A_1 + \sum_{k=2}^q c_j a_{1k} A_k \\
+   B_j & = a_{j1} A_1 + \sum_{k=2}^q a_{jk} A_k  \\
+\end{aligned} \\
+ c_j B_1 - B_j = \sum_{k=2}^q (c_j a_{1k} - a_{jk} ) A_k  \\
+\end{gathered}
+\]
+Then $c_j B_1 - B_j \in L(S')$.  But by $q-1$ case, $q$ elements in $L(S')$ are linearly dependent.  \medskip \\
+$\sum_{j=2}^{q+1} t_j (a_j B_1 - B_j) =0 $ and $t_j$ not all $t_j =0$ \medskip \\
+$\Longrightarrow T$ linearly dependent since there's a nontrivial representation of $0$ with $B_j$, $j=1, \dots, q+1$ 
+\end{proof}
+
+\begin{theorem}[Basis Properties, Apostol's Thm. 12.10 of Vol. 1 or Thm. 1.7 of Vol. 2]\label{T:basis_properties} In $V_n$, basis properties include:
+\begin{enumerate}
+  \item $\forall \, $ basis $\mathcal{B}_{V_n}$, $\mathcal{B}_{V_n}$ contains exactly $n$ elements.  
+  \item Any set of linear independent elements is a subset of some basis.  
+  \item Any set of $n$ linear independent elements is a basis.  
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} 
+  \begin{enumerate}
+\item $(e_1,\dots, e_n)$ forms one basis.   \medskip \\
+  \emph{ Want }: If for any 2 basis, they contain the same number of elements, we're done.  \\
+  Let $S,T$ be 2 bases, $S$ has $q$ elements, $T$ has $r$ elements.  \\
+  \phantom{ Let } If $r >q$, $T$ contains at least $q+1$ elements in $L(S)$, since $L(S) = V_n$ \\
+  \phantom{ Let If } Then $T$ linearly dependent by Thm. 12.8 ($\forall \, $ set of $q+1$ elements in $L(S)$ is dependent, if $|S| = q$ and $S$ linearly independent ) \\
+  \phantom{ Let If Then } contradicts $T$ is a basis.  Then $r\leq q$  \medskip \\  
+  reverse $S,T$ to get $q\leq r$ $\Longrightarrow r=q$  \\
+\item Let $S= \{ A_1, \dots, A_q \}$ be any linearly independent set, $S \subseteq V_n$ \smallskip \\
+  If $L(S) = V_n$, done.  \\
+  \phantom{ If } else, then $\exists \, X \in V_n$ s.t. $X \notin L(S)$ \smallskip \\
+  \phantom{ If else } Let $S' = \{ A_1, \dots, A_q, X \}$  \\
+  \phantom{ If else Let } If $S'$ dependent, then for 
+  \[
+  \sum_{j=1}^q c_j A_j + c_{q+1}X = 0 , \quad \, c_1, \dots, c_{q+1} \text{ not all zero }
+\]
+
+If $c_{q+1} =0$, then $c_j = 0$ for $j=1,\dots, q$, (since $A_1, \dots, A_q$ are independent) and we said they're not all zero.  \medskip \\
+Then $c_{q+1} \neq 0$ $\Longrightarrow X = \frac{-1}{ c_{q+1} } \sum_{j=1}^q c_j A_j$ \medskip \\
+But we said that $X \notin L(S)$  \\ 
+$\Longrightarrow S' $ linearly independent.  
+
+$|S'| = q+1$.   \\
+If $L(S') = V_n$, done.   \\
+\phantom{ If } Otherwise, repeat until $S^{(n-q)}$ is obtained; otherwise, $S^{(n+1-q)}$ contains $n+1$ elements, contradicting Thm.12.8 ($\forall$ set of $n+1$ elements in $L(S)$ is dependent, if $|S| = n$ and $S$ linearly independent). \\ 
+\item Let $S$ be any linearly independent set of $n$ elements.  \\
+  \phantom{ Let } By (b) or part (2), $S$ is a subset of some basis $\mathcal{B}_{V_n}$ \\
+  \phantom{ Let } But by (a) or part(1), $\mathcal{B}_{V_n}$ contains $n$ elements, $S = \mathcal{B}_{V_n}$
+\end{enumerate}
+\end{proof}
+
+\subsubsection{ Lines, Planes, Conic Sections: Basic Analytical Geometry }
+
+\begin{theorem}[Apostol's Thm. 13.7]
+  For $\begin{aligned}
+    M & = \{ P + sA + tB \} \\
+    M' & = \{ P+ sC + tD \}
+\end{aligned}$; \quad \, $M = M'$ iff $L(\{ A,B \} ) = L(\{ C, D \})$  
+\end{theorem}
+
+\begin{proof} \quad \\
+  \noindent If $L(\{ A,B \} ) = L(\{ C,D \})$, then $M=M'$  \\
+  If $M=M'$ \\
+  \quad $\forall \, X = P + sA + tB \in M$, $X \in M'$ \\
+  \quad \quad so that $P + sA + tB = P + s_2 C + t_2 D \Longrightarrow sA + tB = s_2 C + t_2 D \Longrightarrow L(\{ A,B \}) \subseteq L(\{ C,D \})$ \medskip \\
+  \quad $\forall \, X' = P + sC + tD \in M'$, $X' \in M$ \\
+  \quad \quad so that $P + sC + tD = P +s_2 A +t_2 B \Longrightarrow sC + tD = s_2 A + t_2 B \Longrightarrow L(\{ C,D \}) \subseteq L(\{ A,B \})$ 
+\end{proof}
+
+\begin{theorem}[Apostol's Thm. 13.8]
+  For $\begin{aligned}
+    & M = \{ P + sA + tB \} \\
+    & M' = \{ Q + sA + tB \}
+\end{aligned}$, \quad \, $M= M'$ iff $Q \in M$ 
+\end{theorem}
+
+\begin{proof} \quad \\
+\noindent If $M = M'$, \quad $Q \in M$ \\
+If $Q \in M$, $Q = P + s_1 A + t_1 B $ \\
+\quad $\forall \, X = P + sA + tB  \in M$, $X = Q - s_1 A - t_1 B + sA + tB = Q + (s-s_1)A + (t-t_1)B$ \\
+\quad \quad $X \in M'$ \medskip \\
+\quad $\forall \, X' = Q + sA + tB \in M'$, $X' = P + s_1 A + t_1 B + sA + tB = P + (s_1 +s)A + (t_1 +t) B$ \\
+\quad \quad $X' \in M$  \bigskip \\
+$\Longrightarrow M = M'$
+\end{proof}
+
+\begin{theorem}[Apostol's Thm. 13.9] Given plane $M$, pt. $Q \notin M$, 
+$\exists$ only one plane $M'$, $M\parallel M'$ and $Q \in M'$ 
+\end{theorem}
+\begin{proof}
+ \noindent Consider $M = \{ P + sA + tB \}$ \\
+  Surely $\exists \, M' = \{ Q + sA + tB \}$  \\
+  Supppose $\exists \, M'' = \{ Q + sC +tD \}$, $M'' \parallel M$ 
+  \quad $M'' \parallel M$ so $M''$ must have $L(C,D) = L(A,B)$ \medskip \\
+  \quad Then by Thm. 13.7, $M'' = M'$
+\end{proof}
+
+\begin{theorem}[Apostol's Thm. 13.10] If $P,Q,R$ are noncollinear pts. $\exists$ only one plane $M$ containing $P,Q,R$, namely
+\[
+M = \{ P + s(Q-P) + t(R-P) \} 
+\]
+\end{theorem}
+\begin{proof} \quad \\
+ Assume $P=0$, $Q,R$ are linearly independent.  \\
+ $\begin{aligned}
+   & M' = \{ sQ + tR \} \\
+   & M'' = \{ sA + tB \} \text{ (any other plane through the origin) } 
+\end{aligned}$  \medskip \\
+ If $Q,R \in M''$, \quad $\begin{aligned}
+   & Q = aA + bB \\
+   & R = cA + dB
+\end{aligned}$ \quad so $M' \subseteq M''$
+
+For $M'' \subseteq M'$, $(ad-bc)A = dQ - bR$ \\
+\phantom{ For $M''\subseteq M'$ } $ad-bc \neq 0$ otherwise $Q,R$ are linearly dependent.  
+\[
+\begin{aligned}
+  \Longrightarrow A & = \frac{ dQ - bR }{ ad-bc} \\
+  B & = \frac{-cQ + aR }{ ad-bc } \text{ then } M'' \subseteq M'
+\end{aligned}
+\]
+\quad \\
+
+Let $M = \{ P + s(Q-P) + t(R-P) \}$ \\
+\phantom{ Let } Let $\begin{aligned}
+  C & = Q-P \\
+  D & = R - P
+\end{aligned}$ \quad $C,D$ linearly independent; otherwise $C=tD = Q-P = tR - tP$ or $Q = tR + (1-t)P$, contradicting that $P,Q,R$ are linearly independent.  
+
+So $M$ is a plane containing $P,Q,R$.  \\
+Suppose $\exists \, M' = \{ P + sA + tB \}$ s.t. $P,Q,R \in M'$ \\
+\phantom{ Suppose } Consider $M_0' = \{ sA + tB \}$ \\
+\phantom{ Suppose Consid} Then $X \in M'$ only if $X-P \in M_0''$  \\
+\phantom{ Suppose Consid Then} $Q,R \in M'$ so $C,D \in M_0''$ \\
+\phantom{ Suppose Consider Then } But we showed above that $\exists$ only one $M_0'$ containing linearly independent $C,D$
+
+$M_0' = \{ sC + tD \} \Longrightarrow M' = \{ P + sC + tD \} = M$
+\end{proof}
+
+\begin{theorem}[Apostol's Thm. 13.11] $A,B,C \in V_n$ are linearly dependent iff $A,B,C$ lie on the same plane through the origin.
+\end{theorem}
+\begin{proof}
+  Assume $A,B,C$ are dependent.  \\
+  Then $C= sA + tB$ \\
+  \quad If $A,B$ independent, $C,A,B \in \{ C + sA + tB \}$ \\
+  \quad If $A,B$ dependent, $C,A,B$ all lie on the same line.   \medskip \\
+
+Assume $A,B,C$ lie on the same plane, $M$, through the origin, \\
+If $A,B$ dependent, $A,B,C$ are dependent (whether or not $C$ is pairwise dependent with $A,B$ or not) \\
+If $A,B$ independent, $A,B$ span plane $M'$ through the origin.  By Thm. 13.10, $M' = M$, and $C \in M$, \\
+\phantom{ If } so $C = aA + bB$, $A,B,C$ linearly independent.  
+\end{proof}
+
+\begin{theorem}[Scalar Multiple as check on linear dependent in $V_3$; Apostol's Thm. 13.14] 
+$A,B,C \in V_3$ linearly dependent iff $A \cdot B \times C = 0$
+\end{theorem}
+
+\begin{proof} \quad \\
+  If $A,B,C$ dependent, \\
+  \quad If $B,C$ dependent, done.  \\
+  \quad If $B,C$ independent, \\
+  \quad \quad but $A,B,C$ dependent, so $A = bB + cC$
+\[
+A \cdot (B\times C) = (bB + cC ) \times (B\times C) = 0 
+\]
+\quad \\
+
+\noindent If $A \cdot (B\times C) = 0$ \\
+\quad If $B,C$ dependent, $A,B,C$ are dependent, done.  \\
+\quad If $B,C$ independent, $A = c_1 B + c_2 C + c_3 (B\times C)$, since $B,C,B\times C$ form a basis, by theorem.  
+\[
+\begin{gathered}
+  A \cdot (B\times C) = c_3 (B\times C)^2 = 0 \Longrightarrow c_3 = 0 \\
+  A = c_1 B + c_2 C \Longrightarrow A,B,C \text{ dependent } 
+\end{gathered}
+\]
+\end{proof}
+
+\begin{theorem}[Cramer's Rule]
+If $xA + yB + zC = D$, and $A\cdot (B\times C) \neq 0$, then to find $x,y,z$ separately, just do this trick:
+\[
+x = \frac{ D \cdot (B\times C) }{ A \cdot (B\times C) } \quad \quad y = \frac{ D \cdot ( C \times A) }{ A \cdot (B\times C) } \quad \quad z = \frac{ D \cdot (A\times B)}{ A\cdot (B\times C) }
+\]
+\end{theorem}
+
+
+\subsection{Applications for Linear Spaces}\label{subS:Linear_Spaces_Applications}
+\begin{definition}[Plane]\label{D:Plane}
+  Consider $M \subseteq V_n, \, V_n$ a real Euclidean space. \\
+$M \equiv $ plane \\
+  \phantom{M} if $\exists P \in V_n$ and $A, B \in V_n$ linearly independent, such that 
+  \begin{equation}\label{E:Plane_Definition}
+    M = \{ P + sA +tB | s,t \in \mathbb{R} \}
+  \end{equation}
+\end{definition}
+
+If you are given an orthogonal vector to the plane, this form for the equation of the plane may prove useful.  
+
+\begin{proposition}[Equation of a Plane]\label{Pr:Equation_form_Plane} 
+  If $N \perp A,B$ for plane $M = \{ P + sA+tB |s,t \in \mathbb{R} \}$ \\
+  \phantom{If} then $N \cdot (X-P) = 0, \quad \forall \in M, P \in M$.  
+  
+  You can obtain an equation for the plane this way, using $N$, the orthogonal vector to the plane.  
+\end{proposition}
+
+\begin{definition}[General definition of conic sections (i.e. vector-formulated definition)]\label{D:Conic_Section}
+Given line $L$, directrix, \\
+\phantom{Given} pt. $F$, focus, $F \notin L$ \\
+\phantom{Given} $e > 0$, eccentricity, \\
+\phantom{Given} $d = \text{ distance of $L$ from $F$ }$ \\
+\phantom{Given} conic section $C = \{ X \}$ s.t. 
+\begin{equation}
+  \| X - F \| = e d(X,L) 
+\end{equation}
+Now \\
+$\begin{aligned}
+  & e < 1 \text{ ellipse } \\
+  & e = 1 \text{ parabola } \\
+  & e > 1 \text{ hyperbola }
+\end{aligned}$ \\
+Further, if $N$ unit normal to $L$, then $\forall \, P \in L$, 
+\[
+d(X,L) = \frac{ | (X-P)\cdot N |}{ \| N \| } = | (X-P)\cdot N | 
+\]
+If $(X-P)\cdot N \gtrless 0$, $X \in \text{ positive half-plane (negative half-plane) }$ \\
+
+If $F \in \text{ negative half-plane determined by $N$ }$, 
+\[
+F + dN \in L 
+\]
+\textbf{ This } is the key, to recognize that $F+ dN = P \in L$  
+\begin{equation}
+  \| X - F \| = e| (X - (F+ dN ))\cdot N |
+\end{equation}  \\
+
+Consider symmetry about the origin (i.e. if $X$, $\exists \, - X$ ).  
+\[
+\| X - F \| = e d(X,L) = |e X \cdot N - e(F\cdot N +d) |
+\]
+Let $\boxed{ a = e(F\cdot N + d) }$
+\[
+\begin{gathered}
+  \| X - F \|^2 = \| X\|^2 - 2x\cdot F + \| F\|^2 = e^2 ( X\cdot N)^2 - 2ae X\cdot N + a^2 \\
+  X \to -X \text{ (and now add the 2 equations together, so that we're only left with) } \\
+  X\cdot F = aeX\cdot N \text{ or } X \cdot (F- aeN) = 0 \medskip \\
+  \text{ then } F = aeN \medskip \\
+  \text{ Note that if $e=1$, $d=0$, impossible.  So no symmetry for parabolas } \medskip \\
+  \text{ If } e\neq 1, \, \boxed{ a = \frac{ed}{1-e^2} } \bigskip \\
+  \Longrightarrow \boxed{ \| X\|^2 + (ae)^2 = e^2 ( X\cdot N)^2 + a^2 }
+\end{gathered}
+\]
+\[
+\begin{aligned}
+  & \text{ major axis } \\
+  & \text{ minor axis }
+\end{aligned} \quad 
+\begin{aligned}
+  & \text{ if } X = \pm a N \, \text{ (vertices) } \\
+  & \text{ if } X = \pm b N' 
+\end{aligned} \quad 
+\begin{aligned}
+  & \| X \|^2 + (ae)^2 = e^2 (X \cdot N)^2 + a^2 \text{ is satisfied } \\
+  & b^2 + (ae)^2 = e^2 (0) + a^2; \quad \, b^2 = a^2 (1-e^2) 
+\end{aligned}
+\]
+\end{definition}
+
+\begin{theorem}[Quick Review of Parabolas]\label{T:Parabolas_Quick_Review}
+$F$ on positive half plane to $N$
+\[
+\|X - F \| = e |(X - (F-dN))\cdot N |
+\]
+
+Let $N =\vec{e}_x, \, d=2c, \, F = (c,0); \, e=1$ 
+\[
+\begin{gathered}
+  (x-c)^2 + y^2 = e^2 ((x-c) + 2c)^2 = (x-c)^2 + 4c(x-c) + 4c^2 \\
+  y^2 = 4cx
+\end{gathered}
+\]
+Thus, for ellipses, the vertex is equidistant to the focus and directric (confirming the other definition) \bigskip \\
+
+Let $N= \vec{e}_y; \, d=2c, \, F = (0,c), \, e=1$ 
+\[
+\begin{gathered}
+  x^2 + (y-c)^2 = ((y-c) +2c)^2 = (y-c)^2 + 4c(y-c) + 4c^2 \\
+  x^2 = 4 cy
+\end{gathered}
+\]
+\end{theorem}
+\quad \\
+
+The conic sections could also be defined in such a way: \bigskip \\
+An ellipse is the set of all points in a plane s.t. the sum of whose distance is $d_1$ and $d_2$ from $2$ fixed points $F_1$ and $F_2$ (the foci) is constant.  
+\[
+d_1 + d_2 = \text{ constant }
+\]
+Hyperbola is the set of all points for which the difference $|d_1 - d_2|$ is constant.  \smallskip \\
+Parabola is the set of all points in a plane for which the distance to a fixed pt. $F$ (focus) is equal to the distance to a given time (directrix).  \\
+\quad \quad (This is just a restatement of $\| X - F \| = ed(X,L) \xrightarrow{ e=1} \| X - F \| = d(X,L)$).   \quad \\
+
+My proofs:
+\begin{proof}
+  $\| X - F \| = e d(X,L)$ \\
+  If we assume symmetry about the origin, i.e. $X \to -X$, and about the foci.  
+\[
+\begin{gathered}
+  \| X - F \| = e| (X - (F + dN))\cdot N | = e((F\cdot N + d) -X\cdot N) \\
+  \| X - (-F) \| = ed(X,L) = e|(X+F + dN)\cdot N| = e(X\cdot N + F\cdot N + d) \\
+  \| X + F \| + \| X - F \| = 2e(F\cdot N + d) = 2a = \text{ const. }
+\end{gathered}
+\]
+\end{proof}
+\quad \\
+
+\textbf{ Example 4. } \emph{ Reflection properties of conic sections.} \medskip \\
+
+For the parabola and hyperbola, \\
+$F_1 \to $ origin.  
+\[
+\begin{gathered}
+  \begin{aligned}
+    & u_1 \parallel X   \\
+    & u_2 \parallel X-F_2
+  \end{aligned} \quad \, 
+  \begin{aligned}
+    & d_1 = \| X \| \\
+    & d_2 = \| X - F_2 \| 
+  \end{aligned} \quad \, 
+  \begin{aligned}
+    & X = d_1 u_1 \\
+    & X = F_2 + d_2 u_2 
+  \end{aligned} \quad \, 
+  \begin{aligned}
+    X' & = d_1' u_1 + d_1 u_1' \\
+    & = d_2' u_2 + d_2 u_2' 
+  \end{aligned} \\
+  \begin{aligned}
+    & u_1 \cdot u_1' = 0 \\
+    & u_2 \cdot u_2' = 0 
+  \end{aligned} \quad \, \text{ since $u_1, u_2$ have constant length } \\
+  \begin{aligned}
+    & X'\cdot u_1 = d_1' \\
+    & X' \cdot u_2 = d_2'
+  \end{aligned} \quad \, 
+  \begin{aligned}
+    & X' \cdot (u_1 + u_2 ) = d_1' + d_2' \\
+    & X' \cdot (u_1 - u_2 ) = d_1' - d_2'
+  \end{aligned} 
+\end{gathered}
+\]
+\[
+\begin{gathered}
+  \begin{aligned}
+  & \text{ ellipse } & \to d_1' + d_2' = 0  \\
+  & \text{ hyperbola } & \to d_1' - d_2' =0 
+  \end{aligned} \quad \,
+\end{gathered}
+\]
+\[
+\begin{gathered}
+\begin{aligned}
+  & X' \cdot (u_1 + u_2) = 0 \quad & \text{ on the ellipse } \\ 
+  & X'\cdot (u_1 - u_2) = 0 \quad &  \text{ on the hyperbola } 
+\end{aligned} \\
+\quad  \\
+\end{gathered}
+\]
+\[
+\begin{gathered}
+\text{ Let } T = \frac{X'}{ \| X' \| } \\
+\begin{aligned}
+  T\cdot u_2 & = -T \cdot u_1 \\
+  T\cdot u_2 & = T \cdot u_1 
+\end{aligned} \quad 
+\begin{aligned}
+  & \text{ on the ellipse } \quad &   \\
+  & \text{ on the hyperbola } \,  &
+\end{aligned} \to 
+\begin{aligned}
+  \cos{ \theta_2} & = -\cos{ \theta_1} \quad & \text{ on the ellipse } \\
+  \cos{ \theta_2 } & = \cos{ \theta_1 } \quad & \text{ on the hyperbola } 
+\end{aligned}
+\end{gathered}
+\]
+
+Parabola.  
+\[
+\| X - F \| = d(X,L) = | (X - (-2a)e_x) \cdot e_x | = X\cdot e_x + 2a 
+\]
+Let $F=0$, \quad $\| X - F \| = \| X \|$ \\
+Let $X = d_1 u_1$
+\[
+\begin{gathered}
+  \begin{aligned}
+    & X' = d_1' u_1 + d_1 u_1' \\
+    & X'\cdot u_1 = d_1' = X'\cdot e_x
+  \end{aligned} \quad \quad 
+  \begin{gathered}
+    \| X \| = d_1 = X \cdot e_x + 2a \\
+    d_1' = X' \cdot e_x 
+\end{gathered} \medskip \\
+  \xrightarrow{ \frac{ X'}{ \| X' \| } = T } \begin{aligned}
+    T\cdot u_1 & = T\cdot e_x \\
+    \cos{ \theta_1 } &  = \cos{ \theta_2 }
+\end{aligned}
+\end{gathered}
+\]
+
+\begin{theorem}
+If $A$ is a matrix with fewer rows than columns, then the equation $Ax=0$ has a nontrivial (that is, nonzero) solution for $x$.  
+\end{theorem}
+
+\begin{proof}
+$[A|0]$ is put into reduced row-echelon form $[C|0]$ by elementary row operations.  \\
+Suppose $C$ has $j$ pivot entries and $k$ columsn without pivot entries.  \\
+\phantom{ Suppos}(so $C$ has $j+k$ columns altogether and $x$ has $j+k$ components).  \\
+
+$C$ has $j$ rows beginning with pivot entries; its other rows if any are all zero.  
+\[
+Cx = 0 \Longrightarrow \begin{aligned} x_{i1} & = \dots \\ & \vdots \\ x_{ij} & = \dots \\ \end{aligned}
+\]
+where the right side of each equation contains only nonpivot variables.  \bigskip \\
+Set all $k$ nonpivot variables equal to a nonzero number.  Then resulting $x$ is nonzero and satisfies $Cx=0$, thus satisfying $Ax=0$.  
+
+\small
+$C$ can have at most one pivot entry per row 
+
+\begin{align*}
+&\xleftarrow{}j\text{columns}\xrightarrow{} \quad \xleftarrow{} k \text{ columns  } \xrightarrow{} \\
+& \, \, \left[
+\begin{matrix}
+1 &   &        &   &       & \\
+  & 1 &        &   &       & \\
+  &   & \ddots &   &       & \\
+  &   &   & \quad 0  & 0 & \dots & 0 \\ \end{matrix} \right| \left. \begin{matrix} b_1 \\ b_2 \\ \vdots \\ b_m  
+\end{matrix}
+\right]
+\end{align*}
+\small
+\noindent Since $j \leq m $ and $m <n = j+k, \quad k>0$ so then there are $k$ non-pivot variables.  \\
+\phantom{Sinc} $k$ variables that the $j$ pivot variables can be dependent upon.  
+\end{proof}
+
+\normalsize
+
+\begin{proposition}\label{P:Identity_subspace}
+If $H$ is a subspace of a vector space $V$, then $0$ belongs to $H$.  
+\end{proposition}
+\begin{proof}
+Let $x \in H$.  Since $\alpha x \in H \quad \forall \alpha \in \mathbb{R} $, \quad $ 0 x = 0 \in H$
+\end{proof}
+
+\begin{proposition}\label{P:Additive_Reciprocal_subspace}
+If $H$ is a subspace of vector space $V$, and $x \in H$, then $-x \in H$.  
+\end{proposition}
+\begin{proof}
+Let $x \in H$.  Since $\alpha x \in H$ \quad $\forall \alpha \in \mathbb{R} $, \quad $ (-1)x = -x \in H $.  
+\end{proof}
+
+\begin{theorem}
+If $H$ is a subspace of a vector space $V$, $H$ is itself a vector space under the operations of addition and scalar multiplication defined on $V$. 
+\end{theorem}
+\begin{proof} \quad \medskip 
+\begin{tabbing}
+  \hspace*{1cm}\=\hspace{2ex}\kill
+  \> Axioms (\ref{A:vector_space_commutativity}), (\ref{A:vector_space_associativity}) hold in $H$ because they hold in $V$.  \\
+  \> By Proposition (\ref{P:Identity_subspace}), $0 \in H$ then Axiom (\ref{A:vector_space_additive_identity_existence}) holds in $H$.  \\
+  \> By Proposition (\ref{P:Additive_Reciprocal_subspace}), $-x \in H$, \quad $\forall x \in H $ so Axiom (\ref{A:vector_space_additive_reciprocal_existence} ) holds.  \\
+  \> Axioms (\ref{A:vector_space_multiplicative_identity_existence}), (\ref{A:vector_space_scalar_addition_distributivity}), (\ref{A:vector_space_vector_addition_distributivity}), (\ref{A:vector_space_scalar_associativity}) are satisfied in $H$, since they are satisfied in $V$.  
+\end{tabbing}
+\end{proof}
+
+Note: This theorem gives us a powerful method for constructing many new examples of vector spaces (Consider a vector space we know, like $\mathbb{R}^n$ or $V$.  Then construct a subspace from $\mathbb{R}^n$ or $V$.  
+
+Usually, we set up row-echelon form to calculate the inverse of a matrix.  A good check is to set up the inverse matrix to multiply the original matrix to see if identity is obtained.  Try to see the solution.  
+
+\subsection{Metric Spaces}\label{subS:Metric_Spaces}
+
+\subsubsection{Euclidean Spaces}\label{subsubS:Euclidean_Spaces}
+\begin{definition}[Euclidean Spaces]\label{D:Euclidean_Spaces}
+A set $V$ is a Euclidean space if $V$ is a linear space and has an inner product.  
+
+A real linear space $V$ has an inner product \\
+\phantom{A real} if $\forall x,y \in V, \, \exists $ unique $(x,y) \in \mathbb{R}$ such that $\forall z \in V; c \in \mathbb{R}$
+\begin{alignat}{2}
+(x,y) = (y,x) & \text{ (symmetry) } \\
+(x,y+z) = (x,y)+(x,z) & \text{ (linearity) } \\
+c(x,y) = c(x,y) & \text{ (homogeneity) } \\
+(x,x) > 0 \text{ if } x \neq 0 & \text{ (positivity) } 
+\end{alignat}
+
+A complex linear space $V$ has an inner product \\
+\phantom{A complex} if $\forall x,y \in V, \, \exists $ unique $(x,y) \in \mathbb{C}$ such that $\forall z \in V; c \in \mathbb{C}$
+\begin{alignat}{2}
+(x,y) = \overline{(y,x)} & \text{ (symmetry) } \\
+(x,y+z) = (x,y)+(x,z) & \text{ (linearity) } \\
+c(x,y) = c(x,y) & \text{ (homogeneity) } \\
+(x,cy) = \overline{c}(x,y) & \text{ (homogeneity) } \\
+(x,x) > 0 \text{ if } x \neq 0 & \text{ (positivity) } 
+\end{alignat}
+\end{definition}
+\marginpar{ \footnotesize{ $(x,cy) = \overline{ (cy,x)} = \overline{c} \overline{ (y,x)} = \overline{c} (x,y) $ } }
+
+\begin{theorem}[Cauchy-Schwarz Inequality]\label{T:Cauchy-Schwarz_Inequality}
+  Every inner product for a Euclidean space $V$ satisfies Cauchy-Schwarz inequality, which is 
+  \begin{equation}\label{E:Cauchy-Schwarz_Inequality}
+    |(x,y)|^2 \leq (x,x)(y,y) \quad \forall x,y \in V
+  \end{equation}
+\end{theorem}
+\begin{proof}[Proof for real Euclidean space]We simply make a change of notation in the following. \\ \\
+  If $A$ or $B =0$, then we're done.  Thus assume both $A,B$ nonzero.  \medskip  \\
+  Let 
+  \begin{equation*}
+    C=xA - y B = (B\cdot B)A - (A\cdot B) B
+  \end{equation*}
+  Now $C\cdot C \geq 0$ by positivity of the inner product.  
+  \begin{gather*}
+    \begin{aligned}
+      C\cdot C & =(xA - y B)\cdot (xA - yB)  = x^2 A\cdot A - 2 xy A\cdot B + y^2 B\cdot B = \\
+      & = (B\cdot B)^2 (A\cdot A) = 2(B\cdot B)(A\cdot B)^2 + (A\cdot B)^2 B\cdot B = (B\cdot B)^2 (A\cdot A)- (B\cdot B)(A\cdot B)^2 \\
+    \end{aligned} 
+    \\
+    B\cdot B > 0 \text{ since } B \neq 0, \text{ so divide the right hand side by } B\cdot B \text{ to get } \\
+    (B\cdot B)(A \cdot B) - (A \cdot B)^2 \geq 0 \\
+    \Longrightarrow (A\cdot B)^2 \leq (B\cdot B)(A\cdot A)
+  \end{gather*}
+\end{proof}
+\begin{proof}[Proof for complex Euclidean space] $A,B \in V$  \\
+  if $A$ or $B$ = 0, then we're done; $0=0$.  Thus, assume $A,B \neq 0$. \medskip \\
+  Let 
+  \begin{equation*}
+    C=xA - y B = (B\cdot B)A - (A\cdot B) B
+  \end{equation*}
+  Now $C\cdot C \geq 0$ by positivity of the inner product.
+  \begin{gather*}
+    \begin{aligned}
+      (C, C) & =(xA - y B, xA - yB)  = \\
+      & = (xA - yB,xA) + (xA-yB,-yB) = \overline{ (xA, xA-yB) } + \overline{ (-yB,xA-yB) } = \\
+      & = \overline{ (xA,xA) + (xA,-yB) } + \overline{ (yB,xA) + (-yB,-yB) } \text{ (by linearity and symmetry for previous) } = \\
+      &= |x|^2 \| A \|^2 + \overline{ (xA, -yB)} + (xA,-yB) + |y|^2 \| B  \|^2 = |x|^2 \| A \|^2 + -\overline{x} y \overline{ (A,B)} - x\overline{y} (A,B) + \| y \|^2 \|B \|^2 \\
+      &= \| B \|^4 \|A \|^2 + - \| B \|^2 \| (A,B) \|^2 - \| B \|^2 \| (A,B) \|^2 + \| (A,B) \|^2 \| B \|^2 = \| B \|^4 \| A \|^2 - \| (A,B) \|^2 \| B \|^2 \\
+    \end{aligned}
+    \\
+    \| B \|^2> 0 \text{ since } B \neq 0, \text{ so divide the right hand side by } B\cdot B \text{ to get } \\
+    \| B \|^2 \| A \|^2 - \| (A,B) \|^2 \geq 0.  \quad \Longrightarrow \| (A,B) \|^2 \leq \| B \|^2 \| A \|^2
+    (B\cdot B)(A \cdot B) - (A \cdot B)^2 \geq 0 \\
+  \end{gather*}
+\end{proof}
+
+\begin{definition}[Norm]\label{D:Norm}
+  if $V$ is a Euclidean space, 
+  \begin{equation}\label{E:Definition_of_a_Norm}
+    \| x \| = (x,x)^1/2 = \text{ norm of $x$ }
+  \end{equation}
+\end{definition}
+
+\begin{theorem}[Properties of a Norm]\label{T:Properties_of_Norm}
+  if $V$ is a Euclidean space, $\forall x,y \in V ; \quad c \text{ scalar }$\\
+  \begin{enumerate}
+  \item 
+    \begin{enumerate} 
+    \item $ \| x \| = 0 \text{ if } x = 0 $ 
+    \item $ \| x \| > 0 \text{ if } x \neq 0 $ 
+    \end{enumerate} (positivity) 
+  \item $\| c x \| = |c| \| x \| $
+  \item
+    \begin{enumerate}
+    \item $\| x + y \| \leq \| x \| + \| y \| $
+    \item $\| x + y \| = \| x \| + \| y \| \text{ if $x=0$ and $y=0$, or if $y=cx$, for some $c>0$ }$
+    \end{enumerate} triangle inequality 
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  \begin{enumerate} 
+  \item \begin{align*}
+    (x,x) \neq 0 & \text{ if } x = 0 \\ 
+    (x,x) > 0 & \text{ if } x \neq 0
+  \end{align*}
+  \item 
+    \[
+    (cx, cx) = c\overline{c} (x,x) = |c|^2 (x,x) \quad \text{ (by axioms for inner products) } 
+    \]
+  \item 
+    \begin{align*}
+      \| x + y \|^2 & = (x+y, x+y) = (x+y,x) +(x+y,y) = \overline{(x,x+y)} + \overline{ (y,x+y)} = \\
+      &= \overline{ (x,x) }+ \overline{ (x,y) } + \overline{ (y,x) } + \overline{ (y,y) } = \| x \|^2 + \| y \|^2 + (x,y) + \overline{ (x,y) } 
+    \end{align*}
+    By the Cauchy-Schwarz inequality, $|(x,y)| \leq \| x \| \| y \|$, 
+    \[
+    \Longrightarrow \| x+ y \|^2 \leq \| x \|^2 + \| y \|^2 + 2\|x \| \| y\| = ( \| x \| + \| y \| )^2 
+    \]
+    When $y=cx$, 
+    \[
+    \| x + y \|^2 = \| x + cx \| = (1+c )\| x \| = \| x \| + \| c x \| = \| x \| + \| y \|
+    \]
+  \end{enumerate}
+\end{proof}
+
+\subsubsection{Orthogonality}
+\begin{definition}[Angle between two elements]
+  In a real Euclidean space $V$, 
+  \begin{equation}
+    \cos{\theta} = \frac{(x,y)}{ \| x \| \| y \| }
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Orthogonality]
+  In a real Euclidean space $V$,
+  \begin{equation}
+    x,y \in V \text{ orthogonal if } (x,y) = 0
+  \end{equation}
+  For $S \subseteq V$, $S$ is an orthogonal set if $(x,y) = 0, \forall x,y \in S, x \neq y$.  \\
+  $S$ is an orthonormal set if $S$ is an orthogonal set and $\forall x \in S, \| x \| =1 $
+\end{definition}
+
+\begin{definition}[Orthogonal complement]
+  Let $S \subseteq V, V$ being a Euclidean space. \\
+  \begin{equation}
+    S^{\perp} = \{ x | x \in V \text{ and } (x,y) =0 \forall y \in S \}
+    \end{equation}
+\end{definition}
+
+\begin{theorem}[Orthogonal Decomposition]\label{T:Orthogonal_Decomposition}
+  Let $V$ be a Euclidean space.  \\
+  Let $S$ be a finite-dimensional subspace of $V$. \\  
+  \phantom{Le} then $\forall x \in V; x = s + s^{\perp}, \text{ where } s \in S, s^{\perp} \in S^{\perp}$ and \\
+  \begin{equation}
+    \| x \|^2 = \| s \|^2 + \| s^{\perp} \|^2
+  \end{equation}
+
+Note that $S \cup S^{\perp} = \{ 0 \}$ and $ S \oplus  S^{\perp} = V$.  
+\end{theorem}
+\begin{proof}
+  Since $S$ is finite-dimensional, it has a finite orthonormal basis $\{ e_1, e_2, \dots , e_n \}$.  
+  Let $s = \sum_{j=1}^n (x_j , e_j )e_j ; s^{\perp} = x -s $.  \\
+  \phantom{Let} $s \in S$ since $s \in sp(\{e_1, e_2, \dots, e_n \} )$.  
+  \begin{gather*}
+    (s^{\perp},e_j) = (x-s, e_j) = (x,e_j) - (s,e_j) \\
+    \text{ but } (s, e_j) = (\sum_{k=1}^n (x,e_k)e_k, e_j) = ((x,e_j)e_j, e_j) = (x,e_j) \\
+    \text{ so } (s^{\perp},e_j) = 0 \Longrightarrow s^{\perp} \in S^{\perp}
+  \end{gather*}
+  Then $x = s+s^{\perp}$ exists and is well-defined.
+  
+  (uniqueness). Suppose $x=s+s^{\perp}$ and $x = t+t^{\perp}$; $s,t \in S$; $s^{\perp}, t^{\perp} \in S^{\perp} $\\
+  \[
+  s-t = (x- s^{\perp} ) - (x-t^{\perp}) = t^{\perp} = s^{\perp}
+  \]
+  so then $s-t \in S, t^{\perp} - s^{\perp} \in S^{\perp} $ \\
+  so $(s-t,t^{\perp} - s^{\perp}) = 0 $ and $s-t = t^{\perp} - s^{\perp}$.  \\
+  only $0$ is such that $(0,0) = 0$ and $0=0$ 
+  \[
+  s- t =0; t^{\perp} - s^{\perp} =0 \Longrightarrow t = s; t^{\perp} = s^{\perp}
+  \]
+\end{proof}
+
+\begin{definition}[Projection] \quad \\
+  Let $S$ be a finite-dimensional subspace of Euclidean space $V$. \\
+  Let $\{ e_1, e_2, \dots , e_n \} $ be an orthonormal basis for $S$.  
+  \begin{equation}
+    s = \sum_{j=1}^n (x,e_j) e_j \text{ if } x \in V
+  \end{equation}
+then $s \equiv$ projection of $x$ on the subspace $S$.  
+\end{definition}
+
+\subsubsection{Gram-Schmidt process}
+\begin{theorem}[Orthogonal sets are independent sets]
+  Let $V$ be a Euclidean space. \\  
+  Let $S$ be an orthogonal set.  $S \subseteq V; \forall x \in S, x\neq 0$.  \\
+  $S$ is independent.  (i.e. orthogonal sets are independent sets ) \\
+
+if $dim V= n$, and $S$ contains $n$ distinct, non-zero elements, \\
+\phantom{if} then $S$ is a basis for $V$.  
+\end{theorem}
+\begin{proof}
+  Consider
+  \[
+  \sum_{j=1}^n \alpha_j x_j = 0 \quad \forall x_j \in V
+  \]
+  Consider $x_i \in S$
+  \begin{gather*}
+  \left( \sum_{j=1}^n \alpha_j x_j, x_i \right) = \sum_{j=1}^n \alpha_j(x_j, x_i) = 0 \\
+  (x_j,x_i) = \delta_{ij} \\
+  \text{ Considering the $i=j$ term }, \alpha_i(x_i, x_i) = \alpha_i \| x_i \|^2 = 0 \\
+  \alpha_i  =0 \text{ since } \| x_i \|^2 > 0
+  \end{gather*}
+this must be true for all $i=1,2, \dots , n$ or $i=1,2 \dots $.  
+
+If $dim V= n $ and $S = \{ x_1, x_2, \dots x_n \} $, then by above, $x_1, x_2, \dots x_n$ independent.  \\
+\phantom{if} then by theorem, $S$ is a basis for $V$.  
+  \end{proof}
+
+This theorem shows a finite-dimensional Euclidean space with an orthonormal basis, the inner product can be computed in terms of their components.  
+\begin{theorem}
+  Let $V \equiv \text{ finite-dimensional Euclidean space }$.  $dim V= n$.  \\
+  Let $\{ e_1, e_2, \dots , e_n \} \equiv $ orthogonal basis for $V$.  
+  then $\forall x, y \in V,$
+  \[
+  (x,y) = \sum_{j=1}^n (x,e_j)\overline{ (y,e_j) }
+  \]
+  if $x=y$,
+  \[
+  \| x \|^2 = \sum_{j=1}^n | (x,e_j) |^2 
+  \]
+\end{theorem}
+\begin{proof}
+\[
+(x,y) = \left( \sum_{j=1}^n (x,e_j)e_j, \sum_{j=1}^n (y,e_j) e_j \right) = \sum_{j=1}^n \sum_{k=1}^n (x,e_j) \overline{ (y,e_k) } (e_j,e_k) = \sum_{j=1}^n (x,e_j) \overline{ (y,e_j) }
+\]
+Note that if we specified a real Euclidean space, then 
+\[
+(x,y) = \sum_{j=1}^n (x,e_j)(y, e_j)
+\]
+\end{proof}
+
+\begin{theorem}[Orthogonalization theorem] \quad \\
+  Let $x_1,x_2, \dots $ be a finite or infinite sequence of elements in a Euclidean space $V$.  \\
+  Consider $sp(\{ x_1,x_2, \dots , x_k \})$, \\
+  then there exists a corresponding sequence of elements $y_1, y_2, \dots  \in V$ \\
+  \phantom{the} such that $\forall k $ integer. 
+  \begin{enumerate}
+    \item $y_k $ orthogonal to $\forall y \in sp(\{ y_1, y_2, \dots, y_{k-1} )$ 
+    \item $sp(\{ y_1, y_2, \dots , y_k \} ) = sp( \{ x_1, x_2, \dots , x_k \} ) $
+    \item $y_1, y_2, \dots $ unique, modulo scalar factors, i.e. if $y_1', y_2' \dots$ also satisfy the above statements, then $y_k' = c_k y_k$, where $c_k$ is a scalar, $\forall k$.  
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Use induction.  The $n=1$ case is easy. 
+  \[
+  y_1 = x_1
+  \]
+
+  Consider $y_{n+1} = x_{n+1} = \sum_{j=1}^n a_j y_j$.  \\
+  \phantom{Consi} $a_j = 1$ ? \\
+  \begin{gather*}
+    (y_{n+1},y_j) = (x_{n+1},y_j) - \sum_{k=1}^n a_k (y_k, y_j) = (x_{n+1},y_j) - a_j(y_i,y_j), \quad (\text{ for } j \leq n , (y_k,y_j) = \delta_{kj} ) \\
+    \text{ we can make } (y_{n+1}, y_j) = 0 \text{ if } a_{j} = \frac{(x_{n+1},y_j)}{ (y_j,y_j) } \\
+  \end{gather*}
+  \phantom{Consi} if $y_j = 0 $, then $y_{n+1}$ is orthogonal to $y_j$ for any $a_j$ and in this case we choose $a_j = 0$.  \\
+  \phantom{Consider} so $y_{n+1}$ is well-defined.  \\
+  $\Longrightarrow (y_{n+1}, y_j) = 0 \quad \forall j =1,2, \dots , n \Longrightarrow (y_{n+1}, y )= 0 \, \forall y \in sp(  y_1,y_2, \dots , y_n )$
+
+  We prove $(2)$.  Use induction. \\
+  $n=1$.  \\
+  \phantom{n 1} $x_1 = y_1 $, so $sp(x_1) = sp(y_1) $.  \\
+
+  Assume $n$th case is true.
+  
+  Recall $y_{n+1} = x_{n+1} - \sum_{j=1}^n \frac{ (x_{n+1},y_j) }{ (y_j, y_j)} y_j $.\\  
+  Since $y_1,y_2, \dots , y_n \in sp(x_1, x_2, \dots x_n ) $ (given)\\
+  \[
+  y_1,y_2, \dots , y_n \subseteq sp(x_1, x_2, \dots x_n )
+  \]
+  and $x_{n+1} \in sp(x_1,x_2, \dots x_n) $. \\
+  \phantom{and} then $y_{n+1} \in sp(x_1,x_2, \dots x_{n+1} ) $ \\
+  $\Longrightarrow sp(y_1,y_2, \dots y_{n+1} ) \subseteq sp(x_1,x_2, \dots x_{n+1} )$.  \bigskip \\
+  Similarly, since $x_{n+1} = y_{n+1} + \sum_{j=1}^n \frac{ (x_{n+1},y_j) }{ (y_j, y_j)} y_j \in sp(y_1,y_2, \dots y_{n+1}) $, \\
+  $\Longrightarrow sp(x_1,x_2, \dots x_{n+1} ) \subseteq sp(y_1,y_2, \dots y_{n+1} )$.
+  
+  We prove $(3)$.  Again, use induction.  \\
+  $n=1$. \\
+  For $x=\alpha x_1 \in sp(x_1); x = \beta y_1' \in sp(y_1') $.  
+  \[
+  y_1' = \left( \frac{\alpha}{\beta} \right)x_1 = c y_!
+  \]
+  Assume $n$th case.  \\
+  \begin{gather*}
+    y_{n+1}' \in sp(x_1,x_2, \dots x_{n+1} ) \subseteq sp(y_1,y_2, \dots y_{n+1} ) \text{ (by assumption and property $(2)$ above, respectively ) }\\
+    y_{n+1}' = \sum_{j=1}^{n+1} c_j y_j = z_n + c_{n+1}y_{n+1}; z_n \in sp( y_1, y_2, \dots , y_n ) 
+  \end{gather*}
+  By property $(1)$, $(y_{n+1}', z_n) = (y_{n+1},z_n ) =0 $.  \\
+  \begin{gather*}
+    (y_{n+1}',z_n ) = (z_n,z_n) + c_{n+1}(y_{n+1}, z_n ) = (z_n, z_n) + 0 = 0 \\
+    \Longrightarrow z_n = 0
+  \end{gather*}
+  so $y_{n+1}' = c_{n+1}y_{n+1}$.  
+\end{proof}
+
+\begin{theorem}[Gram-Schmidt Process]\label{T:Gram-Schmidt_Process} \quad \\
+  Let $x_1,x_2, \dots , x_n \in V$, $V$ being a Euclidean space. \\
+  Let $y_1,y_2, \dots , y_n \in V$.  \\
+  Suppose for 
+  \begin{equation*}
+    y_{n+1} = x_{n+1} - \sum_{j=1}^n \frac{ (x_{n+1}, y_j ) }{ (y_j, y_j) } y_j ; \, y_{n+1} = 0 \text{ for some } n 
+  \end{equation*}
+  \phantom{Supp} then we can construct $y_1,y_2, \dots , y_n$ an orthogonal set, and $y_1, y_2, \dots, y_n \neq 0$ such that
+  \begin{equation}
+    y_1 = x_1; y_{j+1} = x_{j+1} - \sum_{k=1}^j \frac{ (x_{j+1}, y_k ) }{ (y_k, y_k) } y_k ;  \quad \forall j =1,2 , \dots , n-1
+    \end{equation}
+\end{theorem}
+\begin{proof}
+  Suppose
+  \[
+  y_{n+1} = 0 \text{ for some } n
+  \]
+  then since 
+  \[
+ y_{n+1} = x_{n+1} - \sum_{j=1}^n \frac{ (x_{n+1}, y_j ) }{ (y_j, y_j) } y_j = 0 \Longrightarrow x_{n+1} = \sum_{j=1}^n \frac{ (x_{n+1}, y_j ) }{ (y_j, y_j) } y_j 
+  \]
+  \phantom{Supp} and $y_j \in sp(x_1,x_2, \dots , x_n )$ for $j=1,2, \dots , n$.  
+  \phantom{sup} so $x_1,x_2, \dots x_{n+1}$ are dependent (since $x_{n+1}$ is a linear combination of $x_1,x_2, \dots , x_n$ ).  \\
+  then if $x_1,x_2, \dots , x_n$ are independent, corresponding $y_1,y_2, \dots , y_n $ are nonzero.  
+\end{proof}
+
+\begin{theorem}[Approximation theorem] \quad \\
+  Let $S$ be a finite dimensional subspace of a Euclidean space $V$.  \\
+  Let $x\in V$. \\  
+  Let $S$ be the projection of $x$ on $S$.  \\
+  \begin{equation*}
+    \| x -s \| \leq \| x-t \|
+  \end{equation*}
+  $\forall t \in S$
+\end{theorem}
+\begin{proof}
+By Theorem (\ref{T:Orthogonal_Decomposition}), $x = s+ s^{\perp}; \, s \in S; s^{\perp} \in S^{\perp}$.  
+\begin{gather*}
+  x-t = (x-s) + (s-t) \\
+  x-s \in S^{\perp}; s-t \in S \\
+  \| x -t \|^2 = \| x -s \|^2 + \| s-t \|^2 \\
+  \| x - t \|^2 \geq \| x - s \|^2 \\
+  \text{ if } \| x - t \| = \| x - s \| , \quad \| s - t \| = 0 \Longrightarrow  s =t \\
+  \text{ if }, \| x - t \| = \| x  - s \|
+\end{gather*}
+\end{proof}
+
+
+\subsection{Determinants}
+\begin{definition}[Axiomatic Definition of a Determinant function]\label{D:Axiomatic_Definition_of_Determinants} \quad \\
+  Let $d$ be a real or complex valued function defined for each ordered $n$-tuple of vectors $A_1,A_2,\dots , A_n$ in $n$-space.  \\
+  $d \equiv $ determinant of order $n$ if it satisfies the following axioms $\forall A_1,A_2, \dots ,A_n,C \in n$=space:
+  \begin{align}
+    & 
+    \begin{aligned}
+      & \text{ If $k$th row $A_k$ is multiplied by scalar $t$ }  \\
+      & d(\dots , t A_k , \dots) = t d(\dots , A_k , \dots )   \\
+      & \text{ (Homogeneity in each row) } 
+    \end{aligned}  
+    \label{E:Determinants_Homogeneity_in_each_row} \\
+    & 
+    \begin{aligned}
+      & \forall k = 1,2, \dots n,   \\
+      & d(A_1,A_2, \dots , A_k + C, \dots A_n) = d(A_1,A_2, \dots , A_k , \dots A_n ) + d(A_1, A_2, \dots , C , \dots A_n )  \\
+      & \text{ (Additivity in each row)}
+    \end{aligned}
+    \label{E:Determinants_Additivity_in_each_row} \\
+    & 
+    \begin{aligned}
+      & d(A_1, A_2 , \dots , A_n) = 0 \text{ if } A_i = A_j \text{ for some $i,j$ with $i\neq j$ }  \\
+      & \text{ (The Determinant Vanishes if any 2 rows are equal) } 
+    \end{aligned}
+    \label{E:Determinant_equal_rows} \\
+    & 
+    \begin{aligned}
+      & d(I_1 ,I_2 , \dots I_n ) = 1 \text{ where } I_k \equiv k\text{th unit coordinate vector}  \\
+      & \text{ (The Determinant of the identity matrix is equal to 1) } 
+    \end{aligned}
+    \label{E:Determinant_Identity} 
+  \end{align}
+  
+Note that by induction, Axioms (\ref{E:Determinants_Homogeneity_in_each_row}) and (\ref{E:Determinants_Additivity_in_each_row}) can be combined to state linearity:
+\begin{equation}\label{E:Determinants_linearity}
+d(\sum_{k=1}^p t_k C_k, A_2, \dots , A_n ) = \sum_{k=1}^p t_k d(C_k , A_2, \dots A_n)
+\end{equation}
+
+Also note that sometimes a weaker version of Axiom (\ref{E:Determinant_equal_rows}) is used: 
+\begin{align}
+  &\d(A_1,A_2, \dots, A_n) = 0 \text{ if } A_k = A_{k+1} \text{ for some } k = 1,2, \dots n-1 \quad  \tag{\ref{E:Determinant_equal_rows}'} \label{E:Weaker_Determinant_equal_rows} \\
+  &\text{ (The Determinant Vanishes if Two Adjacent Rows are Equal) } \notag 
+\end{align}
+\end{definition}
+
+\begin{theorem}[Properties of Determinants]\label{T:Determinant_Properties}
+A determinant function satisfying linearity (Axioms (\ref{E:Determinants_Homogeneity_in_each_row}) and (\ref{E:Determinants_Additivity_in_each_row})) and Axiom (\ref{E:Weaker_Determinant_equal_rows}) has the following properties:
+\begin{align}
+  & d(A_1 , A_2 , \dots , A_n ) = 0 \text{ if } A_k = 0 \text{ for some } k \label{E:Det_Prop_0_row} \\
+  & d(\dots, A_k , A_{k+1} , \dots ) = - d( \dots , A_{k+1} , A_k , \dots ) \label{E:Det_Prop_interchange_adjacent_rows} \\
+  & \text{ The determinant sign changes if any 2 rows $A_i$ and $A_j$, with $i\neq j$, are interchanged } \label{E:Det_Prop_interchange_any_rows} \\
+  & d(A_1 , A_2 , \dots , A_n) = 0 \text{ if } A_i = A_j \text{ for some $i$ and $j$ with $i\neq j$ } \label{E:Det_Prop_equal_rows} \\
+  & d = 0 \text{ if its rows are dependent } \label{E:Det_Prop_dependent_rows}
+\end{align}
+\end{theorem}
+
+\begin{proof} \quad \\
+  \begin{itemize}
+  \item (\ref{E:Det_Prop_0_row}) By linearity of the determinant, 
+\[
+d( \dots 0 , \dots ) = d( \dots 0 A_k , \dots ) = 0 d(\dots , A_k , \dots ) = 0 
+\] 
+  \item (\ref{E:Det_Prop_interchange_adjacent_rows}) 
+    \begin{align*}
+      & \text{ Let $B$ be a matrix having the same rows as $A$ except for row $k$ and row $k+1$ } \\
+      & \text{ Let } B_k = B_{k+1} = A_k + A_{k+!} 
+    \end{align*} 
+    Then $det B =0$ (by Axiom (\ref{E:Weaker_Determinant_equal_rows})) 
+    \begin{gather*}
+      d(\dots , A_k + A_{k+1} , A_k + A_{k+1} , \dots ) =0 \\
+      d(\dots , A_k , A_k , \dots ) + d(\dots , A_{k+1} , A_k , \dots ) + d(\dots , A_k , A_{k+1} , \dots ) + d(\dots , A_{k+1} , A_{k+1} , \dots ) = 0 \\
+      \Longrightarrow d(\dots , A_{k+1} , A_k , \dots ) = -d(\dots A_k , A_{k+1} \dots ) \\
+      ( \text{ since } d(\dots , A_k , A_k , \dots ) = d(\dots , A_{k+1} , A_{k+1} , \dots ) = 0 
+    \end{gather*}
+  \item (\ref{E:Det_Prop_interchange_any_rows}) Assume $i<j$ (without loss of generality) \\
+    interchange row $A_j$ successively with earlier adjacent rows.  \\
+    \[
+    \Longrightarrow A_{j-1} , A_{j-2} , \dots , A_i \quad ( j-1 \text{ interchanges } ) 
+    \]
+    interchange row $A_i$ successively with the later adjacent rows.  
+    \[
+    A_{i+1} , A_{i+2} , \dots , A_{j-1} \quad (j-1-i \text{ interchanges } ) 
+    \]
+    So then there are $(j-1) + (j-i-1) = 2 (j-i) -1 $ total interchanges.  
+    
+    There are always an odd number of interchanges, \\
+    \phantom{There} so the determinant changes sign an odd number of times.  
+  \item (\ref{E:Det_Prop_equal_rows}) Let $B$ be a matrxi obtained from $A$ by interchanging rows $A_i$ and $A_j$ \\
+    \[
+    det B = - det AA
+    \]
+    But $A_i=A_j$, so that $det A = det B$.  Then $det A = 0$.   
+  \item (\ref{E:Det_Prop_dependent_rows}) Suppose $\exists c_1 , c_2, \dots c_n$ scalars such that $\sum_{k=1}^n c_k A_k = 0 $ \\ 
+\begin{gather*}
+\text{ Let } A_1 = \sum_{k=2}^n t_k A_k \quad \text{ (without loss of generality) } \\
+d(A_1,A_2,\dots A_n ) = \sum_{k=2}^n t_k (A_k, A_2, \dots , A_n) = 0 \quad ( \text{ since } d(A_k,A_2,\dots , A_n) =0  \, \forall k = 2, 3, \dots ,n) 
+\end{gather*}
+Since $i=1$ for $A_i$ was arbitrarily chosen, this must be true for any row that is dependent.  
+  \end{itemize}
+\end{proof}
+
+\subsection{Linear Transformations}
+
+\begin{definition}[Linear Transformation]
+Let $V,W$ be linear spaces.  \\
+$T:V \mapsto W$ \\
+$T$ is a linear transformation if
+\begin{enumerate}
+\item $T(x+y) = T(x)+T(y) \quad \forall x,y \in V$ 
+  \item $T(\alpha x) = \alpha T(x) \quad \forall x \in V; \, \alpha \text{ scalar }$ 
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Basic Properties of Linear Transformations]\label{T:Properties_of_Linear_Transformations} \quad \\
+Let $V,W$ be linear spaces.  \\
+Let $T:V \mapsto W $ be a linear transformation.  Then 
+\begin{enumerate}
+\item if $x=0, T(x) = 0 $ (Note that the converse is not necessarily true) 
+\item $T(\sum_{j=1}^{n} \alpha_j x_j ) = \sum_{j=1}^n \alpha_j T(x_j)$ 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \quad \\
+  \begin{enumerate}
+  \item $T(0) = T((0)x) = (0)T(x) = 0 $ (we pulled out the zero scalar, allowed by definition) 
+  \item Assume $n$th case: $T(\sum_{j=1}^{n} \alpha_j x_j ) = \sum_{j=1}^n \alpha_j T(x_j)$
+\begin{align*}
+T(\sum_{j=1}^{n+1} \alpha_j x_j ) & = T(\sum_{j=1}^{n} \alpha_j x_j + \alpha_{n+1} x_{n+1}) = T(\sum_{j=1}^{n} \alpha_j x_j) + T(\alpha_{n+1}x_{n+1}) =  \\ 
+ &= \sum_{j=1}^n \alpha_j T(x_j) + \alpha_{n+1}T(x_{n+1}) = \sum_{j=1}^{n+1} \alpha_{j} T(x_j) 
+\end{align*}    
+  \end{enumerate}
+\end{proof}
+
+\begin{definition}[Range] \quad \\
+If $T:V \mapsto W$, $T$ linear transformation
+\[
+range T \equiv \{ y | y=T(x); \forall x \in V  \} \subseteq W
+\]
+\end{definition}
+
+\begin{definition}[Nullspace or Kernal]
+For $T:V \mapsto W$ linear transformation
+\begin{equation}
+ker T = \{ x | x \ in V \text{ and } T(x) =0 \} \equiv \text{ nullspace or kernal of } T
+\end{equation}
+\end{definition}
+
+
+\subsubsection{Nullity-Rank theorem}\label{subsubS:Nullity-Rank}
+
+\begin{theorem}[Nullity-Rank Theorem]\label{T:Nullity-Rank_Theorem}
+Consider finite-dimensional $V$, i.e. $dim V = n < \infty$.  Then $T(V)$ finite-dimensional and  
+\begin{equation}
+dim ker T + dim range T = dim V
+\end{equation}
+\end{theorem}
+
+\begin{proof} \quad \\
+Let $n=dim V$.  \\
+Let $\{ e_1, e_2, \dots , e_k \}  = \mathcal{B}_{ker T} \equiv $ basis for $ker T$.  \\
+
+By Theorem (\ref{T:basis_properties}), $\mathcal{B}_{ker T}$ form part of some basis for $V$, say 
+\[
+\{ e_1, e_2, \dots e_k, e_{k+1}, \dots , e_{k+r} \} = \mathcal{B}_V \quad \text{ where } k + r = n 
+\]
+
+Consider $range T$.  $\forall y \in range T, y = T(x)$.  $x\in V$, so $x = \sum_{j=1}^{k+r} c_j e_j$.  
+\[
+T(x) = T \left( \sum_{j=1}^{k+r} c_j e_j \right) = \sum_{j=1}^{k+r} c_j T(e_j) = 0 + \sum_{j=k+1}^{k+r} c_j T(e_j)
+\]
+ 
+Reversing the steps, we get
+\[
+sp(\{ T(e_{k+1}) , T(e_{k+2}) , \dots , T(e_{k+r}) ) = range T
+\]
+
+Consider $\sum_{j=k+1}^{k+r} c_j T(e_j) = 0$.  Then
+\[
+T\left( \sum_{j=k+1}^{k+r} c_j e_j \right) = 0 \Longrightarrow \sum_{j=k+1}^{k+r} c_j e_j \in ker T
+\]
+
+So then $\sum_{j=k+1}^{k+r} c_j e_j$ = $\sum_{j=1}^{k} c_j e_j$ \\
+$\Longrightarrow \sum_{j=1}^{k+r} c_j e_j = 0$.  
+
+Now the $e_j$'s are independent, so $c_1 = c_2 = \dots = c_k = c_{k+1} = \dots = c_{k+r} = 0 $.  
+
+Thus $T(e_{k+1}), T(e_{k+2}), \dots , T(e_{k+r})$ are linearly independent.  \\
+$\Longrightarrow \{ T(e_{k+1}), T(e_{k+2}), \dots , T(e_{k+r}) \} \equiv $ basis for $range T$.  
+\end{proof}
+
+\begin{theorem}[Nullity-Rank theorem for Matrix Theory]\label{T:Nullity-Rank_Theorem_Matrices}
+Consider finite-dimensional $V$, i.e. $dim V = n < \infty$.  Then $T(V)$ finite-dimensional
+\end{theorem}
+
+\subsubsection{ Algebra of Linear Transformation }\label{subsubS:Algebra_of_Linear_Transformations}
+\begin{definition}\label{D:sum_and_product_of_Linear_Transformations} \quad \\
+Let $S:V \mapsto W$ and \\
+\phantom{Let} $T: V \mapsto W$ \\
+Let $c$ be any scalar.  \\
+\phantom{Let} sum $S+T$ and product of $cT$ are defined as 
+\begin{equation}\label{E:sum_and_product_of_Linear_Transformations}
+  (S+T)(x) = S(x) + T(x); \quad (cT)(x) = cT(x) \, \forall \in V
+\end{equation}
+\end{definition}
+
+\begin{theorem}
+$\mathcal{L}(V,W) \equiv $ the set of all linear transformations on $V$ into $W$ is a linear space with operations of addition and multiplication by scalars defined through Theorem (\ref{D:sum_and_product_of_Linear_Transformations}).  
+\end{theorem}
+
+\begin{proof}
+  Prove all ten axioms hold true.  
+  \begin{enumerate}
+    \item (uniqueness) Let $S,T \in \mathcal{L}(V,W)$.  \\
+      Consider $S+T$
+\[
+(S+T)(x) = S(x) + T(x) = y_1 + y_2 \in W, \quad y_1, y_2 \in W
+\]
+Suppose $U'(x) = y_1+y_2$.  
+\[
+U'(x) = (S+T)(x) \quad \forall x \in V \Longrightarrow U' = S+T
+\]
+\item (uniqueness) Consider $cT$
+\[
+(cT)(x) = cT(x) = cy_1 \in W
+\]
+Suppose $T'(x) = cy_1$ 
+\[
+cy_1 = cT(x) = T'(x) \quad \forall x \in V; \, \text{ so } cT = T'
+\]
+\item $(S+T)(x) = S(x)+T(x) = T(x) + S(x) = (T+S)(x) $ 
+\item $((S+T)+U)(x) = (S+T)(x) + U(x) = S(x) +T(x) +U(x) = S(x) + (T+U)(x) = (S+(T+U))(x)$
+\item define $\mathbf{0}(x) = 0 \quad \forall x \in V$
+\item define $\forall T \in \mathcal{L}(V,W), (-T)$ such that
+\[
+(T+(-1)T)(x) = T(x) + (1)T(x) = 0 \quad \forall x \in V
+\]
+$\Longrightarrow (T+(-1)T)= \mathbf{0}$
+\item Consider $a,b$ scalars. 
+\[
+a(bT)(x) = a(bT(x)) = (ab)T(x) = ((ab)T)(x) \, \text{ as long as scalars obey closure under multiplication }
+\]
+\item 
+  \begin{gather*}
+    a(S+T)(x) = a(S(x) +T(x)) = (aS)(x) + (aT)(x) = (aS +aT)(x) \quad \forall x \in V \\
+    a(S+T) = aS + aT
+  \end{gather*}
+\item $(aT+bT)(x) = aT(x) + bT(x) = (a+b)T(x) = ((a+b)T)(x) \quad \forall x \in V$ \\
+$\Longrightarrow (aT+bT) = (a+b)T$
+\item define $T = \mathbf{1}$ such that $\forall x \in V, \mathbf{1}x = x$.  
+\end{enumerate}
+\end{proof}
+
+\begin{definition}[Composition of linear transformations]\label{D:Composition_of_Linear_Transformations}
+Let $U,V,W$ be sets. \\
+Let $T:U \mapsto V$ \\
+Let $S:V \mapsto W$ \\
+\phantom{Let} then define the composition $ST:U \mapsto W$ by 
+\begin{equation}
+(ST)(x) = S(T(x)) \quad \forall \, x \in U
+\end{equation}
+\end{definition}
+
+\begin{theorem}
+if 
+\phantom{if} $T:U \mapsto V$ \\
+\phantom{if} $S:V \mapsto W$ \\
+\phantom{if} $R:W \mapsto X$ 
+\begin{equation}
+R(ST) = (RS)T
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Both $R(ST)$ and $(RS)T$ have $U$ as a domain. \\
+\begin{gather*}
+\begin{aligned}
+  (R(ST))(x) &= R((ST)(x)) = R(S(T(x))) \\
+  (RS)T(x) &= (RS)(T(x)) = R(S(T(x))) \quad \forall x \in V
+\end{aligned}
+\Longrightarrow R(ST) = (RS)T
+\end{gather*}
+\end{proof}
+
+\begin{definition} \quad \\
+Let $T:V \mapsto V$.  We define integer powers of $T$ inductively as follows:
+\begin{equation}
+T^0 = \mathbf{1}; \, T^n = TT^{n-1} \text{ for } n \geq 1
+\end{equation}
+\end{definition}
+
+\begin{theorem}\quad \\
+Let $U,V,W$ be linear spaces. \\
+Let $T:U\mapsto V$\\
+Let $S:V\mapsto W$ be linear transformation. \\  
+\phantom{Let} $ST:U \mapsto W$ is linear
+\end{theorem}
+
+\begin{proof}
+$\forall x,y \in U; \, a,b \text{ scalars }$ \\
+\begin{align*}
+(ST)(ax +by) &= S(T(ax+by)) = S(aT(x) + bT(y)) = aS(T(x)) + bS(T(y)) = \\
+  &= a(ST)(x) + b(ST)(y) 
+\end{align*}
+\end{proof}
+
+\begin{theorem} \quad \\
+Let $U,V,W$ be linear spaces with the same field of scalars. \\
+Let $S,T \in \mathcal{L}(V,W)$ and let $c$ be any scalar.  
+\begin{enumerate}
+\item For any function $R$ with values in $V$ \\
+  \begin{equation}
+(S+T)R = SR +TR \text{ and } (cS)R = c(SR)
+    \end{equation}
+\item For any linear transformation $R:W \mapsto U$, \\
+  \begin{equation}
+    R(S+T) = RS + RT \text{ and } R(cS) = c(RS)
+  \end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Use definition of composition.
+\begin{enumerate}
+\item \[ 
+(S+T)R(x) = S(R(x)) + T(R(x)) = (SR)(x) + (TR)(x) = (SR+TR)(x)
+\] 
+\[
+(cS)R(x) = c(S(R(x))) = c(SR)(x) \, \Longrightarrow (cS)R = c(SR)
+\]
+\item 
+\[
+R(S+T)(x) = R(S(x)+T(x)) = R(S(x)) + R(T(x)) = (RS)(x) + (RT)(x) = (RS+RT)(x)
+\]
+\[
+\begin{gathered}
+  R(cS)(x) = R(cS(x)) = c(R(S(x))) \, \text{ (note that we needed linearity of $R$ ) }  \\
+  \Longrightarrow = c(RS)(x)
+\end{gathered}
+\]
+\end{enumerate}
+\end{proof}
+
+\subsubsection{ Inverses. }\label{subsubS:Inverses}
+
+\begin{definition}[Left Inverses]\label{D:Left_Inverses} \quad \\
+Let $V,W$ be sets.  \\
+Let $T:V \mapsto W$ be a function.\\
+function $S:T(V) \mapsto V$ is a left inverse of $T$.  \\
+\phantom{func} if $S(T(x)) = x \, \forall x \in V$, i.e. if \\
+\begin{equation*}
+  ST = I_V
+\end{equation*}
+where $I_V$ is the identity transformation on $V$.  
+
+function $R:T(V) \mapsto V$ is called a right inverse of $T$.  \\
+\phantom{func} if $T(R(y)) = y \, \forall y \in T(V)$
+\begin{equation*}
+  TR = I_{T(V)}
+\end{equation*}
+where $I_{T(V)}$ is the identity transformation on $T(V)$.  
+\end{definition}
+
+\textit{Left inverses need not exist.  Right inverses need not be unique.}  For example, consider a function with no left inverse but with two right inverses. \\
+Let $V= \{ 1,2 \}$ \\
+Let $W = \{ 0 \}$ \\
+Define $T:V \mapsto W$ such that 
+\[
+T(1) = T(2) = 0 
+\]
+define $R:W \mapsto V; \, R':W \mapsto V$ such that
+  \[ R(0) = 1 \quad R'(0) = 2 \] 
+$T$ cannot have a left inverse $S$ since 
+\[
+1 = S(T(1)) = S(0) \quad \quad 2 = S(T(2)) = S(0)
+\]
+
+\begin{theorem}
+Every function $T:V \mapsto W$ has at least one right inverse.
+\end{theorem}
+\begin{proof}
+$\forall \in T(v), \exists x \in V \text{ such that } T(x) = y$  \\
+$R$ is well-defined and $R$ is defined by
+\[
+R(y) = x \text{ then } T(R(y)) = T(x) = y
+\]
+\end{proof}
+
+\begin{theorem} \quad \\
+  A function $T:V \mapsto W$ can have at most one left inverse.  \\
+  If $T$ has a left inverse $S$, then $S$ is also a right inverse. 
+\end{theorem}
+\begin{proof}
+  Assume $T$ has 2 left inverses, $S:T(V) \mapsto V$ and $S':T(V) \mapsto V$.  \\
+  Choose any $y \in T(x)$.  $y=T(x)$ for some $x \in V$, so 
+\begin{gather*}
+  S(T(x)) = x \quad S'(T(x)) = x \\
+  S(y) = x = S'(y) \quad \forall y \in T(v).  \quad \text{ so } S= S'; S \text{ is unique }
+\end{gather*}
+We now want to show its a right inverse as well.  \\
+Choose any $y \in T(V)$.  $y=T(x)$ for some $x \in V$.  \\
+\begin{gather*}
+S(y) = S(T(x)) = x \\
+( \text{ apply } T) \Longrightarrow T(S(y)) = T(x) = y = (TS)(y) \Longrightarrow (TS) = I_{T(V)}
+\end{gather*}
+\end{proof}
+
+\begin{definition}[onto] \quad \\
+For $T:V \mapsto W$, $T$ linear transformation, \\
+If $T$ onto $W$ then
+\[
+\forall y \in W, \exists x \in V \text{ such that } T(x) = y
+\] 
+\end{definition}
+
+\begin{definition}[one-to-one] \quad \\
+$T$ is one-to-one \\
+\phantom{T} if $v_1 \neq v_2; \quad v_1, v_2 \in V $\\
+\phantom{T if v} then $T(v_1) \neq T(v_2); \quad T(v_1), T(v_2) \in W$ \\
+or \\
+\phantom{T} if $T(v_1) = T(v_2);$ \\
+\phantom{T if v} then $v_1 = v_2$ \\
+\end{definition}
+
+\begin{theorem}\label{T:Left_Inverse_equals_one-to-one}
+A function $T:V \mapsto W$ has a left inverse iff $T$ maps distinct elements of $V$ onto distinct elements of $W$ (one-to-one) i.e.
+\begin{equation}
+\exists S \text{ left inverse iff } \forall x,y \in V, \, \text{ if } x \neq y, T(x) \neq T(y)
+\end{equation}
+\end{theorem}
+\begin{proof} \quad \\
+  \begin{tabbing}
+    Assume \= $T$ has $S$ left inverse.  \\
+    \> Assume \= $T(x) = T(y)$.  Apply $S$.  \\
+    \> \> $S(T(x)) = S(T(y)) = x = y$.  \\
+    \> Then $T$ is one-to-one.  \\
+    Assume $T$ is one-to-one.  \\
+    \> $\forall y \in T(V), \exists x \in V$ such that $y=T(x)$.  \\
+    \> \> Since $T$ is one-to-one, only one $x \in V$ exists such that $y=T(x)$.  \\
+    \> Let $S:T(V) \mapsto V$.  \\
+    \> \> $S(y) = x $ where $y=T(x), \, \forall y \in T(V)$.  \\
+    \> $S$ is well-defined since $\forall y \in T(V)$, only one $x \in V$ exists such that $y=T(x)$.  
+  \end{tabbing}
+  \begin{gather*}
+    S(y) = S(T(x)) = (ST)(x) = x \\
+    ST = I_V \quad \text{ so $T$ has a left inverse }
+  \end{gather*}
+\end{proof}
+
+\begin{definition}[Invertibility and Notation for Unique left inverse]
+  The unique left inverse of a function $T$ is denoted by $T^{-1}$.  \\
+  We say that $T$ is invertible and $T^{-1}$ is the inverse of $T$.  
+\end{definition}
+
+\begin{theorem}
+  Let $T:V \mapsto W$ be a linear transformation in $\mathcal{L}(V,W)$.  Then the following statements are equivalent:
+  \begin{enumerate}
+    \item $T$ is one-to-one on $V$ 
+    \item $T$ invertible and $T^{-1}:T(V) \mapsto V$ is linear 
+    \item $\forall x \in V; T(x) = 0$ implies $x=0$, i.e. $nullspace(T) = \{ 0 \}$ 
+  \end{enumerate}
+\end{theorem}
+  \begin{proof}
+    Assume $T$ is one-to-one. \\
+    \phantom{Ass} By Theorem (\ref{T:Left_Inverse_equals_one-to-one}), $T^{-1}$ exists.  \\
+    \phantom{Ass} (Show linearity).  Choose $u,v \in T(V)$ such that $u=T(x), v=T(y)$ for any $a,b$ scalars.  \\
+    \[
+    au + bv = aT(x) + bT(y) = T(ax+by) 
+    \]
+    \phantom{Ass} apply $T^{-1}$
+    \[
+    T^{-1}(au+bv) = T^{-1}T(ax+by) = ax + by = aT^{-1}(u) + bT^{-1}(v)
+    \] 
+    \phantom{Assume} so $T^{-1}$ linear.  (we used the linearity of $T$ and definition of $T^{-1}$. 
+    Assume $T$ invertible and $T^{-1}$ linear.  \\
+    \phantom{Ass} Suppose $T(x)= 0$.  
+    \[
+    T^{-1}(T(x)) = T^{-1}(0) = 0 \Longrightarrow x =0 
+    \]
+    Assume $nullspace(T) = \{ 0 \}$. 
+    \phantom{Ass} Consider $T(x) = T(y)$.  
+    \[
+    T(x)-T(y) = T(x-y) =0 \Longrightarrow x-y = 0 \Longrightarrow x = y
+    \]
+    \phantom{assume} $\Longrightarrow T$ is one-to-one.  
+  \end{proof}
+
+\begin{theorem}
+  Let $T:V\mapsto W$ be a linear transformation in $\mathcal{L}(V,W)$.  \\
+  Assume $V$ is finite-dimensional, i.e. $dim V = n < \infty$ \\
+  The following are equivalent.  
+  \begin{enumerate}
+  \item $T$ is one-to-one on $V$ 
+  \item if $e_1,e_2, \dots, e_p$ are independent in $V$, \\
+    \phantom{if} then $T(e_1),T(e_2), \dots ,T(e_p)$ are independent in $T(V)$.  
+  \item $dim T(V) = n$ 
+  \item if $\{ e_1, e_2, \dots, e_n \} =$ basis for $V$ \\
+    \phantom{if} then  $\{ T(e_1), T(e_2), \dots, T(e_n) \} =$ basis for $T(V)$.  
+    \end{enumerate}
+  \end{theorem}
+  \begin{proof}
+    Assume $T$ is one-to-one.  \\
+    \phantom{Ass} Consider $\sum_{j=1}^p c_j T(e_j) = 0$.  
+    \[
+    \sum_{j=1}^p c_j T(e_j) = T \left( \sum_{j=1}^p c_j e_j \right) = 0 \Longrightarrow \text{ then } \sum_{j=1}^p c_j e_j = 0 
+    \]
+    \phantom{Ass} $e_j$'s are independent, so $c_j =0$\\
+    \phantom{Assume} $\Longrightarrow T(e_1), T(e_2), \dots , T(e_p)$ are independent.  
+ 
+    Assume if $e_1,e_2, \dots, e_p$ are independent in $V$, then $T(e_1),T(e_2), \dots ,T(e_p)$ are independent in $T(V)$. \\
+    \phantom{Ass} Suppose $\{e_1, e_2, \dots, e_n \} = \mathcal{B}_V \equiv $ basis for $V$.  \\
+    \phantom{Ass Sup} then $T(e_1), T(e_2), \dots , T(e_n)$ are independent and form part of a basis (by theorem).  \\
+    \phantom{Ass Sup then} $\Longrightarrow dim T(V) \geq n$.  \\
+    \phantom{Ass Sup} But by nullity-rank theorem, Theorem (\ref{T:Nullity-Rank_Theorem}), $dim T(V) \leq n$.  
+    \phantom{Ass Sup then} $\Longrightarrow dim T(V) = n$.
+  
+    Assume $dim T(V) = n$.  
+    \phantom{Ass} Suppose $\{e_1, e_2, \dots, e_n \} = \mathcal{B}_V \equiv $ basis for $V$.  \\
+    \begin{gather*}
+      \begin{aligned}
+	& \forall y \in T(V), \exists x \in V \text{ such that } y = T(x) \\
+	& \forall x \in V; x = \sum_{j=1}^n c_j e_j 
+      \end{aligned} \\
+      T(x) = \sum_{j=1}^n c_j e_j = \sum_{j=1}^n c_j T(e_j)  \\
+      \Longrightarrow \text{ $T(e_j)$'s span } T(V)
+    \end{gather*}
+    \phantom{Ass} Now we assumed $dim T(V) = n$
+    \phantom{Ass Now} $\Longrightarrow \{ T(e_1), T(e_2), \dots , T(e_n) \} $ form a basis for $T(V)$.  
+    Assume if $\{ e_1, e_2, \dots, e_n \} =$ basis for $V$, then  $\{ T(e_1), T(e_2), \dots, T(e_n) \} =$ basis for $T(V)$. \\
+    \[
+    x \in V \Longrightarrow T(x) = T\left( \sum_{j=1}^n c_j e_j \right) = \sum_{j=1}^n c_j T(e_j) = 0 
+    \]
+    \phantom{Ass} but $T(e_j)$'s are independent $\Longrightarrow c_j = 0$.\\  
+    \phantom{Ass but} so $T(x)= 0$ implies $x=0$.  $T$ is one-to-one on $V$.  
+  \end{proof}
+
+%\begin{theorem}
+%  Let $T:V \mapsto W$; \quad $T$ a linear transformation \\
+%  \phantom{Let} $T$ is one-to-one iff $ker T = \{\mathbf{0}\}$ \\
+%\end{theorem}
+
+%\begin{proof} \quad \\
+%  \begin{tabbing}
+%if \= $ker T = \{ \mathbf{0} \}$ \\
+%\> Consider \= $v_1, v_2 \in V$ such that \\
+%\>\> $T(v_1)=T(v_2) $ \\
+%\> \> $\Longrightarrow T(v_1-v_2) = 0$ (since $T$ is linear ) \\
+%\> \> but $ker T = \{ \mathbf{0} \} $, so $v_1 - v_2 = 0 $; \quad $v_1 = v_2$ \\
+%\>\> $\Longrightarrow$ By definition, $T$ is one-to-one. 
+%if $T$ is one-to-one \\
+%\> $T(v)=0$ for at most one $v \in V$ \\
+%\> \> but $T(0) = 0 T(x) = 0$ \\
+%\>\> $\Longrightarrow v = 0; \quad ker T = \{ \mathbf{0} \}$ 
+%   \end{tabbing}
+%\end{proof}
+
+\subsubsection{ Matrix Representations for Linear Transformations }
+\begin{theorem}[Basis elements under Linear Transformation]\label{T:Matrix_Representation}
+Let $\{ e_1,e_2,\dots e_n  \} = \mathcal{B}_V \equiv$ basis for linear space $V$, $\quad dim V = n$ \\
+Let $w_1,w_2,\dots,w_n \in W$.  \\
+\phantom{Let} then $\exists$ one and only one linear transformation $T:V \mapsto W$ such that \\
+if $T(e_j) = w_j; \quad \forall j = 1, 2, \dots n$ \\
+\phantom{if} then $\forall x \in V, \quad x = \sum_{j=1}^n x_j e_j$ \\
+\phantom{if then} $T(x) = \sum_{j=1}^n x_j w_j  $
+
+(this theorem says that how $T$ acts on the basis vectors of $V$ completely determines how $T$ acts on any $x \in V$)
+\end{theorem}
+
+\begin{proof} 
+$\forall x \in V, \quad x = \sum_{j=1}^n x_j e_j $\\
+Suppose $T(x) = \sum_{j=1}^n x_j w_j \quad \forall x \in V$ \\
+\phantom{Supp} $T(e_j) = w_j $ since we let $x_k = \delta_{jk}$ (So $T$ is well-defined)
+\begin{align*}
+  T(\alpha_1 x_1 + \alpha_2 x_2 ) & = T(\alpha_1 \sum_{j=1}^n x_{1j} e_j + \alpha_2 \sum_{j=1}^n x_{2j} e_j ) = T(\sum_{j=1}^n (\alpha_1 x_{1j} + \alpha_2 x_{2j} ) e_j) = \\
+  & = \sum_{j=1}^{n} (\alpha_1 x_{1j} + \alpha_2 x_{2j} ) w_j = \\
+  & = \alpha_1 \sum_{j=1}^n x_{1j} w_j + \alpha_2 \sum_{j=1}^n x_{2j} w_j = \alpha_1 T(x_1) + \alpha_2 T(x_2) 
+\end{align*}
+$\Longrightarrow T$ is linear
+
+Now we prove there is only one linear transformation. 
+\[
+S(x) = S(\sum_{j=1}^n x_j e_j ) = \sum_{j=1}^n x_j S(e_j) = \sum_{j=1}^n x_j w_j = T(x)
+\]
+\end{proof}
+
+\begin{theorem}[Matrix Representation of Linear Transformations]\label{T:Matrix_Representation_of_Linear_Transformations}\quad \\
+Let $T \in \mathcal{L}(V,W), \quad dim V = n, dim W = m$\\
+Let $\{ e_1,e_2,\dots e_n  \} = \mathcal{B}_V \equiv$ basis for linear space $V$, \\
+Let $\{ w_1,w_2,\dots w_m  \} = \mathcal{B}_W \equiv$ basis for linear space $W$, \\
+Let $(t_{ik}) = m \times n $ matrix such that \\
+if $T(e_k) = \sum_{k=1}^m t_{ik}w_i \quad (\mathcal{B}_V \to \mathcal{B}_W )$ \\
+\phantom{if} then $\forall x \in V; \quad x = \sum_{k=1}^n x_k e_k$; 
+\begin{align}\label{E:Matrix_Representation_Linear_Transformations}
+T(x) &= \sum_{j=1}^{m} y_j w_j \in W \notag \\
+y_i & = \sum_{k=1}^m t_{ik} x_k \quad \forall i = 1,2,\dots m \notag \\
+\end{align}
+\end{theorem}
+
+\begin{proof}
+\begin{align}
+T(x) & = \sum_{j=1}^n x_j T(e_j) = \sum_{j=1}^n x_j \sum_{i=1}^m t_{ij} w_i = \notag \\
+& = \sum_{j=1}^m \left( \sum_{k=1}^n t_{ik} x_k \right) w_j = \sum_{j=1}^m y_j w_j \notag 
+\end{align}
+\end{proof}
+
+\begin{theorem}[Isomorphism theorem, Apostol's Thm. 2.15] $\forall \, S,T \in \mathcal{L}(V,W)$, $\forall c $,
+\[
+m(S+T) = m(S) + m(T) \text{ and } m(cT) = cm(T)
+\]
+  and $m(S) = m(T)$ implies $S=T$ so $m$ is one-to-one on $\mathcal{L}(V,W)$
+\end{theorem}
+\begin{proof}
+  For $T(e_j) = \sum_{k=1}^m t_{kj} w_k $, and similarly for $S(e_j)$ \\
+  \[
+  (S+T)(e_j) = \sum_{k=1}^m (s_{kj} + t_{kj})w_k  \quad \quad \, (cT)(e_j) = \sum_{k=1}^m ct_{kj} w_k 
+\]
+$m(S+T) = (s_{ik} + t_{ik}) = m(S) + m(T)$ and $m(cT) = (ct_{ik} ) = cm(T)$.  So $m$ is linear.  
+
+To prove $m$ one-to-one,  \\
+\quad Suppose $m(S) = m(T)$, $S= (s_{ik}), \, T = (t_{ik})$ \\
+$m(S) = m(T) \to s_{kj} = t_{kj} \to S(e_j) = T(e_j) \, \forall \, e_j$, so $S(x) = T(x) \quad  \forall \, x \in V$.   \\
+Thus $S=T$
+\end{proof}
+
+\subsubsection{Matrix Theory Applications }
+\begin{theorem}
+  In complex Euclidean space, \\
+  $\forall m \times n$ complex matrix $A$, 
+  \begin{equation*}
+    ( \text{ column space of } A )^{\perp} = \text{ nullspace of } A^*
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  Consider $A^*$ such that $(A^*)_{ij} = \overline{a}_{ji}; \, i = 1,2 ,\dots , n; j=1,2, \dots , m$.  \\
+  if $y\in \text{ nullspace } A^*$, 
+  \begin{gather*}
+    (A^* y)_{ij} = \sum_{k=1}^m a_{ik}^* y_k = \sum_{k=1}^m \overline{a}_{ki} y_k =0 \\
+    \Longrightarrow \overline{ \left( \sum_{k=1}^n \overline{a}_{ki} y_k \right) } = \sum_{k=1}^m \overline{y}_k a_{ki} = \\
+    = \overline{y}^{T} \left[ \begin{matrix} a_{1i} \\ a_{2i} \\ \vdots \\ a_{mi} \end{matrix} \right] = y^* \left[ \begin{matrix} a_{1i} \\ a_{2i} \\ \vdots \\ a_{mi} \end{matrix} \right] = 0 
+  \end{gather*}
+  $y \perp i$th column of $A$.  
+
+Likewise, reverse the steps to prove the converse.  \\
+$\Longrightarrow ( \text{ column space of } A )^{\perp} = \text{ nullspace of } A^* $
+\end{proof}
+
+\begin{theorem} In a real Euclidean space, 
+$\forall m \times n $ matrix $A$, 
+  \begin{equation}
+    ( \text{ row space } )^{\perp} = \text{ nullspace } A
+    \end{equation}
+\end{theorem}
+\begin{proof}
+Consider $x \in ( \text{ nullspace } A)$; consider $Ax=0 $.  
+\begin{gather*}
+(Ax)_{ij} = \sum_{k=1}^n A_{ik}x_k = \left[ \begin{matrix} a_{i1} & a_{i2} & \dots & a_{in} \end{matrix} \right] \left[ \begin{matrix} x_1 \\ x_2 \\ \vdots \\ x_m \end{matrix} \right] = 0 \\
+  \Longrightarrow i\text{th row } \perp x 
+\end{gather*}
+
+Consider $y \in (\text{ row space } )^{\perp}$.  
+\[
+\sum_{i=1}^m \alpha_i \left[ \begin{matrix} a_{i1} & a_{i2} & \dots & a_{in} \end{matrix} \right] \left[ \begin{matrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{matrix} \right] = 0 = \sum_{i=1}^m \alpha_i \sum_{k=1}^n a_{ik} y_k 
+\]
+\phantom{Consi} Choice of $\alpha_i$ is arbitrary.  \\
+\phantom{Consi} so $\sum_{k=1}^n a_{ik}y_k =0 $ \\
+\phantom{Consider} $ y\in \text{ nullspace of } A$ \\
+$\Longrightarrow (\text{ row space })^{\perp} = \text{ nullspace } A$.  
+\end{proof}
+
+\subsection{ Minors, cofactors, cofactor matrix, Cramer's rule, revisited }
+
+Example (lead-in): \\
+Consider $n\times n$ matrix $A$.  \\
+Every row of $A$ can be expressed as a linear combination of $n$ unit coordinate vectors $I_1,\dots, I_n$ \\
+\quad first row of $A = A_1 = \sum_{j=1}^n a_{1j} I_j$ 
+\[
+d(A_1,A_2, \dots, A_n) = d( \sum_{j=1}^n a_{1j} I_j, A_2, \dots, A_n ) = \sum_{j=1}^n a_{1j} d(I_j, A_2, \dots, A_n) = det{A} = \sum_{j=1}^n a_{1j} det{A_{1j}' }
+\]
+
+\begin{theorem}[Expansion by cofactors, Apostol's Thm. 3.8] \quad \\
+  Let $A_{kj}' = A$ replacing $k$th row by unit coordinate vector $I_j$.  
+\begin{equation}
+  det{A} = \sum_{j=1}^n a_{kj} det{A_{kj}'}
+\end{equation}
+cofactor of $a_{kj} = det{A_{kj}'}$
+\end{theorem}
+
+\begin{proof}
+Let $A_{kj}' = A$, replacing $k$th row by unit coordinate vector $I_j$: $(A_{kj}')_{lm} = \begin{cases} a_{lm} & \text{ if } l \neq k \\ \delta_{mj} & \text{ if } l = k \end{cases} $ 
+\[
+\begin{gathered}
+  det{A} = d(A_1, A_2,\dots, A_n) = d(A_1, A_2, \dots, \sum_{j=1}^n a_{kj} I_j, \dots, A_n) = \\
+  = \sum_{j=1}^n a_{kj} d(A_1, A_2, \dots, I_j, \dots, A_n) = \sum_{j=1}^n a_{kj} det{(A_{kj}')}
+\end{gathered}
+\]
+\end{proof}
+
+\begin{definition} Given $n\times n$ matrix $A$, 
+\[
+A_{kj} \equiv k,j \text{ minor of $A$ } = n-1 \text{ order matrix obtained by deleting $k$th row and $j$ column }
+\]
+\end{definition}
+
+\begin{theorem}[Expansion by $k$th-row minors, Apostol's Thm. 3.9] \quad \\
+For any $n\times n$ matrix $A$, $n\geq 2$,  
+\[
+\text{ cofactor } a_{kj} = det{A_{kj}'} = (-1)^{k+j} det{A_{kj}}; \quad \, A_{kj} = k,j \text{ minor of $A$ } 
+\]
+then $det{A} = \sum_{j=1}^n (-1)^{k+j} a_{kj} det{A_{kj}}$
+\end{theorem}
+\begin{proof}
+  Special case of $k=j=1$  \\
+  \[
+A_{11}' = \left[ \begin{matrix} 1 & 0 & \dots & 0 \\ a_{21} & a_{22} & \dots & a_{2n} \\ a_{31} & a_{32} & \dots & a_{3n} \\ vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \dots & a_{nn} \end{matrix} \right] \quad \quad \, A_{11}^0 = \left[ \begin{matrix} 1 & 0 & \dots & 0 \\ 0 & a_{22} & \dots & a_{2n} \\ 0 & a_{32} & \dots & a_{3n} \\ \vdots & \vdots & \ddots & \vdots \\ 0 & a_{n2} & \dots & a_{nn} \end{matrix} \right] 
+\]
+\[
+\begin{aligned}
+  det{A_{11}'} & = det{A_{11}^0} \quad \, & \text{ (by elementary row operations) } \\
+  det{A_{11}^0} & = det{A_{11}} \quad \, & \text{ (by Thm. 3.7, we have $det$ of block diagonal matrices) }
+\end{aligned}
+\]
+
+$k=1, j$ arbitrary.  \\
+Want: $det{A_{1j}'} = (-1)^{j-1} det{A_{1j}}$.  If true, \\
+\quad For $A_{kj}'$, $A_{kj}'$ transformed into $B_{1j}'$ by $k-1$ successive interchanges of adjacent rows. 
+\[
+det{A_{kj}'} = (-1)^{k-1} det{B_{ij}'} 
+\]
+\quad where $B_{1j}'$ is an $n\times n$ matrix whose first row is $I_j$ and $1,j$ minor $B_{1,j}$ is $A_{kj}$.  \\
+\quad \, then $det{B_{1j}'} = (-1)^{j-1} det{B_{1j}} = (-1)^{j-1} det{A_{kj}}$, 
+\quad \, so $det{A_{kj}'} = (-1)^{k+j} det{A_{kj}}$
+
+\[
+\begin{gathered}
+  A_{1j}' = \left[ \begin{matrix} 0 & \dots 1 & \dots 0 \\ a_{21} & \dots & a_{2j} & \dots a_{2n} \\ \vdots & \ddots & \vdots & \ddots & \vdots \\ a_{n1} & \dots & a_{nj} & \dots & a_{nn} \end{matrix} \right] \quad \quad \, A_{1j}^0 = \left[ \begin{matrix} 0 & \dots & 1 & \dots 0 \\ a_{21} & \dots & 0 & \dots & a_{2n} \\ \vdots & \ddots & \vdots & \ddots & \vdots \\ a_{n1} & \dots & 0 & \dots & a_{nn} \end{matrix} \right]   \\
+  det{A_{1j}'} = det{A_{1j}^0} \quad \text{ ($det$ is unchanged by row operations) } \\
+A_{1j} = \left[ \begin{matrix} a_{21} & \dots & a_{2,j-1} & a_{2,j+1} & \dots a_{2n} \\ \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\ a_{n1} & \dots & a_{n,j-1} & a_{n,j+1} & \dots & a_{nn} \end{matrix} \right]
+\end{gathered}
+\]
+$det{A_{1j}^0} = f(A_{1j})$ (function of the $n-1$ rows of $A_{1j}$).  \\
+$f$ satisfies the first $3$ axioms for a determinant function of order $n-1$.  
+\[
+f(A_{1j}) = f(I)  det{A_{1j}}; \quad \, I = \text{ identity matrix of $n-1$ }, \quad \text{ (by uniqueness thm.) }
+\]
+\[
+C = \left[ \begin{matrix} 0 & \dots & 0 & 1 & 0 & \dots & 0 \\ 
+    1 & \dots & 0 & 0 & 0 & \dots & 0 \\ \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\ 0 & \dots & 1 & 0 & 0 & \dots & 0 \leftarrow \text{ $j$th row }\\ 0 & \dots & 0 & 0 & 1 & \dots & 0 \\ \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\ 0 & \dots & 0 & \underbrace{0}_{\text{ $j$th column}} & 0 & \dots 1 \end{matrix} \right] 
+\]
+\end{proof}
+
+\subsubsection{The cofactor matrix}
+\begin{definition}[Definition of the cofactor matrix]
+ \begin{gather}
+   \text{ cofactor matrix of $A$ } = cof{A} = cof{a_{ij}} = (-1)^{i+j} det{A_{ij}} \\
+   cof{A} = (cof{a_{ij}})_{i,j=1}^n = ((-1)^{i+j} det{A_{ij}})_{i,j=1}^n 
+\end{gather}
+\end{definition}
+
+\begin{theorem}[Apostol's Thm. 3.12] For any $n\times n$ matrix $A$ with $n\geq 2$,
+  \begin{equation}
+    A (cof{A})^T = (det{A}) I 
+  \end{equation} \\
+  If $det{A} \neq 0$, $A^{-1} = \frac{1}{det{A}} (cof{A})^T$
+\end{theorem}
+
+\begin{proof}
+$  det{A} = \sum_{j=1}^n a_{kj} cof{a_{kj}}$ \\
+Keep $k$ fixed.  \\
+Matrix $B$, whose $i$th row is equal to the $k$th row of $A$ for some $i\neq k$, and whose remaining rows are the same as those of $A$.   \\
+$det{B} =0$ because $i$th and $k$th rows are equal.  \\
+$det{B} = \sum_{j=1}^n b_{ij} cof{b_{ij}} = 0$ \\
+Since $i$th row of $B$ is equal to $k$th row of $A$, $b_{ij} = a_{kj}$ and $cof{b_{ij}} = cof{a_{ij}}$, $\forall \, j$ \\
+$det{B} = \sum_{j=1}^n a_{kj} cof{a_{ij}} =0 $ if $k\neq i$
+\[
+\begin{gathered}
+\sum_{j=1}^n a_{kj} cof{a_{ij}} = \begin{cases} det{A} & \text{ if } i = k \\ 0 & \text{ if } i \neq k \end{cases} = \sum_{j=1}^n a_{kj} cof{a_{ji}^T } = (A(cof{a})^T)_{ki} \\
+\Longrightarrow A(cof{a})^T = (det{A}) I
+\end{gathered}
+\]
+\end{proof}
+
+\begin{theorem}[Cramer's Rule, Apostol's Thm. 3.14]
+  If $\sum_{j=1}^n a_{ij} x_j  = b_i$ ($i = 1,2,\dots, n$) and $A$ nonsingular, \\
+  \quad then $\exists$ unique solution $x_j = \frac{1}{det{A}} \sum_{k=1}^n b_k cof{a_{kj}}$ for $j=1,2,\dots, n$
+\end{theorem}
+\begin{proof}
+  \[
+\begin{gathered}
+  Ax = B \\
+  \Longrightarrow X = A^{-1}B = \frac{1}{det{A}} (cof{A})^T B 
+\end{gathered}
+\]
+Note that $x_j = \frac{ det{C_j}}{det{A}}$, \\
+\quad where $C_j$ is the matrix obtained from $A$ by replacing $j$th column of $A$ by column matrix $B$.  
+\end{proof}
+
+\subsubsection{Change of Basis.}
+
+Armed with isomorphism, we can make a change of basis.  
+
+\begin{theorem}[Change of Basis for Matrix Representation; same domain and range]\label{T:Change_of_basis_for_Matrix_Representation_same_domain_range}
+If $2 n\times n $ matrices $A, B$ represent the same linear transformation $T$, \\
+\phantom{If} then $\exists$ invertible $C$ such that 
+\begin{equation}
+  B=C^{-1} A C 
+\end{equation}
+if $A$ is the matrix of $T$ relative to basis $E = [e_1, e_2, \dots e_n ] $ and \\
+\phantom{if} $B$ is the matrix of $T$ relative to basis $U = [u_1, u_2, \dots u_n ] $ \\
+\begin{equation}\label{E:U=EC_Change_of_Basis}
+\phantom{i} \text{ then }U=EC; \, u_j = \sum_{k=1}^n e_k c_{kj} ; \quad \forall j = 1,2,\dots n
+\end{equation}
+
+Note that the converse is true. \\  
+Also note that $C^{-1}$ changes coordinates relative to $\mathcal{B}_V$ into coordinates relative to $\mathcal{C}_V$.  
+\end{theorem}
+
+\begin{proof}
+Let $T:V \mapsto W$ \\
+Assume $V=W$ so $T:V\mapsto V $, $dim V = dim W = n$, \\
+\phantom{Ass}Let $\{e_1,e_2,\dots e_n \} = \mathcal{B}_V \equiv$ basis for $V$ \\ 
+\phantom{Ass}Let $\{u_1,u_2,\dots u_n \} = \mathcal{C}_V \equiv$ another basis for $V$ \\ 
+Theorems (\ref{T:Matrix_Representation}), (\ref{T:Matrix_Representation_of_Linear_Transformations}) already tell us about matrix representations and uniqueness of the matrxi representation and how 
+\[
+T(e_j) = \sum_{i=1}^n t_{ij} u_j \quad (\mathcal{B}_V \mapsto \mathcal{C}_V)
+\]
+
+Consider 
+\begin{align*}
+T(e_j) &= \sum_{k=1}^n a_{kj}e_k = \sum_{k=1}^n e_k a_{kj} \quad \forall j=1,2,\dots n \, (\mathcal{B}_V \to \mathcal{B}_V) \\
+T(u_j) &= \sum_{k=1}^n b_{kj}u_k = \sum_{k=1}^n u_k b_{kj} \quad \forall j=1,2,\dots n \, (\mathcal{C}_V \to \mathcal{C}_V) 
+\end{align*}
+
+since $u_j \in V; \quad \forall u_j$
+\begin{align*}
+u_j & = \sum_{k=1}^n c_{kj} e_k = \sum_{k=1}^n e_k c_{kj}; \quad \forall j = 1,2,\dots n \Longrightarrow U=EC \\
+T(u_{j}) &= \sum_{k=1}^n c_{kj} T(e_{k}) = \sum_{k=1}^n T(e_{k})c_{kj} \\
+\end{align*}
+Note how $C^{-1}$ changes coordinates from $\mathcal{B}_V$ basis to coordinates in $\mathcal{C}_V$ basis, because we can express something like $x = \sum_{j=1}^n x_j e_j$ into $\sum_{j=1}^n y_j u_j$ using the equation $e_j = \sum_{k=1}^n u_k c^{-1}_{kj}$.
+
+Let $E= [e_1,e_2,\dots e_n ]; \, U = [u_1, u_2, \dots u_n ]; \, C = (c_{kj})$ \\
+\phantom{Let} $E'= [T(e_1),T(e_2),\dots T(e_n) ]; \, U' = [T(u_1), T(u_2), \dots T(u_n) ]$ \\
+\phantom{Le} then $E'=EA; \, U' = UB; \, U=EC, \, U'=E'C $ \\ 
+
+Note that $C:V \mapsto V$ is an isomorphism, so $C$ is invertible.  \\
+Finding a relationship between $A$ and $B$ tells us how to make a change of basis for the matrix representation of $T$.  
+\begin{align*}
+U' &= E'C = EAC = UC^{-1}AC = UB \\
+& \Longrightarrow C^{-1}AC = B
+\end{align*}
+\end{proof}
+
+When $T:V \mapsto W, \, dim V \neq dim W$, what can we do?
+
+\begin{theorem}[Change of basis for matrix representations in general]\label{T:Change_of_basis_for_Matrix_Representations_general} \quad \\
+Let 
+\begin{alignat*}{3}
+\{ e_1,e_2, \dots e_n\} & = \mathcal{B}_V & \equiv \text{ basis for } V \\
+\{ v_1,v_2, \dots v_n\} & = \mathcal{C}_V & \equiv \text{ basis for } V \\
+\{ u_1,u_2, \dots u_n\} & = \mathcal{B}_W & \equiv \text{ basis for } W \\
+\{ w_1,w_2, \dots w_n\} & = \mathcal{C}_V & \equiv \text{ basis for } W 
+\end{alignat*}
+
+Consider the linear transformation $T:V\mapsto W, \, dim V = n; \, dim W = m$  \\
+Let $A = (a_{ij})$ be a matrix representation for $T$ such that \\
+\phantom{Let} $T(e_j) = \sum_{i=1}^m a_{ij} u_i = \sum_{k=1}^m u_k a_{kj}; \quad \forall j = 1,2,\dots n$ \\
+Let $B = (b_{ij})$ be a matrix representation for $T$ such that \\
+\phantom{Let} $T(v_j) = \sum_{i=1}^m b_{ij} w_i = \sum_{k=1}^m w_k b_{kj}; \quad \forall j = 1,2,\dots n$ \\
+\bigskip
+Then $\exists C$, change of basis matrix for $V$ from $\mathcal{B}_V$ to $\mathcal{C}_V$ and \\
+\phantom{Then} $\exists D$, change of basis matrix for $W$ from $\mathcal{B}_W$ to $\mathcal{C}_W$ i.e.
+\medskip
+\begin{gather*}
+  \begin{aligned}
+C &= (c_{kj}) \quad n \times n \text{ matrix and } \\
+D &= (d_{kj}) \quad m \times m \text{ matrix such that}  
+  \end{aligned}
+\\
+\begin{aligned}
+v_j & = \sum_{k=1}^n e_k c_{kj} \quad \forall j = 1,2,\dots m \\
+w_j & = \sum_{k=1}^n u_k d_{kj} \quad \forall j = 1,2, \dots m 
+\end{aligned}
+\end{gather*}
+
+Then $D^{-1}AC = B$
+\end{theorem}
+
+\begin{proof}
+By Theorem (\ref{}), $\exists$ unique isomorphisms $C:E\mapsto V$  \\
+\phantom{By Theorem (3.00), $\exists$ unique isomorphisms} $D:U\mapsto W$  
+So we're given that 
+\begin{align*}
+v_j & = \sum_{k=1}^n e_k c_{kj}; \quad \forall j = 1,2,\dots n; \quad & V = EC \\
+w_j & = \sum_{k=1}^m e_k d_{kj}; \quad \forall j = 1,2,\dots m; \quad & W = UD 
+\end{align*}
+
+Notice how matrix $C$ consists of columns that are basis elements of $\mathcal{C}_V$ in terms of $\mathcal{B}_V$ basis elements, \\
+\phantom{Notice how} matrix $D$ consists of columns that are basis elements of $\mathcal{C}_W$ in terms of $\mathcal{B}_W$ basis elements.\\
+(Just set $E,U$ to be the identity matrix)
+
+\begin{gather*}
+\begin{aligned}
+E' &= UA \\
+V' &=  WB
+\end{aligned}
+\quad \text{ are matrix representations for $T$. } \\ 
+ \begin{aligned}
+V &= EC \\
+W &= UD 
+\end{aligned}
+\quad \text{ are definitions of $C,D$ change of basis matrices.  } \\ 
+ V'=E'C
+\end{gather*}
+
+So
+\[
+E'C = UAC = WB = (UD) B \Longrightarrow AC = DB
+\]
+\[
+\boxed{ D^{-1}AC = B}
+\]
+
+The following commutator diagram was useful in discovering this theorem.  
+\[
+\begin{CD}
+  E @>T>> E' @<U<< range T \text{ in } U's \\
+@VCVV @VCVV @AADA \\
+V @>T>> V' @<W<< range T \text{ in } W's
+\end{CD}
+\]
+\end{proof}
+
+We also get a procedure for the change of basis coordinates for the vectors themselves from $U=CE$ in the proof of Eqn. (\ref{E:U=EC_Change_of_Basis}).
+
+\begin{theorem}[Change of coordinates for vectors]\quad \\
+Consider linear space $V$; $dim V = n$.  \\
+Consider 2 bases, one possibly containing at least one vector not contained in the other.  \\
+\begin{align*}
+\mathcal{B}_V &= \{ e_1, e_2, \dots e_n  \} \\
+\mathcal{C}_V &= \{ u_1, u_2, \dots u_n \} 
+\end{align*}
+Consider $x\in V; \, x = \sum_{j=1}^n x_j e_j = \sum_{j=1}^n y_j u_j$ (i.e. $x$ having different sets of coordinates relatives to $\mathcal{B}_V$ or $\mathcal{C}_V$ basis)\\
+\phantom{Consi}then $\exists A=(a_{ij}) \quad n \times n $ matrix that is a matrix representation of an isomorphism from $\mathcal{B}_V$ to $\mathcal{C}_V$.  \\
+Note that $A=C^{-1}$ of the previous theorem, Thm. (\ref{T:Change_of_basis_for_Matrix_Representation_same_domain_range}), for $U=EC$.  
+\end{theorem}
+
+\begin{proof}
+Consider $x\in V; x=\sum_{j=1}^n x_j e_j = \sum_{j=1}^n y_j u_j$ \\
+and suppose $\sum_{k=1}^n a_{kj} u_k =e_j$ \\
+\begin{gather*}
+x= \sum_{j=1}^n x_j e_j = \sum_{j=1}^n x_j \sum_{k=1}^n a_{kj} u_k = \sum_{j=1}^n \left( \sum_{k=1}^n a_{jk} x_k \right) u_j = \sum_{i=1}^n \left( \sum_{k=1}^n a_{ik} x_k \right) u_i \\
+\Longrightarrow y_i = i\text{th coordinate of $x$ in $\mathcal{C}_V$ basis } = \sum_{k=1}^n a_{ik}x_k = (Ax)_{i1}
+\end{gather*} 
+So ``$A [x]_{\mathcal{B}_V} = [x]_{\mathcal{C}_V}$''
+\end{proof}
+
+\subsection{Eigenvalues and Eigenvectors}
+
+\begin{definition}
+Let $T:S \mapsto V$.   \bigskip \\
+$\lambda \equiv \text{ eigenvalue of } T \text{ if } \exists x \neq 0, x \in S \text{ such that }$
+\begin{equation*}
+T(x) = \lambda x
+\end{equation*}
+where $x \equiv \text{ eigenvector of $T$ belonging to $\lambda $ }$
+
+Note that $\lambda$ can be $\lambda = 0$, while $x \neq 0$ by definition.  
+\end{definition}
+
+\begin{definition}[Characteristic Polynomial]\label{D:Characteristic_Polynomial}
+if $A$ is an $n \times n$ matrix, 
+\begin{equation}\label{E:Def_characteristic_polynomial}
+f(\lambda) = det (\lambda I - A) \equiv \text{ characteristic polynomial of $A$ }
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Properties of Characteristic Polynomials]
+  For a characteristic polynomial $f(\lambda)$ which is in general a $n$th order polynomial, so that 
+\[
+f(\lambda) = \sum_{j=0}^n c_j \lambda^j
+\]
+then 
+  \begin{align}
+    & c_0 = (-1)^n det A = (-1)^n \lambda_1 \dots \lambda_n  \text{ (i.e. zero order constant coefficient is the $(-1)^n $ the determinant) } \\
+    & c_{n-1} = -1(\lambda_1 + \dots + \lambda_n ) = - tr A  \text{ (i.e. the $n-1$th order coefficient is the $(-1)$ the trace) }
+  \end{align}
+\end{theorem}
+\begin{proof}
+In general, the characteristic polynomial $f(\lambda)$ of a $n \times n$ matrix $A$ can be factorized using its $n$ roots: 
+  \[
+  \begin{gathered}
+    f(\lambda)= (\lambda - \lambda_1) \dots (\lambda - \lambda_n)  \\
+    \Longrightarrow f(\lambda) = \lambda^n + c_{n-1} \lambda^{n-1} + \dots + c_1 \lambda + c_0 = \sum_{j=0}^n c_j \lambda^j \\    
+  \end{gathered}
+  \]
+Just be comparing this with the factored form and comparing powers of $\lambda$, then 
+\[
+\begin{aligned}
+  & c_0 = (-1)^n \lambda_1 \dots \lambda_n  = (-1)^n det A  \\
+  & c_{n-1} = - (\lambda_1 + \dots + \lambda_n)  = - tr A = - \sum_{j=1}^n \lambda_j
+\end{aligned}
+\]
+\end{proof}
+
+\subsection{ All about Trace }
+
+Traces of matrices are called characters in group representation theory and provide a description for equivalent representations for elements of a group.  
+\begin{definition}[Trace of a matrix $A$ ]
+  If $A$ is an $n \times n$ matrix, $A = [a_{ij}]_{(nn)}$, 
+  \begin{equation}
+    tr A = a_{11} + a_{22} + \dots + a_{nn} = \sum_{i=1}^n a_{ii} 
+  \end{equation}
+The trace is the sum of the diagonal entries of $A$.  
+\end{definition}
+
+\begin{theorem}[Properties of the Trace]\label{T:Trace_properties} 
+We have the following properties from the trace:
+\begin{align}
+  tr \alpha A & = \alpha tr A  \\
+  tr(A+B) & = tr A + tr B   \\
+  tr A = tr A^T  \\
+  tr(AB) = tr(BA)
+\end{align}
+\end{theorem}
+
+Note that we can define an inner product for $n \times n$ matrices.  
+\begin{theorem}[Square Matrix inner product]\label{T:Square_Matrix_inner_product}
+  If $A,B$ are $n\times n$ matrices, 
+  \begin{equation}
+    (A,B) = tr AB^T
+  \end{equation}
+is a possible inner product. Also from the following proof, we get this fact:
+\begin{equation}
+  tr( A A^{\dag}) = \sum_{i,j=1}^n |a_{ij}|^2 
+\end{equation}
+$tr(AA^{\dag})$ is the sum of the square magnitudes of the entries of $A$ and is a possible candidate for a ``norm'' of a matrix $A$.  
+\end{theorem}
+
+\begin{proof}
+  Recall the definition of a complex-valued inner product.  
+\[
+\begin{aligned}
+  & (x,x) \geq 0  \\
+  & (x,y) = \overline{ (y,x) }  \\
+  & c(x,y) = (cx,y)  \\
+  & (x,x) \geq 0
+\end{aligned}
+\]
+We have
+\[
+\begin{aligned}
+  & (A,A) = tr A A^T = \sum_{i,j=1}^n |a_{ij}|^2 \, \Longrightarrow (A,A) = 0 \text{ if } a_{ij} = 0 \forall i, j = 1,\dots, n  \\
+  & (A,B) = tr (AB^{\dag}) = \sum_{i=1}^n (AB^{\dag}) = \sum_{i=1}^n \sum_{k=1}^n a_{ik}(b^{\dag})_{ki} = \sum_{i,k=1}^n a_{ik} \overline{ b}_{ik}  \\ 
+  & (B,A) = \sum_{i,k=1}^n b_{ik} \overline{a}_{ik}  = \overline{ (A,B) }  \\
+  & (A,B+C) = tr(A(B+C)) = tr(AB + AC) = tr(AB)+tr(AC) = (A,B) + (A,C)  \\
+  & (cA,B) = tr(cAB^T) = c tr(AB^T) = c (A,B)  
+\end{aligned}
+\]
+\end{proof}
+
+\subsection{ Eigenvalues, Eigenvectors, Similar Matrices, continued.}
+
+\begin{definition}[Similar Matrices]
+Two $n\times n$ matrices $A$ and $B$ are similar if $\exists$ invertible $C$ such that 
+\begin{equation}
+B= C^{-1} A C
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Existence of diagonalization.]\label{T:Diagonalization_existence}
+Let $T:V \mapsto V; \quad dim V = n$. \\
+$T$ has a diagonal matrix representation, 
+\phantom{if} iff $\exists \{ u_1,u_2, \dots u_n \} \subseteq V, u_1,u_2,\dots u_n \text{ independent }$ and $\lambda_1, \lambda_2, \dots , \lambda_n $ scalars such that \\
+\begin{equation*}
+T(u_k) = \lambda_k u_k; \, k=1,2,\ldots n 
+\end{equation*}
+
+Note: having $u_1,u_2,\dots u_n$ independent eigenvectors is a necessary and sufficient condition to having a diagonal matrix representation.  
+\end{theorem}
+
+\begin{proof}
+Assume $T$ has a diagonal matrix representation $A = (a_{ik})$ relative to some basis $(e_1,e_2,\dots e_n)$.  
+\[
+T(e_k) = \sum_{j=1}^n a_{jk} e_j = a_{kk}e_k \text{ since } a_{ik} = a_{kk} \delta_{ik}
+\]
+so with $u_k = e_k, \, \lambda_k = a_{kk}$, then by a change of notation $\Longrightarrow T(u_k) = \lambda_k u_k$ \\
+
+Suppose $\exists \{u_1,u_2,\dots u_n \} \, \lambda_1, \lambda_2, \dots \lambda_n $ scalars such that 
+\[
+T(u_k) = \lambda_k u_k
+\]
+Since $\{ u_1,u_2,\dots u_n \| $ independent and $dim V= n$; $\{ u_1,u_2, \dots u_n \} $ form a basis by theorem.   
+Let $\lambda_k = a_{kk}; \, a_{ik} = a_{kk} \delta_{ik} $
+\phantom{Let} then $A = (a_{ik})$ is a diagonal matrix representation of $T$ relative to $\{ u_1,u_2,\dots u_n \}$ basis.  
+\end{proof}
+
+\begin{theorem}[Independence of Eigenvectors]\label{T:Eigenvectors_independence} \quad \\
+Let $u_1,u_2,\dots u_k$ be eigenvectors of linear transformation $T:S \mapsto V$.  \\
+Assume corresponding eigenvalues $\lambda_1,\lambda_2,\dots \lambda_k$ distinct.  \\
+Then $u_1,u_2,\dots u_k$ are independent.
+\end{theorem}
+
+\begin{proof}
+Use induction.  
+
+$k=1. \quad u_1$ is independent by itself.  
+
+Assume $k$th case is true.  
+
+Suppose $T(u_{k+1}) = \lambda_{k+1}u_{k+1}$.  \\
+Consider
+\[
+\sum_{j=1}^{k+1} c_j u_j = 0  
+\]
+Then
+\begin{gather*}
+T \left( \sum_{j=1}^{k+1} c_j u_j \right) = \sum_{j=1}^{k+1} c_j T(u_j) = \sum_{j=1}^{k+1} c_j \lambda_j u_j \\
+\sum_{j=1}^{k+1} \lambda_j c_j u_j - \sum_{j=1}^{k+1} \lambda_{k+1} c_j u_j = \sum_{j=1}^{k+1} (\lambda_j - \lambda_{k+1} ) c_j u_j  \\
+\text{ Now } \lambda_j \neq \lambda_{k+1} \text{ for } j \neq k+1 \\
+c_j = 0 \text{ for } j =1,2,\dots k \text{ because of independence of the first $k$th elements }\\
+\Longrightarrow \sum_{j=1}^{k+1} c_j u_j = 0 + c_{k+1}u_{k+1} = 0 \Longrightarrow c_{k+1} = 0 
+\end{gather*}
+\end{proof}
+
+\begin{theorem}[Distinct Eigenvalues]\label{T:Distinct_Eigenvalues} \quad \\
+If $dim V = n$, every $T:V \mapsto V$ linear transformation has at most $n$ distinct eigenvalues.  \\
+If $T$ has $n$ distinct eigenvalues, \\
+\phantom{If} then the corresponding eigenvectors form a basis for $V$ and the matrix of $T$ relative to this basis is diagonal with the eigenvalues as diagonal entries.  
+
+Note that Theorem (\ref{T:Distinct_Eigenvalues}) tells us that the existence of $n$ distinct eigenvalues is a sufficient condition for $T$ to have a diagonal matrix representation, but is not necessary (consider the identity transformation).  
+
+i.e. the converse of this theorem is not necessarily true.  
+\end{theorem}
+
+\begin{proof} \quad \\
+If $T$ had $n+1$ distinct eigenvalues by Theorem (\ref{T:Eigenvectors_independence}), $V$ would have $n+1$ independent elements.  This is not possible since $dim V = n$.  
+
+If $T$ has $n$ distinct eigenvalues, the corresponding eigenvectors are independent since $dim V = n$, the $n$ corresponding eigenvectors form a basis.  By Theorem (\ref{T:Diagonalization_existence}), since there are $n$ independent eignevectors, $T$ can be diagonalized.  
+\end{proof}
+
+\begin{theorem}
+Let $T:V \mapsto V$ be a linear transformation.  $V$ has scalars in $F$, $dim V = n$.  \\
+Then, the eigenvalues of $T$ consists of the roots of $f(\lambda) = det(\lambda I -A)$
+\end{theorem}
+
+\begin{proof}
+Suppose $\lambda$ is an eigenvalue of $T$.  \\
+Then 
+\[
+T(x) = \lambda x  \Longrightarrow (\lambda I - T)(x) = 0 
+\]
+since $\lambda$ is an eigenvalue, then $x$ is an eigenvector and $x\neq 0$.  \\
+then $\lambda I = T$ must be noninvertible.  \\
+
+\phantom{th} if $\lambda I - T $ is non-invertible, \\
+\phantom{th if} then $det(\lambda I -T) = 0$ \\
+
+Thus, if $\lambda$ is an eigenvalue for $T$, then $det(\lambda I - T) =0 $
+
+Note that if $det(\lambda I -T)= 0$, $(\lambda I -T)(x) = 0$ for $x=0$ and/but not $x\neq 0$. 
+\end{proof}
+
+\subsubsection{Similar matrices and Eigenvalues}
+
+\begin{theorem}\quad \\
+Similar matrices have the same characteristic polynomial and therefore the same eigenvalues.
+
+Converse appears to work if $A$ and $B$ are diagonalizable.   
+\end{theorem}
+
+\begin{proof}
+\textbf{Here is the trick:}
+\begin{gather*}
+\lambda I - B = \lambda I - C^{-1}AC = \lambda C^{-1}IC - C^{-1}AC = C^{-1}(\lambda I -A)C \\
+det(\lambda I - B) = det(C^{-1}(\lambda I -A)C) = det(\lambda I -A)
+\end{gather*}
+
+What about the converse? 
+
+\begin{gather*}
+  \begin{aligned}
+    det(\lambda I - A) & = det(\lambda I -B) \\
+    C^{-1}AC & = diag A \\
+    D^{-1}BD & = diag B 
+  \end{aligned} \\
+\begin{aligned}
+det(\lambda I - A) & = det(\lambda I - C (diag A) C^{-1}) = det(C(\lambda I - diag A) C^{-1}) = det(\lambda I - diag A) = \\
+& = det(\lambda I - diag B) = det(\lambda I - B)
+\end{aligned} \\
+\begin{aligned}
+  \Longrightarrow & (\lambda - a_{11})(\lambda - a_{22})\dots (\lambda - a_{nn}) = (\lambda - b_{11})(\lambda - b_{22})\dots (\lambda - b_{nn})  \\
+  & \phantom{ l - a 11 }\text{ By comparing terms }\\
+  \Longrightarrow & a_{11} = b_{11}, a_{22} = b_{22}, \dots , a_{nn} = b_{nn} \\
+  \Longrightarrow & 
+  \begin{aligned}
+    diag A & = diag B \\
+    C^{-1}AC & = D^{-1}B D \\
+    (DC^{-1})A(CD^{-1}) = B
+  \end{aligned}
+\end{aligned}
+\end{gather*}
+\end{proof}
+
+\begin{definition}[Hermitian and skew-Hermitian transformations (symmetric and skew-symmetric transformations)] \quad \\
+  Let $\begin{aligned} E & \equiv \text{ Euclidean space} \\ V & \equiv \text{ subspace of $E$ } \end{aligned}$.  Transformation $T:V \to E$ Hermitian (skew-Hermitian) if 
+\begin{equation}
+  (T(x),y) = \pm (x,T(y)) \quad \, \forall \, x, y \in V
+\end{equation}
+If $E$ is real, then $T$ is a \emph{symmetric (skew-symmetric)} transformation.
+\end{definition}
+
+\subsubsection{ Existence of an orthonormal set of eigenvectors for Hermitian and skew-Hermitian operators acting on finite-dimensional spaces }
+Eigenvalues need not exist, but if $T$ acts on a finite-dimensional complex space, the eigenvalues always exist since they are roots of the characteristic polynomial.  
+\begin{theorem}[Existence of orthonormal eigenvectors for Hermitian (skew-Hermitian) operators]\label{T:Existence_of_eigenvectors_for_Hermitian_operators}
+Assume $dim V = n$.  \\
+Let $T:V \mapsto V$ be a Hermitian or skew-Hermitian.  \\
+$\exists n$ eigenvectors $u_1, u_2, \dots , u_n$ of $T$ which form an orthonormal basis for $V$.  
+\end{theorem}
+\begin{proof}
+Use induction.  \\
+If $n=1$, $T$ has exactly one eigenvalue.  Any eigenvectors $u_1$ of norm $1$ is an orthonormal basis for $V$.  
+
+Assume $n-1$ case.  \\
+For $V$, $dim V = n$, choose eigenvalue $\lambda_1$ and eigenvector $u_1$, $\| u_1 \| = 1 $ 
+\[
+T(u_1) = \lambda u_1
+\]
+Let $S = sp( u_1)$.  Consider $S^{\perp} = \{ x | x \in V, (x,u_1) = 0 \} $.  \\
+\phantom{Let} We want $dim S^{\perp} = n-1$ and $T:S^{\perp} \mapsto S^{\perp}$.  \\
+\phantom{Let} By theorem, $u_1$ is part of a basis for $V$, say $(u_1,v_2, \dots , v_n)$.  \\
+\phantom{Let By} without loss of generality, assume $(u_1,v_2, \dots, v_n)$ to be orthonormal (apply Gram-Schmidt process if necessary).  
+\begin{gather*}
+  x \in S^{\perp} \subset V \text{ so } x = x_1 u_1 + x_2 v_2 + \dots + x_n v_n \\
+  (x,u_1) = x_1 =0.  \quad x = \sum_{j=2}^n x_j v_j \text{ so } dim S^{\perp} = n-1
+\end{gather*}
+
+Assume $T$ is Hermitian (skew-Hermitian). 
+\[
+(T(x),u_1) = \pm (x,T(u_1)) = \pm (x, \lambda_1 u_1) = \pm \overline{\lambda}_1 (x,u_1) = 0
+\]
+\phantom{Assume} so $T(x) \in S^{\perp}$.  
+
+Use induction hypothesis ($n-1$ case) for $T$ on $S^{\perp}$ so that \\
+\phantom{Use} $\exists n-1$ eigenvectors $u_2, \dots, u_n$ that form an orthonormal basis for $S^{\perp}$. \\
+$u_1 \perp S^{\perp}$ by definition so \\
+\phantom{Use} $u_1,u_2, \dots, u_n$ eigenvectors form an orthonormal basis for $V$.    
+\end{proof}
+
+\begin{theorem} \quad \\
+Let $(e_1, e_2, \dots, e_n)$ be a basis for $V$ and \\
+let $T:V \mapsto V$ be a linear transformation.  
+
+T Hermitian (skew-Hermitian)  $iff \, (T(e_j), e_i) = \pm (e_j, T(e_i)) \, \forall i,j$.  
+\end{theorem}
+\begin{proof}
+  \begin{gather*}
+    x = \sum x_j e_j \quad y = \sum y_j e_j \\
+    (T(x),y) = \sum_{j=1}^n x_j (T(e_j), y) = \sum_{j=1}^n \sum_{i=1}^n x_j \overline{y}_i (T(e_j), e_i) \\
+    (T(y),x) = \sum_{j=1}^n \sum_{i=1}^n x_j \overline{y}_i (e_j, T(e_i)) \\
+    \text{ now } x_j, \overline{y}_i \text{ arbitrary, so } \forall i,y; \, (T(e_j), e_i) = (e_j, T(e_i))
+  \end{gather*}
+\end{proof}
+
+\begin{theorem} \quad \\
+  Let $(e_1,e_2, \dots, e_n)$ be an orthonormal basis for $V$. \\
+  Let $A=(a_{ij})$ be a matrix representation of linear transformation $T:V \mapsto V$ relative to $\mathcal{B}_V$.  \\
+  \phantom{Let} then
+  \[
+T \text{ is Hermitian (skew-Hermitian) } iff a_{ij} = \pm \overline{a}_{ji} \quad \forall i,j
+  \]
+  Note: every real Hermitian matrix is symmetric.  
+\end{theorem}
+\begin{proof}
+\begin{gather*}
+  T(e_j) = \sum_{k=1}^n a_{kj} e_k \quad (\text{ matrix representation relative to } V)  \\
+  (T(e_j),e_i) = \sum_{k=1}^n a_{kj} (e_k,e_i) = a_{ij} \\
+  (e_j, T(e_i)) = (e_j, \sum_{k=1}^n a_{ki}e_k ) = \sum_{k=1}^n \overline{a}_{ki} (e_j, e_k) = \overline{a}_{ji} \\
+  (T(e_j), e_i) = \pm (e_j, T(e_i)) \Longrightarrow a_{ij} = \pm \overline{a}_{ji} \quad \text{ if $T$ is Hermitian (skew-Hermitian) }
+\end{gather*}
+\end{proof}
+
+\begin{definition}[Definition of a Hermitian \emph{matrix}] \quad \\
+  A square matrix $A = (a_{ij})$ is Hermitian if 
+  \begin{equation*}
+    a_{ij} = \overline{a}_{ji} \, \forall \, i,j \text{ or } A = \overline{A}^{T} 
+  \end{equation*}
+  A square matrix $A$ is skew-Hermitian if 
+  \begin{equation*}
+    a_{ij} = - \overline{a}_{ji} \, \forall \, i,j \text{ or } A = - \overline{A}^{T}
+  \end{equation*}
+\end{definition}
+\begin{definition} 
+  \begin{equation*}
+    \overline{A}^T = A^* \equiv \text{ adjoint of } A
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}[Apostol Vol. 2, Thm. 5.7, pp. 122] \quad \\
+Every $n \times n $ Hermitian or skew-Hermitian matrix $A$ is similar to the diagonal matrix, \\
+\phantom{Every}  $\Lambda = diag( \lambda_1, \lambda_2, \dots, \lambda_n) $ of its eigenvalues.  
+
+Also $\Lambda = C^{-1} AC$ \\
+\phantom{Also} where $C$ is invertible, i.e. $C^{-1} = C^*$.  
+
+To say the whole theorem in another way, 
+\[
+\text{ \emph{ If you have a Hermitian or skew-Hermitian matrix, it can be diagonalized with its eigenvalues }} 
+\]
+\end{theorem}
+\begin{proof} \quad \\
+Let $V = $ space of $n$-tuples of complex numbers. \\
+Let $(e_1,e_2, \dots, e_n)$ be the orthonormal basis of unit coordinate vectors.  \\
+\phantom{Let} if $x = \sum x_i e_i; \, y = \sum y_i e_i \, \text{ let } (x,y) = \sum x_i \overline{y}_i $.  
+
+By the existence of eigenvectors for Hermitian operators, Theorem (\ref{T:Existence_of_eigenvectors_for_Hermitian_operators}), $V$ has an orthogonal basis of eigenvectors $(u_1,u_2, \dots, u_n)$ relative to $T$ with diagonal matrix representation $\Lambda = diag( \lambda_1, \lambda_2, \dots, \lambda_n)$.  \bigskip \\
+Since $A$ and $\Lambda$ represent $T$, $A$ and $\Lambda$ are similar, so 
+\[
+\Lambda = C^{-1} AC
+\]
+where 
+\[
+[ u_1, u_2, \dots u_n ] = [e_1, e_2, \dots, e_n]C
+\]
+This equation shows that the $j$th column of $C$ consists of the components of $u_j$ relative to $(e_1,e_2, \dots e_n)$.  
+\[
+(u_j, u_i) = \sum_{k=1}^n c_{kj}\overline{c}_{ki} = \delta_{ij} \Longrightarrow CC^* = I \Longrightarrow C^{-1} = C^*
+\]
+\end{proof}
+
+\subsubsection{ Special kinds of linear transformations and matrices }
+First, we'll talk about Unitary and Orthogonal matrices.  Now unitary and orthogonal matrices are useful because they are the ``change of basis matrices'' for Hermitian (skew-Hermitian) and real symmetric (skew-symmetric) matrices, respectively.
+
+\begin{definition}[Unitary and Orthogonal Matrices] \quad \\
+A square matrix $A$ is unitary if $AA^* = I$.  \\
+A square matrix $A$ is orthogonal if $AA^{T} = I $ 
+
+\phantom{A sq} Note: every real unitary matrix is orthogonal since $A^* = A^T $
+\end{definition}
+
+\begin{definition} \quad \\
+  A square matrix $A$ with real or complex entries is symmetric if $A = A^T$. 
+  A square matrix $A$ with real or complex entries is skew-symmetric if $A = - A^T$. 
+\end{definition}
+
+\begin{theorem}
+  Every square matrix $A$ can be expressed as a unique decomposition:
+  \begin{equation*}
+    A=B+C \quad (B \text{ and } C \text{ are Hermitian and skew-Hermitian or are symmetric and skew-symmetric })
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  \begin{gather*}
+\text{ Let } B = \frac{ A + A^*}{2}, \, C = \frac{ A - A^*}{2} \\
+\Longrightarrow A = B + C \text{ and } \\
+B^* = \left( \frac{ A + A^*}{2} \right)^* = B, \,  C^* = \frac{ A - A^*}{2} = \frac{ A^* - A}{2} = -C
+  \end{gather*}
+\end{proof}
+
+\begin{theorem}
+If $A$ is orthogonal, $1 = det(AA^T) = (det A)(det A^T) = (det A)^2 \Longrightarrow det A = \pm 1$.  
+\end{theorem}
+
+The following straightforward theorem tells us why we call orthogonal matrices orthogonal.  
+
+\begin{theorem}\label{T:Orthogonal_Matrix_Orthogonal_Columns}
+An $N \times N$ real matrix is orthogonal iff its columns form an orthonormal basis for $\mathbb{R}^n$.  
+\end{theorem}
+
+\begin{proof}
+  If $A$ is orthogonal, $(A^T A)_{ij} = (\mathcal{1})_{ij} = \delta_{ij} $.  
+\[
+(A^T A)_{ij} = \sum_{k=1}^N (A^T)_{ik} a_{kj} = \sum_{k=1}^N a_{ki} a_{kj} = \delta_{ij}
+\]
+Now $((A)_i, (A)_j) = \sum_{k=1}^N a_{ki} a_{kj}$.  
+
+So if $A$ is orthogonal, its columns are orthonormal.  If its columns are orthonormal, $A$ is orthogonal (by definition).  
+\end{proof}
+
+This theorem says that any length-preserving and angle-preserving transformation on $\mathbb{R}^N$ must be orthonormal.  
+
+\begin{theorem} \quad \\
+Let $T:V \mapsto V$ be a linear transformation on Euclidean space $V$.  \\
+Let $\mathcal{B}_V = \{ b_1, b_2, \dots b_n \} = $ orthonormal basis for $V$.  \\
+Let $A_T = $ matrix representation of $T$ relative to $\mathcal{B}_V$.  
+
+Then $T$ is an isometry of $V$ iff $A_T$ is an orthogonal matrix.  
+\end{theorem}
+
+\begin{proof}  \quad \\
+  If $T$ is an isometry of $V$, $\forall x_1, x_2 \in V; \, (T(x_1),T(x_2)) = (x_1,x_2) $.  \\
+  $\forall b_i, b_j \in \mathcal{B}_V; \, (T(b_i), T(b_j)) = (b_i, b_j) = \delta_{ij}$  \\
+  So then, using the definition of matrix representation in the following first step,  
+  \[
+  \begin{aligned}
+    &  (T(b_i),T(b_j)) = (\sum_{k=1}^n a_{ki} b_k, \sum_{k=1}^n a_{kj} b_j ) = \sum_{k=1}^n \sum_{l=1}^n a_{ki} a_{lj} (b_k, b_l) = \sum_{k=1}^n a_{ki} a_{kj} = \\
+    & = ( i\text{th column of $A_T$, $j$th column of $A_T$}) = \delta_{ij} 
+  \end{aligned}
+  \]
+  Then columns of $A_T$ form an orthonormal basis.  \\
+  $\Longrightarrow$ Then by theorem (Thm. (\ref{T:Orthogonal_Matrix_Orthogonal_Columns})), $A_T$ is an orthogonal matrix.
+
+  If $A_T$ is an orthogonal matrix, reverse steps so that, 
+\[
+\delta_{ij} = (\text{$i$th column of $A_T$, $j$th column of $A_T$}) = (T(b_i),T(b_j))
+\]
+Now $(b_i,b_j) = \delta_{ij}$ (definition of orthonormal basis), so \bigskip \\
+$\Longrightarrow  (T(b_i),T(b_j)) = \delta_{ij} = (b_i,b_j)$.  Inner space is preserved.  
+
+Now we have to show that $T$ is an isomorphism because an isometry is angle preserving and an isomorphism.  
+
+$T(b_1), T(b_2), \dots , T(b_n)$ are an orthonormal set, so $\Longrightarrow$ by theorem, $T(b_1),T(b_2), \dots , T(b_n)$ form an orthonormal basis for $V$.  
+\[
+\forall y \in V, y = \sum_{j=1}^n \alpha_j T(b_j) = T\left( \sum_{j=1}^n \alpha_j b_j \right)
+\]
+where $\sum_{j=1}^n \alpha_j b_j \in V$.  So $T$ is onto.  
+
+By nullity-rank theorem, 
+\[
+null T = dim V - rank T = n - n = 0 
+\]
+So $T(0)=0$.  $T$ is one-to-one.  $\Longrightarrow T$ is an isomorphism $\Longrightarrow T$ is an isometry.  
+\end{proof}
+
+\subsubsection{ Arbitrary Rotation Matrices in $\mathbb{R}^N$ }.  
+
+Particularly with `advanced' Classical Mechanics and Quantum Mechanics, it's useful to start formulating the theory in terms of arbitrary rotations.  Cartesian coordinates still remain useful because they don't change direction (once fixed) with ``active rotations.''  
+
+Consider an arbitrary rotation of a set of orthonormal Cartesian coordinates, $R_{ \theta \phi}$, with no inversion (so we expect $det R_{\theta \phi} = 1$ as opposed to being $-1$).  
+\begin{equation}
+  R_{\theta \phi} = \left[ 
+    \begin{matrix} 
+      \sin{\theta} \cos{\phi} & - \sin{\phi} & -\cos{\theta} \cos{\phi} \\ 
+      \sin{\theta} \sin{\phi} &  \cos{\phi} & - \cos{\theta} \sin{\phi} \\ 
+      \cos{\theta} & 0 & \sin{\theta} 
+    \end{matrix}
+    \right]
+\end{equation} 
+Notice how the columns of $R_{\theta \phi}$ are orthonormal and that  $det R_{\theta \phi} = 1$.  
+
+\begin{definition}[nilpotent]
+  matrix $N$ is a nilpotent if for some $k \in \mathbb{Z}^+ ; N^k = 0 $.  
+\end{definition}
+
+\begin{definition}[idempotent]
+operator or matrix $P$ is idempotent if $P^2 = P$.  
+\end{definition}
+
+\begin{definition}[2-dim rotation matrix]
+  \[
+  \left[ 
+    \begin{matrix}
+      \cos{\theta} & -\sin{\theta} \\
+      \sin{\theta} & \cos{\theta}
+      \end{matrix}
+    \right]
+  \]
+  rotates the vector by $\theta$ in the counter-clockwise (positive) direction or \\
+  rotates the coordinate axes by $\theta$ in the clockwise direction.  
+  
+  We could also think of it as rotation of vectors in the $xy$ plane in the positive, right-hand orientation.  
+\end{definition}
+
+\subsubsection{ Quadratic forms (Apostol Vol. 2, Ch. 5)}
+
+\begin{definition}[Quadratic forms] Let $T:V \to E$ be Hermitian transformation.  Recall $(T(x),y) = (x,T(y))$\, $\forall \, x,y \in V$.  Define $Q$ s.t. $Q(x) = (T(x),x)$.  
+\end{definition}
+
+\begin{theorem}[Theorem 5.8, Apostol Vol. 2] \quad \\
+Let $(e_1, \dots, e_n) \equiv \text{ orthonormal basis for Euclidean space $V=\mathcal{B}_V$ } $ \\ 
+Let $T$ be Hermitian transformation; let $A = (a_{ij})$ be matrix of $T$ relative to $\mathcal{B}_V$.  \\
+\quad \quad Then $Q(x) = \sum_{i,j=1}^n a_{ij} x_i x_j$, if $x = \sum_{i=1}^n x_i e_i$  
+\end{theorem}
+
+\begin{proof} 
+\[
+\begin{aligned}
+  T(x) & = \sum x_i T(e_i)  \quad \, \text{ (linearity)} \\ 
+  Q(x) & = (T(x),x)  = \sum_i \overline{x}_i (T(e_i), \sum_j x_j e_j) = \sum_{i,j} \overline{x}_i x_j (e_i,T(e_j)) = \sum_{i,j} a_{ij} \overline{x}_i x_j
+\end{aligned}
+\] since $(e_i,T(e_j)) = a_{ij}$.  
+\end{proof}
+
+Even if $A$ is not symmetric, 
+\begin{definition}[Quadratic form (any matrix)] \quad \\
+  Let $V \equiv \text{ Euclidean space }$ \\
+  Let $(e_1, \dots, e_n)$ orthonormal basis for $V \equiv \mathcal{B}_V$ \\ 
+  Let $(A = (a_ij)$ be any $n\times n$ matrix of scalars.  
+\[
+Q(x) \equiv \text{ quadratic form } = \sum_{i,j=1}^n a_{ij} \overline{x}_i x_j \quad \, (Q = \sum a_{ij} x_i x_j, \, \text{ if $V$ real}) \, \forall \, x = \sum_i x_i e_i \in V
+\]
+\end{definition}
+Note that in matrix form, $Q = XAX^{\dag}$ ($XAX^T$ if $V$ real).  
+
+\begin{theorem}[Thm. 5.10, Apostol Vol. 2] $\forall \, n \times n A, \, \forall \, \text{ row matrix $X$ }$  
+\[
+XAX^T = XBX^T \text{ where $B=\frac{1}{2} (A+A^T)$, \, $B$ symmetric (!!!)}
+\]
+\end{theorem}
+\begin{proof}
+\[
+X (\frac{1}{2} (A+A^T) ) X^T = \frac{1}{2} (XAX^T + (XAX^T)^T) = XAX^T \quad \text{(transpose of a number is a number) }
+\]
+\end{proof}
+
+\subsubsection{Notes on Sec. 5.13 Reduction of a real quadratic form to a diagonal form.}
+\begin{theorem}[Thm. 5.11] Consider $XAX^T$, $A$ Hermitian.  $A$ Hermitian, so $\exists \, C$ unitary s.t. $C^{\dag} AC = \Lambda$ diagonal.  Then $XAX^{\dag} = Y \Lambda Y^{\dag} = \sum_{i=1}^n \lambda_i y_i^2$, where $Y = [y_1, \dots, y_n]$ is the row matrix $Y=XC$, and $\lambda_1, \dots, \lambda_n$ are eigenvalues of $A$.  
+\end{theorem}
+\begin{proof}
+  Since $C$ unitary, $C^{\dag} = C^{-1}$.  Then $Y=XC$ implies $X=YC^{\dag}$.  \\
+  Then $XAX^{\dag} = YC^{\dag} A (YC^{\dag})^{\dag} = Y \Lambda Y^{\dag}$
+\end{proof}
+
+
+\subsubsection{ Unitary Triangularization }\label{subsubS:Unitary_Triangularization}
+\begin{theorem}\label{T:Unitary_Triangularization}
+  Let $A$ be an $n \times n$ matrix.  Then there's a unitary matrix $U$ such that 
+  \begin{equation}\label{E:Unitary_Triangularization}
+U^* AU = T = (t_{ij}) \quad \text{ ( with $t_{ij}$ for $ i > j$ ) } 
+  \end{equation}
+The diagonal elements $t_{ii}$ are eigenvalues of $A$.
+\end{theorem}
+
+\begin{proof}
+Use induction.  \\
+For $n=1$, $(1)a_{11}(1) = \lambda_1 = T $
+
+Assume $n-1$ case is true.  \\
+\quad Let $u_1$ be a unit eigenvector of $A$.  
+\[
+A u_1 = \lambda_1 u_1 \quad \| u_1 \| = 1
+\]
+$u_1$ exists because $det(\lambda I -A) =0$ for at least one complex number $\lambda = \lambda_1$.  \\
+Also note that we're guaranteed $n$ complex eigenvalues since complex numbers are algebraically closed.  
+
+Since $u_1 \neq 0$, $u_1$ has at least one nonzero component, say the $r$th component.  \\
+Consider $u_1$ along with ``standard'' basis elements, without $e_r$.  
+\[
+u_1, e_1, e_2, \dots , e_{r-1}, e_{r+1}, \dots , e_n
+\]
+Use Gram-Schmidt process to orthogonalize the $n$ vectors.  
+\[
+v_1, v_2, \dots , v_n \quad (v_i, v_j) = \delta_{ij} \text{ and } u_1 = v_1
+\]
+Let $V$ be the unitary matrix with columns $v_j$. \\  
+\phantom{Let} $AV$ has columns 
+\[
+Av_1 = \lambda_1 v_1; \quad Av_2, \dots , Av_n
+\]
+$V^* AV$ has the first column
+\[
+V^* (Av_1) = V^* \lambda_1 v_1 = [ \lambda_1 (v_i)^* v_1 ] \quad (i = 1,2, \dots n) 
+\]
+which equals $\lambda_1 col(1,0,0, \dots, 0)$ since $v_i^* v_1 = (v_i, v_1) = \delta_{i1} $ \\
+Thus $V^* A V$ has the form
+\[
+V^* AV = \left[ 
+  \begin{matrix}
+    \lambda_1 & * & \hdotsfor{3} & * \\
+    0  \\
+    \vdots & & & B & \\
+    0  \\
+  \end{matrix}
+\right]
+\]
+where the numbers $*$ are irrelevant and where $B$ is an $(n-1) \times (n-1)$ matrix.  
+
+By induction, the $n-1$ case, we have an $(n-1) \times (n-1)$ unitary matrix $W$ for which 
+\[
+W^* BW = T_1, \quad T_1 \equiv \text{ a triangular matrix with all zeros below the main diagonal }
+\]
+
+Consider 
+\[
+Y = \left[ 
+  \begin{matrix}
+    1 & 0 & \hdotsfor{3} & 0 \\
+    0 \\
+    \vdots & & & W & \\
+    0 \\
+    \end{matrix}
+\right]
+\]
+$Y$ is unitary because its columns are mutually orthogonal and of norm $1$.
+\[
+Y^* (V^* A V)Y = \left[ 
+  \begin{matrix}
+    \lambda_1 & * & \hdotsfor{3} & * \\
+    0  \\
+    \vdots & & & W^* B W & \\
+    0  \\
+  \end{matrix}
+  \right] = T
+\]
+But $W^* BW = T_1$ which has all zeros below the main diagonal.  \\
+\phantom{But}Therefore $T$ has all zeros below the main diagonal. 
+
+And $U=VY$ is unitary.  \\
+Thus $Y^* (V^* A V)Y = U^* AU = T$ triangulizes $A$.  
+
+Also note that
+\begin{align*}
+det(\lambda I -T) & = (\lambda - t_{11})(\lambda - t_{22}) \dots (\lambda - t_{nn} ) = \\
+& = det( U (\lambda I - A) U^* ) = det( \lambda I -A) = (\lambda - \lambda_1)(\lambda - \lambda_2) \dots (\lambda - \lambda_n )
+\end{align*}
+since the characteristic polynomial is ``invariant under a similarity transformation.''
+\end{proof}
+
+\subsection{ The Jordan Canonical Form }\label{subS:Jordan_Canonical_Form}
+\begin{definition}
+  Zero or nonzero vector $p$ is a \\
+  principal vector of grade $g \geq 0$ belonging to eigenvalue $\lambda_i$ if 
+  \begin{equation*}
+    (\lambda_i I - A)^g p = 0 
+  \end{equation*}
+  and if there is no smaller non-negative integer $\gamma < g$ for which 
+  \begin{equation*}
+    (\lambda_i I- A)^{\gamma} p = 0 
+  \end{equation*}
+\end{definition}
+
+\begin{lemma}[Cayley-Hamilton Theorem]\label{L:Cayley-Hamilton_Theorem} \quad \\
+  If $\phi(\lambda) = det(\lambda I - A) $, then $\phi(A) = 0$
+\end{lemma}
+\begin{proof}
+  Define $n \times n$ matrix of signed cofactors.  
+  \[
+C(\lambda) = cof(\lambda I -A)
+  \]
+  For any square matrix $M$, $M (cof M)^T = (det M) I$ (by Theorem) 
+\[
+\Longrightarrow (\lambda I - A)(C(A))^T = (det(\lambda I - A))I = \phi(\lambda) I
+\]
+If $\lambda$ is an $n \times n $ matrix, \\
+\phantom{If} every component of $C(\lambda)$ is a polynomial of degree $\leq n-1$ in $\lambda$.  
+\[
+\Longrightarrow (C(\lambda))^T = \lambda^{n-1}C_0 + \lambda^{n-2} C_1 + \dots + \lambda C_{n-2} + C_{n-1}
+\]
+where $C_i$ is an $n \times n $ matrix of constants.
+
+\footnotesize{ 
+  \[ 
+  \begin{aligned}
+    (C(\lambda))^T & = \sum_{j=0}^{n-1} \lambda^{n-1-j} C_j \\
+    (\lambda I - A)(C(\lambda))^T & = \sum_{j=0}^{n-1} \lambda^{n-1-j} (\lambda I -A)C_j \\
+    & = \sum_{j=0}^{n-1} \lambda^{n-j} C_j - \sum_{j=0}^{n-1} \lambda^{n-1-j} AC_j = \\
+    & = \lambda^n C_0 + \sum_{j=1}^{n-1} \lambda^{n-j} C_j - \sum_{j=1}^{n-1} \lambda^{n-j} A C_{j-1} - A C_{n-1} = \\
+    & = \lambda^n C_0 + \sum_{j=1}^{n-1} \lambda^{n-j} (C_j-AC_{j-1}) - AC_{n-1}
+  \end{aligned}
+  \]}
+\normalsize
+
+On the other side, we have
+\[
+\phi(\lambda) I = \lambda^n I + \alpha_1 \lambda^{n-1} I + \dots + \alpha_{n-1} \lambda I + \alpha_n I
+\]
+\phantom{On th} then comparing powers of $\lambda$, 
+\begin{equation}\label{E:Cayley_Hamilton_proof_lambda_comparison}
+\begin{aligned}
+  \lambda^n : & I = C_0 \\
+  \lambda^{n-1} : & C_1 - A C_0 = \alpha_1 I \\
+  & \vdots \\
+  \lambda : & C_{n-1} - A C_{n-2} = \alpha_{n-1} I \\
+  1 : & -AC_{n-1} = \alpha_n I
+\end{aligned}
+\end{equation}
+Multiply the first equation of (\ref{E:Cayley_Hamilton_proof_lambda_comparison}) by $A^n$ on the left, \\
+\phantom{Multip} the second by $A^{n-1}$, etc., and add \\
+\phantom{Mul} $A^n C_0 + A^{n-1}(C_1 - AC_0) + \dots + A(C_{n-1}-AC_{n-2} )  - AC_{n-1} = \phi(A) I $
+
+\footnotesize{
+  \[
+  \begin{aligned}
+    C_0 & = I \\
+    C_j - AC_{j-1} &= \alpha_j I \\
+    -AC_{n-1} & = \alpha_n I \\
+    \phi(A) & = A^n C_0 + \sum_{j=1}^{n-1} A^{n-j} (C_j - AC_{j-1} ) -AC_{n-1} \\
+    & =  A^n C_0 + \sum_{j=1}^{n-2} A^{n-j}C_j - \sum_{j=1}^{n-2} A^{n-j-1}AC_j - A^n C_0 - AC_{n-1} = 0  
+  \end{aligned}
+  \]
+ }
+\normalsize
+
+All terms on the left hand side cancel, so 
+\[
+\mathbf{0} = \phi(A) I
+\]
+\end{proof}
+
+\begin{lemma}\label{L:Principal_Vector_Lemma_2_Rootless_Polynomials} \quad \\
+  Let $s \geq 2$ \\ 
+  Let $\phi_1(\lambda) , \dots , \phi_s(\lambda)$ be polynomials. \\
+  Suppose there's no number $\lambda_0$ which is a root of all those polynomials.  \\ 
+  \phantom{Sup} Then there are polynomials $\psi_1(\lambda), \dots, \psi_s(\lambda)$ such that 
+  \begin{equation*}
+    \psi_1(\lambda) \phi_1(\lambda) + \psi_2(\lambda) \phi_2(\lambda) + \dots + \psi_s(\lambda) \phi_s(\lambda) = 1
+  \end{equation*}
+Note that if for some $\lambda_0$, $\phi_0(\lambda) = 0 \, (i=1,\dots, s)$ then $0+ 0 + \dots + 0 \neq 1$.  
+\end{lemma}
+\begin{proof} \quad \\
+  Let $N = (\text{  degree of } \phi_1) + \dots + \text{  degree of } \phi_s)$ \\
+  \phantom{Le} if $N=0$, all $\phi_i(\lambda)$ are constants.  \\
+  \phantom{Let N } At least one $\phi_k$ is nonzero.  So let $\psi_k(\lambda) = \frac{1}{\phi_k}$ and let all others $psi_i(\lambda) = 0$. \\
+  \phantom{Let N At least} $\Longrightarrow \psi_k \phi_k = 1$.  
+
+If $N \geq 1$, and assume without loss of generality,
+\[
+\text{ degree of } \phi_1(\lambda) \leq \dots \leq \text{ degree of } \phi_s(\lambda)
+\]  
+Let $\phi_k(\lambda)$ be the first polynomial not identically zero.  \\
+\phantom{Le} Then $k<s$; otherwise, if $k=s$, every root of $\phi_s$ would be a root of all $\phi_i$.  
+\begin{gather}
+  \begin{aligned}
+    & \text{ if $\phi_k(\lambda) = $ constant, let $\psi_k = \frac{1}{\phi_k}$ and $\phi_i = 0 $ so $\psi_k \phi_k =1$.  }\\
+    & \text{ if $\phi_k(\lambda)$ is not a constant, divide all other $\phi_i(\lambda)$ by $\phi_k(\lambda)$ } 
+    \end{aligned}
+   \notag \\
+  \phi_k(\lambda) = q_i (\lambda) \phi_k(\lambda) + r_i(\lambda) \, (i \neq k)  \label{E:Principal_Vectors_Lemma2_proof_Dividing_Polynomials} OB
+\end{gather}
+Note that if $i<k$, $\phi_i(\lambda) + r_i(\lambda) = 0$.  
+\begin{align*}
+  \text{ if $i > k$ } & \\
+&  \begin{aligned}
+    \text{ degree of $r_i(\lambda)$ }  & < \text{ degree of $\phi_k(\lambda)$ and so also } \\
+    \text{ degree of $r_i(\lambda)$ }  & < \text{ degree of $\phi_i(\lambda)$ } 
+    \end{aligned} 
+\end{align*}
+
+Consider $\phi_k(\lambda), r_i(\lambda), \, (i\neq k)$. \\ 
+ \phantom{ Consi} $\phi_k(\lambda), r_i(\lambda)$ cannot have a common root $\lambda_0$, otherwise, by Eqn. (\ref{E:Principal_Vectors_Lemma2_proof_Dividing_Polynomials}), $\lambda_0$ would be a root of all polynomials $\phi_1, \dots , \phi_s$.  
+
+Use induction on the sum of the degrees, so that  we can assume this as our $N-1$ case, 
+\[
+\begin{aligned}
+  &  \psi_k^*(\lambda) \phi_k(\lambda) + \sum_{i\neq k} \psi_i^*(\lambda)r_i(\lambda) = 1
+  \Longrightarrow & \boxed{ \psi_k^*(\lambda) \phi_k(\lambda) + \sum_{i\neq k} \psi_i^*(\lambda)(\phi_i(\lambda)-q_i(\lambda)\phi_k(\lambda)) = 1 }
+\end{aligned}
+  \]
+  where we had defined
+  \[
+  \begin{aligned}
+    & \psi_k(\lambda) = \psi_k^*(\lambda) - \sum_{i\neq k} \psi_i^*(\lambda)q_i(\lambda) \\
+    & \psi_i(\lambda) = \psi_i^* \text{ for $i\neq k$ }
+  \end{aligned}
+  \]
+
+\footnotesize{
+  To further explain how we used induction for our ``$N-1$'' case, consider
+\[
+N = (\text{ degree of } \phi_1) + \dots +  (\text{ degree of } \phi_s) > 0 + \dots +  (\text{ degree of } \phi_k) +  (\text{ degree of } r_{k+1}) + \dots +  (\text{ degree of } r_s)
+\]
+Simply take the $N-1$ case to be polynomials of $0,0, \dots , \phi_k, r_{k+1}, \dots , r_s$.  
+}
+\normalsize
+\end{proof}
+
+\begin{theorem}[Principal Vector representation]\label{T:Principal_Vector_Representation} \quad \\
+  Let $A$ by an $n \times n$ matrix with different eigenvalues $\lambda_1, \dots, \lambda_s$ with multiplicities $m_1, \dots, m_s$.  \\
+  \phantom{Le} Then every $n$-component column vector $x$ has a representation 
+  \begin{equation}
+    x= p^{(1)} + p^{(2)} + \dots + p^{(s)}
+  \end{equation}
+where $p^l$ is a uniquely defined principal vector belonging to $\lambda_l$ of grade $\leq m_l$.  
+\end{theorem}
+\begin{proof}
+If $s=1$, $m_1 = n$, then $det(\lambda I-A) = (\lambda -\lambda_1)^n $.  \\
+\phantom{If $s=1$} By Cayley-Hamilton Theorem, Lemma (\ref{L:Cayley-Hamilton_Theorem}), $(A-\lambda_1 I)^n =0 $. \\  
+\phantom{If} Then every $x$ itself is a principal vector of grade $\leq m_1 = n$ belonging to $\lambda_1$.  
+
+If $s\geq 2$, \\ 
+\phantom{If} define
+\[
+\phi_i(\lambda) = \prod_{j=1,j\neq i}^s (\lambda - \lambda_j)^{m_j}
+\]
+\phantom{If defi} \footnotesize{ Note that $(\lambda - \lambda_i)^{m_i} \phi_i(\lambda) = det(\lambda I -A) = \phi(\lambda) $ \\
+  \phantom{If defi Note th} and by Cayley-Hamilton Theorem, $(A - \lambda_i I)^{m_i} \phi_i(A) = \phi(A)$ \\ 
+  \phantom{If de} $\phi_i(\lambda)$ polynomials have no common root (you must consider each and every polynomial; for instance, while $\phi_i(\lambda), \phi_n(\lambda)$ may share many factors, there'll be a polynomial that won't contain a particular factor)
+}
+\normalsize
+\[
+\psi_1(\lambda) \phi_1(\lambda) + \dots + \psi_s(\lambda)\phi_s(\lambda) = 1
+\]
+
+If $\omega(\lambda) = $ a polynomial $\equiv 1$, we must have $\omega(A) = I$ for any square matrix $A$.  \\
+\phantom{ If} since permissible manipulations of addition, subtraction, and (scalar) multiplication are the same for the scalar variable $\lambda$, as for a single square matrix $A$ (helped by the fact that $A$ commutes with $I$ and itself).  \\
+\phantom{ If since} (note in the derivation of Lemma (\ref{L:Principal_Vector_Lemma_2_Rootless_Polynomials}), we divided by polynomials).  
+So for 
+\[
+det(\lambda I - A) = \phi(\lambda) = (A -\lambda_1 I)(A-\lambda_2 I) \dots (A- \lambda_n I) 
+\]
+the factors commute with each other.  
+
+\begin{align*}
+  \Longrightarrow & \phi_1(A) \psi_1(A) + \dots + \phi_s(A) \psi_s(A) = I \\
+  \text{ multiply } & \text{ by $x$ } \\
+  \Longrightarrow & [ \phi_1(A) \psi_1(A) x] + \dots + [\phi_s(A) \psi_s(A)x] = x
+\end{align*}
+
+But each $[ \, ]$ is a principal vector.  To see, this consider 
+\[
+(A-\lambda_i I)^{m_i} (\phi_i(A) \psi_i(A) x) = ((A-\lambda_i I)^{m_i} \phi_i(A)) \psi_i(A) x = 0 \, (\text{ since } \phi(A) = 0)
+\]
+
+To show uniqueness; \\
+\phantom{To} Suppose $x = q^{(1)} + \dots + q^{(s)} $, \\
+\phantom{to S} where $q^1 \neq p^1$ and where each $q^i$ is a principal vector of grade $\leq m_i$ belonging to $\lambda_i$
+\[
+\begin{aligned}
+  x & = p^{(1)} + p^{(2)} + \dots + p^{(s)} \\
+  x & = q^{(1)} + \dots + q^{(2)} 
+\end{aligned}
+\]
+\begin{equation}\label{E:Principal_Vector_Representation_uniqueness_proof}
+ \Longrightarrow 
+\begin{gathered}
+  0 = r^{(1)} + \dots + r^{(s)} \\
+  \text{ where } r^{(i)} = p^{(i)} = q^{(i)} 
+\end{gathered}
+\end{equation}
+Now $r^{(1)}$ is also a nonzero principal vector belonging to $\lambda_1$.  
+
+Let $r^{(1)}$ have a grade $g_1 \geq 1$.  \\
+Let $c^1 = (A- \lambda_1 I)^{g_1-1}r^{(1)}; \, r^{(1)} \neq 0 $.  \\
+\phantom{Let} Then \\
+\phantom{Let The} $c^1$ is an eigenvector belonging to $\lambda_1$ since 
+\[
+(A-\lambda_1 I)c^{(1)} = 0
+\]
+Now multiply Eqn. (\ref{E:Principal_Vector_Representation_uniqueness_proof}) by 
+\[
+(A -\lambda_1 I)^{g_1 -1} \prod_{j=2}^s (A-\lambda_j I)^{m_j}
+\]
+then
+\[
+\Longrightarrow 0 = \sum_{j=2}^s (\lambda_1 - \lambda_j)^{m_j} c^{(1)} + 0 + \dots + 0
+\]
+Thus, a contradiction; the right hand side is nonzero.  
+
+\footnotesize For further clarification, consider that $c^{(1)}$ is an eigenvector.  
+\begin{gather*}
+  (A-\lambda_1 I) c^{(1)} = 0 \\
+  Ac^{(1)} = \lambda_1 c^{(1)} \\
+  \text{ so then } (A- \lambda_j I) c^{(1)} = (\lambda_1 - \lambda_j) c^{(1)} \\
+  \text{ so then} \phi_1(A) c^{(1)} = \phi_1(\lambda_1) c^{(1)}
+\end{gather*}
+\begin{align*}
+ \, & \text{ Also note the commutability of } (A-\lambda_1 I)(A-\lambda_j I) \\
+ \, &  (A-\lambda_1 I)(A-\lambda_j I) = A^2 - \lambda_j A - \lambda_1 A + \lambda_1 \lambda_j I \\
+ \, &  (A-\lambda_j I)(A-\lambda_1 I) = A^2 - \lambda_1 A - \lambda_j A + \lambda_1 \lambda_j I
+\end{align*}
+\end{proof}
+
+\normalsize
+\begin{definition}
+  For any $A$ $n \times n$ matrix with some eigenvalue $\lambda_i$, define
+  \[
+  M = A - \lambda_i I
+  \]
+Then define the linear space $P_g$ of principal vectors of grade $g$ belonging to the eigenvalue $\lambda_i$ of $A$, i.e.
+\begin{equation}\label{E:Principal_vector_linear_space_definition}
+  P_g = \{ x | M^g x =0 \} \quad (g = 0,1, \dots , m)
+\end{equation}
+where $m = m_i$ the multiplicity of $\lambda_i$
+\end{definition}
+
+\begin{lemma}\label{L:Principal_vector_linear_space_basis} \quad \\
+For $i=1, \dots , s$, let $B_i$ be any basis for the linear space of principal vectors of grade $\leq m_i$ belonging to $\lambda_i$.  \\
+Then the collection of vectors $B_1, B_2, \dots , B_n$ is a basis for the $n$-dimensional space $E^n$.  
+\end{lemma}
+\begin{proof}
+By the Principal Vector Representation Theorem, Theorem (\ref{T:Principal_Vector_Representation}) above, 
+\phantom{ By the} $\forall x \in E^n$ has a unique representation in principal vectors.  So
+\begin{equation}\label{E:Principal_Vector_linear_space_basis_proof_1}
+x = p^{(1)} + p^{(2)} + \dots + p^{(s)}
+\end{equation}
+where $p^{(i)}$ is a principal vector of grade $\leq m_i$ belonging to $\lambda_i$.  
+
+Since $B_i$ is a basis, $p^{(i)}$ has a unique representation as a linear combination of the vectors comprising $B_i$.
+
+So Eqn. (\ref{E:Principal_Vector_linear_space_basis_proof_1}) implies $\forall \in E^n$ has a unique representation of vectors comprising $B_1,B_2,\dots, \text{ and } B_s$.  
+
+Note that the vectors in $B_1, \dots , B_s$ are linearly independent also because $x =0 $ has the unique representation (\ref{E:Principal_Vector_linear_space_basis_proof_1}) with all $p^i = 0$ (i.e. if $x =0 \text{ then } x =0 + 0 + \dots + 0$ is a representation; since it's unique, it must be the only one).   
+\end{proof}
+
+We can, with Lemma (\ref{L:Principal_vector_linear_space_basis}), consider separately the spaces of principal vectors belonging to $\lambda_i, \dots ,\lambda_s$.  
+
+Let's define Jordan basis.  
+\begin{definition}[Jordan basis]
+A \textbf{ Jordan basis for $P_g$ }, $J$, where 
+\begin{equation}
+  J = ( v_1^1, v_2^1, \dots , v_{l_1}^1 , v_1^2, \dots , v_{l_2}^2, \dots , v_1^m , \dots , v_{l_m}^m )
+\end{equation}
+ is a basis for $P_g$ and obeying the following:
+ \begin{equation}\label{E:Jordan_basis_definition}
+   \begin{matrix}
+     v_1^1 & v_1^2 & \dots & v_1^m \\
+     v_2^1 = Mv_1^1 & v_2^2 = M v_1^2 & \dots & v_2^m = M v_1^m \\
+     v_3^1 = Mv_2^1 & v_3^2 = M v_2^2 & \dots & v_3^m = M v_2^m \\
+     \vdots & \vdots & \vdots & \vdots \\
+     v_{l_1}^1 = Mv_{l_1-1}^1 & v_{l_2}^2 = M v_{l_2-1}^2 & \dots & v_{l_m}^m = M v_{l_m-1}^m \\
+     Mv_{l_1}^1 = 0 & Mv_{l_2}^2 = 0 & \dots & M v_{l_m}^m =0 
+     \end{matrix}
+ \end{equation}
+ where each column or \textbf{ chain } has length $\leq g$
+\end{definition}
+
+
+\begin{lemma}[Jordan basis existence]\label{L:Jordan_basis_existence}
+  The space $P_m$ defined in Eqn. (\ref{E:Principal_vector_linear_space_definition}) has a Jordan basis. 
+\end{lemma}
+\begin{proof} \quad \\
+  If $m=1$, $P_1 = \{ x | Mx =0 \}$ \\
+  \phantom{If} If $x_1^1, \dots ,x_m^1$ is a basis for $P_1$, each $x_j^1$ is an eigenvector of $M$. \\
+  \phantom{If I} Thus any basis for $P_1$ is a Jordan basis (by Jordan basis definition).  
+  
+If $m>1$, \\
+\phantom{If } Let $y^1, \dots , y^{\beta}$ be a basis for $P_{g-1}$, where $g \geq 2 $.  Let
+\begin{equation}\label{E:basis_for_P_g_Jordan_basis_existence_proof}
+x^1, \dots , x^{\alpha} , y^1, \dots , y^{\beta}
+\end{equation}
+\phantom{If }be a basis for $P_g$ formed by appending any necessary additional vectors $x^1, \dots , x^{\alpha}$.\\
+\phantom{If be } If $\alpha =0$, $P_g = P_{g-1}$ and there are no $x$'s to consider.  
+
+Suppose $\alpha > 1$. 
+
+Suppose $g=2$.  \\
+\phantom{Sup} Form $Mx^1 , \dots , Mx^{\alpha}$.  
+
+\phantom{Sup For} Suppose
+\begin{gather*}
+  a_1 x^1 + \dots + a_{\alpha} x^{\alpha} + b_1 M x^1 + \dots + b_{\alpha} M x^{\alpha} = \sum_{j=1}^{\alpha} (a_j x^j + b_j M x^j ) = 0 \\
+  \text{ (Multiply both sides by $M$ ) } \Longrightarrow M \left( \sum_{j=1}^{\alpha} (a_j x^j + b_j M x^j ) \right) = M (a_1 x^1 + \dots + a_{\alpha}x^{\alpha} ) + 0 + \dots + 0 = 0 \\
+  \text{ since } M^2 x^i = 0 \text{ for } x^i \in P_2
+\end{gather*}
+So then $\sum_{j=1}^{\alpha} a_j x^j \in P_1$, so $\sum_{j=1}^{\alpha} a_j x^j = \sum_{j=1}^{\beta} \gamma_j y_j$.  \\
+\phantom{So} $\Longrightarrow a_j =0 $ since $x^1, \dots , x^{\alpha}, y^1 , \dots , y^{\alpha}$ are given as being independent.  \bigskip \\
+$\Longrightarrow M(\sum b_i x^i ) = 0 $ since $a_j=0$.  
+\[
+\begin{gathered}
+  \sum_{j=1}^{\alpha} b_j x^j = \sum_{i=1}^{\beta} (\gamma_j) y_i   \\
+  \sum_{j=1}^{\alpha} b_j x^j + \sum_{i=1}^{\beta} (-\gamma_j) y_i = 0 \\
+  b_j = 0 \text{ by the independence of $x^j, y^i$'s }
+\end{gathered}
+\]
+Thus, the $2\alpha$ vectors $x^1, \dots , x^{\alpha}, Mx^1, \dots , Mx^{\alpha}$ are independent.  
+
+$Mx_1, \dots , Mx^{\alpha}$ are independent vectors in $P_1$.  \\
+\phantom{ If } If $Mx^1, \dots Mx^{\alpha}$ do not span $P_1$, adjoin $z^{\alpha+1}, \dots , z^{\beta}$ so that $Mx^1, \dots, Mx_{\alpha}, z^{\alpha+1}, \dots , z^{\beta}$ are a basis for $P^1$.  \\
+\phantom{ If If} So we've shown $P_2$ to have a Jordan basis.  
+\[
+\begin{matrix}
+x^1 & x^2 & \dots & x^{\alpha} & \quad \\
+Mx^1 & Mx^2 & \dots & Mx^{\alpha} & z^{\alpha+1}, \dots , z^{\beta}
+\end{matrix}
+\]
+(Note that $z^{\alpha+1}, \dots , z^{\beta}$ are in $P_1$, and so are already eigenvectors).  
+
+We've proven the $g=2$ case of the following assertion:
+
+\textbf{ Assertion:} The vectors $y^1, \dots , y^{\beta}$ in Eqn. (\ref{E:basis_for_P_g_Jordan_basis_existence_proof}) may be replaced by vectors $z^1, \dots , z^{\beta}$ such that 
+\[
+x^1, \dots , x^{\alpha}, z^1, \dots , z^{\beta}
+\]
+is a Jordan basis for $P_g$.
+
+So for $g=2$ case, in this notation, $Mx^1 \equiv z^1, \dots Mz^{\alpha} \equiv z^{\alpha}$.  
+
+Consider $g>2$.  
+
+If $\alpha =0$, $P_g = P_{g-1}$, and the assertion follows by induction, since $P_{g-1}$ has a Jordan basis.  
+
+Suppose $\alpha \geq 1$.  Form $Mx^1, \dots, Mx^{\alpha}$ \\
+\marginpar{ \footnotesize{ $x^1, \dots, x^{\alpha}$ are independent vectors in $P_g$ that are also independent of \\
+    $y^1, \dots , y^{\beta}$, which form a basis for $P_{g-1}$.  }\normalsize }
+Consider 
+\begin{gather*}
+  \sum a_i x^i + \sum b_i M x^i = 0  \\
+  \text{ (Multiply both sides by $M^{g-1}$ ) } \Longrightarrow M^{(g-1)} \left( \sum_{j=1}^{\alpha} (a_j x^j \right) + \sum 0 = 0 \\
+  \text{ since } M^g x^i = 0 \text{ for } x^i \in P_g
+\end{gather*}
+So then $M^{g-1} ( \sum a_i x^i ) =0 $ implies $\sum_{j=1}^{\alpha} a_j x^j \in P_{g-1}$, so $\sum_{j=1}^{\alpha} a_j x^j = \sum_{i=1}^{\beta} \gamma_i y_i$.  \\
+\phantom{So} $\Longrightarrow a_j =0 $ since $x^1, \dots , x^{\alpha}, y^1 , \dots , y^{\alpha}$ are given as being independent.  \bigskip \\
+\[
+\begin{gathered}
+  \text{ $\Longrightarrow \sum b_i Mx^i = M(\sum b_i x^i ) = 0 $ since $a_j=0$.  Thus $\sum b_i x^i \in P_1 \subset P_{g-1} $ } \\
+  \Longrightarrow \sum b_i x^i = \sum_{j=1}^{\beta} \gamma_j y^j \Longrightarrow b_i = 0 \text{ since $x^i, y^j$ are independent } \\
+\end{gathered}
+\]
+Thus $x^i, Mx^i $ are $2 \alpha$ independent vectors.  
+
+Let $w^1, \dots , w^{\gamma}$ be any basis for $P_{g-2}$.  \\
+
+Consider $Mx^1, \dots , Mx^{\alpha}; w^1, \dots , w^{\gamma} \in P_{g-1}$ \\
+\phantom{Cons} These vectors are independent since if 
+\[
+\begin{gathered}
+  \sum a_i M x^i + \sum b_j w^j = 0 \\
+  \text{ then } M^{g-2} ( \sum a_i Mx^i ) + M^{g-2} \sum b_j w^j = M^{g-1} (\sum a_i x^i ) + 0  = 0 
+  \end{gathered}
+\]
+So then $M^{g-1} ( \sum a_i x^i ) =0 $ implies $\sum_{j=1}^{\alpha} a_j x^j \in P_{g-1}$, so $\sum_{j=1}^{\alpha} a_j x^j = \sum_{i=1}^{\beta} \gamma_i y_i$.  \\
+\phantom{So} $\Longrightarrow a_j =0 $ since $x^1, \dots , x^{\alpha}, y^1 , \dots , y^{\alpha}$ are given as being independent.  \bigskip \\
+\[
+\begin{gathered}
+  \text{ $\Longrightarrow \sum b_j w^j = 0 $ since $a_j=0$. }  \\
+  \Longrightarrow b_i = 0 \text{ since $w^j$ are independent } \\
+\end{gathered}
+\]
+
+If $Mx^1, \dots, Mx^{\alpha}, w^1, \dots, w^{\gamma}$ are not a basis for $P_{g-1}$, adjoin $q^1, \dots, q^{\delta}$, so that 
+\begin{equation}\label{E:g-1_basis_Jordan_basis_existence_proof}
+Mx^1, \dots, Mx^{\alpha}, q^1, \dots , q^{\delta}, w^1, \dots, w^{\gamma}
+\end{equation}
+form a basis for $P_{g-1}$.  
+
+By induction case, we can apply the assertion to the $g-1$ case.  We can replace $w^1, \dots , w^{\gamma}$ in Eqn. (\ref{E:g-1_case_Jordan_basis_existence_proof}) by a new basis $z^1, \dots, z^{\gamma}$ for $P_{g-2}$ so that 
+\begin{equation}\label{E:g-1_Jordan_basis_existence_proof}
+Mx^1, \dots, Mx^{\alpha}, q^1, \dots, q^{\delta}, z^1, \dots, z^{\gamma}
+\end{equation}
+is a Jordan basis for $P_{g-1}$.  
+
+Recall that we had to add $x^1, \dots, x^{\alpha}$ to make a $P_g$ basis from a $P_{g-1}$ basis.  So append the $x^i$'s to the Jordan basis for $P_{g-1}$ given in Eqn. (\ref{E:g-1_Jordan_basis_existence_proof}) to form a basis for $P_g$.  But already the $x^i$'s satisfy the condition to be a Jordan basis (Eqn. (\ref{E:Jordan_basis_definition})).  Then
+\[
+\begin{gathered}
+  \begin{matrix}
+    x^1 & x^2 & \dots & x^{\alpha} & \, \\
+    Mx^1 & Mx^2 & \dots & Mx^{\alpha} , & q^1, \dots q^{\delta}    
+  \end{matrix}
+  x^1, \dots , z^{\gamma}
+\end{gathered}
+\]
+\end{proof}
+
+\begin{lemma}\label{L:Pre-Jordan_Canonical_Form_Lemma} \quad \\
+  Let $\lambda_i$ be an eigenvalue of multiplicity $m_i$ belonging to $n \times n$ matrix $A$.  \\
+  Let $B_i$ be a Jordan basis for $x$ such that
+  \[
+  (A-\lambda_i I)^{m_i}x = 0
+  \]
+  Then, if $B_i$ is a matrix whose columns are basis vectors
+  \begin{equation}\label{E:Pre-Jordan_One_Principal_Vector_Space_equation}
+    AB_i = B_i \Lambda_i
+  \end{equation}
+  where $\Lambda_i$ has the form
+  \begin{equation}
+    \Lambda_i = \left[ 
+      \begin{matrix}
+	\lambda_i & 0 & 0 & \dots & 0 & 0 \\
+	* & \lambda_i & 0 & \dots & 0 & 0 \\
+	0 & * & \lambda_i & \dots & 0 & 0 \\
+	\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+	0 & 0 & 0 & \dots & \lambda_i & 0 \\
+	0 & 0 & 0 & \dots & * & \lambda_i
+	\end{matrix}
+      \right]
+  \end{equation}
+\end{lemma}
+\begin{proof} \quad \\
+  Let $M=A-\lambda_i I$.  \\
+  Let Jordan basis $B_i$ be a matrix with elements in $B_i$ as columns: 
+\begin{gather*}
+  B_i = [v_1^1, \dots , v_{l_i}^1, v_1^2, \dots , v_{l_2}^2, \dots, v_1^{\alpha}, \dots , v_{l_{\alpha}}^{\alpha}]  \\
+  \text{ (multiply by M)  } \Longrightarrow MB_i = [Mv_1^1, \dots , Mv_{l_1}^1, Mv_1^2, \dots , Mv_{l_2}^2, \dots, Mv_1^{\alpha}, \dots , Mv_{l_{\alpha}}^{\alpha}]  \\
+   = [v_2^1, \dots , 0, \dots , v_2^2, \dots , 0, \dots, v_2^{\alpha}, \dots , 0]  \\
+   MB_i = AB_i - \lambda_i B_i ; \, AB_i = \lambda_i B_i + MB_i \\
+   \begin{aligned}
+     AB_i & =  [ \lambda_i v_1^1+ v_2^1, \dots , \lambda_i v_{l_1}^1 + 0 , \lambda_i v_1^2 + v_2^2, \dots , \lambda_i v_{l_2}^2, \dots , \lambda_i v_1^{\alpha} + v_2^{\alpha}, \dots, \lambda_i v_{l_{\alpha}}^{\alpha} ] \\
+     & = [v_1^1, \dots ,v_{l_1}^1,v_{l_2}^2, \dots , v_1^{\alpha}, \dots , v_{l_{\alpha}}^{\alpha} ] \Lambda_i
+   \end{aligned}
+   \\
+   \text{ provided that }\\
+   ** \dots * = \underbrace{1 \dots 1}_{l_1-1} 0 \underbrace{ 1 \dots 1 }_{l_2 - 1} , 0 , \dots , \underbrace{ 1 \dots 1 }_{l_{\alpha -1} -1} 0 ; \underbrace{ 1 \dots 1 }_{ l_{\alpha}-1 } 0 
+\end{gather*}
+\end{proof}
+
+\begin{theorem}[Jordan Canonical Form Theorem]\label{T:Jordan_Canonical_Form}
+  Let $A$ be an $n \times n $ matrix whose distinct eigenvalues are $\lambda_1, \dots , \lambda_s$ with multiplicities $m_1, \dots , m_s$, i.e. 
+  \begin{equation*}
+    det( \lambda I - A) = \prod_{j=1}^s (\lambda - \lambda_j)^{m_j}
+  \end{equation*}
+  Then $A$ is similar to $J$ of the form
+  \begin{equation}
+  J = \left[ 
+    \begin{matrix}
+      \Lambda_1 & 0 & \dots & 0 \\
+      0 & \Lambda_2 & \dots & 0 \\
+      \vdots & \vdots & \dots & \vdots \\
+      0 & 0 & \dots & \Lambda_s
+      \end{matrix}
+    \right]
+  \end{equation}
+  where $\Lambda_i$ is an $m_i \times m_i $ matrix of the form
+  \begin{equation}
+    \Lambda_i = \left[ 
+      \begin{matrix}
+	\lambda_i & 0 & 0 & \dots & 0 & 0 & 0 \\
+	* & \lambda_i & 0 & \dots & 0 & 0 & 0 \\
+	0 & * & \lambda_i & \dots & 0 & 0 & 0 \\
+	\vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
+	0 & 0 & 0 & \dots & * & \lambda_i & 0 \\
+	0 & 0 & 0 & \dots & 0 & * & \lambda_i \\
+	\end{matrix}
+      \right]
+  \end{equation}
+  or i.e. 
+  \[
+  (\Lambda_k)_{ij} = \lambda_k \delta_{ij} + (*)\delta_{i-1,j}
+  \]
+  with each $*$ equal to $0$ or $1$.  
+\end{theorem}
+\begin{proof}
+  Form $B = [B_1,B_2, \dots , B_s ]$.  \\
+  By Lemma (\ref{L:Principal_vector_linear_space_basis}), the columns of $B$ are a basis for $E^n$.  \\
+  \phantom{By} Thus $B$ is an $n \times n$ matrix with inverse $B^{-1}$.  
+  \begin{gather*}
+    \begin{aligned}
+      AB & = [AB_1, AB_2, \dots , AB_s]\\
+      & = [B_1 \Lambda_1, B_2 \Lambda_2, \dots , B_s \Lambda_s ] 
+    \end{aligned} \\
+    [B_1, B_2, \dots , B_s] \left[ \begin{matrix} \Lambda_1 & 0 & \dots & 0 \\
+	0 & \Lambda_2 & \dots & 0 \\
+	\vdots & \vdots & \ddots & \vdots \\
+	0 & 0 & \dots & \Lambda_s 
+	\end{matrix}
+      \right]
+    = BJ \\
+    \Longrightarrow B^{-1}AB = J 
+  \end{gather*}
+  
+Now, we want to show that $\Lambda_i$ is an $m_i \times m_i $ matrix.  
+
+Since $A$ is similar to $J$, 
+\begin{align}
+  det(\lambda I - A) & = det(\lambda I - J) \notag \\
+  \Longrightarrow \prod_{i=1}^s (\lambda - \lambda_i)^{m_i} & = \prod_{i=1}^s det(\lambda I- \Lambda_i) \label{E:Compare_A_J_determinants_Jordan_theorem}
+\end{align}
+Now suppose $\Lambda_i$ is an $o_i \times o_i$ matrix.  \\
+\phantom{Now} Then triangular $\Lambda_i$ has characteristic determinant
+\[
+det(\lambda I - \Lambda_i) = (\lambda-\lambda_i)^{o_i}
+\]
+since $\lambda_1, \dots , \lambda_s$ are distinct eigenvalues of $A$, matching term by term $(\lambda - \lambda_i)$ in Eqn. (\ref{E:Compare_A_J_determinants_Jordan_theorem}) implies $m_i =0 $.  
+
+In Eqn. (\ref{E:Pre-Jordan_One_Principal_Vector_Space_equation}), $AB_i = B_i \Lambda_i$, so the number of columns of $B_i$ equals the order of $\Lambda_i$.  Thus, the order of $\Lambda_i$ is $m_i$.  
+
+Thus, \textbf{ the multiplicity, $m_i$, of $\lambda_i$ equals the dimension of the space of principal vectors of grade $\leq m_i$ belonging to $\lambda_i$ }
+\end{proof}
+
+\section{ Differential Calculus of Scalar and Vector Fields (Apostol, Vol. 2, Ch. 8) }
+
+\subsection{Open balls, open sets} \quad \\
+
+$T: \mathbb{R}^n \to \mathbb{R}^m$ \\
+Let $a \in \mathbb{R}^n, \, r > 0$ \medskip \\
+$\text{ open ball } = \{ x, \, x \in \mathbb{R}^n \, | \,  \| x - a \| < r \} = B(a) = B(a;r)$
+
+\begin{definition}[Definition of an Interior Point] \quad \\
+  Let $S \subseteq \mathbb{R}^n$, \, $a \in S$ \\
+  \phantom{ Let S } if $\exists \, B(a;r) \subseteq S$ \medskip \\
+  \phantom{ Let S if E } $a= \text{ interior point of $S$ } $
+\end{definition}
+$\{ \text{ int. pt. of $S$ } \} = \text{ interior of $S$ } = int{S} = \{ a | \exists \, \text{ at least one } B(a) \subseteq S \}$
+
+\begin{definition}[Definition of an Open Set]
+  $S \subseteq \mathbb{R}^n$ is open if all its pts. $S$ are interior pts., i.e. \medskip \\
+  $S$ open iff $S = int{S}$
+\end{definition}
+
+$\text{ neighborhood of $a$ } = \text{ open set containing $a$ }$ \medskip \\
+
+\begin{definition}[Definition of exterior and boundary] \quad \\
+Exterior pt. $x$ to set $S \subseteq \mathbb{R}^n$ if $\exists$ $n$-ball $B(x)$ containing no pts. of $S$ i.e. 
+\[
+\text{ If $\exists \, B(x)$ s.t. $\forall \, x_1 \in B(x), \, x_1 \notin S$, then $x$ is exterior to $S$ } 
+\]
+$\{ \text{ ext. pt. of $S$ } \} = ext{S}$.  \medskip \\
+
+A pt. that's neither ext. to $S$ nor int. to $S$ is a boundary pt. of $S$ \\
+$\{ \text{ boundary pts. of $S$ } \} = \partial S$, i.e. the set of all boundary pts. of $S$ is called the boundary of $S$ and is denoted by $\partial S$.  
+\end{definition}
+
+\subsection{ Limits and continuity (Apostol's 8.4, Vol. 2)} \quad \\
+
+$f$ is continuous at $a$ if $\exists \, f(a)$ and if 
+\[
+\lim_{x\to a} f(x) = f(a) \Longleftrightarrow \forall \, \epsilon > 0, \, \exists \, \delta > 0 \text{ s.t. } |f(x) - f(a)| < \epsilon \text{ if } \| x-a \| < S
+\]
+
+Important example: Example 7. $f$ is not continuous on all paths for $f(x,y) = \frac{xy}{x^2 + y^2}$ if $(x,y) \neq (0,0)$; $f(0,0)=0$.  \\
+\phantom{ example }$\begin{aligned}
+  & \text{ if $x \neq 0$ constant}, \lim_{y\to 0} f = 0 \\
+  & \text{ if $y\neq 0$ constant}, \lim_{x\to 0} f = 0
+\end{aligned}$ but if $y=x$, along this line, $f=1/2$ (!!!)
+
+\begin{definition}[Definition of the derivative of a scalar field with respect to a vector]
+Given $f: S \to \mathbb{R}$; $S\subseteq \mathbb{R}^n$ \\
+Let $a \in int{S}$, $y \in \mathbb{R}^n$
+\begin{equation}
+  f'(a;y) = \lim_{h\to 0} \frac{f(a+hy)-f(a)}{h}
+\end{equation}
+\end{definition}
+
+\begin{definition}[Definition of directional and partial derivatives]
+If $y$ s.t. $|y| = 1$, $f'(a;y) =$ directional derivative of $f$ at $a$ in $y$ direction.  \\
+$\partial_k f(a) = f'(a;e_k) = $ partial derivative.  
+\end{definition}
+
+\subsection{ Total derivative }
+Consider this illustrative example.  \\
+\phantom{Consider} Let $f(x,y) = \frac{xy^2}{x^2 + y^4}$ if $x\neq 0$, $f(0,y)  =0$.  \\
+\phantom{Consider} Let $a = (0,0), \, t = (a,b)$ 
+\[
+\begin{gathered}
+  \frac{f(a+ht) -f(a)}{h} = \frac{f(ht) - f(0) }{h} = \frac{f(ha,hb)}{h} = \frac{ab^2 }{a^2 + h^2 b^4} \xrightarrow{ h\to 0} b^2/a \\
+  f'(0;t)  = b^2 /a
+\end{gathered}
+\]
+For $t = (a,b)$, $f'(0;t) =0$.  \\
+Thus, $f'(0;t)$ exists for all directions of $t$.  \\
+\phantom{Thus} For $y=kx$ and $x=0$, $f(x,y) = \frac{ k^2 x^3 }{ x^2 + k^4 + x^4 } \xrightarrow{ x\to 0} 0$, \\
+\phantom{Thus For } but for $x=y^2$, $f(x,y) = 1/2$
+
+\emph{The existence of all directional derivatives at a point fails to imply continuity at that point}.
+
+Let's review a number of important concepts with $R^n$ fields.  Differentiability must be redefined through a $n-dim$ Taylor expansion.    
+
+\begin{definition}[Definition of a Differentiable Scalar Field] \quad \\
+Let $f:S \to \mathbb{R}$ \\
+Let $a$ be an int. pt. of $S$.  \\
+Let $B(a;r)$ s.t. $B(a;r) \subseteq S$ \\
+Let $v$ s.t. $\| v \| < r$, so $a+v \in B(a;r)$  Then \medskip \\
+$f$ diff. at $a$ \\
+\phantom{ f diff} if $\exists \, T_a, \, E$ s.t. \\
+\phantom{ f diff if } linear $T_a:\mathbb{R}^n \to \mathbb{R}$ \\
+\phantom{ f diff if } scalar $E(a,v), \, E(a,v) \to 0$ as $\| v \| \to 0$  and 
+\begin{equation}
+  f(a+v) = f(a) + T_a(v) + \| v\| E(a,v)
+\end{equation}
+\end{definition}
+
+The next theorem shows that if the total derivative exists, it is unique.  It also tells us how to compute $T_a(y), \, \forall \, y \in \mathbb{R}^n$.  
+
+\begin{theorem}[Uniqueness of total derivative]
+Assume $f$ diff. at $a$ with total derivative $T_a$ \\
+\phantom{Assu} Then $\exists \, f'(a;y) \quad \forall y \in \mathbb{R}^n$ and 
+\[
+T_a(y) = f'(a;y)
+\]
+Also, 
+\[
+\begin{gathered}
+  f'(a;y) = \sum_{j=1}^{n} D_j f(a) y_j \text{ for } \\
+  y = (y_1 , \dots , y_j , \dots , y_n) 
+\end{gathered}
+\]
+\end{theorem}
+
+\begin{proof} \quad \\
+  If $y=0$, \quad \, $T_a(0) = 0$ and $f'(a;0)=0$.  Done.  \bigskip \\
+  Suppose $y\neq 0$ \\
+  \[
+\begin{gathered}
+  f(a+v) = f(a) +T_a(v) + \| v \| E(a,v) \quad \quad \, \text{ (since we assume $f$ diff. ) } \medskip \\
+  v = hy \\
+\Longrightarrow \frac{ f(a+hy) - f(a) }{ h } = \frac{1}{h} T_a(hy) + \frac{ \| hy \| }{ h } E(a,hy) \xrightarrow{ h\to 0 } f'(a,y)  = T_a(y)  + 0 \\
+\end{gathered}
+\]
+Now use linearity of $T_a$: 
+\[ T_a(y) = \sum T_a (y_j e_j) = \sum y_j T_a(e_j) = \sum y_j f'(a;e_j) = \sum y_j D_j f(a) \]
+\end{proof}
+
+Then the gradient was introduced, $\nabla f(a) = (\partial_1 f(a), \dots, \partial_n f(a) )$ so that \\
+$f'(a;y) = \sum_{j=1}^n \partial_j f(a) y_j =\nabla f(a) \cdot y $  so then also
+\[
+\Longrightarrow f(a+v) = f(a) + \nabla f(a) \cdot v + \| v \| E(a;v)
+\]
+
+\begin{theorem}[Differentiability implies Continuity] \quad \\
+If a scalar field $f$ is differentiable at $a$, then $f$ is cont. at $a$
+\end{theorem}
+
+\begin{proof}
+  Since $f$ is diff. \\
+$|f(a+v) -f(a)| = |\nabla f(a) \cdot v + \| v \| E(a,v) | $\\
+By Cauchy-Schwarz inequality, \medskip \\
+$0\leq | f(a+v) -f(a) | \leq \| \nabla f(a) \| \| v \| + \| v \| |E(a;v) |$ \medskip \\
+As $v\to 0$, $|f(a+v) - f(a)| \to 0$ so $f$ cont. at $a$.  
+\end{proof}
+
+\quad \bigskip \\
+If $f$ is diff. at $a$, then all its partials exist (but the converse isn't true).  \\
+\phantom{If} existence of partials doesn't necessarily imply $f$ is diff. \\
+e.g. $f(x,y) = \frac{ xy^2}{ x^2 + y^4}$ \quad \bigskip \\
+
+\begin{theorem}[Sufficient Condition for Differentiability] \quad \\
+Assume $\exists \, \partial_1 f , \dots , \partial_n f$ in some $n$-ball $B(a)$ and are cont. at $a$.  Then $f$ diff. at $a$.  
+\end{theorem}
+
+\begin{proof} \quad \\
+Let $\lambda = \| v \|$; then $v = \lambda u$, \quad $\| u \| = 1$ \\
+Express $f(a+v) -f(a)$ as a telescoping sum.  
+\[
+f(a+v)-f(a) = f(a + \lambda u ) -f(a) = \sum_{k=1}^n \left( f(a+\lambda v_k) - f(a+\lambda v_{k-1}) \right) 
+\]
+where $\{ v_k \}$ s.t. $  \begin{aligned}
+    v_0 & = 0 \\
+    v_n & = u 
+  \end{aligned}$.  Then choose $v_k$'s s.t. 
+\[
+\begin{gathered}
+  v_k = v_{k-1} + u_k e_k \\
+ \quad \quad \, v_1 = u_1 e_1; \quad v_2 = u_1 e_1 + u_2 e_2 , \dots v_n = u_1 e_1 + \dots + u_n e_n  \\
+  \begin{aligned}
+f(a+\lambda v_k) - f(a+\lambda v_{k-1} )  & = f(a+ \lambda v_{k-1} + \lambda u_k e_k) - f(a+\lambda v_{k-1} ) = \\
+& = f(b_k + \lambda u_k e_k) - f(b_k)
+\end{aligned} 
+\end{gathered}
+\]
+$b_k, \, b_k + \lambda u_k e_k$ differ only by their $k$th component so apply the mean value theorem 
+\[
+\begin{gathered}
+  \Longrightarrow f(b_k + \lambda u_k e_k) - f(b_k) = (\lambda u_k) \partial_k f(c_k) \\
+\quad \\
+\text{ as $b_k \to a$, as $\lambda \to 0$, so $c_k \to a$ } \\
+\Longrightarrow f(a+v) -f(a) = \lambda \sum_{k=1}^n u_k \partial_k f(c_k) 
+\end{gathered}
+\]
+\quad \\
+Now $\nabla f(a) \cdot v = \lambda \sum u_k \partial_k f(a) $.  \\
+$\Longrightarrow f(a+v) -f(a) - \nabla f(a) \cdot v = \lambda \sum u_k (\partial_k f(c_k) - \partial_k f(a) ) = E(a,v)$ \medskip \\
+$c_k \to a$ as $\| v \| \to 0$, and given $\partial_k f$ are cont., $E(a,v) \to 0$ as $\| v \| \to 0$.  \\
+By def. of diff., $f$ is diff.  
+\end{proof}
+
+\begin{definition}[Vector field derivative] Let $f: S \to \mathbb{R}^m$; \, $S \subseteq \mathbb{R}^n$ \\
+  if $a \in int{S}$, \, $y \in \mathbb{R}^n$ 
+\begin{equation}
+  f'(a;y) = \lim_{h\to 0} \frac{ f(a+hy) - f(a) }{h} 
+\end{equation}
+\end{definition}
+
+\begin{definition}[$f$ differentiable]
+  $f$ diff. at int. pt. $a$ if 
+\begin{gather}
+  T_a: \mathbb{R}^n \to \mathbb{R}^m \notag \\
+  f(a+v) = f(a) + T_a(v) + \| v\| E(a;v) \text{ where } E(a;v) \to 0 \text{ as } v \to 0
+\end{gather}
+\end{definition}
+
+\begin{theorem}[Apostol's Thm. 8.9] Assume $f$ diff. at $a$ with $T_a$, \\
+  Then $\exists \, f'(a;y) \quad \forall \, y \in \mathbb{R}^n$ and 
+\begin{equation}
+  T_a(y) = f'(a;y) 
+\end{equation}
+Moreover, if $f= (f_1, \dots, f_m)$; $y = (y_1, \dots, y_n)$ 
+\begin{equation}
+  T_a(y) = \sum_{j=1}^m \nabla f_j (a) \cdot y e_i = (\nabla f_1(a) \cdot y, \dots, \nabla f_m(a) \cdot y )
+\end{equation}
+\end{theorem}
+\begin{proof}
+Let $v=hy$
+\[
+\begin{gathered}
+  f(a+hy) - f(a) = T_a(hy) + \| hy \| E(a,v) = hT_a(y) + |h| \| y\| E(a;v) \\
+  \frac{ f(a+hy) - f(a) }{ h} \xrightarrow{ h\to 0} f'(a;y) = T_a(y) \\
+  f'(a;y) = \sum_{j=1}^m f_i'(a;y) e_i = \sum_{j=1}^m \nabla f_i(a) \cdot y e_i 
+\end{gathered}
+\]
+\end{proof}
+
+\subsubsection{ Matrix formation of the total derivative }
+\[
+T_a(y) = Df(a) y
+\]
+\[
+Df(a) = \left[ \begin{matrix} D_1 f_1(a) & D_2 f_1(a) & \dots & D_n f_1(a) \\
+    D_1 f_2(a) & D_2 f_2(a) & \dots & D_n f_2(a) \\
+    \vdots & \vdots & \ddots & \vdots \\
+    D_1 f_m(a) & D_2 f_m(a) & \dots & D_n f_m(a) 
+\end{matrix} \right]
+\]
+\[
+(T_a(y))_j = \sum_{k=1}^n (Df(a))_{jk} y_k = \nabla f_j (a) \cdot y = (\partial_k f_j )(a) y_k
+\]
+Interesting to note that $f\nabla = Df$; $(Df)_{jk} = \partial_k f_j$
+
+\begin{theorem} If $f$ diff. at $a$, $f$ cont. at $a$.  
+\end{theorem}
+\begin{proof}
+\[  f(a+v) = f(a) + f'(a) (v) + \| v\| E(a;v) \]
+$v\to 0$, $\| v\| E(a,v) \to 0$; $f'(a) (v) \to 0 $ since $f'(a)(v)$ is a linear transformation continuous at $0$.  
+\end{proof}
+
+$\| f'(a)(v) \| \leq M_f(a) \| v\|$; where $M_f(a) = \sum_{j=1}^m \| \nabla f_j(a) \|$ \\
+since
+\[
+\| f'(a)(v) \| = \| \sum_{j=1}^m (\nabla f_j(a) \cdot v) e_j \| \leq \sum_{j=1}^m | \nabla f_j(a) \cdot v | \leq \sum_{j=1}^m \| \nabla f_j(a) \| \| v \|
+\]
+
+\subsection{ The chain rule for derivatives of vector fields (Apostol's 8.20, Vol. 2) }
+\begin{theorem}[Chain Rule] \quad \\
+  Let $f$ and $g$ be vector fields s.t. $h= f \circ g$ defined in a neighborhood of pt. $a$ \\
+  Assume $g$ diff. at $a$, total derivative $g'(a)$ \\
+  Let $b = g(a)$ \\
+  Assume $f$ diff. at $b$, total derivative $f'(b)$
+\begin{equation}
+  h'(a) = f'(b) \circ g'(a)
+\end{equation}
+\end{theorem}
+\begin{proof}
+\[
+h(a+y) - h(a) = f(g(a+y)) - f(g(a)) = f(b+v) - f(b) 
+\]
+Let $v = g(a+y) - g(a)$
+\[
+\begin{gathered}
+  v = g'(a) y + \| y \| E_g(a,y) \text{ where } E_g(a,y) \to 0 \text{ as } y \to 0 \\
+\begin{aligned}
+  & f(b+v) - f(b) = f'(b) v + \| v \| E_f(b,v) \text{ where } E_f(b,v) \to 0 \text{ as } v\to 0 \\
+  & f(b+v) - f(b) = f'(b) g'(a) y + f'(b) \| y \| E_g(a,y) + \|v \| E_f(b,v) = f'(b) g'(a) y + \| y \| E(a;y)
+\end{aligned}
+\end{gathered}
+\]
+where $E(a,0)=0$ and $E(a,y) = f'(b) E_g(a,y) + \frac{ \| v \| }{ \| y \| } E_f(b,v)$
+
+\emph{Want}: $E(a,y) \to 0 $ as $y \to 0$
+\[
+\begin{gathered}
+  f'(b) E_g(a,y) \to 0 \text{ since } E_g(a,y) \to 0 \text{ as } y \to 0 \\
+  \| v \| \leq M_g(a)\| y \| + \| y \| | E_g(a,y) | \\
+  \text{ then } \frac{ \| v \| }{ \| y \| } E_f(b,v) \to 0 \text{ as } y \to 0 
+\end{gathered}
+\]
+\end{proof}
+
+\[
+h'(a) = f'(b) \circ g'(a)
+\]
+Since composition of linear transformations corresponds to multiplication of matrices.  
+\[
+\begin{gathered}
+  Dh(a) = Df(b) Dg(a); \, b= g(a) \\
+  a \subseteq \mathbb{R}^p; \quad g(a) \in \mathbb{R}^n; \quad f(b) \in \mathbb{R}^m \\
+  (Dh(a))_{jk} = (\partial_k h_j)(a) = \sum_{l=1}^n (Df(b))_{jl} (Dg(a))_{lk} = \sum_{l=1}^n (\partial_l f_j(b))(\partial_k g_l(a))
+\end{gathered}
+\]
+
+\begin{theorem}[Sufficient condition for equality of mixed partial derivatives, Apostol's Thm. 8.12]
+  Assume $D_1 f, D_2 f, D_{1,2} f, D_{2,1} f$ exist on open $S$.   \\
+  If $D_{1,2} f, D_{2,1} f$ are cont., 
+\begin{equation*}
+D_{1,2} f(a,b) = D_{2,1} f(a,b)
+\end{equation*}
+\end{theorem}
+\begin{proof} Consider a rectangle $R(h,k)$ with vertices
+\[
+\begin{aligned}
+  & (a,b+k) \quad & (a+h,b+k) \\ 
+  & (a,b) \quad & (a+h,b)
+\end{aligned}
+\]
+Consider $\Delta (h,k) = f(a+h,b+k) - f(a+h,b) - f(a,b+k) + f(a,b)$ \medskip \\
+Let $G(x) = f(x,b+k) - f(x,b)$ \, $\forall \, x \in (a,a+h)$.  \\
+(geometrically, we are considering the values of $f$ at those points at which an arbitrary vertical line cuts the horizontal edges of $R(h,k)$.  
+\[
+\begin{gathered}
+  \Delta (h,k) = G(a+h) - G(a) \xrightarrow{ 1 \text{ dim. mean-value thm. } } G(a+h) -G(a) = h G'(x_1) \quad \, x_1 \in (a,a+h) \\
+  G'(x) = D_1 f(x,b+k) - D_1 f(x,b) \\
+  \Longrightarrow \Delta (h,k) = h[D_1 f(x_1, b+k) - D_1 f(x_1,b)] \xrightarrow{ 1 \text{ dim. mean-value thm. } } \\
+ \xrightarrow{ 1 \text{ dim. mean-value thm. } } \Delta (h,k) = hk D_{2,1} f(x_1,y_1) \quad \, y_1 \in (b,b+k) 
+\end{gathered}
+\]
+$(x_1,y_1)$ lies somewhere in rectangle $R(h,k)$.  
+
+Apply the same procedure to $H(y) = f(a+h,y) - f(a,y)$
+\[
+\begin{gathered}
+  \Delta (h,k) = hk D_{1,2} f(x_2,y_2) \text{ where } (x_2,y_2) \in R(h,k) \\
+  \Longrightarrow D_{1,2} f(x_1,y_1) = D_{2,1} f(x_2,y_2)
+\end{gathered}
+\]
+Let $(h,k) \to (0,0)$ and use the continuity of $D_{1,2} f$, $D_{2,1} f$
+\end{proof} 
+
+\subsection{ A first-order partial differential equation with constant coefficients (Apostol's Sec. 9.2, Vol. 2) }
+
+Consider 
+\[
+a \partial_x f + b \partial_y f = (a,b) \cdot (\nabla f) = A \cdot \nabla f = 0 
+\]
+Now $r' \cdot (\nabla f)(r) = 0$ when $f(r) =c$ \quad (level curves), \smallskip \\
+So in this case, when $y = \frac{b}{a}x + c$ or $bx-ay = c$, then $f$ is constant.  Then 
+\[
+f = g(bx-ay)
+\]
+(because $f$ only changes by the value of $bx-ay$)
+
+Check: $\begin{aligned}
+  \partial_x f & = bg'(bx-ay) \\
+  \partial_y f & = -ag'(bx-ay)
+\end{aligned}$ \quad \quad $a\partial_x f + b\partial_y f = abg' - abg' = 0 $
+
+Suppose $a\partial_x f + b\partial_y f = 0$ \\
+$\begin{aligned}
+  x & = A u + By \\
+  y & = C u + Dv 
+\end{aligned}$ \\
+$h(u,v) = f(Au + Bv, Cu + Dv)$ \smallskip \\
+Choose $A,B,C,D$, arbitrarily, s.t. $\partial_u h = 0$.  $\partial_u h = A \partial_x f + C \partial_y f = (A + C\left( \frac{-a}{b} \right) ) \partial_x f$\medskip \\
+Let $A = \frac{a}{b} C \Longrightarrow$ $\begin{aligned} x & = \frac{a}{b} C u + Bv \\ y & = Cu + Dv \end{aligned}$ 
+
+Then for $A = \frac{a}{b} C$, $h(u,v)$, by $\partial_u h = 0$, is a function of $v$ alone.  
+\[
+\Longrightarrow h(u,v) = g(v)
+\]
+Then 
+\[
+g \left( (x-\frac{a}{b} y ) / (B- \frac{a}{b} D ) \right) = g \left( \frac{ bx - ay }{ bB - aD } \right) = g_1 \left( bx - ay\right)
+\]
+
+\begin{theorem}[Apostol's Thm. 9.3]
+  Given 
+\[
+\begin{gathered}
+  F(x_1,\dots, x_n) = 0 \\
+  x_n = f(x_1,\dots, x_{n-1})
+\end{gathered}
+\]
+then $\partial_k f = - \frac{ D_k f}{ D_n f }$ \\
+where $D_k F$, $D_n F$ are evaluated at $(x_1,x_2, \dots, x_{n-1}, f(x_1, \dots, x_{n-1}) )$
+\end{theorem}
+
+\begin{proof} 
+\[
+\begin{gathered}
+  F(x_1,\dots, x_n) = F(x_1, \dots, x_{n-1}, f(x_1, \dots, x_{n-1} ) ) \\
+  \frac{d}{dx_k} F = \partial_k F + (\partial_k f) \partial_n F = 0 \Longrightarrow \partial_k f = \frac{ - \partial_k F }{ \partial_n F }
+\end{gathered}
+\]
+\end{proof} 
+
+Alternative view; suppose we have 2 surfaces on an $n$-dim. hyperspace.  
+\[
+F(x_1, \dots, x_n) = 0 \quad \quad \, G(x_1,\dots, x_n) = 0 
+\]
+If the surfaces intersect along a curve in the $n$-dim. hyperspace,  \\
+\phantom{ If th} then we could solve $\begin{aligned} F & =0 \\ G & = 0 \end{aligned}$ to obtain a parametrized $C$.   \\
+
+Suppose it's possible to solve for $x_j$; $j=1, \dots, n-1$
+\[
+x_j = x_j(x_n)
+\]
+Then $\begin{aligned} F & = 0 \\ G & = 0 \end{aligned}$ for $X = (x_1(x_n), \dots, x_{n-1}(x_n), x_n )$  
+
+Let $\begin{aligned} f(x_n) & = F(x_1(x_n), \dots, x_{n-1}(x_n), x_n ) \\ g(x_n) & = G(x_1(x_n), \dots, x_{n-1}(x_n), x_n) \end{aligned}$ 
+\[
+\begin{aligned}
+  f'(x_n) & = \sum_{j=1}^{n-1} \partial_{x_n} x_j \partial_{x_j} F + \partial_{x_n} F = 0 \\
+  g'(x_n) & = \sum_{j=1}^{n-1} \partial_{x_n} x_j \partial_{x_j} G + \partial_{x_j} G = 0 
+\end{aligned} \quad \quad \, 
+\begin{aligned}
+  \sum_{j=1}^{n-1} \partial_{x_n} x_j \partial_{x_j} F & = - \partial_{x_n} F \\ 
+  \sum_{j=1}^{n-1} \partial_{x_n} x_j \partial_{x_j} G & = - \partial_{x_n} G 
+\end{aligned}
+\]
+e.g. $n=3$
+\[
+\begin{gathered}
+\begin{aligned}
+  x' F_x + y' F_y & = -F_z \\
+  x' G_x + y' G_y & = -G_z 
+\end{aligned} \quad \, \Longrightarrow 
+\begin{aligned}
+  X' & = - \frac{ \left| \begin{matrix} F_z & F_y \\ G_z & G_y \end{matrix} \right| }{ \left| \begin{matrix} F_x & F_y \\ G_x & G_y \end{matrix} \right| } \\
+  Y' & = - \frac{ \left| \begin{matrix} F_x & F_z \\ G_x & G_z \end{matrix} \right| }{ \left| \begin{matrix} F_x & F_y \\ G_x & G_y \end{matrix} \right| } \end{aligned} \\
+\frac{ \partial(f_1, \dots, f_n) }{ \partial(x_1, \dots, x_n) } = \left| \begin{matrix} \partial_{x_1} f_1 & \partial_{x_2} f_1 & \dots & \partial_{x_n} f_1 \\ \vdots & \vdots & \ddots & \vdots \\ \partial_{x_1} f_n & \partial_{x_2} f_n & \dots & \partial_{x_n} f_n \end{matrix} \right| \quad \, \text{ (Jacobian notation) } \\
+\Longrightarrow \begin{aligned}
+  X' & = \frac{ \partial(F,G)/\partial(y,z) }{ \partial(F,G)/\partial(x,y) } \\
+  Y' & = \frac{ \partial(F,G)/\partial(z,x) }{ \partial(F,G)/\partial(x,y) }
+\end{aligned}
+\end{gathered}
+\]
+
+\begin{definition} $a$ is a relative maximum (relative minimum) iff $\exists$ open ball $B_a(r) \subseteq D$ s.t. $\forall \, x \in B_a(r)$, \, $f(x) \leq f(a)$ \, $(f(x) \geq f(a))$.  
+\end{definition}
+
+\begin{lemma} If $a$ is a relative extrema of diff. scalar $f$, then $\nabla f(a) =0$.  
+\end{lemma}
+\begin{proof} $\forall \, j = 1, \dots, n$, let $g_j(t) = f(a_1,\dots, a_j + t, \dots, a_n)$, so $g_j(0) = f(a)$.  \\
+Since $f$ has a relative extremum at $a$, $g_j$ has a local extremum at $0$.  \\
+Since $f$ diff., $g_j$ diff, so $g_j'(0)=0$ \, $\forall\, j$.  But $g_j'(0) = \frac{ \partial f}{ \partial x_j}(a)$.  Then $\nabla f(a) =0$. \end{proof}
+
+\begin{definition} $\nabla f(a) =0$ at stationary pt. $a$.  Hence, $f(a+y) - f(a) = \| y \| E(a,y)$.  \end{definition}
+
+\begin{definition} Consider $\frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n D_{ij} f(a) y_i y_j$.  
+\[
+H(x) = \left[ D_{ij} f(x) \right]_{i,j=1}^n = \text{ Hessian matrix, and } \sum_{i=1}^n \sum_{j=1}^n D_{ij} f(a) y_i y_j = y H(a) y^T
+\]
+\end{definition}
+
+\begin{theorem}[Apostol's Thm. 9.4, 2nd. order Taylor Formula for Scalar Fields]  Let $f$ be a scalar field with cont., 2nd. order partial derivatives $D_{ij}f$ in an $n$-ball $B(a)$.  \\
+  Then $\forall \, y \in \mathbb{R}^n$ s.t. $a+y \in B(a)$, 
+\begin{gather}
+  f(a+y) - f(a) = \nabla f(a) \cdot y + \frac{1}{2!} y H(a+cy) y^T \text{ where } 0 < c < 1 \text{ or } \\
+  f(a+y) - f(a) = \nabla f(a) \cdot y + \frac{1}{2!} y H(a) y^T + \| y \|^2 E_2(a,y) \text{ where } E_2(a,y) \to 0 \text{ as } y \to 0
+\end{gather}
+\end{theorem}
+
+\begin{proof}
+  Keep $y$ fixed.  Define $g(u)$ s.t. $g(u) = f(a+uy)$ for $-1 \leq u \leq 1$ \\
+\quad \, Then $f(a+y) -f(a) = g(1) -g(0)$.  \smallskip \\
+2nd. order Taylor formula on $[0,1] \Longrightarrow g(1) - g(0) = g'(0) + \frac{1}{2!} g''(0)$ where $0 < c < 1$.  
+\[
+\begin{gathered}
+  g = g(u) = f(r(u)), \, r(u) = a+ u y \\ 
+  \Longrightarrow g'(u) = \nabla f(r(u)) \cdot r'(u) = \nabla f \cdot y = \sum_{j=1}^n (\partial_j f)(r(u)) y_j \text{ if } r(u) \in B(u) \\ 
+  g'(0) = \nabla f(a) \cdot y \\ 
+  g''(u) = \sum_{i=1}^n \partial_i \left( \sum_{j=1}6n (\partial_j f)(r(u)) y_j  \right) y_i = \sum_{j=1}^n \partial_{ij} f(r(u)) y_i y_j = y H ((u)) y^T
+\end{gathered}
+\]
+Hence $g''(c) = y H(a+cy) y^T$.   \smallskip \\
+
+Define $E_2(a,y)$ by $\| y \|^2 E_2(a,y) = \frac{1}{2!} y (H(a+cy) - H(a))y^T \text{ if } y\neq 0$ and \\
+\quad let $E_2(a,0)=0$.  
+\[
+\Longrightarrow f(a+y) -f(a) = \nabla f(a) \cdot y + \frac{1}{2!} y H(a) y^T + \| y\|^2 E_2(a,y) 
+\]
+
+\textbf{Want}: $E_2(a,y) \to 0$ as $y\to 0$.
+\[
+\begin{gathered}
+  \| y\|^2 | E_2(a,y) | = \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n (D_{ij} f(a+cy) - D_{ij}f(a)) y_i y_j  \leq \frac{1}{2} \sum_{i,j=1}^n | D_{ij} f(a+cy) -D_{ij}f(a) | \| y \|^2 \\ 
+  \Longrightarrow |E_2(a,y)| \leq \frac{1}{2} \sum_{i,j=1}^n | D_{ij}f(a+cy) - D_{ij} f(a) |, \text{ for } y\neq 0 
+\end{gathered}
+\]
+$D_{ij}f$ cont. at $a$, so $D_{ij} f(a+cy) \to D_{ij}f(a)$ as $y\to 0$; \, $E_2 (a,y) \to 0$ as $y\to 0$
+\end{proof}
+
+\begin{theorem}[Apostol's Thm. 9.5, Vol. 2] Let $A = [a_{ij}]$ be an $n \times n$ real symmetric matrix and 
+\begin{equation}
+  Q(y) = y A y^T = \sum_{i,j}^n a_{ij} y_i y_j 
+\end{equation}
+then $Q(y) \gtrless 0$ \, $\forall \, y \neq 0$, iff eigenvalues of $A$ are positive (negative); $Q$ is positive definite (negative definite).  
+
+%Also, (c): We have a saddle point if some eigenvalues are positive, some are negative.  
+\end{theorem}
+\begin{proof}
+  By Thm. 5.11, $\exists \,$ orthogonal matrix $C$ s.t. $yAy^T = \sum_{i=1}^n \lambda_i x_i^2$, where $x=(x_1,\dots, x_n) = yC$, $\lambda_1, \dots, \lambda_n$ are eigenvalues of $A$.  (i.e. Hermitian matrices are diagonalizable).  \\
+\quad \, Eigenvalues of $A$ are real since $A$ is symmetric.  \\
+
+If all eigenvalues are positive, $Q(y) >0$, if $x \neq 0$.  Since $x=yC$, $y = xC^{-1}$, so $x\neq 0$, iff $y\neq 0$.  Then $Q(y) >0$\, $\forall \, y \neq 0$.  \\
+\quad Converse, if $Q(y) >0$\, $\forall \, y\neq 0$, choose $y$ s.t. $x=yC$ is $e_k$.  \\
+For this $y$, $Q(y) = \lambda_k$, so $\lambda_k >0$.   \\
+
+
+\end{proof}
+
+\begin{theorem}[Apostol Vol.2, Thm. 9.6] Let $f$ be a scalar field, cont. $D_{ij} f$ in $n$-ball $B(a)$; $H(a)$ Hessian matrix of stationary pt. $a$  \\
+(a) If eigenvalues of $H(a)$ are positive (negative), $f$ has a rel. min. (rel. max.) at $a$.  \\
+(c) If $H(a)$ has positive and negative eigenvalues, then $f$ has a saddle pt. at $a$.  
+\end{theorem}
+
+\begin{proof}
+Let $Q(y) = y H(a) y^T$.  Then $f(a+y) -f(a) = \frac{1}{2} Q(y) + \| y\|^2 E_2(a;y)$.  $(\nabla f(a) =0)$ where $E_2(a,y) \to 0$ as $y\to 0$.   \\
+
+\textbf{Want}: $\exists \, r >0$ s.t. if $0 < \| y \| < r$, \, $f(a+y) -f(a)$ has same sign as $Q(y)$.   \smallskip \\
+Assume eigenvalues $\lambda_1, \dots, \lambda_n$ of $H(a)$ are positive.  Let $h$ be the smallest.  \\
+\quad \, If $u < h, \, \lambda_1 - u, \dots, \lambda_n - u$ are also positive, and are eigenvalues of $H(a) - uI$.  \\
+By Thm. 9.5, $y (H(a) - uI)y^T$ positive definitive.  $y(H(a) - uI)y^T >0$, $\forall \, y \neq 0$.  
+\[
+\Longrightarrow y H(a) y^T > y (uI) y^T = u \| y\|^2 \quad \forall \, u < h
+\]
+Let $u=\frac{1}{2} h$, so $Q(y) > \frac{1}{2} h \| y\|^2 \, \forall \, y \neq 0$.  Since $E_2(a,y) \to 0$ as $y\to 0$, $\exists \, r >0$ s.t. 
+\[
+| E_2(a,y)| < \frac{h}{2} \text{ whenever } 0 < \| y \| < r
+\]
+For such $y$, we have $0\leq \| y\|^2 |E_2(a,y) | < \frac{1}{2} h \| y\|^2 < \frac{1}{2} Q(y)$
+
+So 
+\[
+f(a+y) - f(a) \geq \frac{1}{2} Q(y) - \| y\|^2 | E_2(a,y) | >0
+\]
+Then $f$  has a rel. min. at $a$.  
+
+Prove statement (c).  Let $\lambda_1, \lambda_2$ be 2 eigenvalues of $H(a)$ of opposite signs.  \\
+Let $h= \min{ \{ |\lambda_1|, |\lambda_2| \} }$.  Then $\forall \, u$ s.t. $-h < u <h$.  $\lambda_1 - u , \, \lambda_2 -u$ are eigenvalues of opposite sign of $H(a) - uI$.   \smallskip \\
+Thus $u \in (-h,h)$.  $y (H(a)-uI)y^T$ takes both positive and negative values in every neighborhood of $y=0$.  \\
+\quad Choose $r>0$, so $|E_2(a,y)| < \frac{h}{2}$, if $0<\| y \| < r$.  \\
+\quad \, then $f(a+y) -f(a)$ has same sign as $Q(y)$.  
+\quad \quad Since positive and negatives occur as $y\to 0$, $f$ has a saddle pt. at $a$.  
+
+\end{proof}
+
+\end{document}
