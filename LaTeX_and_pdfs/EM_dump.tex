@@ -1,0 +1,334 @@
+% file: EM_dump.tex
+% Electrodynamics, in unconventional ``grande'' format; fitting a widescreen format
+% Electricity and Magnetism notes "dump" 
+% 
+% github        : ernestyalumni
+% linkedin      : ernestyalumni 
+% wordpress.com : ernestyalumni
+%
+% This code is open-source, governed by the Creative Common license.  Use of this code is governed by the Caltech Honor Code: ``No member of the Caltech community shall take unfair advantage of any other member of the Caltech community.'' 
+% 
+
+\documentclass[10pt]{amsart}
+\pdfoutput=1
+\usepackage{mathtools,amssymb,lipsum,caption}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[table]{xcolor}
+\usepackage{pdfpages}
+%\usepackage[version=3]{mhchem}
+\usepackage{mhchem}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows}
+
+\usepackage{multicol}
+
+\hypersetup{colorlinks=true,citecolor=[rgb]{0,0.4,0}}
+
+\oddsidemargin=15pt
+\evensidemargin=5pt
+\hoffset-45pt
+\voffset-55pt
+\topmargin=-4pt
+\headsep=5pt
+\textwidth=1120pt
+\textheight=595pt
+\paperwidth=1200pt
+\paperheight=700pt
+\footskip=40pt
+
+
+
+
+
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
+
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+  {\bigskip\bigskip
+   \noindent{\small\bf Question #1.}
+   \bigskip}
+
+\newcommand{\problemhead}[1]
+  {
+   \noindent{\small\bf Problem #1.}
+   }
+
+\newcommand{\exercisehead}[1]
+  { \smallskip
+   \noindent{\small\bf Exercise #1.}
+  }
+
+\newcommand{\solutionhead}[1]
+  {
+   \noindent{\small\bf Solution #1.}
+   }
+
+
+\title{Electromagnetism, Electrodynamics Dump;  \large Electricity and Magnetism dump (includes notes and solutions to Purcell's Electricity and Magnetism}
+\author{Ernest Yeung \href{mailto:ernestyalumni@gmail.com}{ernestyalumni@gmail.com}}
+\date{7 mars 2017}
+\keywords{Electromagnetism, Electrodynamics, Electricity, Magnetism}
+\begin{document}
+
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\lstset{language=Python,
+ frame=bottomline,
+ basicstyle=\scriptsize,
+ identifierstyle=\color{blue},
+ keywordstyle=\bfseries,
+ commentstyle=\color{darkgreen},
+ stringstyle=\color{red},
+ }
+%\lstlistoflistings
+
+\maketitle
+
+From the beginning of 2016, I decided to cease all explicit crowdfunding for any of my materials on physics, math.  I failed to raise \emph{any} funds from previous crowdfunding efforts.  I decided that if I was going to live in \emph{abundance}, I must lose a scarcity attitude.  I am committed to keeping all of my material \textbf{open-sourced}.  I give all my stuff \emph{for free}.   
+
+In the beginning of 2017, I received a very generous donation from a reader from Norway who found these notes useful, through \emph{PayPal}.  If you find these notes useful, feel free to donate directly and easily through \href{https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ernestsaveschristmas%2bpaypal%40gmail%2ecom&lc=US&item_name=ernestyalumni&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted}{PayPal}, which won't go through a 3rd. party such as indiegogo, kickstarter, patreon.  Otherwise, under the \emph{open-source MIT license}, feel free to copy, edit, paste, make your own versions, share, use as you wish.    
+
+\noindent gmail        : ernestyalumni \\
+linkedin     : ernestyalumni \\
+twitter      : ernestyalumni \\
+
+
+  
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\begin{multicols*}{2}
+
+
+\begin{abstract}
+Electricity and Magnetism notes "dump" - Everything about or involving electricity and magnetism, electrodynamics.
+
+\end{abstract}
+
+\part{Maxwell's Equations; My version of Maxwell's Equations}
+
+\section{My version of Maxwell's equations}
+
+\subsection{Maxwell's Equations, my version, in "vector calculus" form}
+
+If $\nabla \cdot \mathbf{B} = 0$, then
+\begin{equation}
+	\nabla \times \mathbf{E} = \frac{-1}{c} \left( \frac{ \partial \mathbf{B} }{\partial t} \right)
+\end{equation}
+
+If $\nabla \cdot \mathbf{E} = 4\pi \rho_{\text{total}}$, then 
+\begin{equation}
+\begin{aligned}
+	\nabla \times \mathbf{B} & = \frac{1}{c} \left( \frac{ \partial \mathbf{E}}{ \partial t} + 4\pi \frac{ \partial \mathbf{P} }{ \partial t} +  \right.  \\
+	& \left.   + 4\pi \mathbf{J}_{\text{free}} + 4\pi c \nabla \times \mathbf{M}  \right)
+\end{aligned}
+\end{equation}
+
+\subsection{Maxwell's Equations, my version, over spacetime manifold $M$}
+
+For spacetime manifold $M$, of dimensions $\text{dim}M = d+1$, and for 
+\[
+\begin{aligned}
+	& E \in \Omega^1(M) \\ 
+	& B \in \Omega^2(M)
+\end{aligned}
+\]
+If $\mathbf{d}B=0$, then 
+\begin{equation}\label{Eq:MaxwellsEqnsDGEBInduction}
+\boxed{ 	\mathbf{d}E + \frac{ \partial B}{ \partial t} = 0  }
+\end{equation}
+
+If $\mathbf{\delta}E = \mathbf{*} \mathbf{d} \mathbf{*} E = 4\pi \rho_{\text{total}}$, 
+\begin{equation}\label{Eq:MaxwellsEqnsDGEBFaraday}
+	\boxed{ \mathbf{\delta} B = \mathbf{*} \mathbf{d} \mathbf{*} B = \frac{ \partial E}{ \partial t} + 4\pi \frac{ \partial P}{ \partial t} + 4\pi J_{\text{free}} + 4\pi c \mathbf{\delta} \mathbf{M} }
+\end{equation}
+with $\mathbf{M} \in \Omega^2(M)$, magnetization in matter (i.e. matter magnetization) is \emph{necessarily} a 2-form.  
+
+\subsubsection{Some of the algebra (scratch) work/explicit calculations, for Maxwell's Equations, my version, over spacetime manifold $M$}
+
+\[
+\mathbf{d}B \Longleftrightarrow \nabla \cdot B
+\]
+since component-wise, 
+\[
+\begin{gathered}
+	\mathbf{d} B = \frac{ \partial }{ \partial x^k } B_{ij} dx^k \wedge dx^i \wedge dx^j \Longleftrightarrow \nabla \cdot B 
+\end{gathered}
+\]
+\[
+\mathbf{d}E = -\frac{ \partial B}{\partial t}   \Longleftrightarrow \nabla \times E \equiv \text{curl} E = \frac{-1}{c} \frac{ \partial \mathbf{B}}{ \partial t}  
+\]
+since, component-wise, 
+\[
+\mathbf{d} E = \frac{ \partial }{ \partial x^k} E_i dx^k \wedge dx^i = \frac{ \partial }{ \partial x^j} E_k dx^j \wedge dx^k = \frac{ -\partial }{ \partial t} B_{jk} dx^j \wedge dx^k 
+\]
+For $\mathbf{\delta} E = \mathbf{*} \mathbf{d} \mathbf{*} E = 4\pi \rho_{\text{total}}$, consider
+\[
+\begin{gathered}
+	\mathbf{*} E = \frac{1}{ (d-1)!} \sqrt{ \mathbf{g}} \epsilon_{i_1i_2 \dots i_{d-1} j_1} E_j g^{jj_1} e^{i_1} \wedge e^{i_2} \wedge \dots \wedge e^{i_{d-1}} = \frac{1}{2} \sqrt{ \mathbf{g}} \epsilon_{ijk} E_{k'} g^{k'k} dx^i \wedge dx^j 
+\end{gathered}
+\]
+Further, 
+\[
+\begin{gathered}
+	\mathbf{d} \mathbf{*} E = \frac{1}{ (d-1)! } \frac{ \partial }{ \partial x^k} (\sqrt{ \mathbf{g}} E_j g^{jj_1} ) \epsilon_{i_1 i_2 \dots i_{d-1} j_1 } dx^k \wedge dx^{i_1} \wedge dx^{i_2} \wedge \dots \wedge dx^{i_{d-1}} = \\
+=\frac{1}{(d-1)!} \frac{ \partial }{ \partial x^k} (\sqrt{ \mathbf{g}} E^{j_1} ) \epsilon_{i_1 i_2 \dots i_{d-1} j_1} \epsilon^{ k i_1 i_2 \dots i_{d-1} } \frac{ \text{vol}^d}{ \sqrt{ |\mathbf{g} | } } = \\
+=\frac{1}{(d-1)!} \frac{ \partial }{ \partial x^k} (\sqrt{ |\mathbf{g} | } E^{j_1} ) \delta^k_{ j_1} (d-1)! \frac{ \text{vol}^d}{ \sqrt{ |\mathbf{g} | } } = \frac{1}{ \sqrt{ |\mathbf{g} | }} \frac{ \partial }{ \partial x^k} (\sqrt{ |\mathbf{g} |} E^k) \text{vol}^d 
+\end{gathered}
+\]
+where this (generalized) Kronecker delta relation was used: 
+\[
+\frac{1}{p!} \delta^{\mu_1 \dots \mu_p }_{\nu_1 \dots \nu_p } \delta^{ \nu_1 \dots \nu_p }{ \rho_1 \dots \rho_p } = \delta^{\mu_1 \dots \mu_p }_{ \rho_1 \dots \rho_p }
+\]
+where 
+\[
+\delta^{\mu_1 \dots \mu_n }_{ \nu_1 \dots \nu_n } = \epsilon^{\mu_1 \dots \mu_n} \epsilon_{ \nu_1 \dots \nu_n }
+\]
+Note that 
+\[
+\begin{aligned}
+	*1 & = \text{vol} \\
+**1  & = (-1)^{0(n-0)} 1 = 1 = *\text{vol}
+\end{aligned}
+\]
+and so 
+\[
+\mathbf{*} \mathbf{d} \mathbf{*} E = \mathbf{\delta} E = \frac{1}{\sqrt{ |\mathbf{g} | } } \frac{ \partial }{ \partial x^k} ( \sqrt{ | \mathbf{g} | } E^k )
+\]
+Indeed, we had generalized the divergence, but on a 1-form:
+\begin{equation}
+\begin{aligned}
+	& \mathbf{\delta} : \Omega^1(M) \to C^{\infty}(M) \\ 
+	& \mathbf{\delta} E = \mathbf{\delta} (E_kdx^k)  = \frac{1}{\sqrt{|\mathbf{g} |} } \frac{ \partial }{ \partial x^k} (\sqrt{ |\mathbf{g} | } E^k) \equiv \frac{1}{\sqrt{ |\mathbf{g} | } } \frac{ \partial }{ \partial x^k} ( \sqrt{ |\mathbf{g} | }  g^{kk_1} E_{k_1} )
+\end{aligned}
+\end{equation}
+
+\section{Magnetostatics, macroscopic Magnetism, Magnetic permeability, magnetic susceptibility, field $\mathbf{H}$, free currents and field $\mathbf{H}$}
+
+\emph{Keywords}: magnetic permeability, magnetic susceptibility
+
+Suppose we have matter (i.e. the "macroscopic problem", referred to from Jackson (1998), Sec. 5.8 "Macroscopic Equations, Boundary Conditions on $B$ and $H$", \cite{Jack1998}), \emph{not} a vacuum.  
+
+Atoms in matter have electrons, $e^-$ in orbit, contributing to (rapidly) fluctuating magnetic moments $\mathbf{m}$, along with $e^-$'s intrinsic $\mathbf{m}$.  
+
+Consider an average macroscopic magnetization or magnetic moment density $\mathbf{M}(\mathbf{x})$ defined in a "vector calculus" manner by Jackson (1998) \cite{Jack1998}, 
+\[
+\mathbf{M}(\mathbf{x}) = \sum_I N_I\langle \mathbf{m}_I\rangle , \qquad \, I \equiv \text{ index of a particle } 
+\]
+
+Recalling Maxwell's Equations, Eq. \ref{Eq:MaxwellsEqnsDGEBFaraday}, 
+\[
+\mathbf{\delta} B = \frac{ \partial E}{ \partial t} + 4\pi \frac{ \partial P }{ \partial t} + 4\pi J_{\text{free}} + 4\pi c \mathbf{\delta}\mathbf{M}
+\]
+Consider a time-independent $E$ and negligible $P$.  Then 
+\[
+\Longrightarrow \mathbf{\delta} B =  4\pi J_{\text{free}} + 4\pi c \mathbf{\delta}\mathbf{M}
+\]
+Jackson (1998) \cite{Jack1998} considers this magnetization $\mathbf{M}$ as contributing to an \emph{effective current density} by vector calculus arguments of it having a vector potential form, and so he proceeds to write it as (Jackson (1998), Eqn. (5.80) \cite{Jack1998})
+\[
+\text{curl} \mathbf{B} = \mu_0 (\mathbf{J} + \text{curl}\mathbf{M} ) \qquad \, (SI)
+\]
+Then Jackson \emph{defines} the macroscopic field $\mathbf{H}$, in Jackson (1998), Eqn. (5.81) \cite{Jack1998}, 
+\[
+\mathbf{H} := \frac{1}{\mu_0} \mathbf{B} - \mathbf{H}
+\]
+
+However, Purcell's treatment is both more lucid, and more grounded in what $B$ field really is physically, less relying upon artificial artifices.  
+
+\subsection{Free currents $\mathbf{J}_{\text{free}}$ and the field $\mathbf{H}$, magnetic susceptibility}
+
+cf. Purcell (1984) \cite{Purc1984}, Sec. 11.10 Free Currents, and the Field $\mathbf{H}$  
+
+\emph{Keywords}: $\mathbf{H}$, volume magnetic susceptibility
+
+Bound current $\mathbf{J}_{\text{bound}}$ are current associated with molecular or atomic magnetic moments, including the intrinsic magnetic moment of particles with spin.  
+
+Free currents $\mathbf{J}_{\text{free}}$ are ordinary conduction currents.  
+
+\begin{equation}
+\mathbf{J}_{\text{bound}} = c \nabla \times \mathbf{M}
+\end{equation}
+cf. Purcell (1984), Eq. (44) of Ch. 11 \cite{Purc1984}
+
+At a surface, where $\mathbf{M}$ is discontinuous, we have a surface current density $\mathcal{J}$.  
+
+
+By superposition, 
+\begin{equation}
+	\nabla \times \mathbf{B} = \frac{ 4\pi }{c} (\mathbf{J}_{\text{bound}} + \mathbf{J}_{\text{free} } ) = \frac{4\pi }{ c} \mathbf{J}_{\text{total} }
+\end{equation}
+cf. Purcell (1984), Eq. (50) of Ch. 11 \cite{Purc1984}
+
+Thus, 
+\[
+\begin{gathered}
+\nabla \times \mathbf{B} = \frac{ 4\pi}{c}(c\nabla \times \mathbf{M} ) + \frac{4\pi}{c} \mathbf{J}_{\text{free}} = \\
+	= \nabla \times (\mathbf{B} - 4\pi \mathbf{M} ) = \frac{4\pi }{c} \mathbf{J}_{\text{free} }
+\end{gathered}
+\]
+cf. Purcell (1984), Eq. (51) of Ch. 11 \cite{Purc1984}
+
+Purcell also defines 
+\begin{equation}
+\mathbf{H} := \mathbf{B}-4\pi \mathbf{M}
+\end{equation}
+cf. Purcell (1984), Eq. (52) of Ch. 11 \cite{Purc1984}; and so 
+\[
+\begin{gathered}
+\nabla \times \mathbf{H} = \frac{4\pi}{c} \mathbf{J}_{\text{free}} \qquad \, (cgs) \qquad \qquad \, \nabla \times \mathbf{H} = \mathbf{J}_{\text{free}} \qquad \, (SI)
+\end{gathered}
+\]
+cf. Purcell (1984), Eq. (53), (53'), respectively, of Ch. 11 \cite{Purc1984}.  
+
+In magnetic systems, it is precisely the free currents that we can control.  So $\mathbf{H}$ is useful:
+
+\begin{equation}
+\begin{gathered}
+\int_C \mathbf{H} \cdot d\mathbf{l} = \frac{4\pi}{c}\int_S \mathbf{J}_{\text{free}} \cdot d\mathbf{a} = \frac{4\pi}{c} I_{\text{free}} \qquad \, (cgs) \qquad \qquad \, \int_C \mathbf{H} \cdot d\mathbf{l} = \int_S \mathbf{J}_{\text{free}} \cdot d\mathbf{a} =  I_{\text{free}} \qquad \, (SI)
+\end{gathered}
+\end{equation}
+where in SI, $H \sim \frac{ \text{ amps } }{ \text{ meter } }$.  cf. Purcell (1984), Eq. (54), (54'), respectively, of Ch. 11 \cite{Purc1984}.  
+
+$\mathbf{B}$ is the \emph{fundamental magnetic field vector}; it is \textbf{only} $\mathbf{B}$ s.t. $\nabla \cdot \mathbf{B} =0$ or $\mathbf{d}B=0$  
+
+
+
+
+
+
+\end{multicols*}
+
+\begin{thebibliography}{9}
+
+\bibitem{Jack1998}
+J.D. Jackson.  \textbf{Classical Electrodynamics} Third Edition.  Wiley.  1998.   ISBN-13: 978-0471309321
+
+\bibitem{Purc1984}
+Edward M. Purcell.  \textbf{Electricity and Magnetism} (Berkeley Physics Course, Vol. 2) Second Edition.  McGraw-Hill Science/Engineering/Math.  1984.  ISBN-13: 978-0070049086
+
+  \end{thebibliography}
+
+\end{document}
+
+
+
+
+    
