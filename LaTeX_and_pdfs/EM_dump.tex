@@ -123,6 +123,165 @@ Electricity and Magnetism notes "dump" - Everything about or involving electrici
 
 \end{abstract}
 
+\part{Math}
+
+\section{Codifferential, The "Vector Potential" and Laplacian}  
+\emph{Keywords}: codifferential, vector potential, Laplacian
+
+\subsection{Codifferential $\delta$}
+
+For smooth manifold $M$, $\text{dim}M = n$, 
+\begin{equation}
+\boxed{
+\begin{aligned}
+	& \delta : \Omega^k(M) \to \Omega^{k-1}(M) \\ 	
+	& \delta = (-1)^{n(k+1)+1} * d*
+\end{aligned}
+}
+\end{equation}
+
+For $k=1,2$ cases, 
+\[
+\begin{aligned}
+	& \delta = (-1)^{n(1+1)+1} * d* = (-1) *d* \\ 
+	& \delta = (-1)^{n(2+1) + 1} * d * = (-1)^{3n+1} *d*
+\end{aligned}
+\]
+For $n=d=3$, 
+\[
+\begin{aligned}
+	& \mathbf{\delta} : \Omega^2(M) \to \Omega^1(M) \\ 
+	& \mathbf{\delta} = \mathbf{* d * }
+\end{aligned}
+\]
+
+\subsection{the "Vector Potential"}
+
+If $B=\mathbf{d} A$, $B\in \Omega^2(M)$, 
+\[
+\begin{gathered}
+B= B_{jk} dx^j \wedge dx^k = \mathbf{d}A = \frac{ \partial A_k}{ \partial x^j} dx^j \wedge dx^k  \\
+ B_{jk} = \frac{ \partial A_k}{ \partial x^j} 
+\end{gathered}
+\]
+So these statements are equivalent: 
+\begin{equation}
+\boxed{ 
+B =\mathbf{d} A \Longleftrightarrow \mathbf{B} = \text{curl} \mathbf{A}
+}
+\end{equation}
+
+Indeed, recall the \emph{deRham cohomology}:
+
+\[
+\begin{gathered}
+	H^k_{\text{deRham}}(M) = Z^k(M)/ \text{im}d = \frac{Z^k(M)}{ d\Omega^{k-1}(M) }
+\end{gathered}
+\]
+And so this form for $B=\mathbf{d}A$ presupposes that 
+\[
+B \in [1] = [\mathbf{d}A ] \in H^2_{\text{deRham}}(M')
+\]
+But it should be noted on another manifold, this form may not hold; indeed, consider a submanifold or domain $M' \subseteq M$.  In this case
+\[
+H^2_{\text{deRham}}(M') \ni B
+\]
+
+\subsection{Laplacian}
+
+\begin{definition}[Laplacian]
+\begin{equation}
+\begin{aligned}
+	& \Delta : \Omega^k(M) \to \Omega^k(M) \\ 
+	& \Delta = d\delta + \delta d
+\end{aligned}
+\end{equation}
+\end{definition}
+
+Both recognizing the equivalence between these 2 formulations:
+\[
+\mathbf{*d*}B = \mathbf{\delta}B \Longleftrightarrow \text{curl} \mathbf{B}
+\]
+and acknowledging that it \emph{has} to be the case that $\mathbf{*d*}B$ is the correct expression, coming from $d*F$ for the electromagnetic 2-form $F$, 
+\[
+\mathbf{\delta} B = \mathbf{\delta} \mathbf{d}A = \Delta A - \mathbf{d \delta} A
+\]
+Then
+\[
+\begin{gathered}
+	\mathbf{*d}A = \frac{ \sqrt{|\mathbf{g} |} }{ (d-2)! } \epsilon_{i_1i_2 \dots i_{d-2} jk} g^{jj'} g^{kk'} \frac{ \partial A_{k'}}{ dx^{j'} } dx^{i_1} \wedge \dots \wedge dx^{i_{d-2}} = \sqrt{ |\mathbf{g} | } \epsilon_{ijk} g^{jj'} g^{kk'} \frac{ \partial A_{k'} }{ \partial x^{j'} } dx^i  \\
+\end{gathered}
+\]
+
+
+Consider the expression 
+\[
+\text{curl}\mathbf{B} = \text{curl}( \text{curl} \mathbf{A})
+\]
+I will generalize it and point out its misgivings.  
+
+Calculating from definitions for $*$ and $d$, 
+\[
+\begin{gathered}
+	\mathbf{d} \mathbf{*} \mathbf{d} A = \frac{ \epsilon_{i_1 i_2 \dots i_{d-2} jk } }{ (d-2)! } \frac{ \partial }{ \partial x^l} \left( \sqrt{|\mathbf{g} |} g^{jj'} g^{kk'} \frac{ \partial A_{k'} }{ \partial x^{j'} } \right) dx^l \wedge dx^{i_1} \wedge \dots \wedge dx^{i_{d-2} } \\ 
+	\mathbf{*} \mathbf{d} \mathbf{*} \mathbf{d} A = \frac{ \sqrt{ |\mathbf{g} | } }{ (d-d(-1))! } \frac{ \epsilon_{id'i_1' i_2' \dots i'_{d-2} } }{ (d-2)! } g^{l'l} g^{i_1' i_1} g^{i_2' i_2} \dots g^{i_{d-2}' i_{d-2} } \frac{ \partial }{ \partial x^l } \left( \sqrt{ |\mathbf{g} | } g^{jj'} g^{kk'} \frac{ \partial A_{k'} }{ \partial x^{j'} } \right) \epsilon_{i_1 i_2 \dots i_{d-2} jk } dx^i = \\
+\xrightarrow{d=3} \sqrt{ |\mathbf{g} | } \epsilon_{il'm'} g^{l'l} g^{m'm} \frac{ \partial }{ \partial x^l} \left( \sqrt{ |\mathbf{g} | } g^{jj'} g^{kk'} \frac{ \partial A_{k'} }{ \partial x^{j'} } \right) \epsilon_{mjk} dx^i
+\end{gathered}
+\]
+In $\mathbb{R}^3$, 
+\[
+\mathbf{*} \mathbf{d} \mathbf{*} \mathbf{d} A \xrightarrow{ \mathbb{R}^3} \frac{ \partial }{ \partial x^j} \left( \frac{ \partial A_k }{ \partial x^j} \right) - \frac{ \partial }{ \partial x^k} \left( \frac{ \partial A_k}{ \partial x^j} \right)
+\]
+At this point, in the "vector calculus" formulation, the partial derivatives in the $- \frac{ \partial }{ \partial x^k} \left( \frac{ \partial A_k}{ \partial x^j} \right)$ would be exchanged in order, and then a so-called "choice of gauge" for $\nabla \cdot A \equiv \text{div}A$ would be "made," making this term equal $0$.  As we clearly see above, this should not be the case.  Rather, this choice should be made:
+\begin{equation}
+\mathbf{d \delta } A = 0
+\end{equation}
+This is because we should directly use the "manifestly covariant" definition of the Laplacian:
+\begin{equation}
+\begin{gathered}
+	\mathbf{* d * d } A = (-1)^{d(1-1) +1} \mathbf{ \delta d} A = (-1)^{0+1} \mathbf{ \delta d } A = (-1)^{1} (\Delta - \mathbf{d\delta } ) A \\
+\xrightarrow{ d=3} (-1)(\Delta - \mathbf{ d\delta } ) A	
+\end{gathered}
+\end{equation}
+Note that $k=1$, i.e. we're dealing with 1-form $A$ here, in the $(-1)^{d(k-1)+1}$ factor.  
+
+So the true expression is this (to reiterate and emphasize the point):
+\begin{equation}	
+\mathbf{\delta}B = (-1) (\Delta - \mathbf{d\delta } ) A
+\end{equation}
+
+Are there any necessary constraints on $A$ to make it, such that $\mathbf{d\delta }A=0$?  Perhaps we can take a look at how the definition of the codifferential $\mathbf{\delta}$ necessitates that this diagram commutes:
+\[
+ \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=7.8em, column sep=7.8em, minimum width=5.2em]
+  {
+ \Omega^1(M)  &  \Omega^{d-1}(M)  \\ 
+	\Omega^0(M) &  \Omega^d(M)  \\ 
+};
+  \path[->]
+  (m-1-1) edge node [above] {$ \mathbf{*} $ }  (m-1-2)
+edge node [auto] {$\mathbf{\delta} $ } (m-2-1) 
+	(m-1-2) edge node [auto] {$ \mathbf{d} $ } (m-2-2)
+	(m-2-1) edge node [auto] {$ \mathbf{ * } (-1) $ }(m-2-2)
+  ;
+\end{tikzpicture}   \qquad \quad \, 
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=7.8em, column sep=7.8em, minimum width=5.2em]
+  {
+ A  &  \mathbf{*}A  \\ 
+	\delta A &  \mathbf{d}\mathbf{*} A  \\ 
+};
+  \path[|->]
+  (m-1-1) edge node [above] {$ \mathbf{*} $ }  (m-1-2)
+edge node [auto] {$\mathbf{\delta} $ } (m-2-1) 
+	(m-1-2) edge node [auto] {$ \mathbf{d} $ } (m-2-2)
+	(m-2-1) edge node [auto] {$ \mathbf{ * } (-1) $ }(m-2-2)
+  ;
+\end{tikzpicture}  
+\]
+
+
+
 \part{Maxwell's Equations; My version of Maxwell's Equations}
 
 \section{My version of Maxwell's equations}
@@ -217,7 +376,7 @@ Indeed, we had generalized the divergence, but on a 1-form:
 \begin{equation}
 \begin{aligned}
 	& \mathbf{\delta} : \Omega^1(M) \to C^{\infty}(M) \\ 
-	& \mathbf{\delta} E = \mathbf{\delta} (E_kdx^k)  = \frac{1}{\sqrt{|\mathbf{g} |} } \frac{ \partial }{ \partial x^k} (\sqrt{ |\mathbf{g} | } E^k) \equiv \frac{1}{\sqrt{ |\mathbf{g} | } } \frac{ \partial }{ \partial x^k} ( \sqrt{ |\mathbf{g} | }  g^{kk_1} E_{k_1} )
+	& -\mathbf{\delta} E = -\mathbf{\delta} (E_kdx^k)  = \frac{1}{\sqrt{|\mathbf{g} |} } \frac{ \partial }{ \partial x^k} (\sqrt{ |\mathbf{g} | } E^k) \equiv \frac{1}{\sqrt{ |\mathbf{g} | } } \frac{ \partial }{ \partial x^k} ( \sqrt{ |\mathbf{g} | }  g^{kk_1} E_{k_1} )
 \end{aligned}
 \end{equation}
 
@@ -248,7 +407,7 @@ Jackson (1998) \cite{Jack1998} considers this magnetization $\mathbf{M}$ as cont
 \]
 Then Jackson \emph{defines} the macroscopic field $\mathbf{H}$, in Jackson (1998), Eqn. (5.81) \cite{Jack1998}, 
 \[
-\mathbf{H} := \frac{1}{\mu_0} \mathbf{B} - \mathbf{H}
+\mathbf{H} := \frac{1}{\mu_0} \mathbf{B} - \mathbf{M}
 \]
 
 However, Purcell's treatment is both more lucid, and more grounded in what $B$ field really is physically, less relying upon artificial artifices.  
@@ -309,9 +468,123 @@ where in SI, $H \sim \frac{ \text{ amps } }{ \text{ meter } }$.  cf. Purcell (19
 
 $\mathbf{B}$ is the \emph{fundamental magnetic field vector}; it is \textbf{only} $\mathbf{B}$ s.t. $\nabla \cdot \mathbf{B} =0$ or $\mathbf{d}B=0$  
 
+The basic magnetic field inside matter is $\mathbf{B}$, \emph{not} $\mathbf{H}$.  That's not a matter of mere definition, but a \emph{consequence of the absence of magnetic charges}.  cf. Purcell (1984)\cite{Purc1984}.   
 
+Now 
+\begin{equation}
+\mathbf{M} = \chi_m \mathbf{H}
+\end{equation}
+cf. Purcell (1984), Eq. (56) Ch. 11 \cite{Purc1984}. 
 
+The lines of $\mathbf{H}$ inside the magnet look just like the lines of $\mathbf{E}$ inside the polarized cylinder.   \\
+- $\mathbf{H}$ is the fiction of magnetic poles; if there wre magnetic poles then $\mathbf{H}$ is the macroscopic $\mathbf{B}$ filed inside the material.  
 
+For any material in which $\mathbf{M}$ is porportional to $\mathbf{H}$, 
+\begin{equation}
+\boxed{ 
+\begin{gathered}
+	\mathbf{B} = \mathbf{H} + 4\pi \mathbf{M} = (1+4\pi \chi_m) \mathbf{H} \\
+\mu = 1 + 4\pi \chi_m
+\end{gathered}
+}
+\end{equation}
+
+So \emph{if} there was a linear response between magnetization $\mathbf{M}$ and the measured macroscopic field $\mathbf{H}$, related through the volume magnetic susceptibility, $\chi_m$, ($\mathbf{M} = \chi_m \mathbf{H}$), then for $\mathbf{\delta} B = 4\pi J_{\text{free}} + 4\pi c \mathbf{\delta} \mathbf{M}$, 
+\[
+\mathbf{\delta} (B-4\pi c M) = \mathbf{\delta} H = \mathbf{\delta} \frac{ B}{ \mu } = 4\pi J_{\text{free}} \Longrightarrow \mathbf{B} = \mu 4\pi J_{\text{free}} 
+\]
+and so we have the usual expression (make the comparison)
+\[
+\text{curl} \mathbf{B} = \mu 4\pi \mathbf{J}_{\text{free}}
+\]
+Obtaining an integral form, 
+\[
+\begin{gathered}
+	\mathbf{*} \mathbf{\delta} B = \mathbf{*} \mathbf{*} \mathbf{d} \mathbf{*} B = (-1)^{2(d-2)} \mathbf{d}\mathbf{*} B = \mu 4\pi \mathbf{*} J_{\text{free}} \xrightarrow{ \int_S } \int_S \mathbf{d} \mathbf{*} B =  \int_{\partial S} \mathbf{*} B = \mu 4\pi \int_S \mathbf{*} J_{\text{free}}
+\end{gathered}
+\]
+
+Jackson seems to imply to treat macroscopic field $\mathbf{H}$ as what you measure, since $\mathbf{J}_{\text{free}}$ is what one can measure and control, pointed out sagely by Purcell.  So consider this, as I write down an integral form,
+\[
+\begin{gathered}
+\mathbf{*} \mathbf{\delta} H  = \mathbf{d} \mathbf{*} H = 4\pi \mathbf{*} J_{\text{free}} \xrightarrow{ \int_S } \int_S \mathbf{d} \mathbf{*} H = \int_{\partial S} \mathbf{*} H = 4\pi \int_S \mathbf{*} J_{\text{free}}
+\end{gathered}
+\]
+If, over $S$, $\mathbf{J}_{\text{free}}$ is uniform, $\frac{4\pi}{c} \int_S \mathbf{*} \mathbf{J}_{\text{free}} = \frac{4\pi }{c} I_{\text{free}}$.  If we can measure the current, we can obtain the line integral of $\mathbf{H}$.  But we should really be aware that what we're \emph{really} measuring is $B-4\pi c \mathbf{M}$ - would it be possible to measure the macroscopic $\mathbf{M}$ itself?
+
+\section{Eddy Currents}
+
+I build upon the physical setup proposed by Jackson (1998) \cite{Jack1998} in Section 5.18 "Quasi-Static Magnetic Fields in Conductors; Eddy Currents; Magnetic Diffusion."   
+
+For a system (with characteristic) length $L$, $L$ being small, \\
+compared to electromagnetic wavelength associated with dominant time scale of problem $T$, 
+\[
+\begin{gathered}
+	f := \frac{1}{T} ; \quad \, \omega = 2\pi f ; \quad \, \omega \lambda = c \Longrightarrow \lambda = \frac{c}{ \omega } = \frac{c}{ 2\pi f } = \frac{Tc}{2\pi }  \\
+\frac{L}{\lambda} = \frac{LTc}{2\pi } \gg 1
+\end{gathered}
+\]
+From Maxwell's equations, in particular, Faraday's Law, and in its integral form (over 2-dim. \emph{closed} surface $S$), 
+\begin{equation}
+\begin{gathered}
+\mathbf{d}E + \frac{ \partial }{ \partial t } B = 0 \text{ or } -\mathbf{d}E =\frac{ \partial B}{ \partial t} \xrightarrow{ \int_S } \int_S \frac{ \partial B}{ \partial t} = -\int_S \mathbf{d}E = -\int_{\partial S} E
+\end{gathered}
+\end{equation}
+So on $S$, changing magnetic flux $\int \frac{ \partial B}{ \partial t}$ results in $E$ field, circulating around boundary of $S$, $\partial S$.  
+
+We know that in a conductor, free conducting electrons get pushed around by $E$ fields, result in a current density $J$.  
+
+$J$ is related to $E$, \emph{empirically} (by Ohm's Law)
+\[
+J = \sigma E
+\]
+where $\sigma$ is the resistivity.  
+
+Then use the force law on this induced current $J$ from the $B$ field set up:
+\[
+F_{\text{net}} = \frac{1}{c} \int_S J\times B dA
+\]
+By working through the right-hand rule, $F_{\text{net}}$ the force on those currents induced in the conductor due to the $B$ that's there, is in the direction to help oppose changing (increasing or decreasing $\frac{\partial B}{ \partial t}$).  
+
+To find $B$, suppose $B=dA$, i.e. $B\in H^2_{\text{deRham}}(M)$, i.e. $B=\text{curl}A$.  
+
+For sure, 
+\[
+\mathbf{\delta} (B-4\pi c \mathbf{M}) = 4\pi J \Longleftrightarrow \text{curl}(B-4\pi c \mathbf{M} ) = \text{curl} H = 4\pi J
+\]
+Be warned now that the relation $B=\mu H$ may not be valid on all domains of interest; $\mu$ could even be a tensor! (e.g. $B_{ij} = \mu^{kl}_{ij} H_{kl}$).  However, both Jackson (1998) \cite{Jack1998} in Sec. 5.18 Quasi-Static Magnetic Fields in Conductors; Eddy Currents; Magnetic Diffusion, pp. 219, and Smythe (1968), Ch. X (his Ch. 10), pp. 368 \cite{Smyt1968}, continues on \emph{as if} this relation is linear: $B=\mu H$.  
+
+Nevertheless, as we want to find $B$ by finding its "vector potential" $A$, we obtain a diffusion equation: 
+\begin{equation}\label{Eq:EddyCurrentsAdiffusion}
+\begin{gathered}
+	- \mathbf{\delta}B = \mathbf{*d*d}A = (-1) \mathbf{\delta d} A = (-1)( \Delta - \mathbf{d\delta} ) A \xrightarrow{ \mathbf{d\delta} A = 0 } - \Delta A = \\
+	= 4\pi \mu J = 4\pi \mu \sigma E = 4\pi \mu \sigma \left( -\frac{ \partial A}{ \partial t} \right) \\
+\Longrightarrow \boxed{ \Delta A = 4\pi \mu \sigma \frac{ \partial A}{ \partial t } }
+\end{gathered}
+\end{equation}
+where in the first 2 steps (equalities), $- \mathbf{\delta}B = \mathbf{*d*d}A = (-1) \mathbf{\delta d} A$ it's interesting to note that the codifferential $\mathbf{\delta}$ for the 2 form $B$ had to be written out explicitly, and then the codifferential for the 1-form $A$ is \emph{different} from the $\mathbf{\delta}$ for $B$ by a(n important) factor of $(-1)$; where $\mathbf{d\delta} A=0$ must be satisfied by the form $A$ takes; and where, since $B=\mathbf{d}A$,
+\begin{equation}
+\begin{gathered}
+	\mathbf{d}E + \frac{ \partial B}{ \partial t} = \mathbf{d} E + \frac{ \partial }{ \partial t} \mathbf{d} A = \mathbf{d} \left( E+ \frac{ \partial A}{ \partial t} \right) = 0 \Longrightarrow E = -\frac{ \partial A}{ \partial t} + \text{grad}\Phi \xrightarrow{ \Phi = \text{ constant } } E = -\frac{ \partial A}{ \partial t}
+\end{gathered}
+\end{equation}
+whereas a choice of gauge for $E$ was chosen so that $\Phi=\text{constant}$ (and so a particular form for $E$ was chosen, amongst those in the \emph{same} equivalence class of $H^1_{\text{deRham}}(M)$.  
+
+To ensure that the differential geometry formulation is in agreement with the practical vector calculus formulation, compare Eq. \ref{Eq:EddyCurrentsAdiffusion} with Eq. (5.160) of Jackson (1998) \cite{Jack1998} and Eq. (10) in Sec. 10.00 of Smythe (1968) \cite{Smyt1968}.  
+
+To summarize what's going on, I think one should at least understand in one's head how Maxwell's Equations apply, (and I will try to write in SI here)
+\begin{equation}
+\boxed{
+\begin{gathered}
+\int_S \frac{ \partial \mathbf{B}}{ \partial t} dA = -\oint \mathbf{E}\cdot d\mathbf{s} \Longrightarrow \mathbf{J}=\sigma \mathbf{E} \Longrightarrow \mathbf{F}_{\text{net}} = \int_S \mathbf{J} \times \mathbf{B} dA  \\
+\text{ to find } \mathbf{B} = ? \qquad \, \text{ using form } \mathbf{B} = \nabla \times \mathbf{A}, \\
+\nabla^2 \mathbf{A} = \mu \sigma \frac{ \partial \mathbf{A} }{ \partial t} \qquad \, (SI)
+\end{gathered}
+}
+\end{equation}
+where, a change in magnetic flux over a surface $S$ over the conductor, $\int_S \frac{ \partial \mathbf{B}}{ \partial t}dA$ induces a circulation of $E$ field around $S$, $-\oint \mathbf{E} \cdot d\mathbf{s}$, and this $E$ field is pushing around \emph{free conducting charges} according to Ohm's law, $\mathbf{J} = \sigma \mathbf{E}$, with $\sigma$ being the conductivity of the conducting material, and this current density $\mathbf{J}$ is then acted upon by the prevailing $B$ field, according to the usual force law.  To find $\mathbf{B}$, one can find $\mathbf{A}$ and \emph{try} to find $\mathbf{A}$ analytically.  
+
+Keep in mind that for $\nabla^2 \mathbf{A} = \mu \sigma \frac{ \partial \mathbf{A}}{ \partial t}$, we had used, critically, the Maxwell equation $\mathbf{\nabla} \times \mathbf{H} = \mathbf{J}$, with $\mathbf{J}$ being the \emph{induced current of free conducting charges on the conductor}.  This $\mathbf{H}$ will contribute (through linear superposition) to the $\mathbf{B}$ that could already be there due to the permanent magnet.  
 
 
 \end{multicols*}
@@ -323,6 +596,15 @@ J.D. Jackson.  \textbf{Classical Electrodynamics} Third Edition.  Wiley.  1998. 
 
 \bibitem{Purc1984}
 Edward M. Purcell.  \textbf{Electricity and Magnetism} (Berkeley Physics Course, Vol. 2) Second Edition.  McGraw-Hill Science/Engineering/Math.  1984.  ISBN-13: 978-0070049086
+
+\bibitem{Mori2001}
+Shigeyuki Morita.  \textbf{Geometry of Differential Forms (Translations of Mathematical Monographs, Vol. 201)}.  American Mathematical Society (August 28, 2001).   ISBN-13: 978-0821810453
+
+\bibitem{OCalinDChang2005}
+Ovidiu Calin, Der-Chen Chang. \textbf{Geometric Mechanics on Riemannian Manifolds: Applications to Partial Differential Equations} (Applied and Numerical Harmonic Analysis).  Birkh\"{a}user. 2005. ISBN-13: 978-0817643546
+
+\bibitem{Smyt1968}
+William R. Smythe, \textbf{Static and Dynamic Electricity}.  3rd ed. (McGraw-Hill, New York, 1968).  
 
   \end{thebibliography}
 
