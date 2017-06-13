@@ -10,7 +10,8 @@
 
 \documentclass[10pt]{amsart}
 \pdfoutput=1
-\usepackage{mathtools,amssymb,lipsum,caption}
+%\usepackage{mathtools,amssymb,lipsum,caption}
+\usepackage{mathtools,amssymb,caption}
 
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -19,7 +20,7 @@
 \usepackage[table]{xcolor}
 \usepackage{pdfpages}
 %\usepackage[version=3]{mhchem}
-\usepackage{mhchem}
+%\usepackage{mhchem}
 
 \usepackage{tikz}
 \usetikzlibrary{matrix,arrows}
@@ -851,9 +852,485 @@ then $g$ also a monomial.
 
 \href{https://martinralbrecht.files.wordpress.com/2010/07/20131022_buchberger_dtu.pdf}{Gr\"{o}bner Bases, Martin R. Albrecht of the DTU Crypto Group}
 
+\part{Algebraic Topology}  
+
+cf. Bredon (1997) \cite{Bred1997}
+
+
+\section{Simplicial Complexes}  
+
+cf. pp. 245, from Sec. 21 Simplicial Complexes of Ch. 4 Homology Theory in Bredon (1997) \cite{Bred1997}
+
+$\mathbf{v}_0, \dots \mathbf{v}_n \in \mathbb{R}^{\infty}$, "affinely independent" if they span an affine $n$-plane, i.e. 
+\[
+\text{ if } \left( \sum_{i=0}^n \lambda_i \mathbf{v}_i =0 , \, \sum_{i=0}^n \lambda_i = 0 \right), \text{ then } \Longrightarrow \forall \, \lambda_i = 0
+\]
+If not, then, e.g. $\lambda_0 \neq 0$, assume $\lambda_0 =-1$, and solve the equations to get 
+
+\[
+\begin{gathered}
+\mathbf{v}_0 = \sum_{i=1}^n \lambda_i \mathbf{v}_i \\
+\sum_{i=1}^n \lambda_i = 1
+\end{gathered}
+\]
+i.e. $\mathbf{v}_0$ is in affine space spanned by $\mathbf{v}_1\dots \mathbf{v}_n$.  
+
+If $\mathbf{v}_0, \dots \mathbf{v}_n$ affinely independent, then 
+\begin{equation}
+\sigma = ( \mathbf{v}_0, \dots \mathbf{v}_n) = \lbrace \sum_{i=0}^n \lambda_i \mathbf{v}_i | \sum_{i=0}^n \lambda_i = 1, \, \lambda_i \geq 0 \rbrace
+\end{equation}
+is "affine simplex" spanned by $\mathbf{v}_i$; also convex hull of $\mathbf{v}_i$.  
+
+$\forall \, k \leq n$, $k$-face of $\sigma$ is any affine simplex of form $(\mathbf{v}_{i_1}, \dots \mathbf{v}_{i_k})$, where vertices all distinct, so are affinely independent.  
+
+\begin{definition}
+	(geometric) simplicial complex $K:= $ collection of affine simplices s.t. \begin{enumerate}
+		\item $\sigma \in K \Longrightarrow $ any face of $\sigma \in K$; and 
+		\item $\sigma, \tau \in K \Longrightarrow \sigma \bigcap \tau $ is a face of both $\sigma$ and $\tau$, or $\sigma \bigcap \tau =\emptyset$
+	\end{enumerate}
+
+If $K$ simplicial complex, $|K| = \bigcup \lbrace \sigma | \sigma \in K \rbrace \equiv $ "polyhedron" of $K$
+\end{definition}
+
+\begin{definition}[Def. 21.2 of Bredon (1997) \cite{Bred1997}]
+	polyhedron $:= $ space $X$ if $\exists \, $ homeomorphism $h: |K| \xrightarrow{ \approx } X$ for some simplicial complex $K$.  
+	$h,K$ is triangulation of $X$; (map $h$, complex $K$)
+\end{definition}
+
+Let $K$ finite simplicial complex.  \\
+Choose ordering of vertices $\mathbf{v}_0,\mathbf{v}_1\dots $ of $K$.  \\
+If $\sigma = (\mathbf{v}_{\sigma_0}, \dots \mathbf{v}_{\sigma_n})$ is simplex of $K$, where $\sigma_0 < \dots < \sigma_n$, then  \\
+\phantom{If } let $f_{\sigma} : \Delta_n \to |K|$ be 
+\[
+f_{\sigma} = [\mathbf{v}_{\sigma_b}, \dots \mathbf{v}_{\sigma_n}]
+\]
+in notation of Def. 1.2.  Bredon (1997) \cite{Bred1997}.  
+
+Then this gives CW-complex structure on $|K|$ with $f_{\sigma}$ as characteristic maps.  
 
 
 
+
+\part{Graphs, Finite Graphs}
+
+\section{Graphs, Finite Graphs, Trees }
+
+Serre (1980) \cite{Serr1980}  
+
+cf. Chapter I. Trees and Amalgams, Section 1 Amalgams, Subsection 1.1 Direct limits of Serre (1980) \cite{Serr1980}  
+
+
+Let $(G_i)_{i\in I}$, family of groups.    
+
+$\forall \, $ pair $(i,j)$, let $F_{ij} = $ set of homomorphisms of $G_i$ into $G_j$
+
+Want: group $G= \varinjlim G_i$ and 
+\[
+\lbrace f_i | f_i : G_i \to G \rbrace \text{s.t. } f_j \circ f = f_i \quad \, \forall \, f \in F_{ij}
+\]
+group $G$ and family $\lbrace f_i\rbrace$ universal in that  
+
+(*) if $H$ group, if $\lbrace h_i | h_i :G_i \to H ; h_j \circ f = h_i \qquad \, \forall \, f \in F_{ij} \rbrace$, \\
+then $\exists \, ! h: G\to H$ s.t. $h_i = h\circ f_i$  \\
+i.e. $\text{Hom}(G,H) \simeq \varprojlim \text{Hom}(G_i,H)$, the inverse limit being taken relative to $F_{ij}$.  \\
+i.e. $G$ direct limit of $G_i$ relative to the $F_{ij}$.  
+
+\begin{proposition}
+	$\exists \, !$ pair $G$, family $(f_i)_{i\in I}$, i.e. (pair consisting of $G, (f_i)_{i\in I}$, unique up to unique isomorphism.  
+\end{proposition}
+\begin{proof}
+Define $G$ by generators and relations.  \\
+Take generating family to be disjoint union of those for $G_i$.  \\
+relations - $xyz^{-1}$ where $x,y,z \in G_i$, $z=xy \in G_i$ \\
+\phantom{relations - } $xy^{-1}$ where $x\in G_i$, $y \in G_j$, $y=f(x)$ for at least $f\in F_{ij}$.  
+
+Thus, existence of $G,\lbrace f_i\rbrace$.  
+
+$G$ represents functor $H\mapsto \varprojlim \text{Hom}{(G_i,H)}$.  
+
+Thus, uniqueness (also from universal property).  
+\end{proof}
+
+e.g. groups $A,G_1,G_2$, homomorphisms $\begin{aligned} & \quad \\ 
+& f_1 : A \to G_1 \\
+& f_2 : A \to G_2 
+\end{aligned}$.  
+
+$G$ obtained by amalgamating $A$ in $G_1,G_2$ by $f_1,f_2 \equiv G_1 *_A G_2$.  \\
+1 can have $G=\lbrace 1 \rbrace$, even though $f_1,f_2$ non-trivial.  
+
+\emph{Application}: (Van Kampen Thm.)
+
+Let topological space $X$ be covered by open $U_1,U_2$.   \\
+Suppose $U_1,U_2, U_{12}=U_1\bigcap U_2$ arcwise connected.  
+
+Let basept. $x\in U_{12}$.  
+
+Then $\pi_1(X;x)$ obtained by taking 3 groups 
+\[
+\pi_1(U_1;x), \pi_1(U_2;x), \pi_1(U_{12};x)
+\]
+and amalagamating them according to homomorphism
+\[
+\begin{aligned}
+& \pi_1(U_{12};x) \to \pi_1(U_1;x)  \\
+& \pi_1(U_{12};x) \to \pi_1(U_2;x)
+\end{aligned}
+\]
+
+\exercisehead{1}  
+Let homomorphisms $\begin{aligned} & \quad \\
+	& f_1 : A \to G_1 \\ 
+	& f_2: A \to G_2 \end{aligned}
+$
+amalgam $G=G_1 *_A G_2$.  
+
+Define subgroups $A^n,G_1^n, G_2^n$, of $A,G_1,G_2$ recursively by 
+\[
+\begin{aligned}
+& A^1 = \lbrace 1 \rbrace \\
+& G_1^1 = \lbrace 1 \rbrace \\ 
+& G_2^1 = \lbrace 1 \rbrace \\ 
+\end{aligned}
+\]
+
+$A^n = $ subgroup of $A$ generated by $f_1^{-1}(G_1^{n-1})$ and $f_2^{-1}(G_2^{n-1})$  
+\[
+G_1^n = \text{subgroup of $G_i$ generated by $f_i(A^n)$ }
+\]
+
+Let $A^{\infty}, G_i^{\infty}$ be unions of $A^n, G_i^n$ resp.  
+
+Show that $f_i$ defines injection $A/A^{\infty} \to G_i/G_i^{\infty}$.  
+
+So the amalgamation is $G \simeq G_1/G_1^{\infty} *_{A/A^{\infty}} G_2/G_2^{\infty}$.  
+
+Take the first induction case (for intuition about the solution).  
+
+\[
+\begin{aligned}
+	& A^2 = \langle f_1^{-1}( G_1^1), f_2^{-1}(G_2^1) \rangle = \langle f_1^{-1}(\lbrace 1 \rbrace), f_2^{-1}(\lbrace 1 \rbrace ) \rangle \\
+	& G_i^2 = f_i(A^2)
+\end{aligned}
+\]
+Let $f_i(a) = f_i(b) \in G_i/G_i^{\infty}$; $a,b\in A/A^{\infty}$.  
+
+Then since $f_i(a),f_i(b) \in G_i/G_i^{\infty}$, $f_i(a),f_i(b) \in \lbrace gG_i^{\infty} | g\in G_i \rbrace$ (quotient is defined to be the set of all left cosets of $G_i^{\infty}$, which has to be a normal subgroup for $G_i/G_i^{\infty}$ to be a quotient group).  
+
+Since $a,b \in A/A^{\infty}$, suppose we take $a,b\in A$.  
+
+And suppose we take 
+\[
+\begin{aligned}
+& 	f_i(a) = f_i(a)G_i^{\infty} = f_i(a) f_i(A^{n_a} ) = f_i(aA^{n_a}) \\ 
+& 	f_i(b) = f_i(b)G_i^{\infty} = f_i(b) f_i(A^{n_b} ) = f_i(bA^{n_b})  
+\end{aligned}
+\]
+Taking $f_i^{-1}$ (recall for group homomorphisms, they map inverse of element of 1st. group to inverse of image of this element).  
+
+$aA^{n_a}=bA^{n_b}\in A/A^{\infty}$ (This is okay as we've "quotiented out $A^{\infty}$; so indeed, they're equal)
+
+
+cf. Subsection 1.2 Structure of amalgams of Serre (1980) \cite{Serr1980} 
+
+Suppose given group $A$, family of groups $(G_i)_{i\in I}$, and, $\forall \, i\in I$, injective homomorphism $A\to G_i$.  
+
+$*_A G_i \equiv $ direct limit (cf. no. 1.1) of family $(A,G_i)$ with respect to these homomorphisms, call it \emph{sum} (in category theory sense, i.e. product) of $G_i$ with $A$ amalgamated.  
+
+e.g. $A=\lbrace 1 \rbrace$, \\
+$*G_i \equiv $ free product of $G_i$.  
+
+\subsubsection{reduced word}  
+
+$\forall \, i \in I$, choose set $S_i$ of right coset representations of $G_i$ modulo $A$, 
+
+assume $1 \in S_i$, 
+
+$(a,s)\mapsto as$ is bijection of $A\times S_i$ onto $G_i$,  \\
+$A\times (S_i-\lbrace 1 \rbrace) \to G_i-A$ (onto)
+
+Let $\mathbf{i} = (i_1\dots i_n)$, $n\geq 0$, $i_j \in I$, s.t. 
+\begin{equation}
+i_m \neq i_{m+1} \text{ for } 1 \leq m \leq n-1
+\end{equation}
+cf. (T) of Serre (1980) \cite{Serr1980}.  
+
+So \emph{reduced word} $m$ is defined as 
+\[
+m = (a;s_1\dots s_n)
+\]
+where $a\in A, s_1\in S_{i_1} \dots s_n \in S_{i_n}$, and $s-j \neq 1\, \forall \, j$.  
+
+$f\equiv $ canonical homomorphism of $A$ into group $G= *_A G_i$ \\ 
+$f_i \equiv $ canonical homomorphism of $G_i$ into group $G= *_A G_i$
+
+EY : 20170611 (Further explanations, basic examples, from me):  
+
+Given $A, \lbrace G_i\rbrace_{i\in I}$, injective (group) homomorphisms $\lbrace f_i: A \to G_i\rbrace_i$.  
+
+$G_i \backslash f_i(A) = \lbrace f_i(A)g | g\in G_i\rbrace$.  
+
+Right coset representation of $f_i(A)g\mapsto g$.  
+
+e.g. $A,G_1,G_2$, $\begin{aligned} & \quad \\
+	& f_1:A \to G_1 \\
+		& f_2 : A\to G_2 \end{aligned}$.  
+		
+	\[
+	\begin{aligned}
+	& G_1\backslash f_1(A) = \lbrace f_1(A)g| g\in G_1\rbrace \\
+	& G_2\backslash f_2(A) = \lbrace f_2(A)g | g\in G_2 \rbrace
+	\end{aligned}
+	\]
+
+$\mathbf{i} = (i_1\dots i_n)$, $i_j\in I$, $i_m\neq i_{m+1}$ for $1\leq m \leq n-1$.  
+
+Consider $(1212\dots 12)$  
+
+$m=(a;f_1 g_2 f_3 g_4 \dots f_{2n-1}, g_{2n})$ where $f$'s $\in S_1 \subset G_1$, $g$'s $\in S_2 \subset G_2$.  
+
+and so 
+\begin{definition}[reduced word]
+	\textbf{reduced word} of type $\mathbf{i}$, $m$, \begin{equation}
+	m=(a;s_1\dots s_n)
+	\end{equation}
+	where $a\in A, s_1 \in S_{i_1}, \dots s_n \in S_{i_n}$, $s_j\neq 1$ \, $\forall \, j$, \\
+	\phantom{where } $\mathbf{i} = (i_1\dots i_n)$, $i_j \in I$, s.t. $i_m \neq i_{m+1}$ for $1\leq m \leq n-1$, \\
+	with $S_i = \lbrace g | g\in f_i(A)g \in f_i(A) G_i\rbrace$  
+\end{definition}
+
+
+
+
+\begin{theorem}[1 of Serre (1980) \cite{Serr1980} ]
+	$\forall \, g \in G$, $\exists \, $ sequence $\mathbf{i}$ s.t. $i_m \neq i_{m+1}$ for $1\leq m \leq n-1$ and 
+	
+	reduced word 
+	\[
+	m = (a;s_1\dots s_n) 
+	\]
+	of type $\mathbf{i}$ s.t. 
+	\[
+	g = f(a)f_{i_1}(s_1) \dots f_{i_n}(s_n)
+	\]
+\end{theorem}
+
+Furthermore, $\mathbf{i}$ and $m$ unique.  
+
+\emph{Remark}.  Thm. 1 implies $f;f_i$ injective.  
+
+Then identify $A$ and $G_i$ with images $f(A), f_i(G_i)$ in $G$, and reduced decomposition (*) of $g\in G$ 
+\[
+g = as_1\dots s_n, \quad \, a\in A, \, s_1 \in S_{i_1} - \lbrace 1 \rbrace \dots s_n \in S_{i_n} - \lbrace 1 \rbrace
+\]
+Likewise, $G_i \bigcap G_j = A$ if $i\neq j$.  
+
+In particular, $S_i - \lbrace 1 \rbrace$ pairwise disjoint in $G$.  
+
+\begin{proof}
+Let $X_i \equiv $set of reduced words of type $\mathbf{i}$, $X = \coprod X_i$.  
+
+Make $G$ act on $X$.  
+
+In view of universal property of $G$, sufficient to make $\forall \, i, G_i$ act, 
+
+check action induced on $A$ doesn't depend on $i$  
+
+Suppose then that $i\in I$, and let $Y_i = $ set of reduced words of form $(1;s_1 \dots s_n)$, with $i_1\neq i$.  
+
+EY : 20170611
+
+Recall that 
+\[
+S_i = \lbrace g| g\in f_i(A) g \in f_i(A) G_i \rbrace
+\]
+\[
+\begin{aligned}
+	& A \times S_i \to G_i \text{ onto } \\ 
+	& A\times (S_i - \lbrace 1 \rbrace) \to G_i - A \text{ onto } \\ 
+	& (a,s) \mapsto as \text{ bijection }
+\end{aligned}
+\]
+
+Let $Y_i = $ set of reduced words of form $(1; s_1 \dots s_n) = \lbrace (1;s_1 \dots s_n) | 1\in A; s_1 \in S_{i_1}\dots s_n \in S_{i_n} ; \mathbf{i} = (i_1\dots i_n), \, i_j \in I \text{ s.t. } i_m \neq i_{m+1} \text{ for } 1\leq m \leq n -1 \rbrace$.  
+
+\[
+\begin{gathered}
+\begin{gathered}
+A \times Y_i \to X = \coprod_i X_i \\
+(a,(1; s_1 \dots s_n)) \mapsto (a; s_1 \dots s_n)
+\end{gathered} \\
+\begin{gathered}
+A\times \lbrace S_i - \lbrace 1 \rbrace ) \times Y_i \to X \\
+((a,s), (1;s_1 \dots s_n)) \mapsto (a;s,s_1\dots s_n)
+\end{gathered}
+\end{gathered}
+\]
+and remember that $X_i = $ set of reduced words of type $\mathbf{i}$.  
+
+It's clear that this yields a bijection $A\times Y_i \bigcup A\times (S_i - \lbrace 1 \rbrace) \times Y_i \to X$.  
+
+Let $x\in X$.  Then $x\in X_{\mathbf{i}}$ for some $\mathbf{i}$.  So $x$ is a reduced word of type $\mathbf{i}$: $x = (a;s_1\dots s_n)$.  Then clearly $x = (a;s_1\dots s_n) \mapsto (a,(1;s_1\dots s_n)) \in A\times Y_i$.  
+
+
+
+
+
+
+
+\end{proof}
+
+
+cf. pp. 13, Sec. 2. Trees, 2.1 Graphs of Serre (1980) \cite{Serr1980}
+
+\begin{definition}[1. of Serre (1980) \cite{Serr1980}]
+	\textbf{graph} $\Gamma = (X,Y, Y\to X\times X, Y\to Y)$, where $\begin{aligned} & \quad \\
+		& \text{ set } X = \text{ vert } \Gamma \\ 
+		& \text{ set } Y = \text{ edge } \Gamma \end{aligned}$  
+
+\[
+\begin{aligned}
+& Y \to X\times X \\ 
+& y\mapsto (o(y), t(y)) \\
+& Y\to Y \\
+& y\mapsto \overline{y}
+\end{aligned}
+\]
+s.t. $\forall \, y \in Y$, $\overline{ \overline{y}} = y$, $\overline{y} \neq y$, $o(y) = t(\overline{y})$.  
+
+vertex $P \in X$ of $\Gamma$. 
+
+(oriented) edge $y\in Y$, $\overline{y} \equiv $ inverse edge.  
+
+origin of $y := $ vertex $o(y) = t(\overline{y})$.  
+
+terminus of $y:= $ vertex $t(y) = o(\overline{y})$   
+
+extremities of $y:= \lbrace o(y),t(y)\rbrace$  
+
+If 2 vertices \textbf{adjacent}, they're extremities of some edge.  
+
+orientation of graph $\Gamma = Y_+ \subset Y = \text{ edge } \Gamma$ s.t. $Y = Y_+ \coprod \overline{Y}_+$.  It always exists.  
+
+oriented graph defined, up to isomorphism, by giving 2 sets $X,Y_+$ and $Y+ \to X\times X$.  
+	
+	corresponding set of edges is $Y = Y_+\coprod \overline{Y}_+$ where $\overline{Y}_+ \equiv $ copy of $Y_+$  
+\end{definition}
+
+\subsubsection{Realization of a Graph}
+
+cf. Realization of a Graph in Serre (1980) \cite{Serr1980}.  
+
+Let graph $\Gamma$, $X = \text{vert}\Gamma$, $Y = \text{edge}\Gamma$.
+
+topological space $T = X \coprod Y \times [0,1]$, where $X,Y$ provided with discrete topology.  
+
+Let $R$ be finest equivalence relation on $T$ for which 
+\begin{equation}
+\begin{gathered} \begin{aligned}
+	& (y,t) \equiv (\overline{y}, 1-t) \\ 
+	& (y,0) \equiv o(y) \\
+	& (y,1) \equiv t(y)
+\end{aligned} \qquad \, \forall \, y \in Y, \, \forall \, t \in [0,1]
+\end{gathered}
+\end{equation}
+
+quotient space $\text{real}(\Gamma) = T/R $ is \emph{realization} of graph $\Gamma$.  (realization is a functor which commutes with direct limits).  
+
+Let $n\in \mathbb{Z}^+$.  Consider oriented graph of $n+1$ vertices $0,1,\dots n$,  \\
+
+\begin{definition}
+	path (of length $n$) in graph $\Gamma$ is morphism $c$ of $\mathbf{\text{Path}}_n$ into $\Gamma$  
+\end{definition}
+
+orientation given by $n$ edges $[i,i+1]$, $0\leq i <n$, $\begin{aligned} & \quad \\
+& o([i,i+1]) = i \\
+& t([i,i+1]) = i+1 \end{aligned}$  
+
+For $n\geq 1$, \\
+$(y_1\dots y_n)$ sequence of edges $y_i = c([i-1,i])$ s.t. 
+\[
+t(y_i) = o(y_{i+1}), \qquad \, 1 \leq i < n \text{ determine } c
+\]
+If $P_i = c(i)$,  \\
+$c$ is a path from $P_0$ to $P_n$, and $P_0$ and $P_n$ are \emph{extremities of the path $c$}.  
+
+pair of form $(y_i,y_{i+1})=(y_i, \overline{y}_i)$ in path is \textbf{backtracking}.  
+
+path (of length $n-2$), from $P_0$ to $P_n$ given (for $n>2$) by $(y_1\dots y_{i-1}, y_{i+2}\dots y_n)$  
+
+If $\exists \, $ path from $P$ to $Q$ in $\Gamma$, $\exists \, $ one without backtracking (by induction)  
+
+direct limit $\mathbf{\text{Path}}_{\infty} = \varinjlim \mathbf{\text{Path}}_n$ provides notion of infinite path.  \\
+$\mathbf{\text{Path}}_{\infty} \ni $ infinite sequence $(y_1,y_2 , \dots)$ of edges s.t. $t(y_i) = o(y_{i+1})$ \, $\forall \, i \geq 1$.  
+
+
+\begin{definition}[connected graph; Def. 3 of Serre (1980) \cite{Serr1980}]
+	graph connected if $\forall \, $ 2 vertices, 2 vertices are extremities of at least 1 path.  
+	
+	maximal connected subgraphs (under relation of inclusion) are \emph{connected components} of graph.  
+\end{definition}
+
+\subsubsection{Circuits}  
+
+Let $n\in \mathbb{Z}^+$, $n\geq 1$.  
+
+Consider \\
+set of vertices $\mathbb{Z}/n\mathbb{Z}$, orientation given by $n$ edges $[i,i+1]$, $(i\in \mathbb{Z}/n\mathbb{Z})$ with $\begin{aligned} & \quad \\
+ & o([i,i+1]) = i \\
+ & t([i,i+1]) = i+1 \end{aligned}$
+
+\begin{definition}[circuit; Def. 4 of Serre (1980) \cite{Serr1980}]
+	circuit (length $n$) in graph is subgraph isormorphic to $\mathbf{\text{Circ}}_n$.  
+\end{definition}
+i.e. subgraph = path $(y_1\dots y_n)$, without backtracking, s.t. $P_i = t(y_i)$, \, $(1\leq i \leq n)$ distinct, s.t. $P_n = o(y_1)$
+
+$n=1$ case: $\mathbf{\text{Circ}}_1$, $\mathbb{Z}/\mathbb{Z} = \lbrace 0 \rbrace$, $1$ edge, $[0,1]$, $0 \in \mathbb{Z}/1\mathbb{Z}$, $\begin{aligned} & \quad \\
+	& o([0,1]) = 0 \\
+	& t([0,1]) = 1 \end{aligned}$  
+	
+	Note $\mathbf{\text{Circ}}_1$ has automorphism of order 2, which changes its orientation, i.e. \\
+	$\exists \, $ automorphism $\sigma \in \text{Aut}( \mathbf{\text{Circ}}_1) $ s.t. $|\sigma | = 2$, i.e. $\sigma^2=1$.  \\
+	loop $:= $ circuit of length $1$; so loop $\in \overline{ \mathbf{\text{Circ}} }_1$.  
+	
+	path $(y_1)$, $P_1 = t(y_1) = o(y_1)$.  
+	
+	$n=2$ case: $\mathbf{\text{Circ}}_2$, $\mathbb{Z}/2\mathbb{Z} = \lbrace 0 ,1\rbrace$, 2 edges $[0,1], [1,2]$,  \\
+	path $(y_1,y_2)$, $(1\leq i \leq 2)$, $\begin{aligned} & \quad \\
+		& P_1 = t(y_1) \\
+		& P_2 = t(y_2) = o(y_1) \end{aligned}$  
+		
+		
+	
+
+\subsection{Combinatorial graphs}
+
+Let $(X,S)\equiv $ simplicial complex of dim. $\leq 1$, with \\
+$X \equiv $ set \\
+$S \equiv $ set of subsets of $X$ with $1$ or $2$ elements, containing all the 1-element subsets.  
+
+associates with it a graph $\Gamma = (X, \lbrace (P,Q) \rbrace)$.  
+
+$X$ is its set of vertices.  
+
+edges $=\lbrace (P,Q)\in X\times X\rbrace$ s.t. $P\neq Q$, $\lbrace P ,Q \rbrace \in S$, with $\overline{(P,Q)} = (Q,P)$
+\[
+\begin{aligned}
+& o(P,Q) = P \\
+& t(P,Q) = Q
+\end{aligned}
+\]
+
+In this graph, 2 edges with same origin and same terminus are equal.  This is equivalent to (see following Def.)
+
+\begin{definition}[combinatorial; Def. 5 of Serre (1980) \cite{Serr1980}]
+	graph is combinatorial if it has no circuit of length $\leq 2$
+\end{definition}
+Conversely, it's easy to see that 
+
+every combinatorial graph $\Gamma$ derived (up to isomorphism) by construction above from simplicial complex $(X,S)$, where \\
+$X = \text{vert} \Gamma$ \\
+$S=$ set of subset $\lbrace P,Q \rbrace$ of $X$ s.t. $P$ and $Q$ either adjacent or equal.  
 
 
 
@@ -866,6 +1343,16 @@ David A. Cox.  John Little. Donal O'Shea. \textbf{Using Algebraic Geometry}.  Se
 
 \bibitem{CLS2015}
 David Cox, John Little, Donal O'Shea. \textbf{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}, Fourth Edition, Springer
+
+\bibitem{Bred1997}
+Glen E. Bredon.  \textbf{Topology and Geometry}. Graduate Texts in Mathematics (Book 139).  Springer; Corrected edition (October 17, 1997).  ISBN-13: 978-0387979267
+
+
+\bibitem{Serr1980}  
+Jean-Pierre Serre (Author), J. Stilwell (Translator).  \textbf{Trees} (Springer Monographs in Mathematics) 1st ed. 1980. Corr. 2nd printing 2002 Edition.  ISBN-13: 978-3540442370
+
+
+
 
 
 \end{thebibliography}
