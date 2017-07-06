@@ -1337,7 +1337,80 @@ $S=$ set of subset $\lbrace P,Q \rbrace$ of $X$ s.t. $P$ and $Q$ either adjacent
 
 \section{Introductions to Tensor Networks}
 
-\url{https://youtu.be/nsxgAOAEgbg}{Workshop introductory overview } by Jos\'{e} Barbon for the \url{https://www.youtube.com/channel/UC4R1IsRVKs_qlWKTm9pT82Q}{Institut des Hautes Études Scientifiques (IHÉS)} gave me the first impetus to understand tensor networks as I sought to also understand the condensates of entanglement pairs within the black hole.  
+Jos\'{e} Barbon (IFT-CSIC, Univ. Autonoma de Madrid) gave the \href{Workshop introductory overview}{https://youtu.be/nsxgAOAEgbg} for the workshop "Black Holes, Quantum Information, Entanglement, and all that," (29 May-1 June, 2017, with the organizing committee of Thibault Damour (IHES), Vasily Pestun (IHES), Eliezer Rabinovici (IHES & Hebrew Univ. of Jerusalem).  
+
+In the talk, 
+
+
+cf. \href{https://youtu.be/nsxgAOAEgbg?t=43m13s}{43:13}  
+
+\subsection*{The church of the doubled Hilbert space}
+ 
+Any thermal box can be obtained by tracing over a second identical copy, if appropriately entangled into a global pure state.  
+
+\[
+\rho_R = \text{Tr}_L \sum_n C_n \Psi_n^L \otimes \Psi_n^R
+\]
+\[
+(C_n)_{\text{thermal}} = \left[ \frac{ e^{-\beta E_n} }{ \sum_m e^{-\beta E_M} } \right]^{1/2}
+\]
+
+But!!
+
+If the entanglement basis is taken to be the high-energy band of two "entangled" CFTs ... 
+\[
+|TFD \rangle \sim \sum_{E_n} e^{-\beta E_n/2} | E_n \rangle_L \otimes | E_n \rangle_R
+\]
+neglecting the tiny $e^{-S}$ spacings. we can approximate by continuous spectrum of fields in the background of an AdS black hole, to get ... 
+ 
+\[
+\int_E e^{-\beta E/2} |E\rangle_L \otimes | E\rangle_R 
+\]
+The HH state of the bulk fields!  
+
+cf. \href{https://youtu.be/nsxgAOAEgbg?t=46m16s}{46:16}
+
+SLOGAN: EPR $=$ ER
+Maldacena-Susskind  
+
+Accumulating a density of entanglement of $S \ggtr 1$ well-separated Bell pairs within a transversal size of order $(GS)^{1/2}$  seems to generate a geometrical bridge of area $GS$.  
+
+
+
+cf. \href{https://youtu.be/nsxgAOAEgbg?t=49m26s}{49:26}  
+
+\subsection*{Parametrizing complexity of entanglement}
+
+Pick a tensor decomposition of Hilbert space of dimension $\exp{(S)}$ into $S$ factors of $O(1)$ dimension.  
+\[
+\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes \dots \otimes \mathcal{H}_S
+\]
+A tensor of S indices gives a generic state.  
+
+cf. \href{https://youtu.be/nsxgAOAEgbg?t=50m27s}{50:27}  
+
+The decomposition of the big tensor in small building blocks gives a notion of "complexity of entanglement"  
+
+rather simple entanglement pattern  
+
+somewhat more complex entanglement pattern
+
+picture from M von Raamsdonk  
+
+cf. \href{https://youtu.be/nsxgAOAEgbg?t=55m10s}  
+
+\subsection*{A list of open questions \& problems}
+
+\begin{itemize}
+\item Need exactly calculable toy models of AdS/CFT along the lines of SYK model  
+\item Give a "renormalized" definition of quantum complexity for continuum CFTs 
+\item Can tensor networks describe bulk gravitons?  
+\item What is the space-time meaning of quantum complexity saturation?  
+\item Can we define approximate local observables for black hole inferiors?  
+\item Are there obstructions related to firewalls and/or fuzzballs?   
+\end{itemize}
+
+\href{https://youtu.be/nsxgAOAEgbg}{Workshop introductory overview } by Jos\'{e} Barbon for the \href{https://www.youtube.com/channel/UC4R1IsRVKs_qlWKTm9pT82Q}{Institut des Hautes Études Scientifiques (IHÉS)} gave me the first impetus to understand tensor networks as I sought to also understand the condensates of entanglement pairs within the black hole.  
 
 A Google search for introductions to tensor networks that are on arxiv ("Introduction Tensor Network arxiv") yielded Bridgeman and Chubb's course notes (bf. Bridgeman and Chubb (2017) \cite{BrCh2017}).    
 
@@ -1347,6 +1420,28 @@ I would like to compare/contrast the following:
 \item Rotman (2010) \cite{JRotman2010}, Ch. 8, but starting from 8.4 Tensor Products, pp. 574  
 \item Jeffrey Lee (2009) \cite{JLee2009}, Ch. 7 Tensors 
 \end{itemize}
+
+
+
+Maldacena and Susskind (2013) \cite{MaSu2013}  
+
+\begin{itemize}
+\item Consider as physical system AdS-Schwarzchild black hole   
+\item CFT 
+\begin{itemize}
+\item \href{https://arxiv.org/pdf/1601.05000.pdf}{PFL Lectures on Conformal Field Theory in $D\geq 3$ Dimensions}, Rychkov (2016) \cite{Rych2016}.  
+\end{itemize}
+\end{itemize}
+
+Evenbly and Vidal (2011) \cite{EvVi2011}, Tensor network states and geometry
+
+Loose ends (might not be useful links)
+\begin{itemize}
+\item \url{https://arxiv.org/pdf/1506.06958.pdf}
+\item \url{https://arxiv.org/pdf/1512.02532.pdf} One-point Functions in AdS/dCFT from Matrix Product States
+\end{itemize}
+
+
 
 \subsection{Tensor operations; Tensor properties}
 
@@ -2109,13 +2204,25 @@ Joseph J. Rotman, \textbf{Advanced Modern Algebra} (Graduate Studies in Mathemat
 Jeffrey M. Lee. \textbf{Manifolds and Differential Geometry}, \emph{Graduate Studies in Mathematics} Volume: 107, American Mathematical Society, 2009. ISBN-13: 978-0-8218-4815-9
 
 \bibitem{BrCh2017}
-Jacob C. Bridgeman and Christopher T. Chubb.  \emph{Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks: \textbf{Lecture Notes}}.  \href{arXiv:1603.03039 [quant-ph]}{https://arxiv.org/abs/1603.03039}
+Jacob C. Bridgeman and Christopher T. Chubb.  \emph{Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks: \textbf{Lecture Notes}}.  \href{arXiv:1603.03039 \textbf{[quant-ph]}}{https://arxiv.org/abs/1603.03039}
 
 \bibitem{Scho2004}
-Ulrich Schollwoeck.  \emph{The density-matrix renormalization group}.   \emph{Rev. Mod. Phys.} \textbf{77}, 259 (2005)	\href{https://arxiv.org/abs/cond-mat/0409292}{arXiv:cond-mat/0409292 [cond-mat.str-el]}
+Ulrich Schollwoeck.  \emph{The density-matrix renormalization group}.   \emph{Rev. Mod. Phys.} \textbf{77}, 259 (2005)	\href{https://arxiv.org/abs/cond-mat/0409292}{arXiv:cond-mat/0409292 \textbf{[cond-mat.str-el]}}
 
 \bibitem{Scho2010}
-Ulrich Schollwoeck.  \emph{The density-matrix renormalization group in the age of matrix product states}.  \emph{Annals of Physics} \textbf{326}, 96 (2011).  \href{https://arxiv.org/abs/1008.3477}{arXiv:1008.3477 [cond-mat.str-el]}
+Ulrich Schollwoeck.  \emph{The density-matrix renormalization group in the age of matrix product states}.  \emph{Annals of Physics} \textbf{326}, 96 (2011).  \href{https://arxiv.org/abs/1008.3477}{arXiv:1008.3477 \textbf{[cond-mat.str-el]}}
+
+\bibitem{BaRa2015}
+Jos\'{e} L.F. Barb\'{o}n and Eliezer Rabinovici.  "Holographic Complexity And Spacetime Singularities."  \href{https://arxiv.org/abs/1509.09291v3}{arXiv:1509.09291 \textbf{[hep-th]}}
+
+\bibitem{MaSu2013}  
+Juan Maldacena, Leonard Susskind.  "Cool horizons for entangled black holes."  \href{https://arxiv.org/abs/1306.0533}{ 	arXiv:1306.0533 \textbf{[hep-th]}}
+
+\bibitem{Rych2016}
+Slava Rychkov.  "EPFL Lectures on Conformal Field Theory in $D \geq 3$ Dimensions."    \href{https://arxiv.org/abs/1601.05000}{arXiv:1601.05000 \textbf{[hep-th]}}
+
+\bibitem{EvVi2011}
+G. Evenbly, G. Vidal.  "Tensor network states and geometry."  \href{https://arxiv.org/abs/1106.1082}{arXiv:1106.1082 \textbf{[quant-ph]}}
 
 
 
