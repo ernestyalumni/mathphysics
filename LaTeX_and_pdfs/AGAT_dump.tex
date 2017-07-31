@@ -122,6 +122,441 @@ Everything about Algebraic Geometry, Algebraic Topology
 
 \end{abstract}
 
+\part{Algebra; Groups, Rings, R-Modules, Categories}
+
+We should know some algebra.  I will follow mostly Rotman (2010) \cite{JRotman2010}.  
+
+\section{Groups; normal subgroups}  
+
+\begin{definition}[normal subgroup $K \lhd G$] \qquad \, \\
+\textbf{normal subgroup} $K$ of $G \equiv K \lhd G$   - 
+
+subgroup $K\subset G$, if $\forall \, k \in K$, $\forall \, g \in G$, 
+\[
+gkg^{-1} \in K
+\]
+\end{definition}
+
+\begin{definition}[quotient group] \qquad \, \\
+\textbf{quotient group} $G\mod{K} \equiv G/K$ -  
+
+if $G/K = $ family of all left cosets of subgroups $K\subset G = $
+\[ 
+= \lbrace gK | g\in G, K = \lbrace gk | k \in K \rbrace 
+\]
+and 
+
+$K = $ normal subgroup of $G$, i.e. $K \lhd G$, and so 
+\[
+aK bK = abK \qquad \, \forall \, a,b \in G, 
+\]
+so $G/K $ group.  
+\end{definition}
+
+
+
+\subsection{1st, 2nd, 3rd Isomorphism Theorems}
+
+\begin{theorem}[1st Isomorphism Theorem (Modules) Thm. 7.8 of Rotman (2010) \cite{JRotman2010}]
+If $f:M\to N$ is $R$-map of modules, then $\exists \, R$-isomorphism s.t. 
+\begin{equation}
+	\begin{aligned}
+	& \varphi : M /\text{ker}f \to \text{im}f \\ 
+	& \varphi: m + \text{ker}f \mapsto f(m)
+\end{aligned} \qquad \qquad \, \begin{tikzpicture}
+%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+M   &  N \\
+M/\text{ker}f  &  \\};
+%\path[->,font=\scriptsize]
+\path[->]
+(m-1-1) edge node[auto]{$f$} (m-1-2)
+edge node[auto]{$\pi$} (m-2-1) 
+(m-2-1) edge node[right]{$\varphi = \cong$} (m-1-2);
+\end{tikzpicture} 
+\end{equation}
+%Essentially, 
+%\begin{equation}
+
+%\end{equation}
+\end{theorem}
+
+\begin{proof}
+	View $M,N$ as abelian groups.  
+
+Recall natural map $ \begin{aligned} & \quad \\ 
+	& \pi : M \to M/N \\
+& m\mapsto m + N \end{aligned}$  
+
+Define $\varphi$ s.t. $\varphi \pi = f$.  
+
+($\varphi$ well-defined).  Let $m+\text{ker}f = m' + \text{ker}f$, $m,m' \in M$, then $\exists \,  n \in \text{ker}f$ s.t. $m=m'+n$.  
+\[
+\varphi(m+\text{ker}f) = \varphi\pi (m) = f(m) = f(m' +n ) = f(m') + f(n) = \varphi \pi(m') + 0 = \varphi(m' + \text{ker}f )
+\]
+$\Longrightarrow \varphi $ well-defined.  
+
+($\varphi$ surjective).  Clearly, $\text{im}\varphi \subseteq  \text{im} f$.   \\
+Let $y\in \text{im}f$.  So $\exists \,  m \in M$ s.t. $y=f(m)$.  $f(m) = \varphi \pi (m) = \varphi(m+\text{ker}f) = y$.  So $y\in \text{im}\varphi$.  $\text{im}f\subseteq \text{im}\varphi$.  \\
+$\Longrightarrow \varphi $ surjective.  
+
+($\varphi$ injective)  If $\varphi(a+\text{ker}f) = \varphi(b+\text{ker}f)$, then 
+\[
+\begin{gathered}
+\varphi\pi(a) = \varphi\pi(b) \text{ or } f(a) = f(b) \text{ or } 0 = f(a) -f(b) = f(a-b) \text{ so } a-b \in \text{ker}f
+	(a-b) + \text{ker}f = \text{ker}f \text{ so } a + \text{ker}f = b +\text{ker}f 
+\end{gathered}
+\]
+$\varphi$ isomorphism.  
+
+$\varphi$ $R$-map.  $\varphi(r(m+N)) = \varphi(rm+N) = f(rm)$.    \\
+Since $f$ $R$-map, $f(rm) = rf(m) = r\varphi(m+N)$.  $\varphi$ is $R$-map indeed.  
+
+
+\end{proof}
+
+
+\begin{theorem}[2nd Isomorphism Theorem (Modules) Thm. 7.9 of Rotman (2011) \cite{JRotman2010}]
+If $S,T$ are submodules of module $M$, i.e. $S,T \in M$, then $\exists \, $ $R-$isomorphism  
+\begin{equation}
+\begin{gathered}
+	S/(S\cap T) \to (S+T)/T
+\end{gathered} \qquad \, 
+\qquad \qquad \, \begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+S   &  (S+T)/T = \text{im}h \\
+S/(S\cap T) = S/\text{ker}h  &  \\};
+\path[->]
+(m-1-1) edge node[auto]{$h$} (m-1-2)
+edge node[auto]{$\left. \pi \right|_S$} (m-2-1) 
+(m-2-1) edge node[right]{$ \cong$} (m-1-2);
+\end{tikzpicture} 
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let natural map $\pi : M \to M/T$.   \\
+\phantom{Let} So $\text{ker}\pi = T$.  
+
+Define $h:= \left. \pi \right|_S$, so $h: S\to M/T$, so $\text{ker}h = S\cap T$, 
+\[
+(S+T)/T = \lbrace (s+t) + T | a\in S+T, s\in S, t\in T \rbrace
+\]
+i.e. $(S+T)/T$ consists of all those cosets in $M/T$ having a representation in $S$.  
+
+By 1st. isomorphism theorem, 
+\[
+S/S\cap T \xrightarrow{ \cong} (S+T)/T
+\]
+
+\end{proof}  % END of pf. of 2nd Isomorphism Theorem (Modules) Thm. 7.9 of Rotman (2011)
+
+\begin{theorem}[3rd Isomorphism Theorem (Modules) Thm. 7.10 of Rotman (2011) \cite{JRotman2010}]
+If $T\subseteq S \subseteq M$ is a tower of submodules, then $\exists \, $ $R$-isomorphism
+\begin{equation}
+\begin{gathered}
+	(M/T)/(S/T) \to M/S
+\end{gathered} \qquad \,  \begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+M/T   &  M/S\\
+(M/T)/(S/ T) = (M/T)/\text{ker}g  &  \\};
+\path[->]
+(m-1-1) edge node[auto]{$g$} (m-1-2)
+edge node[auto]{$ \pi $} (m-2-1) 
+(m-2-1) edge node[right]{$ \cong$} (m-1-2);
+\end{tikzpicture} 
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+	Define $g:M/T \to M/S$ to be \textbf{coset enlargement}, i.e. 
+\begin{equation}
+	g:M +T \mapsto m+S
+\end{equation}
+$g$ well-defined: if $m+T = m'+T$, then $m-m' \in T\subseteq S$, and $m+S = m'+S \Longrightarrow g(m+T) = g(m'+T)$
+
+$\text{ker}g = S/T$ since 
+\[
+\begin{aligned}
+	& g(s+T) = s+S = S  \qquad \, (S/T \subseteq \text{ker}g)   \\
+	& g(m+T) = m + S = 0 = S = s + S, \text{ so } m=s \Longrightarrow \text{ker}g \subseteq S/T
+\end{aligned}
+\]
+$\text{im}g = M/S $ since 
+\[
+\begin{aligned}
+	& g(m+T) = m+S \Longrightarrow \text{ im}g \subseteq M/S \\ 
+ 	& m+S = g(m+T)
+\end{aligned}
+\]
+Then by 1st isomorphism, and commutative diagram, done.  
+\end{proof} % END of pf. of 3rd Isomorphism Theorem (Modules) Thm. 7.10 of Rotman (2011) 
+
+
+
+\section{R-modules}
+
+\begin{definition}[R-homomorphism (or R-map)]
+If ring $R$, $R$-modules $M,N$, then \\
+function $f: M\to N$, \\
+if $\forall \, m, m' \in M$, $\forall \, r\in R$, 
+\[
+\begin{gathered}
+	f(m+m') = f(m) + f(m') \\ 
+f(rm) = rf(m)
+\end{gathered}
+\]
+\end{definition}
+
+\begin{definition}[quotient module $M/N$] \qquad \, \\ 
+\textbf{quotient module} $M/N$  -
+
+For submodule $N$ of $R$-module $M$, then, \\
+remember $M$ abelian group, $N$ subgroup, \\
+quotient group $M/N$ equipped with scalar multiplication 
+\[
+\begin{gathered}
+	r(m+N) = rm+N \\ 
+M/N = \lbrace m +N | m \in M \rbrace
+\end{gathered}
+\]
+\textbf{natural map} 
+\begin{equation}
+\begin{aligned}
+& \pi : M \to M /N \\ 
+& m\mapsto m + N 
+\end{aligned}
+\end{equation}
+easily seen to be $R$-map.  
+
+Scalar multiplication in quotient module well-defined: \\
+If $m+N=m'+N$, $m-m' \in N$, so $r(m-m') \in N$ (because $N$ submodule), so 
+\[
+rm - rm' \in N \text{ and } rm+ N = rm' +N
+\]
+
+
+\end{definition}
+
+
+\begin{proposition}[7.15 of Rotman (2010) \cite{JRotman2010}]  
+\begin{enumerate}
+\item[(i)] $S \bigsqcup T \simeq M$ 
+\item[(ii)] $\exists \, $ injective $R$-maps $\begin{aligned} & \quad \\ 
+	& i : S\to M \\ 
+& j :T \to M \end{aligned}$, s.t. 
+
+\begin{equation}
+\begin{gathered} 
+M = \text{im}(i) + \text{im}(j)  \text{ and } \\ 
+\text{im}(i) \bigcap \text{im}(j) = \lbrace 0 \rbrace  
+\end{gathered}
+\end{equation}
+\item[(iii)] $\exists \, $ R-maps 
+\[
+\begin{aligned}
+	& i : S\to M \\ 
+	& j : T\to M 
+\end{aligned}
+\]
+s.t. $\forall \, m \in M$, $\exists \, !$ 
+\[
+\begin{aligned}
+	& s \in S \\ 
+	& t \in T 
+\end{aligned}
+\] with $m=is + jt$.  
+\item[(iv)] $\exists \, $ R-maps 
+\[
+\begin{gathered}
+\begin{aligned}  & i: S\to M \\ 
+& j:T \to M \end{aligned} \qquad \, \begin{aligned}
+& p : M \to S \\ 
+& q : M \to T \end{aligned}
+\end{gathered}
+\]
+s.t. 
+\[
+\begin{gathered}
+	\begin{aligned}
+	& pi = 1_S \\ 
+& qj = 1_T 
+\end{aligned} \qquad \ , \begin{aligned}
+	& pj = 0  \\
+	& qi = 0 
+\end{aligned} \qquad \, ip + jq = 1_M
+\end{gathered}
+\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{itemize}
+\item (i)$\to$ (ii)  Given $S \bigsqcup T \simeq  M$,  \\ 
+ let $\varphi : S \bigsqcup T \to   M$ be this isomorphism.  
+
+Define
+\[
+\begin{aligned}
+	& i:= \varphi \lambda_S \qquad \, & (\lambda_S : s\mapsto (s,0)) \qquad \, & i :S \to M \\ 
+	& j:= \varphi \lambda_T \qquad \, & (\lambda_T : t\mapsto (0,t)) \qquad \, & j :T \to M 
+\end{aligned}
+\]
+$i,j$ are injections, being composites of injections.  
+
+If $m\in M$, $\exists \, ! \, (s,t) \in S\bigsqcup T$, s.t. $\varphi(s,t)=m$.  
+
+Then 
+\[
+m = \varphi(s,t) = \varphi((s,0) + (0,t)) = \varphi\lambda_S(s)  \varphi \lambda_T(t) = is + jt \in \text{im}(i) + \text{im}(j)
+\]
+
+Let $c\in \text{im}(i) + \text{im}(j)$.  Since $\begin{aligned}  & \quad \\ 
+	& i : S\to M \\
+& j : T \to M \end{aligned}$, $c\in M$.  
+
+$\Longrightarrow M = \text{im}(i) + \text{im}(j)$.  
+
+
+
+If $x\in \text{im}(i) \bigcap \text{im}(j)$, 
+\[
+\begin{aligned}
+	& x = i(s) \text{ for some } s\in S \\ 
+		& x = j(t) \text{ for some } t\in T  
+\end{aligned}
+\]
+
+\[
+\begin{gathered}
+	is=jt = \varphi \lambda_S(s) = \varphi \lambda_T(t) = \varphi(s,0) = \varphi(0,t) 
+\end{gathered}
+\]
+$\varphi$ isomorphism, so $\exists \, \varphi^{-1}$ $\Longrightarrow (s,0) = (0,t)$, so $s=t=0$.  $x=0$  
+\item (ii)$\to $ (iii) Given $\begin{aligned} & \quad \\ & i:S\to M \\ & j:T\to M \end{aligned}$, s.t. $M= \text{im}(i) + \text{im}(j)$, so \\
+
+$\forall \, m \in M$, $m=i(s) + j(t)$ for some $s\in S,t\in T$.  
+
+Suppose $\begin{aligned} & \quad \\ 
+	& s' \in S \\
+& t' \in T \end{aligned}$, s.t. $m=i(s'_ + j(t')$.  
+\[
+i(s-s') = j(t-t') \in \text{im}(i) \bigcap \text{im}(j) = \lbrace 0 \rbrace
+\]
+So $s=s',t=t'$, since $i,j$ injective.  
+\item (iii)$\to$ (iv)   
+
+Given $\forall \, m \in M$, $\exists \, ! \, s\in S,t\in T$ s.t. 
+\[
+m=i(s) + j(t)
+\]
+Define 
+\[
+\begin{aligned}
+	& p:M \to S \\ 
+	& p(m) := s
+\end{aligned} \qquad \, \begin{aligned}
+	& q: M \to T \\ 
+	& q(m) := t
+\end{aligned}
+\]
+\[
+\begin{aligned}
+	& pi(s) = s \\ 
+	& qj(t) = t 
+\end{aligned} \qquad \, \begin{aligned}
+& pj(t) =0  \\
+& qi(s) = 0 \end{aligned} \qquad \, 
+(ip+jq)(m) = ip(m) + jq(m) = i(s) + j(t) = m 
+\]
+\end{itemize}
+\end{proof}
+
+\section{Categories; Category Theory}  
+
+\subsection{Categories}
+
+cf. 7.2 Categories of Rotman (2010) \cite{JRotman2010}
+
+\subsubsection{Russell paradox, Russell set}  
+
+\begin{definition}[Russell set]
+Russell set  - set $S$ that's not a member of itself, i.e. $S\notin R$
+\end{definition}
+
+If $R$ is family of all Russell sets,  \\
+Let $X\in R$.  Then $X\notin X$.  But $X\in R$.  $X\notin R$.  \\
+Let $R\notin R$.  Then $R$ in family of Russell Sets.  $R\in R$.  Contradiction.  
+
+Then consider \emph{class} as primitive term, instead of set.  
+
+\begin{definition}[Category]
+Category $\mathcal{C}$ (Rotman's notation) $\equiv \mathbf{C}$ (my notation), consists of class $\text{obj}(\mathcal{C})$ (Rotman's notation) $\equiv \text{Obj}(\mathbf{C}) \equiv \text{Obj}\mathbf{C}$ (my notation) of objects, set of  morphisms $\text{Hom}(A,B)$ $\forall \,  (A,B)$ of ordered tuples of objects, composition 
+\[
+\begin{gathered} 
+	\text{Hom}(A,B)\times \text{Hom}(B ,C) \to \text{Hom}(A,C) \\
+(f,g)\mapsto gf \end{gathered}
+\], s.t.
+\begin{enumerate}
+\item $\exists \, \mathbf{1}$, $\forall \, f:A\to B$, $\exists \, \begin{aligned} & \quad \\ 
+1_A : A \to A \\
+1_B : B \to B \end{aligned}$, s.t. $1_B \cdot f = f= f\cdot 1_A$, and 
+\item associativity, $\forall \, \begin{aligned} & \quad \\
+& f : A\to B \\
+& g: B\to C \\
+& h: C\to D \end{aligned}$, then $h\circ (g\circ f) = (h\circ g) \circ f$ 
+\end{enumerate}
+
+In summary, 
+\begin{equation}
+	\mathbf{C} := (\text{Obj}(\mathbf{C}), \text{Mor}\mathbf{C}, \circ, \mathbf{1}) \equiv (\text{Obj}\mathbf{C}, \text{Mor}\mathbf{C}, \circ_{\mathbf{C}}, \mathbf{1}_{\mathbf{C}})
+\end{equation}
+s.t. 
+\[
+\text{Mor}\mathbf{C} = \bigcup_{A,B \in \text{Obj}\mathbf{C}} \text{Hom}(A,B)
+\]
+\end{definition}
+
+Examples (7.25 of Rotman (2010)\cite{JRotman2010}): 
+\begin{enumerate}
+\item[(i)] $\mathbf{C} = \mathbf{\text{Sets}}$  
+\item[(ii)] $\mathbf{C} = \mathbf{\text{Groups}} = \mathbf{\text{Grps}}$ 
+\item[(iii)]  $\mathbf{C} = \mathbf{\text{CommRings}}$
+\item[(iv)]  $\mathbf{C} = {}_R\textbf{Mod}$, if $R=\mathbb{Z}$, ${}_{\mathbb{Z}}\textbf{Mod} = \textbf{Ab}$, i.e. $\mathbb{Z}-$modules are just abelian groups.   
+\item[(v)] $\mathbf{C} =\textbf{PO}(X)$, If partially ordered set $X$, regard $X$ as category, s.t. $\textbf{Obj}, \textbf{PO}(X) = \lbrace x | x\in X\rbrace$, $\forall \, \text{Hom}(x,y) \in \textbf{Mor}_{\textbf{PO}}(X)$, $\text{Hom}(x,y) = \begin{cases} \emptyset & \text{ if } x \npreceq y \\  \kappa_y^x & \text{ if } x \preceq y   \end{cases}$ where $\kappa_y^x \equiv $ unique element in $\text{Hom}$ set when $x \preceq y$) s.t. 
+\[
+\kappa_z^y \kappa_y^x  =\kappa_z^x
+\]
+Also, notice that 
+\[
+1_x = \kappa_x^x
+\]
+\end{enumerate}
+
+\begin{definition}[isormorphisms or equivalences]
+$f:A\to B$, $f\in \text{Hom}(A,B)$, if $\exists \, $ \textbf{inverse} $g:B\to A$, $g\in \text{Hom}(B,A)$, s.t. 
+\[
+\begin{aligned}
+& gf = 1_A \\ 
+& fg = 1_B
+\end{aligned}
+\]
+and if $\mathbf{C} = \textbf{Top}$, equivalences (isomorphisms) are homeomorphisms.  
+\end{definition}
+
+Feature of category ${}_R\textbf{Mod}$ not shared by more general categories: \emph{Homomorphisms can be added.}
+
+\begin{definition}[pre-additive Category]
+category $\mathbf{C}$
+\end{definition}  
+
+
+
+
+
 \part{Reading notes on Cox, Little, O'Shea's \emph{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}}
 
 \section{Geometry, Algebra, and Algorithms}
@@ -851,6 +1286,9 @@ then $g$ also a monomial.
 
 \href{https://martinralbrecht.files.wordpress.com/2010/07/20131022_buchberger_dtu.pdf}{Gr\"{o}bner Bases, Martin R. Albrecht of the DTU Crypto Group}
 
+\part{Conformal Field Theory : Virasoro Algebra}  
+
+cf.  Schottenloher (2008)  \cite{Scho2008}
 
 
 \part{Algebraic Topology}  
@@ -2191,6 +2629,12 @@ David A. Cox.  John Little. Donal O'Shea. \textbf{Using Algebraic Geometry}.  Se
 
 \bibitem{CLS2015}
 David Cox, John Little, Donal O'Shea. \textbf{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}, Fourth Edition, Springer
+
+\bibitem{Scho2008}  
+Schottenloher, Martin.  \textbf{A Mathematical Introduction to Conformal Field Theory}.  Springer, 2008.  
+
+
+
 
 \bibitem{Bred1997}
 Glen E. Bredon.  \textbf{Topology and Geometry}. Graduate Texts in Mathematics (Book 139).  Springer; Corrected edition (October 17, 1997).  ISBN-13: 978-0387979267
