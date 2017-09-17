@@ -116,6 +116,138 @@ Everything about Differential Geometry, Differential Topology
 
 \end{abstract}
 
+\part{Combinatorics, Probability Theory}
+
+\begin{theorem}[4.2. of Feller (1968)  \cite{Fell1968}]
+	Let $r_1,\dots r_k \in \mathbb{Z}$, s.t. $r_1 + r_2 + \dots + r_k = n$;, $r_i \geq 0$.  
+
+Let 
+\begin{equation}
+\frac{ N! }{r_1! r_2! \dots r_k!} = 
+\end{equation}
+number of ways in which $n$ elemnts can be divided into $k$ ordered parts (partitioned into $k$ subpopulations).  cf. Eq. (4.7) of Feller (1968)  \cite{Fell1968}.  
+
+Note that the order of the subpopulations is essential in the sense that ($r_1 = 2,r_2 =3$) and ($r_1=3,r_2=2$) represent different partitions.  However, no attention is paid to the order within the groups.  
+
+\end{theorem}
+\begin{proof}
+\begin{equation}
+\binom{n}{r_1} \binom{n-r_1}{r_2} \binom{n-r_1-r_2}{r_3} \dots \binom{n-r_1-\dots - r_{k-2} }{ r_{k-1} } = \frac{n!}{ r_1! r_2! \dots r_k! }
+\end{equation}
+i.e. in order to effect the desired partition, we have to select $r_1$ elementsout of $n$, remaining $n-r_1$ elements select a second group of size $r_2$, etc.  After forming the $(k-1)$st group there remains $n-r_1 -r_2 - \dots - r_{k-1} = r_k$ elements, and these form the last group.  
+\end{proof}
+
+cf. pp. 37 of Feller (1968)  \cite{Fell1968}
+Examples.  (g) Bridge.  32 cards are partitioned into 4 equal groups $\to 52!/(13!)^4$.  
+
+Probability each player has an ace (?).  
+
+The 4 aces can be ordered in $4! = 24$ ways, each order presents 1 possibility of giving 1 ace to each player.  \\
+Remaining 48 cards distributed $(48!)/( 12!)^4$ ways.  
+
+\[
+\to p = 24 \frac{ 48!}{ (12!)^4 } / \frac{ 52!}{ (13!)^4}
+\]
+
+(h) A throw of 12 dice $\to  6^{12}$ different outcomes total.  Event each face appears twice can occur in as many ways as 12 dice can be arranged in 6 groups of 2 each.  
+\[
+\frac{12!}{(2!)^6} / \frac{ 52!}{ (13!)^4} 
+\]
+
+\subsubsection{Application to Occupancy Problems; binomial coefficients}
+
+cf. Sec. 5 Application to Occupancy Problems of Feller (1968)  \cite{Fell1968}.  
+
+Consider randomly placing $r$ balls intos $n$ cells.  
+
+Let $r_k = $ occupancy number $=$ number of balls in $k$th cell.  
+
+Every $n$-tuple of integers satisfying $r_1 + r_2 + \dots + r_n = r$;  $r_k \geq 0$.  describes a possible configuration of occupancy numbers.  
+
+With indistinguishable balls 2 distributions are distinguishable only if the corresponding $n$-tuples ($r_1,\dots r_n$) are not identical.  
+
+\begin{enumerate}
+\item[(i)] number of distinguishable distributions is 
+\begin{equation}
+A_{r,n} = \binom{n+r-1}{r} = \binom{n+r-1}{n-1}  
+\end{equation} cf. Eq. (5.2) of Feller (1968)  \cite{Fell1968}
+\item[(ii)]  number of distinguishable distributions in which no cell remains empty is $\binom{r-1}{n-1}$.  
+\end{enumerate}
+
+\begin{proof}
+Represent balls by stars, indicate $n$ cells by $n$ spaces between $n+1$ bars.  e.g. $\begin{aligned} & \quad \\ 
+& r= 8 \text{ balls } \\
+& n = 6 \text{ cells } \end{aligned}$.  
+
+\[
+\begin{aligned}
+	& 3 	  & 1   & 0 & 0 & 0 & 4 \\
+	& | * * * & | * & | & |   & | & | **** |  
+\end{aligned}
+\]
+
+Such a symbol necessarily starts and ends with a bar, but remaining $n-1$ bars and $r$ starts appear in an arbitrary order.  In this way, it becomes apparent that the number of distinguishable distributions equals the number of ways of selecting.  
+
+$r$ places out of $n+r-1$, $\frac{ (n+r-1)! }{ (n-1)! r!} = \binom{n-1+r}{r} $  
+
+\[
+\begin{aligned}
+	& | | | | \dots | | \qquad \, n+1 \text{ bars } \\ 
+	& * * * \dots * * \qquad \, r \text{ stars leave } r-1 \text{ spaces }
+\end{aligned}
+\]
+
+Condition that no cell be empty imposes the restriction that no 2 bars be adjacent.  $r$ stars leave $r-1$ spaces of which $n-1$ are to be occupied by bars.  Thus $\binom{r-1}{n-1}$ choices.  
+
+
+\end{proof}
+
+
+Probability to obtain given occupancy numbers $r_1,\dots r_n = \frac{r!}{ r_1! r_2! \dots r_n! } / n^r$, with $ \begin{aligned} & \quad \\ 
+	& r \text{ balls } \\ 
+& n \text{ cells } \end{aligned}$  given by Thm. 4.2. of Feller (1968)  \cite{Fell1968}, which is the Maxwell-Boltzmann distribution.  
+
+\begin{enumerate}
+\item[(a)] Bose-Einstein and Fermi-Dirac statistics.  Consider $r$ indistinguishable particles, $n$ cells, each particle assigned to 1 cell.  
+
+State of the system - random distribution of $r$ particles in $n$ cells.  
+
+If $n$ cells distinguishable, $n^r$ arrangements equiprobable $\to $ Maxwell-Boltzmann statistics.  
+
+Bose-Einstein statistics: only distinguishable arrangements are considered, and each assigned probability $\frac{1}{A_{r,n}}$  
+\begin{equation}
+A_{r,n} = \binom{n+r-1}{r} = \binom{n-1+r}{n-1}  
+\end{equation}
+cf. Eq. 5.2 of Feller (1968)  \cite{Fell1968}
+
+Fermi-Dirac statistics.  
+\begin{enumerate}
+\item[(1)] impossible for 2 or more particles to be in the same cell.  $\to r \leq n$.  
+\item[(2)] all distinguishable arrangements satisfying the first condition have equal probabilities.  
+
+$\to$ an arrangement is completely described by stating which of the $n$ cells contain a particle  
+
+$r$ particles $\to \binom{n}{r}$ ways $r$ cells chosen.  
+
+Fermi-Dirac statistics, there are $\binom{n}{r}$ possible arrangements, prob. $1/\binom{n}{r}$.  
+\end{enumerate}
+\end{enumerate}
+pp. 39.  Feller (1968)  \cite{Fell1968}.  Consider cells themselves indistinguishable!  Disregard order among occupancy numbers.  
+
+
+
+
+
+
+
+
+cf. Feller (1968)  \cite{Fell1968}
+
+
+
+
+
+
 \part{Manifolds}
 
 
@@ -1076,7 +1208,7 @@ cf. Eq. 1.4 Pr\'{a}staro (1996) \cite{Pras1996}
 
 
 
-
+\part{Holonomy}
 
 \begin{definition}[Conlon, 10.1.2] If $X,Y\in \mathfrak{X}(M)$, $M\subset \mathbb{R}^m$, \textbf{Levi-Civita connection} on $M\subset \mathbb{R}^m$
 	\begin{equation}
@@ -1660,6 +1792,112 @@ Koppensteiner (2010) \cite{Kopp2010}
 
 Vandoren (2008) \cite{Vand2008}
 
+\part{Jets, Jet bundles, $h$-principle, $h$-Prinzipien}
+
+cf. Eliashberg and Misahchev (2002) \cite{ElMi2002}
+
+cf. Ch. 1 Jets and Holonomy, Sec. 1.1 Maps and sections of Eliashberg and Misahchev (2002) \cite{ElMi2002}.  
+
+Visualize $f:\mathbb{R}^n \to \mathbb{R}^q$ as graph $\Gamma_f \subset \mathbb{R}^n \times \mathbb{R}^q$.  
+
+Consider this graph as image of $\begin{aligned} & \quad \\ 
+	& \mathbb{R}^n \to \mathbb{R}^n \times \mathbb{R}^q \\
+	& x \mapsto (x,f(x)) \end{aligned}$, i.e. 
+
+$\begin{aligned} & \quad \\ 
+	& \mathbb{R}^n \to \mathbb{R}^n \times \mathbb{R}^q \\
+	& x \mapsto (x,f(x)) \end{aligned}$ is called section (by mathematicians), \\
+is called \emph{field} or $\mathbb{R}^q$-valued field (by physicists).  
+
+cf. Ch. 1 Jets and Holonomy, Sec. 1.2 Coordinate definition of jets of Eliashberg and Misahchev (2002) \cite{ElMi2002}.  
+
+\begin{definition}[$r$-jet]
+Given (smooth) $f: \mathbb{R}^n \to \mathbb{R}^q$, given $x\in \mathbb{R}^n$.  
+
+$r$-jet of $f$ at $x$ - sequence of derivatives of $f$, up to order $r$, $\equiv$ 
+\begin{equation}
+J^r_f(x) = (f(x),f'(x) \dots f^{(r)}(x) )
+\end{equation}
+\end{definition}
+
+$f^{(q)}$ consists of all partial derivatives $D^{\alpha}f$, $\alpha= (\alpha_1\dots \alpha_n)$, $|\alpha| = \alpha_1 + \dots + \alpha_n =s$, ordered lexicographically.  
+
+e.g. $q=1$, \\
+$f: \mathbb{R}^n \to \mathbb{R}$.   \\
+1-jet of $f$ at $x = J_f^1(x) = (f(x), f^{(1)}(x))$.  
+\[
+f^{(1)}(x) = \lbrace D^{\alpha}f| \alpha = (\alpha_1 \dots \alpha_n), |\alpha| = \alpha_1  + \dots + \alpha_n  =1 \rbrace = \left( \frac{ \partial f}{ \partial x^1 }, \frac{ \partial f}{ \partial x^2 } , \dots \frac{ \partial f}{ \partial x^n } \right)
+\]
+Let $d_r = d(n,r) = $ number of all partial derivatives $D^{\alpha}$ of order $r$ of function $\mathbb{R}^n \to \mathbb{R}$.  
+
+Consider $r$-jet $J^r_f(x)$ of map $f:\mathbb{R}^n\to \mathbb{R}^q$ as pt. of space $\mathbb{R}^q \times \mathbb{R}^{qd_1} \times \mathbb{R}^{qd_2} \times \dots \times \mathbb{R}^{qd_r} = \mathbb{R}^{q N_r}$, where $N_r = N(n,r) = 1 + d_1 + d_2 + \dots + d_r$, i.e. 
+\[
+J_f^r(x) = (f(x),f^{(1)}(x) , \dots f^{(r)}(x) ) \in \mathbb{R}^q \times \mathbb{R}^{qd_1} \times  \dots \times \mathbb{R}^{qd_r} = \mathbb{R}^{q N_r}
+\]
+
+
+\exercisehead{1}  
+
+Given order $r$, consider $n$-tuple of (positive) integers $(r_1,r_2\dots r_n)$ s.t. $r_1 + r_2 + \dots + r_n = r$, and $r_k\geq 0$. \\
+ Imagine $r_k = $ occupancy number, num ber of balls in $k$th cell.  $(r_1\dots r_n)$ describes a positive ocnfiguration of occupancy numbers, with indistinguishable balls; 2 distributions are distinguishable only if corresponding $n$-tuples $(r_1 \dots r_n)$ not identical.  
+
+Represent balls by stars, and indicate $n$ cells by $n$ spaces between $n+1$ bars.  
+
+With $n+1$ bars, $r$ stars, 2 bars are fixed. $n-1$ bars and $r$ stars to arrange linearly, so a total of $n-1+r$ objects to arrange.  $r$ stars indistinguishable amongst themselves, so choose $r$ out of $n-1+r$ to be stars.  
+\begin{equation}
+\Longrightarrow d_r = d(n,r)=\binom{n-1+r}{r}
+\end{equation}
+
+Use \emph{induction} (cf. \href{http://www.cs.columbia.edu/~cs4205/files/CM4.pdf}{Ch. 4 Binomial Coefficients}).  
+\[
+\begin{aligned}
+	& N_0 = N(n,0) = \binom{n-1+0}{0} = 1 \\ 
+	& N_1 = N(n,1) = 1+ \binom{n-1+1}{1} = 1 + n = \frac{ (n+1)!}{n! 1!}
+\end{aligned}
+\]
+Induction step: 
+\[
+N_{r-1} = N(n,r-1) = \sum_{k=1}^{r-1} d_k + 1 = \binom{ n+r-1}{r-1}
+\]
+and so 
+\[
+\begin{gathered}
+N_r = N(n,r) = \sum_{k=1}^r d_k + 1 = \sum_{k=1}^r \binom{n-1+k}{k} + 1 = \sum_{k=1}^{r-1} \binom{ n-1 +k}{k} + \binom{n-1+r}{r} + 1 = \\
+	 =  \binom{n+r-1}{r-1} + \binom{n-1+r}{r} = \frac{ (n+r-1)! }{ (r-1)! n!} + \frac{ (n-1+r)! }{ r! (n-1)! } = \frac{ (n+r)!}{n!r!} = \binom{n+r}{r}
+\end{gathered}
+\]
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+    \mathbb{R}^{qN_r} &  \\ 
+    \mathbb{R}^n & \mathbb{R}^q \\ 
+};
+  \path[->]
+  (m-2-1) edge node [auto] {$ J_f^r $} (m-1-1)
+          edge node [auto] {$f $} (m-2-2)
+  ;
+\end{tikzpicture}   \quad \quad \, \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+   J_f^r(x)  &  \\ 
+    x & f(x) \\ 
+};
+  \path[|->]
+  (m-2-1) edge node [auto] {$ J_f^r $} (m-1-1)
+          edge node [auto] {$f $} (m-2-2)
+  ;
+\end{tikzpicture}  
+\]
+
+\begin{definition}[space of $r$-jets]
+space of $r$-jects of maps $\mathbb{R}^n \to \mathbb{R}^q$ or space of $r$-jets of sections $\mathbb{R}^n \to \mathbb{R}^n \times \mathbb{R}^q \equiv $
+\begin{equation}
+J^r(\mathbb{R}^n, \mathbb{R}^q) = \mathbb{R}^n \times \mathbb{R}^{qN_r} \equiv \mathbb{R}^n \times \mathbb{R}^q \times \mathbb{R}^{qd_1} \times \mathbb{R}^{qd_2} \times \dots \times \mathbb{R}^{qd_r}
+\end{equation}
+e.g. $J^1(\mathbb{R}^n, \mathbb{R}^q) = \mathbb{R}^n \times \mathbb{R}^q \times M_{q\times n}$, where $M_{q\times n} = \mathbb{R}^{qn}$ is the space of $(q\times n)$-matrices.  
+\end{definition}
+
 
 \part{Morse Theory}
 
@@ -1917,6 +2155,19 @@ Other interesting links:
 \href{http://oai.cwi.nl/oai/asset/2552/2552A.pdf}{The Lagrange Multiplier Rule on Manifolds and Optimal Control of nonlinear systems}
 
 
+\part{Classical Mechanics applications}
+
+cf. Arnold, Kozlov, Neishtadt (2006) \cite{AKN2006}. 
+
+If known forces $\mathbf{F}_1 \dots \mathbf{F}_n$ acts on points, then 
+\begin{equation}
+\sum_{i=1}^n \langle m_i \ddot{ \mathbf{r}}_i - \mathbf{F}_i , \mathbf{\xi}_i \rangle = 0
+\end{equation}
+cf. Eq. (1.26) of Arnold, Kozlov, Neishtadt (2006) \cite{AKN2006}, where $\xi_1 , \dots \xi_n$ are arbitrary tangent vectors to $M$, $\mathbf{\xi}_i, \dots \mathbf{\xi}_n \in TM$.  
+
+$\sum_{i=1}^n \langle m_i \ddot{ \mathbf{r}}_i - \mathbf{F}_i , \mathbf{\xi}_i \rangle$ called "general equation of dynamics" or d'Alembert-Lagrange principle.  
+
+
 
 
 
@@ -1925,6 +2176,10 @@ Other interesting links:
 \end{multicols*}
 
 \begin{thebibliography}{9}
+
+\bibitem{Fell1968}
+William Feller.  \textbf{An Introduction to Probability Theory and Its Applications}, Vol. 1, 3rd Edition.  1968.  ISBN-13: 978-0471257080
+
 
 
 \bibitem{JLee2009}
@@ -1970,6 +2225,12 @@ Andrew Clarke and Bianca Santoro.  \emph{Holonomy Groups in Riemannian Geometry}
 \bibitem{ScWa2007}
 Urs Schreiber and Konrad Waldorf.  \emph{Parallel Transport and Functors}.  \href{https://arxiv.org/pdf/0705.0452.pdf}{arXiv:0705.0452 [math.DG]}
 
+\bibitem{ElMi2002}
+Y. Eliashberg, N. Mishachev, \emph{Introduction to the $h$-principle}, Grad. Studies in Math. Vol 48 (AMS 2002)
+
+
+\bibitem{AKN2006}
+Vladimir I. Arnold, Valery V. Kozlov, Anatoly I. Neishtadt.  \textbf{Mathematical Aspects of Classical and Celestial Mechanics}.  Third Edition.  Springer.  
 
 
 \end{thebibliography}

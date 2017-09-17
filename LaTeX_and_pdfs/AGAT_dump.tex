@@ -126,6 +126,235 @@ Everything about Algebraic Geometry, Algebraic Topology
 
 We should know some algebra.  I will follow mostly Rotman (2010) \cite{JRotman2010}.  
 
+\section{Prime numbers, GCD (greatest common denominator), integers, Euler's totient, Chinese Remainder Theorem, integer divison, modulus, remainders; Euclid's Lemma}
+
+\subsection{Greatest Common Denominator (GCD); Euclid's Lemma}
+
+\begin{theorem}[1.7 of Rotman (2010) \cite{JRotman2010}]\label{Thm:lincombgcd}
+	If $a,b\in \mathbb{Z}$, then $\text{gcd}(a,b) \equiv (a,b)=d$ is linear combination of a and b, i.e. $\exists \, s,t \in \mathbb{Z}$ s.t.
+\[
+d= sa + tb
+\]
+\end{theorem}
+cf. pp.4, Thm. 1.7, Ch. 1 Things Past of Rotman (2010) \cite{JRotman2010}
+\begin{proof}
+Let $I:=$ 
+\[
+I :=\lbrace sa+tb|s,t\in \mathbb{Z} \rbrace
+\]
+If $I\neq \lbrace 0 \rbrace$, let $d$ be smallest positive integer in $I$.   \\
+$d\in I$, so $d=sa + tb$ for some $s,t\in \mathbb{Z}$.  
+
+Claim: $I=(d) \equiv \lbrace kd| k\in \mathbb{Z} \rbrace = $ set of all multiples of $d$.  
+
+Clearly $(d)\subseteq I$, since $kd=k(sa+tb) = (ks)a+(kt)b\in I$.  
+
+Let $c\in I$.  
+
+By division algorithm, $c=qd + r$, $0\leq r <d$
+\[
+r=c-qd = s'a+t'b - qsa - qtb = (s'-sq)a + (t'-qt)b \in I
+\]
+If $r\in I$, but $r<d$, contradiction that $\min_{ \substack{ i \in I \\ i>0 \\ } } i =d$.  
+
+So $r=0$, and $d|c=c/d$.  
+\[
+c \in (d), \text{ so } I\subseteq (d) \Longrightarrow I =(d)
+\]
+\end{proof}
+
+
+\begin{theorem}[\textbf{Euclid's Lemma}; 1.10 of Rotman (2010) \cite{JRotman2010}]
+If $p$ prime and $p|ab$, then $p|a$ or $p|b$.  
+
+More generally,  \\
+if prime $p$ divides product $a_1a_2\dots a_n$, \\
+then it must divide at least 1 of the factors $a_i$.  
+
+i.e. (notation),  
+
+If prime $p$, and $ab/p \in \mathbb{Z}$, \\
+then $a/p\in \mathbb{Z}$ or $b/p \in \mathbb{Z}$.  
+
+More generally, \\
+if prime $p$, s.t. $a_1a_2 \dots a_n/p \in \mathbb{Z}$, \\
+then $\exists \, $ 1 \, $a_i$ s.t. $a_i/p \in \mathbb{Z}$
+\end{theorem}
+\begin{proof}
+If $p\nmid a$, i.e. $a/p \notin \mathbb{Z}$, then $\text{gcd}(p,a)  \equiv (p,a) =1$.  
+
+From Thm. \ref{Thm:lincombgcd}, 
+\[
+1 = sp+ta
+\]
+\[
+\Longrightarrow b = spb + tab = p(sb+td)
+\]
+$ab/p$ and so $ab=pd$, so $b=spb+tdp$, i.e. $b$ is a multiple of $p$ ($b/p \in \mathbb{Z} \equiv p | b$).  
+
+
+
+
+\end{proof}
+
+\begin{corollary}[1.11 of Rotman (2010) \cite{JRotman2010}]\label{Cor:relprimefactors}
+Let $a,b,c \in \mathbb{Z}$.  
+
+If $c,a$ relatively prime, i.e. $\text{gcd}(c,a)=1$, and if $c|ab \equiv ab/c\in \mathbb{Z}$,
+then $c|b \equiv b/c \in \mathbb{Z}$
+\end{corollary}
+\begin{proof}
+\[
+\text{gcd}(c,a)=1 = sc+ta \Longrightarrow b=sbc + tab = sbc + t(qc) = c(sb+tq) \Longrightarrow b/c = sb+tq 
+\]
+\end{proof}
+
+
+
+\begin{theorem}[1.26 of Rotman (2010) \cite{JRotman2010}]
+If $\text{gcd}(a,m) \equiv (a,m) = 1$, then $\forall \, b \in \mathbb{Z}$, $\exists \, x $ s.t. 
+\[
+ax = b\mod{m}
+\]
+In fact, $x=sb$, where $sa\equiv 1\mod{m}$
+\end{theorem}
+\begin{proof}
+$\gcd(a,m) = 1=sa+tm$.   
+
+Then $b=b\cdot 1=  b(sa+tm) = sab+tmb$ or $b=tbm+sab$ or $a(sb) = -tbm + b$.  
+
+So $a(sb)\mod{m}=b$.  
+
+Let $x:= sb$ and so $ax \mod{m}=b$.   \\
+Now suppose $x \neq sb$ s.t. $ax\mod{m}=b$.  Then $ax=qm +b$.  From $a(sb) \mod{m}=b$, we also get $a(sb) = q'm + b$.  Then $a(x-sb) \mod{m}=0$, so $m|a(x-sb) \equiv a(x-sb)/m\in \mathbb{Z}$.  
+
+By Corollary \ref{Cor:relprimefactors} (which says, if $\gcd(c,a)=1$ and if $ab/c\in\mathbb{Z}$, then $b/c \in \mathbb{Z}$), 
+since $\gcd(m,a) = (m,a)=1$, and since $a(x-sb)/m \in \mathbb{Z}$, then $(x-sb)/m\in\mathbb{Z}$.  So $(x-sb)=qm$ or $(sb)\mod{m} = x$.  
+
+
+\end{proof}
+
+
+
+\begin{proposition}[3.1 of Scheinerman (2006) \cite{Sche2006}]\label{Prop:commongcd}
+Let $a,b\in \mathbb{Z}$, let $c=a\mod{b}$, i.e. $a=qb+c$ s.t. $0\leq c <b$.  
+
+Then 
+\begin{equation}
+\text{gcd}(a,b) = \text{gcd}(b,c)
+\end{equation}
+\end{proposition}
+cf. Sec. 3.3 Euclid's method of Scheinerman (2006) \cite{Sche2006}
+
+\begin{proof}
+If $d$ common divisor of $a,b$, i.e. $a/d, b/d \in \mathbb{Z} \equiv d|a, d|b$.   \\
+$c/d \in \mathbb{Z} \equiv d|c$ since $c=a-qb$.  
+
+If $d$ is common divisor of $b,c$, i.e. $d|b, d|c \equiv c/d, b/d\in\mathbb{Z}$, \\
+then $d|a \equiv a/d \in \mathbb{Z}$ since $a=qb+c$.  So set of common divisors of $a,b$ same as set of common divisors of $b$ and $c$.  
+
+Then $\text{gcd}(a,b) = \text{gcd}(b,c)$.  
+\end{proof}
+
+
+
+
+\subsection{Euler's totient; relatively prime}
+
+\begin{definition}
+if $a,b \in \mathbb{Z}$, \\
+a \textbf{divisor} of b, if $\exists \, d\in \mathbb{Z}$ s.t. $b=ad$.   \\
+Also, $a$ \textbf{divides} $b$ or $b$ multiple of $a \equiv a | b$.  \\
+$a|b \equiv b/a \in \mathbb{Z}$  
+\end{definition}
+cf. pp. 3 of Ch. 1 Things Past, Sec. 1.1 Some Number Theory of Rotman (2010) \cite{JRotman2010}.  
+
+cf. Ch. 5 Arrays, Sec. 5.1 Euler's totient of Scheinerman (2006) \cite{Sche2006}
+
+For 
+\[
+\begin{aligned}
+	& \varphi : \mathbb{Z}^+ \to \mathbb{Z}^+ \\ 
+	& \varphi : n \mapsto \varphi(n) := \text{ number of elements of $\lbrace 1,2, \dots n \rbrace$ that are relative prime to $n$ } = | \lbrace i | i \in \lbrace 1,2, \dots n \rbrace , (n,i)=1 \text{ or equivalently } n \propto i \rbrace |
+\end{aligned}
+\]
+
+e.g. $\varphi(10) = 4$ since $\varphi(10) = | \lbrace 1,3,7,9\rbrace|$.  
+
+we want $|(a,b) | 1 \leq a,b, \leq n , \text{gcd}(a,b) \equiv (a,b) = 1 |$.  
+
+\[
+p_n = \frac{1}{n^2} \left[ -1 + 2\sum_{i=1}^n \varphi(k) \right] = \text{ probability that 2 integers, chosen uniformly and independently from $\lbrace 1,2,\dots n\rbrace$ are relatively prime }
+\]
+
+If $p$ is prime, $\forall \, i \in \lbrace 1,2,\dots p \rbrace$, $(p,i) \equiv \text{gcd}(p,i)=1$, i.e. relatively prime to $p$, except 1 $i\in \lbrace 1,2,\dots p\rbrace$.  
+
+Therefore 
+\[
+\varphi(p) = p-1
+\]
+Consider $\varphi(p^2)$.  
+
+$\lbrace 1,2,\dots p^2\rbrace$, only numbers \emph{not} relatively prime to $p^2$ are multiples of $p$ since \\
+$p,2p, 3p, \dots p^2$ all divide $p^2$, i.e. $p|p^2, 2p|p^2 \dots (p-1)p | p^2 \equiv p^2 /p , p^2 /2p , \dots p^2 / p(1-p)$.  
+
+Assume $\varphi(p^n) = p^2 - p^{n-1} = p^{n-1}(p-1)$.  
+
+\[
+\varphi(p^{n+1}) = \varphi(pp^{n}) = p^n\varphi(p) = p^n(p-1)
+\]
+Therefore,
+\begin{proposition}[5.1]
+Let $p$ prime, $n\in \mathbb{Z}^+$
+\end{proposition}
+
+
+e.g. $\varphi(77)$.  
+
+$\forall \, n $ s.t. $1\leq n \leq 77$.  
+\[
+\begin{aligned}
+	& \text{gcd}(n,77)=1 \\ 
+	& \text{gcd}(n,7)=1 \\ 
+	& \text{gcd}(n,11)=1  
+\end{aligned}
+\]
+By Prop. \ref{Prop:commongcd}, 
+\[
+\begin{aligned}
+	& \text{gcd}(n,7) = \text{gcd}(7, n\mod{7}) \\ 
+	& \text{gcd}(n,11) = \text{gcd}(11, n\mod{11}) 
+\end{aligned}
+\]
+
+
+Scheinerman (2006) \cite{Sche2006}
+
+
+
+\subsubsection{Chinese Remainder Theorem}
+
+\begin{theorem}
+	If $m,m'$ relatively prime (i.e. $\gcd(m,m')=1$), then for 
+\[
+\begin{aligned}
+	& x \equiv b \mod{m} \\ 
+	& x\equiv b'\mod{m'}
+\end{aligned}
+\]
+i.e. given $b,b'm,m'$, and wanting to find $x$, 
+$\exists \, x$ and $\forall \, 2 x$'s, $x=x'\mod{mm'}$.  
+\end{theorem}
+
+\begin{proof}
+$x = b'ms + bm's'$
+\end{proof}
+
+cf. Ch. 1 Things Past, Thm. 1.28 of Rotman (2010) \cite{JRotman2010}, pp. 68 Thm. 5.2 (Chinese Remainder) of Scheinerman (2006) \cite{Sche2006}.  
+
+
+
+
 \section{Groups; normal subgroups}  
 
 \begin{definition}[normal subgroup $K \lhd G$] \qquad \, \\
@@ -2645,6 +2874,10 @@ Jean-Pierre Serre (Author), J. Stilwell (Translator).  \textbf{Trees} (Springer 
 
 \bibitem{JRotman2010}
 Joseph J. Rotman, \textbf{Advanced Modern Algebra} (Graduate Studies in Mathematics) 2nd Edition, American Mathematical Society; 2 edition (August 10, 2010), ISBN-13: 978-0821847411
+
+\bibitem{Sche2006}
+Edward Scheinerman.  \textbf{C++ for Mathematicians: An Introduction for Students and Professionals}. 1st Edition.  CRC Press; 1 edition (June 8, 2006).  ISBN-13: 978-1584885849 
+
 
 \bibitem{JLee2009}
 Jeffrey M. Lee. \textbf{Manifolds and Differential Geometry}, \emph{Graduate Studies in Mathematics} Volume: 107, American Mathematical Society, 2009. ISBN-13: 978-0-8218-4815-9
