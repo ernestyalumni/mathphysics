@@ -123,6 +123,760 @@ Everything about Algebraic Geometry, Algebraic Topology
 
 \end{abstract}
 
+
+\part{Algebra; Groups, Rings, R-Modules, Categories}
+
+We should know some algebra.  I will follow mostly Rotman (2010) \cite{JRotman2010}.  
+
+\section{Prime numbers, GCD (greatest common denominator), integers, Euler's totient, Chinese Remainder Theorem, integer divison, modulus, remainders; Euclid's Lemma}
+
+\subsection{Greatest Common Denominator (GCD); Euclid's Lemma}
+
+\begin{theorem}[1.7 of Rotman (2010) \cite{JRotman2010}]\label{Thm:lincombgcd}
+	If $a,b\in \mathbb{Z}$, then $\text{gcd}(a,b) \equiv (a,b)=d$ is linear combination of a and b, i.e. $\exists \, s,t \in \mathbb{Z}$ s.t.
+	\[
+	d= sa + tb
+	\]
+\end{theorem}
+cf. pp.4, Thm. 1.7, Ch. 1 Things Past of Rotman (2010) \cite{JRotman2010}
+\begin{proof}
+	Let $I:=$ 
+	\[
+	I :=\lbrace sa+tb|s,t\in \mathbb{Z} \rbrace
+	\]
+	If $I\neq \lbrace 0 \rbrace$, let $d$ be smallest positive integer in $I$.   \\
+	$d\in I$, so $d=sa + tb$ for some $s,t\in \mathbb{Z}$.  
+	
+	Claim: $I=(d) \equiv \lbrace kd| k\in \mathbb{Z} \rbrace = $ set of all multiples of $d$.  
+	
+	Clearly $(d)\subseteq I$, since $kd=k(sa+tb) = (ks)a+(kt)b\in I$.  
+	
+	Let $c\in I$.  
+	
+	By division algorithm, $c=qd + r$, $0\leq r <d$
+	\[
+	r=c-qd = s'a+t'b - qsa - qtb = (s'-sq)a + (t'-qt)b \in I
+	\]
+	If $r\in I$, but $r<d$, contradiction that $\min_{ \substack{ i \in I \\ i>0 \\ } } i =d$.  
+	
+	So $r=0$, and $d|c=c/d$.  
+	\[
+	c \in (d), \text{ so } I\subseteq (d) \Longrightarrow I =(d)
+	\]
+\end{proof}
+
+
+\begin{theorem}[\textbf{Euclid's Lemma}; 1.10 of Rotman (2010) \cite{JRotman2010}]
+	If $p$ prime and $p|ab$, then $p|a$ or $p|b$.  
+	
+	More generally,  \\
+	if prime $p$ divides product $a_1a_2\dots a_n$, \\
+	then it must divide at least 1 of the factors $a_i$.  
+	
+	i.e. (notation),  
+	
+	If prime $p$, and $ab/p \in \mathbb{Z}$, \\
+	then $a/p\in \mathbb{Z}$ or $b/p \in \mathbb{Z}$.  
+	
+	More generally, \\
+	if prime $p$, s.t. $a_1a_2 \dots a_n/p \in \mathbb{Z}$, \\
+	then $\exists \, $ 1 \, $a_i$ s.t. $a_i/p \in \mathbb{Z}$
+\end{theorem}
+\begin{proof}
+	If $p\nmid a$, i.e. $a/p \notin \mathbb{Z}$, then $\text{gcd}(p,a)  \equiv (p,a) =1$.  
+	
+	From Thm. \ref{Thm:lincombgcd}, 
+	\[
+	1 = sp+ta
+	\]
+	\[
+	\Longrightarrow b = spb + tab = p(sb+td)
+	\]
+	$ab/p$ and so $ab=pd$, so $b=spb+tdp$, i.e. $b$ is a multiple of $p$ ($b/p \in \mathbb{Z} \equiv p | b$).  
+	
+	
+	
+	
+\end{proof}
+
+\begin{corollary}[1.11 of Rotman (2010) \cite{JRotman2010}]\label{Cor:relprimefactors}
+	Let $a,b,c \in \mathbb{Z}$.  
+	
+	If $c,a$ relatively prime, i.e. $\text{gcd}(c,a)=1$, and if $c|ab \equiv ab/c\in \mathbb{Z}$,
+	then $c|b \equiv b/c \in \mathbb{Z}$
+\end{corollary}
+\begin{proof}
+	\[
+	\text{gcd}(c,a)=1 = sc+ta \Longrightarrow b=sbc + tab = sbc + t(qc) = c(sb+tq) \Longrightarrow b/c = sb+tq 
+	\]
+\end{proof}
+
+
+
+\begin{theorem}[1.26 of Rotman (2010) \cite{JRotman2010}]
+	If $\text{gcd}(a,m) \equiv (a,m) = 1$, then $\forall \, b \in \mathbb{Z}$, $\exists \, x $ s.t. 
+	\[
+	ax = b\mod{m}
+	\]
+	In fact, $x=sb$, where $sa\equiv 1\mod{m}$
+\end{theorem}
+\begin{proof}
+	$\gcd(a,m) = 1=sa+tm$.   
+	
+	Then $b=b\cdot 1=  b(sa+tm) = sab+tmb$ or $b=tbm+sab$ or $a(sb) = -tbm + b$.  
+	
+	So $a(sb)\mod{m}=b$.  
+	
+	Let $x:= sb$ and so $ax \mod{m}=b$.   \\
+	Now suppose $x \neq sb$ s.t. $ax\mod{m}=b$.  Then $ax=qm +b$.  From $a(sb) \mod{m}=b$, we also get $a(sb) = q'm + b$.  Then $a(x-sb) \mod{m}=0$, so $m|a(x-sb) \equiv a(x-sb)/m\in \mathbb{Z}$.  
+	
+	By Corollary \ref{Cor:relprimefactors} (which says, if $\gcd(c,a)=1$ and if $ab/c\in\mathbb{Z}$, then $b/c \in \mathbb{Z}$), 
+	since $\gcd(m,a) = (m,a)=1$, and since $a(x-sb)/m \in \mathbb{Z}$, then $(x-sb)/m\in\mathbb{Z}$.  So $(x-sb)=qm$ or $(sb)\mod{m} = x$.  
+	
+	
+\end{proof}
+
+
+
+\begin{proposition}[3.1 of Scheinerman (2006) \cite{Sche2006}]\label{Prop:commongcd}
+	Let $a,b\in \mathbb{Z}$, let $c=a\mod{b}$, i.e. $a=qb+c$ s.t. $0\leq c <b$.  
+	
+	Then 
+	\begin{equation}
+	\text{gcd}(a,b) = \text{gcd}(b,c)
+	\end{equation}
+\end{proposition}
+cf. Sec. 3.3 Euclid's method of Scheinerman (2006) \cite{Sche2006}
+
+\begin{proof}
+	If $d$ common divisor of $a,b$, i.e. $a/d, b/d \in \mathbb{Z} \equiv d|a, d|b$.   \\
+	$c/d \in \mathbb{Z} \equiv d|c$ since $c=a-qb$.  
+	
+	If $d$ is common divisor of $b,c$, i.e. $d|b, d|c \equiv c/d, b/d\in\mathbb{Z}$, \\
+	then $d|a \equiv a/d \in \mathbb{Z}$ since $a=qb+c$.  So set of common divisors of $a,b$ same as set of common divisors of $b$ and $c$.  
+	
+	Then $\text{gcd}(a,b) = \text{gcd}(b,c)$.  
+\end{proof}
+
+
+
+
+\subsection{Euler's totient; relatively prime}
+
+\begin{definition}
+	if $a,b \in \mathbb{Z}$, \\
+	a \textbf{divisor} of b, if $\exists \, d\in \mathbb{Z}$ s.t. $b=ad$.   \\
+	Also, $a$ \textbf{divides} $b$ or $b$ multiple of $a \equiv a | b$.  \\
+	$a|b \equiv b/a \in \mathbb{Z}$  
+\end{definition}
+cf. pp. 3 of Ch. 1 Things Past, Sec. 1.1 Some Number Theory of Rotman (2010) \cite{JRotman2010}.  
+
+cf. Ch. 5 Arrays, Sec. 5.1 Euler's totient of Scheinerman (2006) \cite{Sche2006}
+
+For 
+\[
+\begin{aligned}
+& \varphi : \mathbb{Z}^+ \to \mathbb{Z}^+ \\ 
+& \varphi : n \mapsto \varphi(n) := \text{ number of elements of $\lbrace 1,2, \dots n \rbrace$ that are relative prime to $n$ } = | \lbrace i | i \in \lbrace 1,2, \dots n \rbrace , (n,i)=1 \text{ or equivalently } n \propto i \rbrace |
+\end{aligned}
+\]
+
+e.g. $\varphi(10) = 4$ since $\varphi(10) = | \lbrace 1,3,7,9\rbrace|$.  
+
+we want $|(a,b) | 1 \leq a,b, \leq n , \text{gcd}(a,b) \equiv (a,b) = 1 |$.  
+
+\[
+p_n = \frac{1}{n^2} \left[ -1 + 2\sum_{i=1}^n \varphi(k) \right] = \text{ probability that 2 integers, chosen uniformly and independently from $\lbrace 1,2,\dots n\rbrace$ are relatively prime }
+\]
+
+If $p$ is prime, $\forall \, i \in \lbrace 1,2,\dots p \rbrace$, $(p,i) \equiv \text{gcd}(p,i)=1$, i.e. relatively prime to $p$, except 1 $i\in \lbrace 1,2,\dots p\rbrace$.  
+
+Therefore 
+\[
+\varphi(p) = p-1
+\]
+Consider $\varphi(p^2)$.  
+
+$\lbrace 1,2,\dots p^2\rbrace$, only numbers \emph{not} relatively prime to $p^2$ are multiples of $p$ since \\
+$p,2p, 3p, \dots p^2$ all divide $p^2$, i.e. $p|p^2, 2p|p^2 \dots (p-1)p | p^2 \equiv p^2 /p , p^2 /2p , \dots p^2 / p(1-p)$.  
+
+Assume $\varphi(p^n) = p^2 - p^{n-1} = p^{n-1}(p-1)$.  
+
+\[
+\varphi(p^{n+1}) = \varphi(pp^{n}) = p^n\varphi(p) = p^n(p-1)
+\]
+Therefore,
+\begin{proposition}[5.1]
+	Let $p$ prime, $n\in \mathbb{Z}^+$
+\end{proposition}
+
+
+e.g. $\varphi(77)$.  
+
+$\forall \, n $ s.t. $1\leq n \leq 77$.  
+\[
+\begin{aligned}
+& \text{gcd}(n,77)=1 \\ 
+& \text{gcd}(n,7)=1 \\ 
+& \text{gcd}(n,11)=1  
+\end{aligned}
+\]
+By Prop. \ref{Prop:commongcd}, 
+\[
+\begin{aligned}
+& \text{gcd}(n,7) = \text{gcd}(7, n\mod{7}) \\ 
+& \text{gcd}(n,11) = \text{gcd}(11, n\mod{11}) 
+\end{aligned}
+\]
+
+
+Scheinerman (2006) \cite{Sche2006}
+
+
+
+\subsubsection{Chinese Remainder Theorem}
+
+\begin{theorem}
+	If $m,m'$ relatively prime (i.e. $\gcd(m,m')=1$), then for 
+	\[
+	\begin{aligned}
+	& x \equiv b \mod{m} \\ 
+	& x\equiv b'\mod{m'}
+	\end{aligned}
+	\]
+	i.e. given $b,b'm,m'$, and wanting to find $x$, 
+	$\exists \, x$ and $\forall \, 2 x$'s, $x=x'\mod{mm'}$.  
+\end{theorem}
+
+\begin{proof}
+	$x = b'ms + bm's'$
+\end{proof}
+
+cf. Ch. 1 Things Past, Thm. 1.28 of Rotman (2010) \cite{JRotman2010}, pp. 68 Thm. 5.2 (Chinese Remainder) of Scheinerman (2006) \cite{Sche2006}.  
+
+
+
+
+\section{Groups; normal subgroups}  
+
+\begin{definition}[normal subgroup $K \lhd G$] \qquad \, \\
+	\textbf{normal subgroup} $K$ of $G \equiv K \lhd G$   - 
+	
+	subgroup $K\subset G$, if $\forall \, k \in K$, $\forall \, g \in G$, 
+	\[
+	gkg^{-1} \in K
+	\]
+\end{definition}
+
+\begin{definition}[quotient group] \qquad \, \\
+	\textbf{quotient group} $G\mod{K} \equiv G/K$ -  
+	
+	if $G/K = $ family of all left cosets of subgroups $K\subset G = $
+	\[ 
+	= \lbrace gK | g\in G, K = \lbrace gk | k \in K \rbrace 
+	\]
+	and 
+	
+	$K = $ normal subgroup of $G$, i.e. $K \lhd G$, and so 
+	\[
+	aK bK = abK \qquad \, \forall \, a,b \in G, 
+	\]
+	so $G/K $ group.  
+\end{definition}
+
+
+
+
+
+
+% 20170925 
+
+\begin{definition}[exact sequence of groups]
+	\textbf{exact sequence} if $\text{im}f_{n+1} = \text{ker}f_n$  \qquad \, $\forall \, n $ for sequence of group homomorphisms and groups 
+\begin{equation}
+\begin{tikzpicture}
+%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	G_{n+1}   &  G_n & G_{n-1} \\
+};
+%\path[->,font=\scriptsize]
+\path[->]
+(m-1-1) edge node[auto]{$f_{n+1}$} (m-1-2)
+(m-1-2) edge node[auto]{$f_n$} (m-1-3);
+\end{tikzpicture} 
+\end{equation}
+\end{definition}
+
+	
+\begin{theorem}
+	\begin{enumerate}
+		\item \[
+		\begin{tikzpicture}
+		%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+		\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+		{
+			1   &  A & B \\
+			%\path[->,font=\scriptsize]
+		};
+		\path[->]
+		(m-1-2) edge node[auto]{$f$} (m-1-3);
+		\end{tikzpicture} 
+		\]
+		\item \[
+		\begin{tikzpicture}
+		%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+		\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+		{
+			B   &  C & 1 \\
+		};
+		%\path[->,font=\scriptsize]
+		\path[->]
+		(m-1-1) edge node[auto]{$g$} (m-1-2);
+		\end{tikzpicture} 
+		\]
+		\item \[
+		\begin{tikzpicture}
+		%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+		\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+		{
+			1 & A   &  B & 1 \\
+		};
+		%\path[->,font=\scriptsize]
+		\path[->]
+		(m-1-2) edge node[auto]{$h$} (m-1-3);
+		\end{tikzpicture} 
+		\]
+		
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item $\text{im}(1\to A)=1$, since $1\to A$ is a group homomorphism $((1\to A)(1) = 1_A)$.  \\
+		if $1\to A \xmapsto[]{f} B$ exact, $\text{ker}f = \text{im}(1\to A)=1$, so if $f(x)=1$, $x=1$, $f$ injective.  \\
+		If $f$ injective, $\text{ker}f=1$.  $1=\text{im}(1\to A)$.  $1\to A \xmapsto{f}B$, exact.  
+		\item $\text{ker}(C\to 1) = C$, by def. of $C\to 1$ \\
+		if $B \xmapsto{g} C \to 1$ exact, $\text{im}g = g(B) = \text{ker}(C\to 1)= C$.  $g(B) = C$ implies $g$ surjective.  \\
+		If $g$ surjective, $g(B) = C =\text{ker}(C\to 1)$.  $B\xmapsto{g} C \to 1$ exact.  
+		\item From (i), $1\to A \xmapsto{h}B$ exact iff $h$ injective.  
+		From (ii), $A\xmapsto{h}B \to 1$, exact iff $h$ surjective.  \\
+		$h$ isomorphism.  
+	\end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+% 20170925 END
+
+\subsection{1st, 2nd, 3rd Isomorphism Theorems}
+
+\begin{theorem}[1st Isomorphism Theorem (Modules) Thm. 7.8 of Rotman (2010) \cite{JRotman2010}]
+	If $f:M\to N$ is $R$-map of modules, then $\exists \, R$-isomorphism s.t. 
+	\begin{equation}
+	\begin{aligned}
+	& \varphi : M /\text{ker}f \to \text{im}f \\ 
+	& \varphi: m + \text{ker}f \mapsto f(m)
+	\end{aligned} \qquad \qquad \, \begin{tikzpicture}
+	%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+	\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+	{
+		M   &  N \\
+		M/\text{ker}f  &  \\};
+	%\path[->,font=\scriptsize]
+	\path[->]
+	(m-1-1) edge node[auto]{$f$} (m-1-2)
+	edge node[auto]{$\pi$} (m-2-1) 
+	(m-2-1) edge node[right]{$\varphi = \cong$} (m-1-2);
+	\end{tikzpicture} 
+	\end{equation}
+	%Essentially, 
+	%\begin{equation}
+	
+	%\end{equation}
+\end{theorem}
+
+\begin{proof}
+	View $M,N$ as abelian groups.  
+	
+	Recall natural map $ \begin{aligned} & \quad \\ 
+	& \pi : M \to M/N \\
+	& m\mapsto m + N \end{aligned}$  
+	
+	Define $\varphi$ s.t. $\varphi \pi = f$.  
+	
+	($\varphi$ well-defined).  Let $m+\text{ker}f = m' + \text{ker}f$, $m,m' \in M$, then $\exists \,  n \in \text{ker}f$ s.t. $m=m'+n$.  
+	\[
+	\varphi(m+\text{ker}f) = \varphi\pi (m) = f(m) = f(m' +n ) = f(m') + f(n) = \varphi \pi(m') + 0 = \varphi(m' + \text{ker}f )
+	\]
+	$\Longrightarrow \varphi $ well-defined.  
+	
+	($\varphi$ surjective).  Clearly, $\text{im}\varphi \subseteq  \text{im} f$.   \\
+	Let $y\in \text{im}f$.  So $\exists \,  m \in M$ s.t. $y=f(m)$.  $f(m) = \varphi \pi (m) = \varphi(m+\text{ker}f) = y$.  So $y\in \text{im}\varphi$.  $\text{im}f\subseteq \text{im}\varphi$.  \\
+	$\Longrightarrow \varphi $ surjective.  
+	
+	($\varphi$ injective)  If $\varphi(a+\text{ker}f) = \varphi(b+\text{ker}f)$, then 
+	\[
+	\begin{gathered}
+	\varphi\pi(a) = \varphi\pi(b) \text{ or } f(a) = f(b) \text{ or } 0 = f(a) -f(b) = f(a-b) \text{ so } a-b \in \text{ker}f
+	(a-b) + \text{ker}f = \text{ker}f \text{ so } a + \text{ker}f = b +\text{ker}f 
+	\end{gathered}
+	\]
+	$\varphi$ isomorphism.  
+	
+	$\varphi$ $R$-map.  $\varphi(r(m+N)) = \varphi(rm+N) = f(rm)$.    \\
+	Since $f$ $R$-map, $f(rm) = rf(m) = r\varphi(m+N)$.  $\varphi$ is $R$-map indeed.  
+	
+	
+\end{proof}
+
+
+\begin{theorem}[2nd Isomorphism Theorem (Modules) Thm. 7.9 of Rotman (2011) \cite{JRotman2010}]
+	If $S,T$ are submodules of module $M$, i.e. $S,T \in M$, then $\exists \, $ $R-$isomorphism  
+	\begin{equation}
+	\begin{gathered}
+	S/(S\cap T) \to (S+T)/T
+	\end{gathered} \qquad \, 
+	\qquad \qquad \, \begin{tikzpicture}
+	\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+	{
+		S   &  (S+T)/T = \text{im}h \\
+		S/(S\cap T) = S/\text{ker}h  &  \\};
+	\path[->]
+	(m-1-1) edge node[auto]{$h$} (m-1-2)
+	edge node[auto]{$\left. \pi \right|_S$} (m-2-1) 
+	(m-2-1) edge node[right]{$ \cong$} (m-1-2);
+	\end{tikzpicture} 
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	Let natural map $\pi : M \to M/T$.   \\
+	\phantom{Let} So $\text{ker}\pi = T$.  
+	
+	Define $h:= \left. \pi \right|_S$, so $h: S\to M/T$, so $\text{ker}h = S\cap T$, 
+	\[
+	(S+T)/T = \lbrace (s+t) + T | a\in S+T, s\in S, t\in T \rbrace
+	\]
+	i.e. $(S+T)/T$ consists of all those cosets in $M/T$ having a representation in $S$.  
+	
+	By 1st. isomorphism theorem, 
+	\[
+	S/S\cap T \xrightarrow{ \cong} (S+T)/T
+	\]
+	
+\end{proof}  % END of pf. of 2nd Isomorphism Theorem (Modules) Thm. 7.9 of Rotman (2011)
+
+\begin{theorem}[3rd Isomorphism Theorem (Modules) Thm. 7.10 of Rotman (2011) \cite{JRotman2010}]
+	If $T\subseteq S \subseteq M$ is a tower of submodules, then $\exists \, $ $R$-isomorphism
+	\begin{equation}
+	\begin{gathered}
+	(M/T)/(S/T) \to M/S
+	\end{gathered} \qquad \,  \begin{tikzpicture}
+	\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+	{
+		M/T   &  M/S\\
+		(M/T)/(S/ T) = (M/T)/\text{ker}g  &  \\};
+	\path[->]
+	(m-1-1) edge node[auto]{$g$} (m-1-2)
+	edge node[auto]{$ \pi $} (m-2-1) 
+	(m-2-1) edge node[right]{$ \cong$} (m-1-2);
+	\end{tikzpicture} 
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	Define $g:M/T \to M/S$ to be \textbf{coset enlargement}, i.e. 
+	\begin{equation}
+	g:M +T \mapsto m+S
+	\end{equation}
+	$g$ well-defined: if $m+T = m'+T$, then $m-m' \in T\subseteq S$, and $m+S = m'+S \Longrightarrow g(m+T) = g(m'+T)$
+	
+	$\text{ker}g = S/T$ since 
+	\[
+	\begin{aligned}
+	& g(s+T) = s+S = S  \qquad \, (S/T \subseteq \text{ker}g)   \\
+	& g(m+T) = m + S = 0 = S = s + S, \text{ so } m=s \Longrightarrow \text{ker}g \subseteq S/T
+	\end{aligned}
+	\]
+	$\text{im}g = M/S $ since 
+	\[
+	\begin{aligned}
+	& g(m+T) = m+S \Longrightarrow \text{ im}g \subseteq M/S \\ 
+	& m+S = g(m+T)
+	\end{aligned}
+	\]
+	Then by 1st isomorphism, and commutative diagram, done.  
+\end{proof} % END of pf. of 3rd Isomorphism Theorem (Modules) Thm. 7.10 of Rotman (2011) 
+
+
+
+\section{R-modules}
+
+\begin{definition}[R-homomorphism (or R-map)]
+	If ring $R$, $R$-modules $M,N$, then \\
+	function $f: M\to N$, \\
+	if $\forall \, m, m' \in M$, $\forall \, r\in R$, 
+	\[
+	\begin{gathered}
+	f(m+m') = f(m) + f(m') \\ 
+	f(rm) = rf(m)
+	\end{gathered}
+	\]
+\end{definition}
+
+\begin{definition}[quotient module $M/N$] \qquad \, \\ 
+	\textbf{quotient module} $M/N$  -
+	
+	For submodule $N$ of $R$-module $M$, then, \\
+	remember $M$ abelian group, $N$ subgroup, \\
+	quotient group $M/N$ equipped with scalar multiplication 
+	\[
+	\begin{gathered}
+	r(m+N) = rm+N \\ 
+	M/N = \lbrace m +N | m \in M \rbrace
+	\end{gathered}
+	\]
+	\textbf{natural map} 
+	\begin{equation}
+	\begin{aligned}
+	& \pi : M \to M /N \\ 
+	& m\mapsto m + N 
+	\end{aligned}
+	\end{equation}
+	easily seen to be $R$-map.  
+	
+	Scalar multiplication in quotient module well-defined: \\
+	If $m+N=m'+N$, $m-m' \in N$, so $r(m-m') \in N$ (because $N$ submodule), so 
+	\[
+	rm - rm' \in N \text{ and } rm+ N = rm' +N
+	\]
+	
+	
+\end{definition}
+
+
+\begin{proposition}[7.15 of Rotman (2010) \cite{JRotman2010}]  
+	\begin{enumerate}
+		\item[(i)] $S \bigsqcup T \simeq M$ 
+		\item[(ii)] $\exists \, $ injective $R$-maps $\begin{aligned} & \quad \\ 
+		& i : S\to M \\ 
+		& j :T \to M \end{aligned}$, s.t. 
+		
+		\begin{equation}
+		\begin{gathered} 
+		M = \text{im}(i) + \text{im}(j)  \text{ and } \\ 
+		\text{im}(i) \bigcap \text{im}(j) = \lbrace 0 \rbrace  
+		\end{gathered}
+		\end{equation}
+		\item[(iii)] $\exists \, $ R-maps 
+		\[
+		\begin{aligned}
+		& i : S\to M \\ 
+		& j : T\to M 
+		\end{aligned}
+		\]
+		s.t. $\forall \, m \in M$, $\exists \, !$ 
+		\[
+		\begin{aligned}
+		& s \in S \\ 
+		& t \in T 
+		\end{aligned}
+		\] with $m=is + jt$.  
+		\item[(iv)] $\exists \, $ R-maps 
+		\[
+		\begin{gathered}
+		\begin{aligned}  & i: S\to M \\ 
+		& j:T \to M \end{aligned} \qquad \, \begin{aligned}
+		& p : M \to S \\ 
+		& q : M \to T \end{aligned}
+		\end{gathered}
+		\]
+		s.t. 
+		\[
+		\begin{gathered}
+		\begin{aligned}
+		& pi = 1_S \\ 
+		& qj = 1_T 
+		\end{aligned} \qquad \ , \begin{aligned}
+		& pj = 0  \\
+		& qi = 0 
+		\end{aligned} \qquad \, ip + jq = 1_M
+		\end{gathered}
+		\]
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{itemize}
+		\item (i)$\to$ (ii)  Given $S \bigsqcup T \simeq  M$,  \\ 
+		let $\varphi : S \bigsqcup T \to   M$ be this isomorphism.  
+		
+		Define
+		\[
+		\begin{aligned}
+		& i:= \varphi \lambda_S \qquad \, & (\lambda_S : s\mapsto (s,0)) \qquad \, & i :S \to M \\ 
+		& j:= \varphi \lambda_T \qquad \, & (\lambda_T : t\mapsto (0,t)) \qquad \, & j :T \to M 
+		\end{aligned}
+		\]
+		$i,j$ are injections, being composites of injections.  
+		
+		If $m\in M$, $\exists \, ! \, (s,t) \in S\bigsqcup T$, s.t. $\varphi(s,t)=m$.  
+		
+		Then 
+		\[
+		m = \varphi(s,t) = \varphi((s,0) + (0,t)) = \varphi\lambda_S(s)  \varphi \lambda_T(t) = is + jt \in \text{im}(i) + \text{im}(j)
+		\]
+		
+		Let $c\in \text{im}(i) + \text{im}(j)$.  Since $\begin{aligned}  & \quad \\ 
+		& i : S\to M \\
+		& j : T \to M \end{aligned}$, $c\in M$.  
+		
+		$\Longrightarrow M = \text{im}(i) + \text{im}(j)$.  
+		
+		
+		
+		If $x\in \text{im}(i) \bigcap \text{im}(j)$, 
+		\[
+		\begin{aligned}
+		& x = i(s) \text{ for some } s\in S \\ 
+		& x = j(t) \text{ for some } t\in T  
+		\end{aligned}
+		\]
+		
+		\[
+		\begin{gathered}
+		is=jt = \varphi \lambda_S(s) = \varphi \lambda_T(t) = \varphi(s,0) = \varphi(0,t) 
+		\end{gathered}
+		\]
+		$\varphi$ isomorphism, so $\exists \, \varphi^{-1}$ $\Longrightarrow (s,0) = (0,t)$, so $s=t=0$.  $x=0$  
+		\item (ii)$\to $ (iii) Given $\begin{aligned} & \quad \\ & i:S\to M \\ & j:T\to M \end{aligned}$, s.t. $M= \text{im}(i) + \text{im}(j)$, so \\
+		
+		$\forall \, m \in M$, $m=i(s) + j(t)$ for some $s\in S,t\in T$.  
+		
+		Suppose $\begin{aligned} & \quad \\ 
+		& s' \in S \\
+		& t' \in T \end{aligned}$, s.t. $m=i(s'_ + j(t')$.  
+		\[
+		i(s-s') = j(t-t') \in \text{im}(i) \bigcap \text{im}(j) = \lbrace 0 \rbrace
+		\]
+		So $s=s',t=t'$, since $i,j$ injective.  
+		\item (iii)$\to$ (iv)   
+		
+		Given $\forall \, m \in M$, $\exists \, ! \, s\in S,t\in T$ s.t. 
+		\[
+		m=i(s) + j(t)
+		\]
+		Define 
+		\[
+		\begin{aligned}
+		& p:M \to S \\ 
+		& p(m) := s
+		\end{aligned} \qquad \, \begin{aligned}
+		& q: M \to T \\ 
+		& q(m) := t
+		\end{aligned}
+		\]
+		\[
+		\begin{aligned}
+		& pi(s) = s \\ 
+		& qj(t) = t 
+		\end{aligned} \qquad \, \begin{aligned}
+		& pj(t) =0  \\
+		& qi(s) = 0 \end{aligned} \qquad \, 
+		(ip+jq)(m) = ip(m) + jq(m) = i(s) + j(t) = m 
+		\]
+	\end{itemize}
+\end{proof}
+
+\section{Categories; Category Theory}  
+
+\subsection{Categories}
+
+cf. 7.2 Categories of Rotman (2010) \cite{JRotman2010}
+
+\subsubsection{Russell paradox, Russell set}  
+
+\begin{definition}[Russell set]
+	Russell set  - set $S$ that's not a member of itself, i.e. $S\notin R$
+\end{definition}
+
+If $R$ is family of all Russell sets,  \\
+Let $X\in R$.  Then $X\notin X$.  But $X\in R$.  $X\notin R$.  \\
+Let $R\notin R$.  Then $R$ in family of Russell Sets.  $R\in R$.  Contradiction.  
+
+Then consider \emph{class} as primitive term, instead of set.  
+
+\begin{definition}[Category]
+	Category $\mathcal{C}$ (Rotman's notation) $\equiv \mathbf{C}$ (my notation), consists of class $\text{obj}(\mathcal{C})$ (Rotman's notation) $\equiv \text{Obj}(\mathbf{C}) \equiv \text{Obj}\mathbf{C}$ (my notation) of objects, set of  morphisms $\text{Hom}(A,B)$ $\forall \,  (A,B)$ of ordered tuples of objects, composition 
+	\[
+	\begin{gathered} 
+	\text{Hom}(A,B)\times \text{Hom}(B ,C) \to \text{Hom}(A,C) \\
+	(f,g)\mapsto gf \end{gathered}
+	\], s.t.
+	\begin{enumerate}
+		\item $\exists \, \mathbf{1}$, $\forall \, f:A\to B$, $\exists \, \begin{aligned} & \quad \\ 
+		1_A : A \to A \\
+		1_B : B \to B \end{aligned}$, s.t. $1_B \cdot f = f= f\cdot 1_A$, and 
+		\item associativity, $\forall \, \begin{aligned} & \quad \\
+		& f : A\to B \\
+		& g: B\to C \\
+		& h: C\to D \end{aligned}$, then $h\circ (g\circ f) = (h\circ g) \circ f$ 
+	\end{enumerate}
+	
+	In summary, 
+	\begin{equation}
+	\mathbf{C} := (\text{Obj}(\mathbf{C}), \text{Mor}\mathbf{C}, \circ, \mathbf{1}) \equiv (\text{Obj}\mathbf{C}, \text{Mor}\mathbf{C}, \circ_{\mathbf{C}}, \mathbf{1}_{\mathbf{C}})
+	\end{equation}
+	s.t. 
+	\[
+	\text{Mor}\mathbf{C} = \bigcup_{A,B \in \text{Obj}\mathbf{C}} \text{Hom}(A,B)
+	\]
+\end{definition}
+
+Examples (7.25 of Rotman (2010)\cite{JRotman2010}): 
+\begin{enumerate}
+	\item[(i)] $\mathbf{C} = \mathbf{\text{Sets}}$  
+	\item[(ii)] $\mathbf{C} = \mathbf{\text{Groups}} = \mathbf{\text{Grps}}$ 
+	\item[(iii)]  $\mathbf{C} = \mathbf{\text{CommRings}}$
+	\item[(iv)]  $\mathbf{C} = {}_R\textbf{Mod}$, if $R=\mathbb{Z}$, ${}_{\mathbb{Z}}\textbf{Mod} = \textbf{Ab}$, i.e. $\mathbb{Z}-$modules are just abelian groups.   
+	\item[(v)] $\mathbf{C} =\textbf{PO}(X)$, If partially ordered set $X$, regard $X$ as category, s.t. $\textbf{Obj}, \textbf{PO}(X) = \lbrace x | x\in X\rbrace$, $\forall \, \text{Hom}(x,y) \in \textbf{Mor}_{\textbf{PO}}(X)$, $\text{Hom}(x,y) = \begin{cases} \emptyset & \text{ if } x \npreceq y \\  \kappa_y^x & \text{ if } x \preceq y   \end{cases}$ where $\kappa_y^x \equiv $ unique element in $\text{Hom}$ set when $x \preceq y$) s.t. 
+	\[
+	\kappa_z^y \kappa_y^x  =\kappa_z^x
+	\]
+	Also, notice that 
+	\[
+	1_x = \kappa_x^x
+	\]
+\end{enumerate}
+
+\begin{definition}[isormorphisms or equivalences]
+	$f:A\to B$, $f\in \text{Hom}(A,B)$, if $\exists \, $ \textbf{inverse} $g:B\to A$, $g\in \text{Hom}(B,A)$, s.t. 
+	\[
+	\begin{aligned}
+	& gf = 1_A \\ 
+	& fg = 1_B
+	\end{aligned}
+	\]
+	and if $\mathbf{C} = \textbf{Top}$, equivalences (isomorphisms) are homeomorphisms.  
+\end{definition}
+
+Feature of category ${}_R\textbf{Mod}$ not shared by more general categories: \emph{Homomorphisms can be added.}
+
+\begin{definition}[pre-additive Category]
+	category $\mathbf{C}$
+\end{definition} 
+
+
+
+
+
+
 \part{Reading notes on Cox, Little, O'Shea's \emph{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}}
 
 \section{Geometry, Algebra, and Algorithms}
@@ -852,6 +1606,135 @@ then $g$ also a monomial.
 
 \href{https://martinralbrecht.files.wordpress.com/2010/07/20131022_buchberger_dtu.pdf}{Gr\"{o}bner Bases, Martin R. Albrecht of the DTU Crypto Group}
 
+\part{Conformal Field Theory : Virasoro Algebra}  
+
+cf.  Schottenloher (2008)  \cite{Scho2008}
+
+
+
+
+% 20170926  
+
+\begin{definition}
+	\textbf{extension} of $G$ by group $A$ is (given by) an \emph{exact sequence} of group homomorphisms.  
+	\begin{tikzpicture}
+	%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+	\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+	{
+		1   &  A & E & G & 1 \\
+	};
+	%\path[->,font=\scriptsize]
+	\path[->]
+	(m-1-1) edge node[auto]{$$} (m-1-2)
+	(m-1-2) edge node[auto]{$i$} (m-1-3)
+	(m-1-3) edge node[auto]{$\pi$} (m-1-4)
+	(m-1-4) edge node[auto]{$$} (m-1-5)	
+	;
+	\end{tikzpicture} 
+\end{definition}
+cf. Def. 3.1 of Schottenloher (2008)  \cite{Scho2008}.  
+
+Recall that an exact sequence, if $\begin{aligned} & \quad \\
+	& \text{im}(1\to A) = \text{ker}(i) \\
+	& \text{im}(i) = \text{ker}(\pi) \\
+	& \text{im}(\pi) = \text{ker}(G\to 1)
+\end{aligned}$
+
+By Thm., 
+$1\to A \xrightarrow{i} E$ exact so $i$ injective.  \\
+$E\xrightarrow{\pi} G \to 1$ exact so $\pi$ surjective.  
+
+Extension is called \textbf{central} if $A$ abelian and image $\text{im}i$ is in center of $E$, i.e. 
+$a\in A, b\in E \Longrightarrow i(a) b = bi(a)$.  
+
+\subsubsection{Examples of extensions of $G$, and central extensions of $G$ (which has a particular $E$)}
+
+e.g. central extension has form 
+\[
+\begin{tikzpicture}
+%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	1   &  A & A\times G & G & 1 \\
+};
+%\path[->,font=\scriptsize]
+\path[->]
+(m-1-1) edge node[auto]{$$} (m-1-2)
+(m-1-2) edge node[auto]{$i$} (m-1-3)
+(m-1-3) edge node[auto]{$\text{pr}_2$} (m-1-4)
+(m-1-4) edge node[auto]{$$} (m-1-5)	
+;
+\end{tikzpicture} 
+\]
+where  \\
+$\begin{aligned}
+ i:A & \to A\times G \\
+a & \mapsto (a,1) \end{aligned}$ 
+
+\[
+\begin{gathered}
+i(a)(a',g) = (a,1)(a',g) = (aa',g) = \\
+= (a'a,g\cdot 1) = (a',g)(a,1) = (a',g)i(a)
+\end{gathered}
+\]
+
+Notice that what the \emph{exactness} property of an exact sequence does:
+\[
+\text{pr}_2i(a) = \text{pr}_2(a,1) = 1
+\]
+
+e.g. of a \text{nontrivial central extension} is exact sequence 
+\begin{equation}
+\begin{tikzpicture}
+%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	1   &  \mathbb{Z}/k\mathbb{Z} & E\times U(1) & U(1) & 1 \\
+};
+%\path[->,font=\scriptsize]
+\path[->]
+(m-1-1) edge node[auto]{$$} (m-1-2)
+(m-1-2) edge node[auto]{$$} (m-1-3)
+(m-1-3) edge node[auto]{$\pi$} (m-1-4)
+(m-1-4) edge node[auto]{$$} (m-1-5)	
+;
+\end{tikzpicture} 
+\end{equation}
+with $\pi(z) = z^k$ \, $\forall \, k \in \mathbb{N}$, $k\geq 2$, since $E=U(1)$ and $\mathbb{Z}/k\mathbb{Z}$ are not isomorphic.  
+
+Also, homomorphism $\tau:U(1) \to E$ with $\pi \circ \tau = 1_{U(1)}$, doesn't exist, since there's no global $k$th root.  
+
+EY : 20170926 It's that in integer division of the argument in a complex number $z\in U(1)$, and exponent multiplication by $k$, you go from 1 to many and many to 1, depending upon the "branch" you're mapping to for complex numbers.  
+
+For $[n] \in \mathbb{Z}/k\mathbb{Z}$, 
+\[
+[n]\xmapsto[]{ i } \exp{ \left( \frac{ [n] }{ k} 2\pi i \right) }
+\]
+and so 
+\[
+\text{ker}\pi = \lbrace z | \pi(z) = 1 \rbrace \text{ so that } \text{ker}\pi = \lbrace z = \exp{ \left( \frac{i 2\pi n}{k} \righT) } \rbrace
+\]
+
+e.g. \emph{Semidirect products}.  
+
+group $G$ acting on another group $H$, by homomorphism   
+\[
+\tau : G \to \text{Aut}(H)
+\]
+
+
+
+
+%  20170926  of END 
+
+
+
+
+
+
+
+
+
 \part{Algebraic Topology}  
 
 cf. Bredon (1997) \cite{Bred1997}
@@ -907,6 +1790,13 @@ f_{\sigma} = [\mathbf{v}_{\sigma_b}, \dots \mathbf{v}_{\sigma_n}]
 in notation of Def. 1.2.  Bredon (1997) \cite{Bred1997}.  
 
 Then this gives CW-complex structure on $|K|$ with $f_{\sigma}$ as characteristic maps.  
+
+
+
+
+
+
+
 
 
 
@@ -1337,6 +2227,11 @@ $S=$ set of subset $\lbrace P,Q \rbrace$ of $X$ s.t. $P$ and $Q$ either adjacent
 \end{multicols*}
 
 \begin{thebibliography}{9}
+
+
+\bibitem{JRotman2010}
+Joseph J. Rotman, \textbf{Advanced Modern Algebra} (Graduate Studies in Mathematics) 2nd Edition, American Mathematical Society; 2 edition (August 10, 2010), ISBN-13: 978-0821847411
+
 
 \bibitem{CLS2005}
 David A. Cox.  John Little. Donal O'Shea. \textbf{Using Algebraic Geometry}.  Second Edition.  Springer.  2005.  ISBN 0-387-20706-6 QA564.C6883 2004
