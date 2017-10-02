@@ -384,6 +384,97 @@ so $G/K $ group.
 
 
 
+
+
+% 20170925 
+
+\begin{definition}[exact sequence of groups]
+	\textbf{exact sequence} if $\text{im}f_{n+1} = \text{ker}f_n$  \qquad \, $\forall \, n $ for sequence of group homomorphisms and groups 
+\begin{equation}
+\begin{tikzpicture}
+%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	G_{n+1}   &  G_n & G_{n-1} \\
+};
+%\path[->,font=\scriptsize]
+\path[->]
+(m-1-1) edge node[auto]{$f_{n+1}$} (m-1-2)
+(m-1-2) edge node[auto]{$f_n$} (m-1-3);
+\end{tikzpicture} 
+\end{equation}
+\end{definition}
+
+	
+\begin{theorem}
+	\begin{enumerate}
+		\item \[
+		\begin{tikzpicture}
+		%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+		\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+		{
+			1   &  A & B \\
+			%\path[->,font=\scriptsize]
+		};
+		\path[->]
+		(m-1-2) edge node[auto]{$f$} (m-1-3);
+		\end{tikzpicture} 
+		\]
+		\item \[
+		\begin{tikzpicture}
+		%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+		\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+		{
+			B   &  C & 1 \\
+		};
+		%\path[->,font=\scriptsize]
+		\path[->]
+		(m-1-1) edge node[auto]{$g$} (m-1-2);
+		\end{tikzpicture} 
+		\]
+		\item \[
+		\begin{tikzpicture}
+		%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+		\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+		{
+			1 & A   &  B & 1 \\
+		};
+		%\path[->,font=\scriptsize]
+		\path[->]
+		(m-1-2) edge node[auto]{$h$} (m-1-3);
+		\end{tikzpicture} 
+		\]
+		
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item $\text{im}(1\to A)=1$, since $1\to A$ is a group homomorphism $((1\to A)(1) = 1_A)$.  \\
+		if $1\to A \xmapsto[]{f} B$ exact, $\text{ker}f = \text{im}(1\to A)=1$, so if $f(x)=1$, $x=1$, $f$ injective.  \\
+		If $f$ injective, $\text{ker}f=1$.  $1=\text{im}(1\to A)$.  $1\to A \xmapsto{f}B$, exact.  
+		\item $\text{ker}(C\to 1) = C$, by def. of $C\to 1$ \\
+		if $B \xmapsto{g} C \to 1$ exact, $\text{im}g = g(B) = \text{ker}(C\to 1)= C$.  $g(B) = C$ implies $g$ surjective.  \\
+		If $g$ surjective, $g(B) = C =\text{ker}(C\to 1)$.  $B\xmapsto{g} C \to 1$ exact.  
+		\item From (i), $1\to A \xmapsto{h}B$ exact iff $h$ injective.  
+		From (ii), $A\xmapsto{h}B \to 1$, exact iff $h$ surjective.  \\
+		$h$ isomorphism.  
+	\end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+% 20170925 END
+
+
+
+
+
 \subsection{1st, 2nd, 3rd Isomorphism Theorems}
 
 \begin{theorem}[1st Isomorphism Theorem (Modules) Thm. 7.8 of Rotman (2010) \cite{JRotman2010}]
@@ -1515,9 +1606,288 @@ then $g$ also a monomial.
 
 \href{https://martinralbrecht.files.wordpress.com/2010/07/20131022_buchberger_dtu.pdf}{Gr\"{o}bner Bases, Martin R. Albrecht of the DTU Crypto Group}
 
-\part{Conformal Field Theory : Virasoro Algebra}  
+\part{Conformal Field Theory; Virasoro Algebra}  
 
 cf.  Schottenloher (2008)  \cite{Scho2008}
+
+\section{Conformal Transformations}
+
+\begin{definition}[Conformal transformation or conformal map]
+Let 2 semi-Riemannian manifolds$(M,g)$, $(M',g')$, $\text{dim}M = \text{dim}M'$, let open $U\subset M$, open $V\subset M'$.  
+
+\textbf{conformal transformation} or \textbf{conformal map} is a smooth $\varphi : U\to V$ of maximal rank, if $\exists \, $ smooth $\Omega : U\to \mathbb{R}^+$ s.t. 
+\begin{equation}
+	\varphi^* g' = \Omega^2 g
+\end{equation}
+where $\varphi* g'(X,Y) :=g'(T\varphi(X), T\varphi(Y))$ and $T\varphi: TU \to TV$ denote tangent map (derivative) of $\varphi$.  
+
+$\Omega \equiv $ \emph{conformal factor} of $\varphi$.  
+\end{definition}
+
+Locally, $y^i = \varphi^i(x)$, \[
+\begin{gathered}
+	\frac{ \partial \varphi^i }{ \partial x^j} = \frac{ \partial y^i }{ \partial x^j}
+\end{gathered}	
+\]
+Then
+\[
+X = X^k \frac{ \partial }{ \partial x^k} = X^k \frac{ \partial y^i }{ \partial x^k} \frac{ \partial }{ \partial y^i } = X^k \frac{ \partial \varphi^i }{ \partial x^k} \frac{ \partial }{ \partial y^k} \in TM
+\]
+and so 
+\[
+\begin{gathered}
+	\varphi^* g'(X,Y) = g'(T\varphi(X), T\varphi(Y)) = (g')_{ij} X^k \frac{ \partial y^i }{ \partial x^k} Y^l \frac{ \partial y^j }{ \partial x^l} = (g')_{ij} X^k \frac{ \partial \varphi^i }{ \partial x^k } Y^l \frac{ \partial y^j}{ \partial x^l} \\ 
+\Longrightarrow (\varphi^* g')_{kl} = (g')_{ij} \frac{ \partial y^i }{ \partial x^k } \frac{ \partial y^j}{ \partial x^l } \\ 
+\Longrightarrow (\varphi^* g')_{kl} = (g')_{ij} \frac{ \partial \varphi^i }{ \partial x^k} \frac{ \partial \varphi^j}{ \partial x^l} = \Omega^2 g_{kl}
+\end{gathered}
+\]
+
+
+% 20170926  
+
+\begin{definition}
+	\textbf{extension} of $G$ by group $A$ is (given by) an \emph{exact sequence} of group homomorphisms.  
+	\begin{tikzpicture}
+	%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+	\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+	{
+		1   &  A & E & G & 1 \\
+	};
+	%\path[->,font=\scriptsize]
+	\path[->]
+	(m-1-1) edge node[auto]{$$} (m-1-2)
+	(m-1-2) edge node[auto]{$i$} (m-1-3)
+	(m-1-3) edge node[auto]{$\pi$} (m-1-4)
+	(m-1-4) edge node[auto]{$$} (m-1-5)	
+	;
+	\end{tikzpicture} 
+\end{definition}
+cf. Def. 3.1 of Schottenloher (2008)  \cite{Scho2008}.  
+
+Recall that an exact sequence, if $\begin{aligned} & \quad \\
+	& \text{im}(1\to A) = \text{ker}(i) \\
+	& \text{im}(i) = \text{ker}(\pi) \\
+	& \text{im}(\pi) = \text{ker}(G\to 1)
+\end{aligned}$
+
+By Thm., 
+$1\to A \xrightarrow{i} E$ exact so $i$ injective.  \\
+$E\xrightarrow{\pi} G \to 1$ exact so $\pi$ surjective.  
+
+Extension is called \textbf{central} if $A$ abelian and image $\text{im}i$ is in center of $E$, i.e. 
+$a\in A, b\in E \Longrightarrow i(a) b = bi(a)$.  
+
+\subsubsection{Examples of extensions of $G$, and central extensions of $G$ (which has a particular $E$)}
+\begin{itemize}
+\item e.g. central extension has form 
+\[
+\begin{tikzpicture}
+%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	1   &  A & A\times G & G & 1 \\
+};
+%\path[->,font=\scriptsize]
+\path[->]
+(m-1-1) edge node[auto]{$$} (m-1-2)
+(m-1-2) edge node[auto]{$i$} (m-1-3)
+(m-1-3) edge node[auto]{$\text{pr}_2$} (m-1-4)
+(m-1-4) edge node[auto]{$$} (m-1-5)	
+;
+\end{tikzpicture} 
+\]
+where  \\
+$\begin{aligned}
+ i:A & \to A\times G \\
+a & \mapsto (a,1) \end{aligned}$ 
+
+\[
+\begin{gathered}
+i(a)(a',g) = (a,1)(a',g) = (aa',g) = \\
+= (a'a,g\cdot 1) = (a',g)(a,1) = (a',g)i(a)
+\end{gathered}
+\]
+
+Notice that what the \emph{exactness} property of an exact sequence does:
+\[
+\text{pr}_2i(a) = \text{pr}_2(a,1) = 1
+\]
+
+\item e.g. of a \text{nontrivial central extension} is exact sequence 
+\begin{equation}
+\begin{tikzpicture}
+%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	1   &  \mathbb{Z}/k\mathbb{Z} & E\times U(1) & U(1) & 1 \\
+};
+%\path[->,font=\scriptsize]
+\path[->]
+(m-1-1) edge node[auto]{$$} (m-1-2)
+(m-1-2) edge node[auto]{$$} (m-1-3)
+(m-1-3) edge node[auto]{$\pi$} (m-1-4)
+(m-1-4) edge node[auto]{$$} (m-1-5)	
+;
+\end{tikzpicture} 
+\end{equation}
+with $\pi(z) = z^k$ \, $\forall \, k \in \mathbb{N}$, $k\geq 2$, since $E=U(1)$ and $\mathbb{Z}/k\mathbb{Z}$ are not isomorphic.  
+
+Also, homomorphism $\tau:U(1) \to E$ with $\pi \circ \tau = 1_{U(1)}$, doesn't exist, since there's no global $k$th root.  
+
+EY : 20170926 It's that in integer division of the argument in a complex number $z\in U(1)$, and exponent multiplication by $k$, you go from 1 to many and many to 1, depending upon the "branch" you're mapping to for complex numbers.  
+
+For $[n] \in \mathbb{Z}/k\mathbb{Z}$, 
+\[
+[n]\xmapsto[]{ i } \exp{ \left( \frac{ [n] }{ k} 2\pi i \right) }
+\]
+and so 
+\[
+\text{ker}\pi = \lbrace z | \pi(z) = 1 \rbrace \text{ so that } \text{ker}\pi = \lbrace z = \exp{ \left( \frac{i 2\pi n}{k} \right) } \rbrace
+\]
+
+\item e.g. \emph{Semidirect products}.  
+
+group $G$ acting on another group $H$, by homomorphism   
+\[
+\tau : G \to \text{Aut}(H)
+\]
+
+
+
+
+%  20170926  of END 
+
+\begin{definition}[semi-direct product]\label{Def:Semidirectprod}
+\textbf{semidirect product} group $G \ltimes H$ is set $H\times G$, with multiplication 
+\[
+(x,g) \cdot (x',g') := (x\tau(g)(x'), gg') \qquad \, \forall \, (x,g), (x',g') \in H\times G
+\]
+\end{definition}
+\begin{equation}
+\begin{tikzpicture}
+%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	1   &  H &  G \ltimes H & G & 1 \\
+};
+%\path[->,font=\scriptsize]
+\path[->]
+(m-1-1) edge node[auto]{$$} (m-1-2)
+(m-1-2) edge node[auto]{$i$} (m-1-3)
+(m-1-3) edge node[auto]{$\pi$} (m-1-4)
+(m-1-4) edge node[auto]{$$} (m-1-5)	
+;
+\end{tikzpicture} 
+\end{equation}
+with 
+\begin{equation}
+	\begin{aligned}
+	& i : H\to G \ltimes H \\ 
+	& i(x) = (x,1)
+\end{aligned}
+\end{equation}
+$i$ group homomorphism, since 
+\[
+i(x_1x_2) = (x_1x_2 ,1) = (x_1 \tau(1)x_2 , 1) = (x_1,1)\cdot (x_2,1) = i(x_1)i(x_2)
+\]
+\begin{equation}
+	\begin{aligned}
+	& \pi : G \ltimes H \to G\\ 
+	& \pi(x,g) = g 
+\end{aligned}
+\end{equation}
+cf. \url{http://sierra.nmsu.edu/morandi/oldwebpages/math683fall2002/GroupExtensions.pdf}
+
+Observe that 
+\[
+\pi i(x) = \pi(x,1)=1 \text{ so } \text{ker}\pi = \text{im}i
+\]
+
+\begin{definition}[Semi-direct product (2); with direct product]\label{Def:Semidirectprod2}
+	\textbf{direct product} $G=HK$ if \\
+$H,K$ subgroups of group $G$, s.t. \\
+\begin{itemize}
+\item $H$ and $K$ are normal in $G$ ($gkg^{-1} \in K$ \, $\forall \, g\in G$, $\forall \, k \in K$)  
+\item $H\cap K = \lbrace 1 \rbrace$  
+\item $HK=G$.  
+\end{itemize} 
+
+\textbf{semi-direct product}.  Relax the 1st condition (of direct products) so $H$ still normal in $G$, but $K$ need not be.  \\
+\begin{itemize}
+\item $H$ normal in $G$ ($ghg^{-1} \in H, \, \forall \, g , \, \forall \, h \in H$)  
+\item $H\cap K = \lbrace 1 \rbrace$ 
+\item $HK = G$
+\end{itemize}
+\end{definition}
+
+\emph{Connection between} Def. \ref{Def:Semidirectprod} and Def. \ref{Def:Semidirectprod2} for the \emph{semidirect product}:  Consider $\tau : G \to \text{Aut}(H)$.  
+
+Consider $G \ltimes H$ - what is the identity $1_{G\ltimes H} \equiv (1_H,1_G)$ of this group?  
+\[
+(x,g)\cdot (1_H,1_G) = (x\tau(g) 1_H, g1_G) = (x\tau(g)1_H, g) \Longrightarrow 1_H = \tau(g^{-1})1, \, 1_G=1
+\]
+and so the inverse, $\forall (x,g) \in G\ltimes H$, $(x,g)^{-1} \equiv ((x^{-1}), (g^{-1}))$, 
+\[
+\begin{gathered}
+	(x,g) (x,g)^{-1} = (x\tau(g) (x^{-1}),g(g^{-1}) ) = (x\tau(g)(x^{-1}), 1) \text{ (if $(g^{-1}) = g^{-1}$) }
+\end{gathered}
+\]
+Moving along, 
+\[
+\begin{gathered}
+	x\tau(g) (x^{-1}) = \tau(g^{-1})1 \\
+\Longrightarrow (x^{-1}) = \tau(g^{-1}) x^{-1}\tau(g^{-1})1
+\end{gathered}
+\]
+
+Checking out the $H$ being a normal subgroup of $G\ltimes H$ condition, i.e. $H \lhd G$, 
+\[
+\begin{gathered}
+	(x,g)(h,1)(\tau(g^{-1})x^{-1} \tau(g^{-1}) , g^{-1}) = (x\tau(g)h, g)(\tau(g^{-1})x^{-1}\tau(g^{-1}) , g^{-1}) = \\
+= (x\tau(g)h \tau(g)\tau(g^{-1}) x^{-1}\tau(g^{-1}), 1) = (x\tau(g) hx^{-1}\tau(g^{-1}), 1) 
+\end{gathered}
+\]
+$\Longrightarrow$ $H$ normal subgroup of $G\ltimes H \equiv H \lhd (G\ltimes H)$.  
+
+\href{http://www.math.columbia.edu/~bayer/S09/ModernAlgebra/semidirect.pdf}{Notes on Semidirect products}
+\item extension 
+\begin{equation}
+\begin{tikzpicture}
+%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	1   &  SL(n,\mathbb{R}) &  GL(n,\mathbb{R}) & \mathbb{R}^* & 1 \\
+};
+%\path[->,font=\scriptsize]
+\path[->]
+(m-1-1) edge node[auto]{$$} (m-1-2)
+(m-1-2) edge node[auto]{$i$} (m-1-3)
+(m-1-3) edge node[auto]{$\text{det}$} (m-1-4)
+(m-1-4) edge node[auto]{$$} (m-1-5)	
+;
+\end{tikzpicture} 
+\end{equation}
+
+with \\
+$GL(n,\mathbb{R}) \equiv Gl_n(\mathbb{R}) = \lbrace A | A \in \text{Mat}_{\mathbb{R}}(n,n); \text{det}A \neq 0\rbrace$ \\
+$\text{det}:GL(n,\mathbb{R}) \to \mathbb{R}^* \equiv \mathbb{R} \backslash \lbrace 0 \rbrace $, $\text{det}$ surjective homomorphism \\
+$SL(n,\mathbb{R}) \equiv Sl_n(\mathbb{R}) = \lbrace A | A \in \text{Mat}_{\mathbb{R}}(n,n); \, \text{det}A=1\rbrace$ \\
+
+Note that $\text{ker}(\text{det}) = SL(n,\mathbb{R})$.  
+
+Now 
+\[
+\mathbb{R}^* \simeq \lbrace a 1_n | a \in \mathbb{R}^* \rbrace
+\]
+and $\text{det}(a1_n) = a^n$.  
+
+If $n$ odd, and $\text{det}(a1_n)=a^n =1$, then $a=1$.  If $n$ even, $a=\lbrace -1, 1 \rbrace$.  
+
+By the second definition of a semi-direct product, Def. \ref{Def:Semidirectprod2}, it's required that $SL(n,\mathbb{R}) \cap \mathbb{R}^* = 1$ (i.e. the intersection is only the identity).  This will only be the case if $n$ odd.  
+
+cf. \url{http://sierra.nmsu.edu/morandi/oldwebpages/math683fall2002/GroupExtensions.pdf}
+
+\end{itemize}
 
 
 \part{Algebraic Topology}  
@@ -1602,6 +1972,46 @@ group $G$ and family $\lbrace f_i\rbrace$ universal in that
 then $\exists \, ! h: G\to H$ s.t. $h_i = h\circ f_i$  \\
 i.e. $\text{Hom}(G,H) \simeq \varprojlim \text{Hom}(G_i,H)$, the inverse limit being taken relative to $F_{ij}$.  \\
 i.e. $G$ direct limit of $G_i$ relative to the $F_{ij}$.  
+
+EY : 20170918 this is my rewrite/reinterpretation:
+
+Let $(G_i)_{i\in I}$, $\forall \, (i,j) \in I^2$, let $F_{ij} = \lbrace f \equiv f_{ij} | f:G_i \to G_j , f \text{ homomorphism of $G_i$ into $G_j$ } \rbrace$.  
+
+Given group $G = \varinjlim G_i$ (for fixed $i$), $\lbrace f_i | f_i : G_i \to G  |  f_j \circ f = f_i \quad \, \forall \, f \in F_{ij} \rbrace$, i.e.  
+
+\begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=8em]
+{
+G_i    &  G   \\
+G_j   &  \\};
+\path[->]
+(m-1-1) edge node[auto]{$f_i$} (m-1-2)
+edge node[auto]{$f_{ij} \equiv f$} (m-2-1) 
+(m-2-1) edge node[right]{$ f_j$ } (m-1-2);
+\end{tikzpicture} 
+
+Then $G$,  $\lbrace f_i | f_i : G_i \to G  |  f_j \circ f = f_i \quad \, \forall \, f \in F_{ij} \rbrace$ \textbf{universal} \\
+\phantom{Then } if $\forall \, $ group $H$, $\forall \, \lbrace h_i |  h_i : G_i \to H  | h_j \circ f = h_i \quad \, \forall \, f \in F_{ij} \rbrace$, \\
+\phantom{Then if } then $\exists \, ! \  h : G\to H$, s.t. $h_i = h \circ f_i$ i.e. 
+\begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=8em]
+{
+H & G_i    &  G   \\
+& G_j   &  \\};
+\path[->]
+(m-1-2) edge node[auto]{$f_i$} (m-1-3)
+edge node[auto]{$f_{ij} \equiv f$} (m-2-2) 
+edge node [auto]{$h_i$} (m-1-1)
+(m-2-2) edge node[right]{$ f_j$ } (m-1-3)
+edge node [auto]{$h_j$} (m-1-1) 
+(m-1-3) edge[bend right = 30] node [auto]{ $\exists \, ! h$ } (m-1-1)  
+;
+\end{tikzpicture} 
+
+
+
+
+
 
 \begin{proposition}
 	$\exists \, !$ pair $G$, family $(f_i)_{i\in I}$, i.e. (pair consisting of $G, (f_i)_{i\in I}$, unique up to unique isomorphism.  
