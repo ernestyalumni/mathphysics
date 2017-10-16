@@ -10,7 +10,9 @@
 
 \documentclass[10pt]{amsart}
 \pdfoutput=1
-\usepackage{mathtools,amssymb,lipsum,caption}
+%\usepackage{mathtools,amssymb,lipsum,caption}
+\usepackage{mathtools,amssymb,caption}
+
 
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -19,7 +21,7 @@
 \usepackage[table]{xcolor}
 \usepackage{pdfpages}
 %\usepackage[version=3]{mhchem}
-\usepackage{mhchem}
+%\usepackage{mhchem}
 
 \usepackage{tikz}
 \usetikzlibrary{matrix,arrows,backgrounds} % background for framed option
@@ -615,9 +617,151 @@ $\text{im}g = M/S $ since
 Then by 1st isomorphism, and commutative diagram, done.  
 \end{proof} % END of pf. of 3rd Isomorphism Theorem (Modules) Thm. 7.10 of Rotman (2011) 
 
+\section{Commutative Rings}
+
+cf. Ch. 3 "Commutative Rings I" of Rotman (2010) \cite{JRotman2010}
+
+
+\begin{definition} commutative ring $R$ is a set with 2 binary operations, addition and multiplication, s.t.
+	\begin{enumerate}
+		\item[(i)] $R$ abelian group under addition 
+		\item[(ii)] (commutativity) $ab=ba$ \quad $\forall \, a,b \in R$  (this isn't there for noncommutativity)
+		\item[(iii)] (associativity) $a(bc) = (ab)c$ \quad \, $\forall \, a,b,c\in R$
+		\item[(iv)] $\exists \, 1 \in R$ s.t. $1a = a$ \, $\forall \, a  \in R$ \quad \, (many names used: one, unit, identity)
+		\item[(v)] (distributivity) $a(b+c) = ab+ac$ \quad \, $a,b,c \in R$ (this splits up into 2 distributivity laws for noncommutativity)
+	\end{enumerate}
+\end{definition}
+
+To reiterate, abelian group under addition $R$ (is defined as)
+\begin{enumerate}
+	\item associative $\forall \, x , y ,z \in R$, $x + (y+z) = (x+y)+z$ 
+	\item $\exists \, 0 \in R$, $0+x = x + 0$, \, $\forall \, x \in R$ 
+	\item $\forall \, x \in R$, $\exists \, (-x) \in R$ s.t. $x+(-x) = 0 = (-x) + x$
+\end{enumerate}
+abelian, if commutativity: $x+y=y+x$.  
+
+\subsection{Linear Algebra; Linear Algebra with commutative rings as fields}
+
+\begin{proposition}[Matrix representation of linear transformation; 3.94 of Rotman (2010) \cite{JRotman2010}]\label{Prop:MatRepofLinearTransform}
+	If linear transformation $T: k^n \to k^m$, then $\exists \,  A \in \text{Mat}_k(m,n)$ s.t. 
+	\[
+	T(y) = Ay, \qquad \  \forall \, y \in k^n
+	\]
+\end{proposition}
+
+\begin{proof}
+	Let $\begin{aligned} & (e_1\dots e_n) & \text{standard basis of $k^n$ }   \\
+	& (e_1' \dots e_m') & \text{standard basis of $k^m$ }  \end{aligned}$
+
+Define $A=[a_{ij}]$, s.t. $T(e_j) = A_{*j} = A_{ij} e_i'$ ($j$th column), 
+
+If $\begin{aligned} 
+& S:k^n \to k^m \\ 
+& S(y) = A(y) \end{aligned}$, then 
+\[
+T(e_j) = a_{ij}e_i' = Ae_j
+\]
+and so $\forall \, y = y_je_j \in k^n$, 
+\[
+T(y) = T(y_je_j) = y_j T(e_j) = y_j A_{ij}e'_i = Ay
+\]
+
+
+	\end{proof}
 
 
 \section{R-modules}
+
+cf. Sec. 7.1 Modules of Rotman (2010) \cite{JRotman2010}
+
+\begin{definition}[$R$-module]
+	$R$-module is (additive) abelian group $M$, \\
+	equipped with scalar multiplication $\begin{aligned} & \quad \\
+	& R \times M \to M \\
+	& (r,m) \mapsto rm \end{aligned}$ 
+	
+	s.t. $\forall \, m,m' \in M$, $\forall \, r,r',1 \in R$
+	\begin{enumerate}
+		\item[(i)] $r(m+m')=rm+rm'$
+		\item[(ii)] $(r+r')m = rm+r'm$
+		\item[(iii)] $(rr')m = r(r'm)$
+		\item[(iv)] $1m = m$
+	\end{enumerate}
+\end{definition}
+
+Example 7.1 \begin{enumerate}
+	\item[(i)] $\forall \, $ \emph{vector space} over field $k$ is a $k$-module.  (by inspection of the axioms for a vector space, associativity, distributivity!)
+	\item[(ii)] $\forall \, $ abelian group is a $\mathbb{Z}$-module, by laws of exponents (Prop. 2.23)
+	
+	Indeed, for
+	\[
+	\begin{aligned}
+	\mathbb{Z} \times M & \to M \\ 
+	(r,m) & \mapsto rm \equiv m^r 
+	\end{aligned}
+	\]
+	and so
+	\[
+	r(m\cdot m') \equiv (m\cdot m')^r = m^r (m')^r = rm + rm' 
+	\]
+	(since $M$ abelian)
+	\item[(iii)] For commutative ring, scalar multiplication, defined to be given multiplication of elements of $R$
+	\[
+	\begin{aligned}
+	R\times R & \to R \\
+	(a,b) & \mapsto ab 
+	\end{aligned}
+	\]
+	For reference, recall some of the properties of a commutative ring:
+	\[
+	\begin{aligned}
+	& ab = ba \\ 
+	& a(bc) = (ab)c \\ 
+	& 1a = a \\ 
+	& a(b+c) = ab + ac
+	\end{aligned}
+	\]
+	
+	$\forall \, $ ideal $I$ in $R$ is an $R$-module, \\
+	for if $\begin{aligned} & \quad \\
+	& i \in I \\
+	& r\in R \end{aligned}$ , then $ri \in I$.
+	
+	$0\in I$ \\
+	$\forall \, a,b \in I, \, a+b \in I$
+	
+	
+	If $a\in I$, $r\in R$, then $ra \in I$.
+	
+	
+	\item[(iv)]
+	\item[(v)] Let linear $T:V \to V$, $V$ finite-dim. vector space over field $k$.  
+	
+	Recall $k[x] \equiv $ set of polynomials with coefficients in $k$.  
+	
+	Define $\begin{aligned} & \quad \\
+	& k[x] \times V \to V \\
+	& f(x)v =\left(\sum_{i=0}^m c_i x^i\right)v =\sum_{i=0}^m c_iT^i(v) \end{aligned}$ \quad \, $\forall \, f(x) = \sum_{i=0}^m c_ix^i \in k[x]$
+	
+	$\Longrightarrow $ denote $k[x]$-module $V^T$.  
+	
+	Special case: Let $A \in \text{Mat}_k(n,n)$, let linear $\begin{aligned} & \quad \\
+	& T :k^n \to k^n \\
+	& T(w) = Aw \end{aligned}$.  
+	
+	vector space $k^n$ is $k[x]$-module if we define scalar multiplication 
+	\[
+	\begin{aligned} & \quad \\
+	& k[x] \times k^n \to k^n \\
+	& f(x)w = \left( \sum_{i=0}^m c_ix^i \right)w = \sum_{i=0}^m c_i A^i w \end{aligned}
+	\] 
+	\quad \, $\forall \, f(x) = \sum_{i=0}^m c_ix^i \in k[x]$
+	
+	In $(k^n)^T$, $xw = T(w)$ \\
+	In $(k^n)^A$, $xw = Ax $ \\
+	$T(w) = Ax$ and so $(k^n)^T = (k^n)^A$  (EY : 20151015 because of induction?)
+\end{enumerate}
+
 
 \begin{definition}[R-homomorphism (or R-map)]
 If ring $R$, $R$-modules $M,N$, then \\
@@ -630,6 +774,214 @@ f(rm) = rf(m)
 \end{gathered}
 \]
 \end{definition}
+
+Example 7.2. of Rotman (2011) on pp. 425 \cite{JRotman2010}] 
+
+\begin{enumerate}
+	\item[(i)] If $R$ field, then $R$-modules are vector spaces and $R$-maps are linear transformations.  Isomorphisms are then nonsingular linear transformations.  
+	\item[(ii)] 
+	\item[(iii)]
+	\item[(iv)]
+	\item[(v)] Let linear $T:V \to V$, let $v_1 \dots v_n$ be basis of $V$, let $A$ be matrix of $T$ relative to this basis.  
+	
+	Let $e_1 \dots e_n$ be standard basis of $k^n$.  \\
+	Define $\begin{aligned} & \quad \\
+	& \varphi : V \to k^n \\
+	& \varphi(v_i) = e_i \end{aligned}$
+	
+	\[
+	\begin{aligned}
+	& \varphi(xv_i) = \varphi(T(v_i)) = \varphi(v_j a_{ji} ) = a_{ji} \varphi(v_j) = a_{ji}e_j \\
+	& x\varphi(v_i) = A\varphi(v_i) = Ae_i
+	\end{aligned}
+	\]
+	$\Longrightarrow \varphi(xv) = x\varphi(v) \quad \, \forall \, v \in V$
+	
+	By induction on $\text{deg}(f)$, $\varphi(f(x)v) = f(x) \varphi(v)$ \quad \, $\forall \, f(x) \in k[x]$ \quad \, $\forall \, v \in V$ 
+	
+	$\Longrightarrow \varphi$ is $k[x]$-map \\
+	$\Longrightarrow \varphi$ is $k[x]$-isomorphism of $V^T$ and $(k^n)^A$.  
+	
+\end{enumerate}
+
+
+\begin{proposition}[7.3 of Rotman (2011) \cite{JRotman2010}]\label{Prop:kxmoduleisomorphism}
+	Let vector space over field $k$, $V$, let linear $T,S : V \to V$ \\
+	Then $k[x]$-modules $V^T, V^S$ are $k[x]$-isomorphic iff $\exists \, $ vector space isomorphism $\varphi : V \to V$ s.t. $S = \varphi T \varphi^{-1}$.  
+\end{proposition}
+
+\begin{proof}
+	If $\varphi:V^T \to V^S$is a $k[x]$-isomorphism, 
+	\[
+	\varphi(f(x)v) = f(x)\varphi(v) \quad \, \forall \, v \in V , \, \forall \, f(x) \in k[x]
+	\]
+	if $f(x)=x$, then $\varphi(xv) = x\varphi(v)$
+	\[
+	\begin{aligned}
+	& xv = T(v) \\ 
+	& x\varphi(v) = S(\varphi(v)) \\ 
+	\Longrightarrow & \varphi \circ T(v) = S \circ \varphi(v) \Longrightarrow \varphi \circ T = S \circ \varphi 
+	\end{aligned}
+	\]
+	$\varphi$ isomorphism, so $S = \varphi \circ T \circ \varphi^{-1}$
+	
+	Conversely, if given isomorphism $\varphi: V \to V$ s.t. $S = \varphi T \varphi^{-1}$, then $S\varphi = \varphi T$.  
+	\[
+	S\varphi(v) = \varphi T(v) = \varphi(xv) = x\varphi(v)
+	\]
+	Then by induction, $\varphi(x^nv) = x^n\varphi(v)$ (for $S^n\varphi(v) = x^n\varphi(v) = (\varphi T \varphi^{-1})^n \varphi(v) = \varphi T^n v = \varphi(x^nv)$).  \\
+	By induction on $\text{deg}(f)$, $\varphi(f(x)v) = f(x)\varphi(v)$.  
+	
+	
+\end{proof}
+
+
+
+\begin{corollary}[7.4 of Rotman (2011) \cite{JRotman2010}] 
+	Let $k$ be a field, \\
+	Let $A,B \in \text{Mat}_k(n,n)$.  \\
+	Then $k[x]$-modules $(k^n)^A$, $(k^n)^B$ are $k[x]$-isomorphic.  
+	
+	(recall, $k[x]\equiv $ set of polynomials with coefficients in $k = \lbrace \sum_{i=0}^m c_ix^i | c_i \in k \rbrace$, and define scalar multiplication 
+	\[
+	\begin{aligned}
+		& k[x] \times k^n \to k^n \\
+		& f(x) w = \left( \sum_{i=0}^m c_i x^i \right) w = \sum_{i=0}^m c_iA^i w, \qquad \  \forall \, f(x) = \sum_{i=0}^m c_i x^i \in k[x] 
+	\end{aligned}
+	\]
+	)
+	
+	iff $\exists \, $ nonsingular $P$ with 
+	\[
+	B=PAP^{-1}
+	\]
+	
+	\end{corollary}
+
+\begin{proof}
+	Define 
+	
+	$\begin{aligned} & T:k^n \to k^n \\
+	& T(y) = A(y) \end{aligned}$
+where $y\in k^n $ is a column.  
+
+By Example 7.1 (v) of Rotman (2011)  \cite{JRotman2010}, recall, 
+
+and so for $k[x]$-module, $(k^n)^T = (k^n)^A$.  
+
+Similarly, define 
+\[
+\begin{aligned} 
+	& S: k^n \to k^n  \\
+	& S(y) = B(y) 
+	\end{aligned}
+	\]
+	Denote corresponding $k[x]$-module by $(k^n)^B$.  
+	
+	Given $(k^n)^A \cong (k^n)^B$ (isomorphic), by Prop. \ref{Prop:kxmoduleisomorphism}, \\
+	$\exists \, $ isomorphism $\varphi :k^n \to k^n$ s.t. $B=\varphi A \varphi^{-1}$.  
+
+By Prop. \ref{Prop:MatRepofLinearTransform}, i.e. Prop. 3.94 of Rotman (2011)  \cite{JRotman2010}, in that every linear transformation has a matrix representation (even in the standard "Euclidean" basis), $\exists \,  P \in \text{Mat}_{k}(n,n)$, s.t. 
+\[
+\varphi(y) = Py \qquad \  y\in k^n
+\]
+($P$ nonsingular because $\varphi$ isomorphism)
+
+Thus, 
+\[
+\begin{aligned}
+& B\varphi(y) = \varphi A(y)  \\ 
+& BPy = P(Ay) \qquad \  \forall \, y \in k^n  \\
+\Longrightarrow & PA = BP \text{or } B= PAP^{-1}
+\end{aligned}
+\]
+
+Conversely, given $B=PAP^{-1}$, $P$ nonsingular matrix,  \\
+define isomorphism 
+\[
+\begin{aligned}
+& \varphi :k^n \to k^n \\ 
+& \varphi(y) = Py \qquad \  \forall \, y \in k^n
+\end{aligned}
+\]
+
+By Prop. \ref{Prop:kxmoduleisomorphism}, \\
+$(k^n)^B$, $(k^n)^A$ are $k[x]$-isomorphic.  \\
+i.e. $\varphi : (k^n)^A \to (k^n)^B $ is a $k[x]$-module isomorphism.  
+
+
+	\end{proof}
+
+\begin{definition}[$\text{Hom}_R(M,N)$]
+\begin{equation}
+\text{Hom}_R(M,N) = \lbrace \text{ all $R$-homomorphisms $M\to N$ } \rbrace = \lbrace f | f:M\to N , \text{ s.t. } \forall \, m,m' \in M, \, \forall \, r \in R, \begin{aligned} & f(m+m') =f(m) + f(m') \\ & f(rm) = rf(m) \end{aligned} \rbrace
+\end{equation}
+If $f,g \in \text{Hom}_R(M,N)$, \\
+define
+\begin{equation}
+\begin{aligned}
+& f+g:M \to N \\
+& f+g:m\mapsto f(m) + g(m)
+\end{aligned}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[$\text{Hom}_R(M,N)$ $R$-module, 7.5 of Rotman (2011)  \cite{JRotman2010}]
+	If $M,N$ $R$-modules, where $R$ commutative ring, \\
+	then $\text{Hom}_R(M,N)$ $R$-module, \\
+	with addition 
+	\[
+	\begin{aligned}
+	& f+g: M\to N \qquad \  \forall \, f,g \in \text{Hom}_R(M,N) \\
+	& f+g:m\mapsto f(m) + g(m)
+	\end{aligned}
+	\]
+and scalar multiplication 
+\[
+rf:m \mapsto f(rm)
+\]
+	Moreover, distributive laws: \\
+	If $p:M'\to M$, $q:N\to N'$, then 
+	\[
+	(f+g)p = fp+gp \text{ and } q(f+g) = qf + qg
+	\]
+$\forall \, f,g \in \text{Hom}_R(M,N)$	
+	
+	
+	
+\end{proposition}
+
+\begin{proof}
+	$\forall \, f,g \in \text{Hom}_R(M,N)$, $\forall \, r,r', 1 \in R$, 
+	\begin{enumerate}
+		\item[(i)] 
+		\[
+		r(f+g)(m) = (f+g)(rm) = f(rm) + g(rm) = rf(m) + rg(m) = (rf+rg)(m) 
+		\]
+		\item[(ii)]
+		\[
+		(r+r')f(m) = f((r+r')m) = f(rm+r'm) = f(rm) + f(r'm) = (rf+ r'f)(m)
+		\]
+		\item[(iii)]
+		\[
+		(rr')f(m) = f(rr'm) = rf(r'm) = f(r'rm) = f(rr'm) \Longrightarrow (rr')f = r(r'f)
+		\]
+		\item[(iv)]
+		\[
+		1f(m) = f(1m) = f(m) \Longrightarrow 1f =f
+		\]
+	\end{enumerate}
+	\end{proof}
+
+
+
+\begin{definition}
+	if $R$-module $M$, the submodule $N$ of $M$, denoted $N\subseteq M$, is additive subgroup $N$ of $M$, \\
+	closed under scalar multiplication $rn \in N$ whenever $n\in N$, $r\in R$
+\end{definition}
+
+
+
 
 \begin{definition}[quotient module $M/N$] \qquad \, \\ 
 \textbf{quotient module} $M/N$  -
