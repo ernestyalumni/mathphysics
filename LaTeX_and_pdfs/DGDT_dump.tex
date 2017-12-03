@@ -10,7 +10,8 @@
 
 \documentclass[10pt]{amsart}
 \pdfoutput=1
-\usepackage{mathtools,amssymb,lipsum,caption}
+%\usepackage{mathtools,amssymb,lipsum,caption}
+\usepackage{mathtools,amssymb,caption}
 
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -19,7 +20,7 @@
 \usepackage[table]{xcolor}
 \usepackage{pdfpages}
 %\usepackage[version=3]{mhchem}
-\usepackage{mhchem}
+%\usepackage{mhchem}
 
 \usepackage{tikz}
 \usetikzlibrary{matrix,arrows}
@@ -246,6 +247,95 @@ cf. Feller (1968)  \cite{Fell1968}
 
 
 
+\part{Linear Algebra Review}
+
+cf. \emph{Change of Basis}, of Appendix B of  John Lee (2012) \cite{JLee2012}.  
+
+\exercisehead{B.22} Suppose $V,W, X$ finite-dim. vector spaces \\
+$S:V\to W$, \, $T:W \to X$
+
+\begin{enumerate}
+	\item[(a)] $\text{rank}S \leq \text{dim}V$ \quad \, with $\text{rank}S = \text{dim}V$ iff $S$ injective
+	\item[(b)] $\text{rank}S \leq \text{dim}W$ \quad \, with $\text{rank}S = \text{dim}W$ iff $S$ surjective
+	\item[(c)] if $\text{dim}V = \text{dim}W$ and $S$ either injective or surjective, then $S$ isomorphism 
+	\item[(d)] $\text{rank}TS \leq \text{rank}S$ \quad \, $\text{rank}TS = \text{rank}S$ iff $\text{im}S \bigcap \text{ker}T = 0$ 
+	\item[(e)] $\text{rank}TS \leq \text{rank}T$ \quad \, $\text{rank}TS = \text{rank}T$ iff $\text{im}S + \text{ker}T = W$
+	\item[(f)] if $S$ isomorphism, then $\text{rank}TS = \text{rank}T$
+	\item[(g)] if $T$ isomorphism, then $\text{rank}TS = \text{rank}S$
+\end{enumerate}
+
+EY : Exercise B.22(d) is useful for showing the chart and atlas of a Grassmannian manifold, found in the More examples, for smooth manifolds.  
+
+\begin{proof}
+	\begin{enumerate}
+		\item[(a)] Recall the \textbf{rank-nullity theorem}:  
+		\begin{theorem}[Rank-Nullity Theorem] 
+\begin{equation}
+\text{dim}(\text{im}(S)) + \text{dim}(\text{ker}(S)) = \text{dim}V  
+\end{equation}			
+			\end{theorem} 
+		Now
+		\[
+		\begin{gathered}
+		\text{rank}(S) + \text{dim}(\text{ker}(S)) \equiv \text{dim}(\text{im}(S)) + \text{dim}(\text{ker}(S)) = \text{dim}V  \\
+\Longrightarrow \boxed{ 	\text{rank}(S) \leq \text{dim}V  }
+\end{gathered}
+		\]
+		
+		If $\text{rank}(S) = \text{dim}{V}$, \\
+		then by rank-nullity theorem, $\text{dim}(\text{ker}(S)) = 0$, implying that $\text{ker}S = \lbrace 0 \rbrace$.  \\
+		Suppose $v_1, v_2 \in V$ and that $S(v_1) = S(v_2) $.  By linearity of $S$, $S(v_1) - S(v_2) = S(v_1-v_2) = 0$, which implies, since $\text{ker}S = \lbrace 0 \rbrace$, that $v_1 - v_2 = 0$.  \\
+		$\Longrightarrow v_1 = v_2$.  Then by definition of injectivity, $S$ injective.  
+		
+		If $S$ injective, then $S(v)=0$ implies $v=0$.  Then $\text{ker}S = \lbrace 0 \rbrace$.  Then by rank-nullity theorem, $\text{rank}(S) = \text{dim}{V}$.  
+		
+		\item[(b)] 		$\forall \, w \in \text{im}(S)$, $w\in W$.  Clearly $\text{rank}S \leq \text{dim}W$.  
+		
+		If $S$ surjective, $\text{im}(S) = W$.  Then $\text{dim}(\text{im}(S)) = \text{rank}S = \text{dim}W$.  \\
+		
+		If $\text{rank}S = \text{dim}W = m$, then $\text{im}(S)$ has basis $\lbrace y_i \rbrace_{i=1}^m$, $y_i \in \text{im}(S)$, so $\exists \, x_i \in V$, $i=1\dots m$ s.t. $S(x_i) = y_i$, with $\lbrace S(x_i) \rbrace_{i=1}^m $ linearly independent.  
+		
+		Since $\lbrace S(x_i) \rbrace_{i=1}^m$ linearly independent and $\text{dim}W = m$, $\lbrace S(x_i) \rbrace_{i=1}^m$ basis for $W$.   \\
+		$\forall \, w \in W$, $w=\sum_{i=1}^m w^i S(x_i) = S(\sum_{i=1}^m w^i x_i)$.  $\sum_{i=1}^m w^i x_i \in V$.  $S$ surjective.  
+		
+		\item[(c)]
+		\item[(d)] Now 
+		\[
+		\begin{aligned}
+		& \text{dim}V = \text{rank}TS + \text{nullity}TS \\ 
+		&  \text{dim}V = \text{rank}S + \text{nullity}S
+		\end{aligned}
+		\]
+		$\text{ker}S \subseteq \text{ker}TS$, clearly, so $\text{nullity}S \leq \text{nullity}TS$ 
+		\[
+		\Longrightarrow \boxed{ \text{rank}TS \leq \text{rank}S } 
+		\]
+		
+		If $\text{rank}TS = \text{rank}S$, \\
+		\phantom{ \quad } then $\text{nullity}S = \text{nullity}TS$ \\
+		\phantom{ \, } Suppose $w \in \text{Im}S \bigcap \text{ker}T$, $w \neq 0$ \\
+		\phantom{ \quad } Then $\exists \,  v\in S$, s.t. $w = S(v)$ and $T(w)=0$ \\
+		\phantom{ \quad \, } Then $T(w) = TS(v) =0$.  So $v\in \text{ker}TS$ \\
+		\phantom{ \quad \quad \, } $v\notin \text{ker}S$ since $w = S(v) \neq 0$ \\
+		\phantom{ \quad \quad \, } This implies $\text{nullity}TS > \text{nullity}S$.  Contradiction. \\
+		$\Longrightarrow \text{Im}S \bigcap \text{ker}T =0$ \\
+		
+		If $\text{Im}S \bigcap \text{ker}T =0$, \\
+		\phantom{ \quad } Consider $v \in \text{ker}TS$.  Then $TS(v)=0$.  \\
+		\phantom{ \quad  Consider $v \in \text{ker}TS$}.  Then $S(v)  \in \text{ker}T$ \\
+		\phantom{ \quad  } $S(v) =0$; otherwise, $S(v) \in \text{Im}S$, contradicting given $\text{Im}S \bigcap \text{ker}T =0$ \\
+		\phantom{ \quad \quad } $v\in \text{ker}S$ \\
+		
+		$\text{ker}TS \subseteq \text{ker}S$\\
+		$\Longrightarrow \text{ker}TS = \text{ker}S$ \\
+		So $\text{nullity}TS = \text{nullity}S$  \\
+		$\Longrightarrow \text{rank}TS = \text{rank}S$ 
+		
+		\item[(e)]
+		\item[(f)]
+		\item[(g)]
+	\end{enumerate}
+\end{proof}
 
 
 \part{Manifolds}
@@ -488,9 +578,85 @@ Using chain rule while differentiating $f(x,g(x))=0$,
 
 \end{proof}
 
-\begin{definition}
-  smooth $f:M \to N$, s.t. $Df(p) : T_pM \to T_{f(p)}N$ injective.  Then $f$ immersion at $p$.  
+\section{Immersions}
+
+\begin{definition}[Immersion]
+  smooth $f:M \to N$, s.t. $Df(p) : T_pM \to T_{f(p)}N$ injective.  Then $f$ \textbf{immersion} at $p$.  
 \end{definition}
+
+Absil, Mahony, and Sepulchre \cite{AMS2008} pointed out that another definition for a \emph{immersion} can utilize the theorem that $\text{rank}$ of $Df \equiv DF = \text{dim} T_pM$.  Indeed, recall these facts from linear algebra:  
+
+for $T:V \to W$,  \\
+It's always true that $\begin{aligned} & \quad \\ 
+& \text{rank}T \leq V \\ 
+& \text{rank}T \leq W \end{aligned}$, and \\
+
+$\text{rank}T = \text{dim}V$ iff $T$ injective.  \\
+$\text{rank}T = \text{dim}W$ iff $T$ surjective.  \\
+
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=2.8em, column sep=4.8em, minimum width=2.2em]
+{
+	T_xM & T_{F(x)}N = T_yN \\
+	x \in M & y=F(x) \in N  \\ 
+	M & N \\ 
+};
+\path[->]
+(m-1-1) edge node [above] {$DF(x)$} (m-1-2)
+(m-2-1) edge node [auto] {$$} (m-1-1)
+(m-2-2) edge node [auto] {$$} (m-1-2)
+(m-3-1) edge node [auto] {$F$} (m-3-2)
+;
+\path[|->]
+(m-2-1) edge node [auto] {$F$} (m-2-2)
+;
+\end{tikzpicture}   \\
+\end{gathered}
+\]
+
+Now 
+\[
+\begin{aligned}
+& \text{dim}T_xM = \text{dim}M \\ 
+& \text{dim}T_{F(x)}N = \text{dim}N 
+\end{aligned}
+\]
+And 
+\[
+\text{rank}(DF(x)) \equiv \text{rank of $F$ }
+\]
+I know that the notation above is confusing, but this is what all Differential Geometry books apparently mean when they say "rank of $F$".  
+
+Now  
+\[
+\text{rank}(DF(x)) = \text{dim}(\text{im}(DF(x)))  = \text{dim}T_xM \text{ iff } DF(x) \text{ injective }  
+\]
+
+If $\forall \, x \in M$, this is the case, then $F$ an \textbf{ immersion }.  
+
+Apply the rank-nullity theorem in this case:  
+
+\[
+\begin{gathered}
+	\text{rank}(DF(x)) + \text{dim}\text{ker}(DF(x)) = \text{dim}T_xM = \text{dim}M \\ 
+	\Longrightarrow \text{rank}(DF(x)) = \text{dim}M \leq \text{dim}T_{F(x)}N = \text{dim}N \text{ or } \text{dim}M \leq \text{dim}N 
+\end{gathered}
+\]
+
+Now 
+
+\[
+\text{rank}(DF(x)) = \text{dim}T_{F(x)}N \text{ iff } DF(x) \text{ surjective }  
+\]
+
+If $\forall \, x \in M$, this is the case, then $F$ an \textbf{ submersion }.  
+
+\[
+ \text{rank}(DF(x)) = \text{dim}T_{F(x)}N = \text{dim}N  \leq \text{dim}M  
+\]
 
 Shastri (2011) has this as the ``Injective Form of Implicit Function Theorem'', Thm. 1.4.5, pp. 23 and Guillemin and Pollack (2010) has this as the ``Local Immersion Theorem'' on pp. 15, Section 3 ``The Inverse Function Theorem and Immersions'' \cite{VGuilleminAPollack2010}.  
 
@@ -563,7 +729,7 @@ Use $\psi \circ G$ as the local parametrization of $N$ around pt. $q$.  Shrink $
 
 
 
-\begin{theorem}[(Implicit Function Thm.)]
+\begin{theorem}[Implicit Function Thm.]
   Let open subset $U\subseteq \mathbb{R}^n \times \mathbb{R}^d$, $(x,y) = (x^1 \dots x^n, y^1 \dots y^k) $ on $U$.  \\
   Suppose smooth $\Phi:U\to \mathbb{R}^k$, $(a,b) \in U$, $c=\Phi(a,b)$
 
@@ -577,7 +743,7 @@ Use $\psi \circ G$ as the local parametrization of $N$ around pt. $q$.  Shrink $
 
 
 
-\subsection{Submersions} 
+\section{Submersions} 
 cf. pp. 20, Sec. 4 "Submersions", Ch. 1 of Guillemin and Pollack (2010) \cite{VGuilleminAPollack2010}.  
 
 Consider $X,Y\in \text{\textbf{Man}}$, s.t. $\text{dim}X \geq \text{dim}Y$.  
@@ -772,6 +938,9 @@ edge node [auto] {$ \psi $} (m-2-2)
 	$y\in Y$ \textbf{critical value} if $y$ not a regular value of $f$.  
 \end{definition}
 
+Absil, Mahony, and Sepulchre \cite{AMS2008} pointed out that another definition for a \emph{regular value} can utilize the theorem that $\text{rank}$ of $Df \equiv DF = \text{dim} T_pN = \text{dim} N$, iff $DF(p)$ surjective, for $p\in M$, $F:M\to N$.  Then 
+
+\textbf{regular value} $y \in N$, of $F$, if rank of $F \equiv \text{rank}(DF(x)) = \text{dim}N$, $\forall \, x \in F^{-1}(y)$, for $F:M\to N$.  
 
 
 \begin{theorem}[Preimage theorem]
@@ -852,6 +1021,58 @@ By rank-nullity theorem (linear algebra), $Dg_x$ surjective iff $\text{rank}Dg_x
 	
 	\end{proof}
 
+\section{Submanifolds; immersed submanifold, embedded submanifolds, regular submanifolds}  
+
+Recall immersion:  \\
+$F:M \to N$ immersion iff $DF$ injective iff $\text{rank}DF = \text{dim}M$.  
+
+Consider manifolds $M\subseteq N$.  \\
+Consider inclusion map $\begin{aligned} & \quad \\ 
+	& i:M\to N \\
+	& i: x \mapsto x \end{aligned}$.  
+	
+	If $i$ immersion, $Di(x) = \frac{\partial y^i}{ \partial x^j} = \delta_j^{\  \  i}$ if $y^i = x^i$, $\forall \, i =1,\dots \text{dim}M$.  
+	
+\begin{definition}[immersed submanifold]
+	\textbf{immersed submanifold} $M \subseteq N$ if inclusion $i:M\to N$ is an immersion.  
+\end{definition}	
+cf. 3.3 Embedded Submanifolds of Absil, Mahony, and Sepulchre \cite{AMS2008}, also Ch. 5 Submanifolds, pp. 108, \textbf{Immersed Submanifolds} of  John Lee (2012) \cite{JLee2012}.  
+
+Immersed submanifolds often arise as images of immersions.  
+
+\begin{proposition}[Images of Immersions as submanifolds]
+	Suppose smooth manifold $M$, \\
+	\phantom{Suppose } smooth manifold with or without boundaries $N$, \\
+	injective, smooth immersion $F:M\to N$ ($F$ injective itself, not just immersion)  
+	
+Let $S=F(M)$.  
+
+Then $S$ has unique topology and smooth structure of smooth submanifolds of $N$ s.t. $F:M\to S$ diffeomorphism.  
+	
+\end{proposition}
+cf. Prop. 5.18 of John Lee (2012) \cite{JLee2012}.  
+
+\begin{proof}
+Define topology of $S$: set $U\subseteq S$ open iff $F^{-1}(U) \subseteq M$ open ($F^{-1}(U\cap V) = F^{-1}(U) \cap F^{-1}(V), F^{-1}(U\cup V) =F^{-1}(U) \cup F^{-1}(V)$).  \\
+Define smooth structure of $S$: $\lbrace F(U), \varphi \circ F^{-1}  | (U,\varphi) \in \text{atlas for $M$, i.e. $(U,\varphi)$ any smooth chart of $M$}\rbrace$.  
+
+"smooth compatibility condition": 
+\[
+(\varphi_2\circ F^{-1}) (\varphi_i F^{-1})^{-1} = \varphi_2 \circ F^{-1}F\varphi_1^{-1} = \varphi_2 \varphi_1^{-1}
+\]
+since $\varphi_2\varphi_1^{-1}$ diffeomorphism ($\varphi_2 \varphi_1^{-1}$ bijection and it and inverse is differentiable) 
+
+$F$ diffeomorphism onto $F(M)$.  
+
+	and these are the only topology and smooth structure on $S$ with this property: 
+	\[
+	S \xrightarrow{F^{-1}} M \xrightarrow{F} N \qquad \, = \qquad \, S \hookrightarrow M
+	\]
+	and $F^{-1}$ diffeomorphism, $F$ smooth immersion, so $i : S \to M$ smooth immersion.  
+	\end{proof}
+
+	
+
 
 
 
@@ -859,7 +1080,6 @@ Jeffrey Lee (2009) \cite{JLee2009}
 
 
 
-John Lee (2012) \cite{JLee2012}
 
 
 \section{Tensors}
@@ -2197,6 +2417,11 @@ Anant R. Shastri. \textbf{Elements of Differential Topology}. CRC Press. 2011. I
 
 \bibitem{MHirsch1997}
 Morris W. Hirsch, \textbf{Differential Topology} (Graduate Texts in Mathematics), Graduate Texts in Mathematics (Book 33), Springer (September 16, 1997). ISBN-13: 978-0387901480
+
+\bibitem{AMS2008} 
+P.-A. Absil, R. Mahony, and R. Sepulchre.  \textbf{Optimization Algorithms on Matrix Manifolds}.  Princeton University Press.  2008.  ISBN 978-0-691-13298-3
+\url{https://press.princeton.edu/titles/8586.html}  
+
 
 \bibitem{Pras1996}
 Agostino Pr\'{a}staro.  \textbf{Geometry of PDEs and Mechanics}.  World Scientific Publishing Co.  1996.  QC125.2.P73 1996  530.1'55353--dc20.  
