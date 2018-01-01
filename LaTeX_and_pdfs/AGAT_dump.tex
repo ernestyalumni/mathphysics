@@ -51,6 +51,7 @@
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}
+\newtheorem{axiom}{Axiom}
 %\newtheorem*{main}{Main Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{proposition}{Proposition}
@@ -130,15 +131,71 @@ We should know some algebra.  I will follow mostly Rotman (2010) \cite{JRotman20
 
 \section{Prime numbers, GCD (greatest common denominator), integers, Euler's totient, Chinese Remainder Theorem, integer divison, modulus, remainders; Euclid's Lemma}
 
+\begin{axiom} \textbf{Least Integer Axiom}
+	$\exists \, $ smallest integer in every $C \subset \mathbb{N}$, $C\neq \emptyset$
+\end{axiom}
+cf. pp. 1, Ch. 1 Things Past of Rotman (2010) \cite{JRotman2010}  
+
+
+\begin{theorem}[\textbf{Division Algorithm}] 
+	$\forall \, a , b \in \mathbb{Z}$, $a\neq 0$, $\exists \, ! \, q,r \in \mathbb{Z}$ s.t. 
+	\[
+	b = qa + r \text{ and } 0 \leq r < |a|
+	\]
+\end{theorem}
+
+
+\begin{proof}
+	Consider $n \in \mathbb{Z}$, $b-na \in \mathbb{Z}$ \\
+	Let $C= \lbrace b - na | n \in \mathbb{Z} \rbrace \bigcap \mathbb{N}$.  \\
+	\phantom{\quad} $C\neq \emptyset$ (otherwise, consider $b-na < 0$, $b<na$, then contradiction) \\
+	By Least Integer Axiom, $\exists \, $ smallest $r\in C$, $r= b-na$.  \\
+	\phantom{\quad } define $q=n$ when $r=b-na$.  \\
+	Suppose \\
+	$\begin{aligned}  & \quad \\ & qa + r = q'a + r' \\ & (q-q')a = r'-r \\ & |(q-q')a| = |r'-r| \end{aligned}$, \\
+
+	$0\leq r' < |a|$.  Now $0\leq |r'-r | < |a|$ \\
+	\phantom{\quad } if $|q-q'| \neq 0$, $|(q-q')a | \geq |a|$ 
+	\[
+	\Longrightarrow q=q', r=r'
+	\]
+	Conclude both sides are $0$ (by contradiction)
+\end{proof}
+cf. pp. 2, Thm. 1.4, Ch. 1 Things Past of Rotman (2010) \cite{JRotman2010}  
+
+\begin{definition}[divisor]
+	$a,b \in \mathbb{Z}$, $a$ \textbf{divisor} of $b$ if $\exists \, d \in \mathbb{Z}$ s.t. $b=ad$. \\
+	$a$ \textbf{divides} $b$ or $b$ multiple of $a$, denote 
+	\[
+	a | b
+	\]
+	$a|b$ iff $b$ has remainder $r=0$ after dividing by $a$
+\end{definition}
+cf. pp. 3, Ch. 1 Things Past of Rotman (2010) \cite{JRotman2010}  
+
+
 \subsection{Greatest Common Denominator (GCD); Euclid's Lemma}
 
-\begin{theorem}[1.7 of Rotman (2010) \cite{JRotman2010}]\label{Thm:lincombgcd}
-	If $a,b\in \mathbb{Z}$, then $\text{gcd}(a,b) \equiv (a,b)=d$ is linear combination of a and b, i.e. $\exists \, s,t \in \mathbb{Z}$ s.t.
+\begin{definition}[common divisor]
+	\textbf{common divisor} of integers $a$ and $b$, is integer $c$, s.t. $ c | a$ \emph{and} $c|b$.  
+
+\textbf{greatest common divisor} or \textbf{gcd} of $a$ and $b$, denoted $(a,b) \equiv \text{gcd}(a,b)$ defined by 
 \[
-d= sa + tb
+(a,b) \equiv \text{gcd}(a,b) = \begin{cases} 0 & \text{ if } a = 0 = b \\ 
+& \text{ the largest common divisor of $a$ and $b$ otherwise } \end{cases}  
 \]
+	\end{definition} 
+cf. pp. 3, Ch. 1 Things Past of Rotman (2010) \cite{JRotman2010}  
+
+
+\begin{theorem}\label{Thm:lincombgcd}
+	If $a,b\in \mathbb{Z}$, then $\text{gcd}(a,b) \equiv (a,b)=d$ is linear combination of a and b, i.e. $\exists \, s,t \in \mathbb{Z}$ s.t.
+\begin{equation}
+d= sa + tb
+\end{equation}
 \end{theorem}
 cf. pp.4, Thm. 1.7, Ch. 1 Things Past of Rotman (2010) \cite{JRotman2010}
+
 \begin{proof}
 Let $I:=$ 
 \[
@@ -211,27 +268,160 @@ then $c|b \equiv b/c \in \mathbb{Z}$
 \]
 \end{proof}
 
+\begin{theorem}[Euclidean Algorithm]
+	Let $a,b \in \mathbb{Z}^+$.  \\
+	$\exists \, $ algorithm that finds $d= \gcd{a,b}$
+\end{theorem}
+
+cf. pp. 5, Thm. 1.14 (Euclidean Algorithm), Ch. 1 Things Past of Rotman (2010) \cite{JRotman2010}.  
+
+\begin{proof}
+	\end{proof}
+
+\begin{definition}
+	Let fixed $m\geq 0$.  Then $a,b \in \mathbb{Z}$ are \textbf{congruent modulo } $m$, denoted by 
+	\[
+	a \equiv b \bmod{m} 
+	\]
+if $m|(a-b)$, i.e. $(a-b)/m \in \mathbb{Z}$, i.e. if $(a-b)/m\in\mathbb{Z}$, i.e. $(a-b)$ integer multiple of $m$
+\end{definition}
+
+\begin{proposition}
+	If $m\geq 0$ is fixed, $m\in \mathbb{Z}$, then $\forall \, a,b,c \in \mathbb{Z}$
+	\begin{enumerate}
+		\item $a \equiv a\bmod{m}$ 
+		\item if $a \equiv b\bmod{m}$, then $b \equiv a\bmod{m}$
+		\item if $a \equiv b\bmod{m}$, and $b \equiv c\bmod{m}$, then $a \equiv c\bmod{m}$
+	\end{enumerate}
+\end{proposition}
+
+cf. Prop. 1.18 of Rotman (2010) \cite{JRotman2010}
+
+\begin{proof}
+	\begin{enumerate}
+		\item $(a-a)/m=0/m=0$
+		\item $(b-a)/m=(-1)(a-b)/m \in \mathbb{Z}$
+		\item $(a-c)/m=(a-b+b-c)/m=(a-b)/m+(b-c)/m\in\mathbb{Z}$  
+	\end{enumerate}
+\end{proof}
+
+EY : 20171225 to recap, 
+
+\begin{equation}
+\boxed{ 
+	\begin{gathered}
+	a \equiv b \bmod{m} \\
+	\text{ meaning } \\ 
+	\frac{a-b}{N} \in \mathbb{Z} \text{ or }  a- b =kN, \  k\in \mathbb{Z} \text{ or } a  = b+kN
+	\end{gathered}	
+}
+\end{equation}
+So $a\sim b$ or $[a] = [b]$ is an equivalence relation since \\
+$a\sim a$ since $a\equiv a \bmod{N}$, since $a=a+0N$, \\
+if $a\sim b$, then $b\sim a$, since $a-b=kN$, then $b=a-kN$ \\
+if $a\sim b$, $b\sim c$, then $a\sim c$, since $\begin{aligned} & \quad \\ 
+	& a-b = kN \\
+	& b-c = lN \end{aligned}$, then $a-c = (k+l)N$.  
+	
+	
 
 
-\begin{theorem}[1.26 of Rotman (2010) \cite{JRotman2010}]
+
+cf. Prop. 1.19 of Rotman (2010) \cite{JRotman2010}  
+\begin{proposition}
+Let $m\geq 0$ be fixed 
+\begin{enumerate}
+	\item If $a=qm +r$, then $a \equiv r \bmod{m}$ 
+	\item  If $0\leq r' <r <m$, then $r \not\equiv\bmod{m}$ i.e. $r$ and $r'$ aren't congruent $\bmod{m}$  
+	\item $a \equiv b \bmod{m}$ iff $a,b$ leave same remainder after dividing by $m$  
+	\item If $m\geq 2$, $\forall \, a \in \mathbb{Z}$, $a \equiv b \bmod{m}$ for some $b\in 0,1,\dots m-1$  
+\end{enumerate}	
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+	\item If $a=qm +r$, then $a \equiv r \bmod{m}$ 
+	\[
+	\frac{a-r}{m} = q \in \mathbb{Z}  
+	\]
+	\item  \emph{Want}: If $0\leq r' <r <m$, then $r \not\equiv\bmod{m}$.  
+	
+	Suppose $\frac{r-r'}{m} = k \in \mathbb{Z}$.  Then $r-r' = km$ or $r=r' + km$.  
+	\[
+	\begin{gathered}
+	m > r > r' \leq 0 \\
+	m > r' + km > r' \leq 0 \\
+	m-r' > km > 0 
+	\end{gathered}
+	\]
+	But $k>0$ (since $m>0$ and $r-r' = km >0$) and $m-r' > km > 0$ is a contradiction.  
+	
+	\item \emph{Want}: $a \equiv b \bmod{m}$ iff $a,b$ leave same remainder after dividing by $m$.  By 
+	
+	By Division Algorithm, this is true: 
+	\[
+	\begin{aligned}
+	& a=q_a m + r_a \\ 
+	 & b= q_b m + r_b 
+	\end{aligned}
+	\] 
+	\[
+	\begin{gathered}
+	\frac{a-b}{m} = q_a + \frac{r_a}{m} - q_b - \frac{r_b}{m} = k = q_a - q_b + \frac{r_a - r_b}{m} \in \mathbb{Z}
+	\end{gathered}
+	\]
+	Now 
+	\[
+	\begin{aligned}
+	& |m| > r_a \leq 0 \\ 
+	& |m| > r_b \leq 0 
+	\end{aligned}
+		\]
+		$2|m| > r_a + r_b$.  
+		
+		And if $r_a > r_b$, $|m| > r_a > r_a -r_b > 0$.  
+		
+		In both cases, $r_a=r_b$ since $q_a - q_b + \frac{r_a - r_b}{m} \in \mathbb{Z}$ needs to be enforced.   
+		
+	\item \emph{Want}: If $m\geq 2$, $\forall \, a \in \mathbb{Z}$, $a \equiv b \bmod{m}$ for some $b\in 0,1,\dots m-1$.  
+	
+	By Division Algorithm, $a = q_a m + r_a$, \, $0 \leq r_a < |m|$.  $\frac{a-r_a}{m} = q_a \in \mathbb{Z}$ so let $b= r_a$.  
+	
+\end{enumerate}	
+\end{proof}
+
+\begin{theorem}[1.26 of Rotman (2010) \cite{JRotman2010}]\label{Thm:relprimeinvertible} 
 If $\text{gcd}(a,m) \equiv (a,m) = 1$, then $\forall \, b \in \mathbb{Z}$, $\exists \, x $ s.t. 
 \[
-ax = b\mod{m}
+ax \equiv b\bmod{m}
 \]
-In fact, $x=sb$, where $sa\equiv 1\mod{m}$
+In fact, $x=sb$, where $sa\equiv 1\bmod{m}$ is 1 solution.  Moreover, any 2 solutions are congruent $\bmod{m}$.
+
+i.e.  \\
+
+If $\gcd{a,b} = 1$, then $\forall \, y \in \mathbb{Z}$, $\exists \, x$ s.t. $ax \equiv y \bmod{b}$, $x=sy$, where $sa\equiv 1\bmod{b}$ is 1 solution.  \\
+Moreover, any 2 solutions are congruent $\bmod{m}$.  This implies that    \\
+
+$ax\equiv y \bmod{b}$ or $\frac{Ax-y}{b} \in \mathbb{Z}$, and $\frac{(as-1)y }{b} \in \mathbb{Z}$.  \\
+$sa \equiv 1 \bmod{b}$ or $\frac{sa-1}{b} \in \mathbb{Z}$, which implies that $sa-1 = b(-t)$ or 
+
+\[
+sa + tb =1
+\]
+for some $s,t\in \mathbb{Z}$.  
 \end{theorem}
 \begin{proof}
-$\gcd(a,m) = 1=sa+tm$.   
+$\gcd(a,m) = 1=sa+tm$, by Thm. \ref{Thm:lincombgcd}   
 
 Then $b=b\cdot 1=  b(sa+tm) = sab+tmb$ or $b=tbm+sab$ or $a(sb) = -tbm + b$.  
 
-So $a(sb)\mod{m}=b$.  
+So $a(sb)\bmod{m}  \equiv b$.  
 
-Let $x:= sb$ and so $ax \mod{m}=b$.   \\
-Now suppose $x \neq sb$ s.t. $ax\mod{m}=b$.  Then $ax=qm +b$.  From $a(sb) \mod{m}=b$, we also get $a(sb) = q'm + b$.  Then $a(x-sb) \mod{m}=0$, so $m|a(x-sb) \equiv a(x-sb)/m\in \mathbb{Z}$.  
+Let $x:= sb$ and so $ax \bmod{m}=b$.   \\
+Now suppose $x \neq sb$ s.t. $ax\bmod{m}=b$.  Then $ax=qm +b$.  From $a(sb) \bmod{m}=b$, we also get $a(sb) = q'm + b$.  Then $a(x-sb) \bmod{m}=0$, so $m|a(x-sb) \equiv a(x-sb)/m\in \mathbb{Z}$.  
 
 By Corollary \ref{Cor:relprimefactors} (which says, if $\gcd(c,a)=1$ and if $ab/c\in\mathbb{Z}$, then $b/c \in \mathbb{Z}$), 
-since $\gcd(m,a) = (m,a)=1$, and since $a(x-sb)/m \in \mathbb{Z}$, then $(x-sb)/m\in\mathbb{Z}$.  So $(x-sb)=qm$ or $(sb)\mod{m} = x$.  
+since $\gcd(m,a) = (m,a)=1$, and since $a(x-sb)/m \in \mathbb{Z}$, then $(x-sb)/m\in\mathbb{Z}$.  So $(x-sb)=qm$ or $(sb)\bmod{m} = x$.  
 
 
 \end{proof}
@@ -239,7 +429,7 @@ since $\gcd(m,a) = (m,a)=1$, and since $a(x-sb)/m \in \mathbb{Z}$, then $(x-sb)/
 
 
 \begin{proposition}[3.1 of Scheinerman (2006) \cite{Sche2006}]\label{Prop:commongcd}
-Let $a,b\in \mathbb{Z}$, let $c=a\mod{b}$, i.e. $a=qb+c$ s.t. $0\leq c <b$.  
+Let $a,b\in \mathbb{Z}$, let $c=a\bmod{b}$, i.e. $a=qb+c$ s.t. $0\leq c <b$.  
 
 Then 
 \begin{equation}
@@ -263,13 +453,13 @@ Then $\text{gcd}(a,b) = \text{gcd}(b,c)$.
 
 \subsection{Euler's totient; relatively prime}
 
-\begin{definition}
-if $a,b \in \mathbb{Z}$, \\
-a \textbf{divisor} of b, if $\exists \, d\in \mathbb{Z}$ s.t. $b=ad$.   \\
-Also, $a$ \textbf{divides} $b$ or $b$ multiple of $a \equiv a | b$.  \\
-$a|b \equiv b/a \in \mathbb{Z}$  
-\end{definition}
-cf. pp. 3 of Ch. 1 Things Past, Sec. 1.1 Some Number Theory of Rotman (2010) \cite{JRotman2010}.  
+%\begin{definition}
+%if $a,b \in \mathbb{Z}$, \\
+%a \textbf{divisor} of b, if $\exists \, d\in \mathbb{Z}$ s.t. $b=ad$.   \\
+%Also, $a$ \textbf{divides} $b$ or $b$ multiple of $a \equiv a | b$.  \\
+%$a|b \equiv b/a \in \mathbb{Z}$  
+%\end{definition}
+%cf. pp. 3 of Ch. 1 Things Past, Sec. 1.1 Some Number Theory of Rotman (2010) \cite{JRotman2010}.  
 
 cf. Ch. 5 Arrays, Sec. 5.1 Euler's totient of Scheinerman (2006) \cite{Sche2006}
 
@@ -277,7 +467,9 @@ For
 \[
 \begin{aligned}
 	& \varphi : \mathbb{Z}^+ \to \mathbb{Z}^+ \\ 
-	& \varphi : n \mapsto \varphi(n) := \text{ number of elements of $\lbrace 1,2, \dots n \rbrace$ that are relative prime to $n$ } = | \lbrace i | i \in \lbrace 1,2, \dots n \rbrace , (n,i)=1 \text{ or equivalently } n \propto i \rbrace |
+	& \varphi : n \mapsto \varphi(n) := \text{ number of elements of } \lbrace 1,2, \dots n \rbrace \\
+	\text{ that are relative prime to } \\
+	n = | \lbrace i | i \in \lbrace 1,2, \dots n \rbrace , (n,i)=1 \text{ or equivalently } n \propto i \rbrace |
 \end{aligned}
 \]
 
@@ -286,7 +478,10 @@ e.g. $\varphi(10) = 4$ since $\varphi(10) = | \lbrace 1,3,7,9\rbrace|$.
 we want $|(a,b) | 1 \leq a,b, \leq n , \text{gcd}(a,b) \equiv (a,b) = 1 |$.  
 
 \[
-p_n = \frac{1}{n^2} \left[ -1 + 2\sum_{i=1}^n \varphi(k) \right] = \text{ probability that 2 integers, chosen uniformly and independently from $\lbrace 1,2,\dots n\rbrace$ are relatively prime }
+\begin{gathered}
+p_n = \frac{1}{n^2} \left[ -1 + 2\sum_{i=1}^n \varphi(k) \right] = \\
+= \text{ probability that 2 integers, chosen uniformly and independently from $\lbrace 1,2,\dots n\rbrace$ are relatively prime }
+\end{gathered}
 \]
 
 If $p$ is prime, $\forall \, i \in \lbrace 1,2,\dots p \rbrace$, $(p,i) \equiv \text{gcd}(p,i)=1$, i.e. relatively prime to $p$, except 1 $i\in \lbrace 1,2,\dots p\rbrace$.  
@@ -332,7 +527,19 @@ By Prop. \ref{Prop:commongcd},
 
 Scheinerman (2006) \cite{Sche2006}
 
-
+cf. Ex. 1.19, pp. 13, Sec. 1.1 Some Number Theory of Rotman (2010) \cite{JRotman2010}
+\exercisehead{1.19}
+If $a$ and $b$ are relativel prime and if each divides an integer $n$, then their product $ab$ also divides $n$, i.e. 
+\begin{theorem}\label{Thm:relprimeproddivisible}
+	If $\gcd{a,b}=1$, and if $n/a \in \mathbb{Z} \equiv a | n$, and $n/b \in \mathbb{Z} \equiv b | n$, then $n/ab \in \mathbb{Z} \equiv ab | n$.  
+\end{theorem}
+\begin{proof}
+	$\gcd{a,b}=1$, so $sa + tb= 1$ for some $s,t \in \mathbb{Z}$ (Thm. \ref{Thm:relprimeinvertible}).  
+	
+	$\frac{n}{a}, \frac{n}{b} \in \mathbb{Z}$, so $n=au$, $n=bv$  
+	
+	$n = n\cdot 1 = n(sa+tb) = bvsa + autb = ab(vs + ut)$, so $\frac{n}{ab} = vs + ut \in \mathbb{Z}$.  
+	\end{proof}
 
 \subsubsection{Chinese Remainder Theorem}
 
@@ -340,19 +547,79 @@ Scheinerman (2006) \cite{Sche2006}
 	If $m,m'$ relatively prime (i.e. $\gcd(m,m')=1$), then for 
 \[
 \begin{aligned}
-	& x \equiv b \mod{m} \\ 
-	& x\equiv b'\mod{m'}
+	& x \equiv b \bmod{m} \\ 
+	& x\equiv b'\bmod{m'}
 \end{aligned}
 \]
 i.e. given $b,b'm,m'$, and wanting to find $x$, 
-$\exists \, x$ and $\forall \, 2 x$'s, $x=x'\mod{mm'}$.  
+$\exists \, x$ and $\forall \, 2 x$'s, $x=x'\mod{mm'}$, i.e.  \\  
+
+  Let $m,n$ relatively prime positive integers (i.e. $\gcd{m,n}=1$), \\
+  $\forall \, a,b\in \mathbb{Z}$, \\
+  then pair of congruences \\
+  $\begin{aligned}
+  & x \equiv a\bmod{m} \\
+  & x \equiv b\bmod{n} 
+  \end{aligned}$
+ 
+ has a solution ($x$), and this solution $x$ is uniquely determined, modulo $mn$.  
 \end{theorem}
 
+
 \begin{proof}
-$x = b'ms + bm's'$
+cf. \href{http://www.math.uconn.edu/~kconrad/blurbs/ugradnumthy/crt.pdf}{The Chinese Remainder Theorem by Keith Conrad}
+
+
+Suppose  \\
+$
+\begin{aligned}
+& (x-a) / m \in \mathbb{Z} \text{ or } x - a = my \\ 
+& (x-b)/n \in \mathbb{Z} \text{ or } x-b= nz \text{ or } a + my - b = nz 
+\end{aligned}
+$ \\
+$\gcd{m,n}  =1$, so then $\forall \, b \in \mathbb{Z}$, $\exists \, w$ s.t. $mw \equiv b \bmod{n}$ i.e. $\frac{mw-b}{n} \in \mathbb{Z}$, in fact, $w=sb$, where $sm \equiv 1\bmod{n}$, or $\frac{sm-1}{n} \in \mathbb{Z}$, is 1 solution (Thm. \ref{Thm:relprimeinvertible}).  
+
+\[
+\begin{aligned}
+my & = b-a+nz \\
+smy & = sb - sa + snz = (1+nv) y = s(b-a) + snz \text{ or } y = s(b-a) + n(sz-vy) \\
+\text{ or } y & \equiv s(b-a) \bmod{n}  
+\end{aligned}\]
+
+\[
+\begin{aligned}
+x = a+my & = a+m(s(b-a) + n(sz-vy)) = a+ ms(b-a) + mn(sz-vy) \equiv a+ms(b-a) + mnu \\ 
+x-a & = m(s(b-a) + nu) \Longrightarrow x = a\bmod{m} \\
+x-b & = a+ms(b-a) + mnu -b = a+(1+m)(b-a) + mnu -b = m(b-a) + mnu \Longrightarrow x \equiv b\bmod{n}
+\end{aligned}
+\]
+
+%\textbf{Second way to prove existence of solution}:  
+\textbf{Uniqueness}:  
+Suppose $x,y \in \mathbb{Z}$ s.t. 
+\[
+\begin{aligned} 
+& x \equiv a \bmod{m} \\
+& x \equiv b \bmod{n} \end{aligned} \qquad \  
+\begin{aligned} 
+& y \equiv a \bmod{m} \\
+& y \equiv b \bmod{n} \end{aligned}
+\]
+
+Given $\gcd{m,n}=1$, $sm+tn=1$.  
+
+Since $\frac{x-a}{m}, \frac{y-a}{m} \in \mathbb{Z}$, $\frac{x-y}{m} \in \mathbb{Z}$, likewise, $\frac{x-a}{n}, \frac{y-a}{n} \in \mathbb{Z}$, $\frac{x-y}{n} \in \mathbb{Z}$ \\
+Since $\frac{x-y}{m}, \frac{x-y}{n} \in \mathbb{Z}$, $\frac{x-y}{mn} \in \mathbb{Z}$ by Thm. \ref{Thm:relprimeproddivisible}.  
+
+Thus, $x-y = mn k$ for some $k\in \mathbb{Z}$.  For instance, $k=0$, $x=y$.  
+
+This shows any 2 solutions are the same, modulo $mn$.  
 \end{proof}
 
+
 cf. Ch. 1 Things Past, Thm. 1.28 of Rotman (2010) \cite{JRotman2010}, pp. 68 Thm. 5.2 (Chinese Remainder) of Scheinerman (2006) \cite{Sche2006}.  
+
+
 
 
 
@@ -1957,6 +2224,172 @@ then $g$ also a monomial.
 
 
 \href{https://martinralbrecht.files.wordpress.com/2010/07/20131022_buchberger_dtu.pdf}{Gr\"{o}bner Bases, Martin R. Albrecht of the DTU Crypto Group}
+
+\part{Statistical Mechanics: Ising Model}  
+
+\section{Ising Model}  
+
+\subsection{Definition of Ising Model}  
+
+cf. \href{https://en.wikipedia.org/wiki/Ising_model}{Wikipedia, "Ising model"}
+
+Consider set of lattice sites $\Lambda$, each with set of adjacent sites (e.g. \textbf{graph}) forming $d$-dim. lattice.  \\
+$\forall \, $ lattice site $k\in \Lambda$, $\exists \, $ discrete variable $\sigma_k$, s.t. $\sigma_k \in \lbrace -1, 1\rbrace$.  \\
+spin configuration $\equiv \sigma = (\sigma_k)_{k\in \Lambda}$ is an assignment of spin value to each lattice site.  
+
+i.e. 
+
+$d=1$, consider "line" configuration: $i \in \mathbb{Z}$, $i=0,1,\dots L-1$.  Lattice site $k \in \Lambda = \Lambda_{d=1}$.  $\forall \, k \in \Lambda$, \\ 
+$\exists \, $ bijection to its index $i$, $k\mapsto i$, and $\exists \, \sigma_k$ i.e. 
+\[
+\begin{aligned}
+	& \sigma : \Lambda \leftrightarrow \sigma: \mathbb{Z} \to \mathbb{Z}_2 \\ 
+	& \sigma(k) \equiv \sigma_k \leftrightarrow \sigma(i) \equiv \sigma_i \mapsto \lbrace -1, 1 \rbrace
+\end{aligned}
+\]
+spin configuration $\sigma : \Lambda \mapsto (\sigma_k)_{k\in \Lambda} \in \lbrace -1,1 \rbrace^{| \Lambda |}$, where $|\Lambda | =L$.  \\
+$\forall \, k \in \Lambda$, $\exists \, ! $ only at most 2 edges, given, for $k\mapsto i$, $i+1,i-1$, $\forall \, i = 1 \dots L-2$.  
+
+$d=2$, "rectangle" configuration.  $(i,j) \in \mathbb{Z}^2$.   $\begin{aligned} & \quad \\ 
+&	 i \in 0,1,\dots L_x-1 \\ 
+&	 j \in 0,1,\dots L_y-1 \end{aligned}$.  Lattice site $\mathbf{k} \in \Lambda = \Lambda_{d=2}$.  \\ $\forall \, \mathbf{k} \in \Lambda$, $\exists \, $ bijection to its "grid coordinates" $(i,j)$, $\mathbf{k} \mapsto (i,j)$, and $\exists \, \sigma_{\mathbf{k}} $ i.e. $\sigma_{\mathbf{k}} = \sigma_{ij} \in \lbrace -1,1\rbrace$.  \\
+spin configuration $\sigma: \Lambda \mapsto (\sigma_{\mathbf{k}})_{\mathbf{k} \in \Lambda} \in \lbrace -1,1\rbrace^{|\Lambda|}$, where $|\Lambda | \equiv |\Lambda_{d=2} | = L_xL_y$.  \\
+$\forall \, \mathbf{k} \in \Lambda$, $\exists \, !$ only at most 4 edges, given by $\mathbf{k} \mapsto (i,j)$, $(i \pm 1, j ), (i,j\pm 1)$, \  $\begin{aligned} & \quad \\ & i = 1\dots L_x -2 \\ & j = 1\dots L_y-2 \end{aligned}$.  
+
+Note that in both cases, I haven't yet defined the boundary conditions, and leave that to be discussed thoroughly in the future (i.e. following sections).  
+
+There are $2^{|\Lambda|}$ number of configurations in any dim. $d$.  
+
+cf. \href{https://en.wikipedia.org/wiki/Ising_model}{Wikipedia, "Ising model"}
+
+\subsubsection{Interaction $J_{ij} \equiv J_{\mathbf{k} \mathbf{l}}$, Hamiltonian (energy functional)for a configuration $H(\sigma)$}  
+
+$\forall \, $ 2 adjacent (lattice) sites, $i,j \equiv \mathbf{k}, \mathbf{l} \in \Lambda$, let there be an interaction $J_{ij} \equiv J_{\mathbf{k} \mathbf{l}}$ i.e. $\begin{aligned} & \quad \\ 
+& J : \Lambda^2 \to \mathbb{R} \\ 
+& J: (\mathbf{k}, \mathbf{l}) \mapsto J_{\mathbf{k} \mathbf{l}} \end{aligned}$.   \\
+Adjacent means $\exists \, $ edge $\mathbf{k} \mapsto \mathbf{l}$ (the mapping is the edge)  
+
+Suppose $\forall \, $ site $j \equiv \mathbf{l} \in \Lambda$ , $\exists \, $ external magnetic field $h_j \equiv h_{\mathbf{l}}$ interacting with it.  \\
+Given (site) configuration $\sigma : \Lambda \mapsto (\sigma_{\mathbf{k}})_{\mathbf{k} \in \Lambda} \in \lbrace -1 ,1 \rbrace^{ | \Lambda | }$.  
+\begin{equation}
+H(\sigma) = -\sum_{ \langle i j \rangle } J_{ij} \sigma_i \sigma_j - \mu \sum_j h_j \sigma_j \equiv H(\sigma(\Lambda)) = -\sum_{\langle \mathbf{k} \mathbf{l} \rangle } J_{\mathbf{k} \mathbf{l} }\sigma_{\mathbf{k}} \sigma_{\mathbf{l}} - \mu \sum_{ \mathbf{k} \in \Lambda } h_{\mathbf{k}} \sigma_{ \mathbf{k}}
+\end{equation}
+where $\sum_{ \langle \mathbf{k} \mathbf{l} \rangle }$ is overall pairs of adjacent spins (every pair is counted once),  \\
+\phantom{where } $\langle \mathbf{k}, \mathbf{l} \rangle \equiv $ sites $\mathbf{k}, \mathbf{l}$ are nearest neighbors.  
+
+Note sign in 2nd. term, $-\mu \sum_{\mathbf{k}} h_{\mathbf{k}} \sigma_{\mathbf{k}}$ should be positive because of electron's magnetic moment is antiparallel to its spin, but negative term used conventionally.  
+
+Nothing was said about boundary conditions, I propose that it can be either fixed in the summation or by setting $J_{\mathbf{k} \mathbf{l}}=0$.  
+
+$\forall \, \mathbf{k} \in \Lambda$, let $\begin{aligned} & \quad \\
+	& \mathbf{y} : \Lambda \to E \\ 
+		& \mathbf{y}: \mathbf{k} \mapsto \lbrace \langle \mathbf{k}, \mathbf{l} \rangle_{\mathbf{l}} \end{aligned}$, with $\lbrace \langle \mathbf{k}, \mathbf{l} \rangle \rbrace_{\mathbf{l}}$ be set of all edges from $\mathbf{k}$
+		
+		Then clearly $\sum_{\langle \mathbf{k} \mathbf{l} \rangle } = \frac{1}{2} \sum_{\mathbf{k} \in \Lambda} \sum_{ \lbrace \langle \mathbf{k} \mathbf{l} \rangle \rbrace_{\mathbf{l}}}$.  
+		
+		
+Taking into account only interaction between adjoining dipoles, on a square lattice: 
+\[
+E(\sigma) = -J \sum_{k,l=0}^{L-1} ( \sigma_{kl}\sigma_{k,l+1} + \sigma_{kl} \sigma_{k+1, l} )
+\]
+cf. Landau and Lifshitz \cite{LaLi1980}
+
+
+EY : 20171223 Things to check from Hjorth-Jensen (2015) \cite{Hjor2015}:  
+
+2-dim. Ising model, with $\mathcal{B} \equiv h_j =0$, undergoes phase transition of 2nd. order: meaning below given critical temperature $T_C$, there's spontaneous magnetization with $\langle \mathcal{M} \rangle \equiv \langle \mathbf{M} \rangle \neq 0$.  $\langle \mathbf{B} \rangle \to 0$ at $T_C$ with \emph{infinite} slope, a behavior called \emph{critical phenomena}.  Critical phenomenon normally marked by 1 or more thermodynamical variables which is 0 above a critical point.  In this case, $\langle \mathbf{B} \rangle \neq 0$, such a parameter normally called \emph{order parameter}.  
+
+Critical phenomena; we still don't have a satisfactory understanding of system's properties close to the critical point, even for simplest 3-dim. systems.  Even mean-field models can predict wrong physics; mean-field theory results in a 2nd.-order phase transition for 1-dim. Ising model, wherea 1-dim. Ising model doesn't predict any spontaneous magnetization at any finite temperature $T$.  
+
+e.g. Consider 1-dim. $N$-spin system.  Assume periodic boundary conditions.  Consider state of all spins up, with total energy $-NJ$ and magnetization $N$.  Flip half of spins (e.g. all spins of index $i>N/2$) so 1st half of spins point upwards and last half points downwards.  Energy is $-NJ + 4J$, net magnetization $0$.  This is an example of a possible disordered state with net magnetization $0$.  Change in energy is too small to stabilize disordered state (to $-NJ$).  
+
+\begin{definition}[configuration probability]
+\textbf{configuration probability} $P_{\beta}(\sigma)$ given by Boltzmann distribution:  
+\begin{equation}\label{Eq:Isingconfigprob}
+ P_{\beta}(\sigma) = \frac{ \exp{ (-\beta H(\sigma))} }{ Z_{\beta} } = \text{ prob. of configuration } \sigma \equiv \sigma(\Lambda) \equiv (\sigma_{\mathbf{k}})_{\mathbf{k} \in \Lambda}
+\end{equation} with the partition function as normalization constant $Z_{\beta}$: 
+\begin{equation}\label{Eq:IsingPartitionFuncZ}
+Z_{\beta} = \sum_{\sigma} \exp{ -\beta H(\sigma)}
+\end{equation}
+\end{definition}  
+
+
+
+cf. pp. 504 Sec. 151 Phase transitions of the second kind in a 2-dim. lattice,  Landau and Lifshitz \cite{LaLi1980}
+
+
+\begin{equation}\label{Eq:2dIsingZexact}
+Z = 2^N(1-x^2)^{-N} \coprod_{p,q=0}^{L-1} \left[ (1+x^2)^2 - 2x(1-x^2) \left( \cos{ \frac{2\pi p}{L} } + \cos{ \frac{2\pi q }{L} } \right) \right]^{1/2} 
+\end{equation}
+cf. (151.11) of Landau and Lifshitz \cite{LaLi1980}, where $x= \tanh{\theta}$, $\theta = J/T \equiv J/\tau = \beta J$.  
+
+\begin{equation}
+\begin{gathered}
+\Phi \equiv F = -\tau \ln{Z} = \\
+= -\tau N \ln{2} + \tau N \ln{ (1-x^2)} - \frac{\tau}{2} \sum_{p,q=0}^L \ln{ \left[ (1+x^2)^2 - 2x(1-x^2) \left( \cos{ \frac{2\pi p}{L} } + \cos{ \frac{2\pi q }{L} } \right) \right] }
+\end{gathered}
+\end{equation}
+
+Let $\begin{aligned}& \quad \\ 
+& \omega_1 = \frac{2\pi p }{ L } \text{ with } p\to 0 \text{ as } L \to \infty \\ 
+& \omega_2 = \frac{2\pi q }{ L } \text{ with } q\to 0 \text{ as } L \to \infty \end{aligned}$ so $\begin{aligned} & \quad \\ 
+& \frac{ L d\omega_1 }{2\pi } = dp \\ 
+& \frac{ L d\omega_2}{ 2\pi } = dq \end{aligned}$ and using $L^2 = N$.  
+
+
+\[
+\Phi = -\tau N \ln{2} + \tau N \ln{ (1-x^2)} - \frac{N\tau }{ 2(2\pi)^2 } \int_0^{2\pi } \int_0^{2\pi } d\omega_1 d\omega_2 \ln{ \left[ (1-x^2) -  2x(1-x^2) \left( \cos{  \omega_1 } + \cos{  \omega_2 } \right) \right]  }
+\] 
+
+$F \equiv \Phi$ has singularity when $  (1-x^2) -  2x(1-x^2) \left( \cos{  \omega_1 } + \cos{  \omega_2 } \right)  $ in $\ln{ \left[ (1-x^2) -  2x(1-x^2) \left( \cos{  \omega_1 } + \cos{  \omega_2 } \right) \right]  }$.  \\
+$  (1-x^2) -  2x(1-x^2) \left( \cos{  \omega_1 } + \cos{  \omega_2 } \right) $ minimized when $\cos{\omega_1} = \cos{\omega_2}=1$ (since $-1 < x < 1$) 
+\[
+\begin{gathered}
+\Longrightarrow (1+x^2)^2 - 4x(1-x^2 ) = 1+2x^2 + x^4 - 4x + 4x^3 = (x^2+2x-1)^2 =0 \Longrightarrow x = \frac{-2 \pm \sqrt{ 4-4(-1) } }{2} = -1 + \sqrt{2} \\
+x = \tanh{\theta} = \frac{e^{\theta} - e^{-\theta} }{ e^{\theta} + e^{-\theta} } = \sqrt{2}  -1 \text{ or } \begin{gathered}
+\qquad \\ e^{\theta} - e^{-\theta} = \sqrt{2} e^{\theta} + \sqrt{2} e^{-\theta} - e^{\theta} - e^{-\theta} \text{ so } \\ 
+(2-\sqrt{2}) e^{\theta} = \sqrt{2} e^{-\theta} \\
+e^{2\theta} = \frac{\sqrt{2}}{ 2-\sqrt{2}} \left( \frac{2+\sqrt{2} }{ 2 + \sqrt{2}} \right) \text{ or } \\ 
+2\theta = \ln{ (1+ \sqrt{2})}
+\end{gathered}
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+\frac{J}{T_c} = \frac{1}{2} \ln{ (1+\sqrt{2})} \text{ or } 
+\end{gathered}
+\]
+\begin{equation}
+\boxed{ \tau_c = \frac{2J}{ \ln{ (1+\sqrt{2}) }} }
+\end{equation}
+so that $\tau_C \equiv T_C$ is where phase transition occurs.  
+
+Let $t:= \tau - \tau_c$.  $\theta = \frac{J}{\tau} = \frac{J}{t+\tau_C}$  
+
+Expand about minimum  
+
+EY:20171230 do this explicitly 
+
+\[
+\begin{gathered}
+\int_0^{2\pi } \int_0^{2\pi} d\omega_1 d\omega_2 \ln{ [ c_1 t^2 + c_2(\omega_1^2 + \omega_2^2 )]} \\ 
+F  \equiv \Phi \simeq a + \frac{1}{2} b (\tau-\tau_c)^2 \ln{ |\tau-\tau_c|} \\ 
+C = \frac{ \partial^2 F}{ \partial \tau } \simeq - b\tau_c \ln{ |\tau-\tau_c| }
+\end{gathered}
+\]
+with $C$ being heat capacity.  
+
+Order parameter $\langle M \rangle \equiv \eta = \text{constant}(\tau_c - \tau)^{1/8} = \begin{cases} 0 & \text{ if } \tau > \tau_c \\ 
+\text{ constant } (\tau_c-\tau)^{1/8} & \text{ if } \tau < \tau_c \end{cases}$  
+
+cf. pp. 505 Sec. 151 Phase transitions of the second kind in a 2-dim. lattice,  Landau and Lifshitz \cite{LaLi1980}, L.Onsager 1947.  
+
+
+\url{https://www.colorado.edu/physics/phys7240/phys7240_fa12/notes/Week3.pdf}
+\href{https://www.colorado.edu/physics/phys7240/phys7240_fa12/notes/Week3.pdf}{Victor Gurarie, Advanced Statistical Mechanics, Fall 2012}
+Exact solution by transfer matrices for 2-dim. Ising model.  
+
 
 \part{Conformal Field Theory; Virasoro Algebra}  
 
@@ -3624,7 +4057,11 @@ David Cox, John Little, Donal O'Shea. \textbf{Ideals, Varieties, and Algorithms:
 \bibitem{Scho2008}  
 Schottenloher, Martin.  \textbf{A Mathematical Introduction to Conformal Field Theory}.  Springer, 2008.  
 
+\bibitem{LaLi1980}
+L.D. Landau and E.M. Lifshitz.  \textbf{Statistical Physics}, Third Edition, Part 1: Volume 5 (Course of Theoretical Physics, Volume 5) 3rd Edition.  Butterworth-Heinemann; 3 edition (January 15, 1980).  ISBN-13: 978-0750633727
 
+\bibitem{Hjor2015}
+M. Hjorth-Jensen, \textbf{Computational Physics}, University of Oslo (2015) \url{http://www.mn.uio.no/fysikk/english/people/aca/mhjensen/}
 
 
 \bibitem{Bred1997}
