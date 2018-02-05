@@ -28,6 +28,14 @@
 
 \usepackage{multicol}
 
+% ----------------------------------------------------------------------------------------
+% 20180203
+
+\usetikzlibrary{calc}
+
+% ----------------------------------------------------------------------------------------
+
+
 \hypersetup{colorlinks=true,citecolor=[rgb]{0,0.4,0}}
 
 \oddsidemargin=15pt
@@ -1495,6 +1503,696 @@ category $\mathbf{C}$
 
 
 
+%--------------------------------------------------------------------------------
+% 20180202 
+%-------------------------------------------------------------------------------
+
+We can force 2 overlapping subsets $A,B$ to be disjoint by ``disjointifying'' them: e.g. consider $(A\cup B) \times \lbrace 1,2 \rbrace$, consider $\begin{aligned} & \quad \\
+& A' = A\times \lbrace 1 \rbrace \\
+& B' = B\times \lbrace 2 \rbrace \end{aligned}$.
+
+\[
+\Longrightarrow A' \cap B' = \emptyset 
+\]
+since $(a,1) \neq (b,2)$ \, $\forall \, a \in A$, $\forall \, b \in B$.
+
+Let bijections $\begin{aligned} & \quad \\
+& \alpha : A \to A' \\
+& \beta : B \to B' \end{aligned}$, \qquad \, $\begin{aligned} & \quad \\
+& \alpha : a \mapsto (a,1) \\
+& \beta : b\mapsto (b,2) \end{aligned}$, denote $A'\bigcup B' \equiv A \coprod B$.
+
+From Rotman (2010) \cite{JRotman2010}, pp. 447,
+\begin{definition}
+	\textbf{coproduct} $A \coprod B \equiv C \in \text{Obj}(\mathcal{C})$
+\end{definition}
+
+In my notation,
+
+\textbf{coproduct}
+\begin{equation}
+\begin{aligned}
+& (\mu_1 , A_1 \coprod A_2 ) \\ 
+& (\mu_2 , A_1 \coprod A_2 ) 
+\end{aligned}
+\end{equation}
+where injection (morphisms)
+\begin{equation}
+\begin{aligned}
+& \mu_1 : A_1 \to A_1 \coprod A_2 \\ 
+& \mu_2 : A_1 \to A_1 \coprod A_2 
+\end{aligned}
+\end{equation}
+s.t.
+\[
+\forall \, A \in \text{Obj}\mathbf{A}, \, \forall \, f_1 ,f_2 \in \text{Mor}\mathbf{A} \text{ s.t. } \begin{aligned} & \quad \\
+& f_1 : A_1 \to A \\
+& f_2 : A_2 \to A \end{aligned}
+\]
+then
+\begin{equation}
+\begin{gathered}
+\exists \, ! [ f_i ] \equiv [f_1, f_2 ] \in \text{Mor} \mathbf{A}, \, [f_1, f_2] : A_1 \coprod A_2 \to A \text{ s.t. } \\ 
+\begin{aligned}
+& [f_1,f_2] \mu_1 = f_1 \\ 
+& [f_1,f_2] \mu_2 = f_2 \\
+\end{aligned}
+\end{gathered}
+\end{equation}
+i.e. 
+\begin{equation}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  \\ 
+	A_1  &  A_1 \coprod A_2   \\
+	A_2 & \\
+};
+\path[->]
+(m-2-1) edge node [above] {$f_1$} (m-1-2)
+edge node [above] {$\mu_1$} (m-2-2)
+(m-3-1) edge node [right] {$f_2$} (m-1-2)
+edge node [below] {$\mu_2$} (m-2-2)
+;
+\path[dashed,->]
+(m-2-2) edge node [right] {$[f_1,f_2]$} (m-1-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\end{equation}
+
+So to generalized, for $i\in I$, (finite set $I$?)
+
+\textbf{coproduct} $(\mu_j, \coprod_{i\in I} A_i)_{j\in I}$, where \\
+(family of) injection (morphisms) $\mu_j : A_j \to \coprod_{i \in I } A_i$
+
+s.t.
+
+\[
+\forall \, A \in \text{Obj}\mathbf{A}, \, \forall \, f_i \in \text{Mor}\mathbf{A}, \, i \in I, \, f_i : A_i \to A
+\]
+then
+\begin{equation}
+\begin{gathered}
+\exists \, ! \, [f_i ] \equiv [f_i]_{i\in I} \in \text{Mor}\mathbf{A} , \, [f_i] : \coprod_{i\in I} A_i \to A \text{ s.t. } \\ 
+[f_i] \mu_j = f_j \qquad \, \forall \, j \in I
+\end{gathered}
+\end{equation}
+i.e.
+
+\begin{equation}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  \\ 
+	A_j  & \coprod_{i\in I} A_i   \\
+};
+\path[->]
+(m-2-1) edge node [above] {$f_j$} (m-1-2)
+edge node [above] {$\mu_j$} (m-2-2)
+;
+\path[dashed,->]
+(m-2-2) edge node [right] {$[f_i]$} (m-1-2)
+;
+\end{tikzpicture} 
+\end{gathered}
+\end{equation}
+
+
+
+For notation purposes only, recall that it's denoted the sets $\text{Hom}(A,B)$ in ${}_R\textbf{Mod}$ by
+\[
+\text{Hom}_R(A,B)
+\]
+i.e., in my notation, for $A,B \in \text{Obj}{ {}_R \textbf{Mod}}$, $\text{Hom}(A,B) \subset \text{Mor}( {}_R\textbf{Mod})$, $\text{Hom}(A,B) \equiv \text{Hom}_R(A,B)$
+
+\begin{definition}[pre-additive category] 
+	category $\mathbf{C}$ is \textbf{pre-additive} if $\forall \,  \text{Hom}(A,B)$, $\text{Hom}(A,B)$ equipped with binary operation $+$ s.t. $\forall \, f,g  \in \text{Hom}(A,B)$, 
+	\begin{enumerate}
+		\item if $p: B\to B'$, then 
+		\[
+		p(f+g) = pf + pg \in \text{Hom}(A,B')
+		\]
+		\item if $q: A'\to A$, then 
+		\[
+		(f+g)q = fq + gq \in \text{Hom}(A',B)
+		\]
+		and 
+		\[
+		f+g= g+f \qquad \, \text{ (additive abelian) }
+		\] 
+	\end{enumerate}
+\end{definition}
+
+\subsubsection{Examples of extra assumptions on sets, ${}_R\textbf{Mod}$ we take for granted}
+
+In Prop. 7.15(iii) Rotman (2010) \cite{JRotman2010}, \\
+direct sum $M=A\oplus B$ if $\exists \, $ homomorphisms $\begin{aligned} & \quad \\
+& p:M\to A \\
+& q:M\to B \\
+& i:A\to M \\
+& j:B\to M \end{aligned}$ s.t. $\begin{aligned} & \quad \\
+& pi = 1_A \\
+& qj = 1_B \\ 
+& pj = 0 \\ & qi = 0 \end{aligned}$, 
+\[
+ip + jq = 1_M
+\]
+direct sum $M = A\oplus B$ uses property that morphisms can be added ${}_R\textbf{Mod}$ has this property. $\textbf{Sets}$ don't.  
+
+In Corollary 7.17, \\
+direct sum in terms of arrows, \\
+$\exists \, $ map $\rho:M \to S$ s.t. $\rho(s)=s$.  Moreover $\text{ker}\rho = \text{im}j$, $\text{im}\rho = \text{im}i$ and $\rho(s)=s$, \, $\forall \, s \in \text{im}\rho$.  
+
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	S & M & T \\ 
+};
+\path[->]
+(m-1-1) edge node [above] {$i$} (m-1-2)
+(m-1-3) edge node [above] {$j$} (m-1-2)
+;
+\end{tikzpicture} 
+and $M\simeq S \coprod T$, \\
+where $\begin{aligned} & \quad \\
+& i: s \mapsto s \\ 
+& j : t \mapsto t \end{aligned}$ (i.e. inclusions)
+
+This makes sense in $\textbf{Sets}$, but doesn't make sense in arbitrary categories because image of morphism may fail, e.g. $\text{Mor}(\mathcal{C}(G))$ are elements in $\text{Hom}(*,*) =G$, not functions.  
+
+Categorically, object $S$ is (equivalent to) retract of object $M$, $S,M \in \text{Obj}\mathbf{C}$, if $\exists \, $ morphisms $i,p\in \text{Mor}(\mathbf{C})$, s.t. 
+\[
+\begin{aligned}
+& i: S\to M \\
+& p:M \to S 
+\end{aligned}
+\]
+s.t. $pi=1_S$, $(ip)^2=ip$ (for modules, define $\rho = ip$)
+
+\begin{definition}[free products]
+	\textbf{free products} are coproducts in groups
+\end{definition}
+
+Prop. 7.26, Rotman (2010) \cite{JRotman2010}
+\begin{proposition}[7.26, Rotman]
+	If $A,B$ are $R$-modules, \\
+	then their coproducts in ${}_R\textbf{Mod}$ exists, and it's the direct sum $C= A\coprod B$.  
+\end{proposition}
+
+\begin{proof}
+	Define 
+	\[
+	\begin{gathered}
+	\begin{aligned}
+	& \mu : A \to C \\
+	& \mu : a \mapsto (a,c)
+	\end{aligned}
+	\qquad \, 
+	\begin{aligned}
+	& \nu : B \to C \\
+	& \nu : b \mapsto (0,b)
+	\end{aligned} \qquad \, \text{ (Rotman's notation) } \begin{aligned}
+	& \alpha : A \to C \\
+	& \beta : B\to C 
+	\end{aligned}
+	\end{gathered}
+	\]
+	Let $X$ be a module, $f:A\to X$, $g:B\to X$ homomorphisms
+\end{proof}
+
+Define 
+\[
+\begin{aligned}
+& \theta : C \to X \\ 
+& \theta: (a,b) \mapsto f(a) + g(b)
+\end{aligned}
+\]
+\[
+\begin{aligned}
+& \theta \mu (a) = \theta(a,0) = f(a) \\ 
+&  \theta\nu (b) = \theta(0,b)  = g(b)
+\end{aligned}
+\]
+so diagram commutes, i.e. 
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& X  & \\ 
+	A  & C & B   \\
+};
+\path[->]
+(m-2-1) edge node [above] {$f$} (m-1-2)
+edge node [above] {$\mu$} (m-2-2)
+(m-2-3) edge node [above] {$g$} (m-1-2)
+edge node [above] {$\nu$} (m-2-2)
+;
+\path[dashed,->]
+(m-2-2) edge node [right] {$\theta$} (m-1-2)
+;
+\end{tikzpicture} 
+\end{gathered}
+\]
+
+If $\psi: C\to X$ makes diagram commute, 
+\[
+\begin{aligned}
+& \psi((a,0)) = f(a) \qquad \, \forall \, a\in A \\
+& \psi((0,b)) = g(b) \qquad \, \forall \, b\in B \\
+\end{aligned}
+\]
+and since $\psi$ is a homomorphism, $\psi((a,b)) = \psi((a,0)) + \psi((0,b)) = f(a) + g(b)  = \theta((a,b))$.  $\psi = \theta$.  
+
+Prop. 7.27, Rotman (2010) \cite{JRotman2010}
+\begin{proposition}[7.27, Rotman]
+	If category $\mathcal{C} = \mathbf{C}$, and if $A,B \in \text{Obj}\mathbf{C}$, then $\forall \, $ 2 coproducts of $A,B$, if they $\exists \, $, are equivalent.  
+\end{proposition}
+\begin{proof}
+	Suppose $C,D$ coproducts of $A,B$.  Suppose coproducts $\begin{aligned} & \quad \\ 
+	& \mu_A : A \to C , \qquad \, & \nu_A: A\to D \\
+	& \mu_B : B \to C , \qquad \, & \nu_B : B \to D \end{aligned}$  
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& D  & \\ 
+		A  & C & B   \\
+	};
+	\path[->]
+	(m-2-1) edge node [above] {$\nu_A$} (m-1-2)
+	edge node [above] {$\mu_A$} (m-2-2)
+	(m-2-3) edge node [above] {$\nu_B$} (m-1-2)
+	edge node [above] {$\mu_B$} (m-2-2)
+	;
+	\path[dashed,->]
+	(m-2-2) edge node [right] {$\theta$} (m-1-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	Just substitute $X=D$ in diagram above.  
+	
+	Then substitute again: 
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& C  & \\ 
+		A  & D & B   \\
+	};
+	\path[->]
+	(m-2-1) edge node [above] {$\mu_A$} (m-1-2)
+	edge node [above] {$\nu_A$} (m-2-2)
+	(m-2-3) edge node [above] {$\mu_B$} (m-1-2)
+	edge node [above] {$\nu_B$} (m-2-2)
+	;
+	\path[dashed,->]
+	(m-2-2) edge node [right] {$\psi$} (m-1-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	Then combine the 2 diagrams: $\psi \theta = 1_C$.  Likewise by label symmetry of $C,D$, $\theta \psi = 1_D$.  
+	
+	Then $C,D$ are equivalent.  
+\end{proof}
+
+
+Exer. 7.29 on pp. 459 of Rotman (2010) \cite{JRotman2010}
+
+\begin{definition}
+	If $A,B\in \text{Obj}\mathbf{C}$, then their \textbf{product}; $A\prod B = P \in \text{Obj}\mathbf{C}$, and morphisms $\begin{aligned} & \quad \\ 
+	& p : P \to A \\ 
+	& q : P \to B \end{aligned}$  s.t. $\forall \, X \in \text{Obj}\mathbf{C}$, \, $\forall \, \begin{aligned} & \quad \\ 
+	& f : X \to A \in \text{Mor}\mathbf{C} \\ 
+	& g : X \to B \in \text{Mor}\mathbf{C} \end{aligned}$, \\
+	$\exists \, ! \, \theta:X \to P$, s.t. 
+	
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& X  & \\ 
+		A  & A \prod B & B   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$f$} (m-2-1)
+	edge node [above] {$g$} (m-2-3)
+	(m-2-2) edge node [above] {$p$} (m-2-1)
+	edge node [above] {$q$} (m-2-3)
+	;
+	\path[dashed,->]
+	(m-1-2) edge node [right] {$\theta$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	
+	If the notation of Kashiwara and Schapira (2006) \cite{KaSch2006}, 
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& Y  & \\ 
+		X_0  & X_0 \prod X_1 & X_1   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$f_0$} (m-2-1)
+	edge node [above] {$f_1$} (m-2-3)
+	(m-2-2) edge node [above] {$p_0$} (m-2-1)
+	edge node [above] {$p_1$} (m-2-3)
+	;
+	\path[dashed,->]
+	(m-1-2) edge node [right] {$[f_0f_1]$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	In general
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& Y  \\ 
+		X_j  & \prod_{i\in I} X_i   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$f_j$} (m-2-1)
+	(m-2-2) edge node [below] {$p_i$} (m-2-1)
+	;
+	\path[dashed,->]
+	(m-1-2)        edge node [right] {$[f_i]_{i\in I}$} (m-2-2)
+	;
+	\end{tikzpicture}  
+	\end{gathered}
+	\]
+	
+	\textbf{product} of $X_i$'s, 
+	\[ 
+	\prod_i X_i \equiv \prod_{i\in I} X_i
+	\]
+	given by 
+	\begin{equation}
+	\prod_i X_i := \lim_{ \longleftarrow } \alpha 
+	\end{equation}
+	
+	When $X_i = X$, $\forall \, i \in I$, denote product by $X^{ \prod I} \equiv X^I$.  
+	
+	
+\end{definition}
+
+e.g. Cartesian product $P= A\times B$ of 2 sets $A,B$, $A,B \in \text{Obj}\textbf{Sets}$.  
+
+Define 	
+\[
+\begin{gathered}
+\begin{aligned}
+& p:A\times B \to A \\
+& p(a,b) \mapsto a 
+\end{aligned} \qquad \, 
+\begin{aligned}
+& q:A\times B \to B \\
+& q(a,b) \mapsto b 
+\end{aligned}
+\end{gathered}
+\]
+If $X \in \text{Obj}\textbf{Sets}$,  \\
+if 
+$	\begin{aligned} & \quad \\ 
+& f: X \to A \\
+& g : X  \to B 
+\end{aligned}
+$, then $\begin{aligned} & \quad \\ 
+& \theta: X \to A\times B \\
+& \theta : x \mapsto (f(x),g(x)) \in A\times B
+\end{aligned}
+$
+
+\begin{proposition}[7.28 Rotman (2010); equivalence of products, if it exists]
+	If $A,B \in \text{Obj}\mathbf{C}$, then $\forall \, $ 2 products of $A$ and $B$, should they exist, are equivalent. 
+\end{proposition}
+
+\begin{proof}
+	Suppose $C,D$ products of $A,B$.  Suppose products $\begin{aligned} & \quad \\ 
+	& p_A : C \to A , \qquad \, & q_A: D\to A \\
+	& p_B : C \to B , \qquad \, & q_B : D \to B \end{aligned}$  
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& D  & \\ 
+		A  & C & B   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$q_A$} (m-2-1)
+	edge node [above] {$q_B$} (m-2-3)
+	(m-2-2) edge node [above] {$p_A$} (m-2-1)
+	edge node [above] {$p_B$} (m-2-3)
+	;
+	\path[dashed,->]
+	(m-1-2) edge node [right] {$\theta$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	Just substitute $X=D$ in diagram above.  
+	
+	Then substitute again: 
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& C  & \\ 
+		A  & D & B   \\
+	};
+	\path[-{>[scale=3.0]}]
+	(m-1-2) edge node [above] {$p_A$} (m-2-1)
+	edge node [above] {$p_B$} (m-2-3) 
+	(m-2-2) edge node [above] {$q_A$} (m-2-1)
+	edge node [above] {$q_B$} (m-2-3)
+	;
+	\path[dashed,->]
+	(m-1-2) edge node [right] {$\psi$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	Then combine the 2 diagrams: $\psi \theta = 1_C$.  Likewise by label symmetry of $C,D$, $\theta \psi = 1_D$.  
+	
+	Then $C,D$ are equivalent.  
+	
+	
+\end{proof}
+
+\subsubsection{Products of Modules and Sets}  
+
+\begin{proposition}[7.29 Rotman (2010); products of R-modules are equivalent]
+	If commutative ring $R$, \\
+	R-modules $A,B$, \\
+	then $\exists \, $ their (categorical) product $A\sqcup B$, in fact 
+	\begin{equation}
+	A \sqcap B \cong A\sqcup B
+	\end{equation}
+	
+\end{proposition}
+
+\begin{proof}
+	If $A\sqcup B \cong M$, then 
+	$\exists \, $ R-maps, $\begin{aligned} & \quad \\
+	& i : S\to M \\ 
+	& j : T \to M \end{aligned}$, \qquad \,  $\begin{aligned} & \quad \\
+	& p : M\to S \\ 
+	& q : M \to T \end{aligned}$
+	s.t. $\begin{aligned} & \quad \\
+	& pi = 1_A \\ 
+	& qj = 1_B \end{aligned}$ \qquad \, and $\begin{aligned} & \quad \\
+	& pj = 0 \\ 
+	& qi = 0 \end{aligned}$, and $ip + jq = 1_M$, i.e.   
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		A & M & B \\ 
+	};
+	\path[->]
+	($(m-1-2)+(0,-0.1)$) edge node [below] {$p$} ($(m-1-1.east)+(0,-0.1)$)
+	edge node [below] {$q$} ($(m-1-3.west)+(0,-0.1)$) 
+	($(m-1-1)+(0,0.1)$) edge node [above] {$i$} ($(m-1-2.west)+(0,0.1)$)
+	($(m-1-3)+(0,0.1)$) edge node [above] {$j$} ($(m-1-2.east)+(0,0.1)$)
+	;
+	\end{tikzpicture} 
+	
+	If module $X$, since $\begin{aligned}
+	& \quad \\ 
+	& f: X \to A \\
+	& g:X\to B
+	\end{aligned}	$ 
+	are homomorphisms, 
+	
+	define 
+	$\begin{aligned}
+	& \theta: X \to A \sqcup B \\
+	& \theta(x) = if(x) + jg(x)
+	\end{aligned}
+	$
+	so that 
+	\[
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& X  & \\ 
+		A  & A\sqcup  & B   \\
+	};
+	\path[-{>[scale=4.0]}]
+	(m-1-2) edge node [above] {$f$} (m-2-1)
+	edge node [above] {$g$} (m-2-3) 
+	(m-2-2) edge node [above] {$p$} (m-2-1)
+	edge node [above] {$q$} (m-2-3)
+	;
+	\path[dashed,->]
+	(m-1-2) edge node [right] {$\theta$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	\]
+	since, $\forall \, x \in X$, 
+	\[
+	p\theta(x) = pif(x) + pjg(x) = pif(x) + 0 = f(x)
+	\]
+	since $ip + jq=1_{A\sqcup B}$  
+	
+	\[
+	\psi = ip\psi + jq \psi = i f + jf = \theta
+	\]
+	so product is unique.  
+\end{proof}
+
+\begin{definition}
+	Let $R$ be commutative ring, \\
+	let $\lbrace A_i : i \in I \rbrace$ be indexed family of $R$-modules.  
+	
+	\textbf{direct product} $\prod_{i\in I} A_i$ is cartesian product (i.e. set of all $I$-tuples $(a_i)$ whose $i$th coordinate $a_i$ lies in $A_i \quad \, \forall \, i$) with coordinate wise addition and scalar multiplication: 
+	\[
+	\begin{gathered}
+	(a_i) + (b_i) = (a_i + b_i) \\
+	r(a_i) = (ra_i)
+	\end{gathered}
+	\]
+	where $r\in R$, $a_i, b_i \in A_i$, \, $\forall \, i $  
+\end{definition}
+
+
+
+
+cf. Thm. 7.32 of Rotman (2010) \cite{JRotman2010}
+\begin{theorem}[7.32, Rotman]
+	Let commutative ring $R$.  \\
+	$\forall \, R$-module $A$, $\forall \,$ family $\lbrace B_i | i \in I \rbrace$ of $R$-modules,
+	\begin{equation}
+	\begin{gathered}
+	\text{Hom}_R(A, \coprod_{i\in I} B_i ) \simeq \coprod_{i \in I} \text{Hom}_R(A,B_i)
+	\end{gathered}
+	\end{equation}
+	via $R$-isomorphism
+	\[
+	\varphi : f\mapsto (p_if)
+	\]
+	where $p_i $ are projections of product $\coprod_{i\in I }B_i$
+\end{theorem}
+
+\begin{proof}
+	Let $a\in A$, $f,g \in \text{Hom}_R(A,\coprod_{i\in I} B_i)$.
+	\[
+	\varphi(f+g)(a) = (p_i(f+g))(a) = (p_i(f(a) + g(a))) = (p_if + p_ig)(a)
+	\]
+	$\varphi$ additive.
+	
+	$\forall \, i, \, \forall \, r \in R$, $p_i rf = rp_i f$ (since product of $R$-modules, $\coprod_{i\in I}B_i$ is also an $R$-module of $\text{Obj}{}_R\textbf{Mod}$, by def. of product).
+	\[
+	\varphi rf \mapsto (p_i rf) = (r p_i f) = r(p_i f) = r\varphi(f)
+	\]
+	So $\varphi$ is $R$-map.
+	
+	If $(f_i) \in \coprod_i \text{Hom}{}_R(A,B_i)$, then $f_i : A\to B_i$ \, $\forall \, i$
+	
+	By Rotman's Prop. 7.31 (If family of $R$-modules $\lbrace A_i | i \in I \rbrace$, then direct product $C = \coprod_{i\in I} A_i$ is their product in ${}_R \textbf{Mod}$), \\
+	\phantom{ \qquad \, } By def. or product, $\exists \, ! \, R$-map , \, $\theta : A \to \coprod_{i\in I} B_i$ s.t. $p_i \theta = f_i$ \, $\forall \, i$
+	
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& A  \\ 
+		B_i  & \prod_{i\in I} B_i   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$f_i$} (m-2-1)
+	(m-2-2) edge node [below] {$p_i$} (m-2-1)
+	;
+	\path[dashed,->]
+	(m-1-2)        edge node [right] {$\theta$} (m-2-2)
+	;
+	\end{tikzpicture}  
+	\end{gathered}
+	\]
+	
+	
+	
+	
+	Then 
+	\[
+	f_i) = (p_i\theta) = \varphi(\theta)
+	\]
+	, and so $\varphi$ \emph{surjective}.
+	
+	Suppose $f\in \text{ker}\varphi$, so $\theta = \varphi(f) = (p_if)$.  Thus $p_i f=0$ \, $\forall \, i$
+	
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& A  \\ 
+		B_i  & \prod_{i\in I} B_i   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$0$} (m-2-1)
+	edge node [right] {$f$} (m-2-2)
+	(m-2-2) edge node [below] {$p_i$} (m-2-1)
+	;
+	\end{tikzpicture}  
+	\end{gathered}
+	\]
+	
+	But $0$-homomorphism also makes this diagram commute, so uniqueness of homomorphism $A \to \prod B_i$ gives $f=0$.  
+	
+	
+	
+	
+\end{proof}
+
+
+
+%--------------------------------------------------------------------------------
+% END of 20180202 
+%-------------------------------------------------------------------------------
+
+
+
+
+
 
 \part{Reading notes on Cox, Little, O'Shea's \emph{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}}
 
@@ -2384,6 +3082,68 @@ Order parameter $\langle M \rangle \equiv \eta = \text{constant}(\tau_c - \tau)^
 \text{ constant } (\tau_c-\tau)^{1/8} & \text{ if } \tau < \tau_c \end{cases}$  
 
 cf. pp. 505 Sec. 151 Phase transitions of the second kind in a 2-dim. lattice,  Landau and Lifshitz \cite{LaLi1980}, L.Onsager 1947.  
+
+\subsection{An actual calculation of a small number of spins with Ising model}  
+
+Sec. 3.7 "An actual calculation" on pp. 76 of Newman and Barkema (1999) \cite{NeBa1999}
+goes through a simple actual Monte Carlo calculation as a test case check so to compare this exact calculation/solution to the simulation, as a test of whether the simulation/program is correct.  This is done in Sec. 1.3 of Newman and Barkema (1999) \cite{NeBa1999}.  
+
+However, none of these promised simple calculations were shown explicitly in Newman and Barkema (1999) \cite{NeBa1999}.  I will forego this simple case.  
+
+\subsection{Explicit calculation showing stencil operation on each spin on a periodic lattice grid}  
+
+Consider 
+\[
+\begin{gathered}
+H(\sigma) = -\sum_{ \langle \mathbf{k} \mathbf{l} \rangle } J \sigma_{\mathbf{k}} \sigma_{\mathbf{l}} =  -J \sum_{i=0}^{L_x-1} \sum_{j=0}^{L_y-1} \sigma_{ij}( \sigma_{i+1j} + \sigma_{ij+1} ) = \\	
+= \frac{-J}{2} \left( \sum_{i=0}^{L_x-1} \sum_{j=0}^{L_y-1} \sigma_{ij} (\sigma_{i+1 j} + \sigma_{ij+1} ) + \sum_{i=1}^{L_x} \sum_{j=0}^{L_y-1}   \sigma_{i-1j} (\sigma_{ij} + \sigma_{i-1 j+1} ) \right) = \\
+	= \frac{-J}{2} \left( \sum_{i=0}^{L_x-1} \sum_{j=0}^{L_y-1} \sigma_{ij} (\sigma_{i+1 j} + \sigma_{ij+1} ) + \sum_{i=1}^{L_x} \sum_{j=0}^{L_y-1}   \sigma_{i-1j} \sigma_{ij} + \sum_{i=0}^{L_x-1} \sum_{j=1}^{L_y} \sigma_{i j-1} \sigma_{ij} \right) 
+\end{gathered}
+\]
+Now for each of these terms, 
+\[
+\begin{gathered}
+	\sum_{i=1}^{L_x} \sum_{j=0}^{L_y-1} \sigma_{i-1 j} \sigma_{ij} = \sum_{i=1}^{L_x} \left( \sum_{j=1}^{ L_y-1 } \sigma_{i-1 j} \sigma_{ij} + \sigma_{i-1 0 }\sigma_{i0} \right) = \sum_{i=1}^{L_x-1} \left( \sum_{j=1}^{L_y-1} \sigma_{i-1 j} \sigma_{ij} + \sigma_{i-10} \sigma_{i0} \right) + \left( \sum_{j=1}^{L_y-1} \sigma_{L_x-1 j } \sigma_{L_xj} \right) + \sigma_{L_x-1 0 } \sigma_{L_x0}   \\ 
+\sum_{i=0}^{L_x-1} \sum_{j=1}^{L_y} \sigma_{ij-1} \sigma_{ij} = \sum_{j=1}^{L_y-1} \left( \sum_{i=1}^{L_x-1} \sigma_{ij-1} \sigma_{ij}+ \sigma_{0j-1} \sigma_{0j} \right)  + \sum_{i=1}^{L_x-1} \sigma_{i L_y-1} \sigma_{iL_y} + \sigma_{0L_y-1} \sigma_{0L_y} 
+\end{gathered}
+\]
+\[
+\begin{gathered}
+	\sum_{i=0}^{L_x-1} \sum_{j=0}^{L_y-1} \sigma_{ij} (\sigma_{i+1j } + \sigma_{ij+1} ) = \sum_{i=0}^{L_x-1} \left( \sum_{j=1}^{L_y} \sigma_{ij} ( \sigma_{i+1j } + \sigma_{ij+1} ) + \sigma_{i0} (\sigma_{i+1 0 } + \sigma_{i1} ) \right) = \\
+	\sum_{i=1}^{L_x-1} \left( \sum_{j=1}^{L_y-1} \sigma_{ij} (\sigma_{i+1j}  + \sigma_{ij+1}) + \sigma_{i0} (\sigma_{i+1 0 } + \sigma_{i1}) \right) + \sum_{j=1}^{L_y-1} \sigma_{0j} (\sigma_{1j} + \sigma_{0j+1} ) + \sigma_{00} (\sigma_{10} + \sigma_{01} )
+\end{gathered}
+\]
+
+Apply periodic boundary conditions.  Adding up all the terms above, clearly we obtain 1 term which shows the stencil operation for spins on the "interior" of the grid: 
+\[
+\sum_{i=1}^{L_x-1} \sum_{j=1}^{L_y-1} \sigma_{ij} ( \sigma_{i+1j} + \sigma_{ij+1} + \sigma_{i-1j} + \sigma_{ij-1} )
+\]
+and if we apply \emph{periodic} boundary conditions, neatly, we'll see all the lattice sites at the boundary also will have this stencil operation:  
+\[
+\begin{gathered}
+	\sum_{i=1}^{L_x - 1} \sigma_{i0} (\sigma_{i+10} + \sigma_{i1} ) + \sum_{j=1}^{L_y-1} \sigma_{0j} (\sigma_{1j} + \sigma_{0j+1} ) + \sigma_{00} (\sigma_{10} + \sigma_{01} ) + \left( \sum_{i=1}^{L_x-1} \sigma_{iL_y-1} \sigma_{i0} \right) + \sigma_{0L_y-1} \sigma_{00} + \sum_{j=1}^{L_y-1} \sigma_{0j-1} \sigma_{0j} +  \\
+	+ \sum_{j=1}^{L_y - 1} \sigma_{L_x- 1 j} \sigma_{0j} + \sigma_{L_x-1 0} \sigma_{00} + \sum_{i=1}^{L_x-1} \sigma_{i-10} \sigma_{i0} 
+\end{gathered}
+\]
+
+Now, we can obtain the following for Hamiltonian, given spin configuration $\sigma$ with a lattice grid obeying periodic conditions:  
+
+\begin{equation}
+\begin{gathered}
+H(\sigma) = -\frac{J}{2} \sum_{i=0}^{L_x-1} \sum_{j=0}^{L_y-1} \sigma_{ij} (\sigma_{i+1j } + \sigma{i-1j} + \sigma_{ij+1} + \sigma_{ij-1} ) = \\
+= \frac{-J}{2} \left[  \sum_{i=0}^{L_x-1} \left( \sum_{ \substack{ j=0 \\ j \neq j' \\ } }^{L_y -1} \sigma_{ij} ( \sigma_{i+1j} +  \sigma_{i-1j} + \sigma_{ij+1} + \sigma_{ij-1} ) + \sigma_{ij'} ( \sigma_{i+1j'} + \sigma_{i-1j'} + \sigma_{ij'+1} + \sigma_{ij'-1}  ) \right)  + \right. \\ 
+\left. \sum_{ \substack{j=0 \\ j\neq j' \\ } }^{L_y-1} \sigma_{i'j} ( \sigma_{i'+1j} + \sigma_{i'-1j} + \sigma_{i'j+1} + \sigma_{i'j-1} ) + \sigma_{i'j'} ( \sigma_{i'+1j'}  + \sigma_{i'-1j'} + \sigma_{i'j'+1} + \sigma_{i'j'-1}) \right] 
+ \end{gathered}
+\end{equation}
+
+Consider a psin flip of $\sigma_{i'j'}$.  Contribution to $\Delta H$ at stencil operation on $\sigma_{i'j'}$, at $(i'j') \in \Lambda$, is 
+\[
+\frac{-J}{2} ( - \sigma_{i'j'} - \sigma_{i'j'} ) (\sigma_{i'+1j'} + \sigma_{i'-1j'} + \sigma_{i'j'+1} + \sigma_{i'j'-1}) = J\sigma_{i'j'} ( \sigma_{i'+1j'} + \sigma_{i'-1j'} + \sigma_{i'j'+1} + \sigma_{i'j'-1})
+\]
+Consider $\sigma_{i'j'} \sigma_{i'+1j'}$.  Clearly, term $\sigma_{i-1j'} \sigma_{ij'}$ with $i=i'+1$ only occurs once more in the summation.  Thus, we can definitely conclude that for $\Delta H \equiv \Delta H(\Delta \sigma_{i'j'})$ due to a single spin-flip is 
+\begin{equation}
+\Delta H(\Delta \sigma_{i'j'}) = 2J\sigma_{i'j'} ( \sigma_{i'+1j'} + \sigma_{i'-1j'} + \sigma_{i'j'+1} + \sigma_{i'j'-1} )
+\end{equation}
 
 
 \url{https://www.colorado.edu/physics/phys7240/phys7240_fa12/notes/Week3.pdf}
@@ -4048,6 +4808,18 @@ a_{L-l}, ( \sigma_{L-l} a_{L-(l-1)} ) := a_{L-l}, \sigma_{L-1} + da_{L-(l-1)}   
 
 \begin{thebibliography}{9}
 
+%--------------------------------------------------------------------------------
+% 20180203 
+%-------------------------------------------------------------------------------
+\bibitem{KaSch2006}
+Masaki Kashiwara and Pierre Schapira. \textbf{Categories and Sheaves}.  \emph{Grundlehren der mathematischen Wissenschaften}.  Volume 332.  2006. Springer-Verlag Berlin Heidelberg.  eBook ISBN 978-3-540-27950-1
+
+%--------------------------------------------------------------------------------
+% END of 20180203 
+%-------------------------------------------------------------------------------
+
+
+
 \bibitem{CLS2005}
 David A. Cox.  John Little. Donal O'Shea. \textbf{Using Algebraic Geometry}.  Second Edition.  Springer.  2005.  ISBN 0-387-20706-6 QA564.C6883 2004
 
@@ -4062,6 +4834,11 @@ L.D. Landau and E.M. Lifshitz.  \textbf{Statistical Physics}, Third Edition, Par
 
 \bibitem{Hjor2015}
 M. Hjorth-Jensen, \textbf{Computational Physics}, University of Oslo (2015) \url{http://www.mn.uio.no/fysikk/english/people/aca/mhjensen/}
+
+
+
+\bibitem{NeBa1999} 
+M.E.J. Newman and G.T. Barkema.  \textbf{Monte Carlo Methods in Statistical Physics}.  Oxford University Press.  1999.  
 
 
 \bibitem{Bred1997}
