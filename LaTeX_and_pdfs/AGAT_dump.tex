@@ -138,6 +138,33 @@ We should know some algebra.  I will follow mostly Rotman (2010) \cite{JRotman20
 
 \section{Prime numbers, GCD (greatest common denominator), integers, Euler's totient, Chinese Remainder Theorem, integer divison, modulus, remainders; Euclid's Lemma}
 
+%--------------------------------------------------------------------------------
+% 20180311 
+%-------------------------------------------------------------------------------
+
+\begin{definition}[natural numbers $\mathbb{N}$]
+	natural numbers $\mathbb{N}$  
+	
+	\begin{equation}
+	\mathbb{N} = \lbrace \text{ integers } n | n \geq 0 \rbrace  
+	\end{equation}
+	i.e. $\mathbb{N}$ is set of all nonnegative integers.  	
+\end{definition}
+
+\begin{definition}[prime]
+	natural number $p$ is \textbf{prime} if $p\geq 2$, and $\nexists$ \emph{ factorization} $p=ab$, where $a<p$, $b<p$ are natural numbers.  	
+\end{definition}
+
+\begin{definition}
+	$a,b\in \mathbb{Z}$ \textbf{relatively prime} if $\gcd(a,b)=1 $
+\end{definition}
+
+
+
+%--------------------------------------------------------------------------------
+% END of 20180311 
+%-------------------------------------------------------------------------------
+
 \subsection{Greatest Common Denominator (GCD); Euclid's Lemma}
 
 \begin{theorem}[1.7 of Rotman (2010) \cite{JRotman2010}]\label{Thm:lincombgcd}
@@ -219,6 +246,140 @@ cf. pp.4, Thm. 1.7, Ch. 1 Things Past of Rotman (2010) \cite{JRotman2010}
 	\]
 \end{proof}
 
+\begin{theorem}[Euclidean Algorithm]
+	Let $a,b \in \mathbb{Z}^+$.  \\
+	$\exists \, $ algorithm that finds $d= \gcd{a,b}$
+\end{theorem}
+
+cf. pp. 5, Thm. 1.14 (Euclidean Algorithm), Ch. 1 Things Past of Rotman (2010) \cite{JRotman2010}.  
+
+\begin{proof}
+\end{proof}
+
+\begin{definition}
+	Let fixed $m\geq 0$.  Then $a,b \in \mathbb{Z}$ are \textbf{congruent modulo } $m$, denoted by 
+	\[
+	a \equiv b \bmod{m} 
+	\]
+	if $m|(a-b)$, i.e. $(a-b)/m \in \mathbb{Z}$, i.e. if $(a-b)/m\in\mathbb{Z}$, i.e. $(a-b)$ integer multiple of $m$
+\end{definition}
+
+\begin{proposition}
+	If $m\geq 0$ is fixed, $m\in \mathbb{Z}$, then $\forall \, a,b,c \in \mathbb{Z}$
+	\begin{enumerate}
+		\item $a \equiv a\bmod{m}$ 
+		\item if $a \equiv b\bmod{m}$, then $b \equiv a\bmod{m}$
+		\item if $a \equiv b\bmod{m}$, and $b \equiv c\bmod{m}$, then $a \equiv c\bmod{m}$
+	\end{enumerate}
+\end{proposition}
+
+cf. Prop. 1.18 of Rotman (2010) \cite{JRotman2010}
+
+\begin{proof}
+	\begin{enumerate}
+		\item $(a-a)/m=0/m=0$
+		\item $(b-a)/m=(-1)(a-b)/m \in \mathbb{Z}$
+		\item $(a-c)/m=(a-b+b-c)/m=(a-b)/m+(b-c)/m\in\mathbb{Z}$  
+	\end{enumerate}
+\end{proof}
+
+EY : 20171225 to recap, 
+
+\begin{equation}
+\boxed{ 
+	\begin{gathered}
+	a \equiv b \bmod{n} \\
+	\text{ meaning } \\ 
+	\frac{a-b}{n} \in \mathbb{Z} \text{ or }  a- b =kn, \  k\in \mathbb{Z} \text{ or } a  = b+kN \text{ but rather } \\
+	\begin{aligned}
+	& a = pn + r \\
+	& b= qn +r
+	\end{aligned}
+	\end{gathered}	
+}
+\end{equation}
+for $a= b+ kn$, but $b$ need not be a remainder of division of $a$ by $n$.  More precisely, $a= b\bmod{n}$ asserts that $a,b$ have the same remainder when divided by $n$, i.e. 
+\[
+\begin{aligned}
+& a = pn + r \\ 
+& b = qn + r
+\end{aligned}
+\]
+
+
+So $a\sim b$ or $[a] = [b]$ is an equivalence relation since \\
+$a\sim a$ since $a\equiv a \bmod{N}$, since $a=a+0N$, \\
+if $a\sim b$, then $b\sim a$, since $a-b=kN$, then $b=a-kN$ \\
+if $a\sim b$, $b\sim c$, then $a\sim c$, since $\begin{aligned} & \quad \\ 
+& a-b = kN \\
+& b-c = lN \end{aligned}$, then $a-c = (k+l)N$.  
+
+
+
+
+
+cf. Prop. 1.19 of Rotman (2010) \cite{JRotman2010}  
+\begin{proposition}
+	Let $m\geq 0$ be fixed 
+	\begin{enumerate}
+		\item If $a=qm +r$, then $a \equiv r \bmod{m}$ 
+		\item  If $0\leq r' <r <m$, then $r \not\equiv\bmod{m}$ i.e. $r$ and $r'$ aren't congruent $\bmod{m}$  
+		\item $a \equiv b \bmod{m}$ iff $a,b$ leave same remainder after dividing by $m$  
+		\item If $m\geq 2$, $\forall \, a \in \mathbb{Z}$, $a \equiv b \bmod{m}$ for some $b\in 0,1,\dots m-1$  
+	\end{enumerate}	
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}
+		\item If $a=qm +r$, then $a \equiv r \bmod{m}$ 
+		\[
+		\frac{a-r}{m} = q \in \mathbb{Z}  
+		\]
+		\item  \emph{Want}: If $0\leq r' <r <m$, then $r \not\equiv\bmod{m}$.  
+		
+		Suppose $\frac{r-r'}{m} = k \in \mathbb{Z}$.  Then $r-r' = km$ or $r=r' + km$.  
+		\[
+		\begin{gathered}
+		m > r > r' \leq 0 \\
+		m > r' + km > r' \leq 0 \\
+		m-r' > km > 0 
+		\end{gathered}
+		\]
+		But $k>0$ (since $m>0$ and $r-r' = km >0$) and $m-r' > km > 0$ is a contradiction.  
+		
+		\item \emph{Want}: $a \equiv b \bmod{m}$ iff $a,b$ leave same remainder after dividing by $m$.  By 
+		
+		By Division Algorithm, this is true: 
+		\[
+		\begin{aligned}
+		& a=q_a m + r_a \\ 
+		& b= q_b m + r_b 
+		\end{aligned}
+		\] 
+		\[
+		\begin{gathered}
+		\frac{a-b}{m} = q_a + \frac{r_a}{m} - q_b - \frac{r_b}{m} = k = q_a - q_b + \frac{r_a - r_b}{m} \in \mathbb{Z}
+		\end{gathered}
+		\]
+		Now 
+		\[
+		\begin{aligned}
+		& |m| > r_a \leq 0 \\ 
+		& |m| > r_b \leq 0 
+		\end{aligned}
+		\]
+		$2|m| > r_a + r_b$.  
+		
+		And if $r_a > r_b$, $|m| > r_a > r_a -r_b > 0$.  
+		
+		In both cases, $r_a=r_b$ since $q_a - q_b + \frac{r_a - r_b}{m} \in \mathbb{Z}$ needs to be enforced.   
+		
+		\item \emph{Want}: If $m\geq 2$, $\forall \, a \in \mathbb{Z}$, $a \equiv b \bmod{m}$ for some $b\in 0,1,\dots m-1$.  
+		
+		By Division Algorithm, $a = q_a m + r_a$, \, $0 \leq r_a < |m|$.  $\frac{a-r_a}{m} = q_a \in \mathbb{Z}$ so let $b= r_a$.  
+		
+	\end{enumerate}	
+\end{proof}
 
 
 \begin{theorem}[1.26 of Rotman (2010) \cite{JRotman2010}]
@@ -336,6 +497,159 @@ By Prop. \ref{Prop:commongcd},
 & \text{gcd}(n,11) = \text{gcd}(11, n\mod{11}) 
 \end{aligned}
 \]
+
+%--------------------------------------------------------------------------------
+% 20180311 
+%-------------------------------------------------------------------------------
+cf. Example (10) of Dummit and Foote \cite{DuFo2003}.  
+
+To recap, 
+\begin{definition}[Euler $\varphi$-function]
+	$\forall \, n \in \mathbb{Z}^+$, \\
+	let $\varphi(n)  := $ number of positive integers $a \leq n$ with a relatively prime to $n$, i.e. $\gcd(a,n) = 1 \equiv (a,n)$
+\end{definition}
+e.g. $\varphi(12)=4$, since $1,5,7,11$ are only positive integers less than or equal to 12.  
+
+If $p$ prime, 
+$\varphi(p) = p-1$.  \\
+More generally, \\
+$\forall \, a \geq 1$, 
+\begin{equation}\label{Eq:EulerTotientOfPrimeFactor}
+\boxed{ \varphi(p^a) = p^a - p^{a-1} = p^{a-1} (p-1) }
+\end{equation}
+
+$\varphi$ is multiplicative in the sense that 
+\begin{equation}\label{Eq:EulerTotientIsMultiplicative}
+\varphi(ab) = \varphi(a) \varphi(b)  \text{ if } \gcd(a,b) = 1
+\end{equation}
+$\Longrightarrow $ general formula.  
+
+If $n=p_1^{\alpha_1}p_2^{\alpha_2} \dots p_s^{\alpha_s}$ (Fumdanetal Thm. of Arithmetic, $\forall \, n \in \mathbb{Z}, n>1$), then 
+\begin{equation}
+\boxed{ 
+	\begin{aligned}
+	\varphi(n) & = \varphi(p_1^{\alpha_1})  \varphi(p_2^{\alpha_2}) \dots \varphi(p_s^{\alpha_s}) \\ 
+	& p_1^{\alpha_1 - 1 } (p_1 - 1) p_2^{\alpha_2 - 1} (p_2 - 1 ) \dots p_s^{\alpha_s -1} (p_s - 1) 
+	\end{aligned} }
+\end{equation}
+
+
+cf. pp. 69 Thm. 5.4 (Chinese Remainder) of Scheinerman (2006) \cite{Sche2006}.  
+\begin{theorem}
+	Let $n\in \mathbb{Z}^+$, \\
+	let $p_1,p_2, \dots p_t$ be distinct prime divisors of $n$ (i.e. $\forall \, p_i$, $\frac{n}{p_i^{k_i}} \in \mathbb{Z}$ for some $k_i \geq 1$) \\
+	Then
+	\begin{equation}
+  \varphi(n) = n\left( 1 - \frac{1}{p_1} \right)\left( 1- \frac{1}{p_2} \right) \dots  ( 1-\frac{1}{p_t} )
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	By Fundamental Thm. of Arithmetic, 
+	\[
+	n = p_1^{e_1} p_2^{e_2} \dots p_t^{e_t} 
+	\]
+	where $p_j$ are distinct primes, and $e_j$ are positive integers.  
+	
+	From Eqns. \ref{Eq:EulerTotientOfPrimeFactor}, \ref{Eq:EulerTotientIsMultiplicative}, i.e. where 
+	\[
+	\begin{gathered}
+	\varphi(p^a) = p^a - p^{a-1} = p^{a-1} (p-1) \\
+	\varphi(ab) = \varphi(a) \varphi(b)  \text{ if } \gcd(a,b) = 1
+	\end{gathered}
+	\]
+	\[
+	\begin{gathered}
+	\varphi(n) = \varphi(p_1^{e_1}p_2^{e_2} \dots p_t^{e_t}) = \varphi(p_1^{e_1}) \varphi(p_2^{e_2}) \dots \varphi(p_t^{e_t}) = \\
+	= p_1^{e_1} (1- \frac{1}{p_1} )p_2^{e_2} (1- \frac{1}{p_2} ) \dots p_t^{e_t} (1- \frac{1}{p_t} ) = n(1- \frac{1}{p_1}) (1- \frac{1}{p_2}) \dots (1- \frac{1}{p_t})
+	\end{gathered}
+	\]
+\end{proof}
+
+
+\exercisehead{10}
+cf. pp. 7 Exercise 10 Dummit and Foote \cite{DuFo2003}.  
+
+Prove: $\forall \, $ given $N \in \mathbb{Z}^+$ (positive number), \\
+$\exists \, $ only finite many integers $n$ with $\varphi(n) = N$, where $\varphi$ denotes Euler's $\varphi$-function.  
+
+EY, Indeed, by definition, \\
+\[
+\begin{gathered}
+\varphi(n) = N \\
+a_1, a_2 \dots a_N \text{ s.t. } a_i \leq n \\
+\gcd(a_i,n)=1 \text{ i.e. } 1 = s_i a_i + t_i n 
+\end{gathered}
+\]
+
+
+Given $N \in \mathbb{Z}^+$, let $n \in \mathbb{Z}$, s.t. $\varphi(n) = N$ (given hypothesis).  
+
+Let $p= $ least (i.e. smallest) prime s.t. $p > N+1$.  
+
+If $q\geq p$ is a prime divisor of $n$, i.e. 
+\[
+n = q^k m 
+\]
+for some $k\geq 1$, and $m$ with $q$ not dividing $m$.  
+
+Then 
+\[
+\varphi(n) = \varphi(q^k) \varphi(m) = q^{k-1}(q-1) \varphi(m) \geq q-1 \geq p -1 > N
+\]
+Contradiction.  
+
+Thus, $\nexists$ prime divisor of $n$ greater than $N+1$.  
+
+Particularly, distinct prime divisors of $n$ belong to a finite set, say these primes are $p_1,p_2 \dots p_m$.  
+
+\begin{definition}
+	prime divisor $q$ of $n$ if $q$ is prime and 
+	\begin{equation}
+	\frac{n}{q} \in \mathbb{Z} \text{ i.e. } n =q^k m \text{ for some } k \geq 1 \text{ and } \frac{m}{q} \notin \mathbb{Z}^+
+	\end{equation}
+\end{definition}
+
+Now
+\[
+n=p_1^{a_1}p_2^{a_2} \dots p_m^{a_m} 
+\]
+for some $0<a_i$, so 
+\[
+\varphi(n) = \varphi(p_1^{a_1}) \varphi(p_2^{a_2}) \dots \varphi( p_m^{a_m}), \text{ so } \varphi(n) = \prod_{i=1}^m p_i^{ a_i -1} (p_i-1)
+\]
+Note, $\forall \, $ prime $p_i$, $\varphi(n) \geq p_i^{a_i -1}(p_i-1) \geq p_i - 1 > N$ for sufficiently large $a_i$.  
+
+Thus, $\forall \, p_i$, $\exists \, $ only finitely many permissible choices for exponents $a_i$.  \\
+So set of all $n$ with $\varphi(n) = N$ is subset of finite set, hence finite.  
+
+$\forall \, N \in \mathbb{Z}^+$, $\exists \, $ largest integer $n$ with $\varphi(n) = N$.  \\
+Thus, as $n\to \infty$, $\varphi(n) \to \infty$.  
+
+
+
+
+%--------------------------------------------------------------------------------
+% END of 20180311 
+%-------------------------------------------------------------------------------
+
+
+
+Scheinerman (2006) \cite{Sche2006}
+
+cf. Ex. 1.19, pp. 13, Sec. 1.1 Some Number Theory of Rotman (2010) \cite{JRotman2010}
+\exercisehead{1.19}
+If $a$ and $b$ are relatively prime and if each divides an integer $n$, then their product $ab$ also divides $n$, i.e. 
+\begin{theorem}\label{Thm:relprimeproddivisible}
+	If $\gcd{a,b}=1$, and if $n/a \in \mathbb{Z} \equiv a | n$, and $n/b \in \mathbb{Z} \equiv b | n$, then $n/ab \in \mathbb{Z} \equiv ab | n$.  
+\end{theorem}
+\begin{proof}
+	$\gcd{a,b}=1$, so $sa + tb= 1$ for some $s,t \in \mathbb{Z}$ (Thm. \ref{Thm:relprimeinvertible}).  
+	
+	$\frac{n}{a}, \frac{n}{b} \in \mathbb{Z}$, so $n=au$, $n=bv$  
+	
+	$n = n\cdot 1 = n(sa+tb) = bvsa + autb = ab(vs + ut)$, so $\frac{n}{ab} = vs + ut \in \mathbb{Z}$.  
+\end{proof}
 
 
 Scheinerman (2006) \cite{Sche2006}
@@ -2955,6 +3269,15 @@ Masaki Kashiwara and Pierre Schapira. \textbf{Categories and Sheaves}.  \emph{Gr
 %--------------------------------------------------------------------------------
 % END of 20180203 
 %-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
+% 20180311 
+%-------------------------------------------------------------------------------
+\bibitem{DuFo2003}
+David S. Dummit, Richard M. Foote. \textbf{Abstract Algebra}. 3rd. Ed.  Wiley; (July 14, 2003). ISBN-13: 978-0471433347 
+%--------------------------------------------------------------------------------
+% END of 20180311 
+%-------------------------------------------------------------------------------
+
 
 
 
