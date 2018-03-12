@@ -139,6 +139,36 @@ We should know some algebra.  I will follow mostly Rotman (2010) \cite{JRotman20
 
 \section{Prime numbers, GCD (greatest common denominator), integers, Euler's totient, Chinese Remainder Theorem, integer divison, modulus, remainders; Euclid's Lemma}
 
+
+%--------------------------------------------------------------------------------
+% 20180311 
+%-------------------------------------------------------------------------------
+
+\begin{definition}[natural numbers $\mathbb{N}$]
+	natural numbers $\mathbb{N}$  
+	
+	\begin{equation}
+	\mathbb{N} = \lbrace \text{ integers } n | n \geq 0 \rbrace  
+	\end{equation}
+i.e. $\mathbb{N}$ is set of all nonnegative integers.  	
+\end{definition}
+
+\begin{definition}[prime]
+natural number $p$ is \textbf{prime} if $p\geq 2$, and $\nexists$ \emph{ factorization} $p=ab$, where $a<p$, $b<p$ are natural numbers.  	
+\end{definition}
+
+\begin{definition}
+	$a,b\in \mathbb{Z}$ \textbf{relatively prime} if $\gcd(a,b)=1 $
+\end{definition}
+
+
+
+%--------------------------------------------------------------------------------
+% END of 20180311 
+%-------------------------------------------------------------------------------
+
+
+
 \begin{axiom} \textbf{Least Integer Axiom}
 	$\exists \, $ smallest integer in every $C \subset \mathbb{N}$, $C\neq \emptyset$
 \end{axiom}
@@ -318,12 +348,25 @@ EY : 20171225 to recap,
 \begin{equation}
 \boxed{ 
 	\begin{gathered}
-	a \equiv b \bmod{m} \\
+	a \equiv b \bmod{n} \\
 	\text{ meaning } \\ 
-	\frac{a-b}{N} \in \mathbb{Z} \text{ or }  a- b =kN, \  k\in \mathbb{Z} \text{ or } a  = b+kN
+	\frac{a-b}{n} \in \mathbb{Z} \text{ or }  a- b =kn, \  k\in \mathbb{Z} \text{ or } a  = b+kN \text{ but rather } \\
+	\begin{aligned}
+	& a = pn + r \\
+	& b= qn +r
+	\end{aligned}
 	\end{gathered}	
 }
 \end{equation}
+for $a= b+ kn$, but $b$ need not be a remainder of division of $a$ by $n$.  More precisely, $a= b\bmod{n}$ asserts that $a,b$ have the same remainder when divided by $n$, i.e. 
+\[
+\begin{aligned}
+& a = pn + r \\ 
+& b = qn + r
+\end{aligned}
+\]
+
+
 So $a\sim b$ or $[a] = [b]$ is an equivalence relation since \\
 $a\sim a$ since $a\equiv a \bmod{N}$, since $a=a+0N$, \\
 if $a\sim b$, then $b\sim a$, since $a-b=kN$, then $b=a-kN$ \\
@@ -477,7 +520,7 @@ For
 	& \varphi : \mathbb{Z}^+ \to \mathbb{Z}^+ \\ 
 	& \varphi : n \mapsto \varphi(n) := \text{ number of elements of } \lbrace 1,2, \dots n \rbrace \\
 	\text{ that are relative prime to } \\
-	n = | \lbrace i | i \in \lbrace 1,2, \dots n \rbrace , (n,i)=1 \text{ or equivalently } n \propto i \rbrace |
+	& n = | \lbrace i | i \in \lbrace 1,2, \dots n \rbrace , (n,i)=1 \text{ or equivalently } n \propto i \rbrace |
 \end{aligned}
 \]
 
@@ -532,12 +575,148 @@ By Prop. \ref{Prop:commongcd},
 \end{aligned}
 \]
 
+%--------------------------------------------------------------------------------
+% 20180311 
+%-------------------------------------------------------------------------------
+cf. Example (10) of Dummit and Foote \cite{DuFo2003}.  
+
+To recap, 
+\begin{definition}[Euler $\varphi$-function]
+$\forall \, n \in \mathbb{Z}^+$, \\
+let $\varphi(n)  := $ number of positive integers $a \leq n$ with a relatively prime to $n$, i.e. $\gcd(a,n) = 1 \equiv (a,n)$
+\end{definition}
+e.g. $\varphi(12)=4$, since $1,5,7,11$ are only positive integers less than or equal to 12.  
+
+If $p$ prime, 
+$\varphi(p) = p-1$.  \\
+More generally, \\
+$\forall \, a \geq 1$, 
+\begin{equation}\label{Eq:EulerTotientOfPrimeFactor}
+\boxed{ \varphi(p^a) = p^a - p^{a-1} = p^{a-1} (p-1) }
+\end{equation}
+
+$\varphi$ is multiplicative in the sense that 
+\begin{equation}\label{Eq:EulerTotientIsMultiplicative}
+\varphi(ab) = \varphi(a) \varphi(b)  \text{ if } \gcd(a,b) = 1
+\end{equation}
+$\Longrightarrow $ general formula.  
+
+If $n=p_1^{\alpha_1}p_2^{\alpha_2} \dots p_s^{\alpha_s}$ (Fumdanetal Thm. of Arithmetic, $\forall \, n \in \mathbb{Z}, n>1$), then 
+\begin{equation}
+\boxed{ 
+	\begin{aligned}
+	\varphi(n) & = \varphi(p_1^{\alpha_1})  \varphi(p_2^{\alpha_2}) \dots \varphi(p_s^{\alpha_s}) \\ 
+	& p_1^{\alpha_1 - 1 } (p_1 - 1) p_2^{\alpha_2 - 1} (p_2 - 1 ) \dots p_s^{\alpha_s -1} (p_s - 1) 
+	\end{aligned} }
+\end{equation}
+
+
+cf. pp. 69 Thm. 5.4 (Chinese Remainder) of Scheinerman (2006) \cite{Sche2006}.  
+\begin{theorem}
+	Let $n\in \mathbb{Z}^+$, \\
+	let $p_1,p_2, \dots p_t$ be distinct prime divisors of $n$ (i.e. $\forall \, p_i$, $\frac{n}{p_i^{k_i}} \in \mathbb{Z}$ for some $k_i \geq 1$) \\
+	Then
+	\begin{equation}
+	\varphi(n) = n\left( 1 - \frac{1}{p_1} \right)\left( 1- \frac{1}{p_2} \right) \dots \left(1 - \frac{1}{p_t} \right)
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	By Fundamental Thm. of Arithmetic, 
+	\[
+	n = p_1^{e_1} p_2^{e_2} \dots p_t^{e_t} 
+	\]
+	where $p_j$ are distinct primes, and $e_j$ are positive integers.  
+	
+	From Eqns. \ref{Eq:EulerTotientOfPrimeFactor}, \ref{Eq:EulerTotientIsMultiplicative}, i.e. where 
+	\[
+	\begin{gathered}
+	\varphi(p^a) = p^a - p^{a-1} = p^{a-1} (p-1) \\
+	\varphi(ab) = \varphi(a) \varphi(b)  \text{ if } \gcd(a,b) = 1
+		\end{gathered}
+		\]
+		\[
+		\begin{gathered}
+	\varphi(n) = \varphi(p_1^{e_1}p_2^{e_2} \dots p_t^{e_t}) = \varphi(p_1^{e_1}) \varphi(p_2^{e_2}) \dots \varphi(p_t^{e_t}) = \\
+	= p_1^{e_1} (1- \frac{1}{p_1} )p_2^{e_2} (1- \frac{1}{p_2} ) \dots p_t^{e_t} (1- \frac{1}{p_t} ) = n(1- \frac{1}{p_1}) (1- \frac{1}{p_2}) \dots (1- \frac{1}{p_t})
+		\end{gathered}
+		\]
+	\end{proof}
+
+
+\exercisehead{10}
+cf. pp. 7 Exercise 10 Dummit and Foote \cite{DuFo2003}.  
+
+Prove: $\forall \, $ given $N \in \mathbb{Z}^+$ (positive number), \\
+$\exists \, $ only finite many integers $n$ with $\varphi(n) = N$, where $\varphi$ denotes Euler's $\varphi$-function.  
+
+EY, Indeed, by definition, \\
+\[
+\begin{gathered}
+\varphi(n) = N \\
+a_1, a_2 \dots a_N \text{ s.t. } a_i \leq n \\
+\gcd(a_i,n)=1 \text{ i.e. } 1 = s_i a_i + t_i n 
+\end{gathered}
+\]
+
+
+Given $N \in \mathbb{Z}^+$, let $n \in \mathbb{Z}$, s.t. $\varphi(n) = N$ (given hypothesis).  
+
+Let $p= $ least (i.e. smallest) prime s.t. $p > N+1$.  
+
+If $q\geq p$ is a prime divisor of $n$, i.e. 
+\[
+n = q^k m 
+\]
+for some $k\geq 1$, and $m$ with $q$ not dividing $m$.  
+
+Then 
+\[
+\varphi(n) = \varphi(q^k) \varphi(m) = q^{k-1}(q-1) \varphi(m) \geq q-1 \geq p -1 > N
+\]
+Contradiction.  
+
+Thus, $\nexists$ prime divisor of $n$ greater than $N+1$.  
+
+Particularly, distinct prime divisors of $n$ belong to a finite set, say these primes are $p_1,p_2 \dots p_m$.  
+
+\begin{definition}
+	prime divisor $q$ of $n$ if $q$ is prime and 
+	\begin{equation}
+	 \frac{n}{q} \in \mathbb{Z} \text{ i.e. } n =q^k m \text{ for some } k \geq 1 \text{ and } \frac{m}{q} \notin \mathbb{Z}^+
+	\end{equation}
+\end{definition}
+
+Now
+\[
+n=p_1^{a_1}p_2^{a_2} \dots p_m^{a_m} 
+\]
+for some $0<a_i$, so 
+\[
+\varphi(n) = \varphi(p_1^{a_1}) \varphi(p_2^{a_2}) \dots \varphi( p_m^{a_m}), \text{ so } \varphi(n) = \prod_{i=1}^m p_i^{ a_i -1} (p_i-1)
+\]
+Note, $\forall \, $ prime $p_i$, $\varphi(n) \geq p_i^{a_i -1}(p_i-1) \geq p_i - 1 > N$ for sufficiently large $a_i$.  
+
+Thus, $\forall \, p_i$, $\exists \, $ only finitely many permissible choices for exponents $a_i$.  \\
+So set of all $n$ with $\varphi(n) = N$ is subset of finite set, hence finite.  
+
+$\forall \, N \in \mathbb{Z}^+$, $\exists \, $ largest integer $n$ with $\varphi(n) = N$.  \\
+Thus, as $n\to \infty$, $\varphi(n) \to \infty$.  
+
+
+
+
+%--------------------------------------------------------------------------------
+% END of 20180311 
+%-------------------------------------------------------------------------------
+
+
 
 Scheinerman (2006) \cite{Sche2006}
 
 cf. Ex. 1.19, pp. 13, Sec. 1.1 Some Number Theory of Rotman (2010) \cite{JRotman2010}
 \exercisehead{1.19}
-If $a$ and $b$ are relativel prime and if each divides an integer $n$, then their product $ab$ also divides $n$, i.e. 
+If $a$ and $b$ are relatively prime and if each divides an integer $n$, then their product $ab$ also divides $n$, i.e. 
 \begin{theorem}\label{Thm:relprimeproddivisible}
 	If $\gcd{a,b}=1$, and if $n/a \in \mathbb{Z} \equiv a | n$, and $n/b \in \mathbb{Z} \equiv b | n$, then $n/ab \in \mathbb{Z} \equiv ab | n$.  
 \end{theorem}
@@ -4818,7 +4997,15 @@ Masaki Kashiwara and Pierre Schapira. \textbf{Categories and Sheaves}.  \emph{Gr
 % END of 20180203 
 %-------------------------------------------------------------------------------
 
-
+%--------------------------------------------------------------------------------
+% 20180311 
+%-------------------------------------------------------------------------------
+\bibitem{DuFo2003}
+David S. Dummit, Richard M. Foote. \textbf{Abstract Algebra}. 3rd. Ed.  Wiley; (July 14, 2003). ISBN-13: 978-0471433347 
+%--------------------------------------------------------------------------------
+% END of 20180311 
+%-------------------------------------------------------------------------------
+ 
 
 \bibitem{CLS2005}
 David A. Cox.  John Little. Donal O'Shea. \textbf{Using Algebraic Geometry}.  Second Edition.  Springer.  2005.  ISBN 0-387-20706-6 QA564.C6883 2004
