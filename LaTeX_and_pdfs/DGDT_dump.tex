@@ -1076,6 +1076,61 @@ cf. Eq. 1.4 Pr\'{a}staro (1996) \cite{Pras1996}
 
 
 
+%%% ----------------------------------------------------------------------------
+%%% 20180213 -------------------------------------------------------------------
+%%% ----------------------------------------------------------------------------
+
+
+\begin{definition}[metric]
+	Let smooth manifold $M$, $\text{dim}M = n$, $\forall \, p \in M$, $\exists \, $ vector space $T_pM$, and so for 
+	\begin{equation}
+	\begin{aligned}
+	& g_p (T_pM)^2 \to \mathbb{R} \\
+	& g_p : (X_p,Y_p) \mapsto g_p(X_p,Y_p) \in \mathbb{R}
+	\end{aligned}
+	\end{equation}
+	with $g_p$ being bilinear, symmetric (in $X_p,Y_p$), nondegenerate (i.e. if $g_p(X_p,Y_p)=0$, then $X_p$ or $Y_p=0$)
+	
+	Note that 
+	\[
+	g\in \Gamma((TM \otimes TM)^*)
+	\]
+	and that for $\begin{aligned} & \quad \\ 
+	& X = X^i \frac{ \partial }{ \partial x^i } \\
+	& Y = Y^i \frac{ \partial }{ \partial x^i } \end{aligned}$  
+so 	
+	\[
+	g(X,Y) = g_{ij} X^i Y^j
+	\]  
+	
+\end{definition}
+
+Now for 
+\[
+\begin{gathered}
+\begin{aligned} 
+& F: M \to N \\
+& F: x \mapsto y = y(x) 
+\end{aligned} \qquad \, \begin{aligned}
+& DF \equiv F_* : T_p M \to T_{F(p)}N \\ 
+&  DF : X_p \mapsto (DF) (X^j \frac{ \partial }{ \partial x^j }) = X^j \frac{\partial y^i}{\partial x^j} \frac{ \partial }{ \partial y^i}
+\end{aligned}
+\end{gathered}
+\]
+\[
+\begin{gathered}
+(F^* g')(X,Y) = (F^*g')(X^i \frac{ \partial }{ \partial x^i } , Y^j \frac{ \partial }{ \partial x^j} ) = (F^*g')_{ij} X^i Y^j = g'(F_*X, F_*Y) = \\
+= 
+\end{gathered}
+\]
+
+
+
+
+
+%%% ----------------------------------------------------------------------------
+%%% END of 20180213 ------------------------------------------------------------
+%%% ----------------------------------------------------------------------------
 
 
 
@@ -1701,6 +1756,23 @@ Lawrence Conlon.  \textbf{Differentiable Manifolds} (Modern Birkhäuser Classics
 
 \bibitem{AKN2006}
 Vladimir I. Arnold, Valery V. Kozlov, Anatoly I. Neishtadt.  \textbf{Mathematical Aspects of Classical and Celestial Mechanics}.  Third Edition.  Springer.  
+
+
+
+
+%%%-----------------------------------------------------------------------------
+%%% 20180213
+%%%-----------------------------------------------------------------------------
+
+\bibitem{YChoquet-Bruhat2009}
+Yvonne Choquet-Bruhat.  \textbf{General Relativity and the Einstein Equations} (Oxford Mathematical Monographs) 1st Edition.  Oxford Mathematical Monographs (February 4, 2009) ISBN-13: 978-0199230723
+
+%%%-----------------------------------------------------------------------------
+%%% END of 20180213
+%%%-----------------------------------------------------------------------------
+
+
+
 
 \end{thebibliography}
 
