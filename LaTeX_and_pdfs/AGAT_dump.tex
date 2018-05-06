@@ -809,7 +809,50 @@ cf. Ch. 1 Things Past, Thm. 1.28 of Rotman (2010) \cite{JRotman2010}, pp. 68 Thm
 
 
 
+\section{Groups}
+cf. pp. 16 Chapter 1 Introduction to Groups. Dummit and Foote (2004) \cite{DuFo2003}
+\begin{definition}[binary operation]
+	\begin{enumerate}
+		\item binary operation $*$ on set $G$ is a function $*: G \times G \to G$.  $\forall \, a, b \in G$, $a* b \equiv *(a,b)$
+		\item binary operation $*$ on set $G$ is \emph{associative}: if $\forall \, a, b, c \in G$, $a*(b*c) = (a*b) * c$ 
+		\item If $*$ is binary operation on set $G$, $a,b $ of $G$ commut if $a*b = b*a$. \\
+		$*$ (or $G$) is \textbf{commutative} if $\forall \, a, b \in G$ $a* b = b*a$.  
+	\end{enumerate}
+\end{definition}
+cf. pp. 16. Sec. 1.1. Basic Axioms and Examples, Dummit and Foote (2004) \cite{DuFo2003} 
 
+\begin{definition}[Group]
+\begin{enumerate}
+\item Group is an ordered pair $(G, *)$ where $G$ is a set, $*$ is a binary operation on $G$ s.t. 
+\begin{enumerate}
+\item $(a*b)*c = a*(b*c)$, $\forall \, a,b ,c \in G$, i.e. $*$ \emph{associative}
+\item $\exists \, e \in G$, s.t. $\forall \, a\in G$, $a*e = e*a = a$  ($\exists \, $ \emph{identity} $e$)
+\item $\forall \, a\in G$, $\exists \, a^{-1}\in G$, called an \emph{inverse} of $a$, s.t. $a*a^{-1} = a^{-1} * a = e$
+\end{enumerate}
+\item (optional; abelian or \emph{commutative}) $(G,*)$ abelian (or commutative) if $a*b = b*a$, $\forall \, a,b \in G$. 
+\end{enumerate}
+\end{definition}
+e.g.
+\begin{enumerate}
+\item  $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$ are groups under $+$ with $e=0$ and $a^{-1} = -a$, $\forall \, a$. 
+\item $\mathbb{Q} - \lbrace 0 \rbrace$, $\mathbb{R} - \lbrace 0 \rbrace$, $\mathbb{C} - \lbrace 0 \rbrace, \mathbb{Q}^+, \mathbb{R}^+$ groups under $\times$ with $e=1$, $a^{-1} = \frac{1}{a}$
+\item (\textbf{direct product of groups})If $(A,*), (B,\circ)$ are groups, we can form new group $A\times B$ called \textbf{direct product} s.t.
+\[
+A \times B = \lbrace (a,b) | a\in A, b\in B\rbrace
+\] and $(a_1,b_1)(a_2,b_2) = (a_1*a_2, b_1 \circ b_2)$ cf. Example 6, Sec. 1.1 Dummit and Foote (2004) \cite{DuFo2003}
+\end{enumerate}
+
+\begin{proposition}
+If $G$ group under operation $*$, then 
+\begin{enumerate}
+\item identity of $G$ is unique
+\item $\forall \, a \in G$, $a^{-1}$ uniquely determined.
+\item $(a^{-1})^{-1} = a \quad \, \forall \, a \in G$ 
+\item $(a*b)^{-1} = (b^{-1}) * (a^{-1})$ 
+\item $\forall \, a_1, a_2, \dots a_n \in G$, $a_1 , a_2 \dots a_n $ independent of how expression is bracketed (generalized associative law)
+\end{enumerate}
+\end{proposition}
+cf. Prop. 1, Sec. 1.1 Dummit and Foote (2004)\cite{DuFo2003}
 
 \section{Groups; normal subgroups}  
 
@@ -1070,6 +1113,83 @@ $\text{im}g = M/S $ since
 \]
 Then by 1st isomorphism, and commutative diagram, done.  
 \end{proof} % END of pf. of 3rd Isomorphism Theorem (Modules) Thm. 7.10 of Rotman (2011) 
+
+\section{Rings} 
+
+\begin{definition}[division ring]
+	ring $R$ with identity $1$, where $1\neq 0$ is a \textbf{division ring} (or skew field) if $\forall \, a \in R$, $a\neq 0$, $\exists \, $ multiplicative inverse $1/a$, i.e. $\exists \, b\in R$ s.t. $ab=ba = 1$
+\end{definition}
+
+e.g. 
+\begin{enumerate}
+	\item rational numbers $\mathbb{Q}$ \\
+	real numbers $\mathbb{R}$ \\
+	complex numbers $\mathbb{C}$ \\ 
+	are commutative rings with identity (in fact, they're fields) \\
+	Ring axioms for each follow ultimately from ring axioms for $\mathbb{Z}$ \\
+	(verified when $\mathbb{Z}$ constructed from $\mathbb{Z}$ (Sec. 7.5)), $\mathbb{C}$ from $\mathbb{R}$ (Example 1, Sec. 13.1). \\
+	Construction of $\mathbb{R}$ from $\mathbb{Z}$ carried out in basic analysis texts
+	\item \textbf{quotient group} $\mathbb{Z}/n\mathbb{Z}$ is a commutative ring with identity (element 1) under operations of addition and multiplication of residue classes (frequently referred to as "modular arithmetic").  \\
+	We saw additive abelian groups axioms followed from general principles of theory of quotient groups ($\mathbb{Z}/n\mathbb{Z}$) was prototypical quotient group. cf. Example 4, pp. 224, Dummit and Foote (2014)\cite{DuFo2003}
+	\item \textbf{the (real) Hamiltonian Quaternions}.  
+	\begin{definition}[(real) Hamiltonian Quaternions]
+		Let $\mathbb{H} = \lbrace a+ bi + cj + dk | a,b,c,d \in \mathbb{R} \rbrace$ s.t. 
+		"componentwise" addition is defined as 
+		\begin{equation}
+		(a+bi + cj+dk) + (a' + b'i + c'j + d'k) = (a+a') + (b+b')i + (c+c')j + (d+d')k
+		\end{equation} and multiplication defined by expanding using distributive laws 
+		\[
+		(a+bi + cj +dk)(a' + b'i + c'j +d' k)
+		\]
+		using 
+		\begin{equation}
+		\begin{aligned}
+		& i^2 = j^2 =k^2 = -1 \\
+		& ij = -ji = k \\
+		& jk = -kj = i \\
+		& ki = -ik = j
+		\end{aligned}
+		\end{equation}
+	\end{definition}
+Working out the multiplication
+\[
+\begin{gathered}
+(a+bi + cj + dk)(a'+b'i + c'j + d'k) =  \\
+= \begin{aligned}
+& aa' + ab' i + ac'j + ad'k + ba' i - bb' + bc' k -bd' j + \\
+& ca'j - cb' k - cc' + cd' i + da' k + db' j - dc' i -dd' = \\
+\end{aligned} \\
+= aa' - bb' -cc' -dd' + (ab' + ba' + cd' -dc')i + (ac' - bd' + ca' +db')j + (ad' + bc' - cb' + da')k 
+\end{gathered}
+\]
+Hamiltonian Quaternions are noncommutative ring with identity ($1= 1 + 0i + 0j + 0k$). 
+
+Similarly define \emph{rational} Hamiltonian Quaternions ring by taking $a,b,c,d\in \mathbb{Q}$.  
+
+real and rational Hamiltonian Quaternions both are divison rings, where inverse of nonzero element defined as 
+
+
+\begin{equation}
+(a+bi +cj + dk)^{-1} = \frac{ a-bi -cj -dk}{ a^2 + b^2 + c^2 + d^2 }
+\end{equation} cf. Example 5, pp. 224, Dummit and Foote (2014)\cite{DuFo2003}
+
+\item \textbf{rings of functions} (important class) \\
+Let $X$ be any nonempty set. \\
+Let $A$ be any ring. 
+
+\begin{definition}[function ring]
+	collection $R= \lbrace f:X\to A \rbrace$ is a ring under pointwise addition and multiplication of functions s.t. 
+	\begin{equation}
+	\begin{aligned}
+	(f+g)(x) & = f(x) + g(x) \\
+	(fg)(x) & = f(x)g(x)
+	\end{aligned}
+	\end{equation}
+\end{definition}
+	
+cf. Example 6, pp. 225, Dummit and Foote (2014)\cite{DuFo2003}
+	
+\end{enumerate}
 
 \section{Commutative Rings}
 
