@@ -1216,6 +1216,161 @@ abelian, if commutativity: $x+y=y+x$.
 
 \subsection{Linear Algebra; Linear Algebra with commutative rings as fields}
 
+\subsubsection{Linear Algebra}
+
+\begin{definition}[subspace]
+	If $V$ vector space over field $k$, \\
+	then \textbf{subspace} of $V$ is subset $U$ of $V$ s.t. 
+	\begin{enumerate}
+		\item $0\in U$
+		\item $u,u' \in U$ imply $u+u' \in U$ 
+		\item $u\in U$, and $a\in k$ imply $au \in U$
+	\end{enumerate}
+	\textbf{proper subspace} of $V \equiv U \subsetneq V$ is subspace $U \subseteq V$ with $U \neq V$.
+\end{definition}
+$U =V$, $U = \lbrace 0 \rbrace$ are always subspaces of a vector space $V$. 
+
+\textbf{Examples} (Example 3.70 Rotman (2010) \cite{JRotman2010}) 
+\begin{enumerate}
+	\item[(ii)] If $V=(a_1, \dots a_n)$, $v\neq 0$, $v\in \mathbb{R}^n$, \\
+	line through origin $l = \lbrace av | a \in \mathbb{R} \rbrace$ is a subspace of $\mathbb{R}^n$. \\
+	plane through origin $=\lbrace av_1 + bv_2 | v_1 , v_2 \text{ fixed pair of noncollinear vectors, } a,b \in \mathbb{R} \rbrace$ are subspaces of $\mathbb{R}^n$
+	\item[(iii)] If $m\leq n$, $\mathbb{R}^m$ regarded as set of all vectors in $\mathbb{R}^n$ s.t. last $n-m$ coordinates are $0$, then $\mathbb{R}^m$ subspace of $\mathbb{R}^n$.
+	e.g. $\mathbb{R}^2 = \lbrace (x,y,0) \in \mathbb{R}^3 \rbrace \subsetneq \mathbb{R}^3$
+	\item[(iv)] If $k$ field, \textbf{homogeneous linear system over $k$ } of $m$ equations in $n$ unknowns is a set of equations
+	\[
+	\begin{aligned}
+	a_{11} x_1 + \dots + a_{1n} x_n = 0 & \\
+	a_{21} x_1 + \dots + a_{2n} x_n = 0 & \\
+	\vdots \vdots & \\
+		a_{m1} x_1 + \dots + a_{mn} x_n = 0 & 
+	\end{aligned}
+	\] 
+	where $a_{ji} \in k$.
+	
+	\textbf{solution} of this system is vector $(c_1 \dots c_n) \in k^n$ s.t. $\sum_i a_{ji} c_i  =0$, $\forall \, j$. \\
+	solution $(c_1 \dots c_n)$ \textbf{nontrivial} if $\exists$ some $c_i \neq 0$. \\
+	\textbf{solution space} (or null space) of system $=$ set of all solutions. \\
+	solution space also a subspace of $k^n$
+\end{enumerate}
+
+e.g. $k = \mathbb{I}_p$, 
+\[
+\begin{aligned}
+& 3x - 2y + z \equiv 1 \bmod{7} \\
+& x + y -2 z \equiv 0 \bmod{7} \\
+& -x + 2y + z \equiv 4 \bmod{7}
+\end{aligned}
+\]
+\begin{definition}[list]
+	list $:=$ vector space $V$ is ordered set $v_1 \dots v_n$ of vectors in $V$, i.e. 
+	$\exists \, $ some $n\geq 1$, $\exists \, $ some function $\varphi$ 
+	\[
+	\varphi : \lbrace 1,2\dots n \rbrace \to V
+	\]
+	with $\varphi(i) = v_i \quad \, \forall \, i$
+\end{definition}
+
+Thus, $X = \text{im}\varphi$.
+
+$X$ ordered, $\varphi$ need not be injective. 
+
+\begin{definition}[k-linear combination]
+	$k$-linear combination of list $v_1\dots v_n$ in $V$, $V\equiv $ vector space over field $k$, is vector $v$ of form 
+	\[
+	v = a_1 v_1 + \dots + a_n v_n  = \sum_{i=1} a_i v_i \quad \, \forall \, a_i \in k, \, \quad \, \forall \, i
+	\]
+\end{definition}
+
+\begin{definition}[list]
+	If list $X = v_1 \dots v_m$ in vector space $V$, then \\
+	\textbf{subspace spanned by } $X$, $\langle v_1 \dots v_m \rangle := $ set of all $k$-linear combinations of $v_1 \dots v_m$.  Also, say $v_1 \dots v_m $ spans $\langle v_1 \dots v_m\rangle$. 
+\end{definition}
+
+\begin{lemma}[$\langle v_1 \dots v_m \rangle$ is smallest subspace of $V$ containing $v_1\dots v_m$]\label{Lemma:smallest_subspace}
+\begin{enumerate}
+	\item[(i)] Every intersection of subspaces of $V$ is itself a subspace.
+	\item[(ii)] If $X= v_1 \dots v_m$ list in $V$, then intersection of all subspaces of $V$ containing $X$ is $\langle v_1 \dots v_m \rangle$, subspace spanned by $v_1\dots v_m$, so $\langle v_1 \dots v_m \rangle$ is smallest subspace of $V$ containing $X$. 
+\end{enumerate}
+\end{lemma}
+cf. (Lemma 3.71 Rotman (2010) \cite{JRotman2010}) 
+
+\begin{proof}
+\begin{enumerate}
+	\item[(i)] Consider $\bigcap_{\alpha \in I} V_{\alpha}$, $\forall \, \alpha \in I$, $V_{\alpha} $ subspace of $V$
+	\begin{enumerate}
+		\item[(i)] $0\in V_{\alpha}$, $\forall \, \alpha \in I$, so $0\in \bigcap_{\alpha \in I} V_{\alpha}$,
+		\item[(ii)] Let $u,u' \in \bigcap_{\alpha \in I} V_{\alpha}$. Then $u,u' \in V_{\alpha}$, $\forall \, \alpha \in I$. Consider $\beta \in I$. $u, u' \in V_{\beta}$, so $u+u' \in V_{\beta}$.  Without loss of generality, $u + u' \in V_{\alpha}$, $\forall \, \alpha \in I$.  Then $u+u' \in \bigcap_{\alpha \in I} V_{\alpha}$
+		\item[(iii)] Let $u\in \bigcap_{\alpha \in I} V_{\alpha}$.  Consider $\alpha \in k$. Since $u\in V_{\alpha}$, $\forall \, \alpha \in I$, $au\in V_{\alpha}$, $\forall \, \alpha \in I$.  \\
+		Then $au \in \bigcap_{\alpha \in I} V_{\alpha}$
+	\end{enumerate}
+\item[(ii)] Let $X = \lbrace v_1 \dots v_m \rbrace$, let $\mathcal{S} \equiv $ family of all subspaces of $V$ containing $X$. 
+
+$\bigcap_{S \in \mathcal{S}} S \subseteq \langle v_1 \dots v_m \rangle$ because $\langle v_1 \dots v_m \rangle \in \mathcal{S}$, since, \\
+\qquad \, $\langle v_1 \dots v_m \rangle$ is \emph{a} subspace of $V$ containing $X$. 
+
+If $S\in \mathcal{S}$, then $S\ni v_1 \dots v_m$.  As shown above, $\forall \, v\in \langle v_1 \dots v_m \rangle$, $v\in S$, and thus $v\in \bigcap_{S\in \mathcal{S}} S$. $\langle v_1 \dots v_m \rangle \subseteq \bigcap_{S\in \mathcal{S}} S$.  
+\end{enumerate}
+	\end{proof}
+
+Were all terminology in algebra consistent, \\
+$\langle v_1 \dots v_m \rangle \equiv $ subspace \emph{generated} by $X$.  
+
+Reason for different terms is that group theory, rings, vector spaces developed independently of each other.
+
+\textbf{Example 3.72 of Rotman (2010) \cite{JRotman2010}}
+\begin{enumerate}
+	\item[(i)]
+	\item[(ii)]
+	\item[(iii)] \textbf{polynomial vector space; polynomials as a vector space}.  \\
+	Vector space need not be spanned by finite list. \\
+	e.g. $V=k[x]$, \\
+	Suppose $X= f_1(x) \dots f_m(x)$ finite list in $V$. \\
+	If $d= $ largest degree of any of $f_i(x)$, \\
+	then every (nonzero) $k$-linear combination of $f_1(x), \dots f_m(x)$ has degree at most $d$. \\
+	Thus $x^{d+1} \notin \langle f_1(x) \dots f_m(x) \rangle$, so $X$ doesn't span $k[x]$
+\end{enumerate}
+
+\begin{definition}[finite-dimensional vector space; infinite-dimensional vector space]
+	Vector space $V$ is \textbf{finite-dimensional} if it's spanned by a finite list; otherwise $V$ is \textbf{infinite-dimensional}.
+\end{definition}
+
+\begin{proposition}[linear dependent span properties]
+If vector space $V$, list $X=v_! \dots v_m$ spanning $V$, following are equivalent:
+	\begin{enumerate}
+		\item[(i)] $X$ isn't shortest spanning list 
+		\item[(ii)] some $v_i$ is in subspace spanned by others, i.e. $v_i \in \langle v_i \dots \widehat{v}_i \dots v_m \rangle$, 
+		\item[(iii)]		$\exists \, a_1 \dots a_m$ not all $0$ s.t. $\sum_{l=1}^m a_l v_l = 0$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $\Longrightarrow$ (ii). If $X$ isn't hosrtest spanning list, then 1 of vectors in $X$ can be thrown out, and shorter list still spans, i.e. cf. Lemma \ref{Lemma:smallest_subspace}(Lemma 3.71, Rotman (2010) \cite{JRotman2010}); let $\mathcal{S} \equiv $ family of all subspaces of $V$ containing $X$. 
+
+EY: 20180610 
+Let $\bigcap_{S\in \mathcal{S}} S$. $\bigcap_{S \in \mathcal{S}} S \neq \langle v_1 \dots v_m \rangle$, $\bigcap_{S \in \mathcal{S}} S \subset \langle v_1 \dots v_m \rangle$ \\
+$\exists \, v \in \langle v_1 \dots v_m \rangle$, say$v= \sum_{i=1}^m a_i v_i$ s.t. $\exists \, S \in \mathcal{S}$, s.t. $v\notin S$.  
+
+(ii) $\Longrightarrow$ (iii) If $v_i = \sum_{j\neq i} c_j v_j$, define $a_i  = -1 \neq 0$, $a_j = c_j$, $\forall \, j \neq i$.  Then $\sum_{l=1}^m a_l v_l = -v_i + \sum_{j\neq i } c_j v_j = 0$
+
+(iii) $\Longrightarrow$ (i) Suppose for $i \in 1 \dots m$, $a_i \neq 0$.  $v_i = -\sum_{j\neq i} \frac{a_j}{a_i} v_j$.  $\langle v_1 \dots \widehat{v}_i \dots v_m\rangle$ still spans $V$ (i.e. deleting $v_i$ gives a shorter list, which still spans).  
+
+For instance, if $v\in \langle v_1 \dots v_m \rangle$, $v= \sum_{l=1}$%m c_l v_l = \sum_{j\neq i} c_j v_j + c_i \left( - \sum_{j\neq i} \frac{a_j}{a_i} v_j \right) = \sum_{j\neq i } \left( c_j - \frac{ c_i a_j}{a_i} \right) v_j$ so $\langle v_1\dots v_m \rangle$ wasn't shortest spanning list.
+
+
+
+
+
+	\end{proof}
+
+\exercisehead{3.67} Suppose $\text{dim}V >1$. Then $\exists \, $ at least 2 elements in a basis of $V$, say $e_1$, $e_2$. (Thm. 3.78 of Rotman (2010) \cite{JRotman2010}, "Every finite-dim. vector space $V$ has a basis; Def. of $\text{dim}$, "number of elements in a basis of $V$").   
+
+Consider subspaces $\langle e_1 \rangle$, $\langle e_2 \rangle$, subspaces spanned by $e_1,e_2$, respectively. Whether $V= \langle e_1, e_2 \rangle$ or $V= \langle e_1, e_2\rangle$, $\langle e_1 \rangle , \langle e_2 \rangle \neq \lbrace 0 \rbrace$ nor $V$. Contradiction of hypothesis.  
+
+Thus, "If only subspaces of a vector space $V$ are $\lbrace 0 \rbrace$ and $V$ itself, $\text{dim}(V) \leq 1$."
+
+
+
 \begin{proposition}[Matrix representation of linear transformation; 3.94 of Rotman (2010) \cite{JRotman2010}]\label{Prop:MatRepofLinearTransform}
 	If linear transformation $T: k^n \to k^m$, then $\exists \,  A \in \text{Mat}_k(m,n)$ s.t. 
 	\[
