@@ -1,8 +1,8 @@
 /**
- * @file   : gcd.h
+ * @file   : factor.h
  * @author : Ernest Yeung
  * @email  : ernestyalumni@gmail.com
- * @brief  : GCD of 2 integers
+ * @brief  : Header file for 
  * @ref    : pp. 159 Ch. 9 Modular Arithmetic; Edward Scheinerman, C++ for Mathematicians: An Introduction for Students and Professionals. Taylor & Francis Group, 2006. 
  * 
  * If you find this code useful, feel free to donate directly and easily at this direct PayPal link: 
@@ -20,24 +20,5 @@
  * COMPILATION TIPS:
  *  g++ -std=c++17 -c gcd.cpp
  * */
-#ifndef _FIELDS_GCD_H_
-#define _FIELDS_GCD_H_
-
-namespace Fields
-{
-
-/**
- * @brief Calculate the greatest common divisor of 2 integers.
- * @details Note: gcd(0, 0) will return 0 and print an error message.
- * @param a the first integer
- * @param b the second integer
- * @return the greatest common divisor of a and b
- * */
-long gcd(long a, long b);
-
-// overload
-int gcd(int a, int b);
-
-} // namespace Fields
-
-#endif // _FIELDS_GCD_H_ this line and previous are the mechanism to prevent double inclusion
+#ifndef __GCD_H__
+#define __GCD_H__

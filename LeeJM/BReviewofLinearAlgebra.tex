@@ -116,8 +116,8 @@ F(V) = \lbrace y | y = w + Tv = F(v), \, v \in V, \text{ fixed } w \in W , \text
 $S:V\to W$, \, $T:W \to X$
 
 \begin{enumerate}
-\item[(a)] $\text{rank}S \leq \text{dim}V$ \quad \, $\text{rank}S = \text{dim}V$ iff $S$ injective
-\item[(b)] $\text{rank}S \leq \text{dim}W$ \quad \, $\text{rank}S = \text{dim}W$ iff $S$ surjective
+\item[(a)] $\text{rank}S \leq \text{dim}V$ \quad \, with $\text{rank}S = \text{dim}V$ iff $S$ injective
+\item[(b)] $\text{rank}S \leq \text{dim}W$ \quad \, with $\text{rank}S = \text{dim}W$ iff $S$ surjective
 \item[(c)] if $\text{dim}V = \text{dim}W$ and $S$ either injective or surjective, then $S$ isomorphism 
 \item[(d)] $\text{rank}TS \leq \text{rank}S$ \quad \, $\text{rank}TS = \text{rank}S$ iff $\text{im}S \bigcap \text{ker}T = 0$ 
 \item[(e)] $\text{rank}TS \leq \text{rank}T$ \quad \, $\text{rank}TS = \text{rank}T$ iff $\text{im}S + \text{ker}T = W$
@@ -129,8 +129,36 @@ EY : Exercise B.22(d) is useful for showing the chart and atlas of a Grassmannia
 
 \begin{proof}
 \begin{enumerate}
-\item[(a)]
-\item[(b)]
+\item[(a)] Recall the \textbf{rank-nullity theorem}:  
+\begin{theorem}[Rank-Nullity Theorem] 
+	\begin{equation}
+	\text{dim}(\text{im}(S)) + \text{dim}(\text{ker}(S)) = \text{dim}V  
+	\end{equation}			
+\end{theorem} 
+Now
+\[
+\begin{gathered}
+\text{rank}(S) + \text{dim}(\text{ker}(S)) \equiv \text{dim}(\text{im}(S)) + \text{dim}(\text{ker}(S)) = \text{dim}V  \\
+\Longrightarrow \boxed{ 	\text{rank}(S) \leq \text{dim}V  }
+\end{gathered}
+\]
+
+If $\text{rank}(S) = \text{dim}{V}$, \\
+then by rank-nullity theorem, $\text{dim}(\text{ker}(S)) = 0$, implying that $\text{ker}S = \lbrace 0 \rbrace$.  \\
+Suppose $v_1, v_2 \in V$ and that $S(v_1) = S(v_2) $.  By linearity of $S$, $S(v_1) - S(v_2) = S(v_1-v_2) = 0$, which implies, since $\text{ker}S = \lbrace 0 \rbrace$, that $v_1 - v_2 = 0$.  \\
+$\Longrightarrow v_1 = v_2$.  Then by definition of injectivity, $S$ injective.  
+
+If $S$ injective, then $S(v)=0$ implies $v=0$.  Then $\text{ker}S = \lbrace 0 \rbrace$.  Then by rank-nullity theorem, $\text{rank}(S) = \text{dim}{V}$.  
+
+\item[(b)] 		$\forall \, w \in \text{im}(S)$, $w\in W$.  Clearly $\text{rank}S \leq \text{dim}W$.  
+
+If $S$ surjective, $\text{im}(S) = W$.  Then $\text{dim}(\text{im}(S)) = \text{rank}S = \text{dim}W$.  \\
+
+If $\text{rank}S = \text{dim}W = m$, then $\text{im}(S)$ has basis $\lbrace y_i \rbrace_{i=1}^m$, $y_i \in \text{im}(S)$, so $\exists \, x_i \in V$, $i=1\dots m$ s.t. $S(x_i) = y_i$, with $\lbrace S(x_i) \rbrace_{i=1}^m $ linearly independent.  
+
+Since $\lbrace S(x_i) \rbrace_{i=1}^m$ linearly independent and $\text{dim}W = m$, $\lbrace S(x_i) \rbrace_{i=1}^m$ basis for $W$.   \\
+$\forall \, w \in W$, $w=\sum_{i=1}^m w^i S(x_i) = S(\sum_{i=1}^m w^i x_i)$.  $\sum_{i=1}^m w^i x_i \in V$.  $S$ surjective.  
+
 \item[(c)]
 \item[(d)] Now 
 \[

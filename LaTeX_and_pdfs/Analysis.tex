@@ -1,0 +1,297 @@
+% file: Analysis.tex
+% Analysis, in unconventional ``grande'' format; fitting a widescreen format
+% 
+% github        : ernestyalumni
+% linkedin      : ernestyalumni 
+% wordpress.com : ernestyalumni
+%
+% This code is open-source, governed by the Creative Common license.  Use of this code is governed by the Caltech Honor Code: ``No member of the Caltech community shall take unfair advantage of any other member of the Caltech community.'' 
+% 
+
+\documentclass[10pt]{amsart}
+\pdfoutput=1
+%\usepackage{mathtools,amssymb,lipsum,caption}
+\usepackage{mathtools,amssymb,caption}
+
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[table]{xcolor}
+\usepackage{pdfpages}
+%\usepackage[version=3]{mhchem}
+%\usepackage{mhchem}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,backgrounds} % background for framed option
+
+\usepackage{multicol}
+
+\hypersetup{colorlinks=true,citecolor=[rgb]{0,0.4,0}}
+
+\oddsidemargin=15pt
+\evensidemargin=5pt
+\hoffset-45pt
+\voffset-55pt
+\topmargin=-4pt
+\headsep=5pt
+\textwidth=1120pt
+\textheight=595pt
+\paperwidth=1200pt
+\paperheight=700pt
+\footskip=40pt
+
+
+
+
+
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
+
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+  {\bigskip\bigskip
+   \noindent{\small\bf Question #1.}
+   \bigskip}
+
+\newcommand{\problemhead}[1]
+  {
+   \noindent{\small\bf Problem #1.}
+   }
+
+\newcommand{\exercisehead}[1]
+  { \smallskip
+   \noindent{\small\bf Exercise #1.}
+  }
+
+\newcommand{\solutionhead}[1]
+  {
+   \noindent{\small\bf Solution #1.}
+   }
+
+
+\title{Analysis Dump}
+\author{Ernest Yeung \href{mailto:ernestyalumni@gmail.com}{ernestyalumni@gmail.com}}
+\date{20 Nov 2017}
+\keywords{Analysis, Functional Analysis}
+\begin{document}
+
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\lstset{language=Python,
+ frame=bottomline,
+ basicstyle=\scriptsize,
+ identifierstyle=\color{blue},
+ keywordstyle=\bfseries,
+ commentstyle=\color{darkgreen},
+ stringstyle=\color{red},
+ }
+%\lstlistoflistings
+
+\maketitle
+
+From the beginning of 2016, I decided to cease all explicit crowdfunding for any of my materials on physics, math.  I failed to raise \emph{any} funds from previous crowdfunding efforts.  I decided that if I was going to live in \emph{abundance}, I must lose a scarcity attitude.  I am committed to keeping all of my material \textbf{open-sourced}.  I give all my stuff \emph{for free}.   
+
+In the beginning of 2017, I received a very generous donation from a reader from Norway who found these notes useful, through \emph{PayPal}.  If you find these notes useful, feel free to donate directly and easily through \href{https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ernestsaveschristmas%2bpaypal%40gmail%2ecom&lc=US&item_name=ernestyalumni&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted}{PayPal}, which won't go through a 3rd. party such as indiegogo, kickstarter, patreon.  Otherwise, under the \emph{open-source MIT license}, feel free to copy, edit, paste, make your own versions, share, use as you wish.    
+
+\noindent gmail        : ernestyalumni \\
+linkedin     : ernestyalumni \\
+twitter      : ernestyalumni \\
+
+\begin{multicols*}{2}
+
+  
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+
+
+\begin{abstract}
+Everything about Analysis, real analysis, complex analysis, functional analysis, Fourier series, Fourier transforms, Fourier analysis    
+
+\end{abstract}
+
+\part{Fourier Analysis}
+
+\section{Fourier transform}
+
+cf. Ch. IX of Reed and Simon \cite{ReSi1980}, from pp. 318
+
+\begin{definition}[Schwartz space]
+Showing Reed and Simon \cite{ReSi1980}'s notation and wikipedia's notation (that'll be used here), respectively
+\[
+	\mathcal{S}(\mathbb{R}^n) \equiv S(\mathbb{R}^n) = \text{ Schwartz space of $C^{\infty}$ functions of rapid decrease, i.e. } 
+	\]
+	\begin{equation}
+	S(\mathbb{R}^n) = \lbrace f\in C^{\infty}(\mathbb{R}^n) | \| f\|_{\alpha, \beta} < \infty, \, \forall \, \alpha, \beta \in \mathbb{Z}^n_+ \rbrace 
+	\end{equation}
+	where $\alpha , \beta$ are multiindices, $C^{\infty}(\mathbb{R}^n)$ is set of smooth functions from $\mathbb{R}^n$ to $\mathbb{C}$, and 
+	\begin{equation}
+	\| f\|_{\alpha,\beta} = \sup_{\mathbf{x} \in \mathbb{R}^n }{ | \mathbf{x}^{\alpha} D^{\beta} f(\mathbf{x}) | }
+	\end{equation}
+cf. wikipedia definition of Schwartz space
+\end{definition}
+
+cf. IX.1 The Fourier transform on $S(\mathbb{R}^n)$ and $S'(\mathbb{R}^n)$, convolutions of Reed and Simon \cite{ReSi1980}  
+
+\begin{definition}
+	Suppose $f\in S(\mathbb{R}^n)$, \\
+	\textbf{Fourier transform} of $f$, $\widehat{f}$, give by 
+	\begin{equation}
+	\widehat{f}(\mathbf{\lambda}) = \frac{1}{(2\pi)^{n/2)}} \int_{\mathbb{R}^n} e^{-i \mathbf{x}\cdot \mathbf{\lambda} } f(\mathbf{x})d\mathbf{x} 
+	\end{equation}
+	where $\mathbf{x} \cdot \mathbf{\lambda}  =\sum_{i=1}^n x_i \lambda_i $  
+	
+	Inverse Fourier transform of $f$, $\check{f}$, 
+	\[
+	\check{f}(\lambda) = \frac{1}{(2\pi)^{n/2}} \int_{\mathbb{R}^n} e^{i\mathbf{x}\cdot \mathbf{\lambda} } f(\mathbf{x}) d\mathbf{x} 
+	\]
+	Reed and Simon \cite{ReSi1980} mentions this notation and I will use it more here
+	\[
+	\widehat{f} \equiv \mathcal{F} f
+	\]
+\end{definition}
+
+Standard multiindex notation:  
+\[
+\alpha = \langle \alpha_1, \dots \alpha_n \rangle
+\]
+$n$-tuple of nonnegative integers, $\alpha \in \mathbb{Z}_+^n$  
+
+$I_+^n \equiv $ collection of all multiindices \\
+Define: 
+\[
+\begin{gathered}
+	|\alpha | := \sum_{i=1}^n \alpha_i \\
+	\mathbf{x}^{\alpha} := x_1^{\alpha_1} x_2^{\alpha_2} \dots  x_n^{\alpha_n} \\
+	D^{\alpha} := \frac{\partial^{ |n |} }{ \partial x_1^{\alpha_1} \partial x_2^{\alpha_2} \dots \partial x_n^{\alpha_n} }
+x^2 := \sum_{i=1}^n x_i^2 
+\end{gathered}
+\]
+
+\begin{lemma}
+	$ \widehat{ \, } $, $\check{\, } \equiv \mathcal{F}, \mathcal{F}^{-1}$ are cont. linear transformations of $S(\mathbb{R}^n)$ into $S(\mathbb{R}^n)$.  
+	
+	Furthermore, if $\alpha, \beta \in I_+^n$, then 
+	\begin{equation}
+	((i\lambda)^{\alpha} D^{\beta}\widehat{f})(\lambda) = \widehat{ D^{\alpha}((-ix)^{\beta}f(x)) }  
+	\end{equation}
+	cf. (IX.1) of Reed and Simon \cite{ReSi1980}.  
+\end{lemma}
+
+\begin{proof}
+$\widehat{ \, } \equiv \mathcal{F}$ clearly linear (since $\int$ linear), \\
+Since 
+\[
+\begin{gathered}
+	(\lambda^{\alpha} D^{\beta} \widehat{f} )(\lambda) = \lambda^{\alpha} D^{\beta} \frac{1}{(2\pi)^{n/2}} \int_{\mathbb{R}^n } e^{-i\mathbf{x}\cdot \mathbf{\lambda}} f(\mathbf{x})d\mathbf{x} = \frac{1}{ (2\pi)^{n/2}} \int_{\mathbb{R}^n} \lambda^a (-i\mathbf{x})^{\beta} e^{-i\mathbf{\lambda} \cdot \mathbf{x} } f(\mathbf{x}) d\mathbf{x} = \\
+	= \frac{1}{ (2\pi)^{n/2}} \int_{\mathbb{R}^n} \frac{1}{(-i)^a} (D_x^a e^{-i\mathbf{\lambda} \cdot \mathbf{x}}) (-i\mathbf{x})^{\beta} f(\mathbf{x}) d\mathbf{x} = 0 + \frac{(-i)^{\alpha} }{ (2\pi)^{n/2}} \int_{\mathbb{R}^n} e^{-i \mathbf{\lambda} \cdot \mathbf{x} } D_x^{\alpha} ((-i\mathbf{x})^{\beta}f(\mathbf{x}))d\mathbf{x} 
+\end{gathered}
+\]
+Last step is just integration by parts and using given $\| f \|_{\alpha, \beta} < \infty$ property.  
+
+Conclude $\| \widehat{f} \|_{\alpha, \beta} = \sup_{\mathbf{\lambda} } | \mathbf{\lambda}^{\alpha} (D^{\beta} \widehat{f})(\lambda) | \leq \frac{1}{ (2\pi)^{n/2}} \int | D_{\mathbf{x}}^{\alpha}(\mathbf{x}^{\beta} f) | d\mathbf{x} < \infty$.  
+
+Thus, 
+\[
+\mathcal{F}: S(\mathbb{R}^n) \to S(\mathbb{R}^n) 
+\]
+and 
+\[
+((i\mathbf{\lambda})^{\alpha} D^{\beta}\widehat{f})(\lambda)  = \widehat{ D^{\alpha}((-ix)^{\beta}f(x)) }
+\]
+
+If $k$ large enough, $\int  (1+x^2)^{-k} d\mathbf{x} < \infty$ (Clearly $\int \frac{1}{(1+x^2)}= \arctan{x} \xrightarrow{ \infty, -\infty} \frac{\pi}{2} - (-\frac{\pi}{2}) = \pi < \infty$), so 
+\[
+\| \widehat{f} \|_{\alpha, \beta} \leq \frac{1}{(2\pi)^{n/2}} \int_{\mathbb{R}^n} \frac{ (1+x^2)^{-k} }{ (1+x^2 )^{-k} } |D_x^{\alpha} (\mathbf{x}^{\beta} f) | d\mathbf{x} \leq \frac{1}{(2\pi)^{n/2}} (\int_{\mathbb{R}^n } (1+x^2)^{-k} d\mathbf{x}) \sup_{\mathbf{x}} |(1+x^2)^k D_x^{\alpha} (\mathbf{x}^{\beta} f)|
+\]
+By Leibnitz rule, $(fg)^{(n)}(x) = \sum_{k=0}^n \binom{n}{k} f^{(n-k)}(\mathbf{x}) g^{(k)}(\mathbf{x}) $, $\exists \, $ constants $c_j$, multiindices $\alpha_j \beta_j \in I_+^n$, s.t. 
+\[
+\| \widehat{f} \|_{\alpha, \beta} \leq \sum_{i=1}^M c_j \| f\|_{\alpha_j,\beta_j} 
+\]
+where $\| f\|_{\alpha_j , \beta_j} = \sup_{\mathbf{x} \in \mathbb{R}^n } | \mathbf{x}^{\alpha} D^{\beta} f(\mathbf{x}) |$, which we recall, was used.  
+
+Thus $\| \widehat{f} \|_{\alpha,\beta}$ bounded, and by, as Reed and Simon \cite{ReSi1980} said, Thm. V.4, therefore cont.  But I think that reference is incorrect.  I looked up possible theorems online, and possibly it's, \\
+since $\widehat{f}$ bounded and has closed graph $(\mathbf{\lambda}, \widehat{f}(\mathbf{\lambda}))$, then $f$ cont.  
+
+Likewise for $\check{f}$
+
+	\end{proof}
+
+cf. Thm. IX.1. of Reed and Simon (1980)\cite{ReSi1980}
+\begin{theorem}[(Fourier inverse thm.)]
+	Fourier transform $\mathcal{F}$ is linear, bicont., bijection: $\mathcal{F} : S(\mathbb{R}^n ) \to S(\mathbb{R}^n) $, and $\mathcal{F}^{-1} = \check{\, }$.  
+\end{theorem}
+\begin{proof}
+Prove $\mathcal{F} \mathcal{F}^{-1} f = \mathcal{F}^{-1} \mathcal{F} f = f$ for $f$ contained in dense set $C^{\infty}(\mathbb{R}^n)$.  
+
+Let $C_{\epsilon}$ be cube of volume $\left( \frac{2}{\epsilon}\right)^n$ centered at $0\in \mathbb{R}^n$.  
+
+Choose $\epsilon$ small enough s.t. support of $f$ is contained in $C_{\epsilon}$.  
+
+Let $K_{\epsilon} := \lbrace \mathbf{k} \in \mathbb{R}^n | \forall \, k_i / \pi \epsilon \text{is an integer } \rbrace$, then 
+\[
+f(x) = \sum_{\mathbf{k} \in K_{\epsilon}}    ((\frac{1}{2} \epsilon)^{n/2} e^{i\mathbf{k}\cdot \mathbf{x}}, f) (\frac{1}{2} \epsilon)^{n/2} e^{-i \mathbf{k} \cdot \mathbf{x}} 
+\]
+where $(\cdot,\cdot )$ is the inner product.  
+
+The expression immediately above for $f(x)$ is just the Fourier series of $f$, which converges uniformly in $C_{\epsilon}$, to $f$, since $f$ cont. diff. (Thm. II.8 of Reed and Simon (1980) \cite{ReSi1980}).  Recall this theorem says:  \\
+Suppose $f(x)$ periodic of period $2\pi$ and is cont. diff.  Then functions $\sum_{-M}^{M} c_n e^{inx} \xrightarrow{M\to \infty} f(x)$ uniformly converges.  
+
+\begin{equation}
+f(x) = \sum_{\mathbf{k} \in K_{\epsilon} } \frac{\widehat{f}(\mathbf{k}) e^{i\mathbf{k}\cdot \mathbf{x}} }{ (2\pi)^{n/2} } (\pi \epsilon)^n 
+\end{equation}
+cf. (IX.2) of Reed and Simon (1980)\cite{ReSi1980}.  
+
+Since $\mathbb{R}^n $ is the disjoint union of cubes of volume $(\pi \epsilon)^n$ centered around pts. in $K_{\epsilon}$, (indeed, $K_{\epsilon} = \lbrace \mathbf{k} \in \mathbb{R}^n | k_i/\pi \epsilon \in \mathbb{Z} \, \forall \, i=1,2,\dots n\rbrace$) then 
+\[
+\sum_{\mathbf{k} \in K_{\epsilon} } \frac{\widehat{f}(\mathbf{k}) e^{i \mathbf{k}\cdot \mathbf{x} } }{ (2\pi )^{n/2} } (\pi \epsilon)^n 
+\]
+is just Riemann sum for integral of function 
+\[
+\widehat{f}(\mathbf{k}) e^{i\mathbf{k}\cdot \mathbf{x} } /(2\pi)^{n/2}
+\]
+By lemma, $\widehat{f}(\mathbf{k})e^{i\mathbf{k}\cdot \mathbf{x} } \in S(\mathbb{R}^n)$, so Riemann sums converge to integral.  Thus 
+\[
+\mathcal{F}^{-1}\mathcal{F}f = f
+\]
+
+	\end{proof}
+
+
+
+
+
+
+
+
+\end{multicols*}
+
+
+\begin{thebibliography}{9}
+	
+\bibitem{ReSi1980}	
+Michael Reed and Barry Simon. \textbf{Functional Analysis (Methods of Modern Mathematical Physics, Vol. 1)}.  Academic Press.  1980.  	
+	
+	
+\end{thebibliography}
+
+
+\end{document}
+	
+	
+	
+
