@@ -1420,7 +1420,7 @@ We can change order of integration in each term so to do $x^i$ integration first
 By fundamental thm. of calculus, terms for which $i\neq n$ reduce to 
 \[
 \begin{gathered}
-\sum_{i=1}^{n-1} (-1)^{i-1} \int_0^R \int_{-R}^R \dots \int_{-R}^R \frac{\partial \omega_i}{\partial x^i}(x) dx^1 \dots dx^n = \sum_{i=1}^{n-1} (-1)^{i-1} \int_0^R \int_{-R}^R \dots \int_{-R}^R \frac{\partial \omega_i}{\parital x^i}(x) dx^i dx^1 \dots \widehat{dx}^i \dots dx^n = \\
+\sum_{i=1}^{n-1} (-1)^{i-1} \int_0^R \int_{-R}^R \dots \int_{-R}^R \frac{\partial \omega_i}{\partial x^i}(x) dx^1 \dots dx^n = \sum_{i=1}^{n-1} (-1)^{i-1} \int_0^R \int_{-R}^R \dots \int_{-R}^R \frac{\partial \omega_i}{\partial x^i}(x) dx^i dx^1 \dots \widehat{dx}^i \dots dx^n = \\
 = \sum_{i=1}^{n-1} (-1)^{i-1} \int_0^R \int_{-R}^R \dots \int_{-R}^R [\omega_i(x)]_{x^i = -R}^{x^i = R} dx^1 \dots \widehat{dx}^i \dots dx^n = 0 
 \end{gathered} 
 \]
@@ -1459,12 +1459,66 @@ $\forall \, $ pt. $O \in M$, $\alpha:(v,O) \mapsto O' \equiv O + v$, $\alpha (\c
 $\Longrightarrow M \equiv \mathbf{M}$.
 
 $\forall \, (O, \lbrace e_i \rbrace)_{1 \leq i \leq n }$, where $\lbrace e_i \rbrace$ basis of $\mathbf{M}$, $M \equiv \mathbf{M} = \mathbb{R}^n$ so isomorphism $M \simeq \mathbb{R}^n$ \\
+
+i.e. $\alpha$ is \textbf{without fixed pts.}, meaning, 
+
+Given pointed space $(M, O)$, where base pt. $O\in M$, we can associate $\forall \, p \in M$, vector $\mathbf{x} \in \mathbf{M}$, by 1-to-1 mapping $M\to \mathbf{M}$. 
+
+So for 
+\[
+\begin{aligned}
+& \alpha : \mathbf{M} \times M \to M \\ 
+& \alpha(\mathbf{x}, p) = p' = p + \mathbf{x}
+\end{aligned}
+\]
+Consider 
+\[
+\begin{gathered}
+	\alpha(\mathbf{x}, O) = p = \alpha_O(\mathbf{x}) = p \Longrightarrow \exists \, \alpha_O^{-1}(p) = \mathbf{x} \in \mathbf{M}
+\end{gathered}
+\]
+
+\begin{enumerate}
+	\item tangent space of $M$ in $p\in M$ is vector space $T_pM \equiv (\mathbf{M}, p) \cong M$
+	\item If $\mathbf{M}$ Euclidean space, affine space $(M, \mathbf{M}, \alpha)$ is Euclidean
+	\item Call dim. of affine space $(M, \mathbf{M}, \alpha)$, dim. of $\mathbf{M} \equiv \text{dim}{\mathbf{M}}$
+\end{enumerate}
+$\lbrace \mathbf{e}_i \rbrace$ basis of $\mathbf{M}$
+
+
+
+
 \begin{definition}
   $(O, \lbrace e_i \rbrace) \equiv $ affine frame.
 
   $\forall \, $ affine frame $(O,\lbrace e_i \rbrace)$, $\exists \, $ coordinate system $x^{\alpha} : M \to \mathbb{R}$, \\
   where $x^{\alpha}(p)$ is $\alpha$th component, in basis $\lbrace e_i \rbrace$, of vector $p-O$
   \end{definition}
+
+\begin{proposition}[1.6, Pr\'{a}staro (1996) \cite{Pras1996}]
+	$\forall \, O \in M$, we have canonical identification $M \equiv \mathbf{M}$, since
+	\[
+	\begin{gathered}
+	\begin{aligned}
+	& \alpha^{-1}_O:M \to \mathbf{M} \\
+	& \alpha^{-1}_O(p) = \mathbf{x} 
+	\end{aligned} \qquad \quad \, 
+	\begin{aligned}
+	& \alpha_O : \mathbf{M} \to M \\
+	& \alpha_O: \mathbf{x} = \alpha(\mathbf{x}, O) = p
+	\end{aligned}
+	\end{gathered}
+	\]
+	Furthermore, \\
+	$\forall \, $ \textbf{affine frame} $(O, \lbrace \mathbf{e}_i \rbrace)_{1\leq i \leq d}$, where $\lbrace \mathbf{e}_i \rbrace$ basis of $\mathbf{M}$, \\
+	\phantom{Furthermore} $\exists \, $ isomorphism $M \cong \mathbb{R}^d$, \\
+	Then, $\forall \, (O, \lbrace \mathbf{e}_i \rbrace)_{1 \leq i \leq d}$, \\
+	\phantom{Then} $\exists \, $ coordinate system $x^{\alpha} : M \to \mathbb{R}$, \\
+	\phantom{Then $\exists \, $} where $x^{\alpha}(p) = \alpha$th component, in basis $\lbrace \mathbf{e}_i \rbrace$, of vector $p - O$. 
+	
+	
+	
+\end{proposition}
 
 \begin{theorem}[1.4 Pr\'{a}staro (1996) \cite{Pras1996}]
   Let $(x^{\alpha}), (\overline{a}^{\alpha})$ 2 coordinate systems correspond to affine frames $(O, \lbrace e_i \rbrace)$, $( \overline{O}, \lbrace \overline{e}_i \rbrace )$, respectively.
@@ -2662,10 +2716,72 @@ cf. Eq. (1.26) of Arnold, Kozlov, Neishtadt (2006) \cite{AKN2006}, where $\xi_1 
 
 $\sum_{i=1}^n \langle m_i \ddot{ \mathbf{r}}_i - \mathbf{F}_i , \mathbf{\xi}_i \rangle$ called "general equation of dynamics" or d'Alembert-Lagrange principle.  
 
+\part{Classical Mechanics}
 
+\section{Classical Mechanics}
 
+\subsection{Structure of Galilean Space-Time}
 
+cf. Sec. 3.1 - \emph{Structure of Galilean Space-Time} of Pr\'{a}staro (1996) \cite{Pras1996}.
 
+Mechanics assumes a particular simple formulation if formulated with respect to some spacetime manifold.
+
+In Galilean spacetime, it's possible to naturally recognize absolute objects, and others that depend on frames.
+
+cf. Def. 3.1 of Pr\'{a}staro (1996) \cite{Pras1996}
+\begin{definition}[Galilean spacetime structure]
+\begin{enumerate}
+	\item Galilean spacetime structure $:= (\mathcal{G}, g)$ where \\
+	$\mathcal{G}$ is (fiber bundle space-time)
+	\begin{equation}
+		\mathcal{G} \equiv \lbrace \tau : M \to T \rbrace
+	\end{equation}
+	where \\
+	$M = $ 4-dim. affine manifold (\textbf{space-time}); corresponding structure is $(M, \mathbf{M}, \alpha)$, \\
+\item	$T = $ 1-dim. affine space (\textbf{time}), corresponding affine structure is $(T, \mathbf{T}, \beta)$
+\item $\tau = $ surjective affine mapping, of constant rank $1$, s.t. $\forall \, p \in M$ associates its time $\tau(p) \in T$
+\end{enumerate}
+
+Put $\mathbf{S} = \text{ker}(\underline{\tau}) \equiv \text{ker}(D\tau)\in M$, \\
+	where $\underline{\tau} \equiv D\tau$, $D$ is symbol of derivative.\\	
+	Define 
+	\[
+	\begin{aligned}
+	& g: M \to vS_2^0(M) \equiv M \times S_2^0(\mathbf{S}) \\ 
+	& g(p) = (p, \underline{g})  \equiv (p, Dg) , \forall \, p \in M
+	\end{aligned}
+	\]
+	where $\underline{g} \equiv Dg$ is a Euclidean structure on $\mathbf{S}$.  $g$ is called vertical metric field.
+\end{definition}
+
+Thus, given $(M, \mathbf{M}, \alpha)$, $\forall \, (O, \lbrace \mathbf{e}_i)_{1 \leq i \leq d}$, $\lbrace \mathbf{e}_i \rbrace_{i=1\dots d}$, is basis of $\mathbf{M}$, 
+\[
+M \cong \mathbb{R}^4, \text{and } \exists \, \lbrace x^{\alpha} : M = \mathbb{R}^4 \to \mathbb{R} \rbrace_{\alpha = 1 \dots 4}
+\]
+
+\subsection{Fundamental Theorems of (Classical) Dynamics}
+
+cf. Sec. 3.4 - \emph{Fundamental Theorems of Dynamics} of Pr\'{a}staro (1996) \cite{Pras1996}.
+
+cf. Thm. 3.20 of Pr\'{a}staro (1996) \cite{Pras1996}
+\begin{theorem}[(Momentum Theorem)]
+	Variation of the free part of momentum of the observed motion of 1 body, in time interval $\Delta t \equiv [0, t]$ is equal to the corresponding impulse:
+	\begin{equation}
+	I[0,t] \equiv \int_0^t Fdt \equiv \left( \int_0^t F^j dt \right) \mathbf{e}_j
+	\end{equation}
+	where $\lbrace \mathbf{e}_j \rbrace_{1 \leq j \leq 3}$ is a fixed basis of $\mathbf{S}$
+	\begin{equation}
+		\overline{p}_{\psi}(t) - \overline{p}_{\psi}(0) = I[0,t]
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	\[
+\begin{gathered}
+\overline{p}_{\psi} = \mu \ddot{m}_{\psi} = \overline{f}_{\psi} \Longrightarrow \dot{ \overline{p}_{\psi}} = \dot{p}^j \mathbf{e}_j = F^j \textbf{e}_j \Longrightarrow \int_{[0,t]} \dot{p}^j dt = \int_{[0,t]}F^j dt
+\end{gathered}
+	\]
+	\end{proof}
 
 
 \end{multicols*}
