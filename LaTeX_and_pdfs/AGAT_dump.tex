@@ -448,7 +448,7 @@ ax \equiv b\bmod{m}
 \]
 In fact, $x=sb$, where $sa\equiv 1\bmod{m}$ is 1 solution.  Moreover, any 2 solutions are congruent $\bmod{m}$.
 
-i.e.  \\
+i.e.  % \\
 
 If $\gcd{a,b} = 1$, then $\forall \, y \in \mathbb{Z}$, $\exists \, x$ s.t. $ax \equiv y \bmod{b}$, $x=sy$, where $sa\equiv 1\bmod{b}$ is 1 solution.  \\
 Moreover, any 2 solutions are congruent $\bmod{m}$.  This implies that    \\
@@ -2642,6 +2642,34 @@ cf. Thm. 7.32 of Rotman (2010) \cite{JRotman2010}
 %--------------------------------------------------------------------------------
 % END of 20180202 
 %-------------------------------------------------------------------------------
+
+\section{Applications of Category Theory: Finite State Machines (FSM)}
+
+\begin{definition}[Finite State Machines $\equiv$ Finite State Automaton]
+	A deterministic finite state machine or acceptor deterministic finite state machine is a quintuple ($\Sigma, S, s_0, \delta F$) where \\
+	$\Sigma \equiv $ input alphabet (finite, non-empty set of symbols) \\
+ 	$S \equiv $ finite, non-empty set of states \\
+ 	$s_0 \equiv $ initial state, $s_0 \in S$ \\
+ 	$\delta \equiv $ state-transition function; $\delta : S \times \Sigma \to S$ (in a nondeterministic finite automaton, it would be $\delta : S \times \Sigma \to \mathcal{P}(S)$), i.e. $\delta$ would return a set of states; $\mathcal{P}(S) \equiv $ set of all subsets of $S$, including $\emptyset$ and $S \equiv$ power set. \\
+ 	$F \equiv $ set of final states, (possibly empty subset of $S$; $F\subseteq S$ or $F \subseteq S \cup \lbrace \emptyset \rbrace$)
+
+	Finite State Machine (FSM) is also known as a Finite State Automaton.
+\end{definition}
+cf. \href{https://xlinux.nist.gov/dads/HTML/finiteStateMachine.html}{Black, Paul E (12 May 2008). "Finite State Machine". \emph{Dictionary of Algorithms and Data Structres}}. U.S. National Institute of Standards and Technology (NIST).
+
+For both deterministic and non-deterministic FSMs, it's conventional to allow $\delta$ to be a partial function, i.e. 
+$\delta(q,x)$ doesn't have to be defined for every combination of $q \in S$, $x \in \Sigma$
+
+If FSM $M$ is in state $q$; the next symbol (input?) is $x$ and $\delta(q,x)$ not defined; then $M$ can announce an error (i.e. reject the input (???)). 
+
+
+\begin{definition}[Alphabet]
+	alphabet $:= $ nonempty set of symbols $\equiv \Sigma$ \\
+	string $:=$ finite sequence of members (i.e. symbols) of an underlying base set (i.e. \textbf{alphabet}) \\
+	$\Sigma^n \equiv $ set of all strings of length $n$.
+\end{definition}
+
+
 
 
 
@@ -5330,19 +5358,19 @@ Ulrich Schollwoeck.  \emph{The density-matrix renormalization group}.   \emph{Re
 Ulrich Schollwoeck.  \emph{The density-matrix renormalization group in the age of matrix product states}.  \emph{Annals of Physics} \textbf{326}, 96 (2011).  \href{https://arxiv.org/abs/1008.3477}{arXiv:1008.3477 \textbf{[cond-mat.str-el]}}
 
 \bibitem{ArSo2017}
-Ulrich Schollw\"{o}ck, et. al. \emph{Numerical methods for correlated many-body systems}. \href{\textbf{2017 Arnold Sommerfeld School}}{https://www.asc.physik.lmu.de/activities/schools/archiv/asc_school_17/index.html}. 
+Ulrich Schollw\"{o}ck, et. al. \emph{Numerical methods for correlated many-body systems}. \href{https://www.asc.physik.lmu.de/activities/schools/archiv/asc_school_17/index.html}{\textbf{2017 Arnold Sommerfeld School}}. 
 
-\href{Matrix product states (MPS), Density matrix renormalization group (DMRG) Lecture 1}{https://cast.itunes.uni-muenchen.de/clips/WE0Gf4L6f3/vod/high_quality.mp4} 
+\href{https://cast.itunes.uni-muenchen.de/clips/WE0Gf4L6f3/vod/high_quality.mp4}{Matrix product states (MPS), Density matrix renormalization group (DMRG) Lecture 1} 
 
-\href{Matrix product states (MPS), Density matrix renormalization group (DMRG) Lecture 2}{https://cast.itunes.uni-muenchen.de/clips/1PTFIT1n42/vod/high_quality.mp4} 
+\href{https://cast.itunes.uni-muenchen.de/clips/1PTFIT1n42/vod/high_quality.mp4}{Matrix product states (MPS), Density matrix renormalization group (DMRG) Lecture 2} 
 
-\href{Matrix product states (MPS), Density matrix renormalization group (DMRG) Hands on Session 1}{https://cast.itunes.uni-muenchen.de/clips/uN8yxWC8m9/vod/high_quality.mp4} 
+\href{https://cast.itunes.uni-muenchen.de/clips/uN8yxWC8m9/vod/high_quality.mp4}{Matrix product states (MPS), Density matrix renormalization group (DMRG) Hands on Session 1} 
 
-\href{Matrix product states (MPS), Density matrix renormalization group (DMRG) Hands on Session 2}{https://cast.itunes.uni-muenchen.de/clips/xJRe4DD7Fo/vod/high_quality.mp4} 
+\href{https://cast.itunes.uni-muenchen.de/clips/xJRe4DD7Fo/vod/high_quality.mp4}{Matrix product states (MPS), Density matrix renormalization group (DMRG) Hands on Session 2} 
 
-\href{Ulrich Schollw\"{o}ck (LMU): \emph{Matrix product states (MPS), Density matrix renormalization group (DMRG)}{https://www.asc.physik.lmu.de/activities/schools/archiv/asc_school_17/extramaterial/schollwoeck_asc_1.pdf}
+\href{https://www.asc.physik.lmu.de/activities/schools/archiv/asc_school_17/extramaterial/schollwoeck_asc_1.pdf}{Ulrich Schollw\"{o}ck (LMU): \emph{Matrix product states (MPS), Density matrix renormalization group (DMRG)}}
 
-\href{Ulrich Schollw\"{o}ck (LMU): \emph{Matrix product states (MPS), Density matrix renormalization group (DMRG)}https://www.asc.physik.lmu.de/activities/schools/archiv/asc_school_17/extramaterial/schollwoeck_asc_2.pdf}
+\href{https://www.asc.physik.lmu.de/activities/schools/archiv/asc_school_17/extramaterial/schollwoeck_asc_2.pdf}{Ulrich Schollw\"{o}ck (LMU): \emph{Matrix product states (MPS), Density matrix renormalization group (DMRG)}}
 
 
 \bibitem{BaRa2015}
