@@ -25,6 +25,7 @@
 
 \usepackage{tikz}
 \usetikzlibrary{matrix,arrows,backgrounds} % background for framed option
+\usetikzlibrary{arrows.meta}
 
 \usepackage{multicol}
 
@@ -2669,12 +2670,457 @@ If FSM $M$ is in state $q$; the next symbol (input?) is $x$ and $\delta(q,x)$ no
 	$\Sigma^n \equiv $ set of all strings of length $n$.
 \end{definition}
 
+\part{Category Theory}
+
+\section{Note on notation}
+
+From the section on ``Terminology'' of the Preface of Barr and Wells (1998) \cite{BW1998}:
+
+\begin{quote}
+	``In most scientific disciplines, notation and terminology are standardized, of- ten by an international nomenclature committee. (Would you recognize Einstein’s equation if it said $p = HU^2$?) We must warn the nonmathematician reader that such is not the case in mathematics. There is no standardization body and terminology and notation are individual and often idiosyncratic.''
+\end{quote}
+
+To try to bridge the difference choice of notation and through comparison, suggest the ``best'' notation that's easy to remember and easy to use, I'll present all the different types of notation that I come across as much as I can. My plan of attack is the following:
+\begin{enumerate}
+	\item I'll try to present different types of notation and reference the authors of the text when I can.
+	\item I'll try to defer to the notation used in Wikipedia, first.
+	\item I'll make a final decision of what notation works best (for me).
+\end{enumerate}
+
+\section{Category $\mathbf{A}$, (definition)}
+
+\begin{definition}[Category $\mathbf{A}$]
+\textbf{category} $\mathbf{A}$ is quadruple $\mathbf{A} = (\text{Obj}(\mathbf{A}), \text{Mor}\mathbf{A}, 1,\circ)$ 
+\begin{equation}
+\mathbf{A} = (\text{Obj}(\mathbf{A}), \text{Mor}\mathbf{A}, 1,\circ)
+\end{equation}
+s.t.
+\begin{enumerate}
+	\item $\text{Obj}{(\mathbf{A})}$ is a \emph{class}, whose elements, $A \in \text{Obj}(\mathbf{A})$, are called \emph{objects}
+	\item $\text{Mor}\mathbf{A}$ is a \emph{class}.
+	\begin{enumerate}
+		\item From Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{AHS2004}, Kashiwara and Schapira (2006) \cite{KaSch2006}, \\
+		$\forall \, A, B \in \text{Obj}(\mathbf{A})$, $\exists \, \text{Hom}(A,B) \subseteq \text{Mor}(\mathbf{A})$. Therefore, 
+		\begin{equation}
+		\text{Mor}\mathbf{A} = \bigcup_{ A,B \in \text{Obj}(\mathbf{A}) } \text{Hom}(A,B)
+		\end{equation}
+		\item $\forall \, f \in \text{Hom}(A,B)$, $f: A \to B \in \text{Hom}(A,B)$ is a \emph{morphism}. 
+	\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B  \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+;
+\end{tikzpicture}
+\]
+	\end{enumerate}
+	\item $\forall \, A \in \text{Obj}(\mathbf{A})$, $\exists \, 1_A : A \to A$, i.e. $\exists \, \mathbf{1}_A \in \text{Hom}_{\mathbf{A}}(A,A) \equiv \text{Hom}(A,A)$, 
+	\[
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		A & A  \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$1_A$} (m-1-2)
+	;
+	\end{tikzpicture} \text{ or } \begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		A   \\
+	};
+	\path[->]
+	(m-1-1) edge [loop left] node [above] {$\mathbf{1}_A$} (m-1-1)
+	;
+	\end{tikzpicture}
+	\]
+	\item \textbf{composition:} 
+	$\forall \, A,B,C \in \text{Obj}\mathbf{A}$, define \textbf{composition} to be a map
+	\begin{equation}
+	\begin{aligned}
+		\text{Hom}_{\mathbf{A}}(A, B) \times \text{Hom}_{\mathbf{A}}(B, C) & \to \text{Hom}_{\mathbf{A}}(A, C) \\
+		 (f, g) & \mapsto g\circ f
+ 	\end{aligned}
+\end{equation}, i.e.
+	
+	$\forall \, \begin{aligned} & \quad \\
+	& f: A \to B \in \text{Hom}(A,B) \\
+	& g:B\to C \in \text{Hom}(B,C) \end{aligned}$, i.e. $f,g \in \text{Mor}\mathbf{A}$, \\
+	then $g\circ f : A \to C \in \text{Hom}(A,C)$, $g\circ f \in \text{Mor}\mathbf{A}$ i.e. 
+	\[
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		A & B & C  \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$f$} (m-1-2)
+	(m-1-2) edge node [above] {$g$} (m-1-3)
+	(m-1-1) edge [bend right=30] node [below] {$g\circ f$} (m-1-3) 
+	;
+	\end{tikzpicture}
+	\]
+	s.t. 
+	\begin{enumerate}
+		\item \emph{associativity} $\forall \, \begin{aligned} & \quad \\
+		& f: A \to B \\
+		& g: B \to C \\
+		& h: C \to D \end{aligned}$, $h\circ (g\circ f) = (h\circ g) \circ f $ i.e.
+		
+		\[
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+		{
+			A & B & C  & D \\
+		};
+		\path[->]
+		(m-1-1) edge node [above] {$f$} (m-1-2)
+		(m-1-2) edge node [above] {$g$} (m-1-3)
+		(m-1-3) edge node [above] {$h$} (m-1-4)
+		(m-1-1) edge [bend right=30] node [below] {$g\circ f$} (m-1-3) 
+		(m-1-2) edge [bend left=30] node [above] {$h\circ g$} (m-1-4) 
+		;
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+		(m-1-1) edge [bend left=45] node [above] {$(h \circ g)\circ f$} (m-1-4)
+		edge [bend right=45] node [below] {$h \circ (g\circ f)$} (m-1-4);
+		\end{tikzpicture}
+		\]
+		
+		\item $\forall \, f:A \to B \in \text{Hom}(A,B)$, $1_B \circ f = f $ and $f\circ 1_A = f$ i.e.
+		
+		$\forall \, f \in \text{Hom}_{\mathbf{A}}(A,B)$,
+		\[
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+		{
+			A & B  \\
+		};
+		\path[->]
+		(m-1-1) edge node [above] {$f$} (m-1-2)
+		edge [loop left] node [left] {$1_A$} (m-1-1)
+		(m-1-2) edge [loop right] node [right] {$1_B$} (m-1-2)
+		;
+		\end{tikzpicture}
+		\]
+		\item Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{AHS2004} posited further that $\text{Hom}(A,B) \in \text{Mor}\mathbf{A}$ pairwise disjoint (i.e. $\text{Hom}(A,B) \bigcap \text{Hom}(C,D) \neq \emptyset$ if $C\neq A$ or $D\neq B$)
+	\end{enumerate}
+\end{enumerate}	
+\end{definition}
+
+\subsection{Examples}
+
+\begin{itemize}
+	\item $\textbf{Set} = (\text{Obj}{(\textbf{Set})}, \text{Hom}{\textbf{Set}},\mathbf{1},\circ)$ where \\
+	$\text{Obj}{(\textbf{Set})}$ is the class of all sets \\
+	$\text{Hom}{\textbf{Set}}$ is the class of all functions on a set to another set
+	\item $\textbf{Vec}$
+	
+	\[
+	\begin{aligned}
+	& \text{Obj}\textbf{Vec} & \equiv \text{ all real vector spaces } \\ 
+	& \text{Mor}\textbf{Vec} & \equiv \text{ all linear transformations between them (between real vector spaces) }
+	\end{aligned}
+	\]
+	
+	\item \textbf{Monoid}.  Consider a monoid as a triple $(M, \cdot, e)$.  \\
+	Every semigroup $(M,\cdot)$ (recall that a \emph{semigroup} is a set $S$ with binary operation $\cdot $, i.e. s.t.
+	
+	\quad \,  $\begin{aligned} & \quad \\
+	& S\times S \xrightarrow{\cdot } S \\ 
+	& \forall \, a,b ,c \in S, \, (a\cdot b)\cdot c = a\cdot (b\cdot c) \quad \, \text{ (associativity) } \end{aligned}$ 
+	
+	\quad \, (but no inverse, necessarily!)) that also has a unit $e$ can be made into a category $\mathbf{C}$ 
+	
+	$\Longrightarrow \mathbf{C}(M,\cdot ,e) = (\text{Obj}(\mathbf{C}), \text{Hom}(\mathbf{C}), \mathbf{1}, \circ)$, a category $\mathbf{C}$ with only 1 object, i.e. $\text{Obj}(\mathbf{C}) = \lbrace M \rbrace$, so that \\
+	$\text{Obj}(\mathbf{C}) = \lbrace M \rbrace$ \\
+	$\text{Hom}(M,M) = M$ \\
+	$\mathbf{1}_M = e$ \\
+	$y \circ x = y \cdot x$
+\end{itemize}
+
+\subsection{Duality, opposite category}
+
+Given a category $\mathbf{A} = ( \text{Ob}, \text{hom}_{\mathbf{A}}, 1, \circ)$, 
+\begin{definition}[dual opposite category]
+	\textbf{dual} or \textbf{opposite} category of $\mathbf{A} = (\text{Obj}(\mathbf{A}), \text{Mor}\mathbf{A}, \mathbf{1}, \circ)$, denoted $\mathbf{A}^{\text{op}}$, is   
+	\begin{equation}
+	\mathbf{A}^{\text{op}}  =  (\text{Obj}(\mathbf{A}), \text{Mor}\mathbf{A}^{\text{op}}, \mathbf{1}, \circ^{\text{op}})
+	\end{equation}
+	s.t.
+\begin{itemize}
+	\item 
+	\begin{equation}
+	\text{Obj}(\mathbf{A}^{\text{op}}) = \text{Obj}(\mathbf{A})
+	\end{equation}
+	\item $\forall \, A, B \in \text{Obj}(\mathbf{A}^{\text{op}})$, $\text{Hom}_{\mathbf{A}^{\text{op}}}(A,B) \subseteq \text{Mor}\mathbf{A}^{\text{op}}$, 
+		\begin{equation}
+\text{Hom}_{\mathbf{A}^{\text{op}}}(A,B) = \text{Hom}_{\mathbf{A}}(B,A) \subseteq \text{Mor}\mathbf{A}
+		\end{equation}
+		\item \emph{Define} the new composition 
+		\begin{equation}
+\begin{gathered}
+		f \circ^{\text{op}} g \text{ of } \begin{aligned} & \quad \\
+		& g \in \text{Hom}_{\mathbf{A}^{\text{op}}}(C,B) \\
+		& f \in \text{Hom}_{\mathbf{A}^{\text{op}}}(B,A) 
+		\end{aligned}		 \\
+		\text{ then } \\
+		f \circ^{\text{op}} g = g\circ f
+\end{gathered}
+		\end{equation}
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B & C \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+(m-1-2) edge node [above] {$g$} (m-1-3);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-1) edge[bend right=45] node [below] {$g\circ f$} (m-1-3);
+\end{tikzpicture} \qquad \qquad \, \, \text{ dual :} \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B & C \\
+};
+\path[->]
+(m-1-3) edge node [above] {$g$} (m-1-2)
+(m-1-2) edge node [above] {$f$} (m-1-1);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-3) edge[bend left=45] node [below] {$f\circ^{\text{op}} g$} (m-1-1);
+\end{tikzpicture}
+\]		
+or, equivalently (notation-wise)
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B & C \\
+};
+\path[->]
+(m-1-3) edge node [above] {$g$} (m-1-2)
+(m-1-2) edge node [above] {$f$} (m-1-1);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-3) edge[bend left=45] node [below] {$f \circ g$} (m-1-1);
+\end{tikzpicture}
+\qquad \qquad \, \, \text{ dual :} 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B & C \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+(m-1-2) edge node [above] {$g$} (m-1-3);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-1) edge[bend right=45] node [below] {$g\circ^{\text{op}} f$} (m-1-3);
+\end{tikzpicture} 
+\]		
+in that 
+\[
+\begin{gathered}
+g \circ^{\text{op}} f \text{ of } \begin{aligned} & \quad \\
+& f \in \text{Hom}_{\mathbf{A}^{\text{op}}}(A,B) \\
+& g \in \text{Hom}_{\mathbf{A}^{\text{op}}}(B,C) 
+\end{aligned}		 \\
+\text{ then } \\
+g \circ^{\text{op}} f = f\circ g
+\end{gathered}
+\]
+\end{itemize}
+\end{definition}
 
 
+e.g. if $\mathbf{A} = (M,\cdot, e)$ monoid, then $\mathbf{A}^{\text{op}} = (M, \widehat{\cdot},e)$ where $a\widehat{\cdot} b = b\cdot a$
 
 
+\subsubsection{Example}
 
+\begin{itemize}
+	\item $\text{Vec}^{\text{op}}$
+	\[
+	\textbf{Vec}^{\text{op}} = (\text{Obj}(\textbf{Vec}), \text{Hom}_{\textbf{Vec}^{\text{op}}}, 1, \circ^{\text{op}})
+	\]
+	s.t.
+	\[
+	\text{Hom}_{\textbf{Vec}^{\text{op}} }(W,V) = \text{Hom}_{\textbf{Vec}}(V,W)
+	\]
+\[	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		U & V & W \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$f$} (m-1-2)
+	(m-1-2) edge node [above] {$g$} (m-1-3);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+	(m-1-1) edge[bend right=45] node [below] {$g\circ f$} (m-1-3);
+	\end{tikzpicture} \qquad \, \begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		U & V & W \\
+	};
+	\path[->]
+	(m-1-3) edge node [above] {$g$} (m-1-2)
+	(m-1-2) edge node [above] {$f$} (m-1-1);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-3) 	edge[bend left=45] node [below] {$f\circ^{\text{op}} g$} (m-1-1);
+	\end{tikzpicture}
+\]
+\end{itemize}
 
+\subsection{Kinds of morphisms}
+
+\begin{definition}[isomorphism]
+	\textbf{isomorphism} - morphism $f:A \to B$ is an isomorphism if $\exists \, g : B \to A$ s.t. $f\circ g = 1_B$, $g\circ f = 1_A$, $g$ unique. $g$ called inverse of $f,f^{-1}$
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+		edge [loop left] node [left] {$1_A$} (m-1-1);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-2) edge[bend left=45] node [below] {$g$} (m-1-1);
+\end{tikzpicture}	\qquad \, 
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	B & A \\
+};
+\path[->]
+(m-1-1) edge node [above] {$g$} (m-1-2)
+		edge [loop left] node [left] {$1_B$} (m-1-1);
+\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-2) edge[bend left=45] node [below] {$f$} (m-1-1);
+\end{tikzpicture}	
+	\end{gathered}	
+	\]
+\end{definition}
+
+\begin{definition}[endomorphism]
+	\textbf{endomorphism} - morphism with same source and target, that is, morphism $f:A \to A$
+\end{definition}
+
+\begin{definition}[automorphism]
+\textbf{automorphism} - endomorphism which is an isomorphism
+\end{definition}
+
+\begin{definition}[parallel]
+	\textbf{parallel} - 2 morphisms $f,g$ are parallel if they have same source and same target:
+	\[
+	\begin{aligned}
+	& f:A \to B \\
+	& g:A \to B
+	\end{aligned}
+	\]
+\end{definition}
+
+\begin{definition}[monomorphism]
+	\text{monomorphism} - morphism $f: A \to B$ is a monomorphism if $\forall \, $ pair of parallel $\begin{aligned}
+	& \quad \\
+	& g_1: C \to A \\
+	& g_2:C \to A
+	\end{aligned}$, 
+	\begin{equation}
+	f\circ g_1 = f\circ g_2 \text{ implies } g_1 = g_2
+	\end{equation}
+	i.e.
+	\[
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		C & B \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$f \circ g_1$} (m-1-2);
+	\path[-{>[scale=1.15]}, line width=0.5pt]
+	(m-1-2) edge[bend left=45] node [below] {$f\circ g_2$} (m-1-1);
+	\end{tikzpicture} \text{ implies } C \xrightarrow{ g_1 = g_2 } A	
+	\]
+\end{definition}
+
+\begin{definition}[epimorphism]
+\textbf{epimorphism} - morphism $f:A \to B$ is an epimorphism if $f^{\text{op}} : B^{\text{op}} \to A^{\text{op}}$ is a monomorphism in $\mathbf{A}^{\text{op}}$. \\
+Hence $f$ epimorphism iff $\forall \, $ parallel morphisms $\begin{aligned} & \quad \\ 
+	& g_1 : B \to C \\
+	& g_2 : B\to C\end{aligned}$, $g_1 \circ f = g_2 \circ f $ \\
+	 implies $g_1 = g_2$
+\end{definition}
+
+\begin{proposition}[monomorphism, epimorphism iff injective]
+	$f$ monomorphism iff $f \circ : \text{Hom}_{\mathbf{A}}(C,A) \to \text{Hom}_{\mathbf{A}}(C,B)$ injective \, $\forall \, C \in \text{Obj}(\mathbf{A})$, i.e.
+	\begin{equation}
+	\begin{gathered}
+	\text{Hom}_{\mathbf{A}}(C, A) \xrightarrow{f \circ } \text{Hom}_{\mathbf{A}}(C,B) \\
+ g_1 = g_2 \xmapsto{f \circ} f\circ g_1 = f\circ g_2
+\end{gathered}
+	\end{equation}
+$f$ epimorphism iff map $\circ f : \text{Hom}_{\mathbf{A}}(B,C) \to \text{Hom}_{\mathbf{A}}(A,C)$ injective $\forall \, C \in \text{Obj}(\mathbf{A})$
+\begin{equation}
+\begin{gathered}
+\text{Hom}_{\mathbf{A}}(B, C) \xrightarrow{\circ f} \text{Hom}_{\mathbf{A}}(A,C) \\
+g_1 = g_2  \xmapsto{ \circ f} g_1\circ f = g_2 \circ f
+\end{gathered}
+\end{equation}
+\end{proposition}
+
+\begin{definition}[inverses]
+	$\forall \, $ 2 morphisms, $f:X\to Y$, $g: Y \to X$ s.t. $f\circ g= 1_Y$,\\
+	$f$ is called left inverse of $g$, $g$ is called right inverse of $f$.
+	
+	We also say, $g$ is a section of $f$, or $f$ is a cosection of $g$. \\
+	$f$ is an epimorphism, $g$ is a monomorphism.
+\end{definition}
+
+\subsection{More definitions with categories}
+
+\begin{definition}[subcategory]
+category $\mathbf{A}'$, $\mathbf{A}' \subset \mathbf{A}$, if $\text{Obj}(\mathbf{A}') \subset \text{Obj}(\mathbf{A})$, $\text{Hom}_{\mathbf{A}'}(A,B) \subset \text{Hom}_{\mathbf{A}}(A,B)$, $\forall \, A, B \in \mathbf{A}'$.
+
+Composition in $\mathbf{A}'$ is induced by composition in $\mathbf{A}$.\\
+identity morphisms in $\mathbf{A}'$ are identity morphisms in $\mathbf{A}$
+\end{definition}
+
+\begin{definition}[full subcategory]
+	subcategory $\mathbf{A}'$ of $\mathbf{A}$ is full if $\text{Hom}_{\mathbf{A}'}(A,B) = \text{Hom}_{\mathbf{A}}(A,B)$, $\forall \, A, B \in \mathbf{A}'$	
+\end{definition}
+
+\begin{definition}[saturated subcategory]
+full subcategory $\mathbf{A}'$ of $\mathbf{A}$ saturated if $A \in \mathbf{A}$ belongs to $\mathbf{A}'$ whenever $A$ is isomorphic to object of $\mathbf{A}'$	
+\end{definition}
+
+\begin{definition}[discrete category]
+	\textbf{discrete} - discrete category if all morphisms are identity morphisms.
+\end{definition}
+
+\begin{definition}[nonempty category]
+	\textbf{nonempty} - nonempty category if $\text{Obj}(\mathbf{A})$ is nonempty
+\end{definition}
+
+\begin{definition}[groupoid]
+\textbf{groupoid} - category $\mathbf{A}$ is a \textbf{groupoid} if all morphisms are isomorphisms.
+\end{definition}
+
+\begin{definition}[finite category]
+	finite - finite category if set of all morphisms in $\mathbf{A}$ (hence, in particular, set of objects) is a finite set
+\end{definition}
+
+\begin{definition}[connected]
+	connected category $\mathbf{A}$ if it's nonempty, and $\forall \, A,B \in \text{Obj}\mathbf{A}$, $\exists \, $ finite sequence of objects $(A_0 \dots A_n)$, $A_0 = A$, $A_n = B$, s.t. at least 1 of the sets $\text{Hom}_{\mathbf{A}}(A_j, A_{j+1})$ or $\text{Hom}_{\mathbf{A}}(A_{j+1}, A_j)$ is nonempty $\forall \, j \in \mathbb{N}$, with $0\leq j \leq n-1$
+\end{definition}
+
+\begin{definition}[monoid $M$]
+	\textbf{monoid} $M$ (set endowed with internal product with associative and unital law) is nothing but a category with only 1 object (to $M$, associate category $\mathbf{M}$, with single object $A$, and morphisms $\text{Hom}_{\mathbf{M}}(A,A) = M$)
+\end{definition}
+	
 
 \part{Reading notes on Cox, Little, O'Shea's \emph{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}}
 
@@ -5308,7 +5754,12 @@ David S. Dummit, Richard M. Foote. \textbf{Abstract Algebra}. 3rd. Ed.  Wiley; (
 %--------------------------------------------------------------------------------
 % END of 20180311 
 %-------------------------------------------------------------------------------
+
+\bibitem{BW1998}
+Michael Barr, Charles Wells.  \textbf{Category Theory for Computing Science}.  \url{http://www.tac.mta.ca/tac/reprints/articles/22/tr22.pdf}, \url{http://www.math.mcgill.ca/triples/Barr-Wells-ctcs.pdf}
  
+\bibitem{AHS2004}
+Ji\v{r}\'{i} Ad\'{a}mek, Horst Herrlich, George E. Strecker.   \textbf{Abstract and Concrete Categories The Joy of Cats}. 2004.  \url{http://katmat.math.uni-bremen.de/acc/acc.pdf}
 
 \bibitem{CLS2005}
 David A. Cox.  John Little. Donal O'Shea. \textbf{Using Algebraic Geometry}.  Second Edition.  Springer.  2005.  ISBN 0-387-20706-6 QA564.C6883 2004
