@@ -4362,6 +4362,57 @@ cf. \url{http://sierra.nmsu.edu/morandi/oldwebpages/math683fall2002/GroupExtensi
 
 \end{itemize}
 
+\part{Quantum Mechanics}
+
+\section{The Wave function and the Schr\"{o}dinger Equation, its probability interpretation, some postulates}
+
+cf. Ch. 2 "The Wave Function and the Schr\"{o}dinger Equation" in \textbf{Quantum Mechanics} by Franz Schwabl (2007) \cite{FrSc2007}.
+
+From experimental considerations (Sec. 1.2.2, Schwabl (2007) \cite{FrSc2007}), with electron diffraction, electrons, $e^-$, have wavelike properties; let this wave be $\psi(\mathbf{x}, t)$. 
+
+For free $e^-$ of momentum $\mathbf{p}$, energy $E = \frac{ \mathbf{p}^2}{2m}$, in accordance with diffraction experiments, consider as free plane waves 
+\[
+\psi(\mathbf{x}, t) = C \exp{ \left( i ( \mathbf{k} \cdot \mathbf{x} - \omega t)\right)}, \qquad \, \omega = E / \hbar = E, \, \mathbf{k} = \mathbf{p}/ hbar = \mathbf{p}
+\]
+with $\hbar = 1$
+
+Hypothesis: wave function $\psi(\mathbf{x},t)$ gives probability distribution 
+\[
+\rho(\mathbf{x}, t) = | \psi(\mathbf{x}, t)|^2
+\]
+$\rho(\mathbf{x}, t) d^3 x = $ probability of finding $e^-$ at location $\mathbf{x}$ in volume element $d^3x$.
+
+e.g. $e^-$ waves $\psi_1(\mathbf{x}, t)$ , $\psi_2(\mathbf{x},t)$
+
+If both slits open, superposition of wave functions $\psi_1(\mathbf{x}, t) + \psi_2(\mathbf{x},t)$
+
+Note $| \psi_1(\mathbf{x},t) + \psi_2(\mathbf{x},t) |^2 \neq | \psi_1(\mathbf{x},t) |^2 + |\psi_2(\mathbf{x},t) |^2$ if there are no interference terms.
+
+Important remarks: 
+
+\begin{enumerate}
+	\item[(i)] Single $e^-$ not smeared out. $\rho(\mathbf{x},t)$ is \textbf{not} the charge distribution of $e^-$, but is the probability density for measuring particle at position $\mathbf{x}$ at time $t$.
+	\item[(ii)] Prob. distribution doesn't occur by interference of many simultaneously incoming $e^-$, but one obtains same interference pattern if each $e^-$ enters separately, i.e. even for very low intensity source. Thus, wave function applies to every electron and describes state of single $e^-$.
+\end{enumerate}
+
+cf. 2.2 "The Schr\"{o}dinger Equation for Free Particles" in \textbf{Quantum Mechanics} by Franz Schwabl (2007) \cite{FrSc2007}.
+
+(i) 1st. order DE (differential equation); (ii) linear in $\psi$ for linear superposition (iii) "homogeneous" $\int d^3x | \psi(\mathbf{x}, t) |^2 = 1$, (iv) plane waves
+\[
+\psi(\mathbf{x},t) = C \exp{ \left[ i (\mathbf{p} \cdot \mathbf{x} - \frac{p^2}{2m} t)/ \hbar\right]} \qquad \, \text{ plane waves }
+\]
+Should be solutions of the equations.
+
+From postulates (i-iv),
+\[
+i \hbar \frac{\partial}{ \partial t} \psi(\mathbf{x}, t) = \frac{ -\hbar^2}{2m } \nabla^2 \psi(\mathbf{x},t)
+\]
+Time-dependent Schr\"{o}dinger equation for free particles.
+
+\[
+\int_{-\infty}^{\infty} d^3k e^{i\mathbf{k} \cdot \mathbf{x}} e^{-k^2 \alpha^2} = \prod_{j=x}^z \int_{-\infty}^{\infty} dk_j e^{ik_j x_j} e^{-k_j^2 \alpha^2}  = \prod_{j=x}^z \left( \sqrt{ \frac{\pi}{\alpha^2} } \exp{ \left( \frac{-x_j^2}{4\alpha^2} \right)} \right) = \left( \frac{\sqrt{\pi}}{\alpha} \right)^3 \exp{ \left( \frac{-x^2}{4\alpha^2} \right)}
+\]
+
 
 \part{Algebraic Topology}  
 
@@ -6234,6 +6285,36 @@ a_{L-l}, ( \sigma_{L-l} a_{L-(l-1)} ) := a_{L-l}, \sigma_{L-1} + da_{L-(l-1)}   
 \end{tikzpicture}  
 \]
 
+\subsubsection{Numerical implementations of initial states}
+
+Something else that shouldn't be overlooked is the numerical implementation of \emph{initial states}, the $c$'s of a state $| \psi \rangle = \sum_{ \lbrace \sigma \rbrace } c^{\sigma} | \lbrace \sigma \rbrace \rangle$ for a many-body quantum system. Remember what the postulates of quantum mechanics say and interpret accordingly (and correctly). While we call them "probability amplitudes", one should be careful about what physical interpretation we may (or may not!) assign them. One thing's for certain: $c \in \mathbb{C}$ and normalization of the quantum state: $ | \langle \psi | \psi \rangle |^2 = 1$
+
+Here are some setups to try:
+
+$d= 2, L=2$, $d^L = 2^2=4$.
+\[
+\left[ \begin{matrix} c_{\uparrow \uparrow} & c_{\uparrow \downarrow} & c_{\downarrow \uparrow} & c_{\downarrow \downarrow} \end{matrix} \right] \mapsto \left[ \begin{matrix} c_{\uparrow \uparrow} & c_{\uparrow \downarrow} \\
+c_{\downarrow \uparrow} & c_{\downarrow \downarrow} \end{matrix} \right]
+\]
+
+Singlet state: $|\psi \rangle = \frac{1}{ \sqrt{2}} | \uparrow \downarrow \rangle -  \frac{1}{\sqrt{2}} | \downarrow \uparrow \rangle $, $\left[ \begin{matrix} 0 & \frac{1}{\sqrt{2}} \\ \frac{-1}{\sqrt{2}} & 0 \end{matrix} \right]$ 
+
+$d=2, L=3, d^L = 2^8 = 8$
+
+For notational convenience, let $\uparrow \equiv 1$, $\downarrow \equiv 0$
+
+\[
+\left[ \begin{matrix} c_{000} & c_{001} & c_{010} & c_{011} & c_{100} & \dots & c_{111}  \end{matrix} \right] \mapsto \left[ \begin{matrix} c_{000} & c_{001} & \dots & c_{011} \\
+c_{100} & c_{001} & \dots & c_{111} \end{matrix} \right]
+\]
+
+$d=3, L=2$, $d^L = 3^2 = 9$
+
+\[
+\left[ \begin{matrix} c_{-1-1} & c_{-10 } & c_{-11} & \dots  & c_{11} \end{matrix} \right] \mapsto \left[ \begin{matrix} c_{-1-1} & c_{-10} &  c_{-11} \\
+c_{0-1} & c_{00} &  c_{01} \\ 
+c_{1-1} & c_{10} & c_{11} \end{matrix} \right]
+\]
 
 
 %\end{multicols*}
@@ -6282,6 +6363,10 @@ David A. Cox.  John Little. Donal O'Shea. \textbf{Using Algebraic Geometry}.  Se
 
 \bibitem{CLS2015}
 David Cox, John Little, Donal O'Shea. \textbf{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}, Fourth Edition, Springer
+
+\bibitem{FrSc2007} 
+Franz Schwabl. \textbf{Quantum Mechanics}. Springer-Verlag Berlin Heidelberg. 2007. 4th Edition. ISBN 978-3-540-71933-5
+
 
 \bibitem{Scho2008}  
 Schottenloher, Martin.  \textbf{A Mathematical Introduction to Conformal Field Theory}.  Springer, 2008.  
