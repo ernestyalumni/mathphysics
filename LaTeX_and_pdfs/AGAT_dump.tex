@@ -1527,7 +1527,7 @@ Example 7.2. of Rotman (2011) on pp. 425 \cite{JRotman2010}]
 	\]
 	$\Longrightarrow \varphi(xv) = x\varphi(v) \quad \, \forall \, v \in V$
 	
-	By induction on $\text{deg}(f)$, $\varphi(f(x)v) = f(x) \varphi(v)$ \quad \, $\forall \, f(x) \in k[x]$ \quad \, $\forall \, v \in V$ 
+	By induction on $\deg{f}$, $\varphi(f(x)v) = f(x) \varphi(v)$ \quad \, $\forall \, f(x) \in k[x]$ \quad \, $\forall \, v \in V$ 
 	
 	$\Longrightarrow \varphi$ is $k[x]$-map \\
 	$\Longrightarrow \varphi$ is $k[x]$-isomorphism of $V^T$ and $(k^n)^A$.  
@@ -1560,7 +1560,7 @@ Example 7.2. of Rotman (2011) on pp. 425 \cite{JRotman2010}]
 	S\varphi(v) = \varphi T(v) = \varphi(xv) = x\varphi(v)
 	\]
 	Then by induction, $\varphi(x^nv) = x^n\varphi(v)$ (for $S^n\varphi(v) = x^n\varphi(v) = (\varphi T \varphi^{-1})^n \varphi(v) = \varphi T^n v = \varphi(x^nv)$).  \\
-	By induction on $\text{deg}(f)$, $\varphi(f(x)v) = f(x)\varphi(v)$.  
+	By induction on $\deg{(f)}$, $\varphi(f(x)v) = f(x)\varphi(v)$.  
 	
 	
 \end{proof}
@@ -6328,6 +6328,575 @@ c_{1-1} & c_{10} & c_{11} \end{matrix} \right]
 
 %\end{multicols*}
 
+\part{Algebraic Geometry}
+
+\section{Affine and Projective Varieties}
+
+cf. Harris (1992)\cite{Har1992}
+
+For (algebraically closed) field $K$,  \\
+vector space $K^n$,  \\
+affine space $\mathbb{A}^n_K \equiv \mathbb{A}^n = K^n$, but origin plays no special role in affine space. \\
+Affine variety $X \subset \mathbb{A}^n := $ common zero locus of collection of polynomials $f_{\alpha} \in K [z_1 \dots z_n] :=$ 
+\[
+X = \lbrace Z | f_{\alpha}(Z) = 0 \quad \, \forall \, \alpha , \quad \, f_{\alpha} \in K(z_1 \dots z_n), Z = (z_1 \dots z_n) \rbrace 
+\]
+
+\subsection{Projective Space and Projective Varieties} 
+
+Projective space over field $K = $ set of 1-dim. subspaces of vector space $K^{n+1} \equiv \mathbb{P}^n_K \equiv \mathbb{P}^n = (K^{n+1} - \lbrace 0 \rbrace ) / K^*$, \\
+where $(K^{n+1} - \lbrace 0 \rbrace ) / K^*$ is the quotient of $K^{n+1} - \lbrace 0 \rbrace$ by the action of the group $K^n$ acting by scalar multiplication. 
+
+$\mathbb{P}(V) \equiv \mathbb{P}V \equiv $ projective space of 1-dim. subspaces of a vector space $V$ over field $K$. \\
+$P \in \mathbb{P}^n$ usually written as homogeneous vector $[Z_0 \dots Z_n]$, by which be mean line spaced by $(Z_0 \dots Z_n) \in K^{n+1}$. 
+
+For $U_n$ s.t. $\forall \, P \in U_n \subset \mathbb{P}^n \subset V^{n+1}$, $Z_n \neq 0$.  Then $[Z_0 \dots Z_n] \sim \left[ \frac{ Z_0}{ Z_n} , \dots , \frac{Z_{n-1}}{Z_n} , 1 \right] \cong \left[ \frac{Z_0}{Z_n} , \dots \frac{Z_{n-1}}{ Z_n } \right] \in K^n$.  
+
+$\forall \, v \neq 0$ , $v\in V$, $[v] = $ corresponding pt. in $\mathbb{P}V \cong \mathbb{P}^n$
+
+Polynomial $F \in K[Z_0 \dots Z_n]$ on vector space $K^{n+1}$ doesn't define a function on $\mathbb{P}^n$, but \\
+if $F$ is homogeneous of degree $d$, \\
+\phantom{if }then since 
+\[
+	F(\lambda Z_0 , \dots , \lambda Z_n) = \lambda^d F(Z_0 \dots Z_n)
+\]
+it does make sense to talk about $0$ locus of polynomial $F$.
+
+\begin{definition}[Projective variety]
+	projective variety $X \subset \mathbb{P}^n = \lbrace P | F_{\alpha}(P) = 0 \, \, \forall \, \alpha, \, \, F_{\alpha}(\lambda P) = \lambda^d F_{\alpha}(P) \rbrace = $ zero locus of a collection of homogeneous polynomials $F_{\alpha}$. 
+\end{definition}
+
+Group $PGL_{n+1}K$ acts on space $\mathbb{P}^n$ (in Lecture 18, $PGL_{n+1}K$ are automorphisms of $\mathbb{P}^n$).
+
+Varieties $X, Y \subset \mathbb{P}^n$ are projectively equivalent, if they're congruent, modulo this group.
+
+Note that if $\mathbb{P}^n = \mathbb{P}V$ is projective space associated with vector space $V$, \\
+\begin{itemize}
+	\item homogeneous coordinates on $\mathbb{P}V$ correspond to elements of dual space $V^*$ 
+	\item similarly, space of homogeneous polynomials of degree $d$ on $\mathbb{P}V$ naturally identified with vector space $\text{Sym}^d(V^*)$
+\end{itemize}
+Meaning, set of linear coordinates on vector space $V$, $\text{dim}V = n$, over field $K$ (so $V= K^n$), $\alpha_i \equiv z_i$, $i=1 \dots n$, is a \emph{basis} $(\alpha_i)$ of $V^*$, since 
+\[
+\begin{gathered}
+	\begin{gathered}
+	\alpha : V \to K^n \\
+	v \mapsto (\alpha_1(v) , \dots \alpha_n(v)) 
+	\end{gathered} \text{ i.e. } \equiv \begin{gathered}
+	z : V \to K^n \\
+	v \mapsto (z_1(v) \dots z_n(v))
+	\end{gathered}
+\end{gathered}
+\]
+
+Now $\mathbb{P}(V) = (V \backslash \lbrace 0 \rbrace ) / K^*$ and homogeneous coordinates on $\mathbb{P}(V)$ are just linear coordinates on $V$ up to action $K^*$
+
+cf. \href{https://math.stackexchange.com/questions/62588/correspondence-between-the-projective-space-associated-to-a-vector-space-and-the}{"Correspondence between the projective space associated to a vector space and the dual space of the vector space?", stackexchange}, \href{https://math.stackexchange.com/questions/2093271/can-dual-vector-spaces-be-thought-of-as-linear-coordinate-functions}{Can dual vector spaces be thought of as linear coordinate functions? stackexchange}
+
+From $Z_i \in V^*$, $i = 0, 1 \dots n$, $Z_i : V \to K$, $Z_i : v \mapsto Z_i(v) = Z_i \in K$, \\
+let $f$ be a homogeneous polynomial of degree $d$ on $\mathbb{P}V$:
+\[
+f = \sum a_{i_0 i_1 \dots i_n} z_0^{i_0} z_1^{i_1} \dots z_n^{i_n} 
+\]
+where summation $\sum$ is over $0 \leq i_0, i_1, \dots i_n \leq d$ s.t. $\sum_{j=0}^n i_j = d$.
+
+$\text{dim}{\text{Sym}^d(V^*)} = \binom{d+n}{n}$
+
+$\lbrace z_0^{i_0} z_1^{i_1} \dots z_n^{i_n} \rbrace_{ \substack{ 0 \leq i_0 , i_1 \dots i_n \leq d \\ \sum_{j=0}^n i_j = d } }$ form a basis for $\text{Sym}^d(V^*)$
+ 
+Let $U_i \subset \mathbb{P}^n$, $U_i = \lbrace [Z_0 \dots Z_n ] | Z_i \neq 0 \rbrace$. Then $[Z_0 \dots Z_n ] \sim \left[ \frac{Z_0}{Z_i} \dots \frac{Z_{i-1}}{ Z_i }, 1 \dots \frac{Z_n}{Z_i} \right] \equiv [ z_0, \dots z_{i-1} , 1 , z_i \dots z_{n-1} ] \cong (z_0 , z_1 \dots z_{n-1}) \in K^n$. 
+
+So there's a bijection $U_i \to K^n$.
+
+Geometrically, this map is associating line $L \subset K^{n+1}$ not contained in hyperplane ($Z_i = 0$), its pt. $p$ of intersection with affine plane $(Z_i = 1) \subset K^{n+1}$.  
+
+Coordinates $z_j$ on $U_i$ are called affine or Euclidean coordinates on projective space or open set $U_i$ \\
+- open sets $U_i$ comprise standard cover of $\mathbb{P}^n$ by affine open sets.
+
+If $X \subset \mathbb{P}^n$ is a variety, $X_i = X \cup U_i$ is affine variety: \\
+if $X$ given by polynomials $F_{\alpha} \in K[Z_0 , \dots Z_n]$, then e.g. $X_0$ will be zero locus of polynomials
+\[
+\begin{gathered}
+f_{\alpha}(z_0 \dots z_n) = F_{\alpha}(Z_0 \dots Z_n) / Z_0^d = F_{\alpha}(1, z_1 \dots z_n)
+\end{gathered}
+\]
+where $d = \deg{F_{\alpha}}$. 
+
+For (projective) variety $X \subset \mathbb{P}^n$, $X = \lbrace P | F_{\alpha}(P) = 0, \forall \, \alpha, F_{\alpha} \text{ homogeneous, } P = [ Z_0 , Z_1 \dots Z_n] \in \mathbb{P}^n \rbrace$, \\
+obtain affine variety $X_i = X \cup U_i$ as follows: for 
+\[
+z_j = \begin{cases} \frac{ Z_{j-1}}{ Z_i } & j \leq i \\ \frac{Z_j}{ Z_i} , & j > i \end{cases}
+\]
+
+\[
+\begin{gathered}
+f_{\alpha}(z_1 \dots z_n) = f_{\alpha}\left( \frac{Z_0}{Z_i} , \dots \frac{Z_{i-1}}{Z_i} , \frac{Z_{i+1}}{Z_i} \dots \frac{Z_n}{Z_i} \right) = \frac{1}{Z_i}^{d_{\alpha}} F_{\alpha}(Z_0 \dots Z_n) = F_{\alpha}(z_1 \dots z_i, 1, z_{i+1}, \dots z_n)
+\end{gathered}
+\]
+
+If $F_{\alpha}(Z_0 \dots Z_n) = 0$, then $f_{\alpha}(z_1 \dots z_n) =0$
+
+$\forall \, $ projective variety $X$, $X$ is union of affine varieties. 
+
+If affine variety $X_i \subset K^n \cong U_i \subset \mathbb{P}^n$, by def. $X_i$ given by polynomials $\lbrace f_{\alpha} \rbrace_{\alpha}$
+
+\[
+f_{\alpha} (z_1 \dots z_n) = \sum a_{i_1 \dots i_n} z_1^{i_1} \dots z_n^{i_n} = 0
+\]
+of degree $d_{\alpha}$ (i.e. $i_1+ \dots i_n = d_{\alpha}$)
+
+Then
+\[
+\begin{gathered}
+F_{\alpha}(Z_0 \dots Z_n) = Z_i^{D_{\alpha}} F_{\alpha}\left( \frac{ Z_0}{Z_i} \dots \frac{Z_n}{Z_i} \right) = Z_i^{D_{\alpha}}f_{\alpha}(z_1 \dots z_n) = \sum a_{i_1 \dots i_n} Z_i^{D_{\alpha} - \sum i_l} Z_0^{i_0} \dots Z_n^{i_n} = \\
+= \sum a_{i_1 \dots i_n} Z_i^{ D_{\alpha} - d_{\alpha}} Z_0^{i_0} \dots \widehat{Z}_i^{i_i} \dots Z_n^{i_n}
+\end{gathered}\]
+
+\subsubsection{Example: ellipse}
+
+\begin{equation}
+\begin{gathered}
+\mathbb{P}^n \to U_Z \cong K^n \\
+[X,Y,Z] \mapsto (x,y) = \left( \frac{X}{Z}, \frac{Y}{Z} \right) 
+\end{gathered}
+\end{equation}
+
+Consider 
+\begin{equation}
+\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \text{ or } f(x,y) = \frac{x^2}{a^2} + \frac{y^2}{b^2} -1
+\end{equation}
+
+For affine variety $X_Z \subset K^2$, 
+\begin{equation}
+F(X,Y,Z) = \left( \frac{X^2}{Z^2 a^2} + \frac{Y^2}{Z^2 b^2} - 1 \right) Z^2 = \frac{X^2}{a^2} + \frac{Y^2}{b^2} - Z^2
+\end{equation}
+
+
+
+\section{Algebraic Curves; Conic sections}
+
+cf. Reid (2013) \cite{Reid2013}.
+
+cf. Ch. 0 "Woffle" of Reid (2013) \cite{Reid2013}.
+
+Given field $k$, $k[x_1 \dots x_n]$ colelction of all polynomials in $x_1 \dots x_n$, with coefficients in $k$, 
+\[
+f  \in k[x_1 \dots x_n] = \lbrace f | f = \sum_{\alpha} c_{\alpha} x^{\alpha}, x^{\alpha} = x_1^{\alpha_1} \dots x_n^{\alpha_n}, \, c_{\alpha} \in k \rbrace 
+\]
+Variety is (roughly) locus defined by polynomial equations
+\[
+V = \lbrace P \in k^n | f_i(P) = 0 \rbrace \subset k^n, \, f_i \in k[x_1 \dots x_n]
+\]
+e.g. plane curves $C$: $(f(x,y) = 0) \subset \mathbb{R}^2$ or $\mathbb{C}^2$
+
+
+Groups of transformations (i.e. transformation groups) are of central importance throughout geometry; properties of geometric figures must be invariant under appropriate kind of transformations before they're significant.
+
+\emph{affine change of coordinates in} $\mathbb{R}^2$ is of form
+\begin{equation}
+T(\mathbf{x}) = A \mathbf{x} + B \quad \, (\text{affine change of coordinates})
+\end{equation}
+where $\mathbf{x} = (x,y) \in \mathbb{R}^2$, $A$ $2\times 2$ invertible matrix (i.e. $A \in GL(2, \mathbb{R})$), $B\in \mathbb{R}^2$. 
+
+If $A$ orthogonal, transformation $T$ is \emph{Euclidean}.
+
+$\forall \, $ nondegenerate conic can be reduced to "standard form" by Euclidean transformation.
+
+\textbf{projectivity} or projective transformation $\mathbb{P}^2_{\mathbb{R}}$ is map $T(\mathbf{X}) = M \mathbf{X}$, $M \in GL(3, \mathbb{R})$.  
+
+Understand $T$ on affine piece $\mathbb{R}^2 \subset \mathbb{P}^2_{\mathbb{R}}$ is partially defined map $\mathbb{R}^2 \to \mathbb{R}^2$; it's a fractional linear transformation.
+
+\[
+\begin{gathered}
+	\begin{aligned}
+	& (x,y) \xmapsto{\cong} [x,y, 1] \\
+	& (x,y) \mapsto \left( \begin{matrix} A \left( \begin{matrix} x \\ y \end{matrix} \right) + B \\ cx + dy + e \end{matrix} \right) 
+	\end{aligned}
+\end{gathered}
+\]
+where 
+\[
+M = \left( \begin{array}{c|c} A & B \\ \begin{matrix} c & d \end{matrix} & e \end{array} \right) 
+\]
+e.g. 2 different photographs of same (plane) object are obviously related by a projectivity.
+
+For inhomogeneous quadratic polynomial $q$, homogeneous quadratic polynomial $Q$, then there exists bijection
+\[
+\begin{gathered}
+	q \in K[x,y] \xmapsto{\cong} Q \in K[X,Y,Z] \\
+	q(x,y) = ax^2 + bxy + cy^2 + dx + ey + f \mapsto Q(X,Y,Z) = aX^2 + bXY + cY^2 + dXZ + eYZ + fZ^2 
+\end{gathered}
+\]
+so
+\[
+q(x,y) = Q\left( \frac{X}{Z} , \frac{Y}{Z} , 1 \right) \text{ with } x= X/Z, \, y = Y/Z
+\]
+inverse:
+\[
+Q = Z^2 q(X/Z, Y/Z)
+\]
+
+
+\subsubsection{"Line at infinity" and asymptotic directions}
+
+cf. Ch. 1 of Reid (2013)
+
+Points of $\mathbb{P}^2$ with $Z=0$, $[X,Y,0]$, form \emph{line at infinity}, a copy of $\mathbb{P}^1_{\mathbb{R}} = \mathbb{R} \cup \lbrace \infty \rbrace$ (since $[X,Y] \mapsto X/Y$) define bijection $\mathbb{P}^1_{\mathbb{R}} \to \mathbb{R} \cup \lbrace \infty \rbrace$. 
+
+Line in $\mathbb{P}^2$, $L$, $L: = \lbrace [ X, Y,Z] | aX + bY + cZ = 0 \rbrace$. 
+
+$L$ passes through $(X,Y,0) \Longleftrightarrow a X + bY = 0$. 
+
+
+
+\begin{enumerate}
+	\item[(a)]  hyperbola $\left( \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1 \right)$. Recall that the lines of asymptotes (asymptotic lines). They are found in the following manner: 
+	\[
+	\begin{gathered}
+	\frac{(bx-ay)(bx + ay)}{a^2 b^2} = 1 \text{ or } \frac{bx-ay}{a^2 b^2} =  \frac{1}{ bx + ay} \xrightarrow{ x,y \to \infty} \frac{bx- ay}{a^2 b^2 } =0 \text{ or } y = \frac{b}{a} x
+	\end{gathered}\]
+	
+	Now, $\left( \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1 \right)$ in $\mathbb{R}^2$ 
+	corresponds in $\mathbb{P}^2_{\mathbb{R}}$ to $C: \left( \frac{X^2}{a^2} - \frac{Y^2}{b^2} = Z^2 \right)$.
+	
+	This meets ($Z=0$) in 2 pts. $(a, \pm b, 0) \in \mathbb{P}^2_{\mathbb{R}}$, corresponding to asymptotic lines of hyperbola, $y = \frac{b}{a}x$, $y = \frac{-b}{a} x$
+	
+	For affine piece $U_x \subset \mathbb{P}^2_{\mathbb{R}}$, $U_x = \lbrace p \in \mathbb{P}^2_{\mathbb{R}} | p = [X,Y,Z] \text{ s.t. } X \neq 0 \rbrace$, then \\
+	bijection $U_x \to \mathbb{R}^2$, 
+	\[
+	\begin{gathered}
+	[X,Y,Z \sim [1, \frac{Y}{X}, \frac{Z}{X} ] \mapsto (u,v) = \left( \frac{Y}{X}, \frac{Z}{X} \right), \text{ so } \\
+	C : X^2/a^2  - Y^2/b^2 = Z^2 \mapsto u^2 + \frac{v^2}{b^2} = \frac{1}{a^2} \text{ or } \frac{u^2}{1/a^2} + \frac{v^2}{ (b/a)^2 } = 1 \qquad \, (\text{an ellipse!})
+	\end{gathered}
+	\]
+	\item[(b)] $y = mx^2$ (parabola) in $\mathbb{R}^2 \mapsto  C: YZ = mX^2$ in $\mathbb{P}^2_{\mathbb{R}}$.
+	
+	For $Z = 0$, $C$ meets $Z=0$ at single pt. $[0, 1, 0] \sim [0, Y, 0]$. So in $\mathbb{P}^2$, "2 branches of parabola meet at infinity."
+\end{enumerate} 
+
+\subsubsection{Classification of conics in $\mathbb{P}^2$}
+
+cf. 1.6. Classification of conics in $\mathbb{P}^2$, Reid (2013) \cite{Reid2013}
+
+Let $K$ be any field of characteristic $\neq 2$.
+
+Recall 2 linear algebra results for quadratic forms:
+
+\begin{proposition}
+	$\exists \, $ bijections
+	
+	$\lbrace \text{ homogeneous quadratic polynomials } \rbrace = \lbrace \text{ quadratic forms $K^3 \to K$ } \rbrace \cong \lbrace \text{ symmetric bilinear forms on $K^3$ } \rbrace $
+given by
+\[
+\begin{gathered} 
+	aX^2 + 2bXY + cY^2 + 2dXZ + 2eYZ + fZ^2 \cong \left( \begin{matrix} a & b & d \\ b & c & e \\  d & e & f \end{matrix} \right) \text{ since } \\
+	[ \begin{matrix} X & Y & Z \end{matrix} ] \left( \begin{matrix} a & b & d \\ b & c & e \\  d & e & f \end{matrix} \right) \left[ \begin{matrix} X \\ Y \\ Z \end{matrix} \right] = aX^2 + 2bXY + cY^2 + 2d XZ +2eYZ + fZ^2 
+\end{gathered} 
+\]
+\end{proposition}
+Quadratic form nondegenerate if corresponding bilinear form nondegenerate, i.e. matrix is nonsingular.
+
+\begin{theorem}\label{Thm:DiagonalizedQuadraticForm}
+Let $V$ be vector space over $K$, quadratic form $Q:V \to K$, then $\exists \, $ basis of $V$ s.t.
+\begin{equation}
+Q = \epsilon_1 x_1^2 + \epsilon_2 x_2^2 + \dots + \epsilon_n x_n^2 \text{ with } \epsilon_i \in K
+\end{equation}
+\end{theorem}
+This theorem is proved by Gram-Schmidt orthogonalization.
+
+For $\lambda \in K \backslash \lbrace 0 \rbrace$, $x_i \mapsto \lambda x_i$ takes $\epsilon_i \mapsto \lambda^{-2} \epsilon_i$.  
+
+\begin{corollary}\label{Cor:ConicsClassification}
+In a suitable coordinate system, any conic in $\mathbb{P}^2$ is one of 
+\begin{enumerate}
+\item[(a)] nondegenerate conic $C: (X^2 + Y^2- Z^2 =0)$
+\end{enumerate}
+\end{corollary}
+
+\subsubsection{Parametrization of a conic}
+
+Let $C$ be a nondegenerate, nonempty conic of $\mathbb{P}^2_{\mathbb{R}}$.
+
+Then by Corollary \ref{Cor:ConicsClassification} (cf. Corollary 1.6 (cf. Reid (2013) \cite{Reid2013}), and taking new coordinates $[X+Z, Y, Z-X]$, 
+\[
+X^2 + Y^2-Z^2 = 0 \mapsto (X+Z)^2 + Y^2 - (Z-X)^2 = X^2 + 2XZ + Z^2 + Y^2 - (Z^2 - 2ZX + X^2) = Y^2 + 4XZ = 0
+\]
+$\Longrightarrow C$ is projectively equivalent to curve $(Y^2 =XZ)$.
+
+This is a curve parametrized by 
+\[
+\begin{aligned} 
+& \Phi : \mathbb{P}^1_{\mathbb{R}} \to C \subset \mathbb{P}^2_{\mathbb{R}} \\
+& [U,V] \mapsto [ U^2, UV, V^2]
+\end{aligned} 
+\]
+
+This is because 
+\[
+\begin{gathered}
+	[X, Y, Z ] \sim [X^2 , XY , XZ ] = [X^2 , XY, Y^2]
+\end{gathered}
+\]
+and so let $U=X, V=Y$.  Note that if $X \mapsto X+Z$, then $U=X+Z$.  
+
+Inverse map $\Psi = \Phi^{-1}$, $\Psi : C \to \mathbb{P}^1_{\mathbb{R}}$ given by 
+\[
+[X,Y,Z] \mapsto [X,Y] = [Y,Z]
+\]
+$[X,Y]$ defined if $X \neq 0$, $[Y,Z]$ defined if $Z\neq 0$.
+
+$\Phi, \Psi$ are inverse isomorphisms of varieties. 
+
+
+
+
+
+cf. Ch. 2 "Cubics and the group law" of Reid (2013) \cite{Reid2013}.
+
+cf. Sec. 2.1 "Examples of parametrized cubics" in Ch. 2 of Reid (2013) \cite{Reid2013}.
+
+Nodal cubic: $C: (y^2 = x^3 + x^2) \subset \mathbb{R}^2$, is image of map $\varphi : \mathbb{R}^1 \to \mathbb{R}^2$, $t \mapsto (t^2 - 1, t^3 - t)$, since 
+\[
+\begin{gathered}
+	(t^2 - 1)^3 + (t^2 - 1)^2 = t^6- 3t^4 + 3t^2  - 1 + t^4 - 2t^3 + 1 = t^6 - 2t^4 + t^2 = t^2 (t^4 - 2t^2 + 1) = t^2 (t^2 -1)^2 = y^2
+\end{gathered}
+\]
+
+Cuspidal cubic 
+$C : (y^2 = x^3) \subset \mathbb{R}^2$ is image of $\varphi: \mathbb{R}^1 \to \mathbb{R}^2$, $t\mapsto (t^2 , t^3)$
+
+\subsubsection{Curve $y^2 = x(x-1)(x-\lambda )$ has no rational parametrization}
+
+cf. Sec. 2.2 "Curve $y^2 = x(x-1)(x-\lambda)$" in Ch. 2 of Reid (2013) \cite{Reid2013}.
+
+$f = f(t)$ \emph{rational function} if it's a quotient of 2 polynomials. 
+
+\begin{lemma}\label{Lem:SquaresOfCoprimesAreConstant}
+	Let $\overline{K}$ algebraically closed field, $p, q \in \overline{K}[t]$ coprime elements (i.e. if $\exists \, x $ s.t. $p/x$, $q/x \in \overline{K}$ (i.e. $x | p$, $x | q$), then $x=1$), \\
+	assume 4 distinct linear combinations (i.e. $\lambda p + \mu q$ for 4 distinct ratios $(\lambda : \mu) \in \mathbb{P}^1K$) are squares in $\overline{K}[t]$, \\ 
+	then $p,q \in \overline{K}$
+\end{lemma}
+
+cf. Lemma 2.3 of Reid (2013) \cite{Reid2013}
+
+\begin{proof}
+	(Fermat's method of "infinite descent")
+	
+	Without loss of generality, 
+	\[
+	\begin{aligned}
+		& p' = ap + bq \\ 
+		& q' = cp + dq
+	\end{aligned}
+	\]
+	$a,b,c, d \in K$, $ad-bc \neq 0$. 
+	
+	Hence, assume 4 given squares are 
+	\[
+	p, p-q, p-\lambda q , q
+	\]
+	i.e. $\lambda p + \mu q$, for $\lambda = 1, \mu = 0$; $\lambda = 1, \mu = -1$; $\lambda = 1, \mu = -\lambda$; $\lambda = 0, \mu = 1$
+	
+	Since $a,b,c,d$ arbitrary linear transformation.
+	
+	Then $p = u^2, q = v^2$, $u,v \in \overline{K}[t]$ are coprime, with 
+	\[
+	\max{ (\deg{u} , \deg{v} )} < \max{ (\deg{p}, \deg{q})}
+	\]
+	Suppose $\max{(\deg{p}, \deg{q})} >0$ and is minimal among all $p,q$ satisfying lemma condition.
+	
+	Then 
+	\[
+	\begin{aligned}
+	& p - q = u^2 - v^2 = (u-v)(u+v) \\
+	& p - \lambda q = u^2 - \lambda v^2 = (u-\mu v) (u + \mu v)
+	\end{aligned}
+	\]
+	where $\mu = \sqrt{\lambda}$, are squares in $\overline{K}[t]$. 
+	
+	So by $u,v $ being coprime, \\
+	\phantom{ \qquad \, } Then $u-v, u+v, u- \mu v, u + \mu v$ are squares.
+	
+	This contradicts minimality of $\max{(\deg{p}, \deg{q})}$
+
+
+\end{proof}	
+
+
+
+
+
+\begin{theorem}[$y^2 = x(x-1)(x-\lambda)$ has no rational parametrization]\label{Thm:SomeEqnHasNoRationalParametrization}
+	Let $K$ be field of characteristic $\neq 2$, let $\lambda \in K$, $\lambda \neq 0, 1$; let $f,g \in K(t)$ be rational functions s.t.\[
+	f^2 = g(g-1)(g-\lambda)
+	\]
+	Then $f, g\in K$. 	
+\end{theorem}
+	EY (20181229). Recall, \emph{characteristic of ring} $R$ (e.g. field), $\text{char}(K)$, smallest number of times $1$ must using ring's multiplicative identity $1$ in a sum to get additive identity ($0$). 
+	
+	$\text{char}(K) = 0$ for case that $\underbrace{n}{1 + \dots + 1} = \sum_{i=1}^n 1 \neq 0 \quad \, \forall \, n \in \mathbb{Z}^+$.  
+
+	Theorem \ref{Thm:SomeEqnHasNoRationalParametrization} is equivalent to $\nexists $ nonconstant map $\mathbb{R}^1 \to C : (y^2 = x(x-1)(x-\lambda))$ given by rational functions.
+	
+	\begin{proof}
+$K[t]$ UFD; unique factorization domain (given).
+
+EY: 20181229, recall the definitions:
+integral domain - nonzero cummutative ring in which product of any 2 nonzero elements is nonzero. \\
+unique factorization domain is an integral domain $R$ s.t. $\forall \, x \in R$, $x\neq 0$, $x$ can be written as 
+\[
+x = u p_1 p_2 \dots p_n , \quad \, n \geq 0
+\]		
+with irreducible elements $p_i$ of $R$, unit $u$.
+
+\[
+\begin{gathered}
+\Longrightarrow \begin{aligned} & f = r/s \\ & g = p /q \end{aligned} \qquad \quad \, 
+\begin{aligned}
+& r,s \in K[t] \text{ and coprime } \\
+& p,q \in K[t] \text{ and coprime } 
+\end{aligned}
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+\Longrightarrow f^2 = g(g-1)(g-\lambda) = \frac{r^2 }{s^2} = \frac{p}{q} \left( \frac{ p-q}{q} \right)\left( \frac{ p - \lambda q}{q} \right) \Longrightarrow r^2 q^3 = s^2 p(p-q)(p-\lambda q)
+\end{gathered}
+\]
+$r,s$ are coprime, so RHS $s^2$ must divide $q^3$. \\
+$p,q$ are coprime, LHS $q^3$ must divide $s^2$
+
+EY (20181229): observe that LHS and RHS are different and equal. How to get them into the same form? Try to divide both sides!
+
+\[
+\Longrightarrow s^2 | q^3 \text{and } q^3 | s^2, \text{ so } s^2 = aq^3 \text{ with } a \in K
+\]
+
+Then $aq = (s/q)^2$ is square in $K[t]$
+
+Then $r^2 = ap(p-q)(p-\lambda q)$
+
+Consider factorization into primes $\Longrightarrow$ nonzero constants $b,c,d \in K$, s.t. $bp, c(p-q), d(p-\lambda q)$ are all squares in $K[t]$. \\
+Let algebraic closure $\overline{K}$ (algebraic extension of $K$ s.t. $\overline{K}$ algebraically closed, i.e. $\forall \, $ nonconstant $f(x) \in K[x]$ has a root in $K$).
+
+Then $\forall \, p, q \in \overline{K}(t)$, by lemma, $p,q \in \overline{K}$. Then $r,s \in \overline{K}$.  Then $\boxed{ f, g \in \overline{K}}$.
+
+		\end{proof}
+	
+
+cf. Sec. 2.4 "Linear systems" in Ch. 2 of Reid (2013) \cite{Reid2013}.
+
+Let $S_d \equiv \lbrace \text{ forms of degree $d$ in $(X, Y, Z)$ } \rbrace$; recall form is just a homogeneous polynomial.
+
+$\forall \, F \in S_d$, $\exists \, $ unique form for $F$: $F = \sum a_{ijk} X^i Y^j Z^k$, $a_{ijk} \in K$, and $\sum \equiv \sum_{ \substack{ i,j,k \geq 0 \\ i + j + k = d } }$.
+
+$\Longrightarrow S_d $ is $K$-vector space with basis $\lbrace Z^d, XZ^{d-1}, YZ^{d-1}, \dots X^{d-2} Y^2 \dots Y^d \rbrace$, where
+\[
+\boxed{ \text{dim}S_d  = \binom{d+2}{2} }
+\]
+(to see this, imagine $d$ stars, 2 bars, and the 2 bars distinguish which are $X$'s, $Y$'s, or $Z$'s). 
+
+For $P_1 \dots P_n \in \mathbb{P}^2$, let 
+\[
+S_d(P_1 \dots P_n) = \lbrace F \in S_d | F(P_i) =0 \quad \, \forall \, i = 1 \dots n \rbrace \subset S_d
+\]
+
+$\forall \, $ condition $F(P_i) = 0$ (e.g. $F(X_i, Y_i, Z_i) =0$, where $P_i = (X_i, Y_i, Z_i)$) is 1 linear condition on $F$, so $S_d(P_1 \dots P_n)$ is a vector space of $\text{dim} \geq \binom{ d+2}{2} - n$
+
+\begin{lemma}[Special case of Nullstellensatz]\label{Lem:SpecialCaseOfNullstellensatz}
+	\begin{enumerate}
+		\item[(i)] Let $L \subset \mathbb{P}_K^2$ be a line; if $F \equiv 0$ on $L$, then $F$ divisible in $K[X, Y, Z]$ by equation of $L$, i.e. $F = H \cdot F'$, where $H$ is equation of $L$, and $F' \in S_{d-1}$. 
+		\item[(ii)] Let $C \subset \mathbb{P}^2_K$ be nonempty nondegenerate conic; if $F =0$ on $C$, then $F$ divisible in $K[X,Y,Z]$, by equation of $C$, i.e. $F = QF'$, where $Q$ is equation of $C$, and $F' \in S_{d-2}$. 
+	\end{enumerate}
+\end{lemma}
+
+cf. Lemma 2.5 of Reid (2013). 
+
+\begin{proof}
+\begin{enumerate}
+	\item[(i)] By change of coordinates, assume $H = X$, 
+	Then, $\forall \, F \in S_d$, $\exists \, ! \, F = X \cdot F'_{d-1} + G(Y,Z)$, since, just gather together all monomials involving $X$ into 1st. summand, and what's left must be a polynomial $Y,Z$.
+	
+	Since \\
+	$F = 0$ on $L$, $F(0) = 0 = 0 \cdot F'_{d-1} + G(Y,Z) $ $\Longrightarrow G(Y,Z) = 0\quad \, \forall \, Y,Z$. 
+	
+	Otherwise, if $G(Y,Z) \neq 0$, then it has at most $d$ zeros on $\mathbb{P}_K^1$, whereas if $K$ is infinite, then so is $\mathbb{P}_K^1$.  
+	\item[(ii)] By change of coordinates $Q = XZ - Y^2$, \\ 
+	Consider why 
+	\[
+	F = QF_{d-2}' + A(X,Z) + YB(X,Z)
+	\]
+	where $d-2$ in $F_{d-2}'$ denotes the \emph{degree} of the polynomial (to be $d-2$).
+	
+	This is because if $Y^2 = XZ - Q$, then $F(Y^2 = XZ - Q)$ has degree $\leq 1$ in $Y$, and so would have the form 
+	\[
+	F(Y^2 = XZ - Q) = A(X,Z) + YB(X,Z)
+	\]
+	$C$ is a parametrized conic given by 
+	\[
+	X = U^2 , Y = UV, \, Z = V^2
+	\]
+	so that, \\
+	$F = 0$ on $C$ $\Longleftrightarrow  A(U^2, V^2) + UVB(U^2 , V^2) = 0$ on $C$ \\
+	$\Longrightarrow A(U^2, V^2) + UVB(U^2 , V^2)  =0  \in K[U,V]$. \\
+	$\Longrightarrow A(X,Z) = B(X,Z) =0 $
+	
+	Since here the last equality comes by considering separately terms of even and odd degrees in form 
+	\[
+	A(U^2, V^2)  + UVB(U^2, V^2)
+	\]
+	
+\end{enumerate}	
+\end{proof}
+
+cf. Exercises to Ch. 2, Reid (2013)
+
+\exercisehead{2.2}
+Let $\begin{aligned} & \quad \\ 
+& \varphi : \mathbb{R}^1 \to \mathbb{R}^2	\\
+& t \mapsto (t^2, t^3) \end{aligned}$. 
+
+$\forall \, $ polynomial $f \in \mathbb{R}[X, Y]$, s.t. $f= 0$ on image $C = \varphi(\mathbb{R}^1)$, $f$ divisible by $Y^2 - X^3$. 
+
+\begin{proof}
+	Given $\varphi(t) = (t^2, t^3) = (x,y)$, then $y^2 = x^3$ \, $\forall \, t \in \mathbb{R}$, or $y^2 - x^3 = 0$.
+	
+	Let $q= q(x,y) = y^2 - x^3 \in K[x,y]$.
+	
+	Suppose $f$ of degree $d$.
+	
+	Then 
+	\[
+	f = q f'_{d-2} + a(x) + y b(x)
+	\]
+	
+	This is because, if $y^2 = q- x^3$, $f(y^2 = q- x^3)$ has degree $\leq 1$ in $y$, so would have the previous form.
+	
+	Now 
+	\[
+	\begin{gathered}
+	f(y^2 = q- x^3) = 0 = 0 + a(x) + yb(x)
+	\end{gathered}
+	\]
+	$f = 0$ on $C = \varphi(\mathbb{R}^1) \Longrightarrow $ $a(x) + yb(x) =0 = a(t^2) + t^3 b(t^2) = 0$.
+	
+	Suppose for $t_1 > 0$, $t_1^3 b(t_1^2) = -a(t_1^2)$. 
+	
+	Consider $-t_1 < 0$: 
+	\[
+	\begin{gathered}
+	\Longrightarrow -t_1^3 b(t_1^3) = -a(t_1^2) \Longrightarrow a(t_1^2) = 0 \quad \, \forall \, t_1 >0
+	\end{gathered}
+	\]
+	Then $b(t_1^2) = 0$ $\forall \, t_1 > 0$.
+	
+	$\Longrightarrow f = qf_{d-2}'$ where $q = y^2-x^3$.
+	
+	$K$ needs to have "negative numbers" (i.e. additive inverses) to exist, for this proof to work.
+	\end{proof}	
+
+
+
 \end{multicols*}
 
 
@@ -6439,6 +7008,17 @@ G. Evenbly, G. Vidal.  "Tensor network states and geometry."  \href{https://arxi
 
 \bibitem{Raam2016} 
 Mark Van Raamsdonk.  "Lectures on Gravity and Entanglement."  \href{https://arxiv.org/abs/1609.00026}{arXiv:1609.00026 \textbf{[hep-th]}}
+
+
+\bibitem{Reid2013}
+Miles Reid. \textbf{Undergraduate Algebraic Geometry}. October 20, 2013. \url{https://homepages.warwick.ac.uk/staff/Miles.Reid/MA4A5/UAG.pdf}
+
+\bibitem{Har1992} 
+Joe Harris. \textbf{Algebraic Geometry: A First Course}. Graduate Texts in Mathematics. 1992. Springer-Verlag New York.   eBook ISBN 978-1-4757-2189-8
+    
+
+
+
 
 \end{thebibliography}
 
