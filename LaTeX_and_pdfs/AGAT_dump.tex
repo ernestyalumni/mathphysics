@@ -4081,9 +4081,100 @@ Exact solution by transfer matrices for 2-dim. Ising model.
 
 \part{Conformal Field Theory; Virasoro Algebra}  
 
-cf.  Schottenloher (2008)  \cite{Scho2008}
+cf. Schottenloher (2008)  \cite{Scho2008}
 
 \section{Conformal Transformations}
+
+\subsection{Semi-Riemannian manifolds (review and (key) examples)}
+
+cf. pp. 7, Ch. 1 "Conformal Transformations and Conformal Killing Fields." Schottenloher (2008)  \cite{Scho2008}
+
+Semi-Riemannian manifold is a pair $(M, g)$ s.t. \\
+smooth manifold $M$, $\text{dim}{M} = n$, \\
+smooth tensor field $g$ s.t. $g: a\in M \mapsto \Omega^2(T_aM)$, i.e. 
+$\forall \, a \in M$, $g$ assigns $a$ a nonnegative and symmetric bilinear form on tangent space $T_aM$. 
+
+In local coordinates, $x^1 \dots x^n $ of manifold $M$,  \\
+given chart $\phi : U \to V$, open subset $U \subseteq M$, open subset $V \subseteq \mathbb{R}^n$, 
+\[
+\phi(a) = (x^1(a) \dots x^n(a)), \, a\in M
+\]
+Bilinear form $g_a$ on $T_aM$, written
+\[
+g_a(X,Y) = g_{\mu \nu}(a) X^{\mu} Y^{\nu}
+\]
+
+Tangent vectors $X = X^{\mu} \partial_{\mu}$, $Y = Y^{\nu} \partial_{\nu} \in T_aM$ basis $\partial_{\mu} := \frac{ \partial }{ \partial x^{\mu}}$, $\mu = 1 \dots n$ of tangent space $T_aM$, induced by chart $\phi$. 
+
+By assumption, matrix
+\[
+g_{\mu \nu}(a)
+\]
+Nondegenerate and symmetric, $\forall \, a \in U$, i.e. 
+\[
+\text{det}(g_{\mu \nu }(a)) \neq 0 , \qquad \, (g_{\mu \nu}(a))^T = (g_{\mu \nu}(a))
+\]
+
+Differentiating of $g_a$ implies matrix $g_{\mu \nu}(a)$ depends differentiably on $a$.
+
+That means that in its dependence on local coordinates $x^j$, coefficient $g_{\mu \nu} = g_{\mu \nu}(x)$ are smooth functions.
+
+In general, $g_{\mu \nu}X^{\mu} X^{\nu} >0 $ doesn't hold $\forall \, X \neq 0$, i.e. $g_{\mu \nu}(a)$ not required to be positive-definite.
+
+2 important subcases: \footnote{\url{https://doc.sagemath.org/html/en/reference/manifolds/sage/manifolds/differentiable/pseudo_riemannian.html}}
+
+Riemannian manifold: metric $g$ positive definite, signature $n= \text{dim}M$. 
+
+Lorentz manifold specified as semi-Riemannian manifold with $(p,q)= (n-1,1)$ or $(p,q) = (1, n-1)$. 
+
+Metric $g$ has signature $n-2$ (positive convention) or $2-n$ (negative convention).
+
+\subsubsection{Examples (of Riemannian manifolds for Conformal Field Theory)}
+
+$\mathbb{R}^{p,q} = (\mathbb{R}^{p,q}, g^{p,q})$, $p,q \in \mathbb{N}$, where
+\[
+g^{p,q}(X,Y) := \sum_{i=1}^p X^i Y^i - \sum_{i = p+1}^{p+q} X^i Y^i
+\]
+
+Hence
+\[
+(g_{\mu \nu}) = \left( \begin{matrix} 1_p & \\ & -1_q \end{matrix} \right) = \text{diag}(1\dots 1, -1, \dots  -1)
+\]
+
+$\mathbb{R}^{1,3} = \mathbb{R}^{3,1}$, usual Minkowski space. \\
+$\mathbb{R}^{1,1}$, 2 -dim. Minkowski space (Minkowski plane). \\
+$\mathbb{R}^{2,0}$, Euclidean plane. \\
+$\mathbb{S}^2 \subset \mathbb{R}^{3,0}$, compactification of $\mathbb{R}^{2,0}$, structure of Riemannian manifold on 2-sphere $\mathbb{S}^2$ induced by inclusion in $\mathbb{R}^{2,0}$ \\
+$\mathbb{S} \times \mathbb{S} \subset \mathbb{R}^{2,2}$, compactification of $\mathbb{R}^{1,1}$. More precisely, \\
+$\mathbb{S} \times \mathbb{S} \subset \mathbb{R}^{2,0} \times \mathbb{R}^{0,2} \simeq \mathbb{R}^{2,2}$ where structure of semi-Riemannian manifold on $\mathbb{S} \times \mathbb{S}$ induced by inclusion into $\mathbb{R}^{2,2}$. 
+
+$\mathbb{S}^p \times \mathbb{S}^q \subset \mathbb{R}^{p+1, 0} \times \mathbb{R}^{0, q+1} \simeq \mathbb{R}^{p+1,q+1}$ with $p$-sphere $\mathbb{S}^p = \lbrace X \in \mathbb{R}^{p+1} : g^{p+1, 0}(X,X) = 1\rbrace \subset \mathbb{R}^{p+1,0}$, $q$-sphere $\mathbb{S}^q \subset \mathbb{R}^{0, q+1}$ \\
+yields a compactification of $\mathbb{R}^{p,q}$ for $p,q \geq 1$
+
+Compact semi-Riemannian manifold denoted by $\mathbb{S}^{p,q}$, for $p, q\geq 0$.
+
+Quadrics $N^{p,q}$ (of Sec. 2.1) are locally isomorphic to $\mathbb{S}^{p,q}$ from point of view of conformal geometry.
+
+For the "\emph{negative convention}": 
+
+\[
+g^{p,q}(X,Y) = - \sum_{i=0}^{p-1} X^i Y^i + \sum_{i=p}^{p+q} X^i Y^i
+\]
+\[
+(g_{\mu \nu}) = \left( \begin{matrix} -1_p & \\ & 1_q \end{matrix} \right) = \text{diag}(-1 , \dots - 1, 1 \dots 1)
+\]
+
+$\mathbb{R}^{1,3} $, Minkowski space. \\
+$\mathbb{R}^{1,1}$, 2 -dim. Minkowski space. \\
+$\mathbb{R}^{0,2}$, Euclidean plane. \\
+$\mathbb{S}^2 \subset \mathbb{R}^{0,3}$, compactification of $\mathbb{R}^{0,2}$ \\
+$\mathbb{S} \times \mathbb{S} \subset \mathbb{R}^{0,2} \times \mathbb{R}^{2,0} \simeq \mathbb{R}^{2,2}$ 
+
+$\mathbb{S}^p \times \mathbb{S}^q \subset \mathbb{R}^{0, p+1} \times \mathbb{R}^{q+1, 0} \simeq \mathbb{R}^{p+1,q+1}$ with $p$-sphere $\mathbb{S}^p = \lbrace X \in \mathbb{R}^{p+1} : g^{ 0, p+1}(X,X) = 1\rbrace \subset \mathbb{R}^{0, p+1}$, $q$-sphere $\mathbb{S}^q \subset \mathbb{R}^{q+1, 0}$ \\
+yields a compactification of $\mathbb{R}^{p,q}$ 
+
+
+
 
 \begin{definition}[Conformal transformation or conformal map]
 Let 2 semi-Riemannian manifolds$(M,g)$, $(M',g')$, $\text{dim}M = \text{dim}M'$, let open $U\subset M$, open $V\subset M'$.  
