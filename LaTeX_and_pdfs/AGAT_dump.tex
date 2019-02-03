@@ -1399,8 +1399,9 @@ T(y) = T(y_je_j) = y_j T(e_j) = y_j A_{ij}e'_i = Ay
 
 	\end{proof}
 
+\section{Modules}
 
-\section{R-modules}
+\subsection{R-modules}
 
 cf. Sec. 7.1 Modules of Rotman (2010) \cite{JRotman2010}
 
@@ -1876,6 +1877,22 @@ Define
 \]
 \end{itemize}
 \end{proof}
+
+\subsection{Vector Spaces as a Module}
+
+Lang made the key insight on vector spaces as a whole in Sec 5. "Vector Spaces" in pp. 139-140 of Lang (2005) \cite{Lang2005}: 
+
+\begin{theorem}[Existence of a basis for vector spaces, Thm. 5.1 Lang (2005) \cite{Lang2005}]\label{Thm:ExistenceOfBasisForVectorSpaces}
+	Let $V$ be a vector space over a field $K$, assume $V \neq \lbrace 0 \rbrace$. 
+	
+	Let $\Gamma$ be a set of generators of $V$ over $K$ and let $S$ be a subset of $\Gamma$ which is linearly independent. 
+	
+	Then $\exists \, $ basis $\mathcal{B}$ of $V$ s.t. $S \subset \mathcal{B} \subset \Gamma$.
+
+\end{theorem}
+	
+Indeed, while this wikipedia article \footnote{\url{https://en.wikipedia.org/wiki/Vector_space}} on Vector space does a good job generalizing the properties defining a vector in a vector space, a vector's properties is separate from what \emph{characterizes} a vector space. Here, we can \emph{specify} a vector space by its generators, and furthermore, from Thm. \ref{Thm:ExistenceOfBasisForVectorSpaces}, it has a basis that characterizes a vector space. This can be useful for implementation in C++.
+
 
 \section{Categories; Category Theory}  
 
@@ -7052,6 +7069,9 @@ Jean-Pierre Serre (Author), J. Stilwell (Translator).  \textbf{Trees} (Springer 
 
 \bibitem{JRotman2010}
 Joseph J. Rotman, \textbf{Advanced Modern Algebra} (Graduate Studies in Mathematics) 2nd Edition, American Mathematical Society; 2 edition (August 10, 2010), ISBN-13: 978-0821847411
+
+\bibitem{Lang2005}
+Serge Lang. \textbf{Algebra} (Graduate Texts in Mathematics) 3rd Edition. \emph{Graduate Texts in Mathematics} (Book 211). Springer; 3rd edition (June 21, 2005). ISBN-13: 978-0387953854
 
 \bibitem{Sche2006}
 Edward Scheinerman.  \textbf{C++ for Mathematicians: An Introduction for Students and Professionals}. 1st Edition.  CRC Press; 1 edition (June 8, 2006).  ISBN-13: 978-1584885849 
