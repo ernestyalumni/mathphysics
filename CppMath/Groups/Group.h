@@ -53,6 +53,16 @@ class Element
     virtual G identity() const = 0; // pure virtual function
 
     virtual G inverse() const = 0;    
+
+    //--------------------------------------------------------------------------
+    /// \fn (virtual) destructor
+    /// \ref Sec. 21.2.2 Interface Inheritance of Ch. 21 Class Hierarchies,
+    /// Stroustrup
+    /// \details Ensure proper cleanup by defining virtual destructor in base
+    /// and overriding it suitably in derived classes.
+    //--------------------------------------------------------------------------   
+    virtual ~Element()
+    {}
 };
 
 } // namespace Groups

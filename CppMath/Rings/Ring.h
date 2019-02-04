@@ -23,7 +23,7 @@
 /// Peace out, never give up! -EY
 //------------------------------------------------------------------------------
 /// COMPILATION TIPS:
-///  g++ -std=c++17 Tuple2_main.cpp -o Tuple2_main
+///  g++ --std=c++17 -I ../ RR_main.cpp -o RR_main
 //------------------------------------------------------------------------------
 #ifndef _RINGS_RING_H_
 #define _RINGS_RING_H_
@@ -57,6 +57,16 @@ class Element : public Groups::AbelianGroups::Element<R>
     virtual R operator*(const R& a) const = 0;
 
     virtual R multiplicative_identity() const = 0; // pure virtual function
+
+    //--------------------------------------------------------------------------
+    /// \fn (virtual) destructor
+    /// \ref Sec. 21.2.2 Interface Inheritance of Ch. 21 Class Hierarchies,
+    /// Stroustrup
+    /// \details Ensure proper cleanup by defining virtual destructor in base
+    /// and overriding it suitably in derived classes.
+    //--------------------------------------------------------------------------   
+    virtual ~Element()
+    {}
 };
 
 } // namespace Rings
