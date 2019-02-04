@@ -39,6 +39,15 @@ namespace Groups
 namespace AbelianGroups
 {
 
+
+//------------------------------------------------------------------------------
+/// \class Integer
+/// \details Use CTRP pattern for the return type.
+/// Replicated base. If ambiguous, make inheritance public virtual.
+/// https://stackoverflow.com/questions/27180342/ \
+/// pure-virtual-function-in-abstract-class-with-return-type-of-base-derived-type
+/// Sec. 21.3.6 Replicated vs. Virtual Bases, Stroustrup.
+//------------------------------------------------------------------------------
 template <class T, typename = std::enable_if_t<std::is_integral<T>::value>>
 class Integer : public AbelianGroups::Element<Integer<T>>
 {

@@ -40,12 +40,14 @@ namespace Fields
 {
 
 //------------------------------------------------------------------------------
-/// \brief Element
+/// \class Element
 /// \details A pure abstract base class for a commutative ring Element. Also,
 /// use CRTP pattern, for the return type.
+/// Replicated base. If ambiguous, make inheritance public virtual.
 /// \ref https://en.wikipedia.org/wiki/Ring_(mathematics)
 /// https://stackoverflow.com/questions/27180342/ \
 /// pure-virtual-function-in-abstract-class-with-return-type-of-base-derived-type
+/// Sec. 21.3.6 Replicated vs. Virtual Bases, Stroustrup.
 /// \tparam F stands for field F, the field F that Element belongs to.
 //------------------------------------------------------------------------------
 template <typename F>

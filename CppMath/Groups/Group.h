@@ -32,7 +32,7 @@ namespace Groups
 {
 
 //------------------------------------------------------------------------------
-/// \brief Element
+/// \class Element
 /// \details A pure abstract base class for a group Element. Also,
 /// use CRTP pattern, for the return type.
 /// \ref https://en.wikipedia.org/wiki/Group_(mathematics)

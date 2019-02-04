@@ -34,9 +34,9 @@ namespace Rings
 {
 
 //------------------------------------------------------------------------------
-/// \brief Element
-/// \details A pure abstract base class for a ring Element. Also,
-/// use CRTP pattern, for the return type.
+/// \class Element
+/// \details A pure abstract base class for a ring Element. Also, use CRTP
+/// pattern, for the return type.
 /// \ref https://en.wikipedia.org/wiki/Ring_(mathematics)
 /// https://stackoverflow.com/questions/27180342/ \
 /// pure-virtual-function-in-abstract-class-with-return-type-of-base-derived-type

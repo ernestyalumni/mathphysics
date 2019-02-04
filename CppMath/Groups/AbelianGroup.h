@@ -40,9 +40,11 @@ namespace AbelianGroups
 /// \brief Element
 /// \details A pure abstract base class for a group Element. Also, use CTRP
 /// pattern for the return type.
+/// Replicated base. If ambiguous, make inheritance public virtual.
 /// \ref https://en.wikipedia.org/wiki/Group_(mathematics)
 /// https://stackoverflow.com/questions/27180342/ \
 /// pure-virtual-function-in-abstract-class-with-return-type-of-base-derived-type
+/// Sec. 21.3.6 Replicated vs. Virtual Bases, Stroustrup.
 /// \tparam AG stands for abelian group AG, the group AG that Element belongs
 /// to.
 //------------------------------------------------------------------------------
