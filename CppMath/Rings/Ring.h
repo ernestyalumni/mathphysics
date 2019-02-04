@@ -1,11 +1,11 @@
 //------------------------------------------------------------------------------
-/// \file Group.h
+/// \file Ring.h
 /// \author Ernest Yeung
 /// \email  ernestyalumni@gmail.com
-/// \brief  Group axioms closure, identity, and inverse elements.
+/// \brief  Ring, and ring axioms..
 /// \ref Ch. 21 Class Hierarchies, 21.2.Design of Class Hierarchies
 ///   The C++ Programming Language, 4th Ed., Stroustrup;
-/// \details group (group operations, group axioms), following interface
+/// \details Ring (2 ring operations, ring axioms), following interface
 /// implementation.
 /// \copyright If you find this code useful, feel free to donate directly
 /// (username ernestyalumni or email address above), going directly to:
@@ -23,40 +23,42 @@
 /// Peace out, never give up! -EY
 //------------------------------------------------------------------------------
 /// COMPILATION TIPS:
-///  g++ --std=c++17 Integers_main.cpp -o Integers_main
+///  g++ -std=c++17 Tuple2_main.cpp -o Tuple2_main
 //------------------------------------------------------------------------------
-#ifndef _GROUPS_GROUP_H_
-#define _GROUPS_GROUP_H_
+#ifndef _RINGS_RING_H_
+#define _RINGS_RING_H_
 
-namespace Groups
+#include "Groups/AbelianGroup.h"
+
+namespace Rings
 {
 
 //------------------------------------------------------------------------------
 /// \brief Element
-/// \details A pure abstract base class for a group Element. Also,
+/// \details A pure abstract base class for a ring Element. Also,
 /// use CRTP pattern, for the return type.
-/// \ref https://en.wikipedia.org/wiki/Group_(mathematics)
+/// \ref https://en.wikipedia.org/wiki/Ring_(mathematics)
 /// https://stackoverflow.com/questions/27180342/ \
 /// pure-virtual-function-in-abstract-class-with-return-type-of-base-derived-type
-/// \tparam G stands for group G, the group G that Element belongs to.
+/// \tparam R stands for ring R, the ring R that Element belongs to.
 //------------------------------------------------------------------------------
-template <typename G>
-class Element
+template <typename R>
+class Element : public Groups::AbelianGroups::Element<R>
 {
   public:
 
     // Data is gone; ctors gone since there's no data to initialize.    
 
-    // pure virtual function
-    virtual G group_law(const G& b) const = 0;
+    //--------------------------------------------------------------------------
+    /// \details A ring is a monoid under multiplication.
+    /// \url https://en.wikipedia.org/wiki/Ring_(mathematics)
+    //--------------------------------------------------------------------------
 
-    virtual G identity() const = 0; // pure virtual function
+    virtual R operator*(const R& a) const = 0;
 
-    virtual G inverse() const = 0;    
+    virtual R multiplicative_identity() const = 0; // pure virtual function
 };
 
-} // namespace Groups
+} // namespace Rings
 
-#endif // _GROUPS_GROUP_H_
-
-
+#endif // _RINGS_RING_H_

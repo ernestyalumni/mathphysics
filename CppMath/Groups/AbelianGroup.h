@@ -23,7 +23,7 @@
 /// Peace out, never give up! -EY
 //------------------------------------------------------------------------------
 /// COMPILATION TIPS:
-///  g++ -std=c++17 Tuple2_main.cpp -o Tuple2_main
+///  g++ --std=c++17 Integers_main.cpp -o Integers_main
 //------------------------------------------------------------------------------
 #ifndef _GROUPS_ABELIAN_GROUPS_ABELIAN_GROUP_H_
 #define _GROUPS_ABELIAN_GROUPS_ABELIAN_GROUP_H_

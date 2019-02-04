@@ -1,12 +1,12 @@
 //------------------------------------------------------------------------------
-/// \file Group.h
+/// \file RR_main.cpp
 /// \author Ernest Yeung
 /// \email  ernestyalumni@gmail.com
-/// \brief  Group axioms closure, identity, and inverse elements.
+/// \brief  Integers under addition as a group.
 /// \ref Ch. 21 Class Hierarchies, 21.2.Design of Class Hierarchies
 ///   The C++ Programming Language, 4th Ed., Stroustrup;
-/// \details group (group operations, group axioms), following interface
-/// implementation.
+/// \details Denote integers as ZZ, group of integers under addition (ZZ, +)
+/// denoted throughout.
 /// \copyright If you find this code useful, feel free to donate directly
 /// (username ernestyalumni or email address above), going directly to:
 ///
@@ -23,40 +23,41 @@
 /// Peace out, never give up! -EY
 //------------------------------------------------------------------------------
 /// COMPILATION TIPS:
-///  g++ --std=c++17 Integers_main.cpp -o Integers_main
+///  g++ --std=c++17 -I ../ RR_main.cpp -o RR_main
 //------------------------------------------------------------------------------
-#ifndef _GROUPS_GROUP_H_
-#define _GROUPS_GROUP_H_
+#include "RR.h"
 
-namespace Groups
+#include <iostream>
+
+using Rings::CommutativeRings::Fields::RR;
+
+int main()
 {
+  // RRDefaultConstructsWithDouble
+  {
+    std::cout << "\n RRDefaultConstructsWithDouble \n";
+    const RR<double> x;
+    std::cout << " x default constructs to 0 : " << x.data() << ' ' << 
+      (x.data() == 0.0) << '\n';
+  }
 
-//------------------------------------------------------------------------------
-/// \brief Element
-/// \details A pure abstract base class for a group Element. Also,
-/// use CRTP pattern, for the return type.
-/// \ref https://en.wikipedia.org/wiki/Group_(mathematics)
-/// https://stackoverflow.com/questions/27180342/ \
-/// pure-virtual-function-in-abstract-class-with-return-type-of-base-derived-type
-/// \tparam G stands for group G, the group G that Element belongs to.
-//------------------------------------------------------------------------------
-template <typename G>
-class Element
-{
-  public:
+  // InterfaceTests
+  std::cout << "\n InterfaceTests \n";
 
-    // Data is gone; ctors gone since there's no data to initialize.    
+  // MultiplicativeInverseReturnsMultiplicativeInverseForNonzeroNumbers
+  {
+    std::cout <<
+      "\n MultiplicativeInverseReturnsMultiplicativeInverseForNonzeroNumbers\n";
 
-    // pure virtual function
-    virtual G group_law(const G& b) const = 0;
+    const RR<double> x {-5.0};
+    std::cout << x.multiplicative_inverse() << '\n';
+  }
 
-    virtual G identity() const = 0; // pure virtual function
-
-    virtual G inverse() const = 0;    
-};
-
-} // namespace Groups
-
-#endif // _GROUPS_GROUP_H_
-
-
+  // Operator*OverloadedToRingMultiplication
+  {
+    std::cout << "\n Operator*OverloadedToRingMultiplication \n";
+    const RR<double> x {-4.0};
+    const RR<double> y {6.0};
+    std::cout << " x * y = " << (x * y).data() << '\n';
+  } 
+}
