@@ -3137,6 +3137,63 @@ full subcategory $\mathbf{A}'$ of $\mathbf{A}$ saturated if $A \in \mathbf{A}$ b
 \begin{definition}[monoid $M$]
 	\textbf{monoid} $M$ (set endowed with internal product with associative and unital law) is nothing but a category with only 1 object (to $M$, associate category $\mathbf{M}$, with single object $A$, and morphisms $\text{Hom}_{\mathbf{M}}(A,A) = M$)
 \end{definition}
+
+\section{Applications of Category Theory on Hybrid Systems}
+
+cf. Ames (2006) \cite{Ames2006}.
+	
+\subsection{D-Categories}
+
+$D$ stands for discrete.
+
+Recall that a small category $\mathbf{C}$ is called \emph{small} if both $\text{Obj}(\mathbf{C})$ and $\text{hom}(\mathbf{C})$ are sets, not proper classes. 
+
+\begin{definition}[Axiomatic D-categories]
+Let D-category be a \emph{small} category $\mathbf{D}$ s.t.
+\begin{enumerate}
+	\item $\forall \, D \in \text{Obj}(\mathbf{D})$, \\
+	$\exists \,$ morphism $f \in \text{Mor}(\mathbf{D})$ s.t. $f \neq 1$ s.t. \\
+	$f \in \text{Hom}(D, *)$ or $f\in \text{Hom}(*, D)$, but never both, \\
+	i.e. $\forall \, $ diagram $a_0 \xrightarrow{ \alpha_1} a_1 \xrightarrow{ \alpha_2} \dots \xrightarrow{ \alpha_n} a_n$ in $\mathbf{D}$, all but 1 morphism must be identity (i.e. longest chain of composite non-identity morphisms is of length 1). 
+	\item If for $D\in \text{Obj}(\mathbf{D})$, $D$ is the domain of a non-identity morphism, i.e. $\exists \, f_1 \in \text{Mor}(\mathbf{D})$ s.t. 
+	\[
+	f_1 \in \text{Hom}(D, *), \, f_1 \neq 1
+	\]
+	then $\exists \, f_2 \in \text{Hom}(D, *)$, $f_2 \neq f_1$, $f_2 \neq 1$ and $\forall \, f \in \text{Hom}(D, *)$ s.t. $f\neq f_1,f_2$, \, $f=1$
+\end{enumerate}
+\end{definition}
+	
+cf. 1.2.1 Important objects in D-categories, Ames (2006) \cite{Ames2006}.
+
+Let 
+\[
+\begin{gathered}
+	\text{Mor}{\mathbf{A}} = \bigcup_{A, B \in \text{Obj}(\mathbf{A})} \text{Hom}(A,B) \qquad \, \text{(my notation)} \\
+	\text{Mor}(\mathcal{D}) = \bigcup_{(a,b) \in \text{Obj}(\mathcal{D}) \times \text{Obj}(\mathcal{D}) } \text{Hom}_{\mathcal{D}}(a,b) \qquad \, \text{ (Ames' notation) }
+\end{gathered}
+\]	
+	
+Let 
+\begin{equation}
+\text{Mor}_{1}{\mathbf{A}} := \lbrace A \in \text{Mor}(\mathbf{A}) | A \neq 1 \rbrace 
+\end{equation}
+
+For a D-category, consider these subset of $\text{Obj}(\mathbf{D})$, 
+
+\begin{definition}
+	\textbf{edge set} of $\mathbf{D}$, $E(\mathbf{D})$, 
+\begin{equation}
+\begin{gathered}
+E(\mathbf{D}) := \lbrace A \in \text{Obj}(\mathbf{D}) | \alpha \in \text{Hom}(A, *), \beta \in \text{Hom}(A, *), \alpha, \beta \in \text{Mor}_{1}(\mathbf{D}), \, \alpha \neq \beta \rbrace
+\end{gathered}
+\end{equation}	
+\end{definition}
+	
+\subsection{Blog (Running log)}
+
+ 
+	
+	
 	
 
 \part{Reading notes on Cox, Little, O'Shea's \emph{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}}
@@ -7034,6 +7091,13 @@ Michael Barr, Charles Wells.  \textbf{Category Theory for Computing Science}.  \
  
 \bibitem{AHS2004}
 Ji\v{r}\'{i} Ad\'{a}mek, Horst Herrlich, George E. Strecker.   \textbf{Abstract and Concrete Categories The Joy of Cats}. 2004.  \url{http://katmat.math.uni-bremen.de/acc/acc.pdf}
+
+%%--------------------------------------------------------------------------------------------------
+%%% Applications of Category Theory
+%%--------------------------------------------------------------------------------------------------
+\bibitem{Ames2006}
+Aaron David Ames. "A Categorical Theory of Hybrid Systems." PhD dissertation. Dec. 11, 2006. Technical Report No. UCB/EECS-2006-165. \url{http://www.eecs.berkeley.edu/Pubs/TechRpts/2006/EECS-2006-165.html}
+
 
 \bibitem{CLS2005}
 David A. Cox.  John Little. Donal O'Shea. \textbf{Using Algebraic Geometry}.  Second Edition.  Springer.  2005.  ISBN 0-387-20706-6 QA564.C6883 2004
