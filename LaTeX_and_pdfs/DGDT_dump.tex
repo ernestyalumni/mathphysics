@@ -1189,7 +1189,7 @@ By rank-nullity theorem (linear algebra), $Dg_x$ surjective iff $\text{rank}Dg_x
 \end{definition}
 
 Recall immersion:  \\
-$F:M \to N$ immersion iff $DF$ injective iff $\text{rank}DF = \text{dim}M$.  
+$F:M \to N$ immersion iff $DF$ injective, i.e. iff $\text{rank}DF = \text{dim}M$.  
 
 Consider manifolds $M\subseteq N$.  \\
 Consider inclusion map $\begin{aligned} & \quad \\ 
@@ -1241,7 +1241,7 @@ $F$ diffeomorphism onto $F(M)$.
 
 
 
-Jeffrey Lee (2009) \cite{JLee2009}
+
 
 
 
@@ -1525,6 +1525,1747 @@ where I've tried to express the right-$R$-module, "right action" on $\alpha^1 \o
 
 
 Conlon (2008) \cite{Conl2008}
+
+\part{Lie Groups, Lie Algebra}
+
+\section{Lie Groups}
+
+\begin{description}
+	\item Lie Groups 
+	\item Groups
+	\item Ring
+	\item group algebra
+	\item Group Ring
+	\item Representation Theory
+	\item Modules
+	\item $kG$-modules
+\end{description}
+
+From Sec. 8.1 ``Noncommutative Rings'' of Rotman (2010) \cite{JRotman2010}:
+
+\begin{definition}
+	ring $R$ - additive abelian group equipped with multiplication $\begin{aligned} & \quad \\ 
+	& R \times R \to R \\
+	& (a,b) \mapsto ab \end{aligned}$ s.t. $\forall \, a ,b \in R$
+	
+	\begin{enumerate}
+		\item[(i)] $a(bc) = (ab)c$ 
+		\item[(ii)] $a(b+c) = ab+ ac$, $(b+c)a = ba + ca$ 
+		\item[(iii)] $\exists \, 1 \in R$ s.t. $\forall \, a \in R$, $1a = a = a1$
+	\end{enumerate}
+\end{definition}
+
+Example 8.1\cite{JRotman2010}
+\begin{enumerate}
+	\item[(ii)] group algebra $kG$, $k$ commutative ring, $G$ group, ``its additive abelian group is free $k$-module having basis labeled by elements of $G$, \\
+	i.e. $\forall \, a \in kG$, $a = \sum_{g\in G} a_g g$, $a_g \in k$, \, $\forall \, g \in G$, $a_g \neq 0$ for only finitely many $g\in G$.  
+	
+	define (ring) multiplication $\begin{aligned} & \quad \\ 
+	& kG \times kG \to kG \\
+	& ab = ab \end{aligned}$ \, $\forall \, a,b \in kG$, $\begin{aligned} & \quad \\ 
+	& a = \sum_{g\in G} a_g g \\
+	& b = \sum_{h \in G} b_h g \end{aligned}$ to be 
+	\[
+	\left( \sum_{g \in G} a_g g \right) \left( \sum_{h \in G} b_h h \right) = \sum_{ z\in G} \left( \sum_{ gh = z} a_g b_h \right)z
+	\]
+	
+\end{enumerate}
+
+\begin{definition}
+	Given $R$ ring, left $R$-module is (additive) abelian group $M$ equipped with \\
+	scalar multiplication $\begin{aligned} & \quad \\
+	& R \times M \to M \\
+	& (r,m) \mapsto rm \end{aligned}$ s.t. $\forall \, m , m' \in M$, $\forall \, r, r' , 1 \in R$
+	\begin{enumerate}
+		\item[(i)] $r (m+m') = rm + rm' $ 
+		\item[(ii)] $(r+r')m = rm + r'm $ 
+		\item[(iii)] $(rr')m = r(r'm)$
+		\item[(iv)] $1m = m$
+	\end{enumerate}
+\end{definition}
+
+EY : 20150922 Example : for $kG$-module $V^{\sigma}$, for $r \in kG$, so $r= \sum_{g\in G} a_g g$ 
+\[
+\begin{aligned} & R \times M \to M \\
+& (r,m) \mapsto rm \end{aligned} \Longrightarrow \begin{aligned} & kG \times V \to V \\
+& (r,v) \mapsto tv \end{aligned}
+\]
+For some representation $\sigma : G \to GL(V)$, 
+\[
+rv = \sum_{g \in G} a_g g \cdot v =\sum_{g\in G} a_g \sigma_g(v)
+\]
+So a $kG$-module needs to be associated with some chosen representation.  
+
+Note for $V$ as an additive abelian group, $\forall \, u,v,w \in V$, 
+\[
+\begin{aligned}
+& v+w = w+v, \, (u+v) + w = u+(v+w) \\ 
+& v+0 = v \quad \, \forall \, v \in V \text{ for } 0 \in V \\ 
+& v+ (-v) =0 \quad \, \forall \, v \in V
+\end{aligned}
+\]
+So a vector space can be an additive abelian group.  
+
+Note that 
+\[
+\begin{gathered}
+r(v+w) = \left( \sum_{g\in G} a_g g \right)(v+w) = \left( \sum_{g \in G} a_g \sigma_g \right)(v+w) = \sum_{g\in G} a_g \sigma_g(v) + \sum_{g\in G} a_g \sigma_g(w) = rv + rw \\ 
+(r+r')v = \left( \sum_{g\in G} a_g g + b_g g \right) v =\sum_{g\in G} (a_g \sigma_g + b_g \sigma_g ) v = \sum_{g \in G}a_g \sigma_g(v) + \sum_{g\in G}b_g \sigma_g(v) = rv + r'v 
+\end{gathered}
+\]
+\[
+\begin{gathered}
+(rr')v = \left( \sum_{g\in G} a_g g \sum_{h \in G} b_h h \right)v = \left( \sum_{z\in G} \sum_{gh = z} a_g b_h z \right) v = \sum_{z\in G} \sum_{gh \in z} a_g b_h \sigma_z(v) = \sum_{g\in G} \sum_{h \in G} a_g b_h \sigma_g \sigma_h (v)
+\end{gathered}
+\]
+since $\sigma(gh) = \sigma(g) \sigma(h) = \sigma_g \sigma_h = \sigma_{gh}$ ($\sigma$ homomorphism)
+
+$1v = \sigma(1) v = 1v = v$
+
+
+
+From Sec. 8.3 ``Semisimple Ring'' of Rotman (2010) \cite{JRotman2010}:
+
+\begin{definition}
+	$k$-representation of group $G$ is homomorphism
+	\[
+	\sigma : G \to GL(V)
+	\]
+	where $V$ is vector field over field $k$
+\end{definition}
+
+\begin{proposition}[8.37 Rotman (2010)\cite{JRotman2010}]\label{Prop:Rotman8.37}
+	$\forall \, k$-representation $\sigma : G \to GL(V)$ equips $V$ with structure of left $kG$-module, denote module by $V^{\sigma}$.  \\
+	Conversely, $\forall \, $ left $kG$-module $V$ determines $k$-representation $\sigma:G \to GL(V)$
+\end{proposition}
+
+\begin{proof}
+	Given $\begin{aligned} & \quad \\
+	\sigma & :G \to GL(V) \\
+	\sigma_g =: \sigma(g) & : V \to V \end{aligned}$, 
+	
+	define 
+	\[
+	\begin{aligned}
+	kG \times V & \to V \\ 
+	\left( \sum_{g\in G} a_g g \right) v & = \sum_{g\in G} a_g \sigma_g(v) 
+	\end{aligned}
+	\]
+	
+	Let $\begin{aligned} & \quad \\ 
+	& v,w \in V \\
+	& r,r',1 \in kG \\
+	& r = \sum_{g\in G} a_g g \end{aligned}$
+	
+	\[
+	\begin{gathered}
+	r(v+w) = \left( \sum_{g\in G} a_g g \right)(v+w) = \left( \sum_{g \in G} a_g \sigma_g \right)(v+w) = \sum_{g\in G} a_g \sigma_g(v) + \sum_{g\in G} a_g \sigma_g(w) = rv + rw \\ 
+	(r+r')v = \left( \sum_{g\in G} a_g g + b_g g \right) v =\sum_{g\in G} (a_g \sigma_g + b_g \sigma_g ) v = \sum_{g \in G}a_g \sigma_g(v) + \sum_{g\in G}b_g \sigma_g(v) = rv + r'v 
+	\end{gathered}
+	\]
+	\[
+	\begin{gathered}
+	(rr')v = \left( \sum_{g\in G} a_g g \sum_{h \in G} b_h h \right)v = \left( \sum_{z\in G} \sum_{gh = z} a_g b_h z \right) v = \sum_{z\in G} \sum_{gh \in z} a_g b_h \sigma_z(v) = \sum_{g\in G} \sum_{h \in G} a_g b_h \sigma_g \sigma_h (v)
+	\end{gathered}
+	\]
+	since $\sigma(gh) = \sigma(g) \sigma(h) = \sigma_g \sigma_h = \sigma_{gh}$ ($\sigma$ homomorphism)
+	
+	$1v = \sigma(1) v = 1v = v$
+	
+	Conversely, assume $V$ left $kG$-module.
+	
+	If $g \in G$, then $v\mapsto gv$ defines $T_g:V \to V$.  $T_g$ nonsingular since $\exists \, T_g^{-1} = T_{g^{-1}}$
+	
+	Define $\begin{aligned} & \quad \\
+	& \sigma : G \to GL(V) \\
+	& \sigma: g \mapsto T_g \end{aligned}$ \quad \\
+	
+	$\sigma$ $k$-representation
+	\[
+	\begin{aligned}
+	& \sigma(gh) = T_{gh} = T_g T_h = \sigma(g)\sigma(h) \\
+	& \sigma(gh)(v) = T_{gh}v = ghv = T_gT_h v = \sigma(g)\sigma(h)v \quad \, \forall \, v \in V
+	\end{aligned}
+	\]
+	
+\end{proof}
+
+\begin{proposition}
+	Let group $G$, let $\sigma, \tau: G \to GL(V)$ be $k$-representations, field $k$.  \\
+	If $V^{\sigma}, V^{\tau}$ corresponding $kG$-modules in Prop. \ref{Prop:Rotman8.37} (Prop. 8.37 in Rotman (2010) \cite{JRotman2010}), then \\
+	$V^{\sigma} \simeq V^{\tau}$ as $kG$-modules iff $\exists \, $ nonsingular $\varphi :V \to V$ s.t. 
+	\[
+	\varphi \tau(g) = \sigma(g) \varphi \quad \, \forall \, g \in G
+	\]
+	
+\end{proposition}
+
+\begin{proof}
+	If $\varphi : V^{\tau} \to V^{\sigma}$ $kG$-isomorphism, then $\varphi : V \to V$ isomorphism s.t.
+	\[
+	\varphi( \sum a_g g v ) = (\sum a_g g)\varphi(v) \quad \, \forall \, v \in V, \, \forall \, g \in G
+	\]
+	in $V^{\tau}$, $\begin{aligned} & \quad \\
+	& kG \times V \to V \\
+	& gv = \tau(g)(v) \end{aligned}$ \quad \quad \, in $V^{\sigma}$, $\begin{aligned} & \quad \\
+	& kG \times V \to V \\
+	& gv = \sigma(g)(v) \end{aligned}$ scalar multiplication
+	
+	\[
+	\begin{gathered}
+	\Longrightarrow \forall \, g \in G, v\in V, \quad \, \varphi(\tau(g)(v)) = \sigma(g)(\varphi(v))
+	\end{gathered}
+	\]
+	I think 
+	\[
+	\varphi(gv) = \varphi(\tau(g)(v)) = g\varphi(v) = \sigma(g)\varphi(v)
+	\]
+	\[
+	\Longrightarrow \varphi \tau(g) = \sigma(g) \varphi \quad \, \forall \, g \in G
+	\]
+	Conversely, if $\exists \, $ nonsingular $\varphi : V \to V$ s.t. $\begin{aligned} & \quad \\ 
+	& \varphi \tau (g) = \sigma(g) \varphi \quad \, \forall \, g \in G \\
+	& \varphi \tau(g) v = \varphi(\tau(g)v) = \sigma(g)\varphi(v) \quad \, \forall \, g \in G, \, \forall \, v \in V \end{aligned}$
+	
+	Consider scalar multiplication
+	\[
+	\begin{gathered}
+	kG \times V \to V \\ 
+	\sum_{g\in G} a_g g(v) = \sum_{g\in G} a_g \tau_g(v)
+	\end{gathered}
+	\]
+	\[
+	\varphi \left( \sum_{g\in G} a_g \tau_g(v) \right) = \varphi \left( \sum_{g\in G} a_g \tau(g) v\right) = \sum_{g\in G} a_g \sigma(g) \sigma(g)\varphi(v) = \left( \sum_{g\in G} a_g g \right) \varphi(v)
+	\]
+	
+\end{proof}
+
+Admittedly, after this exposition from Rotman (2010) \cite{JRotman2010}, I still didn't understand how $kG$-modules relate to representation theory and group rings.  I turned to Baker (2011) \cite{ABaker2011}, which we'll do right now.  Note that I found a lot of links to online resources on representation theory from Khovanov's webpage \url{http://www.math.columbia.edu/~khovanov/resource/}.  
+
+Note, 
+\begin{definition}
+	vector subspace $W \subseteq V$ is called a \\
+	$G$-submodule, $G$-subspace, EY : 20150922 ``invariant'' subspace? \\
+	if $\forall \, g \in G$, for representation $\rho : G \to GL_k(V)$, $\rho_g(w) \in W$, \, $\forall \, w \in W$, $\forall \, g \in G$ i.e. closed under ``action of elements of $G$'' with \\
+	$\rho_g =: \rho (g): V \to V$
+\end{definition}
+
+Given basis $\mathbf{v} = \lbrace v_1 \dots v_n \rbrace$ for $V$, $\text{dim}_kV = n$, $\forall \, g \in G$, 
+\[
+\rho_g v_j = \rho(g) v_j = r_{kj}(g) v_k
+\]
+for, indeed, 
+\[
+\rho_g x^j v_j = \rho(g) x^j v_j = x^j\rho(g) v_j = x^j r_{kj}(g) v_k = r_{kj} x^j v_k
+\]
+so that 
+\[
+\begin{aligned}
+& \rho : G \to GL_k(V) \\ 
+& \rho(g) = [r_{ij}(g)]
+\end{aligned}
+\]
+
+Example 2.1 (Baker (2011) \cite{ABaker2011}): Let $\rho :G \to GL_k(V)$ where $\text{dim}_kV=1$
+\[
+\begin{gathered}
+\forall \, v \in V, \, v\neq 0 , \forall \, g \in G, \, \lambda_g \in k \text{ s.t. } g \cdot v = \rho_g(v) = \lambda_g v \\ 
+\rho(hg) v = \rho_h \rho_g v = \lambda_{hg} v = \lambda_h \lambda_g v \Longrightarrow \lambda_{hg} = \lambda_h \lambda_g
+\end{gathered}
+\]
+$\Longrightarrow \exists \, $ homomorphism $\begin{aligned} & \quad \\
+& \Lambda : G \to k^{\times } \\
+& \Lambda(g) = \lambda_g \end{aligned}$
+
+
+From Sec. 2.2 ``$G$-homomorphisms and irreducible representations'' of Baker (2011) \cite{ABaker2011}, suppose $\begin{aligned} & \rho : G \to GL_k(V) \\
+& \sigma : G \to GL_k(W) \end{aligned}$ are 2 representations
+
+Many names for the same thing: $G$-equivalent, $G$-linear, $G$-homomorphism, EY : 20150922 $kG$-isomorphic?
+
+If $\forall \, g \in G$, 
+
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	V & V \\
+	V & V \\
+};
+\path[->]
+(m-1-1) edge node [above] {$\varphi$} (m-1-2)
+edge node [left] {$\tau_g$} (m-2-1)
+(m-1-2) edge node [auto]  {$\sigma_g$} (m-2-2)
+(m-2-1) edge node [auto]  {$\varphi$} (m-2-2)
+;
+\end{tikzpicture}  $\Longleftrightarrow  V^{\tau} \overset{\varphi}{\simeq} V^{\sigma}$
+
+Indeed, define 
+\[
+\begin{aligned}
+& \varphi: V^{\tau} \to V^{\sigma} \\ 
+& \varphi(v+w) = \varphi(v) + \varphi(w) \\ 
+& \varphi(rv) = \varphi( \sum_{g\in G} a_g g \cdot v) = \varphi( \sum_{g \in G} a_g \tau_g(v) ) = \sum_{ g\in G} a_g \varphi(\tau_g(v)) = \sum_{g\in G} a_g \sigma_g \cdot \varphi(v) = r\varphi(v)
+\end{aligned}
+\]
+EY : 20150922 So $\varphi$ is a $kG$-isomorphism between left $kG$ modules $V^{\tau}$ and $V^{\sigma}$ if it's bijective and is ``linear'' in ``scalars'' $r\in kG$, i.e. $\varphi(rv) = r\varphi(v)$.  
+
+Define action of $G$ on $\text{Hom}_k(V,W)$ ($\text{Hom}_k(V,W)$ is the vector space of $k$-linear transformations $V\to W$) \\
+$\forall \, f \in \text{Hom}_k(V,W)$, $\begin{aligned} & \quad \\
+& f : V \to W \\
+& f(v) \in W \end{aligned}$ \quad \, \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=0.8em, column sep=4.8em, minimum width=0.2em]
+{
+	V & W \\
+	v & f(v) \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+;
+\path[|->]
+(m-2-1) edge node [auto] {$f$} (m-2-2)
+;
+\end{tikzpicture}
+
+Consider
+
+\[
+\begin{aligned}
+& G \times \text{Hom}_k(V,W) \to \text{Hom}_k(V,W) \\ 
+& (g\cdot f) \mapsto (\sigma_g f) \circ \rho_{g^{-1}} \text{ i.e. } (g\cdot f)(v) = \sigma_gf(\rho_{g^{-1}}v) \quad \, (f\in \text{Hom}_k(V,W))
+\end{aligned}
+\]
+Let $g,h \in G$, 
+\[
+(gh \cdot f)(v) = g\cdot \sigma_h f(\rho_{h^{-1}}v) = \sigma_g\sigma_h f\rho_{h^{-1}} \rho_{g^{-1}}(v) = (\sigma_{gh} f \rho_{(gh)^{-1}} )(v)
+\]
+
+Thus,  $\begin{aligned} & \quad \\
+& G \times \text{Hom}_k(V,W) \to \text{Hom}_k(V,W) \\ 
+& (g\cdot f) \mapsto (\sigma_g f)\circ \rho_{g^{-1}} \end{aligned}$ is thus another $G$-representation of $G$.  
+
+For $k$-representation $\rho$, if the only $G$-subspaces of $V$ are $\lbrace 0 \rbrace$, $V$, $\rho$ \textbf{irreducible} or \textbf{simple}.  
+\[
+\begin{aligned}
+& \rho_g(\lbrace 0 \rbrace) = \lbrace 0 \rbrace \\ 
+&  \rho_g(V) = V
+\end{aligned}
+\]
+
+
+given subrepresentation $W \subseteq V$, $V/W$ admits linear action of $G$, $\overline{\rho}_W : G \to GL_k(V/W)$ quotient representation 
+\[
+\overline{\rho}_W(g)(v+W) = \rho(g)(v) + W
+\]
+if $v'-v \in W$
+\[
+\rho(g)(v') + W = \rho(g)(v+(v'-v))+W = (\rho(g)(v) + \rho(g)(v'-v) ) + W = \rho(g)(v) + W
+\]
+\begin{proposition}[2.7 Baker (2011)\cite{ABaker2011}] \label{Prop:Baker2.7}
+	if $f:V \to W$ $G$-homomorphism, then
+	\begin{enumerate}
+		\item[(a)] $\text{ker}{f}$ is $G$-subspace of $V$ 
+		\item[(b)] $\text{im}{f}$ is $G$-subspace of $W$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Recall 
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+	{
+		V & W \\
+		V & W \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$f$} (m-1-2)
+	edge node [left] {$\rho_g$} (m-2-1)
+	(m-1-2) edge node [auto]  {$\sigma_g$} (m-2-2)
+	(m-2-1) edge node [auto]  {$f$} (m-2-2)
+	;
+	\end{tikzpicture}
+	
+	\begin{enumerate}
+		\item[(a)] Let $v\in \text{ker}{f}$.  Then $\forall \, g \in G$, 
+		\[
+		f(\rho_g v) = \sigma_g f(v) = 0 
+		\]
+		so $\rho_g v \in \text{ker}{f}$, $\forall \, g \in G$.  So $\text{ker}{f}$ is $G$-subspace of $V$
+		\item[(b)] Let $w\in \text{im}{f}$.  So $w = f(u)$ for some $u \in V$ 
+		\[
+		\sigma_g w = \sigma_g f(u) = f(\rho_gu) \in \text{im}f
+		\]
+		So $\text{im}{f}$ is $G$-subspace of $W$
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Schur's Lemma]
+	Let $\begin{aligned} & \quad \\
+	& \rho : G \to GL_{\mathbb{C}}(V) \\
+	& \sigma : G \to GL_{\mathbb{C}}(W) \end{aligned}$ be irreducible representations of $G$ over field $k= \mathbb{C}$; let $f:V \to W$ be $G$-linear map.  
+	
+	\begin{enumerate}
+		\item[(a)] if $f\neq 0$, $f$ isomorphism.  True $\forall \, k$ field, not just $\mathbb{C}$
+		\item[(b)] if $V=W$, $\rho = \sigma$, then for some $\lambda \in \mathbb{C}$, $f$ given by $f(v) = \lambda v$ ($v\in V$) (true for algebraically closed fields)
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item[(a)] By Prop. \ref{Prop:Baker2.7}, $\text{ker}f \subseteq V$, $\text{im}f \subseteq W$ are $G$-subspaces.  \\
+		For $\rho$, only $G$-subspaces are $0$ or $V$, so if $\text{ker}f = V$, $f=0$.  If $\text{ker}f = 0$, $f$ injective.  \\
+		For $\sigma$, only $G$-subspaces are $0$ or $V$, so $\text{im}f =0 $, $f=0$.  If $\text{im}f =V$, $f$ surjective.  
+		
+		$\Longrightarrow f$ isomorphism.  
+		\item[(b)] Let $\lambda \in \mathbb{C}$ be an eigenvalue of $f$, $f(v_0) = \lambda v_0$ eigenvector, $v_0 \neq 0$.  
+		
+		Let linear $f_{\lambda} : V \to V$ s.t. 
+		\[
+		f_{\lambda}(v) = f(v) - \lambda v \quad \, (v\in V)
+		\]
+		$\forall \, g \in G$
+		\[
+		\rho_g f_{\lambda}(v) = \rho_gf(v) - \rho_g \lambda v = f(\rho_g v) - \lambda \rho_g v= f_{\lambda}(\rho_g v)
+		\]
+		So $f_{\lambda}$ is $G$-linear, for 
+		
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+		{
+			V & V \\
+			V & V \\
+		};
+		\path[->]
+		(m-1-1) edge node [above] {$f$} (m-1-2)
+		edge node [left] {$\rho_g$} (m-2-1)
+		(m-1-2) edge node [auto]  {$\rho_g$} (m-2-2)
+		(m-2-1) edge node [auto]  {$f$} (m-2-2)
+		;
+		\end{tikzpicture}
+		
+		Since $f_{\lambda}(v_0) =0$, by Prop. \ref{Prop:Baker2.7}, $\text{ker}f_{\lambda} = V$, (for $\text{ker}f_{\lambda}\neq 0$ and so $\text{ker}f_{\lambda}=V$)
+		
+		By rank-nullity theorem, $\text{dim}V = \text{dim}\text{ker}f_{\lambda} + \text{dim}\text{im}f_{\lambda}$.  
+		
+		So $\text{im}f_{\lambda}=0$, and so $f_{\lambda}(v)=0$ ($\forall \, v \in V$) $\Longrightarrow f(v) = \lambda v$
+	\end{enumerate}
+\end{proof}
+
+Schur's lemma, at least the first part, implies that the left $kG$-modules associated with representations $\rho, \sigma$ are $kG$-isomorphic, i.e.
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	V & W \\
+	V & W \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+edge node [left] {$\rho_g$} (m-2-1)
+(m-1-2) edge node [auto]  {$\sigma_g$} (m-2-2)
+(m-2-1) edge node [auto]  {$f$} (m-2-2)
+;
+\end{tikzpicture}  \Longleftrightarrow  V^{\rho} \overset{f}{\simeq} V^{\sigma}
+\end{gathered}
+\]
+
+with $f$ being an isomorphism between $V^{\rho}$ and $V^{\sigma}$ s.t. 
+\[
+\begin{gathered}
+f(v+w) = f(v) + f(w) \quad \, \forall \, v,w \in (V^{\sigma},+) \\ 
+f(rv) = rf(v) \quad \, \forall \, r  = \sum_{g \in G} a_g g \in kG
+\end{gathered}
+\]
+
+Kosmann-Schwarzbach's \textbf{Groups and Symmetries}\cite{YKosmann-Schwarzbach2010} is a very lucid text that's mathematically rigorous enough and practical for physicists.  It's really good and very clear.  Let's follow its development for $SU(2), SO(3), SL(2,\mathbb{C})$ and corresponding Lie algebras $\mathfrak{su}(2)$, $\mathfrak{so}(3)$, $\mathfrak{sl}(2,\mathbb{C})$.  
+
+From Chapter 2 ``Representations of Finite Groups'' of Kosmann-Schwarzbach (2010) \cite{YKosmann-Schwarzbach2010}
+
+\begin{definition}[2.1 Kosmann-Schwarzbach (2010)\cite{YKosmann-Schwarzbach2010}] \label{Def:2.1scalarproductG}
+	On $L^2(G)$, scalar product defined by 
+	\[
+	\langle f_1 | f_2 \rangle = \frac{1}{|G|} \sum_{g\in G} \overline{f_1(g)} f_2(g)
+	\]
+	$f_1,f_2 \in \mathcal{F}(G) \equiv \mathbb{C}[G]$ vector space of functions on $G$ taking values on $\mathbb{C}$
+\end{definition}
+
+\begin{definition}[2.3 Kosmann-Schwarzbach (2010)\cite{YKosmann-Schwarzbach2010}]
+	Let $(E,\rho)$ be representation of $G$ \\
+	character of $\begin{aligned} & \quad \\ 
+	\rho \equiv \chi_{\rho} & : G \to \mathbb{C} \\
+	\chi_{\rho}(g) & = \text{tr}( \rho(g)) = \sum_{i=1}^n (\rho(g))_{ii} \end{aligned}$ 
+	
+	Note: equivalent representations have same character \\
+	each conjugacy class of $G$, function $\chi_p$ is constant
+\end{definition}
+
+Looking at Def. \ref{Def:2.1scalarproductG}
+\[
+\langle \chi_{\rho_1} | \chi_{\rho_2} \rangle = \frac{1}{|G| } \sum_{g\in G} \chi_{\rho_1}(g^{-1}) \chi_{\rho_2(g)}
+\]
+since $\overline{\chi_{\rho_1(g)}} = \chi_{\rho_1}(g^{-1})$ by unitarity of representation with respect to scalar product $\langle \, , \, \rangle$
+
+\begin{proposition}[2.7 Kosmann-Schwarzbach (2010)\cite{YKosmann-Schwarzbach2010}]
+	Let $\begin{aligned} & \quad \\ 
+	& (E_1, \rho_1) \\
+	& (E_2, \rho_2) \end{aligned}$ be representations of $G$, let linear $u: E_1 \to E_2$.  
+	
+	Then $\exists \, $ linear $T_u$ s.t. 
+	
+	\begin{equation}\label{Eq:T_ucharacters}
+	\begin{aligned} & \quad \\
+	& T_u : E_1 \to E_2 \\
+	& T_u = \frac{1}{|G|} \sum_{g\in G} \rho_2(g)u\rho_1(g)^{-1} \end{aligned}
+	\end{equation}
+	
+	so that $\rho_2(g) T_u = T_u\rho_1(g) \quad \, \forall \, g \in G$
+\end{proposition}
+
+\begin{proof}
+	\[
+	\rho_2(g) T_u = \frac{1}{|G|} \sum_{ h \in G } \rho_2(gh) u \rho_1(h^{-1}) = \frac{1}{|G|} \sum_{ k \in G} \rho_2(k) u \rho_1(k^{-1}g) = T_u \rho_1(g)
+	\]
+\end{proof}
+
+Thus, diagrammatically, we have that 
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	E_1 & E_2 \\
+};
+\path[->]
+(m-1-1) edge node [above] {$u$} (m-1-2)
+;
+\end{tikzpicture} \Longrightarrow  \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	E_1 & E_2 \\
+	E_1 & E_2 \\
+};
+\path[->]
+(m-1-1) edge node [above] {$T_u$} (m-1-2)
+edge node [auto] {$\rho_1(g)$} (m-2-1)
+(m-1-2) edge node [auto]  {$\rho_2(g)$} (m-2-2)
+(m-2-1) edge node [auto]  {$T_u$} (m-2-2)        
+;
+\end{tikzpicture}
+\]
+
+From Definition	1.12 of	Kosmann-Schwarzbach \cite{YKosmann-Schwarzbach2010}, ``representations $\rho_1$ and $\rho_2$ are called \textbf{equivalent} if there is a bijective intertwining operator for $\rho_1$ and $\rho_2$.''  So I will interpret this as if an intertwining operator is not bijective, then the representations $\rho_1$, $\rho_2$ are not equivalent.  
+
+\begin{proposition}[2.8 Kosmann-Schwarzbach (2010)\cite{YKosmann-Schwarzbach2010}]
+	Let $\begin{aligned}
+	& \quad \\
+	& (E_1,\rho_1) \\
+	& (E_2,\rho_2) \end{aligned}$ be irreducible representations of $G$, let linear $u:E_1 \to E_2$, define $T_u$ by $T_u = \frac{1}{ |G|} \sum_{g\in G} \rho_2(g) u \rho_1(g)^{-1}$ by Eq. \ref{Eq:T_ucharacters}.  
+	
+	\begin{enumerate}
+		\item[(i)] If $\rho_1$, $\rho_2$ inequivalent, then $T_u=0$
+		\item[(ii)] If $E_1=E_2= E$ and $\rho_1 = \rho_2 = \rho$, then
+		\[
+		T_u = \frac{\text{tr}{(u)}}{ \text{dim}E} 1_E
+		\]
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}
+		\item[(i)] if $\rho_1,\rho_2$ are inequivalent, by definition, $T_u$ is not isomorphic.  Then by Schur's lemma (first part), $T_u=0$
+		\item[(ii)] By Schur's lemma, $T_u(v) = \lambda v$ \, $\forall \, v \in E = E_1 = E_2$.  So $T_u = \lambda 1_E$.  $\text{tr}T_u = \lambda \text{dim}E$ or $\lambda = \frac{ \text{tr}T_u}{ \text{dim}E}$.  Thus, $T_u = \frac{\text{tr}{T_u}}{ \text{dim}E}1_E$
+	\end{enumerate}
+\end{proof}
+
+Let $\begin{aligned} & \quad \\
+& (e_1 \dots e_n) \text{ basis of $E$ } \\
+& (f_1 \dots f_p) \text{ basis of $F$ } \end{aligned}$ 
+
+$\forall \, u \in \mathcal{L}(E,F)$, $\begin{aligned} & \quad \\
+& u : E \to F \\
+& u(x) = u(x^j e_j) = x^ju(e_j) = x^ju^i_{ \,\, j}f_i \\
+& u = u^i_{ \,\, j} e^j \otimes f_i \end{aligned}$ for $\begin{aligned} & \quad \\ 
+& x = x^j e_j \in E \\
+& y = y^i f_i \in F \end{aligned}$
+
+For 
+\[
+\begin{aligned}
+& T : E^* \otimes F \to \mathcal{L}(E,F) \\
+& T(\xi \otimes y) = u^i_{ \,\,j}e^j \otimes f_i \text{ i.e. set $T(\xi \otimes y)$ to this $u$} \\
+& T(\xi \otimes y) = T(\xi_l e^l \otimes y^k f_k) = \xi_l y^k T(e^l \otimes f_k) = (\xi_l y^k T^{li}_{ \,\, kj} ) e^j \otimes f_i \Longrightarrow \xi_l y^k T^{li}_{ \,\, kj} = u^i_{ \,\, j}
+\end{aligned}
+\]
+
+\subsubsection*{Exercises}
+
+Exercises of Ch. 2 Representations of Finite Groups \cite{YKosmann-Schwarzbach2010}
+
+\exercisehead{2.6}\cite{YKosmann-Schwarzbach2010} \emph{The dual representation}.  
+
+Let $(E,\pi)$ representation of group $G$.  \\
+$\forall \, g \in G$, $\xi \in E^*$, $x\in E$, set $\langle \pi^*(g)(\xi), x \rangle = \langle \xi, \pi(g^{-1})(x) \rangle$
+\begin{enumerate}
+	\item[(a)] \emph{dual} (or \emph{contragredient}) of $\pi$, $\pi^*:G \to \text{End}(E^*)$, $\pi^*$ is a representation, since
+	\[
+	\begin{gathered}
+	\langle \pi^*(gh)(\xi),x\rangle = \langle \xi, \pi((gh)^{-1})(x) \rangle = \langle \xi, \pi(h^{-1}g^{-1})(x) \rangle = \langle \xi, \pi(h^{-1}) \pi(g^{-1})(x) \rangle = \langle \xi, \pi(h^{-1}) (\pi(g^{-1})(x)) \rangle =  \\
+	= \langle \pi^*(h)(\xi), \pi(g^{-1})(x) \rangle = \langle \pi^*(g)\pi^*(h)(\xi), x \rangle
+	\end{gathered}
+	\]
+	since this is true, $\forall \, x \in E$, $\forall \, \xi \in E^*$, $\pi^*(gh) = \pi^*(g)\pi^*(h)$.  
+	
+	dual $\pi^*$ of $\pi$ is a representation.  
+	
+	\item[(b)]
+	
+	Consider $\begin{aligned} & \quad \\
+	& G \times \mathcal{L}(E,F) \to \mathcal{L}(E,F) \\
+	& g\cdot u = \rho(g) \circ u \circ \pi(g^{-1}) \end{aligned}$.  
+	
+	Define 
+	\[
+	\begin{aligned}
+	& \sigma : G \to \text{End}(\mathcal{L}(E,F)) \\ 
+	& \sigma(g):\mathcal{L}(E,F) \to \mathcal{L}(E,F) \\  
+	& \sigma(g)(u) = \rho(g)\circ u \circ \pi(g^{-1})
+	\end{aligned}
+	\]
+	
+	Let $(e_1 \dots e_n)$ be a basis of $E$.  Let $\xi = \xi_i e^i \in E^*$, $x = x^j e_j \in E$.  
+	
+	Consider the isomorphism $T: E^*\otimes F \to \mathcal{L}(E,F)$ defined as\footnote{\emph{Mathematics stackexchage} \href{http://math.stackexchange.com/questions/428185/isomorphism-between-hom-and-tensor-product}{Isomorphism between Hom and tensor product [duplicate]} \url{http://math.stackexchange.com/questions/428185/isomorphism-between-hom-and-tensor-product} \\ \url{http://math.stackexchange.com/questions/57189/understanding-isomorphic-equivalences-of-tensor-product}}
+	
+	\[
+	\begin{aligned}
+	& T: E^*\otimes F \to \mathcal{L}(E,F) = \text{Hom}(E,F) \\
+	& \xi \otimes y  \mapsto (x \mapsto \xi(x)y)
+	\end{aligned}
+	\]
+	
+	Choose bases $\begin{aligned} & \quad \\
+	& (e_1 \dots e_n) \text{ of } E \\
+	& (e^1 \dots e^n) \text{ of } E^* \\  
+	& (f_1 \dots f_p) \text{ of } F 
+	\end{aligned}$.  Then
+	\[
+	\begin{aligned}
+	& T(e^j\otimes f_i)(x) = T(e^j\otimes f_i)(x^ke_k) = \delta^j_{\,\,k} x^k f_i = x^j f_i \\
+	& T(e^j\otimes f_i)(e_k) = \delta^j_{\,\,k}f_i
+	\end{aligned}
+	\]
+	
+	Consider 
+	\[
+	\begin{aligned} & \quad \\
+	& u \in \mathcal{L}(E,F) \\
+	& u: E \to F \\
+	& u(x) = u(x^je_j) = x^ju(e_j) = x^j u^i_{\,\,j} f_i \\
+	& u(e_j) = u^i_{\,\,j}f_i \text{ i.e. } u: e_j \to u^i_{\,\,j}f_i \end{aligned}
+	\]
+	
+	Then $\forall u \in \mathcal{L}(E,F)$,
+	\[
+	\begin{gathered}
+	T(u^i_{\,\, j} e^j \otimes f_i)(e_k) = u^i_{\,\,j}\delta^j_{\,\,k}f_i = u^i_{\,\,k}f_i = u(e_k) \Longrightarrow u = T(u^i_{\,\,j}e^j\otimes f_i)
+	\end{gathered}
+	\]
+	so $T$ is surjective.  
+	
+	With $T(\xi\otimes y) = T(\xi'\otimes y')$, 
+	\[
+	\begin{gathered}
+	T(\xi\otimes y)(x) = T(\xi' \otimes y')(x) \\
+	\xi(x)y = \xi'(x)y' \Longrightarrow \xi(x)y - \xi'(x)y' = 0 
+	\end{gathered}
+	\]
+	which implies that $\xi\otimes y = \xi'\otimes y'$.  So $T$ is injective.  Or, one could consider that $T^{-1} : \mathcal{L}(E,F) \to E^*\otimes F$, $T^{-1} : u \mapsto u^i_{\,\,j}e^j\otimes f_i$, which is the inverse of $T$.  
+	
+	\begin{remark}
+		\[
+		\begin{aligned}
+		& E^* \otimes F \overset{T}{\simeq} \mathcal{L}(E,F) = \text{Hom}(E,F) \\ 
+		& (\xi, y) \mapsto (x \mapsto \xi(x)y) 
+		\end{aligned}
+		\]
+		and so $(e^j \otimes f_i) \mapsto (x\mapsto e^j(x)f_i = x^jf_i)$
+		
+		So $E^*\otimes F$ is isomorphic to $\mathcal{L}(E,F) = \text{Hom}(E,F)$
+	\end{remark}
+	
+	For representation $\pi$, 
+	\[
+	\begin{aligned}
+	& \pi:G \to \text{End}(E) \\ 
+	& \pi(g):E \to E \\ 
+	&  \pi(g)(x) = \pi(g)(x^j e_j) = x^j \pi(g)(e_j) = x^j \pi(g)^i_{ \,\, j} e_i = (\pi(g)^i_{\,\,j} x^j e_i
+	\end{aligned}
+	\]
+	
+	Consider this matrix formulation:
+	\[
+	\begin{gathered}
+	\pi^*(g)(\xi) = \pi^*(g)(\xi_i e^i) = \xi_i \pi^*(g)(e^i) = \xi_i (\pi^*(g))^i_{\,\,j}e^j \\
+	\Longrightarrow \langle \pi^*(g)(\xi), x \rangle = \xi_i (\pi^*(g))^i_{ \,\, j}x^j
+	\end{gathered}
+	\]
+	and 
+	\[
+	\langle \xi, \pi(g^{-1})(x) \rangle = \xi_i \pi(g^{-1})^i_{ \,\, j}x^j 
+	\]
+	so that 
+	\[
+	\langle \pi^*(g)(\xi),x \rangle = \langle \xi, \pi(g^{-1})(x) \rangle \Longrightarrow \pi(g^{-1})^i_{\,\, j} = (\pi^*(g))^i_{ \,\, j}
+	\]
+	Thus, given a choice of basis for $E$, the \emph{dual} of $\pi$, $\pi^*(g)^i_{\,\,j}$, and $\pi(g^{-1})^i_{\,\,j}$ are formally equal.  
+	
+	So for a choice of basis of $E$ and of $F$, 
+	\[
+	\begin{gathered}
+	(\pi^*\otimes \rho)(g)(\xi,y) = (\pi^*(g)\otimes \rho(g))(\xi,y) = \pi^*(g)\xi \otimes \rho(g)y = \xi_l \pi(g^{-1})^l_{\,\,j} e^j \otimes \rho(g)^i_{\,\,k}y^k f_i = \rho(g)^i_{\,\,k}y^k \xi_l \pi(g^{-1})^l_{\,\,j} e^j \otimes f_i
+	\end{gathered}
+	\]
+	Applying $T$,
+	\[
+	T(\pi^*\otimes \rho)(g)(\xi,\rho) = \rho(g)^i_{\,\,k} y^k \xi_l \pi(g^{-1})^l_{\,\,j} = \rho(g)T(\xi,y) \pi(g^{-1})
+	\]
+	
+	Thus 
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5.8em, column sep=4.8em, minimum width=4.2em]
+	{
+		E^*\otimes F & \mathcal{L}(E,F) \\ 
+		E^*\otimes F & \mathcal{L}(E,F) \\ 
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$T$} (m-1-2)
+	edge node [left] {$(\pi^*\otimes \rho)(g)$} (m-2-1)
+	(m-1-2) edge node [auto]  {$\sigma(g)$} (m-2-2)
+	(m-2-1) edge node [below] {$T$} (m-2-2)
+	;
+	\end{tikzpicture} \quad \quad \quad \, \begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+	{
+		(\xi,y) & (x\mapsto \xi(x) y) = y^i \xi_j \\
+		\pi^*(g)(\xi) \otimes \rho(g)y & \rho(g) y^i \xi_j \pi(g^{-1}) = \rho(g) T(\xi,y) \pi(g^{-1}) \\
+	};
+	\path[|->]
+	(m-1-1) edge node [above] {$T$} (m-1-2)
+	edge node [left] {$(\pi^*\otimes \rho)(g)$} (m-2-1)
+	(m-1-2) edge node [auto]  {$\sigma(g)$} (m-2-2)
+	(m-2-1) edge node [below] {$T$} (m-2-2)
+	;
+	\end{tikzpicture}
+	Thus, representation $\sigma(g)$ is equivalent to representation $(\pi^*\otimes \rho)$, a tensor product of representations.  
+	
+\end{enumerate}
+
+\exercisehead{2.15} \emph{Representation of $GL(2, \mathbb{C})$ on the polynomials of degree 2}
+
+Let group $G$, let representation $\rho$ of $G$ on $V= \mathbb{C}^n$, i.e. $\rho : G \to \text{End}(V)$ \\
+Let $P^{(k)}(V)$ vector space of complex polynomials on $V$ that are homogeneous of degree $k$. 
+
+For $f\in P^{(k)}(V)$, the general form is 
+\[
+f = \sum_{ \substack{ i_1 + i_2 + \dots + i_n = k \\ 0 \leq i_j \leq k } } a_{i_1 i_2 \dots i_d} x_1^{i_1} x_2^{i_2} \dots x_n^{i_n}
+\]
+
+Given 
+\[
+\binom{n+k}{k} = \binom{k-1}{k-1} + \binom{k}{k-1} + \dots + \binom{n+k-1}{k-1} = \sum_{i=0}^n \binom{k-1+i}{k-1}
+\]
+$\binom{k+n-1}{n-1}$ is number of monomials of degree $k$.  
+
+So $\text{dim}P^{(k)}(V) = \binom{k+n-1}{n-1}$.   This is a very lucid and elementary exposition on the basics of polynomials which I found was useful for the basic facts I forgot\footnote{Polynomials. Math 4800/6080 Project Course \url{http://www.math.utah.edu/~bertram/4800/PolyIntroduction.pdf}}.
+
+So we have the graded algebra
+\[
+P(V) = \bigoplus_{k=0}^{\infty} P^{(k)}(V)
+\]
+
+\[
+\begin{aligned}
+& \rho^{(k)}: G \to \text{End}(P^{(k)}(V)) \\ 
+& \rho^{(k)}(g): P^{(k)}(V) \to P^{(k)}(V) \\ 
+& \rho^{(k)}(g)(f) = f\circ \rho(g^{-1})
+\end{aligned}
+\]
+This is a representation of $G$ since 
+\begin{enumerate}
+	\item[(a)] 
+	\[
+	\begin{gathered}
+	\begin{aligned}
+	& \rho^{(k)}(gh)(f) = f\circ \rho((gh)^{-1}) = f\circ \rho(h^{-1}g^{-1}) = f\circ \rho(h^{-1}\rho(g^{-1}) \\ 
+	& \rho^{(k)}(g) \rho^{(k)}(h)(f) = \rho^{(k)}(g) (f\circ \rho(h^{-1})) = f\circ \rho(h^{-1})\circ \rho(g^{-1})
+	\end{aligned} \Longrightarrow \rho^{(k)}(gh) = \rho^{(k)}(g) \rho^{(k)}(h)
+	\end{gathered}
+	\]
+	
+	
+	\item[(b)]
+	Choose basis $(e_1 \dots e_n)$ of $V$, $x = x^j e_j \in V$, $\rho : G \to \text{End}(V)$, and so $\rho(g)(x) = \rho(g)(x^je_j) = x^j\rho(g)(e_j)= x^j(\rho(g))^i_{ \,\, j} e_i$.  \\
+	With $\xi(e_i) = \xi_i \Longrightarrow \langle \xi, \rho(g^{-1})x\rangle = \xi_i x^j (\rho(g^{-1}))^i_{ \,\, j}$
+	
+	$\forall \, \xi \in V^*$, $\xi = \xi_i e^i$, 
+	\[
+	\begin{gathered}
+	\rho^*(g)(\xi) = \rho^*(g)(\xi_i e^i) = \xi_i \rho^*(g)^i_{\,\,j} e^j \\ 
+	\Longrightarrow   \langle \rho^*(g)(\xi), x \rangle = \xi_i x^j (\rho^*(g))^i_{ \,\,j} \Longrightarrow (\rho^*(g))^i_{\,\,j} = (\rho(g^{-1}))^i_{ \,\, j} 
+	\end{gathered}
+	\]
+	
+	So $\forall \, f \in P^{(1)}(V)$, $x\in V$, $\rho(g^{-1})x = x^j(\rho(g^{-1}))^i_{\,\,j} e_i$.  So $f\circ \rho(g^{-1})(x) = \sum_{i=1}^n a_i(\rho(g^{-1}))^i_{\,\,j} x^j = \sum_{i=1}^n a_i(\rho^*(g))^i_{\,\,j} x^j$ \\
+	$\Longrightarrow \rho^{(1)}(g)(f) = f\circ \rho^*(g)$
+	\item[(c)] Suppose $G= GL(2,\mathbb{C})$, $V=\mathbb{C}^2$, $\rho$ fundamental representation $g= \left( \begin{matrix} a & b \\
+	c & d \end{matrix} \right)$, $g^{-1} = \frac{1}{\text{det}g} \left( \begin{matrix} d & -b \\
+	-c & a \end{matrix} \right)$ for $\text{det}g = ad-bc$.  
+	
+	Let $k=2$, $\text{dim}P^{(2)}(\mathbb{C}^2) = \binom{2+2-1}{2-1} = \binom{3}{1} = 3$
+	
+	$\forall \, f \in P^{(2)}(\mathbb{C}^2)$, $f(x,y) = Ax^2 + 2Bxy + Cy^2$ \\
+	Let 
+	\[
+	\begin{gathered}
+	P^{(2)}(\mathbb{C}^2) \to \mathbb{C}^3 \\ 
+	f(x,y) = Ax^2 + 2Bxy + Cy^2 \mapsto \left( \begin{matrix} A \\ B \\ C \end{matrix} \right) \in \mathbb{C}^3
+	\end{gathered}
+	\]
+	Call this transformation $T$, $T: P^{(2)}(\mathbb{C}^2) \to \mathbb{C}^3$.  
+	
+	$\forall \, \left( \begin{matrix} A \\ B \\ C \end{matrix} \right) \in \mathbb{C}^3$, $f(x,y) = Ax^2 + 2Bxy + Cy^2$ and $Tf(x,y) = \left( \begin{matrix} A \\ B \\ C \end{matrix} \right)$.  $T$ surjective.  
+	
+	Suppose $Tf(x,y) = Tf'(x,y)$, 
+	\[
+	\begin{gathered}
+	\Longrightarrow Ax^2 + 2Bxy + Cy^2 = A'x^2 + 2B'xy + C'y^2 \\ 
+	\Longrightarrow (A-A')x^2 + 2(B-B')xy + (C-C')y^2 = 0
+	\end{gathered}
+	\]
+	Then since the monomials form a basis, and its basis elements are independent (by definition), then $A=A'$, $B=B'$, $C=C'$.  $T$ injective.  So $T$ is bijective, an isomorphism.  
+	
+	(This is all in \verb|groups.sage|)
+	\begin{lstlisting}
+	sage: P2CC.<x,y> = PolynomialRing(CC,2) # this declares a PolynomialRing of field of complex numbers, 
+	# of order 2 (i.e. only 2 variables for a polynomial, such as x, y)
+	sage: A = var('A')
+	sage: assume(A,''complex'')
+	sage: B = var('B')
+	sage: assume(B,''complex'')
+	sage: C = var('C')
+	sage: assume(C,''complex'')
+	sage: f(x,y) = A*x**2 +2*B*x*y + C*y**2
+	
+	sage: a = var('a')
+	sage: assume(a,''complex'')
+	sage: b = var('b')
+	sage: assume(b,''complex'')
+	sage: c = var('c')
+	sage: assume(c,''complex'')
+	sage: d = var('d')
+	sage: assume(d,''complex'')
+	sage: g = Matrix([[a,b],[c,d]] )
+	sage: X = Matrix([[x],[y]])
+	sage: f( (g.inverse()*X)[0,0], (g.inverse()*X)[1,0] ).expand()
+	sage: f( (g.inverse()*X)[0,0], (g.inverse()*X)[1,0] ).expand().coefficient(x^2).full_simplify()
+	(C*c^2 - 2*B*c*d + A*d^2)/(b^2*c^2 - 2*a*b*c*d + a^2*d^2)
+	sage: f( (g.inverse()*X)[0,0], (g.inverse()*X)[1,0] ).expand().coefficient(x*y).full_simplify()
+	-2*(C*a*c + A*b*d - (b*c + a*d)*B)/(b^2*c^2 - 2*a*b*c*d + a^2*d^2)
+	sage: f( (g.inverse()*X)[0,0], (g.inverse()*X)[1,0] ).expand().coefficient(y^2).full_simplify()
+	(C*a^2 - 2*B*a*b + A*b^2)/(b^2*c^2 - 2*a*b*c*d + a^2*d^2)
+	\end{lstlisting}
+	
+	So 
+	\[
+	\begin{gathered}
+	\rho^{(2)}(g)(f)(x,y) = f\circ \rho(g^{-1})(x,y) = \\
+	= \frac{ Cc^2 - 2Bcd + Ad^2}{(ad-bc)^2}x^2 + - 2 \frac{ (Cac + Abd - (bc+ad) B)}{(ad-bc)^2} xy + \frac{ Ca^2 - 2Bab + Ab^2 }{(ad-bc)^2 } y^2
+	\end{gathered}
+	\]
+	
+	So define $\widetilde{ \rho}: G \to \text{End}(\mathbb{C}^3)$. $\widetilde{\rho}$ is a representation, for 
+	\[
+	\begin{gathered}
+	\forall v = \left( \begin{matrix} A \\ B \\ C \end{matrix} \right) \in \mathbb{C}^3, \quad \, \widetilde{\rho}(gh)(v) = T \circ f \circ \rho((gh)^{-1}) = T\circ f \circ \rho(h^{-1}g^{-1}) = T\circ f \circ \rho(h^{-1}) \rho(g^{-1}) \\ 
+	\text{ Now } \widetilde{\rho}(h)(v) = T\circ f \circ \rho(h^{-1}) \\
+	\Longrightarrow \widetilde{\rho}(g) \widetilde{\rho}(h)(v) = T \circ (f\circ \rho(h^{-1}))\circ \rho(g^{-1}) = T\circ f \circ \rho(h^{-1}) \rho(g^{-1}) \text{ and so }\\
+	\widetilde{\rho}(gh) = \widetilde{\rho}(g) \widetilde{\rho}(h)
+	\end{gathered}
+	\]
+	
+	And so 
+	\[
+	\widetilde{\rho}^*(g)(v) = Tf\rho(g^{-1})
+	\]
+	and consider this commutation diagram, that (helped me at least and) clarifies the relationships:
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5.8em, column sep=4.8em, minimum width=4.2em]
+	{
+		P^{(2)}(\mathbb{C}^2) & \mathbb{C}^3 \\ 
+		P^{(2)}(\mathbb{C}^2) & \mathbb{C}^3 \\ 
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$T$} (m-1-2)
+	edge node [left] {$\rho^{(2)}(g)$} (m-2-1)
+	(m-1-2) edge node [auto]  {$\widetilde{\rho}(g)$} (m-2-2)
+	(m-2-1) edge node [below] {$T$} (m-2-2)
+	;
+	\end{tikzpicture} \quad \quad \quad \, \begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+	{
+		f & \left( \begin{matrix} A \\ B \\ C \end{matrix} \right) \\ 
+		f\circ \rho(g^{-1}) & \left( \begin{matrix} D \\ E \\ F \end{matrix} \right) \\ 
+	};
+	\path[|->]
+	(m-1-1) edge node [above] {$T$} (m-1-2)
+	edge node [left] {$\rho^{(2)}(g)$} (m-2-1)
+	(m-1-2) edge node [auto]  {$\widetilde{\rho}(g)$} (m-2-2)
+	(m-2-1) edge node [below] {$T$} (m-2-2)
+	;
+	\end{tikzpicture}
+	
+	with
+	\[
+	\left( \begin{matrix} D \\ E \\ F \end{matrix} \right) = \left( \begin{matrix} \frac{ Cc^2 - 2Bcd + Ad^2}{(ad-bc)^2} \\ 
+	- 2 \frac{ (Cac + Abd - (bc+ad) B)}{(ad-bc)^2} \\
+	\frac{ Ca^2 - 2Bab + Ab^2 }{(ad-bc)^2 } \end{matrix} \right)
+	\]
+	
+	Now define the dual $\widetilde{\rho}^*$ as such:
+	\[
+	\begin{gathered}
+	\begin{aligned}
+	& \widetilde{\rho}^*(g): (\mathbb{C}^3)^* \to (\mathbb{C}^3)^* \\ 
+	&  \widetilde{\rho}^*(g) = \widetilde{\rho}(g^{-1}) 
+	\end{aligned}  \\
+	\begin{gathered}
+	\forall \, \xi \in (\mathbb{C}^3)^* \\ 
+	\widetilde{\rho}^*(g)\xi = \xi_i (\widetilde{\rho}^*(g))^i_{ \,\, j} e^j = \xi_i (\widetilde{\rho}(g^{-1}))^i_{ \,\, j} e^j
+	\end{gathered}
+	\end{gathered}
+	\]
+	
+	So for $v = \left( \begin{matrix} A \\ B \\ C \end{matrix} \right) \in \mathbb{C}^3$, $f = T^{-1}v = Ax^2 + 2Bxy + Cy^2 \in P^2(\mathbb{C}^2)$, 
+	\[
+	\widetilde{\rho}(g^{-1})(v) = T \circ ( f \rho(g) ) = \left[ \begin{matrix} Aa^2 + 2Bac + Cc^2 \\
+	Aab + Bbc + Bad + Ccd \\
+	Ab^2 + 2Bbd + Cd^2 \end{matrix} \right]
+	\]
+	which was found using Sage Math:
+	\begin{lstlisting}
+	sage: f((g*X)[0,0],(g*X)[1,0])
+	(a*x + b*y)^2*A + 2*(a*x + b*y)*(c*x + d*y)*B + (c*x + d*y)^2*C
+	sage: f((g*X)[0,0],(g*X)[1,0]).expand()
+	A*a^2*x^2 + 2*B*a*c*x^2 + C*c^2*x^2 + 2*A*a*b*x*y + 2*B*b*c*x*y + 2*B*a*d*x*y + 2*C*c*d*x*y + A*b^2*y^2 + 2*B*b*d*y^2 + C*d^2*y^2
+	sage: f((g*X)[0,0],(g*X)[1,0]).expand().coefficient(x^2)
+	A*a^2 + 2*B*a*c + C*c^2
+	sage: f((g*X)[0,0],(g*X)[1,0]).expand().coefficient(x*y)
+	2*A*a*b + 2*B*b*c + 2*B*a*d + 2*C*c*d
+	sage: f((g*X)[0,0],(g*X)[1,0]).expand().coefficient(y^2)
+	A*b^2 + 2*B*b*d + C*d^2
+	\end{lstlisting}
+	or 
+	\begin{lstlisting}
+	sage: T( f((g*X)[0,0],(g*X)[1,0]).expand() )
+	[A*a^2 + 2*B*a*c + C*c^2,
+	2*A*a*b + 2*B*b*c + 2*B*a*d + 2*C*c*d,
+	A*b^2 + 2*B*b*d + C*d^2]
+	\end{lstlisting}
+	
+	So then 
+	\[
+	\widetilde{\rho}(g^{-1}) = \left[ \begin{matrix} a^2 & 2ac & c^2 \\ 2ab & 2(ad+bc) & 2cd \\ b^2 & 2bd & d^2 \end{matrix} \right]
+	\]
+	So then 
+	\[
+	\widetilde{\rho}^*(g) = \left[ \begin{matrix} a^2 & 2ac & c^2 \\ 2ab & 2(ad+bc) & 2cd \\ b^2 & 2bd & d^2 \end{matrix} \right]
+	\]
+	and operate on row vectors $\xi \in (\mathbb{C}^3)^*$ with $\widetilde{\rho}^*(g)$ from the row vector's right.  
+\end{enumerate}
+
+More: Let $G = SU(2)$.  Then $U = e^{i\phi} \left[ \begin{matrix} a & b \\ -\overline{b} & \overline{a} \end{matrix} \right]$
+
+\[
+\begin{gathered}
+\begin{aligned}
+& \widetilde{\rho} : SU(2) \to \text{End}(\mathbb{C}^3) \\
+& \widetilde{\rho}(U) : \mathbb{C}^3 \to \mathbb{C}^3 \\
+& \widetilde{\rho}(U)(v) = e^{-2i\varphi} \left[ \begin{matrix} A\overline{a}^2 + 2B\overline{a}\overline{b} + C \overline{b}^2 \\ 
+-A\overline{a}b + B + Ca\overline{b} \\
+Ab^2 - 2Bab + Ca^2 \end{matrix} \right]
+\end{aligned} \\
+\Longrightarrow \widetilde{\rho}(U) = e^{-2i \varphi} \left[ \begin{matrix} -\overline{a}^2 & 2\overline{a}\overline{b} & \overline{b}^2 \\
+-\overline{a}b & 1 & a\overline{b} \\
+b^2 & - 2ab & a^2 \end{matrix} \right]
+\end{gathered}
+\]
+
+cf. Ch. 5 Lie Groups of Jeffrey Lee (2009) \cite{JLee2009}
+
+\begin{definition}[Lie Group]
+\textbf{Lie Group} $G :=$ smooth manifold $G$ is a \textbf{Lie Group} if $G$ is a group (abstract group), s.t. \\
+multiplication map $\begin{aligned} & \quad \\ 
+& \mu : G \times G \to G \\
+& \mu(g,h) = gh \end{aligned}$ \\
+inverse map $\begin{aligned} & \quad \\ 
+& \text{inv} : G \to G \\
+& \text{inv}(g) = g^{-1} \end{aligned}$ \\
+are $C^{\infty}$ maps.
+
+If group is abelian, use additive notation $g+h$ for group operation.
+\end{definition}
+
+\begin{definition}[$GL(n, \mathbb{R})$]
+	$GL(n,\mathbb{R}) := $ group of all invertible real $n\times n$ matrices. 
+	
+	global chart on $GL(n, \mathbb{R}) = \lbrace x^i_j \rbrace$, $n^2$ functions $x^i_j$, where if $A \in GL(n,\mathbb{R})$, then $x^i_j(A)$ is $ij$th entry of $A$. 
+\end{definition}
+
+\emph{Claim}: $GL(n,\mathbb{R})$ is a Lie group. 
+
+\begin{proof}
+multiplication is clearly smooth: $(AB)_{ij} = A_{ik}B_{kj}$, 
+\[
+\begin{gathered}
+	\frac{ \partial }{ \partial x^l_m} (x^i_k(A) x^k_j(B)) = \delta^i_l \delta^m_k x^k_j(B) + x^i_k(A)\delta^k_l \delta^m_j
+\end{gathered}
+\]
+inversion map; appeal to formula for $A^{-1}$, $A^{-1} = \text{adj}(A) / \text{det}(A)$, $\text{adj}(A) \equiv$ adjoint matrix (whose entries are cofactors). \\
+$\Longrightarrow A^{-1}$ depends smoothly on entries of $A$.
+
+Similarly, $GL(n,\mathbb{C})$, group of invertible $n\times n$ complex matrices, is a Lie group.
+\end{proof}
+
+\exercisehead{5.5}\label{Ex:5.5SubgroupIsOpenAndClosed} Let subgroup $H$ of $G$, consider cosets $gH$, $g\in G$.
+
+Recall $G$ is disjoint union of cosets of $H$.
+
+\emph{Claim}: if $H$ open, so are all its cosets. And $H$ closed.
+
+\begin{proof}
+	cf. \href{https://math.stackexchange.com/questions/226847/open-subgroups-of-a-topological-group-are-closed}{stackexchange: Open subgroups of a topological group are closed}
+	
+	$gH = \lbrace gh | h \in H \rbrace$ is an open neighborhood of $g$ (since $1 \in H$, and mapping $h \mapsto gh$ sends open sets to open sets, since its inverse, $gh \mapsto h$, is $C^{\infty}$ (so continuous)).
+	
+	\[
+	\begin{gathered}
+	\begin{aligned}
+	& gH \to H \\
+	& gh \xrightarrow{g^{-1}} h = \mu(g^{-1}, gh)
+	\end{aligned} \qquad \, 
+	\begin{aligned}
+	& H \to gH \\
+	& h \xrightarrow{g} gh = \mu(g, h) 
+	\end{aligned}
+	\end{gathered}
+	\]
+	
+	Then $\forall \, $ coset $gH$, $gH$ is open.
+	
+	Suppose $g' \in H^c \equiv G-H \equiv G\backslash H$.
+	
+	Consider $h\in H$, if $g'h \in H$, then $g' = (g'h)h^{-1} \in H$ (recall $h^{-1} \in H$, and $H$ is a subgroup).
+	
+	Contradiction.
+	
+	$\Longrightarrow \forall \, g' \in H^c$, $\exists \, $ open neighborhood $g'H \subset H^c$, so $H^c$ open (by definition). Then $H$ closed.
+	
+	\end{proof}
+
+cf. Thm. 5.6 in Jeffrey Lee (2009) \cite{JLee2009}.
+\begin{theorem}
+	If $G$ connected Lie group, $U$ neighborhood of identity element $e$, then $U$ generates the group, i.e. $\forall \, g \in G$, $g$ is a product of elements of $U$.
+\end{theorem}
+
+\begin{proof}
+	Note $V = \text{inv}(U) \cap U$ is an open neighborhood of $e$. Note $\text{inv}(V) =V$. $\text{inv}(V) \equiv V^{-1} = \lbrace V^{-1} | v \in V \rbrace$. We say that $V$ is \emph{symmetric}.
+	
+	\emph{Claim}: $V$ generates $G$.
+	
+	$\forall \, $ open $W_1$, open $W_2\subset G$, \\
+	$W_1W_2 = \lbrace w_1 w_2 | w_1 \in W_1, w_2 \in W_2 \rbrace$ is an open set being a union of open sets $\bigcup_{g\in W_1} gW_2$.
+	
+	Thus, inductively defined sets
+	\[
+	V^n = VV^{n-1}, \quad \, n = 1,2,3,\dots
+	\]
+	are open.
+	
+	\[
+	e \in V \subset V^2 \subset \dots V^n \subset \dots
+	\]
+	
+	It's easy to check that each $V^n$ is symmetric.
+	\[
+	\begin{gathered}
+	\begin{aligned}
+	& \text{inv}(V) = V \\
+	& \text{inv}(V^2) = \text{inv}( \bigcup_{v\in V} vV) = V \text{inv}(V) = V = V^2 \\
+	& \text{inv}(V^{n+1}) = \text{inv}\left( \bigcup_{v\in V} vV^n \right) = V \text{inv}(V^n) = VV^n = V^{n+1}
+	\end{aligned}
+	\end{gathered}	
+	\]
+	so $V^{\infty} := \bigcup_{n=1}^{\infty} V^n$ is symmetric.
+
+$V^{\infty}$ closed under inversion, also multiplication. Thus $V^{\infty}$ is an open subgroup.
+
+From Exercise 5.5, Jeffrey Lee (2009) \cite{JLee2009}, i.e. Exercise \ref{Ex:5.5SubgroupIsOpenAndClosed}, $V^{\infty}$ also closed, since $G$ is connected, $V^{\infty} = G$. (a topological space $X$ is \textbf{connected} iff the only open and closed (clopen) sets are $\emptyset$ and $X$).
+	
+\end{proof}
+
+\begin{definition}
+	Identity component of $G, G_0$.  
+
+$G_0 := $ connected component of Lie group $G$ that contains identity; \\
+$G_0$ is a Lie group, and is generated by any open neighborhood of the identity.
+\end{definition}
+
+\begin{definition}
+	For Lie group $G$, fixed element $g\in G$, \\
+	left translation (by $g$) $L_g: G \to G$, $L_g x  = gx$, \quad \, $\forall \, x \in G$ \\
+	right translation (by $g$) $R_g: G \to G$, $R_g x  = xg$, \quad \, $\forall \, x \in G$ 
+\end{definition}
+
+$L_g$, $R_g$ are diffeomorphisms with $L_g^{-1} = L_{g^{-1}}$, $R_g^{-1} = R_{g^{-1}}$.
+
+\begin{definition}[Product Lie group]
+	If $G,H$ are Lie groups, then product manifold $G\times H$ is a Lie group, where multiplication
+	\[
+	(g_1, h_1) \cdot (g_2, h_2) = (g_1g_2, h_1h_2)
+	\]
+	Lie group $G\times H$ is called \textbf{product Lie group}
+\end{definition}
+e.g. product group $S^1 \times S^1 \equiv $ 2-torus group.
+
+Generally, higher torus groups $T^n = S^1 \times \dots \times S^1$ ($n$ factors).
+
+\begin{definition}[Lie subgroup of $G$, $H$]
+	Let $H$ be an abstract subgroup of Lie group $G$. 
+	
+	If $H$ is a Lie group s.t. inclusion map $i: H \to G \equiv H \hookleftarrow G$ is an immersion, then $H$ is a 
+
+	\textbf{Lie subgroup} of $G$.
+\end{definition}
+Recall $i : H \to G$ immersion iff $Di$ injective, i.e.	iff $\text{rank}{Di} = \text{dim}{H}$
+
+
+cf. Prop. 5.9 in Jeffrey Lee (2009) \cite{JLee2009}.
+\begin{proposition}
+	If $H$ abstract subgroup of Lie group $G$, that's also a regular submanifold $\equiv$ embedded submanifold, then $H$ closed Lie subgroup.
+\end{proposition}
+
+%\begin{proof}
+%	$H$ subgroup of $G$, so \\
+%	multiplication map $H\times H \to H$ \\
+%	inversion map $H \to H$ 
+	
+%	are restrictions of multiplication and inversion maps on $G$.
+%\end{proof}
+
+\emph{Recall that} 
+\begin{quote}
+	\emph{embedded submanifold} $\equiv $ \emph{regular submanifold}
+\end{quote}
+Each name is used frequently and we shouldn't be biased against one or the other; we'll have to refer to both, to emphasize they're \emph{exactly the same}.
+
+embedded submanifold $\equiv $ regular submanifold is an immersed submanifold s.t. inclusion map $i$ is a topological embedding, \\
+i.e. embedded submanifold $\equiv $ regular submanifold $S \subset M$,  \\
+immersed submanifold $S$ if $i:S \to M \equiv S \hookrightarrow M$ is an immersion, i.e. $Di$ injective, i.e. $\text{rank}Di \equiv \text{dim}S$. \\
+topological embedding $:=$ homeomorphism onto its image, i.e. \\
+\qquad \, injective cont. map $f:X \to Y$, $X, Y$ topological spaces, is a \textbf{topological embedding} \\
+\qquad \qquad \, if $f$ is a homeomorphism between $X$ and $f(X)$.  \\
+\qquad \qquad \qquad \, $f$ homeomorphism is a bijection, continuous, and $f^{-1}$ continuous. \\
+
+e.g. $\forall \, $ embedding $f: M \to N$, $f(M) \subset N$ naturally has the structure of an embedding submanifold $\equiv $ regular submanifold.
+
+\emph{Useful, intrinsic definition} of \textbf{embedded submanifold} $\equiv$ regular submanifold. \\
+Let manifold $M$, $\text{dim}M = n$, let $k \in \mathbb{Z}^+$, s.t. $0\leq k \leq n$.
+
+A $k$-dim. embedded submanifold $\equiv $ regular submanifold $S$ is subset $S \subset M$ s.t. $\forall \, p \in S$, $\exists \, $ chart ($U\subset M, \, \varphi : U \to \mathbb{R}^n \ni 0$), s.t. $\varphi(S \cap U)$ is the intersection of a $k$-dim. plane with $\varphi(U)$.  \\
+ (pairs ($S\cap U, \left. \varphi \right|_{S \cap U})$ form an atlas for differential structure on $S$).
+
+
+
+Proof 1:
+
+cf. 9.2 The Closed Subgroup Theorem I of 427 Notes\footnote{\url{https://faculty.math.illinois.edu/~lerman/519/s12/427notes.pdf}}
+
+\begin{proof}
+	\textbf{Claim}: If $H$ abstract subgroup of Lie group $G$, that's also an embedded submanifold $\equiv$ regular submanifold, then $H$ is a Lie subgroup. \\
+	
+	Recall that by definition, Lie group has group multiplication and inverse map to be $C^{\infty}$. Then, just show group multiplication is $C^{\infty}$, first.
+	
+Since $G$ is a Lie group, then
+\[
+\begin{gathered}
+\begin{aligned}
+& \mu : G \times G \to G \\
+& \mu(x,y) = xy
+\end{aligned}
+\end{gathered}
+\]	
+is $C^{\infty}$ (by definition).
+
+Then $\mu : G \times G \to G$ cont.  \\
+Consider subgroup $H\subseteq G$ and $\mu : H \times H \to H$.
+
+Since $H\times H \subseteq G \times G$, $\forall \, (x,y) \in H \times H$ (fix $(x,y) \in H\times H$), $\forall \, $ neighborhood $V$ of $\mu(x,y) = xy$, $V\subset G$, $\exists \, $ neighborhood $U$ of $(x,y)$ s.t. $\mu(U) \subseteq V$ (by $\mu: G \times G \to G$ cont.).
+
+Since $H$ embedded submanifold $\equiv $ regular submanifold of $G$,  \\
+\qquad \, $\exists \, $ neighborhood $V' \subseteq V$ of $xy \in G$, coordinate map $\varphi:V' \to \mathbb{R}^n$ ($n = \text{dim}G$) s.t.
+\[
+\varphi(H \cap V') = \varphi(V') \cap (\mathbb{R}^k \times \lbrace 0 \rbrace)
+\]
+where $k = \text{dim}H$	
+	
+(since $H$ is a $k$-dim. embedded submanifold $\equiv$ regular submanifold, $H\subseteq G$, s.t. $\forall \, p \in H$, $\exists $ chart ($V \subset G, \, \varphi : U \to \mathbb{R}^n \ni 0$), s.t. $\varphi(U \cap V) = \varphi(V) \cap (\mathbb{R}^k \times \lbrace 0 \rbrace)$).
+
+Now \\
+\[
+\varphi \circ \mu : \mu^{-1}(V') \cap U \to \mathbb{R}^n \text { is } C^{\infty}, \text{ and } \varphi \circ \mu(\mu^{-1}(V') \cap U) \subseteq \mathbb{R}^k \times \lbrace 0 \rbrace 
+\]	
+
+Let projection $\pi : \mathbb{R}^n \to \mathbb{R}^k$ be the standard projection, 
+\[
+\pi \circ \varphi \circ \mu : \mu^{-1}(V') \cap U \to \mathbb{R}^k \text{ is } C^{\infty}
+\]
+	
+$\Longrightarrow \mu $ is $C^{\infty}$	
+\end{proof}
+
+
+
+
+From Chapter 4 ``Lie Groups and Lie Algebras'' of Kosmann-Schwarzbach (2010) \cite{YKosmann-Schwarzbach2010}
+
+While Proposition 2.6 of Kosmann-Schwarzbach (2010) \cite{YKosmann-Schwarzbach2010} states that
+\[
+\text{det}(\exp(X)) = \exp{ (\text{tr}{X} ) }
+\]
+here are some other resources online that gave further discussion on the characteristic polynomial, $\text{det}(A-\lambda 1)$ and the different terms of it, called Newton identities:
+\begin{itemize}
+	\item \url{http://scipp.ucsc.edu/~haber/ph116A/charpoly_11.pdf}
+	\item \url{http://math.stackexchange.com/questions/1126114/how-to-find-this-lie-algebra-proof-that-mathfraksl-is-trace-zero-matrice}
+	\item \url{http://mathoverflow.net/questions/131746/derivative-of-a-determinant-of-a-matrix-field}
+\end{itemize}
+
+\begin{theorem}[5.1 \cite{YKosmann-Schwarzbach2010}]\label{Thm:5.1YKos}
+	Consider $\mathfrak{g} = \lbrace X = \gamma'(0) | \gamma : 1 \to G \text{ of class $C^1$ }, \, \gamma(0) = 1 \rbrace$ \\
+	Let Lie group $G$
+	\begin{enumerate}
+		\item[(i)] $\mathfrak{g}$ vector subspace of $\mathfrak{gl}(n,\mathbb{R})$
+		\item[(ii)] $X \in \mathfrak{g}$ iff $\forall \, t \in \mathbb{R}$, $\exp{(tX)} \in G$ 
+		\item[(iii)] if $X \in \mathfrak{g}$, if $g\in G$, then $gXg^{-1} \in \mathfrak{g}$
+		\item[(iv)] $\mathfrak{g}$ closed under matrix commutator, i.e. if $X,Y \in \mathfrak{g}$, $[X,Y] \in \mathfrak{g}$
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item[(i)]
+		\item[(ii)] If $\exp{ (tX)} \in G$, then $X \left. \frac{d}{dt} \exp{(tX)} \right|_{t=0} \in \mathfrak{g}$ (by def.)
+		
+		If $X \in \mathfrak{g}$, then by def., $X = \left. \frac{d}{dt} \gamma(t) \right|_{t=0}$ with $\gamma(t) \in G$.  
+		
+		Now Taylor expand; $\forall \, k \in \mathbb{Z}^+$ 
+		
+		\[
+		\begin{gathered}
+		\gamma\left( \frac{t}{k} \right) = 1 + \frac{t}{k} X + O\left( \frac{1}{k^2} \right) = \exp{ \left( \frac{t}{k} X + O\left( \frac{1}{k^2} \right) \right) } \\
+		\Longrightarrow \left( \gamma \left( \frac{t}{k} \right) \right)^k = \exp{ (tX)}
+		\end{gathered}
+		\]
+		
+		\[
+		\gamma\left( \frac{t}{k} \right) \in G \quad \, \forall \, k \in \mathbb{Z}^+
+		\]
+		$G$ closed subgroup, so $\lim_{k \to \infty} (\gamma\left( \frac{t}{k} \right) )^k = \exp{(tX) } \in G$
+		\item[(iii)]
+		\item[(iv)]
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}[Lie algebra]
+	Lie algebra $\mathfrak{g}$, tangent space to $G$ at $1$, i.e. $\mathfrak{g} := T_1 G$ is called \emph{Lie algebra} of Lie group $G$.  
+	
+	\[
+	\mathfrak{g} := \lbrace X = \gamma'(0) | \gamma: 1 \to G \text{ of class $C^1$ }, \gamma(0) = 1 \rbrace = T_1G
+	\]
+\end{definition}
+
+This is based on  Proposition 5.3 of Kosmann-Schwarzbach (2010) \cite{YKosmann-Schwarzbach2010}.  
+
+For Lie group 
+\[
+U(n) = \lbrace U \in GL(n,\mathbb{C}) | UU^{\dag} = 1 \rbrace
+\]
+If $X \in \mathfrak{u}(n)$, then $\exp{(tX)} \in U(n)$.  Then
+\[
+\exp{(tX)} \exp{(tX)}^{\dag} = (1+tX + O(t^2) )(1+tX^{\dag} + O(t^2) ) = 1 + t(X+X^{\dag}) +O(t^2) = 1 \forall \, t\in \mathbb{R} \Longrightarrow X+X^{\dag} = 0 
+\]
+i.e. $X \in \mathfrak{u}(n)$ is an anti-Hermitian complex $n\times n$ matrix.  
+
+$\mathfrak{u}(n) = \lbrace X \in \mathfrak{gl}(n,\mathbb{C}) | X + X^{\dag} =0 \rbrace$
+
+\emph{Physicists}: $X = iA$ and so $A-A^{\dag}$.  $A \in \mathfrak{u}(n)$ is a Hermitian complex $n\times n$ matrix.  
+
+$\mathfrak{u}(n) = \lbrace A \in \mathfrak{gl}(n,\mathbb{C}) | A - A^{\dag} =0 \rbrace$
+
+Regardless, $\text{dim}_{\mathbb{R}}\mathfrak{u}(n) = n^2 = 2n^2 - n^2$
+
+For Lie group 
+\[
+SU(n) = \lbrace  U \in GL(n,\mathbb{C}) | UU^{\dag} = 1 , \text{det}U = 1 \rbrace
+\]
+Then
+\[
+\mathfrak{su}(n) = \lbrace X \in \mathfrak{gl}(n,\mathbb{C}) | X + X^{\dag} = 1 , \, \text{tr}{X} = 0 \rbrace
+\]
+is the Lie algebra of traceless anti-Hermitian complex $n\times n$ matrices, and that 
+\[
+\text{dim}_{\mathbb{R}}\mathfrak{su}(n) = n^2 - 1 
+\]
+
+In summary, 
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\mathfrak{u}(n) = \lbrace X \in \mathfrak{gl}(n,\mathbb{C}) | X + X^{\dag} =0 \rbrace \\  
+	U(n) = \lbrace U \in GL(n,\mathbb{C}) | UU^{\dag} = 1 \rbrace \\  
+};
+\path[->]
+(m-1-1) edge node [left] {$\exp{(tX)}$} (m-2-1)
+;
+\end{tikzpicture} \quad \quad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\mathfrak{su}(n) = \lbrace X \in \mathfrak{gl}(n,\mathbb{C}) | X + X^{\dag} =0, \text{tr}{X}=0 \rbrace \\ 
+	SU(n) = \lbrace U \in GL(n,\mathbb{C}) | UU^{\dag} = 1, \text{det}U=1 \rbrace \\ 
+};
+\path[->]
+(m-1-1) edge node [left] {$\exp{(tX)}$} (m-2-1)
+;
+\end{tikzpicture} \\
+\text{dim}_{\mathbb{R}} \mathfrak{u}(n) = n^2   \quad \quad \quad \, \text{dim}_{\mathbb{R}}\mathfrak{su}(n) = n^2-1
+\end{gathered}
+\]
+
+From Chapter 5 ``Lie Groups $SU(2)$ and $SO(3)$'' of Kosmann-Schwarzbach (2010) \cite{YKosmann-Schwarzbach2010}, 
+
+\subsubsection{Bases of $\mathfrak{su}(2)$, Subsection 1.1 of Chapter 5of Kosmann-Schwarzbach (2010) \cite{YKosmann-Schwarzbach2010}}
+
+Recall that 
+
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\mathfrak{su}(n) = \lbrace X \in \mathfrak{gl}(n,\mathbb{C}) | X + X^{\dag} =0, \text{tr}{X}=0 \rbrace \\ 
+	SU(n) = \lbrace U \in GL(n,\mathbb{C}) | UU^{\dag} = 1, \text{det}U=1 \rbrace \\ 
+	\text{dim}_{\mathbb{R}}\mathfrak{su}(n) = n^2-1 \\
+};
+\path[->]
+(m-1-1) edge node [left] {$\exp{(tX)}$} (m-2-1)
+;
+\end{tikzpicture} 
+
+and so 
+
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\mathfrak{su}(2) = \lbrace X \in \mathfrak{gl}(2,\mathbb{C}) | X + X^{\dag} =0, \text{tr}{X}=0 \rbrace \\ 
+	SU(2) = \lbrace U \in GL(n,\mathbb{C}) | UU^{\dag} = 1, \text{det}U=1 \rbrace \\ 
+	\text{dim}_{\mathbb{R}}\mathfrak{su}(2) = 3 \\
+};
+\path[->]
+(m-1-1) edge node [left] {$\exp{(tX)}$} (m-2-1)
+;
+\end{tikzpicture} 
+
+Also, recall that $\mathfrak{g} \subseteq \mathfrak{gl}(n,\mathbb{C})$ is a vector subspace (\ref{Thm:5.1YKos}) and that \\
+$X \in \mathfrak{g}$ iff $\forall t \in \mathbb{R}$, $\exp{(tX)} \in G$.  \\
+if $X \in \mathfrak{g}$, if $g\in G$, then $gXg^{-1} \in \mathfrak{g}$ \\
+$\mathfrak{g}$ closed under $\begin{aligned} & \quad \\
+& \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g} \\
+& (X,Y) \mapsto [X,Y] \end{aligned}$
+
+and so with $\mathfrak{g}$ as a vector space, we can have a choice of bases.  
+
+\begin{enumerate}
+	\item[(a)] $\begin{aligned}
+	& \xi_1 = \frac{i}{2} \left( \begin{matrix} & 1 \\ 1 & \end{matrix} \right) \\ 
+	& \xi_2 = \frac{1}{2} \left( \begin{matrix} & -1 \\ 1 & \end{matrix} \right) \\
+	& \xi_3 = \frac{i}{2} \left( \begin{matrix} 1 &  \\  & -1 \end{matrix} \right) 
+	\end{aligned}$
+	
+	satisfying 
+	
+	\[
+	[\xi_k , \xi_l ] = \epsilon_{klm} \xi_m
+	\]
+	\item[(b)] \emph{Physics}
+	
+	$\begin{aligned}
+	& \sigma_1 = -2i \xi_1 =  \left( \begin{matrix} & 1 \\ 1 & \end{matrix} \right) \\ 
+	& \sigma_2 = 2i \xi_2 =  \left( \begin{matrix} & -i \\ i & \end{matrix} \right) \\
+	& \sigma_3 = -2i \xi_3 =  \left( \begin{matrix} 1 &  \\  & -1 \end{matrix} \right) 
+	\end{aligned}$
+\end{enumerate}
+
+satisfying 
+
+\[
+[ \sigma_k, \sigma_l ] = 2i \epsilon_{klm} \sigma_m
+\]
+
+EY : 20151001 Sage Math 6.8 doesn't run on Mac OSX El Capitan: I suspect that it's because in Mac OSX El Capitan, \verb|/usr| cannot be modified anymore, even in an Administrator account.  The TUG group for MacTeX had a clear, thorough, and useful (i.e. copy UNIX commands, paste, and run examples) explanation of what was going on:
+
+\url{http://tug.org/mactex/elcapitan.html}
+
+So keep in mind that my code for Sage Math is for Sage Math 6.8 that doesn't run on Mac OSX El Capitan.  I'll also use \verb|sympy| in Python as an alternative and in parallel.  
+
+One can check in \verb|sympy| the traceless anti-Hermitian (or Hermitian) property of the bases and Pauli matrices, and the commutation relations (see \verb|groups.py|):
+
+\begin{lstlisting}
+import itertools
+from itertools import product, permutations
+
+import sympy
+from sympy import I, LeviCivita
+from sympy import Rational as Rat
+
+from sympy.physics.matrices import msigma # <class 'sympy.matrices.dense.MutableDenseMatrix'>
+
+def commute(A,B):
+"""
+commute = commute(A,B)
+commute takes the commutator of A and B
+"""
+return (A*B - B*A)
+
+def xi(i):
+"""
+xi = xi(i)
+xi is a function that returns the independent basis for 
+Lie algebra su(2)\equiv su(2,\mathbb{C}) of Lie group SU(2) of 
+traceless anti-Hermitian matrices, based on msigma of sympy
+cf. http://docs.sympy.org/dev/_modules/sympy/physics/matrices.html#msigma
+"""
+if i not in [1,2,3]:
+raise IndexError("Invalid Pauli index")
+elif i==1:
+return I/Rat(2)*msigma(1)
+elif i==2:
+return -I/Rat(2)*msigma(2)
+elif i==3:
+return I/Rat(2)*msigma(3)
+
+\end{lstlisting}
+
+\begin{lstlisting}
+## check anti-Hermitian property and commutation relations with xi 
+# xi is indeed anti-Hermitian
+xi(1) == -xi(1).adjoint() # True
+xi(2) == -xi(2).adjoint() # True
+xi(3) == -xi(3).adjoint() # True
+
+# xi obeys the commutation relations
+
+for i,j in product([1,2,3],repeat=2): print i,j
+
+for i,j in product([1,2,3],repeat=2): print i,j, "\t Commutator: ", commute(xi(i),xi(j))
+
+## check traceless Hermitian property and commutation relations with Pauli matrices
+# Pauli matrices i.e. msigam is indeed traceless Hermitian
+
+msigma(1) == msigma(1).adjoint() # True
+msigma(2) == msigma(2).adjoint() # True
+msigma(3) == msigma(3).adjoint() # True
+
+msigma(1).trace() == 0 # True
+msigma(2).trace() == 0 # True
+msigma(3).trace() == 0 # True
+
+# Pauli matrices obey commutation relation
+print "For Pauli matrices, the commutation relations are :\n"
+for i,j in product([1,2,3],repeat=2): print i,j, "\t Commutator: ", commute(msigma(i),msigma(j))
+
+for i,j,k in permutations([1,2,3],3): print "Commute: ", i,j,k, msigma(i), msigma(j), \ 
+": and is 2*i of ", msigma(k), commute(msigma(i),msigma(j)) == 2*I*msigma(k)*LeviCivita(i,j,k)
+
+\end{lstlisting}
+
+And finally the traceless property of the Pauli matrices:
+\begin{lstlisting}
+>>> msigma(1).trace()
+0
+>>> msigma(2).trace()
+0
+>>> msigma(3).trace()
+0
+\end{lstlisting} 
+
+\subsection{Spin}
+
+Let's follow the development by Baez and Muniain (1994) on pp. 175 of the Section II.1 ``Lie Groups'', the second (II) chapter on ``Symmetry'' \cite{JBaezJMuniain1994}.  
+
+Let $V = \mathbb{C}^2$, $G=SU(2)$.  Then consider the graded algebra of polynomials on $V = \mathbb{C}^2 \ni (x,y)$
+\[
+\begin{gathered}
+P(V) = \bigoplus_{k=0}^{\infty} P^{(k)}(V) = \bigoplus_{ \substack{ j =0 \\ 2j \in \mathbb{Z}} }^{\infty} P^{(2j)}(V) = \bigoplus_{ \substack{ j=0 \\ j\in \mathbb{Z} }}^{\infty} P^{(2j)}(V) \oplus \bigoplus_{ \substack{ j=1/2 \\ 2j \text{ odd } } }^{\infty} P^{(2j)}(V) \\
+P^{(2j)}(V) \equiv \text{ vector space of complex polynomials of degree $2j$ }
+\end{gathered}
+\]
+and recall this representation on $P^{(2j)}(V)$
+\[
+\begin{aligned}
+& \rho^{(2j)}:G \to \text{End}(P^{(2j)}(V)) \\ 
+& \rho^{(2j)}: P^{(2j)}(V) \to P^{(2j)}(V) \\ 
+& \rho^{(2j)}(g)(f) = f\circ \rho(g^{-1}) \text{ where $\rho$ is the fundamental representation of $G=SU(2)$ }\\
+& \rho^{(2j)}(g)(f)(v) = f\circ \rho(g^{-1})(v) \quad \, \forall \, f \in P^{(2j)}(V), \, \forall \, v \in V = \mathbb{C}^2
+\end{aligned}
+\]
+Note, \\
+$\text{dim}P^{(2j)} = \binom{2j+2-1 }{2-1} = 2j+1$
+
+\exercisehead{21} \cite{JBaezJMuniain1994} \emph{spin-0} Consider the trivial representation $\tau$:
+\[
+\begin{aligned}
+& \tau : G \to \text{End}(\mathbb{C}) \\ 
+& \tau(g): \mathbb{C} \to \mathbb{C} \\ 
+& \tau(g) = 1_{\mathbb{C}}
+\end{aligned} \quad \quad \,  \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\mathbb{C} & P^{(0)}(V) \\ 
+	\mathbb{C} & P^{(0)}(V) \\ 
+};
+\path[->]
+(m-1-1) edge node [above] {$T$} (m-1-2)
+edge node [left] {$\tau(g)$} (m-2-1)
+(m-1-2) edge node [auto]  {$\rho^{(0)}(g)$} (m-2-2)
+(m-2-1) edge node [auto] {$T$} (m-2-2)
+;
+\end{tikzpicture}
+\]
+
+Clearly, $P^{(0)}(V) = \mathbb{C}$, since $P^{(0)}(V)$ consists of polynomials of constants in $\mathbb{C}$.  
+
+Consider $c_0 \in \mathbb{C}$, $f = k_0 \in P^{(0)}(V)$ \\
+$\rho^{(0)}(g)(f) = f\circ \rho(g^{-1}) = k_0$ \\
+$\Longrightarrow \rho^0(g)T(c_0) = T\circ \tau(g) c_0 = T(c_0)$.  Let $T = 1_{\mathbb{C}} = 1_{P^{0}(V)}$
+
+So $\rho^{(0)}(g) = \tau(g) = 1$.  $T=1$.  So representations $\rho^{(0)}$ and trivial representation $\tau$ on $G$ are equivalent.  
+
+
+
+\exercisehead{22} \cite{JBaezJMuniain1994} \emph{spin-$\frac{1}{2}$} For spin-$\frac{1}{2}$, $j=\frac{1}{2}$, $2j=1$.  
+
+$\forall \, f \in P^{(1)}(V)$, $V = \mathbb{C}^2$.  So in general form, $f(x,y) = ax + by \in P^{(1)}(V)$, $\left( \begin{matrix} x \\ y \end{matrix} \right) \in V = \mathbb{C}^2$  
+
+Recall the fundamental representation $\begin{aligned} & \quad \\
+& \rho : G \to GL(2,\mathbb{C}) \equiv GL(\mathbb{C}^2) \\
+& \rho(g) : \mathbb{C}^2 \to \mathbb{C}^2 \\
+& \rho(g) = g \end{aligned}$
+
+So consider $T$ such that 
+
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\mathbb{C}^2 & P^{(1)}(V) \\ 
+	\mathbb{C}^2 & P^{(1)}(V) \\ 
+};
+\path[->]
+(m-1-1) edge node [above] {$T$} (m-1-2)
+edge node [left] {$\rho(g)$} (m-2-1)
+(m-1-2) edge node [auto]  {$\rho^{(1)}(g)$} (m-2-2)
+(m-2-1) edge node [auto] {$T$} (m-2-2)
+;
+\end{tikzpicture}
+
+Consider $\forall \, v \in \mathbb{C}^2$, $v =\left( \begin{matrix} x \\ y \end{matrix} \right)$, then 
+\[
+\rho(g)v = gv = \left[ \begin{matrix} ax + by \\ cx + dy \end{matrix} \right]
+\]
+
+\begin{lstlisting}
+sage: g*X
+[a*x + b*y]
+[c*x + d*y]
+\end{lstlisting}
+
+For notation, let $U \in G = SU(2)$ s.t. $UU^{\dag}=1$.  
+
+Consider $(\rho^{(2j)}(U)(f))(x) = f(U^{-1}x)$, $\forall \, x \in \mathbb{C}^2$.  
+
+Choose $f(x,y) = x$.  So for $f(x,y) = Ax+By$, $A=1,B=0$.  Choose $U = \left( \begin{matrix} a & b \\
+-\overline{b} & \overline{a} \end{matrix} \right)$ so $U^{-1} = \left( \begin{matrix} \overline{a} & -b \\
+\overline{b} & a \end{matrix} \right)$.  Then $U^{-1}x = \left( \begin{matrix} \overline{a}x - by \\
+\overline{b}x + ay \end{matrix} \right)$
+
+So 
+\[
+\begin{aligned}
+& (\rho^{(1)}(U)(f) )(x) = f(U^{-1}x) = \overline{a}x - by \\ 
+& (\rho^{(1)}(U)(f))(x) = f(U^{-1}x) = \overline{b}x + ay \text{ for } f(x,y) = y 
+\end{aligned}
+\]
+Let $f(x,y) = Ax + By$
+\[
+\begin{gathered}
+(\rho^{(1)}(U)(f))(x) = f(U^{-1}x) = (A\overline{a}+B\overline{b})x + (Ba - Ab)y = (\overline{a}x - by)A + (\overline{b}x + ay)B  = (A\overline{a} + B\overline{b})x + (Ba-Ab)y
+\end{gathered}
+\]
+which was calculated with the assistance of Sage Math:
+\begin{lstlisting}
+sage: U_try1 = Matrix( [[a.conjugate(),-b],[b.conjugate(),a ] ] )
+sage: f1( U_try1*X).coefficient(x)
+A*conjugate(a) + B*conjugate(b)
+sage: f1( U_try1*X).coefficient(y)
+B*a - A*b
+\end{lstlisting}
+
+Treating $P^{(1)}(\mathbb{C}^2)$ as a vector space, in its matrix formulation, then $f(x,y) = Ax+By \in P^{(1)}(\mathbb{C}^2)$ is treated as $\left[ \begin{matrix} A \\ B \end{matrix} \right]$, then $(\rho^{(1)}(U)f)$ is 
+\[
+\Longrightarrow \left[ \begin{matrix} \overline{a} & \overline{b} \\ -b & a \end{matrix} \right]\left[ \begin{matrix} A \\ B \end{matrix} \right] = \left[ \begin{matrix} A\overline{a} + B\overline{b}  \\ -Ab + Ba \end{matrix} \right]
+\]
+so conclude in general that $\rho^{(1)}(U) = (U^{\dag})^T$.  
+
+Now, as Kosmann-Schwarzbach (2010) \cite{YKosmann-Schwarzbach2010} says, on pp. 13, Chapter 2 Representations of Finite Groups, ``Two representations $(E_1,\rho_1)$ and $(E_2,\rho_2)$ are equivalent if and only if there is a basis $B_1$ of $E_1$ and a basis $B_2$ of $E_2$ such that for every $g\in G$, the matrix of $\rho_1(g)$ in the basis $B_1$ is equal to the matrix of $\rho_2(g)$ in the basis $B_2$.  In particular, if the representations $(E_1,\rho_1)$ and $(E_2,\rho_2)$ are equivalent, then $E_1$ is isomorphic to $E_2$.''  So we need a change of basis between $\rho(U) = U$ and $\rho^{(1)}(U)$.  What's the linear transformation $T$ s.t.
+\[
+T^{-1} \rho^{(1)}(U) T = U ?
+\]  
+By intuition, 
+\[
+T = \sigma_x \sigma_z \equiv \sigma_1 \sigma_3
+\]
+where $\sigma_i$'s are Pauli matrices.  
+
+Indeed, 
+\begin{lstlisting}
+sage: Paulimat[3] * Paulimat[1]*U_try*Paulimat[1] * Paulimat[3]
+[conjugate(a) conjugate(b)]
+[          -b            a]
+\end{lstlisting}
+
+Then $\rho^{(1)}(U)\circ T = TU$, so this $T = \sigma_1 \sigma_3$ is an ``intertwining operator'' between $\rho^{(1)}(U)$ and fundamental representation $\rho(U) = U$, with $T = \left[ \begin{matrix} & - 1 \\
+1 & \end{matrix} \right]$, and $T^{-1} = \left[ \begin{matrix} & 1 \\ -1 & \end{matrix} \right]$.  
+
+$T$ is an isomorphism between $\mathbb{C}^2$ and $P^{(1)}(\mathbb{C}^2)$.  So fundamental representation $\rho$ of $G=SU(2)$ is equivalent to $\rho^{(1)}(U)$ on $P^{(1)}(\mathbb{C}^2)$.  
+
+\exercisehead{23}\cite{JBaezJMuniain1994} (Also from Exercise 2.6 of Kosmann-Schwarzbach (201) \cite{YKosmann-Schwarzbach2010})
+
+Let $(E,\pi)$ representation of group $G$.  \\
+$\forall \, g \in G$, $\xi \in E^*$, $x\in E$, set $\langle \pi^*(g)(\xi), x \rangle = \langle \xi, \pi(g^{-1})(x) \rangle$
+
+\emph{dual} (or \emph{contragredient}) of $\pi$, $\pi^*:G \to \text{End}(E^*)$, $\pi^*$ is a representation, since
+\[
+\begin{gathered}
+\langle \pi^*(gh)(\xi),x\rangle = \langle \xi, \pi((gh)^{-1})(x) \rangle = \langle \xi, \pi(h^{-1}g^{-1})(x) \rangle = \langle \xi, \pi(h^{-1}) \pi(g^{-1})(x) \rangle = \langle \xi, \pi(h^{-1}) (\pi(g^{-1})(x)) \rangle =  \\
+= \langle \pi^*(h)(\xi), \pi(g^{-1})(x) \rangle = \langle \pi^*(g)\pi^*(h)(\xi), x \rangle
+\end{gathered}
+\]
+since this is true, $\forall \, x \in E$, $\forall \, \xi \in E^*$, $\pi^*(gh) = \pi^*(g)\pi^*(h)$.  
+
+dual $\pi^*$ of $\pi$ is a representation.  
+
+
+\subsection{Adjoint Representation}
+
+I will first follow Sec. 7.3 The Adjoint Representation of Ch. 4 Lie Groups and Lie Algebras of Kosmann-Schwarzbach (201) \cite{YKosmann-Schwarzbach2010}).  
+
+The \emph{conjugation action} $\mathcal{C}_g:G\to G$ is defined as 
+\[
+\begin{aligned}
+& \mathcal{C}_g:G\to G \\
+&  \mathcal{C}_g: h \mapsto ghg^{-1}
+\end{aligned}
+\]
+So 
+\[
+\begin{aligned}
+& \mathcal{C}: G \to \text{Aut}(G) \\ 
+& \mathcal{C}g = \mathcal{C}_g
+\end{aligned}
+\]
+Now define the \emph{adjoint action} of $g$ as the differential or push forward of $\mathcal{C}_g$:
+\[
+\text{Ad}_g := D_1 \mathcal{C}_g \equiv (\mathcal{C}_g)_{*1} \equiv \left. (\mathcal{C}_g )_* \right|_{g=1}  \qquad \, (\text{adjoint action of $g$})
+\]
+Now $\text{Ad}_g: \mathfrak{g} \to \mathfrak{g}$, so $\begin{aligned} & \quad \\
+& \text{Ad}:G \to \text{End}(\mathfrak{g}) \\
+& \text{Ad}(g) \equiv \text{Ad}_g \end{aligned}$
+
+Note $\mathcal{C}_{gg'} = \mathcal{C}_g \mathcal{C}_{g'} \equiv \mathcal{C}(gg') = \mathcal{C}(g)\circ \mathcal{C}(g')$ and so 
+\[
+\xrightarrow{ D_1} \text{Ad}_{gg'} = \text{Ad}_g \circ \text{Ad}_{g'}
+\]
+
+Kosmann-Schwarzbach (201) \cite{YKosmann-Schwarzbach2010}) claims, because $\text{Ad}_g = 1_{\mathfrak{g}}$ when $g=1$, 
+
+$\begin{aligned} & \quad \\
+& \text{Ad}:G \to GL(\mathfrak{g}) \\
+& \text{Ad}:g\mapsto \text{Ad}_g\end{aligned}$ is a representation of $G$ on $\mathfrak{g}$.   (EY : 20160505 ???)
+
+\begin{definition}
+	representation $\text{Ad}$ of $G$ on $V=\mathfrak{g}$ is called adjoint representation of Lie group $G$.  
+\end{definition}
+
+Denote adjoint representation of Lie algebra $\mathfrak{g}$, $\text{ad}$.  
+
+By definition, $\text{Ad}_{\text{exp}(tX)} = \exp{ (t\text{ad}_X)}$
+
+cf. Prop. 7.8 of Kosmann-Schwarzbach (201) \cite{YKosmann-Schwarzbach2010})
+\begin{proposition}
+	\begin{enumerate}
+		\item Let $A$ invertible matrix, $A \in $ Lie group $G$.  \\
+		Let $X$ matrix s.t. $X \in \mathfrak{g}$.  Then
+		\[
+		\text{Ad}_A(X) = AXA^{-1}
+		\]
+		\item Let $X,Y \in \mathfrak{g}$.  Then 
+		\[
+		\text{ad}_X(Y) = [X,Y]
+		\]
+		\item Let $X,Y \in \mathfrak{g}$.  Then 
+		\[
+		\text{ad}_{[X,Y]} = [ \text{ad}_X, \text{ad}_Y ]
+		\]
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item By def., $\forall \, B \in G$, $\mathcal{C}_A(B) = ABA^{-1}$, and thus
+		\[
+		\text{Ad}_A(X) = \left. \frac{d}{dt} A\exp{ (tX)  }A^{-1} \right|_{t=0} = AXA^{-1}
+		\]
+		\item \[
+		\begin{gathered}
+		\text{ad}_X(Y) = \left. \frac{d}{dt} \text{Ad}_{\exp{(tX)}}(Y) \right|_{t=0} = \left. \frac{d}{dt} \exp{(tX)} Y \exp{(tX)} \right|_{t=0} = \\
+		= XY - YX = [X,Y] 
+		\end{gathered}
+		\]
+		\item Use Jacobi identity: 
+		\[
+		\begin{gathered}
+		[A,[B,C]] +  [B,[C,A]] +  [C,[A,B]] = 0 \text{ or } \\ 
+		[[A,B],C] = [A,[B,C]] - [B,[A,C]]
+		\end{gathered}
+		\] 
+		\[
+		\begin{gathered}
+		\text{ad}_{[X,Y]}C = [[X,Y],C] = [X,[Y,C]] - [Y,[X,C]] = [X,\text{ad}_YC] - [Y,\text{ad}_XC] \text{ and that } \\ 
+		\text{ad}_X\text{ad}_Y C = [X,[Y,C]] \Longrightarrow \text{ad}_{[X,Y]}C = [\text{ad}_X,\text{ad}_Y ] C
+		\end{gathered}
+		\]
+	\end{enumerate}
+\end{proof}
 
 
 \part{Cohomology; Stoke's Theorem}
@@ -2978,6 +4719,18 @@ Morris W. Hirsch, \textbf{Differential Topology} (Graduate Texts in Mathematics)
 P.-A. Absil, R. Mahony, and R. Sepulchre.  \textbf{Optimization Algorithms on Matrix Manifolds}.  Princeton University Press.  2008.  ISBN 978-0-691-13298-3
 \url{https://press.princeton.edu/titles/8586.html}  
 
+\bibitem{JBaezJMuniain1994}
+John Baez, Javier P Muniain.  \textbf{Gauge Fields, Knots and Gravity} (Series on Knots and Everything), World Scientific Publishing Company (October 24, 1994), ISBN-13: 978-9810220341
+
+\bibitem{JRotman2010}
+Joseph J. Rotman, \textbf{Advanced Modern Algebra} (Graduate Studies in Mathematics), (Book 114), American Mathematical Society; 2 edition, (August 10, 2010), ISBN-13: 978-0821847411
+
+\bibitem{ABaker2011}
+Andrew Baker, ``Representations of Finite Groups'', 07112011
+\url{http://www.maths.gla.ac.uk/~ajb/dvi-ps/groupreps.pdf}
+
+\bibitem{YKosmann-Schwarzbach2010}
+Yvette Kosmann-Schwarzbach, \textbf{Groups and Symmetries: From Finite Groups to Lie Groups}, Springer, 2010. e-ISBN 978-0-387-78866-1 \url{http://www.caam.rice.edu/~yad1/miscellaneous/References/Math/Groups/Groups\%20and\%20Symmetries.pdf}
 
 \bibitem{Pras1996}
 Agostino Pr\'{a}staro.  \textbf{Geometry of PDEs and Mechanics}.  World Scientific Publishing Co.  1996.  QC125.2.P73 1996  530.1'55353--dc20.  

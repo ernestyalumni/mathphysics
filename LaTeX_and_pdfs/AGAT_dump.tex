@@ -871,7 +871,7 @@ gkg^{-1} \in K
 
 if $G/K = $ family of all left cosets of subgroups $K\subset G = $
 \[ 
-= \lbrace gK | g\in G, K = \lbrace gk | k \in K \rbrace 
+= \lbrace gK | g\in G, gK = \lbrace gk | k \in K \rbrace 
 \]
 and 
 
@@ -3180,14 +3180,32 @@ Let
 
 For a D-category, consider these subset of $\text{Obj}(\mathbf{D})$, 
 
-\begin{definition}
+\begin{definition}[Edge set]
 	\textbf{edge set} of $\mathbf{D}$, $E(\mathbf{D})$, 
 \begin{equation}
 \begin{gathered}
-E(\mathbf{D}) := \lbrace A \in \text{Obj}(\mathbf{D}) | \alpha \in \text{Hom}(A, *), \beta \in \text{Hom}(A, *), \alpha, \beta \in \text{Mor}_{1}(\mathbf{D}), \, \alpha \neq \beta \rbrace
+E(\mathbf{D}) := \lbrace A \in \text{Obj}(\mathbf{D}) | \alpha \in \text{Hom}(A, *), \beta \in \text{Hom}(A, *), \alpha, \beta \in \text{Mor}_{1}(\mathbf{D}), \, \alpha \neq \beta \rbrace \text{ i.e. } \\
+E(\mathbf{D}) := \lbrace A \in \text{Obj}(\mathbf{D}) | \alpha, \beta \in \text{Hom}(A, *), \, \alpha, \beta \neq 1, \, \alpha \neq \beta \rbrace
 \end{gathered}
 \end{equation}	
 \end{definition}
+i.e. $\forall \, A \in E(\mathbf{D})$, $\exists \, \alpha, \beta \in \text{Mor}(\mathbf{D})$, \, $\alpha, \beta \neq 1$, s.t. $\alpha, \beta \in \text{Hom}(D, *)$; denote these morphisms by $s_a,t_a$ (this specific choice will define an \textbf{orientation}).
+
+Conversely, given morphism $\gamma \in \text{Mor}(\mathbf{D})$, $\gamma \neq 1$, $\exists \, ! \, A \in E(\mathbf{D})$ s.t. $\gamma = s_a$ or $\gamma = t_a$, i.e. $\gamma \in \text{Hom}(A, *)$. 
+
+\begin{definition}[Vertex set]
+\textbf{vertex set} of $\mathbf{D}$:
+\begin{equation}
+ V(\mathbf{D}) = (E(\mathbf{D}))^c
+\end{equation} 
+\end{definition}
+
+\begin{definition}[Orientation]
+	Orientation of D-category $\mathbf{D}$ is a pair of functions $(s,t)$ between sets.
+	
+\end{definition}
+
+
 	
 \subsection{Blog (Running log)}
 
