@@ -3138,6 +3138,84 @@ full subcategory $\mathbf{A}'$ of $\mathbf{A}$ saturated if $A \in \mathbf{A}$ b
 	\textbf{monoid} $M$ (set endowed with internal product with associative and unital law) is nothing but a category with only 1 object (to $M$, associate category $\mathbf{M}$, with single object $A$, and morphisms $\text{Hom}_{\mathbf{M}}(A,A) = M$)
 \end{definition}
 
+\section{Limits}
+
+\subsection{Pullback}
+
+\begin{definition}
+	For some category $\mathbf{A}$, and for 
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+	{
+		& Y \\
+		X & Z \\
+	};
+	\path[->]
+	(m-1-2) edge node [right] {$t$} (m-2-2)
+	(m-2-1) edge node [below] {$s$} (m-2-2);
+	\end{tikzpicture}
+	
+	$X,Y,Z \in \text{Obj}\mathbf{A}$.  
+	
+	$\begin{aligned} & \quad \\
+	& s : X \to Z \\
+	& t: Y \to Z \end{aligned}$ ; \qquad \, $s,t \in \text{Mor}\mathbf{A}$
+	
+	Then the \textbf{pullback} or ``pullback square'' consists of $P \in \text{Obj}\mathbf{A}$, $\begin{aligned} & \quad \\
+	& \pi_1 : P \to X \\
+	& \pi_2: P \to Y \end{aligned}$ s.t. 
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+	{
+		P & Y \\
+		X & Z \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$\pi_2$} (m-1-2)
+	edge node [auto] {$\pi_1$} (m-2-1)
+	(m-1-2) edge node [auto] {$t$} (m-2-2)
+	(m-2-1) edge node [auto] {$s$} (m-2-2);
+	\end{tikzpicture}
+	
+	commutes and s.t. $\forall \, $ commutative square in $\mathbf{A}$ 
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+	{
+		A & Y \\
+		X & Z \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$f_2$} (m-1-2)
+	edge node [auto] {$f_1$} (m-2-1)
+	(m-1-2) edge node [auto] {$t$} (m-2-2)
+	(m-2-1) edge node [auto] {$s$} (m-2-2);
+	\end{tikzpicture}
+	
+	then $\exists \, ! \, f: A \to P$ s.t. 
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+	{
+		A &   & \\ 
+		& P & Y \\
+		& X & Z \\
+	};
+	\path[->]
+	(m-2-2) edge node [above] {$\pi_2$} (m-2-3)
+	edge node [auto] {$\pi_1$} (m-3-2)
+	(m-2-3) edge node [auto] {$t$} (m-3-3)
+	(m-3-2) edge node [auto] {$s$} (m-3-3)
+	(m-1-1) edge node [above] {$f_2$} (m-2-3)
+	edge node [above] {$f$} (m-2-2)
+	edge node [below] {$f_1$} (m-3-2);
+	\end{tikzpicture}
+	
+	
+\end{definition}
+
 \section{Applications of Category Theory on Hybrid Systems}
 
 cf. Ames (2006) \cite{Ames2006}.
@@ -3209,10 +3287,69 @@ Conversely, given morphism $\gamma \in \text{Mor}(\mathbf{D})$, $\gamma \neq 1$,
 	
 \subsection{Blog (Running log)}
 
- 
+\part{Category Theory and Databases} 
 	
+\section{Types}
+
+\subsection{Data models for nested arrays, dictionaries, and tabular data}
+
+\begin{definition}[Container types]
+	\textbf{Container types} - arrays, key/value pair dictionaries (or: hashes, association lists)
+\end{definition}
+
+\begin{definition}[atomic types]
+	basic atomic types (e.g. numbers, strings, Booleans)
+\end{definition}
+
+\begin{definition}[nesting]
+	\textbf{nesting}: containers may contain atomic values as well as other containers.
+\end{definition}
+
+\begin{definition}[flat]
+	Tabular data model (i.e. tables) is \textbf{flat}: field contains \textbf{atomic} values.
+\end{definition}
+cf. Number 2, Data Models and Languages, Grust and Duta (2017) \cite{GrDu2017}
+
+
+\subsection{Typed Data, Untyped data, in the relational data model}
+
+\begin{definition}
+	Untyped data models - text, JSON, and tabular data models (e.g. CSV) do \textbf{not} enforce values (container or atomic) to be of specific types. 
 	
+	These data models are thus referred to as being \textbf{untyped}.
+\end{definition}
+cf. Grust and Duta (2017) \cite{GrDu2017}
+
+
+
+
+\begin{definition}[Types]
+	type specification $:= $ function $\pi : U \to \mathbf{DT}$ (Spivak's notation) $ \equiv \pi : U \to DT$, $U, DT \in \textbf{Set}$.
 	
+	set $DT \equiv $ set of data types for $\pi$, set $U \equiv $ domain bundle for $\pi$.
+	
+	$\forall \, T \in DT$, preimage $\pi^{-1}(T) \subset U$, \, $\pi^{-1}(T) \equiv $ domain of $T$, $x \in \pi^{-1}(T) \equiv $ object of type $T$.
+\end{definition}
+	cf. Spivak (2009) \cite{Spiv2009}
+
+
+\begin{definition}[type specification]
+	If $v$ has type $T$, $\pi(v) = T$, $\Longrightarrow v \in \pi^{-1}(T)$
+\end{definition}
+
+\section{Relational Data Model}
+
+	\textbf{relational data model} maybe understood as a typed variant of the tabular data model. 
+	\begin{enumerate}
+		\item $\exists \, $ only 1 container type: \textbf{table} (or: multisets) \textbf{ of rows}
+		\item all rows are of same \textbf{row type} which is declared when table is created.
+		\item row type \textbf{consists} of sequence of \textbf{atomic types}.
+	\end{enumerate}
+
+In the relational data mode, data is exclusively organized in \textbf{relations}, i.e. sets of tuples of data. Data in each \textbf{attribute} (tuple component) is \textbf{atomic}, and of declared \textbf{type}.
+
+
+
 
 \part{Reading notes on Cox, Little, O'Shea's \emph{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}}
 
@@ -7123,9 +7260,16 @@ David A. Cox.  John Little. Donal O'Shea. \textbf{Using Algebraic Geometry}.  Se
 \bibitem{CLS2015}
 David Cox, John Little, Donal O'Shea. \textbf{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}, Fourth Edition, Springer
 
+\bibitem{GrDu2017}
+Torsten Grust, Christian Duta. \emph{Datenbanksysteme I}. Winter 2017-2018. Eberhard Karls Universit\"{a}t T\"{u}bingen.  \url{https://www-db.informatik.uni-tuebingen.de/teaching/DatenbanksystemeIWS2017-2018.html}
+
+
+\bibitem{Spiv2009}
+David I. Spivak. \emph{Simplicial Databases}. \href{https://arxiv.org/abs/0904.2012}{arXiv: 0904.2012v1} [cs.DB] 13 Apr 2009.
+
+
 \bibitem{FrSc2007} 
 Franz Schwabl. \textbf{Quantum Mechanics}. Springer-Verlag Berlin Heidelberg. 2007. 4th Edition. ISBN 978-3-540-71933-5
-
 
 \bibitem{Scho2008}  
 Schottenloher, Martin.  \textbf{A Mathematical Introduction to Conformal Field Theory}.  Springer, 2008.  
