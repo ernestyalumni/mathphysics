@@ -3321,21 +3321,74 @@ cf. Number 2, Data Models and Languages, Grust and Duta (2017) \cite{GrDu2017}
 cf. Grust and Duta (2017) \cite{GrDu2017}
 
 
-
+cf. Number 4, "The Relational Data Model", Grust and Duta (2017) \cite{GrDu2017}
 
 \begin{definition}[Types]
+Let $\mathbb{T} \equiv $ set of all data types (built-in and user-defined).  \\
+$\forall \, $ value $v\in  \mathbb{V}$ stored in a relation cell must be of type $t\in \mathbb{T}$. \\
+e.g. When PostgreSQL starts, $\mathbb{T}$ initialized as 
+\begin{equation}
+ \mathbb{T} = \lbrace \texttt{boolean}, \texttt{integer}, \texttt{text}, \texttt{bytea}, \dots \rbrace 
+\end{equation}
+Consider category \textbf{Text} s.t. $\text{Obj}(\mathbf{Types}) \equiv DT \in \text{Obj}(\textbf{Set})$. Then $\mathbb{T} \equiv DT$, denoting \emph{data type}.
+\end{definition}
+
+\begin{definition}[Values]
+$\forall \, v \in \mathbb{V}$ stored in a relation cell, $v$ is an element of the set of all values $\mathbb{V}$. 
+
+in the relational data model, all values $v\in \mathbb{V}$ are "atomic."
+
+\[
+\mathbb{V} = \lbrace \texttt{true}, \texttt{false}, 0, -1, 1, -2, 2 , \dots \rbrace
+\]	
+
+Here, I'll use the notation $V$ to denote $\mathbb{V}$, the set of all values.
+\end{definition}
+
+\begin{definition}[Domains]
+	$\forall \, t \in DT$, its domain $\text{dom}(t) := $ set of all values of type $t$ (i.e. $\text{dom}(\cdot)$ is a function with signature 
+	\[
+	DT \to 2^V
+	\])
+	e.g. $\text{dom}(\texttt{integer}) = \lbrace 0 , -1, 1, -2, 2, \dots \rbrace $ \\
+	$\text{dom}(\texttt{boolean}) = \lbrace \texttt{true}, \texttt{false} \rbrace$ 
+\end{definition} 
+
+\begin{definition}[type specification]
 	type specification $:= $ function $\pi : U \to \mathbf{DT}$ (Spivak's notation) $ \equiv \pi : U \to DT$, $U, DT \in \textbf{Set}$.
 	
 	set $DT \equiv $ set of data types for $\pi$, set $U \equiv $ domain bundle for $\pi$.
 	
-	$\forall \, T \in DT$, preimage $\pi^{-1}(T) \subset U$, \, $\pi^{-1}(T) \equiv $ domain of $T$, $x \in \pi^{-1}(T) \equiv $ object of type $T$.
+	$\forall \, t \in DT$, preimage $\pi^{-1}(t) \subset U$, \, $\pi^{-1}(t) \equiv $ domain of $t$, $x \in \pi^{-1}(t) \equiv $ object of type $T$.
+
+	To reconcile Grust and Duta (2017) \cite{GrDu2017}'s definition of types above, use this notation:
+	\begin{equation}
+	\boxed{
+	\begin{gathered}
+	\textbf{ type specification } \begin{aligned} & \quad \\ 
+	& \pi : V \to DT \\ 
+	& \pi(v) \in DT \end{aligned} \\
+	\text{dom} \equiv \pi^{-1}: DT \to V, \text{ i.e. } \\
+	\pi^{-1}(t) \subset t \qquad \, \forall \, t \in DT  
+	\end{gathered}}
+	\end{equation}
 \end{definition}
 	cf. Spivak (2009) \cite{Spiv2009}
 
-
-\begin{definition}[type specification]
+\begin{corollary}[type specification]
 	If $v$ has type $T$, $\pi(v) = T$, $\Longrightarrow v \in \pi^{-1}(T)$
-\end{definition}
+\end{corollary}
+
+\begin{proposition}[\texttt{CREATE DOMAIN}]
+	Consider new type $t'$ (SQL command \texttt{CREATE DOMAIN}) so 
+	\begin{equation}
+	\begin{gathered}
+	t' \in DT \\
+	\pi^{-1}(t') \subseteq \pi^{-1}(t)
+	\end{gathered}
+	\end{equation}
+\end{proposition}
+
 
 \section{Relational Data Model}
 
@@ -3348,7 +3401,260 @@ cf. Grust and Duta (2017) \cite{GrDu2017}
 
 In the relational data mode, data is exclusively organized in \textbf{relations}, i.e. sets of tuples of data. Data in each \textbf{attribute} (tuple component) is \textbf{atomic}, and of declared \textbf{type}.
 
+\subsection{Schemata and Relations}
 
+In the relational data model, each \textbf{attribute} of a table has a \textbf{declared type}.
+
+If attribute has declared type $t$, the RDBMS will exclusively store values $v$ in that attribute s.t. 
+\begin{enumerate}
+	\item $v \in \text{dom}(t)$ i.e. $v \in \pi^{-1}(t)$
+	\item $v$ can successfully be casted to type $t$
+\end{enumerate}
+
+\subsection{Attributes (Columns)}
+
+Let $\mathbb{A}$ denote set of attribute names of all relations.
+
+\subsection{Attribute types}
+$\forall \, $ attribute $a\in \mathbb{A}$ has declared (attribute) type $\text{type}(a) = t\in DT$ (i.e. $\text{type}(\cdot)$ is a function with signature $\mathbb{A} \to \mathbb{T}$).
+
+Consider Definition 2.2.3 of Spivak (2009) \cite{Spiv2009}, 
+
+\begin{definition}[simple schema of type $\pi$, $(C,\sigma)$]
+	Let type specification $\pi :V \to DT$. 
+	
+	\textbf{simple schema} of type $\pi$ consists of pair $(C, \sigma)$ where $C$ is a finite (totally) ordered set and function $\sigma : C \to DT$.  $C \equiv $ \textbf{column set} or \textbf{set of attributes} for $\sigma$ and $\pi$ as \emph{type specification for} $\sigma$.
+\end{definition}
+
+Compare the notation above. Conclude that
+\[
+\begin{gathered}
+C \equiv \mathbb{A}, \quad \, c \equiv a \\
+\sigma(c) \equiv \text{type}(a)
+\end{gathered}
+\]
+
+Here, choose the following notation:
+\[
+\boxed{\begin{gathered}
+\sigma : C \to DT \\
+\pi^{-1}: DT \to V \\
+\pi^{-1} \circ \sigma \equiv \text{val} \equiv \text{set of (admissable) attribute values for attribute (column) $a$ ($c$)}
+\end{gathered} }
+\]
+Also, summarize our definitions with these commutative diagrams:
+\begin{equation}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	V     \\
+	DT  \\
+};
+\path[->]
+(m-1-1) edge node [left] {$\pi$} (m-2-1)
+;
+\end{tikzpicture}  \qquad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	v     \\
+	t  \\
+};
+\path[|->]
+(m-1-1) edge node [left] {$\pi$} (m-2-1)
+;
+\end{tikzpicture}  \qquad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	V &  \pi^{-1}(DT)  \\
+	DT &  \\
+};
+\path[left hook->]
+(m-1-2) edge node [above] {$i$} (m-1-1)
+;
+\path[->] 
+(m-2-1) edge node [left] {$i \circ \pi^{-1}$} (m-1-1)
+edge node [left] {$\pi^{-1}$} (m-1-2)
+;
+\end{tikzpicture} \qquad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	V &  V_t \subseteq V  \\
+	t &  \\
+};
+\path[left hook->]
+(m-1-2) edge node [above] {$i$} (m-1-1)
+;
+\path[|->] 
+(m-2-1) edge node [left] {$\pi^{-1}$} (m-1-2)
+;
+\end{tikzpicture} \\
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	V &  \pi^{-1}(DT)  \\
+	DT &  C \\
+};
+\path[left hook->]
+(m-1-2) edge node [above] {$i$} (m-1-1)
+;
+\path[->] 
+(m-2-1) edge node [left] {$i \circ \pi^{-1}$} (m-1-1)
+edge node [left] {$\pi^{-1}$} (m-1-2)
+(m-2-2) edge node [right] {$\pi^{-1} \circ \sigma \equiv \text{dom} \circ \text{type} $} (m-1-2)
+edge node [above] {$\sigma$} (m-2-1)
+;
+\end{tikzpicture} \qquad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	V &  \pi^{-1}(\sigma(c_i)) = V_{c_i}  \\
+	\sigma(c_i) \equiv t_i & c_i \\
+};
+\path[left hook->]
+(m-1-2) edge node [above] {$i$} (m-1-1)
+;
+\path[|->] 
+(m-2-1) edge node [left] {$\pi^{-1}$} (m-1-2)
+(m-2-2) edge node [above] {$\sigma$} (m-2-1)
+edge node [right] {$\pi^{-1} \circ \sigma$} (m-1-2)
+;
+\end{tikzpicture} 
+\end{gathered}
+\end{equation}
+
+
+\begin{definition}[Relation Schema]
+	A relation schema associates a relation (table?) name $R$ with its set of declared attributes (a subset of $\mathbb{A}$)
+	\begin{equation}
+	(R, \lbrace a_1, \dots a_n \rbrace)
+	\end{equation}
+Common notation: $R(a_1, \dots a_n)$, so that $R$ is called a $n$-ary relation.
+
+More notation: $\text{sch}(R) = \lbrace a_1, \dots a_n \rbrace$, and $\text{deg}(R) = n$ (degree).
+		
+\textbf{Relational database schema}: a non-empty finite set of relation schemata makes a \textbf{relational database schema}
+\begin{equation}
+\lbrace (R_1, \alpha_1), (R_2, \alpha_2) , \dots \rbrace 
+\end{equation}
+where $\alpha_i \subseteq \mathbb{A}_i$. In a relational database schema, the relation names $R_i$ are unique.		
+\end{definition}
+
+\begin{definition}[Tuple]
+	Given relation (i.e. table) $R(a_1, \dots , a_n)$, a \textbf{tuple} $t$ of $R$ maps attributes to values, i.e. $t$ is a function with signature $\lbrace a_1, \dots a_n \rbrace \to V$ with 
+	\[
+	\forall \, a \in \lbrace a_1 , \dots , a_n \rbrace : t(a) \in \text{val}(a)
+	\]
+	Common notation for $t(a)$ is $t.a$.
+\end{definition}
+
+Recall that $\text{val}(a) := \text{dom}(\text{type}(a))$.
+
+Take note that \textbf{tuple}, defined by Grust and Duta (2017) \cite{GrDu2017}, is the \emph{same} as \textbf{record} or \textbf{row} $r$, defined by Spivak (2009) \cite{Spiv2009}.
+
+\begin{definition}[record or row]
+	\textbf{record} or \textbf{row} on $(C, \sigma)$
+	\begin{equation}
+	\begin{aligned}
+	& r: C \to V_{\sigma} \equiv V_c \\ 
+	& r(c) \equiv v_{rc} \in \pi^{-1}\circ \sigma(c)
+	\end{aligned}
+	\end{equation}
+\end{definition} 
+
+The set of tuples (rows) stored in a relation (table) is expected to change frequently.
+
+\begin{definition}[Relation instance (state)]
+	The current finite set of tuples $t_i \equiv r_i$ of relation (table) $R(a_1, \dots a_n) \equiv (A, \sigma)$ is called the relation's \textbf{instance} (or \textbf{state}).
+
+\[
+\text{inst}(R) = \lbrace t_1 , t_2 , \dots t_m \rbrace \Longrightarrow \equiv \Gamma^{\pi}(\sigma) \equiv \Gamma(A, \sigma)
+\]
+
+Database (instance) state - The database instance comprises instances of all its relations.
+\[
+= \lbrace \Gamma(A^i, \sigma^i) \rbrace_i
+\]
+\end{definition} 
+
+cf. Number 5, "Constraints" of Grust and Duta (2017) \cite{GrDu2017}.
+
+\subsection{Key constraints}
+
+\begin{definition}[Key]
+Key of a table $R(a_1, \dots, a_n) \equiv (\alpha, \sigma) \equiv (\alpha, \text{type}) :=$ set of columns $K \subseteq \lbrace a_1, \dots, a_n \rbrace$ that unique identifies rows of $R$:
+\[
+\forall \, t, u \in \text{inst}(R), \, t.K = u.K \Longrightarrow t = u
+\]
+Read: "If 2 rows agree on the columns in $K$, they are indeed the same row."
+
+I will give the following change of notation a try:
+\begin{equation}
+\forall \, r_i , r_j \in \lbrace r_i \rbrace_i^{\tau}, \, \text{ if } r_i(K) = r_j(K), \text{ then } r_i = r_j
+\end{equation}
+\end{definition} 
+
+\begin{equation}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A &  DT  \\
+	V_A &  \\
+};
+\path[->] 
+(m-1-1) edge node [above] {$\sigma$} (m-1-2)
+edge node [left] {$r$} (m-2-1)
+(m-2-1) edge node [right] {$\pi^{-1}$} (m-1-2)
+;
+\end{tikzpicture} \qquad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	a &  t  \\
+	V_A &  \\
+};
+\path[|->] 
+(m-1-1) edge node [above] {$\sigma$} (m-1-2)
+edge node [left] {$r$} (m-2-1)
+(m-2-1) edge node [right] {$\pi^{-1}$} (m-1-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\end{equation}
+
+
+
+
+
+
+Here's a "dictionary" between the definitions so far for relational databases and familiar terms for tables filled with data: cf. 08-30, Week 1 slides of Yang (2012) \cite{Yang2012}.
+
+database - collection of relations (or tables) \\
+relation - table \\
+attributes - columns \\
+tuple - row - record \\
+relation schema - heading (heading for a table?, Grust and Duta (2017) \cite{GrDu2017}) \\
+relation contents - body (body of a table?, Grust and Duta (2017) \cite{GrDu2017})
+
+\begin{tabular}{l c r}
+	CSV & Relational Model & SQL \\
+	& Domain & Domain \\ 
+	& Type & Type \\
+	& Schema & Schema \\
+	File & Relation & Table \\
+	Line & Tuple & Row \\
+	Field & Attribute & Column
+\end{tabular}
+
+Indeed, even Grust and Duta (2017) \cite{GrDu2017} remarks: "You will find that textbooks, papers, practitioners, academics, these slides, and even PostgreSQL use a mixture of terminology. Deal with it."
+
+
+Database Queries and Constraints via Lifting Problems. David I. Spivak.
+\url{https://arxiv.org/pdf/1202.2591.pdf}
 
 
 \part{Reading notes on Cox, Little, O'Shea's \emph{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}}
@@ -7266,6 +7572,11 @@ Torsten Grust, Christian Duta. \emph{Datenbanksysteme I}. Winter 2017-2018. Eber
 
 \bibitem{Spiv2009}
 David I. Spivak. \emph{Simplicial Databases}. \href{https://arxiv.org/abs/0904.2012}{arXiv: 0904.2012v1} [cs.DB] 13 Apr 2009.
+
+\bibitem{Yang2012}
+Jun Yang. \emph{CompSci 316}: \emph{Introduction to Database Systems}. Fall 2012. Duke University. \url{https://www2.cs.duke.edu/courses/fall12/compsci316/index.html}
+
+
 
 
 \bibitem{FrSc2007} 
