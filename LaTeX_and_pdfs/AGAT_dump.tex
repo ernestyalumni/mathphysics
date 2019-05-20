@@ -3565,6 +3565,16 @@ Take note that \textbf{tuple}, defined by Grust and Duta (2017) \cite{GrDu2017},
 	\end{equation}
 \end{definition} 
 
+SQL \texttt{CREATE TABLE} command prescribes an order of the attributes of a relation. This deviates from relational data model's tuple model (name-to-value mapping).
+
+\begin{definition}[Row]
+	Given SQL table $R(a_1, \dots, a_n) \equiv R(\alpha) \equiv \tau$, a row $r$ of $\tau$ is an ordered sequence ($a_i$ is called the $i$th column)
+	\begin{equation}
+	r = (v_1, \dots, v_n) \in \text{val}(a_1) \times \dots \times \text{val}(a_n) \equiv \pi^{-1} \circ \sigma(a_1) \times \dots \times \pi^{-1} \circ \sigma(a_n)
+	\end{equation}
+	Thus, $r$ is a function $\lbrace 1, \dots , n \rbrace \to V$ with $\forall \, i \in \lbrace 1 , \dots , n \rbrace$, $r(i) \in \pi^{-1} \circ \sigma(a_i)$
+\end{definition}
+
 The set of tuples (rows) stored in a relation (table) is expected to change frequently.
 
 \begin{definition}[Relation instance (state)]
@@ -3580,7 +3590,21 @@ Database (instance) state - The database instance comprises instances of all its
 \]
 \end{definition} 
 
+\subsection{Constraints}
+
 cf. Number 5, "Constraints" of Grust and Duta (2017) \cite{GrDu2017}.
+
+\begin{definition}[Constraints]
+	An \textbf{integrity constraints} specifies conditions which table states have to satisfy at all times. 
+	
+	Current set of constraints, $\mathbb{C}$, is integral part of database schema:
+	\[
+	(\lbrace (R_1, \alpha_1), (R_2, \alpha_2), \dots  \rbrace, \mathbb{C})
+	\]
+	Set of constraints $\mathbb{C} \equiv$ set of morphisms of table $\tau \equiv \lbrace (R_1,\alpha_1), (R_2, \alpha_2), \dots \rbrace $, $C \subset \text{Mor}{\tau}$. 
+\end{definition} 
+
+RDBMS will refuse table state changes that violate any constraint $c\in C$.
 
 \subsection{Key constraints}
 
