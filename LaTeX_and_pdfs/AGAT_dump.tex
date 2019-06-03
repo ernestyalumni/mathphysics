@@ -3138,6 +3138,105 @@ full subcategory $\mathbf{A}'$ of $\mathbf{A}$ saturated if $A \in \mathbf{A}$ b
 	\textbf{monoid} $M$ (set endowed with internal product with associative and unital law) is nothing but a category with only 1 object (to $M$, associate category $\mathbf{M}$, with single object $A$, and morphisms $\text{Hom}_{\mathbf{M}}(A,A) = M$)
 \end{definition}
 
+cf. Def. 1.2.5 of Kashiwara and Schapira (2006) \cite{KaSch2006}.
+
+\begin{definition}[Morphisms as a category]
+	Let category $\mathcal{C} \equiv \mathbf{A}$.
+	
+	$\text{Mor}(\mathbf{A})$ is a category.
+	
+	$\text{Obj}(\text{Mor}(\mathbf{A})) = \text{Mor}\mathbf{A}$ (objects of category $\text{Mor}(\mathbf{A})$ are morphisms in $\mathbf{A}$).
+	
+	Let $\begin{aligned} & \quad \\ 
+	& f:X \to Y \\
+	& g: X' \to Y'\end{aligned}$, $f,g \in \text{Mor}(\mathbf{A})$ (i.e. $\begin{aligned} & \quad \\ 
+	& f \in \text{Hom}(X,Y) \\ 
+	&g \in \text{Hom}(X', Y') \end{aligned}$, for $X, Y, X', Y' \in \text{Obj}(\mathbf{A})$)
+	
+	Then
+	\[
+	\text{Hom}_{\text{Mor}(\mathbf{A})}(f,g) = \lbrace u :X \to X', v: Y \to Y'; g \circ u = v \circ f \rbrace
+	\]
+	Composition and identity in $\text{Mor}(\mathbf{A})$ are the obvious ones.
+	
+	So 
+	\[
+	\begin{gathered} 
+	\text{Obj}(\text{Mor}(\mathbf{A})) = \text{Mor}(\mathbf{A}) \\
+	\text{Mor}(\text{Mor}(\mathbf{A})) = \bigcup_{f,g \in \text{Mor}(\mathbf{A})} \text{Hom}(f,g) = \bigcup_{f,g \in \text{Mor}(\mathbf{A}) } \lbrace u : X\to X', v: Y \to Y' ; g \circ u = v \circ f \rbrace 
+	\end{gathered} 
+	\]
+\[
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	X & Y \\
+	X' & Y' \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+edge node [auto] {$u$} (m-2-1)
+(m-1-2) edge node [auto] {$v$} (m-2-2)
+(m-2-1) edge node [auto] {$g$} (m-2-2);
+\end{tikzpicture}
+\]
+\end{definition}
+
+cf. Def. 1.2.6 of Kashiwara and Schapira (2006) \cite{KaSch2006}.
+
+\begin{definition}
+	\begin{enumerate}
+		\item object $P \in \mathcal{C} \equiv \mathbf{A}$ is called \emph{initial} if $\forall \, X \in \mathbf{A}$, ($\equiv \forall \, x \in \text{Obj}(\mathbf{A})$), $\text{Hom}_{\mathbf{A}}(P, X) \simeq \lbrace \text{pt} \rbrace$. \\
+		(Denote by $\emptyset_{\mathbf{A}}$ an \emph{initial object} in $\mathbf{A}$). \\
+		(Note that if $P_1$ and $P_2$ are initial, then $\exists \, !$ isomorphism $P_1 \simeq P_2$)
+		\item $P$ is terminal in $\mathbf{A}$ if $P$ is initial in $\mathbf{A}^{\text{op}}$, i.e. 
+		
+		$\forall \, X \in \mathbf{A}$, $\text{Hom}_{\mathbf{A}}(X, P) \simeq \lbrace \text{pt} \rbrace$. 
+		
+		Denote $\text{pt}_{\mathbf{A}}$ a terminal object in $\mathbf{A}$. 
+		\item $P$ is zero ($0$) object if it's both initial and terminal. 
+		
+		Such a $P$ is denoted by $0$.
+		
+		If $\mathbf{A}$ has a zero object, $\forall \, $ object $X, Y \in \mathbf{A} \equiv \text{Obj}\mathbf{A}$, the morphism obtained as composition $X\to 0 \to Y$ is still denoted by $0: X\to Y$.
+		
+		(Note that composition of $0:X \to Y$, and any morphism $f:Y \to Z$ is $0:X \to Z$)
+	\end{enumerate}
+\end{definition}
+
+cf. Example 1.2.7 of Kashiwara and Schapira (2006) \cite{KaSch2006}. 
+Example 
+\begin{enumerate}
+	\item[(i)] In category $\mathbf{Set}$, $\emptyset$ initial, $\lbrace \text{pt} \rbrace$ terminal. 
+	\item[(ii)] Zero module $0$ is zero object in $\text{Mod}(R)$.
+\end{enumerate}
+
+Notation 1.2.8 of Kashiwara and Schapira (2006) \cite{KaSch2006}:
+\begin{enumerate}
+	\item $\mathbf{Pt} \equiv $ category with a single object and a single morphism (the identity of this object)
+	\item $\emptyset \equiv $ empty category with no objects (hence, no morphisms)
+	\item $\bullet \to \bullet \equiv$ category which consists of 2 objects, say $a,b$, and 1 morphism, $a\to b$, other than $\text{id}_a, \text{id}_b \equiv 1_a, 1_b$. Denote this category by $\mathbf{Arr}$.  
+\end{enumerate}
+
+cf. Example 1.2.9 of Kashiwara and Schapira (2006) \cite{KaSch2006}. 
+
+Let $R$ be a ring. Let $N\in \text{Mod}(R^{\text{op}})$, $M\in \text{Mod}(R)$.
+
+Category $\mathbf{C}$: 
+
+$\text{Obj}\mathbf{C} \ni (f, L)$, where $L\in \text{Mod}(\mathbb{Z})$, $f$ bilinear map $f: N \times M \to L$ (i.e. it's $\mathbb{Z}$-bilinear and satisfies
+\[
+f(na, m) = f(n,am), \quad \, \forall \, a \in R
+\])
+
+Morphism from $f:N \times M \to L$ to $g: N\times M$ is a linear map $h:L\to K$ s.t. $h\circ f =g$. 
+
+Since any bilinear map $f: N\times M \to L$ (i.e. any object of $\mathbf{C}$) factorizes uniquely through
+\[
+u  : N\times M \to N \otimes_R M
+\]
+object $(u, N \otimes_R M)$ is initial in $\mathbf{C}$
+
 \section{Limits}
 
 \subsection{Pullback}
@@ -3651,10 +3750,6 @@ edge node [left] {$r$} (m-2-1)
 \end{equation}
 
 
-
-
-
-
 Here's a "dictionary" between the definitions so far for relational databases and familiar terms for tables filled with data: cf. 08-30, Week 1 slides of Yang (2012) \cite{Yang2012}.
 
 database - collection of relations (or tables) \\
@@ -3677,8 +3772,34 @@ relation contents - body (body of a table?, Grust and Duta (2017) \cite{GrDu2017
 Indeed, even Grust and Duta (2017) \cite{GrDu2017} remarks: "You will find that textbooks, papers, practitioners, academics, these slides, and even PostgreSQL use a mixture of terminology. Deal with it."
 
 
+cf. Slides Number 7, "Referential Integrity" of Grust and Duta (2017) \cite{GrDu2017}.
+
+\begin{definition}[Foreign Keys]
+	Let $(S, \alpha)$ and $(T, \beta)$ denote 2 relational schemata (not necessarily distinct), \\
+	where $K = \lbrace b_{j_1}, \dots , b_{j_k} \rbrace \subseteq \beta$ is the primary key of $T$. \\
+	Let $F = \lbrace a_{i_1}, \dots , a_{i_k} \rbrace \subseteq \alpha $ with $\text{type}(a_{i_k}) = \text{type}(b_{j_k})$, $h = 1, \dots, k$. 
+	
+	$F$ is a \textbf{foreign key} in $S$ \textbf{referencing} $T$, if 
+	\[
+	\forall \, s \in \text{inst}(S) : \exists \, t \in \text{inst}(T) : s.F = t.K
+	\]
+\end{definition} 
+The $\forall$ and $\exists $ condition validates the assumption of $K$ being a key in target $T$, i.e. that there \textbf{exists a row} in table $T$ whose $K$ identifier matches that of table $S$
+
+$K$ being a key in target $T$ validates the assumption that there is \textbf{no more than one row} of in a table $T$ with a matching key $K$.
+
+In general, \textbf{ a foreign key $F$ is not a key} in source table $S$. 2 rows $s_1, s_2 \in \text{inst}(S)$ with $s_1.F = s_2.F$ can refer to the same row in target $T$.
+
+
+
 Database Queries and Constraints via Lifting Problems. David I. Spivak.
 \url{https://arxiv.org/pdf/1202.2591.pdf}
+
+\section{Databases and Categories}
+
+cf. Spivak (2012) \cite{Spiv2012}.
+
+$A \xrightarrow{\text{FK}} B$, \, $A, B \in \text{Obj}(\mathbf{DB})$
 
 
 \part{Reading notes on Cox, Little, O'Shea's \emph{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}}
@@ -7596,6 +7717,9 @@ Torsten Grust, Christian Duta. \emph{Datenbanksysteme I}. Winter 2017-2018. Eber
 
 \bibitem{Spiv2009}
 David I. Spivak. \emph{Simplicial Databases}. \href{https://arxiv.org/abs/0904.2012}{arXiv: 0904.2012v1} [cs.DB] 13 Apr 2009.
+
+\bibitem{Spiv2012}
+David I. Spivak. \emph{Categorical Databases}. Presented on 2012/01/13. \url{http://math.mit.edu/~dspivak/informatics/talks/CTDBIntroductoryTalk}
 
 \bibitem{Yang2012}
 Jun Yang. \emph{CompSci 316}: \emph{Introduction to Database Systems}. Fall 2012. Duke University. \url{https://www2.cs.duke.edu/courses/fall12/compsci316/index.html}
