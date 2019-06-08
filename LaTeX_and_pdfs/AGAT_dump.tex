@@ -3076,15 +3076,23 @@ Hence $f$ epimorphism iff $\forall \, $ parallel morphisms $\begin{aligned} & \q
 	$f$ monomorphism iff $f \circ : \text{Hom}_{\mathbf{A}}(C,A) \to \text{Hom}_{\mathbf{A}}(C,B)$ injective \, $\forall \, C \in \text{Obj}(\mathbf{A})$, i.e.
 	\begin{equation}
 	\begin{gathered}
+\begin{gathered} 
 	\text{Hom}_{\mathbf{A}}(C, A) \xrightarrow{f \circ } \text{Hom}_{\mathbf{A}}(C,B) \\
- g_1 = g_2 \xmapsto{f \circ} f\circ g_1 = f\circ g_2
-\end{gathered}
+ g_1 , g_2 \xmapsto{f \circ} f\circ g_1 , f\circ g_2
+\end{gathered}, \\ \text{ then } \\
+f \circ \text{ is injective if } \\
+	f \circ g_1 = f \circ g_2 \Longrightarrow g_1 = g_2
+\end{gathered} 
 	\end{equation}
 $f$ epimorphism iff map $\circ f : \text{Hom}_{\mathbf{A}}(B,C) \to \text{Hom}_{\mathbf{A}}(A,C)$ injective $\forall \, C \in \text{Obj}(\mathbf{A})$
 \begin{equation}
 \begin{gathered}
+\begin{gathered} 
 \text{Hom}_{\mathbf{A}}(B, C) \xrightarrow{\circ f} \text{Hom}_{\mathbf{A}}(A,C) \\
-g_1 = g_2  \xmapsto{ \circ f} g_1\circ f = g_2 \circ f
+g_1 , g_2  \xmapsto{ \circ f} g_1\circ f , g_2 \circ f
+\end{gathered}, \\ \text{ then } \\
+\circ f \text{ is injective if } \\ 
+g_1 \circ f = g_2 \circ f \Longrightarrow g_1 = g_2
 \end{gathered}
 \end{equation}
 \end{proposition}
@@ -3237,6 +3245,118 @@ u  : N\times M \to N \otimes_R M
 \]
 object $(u, N \otimes_R M)$ is initial in $\mathbf{C}$
 
+\section{Functors}
+
+cf. Def. 1.2.10 of Kashiwara and Schapira (2006) \cite{KaSch2006}. 
+
+\begin{definition}[(covariant) Functor]
+\begin{enumerate}
+	\item (covariant functor) Let categories $\mathbf{C}$, $\mathbf{D}$. \\
+(covariant) \textbf{functor} $F: \mathbf{C} \to \mathbf{D}$ consists of 
+\begin{itemize}
+	\item map $F: \text{Obj}(\mathbf{C}) \to \text{Obj}(\mathbf{D})$ (i.e. $\forall \, C \in \text{Obj}(\mathbf{C})$, $F(C) \in \text{Obj}(\mathbf{D})$), and 
+	\item maps $F: \text{Hom}_{\mathbf{C}}(X,Y) \to \text{Hom}_{\mathbf{D}}(F(X), F(Y))$, \, $\forall \, X,Y \in \text{Obj}(\mathbf{C})$ s.t.
+	\begin{equation}
+	\begin{gathered}
+	F(1_X) = 1_{F(X)} \qquad \, \forall \, X \in \mathbf{C} \\
+	F(g\circ f) = F(g) \circ F(f) \qquad \, \forall \, \begin{aligned} & \quad \\ 
+	& f: X \to Y \\
+	& g: Y \to Z \end{aligned}, \qquad \, X,Y,Z \in \text{Obj}(\mathbf{C})
+	\end{gathered}
+	\end{equation}
+\end{itemize}
+\item (composition law for functors) \\
+For categories $\mathbf{A} , \mathbf{B}, \mathbf{C}$, functors $F: \mathbf{A} \to \mathbf{B}$, $G: \mathbf{B} \to \mathbf{C}$, \\
+Composition $G\circ F : \mathbf{A} \to \mathbf{C}$, is a functor defined by 
+\begin{equation}
+\begin{aligned}
+& (G\circ F)(X) = G(F(X)) \qquad \, \forall \, X \in \text{Obj}\mathbf{A}, \text{ and } \\
+& (G\circ F)(f) = G(F(f)), \qquad \, \forall \, \text{ morphism } f \in \text{Mor}(\mathbf{C})
+\end{aligned}
+\end{equation}
+\end{enumerate}
+\end{definition}
+Diagrammatically,
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.8em, column sep=1.8em, minimum width=1.2em]
+{
+	X & Y \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2);
+\end{tikzpicture} \quad \xrightarrow{F} \quad
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.8em, column sep=1.8em, minimum width=1.2em]
+{
+	F(X) & F(Y) \\
+};
+\path[->]
+(m-1-1) edge node [above] {$F(f)$} (m-1-2);
+\end{tikzpicture} \\
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.8em, column sep=1.8em, minimum width=1.2em]
+{
+	X & Y & Z \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+edge[bend right=45] node [below] {$g\circ f$} (m-1-3)
+(m-1-2) edge node [above] {$g$} (m-1-3)
+;
+\end{tikzpicture} 
+\quad \xrightarrow{F} \quad \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.8em, column sep=1.8em, minimum width=1.2em]
+{
+	F(X) & F(Y) & F(Z) \\
+};
+\path[->]
+(m-1-1) edge node [above] {$F(f)$} (m-1-2)
+edge[bend right=45] node [below] {$F(g\circ f)$} (m-1-3)
+(m-1-2) edge node [above] {$F(g)$} (m-1-3)
+;
+\end{tikzpicture} 
+\end{gathered}
+\]
+i.e.
+\[
+\begin{gathered} 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	X & Y \\
+	F(X) & F(Y) \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+edge node [auto]  {$F$} (m-2-1)
+(m-1-2) edge node [auto]  {$F$} (m-2-2)
+(m-2-1) edge node [above] {$F(f)$} (m-2-2)        
+;
+\end{tikzpicture} \text{ and } 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	X & Y & Z \\
+	F(X) & F(Y) & F(Z) \\ 
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+edge[bend left=45] node [above] {$g\circ f$} (m-1-3)
+edge node [auto] {$F$} (m-2-1)
+(m-1-2) edge node [above] {$g$} (m-1-3)
+edge node [auto] {$F$} (m-2-2)
+(m-1-3) edge node [auto] {$F$} (m-2-3)
+(m-2-1) edge node [above] {$F(f)$} (m-2-2)
+edge[bend right=45] node [below] {$F(g\circ f) = F(g) \circ F(f)$} (m-2-3)
+(m-2-2) edge node [above] {$F(g)$} (m-2-3)  
+;
+\end{tikzpicture} 
+\end{gathered}
+\]
+
 \section{Limits}
 
 \subsection{Pullback}
@@ -3315,6 +3435,13 @@ object $(u, N \otimes_R M)$ is initial in $\mathbf{C}$
 	
 \end{definition}
 
+Simmons (2011) \ref{Simm2011}
+
+cf. 3.3 \emph{Some less simple functors}, pp. 79, of Simmons (2011) \ref{Simm2011}
+
+
+
+
 \section{Applications of Category Theory on Hybrid Systems}
 
 cf. Ames (2006) \cite{Ames2006}.
@@ -3384,7 +3511,7 @@ Conversely, given morphism $\gamma \in \text{Mor}(\mathbf{D})$, $\gamma \neq 1$,
 
 
 	
-\subsection{Blog (Running log)}
+%\subsection{Blog (Running log)}
 
 \part{Category Theory and Databases} 
 	
@@ -3790,7 +3917,143 @@ $K$ being a key in target $T$ validates the assumption that there is \textbf{no 
 
 In general, \textbf{ a foreign key $F$ is not a key} in source table $S$. 2 rows $s_1, s_2 \in \text{inst}(S)$ with $s_1.F = s_2.F$ can refer to the same row in target $T$.
 
+Here is a great example of a foreign key: \url{https://www.w3schools.com/sql/sql_foreignkey.asp}
 
+So from w3schools, 
+
+"A FOREIGN KEY is a key used to link 2 tables together.
+
+A FOREIGN KEY is a field (or collection of fields) in 1 table that refers to the PRIMARY KEY in another table.
+
+The table containing the foreign key is called the child table, and the table containing the candidate key is called the referenced or parent table.
+
+"Persons" table:
+
+\begin{tabular}{|l |c |c |r|}
+\textbf{PersonID} & \textbf{LastName} & \textbf{FirstName} & \textbf{Age} \\
+1 & Hansen & Ola & 30 \\
+2 & Svendson & Tove & 23 \\
+3 & Pettersen & Kari & 20 
+\end{tabular}
+
+"Orders" table:
+
+\begin{tabular}{ | l | c | r | }
+	\textbf{OrderID} & \textbf{OrderNumber} & \textbf{PersonID} \\ 
+	1 & 77895 & 3 \\
+	2 & 44678 & 3 \\
+	3 & 22456 & 2 \\
+	4 & 24562 & 1 
+\end{tabular}
+
+Notice that the "PersonID" column in the "Orders" table points to the "PersonID" column in the "Persons" table.
+
+The "PersonID" column in the "Persons" table is the PRIMARY KEY in the "Persons" table.
+
+The "PersonId" column in the "Orders" table is a FOREIGN KEY in the "Orders" table.
+
+\subsection{Functional Dependency}
+
+\begin{definition}[Functional Dependency (FD)]
+	cf. Slides Number 10, "Functional Dependencies" of Grust and Duta (2017) \cite{GrDu2017}.
+	
+	Let $(R, \alpha) \equiv $ relational schema. Given $\beta \subseteq \alpha$, $c\in \alpha$, \\
+	\textbf{functional dependency} $\beta \to c$ holds in $R$ if 
+	\[
+	\forall \, t, u \in \text{inst}(R), \, t.\beta = u.\beta \Longrightarrow t.c = u.c
+	\]
+	Notation: the functional dependency $\beta \to \lbrace c_1, \dots , c_n \rbrace $ abbreviates set of FDs $\beta \to c_1, \dots , \beta \to c_n$.
+	
+	cf. \href{https://en.wikipedia.org/wiki/Functional_dependency}{"Functional dependency", wikipedia}
+	
+	A set of attributes $X \subseteq R$ ($\equiv X \subseteq \alpha$ for $R = (R,\alpha)$) is said to functionally determine another set of attributes $Y \subseteq R$ ($\equiv Y \subseteq \alpha$), written $X\to Y$. ($\equiv \beta \to c$) \\
+	iff $\forall \, X$ value in $R$ is associated with precisely 1 $Y$ value in $R$; $R$ is then said to satisfy the functional dependency $X\to Y$
+\end{definition}
+
+e.g. Cars: $\beta = $ vehicle identification number (VIN), $c=$ Engine capacity (because assume a car cannot have 2 engines).
+
+e.g Employee department: \\
+$\beta = $ employee ID, \qquad \, $c = $ employee name. \\
+$\beta = $ employee ID, \qquad \, $c = $ department ID. \\
+$\beta = $ department ID, \qquad \, $c = $ department name.
+
+Recall definition of injective function, $f:X \to Y$,
+\[
+\forall \, a,b \in X, \, f(a) = f(b) \Longrightarrow a =b
+\]
+
+Instead of writing the functional dependency (FD) with this notation: given $\beta, c \subseteq \alpha$, 
+\[
+\forall \, r_1, r_2 \in \text{inst}(R) \equiv \Gamma(\alpha), \, r_1(\beta) = r_2(\beta), \Longrightarrow r_1(c) = r_2(c)
+\]
+\emph{rewrite} this as follows:
+
+\begin{equation}
+\begin{gathered} 
+	\text{ Given } \\
+	\begin{aligned} 
+	& \beta : \Gamma(\alpha) \to \text{val}(\beta) \equiv \text{dom}(\text{type}(\beta)) \equiv \pi^{-1} \circ \sigma(\beta), \, \\
+	& c : \Gamma(\alpha) \to \text{val}(c) \equiv \text{dom}(\text{type}(c)) \equiv \pi^{-1} \circ \sigma(c), \end{aligned} \\
+\forall \, r_1, r_2 \in \text{inst}(R) \equiv \Gamma(\alpha), \, \beta(r_1), \beta(r_2) \in \text{val}(\beta)  \\
+\text{ Then } \beta \in \text{Hom}(\text{inst}(R), \text{val}(\beta)) \equiv \text{Hom}(\Gamma(\alpha), \pi^{-1}\circ \sigma(\alpha))
+\end{gathered} 
+\end{equation}
+
+So define a \textbf{functional dependency} $FD$ as 
+\begin{equation}
+\begin{gathered}
+	\begin{aligned} 
+&	\text{FD} : 2^{\alpha} \to 2^{\alpha} \\
+& \text{FD} : \beta \mapsto c \text{ i.e. } \boxed{ FD(\beta) = c }
+\end{aligned} 
+\end{gathered}
+\end{equation}
+where $\beta, c \in 2^{\alpha} \equiv $ power set of $\alpha$, i.e. set of all subsets of $\alpha$, so that $\beta, c \subseteq \alpha$.  
+
+Let $FD^{-1}:2^{\alpha} \to 2^{\alpha}$, s.t. $FD^{-1}(c) = \beta$.
+
+So if $\forall \, r_1, r_2 \in \text{inst}(R) \equiv \Gamma(\alpha)$, for $\beta \subseteq \alpha$, $\beta(r_1), \beta(r_2) \in \text{val}(\beta)$. Then $\beta \in \text{Hom}(\text{inst}(R), \text{val}(\beta)) \equiv \text{Hom}(\Gamma(\alpha), \pi^{-1}\circ \sigma(\alpha))$.
+
+Suppose $\beta(r_1) = \beta(r_2)$. The \emph{key insight} is the following:
+
+\begin{equation}
+\beta(r_1) = \beta(r_2) = \text{FD}^{-1}(c)(r_1) = \text{FD}^{-1}(c)(r_2) = (\text{FD}^{-1}\circ c)(r_1) = (\text{FD}^{-1}\circ c)(r_2)
+\end{equation}
+
+Then $c(r_1) = c(r_2)$ implies that $\text{FD}^{-1}$ is \emph{injective}.
+
+Then $\text{FD}^{-1}$ is a \emph{monomorphism}, and $\text{FD}^{-1}$ is injective, since $\forall \, r_1, r_2 \in \text{inst}(R) \equiv \Gamma(\alpha)$,
+\begin{equation}
+\beta(r_1) = \beta(r_2) =  (\text{FD}^{-1}\circ c)(r_1) = (\text{FD}^{-1}\circ c)(r_2) \Longrightarrow c(r_1) = c(r_2)
+\end{equation} 
+
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.8em, column sep=1.8em, minimum width=1.2em]
+{
+	\text{inst}(R) & \text{val}(C) & \text{val}(\beta) \\
+};
+\path[->]
+(m-1-1) edge node [above] {$c$} (m-1-2)
+(m-1-2) edge node [above] {$\text{FD}^{-1}$} (m-1-3)
+;
+\end{tikzpicture} 
+\]
+
+Then conclude that 
+\begin{theorem}
+	Given a relational schema $(R, \alpha)$, a set of attributes $\alpha$, instance of the relation (i.e. a table), $\text{inst}(R) \equiv \Gamma(\alpha)$, and $\beta, c \subseteq \alpha$, \\ for morphisms $\beta, c$, 
+\[	\begin{aligned}
+		& \beta \in \text{Hom}(\Gamma(\alpha), \text{val}(\beta)) \\
+		& c \in \text{Hom}(\Gamma(\alpha), \text{val}(c))
+	\end{aligned}
+	\]
+Then for $\text{FD}:2^{\alpha} \to 2^{\alpha}$, $\text{FD}(\beta) =c$, $\text{FD}^{-1}$ is a \textbf{monomorphism}, i.e. $\forall \, r_1, r_2 \in \Gamma(\alpha)$,
+\[
+\beta(r_1) = \beta(r_2) = (\text{FD}^{-1}\circ c)(r_1) = (\text{FD}^{-1}\circ c)(r_2) \text{ i.e. } (\text{FD}^{-1}\circ c) = (\text{FD}^{-1} \circ c)
+\]
+then $c(r_1) = c'(r_2) $ i.e. $c=c'$.
+\end{theorem}
 
 Database Queries and Constraints via Lifting Problems. David I. Spivak.
 \url{https://arxiv.org/pdf/1202.2591.pdf}
@@ -3819,7 +4082,7 @@ polynomial $f$ \emph{divides} polynomial $g$ provided $g= fh$ for some $h \in k[
 $k[x_1, \dots, x_n]$ satisfies all field axioms except for existence of multiplicative inverses; commutative ring, $k[x_1, \dots , x_n]$ \emph{polynomial ring}
 
 
-\subsubsection*{Exercises for 1 }
+\subsubsection*{Exercises for 1}
 
 \exercisehead{1}
 $\mathbb{F}_2$ commutative ring since it's an abelian group under addition, commutative in multiplication, and multiplicative identity exists, namely $1$.  It is a field since for $1\neq 0$, the multiplicative identity is $1$.  
@@ -7697,6 +7960,10 @@ Michael Barr, Charles Wells.  \textbf{Category Theory for Computing Science}.  \
  
 \bibitem{AHS2004}
 Ji\v{r}\'{i} Ad\'{a}mek, Horst Herrlich, George E. Strecker.   \textbf{Abstract and Concrete Categories The Joy of Cats}. 2004.  \url{http://katmat.math.uni-bremen.de/acc/acc.pdf}
+
+\bibitem{Simm2011}
+Harold Simmons. \textbf{An Introduction to Category Theory}. 1st Edition. Cambridge University Press; 1 edition (November 21, 2011). ISBN-13: 978-0521283045
+
 
 %%--------------------------------------------------------------------------------------------------
 %%% Applications of Category Theory
