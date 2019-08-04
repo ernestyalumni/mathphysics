@@ -1236,7 +1236,9 @@ $F$ diffeomorphism onto $F(M)$.
 	and $F^{-1}$ diffeomorphism, $F$ smooth immersion, so $i : S \to M$ smooth immersion.  
 	\end{proof}
 
-	
+\section{Integral Curves and Flows}
+
+cf. John Lee (2012) \cite{JLee2012}, Ch. 9, deals with time-dependent vector fields and I don't see other texts or references handling such an important, but overlooked, case.
 
 
 
@@ -2685,17 +2687,84 @@ Let manifold $M$, $\text{dim}M = n$, let $k \in \mathbb{Z}^+$, s.t. $0\leq k \le
 A $k$-dim. embedded submanifold $\equiv $ regular submanifold $S$ is subset $S \subset M$ s.t. $\forall \, p \in S$, $\exists \, $ chart ($U\subset M, \, \varphi : U \to \mathbb{R}^n \ni 0$), s.t. $\varphi(S \cap U)$ is the intersection of a $k$-dim. plane with $\varphi(U)$.  \\
  (pairs ($S\cap U, \left. \varphi \right|_{S \cap U})$ form an atlas for differential structure on $S$).
 
-
-
 Proof 1:
+
+\begin{proof}
+$H$ subgroup of $G$, so \\
+multiplication map $H\times H \to H$ \\
+inversion map $H\to H$ \\
+are restrictions of multiplication and inversion maps on $G$.
+
+\qquad \\
+Since $H$ regular submanifold, maps are smooth. \\
+Recall $H$ regular submanifold iff $H$ immersive submanifold (i.e. $H\hookleftarrow G$ is an immersion) and $H$ topological subspace of $G$, i.e. submanifold topology on $H$ is same as subspace topology.
+
+\quad \\ 
+Claim: $H$ closed. \\
+Let $x_0 \in \overline{H}$ \\
+Let $(U,x)$ be a chart adapted to $H$, whose domain contains $e$. \\
+Let 
+\[
+\begin{aligned}
+& \delta : G \times G \to G \\
+& \delta (g_1, g_2)  = g_1^{-1} g_2
+\end{aligned}
+\]
+
+\quad \\ 
+Choose open set $V$ s.t. $e\in V \subset \overline{V} \subset U$. \\
+By continuity map $\delta$, find open neighborhood $O$ of identity $e$ s.t. $O \times O \subset \delta^{-1}(V)$ \\
+If $\lbrace h_i \rbrace$ sequence in $H$ converging to $x_0 \in \overline{H}$, then $x_0^{-1} h_i \to e$ and $x_0^{-1} h_i \in O$ for all sufficiently large $i$.  \\
+Since $h_j^{-1} h_i = (x_0^{-1} h_j)^{-1} x_0^{-1} h_i$, $h_j^{-1} h_i \in V$ for sufficiently large $i,j$.  \\
+
+For any sufficiently large fixed $j$, 
+\[
+\lim_{i\to 0} h_j^{-1} h_i = h_j^{-1} x_0 \in \overline{V} \subset U
+\]
+Since $U$ is domain of a single-slice chart, $U\subset H$ closed in $U$.
+
+\quad \\
+Thus, since $\forall \, h_j^{-1} h_i \in U \cap H$, $h_j^{-1} x_0 \in U \cap H \subset H$, \quad \, $\forall \, $ sufficiently large $j$.  \\
+$\Longrightarrow x_0 \in H$, and since $x_0$ arbitrary, done.
+	
+	
+	\end{proof}
+
+Proof 2:
 
 cf. 9.2 The Closed Subgroup Theorem I of 427 Notes\footnote{\url{https://faculty.math.illinois.edu/~lerman/519/s12/427notes.pdf}}
 
 \begin{proof}
-	\textbf{Claim}: If $H$ abstract subgroup of Lie group $G$, that's also an embedded submanifold $\equiv$ regular submanifold, then $H$ is a Lie subgroup. \\
+
+	\textbf{Claim}: Since $H$ is an embedded submanifold $\equiv $ regular submanifold, $\exists \, $ neighborhood $U$ of 1, $1 \in G$, s.t. $U\cap H$ closed in $U$. 
 	
+	\qquad \, \\
+	Let $x_0 \in \overline{H}$, $\overline{H} \equiv $ closure of $x_0$. \\
+	Then $x_0U^{-1} \subseteq G$ is a neighborhood of $x_0$ in $G$ (since $1 \in U^{-1}$, $x_0 1 = x_0 \in x_0 U^{-1}$)
+	\[
+	\Longrightarrow x_0 U^{-1} \cap H \neq \emptyset 
+	\]
+	$\forall \, x \in x_0 U^{-1} \cap H$, $x= x_0 U^{-1}$ for some $u\in U$. Thus, $x^{-1} x_0 = u \in U$.
+	
+	\quad \\
+	Now  \\
+	$L_{x^{-1}} : G \to G$ is a homeomorphism, so $L_{x^{-1}}(H) = H$. By continuity, $L_{x^{-1}}(\overline{H}) = \overline{H}$. Thus $x^{-1}x_0 \in \overline{H}$. 
+	
+	\textbf{Claim}: $x^{-1} x_0 \in H \cap U$. \\
+	Since $x^{-1}x_0 \in \overline{H} \cap U$, $\exists \, $ sequence $\lbrace h_i \rbrace \subset H \cap U$ s.t. $h_0 \to x^{-1} x_0$. \\
+	But recall $H\cap U$ closed in $U$, so $x^{-1}x_0 \in H\cap U$. 
+	\[
+	\Longrightarrow x_0 \in xH = H , \quad \, \overline{H} \subseteq H
+	\]
+	Thus $H$ closed. 
+
+	\quad \\ 	
+	\textbf{Claim}: If $H$ abstract subgroup of Lie group $G$, that's also an embedded submanifold $\equiv$ regular submanifold, then $H$ is a Lie subgroup. 
+	
+	\quad \\ 
 	Recall that by definition, Lie group has group multiplication and inverse map to be $C^{\infty}$. Then, just show group multiplication is $C^{\infty}$, first.
-	
+
+\quad \\	
 Since $G$ is a Lie group, then
 \[
 \begin{gathered}
@@ -2707,9 +2776,9 @@ Since $G$ is a Lie group, then
 \]	
 is $C^{\infty}$ (by definition).
 
+\quad \\ 
 Then $\mu : G \times G \to G$ cont.  \\
-Consider subgroup $H\subseteq G$ and $\mu : H \times H \to H$.
-
+Consider subgroup $H\subseteq G$ and $\mu : H \times H \to H$. \\
 Since $H\times H \subseteq G \times G$, $\forall \, (x,y) \in H \times H$ (fix $(x,y) \in H\times H$), $\forall \, $ neighborhood $V$ of $\mu(x,y) = xy$, $V\subset G$, $\exists \, $ neighborhood $U$ of $(x,y)$ s.t. $\mu(U) \subseteq V$ (by $\mu: G \times G \to G$ cont.).
 
 Since $H$ embedded submanifold $\equiv $ regular submanifold of $G$,  \\
@@ -4670,7 +4739,7 @@ M \cong \mathbb{R}^4, \text{and } \exists \, \lbrace x^{\alpha} : M = \mathbb{R}
 cf. Sec. 3.4 - \emph{Fundamental Theorems of Dynamics} of Pr\'{a}staro (1996) \cite{Pras1996}.
 
 cf. Thm. 3.20 of Pr\'{a}staro (1996) \cite{Pras1996}
-\begin{theorem}[(Momentum Theorem)]
+\begin{theorem}[Momentum Theorem]
 	Variation of the free part of momentum of the observed motion of 1 body, in time interval $\Delta t \equiv [0, t]$ is equal to the corresponding impulse:
 	\begin{equation}
 	I[0,t] \equiv \int_0^t Fdt \equiv \left( \int_0^t F^j dt \right) \mathbf{e}_j
@@ -4689,8 +4758,124 @@ cf. Thm. 3.20 of Pr\'{a}staro (1996) \cite{Pras1996}
 	\]
 	\end{proof}
 
+\section{Fluid Mechanics, Fluid Flow}
+
+\subsection{Mass Conservation for Fluid Flow, Continuum media}
+
+The mass of fluid in some volume $V_0 \subset N$ is $\int_{V^0} \rho \text{vol}^n$, where $\rho$ is fluid density, $\rho \in C^{\infty}(N)$.  
+
+The total mass of fluid flowing out of volume $V_0$ is 
+\[
+\begin{gathered}
+\frac{d}{dt} \int_{V_0} \rho \text{vol}^n = \int_{V_0} \mathcal{L}_{\frac{\partial}{\partial t} + \textbf{u}} (\rho \text{vol}^n) = \int_{V_0} \frac{ \partial }{\partial t} \rho \text{vol}^n + \int_{V_0} \mathcal{L}_u \rho \text{vol}^n   \\
+\int_{V_0} \mathcal{L}_u \rho \text{vol}^n = \int_{V_0} di_{\mathbf{u}} \rho \text{vol}^n  + i_{\mathbf{u}} d\rho \text{vol}^n = \int_{V_0} di_{\mathbf{u}} \rho \text{vol}^n + 0 = \int_{V_0} di_{\mathbf{u}} \rho \text{vol}^n = \int_{\partial V_0} i_{\mathbf{u}} \rho \text{vol}^n
+\end{gathered}
+\]  
+Now
+\[
+\begin{gathered}
+i_u \text{vol}^n = i_u\frac{\sqrt{g}}{n!} \epsilon_{i_1 \dots i_n} dx^{i_1} \wedge \dots \wedge dx^{i_n} \\ 
+i_u dx^{i_1} \wedge \dots \wedge dx^{i_n} = u^{i_1} dx^{i_2} \wedge \dots \wedge dx^{i_n} - dx^{i_1} \wedge u^{i_2} dx^{i_3} \wedge \dots \wedge dx^{i_n} +  \dots + (-1)^{n+1} dx^{i_1} \wedge \dots \wedge dx^{i_{n-1}} u^{i_n} = \epsilon^{i_1 \dots i_n}_{j_1 \dots j_n } u^{j_1 } dx^{j_2} \wedge \dots \wedge dx^{j_n}  
+\end{gathered} 
+\]
+\begin{equation}\label{Eq:TimeIndependentMassVolumeTerm}
+\Longrightarrow i_u\text{vol}^n = \frac{ \sqrt{g}}{ (n-1)!} \epsilon_{j_1 \dots j_n} u^{j_1} dx^{j_2} \wedge \dots \wedge dx^{j_n}
+\end{equation}
+
+We can also rewrite Eq. \ref{Eq:TimeIndependentMassVolumeTerm} to be a "surface differential":
+\begin{equation}
+\begin{gathered}
+\int_{V_0} \mathbf{d}i_{\mathbf{u}} \rho \text{vol}^n = \int_{\partial V_0} i_{\mathbf{u}} \rho \text{vol}^n = \\
+\int_{\partial V_0} \rho \frac{ \sqrt{g}}{ (n-1)!} u^{j_1} \epsilon_{j_1 j_2 \dots j_n} dx^{j_2} \wedge \dots \wedge dx^{j_n} \equiv \int_{\partial V_0} \rho \mathbf{u} \cdot d\mathbf{S} \equiv \int_{\partial V_0} \rho \langle \mathbf{u}, d\mathbf{S} \rangle 
+\end{gathered}
+\end{equation}
+
+
+If $\sqrt{g} = 1$, $n=2$, 
+\[
+i_u \text{vol}^2 = (u^1 dx^2 - u^2 dx^1) = u\cdot n_1 dx^2 + u\cdot n_2 dx^1 = u\cdot n dS
+\]
+with $n_1 =e_1$ and $n_2=-e_2$.  
+
+Now 
+\[
+\begin{gathered}
+di_u \rho \text{vol}^n = \\
+= \frac{ \partial ( \sqrt{g} \rho u^{j_1} ) }{ \partial x^k} \frac{ \epsilon_{j_1 \dots j_n} }{ (n-1)! } dx^k \wedge dx^{j_2} \wedge \dots \wedge dx^{j_n} = \frac{ \partial (\sqrt{ g} \rho u^k) }{ \partial x^k} \frac{ \epsilon_{j_1 \dots j_n }}{ n!} dx^{j_1} \wedge \dots \wedge dx^{j_n} = \frac{1}{\sqrt{g}} \frac{ \partial (\sqrt{g} \rho u^k)}{ \partial x^k} \text{vol}^n = \\
+= \frac{ \partial (\rho u^k)}{ \partial x^k} \text{vol}^n + \rho u^k \frac{ \partial \ln{ \sqrt{g}}}{ \partial x^k} \text{vol}^n = \text{div}(\rho u) \text{vol}^n + \rho u^k \frac{ \partial \ln{ \sqrt{g}}}{ \partial x^k} \text{vol}^n
+\end{gathered}
+\]
+Now if $\sqrt{g}=1$, then 
+\[
+\begin{gathered}
+\frac{d}{dt} \int_{V_0} \rho \text{vol}^n = \int_{V_0} \frac{ \partial \rho }{ \partial t} \text{vol}^n + \int_{V_0} di_u \rho \text{vol}^n = \int_{V_0} \frac{ \partial \rho }{ \partial t} \text{vol}^n + \int_{V_0} \text{div}(\rho u) \text{vol}^n \Longrightarrow \frac{ \partial \rho}{\partial t} + \text{div}(\rho u) = 0
+\end{gathered}
+\]
+which is the so-called mass continuity equation.  $ j = \rho u$ is the mass flux density.  
+
+Thus,
+
+\begin{equation}
+\begin{gathered}
+\text{(mass conservation)} \\
+m = m(t) := \int_{V_0} \rho \text{vol}^n, \, V_0 \subset N \\
+\dot{m} \equiv \frac{d}{dt}m(t) = \int_{V_0} \left( \frac{\partial \rho }{ \partial t} \text{vol}^n + \mathbf{d}i_{\mathbf{u}} \rho \text{vol}^n \right) = \boxed{ \int_{V_0} \frac{ \partial \rho }{ \partial t} \text{vol}^n + \int_{\partial V_0} \rho \mathbf{u} \cdot d\mathbf{S} } \\
+\text{ if } \sqrt{g} = 1, \text{ and } \dot{m} = 0, \text{ then } \\
+\frac{\partial \rho }{ \partial t} + \text{div}(\rho \mathbf{u}) = 0 
+\end{gathered}
+\end{equation}
+
+TODO: 20190804 Frankel (2012) \cite{TFrankel2004} in pp. 138 and onwards, for Sec. 4.3. Differentiation of Integrals posed the rightful question, "How does one compute the rate of change of an integral when the domain of integration is also changing?" Revisit the derivation from a Lie derivative and 1-parameter flow point of view.
+
+\section{Thermodynamics}
+
+\quad \\ 
+Let $\Sigma$ be a (topological) manifold. \\
+Suppose $U$ is a global coordinate on $\Sigma$:
+\begin{equation}
+\begin{gathered}
+\text{ (First Law of Thermodynamics (energy conservation)) } \\
+\boxed{ dU = Q - W \text{ or } Q = dU + W }
+\end{gathered}
+\end{equation}
+where $dU, Q, W \in \Omega^1(\Sigma)$ (i.e. $dU, Q, W$ are 1-forms over manifold $\Sigma$).
+
+\quad \\ 
+Consider a path in $\Sigma$, $\gamma$, $\gamma : \mathbb{R} \to \Sigma$, \\
+and using a chart $(U, S^1, \dots , S^n)$ (e.g. $n=1$, $S^1 = v$ for volume)
+\[
+\begin{gathered}
+\gamma(t) = (U(t), S^1(t), \dots, S^n(t)) \\
+\dot{\gamma} \in \mathfrak{X}(\Sigma), \, \dot{\gamma} = \dot{U} \frac{ \partial }{ \partial U} + \dot{S}^i \frac{ \partial }{ \partial S^i} 
+\end{gathered}
+\]
+Now 
+\[
+\begin{gathered}
+dU(\dot{\gamma}) = \dot{\gamma}(U) = \dot{U} \frac{ \partial }{ \partial U} U + 0 = \dot{U} \\
+	Q(\dot{\gamma}) = Q(t) dt\left( \dot{\gamma} \frac{ \partial }{ \partial t} \right) = Q(t) \dot{\gamma} \\ 
+	\Longrightarrow \dot{U} = Q(t) \dot{\gamma} - W(t) \dot{\gamma}
+\end{gathered}
+\]
+
+Recall that for enthalpy $H$, $H := U + pV$, $H=H(\sigma, p)$
+
+TODO 20190804 Derive and check convection form of enthalpy against both Kittle and Kroemer plus thermodynamics and Sonntag, et. al. 
+
+Incomplete:
+\[
+\begin{gathered} 
+dH = Q + Vdp \\
+W = pdV = pdV + Vdp - Vdp = d(pV) - Vdp = \\
+dE = Q-W + \mu dH \\
+dE = Q- W + \widehat{h} dN
+\end{gathered} 
+\]
+
+
 
 \end{multicols*}
+
 
 \begin{thebibliography}{9}
 
@@ -4768,6 +4953,13 @@ Vladimir I. Arnold, Valery V. Kozlov, Anatoly I. Neishtadt.  \textbf{Mathematica
 
 \bibitem{YChoquet-Bruhat2009}
 Yvonne Choquet-Bruhat.  \textbf{General Relativity and the Einstein Equations} (Oxford Mathematical Monographs) 1st Edition.  Oxford Mathematical Monographs (February 4, 2009) ISBN-13: 978-0199230723
+
+\bibitem{TFrankel2012}
+T. Frankel,
+\textbf{The Geometry of Physics}, 
+Cambridge University Press, 
+Third Edition,
+2012.
 
 
 \end{thebibliography}
