@@ -3910,7 +3910,7 @@ cf. Slides Number 7, "Referential Integrity" of Grust and Duta (2017) \cite{GrDu
 \begin{definition}[Foreign Keys]
 	Let $(S, \alpha)$ and $(T, \beta)$ denote 2 relational schemata (not necessarily distinct), \\
 	where $K = \lbrace b_{j_1}, \dots , b_{j_k} \rbrace \subseteq \beta$ is the primary key of $T$. \\
-	Let $F = \lbrace a_{i_1}, \dots , a_{i_k} \rbrace \subseteq \alpha $ with $\text{type}(a_{i_k}) = \text{type}(b_{j_k})$, $h = 1, \dots, k$. 
+	Let $F = \lbrace a_{i_1}, \dots , a_{i_k} \rbrace \subseteq \alpha $ with $\text{type}(a_{i_h}) = \text{type}(b_{j_h})$, $h \in 1, \dots, k$. 
 	
 	$F$ is a \textbf{foreign key} in $S$ \textbf{referencing} $T$, if 
 	\[
@@ -3958,6 +3958,39 @@ The "PersonID" column in the "Persons" table is the PRIMARY KEY in the "Persons"
 
 The "PersonId" column in the "Orders" table is a FOREIGN KEY in the "Orders" table.
 
+\quad \\
+Thus, in other words, \\
+given 2 tables (i.e. 2 relational schemata, not necessarily distinct), $(S, \alpha)$, $(T,\beta)$, \\
+given primary key $PK = \lbrace b_{j_1}, \dots, b_{j_k} \rbrace \subseteq \beta$, primary key of of $T$, and \\
+given foreign key $FK = \lbrace a_{i_1} , \dots , a_{i_k} \rbrace \subseteq \alpha$ s.t.
+\[
+\begin{gathered}
+\text{type}(a_{i_h}) = \text{type}(b_{j_h}), \quad \, h \in 1, 2 , \dots k \\
+\text{(alternate notation)}  \sigma(a_{i_h}) = \sigma(b_{j_h})
+\end{gathered}
+\]
+then \\
+$\forall \, s \in \text{inst}(S), \, \exists \, t \in \text{inst}(T)$ ((alternate notation) $s\in \Gamma(S), \, t\in \Gamma(T)$), s.t.
+\[
+s(FK) = t(PK)
+\]
+
+Describe this categorically as
+\[
+\begin{tikzpicture}
+%\matrix(m)[matrix of math nodes, row sep=3em, column sep=3em, text height=1.5ex, text depth=0.25ex]
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	S   &  T  \\
+};
+%\path[->,font=\scriptsize]
+\path[->]
+(m-1-1) edge node[auto]{$FK$} (m-1-2)
+;
+\end{tikzpicture} 
+\]
+which is from the introductory talk by Spivak (2012)\cite{Spiv2012}, "What does equivalence of paths mean?", where it states, "arrows represent foreign keys", "from table $a$ to table $b$," and where "we can take any record in table $a$ and return a record in table $b$.
+
 \subsection{Functional Dependency}
 
 \begin{definition}[Functional Dependency (FD)]
@@ -3990,7 +4023,9 @@ Recall definition of injective function, $f:X \to Y$,
 
 Instead of writing the functional dependency (FD) with this notation: given $\beta, c \subseteq \alpha$, 
 \[
-\forall \, r_1, r_2 \in \text{inst}(R) \equiv \Gamma(\alpha), \, r_1(\beta) = r_2(\beta), \Longrightarrow r_1(c) = r_2(c)
+\begin{gathered} 
+\forall \, r_1, r_2 \in \text{inst}(R) \equiv \Gamma(\alpha), \, r_1(\beta) = r_2(\beta), \Longrightarrow r_1(c) = r_2(c) \\
+\end{gathered} 
 \]
 \emph{rewrite} this as follows:
 
