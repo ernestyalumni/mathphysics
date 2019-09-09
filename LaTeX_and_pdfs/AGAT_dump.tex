@@ -2847,7 +2847,19 @@ s.t.
 	& \text{Mor}\textbf{Vec} & \equiv \text{ all linear transformations between them (between real vector spaces) }
 	\end{aligned}
 	\]
+	\item \emph{preorder} cf. Ch. 1, Example 7, pp. 8, Awodey (2010) \cite{Awod2010}. \\
+	\emph{preorder} $P$, set $P$ equipped with binary relation $p\leq q $, that's both \\
+	reflexive: $a\leq a$, and \\
+	transitive: if $a \leq b$ and $b \leq c$, then $a\leq c$. 
 	
+	\quad \\
+	$\forall \, $ preorder $P$ can be regarded as a category: \\
+	$\text{Obj}(P) = P$ \\
+	$a \to b$ iff $a\leq b \in \text{Mor}P$. \\
+	identity: $1 :a \to a$ since $a\leq a$ \\
+	composition: $f:a\to b$, $g:b\to c$, $(g\circ f)a = g(b) = c$, $a\leq b$ and $b\leq c$, so $a\leq c$. 
+	
+	Going in the other direction, a category with at most 1 arrow between 2 objects determines a preorder.
 	\item \textbf{Monoid}.  Consider a monoid as a triple $(M, \cdot, e)$.  \\
 	Every semigroup $(M,\cdot)$ (recall that a \emph{semigroup} is a set $S$ with binary operation $\cdot $, i.e. s.t.
 	
@@ -2862,7 +2874,58 @@ s.t.
 	$\text{Hom}(M,M) = M$ \\
 	$\mathbf{1}_M = e$ \\
 	$y \circ x = y \cdot x$
+	\item \textbf{Poset} cf. Ch. 1, pp. 6, Awodey (2010) \cite{Awod2010}. partially ordered set or poset is a set $A$, equipped with binary relation $a \leq_A b$ s.t. $\forall \, a, b, c \in A$, \\
+	reflexivity: $a \leq_A a$ \\
+	transitivity: if $a\leq_A b$, $b\leq_A c$, then $a\leq_A  c$ \\
+	antisymmetry: if $a\leq_A b$, $b\leq_A a$, then $a=b$.
+	
+	An arrow from a poset $A$ to a poset $B$ is a function,
+	\[
+	m : A \to B
+	\]
+that is monotone, i.e. $\forall \, a, a' \in A$, 
+\[
+\text{ if } a \leq_A a', \text{ then } m(a) \leq_B m(a')
+\]	
+category $\textbf{Pos}$ of posets, and monotone functions, 
+\[
+\forall \, A \in \text{Obj}(\textbf{Pos}), \, \exists \, 1_A : A \to A, \text{ since } 
+\]
+since if $a \leq_A a'$, then $a\leq_A a'$, so $1_A$ monotone.
+
+\quad \\ 
+\emph{composition}: $\forall \, f:A \to B, \, g:B \to C$, \, $\forall \, A,B,C \in \text{Obj}(\textbf{Pos})$, $f,g$ monotone, \\
+$\forall \, a \leq_A a'$, $f(a) \leq_B f(a')$, and since \\
+$\forall \, b \leq_B b'$, $g(b) \leq_C g(b')$, then $g(f(a)) \leq_C g(f(a'))$, or $(g\circ f)(a) \leq_C (g\circ f)(a') \, \forall \, a\leq_A a'$, so $g\circ f : A \to C$ is monotone.
+
+$\text{Mor}\textbf{Pos} = \bigcup_{A, B \in \text{Obj}(\textbf{Pos}) } \text{ monotone functions $A \to B$ }$  
+
+\quad \\ 
+A \emph{poset} is a \emph{preorder}, satisfying additional condition of antisymmetry:
+if $a\leq b$, and $b\leq a$, $a=b$. \\
+e.g. $\forall \, X$, power set $P(X)$ is a poset under inclusion $U\subseteq V$, $\forall \, $ subsets $U,V \subseteq X$.
+
+\begin{itemize}
+	\item cf. Ch. 1, Example 8, pp. 9, Awodey (2010) \cite{Awod2010}.
+	$\textbf{Pos}$ categories and functors: functor $F: \mathbf{D} \to \mathbf{Q}$ between poset categories $\mathbf{P}, \mathbf{Q}$. \\
+	They are the monotone functions.
+	\begin{proof} 
+	Consider 
+	\[
+	F : \text{Hom}_{\mathbf{P}}(A,B) \to \text{Hom}_{\mathbf{Q}}(F(A), F(B))
+	\]
+	$f\in \text{Hom}_{\mathbf{P}}(A,B)$ so if $a\leq_A a'$, $f(a) \leq_B f(a')$
+	
+	Let $g\in \text{Hom}_{\mathbf{Q}}(F(A), F(B))$, so if $c\leq_{F(A)} c'$, $g(c)\leq_{F(B)} g(c')$. \\
+	
+	$F(f) \in \text{Hom}_{\mathbf{Q}}(F(A), F(B))$ (by definition of a functor), so if $c\leq_{F(A)} c'$, $F(f)(c) \leq_{F(B)} F(f)(c')$ or $F(f(c)) \leq_{F(B)} F(f(c'))$. \\
+	
+	So $F$ itself is monotone.
+	\end{proof}
 \end{itemize}
+\end{itemize}
+
+Concrete categories: informally, categories which objects are sets, possibly equipped with some structure, and arrows are certain, possibly structure-preserving functions.
 
 \subsection{Duality, opposite category}
 
@@ -3362,6 +3425,115 @@ edge[bend right=45] node [below] {$F(g\circ f) = F(g) \circ F(f)$} (m-2-3)
 \end{tikzpicture} 
 \end{gathered}
 \]
+
+\section{Construction of Categories}
+
+\subsection{Slice category}
+
+cf. Construction 4 of Awodey (2010) \cite{Awod2010}, pp. 15.
+
+\textbf{Slice category} $\mathbf{C}/C$, of category $\mathbf{C}$ over object $C \in \text{Obj}\mathbf{C}$, \\
+$\text{Obj}\mathbf{C}/C = f \in \text{Mor}\mathbf{C}$ s.t. $\text{cod}(f) = C$ \\
+$\text{Mor}\mathbf{C}/C = g$ from $f:X \to C$ to $f':X' \to C$ is a morphism (arrow) \, $g: X\to X'$ in $\mathbf{C}$ s.t. $f'\circ g = f$
+
+\begin{equation}
+\begin{gathered}
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	X & & X' \\
+	& C &  \\
+};
+\path[->]
+(m-1-1) edge node [above] {$g$} (m-1-3)
+(m-1-1) edge node [below] {$f$} (m-2-2)
+(m-1-3) edge node [below] {$f'$} (m-2-2);
+\end{tikzpicture} \qquad \, 
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	X  \\
+	C  \\
+};
+\path[->]
+(m-1-1) edge node [left] {$f$} (m-2-2)
+edge [loop right] node [right] {$1_{\mathbf{C}/C}$} (m-1-1);
+\end{tikzpicture} \qquad \, 
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	X & X' & X'' \\
+	& C &  \\
+};
+\path[->]
+(m-1-1) edge node [above] {$g$} (m-1-2)
+	edge node [left] {$f$} (m-2-1)
+(m-1-2) edge node [above] {$h$} (m-1-3)
+edge node [left] {$f'$} (m-2-2)
+(m-1-3) edge node [right] {$f''$} (m-2-2);
+\end{tikzpicture}
+\end{gathered}
+\end{equation}
+
+If $\mathbf{C} = \mathbf{P}$ poset category, $p\in \mathbf{P}$ (i.e. $p \in \text{Obj}(\mathbf{P})$), then
+\[
+\mathbf{P} / p \simeq \downarrow (p)
+\]
+Slice category $\mathbf{P} / p$ is just the "principal ideal" $\downarrow(p)$ of elements $q\in \mathbf{P}$ with $q \leq p$.
+
+\subsubsection{Coslice category}
+
+\[
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	X & & X' \\
+	& C &  \\
+};
+\path[->]
+(m-1-3) edge node [above] {$\overline{g}$} (m-1-1)
+(m-2-2) edge node [below] {$\overline{f}$} (m-1-1)
+ edge node [below] {$\overline{f'}$} (m-1-3);
+\end{tikzpicture} 
+\]
+
+Coslice category $C/\mathbf{C}$ of category $\mathbf{C}$ under object $C \in \text{Obj}\mathbf{C}$: \\
+$\text{Obj}(C/\mathbf{C}) = \overline{f} \in \text{Mor}\mathbf{C}$ s.t. $\text{dom}\overline{f} = \overline{C} = C$, \\
+$\text{Mor}(C/\mathbf{C}) \ni \begin{aligned} & \quad \\ & \overline{g} : \overline{X}' \to \overline{X} \text{s.t. } \\
+& \overline{g} \circ \overline{f'} = \overline{f} \end{aligned}$ 
+
+cf. Example 1.8 of Awodey (2010) \cite{Awod2010}, pp. 15. \emph{pointed sets}
+
+$\textbf{Sets}_*$ of pointed sets consisting of sets $A$ and distinguished element $a\in A$, and, i.e. \\
+$\text{Obj}\textbf{Set}_* \ni $ set $A$ with distinguished element $a\in A$, \\
+$\text{Mor}\textbf{Set}_* \ni f : (A, a) \to (B, b)$, function $f:A\to B$ preserves the "points" $f(a) = b$.
+
+\[
+\textbf{Sets}_* = \textbf{Set}_* \simeq 1 / \textbf{Sets}
+\]
+i.e. $\textbf{Sets}_*$ isomorphic to coslice category of sets "under" any singleton $1 = \lbrace * \rbrace$
+
+\quad \\ 
+functions $a: 1 \to A$ correspond uniquely to elements \\
+\phantom{functions} $a(*) = a \in A$ \\
+morphisms (arrows) $f:(A, a) \to (B, b)$ correspond exactly to 
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	1 & A \\ 
+	&  B   \\
+};
+\path[->]
+(m-1-1) edge node [above] {$a$} (m-1-2)
+edge node [left] {$b$} (m-2-2)
+(m-1-2) edge node [auto] {$f$} (m-2-2)
+;
+\end{tikzpicture} 
+\]
+
+
+
 
 \section{Limits}
 
@@ -8035,6 +8207,8 @@ Jun Yang. \emph{CompSci 316}: \emph{Introduction to Database Systems}. Fall 2012
 \bibitem{SpCu2011}
 Carlo Curino. David Spivak. \emph{Category Theory as a Unifying Database Formalism}. 2011. \url{http://math.mit.edu/~dspivak/informatics/notes/unorganized/PODS.pdf}
 
+\bibitem{Awod2010}
+Steve Awodey. \textbf{Category Theory} (Oxford Logic Guides) 2nd Edition. Oxford Logic Guides (Book 52). Oxford University Press; 2 edition (August 13, 2010). ISBN-13: 978-0199237180
 
 \bibitem{FrSc2007} 
 Franz Schwabl. \textbf{Quantum Mechanics}. Springer-Verlag Berlin Heidelberg. 2007. 4th Edition. ISBN 978-3-540-71933-5
