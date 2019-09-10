@@ -2874,6 +2874,38 @@ s.t.
 	$\text{Hom}(M,M) = M$ \\
 	$\mathbf{1}_M = e$ \\
 	$y \circ x = y \cdot x$
+	
+	cf. pp. 10, Example 12 of Awodey (2010) \cite{Awod2010}.
+	
+	Examples of monoids: $\mathbb{N}, \mathbb{Q}, \mathbb{R}$ under either addition and $e=0$, or multiplication and $e=1$. \\
+	$\forall \, $ set $X$, set of functions from $X$ to $X$, $\text{Hom}_{\mathbf{Sets}}(X, X)$ is a monoid under composition. 
+	
+	In general, \\
+	$\forall \, $ object $C \in \text{Obj}(\mathbf{C})$, $\forall \, $ category $\mathbf{C}$, $\text{Hom}_{\mathbf{C}}(C,C)$ is a monoid under composition of $\mathbf{C}$. 
+	
+	Since monoids are structured sets, $\exists \, $ category $\textbf{Mon}$, s.t. $\text{Obj}\mathbf{Mon} \ni $ monoids, $\text{Mor} \textbf{Mon} \ni $ functions that preserve monoid structure.
+	
+	In detail, homomorphism from monoid $M$ to monoid $N$ is function $h:M \to N$ s.t. $\forall \, m,n \in M$. 
+	
+	\[
+	h(m \cdot_M n) = h(m) \cdot_N h(n)
+	\]
+	and
+	\[
+	h(e_M) =  e_N
+	\]
+	
+	\quad \\ 
+	Check: Consider functor $F: M \to N$. \\
+	$F: \text{Hom}_M(a,b) \to \text{Hom}_N(F(a), F(b))$
+	\[
+	\begin{gathered}
+	m\cdot a =b \qquad \, n \cdot_N F(a)  = F(b) \\
+	F(m) \cdot_N F(a) = F(b) = F(m \cdot_M a) 
+	\end{gathered}
+	\]
+	so functor $F$ is a monoid homomorphism, and so \\
+	\emph{a monoid homomorphism from $M$ to $N$ is the same thing as a functor from $M$ regarded as a category to $N$ regarded as a category.}
 	\item \textbf{Poset} cf. Ch. 1, pp. 6, Awodey (2010) \cite{Awod2010}. partially ordered set or poset is a set $A$, equipped with binary relation $a \leq_A b$ s.t. $\forall \, a, b, c \in A$, \\
 	reflexivity: $a \leq_A a$ \\
 	transitivity: if $a\leq_A b$, $b\leq_A c$, then $a\leq_A  c$ \\
@@ -2923,6 +2955,35 @@ e.g. $\forall \, X$, power set $P(X)$ is a poset under inclusion $U\subseteq V$,
 	So $F$ itself is monotone.
 	\end{proof}
 \end{itemize}
+\item cf. \emph{An example from computer science}, Example 10, pp. 9 of Awodey (2010) \cite{Awod2010}.
+Given a functional programming language $L$, $\exists \, $ associated category, \\
+$\text{Obj}\mathbf{L} \ni $ data types of $L$ \\
+$\text{Mor}\mathbf{L} \ni $ computable functions of $L$ ("processes", "procedures", "programs") \\
+composition (of 2 such programs) $X \xrightarrow{f} Y \xrightarrow{g} Z$ given by applying $g$ to output of $f$ \\
+(notation note: $g\circ f = f; g$) \\
+identity is the "do nothing" program. 
+
+\quad \\
+if $\mathbf{C}(L)$ is the category just defined, then \\
+denotational semantics of language $L$ in category $\mathbf{D}$ of say Scott demands is simply functor
+\[
+S:\mathbf{C}(L) \to \mathbf{D} 
+\]
+since $S$ assigns domains to the types of $L$, \\
+continuous functions to programs.
+
+This example and Example 9, pp. 9, of Awodey (2010) \cite{Awod2010} are related to the notion of "Cartesian closed category."
+\item \textbf{Groups}, cf. pp. 11, Def. 1.4, Sec. 1.5 \textbf{Isomorphisms}, Awodey (2010) \cite{Awod2010}.
+
+A \emph{group} $G$ is a monoid with inverse $g^{-1}$, $\forall \, g \in G$. \\
+Thus, $G$ is a category with 1 object, $\forall \, f \in \text{Mor}G$ is an isomorphism.
+
+$\forall \, $ set $X$, group $\text{Aut}(X)$ of automoprhisms (or "permutations") of $X$ i.e. $f:X\to X$ \\
+$\text{Aut}(X)$ is closed under composition $\circ$ because a permutation of a permutation is another permutation.
+
+Homomorphisms of groups $h: G\to H$ is just a homomorphism of monoids, preserving inverses.\\
+Given $h$, then $h(gg') = h(g) h(g')$. \\
+$G,H$ are monoids. Then $h$ monoid homomorphism.
 \end{itemize}
 
 Concrete categories: informally, categories which objects are sets, possibly equipped with some structure, and arrows are certain, possibly structure-preserving functions.
@@ -3061,8 +3122,9 @@ e.g. if $\mathbf{A} = (M,\cdot, e)$ monoid, then $\mathbf{A}^{\text{op}} = (M, \
 
 \subsection{Kinds of morphisms}
 
+cf. pp. 11, Definition 1.3 of Awodey (2010) \cite{Awod2010}
 \begin{definition}[isomorphism]
-	\textbf{isomorphism} - morphism $f:A \to B$ is an isomorphism if $\exists \, g : B \to A$ s.t. $f\circ g = 1_B$, $g\circ f = 1_A$, $g$ unique. $g$ called inverse of $f,f^{-1}$
+	\textbf{isomorphism} - $\forall \, $ category $\mathbf{C}$, $\text{Mor}\mathbf{C} \ni $ morphism $f:A \to B$ is an isomorphism if $\exists \, g : B \to A$ s.t. $f\circ g = 1_B$, $g\circ f = 1_A$, $g$ unique. $g$ called inverse of $f,f^{-1}$
 	\[
 	\begin{gathered}
 	\begin{tikzpicture}
@@ -3090,6 +3152,62 @@ e.g. if $\mathbf{A} = (M,\cdot, e)$ monoid, then $\mathbf{A}^{\text{op}} = (M, \
 	\end{gathered}	
 	\]
 \end{definition}
+
+\begin{theorem}[Cayley]
+cf. pp. 11, Sec. 1.5. \textbf{Isomorphisms}, Awodey (2010) \cite{Awod2010}
+
+$\forall \, $ group $G$, 
+\[
+G \cong \text{ group of permutations }
+\]
+(isomorphic $\equiv \cong$)
+
+\end{theorem} 
+
+\begin{proof}
+	Define Cayley representation $\overline{G}$ of $G$ to be following group of permutations: \\
+	underlying set of $\overline{G}$ is just $G$, \\
+	$\forall \, g\in G$, we have permutation $\overline{g}$, defined $\forall \, h \in G$, 
+	\[
+	\overline{g}(h) = g\cdot h
+	\]
+	Let $\overline{g} = \overline{h}$. \\
+	$\forall \, g' \in G$, \\
+	$\begin{aligned}
+	& \overline{g}(g') = gg' \\ 
+	& \overline{h}(g') = hg'
+	\end{aligned}$ \\
+	$g' \in G$, so $\exists \, (g')^{-1}$ s.t. $g'(g')^{-1} =e$, so $gg'(g')^{-1}= g=h$.
+	
+	\quad \\
+	Define homomorphisms $\begin{aligned} & \quad \\ 
+	& i : G \to \overline{G} \\
+	& i(g) = \overline{g}
+	\end{aligned}$, \qquad \, $\begin{aligned} & \quad \\ 
+	& j : \overline{G} \to G \\
+	& j(\overline{g}) =  g
+	\end{aligned}$
+	
+	\[
+	\begin{gathered} 
+	i(gg') = \overline{(gg')} \\
+	\begin{aligned}
+	& \overline{(gg')} = h = gg' h = g(g'h) = g(\overline{g}'(h)) = \overline{g}(\overline{g}'(h)) = i(g) = i(g') h \\ 
+	& \Longrightarrow i(gg') = i(g) \circ i(g') \\
+	& j(\overline{g}) = j(\overline{g}') h = j(\overline{g}) (g'h) = gg'h = j(\overline{gg'})h = j(\overline{g} \cdot \overline{g}') h \\
+	& j(\overline{g}) \cdot j(\overline{g}') = j(\overline{g} \cdot \overline{g}')
+	\end{aligned} \\
+	\begin{aligned}
+	& i\circ j = 1_{\overline{G}}, \, j \circ i = 1_G \text{ since } \\
+	& i \circ j (\overline{g}) = i\circ g = \overline{g} \\
+	& j\circ i (g) = j(\overline{g}) = g
+	\end{aligned}
+\end{gathered} 	
+	\]
+	$i,j$ are isomorphisms between $G,\overline{G}$, which is in category $\textbf{Groups}$ of groups and group homomorphisms. \\
+	permutations $\overline{g} \in \overline{G}$ are themselves isomorphisms in $\textbf{Sets}$. \\
+	Cayley's Thm. says that any abstract group can be represented as a "concrete" one, i.e. group of permutations of a set.
+\end{proof}
 
 \begin{definition}[endomorphism]
 	\textbf{endomorphism} - morphism with same source and target, that is, morphism $f:A \to A$
