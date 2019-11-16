@@ -2833,7 +2833,7 @@ s.t.
 \end{enumerate}	
 \end{definition}
 
-\subsection{Examples}
+\subsection{Examples of categories}
 
 \begin{itemize}
 	\item $\textbf{Set} = (\text{Obj}{(\textbf{Set})}, \text{Hom}{\textbf{Set}},\mathbf{1},\circ)$ where \\
@@ -2876,7 +2876,41 @@ s.t.
 	$y \circ x = y \cdot x$
 	
 	cf. pp. 10, Example 12 of Awodey (2010) \cite{Awod2010}.
+
+\subsubsection{Monoid as a category}
+
+Recall the definition of a \emph{category} $\mathbf{A}$: category $\mathbf{A} = (\text{Obj}(\mathbf{A}), \text{Mor}{\mathbf{A}}, 1, \circ)$ s.t.\\
+$A \in \text{Obj}\mathbf{A}$, \\
+$\forall \, A, B \in \text{Obj}\mathbf{A}$, $\exists \, \text{Hom}(A,B) \subseteq \text{Mor}\mathbf{A}$, \\
+$\forall \, f \in \text{Hom}(A,B)$, $f:A \to B$ is a morphism.\\
+$\forall \, A \in \text{Obj}\mathbf{A}$, $\exists \, 1_A : A \to A$, i.e. $\exists \, 1_A \in \text{Hom}_{\mathbf{A}}(A,A)$. \\
+$\forall \, A, B, C \in \text{Obj}\mathbf{A}$,  \\
+\[
+\begin{aligned} 
+	& \text{Hom}_{\mathbf{A}}(A, B) \times \text{Hom}_{\mathbf{A}}(B,C) \to \text{Hom}_{\mathbf{A}}(A, C) \\ 
+	& (f,g) \mapsto g\circ f \end{aligned} \] \\
+
+Recall the definition of a \emph{monoid}:
+monoid $(M, \cdot, e)$, set $M$, \\
+$\cdot : M\times M \to M$, \\
+$e \in M$ s.t. $\forall \, x \in M$, $e\cdot x = x \cdot e = x$ \\
+
+$\Longrightarrow \mathbf{C}(M)$ (monoid as a category) \\
+$\text{Obj}\mathbf{C}(M) = \lbrace M \rbrace$ \\
+$\text{Hom}(M, M) = \text{Mor}\mathbf{C}(M)$ and $\forall \, f \in \text{Hom}(M, M)$, 
+\[
+f = m \in M
+\]
+i.e. the morphism \emph{is} an element in monoid $M$ (there's a 1-to-1 correspondence).
+
+$\forall \, n \in M$, $f:n \mapsto m\cdot n \in M$. \\
+$1_M : M \to M$ \\
+$1_M : x \mapsto e\cdot x = x$ \\
+$m\cdot n \cdot x = m\cdot (n\cdot x) = (m\cdot n) \cdot x$ (composition)
+
+
 	
+\subsubsection{Examples of monoids}
 	Examples of monoids: $\mathbb{N}, \mathbb{Q}, \mathbb{R}$ under either addition and $e=0$, or multiplication and $e=1$. \\
 	$\forall \, $ set $X$, set of functions from $X$ to $X$, $\text{Hom}_{\mathbf{Sets}}(X, X)$ is a monoid under composition. 
 	
@@ -3080,6 +3114,50 @@ g \circ^{\text{op}} f = f\circ g
 \end{itemize}
 \end{definition}
 
+i.e. (in summary) $\mathbf{C}^{\text{op}}$ s.t. $\text{Obj}\mathbf{C}^{\text{op}} = \text{Obj}\mathbf{C}$, \\
+Denote $\forall \, \overline{C} \in \text{Obj}\mathbf{C}^{\text{op}}$, $\overline{C} = C \in \text{Obj}\mathbf{C}$. \\
+$\text{Hom}_{\mathbf{C}^{\text{op}}}(\overline{A}, \overline{B}) \ni \overline{f} : \overline{C} \to \overline{D}$, in $\mathbf{C}^{\text{op}}$, for $f:D\to C$ in $\mathbf{C}$.  \\
+
+\[
+\begin{gathered}
+1_{\overline{C}} = 1_C \\
+	\overline{f} \circ \overline{g} \equiv \overline{f} \circ_{\text{op}} \overline{g} = g\circ f 
+\end{gathered}
+\]
+
+Diagram in $\mathbf{C}$:
+
+\[
+\begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	A   &  B \\
+	  & C  \\
+};
+\path[->]
+(m-1-1) edge node[above]{$f$} (m-1-2)
+edge node[left]{$g\circ f$} (m-2-2) 
+(m-1-2) edge node[right]{$g$} (m-2-2);
+\end{tikzpicture} 
+\]
+
+Diagram in $\mathbf{C}^{\text{op}}$:
+
+\[
+\begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	\overline{A}   &  \overline{B} \\
+	& \overline{C}  \\
+};
+\path[->]
+(m-1-2) edge node[above]{$\overline{f}$} (m-1-1)
+(m-2-2) edge node[left]{$\overline{f}\circ \overline{g}$} (m-1-1)
+edge node[right]{$\overline{g}$} (m-1-2);
+\end{tikzpicture} 
+\]
+
+e.g. $\mathbf{Sets}$ is dual to category of complete, atomic Boolean algebras.
 
 e.g. if $\mathbf{A} = (M,\cdot, e)$ monoid, then $\mathbf{A}^{\text{op}} = (M, \widehat{\cdot},e)$ where $a\widehat{\cdot} b = b\cdot a$
 
@@ -3442,7 +3520,10 @@ cf. Def. 1.2.10 of Kashiwara and Schapira (2006) \cite{KaSch2006}.
 (covariant) \textbf{functor} $F: \mathbf{C} \to \mathbf{D}$ consists of 
 \begin{itemize}
 	\item map $F: \text{Obj}(\mathbf{C}) \to \text{Obj}(\mathbf{D})$ (i.e. $\forall \, C \in \text{Obj}(\mathbf{C})$, $F(C) \in \text{Obj}(\mathbf{D})$), and 
-	\item maps $F: \text{Hom}_{\mathbf{C}}(X,Y) \to \text{Hom}_{\mathbf{D}}(F(X), F(Y))$, \, $\forall \, X,Y \in \text{Obj}(\mathbf{C})$ s.t.
+	\item maps $F: \text{Hom}_{\mathbf{C}}(X,Y) \to \text{Hom}_{\mathbf{D}}(F(X), F(Y))$, so that 
+		\[	
+			F(f) : F(X) \to F(Y) \text{ or } F(f)(F(X)) = F(f(X)) 
+		\] \, $\forall \, X,Y \in \text{Obj}(\mathbf{C})$ s.t.
 	\begin{equation}
 	\begin{gathered}
 	F(1_X) = 1_{F(X)} \qquad \, \forall \, X \in \mathbf{C} \\
@@ -3544,6 +3625,280 @@ edge[bend right=45] node [below] {$F(g\circ f) = F(g) \circ F(f)$} (m-2-3)
 \end{gathered}
 \]
 
+\subsection{Examples of Functors}
+
+\begin{itemize}
+	\item (monoid) homomorphism $h: M \to N$, $\forall \, $ monoid $M, N$ s.t. $\forall \, m,n \in M$, \\
+	$h(m\cdot n) \equiv h(m\cdot_M n) = h(m) \cdot h(n) \equiv h(m) \cdot_N h(n)$ and \\
+	$h(e_M) = e_N$. \\
+	
+	$h:m \mapsto h(m)$ so $h: \text{Obj}\mathbf{C}(M) \to \text{Obj}\mathbf{C}(N)$. \\
+	Let $m\cdot n \equiv f_m(n)$, $f_m \in \text{Hom}\mathbf{C}(M)$
+	\[
+	\begin{aligned}
+		& h(m) \cdot h(n) \equiv f_{h(m)}(h(n)), \, f_{h(m)} \in \text{Hom}\mathbf{C}(N) \\
+ 		& h(f_m) = h(m) \\
+		& h(f_m)(h(n)) = h(m)\cdot h(n) = h(m\cdot n) = h(f_m\cdot n)
+	\end{aligned}
+	\]
+	Compare the last statement with $F(f)(F(X)) = F(f(X))$.
+	\item poset $P, Q$ (set $P$, equipped with $\leq$), poset as category $\mathbf{P}, \mathbf{Q}$, $\text{Obj}\mathbf{P} = P$, $\text{Obj}\mathbf{Q} = Q$ \\
+	$\text{Hom}\mathbf{P} \ni m$ s.t. $m:x \mapsto y$ iff $x\leq y$. \\
+	
+	Let functor $F: \mathbf{P} \to \mathbf{Q}$ s.t. 
+	\[
+	\begin{aligned} 
+		& F: \text{Obj}\mathbf{P} \to \text{Obj}\mathbf{Q} \\  
+		&	F: x \mapsto F(x)
+	\end{aligned} 
+	\]
+	\[
+	\begin{aligned}
+		& F: \text{Hom}\mathbf{P} \to \text{Hom}\mathbf{Q} \\ 
+		& F: m \mapsto F(m)
+	\end{aligned}
+	\]
+	s.t. for $m(x) =y$ and $x\leq y$, \\
+	$F(m): F(x) \mapsto F(y)$ and $F(x) \leq F(y)$ (so that $F(m)$ is also monotone), i.e.
+	\[
+	F(m)(F(X)) = F(m(X)) = F(y)
+	\]
+\end{itemize}
+
+Kleene closure itself is a functor from $\mathbf{Set}$ to $\textbf{Set}$, from $A$ to $A^*$, from $f$ to $f^*$. \\
+It's the composition of $U\circ F$ of underlying functor $U:\textbf{Mon} \to \textbf{Set}$ and free functor $F:\textbf{Set} \to \textbf{Mon}$. 
+
+\begin{itemize}
+	\item \emph{arrow category} $\mathbf{C}^{\rightarrow}$ of category $\mathbf{C}$:
+\[
+\text{Obj}\mathbf{C}^{\rightarrow} = \text{Mor}\mathbf{C}
+\]
+
+Given $f:A \to B$, $f':A' \to B'$, morphism (arrow) $g: f \mapsto f'$ is a "commutative square", i.e. $g: \text{Hom}_{\mathbf{C}}(A\to B) \to \text{Hom}_{\mathbf{C}}(A' \to B')$
+
+\[
+\begin{gathered} 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	A & A' \\
+	B & B' \\
+};
+\path[->]
+(m-1-1) edge node [above] {$g_1$} (m-1-2)
+edge node [auto]  {$f$} (m-2-1)
+(m-1-2) edge node [auto]  {$f'$} (m-2-2)
+(m-2-1) edge node [above] {$g_2$} (m-2-2)        
+;
+\end{tikzpicture} 
+\end{gathered}
+\]
+where $g_1, g_2 \in \text{Mor}\mathbf{C}$, \\
+i.e. such a morphism (arrow) is a pair of morphisms (arrows) $g=(g_1,g_2)$ in $\mathbf{C}$ s.t.
+\[
+g_2 \circ f = f'\circ g
+\]
+
+identity morphism (arrow) $1_f$ on object $f:A\to B$ is pair $(1_A, 1_B)$.
+
+Composition of arrows is done componentwise:
+\[
+(h_1,h_2) \circ (g_1, g_2) = (h_1 \circ g_1, h_2\circ g_2)
+\]
+
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	A & A' & A'' \\
+	B & B' & B'' \\ 
+};
+\path[->]
+(m-1-1) edge node [above] {$g_1$} (m-1-2)
+edge[bend left=45] node [above] {$h_1\circ g_1$} (m-1-3)
+edge node [auto] {$f$} (m-2-1)
+(m-1-2) edge node [above] {$h_1$} (m-1-3)
+edge node [auto] {$f'$} (m-2-2)
+(m-1-3) edge node [auto] {$f''$} (m-2-3)
+(m-2-1) edge node [above] {$g_2$} (m-2-2)
+edge[bend right=45] node [below] {$h_2\circ g_2$} (m-2-3)
+(m-2-2) edge node [above] {$h_2$} (m-2-3)  
+;
+\end{tikzpicture} 
+\]
+
+Observe that there are 2 functors:
+
+\[
+\begin{gathered} 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\mathbf{C} & \mathbf{C}^{\rightarrow} & \mathbf{C} \\
+};
+\path[->]
+(m-1-2) edge node [above] {$\textbf{dom}$} (m-1-1)
+edge node [auto]  {$\textbf{cod}$} (m-1-3)
+;
+\end{tikzpicture} 
+\end{gathered}
+\]
+
+
+\end{itemize} 
+
+\subsubsection{Hom functors}
+
+Let $\mathbf{C}$ locally-small category (i.e. category s.t. hom-classes are actually sets and not proper classes).
+
+$\forall \, A, B \in \text{Obj}\mathbf{C}$, 
+
+\begin{definition}[covariant Hom functor]
+	\textbf{covariant Hom functor} $\text{Hom}(A, -): \mathbf{C} \to \mathbf{Set}$
+	\begin{equation}
+	\begin{aligned}
+	& \text{Hom}(A, - ) : \text{Obj}\mathbf{C} \to  2^{\text{Mor}(\mathbf{C})} \\ 
+	& \text{Hom}(A, - ) : X \mapsto \text{Hom}(A,X) \\ 
+	& \text{Hom}(A, - ) : \text{Mor}\mathbf{C} \to (\text{Mor}(\mathbf{C}) \to \text{Mor}(\mathbf{C})) \\
+	& \text{Hom}(A, - ) : \text{Hom}(X,Y) \to (\text{Hom}(A,X) \to \text{Hom}(A,Y)) \\
+	& \text{Hom}(A, - ) : f \mapsto \text{Hom}(A,f) \text{ where } \\
+	& \begin{aligned} \text{Hom}(A,f) : & \text{Hom}(A,X) \to \text{Hom}(A,Y) \\ 
+	& g\mapsto f\circ g \quad \, \forall \, g \in \text{Hom}(A,X) 
+	\end{aligned} 
+	\end{aligned}
+	\end{equation}
+\end{definition}
+
+\begin{claim}
+$\text{Hom}(A, -)$ is a functor.
+\end{claim}
+
+\begin{proof}
+	\begin{itemize}
+		\item \emph{identity}: $\text{Hom}(A,-) : 1_X \mapsto \text{Hom}(A, 1_X) \text{ where }$ 
+		\[
+		\begin{aligned}
+			\text{Hom}(A, 1_X) : & \text{Hom}(A,X) \to \text{Hom}(A,X) \\ 
+			& g\mapsto 1_X \cdot g = g , \quad \, \forall \, g\in \text{Hom}(A,X)
+		\end{aligned}
+		\]
+		Hence
+		\[
+		\text{Hom}(A, -)(1_X) = 1_{\text{Hom}(A,X)} \in (\text{Hom}(A,X) \to \text{Hom}(A,X))
+		\]
+		\item \text{composition}: Let 
+		\[
+		\begin{aligned}
+		& f \in \text{Hom}(X,Y) \\ 
+		& g \in \text{Hom}(Y,Z) \\ 
+		& k \in \text{Hom}(A,X) 
+		\end{aligned}
+		\]
+		\[
+		\text{Hom}(A, g) \circ \text{Hom}(A,f)(k) = \text{Hom}(A,g)(f\circ k) = g\circ f \circ k = (g\circ f)(k) = \text{Hom}(A, g\circ f)(k)
+		\]
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[contravariant Hom functor]
+	\textbf{contravariant Hom functor} $\text{Hom}(-, B): \mathbf{C} \to \mathbf{Set}$
+	\begin{equation}
+	\begin{aligned}
+	& \text{Hom}(-, B ) : \text{Obj}\mathbf{C} \to  2^{\text{Mor}(\mathbf{C})} \\ 
+	& \text{Hom}(-, B ) : X \mapsto \text{Hom}(X,A) \\ 
+	& \text{Hom}(-, B ) : \text{Mor}\mathbf{C} \to (\text{Mor}(\mathbf{C}) \to \text{Mor}(\mathbf{C})) \\
+	& \text{Hom}(-, B ) : \text{Hom}(X,Y) \to (\text{Hom}(Y,B) \to \text{Hom}(X,B)) \\
+	& \text{Hom}(-, B ) : h \mapsto \text{Hom}(h,B) \text{ where } \\
+	& \begin{aligned} \text{Hom}(h,B) : & \text{Hom}(Y,B) \to \text{Hom}(X,B) \\ 
+	& g\mapsto g\circ h \quad \, \forall \, g \in \text{Hom}(Y,B) 
+	\end{aligned} 
+	\end{aligned}
+	\end{equation}
+\end{definition}
+
+$\text{Hom}(A,-)$, $\text{Hom}(-,B)$ are related in a natural manner: for
+\[
+\begin{gathered}
+\begin{aligned}
+& f : B\to B', \, f\in \text{Hom}(B,B') \\ 
+& g:A \to A', \, g\in \text{Hom}(A,A')
+\end{aligned} \\
+\begin{aligned}
+& \text{Hom}(A,f) : \text{Hom}(A, B) \to \text{Hom}(A,B') \\ 
+& \text{Hom}(g, B) : \text{Hom}(A,B) \to \text{Hom}(A', B)
+\end{aligned}
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=4.8em, column sep=4.8em, minimum width=4.2em]
+{
+	\text{Hom}(A,B) & \text{Hom}(A',B) \\
+	\text{Hom}(A,B') & \text{Hom}(A',B') \\
+};
+\path[->]
+(m-1-1) edge node [above] {$\text{Hom}(g,B)$} (m-1-2)
+ edge node [left] {$\text{Hom}(A,f)$} (m-2-1)
+(m-1-2) edge node [right] {$\text{Hom}(A',f)$} (m-2-2)
+(m-2-1) edge node [above] {$\text{Hom}(g,B')$} (m-2-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+
+\begin{definition}[2-variable Hom functor]
+	2-variable Hom functor $\text{Hom}(-,-)$ is a bifunctor.
+	\[
+	\text{Hom}(-,-) : \mathbf{C}^{\text{op}} \times \mathbf{C} \to \textbf{Set} 
+	\]
+	
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=4.8em, column sep=4.8em, minimum width=4.2em]
+{
+	& D \\
+	C & B \\
+	A &  \\
+};
+\path[->]
+(m-2-1) edge node [left] {$f\circ g \circ h$} (m-1-2)
+edge node [above] {$ g \circ h$} (m-2-2)
+edge node [left] {$  h$} (m-3-1)
+(m-2-2) edge node [right] {$f$} (m-1-2)
+(m-3-1) edge node [right] {$g$} (m-2-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+
+$\text{Hom}(-,-)$ is a functor such that:
+\[
+\begin{gathered}
+\begin{aligned} 
+& \text{Hom}(h, f)(g) = f\circ g \circ h \\
+& \text{Hom}(h, f) : \text{Hom}(A, B) \to \text{Hom}(C, D) 
+\end{aligned} \\
+\begin{aligned}
+& h : C \to A, \, h \in \text{Hom}(C,A) \\ 
+& f: B\dot D, \, f \in \text{Hom}(B,D)
+\end{aligned} \\
+(h,f) \in \text{Hom}(C,A) \times \text{Hom}(B,D) \mapsto \text{Hom}(h,f) \in (\text{Hom}(A,B) \to \text{Hom}(C,D)) \\
+\text{Hom}(-,-) : \text{Hom}(C,A) \times \text{Hom}(B,D) \to (\text{Hom}(A,B) \to \text{Hom}(C,D) )
+\end{gathered}
+\]
+and 
+\[
+\begin{aligned}
+& \text{Hom}(-,-) : \text{Obj}\mathbf{C}^{\text{op}} \times \mathbf{C} \\ 
+& \text{Hom}(-,-) : (C,D) \mapsto \text{Hom}(C,D)
+\end{aligned}
+\]
+\end{definition}
+
+
 \section{Construction of Categories}
 
 \subsection{Slice category}
@@ -3551,8 +3906,8 @@ edge[bend right=45] node [below] {$F(g\circ f) = F(g) \circ F(f)$} (m-2-3)
 cf. Construction 4 of Awodey (2010) \cite{Awod2010}, pp. 15.
 
 \textbf{Slice category} $\mathbf{C}/C$, of category $\mathbf{C}$ over object $C \in \text{Obj}\mathbf{C}$, \\
-$\text{Obj}\mathbf{C}/C = f \in \text{Mor}\mathbf{C}$ s.t. $\text{cod}(f) = C$ \\
-$\text{Mor}\mathbf{C}/C = g$ from $f:X \to C$ to $f':X' \to C$ is a morphism (arrow) \, $g: X\to X'$ in $\mathbf{C}$ s.t. $f'\circ g = f$
+$\text{Obj}\mathbf{C}/C \ni f \in \text{Mor}\mathbf{C}$ s.t. $\text{cod}(f) = C$ \\
+$\text{Mor}\mathbf{C}/C \ni g$ from $f:X \to C$ to $f':X' \to C$ is a morphism (arrow) \, $g: X\to X'$ in $\mathbf{C}$ s.t. $f'\circ g = f$
 
 \begin{equation}
 \begin{gathered}
@@ -3598,6 +3953,39 @@ If $\mathbf{C} = \mathbf{P}$ poset category, $p\in \mathbf{P}$ (i.e. $p \in \tex
 \mathbf{P} / p \simeq \downarrow (p)
 \]
 Slice category $\mathbf{P} / p$ is just the "principal ideal" $\downarrow(p)$ of elements $q\in \mathbf{P}$ with $q \leq p$.
+
+\subsubsection{Underlying functor of the slice $F$}
+
+Let $f: A\to C$, $f\in \text{Hom}(A,C) \subset \text{Mor}\mathbf{C}$ and $f\in \text{Obj}\mathbf{C}/C$.  \\
+
+Let $f,g \in \text{Obj}\mathbf{C}/C$, s.t. $f\in \text{Hom}(A,C)$, $g\in \text{Hom}(B,C)$ \\
+$h\in \text{Hom}(f,g) \subseteq \text{Mor}\mathbf{C}/C$ in that \\
+$h : f\to g$ s.t. $h:A \to B$, so that $g\circ h = f$. \\
+
+\textbf{underlying functor of the slice $F$} (notation $U$ in Barr and Wells (2012) \cite{BaWe2012}):
+
+\begin{equation}
+\begin{aligned}
+& F: \mathbf{C} /C \to \mathbf{C} \\ 
+& F:\text{Obj}\mathbf{C}/C \to \text{Obj}\mathbf{C} \\ 
+& F:f\mapsto F(f) = A \\ 
+& F:\text{Mor}\mathbf{C}/C \to \text{Mor}\mathbf{C} \\ 
+& F: h \mapsto h 
+\end{aligned} 
+\end{equation}
+
+Special case: $\mathbf{C} = \textbf{Set}$, $C = S \ni \text{Obj}\textbf{Set}$, i.e. $S$ is a set.
+
+For $f\in \text{Obj}\textbf{Set}/S$, $f: T \to S$, where $T$ is a set, object $f$ is an $S$-indexed set. (e.g. $x(i) \in T \subset \mathbb{R}$, where for some $y\in T \subset \mathbb{R}$, $\exists \, i \in \mathbb{Z}$ s.t. $y\mapsto i$).
+
+\[
+\begin{aligned}
+& F:\textbf{Set}/S \to \textbf{Set} \\ 
+&  F:f \mapsto T
+\end{aligned}
+\]
+
+The underlying functor $F$ forgets the $S$-indexing.
 
 \subsubsection{Coslice category}
 
@@ -3650,8 +4038,145 @@ edge node [left] {$b$} (m-2-2)
 \end{tikzpicture} 
 \]
 
+\subsection{Free monoid}
+
+Given set $S$, e.g. $S = $ "alphabet" $A$, \\
+\emph{free monoid} $S^*$ is set $S^*$. \\
+
+$S^* = $ set of all lists (finite sequences) of elements of $S$, \\
+e.g. set of all \emph{words} (finite sequence of letters) \emph{over $A$ } $= A^*$. \\
+
+\emph{Concatenation}: $* : \, \forall \, w , w^* \in A^*$, $w * w' = ww'$ \\
+empty list (e.g. empty word "-"), $()$, $*$, or $\epsilon$ is a unit. Or we'll use this notation: \texttt{""}
+
+\[
+\Longrightarrow (S^*, *, \texttt{""}) \text{is a monoid. }
+\]
+
+monoid $M$ is \textbf{freely generated} by subset $A$ of $M$, if 
+\begin{enumerate}
+	\item "no junk": $\forall \, m \in M$, $m$ can be written as product of elements of $A$,
+	\[
+	m = a_1 \dots a_n, \, a_i \in A 
+	\]
+	\item "no noise": no "nontrivial" relations hold in $M$, i.e. if $a_1 \dots a_j = a_1' \dots a_k'$, then this is required by the axioms for monoid.
+\end{enumerate}
+
+$A^* = $ Kleene closure.
+
+\subsubsection{Free monoid functor: underlying functor}
+
+\[
+\begin{aligned}
+& F: \textbf{Set} \to \textbf{Mon} \\
+& F: A \in \text{Obj}\textbf{Set} \mapsto \text{ free monoid } F(A) = \text{ Kleene closure } A^* 
+\end{aligned}
+\]
+For $f:A \to B$, $f\in \text{Hom}_{\textbf{Set}}(A, B)$, 
+\[
+\begin{aligned}
+& F: f\mapsto F(f) \text{ s.t. } \\
+& F(f)(w) = F(f)(a_1 \dots a_m) = (f(a_1), \dots f(a_m)) = w' \in B^*, \text{ i.e. } \\
+& F(f) = f^* : F(A) \to F(B)
+\end{aligned}
+\]
 
 
+\section{Universal mapping property}
+
+\subsection{Examples of Universal mapping property}
+
+\subsubsection{Free monoid $A^*$ on set $A$}
+
+$\exists \, i : A \to A^*$, given any monoid $N$, any $f: A \to |N|$ (where $|N|$ is the underlying set of monoid $N$), \\
+$\exists \, ! $ monoid homomorphism $\overline{f}: A^* \to N$ s.t. $|\overline{f}| \circ i = f$.
+
+
+\[
+\begin{aligned}
+\textbf{Mon} : & 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	A^* &  N \\
+};
+\path[->]
+(m-1-1) edge [dotted] node [above] {$\overline{f}$} (m-1-2);
+\end{tikzpicture}  \\
+\quad \\ 
+\textbf{Sets} : & \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	\lvert A^* \rvert &  \lvert N \rvert \\
+	A & \\
+};
+\path[->]
+(m-1-1) edge [dotted] node [above] {$|\overline{f}|$} (m-1-2)
+(m-2-1) edge node [left] {$i$} (m-1-1)
+edge node [right] {$f$} (m-1-2);
+\end{tikzpicture}  
+\end{aligned} 
+\]
+
+\begin{proposition}[Proposition 1.9, Awoday (2010) \cite{Awod2010}]] $A^*$ has universal mapping property of free monoid on $A$.
+	\end{proposition} 
+\begin{proof}
+	Givne $f: A \to |N|$, define $\overline{f} : A^* \to N$, by 
+	\[
+	\begin{aligned}
+	& \overline{f}("") = e_N \\ 
+	& \overline{f}(a_1 \dots a_n) = f(a_1) \dots f(a_n) 
+	\end{aligned}
+	\]	
+	$\overline{f}$ is thus a homomorphism with $\overline{f}(a) = f(a)$ \quad \, $\forall \, a \in A$. \\
+	
+	If $g: A^* \to N$ s.t. $g(a) =f(a)$ \quad \, $\forall \, a \in A$, then $\forall \, (a_1, \dots a_n) \in A^*$, 
+	\[
+	\overline{f}(a_1 \dots a_n) = \overline{f}(a_1) \dots \overline{f}(a_n) = f(a_1) \dots f(a_n) = g(a_1) \dots g(a_n) = g(a_1 \dots a_n)
+	\]
+	since $\overline{f} = g$, $\overline{f}$ unique.
+\end{proof} 
+
+Existence part of UMP is "no noise." \\
+Unique part of UMP is "no junk."
+
+TODO Prop. 1.10, Awodey.
+
+
+
+
+
+
+\exercisehead{1} cf. 3.1.23 Exercises of Barr and Wells (2012) \cite{BaWe2012}
+
+Given semigroup $S$, construct monoid $M = S \cup \lbrace e \rbrace$, $e\notin S$. \\
+Let $e=\lbrace S \rbrace$. \\
+Multiplication in $M$ defined as 
+\begin{enumerate}
+	\item $xy \in S$ if $x,y \in S$ 
+	\item $xe=ex = x \quad \, \forall \, x \in M$
+\end{enumerate}
+$M \equiv S^1$ in semigroup literature.
+
+\begin{enumerate}
+	\item $S^1$ is a monoid (Show). \\
+	If $a,b,c \in S \subset M$, then $(ab)c = a(bc)$ (associative holds by definition of semigroup). \\
+	$\forall \, a \in S$, $ae = ea =a$, by how we defined multiplication. \\
+	$ee = ee =e $ by either definition, or that multiplication in semigroup $S$ is closed.
+	\[
+	\lbrace S \rbrace \lbrace S \rbrace = \lbrace S \rbrace \lbrace S \rbrace = \lbrace S \rbrace
+	\]
+	
+	If for $a,b,c \in M$, any of $a,b$ or $c=e$, use multiplication to show equality for $(ab)c = a(bc)$; e.g.
+	\[
+	\begin{aligned}
+	& (eb) c = (b)\cdot c = bc = e(bc) = bc \\ 
+	& (ae) c = a\cdot c =a \cdot (ec) = a(ec)
+	\end{aligned}
+	\]
+	$S^1$ is a monoid.
+	\item 
+\end{enumerate}
 
 \section{Limits}
 
@@ -8327,6 +8852,9 @@ Carlo Curino. David Spivak. \emph{Category Theory as a Unifying Database Formali
 
 \bibitem{Awod2010}
 Steve Awodey. \textbf{Category Theory} (Oxford Logic Guides) 2nd Edition. Oxford Logic Guides (Book 52). Oxford University Press; 2 edition (August 13, 2010). ISBN-13: 978-0199237180
+
+\bibitem{BaWe2012}
+Michael Barr, Charles Wells. \textbf{Category Theory for Computing Science}. 2012
 
 \bibitem{FrSc2007} 
 Franz Schwabl. \textbf{Quantum Mechanics}. Springer-Verlag Berlin Heidelberg. 2007. 4th Edition. ISBN 978-3-540-71933-5
