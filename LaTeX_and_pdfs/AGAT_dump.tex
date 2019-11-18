@@ -4178,6 +4178,29 @@ $M \equiv S^1$ in semigroup literature.
 	\item 
 \end{enumerate}
 
+\section{Actions, Finite State Machines}
+
+\begin{definition}
+Let monoid $M$ with identity $1$, and a set $S$. \\
+\textbf{action} of $M$ on $S$, $\alpha$, \\
+\begin{equation}
+\begin{aligned}
+& \alpha : M \times S \to S \text{ s.t. } \\  
+& \alpha(1,s) = s \quad \, \forall \, s \in S \\
+& \alpha(mn, s) = \alpha(m, \alpha(n, s)) \quad \, \forall \, m,n \in M, \, s\in S
+\end{aligned}
+\end{equation}
+
+Write $ms \equiv \alpha(m, s)$ then 
+\[
+\begin{gathered} 
+1s = s \\
+(mn) s = m (ns) \quad \, \forall \, m, n \in M, \, s \in S
+\end{gathered}
+\]
+\end{definition}
+
+
 \section{Limits}
 
 \subsection{Pullback}
@@ -4256,9 +4279,9 @@ $M \equiv S^1$ in semigroup literature.
 	
 \end{definition}
 
-Simmons (2011) \ref{Simm2011}
+Simmons (2011) \cite{Simm2011}
 
-cf. 3.3 \emph{Some less simple functors}, pp. 79, of Simmons (2011) \ref{Simm2011}
+cf. 3.3 \emph{Some less simple functors}, pp. 79, of Simmons (2011) \cite{Simm2011}
 
 
 
