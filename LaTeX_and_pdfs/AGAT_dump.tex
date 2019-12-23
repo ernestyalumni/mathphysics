@@ -2328,7 +2328,7 @@ Exer. 7.29 on pp. 459 of Rotman (2010) \cite{JRotman2010}
 	\end{gathered}
 	\]
 	
-	If the notation of Kashiwara and Schapira (2006) \cite{KaSch2006}, 
+	In the notation of Kashiwara and Schapira (2006) \cite{KaSch2006}, 
 	\[
 	\begin{gathered}
 	\begin{tikzpicture}
@@ -2378,9 +2378,7 @@ Exer. 7.29 on pp. 459 of Rotman (2010) \cite{JRotman2010}
 	\prod_i X_i := \lim_{ \longleftarrow } \alpha 
 	\end{equation}
 	
-	When $X_i = X$, $\forall \, i \in I$, denote product by $X^{ \prod I} \equiv X^I$.  
-	
-	
+	When $X_i = X$, $\forall \, i \in I$, denote product by $X^{ \prod I} \equiv X^I$.  	
 \end{definition}
 
 e.g. Cartesian product $P= A\times B$ of 2 sets $A,B$, $A,B \in \text{Obj}\textbf{Sets}$.  
@@ -3007,6 +3005,59 @@ since $S$ assigns domains to the types of $L$, \\
 continuous functions to programs.
 
 This example and Example 9, pp. 9, of Awodey (2010) \cite{Awod2010} are related to the notion of "Cartesian closed category."
+
+From Barr and Wells (2012) \cite{BaWe2012}, a \emph{functional programming language} $L$ has
+\begin{enumerate}
+	\item primitive data types (built into the language) 
+	\item constants of each type
+	\item operations, which are functions between types
+	\item constructors, which are applied to data types and operations, to produce derived data types and operations of the language.	
+\end{enumerate}
+
+	For a $\mathbf{C}(L)$ category corresponding to functional programming language $L$, \\
+	
+	$\mathbf{C}(L)$ category corresponding to functional programming language $L$, \\
+	$\text{Obj}\mathbf{C}(L) = \lbrace \text{ types of $L$ } \rbrace$ \\
+	$\text{Mor}\mathbf{C}(L) = \lbrace \text{ operations (functions; primitive and derived) of $L$ } \rbrace$ \\
+
+identity: $\forall \, $ type $T \in \text{Obj}\mathbf{C}(L)$, $\exists \, 1_T :T \to T$ i.e. $1_T \in \text{Hom}(T,T)$. \\
+
+composition: $\forall \, $ types $T,U,V \in \text{Obj}\mathbf{C}(L)$, defines composition 
+\[
+\begin{aligned}
+\text{Hom}(T,U) \times \text{Hom}(U,V) & \to \text{Hom}(T,V) \\ 
+(f,g) & \mapsto g \circ f
+\end{aligned}
+\]
+
+Assume $L$ has a do nothing operation $1_T$, and composition constructor, $\text{Hom}(T,U) \times \text{Hom}(U,V) \to \text{Hom}(T, V)$. \\
+
+Add additional type $1$ s.t. $\forall \, $ type $T \in \text{Obj}\mathbf{C}(L)$, $\exists \, !$ operation (function) to $1, T \to 1$ \\
+Interpret each constant $c$ of type $A$ as arrow (morphism) $c:1\to A$.  \\
+
+As a concrete example (cf. Example 2.2.5 of Barr and Wells (2012) \cite{BaWe2012}), suppose a simple language with 3 data types, \texttt{int}, \texttt{bool}, \texttt{char}. \\
+
+For \texttt{int}, $\exists \, $ constant $0:1 \to \texttt{int}$, consider $\texttt{succ}:\texttt{int} \to \texttt{int} \in \text{Hom}(\texttt{int}, \texttt{int})$, \\
+For \texttt{bool}, $\exists \, $ constants $\texttt{true} : 1 \to \texttt{bool}$, $\texttt{false} : 1 \to \texttt{bool}$; consider $\neg \in \text{Hom}(\texttt{bool}, \texttt{bool})$, s.t.
+\[
+\begin{aligned}
+& \neg \circ \texttt{true} = \texttt{false} \\ 
+& \neg \circ \texttt{false} = \texttt{true} 
+\end{aligned}
+\]
+
+For \texttt{char}, $\exists \, $ constants $c:1 \to \texttt{char}$, \, $\forall \, \texttt{char} c$.
+
+Since $\forall \, T,U \in \text{Obj}(\mathbf{C}(L))$, $\exists \, \text{Hom}(T,U) \subseteq \text{Mor}\mathbf{C}(L)$. So consider $\texttt{ord}:\texttt{char} \to \texttt{int}$, $\texttt{chr}: \texttt{int} \to \texttt{char}$, s.t. 
+\[
+\texttt{char} \circ \texttt{ord} = 1_{\texttt{char}}
+\]
+
+So $\text{Obj}\mathbf{C}(L) = \lbrace \texttt{int}, \texttt{bool}, \texttt{char}, 1 \rbrace$, \\
+\phantom{So } $\text{Mor}\mathbf{C}(L)$ consists of all programs.
+
+See 5.3.14 Record Types and 5.7.6, 14.2 for flow of control in Barr and Wells (2012) \cite{BaWe2012} to complete the programming language.
+
 \item \textbf{Groups}, cf. pp. 11, Def. 1.4, Sec. 1.5 \textbf{Isomorphisms}, Awodey (2010) \cite{Awod2010}.
 
 A \emph{group} $G$ is a monoid with inverse $g^{-1}$, $\forall \, g \in G$. \\
@@ -3954,6 +4005,24 @@ If $\mathbf{C} = \mathbf{P}$ poset category, $p\in \mathbf{P}$ (i.e. $p \in \tex
 \]
 Slice category $\mathbf{P} / p$ is just the "principal ideal" $\downarrow(p)$ of elements $q\in \mathbf{P}$ with $q \leq p$.
 
+\subsubsection{$S$-indexed set $X$ and indexed functions as morphisms of slice category $\mathbf{Set}/S$}
+
+\begin{definition}[typed set]
+	$S$-indexed set is set $X$ together with function $\tau : X \to S$. \\
+	
+	If $x\in X$, $\tau(x) = s$, then $x$ is of \textbf{type} $s$, so $X$ is a \textbf{typed set}. \\
+	
+	$\lbrace \tau^{-1}(s) | s \in S \rbrace$, $\tau^{-1}(s) \subset X \equiv $ family of sets indexed by $S$. \\
+	
+\end{definition} 
+cf. 2.6.11 of Barr and Wells (2012) \cite{BaWe2012}
+
+\begin{definition}
+	set $X$ typed by $S \to $ set $X'$ typed by $S$ that preserves typing (element of type $s\mapsto $ element of type $s$), is exactly an arrow (morphism) of slice category $\mathbf{Set}/S$, called \textbf{indexed function} or \textbf{typed function}.
+\end{definition}
+
+cf. 2.6.13 Indexed functions of Barr and Wells (2012) \cite{BaWe2012}
+
 \subsubsection{Underlying functor of the slice $F$}
 
 Let $f: A\to C$, $f\in \text{Hom}(A,C) \subset \text{Mor}\mathbf{C}$ and $f\in \text{Obj}\mathbf{C}/C$.  \\
@@ -4199,6 +4268,583 @@ Write $ms \equiv \alpha(m, s)$ then
 \end{gathered}
 \]
 \end{definition}
+
+\begin{definition}[equivariant map]
+	Let monoid $M$ with actions on sets $S,T$. \\
+	\textbf{equivariant map} $\phi:S \to T$ s.t. $m\phi(s) = \phi(ms)$
+\end{definition}
+
+Suppose 2 equivariant maps $\phi_{TS}$, $\phi_{UT}$, sets $S,T,U$ s.t. monoid $M$ has actions on $S,T,U$: 
+\[
+\begin{aligned}
+& \phi_{TS} : S \to T \\ 
+& \phi_{UT} : T \to U
+\end{aligned}
+\]
+
+\[
+m\phi_{UT} \circ \phi_{TS}(s) = m \phi_{UT}(\phi_{TS}(s)) = \phi_{UT}(m\phi_{TS}(s)) = \phi_{UT} \phi_{TS} (ms) 
+\]
+
+Let $\phi_{UT} \circ \phi_{TS} \equiv \phi_{US}$. $\phi_{US}$ equivariant.
+
+Associativity: given equivariant maps 
+\[
+\begin{aligned}
+& \phi_{TS} : S \to T \\ 
+& \phi_{UT} : T \to U \\ 
+& \phi_{VU} : U \to V 
+\end{aligned}
+\]
+
+\[
+m \phi_{VU} \phi_{UT} \phi_{TS}(s) = m \phi_{VU} (\phi_{UT} \phi_{TS}(s)) = \phi_{VU} (m \phi_{UT} \phi_{TS}(s)) = (\phi_{VU} \phi_{UT}) (\phi_{TS}(ms))
+\]
+
+Thus, equivariant maps obey associativity on $\forall \, S \in \text{Obj}(M-\mathbf{Act})$, (set $S$ that $M$ has action on) \\
+category $M-\mathbf{Act}$, $\text{Obj}(M-\mathbf{Act}) = \lbrace \text{ sets that monoid $M$ has action on }\rbrace$ \\
+\phantom{category $M-\mathbf{Act}$,} $\text{Mor}(M-\mathbf{Act}) = \lbrace \text{ equivariant maps $\phi$ s.t. } \forall \, m \in M, \, m\phi(s) = \phi(ms) \rbrace$.
+
+\subsection{Actions as functors}
+
+Let $\alpha$ action of monoid $M$ on set $S$. \\
+
+Consider $\mathbf{C}(M)$ (monoid as a category; i.e. $\text{Obj}\mathbf{C}(M) = \lbrace M \rbrace, \, \text{Mor}\mathbf{C}(M) = M$). \\
+action $\alpha$ determines function $F_{\alpha} : \mathbf{C}(M) \to \mathbf{Set}$, 
+\begin{enumerate}
+	\item $F_{\alpha}(*) = S \equiv F_{\alpha}(\lbrace M \rbrace ) = S$
+	\item  $F_{\alpha}(m) = s \mapsto \alpha(m, s) \, \forall \, m \in M, s \in S$
+\end{enumerate}
+i.e.
+
+\[
+\begin{gathered}
+\begin{aligned}
+& F_{\alpha} : \text{Obj}\mathbf{C}(M) \to \text{Obj}\mathbf{Set} \\ 
+& F_{\alpha} : \lbrace M \rbrace \mapsto S 
+\end{aligned} \\
+\begin{aligned}
+& F_{\alpha} : \text{Mor}\mathbf{C}(M) \to \text{Mor}\textbf{Set} \\ 
+& F_{\alpha} : m \mapsto (s\mapsto \alpha(m,s)) \in \text{Hom}(S,S)
+\end{aligned}
+\end{gathered}
+\]
+
+Barr and Wells (1998) \cite{BW1998} uses this notation: $\mathcal{M} = (A, S, s_0, \phi)$ for a "machine." Compare this to the notation used in these notes:
+\[
+\text{FSM} = (\Sigma, S, s_0, \delta)
+\]
+
+Take note that the finite set or input alphabet $A \equiv \Sigma$ is \textbf{not} a monoid. \\
+
+$\forall \, $ string $\equiv $ finite sequence $\equiv $ "word" induces sequence of transitions in FSM starting at $s_0$, and ending on some final state; precisely, define
+\[
+\begin{aligned}
+& \delta^* : \Sigma^* \times S \to S \\ 
+& \delta^*("", s) = s \quad \, \forall \in s \in S \\ 
+& \delta^*((a)w, s) = \delta(a, \delta^*(w,s)) \quad \, \forall \, s \in S, \, w\in \Sigma^*, \, a\in A
+\end{aligned}
+\]
+
+Recall free monoid $\Sigma^*$, $(\Sigma^*, *, "")$ where $\Sigma^* \in \text{Obj}\mathbf{Set}$ is a set. \\
+
+\begin{proposition}
+	$\delta^*$ is an action of $\Sigma^*$ on $S$.
+\end{proposition}
+
+\begin{proof}
+	Assume
+	\[
+	\delta^*(wv, s) = \delta^*(w, \delta^*(v,s))
+	\]	
+	then
+	\[
+	\begin{gathered}
+		\delta^*((a)wv, s) = \delta(a, \delta^*(wv, s)) = \delta(a, \delta^*(w, \delta^*(v,s))) = \delta^*(aw, \delta^*(v,s)) 
+	\end{gathered}
+	\]
+1st., 3rd. equalities from $\delta^*((a)w, s) = \delta(a, \delta^*(w,s))$ (definition of $\delta^*$). \\
+2nd. equality is from inductive hypothesis.
+\end{proof}
+
+\textbf{recognizer} - subset $L\subseteq A^*$ of strings which drive FSM from $s_0$ (start state) to acceptor state, is then set of strings, or language, which is \textbf{recognized} by machine FSM, this is the machine as \textbf{recognizer}.
+
+\textbf{transducer} - FSM outputs string of symbols (not necessarily in same alphabet) $\forall \, $ state it enters, or each transition it undergoes.
+
+\subsection{Set-valued functors as actions}
+
+cf. 3.2.6 of Barr and Wells (2012) \cite{BaWe2012}. 
+
+
+\section{Products, Coproducts}
+
+\subsection{Sources}
+
+It appears Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{AHS2004} defines \emph{sources} to simply give a name and formalize a tuple.  
+
+\begin{definition}[source]
+	\textbf{source} is a tuple: $(a, (f_i)_{i\in I})$, $f_i:A\to A_i$
+\end{definition}
+
+\subsection{Products}
+
+\begin{definition}[Products]\label{Def:Products}
+	
+	(in Turi's notation \cite{Turi2001})
+	
+	Given objects $C_1,C_2$ of category $\mathbb{C}$, \textbf{product} (if exists) consists of object $C_1 \times C_2$ of $\mathbb{C}$ and $\begin{aligned} & \quad \\
+	& \pi_1 : C_1 \times C_2 \to C_1 \\
+	& \pi_2: C_1 \times C_2 \to C_2 \end{aligned}$ s.t. \\
+	$\forall \, $ object $A$ of $\mathbb{C}$, \, $\forall \, \begin{aligned} & \quad \\
+	& f : A \to C_1 \\
+	& g : A \to C_2 \end{aligned}$ \quad \, $\exists \, ! \quad \, \langle f,g \rangle : A \to C_1 \times C_2$ s.t. $\begin{aligned} & \quad \\
+	& f = \pi_1 \circ \langle f,g \rangle \\
+	& g = \pi_2 \circ \langle f,g \rangle \end{aligned}$, i.e. 
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& A & \\ 
+		C_1  & C_1 \times C_2  &  C_2  \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$f$} (m-2-1)
+	edge node [above] {$g$} (m-2-3)
+	(m-2-2) edge node [below] {$\pi_1$} (m-2-1)
+	edge node [below] {$\pi_2$} (m-2-3)
+	;
+	\path[dashed] 
+	(m-1-2) edge node [right] {$\langle f,g\rangle$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	
+	(compare with Leinster (2014) \cite{Lein2014})
+	
+	Let category $\mathcal{A}$, $X,Y \in \mathcal{A}$, \textbf{product} of $X,Y$ consists of object $P$ and maps
+	
+	(compare this definition with Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{AHS2004} and their notation)
+	
+	\textbf{product} consisting of 
+	\[
+	\begin{aligned}
+	C_1 \times C_2 \times \dots \times C_{\mathcal{N}} \in \text{Obj}\mathbf{C} \\
+	\pi_1 : C_1 \times C_2 \times \dots \times C_{\mathcal{N}} \to C_1 \\ 
+	\pi_2 : C_1 \times C_2 \times \dots \times C_{\mathcal{N}} \to C_2 \\ 
+	\vdots \\
+	\pi_{\mathcal{N}} : C_1 \times C_2 \times \dots \times C_{\mathcal{N}} \to C_{\mathcal{N}} \\ 
+	\end{aligned}
+	\]
+	
+	is s.t. 
+	
+	$\forall \, \begin{aligned}  \quad \\ 
+	A \in \text{Obj}\mathbf{C} \\
+	f_1 : A \to C_1 \\
+	f_2 : A \to C_2 \\
+	\vdots \\
+	f_{\mathcal{N}} : A \to C_{\mathcal{N}} \end{aligned}$, 
+	
+	$\exists \, ! \langle f_1 ,f_2 , \dots , f_{\mathcal{N}} \rangle : A \to C_1 \times C_2 \times \dots \times C_{\mathcal{N}}$ s.t.
+	\[
+	\begin{aligned}
+	f_1 = \pi_1 \circ \langle f_1 , f_2 , \dots f_{\mathcal{N}} \rangle \\ 
+	f_2 = \pi_2 \circ \langle f_1 , f_2 , \dots f_{\mathcal{N}} \rangle \\ 
+	\vdots  \\ 
+	f_{\mathcal{N}} = \pi_{\mathcal{N}} \circ \langle f_1 , f_2 , \dots f_{\mathcal{N}} \rangle 
+	\end{aligned}
+	\]
+\end{definition}
+
+Let's use the notation of Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{AHS2004}. Also note that these references \emph{assume} the \emph{universal mapping property} in the definition of a \textbf{product}.
+
+\begin{definition}[Product (assuming univeral mapping property)]
+	\begin{equation}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=4em, column sep=4em, minimum width=3em]
+{
+	& & A \\
+	P & A_i & \\
+	& A_{i'} & \\
+};
+\path[->]
+(m-2-1) edge node [above] {$p_i$} (m-2-2)
+edge node [above] {$p_{i'}$} (m-3-2)
+(m-1-3) edge node [above] {$f_i$} (m-2-2)
+edge node [above] {$f_{i'}$} (m-3-2)
+;
+\path[dashed,->]
+(m-1-3) edge node [above] {$f$} (m-2-1)
+;
+\end{tikzpicture} 
+\end{gathered}
+\end{equation}
+For the case of only 2 objects associated with $I$, 
+	\begin{equation}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  & \\ 
+	A_1  & P  & A_2   \\
+};
+\path[->]
+(m-1-2) edge node [above] {$f_1$} (m-2-1)
+edge node [above] {$f_2$} (m-2-3)
+(m-2-2) edge node [above] {$p_1$} (m-2-1)
+edge node [above] {$p_2$} (m-2-3)
+;
+\path[dashed,->]
+(m-1-2) edge node [right] {$f$} (m-2-2)
+;
+\end{tikzpicture} 
+\end{gathered}
+\end{equation}
+
+
+\textbf{product} $P, \lbrace p_i, A_i \rbrace_{i\in I}$ s.t. $\forall \, A, \lbrace f_i, A_i \rbrace_{i \in I}$, $\exists \, !$ morphism $f:A \to P$ s.t. $f_i = p_i \circ f$, $i\in I$.
+\end{definition}
+This definition is the same one used in pp. 35, Def. 2.16, of Awodey (2010) \cite{Awod2010}.
+
+Consider the definition that doesn't use the universal mapping property from Pareigis (2004) \cite{Pare2004}. 
+
+\begin{definition}[Product without universal property]
+	Given objects $A, B \in \text{Obj}\mathbf{C}$, category $\mathbf{C}$. 
+	
+	Object $A\times B$, morphisms $p_A, p_B$, $\begin{aligned} & \quad \\ 
+		& p_A : A \times B \to A \\ 
+		& p_B : A\times B \to B
+		\end{aligned}$ is called a (not the) (categorical) product of $A, B$, projections $p_A, p_B$. 
+		
+		If $\forall \, $ object $T\in \text{Obj}\mathbf{C}$, $\exists \, $ isomorphism
+
+		\begin{equation}
+			\text{Mor}_{\mathbf{C}}(T, A \times B)  \cong \text{Mor}_{\mathbf{C}}(T, A) \times \text{Mor}_{\mathbf{C}}(T,B)		
+		\end{equation}
+(where $\text{Mor}_{\mathbf{C}}$ is the Cartesian product) s.t.
+
+\begin{equation}\label{Eq:ProductDefinitionWithoutUniversalPropertyDiagram}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=4em]
+{
+	& \text{Mor}_{\mathbf{C}}(T, A\times B)  & \\ 
+	\text{Mor}_{\mathbf{C}}(T, A)  & \text{Mor}_{\mathbf{C}}(T, A) \times \text{Mor}_{\mathbf{C}}(T, B)  & \text{Mor}_{\mathbf{C}}(T, B)   \\
+};
+\path[->]
+(m-1-2) edge node [left] {$\text{Mor}_{\mathbf{C}}(T,p_A)$} (m-2-1)
+edge node [right] {$\text{Mor}_{\mathbf{C}}(T,p_B)$} (m-2-3)
+(m-2-2) edge node [above] {$p_{\text{Mor}_{\mathbf{C}}(T, A)}$} (m-2-1)
+edge node [above] {$p_{\text{Mor}_{\mathbf{C}}(T, B)}$} (m-2-3)
+;
+\path[dashed,->]
+(m-1-2) edge node [right] {$h$} (m-2-2)
+;
+\end{tikzpicture} \\
+\quad \\ 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=4em]
+{
+	& u  & \\ 
+	f  & h(u) = (f,g)  & g   \\
+};
+\path[|->]
+(m-1-2) edge node [left] {$\text{Mor}_{\mathbf{C}}(T,p_A)$} (m-2-1)
+edge node [right] {$\text{Mor}_{\mathbf{C}}(T,p_B)$} (m-2-3)
+(m-2-2) edge node [above] {$p_{\text{Mor}_{\mathbf{C}}(T, A)}$} (m-2-1)
+edge node [above] {$p_{\text{Mor}_{\mathbf{C}}(T, B)}$} (m-2-3)
+;
+\path[dashed,|->]
+(m-1-2) edge node [right] {$h$} (m-2-2)
+;
+\end{tikzpicture} 
+\end{gathered}
+\end{equation}
+where $\begin{aligned} & \quad \\ 
+& \text{Mor}_{\mathbf{C}}(T, p_A)(u) = f = p_{\text{Mor}_{\mathbf{C}}(T, A)} h(u) \\
+& \text{Mor}_{\mathbf{C}}(T, p_B)(u) = g = p_{\text{Mor}_{\mathbf{C}}(T, B)} h(u) \end{aligned}$
+\end{definition}
+
+\begin{proposition}[Equivalent definition of product by universal mapping property]
+Given objects $A, B \in \text{Obj}\mathbf{C}$, category $\mathbf{C}$, object $A\times B$, morphisms $\begin{aligned} & \quad \\ 
+	p_A: A\times B \to A \\
+	p_B: A\times B \to B \end{aligned}$ is a (categorical) product, \\
+	
+iff $\forall \, $ object $T \in \text{Obj}\mathbf{C}$, $\forall \, \begin{aligned} & \quad \\ 
+& f: T\to A \\
+& g: T \to B \end{aligned}$, $\exists \, !$ morphism $(f,g) : T \to A\times B$, s.t. 
+
+\begin{equation}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& T  & \\ 
+	A  & A\times B  & B   \\
+};
+\path[->]
+(m-1-2) edge node [left] {$f$} (m-2-1)
+edge node [right] {$g$} (m-2-3)
+(m-2-2) edge node [above] {$p_A$} (m-2-1)
+edge node [above] {$p_B$} (m-2-3)
+;
+\path[dashed,->]
+(m-1-2) edge node [left] {$(f,g)$} (m-2-2)
+;
+\end{tikzpicture} 
+\end{equation}	
+\end{proposition}
+cf. Proposition "Characterization of products by universal mapping property", 2.7.4 in Pareigis (2004) \cite{Pare2004}.
+
+\begin{proof}
+$\Longleftarrow$ : \\
+
+	Let $(A\times B, p_A, p_B)$ be a "product" of $A\times B$, obeying the universal (mapping) property. Let $T\in \text{Obj}\mathbf{C}$. Let $u\in \text{Mor}_{\mathbf{C}}(T, A\times B)$. \\
+	
+	Define $\begin{aligned} & \quad  \\
+	& f:= p_A \circ u : T \to A \\ 
+	& g:= p_b \circ u : T \to B\end{aligned}$  \\
+	Then $(f,g) \in \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)$. \\
+	
+	Define $h(u):= (f,g) \in \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)$. \\
+	Then, 
+	\[
+	\begin{aligned}
+		& \text{Mor}_{\mathbf{C}}(T,p_A)(u) = p_A \circ u = f = p_{\text{Mor}_{\mathbf{C}}(T,A)} \circ h(u) \\	
+		& \text{Mor}_{\mathbf{C}}(T,p_B)(u) = p_B \circ u = g = p_{\text{Mor}_{\mathbf{C}}(T,B)} \circ h(u) \\	
+	\end{aligned}	
+	\]
+	(so Diagram \ref{Eq:ProductDefinitionWithoutUniversalPropertyDiagram} commutes). \\
+	
+	Show: $h$ bijective. \\
+	Construct inverse map $k$:
+	\[
+	\begin{aligned}
+		& k : \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B) \to \text{Mor}_{\mathbf{C}}(T,A\times B) \\
+		& k((f,g))  := u
+	\end{aligned}
+	\]
+	where $(f,g) \in \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)$
+	
+	By universal (mapping) property, $\exists \, ! \, u :T\to A\times B$ s.t. $\begin{aligned} & \quad \\ 
+	& p_A \circ u=f \\
+	& p_B \circ u = g \end{aligned}$.
+	
+	Let $(f,g) \in \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)$. \\
+	Then $(h\circ k)((f\circ g)) = h(u) = (p_A\circ u, p_B \circ u) = (f,g)$. Hence $h\circ k =1$ or i.e. $h\circ k 1_{\text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)}$. \\
+	
+	Let $u\in \text{Mor}_{\mathbf{C}}(T,A\times B)$. \\
+	Then $(k\circ h)(u) = k((f, g)) = k((p_A \circ u, p_B \circ u))= u'$ where $u':T\to A\times B$ and \\
+	\[
+	\begin{aligned} 
+	& p_A \circ u' = p_A \circ k((p_A \circ u, p_B \circ u)) = p_A \circ k ((f,g)) = p_A \circ u \quad \, (\text{since $k((f,g)) := u$}) \\
+	& p_B \circ u' = p_B \circ k((p_A \circ u, p_B \circ u)) = p_B \circ k ((f,g)) = p_B \circ u \quad \, (\text{since $k((f,g)) := u$}) 
+	\end{aligned} 
+	\]
+	2nd. equality is by universal (mapping) property.
+
+$\Longrightarrow u= u'$ (by component-wise equality), and \\
+$k\circ h = 1_{\text{Mor}_{\mathbf{C}}(T,A\times B)}$. \\
+$\Longrightarrow h$ isomorphic. \\
+
+$\Longrightarrow$ : \\
+
+Given morphisms
+\[
+\begin{aligned}
+& f:T \to A \\ 
+& g:T \to B
+\end{aligned}
+\]
+then $(f, g) \in \text{Mor}_{\mathbf{C}}(T, A) \times \text{Mor}_{\mathbf{C}}(T,B)$.
+
+$\forall \, $ object $T\in \text{Obj}\mathbf{C}$, $\exists \, $ isomorphism $h$ s.t. $\text{Mor}_{\mathbf{C}}(T, A\times B) \cong \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)$, \\
+Then $u:=h^{-1}((f, g))$ is a unique morphism, $u\in \text{Mor}_{\mathbf{C}}(T, A\times B)$. \\
+Also, by Diagram \ref{Eq:ProductDefinitionWithoutUniversalPropertyDiagram}, 
+\[
+\begin{aligned}
+& \text{Mor}_{\mathbf{C}}(T,p_A)(u) = f = p_{\text{Mor}_{\mathbf{C}}(T,A)} \circ h(u) \\ 
+& \text{Mor}_{\mathbf{C}}(T,p_B)(u) = f = p_{\text{Mor}_{\mathbf{C}}(T,B)} \circ h(u) 
+\end{aligned}
+\]
+
+Now
+\[
+\begin{aligned}
+& \text{Mor}_{\mathbf{C}}(T, p_A)(u) = p_A \circ u \\
+& \text{Mor}_{\mathbf{C}}(T, p_B)(u) = p_B \circ u \\
+\end{aligned}
+\]
+(by definition).
+
+So
+\[
+\begin{aligned} 
+& f = p_A \circ u \\ 
+& g = p_B \circ u
+\end{aligned} 
+\]
+So universal mapping property is satisfied.
+\end{proof}
+
+Thus,
+
+\begin{definition}[Product, generalized, assuming universal property]
+	Give $A_i \in \text{Obj}\mathbf{C}$, $i\in I$, category $\mathbf{C}$, \\
+	\textbf{product} is object $\prod_{i \in I} A_i \in \text{Obj}\mathbf{C}$, morphisms $p_j : \prod_{i\in I} A_i \to A_j$, $j\in I$, \\
+	s.t. $\forall \, $ object $A\in \in \text{Obj}\mathbf{C}$, \\
+	$\exists \, !$ morphism $\langle f_i \rangle : A \to \prod_{i\in I} A_i$, \\
+	s.t. 
+\begin{equation} 
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  \\ 
+	A_j  & \prod_{i\in I} A_i   \\
+};
+\path[->]
+(m-1-2) edge node [left] {$f_j$} (m-2-1)
+(m-2-2) edge node [below] {$p_j$} (m-2-1)
+;
+\path[dashed,->]
+(m-1-2)        edge node [right] {$\langle f_i \rangle$} (m-2-2)
+;
+\end{tikzpicture}  
+\end{equation} 	
+i.e. $\pi_j \circ \langle f_i \rangle = f_j \, \forall \, i,j \in I$
+\end{definition}
+
+\subsubsection{Example: Set always has products}
+
+$\forall \, $ sets $X,Y \in \text{Obj}(\text{Set})$, $\exists \, $ product $X\times Y \in \text{Obj}(\text{Set})$.  
+
+Let $A \in \text{Obj}(\text{Set})$, $\begin{aligned} & \quad \\
+& f_1 : A \to X \\
+& f_2 : A \to Y \end{aligned}$ \qquad \, Define $\begin{aligned} & \langle f_1, f_2 \rangle : A \to X \times Y  \\
+& \langle f_1 ,f_2 \rangle (a) = (f_1(a), f_2(a)) \end{aligned}$
+
+Then $\begin{aligned} & \quad \\
+& \pi_1 \circ \langle f_1 , f_2 \rangle (a) = f_1(a) \\
+& \pi_2 \circ \langle f_1, f_2 \rangle (a) = f_2(a) \end{aligned}$ \qquad \, $\Longrightarrow \begin{aligned}  & \quad \\
+& \pi_1 \circ \langle f_1 , f_2 \rangle = f_1 \\
+& \pi_2 \circ \langle f_1,f_2 \rangle = f_2 \end{aligned}$
+
+Suppose $f': A \to X\times Y$ s.t. $\begin{aligned} & \quad \\
+& \pi_1 \circ f' = f_1 \\
+& \pi_2 \circ f' = f_2 \end{aligned}$
+
+Write $f'(a) = (x,y)$
+\[
+\begin{aligned}
+& f_1(a) = \pi_1 \circ f'(a) = \pi_1(x,y) =x \\ 
+& f_2(a) = \pi_2 \circ f'(a) = \pi_2(x,y) =y \\ 
+\end{aligned} \qquad \, \Longrightarrow f'(a) = (f_1(a), f_2(a)) = \langle f_1, f_2 \rangle (a)
+\]
+$\langle f_1, f_2 \rangle $ unique.  
+
+\begin{proposition}
+	If product $(A_1 \times \dots \times A_{\mathcal{N}} \xrightarrow{ \pi_i } A_i )_{i\in I}$, if $\exists \,  i_0 \in I$ s.t. $\text{Hom}(A_{i_0}, A_i) \neq \emptyset$, \, $\forall \, i \in I$, \\
+	then $\pi_{i_0}$ \emph{retraction }
+\end{proposition}
+
+\begin{proof}
+	$\forall \, i \in I$, choose $f_i \in \text{Hom}(A_{i_0}, A_i)$ with $f_{i_0} = 1_{A_{i_0}}$.  
+	
+	Then $\langle f_i \rangle : A_{i_0} \to A_1 \times \dots \times A_{\mathcal{N}}$ is a morphism s.t. 
+	\[
+	\pi_{i_0} \circ \langle f_i \rangle = f_{i_0} = 1_{A_{i_0}}
+	\]
+\end{proof}
+
+
+Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{AHS2004} and their notation) calls a \textbf{sink} what Leinster (2014) \cite{Lein2014} calls a \textbf{cocone}.  
+\begin{definition}
+	\textbf{sink} $((f_i)_{i\in I}, A) \equiv (f_i , A)_I \equiv (A_i \xrightarrow{ f_i } A)_I$, object $A$, family of morphisms $f_i : A_i \to A$
+\end{definition}
+
+For the \emph{coproduct}, consider this enlightening comparision:
+\[
+\begin{aligned}
+\begin{gathered}
+\text{ product } ( \prod_{i\in I } A_i, \pi_j )_{j \in I} \\ 
+\text{ projection } \pi_j : \prod_{i\in I} A_i \to A_j  \\
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  \\ 
+	A_j  & \prod_{i\in I} A_i   \\
+};
+\path[->]
+(m-1-2) edge node [above] {$f_j$} (m-2-1)
+edge node [right] {$\langle f_i \rangle$} (m-2-2)
+(m-2-2) edge node [below] {$\pi_j$} (m-2-1)
+;
+\end{tikzpicture}  \\
+C\xrightarrow{ \langle f, g \rangle } A\times B \\
+\prod_{i \in I } f_i  \, , \text{ or if } i = \lbrace 1,2 \rbrace, \, f\times g
+\end{gathered} & \qquad \, 
+\begin{gathered}
+\text{ coproduct } ( \mu_j, \coprod_{i\in I } A_i  )_{j \in I} \\ 
+\text{ injection } \mu_j : A_j \to \coprod_{i\in I} A_i  \\
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  \\ 
+	A_j  & \coprod_{i\in I} A_i   \\
+};
+\path[->]
+(m-2-1) edge node [above] {$f_j$} (m-1-2)
+edge node [above] {$\mu_j$} (m-2-2)
+(m-2-2) edge node [right] {$[f_i]$} (m-1-2)
+;
+\end{tikzpicture}  \\
+C\xleftarrow{ [ f, g ] } A +  B \\
+\coprod_{i \in I } f_i  \, , \text{ or if } i = \lbrace 1,2 \rbrace, \, f +  g
+\end{gathered}
+\end{aligned}
+\]
+
+\subsubsection{Examples (of coproducts)} 
+
+\begin{itemize}
+	\item if $(A_i)_I$ pairwise-disjoint family of sets, then $(\mu_j, \bigcup_{i\in I} A_i)_{j\in I}$ is coproduct in $\text{Set}$.  \\
+	If $(A_i)_I$ arbitrary set-indexed family of sets, then it can be ``made disjoint'' by pairing each $A_i$ with index $i$, i.e. by working with $A_i \times \lbrace i \rbrace$ rather than $A_i$.  
+	
+	So $\bigcup_{i\in I } (A_i \times \lbrace i \rbrace)$ disjoint.  Consider 
+	\[
+	\begin{aligned}
+	&  \mu_j : A_j \to \bigcup_{i \in I} A_i \times \lbrace i \rbrace \\ 
+	&  \mu_i(a) = (a,j)
+	\end{aligned}
+	\]
+	$(\mu_j, \bigcup_{i\in I} A_i \times \lbrace i \rbrace )_{j\in I}$ is a coproduct in $\text{Set}$.  
+	
+	Indeed, given $\begin{aligned} & \quad \\
+	& f_j:A_j \to A \\
+	& f_j(a) \in A \end{aligned}$, 
+	\[
+	\begin{aligned}
+	& [f_i] : \coprod_{i\in I} A_i \times \lbrace i \rbrace \to A \\ 
+	& [f_i]\circ \mu_j = f_j 
+	\end{aligned}
+	\]
+	where
+	\[
+	f_j(a) = [f_i]\circ \mu_j(a) = [f_i](a,j) = f_j(a)
+	\]
+	\item  $\text{Top}$ coproducts are ``topological sums''; they're ``concrete'' coproducts (Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{AHS2004})
+	\item $\text{Vec}$ (nonconcrete) coproducts called \emph{direct sums}
+	
+	direct sum $\bigoplus_{i\in I} A_i$ of vector spaces $A_i$ is subspace of direct product $\prod_{i\in I} A_i$ \\
+	consisting of all elements $(a_i)_{i\in I}$ with finite carrier (i.e. $\lbrace i \in I | a_i \neq 0 \rbrace$ is finite), \\
+	\qquad injections \[
+	\begin{aligned} & \quad \\
+	& \mu_j : A_j \to \bigoplus_{i\in I } A_i  \\
+	& \mu_j(a) = (a_i)_{i\in I} \text { with } a_i = \begin{cases} a & \text{ if } i = j  \\ 0 & \text{ if } i \neq j \end{cases}
+	\end{aligned}
+	\]
+	
+	\item $\text{Grp}$ has nonconcrete coproducts, ``free products''
+\end{itemize}
 
 
 \section{Limits}
@@ -8842,6 +9488,15 @@ Ji\v{r}\'{i} Ad\'{a}mek, Horst Herrlich, George E. Strecker.   \textbf{Abstract 
 
 \bibitem{Simm2011}
 Harold Simmons. \textbf{An Introduction to Category Theory}. 1st Edition. Cambridge University Press; 1 edition (November 21, 2011). ISBN-13: 978-0521283045
+
+\bibitem{Turi2001}
+Daniele Turi. \textbf{Category Theory Lecture Notes}.  September 1996 – December 2001.  \url{http://www.dcs.ed.ac.uk/home/dt/CT/categories.pdf}
+
+\bibitem{Lein2014}
+Tom Leinster.  \textbf{Basic Category Theory} (Cambridge Studies in Advanced Mathematics) 1st Edition.  2014.  ISBN-13: 978-1107044241
+
+\bibitem{Pare2004}
+Prof. Dr. B. Pareigis. \textbf{Category Theory}. Summer Semester 2004. June 14, 2004. \url{http://www.mathematik.uni-muenchen.de/~pareigis/Vorlesungen/04SS/Cats1.pdf}
 
 
 %%--------------------------------------------------------------------------------------------------
