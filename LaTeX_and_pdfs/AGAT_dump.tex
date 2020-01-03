@@ -4846,6 +4846,68 @@ C\xleftarrow{ [ f, g ] } A +  B \\
 	\item $\text{Grp}$ has nonconcrete coproducts, ``free products''
 \end{itemize}
 
++\section{Naturality; Natural transformations}
++
++\begin{definition}[Natural Transformation]
+	+If functors $F,G$, categories $\mathbf{C}, \mathbf{D}$, 
+	+\[
+	+\begin{aligned}
+	+& F:\mathbf{C} \to \mathbf{D} \\ 
+	+& G:\mathbf{C} \to \mathbf{D} 
+	+\end{aligned}
+	+\]
+	+the \textbf{natural transformation} $\eta$ from $F$ to $G$ is a family of morphisms s.t. \\
+	+
+	+\begin{enumerate} 
+		+\item $\forall \, X \in \text{Obj}\mathbf{C}$, $\eta_X : F(X) \to G(X)$ s.t. $F(X), G(X) \in \text{Obj}\mathbf{D}$. morphisms $\eta_X \in \text{Hom}_{\mathbf{D}}(F(X), G(X)) \subset \text{Mor}\mathbf{D}$ is called \textbf{component} of $\eta$ at $X$.
+		+\item components must be s.t. $\forall \, $ morphism $f: X \to Y$ in $\mathbf{C}$, i.e. $f\in \text{Hom}_{\mathbf{C}}(X, Y) \in \text{Mor}\mathbf{C}$, 
+		+\begin{equation}
+		+\eta_Y \circ F(f) = G(f) \circ \eta_X
+		+\end{equation} 
+		+i.e. 
+		+\[
+		+       \begin{tikzpicture}
+		+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+		+{
+			       F(X) & F(Y) \\
+			       G(X) & G(Y) \\
+			};
+		\path[->]
+		(m-1-1) edge node [above] {$F(f)$} (m-1-2)
+		edge node [auto] {$\eta_X$} (m-2-1)
+		(m-1-2) edge node [auto] {$\eta_Y$} (m-2-2)
+		(m-2-1) edge node [auto] {$G(f)$} (m-2-2);
+		\end{tikzpicture}
+		\]
+		
+		If both $F,G$ contravariant, 
+		\[
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+		{
+			       F(X) & F(Y) \\
+			       G(X) & G(Y) \\
+			};
+		\path[->]
+		(m-1-2) edge node [above] {$F(f)$} (m-1-1)
+		(m-1-1) edge node [auto] {$\eta_X$} (m-2-1)
+		(m-1-2) edge node [auto] {$\eta_Y$} (m-2-2)
+		(m-2-2) edge node [auto] {$G(f)$} (m-2-1);
+		\end{tikzpicture}
+		\]
+		\end{enumerate} 
+	\end{definition}
+cf. \href{https://en.wikipedia.org/wiki/Natural_transformation}{Wikipedia, "Natural transformation"}
+
+Notation: natural transformation from $F$ to $G$, $\eta:F \to G$, i.e. family of morphisms $\eta_X : F(X) \to G(X)$ is natural in $X$.
+
+
+cf. Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{AHS2004}. 
+
+e.g. Hurewicz homomorphism $\pi_n(X) \to H_n(X)$ $\forall \, $ topological space $X$ is a natural transformation from $n$th homology functor. \\
+$\pi_n : \textbf{Top} \to \mathbf{Grp}$ to $n$th homology functor $H_n : \textbf{Top} \to \textbf{Grp}$.
+
+
 
 \section{Limits}
 
