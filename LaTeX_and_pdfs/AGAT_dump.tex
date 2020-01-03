@@ -3056,7 +3056,7 @@ Since $\forall \, T,U \in \text{Obj}(\mathbf{C}(L))$, $\exists \, \text{Hom}(T,U
 So $\text{Obj}\mathbf{C}(L) = \lbrace \texttt{int}, \texttt{bool}, \texttt{char}, 1 \rbrace$, \\
 \phantom{So } $\text{Mor}\mathbf{C}(L)$ consists of all programs.
 
-See 5.3.14 Record Types and 5.7.6, 14.2 for flow of control in Barr and Wells (2012) \cite{BaWe2012} to complete the programming language.
+See 5.3.14 Record Types and 5.7.6, 14.2 for flow of control in Barr and Wells (2012) \cite{BaWe2012} to complete the programming language. For here, see section \ref{SubSubSect:RecordTypesProduct}
 
 \item \textbf{Groups}, cf. pp. 11, Def. 1.4, Sec. 1.5 \textbf{Isomorphisms}, Awodey (2010) \cite{Awod2010}.
 
@@ -4694,7 +4694,7 @@ Thus,
 	s.t. $\forall \, $ object $A\in \in \text{Obj}\mathbf{C}$, \\
 	$\exists \, !$ morphism $\langle f_i \rangle : A \to \prod_{i\in I} A_i$, \\
 	s.t. 
-\begin{equation} 
+\begin{equation}\label{Eq:GeneralizedProductDiagram}
 	\begin{tikzpicture}
 \matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
 {
@@ -4740,6 +4740,28 @@ Write $f'(a) = (x,y)$
 \end{aligned} \qquad \, \Longrightarrow f'(a) = (f_1(a), f_2(a)) = \langle f_1, f_2 \rangle (a)
 \]
 $\langle f_1, f_2 \rangle $ unique.  
+
+\subsubsection{Example: "Record Types", classes (in computer science, C++, Python)}\label{SubSubSec:RecordTypesProduct}
+
+cf. pp. 174, 5.3.14 "Record Types" Barr and Wells (1998) \cite{BW1998}.
+
+Look at Diagram \ref{Eq:GeneralizedProductDiagram} again.
+
+To allow operations depending on several variables in a functional programming language $L$, \\
+e.g. assume $\forall \,$ types $A_j$, $\forall \, j \in I$, language $L$ has record type $\prod_{i\in I} A_i$, and field selectors $p_j$
+\[
+p_j : \prod_{i\in I} A_i \to A_j
+\]
+Insist that any data in $\prod_{i\in I} A_i$ be determined completely by those fields $A_j$, $j\in I$, \\
+then $\forall \, $ operations $f_j$, $f_j : A \to A_j$, \, $\forall \, j \in I$, \\
+there ought to be an unique operation $\lbrace f_i \rangle : A \to \coprod_{i\in I} A_i$ s.t. 
+\[
+p_j\langle f_i \rangle = f_j, \quad \, \forall \, i, j \in I
+\]
+This would make $\prod_{i\in I} A_i$ the product of $A_i$'s, with selectors as product projections.
+
+Thus, to say that one can always construct record types in a functional programming language $L$ to say that the corresponding category $C(L)$ has finite products. 
+
 
 \begin{proposition}
 	If product $(A_1 \times \dots \times A_{\mathcal{N}} \xrightarrow{ \pi_i } A_i )_{i\in I}$, if $\exists \,  i_0 \in I$ s.t. $\text{Hom}(A_{i_0}, A_i) \neq \emptyset$, \, $\forall \, i \in I$, \\
