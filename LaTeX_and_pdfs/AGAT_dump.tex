@@ -1117,6 +1117,27 @@ Then by 1st isomorphism, and commutative diagram, done.
 
 \section{Rings} 
 
+cf. Ch. 7 "Introduction to Rings" pp. 223, Dummit and Foote (2014)\cite{DuFo2003}
+
+\begin{definition}[Ring]
+ring $R$ is a set, together with 2 binary operations $+, \times $ (addition and multiplication, $\times \equiv \cdot $) s.t. 
+\begin{enumerate} 
+\item \begin{enumerate}
+	\item $(R, +)$ abelian group 
+	\item $\times $ associative: $a(bc) = (ab)c \quad \, \forall \, a, b, c \in R$  
+	\item distributivity in $R$: $\forall \, a , b, c \in R$ 
+	\[
+	(a+b)c = ac + bc \text{ and } a(b+c) = ab + ac
+	\]
+\end{enumerate}	
+\item $R$ \emph{commutative} if multiplication commutative
+\item $R$ has an identity $1$ if $\exists \, 1 \in R$ s.t.
+\[
+1a = a1 = a \quad \, \forall \, a \in R
+\]
+\end{enumerate}
+\end{definition}
+
 \begin{definition}[division ring]
 	ring $R$ with identity $1$, where $1\neq 0$ is a \textbf{division ring} (or skew field) if $\forall \, a \in R$, $a\neq 0$, $\exists \, $ multiplicative inverse $1/a$, i.e. $\exists \, b\in R$ s.t. $ab=ba = 1$
 \end{definition}
@@ -1189,8 +1210,93 @@ Let $A$ be any ring.
 \end{definition}
 	
 cf. Example 6, pp. 225, Dummit and Foote (2014)\cite{DuFo2003}
-	
+
+\item cf. Example 7 of p. 225, Dummit and Foote (2014)\cite{DuFo2003} \emph{ring which doesn't have an identity}:
+
+\begin{itemize}
+	\item  ring $2\mathbb{Z}$ of even integers (sum and product of even integers is an even integer) \\
+\item function $f: \mathbb{R} \to \mathbb{R}$ has compact support if $\exists \, a, b \in \mathbb{R}$, (depending on $f$) s.t. $f(x) = 0$, \quad \, $\forall \, x \notin [a,b]$ \\
+$\lbrace f: \mathbb{R}\to \mathbb{R} | f \text{ has compact support } \rbrace$ is a commutative ring without identity (since an identity couldn't have compact support), 
+
+Similarly, \\
+$\lbrace \text{ cont. } f : \mathbb{R} \to \mathbb{R} | f \text{ has compact support } \rbrace$ is a commutative ring without identity. 
+\end{itemize}	
 \end{enumerate}
+
+\begin{proposition}[Dummit and Foote (2014)\cite{DuFo2003}, Prop. 1, pp. 226]
+Let $R$ be a ring. \\
+Then
+\begin{enumerate}
+	\item $0a = a0 = 0$ \, $\forall \, a \in R$ 
+	\item $(-a) 0 = a(-b) = -(ab) \quad \, \forall \, a,b \in R$ (recall $-a$ is additive inverse of $a$)
+	\item $(-a)(-b) =ab$ \quad \, $\forall \, a, b \in R$ 
+	\item if $R$ has identity $1$, identity unique and $-a = (-1) a$
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Use distributivity and additive existence inverse for abelian group $(R, +)$. 
+
+\begin{enumerate}
+	\item \[
+	\begin{gathered}
+	0a = (0 + 0) a = 0a + 0a \to 0a = 0 
+	a0 = a(0 + 0) = a0 + a0 \text{ so } a0 = 0 	
+	\end{gathered}
+	\]
+	\item 
+	\[
+	\begin{gathered} 
+	ab + (-a)b = (a + (-a)) b = 0b = 0 \Longrightarrow (-a) b = -(ab) \\
+	ab + a(-b) = a(b + (-b)) = a0 = 0 \Longrightarrow a(-b) = -(ab) 	
+	\end{gathered} 
+	\]
+	\item \[
+	(-a)(b + (-b)) = (-a)b + (-a)(-b) = -(ab) + (-a)(-b) = 0 \Longrightarrow (-a)(-b) =ab
+	\]
+	\item \[
+	(-1)a  + a = (-1) a + 1a = (-1 + 1) a = 0a = 0 \text{ so } -a = (-1) a
+	\]
+	Suppose $\exists \, 1'$ s.t. $1' a = a1' = a$ and $1' \neq 1$  
+	\[
+	\begin{gathered}
+	-a + a = 0 = (-1) a + 1' a = (-1 + 1') a = 0 a \Longrightarrow 0 = -1 + 1' 
+	\end{gathered}
+	\]
+	Then $1' = 1$. Contradiction. 
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Let $R$ be a ring.
+\begin{enumerate}
+	\item \textbf{zero divisor} $a$, $a\neq 0$, $a\in R$ if $\exists \,  b\in R, \, b\neq 0$ so either $ab= 0$ or $ba=0$. 
+	\item Assume $R$ has identity $1\neq 0$. \\
+	\textbf{unit} in $R$, $u\in R$ if $\exists \,$ some $v\in R$ s.t. $uv = vu =1$. \\
+	$R^x \equiv $ set of units in $R$. 
+	\[
+	\forall \, u,v \in R^x, \, (uv) (v^{-1}u^{-1}) = u(1)u^{-1} = 1
+	\]
+	$1 \in R^x$ so, $1u = u1 = u$ \\
+	if $u\in R^x$, $u^{-1} \in R^x$ since $uu^{-1} = u^{-1} u =1$ 
+$R^x$ is a \textbf{group of units}
+\end{enumerate}	
+\end{definition} 
+
+Thus a \emph{field} $= $ commutative ring $F$ with identity $1\neq 0$ s.t. $\forall \, a\in $ field, $a\neq 0$ is a unit, i.e. $F^x = F - \lbrace 0 \rbrace$. 
+
+\begin{proposition}
+	zero divisor can never be a unit. 
+\end{proposition}
+
+\begin{proof}
+	Suppose a unit in $R$, and $ab=0$ for some $b\neq 0$, $b\neq R$. \\
+	Then $va=1$ s.t. some $v\in R$ and 
+	\[
+	b =1b = vab = v(ab) = v(0) = 0
+	\]
+	Contradiction.
+\end{proof} 	
 
 \section{Commutative Rings}
 
@@ -4868,29 +4974,29 @@ C\xleftarrow{ [ f, g ] } A +  B \\
 	\item $\text{Grp}$ has nonconcrete coproducts, ``free products''
 \end{itemize}
 
-+\section{Naturality; Natural transformations}
-+
-+\begin{definition}[Natural Transformation]
-	+If functors $F,G$, categories $\mathbf{C}, \mathbf{D}$, 
-	+\[
-	+\begin{aligned}
-	+& F:\mathbf{C} \to \mathbf{D} \\ 
-	+& G:\mathbf{C} \to \mathbf{D} 
-	+\end{aligned}
-	+\]
-	+the \textbf{natural transformation} $\eta$ from $F$ to $G$ is a family of morphisms s.t. \\
-	+
-	+\begin{enumerate} 
-		+\item $\forall \, X \in \text{Obj}\mathbf{C}$, $\eta_X : F(X) \to G(X)$ s.t. $F(X), G(X) \in \text{Obj}\mathbf{D}$. morphisms $\eta_X \in \text{Hom}_{\mathbf{D}}(F(X), G(X)) \subset \text{Mor}\mathbf{D}$ is called \textbf{component} of $\eta$ at $X$.
-		+\item components must be s.t. $\forall \, $ morphism $f: X \to Y$ in $\mathbf{C}$, i.e. $f\in \text{Hom}_{\mathbf{C}}(X, Y) \in \text{Mor}\mathbf{C}$, 
-		+\begin{equation}
-		+\eta_Y \circ F(f) = G(f) \circ \eta_X
-		+\end{equation} 
-		+i.e. 
-		+\[
-		+       \begin{tikzpicture}
-		+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
-		+{
+\section{Naturality; Natural transformations}
+
+\begin{definition}[Natural Transformation]
+	If functors $F,G$, categories $\mathbf{C}, \mathbf{D}$, 
+	\[
+	\begin{aligned}
+	& F:\mathbf{C} \to \mathbf{D} \\ 
+	& G:\mathbf{C} \to \mathbf{D} 
+	\end{aligned}
+	\]
+	the \textbf{natural transformation} $\eta$ from $F$ to $G$ is a family of morphisms s.t. \\
+	
+	\begin{enumerate} 
+		\item $\forall \, X \in \text{Obj}\mathbf{C}$, $\eta_X : F(X) \to G(X)$ s.t. $F(X), G(X) \in \text{Obj}\mathbf{D}$. morphisms $\eta_X \in \text{Hom}_{\mathbf{D}}(F(X), G(X)) \subset \text{Mor}\mathbf{D}$ is called \textbf{component} of $\eta$ at $X$.
+		\item components must be s.t. $\forall \, $ morphism $f: X \to Y$ in $\mathbf{C}$, i.e. $f\in \text{Hom}_{\mathbf{C}}(X, Y) \in \text{Mor}\mathbf{C}$, 
+		\begin{equation}
+		\eta_Y \circ F(f) = G(f) \circ \eta_X
+		\end{equation} 
+		i.e. 
+		\[
+		       \begin{tikzpicture}
+		\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+		{
 			       F(X) & F(Y) \\
 			       G(X) & G(Y) \\
 			};
@@ -9639,6 +9745,9 @@ M.E.J. Newman and G.T. Barkema.  \textbf{Monte Carlo Methods in Statistical Phys
 \bibitem{Bred1997}
 Glen E. Bredon.  \textbf{Topology and Geometry}. Graduate Texts in Mathematics (Book 139).  Springer; Corrected edition (October 17, 1997).  ISBN-13: 978-0387979267
 
+\bibitem{Rotm1988}
+Joseph Rotman. \textbf{An Introduction to Algebraic Topology}. \emph{Graduate Texts in Mathematics}. Volume 119. 1988. Springer-Verlag New York. eBook ISBN
+978-1-4612-4576-6
 
 \bibitem{Serr1980}  
 Jean-Pierre Serre (Author), J. Stilwell (Translator).  \textbf{Trees} (Springer Monographs in Mathematics) 1st ed. 1980. Corr. 2nd printing 2002 Edition.  ISBN-13: 978-3540442370
