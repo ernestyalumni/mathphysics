@@ -2729,7 +2729,7 @@ cf. Thm. 7.32 of Rotman (2010) \cite{JRotman2010}
 	
 	Then 
 	\[
-	f_i) = (p_i\theta) = \varphi(\theta)
+	f_i = (p_i\theta) = \varphi(\theta)
 	\]
 	, and so $\varphi$ \emph{surjective}.
 	
@@ -4260,6 +4260,134 @@ For $f:A \to B$, $f\in \text{Hom}_{\textbf{Set}}(A, B)$,
 \section{Universal mapping property}
 
 \subsection{Examples of Universal mapping property}
+
+cf. Ch. 0 "Introduction" of Leinster (2014) \cite{Lein2014}.
+
+Example 0.1. Let $\lbrace 1 \rbrace$ denote set with 1 element. \\
+Then $\forall \, $ sets $X \in \textbf{Set}$, $\exists \, ! $ map $X \to \lbrace 1 \rbrace$
+\[
+X \xrightarrow{ f} \lbrace 1 \rbrace 
+\]
+
+\begin{proof}
+$\exists \, X \to \lbrace 1 \rbrace$, $\forall \, X$ because define $f: X \to \lbrace 1 \rbrace$ s.t. $f(x) = 1$, $\forall \, x \in X$. \\
+(!) if for $X \to \lbrace 1 \rbrace$, then $x\mapsto 1$, so map is equal to $f$.
+\end{proof} 
+
+Example 0.2. $\forall \, $ rings $R$ with multiplicative identity $1$, $\exists \, !$ homomorphism $\mathbb{Z} \to R$. \label{Example:integerringhomomorphism}
+
+Define $\phi : \mathbb{Z} \to R$ by 
+\[
+\phi(n) = \begin{cases}  \sum_{i=1}^n 1 & \text{ if } n > 0 \\ 
+0 & \text{ if } n = 0 \\
+-\phi(-n) & \text{if } n < 0 \end{cases} 
+\]
+
+Check that $\phi$ homomorphism. (TODO)\\
+
+(!) $\psi(1)= 1$ (homomorphisms preserve multiplicative identities) \\
+homomorphisms preserve addition:
+\[
+\psi(n) = \psi(\sum_{i=1}^n 1) = \sum_{i=1}^n \psi(1) = \sum_{i = 1}^n 1 = \phi(n)
+\]
+
+homomorphisms preserve zero: $\psi(0) = 0 = \phi(0)$
+
+homomorphisms preserve negatives: $\psi(n) = -\psi(-n) = -\sum_{i=1}^{-n} 1 = -\phi(-n) = \phi(n)$.
+
+\begin{lemma}[0.3 Leinster (2014) \cite{Lein2014}]
+	Let ring $A$ s.t. $\forall \,$ rings $R, \exists \, !$ homomorphism $A \to R$ (i.e. $A$ is "initial"). Then $A \cong \mathbb{Z}$ (isomorphic). 	
+\end{lemma}
+
+\begin{proof}
+		$A$ initial, so $\exists \, !$ homomorphism $\phi:A \to \mathbb{Z}$. \\
+		$\mathbb{Z}$ initial from Ex. \ref{Example:integerringhomomorphism}. $\exists \, !$ homomorphism $\phi' : \mathbb{Z} \to A$. \\
+		
+		$\phi' \circ \phi : A \to A$, $1_A : A \to A$ are homomorphisms. \\
+		Since $A$ initial, $\phi' \circ \phi = 1_A$. \\
+		$\phi \circ \phi' : \mathbb{Z}\to \mathbb{Z}$.  Since $\mathbb{Z}$ initial, $1_{\mathbb{Z}} : \mathbb{Z} \to \mathbb{Z} \Longrightarrow \phi \circ \phi' = 1_{\mathbb{Z}}$. 
+		\[
+		\Longrightarrow A \cong \mathbb{Z} \text{ (isomorphic) }
+		\]
+\end{proof}
+
+Example 0.4. pp. 3 Leinster (2014) \cite{Lein2014} Let vector space $V$ with basis $(v_s)_{s \in S}$ (.e.g if $V$ finite-dim., e.g. $S = \lbrace 1, 2 \dots , n \rbrace$).  \\
+Thus $\forall \, $ vector space $W$, $\exists \, $ natural 1-to-1 correspondence between linear maps $\lbrace V \to W \rbrace$ and functions $S \to W$. \\
+i.e. define $\begin{aligned} & \quad \\ 
+& i : S \to V \\
+& i(s) = v_s \quad \, (s \in S)\end{aligned}$ 
+
+Then universal mapping property (given $i, f, \exists \, ! \overline{f}$)
+\[
+\begin{gathered} 
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	S & V  \\ 
+	  & W   \\
+};
+\path[->]
+(m-1-1) edge node [above] {$i$} (m-1-2)
+ edge node [below] {$f$} (m-2-2)
+;
+\path[dashed,->]
+(m-1-2)        edge node [right] {$\overline{f}$} (m-2-2)
+;
+\end{tikzpicture} \text{ or } \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	V & W  \\ 
+	S &    \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$\overline{f}$} (m-1-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$i$} (m-1-1)
+edge node [below] {$f$} (m-1-2)
+;
+\end{tikzpicture}
+\end{gathered} 
+\]
+
+\[
+\begin{gathered}
+\begin{aligned}
+\lbrace S \to W \rbrace & \to \lbrace \text{ linear } V \to W \rbrace \\
+\overline{f} \circ i & \mapsto \overline{f} 
+\end{aligned} \quad \, \text{ bijective }
+\end{gathered}
+\]
+
+Example 0.5. pp. 4 Leinster (2014) \cite{Lein2014}. Given set $S$, topological space $D(S)$; equip $D(S)$ with discrete topology (all subsets open). \\
+$\Longrightarrow \forall \, $ map $S \to $ space $X$ is cont. 
+
+i.e. 
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	D(S) & X  \\ 
+	S &    \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$\overline{f}$} (m-1-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$i$} (m-1-1)
+edge node [below] {$f$} (m-1-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+
+$\forall \, $ topological space $X$, $\forall \, f : S \to X$, $\exists \, !$ cont. $\overline{f} : D(S) \to X$ s.t. $\overline{f} \circ i = f$. \\
+If $D(S)$ equipped with indiscrete topology (open $S = \lbrace \phi, S \rbrace$), then property is false.
+
+Example 0.6. pp. 4 Leinster (2014) \cite{Lein2014}. Given vector space $U, V, W$, bilinear map $f: U\times V \to W$ is linear. 
+
+
 
 \subsubsection{Free monoid $A^*$ on set $A$}
 
