@@ -3444,6 +3444,31 @@ G \cong \text{ group of permutations }
 	Cayley's Thm. says that any abstract group can be represented as a "concrete" one, i.e. group of permutations of a set.
 \end{proof}
 
+Example 1.1.5 (Leinster (2014) \cite{Lein2014}) isomorphisms in $\textbf{Set}$ are exactly bijections. \\
+$\Longrightarrow $ function has 2-sided inverse iff function is injective and surjective (this is not trivial)
+
+Example 1.1.7 Leinster (2014) \cite{Lein2014} isomorphisms in $\textbf{Top}$ are exactly homeomorphisms. \\
+bijective map in $\textbf{Top}$ is not necessarily an isomorphism:
+\[
+\begin{aligned}
+	[0, 1) & \to \lbrace z \in \mathbb{C} | |z| = 1 \rbrace \\
+	t & \mapsto e^{2\pi i t}
+\end{aligned}
+\]
+is a continuous bijection but not a homeomorphism (cont. bijection with cont. $f^{-1}$). 
+\[
+\ln{ \left( \frac{w}{2\pi i} \right) } = f^{-1}(w)
+\]
+
+Example 1.1.8 Leinster (2014) \cite{Lein2014} (Categories as mathematical structures) (b) \textbf{Discrete} categories contain no maps at all apart from identities. Just a class of objects.
+
+\exercisehead{1.1.13 pp. 16, Leinster (2014) \cite{Lein2014}}
+
+Suppose for morphism $f: A \to B$, $\exists \,$ inverse $g$, s.t. $f\circ g = 1_B$, $g\circ f = 1_A$ \\
+Now $f^{-1} \circ f = 1_A$, $f\circ f^{-1} = 1_B$ \\
+\phantom{Now} $f^{-1} \circ f \circ g = f^{-1} \circ 1_B = 1_A \circ g = f^{-1} \circ 1_B \Longrightarrow g= f^{_1}$ 
+
+
 \begin{definition}[endomorphism]
 	\textbf{endomorphism} - morphism with same source and target, that is, morphism $f:A \to A$
 \end{definition}
@@ -3783,6 +3808,23 @@ edge[bend right=45] node [below] {$F(g\circ f) = F(g) \circ F(f)$} (m-2-3)
 \]
 
 \subsection{Examples of Functors}
+
+Example 1.2.3 (forgetful functors) Leinster (2014) \cite{Lein2014}, pp. 18
+
+
+\begin{enumerate}
+	\item[(a)] $U : \textbf{Grp} \to \textbf{Set}$ \\
+	if group $G$ then $U(G)$ is underlying set of $G$. \\
+	If group homomorphism $f:G \to H$, \\
+	$U(f)$ is function $f$ itself. \\
+	So $U$ forgets group structure of groups and forgets group homomorphisms are homomorphisms.
+	\item[(c)] $\textbf{Ab} \equiv $ category of abelian groups \\
+	$\textbf{Ring} \to \textbf{Ab}$ forgets multiplicative structure. \\
+	$U:\textbf{Ring} \to \textbf{Mon}$ forgets additive structure; $\textbf{Mon} \equiv $ category of monoids
+\end{enumerate}
+
+
+
 
 \begin{itemize}
 	\item (monoid) homomorphism $h: M \to N$, $\forall \, $ monoid $M, N$ s.t. $\forall \, m,n \in M$, \\
@@ -4386,7 +4428,37 @@ $\forall \, $ topological space $X$, $\forall \, f : S \to X$, $\exists \, !$ co
 If $D(S)$ equipped with indiscrete topology (open $S = \lbrace \phi, S \rbrace$), then property is false.
 
 Example 0.6. pp. 4 Leinster (2014) \cite{Lein2014}. Given vector space $U, V, W$, bilinear map $f: U\times V \to W$ is linear. 
+\[
+\begin{gathered}
+f(u, v_1 + \lambda v_2) = f(u, v_1) + \lambda f(u, v_2) \\
+f(u_1 + \lambda u_2, v) = f(u_1, v) + \lambda f(u_2, v)
+\end{gathered}
+\]
+$\forall \, u, u_1, u_2 \in U$, $v, v_1,v_2 \in V$, scalars $\lambda$. \\
+e.g. scalar product (dot product) $\mathbf{u}\cdot \mathbf{v}$ bilniear, cross product bilinear. \\
 
+$\exists \, $ "universal bilinear map out of $U\times V$", i.e. \\
+$\exists \, $ vector space $T$, $\exists \, $ bilinear map $b:U\times V \to T$
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	T & W  \\ 
+	U \times V &    \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$\overline{f}$} (m-1-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$b$} (m-1-1)
+edge node [below] {$f$} (m-1-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+i.e. $\forall \, $ bilinear $f$, given $b$, $\exists \, !$ linear $\overline{f}$, s.t. $\overline{f} \circ b = f$
 
 
 \subsubsection{Free monoid $A^*$ on set $A$}
