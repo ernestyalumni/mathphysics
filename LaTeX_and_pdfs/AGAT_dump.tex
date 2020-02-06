@@ -26,7 +26,7 @@
 \usepackage{tikz}
 \usetikzlibrary{matrix,arrows,backgrounds} % background for framed option
 \usetikzlibrary{arrows.meta}
-
+\usetikzlibrary{cd}
 \usepackage{multicol}
 
 % ----------------------------------------------------------------------------------------
@@ -50,12 +50,6 @@
 \paperwidth=1200pt
 \paperheight=700pt
 \footskip=40pt
-
-
-
-
-
-
 
 
 \newtheorem{theorem}{Theorem}
@@ -3809,8 +3803,58 @@ edge[bend right=45] node [below] {$F(g\circ f) = F(g) \circ F(f)$} (m-2-3)
 
 \subsection{Examples of Functors}
 
-Example 1.2.3 (forgetful functors) Leinster (2014) \cite{Lein2014}, pp. 18
+cf. pp. 13, 3. Functors, Maclane (1978) \cite{MacL1978}
 
+\emph{Power Set Functor}. 
+\[
+\begin{gathered}
+	\begin{aligned}
+		& P : \textbf{Set} \to \textbf{Set} \\
+		& P:\text{Obj}\textbf{Set} \to \text{Obj}(\textbf{Set}) \\
+		& P: X \in \text{Obj}\textbf{Set} \mapsto 2^X \in \text{Obj}\textbf{Set}, \text{ i.e. } \\
+		& P:X \mapsto 2^X = \lbrace S | S \subseteq X \rbrace 
+	\end{aligned} \\
+P : \text{Hom}_{\textbf{Set}}(X,Y) \to \text{Hom}_{\textbf{Set}}(P(X), P(Y)) \\
+\begin{aligned} 
+& P(f): P(X) \to P(Y) \text{ or } P(f)(P(X)) = P(f(X)) \\
+& P(f): S \in 2^X \mapsto f(S) \in 2^Y \text{ or } f(S) \subseteq Y 
+\end{aligned} 
+\end{gathered}
+\]
+\[
+\begin{gathered}
+P(1_X) = 1_{PX} \text{ and } P(g\circ f) = P(g) P(f), \text{ so $P$ defines a functor }
+\end{gathered}
+\]
+
+Algebraic topology; singular homology in a given dim. $n$ ($n \in \mathbb{N}$) Maclane (1978) \cite{MacL1978}
+
+$\forall \, $ topological space $X$, assign $X \mapsto $ abelian group $H_n(X) \equiv n$th homology group of $X$, also \\
+$\forall \, $ cont. $f:X \to Y$ of spaces corresponding group homomorphism. 
+\[
+\begin{gathered}
+H_n(f) : H_n(X) \to H_n(Y) \\
+\begin{aligned}
+& H_n: \text{Obj}(\mathbf{Top}) \to \text{Obj}(\textbf{Ab}) \\
+& H_n: X \mapsto H_n(X) 
+\end{aligned} \\
+H_n(f)(H_n(X)) = H_n(f(X))
+\end{gathered}
+\]
+$\Longrightarrow H_n: \textbf{Top} \to \textbf{Ab}$.
+
+e.g. if $X=Y = S^1$, $H_1(S^1) = \mathbb{Z}$
+
+So group homomorphism $H_1(f): \mathbb{Z} \to \mathbb{Z}$ determined by integer $d\in \mathbb{Z}$ (image of 1) \\
+$d$ is usual "degree" of cont. map $f:S^1 \to S^1$. 
+
+In this case, and in general, homotopic maps $f,g : X \to Y$ \\
+Then $\exists \,$ homotopy $H:X \times [0,1] \to Y$ s.t. $H(x,0) = f(x)$; $H(x,1) = g(x) \, \forall \, x \in X$
+
+
+
+
+Example 1.2.3 (forgetful functors) Leinster (2014) \cite{Lein2014}, pp. 18
 
 \begin{enumerate}
 	\item[(a)] $U : \textbf{Grp} \to \textbf{Set}$ \\
@@ -4460,6 +4504,100 @@ edge node [below] {$f$} (m-1-2)
 \]
 i.e. $\forall \, $ bilinear $f$, given $b$, $\exists \, !$ linear $\overline{f}$, s.t. $\overline{f} \circ b = f$
 
+\begin{lemma}[0.7, pp. 5 Leinster (2014) \cite{Lein2014}]\label{Lemma:UniveralMappingVectorSpaceProducts}
+	Let vector spaces $U, V$. Suppose $\begin{aligned} & \quad \\ 
+	& b : U \times V \to T \\
+	& b' : U\times V \to T'\end{aligned}$ \quad , both universal bilinear maps. 
+	
+	Then $T \cong T'$, i.e. $\exists \, !$ isomorphism $j: T \to T'$ s.t. $j\circ b = b'$
+\end{lemma}
+
+\begin{proof}
+	Take $b': U\times V \to T' \Longrightarrow \exists \, b$, $\exists \, !$ linear map $j: T \to T'$ s.t. $j\circ b = b'$. 
+	
+	Take $b:U \times V \to T$. $\exists \, b'$, $\exists \, !$ linear map $j':T' \to T$ s.t. $j'\circ b' = b$
+	
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	T & T'  \\ 
+	U \times V & T   \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$j$} (m-1-2)
+(m-1-2) edge node [above] {$j'$} (m-2-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$b$} (m-1-1)
+edge node [below] {$b'$} (m-1-2)
+edge node [below] {$b$} (m-2-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+Now linear $j'\circ j : T\to T$, s.t. $(j'\circ j) \circ b = b$. 
+
+But also $1_T : T\to T$ linear and $1_T \circ b = b$
+
+\[
+\Longrightarrow j' \circ j = 1_T
+\]
+i.e. 
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	T & T  \\ 
+	U \times V &    \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$j'\circ j$} (m-1-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$b$} (m-1-1)
+edge node [below] {$b$} (m-1-2)
+;
+\end{tikzpicture}
+\qquad \, \text{ but so is } \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	T & T  \\ 
+	U \times V &    \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$1_T$} (m-1-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$b$} (m-1-1)
+edge node [below] {$b$} (m-1-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+
+Similarly for $j\circ j' = 1_{T'}$. 
+
+So $j$ is an isomorphism.
+
+\end{proof} 
+
+By Lemma \ref{Lemma:UniveralMappingVectorSpaceProducts}, $\exists \, !$ tensor product $U\otimes V$, not "a" tensor product.
+
+Example 0.8 of Leinster (2014) \cite{Lein2014}. Let $\theta : G \to H$ be homomorphism of groups.
+
+\[
+\begin{tikzcd}
+\text{ker}{(\theta)} \arrow[r, hook, "i"] & G \arrow[r, shift left, "\theta"] \arrow[r, shift right, "\epsilon"]& H \\
+\end{tikzcd}
+\]
+
+where $i$ inclusion, $\epsilon$ trivial homomorphism, i.e.$i(x) = x \, \forall \, x \in \text{ker}(\theta)$, $\epsilon(g) = 1$ \, $\forall \, g \in G$.
+
+map $i$ into $G$ s.t. $\theta \circ i = \epsilon \circ i$ and is universal (Ex. 0.11)
 
 \subsubsection{Free monoid $A^*$ on set $A$}
 
@@ -9690,7 +9828,7 @@ cf. Lemma 2.3 of Reid (2013) \cite{Reid2013}
 $K[t]$ UFD; unique factorization domain (given).
 
 EY: 20181229, recall the definitions:
-integral domain - nonzero cummutative ring in which product of any 2 nonzero elements is nonzero. \\
+integral domain - nonzero commutative ring in which product of any 2 nonzero elements is nonzero. \\
 unique factorization domain is an integral domain $R$ s.t. $\forall \, x \in R$, $x\neq 0$, $x$ can be written as 
 \[
 x = u p_1 p_2 \dots p_n , \quad \, n \geq 0
@@ -9875,6 +10013,10 @@ Michael Barr, Charles Wells.  \textbf{Category Theory for Computing Science}.  \
  
 \bibitem{AHS2004}
 Ji\v{r}\'{i} Ad\'{a}mek, Horst Herrlich, George E. Strecker.   \textbf{Abstract and Concrete Categories The Joy of Cats}. 2004.  \url{http://katmat.math.uni-bremen.de/acc/acc.pdf}
+
+\bibitem{MacL1978}
+Saunders Mac Lane. \textbf{Categories for the Working Mathematician}. Graduate Texts in Mathematics. Volume 5. 1978. Springer-Verlag New York. eBook ISBN
+978-1-4757-4721-8
 
 \bibitem{Simm2011}
 Harold Simmons. \textbf{An Introduction to Category Theory}. 1st Edition. Cambridge University Press; 1 edition (November 21, 2011). ISBN-13: 978-0521283045
