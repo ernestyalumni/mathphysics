@@ -3515,7 +3515,7 @@ y^{\alpha} \in \mathbb{R}^n, \qquad \, A^{\alpha}_{ \, \, \beta} \in GL(n; \math
   affine group of dim. $n$
   \end{definition}
 
-\begin{theorem}[1.5] symmetry group of $n$-dim. affine space, called affine group $A(M)$ of $M$.  $\exists \, $ isomoprhism,
+\begin{theorem}[1.5] symmetry group of $n$-dim. affine space, called affine group $A(M)$ of $M$.  $\exists \, $ isomorphism,
   \begin{equation}
     A(M) \simeq A(n), \qquad \, f\mapsto (f^{\alpha}_{ \, \, \beta} , y^{\alpha}) \, ; \qquad \, f^{\alpha} \equiv x^{\alpha} \circ f = f^{\alpha}_{ \, \, \beta} x^{\beta} + y^{\alpha}
   \end{equation}
@@ -3565,8 +3565,63 @@ Now for
 \end{gathered}
 \]
 
+\part{Connections}
 
+\section{Connections of Vector Bundles}
 
+\cite{Mori2001}
+
+\begin{definition}[Connection in a vector bundle]
+	\textbf{connection in a vector bundle} $\pi : E \to M$ over $C^{\infty}$ manifold $M$, is a bilinear map
+	\[
+	\nabla : \mathfrak{X}(M) \times \Gamma(E) \to \Gamma(E)
+	\]
+	satisfying
+	\begin{enumerate}
+		\item[(i)] $\nabla_{fX} s = f\nabla_X s$
+		\item[(ii)] $\nabla_X(fs) = f\nabla_Xs + (Xf)s$ where $f\in C^{\infty}(M)$, $X \in \mathfrak{X}(M)$, $s\in \Gamma(E)$
+	\end{enumerate}
+$\nabla_Xs$ is covariant derivative of $s$ relative to $X$ (for Morita (2001)\cite{Mori2001})
+\end{definition} 
+
+\underline{Claim}: \emph{Any vector bundle admits a connection}.
+
+e.g. product bundle $M\times \mathbb{R}^n$. Let $x_1, \dots , x_n$ be canonical coordinates in $\mathbb{R}^n$. Take frame field $(s_1, \dots, s_n)$, where $s_i(p) = \frac{\partial}{\partial x^i}$. Set $\nabla_X s_i =0 $ ($i=1,\dots , m$) \quad \, $\forall \, $ vector space $X$, \\
+$\forall \, s = \sum_i a_i s_i, \, \forall X \in \mathfrak{X}(M)$, set 
+\[
+\nabla_X s = \sum_{i=1}^n (Xa_i) s_i
+\]
+For this connection $\nabla_Xs$ is the partial derivative in direction of $X$ if $s$ is considered $\mathbb{R}^n$-valued function on $M$. Call it \textbf{trivial connection} in product bundle.
+
+Indeed,
+\[
+\begin{gathered}
+	\nabla_X s = \nabla_{ X^i \frac{\partial}{\partial x^i}} \left( s^m \frac{\partial}{\partial x^m} \right) = X^i \nabla_{ \frac{\partial}{\partial x^i} } \left( s^m \frac{\partial}{\partial x^m} \right) = X^i \left( \nabla_{ \frac{\partial}{\partial x^i} } s^m \right) \frac{\partial}{\partial x^m} + X^i s^m \nabla_{ \frac{\partial}{\partial x^i} } \frac{\partial}{\partial x^m} = \\	
+		= X^i \left( \frac{\partial}{\partial x^i} s^m \right) \frac{\partial}{\partial x^m} + X^i s^m \Gamma^q_{ \, \, mi} \frac{\partial}{\partial x^q} = X^i \frac{ \partial s^m}{ \partial x^i} \frac{\partial }{ \partial x^m } + 0 
+\end{gathered}
+\]
+if $\Gamma^q_{ \, \, mi} =0$ at a chosen point $p$.
+
+For arbitrary vector bundle $\pi : E \to M$, take locally finite open covering $\lbrace U_{\alpha} \rbrace_{\alpha \in A}$ s.t. $\pi^{-1}(U_{\alpha})$ trivial. Denote $\nabla^{\alpha} $ trivial connection $\forall \, \pi^{-1}(U_{\alpha})$. Let $\lbrace f_{\alpha} \rbrace$ be a partition of unity for covering $U_{\alpha}$, define 
+	\[
+	\nabla_X s := \sum_{\alpha} f_{\alpha} \nabla_X^{\alpha} s
+	\]
+
+Verify this defines connection in $E$:
+\[
+\begin{gathered}
+\nabla_X(gs) = \sum_{\alpha} f_{\alpha} \nabla^{\alpha}_X(gs) = \sum_{\alpha} f_{\alpha} \left[ X^i \left( \frac{\partial g}{\partial x^i} \right) s + X^i g \frac{\partial s^m}{\partial x^i} \frac{\partial}{\partial x^m} \right] = \\
+= g \sum_{\alpha} f_{\alpha} \nabla_X^{\alpha} s + \sum_{\alpha} f_{\alpha} (Xg) s
+\end{gathered}
+\]
+
+\begin{proposition}[5.18 Morita (2001)\cite{Mori2001}]
+Let $\nabla_i$ ($1 \leq i \leq k$) be $k$ connections in a given vector bundle. Then $\forall \, $ linear combination $\sum_{i=1}^k t_i \nabla_i$, where $t_1 + \dots + t_k =1$ is a connection.	
+\end{proposition} 
+
+\begin{proof}
+	TODO: Ex. 5.5
+\end{proof} 
 
 
 \part{Holonomy}
@@ -3808,7 +3863,7 @@ $\nexists \, $ restriction on $\epsilon$, so $\exists \, ! \, v^k(t)$ \, $\foral
 
 
 
-\subsubsection{Principal bundle, vector bundle case for parallel transport}  
+\subsection{Principal bundle, vector bundle case for parallel transport}  
 
 Recall the 2 different forms or viewpoints for Lie-algebra valued 1-forms, or vector-valued 1-forms, or sections of 1-form-valued endomorphisms:
 \[
@@ -6573,11 +6628,31 @@ $(\Gamma(TM), \oplus , \odot) \, C^{\infty}(M)$ - \textbf{module} \\
 	can check: $df$ is $C^{\infty}-$linear
 	
 	
-	\section{Lecture 7: Connections}
+	\section*{Lecture 7: Connections}
+
+cf. \href{https://youtu.be/nEaiZBbCVtI}{Lecture 7: Connections (International Winter School on Gravity and Light 2015)}
+	
+So far: saw that a vector field $X$ can be used to provide a directional derivative \\
+\[
+\nabla_X f :=  Xf
+\] 
+of a function $f \in C^{\infty}(M)$.
+	
+\underline{Remark}: from now on: consider mostly vector fields.
+
+Notational overkill?
+
+\[
+\nabla_X f = Xf = (df)(X)
+\]
+
+In Thought Bubble: $\nabla_X(f \cdot g) = X(fg) = (Xf) \cdot g + fX(g)$ Product rule, because it's a derivative.
+
+not quite:
 	
 	\[
 	\begin{aligned}
-	& \nabla_X f = Xf = (df)(X) \text{ but (not quite) } \\ 
+	%& \nabla_X f = Xf = (df)(X) \text{ but (not quite) } \\ 
 	& X : C^{\infty}(M) \to C^{\infty}(M) \\ 
 	& df : \Gamma(TM) \to C^{\infty}(M) \\
 	& \nabla_X : C^{\infty}(M) \to C^{\infty}(M)
@@ -6602,88 +6677,190 @@ $(\Gamma(TM), \oplus , \odot) \, C^{\infty}(M)$ - \textbf{module} \\
 	\end{tikzpicture}
 	
 	
-	\subsection{Directional derivatives of tensor fields}
+	\subsection*{1. Directional derivatives of tensor fields}
+
+We formulate a wish list of properties which the $\nabla_X$ acting on a tensor field should have. 
+
+In Thought Bubble: Any remaining freedom in choosing $\nabla$, will need to be provided as additional structure beyond $(M, \mathcal{O}, \mathcal{A})$
+
+\begin{definition}[connection] In Thought Bubble: linear connection, \underline{covariant derivatve}, affine connection
+	 
+	  A \textbf{connection} $\nabla$ on a smooth manifold $(M, \mathcal{O}, \mathcal{A})$ is a map that takes a pair consisting of a vector (field) $X$ and a $(p,q)$-tensor \emph{field} $T$ and sends them to a $(p,q)$-tensor (field) $\nabla_XT$ satisfying 
+
+
+\begin{enumerate}
+	\item[(i)] $\nabla_X f = Xf \quad \, \forall f \in C^{\infty}(M)$
+	\item[(ii)] $\nabla_X(T+S) = \nabla_X T + \nabla_XS$
+	\item[(iii)] $\nabla_X(\underbrace{T(\omega, Y)}_{\in C^{\infty}(M)}) = (\nabla_X T)(\omega, Y) + T(\nabla_X\omega, Y) + T(\omega, \nabla_XY)$ \\
+In Thought Bubble:for $(1,1)$-TF $T$, but analogously for any $(p,q)$ - TF \\
+
+"Leibnitz" rule.
+			\item[(iv)] $\nabla_{fX+Z} T = f\nabla_X T + \nabla_Z T$ \\
+	$ f\in C^{\infty}(M)$
+\end{enumerate}
+\end{definition} 
+
+
 	
-	manifold with connection is quadruple $(M, \mathcal{O}, \mathcal{A}, \nabla)$ 
+	A manifold with connection is quadruple $(M, \mathcal{O}, \mathcal{A}, \nabla)$ 
+
+\underline{Remark}: $\nabla_X$ is the extension of $X$. \\
+\phantom{Remark: } $\nabla $ ----- " ---------- of $d$
 	
-	topology $\mathcal{O}$
+%	topology $\mathcal{O}$
 	
-	atlas $\mathcal{A}$
+%	atlas $\mathcal{A}$
 	
-	Consider chart $(U,x) \in \mathcal{A}$
+%	Consider chart $(U,x) \in \mathcal{A}$
 	
-	\begin{definition}
-		$\forall \, $ pair $(X, (p,q)-\text{tensor field}) \equiv (X, (p,q)-TF)$,
+%	\begin{definition}
+%		$\forall \, $ pair $(X, (p,q)-\text{tensor field}) \equiv (X, (p,q)-TF)$,
 		
-		\textbf{connection} $\nabla$ on smooth manifold $(M,\mathcal{O},\mathcal{A})$ 
+%		\textbf{connection} $\nabla$ on smooth manifold $(M,\mathcal{O},\mathcal{A})$ 
 		
-		$\nabla: ( X, (p,q)-TF) \to (p,q)-TF$ s.t.
+%		$\nabla: ( X, (p,q)-TF) \to (p,q)-TF$ s.t.
 		
-		\begin{enumerate}
-			\item[(i)] $\nabla_X f = Xf $
-			\item[(ii)]  $\nabla_X(T+S) = \nabla_XT + \nabla_XS $ 
-			\item[(iii)] \[
-			\nabla_X(T(\omega,Y)) = (\nabla_XT)(\omega,T) + T(\nabla_X\omega, Y) + T(\omega, \nabla_XY)
-			\]
-			``Leibnitz'' rule.
+%		\begin{enumerate}
+%			\item[(i)] $\nabla_X f = Xf $
+%			\item[(ii)]  $\nabla_X(T+S) = \nabla_XT + \nabla_XS $ 
+%			\item[(iii)] \[
+%			\nabla_X(T(\omega,Y)) = (\nabla_XT)(\omega,T) + T(\nabla_X\omega, Y) + T(\omega, \nabla_XY)
+%			\]
+%			``Leibnitz'' rule.
 			
-			As
-			\[
-			T\otimes S (\omega_{(1)}\dots \omega_{(p+r)} , Y_{(1)} \dots Y_{(q+s)}) = T(\omega_{(1)} \dots \omega_{(p)}, Y_{(1)} \dots Y_{(q)} ) \cdot S( \omega_{(p+1)} \dots \omega_{(p+r)} , Y_{(q+1)} \dots Y_{(q+s)})
-			\]
-			so 
-			\[
-			\nabla_X(T\otimes S) = (\nabla_XT)\otimes S + T\otimes \nabla_XS
-			\]
+%			As
+%			\[
+%			T\otimes S (\omega_{(1)}\dots \omega_{(p+r)} , Y_{(1)} \dots Y_{(q+s)}) = T(\omega_{(1)} \dots \omega_{(p)}, Y_{(1)} \dots Y_{(q)} ) \cdot S( %\omega_{(p+1)} \dots \omega_{(p+r)} , Y_{(q+1)} \dots Y_{(q+s)})
+%			\]
+%			so 
+%			\[
+%			\nabla_X(T\otimes S) = (\nabla_XT)\otimes S + T\otimes \nabla_XS
+%			\]
 			
-			
-			\item[(iv)] $\nabla_{fX+Z} T = f\nabla_X T + \nabla_Z T$
-			$C^{\infty}$-linear
-		\end{enumerate}
-	\end{definition}
+%			
+%			\item[(iv)] $\nabla_{fX+Z} T = f\nabla_X T + \nabla_Z T$
+%			$C^{\infty}$-linear
+%		\end{enumerate}
+%	\end{definition}
 	
-	\subsection{New structure on $(M,\mathcal{O},\mathcal{A})$ required to fix $\nabla$}
-	
-	
-	There are $(\text{dim}M)^3$ many $\Gamma^i_{ \, \, j k}$
+	\subsection*{2. New structure on $(M,\mathcal{O},\mathcal{A})$ required to fix $\nabla$}
+
+Q: How much freedom do we have in choosing such a structure.
+
+\emph{Consider} $X,Y$ vector fields
+
+\[
+\begin{gathered}
+\begin{aligned} 
+\nabla_XY & \underbrace{=}_{\text{In Thought Bubble:} (U,x)  } \nabla_{X^i \frac{\partial}{\partial x^i} } \left( Y^m \frac{\partial}{ \partial x^m} \right) \\
+& \underbrace{=}_{\text{(iii)}} X^i \left( \nabla_{\frac{\partial}{\partial x^i} } Y^m \right) \frac{\partial}{\partial x^m} + X^i Y^m \underbrace{ \nabla_{\frac{\partial}{\partial x^i} } \left( \frac{\partial }{ \partial x^m} \right) }_{} \\
+& \underbrace{=}_{\text{(i)}} X^i \left( \frac{\partial}{\partial x^i} Y^m \right) \frac{\partial}{ \partial x^m} + X^i Y^m \underbrace{\Gamma^q_{\,\, mi}(x)}_{\text{connection coefficient functions (on $M$) of $\nabla$ wrt $(U,x)$}} \frac{\partial}{\partial x^q}
+\end{aligned} 
+\end{gathered}
+\]	
+
+\quad \\
+
+\[
+\begin{gathered}
+(\underbrace{T}_{(p,q)}\otimes \underbrace{S}_{(r,s)})(\omega, \dots, X, \dots) := T(\omega, \dots, X, \dots) \underbrace{\cdot}_{C^{\infty}(M)} S(\dots, \dots) \\
+\nabla_X (T \otimes S) = (\nabla_X T) \otimes S + T\otimes (\nabla_X S)
+\end{gathered}
+\]
+
+\begin{definition}[Connection coefficient functions] $(M, \mathcal{O}, \mathcal{A}, \nabla)$, $(\mathcal{U}, x) \in \mathcal{A}$. \\	
+	Then the \textbf{connection coefficient functions} ("$\Gamma$"s) with respect to (wrt) $(U,x)$ on the $(\text{dim}(M))^3$ many functions
 	\[
+	\begin{gathered}
 	\begin{aligned}
-	&  \Gamma^i_{ \, \, jk} : U \to \mathbb{R} \\ 
-	&  p \mapsto \left( dx^i ( \nabla_{ \frac{ \partial}{ \partial x} } \frac{ \partial }{ \partial x^j } ) \right)(p)
-	\end{aligned}
+	\Gamma^i_{\, \, jk} : & \mathcal{U} \to \mathbb{R} \\ 
+	& p \mapsto \left( dx^i \left( \nabla_{\frac{\partial}{\partial x^k} } \frac{\partial}{\partial x^j} \right)\right) (p) 
+\end{aligned}	
+	\end{gathered}
 	\]
 	
-	Now $\nabla_{ \frac{ \partial }{ \partial x^m}  }(dx^i) = ?$
+\end{definition} 
+
+\emph{Thus}: 
 	
 	\[
-	\begin{aligned}
-	& \underbrace{ \nabla_{  \frac{ \partial }{ \partial x^m} } ( \underbrace{ dx^i \left( \frac{ \partial }{ \partial x^j } \right) }_{ \delta^i_{ \, \, j} } ) }_{ \rotatebox{90}{$\,=$} \quad \, \text{ (iii) } }  = \frac{ \partial }{ \partial x^m} ( \delta^i_{ \, \, j} ) = 0  \\
-	& = \left( \nabla_{ \frac{ \partial }{ \partial x^m} } dx^i \right)\left( \frac{ \partial }{ \partial x^j} \right) + dx^i (   \underbrace{ \nabla_{ \frac{ \partial }{ \partial x^m } } \frac{ \partial }{ \partial x^j } }_{ \Gamma^q_{ \, jm }\frac{ \partial }{ \partial x^q} }   ) = 0 \\
-	& \Longrightarrow \left( \nabla_{ \frac{ \partial }{ \partial x^m } } dx^i \right)\left( \frac{ \partial }{ \partial x^j } \right) = - \Gamma^i_{ jm} \\
-	& \nabla_{ \frac{ \partial }{ \partial x^m} } dx^i = -\Gamma^i_{ jm} dx^j 
-	\end{aligned}
+	\begin{gathered}
+	(\nabla_X Y)^i = X^m\left( \frac{\partial }{ \partial x^m} Y^i \right) + \Gamma^i_{\, \, nm} \underbrace{\cdot}_{C^{\infty}(M)} Y^n X^m
+	\end{gathered}
 	\]
+
+\emph{Remark}: On a chart domain $U$, choice of the $(\dim{M})^3$ functions $\Gamma^i_{\,\,jk}$ suffices to fix the action of $\nabla$ on a \emph{vector} field. 
+
+Fortunately, the same $(\text{dim}{M})^3$ functions fix the action of $\nabla$ on any tensor field. 
+
+\emph{key observation}:
+\[
+\begin{gathered}
+	\nabla_{\frac{\partial}{\partial x^m} }(dx^i) = \sum^i_{\, \, jm} dx^j
+\end{gathered}
+\]
+but now: 
+%\[
+%\begin{gathered}
+%	\underbrace{\nabla_{\frac{\partial}{\partial x^m}} \left( \underbrace{dx^i \left( \frac{\partial}{\partial x^j} \right)}_{\delta^i_j} \right)}_{= %\text{(iii)} } = \frac{\partial}{ \partial x^m} \left( \delta^i_j \right) =0  \\ 
+%	\left( \nabla_{{\partial }{ \partial x^m} } dx^i \right) + dx^i \left( \underbrace{ \nabla_{\partial}{\partial x^}
+%\end{gathered}
+%\]
 	
+	%There are $(\text{dim}M)^3$ many $\Gamma^i_{ \, \, j k}$
+	%\[
+	%\begin{aligned}
+	%&  \Gamma^i_{ \, \, jk} : U \to \mathbb{R} \\ 
+	%&  p \mapsto \left( dx^i ( \nabla_{ \frac{ \partial}{ \partial x} } \frac{ \partial }{ \partial x^j } ) \right)(p)
+	%\end{aligned}
+	%\]
+	
+	%Now $\nabla_{ \frac{ \partial }{ \partial x^m}  }(dx^i) = ?$
+	
+	\[
+\begin{aligned}
+& \underbrace{ \nabla_{  \frac{ \partial }{ \partial x^m} } ( \underbrace{ dx^i \left( \frac{ \partial }{ \partial x^j } \right) }_{ \delta^i_{ \, \, j} } ) }_{ \rotatebox{90}{$\,=$} \quad \, \text{ (iii) } }  = \frac{ \partial }{ \partial x^m} ( \delta^i_{ \, \, j} ) = 0  \\
+& = \left( \nabla_{ \frac{ \partial }{ \partial x^m} } dx^i \right)\left( \frac{ \partial }{ \partial x^j} \right) + dx^i (   \underbrace{ \nabla_{ \frac{ \partial }{ \partial x^m } } \frac{ \partial }{ \partial x^j } }_{ \Gamma^q_{ \, jm }\frac{ \partial }{ \partial x^q} }   ) = 0 \\
+& \Longrightarrow \left( \nabla_{ \frac{ \partial }{ \partial x^m } } dx^i \right)\left( \frac{ \partial }{ \partial x^j } \right) = - \Gamma^i_{ jm} 
+\end{aligned}
+\]
+
+Summary so far:
+
+%\[
+%(\nabla_XY)^i = X(Y^i) + \Gamma
+%\]
+
+% \nabla_{ \frac{ \partial }{ \partial x^m} } dx^i = -\Gamma^i_{ jm} dx^j 
+
 	
 	% \rotatebox{90}{$\,=$}
+
+\[
+\begin{aligned}
+& ( \nabla_X Y)^i = X(Y^i) \underbrace{+}_{\text{act on \textbf{vector} field}} \Gamma^i_{jm }  Y^j X^m \\
+& (\nabla_X \omega)_i = X(\omega_i) + - \Gamma^j_{im} \omega_j X^m
+\end{aligned}
+\]
+
 	
-	Hence
+%	Hence
 	
-	\[
-	\begin{aligned}
-	& ( \nabla_X Y)^i = X(Y^i) + \Gamma^i_{j\underbrace{m}_{\text{ last entry goes in direction of $X$ }} } Y^j X^m \\
-	& (\nabla_X \omega)_i = X(\omega_i) + - \Gamma^j_{im} \omega_j X^m
-	\end{aligned}
-	\]
+%	\[
+%	\begin{aligned}
+%	& ( \nabla_X Y)^i = X(Y^i) + \Gamma^i_{j\underbrace{m}_{\text{ last entry goes in direction of $X$ }} } Y^j X^m \\
+%	& (\nabla_X \omega)_i = X(\omega_i) + - \Gamma^j_{im} \omega_j X^m
+%	\end{aligned}
+%	\]
 	Note that for the immediately above expression for $(\nabla_X Y)^i$, in the second term on the right hand side, $\Gamma_{jm}^i$ has the last entry at the bottom, $m$ going in the direction of $X$, so that it matches up with $X^m$. This is a good mnemonic to memorize the index positions of $\Gamma$. 
 	
-	\underline{summary so far}:
-	\[
-	\begin{aligned}
-	& ( \nabla_X Y)^i = X(Y^i) + \Gamma^i_{jm }  Y^j X^m \\
-	& (\nabla_X \omega)_i = X(\omega_i) + - \Gamma^j_{im} \omega_j X^m
-	\end{aligned}
-	\]
+%	\underline{summary so far}:
+%	\[
+%	\begin{aligned}
+%	& ( \nabla_X Y)^i = X(Y^i) + \Gamma^i_{jm }  Y^j X^m \\
+%	& (\nabla_X \omega)_i = X(\omega_i) + - \Gamma^j_{im} \omega_j X^m
+%	\end{aligned}
+%	\]
 	similarly, by further application of Leibnitz
 	
 	$T$ a $(1,2)$-TF (tensor field)
@@ -6693,16 +6870,35 @@ $(\Gamma(TM), \oplus , \odot) \, C^{\infty}(M)$ - \textbf{module} \\
 	(\nabla_X T)^i_{ \, \, jk } = X(T^i_{ \, \, jk} ) + \Gamma^i_{ \, \, s m } T^s_{ \, \, jk} X^m - \Gamma^s_{ \, \, jm} T^i_{ \, \, sk} X^m - \Gamma^s_{ \, \, km} T^i_{ \,\, js} X^m
 	\end{aligned}
 	\]
-	
-	What is a Euclidean space: \\
+
+\quad \\
+
+\underline{Question}: If in a Euclidean space, the $\Gamma$s all vanish in a (then existing) global chart. \\	
+
+\underline{Answer}: Yes, but:	What is a Euclidean space: \\
 	$(M = \mathbb{R}^n, \mathcal{O}_{\text{st}}, \mathcal{A})$ smooth manifold. \\
 	Assume $(\mathbb{R}^n, \text{id}_{\mathbb{R}^n} ) \in \mathcal{A}$ and 
 	\[
 	(\Gamma^i_{(x)})_{jk} = dx^i \left( (\nabla_{\text{\underline{E}}})_{ \frac{ \partial }{ \partial x^k} } \frac{ \partial }{ \partial x^j} \right) \overset{!}{=} 0 
 	\]
+
+\emph{Intuition}: \\
+
+$\mathbb{R}^2$: $\nabla_{\text{Euclidean}}$ \\
+
+$\mathbb{R}^2$: $\nabla_{\text{Hyperbolic}}$ 
+ 
+\begin{definition}
+	$X$ vector field on $(M, \mathcal{O}, \mathcal{A}, \nabla)$. \\
+	Then divergence of $X$ is the function: 
+	\[
+	\text{div}(X):= \left( \nabla_{\frac{\partial}{\partial x^i}} X \right)^i
+	\]
+\end{definition}	
+
+\emph{Claim}: chart-independent.
 	
-	
-	\subsection{Change of $\Gamma$'s under change of chart}
+	\subsection*{3. Change of $\Gamma$'s under change of chart} \quad \\
 	
 	$(U,x)$, $(V,y) \in \mathcal{A}$ and $U \cap V \neq \emptyset$
 	
@@ -6716,18 +6912,65 @@ $(\Gamma(TM), \oplus , \odot) \, C^{\infty}(M)$ - \textbf{module} \\
 	\[
 	\begin{aligned}
 	\Longrightarrow \Gamma_{jk}^i(y) & = \frac{ \partial y^i}{ \partial x^q} dx^q \left( \frac{ \partial x^p}{ \partial y^k} \left[ \left( \nabla_{ \frac{ \partial }{ \partial x^p} } \frac{ \partial x^s}{ \partial y^j} \right) \frac{ \partial }{ \partial x^s} + \frac{ \partial x^s}{ \partial y^j} \left( \nabla_{ \frac{ \partial }{ \partial x^p } } \frac{ \partial }{ \partial x^s } \right)  \right] \right) = \\
-	& = \frac{ \partial y^i}{ \partial x^q} \frac{ \partial x^p }{ \partial y^k} \frac{ \partial }{ \partial x^p } \frac{ \partial x^s}{ \partial y^j } \delta^q_{ \, \, s} + \frac{ \partial y^i}{ \partial x^q} \frac{ \partial x^p }{ \partial y^k} \frac{ \partial x^s}{ \partial y^j} \Gamma^q_{sp}(x)
+	& = \frac{ \partial y^i}{ \partial x^q} \underbrace{\frac{ \partial x^p }{ \partial y^k} \frac{ \partial }{ \partial x^p }}_{\frac{\partial}{\partial y^k} } \frac{ \partial x^s}{ \partial y^j } \delta^q_{ \, \, s} + \frac{ \partial y^i}{ \partial x^q} \frac{ \partial x^p }{ \partial y^k} \frac{ \partial x^s}{ \partial y^j} \Gamma^q_{sp}(x)
 	\end{aligned}
 	\]
 	
-	
+	in summary:
 	\begin{equation}\label{Eq:WEHCG0703_changeofGamma}
 	\Gamma^i_{jk}(y) = \frac{ \partial y^i}{ \partial x^q} \frac{ \partial^2 x^q}{ \partial y^j \partial y^k} + \frac{ \partial y^i}{ \partial x^q } \frac{ \partial x^s }{ \partial y^j} \frac{ \partial x^p }{ \partial y^k} \Gamma^q_{sp}(x)
 	\end{equation}
 	Eq. (\ref{Eq:WEHCG0703_changeofGamma}) is the change of connection coefficient function under the change of chart $(U\cap V,x) \to (U\cap V,y)$
 	
 	
-	\subsection{Normal Coordinates}
+	\subsection*{4. Normal Coordinates}
+	
+Let $p \in M$ of $(M, \mathcal{O}, \mathcal{A}, \nabla)$
+
+Then one can construct a chart $(U,x)$ with $p\in U$ such that 
+\[
+\begin{gathered}
+	\Gamma(x)^i_{\,\, (jk)}(p) = 0
+\end{gathered} 
+\]
+\emph{at} the point $p$. \textbf{Not} necessarily in any neighborhood.
+
+\begin{proof}
+Let $(V,y)$ be any chart (with) $p\in V$.
+
+Thus, in general: $\Gamma(y)^i_{\,\, jk} \neq 0$
+
+Then consider a new chart $(U, x)$ to which one transits by virtue of 
+\[
+\begin{gathered}
+(x\circ y^{-1})^{i}(\alpha^1, \dots, \alpha^d) := \alpha^i - \frac{1}{2} \Gamma(y)^i_{\,\, (jk)}(p) \alpha^j \alpha^k 
+\end{gathered}
+\]
+$p = x^{-1}(\alpha^1, \dots , \alpha^d)$
+
+\[
+\begin{gathered}
+\begin{aligned} 
+	& \left(\frac{\partial x^i}{ \partial y^j}\right)_p = \partial_j (x^i \circ y^{-1}) = \delta^i_j - \Gamma(y)^i_{\,\, mj}(p) \left. \alpha^m \right|_{\alpha = 0} = \delta^i_j \\
+	& \frac{\partial x^i}{ \partial y^k \partial y^j}(p) = - \Gamma(y)^i_{ \, \, kj} (p)
+\end{aligned} 
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+\begin{aligned} 
+\Longrightarrow \Gamma(x)^i_{jk}(p) & = \Gamma(y)^i_{\,\, jk}(p)  -  \Gamma(y)^i_{\,\,kj}(p) = 0  \\
+	& = \Gamma(y)^i_{[jk]}(p) = T(y)^i_{\,\,jk}
+\end{aligned} 
+\end{gathered}
+\]
+
+\underline{Terminology}: $(U,x)$ is called a \textbf{normal coordinate chart} of $\nabla$ at {$\mathbf{p\in M}$}.
+
+\end{proof}
+
+
 	
 	\subsection*{Tutorial 7 Connections}
 	
@@ -9173,6 +9416,10 @@ T. Frankel,
 Cambridge University Press, 
 Third Edition,
 2012.
+
+\bibitem{Mori2001} 
+Shigeyuki Morita. \textbf{Geometry of Differential Forms} (Translations of Mathematical Monographs, Vol. 201). American Mathematical Society (August 28, 2001). ISBN-10: 0821810456
+
 
 
 \end{thebibliography}
