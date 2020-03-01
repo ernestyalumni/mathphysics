@@ -4609,8 +4609,47 @@ Example 0.9 of Leinster (2014) \cite{Lein2014}. Let topological space $X = U \cu
 	V \arrow[r, hook, "i'"] & X
 \end{tikzcd}
 \]
+has universal property
+\[
+\begin{tikzcd}[sep=large] 
+U \cap V \arrow[r, hook, "i"] \arrow[d, hook, "j"] & U \arrow[d, hook, "j'"] \arrow[ddr, "f"] & \\
+V \arrow[r, hook, "i'"] \arrow[drr, "g"] & X \arrow[dr, dotted, "h"] & \\
+& & Y 
+\end{tikzcd}
+\]
+$\forall \, g, Y, f$ s.t. $f\circ i = g\circ j$, $\exists ! \, $ cont. $h: X\to Y$ s.t. $h\circ j' = f$, $h\circ i' = g$.
 
+Under favorable conditions, induced diagram of fundamental groups.
 
+\[
+\begin{tikzcd}[sep=large] 
+\pi_1(U \cup V) \arrow[r, "i_*"] \arrow[d, "j_*"] & \pi_1(U) \arrow[d, "j'_*"] \\
+\pi_1(V) \arrow[r, "i'_*"] & \pi_1(X)
+\end{tikzcd}
+\]
+has same universal property: Van Kampen's thm.
+
+\[
+\begin{aligned}
+& \theta : G \to H \\ 
+& \epsilon : G \to H
+\end{aligned}
+\]
+
+$\theta, \epsilon$ have common domain and codomain.
+
+$i: \text{ker}(\theta) \to G$ is s.t. $\theta \circ i = \epsilon \circ i$
+
+\[
+\begin{tikzcd}
+\text{ker}{(\theta)} \arrow[r, hook, "i"] & G \arrow[r, shift left, "\theta"] \arrow[r, shift right, "\epsilon"]& H \\
+J \arrow[u, dotted, "u"] \arrow[ur, "a"] & & \\
+\end{tikzcd}
+\]
+$\forall \, a : J \to G$ s.t. $\theta \circ a = \epsilon \circ a$, then $\exists \, ! \, u : J \to \text{ker}{\theta}$ s.t. 
+\[
+a = i \circ u 
+\]
 
 \subsubsection{Free monoid $A^*$ on set $A$}
 
