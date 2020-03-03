@@ -1238,14 +1238,70 @@ $F$ diffeomorphism onto $F(M)$.
 	and $F^{-1}$ diffeomorphism, $F$ smooth immersion, so $i : S \to M$ smooth immersion.  
 	\end{proof}
 
-\section{Integral Curves and Flows}
+\section{Curves, Integral Curves, and Flows}
 
 cf. John Lee (2012) \cite{JLee2012}, Ch. 9, deals with time-dependent vector fields and I don't see other texts or references handling such an important, but overlooked, case.
 
+\subsection{Curves in Euclidean space}
+
+cf. 4.1 Jeffrey Lee (2009) \cite{JLee2009}
+
+If $C$ is 1-dim. submanifold of $\mathbb{R}^n$, $p\in C$, $\exists \, $ chart $(V, y)$ of $C$, $p\in V$ s.t. $y(V)$ is a connected open interval $I \subset \mathbb{R}$, \\
+inverse map $y^{-1} : I \to V \subset M$ is a local parametrization. \\
+idea is to extract information that's appropriately independent of parametrization. \\
+
+If $\gamma : I \to \mathbb{R}^n$, $c: J \to \mathbb{R}^n$ curves with same image, \\
+$c$ is a \textbf{positive reparametrization} of $\gamma$ if $\exists \, $ smooth $h: J \to I$ with $h' > 0 $ s.t. $c = \gamma \circ h$, \\
+in this case, $\gamma, c$ have same \textbf{sense} and same \textbf{orientation}. \\
+
+Assume $\gamma : I \to \mathbb{R}^n$ has $\| \gamma' \| >0$, \\
+Such a curve is \textbf{regular}, i.e. curve is an immersion (Recall, an immersion would be smooth $\gamma : I \to \mathbb{R}^n$, s.t. $D\gamma(p): T_p I \to T_{\gamma(p)}\mathbb{R}^n$ injective).  
+
+\begin{definition}[unit tangent field in Euclidean space, 4.3 Lee (2009) \cite{JLee2009}]	
+	If $\gamma:I \to \mathbb{R}^n$ regular curve, then $\mathbf{T}(t) := \frac{\gamma'(t)}{ \| \gamma'(t) \| }$ defines \textbf{unit tangent field} along $\gamma$ ($\|T \| = 1$)
+\end{definition}
+
+\textbf{length of a curve} defined on closed interval $\gamma :[t_1, t_2] \to \mathbb{R}^n$, 
+\[
+L  = \int_{t_1}^{t_2} \| \gamma'(t) \| dt
+\]
+Define \textbf{arc length function} for curve $\gamma:I \to \mathbb{R}^n$ by choosing $t_0 \in I$, 
+\[
+s = h(t) :=  \int_{t_0}^{t} \| \gamma'(t) \| d\tau
+\]
+
+If curve is smooth and regular, then $h'= \| \gamma'(\tau) \| >0$, so by inverse function theorem, $\exists \,$ smooth $h^{-1}$ (since $h'$ invertible (with $1/h'$)). 
+
+If $c(s) = \gamma h^{-1}(s)$, then $\| c' \|(s) := \| c'(s)\| = 1$, \, $\forall \, s$
+\[
+\begin{gathered} 
+c'(s) = (\gamma(h^{-1}(s)))' = \gamma'(h^{-1}(s)) \cdot \frac{dh^{-1}}{ds}(s) \\
+\| c'(s) \| = \| \gamma'(t) \| \| \frac{dh^{-1}}{ds} (s) \| = h' \cdot \frac{1}{h'} = 1
+\end{gathered} 
+\]
+Curves parametrized by arc length are \textbf{unit speed curves}.
 
 
+For a unit speed curve, $\frac{dc}{ds}(s) = \mathbf{T}(s)$. 
 
+\begin{definition}[curvature vector, curvature function, principal normal in Euclidean space, 4.4 Lee (2009) \cite{JLee2009}]
+	Let $c:I \to \mathbb{R}^n$ be a unit speed curve. vector valued function
+	\[
+	\mathbf{\kappa}(s) := \frac{d\mathbf{T}}{ds}(s) 
+	\]
+	is called the \textbf{curvature vector}.
+	
+	\[
+	\kappa(s) := \| \mathbf{\kappa}(s) \| = \| \frac{d\mathbf{T}}{ds}(s) \|
+	\]
+	is called the \textbf{curvature function}.
 
+	If $\kappa(s) >0$, then define principal normal
+	\[
+	\mathbf{N}(s) = \| \frac{d\mathbf{T}}{ds}(s) \|^{-1} \frac{d\mathbf{T}}{ds}(s) 
+	\]
+	s.t. $\frac{d\mathbf{T}}{ds} = \kappa \mathbf{N}$
+\end{definition}
 
 
 
