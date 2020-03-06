@@ -1303,8 +1303,65 @@ For a unit speed curve, $\frac{dc}{ds}(s) = \mathbf{T}(s)$.
 	s.t. $\frac{d\mathbf{T}}{ds} = \kappa \mathbf{N}$
 \end{definition}
 
+\subsection{Integral Curves}
 
+cf. Ch. 9 of Lee (2012) \cite{JLee2012}
 
+integral curves - smooth curves whose velocity at each point is equal to the value of the smooth vector field there. 
+
+Let smooth manifold $M$ with or without boundary. \\
+If smooth curve $\gamma : J \to M$, then $\forall \, t \in J$, velocity vector $\gamma'(t)$ is a vector in $T_{\gamma(t)}M$.  \\
+
+\begin{definition}[Integral Curve $\Gamma$]
+Integral curve: $\mathbf{v}, \gamma$. \\
+If vector field $\mathbf{v}$ on $M$, \\
+\textbf{integral curve} of $\mathbf{v}$ is differentiable curve $\gamma : J \to M$, whose velocity $\forall \, p \in M$, $V_{\gamma(t)}$
+\[
+\gamma'(t) = V_{\gamma(t)}, \, \forall \, t \in J
+\]
+\end{definition}
+
+Finding integral curves boils downs to solving a system of ordinary differential equations in a smooth chart. \\
+Suppose smooth vector field $V$ on $M$, smooth curve $\gamma : J \to M$ \\
+On smooth coordinate domain $U \subseteq M$, \\
+Write $\gamma$ in local coordinates as 
+\[
+\begin{gathered}
+	\gamma(t) = (\gamma^{1}(t), \dots , \gamma^{n}(t)) \\
+	\gamma^i(t) = x^i \circ \gamma(t) \text{ where } x^i : U \subseteq M \to \mathbb{R} 
+\end{gathered}
+\]
+
+Then condition for $\gamma$ to be an integral curve.
+\[
+\gamma'(t) \equiv \dot{\gamma}(t) = V_{\gamma(t)}
+\]
+can be written as 
+\[
+\dot{\gamma}^i(t) \left. \frac{\partial}{\partial x^i} \right|_{\gamma(t)} = V^i(\gamma(t)) \left. \frac{\partial }{ \partial x^i } \right|_{\gamma(t)}
+\]
+
+which reduces to an autonomous system of ordinary differential equations (ODEs)
+
+\begin{equation}
+\begin{aligned} 
+& \dot{\gamma}^1(t) = V^1(\gamma^1(t), \dots, \gamma^n(t)) \\ 
+& \vdots \\ 
+& \dot{\gamma}^n(t) = V^n(\gamma^1(t), \dots , \gamma^n(t))
+\end{aligned} 
+\end{equation}
+
+20200306 EY: I use this notation which is more useful for me, e.g. taking the double derivative of the curve $\gamma$: 
+\[
+\begin{gathered} 
+\begin{aligned} 
+& \dot{\gamma}(t) = v(\gamma(t)) \in T_{\gamma(t)}U \\ 
+& \dot{\gamma}(t) = v^i(\gamma^1(t), \dots, \gamma^n(t))
+\end{aligned} \\ 
+\frac{d}{dt} \dot{\gamma}^i(t) = \frac{d}{dt} v^i(\gamma^1(t), \dots , \gamma^n(t)) = \frac{d}{dt} v^i(x^1 , \dots , x^n) \\
+= \frac{\partial v^i}{\partial x^j}(x) \dot{x}^j = \dot{\gamma}^j \frac{\partial \dot{\gamma}^i}{\partial x^j}
+\end{gathered} 
+\]
 
 
 \section{Tensors}
@@ -7103,51 +7160,149 @@ $p = x^{-1}(\alpha^1, \dots , \alpha^d)$
 	
 	
 	
-	\section{Lecture 8: Parallel Transport \& Curvature (International Winter School on Gravity and Light 2015)}
+	\section*{Lecture 8: Parallel Transport \& Curvature (International Winter School on Gravity and Light 2015)}
 	
-	\subsection{Parallelity of vector fields}
+\subsection*{Experiment}
+
+$\nabla_{v_{\gamma}} Y \overset{!}{=} 0$ \\
+(please move in this fashion) \\
+
+round sphere \\
+$(S^2, \mathcal{O}, \mathcal{A}, \nabla)$ \\
+
+ellipsoid \\
+$(S^2, \mathcal{O}, \mathcal{A}, \widetilde{\nabla})$ \\
+
+ellisoid embedded in $\mathbb{R}^3$ with $\mathbb{R}^3$ Euclidean connection \\
+$(\mathbb{R}^3, \nabla_E)$
+
 	
-	\begin{definition}
-		\begin{enumerate}
-			\item[(1)]  \textbf{parallely transported} along smooth curve $\gamma: \mathbb{R} \to M$  
-			
-			if 
-			\begin{equation}
-			\boxed{ \nabla_{ v_{\gamma} } X = 0 }
-			\end{equation}
-			\item[(2)] A slightly weaker condition 
-			
-			is ``parallel''
-			
+	\subsection*{1. Parallelity of vector fields}
+	
+	$(M,\mathcal{O}, \mathcal{A}, \nabla)$ manifold with connection.
+
+\begin{definition}[parallely transported, parallel] 
+\begin{enumerate}
+	\item[(1)]	A vector field $X$ on $M$ is said to be \textbf{parallely transported} along a smooth curve $\gamma: \mathbb{R} \to M$ \\
+	if 
+	\[
+	\boxed{ \nabla_{v_{\gamma}} X = 0 }
+	\]
+i.e.
+
+\[
+\left( \nabla_{v_{\gamma, \gamma(\lambda) } } X \right)_{\gamma(\lambda)} = 0 
+\]	
+
+	\item[(2)] A slightly weaker condition than "parallely transported" is "parallel":
 			\[
-			( \nabla_{v_{\gamma, \gamma(\lambda)} } X)_{\gamma(\lambda)} = \mu(\lambda) X_{\gamma(\lambda)}
-			\]
+( \nabla_{v_{\gamma, \gamma(\lambda)} } X)_{\gamma(\lambda)} = \mu(\lambda) X_{\gamma(\lambda)}
+\]
+for $\mu : \mathbb{R} \to \mathbb{R}$
+
+\underline{Example}: \emph{Euclidean plane} $(\mathbb{R}^2, \mathcal{O}, \mathcal{A}, \nabla_E)$,
+
+parallely transported $X$ along $\gamma$, parallel $X$ along $\gamma$, not parallel, not parallely transported.
+\end{enumerate}
+\end{definition}
+
+%	\begin{definition}
+%		\begin{enumerate}
+%			\item[(1)]  \textbf{parallely transported} along smooth curve $\gamma: \mathbb{R} \to M$  
 			
+%			if 
+%			\begin{equation}
+%			\boxed{ \nabla_{ v_{\gamma} } X = 0 }
+%			\end{equation}
+%			\item[(2)] A slightly weaker condition 
 			
-		\end{enumerate}
-	\end{definition}
+%			is ``parallel''
+								
+%		\end{enumerate}
+%	\end{definition}
 	
-	\subsection{Autoparallely transported curves}
+	\subsection*{2. Autoparallely transported curves}
+	Thought bubble: self- is "Auto"
+	
+	Child: "How do I get to the toy store." Adult: "Just follow your nose." 
+	
+	(Move in direction of nose means move along curve whose tangent vector is your nose. Means move in the straightest line. We are not talking about shortest line because we do not have a notion of distance.)
 	
 	\begin{definition}
-		curve $\gamma: \mathbb{R} \to M$ is called \\
+		A (smooth) curve $\gamma: \mathbb{R} \to M$ is called \\
 		\textbf{autoparallely transported} if 
 		\begin{equation}
-		\nabla_{v_{\gamma}}v_{\gamma} \overset{!}{=} 0
+		\nabla_{v_{\gamma}}v_{\gamma} = 0
 		\end{equation}
+	$\Longleftrightarrow $ $\left( \nabla_{v_{\gamma, \gamma(\lambda)}} v_{\gamma} \right)_{\gamma(\lambda)} = 0$ 
 	\end{definition}
 	
-	
-	\subsection{Autoparallel equation}
-	
-	\[
-	\nabla_{v_{\gamma}} v_{\gamma} =0 
-	\]
-	
+\emph{Remark}: Define weaker notion of autoparallel curve \\
+Thought bubble: !
+
+\[
+\nabla_{v_{\gamma}} v_{\gamma} = \mu v_{\gamma} 
+\]
+
+\underline{Example}. Euclidean plane $(\mathbb{R}^2, \mathcal{O}, \mathcal{A}, \nabla_E)$
+
+autoparallely transported (uniform straight motion, Newton's First law), autoparallel (straight motion) but not autoparallely transported, 
+
+\subsection*{3. Autoparallel equation}
+
+Autoparallely transported curve $\gamma$ \\
+Consider that portion of the curve that lies in $U$, where $(U, x) \in \mathcal{A}$.
+\[
+\nabla_{v_{\gamma}} v_{\gamma} = 0 
+\]
+
+Express $\nabla_{v_{\gamma}} v_{\gamma} = 0$ in terms of chart representation.
+
+\[
+\begin{gathered}
+ (\nabla_{v_{\gamma}} v_{\gamma}) = \left( \nabla_{\dot{\gamma}^m(x)\left( \frac{\partial}{\partial x^m} \right)_{\gamma(\lambda)} } \dot{\gamma}^n(x) \frac{\partial}{\partial x^n} \right) 
+\end{gathered}
+\]
+where
+\[
+\begin{gathered} 
+	v_{\gamma, \gamma(\lambda)} = \dot{\gamma}^m(x) \cdot \left( \frac{\partial}{\partial x^m} \right) \\ 
+	\gamma^m(x) := x^m \circ \gamma 
+\end{gathered} 
+\]
+
+\[
+\begin{gathered}
+\Longrightarrow (\nabla_{v_{\gamma}} v_{\gamma}) =  \\
+ = \underbrace{ \dot{\gamma}^m \frac{\partial \dot{\gamma}^q }{ \partial x^m} }_{\ddot{\gamma}(x)^m } \cdot \frac{\partial }{ \partial x^q} + \dot{\gamma}^m \dot{\gamma}^n \Gamma^q_{ \, \, nm} \frac{\partial}{\partial x^q}
+\end{gathered}
+\]
+
+20200306 EY: For further clarification, 
+\[
+\begin{gathered} 
+\begin{aligned} 
+ 	& \dot{\gamma}(t) = v(\gamma(t)) \in T_{\gamma(t)}U \\ 
+	& \dot{\gamma}(t) = v^i(\gamma^1(t), \dots, \gamma^n(t))
+\end{aligned} \\ 
+ \frac{d}{dt} \dot{\gamma}^i(t) = \frac{d}{dt} v^i(\gamma^1(t), \dots , \gamma^n(t)) = \frac{d}{dt} v^i(x^1 , \dots , x^n) \\
+ = \frac{\partial v^i}{\partial x^j}(x) \dot{x}^j = \dot{\gamma}^j \frac{\partial \dot{\gamma}^i}{\partial x^j}
+\end{gathered} 
+\]
+
 	in summary:
-	\begin{equation}
-	\ddot{\gamma}^m_{(x)}(\lambda) + (\Gamma^m_{(x)})_{ab}(\gamma(\lambda)) \dot{\gamma}^a_{(x)}(\lambda) \dot{\gamma}^b_{(x)}(\lambda) = 0 
-	\end{equation}
+\begin{equation}
+\boxed{ 
+	\ddot{\gamma}^m_{(x)}(\lambda) + (\Gamma^m_{(x)})_{ab}(\gamma(\lambda)) \dot{\gamma}^a_{(x)}(\lambda) \dot{\gamma}^b_{(x)}(\lambda) = 0  }
+\end{equation}
+chart expression of the condition that $\gamma$ be autoparallely transported.
+	
+	%\subsection*{3. Autoparallel equation}
+	
+	%\[
+	%\nabla_{v_{\gamma}} v_{\gamma} =0 
+	%\]
+	
 	
 	\subsection{Torsion}
 	
