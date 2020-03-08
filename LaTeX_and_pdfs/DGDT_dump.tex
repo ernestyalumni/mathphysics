@@ -7303,11 +7303,68 @@ chart expression of the condition that $\gamma$ be autoparallely transported.
 	%\nabla_{v_{\gamma}} v_{\gamma} =0 
 	%\]
 	
+\subsubsection*{Examples}
+\begin{enumerate}
+	\item[(a)] Euclidean plane, $U = \mathbb{R}^2$, $x= \text{id}_{\mathbb{R}}$, $\Gamma(x)^i_{\,\,jk} =0$
+	\[
+	\Longrightarrow \ddot{\gamma}(x)^m = 0 \Longrightarrow \gamma(x)^m(\lambda) = a^m \lambda + b^m \\
+	a,b \in \mathbb{R}^d
+	\]
+	\item[(b)] round sphere $(S^2, \mathcal{O}, \mathcal{A}, \nabla_{\text{round}})$ \\
+	Consider a chart: 
+	\[
+	\begin{aligned}
+	x(p) & = (\theta, \varphi) \\
+	\theta & \in (0, \pi) \\
+	\varphi & \in (0, 2\pi)
+	\end{aligned}	
+	\]
+	all other ($\Gamma^1_{\,\, 11} = 0$) vanish.
+	\[
+	\begin{aligned} 
+		& \Gamma(x)^1_{\,\, 22} (x^{-1}(\theta, p)) := - \sin{\theta} \cos{\theta} 
+		& \Gamma(x)^2_{\,\, 21} = \Gamma(x)^2_{\,\,12} := \cot{\theta}  
+		\end{aligned} 
+	\]
+
+Sloppy notation (classical mechanics) \\
+\[
+\begin{aligned}
+& x^1(p) = \theta(p) \\ 
+& x^2(p) = \varphi(p)
+\end{aligned}
+\]
 	
-	\subsection{Torsion}
+autoparallel equation
+\[
+\begin{aligned} 
+& \ddot{\theta} + \Gamma^1_{\,\, 22} \dot{\varphi} \dot{\varphi} = 0 \\ 
+& \ddot{\varphi} + 2 \Gamma^2_{\,\, 12} \dot{\theta}\dot{\varphi } = 0 
+\end{aligned} 
+\]
+\[
+\Longleftrightarrow \boxed{ 
+	\begin{aligned}
+	& \ddot{\theta} - \sin{(\theta)} \cos{(\theta)} \dot{\varphi} \dot{\varphi} = 0 \\ 
+	& \ddot{\varphi} + 2\cot{(\theta)} \dot{\theta} \dot{\varphi} = 0 
+	\end{aligned} }
+\]
+\end{enumerate}
+
+\underline{Solve}: e.g. $\begin{aligned} 
+& \theta(\lambda) = \frac{\pi}{2}
+& \varphi(\lambda) = \underline{\omega} \cdot \lambda + \varphi_0 
+\end{aligned} $
+	
+	Similarly, 
+	
+	$\nabla_{\text{potato}}$, $(S^2, \mathcal{O}, \mathcal{A})$
+	
+	\subsection*{3. Torsion}
+Q: Can one use $\nabla$ to define tensors on $(M,\mathcal{O}, \mathcal{A}, \nabla)$? 
 	
 	\begin{definition}
-		\textbf{torsion} of a connection $\nabla$ is the $(1,2)$-\textbf{tensor field}
+		The \textbf{torsion} of a connection $\nabla$ is the $(1,2)$-\textbf{tensor field}
 		\begin{equation}
 		T(\omega,X,Y) := \omega( \nabla_X Y - \nabla_Y X - [X,Y])
 		\end{equation}
@@ -7322,12 +7379,28 @@ chart expression of the condition that $\gamma$ be autoparallely transported.
 	
 	\begin{proof}
 		check $T$ is $C^{\infty}$-linear in each entry
+
+\[
+\begin{gathered}
+	T(f\cdot \omega, X, Y) = f\cdot \omega(\dots) = fT(\omega, X, Y) \\
+	T(\omega + \psi, X, Y) = \dots = T(\omega, X, Y) + T(\psi, X, Y) \\
+	T(\omega, fX, Y) = \omega( \nabla_{fX} Y - \nabla_Y (fX) - [fX, Y]) = \\
+	= \omega(f\nabla_X Y - (Yf)X - f\nabla_Y X - f[X,Y] + (Yf)X) = fT(\omega,X,Y)
+\end{gathered}
+\]
+since
+\[
+\begin{gathered} 
+	[fX,Y] g = fX(Yg) - Y(fXg) = \\
+	= fX(Yg) - (Yf) (Xg) - fY(Xg) = \\
+	= f\cdot [X,Y] g - (Yf) Xg = \\
+	= (f\cdot [X,Y] - (Yf)X) g
+\end{gathered} 
+\]
 		
-		\[
-		\begin{gathered}
-		T(\omega, fX,Y) = \omega ( \nabla_{fX} Y - \nabla_Y (fX) - [fX,Y] )
-		\end{gathered}
-		\]
+\[
+T(\omega, X, Y) = -T(\omega, Y , X)  \quad \, \checkmark
+\]
 	\end{proof}
 	
 	\begin{definition}
@@ -7344,10 +7417,10 @@ chart expression of the condition that $\gamma$ be autoparallely transported.
 	
 	From now on, in these lectures, we only use torsion-free connections. 
 	
-	\subsection{4. Curvature}
+	\subsection*{4. Curvature}
 	
 	\begin{definition}
-		\textbf{Riemann curvature} of a connection $\nabla$ is the $(1,3)$-tensor field
+		The \textbf{Riemann curvature} of a connection $\nabla$ is the $(1,3)$-tensor field
 		\begin{equation}
 		\text{Riem}(\omega,Z,X,Y) := \omega( \nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z - \nabla_{[X,Y]} Z)
 		\end{equation}
@@ -7358,7 +7431,39 @@ chart expression of the condition that $\gamma$ be autoparallely transported.
 	
 	\underline{Tutorials} $\text{Riem}^i_{ \,\, jab} = \dots $
 	
-	
+\subsubsection*{Algebraic relevance of $\text{Riem}$} \quad \, \\
+
+\[
+(\nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z) = R(\cdot, Z,X,Y) + \nabla_{[X,Y]} Z
+\]
+In one chart $(U, x)$
+\[
+(\underbrace{\nabla_a)}_{ = \nabla_{\frac{\partial}{\partial x^a} } } \nabla_b Z - \nabla_b \nabla_a Z)^m = \text{Riem}^m_{\,\,nab} Z^n  + \cancel{ \nabla_{\left[ \underbrace{ \frac{\partial }{ \partial x^a} , \frac{\partial}{\partial x^b} }_{ = 0} \right] } Z }
+\]
+\[
+\boxed{  (\nabla_a \nabla_b Z)^m - (\nabla_b \nabla_a Z)^m = \text{Riem}^m_{\,\, nab} Z^n }
+\]
+
+\subsubsection*{Geometric significance} \quad \, \\
+
+\underline{Idea}: 
+
+$[X,Y] = 0$
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.5\linewidth]{images/fig_three7.jpg}	
+	\caption{Closed Riem}
+	\label{Fig:ClosedRiem}
+\end{figure}
+
+If $[X,Y] \neq 0$
+
+\[
+(\delta Z)^m = \dots = R^m_{\, \, nab} X^a Y^b Z^n \delta s \delta t + \mathcal{O}(\delta s^2 \delta t, \delta t^2 \delta s)
+\]
+
+Holonomy
 	
 	\section*{Tutorial 8 Parallel transport \& Curvature}
 	
