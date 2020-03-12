@@ -4848,19 +4848,6 @@ Other interesting links:
 
 \href{http://oai.cwi.nl/oai/asset/2552/2552A.pdf}{The Lagrange Multiplier Rule on Manifolds and Optimal Control of nonlinear systems}
 
-
-\part{Classical Mechanics applications}
-
-cf. Arnold, Kozlov, Neishtadt (2006) \cite{AKN2006}. 
-
-If known forces $\mathbf{F}_1 \dots \mathbf{F}_n$ acts on points, then 
-\begin{equation}
-\sum_{i=1}^n \langle m_i \ddot{ \mathbf{r}}_i - \mathbf{F}_i , \mathbf{\xi}_i \rangle = 0
-\end{equation}
-cf. Eq. (1.26) of Arnold, Kozlov, Neishtadt (2006) \cite{AKN2006}, where $\xi_1 , \dots \xi_n$ are arbitrary tangent vectors to $M$, $\mathbf{\xi}_i, \dots \mathbf{\xi}_n \in TM$.  
-
-$\sum_{i=1}^n \langle m_i \ddot{ \mathbf{r}}_i - \mathbf{F}_i , \mathbf{\xi}_i \rangle$ called "general equation of dynamics" or d'Alembert-Lagrange principle.  
-
 \part{Classical Mechanics}
 
 \section{Classical Mechanics}
@@ -5135,6 +5122,180 @@ dG = \mu dN - \sigma d\tau + V dp
 \]
 
 For a throttling valve (don't all valves throttle?) the pressure drop is accounted for by the Gibbs free energy, \emph{not} by an isenthalpy condition. 
+
+\part{Classical Mechanics applications}
+
+cf. Arnold, Kozlov, Neishtadt (2006) \cite{AKN2006}. 
+
+If known forces $\mathbf{F}_1 \dots \mathbf{F}_n$ acts on points, then 
+\begin{equation}
+\sum_{i=1}^n \langle m_i \ddot{ \mathbf{r}}_i - \mathbf{F}_i , \mathbf{\xi}_i \rangle = 0
+\end{equation}
+cf. Eq. (1.26) of Arnold, Kozlov, Neishtadt (2006) \cite{AKN2006}, where $\xi_1 , \dots \xi_n$ are arbitrary tangent vectors to $M$, $\mathbf{\xi}_i, \dots \mathbf{\xi}_n \in TM$.  
+
+$\sum_{i=1}^n \langle m_i \ddot{ \mathbf{r}}_i - \mathbf{F}_i , \mathbf{\xi}_i \rangle$ called "general equation of dynamics" or d'Alembert-Lagrange principle.  
+
+\section{Orbital Mechanics}
+
+Compare this against (26.6) of Greiner (2004) \cite{Grei2004}:
+\begin{equation}\label{Eq:ConicSectionPolarCoordinatesFocusCenter}
+r = \frac{ed}{ 1 + e\cos{\theta}}, \quad \, e = \frac{C\widehat{L}_0^2}{GM}, \quad \, d = 1/C
+\end{equation} cf. Eq. (26.32) of Greiner (2004) \cite{Grei2004}. 
+
+Investigate which physical quantities (e.g. $E, L$) eccentricity $e$ depends on.
+
+\[
+\begin{gathered}
+u = \frac{GM}{ \widehat{L_0}^2 } + C \cos{(\theta - \theta_0)} \Longrightarrow \frac{du}{d\theta} = -C \sin{(\theta - \theta_0)} \\
+\Longrightarrow \begin{gathered}
+\frac{1}{2} m L_0^2 \left[ C^2 \sin^2{ (\theta - \theta_0)} + \left( \frac{GM}{L_0^2} \right)^2 + 2 C \frac{GM}{L_0^2} \cos{(\theta - \theta_0)} + C^2 \cos^2{(\theta - \theta_0)} \right] = \\
+= \frac{1}{2} m \widehat{L}_0^2 \left[ C^2 + \left( \frac{GM}{\widehat{L}_0^2 } \right)^2 + 2 C \frac{GM}{ \widehat{L}_0^2 } \cos{(\theta - \theta_0)} \right] = \\
+= E - V\left( \frac{1}{u} \right) = E + GMmu = E + \frac{(GM)^2 }{ \widehat{L}_0^2 } m + C GM m \cos{(\theta - \theta_0)}
+\end{gathered} \\
+\Longrightarrow \frac{1}{2} m \widehat{L}_0^2 C^2 = E + \frac{1}{2} \frac{ (GM)^2 }{ \widehat{L_0}^2 } m 
+\end{gathered} 
+\]
+
+Solve for the dummy constant $C$:
+\begin{equation}
+C = \sqrt{ \frac{2E}{m \widehat{L}_0^2 } + \frac{ (GM)^2 }{ \widehat{L}_0^4 } }
+\end{equation}
+cf. Eq. (26.36) of Greiner (2004) \cite{Grei2004}.
+
+From Eq. (26.32) of Greiner (2004) \cite{Grei2004} or Eq. \ref{Eq:ConicSectionPolarCoordinatesFocusCenter}, 
+\[
+\begin{gathered}
+e = \frac{C \widehat{L}_0^2 }{ GM} = \sqrt{ \frac{2 E }{ m \widehat{L}_0^2} + \frac{ (GM)^2 }{\widehat{L}_0^4 } } \left( \frac{\widehat{L}_0^2 }{ GM} \right)  
+\end{gathered}
+\]
+So
+\begin{equation}
+\boxed{ e =  \sqrt{ \frac{ 2 E \widehat{L}_0^2 }{ m (GM)^2 } + 1 } }
+\end{equation}
+cf. Eq. (26.37) of Greiner (2004) \cite{Grei2004}. 
+
+Hence, shape of the path depends on total energy $E$, angular momentum $L_0 = m \widehat{L}_0$ of moving body (recall that $\widehat{L} := \mathbf{r} \times \mathbf{v}$). \\
+
+It holds that for a
+
+\[
+\begin{aligned} 
+\text{ parabola } & e = 1, & E = 0 & \\  
+\text{ ellipse } & 0 < e < 1, & E < 0, & \qquad \, \frac{ (GM)^2 m }{ -2 \widehat{L}_0^2 } < E < 0 \\  
+\text{ circle } &  e = 0 & E = \frac{ -(GM)^2 m }{ 2\widehat{L}_0^2 } & \\
+\text{ hyperbola } & e = 1, & E > 0 & \, 
+\end{aligned} 
+\]
+
+The general form of initial energy $E_0$ is, recall, give by
+\[
+E_0 = \frac{1}{2} m v^2 + V(r) = \frac{1}{2} mv^2 - \frac{GMm}{r_0} = m \left( \frac{v^2}{2} - \frac{GM}{r_0} \right) 
+\]
+
+Notice that for the case of the parabola that \\
+$E_0 =0 $ when 
+\begin{equation}\label{Eq:EscapeVelocityAsParabola}
+v = \sqrt{ \frac{2GM}{r_0} } 
+\end{equation}
+Eq. \ref{Eq:EscapeVelocityAsParabola} is the expression for the ]\textbf{escape velocity}.
+
+Knowing what we know now, let's rewrite some of the expressions from before:
+\[
+\begin{gathered} 
+r(\theta) = \frac{ \widehat{L}_0^2 / GM}{ 1 + \frac{C \widehat{L}_0^2 }{GM} \cos{(\theta - \theta_0)} } \\ 
+\widehat{L}_0^2 := r_0^2 \dot{\theta}_0 \\ 
+C = \sqrt{\frac{ 2 E}{ m \widehat{L}_0^2 } + \frac{ (GM)^2 }{ \widehat{L}_0^4 } }
+\end{gathered} 
+\]
+
+\subsection{Path parameters (i.e. orbital parameters)}
+
+cf. pp. 262, Greiner (2004) \cite{Grei2004}.
+
+\[
+a = \frac{1}{2} ( r(\theta = 0) + r(\theta = \pi) ) = \frac{1}{2} \left[ \frac{ \widehat{L}_0^2 / GM }{ 1 + e } + \frac{\widehat{L}_0^2 / GM }{ 1- e} \right] = \frac{ \widehat{L}_0^2 / GM}{ 1 - e^2 }
+\]
+The addition above for $a$ is needed because we center origin at a focus, for this expression. 
+
+\begin{equation}\label{Eq:Semi-MajorAxis}
+a = \frac{\widehat{L}_0^2 /GM}{ \frac{ - 2 E \widehat{L}_0^2 }{ m (GM)^2 } } = \frac{ GMm }{ - 2 E} 
+\end{equation}
+cf. Eq. (26.39) of Greiner (2004) \cite{Grei2004}. 
+
+\begin{equation}
+b = \sqrt{ a^2 - f^2 } = \sqrt{a^2 - e^2 a^2 } = a \sqrt{ 1 - e^2 } = a \sqrt{ \frac{ -2 E \widehat{L}_0^2 }{ m (GM)^2 } } = \widehat{L}_0 \sqrt{ \frac{ - m}{ 2E} }
+\end{equation}
+cf. Eq. (26.40) of Greiner (2004) \cite{Grei2004}. 
+
+We can also calculate the perigee (point of closest approach to mass $M$):
+\begin{equation}
+r(\theta =0 ) = \frac{ \widehat{L}_0^2 / GM }{ 1 + e } = \frac{ \widehat{L}_0^2 / GM }{ 1 + \sqrt{ \frac{ 2 E \widehat{L}_0^2 }{ m (GM)^2 } + 1 } }
+\end{equation}
+
+Given Eq. \ref{Eq:Semi-MajorAxis} for $a$, plug in for $E$:
+\begin{equation}
+\begin{gathered}
+a = \frac{ - GMm}{2 E} = - \frac{GMm}{ 2 \left( \frac{1}{2} m v_0^2 - \frac{GMm}{r} \right) } = \frac{ -GM }{ v_0^2 - \frac{2GM}{r} } = \frac{ - GM }{ v_0^2 \left( 1 - \frac{2 GM}{ rv^2 }\right)} 
+\end{gathered}
+\end{equation}
+Notice when the denominator is 0. It is when $v_0$ is the the escape velocity (cf. Eq. \ref{Eq:EscapeVelocityAsParabola}). 
+
+\subsubsection{Eccentricity from $r_0$, $\mathbf{v}_0$}
+
+Consider being given $\mathbf{r}$, $\mathbf{v}$, with $\mathbf{r}$ in a coordinate frame with its origin at the center of mass (or, if $M$ large enough, from the focus where $M$ is centered at). 
+
+The first step is to use a coordinate \emph{frame} (set of orthonormal unit vectors) with $\mathbf{r}$, $\mathbf{v}$ forming a \emph{plane}. Note this important fact from geometry: a plane is spanned by 2 non-collinear vectors. So $\mathbf{r}, \mathbf{v}$ better not be parallel to each other.
+
+Let 
+\[
+\begin{aligned} 
+	& \mathbf{v} = v^x \mathbf{e}_x + v^y \mathbf{e}_y + v^z \mathbf{e}_z = v^r \mathbf{e}_r + v^{\varphi} \mathbf{e}_{\varphi} \\ 
+	& \mathbf{r} = x \mathbf{e}_x + y \mathbf{e}_y + z \mathbf{e}_z = r\mathbf{e}_r
+\end{aligned} 
+\]
+Now 
+\[
+\begin{gathered}
+(\mathbf{r} \times \mathbf{v})_i = \epsilon_{jki} r_j v_k 
+\end{gathered}
+\]
+To get the vector \emph{orthogonal} to the plane that is formed by $\mathbf{r}, \mathbf{v}$, 
+\[
+\begin{gathered}
+\begin{gathered}
+	((\mathbf{r} \times \mathbf{v}) \times \mathbf{r})_m = \epsilon_{ijm} \epsilon_{jki} r_j v_k r_l = \epsilon_{ilm} \epsilon_{ijk} r_j v_k r_l = \\
+	= r^2 v_m - v_k r_k r_m = r^2 v_m - v_k r_k r_m
+\end{gathered}
+\text{ or } ((\mathbf{r} \times \mathbf{v}) \times \mathbf{r}) = r^2 \mathbf{v} - (\mathbf{v} \cdot \mathbf{r}) \mathbf{r}
+\end{gathered}
+\]
+
+Then
+\[
+\begin{gathered}
+\widehat{L}_0 = r^2 \dot{\theta} = r \left( \mathbf{v} \cdot  \frac{ ((\mathbf{r} \times \mathbf{v}) \times \mathbf{r}) }{ | (\mathbf{r} \times \mathbf{v} ) \times \mathbf{r} | } \right) = r \left( \frac{r^2 v^2 - (\mathbf{v} \cdot \mathbf{r})^2 }{ |r^2 \mathbf{v} - (\mathbf{v} \cdot \mathbf{r}) \mathbf{r} | } \right) 
+\end{gathered}
+\]
+
+Thus, we can find the following:
+\[
+\begin{gathered} 
+e^2 = 1 + \frac{ 2 \epsilon \mathcal{L}_0^2 }{ m (GM)^2 } = 1 + \frac{ 2 \left( \frac{1}{2} m v_0^2 - \frac{GM m }{r} \right) \widehat{L}_0^2 }{ m (GM)^2 }  = 1 + \frac{\left( v_0^2 - \frac{2GMm}{r} \right) \widehat{L}_0^2 }{ (GM)^2 }
+\end{gathered} 
+\]
+
+\[
+\begin{gathered} 
+a = \frac{-GMm}{2E} = -\frac{GMm}{ 2 \left( \frac{1}{2} mv_0^2 - \frac{GMm}{r} \right) } = \frac{-GM}{v_0^2 - \frac{2GM}{r} } = \frac{-GM}{ v_0^2 \left( 1 -  \frac{2GM}{rv_0^2 } \right) }
+\end{gathered} 
+\]
+
+
+TODO: Calculate period of revolution. 
+
+
+
+\subsection{Eccentricity anomaly; Eccentricity anomaly coordinates}
 
 \part{General Relativity}
 
@@ -7452,7 +7613,7 @@ $[X,Y] = 0$
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=.5\linewidth]{images/fig_three7.jpg}	
+%	\includegraphics[width=.5\linewidth]{images/fig_three7.jpg}	
 	\caption{Closed Riem}
 	\label{Fig:ClosedRiem}
 \end{figure}
@@ -9719,6 +9880,8 @@ Urs Schreiber and Konrad Waldorf.  \emph{Parallel Transport and Functors}.  \hre
 \bibitem{ElMi2002}
 Y. Eliashberg, N. Mishachev, \emph{Introduction to the $h$-principle}, Grad. Studies in Math. Vol 48 (AMS 2002)
 
+\bibitem{Grei2004}
+Walter Greiner. \textbf{Classical Mechanics}: \emph{Point Particles and Relativity} (Classical Theoretical Physics). Springer New York; 2004 edition (December 4, 2003). ISBN-13: 978-0387955865
 
 \bibitem{AKN2006}
 Vladimir I. Arnold, Valery V. Kozlov, Anatoly I. Neishtadt.  \textbf{Mathematical Aspects of Classical and Celestial Mechanics}.  Third Edition.  Springer.  
