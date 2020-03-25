@@ -5150,6 +5150,9 @@ For anyone who is serious about learning General Relativity and Gravity, I would
 
 What I want to do is to build upon the material presented in this International Winter School.  Why it's important to me, and to the students and practicing researchers out there, is that the material presented takes the student from an introduction to the research frontier.  That is the stated goal of the International Winter School.  I want to dig into and help contribute to the cutting edge in research and this entire program with lectures and tutorials appears to be the most direct and sensible route directly to being able to do research in General Relativity and Gravity. -EY 20150323
 
+20200321 update: Someone collected all the lecture videos and tutorials:
+
+\url{http://mathswithphysics.blogspot.com/2016/07/the-we-heraeus-international-winter.html}
 
 \section{Lecture 1: Topology}
 
@@ -7250,6 +7253,7 @@ autoparallely transported (uniform straight motion, Newton's First law), autopar
 
 \subsection*{3. Autoparallel equation}
 
+\quad \\
 Autoparallely transported curve $\gamma$ \\
 Consider that portion of the curve that lies in $U$, where $(U, x) \in \mathcal{A}$.
 \[
@@ -7632,7 +7636,7 @@ Holonomy
 	\]
 	
 	
-	\section{Lecture 9: Newtonian spacetime is curved!}
+	\section*{Lecture 9: Newtonian spacetime is curved!}
 	
 	\begin{axiom}[Newton I:]
 		A body on which \emph{no} force acts moves uniformly along a straight line 
@@ -7651,7 +7655,7 @@ Holonomy
 	& * 1749 \\
 	& \dag 1827  \end{aligned}$
 	
-	Q: ``Can gravity be encoded in a curvature of space, such that its effects show if particles under the influence of (no other) force we postulated to more along straight lines in this curved space?''
+	Q: ``Can gravity be encoded in a curvature of space, such that its effects show if particles under the influence of (no other) force we postulated to move along straight lines in this curved space?''
 	
 	\underline{Answer}: No!
 	
@@ -7698,13 +7702,13 @@ Holonomy
 	
 	In a homogeneous gravitational field, you can possibly transform away gravity, $\Gamma=0$.  But in an inhomogeneous gravitational field, no.
 	
-	\subsection{The full wisdom of Newton I}
+	\subsection*{2. The full wisdom of Newton I}
 	
 	use also the information from Newton's first law that particles (no force) move uniformly 
 	
 	introduce the appropriate setting to talk about the difference easily
 	
-	insight: in \underline{spacetime} $\boxed{ \text{ uniform \& straight motion }}$ is simply straight motion
+	insight: in \underline{spacetime} $\boxed{ \text{ uniform \& straight motion in space}}$ is simply \textbf{straight} motion
 	
 	So let's try in \underline{spacetime}: 
 	
@@ -7747,7 +7751,7 @@ Holonomy
 	
 	Poisson: $-\partial_{\alpha}f^{\alpha} = 4\pi G\cdot \rho$
 	
-	\underline{writing}: $T_{00} = \frac{1}{2}s$ 
+	\underline{writing}: $T_{00} = \frac{1}{2} \rho$ 
 	\[
 	\Longrightarrow \boxed{ R_{00} = 8 \pi G T_{00} }
 	\]
@@ -7770,7 +7774,7 @@ Holonomy
 	\underbrace{ \ddot{x}^a + \Gamma^a_{ \, \, bc } \dot{X}^b \dot{X}^c}_{ \underbrace{ (\nabla_{v_X}v_X)^a}_{ := a^a \text{ ``acceleration \underline{vector}'' } } } = 0
 	\]
 	
-	\subsection{The foundations of the geometric formulation of Newton's axiom}
+	\subsection*{3. The foundations of the geometric formulation of Newton's axiom}
 	
 	new start
 	\begin{definition}
@@ -7891,12 +7895,34 @@ Holonomy
 	\]
 	\[
 	\begin{gathered}
-	a^2 \ddot{X}^{\alpha} + a^2 \Gamma^{\alpha}_{ \, \, \gamma \delta} \dot{X}^{\gamma} \dot{X}^{\delta} + a^2 \Gamma^{\alpha}_{ \, \, 00 } \dot{X}^0 \dot{X}^0 + 2\Gamma^{\alpha}_{ \, \,\gamma 0} \dot{X}^{\gamma} \dot{X}^{0} =  \frac{ F^{\alpha}}{ m} \\
-	\Longrightarrow  \underbrace{ \ddot{X}^{\alpha} +  \Gamma^{\alpha}_{ \, \, \gamma \delta} \dot{X}^{\gamma} \dot{X}^{\delta} +  \Gamma^{\alpha}_{ \, \, 00 } \dot{X}^0 \dot{X}^0 + 2\Gamma^{\alpha}_{ \, \,\gamma 0} \dot{X}^{\gamma} \dot{X}^{0} }_{a^{\alpha} } = \frac{1}{a^2} \frac{ F^{\alpha}}{ m} 
+	a^2 \ddot{X}^{\alpha} + a^2 \Gamma^{\alpha}_{ \, \, \gamma \delta} \dot{X}^{\gamma} \dot{X}^{\delta} + a^2 \Gamma^{\alpha}_{ \, \, 00 } \dot{X}^0 \dot{X}^0 + 2a^2\Gamma^{\alpha}_{ \, \,\gamma 0} \dot{X}^{\gamma} \dot{X}^{0} =  \frac{ F^{\alpha}}{ m} \\
+	\Longrightarrow  \underbrace{ \ddot{X}^{\alpha} +  \Gamma^{\alpha}_{ \, \, \gamma \delta} \dot{X}^{\gamma} \dot{X}^{\delta} +  \Gamma^{\alpha}_{ \, \, 00 } \dot{X}^0 \dot{X}^0 + 2\Gamma^{\alpha}_{ \, \,\gamma 0} \dot{X}^{\gamma} \dot{X}^{0} }_{\mathfrak{a}^{\alpha} } = \frac{1}{a^2} \frac{ F^{\alpha}}{ m} 
 	\end{gathered}
 	\]
 	
+Student question: How can you get the Lagrange equations in this formalism?
+
+Schuller says: In \emph{all} systems they take the form like this:
+\[
+\begin{gathered}
+L = \underbrace{T}_{\frac{m}{2} g(v_x, v_x)} + V
+\end{gathered}
+\]
+where $v_x$ is velocity to the spatial curves $x$.
+
+Schuller says: $\frac{m}{2} \sqrt{ g(v_x, v_x)}$, parameter invariance, you get straight curves; if you take $\sqrt{}$ away, $\frac{m}{2} g(v_x, v_x)$ you get straight, \emph{uniform} curves. 
+
+Schuller says: Only in inertial systems, which is defined as:
+
+\[
+\boxed{ \nabla_{\frac{ \partial }{ \partial x^a} } \frac{\partial }{ \partial x^b} = 0 }
+\]
+inertial frame, non-accelerating, non-rotating.
+
+Schuller says: Apart from $g$, a 2-tensor, you need to know $\omega$.
 	
+Schuller references 2nd. year Mechanik in German: \url{https://www.video.uni-erlangen.de/course/id/272}
+
 	
 	\section{Lecture 10: Metric Manifolds}
 	
