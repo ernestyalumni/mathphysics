@@ -8,7 +8,8 @@ ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK)
 
 ADD_EXECUTABLE(Check
   Main.cpp
-  Algebra/Groups/AdditiveIntegers_tests.cpp)
+  Algebra/Groups/AdditiveIntegers_tests.cpp
+  Algebra/Rings/Rings_tests.cpp)
 
 TARGET_LINK_LIBRARIES(Check
   ${Boost_FILESYSTEM_LIBRARY}

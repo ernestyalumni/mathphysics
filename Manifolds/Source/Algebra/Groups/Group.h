@@ -16,11 +16,11 @@ namespace Groups
 {
 
 //------------------------------------------------------------------------------
-/// \class Element
+/// \class GroupElement
 /// \details A base class for a group Element. Also, use CRTP pattern, for the 
 /// return type.
 /// \ref https://en.wikipedia.org/wiki/Group_(mathematics)
-/// \param G stands for group G, the group G that Element belongs to.
+/// \param G stands for group G, the group G that GroupElement belongs to.
 //------------------------------------------------------------------------------
 template <typename G>
 class GroupElement

@@ -12,6 +12,8 @@
 
 #include "Group.h"
 
+#include <cassert>
+
 namespace Algebra
 {
 namespace Groups
@@ -36,6 +38,9 @@ class AbelianGroupElement : public GroupElement<AbelianGroupElement<AG>>
 
     AG group_law(const AG& b) const
     {
+      // TODO: Decide if this should be an assert or throw.
+      assert(b.group_law(object()) == object()->group_law(b));
+
       return object()->group_law(b);
     }
 
