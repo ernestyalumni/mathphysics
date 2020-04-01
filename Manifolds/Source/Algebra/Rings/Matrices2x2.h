@@ -70,6 +70,24 @@ class Matrix2x2 : public RingElement<Matrix2x2<Field>>
       return os;
     }
 
+    Matrix2x2 multiplication(const Matrix2x2& b) const
+    {
+      return operator*(b);
+    }
+
+    Matrix2x2 operator*(const Matrix2x2& b) const
+    {
+      return Matrix2x2 {
+        elements_.at(0) * b.elements_.at(0) + 
+          elements_.at(1) * b.elements_.at(2),
+        elements_.at(0) * b.elements_.at(1) + 
+          elements_.at(1) * b.elements_.at(3),
+        elements_.at(2) * b.elements_.at(0) + 
+          elements_.at(3) * b.elements_.at(2),
+        elements_.at(2) * b.elements_.at(1) + 
+          elements_.at(3) * b.elements_.at(3)};
+    }
+
   private:
 
     std::array<Field, 4> elements_;

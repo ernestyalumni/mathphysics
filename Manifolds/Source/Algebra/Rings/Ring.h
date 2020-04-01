@@ -11,7 +11,7 @@
 #define ALGEBRA_RINGS_RING_H
 
 #include "Algebra/Groups/AbelianGroup.h"
-//#include "SemiGroups/"
+#include "Algebra/SemiGroups/Monoid.h"
 
 namespace Algebra
 {
@@ -27,7 +27,8 @@ namespace Rings
 //------------------------------------------------------------------------------
 template <typename R>
 class RingElement :
-  protected Algebra::Groups::AbelianGroups::AbelianGroupElement<RingElement<R>>
+  protected Algebra::Groups::AbelianGroups::AbelianGroupElement<RingElement<R>>,
+  protected Algebra::SemiGroups::SemiGroupElement<RingElement<R>>
 {
   public:
 
@@ -51,18 +52,21 @@ class RingElement :
       return object()->additive_inverse();
     }
 
-    /*
     R multiplication(const R& b) const
     {
       return object()->multiplication(b);
     }
-    */
-
+    
   protected:
 
     R group_law(const R& b) const
     {
       return addition(b);
+    }
+
+    R dot(const R& b) const
+    {
+      return multiplication(b);
     }
 
     R inverse() const
