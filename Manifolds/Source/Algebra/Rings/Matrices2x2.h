@@ -66,7 +66,7 @@ class Matrix2x2 : public RingElement<Matrix2x2<Field>>
     friend std::ostream& operator<<(std::ostream& os, const Matrix2x2& a)
     {
       os << a.elements_.at(0) << ' ' << a.elements_.at(1) << "\n";
-      os << a.elements_.at(2) << ' ' << a.elements_.at(3) << "\n";
+      os << a.elements_.at(2) << ' ' << a.elements_.at(3);
       return os;
     }
 
