@@ -3989,6 +3989,21 @@ edge node [auto]  {$\textbf{cod}$} (m-1-3)
 \end{gathered}
 \]
 
+\item \emph{algebra} cf. pp. 14, Sec. 3, "Functors" of Mac Lane (1978) \cite{MacL1978}.
+
+$\forall \, $ commutative ring $K$, set of all non-singular $n\times n$ matrices with entries in $K = $ general linear group $GL_n(K)$. \\
+$\forall \, $ homomorphism $f: K \to K'$ of rings produces \\
+homomorphism $GL_n f : GL_n(K) \to GL_n(K)$ of groups.  \\
+
+$\forall \, n \in \mathbb{N}$ (natural numbers), defined functor $GL_n: \textbf{CRng} \to \textbf{Grp} \equiv GL_n \textbf{CommRing} \to \textbf{Grp}$.  \\
+
+
+$\forall \, $ group $G$, set of all products of commutators $xyx^{-1} y^{-1}$ ($x,y \in G$) is a normal subgroup $[G, G]$ of $G$ called commutator subgroup. \\
+
+Since $\forall \, $ homomorphism $G \to H$ of groups carries commutators to commutators.  \\
+$G \mapsto [G, G]$ defines evident functor $\textbf{Grp} \to \textbf{Grp}$, \\
+while $G \mapsto G/[G, G]$ define functor $\textbf{Grp} \to \textbf{Ab}$, factor-commutator functor. \\
+TODO - understand the previous commutators.
 
 \end{itemize} 
 
@@ -5419,11 +5434,136 @@ cf. \href{https://en.wikipedia.org/wiki/Natural_transformation}{Wikipedia, "Natu
 
 Notation: natural transformation from $F$ to $G$, $\eta:F \to G$, i.e. family of morphisms $\eta_X : F(X) \to G(X)$ is natural in $X$.
 
+cf. Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{AHS2004}.  \\
 
-cf. Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{AHS2004}. 
+From pp. 16, Sec. 14 "Natural Transformations", Mac Lane (1978) \cite{MacL1978}, \\
+
+$\forall \,$ arrow $f: C \to C'$ in $C$, i.e. notation: $\forall \, $ morphism $f:X \to Y$ in $\mathbf{C}$, 
+
+Mac Lane's notation:
+\[
+\begin{gathered}
+\begin{tikzcd} 
+c \arrow{d}{f} \\
+c'
+\end{tikzcd} \qquad \, 
+\begin{tikzcd}
+Sc \arrow{d}{Sf} \arrow{r}{\tau c} & Tc \arrow{d}{Tf} \\
+Sc' \arrow{r}{\tau c'} & Tc'
+\end{tikzcd}
+\end{gathered}
+\]
+
+My notation:
+\[
+\begin{gathered}
+\begin{tikzcd} 
+X \arrow{d}{f} \\
+Y
+\end{tikzcd} \qquad \,
+\begin{tikzcd}
+FX \arrow{d}{Ff} \arrow{r}{\eta_X} & GX \arrow{d}{Gf} \\
+FY \arrow{r}{\eta_Y} & GY
+\end{tikzcd}
+\end{gathered}
+\]
+
+We say that $\tau_c : Sc \to Tc$ is natural in $C$; $\eta_X : FX \to GX$ is natural in $X$. \\
+
+If we think of functor $S$ as giving a picture in $B$ of (all the objects, arrows of) $C$, then \\
+natural transformation $\tau$ is set of arrow $s$ mapping (or, translating) the picture $S$ to picture $T$, with all squares (and parallelograms!) like that above commutative:
+
+Mac Lane's notation:
+\[
+\begin{gathered}
+\begin{tikzcd}
+a \arrow{dr}{f} \arrow{dd}{h} & \\
+& b \arrow{dl}{g} \\ 
+c & 
+\end{tikzcd} \qquad \, 
+\begin{tikzcd}
+Sa \arrow{dr}{Sf} \arrow{dd}{Sh} \arrow{rr}{\tau a} & & Ta \arrow[dd, crossing over]{} \arrow{dr}{Tf} &  \\
+& Sb \arrow{dl}{Sg} \arrow{rr}[swap, pos=0.2]{\tau b} & & Tb \arrow{dl}{Tg} \\ 
+Sc \arrow{rr}{\tau c} & & Tc & 
+\end{tikzcd} 
+\end{gathered}
+\]
+
+My notation:
+\[
+\begin{gathered}
+\begin{tikzcd}
+X \arrow{dr}{f} \arrow{dd}{g} & \\
+& Y \arrow{dl}{h} \\ 
+Z & 
+\end{tikzcd} \qquad \,
+\begin{tikzcd}
+FX \arrow{dr}{Ff} \arrow{dd}{Fg} \arrow{rr}{\eta_X} & & GX \arrow[dd, crossing over]{} \arrow{dr}{Gf} &  \\
+& FY \arrow{dl}{Fh} \arrow{rr}[swap, pos=0.2]{\eta_Y} & & GY \arrow{dl}{Gh} \\ 
+FZ \arrow{rr}{\eta_Z} & & GZ & 
+\end{tikzcd} 
+\end{gathered}
+\]
+
+\emph{natural equivalence} or i.e. natural isomorphism - natural transformation $\tau$ with $\forall \, $ component $\tau c$ invertible in $B$, $\tau : S \cong T$.  \\
+notation: $\eta$ with $\forall \, $ component $\eta_X$ invertible in $\mathbf{D}$; $\eta : F \cong G$. \\
+$\Longrightarrow $ inverses $(\tau c)^{-1}$ in $B$ are components of natural isomorphism $\tau^{-1} :T \to S$. \\
+notation: inverses $(\eta_X)^{-1}$ in $\mathbf{D}$ are components of natural isomorphism $\eta^{-1}: G\to F$. 
+
+
+\subsection{Examples of Natural transformations}
 
 e.g. Hurewicz homomorphism $\pi_n(X) \to H_n(X)$ $\forall \, $ topological space $X$ is a natural transformation from $n$th homology functor. \\
 $\pi_n : \textbf{Top} \to \mathbf{Grp}$ to $n$th homology functor $H_n : \textbf{Top} \to \textbf{Grp}$.
+
+e.g. \textbf{determinant} $\det$ is a natural transformation (cf. Mac Lane (1978) \cite{MacL1978}). \\
+Let $\det_KM = $ determinant of $n\times n$ matrix $M$, with entries in commutative ring $K$, while \\
+$K^* \equiv $ group of units (invertible elements) of $K$ \\
+
+Thus $M$ non-singular when $\det_KM$ is a unit, and $\det_K$ is a morphism $GL_nK \to K^*$ of groups. \\
+Because $\det$ is defined by same formula $\forall \,$ ring $K$, each morphism $f: K \to K'$ of commutative rings leads to 
+\[
+\begin{tikzcd}
+GL_nK \arrow{d}{GL_nf} \arrow{r}{\det_K} & K^* \arrow{d}{f^*} \\
+GL_nK' \arrow{r}{\det_{K'}} & (K')^*
+\end{tikzcd}
+\]
+
+$\Longrightarrow \det : GL_n \to ()^*$ is natural between 2 functors $\textbf{CRng} \to \textbf{Grp}$
+
+TODO: Work out examples of natural transformations involving group commutators on pp. 17 of Mac Lane (1978) \cite{MacL1978}.
+
+e.g. category $\textbf{Finord} = $ all finite ordinal numbers $n$ \\
+category $\textbf{Set}_f = $ all finite sets (in some universe $U$) \\ 
+$\forall \, $ ordinal $n = \lbrace 0 , 1 , \dots n-1 \rbrace$ is a finite set, so inclusion $S$ is a functor $S: \textbf{FinOrd} \to \textbf{Set}_f$ \\
+$\forall \, $ finite set $X$ determines ordinal number $n = \# X$, number of elements in $X$ \\
+$\forall \, X$, choose bijection $\theta_X:X \to \# X$ \\
+$\forall \, $ function $f:X \to Y$, $X,Y$ finite sets, \\
+Choose corresponding function $\# f : \# X \to \# Y$ between ordinals by $\# f = \theta_Y f \theta_X^{-1}$, so that 
+\begin{equation}\label{Eq:NaturalIsomorphismOrdinalNumbersFiniteSets}
+\begin{tikzcd}
+X \arrow{d}{f} \arrow{r}{\theta_X} & \# X \arrow{d}{\# f} \\
+Y \arrow{r}{\theta_Y} & \# Y
+\end{tikzcd}
+\end{equation}
+
+$\Longrightarrow \# $ a functor $\# : \textbf{Set}_f \to \textbf{FinOrd}$ \\
+If $X$ itself an ordinal number, take $\theta_X$ to be an identity. \\
+$\Longrightarrow \# \circ S$ is identity functor $I'$ of $\textbf{FinOrd}$ \\
+$S \circ \#$ is not identity functor $I : \textbf{Set}_f \to \textbf{Set}_f$ because \\
+$S \circ \#$ sends each finite set $X$ to a special finite set - ordinal number $n$ with same number of elements as $X$. \\
+However $\theta: I \to S \#$ is a natural isomorphism by square diagram above (Eq. \ref{Eq:NaturalIsomorphismOrdinalNumbersFiniteSets}).  
+\[
+I \cong S\circ \# , \quad \, I' = \# \circ S 
+\]
+
+equivalence between categories $\mathbf{C}, \mathbf{D} =$ \\
+pair of functors $\begin{aligned} & \quad \\ 
+& S : \mathbf{C} \to \mathbf{D} \\ 
+& T : \mathbf{C} \to \mathbf{D} \end{aligned}$ and \\
+natural isomorphisms $I_C \cong T \circ S$, $I_D \cong S \circ T$. 
+
+
 
 
 
