@@ -5367,7 +5367,7 @@ Then
 Thus, we can find the following:
 \[
 \begin{gathered} 
-e^2 = 1 + \frac{ 2 \epsilon \mathcal{L}_0^2 }{ m (GM)^2 } = 1 + \frac{ 2 \left( \frac{1}{2} m v_0^2 - \frac{GM m }{r} \right) \widehat{L}_0^2 }{ m (GM)^2 }  = 1 + \frac{\left( v_0^2 - \frac{2GMm}{r} \right) \widehat{L}_0^2 }{ (GM)^2 }
+e^2 = 1 + \frac{ 2 E \widehat{L}_0^2 }{ m (GM)^2 } = 1 + \frac{ 2 \left( \frac{1}{2} m v_0^2 - \frac{GM m }{r} \right) \widehat{L}_0^2 }{ m (GM)^2 }  = 1 + \frac{\left( v_0^2 - \frac{2GMm}{r} \right) \widehat{L}_0^2 }{ (GM)^2 }
 \end{gathered} 
 \]
 
@@ -5379,6 +5379,15 @@ a = \frac{-GMm}{2E} = -\frac{GMm}{ 2 \left( \frac{1}{2} mv_0^2 - \frac{GMm}{r} \
 
 
 TODO: Calculate period of revolution. 
+
+Here are some calculations (forms) that can help with further calculations:
+\begin{equation}
+\begin{gathered} 
+	\widehat{L}_0^2 = b^2 \left( \frac{2E}{-m} \right) \text{ or } \frac{\widehat{L}_0^2}{GM} = b^2 \left( \frac{2E}{-GMm } \right) = \frac{b^2}{a} = a(1-e^2)
+\end{gathered} 
+\end{equation}
+using Eq. \ref{Eq:ConicSectionSemiMinorAxis}, for $e^2 = 1 - \left( \frac{b}{a} \right)^2$. 
+
 
 \subsection{Path in coordinates} 
 
@@ -5444,7 +5453,7 @@ Because $\mathbf{r}, \mathbf{v}$ lie in the plane (i.e. coplanar) containing the
 \end{equation}
 
 Solve for $f$ and $g$ by taking the appropriate cross products:
-\begin{equation}
+\begin{equation}\label{Eq:fAndgSeparatedByCrossProducts}
 \begin{aligned} 
 	& \mathbf{r} \times \mathbf{v}_0 = f\mathbf{r}_0 \times \mathbf{v}_0 \\ 
 	& \mathbf{r} \times \mathbf{r}_0 = g \mathbf{v}_0 \times \mathbf{r} 
@@ -5502,7 +5511,7 @@ Then, plug into the conic section equation, Eq. \ref{Eq:ConicSectionEqWithCenter
 Compare this to Eq. (4.6-9) on pp. 215 of Sec. 4.6 in "The Kepler Problem" of Bate, Mueller, White (1971) \cite{BMW1971}.
 
 For the coordinates with the origin at the \emph{focus} $F$, it is given by 
-\begin{equation}
+\begin{equation}\label{Eq:EllipticalPathInEccentricAnomaly}
 \begin{aligned}
 & x = a(\cos{E} - e) \\
 & y = b\sin{E} = a\sqrt{ 1 - e^2} \sin{E}
@@ -5512,7 +5521,72 @@ Compare this to Eqns. (4.6-7), (4.6-8) on pp. 215 of Sec. 4.6 in "The Kepler Pro
 
 Indeed, for $E=0$, $x = a - ae$ (the distance from the focus F to the vertex is $a - ae$), $E = \pi/2$, $x =-ae$ (the distance from the focus F and back to the center C) and for $E = \pi$, $x = -a - ae$ (the distance to the other vertex).
 
+\subsubsection{Path in terms of eccentric anomaly}
 
+Take the time derivative of Eq. \ref{Eq:EllipticalPathInEccentricAnomaly}:
+\begin{equation}
+\begin{aligned}
+& \dot{x} = -a \sin{E} \dot{E} \\ 
+& \dot{y} = a\sqrt{1 - e^2} \cos{E} \dot{E} 
+\end{aligned} 
+\end{equation}
+To determine $\dot{E}$, consider both expressions for the radial distance $r$ for Eq. \ref{Eq:EllipseEquationWithEccentricAnomaly} and Eq. \ref{Eq:ConicSectionEqWithCenterAtFocus}:
+
+\[
+\begin{gathered} 
+\begin{gathered} 
+	r = \frac{a (1-e^2) }{ 1 + e\cos{\theta}} = \frac{b}{ 1 + e\cos{\theta}} \\
+	\Longrightarrow \dot{r} = \frac{ -b}{ (1+e\cos{\theta})^2} (-e\sin{\theta})\dot{\theta} = \frac{ be \sin{\theta} \dot{\theta} }{ (1+ e\cos{\theta})^2 } = \\
+		\dot{r} = \frac{r^2 e}{b} \sin{\theta} \dot{\theta}
+\end{gathered} \\ 
+\begin{gathered}
+r = a(1 - e\cos{E}) \\
+\Longrightarrow \dot{r}  = +ae\sin{E} \dot{E} 
+\end{gathered} \\
+\begin{gathered}
+\Longrightarrow ae \sin{E} \dot{E} = \frac{r^2 e}{b} \sin{\theta} \dot{\theta} \text{ or } a\sin{E} \dot{E} = \frac{r^2}{b} \sin{\theta} \dot{\theta} = \frac{ \widehat{L}_0 \sin{\theta} }{ b} = \frac{\widehat{L}_0 }{b} \frac{y}{r} \\
+\Longrightarrow \dot{E} = \frac{ \widehat{L}_0 }{ab} \frac{y}{r\sin{E}} = \frac{\widehat{L}_0 } {ar} = \frac{ b}{ a^{3/2} r} 
+\end{gathered}
+\end{gathered} 
+\]
+Compare the expression for $\dot{E}$ with Eq. (4.6-11) on pp. 216 of Bate, Mueller, White (1971) \cite{BMW1971}.
+
+Armed with an expression for $\dot{E}$, plug this back into the expression for $\dot{r}$:
+\begin{equation}
+\dot{r} = a e \sin{E} \left( \frac{ \widehat{L}_0 }{ ar} \right) = \frac{ e\sin{E} \widehat{L}_0 }{ r}
+\end{equation}
+Compare this to the equation on pp. 216, "Position and Velocity - a function of time" in Ch. 4 of Bate, Mueller, White (1971) \cite{BMW1971}. 
+
+Use the expressions above in Eqns. \ref{Eq:fAndgSeparatedByCrossProducts}. For $\mathbf{r}, \mathbf{r}_0$ centered at focus F:
+\[
+\begin{gathered} 
+xv_{0, y} - y v_{0,x} = a(\cos{E} - e) b \cos{E_0} \dot{E}_0 - b\sin{E} (-a\sin{E_0} \dot{E}_0) = \\
+	= ab\dot{E}_0 \left[ ( \cos{E} - e) \cos{E_0} + \sin{E} \sin{E_0} \right] = \frac{b^2}{ \sqrt{a} r} \left[ \cos{(E - E_0)} - e\cos{E_0} \right] = \frac{ \widehat{L}^2 \left( \frac{-m}{2E} \right) }{ \sqrt{GM} \sqrt{ \frac{m}{-2E} } r } \left[ \cos{(E- E_0)} - e\cos{E_0} \right] = \\
+	 = \frac{\widehat{L}_0 b }{ r \sqrt{ GM} } \left[ \cos{ (E- E_0)} - e\cos{E_0} \right] 
+\end{gathered} 
+\]
+Comparing this against the "right-hand side (RHS)" with $f (\mathbf{r}_0 \times \mathbf{v}_0)$, the RHS has a magnitude of $f \widehat{L}_0$ in the same direction as $(\mathbf{r} \times \mathbf{v}_0)$. Thus
+\begin{equation}
+f = \frac{ b }{ r \sqrt{ GM} } \left[ \cos{ (E- E_0)} - e\cos{E_0} \right]
+\end{equation}
+
+For the expression involving $g$ in Eqns. \ref{Eq:fAndgSeparatedByCrossProducts}, 
+\[
+\begin{gathered}
+	\mathbf{r} \times \mathbf{r}_0 = xy_0 - yx_0 = a(\cos{E} - e) b \sin{E_0} - b\sin{E} a (\cos{E_0} - e) = -ab \left[ (\cos{E_0} ) \sin{E} - (\cos{E}-e) \sin{E_0} \right] 
+\end{gathered}
+\]
+with
+\[
+\begin{gathered}
+ab = a \widehat{L}_0 \sqrt{ \frac{-m}{2E} } = a\widehat{L}_0 \left( \frac{a}{GM} \right)^{1/2} = \left( \frac{a^3}{GM} \right)^{1/2} \widehat{L}_0
+\end{gathered}
+\]
+For the RHS with $g \mathbf{v}_0 \times \mathbf{r}_0$, $\mathbf{v}_0 \times \mathbf{r}_0$, by the right-hand rule or the right-hand orientation, it is in the \emph{opposite} direction as $\mathbf{r}\times \mathbf{r}_0$. Thus, apply a negative side on the RHS.
+
+\begin{equation}
+\Longrightarrow g = \left( \frac{ a^3}{GM} \right)^{1/2} \left[ (\cos{E_0} - e) \sin{E} - (\cos{E} - e) \sin{E_0} \right] 
+\end{equation}
 
 \part{General Relativity}
 
