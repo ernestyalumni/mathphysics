@@ -9,6 +9,7 @@ ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK)
 ADD_EXECUTABLE(Check
   Main.cpp
   Algebra/Categories/Functor_tests.cpp
+  Algebra/Categories/FiniteCategories/1_tests.cpp
   Algebra/Groups/AdditiveIntegers_tests.cpp
   Algebra/Rings/Rings_tests.cpp)
 

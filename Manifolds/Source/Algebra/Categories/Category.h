@@ -7,19 +7,31 @@
 /// \details group (group operations, group axioms), following CTRP for static
 /// polymorphism.
 //------------------------------------------------------------------------------
-#ifndef CATEGORIES_CATEGORY_H
-#define CATEGORIES_CATEGORY_H
+#ifndef ALGEBRA_CATEGORIES_CATEGORY_H
+#define ALGEBRA_CATEGORIES_CATEGORY_H
 
+
+namespace Algebra
+{
 namespace Categories
 {
 
 namespace Category
 {
+
+template <typename Object>
+Object& identity_morphism(Object& A)
+{
+  return A;
+}
+
 namespace Details
 {
 
 // X \in Obj(\mathbf{C}), X is an element of class Obj(\mathbf{C}) of category
 // \mathbf{C}
+
+// TODO: Clean up the following.
 
 template <typename X>
 struct ObjectElement;
@@ -58,5 +70,6 @@ struct Morphism
 
 } // namespace Category
 } // namespace Categories
+} // namespace Algebra
 
-#endif // CATEGORIES_CATEGORY_H
+#endif // ALGEBRA_CATEGORIES_CATEGORY_H
