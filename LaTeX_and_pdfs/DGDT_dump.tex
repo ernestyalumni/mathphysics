@@ -5137,6 +5137,93 @@ $\sum_{i=1}^n \langle m_i \ddot{ \mathbf{r}}_i - \mathbf{F}_i , \mathbf{\xi}_i \
 
 \section{Orbital Mechanics}
 
+\subsection{Conic sections}
+
+The following is an amalgamation or summary of the development in Ch. 13, Sections 13.18-22, from pp. 497, Apostol (1991) \cite{Apos1991}
+
+\begin{definition}[General definition of conic sections (vector-formulated definition)]\label{Def:ConicSectionsVectorFormulation}
+Given line $L$, called the \emph{directrix}, pt. $F$, the \emph{focus}, such that $F \notin L$., \\
+\phantom{Given} eccentric $e > 0$, \\
+\phantom{Given} $d = $ distance of $L$ from $F$, then \\
+the \textbf{conic section} $C = \lbrace X \rbrace$ (set of all points) such that 
+\begin{equation}
+\| X - F \| = ed(X, L)
+\end{equation}
+Now, \\
+$e < 1 $ ellipse, \\
+$e = 1$ parabola, \\
+$e > 1$ hyperbola.
+
+Further, if $N$ unit normal to $L$, then $\forall \, P \in L$, 
+\begin{equation}
+d(X, L) = | (X- P) \cdot N |
+\end{equation}
+If $(X- P) \cdot N \gtrless 0$, $X \in $ positive half plane (negative half-plane). \\
+\end{definition} 
+
+\begin{theorem}[Further conic section development]\label{Thm:MoreConicSectionsFromVectorFormulation}
+	Building upon Def. \ref{Def:ConicSectionsVectorFormulation}, \\
+	
+	If $F \in $ positive half plane determined by $N$, then $F -d N \in L$.  \\
+	
+	If $F \in $ negative half plane determined by $N$, then $F + dN \in L$. \\
+	
+Choose this convenient, specific point: $ F + dN = P \in L$ \quad \, $\Longrightarrow \| X - F \| = e |(X - (F + dN))\cdot N |$ \\
+
+If $F = 0$, $\| X \| = e| X\cdot N - d | = r = e(d - r\cos{\theta})$. Then
+\begin{equation}\label{Eq:ConicSectionEqWithCenterAtFocus}
+\frac{ed}{r} = 1 + e \cos{\theta} \text{ or } \boxed{ r = \frac{ed }{ 1 + e\cos{\theta}} } \text{ for $F = 0$ }
+\end{equation}	
+
+Consider symmetry about the origin (i.e. of $X, \exists \, -X$). 
+
+As a caveat, let $A = e(d + F\cdot N)$. Then
+\[
+\begin{gathered}
+	\| X - F \| = e | (X - (F + dN )) \cdot N | = e d(X, L) = e | X \cdot N - \frac{A}{e} | 
+\end{gathered}
+\]
+Then
+\begin{equation}\label{Eq:ConicSectionDistanceFromFocusSquared}
+\| X - F \|^2 = \| X \|^2 - 2 X\cdot F + \| F \|^2 = e^2 ((X\cdot N)^2 - 2 \frac{A}{e} X\cdot N + \left( \frac{A}{e}\right)^2 )
+\end{equation}
+Using the symmetry about the origin, $X \to -X$, \\
+\[
+\begin{gathered}
+	\Longrightarrow X\cdot F = Ae X\cdot N \text{ or } X \cdot (F - Ae N) = 0
+\end{gathered}
+\]
+Then $F = AeN$. Note that $A = e(F\cdot N \pm d)$ (for $F$ in negative (positive) half-plane). 
+
+Then
+\[
+\begin{gathered}
+Ae = e^2 ( Ae + d) \text{ or } \frac{A}{e} = Ae + d \text{ or } A \left( \frac{1}{e} - e \right) = d \text{ or } A = \frac{ed}{1 - e^2 } \\
+\Longrightarrow \| X - Ae N \| = e| (X - (AeN + dN)) \cdot N | = e|X\cdot N - (Ae + d) |
+\end{gathered}
+\]
+Let $X = aN$. Plug this into Eq. \ref{Eq:ConicSectionDistanceFromFocusSquared}.
+\[
+\begin{gathered} 
+a^2 - 2aA e + A^2 e^2 = e^2 (a^2 - \frac{2A}{e} a + \left( \frac{A}{e} \right)^2 ) = e^2 a^2 - 2Aae + A^2 \Longrightarrow a = A \\
+\Longrightarrow a = \frac{ed}{1 - e^2 }
+\end{gathered} 
+\]
+Thus, we've shown that $A$ is equal to the \emph{semi-major axis} $a$ and that 
+\begin{equation}
+\boxed{ F = aeN }
+\end{equation}
+Thus, the semi-major axis is obtained when $X = \pm aN$ (vertices), so that $\| X \|^2 + (ae)^2 = e^2 ( X\cdot N)^2 + a^2$ is satisfied. \\
+Likewise, the semi-minor axis is obtained if $X = \pm bN_{\perp}$, so that
+\begin{equation}\label{Eq:ConicSectionSemiMinorAxis}
+\begin{gathered}
+	b^2 + (ae)^2 = 0 + a^2 \Longrightarrow \boxed{ b = a \sqrt{ 1 - e^2 } }
+\end{gathered} 
+\end{equation}
+
+\end{theorem}
+
+
 Compare this against (26.6) of Greiner (2004) \cite{Grei2004}:
 \begin{equation}\label{Eq:ConicSectionPolarCoordinatesFocusCenter}
 r = \frac{ed}{ 1 + e\cos{\theta}}, \quad \, e = \frac{C\widehat{L}_0^2}{GM}, \quad \, d = 1/C
@@ -5197,7 +5284,7 @@ $E_0 =0 $ when
 \begin{equation}\label{Eq:EscapeVelocityAsParabola}
 v = \sqrt{ \frac{2GM}{r_0} } 
 \end{equation}
-Eq. \ref{Eq:EscapeVelocityAsParabola} is the expression for the ]\textbf{escape velocity}.
+Eq. \ref{Eq:EscapeVelocityAsParabola} is the expression for the \textbf{escape velocity}.
 
 Knowing what we know now, let's rewrite some of the expressions from before:
 \[
@@ -5280,7 +5367,7 @@ Then
 Thus, we can find the following:
 \[
 \begin{gathered} 
-e^2 = 1 + \frac{ 2 \epsilon \mathcal{L}_0^2 }{ m (GM)^2 } = 1 + \frac{ 2 \left( \frac{1}{2} m v_0^2 - \frac{GM m }{r} \right) \widehat{L}_0^2 }{ m (GM)^2 }  = 1 + \frac{\left( v_0^2 - \frac{2GMm}{r} \right) \widehat{L}_0^2 }{ (GM)^2 }
+e^2 = 1 + \frac{ 2 E \widehat{L}_0^2 }{ m (GM)^2 } = 1 + \frac{ 2 \left( \frac{1}{2} m v_0^2 - \frac{GM m }{r} \right) \widehat{L}_0^2 }{ m (GM)^2 }  = 1 + \frac{\left( v_0^2 - \frac{2GMm}{r} \right) \widehat{L}_0^2 }{ (GM)^2 }
 \end{gathered} 
 \]
 
@@ -5293,9 +5380,213 @@ a = \frac{-GMm}{2E} = -\frac{GMm}{ 2 \left( \frac{1}{2} mv_0^2 - \frac{GMm}{r} \
 
 TODO: Calculate period of revolution. 
 
+Here are some calculations (forms) that can help with further calculations:
+\begin{equation}
+\begin{gathered} 
+	\widehat{L}_0^2 = b^2 \left( \frac{2E}{-m} \right) \text{ or } \frac{\widehat{L}_0^2}{GM} = b^2 \left( \frac{2E}{-GMm } \right) = \frac{b^2}{a} = a(1-e^2)
+\end{gathered} 
+\end{equation}
+using Eq. \ref{Eq:ConicSectionSemiMinorAxis}, for $e^2 = 1 - \left( \frac{b}{a} \right)^2$. 
 
+
+\subsection{Path in coordinates} 
+
+For $\mathbf{r}$ centered at focus $F$ and $\mathbf{r}, \mathbf{v}$ expressed in coordinates in the plane of the conic section path, i.e. in the plane formed by $\mathbf{r}, \mathbf{v}$, with the axes expressed as $\frac{\partial}{\partial x}$, $\frac{ \partial }{ \partial y}$, 
+\begin{equation}
+\mathbf{r} = r\cos{\theta} \frac{\partial }{ \partial x} + r\sin{\theta} \frac{\partial}{\partial y}
+\end{equation}
+Compare this to Eq. (2.5-1) of Sec. 2.5.1 "Expressing $r$ and $v$ in the Perifocal System" of Bate, Mueller, White (1971) \cite{BMW1971}.
+
+Recall the equation for the conic section in polar coordinates, with the coordinates centered at focus $F$:
+\begin{equation}
+r = \frac{a(1-e^2) }{ 1 + e\cos{\theta}}
+\end{equation}
+Compare this to Eq. (1.5-4) of Bate, Mueller, White (1971) \cite{BMW1971}.
+
+Now
+\begin{equation}
+\mathbf{v} = \dot{\mathbf{r}} = (\dot{r} \cos{\theta} - r\dot{\theta} \sin{\theta}) \frac{\partial}{\partial x} + (\dot{r}\sin{\theta} + r\dot{\theta}\cos{\theta}) \frac{\partial }{ \partial y}
+\end{equation}
+Compare this to the equation on pp. 72, of Sec. 2.5.1 "Expressing $r$ and $v$ in the Perifocal System" of Bate, Mueller, White (1971) \cite{BMW1971}.
+
+Now
+\[
+\begin{gathered}
+\dot{r} = \frac{ a ( 1 - e^2) }{ (1+ e\cos{\theta})^2 } e\sin{\theta} \dot{\theta} = \frac{r^2}{a (1-e^2) } e\sin{\theta} \frac{ \widehat{L}_0 }{ r^2} = \frac{ \widehat{L}_0 e\sin{\theta}}{ a(1-e^2)} = \frac{\widehat{L}_0 e\sin{\theta} }{ \frac{ -GMm}{2E} \left( \frac{ L_0^2}{ \left( \frac{(GM)^2 m }{ -2E} \right) } \right) } = 
+\end{gathered}
+\]
+\begin{equation}
+\Longrightarrow \dot{r} = \frac{GM}{\widehat{L}_0} e\sin{\theta}
+\end{equation}
+Compare this to Eq. (2.5-2) of Sec. 2.5.1 "Expressing $r$ and $v$ in the Perifocal System" of Bate, Mueller, White (1971) \cite{BMW1971}.
+
+Then
+\[
+\begin{gathered}
+	\Longrightarrow \frac{ a (1-e^2) }{ (1 + e\cos{\theta})^2 } \dot{\theta} = \frac{GM}{ \widehat{L}_0 } \text{ or } 
+\end{gathered}
+\]
+\begin{equation}
+r\dot{\theta} = \frac{GM}{\widehat{L}_0 } (1 + e\cos{\theta})
+\end{equation}
+Compare this to Eq. (2.5-3) on pp. 73 of Sec. 2.5.1 "Expressing $r$ and $v$ in the Perifocal System" of Bate, Mueller, White (1971) \cite{BMW1971}.
+
+Then
+\[
+\begin{gathered}
+\mathbf{v} = \frac{GM}{\widehat{L}_0} \left[ \left( e \sin{\theta} \cos{\theta} - (1 + e\cos{\theta}) \sin{\theta} \right) \frac{\partial }{ \partial x} + \left( e\sin^2{\theta} + (1 + e\cos{\theta} ) \cos{\theta} \right) \frac{\partial }{ \partial y} \right] = 
+\end{gathered}
+\]
+\begin{equation}
+\mathbf{v} = \frac{GM}{ \widehat{L}_0} \left[ \sin{\theta} \frac{\partial}{\partial x} + (e + \cos{\theta}) \frac{\partial }{\partial y} \right] = \frac{GM}{ \widehat{L}_0} \left[ \frac{y}{r} \frac{\partial}{\partial x} + (e + \frac{x}{r}) \frac{\partial }{\partial y} \right]
+\end{equation}
+Compare this to Eq. (2.5-4) on pp. 73 of Sec. 2.5.1 "Expressing $r$ and $v$ in the Perifocal System" of Bate, Mueller, White (1971) \cite{BMW1971}.
+
+Consider this ansatz from subsection 4.4.3 "The $f$ and $g$ expressions from Ch. 4 section on "Position and velocity - A function of time" in Bate, Mueller, White (1971) \cite{BMW1971}. 
+
+Because $\mathbf{r}, \mathbf{v}$ lie in the plane (i.e. coplanar) containing the entire conic section trajectory, then make the following ansatz:
+\begin{equation}
+\begin{aligned}
+& \mathbf{r} = f\mathbf{r}_0 + g \mathbf{v}_0 \\ 
+& \dot{\mathbf{r}} =: \mathbf{v} = \dot{f} \mathbf{r}_0 + \dot{g} \mathbf{v}_0
+\end{aligned} 
+\end{equation}
+
+Solve for $f$ and $g$ by taking the appropriate cross products:
+\begin{equation}\label{Eq:fAndgSeparatedByCrossProducts}
+\begin{aligned} 
+	& \mathbf{r} \times \mathbf{v}_0 = f\mathbf{r}_0 \times \mathbf{v}_0 \\ 
+	& \mathbf{r} \times \mathbf{r}_0 = g \mathbf{v}_0 \times \mathbf{r} 
+\end{aligned}
+\end{equation}
 
 \subsection{Eccentricity anomaly; Eccentricity anomaly coordinates}
+
+Let the point of interest be P. Choose the origin for the coordinates $(x, y)$ to have \emph{its origin} at the \emph{center of the ellipse}. %one of the \emph{focus}.
+
+Let point C be the point at the center of the ellipse (origin), let point A be the projection of point P onto the $x$-axis, point F be the point at the focus.
+
+Recall that the length from the center C to the focus, $\overline{\text{CF}}$, is $ae$, where $a$ is the semi-major axis, and eccentricity is $e$. 
+
+The eccentricity anomaly $E$ (it's just an angle) is given by
+\begin{equation}
+\cos{E} = \frac{x}{a}
+\end{equation}
+Remember $E$ is \emph{not} the angle formed by triangle CAP, but rather, first take the line through P and A. This line is perpendicular to the x-axis. Then intersect that line with a circle, centered at C, of radius $a$. Then, the line from C to that intersection forms an angle $E$ with the $x$-axis.
+
+By using the ellipse equation and trigonometry,
+\[
+\begin{gathered}
+	\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \Longrightarrow \cos^2{E}  + \frac{y^2}{b^2} = 1 \text{ or } \frac{y^2}{b^2} = \sin^2{E} \text{ or } 
+\end{gathered}
+\]
+
+\begin{equation}
+\sin{E} = \frac{y}{b}
+\end{equation}
+
+Now
+\[
+\overline{\text{AF}} = \overline{\text{CF}} - \overline{\text{CA}} = ae - a\cos{E}
+\]
+Use the right triangle PAF and the hypotenuse being $r$ (distance from the focus F to point P) to find
+\[
+\overline{\text{AF}} = r\cos{(\pi - \theta)} = -r\cos{\theta}
+\]
+So
+\[
+\cos{\theta} = \frac{ a ( \cos{E} - e) }{r} 
+\]
+Then, plug into the conic section equation, Eq. \ref{Eq:ConicSectionEqWithCenterAtFocus}, 
+\[
+\begin{gathered}
+	r = \frac{ed}{ 1 + e\cos{\theta}} = \frac{ a (1-e^2) }{ 1 + e\cos{\theta}} = \frac{b^2 /a}{ 1 + e\cos{\theta}} = \frac{b^2/a}{ 1 + e\left( \frac{ a(\cos{E} - e) }{ r} \right) } \\
+		\Longrightarrow 1 = \frac{ b^2 / a}{ r + e(a(\cos{E} - e))} \\
+		\Longrightarrow r = \frac{b^2}{a} - e(a(\cos{E} - e)) = \frac{b^2}{a} + ae^2 - ea \cos{E} = a(1 - e \cos{E})
+\end{gathered}
+\]
+\begin{equation}\label{Eq:EllipseEquationWithEccentricAnomaly}
+\boxed{ r = a(1 - e\cos{E}) }
+\end{equation}
+Compare this to Eq. (4.6-9) on pp. 215 of Sec. 4.6 in "The Kepler Problem" of Bate, Mueller, White (1971) \cite{BMW1971}.
+
+For the coordinates with the origin at the \emph{focus} $F$, it is given by 
+\begin{equation}\label{Eq:EllipticalPathInEccentricAnomaly}
+\begin{aligned}
+& x = a(\cos{E} - e) \\
+& y = b\sin{E} = a\sqrt{ 1 - e^2} \sin{E}
+\end{aligned}
+\end{equation}
+Compare this to Eqns. (4.6-7), (4.6-8) on pp. 215 of Sec. 4.6 in "The Kepler Problem" of Bate, Mueller, White (1971) \cite{BMW1971}.
+
+Indeed, for $E=0$, $x = a - ae$ (the distance from the focus F to the vertex is $a - ae$), $E = \pi/2$, $x =-ae$ (the distance from the focus F and back to the center C) and for $E = \pi$, $x = -a - ae$ (the distance to the other vertex).
+
+\subsubsection{Path in terms of eccentric anomaly}
+
+Take the time derivative of Eq. \ref{Eq:EllipticalPathInEccentricAnomaly}:
+\begin{equation}
+\begin{aligned}
+& \dot{x} = -a \sin{E} \dot{E} \\ 
+& \dot{y} = a\sqrt{1 - e^2} \cos{E} \dot{E} 
+\end{aligned} 
+\end{equation}
+To determine $\dot{E}$, consider both expressions for the radial distance $r$ for Eq. \ref{Eq:EllipseEquationWithEccentricAnomaly} and Eq. \ref{Eq:ConicSectionEqWithCenterAtFocus}:
+
+\[
+\begin{gathered} 
+\begin{gathered} 
+	r = \frac{a (1-e^2) }{ 1 + e\cos{\theta}} = \frac{b}{ 1 + e\cos{\theta}} \\
+	\Longrightarrow \dot{r} = \frac{ -b}{ (1+e\cos{\theta})^2} (-e\sin{\theta})\dot{\theta} = \frac{ be \sin{\theta} \dot{\theta} }{ (1+ e\cos{\theta})^2 } = \\
+		\dot{r} = \frac{r^2 e}{b} \sin{\theta} \dot{\theta}
+\end{gathered} \\ 
+\begin{gathered}
+r = a(1 - e\cos{E}) \\
+\Longrightarrow \dot{r}  = +ae\sin{E} \dot{E} 
+\end{gathered} \\
+\begin{gathered}
+\Longrightarrow ae \sin{E} \dot{E} = \frac{r^2 e}{b} \sin{\theta} \dot{\theta} \text{ or } a\sin{E} \dot{E} = \frac{r^2}{b} \sin{\theta} \dot{\theta} = \frac{ \widehat{L}_0 \sin{\theta} }{ b} = \frac{\widehat{L}_0 }{b} \frac{y}{r} \\
+\Longrightarrow \dot{E} = \frac{ \widehat{L}_0 }{ab} \frac{y}{r\sin{E}} = \frac{\widehat{L}_0 } {ar} = \frac{ b}{ a^{3/2} r} 
+\end{gathered}
+\end{gathered} 
+\]
+Compare the expression for $\dot{E}$ with Eq. (4.6-11) on pp. 216 of Bate, Mueller, White (1971) \cite{BMW1971}.
+
+Armed with an expression for $\dot{E}$, plug this back into the expression for $\dot{r}$:
+\begin{equation}
+\dot{r} = a e \sin{E} \left( \frac{ \widehat{L}_0 }{ ar} \right) = \frac{ e\sin{E} \widehat{L}_0 }{ r}
+\end{equation}
+Compare this to the equation on pp. 216, "Position and Velocity - a function of time" in Ch. 4 of Bate, Mueller, White (1971) \cite{BMW1971}. 
+
+Use the expressions above in Eqns. \ref{Eq:fAndgSeparatedByCrossProducts}. For $\mathbf{r}, \mathbf{r}_0$ centered at focus F:
+\[
+\begin{gathered} 
+xv_{0, y} - y v_{0,x} = a(\cos{E} - e) b \cos{E_0} \dot{E}_0 - b\sin{E} (-a\sin{E_0} \dot{E}_0) = \\
+	= ab\dot{E}_0 \left[ ( \cos{E} - e) \cos{E_0} + \sin{E} \sin{E_0} \right] = \frac{b^2}{ \sqrt{a} r} \left[ \cos{(E - E_0)} - e\cos{E_0} \right] = \frac{ \widehat{L}^2 \left( \frac{-m}{2E} \right) }{ \sqrt{GM} \sqrt{ \frac{m}{-2E} } r } \left[ \cos{(E- E_0)} - e\cos{E_0} \right] = \\
+	 = \frac{\widehat{L}_0 b }{ r \sqrt{ GM} } \left[ \cos{ (E- E_0)} - e\cos{E_0} \right] 
+\end{gathered} 
+\]
+Comparing this against the "right-hand side (RHS)" with $f (\mathbf{r}_0 \times \mathbf{v}_0)$, the RHS has a magnitude of $f \widehat{L}_0$ in the same direction as $(\mathbf{r} \times \mathbf{v}_0)$. Thus
+\begin{equation}
+f = \frac{ b }{ r \sqrt{ GM} } \left[ \cos{ (E- E_0)} - e\cos{E_0} \right]
+\end{equation}
+
+For the expression involving $g$ in Eqns. \ref{Eq:fAndgSeparatedByCrossProducts}, 
+\[
+\begin{gathered}
+	\mathbf{r} \times \mathbf{r}_0 = xy_0 - yx_0 = a(\cos{E} - e) b \sin{E_0} - b\sin{E} a (\cos{E_0} - e) = -ab \left[ (\cos{E_0} ) \sin{E} - (\cos{E}-e) \sin{E_0} \right] 
+\end{gathered}
+\]
+with
+\[
+\begin{gathered}
+ab = a \widehat{L}_0 \sqrt{ \frac{-m}{2E} } = a\widehat{L}_0 \left( \frac{a}{GM} \right)^{1/2} = \left( \frac{a^3}{GM} \right)^{1/2} \widehat{L}_0
+\end{gathered}
+\]
+For the RHS with $g \mathbf{v}_0 \times \mathbf{r}_0$, $\mathbf{v}_0 \times \mathbf{r}_0$, by the right-hand rule or the right-hand orientation, it is in the \emph{opposite} direction as $\mathbf{r}\times \mathbf{r}_0$. Thus, apply a negative side on the RHS.
+
+\begin{equation}
+\Longrightarrow g = \left( \frac{ a^3}{GM} \right)^{1/2} \left[ (\cos{E_0} - e) \sin{E} - (\cos{E} - e) \sin{E_0} \right] 
+\end{equation}
 
 \part{General Relativity}
 
@@ -9925,6 +10216,11 @@ Third Edition,
 \bibitem{Mori2001} 
 Shigeyuki Morita. \textbf{Geometry of Differential Forms} (Translations of Mathematical Monographs, Vol. 201). American Mathematical Society (August 28, 2001). ISBN-10: 0821810456
 
+\bibitem{Apos1991} 
+Tom M. Apostol. \textbf{Calculus, Vol. 1: One-Variable Calculus, with an Introduction to Linear Algebra}. Wiley; 2nd edition (January 16, 1991).ISBN-13: 978-0471000051
+
+\bibitem{BMW1971}
+Roger R. Bate, Donald D. Mueller, Jerry E. White. \textbf{Fundamentals of Astrodynamics} (Dover Books on Aeronautical Engineering). Publisher: Dover Publications; Revised ed. edition (June 1, 1971). ISBN-13: 978-0486600611
 
 
 \end{thebibliography}
