@@ -2827,7 +2827,7 @@ s.t.
 		\begin{equation}
 		\text{Mor}\mathbf{A} = \bigcup_{ A,B \in \text{Obj}(\mathbf{A}) } \text{Hom}(A,B)
 		\end{equation}
-		\item $\forall \, f \in \text{Hom}(A,B)$, $f: A \to B \in \text{Hom}(A,B)$ is a \emph{morphism}. 
+		\item $\forall \, f \in \text{Hom}(A,B)$, $f: A \to B \in \text{Hom}(A,B)$ is a \emph{morphism}. Leinster (2014) \cite{Lein2014} also calls them on pp. 10 \textbf{maps} or \textbf{arrow} from $A$ to $B$.
 	\[
 \begin{tikzpicture}
 \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
@@ -3174,6 +3174,32 @@ $G,H$ are monoids. Then $h$ monoid homomorphism.
 \end{itemize}
 
 Concrete categories: informally, categories which objects are sets, possibly equipped with some structure, and arrows are certain, possibly structure-preserving functions.
+
+From pp. 10 of Mac Lane (1978) \cite{MacL1978}, Leinster (2014) \cite{Lein2014}, Examples 1.1.8 (Categories as mathematical structures), pp. 13, and Sec. 1.4 Examples of Categories, 5. Finite Categories, pp.7 of Awodey (2010) \cite{Awod2010}.
+
+Category $\mathbf{1}$.  $\text{Obj}{\mathbf{1}} = \lbrace A \rbrace$ \\
+$\text{Mor}{\mathbf{1}} = \lbrace 1_A \rbrace$; $1_A : A \to A$.  \\
+
+The only composition to consider is $1_A \circ 1_A : A \to A$, and $1_A \circ 1_A \circ 1_A$, so on and so for.
+
+Category $\mathbf{2}$.  $\text{Obj}{\mathbf{2}} = \lbrace A, B \rbrace$. \\
+$\text{Hom}(A, B) = \lbrace f \rbrace$, $f:A\to B$. \\
+
+The only "non-trivial" composition to consider is $1_B \circ f \circ 1_A : A \to B$. \\
+ 
+Category $\mathbf{3}$. pp. 11, Sec. 2 Categories of Mac Lane (1978) \cite{MacL1978}, Example 5. "Finite Categories", Sec. 1.4, pp. 7 of Awodey (2010) \cite{Awod2010}. 
+
+$\text{Obj}{\mathbf{3}} = \lbrace A, B, C \rbrace$ \\
+$\text{Hom}{(A, B)} = \lbrace f \rbrace$ \\
+$\text{Hom}{(A, C)} = \lbrace g \rbrace$ \\
+$\text{Hom}{(B, C)} = \lbrace h \rbrace$ \\
+$\text{Hom}{(C, \cdot)} = \emptyset $ \\
+$\text{Hom}{(B, A)} = \emptyset$ \\
+
+The only "non-trivial" compositions to consider are the following:
+$1_C \circ h \circ f : A \to C$, \\
+$1_C \circ g$, $1_C \circ h$ (and likewise) \\
+
 
 \subsection{Duality, opposite category}
 
