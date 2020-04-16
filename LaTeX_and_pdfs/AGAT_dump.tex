@@ -3716,14 +3716,15 @@ object $(u, N \otimes_R M)$ is initial in $\mathbf{C}$
 
 \section{Functors}
 
-cf. Def. 1.2.10 of Kashiwara and Schapira (2006) \cite{KaSch2006}. 
+cf. Def. 1.2.10 of Kashiwara and Schapira (2006) \cite{KaSch2006}, with terminology from pp. 13, Sec. 3. "Functors" from Mac Lane (1978) \cite{MacL1978}
 
 \begin{definition}[(covariant) Functor]
 \begin{enumerate}
 	\item (covariant functor) Let categories $\mathbf{C}$, $\mathbf{D}$. \\
-(covariant) \textbf{functor} $F: \mathbf{C} \to \mathbf{D}$ consists of 
+(covariant) \textbf{functor} $F: \mathbf{C} \to \mathbf{D}$ consists of (Mac Lane (1978) \cite{MacL1978} says 2 suitably related functions)
 \begin{itemize}
-	\item map $F: \text{Obj}(\mathbf{C}) \to \text{Obj}(\mathbf{D})$ (i.e. $\forall \, C \in \text{Obj}(\mathbf{C})$, $F(C) \in \text{Obj}(\mathbf{D})$), and 
+	\item map $F: \text{Obj}(\mathbf{C}) \to \text{Obj}(\mathbf{D})$ (i.e. $\forall \, C \in \text{Obj}(\mathbf{C})$, $F(C) \in \text{Obj}(\mathbf{D})$), \\
+	(Mac Lane (1978) \cite{MacL1978} calls this the \emph{object function} $T$ or $F$ in our notation; we'll call it the \emph{object map}) and 
 	\item maps $F: \text{Hom}_{\mathbf{C}}(X,Y) \to \text{Hom}_{\mathbf{D}}(F(X), F(Y))$, so that 
 		\[	
 			F(f) : F(X) \to F(Y) \text{ or } F(f)(F(X)) = F(f(X)) 
@@ -3736,6 +3737,7 @@ cf. Def. 1.2.10 of Kashiwara and Schapira (2006) \cite{KaSch2006}.
 	& g: Y \to Z \end{aligned}, \qquad \, X,Y,Z \in \text{Obj}(\mathbf{C})
 	\end{gathered}
 	\end{equation}
+	Mac Lane (1978) \cite{MacL1978} calls this the \emph{arrow function} (also written as $T$ for Mac Lane's notation; $F$ for our notation); we'll call $F$ to be the \emph{morphism map}. 
 \end{itemize}
 \item (composition law for functors) \\
 For categories $\mathbf{A} , \mathbf{B}, \mathbf{C}$, functors $F: \mathbf{A} \to \mathbf{B}$, $G: \mathbf{B} \to \mathbf{C}$, \\
@@ -4032,6 +4034,29 @@ while $G \mapsto G/[G, G]$ define functor $\textbf{Grp} \to \textbf{Ab}$, factor
 TODO - understand the previous commutators.
 
 \end{itemize} 
+
+\subsubsection{Endofunctor}
+
+\begin{definition}[Endofunctor]
+Consider \textbf{endofunctor} $T : \mathbf{C} \to \mathbf{C}$. This implies that, for the \\
+
+object map $\begin{aligned} & \quad \\ 
+	& T : \text{Obj}{\mathbf{C}} \to \text{Obj}{\mathbf{C}} \\ 
+	& T : X \to Y \end{aligned}$, \\
+	
+	object map $T$ acts like a morphism, in $\text{Mor}\mathbf{C}$ (!!!). In this case $T$ acts like $T\in \text{Hom}_{\mathbf{C}}(X, Y)$.  \\
+	
+	morphism map $T: \text{Hom}_{\mathbf{C}}(X, Y) \to \text{Hom}_{\mathbf{C}}(F(X), F(Y))$ s.t. 
+	\begin{equation}
+	\begin{gathered} 
+		T(f) \equiv Tf:T(X) \to T(Y) \text{ so that } Tf \in \text{Hom}_{\mathbf{C}}(T(X), T(Y))  \\
+		T(1_X) = 1_{T(X)} \in \text{Hom}_{\mathbf{C}}(T(X), T(Y)) (\text{implied from Kashiwara and Schapira (2006) \cite{KaSch2006} in that} \, 1_X \in \text{Hom}(X,X)) \\
+		T(g\circ f) = T(g) \circ T(f), \, \forall \, f:X \to Y, \, g:Y \to Z, \, X,Y,Z\in \text{Obj}{\mathbf{C}}
+	\end{gathered} 
+	\end{equation} 
+	So $T(f) \equiv Tf$ is indeed a morphism map.
+
+\end{definition}
 
 \subsubsection{Hom functors}
 
