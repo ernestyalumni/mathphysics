@@ -5809,7 +5809,59 @@ $\mu$ the \textbf{multiplication} of monad $T$. The 2nd. and 3rd. diagrams, Eq. 
 	
 \end{proposition}
 
+\subsection{Monads and Adjoints}
+
+cf. Ch. 6, Monads and Algebras, pp. 138 of Mac Lane (1971) \cite{MacL1978}.
+\begin{proposition}
+	adjunction $\langle F, G, \eta, \epsilon \rangle : X \to A$, $\exists \, $ monad in category $X$ (notation $\langle F,G, \eta, \epsilon \rangle : \mathbf{C} \to \mathbf{D}$, $\exists \, $ monad in category $\mathbf{C}$). 
+	
+	Specifically, 2 functors $F:\mathbf{C} \to \mathbf{D}$, $G:\mathbf{D} \to \mathbf{C}$ have composite $T = GF$, an endofunctor, \\
+	unit $\eta$ of adjunction is natural transformation $\eta : 1 \to T$, \\
+	counit $\epsilon :FG \to 1_A$ of adjunction yields by horizontal composition; a natural transformation
+	\[
+	\mu = G\epsilon F: GFGF \to GF = T
+	\] 
+\end{proposition}
+
+TODO: adjunction.
+
 \subsection{Applications of Monads: Correspondence between Monads in Computer Science and Monads in Category Theory}
+
+cf. \href{https://ncatlab.org/nlab/show/monad+%28in+computer+science%29}{monad (in computer science), nLab}
+
+For monads in computer science, \\
+maps type $X$ to new type $T(X)$, \\
+equipped with rule for composing 2 functions of form $f:X \to T(Y)$ (called Kleisli functions), $g:Y \to T(Z)$ to function 
+\[
+g\circ f : X \to T(Z) \quad \text{(their Kleisi composition)}
+\]
+associative in evident sense, unital with respect to given unit function called $\text{pure}_X: X \to T(X)$ to be thought of as taking a value to the pure computation that simply returns that value. \\
+
+e.g. when monad $T(-)$ forms product types $T(X) = X \times Q$, some fixed type $Q$ that carries structure of monoid. \\
+Then Kleisi function $f:X \to Y \times Q$ is a function $X\to Y$  that produces as a side effect output of type $Q$. \\
+Kleisi composition of $\begin{aligned} &  \quad \\
+	& f:X\to Y\times Q \\
+	& g: Y \to Z\times Q\end{aligned}$ \, not only evaluates the 2 programs in sequence, but also combines their $Q$-output using monoid operation of $Q$, e.g.
+	
+	if $\begin{aligned} & \quad \\ 
+	& fx = (y, q) \\ 
+	& gy = (z,q')\end{aligned}$  \, then $(g\circ f)(x) = (z, qq')$ \\
+	
+Let syntactic category be denoted $\mathbf{C}$. \\
+
+$\text{Obj}{\mathbf{C}} \ni X$ \quad \, $\to $ \, types of the (programming) language \\
+$\text{Hom}_{\mathbf{C}}(X,Y)$ \quad \, $\to $ \, "programs" that takes value of type $X$ as input and returns value of type $Y$ \\
+
+endofunctor $T: \mathbf{C} \to \mathbf{C}$ \\
+object map $T:X \to T(X)$ sends each type $X\in \text{Obj}{\mathbf{C}}$ to another type $T(X) \in \text{Obj}{\mathbf{C}}$.  \\
+
+unit natural transformation $\epsilon:1_{\mathbf{C}} \to T$ provides $\forall \,$ type $X$ a component morphism $\text{pure}_X :X \to T(X)$ (notation, \href{https://ncatlab.org/nlab/show/monad+%28in+computer+science%29}{ncat} uses the notation $\epsilon$; we will use $\eta$ for the "unit" natural transformation of a monad):
+	\[
+		\begin{aligned}
+		&  \eta : 1_{\mathbf{C}} \to T \\ 
+		& \eta_X : X\to T(X) \equiv \text{pure}_X : X \to T(X)
+		\end{aligned}	
+	\]
 
 \subsubsection{Dictionary between Monads in Computer Science and Monads in Category Theory}
 
