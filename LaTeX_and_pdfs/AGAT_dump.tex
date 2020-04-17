@@ -5832,6 +5832,10 @@ $\mu$ the \textbf{multiplication} of monad $T$. The 2nd. and 3rd. diagrams, Eq. 
 
 One of them is an element $x$ in the object $X$, $x \in X$. The other is a "transformation of type $X \to T(Y)$." I believe that would mean a morphism $f: X \to T(Y)$.  \\
 
+What \v{C}uki\'{c} in \v{C}uki\'{c} (2018) \cite{Cuki2018} calls \texttt{transform} is the \emph{morphism map} (arrow map) for a functor $F$. However, note that when it comes to concrete implementation, the concrete implementation applies to \emph{instances} of a type $X \in \text{Obj}{\mathbf{C}}$. For a given type $X$, e.g. \verb|int| (the integer type in C or C++), there are many values that will have that type. It would be good that we work out how the definitions, theorems, and commutative diagrams apply in this case.
+
+% TODO: work out the case when an object in $\text{Obj}{\mathbf{C}}$ for category $\mathbf{C}$, when the object itself has associated elements.
+
 I don't think there's a great way to reconcile what Haskell and functional programming programmers mean by \texttt{bind} with the corresponding concept in category theory. 
 
 
@@ -10404,6 +10408,9 @@ Tom Leinster.  \textbf{Basic Category Theory} (Cambridge Studies in Advanced Mat
 
 \bibitem{Pare2004}
 Prof. Dr. B. Pareigis. \textbf{Category Theory}. Summer Semester 2004. June 14, 2004. \url{http://www.mathematik.uni-muenchen.de/~pareigis/Vorlesungen/04SS/Cats1.pdf}
+
+\bibitem{Cuki2018}
+Ivan \v{C}uki\'{c}. \textbf{Functional Programming in C++: How to improve your C++ programs using functional techniques}. Manning Publications; 1st edition (November 19, 2018). ISBN-13: 978-1617293818
 
 
 %%--------------------------------------------------------------------------------------------------
