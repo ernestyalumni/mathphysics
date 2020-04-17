@@ -30,7 +30,6 @@
 
 \usepackage{multicol}
 
-
 % ----------------------------------------------------------------------------------------
 % 20180203
 
@@ -4037,7 +4036,7 @@ TODO - understand the previous commutators.
 
 \subsubsection{Endofunctor}
 
-\begin{definition}[Endofunctor]
+\begin{definition}[Endofunctor]\label{Def:Endofunctor}
 Consider \textbf{endofunctor} $T : \mathbf{C} \to \mathbf{C}$. This implies that, for the \\
 
 object map $\begin{aligned} & \quad \\ 
@@ -5432,7 +5431,7 @@ C\xleftarrow{ [ f, g ] } A +  B \\
 
 \section{Naturality; Natural transformations}
 
-\begin{definition}[Natural Transformation]
+\begin{definition}[Natural Transformation]\label{Def:NaturalTransformation}
 	If functors $F,G$, categories $\mathbf{C}, \mathbf{D}$, 
 	\[
 	\begin{aligned}
@@ -5700,7 +5699,140 @@ Simmons (2011) \cite{Simm2011}
 
 cf. 3.3 \emph{Some less simple functors}, pp. 79, of Simmons (2011) \cite{Simm2011}
 
+\section{Monads}
 
+cf. Ch. 6, Monads and Algebras, starting on pp. 137 of Mac Lane (1971) \cite{MacL1978}.
+
+\subsection{Monads in a Category}
+
+\subsubsection{Development of a Monad}
+
+Let's follow the development of a Monad according to Mac Lane (1971) \cite{MacL1978} starting on pp. 137 in Sec. 1. "Monads in a Category."
+
+$\forall \, $ endofunctor $T: X \to X$, $T$ has composites $T^2 = T\circ T : X \to X$, $T^3 = T^2 \circ T:X \to X$ in Mac Lane's notation, $X$ is a category. In our notation, $\mathbf{C}$ denotes the category. And so for endofunctor $T: \mathbf{C} \to \mathbf{C}$, $T^2 = T\circ T: \mathbf{C} \to \mathbf{C}$, $T^3 = T^2 \circ T: \mathbf{C} \to \mathbf{C}$. 
+
+Recall from Def. \ref{Def:Endofunctor}, that for endofunctor $T:\mathbf{C} \to \mathbf{C}$, the \emph{object map} $T: \text{Obj}{\mathbf{C}} \to \text{Obj}{\mathbf{C}}$ acts just like a morphism in $\text{Mor}{\mathbf{C}}$! So $T: X \to T(X)$ for $X, T(X) \in \text{Obj}{\mathbf{C}}$. Also, recall that the \emph{morphism map} $T: \text{Mor}_{\mathbf{C}} \to \text{Mor}_{\mathbf{C}}$ acts like the usual morphism map, such that $Tf : T(X) \to T(Y)$ if $f:X\to Y$, for $X,Y \in \text{Obj}{\mathbf{C}}$. \\
+
+If $\mu:T^2 \to T$ is a \emph{natural transformation}, then recall the definition of the natural transformation, Def. \ref{Def:NaturalTransformation}, and apply that onto $\mu$. \\
+
+$\forall \, X \in \text{Obj}{\mathbf{C}}$, $\mu_X: T^2(X) \to T(X)$ with $T^2(X), T(X) \in \text{Obj}{\mathbf{C}}$. $\mu_X$ is a morphism $\in \text{Hom}_{\mathbf{C}}(T^2(X), T(X))$ (!!), as well as being a component of $\mu$ at $X$. \\
+
+$\forall \,$ morphism $f: X\to Z$ in $\mathbf{C}$, $X, Z \in \text{Obj}{\mathbf{C}}$ (the notation of using $Z$ to emphasize that $f$ can map $X$ to \emph{any} arbitrary object in $\text{Obj}{\mathbf{C}}$), 
+\[
+\mu_Z \circ T^2f = Tf \circ \mu_X 
+\]
+i.e. 
+\[
+\begin{tikzcd}
+	T^2(X) \arrow{d}{T^2f} \arrow{r}{\mu_X} & T(X) \arrow{d}{Tf} \\
+	T^2(Z) \arrow{r}{\mu_Z} & T(Z)
+\end{tikzcd}
+\]
+
+Let $T\mu : T^3 \to T^2$ \emph{denote} a natural transformation with components $(T\mu)_X = T(\mu_X) : T^3(X) \to T^2(X)$, \\
+while $\mu T: T^3\to T^2$ denotes another natural transformation with components $(\mu T)_X  = \mu_{T(X)}$.  
+
+$T\mu$, $\mu T$ are "horizontal" composites in the sense of Sec. II. 5, "The Category of All Categories". (TODO: Understand what Mac Lane (1971) \cite{MacL1978} means when he says this on pp. 137). \\
+
+Let's jump the gun and consider what natural transformation $\eta : 1_{\mathbf{C}} \to T$ means with respect to the definition of a natural transformation, Def. \ref{Def:NaturalTransformation}. $1_{\mathbf{C}}$ is the identity functor, mapping everything to itself. \\
+
+$\forall \, X \in \text{Obj}{\mathbf{C}}$, $\eta_X: 1_{\mathbf{C}}(X) \to T(X)$ with $1_{\mathbf{C}}(X) = X, T(X) \in \text{Obj}{\mathbf{C}}$. $\eta_X$ is a morphism $\in \text{Hom}_{\mathbf{C}}(1_{\mathbf{C}}(X), T(X)) = \text{Hom}_{\mathbf{C}}(X, T(X))$ (!!!), as well as being a component of $\eta$ at $X$. Not only that, it applies $T$ onto $X$! \\
+
+$\forall \,$ morphism $f: X\to Z$ in $\mathbf{C}$, $X, Z \in \text{Obj}{\mathbf{C}}$, 
+\[
+\eta_Z \circ 1_{\mathbf{C}}f = \eta_Z \circ f = Tf \circ \eta_X 
+\]
+i.e. 
+\[
+\begin{tikzcd}
+1_{\mathbf{C}}(X) \arrow{d}{1_{\mathbf{C}}f} \arrow{r}{\eta_X} & T(X) \arrow{d}{Tf} \\
+1_{\mathbf{C}}(Z) \arrow{r}{\eta_Z} & T(Z)
+\end{tikzcd} \Longrightarrow 
+\begin{tikzcd}
+X \arrow{d}{f} \arrow{r}{\eta_X} & T(X) \arrow{d}{Tf} \\
+Z \arrow{r}{\eta_Z} & T(Z)
+\end{tikzcd}
+\]
+
+\subsubsection{Definitions and Properties of a Monad}
+
+\begin{definition}[Monad]\label{Def:Monad}
+\textbf{monad} $T = \langle T, \eta, \mu \rangle$ in category $\mathbf{C}$ consists of functor $T: \mathbf{C} \to \mathbf{C}$ and 2 natural transformations
+\begin{equation}
+\begin{aligned}
+& \eta : 1_{\mathbf{C}} \to T \\ 
+& \mu : T^2 \to T
+\end{aligned}
+\end{equation}	
+s.t. 
+\begin{equation}\label{Eq:MonadAssociativeDiagram}
+\begin{tikzcd}
+T^3 \arrow{d}{\mu T} \arrow{r}{T\mu} & T^2 \arrow{d}{\mu} \\
+T^2 \arrow{r}{\mu} & T
+\end{tikzcd}
+\end{equation}
+being like an "associative" diagram, and 
+\begin{equation}\label{Eq:MonadLeftRightUnitLawsDiagram}
+\begin{tikzcd}
+	1T \arrow[equal]{d} \arrow{r}{\eta T} & T^2 \arrow{d}{\mu} & T1 \arrow{l}[swap]{T \eta} \arrow[equal]{d} \\
+	T \arrow[equal]{r} & T & T \arrow[equal]{l}
+\end{tikzcd}
+\end{equation}
+being a diagram that could be said to express the left and right unit laws.
+\end{definition} 
+
+Formally, the monad definition is like that of a monoid $M$ in $\mathbf{Sets}$: \\
+set $M$ of elements of monad \quad $\to $ \, replaced by endofunctor $T : X \to X$ \\
+Cartesian product $\times$ of 2 sets \quad $\to $ \, composite of 2 functors \\
+binary operation $\mu : M \times M \to M$ of multiplication \quad $\to $ \, transformation $\mu : T^2 \to T$ and \\
+unit (identity) element $\eta:1 \to M$ \quad $\to $ \, $\eta : 1_{\mathbf{C}} \to T$. \\
+
+Thus, call \\
+$\eta$ the \textbf{unit} of monad $T$. The first commutative diagram, Eq. \ref{Eq:MonadAssociativeDiagram}, is the associative law for a monad, and \\
+$\mu$ the \textbf{multiplication} of monad $T$. The 2nd. and 3rd. diagrams, Eq. \ref{Eq:MonadLeftRightUnitLawsDiagram} expresses the left and right \emph{unit laws}.
+
+\begin{proposition}[Coherence conditions]\label{Prop:MonadCoherenceConditions}
+	\begin{equation}
+	\begin{aligned}
+	& \mu \circ T \mu = \mu \circ \mu T \quad (\text{as natural transformations $T^3 \to T$, $\mu \circ T\mu$ and $\mu \circ \mu T$, that is}) \\ 
+	& \mu \circ T \eta = \mu \circ \eta T = 1_T \quad (\text{as natural transformations $T \to T$, $1_T \equiv$ identity functor}) 
+	\end{aligned}
+	\end{equation}
+	
+	For the last statement, it is equal to commutative diagram Eq. \ref{Eq:MonadLeftRightUnitLawsDiagram}, since it can be redrawn as follows:
+\[
+\begin{tikzcd}
+	T \arrow{d}{ T \eta} \arrow{r}{\eta T} \arrow[equal]{dr} & T^2 \arrow{d}{\mu} \\
+	T^2 \arrow{r}{\mu} & T
+\end{tikzcd}	
+\]
+	
+\end{proposition}
+
+\subsection{Applications of Monads: Correspondence between Monads in Computer Science and Monads in Category Theory}
+
+\subsubsection{Dictionary between Monads in Computer Science and Monads in Category Theory}
+
+\[
+\boxed{ \texttt{join} \quad \text{ is } \, \mu_X : T^2(X) \to T(X)}
+\]
+
+\[
+\boxed{ \texttt{return} \quad \text{ is } \, \eta_X: X \to T(X) }
+\]
+
+\[
+\boxed{ \texttt{fmap} \quad \text{ is the morphism map (arrow map) for functor } F}
+\]
+
+\[
+\boxed{ \texttt{bind} \quad \text{ is } \, \mu_X \circ Tf : T(X) \to T(Y) \text{ but ... }}
+\]
+\texttt{bind} is more nuanced in that, from the Haskell and functional programming perspective, it takes in \emph{two} inputs. \\
+
+One of them is an element $x$ in the object $X$, $x \in X$. The other is a "transformation of type $X \to T(Y)$." I believe that would mean a morphism $f: X \to T(Y)$.  \\
+
+I don't think there's a great way to reconcile what Haskell and functional programming programmers mean by \texttt{bind} with the corresponding concept in category theory. 
 
 
 \section{Applications of Category Theory on Hybrid Systems}
