@@ -5863,6 +5863,102 @@ unit natural transformation $\epsilon:1_{\mathbf{C}} \to T$ provides $\forall \,
 		\end{aligned}	
 	\]
 
+multiplication natural transformation $\mu :T^2 \to T$ provides $\mu_X : T^2(X) \to T(X)$ which induces Klesli composition by formula
+\begin{equation}
+\begin{aligned} 
+	(g\circ f) & := (Y \xrightarrow{g} T(Z)) \circ_{\text{Klesli}} (X\xrightarrow{f} T(Y)) \\
+	& := X \xrightarrow{f} T(Y) \xrightarrow{T(g)} T(T(Z)) \xrightarrow{ \mu(Z) } TZ
+\end{aligned} 
+\end{equation}
+$T(g)$ uses fact that $T(-)$ is functor morphism $\mu(Z)$ is 1 that implements "$T$-computation".
+
+Now \href{https://ncatlab.org/nlab/show/monad+%28in+computer+science%29}{nLab} says this about the "bind" operation: \\
+	"bind" \quad $\leftrightarrow$ \, multiplication on monad $M$, \\
+	\begin{equation}\label{Eq:BindAsStrongMonad}
+	\begin{gathered} 
+	MA \to (MB)^A \to MB \text{ equivalent to map } MA \times MB^A \to MB \\ 
+	 MA \times MB^A \xrightarrow{ \text{ strength } } M(A\times MB^A) \xrightarrow{ M_{\text{eval}_{A, MB} } } MMB \xrightarrow{ mB } MB
+	\end{gathered} 
+	\end{equation}
+To try to make sense of Eq. \ref{Eq:BindAsStrongMonad}, consider the following: 
+\[
+\begin{gathered}
+\text{Recall for natural transformation $\eta$, the component $\eta_X$: } \mu_X : T^2(X) \to T(X) \text{ and for some morphism $f \in \text{Mor}{\mathbf{C}}$}, \\
+	f:X\to Z \\
+	Tf:T(X) \to T(Z)
+\end{gathered} 
+\]
+So if $f:X\to T(Y)$ instead, 
+\[
+\begin{gathered}
+Tf:T(X) \to T^2(Y) \\ 
+(\mu_Y \circ Tf) : T(X) \to T(Y)
+\end{gathered} 
+\]
+Form a Cartesian product of $T(X)$ and $\text{Hom}_{\mathbf{C}}(X,T(Y)) \ni f$ as inputs: $T(X) \times \text{Hom}_{\mathbf{C}}(X, T(Y))$. \\
+
+Then I suggest that Eq. \ref{Eq:BindAsStrongMonad} is translated as follows:
+\begin{equation}
+T(X) \times \text{Hom}_{\mathbf{C}}(X, T(Y)) \xrightarrow{ \text{ apply } T } T( T(X) \times \text{Hom}_{\mathbf{C}}(X, T(Y))) \xrightarrow{ Tf} T^2(Y) \xrightarrow{ \mu_Y } T(Y) 
+\end{equation}
+where apply $T$ is on $f\in \text{Hom}_{\mathbf{C}}(X,T(Y))$ in order to form $Tf$.
+
+\subsubsection{More on Klesli composition}
+
+cf. \href{https://ncatlab.org/nlab/show/Kleisli+category}{Kleisli category, nLab}.
+
+\begin{proposition}\label{Prop:KlesliCompositionForm}
+	Klesli composition of $g\circ f$ of $\begin{aligned} & \quad \\ 
+	& f: X\to T(Y) \\ 
+	& g: Y \to T(Z) \end{aligned}$ \, is given by 
+	\[
+	X \xrightarrow{f} TY \xrightarrow{ Tg} T^2Z \xrightarrow{\mu_Z} TZ 
+	\]
+	i.e. $g \circ_{\text{Klesli}} f = \mu_Z \circ Tg \circ f$
+\end{proposition}
+
+\begin{proof}
+	Fullness of functor $T$: \\
+	
+	$\forall \, $ morphism $g: T(X) \to T(Y)$ has antecedent the composition
+	\[
+	X\xrightarrow{ \eta_X} T(X) \xrightarrow{g} T(Y) 
+	\]
+	i.e. $g\circ \eta_X : X \to T(Y)$. \\
+	
+Consider $T(g \circ \eta_X) = Tg \circ T \eta_X : T(X) \to T^2(Y)$ for 
+\[
+\begin{aligned} 
+	& T\eta_X : T(X) \to T^2(X) \\ 
+	& Tg : T^2(X) \to T^2(Y) \\ 
+	& \mu_Y : T^2(Y) \to T(Y) 
+\end{aligned} 
+\]
+So 
+\[
+\mu_Y \circ Tg \circ T\eta_X = \mu_Y \circ T(g\circ \eta_X) : T(X) \to T(Y)
+\]
+Because $g$ is a morphism of algebras (TODO: understand what this means, from \href{https://ncatlab.org/nlab/show/Kleisli+category}{Kleisli category, nLab}), 
+\[
+\mu_Y \circ Tg \circ T\eta_X = g\circ \mu_X \circ T\eta_X = g
+\]
+where $\mu_Y \circ Tg = g\circ \mu_X$ uses natural transformation definition \ref{Def:NaturalTransformation} for the property $\mu_Z \circ T^2 f = Tf \circ \mu_X$ (TODO: Show $g=Tf$ is of this form), \\
+and $\mu \circ T\eta = \mu \circ \eta T = 1_T$ (coherence condition from Prop. \ref{Prop:MonadCoherenceConditions}).  \\
+
+Faithfulness: \\
+
+If $\mu_Y \circ Tf = \mu_Y \circ Tg$, then precompose by $\eta_X$ yields 
+\[
+\mu_Y \circ Tf \circ \eta_X = \mu_Y \circ  \eta_{f(X)} \circ f = \mu_Y \circ \eta_{T(Y)} \circ f = f
+\]
+where \\
+$Tf\circ \eta_X = \eta_{T(Y)} \circ f$ from natural transformation def. \ref{Def:NaturalTransformation} was used, and $\mu \circ \eta T = 1_T$ (coherence condition) was also used, for $f:X \to T(Y)$. \\
+
+Similarly for $g$. $\mu_Y \circ Tf = \mu_Y \circ Tg \Longrightarrow f=g$.
+\end{proof} 
+
+Notice that the multiplication natural transformation $\mu:T^2 \to T$ was needed to induce the Klesli composition.
+
 \subsubsection{Dictionary between Monads in Computer Science and Monads in Category Theory}
 
 \[
@@ -5878,7 +5974,7 @@ unit natural transformation $\epsilon:1_{\mathbf{C}} \to T$ provides $\forall \,
 \]
 
 \[
-\boxed{ \texttt{bind} \quad \text{ is } \, \mu_X \circ Tf : T(X) \to T(Y) \text{ but ... }}
+\boxed{ \texttt{bind} \quad \text{ is } \, \mu_Y \circ Tf : T(X) \to T(Y) \text{ but ... }}
 \]
 \texttt{bind} is more nuanced in that, from the Haskell and functional programming perspective, it takes in \emph{two} inputs. \\
 
@@ -5889,6 +5985,260 @@ What \v{C}uki\'{c} in \v{C}uki\'{c} (2018) \cite{Cuki2018} calls \texttt{transfo
 % TODO: work out the case when an object in $\text{Obj}{\mathbf{C}}$ for category $\mathbf{C}$, when the object itself has associated elements.
 
 I don't think there's a great way to reconcile what Haskell and functional programming programmers mean by \texttt{bind} with the corresponding concept in category theory. 
+
+\subsection{Examples of Monads in Computer Science}
+
+TODO: Clean up notes for Reader Monad; understand it!
+
+\subsubsection{Reader Monad; Function Monad; Environment Monad} $[W, -] : \mathbf{C}\to \mathbf{C}$.
+
+Given $W \in \text{Obj}{\mathbf{C}}$, ($W$ is a type), 
+\[
+[W, - ] = (W \to (-))
+\]
+where $[-, -] : \mathbf{C}^{\text{op}} \times \mathbf{C} \to \mathbf{C}$.
+
+$W \mapsto $ internal hom out of $W$.
+
+\[
+\begin{aligned} 
+& \eta_X : X \to [W, -](X) \\ 
+& \eta_W: W \to [W, -](W) \\ 
+& \eta_W : w \mapsto [W,-](W)(w) \text{ \, value to constant functions with that value } \\ 
+& \Delta : X \in \text{Obj}{\mathbf{C}} \xrightarrow{ (1,1) } X \times X \\ 
+& \Delta : x \mapsto (w,w)
+\end{aligned} 
+\]
+
+"read in " state of type $W$ (an environment)
+
+\href{https://en.wikipedia.org/wiki/Monad_(functional_programming)#State_monads}{wikipedia} calls this the Environment Nomad. \\
+
+\texttt{reader}: $T \to E \to T = t\mapsto e \mapsto t$ corresponds to $\eta_X : X \to T(X)$ where $T(X) = \text{Hom}_{\mathbf{C}}(E,X)$ s.t. $\eta_X$ sends values $x\in X $ to constant functions (on $E$) to value $x$. \\
+
+Therefore, rewrite the unit component at $X$, i.e. \texttt{reader}, as \\
+\begin{equation}
+\begin{gathered}
+\begin{aligned}
+& X \to E \to X \\
+& x \mapsto e \mapsto x
+\end{aligned} \qquad \, 
+\begin{aligned}
+	& \eta_X : X \to \text{Hom}_{\mathbf{C}}(E,X) \\ 
+	& \eta_X : x \mapsto (e\mapsto x)
+\end{aligned}
+\end{gathered}
+\end{equation}
+Thus, the \emph{unit} component at $X$, called \texttt{unit} or \texttt{return} by programmers, truly maps a value $x \in X$ to a \emph{constant function}:
+\begin{equation}
+\eta_X : x \mapsto (e \mapsto x) \in \text{Hom}_{\mathbf{C}}(E, X)
+\end{equation}
+
+\texttt{bind}: $(E\to T) \to (T\to E \to T') \to E \to T' = r\mapsto f \mapsto e \mapsto f(re)e$ corresponds to $\mu_Y \circ Tf:T(X) \to T(Y)$ where $T(X) = \text{Hom}_{\mathbf{C}}(E,X)$, $T(Y) = \text{Hom}_{\mathbf{C}}(E,Y)$, and \\
+$f:X\to T(Y)$ or $f:X\to \text{Hom}_{\mathbf{C}}(E,Y)$ \\
+$Tf : T(X) \to T^2(Y)$ or $Tf : \text{Hom}_{\mathbf{C}}(E,X) \to \text{Hom}_{\mathbf{C}}(E,T(Y)) = \text{Hom}_{\mathbf{C}}(E, \text{Hom}_{\mathbf{C}}(E,Y))$. \\
+
+So let's rewrite \texttt{bind} in our notation:
+\[
+\begin{aligned}
+	& (E\to X) \to & (X \to E \to Y) \to & E \to & Y \\
+	& r \mapsto & f \mapsto & e \mapsto (f(r))(e)(e)
+\end{aligned}
+\]
+
+As an example, consider the following example: \\
+$T(Y) \ni (E\to Y) \in \text{Hom}_{\mathbf{C}}(E,Y)$ \\
+$e = $ "dag" $\mapsto y = $ "Hello Dag!" \\
+
+$T(X) \ni (E\to X) \in \text{Hom}_{\mathbf{C}}(E,X)$ \\
+$e \equiv $ \texttt{name} $\mapsto x = $ "Hi \texttt{name}!" \\
+
+$f:X\to T(Y) \to f:X\to \text{Hom}{(E,Y)}$ \\
+$f(x) = $ replace "Hi" with "Hello" in $X$. \\
+
+\texttt{ask}: $E\to E = 1_E$. \\
+\texttt{ask} operation used to retrieve current context. \\
+
+\texttt{local}: $(E\to E) \to (E\to T) \to E \to T = f \mapsto c \mapsto e \mapsto c(fe)$ \\
+local executes a computation in a modified subcontext. $(E\to E)$ modifies the environment, $(E\to T)$ uses the modified environment. \\
+Rewrite \texttt{local} in our notation: \\
+\[
+\begin{aligned} 
+	& (E\to E) \to & (E\to X) \to & E \to & X \\
+	& f \mapsto & c \mapsto & e \mapsto & c(f(e))
+\end{aligned}
+\]
+
+\subsubsection{Writer Monad} $W \times (-) : \mathbf{C} \to \mathbf{C}$ where $W \in \text{Obj}{\mathbf{C}}$. If $W$ equipped with the structure of monoid, $W \times (-)$ canonically inherits the structure of a \emph{monad}. Hence, the Writer \emph{Monad}.  
+
+Recall $W$ monoid if $W$ is a set equipped with binary operation $\mu : M \times M \to M$ s.t. $(xy)z = x(yz)$ and $1 \in M$ s.t. $1\cdot x = x = x \cdot 1$. \\
+
+
+
+\subsubsection{State Monad}
+
+cf. \href{https://ncatlab.org/nlab/show/state+monad}{state monad, nLab}
+
+Input of type $X$, output of type $Y$, mutable state type $W$.
+
+Consider morphism 
+\[
+X\times W \to Y\times W
+\]
+
+Under (Cartesian product $\vdash$ internal hom) adjunction, this is equivalently given by its adjunt, which is a function of type
+\[
+X \to [W, W\times Y]
+\]
+$[W, W\times (-)]$ is the monad, induced by the above adjunction. \\
+
+$X \to [W, W\times Y]$ regarded as a morphism.
+
+$[W, W\times Y]:\mathbf{H} \to \mathbf{H}$ is called \emph{state monad} for mutable states of type $W$.
+
+TODO: Understand the above.
+
+Writer comonad $W \times (-):\mathbf{C} \to \mathbf{C}$, \\
+
+Given by forming Cartesian product with $W$. \\
+
+Reader Monad $\circ$ Writer Comonad is state monad.
+
+cf. \href{https://en.wikipedia.org/wiki/Monad_(functional_programming)#State_monads}{wikipedia}
+
+unit or "return":
+\begin{equation}
+\begin{aligned} 
+	& \eta_X : X \to T(X) = X \times S \\ 
+	& \eta_X : x \mapsto (x, s)
+\end{aligned} 
+\end{equation}
+
+"bind" was given by \href{https://en.wikipedia.org/wiki/Monad_(functional_programming)#State_monads}{wikipedia} as 
+\begin{equation}
+\begin{aligned} 
+	& (S \to X \times S)  \to & (X \to S \to Y \times S) \to & S \to Y \times S \\ 
+	& m \mapsto & k \mapsto & s \mapsto & k(x)(s) 
+\end{aligned} 
+\end{equation}
+where $(x, t) = m(s)$
+
+\subsubsection{Properties of the State Monad}
+
+For the unit or "return", $\eta_X : X \to T(X) = X\times S$, \\
+Choose $\eta_X$ s.t. it sets state $s\in S$ to be the initial state $s_0$
+\begin{equation}
+\eta_X : x \mapsto (x, s_0)
+\end{equation}
+Consider any morphism $f : X \to T(Y) = X\times S$,
+\begin{equation}
+\begin{aligned}
+& f : X \to T(Y) = X\times S \\
+& f:x \mapsto (y,s)
+\end{aligned}
+\end{equation}
+
+Allow morphism $f$ to have "freedom" to set state to arbitrary $s$.
+
+\begin{equation}
+\begin{aligned}
+& Tf:T(X) \to T^2(Y) \to Tf : X\times S \to T(Y \times S) = (Y\times S, S) \\
+& Tf:(x,s) \mapsto ((y, t), s)
+\end{aligned}
+\end{equation}
+
+Then
+\begin{equation}
+\begin{aligned}
+& \mu_Y \circ Tf :T(X) \to T(Y) \text{ or } \mu_Y \circ Tf : X \times S \to Y \times S \\ 
+& \mu_Y \circ Tf: (x,s) \mapsto (y, t)
+\end{aligned}
+\end{equation}
+
+Note that 
+\begin{equation}
+	\begin{aligned}
+	& \mu_X : T^2(X) \to T(X) \\ 
+	& \mu_X : ((x,t), s) \mapsto (x,t)
+	\end{aligned}
+\end{equation} 
+
+\begin{equation}
+\begin{aligned}
+& T^2 f : T^2(X) \to T^3(Y) \\  
+& T^2: ((x,t), s) \mapsto (((y, u), t), s)
+\end{aligned}
+\end{equation}
+
+Now
+\[
+\begin{gathered} 
+ \mu_X \circ T^2 f : ((x,t) , s) \mapsto ((y, u), t) \\ 
+ Tf \circ \mu_X((x,t), s) \mapsto ((y, u), t)
+\end{gathered} 
+\]
+and so 
+\[
+\Longrightarrow \mu_X T^2 = Tf \mu_X 
+\]
+Thus, $\mu$, as defined above, \emph{is} a natural transformation.
+
+Show $\eta_{T(Y)} \circ f = Tf\circ \eta_X$. 
+\[
+\begin{gathered} 
+	Tf \circ \eta_X (x) = ((y, t), s_0) \\ 
+ \eta_{T(Y)} \circ f(x) = \eta_{T(Y)} (y,s) = ((y,t), s_0)
+\end{gathered} 
+\]
+Thus, we have to backtrack and make $s= s_0$ for $f:X \to T(Y)$, and $T$ needs to induce $\eta_{T(Y)}$ to apply a non-trivial morphism.
+
+Prove now the coherence conditions, Prop. \ref{Prop:MonadCoherenceConditions}. For the first one,
+\[
+\mu \circ T \mu = \mu \circ \mu T
+\]
+
+\[
+\begin{gathered} 
+	\mu \circ T \mu (((x,u), t), s) = ((y,v) u) \\ 
+ \mu\circ \mu T (((x,u), t), s) = \mu^2 ( (((y,v), u), t), s) = ((y, v), u)
+\end{gathered} 
+\]
+\[
+\Longrightarrow \mu \circ T \mu = \mu \circ \mu T
+\]
+So the first coherence condition is proven.
+
+For the second, 
+\[
+\begin{aligned} 
+&	\mu \circ T \eta (x) = (y, t) \\ 
+& \mu \eta T (x) = \mu \circ \eta(x, s) = (y, t)
+\end{aligned}  \Longrightarrow \begin{aligned} 
+& T:X\to T(X) \\ 
+& T: x\mapsto (x, s_0)
+\end{aligned} 
+\]
+
+\[
+\begin{aligned} 
+	& \mu \circ T \eta(x,s) = \mu \circ T ((y, t), s) = ((z,u) , t) \\ 
+	&  \mu \circ \eta T(x,s) = \mu\circ \eta ((y,t) , s) = ((z,u), t) 
+\end{aligned}  \Longrightarrow \begin{aligned}
+& T:T(X) \to T^2(X) \\ 
+& T(x,s) = ((y,t), s)
+\end{aligned}
+\]
+
+However, $1_T(x,s) = ((y,t), s)$. Therefore, we must give up on making both $\mu \circ \eta T$ and $\mu \circ  T \eta$ be ever equal to $1_T$. Thus, diagram \ref{Eq:MonadLeftRightUnitLawsDiagram} is modified as such: 
+
+\begin{equation}\label{Eq:StateMonadLeftRightUnitLawsDiagram}
+\begin{tikzcd}
+T \arrow{d}{ T \eta} \arrow{r}{\eta T}  & T^2 \arrow{d}{\mu} \\
+T^2 \arrow{r}{\mu} & T
+\end{tikzcd}	
+\end{equation}
+
+I would argue that this is ok because there are examples of mathematical structures without an "identity" or "unit" such as a semi-group.
 
 
 \section{Applications of Category Theory on Hybrid Systems}
