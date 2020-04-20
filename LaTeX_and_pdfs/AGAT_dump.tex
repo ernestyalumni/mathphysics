@@ -6240,6 +6240,28 @@ T^2 \arrow{r}{\mu} & T
 
 I would argue that this is ok because there are examples of mathematical structures without an "identity" or "unit" such as a semi-group.
 
+\subsubsection{Continuation Monad}
+
+unit or return:  \\
+
+return type $Y$, maps type $X$ into functions of type $(X \to Y) \to Y$
+\begin{equation} 
+\begin{aligned}
+	& X \to & (X\to Y) \to & Y \\
+	& x\mapsto & f \mapsto & f(y)
+\end{aligned}
+\end{equation}
+
+bind: \\
+
+\begin{equation}
+\begin{aligned}
+& ((X\to Y) \to Y) \to & (X \to (X' \to Y) \to Y) \to & (X' \to Y) \to & Y
+& c \mapsto & f \mapsto & k \mapsto &  c(t\mapsto ftk)
+\end{aligned}
+\end{equation}
+
+
 
 \section{Applications of Category Theory on Hybrid Systems}
 
