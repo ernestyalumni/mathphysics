@@ -6288,7 +6288,30 @@ So for $X \to [[Y, S], S]$, \href{https://ncatlab.org/nlab/show/internal+hom}{nL
 (y \mapsto a(y))(x) = a(x)
 \]
 
-Hence for $X \to [[X, Y], Y]$, we have $x\mapsto f \mapsto f(x)$ because $f \in [X, Y]$ because $f$ is treated as an object in $\mathbf{C}$.
+Hence for $X \to [[X, Y], Y]$, we have $x\mapsto f \mapsto f(x)$ because $f \in [X, Y]$ because $f$ is treated as an object in $\mathbf{C}$. \\
+
+\emph{call with current continuation} function defined as follows: \\
+call/cc
+\begin{equation}\label{Eq:CallCurrentContinuationContinuationMonad}
+\begin{aligned}
+((X \to (X' \to Y) \to Y) \to (X\to Y) \to Y) & \to (X\to Y)  & \to Y \\ 
+f & \mapsto k & \mapsto (f(t\mapsto x \mapsto kt) k) 
+\end{aligned}
+\end{equation}
+
+Let's look at Eq. \ref{Eq:CallCurrentContinuationContinuationMonad}, step-by-step.
+\[
+\begin{gathered}
+\begin{aligned} 
+& (X\to (X' \to Y) \to Y) \\
+& f
+\end{aligned} \text{ corresponds to } \\
+\begin{gathered}
+X \to [[X' , Y], Y] = T(X') \\
+f \equiv f_{XX'} : X \to T(X')
+\end{gathered}
+\end{gathered}
+\]
 
 \subsubsection{\texttt{future} as Continuation Monad}
 
