@@ -3717,7 +3717,7 @@ object $(u, N \otimes_R M)$ is initial in $\mathbf{C}$
 
 cf. Def. 1.2.10 of Kashiwara and Schapira (2006) \cite{KaSch2006}, with terminology from pp. 13, Sec. 3. "Functors" from Mac Lane (1978) \cite{MacL1978}
 
-\begin{definition}[(covariant) Functor]
+\begin{definition}[(covariant) Functor]\label{Def:Functor}
 \begin{enumerate}
 	\item (covariant functor) Let categories $\mathbf{C}$, $\mathbf{D}$. \\
 (covariant) \textbf{functor} $F: \mathbf{C} \to \mathbf{D}$ consists of (Mac Lane (1978) \cite{MacL1978} says 2 suitably related functions)
@@ -5914,7 +5914,10 @@ cf. \href{https://ncatlab.org/nlab/show/Kleisli+category}{Kleisli category, nLab
 	\[
 	X \xrightarrow{f} TY \xrightarrow{ Tg} T^2Z \xrightarrow{\mu_Z} TZ 
 	\]
-	i.e. $g \circ_{\text{Klesli}} f = \mu_Z \circ Tg \circ f$
+	i.e. 
+	\begin{equation}
+		\boxed{ g \circ_{\text{Klesli}} f = \mu_Z \circ Tg \circ f }
+	\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -6242,13 +6245,30 @@ I would argue that this is ok because there are examples of mathematical structu
 
 \subsubsection{Continuation Monad}
 
+From \href{https://ncatlab.org/nlab/show/continuation+monad}{nLab}, \\
+In a category $\mathbf{C}$ with internal homs $[-, -]$, so internal homs $[-,-]$ belong to $\text{Obj}{\mathbf{C}}$ (they're objects as well), given object $Y \in \text{Obj}{\mathbf{C}}$, the \emph{continuation monad} is endofunctor
+\begin{equation}
+X \mapsto [[X, Y], Y]
+\end{equation}
+so that $T = X\mapsto [[X, Y] , Y]$
+
+From \href{https://en.wikipedia.org/wiki/Monad\_(functional\_programming)\#Continuation\_monad}{wikipedia},
+
 unit or return:  \\
 
 return type $Y$, maps type $X$ into functions of type $(X \to Y) \to Y$
 \begin{equation} 
 \begin{aligned}
 	& X \to & (X\to Y) \to & Y \\
-	& x\mapsto & f \mapsto & f(y)
+	& x\mapsto & f \mapsto & f(x) = y
+\end{aligned}
+\end{equation}
+
+Compare this to
+\begin{equation}
+\begin{aligned}
+& T : X \to [[X, Y], Y] \\ 
+& \eta_X : X \to T(X) = [[X,Y], Y]
 \end{aligned}
 \end{equation}
 
@@ -6256,12 +6276,86 @@ bind: \\
 
 \begin{equation}
 \begin{aligned}
-& ((X\to Y) \to Y) \to & (X \to (X' \to Y) \to Y) \to & (X' \to Y) \to & Y
+& ((X\to Y) \to Y) \to & (X \to (X' \to Y) \to Y) \to & (X' \to Y) \to & Y \\
 & c \mapsto & f \mapsto & k \mapsto &  c(t\mapsto ftk)
 \end{aligned}
 \end{equation}
 
+From \href{https://ncatlab.org/nlab/show/continuation+monad}{nLab}, if morphism $f:X\to Y$ is in Klesi category of the continuation monad, then it's a morphism in $\mathbf{C}$ of form $X\to T(Y)$ in $\mathbf{C}$. Hence morphism in original category \emph{of the form} $X\to [[Y,S], S]$ is much like a map from $X \to Y$, only instead of "returning" output $Y$ directly, it instead feeds it into given function $Y\to S$, which hence \textbf{continues} the computation. 
 
+So for $X \to [[Y, S], S]$, \href{https://ncatlab.org/nlab/show/internal+hom}{nLab} gives the corresponding \emph{computation rule} for function types of the internal hom $[X, S]$:
+\[
+(y \mapsto a(y))(x) = a(x)
+\]
+
+Hence for $X \to [[X, Y], Y]$, we have $x\mapsto f \mapsto f(x)$ because $f \in [X, Y]$ because $f$ is treated as an object in $\mathbf{C}$.
+
+\subsubsection{\texttt{future} as Continuation Monad}
+
+ \v{C}uki\'{c} (2018) \cite{Cuki2018} asks first if \verb|std::future| in C++ is a functor. Recall the definition of a functor, Def. \ref{Def:Functor}:
+
+\[
+\begin{aligned}
+& F: \mathbf{C} \to \mathbf{D} \text{ with "object" map } \\ 
+& F: \text{Obj}{\mathbf{C}} \to \text{Obj}{\mathbf{D}} \\ 
+& F: X \to F(X)
+\end{aligned}
+\] 
+and the functor's "morphism map":
+\[
+\begin{aligned}
+& Ff :F(X) \to F(Y) \\ 
+& f:X \to Y, \, f \in \text{Hom}_{\mathbf{C}}(X, Y)
+\end{aligned}
+\]
+
+Suppose $X = $ \texttt{T1}, $Y = $ \texttt{T2}. Then in the example on pp. 220, Sec. 10.7.1 Futures as monads" example of \v{C}uki\'{c} (2018) \cite{Cuki2018}, 
+\[
+\begin{aligned}
+& F(X) = \verb|future<T1>| \\ 
+& F(Y) = \verb|future<T2>|
+\end{aligned}
+\]
+
+Instead, the morphisms to consider is of this form:
+\[
+f:X \to T(Y)
+\]
+where $T$ is a functor but a special one: the endomorphism. And $T$ is \verb|std::future|.
+
+Here are examples of morphisms $f, g$:
+\[
+\begin{aligned}
+& \verb|future<std::string> user_full_name(const std::string& login);| \\
+& \verb|future<std::string> to_html(const std::string& text);|
+\end{aligned}
+\]
+
+Now $Tf:T(X) \to T^2(Y)$, how the morphism map for $T$ applies to morphism $f$, now. Recall that we can compose this with the multiplication natural transformation component at $X$, $\mu_X$:
+\[
+\begin{aligned}
+& \mu_X \circ Tf : T(X) \to T(Y) \\ 
+& \mu_X : T^2(X) \to T(X)
+\end{aligned}
+\]
+
+In order to compose morphisms, say $f,g$, recall the "Klesli composition", Prop. \ref{Prop:KlesliCompositionForm}
+\begin{equation}
+g\circ_{\text{Klesili}} f = \mu_Z \circ Tg \circ f
+\end{equation}
+If we call $\mu_Z \circ T$ "bind", $\mu_Z \circ T: \text{Hom}(Y, T(Z)) \to \text{Hom}(T(Y), T(Z))$. The correspondence is such:
+\begin{equation}
+(\texttt{bind}(\verb|to_html|))(\verb|user_full_name|) \Longleftrightarrow \mu_Z \circ Tg \circ f: X \to T(Z)
+\end{equation}
+
+
+\subsubsection{Resources for implementations of Monads} Python and C++ code. \\
+
+\url{https://github.com/Iasi-C-CPP-Developers-Meetup/presentations-code-samples}, namely \\
+\url{https://github.com/Iasi-C-CPP-Developers-Meetup/presentations-code-samples/tree/master/radugeorge} \\
+
+\url{https://github.com/dbrattli/OSlash}, namely \\
+\url{https://github.com/dbrattli/OSlash/tree/master/tests}
 
 \section{Applications of Category Theory on Hybrid Systems}
 
