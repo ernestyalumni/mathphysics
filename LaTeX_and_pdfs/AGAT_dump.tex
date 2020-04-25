@@ -5918,6 +5918,7 @@ cf. \href{https://ncatlab.org/nlab/show/Kleisli+category}{Kleisli category, nLab
 	\begin{equation}
 		\boxed{ g \circ_{\text{Klesli}} f = \mu_Z \circ Tg \circ f }
 	\end{equation}
+	with $ \mu_Z \circ Tg \circ f : X \to T(Z)$
 \end{proposition}
 
 \begin{proof}
@@ -6076,8 +6077,6 @@ Rewrite \texttt{local} in our notation: \\
 
 Recall $W$ monoid if $W$ is a set equipped with binary operation $\mu : M \times M \to M$ s.t. $(xy)z = x(yz)$ and $1 \in M$ s.t. $1\cdot x = x = x \cdot 1$. \\
 
-
-
 \subsubsection{State Monad}
 
 cf. \href{https://ncatlab.org/nlab/show/state+monad}{state monad, nLab}
@@ -6111,16 +6110,23 @@ cf. \href{https://en.wikipedia.org/wiki/Monad_(functional_programming)#State_mon
 
 unit or "return":
 \begin{equation}
+\begin{aligned}
+& X \to & S \to X \times S \\
+& x \mapsto & (s \mapsto (x, s))
+\end{aligned}
+\end{equation} 
+Compare this to 
+\[
 \begin{aligned} 
-	& \eta_X : X \to T(X) = X \times S \\ 
-	& \eta_X : x \mapsto (x, s)
+	& \eta_X : X \to T(X) = [S, S \times X] \\ 
+	& \eta_X : x \mapsto (S \to S \times X)
 \end{aligned} 
-\end{equation}
+\]
 
 "bind" was given by \href{https://en.wikipedia.org/wiki/Monad_(functional_programming)#State_monads}{wikipedia} as 
 \begin{equation}
 \begin{aligned} 
-	& (S \to X \times S)  \to & (X \to S \to Y \times S) \to & S \to Y \times S \\ 
+	& (S \to X \times S)  \to & (X \to S \to Y \times S) \to & S \to & Y \times S \\ 
 	& m \mapsto & k \mapsto & s \mapsto & k(x)(s) 
 \end{aligned} 
 \end{equation}
@@ -6128,33 +6134,36 @@ where $(x, t) = m(s)$
 
 \subsubsection{Properties of the State Monad}
 
-For the unit or "return", $\eta_X : X \to T(X) = X\times S$, \\
-Choose $\eta_X$ s.t. it sets state $s\in S$ to be the initial state $s_0$
+For the unit or "return", $\eta_X : X \to T(X) = [S, S \times X]$, \\
+%Choose $\eta_X$ s.t. it sets state $s\in S$ to be the initial state $s_0$
 \begin{equation}
-\eta_X : x \mapsto (x, s_0)
+\begin{gathered} 
+\eta_X : x \mapsto (S \to S \times X) \text{ s.t. } \\
+(S \to S \times X) : s \mapsto (s, x)
+\end{gathered} 
 \end{equation}
-Consider any morphism $f : X \to T(Y) = X\times S$,
+Consider any morphism $f : X \to T(Y) = [S, S\times Y]$,
 \begin{equation}
 \begin{aligned}
-& f : X \to T(Y) = X\times S \\
-& f:x \mapsto (y,s)
+& f : X \to T(Y) = [S, S\times Y] \\
+& f:x \mapsto (S \to S\times Y) \text{ s.t. } (S \to S \times Y) : s \mapsto (t = f_s(s, x), y = f_x(s, x))
 \end{aligned}
 \end{equation}
 
-Allow morphism $f$ to have "freedom" to set state to arbitrary $s$.
+Allow morphism $f$ to have "freedom" to set state to arbitrary $t$.
 
 \begin{equation}
 \begin{aligned}
-& Tf:T(X) \to T^2(Y) \to Tf : X\times S \to T(Y \times S) = (Y\times S, S) \\
-& Tf:(x,s) \mapsto ((y, t), s)
+& Tf:T(X) \to T^2(Y) \to Tf : [S, S\times X] \to T([S, S\times Y]) = [S, S \times [S, S\times Y]] \\
+& Tf:(S \to S \times X) \mapsto (S \to S \times (S \to S \times Y))
 \end{aligned}
 \end{equation}
 
 Then
 \begin{equation}
 \begin{aligned}
-& \mu_Y \circ Tf :T(X) \to T(Y) \text{ or } \mu_Y \circ Tf : X \times S \to Y \times S \\ 
-& \mu_Y \circ Tf: (x,s) \mapsto (y, t)
+& \mu_Y \circ Tf : T(X) \to T(Y) \text{ or } \mu_Y \circ Tf : [S, S \times X] \to [S, S \times Y] \\ 
+& \mu_Y \circ Tf: (S \to S \times X) \mapsto (S \to S \times Y)
 \end{aligned}
 \end{equation}
 
@@ -6162,22 +6171,22 @@ Note that
 \begin{equation}
 	\begin{aligned}
 	& \mu_X : T^2(X) \to T(X) \\ 
-	& \mu_X : ((x,t), s) \mapsto (x,t)
+	& \mu_X : (S \to S \times (S \to S \times X)) \mapsto (S \to S \times X)
 	\end{aligned}
 \end{equation} 
 
 \begin{equation}
 \begin{aligned}
 & T^2 f : T^2(X) \to T^3(Y) \\  
-& T^2: ((x,t), s) \mapsto (((y, u), t), s)
+& T^2 f: (S \to S \times (S \to S\times X)) \mapsto (S \to S \times (S \to S \times (S \to S \times Y)))
 \end{aligned}
 \end{equation}
 
 Now
 \[
 \begin{gathered} 
- \mu_X \circ T^2 f : ((x,t) , s) \mapsto ((y, u), t) \\ 
- Tf \circ \mu_X((x,t), s) \mapsto ((y, u), t)
+ \mu_X \circ T^2 f : (S \to (S \times (S \to S \times X))) \mapsto (S \to S \times (S \to S \times Y)) \\ 
+ Tf \circ \mu_X : (S \to S \times (S \to S \times X)) \mapsto (S \to S \times (S \to S \times Y))
 \end{gathered} 
 \]
 and so 
@@ -6189,11 +6198,11 @@ Thus, $\mu$, as defined above, \emph{is} a natural transformation.
 Show $\eta_{T(Y)} \circ f = Tf\circ \eta_X$. 
 \[
 \begin{gathered} 
-	Tf \circ \eta_X (x) = ((y, t), s_0) \\ 
- \eta_{T(Y)} \circ f(x) = \eta_{T(Y)} (y,s) = ((y,t), s_0)
+	Tf \circ \eta_X (x) = (S \to S \times (S \to S \times Y)) \\ 
+ \eta_{T(Y)} \circ f(x) = \eta_{T(Y)} (S \to S \times Y) = (S \to S \times (S \to S \times Y))
 \end{gathered} 
 \]
-Thus, we have to backtrack and make $s= s_0$ for $f:X \to T(Y)$, and $T$ needs to induce $\eta_{T(Y)}$ to apply a non-trivial morphism.
+%Thus, we have to backtrack and make $s= s_0$ for $f:X \to T(Y)$, and $T$ needs to induce $\eta_{T(Y)}$ to apply a non-trivial morphism.
 
 Prove now the coherence conditions, Prop. \ref{Prop:MonadCoherenceConditions}. For the first one,
 \[
@@ -6202,8 +6211,10 @@ Prove now the coherence conditions, Prop. \ref{Prop:MonadCoherenceConditions}. F
 
 \[
 \begin{gathered} 
-	\mu \circ T \mu (((x,u), t), s) = ((y,v) u) \\ 
- \mu\circ \mu T (((x,u), t), s) = \mu^2 ( (((y,v), u), t), s) = ((y, v), u)
+	\mu \circ T \mu (S \to (S \to S \times (S\to S \times X))) = \mu \circ T (S \times (S \to S \times X)) = \mu (S \to S \times (S \times (S \to S \times Y))) = \\
+	= (S \times (S \to S \times Y)) \\ 
+ \mu\circ \mu T (S \to (S \to S \times (S\to S \times X))) = \mu^2 (S \to S \times (S \to (S \to S \times (S \to S \times Y)))) = \\
+ 	= S \times (S \to S \times Y)
 \end{gathered} 
 \]
 \[
@@ -6213,35 +6224,59 @@ So the first coherence condition is proven.
 
 For the second, 
 \[
-\begin{aligned} 
-&	\mu \circ T \eta (x) = (y, t) \\ 
-& \mu \eta T (x) = \mu \circ \eta(x, s) = (y, t)
-\end{aligned}  \Longrightarrow \begin{aligned} 
-& T:X\to T(X) \\ 
-& T: x\mapsto (x, s_0)
-\end{aligned} 
+%\begin{aligned} 
+%&	\mu \circ T \eta (x) = (y, t) \\ 
+%& \mu \eta T (x) = \mu \circ \eta(x, s) = (y, t)
+%\end{aligned}  \Longrightarrow \begin{aligned} 
+%& T:X\to T(X) \\ 
+%& T: x\mapsto (x, s_0)
+%\end{aligned} 
+\begin{gathered}
+\mu \circ T \eta (S\to S \times X) = \mu \circ T (S \to S \times (S \to S \times X)) = (S \to S \times (S \to S \times X)) \\
+\mu \eta T (S\to S \times X) = \mu \circ (S \to S \times T(S \to S \times X)) = T(S \to S \times X) = (S \to S \times (S \to S \times X))
+\end{gathered}
 \]
 
 \[
-\begin{aligned} 
-	& \mu \circ T \eta(x,s) = \mu \circ T ((y, t), s) = ((z,u) , t) \\ 
-	&  \mu \circ \eta T(x,s) = \mu\circ \eta ((y,t) , s) = ((z,u), t) 
-\end{aligned}  \Longrightarrow \begin{aligned}
-& T:T(X) \to T^2(X) \\ 
-& T(x,s) = ((y,t), s)
-\end{aligned}
+%\begin{aligned} 
+%	& \mu \circ T \eta(x,s) = \mu \circ T ((y, t), s) = ((z,u) , t) \\ 
+%	&  \mu \circ \eta T(x,s) = \mu\circ \eta ((y,t) , s) = ((z,u), t) 
+%\end{aligned}  \Longrightarrow \begin{aligned}
+%& T:T(X) \to T^2(X) \\ 
+%& T(x,s) = ((y,t), s)
+%\end{aligned}
 \]
+Thus, it's been shown that the choice of endomorphism for the state monad, $X \to [S, S \times X]$, fulfills the monad coherence conditions being of this form.
 
-However, $1_T(x,s) = ((y,t), s)$. Therefore, we must give up on making both $\mu \circ \eta T$ and $\mu \circ  T \eta$ be ever equal to $1_T$. Thus, diagram \ref{Eq:MonadLeftRightUnitLawsDiagram} is modified as such: 
+%However, $1_T(x,s) = ((y,t), s)$. Therefore, we must give up on making both $\mu \circ \eta T$ and $\mu \circ  T \eta$ be ever equal to $1_T$. Thus, diagram \ref{Eq:MonadLeftRightUnitLawsDiagram} is modified as such: 
 
-\begin{equation}\label{Eq:StateMonadLeftRightUnitLawsDiagram}
-\begin{tikzcd}
-T \arrow{d}{ T \eta} \arrow{r}{\eta T}  & T^2 \arrow{d}{\mu} \\
-T^2 \arrow{r}{\mu} & T
-\end{tikzcd}	
+%\begin{equation}\label{Eq:StateMonadLeftRightUnitLawsDiagram}
+%\begin{tikzcd}
+%T \arrow{d}{ T \eta} \arrow{r}{\eta T}  & T^2 \arrow{d}{\mu} \\
+%T^2 \arrow{r}{\mu} & T
+%\end{tikzcd}	
+%\end{equation}
+
+%I would argue that this is ok because there are examples of mathematical structures without an "identity" or "unit" such as a semi-group.
+
+Consider what "bind" means in category theory. Given
+\begin{equation}
+\begin{aligned}
+& f:X \to T(Y) = [S, S \times Y] \\ 
+& g: Y \to T(Z) = [S, S\times Z] \\ 
+& f(x) = (S \to S\times Y) \\
+& f(x)(s) = (t, y) \\ 
+& g(y) = (S \to S \times Z) \\ 
+& g(y)(t) = (u, z)
+\end{aligned}
 \end{equation}
-
-I would argue that this is ok because there are examples of mathematical structures without an "identity" or "unit" such as a semi-group.
+Therefore,
+\begin{equation}
+\begin{aligned}
+& \mu_Z \circ Tg \circ f : X \to T(Z) \\ 
+& \mu_Z \circ Tg \circ f : x \mapsto (S \to S \times Z)
+\end{aligned}
+\end{equation}
 
 \subsubsection{Continuation Monad}
 
