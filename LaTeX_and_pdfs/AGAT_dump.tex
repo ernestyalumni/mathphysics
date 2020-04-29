@@ -6038,6 +6038,8 @@ Thus, the \emph{unit} component at $X$, called \texttt{unit} or \texttt{return} 
 \eta_X : x \mapsto (e \mapsto x) \in \text{Hom}_{\mathbf{C}}(E, X)
 \end{equation}
 
+TODO: Fix the notes on reader monad using the notes written down, i.e. type up the new notes on reader monad.
+
 \texttt{bind}: $(E\to T) \to (T\to E \to T') \to E \to T' = r\mapsto f \mapsto e \mapsto f(re)e$ corresponds to $\mu_Y \circ Tf:T(X) \to T(Y)$ where $T(X) = \text{Hom}_{\mathbf{C}}(E,X)$, $T(Y) = \text{Hom}_{\mathbf{C}}(E,Y)$, and \\
 $f:X\to T(Y)$ or $f:X\to \text{Hom}_{\mathbf{C}}(E,Y)$ \\
 $Tf : T(X) \to T^2(Y)$ or $Tf : \text{Hom}_{\mathbf{C}}(E,X) \to \text{Hom}_{\mathbf{C}}(E,T(Y)) = \text{Hom}_{\mathbf{C}}(E, \text{Hom}_{\mathbf{C}}(E,Y))$. \\
@@ -6109,7 +6111,7 @@ Reader Monad $\circ$ Writer Comonad is state monad.
 cf. \href{https://en.wikipedia.org/wiki/Monad_(functional_programming)#State_monads}{wikipedia}
 
 unit or "return":
-\begin{equation}
+\begin{equation}\label{Eq:ReturnStateMonadWikipedia}
 \begin{aligned}
 & X \to & S \to X \times S \\
 & x \mapsto & (s \mapsto (x, s))
@@ -6124,7 +6126,7 @@ Compare this to
 \]
 
 "bind" was given by \href{https://en.wikipedia.org/wiki/Monad_(functional_programming)#State_monads}{wikipedia} as 
-\begin{equation}
+\begin{equation}\label{Eq:BindStateMonadWikipedia}
 \begin{aligned} 
 	& (S \to X \times S)  \to & (X \to S \to Y \times S) \to & S \to & Y \times S \\ 
 	& m \mapsto & k \mapsto & s \mapsto & k(x)(s) 
@@ -6142,6 +6144,12 @@ For the unit or "return", $\eta_X : X \to T(X) = [S, S \times X]$, \\
 (S \to S \times X) : s \mapsto (s, x)
 \end{gathered} 
 \end{equation}
+Therefore, for the unit component at $X$ of a state monad,
+\begin{equation}
+\boxed{ \eta_X(x)(s) = (s, x) \text{ for } s \in S }
+\end{equation}
+Compare this to what wikipedia says how it defines the "\texttt{return}" operation in Eq. \ref{Eq:ReturnStateMonadWikipedia}.
+
 Consider any morphism $f : X \to T(Y) = [S, S\times Y]$,
 \begin{equation}
 \begin{aligned}
@@ -6265,25 +6273,40 @@ Consider what "bind" means in category theory. Given
 & f:X \to T(Y) = [S, S \times Y] \\ 
 & g: Y \to T(Z) = [S, S\times Z] \\ 
 & f(x) = (S \to S\times Y) \\
-& f(x)(s) = (t, y) \\ 
+& f(x)(s) = (t, y) \text{ where } s, t \in W \\ 
 & g(y) = (S \to S \times Z) \\ 
 & g(y)(t) = (u, z)
 \end{aligned}
 \end{equation}
-Therefore,
+Therefore, if we define the usual projection operations on a Cartesian product,
 \begin{equation}
 \begin{aligned}
-& \mu_Z \circ Tg \circ f : X \to T(Z) \\ 
-& \mu_Z \circ Tg \circ f : x \mapsto (S \to S \times Z)
+& \Pi_W : W \times X \to W \\
+& \Pi_W(w,x) = w
+\end{aligned} \qquad \, 
+\begin{aligned}
+& \Pi_X : W \times X \to X \\
+& \Pi_X(w,x) = x
 \end{aligned}
 \end{equation}
+\begin{equation}
+\begin{aligned}
+& \mu_Z \circ Tg \circ f : X \to T(Z) = [S, S\times Z] \ni (W \to W \times Z) \\ 
+& \mu_Z \circ Tg \circ f : x \mapsto (S \to S \times Z) \equiv \mu_Z \circ Tg \circ f(x)
+\end{aligned}
+\end{equation}
+such that 
+\begin{equation}
+\boxed{ g(y)(t) = (u,z) \text{ where } y = \Pi_Y(f(x)(s)), \, t = \Pi_W(f(x)(s)) }
+\end{equation}
+Compare this to what wikipedia says in Eq. \ref{Eq:BindStateMonadWikipedia}.
 
 \subsubsection{Continuation Monad}
 
 From \href{https://ncatlab.org/nlab/show/continuation+monad}{nLab}, \\
 In a category $\mathbf{C}$ with internal homs $[-, -]$, so internal homs $[-,-]$ belong to $\text{Obj}{\mathbf{C}}$ (they're objects as well), given object $Y \in \text{Obj}{\mathbf{C}}$, the \emph{continuation monad} is endofunctor
 \begin{equation}
-X \mapsto [[X, Y], Y]
+\boxed{ X \mapsto [[X, Y], Y] } \text{ i.e. } T(X) = [[X, Y], Y] \text{ for object $Y \in \text{Obj}{\mathbf{C}}$ } 
 \end{equation}
 so that $T = X\mapsto [[X, Y] , Y]$
 
