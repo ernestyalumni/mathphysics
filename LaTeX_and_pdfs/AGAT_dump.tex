@@ -5992,7 +5992,6 @@ I don't think there's a great way to reconcile what Haskell and functional progr
 
 \subsection{Examples of Monads in Computer Science}
 
-TODO: Clean up notes for Reader Monad; understand it!
 
 \subsubsection{Reader Monad; Function Monad; Environment Monad} $[W, -] : \mathbf{C}\to \mathbf{C}$.
 
@@ -6038,7 +6037,6 @@ Thus, the \emph{unit} component at $X$, called \texttt{unit} or \texttt{return} 
 \eta_X : x \mapsto (e \mapsto x) \in \text{Hom}_{\mathbf{C}}(E, X)
 \end{equation}
 
-TODO: Fix the notes on reader monad using the notes written down, i.e. type up the new notes on reader monad.
 
 \texttt{bind}: $(E\to T) \to (T\to E \to T') \to E \to T' = r\mapsto f \mapsto e \mapsto f(re)e$ corresponds to $\mu_Y \circ Tf:T(X) \to T(Y)$ where $T(X) = \text{Hom}_{\mathbf{C}}(E,X)$, $T(Y) = \text{Hom}_{\mathbf{C}}(E,Y)$, and \\
 $f:X\to T(Y)$ or $f:X\to \text{Hom}_{\mathbf{C}}(E,Y)$ \\
@@ -6051,6 +6049,23 @@ So let's rewrite \texttt{bind} in our notation:
 	& r \mapsto & f \mapsto & e \mapsto (f(r))(e)(e)
 \end{aligned}
 \]
+
+To clarify these definitions, rewrite the reader monad: the endomorphism $T$ is defined as
+\begin{equation}
+\boxed{  \begin{aligned} & T := [E, -] \\ & T(X) = [E, X] \end{aligned} }
+\end{equation}
+
+For any morphism $f : X \to T(Y) = [E, Y]$, then \\
+recall the Klesli composition: $g \circ_{\text{Klesli}} f = \mu_Z \circ Tg \circ f$ with $g: Y \to T(Z) = [E,Z]$. 
+
+But if you take a look at how wikipedia defines "bind" for the reader monad, then bind \emph{is not} the Klesli composition, but rather it's $\mu_Y \circ Tf$ (!!!):
+\begin{equation}
+\begin{gathered}
+\mu_Y \circ Tf: T(X) \to T(Y) \text{ or } \mu_Y \circ Tf : [E, X] \to [E, Y] \\ 
+r \in [E,X] \qquad \, r(e) \in X \text{ for } e \in E \qquad \, f(r(e)) \in T(Y) = [E,Y] \qquad \, f(r(e))(e) \in Y
+\end{gathered}
+\end{equation}
+bind, as defined by wikipedia for the reader monad \emph{is not} the Klesli composition.
 
 As an example, consider the following example: \\
 $T(Y) \ni (E\to Y) \in \text{Hom}_{\mathbf{C}}(E,Y)$ \\
@@ -6074,6 +6089,8 @@ Rewrite \texttt{local} in our notation: \\
 	& f \mapsto & c \mapsto & e \mapsto & c(f(e))
 \end{aligned}
 \]
+To make sense of this, let $f \in [E, E]$, $c\in [E,X] = T(X)$, $c\circ f \in [E, X]$ so $(c\circ f)(e) \in X$. \\
+
 
 \subsubsection{Writer Monad} $W \times (-) : \mathbf{C} \to \mathbf{C}$ where $W \in \text{Obj}{\mathbf{C}}$. If $W$ equipped with the structure of monoid, $W \times (-)$ canonically inherits the structure of a \emph{monad}. Hence, the Writer \emph{Monad}.  
 
@@ -6330,9 +6347,20 @@ Compare this to
 \end{aligned}
 \end{equation}
 
+And so for the \emph{unit} of the Continuation monad,
+\begin{equation}
+\boxed{
+\begin{aligned}
+& \eta_X : X \to T(X) = [[X, Y], Y] \\
+& \eta_X : x\mapsto (f \to y) \\ 
+& \eta_X(x)(f) = y = f(x)
+\end{aligned}
+}
+\end{equation}
+
 bind: \\
 
-\begin{equation}
+\begin{equation}\label{Eq:ContinuationMonadBindWiki}
 \begin{aligned}
 & ((X\to Y) \to Y) \to & (X \to (X' \to Y) \to Y) \to & (X' \to Y) \to & Y \\
 & c \mapsto & f \mapsto & k \mapsto &  c(t\mapsto ftk)
@@ -6347,6 +6375,36 @@ So for $X \to [[Y, S], S]$, \href{https://ncatlab.org/nlab/show/internal+hom}{nL
 \]
 
 Hence for $X \to [[X, Y], Y]$, we have $x\mapsto f \mapsto f(x)$ because $f \in [X, Y]$ because $f$ is treated as an object in $\mathbf{C}$. \\
+
+So do the following "rewrite" or change of notation on Eq. \ref{Eq:ContinuationMonadBindWiki}:
+
+\begin{equation}\label{Eq:ContinuationMonadBindWiki2}
+\begin{aligned}
+& ((X \to Z) \to Z) \to (X \to (Y\to Z) \to Z) \to (Y \to Z) \to Z \\ 
+& T(X) \to (X \to T(Y)) \equiv \text{Hom}(X, T(Y)) \to \text{Hom}(Y,Z) \to Z
+\end{aligned}
+\end{equation}
+Let $c\in T(X) = [[X,Z], Z]$. \\
+Let $k \in [Y,Z]$ \\
+Let $f(x) \in [[Y,Z], Z]$ and so \\
+$f(x)(k) \in Z$ \\
+
+Form $x \mapsto f(x)(k) \in [X,Z]$, so $c(x\mapsto f(x)(k)) \in Z$. \\
+
+So "bind" as defined in wikipedia, Haskell/Functional Programming isn't the Klesli composition, but it's
+\[
+\mu_Y \circ Tf : T(X) \to T(Y) = [[Y,Z], Z]
+\]
+
+Write this as 
+\begin{equation}
+\boxed{
+\begin{aligned}
+& (\mu_Y \circ T)(f)(c) \in T(Y) = [[Y,Z], Z] \\
+& (\mu_Y \circ T)(f)(c)(k) \in Z
+\end{aligned}}
+\end{equation}
+
 
 \emph{call with current continuation} function defined as follows: \\
 call/cc
