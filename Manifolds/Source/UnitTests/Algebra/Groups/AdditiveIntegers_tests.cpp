@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
-// \file AdditiveIntegers_tests.cpp
-// \ref https://www.cs.utexas.edu/users/fussell/courses/cs429h/lectures/Lecture_2-429h.pdf
+/// \file AdditiveIntegers_tests.cpp
+/// \ref https://www.cs.utexas.edu/users/fussell/courses/cs429h/lectures/Lecture_2-429h.pdf
 //------------------------------------------------------------------------------
 #include "Algebra/Groups/AdditiveIntegers.h"
 

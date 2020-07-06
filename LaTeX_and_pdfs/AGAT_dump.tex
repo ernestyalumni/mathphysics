@@ -171,7 +171,7 @@ natural number $p$ is \textbf{prime} if $p\geq 2$, and $\nexists$ \emph{ factori
 cf. pp. 1, Ch. 1 Things Past of Rotman (2010) \cite{JRotman2010}  
 
 
-\begin{theorem}[\textbf{Division Algorithm}] 
+\begin{theorem}[\textbf{Division Algorithm}]\label{Thm:DivisionAlgorithm} 
 	$\forall \, a , b \in \mathbb{Z}$, $a\neq 0$, $\exists \, ! \, q,r \in \mathbb{Z}$ s.t. 
 	\[
 	b = qa + r \text{ and } 0 \leq r < |a|
@@ -244,7 +244,7 @@ Clearly $(d)\subseteq I$, since $kd=k(sa+tb) = (ks)a+(kt)b\in I$.
 
 Let $c\in I$.  
 
-By division algorithm, $c=qd + r$, $0\leq r <d$
+By division algorithm Thm. \ref{Thm:DivisionAlgorithm}, $c=qd + r$, $0\leq r <d$
 \[
 r=c-qd = s'a+t'b - qsa - qtb = (s'-sq)a + (t'-qt)b \in I
 \]
@@ -432,7 +432,7 @@ Let $m\geq 0$ be fixed
 		
 	\item \emph{Want}: If $m\geq 2$, $\forall \, a \in \mathbb{Z}$, $a \equiv b \bmod{m}$ for some $b\in 0,1,\dots m-1$.  
 	
-	By Division Algorithm, $a = q_a m + r_a$, \, $0 \leq r_a < |m|$.  $\frac{a-r_a}{m} = q_a \in \mathbb{Z}$ so let $b= r_a$.  
+	By Division Algorithm Thm. \ref{Thm:DivisionAlgorithm}, $a = q_a m + r_a$, \, $0 \leq r_a < |m|$.  $\frac{a-r_a}{m} = q_a \in \mathbb{Z}$ so let $b= r_a$.  
 	
 \end{enumerate}	
 \end{proof}
@@ -811,7 +811,7 @@ cf. pp. 16 Chapter 1 Introduction to Groups. Dummit and Foote (2004) \cite{DuFo2
 	\begin{enumerate}
 		\item binary operation $*$ on set $G$ is a function $*: G \times G \to G$.  $\forall \, a, b \in G$, $a* b \equiv *(a,b)$
 		\item binary operation $*$ on set $G$ is \emph{associative}: if $\forall \, a, b, c \in G$, $a*(b*c) = (a*b) * c$ 
-		\item If $*$ is binary operation on set $G$, $a,b $ of $G$ commut if $a*b = b*a$. \\
+		\item If $*$ is binary operation on set $G$, $a,b $ of $G$ commute if $a*b = b*a$. \\
 		$*$ (or $G$) is \textbf{commutative} if $\forall \, a, b \in G$ $a* b = b*a$.  
 	\end{enumerate}
 \end{definition}
@@ -849,6 +849,316 @@ If $G$ group under operation $*$, then
 \end{enumerate}
 \end{proposition}
 cf. Prop. 1, Sec. 1.1 Dummit and Foote (2004)\cite{DuFo2003}
+
+\subsection{$\mathbb{Z} / n \mathbb{Z}$: The Integers Modulo $n$}
+
+cf. Dummit and Foote (2004) \cite{DuFo2003}, Sec. 0.3, $\mathbb{Z}/n\mathbb{Z}$: The Integers Modulo $n$.
+
+Recall Sec. 0.2 Properties of the Integers, pp. 4, Dummit and Foote (2004) \cite{DuFo2003}. $\forall \, a, b \in \mathbb{Z}$, $a | b$ if $\exists \, c \in \mathbb{Z}$ s.t. $b=ac$. 
+
+\begin{definition}[modulo equivalence relation]
+Let $n\in \mathbb{Z}^+$ (positive integer). Define
+\begin{equation}
+a \sim b \text{ iff } n | (b-a), \text{ i.e. } 
+\end{equation}
+$\exists \, c \in \mathbb{Z}$ s.t. $b-a = nc$ or $a+nc = b$. Rewrite this as $a= b- nc \equiv b + Nk$ or even $\begin{aligned} & \quad \\ & a = pn + r \\ & b = qn + r \end{aligned}$. 
+\end{definition} 
+
+\begin{proposition}[modulo is an equivalence relation]
+	modulo $n$ is an equivalence relation
+\end{proposition} 
+
+\begin{proof}
+Clearly $a \sim a$ (choose $k=0$ in $a= b + Nk$), $a\sim b$ implies $b\sim a$ (choose $k \mapsto -k$) $\forall \, a, b \in \mathbb{Z}$, so $\sim $ is reflexive and symmetric.
+
+If $a\sim b$, and $b\sim c$, $a= b + Nk$, $b=c +Nl$, so $a= c + N(k+l)$, so $a\sim c$, and $\sim$ is transitive.
+
+$\Longrightarrow \sim$ is equivalence relation.
+
+\end{proof} 
+
+$a \equiv b \bmod{n}$ or $a \equiv b \bmod{n}$, i.e. $a$ is congruent to $b \bmod{n}$ if $a\sim b$. 
+
+$\forall \, k \in \mathbb{Z}$ denote equivalence class of $a \equiv \overline{a}$, called \emph{congruence class} or \textbf{residue class} of $a\bmod{n}$.
+
+\begin{equation}
+\overline{a} = \lbrace a + kn | k \in \mathbb{Z} \rbrace = \lbrace a , a \pm n, a \pm 2n, a \pm 3n ,\dots \rbrace 
+\end{equation}
+
+If $\overline{a} = pn +r$, $\frac{ \overline{a}}{n} = p + \frac{r}{n}$ , $0\leq r < n$, so remainder $r$ determines equivalence class $\overline{a}$.
+
+These residue classes partition $\mathbb{Z}$. 
+\begin{definition}[$\mathbb{Z} / n \mathbb{Z}$]
+$\mathbb{Z} / n\mathbb{Z} \equiv$ set of equivalence classes under this equivalence relation $\equiv$ called integers modulo $n$ (or integers mod $n$)
+\end{definition} 
+
+\begin{definition}[modular arithmetic]
+	$\forall \, \overline{a}, \overline{b} \in \mathbb{Z} / n \mathbb{Z}$, define sum and product by 
+	\begin{equation}
+	\overline{a} + \overline{b} = \overline{a+b}, \, \overline{a} \cdot \overline{b} = \overline{ab}
+	\end{equation}
+	i.e. $\forall \, \overline{a}, \overline{b}$ in $\mathbb{Z}/n\mathbb{Z}$, take \emph{any representive} integer $a$ in class $\overline{a}$ and \emph{any representative} integer $b$ in class $\overline{b}$ and add (respectively, multiply), as usual in $\mathbb{Z}$, and take equivalence class of result.
+\end{definition}
+
+\begin{theorem}[Theorem 3 of Dummit and Foote (2004) \cite{DuFo2003}, Sec. 0.3]
+	$\overline{a} + \overline{b} = \overline{a+b}$, $\overline{a} \cdot \overline{b} = \overline{ab}$ on $\mathbb{Z}/n\mathbb{Z}$ well-defined, and don't depend on representation choice, i.e. $a_1, a_2 \in \mathbb{Z}$, $b_1, b_2 \in \mathbb{Z}$, with $\overline{a}_1 = \overline{b}_1$, $\overline{a}_2 = \overline{b}_2$, then $\overline{a_1 + a_2} = \overline{b_1 + b_2}$, and $\overline{a_1 a_2} = \overline{b_1 b_2}$
+\end{theorem} 
+
+\begin{proof}
+	Suppose $a_1 = b_1 \bmod{n}$, so $a_1 = b_1 + sn$, likewise $a_2 = b_2 \bmod{n}$ means $a_2 = b_2 + tn$, so \\
+	$a_1 + a_2 = b_1 + b_2 + (s+t)n$, so $\overline{a_1 + a_2} = \overline{b_1 + b_2}$ from $a_1 + a_2 = (b_1 + b_2) \bmod{n}$
+
+This shows that sum of residue classes is independent of the representatives chosen.
+
+Similarly, 
+\[
+a_1 a_2 = (b_1 + sn) (b_2 + tn) = b_1 b_2 + (b_1 t + b_2 s + stn) n \text{ so } a_1 a_2 = b_1b_2(\bmod{n})
+\]
+
+\end{proof}
+
+\subsubsection{Elementary number theory application: Last 2 digits of $2^{1000}$}
+
+What is the last 2 digits of $2^{1000}$?
+
+Now $2^{1000} / 100 =$ last 2 digits of $2^{1000}$. So $2^{1000} \bmod{100} = $?
+
+Observe $2^{10} = 1024$ \qquad \, $2^{10} \bmod{100} = 24$
+
+\[
+\begin{gathered}
+\begin{aligned}
+& 2^{20} \bmod{100} = (2^{10})^2 \bmod{100} = (24)^2 \bmod{100} = 576 \bmod{100} = 76 \bmod{100} \\
+& 2^{80} \bmod{100} = 2^{160} \bmod{100} = 2^{320} \bmod{100} = 2^{640} \bmod{100} = 76 \bmod{100}
+\end{aligned}
+\end{gathered}
+\]
+where $(2^{20})^4 \bmod{100} = 76^4 \bmod{100} = 76 \bmod{100}$, \\
+$(76)^{2} \bmod{100} = 76 \bmod{100}$ \\
+
+So $2^{1000} \bmod{100} = 2^{640} 2^{320} 2^{40} \bmod{100} = 76 \cdot 76 \cdot 76 \bmod{100} = 76 \bmod{100}$ where $(76)^3 \bmod{100} = 76 \bmod{100}$. 
+
+Note that we used $\overline{a_1a_2} = \overline{a}_1 \cdot \overline{a}_2$ definition extensively.
+
+$2^{1000} \bmod{100} = 76 \bmod{100}$
+
+Collection of residue classes having multiplicative inverse in $\mathbb{Z} / n\mathbb{Z}$ is an important subset of $\mathbb{Z} / n\mathbb{Z}$, $\equiv (\mathbb{Z} / n\mathbb{Z})^{\times}$
+
+\begin{definition}[cf. pp. 10, Dummit and Foote (2003)\cite{DuFo2003}]
+\begin{equation}
+(\mathbb{Z} / n\mathbb{Z})^{\times} = \lbrace \overline{a} \in \mathbb{Z} / n \mathbb{Z} | \exists \, \overline{c} \in \mathbb{Z} / n \mathbb{Z} \text{ with } \overline{a} \cdot \overline{c} = 1 \rbrace 
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Prop. 4, pp. 10, Dummit and Foote (2003) \cite{DuFo2003}]
+\[
+(\mathbb{Z} / n\mathbb{Z})^{\times} = \lbrace \overline{a} \in \mathbb{Z} / n \mathbb{Z} | (a,n) = 1 \rbrace
+\], representatives of residue classes $\overline{a}$ are relatively prime to $n$.
+
+$(a,n) \equiv \gcd{(a,n)}$, greatest common divisor of $a$ and $n$. 
+\end{proposition}
+
+\begin{proof}
+	Since $(a,n) = 1$, $1= sa + tn$ so $as = 1 - tn$, so $as = 1 \bmod{n} \equiv \overline{1}$, so $\overline{s} = s\bmod{n}$ is a multiplicative inverse of $\overline{a}$.
+	
+	$\Longrightarrow \overline{a} \in (\mathbb{Z} / n\mathbb{Z})^{\times}$.  If $\overline{a} \cdot \overline{c} = \overline{1}$, then $ac= 1 + kn$ or $ac+ k' n=1$
+	
+\end{proof}
+
+\exercisehead{2} cf. Ex. 2, pp. 11, Dummit and Foote (2003) \cite{DuFo2003}, Sec. 0.3. $\mathbb{Z} / n \mathbb{Z} \ni \overline{a}$ if $\overline{a} = a + kn$. \\
+By Division Algorithm, Thm. \ref{Thm:DivisionAlgorithm}, $\forall \, a, N \in \mathbb{Z}$, $n\neq 0$, $a=qn + r$, $0\leq r < |n| = n$.
+
+Comparing expressions $a=  r + qn$ and $\overline{a} = a + kn$, then equivalence classes of $\mathbb{Z}/n\mathbb{Z}$ can only be of $r$ s.t. $0\leq r < |n|$.
+
+\exercisehead{3} cf. Ex. 3, pp. 11, Dummit and Foote (2003) \cite{DuFo2003}, Sec. 0.3. If $a= \sum_{j=0}^{n-1} a_j b^j$, $b=10$, $a\in \mathbb{Z}^+$ (positive integer), then prove $a \equiv a_n + a_{n-1} + \dots + a_1 + a_0 (\bmod{9})$. 
+
+\emph{Observe} that $10 \equiv 1 (\bmod{9})$. So, \\
+
+Use the fact that $b\equiv 1 \bmod{(b-1)}$.
+\[
+\begin{gathered}
+	a_j b^j \bmod{(b-1)} = a_j \bmod{(b-1)} \cdot b^j \bmod{(b-1)} = a^j \bmod{(b-1)} \cdot (b \bmod{(b-1)})^j = a_j \bmod{(b-1)} 1^j \bmod{(b-1)} = \\
+	a^j \bmod{(b-1)} \\
+	a \bmod{(b-1)} = \sum_{j=0}^{n-1} a^jb^j \bmod{(b-1)} = \sum_{j=0}^{n-1} a^j \bmod{(b-1)} = \left( \sum_{j=0}^{n-1} a_j \right) \bmod{(b-1)}
+\end{gathered}
+\]
+
+if $b=0$, this says that remainder after division by 9 is same as sum of the decimal digits mod 9 - particularly, an integer is divisible by 9 iff sum of digits is divisible by 9.
+
+If $b=2$, this says $a$ odd (even) if sum of bits is odd (even).
+
+\subsubsection{As an abelian group}
+
+cf. Dummit and Foote, pp. 17, Ch. 1, Sec. 1.1, Examples, Example 4.
+
+$\mathbb{Z}/n\mathbb{Z}$ is an abelian group under operation $+$ of addition of residue classes, as described in Ch. 0. In Ch. 3 of Dummit and Foote (2003) \cite{DuFo2003}, prove binary operation $+$ is well-defined and associative.
+
+$(\overline{a})^{-1} = \overline{-a}$ \, $\forall \, a \in \mathbb{Z}/ n \mathbb{Z}$, identity of $\angle \mathbb{Z}/n\mathbb{Z}, + \rangle = \overline{0}$.
+
+\exercisehead{3} cf. Exercise 3 in pp. 21, Exercises, of Sec. 1.1, Dummit and Foote (2003) \cite{DuFo2003}. 
+
+\[
+\overline{a}  + (\overline{b} + \overline{c}) = (\overline{a} + \overline{b}) + \overline{c} 
+\]
+is associative, since,
+\[
+\begin{gathered}
+\overline{a} + (\overline{b} + \overline{c}) = \overline{a} + (\overline{b+c}) = \overline{a} + (\overline{b + tn + c + un}) = \overline{a} + \overline{b+c} = \overline{a+b+c} \\
+(\overline{a} + \overline{b}) + \overline{c} = (\overline{a+b}) + \overline{c} = (\overline{a + sn + b+ tn}) + \overline{c} = \overline{a+b} + \overline{c} = \overline{a+b+c}
+\end{gathered}
+\]
+
+\subsection{Cyclic groups and cyclic subgroups}
+
+cf. Sec. 2.3, pp. 54, Dummit and Foote (2003), \cite{DuFo2003}
+
+\begin{definition}[Cyclic group]\label{Def:CyclicGroup}
+	group $H$ is \textbf{cyclic} if $H$ can be generated by a single element, i.e. $\exists \, x \in H$ s.t. $H= \lbrace x^n | n\in \mathbb{Z} \rbrace$ ("multiplication" operation notation) $\equiv H = \lbrace nx | n \in \mathbb{Z} \rbrace$ ("additive" operation notation). \\
+	
+	In both cases, write $H = \langle x \rangle$ and say $H$ \emph{generated} by $x$ (i.e. $x$ is \emph{generator} of $H$)
+\end{definition}
+	cyclic group may have more than 1 generator; e.g. $H = \langle x \rangle$ and $H = \langle x^{-1} \rangle$ because $(x^{-1})^n = x^{-n}$ and $-n \in \mathbb{Z}$. 
+	
+\exercisehead{19} cf. Exercise 19, Sec. 1.1, pp. 22, Dummit and Foote (2003) \cite{DuFo2003}.
+
+Let $x \in G, a, b\in \mathbb{Z}^+$
+
+In the following steps, I'll use induction a lot.
+\begin{enumerate}
+	\item[(a)] $x^{a+b} = x^a x^b $ and $(x^a)^b = x^{ab}$, prove.
+	\[
+	\begin{gathered}
+		x^ax^b = x^a \cdot x \cdot x^{b-1} = x^{a+1} x^{b-1} = \dots = x^{a+b - 1} \cdot x = x^{a+b} \quad \, (\text{used associativity of group operation}) \\
+		(x^a)^b = \underbrace{x^a \cdot x^a \cdots x^a }_{b \text{ times } } = x^{2a} \cdot \underbrace{x^a \dots x^a}_{ b- 2 \text{ times} } = x^{3a} \cdot \underbrace{x^a \dots x^a }_{b-3 \text{ times } } = \dots = x^{(b-1) a} \cdot x^a = x^{ (b-1) a + a} = x^{ba}
+	\end{gathered}
+	\]
+	\item[(b)] 
+	\[
+	\begin{gathered}
+		x^a \cdot x^{-a} = x^a \cdot (x^{-1})^a = x^{a-1} \cdot 1 \cdot (x^{-1})^{a-1} = \dots = x\cdot x^{-1} = 1 \Longrightarrow (x^a)^{-1} = x^{-a}
+	\end{gathered}
+	\]
+	The steps previous depended upon defining $x^{-a} = (x^{-1})^a$
+	\item[(c)] if $b=0$, $x^{a+0} = x^a = x^a x^b \Longrightarrow x^0 = 1$. $x^{ab} = x^0 = (x^a)^0 = 1$. \\
+	
+	$x^{a-b} = x^a \cdot x^{-b}$ since $x^{-b} = (x^{-1})^b$. \\
+	
+	$(x^a)^{-b} = ((x^a)^{-1})^b = (x^{-a})^b = x^{-ab}$ \\
+	
+	So $x^{a+b} = x^a x^b$, $(x^a)^{-1} = x^{-a}$ $\, \forall \, a,b \in \mathbb{Z}$
+\end{enumerate}
+
+\begin{theorem}[Cyclic groups are abelian]\label{Thm:CyclicGroupsAreAbelian}
+	Cyclic groups are abelian since $x^a x^b = x^{a+b} = x^{b+a} = x^b x^a$
+\end{theorem}
+
+\begin{proposition}[]\label{Prop:OrderDividesExponentOfCyclicGroupGeneratorRelation}
+cf. Dummit and Foote (2003) \cite{DuFo2003}, Prop. 3, pp. 55, Sec. 2.3
+
+	Let arbitrary group $G$, $x\in G$, let $m, n \in \mathbb{Z}$. \\
+
+	If $x^n = 1$, $x^m = 1$, then $x^d =1$, where $d= (m,n) \equiv \gcd{(m,n)}$ \\
+	If $x^m = 1$, for some $m \in \mathbb{Z}$, then $|x|$ divides $m$ (recall $|x| \equiv $ order of $x :=$ smallest positive integer $n$ s.t. $x^n = 1$, Def. on pp. 20, Sec. 1.1 of Dummit and Foote (2003) \cite{DuFo2003}).
+\end{proposition}
+
+\begin{proof}
+	By Euclidean Algorithm (Sec. 0.2, (6) of Dummit and Foote (2003) \cite{DuFo2003}), $\exists \, r, s \in \mathbb{Z}$ s.t. since $d= \gcd{(m,n)}$, $d|m$ and $d|n$, i.e. $m/d, n/d \in \mathbb{Z}$, i.e. $m = pd + r$, $n=qd + s$, with $r=s=0$. \\
+	
+	Consider $mr+ns = pdr + qds = (pr+qs)d$. Choose $r,s$ s.t. $pr + qs = 1$ (TODO: need to prove Euclidean Algorithm) \\
+
+	$x^d = x^{mr + ns} = (x^m)^r (x^n)^s = 1^r 1^s = 1$. \\
+	
+	If $x^m = 1$, let $n=|x|$. If $m=0$, $n |m$, i.e. $m/n = 0/n$, so assume $m \neq 0$. \\
+	
+	Since some nonzero power of $x,m$, is identity $n < \infty$. \\
+	
+	Let $d= (m,n) = \gcd{(m,n)}$, so $x^d = 1$ by preceding result for Prop. \ref{Prop:OrderDividesExponentOfCyclicGroupGeneratorRelation}. \\
+	
+	Since $0 < d \leq n$, and $n$ is smallest positive power of $x$ s.t. $x^n= 1$ (def. of order of a group), $d=n$, so $n | m \equiv m/n = m / |x|$. 
+\end{proof} 
+
+\begin{theorem}[Dummit and Foote, Thm. 4 (2003) \cite{DuFo2003}]\label{Thm:CyclicGroupSameOrderIsomorphism}
+	Any 2 cyclic groups of the same order are isomorphic; more specifically, 
+	\begin{enumerate}
+		\item[(1)] if $n\in \mathbb{Z}^+$, $\langle x \rangle, \langle y \rangle$ are cyclic groups of order $n$, then
+		\begin{equation}
+			\begin{aligned}
+				\varphi : & \langle x \rangle \to \langle y \rangle \\
+				& x^k \mapsto y^k 
+			\end{aligned}
+		\end{equation}
+		is well-defined and an isomorphism.
+		\item[(2)] If $\langle x \rangle$ is infinite cyclic group, map $\varphi$ 
+		\begin{equation}
+			\begin{aligned}
+				\varphi & : \mathbb{Z} \to \langle x \rangle \\
+				& k \mapsto x^k
+			\end{aligned}
+		\end{equation}
+		is well-defined and is an isomorphism.
+	\end{enumerate}
+\end{theorem} 
+
+\begin{proof}
+	Suppose $\langle x \rangle, \langle y \rangle$ are cyclic groups of order $n$. Let $\varphi: \langle x \rangle \to \langle y \rangle$ s.t. $\varphi(x^k) = y^k$. \\
+	
+	$\varphi$ \textbf{well-defined}? \emph{Prove}: \\
+	if $x^r = x^s$, then $\varphi(x^r) = \varphi(x^s)$. \\
+	
+	Since $x^{r-s} = 1$, by Prop. \ref{Prop:OrderDividesExponentOfCyclicGroupGeneratorRelation}, $|x| | r-s$, i.e. $r-s / |x|$, so $r-s = |x|$ or $r = tn + s$, so 
+	\[
+	\varphi(x^r) = \varphi(x^{tn + s}) = y^{tn + s} = (y^n)^t y^s = 1^t y^s = y^s = \varphi(x^s)
+	\]
+	
+	$\varphi$ well-defined. \\
+
+$\varphi(x^a x^b) = \varphi(x^{a+b}) = y^{a+b} = y^a y^b = \varphi(x^a) \varphi(x^b)$, so $\varphi$ homomorphism.  \\
+
+Since $y^k = \varphi(x^k)$, $\varphi$ surjective. \\
+
+Since both groups have same finite order, any surjection from 1 to the other is bijection, so $\varphi$ isomorphism.  \\
+
+Alternatively, $\begin{aligned}
+& \varphi^{-1}:\langle y \rangle \to \langle x \rangle
+& \varphi^{-1}(y^k) = x^k 
+\end{aligned}$ \quad \, and \quad \, $\begin{aligned} & \varphi \circ \varphi^{-1}(y^k) = y^k \\
+& \varphi^{-1}\circ \varphi(x^k) = x^k \end{aligned}$.
+
+If $\langle x \rangle$ infinite cyclic group, let $\varphi : \mathbb{Z} \to \langle x \rangle$ defined by $\varphi(k) = x^k$.  $\varphi$ well-defined since if $k = l$ for $x,y \in \mathbb{Z}$, 
+\[
+x^k = x^l = \varphi(k) = \varphi(l)
+\]
+
+By Prop. 2 of Dummit and Foote (2003) \cite{DuFo2003}, pp. 55, Sec. 2.3, (if $H=\langle x \rangle$, $|H| = |x|$), if $x^a \neq x^b$, $\forall\, a, b \in \mathbb{Z}$, $a\neq b$, $\varphi$ injective. $\forall \, x^k \in \langle x \rangle$, $k \in \mathbb{Z}$, so $\varphi(k) = x^k$ is surjective. \\
+Law of exponents ensure $\varphi$ homomorphism, (as above), hence $\varphi$ isomorphism. 
+
+\end{proof}
+
+\begin{theorem}[Cyclic Group and Integer Modulo $N$ are isomorphic]\label{Thm:CyclicGroupIntegerModuloNIsomorphic}
+	Up to isomorphism, $Z_n$ is the unique cyclic group of order $n$ and $Z_n \simeq \mathbb{Z}/ n\mathbb{Z}$
+\end{theorem}
+
+\subsection{Binary Representation, fixed-width integers as Abelian group}
+
+For $x\in \mathbb{Z}$, $B2U(x) = \sum_{i=0}^{w-1} x_i \cdot 2^i \equiv \sum_{i=0}^{w-1} x_i b^i$, where $b=2$, $w= $ total number of bits to represent $x$. \\
+
+Consider $n=2^w$. \\
+
+Observe that if $\sum_{i=0}^{w-1} 1 \cdot 2^i = S$, $2S = \sum_{i=1}^{w-1} 2^i + 2^w = S - 1  + 2^w$. So $S = 2^w-1$, and so consider integers modulo $n=2^w$. 
+
+\[
+\mathbb{Z} / 2^w \mathbb{Z} = \lbrace \overline{a} = \lbrace a + kn | k \in \mathbb{Z} \rbrace \rbrace = \lbrace \overline{a} = \lbrace a + k 2^w | k \in \mathbb{Z} \rbrace \rbrace
+\]
+and was shown that $0\leq a < 2^w$.
+
+Observe that if $x=  2^w + \sum_{i=0}^{w-1} x_i \cdot 2^i$, \\
+
+since $x \leq 2^w - 1$, \, $\forall \, x,y \in \mathbb{Z} / 2^w \mathbb{Z}$, $x+y\leq 2 \cdot 2^w - 2 = 2^{w+1} - 2 = \sum_{i=0}^w 2^i + 1 - 2 = \sum_{i=0}^w 2^i - 1 \sim \left( \sum_{i=0}^{w-1} 2^i - \right) \bmod{2^w}$ \\
+
+
+Consider $2^w - 1 = \sum_{i=0}^{w-1} 1 \cdot 2^i$. Then $2^w = \sum_{i=0}^{w-1} 1 \cdot 2^i + 1  = \sum_{i=0}^w x_i \cdot 2^i$ where $x_i = 0$ unless $i=w$, so $x_w = 1$. Define one's complement addition s.t. $2^w \bmod{2^w} = 0 \bmod 2^w$ \\
+
+Then $B2U(x) \bmod{2^w}$ is a cyclic group s.t. $(\overline{1})^{2^w} \equiv \sum_{i=1}^{2^w} 1 = \sum_{i=0}^{2^w -1} 1 = 2^w \bmod{2^w} = 0 \bmod{w^2}$, $\forall \, w \in \mathbb{Z}^+$.
 
 \section{Groups; normal subgroups}  
 
