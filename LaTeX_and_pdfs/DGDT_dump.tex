@@ -4850,9 +4850,8 @@ Other interesting links:
 
 \part{Classical Mechanics}
 
-\section{Classical Mechanics}
 
-\subsection{Structure of Galilean Space-Time}
+\section{Structure of Galilean Space-Time}
 
 cf. Sec. 3.1 - \emph{Structure of Galilean Space-Time} of Pr\'{a}staro (1996) \cite{Pras1996}.
 
@@ -4930,7 +4929,7 @@ Consider $(s_a,t_a), (s_b, t_b)$, $t_a - t_b$, $|s_a - s_b|$.
 
 Galilean group $g$ acts on $\mathbb{R}^3\lbrace \mathbb{r} \rbrace \times \mathbb{R} \lbrace t \rbrace$. \\
 
-\subsubsection{3 examples of Galilean transformations}
+\subsection{3 examples of Galilean transformations}
 
 uniform motion with constant velocity $\mathbf{v}$:
 \begin{equation}
@@ -4947,8 +4946,6 @@ rotation of coordinate axes
 g_3(\mathbf{r}, t) = (G \mathbf{r}, t)
 \end{equation}
 where $G: \mathbb{R}^3 \to \mathbb{R}^3$ is orthonormal transformation.
-
-
 
 \begin{proposition}[Galilean transformation decomposition]
 	$\forall \, $ galilean transformation $g: \mathbb{R}^3 \times \mathbb{R} \to \mathbb{R}^3 \times \mathbb{R}$ can be uniquely represented as composition $g_1g_2 g_3$
@@ -4988,7 +4985,7 @@ Now let $\mathbf{y} = \mathbf{x}'_2 - \mathbf{x}'_1$.
 only if $A^T A = 1$. So $A$ orthonormal.
 
 Thus we've found the \emph{general form of Galilean transformations}:
-\begin{equation}
+\begin{equation}\label{Eq:GeneralFormOfGalileanTransformations}
 \boxed{ \begin{aligned} & \mathbf{x} = A \mathbf{x}' + \mathbf{v} t' + \mathbf{a}, \quad \, A\in O(3), \mathbf{v},\mathbf{a} \in \mathbb{R}^3, s\in\mathbb{R} \\
 & t= t'+s \end{aligned} }
 \end{equation}
@@ -4999,9 +4996,55 @@ Recall that $g_1(\mathbf{r}, t) = (\mathbf{r} + \mathbf{v} t, t)$, $g_2 (\mathbf
 
 \end{proof}
 
-Introduce $E^3$ a "fixed" reference frame by fixing pt. $o \in E^3$ and choosing e mutually perpendicular axes.
+Introduce $E^3$ a "fixed" reference frame by fixing pt. $o \in E^3$ and choosing 3 mutually perpendicular axes.
 
-\subsection{Fundamental Theorems of (Classical) Dynamics}
+\emph{inertial frame} - frame moving uniformly and rectilinearly with respect to fixed pt. $o \in E^3$; $\forall $ element of Galilean group transforms fixed frame into inertial frame. \\
+
+action of galilean group on $E^3 \times \mathbb{R}$ can be extended to action on $E^3 \times \dots \times E^3 \times \mathbb{R}$ by the rule: \\
+if $g: (s,t) \to (s',t')$, then \\
+\phantom{if} $g(s_1, \dots s_n, t) = g(s_1' , \dots s_n', t')$ \\
+
+Galileo-Newton principle of relativity asserts that Newton's equations invariant under Galilean transformation group in inertial reference frame.
+
+$M = $ 4-dim. affine manifold (spacetime). Recall definition of an \emph{affine manifold} from \href{https://en.wikipedia.org/wiki/Affine_manifold}{wikipedia}.
+
+Affine manifold $M$ is real manifold with charts $\psi_i : U_i \to \mathbb{R}^n$, s.t. $\psi_i \circ \psi_j^{-1} \in \text{Aff}(\mathbb{R}^n)$ \, $\forall \, i ,j$ where $\text{Aff}{(\mathbb{R}^n)}$ denotes Lie group of affine transformations; \\
+
+Recall the definition of a \emph{Lie group of affine transformations}, $\text{Aff}{(\mathbb{R}^n)}$, the "affine structure", \footnote{\href{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.627.5443&rep=rep1&type=pdf}{"Affine structures on Lie algebras" by Michel Goze and Elisabeth Remm}},
+
+\begin{definition}[Lie group of affine transformations, affine structure]
+	\begin{equation}
+	\text{Aff}(\mathbb{R}^n) = \lbrace \left(\begin{matrix} A & b \\ 0 & 1 \end{matrix} \right) | A \in GL(n, \mathbb{R}), b \in \mathbb{R}^n \rbrace
+	\end{equation}
+	s.t. $\left(\begin{matrix} A & b \\ 0 & 1 \end{matrix} \right)$ acts on real affine space $\widetilde{\mathbb{R}^n}$ by 
+	\begin{equation}
+	\left( \begin{matrix} A & b \\ 0 & 1 \end{matrix} \right) \left( \begin{matrix} v \\ 1 \end{matrix} \right) = \left( \begin{matrix} Av + b \\ 1 \end{matrix} \right) 
+	\end{equation} where $A \in GL(n, \mathbb{R})$, $b\in \mathbb{R}^n$, where $(v,1)^T \in \widetilde{\mathbb{R}^n}$
+\end{definition}
+
+If changing notation, and keeping in mind that $n=4$, $\psi_j \equiv y(v_{(y)}) \to \mathbb{R}^n$, \\
+$ \begin{aligned} & \quad \\ 
+\psi_i \equiv & x : U_{(x)} \to \mathbb{R}^n \\ 
+& x(p) \in \mathbb{R}^n, x_i(p) \in \mathbb{R} \end{aligned}$ \\
+
+Rewrite the Eq. \ref{Eq:GeneralFormOfGalileanTransformations} in matrix form:
+\[
+\begin{gathered}
+\begin{aligned}
+& \mathbf{x} = A \mathbf{x}' + \mathbf{v} t + \mathbf{b} \\ 
+& t = t'+ s, \, A \in O(3), \, \mathbf{v}, \mathbf{b} \in \mathbb{R}^3, \, s \in \mathbb{R}
+\end{aligned} \\
+\left( \begin{matrix} A & \mathbf{v} & \mathbf{b} \\ 0 & 1 & s \\ 0 & 0 & 1 \end{matrix} \right) \left(\begin{matrix} \mathbf{x}' \\ t' \\ 1 \end{matrix} \right) = \left( \begin{matrix} \mathbf{x} \\ t  \\ 1 \end{matrix} \right) \text{ or } \left( \begin{matrix} A & \mathbf{v} \\  0 & 1 \end{matrix} \right) \left( \begin{matrix}\mathbf{x}' \\ t' \end{matrix} \right) + \left( \begin{matrix} \mathbf{b} \\ s \end{matrix} \right) = \left(\begin{matrix} \mathbf{x} \\ t \end{matrix} \right)
+\end{gathered}
+\]
+
+Consider $y$ being standard Euclidean coordinates in fixed frame $o$. $x$ then is coordiantes in any other inertial frame.
+
+$T =$ 1-dim. affine space since affine structure $(T, \mathbf{T}, \beta)$ is s.t. $T\in \mathbb{R}$, $\mathbf{T} \in \mathbb{R}$, $\begin{aligned} & \quad \\ 
+& \beta : \mathbf{T} \times T \to T \\
+& \beta(s,t') = t' + s = t\end{aligned}$ \\
+
+\section{Fundamental Theorems of (Classical) Dynamics}
 
 cf. Sec. 3.4 - \emph{Fundamental Theorems of Dynamics} of Pr\'{a}staro (1996) \cite{Pras1996}.
 
@@ -5026,6 +5069,75 @@ cf. Thm. 3.20 of Pr\'{a}staro (1996) \cite{Pras1996}
 	\end{proof}
 
 \section{Fluid Mechanics, Fluid Flow}
+
+\subsection{Fluids as a State of Matter}
+
+cf. Pert (2013) \cite{Pert2013}, Ch. 1 Introduction, 1.1 Fluids as a State of Matter.
+
+fluid - isotropic, (no directional preference; identical values of a property in all directions), \\
+locally homogeneous, macroscopic material, \\
+whose particles are free to move within constraints established by the dynamical laws of continuum physics. \\
+\emph{requirement that fluid be a continuum} - if volume of fluid successively subdivided into smaller elements, each element will remain structurally similar to its parent, and this subdivision can be carried out down to infinitesimal volumes. \\
+
+\textbf{fluid particle} - fictitious particle fixed within fluid continuum and moving with flow velocity; \\
+represents average over large number of microscopic particles. \\
+
+\textbf{fluid point} - fixed in fluid moving with flow velocity; \\
+- fluid particle always situated at same fluid point. \\
+
+\textbf{infinitesimal volume} - within continuum of fluid, large compared with microscopic scales, but small compared with macroscopic ones. \\
+
+fluid is made up of discrete microscopic particles, namely molecules, distributed randomly, with \\
+distribution of velocities characteristic of fluid in termal equilibrium, typically Maxwell-Boltzmann distribution in a gas. \\
+
+At typical experimental densities, \\
+intermolecular separation extremely small and very much less than lab scale, i.e. $l_s \ll L_0$ \\
+possible to average over small volumes which contain very large number of particles, yet very small on lab scale, $N-V$ in $V_0$, $V_0^{1/3} \ll L_0$ \\
+$\Longrightarrow$ allow us to recover continuum approximation \\
+obtain terms which characterize fluid as bulk material \\
+
+Typical average quantities: \\
+Density, $\rho$: number of mass particles per unit volume. \\
+temperature, $\tau$: average energy of random motion per particle in thermal equilibrium \\
+pressure $p$ average momentum flow associated with random motion per unit area. \\
+flow velocity $u$ - mean velocity of molecules averaging out random motion. \\
+
+role of collisions amongst particles important in defining irreversibility through loss of correlation between particles. \\
+
+\emph{mean free path} $l_0$ - particles collide on average after distance equal to $l_0$ and time after collision interval\\
+
+since fluid mechanics assumes fluid particles in thermal equilibrium and randomly distributed, this condition requires that spatial and temporal averages be taken to include large number of collisions; i.e. lab scale length $L_0$ large compared with $l_0$, and time to collision interval
+
+\subsection{Lagrangian frame}
+
+cf. Pert (2013) \cite{Pert2013} 1.3 Lagrangian Frame.
+
+\textbf{Lagrangian frame} - frame of the moving particle; \\
+Lagrangian reference frame considers fluid from point of view of an observer on a fluid particle. \\
+
+fluid particle may be conveniently identified by coordinate set, which is fixed on the particle, \\
+$\mathbf{\Lambda} = (\lambda, \mu, \nu)$ i.e. triad of numbers. \\
+e.g. $\mathbf{\Lambda}$ maybe initial position of particle $\mathbf{r}_0 = (x_0, y_0, z_0)$, i.e. fluid particle labeled by some (time-independent) vector field $\mathbf{x}_0 \equiv \mathbf{\Lambda}$. \\
+
+$\Longrightarrow $ position, velocity, thermodynamic state of particles are therefore functions of time alone. \\
+$\Longrightarrow$ leads to simple set of kinematic and dynamic relations governing motion of particle \\
+\[
+\begin{gathered}
+	\mathbf{r} = \mathbf{r}(t) = (x(t), y(t), z(t)) = (x^1(t), x^2(t), x^3(t)) \\ 
+	\dot{ \mathbf{r}} \equiv \dot{\mathbf{r}}(t) \equiv \frac{d\mathbf{r}}{dt} \equiv \frac{d\mathbf{r}}{dt} (t) = \mathbf{v} \equiv \mathbf{v}(t)
+\end{gathered}
+\]
+or 
+\begin{equation}
+\begin{gathered}
+\frac{d\mathbf{r}}{dt} = \mathbf{v} \\ 
+\frac{d\mathbf{v}}{dt} = \frac{\mathbf{F}}{m}
+\end{gathered}
+\end{equation}
+cf. Eq. (1.2) of Pert (2013) \cite{Pert2013}, i.e. \\
+
+flow described by function $\mathbf{X}(\mathbf{x}_0, t)$ giving position of particle labeled at $\mathbf{x}_0$ at time $t$.
+
 
 \subsection{Mass Conservation for Fluid Flow, Continuum media}
 
@@ -10315,6 +10427,12 @@ Urs Schreiber and Konrad Waldorf.  \emph{Parallel Transport and Functors}.  \hre
 \bibitem{ElMi2002}
 Y. Eliashberg, N. Mishachev, \emph{Introduction to the $h$-principle}, Grad. Studies in Math. Vol 48 (AMS 2002)
 
+
+\bibitem{Pert2013}
+G. J. Pert. \textbf{Introductory Fluid Mechanics for Physicists and Mathematicians}. 1st Edition. Wiley; 1 edition (May 28, 2013). ISBN-10: 1119944856. ISBN-13: 978-1119944850. 
+
+
+
 \bibitem{Grei2004}
 Walter Greiner. \textbf{Classical Mechanics}: \emph{Point Particles and Relativity} (Classical Theoretical Physics). Springer New York; 2004 edition (December 4, 2003). ISBN-13: 978-0387955865
 
@@ -10322,7 +10440,9 @@ Walter Greiner. \textbf{Classical Mechanics}: \emph{Point Particles and Relativi
 Vladimir I. Arnold, Valery V. Kozlov, Anatoly I. Neishtadt.  \textbf{Mathematical Aspects of Classical and Celestial Mechanics}.  Third Edition.  Springer. 2006.  
 
 \bibitem{AbMa2008}
-Ralph Abraham and Jerrold E. Marsden. \textbf{Foundations of Mechanics} (Ams Chelsea Publishing) Hardcover – May 21, 2008.  American Mathematical Society; 2 edition (May 21, 2008). ISBN-10: 0821844385ISBN-13: 978-0821844380
+Ralph Abraham and Jerrold E. Marsden. 
+\textbf{Foundations of Mechanics} (Ams Chelsea Publishing) Hardcover – May 21, 2008.  American Mathematical Society; 2 edition (May 21, 2008). ISBN-10: 0821844385
+ISBN-13: 978-0821844380
 
 
 
