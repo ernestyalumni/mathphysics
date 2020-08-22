@@ -5106,7 +5106,60 @@ role of collisions amongst particles important in defining irreversibility throu
 
 \emph{mean free path} $l_0$ - particles collide on average after distance equal to $l_0$ and time after collision interval\\
 
-since fluid mechanics assumes fluid particles in thermal equilibrium and randomly distributed, this condition requires that spatial and temporal averages be taken to include large number of collisions; i.e. lab scale length $L_0$ large compared with $l_0$, and time to collision interval
+since fluid mechanics assumes fluid particles in thermal equilibrium and randomly distributed, this condition requires that spatial and temporal averages be taken to include large number of collisions; i.e. lab scale length $L_0$ large compared with $l_0$, and time to collision interval \\
+
+effects of collisions on fluid transport (momentum and energy) are averaged over thermal distribution to yield bulk properties of material, namely viscosity and thermal conduction, respectively. \\
+
+theory: flow of basic fluid may be calculated using Newtonian mechanics, classical thermodynamics, viscosity and thermal conductivity values. \\
+Conditions under which this theory may be applied: \\
+\begin{itemize}
+	\item lab-scale lengths $L_0$ must be large compared with intermolecule separation and mean free path $l_0$ 
+	\item characteristic lab times $T_0$ must be large compared with collision interval
+	\item fluid locally in thermal equilibrium
+\end{itemize}
+
+cf. 1.2 The Fundamental Equations for Flows of a Dissipationless Fluid. Pert (2013) \cite{Pert2013}
+
+\textbf{inviscid limit} - viscosity and thermal conduction are neglected \\
+\textbf{adiabatic flow} - specific entropy of fluid particle constant in time \\
+\textbf{isentropic flow} - specific entropy of each fluid particle has same initial value \\
+
+many flows are both isentropic and adiabatic, e.g. ideal steady fluid flow, whose specific entropy an entry is everywhere constant.
+
+\emph{Eulerian frame} - lab frame, coordinates fixed in space and time, derivatives are usual partial derivatives
+\[
+\left. \frac{ \partial }{ \partial t} \right|_{\mathbf{r}}, \, \left. \nabla \right|_t
+\]
+Consider coordinate system $(t, x^1, x^2, x^3)$ and so each vector field $\mathbf{e}_j$ forming basis of tangent space at each pt. expressed as linear combination of coordinate vector fields
+\[
+\left. \frac{\partial}{\partial t} \right|_{\mathbf{r}}, \, \left. \frac{\partial}{\partial x^1} \right|_{t}, \, \left. \frac{\partial}{\partial x^2} \right|_{t}, \, \left. \frac{\partial}{\partial x^3} \right|_{t},
+\]
+
+in Lagrangian frame, spatial variation seen by particle due to its motion is absorbed into time derivative:
+\[
+\frac{d}{dt} = \frac{\partial }{ \partial t} + \mathbf{v} \cdot \mathbf{\nabla} 
+\]
+
+Rather, consider total time derivative of integral of $n$-form: 
+\[
+\frac{d}{dt} \int_{V_0} \omega = \int_{V_0} \mathcal{L}_{\frac{\partial}{\partial t} + \mathbf{v} } \omega 
+\]
+
+Volume form $\Omega^n(M) = \bigwedge^n (T^*M)$
+\[
+\text{vol}^n \in \Gamma(\Omega^n(M)) = \Gamma(\bigwedge^n T^*M)
+\]
+i.e. $\text{vol}^n$ is $n$-form, a section of the line bundle, $\Omega^n(M) = \bigwedge^n T^*M$
+
+Now
+\[
+\text{vol}^n = \frac{\sqrt{g}}{ n!} \epsilon_{i_1, \dots i_n} dx^{i_1} \wedge \dots \wedge dx^{i_n}
+\]
+
+Consider 
+\[
+\text{vol}^{n+1} = \frac{\sqrt{g}}{ (n+1)!} \epsilon_{i_0 i_1, \dots i_n} dx^{i_0} \wedge dx^{i_1} \wedge \dots \wedge dx^{i_n}
+\]
 
 \subsection{Lagrangian frame}
 
