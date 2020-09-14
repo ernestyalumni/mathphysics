@@ -5191,6 +5191,68 @@ cf. Eq. (1.2) of Pert (2013) \cite{Pert2013}, i.e. \\
 
 flow described by function $\mathbf{X}(\mathbf{x}_0, t)$ giving position of particle labeled at $\mathbf{x}_0$ at time $t$.
 
+\subsection{Momentum conservation in Lagrangian Frame-Euler's Equation}
+
+Recall that a connection $\nabla$ on smooth manifold $(M, \mathcal{O}, \mathcal{A})$ is a map that takes a pair consisting of a vector (field) $X$ and $(p,q)$-tensor field $T$ and sends them to a $(p,q)-$ tensor (field) $\nabla_XT$, i.e. 
+\[
+\nabla : \mathfrak{X}(M) \times (\otimes^p TM \otimes^q T^*M) \to \otimes^p TM \otimes^q T^*M
+\]
+s.t. 
+\[
+\begin{aligned}
+& \nabla_X f = Xf \quad \, \forall \, f \in C^{\infty}(M) \\ 
+& \nabla_X(T + S) = \nabla_X T + \nabla_X S \\ 
+& \nabla_X(T(\omega, Y)) = (\nabla_X T)(\omega, T) + T(\nabla_X \omega, Y) + T(\omega, \nabla_X Y) \\
+& \nabla_{fX + Z} T = f\nabla_X T + \nabla_Z T , \quad \, f \in C^{\infty}(M) \quad \, \text{ "Leibnitz" rule }
+\end{aligned}
+\]
+cf. Schuller, International Winter School on Gravity and Light held central lectures.
+
+Remember that in the Lagrangian frame, we are an observer following an individual fluid parcel or i.e. "fluid particle" as it moves through space and time. This fluid particle will obey Newton's 2nd. law: $\nabla_{u} u = \frac{F}{m} \Longleftrightarrow m \cdot \mathfrak{a} = F$. 
+
+\[
+\begin{gathered}
+\nabla_u u = \nabla_{u^{\mu}\frac{\partial}{\partial x^{\mu}}} (u^{\nu} \frac{\partial}{\partial x^{\nu}}) = u^{\mu} \nabla_{\frac{ \partial }{\partial x^{\mu}} } (u^{\nu} \frac{ \partial }{ \partial x^{\nu}}) =  u^{\mu} \left( \nabla_{\frac{ \partial }{\partial x^{\mu}} } u^{\nu} \right) \frac{ \partial }{ \partial x^{\nu}} + u^{\mu} u^{\nu} \nabla_{\frac{ \partial }{\partial x^{\mu}} }  \frac{ \partial }{ \partial x^{\nu}} = \\
+	= u^{\mu} \frac{ \partial u^{\nu} }{ \partial x^{\mu}} \frac{\partial}{\partial x^{\nu}} + u^{\mu}u^{\nu} \Gamma^{\gamma}_{\mu \nu} \frac{\partial}{\partial x^{\gamma}}
+	\end{gathered}
+	\]
+
+Let $u^0 = 1$.
+\[
+\begin{gathered}
+\nabla_u u = \frac{\partial u^a}{\partial t} \frac{\partial }{ \partial x^a} + u^b \frac{\partial u^a}{\partial x^b} \frac{\partial}{\partial x^a} + u^{\mu} u^{\nu} \Gamma^a_{\mu \nu} \frac{\partial}{\partial x^a}
+\end{gathered}
+\]
+where $\Gamma^0_{ba} = 0$ since $\nabla dt =0$ and we choose a stratified atlas $\mathcal{A}_{\text{stratified}}$.
+
+Then let
+\[
+\int \rho \text{vol}^n \nabla_u u = F_{\text{tot}}  = \int f^i \text{vol}^n \otimes e_i
+\]
+
+From Sec. 2.4 Equations of Motion Neglecting Viscosity, pp. 38, Sabersky, et. al. (1998) \cite{SAHG1998}, the principal forces are those due to pressures acting on surfaces and to forces acting directly on a mass of the particle:
+\[
+\begin{gathered}
+\int_{\partial V} p dS^i \otimes e_i = \int_V \mathbf{d} (pdS^i \otimes e_i) = \int_V \frac{\partial p}{\partial x^j} dx^j \wedge \left( \frac{\sqrt{g}}{(n-1)!} \epsilon^i_{\, i_2, \dots i_n} dx^{i_2} \wedge \dots \wedge dx^{i_n} \right) \otimes e_i = \\
+\int_V \frac{\partial p}{\partial x^j} g^{ij} \text{vol}^n \otimes e_i = \int_V (\text{grad}p)^i \text{vol}^n \otimes e_i \\
+\Longrightarrow \int \rho \text{vol}^n \nabla_u u = -\int_V (\text{grad}p)^i \text{vol}^n \otimes e_i + \int_V f^i \text{vol}^n \otimes e_i
+\end{gathered}
+\]
+\begin{equation}\label{Eq:EulerianEquationMomentumConservationFluidFlow}
+\begin{gathered}
+\Longrightarrow \rho (\nabla_u u)^i = -(\text{grad}p)^i + f^i \\
+(\nabla_u u)^i = -\frac{1}{\rho} (\text{grad}p)^i + f^i
+\end{gathered}
+\end{equation}
+describes the motion of a perfect fluid.
+
+Assuming a non-rotating, inertial frame (so that we can set the Christoffel symbols to 0),
+\begin{equation}\label{Eq:EulerianEquationMomentumConservationFluidFlowInertialFrame}
+\frac{\partial}{\partial t} u^i + u^b \frac{\partial u^i}{\partial x^b} = - \frac{1}{\rho}(\text{grad}p)^i + f^i
+\end{equation}
+which describes the motion of the perfect fluid in an inertial ref. frame. Compare this to Eqns. (2.10a- 2.10c) of Sabersky (1998) \cite{SAHG1998}. Sabersky says that no assumptions were made about density so these results apply to compressible fluid as well as incompressible ones. Also Eqns. \ref{Eq:EulerianEquationMomentumConservationFluidFlow}, \ref{Eq:EulerianEquationMomentumConservationFluidFlowInertialFrame} are called either Euler's Equation by Pert (2013) \cite{Pert2013} or Eulerian equation by Sabersky, et. al. (1998) \cite{SAHG1998}
+
+
 
 \subsection{Mass Conservation for Fluid Flow, Continuum media}
 
@@ -5247,7 +5309,7 @@ which is the so-called mass continuity equation.  $ j = \rho u$ is the mass flux
 
 Thus,
 
-\begin{equation}
+\begin{equation}\label{Eq:MassConservationForContinuum}
 \begin{gathered}
 \text{(mass conservation)} \\
 m = m(t) := \int_{V_0} \rho \text{vol}^n, \, V_0 \subset N \\
@@ -5256,6 +5318,13 @@ m = m(t) := \int_{V_0} \rho \text{vol}^n, \, V_0 \subset N \\
 \frac{\partial \rho }{ \partial t} + \text{div}(\rho \mathbf{u}) = 0 
 \end{gathered}
 \end{equation}
+
+Sec. 1.4 Eulerian Frame, 1.4.1 Conservation of Mass-Equation of Continuity, pp. 8 of Pert (2013) \cite{Pert2013} says that Eq. \ref{Eq:MassConservationForContinuum} is for the Eulerian Frame.
+
+From \href{https://en.wikipedia.org/wiki/Lagrangian_and_Eulerian_specification_of_the_flow_field}{wikipedia}, recall that the \emph{Eulerian specification} focuses on specific locations in space through which fluid flow as time passes. Visualize by sitting on bank of river and watch water pass fixed location. In the Eulerian specification of field, field represented as a function of position $\mathbf{x}$, time $t$, e.g. $\mathbf{u}(\mathbf{x}, t) \equiv $ flow velocity.
+
+
+
 
 TODO: 20190804 Frankel (2012) \cite{TFrankel2012} in pp. 138 and onwards, for Sec. 4.3. Differentiation of Integrals posed the rightful question, "How does one compute the rate of change of an integral when the domain of integration is also changing?" Revisit the derivation from a Lie derivative and 1-parameter flow point of view.
 
@@ -5309,6 +5378,182 @@ W = \int_V \mathcal{L}_{\mathbf{u}}(p \text{vol}^n) = \int_V \mathbf{d} i_{\math
 \]
 
 TODO: work on a fluid element?
+
+\subsection{Bernoulli's equation}
+
+\subsubsection{Simple cases}
+
+cf. Ch. 3 The Bernoulli Equation, Sec. 3.2 "A Simple Form of the Bernoulli Equation", pp. 90, Sabersky, et. al. (1998) \cite{SAHG1998}
+
+
+Start from Eq. \ref{Eq:EulerianEquationMomentumConservationFluidFlow}. So
+\[
+(\nabla_u u)^i = \frac{-1}{\rho} (\text{grad}p)^i + f^i
+\]
+Suppose $f^i=0$ (no external forces), $\frac{\partial u^i}{\partial t} = 0$ (steady flow). Suppose $\Gamma^a_{\mu \nu} =0$ (Cartesian coordinates? TODO: find out the conditions when this is true).
+
+Suppose the flow is irrotational (TODO: find out the condition for irrotational flow; is it when having streamlines or ?). For the curl, recall that an external derivative $\mathbf{d}$ takes a 1-form into a 2-form. So consider
+\[
+\begin{gathered}
+ \mathbf{u} \in \mathfrak{X}(V), \mathbf{u} \xrightarrow{\flat} u_i dx^i = g_{ij} u^j dx^i \\ 
+ d\mathbf{u}^{\flat} \in \Omega^2(V), \, \mathbf{d}\mathbf{u}^{\flat} = \frac{\partial u_j}{\partial x^i} dx^i \wedge dx^j = \frac{ \partial (g_{ij} u^j) }{\partial x^a} dx^a \wedge dx^i
+\end{gathered}
+\]
+If we have the condition that the flow is irrotational, i.e. 
+\begin{equation}
+\mathbf{d}\mathbf{u}^{\flat} = 0
+\end{equation}
+then
+\[
+\begin{gathered}
+	\mathbf{d}\mathbf{u}^{\flat} (\mathbf{u}) = \frac{\partial (u_i) }{ \partial x^a} u^a dx^i - \frac{\partial (u_i) }{ \partial x^a} dx^a u^i = 0 \Longrightarrow u^a \frac{ \partial (u_i) }{ \partial x^a} dx^i = u^i \frac{\partial u_i}{ \partial x^a} dx^a
+\end{gathered}
+\]
+
+%So if $g_{ij}$ is position independent, then
+%\begin{equation}\label{Eq:MagnitudeOfVectorTransportForIrrotationalFlow}
+%u^a \frac{\partial u_i}{\partial x^a} dx^i = u^i \frac{\partial u_i}{\partial x^a} dx^a 
+%\end{equation}
+%One must be aware that Eq. \ref{Eq:MagnitudeOfVectorTransportForIrrotationalFlow} necessarily depends on having the Christoffel symbols $\Gamma^a_{\mu \nu}$ be zero, the metric be position-independent, and the flow be irrotational.
+
+Take the exterior derivative $\mathbf{d}$ of the inner product of a vector with itself in the most general case on a metric manifold:
+\[
+\begin{gathered}
+d(u_i u^i) = d(g_{ij} u^j u^i) = \frac{ \partial g_{ij} }{ \partial x^k} u^j u^i dx^k  + g_{ij} \frac{ \partial u^j}{ \partial x^k} u^i dx^k + g_{ij} u^j \frac{\partial u^i}{\partial x^k} dx^k = \\
+= 2 u_j \frac{ \partial u^j}{\partial x^k} dx^k + u^i u^j \frac{\partial g_{ij}}{\partial x^k} dx^k 
+\end{gathered}
+\]
+
+
+Since the Christoffel symbols are the connection coefficients of a \emph{metric-compatible} affine connection (i.e. they can be used to construct a connection $\nabla$ s.t. $\nabla g = 0$), then \footnote{ \href{https://physics.stackexchange.com/questions/175235/prove-christoffel-symbol-identity}{"Prove Christoffel Symbol Identity", Physics StackExchange}}
+
+\begin{equation}
+\nabla_i g_{jk} = \frac{ \partial g_{jk}}{\partial x^i} - \Gamma^s_{ji} g_{sk} - \Gamma^s_{ki} g_{js} = 0
+\end{equation}
+and so
+\begin{equation}
+\begin{gathered}
+ u^i u^j \frac{ \partial g_{ij}}{\partial x^k} = u^i u^j \left[ \Gamma^s_{ik} g_{sj} + \Gamma^s_{jk} g_{is} \right] = u^i u_s \Gamma^s_{ik} + u_s u^j \Gamma^s_{jk} = 2u_s u^i \Gamma^s_{ik}
+\end{gathered}
+\end{equation}
+
+%One must be aware that Eq. \ref{Eq:MagnitudeOfVectorTransportForIrrotationalFlow} necessarily depends on having the Christoffel symbols $\Gamma^a_{\mu \nu}$ be zero, the metric be position-independent, and the flow be irrotational.
+
+Then 
+\begin{equation}\label{Eq:ExteriorDerivativeOfMagnitudeSquareOfVector}
+\begin{gathered}
+\frac{1}{2} \mathbf{d}(u^2) = u_j \frac{ \partial u^j}{\partial x^k} dx^k + u_s u^i \Gamma^s_{ik} dx^k
+\end{gathered}
+\end{equation}
+
+Eq. \ref{Eq:ExteriorDerivativeOfMagnitudeSquareOfVector} only depended upon the fact that the connection $\nabla$ is \emph{metric-compatible}.
+
+So if we suppose that the Christoffel symbols $\Gamma^s_{ik}$ are 0, and have irrotational flow, as well,
+\[
+\begin{gathered}
+\mathbf{d}(u^2 / 2) = u_j \frac{\partial u^j}{ \partial x^k} dx^k  + 0 = u^a \frac{ \partial u_i}{\partial x^a} dx^i 
+\end{gathered}
+\]
+
+Now consider the RHS of Eq. \ref{Eq:EulerianEquationMomentumConservationFluidFlow}, with $f_i =0$,
+\[
+\begin{gathered}
+	\frac{-1}{\rho} (\text{grad}{p})^i \xrightarrow{ \flat} \frac{-1}{\rho} (\text{grad}p)^i g_{ij} dx^j = \frac{-1}{\rho}  \frac{\partial p}{\partial x^k} g^{ki} g_{ij} dx^j = \frac{-1}{\rho} \frac{ \partial p}{\partial x^j} dx^j = \frac{-1}{\rho} \mathbf{d}p
+\end{gathered}
+\]
+So if the fluid is incompressible, then $\rho$ is constant and so we can write
+
+\begin{equation}
+\mathbf{d} \left( \frac{u^2}{2} + \frac{p}{\rho} \right) = 0 
+\end{equation}
+for any irrotational, incompressible, fluid flow with no (external) body forces.
+
+\subsubsection{Venturi tube example}
+
+cf. Example 3.1 in Sabersky, et. al. (1998) \cite{SAHG1998}
+
+Consider flow of liquid through the tube shown. Determine pressure difference between points 1 and 2 as a function of flow rate $Q$, density $\rho$. Velocity assumed constant over cross sections, and pressure will also be assumed uniform over each of these 2 areas $A_1$, $A_2$. Also assume there's no viscosity. 
+
+\solutionhead{Example 3.1 in Sabersky, et. al. (1998) \cite{SAHG1998}}
+
+Since density is constant, continuity equation requires that for $Q$ the volume flow rate,
+\[
+\text{flow rate} Q = u_1 A_1 = u_2 A_2
+\]
+
+\[
+\begin{gathered}
+	\frac{u_1^2}{2} + \frac{p_1}{\rho_1} = \frac{u_2^2}{2} + \frac{p_2}{\rho_2} \Longrightarrow \begin{aligned} & \quad \\ 
+	& \frac{Q^2}{2A_1^2} + - \frac{Q^2}{2A_2^2} = \frac{ -(p_1- p_2) }{\rho}  \\
+	& \frac{Q^2}{2} \left( \frac{1}{A_1^2} - \frac{1}{A_2^2} \right) = \frac{-(p_1 - p_2) }{\rho} \end{aligned} \text{ or } 
+p_1 - p_2 = \frac{ + \rho Q^2}{2A_2^2} \left( 1 - \frac{A_2^2}{A_1^2} \right) 
+\end{gathered}
+\]
+
+\subsubsection{Conservative body forces with Bernoulli equation}
+
+cf. Sec. 3.3 in Sabersky, et. al. (1998) \cite{SAHG1998}
+
+Consider $U= U(x)$, force potential. 
+
+\[
+\begin{gathered}
+	-\mathbf{d}U = \frac{ - \partial U}{\partial x^i} dx^i = f_i dx^i \\
+ \mathbf{d}\left( \frac{u^2}{2} + \frac{p}{\rho} + U \right) = 0 
+\end{gathered}
+\]
+
+\subsubsection{Barotropic Fluids ($\rho = \rho(p)$) with Bernoulli equation}
+
+cf. Sec. 3.4 in Sabersky, et. al. (1998) \cite{SAHG1998}
+
+\emph{Barotropic fluid}: density is single-valued function of $p$. In the absence of heat transfer and absence of entropy change, by thermodynamics this can be shown to be barotropic.
+
+\[
+\begin{gathered}
+\mathbf{d} \left( \frac{u^2}{2} \right) = -\frac{1}{\rho} \mathbf{d}p - \mathbf{d}U \text{ or } \mathbf{d} \left( \frac{u^2}{2} + U \right) + \frac{1}{\rho} \mathbf{d}p
+\end{gathered}
+\]
+
+Suppose $i=i(p)$ s.t. $di = \frac{\partial i}{\partial p} dp = \frac{1}{\rho (p)} = \frac{di}{dp} dp$. So
+\[
+\begin{gathered}
+\frac{di}{dp} = \frac{1}{\rho(p)} \text{ or } i = \int \frac{1}{\rho} dp + \text{ const } \\
+\Longrightarrow \mathbf{d} \left( \frac{u^2}{2} + U + i \right) = 0 
+\end{gathered}
+\]
+
+In special case of isentropic flow of perfect gas, $\frac{P}{\rho^{\nu}} = $ const. and $ i =\int \frac{dp}{p^{1/\nu}} = \frac{kp^{1-1/\nu}}{1- 1/\nu} = $ enthalpy.
+
+\subsubsection{Nonsteady flow $\frac{\partial u}{\partial t}$ with Bernoulli equation}
+
+First, use the musical isomorphism to transform the (1,0) tensor:
+\[
+\begin{gathered}
+\frac{ \partial u^i}{\partial t}\frac{\partial}{\partial x^i} \xrightarrow{\flat} g_{ij} \frac{\partial u^i}{\partial t} dx^j
+\end{gathered}
+\]
+
+Along a curve $\begin{aligned} & \quad \\ 
+& \gamma = \gamma^i(t) = x^i(t) \text{ s.t. } \\
+& \dot{\gamma} = \dot{\gamma}^i(t) \frac{ \partial}{\partial x^i} = u^i(t, \gamma(t)) \frac{\partial}{\partial x^i}
+\end{aligned}$. Then
+
+\[
+\begin{gathered}
+\int_{\gamma} g_{ij} \frac{\partial u^i}{\partial t} dx^j = \int g_{ij} \frac{\partial u^i}{\partial t} \dot{\gamma}^j(t) dt = \int g_{ij} \frac{\partial u^i}{\partial t} u^j dt = \int \frac{\partial \| u \| }{ \partial t} dt 
+\end{gathered}
+\]
+The last step can be made only if the metric $g$ is time-independent.
+
+cf. Example 3.2 in Sabersky, et. al. (1998) \cite{SAHG1998}. 
+
+Consider the \emph{efflux} of liquid of density $\rho$ through an orifice of area $A_0$ at the bottom of a large tank of cross-sectional area $A_t$. \\
+The depth of liquid at the given instant is $y$.
+
+
+cf. Example 3.3 in Sabersky, et. al. (1998) \cite{SAHG1998}. Example of a problem in which nonsteady terms cannot be neglected. 
+
 
 
 \section{Thermodynamics}
@@ -10484,7 +10729,8 @@ Y. Eliashberg, N. Mishachev, \emph{Introduction to the $h$-principle}, Grad. Stu
 \bibitem{Pert2013}
 G. J. Pert. \textbf{Introductory Fluid Mechanics for Physicists and Mathematicians}. 1st Edition. Wiley; 1 edition (May 28, 2013). ISBN-10: 1119944856. ISBN-13: 978-1119944850. 
 
-
+\bibitem{SAHG1998}
+Rolf H. Sabersky, Allen J. Acosta, Edward G. Hauptmann, E.M. Gates.  \textbf{Fluid Flow: A First Course in Fluid Mechanics} (4th Edition).  Prentice Hall. (August 22, 1998).  ISBN-13: 978-0135763728
 
 \bibitem{Grei2004}
 Walter Greiner. \textbf{Classical Mechanics}: \emph{Point Particles and Relativity} (Classical Theoretical Physics). Springer New York; 2004 edition (December 4, 2003). ISBN-13: 978-0387955865
