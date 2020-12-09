@@ -1,0 +1,10 @@
+###### Requirements without Version Specifiers ######
+
+jupyter
+# notebook
+
+ipykernel
+
+###### Requirements with Version Specifiers ######
+
+sympy>=1.7
