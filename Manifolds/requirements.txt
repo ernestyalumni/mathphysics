@@ -1,9 +1,11 @@
 ###### Requirements without Version Specifiers ######
 
+ipykernel
+
 jupyter
 # notebook
 
-ipykernel
+numpy
 
 ###### Requirements with Version Specifiers ######
 

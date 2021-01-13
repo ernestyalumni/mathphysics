@@ -55,6 +55,7 @@ If you want to use the virtual environments "version" or set of pip installed li
 pip install ipykernel
 
 # and
+# (but read further below because this might not be the right command for your setup)
 
 python -m ipykernel install --user --name ENVNAME --display-name "Python (whatever you want to call it)"
 ```
