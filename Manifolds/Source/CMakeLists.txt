@@ -59,5 +59,6 @@ INCLUDE_DIRECTORIES(BOOST_INCLUDES ${Boost_INCLUDE_DIRS})
 # Add_subdirectory adds the source CMakeLists.txt and code files in the
 # directory.
 ADD_SUBDIRECTORY(Algebra)
+#ADD_SUBDIRECTORY(CRTP)
 ADD_SUBDIRECTORY(UnitTests)
 ADD_SUBDIRECTORY(Utilities)
