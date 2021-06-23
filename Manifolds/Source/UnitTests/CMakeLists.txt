@@ -13,7 +13,8 @@ ADD_EXECUTABLE(Check
   Algebra/Groups/AdditiveIntegers_tests.cpp
   Algebra/Groups/ModuloArithmetic_tests.cpp
   Algebra/Rings/Rings_tests.cpp
-  CRTP/Categories/Sets/PosetElement_tests.cpp)
+  CRTP/Categories/Sets/PosetElement_tests.cpp
+  CRTP/Vectors/Euclidean3Vector_tests.cpp)
 
 TARGET_LINK_LIBRARIES(Check
   ${Boost_FILESYSTEM_LIBRARY}
