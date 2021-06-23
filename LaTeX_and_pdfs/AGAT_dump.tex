@@ -1757,7 +1757,7 @@ If vector space $V$, list $X=v_! \dots v_m$ spanning $V$, following are equivale
 \end{proposition}
 
 \begin{proof}
-(i) $\Longrightarrow$ (ii). If $X$ isn't hosrtest spanning list, then 1 of vectors in $X$ can be thrown out, and shorter list still spans, i.e. cf. Lemma \ref{Lemma:smallest_subspace}(Lemma 3.71, Rotman (2010) \cite{JRotman2010}); let $\mathcal{S} \equiv $ family of all subspaces of $V$ containing $X$. 
+(i) $\Longrightarrow$ (ii). If $X$ isn't shortest spanning list, then 1 of vectors in $X$ can be thrown out, and shorter list still spans, i.e. cf. Lemma \ref{Lemma:smallest_subspace}(Lemma 3.71, Rotman (2010) \cite{JRotman2010}); let $\mathcal{S} \equiv $ family of all subspaces of $V$ containing $X$. 
 
 EY: 20180610 
 Let $\bigcap_{S\in \mathcal{S}} S$. $\bigcap_{S \in \mathcal{S}} S \neq \langle v_1 \dots v_m \rangle$, $\bigcap_{S \in \mathcal{S}} S \subset \langle v_1 \dots v_m \rangle$ \\
@@ -2303,6 +2303,87 @@ Lang made the key insight on vector spaces as a whole in Sec 5. "Vector Spaces" 
 \end{theorem}
 	
 Indeed, while this wikipedia article \footnote{\url{https://en.wikipedia.org/wiki/Vector_space}} on Vector space does a good job generalizing the properties defining a vector in a vector space, a vector's properties is separate from what \emph{characterizes} a vector space. Here, we can \emph{specify} a vector space by its generators, and furthermore, from Thm. \ref{Thm:ExistenceOfBasisForVectorSpaces}, it has a basis that characterizes a vector space. This can be useful for implementation in C++.
+
+\section{Vector Spaces}
+
+cf. Ch. 11, "Vector Spaces" pp. 408, Dummit and Foote \cite{DuFo2003}
+
+\begin{center}
+\begin{tabular}{l | l }
+\textbf{Terminology for $R$ any Ring} & \textbf{Terminology for $R$ a Field } \\
+\hline
+$M$ is an $R$-module & $M$ is a vector space over $R$ \\
+$m$ is an element of $M$ & $m$ is a vector in $M$ \\
+$\alpha$ is a ring element & $\alpha$ is a scalar \\
+$N$ is a submodule of $M$ & $N$ is a subspace of $M$ \\
+$M/N$ is a quotient module & $M/N$ is a quotient space \\
+$M$ is a free module of rank $n$ & $M$ is a vector space of dimension $n$ \\
+$M$ is a finitely generated module & $M$ is a finite dimensional vector space \\
+$M$ is a nonzero cyclic module & $M$ is a 1-dimensional vector space \\
+$\varphi : M \to N$ is a $R$-module homomorphism & $\varphi : M \to N$ is a linear transformation \\
+$M$ and $N$ are isomorphic as $R$-modules & $M$ and $N$ are isomorphic vector spaces \\
+the subset $A$ of $M$ generates $M$ & the subset $A$ of $M$ spans $M$ \\
+$M = RA$ & each element of $M$ is a linear combination of elements of $A$ i.e., $M=\text{Span}(A)$
+\end{tabular} 
+\end{center}
+cf. pp. 408, 11.1 "Definitions and Basic Theory", Dummit and Foote \cite{DuFo2003}
+
+Vector spaces are free $F$-modules, i.e. vector spaces have bases.  \\
+
+\emph{Examples}:
+
+\begin{enumerate}
+	\item Space $V= F[x]$ of polynomials in the variable $x$ with coefficients from field $F$ is a vector space over $F$. elements $1,x,x^2, \dots $ are linearly independent by def. (i.e. polynomial is $0$ iff all its coefficients are $0$). Since these elements also span $V$, by def., they're a basis for $V$ (basis of vector space $V$ is ordered set of linearly independent vectors which span $V$)
+	\item Collection of solutions of a linear, homogeneous, constant coefficient differential equation (e.g. $y'' - 3y' + 2y = 0$) over $\mathbb{C}$ form a vector space over $\mathbb{C}$, since differentiation is a linear operator. \\
+ 	e.g. $e^t, e^{2t}$ are linearly independent ($ae^t + be^{2t} =0$, then so $a+b =0 \, (t=0)$, $ae + be^2 = 0 \, (t=1) \Longrightarrow a=b=0$) \\
+ 	By Thm. in differential eqns. that these elements span set of solutions of this eqn., hence form a basis.
+\end{enumerate}
+
+\begin{proposition}[1, Dummit and Foote \cite{DuFo2003}]
+	Assume set $\mathcal{A} = \lbrace v_1, v_2 , \dots v_n \rbrace$ spans vector space $V$ but no proper subset of $\mathcal{A}$ spans $V$. Then $\mathcal{A}$ basis of $V$. In particular, any finitely generated (finitely spanned) vector space over $F$ is a free $F$-module.
+\end{proposition}
+
+\begin{proof}
+\emph{Want}: $v_1, v_2, \dots v_n$ linearly independent. \\
+
+Suppose $\sum_{i=1}^n \alpha_i v_i = 0$ s.t. not all $\alpha_i = 0$. \\
+
+By reordering, assume $\alpha_1 \neq 0$ and then $v_1 = \frac{-1}{\alpha_1} (\alpha_2 v_2 + \dots + \alpha_n v_n)$. \\
+Then $\lbrace v_2, v_3, \dots v_n \rbrace$ also spans $V$ since any linear combination of $v_1, v_2, \dots v_n$ can be written as a linear combination of $v_2, v_3, \dots v_n$ using $v_1 = \frac{-1}{\alpha_1} (\alpha_2 v_2 + \dots + \alpha_n v_n)$. Contradiction.	
+	
+\end{proof}
+
+
+\emph{Example}. 
+
+Let $F$ be a field, consider $F[x]/(f(x))$ where $f(x) = x^n + \sum_{j=0}^{n-1} a_j x^j$ \\
+ideal $(f(x))$ is a subspace of vector space $F[x]$, quotient $F[x]/(f(x))$ is a vector space over $F$. \\
+
+By Euclidean Algorithm, $\forall \, $ polynomial $a(x) \in F[x]$ can be written uniquely in form
+\[
+a(x) = q(x) f(x) + r(x)
+\]
+where $r(x) \in F[x]$, and $0\leq \text{deg}{r(x)} \leq n -1$ \\
+Since $q(x) f(x) \in (f(x))$, it follows $\forall\, $ element of quotient is represented by polynomial $r(x)$ of degree $\leq n - 1$ \\
+2 distinct such polynomials cannot be the same in the quotient since this would say their difference (which is a polynomial of degree at most $n-1$) would be divisible by $f(x)$ (which is of degree $n$), i.e. 
+\[
+f(x) = x^n + \sum_{j=1}^{n-1} a_j x^j
+\]
+$\forall \, a(x) \in F[x]$, $a(x) = q(x) f(x) + r(x)$, $q(x) f(x) \in (f(x))$ (ideal) \\
+
+Consider $r_1(x)$, $\text{deg}(r_1(x)) = n_1 \leq n -1$, $\text{deg}(r_2(x)) = n_2 \leq n -1$. \\
+If $a_1(x), a_2(x) \in F[x]$, $\begin{aligned} 
+& \quad \\ 
+a_1(x) & = q_1(x) f(x) + r_1(x) \\ 
+a_2(x) & = q_2(x) f(x) + r_2(x) \end{aligned}$  $a_1(x) - a_2(x) = (q_1(x) - q_2(x)) f(x) + (r_1(x) - r_2(x))$.
+
+If $r_1(x) = r_2(x)$, then $a_1(x) - a_2(x) = (q_1(x) - q_2(x)) f(x)$, so $a_1(x) - a_2(x)$ divisible by $f(x)$.
+
+$\Longrightarrow \overline{1}, \overline{x}, \overline{x^2} , \dots \overline{x^{n-1}}$ (bar denotes image of these elements in the quotient) span $F[x]/f(x)$, as vector space over $F$. \\
+No proper subset of these elements also spans, hence elements give basis for $F[x]/(f(x))$.
+
+
+
 
 
 \section{Categories; Category Theory}  
@@ -9208,13 +9289,33 @@ and remember that $X_i = $ set of reduced words of type $\mathbf{i}$.
 
 It's clear that this yields a bijection $A\times Y_i \bigcup A\times (S_i - \lbrace 1 \rbrace) \times Y_i \to X$.  
 
-Let $x\in X$.  Then $x\in X_{\mathbf{i}}$ for some $\mathbf{i}$.  So $x$ is a reduced word of type $\mathbf{i}$: $x = (a;s_1\dots s_n)$.  Then clearly $x = (a;s_1\dots s_n) \mapsto (a,(1;s_1\dots s_n)) \in A\times Y_i$.  
+Let $x\in X$.  Then $x\in X_{\mathbf{i}}$ for some $\mathbf{i}$.  So $x$ is a reduced word of type $\mathbf{i}$: $x = (a;s_1\dots s_n)$.  Then clearly $x = (a;s_1\dots s_n) \mapsto (a,(1;s_1\dots s_n)) \in A\times Y_i$.  So $\forall \, x \in X$, $\exists (a, (1; s_1 \dots s_n) \in A \times Y_i)$. So we've proven, for part of bijection, the mapping going one way. \\
 
+Identify $A \bigcup A \times (S_i - \lbrace 1 \rbrace )$ with $G_i$, with \\
+\phantom{Identify} $a \in A$, \, $A \times (S_i - \lbrace 1 \rbrace) \ni (a, s_i)$. \\
 
+$G_i$ act on $G_i \times Y_i$ :  \\
+\[
+\begin{aligned}
+G_i \times (G_i \times Y_i) & \mapsto G_i \times Y_i \\
+g' \cdot (g, y) & = (g' g , y)
+\end{aligned}
+\]
 
+(group $G_i, Y_i \equiv $ set of reduced words) \\
 
+Transfer this to an action of $G_i$ on $X$ by means of $\theta_i$: \\
+\[
+\begin{aligned}
+G_i \times X & \mapsto X \\
+g' \cdot (a, s_1, \dots , s_n) & = (g'a, s_1 , \dots s_n) 
+\end{aligned}
+\]
+$X \equiv $ set of reduced words of type $\mathbf{i}$. \\
 
+restriction to $A \Longrightarrow a' \cdot (a; s_1 , \dots s_n ) = (a'a ; s_1, \dots s_n)$, which doesn't depend on $i$.
 
+We've now defined action of $G$ on $X$.
 
 \end{proof}
 
