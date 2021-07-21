@@ -1383,6 +1383,130 @@ which reduces to an autonomous system of ordinary differential equations (ODEs)
 \end{gathered} 
 \]
 
+\section{Push-forward, Pull-back}
+
+\subsection{Push-forward in coordinates, $f_*  : T_p M \to T_{f(p)}N$}
+
+Using Nakahara (2003) \cite{Naka2003}'s notation.
+
+Consider a smooth mapping $\begin{aligned} & \quad \\ 
+		& f : M \to N \\
+		& f_* : T_p M \to T_{f(p)}N \end{aligned}$, $\text{dim}M = m, \text{dim}N = n$.
+	
+With
+\[
+\begin{gathered}
+\begin{aligned}
+	& (U, \varphi) \subset M \\
+	& (V, \psi) \subset N
+\end{aligned} \quad \, \begin{aligned}
+& \varphi: U \to \mathbb{R}^m \\
+& \psi: V \to \mathbb{R}^n 
+\end{aligned} \quad \, \begin{aligned}
+& \varphi^i \equiv x^i : U \to \mathbb{R} \\ 
+& \psi^j \equiv y^j : V \to \mathbb{R} 
+\end{aligned}
+\end{gathered}
+\]
+
+Now $\begin{aligned} & \quad \\ 
+	& X \in T_p M \\ 
+	& Y \in T_{f(p)} N \end{aligned}$, so we can write $\begin{aligned} & \quad \\ 
+	& X = X^i \frac{\partial }{ \partial x^i} \\ 
+	& Y = Y^j \frac{ \partial }{ \partial y^j } \end{aligned}$, \, and $f_* X \in T_{f(p)}N$, so we can write $f_* X = Y^j \frac{\partial }{ \partial y^j}$. \\
+
+Let $\begin{aligned} & \quad \\ 
+	 & g\in \mathcal{F}(N) \\
+	 & g: N \to \mathbb{R} \end{aligned}$ \\
+ 
+Now $g\circ \psi^{-1} : \mathbb{R}^n \to \mathbb{R}$ or $g \circ \psi^{-1} : \psi(N) \to \mathbb{R}$. \\
+
+For notation, let $g\circ \psi^{-1} (y) \equiv g(y)$, in that we treat $y$ to be a point with coordinates in $\mathbb{R}^n$ notation-wise, and not as $y^j : V \to \mathbb{R}$. \\
+
+Since $g\circ f: M \to \mathbb{R}$, so $g\circ f \in \mathcal{F}(M)$.
+\begin{equation}\label{Eq:PushForwardCoordinateDerivation}
+\begin{gathered}
+\begin{aligned}
+& (f_* X)[g] \equiv X[g \circ f] \\
+& (f_* X)[g] = (Y^j \frac{\partial}{\partial y^j})[g] = Y^j \frac{\partial g}{ \partial y^j} = X^i \frac{\partial}{\partial x^i} [g \circ f] = X^i \frac{\partial}{\partial x^i} g(f^j(x)) = X^i \frac{\partial g}{ \partial y^j}(y) \frac{\partial f^j}{ \partial x^i}(x) = X^i \frac{\partial f^j}{ \partial x^i}(x) \frac{\partial}{\partial y^j} g
+\end{aligned} \\
+Y^j = X^i \frac{ \partial f^j}{\partial x^i} = X^i \frac{ \partial y^j}{\partial x^i} = F^j_{\, \, i}(x)X^i
+\end{gathered}
+\end{equation}
+where $f:M \to N$, but $\psi \circ f \circ \varphi^{-1} : \varphi(U) \subset \mathbb{R}^m \to \mathbb{R}^n$, but write this notation as $f^j(x) = y^j$. \\
+
+Also, notice that for Eq. \ref{Eq:PushForwardCoordinateDerivation},
+\[
+\begin{gathered}
+	g\circ f: M \to \mathbb{R} \\
+	g\circ \psi^{-1} \circ \psi \circ f \circ \varphi^{-1} \text{ and } g\circ f \circ \varphi^{-1} : \varphi(U) \subset \mathbb{R}^m \to \mathbb{R} \\
+	(g\circ \psi^{-1}) (\psi \circ f \circ \varphi^{1}) (x) \equiv g(y(x))
+\end{gathered}
+\]
+
+\subsection{Pullback in coordinates, $f^* : T^*_{f(p)}N \to T^*_pM$ } 
+
+For pullback $f^* : T^*_{f(p)}N \to T^*_pM$, \\
+since $\omega \in T^*_{f(p)}N$, then write as $\omega_j dy^j$ \\
+since $f^*\omega \in T^*_pM$, so $f^* \omega = \psi_i dx^i$ 
+
+\[
+\begin{gathered}
+\langle f^* \omega, X \rangle \equiv f^* \omega(X) = \langle \psi_i dx^i, X^j \frac{\partial }{ \partial x^j} \rangle \equiv \psi_i dx^i (X^j \frac{ \partial }{ \partial x^j} ) = \psi_i X^i = \langle \omega , f_* X \rangle  \equiv \omega(f_* X) = \\
+= \langle \omega_j dy^j , Y^i \frac{ \partial }{ \partial y^i} \rangle = \omega_j dy^j ( Y^i \frac{\partial }{ \partial y^i} ) = \omega_j dy^j \left( X^i \frac{ \partial y^k}{ \partial x^i } \frac{ \partial }{ \partial y^k } \right) = \omega_j \frac{\partial y^i }{ \partial x^i } X^i 
+\end{gathered}
+\]
+\[
+\Longrightarrow \psi_i = \omega_j \frac{\partial y^j}{ \partial x^i}
+\]
+
+Thus
+\begin{theorem}[Push-forward in coordinates] 
+\[
+\begin{gathered}
+	\text{ For smooth } f: M \to N, \quad \,  \begin{aligned} & \text{dim}M = m \\ & \text{dim} N = n \end{aligned} \\
+	\begin{aligned}
+		& X = X^i \frac{\partial }{ \partial x^i} \in T_p M \\
+		& Y = Y^j \frac{\partial }{ \partial y^j} \in T_{f(p)} N 		
+	\end{aligned} \quad \, \text{ then }
+\end{gathered} 
+\]
+
+
+\begin{equation}
+	\boxed{
+		\begin{gathered} 
+\begin{aligned}
+	& f_* : T_pM \to T_{f(p)} N \\
+	& f_* (X) = Y 
+\end{aligned} \quad \, \text{ s.t. } \\
+Y^j = X^i \frac{\partial y^j}{\partial x^i} 
+\end{gathered}
+}
+\end{equation}
+where $f_*$ is the \textbf{push-forward}, and where colloquially, $y^j = y^j(x)$, but actually $y^j \equiv \psi \circ f \circ \varphi^{-1}$
+\end{theorem} 
+
+And
+
+\begin{theorem}[Pullback in coordinates]
+For smooth $f: M \to N$, \quad \, $ \begin{aligned} & \quad \\ 
+	& \text{dim}M = m \\ 
+	& \text{dim} N = n \end{aligned}$ \\ 
+$\omega \in T^*_{f(p)}N$, $\psi = \psi_i dx^i \in T^*_pM$, then 
+
+\begin{equation}
+	\boxed{ 
+\begin{gathered} 
+\begin{aligned}
+& f^* : T^*_{f(p)}N \to T^*_p M \\
+& f^* \omega = \psi_i dx^i
+\end{aligned} \quad \, \text{ where }  \\
+\psi_i = \omega_j \frac{ \partial y^j}{ \partial x^i} 
+\end{gathered}
+}
+\end{equation}	
+\end{theorem} 
 
 \section{Tensors}
 
@@ -5137,6 +5261,65 @@ cf. Thm. 3.20 of Pr\'{a}staro (1996) \cite{Pras1996}
 \end{gathered}
 	\]
 	\end{proof}
+
+\subsection{Transformation of reference frames}
+
+cf. Sec. 4.2.1 "Transformation of reference frames", Kambe (2009) \cite{TKambe2009}.
+
+Let us take pt. $\mathbf{y}_b$ fixed to body, \\
+located at $\mathbf{x} = X^1 \mathbf{e}_1 + X^2 \mathbf{e}_2 + X^3 \mathbf{e}_3 = X^i \mathbf{e}_i$ at $t=0$, \\
+where $\mathbf{e}_i$ ($i=1,2,3$) are orthonormal basis fixed to space $F \equiv$ nonrotating \textbf{fixed} space (inertial space) \\
+
+By transformation matrix $A = (A^i_{ \, \, j }) \in \text{SO}(3)$, initial pt. $\mathbf{x} = (X^i)$ mapped to current pt. $\mathbf{y}_b$ at time $t$.
+\begin{equation}
+\mathbf{y}_b(t) = A(t) \mathbf{x} = y^i (t) \mathbf{e}_i, \quad \, y^i(t) = A^i_{ \, \, j}(t)X^j
+\end{equation}
+cf. Eq. (4.14) of Kambe (2009) \cite{TKambe2009}.
+
+i.e.
+
+\[
+\begin{gathered}
+\mathbf{y}_b(t) = A(t) \mathbf{x} = A^i_{\,\, k} e_i \otimes e^k x^l e_l = A^i_{ \, \, k} X^k e_i = y^i(t) e_i
+\end{gathered}
+\]
+
+EY: Observe that $A(t)$, $t\in [0,t]$ is a curve in $\text{SO}(3)$.
+
+On the other hand, relative to body frame $F_B$, which is the frame instantaneously fixed to the moving body. \\
+For the same pt., $\mathbf{y}_b(t)$, fixed to body, is
+\[
+\mathbf{Y}(=\mathbf{y}_b) = Y^1 \mathbf{b}_1 + Y^2 \mathbf{b}_2 + Y^3 \mathbf{b}_3 = Y^i \mathbf{b}_i
+\]
+where $\mathbf{b}_i$ ($i=1,2,3$) are orthonormal basis fixed to body which coincided with $\mathbf{e}_i$ ($i=1,2,3$) at $t=0$. 
+
+From property of a rigid body, it's required that $Y^i = X^i$ which don't change with $t$.
+
+According to Sec. 1.5.1(b) (Kambe (2009) \cite{TKambe2009}), basis transformation written as (1.40) Kambe(2009) \cite{TKambe2009}, where 
+
+\begin{equation}
+\mathbf{b}_k(t) = B^i_{ \, \, k}(t) \mathbf{e}_i \text{ hence } Y= Y^k \mathbf{b}_k = Y^k B^i_{ \, \, k} \mathbf{e}_i
+\end{equation} 
+(4.10) Kambe (2009) \cite{TKambe2009}, where $B = (B^i_{\, \, k}) \in \text{SO}(3)$, i.e. $BB^T = 1$.
+
+For the basis transformation derivation, recall the push forward transformation (cf. Kambe (2009) \cite{TKambe2009}),
+
+\[
+\begin{gathered}
+	\begin{aligned}
+	& \phi : M \to N \\
+	& \phi_* : T_xM \to T_y N \\
+	& y = \phi(x) = F(x)
+	\end{aligned} \\
+\begin{aligned} 
+& Y = \phi_* X = F_* X = \left. \frac{d}{dt} (F(p(t))) \right|_{t=0} \\
+& Y^k = (\phi_* X)^k = \left( \frac{ \partial F^k }{ \partial x^j } \right) X^j \\
+& Y = \phi_* X = \phi_* \left[ X^j \frac{ \partial }{ \partial x^j } \right] = X^j \phi_* \left[ \frac{ \partial }{ \partial x^j } \right] = X^j \frac{ \partial y^k}{ \partial x^j} \frac{ \partial }{ \partial y^k } = Y^k \frac{ \partial }{ \partial y^k } \\
+& Y^k  = \frac{ \partial y^k }{ \partial x^k } X^j
+\end{aligned} 
+\end{gathered}
+\]
+
 
 \section{Fluid Mechanics, Fluid Flow}
 
@@ -10817,6 +11000,9 @@ Anant R. Shastri. \textbf{Elements of Differential Topology}. CRC Press. 2011. I
 \bibitem{MHirsch1997}
 Morris W. Hirsch, \textbf{Differential Topology} (Graduate Texts in Mathematics), Graduate Texts in Mathematics (Book 33), Springer (September 16, 1997). ISBN-13: 978-0387901480
 
+\bibitem{Naka2003}
+Mikio Nakahara. \textbf{Geometry, Topology and Physics}. (Graduate Student Series in Physics) 2nd Edition. 2003. Taylor and Francis Group.
+
 \bibitem{AMS2008} 
 P.-A. Absil, R. Mahony, and R. Sepulchre.  \textbf{Optimization Algorithms on Matrix Manifolds}.  Princeton University Press.  2008.  ISBN 978-0-691-13298-3
 \url{https://press.princeton.edu/titles/8586.html}  
@@ -10867,6 +11053,8 @@ Y. Eliashberg, N. Mishachev, \emph{Introduction to the $h$-principle}, Grad. Stu
 \bibitem{Holm2011}
 Darryl D Holm. \textbf{Geometric Mechanics} - Part II: Rotating, Translating and Rolling. 2nd. Ed. Imperial College Publishing. (October 31, 2011) 
 
+\bibitem{TKambe2009}
+Tsutomu Kambe, \textbf{Geometrical Theory of Dynamical Systems and Fluid Flows}, Advanced Series in Nonlinear Dynamics: Volume 23, 2009, \url{http://www.worldscientific.com/worldscibooks/10.1142/7418} ISBN: 978-981-4282-24-6 (hardcover)
 
 \bibitem{Pert2013}
 G. J. Pert. \textbf{Introductory Fluid Mechanics for Physicists and Mathematicians}. 1st Edition. Wiley; 1 edition (May 28, 2013). ISBN-10: 1119944856. ISBN-13: 978-1119944850. 
