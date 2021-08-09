@@ -31,6 +31,7 @@ class SONMatrixRepresentation:
             # Transform 1 or more 2-vectors or fail.
             if multiplicand.shape[1] == self.N_:
 
+                # np.squeeze removes axes of length one from input a.
                 return np.squeeze(np.dot(self.mat_, multiplicand.T).T)
 
             else:

@@ -14,7 +14,7 @@ def setup_tests_fixture():
     return setup_values
 
 
-def test_rotation_about_x_by_45degrees(setup_tests_fixture):
+def test_rotation_about_x_by_45degree(setup_tests_fixture):
 
     Ox45deg = SO3Matrix.rotation_about_x(np.deg2rad(45))
 
