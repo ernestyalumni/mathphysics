@@ -6007,6 +6007,32 @@ assume the orifice is carefully designed so streamlines at orifice exit are para
 
 cf. Example 3.3 in Sabersky, et. al. (1998) \cite{SAHG1998}. Example of a problem in which nonsteady terms cannot be neglected. 
 
+\section{Viscous Fluids, Navier-Stokes Equation Applications}
+
+cf. Ch. 2, Viscous Fluids, Sec. 15. The equations of motions of a viscous fluid, Landau and Lifshitz (1987) \cite{LLandauELifshitz1987}
+
+Recall Navier-Stokes equation for \emph{compressible, viscous} fluid flow:
+
+\begin{equation}
+\boxed{
+\rho \left( \frac{\partial u^i }{ \partial t} + u^j \frac{ \partial u^i }{ \partial x^j } \right) = - \frac{ \partial p }{ \partial x^i } + (\lambda + \mu ) \frac{\partial }{ \partial x^i } \text{div} u + \mu \Delta u^i
+}
+\end{equation}
+
+Compare this with the expression in Eq. 15.6, Landau and Lifshitz (1987) \cite{LLandauELifshitz1987}
+
+\begin{equation}
+\begin{gathered}
+	\rho \left[ \frac{ \partial \mathbf{v}}{ \partial t } + (\mathbf{v} \cdot \textbf{grad} ) \mathbf{v} \right] = -\textbf{grad} p + \eta \Delta \mathbf{v} + (\zeta + \frac{1}{3} \eta) \textbf{grad} \text{div} \mathbf{v}
+\end{gathered}
+\end{equation}
+
+$\mu \equiv \eta$, fluid isotropic, so properties described by scalar quantities. \\
+$\mu \equiv \eta$ viscosity coefficients, \\
+$\lambda + \mu \equiv \zeta + \frac{1}{3} \eta$, $\zeta \equiv $ second viscosity.
+
+\subsection{Flow in a pipe}
+
 
 
 \section{Thermodynamics}
@@ -11192,6 +11218,10 @@ G. J. Pert. \textbf{Introductory Fluid Mechanics for Physicists and Mathematicia
 
 \bibitem{SAHG1998}
 Rolf H. Sabersky, Allen J. Acosta, Edward G. Hauptmann, E.M. Gates.  \textbf{Fluid Flow: A First Course in Fluid Mechanics} (4th Edition).  Prentice Hall. (August 22, 1998).  ISBN-13: 978-0135763728
+
+\bibitem{LLandauELifshitz1987}
+L. D. Landau, E.M. Lifshitz, \textbf{Fluid Mechanics}, Second Edition: Volume 6 (Course of Theoretical Physics S) Butterworth-Heinemann, 1987, ISBN-13: 978-0750627672
+
 
 \bibitem{Grei2004}
 Walter Greiner. \textbf{Classical Mechanics}: \emph{Point Particles and Relativity} (Classical Theoretical Physics). Springer New York; 2004 edition (December 4, 2003). ISBN-13: 978-0387955865
