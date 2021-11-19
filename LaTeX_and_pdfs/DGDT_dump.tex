@@ -5618,9 +5618,11 @@ So instead of how Kambe assumed above that the position is fixed in the body fra
 \[
 \begin{gathered}
 \frac{d \mathbf{y}}{dt}(t) = \frac{d}{dt}(g_t \mathbf{x} ) = \dot{g}_t \mathbf{x} + g_t \dot{\mathbf{x}}(t) = \dot{g}_t \mathbf{x} + g_t \mathbf{v}_{\mathbf{x} } = \overline{\Omega} g_t \mathbf{x} + g_t \mathbf{v}_{\mathbf{x}} \\
-\Longrightarrow \mathbf{v}_g = \mathbf{\omega} \times \mathbf{y} + g_t \mathbf{v}_{\mathbf{x}}
 \end{gathered}
 \]
+\begin{equation}\label{Eq:VelocityTransformationFromRotatingFrame}
+	\Longrightarrow \mathbf{v}_y = \mathbf{\omega} \times \mathbf{y} + g_t \mathbf{v}_{\mathbf{x}}
+\end{equation}
 
 Follow the development in Hand and Finch (1998) \cite{HaFi1998}:
 \begin{equation}
@@ -5629,7 +5631,13 @@ Follow the development in Hand and Finch (1998) \cite{HaFi1998}:
 & = \mathbf{\omega} \times \mathbf{r} + \left. \mathbf{v} \right|_{\text{body}}
 \end{aligned}
 \end{equation}
-This is essentially Eqns. (7.28), (7.29)  Hand and Finch (1998) \cite{HaFi1998}. 
+What we wrote is essentially a summary of Eqns. (7.28), (7.29)  Hand and Finch (1998) \cite{HaFi1998}. 
+
+Compare this, namely Eq. \ref{Eq:VelocityTransformationFromRotatingFrame}, with wikipedia (\href{https://en.wikipedia.org/wiki/Rotating_reference_frame}{"Rotating reference frame"}), where the velocities in the 2 reference frames are related by:
+\begin{equation}
+	\mathbf{v}_i = \mathbf{v}_r + \mathbf{\Omega} \times \mathbf{r}
+\end{equation}
+where $i \equiv $ inertial frame of reference, $r \equiv $ rotating reference frame.
 
 Now
 \[
@@ -5651,7 +5659,7 @@ Now
 \frac{d}{dt}(g_t \mathbf{v}_{\mathbf{x}} ) = \dot{g}_t \mathbf{v}_{\mathbf{x}} + g_t \mathbf{a}_{\mathbf{x}} = \mathbf{\omega} \times g_t \mathbf{v}_{\mathbf{x}} + g_t \mathbf{a}_{\mathbf{x}} \\
 \end{gathered}
 \]
-\begin{equation}
+\begin{equation}\label{Eq:AccelerationTransformationFromRotatingFrame}
 \Longrightarrow \mathbf{a}_y =   \mathbf{\omega} \times (\mathbf{\omega} \times \mathbf{y} )  + 2  \mathbf{\omega} \times g_t \mathbf{v}_{\mathbf{x}} + \dot{\mathbf{\omega} } \times \mathbf{y} + g_t \mathbf{a}_{\mathbf{x}}
 \end{equation}
 
@@ -5662,6 +5670,13 @@ Compare this to  Hand and Finch (1998) \cite{HaFi1998}, Eq. 7.32:
 \end{equation} 
 
 cf. pp. 134 Kambe (2009) \cite{TKambe2009}
+
+Now compare this, namely Eq. \ref{Eq:AccelerationTransformationFromRotatingFrame}, with wikipedia (\href{https://en.wikipedia.org/wiki/Rotating_reference_frame}{"Rotating reference frame"}), where the accelerations in the 2 reference frames are related by:
+
+\begin{equation}
+	\mathbf{a}_r = \mathbf{a}_i - 2\mathbf{\Omega} \times \mathbf{v}_r - \mathbf{\Omega} \times ( \mathbf{\Omega} \times \mathbf{r}) - \frac{d\mathbf{\Omega}}{dt} \times \mathbf{r}
+\end{equation}
+where $\mathbf{a}_r := \left( \frac{ d^2 \mathbf{r}}{dt^2} \right)_r$ is the apparent acceleration in the rotating reference frame.
 
 Corresponding to right-invariant $\dot{g}_t = \mathbf{\omega} g_t$ of the tangent vector, the angular momentum is written in the right-invariant way as 
 \begin{equation}
