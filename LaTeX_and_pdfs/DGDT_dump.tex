@@ -5459,6 +5459,17 @@ i.e.
 
 EY: Observe that $A(t)$, $t\in [0,t]$ is a curve in $\text{SO}(3)$.
 
+In other words, we considered a point in the fixed frame $F$ given by frame $\lbrace \mathbf{e}_i \rbrace$:
+\[
+\mathbf{x} = X^i \mathbf{e}_i \text{ at } t = 0
+\]
+
+Then, we considered an "active" rotation $A \in SO(3)$ of this point, so 
+\begin{equation}
+	\mathbf{y}(t) = A(t) \mathbf{x} = A^i_{ \, \, j}(t) X^j \mathbf{e}_i = y^i(t) \mathbf{e}_i
+\end{equation}
+Indeed, consider $A = \left[ \begin{matrix} c & -s & \\ s & c & \\ & & 1 \end{matrix} \right]$. Then $A$ would rotate points in the $x-y$ plane, such as $[1, 0, 0]$, $[0, 1, 0]$ counter-clockwise in the positive $z$ axis direction.
+
 On the other hand, relative to body frame $F_B$, which is the frame instantaneously fixed to the moving body. \\
 For the same pt., $\mathbf{y}_b(t)$, fixed to body, is
 \[
@@ -5471,48 +5482,71 @@ From property of a rigid body, it's required that $Y^i = X^i$ which don't change
 According to Sec. 1.5.1(b) (Kambe (2009) \cite{TKambe2009}), basis transformation written as (1.40) Kambe(2009) \cite{TKambe2009}, where 
 
 \begin{equation}
-\mathbf{b}_k(t) = B^i_{ \, \, k}(t) \mathbf{e}_i \text{ hence } Y= Y^k \mathbf{b}_k = Y^k B^i_{ \, \, k} \mathbf{e}_i
+\begin{gathered}
+	\mathbf{b}_i = \mathbf{b}_i(t) = \mathbf{e}_j B^j_{\, \, i}(t) \\
+		\text{ Then } \mathbf{Y} = Y^i \mathbf{b}_i = Y^i \mathbf{e}_j B^j_{ \, \, i} = \mathbf{e}_j B^j_{\, \, i } Y^i
+\end{gathered}
+%\mathbf{b}_k(t) = B_k^{ \, \, j}(t) \mathbf{e}_j \text{ hence } Y= Y^k \mathbf{b}_k = Y^k B_k^{ \, \, j} \mathbf{e}_j
 \end{equation} 
-(4.10) Kambe (2009) \cite{TKambe2009}, where $B = (B^i_{\, \, k}) \in \text{SO}(3)$, i.e. $BB^T = 1$. \\
+(4.10) Kambe (2009) \cite{TKambe2009}, where $B = (B_k^{\, \, j}) \in \text{SO}(3)$, i.e. $BB^T = 1$. \\
 
-Now $A = B$ because consider a basis element as the starting vector. So if $\mathbf{x} = \delta_i^{ \, \, k} \mathbf{e}_k$, then
+Note that 
+\begin{equation}
+	\mathbf{Y} = Y^i \mathbf{b}_i = \mathbf{e}_j B^j_{\quad i} Y^i = A^j_{\quad k} X^k \mathbf{e}_j 
+\end{equation}
+implies that $B: F' \to F$ where $F'$ rotating frame, $F$ fixed frame, i.e. $B$ is a coordinate transformation from coordinates in the $F'$ rotating frame into coordinates in the $F$ fixed frame.
+
+Indeed, consider 
 \[
+B = \left[ \begin{matrix} c & -s & \\ s & c & \\ & & 1 \end{matrix} \right]. \text{ Then } B \left[ \begin{matrix} 1 \\ 0 \\ 0 \end{matrix} \right] = [c, s, 0] (\text{in $\lbrace \mathbf{e}_j \rbrace$ frame})
+\]
+
+%Now $A = B$ because consider a basis element as the starting vector. So if $\mathbf{x} = \delta_i^{ \, \, k} \mathbf{e}_k$, then
+%\[
+%\begin{gathered}
+%	\mathbf{y}_b(t) = A(t) \mathbf{x} = A^i_{ \, \, k} e_i \otimes e^k \delta_l^{\, \, j} \mathbf{e}_j = A^i_{ \, \, j} e_i \delta_l^{ \, \, j} = A^i_{\, \, l} \mathbf{e}_i
+%\end{gathered}
+%\]
+%Now
+%\[
+%\begin{gathered}
+%Y^i \mathbf{b}_i = \delta^i_{\, \, l} B^k_{ \, \, i}(t) \mathbf{e}_k = B^k_{ \, \, l}(t) \mathbf{e}_k
+%\end{gathered}
+%\]
+%where $Y^i = \delta ^i_{\, \, l}$ because in the beginning, $\mathbf{Y}$ coincided with a basis vector $\mathbf{e}_l$.
+
+%Thus, since $Y^i \mathbf{b}_i = \mathbf{Y} = \mathbf{y}_b(t)$, then $\boxed{A = B}$.
+
+%Now for 
+%\[
+%\begin{gathered}
+%A(t) : \mathbf{x} \mapsto \mathbf{y}_b(t) \\
+%y^i_b = A^i_{ \, \ ,j} x^j
+%\end{gathered}
+%\]
+
+%Now 
+%\[
+%\begin{gathered}
+%\mathbf{b}_k(t) = B^i_{\, \, k}(t) \mathbf{e}_i \\
+%\mathbf{Y} = Y^k\mathbf{b}_k = Y^k B^i_{ \, \, k}(t) \mathbf{e}_i 
+%\end{gathered}
+%\]
+
+%Since $\mathbf{Y} = \mathbf{y}_b(t)$, then 
+%\[
+%Y^k B^i_{\,\, k}(t) = A^i_{\,\, j}x^j 
+%\]
+%So $X = Y$.
+
+Now recall that $\mathbf{x} = X^i \mathbf{e}_i$ at $t=0$. $\mathbf{Y} = Y^i \mathbf{b}_i$ and $\lbrace \mathbf{b}_i \rbrace$ frame axes had coincided with $\lbrace \mathbf{e}_i \rbrace$ frame axes at $t=0$. $Y^i$'s are constant, so $Y^i = X^i$
+
+So for 
+\begin{equation}\label{Eq:ActiveAndPassiveRotationsEqual}
 \begin{gathered}
-	\mathbf{y}_b(t) = A(t) \mathbf{x} = A^i_{ \, \, k} e_i \otimes e^k \delta_l^{\, \, j} \mathbf{e}_j = A^i_{ \, \, j} e_i \delta_l^{ \, \, j} = A^i_{\, \, l} \mathbf{e}_i
+\mathbf{Y} = Y^i \mathbf{b}_i = \mathbf{e}_j B^j_{\, \, i} Y^i = A^j_{\, \, k}(t) X^k \mathbf{e}_j \Longrightarrow B^j_{\, \, i} Y^i = A^j_{\, \, k}(t) X^k = A^j_{\, \, i} Y^i \text{ so } \boxed{ B = A } \text{ since $X^i$ arbitrary }
 \end{gathered}
-\]
-Now
-\[
-\begin{gathered}
-Y^i \mathbf{b}_i = \delta^i_{\, \, l} B^k_{ \, \, i}(t) \mathbf{e}_k = B^k_{ \, \, l}(t) \mathbf{e}_k
-\end{gathered}
-\]
-where $Y^i = \delta ^i_{\, \, l}$ because in the beginning, $\mathbf{Y}$ coincided with a basis vector $\mathbf{e}_l$.
-
-Thus, since $Y^i \mathbf{b}_i = \mathbf{Y} = \mathbf{y}_b(t)$, then $\boxed{A = B}$.
-
-Now for 
-\[
-\begin{gathered}
-A(t) : \mathbf{x} \mapsto \mathbf{y}_b(t) \\
-y^i_b = A^i_{ \, \ ,j} x^j
-\end{gathered}
-\]
-
-Now 
-\[
-\begin{gathered}
-\mathbf{b}_k(t) = B^i_{\, \, k}(t) \mathbf{e}_i \\
-\mathbf{Y} = Y^k\mathbf{b}_k = Y^k B^i_{ \, \, k}(t) \mathbf{e}_i 
-\end{gathered}
-\]
-
-Since $\mathbf{Y} = \mathbf{y}_b(t)$, then 
-\[
-Y^k B^i_{\,\, k}(t) = A^i_{\,\, j}x^j 
-\]
-So $X = Y$.
-
+\end{equation}
 
 For the basis transformation derivation, recall the push forward transformation (cf. Kambe (2009) \cite{TKambe2009}),
 
@@ -5531,6 +5565,117 @@ For the basis transformation derivation, recall the push forward transformation 
 \end{aligned} 
 \end{gathered}
 \]
+
+\subsubsection{Direction Cosine Matrix (DCM)}
+
+cf. pp. 134, 4.1 "The Independent Coordinates of a Rigid Body", Goldstein, Poole, Safko (2001) \cite{GPS2001}
+
+Consider frame $F, \, \lbrace \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3 \rbrace$, \\
+\phantom{Consider} frame $F', \lbrace \mathbf{e}'_1, \mathbf{e}'_2, \mathbf{e}'_3 \rbrace$ 
+
+If 
+\[
+\begin{gathered}
+	\mathbf{e}_i' = C_{ij} \mathbf{e}_j
+\end{gathered}
+\]
+and so then
+\[
+\begin{gathered}
+	\mathbf{e}'_i \cdot \mathbf{e}_k = C_{ij} \delta_{jk} = C_{ik} \\
+	\Longrightarrow \mathbf{e}_i' = (\mathbf{e}_i' \cdot \mathbf{e}_j ) \mathbf{e}_j
+\end{gathered}
+\]
+So for $\mathbf{r}' = y^i \mathbf{e}_i' = x^j \mathbf{e}_j$, 
+\begin{equation}\label{Eq:DirectionCosineMatrixCoordinateTransformation}
+\begin{gathered}
+	\Longrightarrow y^k = x^j (\mathbf{e}_k' \cdot \mathbf{e}_j )  \text{ or } y^i = (\mathbf{e}'_i \cdot \mathbf{e}_j) x^j
+\end{gathered}
+\end{equation}
+
+So $\cos{\theta_{ij}} = \mathbf{e}_i' \cdot \mathbf{e}_j$ completely specifies the orientation of $F'$ relative to $F$.
+
+Now use this fact, that $\mathbf{e}_m \cdot \mathbf{e}_m' = \delta_{mm'}$, to show that
+\[
+\begin{gathered}
+	\mathbf{e}_m \cdot \mathbf{e}_m' = \delta_{mm'} = (\mathbf{e}_m \cdot \mathbf{e}'_l ) \mathbf{e}'_l \cdot (\mathbf{e}_{m'} \cdot \mathbf{e}'_{l'}) \mathbf{e}'_{l'} = (\mathbf{e}_m \cdot \mathbf{e}'_l)(\mathbf{e}_{m'} \cdot \mathbf{e}'_{l'}) \delta_{ll'} = (\mathbf{e}'_l \cdot \mathbf{e}_m )( \mathbf{e}'_l \cdot \mathbf{e}_{m'}) = \cos{\theta_{lm}} \cos{\theta_{lm'} }
+\end{gathered}
+\]
+
+So $\cos{\theta_{ij}}$ are 9 coordinates that can't be generalized coordinates.
+
+Be careful about the interpretation of the DCM. Note that we had derived the following from Eq. \ref{Eq:DirectionCosineMatrixCoordinateTransformation}:
+\begin{equation}
+\begin{gathered}
+	\boxed{ y^i = C_{ij} x^j } \text{ with } \\
+	\mathbf{e}'_i = C_{ij} \mathbf{e}_j \text{ and } \boxed{ C_{ij} = \mathbf{e}'_i \cdot \mathbf{e}_j }
+\end{gathered}	
+\end{equation}
+So this is a transformation of the same vector between two different frames, not an "active" rotation of the vector itself. Nevertheless, $C_{ij} : F \to F'$, a mapping from frame $F$ to $F'$.
+
+For example, consider
+\[
+\begin{aligned}
+& \mathbf{e}'_x = \cos{(\omega t)} \mathbf{e}_x - \sin{(\omega t)} \mathbf{e}_y \\ 
+& \mathbf{e}'_y = \sin{(\omega t)} \mathbf{e}_x + \cos{(\omega t)} \mathbf{e}_y 	
+\end{aligned}
+\]
+This isn't an active rotation in the negative z, clockwise direction, but this is the same vector with coordinates in a frame that's rotating in the counterclockwise, positive z direction.
+
+\subsection{Euler Angles}
+
+cf. pp. 150, 4.4 "Euler Angles", Goldstein, Poole, Safko (2001) \cite{GPS2001}
+
+rotation 1: about vertical axis, gives \textbf{heading} or \textbf{yaw} angle \\
+rotation 2: around perpendicular axis fixed in vehicle and normal to figure axis; it's measured by the \emph{pitch} or \emph{attitude} angle \\
+rotation 3: about figure axis of vehicle, \emph{roll} or \emph{bank} angle.
+
+$\Longrightarrow$ xyz - convention, or \emph{Tait-Bryan} angles.
+
+\solutionhead{Exercise 24, Ch. 4 Goldstein, Poole, Safko (2001) \cite{GPS2001}}
+
+Recall that 
+\[
+\begin{gathered}
+	\mathbf{a}_r = \mathbf{a}_i - 2\mathbf{\omega} \times \mathbf{v}_r - \mathbf{\omega} \times (\mathbf{\omega} \times \mathbf{r}) - \dot{\mathbf{\omega}} \times \mathbf{r}
+\end{gathered}
+\]
+Let $\dot{\mathbf{\omega}} = 0$.
+
+Then consider, multiplying by $m$,
+\[
+\begin{gathered}
+	m \mathbf{a}_r = m \mathbf{a}_i - 2 m \mathbf{\omega} \times \mathbf{v}_r - m \mathbf{\omega} \times (\mathbf{\omega} \times \mathbf{r}) \text{ or }  \\
+		\mathbf{F}_r = \mathbf{F}_i - 2 m \mathbf{\omega} \times \mathbf{v}_r - m \mathbf{\omega} \times (\mathbf{\omega} \times \mathbf{r})
+\end{gathered}
+\]
+where $\mathbf{F}_r$ is the apparent force experienced by the bug in the rotating frame, and $\mathbf{F}_i$ are the forces in the inertial reference frame.
+
+By the geometry of the wheel and the problem, and taking the instantaneous coordinate axis $\mathbf{e}_r$ to be same for the rotating and inertial frames,
+\[
+\begin{gathered}
+	-\mathbf{\omega} \times ( \mathbf{\omega} \times \mathbf{r}) = \omega^2 R \mathbf{e}_r \\
+	-2 \mathbf{\omega} \times \mathbf{v}_r = 2 \omega v_r (-+ \mathbf{e}_y)
+\end{gathered}
+\]
+where the direction of the last expression for the Coriolis force is negative when the apparent velocity is in the positive radial direction and vice versa.
+
+Suppose that the frictional force acts in the opposite direction of the force. In the rotating frame, consider the sum of the 2 fictitious forces, the Coriolis force and centripetal force, which happen to be orthogonal to each other:
+
+\[
+\begin{gathered}
+	\| \mathbf{F}_{\text{fic}} \| = \| ( - 2 \mathbf{\omega} \times \mathbf{v}_r  + \mathbf{\omega} \times (\mathbf{\omega} \times \mathbf{r})) m \| = m \sqrt{(2\omega v_r)^2 + (\omega^2 R)^2 } = m \omega \sqrt{(2v_r)^2 + (\omega R)^2 }
+\end{gathered}
+\]
+
+When $F_{\text{fric}} \geq F_{\text{fic}}$, then 
+\[
+\begin{gathered}
+	(\mu g)^2 \geq \omega^2 (4 v_r^2 + \omega^2 R^2) \text{ or } \left( \frac{ \mu g}{\omega} \right)^2 \geq 4 v_r^2 + \omega^2 R^2 \text{ or } \omega^2 R^2 \leq \left( \frac{\mu g}{\omega} \right)^2 - 4 v_r^2
+\end{gathered}
+\]
+
+With $v_r = 0.5 \, \text{cm}/s^2 $ while $g = 9.8 \, m/s^2$, the Coriolis force is negligible compared to max. frictional force.
 
 \subsection{Right Invariance, Left Invariance, Angular Velocity}
 
@@ -5560,6 +5705,43 @@ so
 \overline{\Omega} = \dot{g}_t \circ (g_t)^{-1}
 \end{equation}
 
+In my notation, for $O \in SO(N)$,
+\begin{equation}
+	\begin{gathered}
+		\widehat{\omega} = \dot{O} O^T		
+	\end{gathered}
+\end{equation}
+
+\subsubsection{2 Physical Interpretations of rotations: frame transformation and "active" rotation}
+
+Consider $\begin{aligned} & \quad \\ 
+	& O\in SO(N), \, N =3 \\
+	& O:\mathbb{R}^N \to \mathbb{R}^N \end{aligned}$. \\ 
+
+$O$ can be interpreted as either \\
+$O:$ rotating body frame $\to$ lab frame, i.e. \\
+$O: K \to K'$ (notation used in Hand and Finch (1998) \cite{HaFi1998} where $K$ is the body frame, $K'$ is the fixed frame) \\ 
+$O:\mathbb{r} \mapsto \mathbf{r}'$ \\
+
+or $O$ interpreted as "active" rotation of vector in $\mathbb{R}^N$. \\
+
+Consider this example:
+\begin{equation}
+\begin{gathered}
+O = \left[ \begin{matrix} \cos{(\omega t)} & - \sin{(\omega t)} & 0 \\
+	\sin{(\omega t)} & \cos{(\omega t)} & \\
+	& & 1 \end{matrix} \right] \quad \quad \, \dot{O} = \omega \left[ \begin{matrix} -s & -c & \\ 
+	c & -s & \\
+	& & \end{matrix} \right] \\
+\dot{O} O^T = \omega \left[ \begin{matrix} -s & -c & \\ c & -s & \\ & & \end{matrix} \right] \left[ \begin{matrix} c & s & \\ -s & c & \\ & & 1 \end{matrix} \right] = \omega \left[ \begin{matrix} & -1 & \\ 1 & & \\ & & \end{matrix} \right] = \widehat{\omega} 
+\end{gathered}
+\end{equation}
+s.t. $\mathbf{\omega} = \omega \mathbf{e}_z$.
+
+$\dot{O} O^T$ is the angular velocity of the rotating frame, or angular velocity of how much the vector in $\mathbb{R}^N$ is rotated by.
+
+\subsubsection{Instantaneous Angular Velocity}
+
 Given $\mathbf{r} = (r^1, r^2 , r^3) \in M$, an infinitesimal transformation of $\mathbf{r}$ by $\xi(t) = 1 + t\mathbf{a} + O(t^2)$. 
 \[
 \begin{gathered}
@@ -5577,6 +5759,39 @@ Make the following notation change from Kambe's (2009) \cite{TKambe2009}:
 \widehat{\Omega} \equiv \mathbf{\omega}
 \end{equation}
 where $\mathbf{\omega}$ is an axial vector of the angular velocity of body rotation relative to the \emph{fixed} reference frame $F$ (because in body frame, $F_B$, there's no rotation!).
+
+\solutionhead{Question 9: $U$ Matrix, pp. 265, Ch. 7 "Rotating Coordinate Systems", Hand and Finch (1998) \cite{HaFi1998}}
+
+Find the form of $\mathbf{U}$ for a fixed rotation $\theta$ about the $X$ axis: 
+\[
+\begin{gathered}
+	O = \left[ \begin{matrix} & & \\ & c & -s \\ & s & c \end{matrix} \right]
+\end{gathered}
+\]
+
+Then
+\[
+\begin{gathered}
+	\dot{O} = \omega \left[ \begin{matrix} & & \\ & -s & -c \\ & c & -s \end{matrix} \right] \\
+	\dot{O}O^T = \omega \left[ \begin{matrix} & & \\ & -s & -c \\ & c & -s \end{matrix} \right] \left[ \begin{matrix} & & \\ & c & s \\ & -s & c \end{matrix} \right] = \omega \left[ \begin{matrix} & & \\ & & -1 \\ & 1 & \end{matrix} \right] 
+\end{gathered}
+\]
+Thus 
+\[
+\dot{O}O^T = \widehat{\omega} \mapsto \mathbf{\omega} = \omega \mathbf{e}_x
+\]
+
+So we get the form for $\mathbf{\omega}$. Now consider
+\[
+\begin{gathered}
+\widehat{\omega}_b = O^T \widehat{\omega} O = \left[ \begin{matrix} & & \\ & c & s \\ & -s & c \end{matrix} \right] \omega \left[ \begin{matrix} & & \\ & & -1 \\ & 1 & \end{matrix} \right] O = \omega \left[ \begin{matrix} & & \\ & s & -c \\ & c & s \end{matrix} \right] \left[ \begin{matrix} & & \\ & c & s \\ & s & c \end{matrix} \right] = \omega \left[ \begin{matrix} & & \\ & & -1 \\ & 1 & \end{matrix} \right]	
+\end{gathered}
+\]
+$\widehat{\omega}_b$ is $\widehat{\omega}$ expressed in body coordinates. $\widehat{\omega} = \widehat{\omega}_b$ in this particular case because $\widehat{\omega}_b$ is the angular velocity measured in the inertial frame, but expressed in the body frame coordinates.
+
+See \url{https://physics.stackexchange.com/questions/88398/why-is-body-frame-angular-velocity-nonzero/88401#88401}
+
+
 
 For $g_t$ operating on $\mathbf{x}$, let's follow Kambe's development in pp. 133-134, Eqns. (4.17)-(4.19) (Kambe (2009) \cite{TKambe2009}). So then
 \[
@@ -5678,6 +5893,23 @@ Now compare this, namely Eq. \ref{Eq:AccelerationTransformationFromRotatingFrame
 \end{equation}
 where $\mathbf{a}_r := \left( \frac{ d^2 \mathbf{r}}{dt^2} \right)_r$ is the apparent acceleration in the rotating reference frame.
 
+\solutionhead{Ch. 7, Angular Velocity, Problem 1, (Locomotive) Hand and Finch (1998) \cite{HaFi1998}}
+
+\begin{enumerate}
+	\item[(a)]
+	\item[(b)]
+	\item[(c)] \[
+	\begin{aligned}
+		& \widehat{\omega} = \dot{O} O^T \\
+		& O = O_2 O_1 \text{ and } O^T = O_1^T O_2^T \\
+		& \dot{O} = \dot{O}_2 O_1 + O_2 \dot{O}_1 \\
+		& \dot{O}O^T = \dot{O}_2 O_2^T + O_2 \dot{O}_1 O_1^T O_2^T = \widehat{\omega}_2 + O_2 \widehat{\omega}_1 O_2^T = \widehat{\omega}
+	\end{aligned}
+	\]
+\end{enumerate}
+
+
+
 Corresponding to right-invariant $\dot{g}_t = \mathbf{\omega} g_t$ of the tangent vector, the angular momentum is written in the right-invariant way as 
 \begin{equation}
 M_t = J \dot{g}_t = \overline{M} g_t, \quad \, \overline{M} = J \mathbf{\omega}
@@ -5707,12 +5939,47 @@ as a change of notation, I will also write
 \[
 \omega_b = g^{-1}_t \omega g_t
 \]
-As important point is that tangent vector $\dot{g}_t$ is represented by \textbf{left-invariant} form
+An important point is that tangent vector $\dot{g}_t$ is represented by \textbf{left-invariant} form
 \[
 \widehat{\omega}_b = g_t^{-1} \dot{g}_t \xrightarrow{ L_{g_t} } L_{g_t} \widehat{\omega}_b = g_t \widehat{\omega}_b = \dot{g}_t \text{ or } \dot{g}_t = g_t \widehat{\omega}_b
 \]
 by $\omega_b$ at $1$, whereas it's also represented by right-invariant form $\dot{g}_t = \widehat{\omega} g_t$ with $\widehat{\omega}$ at $1$ in Eqn. (4.17) of  Kambe (2009) \cite{TKambe2009}, where, recall $\dot{g}_t = \frac{dg}{dt} = \frac{dA}{dt}$.
 
+Indeed, note that for 
+\[
+\begin{gathered}
+	\mathbf{b}_i(t) = \mathbf{e}_j B^j_{\quad i}(t) \text{ then } \\
+	\mathbf{b}_i(t+ \delta t) = \mathbf{e}_j B^j_{\quad i}(t+ \delta t) = \mathbf{e}_j B^j_{\quad k} (t) B^k_{\quad i}(\delta t)
+\end{gathered}
+\]
+where the last step is because since $\mathbf{e}_j$ on the left forces an infinitesimal change to be from the right.
+
+Then 
+\[
+\begin{gathered}
+	B(t+ \delta t) - B(t) = B(t) B(\delta t) - B(t) = B(t) (B(\delta t) - 1) \text{ so } \dot{B}(t) = B(t) Y_1
+\end{gathered}
+\]
+where $Y_1 \in \mathfrak{so}(N)$ and $Y_1 := \lim_{\delta t \to 0} \frac{B(\delta t) - 1 }{ \delta t}$.
+
+
+Also, recall that
+\[
+\begin{gathered}
+	\mathbf{Y} = Y^i \mathbf{b}_i = \mathbf{e}_j B^j_{\quad i} Y^i = X^j \mathbf{e}_j \text{ implies that } B:F' \to F
+\end{gathered}
+\]
+where $F'$ is a rotating frame, $F$ is a fixed frame, i.e. $B$ is a coordinate frame transformation.
+
+Due to right-translation property of $B(t)$, then $\frac{dB}{dt} = B(t) \widehat{\Omega}_b$. Thus, we obtain a left-invariant vector field.
+
+From Eq. \ref{Eq:ActiveAndPassiveRotationsEqual}, $A = B$ but
+\begin{equation}
+	\begin{gathered}
+		\frac{dA}{dt} = \widehat{\Omega} A \\
+		\frac{dA}{dt} = \frac{dB}{dt} = B(t) \widehat{\Omega}_b = \widehat{\Omega}A(t) \text{ or } \widehat{\Omega}_b = A^{-1} \widehat{\Omega} A
+	\end{gathered}
+\end{equation}
 
 \section{Rigid Body Dynamics, Rigid Body Motion}
 
@@ -11491,6 +11758,9 @@ Tsutomu Kambe, \textbf{Geometrical Theory of Dynamical Systems and Fluid Flows},
 
 \bibitem{HaFi1998}
 Louis N. Hand and Janet D. Finch. \textbf{Analyrical Mechanics}. Cambridge University Press. 1998. 
+
+\bibitem{GPS2001}
+Herbert Goldstein, Charles Poole, John Safko. \textbf{Classical Mechanics}. Pearson; 3rd edition (June 15, 2001).
 
 \bibitem{Pert2013}
 G. J. Pert. \textbf{Introductory Fluid Mechanics for Physicists and Mathematicians}. 1st Edition. Wiley; 1 edition (May 28, 2013). ISBN-10: 1119944856. ISBN-13: 978-1119944850. 
