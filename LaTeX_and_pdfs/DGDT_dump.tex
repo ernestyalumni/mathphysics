@@ -6696,7 +6696,7 @@ Given line $L$, called the \emph{directrix}, pt. $F$, the \emph{focus}, such tha
 \phantom{Given} eccentric $e > 0$, \\
 \phantom{Given} $d = $ distance of $L$ from $F$, then \\
 the \textbf{conic section} $C = \lbrace X \rbrace$ (set of all points) such that 
-\begin{equation}
+\begin{equation}\label{Eq:ConicSectionVectorGeneralDefinition}
 \| X - F \| = ed(X, L)
 \end{equation}
 Now, \\
@@ -6753,12 +6753,13 @@ Ae = e^2 ( Ae + d) \text{ or } \frac{A}{e} = Ae + d \text{ or } A \left( \frac{1
 \end{gathered}
 \]
 Let $X = aN$. Plug this into Eq. \ref{Eq:ConicSectionDistanceFromFocusSquared}.
-\[
+\begin{equation}\label{Eq:SemiMajorAxis}
 \begin{gathered} 
 a^2 - 2aA e + A^2 e^2 = e^2 (a^2 - \frac{2A}{e} a + \left( \frac{A}{e} \right)^2 ) = e^2 a^2 - 2Aae + A^2 \Longrightarrow a = A \\
 \Longrightarrow a = \frac{ed}{1 - e^2 }
 \end{gathered} 
-\]
+\end{equation}
+
 Thus, we've shown that $A$ is equal to the \emph{semi-major axis} $a$ and that 
 \begin{equation}
 \boxed{ F = aeN }
@@ -6773,8 +6774,229 @@ Likewise, the semi-minor axis is obtained if $X = \pm bN_{\perp}$, so that
 
 \end{theorem}
 
+We can then rewrite Eq. \ref{Eq:ConicSectionEqWithCenterAtFocus}, with Eq. \ref{Eq:SemiMajorAxis} as
+\[
+\boxed{ r = \frac{ a(1-e^2) }{ 1 + e\cos{\theta} } }
+\]
 
-Compare this against (26.6) of Greiner (2004) \cite{Grei2004}:
+With Eq. \ref{Eq:ConicSectionDistanceFromFocusSquared}, and using the symmetry of $X$ about the origin, then
+\[
+\| X \|^2 + \| F \|^2 = e^2 (X\cdot N)^2 + a^2
+\]
+
+Choose $\mathbf{N} = \mathbf{e}_x$. With $\|X\|^2 = x^2 + y^2$, and $\|F\| = Ae = ae$, then
+\begin{equation}\label{Eq:ByOriginSymmetryConicSection}
+\begin{gathered}
+x^2 + y^2 +a^2 e^2 = e^2 x^2 + a^2 \text{ or } x^2 ( 1 -e^2) + y^2 = a^2 ( 1-e^2) \\
+\end{gathered}
+\end{equation}
+
+cf. 13.23 "Cartesian equations for the conic sections", Apostol (1991) \cite{Apos1991}.
+
+\subsubsection{Ellipse}
+
+If $e <1$, then from Eq. \ref{Eq:ByOriginSymmetryConicSection},
+
+\[
+\begin{gathered}
+\xrightarrow{ \text{ if } e < 1 } \frac{x^2 }{ a^2 } + \frac{y^2}{b^2} = 1
+\end{gathered}
+\]
+
+Observe that what  Greiner (2004) \cite{Grei2004} in pp. 249, Ch. "Planetary Motions", (a) Ellipse, denotes $c$ is what we and Apostol denote as $\|F \| =ae$, the distance from the origin to the focus. Observe that
+\[
+c^2 + b^2 = a^2 e^2 + a^2 (1-e^2) = a^2
+\]
+
+\subsubsection{Hyperbola}
+
+If $e > 1$, then from Eq. \ref{Eq:ByOriginSymmetryConicSection},
+
+\[
+\begin{gathered}
+\xrightarrow{ \text{ if } e > 1 } \frac{x^2 }{ a^2 } - \frac{y^2}{b^2} = 1
+\end{gathered}
+\]
+Let $b = |a| \sqrt{ e^2 - 1}$. The foci of a hyperbola are at $(c,0)$, $(-c,0)$ where $c= |a| e = \sqrt{ a^2 + b^2}$. 
+
+\subsubsection{Parabola}
+
+cf. pp. 507 of  13.23 "Cartesian equations for the conic sections", Apostol (1991) \cite{Apos1991}
+
+Go back to Eq. \ref{Eq:ConicSectionVectorGeneralDefinition}, where
+\[
+\| X - F \| = d(X, L)
+\]
+Let $L$ be a vertical line at $x = \mp c$, place focus $F = (\pm c, 0)$. \\
+If $X = (x,y)$, $X-F = (x \mp c, y)$, so 
+\[
+\begin{gathered}
+\| X- F \|^2 = (x \mp c)^2 + y^2 = | x \pm c|^2 = x^2 \pm 2xc + c^2 = x^2 \mp 2xc + c^2 + y^2
+\Longrightarrow y^2 = \pm 4xc
+\end{gathered}
+\]
+So midway between the focus and directrix, at the origin, is the vertex of the parabola.
+
+\subsection{Central Force Problem via Energy Methods}
+
+\subsubsection{Reduction to the Equivalent One-Body Problem}
+
+cf. pp. 70 of Goldstein, Poole, Safko (2001) \cite{GPS2001}
+
+Let $\mathbf{R} = $ radius vector to the center of mass. \\
+
+Let $\mathbf{r} = \mathbf{r}_2 - \mathbf{r}_1$ for the relative position of two masses. Then the Lagrangian
+\begin{equation}
+\mathcal{L} = T(\dot{\mathbf{R}}, \dot{ \mathbf{r}} ) - U (\mathbf{r}, \dot{\mathbf{r}}, \dots )
+\end{equation}
+cf. Eq. (3.1) of Goldstein, Poole, Safko (2001) \cite{GPS2001}
+
+The kinetic energy $T$ is the sum of the kinetic energy of the center of mass motion plus the kinetic energy of motion, about the center of mass $T'$.
+\[
+T = \frac{1}{2} (m_1 + m_2) \dot{ \mathbf{R}}^2 + T' \text{ with } T' = \frac{1}{2} m_1 \dot{ \mathbf{r}_1'}^2 + \frac{1}{2} m_2 \dot{\mathbf{r}_2'}^2
+\]
+
+$\mathbf{r}_1', \mathbf{r}_2'$ are radii vectors relative to the center of mass, since \\
+\[
+\begin{gathered}
+\mathbf{R} = \frac{m_1 \mathbf{r}_! + m_2 \mathbf{r}_2 }{M}
+\end{gathered}
+\]
+so 
+\begin{equation}
+\begin{aligned}
+& \mathbf{r}_1 - \mathbf{R} = \frac{m_2 (\mathbf{r}_1 - \mathbf{r}_2 )}{ M} = -\frac{m_2}{M} \mathbf{r} \equiv \mathbf{r}_1' \\
+&  \mathbf{r}_2' \equiv \mathbf{r}_2 - \mathbf{R} = \frac{m_1(\mathbf{r}_2 - \mathbf{r}_1 )}{ M} = \frac{m_1}{M} \mathbf{r}
+\end{aligned}
+\end{equation}
+cf. Eqn. (3.2) of Goldstein, Poole, Safko (2001) \cite{GPS2001}.
+
+Thus $T' = \frac{1}{2} \frac{m_1 m_2}{m_1 + m_2 } \dot{ \mathbf{r}}^2$
+
+So
+\begin{equation}
+\mathcal{L} = \frac{M}{2} \dot{\mathbf{R}}^2 + \frac{1}{2} \frac{m_1 m_2}{M} \dot{\mathbf{r}}^2 - U (\mathbf{r}, \dot{\mathbf{r}}, \dots )
+\end{equation}
+cf. Eqn. (3.3) of Goldstein, Poole, Safko (2001) \cite{GPS2001}.
+
+3 coordinates $\mathbf{R} $ are cyclic, so CM is at rest or moving uniformly. Drop the first term. The rest of the Lagrangian is exactly what would be expected if we had a fixed center of force with a single particle at distance $\mathbf{r}$ from it.
+
+Let 
+\[
+\mu = \frac{m_1 m_2}{ m _1 + m_2} \equiv \text{ reduced mass }
+\]
+
+\subsubsection{Equations of Motion from Lagrangian and First Integrals}
+
+cf. Sec. 3.2 "The Equations of Motions and First Integrals, Chapter 3 The Central Force Problem, pp. 72 of Goldstein, Poole, Safko (2001) \cite{GPS2001}.
+
+Goldstein, Poole, Safko argues: assume potential is of form $V(r)$ and so $V(r)$ has only radial distance, so the problem has spherical symmetry. Then, Goldstein, et. al. argues $\mathbf{L} = \mathbf{r} \times \mathbf{p}$ conserved. Thus $\mathbf{r}$ and $\mathbf{p} \perp \mathbf{L}$ always. 
+
+So 
+\begin{equation}
+\mathcal{L} = T- V = \frac{1}{2} \mu (\dot{r}^2 + r^2 \dot{\theta}^2 ) - V(r)
+\end{equation}
+cf. Eqn. (3.6) Goldstein, Poole, Safko (2001) \cite{GPS2001}.
+
+Now
+\[
+p_{\theta} = \frac{ \partial \mathcal{L} }{ \partial \dot{\theta}} = \mu r^2 \dot{\theta}
+\]
+Since $\frac{d}{dt} \frac{\partial \mathcal{L}}{ \partial \dot{\theta} } = \frac{\partial \mathcal{L}}{\partial \theta}$, then
+\begin{equation}
+\dot{p}_{\theta} = \frac{d}{dt} ( \mu r^2 \dot{\theta} ) = 0 = \frac{\partial \mathcal{L}}{\partial \theta}
+\end{equation}
+cf. Eqn. (3.7)  Goldstein, Poole, Safko (2001) \cite{GPS2001}.
+
+So 
+\begin{equation}
+\mu r^2 \dot{\theta} = l
+\end{equation}
+cf. Eqn. (3.8)  Goldstein, Poole, Safko (2001) \cite{GPS2001}, where $l$ is the constant magnitude of the angular momentum.
+
+So then $\frac{d}{dt} \left( \frac{1}{2} r^2 \dot{\theta} \right) = 0$ where $\frac{1}{2} r^2 \dot{\theta}$ is the areal velocity, the area swept out by radius vector per unit time.
+
+Goldstein argues that $\frac{1}{2} r^2 \dot{\theta}$ follows from $dA = \frac{1}{2} r(rd\theta)$, so $\frac{dA}{dt} = \frac{1}{2} r^2 \frac{d\theta}{dt}$. Thus, angular momentum conservation is equal to areal velocity constant. Do keep in mind that this argument is based upon the diagram in  Goldstein, Poole, Safko (2001) \cite{GPS2001} and presumably the small angle approximation (perhaps using $\sin{\theta} \approx \theta$ for small $\theta$). Thus, Kepler's 2nd. law: the radius vector sweeps out equal areas in equal times.
+
+For the $r$ coordinate:
+
+\[
+\begin{gathered}
+\frac{d}{dt} \left( \frac{ \partial \mathcal{L} }{ \partial \dot{r}} \right) = \frac{\partial \mathcal{L}}{\partial r} \Longrightarrow \frac{d}{dt} ( \mu \dot{r} ) = \mu r\dot{\theta}^2 - \frac{\partial V}{\partial r} \text{ or } \mu \ddot{r} - \mu r \dot{\theta}^2 = -\frac{\partial V}{\partial r}
+\end{gathered}
+\]
+
+Denote 
+\begin{equation}
+f(r) = \mu \ddot{r} - \mu r\dot{\theta}^2
+\end{equation}
+cf. Eqn. (3.11) of  Goldstein, Poole, Safko (2001) \cite{GPS2001}.
+
+Since $\mu r^2 \dot{\theta} = l$, then
+\begin{equation}
+f(r) = \mu \ddot{r} - \frac{l^2}{\mu r^3}
+\end{equation}
+cf. Eqn. (3.12) of Goldstein, Poole, Safko (2001) \cite{GPS2001}.
+
+Since 
+\begin{equation}
+\mu \ddot{r} = \frac{- \partial}{\partial r} \left( V + \frac{1}{2} \frac{l^2 }{\mu r^2} \right)
+\end{equation}
+cf. Eqn. (3.14) of Goldstein, Poole, Safko (2001) \cite{GPS2001} and since $\mu \ddot{r} \dot{r} = \frac{d}{dt} \left( \frac{1}{2} \mu \dot{r}^2 \right)$ and $\frac{d}{dt} g(r) = \frac{\partial g}{\partial r} \dot{r}$, then
+\[
+\frac{d}{dt} \left( \frac{1}{2} \mu \dot{r}^2 \right) = \frac{-d}{dt} \left( V + \frac{1}{2} \frac{l^2 }{ \mu r^2 } \right) \text{ or } \frac{d}{dt} \left( \frac{1}{2} \mu \dot{r}^2 + \frac{1}{2} \frac{l^2}{ \mu r^2 } + V \right) = 0
+\]
+and so
+\begin{equation}
+\frac{1}{2} \mu \dot{r}^2 + \frac{1}{2} \frac{l^2}{ \mu r^2} + V = \text{ constant } 
+\end{equation}
+cf. Eqn. (3.15) of  Goldstein, Poole, Safko (2001) \cite{GPS2001}, with
+\[
+\frac{1}{2} \frac{l^2 }{\mu r^2 } = \frac{1}{2 \mu r^2} \mu^3 r^4 \dot{\theta}^2 = \frac{\mu r^2 \dot{\theta}^2 }{2} 
+\]
+and so
+\begin{equation}
+\frac{1}{2} \mu \dot{r}^2 + \frac{1}{2} \mu r^2 \dot{\theta}^2 + V = E = T+V 
+\end{equation}
+cf. Eqn. (3.13) of  Goldstein, Poole, Safko (2001) \cite{GPS2001}.
+
+For $E = \frac{1}{@} \mu \dot{r}^2 + \frac{l^2}{2\mu r^2 } + V$, then 
+
+\begin{equation}
+\dot{r} = \sqrt{ \frac{2}{\mu} \left( E - V - \frac{l^2}{2 \mu r^2}  \right)  }
+\end{equation}
+cf. Eqn. (3.16)  of Goldstein, Poole, Safko (2001) \cite{GPS2001}, or 
+
+\begin{equation}
+dt =\frac{dr}{ \sqrt{ \frac{2}{\mu} \left( E - V - \frac{l^2}{2 \mu r^2 } \right) } }
+\end{equation}
+cf. Eqn. (3.17) of  Goldstein, Poole, Safko (2001) \cite{GPS2001}.
+
+Let
+\[
+t =\int_{r_0}^r \frac{dr}{ \sqrt{ \frac{2}{\mu} \left( E - V - \frac{l^2}{2 \mu r^2 } \right) } }
+\]
+with initial value $r_0$.
+
+From $l= \mu r^2 \dot{\theta}$,
+\begin{equation}
+d\theta = \frac{l dt}{\mu r^2} 
+\end{equation}
+cf. Eqn. (3.19) of Goldstein, Poole, Safko (2001) \cite{GPS2001} so for $\theta_0 \equiv $ initial value of $\theta$.
+
+\begin{equation}
+\theta = l \int_0^t \frac{dt'}{ \mu r^2(t') } + \theta_0
+\end{equation}
+cf. Eqn. (3.20) of Goldstein, Poole, Safko (2001) \cite{GPS2001}.
+
+In Sec. 3.3, "The Equivalent 1-Dimensional Problem and Classification of Orbits" of  Goldstein, Poole, Safko (2001) \cite{GPS2001}, consider $V ' = V + \frac{1}{2} \frac{l^2}{\mu r^2}$, so that $F' = \frac{-\partial V'}{\partial r} = f(r) + \frac{l^2}{\mu r^3}$. \\
+
+Let $V = \frac{-k}{r}$, e.g. $V = \frac{-GMm}{r} $ with $k = GMm$. \\
+
+Then consider $V' = \frac{-k}{r} + \frac{l^2}{2\mu r^2}$ and its plot.
+
+
+Compare this, Thm. \ref{Thm:MoreConicSectionsFromVectorFormulation}, against (26.6) of Greiner (2004) \cite{Grei2004}:
 \begin{equation}\label{Eq:ConicSectionPolarCoordinatesFocusCenter}
 r = \frac{ed}{ 1 + e\cos{\theta}}, \quad \, e = \frac{C\widehat{L}_0^2}{GM}, \quad \, d = 1/C
 \end{equation} cf. Eq. (26.32) of Greiner (2004) \cite{Grei2004}. 
