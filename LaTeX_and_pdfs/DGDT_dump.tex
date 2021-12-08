@@ -339,6 +339,72 @@ EY : Exercise B.22(d) is useful for showing the chart and atlas of a Grassmannia
 	\end{enumerate}
 \end{proof}
 
+\part{Analytical Geometry}
+
+\section{Applications of Vector Algebra to Analytic Geometry}
+
+cf. Ch. 13 "Applications of Vector Algebra to Analytic Geometry", Apostol (1991) \cite{Apos1991}
+
+\subsection{Lines in $n$-space}
+
+cf. Sec. 13.2 "Lines in $n$-space", Apostol (1991) \cite{Apos1991}.
+
+\begin{definition}[Line]
+	Let given pt. $P$, given $A$ nonzero vector. 
+	
+	Define line $L(P;A)$
+	\begin{equation}
+		L(P;A) := \lbrace P + tA | t\in \mathbb{R} \rbrace \equiv L(P;A) = \lbrace P + tA \rbrace
+	\end{equation}
+\end{definition}
+
+\subsubsection{Some simple properties of a straight line}
+
+cf. Sec. 13.3 "Some simple properties of straight line", Apostol (1991) \cite{Apos1991}.
+
+\begin{theorem}[Thm. 13.4 of Apostol (1991) \cite{Apos1991}]
+	2 distinct pts. determine a line, i.e. if $P\neq Q$, $\exists !$ line containing both $P$ and $Q$, namely
+	\begin{equation}
+		\lbrace P + t(P- Q) \rbrace
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let $L$ be line parallel through $P$ to $Q-P$, i.e. $L= L(P;Q-P)= \lbrace P + t(Q-P) \rbrace$.
+
+$P,Q \in L$ for $t=0,1$, respectively.
+
+Suppose $L'$ is another line containing $P$ and $Q$. Since $P \in L'$, $L' = L'(P,A)$, $Q \in L'$ so $Q = P + At$. \\
+$Q - P = tA$. $t\neq 0$ since $Q \neq P$. So $A = \frac{Q- P}{t}$, i.e. $A$ and $Q-P$ are parallel. \\
+
+By Thm. 13.1, since $L(P;Q-P), L'(P,A)$ through same pt. $P$ and direction vectors $Q-P,A$ parallel, then $L=L'$.
+
+\end{proof}
+
+
+\subsection{Planes in Euclidean $n$-plane}
+
+cf. Sec. 13.6 "Planes in Euclidean $n$-space", Apostol (1991) \cite{Apos1991}.
+
+\begin{definition}
+	Set $M$ of pts. in $V_n$ is called a plane if $\exists$ pt. $P$ and 2 linearly independent vectors $A$ and $B$ s.t.
+	\begin{equation}
+		M = \lbrace P + sA + tB | s, t \in \mathbb{R} \rbrace
+	\end{equation}
+\end{definition}
+
+EY 20211207: Consider the intersection of 2 planes: $M \cap N$:
+\[
+\begin{aligned}
+	& M = \lbrace P + sA + tB | s, t \in \mathbb{R} \rbrace \\
+	& N = \lbrace Q + uC + vD \rbrace
+\end{aligned}
+\]
+
+Let $X\in M$ and $X\in N$ so $X = P+sA + tB = Q+ uC + vD$. 
+
+Let $M\cap N \neq \emptyset$. Let $X_0 \in M \cap N$, $X_0 = P + s_0 A + t_0 B = Q + u_0 C + v_0 D$.
+
 
 \part{Manifolds}
 
