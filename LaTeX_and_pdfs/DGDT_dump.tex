@@ -5424,15 +5424,221 @@ Rewrite the Eq. \ref{Eq:GeneralFormOfGalileanTransformations} in matrix form:
 \end{gathered}
 \]
 
-Consider $y$ being standard Euclidean coordinates in fixed frame $o$. $x$ then is coordiantes in any other inertial frame.
+Consider $y$ being standard Euclidean coordinates in fixed frame $o$. $x$ then is coordinates in any other inertial frame.
 
 $T =$ 1-dim. affine space since affine structure $(T, \mathbf{T}, \beta)$ is s.t. $T\in \mathbb{R}$, $\mathbf{T} \in \mathbb{R}$, $\begin{aligned} & \quad \\ 
 & \beta : \mathbf{T} \times T \to T \\
 & \beta(s,t') = t' + s = t\end{aligned}$ \\
 
-
-
 Holm (2011) \cite{Holm2011}
+
+\section{Kinematics}
+
+\subsection{Kinematics Problems from Irodov}
+
+cf. Irodov (1981) \cite{Irod1981}
+
+\solutionhead{1.1} If we assume that the raft goes along downstream with no further "rowing", \\
+$l \equiv $ distance raft travels for total time $T$ = 6.0 \, km \\
+$v_d \equiv $ downstream speed $=$ raft speed \\
+$\tau = 60 \, \text{mins} = $ time before motorboat turning back \\
+$v_m \equiv $ motorboat speed \\
+
+\[
+\begin{gathered}
+	\frac{l}{v_d} = \tau + \frac{ \tau (v_m + v_d) - l }{ v_m - v_d} = \frac{ \tau (2 v_m) - l }{ v_m - v_d } \text{ or } 
+\end{gathered} \quad \quad \, \begin{gathered}
+(v_m - v_d) l = 2 \tau v_m v_d - l v_d \\
+v_m l = 2\tau v_m v_d \\
+\boxed{ v_d =  \frac{l}{2\tau } }= \frac{6.0 \, km }{ 2 \cdot 60 \, \text{mins}} = 0.05 \,  \text{km / min}
+\end{gathered}
+\]
+
+\solutionhead{1.2} The speed formula, recall, is $L = \overline{v} T$, or $\overline{v} = \frac{L}{T}$. 
+\[
+v_0 t_0 = \frac{L}{2} \text{ or } t_0 = \frac{L}{2 v_0} 
+\]
+\[
+\begin{gathered}
+	l_1 = v_1 \frac{T_1}{2} \\
+	l_2 = v_2 \frac{T_1}{2} 
+\end{gathered} \text{ and }
+l_1 + l_2  = \frac{L}{2} \text{, so } L = v_1 T_1 + v_2  T_1 
+\]
+\[
+\Longrightarrow \overline{v} = \frac{L }{ \frac{L}{2v_0} + \frac{L}{v_1 + v_2} } = \frac{2 v_0 (v_1 + v_2) }{ 2v_0 + v_1 + v_2}
+\]
+
+\solutionhead{1.3} Given \\
+$w = 5.0 \, m/s^2 = $ constant acceleration and deceleration \\
+$\tau = 25 \, \text{sec.} = $ total time of motion \\
+$\overline{v} = 72 $ km / hr. $=$ average velocity during that time ($\tau$?) \\
+
+Recall that
+\[
+\begin{gathered}
+	a = a(t) = \frac{dv}{dt} \text{ so if $a$ constant, then} v(t) - v_0 = at \text{ and since } v(t) = frac{dx}{dt} \text{ so } \\
+ 	x(t) = x_0 + v_0t + \frac{1}{2} at^2 \\
+ 	d = x(t) - x_0 = t(v_0 + \frac{a}{2} t) = \frac{v- v_0}{a} (v_0 + \frac{v-v_0}{2}) = \frac{v^2 - v_0^2 }{2a } \text{ or } v^2 - v_0^2  =2ad
+\end{gathered}
+\]
+Then 
+\[
+\frac{v^2}{2w} + \frac{v^2}{2w} + vT_2 = L \text{ or } \frac{v^2}{w} + vT_2 = L
+\]
+Also
+\[
+\tau = \frac{v}{w} + T_2 + \frac{-v}{-w} = \frac{2v}{w} + T_2 \text{ or } (\tau - T_2) \left( \frac{w}{2} \right) = v
+\]
+Then
+\[
+\begin{gathered}
+	\overline{v} = \frac{ \frac{v^2}{w} + vT_2}{ \tau} \text{ or } \overline{v}\tau = \frac{v^2}{w} + wT_2 \\
+	\Longrightarrow \overline{v}\tau = v \left( \frac{v}{w} + T_2 \right) = v ( \frac{\tau - T_2}{2} + T_2 ) = \frac{w}{2} ( \tau - T_2) ( \frac{\tau + T_2}{2} ) \\
+	4\overline{v} \tau = w (\tau^2 - T_2^2) \text{ or } wT_2^2 = w T^2 - 4 \overline{v} \tau \\
+	\Longrightarrow \boxed{ T_2  = \sqrt{ \tau^2 - \frac{4\overline{v} \tau}{w} } }
+\end{gathered}
+\]
+
+\solutionhead{1.5; particles collide} 
+
+\textbf{Hint}: \emph{change reference frames}, in particular, into frame of references of particles 1 or 2, respectively. \\
+Consider, by label symmetry, reference frame of particle 1:
+\[
+\begin{gathered}
+	\begin{aligned}
+		& r'_1 = r_1- r_1 = 0 \\
+		& r'_2 = r_2 - r_1 
+	\end{aligned} \quad \quad \, 
+	\begin{aligned}
+		& v_1' = v_1 - v_1 = 0 \\
+		& v'_2 = v_2 - v_1
+	\end{aligned}
+\end{gathered}
+\]
+On order for a collision, in reference frame of particle 1, particle 2 will need to approach or travel towards the origin from $r'_2=  r_2 - r_1$; consider  \\
+$v_2' \parallel = -r'_2$ i.e. $v_2 - v_1 \parallel -(r_2 - r_1)$, otherwise particle 2 would never reach origin where particle 1 is
+\[
+\Longrightarrow \boxed{ \frac{ \textbf{v}_2-  \mathbf{v}_1}{ \| \mathbf{v}_2 - \mathbf{v}_1 \| } = \frac{ -(\mathbf{r}_2 - \mathbf{r}_1) }{ \| \mathbf{r}_2 - \mathbf{r}_1 \| } }
+\]
+
+\solutionhead{1.6} $v_0 = 30 \, km/hr = $ ship moves along equator to the east with speed $v_0$ \\
+$\varphi = 60^{\circ} = $ southeastern wind blows at angle $\varphi$ to equator \\
+$v_w = 15 \, km /h = $ wind speed \\
+$v_w = v_{w,x} \mathbf{e}_x + v_{w,y} \mathbf{e}_y$ \\
+If southeastern wind means \emph{it comes \textbf{from} the south east}, then we have
+\[
+\begin{gathered}
+	v_w' = v_w - v_0 = (-v_w \cos{\varphi} - v_0) \mathbf{e}_x + v_w s{\varphi} \mathbf{e}_y \\
+	\| v_w' \|^2 = v_w^2 c^2{\varphi} + 2v_w v_0 c{\varphi} + v_0^2 + v_w^2 s^2{\varphi} = v_w^2 + v_0^2 + 2v_w v_0 c{\varphi} = v_w^2 + v_0^2 + 2v_w v_0 \frac{1}{2} \approx 39.7 \, km /h \approx 40 \, km/h \\
+	\varphi' = \arctan{ \left( \frac{ -v_w s{\varphi} }{ v_w c{\varphi} + v_0}  \right) } = \arctan{ \left( \frac{-v_w \sqrt{3} / 2}{ v_w /2 + v_0 } \right) } \approx -19.1^{\circ}
+\end{gathered}
+\]
+
+cf. \url{https://physics.stackexchange.com/questions/126268/relative-wind-velocity-explanation} for southeastern wind explanation.
+
+\solutionhead{1.7}
+
+2 swimmers leave pt. A, pt. A lie right across point B. \\
+stream velocity $v_0 = 2.0 \, \text{km}/\text{hr}$ \\
+velocity $v'$ of each swimmer with respect to water $=2.5$ km/hr \\
+Now $(\mathbf{v}_A + \mathbf{v}_0) T_A = \mathbf{x}_A$ and so in components, $v_{A,x} T_A = L$ and $(v')^2 = (v_{A,x})^2 + v_0^2$ or $v_{A,x} = \sqrt{(v')^2 - v_0^2}$ \\
+
+$T_{B,1} = $ time to swim across the river \\
+$T_{B,2} = $ time to walk the distance he has been carried. \\
+
+Since $(\mathbf{v}_B + \mathbf{v}_0) T_{B,1} = \mathbf{x}_{B,1}$ with $\begin{aligned} & \quad \\ 
+	& v' T_{B,1} = L \\
+	& v_0 T_{B,1} = y_B \end{aligned}$ \\
+
+$T_A = T_{B,1} + T_{B,2}$ since both swimmers reach the destination simultaneously. 
+
+\[
+\Longrightarrow \frac{ L}{v_{A,x}} = \frac{L}{v'} + \frac{v_0 L}{uv'} \text{ or } u = \frac{v_0 / v'}{ \frac{1}{ v_{A,x}} - \frac{1}{v'} } = \boxed{ \frac{ v_0}{ \frac{v'}{ \sqrt{ (v')^2 - v_0^2} } - 1 }  }= 3.0 \, km/hr
+\]
+
+\solutionhead{1.8}
+
+Buoy anchored at the middle of a river. \\
+$v_s = $ stream velocity \\
+
+\[
+\begin{gathered}
+(v_A + v_s) T_{A,1} = L = (v_A -v_s) T_{A,2} \\
+\Longrightarrow (\eta + 1) v_s T_{A,1} = L = (\eta - 1) v_s T_{A,2}	
+\end{gathered}
+\]
+where $T_{A,1} = \frac{L}{ (\eta + 1) v_s}$ is the time going away from the buoy to a distance L for person A, and $T_{A,2} = \frac{L}{ (\eta - 1) v_s} $ is the time to go back.
+
+B moves away along the mutually perpendicular straight lines across the river. Then
+\[
+\begin{gathered}
+	(\mathbf{v}_B + \mathbf{v}_s) T_{B,1} = \mathbf{x}_B \\
+	v_{B,x} T_{B,1} = L \\
+	v_B^2  = (\eta v_s)^2 = v_{B,x}^2 + v_{B,y}^2 = v_{B,x}^2 + v_s^2
+\end{gathered}
+\]
+Now $T_{B,1} = T_{B,2}$, i.e. the time to go away from the buoy is equal to the time to go back to the buoy, and so
+\[
+2 T_{B,1} = \frac{2L}{ \sqrt{ (\eta v_s)^2 - v_s^2} } = \frac{2L}{ v_s \sqrt{ \eta^2 - 1} }
+\]
+Thus,
+\[
+\begin{gathered}
+	\frac{\tau_A}{ \tau_B} = \frac{T_{A,1} + T_{A,2} }{ T_{B,1} + T_{B,2}} = \frac{ \frac{2\eta}{\eta^2 - 1} }{ \frac{2 }{\sqrt{\eta^2 - 1} } } = \boxed{ \frac{ \eta}{ \sqrt{ \eta^2 - 1 } } } \approx 1.81 \approx 1.8
+\end{gathered}
+\]
+
+\solutionhead{1.10}
+
+For body 1 going straight up, $y_1 = v_0 t - \frac{1}{2} gt^2$ and there's no horizontal, $x_1$, translation. \\
+
+For body 2, the coordinates over time are the following:
+\[
+\begin{aligned}
+	& y_2 = v_0s{\theta} t - \frac{1}{2} gt^2 \\
+	& x_2 = v_0 c{\theta} t
+\end{aligned}
+\]
+
+\[
+\begin{gathered}
+	\| \mathbf{x}_2 - \mathbf{x}_1 \|^2 = (v_0 t(1 - s{\theta}))^2 + (v_0 c{\theta}t)^2 = (v_0 t)^2 [ 2 - 2 s{\theta}] = 2(v_0t)^2 (1- s{\theta}) \\
+	\| \mathbf{x}_2 - \mathbf{x}_1 \| = \boxed{ v_0 t \sqrt{2} \sqrt{1 - s{\theta}} } = 25 (1.7) \sqrt{2} \sqrt{ 1 - \sqrt{3} / 2 } \approx 22
+\end{gathered}
+\]
+
+\solutionhead{1.11} 2 particles move in a uniform gravitational field with acceleration $g$.  \\
+At initial moment, the particles were located at 1 pt. and moved with velocities $v_1 = 3.0 \, m/s$, $v_2 = 4.0 \, m/s$ horizontally in opposite directions. \\
+Typically, gravitational field is \textbf{vertical}:
+\[
+\begin{gathered}
+\begin{aligned} 
+	& v_{1y} = -gt \\
+	& v_{1x} = -v_1 
+\end{aligned} \quad \quad \, \begin{aligned}
+& v_{2y} = -gt \\
+& v_{2x} = v_2 
+\end{aligned} \\
+	\begin{aligned}
+		& y_1 = -\frac{1}{2} gt^2 \\
+		& x_1=  -v_1 t
+	\end{aligned} \quad \quad \, \begin{aligned}
+	& y_2 = \frac{-1}{2} gt^2 \\
+	& x_2 = v_2 t
+\end{aligned}
+\end{gathered}
+\]
+
+mutually perpendicular: $\mathbf{v}_1 \cdot \mathbf{v}_2 = 0 = -v_1 v_2 + g^2 t^2$ or $t = \frac{ \sqrt{v_1 v_2}}{g}$ \\
+
+\[
+\begin{gathered}
+	\| \mathbf{x}_2 - \mathbf{x}_1 \|^2 = ((v_2 + v_1)t)^2 + 0 = (v_2 + v_1)^2 \frac{v_1 v_2}{g^2} \text{ or } \\
+	\boxed{ \| \mathbf{x}_2 - \mathbf{x}_1 \| = \frac{ (v_1 + v_2) }{g} \sqrt{v_1 v_2} } = \frac{ 7 }{ 9.8 \, m/s^2} 2 \sqrt{3} = 2.5 \, m
+\end{gathered}
+\]
+
 
 
 \section{Fundamental Theorems of (Classical) Dynamics}
@@ -12045,7 +12251,7 @@ Darryl D Holm. \textbf{Geometric Mechanics} - Part II: Rotating, Translating and
 Tsutomu Kambe, \textbf{Geometrical Theory of Dynamical Systems and Fluid Flows}, Advanced Series in Nonlinear Dynamics: Volume 23, 2009, \url{http://www.worldscientific.com/worldscibooks/10.1142/7418} ISBN: 978-981-4282-24-6 (hardcover)
 
 \bibitem{HaFi1998}
-Louis N. Hand and Janet D. Finch. \textbf{Analyrical Mechanics}. Cambridge University Press. 1998. 
+Louis N. Hand and Janet D. Finch. \textbf{Analytical Mechanics}. Cambridge University Press. 1998. 
 
 \bibitem{GPS2001}
 Herbert Goldstein, Charles Poole, John Safko. \textbf{Classical Mechanics}. Pearson; 3rd edition (June 15, 2001).
@@ -12092,6 +12298,9 @@ Tom M. Apostol. \textbf{Calculus, Vol. 1: One-Variable Calculus, with an Introdu
 
 \bibitem{BMW1971}
 Roger R. Bate, Donald D. Mueller, Jerry E. White. \textbf{Fundamentals of Astrodynamics} (Dover Books on Aeronautical Engineering). Publisher: Dover Publications; Revised ed. edition (June 1, 1971). ISBN-13: 978-0486600611
+
+\bibitem{Irod1981}
+I.E. Irodoc. \textbf{Problems in General Physics}. Mir Publishers. Moscow. 1981. ISBN 5-03-000800-4
 
 \bibitem{Japa2014}
 The Committee Of Japan Physics Olympiad Japan. \textbf{Physics Olympiad - Basic To Advanced Exercises}.
