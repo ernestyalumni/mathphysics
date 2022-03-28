@@ -1,0 +1,10 @@
+###### Requirements without Version Specifiers ######
+
+ipykernel
+jupyter
+matplotlib
+numpy
+pytest
+requests
+scipy
+sympy
