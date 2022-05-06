@@ -5639,7 +5639,50 @@ mutually perpendicular: $\mathbf{v}_1 \cdot \mathbf{v}_2 = 0 = -v_1 v_2 + g^2 t^
 \end{gathered}
 \]
 
+\problemhead{1.12} Three points are located at the vertices of an equilateral triangle whose side equals $a$. They all start moving simultaneously with velocity $v$ constant in modulus, with the first point heading continually for the second, the second for the third, and the third for the first. How soon will the points converge?
 
+\solutionhead{1.12} By symmetry at any time (point), consider component of $\mathbf{v}$ towards triangle center (EY: this is the key insight; breakup components of $\mathbf{v}$ to be along "radial" distance traveled, not just along Cartesian x and y).
+
+By symmetry of the problem, $v$ will always be along an equilateral triangle side, for each moving point.
+
+Let $\theta_0 = 30^{\circ}$.
+
+Then
+\[
+\cos{\theta_0} = \frac{v_r}{v} \text{ or } v\cos{\theta_0} = v_r
+\]
+\[
+\cos{\theta_0} = \frac{a/2 }{ d} \text{ or } d = \frac{a/2}{ \cos{\theta_0}} = \frac{a/2}{ \sqrt{3}/2 } = \frac{a}{\sqrt{3}}
+\]
+where $d$ is the distance from a point to the center of the triangle.
+
+\[
+v_x = \frac{ds}{dt} \Longrightarrow T = \int dt = \int \frac{ds}{v_x} = \int^0_{a/\sqrt{3}} \frac{ds}{ -v\cos{\theta_0}} = \frac{-a}{\sqrt{3}} \frac{1}{v\sqrt{3}/2} = \frac{2a}{3v}
+\]
+
+
+\problemhead{1.13} Point $A$ moves uniformly with velocity $v$ so that the vector $\mathbf{v}$ is continually "aimed" at point $B$ which in its turn moves rectilinearly and uniformly with velocity $u < v$. At the initial moment of time $\mathbf{v} \perp \mathbf{u}$ and the points are separated by a distance $l$. How soon will the points converge?
+
+\solutionhead{1.13} Choose $\mathbf{u}$ to be in the $x+$ direction: $\mathbf{u} = u\mathbf{e}_x$. 
+
+Condition: Point A reaches point B, so total x-distance traveled during time interval $T$ is the same:
+\begin{equation}
+	\int_0^T v \cos{\alpha} dt = u T
+\end{equation}
+
+Now consider the "straight line distance" between point A and point B. We're given at the initial moment of time $\mathbf{v} \perp \mathbf{u}$, that the points are separated by distance $l$.
+
+Now think in terms of displacement in very short time interval $\Delta t$. Point A is traveling distance $v\Delta t$ towards point B in a straightline. But point B is moving away with component along the straight line by distance $u\cos{\alpha} \Delta t$.
+
+The total straight line distance point A has to cover is distance $l$. The net distance traveled in $\Delta t$, $v\Delta t - u\cos{\alpha} \Delta t$ must sum up to $l$ in order for point A and point B to converge. For a small time interval $\Delta t$, the $-u\cos{\alpha}$ term already is accounting for how much point B is moving away and $v$ term accounts for how fast point A is traveling the distance towards point B.
+
+So
+\begin{equation}
+	\int_0^T (v-u\cos{\alpha}) dt = l = vT - u \left( \frac{u T}{v} \right) \text{ or } \boxed{ T = \frac{lv}{ v^2 - u^2 } }
+\end{equation}
+
+\url{https://physics.stackexchange.com/questions/568531/why-is-the-following-equation-not-correct}
+\url{https://www.physicsforums.com/threads/a-question-of-kinematics-involving-a-changing-velocity-vector.975126/post-6210692}
 
 \section{Fundamental Theorems of (Classical) Dynamics}
 
