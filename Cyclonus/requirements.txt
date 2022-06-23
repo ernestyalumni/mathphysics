@@ -4,6 +4,7 @@ ipykernel
 jupyter
 matplotlib
 numpy
+protobuf
 pytest
 requests
 scipy

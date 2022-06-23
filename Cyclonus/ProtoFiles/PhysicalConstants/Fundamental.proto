@@ -1,0 +1,19 @@
+// Define your message format here, i.e. write a .proto description of the data
+// structure you wish to store.
+syntax = "proto3";
+// Avoid name collisions in ProtocolBuffers namespace
+package PhysicalConstantsFundamental;
+
+message FundamentalConstants {
+
+  message Constant {
+    string name = 1;
+    float value = 2;
+    optional float uncertainty = 3;
+    optional string units = 4;
+    optional string symbol = 5;
+  }
+
+  repeated Constant constants = 1;
+}
+

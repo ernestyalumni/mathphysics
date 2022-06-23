@@ -1,0 +1,4 @@
+ENABLE_TESTING()
+
+INCLUDE(GoogleTest)
+
