@@ -43,6 +43,13 @@ ENDIF()
 
 MESSAGE("CMAKE_CXX_STANDARD: " ${CMAKE_CXX_STANDARD})
 
+# cf. https://github.com/shaochuan/cmake-protobuf-example/blob/master/proto/CMakeLists.txt
+# cf. https://cmake.org/cmake/help/latest/module/FindProtobuf.html
+# FindProtobuf - locate and configure Google Protocol Buffers library.
+INCLUDE(FindProtobuf)
+FIND_PACKAGE(Protobuf REQUIRED)
+INCLUDE_DIRECTORIES(${Protobuf_INCLUDE_DIRS})
+
 FIND_PROGRAM(CCACHE_FOUND ccache)
 
 IF(CCACHE_FOUND)
@@ -58,4 +65,5 @@ FetchContent_Declare(googletest
 
 FetchContent_MakeAvailable(googletest)
 
+ADD_SUBDIRECTORY(ProtoFiles)
 ADD_SUBDIRECTORY(UnitTests)
