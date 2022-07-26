@@ -1,0 +1,128 @@
+% file: ThePhysicsOfInterstellar.tex
+% AdS/CFT and Interstellar
+% 
+% github        : ernestyalumni
+% linkedin      : ernestyalumni 
+% wordpress.com : ernestyalumni
+%
+% This code is open-source, governed by the Creative Common license.  Use of this code is governed by the Caltech Honor Code: ``No member of the Caltech community shall take unfair advantage of any other member of the Caltech community.'' 
+% 
+
+\documentclass[10pt]{amsart}
+\pdfoutput=1
+%\usepackage{mathtools,amssymb,lipsum,caption}
+\usepackage{mathtools,amssymb,caption}
+
+\usepackage{cancel} % http://jansoehlke.com/2010/06/strikethrough-in-latex/
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[table]{xcolor}
+\usepackage{pdfpages}
+%\usepackage[version=3]{mhchem}
+%\usepackage{mhchem}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{cd}
+
+
+\usepackage{pifont} % http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf
+
+\usepackage{multicol}
+
+\hypersetup{colorlinks=true,citecolor=[rgb]{0,0.4,0}}
+
+\oddsidemargin=15pt
+\evensidemargin=5pt
+\hoffset-45pt
+\voffset-55pt
+\topmargin=-4pt
+\headsep=5pt
+\textwidth=1120pt
+\textheight=595pt
+\paperwidth=1200pt
+\paperheight=700pt
+\footskip=40pt
+
+
+\newtheorem{axiom}{Axiom}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
+
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+{\bigskip\bigskip
+	\noindent{\small\bf Question #1.}
+	\bigskip}
+
+\newcommand{\problemhead}[1]
+{
+	\noindent{\small\bf Problem #1.}
+}
+
+\newcommand{\exercisehead}[1]
+{ \smallskip
+	\noindent{\small\bf Exercise #1.}
+}
+
+\newcommand{\solutionhead}[1]
+{
+	\noindent{\small\bf Solution #1.}
+}
+
+\title{The Physics of Interstellar - AdS/CFT and the Tesseract}
+\author{Ernest Yeung \href{mailto:ernestyalumni@gmail.com}{ernestyalumni@gmail.com}}
+\date{25 juillet 2022}
+\keywords{AdS/CFT}
+\begin{document}
+	
+	\definecolor{darkgreen}{rgb}{0,0.4,0}
+	\lstset{language=Python,
+		frame=bottomline,
+		basicstyle=\scriptsize,
+		identifierstyle=\color{blue},
+		keywordstyle=\bfseries,
+		commentstyle=\color{darkgreen},
+		stringstyle=\color{red},
+	}
+	%\lstlistoflistings
+	
+	\maketitle
+	
+	\begin{multicols*}{2}
+		
+		\setcounter{tocdepth}{1}
+		\tableofcontents
+		
+		\begin{abstract}
+						
+		\end{abstract}
+		
+		\part{}
+
+
+\end{multicols*}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Thor2014}
+Kip Thorne. \textbf{The Science of Interstellar}. W.W. Norton and Company. 2014.
+
+\end{thebibliography}
+
+\end{document}
