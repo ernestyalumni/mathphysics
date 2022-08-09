@@ -1,4 +1,4 @@
-% file: DGDT_dump.tex
+	% file: DGDT_dump.tex
 % Differential Geometry, Differential Topology, in unconventional ``grande'' format; fitting a widescreen format
 % 
 % github        : ernestyalumni
@@ -427,6 +427,193 @@ version 2, possible alternative (bottomline: not right): \\
 (of is it $u\in P$ \textbf{upper bound} to a subset $T \subseteq P$ if $\nexists \, t\in T$ s.t. $u\leq t$)
 
 \end{definition}
+
+\section{Examples}
+
+\subsection{Spheres}
+
+cf. Example 1.4 (Spheres), Lee (2012) \cite{JLee2012}, pp. 5
+
+$\forall \, n \geq 0, \, n \in \mathbb{Z}$, $n$-sphere $\mathbb{S}^n$ is Hausdorff and second-countable because it's topological subspace of $\mathbb{R}^{n+1}$. \\
+$\forall \, i = 1, \dots n +1$, let $U_i^+ = \lbrace (x^1, \dots x^{n+1}) \in \mathbb{R}^{n+1}: x^i > 0 \rbrace$. \\
+Similarly, let $U_i^- = \lbrace (x^1, \dots x^{n+1})  \in \mathbb{R}^{n+1} : x^i < 0 \rbrace$  \\
+
+Let $f: \mathbb{B}^n \to \mathbb{R}$ be $f(u) = \sqrt{ 1 - |u|^2}$. \\
+
+$\forall \, i =1 , \dots n +1$, $U_i^+ \cap \mathbb{S}^n$ is graph of function
+\[
+x^i = f(x^1 \dots \widehat{x}^i \dots x^{n+1})
+\]
+
+where $\widehat{x}^i$ indicates $x^i$ is omitted, \\
+since
+\[
+\sqrt{ (x^1)^2  + (x^{n+1})^2 } = 1^2 \text{ or } (x^i)^2 = 1 - \sum_{ \substack{ j\neq i \\ i =1} }^{n+1} (x^j)^2 \Longrightarrow x^i = f(x^1, \dots \widehat{x}^i, \dots x^{n+1})
+\]
+
+Similarly, $U_i^i \cap \mathbb{S}^n$ is graph of 
+\[
+x^i = -f(x^1 \dots \widehat{x}^i \dots x^{n+1})
+\]
+sicne $x^i < 0$.
+
+Thus, $\forall \,$ subset $U_i^{\pm} \cap \mathbb{S}^n$ is locally Eucliean of dim. $n$ nad maps
+\[
+\begin{aligned}
+	& \varphi_i^{\pm} : U_i^{\pm} \cap \mathbb{S}^n \to \mathbb{B}^n \\
+	& \varphi_i^{\pm} (x^1 \dots x^{n+1}) = (x^1 \dots \widehat{x}^i \dots x^{n+1})
+\end{aligned}
+\]
+are graph coordinates for $\mathbb{S}^n$.
+
+Since $\forall \,$ pt. $\in \mathbb{S}^n$ is in domain of at least 1 of these $2n+2$ charts, $\mathbb{S}^n$ is a topological $n$-manifold.
+
+cf. Example 1.31 (Spheres), Lee (2012) \cite{JLee2012}, pp. 20, \\
+
+$\forall \, i = 1 \dots n+1$, let $(U_i^{\pm}, \varphi_i^{\pm})$ denote graph coordinate charts, s.t.
+
+\[
+\begin{aligned}
+	& U_i^{\pm} = \lbrace (x^1 \dots x^{n+1}) \in \mathbb{R}^{n+1} : x^i \gtrless 0 \rbrace \\ 
+	& \varphi_i^{\pm} : U_i^{\pm} \cap \mathbb{S}^n \to \mathbb{B}^n \\ 
+	& \varphi_i^{\pm} (x^1 \dots x^{n+1}) = (x^1, \dots \widehat{x}^i \dots x^{n+1})
+\end{aligned}\]
+
+$\forall \, $ distinct $i,j$, transition map $\varphi_i^{\pm} \circ (\varphi_j^{\pm})^{-1}$ is computed; for $i<j$,
+\[
+\varphi_i^{\pm} \circ (\varphi_j^{\pm})^{-1} (u^1 \dots u^n) = (u^1, \dots \widehat{u}^i \dots \pm \sqrt{1 - |u|^2}, \dots u^n )
+\]
+
+with $\sqrt{1- |u|^2}$ in $j$th position; similarly for $i =j$. \\
+
+Also $\varphi_i^+ \circ (\varphi_i^-)^{-1} (x^1, \dots x^n) = \varphi_i^{+} (x^1 \dots - \sqrt{1 - \sum_i(x^i)^2} \dots x^n) = (x^1 \dots x^n)$. \\
+
+So $\varphi_i^+ \circ (\varphi_i)^{-1} = \varphi_i^- \circ (\varphi_i^+)^{-1} = 1_{\mathbb{B}^n}$. \\
+
+$\lbrace (U_i^{\pm}, \varphi_i^{\pm}) \rbrace$ is a smooth atlas, defines smooth structure on $\mathbb{S}^n$. This is its \textbf{standard smooth structure}.
+
+
+\problemhead{1, Wald (1984) \cite{Wald1984}}
+\begin{enumerate}
+	\item[(a)] In Wald's notation, $f^+_i : O_i^+ \to D$; compare Lee's notation against Wald's, respectively:
+	
+	\[
+	\varphi_i^{\pm} : U^{\pm}_i \cap S^n \to \mathbb{B}^n \equiv f_i^{\pm} : O_i^{\pm} \to D^n
+	\]
+	
+	\[
+	\varphi_i^{\pm} \circ (\varphi_j^{\pm})^{-1} (x^1 \dots x^n) = \varphi_i^{\pm}( x^1, \dots \pm \sqrt{ 1 -\sum_{k=1}^n (x^k)^2} \dots x^n) = (x^1 \dots \widehat{x}^i \dots \pm \sqrt{ 1 - \sum_{k=1}^n (x^k)^2 } , \dots x^n)
+	\]
+Clearly, $\varphi_i^{\pm} \circ (\varphi_j^{\pm})^{-1}$ is $C^{\infty}$ by taking $\frac{ \partial}{\partial x^k} $ to any order, since $\mathbb{B}^n$ doesn't include its boundary.
+
+	\item[(b)] See \emph{stereographic projection}: 
+
+	\textbf{north pole} $N = (0, \dots 0, 1) \in S^n \subseteq \mathbb{R}^{n+1}$ \\
+\textbf{south pole} $S = (0, \dots 0,-1) \in S^n \subseteq \mathbb{R}^{n+1}$ \\
+\textbf{stereographic projection} 
+\[
+\begin{aligned}
+	& \sigma : \mathbb{S}^n \setminus \lbrace N \rbrace \to \mathbb{R}^n \\
+	& \sigma(x^1 , \dots x^{n+1}) = \frac{ (x^1, \dots x^n ) }{ 1 - x^{n+1}} 
+\end{aligned}
+\]
+\[
+\begin{aligned}
+	& \widetilde{\sigma}: \mathbb{S}^n \setminus \lbrace S \rbrace \to \mathbb{R}^n \\
+	& \widetilde{\sigma}(x^1 , \dots x^{n+1}) = -\sigma(-x) = \frac{ x^1, \dots x^n }{ 1 + x^{n+1}}
+\end{aligned}
+\]
+
+\end{enumerate}
+
+\problemhead{1-7, Lee (2012) \cite{JLee2012}, \textbf{Stereographic projection of spheres}}
+
+Let $N$ denote the \textbf{north pole} $(0, \dots, 0, 1) \in \mathbb{S}^n \subseteq \mathbb{R}^{n+1}$, and let S denote the \textbf{south pole} $(0, \dots , 0 , -1)$. Define the \textbf{stereographic projection} $\sigma: \mathbb{S}^n \setminus \lbrace N \rbrace \to \mathbb{R}^n$ by 
+\[
+\sigma(x^1, \dots x^{n+1}) = \frac{ (x^1, \dots x^n ) }{ 1 - x^{n+1}}
+\]
+Let $\widetilde{\sigma}(x) = -\sigma(-x)$ for $x\in \mathbb{S}^n \setminus \lbrace S \rbrace$.
+
+\begin{enumerate}
+	\item[(a)] So given a \\
+	\textbf{north pole} $N = (0, \dots 0, 1) \in S^n \subseteq \mathbb{R}^{n+1}$ \\
+	\textbf{south pole} $S = (0, \dots 0,-1) \in S^n \subseteq \mathbb{R}^{n+1}$ \\
+	\textbf{stereographic projection} 
+	\[
+	\begin{aligned}
+		& \sigma : \mathbb{S}^n \setminus \lbrace N \rbrace \to \mathbb{R}^n \\
+		& \sigma(x^1 , \dots x^{n+1}) = \frac{ (x^1, \dots x^n ) }{ 1 - x^{n+1}} 
+	\end{aligned}
+	\]
+	\[
+	\begin{aligned}
+		& \widetilde{\sigma}: \mathbb{S}^n \setminus \lbrace S \rbrace \to \mathbb{R}^n \\
+		& \widetilde{\sigma}(x^1 , \dots x^{n+1}) = -\sigma(-x) = \frac{ x^1, \dots x^n }{ 1 + x^{n+1}}
+	\end{aligned}
+	\]
+
+Consider $\mathbf{x} \in \mathbb{S}^n \setminus \lbrace N \rbrace \to \mathbb{R}^n$, $\mathbf{x} = (x^1 \dots x^{n+1})$.
+\[
+\begin{gathered}
+	N + t(\mathbf{x} - N) = \mathbf{x}' \Longrightarrow 1 + t(x^{n+1} - 1 ) = 0 \text{ or } t = \frac{1}{ 1- x^{n+1}} \\
+	(x')^i = \frac{x^i}{ 1 - x^{n+1}}  \quad \, \forall \, i \neq n + 1
+\Longrightarrow \sigma(x^1 \dots x^{n+1}) = \frac{ (x^1, \dots x^n) }{ 1 - x^{n+1}}
+\end{gathered}
+\]
+Thus we have a stereographic projection from the north pole.
+
+\[
+\begin{gathered}
+	S + t(\mathbf{x} - S) = \mathbf{x}' \Longrightarrow 1 + t(x^{n+1} + 1) = 0 \text{ or } t= \frac{1}{1 + x^{n+1}} \\
+	(x')^i = \frac{x^i }{ 1 + x^{n+1}} \quad \, \forall \, i \neq n + 1 \\
+	\Longrightarrow \widetilde{\sigma}(x^1 \dots x^{n+1}) = \frac{ (x^1, \dots x^n) }{ 1 + x^{n+1}}
+\end{gathered}
+\]
+\textbf{Thus we have a stereographic projection from the south pole}.
+
+\item[b]
+\[
+\begin{gathered}
+\begin{aligned}
+	& \sigma^{-1} (u^1 \dots u^n) = \frac{(2u^1 \dots 2u^n, |u|^2 - 1) }{ |u|^2 + 1 } \\
+	& \sigma \circ \sigma^{-1}(u^1 \dots u^n) = \frac{ (2u^1 \dots 2u^n) }{ |u|^2 + 1 } / \left( 1 - \frac{ |u|^2 - 1 }{ |u|^2 + 1 } \right) = (u^1, \dots u^n)
+\end{aligned}	\\
+\sigma^{-1} \circ \sigma(x^1, \dots x^{n+1}) = \sigma^{-1} \frac{ (x^1 \dots x^n) }{ 1 - x^{n+1} } = \frac{ \left(\frac{ 2 x^1}{ 1 - x^{n+1} } , \dots \frac{2x^n}{1 - x^{n+1} } , \frac{ (x^1)^2 + \dots + (x^n)^2 }{ ( 1- x^{n+1})^2 } - 1 \right) }{ \frac{ (x^1)^2 + \dots + (x^n)^2}{ (1- x^{n+1})^2 } + 1 } = \\
+= \frac{ \left( \frac{ 2 x^1}{ 1 - x^{n+1}} \dots \frac{2x^n}{1- x^{n+1}} , \frac{ (x^1)^2 + \dots + (x^n)^2 }{ (1-x^{n+1})^2} - \frac{ 1 - 2x^{n+1} + (x^{n+1})^2 }{ (1- x^{n+1})^2} \right) }{ \frac{2(1-x^{n+1})}{(1-x^{n+1})^2} } = \left( x^1, \dots x^n , \frac{ 1 - (x^{n+1})^2 - 1 + 2x^{n+1} - (x^{n+1})^2 }{ \frac{ 2 }{ 1 - x^{n+1}} (1- x^{n+1})^2 } \right) = \\
+= (x^1, \dots x^n , \frac{2 x^{n+1} ( 1 -x^{n+1}) }{ \frac{ 2 }{ 1 - x^{n+1}} ( 1 - x^{n+1})^2 } ) = (x^1, \dots x^{n+1})
+\end{gathered}
+\]
+\item[(c)] Compute the transition map $\widetilde{\sigma} \circ \sigma^{-1}$. (The coordinates defined by $\sigma$ or $\widetilde{\sigma}$ are called \textbf{stereographic coordinates}).
+
+\[
+\begin{gathered}
+	\widetilde{\sigma} \circ \sigma^{-1}(u^1 \dots u^n) = \widetilde{\sigma} \frac{(2u^1 \dots 2u^n, |u|^2-1) }{ |u|^2 +  1} = \frac{ \frac{2u^1}{ |u|^2 + 1} , \dots \frac{2u^n}{ |u|^2 + 1} }{ 1 + \frac{ |u|^2 - 1 }{ |u|^2 + 1} } = \frac{ \frac{2u^1}{ |u|^2 + 1} , \dots \frac{2u^n}{ |u|^2 + 1} }{  \frac{2|u|^2}{ |u|^2 + 1} } = \\
+	= \boxed{ \left( \frac{u^1}{ |u|^2} , \dots , \frac{u^n}{ |u|^2} \right) }
+\end{gathered}
+\]
+
+\end{enumerate}
+
+\subsubsection{Polar coordinates}
+
+Consider 
+\[
+\mathbf{x}(\theta, \varphi) = (s\theta c\varphi, s\theta s\varphi, c\theta)
+\]
+\[
+\begin{aligned}
+& \theta = \arccos{z}, \quad \, \theta \in [0, \pi] , \, z \in [0,1] \\
+& \begin{gathered}
+\varphi = \begin{cases}
+	& \arctan{ \left( \frac{y}{x} \right) } \text{ if } x > 0, \, \varphi \in ( \frac{-\pi}{2}, \frac{\pi}{2}) \\
+	& \arctan{ \left( \frac{y}{x} \right) }  + \pi if x < 0 \text{ and } y > 0, \, \varphi \in (\frac{\pi}{2}, \pi) \\
+	& \arctan{ \left( \frac{y}{x} \right) }  - \pi if x < 0 \text{ and } y < 0, \, \varphi \in (-\pi, \frac{-\pi}{2}) \\ 
+	& \frac{\pi}{2} \text{ if } x = 0, y = 1\\
+	& \frac{-\pi}{2} \text{ if } x= 0 , y = -1
+\end{cases}	
+\end{gathered}
+\end{aligned}
+\]
 
 
 \section{Inverse Function Theorem}
@@ -1650,7 +1837,7 @@ So that
 	= (u^{\alpha_1}_1 \dots u_r^{\alpha_r} \beta^1_{\mu_1} \dots \beta^s_{\mu_s})(\alpha^1_{\alpha_1} \dots \alpha^r_{\alpha_r} v_1^{\mu_1} \dots v_s^{\mu_s} )
 \end{gathered}
 \]
-Identify $u_1 \otimes \dots \otimes u_r \otimes \beta^1 \otimes \dots \otimes \beta^s$ with this multiplinear map.  
+Identify $u_1 \otimes \dots \otimes u_r \otimes \beta^1 \otimes \dots \otimes \beta^s$ with this multilinear map.  
 
 \begin{proposition}
 If $V$ is finite-dim. vector space, or if $V=\Gamma(E)$, for vector bundle $E\to M$, map
@@ -1852,6 +2039,154 @@ where I've tried to express the right-$R$-module, "right action" on $\alpha^1 \o
 
 
 Conlon (2008) \cite{Conl2008}
+
+\subsection{Metric}
+
+\subsubsection{Induced Metric}
+
+cf. 7.1.2. Induced metric, Nakahara (2003) \cite{Naka2003}. Let $M$ be $m$-dim. submanifold of $n$-dim. Riemannian manifold $N$ with metric $g_N$. \\
+If $f:M \to N$ embedding which induced the submanifold structure of $M$. (Sec. 5.2 of Nakahara (2003) \cite{Naka2003}). \\
+(Recall, smooth $f: M \to N$, $\text{dim}M \leq N$, $f$ immersion if $f_* : T_pM \to T_{f(p)}N$ injection, so rank $f_* = \text{dim}M$. $f$ embedding if $f$ immersion and $f$ injection. Also $f(M)$ submanifold of $N$).
+
+\begin{proposition}
+pullback $f^*$ induced a natural metric $g_M = f^* g_N$ on $M$ is given by
+\begin{equation}
+	g_{M\mu nu} (x) = g_{N \alpha \beta} \frac{\partial f^{\alpha}}{\partial x^{\mu}}\frac{\partial f^{\alpha} }{ \partial x^{\nu}}
+\end{equation}
+\end{proposition}
+
+Recall that
+\[
+\begin{gathered}
+\begin{aligned}
+	& f^* : T^*_{f(p)}N \to T_p^* M \\
+	& \omega \in T^*_{f(p)}N \\
+	& V \in T_p M
+\end{aligned} \quad \quad \, 
+\begin{gathered}
+\langle f^* \omega, V \rangle = \langle \omega, f_* V \rangle \\
+\text{ and } \\
+f_*V[g] = V[gf], \, g\in \mathcal{F}(N)
+\end{gathered}
+\end{gathered}
+\]
+
+Using our notation, consider \\
+\[
+\begin{aligned}
+	& (U, \varphi), \, U\subset M, \, \varphi : U \subset M \to \mathbb{R}^m \\
+	& (V, \psi), \, V \subset N, \, \psi : V \subset N \to \mathbb{R}^n
+\end{aligned}
+\]
+Colloquially, say $y^j = y^j(x)$, but actually $y^j = \psi \circ f\circ \varphi^{-1}$, so that
+\[
+f_*(X) = Y, \text{ where } X= X^i \frac{ \partial }{ \partial x^i }, \, Y = Y^j \frac{\partial }{ \partial y^j} = X^i \frac{ \partial y^j}{\partial x^i } \frac{ \partial }{ \partial y^j}
+\]
+
+We also observe that 
+\[
+f_* V[g] = V[g\circ f] = V^i \frac{ \partial }{ \partial x^i} (g\circ f) = V^i \frac{ \partial g}{ \partial y^i} \frac{ \partial f^j}{ \partial x^i } = V^i \frac{ \partial f^j}{ \partial x^i } \frac{ \partial g}{ \partial y^j}
+\]
+where notation-wise, $X\equiv V$, $y\equiv f$ with respect to ours and Nakahara's notation. \\
+
+Now $g_N : T_{f(p)}N \otimes T_{f(p)} N \to \mathbb{R}$, then if we just input one vector into $g_N$, it becomes a covector $g_N(U, \,) \in T^*_{f(p)} N$.
+
+So then
+\[
+\begin{gathered}
+	\langle f^* g_N(U, \, ) , V \rangle = \langle g_N(U, \, ) , f_* V\rangle = \langle g_N(U, \, ) , V^i \frac{ \partial f^j}{ \partial x^i} \frac{ \partial }{ \partial y^j} \rangle = \langle g_N(U, \, ) , V^i \frac{ \partial }{ \partial y^j} \rangle \frac{ \partial f^j }{ \partial x^i} \\
+g_N(U, V^i \frac{ \partial }{ \partial y^i } ) \frac{ \partial f^j}{\partial x^i} = g_N(U^k \frac{ \partial }{ \partial y^k}, V^i \frac{ \partial }{ \partial y^j} ) \frac{ \partial f^j}{\partial x^i} = (g_N)_{aj} V^i \frac{\partial f^j}{\partial x^i} 
+\end{gathered}
+\]
+where we let $U^k = \delta^{ak}$ in the last step.
+
+Let $V =\delta^{bi} \frac{\partial }{ \partial x^i} $, so $(g_N)_{aj} \frac{ \partial f^j}{\partial x^b} = \langle f^* g_N \left(\frac{\partial }{ \partial y^a} , \, \right), \frac{\partial }{ \partial x^b} \rangle $. 
+
+By symmetry,
+\begin{equation}
+\boxed{ (g_M)_{ab} = (g_N)_{ij} \frac{ \partial f^i}{ \partial x^a } \frac{ \partial f^j}{\partial x^b} }
+\end{equation}
+where $f:M \to N$.
+
+\problemhead{8, pp. 28, Wald (1984) \cite{Wald1984}}
+
+\begin{enumerate}
+	\item[(a)] The metric of flat, 3-dim. Euclidean space is
+	\[
+	ds^2 = dx^2 + dy^2 + dz^2
+	\]
+	Show that the metric components $g_{\mu \nu}$ in spherical polar coordinates $r, \theta, \phi$ defined by
+	\[
+	\begin{gathered}
+		r= (x^2 + y^2 + z^2)^{1/2} \\
+		\cos{\theta}  =  z/r \\
+		\tan{\phi} = y/x
+	\end{gathered}
+	\]
+	is given by
+	\[
+	ds^2 = dr^2 + r^2 d\theta^2 + r^2 \sin^2{\theta} d\phi^2
+	\]
+	\item[(b)] The spacetime metric of special relativity is 
+	\[
+	ds^2 = -dt^2 + dx^2 + dy^2 + dz^2
+	\]
+	Find the components, $g_{\mu \nu}$ and $g^{\mu \nu}$, of the metric and inverse metric in "rotating coordinates," defined by
+	\[
+	\begin{aligned}
+		& t' = t \\
+		& x' = (x^2 + y^2)^{1/2} \cos{(\phi - \omega t)} \\
+		& y' = (x^2 + y^2)^{1/2} \sin{(\phi - \omega t)} \\
+		& z' =z
+	\end{aligned}
+	\]
+	where $\tan{\phi} = y/x$.
+\end{enumerate}
+
+\solutionhead{8, pp. 28, Wald (1984) \cite{Wald1984}}
+\begin{enumerate}
+	\item[(a)] Consider $(r,\theta, \varphi) \to (x,y,z)$ s.t. 
+	\[
+	\begin{gathered}
+	\begin{aligned}
+		& x = rs{\theta} c{\varphi} \\
+		& y = rs{\theta} s{\varphi} \\
+		& z = rc{\theta}
+	\end{aligned}
+\text{ so consider } \left| \begin{matrix} s{\theta} c{\varphi} & rc{\theta} c{\varphi} & - rs{\theta} s{\varphi} \\
+	s{\theta} s{\varphi} & rc{\theta} s{\varphi} & rs{\theta} c{\varphi} \\
+	c{\theta} & -rs{\theta} & 0 \end{matrix} \right|
+	\end{gathered}
+	\]
+	Since $(g_N)_{ij} = \delta_{ij}$ in our case,
+	\[
+	\begin{aligned}
+		& (g_M)_{rr} = 1 \\
+		& (g_M)_{\theta \theta} = r^2 \\
+		& (g_M)_{\varphi \varphi} = r^2 \sin^2{\theta}
+	\end{aligned}
+	\]
+	By summing terms across columns, $(g_M)_{ab} =0$ if $a\neq b$ and $(g_M)_{aa}$ obtained by squaring and summing terms across a single column.
+
+	Thus, some physicists write as a (sometimes confusing) shorthand for the metric tensor
+	\[
+	g_M = dr \otimes dr + r^2 d\theta \otimes d\theta + r^2 \sin^2{\theta} d\varphi \otimes d\varphi
+	\]
+	to be
+	\[
+	ds^2 = dr^2 + r^2 d\theta^2 + r^2 \sin^2{\theta} d\phi^2	
+	\]
+	\item[(b)] Consider $(t', x', y', z') \to (t, x, y, z)$. Let $\rho = (x^2 + y^2)^{1/2}$. Consider the Jacobian:
+	\[
+	\left| \begin{matrix} 1 & & & \\ 
+		\omega \rho s(phi - \omega t) & \frac{x}{\rho} c(\phi - \omega t) &  \frac{y}{\rho} c(\phi - \omega t) & \\
+		 -\omega \rho  c(\phi - \omega t) &  \frac{x}{\rho} s(\phi - \omega t) &  \frac{y}{\rho} s(\phi - \omega t) & \\
+		 0 & & 1 \end{matrix} \right|
+	\]
+
+The terms with the same components, e.g. $g_{t't'}, \, g_{x'x'}, \dots$ are $(-1 + \omega^2 \rho^2), \, \frac{x^2}{\rho^2} , \, \frac{y^2}{\rho^2}, \, 1$, and the cross terms are $\frac{xy}{\rho^2} dx \otimes dy$.
+\end{enumerate}
+
 
 \part{Lie Groups, Lie Algebra}
 
@@ -7675,6 +8010,32 @@ For the RHS with $g \mathbf{v}_0 \times \mathbf{r}_0$, $\mathbf{v}_0 \times \mat
 \Longrightarrow g = \left( \frac{ a^3}{GM} \right)^{1/2} \left[ (\cos{E_0} - e) \sin{E} - (\cos{E} - e) \sin{E_0} \right] 
 \end{equation}
 
+\part{Quantum Field Theory}
+
+\part{The Standard Model}
+
+gauged symmetry group 
+\[
+\begin{aligned}
+& SU_c(3) \times & SU_i(2) \times & U_1(1) \\	
+& \downarrow & \downarrow & \downarrow \\
+& 8G^{\alpha}_{\mu} & 3 W_{\mu}^a & B_{\mu} \\
+& \alpha = 1 \dots 8 & a = 1, 2, 3 & 
+\end{aligned}
+\]
+
+8 spin-1 particles $G^{\alpha}_{\mu}(x) \equiv $ gluons, $c$ is meant to denote "color" \\
+Gluons are strong to be massless, \\
+strong interaction \\
+
+3 spin-1 particles $W^a_{\mu}(x)$ associated with $SU_L(2)$, $L$ indicates that only left-handed fermions turn out to carry this quantum number. \\
+
+1 $B_{\mu}(x)$ with factor $U_Y(1)$, subscript $Y$ to distinguish group associated with the quantum number (defined below) of weak hypercharge, from group associated with ordinary electric charge, $Q \equiv U_{\text{em}}(1)$. \\
+
+4 spin-1 bosons associated with factors $SU_L(2) = U_Y(1)$ are related to physical bosons that mediate we are interactions, $W^{\pm}$ and $Z^0$, and familiar photon $\gamma$ from QED.
+
+
+
 \part{General Relativity}
 
 \part{WE Heraeus International Winter School on Gravity and Light}
@@ -12319,6 +12680,9 @@ Vladimir I. Arnold, Valery V. Kozlov, Anatoly I. Neishtadt.  \textbf{Mathematica
 Ralph Abraham and Jerrold E. Marsden. 
 \textbf{Foundations of Mechanics} (Ams Chelsea Publishing) Hardcover – May 21, 2008.  American Mathematical Society; 2 edition (May 21, 2008). ISBN-10: 0821844385
 ISBN-13: 978-0821844380
+
+\bibitem{Wald1984}
+Robert M. Wald. \textbf{General Relativity}. The University of Chicago Press. 1984.
 
 \bibitem{Schu2015}
 \href{https://www.youtube.com/c/FredericSchuller}{Frederic Schuller}. \href{https://youtube.com/playlist?list=PLPH7f_7ZlzxTi6kS4vCmv4ZKm9u8g5yic}{\textbf{Lectures on the Geometric Anatomy of Theoretical Physics}}. Sept. 2015.

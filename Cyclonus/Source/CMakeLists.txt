@@ -56,6 +56,11 @@ IF(CCACHE_FOUND)
   SET(CMAKE_CXX_COMPILER_LAUNCHER ccache)
 ENDIF()
 
+# Calls a CMake module that first, searches the file system for the appropriate
+# threads package for this platform, and then sets CMAKE_THREAD_LIBS_INIT
+# variable (and other variables as well).
+FIND_PACKAGE(Threads REQUIRED)
+
 # Declare dependency on GoogleTest which is downloaded from GitHub.
 # cf. https://google.github.io/googletest/quickstart-cmake.html
 INCLUDE(FetchContent)
@@ -65,5 +70,8 @@ FetchContent_Declare(googletest
 
 FetchContent_MakeAvailable(googletest)
 
+# Add_subdirectory call makes use of libraries.
+# Add_subdirectory adds the source CMakeLists.txt and code files in the
+# directory.
 ADD_SUBDIRECTORY(ProtoFiles)
 ADD_SUBDIRECTORY(UnitTests)
