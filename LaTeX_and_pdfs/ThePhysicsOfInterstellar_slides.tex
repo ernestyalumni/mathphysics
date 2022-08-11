@@ -9,6 +9,10 @@
 % 
 
 \documentclass{beamer}
+
+% cf. https://tex.stackexchange.com/questions/40253/how-to-strike-through-obliquely-e-g-to-indicate-cancellation
+\usepackage{cancel}
+
 % cf. https://tex.stackexchange.com/questions/38352/resize-scale-equation-in-beamer
 \usepackage{graphicx}% http;//ctan.org/pkg/graphicx
 
@@ -44,6 +48,9 @@
 		\begin{equation*}
 			R_{ab} - \frac{1}{2} g_{ab} R = 8\pi G_N T_{ab}
 		\end{equation*}
+		\begin{equation*}
+			S_{\text{Einstein-Hilber}}[g] = \int_M \sqrt{-g} R
+		\end{equation*}
 	\end{frame}
 	\begin{frame}{Metric $g$}
 		\begin{columns}
@@ -63,4 +70,127 @@
 			\end{column}
 		\end{columns}
 	\end{frame}
+	\begin{frame}{Quantum Field Theory (The Standard Model)}
+	The Standard Model
+		\begin{equation*}
+			\begin{aligned}
+				\mathcal{L}_{fg} = & \frac{-1}{4} G^{\alpha}_{\mu \nu} G^{\alpha \mu \nu} - \frac{1}{4} W^{a\mu \nu} W^{a}_{\mu \nu} - \frac{1}{4} B_{\mu \nu} B^{\mu \nu} - \frac{g_3^2 \Theta_3}{64\pi^2} \epsilon_{\mu \nu \lambda \rho} G^{\alpha \mu \nu} G^{\alpha \lambda \rho} \\
+& - \frac{g_2^2 \Theta_2}{64 \pi^2} \epsilon_{\mu \nu \lambda \rho} W^{a \mu \nu} W^{a\lambda \rho } - \frac{g_1^2 \Theta_1}{64 \pi^2 } \epsilon_{\mu \nu \lambda \rho} B^{\mu \nu} B^{\lambda \rho} - \frac{1}{2} \overline{L}_m \cancel{D} L_m \\ 
+& - \frac{1}{2} \overline{E}_m \cancel{D} E_m - \frac{1}{2} \overline{Q}_m \cancel{D} Q_m - \frac{1}{2} \overline{U}_m \cancel{D} U_m - \frac{1}{2} \overline{D}_m \cancel{D} D_m
+			\end{aligned}
+		\end{equation*}
+in which gauge field-strengths given by
+\[
+\begin{aligned}
+G^{\alpha}_{\mu \nu} & = \partial_{\mu} G_{\nu}^{\alpha} - \partial_{\nu} G_{\mu}^{\alpha} + g_3 f^{\alpha}_{\, \, \beta \gamma} G_{\mu}^{\beta} G_{\nu}^{\gamma} \\
+W^a_{\mu \nu} & = \partial_{\mu} W_{\nu}^a - \partial_{\nu} W^a_{\mu} + g_2 \epsilon_{abc} W^b_{\mu} W^c_{\nu} \\
+B_{\mu \nu} & = \partial_{\mu} B_{\nu} - \partial_{\nu} B_{\mu}
+\end{aligned}
+\]
+\[
+\begin{gathered}
+ + \mathcal{L}_{\text{Higgs}}
+\end{gathered}
+\]
+	\end{frame}
+\begin{frame}{Quantum Field Theory (Symmetry)}
+		Symmetry
+		\begin{equation*}
+			\begin{aligned}
+				 SU_c(3) \times \quad & SU_L(2)  \times & U_Y(1) \\
+				 \downarrow \quad & \downarrow & \downarrow \\
+				 8 G_{\mu}^{\alpha} \quad & 3 W_{\mu}^a & B_{\mu} \\
+				 \alpha = 1, \dots, 8 \quad & a = 1, 2, 3 & \\
+			\end{aligned} \quad \quad \, \begin{aligned}
+& U_{\text{em}} \\ 
+& \downarrow \\
+& \gamma
+\end{aligned}
+		\end{equation*}
+
+% Quantization
+\end{frame}
+
+\begin{frame}{Information, Entropy, and Black Holes}
+
+Entropy
+
+\[
+\begin{gathered}
+\begin{gathered}
+\text{(Information Theory)} \\
+H(X) := -\sum_{x \in X} p(x) \log_2{p(x)} 
+\end{gathered} \\
+\begin{aligned} 
+ & \text{(Classical)} & \text{(Quantum)} \\
+& S = - \sum p_i \ln{ p_i} & S = -\text{Tr}{ (\rho \ln{ \rho } )} \\
+\end{aligned}
+\end{gathered}
+\]
+
+Black hole entropy
+\begin{equation*}
+S = \frac{A}{4 G }
+\end{equation*}
+
+\end{frame}
+
+\begin{frame}{AdS/CFT correspondence via Holographic principle}
+
+\end{frame}
+
+\begin{frame}{Anti-de Sitter (AdS) space; "The Bulk"}
+
+		\begin{figure}[!htb]
+			\minipage{0.32\textwidth}
+				\includegraphics[width=1.5\linewidth]{images/AdSscreenshot1.png} 
+			\endminipage\hfill
+			\minipage{0.32\textwidth}
+				\includegraphics[width=1.5\linewidth]{images/AdSscreenshot2.png}
+			\endminipage\hfill
+			\minipage{0.32\textwidth}
+				\includegraphics[width=1.5\linewidth]{images/AdSscreenshot3.png}
+			\endminipage\hfill
+		\end{figure}
+\begin{equation*}
+g = - dt^2 + \sum_{i=1}^4 dx_i^2
+\end{equation*}
+
+A coordinate patch for half-space:
+
+\begin{equation*}
+ds^2 = \frac{1}{y^2} \left( -dt^2 + dy^2 + \sum_i dx_i^2 \right)
+\end{equation*}
+
+\end{frame}
+
+\begin{frame}{CFT (Conformal Field Theory)}
+
+\end{frame}
+
+\begin{frame}{Tesseract $\subset \, AdS_5$}
+		\begin{figure}
+			\includegraphics[width=\textwidth]{images/1201172.jpg}
+		\end{figure}
+\end{frame}
+
+\begin{frame}{How did Cooper message Murph from the tesseract}
+
+\begin{enumerate}
+\item Graviton
+\item EPR (Einstein-Podolsky) pair
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{2014-}
+2014-
+\end{frame}
+
+\begin{frame}{New directions for quantization}
+\begin{enumerate}
+\item Brane Quantization
+\item BV QQuantization
+\end{enumerate}
+\end{frame}
+
 \end{document}
