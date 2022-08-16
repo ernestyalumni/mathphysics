@@ -16,6 +16,7 @@
 % cf. https://tex.stackexchange.com/questions/38352/resize-scale-equation-in-beamer
 \usepackage{graphicx}% http;//ctan.org/pkg/graphicx
 
+
 \usetheme{default}
 
 % cf. https://tex.stackexchange.com/questions/79420/changing-font-style-using-beamer
@@ -49,7 +50,7 @@
 			R_{ab} - \frac{1}{2} g_{ab} R = 8\pi G_N T_{ab}
 		\end{equation*}
 		\begin{equation*}
-			S_{\text{Einstein-Hilber}}[g] = \int_M \sqrt{-g} R
+			S_{\text{Einstein-Hilbert}}[g] = \int_M \sqrt{-g} R
 		\end{equation*}
 	\end{frame}
 	\begin{frame}{Metric $g$}
@@ -94,9 +95,24 @@ B_{\mu \nu} & = \partial_{\mu} B_{\nu} - \partial_{\nu} B_{\mu}
 \]
 	\end{frame}
 \begin{frame}{Quantum Field Theory (Symmetry)}
-		Symmetry
+Invariance of Lagrangian under symmetries
+	\begin{equation*}
+{\tiny		\begin{aligned}
+			& \delta L_m = \left[ \left( \frac{-i}{2} \omega_1(x) + \frac{i}{2} \omega_2^a(x) \tau_a \right) P_L + \left( \frac{i}{2} \omega_1(x) - \frac{i}{2} \omega_2^a(x) \tau^*_a \right) P_R \right] L_m \\
+			& \delta E_m = [ i\omega_1(x) P_L - i \omega_1(x) P_R ] E_m \\
+			& \delta Q_m = \left[ \left( \frac{i}{6} \omega_1(x) + \frac{i}{2} \omega_2^a(x) \tau_a + \frac{i}{2} \omega_3^{\alpha}(x) \lambda_{\alpha} \right) P_L +  \right. \\
+			& \phantom{\delta Q_m =} \left. + \left( -\frac{i}{6} \omega_1(x) - \frac{i}{2} \omega_2^a(x) \tau^*_a - \frac{i}{2} \omega_3^{\alpha}(x) \lambda_{\alpha}^* \right) P_R \right] Q_m \\
+			& \delta U_m = \left[ \left( \frac{-2i}{3} \omega_1(x) - \frac{i}{2} \omega_3^{\alpha}(x) \lambda_{\alpha}^* \right) P_L + \left( \frac{2i}{3} \omega_1(x) _ \frac{i}{2} \omega_3^{\alpha}(x) \lambda_{\alpha} \right) P_R \right] U_m \\
+			& \delta D_m = \left[ \left( \frac{i}{3} \omega_1(x) - \frac{i}{2} \omega_3^{\alpha}(x) \lambda_{\alpha}^* \right) P_L + \left( -\frac{i}{3} \omega_1(x) + \frac{i}{2} \omega_3^{\alpha}(x) \lambda_{\alpha} \right) P_R \right] D_m \\
+			& \delta G_{\mu}^{\alpha} = \partial_{\mu} \omega_3^{\alpha}(x) - f^{\alpha}_{\beta \gamma} \omega_3^{\beta}(x) G_{\mu}^{\gamma} \\
+			& \delta W_{\mu}^a = \partial_{\mu} \omega_2^a(x) - \epsilon^{abc} \omega_2^b(x) W_{\mu}^c \\
+			& \delta B_{\mu} = \partial_{\mu} \omega_1(x)
+		\end{aligned} }
+	\end{equation*}
+
+		Symmetry groups
 		\begin{equation*}
-			\begin{aligned}
+{\small 			\begin{aligned}
 				 SU_c(3) \times \quad & SU_L(2)  \times & U_Y(1) \\
 				 \downarrow \quad & \downarrow & \downarrow \\
 				 8 G_{\mu}^{\alpha} \quad & 3 W_{\mu}^a & B_{\mu} \\
@@ -105,7 +121,7 @@ B_{\mu \nu} & = \partial_{\mu} B_{\nu} - \partial_{\nu} B_{\mu}
 & U_{\text{em}} \\ 
 & \downarrow \\
 & \gamma
-\end{aligned}
+\end{aligned} }
 		\end{equation*}
 
 % Quantization
