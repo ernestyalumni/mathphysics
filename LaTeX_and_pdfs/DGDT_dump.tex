@@ -8036,6 +8036,60 @@ strong interaction \\
 
 \part{General Relativity}
 
+$\hbar = c = 1$
+
+Classically, entropy is a measure of the phase space available to the system in question. Then for $S/E$, it should have an upper bound, since, \\
+let its energy be no more than $E$: this amounts to a limitation on momentum space available to system's components, provided potential energy bounded from below. Bekenstein (1981) \cite{Beke1981}
+
+From \href{https://en.wikipedia.org/wiki/Bekenstein_bound}{wikipedia, "Bekenstein bound"}
+
+Suppose we have a black hole of mass $M$, \\
+box of energy $E$ outside of it of size $R$ \\
+radius of the black hole $R_{\text{bh}}$ goes as $GM$ \\
+entropy of black hole goes as $\frac{ R^2_{\text{bh}} }{ G} \equiv \frac{ kc^3 R^2_{\text{bh}} }{\hbar G} \sim GM^2$ \\
+
+If we dump the box into the black hole, mass of black hole goes up to $M + E$ \\
+
+entropy goes up by $\frac{kGME}{\hbar c^3} \equiv GME$ \\
+since entropy can't decrease $S \lesssim GME$ \\
+In order for the box to fit inside black hole R $\lesssim GM$ \\
+If sizes are comparable, then $S \lesssim \frac{kRE}{\hbar c} \equiv RE$ \\
+
+\subsubsection{The case of a weakly gravitating system falling into a black hole}
+cf. Bekenstein (2018) \cite{Beke2018}
+
+Consider a weakly self-gravitating system $\mathcal{U}$ of proper mass energy $E$, entropy $\mathcal{S}$. \\
+Assume spherical box of radius $R$ enclosing $\mathcal{U}$, concentric to its center of mass of radius $R$. \\
+Box dropped into Schwarzchild black hold of mass $M$ satisfying $M\gg E$, $2M \gg R$. \\
+Assume black hole absorbs $\mathcal{U}$, and increases its mass by $E$. \\
+
+Black hole's entropy, originally $S_{BH} = \frac{4\pi M^2}{l_p^2}$ increases by $\Delta S_{BH} = \frac{8 \pi ME}{l_p^2} + O(E^2)$ \\
+
+By GSL (generalized Second Law), $\Delta S_{BH} +$ radiation entropies are at least as large as $\mathcal{S}$
+\[
+\Longrightarrow S \leq \frac{8 \pi ME}{ l_p^2}
+\]
+
+Choose $M = \frac{1}{8} R^2/ E$
+\[
+S \leq \frac{ \pi R^2}{ l_p^2}
+\]
+
+Claim: justify neglect of energy losses to Hawking's radiance (small) \\
+appropximate power emitted by Schwarzchild black hole by sphere with radius $2M$ radiating according to Stefan-Boltzmann law at Hawking temperature $T_H = \frac{l_p^2}{ 8\pi M}$
+
+\begin{equation}
+	\dot{M} \equiv \frac{dM}{dt} \approx \frac{ - Nl_p^3}{ 15360 \pi M^2}
+\end{equation}
+
+where $N\equiv $ effective number of radiated species (photons contribute unity to $N$). \\
+If $\mathcal{U}$ dropped at Schwarzschild time $t=0$, when its CM (center of mass) was at Schwarzschild radial coordinate $r = \alpha 2M$ ($\alpha \gg 1$), then bottom of sphere reaches horizon $r= 2M$, and infall practically finished, at time 
+\begin{equation}
+	t \approx 4 M \left[ \frac{1}{3} \alpha^{3/2} - \frac{1}{4} \ln{ \left( \frac{R}{ 4M } \right) } + O(\alpha^{1/2}) \right] 
+\end{equation}
+
+
+
 \part{WE Heraeus International Winter School on Gravity and Light}
 
 \section*{Introduction (from EY)}
@@ -12326,7 +12380,7 @@ Schuller references 2nd. year Mechanik in German: \url{https://www.video.uni-erl
 	
 	\section{Canonical Formulation of GR I}
 	
-	Dynamical and Hailtonian formulation of General Relativity.
+	Dynamical and Hamiltonian formulation of General Relativity.
 	
 	Purpose
 	\begin{enumerate}
@@ -12690,6 +12744,10 @@ Yvonne Choquet-Bruhat.  \textbf{General Relativity and the Einstein Equations} (
 
 \bibitem{Beke1981}
 Jacob D. Bekenstein. "Universal upper bound on the entropy-to-energy ratio for bounded systems." \textbf{Physical Review D}. Volume 23, Number 2. 15 Jan. 1981.
+
+\bibitem{Beke2018}
+Jacob D. Bekenstein. "Holographic bound from second law of thermodynamics". 14 Apr 2000. \url{http://arxiv.org/abs/hep-th/0003058v2}
+
 
 \bibitem{TFrankel2012}
 T. Frankel,
