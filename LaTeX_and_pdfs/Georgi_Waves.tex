@@ -1,0 +1,2739 @@
+%LaTeX
+%\documentclass[twoside]{article}
+\documentclass[twoside,10pt]{amsart}
+%This makes the margins little smaller than the default
+%\usepackage{fullpage}
+%fullpage is not installed on andrew, so we'll just use these lines.
+\oddsidemargin0cm
+\evensidemargin0cm
+\topmargin-1.65cm     %I recommend adding these three lines to increase the 
+\textwidth16.5cm   %amount of usable space on the page (and save trees)
+\textheight23.5cm  
+
+
+%if you need more complicated math stuff, you should use the next line
+\usepackage{amsmath}
+%This next line defines a variety of special math symbols which you
+%may need
+\usepackage{amssymb}
+
+%This next line (when uncommented) allow you to use encapsulated
+%postscript files for figures in your document
+%\usepackage{epsfig}
+
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{2.05ex plus 0.5 ex}
+
+%plain makes sure that we have page numbers
+\pagestyle{plain}
+
+
+\title{
+  Solutions to Problems in \emph{The Physics of Waves} by Howard Georgi, Prentice Hall, 1993  
+}
+\author{
+  Ernest Yeung - Praha 10, \v Cesk\`a Republika 
+       }
+%\date{Winter 2006}
+
+
+
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+  {\bigskip\bigskip
+   \noindent{\large\bf Question #1.}
+   \bigskip}
+
+\newcommand{\problemhead}[1]
+  {\smallskip
+   \noindent{\large\bf Problem #1.}
+   \smallskip}
+
+\newcommand{\exercisehead}[1]
+  {\bigskip\bigskip
+   \noindent{\large\bf Exercise #1.}
+   \bigskip}
+
+\newcommand{\solutionhead}[1]
+  {\medskip\medskip
+   \noindent{\large\bf Solution #1.}
+   \medskip}
+
+
+%-----------------------------------
+\begin{document}
+%-----------------------------------
+
+\maketitle
+
+Problems and Solutions from Howard Georgi, \emph{ The Physics of Waves }.  Prentice Hall.  New Jersey.  1993.  
+
+\section{ Harmonic Oscillation} 
+
+\problemhead{1.1} \[
+\begin{gathered}
+m\ddot{ y} = - ky -mg  \Longrightarrow \ddot{y} = -\frac{k}{m} (y + \frac{m}{k}g )  \\
+\text{ Define } Y = y + \frac{mg}{k}  \\
+\ddot{Y} = \ddot{y} \Longrightarrow \ddot{Y} = - \frac{k}{m} Y \Longrightarrow \omega^2 = \frac{k}{m}
+\end{gathered}
+\]
+Gravity simply translates the equilibrium position downward.  
+
+\problemhead{1.2} 
+\begin{enumerate}
+\item 
+\[
+e^{i 7 \theta} = (e^{i \theta})^7 = (\cos{\theta} + i \sin{\theta} )^7 = \sum_{ j=0}^7 \binom{7}{j} (\cos{\theta})^j (i \sin{\theta} )^{7-j}  
+\]
+Take the real part of both sides.  
+\[
+\cos{(7\theta)} = \cos{\theta} (y (-1) (\sin{\theta})^6 + 35 (\cos{\theta})^2 (\sin{\theta})^4 + -21 (\cos{\theta})^4 (\sin{\theta})^2 + (\cos{\theta})^6 )  
+\]
+\item \[
+\begin{gathered}
+e^{i 5 \theta} = (e^{i\theta})^5 = (\cos{\theta} + i \sin{\theta})^5 = \sum_{j=0}^5 \binom{5}{j} (\cos{\theta})^j (i \sin{\theta})^5-j;  \\
+\begin{aligned}
+  &  i \sin{ 5 \theta} = i\sin^5{\theta} + 10 \cos^2{\theta} (-i) \sin^3{\theta} + 5 \cos^4{\theta} i \sin{\theta}  \\
+  & \sin{ 5 \theta} = \sin^5{\theta} + -10 \cos^2{\theta} \sin^3{\theta} + 5 \cos^4{\theta}  \sin{\theta}
+\end{aligned}
+\end{gathered}
+\]
+\item \[
+\begin{gathered}
+\begin{aligned}
+\exp{i (\theta_1 + \theta_2 + \theta_3) } & =e^{i\theta_1} e^{i\theta_2} e^{i\theta_3} = (\cos{\theta_1} + i\sin{\theta_1}) (\cos{\theta_2} + i\sin{\theta_2}) (\cos{\theta_3} + i\sin{\theta_3})  \\
+ & = (\cos{\theta_1}\cos{\theta_2}+i (\cos{\theta_1} \sin{\theta_2} + \sin{\theta_1}\cos{\theta_2}) - \sin{\theta_1}\sin{\theta_2} )(\cos{\theta_3} + i\sin{\theta_3}) 
+\end{aligned} \\
+\sin{(\theta_1 + \theta_2 +\theta_3)} = \cos{\theta_1}\sin{\theta_2}\cos{\theta_3} +\sin{\theta_1} \cos{\theta_2} \cos{\theta_3} + \cos{\theta_1} \cos{\theta_2}\sin{\theta_3} - \sin{\theta_1}\sin{\theta_2}\sin{\theta_3} 
+\end{gathered}
+\]
+\item \[
+  \begin{gathered}
+    \cos{ \frac{\theta}{5} } = \frac{ e^{ i \theta /5 } + e^{-i \theta /5 } }{ 2}  \\
+    (\cos{ \theta /5 })^5 = \left( \frac{ e^{ i\theta /5} + e^{-i \theta /5}}{ 2} \right)^5 = \frac{1}{32} \left( \sum_{j=0}^5 (e^{ i\theta /5})^j (e^{-i \theta/5})^{5-j} \right)  =\\
+    = \frac{1}{32} \left( e^{- i \theta} + 5 e^{i\theta /5} e^{- 4i \theta/5} + 10 e^{i2\theta /5} e^{-3i \theta/5} +  10 e^{i3\theta /5} e^{-2i \theta/5} +  5 e^{4i \theta /5} e^{- i \theta/5} + e^{ i \theta } \right)  \\
+    = \frac{1}{32} \left( 2 \cos{\theta} + 10 \cos{ \left( \frac{3 \theta}{5} \right)} + 20 \cos{ \left( \frac{ \theta}{5} \right)} = \frac{1}{16} \cos{\theta} + \frac{5}{16} \cos{\left( \frac{3 \theta}{5} \right)} + \frac{10}{16} \cos{ \left( \frac{\theta}{ 5} \right)} \right)
+  \end{gathered}
+  \]
+\item \[
+\begin{gathered}
+\begin{aligned}
+  e^{i 6x} & = (\cos{x} + i \sin{x} )^6 = \sum_{j=0}^6 (\cos{x})^j (i \sin{x})^{6-j} \binom{6}{j}  \\
+  i \Im e^{i 6x} & = 6 \cos{x} i (\sin{x})^5 + 20 (\cos{x})^3 (-i) (\sin{x})^3 + 6 (\cos{x})^5 i \sin{x}  = i \sin{6x}  
+\end{aligned} \\
+\begin{aligned}
+\sin{6x} & = \sin{x} ( 6 (\cos{x})^5 - 20 \cos^3{x} (1- \cos^2{x}) + 6 \cos{x} (1- \cos^2{x} )^2    ) = \\
+& = \sin{x} ( 32 \cos^{5}{x} - 32 \cos^3{x} + 6 \cos{x} )
+\end{aligned}
+\end{gathered}
+\]
+\end{enumerate}
+
+\problemhead{1.3} 
+\begin{enumerate}
+\item $ i + \sqrt{3} = 2 e^{ i\pi /6} $ 
+  \item $ i- \sqrt{3} = 2 e^{i 5 \pi /6}  $  
+\item $Re^{i\theta} = Re^{i(\theta+ 2 \pi n)} \Longrightarrow (Re^{i(\theta+ 2 \pi n)})^{1/2} = R^{1/2} e^{i\theta /2} e^{i\pi n} = \pm R^{1/2} e^{i\theta /2 } $
+\item $\pm \sqrt{2} e^{i \frac{ \pi}{4} }, \quad \pm 4 e^{i \frac{\pi}{6} }$
+\end{enumerate}
+
+\problemhead{1.4} $ 1 = e^{i 2 \pi n } = z^6 \Longrightarrow z = e^{ i \pi n/3} = \pm 1 , \frac{1}{2} \pm i \frac{ \sqrt{3}}{2}, - \frac{1}{2} \pm i \frac{ \sqrt{3}}{2} $.  
+
+\problemhead{1.5} $ \frac{d^3}{dt^3} f(t) +f(t) = D_3 f(t) = 0 $ \bigskip \\
+$D_3$ is linear and time translation invariant (the differential and identity operators usually are).  \medskip \\
+\quad So $f = A e^{Ht}$, $H$ is an initial condition constant.  
+\[
+\begin{gathered}
+f' = fH, f'' = fH^2, f''' = f H^3   \\
+\Longrightarrow f = A exp{ ( (\frac{1}{2} \pm i \frac{ \sqrt{3}}{2} )t )} = A e^{t/2} e^{\pm \frac{3t}{2} } \Longrightarrow A e^{t/2} \cos{ \frac{ \sqrt{3}t}{2} } \\
+\Longrightarrow \boxed{ f = A e^{t/2} \cos{ \left( \frac{ \sqrt{3} t}{2} \right)}, Ae^{-t} }
+\end{gathered}
+\]
+
+\problemhead{1.6} \[
+\begin{gathered}
+  M \frac{ d^2 x}{dt^2} = -K_2 x + -K_1 x = -(K_1 + K_2) x  \\
+  \omega^2 = \frac{ K_1 + K_2}{M}  \\
+  \text{ if } K_1 = K, K_2 = 2 K, \omega^2 = \frac{ 3K}{M}  \\
+  \Longrightarrow v_0 = A \omega, A = \frac{v}{M} = v \sqrt{ \frac{ M}{3K} }
+\end{gathered}
+\]
+
+\problemhead{1.7} 
+\[
+\begin{aligned}
+  & V(x) = \frac{ E_0 }{ a^4} (x^4 + 4 a x^3 - 8a^2 x^2 ) = C (x^4 + 4 a x^3 - 8 a^2 x^2 )  \\
+  & V'(x) = C (4 x^3 + 12 a x^2 -16 a^2 x ) = 4 C ( x^3 + 3 a x^2 - 4 a^2 x ) = C_1 x ( x+4a)(x-a) \\
+  & V''(x) = 4 C ( 3 x^2 + 6ax -4a^2 ) = C_1 (x+4a)(x-a) + C_1 (x) (2x + 3a)  \\
+  & V'''(x) = 4C (6x +6a) = 24 C( x+a)  
+\end{aligned}
+\]
+From the first derivative, we see equilibrium points at $x = 0 , -4a, a$.  Now
+\[
+\begin{aligned}
+  & V''(0) < 0 \\
+  & V''(-4a) = -4a C_1 (-5a) = 20 a^2 C_1  \\
+  & V''(a) = a C_1 (5a) = 5a^2 C_1  
+\end{aligned}
+\] 
+So $x_{1,2} = -4a, a$ are stable equilibrium points.  
+
+Recall $f(x) = \sum_{j=0}^{\infty} \frac{ f^{(j)}(a) (x-a)^j }{ j!}$, the Taylor series expansion.  Then
+\[
+\begin{gathered}
+  V= V_0 + \frac{ V_0'' (x-x_0)^2 }{ 2} + O((x-x_0)^3 )  \\
+  m\ddot{x} = - \Delta V = -V_0'' (x-x_0)  \\
+\text{ So } \boxed{ \omega^2 = \frac{ V_0''}{m}  }  \\
+\begin{aligned}
+& V''(x_1 = -4a) = \frac{ 80 E_0}{ a^2 } \quad \omega_1^2 = \frac{ 80 E_0 }{ ma^2 }  \\
+& V''(x_2 = a) = \frac{ 20 E_0 }{ a^2 } \quad \omega_2^2 = \frac{ 20 E_0}{ ma^2 }
+\end{aligned}
+\end{gathered}
+\]
+To estimate the ``smallness'' required, consider the ratio between the third power term and second power term.  
+\[
+\frac{ V'''}{3 V''}\frac{ (x-x_0)^3 }{ (x-x_0)^2 }= \frac{ 24 C(x+a)}{ 3(4) C (3x^2 + 6xa - 4a^ ) } (x-x_0) = \frac{ 2 (x+a)}{ (3 x^2 + 6ax -4a^2 )}( x-x_0)  
+\]
+So for 
+\[
+\begin{aligned}
+  & x_1 = -4a, \frac{ V'''(x_1)}{ 3 V''(x_1) } = \frac{ 2 (-3a) }{ 20a^2 } (x-x_1) = \frac{ -3 }{10 a}(x -x_1) \Longrightarrow x - x_1 \ll \frac{10a}{3}  \\
+  & x_2 = a, \frac{ V'''(x_2)}{ 3 V''(x_2) } = \frac{ 2 (2a) }{ 5a^2 } (x-x_2) = \frac{ 4 }{5 a}(x -x_2) \Longrightarrow x - x_2 \ll \frac{5a}{4} 
+\end{aligned}
+\]
+
+\problemhead{1.8} Given $m_1 = m_2 = 0.01 kg$, $l_0 = 0.1 m$, $\alpha = 5 \times 10^{-7} N\cdot m$, the equation of motion is given by
+\[
+I \frac{ d^2 \theta}{dt^2 } = - \alpha \theta
+\]
+The moment of inertia is given by
+\[
+I = 2 \left( \left( \frac{l_0}{2} \right)^2 m \right) = \frac{ l_0^2}{2} m 
+\]
+So the angular frequency is
+\[
+\begin{gathered}
+  \omega^2 = \frac{ 2 \alpha }{ l_0^2 m }  \\
+  \omega = \sqrt{ \frac{ 2 (5 \times 10^{-7} N \cdot m ) }{ (0.1 m)^2 (0.01 kg) } } = \frac{1}{10} per sec
+\end{gathered}
+\]
+
+\section{Forced Oscillations }
+
+\problemhead{2.1} Prove that an overdamped oscillator can cross its equilibrium position at most once.  
+
+\solutionhead{1} Suppose $z(T) = A_+ e^{-\Gamma_+ T}  + A_{-} e^{-\Gamma_{-} T} = 0 \Longrightarrow \frac{A_+}{A_{-}} = -e^{-\Gamma_- T + \Gamma_+ T } $.  \medskip \\
+\quad (if $A_- =0$), then $z= A_+ e^{-\Gamma_+ T}$ and $e^{-\Gamma_{-} T} $ never crosses zero; done.  \\
+
+\[
+\begin{gathered}
+z(t) = A_- (-\exp{ (-\Gamma_- + \Gamma_+ ) T } ) e^{-\Gamma_+ t } + A_- e^{-\Gamma_- t } = A_- (e^{-\Gamma_- t } - e^{-\Gamma^+ t + \sqrt{ \Gamma^2 - 4 \omega_0^2 T } } ) \\  
+z(t) = 0; \quad A_- \neq 0  \quad e^{-\Gamma_- t } = e^{\Gamma_+ t  + \sqrt{ \Gamma^2 -4 \omega_0^2 } T } \\
+e^{ ( \Gamma_+ - \Gamma_- ) t } = e^{\sqrt{ \Gamma^2 - 4 \omega_0^2 } t } = e^{\sqrt{ \Gamma^2 - 4 \omega_0^2 } T } 
+\end{gathered}
+\]
+Since the exponential function is monotonic in $t$, $t = T$, so there's only at most one crossing.  
+
+\problemhead{2.2} Prove, just using linearity, without using the explicit solution, that the steady state solution to (2.16) must be proportional to $F_0$.  
+
+\solutionhead{2.2} 
+\[
+\begin{gathered}
+  \frac{d^2}{dt^2} z(t) + \Gamma \frac{d}{dt} z(t) + \omega_0^2 z(t) = \frac{ \mathcal{F}(t)}{ m } \quad \quad (2.16) \\
+  \mathcal{F}(t) = F_0 e^{- i \omega_0 t } \\
+  \frac{d^2}{dt^2 }x(t) + \Gamma \frac{d}{dt} x(t) + \omega_0^2 x(t) = \frac{ F(t)}{ m } \quad \quad (2.14) 
+\end{gathered}
+\]
+
+\problemhead{2.3} 
+\[
+\begin{aligned}
+  & e^{ i(\omega_0 + \delta )t } + e^{ i (\omega_0 -\delta )t } = \cos{ (\omega_0 + \delta) t } + i \sin{ (\omega_0 + \delta)t } + \cos{ (\omega_0 -\delta ) t } + i \sin{ (\omega_0 -\delta)t }  \\
+  & \Re ( e^{ i(\omega_0 + \delta )t } + e^{ i (\omega_0 -\delta )t } ) = \cos{ \omega_0 t } \cos{ \delta t} - \sin{ \omega_0 t } \sin{\delta t} + \cos{ \omega_0 t } \cos{ \delta t } + \sin{\omega_0 t} \sin{\delta t } = 2 \cos{\omega_0 t } \cos{\delta t }
+\end{aligned}
+\]
+The equation of motion, with a change of notation, is 
+\[
+\ddot{x} + \Gamma \dot{x} + \omega_0^2 x = Dx = \frac{ F(t)}{m}
+\]
+
+We've shown that 
+\[
+ \Re ( f_0 e^{ i(\omega_0 + \delta )t }/2 + f_0 e^{ i (\omega_0 -\delta )t }/2 ) = f_0 \cos{\omega_0 t } \cos{\delta t }
+\]
+Consider
+\[
+D z_{1,2} = \frac{ f_0 }{2m} e^{i (\omega_0 \pm \delta) t } = F_0 e^{ i \omega_0 t (1 \pm \Delta) } = F_0 e^{i\omega_{1,2} t }  
+\]
+If $z_{1,2} = A_{1,2} e^{i \omega_{1,2} t }  $, 
+\[
+\begin{gathered}
+  Dz_{1,2} = (-\omega_{1,2}^2 + i \omega_{1,2} \Gamma + \omega_0^2 ) z_{1,2} = F_0 e^{i\omega_1,2 t }  \\
+  A_{1,2} = F_0 \left( \frac{ \omega_0^2 - \omega_{1,2}^2 - i \omega_{1,2} \Gamma}{ (\omega_0^2 - \omega_{1,2}^2 )^2 + (\omega_{1,2} \Gamma )^2 }  \right) \\
+  \text{ So } \omega_{1,2} = \omega_0 (1 \pm \Delta); \, F_0 = \frac{f_0}{2m} ; \, \omega_{1,2}^2 = \omega_0^2 (1 \pm \Delta)^2  \\
+  \begin{aligned}
+    A_{1,2} & = F_0 \frac{ \omega_0^2 - \omega_0^2 (1 \pm 2 \Delta + \Delta^2 ) - i \omega_{1,2} \Gamma }{ \omega_0^4 ( - (\pm 2) \Delta - \Delta^2 )^2  + (\omega_0 (1 \pm \Delta) \Gamma)^2 }   \\
+    & \simeq F_0 \frac{ \omega_0^2 ( -( \pm 2 \Delta)) - i \omega_{1,2} \Gamma }{ \omega_0^4 ( - (\pm 2 \Delta))^2 + (\Gamma \omega_0)^2 (1 \pm 2 \Delta ) }  
+  \end{aligned}  \\
+  \begin{aligned} 
+  z_1 + z_2 & = A_1 e^{ i \omega_0 (1 + \Delta) t } + A_2 e^{ i \omega_0 (1 - \Delta)t }  \\
+  & = e^{i\omega_0 t } F_0 \left( \frac{ \omega_0^2 ( -2 \Delta ) - i \omega_1 \Gamma }{ \omega_0^4 (2 \Delta)^2 + (\Gamma \omega_0 )^2 ( 1 + 2 \Delta ) } e^{i\delta t } +  \frac{ \omega_0^2 ( 2 \Delta ) - i \omega_1 \Gamma }{ \omega_0^4 (2 \Delta)^2 + (\Gamma \omega_0 )^2 ( 1 - 2 \Delta ) } e^{-i\delta t } \right)   
+  \end{aligned}
+\end{gathered}
+\]
+Assume $\frac{1}{2} \gg \Delta $
+\[
+\begin{aligned}
+z_1 + z_2 & \simeq e^{i\omega_0 t } F_0 \left( \frac{ \omega_0^2 (-2 \Delta ) - i \omega_0 \Gamma }{ \omega_0^4 (2 \Delta)^2 + (\Gamma \omega_0)^2 } e^{i\delta t } + \frac{ omega_0^2 (2 \Delta) - i \omega_0 \Gamma}{ \omega_0^4 (2 \Delta)^2 + (\Gamma \omega_0)^2 } e^{ -i \delta t }  \right)  \\ 
+&  \simeq \frac{ e^{i \omega_0 t } F_0 }{ ( (2 \omega_0^2 \Delta )^2 + (\Gamma \omega_0)^2 ) } ( -4 \Delta \omega_0^2 i \sin{ (\delta t ) } - i \omega_0 \Gamma 2 \cos{ (\delta t )} )   
+\end{aligned}
+\]
+Take the real part.
+\[
+\Longrightarrow \Re (z_1 + z_2) = \frac{ 2 \omega_0 F_0 \sin{\omega_0 t } ( 2 \delta \sin{(\delta t )} + \Gamma \cos{ (\delta t )} ) }{ (2 \omega_0 \delta )^2 + (\Gamma \omega_0)^2 }  
+\]
+It makes sense for the response to be $\frac{\pi}{2}$ out of phase near resonance.  
+\[
+\boxed{ \alpha (t)= 0. \, \beta (t) = \frac{ \frac{ f_0 }{ \omega_0 m} (2 \delta \sin{ \delta t } + \Gamma \cos{ (\delta t )} ) }{ (2 \delta)^2 + (\Gamma)^2 }  }
+\]
+Otherwise, consider when 
+\[
+\begin{gathered}
+  \Gamma =0 \\
+  \Longrightarrow A_{1,2} = F_0 \frac{ \omega_0^2 ( \mp 2 \Delta - \Delta^2 ) }{ \omega_0^4 ( \mp 2 \Delta - \Delta^2 )^2} \simeq \frac{ F_0 }{ \omega_0 ( \mp 2 \Delta ) }  \\
+  \begin{aligned}
+    z_1 + z_2 & = \frac{ F_0 }{ -2 \omega_0 \Delta } e^{i \omega_0 (1+ \Delta) t } + \frac{ F_0 }{ 2 \omega_0 \Delta } e^{i\omega_0 (1 - \Delta) t }  \\
+    & = \frac{F_0 e^{i\omega_0 t } }{ 2 \delta } ( -e^{i\delta t } + e^{-\delta t } ) = \frac{ - i F_0 e^{i\omega_0 t }}{ \delta } \sin{\delta t }  \\
+  \end{aligned} \\
+  \Re (z_1 + z_2 ) = \frac{ F_0 \sin{\delta t } \sin{\omega_0 t } }{ \delta} = \frac{ f_0}{2m} \sin{\omega_0 t } \left( \frac{ \sin{\delta t } }{ \delta } \right)  
+\end{gathered}
+\]
+We recover the delta function if $\delta \to 0$.  The response is $\pi/2$ phase lagging the driving force.  
+
+\problemhead{2.4}  
+\begin{enumerate}
+\item 
+\[
+m \frac{d^2 z }{dt^2 } + m \Gamma \frac{dz}{dt} = - K (z - d_0 e^{i\omega_d t }  
+\]
+Consider $z_h$.  
+\[
+\begin{gathered}
+  \ddot{z}_h + \Gamma \dot{z}_h + \omega_0^2 z_h = Dz_h =0 \\
+  (-\omega_h^2 + i \omega_h \Gamma + \omega_0^2) z_h  =0 \, \omega_h = \frac{ -i \Gamma \pm \sqrt{ -\Gamma^2 -4 (-1)\omega_0^2 } }{ 2 (-1)} = \frac{ i\Gamma}{2} \pm \sqrt{ \omega_0^2 - \left( \frac{\Gamma}{2} \right)^2 } = \frac{ i\Gamma}{2} \pm \omega_D  \\
+    z_h = e^{ -\frac{\Gamma}{2} t } (A \cos{ (\omega_D t) } + B \sin{ (\omega_D t )})  
+\end{gathered}
+\]
+Consider $z_p$.  $D z_p = Kd_0 e^{i\omega_d t } = D_0 e^{i\omega_d t } $ .  \bigskip \\
+Assume $z_p = A e^{i\omega_d t }$.  
+\[
+\begin{gathered}
+  \Longrightarrow (-\omega_d^2 + i \omega_d \Gamma + \omega_0^2 ) A e^{i\omega_d t } = D_0 e^{i\omega_d t }; \, A = \frac{ D_0 }{ (\omega_0^2 - \omega_d^2)^2 + i\omega_d \Gamma } = \frac{ D_0 (\omega_0^2 - \omega_d^2) - i\omega_d \Gamma }{ (\omega_0^2 - \omega_d^2)^2 + (\omega_d \Gamma)^2 }  \\
+  z_p = \frac{ D_0}{W} ((\omega_0^2 - \omega_d^2 ) - i\omega_d \Gamma )e^{i\omega_d t } =  \frac{ D_0}{W} ((\omega_0^2 - \omega_d^2 ) - i\omega_d \Gamma )(\cos{\omega_0 t } + i \sin{\omega_0 t })  \\
+\end{gathered}
+\]
+Take the imaginary part of $z_p$.  
+\[
+\Im z_p = \frac{D_0}{W} (-\omega_d \Gamma \cos{\omega_d t} + (\omega_0^2 - \omega_d^2 ) \sin{ (\omega_d t ) } )
+\]
+So that
+\[
+  x = x_h + x_p = A e^{ - \frac{ \Gamma t }{ 2} } \cos{ \omega_D t } + B e^{ - \frac{ \Gamma t }{ 2 } } \sin{ (\omega_D t ) } + - \frac{ D_0 \omega_d \Gamma}{ W} \cos{ \omega_d t } + \frac{ D_0 (\omega_0^2 - \omega_d^2 ) }{ W} \sin{ (\omega_d t ) }  
+\]
+If displacement of the string was $0$ for $ t < 0 $, then we've given the initial conditions for $z_h$.  
+\[
+\begin{gathered}
+  x(0) = A - \frac{ D_0 \omega_d \Gamma}{ W} = 0 , \quad A = \frac{ D_0 \omega_d \Gamma}{ W}  \\
+\begin{aligned}
+  x &= A (e^{- \frac{ \Gamma t}{ 2 } } \cos{\omega_D t } - \cos{ \omega_d t } ) + B e^{ -\frac{ \Gamma t }{ 2 } } \sin{ (\omega_D t )} + \frac{ D_0 (\omega_0^2 - \omega_d^2 )}{ W} \sin{ (\omega_d t )}  \\
+  x &= A ( -\frac{ \Gamma}{2} e^{ - \frac{ \Gamma t}{2} } \cos{ \omega_D t } -e^{ - \frac{ \Gamma t }{ 2 } } \omega_D \sin{ \omega_D t } + \omega_d \sin{ \omega_d t } ) + B (- \frac{\Gamma}{2} e^{ - \frac{ \Gamma t }{ 2}} \sin{ (\omega_D t )} + \\
+  & + e^{-\frac{ \Gamma t }{2}} \omega_D \cos{ (\omega_D t ) }  ) + \frac{ D_0 (\omega_0^2 - \omega_d^2 )}{ W} \omega_d \cos{ (\omega_d t )}    
+\end{aligned} \\
+x'(0) = v_0 = A (-\Gamma/2) + B\omega_D + \frac{D_0 (\omega_0^2 - \omega_d^2 )}{ W} \omega_d  \\
+B = \frac{ \left( v_0 + \frac{ \Gamma A}{2} - \frac{ D_0 \omega_d (\omega_0^2 - \omega_d^2 )}{ W} \right)}{ \omega_D }  \\
+x = A (e^{ - \frac{ \Gamma t}{2} } \cos{\omega_D t } - \cos{ \omega_d t } ) + B e^{- \frac{\Gamma t }{2} } \sin{ (\omega_D t)} + \frac{ D_0 (\omega_0^2 - \omega_d^2 )}{ W} \sin{ (\omega_d t )}  \\
+\begin{gathered}
+  \omega_D = \sqrt{ \omega_0^2 - (\Gamma/2)^2 }  \\
+  A = \frac{ D_0 \omega_d \Gamma }{ W}; \, B = \left( v_0 + \frac{ \Gamma A}{2} - \frac{ D_0 \omega_d (\omega_0^2 - \omega_d^2) }{ W} \right) /\omega_D  \\
+  W = (\omega_0^2 - \omega_d^2)^2 + (\omega_d \Gamma)^2; \, D_0 = K d_0
+\end{gathered}
+\end{gathered}
+\]
+\item $\Gamma \to 0 \, A =0 \, W = (\omega_0^2 - \omega_d^2 )^2  \, \omega_D = \omega_0  $.  
+\[
+\begin{gathered}
+  B = \left( v_0 - \frac{ D_0 \omega_d}{ \omega_0^2 - \omega_d^2 } \right)/\omega_0 \\
+  \boxed{ x = \left( v_0 - \frac{ D_0 \omega_d }{ \omega_0^2 - \omega_d^2 } \right) \frac{ \sin{ (\omega_ t ) }}{ \omega_0}  + \frac{ D_0 }{ \omega_0^2 - \omega_d^2 } \sin{ (\omega_d t ) } }
+\end{gathered}
+\]
+Transient solution $\sin{ (\omega_0 t )} $ doesn't die.  
+\end{enumerate}
+
+\problemhead{2.5} \[
+\begin{aligned}
+  & -L \frac{dI}{dt} - IR + \frac{ -Q}{C} = 0    \\
+  &  \frac{d^2 Q}{ dt^2} + \frac{R}{L} \frac{dQ}{dt} + \frac{Q}{LC} = 0   
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+& \frac{R}{L} \longleftrightarrow \Gamma  \\
+\text{ if } & m \longleftrightarrow L \\
+& R \longleftrightarrow mF
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+Q & = Q_0 e^{i\omega t }  \\
+& \begin{gathered} 
+  \left( -\omega_h^2 + i \omega_h \frac{R}{L} + \frac{1}{LC}  \right) Q = 0 \quad \omega_0^2 = \frac{1}{LC}  \\
+  \omega_h = \frac{ -i \frac{R}{L} \pm \sqrt{ - \left( \frac{R}{L} \right)^2 - 4 (-1)\left( \frac{1}{LC} \right) } }{ 2 (-1) }  = \frac{ iR}{2L} \pm \sqrt{ \frac{1}{LC} - \left( \frac{R}{2L} \right)^2 }  
+\end{gathered}  \\
+Q & = \exp{ \left( -\frac{R}{2L}t \right)} (A \exp{( it \sqrt{ \frac{1}{LC} - \left( \frac{R}{2L} \right)^2 } )} + B  \exp{( -it \sqrt{ \frac{1}{LC} - \left( \frac{R}{2L} \right)^2 } )} )  
+\end{aligned}
+\]
+For the values given in the problem,
+\[
+\begin{gathered}
+  LC = (150 \times 10^{-6} H)(\frac{2}{3} )(10^{-2}) = 10^{-6}; \frac{1}{LC} = 10^6  \\
+  \left( \frac{ 15 \Omega}{ 2 (150 \times 10^{-6} H) } \right)= \frac{R}{2L} = 5\times 10^4
+\end{gathered}
+\]
+
+\section{  Normal Modes }
+
+\problemhead{3.1} 
+\[
+\begin{gathered}
+  A = \left( \begin{matrix}
+     0 \\
+2 \\
+1 \end{matrix} \right), \quad \, B = ( \begin{matrix} 3 & -2 & 1 \end{matrix} ), \quad \, C = \left( \begin{matrix} 
+1 & 1 & 1 \\
+0 & -2 & 1 \\
+2 & 2 & 0 \end{matrix} \right) \\
+  BA = = ( \begin{matrix} 3 & -2 & 1 \end{matrix} ) \left( \begin{matrix} 0 \\ 2 \\ 1 \end{matrix} \right) = -3  \quad \quad BC = ( \begin{matrix} 3 & -2 & 1 \end{matrix})\left( \begin{matrix} 1 & 1 & 1 \\
+0 & -2 & 1 \\
+2 & 2 & 0
+\end{matrix} \right) = ( \begin{matrix} 5 & 9 & 1 \end{matrix} ) \\
+  AB = \left( \begin{matrix} 0 \\ 2 \\ 1 \end{matrix} \right)( \begin{matrix} 3 & - 2 & 1 \end{matrix} ) = \left( \begin{matrix} 0 & 0 & 0 \\
+6 & -4 & 2 \\
+3 & -2 & 1 
+\end{matrix} \right)
+\end{gathered}
+\]
+
+\problemhead{3.2} In problem solving oscillations without damping, consider eigenvalue computation steps.  
+\[
+\det( \omega^2 I - M^{-1}K) = 0
+\]
+Let $M^{-1} K =A, \omega^2 = \lambda$.  
+
+For $n=2$
+\[
+\det{ (\lambda I -A)} = (\lambda -a_{11} )( \lambda -a_{22} ) - a_{12}a_{21} = \lambda^2 - tr A \lambda + \det{A} 
+\]
+
+In general,
+\[
+\begin{aligned}
+& \lambda^{n-1} \text{ coefficient is } -tr A \text{ and } \\
+&  \lambda^0 \text{ coefficient is } \det{A}
+\end{aligned}
+\]
+
+The given values are 
+\[
+\begin{aligned}
+  & K_A = 78   \\
+  & K_B = 15  \\
+  & K_C = 6 
+\end{aligned}
+\quad \begin{aligned}
+  & m_1 = 1g  \\
+  & m_2 = 3 g 
+\end{aligned}
+\]
+The equation of motion for this particular system is 
+\[
+\begin{gathered}
+  \begin{aligned}
+    & m_1 \ddot{x}_1 = -K_C x_1 -K_B (x_1 -x_2) = -(K_C + K_B) x_1 + K_b x_2  \\
+    & m_2 \ddot{x}_2 = -K_A x_2 + K_B (x_1 -x_2) = -(K_A +K_B)x_2 + K_B x_1 
+  \end{aligned} \text{ i.e. } \\
+  \left( \begin{matrix} m_1 & \\ & m_2 \end{matrix} \right) \ddot{X} = - \left( \begin{matrix} K_C + K_B & -K_B \\ -K_B & K_A + K_B \end{matrix} \right) \left( \begin{matrix} x_1 \\ x_2 \end{matrix} \right) \end{gathered}
+\]
+
+So then
+\[
+\begin{aligned}
+  M^{-1} K &  = \left( \begin{matrix} \frac{1}{m_1} & \\ & \frac{1}{m_2} \end{matrix} \right)  \left( \begin{matrix} K_C + K_B & -K_B \\ -K_B & K_A + K_B \end{matrix} \right) =  \left( \begin{matrix} \frac{K_C + K_B}{m_1} & -\frac{K_B}{m_1} \\ -\frac{K_B}{m_2} & \frac{K_A + K_B}{m_2} \end{matrix} \right)  \\
+  & = \left( \begin{matrix} 21 & -15 \\ -5 & 31 \end{matrix} \right)
+\end{aligned}
+\]
+Solve the eigenvalue equation.  
+\[
+\begin{aligned}
+& \lambda^2 - trA + \det{A} = \lambda^2 - 52 \lambda + 3^2 4^3 = 0 \\
+& \lambda_{1,2} = \frac{ 4(13) \pm \sqrt{ 4^2 (13^2) - 4 (1)(3^2)(4^3) } }{ 2 } = 16,36 
+\end{aligned}
+\]
+Plug the eigenvalues back into the eigenvector equation.
+\[
+\begin{gathered}
+  \left( \begin{matrix} 21 & -15 \\ -5 & 31 \end{matrix} \right) \left( \begin{matrix} A_1' \\ A_2' \end{matrix} \right) = 16 \left( \begin{matrix} A_1' \\ A_2' \end{matrix} \right) \\
+  \begin{aligned}
+    & 5A_1' - 15 A_2' = 0 \\
+    & -5A_1' -15 A_2' = 0 
+  \end{aligned}  
+  A_1' = 3A_2' \\
+\begin{aligned}
+  & A_{\lambda_1} = \left( \begin{matrix} 3 \\ 1 \end{matrix} \right)  \\
+  & A_{\lambda_2} = \left( \begin{matrix} 1 \\ -1 \end{matrix} \right) 
+\end{aligned}
+\end{gathered}
+\]
+
+\[
+\begin{aligned}
+  &  B^{\lambda_1} = \left( \begin{matrix} 3 & 1 \end{matrix} \right) \left( \begin{matrix} 1 & \\ & 3 \end{matrix} \right) = \left( \begin{matrix} 3 & 3 \end{matrix} \right) = 3 \left( \begin{matrix} 1 & 1 \end{matrix} \right) \\
+  & B^{\lambda_2} = \left( \begin{matrix} 1 & -1 \end{matrix} \right) \left( \begin{matrix} 1 & \\ & 3 \end{matrix} \right) = \left( \begin{matrix} 1 & 33 \end{matrix} \right)  \\
+  & B^{\lambda_1} \left( \begin{matrix} x_1 \\ x_2 \end{matrix} \right) = 3 (x_1 + x_2 )
+  & B^{\lambda_2}  \left( \begin{matrix} x_1 \\ x_2 \end{matrix} \right) = x_1 -3x_2 
+\end{aligned}
+\]
+
+Given initial conditions $X(0) = \left( \begin{matrix} 1 \\  0 \end{matrix} \right); X'(0) = \left( \begin{matrix} 0 \\ 0 \end{matrix} \right)$
+
+\[
+\begin{gathered}
+  X = ( C_1^1 \cos{ (\omega_1 t )} + C_2^1 \sin{ (\omega_1 t )} )A^1 +  ( C_1^2 \cos{ (\omega_2 t )} + C_2^2 \sin{ (\omega_2 t )} )A^2  \\
+  \begin{aligned}
+    &   X(0) = C_1^1 A^1 + C_1^2A^2 = C_1^1 \left( \begin{matrix} 3 \\ 1 \end{matrix} \right) + C_1^2 \left( \begin{matrix} 1 \\ -1 \end{matrix} \right) = \left( \begin{matrix} 1 \\ 0 \end{matrix} \right)  \\
+    & \begin{aligned} C_1^1 & = C_1^2 \\ C_1^1 & = \frac{1}{4} \end{aligned}  \\
+    & X'(0) = \omega_1 C_2^1 A^1 + \omega_2 C_2^2 A^2 = 4 C_2^1 \left( \begin{matrix} 3 \\ 1 \end{matrix} \right) + 6 C_2^2 \left( \begin{matrix} 1 \\ -1 \end{matrix} \right) = \left( \begin{matrix} 0 \\ 0 \end{matrix} \right)  \\
+    & \begin{aligned} 2 C_2^1 & = -6 C_2^2  \\ 4 C_2^1 & = 6 C_2^2 \end{aligned} \quad C_2^1 = 0, C_2^2 = 0 
+  \end{aligned} \\
+  X = \frac{1}{4} \cos{ (4t) } \left( \begin{matrix} 3 \\ 1 \end{matrix} \right) + \frac{1}{4} \cos{ (6t)} \left( \begin{matrix} 1 \\ -1 \end{matrix} \right) = \frac{1}{4} \left( \begin{matrix} 3 \cos{ (4t) } + \cos{(6t) } \\ \cos{ (4t) } - \cos{ (6t) } \end{matrix} \right)  
+\end{gathered}
+\]
+
+\problemhead{3.3}  
+
+Note: in this system setup, there's only local interactions only; i.e. fancy way to say no forces at a distance (only EM and gravitational field allows for action at a distance classically)
+
+The equation of motion for this system setup is
+\[
+\begin{gathered}
+\begin{aligned}
+  & m_1 \ddot{x}_1 = -k_1 x_1 - k_2 x_1 + k_2 x_2 = -(k_1 + k_2)x_1 + k_2 x_2  \\
+  &  m_2 \ddot{x}_2 = k_2x_1 - k_2 x_2 -k_3 x_2 + k_3 x_3 = k_2 x_1 - (k_2 +k_3)x_2 k_3 x_3  \\  
+  &  m_3 \ddot{x}_3 = -k_3 x_3 - k_4 x_3 + k_3 x_2 = -(k_3 + k_4)x_3 + k_3 x_2 = k_3 x_2 + - (k_3 +k_4)x_3
+\end{aligned}  \text{ i.e. } \\
+M\ddot{X} = \left( \begin{matrix} (k_1 +k_2 ) & -k_2 0  \\ -k_2 & k_2 +k_3 & -k_3 \\ 0 & -k_3 & (k_3 +k_4) \end{matrix} \right) X \\
+\end{gathered}
+\]
+So then
+\[
+\begin{aligned}
+  M^{-1} K  & = \left( \begin{matrix} \frac{1}{m_1} & & \\ & \frac{1}{m_2} & \\ & & \frac{1}{m_3} \end{matrix} \right) \left( \begin{matrix} k_1 +k_2 & -k_2 & \\ -k_2 & k_2 + k_3 & -k_3 \\ & -k_3 & k_3 +k_4 \end{matrix} \right) = \\
+  & = \left( \begin{matrix} \frac{1}{100} & & \\ & \frac{1}{9} & \\ & & \frac{1}{81} \end{matrix} \right) \left( \begin{matrix} 1200 & -90 & \\ -90 & 171 & -81 \\ & -81 & 1782 \end{matrix} \right) = \\
+  & = \left( \begin{matrix} 22 & -9/10 & 0 \\ -10 & 19 & -9 \\ 0 & -1 & 22 \end{matrix} \right)
+\end{aligned}
+\]
+
+\problemhead{3.4} Given
+\[
+\begin{aligned} M & = \left( \begin{matrix} 1 & 0 & 0 & 0 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 2 \end{matrix} \right) \\ K & = \left( \begin{matrix} 29 & -10 & -4 & -2 \\ -10 & 58 & -14 & -2 \\ -4 & -14 & 31 & -26 \\ -2 & -2 & -26 & 74 \end{matrix} \right) \end{aligned} \quad \, \text{ then } \begin{aligned} M^{-1} & = \left( \begin{matrix} 1 & & & \\ & 1/2 & &  \\ & & 1 & \\ & & & 1/2 \end{matrix} \right) \\ M^{-1} K & = \left( \begin{matrix} 29 & -10 & -4 & -2 \\  -5 & 29 & -7 & -1 \\ -4 & -14 & 31 & -26 \\ -1 & -1 & -13 & 37 \end{matrix} \right) \end{aligned}
+\]
+\begin{enumerate}
+\item Easier than it looks: simply multiply $M^{-1}K$ by each vector and see if you get the same vector, with the eigenvalue as a number the components are proportional to.  If it doesn't work for any two rows, done!  Also, we solve for the next part, since we've already calculated the eigenvalue in the process.  
+\[
+\begin{aligned}
+  \left( \begin{matrix} 1 \\ 2 \\ 1 \\ 1 \end{matrix} \right) & \left( \begin{matrix} 1 \\ 1 \\ 2 \\ 1 \end{matrix} \right) & \left( \begin{matrix} 2 \\ 1 \\ 1 \\ 1 \end{matrix} \right) & \left( \begin{matrix} 2 \\ 1 \\ -1 \\ -1 \end{matrix} \right) & \left( \begin{matrix} 4 \\ -3 \\ 0 \\ 1 \end{matrix} \right) & \left( \begin{matrix} 0 \\ 1 \\ -4 \\ 3 \end{matrix} \right) \\ \text{ no } & \text{ yes } & \text{ no } & \text{ yes } & \text{ yes } & \text{ yes } \\ & \begin{aligned} \lambda & = 9 \\ \omega & =3 \end{aligned} & & \begin{aligned} \lambda & = 27 \\ \omega & = 3 \sqrt{3} \end{aligned} & \begin{aligned} \lambda & =36 \\ \omega & = 6 \end{aligned} & \begin{aligned} \lambda & = 54 \\ \omega & = 3\sqrt{6} \end{aligned} 
+\end{aligned}
+\]
+\item See above.
+\item You'd have to guess at which 3 normal modes may be present and then check, solving the inhomogeneous system of equations using Gauss-Jordan operations (from linear algebra class).  
+\[
+\left| \begin{matrix} 1 & 2 & 0 \\ 1 & 1 & 1 \\ 2 & -1 & -4 \\ 1 & -1 & 3 \end{matrix} \right. \left| \begin{matrix} 1 \\ 1 \\ -1 \\ 1 \end{matrix} \right| = \left| \begin{matrix} 1 & 0 & 2 \\ 0 & -1 & 1 \\ & 0 & -9 \\ & -1 & 1 \end{matrix} \right. \left| \begin{matrix} 1 \\ 0 \\ -3 \\ 0 \end{matrix} \right| \Longrightarrow c_3 = \frac{1}{3}
+\]
+\[
+\Longrightarrow \left( \begin{matrix} 1 \\ 1 \\ -1 \\ 1 \end{matrix} \right) = \frac{1}{3} \left( \begin{matrix} 1 \\ 1 \\ 2 \\ 1 \end{matrix} \right) + \frac{1}{3} \left( \begin{matrix} 2 \\ 1 \\ -1 \\ -1 \end{matrix} \right) + \frac{1}{3} \left( \begin{matrix} 0 \\ 1 \\ -4 \\ 3 \end{matrix} \right)
+\]
+So $\left( \begin{matrix} 4 \\ -3 \\ 0 \\ 1 \end{matrix} \right)$ isn't present.  
+\end{enumerate}
+
+\problemhead{3.5} 
+\begin{enumerate}
+  \item The equation of motion is 
+\[
+\begin{aligned}
+  & m_1 \ddot{x}_1 = -(k_1 +k_2) x_1 + k_2 x_2  \\
+  & m_2 \ddot{x}_2 = -(k_2 +k_3) x_2 + k_2 x_1 
+\end{aligned}
+\]
+So that the $M^{-1}K$ matrix is, given the problem's numerical values,
+\[
+\left( 
+\begin{matrix} 
+  \frac{1}{15} &  \\
+  & \frac{1}{18} \\
+\end{matrix} 
+\right)
+\left( 
+\begin{matrix}
+  k_1 +k_2 & -k_2 \\
+  -k_2 & k_2 + k_3 
+\end{matrix}
+\right) = \left( 
+\begin{matrix} 
+  \frac{1}{15} &  \\
+  & \frac{1}{18} \\
+\end{matrix} 
+\right) \left( \begin{matrix} 105 & -90 \\ -90 & 100 \end{matrix} \right) = \left( \begin{matrix} 7 & -6 \\ -9 & 10 \end{matrix} \right) 
+\]
+\item 
+\[
+\left( \begin{matrix} 7 & -6 \\ -9 & 10 \end{matrix} \right) \left( \begin{matrix} 1 \\ 1 \end{matrix} \right) = \left( \begin{matrix} 1 \\ 1 \end{matrix} \right) ; \, \left( \begin{matrix} 7 & -6 \\ -9 & 10 \end{matrix} \right) \left( \begin{matrix} 2 \\ -3 \end{matrix} \right) = \left( \begin{matrix} 2 \\ -3 \end{matrix} \right) 16
+\]
+So the angular frequencies are $1$ and $4$, respectively.
+\end{enumerate} 
+
+\problemhead{3.6}
+\begin{enumerate}
+\item \[
+\begin{gathered}
+  X(0) = A^1 + 3A^2 = \left( \begin{matrix} 5 \\ 0 \end{matrix} \right) \\
+  X(t) = A^1 \cos{ (t) } + 3 A^2 \cos{ (2t )}  \\
+  X(\pi) = (A^1 )(-1) + 3A^2 = \left( \begin{matrix} 1 \\ -6 \end{matrix} \right); \boxed{ -6 }
+\end{gathered}
+\]
+\item Recall that
+\[
+\begin{gathered}
+  I = \sum_{\lambda =1}^2 \frac{ A^{\lambda} B^{\lambda} }{ B^{\lambda} A^{\lambda} } \\
+  M^{-1}K = M^{-1}KI = \sum_{\lambda} \frac{ M^{-1} KA^{\lambda} B^{\lambda} }{ B^{\lambda} A^{\lambda} } = \sum_{ \lambda} \frac{ \omega_{\lambda}^2 A^{\lambda} B^{\lambda} }{ B^{\lambda} A^{\lambda} }
+\end{gathered}
+\]
+\[
+\begin{gathered}
+\begin{aligned}
+  B^1 \cdot A^1 &= 30 \left( \begin{matrix} 1 & 1 \end{matrix} \right) \left( \begin{matrix} 2 \\ 3 \end{matrix} \right) = 150 \\
+  B^2 \cdot A^2 &= 5 \left( \begin{matrix} 3 & -2 \end{matrix} \right) \left( \begin{matrix} 1 \\ -1 \end{matrix} \right) = 25 
+\end{aligned}
+\quad 
+\begin{aligned}
+  & A^1 B^1 = \left( \begin{matrix} 2 \\ 3 \end{matrix} \right) 30 \left( \begin{matrix} 1 & 1 \end{matrix} \right) = \left( \begin{matrix} 2 & 2 \\ 3 & 3 \end{matrix} \right) 30  \\
+  & A^2 B^2 = \left( \begin{matrix} 1 \\ -1 \end{matrix} \right) 5 \left( \begin{matrix} 3 & -2 \end{matrix} \right) = \left( \begin{matrix} 3 & -2 \\ -3 & 2 \end{matrix} \right) 5 
+\end{aligned}  \\
+M^{-1}K = \frac{1}{5}  \left( \begin{matrix} 2 & 2 \\ 3 & 3 \end{matrix} \right) + \frac{4}{5}  \left( \begin{matrix} 3 & -2 \\ -3 & 2 \end{matrix} \right) = \frac{1}{5} \left( \begin{matrix} 14 & -6 \\ -9 & 11 \end{matrix} \right) \\
+MM^{-1}K = \left( \begin{matrix} 15 & \\ & 10 \end{matrix} \right) \frac{1}{5} \left(  \begin{matrix} 14 & -6 \\ -9 & 11 \end{matrix} \right)  = \left( \begin{matrix} 42 & -18 \\ -18 & 22 \end{matrix} \right) = \left( \begin{matrix} 24 + 18 & -18 \\ -18 & 4 + 18 \end{matrix} \right) = \left( \begin{matrix} k_1 + k_2 & -k_2 \\ -k_2 & k_2 +k_3 \end{matrix} \right)  \\
+\Longrightarrow \boxed{ K_2 = 18, K_1 = 24, K_3 = 4 }
+\end{gathered}
+\]
+\end{enumerate}
+
+\problemhead{3.7} Recall $M \ddot{X} + K X + \Gamma \dot{X} = F$.  Let
+\[
+X \Longrightarrow Z = \mathcal{A} e^{- i \omega t}; \quad \, \text{ $\omega$ is the driving frequency }
+\]
+Then 
+\[
+( - \omega^2 + i \Gamma \omega + M^{-1} K ) \mathcal{A} e^{i\omega t} = M^{-1} F
+\]
+Using the ``natural'' eigenvectors as a basis.  
+\[
+\begin{aligned}
+  -\omega^2 + i \Gamma m + M^{-1} K & = (-\omega^2 + i \gamma \omega) I + M^{-1} K I = (-\omega^2 + i \gamma \omega) \sum_{\lambda} \frac{ A^{\lambda} B^{\lambda} }{ B^{\lambda} A^{\lambda} } + \sum_{\lambda} \frac{ \omega_{\lambda}^2 A^{\lambda} B^{\lambda} }{ B^{\lambda} A^{\lambda} } = \\ & = \sum_{\lambda} (-\omega^2 + i (\omega + \omega_{\lambda}^2 ) \frac{ A^{\lambda} B^{\lambda} }{ B^{\lambda} A^{\lambda} }
+\end{aligned}
+\]
+Note that \[
+\frac{ A^{\lambda_1} B^{\lambda_1} A^{\lambda_2} B^{\lambda_2} }{ (B^{\lambda_1} A^{\lambda_1} )( B^{\lambda_2} A^{\lambda_2}  )} = \frac{ A^{\lambda_1} \delta_{\lambda_1 \lambda_2} B^{\lambda_2}  }{ (B^{\lambda_1} A^{\lambda_1} )} = \frac{ A^{\lambda_1 } B^{\lambda_1} }{ (B^{\lambda_1} A^{\lambda_1} ) }
+\]
+So indeed, 
+\[
+(-\omega^2 + i \Gamma \omega + M^{-1} K )^{-1} = \sum_{\lambda} ( - \omega^2 +i \gamma \omega + \omega_{\lambda}^2 )^{-1} \frac{ A^{\lambda} B^{\lambda} }{ B^{\lambda} A^{\lambda} } \]
+Now, from Problem 3.5, $\omega_1 = 1, \, \omega_2 =4$; $\gamma =1$
+\[
+\begin{aligned}
+  (-\omega^2 + i \Gamma \omega + M^{-1} K)^{-1} f &= \left( \left( \frac{1}{ -\omega^2 + i \omega + 1 } \right) \frac{5}{25} \left( \begin{matrix} 3 & 2 \\ 3 & 2 \end{matrix} \right) + \left( \frac{ 1}{ -\omega^2 + i \omega + 16 } \right) \frac{ 30 \left( \begin{matrix} 2 & -2 \\ -3 & 3 \end{matrix} \right) }{ 150 } \right) \left( \begin{matrix} 1 \\ 0 \end{matrix} \right) = \\ 
+  & = \left( \frac{1}{5} \right) \left( \frac{ ( 1 - \omega^2 ) - i \omega }{ (1-\omega^2)^2 + \omega^2 } \left( \begin{matrix} 3 \\ 3 \end{matrix} \right) + \frac{ 16 - \omega^2 - i \omega }{ (16- \omega^2)^2 + \omega^2 } \left( \begin{matrix} 2 \\ -3 \end{matrix} \right) \right)
+\end{aligned}
+\]
+\[
+\begin{aligned}
+  \Re{Z} & = \frac{1}{5} \left( \frac{ (1- \omega^2 ) \cos{(\omega t) } + \omega \sin{(\omega t)} }{ (1-\omega^2 )^2 + \omega^2 } \left( \begin{matrix} 3 \\ 3 \end{matrix} \right) + \frac{ (16 - \omega^2) \cos{(\omega t) } + \omega \sin{ (\omega t) } }{ (16- \omega^2 )^2 + \omega^2 } \left( \begin{matrix} 2 \\ -3 \end{matrix} \right) \right) \\ 
+  \Re{X'} & = \text{ only the $\cos{(\omega t)}$ term } \\ 
+  & = \frac{1}{5} \left( \frac{ \omega^2 \cos{ ( \omega t) } }{ (1 -\omega^2 )^2 + \omega^2 } \left( \begin{matrix} 3 \\ 3 \end{matrix} \right) + \frac{ \omega^2 \cos{ (\omega t )} }{ (16- \omega^2)^2 + \omega^2 } \left( \begin{matrix} 2 \\ -3 \end{matrix} \right) \right)
+\end{aligned}
+\]
+
+Now, by definition, $P = F^T \cdot X(t)$.  
+\[
+\begin{aligned}
+  & F^T = (\begin{matrix} 1 & 0 \end{matrix} ) \cos{\omega t} \\ 
+  & \langle F^T \cdot X \rangle = \frac{1}{5} \left( \frac{ \frac{3}{2} \omega^2 }{ (1-\omega^2)^2 + \omega^2 } + \frac{ \frac{2}{2} \omega^2 }{ (16 - \omega^2 )^2 + \omega^2 } \right) = \frac{ \omega^2 }{ 10 } \left( \frac{ 3}{ (1-\omega^2)^2 + \omega^2 } + \frac{ 2 }{ (16-\omega^2)^2 + \omega^2 } \right)
+\end{aligned}
+\]
+
+
+\section{  Symmetries}
+
+\problemhead{4.1}
+The mathematical statement of the symmetry is $KS = SK$.  For Figure 4.1, 
+\[
+\begin{gathered}
+  K = \left( \begin{matrix} \frac{mg}{l} + \kappa & - \kappa \\ - \kappa & \frac{ mg}{l} + \kappa \end{matrix} \right) = \left( \begin{matrix} C & - \kappa \\ - \kappa & C \end{matrix} \right) \\
+  \begin{aligned}
+    KS & = \left( \begin{matrix} C & - \kappa \\ -\kappa & C \end{matrix} \right) \left( \begin{matrix} 0 & -1 \\ -1 & 0 \end{matrix} \right) = \left( \begin{matrix} \kappa & -C \\ -C & \kappa \end{matrix} \right) \\
+    SK & = \left( \begin{matrix} 0 & -1 \\ -1 & 0 \end{matrix} \right)\left( \begin{matrix} C & -\kappa \\ -\kappa & C \end{matrix} \right) = \left( \begin{matrix} \kappa & -C \\ -C & \kappa \end{matrix} \right)
+\end{aligned} \quad \quad \, KS = SK \\
+  S = \left( \begin{matrix} 0 & -1 \\ -1 & 0 \end{matrix} \right)
+\end{gathered}
+\]
+In Prob. 4.4, we've shown the form $K$ for $n=6$ must take for $SK= KS$, and so $SK=KS$ is satisfied when $K$ is in that form (sufficient condition).  
+
+\problemhead{4.2}
+\begin{enumerate}
+\item $E$, the diagonal entry for $K$, is likely to be a mess to calculate.  \smallskip \\
+  $E$ is the force per unit mass on mass $i$ due to only displacement of mass $i$.  While the spring restoring force is directed along the springs (lying on a deformed regular hexagon), the force component that matters for the mass is tangential to the circle.  
+
+So let $E$ be some number.  
+
+For this spring setup, only ``local'' interactions matter for $K$ and matter to the force on the mass in question.  \\
+Thus
+\begin{equation}
+\left( \begin{matrix} 
+  E & -B & 0 & 0 & 0 & -B  \\
+  -B & E & -B & 0 & 0 & 0 \\
+  0 & -B & E & -B & 0 & 0 \\
+  0 & 0 & -B & E & -B & 0  \\
+  0 & 0 & 0 & -B & E & -B \\
+  -B & 0 & 0 & 0 & -B & E 
+\end{matrix} \right) = E \delta_{ij} + (-B) (\delta_{i,j-1} + \delta_{i,j+1} )
+\end{equation}
+The eigenvalues are
+\[
+\begin{aligned}
+\omega_1^2 & = \frac{1}{m} ( E - 2 B )  \\
+\omega_{2,6}^2 &= \frac{1}{m} (E-B)  
+\end{aligned} \quad 
+\begin{aligned}
+  & \omega_{3,5}^2 = \frac{1}{m} (E+B)  \\
+  & \omega_4^2 = \frac{1}{m} (E + 2B) 
+\end{aligned}
+\]
+Suppose $E=2B$.  
+\[
+\Longrightarrow \omega_1^2 =0, \omega_{2,6}^2 = \frac{B}{m}; \omega_{3,5}^2 = \frac{1}{m} (3B); \omega_4^2 = \frac{ 4B}{m}
+\]
+The normal modes are
+\[
+\begin{gathered}
+A_{\alpha}^1 = 1; A_{\alpha}^2 = e^{i (\alpha -1) \pi/3 }; A_{\alpha}^3 = e^{i(\alpha - 1) 2 \pi/3}; A_{\alpha}^4 = e^{i(\alpha - 1) \pi }; A_{\alpha}^5 = e^{4\pi i (\alpha- 1)/3}; A_{\alpha}^6 = e^{5 \pi i (\alpha -1 )/3 }  
+\end{gathered}
+\]
+\[
+\begin{gathered}
+A^2 = \left( \begin{matrix} 1 \\ \frac{1}{2} + \frac{ i \sqrt{3}}{2}  \\  \frac{-1}{2} + \frac{ i \sqrt{3}}{2}   \\ -1 \\  \frac{-1}{2} - \frac{ i \sqrt{3}}{2}  \\  \frac{1}{2} + \frac{ -i \sqrt{3}}{2}  \end{matrix} \right); \, 
+A^6 = \left( \begin{matrix} 1 \\ \frac{1}{2} + \frac{ -i \sqrt{3}}{2}  \\  \frac{-1}{2} + \frac{ -i \sqrt{3}}{2}   \\ -1 \\  \frac{-1}{2} + \frac{ i \sqrt{3}}{2}  \\  \frac{1}{2} + \frac{ i \sqrt{3}}{2}  \end{matrix} \right) ; \, 
+A^3 = \left( \begin{matrix} 1 \\ \frac{-1}{2} + \frac{ i \sqrt{3}}{2} \\  \frac{-1}{2} - \frac{ i \sqrt{3}}{2}   \\ 1 \\  \frac{-1}{2} + \frac{ i \sqrt{3}}{2}  \\  \frac{-1}{2} + \frac{ -i \sqrt{3}}{2}  \end{matrix} \right)
+A^5 = \left( \begin{matrix} 1 \\ \frac{-1}{2} + \frac{ -i \sqrt{3}}{2}  \\  \frac{-1}{2} + \frac{ i \sqrt{3}}{2}   \\ 1 \\  \frac{-1}{2} - \frac{ i \sqrt{3}}{2}  \\  \frac{-1}{2} + \frac{ i \sqrt{3}}{2}  \end{matrix} \right); \,
+A^6 = \left( \begin{matrix} 1 \\ -1 \\ 1 \\ -1 \\ 1 \\ -1 \end{matrix} \right)
+\end{gathered}
+\]
+\item Since $X(0) =0$ and $A^j$ are independent, then only $\sin{(\omega_j t)}$ time dependence.  
+\[
+\begin{aligned}
+  X(t) & = \sum_{j=1}^6 b_j A^j \sin{(\omega_j t)} \\
+  \dot{X}(t) & = \sum_{j=2}^6 b_j A^j \omega_j \cos{(\omega_j t) }
+\end{aligned} \quad \quad \, \dot{X}(0) = \sum_{j=2} b_j A^j \omega_j = v \left( \begin{matrix} 0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1 \end{matrix} \right) \quad \quad \, \begin{aligned} \omega_1 & = 0 \\ \omega_{2,6} & = 1 \\ \omega_{3,5} & = \sqrt{3} \\ \omega_4 &  = 2 \end{aligned}
+\]
+
+Suppose the velocity vector describing the system of masses, with springs attached in a hexagon pattern, can be completely described by a linear superposition of the normal modes found for the position vector of this system of masses.  
+
+Mathematically, since each mass has only one degree of freedom, then the possible position configuration of the system is spanned by the 6 normal modes found previously.  Likewise, the velocity configuration of the system can be linearly spanned by these same normal modes for position configuration.  
+
+Physically, $vA^1$ correspond to each and all masses rotating with constant angular velocity, counterclockwise or clockwise, depending upon the sign of $v$.  This should be okay: angular momentum is conserved.  
+
+The frequency for $A^1$ mode is $0$, which is okay, since there's no oscillation about an equilibrium position.  Then the following solution for the position vector should be okay.  
+
+\[
+\begin{gathered}
+\begin{aligned}
+  X(t) & = b_1 A^1 t + b_4 A^4 \sin{(\omega_4 t) } & = b_1 \left( \begin{matrix} 1 \\ 1 \\ 1 \\ 1 \\ 1 \\ 1 \end{matrix} \right) t + b_4 \left( \begin{matrix} 1 \\ -1 \\ 1 \\ -1 \\ 1 \\ -1 \end{matrix} \right)\sin{(\omega_r t)} \\
+  \dot{X}(t) & = b_1 A^1  + b_4 \omega_r A^4 \cos{(\omega_4 t) } & = b_1 \left( \begin{matrix} 1 \\ 1 \\ 1 \\ 1 \\ 1 \\ 1 \end{matrix} \right)  + b_4 \omega_4 \left( \begin{matrix} 1 \\ -1 \\ 1 \\ -1 \\ 1 \\ -1 \end{matrix} \right)\cos{(\omega_r t)} \\
+  \dot{X}(0) & = b_1 A^1  + b_4 \omega_r A^4  & = b_1 \left( \begin{matrix} 1 \\ 1 \\ 1 \\ 1 \\ 1 \\ 1 \end{matrix} \right)  + b_4 \omega_4 \left( \begin{matrix} 1 \\ -1 \\ 1 \\ -1 \\ 1 \\ -1 \end{matrix} \right) = v \left( \begin{matrix} 1 \\ 0 \\ 1 \\ 0 \\ 1 \\ 0 \end{matrix} \right)  
+\end{aligned}  \quad \quad \, \begin{aligned} 
+  \omega_4^2 & = 4B/m \\
+  \omega_4 & = 2 \sqrt{B/m }
+\end{aligned} 
+\end{gathered}
+\]
+\[
+\Longrightarrow \begin{gathered} 
+  X(t) = \frac{v}{2}(A^1 t + \frac{1}{\omega_4} A^4 \sin{(\omega_4 t) } ) = \frac{v}{2} \left( \left( \begin{matrix} 1 \\ 1 \\ 1 \\ 1 \\ 1 \\ 1 \end{matrix} \right) t + \frac{1 }{\omega_4} \left( \begin{matrix} 1 \\ -1 \\ 1 \\ -1 \\ 1 \\ -1 \end{matrix} \right) \sin{(\omega_4 t) } \right) 
+\end{gathered}
+\]
+\[
+  \begin{aligned}
+    x_{2j+1} & = \frac{v}{2} \left( t + \frac{\sin{ (\omega_4 t) } }{ \omega_4 } \right) \\
+    x_{2j} & = \frac{v}{2} \left( t - \frac{\sin{(\omega_4 t) } }{\omega_4} \right)
+\end{aligned}
+\]
+\end{enumerate}
+
+\problemhead{4.3}
+\begin{enumerate}
+\item $A, A'$ are normal modes with the same angular frequency.  
+\[
+\begin{aligned}
+  (M^{-1}K) A & = \omega^2 A \\
+  (M^{-1}K) A' & = \omega^2 A 
+\end{aligned} \quad \, \Longrightarrow (M^{-1} K) (bA + cA') = \omega^2 (bA + cA') 
+\]
+\item 
+\[
+(M^{-1}K)(bA + cA') = \omega^2 bA + \omega'^2 cA' \Longrightarrow (M^{-1}K - \omega^2)(bA) + (M^{-1} K - \omega'^2 )(cA') = 0 
+\]
+$\omega^2 \neq \omega'^2 $ so while if $M^{-1}K = \omega^2 I$, $M^{-1}K \neq \omega'^2 I$, forcing $c=0$.  \smallskip \\
+If $M^{-1}K \neq \omega^2 I$, $\omega'^2 I$, $b=c=0$ \medskip \\
+We had assumed $A,A' \neq 0$
+\end{enumerate}
+
+\problemhead{4.4} $SK = KS$ (Mathematically statement of symmetry).  $K=K^T$ by label symmetry.  
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    & (SK)_{ij} = \sum_{l=1}^6 S_{il}K_{lj} = \sum_{l=1}^6 \delta_{i,l-1} K_{lj} = K_{i+1,j}  \\
+    & (KS)_{ij} = \sum_{l=1}^6 K_{il}S_{lj} = \sum_{l=1}^6 K_{il} \delta_{l,j-1} = K_{i,j-1}
+  \end{aligned} \\
+  K_{i+1,j} = K_{i,j-1}  \\
+  \begin{aligned}
+    & \text{ If  $i = j-1, i+1 = j$, so then $K_{i,i} = K_{i+1,i+1}, \forall i = 1 \dots 6 \dots$ or $ \forall i = 1 \dots n $  } \\ 
+    & \text{ If $i\neq j-1$, then $K_{i+1,j} = K_{i,j-1}$ implies the equality of entries that are diagonal to each other, }  \\
+    & \quad \quad \quad \text{ including off diagonal terms. }   
+  \end{aligned} \\
+  K_{i+1,j} = K_{i,j-1} = K_{j,i+1} = K_{j-1,i}
+\end{gathered}
+  \]
+
+
+\section{  Waves }
+
+\problemhead{5.1} The most straightforward way is to consider the forces on each of the blocks due to a small displacement of each block (obvious).  
+\[
+M^{-1} K = \frac{1}{m} \left( 
+\begin{matrix} 
+  \frac{mg}{l} + 2 \kappa & - \kappa & &  \\ 
+  -\kappa & \frac{mg}{l} + 2 \kappa & -\kappa & \\ 
+  & -\kappa & \frac{mg}{l} + 2 \kappa & - \kappa \\ 
+    & & -\kappa & \frac{mg}{l} + \kappa \end{matrix} \right) 
+\]
+
+Find the modes can be done in 2 ways.  
+
+Considering block 0 to be the fixed end,
+\[
+A_j = C \sin{ (kja)} ( \text{ Let $C=1$ } )
+\]
+
+Consider imaginary block 5.  \medskip \\
+\quad We know the boundary condition for a completely free end is that $A_4 = A_5$.  
+\[
+\boxed{ \text{ This also means that $A'(x = \frac{ (2N+1)}{2} a ) = 0 $ } }
+\]
+
+\[
+\begin{gathered}
+  A_j \to A(x) = \sin{ (kx) }  \\
+  A'(x) = k\cos{(kx)}; A'\left(\frac{9a}{2} \right) = K\cos{ \left( \frac{9a}{2} k \right) } = 0 \\
+  \Longrightarrow \frac{ 9a}{2} k = \frac{ (2n+1) \pi}{ 2} \quad k = \frac{ (2n+1) \pi}{ 9a}; n = 0,1,2,3,4
+\text{ So the modes are } A^{\beta}(x) = \sin{ \left( \frac{(2n+1) \pi}{ 9a} x \right) }
+\end{gathered}
+\]
+Another way is to flip the picture over, block 1 is closest to the free end and block 4 is adjacent to fixed end.  Then proceed like pp.132, where we put the origin to be half way between block 0 and block 1.  
+\[
+A_j = \cos{ \left( k \frac{ (2j-1)a}{2} \right) }  
+\]
+The fixed end at $j=5$ fixes $A_5 =0$.  
+\[
+A_5 = 0 = \cos{ \left( k \frac{ 9a}{2} \right) } \Longrightarrow \frac{9a}{2} k = \frac{ (2n+1)\pi }{2} \Longrightarrow k = \frac{ (2n+1)\pi}{9a} ; n=0,1,2,3
+\]
+
+Using $A^{\beta}(x) = \sin{ \left( \frac{(2n+1)\pi}{9a} x \right) }$ or $A^{\beta}_j = \sin{ \left( \frac{(2n+1)\pi}{9} j \right) }$
+
+
+    \begin{tabular}{ l l l l l  }     
+     $ ka$ =  & $\pi/9$ & $\pi/3$ & $5\pi/9$ & $7\pi/9$  \\
+      $ j =     1$ & $\sin{ \pi/9}$ & $\sqrt{3}/2$ & $\sin{5\pi/9}$ & $\sin{2\pi/9}$ \\   
+          $ 2$ & $\sin{ 2\pi/9}$ &  $\sqrt{3}/2$ & $-\sin{\pi/9}$ & $-\sin{4\pi/9}$ \\
+       $3$ & $\sqrt{3}/2$ & $0$ & $-\sqrt{3}{2}$ & $\sqrt{3}/2$ \\
+       $4$ & $\sin{4\pi/9}$ & $- \sqrt{3}/2$ & $\sin{2\pi/9}$ & $-\sin{\pi/9}$
+    \end{tabular}
+
+\[
+\begin{gathered}
+  \omega^2 = E + (-B) (2 \cos{ (ka)} ) = \frac{g}{l} + \frac{ 2\kappa}{m} - \frac{2\kappa}{m}\cos{ (ka)} = \frac{g}{l} + \frac{4 \kappa}{m} \sin^2{\left( \frac{ka}{2} \right) }  \\
+  \omega^2(ka=\pi/9) = \frac{g}{l} + 2\frac{\kappa}{m} (1- \cos{\pi/9} ); \,   \omega^2(ka=\pi/3) = \frac{g}{l} + 2\frac{\kappa}{m} (1- 1/2 ) = \frac{g}{l} +  \frac{\kappa}{m} ; \,   \\
+  \omega^2(ka=5\pi/9) = \frac{g}{l} + 2\frac{\kappa}{m} (1- \cos{5\pi/9} ); \,   \omega^2(ka=7\pi/9) = \frac{g}{l} + 2\frac{\kappa}{m} (1- \cos{7\pi/9} ); \,   \omega^2(ka=\pi) = \frac{g}{l} 
+\end{gathered}
+\]
+
+For part b, i, ii, iii are all true.  
+
+For i, the lowest frequency, when they are moving at all (i.e. excepting translation of the entire system), is when all the system moves together.  \\
+For ii, look at how the free end is different from the fixed end.  If blocks 1, 2 were moving in opposite directions, they slam each other harder because of the fixed end than the free ends.  \\
+For iii, the energetically highest frequency is when they're moving in opposite directions from each other.  
+
+\problemhead{5.2} The spring system is symmetric even under plane reflection and translation.  \\
+Given $E =2 K_3 + 2K$, $-B = -K_3$, $-C = -K$
+\[
+\begin{gathered}
+  (M^{-1}K)_{jl} = E\delta_{jl} + (-B)(\delta_{j,l=1} + \delta_{j,l-1} ) + (-C) (\delta_{j,l+2} + \delta_{j,l-2} ) \\
+  ((M^{-1}K)A^{\beta})_{j1} = \sum_l (M^{-1}K)_{jl} A_l^{\beta} = EA_j^{\beta} + (-B)(A_{j-1}^{\beta} + A_{j-1}^{\beta} ) + (-C) (A_{j-2}^{\beta} + A_{j+2}^{\beta} )   \\
+  A_j = \beta^j \text{ (by label symmetry) } \\
+  E\beta^j + (-B)(\beta^{j-1} + \beta^{j+1} ) + (-C) (\beta^{j-2} +\beta^{j+2} ) = \omega_{\beta}^2 \beta^j  \\
+  \Longrightarrow E + (-B) (\beta^{-1} + \beta) + (-C)(\beta^{-2} + \beta^2 ) = \omega_{\beta}^2 \quad \beta = e^{ika}
+\end{gathered}
+\]
+
+So two $K_2$ springs in ``parallel'' (connected end to end) add up to be a single $K_1$ spring.  \medskip \\
+\quad Since $\frac{1}{k_1} + \frac{1}{k_2} = \frac{1}{k}$, note that $\frac{1}{2k} + \frac{1}{2k} = \frac{1}{k}$
+
+The boundary condition we want is block 0, 6 fixed, i.e. $A_{0,6} = 0$ (fixed).  \\
+We want block $-1,A_{-1}$ to pull block 1 in a way such that \emph{ it'll feel the force from a $k_2$ spring, not a $k_1 = k$ spring.}  \medskip \\
+The boundary condition is $\boxed{ A_{-1} = -A_1; A_{7} = -A_5 }$.  
+
+Now put in the boundary conditions
+\[
+\begin{gathered}
+  A_0 = 0 \Longrightarrow A_j^{\beta} = \sin{ (kja)}  \\
+  A_{-1} = \sin{(-ka)} = -\sin{(ka)} = -A_1 \\
+  A_7 = C \sin{(k7a)} = -A_5 = -C \sin{ (k5a) } \\
+  \sin{ (k7a) } = -\sin{ (5ka) }  
+\end{gathered}
+\]
+Here's the trig. scratch work.
+\footnotesize
+\[
+\begin{gathered}
+  \sin{(k7a)} + \sin{(k5a)} = 0 = \sin{(k6a+ka)} + \sin{(k6a-ka)} =  \\
+  = \sin{(k6a)}\cos{(k1a)} + \cos{(k6a)}\sin{(ka)} + \sin{(k6a)}\cos{(ka)} - \cos{(k6a)}\sin{(k1a)} = 0 \\
+\Longrightarrow 2\sin{(6ka)}\cos{(ka)} = 0 
+\end{gathered}
+\]
+
+\normalsize
+
+We have two possibilities
+\[
+\begin{aligned} 
+  6ka & = \pi n \\
+  ka & = \frac{ \pi n}{6} 
+\end{aligned}
+ \quad
+ka = \frac{(2n+1)}{2} \pi 
+\]
+
+Try $ ka  = \frac{ \pi n}{6}, n=1,2,3,4,5 $ (since we said $\Re k \leq \pi/a $, from the multiplicity of $1 = e^{ika}$ ) 
+
+\[
+\begin{matrix}
+  n =  &  1               & 2                & 3                 &  4                  &   5    \\   
+       &  \sin{ \pi j /6} &  \sin{ \pi j /3} &  \sin{ \pi j /2}  &  \sin{ 2 \pi j /3}  &  \sin{ 5 \pi j /6}   \\
+  j= 1 & \frac{1}{2}      &  \frac{\sqrt{3}}{2}     &  1                & \sqrt{3}/2          & 1/2  \\   
+ 2  & \frac{\sqrt{3}}{2}      &  \frac{\sqrt{3}}{2}     &  0                & -\sqrt{3}/2          & -\sqrt{3}/2  \\   
+ 3 & 1      &  0     &  -1                & 0          & 1  \\
+ 4  & \frac{\sqrt{3}}{2}      &  -\frac{\sqrt{3}}{2}     &  0                & \sqrt{3}/2          & -\sqrt{3}/2  \\   
+ 5  & 1/2      &  -\frac{\sqrt{3}}{2}     &  1                & 0         & 0  \\   
+ 6 & 0 & 0 & 0 & 0 & 0 \\
+ 7  & -1/2      &  \frac{\sqrt{3}}{2}     &  -1                & \sqrt{3}/2          & -1/2  \\   
+0 & 0 & 0 & 0 & 0 & 0 \\
+  -1  & -1/2      &  -\frac{\sqrt{3}}{2}     &  -1                & -\sqrt{3}/2          & -1/2  \\   
+\end{matrix}
+\]
+
+Let's calculate the frequencies through the dispersion relation.  \\
+Given $E=2 k_3 + 2k$, $-C = -k$, $-B = -k_3, k_3 = 3K$.  
+\[
+\begin{aligned}
+  \omega_{\beta}^2 & = E + (-B) (e^{ika} + e^{-ika}) + (-C)(e^{i2ka} + e^{-ika})  \\
+  \omega_{\beta}^2 & = (2 k_3 + 2 k) + (-k_3)2 \cos{ (ka)} + (-k) 2 \cos{ (2ka)} = \\
+ & = 8 k - 6 k \cos{ (ka)} -k \cos{( 2ka)}  \\
+  \Longrightarrow \omega^2_{\beta} & = 2 \frac{k}{m} (4 -3 \cos{ (ka)}- \cos{(2ka)} )
+\end{aligned}
+\]
+Now we can calculate the frequencies.  
+\[
+\begin{matrix}
+            &    \cos{(ka)}  & \cos{ (2ka) }   &   \omega_{\beta}^2  \\
+ka = \pi/6  & \sqrt{3}/2     & \frac{1}{2}    &  \frac{k}{m} (7-3 \sqrt{2} )    \\
+\pi /3  &    1/2             &  -1/2          & 6 \frac{k}{m}   \\
+\pi/2   &    0              & -1              & 10 \frac{k}{m}   \\
+2\pi/3   &    -1/2          & - 1/2          & 12 \frac{k}{m}  \\
+5\pi/6   &    -\sqrt{3}/2          &  1/2          & (7+3\sqrt{2}) \frac{k}{m}
+\end{matrix}
+\]
+
+\problemhead{5.3}
+
+Recall that the force contribution (in the perpendicular direction) due to the displacement pull from an adjacent bead on a beaded string is
+\[
+\frac{F_{\perp 1 }}{ T} = \frac{ (\phi_{j+1} - \phi_j ) }{ l_0}
+\]
+The total return force on the $j$th block is 
+\[
+\frac{ F_{\perp}}{m} = -\frac{T}{ml_0} (2 \phi_j - \phi_{j-1} - \phi_{j+1} )
+\]
+Notice that the string at pt. 0 is attached at the wall.  \\
+\quad By the geometry, block 0, $A_0$, which is of string length $a$ away from block 1, (not $\frac{a}{2}$ ), is $A_0 = -A_1$, to keep the point O of the string (the half way pt.) to be fixed at the wall.  Thus
+\[
+A_0 = -A_1 ; A_6 = -A_5
+\]
+are the boundary conditions.  
+
+Given $E = \frac{2T }{ml_0}; B = \frac{T }{ml_0}$.  
+
+\textbf{Take a guess at the form of the mode.}
+\[
+A^{\beta}(j) = \sin{ (k \frac{(2j-1)}{2} a ) }
+\]
+Plug in the boundary conditions.  
+\[
+\begin{gathered}
+\begin{aligned}
+  A^{\beta}(0) & = \sin{ (k \frac{ (0-1)}{2} a ) } = -\sin{ (\frac{ka}{2} ) }  \\
+  A^{\beta}(1) & = \sin{ (k \frac{1}{2} a) } = \sin{ (\frac{ka}{2} )}  \\
+  A^{\beta}(6) & = \sin{ (k \frac{11}{2} a) }  \\
+  A^{\beta}(5) & = \sin{ (k \frac{9}{2} a ) } 
+\end{aligned}  \\
+\Longrightarrow \sin{ \left( \frac{k9a}{2} \right)} = -  \sin{ \left( \frac{11ka}{2} \right)}
+\end{gathered}
+\]
+Like in the previous problem, break up the argument in the trig function into a sum and a difference and use the trig identities.  
+\[
+\Longrightarrow 2 \sin{ (5ka)}\cos{ \left( \frac{ka}{2} \right)} = 0 
+\]
+We only allow $ka \leq \pi$ so $\cos$ part of the above equation doesn't give us the $k$ values.  But $\sin$ does.  
+\[
+\begin{gathered}
+5ka = \pi n \\
+ka = \pi n/5; \, n =1,2,3,4,5
+\end{gathered}
+\]
+The modes are then
+\[
+A(j) = \sin{ \left( ka \frac{ (2j-1)}{2} \right) }
+\]
+It's clear to see the physics if we actually compute out the values. 
+\[
+\begin{matrix} 
+n =      &    1       &          2    &    3               &  4                   & 5          \\
+  &    \sin{ \left( \frac{\pi}{5} \left( \frac{2j-1}{2} \right) \right)} &   \sin{ \left( \frac{2\pi}{5} \left( \frac{2j-1}{2} \right) \right)} &   \sin{ \left( 3\frac{\pi}{5} \left( \frac{2j-1}{2} \right) \right)} &   \sin{ \left( \frac{4\pi}{5} \left( \frac{2j-1}{2} \right) \right)} &   \sin{ \left( \pi \left( \frac{2j-1}{2} \right) \right)}  \\
+j = 0 & \sin{ -\pi/10} & \sin{ -\pi/5}   & \sin{ -3\pi/10} & -\sin{ 2\pi /5} & - 1  \\
+1 & \sin{ \pi/10} & \sin{ \pi/5}   & \sin{ 3\pi/10} & \sin{ 2\pi /5} &  1   \\
+2 & \sin{ 3\pi/10} & \sin{ 3\pi/5}   & \sin{ 9\pi/10} & -\sin{ 6\pi /5} &  -1  \\
+3 & 1 & 0   & -1 & 0 &  1  \\
+4 & \sin{ 7\pi/10} & \sin{ 7\pi/5}   & \sin{ 21\pi/10} & \sin{ 14\pi /5} &  -1  \\
+5 & \sin{ 9\pi/10} & \sin{ 9\pi/5}   & \sin{ 27\pi/10} & \sin{ 18\pi /5} &  1   \\
+6 & \sin{ 11\pi/10} & \sin{ 11\pi/5}   & \sin{ 33\pi/10} & \sin{ 22\pi /5} &  -1
+\end{matrix}
+\]
+
+Use the dispersion relationship to get the frequencies.  
+\[
+\omega^2 = E - 2B \cos{ka} = 2B(1-\cos{ka}) = 4 B \sin^2{ ka/2} \, \quad ka = \pi/5, 2\pi/5, 3\pi/5, 4\pi/5, \pi
+\]
+
+\problemhead{5.4}
+\[
+\begin{gathered}
+  V_0 = 0 \\
+  \Longrightarrow A^{\beta} = \sin{ (kja)}  \\
+V_6 = V \cos{ \omega t } = \sin{ (6ka) } (b \cos{\omega t} + c\sin{\omega t } )  \\
+(V - \sin{(6ka)} b ) \cos{ \omega t} - \sin{ (6ka) }c \sin{ (\omega t ) } = 0  \\
+  \Longrightarrow c = 0 \, \quad b = \frac{ V}{\sin{(6ka)}}  \\
+    A_j = \frac{ V}{ \sin{(6ka)} } \sin{ (kja)}
+\end{gathered}
+\]
+
+\section{  Continuum Limit and Fourier Series }
+
+\problemhead{6.1} 
+The form of the mode, because of fixed ends, for $N-!$ beads, is $\sin{kx}$.  At the $N$th position, that's fixed,
+\[
+\begin{gathered}
+  \sin{ k(Na) } = 0 ; \, kNa = \pi n; \, k  = \frac{ \pi n}{ Na }  \\
+  \sin{ \left( \frac{ \pi n}{ Na } (ja) \right) } = \sin{ \frac{ \pi n j }{ N } }
+\end{gathered}
+\]
+
+$a$ is the distance between the beads.
+
+\textbf{ Hint: Use telescoping series and a clever use of trig identities to evaluate a sum of trig functions }.  
+
+\[
+\begin{gathered}
+  \sin{ (k+\frac{1}{2} ) x } - \sin{ (k-\frac{1}{2} )x } = 2 \sin{ \frac{x}{2} } \cos{ kx }  \\
+  \Longrightarrow 2 \sin{ \frac{1}{2} x} \sum_{k=1}^n \cos{ kx} = \sin{ (n+\frac{1}{2} )x } - \sin{ \frac{x}{2} } \, \text{ (telescoping series!) }  \\
+    \Longrightarrow \text{ If } \frac{1}{2} x \neq n \pi \text{ then } \sum_{k=1}^n \cos{ kx} = \frac{ \sin{ (n+\frac{1}{2} )x } -\sin{\frac{x}{2} } }{ 2 \sin{ \frac{x}{2} } }  
+\end{gathered}
+\]
+
+For $\sum_{j=1}^{N-1} \sin{ j \frac{ \pi n}{ N} } \sin{ j \frac{\pi m}{ N} } $, 
+\[
+\begin{aligned}
+\text{ If $n=m$ } & \\
+& \quad \sin^2{ j \frac{ \pi n}{ N} } = \frac{1}{2} ( 1 - \cos{ j \frac{ 2 \pi n }{ N} } )  \\
+& \begin{aligned}
+  \sum_{j=1}^{N-1} \cos{ j \frac{ 2 \pi n}{ N} } & = \frac{ \sin{ (N-1 + \frac{1}{2} )( \frac{2\pi n}{N} ) } - \sin{ \frac{ \pi n}{ N} } }{ 2 \sin{ \left( \frac{ \pi n}{ N} \right) } } =  \frac{ \sin{ (2\pi n - \frac{ \pi n }{ N} ) }  - \sin{ \frac{ \pi n}{ N} } }{ 2 \sin{ \left( \frac{ \pi n}{ N} \right) } } = \\
+  & =  \frac{ \sin{ (2\pi n) }\cos{ \left( \frac{ \pi n}{ N} \right) } - \sin{ \frac{ \pi n}{ N} }\cos{ 2\pi n }  - \sin{ \frac{ \pi n}{ N} } }{ 2 \sin{ \left( \frac{ \pi n}{ N} \right) } } = -1  
+\end{aligned} \\
+& \Longrightarrow \sum_{j=1}^{N-1} \sin^2{ \left( j \frac{ \pi n}{ N} \right) } = \frac{1}{2} ((N-1)-(-1)) = \frac{N}{2} = \frac{ Na }{2a} = \boxed{ \frac{L}{2a} } \text{ if } n=m
+\end{aligned}
+\]
+
+If $n>m$ (without loss of generality), keeping in mind that $m,n = 1,2, \dots N-1$ and letting
+\[
+\begin{aligned}
+& x_1 = \frac{ n \pi }{ N }  \\
+& x_2 = \frac{ m \pi }{ N } 
+\end{aligned}
+\quad 
+\begin{aligned}
+\delta & = x_1 -x_2 = \frac{ (n-m) \pi }{ N} \\
+\sigma & = x_1 +x_2 = \frac{ (n+m) \pi }{ N} 
+\end{aligned}
+\quad N \delta = (n-m)\pi
+\]
+and using the trig. identity
+\[
+\sin{ jx_1} \sin{ j x_2} = \frac{1}{2} ( \cos{ j\delta } - \cos{ j \sigma} )
+\]
+then we can evaluate the sum:
+\[
+\begin{aligned}
+  \sum_{j=1}^{N-1} \sin{ \frac{ jm \pi}{ N}} \sin{ \frac{ j n \pi }{ N} } & = \\
+  & \frac{1}{2} \sum_{j=1}^{N-1} (\cos{ j\delta } - \cos{ j \sigma} ) = \frac{1}{2} \left( \frac{ \sin{ (N-\frac{1}{2} )\delta } - \sin{  \frac{\delta}{2} } }{ 2 \sin{ \frac{ \delta}{2} } } -  \left( \frac{ \sin{ (N-\frac{1}{2} )\sigma } - \sin{ \frac{\sigma}{2} } }{ 2 \sin{ \frac{ \sigma}{2} } } \right) \right) = \\
+  & \left( \frac{1}{ 4 \sin{ \frac{\delta}{2} } \sin{ \frac{ \sigma}{2} } } \right) \left( \sin{ \frac{ \sigma}{2} } ( \sin{ (N-\frac{1}{2} ) \delta } - \sin{ \frac{ \delta}{2} } ) -  \sin{ \frac{ \delta }{2}} ( \sin{ (N-\frac{1}{2} ) \sigma } - \sin{ \frac{ \sigma }{2} } ) \right) = \\
+  & = K ( \sin{ \frac{\sigma}{2} } \sin{ (N-\frac{1}{2} ) \delta }  -  \sin{ \frac{\delta}{2} } \sin{ (N-\frac{1}{2} ) \sigma }   \\
+  & = K ( \sin{ \frac{\sigma}{2} } ( \sin{ N \delta} \cos{ \frac{\delta}{2} } - \sin{ \frac{\delta}{2}} \cos{ N \delta} ) -  \sin{ \frac{\delta}{2} } ( \sin{ N \sigma} \cos{ \frac{\sigma}{2} } - \sin{ \frac{\sigma}{2}} \cos{ N \sigma} ) ) 
+\end{aligned}
+\]
+
+It can be shown that if $n-m$ is even (odd), then $n+m$ is even (odd) (to work it out, let $n=2n_1$, or $n=2n_1+1$, $m=2m_1$ or $m=2m_1 + 1$, $n_1,m_1 \in \mathbb{Z}$.
+
+Then \textbf{ here are the key mathematical observations:}
+\[
+\begin{aligned}
+  & \sin{ N \delta } = \sin{ (n-m) \pi } = 0  \\
+  & \sin{ N \sigma } = \sin{ (n+m) \pi } = 0 
+\end{aligned} \quad 
+\begin{aligned}
+& \cos{ N \delta } = \pm 1 \\ 
+& \cos{ N \sigma} = \pm 1 
+\end{aligned}
+\]
+So using these math facts,
+\[
+\begin{aligned}
+    \sum_{j=1}^{N-1} \sin{ \frac{ jm \pi}{ N}} \sin{ \frac{ j n \pi }{ N} } & = K ( -\sin{ \frac{ \sigma}{2} } \sin{ \frac{\delta}{2} } \cos{ N \delta} + \sin{ \frac{ \delta}{2} } \sin{ \frac{ \sigma}{2} } \cos{ N \sigma} ) = \\
+    & = \pm \frac{1}{ 4 \sin{ \frac{ \delta}{2} } \sin{ \frac{ \sigma}{2} } } ( -\sin{ \frac{ \sigma}{2} } \sin{ \frac{ \delta}{2} } + \sin{ \frac{\delta}{2} } \sin{ \frac{ \sigma}{2} } ) = \boxed{ 0 } 
+\end{aligned}
+\]
+
+\problemhead{6.2}
+\[
+\begin{gathered}
+2 \int_0^w dx x \sin{(n\pi x)} + \frac{2w }{1-w} \int_w^1 dx (1-x) \sin{ n\pi x} =  \\
+\begin{aligned}
+& = 2 \left( \left. \frac{ -x \cos{(n\pi x)} }{ n \pi }  \right|_0^w -\int_0^w \frac{ -\cos{(n\pi x)}}{ n\pi } dx + \frac{w}{1-w} \left( \left. \frac{ (1-x)\cos{ (n\pi x ) } }{ -n\pi }  \right|_w^1 - \int_w^1(-1) \left( \frac{ -\cos{(n\pi x)} }{ n\pi} \right) dx \right) \right) = \\
+  & = 2 \left( \frac{ -w \cos{(n\pi w)} }{ n \pi } + \frac{w}{1-w} \frac{ (1-w) \cos{ (n\pi x) } }{ n \pi }  + \left. \frac{ \sin{ (n\pi x )} }{ (n\pi)^2 } \right|_0^w + \frac{w}{1-w} \left( \left. \frac{  - \sin{ (n\pi x)}}{ (n \pi)^2 } \right|_w^1 \right) \right) = \\
+    & = 2 \left( \frac{ \sin{ (n\pi w )} }{ (n\pi)^2 } + \frac{w}{1-w} \left( \frac{ \sin{(n\pi w)} }{ (n\pi)^2 } \right) \right)  = 2 \frac{ \sin{(n\pi w)}}{ (n\pi)^2 } \end{aligned} 
+\end{gathered}
+\]
+
+\problemhead{6.3} The boundary conditions $A'(0) =0, A'(l)=0$ already hint at a cosine form.  
+\[
+\begin{gathered}
+A^{\beta}(x) = \cos{ (kx)}  \\
+A'(l) = -k \sin{ (kl)} =0; \, kl = n\pi \, k = \frac{ n\pi}{l}  \\
+A^{\beta}(x) = \cos{ \left( \frac{ n\pi}{l }\right) }; n\in \mathbb{Z}^+
+\end{gathered}
+\]
+
+\problemhead{6.4} \textbf{ Fun with Fourier Series and Fractals}
+
+$1$ is the period for $f(t)$ because for $j=0$, \, $g(frac(t))$, for $0 \leq t \leq 1$; so then $g(frac(t)) = g(t)$ and for $g(t); \quad 0 \leq t \leq 1$.  \\
+$g(t)$ will repeat itself in a ``cosine-like'' manner.  
+
+Recall the formulae for the Fourier Transform:
+\[
+\begin{gathered}
+  f(t) = B_0 + \sum_{j=1}^{\infty} A_j S(j\omega_1 t) + \sum_{j=1}^{\infty} B_j C(j \omega_1 t) \\
+  \begin{aligned}
+  A_j & = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t)S(j\omega_1 t) \\
+  B_j & = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t)C(j \omega_1 t) \\
+  B_0 & = \frac{1}{T} \int_{t_0}^{t_0 + T} f(t) dt 
+  \end{aligned}
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+  b_0 = \frac{1}{1} \int_0^1 \sum_{j=0}^{\infty} h^j g(frac(2^j t)) = \sum h^j \int g(frac(2^j t)) 
+\end{gathered}
+\]
+\[
+\begin{gathered}
+ \text{ for } j, \quad 0 \leq t \leq 1 \Longrightarrow \begin{matrix} 
+    0 \to 2^{-j} \\
+    2^{-j} \to 2 (2^{-j}) \\
+    \vdots \\
+    m(2^{-j}) \to (m+1)2^{-j} \\
+    \vdots \\
+    (2^{-j} - 1)2^{-j} \to 1 
+\end{matrix} \Longrightarrow 2^j \text{ subintervals } \quad \xrightarrow{2^j t} \begin{matrix} 
+    0 \dots 1 \\
+    1 \dots 2 \\
+    \vdots \\
+    m \dots m+1 \\
+    \vdots \\
+    2^j - 1 \dots 2^j 
+  \end{matrix}  \\
+h^j \int_0^1 g(frac(2^j t)) = h^j (w+w)2^j = 2 (2h)^j w \\
+\Longrightarrow b_0 = \sum 2 (2h)^j w = \frac{2w}{ 1 - 2 h }
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+  \begin{aligned}
+  b_k & = \frac{2}{1} \int_0^1 \sum_{j=0}^{\infty} h^j g(frac(2^j t)) C(k \omega_1 t) = 2 \sum \int_0^1 h^j g(frac(2^j t)) C(k \omega_1 t) = \\
+& =   2 \sum h^j \int g (frac(2^j t)) C(2\pi k t) \\
+  \end{aligned} \\
+  \text{ by $j$, $t$ gets divided up into $2^j$ subintervals.  So on the $m$th subinterval, $m(2^{-l}) \to (m+1) 2^{-j}$ }, \\ 
+  \begin{aligned}
+    & 2^j t - m = w ; \, t = \frac{ w+m }{ 2^j } \\
+    & 2^j t - m = 1 - w; \, t = \frac{ 1 - w + m }{ 2^j }
+  \end{aligned} \\
+\begin{gathered}
+\int_{\frac{m}{2^j}}^{ \frac{ w+m}{2^j } } C(2\pi k t) + \int_{ \frac{ 1 - w + m }{ 2^j }}^{ \frac{ (m+1)}{2} } C(2\pi k t) = \\
+= \left( \frac{1}{ 2 \pi k } \right) \left( S\left( \frac{ w + m }{2^j} \right)(2\pi k) - S\left( \frac{ m }{2^j }(2\pi k ) \right) + S\left( \frac{ m+1}{2^j } \right)(\omega_k) - S\left( \frac{ m+1 - w }{2^j } \right) \omega_k \right)
+\end{gathered}
+\end{gathered}
+\]
+
+\section{  Longitudinal Oscillations and Sound }
+
+\problemhead{7.1} 
+\[
+\begin{gathered}
+  \begin{aligned}
+    & pV^{\gamma} = p_0 V_0^{\gamma} \\
+    & p = p_0 V_0^{\gamma}V^{-\gamma} \\
+    & dp = -\gamma p_0 V_0^{\gamma}V^{-\gamma -1}dV \\
+    & V^{-\gamma -1} \simeq V_0^{-\gamma-1} +(-\gamma -1)V_0^{-\gamma-2}dV \\
+    & dp \approx -\gamma p_0 V_0^{-1}dV = -\gamma p_0 \left( \frac{1}{A dz} \right)(\partial_z \psi )dz A = -\gamma p_0 \partial_z \psi 
+  \end{aligned} \quad \quad \, 
+\begin{aligned}
+  & \psi(z) \\
+  & \psi(z+dz) = \psi(z) + (\partial_z \psi)dz + O(dz^2) \\
+  & \psi(z+dz) - \psi(z) = (\partial_z \psi)dz 
+\end{aligned} \\
+\quad \\
+\begin{gathered}
+  p = p_0 + dp \\
+  p-p_0  = dp = \frac{F_{long}}{A } \\
+  F_{long} = -\gamma p_0 (\partial_z \psi) A
+\end{gathered}
+\end{gathered}
+\]
+
+\problemhead{7.2} Since we have fixed ends at $x=0$, then we have modes of the form $\sin{k_n x}$.  Now 
+\[
+\omega_n = \sqrt{ \frac{ T_0}{\rho_0} } k_n
+\]
+is the dispersion relation for the transverse oscillations of the string.  So the general form of the modes of the string is
+\[
+\begin{aligned}
+  & \psi(x,t) = A \sin{(k_n x) } \cos{ (\omega_n t) } \\
+  & \psi(l,t) = A \sin{(k_n l)} \cos{ (\omega_n t) } \\
+  & \ddot{\psi} = -\omega_n^2 A S(k_n l)C(\omega_n t)
+\end{aligned}
+\]
+To find the force on the massive ring, it is easier and perhaps clever to consider the string as discrete stringed beads and then take the spacing between the beads, $a$, to go to zero.  Then the force on the massive ring will depend upon the displacement of the bead adjacent to it, but no other beads.  
+\[
+\begin{gathered}
+  \begin{aligned}
+    F & = -T_0 \left( \frac{ \psi(l,t) - \psi(l-a,t) }{ a} \right) \to \left. -T_0 \partial_x \psi \right|_{x=l} = -T_0 A k_n C(k_n l)C(\omega_n t) \\
+    & = M a = M(-\omega_n^2 A S(k_n l)C(\omega_n t) ) 
+  \end{aligned} \\
+  \Longrightarrow T_0 k_n C(k_n l) = \omega_n^2 M S(k_n l) = \frac{T_0}{\rho_0} k_n^2 M S(k_n l) \\
+\Longrightarrow   k_n l \tan{(k_n l)} = \frac{\rho_0 l }{ M} 
+\end{gathered}
+\]
+Let $\epsilon = \frac{ \rho_0 l}{M}$ \medskip \\
+For $M$ massive and a ``light'' spring ($\epsilon \ll 1$ or $\rho_0 l$ small compared to $M$ ) \\
+\[
+\begin{gathered}
+  \begin{aligned}
+    & k_0 l \approx \sqrt{ \epsilon } \\
+    & k_n l \approx n \pi \text{ for $n=1$ to $\infty$ } 
+  \end{aligned} \\
+\psi(l,t) = A S(k_n l) C(\omega_n t) \approx 0 \text{ for $n=1$ to $\infty$ } \\
+\begin{aligned}
+  & \omega_n \approx \frac{ n\pi }{ l } \sqrt{ \frac{T_0}{\rho_0 } }  \\
+  & \omega_0 \approx \sqrt{ \frac{ T_0}{\rho }} \frac{1}{l} \sqrt{ \frac{ \rho l}{M} } = \sqrt{ \frac{T_0}{ l M } }
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{7.3} We assume the spring constant is so large, satisfying $KL \gg mg$ so gravity plays no important role here except to keep the spring vertical, and so we neglect gravity.  \medskip \\
+Deriving the dispersion relation for longitudinal oscillations of a spring,
+\[
+\begin{gathered}
+\begin{aligned}
+  T_0 & = K_a(a-a_0) \\
+  m \ddot{ \psi}_n & = K_a (\psi_{n+1} - \psi_n) + K_a (\psi_{n-1} - \psi_n) = \\
+  & = K_a (\psi_{n+1} + \psi_{n-1} - 2 \psi_n ) \\
+  -\omega_n^2 & = \frac{K_a}{m} (e^{ka} + e^{-ka} - 2) = -\frac{2K_a}{m} (1- \cos{(ka)}) = \\
+  & = -\frac{4K_a}{m} \sin^2{\left( \frac{ka}{2} \right) } 
+\end{aligned} \\
+\begin{gathered}
+  a\to 0 \\
+  \omega_n^2 = \frac{4K_a}{m} \left( \frac{ka}{2} \right)^2 = \frac{K_a a k^2}{m/a} = \frac{K_L K k^2 }{\rho_0}
+\end{gathered}
+\end{gathered}
+\]
+Now we have, as one of the boundary conditions, the driving force at $z=L$,
+\[
+\psi(L,t) = \epsilon \cos{(\omega t) }
+\]
+The general form of the mode for longitudinal oscillations of a spring is
+\[
+\psi_n(z,t) = (A S(k_n z) + BC(k_n z) ) \cos{(\omega t) }
+\]
+At $z=0$, spring is a ``free end''; there should be no forces on this end of the spring; in the infinite extension of the spring picture, all beads for $z<0$ move with bead at $z=0$.  
+\[
+\begin{gathered}
+\begin{gathered}
+  \partial_z \psi = (k_n A C(k_n z) + - BS(k_n z) ) C(\omega t) \xrightarrow{z=0} k_n A C(\omega t) = 0 \\
+ \Longrightarrow  A = 0 
+\end{gathered}  \\
+\quad \\
+\epsilon = B C(k_n L) \Longrightarrow B = \frac{ \epsilon}{ C(\sqrt{ \frac{ \rho}{K_L L } } \omega L ) }
+\end{gathered}
+\]
+The driving frequency $\omega$ excites one of the infinitely many modes of the longitudinal oscillations of a spring, related through the dispersion relation.  
+\[
+\Longrightarrow \boxed{ \psi(0,t) = \frac{ \epsilon}{ \cos{ \left( \sqrt{ \frac{ \rho L}{ K_L }} \omega \right) } } \cos{ (\omega t) } }
+\]
+
+\exercisehead{7.4} If air is confined in a closed container, it exerts an outward pressure on the walls.  \\
+We treat the entire column of air as a compressed spring which would like to extend itself. \\
+We have this column of air, so the entire column of air is like a compressed spring extending along the cylinder.  
+\[
+\begin{gathered}
+  \begin{gathered}
+    F_{\text{ on piston } } = -K(L-L_1) = -F_{ \text{ on air } } \\
+    dF = K dL 
+  \end{gathered} \\
+\begin{gathered}
+  F = pA \\
+  dF = A dp = A \left( \frac{ dp}{dV} \right)_0 A dL \\
+  K = A^2 \left( \frac{dp}{dV} \right)_0 
+\end{gathered} \quad \quad \, 
+\begin{gathered}
+  pV^{\gamma} = p_0 V_0^{\gamma} ; \Longrightarrow p = p_0 \frac{V_0^{\gamma}}{V^{\gamma} } \\
+  \Longrightarrow 
+  \begin{aligned} 
+    \frac{dp}{dV} & = p_0 V_0^{\gamma} (-\gamma) V^{-\gamma -1} \\
+    \left( \frac{dp}{dV} \right)_{V_0} & = - p_0 \gamma V_0^{-1} 
+  \end{aligned}
+\end{gathered}
+\end{gathered}
+\]
+So $K = A^2 -p_0 \gamma V_0^{-1} = \boxed{ -\gamma p_0 A / L }$, where $p_0$ is the atmospheric pressure that the bottom of the air column opens up to.  
+
+\problemhead{7.5} \textsc{ Personal Experiment}.   \\
+The correction to Helmholtz, Eqn. (7.64), is 
+\begin{equation*}
+  \frac{ \omega V_{body} }{ A v } \tan{ \frac{ \omega l }{ v } } = 1 
+\end{equation*}
+For $\frac{ \omega l }{ v}$ small, 
+\[
+\begin{gathered}
+  \frac{ \omega V_{body}}{ A v } \frac{ \omega l }{ v } = \frac{ \omega^2 V_{body} l }{ A v^2 } = 1  \\
+  \omega = \sqrt{ \frac{ v^2 A }{ V_{body} l } } = \boxed{ v \sqrt{ \frac{A}{V_{body} l } } }
+\end{gathered}
+\]
+So we reobtain the Helmholtz's correction, Eqn. (7.57), 
+\begin{equation*}
+\omega = \sqrt{ \frac{ \gamma A^2 p_0/V_0 }{ \rho A l } } = v \sqrt{ \frac{A}{l V_0 }}
+\end{equation*}
+Now $\tan{ \frac{ \omega l}{v} } = \frac{ Av }{ \omega V_{body} }$ \\ 
+For $V_0 \approx 0 $, then $1/V_{body}$ blows up, so the argument of $\tan$ goes to $(2j+1)\pi/2$.  \\
+\phantom{ For } $\frac{ \omega l }{v} \approx \frac{ (2j+1)\pi }{2} $ or $\omega \approx \frac{ (2j+1) \pi v}{2l } $ \medskip \\
+Take the lowest non-trivial mode, $j=0$.  Then $\omega \approx \frac{ \pi v}{2l}$, and so we reobtain Eqn. (7.50).  
+
+\section{  Traveling Waves }
+
+\problemhead{8.1} \begin{enumerate}
+\item \[
+  \begin{aligned}
+    & F_{ext, x > 0 } = -T \partial_x \psi_{x>0} = (-T) \frac{ \psi(ka) - \psi(0)}{ a } \\
+    & F_{ext, x < 0 } = T \partial_x \psi_{x<0} = (T) \frac{ \psi(0) - \psi(-ka) }{ a }
+  \end{aligned}
+\]
+The force applied in the $y$ direction at $x=0$ produces two traveling waves moving away from $x=0$ in the $\pm x$ directions.  It is physically reasonable to assume the wave traveling in the $\pm x$ direction is only in the $x\gtrless 0$ region, and so we have the following:
+\[
+\begin{aligned}
+  & \psi(x > 0 ,t ) = D \cos{ (kx -\omega t) } \\
+  & \psi(x < 0 ,t ) = D \cos{ (kx +\omega t) }
+\end{aligned} \quad \quad \, 
+\begin{aligned}
+  & \overline{\psi}(x > 0 ,t) = De^{ i(kx - \omega t) } \\
+  & \overline{\psi}(x < 0, t) = De^{ i (kx + \omega t) }
+\end{aligned} \quad \quad \, 
+\begin{aligned}
+  & \partial_x \psi = ik D e^{i (kx - \omega t) } \\
+  & \partial_x \psi  = ik De^{i (kx + \omega t) } 
+\end{aligned}
+\]
+So then the required external forces are $\begin{aligned} 
+  & F_{ext, x> 0 } = -T i k D e^{i (kx - \omega t ) } \\
+  & F_{ext, x < 0 } = T i k De^{i (kx + \omega t) }
+\end{aligned}$ \medskip  \\
+Assume superposition $F_{ext,tot} = i Tk De^{ikx}(e^{i\omega t } - e^{-i \omega t} ) = -2T k De^{ikx} \sin{ (\omega t) }$ \medskip \\
+$\Longrightarrow \Re{ (F_{ext, tot} ) } = -2 Tk D \cos{(kx)} \sin{(\omega t) } \xrightarrow{x=0} \boxed{ -2 TkD \sin{ (\omega t) } }$
+\item $P = F_{ext,tot} \partial_t \psi$ \bigskip \\
+Let's check to make sure our expression for $\psi$ the displacement of the string, has the same velocity at $x=0$.  
+\[
+\begin{aligned}
+  & x > 0 \\
+  & x < 0 
+\end{aligned} \quad 
+\begin{aligned}
+  & \partial_t \psi = - i \omega De^{i (kx -\omega t) } & \xrightarrow{x=0} - i \omega De^{ -i \omega t} & \xrightarrow{ \Re} -i \omega D i \sin{ (-\omega t)} & = - \omega D \sin{ (\omega t) } \\
+  & \partial_t \psi = i \omega De^{ i (kx + \omega t) } & \xrightarrow{x=0} i \omega De^{ i\omega t} & \xrightarrow{ \Re } i \omega D i \sin{ (\omega t) } & = - \omega D \sin{(\omega t) }
+\end{aligned}
+\]
+$P = -2TkD \sin{ (\omega t) }$ \quad \quad $\boxed{ \left< P \right> = 2 TkD^2 \omega }$ 
+\end{enumerate}
+
+\problemhead{8.2} Let's review how the characteristic impedance was derived.  
+\[
+  \begin{aligned}
+    & F_0 = -T \left. \partial_x \psi \right|_{x=0} = F_{ \text{ on medium }} \\
+    & F_{ \text{ string on transmitter } } = -F_0 = T \left. \partial_x \psi \right|_{x=0} = -Z \partial_t \psi
+  \end{aligned}  \quad \, \Longrightarrow T i k = -Z (- i \omega )  \Longrightarrow Z = \frac{ T}{v_{\phi}} \\
+\]
+
+Instead of the return force $T$, for sound waves, we must consider the return pressure from the surrounding, outside atmosphere: $\gamma p_0$.  This will change the power, $P$; we consider the \emph{intensity}, $P_I$, instead of the power transmitted through. Thus
+\[
+Z = \frac{ T}{ v_{\phi}} = \gamma p_0 \sqrt{ \frac{ \rho}{ \gamma p_0 } } = \sqrt{ \gamma p_0 \rho }
+\]
+
+For a traveling wave traveling in the $+x$ direction, $\psi = e^{i(kx- \omega t) }$, so $\partial t \psi = - i\omega \psi$.  Remember, when calculating the power or intensity, $P_I$, we need to first take the real part of the complex quantities.  Then the square of the trig function and subsequent averaging will yield a positive quantity.  
+\[
+P_I = Z (\partial_t \psi)^2 = \sqrt{ \gamma p_0 \rho } \omega^2  \frac{ A_0^2 }{2 } 
+\]
+Plugging in the given quantitites $p_0 = 1.01 \times 10^6 \, \frac{dyne}{cm^2}$, $\rho_0 = \frac{ 1.29 \times 10^{-3} gm }{ cm^3}$, $\omega = 440/sec$, $10^{-3} watts/cm^2$, which is the energy density or intensity, 
+\[
+\begin{aligned}
+  A_0 & = \sqrt{ \frac{ P }{ \sqrt{ \gamma p_0 \rho} \omega^2  } } \\
+  & = \boxed{ 0.00553 \, cm}
+\end{aligned}
+\] 
+
+
+\problemhead{8.3} All the capacitors have the same capacitance, $C \approx 0.00667 \, \mu F$, and all the inductors have the same inductance, $L \approx 150 \, \mu H$ and the resistance, $R \approx 15 \, \Omega$.  The center wire is grounded.  
+\begin{enumerate}
+\item Let's first find the dispersion relation.  \bigskip \\
+
+Let $Q_j = $ charge displaced through inductor $j$.  \medskip \\
+By charge conservation, $Q_{j-1} = q_j + Q_j$ $\Longrightarrow I_{j-1} = \dot{q}_j + I_j$ where $q_j$ is the charge on the $j$ capacitor.  
+
+From the physical setup of the system,
+\[
+\begin{gathered}
+  \mathcal{E}_{ind} = \int_B^A \vec{E}_{ind} \cdot d\vec{s} = - \int_B^A - \vec{E}_{ind} \cdot d\vec{s} = -(\phi_A - \phi_B) = \phi_B - \phi_A = -L \frac{d I_j}{dt} \\
+  RI_j = \int_B^C \vec{E} \cdot d\vec{s} = -(\phi_C - \phi_B)  = (\phi_B - \phi_C) \\
+  q_{j+1} = CV_{j+1} \\
+  V_{j+1} = \phi_c - \phi_0 \\
+  \Longrightarrow  
+  \begin{aligned}
+    &  L \frac{ dI_j}{dt} + &  R I_j + &  \frac{q_{j+1}}{C}  = & \frac{q_j}{C} =  \\
+    & \phi_A - \phi_B  + & \phi_B - \phi_C + &  \phi_C - \phi_0  =  & \phi_A - \phi_0  
+\end{aligned} \quad 
+\Longrightarrow  \begin{aligned} 
+   L \frac{d}{dt} \frac{d}{dt} Q_j + R \frac{d}{dt} Q_j  & = \frac{ q_j - q_{j+1}}{C} = \\
+  & = \frac{ Q_{j-1} - Q_j - (Q_j - Q_{j+1}) }{ C } 
+\end{aligned}
+\end{gathered}
+\]
+If we assume traveling wave solutions (without loss of generality, since standing waves can be rewritten as traveling waves, and vice versa), then 
+\[
+Q_{j-1} + Q_{j+1} - 2Q_j \xrightarrow{ \text{ divide out the $e^{-i\omega t}$ time part } } e^{ka(j-1) } + e^{ka(j+1)} - 2e^{kaj} = e^{kaj} (e^{ka} + e^{-ka} -2 ) = -2 e^{kaj}(1 - \cos{ka} )
+\]
+So 
+\[
+\boxed{ \omega^2 + \frac{R}{L} i \omega = \frac{2}{LC} (1 - \cos{ka} ) }
+\]
+\item Assume a traveling wave solution $V_j = V_+ e^{i (kx-\omega t) } + V_- e^{- i (kx+\omega t) }$ \smallskip \\
+
+The boundary conditions are $V_0 = 0$ and $V_6 = V e^{ -i \omega t}$ (we've complexified the voltage).  Thus,
+\[
+\begin{gathered}
+\begin{aligned}
+  & V_0 = V_+ e^{-i \omega t} + V_- e^{- i \omega t} = 0 \Longrightarrow V_+ = - V_- \\
+  & V_6 = V_+ e^{i (k6a - \omega t) } - V_+ e^{-i (6ka + \omega t) } = Ve^{ -i \omega t} 
+\end{aligned} \quad \, \Longrightarrow V_+ = \frac{V}{ 2 i \sin{(6ka) }} \\
+\begin{aligned}
+  V_j & = \frac{V}{ 2 i \sin{ (6ka) } } ( C(kx - \omega t) + i S(kx - \omega t) ) + \frac{ - V}{ 2 i S(6ka) } (C(kx+\omega t) - i S(kx + \omega t ) ) \\
+  & = \frac{V}{ i S(6ka)} S(kx) S(\omega t) + \frac{V}{ S(6ka) } S(kx)C(\omega t )
+\end{aligned}
+\end{gathered}
+\]
+So now
+\[
+\begin{aligned}
+  A_1 &  = \frac{V S(ka) }{ S(6ka) } \\
+  B_1 & = \frac{ V S(ka) }{ i S(6ka) } 
+\end{aligned} \quad \quad \, |A_1 + i B_1 | = \left| \frac{ 2 V S(ka) }{ S(6ka) } \right| = 2V \left| \frac{S(ka)}{S(6ka)} \right|
+\]
+Using the dispersion relation to express $C(ka)$,
+\[
+\begin{gathered}
+  \begin{aligned}
+    A_1 & = \frac{V S(ka)}{ S(ka) (32C^5(ka) - 32 C^3(ka) + 6C(ka) ) } = \frac{V}{ 32 C(ka)(C^4(ka) - C^2(ka) + \frac{3}{16} ) } = \\
+    & = \frac{V}{ 32 C(ka)(C^2(ka) - \frac{3}{4} )( C^2(ka) - \frac{1}{4} ) }  \\
+    & \begin{gathered}
+      \omega^2 + i \omega \frac{R}{L} = \frac{2}{LC} (1- C(ka)) \\
+      \Longrightarrow C(ka) = 1 - (\omega^2 + i \omega \frac{R}{L} ) \frac{LC}{2} = \frac{-LC}{2} ( \omega^2 - \frac{2}{LC} + i \omega \frac{R}{L} )
+\end{gathered}     
+\end{aligned}
+\end{gathered}
+\]
+\[
+\begin{gathered}
+\begin{aligned}
+    A_1    & = V/ \left( 32 ( \frac{-LC}{2} (\omega^2 + i \omega \frac{R}{L} - \frac{2}{LC} ) )( \left( \frac{LC}{2} \right)^2 ( \omega^4 - \omega^2 \left( \frac{R^2}{L^2} + \frac{4}{LC} \right) + \frac{1}{(LC)^2} + i \left( \omega^3 2 \frac{R}{L} - \omega \left( \frac{4 R}{L^2 C} \right) \right) ) ) \cdot \right. \\
+    & \quad \cdot \left. ( \left( \frac{LC}{2} \right)^2 ( \omega^4 - \omega^2 \left( \frac{R^2}{L^2} + \frac{4}{LC} \right) + \frac{3}{(LC)^2} + i \left( \omega^3 2 \frac{R}{L} - \omega \left( \frac{4 R}{L^2 C} \right) \right) ) )   \right)
+  \end{aligned}
+\end{gathered}
+\]
+So then we would multiply by the complex conjugate for each of the complex factors in the bottom, so there's 3 complex conjugates to multiply by.  With $LC = (150 \mu H)(0.00667 \mu F ) = 10^{-12}$ and $\frac{R}{L} = \frac{ 15 \Omega }{150 \mu H} = 10^5$, then we'll plot, for the numerator, we have
+\[
+\begin{gathered}
+V*10^{60}( \omega^2 - 2 \times 10^{12} - i \omega \times 10^5 )( \omega^4 - \omega^2 (4.01\times 10^{12}) + 1 \times 10^{24} + i ( 2 \omega \times 10^5 (\omega^2 - 2 \times 10^{12} ) ) )\cdot \\
+\cdot ( \omega^4 - \omega^2 (4.01\times 10^{12}) + 3 \times 10^{24} + i ( 2 \omega \times 10^5 (\omega^2 - 2 \times 10^{12} ) ) )
+\end{gathered}
+\]
+For the denominator, we have 
+\[
+\begin{gathered}
+  ((\omega^2 - 2 \times 10^{12})^2 + (\omega 10^5)^2 )( (\omega^4 - \omega^2(4.01 \times 10^{12}) + 1 \times 10^{24})^2 + ( 2 \omega \times 10^5 (\omega^2 - 2 \times 10^{12} ))^2 )\cdot \\
+\cdot  ( (\omega^4 - \omega^2(4.01 \times 10^{12}) + 3 \times 10^{24})^2 + ( 2 \omega \times 10^5 (\omega^2 - 2 \times 10^{12} ))^2 )
+\end{gathered}
+\]
+We can break up the numerator into imaginary and real parts, which could be facillitated by labeling each real and imaginary part of a complex number by $a$ and $b$ and then doing the algebra.  
+
+We finally obtain a sketch.  
+\item 
+\end{enumerate}
+
+\section{ The Boundary at Infinity }
+
+\problemhead{9.1} 
+\[
+\begin{aligned}
+  & \omega^2 = \frac{4K}{m} \sin^2{\left( \frac{ka}{2} \right) } & \text{ in $x \leq a$ } \\
+  & \omega^2 = \frac{4K}{M} \sin^2{\left( \frac{k'a}{2} \right) } & \text{ in $x \geq 0$ } 
+\end{aligned} \quad \quad \, 
+\psi(x,t) = \begin{cases}
+  A e^{i (kx- \omega t)} + RA e^{-i(kx + \omega t)} & ; x \leq a \\
+  T A e^{i (k'x- \omega t)}  & ; x \geq a 
+\end{cases}
+\]
+Boundary conditions: 
+\[
+\begin{aligned}
+  & x=a;  \quad A e^{ i (ka - \omega t)} + RA e^{-i(ka +\omega t) } = TA e^{i (k'a - \omega t) } \Longrightarrow e^{ika} + Re^{-ika} = T e^{ik'a} \\
+  & x = 0;  \quad 1+R = T 
+\end{aligned}
+\]
+$\Longrightarrow R = \frac{ e^{ik'a} - e^{-ika} }{ e^{-ika} - e^{-ik'a} }$ \medskip \\
+
+Indeed,
+\[
+\lim_{a,m,M\to 0} R = \frac{ ik'a - ika}{-ika - ik'a} = \frac{ k-k'}{k+k'} = \frac{ 1-  k'/k}{1+k'/k}
+\]
+
+\problemhead{9.2}
+For a standing wave form for the oscillations,
+\[
+\psi(x,t) = \begin{cases} 
+  e^{-i \omega t} (Ae^{-\kappa x} ) & \text{ for $x \geq 0$ } \\
+  e^{-i \omega t} (Ae^{\kappa x }) & \text{ for $x \leq -0$ }
+\end{cases}
+\]
+Notice that unlike the derivations in the previous sections, where we dealt with mostly continuous systems, the boundary conditions here won't deal with forces between regions, because, as we'll see, the dispersion relation will already account for what happens to block $0$.  So the boundary condition to consider here is ``discrete'' continuity.  
+
+\[
+\psi(0^+,t) = Ae^{-i\omega t} = \psi(0^-,t)
+\]
+
+For the dispersion relation, derived directly from the forces on block $0$, governing the motion of block $0$, 
+\[
+\begin{gathered}
+  \begin{aligned}
+  M\ddot{\psi}(0,t) & = K (\psi(a,t) - \psi(0,t)) + K(\psi(-a,t) - \psi(0,t) )  = \\
+  & = K(\psi(a,t) + \psi(-a,t) - 2\psi(0,t) ) = \\
+  & = K ( e^{-i \omega t} A e^{-\kappa a} + e^{-i\omega t} Ae^{-\kappa a} + -2 e^{-i\omega t} A ) = - \omega^2 M Ae^{ -i \omega t} \\
+  - \omega^2 M & = 2K (e^{-\kappa a} - 1 ) 
+  \end{aligned} \\
+  \omega^2 = \frac{2K}{M} (1- e^{-\kappa a} ) \quad \, (\text{ always sinuisoidal motion } )
+\end{gathered}
+\]
+
+Let's determine the dispersion relation with a standing wave form for the oscillation for the other 2 regions:  
+\[
+\begin{gathered}
+  \psi = e^{- i \omega t} Ae^{\pm \kappa x} \\
+  \begin{aligned}
+    M \ddot{\psi} & = -M \frac{g}{l} \psi + K(\psi(x+a,t) - \psi(x,t) + \psi(x-a,t) - \psi(x,t) ) = \\
+    -\omega^2 M e^{-i \omega t}Ae^{ \pm \kappa x} & = -M \frac{g}{l} \psi + K( \psi e^{ \pm \kappa a} + \psi e^{ \mp \kappa a} - 2 \psi ) \\
+    -\omega^2 M & = -M \frac{g}{l} + K (e^{ \pm \kappa a} + e^{\mp \kappa a} - 2) 
+  \end{aligned} \\
+  \boxed{ \omega^2 = \frac{g}{l} - \frac{4 K }{M} (\sinh^2{ \left( \frac{ \kappa a}{2} \right) } ), \quad \, x \geq a \text{ and } x \leq a } \\
+  \text{ since } e^{-\kappa a} + e^{\kappa a} - 2 = 2 (\cosh{(\kappa a)} - 1) = 4 \sinh^2{ \left( \frac{ \kappa a}{2} \right) }
+\end{gathered}
+\]
+
+\problemhead{9.3} \begin{enumerate}
+\item Vertical rod is necessary to balance horizontal forces on massless, frictionless ring from 2strings with different tensions.  
+
+Consider traveling wave from $-x$ direction:
+\[
+\psi(x,t) = \begin{cases} Ae^{ikx} e^{-i \omega t} + RA e^{-ikx} e^{-i\omega' t} & \text{ for } x \leq 0 \\ \tau A e^{ik'' x} e^{-i \omega'' t} \end{cases}
+\]
+
+Dispersion relation is characteristic of the physical system, physical medium, not the boundary conditions.   \\
+$\omega^2 = \frac{T}{\rho} k^2$, \quad $\begin{aligned} k & = \sqrt{ \frac{\rho}{T} } \omega \\ k' & = \sqrt{ \frac{\rho}{T} } \omega = k \\ k''& = \sqrt{ \frac{ \rho}{ T' } } \omega \end{aligned}$ \quad \, $\begin{aligned} \omega'' & = \omega \\ \omega' & = \omega \end{aligned} $  
+
+Note $\omega$ is the same for both regions, because only one input traveling wave from $-x$ is considered, otherwise time translation is broken.  
+\item Continuity $1+R = \tau$ at $x=0$.  
+
+Vertical component of force on massless ring is zero: 
+
+\[
+-T ( ik + -ik' R) = T' \tau i k'' 
+\]
+\[
+\Longrightarrow R = \frac{ \sqrt{ T} + \sqrt{ T' } }{ \sqrt{T} - \sqrt{ T' } }; \quad \,  \tau = \frac{ 2 \sqrt{ T}}{ \sqrt{ T} - \sqrt{T' } }
+\]
+\end{enumerate}
+
+\problemhead{9.4} \begin{enumerate}
+\item $x \leq 0$, \, $\psi(x,t) = A e^{i ( kx - \omega t) } +RA e^{ - i ( kx + \omega t) } $ \\
+$x \geq 0$, $\psi(x,t) = TA e^{i (kx- \omega t) }$  
+
+$\omega^2 = \frac{4K}{m} \sin^2{ \frac{ka}{2}}$ is the dispersion relation for the system of blocks and springs.  
+
+Continuity (both functions must agree at $x=0$): $1 + R = T$.  
+
+Sum of forces on block 0 is 0 (block 0 is massless): 
+\[
+-K(\psi(0,t) - \psi(-a,t)) + K(\psi(a,t) - \psi(0,t) ) =0  
+\]
+\[
+\psi(-a,t) + \psi(a,t) - 2 \psi(0,t) = 0 = Ae^{i (-ka - \omega t)} + RA e^{ -i ( -ka + \omega t)} + Ta e^{i (ka - \omega t) } + -2 TA e^{-i\omega t} 
+\]
+\[
+\Longrightarrow R = \frac{1 - \cos{(ka) } }{ e^{ika} - 1 } = -i e^{-ika/2} \sin{\left( \frac{ka}{2} \right) }
+\]
+\[
+T = 1 + -ie^{ -ika/2} \sin{ \left( \frac{ka}{2} \right) }
+\]
+
+The boundary condition is analogou to a free end connecting 2 medium.  
+
+\item See the first part.  
+\end{enumerate}
+
+\problemhead{9.5} At $x=-L$ there is forced oscillation, region I has mass density $\rho$, region II has mass density $\rho'$.  
+
+Note that tension in both strings must be $T$ so the system won't break at $x=0$, when at equilibrium.  
+
+Given $\chi \sin{\omega t}$ at $x=-L$
+$\omega  =\frac{\pi}{2L} \sqrt{ \frac{ T}{\rho} }$ is the driving frequency, not the dispersion relation.  
+
+Dispersion relations: $\begin{aligned} \text{ region I }: & \omega^2 = \frac{ T}{\rho} k^2 \\ \text{ region II }: & \omega^2 = \frac{T}{\rho'} k'^2 \end{aligned}$  \\
+$x < 0$: $\psi = Ae^{i (kx-\omega t) } + RA e^{-i (kx + \omega t) } $ \\
+$x > 0$: $\psi = TA e^{i (k'x - \omega t) }$ 
+
+At $x= -L$: $\psi(-L,t) = Ae^{i (-kL - \omega t) } + RA e^{-i ( -kL + \omega t) } = \chi e^{ - i (\omega t- \pi/2 ) }$  \[
+\Longrightarrow A = \frac{ i \chi }{ e^{-ikL } + Re^{ikL } }
+\]
+Continuity at $x=0$: $1 + R =T$
+
+There's no mass connecting the 2 regions; the pull from each string must equal each other.  
+\[
+- T ( ik + R(-ik) ) + T \tau (ik') = 0 \Longrightarrow k ( 1 - R) + k' \tau =0
+\]
+So then
+\[
+\begin{aligned}
+  R & = \frac{ k + k' }{ k - k' } \\ 
+  T & = \frac{2k }{k-k'}
+\end{aligned}
+\]
+
+\[
+\begin{gathered}
+  \psi = \tau A e^{- i\omega t} = \frac{ i \chi \sqrt{ \rho }}{ \sqrt{ \rho } \cos{(kL)} + \sqrt{ \rho'} i \sin{(kL )} } e^{ - i\omega t} \\ 
+  \xrightarrow{ \Re } \{ \frac{ \sqrt{ \rho } \chi }{ \rho \cos^2{(kL)} + \rho' \sin^2{(kL)} } \} ( \sqrt{ \rho} \cos{(kL)} \sin{(\omega t)} + \sqrt{ \rho'} \sin{(kL)} \cos{(\omega t) } )
+\end{gathered}
+\]
+
+
+
+\section{ Signals and Fourier Analysis }
+
+\problemhead{10.1} $\omega^2 = c^2 k^2 - \omega_0^2$ implies photons with an imaginary, nonzero rest mass.  
+
+A more solid explanation also is the following:
+\[
+\begin{aligned}
+  \omega^2 &  = c^2 k ^2 - \omega_0^2 \\ 
+  \omega & = \sqrt{ c^2 k^2 - \omega_0^2 }
+\end{aligned}
+\]
+\[
+v_g = \frac{d\omega }{d k} = \frac{1}{2} ( c^2 k^2 - \omega_0^2 )^{-1/2} ( 2c^2 k) = \frac{ c^2 k }{ \sqrt{ (ck)^2 - \omega_0^2  } } = \frac{ck}{ \sqrt{ k^2 - (\omega_0/c)^2 } } 
+\]
+This implies $v_g >c$, which is physically impossible.  
+
+\problemhead{10.2} A beaded string has heighboring beads separated by $a$.   \medskip \\
+We've seen the dispersion relation for discrete beaded string before, and so we quickly derive it: $ \begin{aligned}
+  \omega^2 & = \frac{4T}{Ma} \sin^2{ \left( \frac{ka}{2} \right) }  \\
+  \omega & = 2 \sqrt{ \frac{T}{Ma} } \sin{ \left( \frac{ka}{2} \right) }
+\end{aligned}$
+\[
+\frac{ \partial \omega }{ \partial k } = 2 \sqrt{ \frac{T}{Ma}} \cos{ \left( \frac{ka}{2} \right) } \left( \frac{a}{2} \right) = v \xrightarrow{ \cos{ \left( \frac{ka}{2} \right)} =1 } \frac{Ta}{M} = v^2   \Longrightarrow \frac{T}{M} = \frac{v^2}{a}
+\]
+
+\problemhead{10.3}
+\[
+\begin{gathered}
+  \omega^2 = gk + \frac{Tk^3}{\rho} \\
+  \quad \quad 
+  \begin{aligned}
+    & 2 \omega \omega_k = g + \frac{ 3T}{\rho } k^2 \\
+    & \omega_k = \frac{ g + \frac{ 3 T}{\rho} k^2 }{ 2 \omega } = \frac{ g + \frac{3T}{\rho }k^2 }{ 2 \sqrt{ gk + \frac{Tk^3}{\rho } }} = \frac{ g + \frac{3T}{\rho} \frac{ (2\pi)^2 }{\lambda^2} }{ 2 \sqrt{ \frac{2\pi g}{\lambda} + \frac{ T(2\pi)^3}{ \rho \lambda^3 } } } 
+  \end{aligned} 
+  \quad \\
+\end{gathered}
+\]
+\[
+\begin{gathered}
+  v_{\phi} = \frac{ \omega}{k}  = \sqrt{ \frac{g}{k} + \frac{Tk}{\rho} } = \sqrt{ \frac{ g\lambda}{2\pi }  + \frac{T (2\pi)}{ \rho \lambda} }  \\
+ \end{gathered}
+\]
+\[
+\begin{gathered}
+\begin{aligned}
+  & v_{\phi} = \omega_k \\
+  & v^2_{\phi}  = \omega_k^2 = \frac{g}{k} + \frac{Tk}{\rho} = \frac{ \left( g + \frac{3T}{\rho} k^2 \right)^2 }{ 4 \left( gk + \frac{T k^3 }{ \rho} \right) } \Longrightarrow 4 \left( g + \frac{Tk^2}{\rho} \right)^2 = \left( g + \frac{3T}{\rho} k^2 \right)^2 
+\end{aligned} \\
+k^2 = \frac{  g }{  T/\rho }; \quad \quad \, \lambda = \left(  \frac{T}{ \rho g} \right)^{1/2} 2\pi \simeq \boxed{ 1.7 \, cm }
+\end{gathered}
+\]
+
+\problemhead{10.4} 
+\begin{enumerate}
+  \item \[
+    \begin{gathered}
+      \omega^2 = \frac{4K}{m} \sin^2{ \frac{ka}{2} } \\
+      \omega^2 = \frac{K}{m} \Longrightarrow \pm \frac{1}{2} = \sin{ \frac{ka}{2} } \Longrightarrow \begin{aligned}
+	& \frac{ka}{2} = \frac{\pi}{6} \\ 
+	& k = \frac{\pi}{3a} \quad ( \text{ lowest mode } ) 
+      \end{aligned} \\
+      \frac{ \omega}{k} = v_{\phi} = \frac{3a}{\pi} \sqrt{ \frac{K}{m} }
+    \end{gathered}
+    \]
+  \item $B\cos{ \omega t} \to Be^{ -i\omega t}$.  
+\[
+\begin{aligned}
+  & \psi(x,t) = Be^{-i (\omega t - kx) } \\
+  & \psi(a,\frac{\pi}{2\omega } ) = Be(-i \left( \frac{\pi}{6} \right)) \to \Re{\psi(a, \frac{\pi}{2 \omega } )} = \frac{\sqrt{3}}{2} B 
+\end{aligned}
+\]
+  \item \[
+\begin{gathered}
+  \omega  = 2 \sqrt{ \frac{K}{m}} S\left( \frac{ka}{2} \right) \\
+  \omega \to 2 \sqrt{ \frac{K}{m}}; \quad \, \frac{ka}{2} \to (4j+1)\frac{\pi}{2}; \, k = \frac{ (4j+1)\pi}{a} \\
+  \frac{ \partial \omega}{ \partial k } = 2 \sqrt{ \frac{K}{m}} C\left( \frac{ka}{2} \right)\left( \frac{a}{2} \right) \simeq a \sqrt{ \frac{K}{m} } ( 0 + (-1) \left( \frac{ka}{2} - \frac{\pi}{2} \right) ) = a \sqrt{ \frac{K}{m}} \left( \frac{\pi}{2} - \frac{ka}{2} \right) \to 0 
+\end{gathered}
+\]
+\item $\partial \psi_0 = - \omega B s(\omega t)$ \medskip \\
+$K(\psi_1 - \psi_0) + F_{ext} = m_{ring} \partial^2_{tt} \psi_0$ \\
+  \quad \, If $m_{ring} = 0$ (reasonable assumption), \\
+  \quad \quad $F_{ext} = -K (Be^{ - i (\omega t - ka) } - Be^{ - i \omega t} ) \xrightarrow{ \Re } -K(Bc(\omega t - ka) - Bc(\omega t) )$
+\[
+\begin{aligned}
+  P & = F_{ext} \partial_t \psi_0 = KB (c(\omega t - ka) - c(\omega t)) \omega B s(\omega t) = \omega k B^2 \left( \frac{1}{2} s(ka) \right) \xrightarrow{ ka \to \pi } \\
+  & \simeq \frac{ \omega k B^2}{2} (0 + (-1)(ka - \pi) ) = \frac{ \omega k B^2}{2} ( \pi - ka) \to 0 
+\end{aligned}
+\]
+\item Power supplied comes back since no signal is sent.  \\
+That no power is expended, is expected for standing waves.   \\
+$k = \frac{\pi}{a}$ implies a zigzag configuration for the beads, so the blocks are as ``taut'' as they could be.  
+\end{enumerate}
+
+\section{ Two and Three Dimensions }
+
+\problemhead{11.1} Consider the free transverse oscillations of the two-dimensional beaded string.  The square frame is fixed in the $z=0$ plane.  \begin{enumerate}
+\item $s(k_x x)s(k_y y)c(\omega t)$ where $\begin{aligned}
+  & k_x = \frac{\pi n_x}{L} \\
+  & k_y = \frac{ \pi n_y}{L} 
+\end{aligned}$ \quad $\begin{aligned}
+  & T_h = T_x \\
+  & T_v = T_y 
+\end{aligned}$ \, $a = L/4$  \smallskip \\
+
+$\omega^2 = \frac{ 4T_x}{ma} \sin^2{ \left( \frac{k_x a}{2} \right)} + \frac{4T_y}{ma} \sin^2{ \left( \frac{k_y a}{2} \right) }$ \medskip \\
+
+$\frac{k_{x,y} a}{2} = \left( \frac{ \pi n_{x,y} }{2} \right) \frac{ L/4}{2} = \frac{ \pi n_{x,y}}{8}$ $n_x = 0,1,\dots 3 $
+\item If $T_y = 100 T_x$
+\[
+\begin{aligned}
+  \omega^2 & = \frac{4T_x}{ma} \left( \sin^2{ \left( \frac{k_x a}{2} \right) }+ 100 \sin^2{ \left( \frac{k_y a}{2} \right) } \right) = \frac{ 4T_x}{ma} \left( \sin^2{ \left( \frac{ \pi n_x }{8} \right) } + 100 \sin^2{ \left( \frac{ \pi n_y }{8} \right) } \right) = \\
+  & = \frac{4 T_x}{ma} \left( 1 - c\left( \frac{ \pi n_x }{4} \right) + 100 \left( 1 - c\left( \frac{\pi n_y }{4} \right) \right) \right) = \frac{ 4 T_x }{ma} ( 101 - c\left( \frac{ \pi n_x}{4} \right) - 100 c\left( \frac{ \pi n_y}{4} \right) )
+\end{aligned}
+\]
+\[
+\begin{aligned}
+  & s(k_x x) = s\left( \frac{ \pi n_x }{ L} (ja) \right) = s\left( \frac{ \pi n_x }{L} j \frac{L}{4} \right) = s\left( \frac{ \pi n_x }{4} j \right) \quad \quad \, j = 1,2,3 \\
+  & s(k_y y) = s\left( \frac{ \pi n_y}{4} j \right)
+\end{aligned}
+\]
+By $x,y$, $90^{\circ}$ rotation symmetry, $x,y \leftrightarrow y,x$, we we only need to consider changing $1$ coordinate.  
+\[
+\begin{matrix}
+  n_x,n_y & s\left( \frac{ \pi n_x}{4} j \right) & s\left( \frac{ \pi }{4} n_y j \right) & \quad  & \omega^2 \propto 101 - c\left( \frac{ \pi n_x}{4} \right) - 100 c\left( \frac{ \pi n_y }{4} \right) & \quad \\
+  \quad & j = 1,2,3 & j=1,2,3 & \quad & \quad & \quad \\
+  1,1 & \frac{ \sqrt{2}}{2}, 1 , \frac{ \sqrt{2}}{2} & \frac{ \sqrt{2}}{2}, 1 , \frac{ \sqrt{2}}{2} & \begin{aligned}
+    & +++ \\
+    & +++ \\
+    & +++
+\end{aligned} & 101 - \sqrt{2}/2 - 100 \sqrt{2}/2 = 101(1- \sqrt{2}/2) &  \quad \\ 
+\quad \\
+1,2 & \frac{ \sqrt{2}}{2}, 1 , \frac{ \sqrt{2}}{2} & 1, 0 ,-1  & \begin{aligned}
+    -&-- \\
+    0&00 \\
+    +&++
+\end{aligned} & 101 - \sqrt{2}/2  & \xrightarrow{\leftrightarrow 2,1} \begin{aligned}
+    & +0- \\
+    & +0- \\
+    & +0-
+\end{aligned} \\
+\quad \\ 
+2,2 & 1, 0 , -1 & 1, 0 , -1 & \begin{aligned}
+    -&0+ \\
+    0&00 \\
+    +&0-
+\end{aligned} & 101 & \quad \\
+\quad \\
+1,3 & \frac{ \sqrt{2}}{2}, 1 , \frac{ \sqrt{2}}{2} & \frac{ \sqrt{2}}{2}, -1 , \frac{ \sqrt{2}}{2}  & \begin{aligned}
+    & +++ \\
+    & --- \\
+    & +++
+\end{aligned} & 101 - \sqrt{2}/2 +100\sqrt{2}/2 = 101(1+\sqrt{2}/2) - \sqrt{2} & \xrightarrow{\leftrightarrow 3,1} \begin{aligned}
+    & +-+ \\
+    & +-+ \\
+    & +-+
+\end{aligned} \\
+\quad \\ 
+2,3 & 1, 0 , -1 & \sqrt{2}/2, -1 ,\sqrt{2}/2  & \begin{aligned}
+    & +0- \\
+    & -0+ \\
+    & +0-
+\end{aligned} & 101 - 0 + 100(\sqrt{2}/2) = 101 (1 + \sqrt{2}/2) - \sqrt{2}/2  & \xrightarrow{\leftrightarrow 3,2} \begin{aligned}
+    -&+- \\
+    0&00 \\
+    +&-+
+\end{aligned} \\
+\quad \\
+3,3 & \frac{ \sqrt{2}}{2}, -1 , \frac{ \sqrt{2}}{2} & \frac{ \sqrt{2}}{2}, -1 ,\frac{ \sqrt{2}}{2}  & \begin{aligned}
+    & +-+ \\
+    & -+- \\
+    & +-+
+\end{aligned} & 101  \sqrt{2}/2 +100\frac{\sqrt{2}}{2} = 101 (1+ \sqrt{2}/2) & \quad  \\
+\end{matrix}
+\]
+\end{enumerate}
+
+\problemhead{11.2} Let $a = \frac{L}{4}$ (notation).  \\
+Iagine removing the rectangular frame for $x=0$, $y=0,L$ and forced oscillation at $x=5a$.  Then we have an infinite system symmetrical in $x$ and $y$.  That determines the dispersion relation.  
+
+Then $y=0,y=L$ boundary conditions ($\Psi =0$ there) means $k_{yn} = \frac{n\pi}{L}$ and so we consider terms proportional to $\sin{ \left( \frac{n\pi y}{L} \right)}$, $(n=0,1,\dots)$.  \\
+$\omega$ given (``all displacements will be proportional to $d\cos{\omega t}$''; the forced transverse oscillation); $\omega = 2 \sqrt{ \frac{T}{ma} }$.  
+
+\[
+\begin{gathered}
+  \omega^2 = \frac{4 T}{ ma} ( \sin^2{ \left( \frac{k_{yn}a}{2} \right) } + \sin^2{ \left( \frac{ k_x a}{2} \right) } ) = \frac{4T}{ma} \, \Longrightarrow 1 - \sin^2{ \left( \frac{ n \pi a}{2L} \right) } = \sin^2{ \left( \frac{ k_x a}{2} \right) } = \cos^2{ \left( \frac{ n \pi }{8} \right) }
+\end{gathered}
+\]
+Since
+\[
+\sin{ \left( \frac{ n\pi}{8} + \frac{\pi}{2} \right) } = \cos{ \left( \frac{n \pi}{8} \right) } 
+\]
+then
+\[
+\Longrightarrow \frac{k_x a}{2} = \frac{ \pi}{2} \left( \frac{n}{4} + 1 \right) \text{ or } k_x = \frac{\pi}{a}  \left( \frac{n}{4} +1 \right) 
+\]
+
+Consider the modes we must sum up in a Fourier series (to represent the superposition of excited modes, and thus get how the beads move).  
+\[
+\Psi(x,y,t) = \sum_{n=0}^{\infty} \sin{  \left( \frac{ n \pi y}{L} \right) } ( A_+ e^{- (k_x x - \omega t) } + A_- e^{-i (k_x x + \omega t)} )
+\]
+where $\begin{aligned} A_+ & = A_+(n) \\ A_- & = A_-(n) \end{aligned}$. 
+
+$x=0$ boundary condition means $\Psi =0$.  $\Longrightarrow A_+ = -A_-$.  \\
+$\Longrightarrow \Psi = \sum_n A(n) \sin{ \left( \frac{ n \pi y}{ L} \right) } \sin{( k_x x) }e^{- i \omega t}$  
+
+The key insight is to now use Fourier series (i.e. Fourier series coefficient formula) to find $A(n)$ to match the ``boundary condition'' at $x=5a$, the forced transverse oscillation (!).  See, the driving frequency, and the shape of the forced exciation, excites different modes, through the dispersion relation.  We fully know the hsape of the oscillation over the $x-y$ plane, through the dispersion relation, since $k_x = k_x(n)$.  
+
+I \textbf{reasonably} assumed the pulse at $x=5a$, $y=a,2a,3a$ to have this shape (the connecting strings are taut):
+\[
+f(y) = \begin{cases} \frac{D}{a} y & \text{ if } 0 \leq y < a \\ D & \text{ if } a \leq y < 3a \\ \frac{-D}{a} y + 4D & \text{ if } 3a \leq y < 4a \end{cases} 
+\]
+
+Do the Fourier series coefficient formula on $f(y)$ (we can do it on any $L^2$ and periodic function).  
+\[
+\Longrightarrow \frac{1}{4a} \int_0^{4a} f(y) \sin{ \left( \frac{ n\pi y}{L} \right)} dy = \frac{D}{4a} \{ \int_0^a \frac{y}{a} \sin{ (k_y y) } dy + \int_a^{3a} \sin{(k_y y)} dy + \int_{3a}^{4a} \left( \frac{-y}{a} + 4 \right) \sin{ (k_y y )} dy  \}
+\]
+with $k_y = \frac{ n\pi}{4a}$.  One could also make a translation before doing the integral and take advantage of the symmetry about $y=2a$:
+\[
+\frac{1}{4a} \int_0^{4a} f(y) \sin{ \left( \frac{n\pi y}{L} \right) } dy = \frac{1}{4a} \int_{-2a}^{2a} f(y) \cos{ \left( \frac{ n \pi y}{4a} \right) } dy \sin{ \left( \frac{ n \pi }{2} \right) } =\frac{1}{2a} \int_0^{2\pi} f(y) \cos{ \left( \frac{ n \pi y }{4a} \right) } \sin{ \left( \frac{n \pi}{2} \right) }
+\]
+since $y' = y-2a$, $ \sin{ \left( \frac{ n\pi}{4a} ( y' + 2a) \right) } = \sin{ \left( \frac{ n \pi y'}{4a} \right) } \cos{ \left( \frac{n\pi}{2} \right) } + \cos{ \left( \frac{ n \pi y'}{4a} \right) } \sin{ \left( \frac{ n\pi}{2} \right) }$ and since $f(y)$ is even about $y'=0$, so the integral of an even and odd function multiplied together, over a period, is zero.
+
+With $f(y) = \begin{cases} D & \text{ if } 0 \leq y < a \\ \frac{ -D}{a} y + 2D & \text{ if} a \leq y \leq 2a \end{cases}$., or the previous way, we obtain
+\[
+\frac{1}{4a} \int_0^{4a} f(y) \sin{(n\pi y)/L} dy  = \frac{ 8d \sin{ \left( \frac{ n \pi }{2} \right) } \cos{ \left( \frac{ n\pi}{4} \right) } }{ (n \pi)^2 }
+\]
+Obviously $n$ must be odd.  So $n = 2j + 1$, $j\in \mathbb{Z}$.  Then
+\[
+\begin{aligned}
+  & \sin{ \left( \frac{ (2j+1) \pi}{2} \right) } = \sin{ (j\pi + \pi/2 )} = (-1)^j \\ 
+  & \cos{ \left( \frac{ (2j+1) \pi}{4} \right) } = \left( \frac{ \sqrt{2}}{2} \right) (\cos{ \left( \frac{j\pi}{2} \right) } - \sin{ \left( \frac{ j\pi}{2} \right) } )
+\end{aligned}
+\]
+
+At $x = 5a$, we have a $\sin{(k_x 5a)}$ factor to account for.  We want, at $x=5a$, the overall shape of the oscillation to be given by $f(y)$.  Then we must consider a factor of $1/\sin{(5k_x a)}$.  
+
+Knowing that $k_x = \frac{\pi}{a} \left( \frac{n}{4} +1 \right)$, and $ n =2j+1$, then we could work out that 
+\[
+\sin{ (5 k_x a)} = \sin{ 5 \pi \left( \frac{n}{4} + 1 \right) } = \sin{ \left( \frac{ 5 \pi n }{4} \right) }(-1) = - \sin{ \left( \frac{ 5 \pi (2j+1) }{4} \right) } = - \frac{ \sqrt{2} }{2} ( \cos{ \left( \frac{ 5 \pi j }{2} \right) } + \sin{ \left( \frac{ 5 \pi j }{2} \right) } )  
+\]
+
+Notice that the period of $(\cos{ \left( \frac{5\pi j}{2} \right) } + \sin{ \left( \frac{ 5 \pi j }{2} \right) }$ is $4$ and it goes as $1,1,-1,-1$ for $j=0,1,2,3$.  Same with $(\cos{ \left( \frac{j\pi}{2} \right) } - \sin{ \left( \frac{ j\pi}{2} \right) } )$, except it goes as $1,-1,-1,1$.  Divide the two together to get $(-1)^j$.  Recall that $ \sin{ \left( \frac{ (2j+1) \pi}{2} \right) } = \sin{ (j\pi + \pi/2 )} = (-1)^j$.  Thus, we get
+
+\[
+ A_n = - \frac{8d}{ (n\pi)^2} 
+\]
+Taking off the $(-1)$ because we can in a linear superposition, we get the wave function:
+\[
+\boxed{ \Psi{(x,y,t)} = \sum_{j=0}^{\infty} \frac{ 8 d}{ ( (2j+1)\pi)^2 } \sin{ \left( \frac{ (2j+1)\pi y}{ 4a} \right) }\sin{ \left( \frac{\pi}{a} \left( \frac{ 2j+1}{4} + 1 \right) x  \right)} \cos{ (\omega t)} }
+\]
+
+So for $x = a,2a,3a, 4a$, $y=a,2a,3a$.  
+\[
+\begin{matrix} & \sin{ \left( \frac{ (2j+1) \pi y }{4a} \right) } \\ y = a &  (\sin{ \left( \frac{j\pi}{2} \right)} + \cos{ \left( \frac{ \pi j}{2} \right) } ) \frac{ \sqrt{2}}{2} = 1,1, -1,-1, \dots \text{ for } j = 0,1,2,3, \dots \\
+  y = 2a & \cos{(j\pi)} = (-1)^j \\ 
+  y = 3a & \frac{-\sqrt{2}}{2} \{ \sin{ \left( \frac{ 3 \pi j}{2}  \right)} + \cos{ \left( \frac{ 3\pi j}{2} \right)} \} = 1,1,-1,-1, \dots \text{ for } j = 0,1,2,3,\dots \end{matrix}
+\]
+\quad \\
+\[
+\begin{matrix} 
+& \sin{ \left( \frac{ \pi}{a} \left( \frac{2j+1}{4} + 1 \right) x \right) } = \sin{ \left( \frac{ \pi}{a} \left( \frac{j}{2} + \frac{5}{4} \right) x \right) } \\ 
+  x =a &  - \frac{\sqrt{2}}{2} (\sin{ \left( \frac{\pi j}{2} \right) } + \cos{ \left( \frac{ j \pi}{2} \right) } ) \\ 
+  x = 2a & \sin{ (\pi j + \pi \frac{5}{2} ) } = \cos{(\pi j)}(1) = (-1)^j \\ 
+  x = 3 a & \sin{ \left( \frac{\pi}{a} \left( \frac{j}{2} + \frac{5}{4} \right)  3a \right) } = \sin{ \left( \frac{3\pi j }{2} + \frac{15 \pi}{4} \right) } = \frac{\sqrt{2}}{2} \left( \sin{ \left( \frac{ 3\pi j}{2} \right) } + - \cos{ \left( \frac{3 \pi j}{2} \right) } \right) \\
+  x = 4a & \sin{ ( \pi (2j+5) ) } =0 
+\end{matrix}
+\]
+
+\[
+\begin{gathered}
+  \Longrightarrow
+\begin{matrix} & x = a & x=2a & x = 3a & x =4 a \\ 
+  y =a & \frac{-1}{2} & \frac{ (-1)^j }{\sqrt{2} }(\sin{ \left( \frac{j\pi}{2} \right) } + \cos{ \left( \frac{ \pi j}{2} \right) } ) & \frac{-1}{2} & 0 \\ 
+  y = 2a & \frac{ (-1)^j }{ -\sqrt{2} } ( \sin{ \left( \frac{\pi j}{2} \right) } + \cos{ \left( \frac{ \pi j }{2} \right) } ) & 1 & \frac{ (-1)^j }{ -\sqrt{2}} (\cos{ \left( \frac{3\pi j}{2} \right)} - \sin{ \left( \frac{ 3 \pi j}{2} \right)  } & 0 \\
+    y =3a & \frac{-1}{2} & \frac{ (-1)^j}{\sqrt{2}} ( \sin{ \left( \frac{j\pi}{2} \right) } + \cos{ \left( \frac{ \pi j}{2} \right) } ) & \frac{-1}{2} & 0 
+\end{matrix}
+\end{gathered}
+\]
+Implicit is that each entry directly above is multiplied by $\frac{ 8d}{((2j+1)\pi)^2}$ and summed over $j$.  
+
+\emph{Pitfalls}.  I didn't know to use $f(y)$ as the shape of the pulse at $x=5a$.  Then I wasted \textbf{alot} of time trying to solve for the boundary condition at $x=5a$ directly, by setting $\sum_n A_n \sin{ k_y y}\sin{k_x x} = d $.  I tried thinking of a sine wave to fit the forced oscillation, not realizing it cannot be done with a single harmonic, but rather must be fitted with a Fourier series (i.e. must decompose into Fourier components).  
+
+\problemhead{11.3} $\omega^2 = \frac{4T}{am} \{ \sin^2{ \left( \frac{k_y a}{2} \right) } + \sin^2{ \left( \frac{k_x a}{2} \right) } \}$ (from the nature of the physical system itself; boundary conditions not yet considered).  
+
+
+$k_y = \frac{n \pi }{4a}$ from the boundary conditions, and modes are proportional to $\sin{ \left( \frac{ n\pi}{4a} y \right) }$ (se that we get what modes are excited).  
+
+Assume a pulse shape at $x=0$ of
+\[
+f(y) = \begin{cases} \frac{D}{\sqrt{2}} \left( \frac{y}{a} \right) & 0\leq y < a \\ \frac{-D}{a} ( 1 + \frac{1}{\sqrt{2}} ) y + D ( 1 + \frac{2}{\sqrt{2}} ) & a \leq y < 2a \\ \frac{D}{a} (1 + \frac{1}{\sqrt{2}} )y + -D ( \frac{2}{\sqrt{2} } + 3 ) & 2a \leq y <3a \\ \frac{-D}{\sqrt{2}} \frac{y}{a} + \frac{4D}{\sqrt{2}} & 3a \leq y < 4a 
+\end{cases} 
+\]
+
+Consider $\frac{1}{4a} \int_0^{4a} f(y) \sin{ \left( \frac{ n \pi y }{4a} \right) } dy$.  Consider if $y' = y-2a$.  So $dy'=dy$.  
+\[
+\sin{ \left( \frac{ n \pi}{4a} ( y' + 2a) \right) } = \sin{ \left( \frac{ n \pi y'}{4a} \right) }\cos{ \left( \frac{n \pi}{2} \right) } + \cos{ \left( \frac{ n \pi y'}{4a} \right) } \sin{ \left( \frac{ n \pi }{2} \right) }
+\]
+Since $f(y')$ is an even function about $y'=0$,
+\[
+\frac{1}{4a} \int_0^{4a} f(y) \sin{ \left( \frac{ n \pi }{4a} y \right) } dy = \frac{1}{4a} \int_{-2a}^{2a} f(y) \cos{ \left( \frac{ n\pi y}{4a} \right) } \sin{ \left( \frac{n\pi}{2} \right) } dy = \frac{1}{2a} \int_0^{2a} f(y) \cos{ \left( \frac{ n \pi y }{4a} \right) } \sin{ \left( \frac{ n \pi}{2} \right) } dy 
+\]
+With $f(y) = \begin{cases} \frac{D(1 + \frac{1}{\sqrt{2}} ) }{a} y - D & 0 \leq y < a \\ \frac{ -D y }{\sqrt{2} a} + \frac{2D}{\sqrt{2}} & a \leq y < 2a \end{cases}$, then for $k_y = \frac{n\pi}{4a}$, 
+\[
+\begin{gathered}
+  \int_0^{2a} f(y) \cos{ (k_y y )} dy = \\
+  = d \{ \frac{ ( 1 + \frac{1}{\sqrt{2} })}{a} \left. \left( \frac{ y \sin{ (k_y y )} }{k_y} + \frac{ \cos{ (k_y y ) } }{ k_y^2 } \right) \right|_0^a - \left. \left( \frac{ \sin{ (k_y y)} }{k_y} \right) \right|_0^a + \frac{-1}{\sqrt{2} a} \left. \left( \frac{ y \sin{ (k_y y) } }{k_y} + \frac{ \cos{ (k_y y)}}{k_y^2} \right) \right|_a^{2a} + \frac{2}{\sqrt{2}} \left. \left( \frac{ \sin{ (k_y y) }}{k_y } \right) \right|_a^{2a} \} = \\
+  =  d \{ \frac{ (1 + \frac{2}{ \sqrt{2}} ) \cos{ (k_y a) } }{ a k_y^2} + \frac{ - ( 1 + \frac{1}{\sqrt{2} } )}{a k_y^2} + \frac{-1}{\sqrt{2} a } \frac{ \cos{ (k_y 2a) }}{k_y^2} \}
+\end{gathered}
+\]
+\[
+\begin{gathered}
+  \Longrightarrow \psi(x,y,t) = \sum_n A(n) \sin{ \left( \frac{ n\pi }{4a}  y \right) } \cos{ (k_x x)} \cos{( \omega t) } \text{ such that } \\
+\begin{aligned}  A(n) & = \frac{d}{2a} \{ \frac{ (1 + 2/\sqrt{2} ) \cos{ \left( \frac{n\pi}{4a} \right) } }{ a \left( \frac{ n\pi}{4a} \right)^2 } + \frac{ -(1 + 1/\sqrt{2} ) }{ a \left( \frac{n\pi}{4a} \right)^2 }+ \frac{-1}{\sqrt{2} a} \frac{ \cos{ \left( \frac{ n\pi}{2} \right) } }{ \left( \frac{ n\pi}{4a} \right)^2 } \} \sin{ \left( \frac{ n\pi}{2} \right) } = \\ & = \frac{8d }{ (n\pi)^2 } \{ (1 + \frac{2}{\sqrt{2}} ) \cos{ \left( \frac{ n\pi}{4} \right) } - (1 + \frac{1}{ \sqrt{2}} ) \} \sin{ \left( \frac{ n\pi}{2} \right) }\end{aligned}
+\end{gathered}
+\]
+
+\begin{enumerate}
+\item The dispersion relation and the given frequency that the system is driven at means
+\[
+\begin{gathered}
+  \omega^2 = \frac{4T}{ma} ( \sin^2{ (\frac{ \pi n }{8} ) } + \sin^2{ ( \frac{ k_x a}{2} )} ) = \frac{T}{am} ( 2 + \sqrt{2} - \epsilon^2) \\
+  \Longrightarrow \frac{ 2 + \sqrt{2} }{ 4} - \left( \frac{ \epsilon}{2} \right)^2  = \sin^2{ \left( \frac{ \pi n }{8} \right) } + \sin^2{ \left( \frac{ k_x a}{2} \right) }
+\end{gathered}
+\]
+
+I'm going to take the hint that $\sinh{ \frac{ \epsilon}{2} } \approx \frac{ \epsilon}{2}$.  Then 
+\[
+-\epsilon^2 \approx -4 \sinh^2{ \frac{\epsilon}{2} } = 4 \sin^2{ \left( \frac{ k_x a}{2} \right) }
+\]
+Since $\sin{x} = \frac{ \sinh{x}}{-i}$, then 
+\[
+\frac{ k_x a}{2} = -i \frac{\epsilon}{ 2} \text{ or } k_x = -i \epsilon/a
+\]
+
+Note that since $\sin(\theta) = \sqrt{ \frac{ 1 - \cos{(2\theta)}}{2} }$, then 
+\[
+\cos{\left( \frac{ \pi n}{4} \right)} = - \frac{1}{ \sqrt{2}}
+\]
+so that $n = 3,5,11,13,19,21, \dots$.  Then 
+\[
+\{ (1 + \frac{2}{\sqrt{2}} ) \cos{ \left( \frac{ n\pi}{4} \right) } - (1 + \frac{1}{ \sqrt{2}} ) \} = - (\sqrt{2} + 2 ) 
+\]
+Finally, we get
+\[
+\boxed{ \psi(x,y,t) = \sum_n \frac{8d}{ (\pi n)^2} ( \sqrt{2} + 2) (-1)^{ \frac{ n-1}{2} } \sin{ \left( \frac{ \pi n y}{4a} \right) } e^{-\epsilon x/a} \cos{ (\omega t) } } \quad \, n = 3,5,11,13,19,21,\dots
+\]
+
+Note that $k_x$ could be treated as if $\omega$ is below the low-frequency cutoff for $k_x$.  
+\item Note that $6  + \sqrt{2} > 4$, but we must have sinusoidal waves in $y$ to fulfill the boundary conditions in $y$, so that we must have exponential waves in $x$.  Thus, we could say that $\omega$ is above the high-frequency cutoff for $k_x$, in a sense.  
+
+\[
+\Longrightarrow ( 6 + \sqrt{2} + \epsilon^2 ) = 4 ( \sin^2{ \left( \frac{n \pi }{8} \right) } +\sin^2{ \left( \frac{k_x a}{2} \right) } ) \quad \text{ or } \begin{aligned} \frac{ 2 + \sqrt{2} }{4} & = \sin^2{ \left( \frac{ n \pi }{8} \right) } \text{ or } \cos{ \frac{ n \pi }{4} } = \frac{ -\sqrt{2} }{2} \text{ and }  \\ 1 + \left( \frac{ \epsilon }{2} \right)^2 &  = \sin^2{ \left( \frac{k_x a}{2} \right) } \end{aligned}
+\]
+
+Then $\boxed{ k_x = \frac{\pi}{a} \pm i \kappa_x}$
+\[
+\begin{aligned}
+  & \sin{ \left( \frac{ \left( \frac{ \pi}{a} \pm i \kappa_x  \right) a }{ 2 } \right) } = \sin{ \left( \frac{ \pi}{2} \pm \frac{ i \kappa_x a}{2} \right) } = \cos{ \left( \frac{ i \kappa_x a}{2} \right) } = \cosh{ \left( \frac{\kappa_x a}{2} \right) } \\
+\Longrightarrow   & 1 + \left( \frac{ \epsilon}{2} \right)^2 = \cosh^2{ \left( \frac{ \kappa_x a}{2} \right) } = 1 + \sinh^2{ \left( \frac{\kappa_x a}{2} \right) } \text{ or } \left( \frac{ \epsilon}{2} \right)^2 \approx \sinh^2{ \frac{ \epsilon}{2} } = \sinh^2{ \left( \frac{ \kappa_x a}{2} \right) }
+\end{aligned}
+\]
+so that $\kappa_x a = \epsilon$.  Then the oscillation is the same as above:
+\[
+\boxed{ \psi(x,y,t) = \sum_n \frac{8d}{ (\pi n)^2} ( \sqrt{2} + 2) (-1)^{ \frac{ n-1}{2} } \sin{ \left( \frac{ \pi n y}{4a} \right) } e^{-\epsilon x/a} \cos{ (\omega t) } } \quad \, n = 3,5,11,13,19,21,\dots
+\]
+\end{enumerate}
+
+\problemhead{11.4} A flexible membrane with surface tension $\tau_S$ and surface mass density $\sigma_S$ is stretched so that its equilibrium position is the $z=0$ plane.  Attached to the surface of the membrane at $x=0$ is a string with tension $\tau_L$ and linear mass density $\sigma_L$.  Consider a traveling wave on the membrane with transverse displacement
+\[
+\begin{cases}
+  \psi(x,y,t) = \psi_-(x,y,t) = Ae^{ - i \omega t + i k_x x + i k_y y } + RAe^{ - i \omega t - i k_x x + i k_y y} & \text{ for } x \leq 0 \\
+  \psi(x,y,t) = \psi_+(x,y,t) = TA e^{ -i \omega t + ik_x x + i k_y y } & \text{ for } x \geq 0 
+\end{cases}
+\]
+It's easy to say what direction the reflected wave is traveling.  It is $(-k_x,k_y)$, because of the translational invariance of the boundary in $y$ at $x=0$, then
+\[
+x =0 ; \quad \, \begin{aligned}
+  & \psi_- = (Ae^{-i \omega t + i k_{y0} y} + RAe^{ - i \omega t + i k_{y1} y } ) = Ae^{-i\omega t} (e^{ i k_{y0} y} + R e^{i k_{y1} y } ) \\
+  & \psi_+ = TAe^{- i \omega t + i k_{y2} y } 
+\end{aligned} \quad \Longrightarrow k_{y0} = k_{y1} = k_{y2} 
+\]
+\[
+\omega^2 = \frac{ \tau_s}{\sigma_s} (k_{x0}^2 + k_{y0}^2 ) \Longrightarrow \pm \left( \left( \sqrt{ \frac{ \sigma_s}{\tau_s} } \omega \right)^2 - k_{y0}^2 \right)^{1/2} = k_{x0} \Longrightarrow k_{x1} = - k_{x0}
+\]
+
+Newton's law for a small element of the string of length $dy$ with equilibrium position $(0,y,0)$ is 
+\[
+\tau_S dy \left( \partial_x \psi_+(0,y,t) - \partial_x \psi_-(0,y,t) \right) + \tau_L dy \partial_{yy} \psi_{\pm}(0,y,t) = \sigma_L dy \partial_{tt} \psi_{\pm}(0,y,t)
+\]
+$\sigma_L dy \partial_{tt} \psi_{\pm}(0,y,t)$ because you have the mass $\sigma_L dy$ times the acceleration $\partial_{tt} \psi_{\pm}(0,y,t)$ at $x=0$.  Note that we could use $\psi_{+}$ or $\psi_-$ because we require continuity of the displacement function.  
+
+The $\tau_L( dy \partial_{yy} \psi_{\pm}(0,y,t))$ term comes from the tension in the string itself.  It is derived just like how transverse oscillations for a continuous string is derived with Taylor series.
+\[
+\tau_L(\partial_y \psi(y+\Delta y,t) ) + -\tau_L \partial_y \psi(0,y,t) \xrightarrow{\text{Taylor Series}} \tau_L \partial^2_{yy} \psi_{\pm}(0,y,t) dy
+\]
+Here we can take $\psi$ to be continuously differentiable, at least up to the second derivative in $y$, in $y$, because the string, along $y$, is of just one tension and one linear mass density, and so is the membrane it's attached to.  So there shouldn't be any ``kinks,'' because there's no discontinuity in return forces to cause any kinks.  
+
+However, in the $x$ direction, passing from $x<0$ to $x>0$, there's the possibility of kinks because the string has mass at $x=0$.  Thus $\partial_x \psi_+(0,y,t)$ and $\partial_x \psi_-(0,y,t)$ may not come continuously close to each other.  
+
+Since the string extends from $y=-\infty$ to $y=\infty$, by symmetry, the $x\gtrless 0$ membranes pull on the string in the $\pm x$ directions.  The surface tension will want to pull it, the string displacement, back in, away from the transverse displacement.  Thus the \emph{sum} of the forces, due to the membrane pull on an infinitesimal piece of the string, $dy$, is 
+\begin{multline*}
+\left( \tau_S dy \partial_x \psi_+(0,y,t) \right) + \left( \tau_S dy (-\partial_x \psi_-(0,y,t) ) \right) = \\
+( \text{ force from the membrane on the right } ) + ( \text{ force from the membrane on the left } )
+\end{multline*}
+Note the signs on the forces to make each pull on the string in the correct direction.  
+
+\problemhead{11.5}
+Consider the transverse oscillations of an infinite flexible membrane stretched in the $z=0$ plane with surface tension $T_S$ and surface mass density $D_s$.  Along the $z=0,x=0$ line, a string with linear mass density $D_L$ but no tension of its own is attached to the membrane.  
+
+Consider a wave of the form: 
+\[
+\begin{cases}
+  Ae^{ - (kx \cos{\theta} + ky \sin{\theta} - \omega t ) } + RA e^{ i (-kx \cos{\theta} + ky \sin{\theta} - \omega t) } & \text{ for } x < 0 \\
+  TA e^{ i (k' x \cos{ \theta'} + k'y \sin{ \theta'} - \omega t) } & \text{ for } x > 0 
+\end{cases}
+\]
+By translational invariance in $y$ on the boundary, $k\sin{\theta} = k' \sin{\theta'}$ $\Longrightarrow \boxed{ \sin{\theta'} = \frac{ k \sin{\theta}}{k'}}$
+
+At $x=0$, the boundary condition is that continuity is required.  $\Longrightarrow 1 + R =T$.  
+
+The other boundary condition is to consider $F=ma$ for an infinitesimal piece of the weighted string, remembering taht it has no tension of its own.  Thus, we don't consider the string tension along $y$ (it would fly away without the surface tension pulling from the membranes).  Then
+\[
+\begin{gathered}
+  T_s dy ( \partial_x \psi_+(0,y,t) - \partial_x \psi_-(0,y,t) ) + 0 = D_L dy \partial_{tt}^2 \psi_{\pm}(0,y,t) \\
+  T_s \left( T i k' \cos{\theta'}  +  -(ik\cos{\theta} + R(-ik \cos{\theta}) ) \right) = - \omega^2 TD_L= - \omega^2 (1+R)D_L \\
+\boxed{ R = \frac{ - \left( \frac{ \omega^2 D_L}{T_s} + i (k' c(\theta') - k c(\theta) ) \right) }{ \left( \frac{ \omega^2 D_L}{T_s} + i (k'c(\theta') + kc(\theta) ) \right) }; \quad \, T = \frac{ 2 i k c(\theta)}{ \frac{ \omega^2 D_L}{T_s} + i (k'c(\theta') + kc(\theta) ) } }
+\end{gathered}
+\]
+
+\problemhead{11.6} Consider the transverse oscillations of a system of two semi-infinite flexible membranes stretched in the $z=0$ plane, joined together with massless tape at $x=0$.  
+\[
+\psi(x,y,t) = \begin{cases} A\sin{ (k_y y)} (e^{-i (\omega t - k_x x) } + Re^{-i (\omega t+ k_x x) }) & \text{ for $ x\leq 0 $ } \\
+A \sin{ (k_y y)} Te^{ - i (\omega t - k_x' x) } & \text{ for $x\geq 0$ }
+\end{cases}
+\]
+where $k_y = 12 \pi \, cm^{-1}$ and $\omega = \pi \, s^{-1}$.  
+
+$\begin{aligned}
+  \tau_{s0} = 1 \, dyne/cm  \quad \quad \, & \tau_{s1} = 1 \, dyne/cm \\
+  \sigma_{0} = 169 \, gm/cm^2  \quad \quad \, & \sigma_1 = 180 gr/cm^2 \\
+  \omega^2 = \frac{ \tau_{s0}}{\sigma_0}(k_{x0}^2 + k_{y0}^2 )  \quad & \omega^2 = \frac{\tau_{s1}}{\sigma_1} (k_{x2}^2 + k_{y2}^2 ) 
+\end{aligned}$ \\
+$k_{y0} = k_{y1} = k_{y2}$ (by translation invariance in $y$ )
+
+\[
+\begin{aligned}
+  & k_{x2}^2 = \frac{ \sigma_1}{ \tau_{s1}} \omega^2 - k_{y0}^2 = \frac{ 180 \, gm/cm^2 }{ 1 \, dyne/cm } (\pi s^{-1})^2 - (12 \pi cm^{-1})^2 = 36 \pi^2 cm^{-2} \quad \quad & \boxed{ k_{x2} = 6 \pi cm^{-1} }\\
+  & k_{x0}^2 = \frac{ \sigma_0}{ \tau_{s0}} \omega^2 - k_{y0}^2 = \frac{ 169 \, gm/cm^2 }{ 1 \, dyne/cm } (\pi s^{-1})^2 - (12 \pi cm^{-1})^2 = 25 \pi^2 cm^{-2} \quad \quad & \boxed{ k_{x0} = 5 \pi cm^{-1} }
+\end{aligned}
+\]
+Massless tape joins the 2 membranes at $x=0$.  
+\[
+\begin{gathered}
+\partial_x \psi_-(0,y,t) = \partial_x \psi_+(0,y,t) \Longrightarrow (ik_x + R(-ik_x))A s(k_y y) = i k_x' A s(k_y y)T \text{ or } k_x(1-R) = k_x' T \\
+\text{(putting the 2 boundary conditions together)} \begin{aligned}
+  & \boxed{ T = \frac{ 2 k_x}{k_x + k_x'} = \frac{10}{11} } \\
+  & \boxed{ R = \frac{k_x - k_x'}{k_x+k_x'} = \frac{-1}{11} }
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{11.7} By translational invariance in $x$, we want $e^{ikx}$ modes; by considering an infinite extension of the system in the $y$-direction, we obtain $e^{ \pm i k_y y}$ modes.  To satisfy $\psi = 0$ at $y=0$, then we want $\sin{ (k_y y)}$.  \medskip \\
+$k_y a = \pi n_y$ $k_y = \frac{ \pi}{a} n_y = k_0 n_y$ ; $\boxed{ k_0 = \pi/a }$ \medskip \\
+
+Suppose that the end of the membrane at $x=0$ is driven as follows:
+\[
+\psi(0,y,t) = \cos{ (5 vk_0 t) } (B\sin{ 3k_0 y} + C \sin{ (13k_0 y) } )
+\]
+$\omega^2 = v^2 ( k_x^2 + k_y^2 )$ is the dispersion relation.\\
+Assume the system has settled and oscillates (entirely) at the driving frequency.  
+$\cos{ (5vk_0 t) } = \cos{(\omega t)}$; \quad $\omega = 5 vk_0$
+
+$(5vk_0)^2 = v^2 ( k_x^2 + k_y^2)$ \\
+$\Longrightarrow (25 - n_y^2) k_0^2 = k_x^2$.  \quad \quad $\begin{aligned} 
+  & \text{ if $n_y =3 $ }, \quad & k_x = 4 k_0 \\
+  & \text{ if $n_y = 13$ }, \quad & k_x = i \kappa_x = 12 k_0 i
+\end{aligned}$
+
+Recognize that $\psi(0,y,t)$ is a superposition of 2 driving forces, $\cos{ (5vk_0 t)} B\sin{ (3k_0 y) }$ and $\cos{ (5 vk_0 t)} C\sin{ (13k_0 y) }$.  Since there's translational invariance in $x$ and translational invariance in $y$ separately, and the boundary conditions break the symmetry of $x-y$, so we simply attach linear combinations of $e^{ \pm i k_x x - \omega t}$ to $\psi(0,y,t)$.   \smallskip \\
+
+The boundary conditions is such that no waves travel back in the $-x$ direction, reflected.  Also, waves don't grow in strength with increasing $+x$.  \medskip \\
+$\Longrightarrow \psi(x,y,t) = B\sin{(3k_0 y)} \cos{ (4k_0 x - 5vk_0 t)} + C\sin{ (13k_0 y) }e^{-12k_0 x} \cos{ (5vk_0 t) }$ \smallskip \\
+
+$\omega^2 = v^2 (k_x^2 + k_y^2) < 4v^2 k_0^2 \Longrightarrow k_x^2 < k_0^2 (4 - n_y^2 )$  \\
+For $k_x^2 > 0$, then $n_y=1$, otherwise $n_y=0$ and nothing happens.  \smallskip \\
+Thus $k_x^2 < 3k_0^2$ and $n_y=1 \Longrightarrow \sin{(k_y y)} = \sin{ \left( \frac{\pi}{a} y \right) }$.  In the $y$-direction, there's only one-half of a wavelength of a crest.  All the ``sinusoidal''oscillation in space is from $k_x < \sqrt{3} k_0$, in the $x$ direction.  \smallskip \\
+
+$\boxed{ \omega^2= v^2 k_x^2 +v^2 k_0^2 = v^2 k_x^2 + \omega_0^2 }$, otherwise, if $k_y=0$, there's nothing.  So $\omega_0^2 = v^2 k_x^2$ acts like a low-frequency cutoff for waves in the $x$ direction.  
+
+\problemhead{11.8} $\frac{1}{v^2} \partial_{tt}^2 \chi(r,t) = \frac{1}{r} \partial_{rr}^2 r \chi(r,t)$ for $\frac{1}{v^2} \partial_{tt}^2 \chi(r,t) = \nabla^2 \chi(r,t)$.  With $\xi(r,t) \equiv r \chi(r,t)$, then $\partial_{tt}^2 \xi(r,t) = v^2 \partial_{rr}^2 \xi(r,t)$.   \\
+
+Standing wave solutions for this equation of motion are $\xi(r,t) = (A\sin{ (k_r r) } + B\cos{ (k_r r) } ) \cos{(\omega t) }$ so that $\omega^2 = v^2 k_r^2$.   \\
+
+The pressure difference and gradient of the pressure difference must be finite at $r=0$ because there's no infinite pressure source pushing or sucking air.  
+$\begin{aligned}
+  & \lim_{r\to 0} \chi= \text{ finite } \\
+  & \lim_{r \to 0} \partial_r \chi = \text{ finite } 
+\end{aligned}$, so then $\frac{ \xi}{r} = \left( \frac{ A \sin{(k_r r) } }{r} + B \frac{ \cos{(k_r r) }}{r} \right) \xrightarrow{r\to 0} \text{ finite only if $B=0$}$.  Then we obtain $Ak_r$.  \\
+$\Longrightarrow \chi(r,t) = \frac{ A \sin{ (k_r r) } \cos{ \omega t} }{ r }$ \medskip \\
+
+At the boundary at $r=L$, the pressure gradient must be zero because air has nowhere to go.   \medskip \\
+\[
+\left. (\partial \chi ) \right|_{r=L} = 0 \Longrightarrow \partial_r (\xi/r) = A \cos{ \omega t} \left( \frac{ k_r ( \cos{ (k_r r) }) r - \sin{ (k_r r) } }{ r^2 } \right) \xrightarrow{ r = L } 0 \Longrightarrow \begin{aligned}
+  & \boxed{ k_r L = \tan{(k_r L)} } \\
+  & \boxed{ \chi(r,t) = \frac{1}{r} A \sin{(k_r r)} \cos{(\omega t) } }
+\end{aligned}
+\]
+Indeed, for $kL\approx 4.4934$, then $k_r L \approx \tan{(k_r L)}$ and $plot(\sin{(4.4934*x)}/x,x=0.00001..1);$ can help you reobtain the desired plot of $\chi$ in the program Maple.  
+
+\problemhead{11.9}
+We're given $\begin{aligned} \psi(x,y,t) & = A e^{ i (kx \cos{ \theta} + ky \sin{ \theta} ) } e^{ -i \omega t} = & \psi_i \\ \psi(x,y,t) & = A e^{ i (k'x \cos{ \theta'} + k'y \sin{\theta'} )}e^{ - i \omega t} & = \psi_+ \end{aligned}$, and given the dispersion relation, $\omega^2 = \frac{ \tau_s }{\rho_s }k^2 = \frac{ \tau_s }{ \rho_s'} k'^2$.
+
+The boundary condition at $x=0$ of continuity in $\psi$ must be fulfilled:
+\[
+\psi_-(0,y,t) = \psi_+(0,y,t) \Longrightarrow k \sin{\theta} = k' \sin{ \theta'} \text{ or } k_y = k_y'
+\]
+
+Consider the forces on an imaginary infinitesimal mass straddling the boundary.  Consider the surface tension forces.
+$\begin{aligned} T_1 & = \text{ surface tension force pulling in $-x$ direction from $-x$ region } \\
+T_2 & = \text{ surface tension force pulling in $x$ direction from $+x$ region } \end{aligned}$ 
+
+Components of $T_1,T_2$ in $x,y$ direction sum to zero because membrane isn't shifted around.  Consider only transverse ($z$-direction) component.  
+
+Consider the sum of transverse components of $T_1,T_2$.  Note that $\tau_s$ pulls in $x$ direction only: $|T_1| > | \tau_s|$, since membrane pulls back the mass with greater pull when there's a displacement.  
+
+\[
+-T_1 \sin{\theta_1} + T_2 \sin{\theta_2} = \frac{ -\tau_s}{\cos{\theta_1}} \sin{\theta_1}  + \frac{ \tau_s }{\cos{\theta_2} } \sin{\theta_2} = \tau_s \left( - \left( \frac{ \partial \psi_-}{ \partial x}\right)(x=0) + \left( \frac{ \partial \psi_+}{ \partial x} \right)(x=0) \right)
+\]
+
+Now let mass of infinitesimal mass go to zero.  Then sum of forces must be zero.  
+\[
+\begin{gathered}
+  \Longrightarrow \tau_s (-\left( \frac{ \partial \psi_- }{ \partial x} \right) + \left( \frac{ \partial \psi_+ }{ \partial x } \right) ) dy + - dy \gamma \frac{ \partial \psi(0,y,t)}{ \partial t}  = 0 \\ 
+  \Longrightarrow \tau_s (-i k_x + ik_x' ) + \gamma (i\omega ) = 0 \text{ or }\boxed{  k_x' = k_x - \frac{ \gamma \omega}{\tau_s} }
+\end{gathered}
+\]
+
+So then 
+\[
+\begin{gathered}
+  k_x' = k' \cos{\theta'} = k \cos{\theta} - \gamma \sqrt{ \frac{ \tau_s}{\rho_s} }k/\tau_s \quad \, \Longrightarrow \boxed{ k' = \frac{ k (\cos{\theta} - \gamma / \sqrt{ \tau_s \rho_s } ) }{ \sqrt{ 1 - \left( \sqrt{ \frac{ \rho_s}{\rho_s'} } \sin{\theta} \right)^2 } } }
+\end{gathered}
+\]
+Note that $k'$ is a function of $k$, $\theta$, and the given parameters for the system: $\gamma, \tau_s, \rho_s, \rho_s'$.  
+
+$\theta'$ given by
+\[
+\sin{\theta'} = \sqrt{ \frac{ \rho_s}{\rho_s'}} \sin{\theta}
+\]
+
+$\gamma$ given by
+\[
+\begin{gathered}
+  \left( \frac{ k' \cos{\theta'} }{k} - \cos{\theta} \right) (-\sqrt{ \tau_s \rho_s} ) = \boxed{ \sqrt{ \tau_s \rho_s} \left( \cos{\theta} - \sqrt{ \frac{ \rho_s'}{\rho_s} } \sqrt{ 1 - \frac{ \rho_s}{\rho_s' }\sin^2{\theta} } \right) }
+\end{gathered}
+\]
+When $\frac{\rho_s}{\rho_s'} \to 1$, $\gamma \to 0$.  When $\frac{\rho_s}{\rho_s'} \to 1$, the entire system becomes one big, homogeneous membrane, with nothing distinguishing the membrane to be different wherever you look.  So no friction can act against one membrane on another.  
+
+\problemhead{11.10} I find it remarkable that from some simple physical considerations, we could obtain the dispersion relation governing how the system behaves.  I will go through the main ideas of the derivation.
+
+Start from imagining extending an infinite system, we get spatial and time translation symmetry: $e^{ \pm i k\cdot x} e^{- i \omega t}$.  
+
+Let $\epsilon \vec{\psi}(\vec{r},t) = \text{ displacement from equilibrium of fluid}$ \\
+\phantom{Let }$\vec{R}(\vec{r},t) = \vec{r} + \epsilon \vec{\psi}(\vec{r},t) = \text{ actual position of water }$
+\phantom{Let }$\vec{\nabla}\cdot \vec{\psi} = 0 \text{ (incompressibility) } \Longrightarrow k^2 = 0$.  Then if $k_x = k, \, k_y = ik$.  
+
+$\psi(x,0,t) = 0$ boundary condition of ocean bottom.  
+\[
+\Longrightarrow \begin{aligned} \psi_x(x,y,t) & = \pm i e^{ \pm i kx - i \omega t} \cosh{ (ky)} \\ \psi_y(x,y,t) & = e^{ \pm i kx - i\omega t} \sinh{ (ky)} \end{aligned}
+\]
+
+If for $y=2L$, $\psi_y =0$ (fixed top at $y=2L$), the only combination of $e^{\pm ky}$ that could go to zero at $y=2L$ is $\sinh{(k(2L-y))}$ 
+\[
+\Longrightarrow \begin{aligned}
+  \psi_x(x,y,t) = \mp i e^{ \pm i kx - i \omega t} \cosh{( k(2L-y) )} \\ 
+  \psi_y(x,y,t) = e^{ \pm i kx - i \omega t } \sinh{ (k(2L-y) ) }
+\end{aligned}
+\]
+which is Eqn. (11.149).  
+
+Now
+\[
+\nabla \cdot \psi = k e^{ \pm i kx - i \omega t} \cosh{ (k (2L-y))} + -k e^{ \pm i kx = i \omega t} \cosh{ (k(2L-y) )} = 0 
+\]
+
+Note that 
+\[
+\begin{aligned}
+  \psi_x(x = L^-) = \pm i e^{ \pm i kx }e^{ -i \omega t} \cosh{ kL} \\ 
+  \psi_x(x= L^+) = \mp i e^{ \pm i kx} e^{ -i \omega t} \cosh{(kL)}
+\end{aligned}
+\]
+
+Since the fluid is incompressible, any flow in $\pm y$ direction is pushed out to the sideways.  Since paint thinner is different (specifically lighter) than water, and remain separated, they each get pushed out in different amounts (i.e. the water and paint thinner slip and slide away from each other in the $x$ direction).  
+
+Given boundary conditions at $x=X$.  $x=0$, it means $\Longrightarrow \psi_x = 0$ at $x=X$; $x=0$, for both the water and paint thinner layers each.  
+
+For $k= \frac{n\pi}{X}$, 
+\[
+\begin{cases}
+  \begin{aligned} \psi_x & = \pm \sin{(kx)} \cosh{ (ky)}\cos{(\omega t)} \\ \psi_y & = \mp \cos{(kx)} \sinh{(ky)} \cos{(\omega t )} \end{aligned} \quad \, & \text{ in water } (0\leq y <L) \\
+  \begin{aligned} \psi_x & = \mp \sin{(kx)} \cosh{ (k(2L-y))}\cos{(\omega t)} \\ \psi_y & = \mp \cos{(kx)} \sinh{(k(2L-y))} \cos{(\omega t )} \end{aligned} \quad \, & \text{ in paint thinner } (L\leq y \leq 2L)
+\end{cases}
+\]
+
+Note that when determining these normal mode terms, we dropped the constants in front, even $k=\frac{n\pi}{X}$ because we can add up a linear superposition, summing over $n$ and can multiply by any constant number in front of each term.  
+
+Note also how $\psi_y$ is continuous even at the boundary.  
+
+Consider change in gravitational potential, $V_g$ and thus the change in $\psi_y$.   \\
+\quad If chunk of water at $X-x$, $\rho_w W (\epsilon \psi_y) dx$ is taken and moved to $x$, a chunk of paint thinner at $x$, $\rho_p W (\epsilon \psi_y) dx$ is taken from $x$ and moved to $X-x$.  Note that if that chunk of water is raised, the chunk of paint thinner is lowered, so its contribution to $V_g$ is of the opposite sign.  
+
+Integrate over a quarter wavelength $\pi/2k$ of the very first mode, or a half length of $X$.  
+
+\[
+\begin{aligned}
+  V_g & = \int (\rho_w W \epsilon \psi_y dx) g (\epsilon \psi_y) - \rho_p W(\epsilon \psi_y) dx g (\epsilon \psi_y) = Wg \epsilon^2 \sinh^2{(kL)} \cos^2{(\omega t)} \int_0^{\frac{\pi}{2k} } (\rho_w - \rho_p) \cos^2{(kx)} dx \\
+  & = Wg\epsilon^2 \sinh^2{(kL)} \cos^2{(\omega t)} (\rho_w - \rho_p) \frac{ \pi}{4k}
+\end{aligned}
+\]
+
+Consider surface tension.  For the position of the surface, 
+\[
+\begin{aligned}
+  R_x(x,t) = x + \epsilon \psi_x(x,L,t) \\ 
+  R_y(x,t) = \epsilon \psi_y(x,L,t)
+\end{aligned}
+\]
+
+The length of the curve is given by $ s = \int_0^X dx \sqrt{ (\partial_x R_x)^2 + (\partial_y R_y)^2 }$ and so $\begin{aligned} \partial_x R_x & = 1 + \epsilon \partial_x \psi_x \\ \partial_x R_y & = \epsilon \partial_x \psi_y \end{aligned}$
+
+The potential energy due to surface tension, $V_{surface}$, (stretching it) is given by 
+\[
+\begin{aligned}
+  V_{surface} = T * (\text{Area}-\text{Area}_0) & = TW \int_0^{ \pi/k} dx \left( \sqrt{ (1 + \epsilon \partial_x \psi_x )^2 + (\epsilon \partial_x \psi_y )^2}  -1 \right) = \\
+  & = TW \int_0^{\pi/k} dx \left( \epsilon \partial_x \psi_x + \frac{1}{2} (\epsilon \partial_x \psi_y)^2 + O(\epsilon^3) \right) = \\
+  & = TW \epsilon^2 k^2 \sinh^2{(kL)} \cos^2{\omega t} \frac{\pi}{4k}
+\end{aligned}
+\]
+
+Note that we had taken only the $\epsilon^2$ terms in the Taylor series expansion:
+\[
+\begin{aligned}
+  \sqrt{ 1 + 2 \epsilon \partial_x \psi_x + \epsilon^2(\partial_x \psi_x)^2 + \epsilon^2 (\partial_x \psi_y)^2 } & = 1 + \frac{1}{2} (2 \epsilon \partial_x \psi_x  + \epsilon^2 ((\partial_x \psi_x)^2 + (\partial_x \psi_y)^2 ) ) + \frac{-1}{8} (2 \epsilon \partial_x \psi_x)^2 = \\
+  & = 1 + \epsilon \partial_x \psi_x + \frac{1}{2} \epsilon^2 (\partial_x \psi_y)^2
+\end{aligned}
+\]
+Then the $\epsilon$ term got integrated away over $x=0$ to $x=\pi/k$  
+
+Kinetic energy contribution is the sum of the kinetic energy of the two layers of liquids:
+\[
+KE = \frac{1}{2} \rho_w \int dV \vec{v}^2 + \frac{1}{2} \rho_p \int dV \vec{v}^2
+\]
+where 
+\[
+KE_{water} = \frac{1}{2} \rho_w W \int_0^{\pi/k} dx \int_0^L dy \left( \left( \frac{ \epsilon \partial \psi_x}{\partial t} \right)^2 + \left( \epsilon \frac{ \partial \psi_y }{\partial t} \right)^2 \right)
+\]
+Note that the time derivative and squaring gives a factor of $\omega^2 \sin^2{ \omega t}$ each. 
+
+For both water and paint thinner terms, we have $\sin^2{kx}$ and $\cos^2{kx}$ terms to integrate over $x$, which yields $\pi/2k$.  For instance, for water, $(\sin^2{kx}\cosh^2{ky} + \cos^2{kx} \sinh^2{ky})$ becomes $(\pi/2k) \cosh{2ky}$ after integrating over $x$.  
+
+Then for water, integrate over $y$ from $0$ to $L$ to obtain $ \left. \frac{ \sinh{(2ky)} }{2k} \right|_0^L = \frac{ \sinh{ (2kL)}}{2k}$.  Only difference when doing it to the paint thinner term is that we end up integrating $\cosh{(2k(2L-y))}$ over $y=L$ to $y=2L$.  
+
+Sum all energy terms together and note energy conservation: total energy must be constant in time.  Then
+\[
+\begin{gathered}
+  Wg \sinh^2{(kL)}(\rho_w - \rho_p) \left( \frac{ \pi}{4k} \right) + TW k^2 \sinh^2{(kL)} \frac{\pi}{4k} + - \omega^2 \{ \frac{1}{2} \rho_w W \frac{\pi}{2k} \frac{ \sinh{(2kL)} }{2k} + \frac{1}{2} \rho_p W \frac{\pi}{2k} \left( \frac{ \sinh{2kL} }{2k} \right) \} =0 \\
+  \omega^2 = \frac{ \sinh^2{(kL)} ( g (\rho_w - \rho_p) + Tk^2) \frac{1}{4k} }{ \frac{1}{2} \left( \frac{1}{2k} \right)^2 ( \rho_w \sin{(2kL)} + \rho_p (\sinh{(2kL) } ) ) } 
+\end{gathered}
+\]
+or
+\[
+\omega^2 = \frac{ ( g( \rho_w - \rho_p) + Tk^2 )k }{ \rho_w + \rho_p } \tanh{(kL)} 
+\]
+
+
+\problemhead{11.11} Let's review what the notation mean and basic concepts involving pressure and air.  \\
+$P(x,y,z) = $ gas pressure at $(x,y,z)$.  \\
+$\psi(x,y,z) =$ air displacement; wave compression or rarefaction. \\
+
+$\vec{\psi} \propto \vec{\nabla} P$ (air is getting pushed along by high pressure regions) \\
+$P \propto - \vec{ \nabla} \cdot \vec{\psi}$ (increase in pressure causes rarefactions).  \\
+The last two are mathematical statements for gas; gas is actually pushed rom regions of high pressure to low pressure regions.  The pressure gradient perpendicular to the boundary must vanish.  
+
+For 
+\[
+\begin{cases} 
+  P(r,t)/\delta p = A e^{i k_1 \cdot r - i \omega t} + RA e^{ ik_R \cdot r - i \omega t} & x < 0 \text{ region 1} \\ 
+  P(r,t)/\delta p = T A e^{ i k_2 \cdot r - i\omega t} & x > 0 \text{ region 2}
+\end{cases}
+\]
+where $P(r,t) + p_0 = $ pressure of gas whose equilibrium position is $\vec{r}$ and \\
+$\delta p = $ small pressure describes amplitudes of the pressure wave.  
+
+Given \\
+$\begin{aligned} k_1 & = (k\cos{\theta}, k\sin{\theta}, 0) \\ k_R & = (-k_R \cos{\theta_R}, k_R \sin{\theta_R} ,0) \\ k_2 & = (k_2 \cos{\theta_2}, k_2 \sin{\theta_2}, 0 ) \end{aligned}$.
+
+Since at $x=0$, membrane is massless, pressure is equal from both sides.  
+\[
+\begin{gathered}
+  \Longrightarrow \frac{P}{ \delta p} = A e^{ i k_1 \sin{\theta} y } e^{-i \omega t} + RA e^{ i k_R \sin{\theta_R} y }e^{ - i \omega t} = TA e^{ i k_2 \sin{\theta_2} y} e^{-i\omega t} \\ 
+  \Longrightarrow e^{ i k_1 \sin{\theta} y } + R e^{ i k_R \sin{\theta_R} y } = T e^{ ik_2 \sin{\theta_2}y }
+\end{gathered}
+\]
+
+This must be true $\forall \, y$ (spatial translation invariance across $y$, of the system).  Then 
+\[
+\Longrightarrow
+\begin{gathered}
+  k_1 \sin{\theta} = k_R \sin{\theta_R} = k_2 \sin{\theta_2} \\ 
+  1 + R = T 
+\end{gathered}
+\]
+
+Thus, having the pressure coming from both sides equal each other, because the membrane is massless, is one of the boundary conditions at $x=0$.  
+
+From the dispersion relation
+\[
+\begin{aligned}
+  \omega^2 = \frac{ \gamma_1 p_0}{\rho_1} k_1^2 & = \frac{ \gamma_1 p_0 }{ \rho_1} k_R^2  \\ 
+  \frac{ \gamma_1 p_0}{\rho_1} k^2 & = \frac{ \gamma_2 p_0}{\rho_2} k_2^2 
+\end{aligned} \quad \, \Longrightarrow \begin{aligned} & k_1^2 = k_R^2 \\ & k_2 = \sqrt{ \frac{ \gamma_1 \rho_2}{\gamma_2 \rho_1 } } k \end{aligned}  
+\]
+
+Since $k_R^2 = k^2$, \[
+k_R^2 \cos^2{\theta_R} + k_R^2 \sin^2{\theta_R} = k^2 = k^2 \cos^2{\theta_R} + k^2 \left( \frac{ k \sin{\theta} }{k_R }\right)^2 = k^2 \Longrightarrow \cos{\theta_R} = \cos{\theta}  
+\]
+
+\[
+\begin{gathered}
+  k_2^2 = k_2^2 \cos^2{\theta_2} + k_2^2 \sin^2{\theta_2} = k_2^2 \cos^2{\theta_2} + k^2 \sin^2{\theta} = \frac{ \gamma_1 \rho_2}{\gamma_2 \rho_1 }k^2 \\
+  \Longrightarrow \cos{\theta_2} = \sqrt{ \frac{ \gamma_2 \rho_1}{ \gamma_1 \rho_2} } \sqrt{ \frac{ \gamma_1 \rho_2}{ \gamma_2 \rho_1} - \sin^2{\theta} }
+\end{gathered}
+\]
+
+Suppose $\theta_2 = \frac{\pi}{2}$ (no light is refracted into region 2) and given $\frac{ \rho_2}{\gamma_2}/ \frac{ \rho_1}{\gamma_1} < 1$, then $\exists \, \theta_{crit}$ s.t. 
+\[
+\boxed{ \sin{\theta_{crit} } = \sqrt{ \frac{ \rho_2}{ \gamma_2} / \frac{ \rho_1}{ \gamma_1} } }
+\]
+
+To answer the hint, the force transverse to the surface comes from the pressure wave hitting against the membrane.  
+
+From the problem given, the other condition involves the transverse displacement of the membrane.  The displacement can be obtained from the pressure:
+\[
+\vec{\psi}(r,t) = \frac{1}{ \rho_j \omega^2} \vec{\nabla}P(r,t)
+\]
+where $\vec{\psi(r,t)}$ is the displacement of the gas whose equilibrium position is $\vec{r}$ and $j$ is the region label.  
+
+Thus 
+\[
+\vec{\psi}(r,t)/\delta p = \frac{ iA}{ \rho_1 \omega^2} ( \vec{k}_1 e^{ i \vec{k}_1 \cdot \vec{r} - i \omega t } + R \vec{k}_R e^{ i \vec{k}_R \cdot \vec{r} - i \omega t} 
+\]
+in region 1, for $x<0$, and 
+\[
+\vec{ \psi}(r,t)/\delta p = \frac{ i A}{ \rho_2 \omega^2 } T \vec{k}_2 e^{ i \vec{k}_2 \cdot \vec{r} - i\omega t}
+\]
+in region 2, for $x>0$.  
+
+We thus have the boundary condition on $x=0$ of continuity of how the gas is displaced across the boundary, because the membrane cannot break (the air molecules cannot break through the membrane and reach the opposite region).  
+
+\[
+\psi(x=0_-,y,t) = \psi(x=0_+,y,t) \Longrightarrow \frac{iA}{ \rho_1 \omega^2 } ( i k_{1x}^2 + R (ik_{R,\,x}^2 )) = \frac{ iA}{\rho_2 \omega^2} (T i k_{2,\,x}^2) 
+\]
+Since $k_{1,\, x} = -k_{R,\, x}$, 
+\[
+\begin{gathered}
+\Longrightarrow \frac{k_{1,\, x}^2}{\rho_1} (1 +R) = \frac{k_1^2 \cos^2{\theta} }{ \rho_1} (1 +R) = \frac{1}{ \rho_2} T ( k_2^2 \cos^2{\theta_2} ) \text{ or } \\
+1 - R = \sqrt{ \frac{ \gamma_1 \rho_1 }{ \gamma_2 \rho_2 } T \frac{ \cos{\theta_2} }{ \cos{\theta}} }
+\end{gathered}
+\]
+Considering also $1+R = T$, we obtain $R,T$:
+
+\[
+\boxed{ 
+\begin{aligned}
+  T & = 2 / \left( 1 + \sqrt{ \frac{ \gamma_1 \rho_1}{ \gamma_2 \rho_2 } \frac{ \cos{\theta_2}}{ \cos{\theta_1} } }\right) \text{ where } \cos{\theta_2} = \sqrt{ \frac{ \gamma_2 \rho_1}{ \gamma_1 \rho_2 } } \sqrt{ \frac{ \gamma_1 \rho_2}{ \gamma_2 \rho_1 } - \sin^2{\theta} } \\ 
+  R & = T - 1 = \frac{ 1 - \sqrt{ \frac{ \gamma_1 \rho_1}{ \gamma_2 \rho_2 } } \frac{ \cos{\theta_2}}{\cos{\theta} } }{ 1 + \sqrt{ \frac{ \gamma_1 \rho_1}{ \gamma_2 \rho_2}} \frac{ \cos{\theta_2} }{ \cos{\theta} } }
+\end{aligned} }
+\]
+
+\problemhead{12.1} From the dispersion relation, $\begin{aligned} \omega^2 & = \frac{c^2}{n^2} k^2 = \frac{c^2}{(n')^2} k'^2 = \\ & = \frac{c^2}{n^2} k_R^2 = \frac{c^2}{n'^2} k_R'^2 \end{aligned}$.  By translation invariance $\begin{aligned} k_x & = k_{R,\, x} \\ k_x' & = k_{R,x}' \end{aligned}$, which implies $\begin{aligned} k_z & = -k_{R,z} \\ k_z' & = -k_{R, \, z}' \end{aligned}$.  
+
+So then
+\[
+E_y(r,t) = \begin{cases} T_{\perp}^1 e^{i (k\cdot r - \omega t) } + R_{\perp}^1 e^{i (k_R \cdot r - \omega t )} & \text{  for } z \leq l \\ T_{\perp}^2 e^{ i (k'\cdot r - \omega t) } + R_{\perp}^2 e^{ i (k_R' \cdot r - \omega t) } & \text{ for } z > l \end{cases}
+\]
+
+$B = \frac{n}{c} \hat{k} \times E$ (i.e. $B_n = \frac{ n}{c} (\hat{k}_l E_{jn}) \epsilon_{lmn}$ \text{ since } 
+\[
+\begin{aligned}
+  (\nabla \times E) = \frac{-1}{c} \partial_t B \text{ or } (\partial_l E_m) \epsilon_{lmn} = \frac{-1}{c} \partial_t B_n \Longrightarrow \begin{aligned} i k_l E_m \epsilon_{lmn} & = \frac{i \omega }{c} B_n \\ n \hat{k}_l E_m \epsilon_{lmn} & = B_n \end{aligned}
+\end{aligned}
+\]
+
+Then
+\[
+\begin{aligned}
+  B_x & = \begin{cases} -n \cos{\theta} ( T_{\perp}^1 e^{i (k\cdot r - \omega t)} - R_{\perp}^1 e^{ i (k_R \cdot r - \omega t) } ) & \text{ for } z \leq l \\ -n' \cos{\theta'} (T_{\perp}^2 e^{ i (k'\cdot r - \omega t)} - R_{\perp}^2 e^{ i (k_R' \cdot r - \omega t) } & \text{ for } z \geq l \end{cases}  \\
+  B_z & = \begin{cases} n \sin{\theta} (T_{\perp}^1 e^{ i (k \cdot r - \omega t) } + R_{\perp}^1 e^{ i (k_R \cdot - \omega t)} ) & \text{ for } z \geq l \\ 
+    n'\sin{\theta'} (T_{\perp}^2 e^{ i (k'\cdot r - \omega t)} + R_{\perp}^2 e^{i(k_R'\cdot r - \omega t)} ) & \text{ for } z \geq l 
+\end{cases}
+\end{aligned}
+\]
+Note that continuity in $B_z$ across $z=l$ leads to the same boundary condition on $E_y$.
+
+Boundary conditions:
+$E_y$ is continuous at $z=l$ by translation invariance of the system through $x$.  
+\[
+T_{\perp}^1 e^{ i k_z l } + R_{\perp}^1 e^{ - ik_z l} = T_{\perp}^2 e^{ i k_z' l} + R_{\perp}^2 e^{-i k_z' l}
+\]
+
+$B_x$ continuous (assume $\mu =1$, no sheet of bound current on the boundary.  
+\[
+\Longrightarrow n \cos{\theta} (e^{i k_z l }T_{\perp}' - e^{ -ik_z l} R_{\perp}^1 ) = n' \cos{\theta'} ( e^{ i k_z' l} T_{\perp}^2 - R_{\perp}^2 e^{ -i k_z' l } )
+\]
+
+Then
+\[
+\Longrightarrow \left( \begin{matrix} e^{ik_zl} & e^{-ik_zl} \\ n\cos{\theta} e^{ik_z l} & - n\cos{\theta} e^{-ik_z l } \end{matrix} \right) \left( \begin{matrix} T_{\perp}' \\ R_{\perp}' \end{matrix} \right) = \left( \begin{matrix} e^{ i k_z' l } & e^{ -i k_z' l } \\ n'\cos{\theta'} e^{ i k_z' l} & - n' \cos{\theta'} e^{ -i k_z' l } \end{matrix} \right) \left( \begin{matrix} T_{\perp}^2 \\ R_{\perp}^2 \end{matrix} \right)
+\]
+
+The inverse of the matrix on the left is $\frac{1}{ -2n \cos{\theta} } \left( \begin{matrix} - n \cos{\theta} e^{ -i k_z l } & -e^{ -i k_z l } \\ -n \cos{\theta'} e^{ ik_z' l } &  e^{  i k_z l} \end{matrix} \right)$.  Multiplying both sides of the above equation by this inverse matrix, then, if 
+\[
+h_{\perp} = \frac{n'\cos{\theta'}}{ n \cos{\theta} } 
+\]
+we get
+\[
+\left( \begin{matrix} T_{\perp}' \\ R_{\perp}' \end{matrix} \right) = \frac{1}{2} \left( \begin{matrix} e^{ -ik_z l} e^{i k_z' l} (1+h_{\perp} ) & e^{-ik_z l} e^{-ik_z' l} (1-h_{\perp} ) \\ e^{ik_z l} e^{ik_z'l} (1- h_{\perp}) & e^{ik_zl }e^{-ik_z'l} (1 + h_{\perp}) \end{matrix} \right)\left( \begin{matrix} T_{\perp}^2 \\ R_{\perp}^2 \end{matrix} \right)
+\]
+
+The above is the desired, generalized \emph{transfer} matrix.  
+
+We want the electromagnetic wave to enter the glass and exit out of it.  Thus
+\[
+\left( \begin{matrix} 1 \\ R_{\perp} \end{matrix} \right) = d(0) \left( \begin{matrix} T_{\perp}^1 \\ R_{\perp}^1 \end{matrix} \right) = d(0) d^{-1}(l) \left( \begin{matrix} \tau_{\perp} \\ 0 \end{matrix} \right)
+\]
+Note that for $d^{-1}(l)$, $-1$ is just notation; not actually the inverse.  Simply reverse the labels to go from region 2 to region 1 (like you're going ``backwards'').  
+
+So then 
+\[
+4 d(0) d^{-1}(l) = \left( \begin{matrix} 1 + h_{\perp} & 1 - h_{\perp} \\ 1 - h_{\perp} & 1 + h_{\perp} \end{matrix} \right) \left( \begin{matrix} e^{ik_z l} e^{-ik_z' l} ( 1 + \frac{1}{h_{\perp}} ) & e^{-ik_zl }e^{-ik_z' l} (1 - \frac{1}{h_{\perp} } ) \\ e^{ik_z l}e^{ i k_z' l} (1 - \frac{1}{h_{\perp} }) & e^{ik_z'l} e^{-ik_z l} (1 + \frac{1}{h_{\perp} }) \end{matrix} \right) \left( \begin{matrix} \tau_{\perp} \\ 0 \end{matrix} \right)
+\]
+\[
+\begin{gathered}
+  \Longrightarrow 4 = ((1+h_{\perp} )(1 + \frac{1}{h_{\perp} } ) e^{i k_z l } e^{-ik_z' l} + ( 1 - \frac{1}{h_{\perp}} )( 1 -h_{\perp} ) e^{ik_z l} e^{ik_z' l} )\tau_{\perp} \text{ or } \\
+  \tau = \frac{ e^{-i k_zl } }{ \cos{(k_z' l) } + \frac{-1}{2} (\frac{1}{h_{\perp}} + h_{\perp} ) i \sin{(k_z' l) } }
+\end{gathered}
+\]
+Then also
+\[
+R_{\perp} =\frac{ \frac{i}{2} ( h_{\perp} - \frac{1}{h_{\perp} } ) \sin{(k_z' l) } }{ \cos{(k_z' l)} + \frac{-i}{2} (h_{\perp} + \frac{1}{h_{\perp}} )\sin{(k_z' l) }}
+\]
+\[
+|R_{\perp}|^2 = \frac{ \frac{1}{4} ( h_{\perp} - \frac{1}{ h_{\perp}})^2 \sin^2{ (k_z' l) } }{ \cos^2{( k_z' l) } + \frac{ (h_{\perp} + \frac{1}{ h_{\perp} } )^2 }{ 4} \sin^2{ (k_z' l) } }
+\]
+
+Now consider polarization in the scattering plane.  
+
+For convenience, define reflection and transmission coefficients in terms of magnetic fields.  
+\[
+B_y(r,t) = \begin{cases} T_1 e^{ i (k\cdot r - \omega t) } + R_1 e^{i (k_R \cdot r - \omega t)} & \text{ for } z \leq l \\ T_2 e^{i (k'\cdot r - \omega t)} + R_2 e^{i(k_R' \cdot r - \omega t) } & \text{ for } z \geq l \end{cases} 
+\]
+$B_x = B_z = 0$.  
+
+Also, from symmetry across the boundary considerations, $\begin{aligned} k_x & = k_{R,\,x} \\ k_x' & = k_{R, \, x}' \end{aligned}$ and $\begin{aligned} k_z & = -k_{R, \, z} \\ k_z' & = - k_{R, \, z}' \end{aligned}$.
+
+Now $B = \frac{n}{c} \hat{k} \times \vec{E}$, so by using the CAB-BAC rule, 
+\[
+(B \times \hat{k} )_n = B_l \hat{k}_m \epsilon_{lmn} = \frac{n}{c} E_n \text{ or } E_n = \frac{c}{n} B_l \hat{k}_m \epsilon_{lmn}
+\]
+
+Then we get
+\[
+\begin{aligned}
+  & E_x(r,t) & = \begin{cases} e^{-i \omega t} \frac{c}{n} \cos{\theta} e^{i k_x x} ( T_1 e^{ik_z l} - R_1 e^{-i k_zl } ) & \text{ for } z \leq l \\ e^{-i \omega t} \frac{c}{n'} \cos{\theta'} e^{ik_x' l} (T_2 e^{ik_z'l} + - R_2 e^{ -ik_z' l} ) & \text{ for } z \geq l \end{cases} \\
+  & E_z(r,t) & = \begin{cases} -e^{i \omega t } e^{ik_x x} \frac{c}{n} \sin{\theta} ( T_1 e^{i k_z l } +R_1 e^{ -ik_z l} ) & \text{ for } z < l \\ 
+    -e^{-i \omega t} e^{ik_x' x} \frac{c}{n'} \sin{\theta' } (T_2 e^{ik_z' l} + R_2 e^{-ik_z' l} & \text{ for } z > l \end{cases} 
+\end{aligned}
+\]
+
+$E_z$ is not continuous because a surface bound charge density builds up on the dielectric boundary.  
+
+$B_y$ continuous over $z=l$ (since $\mu =1$). 
+\[
+T_1 e^{ i k_z l } + R_1 e^{ - ik_z l} = T_2 e^{ i k_z' l} + R_2 e^{-i k_z' l}
+\]
+
+So is $E_x$.  
+
+\[
+\Longrightarrow  \frac{\cos{\theta}}{n} (e^{i k_z l }T_{1} - e^{ -ik_z l} R_{1} ) = \frac{ \cos{\theta'}}{n'} ( e^{ i k_z' l} T_2 - R_2 e^{ -i k_z' l } )
+\]
+
+Then
+\[
+\Longrightarrow \left( \begin{matrix} e^{ik_zl} & e^{-ik_zl} \\ \frac{ \cos{\theta}}{n}  e^{ik_z l} & - \frac{ \cos{\theta} }{n} e^{-ik_z l } \end{matrix} \right) \left( \begin{matrix} T_{1} \\ R_{1} \end{matrix} \right) = \left( \begin{matrix} e^{ i k_z' l } & e^{ -i k_z' l } \\ \frac{ \cos{\theta'}}{n'} e^{ -i k_z' l} & - \frac{ \cos{\theta'}}{n'} e^{ -i k_z' l } \end{matrix} \right) \left( \begin{matrix} T_{2} \\ R_{2} \end{matrix} \right)
+\]
+
+The inverse of the matrix on the left is $\frac{1}{ -2\left( \frac{ \cos{\theta}}{n} \right)} \left( \begin{matrix} -  \frac{ \cos{\theta}}{n} e^{ -i k_z l } & -e^{ -i k_z l } \\ - \frac{ \cos{\theta'}}{n } e^{ ik_z l } & e^{ik_z l } \end{matrix} \right)$.  Multiplying both sides of the above equation by this inverse matrix, then, if 
+\[
+\xi_{\parallel} = \frac{ \cos{\theta'}/n'}{  \cos{\theta}/n' } 
+\]
+we get
+\[
+\left( \begin{matrix} T_{1} \\ R_{1} \end{matrix} \right) = \frac{1}{2} \left( \begin{matrix} e^{ -ik_z l} e^{i k_z' l} (1+\xi_{\parallel} ) & e^{-ik_z l} e^{-ik_z' l} (1-\xi_{\parallel} ) \\ e^{ik_z l} e^{ik_z'l} (1- \xi_{\parallel}) & e^{ik_zl }e^{-ik_z'l} (1 + \xi_{\parallel}) \end{matrix} \right)\left( \begin{matrix} T_2 \\ R_2 \end{matrix} \right)
+\]
+
+The above is the desired, generalized \emph{transfer} matrix.  
+
+We want the electromagnetic wave to enter the glass and exit out of it.  Thus
+\[
+\left( \begin{matrix} 1 \\ R \end{matrix} \right) = d(0) \left( \begin{matrix} T_{2} \\ R_{2} \end{matrix} \right) = d(0) d^{-1}(l) \left( \begin{matrix} \tau \\ 0 \end{matrix} \right)
+\]
+
+So then 
+\[
+4 d(0) d^{-1}(l) = \left( \begin{matrix} 1 + \xi_{\parallel} & 1 - \xi_{\parallel} \\ 1 - \xi_{\parallel} & 1 + \xi_{\parallel} \end{matrix} \right) \left( \begin{matrix} e^{ik_z l} e^{-ik_z' l} ( 1 + \frac{1}{\xi_{\parallel}} ) & e^{-ik_zl }e^{-ik_z' l} (1 - \frac{1}{\xi_{\parallel} } ) \\ e^{ik_z l}e^{ i k_z' l} (1 - \frac{1}{\xi_{\parallel} }) & e^{ik_z'l} e^{-ik_z l} (1 + \frac{1}{\xi_{\parallel} }) \end{matrix} \right) \left( \begin{matrix} \tau \\ 0 \end{matrix} \right)
+\]
+\[
+\begin{gathered}
+  \Longrightarrow 4 = ((1+\xi_{\parallel} )(1 + \frac{1}{\xi_{\parallel} } ) e^{i k_z l } e^{-ik_z' l} + ( 1 - \frac{1}{\xi_{\parallel}} )( 1 -\xi_{\parallel} ) e^{ik_z l} e^{ik_z' l} )\tau \text{ or } \\
+  \tau = \frac{ e^{-i k_zl } }{ \cos{(k_z' l) } + \frac{-1}{2} (\frac{1}{\xi_{\parallel}} + \xi_{\parallel} ) i \sin{(k_z' l) } }
+\end{gathered}
+\]
+Then also
+\[
+R_{\perp} =\frac{ \frac{i}{2} ( \xi_{\parallel} - \frac{1}{\xi_{\parallel} } ) \sin{(k_z' l) } }{ \cos{(k_z' l)} + \frac{-i}{2} (\xi_{\parallel} + \frac{1}{\xi_{\parallel}} )\sin{(k_z' l) }}
+\]
+\[
+|R_{\parallel}|^2 = \frac{ \frac{1}{4} ( \xi_{\parallel} - \frac{1}{ \xi_{\parallel}})^2 \sin^2{ (k_z' l) } }{ \cos^2{( k_z' l) } + \frac{ (\xi_{\parallel} + \frac{1}{ \xi_{\parallel} } )^2 }{ 4} \sin^2{ (k_z' l) } }
+\]
+
+At the Brewster angle $\theta$, $|R_{\parallel}|^2 =0$.  
+\[
+\Longrightarrow \frac{ \cos^2{\theta'}{n'^2} }{ \cos^2{\theta} /n^2 } - 1 =0 
+\]
+This implies that $\sin{2\theta} = \sin{2\theta'}$ or that the (``would've been'') reflected wave is at $\pi/2$ angle from the refracted wave.
+
+Notice how the form of the transfer matrix and transmission and reflection coefficients are of the same form for polarization in the scattering plane as with polarization in the transverse plane.  
+
+\problemhead{12.2} I will solve this problem using my coordinate axes.  Consider surface conductivity on $xy$-plane.  Surface current density is in the boundary layer.  
+\[
+\vec{E}_{\parallel} = E_{\parallel} \vec{e}_{\parallel}, \, \vec{e}_{\parallel} \in xy-\text{plane} \quad \, \vec{\mathcal{J}} = \sigma \vec{E}_{\parallel} \, (z=0)
+\]
+\[
+\begin{aligned} 
+\text{ For $z<0$, } & E_y(x,z,t) = A ((e^{i (k\cos{\theta} z + k \sin{\theta} x - \omega t) } ) + R e^{ i (-k' \cos{\theta'} z + k' x \sin{\theta' } - \omega t ) } ) \\ 
+\text{ For $z>0$, } & E_y(x,z,t) = TA ( e^{ i (k'' \cos{\theta''} z + k'' x \sin{\theta'' } - \omega t) } ) \end{aligned}
+\] 
+$E_z, E_x =0$ everywhere.  
+Note that $\mathcal{J} = \frac{ \text{ charge } }{ \text{ surface area } }$ per unit time.  
+
+$E_y$ should be continuous (imagine that for $dA$ on surface, net charge is zero, because while the (negative) conducting electrons are moving, at each instant in time, there's an equal amount of positive ions at rest).  
+
+At $z=0$,
+\[
+\begin{aligned}
+  E_y(x,0^-,t) & = e^{-i\omega t} A (e^{i k \sin{\theta} x } + R e^{i k' \sin{\theta'} x} ) \\ 
+  E_y(x,0^+,t) & = e^{-i \omega t} A ( T e^{i k'' x \sin{\theta'' } } ) 
+\end{aligned}
+\]
+By spatial translation invariance over $x$ and $E_y$ is continuous across the boundary, and that $x$ is arbitrary and this boundary condition must be satisfied for all $x$, then
+\[
+\begin{gathered}
+  k\sin{\theta} = k' \sin{\theta'} = k'' \sin{\theta''} \\ 
+  1 + R = T
+\end{gathered}
+\]
+Since we are dealing with 2 empty regions, governed by the same dispersion relation, $\omega^2 = c^2 k^2$, 
+\[
+k = k' = k''; \quad \, \sin{\theta} = \sin{\theta'} = \sin{\theta''}
+\]
+
+Note that, by Maxwell's equations, $\nabla \times E = \frac{-1}{c} \left( \frac{ \partial B}{\partial t} \right)$, 
+\[
+(\nabla \times E)_n = \partial_l E_m \epsilon_{lmn} = \frac{-1}{c} \partial_t B_n
+\]
+so then
+
+\[
+\begin{aligned}
+  & \begin{cases} \frac{-1}{c} (-i \omega ) B_z  = A \left( i k \sin{\theta} (e^{ i (k\cdot r - \omega t) } + ik' \sin{\theta' } R e^{ i (k'\cdot r - \omega t) } ) \right) & \text{ for } z < 0 \\ 
+      \frac{-1}{c} (-i\omega ) B_z  = TA ( i k'' \sin{\theta''} e^{i ( k''\cos{\theta''} z + k'' x \sin{\theta'' } - \omega t) } ) & \text{ for } z > 0 \end{cases} \\ 
+  & \begin{cases} \frac{-1}{c} ( - i \omega ) B_x  = -A \left( i k \cos{\theta} e^{i (k\cdot r - \omega t)} - i k' \cos{\theta'} R e^{i (k'\cdot r - \omega t) } \right) & \text{ for } z < 0 \\ 
+      -\frac{1}{c} (-i \omega) B_x  = -TA \left( ik'' \cos{\theta''} e^{ i (k'' \cos{\theta''} z + k'' x \sin{\theta''} - \omega t) } \right)& \text{ for } z > 0 \end{cases} 
+\end{aligned}
+\]
+
+From Maxwell's equations, note that, using Stoke's law,
+\[
+\int \nabla \times B dA = \int B \cdot dS = \int 4 \pi J_{free} dA
+\]
+Then consider a rectangular line integral in the $xz$ plane across the boundary, with sides $1,2,3,4$ running counterclockwise, with $1,3$ parallel to the $z$-axis (yes, all this is much clearer and concise with a diagram) of length $\Delta z$ and $2,4$ of length $\Delta l$.    
+
+Consider $1,3$ at $z=0$.  Since $B_z$ is the same across $x$ at $z=0$, $B_z$'s contributions to the line integral is zero.  
+
+Consider $2,4$ running parallel along the $x$-axis.  
+
+\[
+\begin{gathered}
+  B_x(z=0^+) - B_x(z=0^-) = \\
+  = A \left( \frac{c}{\omega } \right) ( -T (k''\cos{\theta''} e^{i k'' x \sin{\theta''} })e^{-i\omega t} + (k\cos{\theta} e^{ik\sin{\theta} x } - k'\cos{\theta'} e^{ i k'\sin{\theta'} x } R ) e^{-i \omega t} )
+\end{gathered}
+\]
+
+For $k' = k'' = k$; $\theta' = \theta'' = \theta$, the last expression becomes
+
+\[
+A \left( \frac{c}{ \omega } \right) e^{-i \omega t} k \cos{\theta} e^{ i k\sin{\theta} x} ( -T + 1 -R) 
+\]
+so that
+
+\[
+\int B\cdot ds = (\Delta l ) A \left( \frac{c}{\omega } e^{-i\omega t} k\cos{\theta} e^{ik\sin{\theta} x } ( -T + 1 - R) \right)
+\]
+
+Now consider $\int \frac{ 4 \pi}{c} \mathcal{J}_{free} dA$ where $\sigma E_y = \mathcal{J}_{free}$ and $E_y = A e^{-i\omega t} (Te^{i k'' x \sin{\theta''} } ) \Delta l$.  
+\[
+\begin{gathered}
+  \Longrightarrow \int B\cdot ds = \int \frac{4 \pi}{c} \mathcal{J}_{free} dA \\ 
+  \Longrightarrow \left( \frac{c}{\omega } \right) k\cos{\theta} ( -T  +1 -R) = T ( 4 \pi \frac{ \sigma}{c} )  
+\end{gathered}
+\]
+which leads us to
+\[
+\boxed{ \begin{aligned} R & = \frac{ 4 \pi \sigma /c}{ -2 \cos{\theta} - \frac{4 \pi \sigma}{c} } \\
+    T & = 1 + R = \frac{ 2 \cos{\theta} }{ 2 \cos{\theta } + \frac{ 4 \pi \sigma}{c} } \end{aligned} }
+\]
+As $\sigma \to \infty$, $R \to - 1$.  All of the incident wave gets reflected; no transmission.  The superconducting surface becomes a perfect mirror.  
+
+\end{document}

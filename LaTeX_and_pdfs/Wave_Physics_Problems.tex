@@ -1,0 +1,3293 @@
+%LaTeX
+%\documentclass[twoside]{article}
+\documentclass[twoside,10pt]{amsart}
+%This makes the margins little smaller than the default
+%\usepackage{fullpage}
+%fullpage is not installed on andrew, so we'll just use these lines.
+\oddsidemargin0cm
+\evensidemargin0cm
+\topmargin-1.65cm     %I recommend adding these three lines to increase the 
+\textwidth16.5cm   %amount of usable space on the page (and save trees)
+\textheight23.5cm  
+
+
+%if you need more complicated math stuff, you should use the next line
+\usepackage{amsmath}
+%This next line defines a variety of special math symbols which you
+%may need
+\usepackage{amssymb}
+
+%This next line (when uncommented) allow you to use encapsulated
+%postscript files for figures in your document
+%\usepackage{epsfig}
+
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{2.05ex plus 0.5 ex}
+
+%plain makes sure that we have page numbers
+\pagestyle{plain}
+
+
+\title{
+  Wave Physics Problems.  
+}
+\author{
+  Ernest Yeung - Praha 10, \v Cesk\`a Republika 
+       }
+%\date{Winter 2006}
+
+
+
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+  {\bigskip\bigskip
+   \noindent{\large\bf Question #1.}
+   \bigskip}
+
+\newcommand{\problemhead}[1]
+  {\smallskip
+   \noindent{\large\bf Problem #1.}
+   \smallskip}
+
+\newcommand{\exercisehead}[1]
+  {\bigskip\bigskip
+   \noindent{\large\bf Exercise #1.}
+   \bigskip}
+
+\newcommand{\solutionhead}[1]
+  {\medskip\medskip
+   \noindent{\large\bf Solution #1.}
+   \medskip}
+
+
+%-----------------------------------
+\begin{document}
+%-----------------------------------
+
+\maketitle
+
+Problems and Solutions from Frank S. Crawford, Jr. \emph{ waves - berkeley physics course - volume 3 }.  McGraw-Hill, Inc.  1968.  
+
+\section{ Free Oscillations of Simple Systems }
+
+\problemhead{1.1} $\int_1^2 - \vec{E} \cdot d\vec{s} = \phi_2 - \phi_1 = L\frac{d I_a}{dt}$ \\
+Recall that the inductance induces an $\vec{E}$ field to oppose changes to $I_a$ (Lenz' law) and that $\phi_2 - \phi_1 = \int_1^2 - \vec{E} \cdot d\vec{s}$, the electric potential, is defined as the work done to move a charge without acceleration, through an already setup $\vec{E}$ field.  
+
+Note that \textbf{voltage} is defined differently, oppositely, than the \emph{electric potential}.  \\
+$\int_0^1 -\vec{E} \cdot d\vec{s} = \phi_1 - \phi_0 = -V = \frac{-Q_1}{C}$ \\
+\[
+\begin{aligned}
+  \phi_2 - \phi_1 & = L \frac{d I_a}{dt} \\
+  \phi_3 - \phi_2 & = L \frac{d I_b}{dt} 
+\end{aligned}
+\quad 
+\begin{aligned}
+  \phi_0-\phi_1 & = V_1 = \frac{Q_1}{C} \\
+  \phi_0-\phi_2 & = V_2 = \frac{Q_2}{C} \\
+  \phi_0-\phi_3 & = V_3 = \frac{Q_3}{C} 
+\end{aligned}
+\]
+Charge conservation gives
+\[
+\frac{dQ_1}{dt} = -I_a, \quad \frac{dQ_2}{dt} = I_a-I_b, \quad \frac{dQ_3}{dt} = I_b
+\]
+You can add up the potentials, or you could think of it like this: \\
+The electromotive force across the inductance is the ``back emf,'' $L\frac{dI}{dt}$.  \\
+\quad Positive charge $Q_1$ drives current in the direction of positive $I_a$.  \\
+\quad Similarly, negative $Q_2$ gives negative $L\frac{dI}{dt}$  
+\[
+\begin{aligned}
+  L \frac{dI_a}{dt} & = \frac{1}{C} (Q_1 - Q_2) \\
+  L \frac{dI_b}{dt} & = \frac{1}{C} (Q_2 - Q_3)
+\end{aligned}
+\quad \,
+\begin{aligned}
+  L\ddot{I}_a & = \frac{1}{C} ( \dot{Q}_1 - \dot{Q}_2) \\
+  L\ddot{I}_b & = \frac{1}{C} ( \dot{Q}_2 - \dot{Q}_3 )
+\end{aligned}
+\]
+
+Guessing at the modes,
+\[
+\begin{gathered}
+\begin{aligned}
+  L \ddot{ (I_a + I_b) } & = \frac{1}{C} (\dot{Q}_1 - \dot{Q}_3 ) = \frac{-1}{C} (I_a + I_b) \\
+  L \ddot{ (I_a - I_b) } & = \frac{1}{C} (\dot{Q}_1 - 2 \dot{Q}_2 + \dot{Q}_3 ) = \frac{1}{C} ( -I_a + 2(-I_a+I_b) +I_b) \\
+  & = \frac{-3}{C} (I_a - I_b) 
+\end{aligned} \\
+\begin{aligned} 
+  I_1 = I_a + I_b \\
+  I_2  = I_a - I_b 
+\end{aligned} \quad
+\begin{aligned}
+  \omega_1^2 & = \frac{1}{LC} \\
+  \omega_2^2 & = \frac{3}{LC}
+\end{aligned} \quad 
+\begin{aligned}
+  \nu_1 & = \frac{1}{2 \pi} \sqrt{ \frac{1}{LC} } \\
+  \nu_2 & = \frac{1}{ 2 \pi} \sqrt{ \frac{3}{LC} } 
+\end{aligned}
+\end{gathered}
+\]
+So if $L= 10 H$, $C = 6 \mu F$, then $\nu_1 = 20cps; \, \nu_2 = 35cps$.  
+
+\problemhead{1.2}
+\begin{enumerate}
+\item Uniform circular motion is $\vec{a} = -\omega62 \vec{r}$.  \\
+The solution to this is $\vec{r} = x_0 \cos{ (\omega t) } \vec{e}_x + x_0 \sin{ (\omega t) } \vec{e}_y $  
+\item $\omega^2 = \frac{g}{l}$.  \[
+l  = \frac{g}{ \omega^2} = \frac{ 980 cm/s^2 }{ (2\pi)^2 \left( \frac{ 45 r }{ 1 min} \right)^2 \left( \frac{1 min}{ 60 sec} \right)^2 } \approx 45 cm
+\]
+\end{enumerate}
+
+\problemhead{1.3} \textbf{TV set as a stroboscope}.  \textbf{ Home experiment }.  As a very crude measurement, wave your finger in a steady oscillation in front of the screen at a rhythm of about $4$ cps, for example.  Your finger will block the light from the screen wherever it happens to be when the screen flashes on.  Measure the amplitude of your finger's oscillation.  Measure the separation between successive finger shadows at the point of maximum velocity.  Assume the motion is sinusoidal.  Calculate the maximum velocity of the finger, given the amplitude and frequency.  
+
+\[
+A \cos{(\omega t) } = x \quad \dot{x} = -\omega A \sin{\omega t} 
+\]
+I measured the following: \\
+$3 cm$ finger shadow separation.  \\
+$2 in \approx 5 cm$ actual finger separation, or twice the finger amplitude.  \\
+I estimate the finger frequency to be $2.5$ cycles/s.  \\
+$\dot{x}_{max} = \left( \frac{5 cm}{2 } \right)\left( \frac{5}{2} \frac{ cycles}{s} \right) \left( 2\pi /1 cycle \right) \simeq 40 \frac{cm}{s}$.  
+\[
+40 cm/s / (1.5 cm) = 27 cycles /s \xrightarrow{* 2 } = 54 cycles/sec.
+\]
+I reason to divide the maximum finger velocity by the finger shadow separation because I wanted to get how fast the finger shadow travels.  Then I multiply by two because I reason that finger shadows appear because the finger moves fast enough to block the ``on'' flicker of the light from the TV just in time and in two finger shadows, it has already flickered twice.  
+
+\problemhead{1.5} Looking at the system itself - what pulls on what, when, etc. and using the hint, the phase relationships are crucial,
+\begin{enumerate}
+  \item Same phases, in phase.  
+  \item Pendulum b lags in phase relative to pendulum a (pendulum a is ahead and is pulling pendulum b) 
+  \item Pendulum b is ahead of phase; pendulum b pulls a.  
+\end{enumerate}
+
+\problemhead{1.6} \emph{ Devise a damping mechanism (``friction'') that will damp only mode 1 of the coupled pendulums.  Devise another that will damp only mode 2.  Notice that friction at the supports (hinges) damped \textbf{ both } modes.  So does air resistance.  These will not work. }  
+
+Note that mode 1 is when both pendulums swing in lock step, in the same phase, in the same way.  The spring in between the two is not compressed at all.  Mode 2 is when both pendulums swing against each other, in the opposite manner, so the spring in between is compressed and stretched from both sides.  
+
+If increasing or decreasing the damping force means that the return force required for each of the modes is increased or decreased, respectively, then we can imagine damping mode 2 by increasing the spring constant.  The limit to increasing the spring constant is until only mode 1 is present since there's an immovable block between the pendulum.  
+
+One possible scheme, for \emph{ directly damping } mode 1 and also in the same sense of a damping force, is to place an air jet on the outer sides of each of the pendulum.  So pendulum 2 on the right will have an airjet pointing at it, pointing to the left, on its right, and pendulum 1 on the left will have an airjet pointing at it, pointing to the right, on its left.  Then this airjet will ``break'' any mode 1 configuration.  
+
+\problemhead{1.9} $1$-meter string.  $2$ in. sphere.  So $L \gg$ dimensions of bob.  \\
+$s = $ arclength $ = L \theta$.  $\dot{s} = L \dot{\theta}$.  \\ \, \\
+energy of the bob $= E = \frac{1}{2} M (L \dot{\theta})^2 + MgL (1- \cos{\theta})$.  
+
+If $\cos{\theta} \approx 1$, then $E = \frac{1}{2} M (L \dot{\theta})^2$ \\
+If $\cos{\theta} \simeq 1 + - \frac{\theta^2}{2}$; \text{ then } $E = \frac{1}{2} ML^2 (\dot{\theta}^2 + \frac{g}{2L} \theta^2 )$.  
+
+
+Instantaneous (means derivative!) \textbf{rate} of energy loss (\emph{means derivative!}),
+\[
+\frac{dE}{dt} = -C(L\dot{\theta})^p = -CL^p \left( \frac{2E}{ML^2} - \frac{g}{2L}\theta^2 \right)^{p/2}
+\]
+Suppose we obtain $\theta$ through the equation of motion:
+\[
+\begin{gathered}
+  ML \ddot{\theta} + \Gamma M L \dot{\theta} + Mg \theta = 0 \quad \quad \ddot{\theta} + \Gamma \dot{\theta} + \omega_0^2 \theta = 0 \\
+  \theta = A e^{\kappa t}; \quad \kappa^2 + \kappa \Gamma + \omega_0^2 = 0 \quad \kappa = \frac{ -\Gamma \pm \sqrt{ \Gamma^2 - 4(1) \omega_0^2 }}{ 2}
+\end{gathered}
+\]
+So now we can calculate what $\theta^2$ is in terms of $E$:
+\[
+\begin{gathered}
+  E = \frac{1}{2} ML^2 \left( \kappa^2 \theta62 + \frac{ \omega_0^2 \theta^2}{2} \right) = \frac{1}{2} ML^2 \left( \kappa^2 + \frac{ \omega_0^2}{ 2 } \right) \theta^2; \quad \, \theta^2 = \frac{2E}{ML^2} \left( \frac{1}{ \kappa^2 + \frac{ \omega_0^2}{ 2 }  } \right)  \\
+  \frac{dE}{dt} = -CL^p \left( \frac{2E}{ML^2} \left( 1 - \frac{\omega_0^2}{2} \left( \frac{1}{ \kappa^2 + \frac{\omega_0^2}{ 2} } \right) \right) \right)^{p/2} = -CL^p \left( \frac{2E}{ML^2} \left( \frac{ \kappa^2}{ \kappa^2 + \frac{\omega_0^2}{2} } \right) \right)^{p/2} = -K E^{p/2} \\
+  \int_{E_0}^{E_p} \frac{dE}{E^{p/2}} = \int_0^T - K dt = \frac{E_f^{p/2 + 1 } }{ 1 + p/2} - \frac{E_0^{p/2 +1}}{ 1 + p/2} = -KT; \\
+  E(t) = \left( \left( -Kt + \frac{E_0^{p/2+1}}{ 1 + p/2} \right)(1+ p/2) \right)^{\frac{1}{ \frac{p}{2} + 1 } }
+\end{gathered}
+\]
+If $p=2$, \quad $\ln{ \frac{E_f}{E_0} } = - Kt \quad \boxed{ E(t) = E_0 e^{-K t} }$.  
+\[
+K = C \left( 2 \left( \frac{ \kappa^2}{ \kappa^2 + \frac{\omega_0^2}{2} } \right) \right)^{p/2} \frac{1}{ M^{p/2}}
+\]
+For $p=2$, $K = C \left( 2 \left( \frac{ \kappa^2}{ \kappa^2 + \frac{ \omega_0^2}{ 2 } } \right) \right) \frac{1}{M}$ so the mean decay time $\frac{1}{K}$, is proportional to $M$.  
+
+If $\cos{\theta} \approx 1$, it's the same as saying $\omega_0^2 = \frac{g}{L} \ll \kappa^2$, since $L$ is long, so the return force is small.  
+\[
+\Longrightarrow \frac{dE}{dt} = - CL^p \left( \frac{2E}{ML^2} \right)^{p/2}, \quad K = C \frac{ (2)^{p/2}}{ M^{p/2}} 
+\]
+To consider oscillation amplitude, think of the pendulum bob at its turning pts. during oscillation.  
+\[
+E_1 = \frac{1}{2} ML^2 \frac{g}{2L} \theta_1^2 \quad \frac{4 E_1}{gML} = \theta_1^2
+\]
+\[
+\begin{gathered}
+  \frac{ (\theta_{1,al}(T))^2 }{ A^2} = \frac{E_{1,al}(T)}{ E_{0,al}} = e^{-K_{al}T}; \quad \frac{ (\theta_{1,brass}(T))^2}{ A^2 } = \frac{ E_{1,brass}(T)}{ E_{0,brass} } = e^{-K_{brass} T } \\
+  2 \ln{ \left( \frac{\theta_{al}}{ A} \right) } = -K_{al} T ; \quad 2 \ln{ \left( \frac{ \theta_{brass}}{A} \right) } = -K_{brass} T \\
+  \frac{ \ln{ \left( \frac{\theta_{al}}{ A } \right) } }{ \ln{ \left( \frac{ \theta_{brass}}{ A } \right) }} = \frac{ -K_{al} T}{ -K_{brass} T} = \frac{M_{brass}}{ M_{aluminum}} \\
+    \frac{\theta_{brass}}{A} = \exp{\left( \frac{ M_{aluminum}}{ M_{brass}}  \ln{  \frac{ \theta_{al}}{A } } \right) }
+\end{gathered}
+\]
+The density of brass is $8600 \, kg/m^3$ and the density of aluminum is $2700 \, kg/m^3$.  
+
+\problemhead{1.10} 
+\begin{enumerate}
+\item $a_0 = 20 \, cm$; \quad $2a = 10 cm; \, a=5 cm$.  \quad $Mg = K \Delta x$; \quad $\frac{K}{M} = \frac{g}{a} = \omega^2$.  
+\[
+\nu = \frac{\omega }{2\pi} = \sqrt{ \frac{g}{a} } \left( \frac{1}{ 2\pi } \right) 
+\]
+\item $\omega a = \sqrt{ \frac{g}{a} } a = \frac{ (14) }{ s } (5 cm ) = \boxed{ 70 \frac{cm}{s} }$
+\item $\omega^2 = \frac{K}{M}$; \quad $\omega = \sqrt{ \frac{K}{M} }$.  \quad $\frac{ \omega}{2} = \sqrt{ \frac{K}{ M + \Delta M } }; \quad \left( \frac{1}{2} \right)^2 = \frac{M}{M +\Delta M }$ \\
+$\frac{1}{4} \Delta M = \frac{3}{4} M $ \quad $\boxed{ M = 100 \, g } $  \\
+\[
+\begin{gathered}
+  (M+\Delta M)g = K a_{new} \quad Mg = K a_{old}; \quad Mg + \Delta M g = \frac{Mg}{ a_{old} } a_{new} \\
+  a_{old} \left( 1 + \frac{\Delta M}{M} \right) = 20 cm = a_{new}; \quad 15 cm \text{ below the old position }
+\end{gathered}
+\]
+\end{enumerate}
+
+\problemhead{1.11} \[
+\begin{aligned}
+  M_1 \ddot{\phi_1} & = -K' \phi_1 - K \phi_1 + K' \phi_2 = -K' (\phi_1 - \phi_2 ) - K\phi_1  \\
+  M_2 \ddot{\phi_2} & = -K' \phi_2 - K \phi_2 + K' \phi_1 = -K' (\phi_2 - \phi_1 ) - K\phi_2 
+\end{aligned}
+\]
+If $M_1 = M_2 = M$, 
+\[
+\begin{aligned}
+  \ddot{\phi}_1 & = -\frac{K'}{M} (\phi_1 - \phi_2 ) - \frac{K}{M} \phi_1  \\
+  \ddot{\phi}_2 & = -\frac{K'}{M} (\phi_2 - \phi_1 ) - \frac{K}{M} \phi_2
+\end{aligned} \quad 
+\begin{aligned}
+  \ddot{\phi_1 + \phi_2} & = \frac{-K}{M} (\phi_1 + \phi_2) \\
+  \ddot{ \phi_1 - \phi_2} & = \frac{ -K'}{M} ( 2 \phi_1 - 2\phi_2) - \frac{K}{M} (\phi_1 - \phi_2) = \frac{ -2K' - K}{M} (\phi_1 - \phi_2 )
+\end{aligned}
+\]
+\[
+\begin{aligned}
+  & \text{ Mode } 1 : \quad \phi_1 = \phi_2; \quad \omega_1^2 = \frac{K}{M} \\
+  & \text{ Mode } 2 : \quad \phi_1 = -\phi_2 ; \quad \omega_2^2 = \frac{ 2K' + K}{M} 
+\end{aligned}
+\]
+It's interesting to see what happens whem $M_1 \neq M_2$; \quad $K=K'$
+\[
+\begin{aligned}
+  M_1 \ddot{\phi}_1 & = - K' (\phi_1 - \phi_2) - K \phi_1 = -K (2 \phi_1 - \phi_2 ) \\
+  M_2 \ddot{\phi}_2 & = - K' (\phi_2 - \phi_1) - K \phi_2 = -K (2 \phi_2 - \phi_1 ) 
+\end{aligned} \Longrightarrow
+\begin{aligned}
+  \frac{1}{A} \ddot{\phi}_1 & = -(2\phi_1 - \phi_2) \\
+  \frac{1}{B} \ddot{\phi}_2 & = -(2 \phi_2 - \phi_1)
+\end{aligned}
+\]
+\[
+\left[ \begin{matrix} -2A & A \\
+B & -2B \end{matrix} \right] \left[ \begin{matrix} \phi_1 \\ \phi_2 \end{matrix} \right] = \lambda^2 \left[ \begin{matrix} \phi_1 \\ \phi_2 \end{matrix} \right] 
+\]
+Assume irreducible solutions.  Solve this eigenvalue equation to obtain the eigenvalues
+\[
+\lambda^2 = -(A+B) \pm \sqrt{ (A-B)(A+B) - AB }
+\]
+Then plug this eigenvalue back in to obtain the modes:
+\[
+\begin{aligned}
+  (A- B \pm \sqrt{ A^2 - AB + B^2 } ) \phi_1 & = A \phi_2 \\
+  (B-A \pm \sqrt{ A^2 - AB + B^2 } ) \phi_2 & = B \phi_1
+\end{aligned}
+\]
+You can check that the above relationships for the modes are self-consistent.  
+
+This solution doesn't provide sinuisoidal motion.  
+
+\problemhead{1.14,15} Without loss of generality, consider $M_a = M_b$, for 2 coupled pendulum bobs.  
+\[
+\begin{aligned}
+  \ddot{\theta}_a & = - \omega_0^2 \theta_a - \frac{K}{M} (\theta_a - \theta_b) \\
+  \ddot{\theta}_b & = - \omega_0^2 \theta_b - \frac{K}{M} (\theta_b - \theta_a) 
+\end{aligned}
+\] 
+\[
+\begin{aligned}
+  \ddot{ (\theta_a + \theta_b) } & = - \omega_0^2 (\theta_a + \theta_b) \\
+  \ddot{ (\theta_a - \theta_b) } & = (- \omega_0^2 - \frac{2K}{M} ) (\theta_a - \theta_b) \\
+\end{aligned} \quad
+\begin{aligned}
+\theta_1 & = \theta_a + \theta_b \\
+\theta_2 & = \theta_a - \theta_b 
+\end{aligned} \quad
+\begin{aligned}
+  \omega_1 & = \omega_0 \\
+  \omega_2^2 & = \omega_0^2 + \frac{2K}{M}
+\end{aligned}
+\]
+\[
+\begin{aligned}
+  \theta_2 & = A_2 \cos{ (\omega_2 t) } + B_2 \sin{ (\omega_2 t) } \\
+  \dot{ \theta_2 } & = \omega_2 ( -A_2 \sin{ (\omega_2 t ) } + B_2 \cos{ ( \omega_2 t ) } )
+\end{aligned} \quad 
+\dot{\theta}_2(0) = 0 = B_2
+\]
+$A_2 = 2$ because if $\theta_a = 1 \cos{ \omega_2 t } ; \quad \theta_b = - 1 \cos{ (\omega_2 t ) }, \quad \theta_a - \omega_b = 2 \cos{ (\omega_2 t ) } $.  
+\[
+\begin{aligned}
+ \theta_1 & = A_1 \cos{ (\omega_1 t) } + B_1 \sin{ (\omega_1 t) } \\
+  \dot{ \theta}_1 & = \omega_1 ( -A_1 \sin{ (\omega_1 t ) } + B_1 \cos{ ( \omega_1 t ) } )
+\end{aligned}\quad
+\dot{\theta}(0) = 0 = B_1
+\]
+$A_1 = 2$ because if $\theta_a = 1 \cos{ (\omega_1 t) }; \quad \theta_b = 1 \cos{ (\omega_1 t ) }$, then $\theta_a + \theta_b = 2 \cos{ (\omega_1 t ) }$. 
+\[
+\begin{gathered}
+  \begin{aligned}
+    & \theta_{a,i}(0) + \theta_{a,ii}(0) = 1 + 1 = 2 \\
+    & \theta_{b,i}(0) + \theta_{b,ii}(0) = -1 + 1 = 0 
+  \end{aligned} \\
+  \theta_{a,iii}(0) = 2 = \frac{1}{2} (A_1 + A_2) ; \quad \theta_{b,iii} = 0 = \frac{1}{2} (A_1 - A_2) ; \quad A_1 = A_2 = 2 \\
+  \dot{\theta}_{a,iii}(0) = \dot{\theta}_{b,iii}(0) = 0 \quad \text{ so } B_1 = B_2 = 0 \\
+  \begin{aligned}
+    \theta_{a,iii}(t) & = \frac{2 \cos{ \omega_1 t } + 2 \cos{ \omega_2 t } }{ 2 }  = \cos{\omega_1 t } + \cos{ \omega_2 t} \\
+    \theta_{b,iii}(t) & = \frac{2 \cos{ \omega_1 t } - 2 \cos{ \omega_2 t } }{ 2 }  = \cos{\omega_1 t } - \cos{ \omega_2 t}
+\end{aligned}
+\end{gathered}
+\]
+\[
+\begin{gathered}
+  \begin{aligned}
+    \theta_a & = \frac{ \theta_1 + \theta_2 }{ 2 } = \frac{ A_1 \cos{ (\omega_1 t ) } + B_1 \sin{ (\omega_1 t ) } + A_2 \cos{ (\omega_2 t ) } + B_2 \sin{ (\omega_2 t ) } }{ 2 } \\
+    \theta_a(0) & = \frac{ A_1 + A_2 }{ 2 } \\
+    \dot{\theta}_a & = \frac{ \omega_1 ( -A_1 \sin{ (\omega_1 t ) } + B_1 \cos{ (\omega_1 t ) }  ) + \omega_2 (-A_2 \sin{ (\omega_2 t ) } + B_2 \cos{ (\omega_2 t ) } ) }{ 2 } \\
+    \dot{\theta}_a(0) & = \frac{ \omega_1 B_1 + \omega_2 B_2 }{ 2 } \\
+    \theta_b & = \frac{ \theta_1 + -\theta_2 }{ 2 } \quad \theta_b(0)  = \frac{A_1 -A_2 }{2} \quad \dot{\theta}_b(0) & = \frac{ \omega_1 B_1 - \omega_2 B_2}{2 } 
+\end{aligned} \\
+  \begin{aligned}
+    \theta_a(0) & = \frac{A_1 + A_2}{2} \quad & \theta_b(0) & = \frac{ \omega_1 B_1 + \omega_2 B_2 }{ 2 } \\
+    \dot{\theta}_a(0) & = \frac{A_1 -A_2}{2} \quad & \dot{\theta}_b(0) = \frac{ \omega_1 B_1 - \omega_2 B_2}{ 2 } 
+\end{aligned} \\
+  \begin{aligned}
+    \theta_a^i(0) + \theta_a^{ii}(0) & = \frac{ (A_1^i + A_1^{ii} ) + (A_2^i + A_2^{ii}) }{ 2 } \quad & \theta_b^i(0) + \theta_b^{ii}(0)  = \frac{ \omega_1 (B_1^i + B_1^{ii}) + \omega_2 ( B_2^i + B_2^{ii} ) }{ 2 } \\
+    \dot{\theta}_a^i(0) + \dot{\theta}_a^{ii}(0) & = \frac{ (A_1^i + A_1^{ii} ) - (A_2^i + A_2^{ii}) }{ 2 } \quad & \dot{\theta}_b^i(0) + \dot{\theta}_b^{ii}(0)  = \frac{ \omega_1 (B_1^i + B_1^{ii}) - \omega_2 ( B_2^i + B_2^{ii} ) }{ 2 } 
+    \end{aligned}
+\end{gathered}
+\]
+We can say then that the new motion is just the superposition of the motions for cases i, ii because the constants for modes 1,2 are uniquely determined by the superposition of the initial conditions.  
+
+\problemhead{1.16} If $\phi_1, \, \phi_2$ are solutions to
+\[
+\frac{d^2 \phi(t)}{ dt^2}  = -C \phi + \alpha \phi^2 + \beta \phi^3 + \gamma \phi^4 + \dots
+\]
+then
+\[
+\begin{aligned}
+  \frac{d^2 \phi_1}{ dt^2 } = -C \phi_1 + \alpha \phi_1^2 + \beta \phi_1^3 + \gamma \phi_1^4 + \dots
+  \frac{d^2 \phi_2}{ dt^2 } = -C \phi_2 + \alpha \phi_2^2 + \beta \phi_2^3 + \gamma \phi_2^4 + \dots
+\end{aligned}
+\]
+By the linearity of the differentiation operation, for the left hand side of the previous equation,
+\[
+\frac{d^2 \phi_1}{dt^2} + \frac{d^2 \phi_2}{dt^2}  =\frac{d^2}{dt^2} (\phi_1 + \phi_2)
+\]
+while on the right hand side (RHS), 
+\[
+=-C(\phi_1 + \phi_2) + \alpha (\phi_1^2 + \phi_2^2 ) + \beta (\phi_1^3 + \phi_2^3 ) + \gamma (\phi_1^4 + \phi_2^4)
+\]
+but if $\phi = \phi_1 + \phi_2$ is a solution to \[
+\frac{d^2}{dt^2} (\phi_1 + \phi_2) = -C (\phi_1 + \phi_2) + \alpha(\phi_1 + \phi_2) + \alpha(\phi_1 + \phi_2)^2 + \beta(\phi_1 + \phi_2)^3 + \gamma (\phi_1 + \phi_2)^4
+\]
+then 
+\[
+\begin{aligned}
+  -C(\phi_1 +\phi_2) & = -C \phi_1 - C \phi_2 \\
+  \alpha (\phi_1 + \phi_2)^2 & = \alpha \phi_1^2 + \alpha \phi_2^2 \\
+  \beta ( \phi_1 + \phi_2)^3 & = \beta \phi_1^3 + \beta \phi_2^3 \\
+  \gamma (\phi_1+\phi_2)^4 & = \gamma \phi_1^4 + \gamma \phi_2^4
+\end{aligned}
+\]
+but this is only true if $\alpha, \, \beta, \, \gamma, \dots = 0 $  
+
+\problemhead{1.17} Equations 47, 48 are
+\[
+\begin{aligned}
+  \frac{d^2 x}{dt^2 } & = - a_{11} x - a_{12} y  \\
+  \frac{d^2 y}{dt^2 } & = - a_{21} x - a_{22} y 
+\end{aligned}
+\]
+The three dimensional analogue is
+\[
+\begin{aligned}
+\ddot{x}_1 & = - (a_{11} x_1 + a_{12} x_2 + a_{13} x_3 ) \\
+\ddot{x}_2 & = - (a_{21} x_1 + a_{22} x_2 + a_{23} x_3 ) \\
+\ddot{x}_3 & = - (a_{31} x_1 + a_{32} x_2 + a_{33} x_3 ) 
+\end{aligned}  
+\]
+If we assume a mode, then we can obtain the three-dimensional determinant equation.
+\[
+\left| \begin{matrix} a_{11} - \omega^2 & a_{12} \\ a_{21} & a_{22} - \omega^2 \end{matrix} \right| \equiv (a_{11} - \omega^2 )( a_{22} - \omega^2 ) - a_{12}a_{21} = 0 
+\]
+\[
+\begin{gathered}
+\left[ \begin{matrix} a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} \\
+\end{matrix}
+\right] \left[ \begin{matrix} x_1 \\ x_2 \\ x_3 \end{matrix} \right] = \lambda^2 \left[ \begin{matrix} x_1 \\ x_2 \\ x_3 \end{matrix} \right] \Longrightarrow \left| \begin{matrix} a_{11} - \lambda^2 & a_{12} & a_{13} \\ a_{21} & a_{22} - \lambda^2 & a_{23} \\ a_{31} & a_{32} & a_{33}  - \lambda^2 \end{matrix} \right| = 0  \\
+(a_11 - \lambda^2) \left( (a_{22} - \lambda^2 )(a_{33} - \lambda^2 ) - a_{23}a_{32} \right) - a_{12} ( a_{21} (a_{33} - \lambda^2) - a_{23} a_{31} ) + a_{13} (a_{21} a_{32} - a_{31} (a_{22} - \lambda^2 ) ) = 0 
+\end{gathered}
+\]
+This polynomial equation is cubic.  \\
+Let $A$ be an $N \times N$ matrix, $x$ an $n-$tuple.  $-Ax = -\lambda^2 x$.  
+
+$det(A-\lambda I)$ is an $N$th degree polynomial.  By the fundamental theorem of algebra, there are $N$ roots.  
+
+\problemhead{1.19} Write down the equation of motion: $M_a L \ddot{\phi}_a = -M_a g \phi_a - K (\phi_a - \phi_b)L $.  \\
+By label symmetry, $M_b L \ddot{\phi}_b = -M_b g \phi_b - K (\phi_b - \phi_a)L $
+\[
+\Longrightarrow \begin{aligned} 
+  M_a \ddot{\phi}_a & = - M_a \frac{g}{L} \phi_a - K(\phi_a - \phi_b) \\
+  M_b \ddot{\phi}_b & = - M_b \frac{g}{L} \phi_b - K(\phi_b - \phi_a)
+\end{aligned}
+\]
+Also, assume small oscillations: $\sin{\phi} \simeq \phi$.  
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    \ddot{\phi}_a & = -\omega_0^2 \phi_a - K_a (\phi_a - \phi_b) \\ 
+    \ddot{\phi}_b & = -\omega_0^2 \phi_b - K_b (\phi_b - \phi_a) 
+  \end{aligned} \\
+\begin{gathered}
+  M_a \ddot{\phi}_a + M_b \ddot{\phi}_b = -\omega_0^2 (M_a \phi_a + M_b \phi_b) \\
+  \phi_1 = \frac{M_a \phi_a + M_b \phi_b }{ M_a + M_b } \quad \ddot{\phi}_1 = -\omega_0^2 \phi_1 
+\end{gathered} \quad \quad
+\begin{aligned}
+  \ddot{(\phi_a - \phi_b)} & = -\omega_0^2 ( \phi_a - \phi_b) + (-K_a - K_b) (\phi_a - \phi_b) = \\
+  & = (-\omega_0^2 - K_a -K_b )(\phi_a - \phi_b) \\
+  \omega_2^2 & = \omega_0^2 + \frac{ K (M_b + M_a ) }{ M_a M_b }
+\end{aligned} 
+\end{gathered}
+\]
+For $\phi_1$, the pendulum bobs each move (in amplitude) in inverse proportion to its mass.  
+For $\phi_2$, the pendulum bobs push and pull away from each other.  
+\[
+\left[ 
+\begin{matrix} 
+\phi_1 \\ \phi_2 \end{matrix} \right] = \left[ \begin{matrix} M_a/M & M_b/M \\ 1 & -1 \end{matrix} \right] \left[ \begin{matrix} \phi_a \\ \phi_b \end{matrix} \right] ; \quad \left[ \begin{matrix} \phi_a \\ \phi_b \end{matrix} \right]  = \frac{1}{ \frac{ -M_a}{M} - \frac{M_b}{M} } \left[ \begin{matrix} -1 & - M_b/M \\ -1 & -M_a/M \end{matrix} \right] \left[ \begin{matrix} \phi_1 \\ \phi_2 \end{matrix} \right] = \begin{matrix} \phi_1 + \frac{M_b}{M} \phi_2 \\ \phi_1 - \frac{M_a}{M} \phi_2 \end{matrix}
+\]
+\[
+\begin{gathered}
+\begin{aligned}
+  \phi_a(t) & = A_1 \cos{ (\omega_1 t) } + B_1 S(\omega_1 t) + \frac{M_b}{M} ( A_2 C(\omega_2 t) + B_2 S(\omega_2 t) ) \\  
+  \dot{\phi}_a(t) & = -\omega_1 A_1 S(\omega_1 t) + \omega_1 B_1 C(\omega_1 t ) + -\omega_2 \frac{M_b}{M} A_2 S(\omega_2 t) + \frac{M_b}{M} B_2 \omega_2 C(\omega_2 t) \\
+  \dot{\phi}_a(0) & = 0 = \omega_1 B_1 + \frac{M_b}{M} B_2 \omega_2  \\
+  \phi_a(t) & = A_1 + \frac{M_b}{M} A_2 = A
+\end{aligned} \\
+\begin{aligned}
+  \phi_b(t) & = A_1 \cos{ (\omega_1 t) } + B_1 S(\omega_1 t) - \frac{M_a}{M} ( A_2 C(\omega_2 t) + B_2 S(\omega_2 t) ) \\  
+  \dot{\phi}_b(t) & = -\omega_1 A_1 S(\omega_1 t) + \omega_1 B_1 C(\omega_1 t ) + \omega_2 \frac{M_a}{M} A_2 S(\omega_2 t) + \frac{M_b}{M} B_2 \omega_2 C(\omega_2 t) \\
+  \dot{\phi}_b(0) & = 0 = \omega_1 B_1 - \frac{M_a}{M} B_2 \omega_2  \quad \quad B_2 = B_1 = 0 \\
+  \phi_b(t) & = A_1 - \frac{M_a}{M} A_2 = 0
+\end{aligned} \\
+\left( \frac{M_a}{M} + \frac{M_b}{M} \right) A_2 = A_2 = A \quad \quad A_1 = \frac{M_a}{M} A \\
+\begin{aligned}
+  \phi_a(t) & = \frac{A M_a}{M} C(\omega_1 t) + \frac{ A M_b}{ M} C(\omega_2 t ) ; \quad \, \phi_b(t) = A \left( \frac{M_a}{M} C(\omega_1 t ) \right) - \frac{M_a}{M} A C(\omega_2 t ) \\
+  \dot{\phi}_a(t) & = - \left( \frac{A}{M} \right) ( \omega_1 M_a S(\omega_1 t) + \omega_2 M_b S(\omega_2 t) ); \quad \dot{\phi}_b(t) = - \frac{AM_a}{M} (\omega_1 S(\omega_1 t) = \omega_2 S(\omega_2 t) ) \\
+  \phi_a^2 & = \left( \frac{A}{M} \right)^2 ( (M_a C_1)^2 + 2 M_a M_b C_1 C_2 + (M_b C_2)^2 ) \\
+  \dot{\phi}_a^2 & = \left( \frac{A}{M} \right)^2 ( \omega_1^2 M_a^2 S_1^2 + 2 \omega_1 \omega_2 M_a M_b S_1 S_2 + \omega_2^2 M_b^2 S_2^2 ) \\
+  \phi_b^2 & = \left( \frac{A M_a}{M} \right)^2 ( C_1^2 - 2 C_1 C_2 + C_2^2 ) \\
+  \dot{\phi}_b^2 & = \left( \frac{AM_a}{M} \right)^2 ( \omega_1^2 S_1^2 + -2 \omega_1 \omega_2 S_1 S_2 + \omega_2^2 S_2^2 )
+\end{aligned} 
+\end{gathered}
+\]
+A better way to deal with these above trig. functions and squaring a sum of these trig functions is suggested by the book, which is to consider the following:
+\[
+\begin{gathered}
+  \begin{aligned}
+    \omega_{av} & = \frac{\omega_1 + \omega_2}{2} \\
+    \omega_{mod} & = \frac{ \omega_2 - \omega_1}{2} 
+  \end{aligned} \quad \quad 
+  \begin{aligned}
+    \omega_1 & = \omega_{av} - \omega_{mod} \\
+    \omega_2 & = \omega_{av} + \omega_{mod} 
+  \end{aligned}  \\
+  \begin{aligned}
+    \phi_a & = \frac{A}{M} \left( M_a ( C(\omega_{av} t ) C(\omega_{mod} t) + S(\omega_{av} t ) S(\omega_{mod} t) )\right) + M_b (C(\omega_{av} t) C(\omega_{mod} t) - S(\omega_{av} t) S(\omega_{mod} t) ) = \\ 
+    & = A (C(\omega_{av}t) C(\omega_{mod} t ) + \frac{M_a - M_b}{M} S(\omega_{av} t) S(\omega_{mod}t ) ) \\
+    \phi_b & = \frac{AM_a}{M} (S(\omega_{av} t ) S (\omega_{mod} t )) 
+  \end{aligned} 
+\end{gathered}
+\]
+Assume weak coupling.  $\omega_{mod} \ll \omega_{av}$.  
+
+\[
+\begin{aligned}
+  \dot{\phi}_a & = A (-\omega_{av} \sin{ (\omega_{av} t ) } C(\omega_{mod} t ) + \frac{ M_a - M_b}{M} \omega_{av} C(\omega_{av} t ) S(\omega_{mod} t ) ) \\
+  \dot{\phi}_b & = \frac{ A M_a}{M} (\omega_{av} C(\omega_{av} t ) S(\omega_{mod}t ) )  \\
+  \dot{\phi}_a^2 & = A^2 \omega_{av}^2 ( S^2(\omega_{av} t ) C^2 (\omega_{mod} t ) + - 2 \left( \frac{M_a - M_b}{M} \right) S(\omega_{av} t ) C(\omega_{mod}t ) C(\omega_{av} t ) S(\omega_{mod} t) + \\
+  & + \left( \frac{M_a - M_b}{M} \right)^2 C^2 (\omega_{av} t ) S^2(\omega_{mod}t ) ) \\
+  \phi_a^2 & = A^2 ( C^2(\omega_{av} t ) C^2 (\omega_{mod} t ) +  2 \left( \frac{M_a - M_b}{M} \right) C(\omega_{av} t ) C(\omega_{mod}t ) S(\omega_{av} t ) S(\omega_{mod} t) + \\
+& + \left( \frac{M_a - M_b}{M} \right)^2 S^2 (\omega_{av} t ) S^2(\omega_{mod}t ) ) \\
+\end{aligned}
+\]
+\[
+\begin{gathered}
+  \frac{1}{2} M_a (\dot{\phi}_a^2 + \omega_0^2 \phi_a^2 ) = \frac{1}{2} M_a (A^2) ( \omega_{av}^2 (C^2(\omega_{mod} t) + \frac{ (M_a - M_b)^2 }{M^2} S^2 (\omega_{mod} t) ) =  \\
+  = E \left( \frac{ (M_a^2 + 2M_a M_b + M_b^2 ) C^2( \omega_{mod} t ) + (M_a^2 - 2 M_a M_b + M_b^2 ) S^2(\omega_{mod} t) }{ M^2}\right) \\
+  \boxed{ E_a  = E \left( \frac{ M_a^2 + M_b^2 + 2 M_a M_b \cos{ (\omega_2 - \omega_1 )t } }{ M^2 } \right) }
+\end{gathered}
+\]
+\[
+\begin{aligned}
+  E_b & = \frac{1}{2} M_b (\dot{\phi}_b^2 + \omega_0^2 \phi_b^2 ) = \frac{1}{2} M_b ( \left( \frac{AM_a}{M} \right)^2 \omega_{av}^2 C^2(\omega_{av} t ) S^2(\omega_{mod}t) + \omega_0^2 \left( \frac{AM_a}{M} \right)^2 S^2(\omega_{av} t) S^2(\omega_{mod} t) ) = \\
+  & = \frac{1}{2} M_b \left( \frac{AM_a}{M} \right)^2 (\omega_{av}^2 ) (S^2(\omega_{mod} t ) ) = \frac{1}{2} M_b \frac{ A^2 M_a^2 }{ M^2 } \omega_{av}^2 \left( \frac{1 - \cos{ (\omega_2 - \omega_1 ) t } }{2 } \right) \\
+  & = E \frac{M_a M_b}{M^2} \left( \frac{1 - \cos{ (\omega_2 - \omega_1 ) t } }{ 2 } \right) 
+\end{aligned}
+\]
+No, the energy is not completely transferred.  
+
+If $M_a \gg M_b, \quad E_a  = E(C^2(\omega_{mod} t ) + \left( \frac{M_a}{M} \right)^2 S^2(\omega_{mod} t ) ) $ \\
+If $M_a \simeq M_b, \quad E_a \simeq E(C^2(\omega_{mod} t ) ); \quad E_b \simeq E \left( \frac{1 - \cos{ (\omega_2 - \omega_1 )t } }{ 2 } \right) $.  
+
+The energy transfer does not continue to completion when the masses are unequal because if $M_a \gg M_b$, then $M_a$, with all its potential energy, transfers the max. energy $M_b$ could take.  If $M_a \ll M_b$ , then $M_a$ can't move or impart any more momentum change to $M_b$ as it could. 
+
+\problemhead{1.20} \textbf{ Transverse oscillations of two coupled masses}.  \\
+\emph{ Slinky Approximation}.  
+\[
+\begin{aligned}
+  & T_0 \left( \frac{L}{a} \right) = K(a- a_0) \frac{L}{a} = KL (1 - \frac{a_0}{a} ) \simeq KL \\
+  & T = K(L-a_0) = KL(1 - \frac{a_0}{L} ) \simeq KL 
+\end{aligned} \quad \, 
+\Longrightarrow T = T_0 \left( \frac{L}{a} \right) 
+\]
+
+\[
+\begin{aligned}
+  \sin{\theta_a} & = \frac{ \phi_a}{L} \\
+  \sin{\theta_{ab}} & = \left( \frac{ \phi_a - \phi_b}{ L_{ab}} \right) \\
+  T_a \sin{ \theta_a} & = T_0 \left( \frac{L_a}{a} \right) \frac{ \phi_a }{ L_a } = \frac{T_0}{a} \phi_a \\
+  T_{ab} \sin{ \theta_{ab}} & = T_0 \left( \frac{ L_{ab}}{a} \right) \frac{ (\phi_a - \phi_b) }{ L_{ab}} = \frac{T_0}{a} (\phi_a - \phi_b) 
+\end{aligned}
+\]
+
+\emph{small-oscillation approximation} $L \simeq a$
+\[
+\begin{gathered}
+  \begin{aligned}
+    T_0 & = K (a-a_0) \\
+    T & = K(L-a_0) 
+  \end{aligned} \\
+  \begin{aligned}
+    & T \sin{ \theta_a} = K(L-a_0) \frac{\phi_a}{L} \simeq K(a-a_0) \frac{\phi_a}{a} = T_0 \frac{ \phi_a}{a} \\
+    & T_{ab} \sin{\theta_{ab}} = K(L_{ab} - a_0) \frac{ \phi_a - \phi_b}{L_{ab}} \simeq K (a-a_0)\frac{ (\phi_a - \phi_b)}{a} = T_0 \frac{ (\phi_a - \phi_b) }{ a } 
+  \end{aligned}
+\end{gathered}
+\]
+
+\[
+\begin{aligned}
+  M \ddot{\phi}_a & = - \frac{T_0}{a} (2 \phi_a - \phi_b) \\
+  M \ddot{\phi}_b & = -\frac{T_0}{a} ( 2 \phi_b - \phi_a) \quad \text{ (by label symmetry) }  
+\end{aligned}
+\quad \, \omega_0^2 = \frac{T_0}{Ma}
+\]
+
+Solving the eigenvalue equation
+\[
+-\omega_0^2 \left( \begin{matrix} 2 & - 1 \\ -1 & 2 \end{matrix} \right) \left( \begin{matrix} \phi_a \\ \phi_b \end{matrix} \right) = -\lambda^2 \left( \begin{matrix} \phi_a \\ \phi_b \end{matrix} \right) 
+\]
+and plugging back in the eigenvalues from the found eigenvalue, determinant equation - ( $(\lambda^2 - 3)(\lambda^2 - 1 ) $) - we can get the modes, which is $\phi_a = \phi_b$ for $\lambda^2 = \omega_0^2$ and $\phi_a = -\phi_b$ for $\lambda^2 = 3 \omega_0^2$.  
+
+We could also guess at the modes.  
+\[
+\begin{aligned}
+  \ddot{\phi}_a & = -\omega_0^2 (2 \phi_a - \phi_b) \\
+  \ddot{\phi}_b & = -\omega_0^2 (2 \phi_b - \phi_a)
+\end{aligned} \quad \quad
+\begin{aligned}
+  \ddot{ (\phi_a + \phi_b) } & = -\omega_0^2 (\phi_a + \phi_b) \\
+  \ddot{ (\phi_a - \phi_b) } & = -\omega_0^2 (\phi_a + \phi_b) 
+\end{aligned}
+\]
+
+\problemhead{1.21} \textbf{ Oscillations of two coupled LC circuits}.  Equations 77, 78 are
+\[
+\begin{gathered}
+\begin{aligned}
+  L \frac{d^2 I_a}{dt^2} & = \frac{-I_a}{C} + \frac{ (I_b - I_a)}{ C } \\
+  L \frac{d^2 I_b}{dt^2} & = \frac{-I_b}{C} + \frac{ (I_a - I_b)}{ C } 
+\end{aligned} \\
+\begin{aligned}
+  \ddot{I}_a & = \frac{-1}{LC} ( 2 I_a - I_b ) \\
+  \ddot{I}_b & = \frac{-1}{LC} (2 I_b - I_a ) 
+\end{aligned} \quad \, \omega_0^2 = \frac{1}{LC} 
+\end{gathered}
+\]
+The forms of the equations is exactly like the problem before.  Thus \\
+Mode 1: $I_a = I_b \quad \, \omega_1 = \omega_0$ \\
+Mode 2: $I_a = -I_b \quad \, \omega_2^2 = 3\omega_0^2$ 
+
+\problemhead{1.22} 
+\[
+\begin{gathered}
+  \begin{aligned} K \Delta x & = Mg \\
+  \Delta x & 1 \, cm 
+\end{aligned} \\
+  \begin{aligned}
+    \frac{K}{M} & = \frac{g}{\Delta x} = \frac{ 980 \, cm/s^2}{ 1 \, cm } = \frac{ 980 }{ s^2 } \\
+    \frac{K}{M} & = \omega_0^2; \quad \omega_0 = \sqrt{ \frac{ 980}{s^2} } = \frac{ 14 \sqrt{5}}{ s } \\
+    \nu & = \frac{ \omega_0}{ 2 \pi } = \frac{ 14 \sqrt{5}}{ 2 \left( \frac{22}{7} \right) s } = \frac{ 49 \sqrt{5}}{ 22 } \left( \frac{1}{s} \right) 
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{1.23} \textbf{ Longitudinal oscillations of two coupled masses } 
+\[
+\begin{gathered}
+  \begin{aligned}
+    M \ddot{\phi}_a & = -K (2 \phi_a - \phi_b) \\
+    M \ddot{\phi}_b & = -K (2 \phi_b - \phi_a ) 
+  \end{aligned} \quad \quad 
+\begin{aligned}
+  \ddot{\phi}_a = -\omega_0^2 ( 2 \phi_a - \phi_b)  \\
+  \ddot{\phi}_b = -\omega_0^2 ( 2 \phi_b - \phi_a) 
+\end{aligned} \\
+-\lambda^2 \left[ \begin{matrix} \phi_a \\ \phi_b \end{matrix} \right] = -\omega_0^2 \left( \begin{matrix} 2 & -  1 \\ -1 & 2 \end{matrix} \right) \left( \begin{matrix} \phi_a \\ \phi_b \end{matrix} \right)  \Longrightarrow \left| \begin{matrix} 2 - \frac{ \lambda^2}{ \omega_0^2 } & -1 \\ -1 & 2 - \frac{ \lambda^2}{ \omega_0^2} \end{matrix} \right| = 4 - 4 \frac{\lambda^2}{ \omega_0^2} + \left( \frac{ \lambda^2}{ \omega_0^2} \right)^2 - 1 = 0 \\
+\left( \frac{ \lambda^2}{ \omega_0^2 } \right)^2 - \frac{ 4 \lambda^2}{ \omega_0^2} + 3 = \left( \left( \frac{ \lambda^2}{ \omega_0^2 } \right) - 3 \right)\left( \left( \frac{ \lambda^2}{ \omega_0^2} \right) - 1 \right) = 0 \\
+\begin{aligned}
+  \lambda^2 & = \omega_0^2 \\ 
+  \lambda^2 & = 3 \omega_0^2 
+\end{aligned} \quad \quad 
+\begin{aligned}
+  \phi_a & = \phi_b \\
+  \phi_a & = -\phi_b 
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{1.24} \textbf{ Sloshing mode in a pan of water }.  \\
+The water surface remains practically flat (i.e. a straight line, or straight plane).  \\
+Assume it is flat throughout the motion -  \\
+horizontal when it passes through the equilibrium position; \\
+tilted at the extremes of its oscillation.  
+
+Recall cm calculation for a triangle.  
+\[
+\vec{r}_{cm} \int \frac{\vec{r}_i  dm_i }{ M } \Longrightarrow \begin{aligned}
+x_{cm} & = \frac{ \int_0^A x \left( \rho \left( \frac{Bx}{A} dx \right) \right) }{ \rho \frac{1}{2} A B } = \frac{ \frac{B}{a} \frac{1}{3} \left. x^3  \right|_0^A }{ \frac{1}{2} AB } = \frac{2}{3} A \\
+y_{cm} & = \frac{ \int_0^A \left( \frac{Bx}{2A} \right) \rho \left( \frac{Bx}{A} dx \right) }{ \rho \frac{1}{2} A B }  = \frac{ \left( \frac{B}{A} \right)^2 \frac{1}{3} A^3 }{ AB } = \frac{B}{3} 
+\end{aligned}
+\]
+So if $\overline{x}_0 = L ; \quad \quad \rho = \frac{ m}{ (2L)(H_0) } \quad \quad H_0 = 2 \overline{y}_0 \quad \quad A = \frac{1}{2} L (y - H_0)$.  
+\[
+\begin{gathered}
+  \begin{aligned}
+    x_{cm} & = ( m \overline{x}_0 + (-\rho) \left( \frac{1}{2} \right) (L) (y-H_0) \left( \frac{1}{3} L \right) + \rho \left( \frac{1}{2} \right) (L) (y-H_0) \left( \frac{5}{3} L \right) )/m = \\
+    & = (m \overline{x}_0 + \rho A \left( \frac{-L}{3} + \frac{5}{3} L \right) )/m 
+\end{aligned} \\
+  \Longrightarrow \overline{x} - \overline{x}_0 = \frac{\rho A}{m} \left( \frac{4}{3} L \right) = \frac{ (y-H_0)L}{ 3H_0} \\
+\begin{aligned}
+  y_{cm} & = \frac{ m \overline{y}_0 + (-\rho)(A) ( H_0 - \frac{1}{3} (y-H_0) ) + \rho A (H_0  + \frac{1}{3} (y - H_0 ) ) }{ m } = \frac{ m\overline{y}_0 + \rho A \left( \frac{2}{3} (y-H_0) \right) }{ m } \\
+  \overline{y} - \overline{y}_0 & = \frac{ \rho A \left( \frac{2}{3} (y-H_0) \right) }{ m } = \frac{1}{6} \frac{ (y-H_0)^2}{ H_0 } = \frac{ 9 }{6H_0} \left( \left( \frac{H_0}{L} \right)( \overline{x} - \overline{x}_0 )\right)^2  = \\
+  & = \frac{3H_0}{ 2 L^2} (\overline{x} - \overline{x}_0 )^2 
+\end{aligned} \\
+\text{ To get the return force, consider $F = -\nabla U$, the gradient of the potential energy. } \\
+\begin{aligned}
+  U & = mg (\overline{y} - \overline{y}_0) = mg \frac{3H_0}{2L^2} (\overline{x} - \overline{x}_0)^2 \\
+  U_x & = mg \frac{3H_0}{L^2} (\overline{x} - \overline{x}_0 ) = -F 
+\end{aligned} \\
+m \ddot{ (\overline{x} - \overline{x}_0 ) } = -mg \frac{3H_0}{L^2} (\overline{x}- \overline{x}_0) \\
+\Longrightarrow \boxed{ \omega^2 = \frac{ 3 g H_0}{ L^2 } }
+\end{gathered}
+\]
+
+\section{ Free Oscillations of Systems with Many Degrees of Freedom }
+
+\problemhead{2.10}
+\[
+\begin{gathered}
+  \begin{aligned} 
+    & \text{ slinky approximation } \\
+    & \left( \frac{1}{ \cos{\theta_1} } \right) T_0(z) = T_1 = T(z) \\
+    &  \left( \frac{1}{\cos{\theta_2} } \right) T_0(z+ \Delta z ) = T_2 = T(z+\Delta z) 
+\end{aligned} \quad \quad 
+\begin{aligned}
+  & \text{ small oscillation approximation } \\
+  & T_1 \cos{\theta_1}  = T_0(z) \\
+  &  T_2 \cos{\theta_2} = T_0(z+ \Delta z ) 
+\end{aligned} \\
+T_0(z+ \Delta z) = \sum_{j=0}^{\infty} \frac{T_0^{(j)}(z) }{ j! } (\Delta z)^j \quad \quad \text{ (Taylor series expansion) } \\
+\begin{aligned}
+  F_{ext} & = - T_1 \sin{\theta_1} + T_2 \sin{\theta_2} \\
+  & = -T_1 \tan{\theta_1} \cos{\theta_1} + T_2 \tan{\theta_2} \cos{\theta_2} = -\tan{\theta_1} T_0(z) + \tan{\theta_2} T_0(z+ \Delta z) 
+\end{aligned} \\
+\tan{ \theta_1} = \frac{ \partial \psi}{ \partial z } (z) ; \quad \quad \tan{ \theta_2} = \frac{ \partial \psi}{ \partial z}(z+ \Delta z) \\
+\Longrightarrow \begin{aligned}
+  (\rho(z) \Delta z )\ddot{\psi} & = - \psi_z(z) T_0 (z) + \psi_z(z+ \Delta z) T_0 (z + \Delta z) = \\
+  & = - \psi_z(z) T_0(z) + ( \psi_z(z) + \psi_{zz}(z) \Delta z + \dots ) (T_0(z) + T_{0z}(z) \Delta z + \dots ) = \\
+  & = 0 + (\psi_{zz}(z) T_0(z) + \psi_z(z) T_{0z}(z) ) \Delta z
+\end{aligned} \\
+\rho \ddot{\psi} = \partial_z (\frac{\partial \psi}{ \partial z }(z) T_0(z) )
+\end{gathered}
+\]
+
+\problemhead{2.11} 
+\[
+\begin{aligned}
+  B_0 & = 0 \quad \text{ (by inspection of the square wave function ) } \\
+  A_m & = 0 \quad \text{ (by inspection of the integral of an even and odd function) }; \\
+  k_1 & = \frac{ 2\pi}{\lambda_1} \\
+  B_m & \frac{2}{\lambda_1} \left( \int_0^{\lambda_1/4} \cos{ (mk_1 z) } + \int_{\lambda_1/4}^{3\lambda_1/4} (-1 \cos{ (m k_1 z) } + \int_{3 \lambda_1/4}^{\lambda_1} \cos{ (m k_1 z) } ) \right) \\
+  & = \frac{2}{ \lambda_1} \left( \frac{1}{m k_1} \right) \left( \left. \sin{ (mk_1 z) } \right|_0^{\lambda_1/4} - \left. \sin{ (m k_1 z) } \right|_{\lambda_1/4}^{3\lambda_1/4} + \left. \sin{ (mk_1z) } \right|_{3\lambda_1/4}^{\lambda_1} \right) \\
+  & = \frac{1}{\pi m} \left( 2 \sin{ \left( m \frac{\pi}{2} \right)} - 2 \sin{ \left( m \frac{3\pi}{2} \right) } \right) = \frac{4}{\pi m} \text{ if $m$ odd }
+\end{aligned}
+\]
+
+\problemhead{2.12} Given uniform mass density $\phi_0$; uniform string tension $T_0$ \\
+$\rho_0 \ddot{\phi} = T_0 \psi_{zz}; \quad A(z) = A \cos{ (kz) } + B \sin{ (kz) }$.  
+\[
+\begin{gathered}
+  \begin{aligned}
+    \psi & = A(z) \cos{ (\omega t + \phi) } \\
+    \omega_0 & = \sqrt{ \frac{T_0}{\rho_0} } k ; \\
+\end{aligned} \quad \quad 
+\begin{aligned}
+    A_z & = \partial_z A = -kA \sin{ (kz) }  \\
+\partial_z A(z=0) & = 0 \\
+\partial_z A(z=L) & = -k A \sin{ (kL )}, \quad \, \Longrightarrow kL = \pi n; \quad k = \frac{ \pi n}{L} 
+\end{aligned} \\
+\begin{aligned}
+  & n = 0; \quad A_0(z) = A ; \quad k=0, \, \omega_0 =0 \\
+  & n=1 ; \quad A_1(z) = A\cos{ \left( \frac{\pi z}{L} \right) } \\
+  & n=2 ; \quad A_2(z) = A\cos{ \left( \frac{2\pi z}{L} \right) } \\
+  & n=3 ; \quad A_3(z) = A\cos{ \left( \frac{3\pi z}{L} \right) } \\
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{2.13} Solve for the uniformly beaded string with free boundary conditions directly.  
+\[
+\begin{gathered}
+  M \ddot{\psi}_1 = -T \sin{\theta} = -T \cos{\theta} \tan{\theta} = T_0 \left( \frac{ \psi_2 - \psi_1}{a} \right) \\
+  \begin{aligned}
+    \ddot{\psi}_1 & = \frac{T_0}{ Ma} (\psi_2 - \psi_1) \\
+    \ddot{\psi}_2 & = \frac{ T_0 (\psi_1 - \psi_2 )}{ Ma} + T_0 \frac{ (\psi_3 - \psi_2 )}{ Ma } = \frac{T_0}{Ma} (\psi_1 - 2 \psi_2 + \psi_3 ) \\
+    \ddot{\psi}_3 & = \frac{T_0}{Ma} (\psi_2 -\psi_3) 
+\end{aligned} \\
+  -\lambda^2 \left[ \begin{matrix} \psi_1 \\ \psi_2 \\ \psi_3 \end{matrix} \right] = - \omega_0^2 \left[ \begin{matrix} 1 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & - 1 & 1 \end{matrix} \right] \left[ \begin{matrix} \psi_1 \\ \psi_2 \\ \psi_3 \end{matrix} \right] \\
+\text{ Solve for the above eigenvalue equation to obtain the characteristic function } \\
+0 = (1- \lambda) \lambda ( \lambda - 3 ) \\
+\Longrightarrow \boxed{ \begin{aligned} 
+\omega_1^2 & 0 \\
+\omega_2^2 & = \omega_0^2 \\
+\omega_3^2 & = 3 \omega_0^2 
+\end{aligned} \quad \quad \quad \begin{aligned}
+    \psi_1 & = \psi_2 = \psi_3 \\
+    \psi_1 & = - \psi_3; \quad \, \psi_2 = 0 \\
+    \psi_1 & = - \frac{1}{2} \psi_2; \quad \psi_3 = \frac{ - \psi_2}{2}
+\end{aligned} }
+\end{gathered}
+\]
+
+\problemhead{2.14} Consider solving the problem of an LC network of three inductances and four capacitances without shorting the outer two capacitors yet.  
+
+We can directly give the voltages due to the inductances:
+\[
+L_1 \frac{dI_1}{dt} = \phi_2 - \phi_1 ; \quad \quad \begin{aligned} \frac{Q_1}{C} & = \phi_0 - \phi_1 \\
+  \frac{Q_2}{C} & = \phi_0 - \phi_1 \end{aligned}
+\]
+
+\[
+\begin{gathered}
+\text{ The voltage relationships: } \\
+\begin{aligned}
+  L_1 \frac{dI_1}{dt} & = \frac{Q_1}{C} - \frac{Q_2}{C} \\
+  L_2 \frac{dI_2}{dt} & = \frac{Q_2}{C} - \frac{Q_3}{C} \\
+  L_3 \frac{dI_3}{dt} & = \frac{Q_3}{C} - \frac{Q_4}{C} 
+\end{aligned}   
+\end{gathered} \quad \quad 
+\begin{gathered}
+  \text{ By charge conservation } \\
+  \begin{aligned}
+    \frac{dQ_1}{dt} & = -I_1 \\
+    I_1 & = \frac{dQ_2}{dt} + I_2 \\
+    I_2 & = \frac{dQ_3}{dt} + I_3; \quad I_3 = \frac{dQ_4}{dt}
+\end{aligned}
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+\text{ With } \\
+\begin{aligned}
+  & L_1  = L_2 = L_3 \\
+  & C_1 = C_2 = C_3 = C_4 
+\end{aligned} 
+\end{gathered} \quad \quad 
+\begin{gathered}
+\text{ equations of motion } \\
+\begin{aligned}
+  L_1 \ddot{I}_1 & = \frac{1}{C} ( - I_1 - (I_1 - I_2)  ) = \frac{1}{C} ( -2I_1 + I_2 ) \\
+  L_2 \ddot{I}_2 & = \frac{1}{C} ( I_1 - I_2 - (I_2 - I_3) ) = \frac{1}{C} ( I_1 - 2I_2 + I_3 ) \\
+  L_3 \ddot{I}_3 & = \frac{1}{C} (I_2 - I_3 - I_3 ) = \frac{1}{C} ( -2I_3 + I_2 ) 
+\end{aligned}
+\end{gathered}
+\]
+\[
+\begin{gathered}
+\text{ With } \frac{1}{LC} = \omega_0^2 \quad \text{ then } \quad \ddot{ \left( \begin{matrix} I_1 \\ I_2 \\ I_3 \end{matrix} \right) } = \omega_0^2 \left( \begin{matrix} - 2 & 1 &  \\ 1 & -2 & 1 \\ 0 & 1 & -2 \end{matrix} \right) \left( \begin{matrix} I_1 \\ I_2 \\ I_3 \end{matrix} \right) \\
+\text{ guess at the modes for one of them: } \omega_2^2 = 2 \omega_0^2 ; \quad \quad \begin{aligned} \psi_1 & = - \psi_3 \\
+  \psi_2 & = 0 \end{aligned} \\
+\text{ the characteristic equation is } (2- \lambda^2)(2 - 4 \lambda^2 + \lambda^4) = 0 \\
+\text{ plugging the eigenvalues back into the eigenvalue equation, we obtain } 2 \pm \sqrt{2} \left( \begin{matrix} I_1 \\ I_2 \\ I_3 \end{matrix} \right) = \begin{matrix} 2 I_1 & - I_2 & \\ -I_1 & + 2 I_2 & - I_3 \\ & -I_2 & + 2 I_3 \end{matrix} \\
+\boxed{ \begin{aligned} \pm \sqrt{2} I_1 & = - I_2 \\ \pm \sqrt{2} I_2 & -I_1 -I_3 \\ \pm \sqrt{2} I_3 & = -I_2 \end{aligned} \quad \quad \begin{aligned} I_1 & = I_3 \\ I_2 & = -\frac{2}{ \sqrt{2} } I_1 \end{aligned} }
+\end{gathered}
+\]
+
+Now suppose we let $C_1, \, C_4 \to \infty$; \quad $\frac{1}{C_1}, \, \frac{1}{C_4} \to 0$ so we bring the plates ``infinitely close'' together.  
+
+\[
+\begin{gathered}
+  \Longrightarrow \ddot{ \left( \begin{matrix} I_1 \\ I_2 \\ I_3 \end{matrix} \right) } = \left( \begin{matrix} -1 & 1 & \\ 1 & -2 & 1 \\ & 1 & -1 \end{matrix} \right) \left( \begin{matrix} I_1 \\ I_2 \\ I_3 \end{matrix} \right) = \left| \begin{matrix} 1 - \lambda^2 & -1 & \\ -1 & 2 - \lambda^2 & -1 \\ & -1 & 1-\lambda^2 \end{matrix} \right| = (1-\lambda^2)(\lambda^2)(\lambda^2 - 3) \\
+  \boxed{ \begin{aligned} \omega_1^2 & = 0 ; \quad I_1 = I_2 = I_3 \\
+      \omega_2^2 & = \omega_0^2 ; \quad I_1 = I_3; \, I_2 = 0 \\
+      \omega_3^2 & = 3 \omega_0^2 ; \quad I_1 = I_3 ; \, I_2 = -2
+\end{aligned} }
+\end{gathered}
+\]
+
+\problemhead{2.15} $C256 \Longrightarrow (256 \frac{c}{s}) \left( \frac{2\pi}{ 1 c } \right) \quad \quad \omega_0^2 = \sqrt{ \frac{ T_0}{ \rho_0} } k$.  
+
+Assume the lowest mode for the tuned string $\Longrightarrow k = \frac{2\pi}{L}$.  
+
+Given that $\rho = \frac{ 9 \, gm }{ cm^3} $, \quad $\left( \frac{ 9 \, gm }{ cm^3} \right) \left( \pi (0.05 \, cm )^2 \right) = \frac{9}{4} \pi 10^{-2} \frac{gm}{cm} = \rho$.  \\
+\[
+T_0 = \frac{ \omega_0^2}{k^2} \rho = \frac{ (256 \cdot 2 \pi)^2 }{ (2\pi) \left( \frac{1}{100 \, cm } \right)^2 } \left( \frac{9}{4} \pi 10^{-2} \frac{gm}{cm} \right) \approx 47 \, kg-wt 
+\]
+
+\problemhead{2.16} The dispersion relation is $\omega = \sqrt{ \frac{ T_0}{ \rho_0} } k $ \\
+\[
+\begin{aligned}
+  g(z) & = \frac{4}{\pi} \sin{ \frac{ \pi z}{L} } + \frac{4}{3\pi} \sin{ \left( \frac{3 \pi z}{ L } \right) } + \frac{4}{ 5 \pi } \sin{ \frac{ 5 \pi z}{ L } } \\
+  \psi(z,t) & = \cos{ (\omega t + \psi ) } (A \sin{ \left( \frac{ 2 \pi z}{ \lambda } \right) } + B \cos{ \left( \frac{ 2 \pi z }{ \lambda } \right) } ) 
+\end{aligned}
+\]
+The previous was the general form of each mode.  \\
+Given the string was constrained at $t=0$, then $\phi =0$, i.e. the string is at rest initially.   \\
+Let $\omega_1 = \sqrt{ \frac{ T_0}{\rho_0} } k_1$ 
+
+$\psi(z,t)$ will be a superposition of each of the modes present at the initial conditions.  
+\[
+\psi(z,t) = \frac{4}{\pi} \sin{ \frac{\pi z}{L} } \cos{ (\omega_1 t) } + \frac{ 4}{3\pi} \sin{ \left( \frac{3\pi z}{ L} \right) } \cos{ (3 \omega_0 t ) } + \frac{4}{ 5 \pi } \sin{ \left( \frac{ 5 \pi z}{L} \right) }\cos{ (5 \omega_1 t ) } 
+\]
+$\psi(z,t)$ will be a superposition of each of the modes present at the initial conditions.  
+
+Now we'll try $\omega_1 t_0 = \frac{\pi}{3}$
+
+\[
+\begin{aligned}
+  \psi(z,t_0) & = \frac{4}{\pi} \sin{ \frac{\pi z}{L} } \left( \frac{1}{2} \right) + \frac{4}{3\pi} \sin{ \left( \frac{3\pi z}{ L} \right) } (-1) + \frac{4}{5 \pi} \sin{ \left( \frac{ 5 \pi z}{ L} \right) } \left( \frac{1}{2} \right)  = \\
+  & = \frac{2}{\pi} \sin{ \frac{ \pi z}{L} } + \frac{-4}{3 \pi } \sin{ \left( \frac{ 3 \pi z}{ L } \right) } + \frac{2}{ 5 \pi } \sin{ \left( \frac{5 \pi z }{ L} \right) }
+\end{aligned}
+\]
+
+\problemhead{2.18} Given the exact equation, Eq. (62)
+\[
+M \frac{ d^2 \psi_n(t)}{ dt^2} = T_0 \left[ \frac{ \psi_{n+1}(t) - \psi(t) }{ a} \right] - T_0 \left[ \frac{ \psi_n(t) - \psi_{n-1}(t) }{ a } \right]
+\]
+Then
+\[
+\begin{gathered}
+  \begin{aligned}
+    \psi_n(t) & = \psi(z,t) \\
+    \psi_{n+1}(t) & = \psi(z+a,t) = \psi(z,t) + \psi_z(z,t) a + \frac{ \psi_{zz}(z,t) a^2 }{ 2 } + o(a^2) \\
+    \psi_{n-1}(t) & = \psi(z-a,t) = \psi(z,t) + \psi_z(z,t) (-a) + \frac{ \psi_{zz}(z,t) (-a)^2 }{ 2 } + o(a^2) \\
+\end{aligned} \\
+  \begin{aligned}
+    \ddot{\psi} & = \frac{T_0}{aM } (\psi_z a + \frac{ \psi_{zz} a^2}{ 2 } - ( \psi_z(+a) - \frac{ \psi_{zz} a^2}{2} ) ) = \\
+    & = \frac{T_0}{ \left( \frac{M}{a} \right) } ( \psi_{zz} ) \Longrightarrow \frac{T_0}{\rho_0} \psi_{zz} 
+\end{aligned} \\
+  \text{ Criterion: } \frac{ \left( \frac{ \partial^2 \psi }{ \partial z^2 } (z,t) \right) a^2 }{ 2!} \geq \frac{ \frac{ \partial^{(j)} }{ \partial z^j }(z,t) a^j }{ j! } ;\quad j \geq 2 
+\end{gathered}
+\]
+
+\problemhead{2.19} Given the equations, Equations (65), (71), respectively, 
+\begin{align*}
+  A_n & = A \sin{ (k n a)} + b \cos{ (kn a ) } \\
+  A_{n+1} + A_{n-1} & = A_n \left( 2 - \frac{Ma}{T_0} \omega^2 \right)
+\end{align*}
+
+\[
+\begin{gathered}
+  A_{n+1} = A S(k(n\pm 1 ) a) + BC(k(n\pm 1) a) = A (S(kna) C(ka) \pm C(kna)S(ka)) + B (C(kna) C(ka) \mp S(kna)S(ka) ) \\
+  A_{n+1} + A_{n-1} = A(2S(kna) C(ka)) + B(2C(kna)C(ka) ) = 2C(ka) A_n \\
+  \Longrightarrow 2 \cos{(ka)} = 2 - \frac{Ma}{T_0} \omega^2; \quad \quad \omega^2 = (2-2\cos{ (ka)}) \left( \frac{T_0}{Ma} \right) = \left( \frac{4T_0}{Ma} \right) (\sin^2{ \left( \frac{ka}{2} \right) } ) \\
+  \text{ where } \cos{(ka)} = -2 \sin^2{ \left( \frac{ka}{2} \right) } + 1 
+\end{gathered}
+\]
+Since $A, \, B, \, k$ were arbitrary, then this fact is indeed independent of the choices for $A, \, B, \, k$.  
+
+\problemhead{2.20} $N=5; \quad k_1 L = \pi; \quad k_2 L = 2 \pi; \quad k_3 L  = 3\pi ; \quad k_4 L = 4\pi; \quad k_5 L = 5 \pi$.  
+\[
+\begin{gathered}
+  \omega^2 = \frac{4T_0}{Ma} \sin^2{ \frac{ ka}{2} } = \frac{4 T_0}{ Ma} \sin^2{ \frac{\pi a}{ \lambda }} \\ 
+  \frac{L}{6} = a; \quad \quad 
+\begin{aligned} & \quad \quad & \sin{ \frac{ka}{2} }  & \\
+    k_1 & = \frac{\pi}{L} = \frac{\pi}{6a} \quad \quad & \pi/12 & \\
+    k_2 & = \frac{2\pi}{L} = \frac{2\pi}{6a} = \frac{\pi}{3a}  \quad & \pi/6 \quad \quad & \left( \frac{1}{ \sqrt{2}} \right)^2 \\
+    k_3 & = \frac{3\pi}{L} = \frac{\pi}{2a} = \frac{\pi}{3a} \quad & \pi/4 \quad \quad &\left( \frac{1}{\sqrt{2}} \right)^2 \\
+    k_4 & = \frac{2\pi}{L} = \frac{2\pi}{3a} \quad  & \pi/3 \quad \quad & \left( \frac{\sqrt{3}}{2} \right)^2 \\
+    k_5 & = \frac{5\pi}{L} = \frac{5\pi}{6a} \quad  & 5\pi / 12
+\end{aligned} 
+\end{gathered}
+\]
+
+\problemhead{2.21} 
+\[
+\begin{gathered}
+  \begin{aligned} 
+    A(z) & = A \cos{ (kx) } + B \sin{(kx) } \\
+    A'(z) & = k (-A \sin{(kx) } + B \cos{(kx)} ); \quad A'(z=0) = 0 = kB. \quad \quad B= 0 \, (\text{ free end at } z= 0 ) \\
+    A(6a) & = A \cos{ (k6a) } = 0 \Longrightarrow 6ka = (2j-1) \frac{ \pi}{2} 
+\end{aligned} \\
+  \begin{gathered}
+  k_n a = \frac{ (2n-1) \pi }{ 12} \\
+  \omega^2 = \frac{4 T_0}{ Ma} \sin^2{ \left( \frac{ka}{2} \right) }
+  \end{gathered} \quad \quad 
+\begin{aligned}
+  \omega_1 & = \omega_0 \sin{ \frac{\pi}{24} } \\
+  \omega_2 & = \omega_0 \sin{ \frac{ \pi }{8} } \\
+  \omega_3 & = \omega_0 \sin{ \frac{5\pi}{24} }\\
+  \omega_4 & = \omega_0 \sin{ \frac{ \pi}{24} } \\
+  \omega_5 & = \omega_0 \sin{ \frac{ 3 \pi }{8} }
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{2.23} The equations, Equations (73), (74), are given, respectively, 
+\begin{align*}
+ &  k_1 L = \pi, \quad   k_2 L = 2\pi, \dots ,   k_m L = m\pi, \dots ,   k_N L = N\pi \\
+  & \omega(k) = 2 \sqrt{ \frac{T_0}{Ma} } \sin{ \frac{ka}{2} }
+\end{align*}
+So then for the $N=1,2$ cases, we have
+\[
+\begin{gathered}
+  \begin{aligned}
+    & N=1 \quad & L = 2a  \quad & k_1 = \frac{\pi}{2a} \quad & \omega(k_1) = 2 \sqrt{ \frac{T_0}{Ma}} \frac{ \sqrt{2}}{2} = \sqrt{ \frac{2T_0}{ Ma }} \\
+    & N=2 \quad & L = 3a \quad & k_1 = \frac{\pi}{3a} ; \quad & k_2 = \frac{2\pi}{3} 
+\end{aligned} \\
+\begin{aligned}
+  \omega(k_1) & = 2 \sqrt{ \frac{T_0}{Ma} } \sin{ \frac{\pi}{6} } ; \quad \\
+  \omega(k_2) & = 2 \sqrt{ \frac{T_0}{Ma} } \sin{ \frac{\pi}{3} }  = 2 \sqrt{ \frac{T_0}{Ma} } \frac{ \sqrt{3}}{2} = \sqrt{ 3T_0}{ Ma } \\
+  & = \sqrt{ \frac{T_0}{Ma} }
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{2.24} The equations given, Equations 78, 79, 80, are, respectively
+\begin{align*}
+  \omega(k) & = 2 \sqrt{ \frac{K}{M} } \sin{ \frac{(ka)}{2} } = 2 \sqrt{ \frac{K}{M} }\sin{ \frac{\pi a}{ \lambda} } \\
+    \psi_n(t) & = A \sin{ nka} \cos{ (\omega(k)t + \phi) } \\
+    k_1 L & = \pi; \quad k_2 L = 2 \pi , \dots , k_N L = N \pi 
+\end{align*}
+
+\problemhead{2.26} There's the return force due to gravity on the bob.  Consider the component of the gravitational pull downward in the tangential direction.  
+\[
+Mg \sin{ \theta_n} = Mg \frac{ \psi_n}{ l} 
+\]
+Now consider the net displacement of the springs on each side of the $n$th bob:  
+\[
+\begin{gathered}
+  -K( \psi_n - \psi_{n+1} ) ; \quad \quad -K (\psi_n - \psi_{n-1} ) \\
+  M \ddot{\psi_n} = -Mg \frac{ \psi_n}{ l } + -K (\psi_n - \psi_{n+1} ) - K( \psi_n - \psi_{n-1} ) \Longrightarrow \ddot{\psi}_n  = -\omega_0^2 \psi_n + \frac{-K}{M} ( 2 \psi_n - \psi_{n+1} - \psi_{n-1} ) \\
+  \text{ (for small oscillations) } \Longrightarrow \ddot{\psi}_n = -\omega_0^2 \psi_n + \frac{-Ka}{M} \left( \frac{ 2 \psi_n}{ a } - \frac{ \psi_{n+1}}{a} - \frac{ \psi_{n-1}}{ a} \right) 
+\end{gathered}
+\]
+
+We know that linear combinations of exponential functions form a complete, irreducible solution to time and spatial translational invariant (symmetric) systems.  $A(z) = A^{(n)} e^{ kna} + B^{(n)} e^{-kna}$.  
+\[
+\begin{gathered}
+\begin{aligned}
+  -\omega^2 \psi_n & = -\omega_0^2 \psi_n + \frac{-K}{M} ( 2 \psi_n - \psi_{n+1} - \psi_{n-1} ) = \\
+  & = -\omega_0^2 \psi_n + -\frac{K}{M} ( 2 \psi_n - (A^{(n)}(e^{kna} (e^{ka} + e^{-ka} ) ) +B^{(n)} e^{-kna} (e^{-ka} + e^{ka} ) ) ) 
+\end{aligned} \\
+  -(\omega^2 - \omega_0^2) \psi_n = \frac{-K}{M} ( 2 \psi_n - \psi_n( 2\cosh{(ka)} ) ); \Longrightarrow \omega^2 = \omega_0^2 + \frac{2K}{M} ( 1 - \cosh{ (ka) } ) \\
+  \Longrightarrow \omega^2 = \omega_0^2 + \frac{-4K}{M} \sinh^2{(ka)} \text{ where we had used }
+  \frac{ (e^{\frac{ka}{2}} - e^{-\frac{ka}{2} } )^2 }{ 4 } = \frac{ e^{ka} - 2 + e^{-ka}}{ 4} = \frac{1}{2} (\cosh{(ka)} - 1 ) 
+\end{gathered}
+\]
+but the physical system has the return force $\omega^2$ to be $\omega^2 > \omega_0^2$.  Let $ k \to ik$.  \\
+$\Longrightarrow \omega^2 = \omega_0^2 + \frac{4K}{M} \sin^2{(ka) }$.  
+
+For the boundary condition of no springs coupling the end bobs to the wall; then thinking about extending the system to infinity, this boundary is the same as if $n=0$ and $n=N+1$ bob moves exactly \emph{with} its adjacent bob.  \\
+$A'(n) = n (A \cos{ (nka)} + - B \sin{ nka} )$ 
+
+Retranslate or shift the $z$ axis to the left by $\frac{a}{2}$.  Relabel the $n$th bob position to be $(n-\frac{1}{2})a$.  The boundary condition then becomes when an imaginary bob at $z=0, \, Na$ is always at an extrema (for bob $n=0 \, (z = -\frac{a}{2} )$ and $n=N+1 , \quad (z = (N+ \frac{1}{2} ) a)$ to have the same displacement).  
+
+\[
+\begin{gathered}
+\begin{aligned}
+  A_n & = A^{(k)} \sin{nka} + B^{(k)}\cos{nka} \\
+  A_n' & = k (A^{(k)} \cos{nka} -B^{(k)} \sin{nka} ) 
+\end{aligned} \quad \quad A_0' = kA^{(k)} = 0 \Longrightarrow A_n = B^{(k)} \cos{nka}  \\
+\sin{(Nka)} = 0 \Longrightarrow Nk_m a = \pi m \Longrightarrow \boxed{ k_m = \frac{ \pi m }{ Na} } 
+\end{gathered}
+\]
+
+$n=0$.  $A_n = B^{(0)} \Longrightarrow$ all the bobs move together; no springs are squeezed.  If $g \to 0$, then the bobs will all spatially translate.  
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    & N=3 \\
+    & m = 0 \\
+    & m = 1 \\ 
+    & m = 2 \\ 
+    & m = 3 
+  \end{aligned} \quad \quad 
+  \begin{aligned}
+    & k_m \\
+    & 0 \\
+    & \pi/3a \\
+    & 2 \pi / 3a \\
+    & \pi /a 
+  \end{aligned}
+\quad \quad 
+\begin{aligned}
+  \omega^2 & = \omega_0^2 + \frac{4K}{M} \sin^2{(ka)} \\
+  & \omega_0^2 \\
+  & \omega_0^2 + \frac{4K}{M} \left( \frac{\sqrt{3}}{2} \right)^2 = \omega_0^2 + \frac{3K}{M} \\
+  & \omega_0^2 + \frac{4K}{M} \left( \frac{ \sqrt{3}}{2} \right)^2 = \omega_0^2 + \frac{3K}{M} \\
+  & \omega_0^2 
+\end{aligned} \\
+A_n = B^{(k)} \cos{ (kna)} = A(z) = B^{(k)} \cos{ (kz) } \\
+\begin{aligned}
+  k & = \frac{\pi}{3a} \\
+  k & = \frac{2\pi}{3a} \\
+  k & = \pi/a 
+\end{aligned} \quad \quad 
+\begin{aligned}
+  A & = B \cos{ \left( \frac{ \pi z}{ 3 a} \right) } \\
+  A & = B \cos{ \left( \frac{ 2\pi z}{ 3a} \right) } \\
+  A & = B \cos{ \left( \frac{ \pi z }{ a} \right) }
+\end{aligned} \quad \quad 
+\begin{aligned}
+  & n =1, \, \sqrt{3}/2; \quad n =2, \, 0; \quad n=3 \, -\sqrt{3}/2 \\
+  & n = 1, \, 1/2; \quad n =2, \, -1; \quad n =3 \, 1/2 \\ 
+  & n = 1, 0; \quad n = 2, \, 0; \quad n =3 \, 0   
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{2.27} $\omega^2 = \frac{4K}{M} \sin^2{(ka)}; \quad \frac{K}{M} = \frac{1}{LC}; \quad k_m = \frac{ \pi m}{ Na }$.  
+
+\problemhead{2.28} $N\to \infty; \quad a \to 0$
+\[
+\begin{gathered}
+  \psi_{n+1} = \psi((n+\frac{1}{2}) a) = \psi(z + a) = \sum_{j=0}^{\infty} \frac{ \psi^{(j)}(z) a^j}{ j! } \\
+  \lim_{a\to 0 } \frac{ \psi_{n+1} - \psi_n }{ a} = \lim_{a\to 0} \frac{ \psi(z+a) - \psi(z)}{a} = \frac{ \partial \psi}{ \partial z }; \quad \lim_{ a \to 0 } \frac{ \psi_n - \psi_{n-1}}{ a } = -\lim_{-a \to 0 } \frac{ \psi(z) - \psi(z-a)}{ -a } = \frac{ - \partial \psi}{ \partial z } \\
+  2 \psi_n - \psi_{n+1} - \psi_{n-1} = 2 \psi(z) - \sum_{j=0}^{\infty} \frac{ \psi^{(j)}(z) a^j }{ j! } - \sum_{j=0}^{\infty} \frac{ \psi^{(j)} (z) (-a)^j}{ j! } = - \psi_{zz}(z) a^2 \\
+  \ddot{\psi} = -\omega_0^2 \psi + \frac{K}{M} \psi_{zz} a^2/a = \boxed{ -\omega_0^2 \psi + \frac{K}{\rho_0} \psi_{zz} }; \\
+  \Longrightarrow \boxed{ \rho_0 = M/a  ; \quad v_0 = \frac{K}{ \rho_0 } }
+\end{gathered}
+\]
+
+\problemhead{2.29}
+\begin{enumerate}
+  \item $ \begin{aligned}
+    & f=0 \text{ at } z = 0 \\
+    & f' = 0 \text{ at } z = L 
+  \end{aligned}$  \\
+    \textbf{ Fourier Analysis method}.  \\
+    By considering a diagram of an arbitrary string (without loss of generality), we see, for the given boundary conditions, that to build a periodic function, $F(z)$, we have
+\[
+F(z) = F(n \lambda_1 + x) = \begin{cases} f(z) & \text{ if } 0 \leq x < L \\
+  f(L-(x-L)) & \text{ if } L \leq x < 2 L \\
+  -f(x-3L) & \text{ if } 2L \leq x < 3L \\
+  -f(L - (x-3L) ) & \text{ if } 3L \leq x < 4 L 
+\end{cases}
+\]
+Now in general, 
+\[
+F(z) = B_0 + \sum_m^{ z_0 + \lambda_1 } A_m \sin{ (k_1 m z) } + \sum_m^{z_0 + \lambda_1} B_m \cos{ (k_1 m z) } \quad \quad k_1 = \frac{2\pi }{\lambda_1} 
+\]
+By inspection of $F(z)$, $F(z)$ is odd about $z=0$.  Then $B_0 = B_m = 0$.  
+\[
+\begin{gathered}
+  \sin{ (k_1 m z) } = \sin{ \left( \frac{\pi}{2L} mz \right) } \quad S(0) =  0 \quad S\left( \frac{\pi}{2L} m (2L) \right) = 0 \\
+  \left( S\left( \frac{\pi}{2L} m z\right) \right)' = \frac{ \pi m}{ 2L} C\left( \frac{ \pi m z}{ 2L } \right) \Longrightarrow \frac{\pi m }{2L} C\left( \frac{ \pi m }{2L } L \right) = 0 \quad \text{ if $m$ odd } 
+\end{gathered}
+\]
+\textbf{ ``physical'' method } \\
+The continuous string can be fitted into a ``reasonable'' function between $z=0$ and $z=L$.  Now fit the boundary conditions:
+\[
+f(z=0) = 0 \Longrightarrow B_m =0
+\]
+(the modes are independent of each other because each could be separately excited).  
+\[
+\begin{gathered}
+  (\sin{(k_1 m z)})' = km_1 C(k_1 m z) \Longrightarrow k_1 m C(k_1 m L) = 0 \\
+  k_1 m L =  (2j-1) \frac{\pi}{2} \\
+  \Longrightarrow \boxed{ m \text{ odd }, \quad k_1 L = \frac{\pi}{2} }
+\end{gathered}
+\]
+  \item \textbf{ Fourier analysis method } \\
+Again, by considering a diagram of an arbitrary string (without loss of generality), we see, for the given boundary conditions, that to build a periodic function, $F(z)$, we have
+\[
+\begin{gathered}
+F(z) = F(n\lambda_1 + x) = \begin{cases} f(z) & \text{ if } 0 \leq x < L \\
+  f(L- (x-L)) & \text{ if } L \leq x < 2 L 
+\end{cases}  \\
+\lambda_1 = 2L; \quad  k_1 = \frac{\pi}{L}
+\end{gathered}
+\]
+In order to match the given boundary conditions for this $\lambda_1 = 2L$ waveform,
+\[
+\begin{gathered}
+  \cos{(k_1 mz) } = \cos{ (\frac{\pi}{L} m z ) } ; \quad \quad (C(k_1 m z) )' = -S(k_1 mz) k_1 m = 0 \\
+  \text{ at } z = L \Longrightarrow \frac{ \pi }{L} m L  = m \pi \Longrightarrow \forall m \in \mathbb{Z} 
+\end{gathered}
+\]
+\textbf{ ``Physical'' method } \\
+Zero slope, so at $z=0, \, z = L \Longrightarrow \cos{ (k_1 m z) }, \, A_m = 0$ \\
+\[
+(\cos{(k_1 m z)} )' = -k_1 m \sin{ (k_1 mz) } = 0 \quad \quad \Longrightarrow k_1 m L = \pi n \Longrightarrow k_1 L = \pi, \, \forall m \in \mathbb{Z}
+\]
+  \item 
+\textbf{ ``Physical'' method } \\
+Zero slope at $z=0  \Longrightarrow A_m = 0 $ \\
+\[
+\cos{ (k_1 m L ) } = a \quad \quad k_1 m L = (2j-1) \frac{ \pi }{2} \Longrightarrow \text{ $m$ odd  and $k_1 L = \frac{\pi}{2}$ }
+\]
+
+\textbf{ Fourier Analysis method } \\
+Without loss of generality
+\[
+F(z) = F(n \lambda_1 + x) = \begin{cases} 
+  f(z) & \text{ if } 0 \leq x < L \\
+  -f(L-(x-L)) & \text{ if } L \leq x < 2 L \\
+  -f(x-3L) & \text{ if } 2L \leq x < 3L \\
+  f(L - (x-3L)) & \text{ if } 3L \leq x < 4L 
+\end{cases}
+\]
+Observe that $F(z)$ is even about $z=0$.  Then $A_m = 0$.  $k_1 = \frac{2\pi}{4L} = \frac{\pi}{2L}$ ; \quad $\lambda_1 = 4L$.  
+
+\[
+\begin{gathered}
+\cos{ (k_1 m z) } = \cos{ \left( \frac{ \pi }{2L} m z \right) }; \quad C\left( \frac{\pi}{2L} mL \right) =  0 \quad \quad C\left( \frac{ \pi}{2L} m 3L \right) = C\left( \frac{ 3\pi m }{2} \right) = 0 \text{ if $m$ odd } \\
+\left( C\left( \frac{\pi}{2L} m z \right) \right)' = - \frac{\pi m }{2L} S\left( \frac{ \pi m }{2L} z \right) \text{ so then, as expected } \frac{ - \pi m}{2L } S\left( \frac{ \pi m }{2L} (2L ) \right) = 0 
+\end{gathered}
+\]
+\end{enumerate}
+
+\problemhead{2.30}  \textbf{ Fourier analysis of a periodically repeated square pulse}.  
+\begin{enumerate}
+  \item Let $f(t) = \begin{cases} 1 & \text{ if } \frac{ -\Delta t}{2} \leq t \leq \frac{\Delta t }{ 2} \quad \text{ ( let $\frac{ \Delta t }{2} = b $ for notation ) } \\
+    0 & \text{ otherwise for } \frac{ -T_1}{2} \leq t \leq \frac{T_1}{2} \end{cases} $.  
+
+We can do this because we have a time translation invariant phenomenon, periodic in $T$.  We are using the fact that it does not matter where we start our clock.  
+  \item Just do the Fourier transform on the given square pulse function - don't worry about building $F(z)$ with the inverse of the square pulse into one wave-form for one period.  
+\[
+\begin{gathered}
+  \int_{-b}^b \cos{ (mk_1 z) } dz = \left. \frac{ \sin{ mk_1z } }{ mk_1 } \right|_{-b}^b = \frac{2 \sin{ (mk_1 b) } }{ mk_1}; \quad \frac{2}{ \lambda_1} \int_{-b}^b \cos{ (m k_1 z) } = \frac{2}{ m\pi} \sin{ (n \pi \nu_1 \Delta t) } \\
+  B_0 = \int_{-b}^b \frac{1}{\pi} dz = \frac{2b}{ \pi}  =\frac{\Delta t_1}{ T_1} 
+\end{gathered}
+\]
+  \item $\Delta t \ll T_1; \quad \, \nu_1 = \frac{1}{T_1}; \quad \, B_n = \frac{2}{n\pi} \sin{ n\pi \nu_1 \Delta t } \simeq 2 \nu_1 \Delta t = 2 \nu_1 \Delta t \quad \text{ for small $n$ } $ \\
+  \item \[
+\begin{aligned}
+  B_n & = B_n(n\nu_1) = \left( \frac{2\nu_1}{\pi} \right) \left( \frac{1}{ n\nu_1} \right) \sin{ ((n \nu_1) \pi \Delta t) } \simeq \\
+  & \simeq \left( \frac{ 2 \nu_1}{ \pi} \right)\left( \frac{1}{ n \nu_1 } \right) (n \nu_1) \pi \Delta t = \frac{ ((n \nu_1) \pi \Delta t)^3}{ 3!} = \left( \frac{ 2 \nu_1}{ \pi } \right) \pi \Delta t \left( 1-  \frac{ (n \nu_1)^2 (\pi \Delta t )^2 }{ 6} \right) \Longrightarrow n \nu_1 ~ \frac{1}{\Delta t} 
+\end{aligned}
+\]
+\end{enumerate}
+
+\problemhead{2.31} \textbf{ Sawtooth shallow-water standing waves }
+One pan length equals one half-wavelength $\Longrightarrow \lambda = (2L)2 = 4L$ 
+
+\[
+\begin{gathered}
+  \omega^2 = \frac{ 3gh_0}{L^2 } \Longrightarrow \nu = \frac{ \sqrt{ 3 gh_0 }}{ 2 \pi L } \\
+  \lambda \nu = 4L \frac{ \sqrt{ 3 g h_0}}{ 2 \pi L } = \frac{2}{\pi} \sqrt{ 3gh }
+\end{gathered}
+\]
+
+\problemhead{2.32} \textbf{ Fourier analysis of symmetrical sawtooth}.  
+Center the crest of the sawtooth function about $x=0$.  \\
+$A_m=0$ since $F(z)$ is even about $z=0$.  \\
+Note that in order to make the sawtooth function periodic and have no ``jagged edges,'' then we need to continue the function with an inverse mirror of it by one more.  Thus
+\[
+F(z) = \begin{cases} \frac{A}{ (\lambda_1/4) } (x + \frac{\lambda_1}{4} ) & \frac{-\lambda_1}{4} \leq x < 0 \\
+  \frac{-A}{(\lambda_1 /4)} x + A & 0 \leq x < \frac{\lambda_1}{4} \\
+  \frac{A}{ \lambda_1/4} (x) - 3A & \frac{ \lambda_1}{2} \leq x < \frac{3\lambda_1}{4} 
+\end{cases}
+\]
+
+Use this general formula to reduce the algebra (and keep mistakes to a minimum):
+\[
+\int_a^b (x+A) \cos{ (kx)} =  \frac{x \sin{ (kx)}}{ k } + \frac{ \cos{(kx)}}{k^2} + \left. \frac{A \sin{(kx)}}{k} \right|_a^b = \frac{ b S(kb) - a S(ka)}{ k } + \frac{ C(kb) - C(ka)}{ k^2} + \frac{ AS(kb) - A S(ka)}{ k } 
+\]
+So then we will integrate from $\frac{-\lambda_1}{4}$ to $\frac{3\lambda_1}{4}$ by piecemeal and add the contributions up and then multiply by $\frac{2}{\lambda_1}$ to get the Fourier coefficients (and remember that $k_1 = \frac{2\pi}{\lambda_1}$:
+\[
+\begin{aligned}
+  & \int_{ \frac{-\lambda_1}{4}}^0 \frac{ A}{ \lambda_1/4} ( x + \frac{\lambda_1}{4} ) C(k_1 m x ) = \left( \frac{A}{\lambda_1/4} \right) \left( \frac{ 1 - C\left( \frac{\pi m}{2} \right)}{ (k_1 m)^2 } \right) = \begin{cases}  \left( \frac{A}{\lambda_1/4} \right) \frac{ (1 - (-1)^j )}{ (k_1 m)^2 } & \text{ if } m = 2j \\
+    \left( \frac{A}{ (\lambda_1/4) } \right) \frac{ (1-0)}{ (k_1 m)^2 } & \text{ if } m = 2j+1 
+\end{cases} \\
+  & \int_0^{\lambda_1/2} \left( \frac{A}{ (\lambda_1/4) } x + A \right) C(k_1 m x) = \frac{-A}{\lambda_1/4} \left( 0 + \frac{ C(\pi m) - 1 }{ (k_1 m )^2 } \right) = \begin{cases} 0 & \text{ if $m$ even } \\
+    \frac{ -A}{ \lambda_1/4} \frac{ (-2)}{ \frac{ (2\pi m)^2}{\lambda_1^2 } } & \text{ if $m$ odd }
+\end{cases}  \\
+  & \int_{\lambda_1/2}^{3\lambda_1/4} \left( \frac{A}{ (\lambda_1/4) } x - 3A\right) C(k_1 mx) = \begin{cases} 
+    \frac{A}{ (\lambda_1/4) } \frac{ (-1)^j - 1 }{ (k_1 m)^2 } & \text{ if } m = 2 j \\
+    \frac{A}{ (\lambda_1/4) } \frac{ 0 - (-1) }{ (k_1 m)^2 } & \text{ if $m$ odd }
+  \end{cases} \\
+& \Longrightarrow 
+\begin{aligned}
+  & \left( \frac{A}{ (\lambda_1/4) } \right) \left( \frac{ 1 - (-1)^j }{ (k_1 m )^2 } + 0 + \frac{ (-1)^j - 1 }{ (k_1 m)^2 } \right) = 0 \quad \text{ if $m$ even } \\
+  & \frac{A}{ (\lambda_1/4) } \left( \frac{ -1 }{ (k_1 m)^2 } + \frac{1}{ (k_1 m)^2 } + \frac{2}{ (k_1 m)^2 } \right) = \frac{A}{ (\lambda_1/4) } \frac{4}{ (k_1 m)^2 } \quad \text{ if $m$ odd } 
+\end{aligned}
+\end{aligned}
+\]
+So then the Fourier coefficients are
+\[
+B_m = \left( \frac{2}{\lambda_1} \right) \frac{A}{ (\lambda_1/4) } \frac{ 4 }{ \frac{(2\pi m)^2}{ \lambda_1^2 } } = \frac{8A}{ \pi^2 m^2 }
+\]
+$B_0 = 0$ by inspection of a graph of the sawtooth function.  
+
+So then 
+\[
+F(z) = \sum_{j=1}^{\infty} \frac{8A}{ \pi^2 (2j-1)^2 } \cos{ (k_1 (2j-1) z) } = \frac{ 8A}{\pi^2} \cos{ (k_1 z) } + \frac{ 8A}{ \pi^2 9} \cos{ (3 k_1 z ) } + \frac{ 8A}{ 25 \pi^2 } \cos{ (5k_1 z ) }
+\]
+
+\problemhead{2.34} 
+\begin{enumerate}
+  \item 
+    \begin{enumerate}
+      \item \[
+\begin{gathered}
+  \begin{aligned}
+    A(z) & = A \sin{ (kna) } \\
+    A(3a) & = 0 \Longrightarrow 3k_m a = \pi m 
+  \end{aligned} \quad \quad k_m = \frac{ \pi m }{ 3a} \\
+  m =1; \quad k_1 = \frac{ \pi }{3a} \quad \quad A_{n=1} = A \sin{ \left( \frac{\pi}{3} \right)} = \frac{ \sqrt{3} A}{2} ; \quad A_{n=2} = A \sin{ \frac{2\pi}{3} } = \frac{ \sqrt{3}A }{ 2 } \\
+  \omega^2 = \frac{4T_0}{Ma} \sin^2{(ka)}; \quad k_1 a = \frac{\pi}{3}; \quad \quad \omega^2 = \frac{4T_0}{Ma} \left( \frac{ \sqrt{3}}{ 2 } \right)^2 = \frac{3T_0}{Ma} 
+\end{gathered}
+\]
+      \item \[
+\begin{gathered}
+A'(z) = Ak \cos{ (kz)} = Ak \cos{ \left( \frac{ \pi m }{ 3a} \left( \frac{3a}{2} \right) \right) } = Ak \cos{ \left( \frac{ \pi m }{2} \right) } = 0 \, \text{ if $m$ odd } \\
+m=1 \text{ for } A_{n=1} = A_{n=2} ; \quad \omega^2 = \frac{ 3T_0}{Ma}
+\end{gathered}
+\]
+      \item $A'\left( z = \frac{3a}{2} \right) = 0 $ and $A(z=0) =0 \Longrightarrow A_n = A \sin{ (kz) }$; \quad $k \left( \frac{3a}{2} \right) = (2m - 1) \frac{\pi}{2}$.  \\
+	$k\left( \frac{3a}{2} \right) = (2m-1)\frac{ \pi}{2}; \quad ka = (2m-1) \frac{\pi}{3}$.  
+
+Since if a bead is attached to the other side of the free end, then since no transverse force could be exerted on the bead by the free end (Newton's 3rd. law), then $A(a) = A(2a) \Longrightarrow ka = \frac{ \pi}{3}$; \quad $\omega^2 = \frac{3T_0}{Ma}$.  
+      \item $A(z) = A \sin{ (kz)}$ \quad (since $A(0) = 0$) \\
+$2L = 2\left( \frac{3a}{2} \right) = 3a$  
+\[
+\begin{aligned}
+  A'(z) & = kA \cos{ (k(z)) } \\
+  A'(3a) & = kA \cos{ (3ak)} = 0 
+\end{aligned}
+\quad \quad 
+ka = \frac{ (2m-1)\pi }{6}
+\]
+Since $A(z=2a) = A(z=a)$ (there must be no transverse force on bead at $z=a$ from its ``right hand'' side, since there's no change in the string tension), $m=1; \quad ka = \pi/8$ \\
+$\omega^2 = \frac{3T_0}{Ma}$.  
+    \end{enumerate}
+  \item $ka = \pi/3$ \quad $2Lk = \pi$ \quad $k  =\frac{\pi}{2L}$ \quad $k= \frac{\pi}{3a}$ \quad \quad $L = \frac{3a}{2}$
+\end{enumerate}
+
+\problemhead{2.35} 
+\[
+\begin{gathered}
+  \begin{aligned}
+  \psi(z,t) & = \sum_{j=1}^{\infty} \left( A_j \sin{ (k_j z) } + B_j \cos{ (k_j z) } \right) \cos{ (\omega_j t + \phi_j) }  \\
+  \dot{\psi} & = \sum \left( A_j S(k_j z) + B_j C(k_j z) \right) (-\omega_j) S(\omega_j t + \phi_j)
+\end{aligned} \quad \quad \omega_j = \sqrt{ \frac{ T_0}{\rho_0} } k_j \\
+  \dot{ \psi}(t=0) = \sum (A_j S(k_j z) + B_j C(k_j z) ) (-\omega_j )S(\phi_j) = \sum G_j S(k_j z) + H_j C(k_j z ) \\
+    F(z) = \begin{cases} v_0 & - \beta = \frac{-a}{2} \leq z \leq \beta \\
+      0 & \text{ otherwise } \end{cases} \\
+\Longrightarrow    G_j = 0  \\
+\int_{ -L/2}^{L/2} F C(k_j z) = \int_{-\beta}^{\beta} v_0 C(k_j z) = \left. \frac{ v_0 S(k_j z) }{ k_j } \right|_{-\beta}^{\beta} = \frac{ 2 v_0 S(k_j \beta) }{ k_j} \Longrightarrow \frac{2}{L} \frac{ 2 v_0 S(k_j \beta) }{ k_j } = H_j \\
+\frac{ 4 v_0 S(k_j \beta) }{ k_j L } = - \omega_j S(\phi_j) B_j \quad \Longrightarrow \begin{gathered} k_j \beta = \phi_j \\
+  \frac{ 4 v_0}{ k_j L } = -\omega_j B_j \end{gathered}  \frac{4 v_0}{ k_j L (-\omega_k) } = B_j = \frac{ -4v_0 }{ L k_j^2 \sqrt{ \frac{ T_0}{ \rho_0 } } } \\
+\psi(z,t) = \sum \frac{ -4v_0}{ L k_j^2 } \sqrt{ \frac{ \rho_0 }{ T_0 }} \cos{ (k_j z) } \cos{ (\omega_j t + k_j \beta) } \\
+\psi \left( \frac{L}{2} \right) = 0 \Longrightarrow \boxed{ k_j = \frac{ (2l - 1 ) \pi }{ L } }\\
+  B_0 = \frac{1}{L} \int v_0 = \frac{1}{L} v_0 2 \beta = \frac{a v_0 }{L } 
+\end{gathered}
+\]
+
+So for $k_j = \frac{ (2l - 1 ) \pi }{ L }$ \quad $\omega_j = \sqrt{ \frac{T_0 }{ \rho_0 } } k_j$; \quad $\phi_j = k_j a/2$.  \[
+\begin{gathered}
+  \phi(z,t) = \sum_{ j \text{ odd } }^{\infty} \frac{ -4 v_0}{ L k_j^2} \sqrt{ \frac{ \rho_0}{ T_0} } \cos{ (k_j z) } \cos{ (\omega_j t + \phi_j) } \\
+  \begin{aligned}
+    & l = 1,  \\
+    & l = 2,  \\ 
+    & l = 3,  \\
+  \end{aligned} \quad \quad
+\begin{aligned}
+  \frac{ -4 v_0 l}{ \pi^2 } \sqrt{ \frac{ \rho_0 }{T_0 }} \cos{ \left( \frac{ \pi z }{ L} \right) } \cos{ \left( \sqrt{ \frac{T_0}{\rho_0} } \frac{ \pi }{L} t + \frac{ \pi}{2L} a \right) } \\
+  \frac{ -4 v_0 l}{ 9 \pi^2 } \sqrt{ \frac{ \rho_0 }{T_0 }} \cos{ \left( 3 \frac{ \pi z }{ L} \right) } \cos{ \left( 3 \sqrt{ \frac{T_0}{\rho_0} } \frac{ \pi }{L} t + \frac{ \pi}{2L} a \right) } \\
+  \frac{ -4 v_0 l}{ 25\pi^2 } \sqrt{ \frac{ \rho_0 }{T_0 }} \cos{ \left( \frac{ 5 \pi z }{ L} \right) } \cos{ 5\left( \sqrt{ \frac{T_0}{\rho_0} } \frac{ \pi }{L} t + \frac{ \pi}{2L} a \right) } 
+\end{aligned}
+\end{gathered}
+\]
+
+\section{ Forced Oscillations }
+
+\problemhead{3.1} With $\omega_1^2 = \omega_0^2 - \left( \frac{\Gamma}{2} \right)^2 $
+\[
+\begin{gathered}
+\begin{aligned}
+  x_h & = e\left( \frac{ -\Gamma t }{2} \right) (A S(\omega_1 t) + B C(\omega_1 t) ) \\
+  x_h^2 & = e\left( -\Gamma t \right) (A^2 S^2 + 2ABSC + B^2 C^2 ) \\
+  \dot{x}_h & = \frac{ -\Gamma}{2} e\left( \frac{ -\Gamma t }{ 2} \right) (AS +BC) + e\left( \frac{ -\Gamma t}{2} \right)(\omega_1) (AC -BS) = \\
+  & = e\left( \frac{ -\Gamma t}{2} \right)\left( \frac{ -\Gamma}{2} AS - \frac{ \Gamma}{2} BC + \omega_1 AC - \omega_1 BS\right) = e\left( \frac{ -\Gamma t}{2} \right)\left( \left( \frac{-\Gamma}{2} A - \omega_1 B \right)S + \left( \frac{-\Gamma}{2} B + \omega_1 A \right)C \right)  
+\end{aligned} 
+\end{gathered}
+\]
+
+
+\begin{multline*}
+  \dot{x}_h^2  = e(-\Gamma t)\left( \left( \left( \frac{\Gamma}{2} A \right)^2 + \Gamma \omega_1 AB + \omega_1^2 B^2 \right) S^2 + \left( \left( \frac{\Gamma}{2} B \right)^2 + - \Gamma \omega_1 AB + \omega_1^2 A^2 \right)C^2   + \right. \\
+  + \left. 2 \left( \left( \frac{\Gamma}{2} \right)^2 AB - \frac{\Gamma}{2} A^2 \omega_1 + \frac{\Gamma}{2} \omega_1 B^2 - \omega_1^2 AB \right) SC \right)
+\end{multline*}
+
+\[
+\begin{gathered}
+  \omega_0^2 A^2 \frac{1}{2} + \omega_0^2 \frac{B^2}{2} + \frac{1}{2} \left( \frac{ \Gamma}{2} \right)^2 A^2 + \omega_1^2 B^2 \frac{1}{2} + \frac{1}{2} \left( \frac{\Gamma}{2} \right)^2 B^2 + \frac{1}{2} \omega_1^2 A^2 \\
+  \xrightarrow{\frac{1}{2} \Gamma \ll \omega_0 } (\omega_0^2 + \omega_1^2) \frac{A^2}{2} + (\omega_0^2 + \omega_1^2) \frac{B^2}{2} 
+\end{gathered}
+\]
+
+I suppose that one could argue that the approximation is valid for weak damping and that we could average over any one cycle and the energy is then essentially constant.  And then we could also argue that we observe that each cycle has the energy decreasing exponential.  But note that the expression is not general.  
+
+\problemhead{3.2} $  \ddot{x} + \Gamma \dot{x} + \omega_0^2 x = 0 $
+\[
+\begin{aligned}
+  x & = e^{-t/2\tau} \cos{ ( \omega_1 t + \theta ) } \\
+  \dot{x} & = \frac{-1}{2\tau } e^{-t/2\tau } \cos{(\omega_1 t + \theta) } + -\omega_1 e^{-t/2\tau} \sin{ (\omega_1 t + \theta) } \\
+  \ddot{x} & = \left( \frac{-1}{2 \tau} \right)^2 e^{-t/2\tau } \cos{ (\omega_1 t + \theta) } + \\
+  & + \frac{ 2 \omega_1 }{ 2 \tau } e^{-t/2\tau } \sin{ (\omega_1 t + \theta) } + -\omega_1^2 e^{-t/2\tau } \cos{ (\omega_1 t + \theta) } \\
+\Longrightarrow & \begin{aligned}
+& \left( \frac{-1}{2\tau} \right)^2 - \omega_1^2 + \frac{ -\Gamma }{2 \tau} + \omega_0^2 = 0 \\
+  & \frac{ \omega_1}{ \tau } - \omega_1 \Gamma = 0 
+\end{aligned} 
+\end{aligned}
+\quad \quad 
+\begin{aligned}
+  & \text{ complexify } \\
+  x & = e\left( \frac{ -t}{2 \tau } \right) e^{i\phi } \\
+  \dot{x} & = \frac{ -1}{ 2 \tau } x + i \omega x \\
+  \ddot{x} & = \left( \frac{-1}{2 \tau} \right)^2 + 2 \left( \frac{-1}{2 \tau} i \omega \right) - \omega^2 \\
+  \Longrightarrow & \left( \frac{-1}{2 \tau } \right)^2 - \omega^2 - \frac{ \Gamma }{ 2 \tau } + \omega_0^2 = 0 \\
+  & \frac{ \omega}{ -\tau } + \omega \Gamma = 0 
+\end{aligned}
+\]
+
+\problemhead{3.3} $M\ddot{x}(t) = -M \omega_0^2 x(t) - M \Gamma \dot{x}(t) + F(t)$ is Equation 1.  
+\[
+\begin{gathered}
+\begin{aligned}
+  M(\ddot{x} + \Gamma \dot{x} + \omega_0^2 x )  & = F(t) \\
+  M(\ddot{x}_1 + \Gamma \dot{x}_1 + \omega_0^2 x_1 ) & = F_1(t) \\
+  M(\ddot{x}_2 + \Gamma \dot{x}_2 + \omega_0^2 x_2 ) & = F_2(t)
+\end{aligned}
+M (\ddot{ (x_1 + x_2) } + \Gamma \dot{ (x_1 + x_2 ) } + \omega_0^2 (x_1 + x_2 ) ) = (F_1 + F_2)(t) = \\
+= F_1(t) + F_2(t) = M( \ddot{x}_1 + \ddot{x}_2 + \Gamma \dot{x}_1 + \Gamma \dot{x}_2 + \omega_0^2 x_1 + \omega_0^2 x_2 ) \\
+\text{ (by the linearity of the differentiation operation) } 
+\end{gathered}
+\]
+$x_1 + x_2 = x_3$ is uniquely determined if $x_3(0) = (x_1 + x_2)(0) = x_1(0) + x_2(0); \, \dot{x}_3(0) = \dot{x}_1(0) + \dot{x}_2(0)$ since 
+\[
+\begin{gathered}
+  F_1(0) + F_2(0) = (F_1 + F_2)(0) = M (\ddot{x}_1 + \Gamma \dot{x}_1(0) + \omega_0^2 x_1(0) ) + M (\ddot{x}_2 + \Gamma \dot{x}_2(0) + \omega_0^2 x_2(0) ) = \\
+  M( \ddot{ (x_1 + x_2) }(0) + \Gamma \dot{ (x_1 + x_2)}(0) + \omega_0^2 (x_1 + x_2)(0) )
+\end{gathered}
+\]
+
+\problemhead{3.4} $M\ddot{x}(t) + M\Gamma \dot{x}(t) + M \omega_0^2 x(t)  = F_0 \cos{\omega t}$ is Equation 14.  We'll use the form $\ddot{x}(t) + \Gamma \dot{x}(t) + \omega_0^2 x(t) = \frac{F_0}{M} \cos{\omega t}$.  
+\[
+\begin{gathered}
+\begin{aligned}
+  x_s(t) & = A \sin{\omega t} + B\cos{\omega t}  \\
+  \dot{x}_s & = \omega A \cos{\omega t} - B \omega \sin{\omega t} \\
+  \ddot{x}_s & = -\omega^2 ( A \sin{\omega t} + B \cos{\omega t } )
+\end{aligned} \\
+((-\omega^2 + \omega_0^2) \Gamma \omega + -(\omega_0^2 - \omega^2) \Gamma \omega ) \frac{1}{Det} \sin{\omega t} + \\
++ ((-\omega^2 + \omega_0^2)^2 + (\omega \Gamma)^2 \frac{1}{ Det} \cos{\omega t} = \frac{F_0}{M} \cos{\omega t} 
+\end{gathered}
+\]
+Also, we could use complex numbers:
+\[
+\begin{aligned}
+  \ddot{x} + \Gamma \dot{x} + \omega_0^2 x & = \frac{F_0}{M} e^{i\omega t} \\
+  (-\omega^2 + \Gamma i \omega + \omega_0^2)A & = \frac{F_0}{M} \\
+  A & = \frac{F_0}{M} \frac{1}{ -\omega^2 + \Gamma i \omega + \omega_0^2 } = \\
+  & = \frac{F_0}{M} \frac{ (\omega_0^2 - \omega^2 )^2 - i \Gamma \omega }{ ((\omega_0^2 - \omega^2)^2 + \Gamma^2 \omega^2 ) }
+\end{aligned}
+\]
+
+\problemhead{3.6} 
+\[
+\begin{gathered}
+  \begin{aligned}
+    x_s & = A S(\omega t) + B C(\omega t) \\
+    A & = A_{ab} = \frac{F_0}{M} \frac{ \Gamma \omega }{ (\omega_0^2 - \omega^2)^2 + \Gamma^2 \omega^2 } \\
+    B & = A_{el} = \frac{F_0}{M} \frac{ \omega_0^2 - \omega^2 }{ (\omega_0^2 - \omega^2)^2 + \Gamma^2 \omega^2 }
+  \end{aligned} \\
+  \begin{aligned}
+    F\dot{x}_s & = F_0 C(\omega t) \omega (A C(\omega t) - BS(\omega t) ) \Longrightarrow \left< F \dot{x}_s \right> = \frac{1}{2} F_0 \omega A \\
+    (\Gamma \dot{x}) \dot{x} & = \Gamma \omega^2 (A^2 C^2 - 2ABCS + B^2 S^2 ) \Longrightarrow \left< \Gamma \dot{x}^2 \right> = \frac{ Gamma \omega^2}{2} (A^2 + B^2 ) \\
+    \Gamma \omega (A^2 + B^2) & = \frac{F_0}{M} \left( \frac{1}{ (\omega_0^2 - \omega^2)^2 + (\Gamma \omega)^2 } \right) \Gamma \omega = A \Longrightarrow \left< F \dot{x}_s \right> = \left< \Gamma \dot{x}^2 \right>
+  \end{aligned}
+\end{gathered}
+\]
+
+\problemhead{3.9} One proposition: Neglect gravity.  Consider a jackhammer being stiffly connected (even physically connected) to a mass $M_a$, which is connected to a spring that's connected to a mass $M_b$.  Let $M_a = M_b$.  So this is like a two mass connected by a single spring system (two modes).  
+\[
+\begin{gathered}
+  \begin{aligned} 
+    M_a \ddot{\psi_a} & = - K (\psi_a - \psi_b ) + F \\
+    M_b \ddot{\psi_b} & = -K ( \psi_b - \psi_a)
+  \end{aligned} \quad \quad F=F(t) = F_0 \cos{ (\omega t) } \\
+\begin{aligned}
+  \ddot{ (\psi_a + \psi_b ) } & = \ddot{ \psi_1} = F/M \\
+  \ddot{ (\psi_a - \psi_b ) } & = \ddot{ \psi_2 } = \frac{ - 2 K}{ M } ( \psi_a - \psi_b )
+\end{aligned} \quad \quad 
+\begin{aligned}
+  \omega_1^2 & = 0 \\
+  \omega_2^2 & = 2 \omega_0^2 
+\end{aligned} \\
+\begin{aligned}
+  \psi_1 & = \psi_a + \psi_b = \frac{ -F}{M} \frac{ \cos{ (\omega t) }}{ \omega^2 } \\
+  \psi_2 & = \psi_a - \psi_b \Longrightarrow - \omega^2 A_2 + \omega_2^2 A_2 = \frac{F}{M}; \quad \quad A_2 = \frac{ F/M}{ -\omega^2  + \omega_2^2 } 
+\end{aligned} \\
+\frac{ \psi_b}{ \psi_a } = \frac{ \frac{-F}{M \omega^2 } + \frac{ -F/M}{ -\omega^2 + \omega_2^2 } }{ \frac{-F}{M \omega^2 } + \frac{F/M}{ -\omega^2 + \omega_2^2 } } = \frac{ \omega_2^2 }{ \omega_2^2 - 2 \omega^2 } = \frac{-1}{10} \\
+\Longrightarrow \omega_2^2 = \frac{ ( 2 \omega^2 )( \frac{1}{10} ) }{ 1 + \frac{1}{10} } = 2 \frac{\omega^2}{ 11 } = 2 \frac{K}{M}
+\end{gathered}
+\]
+If $M =11/2^2 = 2.75  \, kg $, $K = (2 \pi)^2 \cdot 100 \simeq 4000 \, kg/s^2$.  
+
+\problemhead{3.10} 
+\[
+\begin{aligned}
+  x_s & = A \sin{ \omega t} + B \cos{ \omega t } \\
+  \dot{x}_s & = \omega A \sin{\omega t } - \omega B \cos{ \omega t }
+\end{aligned} \quad 
+\begin{aligned}
+  \left< x_s^2 \right> & = A^2 + B^2  \\
+  \left< \dot{x}_s^2 \right> & = \omega^2 (A^2 + B^2 ) 
+\end{aligned}
+\]
+
+Note that by the definition of potential energy, the potential energy is the work done by a return force over some displacement.  
+\[
+\begin{gathered}
+  E = \frac{1}{2} M \dot{x}_s^2 + \frac{1}{2} M x_s^2 \omega_0^2 \text{ since $\omega_0^2$ is the return force per unit displacement per unit mass } \\
+  \left< E \right> = \frac{1}{2} M \omega^2 \left( A^2 + B^2 \right)\frac{1}{2} + \frac{1}{2} M \omega_0^2 \left( A^2 + B^2 \right) = \frac{1}{2} M (\omega^2 + \omega_0^2 ) \frac{1}{2} (A^2 + B^2 )
+\end{gathered}
+\]
+
+\problemhead{3.11} 
+\[
+\begin{gathered}
+  P = P_0 \frac{ \Gamma^2 \omega^2 }{ ( \omega_0^2 - \omega^2)^2 + \Gamma^2 \omega^2 } \\
+  \frac{P_0}{2} \Longrightarrow \quad \quad \quad \begin{aligned}
+    &    2 \Gamma^2 \omega^2 = (\omega_0^2 - \omega^2)^2 + \Gamma^2 \omega^2 \\
+    & \Gamma^2 \omega^2 = (\omega_0^2 - \omega^2)^2 \Longrightarrow \omega^2 + \Gamma \omega - \omega_0^2 = 0 \\
+    & \Longrightarrow \boxed{ \omega = \frac{ - \Gamma \pm \sqrt{ \Gamma^2 + 4(1) \omega_0^2 } }{ 2 (1) } }
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{3.12} \textbf{ Mechanical filter}.  \\
+Mass $b$ is the apparatus.  \\
+The pillow is the spring, considered perfect.  \\
+We can choose a spring (and thus the spring constant) such that
+\[
+\begin{gathered}
+\begin{aligned}
+  \frac{ \phi_a}{\phi_b} & = 1 - 2 \frac{\omega^2}{ \omega_2^2 } = - 100 \\
+  & = 1 - \frac{ \omega^2 }{ K/M } = -100 
+\end{aligned} \\
+\frac{K}{M} = \frac{\omega^2}{101}
+\end{gathered}
+\]
+If you sit on the spring, then it will push back as the spring sinks.  
+\[
+\begin{aligned}
+  K \Delta x & = Mg \\
+  \Delta x & = \frac{M}{K} g = \frac{101}{ \omega^2 } g = \frac{ 101 (980 \, cm/s^2 ) }{ \left( \frac{ 40 \pi rad }{ s } \right)^2 } \\
+  & \approx 6 cm
+\end{aligned} \quad \omega = \frac{ 20 c }{ s } \left( \frac{ 2\pi rad }{ 1 c } \right)
+\]
+
+\problemhead{3.13} Solve the steady-state damped oscillator in general.  
+\[
+\begin{gathered}
+\begin{aligned}
+  x_s & = A C(\omega t) + B S(\omega t) \\
+  \dot{x}_s & = \omega( -A S + BC ) \\
+  \ddot{x}_s & = \omega^2 ( - AC -BS) = -\omega^2 x_s 
+\end{aligned} \quad \quad 
+\begin{gathered} 
+  \ddot{x}_s + \Gamma \dot{x}_s + \omega_0^2 x_s = \frac{F_0}{M} C(\omega t)  \\
+  \Longrightarrow (-\omega^2 A + \omega B \Gamma + \omega_0^2 A) C + (-\omega^2 B - A \Gamma \omega + \omega_0^2 B) S = \frac{F_0}{M} C 
+\end{gathered} \\
+\left[ \begin{matrix} -\omega^2 + \omega_0^2 & \Gamma \omega \\ -\Gamma \omega & - \omega^2 + \omega_0^2 \end{matrix} \right]\left[ \begin{matrix} A \\ B \end{matrix} \right] = \left[ \begin{matrix} F_0/M \\ 0 \end{matrix} \right] \Longrightarrow \left[ \begin{matrix} A \\ B \end{matrix} \right] = \frac{1}{ (\omega^2 - \omega_0^2)^2 + (\Gamma \omega)^2 } \left[ \begin{matrix} \frac{F_0}{M} ( \omega_0^2 - \omega^2 ) \\ \frac{F_0}{M} \Gamma \omega \end{matrix} \right] \\
+x_s = A_{el} \cos{(\omega t) } = \frac{1}{  (\omega^2 - \omega_0^2)^2 + (\Gamma \omega)^2 } \left( \frac{F_0}{M} (\omega_0^2 - \omega^2) \right) \cos{(\omega t)} \xrightarrow{ \Gamma = 0 } \frac{F_0}{ M (\omega^2 - \omega_0^2 ) } \cos{ (\omega t) }
+\end{gathered}
+\]
+
+\problemhead{3.14} $M \ddot{\psi}_n = -M \omega_0^2 \psi_n + K ( \psi_{n+1} - \psi_n ) - K (\psi_n - \psi_{n-1})$ \quad $\omega_0^2 = \frac{g}{l}$.  
+
+Assume $l$ is long enough so we only have transverse horizontal motion.  
+\[
+T = T_0 \left( \frac{1}{ \cos{\theta}} \right); \quad T \sin{\theta} = T_0 \tan{\theta} = T_0 \left( \frac{ \psi_n - \psi_{n-1} }{ a} \right)
+\]
+Return force: $Mg \sin{ \theta_g} = Mg \frac{ \psi_n}{l } $\\
+$\Longrightarrow \boxed{ M \ddot{\psi}_n = - M \omega_0^2 \psi_n + \frac{T_0}{a} ( \psi_{n+1} - \psi_n ) + -\frac{T_0}{a} ( \psi_n - \psi_{n-1}) }$  
+
+\problemhead{3.15} By charge conservation, $I_n = - \dot{Q}_{n + 1/2}; \quad \, I_n = \dot{Q}_{n+1} + I_{n+1}$.  
+
+\[
+\begin{gathered}
+  \frac{Q_{n}}{C} = L\dot{I}_n - \frac{Q_{n+1/2}}{C_0} + \frac{ Q_{n+1}}{C} \Longrightarrow \frac{ \dot{Q}_n }{ C} =  L \ddot{I}_n - \frac{ \dot{Q}_{n+1/2}}{ C_0} + \dot{Q_{n+1}}{C}  \\
+  \frac{I_{n-1} - I_n }{C} = L\ddot{I}_n + \frac{I_n}{C_0} + \frac{ (I_n - I_{n+1} ) }{ C} \Longrightarrow \ddot{I}_n = - \frac{I_n}{C_0} - \frac{ 2I_n - I_{n+1} - I_{n-1}}{ C }
+\end{gathered}
+\]
+
+\problemhead{3.17} 
+At $z=0$, we're trying to connect $A\cos{ (kz)}$ and $Ae^{-\kappa z}$.  The dispersion relation for the ionosphere is $ \begin{aligned} 
+  \omega^2 & = \omega_0^2 - c^2 \kappa^2 \\
+  \ddot{\psi} & = \omega_0^2 \psi - \kappa^2 c^2 \psi 
+\end{aligned} \quad \quad \begin{gathered} \frac{1}{\kappa} = \delta \\
+\ddot{\psi} = (\omega_0 - \partial_{zz}) \psi \end{gathered}$.  
+\[
+\begin{gathered}
+  \delta = \frac{1}{ \sqrt{ \omega_0^2 - \omega^2}{ c^2} } = \frac{ 1 }{ \left( \frac{ (2\pi)^2 ((20 \times 10^6)^2 - (10^6)^2 )}{ (3 \times 10^8  m/s)^2 }/s^2    \right)^{1/2} } \simeq \boxed{ 2.5 \, m }
+\end{gathered}
+\]
+
+\problemhead{3.18} We have an input voltage at one end and an outer capacitor at the other end.  Again 
+\[
+\begin{gathered}
+\begin{aligned}
+  \frac{Q_n}{C} & = \phi_n - \phi_0 = \frac{L}{2} \dot{I}_n - \frac{Q_{n+1/2}}{C_0} + \frac{L}{2} \dot{I}_n + \frac{Q_{n+1}}{C} = \\
+  & = -(\phi_{n+1/3} - \phi_n) - ( \phi_{n+2/3} - \phi_{n+1/3} ) - (\phi_{n+1} - \phi_{n+2/3} ) + (\phi_{n+1} - \phi_0) 
+\end{aligned} \\
+\frac{I_{n-1} - I_n}{C} =  L\ddot{I}_n + \frac{I_n}{C_0} + \frac{I_n - I_{n+1}}{C} \Longrightarrow \ddot{I}_n = \frac{I_n}{-LC_0} - \frac{2I_n - I_{n+1} - I_{n-1}}{ LC }  \\
+I_n = (Ae^{kna} + Be^{-kna} ) e^{i(\omega t + \phi) } \\
+\begin{aligned}
+  \Longrightarrow -\omega^2 I_n & = -\omega_0^2 I_n - T_0 (e^{i (\omega t+ \phi) })( 2 (Ae^{kna} + Be^{-kna}) - (Ae^{k(n+1)a} + Be^{-k(n+1)a} ) - (Ae^{k(n-1)a} + Be^{-k(n-1)a} ) )  \\
+  \omega^2  & = \omega_0^2 - 4T_0 \sinh^2{ \left( \frac{ka}{2} \right)}
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{3.19} Assuming \\
+- weak-damping approximation \\
+- stay reasonably near a resonance  \\
+We will use $\omega_0 ~ \omega$ alot.  
+\[
+\begin{gathered}
+  \begin{aligned}
+    A_{ab} & = \frac{ \Gamma \omega^2 }{ (\omega_0^2 - \omega^2)^2 + (\Gamma \omega)^2 } \\
+    A_{el} & = \frac{ \omega_0^2 - \omega62 }{ (\omega_0^2 - \omega^2)^2 + (\Gamma \omega)^2 } 
+  \end{aligned} \\
+\begin{aligned}
+A_{el} & = \frac{ (\omega_0 - \omega) ( \omega_0 + \omega) }{ ( (\omega_0 - \omega)(\omega_0 + \omega) )^2 + (\Gamma \omega)^2 } \simeq \frac{ -2 \omega_0 ( \omega - \omega_0 ) }{ 4 \omega_0^2 ( \omega_0 - \omega)^2 + (\Gamma \omega_0)^2 } \left( \frac{ \frac{1}{ (\Gamma \omega_0)^2 }  }{ \frac{1}{ (\Gamma \omega_0^2)^2 }} \right) = \\
+ &  = \frac{ -x \frac{1}{ \Gamma \omega_0} }{ x^2 + 1 } 
+\end{aligned} \\
+A_{ab} = \frac{ 1/\Gamma \omega_0}{ x^2 + 1 } 
+\end{gathered}
+\]
+
+\problemhead{3.20} $A_{el} = \frac{1}{ \omega_1^2 - \omega^2} + \frac{1}{ \omega_2^2 - \omega^2 }$  
+\[
+\begin{gathered}
+  \begin{aligned}
+  \frac{1}{ 1 - \left( \frac{1}{2} \frac{ \omega_1^2 - \omega_2^2 }{ \omega_{av}^2  - \omega^2 } \right)^2 } & = \frac{1}{ 1 - \epsilon^2 } \\
+  & = \frac{1}{ \frac{ 4 (\omega_{av}^2 - \omega^2 )^2  - (\omega_1^2 - \omega_2^2 )^2 }{ 4 (\omega_{av}^2 - \omega^2)^2 } } \\ 
+  & = \frac{ 4 (\omega_{av} - \omega^2)^2 }{ 4 (\omega_{av}^2 -\omega^2 )^2  - (\omega_1^2 - \omega_2^2 )^2 } = \frac{ 4 (\omega_{av}^2 - \omega^2 )^2 }{ 4 ( \omega_{av}^4 - 2 \omega_{av}^2 \omega^2 + \omega^4) - (\omega_1^4 - 2 \omega_1^2 \omega_2^2 + \omega_2^4 ) } 
+  \end{aligned} \\
+  \Longrightarrow 
+  \begin{aligned} 4 \left( \frac{ \omega_1^2 + \omega_2^2 }{ 2 } - \frac{ \omega^2 }{2} - \frac{ \omega^2 }{2} \right)^2 - (\omega_1^2 - \omega_2^2 )^2 & = (\omega_1^2 + \omega_2^2 - 2 \omega^2 )^2 - (\omega_1^2 - \omega_2^2)^2 =  \\
+    &  = 4 \omega_1^2 \omega_2^2 -4 \omega^2 ( \omega_1^2 + \omega_2^2 ) + 4 \omega^4 = \\
+    & = 4 ( \omega_1^2 \omega_2^2 - \omega^2 ( \omega_1^2 + \omega_2^2) + \omega^4) = 4 ( \omega_1^2 - \omega^2)( \omega_2^2 - \omega^2 )
+\end{aligned} \\
+  \text{ Then } A_{el} = \frac{1}{ \omega_1^2 - \omega^2 } + \frac{1}{ \omega_2^2 - \omega^2 } = \frac{ \omega_2^2 - \omega^2 + \omega_1^2 - \omega^2 }{ (\omega_1^2 - \omega^2)( \omega_2^2 - \omega^2 ) } = \frac{ 2 (\omega_{av}^2 - \omega^2 ) }{ (\omega_{av}^2 - \omega^2)^2 - \left( \frac{ \omega_1^2 - \omega_2^2 }{2 } \right)^2 }  = \\
+  = \frac{2}{ \omega_{av}^2 - \omega^2 } \left( \frac{ 1 }{ 1 - \epsilon^2 } \right) = \left( \frac{2}{ \omega_{av}^2 - \omega^2 } \right) (1 + \epsilon^2 + \dots ) 
+\end{gathered}
+\]
+
+\problemhead{3.21}  The equations given, Equations 98, 103, 106, are, respectively,
+\begin{align}
+  \omega^2 & = \omega_0^2 + \frac{4K}{M} \sin^2{ \frac{ka}{2} } \\
+  \omega^2 & = \omega_0^2 - \frac{4K}{M} \sinh^2{ \frac{\kappa}{2} } \\
+  \omega^2 & = \omega_0^2 + \frac{4K}{M} \cosh^2{ \frac{\kappa}{2} }
+\end{align}
+
+Assume $\frac{a}{ \lambda} \ll 1; \quad \quad \frac{a}{ \delta } \ll 1$.  Then the continuous approximation should be a good one (no ``jagged edges'') 
+
+\[
+\begin{aligned}
+  \omega^2 & \simeq \omega_0^2 + \frac{4K}{M} \left( \frac{ka}{2} - \frac{1}{6} \left( \frac{ka}{2} \right)^2 \right)^2 \simeq \omega_0^2 + \frac{4K}{M} \left( \frac{ka}{2} \right)^2 = \omega_0^2 + \frac{K}{M} (ka)^2 \\
+  \omega^2 & = \omega_0^2 - \frac{4K}{M} \left( \frac{1}{4} \right) (e^{ \frac{\kappa a}{2}} - e^{ -\frac{\kappa}{2}} )^2 = \omega_0^2 - \frac{K}{M} (e^{ \frac{\kappa a}{2} } - e^{-\frac{\kappa a}{2} })^2  \simeq \\
+  & \simeq \omega_0^2 - \frac{K}{M} (\kappa a)^2 = \omega_0^2 - \frac{K}{M} (\kappa a)^2 \\
+\omega^2 & = \omega_0^2 + \frac{K}{M} (e^{\kappa a / 2 } + e^{-\kappa a/2})^2 = \omega_0^2 + \frac{K}{M} ( 2 + \frac{ \left( \frac{ \kappa a }{2} \right)^2 }{ 2 } (2 ) ) \simeq \omega_0^2 + 2 \frac{K}{M} 
+\end{aligned}
+\]
+There is no high-frequency cutoff for the continuous string since there's many degrees of freedom.  
+
+\problemhead{3.22} \textbf{ Interminable transient beats }.  
+
+\problemhead{3.24} \textbf{ Transient beats } \\
+The solution to $\ddot{x} + \Gamma \dot{x} + \omega_0^2 x = \frac{F}{M} \cos{\omega t }$ is 
+\[
+x(t) = A_{ab} S(\omega t ) + A_{el} C(\omega t ) + e^{ -\frac{\Gamma}{2} t } (A_1 S(\omega_1 t )  + B_1 C(\omega_1 t ) )
+\]
+We want \emph{ initially undisturbed oscillators }.  
+\[
+x(0) =0  \Longrightarrow A_{el} = -B_1
+\]
+Assume weak damping, so $e^{- \frac{ \Gamma}{2} t } \simeq 1 $ over an oscillation period.  
+\[
+\begin{gathered}
+  \dot{x} = \omega A C + - \omega B S + e^{- \frac{ \Gamma}{2} t } (\omega_1 A_1 C(\omega_1 t ) + - \omega_1 B_1 S(\omega_1 t ) ) \\
+  \dot{x}(0) = \omega A + \omega_1 A_1 = 0 \Longrightarrow A = -A_1 \, \text{ since } \omega \approx \omega_1 
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+  x = A (S(\omega t ) - e^{ - \frac{ \Gamma t }{2} } S(\omega_1 t ) ) + B (C(\omega_1 t ) - e^{ -\frac{ \Gamma t }{2 } } C(\omega_1 t ) ) \\
+  \begin{aligned}
+    x^2 & = A^2 (S^2(\omega t) - 2 S(\omega t)S(\omega_1 t)e^{- \frac{ \Gamma t }{2} } + e^{-\Gamma t }S^2(\omega_1 t) ) + B^2 (C^2(\omega t) - 2 C(\omega t) C(\omega_1 t) e^{- \frac{ \Gamma t}{2} } + e^{-\Gamma t} C^2(\omega_1 t) ) + \\
+    & + 2 AB (S(\omega t)C(\omega t) - e^{ - \frac{ \Gamma t}{2} } (S(\omega t) C(\omega_1 t) + S(\omega_1 t) C(\omega t) ) + e^{-\Gamma t} S(\omega_1 t) C(\omega_1 t) ) 
+      \end{aligned} \\
+  \text{ Again, assume weak damping } \\
+  \dot{x} = A(\omega C(\omega t) - e^{- \frac{ \Gamma t}{2} } \omega_1 C(\omega_1 t ) ) + B (-S(\omega t) \omega + e^{- \frac{ \Gamma t}{2} } \omega_1 S(\omega_1 t) ) \\
+  \begin{aligned}
+    \dot{x}^2 & = A^2 (\omega^2 C^2(\omega t) - 2e^{-\frac{ \Gamma t}{2}} \omega_1 \omega C(\omega_1 t) C(\omega t) + e^{-\Gamma t} \omega_1^2 C^2(\omega_1 t) ) + \\
+    & + B^2 (S^2(\omega t) \omega^2 + -2 e^{- \frac{ \Gamma t}{2} } \omega \omega_1 S(\omega t)S(\omega_1 t) + e^{-\Gamma t} \omega_1^2 S^2(\omega_1 t) ) + \\
+    & + 2AB (-\omega^2 C(\omega t) S(\omega t) + e^{-\frac{ \Gamma t}{2} } \omega \omega_1 C(\omega t) S(\omega_1 t) + e^{-\frac{ \Gamma t}{2} } \omega_1 \omega C(\omega_1 t) S(\omega t) + -e^{-\Gamma t} \omega_1^2 C(\omega_1 t) S(\omega_1 t) 
+  \end{aligned} \\
+  \begin{aligned}
+    \frac{1}{2} M\dot{x}^2 + \frac{1}{2} M \omega_0^2 x^2 & = \frac{1}{2} M \left( A^2 (\omega^2 + \omega^2 e^{-\Gamma t} - 2 e^{ - \frac{ \Gamma t }{2} } C(\omega_1 - \omega)t )\right) + \\
+    & + \frac{1}{2} M \left( B^2 ( \omega^2 + -2 e^{- \frac{ \Gamma t}{2} } C(\omega_1 - \omega) t + \omega^2 e^{-\Gamma t} ) \right) 
+\end{aligned} \\
+E = (\frac{1}{2} M \omega^2 (A^2 + B^2) )(1 + e^{-\Gamma t} - 2 e^{-\frac{ \Gamma t}{2} } C(\omega - \omega_1)t )
+\end{gathered}
+\]
+
+\problemhead{3.25} 
+Given the equations, Equations 7, 8, 9, respectively, we want to show Equation 9:
+\begin{gather}
+  x_1(t) = e\left( \frac{ -\Gamma }{2} t \right) \left( x_1(0) \cos{ (\omega_1 t ) } + \left( \dot{x}_1(0) + \frac{1}{2} \Gamma x_1(0) \right) \frac{ \sin{ \omega_1 t} }{ \omega_1 } \right) \\
+  \omega_1 = \pm i |\omega_1|; \quad |\omega_1 | = \sqrt{ \left( \frac{ \Gamma }{2} \right)^2 + - \omega_0^2 } \\
+  x_1(t) = e\left( \frac{ -\Gamma t}{2} \right) \left( x_1(0) \cosh{ |\omega_1 |t } + \left( \dot{x}_1(0) + \frac{1}{2} \Gamma x_1(0) \right) \frac{ \sinh{ |\omega_1| t} }{ |\omega_1 | } \right)
+\end{gather}
+
+$\omega_1^2 = - \left( \left( \frac{ \Gamma}{2} \right)^2 - \omega_0^2 \right) = \omega_0^2 - \left( \frac{\Gamma}{2} \right)^2 = - \left( \left( \frac{\Gamma}{2} \right)^2 - \omega_0^2 \right) $ \\
+If $ \frac{\Gamma}{2} > \omega_0$, then $\omega_1 = \pm i |\omega_1| $ \\
+\[
+\begin{gathered}
+\begin{aligned}
+  \cos{ (i x) } & = \frac{ e^{ i (ix) } + e^{-i (ix)} }{ 2} = \frac{ (e^x + e^{-x}) }{ 2 } = \cosh{x} \\
+  \sin{ (ix) } & = \frac{ e^{ i(ix) } - e^{-i(ix)} }{ 2i } = \frac{1}{ -i} \sinh{ (x) } 
+\end{aligned} \\
+x_1 = e\left( \frac{ -\Gamma t}{2} \right) \left( x_1(0) \cosh{ |\omega_1 |t } + (\dot{x}_1(0) + \frac{1}{2} \Gamma x_1(0) ) \frac{ \sinh{ \omega_1 t } }{ | \omega_1 | } \right) 
+\end{gathered}
+\]
+
+\problemhead{3.26} \textbf{ Critical damping } $\omega_1^2 = 0 \Longrightarrow \frac{ \Gamma}{2} = \omega_0$.  
+\[
+\begin{gathered}
+\begin{gathered}
+  \text{ from the underdamped equation } \\
+  x_1 = e\left( \frac{-\Gamma}{2} t \right) \left( x_1(0) + (\dot{x}_1(0) + \frac{ \Gamma}{2} x_1(0) ) t \right) \text{ since } \lim_{ \omega_1 \to 0 } \frac{ \sin{ \omega_1 t} }{ \omega_1 } = t 
+\end{gathered} \\
+\text{ from the overdamped equation } \\
+x_1 = e\left( \frac{ -\Gamma t }{2} \right) (x_1(0)(1) + (\dot{x}_1(0) + \frac{ \Gamma}{2} x_1(0) )t ) \text{ since } \lim_{ |\omega_1|\to 0 } \frac{ e^{ |\omega_1|t} - e^{ - |\omega_1|t} }{ 2 |\omega_1| } = t 
+\end{gathered}
+\]
+
+\problemhead{3.28} \textbf{ Two coupled pendulums as a mechanical bandpass filter}.  Neglect damping.  \\
+We can derive the following equations of motion by considering Newton's second law and the physical setup:
+\[
+\begin{aligned}
+  M \ddot{\phi}_a & = - \Gamma M \dot{\phi}_a - \frac{ Mg}{l} \phi_a - K( \phi_a - \phi_b) + F \cos{ \omega_d t } \\
+  M \ddot{\phi}_b & = - \Gamma M \dot{\phi}_b - \frac{ Mg}{l} \phi_b - K( \phi_b - \phi_a) 
+\end{aligned}
+\]
+By physical reasoning, the normal coordinates, $\phi_{1,2}$, could be guessed at to be
+\[
+\phi_1 = \phi_a + \phi_b; \quad \phi_2 = \phi_a - \phi_b
+\]
+We find that the modes 1,2 are ``decoupled'', which just means the equation of motions have only one variable, $\phi_{1,2}$, respectively:
+\[
+\begin{aligned}
+  & M \ddot{\phi_1} + \Gamma M \dot{\phi_1} + \frac{ Mg}{l} \phi_1 = F \cos{ \omega_d t} \\ 
+  & M \ddot{\phi_2} + \Gamma M \dot{\phi_2} + \frac{ Mg}{l} \phi_2 + 2 K \phi_2 = F \cos{ \omega_d t}
+\end{aligned}
+\]
+Let $M\omega_1^2 = \frac{ Mg}{l}; \quad M\omega_2^2 = M \left( \frac{g}{l} + \frac{2K}{M} \right)$
+Complexify the solution to make the algebra easier. 
+\[
+\begin{gathered}
+  -\omega^2 \hat{A}_{1,2} + \Gamma \imath \omega \hat{A}_{1,2} + \omega_{1,2}^2 \hat{A}_{1,2} = \frac{F}{M} \\
+  \hat{A}_{1,2} = \frac{F}{M} \left( \frac{1}{ (\omega_{1,2}^2 - \omega^2) + \imath \omega \Gamma } \right)  \\
+ \text{ take the real part to get back $\frac{F}{M} \cos{ \omega_d t} $.  With $\omega = \omega_d$ (notation) } \\
+ A_{1,2} = \frac{F}{M} \left( \frac{ \omega_{1,2}^2 - \omega^2 }{ (\omega_{1,2}^2 - \omega^2)^2 + (\omega \Gamma)^2 } \right)
+\end{gathered}
+\]
+If we were looking for full generality, this solution is a bit erroneous because it assumes no $pi/2$ lagging part, the $\sin$ part of a steady-state response/solution.  However, we are asked to neglect friction.  then the steady state response/solution/motion should be completely in phase, moving with the forcing.  
+\[
+\Longrightarrow A_{1,2} = \frac{F}{M} \frac{ 1 }{ (\omega_{1,2}^2 - \omega^2 ) }
+\]
+So then
+\[
+\begin{gathered}
+  \phi_a = \frac{ \phi_1 + \phi_2}{2}, \quad   \phi_b = \frac{ \phi_1 - \phi_2}{2}   \\
+\frac{ \phi_b}{\phi_a} = \frac{ \phi_1 - \phi_2 }{ \phi_1 + \phi_2 } = \frac{ \omega_2^2 - \omega_1^2 }{ \omega_1^2 + \omega_2^2 + 2 \omega_d^2 } \\
+\begin{aligned}
+  \phi_a & = \frac{F}{2M} \left( \frac{1}{ \omega_1^2 - \omega^2 } + \frac{1}{ \omega_2^2 - \omega^2 } \right) \cos{ \omega_2 t } \\
+  \phi_b & = \frac{F}{2M} \left( \frac{1}{ \omega_1^2 - \omega^2 } - \frac{1}{ \omega_2^2 - \omega^2 } \right) \cos{ \omega_2 t }
+\end{aligned}
+\end{gathered}
+\]
+Notice how since $\omega_2 > \omega_1$, so that $\frac{1}{ \omega_1^2 - \omega^2 } > \frac{1}{ \omega_2^2 - \omega^2 }$, so that the amplitude response of $\phi_b$ is smaller than $\phi_a$.  
+
+\problemhead{3.29} Again to remind myself,
+\[
+-\int_6^5 \vec{E} \cdot d\vec{s} = \phi_5 - \phi_6 = \frac{-Q_b}{C_0}  = V_{56}
+\]
+(notice how the sign convention for electric potential is clear, in how positive charge wants to flow from high to low, while the sign convention for voltage is arbitrary and depends upon our choice of direction for the diagram.  So one quick way to get the electric potential for capacitors is that the positive charges set up a higher potential so that the positive charges would like to flow down to lower potential, the negative plate; if it could.)
+
+\[
+\begin{gathered}
+  \begin{aligned}
+  \frac{Q}{C} & = \phi_4 - \phi_0 = \frac{L}{2} \dot{I}_b - \frac{Q_b}{C_0} - \frac{L}{2} \dot{I}_b = -(\phi_5 - \phi_4) + (\phi_5 - \phi_6)  - (\phi_0 - \phi_6) = \phi_4 - \phi_0 = \\
+  &  = - L \dot{I}_b - \frac{Q_b}{C_0} 
+  \end{aligned} \\
+  V  = V(t) = \frac{ -L \dot{I}_a}{2 } - \frac{ Q_a}{C_0} - \frac{L}{2} \dot{I}_a + \frac{Q}{C} = -L\dot{I}_a - \frac{Q_a}{C_0} + \frac{Q}{C} \\
+  \Longrightarrow \begin{aligned}
+    \frac{ \dot{Q}}{C} & =  L \ddot{I}_b - \frac{ \dot{Q}_b}{ C_0 } \\
+    \dot{V} & = L \ddot{I}_a - \frac{ \dot{Q}_a}{ C_0 } + \frac{ \dot{Q}}{C} 
+\end{aligned} \quad \quad \text{ so then } \quad \quad 
+\begin{aligned}
+  & L \ddot{ ( I_a + I_b ) } = - \frac{ (I_a + I_b) }{ C_0 } + \dot{V} \\
+  & L \ddot{ (I_a - I_b)  } = - \left( \frac{1}{C_0} + \frac{2}{C} \right) (I_a - I_b) + \dot{V}
+\end{aligned} \\
+\begin{aligned}
+  & \text{ Mode } 1: \quad I_a = I_b; \quad \omega_0^2 = \frac{1}{LC_0} \\ 
+  & \text{ Mode } 2:  \quad I_a = -I_b ; \quad \omega_2^2  = \omega_0^2 + \frac{2}{LC}
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{3.30} \textbf{Coupled pendulums}.  For a linear array of coupled pendulums, the equation of motion is
+\[
+\begin{gathered}
+  M l_0 \ddot{\phi}_n = -Mg \phi_n + -Kl_0 (\phi_n - \phi_{n+1}) + -Kl_0 (\phi_n -\phi_{n-1}) \\
+  \ddot{\phi}_n = (-\omega_0^2 - \frac{2K}{M})\phi_n + \frac{K}{M} (\phi_{n+1} + \phi_{n-1} )
+\end{gathered}
+\]
+To find the general solution, assume $\phi_n$ is continuously differentiable so that it has a Taylor expansion.  
+\[
+\begin{gathered}
+  \begin{aligned}
+    \phi_n & = \phi(z,t) \\
+    \phi_{n+1} & = \phi(z+a,t) = \sum_{j=0}^{\infty} \frac{ \phi^{(j)}(z,t) }{j! } a^j ; \quad \phi_{n-1} = \sum_{j=0}^{\infty} \frac{ \phi^{(j)}(z,t) }{j! } (-a)^j 
+\end{aligned} \\
+  \ddot{\phi}(z,t) = (-\omega_0^2 - \frac{2K}{M} ) \phi_n + \frac{K}{M} \left( \sum_{j=0}^{\infty} \frac{ \phi^{(j)}(z,t) }{j!} (a^j + (-a)^j ) \right) \\
+  \frac{ \partial^2 \phi}{ \partial t^2 } = -\omega_0^2 \phi + \frac{Ka^2}{M} \frac{ \partial^2 \phi}{ \partial z^2 }
+\end{gathered}
+\]
+Assume the steady state solution - then frequency oscillation is the same for all parts.  \\
+If the driving force does no work, then all have the same phase constant. 
+\[
+\begin{gathered}
+  \phi(z,t) = A(z) \cos{ (\omega t + \phi ) } \\
+  \begin{aligned}
+    -\omega^2 \phi & = - \omega_0^2 \phi + \frac{Ka^2}{M} \frac{ \partial^2 A}{ \partial z^2 } \cos{ (\omega t + \phi) } \\
+    \frac{ \partial^2 A}{ \partial z^2 } & = (\omega_0^2 - \omega^2 ) \frac{M}{ Ka^2 } A = \kappa^2 A(z)
+    \end{aligned} \\
+  \begin{aligned}
+    A(z) & = C_1 e^{\kappa z} + C_2 e^{-\kappa z } \\
+    A(0) & = C_1 + C_2 = A_0 \\
+    A(L) & = C_1 e^{ \kappa L } + C_2 e^{-\kappa L } = 0 
+  \end{aligned} \\
+\left[ \begin{matrix} 1 & 1 \\ e^{\kappa L} & e^{-\kappa L} \end{matrix} \right]\left[ \begin{matrix} C_1 \\ C_2 \end{matrix} \right] = \left[ \begin{matrix} A_0 \\ 0 \end{matrix} \right] \quad \, \left( \frac{1}{ e^{-\kappa L} - e^{\kappa L} } \right) \left[ \begin{matrix} e^{-\kappa L} & -1 \\ -e^{\kappa L} & 1 \end{matrix} \right] \left[ \begin{matrix} A_0 \\ 0 \end{matrix} \right] = \left[ \begin{matrix} C_1 \\ C_2 \end{matrix} \right] \\
+\Longrightarrow A(z) = \frac{ A_0 (e^{-\kappa L} e^{\kappa z} -e^{\kappa L} e^{-\kappa z } ) }{ e^{-\kappa L} - e^{\kappa L} } 
+\end{gathered}
+\]
+
+\problemhead{3.31} \textbf{Resonance in a system of coupled pendulums}.  Find the resonant values of $\omega^2$.  
+\begin{enumerate}
+  \item 
+\[
+C = \frac{ A_0}{ \frac{\kappa}{k} \sin{kL } + \cos{kL} } \quad \, \begin{aligned} \frac{ \kappa}{k} \sin{kL} + \cos{kL} & = 0 \\ k \cot{kL} = -\kappa \end{aligned}
+\]
+  \item Let $Ka^2/ML^2$ equal ``one unit'' of return force per unit displacement per unit mass \\
+    Let $g/l_1 = \omega_1^2$, $g/l_2 = \omega_2^2$.  
+\[
+\begin{gathered}
+  \frac{ Ka}{ML^2} = \omega^2 = 1 \\
+  k \cot{kL} = -\kappa \Longrightarrow (\kappa L)^2 = \theta^2 \cot^2{\theta} = \omega_2^2 - \omega^2 \\
+  (kL)^2 = \theta^2 = \omega^2 - \omega_1^2
+\end{gathered}
+\]
+We only include points that correspond to $kL = \theta$ values in $2j$, even, quadrants.  
+
+At very high frequencies, there are no more resonances.  
+\end{enumerate}
+
+\problemhead{3.32} \textbf{ Total reflection of visible light from a silvered mirror.}
+
+Looking up the following: \\
+valence of silver $\beta$ \\
+atomic weight $m_0$ \\
+mass density $\rho_0$ 
+
+\begin{enumerate}
+\item Then $\left( \frac{ \beta \rho_0}{m_0} \right) = N = $ free electrons per unit volume of solid silver.  
+\[
+\begin{gathered}
+  \omega_p^2 = \frac{ 4 \pi N e^2 }{m} \\
+  \nu_p = \sqrt{ \frac{ 4 \pi N e^2 }{ m } } \left( \frac{1}{ 2\pi } \right) = \sqrt{ \frac{ Ne^2 }{ m \pi } }
+\end{gathered}
+\]
+The frequency of visible light is in the range from $10^{14}$ to $10^{15} \, Hz$.  
+\item $\kappa^2 = \omega_p^2 - \omega^2$.  
+\[
+\delta = \frac{1}{ \kappa} = \frac{ 1 }{ \sqrt{ \omega_p^2 - \omega^2 }}
+\]
+\item $A^2 = A_0^2 e^{ -2 \kappa z } = I = I_0 e^{ -2 \kappa z }$.  \\
+$I = \frac{I_0 }{100} = I_0 e^{ - 2 \kappa z_1 } \Longrightarrow z_1 = \frac{ \ln{ 100 }}{ 2 \kappa }$.  
+\item
+\end{enumerate}
+
+\problemhead{3.36} \textbf{ Harmonics and subharmonics}.   
+\begin{enumerate}
+  \item The steady-state solution to $M \ddot{\psi}  + \Gamma M \dot{\psi} + \omega_0^2 \psi = F$ is \\
+$ \psi = A_{el} \cos{ (\omega t)} + A_{ab} \sin{ (\omega t) }$ where $A_{el} = \frac{ \omega_0^2 - \omega^2 }{ (\omega_0^2 - \omega^2 )^2  + (\Gamma \omega )^2 }; \quad A_{ab} = \frac{ \Gamma \omega }{ (\omega_0^2 - \omega^2)^2 + (\Gamma \omega)^2 }$.  
+
+If $\Gamma$ small, then (from Problem 3.19), $A_{ab} = \frac{1}{ x^2 + 1 } ; \quad A_{el} = \frac{ -x}{ x^2 + 1 }$.  
+\[
+\begin{gathered}
+  \begin{gathered}
+    \frac{ d A_{ab}}{ dx}  = \frac{-1}{ (x^2 + 1)^2 } 2x \\
+    x = \frac{ \omega - \omega_0}{ \frac{1}{2} \Gamma } = 0 \Longrightarrow \omega = \omega_0 
+  \end{gathered} \\
+  \begin{aligned}
+    \frac{d A_{el}}{ dx} & = \frac{-1}{ x^2 + 1 } + (-x)\left( \frac{ 2x}{ (x^2 + 1 )^2 } \right) = \frac{ - (x^2 + 1 ) + 2x^2 }{ (x^2 + 1)^2 } \\
+    & = \frac{ x^2 - 1 }{ (x^2 + 1)^2 } = 0 
+  \end{aligned} \quad \quad \Longrightarrow x^2 = 1 = \left( \frac{ \omega - \omega_0^2 }{ \Gamma/2} \right)^2 \Longrightarrow \omega = \omega_0 \pm \frac{\Gamma}{2} \\
+  (A_{ab})_{max} = 1 ; \quad \quad (A_{el})_{max} = \frac{ \pm 1 }{2} 
+\end{gathered}
+\]
+Thus resonance is only when $\omega = \omega_0$.  
+  \item The pulse will consist of cosine terms (even), if the time origine is centered at the middle of the pulse.  
+
+Considering the results of Problem 2.30, 
+\[
+F(t) = B_0 + \sum_{j=1}^{\infty} B_j \cos{ j \omega_1 t } ; \quad \quad B_j = \frac{2}{ j\pi} \sin{ (j \pi \nu_1 \Delta t) }; \quad j = 1 , 2, \dots 
+\]
+We see that the Fourier analysis will require many harmonics at nearly the same amplitude.  
+  \item Consider the sum of contributions.  you have elastic amplitude contributions of nearly the same magnitude from frequencies less than and more than $\nu = 10 cps$.  You also have absorptive amplitude contributions about the resonance frequency that are excited.  There's no resonance because the higher harmonics will cancel each other out. 
+  \item When $\frac{ 8 }{ sec. }, \, \frac{ 9 }{ sec. }$, then we're closer to exciting resonance, but we have higher harmonics, elastic contributions that decrease it.  
+  \item $\frac{20}{ sec.}$, the oscillator will not oscillate as well: the absorption contributions will go down and the leastic contributions will add up, but not at resonance magnitude.  
+  \item Same as above.
+  \item If you push at $2,3,3.5$ you still can excite resonance (but that's because you're coupled to the oscillator when the oscillator displacement from equilibrium is positive!).  That's why the airplane engine can excite lower harmonics for things that shake and rattle because the coupling is ``so bad.''
+\end{enumerate}
+
+\section{ Traveling Waves }
+
+\problemhead{4.7} \textbf{ Coaxial transmission line } 
+\begin{gather*}
+  \int \vec{E} \cdot d\vec{a} = E_r ( 2\pi r) t = 4 \pi \sigma (2\pi r_1) t \Longrightarrow E_r = \frac{ 4 \pi \sigma r_1}{r} \\
+\int_{r_1}^{r_2} \vec{E} \cdot d\vec{s} = \int_{r_1}^{r_2} \frac{4 \pi \sigma r_1}{r} dr = 4 \pi \sigma r_1 \ln{ \frac{r_2}{r_1} } = V = \frac{Q}{C} \\
+Q = \sigma (2\pi r_1 )t \Longrightarrow \frac{Q}{t} = \sigma ( 2 \pi r_1 ) \\
+2 \frac{Q}{t} \ln{ \frac{r_2}{r_1} } = \frac{ Q/t}{C/t} \Longrightarrow \boxed{ \frac{C}{t} = \frac{1}{ 2 \ln{ r_2/r_1}}; \quad t = a }
+\end{gather*}
+
+Use Ampere's law.  Do a line integral around a circle (nice and easy!)  By symmetry (cylindrical) $B$ is of same magnitude around a circle.  
+\[
+\begin{gathered}
+\oint \vec{B} \cdot d\vec{s} = \frac{4 \pi I_{enclosed} }{ c } \\
+\Longrightarrow 2 \pi r B  = \frac{4 \pi I }{c } \Longrightarrow B = \frac{4 \pi I }{ 2 \pi r c} = \frac{2 I}{r c } \\
+\Phi = \int B \cdot da = \int_{r_1}^{r_2} \frac{ 2 I }{rc} dr = \frac{ 2 I }{c} \ln{ \frac{r_2}{r_1} } \\
+L = \frac{1}{c} \frac{ \Phi}{ I } = \frac{1}{c} \frac{  \frac{2 I }{c} \ln{ \frac{ r_2}{r_1} } }{ I } = \boxed{ \frac{2}{ c^2 } \ln{ \frac{r_2}{r_1} } }
+\end{gathered}
+\]
+
+\problemhead{4.8} \textbf{ Parallel-wire transmission line}.  \\
+With superposition, the $E$ fields from each wire (even though they're of opposite charge, and oppositely moving current) and $B$ fields add up in such a way to reinforce each other; thus the factor of $2$.  
+
+Note that we can easily calculate the $\vec{E}$, $\vec{B}$ along the line directly joining the axis (it's harder everywhere else).  \bigskip \\
+Use Gauss' law to find $E$ field.  For $Q = \rho_0 \pi r_0^2 \Delta z$, \medskip \\
+\quad \quad For the $E$ field inside the wire (it's nice to remember), 
+\[
+\begin{gathered}
+  \int E \cdot da = E 2\pi r = 4 \pi (\rho_0 \pi r_0^2 \Delta z) \\
+  E_{in} = 2 \rho_0 \pi \Delta z r 
+\end{gathered}
+\]
+Outside the wire:
+\[
+\begin{gathered}
+  \int E \cdot da = E 2 \pi r = 4 \pi Q_{enc.} \\
+  E_{out} = \frac{ 2 \rho_0 \pi r_0^2 }{ r } 
+\end{gathered}
+\]
+So we can calculate the capacitance
+\[
+\begin{gathered}
+  2 \int E_{out} \cdot ds = 2 \int \frac{ 2 Q_{enc}}{ r} dr = 4 Q_{enc} \ln{ \left( \frac{ r+D}{r} \right) } = \frac{Q}{C} \\
+\boxed{  \frac{C}{a} = \frac{1}{4 \ln{ \left( \frac{r+D}{r} \right) } } }
+\end{gathered}
+\]
+\quad \\
+Again, using Ampere's law to find the $B$ field,
+\[
+\begin{gathered}
+  \oint B \cdot ds = \frac{ 4 \pi I_{enc}}{ c } \\
+  2 \pi r B = \frac{ 4 \pi I }{c}  \Longrightarrow B = \frac{2 I}{rc}; \quad \quad \, \Phi = \int \frac{2 I }{rc} dr \Delta z = \frac{2 I}{c} \ln{ \left( \frac{r+D}{r} \right) } \Delta z \\
+  \Longrightarrow \boxed{ \frac{L}{a} = \frac{1}{c} \frac{ \Phi}{ I } = \frac{4 }{c^2 } \ln{ \left( \frac{r+D}{r} \right) } }
+\end{gathered}
+\]
+
+\problemhead{4.10}
+\[
+\begin{gathered}
+  \vec{E} = E_0 \cos{ (\omega t) }; \frac{1}{c} \partial_t E = \frac{ - \omega }{c} E_0 S(\omega t) \\
+  \left( \frac{ \omega }{ k } \right)^2 = c^2 ; \quad \frac{ \omega }{c} = k  = \frac{ 2 \pi }{ \lambda } \ll \frac{ 2 \pi }{ d_0} \quad \, d_0 \ll \lambda \\
+  \nabla \times B = \frac{ 4 \pi }{c} J + \frac{1}{c} \frac{ \partial E}{ \partial t } \\
+  d_0 = \text{ plate thickness } \\
+  w B_y = \frac{ 4 \pi I}{c}; \quad J = \frac{I}{w} d_0 \\
+  \frac{ B_y}{ d_0 } = \frac{ 4\pi J}{c} + - \frac{ 2 \pi }{ \lambda} E_0 S(\omega t) \Longrightarrow \frac{ B_y}{ d_0 } + \frac{ 2 \pi }{\lambda} E_0 S(\omega t) = \frac{ 4 \pi J }{ c } \Longrightarrow \frac{ B_y}{ d_0 } = \frac{ 4 \pi J }{c } \\
+  \text{ since $|B_y| = E_0$ for em-waves and } \frac{1}{d_0} \gg \frac{1}{\lambda}  
+\end{gathered}
+\]
+
+\problemhead{4.11}
+\[
+\begin{gathered}
+  n = \frac{c}{ v_{\phi} } = \sqrt{ \mu \epsilon }; \quad \mu_{air} \simeq 1 ; \quad \epsilon_{air} = 1.00059; \quad \epsilon_{H_2 O} = 80; \quad n_{H_2 O} = 1.33 \\
+  \frac{ n^2_{H_2 O} }{ \epsilon_{H_2 O} } = \mu_{H_2 O} = \frac{ (1.33)^2 }{ 80 } = \left( \frac{4}{3} \right)^2 \frac{1}{80} = \frac{1}{45}
+\end{gathered}
+\]
+
+
+\problemhead{4.13} 
+\[
+\begin{gathered}
+  \sigma = \frac{ 0.1 \, gm }{ cm } ; \quad T = 100 \, lb. = 354 \, gm.-wt \cdot 100 \quad \, A = 1 \, cm; \quad \nu = 100 \, cps \\
+  F(R \text{ on } L ) = T \sin{ \theta} = \frac{ T_0 \sin{ \theta }}{ \cos{ \theta } } = T_0 \tan{ \theta } = T_0 \frac{ \partial \psi }{ \partial z } \\
+  \text{ since in the slinky approximation, } T_0 = K (a-a_0) ; \quad T = K(l-a_0) = K(l)(1 - \frac{a_0}{l} ) = Kl = K \frac{a}{\cos{\theta}} = T_0 / \cos{\theta}  \\
+  \text{ If we allow for traveling waves, } \psi = A_0 \cos{ (kz - \omega t) } \\
+  \partial_z \psi = - kA_0 S(kz- \omega t); \quad \, \partial_t \psi = \omega A_0 S(kz - \omega t) \\
+  F(L \text{ on } R ) = -T_0 \partial_z \psi \\
+  F(L \text{ on } R) \partial_t \psi = -T_0 (-k) A_0 S \omega A_0 S = TkA_0^2 \omega S^2 \\
+  \begin{aligned}
+    \langle F(L \text{ on } R ) \partial_t \psi \rangle & = Tk a_0^2 \omega \frac{1}{2} = T_0 \omega^2 \sqrt{ \frac{ \sigma}{ T_0 }} A_0^2 \frac{1}{2} = \omega^2 \sqrt{ T_0 \sigma} A_0^2 \frac{1}{2} = \\
+    & = 36.8 \, watts
+  \end{aligned}
+\end{gathered}
+\]
+
+\problemhead{4.14} 
+\begin{enumerate}
+  \item $I \ddot{\theta}_n = \tau \quad \text{ (torque on rib) } $; allow for traveling waves: $\theta_n = \theta_0 \cos{ (\omega t - kz + \phi) }; \quad z = na $ \\
+$\tau = -K(\theta_n - \theta_{n+1} + (\theta_n - \theta_{n-1} ) ) = - K ( 2 \theta_n - \theta_{n+1} - \theta_{n-1} )$ (take the continuous approximation) 
+    \[
+    \begin{gathered}
+      \theta_n = \theta(z); \quad \theta_{n\pm 1 } = \theta(z \pm a) = \theta(z) + \partial_z \theta(z)(\pm a) + \partial_{zz}\theta(z) (\pm a)^2/2 + \dots \\
+      \Longrightarrow -K(-\partial_{zz} \theta a^2 ) = I (-\omega^2); \quad Kk^2 a^2 = I \omega^2 \\
+      \boxed{ \sqrt{ \frac{ ka^2}{I } } = \frac{ \omega}{ k } = v_{\phi} } \\
+      \dot{\theta}_n Z = \tau = K(-k^2 ) a^2 \theta = Z\dot{ \theta}_n 
+    \end{gathered}
+    \]
+If we imagine twisting only one rib, 
+\[
+\begin{gathered}
+  \tau = I \ddot{\theta}_n = -K\theta_n \Longrightarrow - \omega^2 I = -K; \quad \omega  = \sqrt{ \frac{ K }{I } } \\
+  \dot{\theta}_n Z = \tau = - \omega Z \left( \frac{ \dot{\theta}_n }{ \omega } \right) \Longrightarrow Z = I \sqrt{\frac{K}{I}} = \sqrt{ KI}
+\end{gathered}
+\]
+  \item 
+\[
+\begin{gathered}
+  \begin{aligned}
+    I\ddot{\theta}_n & = -K (2 \theta_n - \theta_{n+1} - \theta_{n-1} ) \\
+    \theta &= \cos{ (\omega t - kz + \phi) }; \quad z = na \\
+    \theta_n & = C(\omega t + \phi- kna)
+  \end{aligned} \\
+  \theta_{n+1} = C( \omega t + \phi - kna - ka) ; \quad \theta_{n-1} = C( \omega t + \phi - kna + ka ) \\ 
+  I\ddot{\theta}_n = - K (2 \theta_n (1 - C(ka) ) ) = - K 4 \theta_n ( \sin^2{ \left( \frac{ka}{2} \right) } ) \\
+  \Longrightarrow -\omega^2 = \frac{ -K }{I } 4 \sin^2{ \frac{ka}{2} }; \quad \omega_1^2 = \frac{K}{I} 
+\end{gathered}
+\]
+\item $\omega^2 = \omega_0^2  - \frac{4K}{I} \sin^2{ \frac{ka}{2} }$  
+\end{enumerate}
+
+\problemhead{4.15} \textbf{ Whisky-bottle resonator (Helmholtz resonator)}.  
+\begin{enumerate}
+\item ``gained'' $xa$ volume if ``mass'' of air in neck is displaced by $x$  
+  \[
+  \begin{gathered}
+    pV^{\gamma}  = p_0 V_0^{\gamma} \Longrightarrow p = p_0 V_0^{\gamma} V^{-\gamma}; \\
+    \frac{dP}{dV} = - \gamma p_0 V_0^{\gamma} V^{-\gamma - 1 }; \quad \left( \frac{ dp}{dV} \right)_{V_0} = -\gamma p_0 V_0^{-1} \\
+    p(V_0 + \Delta V) \simeq p_0 + (-\gamma p_0 V_0^{-1})\Delta V + \dots \\
+    \Delta V = \text{ gain in volume by the large volume in the neck } = xa \\
+    p- p_0 = -\gamma p_0 V_0^{-1} xa ; \quad \quad F_x = (p-p_0) a = \frac{ -\gamma p_0}{ V_0} a^2 x 
+  \end{gathered}
+    \]
+  \item 
+\[
+\begin{gathered}
+  K = \frac{ \gamma p_0 a^2 }{ V_0 }; \quad V^2 = \frac{ \gamma p_0}{ \rho_0} \\
+  \frac{K}{m} = \frac{ \gamma p_0 a^2 }{ V_0 \rho_0 al } = \frac{ \gamma p_0 a }{ V_0 \rho_0 l } = v^2 \frac{ a }{ V_0 l } \\
+  \omega^2 = V^2 \frac{ a }{ V_0 l } k^2 
+\end{gathered}
+\]
+\end{enumerate}
+
+\problemhead{4.17}
+\[
+\begin{gathered}
+  \frac{P}{4 \pi R^2} = \frac{c}{ 4\pi} \langle E^2_x (z,t) \rangle \\
+  \sqrt{  \frac{P}{ cR^2 } } = \sqrt{ \langle E^2_x(z,t) \rangle } = \left( 40 \, watts \left( \frac{ 10^5 \, ergs/s}{ 1 \, watt} \right)\left( \frac{ esu^2 }{ cm^2 } cm / s \right) \left( \frac{1}{ 3 \times 10^{10} \, cm /s } \right) \left( \frac{1}{ (10^2 \, cm)^2 } \right) \right)^{1/2} = \\
+  =  \frac{ 2 \times 10^{-4}}{ \sqrt{3}} \, \frac{ esu }{ cm^2 }  = \boxed{ 1.155 \times 10{-4} \, \frac{ esu }{ cm^2 } }
+\end{gathered}
+\]
+
+\problemhead{4.19} \textbf{ Photomultiplier counting rate}.  \\
+$1 \, cd = 1 \, candle \approx 20 \times 10^{-3} \, watts \text{ of visible light }$ \\
+$e(\nu) = \text{ photomultiplier's detection efficiency }$ \\
+$A = \text{ area of the photo cathode }$
+\[
+\begin{gathered}
+  R = \frac{S}{h\nu} A e(\nu) \\
+  R = \text{ average counting rate } \\
+  \frac{1}{s} = \frac{ 4 \pi r^2 }{ P } = \frac{ A e(\nu)}{ R h \nu }; \quad \, r = \sqrt{ \frac{ P A e(\nu) }{ 4 \pi R h \nu } } \\
+  h = 6.63 \times 10^{-27} \, erg \cdot sec \\
+  0.5 \, \frac{ candle }{ cm^2 } ; \quad \, \Delta \Omega = \frac{ \Delta A}{ R^2} \quad \, \frac{ S_{candle}}{ S_{moon}} = 2 
+\end{gathered}
+\]
+
+\problemhead{4.20} \textbf{ Candlelight and romance.}
+
+\problemhead{4.21} \textbf{ Moonlight.}
+
+\problemhead{4.22} \textbf{ Sunlight.}
+
+\problemhead{4.23} \textbf{ Luminous efficiency of the sun.}
+
+\problemhead{4.24} \textbf{ Measuring the candlepower and luminous efficiency of a light bulb.}
+
+\problemhead{4.29} \textbf{ ``Gauge pressure'' for longitudinal waves on a spring.}  Start with a lumped-parameter beaded spring.  $F_0$, the equilibrium force on each compressed spring (at equilibrium), is $F_0 = -K(a-a_0)$.  Now the position displacements of the $n$th and $n-1$th beads are 
+\[
+\begin{aligned}
+  & \psi_n = \psi(z) \\
+  & \psi_{n-1} = \psi(z) + \partial_z \psi(z)(-a) + \dots 
+\end{aligned}
+\]
+The force on a given bead exerted ``in the $+z$ direction'' (this is what Crawford says, but I think it's more clear to say that what he means is for you to have your sign conventions about this force to give physically reasonable results) by the spring to the left of that bead is given by 
+\[
+\begin{gathered}
+  -K((a+ \psi_n - \psi_{n-1} ) - a_0 ) = \\
+  \begin{aligned}
+    & = -K ((a+ (a \partial_z \psi) - a_0 ) ) = \\
+    & = \boxed{ F_0 - Ka \partial_z \psi = F_z(L \text{ on } R )  }
+  \end{aligned}
+\end{gathered}
+\]
+
+\problemhead{4.30} \textbf{ Rubber ropes and slinkies.}  For an ordinary rubber rope (or for the kind of spring that closes doors) the unstretched length is not negligible compared with the stretched length.  
+
+For the transverse motion, $T \sin{ \theta_2}$ is the transverse return force on a $\Delta z$ segment of the string at position $z$, then by just taking the definition of a spring,
+\[
+\begin{aligned}
+  &  T = K(L-a_0) \\
+  &  T_0 = K(a-a_0)
+\end{aligned}
+\]
+For small oscillations, we could make this approximation, that $L \cos{\theta_2} \simeq a$.  \\
+
+Thus, collecting the facts we have, we can determine the equation of motion for transverse waves on the rubber rope: \\
+\textbf{transverse}:
+
+\[
+\begin{gathered}
+  T_0 = K(a-a_0) ; \quad \, T = K(L-a_0) \\
+  T\sin{ \theta_2} - T \sin{ \theta_1} = K (L_2 - a_0) - K(L_1 - a_0) \\
+  \begin{aligned}
+    \tan{ \theta_2} & = \frac{ \partial \psi}{ \partial z }(z+\Delta z) \\
+    \tan{ \theta_1} & = \frac{ \partial \psi}{ \partial z } (z) 
+  \end{aligned} \\
+  (\sigma_0 \Delta z) \ddot{\psi} = T \sin{ \theta_2} - T \sin{\theta_1} \\
+  T\sin{ \theta_2} = K(L-a_0) \cos{ \theta_2} \frac{ \sin{ \theta_2} }{ \cos{ \theta_2} } = \\
+  \begin{aligned}
+    & = (KL \cos{ \theta_2} - Ka_0 \cos{ \theta_2} ) \frac{ \sin{ \theta_2}}{ \cos{ \theta_2} } \approx K(a - a_0 \cos{\theta_2} ) \tan{\theta_2} \\
+    & \simeq K(a-a_0) \tan{ \theta_2} \quad \, \text{ (assume small oscillations) } \\
+    & = T_0 \partial_z \psi(z+\Delta z) 
+  \end{aligned}\\
+\begin{aligned}
+  \Longrightarrow & \sigma_0 \Delta z \ddot{\psi} = T_0 ( (\partial_z \psi) + (\partial_z \psi) \Delta z - (\partial_z \psi) ) \\
+  \sigma_0 \Delta z \ddot{\psi} = T_0 \partial_{zz} \psi \Delta z 
+\end{aligned} \\
+\boxed{ \frac{ \sigma_0}{T_0} \ddot{\psi} = \partial_{zz} \psi }
+\end{gathered}
+\]
+
+For \textbf{ longitudinal } waves, we think about masses attached to springs longitudinally,
+\[
+\begin{gathered}
+  -K(\psi_n + a - \psi_{n-1} - a_0) + K(\psi_{n+1} + a - \psi_n - a_0) = -K ( 2 \psi_n - \psi_{n-1} - \psi_{n+1} + 2 a - 2 a_0)= M \ddot{\psi}_n \\
+  \psi_n = e(i(\omega t - kz)) \quad \, z = na; \quad \, \psi_n = e(i\omega t) e(-ikna) \\
+  (2 \psi_n - \psi_{n-1} - \psi_{n+1} + 2 a - 2a_0 ) = e(i \omega t) (e(-ikna))( 2 - e(ika) - e(-ika) + 2 (a-a_0)) = 2 \psi_n (1- \cos{ (ka)}) + 2 (a-a_0) \\
+  \boxed{ \text{ assume } (a-a_0) \ll 1 } \Longrightarrow 2 \psi_n ( 2 \sin^2{ \left( \frac{ka}{2} \right) } ) \\
+  -M\omega^2 = -K(4 \sin^2{ \left( \frac{ka}{2} \right) } ) \xrightarrow{ a \to 0 } -2K \left( \frac{ka}{2} \right)^2 = - K (a-a_0) \frac{k^2 a^2 }{ a-a_0} \\
+  \Longrightarrow \boxed{ \omega^2 = \frac{T_0}{\sigma_0} \frac{ k^2 a}{ a- a_0} }
+\end{gathered}
+\]
+
+Now for the transverse waves, $T_0 = K(a-a_0)$, so if $a = \frac{4}{3}a_0$, then $\frac{\omega^2}{k^2 } = \frac{T_0}{\sigma_0} 4$.  Thus, with the stretched length $\frac{4}{3}$ times the unstretched length, the longitudinal waves travel at twice the speed of the transverse waves. 
+
+\problemhead{4.31} \textbf{ Are sound waves perfectly nondispersive? }
+
+The dispersion law that gave that result was
+\[
+\omega^2 = \frac{ \gamma p_0}{ \rho_0} k^2 
+\]
+which is similar to the dispersion law for longitudinal oscillations on a continuous spring,
+\[
+\omega^2 = \frac{K}{M} k^2 
+\]
+For a lumped-parameter beaded spring, the dispersion law is 
+\[
+\omega^2 = \frac{K}{M} \frac{ \sin^2{ \frac{1}{2} ka} }{ \left( \frac{1}{2} a \right)^2 }
+\]
+which leads to a high-frequency cutoff.  
+
+By analogy,
+\[
+\begin{aligned}
+&  \omega^2 = \frac{ \gamma p_0}{ \rho_0} k^2  \\
+&  \omega^2 = \frac{K}{M} k^2 
+\end{aligned} \quad \, 
+\begin{aligned}
+  & \omega^2 = \frac{ \gamma p_0}{ \rho_0} \frac{ \sin^2{ \frac{ka}{2} } }{ \left( \frac{1}{2} a \right)^2 } \\
+  & \omega^2 = \frac{ K}{M} \frac{ \sin^2{ \frac{ka}{2} } }{ \left( \frac{1}{2} a \right)^2 }
+\end{aligned}
+\]
+If $\frac{ka}{2} = (2j-1) \frac{\pi}{2}$, then $\sin^2{ \frac{ka}{2} } = 1$, its max. \\
+\[
+\begin{gathered}
+  \omega_{h.f. cutoff}^2 = \frac{ \gamma p_0}{ \rho_0} \frac{1}{ \left( \frac{1}{2} a \right)^2 } = \frac{4 \gamma p_0}{ \rho_0 a^2 } \\
+  \frac{ \omega_{h.f. cutoff} }{ 2 \pi } = \frac{2 }{ 2\pi a } \sqrt{ \frac{ \gamma p_0}{ \rho_0 } } = \frac{ 332 \, m/s}{ a \pi } = 10^9 \, Hz 
+\end{gathered}
+\]
+According to our dispersion relation, ultrasonic waves of $\nu \approx 100 \, Mc$ can travel at ordinary sound velocity.   
+
+\section{ Reflection }
+
+\problemhead{5.5} \textbf{ Reflections in transmission lines.}  Suppose a coaxial transmission line having $50$ ohms characteristic impedance is joined to one having $100$ ohms characteristic impedance.  
+\begin{enumerate}
+\item \[
+\begin{gathered}
+  R_V = \frac{Z_2 - Z_1}{Z_1 + Z_2} = \frac{100 - 50}{100 +50} = \frac{1}{3} \\
+  10/3 = V_R = 3.3 \\
+  1+R = \tau = \frac{4}{3} \quad \quad \, V_T = 13.3 \, V
+\end{gathered}
+\]
+\item \[
+\begin{gathered}
+  R_V = \frac{Z_2 - Z_1}{Z_1 + Z_2 } = \frac{50 - 100 }{ 100 + 50 } = -1/3 \\
+  V_R = -3.3 \, V \\
+  1+R_V = 2/3; \quad \quad \, V_T = 6.7 \, V
+\end{gathered}
+\]
+\end{enumerate}
+
+\problemhead{5.6} \textbf{ Irreversible impedance matching.}
+\begin{enumerate}
+\item 
+\item 
+\item 
+\item 
+\end{enumerate}
+
+\problemhead{5.20} \textbf{ General sinusoidal wave }.  
+\[
+\begin{gathered}
+  \psi = A C(\omega t - kz ) = A C(\omega t) C(kz) + A S(\omega t) S(kz) \\
+  AC(\omega t) C(kz) = \frac{A}{2} C(\omega t- kz) + \frac{A}{2} C(\omega t + kz) \\
+  \begin{aligned}
+    A( C(\omega t - kz) + R C(\omega t + kz ) ) & = A ( C(\omega t) C(kz) + S(\omega t)S(kz) + R (C(\omega t)C(kz) - S(\omega t)S(kz) ) ) = \\
+    & = A ((1+R) C(\omega t) C(\omega t ) C(kz) + (1- R)S(\omega t) S(kz) )
+  \end{aligned}
+\end{gathered}
+\]
+
+\problemhead{5.21} \textbf{ Nonreflecting coating}.  
+Recall on pp. 177, Crawford, ``Of course, the frequency of the driving force is not affected by the medium, and $c$ means the velocity of light in vacuum.  
+
+Note that intensity $I$ is proportional to the electric field $E_0$ squared and $E_0$ is proportional to the voltage $V$.  $V$ has, with its reflection coefficient, an opposite sign.  
+\[
+\begin{aligned}
+  & R_{12} = -R_V \\
+  & R_{12} = \frac{ \frac{1}{1} - \frac{1}{ \sqrt{n}} }{ \frac{1}{1} + \frac{1}{ \sqrt{n}} } = \frac{ \sqrt{n} - 1 }{ \sqrt{n} + 1 }; \quad \quad R_{23} = \frac{ \frac{1}{ \sqrt{n}} - \frac{1}{ n } }{ \frac{ 1 }{ \sqrt{n}} + \frac{1}{n} } = \frac{ \sqrt{n} - 1 }{ \sqrt{n} + 1 }
+\end{aligned}
+\]
+
+Exactly, we have
+\[
+T_{12}T_{21} = (1+ R_{12})(1+ R_{21}) = 1 - R_{12}^2 = \frac{ (n + 2 \sqrt{n} + 1 )- ( n- 2 \sqrt{n} + 1 )^2 }{ (\sqrt{n} + 1 )^2 } = \frac{ 4 \sqrt{n}}{ (\sqrt{n} + 1 )^2 } = T_{sq}
+\]
+
+Now $\boxed{ k = n \frac{ \omega }{c} }$.  We have a quarter wave plate (because the light bounces back and forth) made specifically for green light.  
+
+\[
+2 k_2 L = \pi = 2 n_2 \frac{ \omega_{green} }{ c } L \Longrightarrow L = \frac{ \lambda_0}{ 4 \sqrt{n} }
+\]
+We have
+\[
+\begin{aligned}
+  & \psi_0  = A \cos{ (\omega t + \frac{ 2 \pi }{\lambda} z ) } \\
+  & \psi_{reflected}(z=0) = R_{12} A \cos{ (\omega t + \frac{ 2 \pi}{ \lambda} z ) } \\
+  & \psi_{reflect}(z=L) = T_{21}T_{12} R_{23} A \cos{ (\omega t + \frac{ 2 \pi z}{ \lambda} + -2k_2 L ) } 
+\end{aligned}
+\]
+Considering the superposition of the two reflected waves,
+\[
+\begin{gathered}
+  \psi_{reflect}(z=0) + \psi_{reflect}(z=L) = \\
+  = R_{12} (A) ( C(\omega t + \frac{ 2 \pi }{\lambda} z )  + T_{sq} C(\omega t + \frac{ 2 \pi z}{ \lambda} - \frac{ \pi \lambda_0}{ \lambda} ) ) \\
+  = R_{12} (A) \left( C(\omega t) C\left( \frac{ 2 \pi z}{\lambda} \right) - S(\omega t) S\left( \frac{ 2 \pi z}{ \lambda} \right) + \right.  \\
++ \left. T_{sq} \left( C(\omega t) \left( C\left( \frac{ 2 \pi z}{\lambda} \right) C \left( \frac{ \pi \lambda_0 }{ \lambda} \right) + S\left( \frac{ 2 \pi z}{\lambda} \right) S \left( \frac{ \pi \lambda_0 }{ \lambda} \right) \right) - S(\omega t) \left( S\left( \frac{ 2 \pi z}{\lambda} \right) C \left( \frac{ \pi \lambda_0 }{ \lambda} \right) - C\left( \frac{ 2 \pi z}{\lambda} \right) S \left( \frac{ \pi \lambda_0 }{ \lambda} \right) \right) \right) \right)  
+\end{gathered}
+\]
+Notice that the trick with this problem is to break up the arguments of the trig functions, then square the whole thing.  And then, the trick is to know that we want the time average of the intensity, so only terms containing $C^2(\omega t)$ and $S^2(\omega t)$ don't become zero.  
+
+Doing the algebra, we should get
+\[
+\langle \psi^2 \rangle = (R_{12}A)^2 \frac{1}{2} \left( 1 + 2 T_{sq} C\left( \frac{ \pi \lambda_0 }{ \lambda } + T_{sq}^2 \right) \right)
+\]
+If we had nonreflective coating for green light, then the designer would have chosen $n$ such that $T_{12}T_{21} ~ 1$.  
+\[
+\Longrightarrow \frac{1}{2} ( 1 + 2 C\left( \frac{ \pi \lambda_0}{ \lambda} \right) + 1 ) = 2 S^2(\frac{1}{2} \pi \left( \frac{ \lambda_0}{\lambda} - 1 \right) ) 
+\]
+(work out the trig identity if you're not sure of the last step).  Thus
+\[
+\frac{ \langle \psi^2_{reflect} \rangle }{ I_0 } = \frac{ R_{12}^2 A^2 2 S^2\left( \frac{1}{2} \pi \left( \frac{ \lambda_0 }{ \lambda} - 1 \right) \right) }{ A^2 \frac{1}{2} } = \boxed{ 4 \left( \left( \frac{ 1 - \sqrt{n }}{ 1 + \sqrt{n}} \right)^2 \right) S^2\left( \frac{1}{2} \pi \left( \frac{\lambda_0}{ \lambda} - 1 \right) \right) } 
+\]
+
+\problemhead{5.22} \textbf{ Impedance matching by ``tapered'' index of refraction}.  
+
+Reverse engineer the given solution to see what we need:
+\[
+\begin{gathered}
+  \boxed{ \frac{ \omega }{ k } = \frac{ c}{ n} } \\
+  \lambda(z) = \lambda_1 + \frac{ z}{L} ( \lambda_2 - \lambda_1 ) \\
+  \Longrightarrow \frac{ 2 \pi c }{ n \omega } = \frac{ 2 \pi c }{ n_1 \omega } + \frac{ z}{ L} \left( \frac{ 2 \pi c }{ n_2 \omega } - \frac{ 2 \pi c}{ n_1 \omega } \right)
+\end{gathered}
+\]
+Again, recall that for the voltage, the voltage's reflection coefficient has an opposite sign than $R_{12}$,
+\[
+\begin{gathered}
+  R_{12} = \frac{ Z_1 - Z_2 }{ Z_1 + Z_2 }; \quad \quad R_{12_V} = \frac{ Z_2 - Z_1}{ Z_2 + Z_1} = \frac{ \frac{1}{n_2} - \frac{1}{ n_1} }{ \frac{1}{ n_2 } + \frac{1}{ n_1 } } = \frac{ n_1 - n_2 }{ n_1 + n_2 } \\
+  \text{ Let } n_2 - \Delta n = n_1  \\
+  \Longrightarrow \Delta R = \frac{ - \Delta n }{ 2 n_2 - \Delta n } = \frac{ - \Delta n / \Delta z }{ \frac{ 2 n_2}{ \left( \frac{ 2 \pi c }{ \omega n_2 } \right) } - \Delta n/ \Delta z } \Longrightarrow \Delta R \left( \frac{ n^2 \omega }{ \pi c } - n_z \right) = - n_z \\
+  \Longrightarrow n_z = \frac{ - \Delta R \left( \frac{ n^2 \omega }{ \pi c } \right) }{ 1 - \Delta R }
+\end{gathered}
+\]
+$\Delta R$ is the reflection coefficient for the reflections left of this region with what we call $n_2=n$ index of refraction that is confined within a region of width $\Delta z$.  As we've shown, to minimize $\Delta R$, we want $\Delta z = \lambda/4$.  This wavelength, from the fundamental dispersion relation (that, again to remind us, depends \emph{ only } upon the medium ), is inversely dependent upon the index of refraction.  
+
+$\Delta R$ should be independent of $z$ so that the $z$ dependence for $n$ is ``optimal'' for nonreflection.  
+
+\[
+\begin{gathered}
+  \frac{dn}{n^2} = \left( \frac{ - \Delta R}{ 1 - \Delta R} \right) \frac{ \omega}{ \pi c } dz \\ 
+  \Longrightarrow -\frac{1}{n} = \left( - \frac{ \Delta R }{ 1 - \Delta R} \right) \frac{ \omega }{ \pi c } z \Longrightarrow \frac{1}{n} - \frac{1}{n_1} = k z + C 
+\end{gathered}
+\]  
+Fitting in the boundary conditions, for $z<0$, we have $n_1$, and $z>L$, we have $n_2$, then we have the result that we want:
+\[
+\boxed{ \frac{ 2 \pi c }{ n \omega } = \frac{ 2 \pi c }{ n_1 \omega } + \frac{z}{L} \left( \frac{ 2 \pi c }{ \omega } \right) \left( \frac{1}{ n_2 } - \frac{1}{n_1} \right) }
+\]
+
+My opinion right now is that $Z$ depends on $z$ differently from how $n$ depends on $z$ because $Z$ is related to $n$ differently from being directly proportional.  
+
+\problemhead{5.23} \textbf{ The prettiest white-light fringe}.  
+
+Recall the Reflection in Thin Films treatment.  
+
+\subsection*{ Reflection in Thin Films.}  
+
+Interference fringes are due to the interference between light reflected from both the front and the back surfaces of the thin films.  Suppose, we have a thin film of air between 2 microscope slides.  
+\[
+\begin{gathered}
+  R_{12V} = \frac{ Z_1 - Z_2}{ Z_1 + Z_2 } = \frac{ \frac{1}{n} - 1 }{ \frac{1}{n} + 1 } = \frac{ 1 - n }{ 1 + n } \\
+  \psi_0 = A \cos{ (\omega t + k_1 z ) } \\
+  k_1 = \frac{ 2 \pi }{ \lambda_1} = \frac{ \omega n_1 }{ c } \\
+  T_{12_V} T_{21_V} = 1 - R_{21}^2 \simeq 1 \\
+  \begin{aligned}
+    \psi_{reflect}(z=0) & = R_{12_V} A \cos{ (\omega t + k_1 z) } \\ 
+    \psi_{reflect}(z=L) & = T_{12_V} T_{21_V} R_{21_V} A \cos{ (\omega t + k_1 z + 2 Lk_2 ) } \simeq 1 R_{21_V} A \cos{( \omega t + k_1 z + 2 Lk_2 ) }
+  \end{aligned} \\
+  R_{12_V} = -R_{21_V} \\
+  \psi_{reflect, total} = AR_{12_V} (\cos{ (\omega t + k_1 z )} - \cos{ (\omega t + k_1 z  - 2 Lk_2 ) } \\
+  k_2 = \frac{ \omega n_2 }{ c } = \frac{ 2 \pi }{ \lambda } \quad \quad n_2 = 1 \\
+ \boxed{ \text{ if } 2 Lk_2 = 2L \frac{ 2 \pi }{\lambda} = \frac{ 4 \pi L }{\lambda}  = (2j-1) \pi; \quad L = \left( \frac{ 2 j - 1 }{ 4 } \right) \lambda }
+\end{gathered}
+\]
+\quad \\
+\quad \\
+
+$2k_2 L = (2j-1) \pi$ is the condition for max. reflection.  \\
+$2k_2 L = 2j\pi$ is the condition for no reflection.  \\
+$k_2 = \frac{ 2\pi }{ \lambda_1} $ 
+
+$L_{max} = \frac{ \lambda }{4} (2j - 1 )$; \quad \quad $ L_{zero} = \frac{ \lambda }{4} (2j)$.  
+
+$\left( \frac{ 2J - 2 }{4} \right) \lambda_r = \left( \frac{ 2J - 1}{4} \right) \lambda_g = \left( \frac{ 2J}{4} \right) \lambda_b = L $.  $L = \text{ thickness of the thin lens }$.  
+
+\[
+\begin{gathered}
+  J = \frac{ 2 \lambda_r - \lambda_g}{ 2 } \left( \frac{1}{ \lambda_r - \lambda_g} \right) ; \quad \quad J  = \frac{1}{2} \frac{ \lambda_g}{ \lambda_g - \lambda_b}  \\
+  \boxed{ J = 4 }
+\end{gathered}
+\]
+
+\problemhead{5.24} \textbf{ Interference in thin films}.  
+
+\[
+\begin{gathered}
+  k_2 = \frac{ 2 \pi }{ \lambda} \quad \text{ (In medium 2, there is only air ) } \\
+  \begin{aligned}
+    \psi_{reflect, \, total} & = AR_{12} (\cos{ (\omega t - k_1 z) } - \cos{ (\omega t - k_1 z - 2 Lk_2 )  } = \\
+    & = A R_{12} \left(  C(\omega t) C(k_1 z) - S(\omega t) S(k_1 z) - \right. \\ 
+    & \left. - ( C(\omega t) (C(k_1 z) C(2Lk_2) + S(k_1 z) S(2Lk_2) ) - S(\omega t) (S(k_1 z) C(2Lk_2) - C(k_1 z) S(2Lk_2) ) ) \right)
+\end{aligned} \\
+\begin{aligned} 
+  \langle \psi^2_{reflect, tot} \rangle & = A^2 R^2 \left( \frac{1}{2} + \frac{1}{2} + \right. \\
+  & \left. + \frac{-1}{2} (2) (C^2(k_1 z) C(2Lk_2) + C(k_1 z) S(k_1 z) S(2Lk_2) + S^2(k_1 z) C(2Lk_2) + - S(k_1 z)C(k_1 z) S(2Lk_2) ) \right) = \\ 
+  & = (AR)^2 (1 + (-1) C(2Lk_2) ) = (AR)^2 2 S^2(Lk_2) 
+\end{aligned} \\
+\boxed{ \frac{ I_{ref} }{ I_0 }  = \frac{ 2 (AR_{12})^2 S^2(2Lk_2) }{ A^2 1/2 } = 4 R_{12}^2 S^2(Lk_2 ) }
+\end{gathered}
+\]
+
+\section{ Modulations, Pulses, and Wave Packets }
+
+\problemhead{6.1}
+\[
+\begin{gathered}
+  A_1 e^{ i(\omega t - kz + \phi_1 ) } + A_2 e^{ i (\omega t - kz + \phi_2 ) } = e^{ i (\omega t - kz) } (A_1 e^{ i \phi_1} + A_2 e^{ i \phi_2  } ) \\
+  \begin{aligned}
+    |A_1 e^{i\phi_1 } + A_2 e^{ i\phi_2 } |^2 & = (A_1 e^{ i\phi_1 } + A_2 e^{i \phi_2} )(A_1 e^{ -i\phi_1 } + A_2 e^{ -i \phi_2} ) = A_1^2 + A_1 A_2 (e^{ i (\phi_1 - \phi_2 ) } + e^{ - (\phi_1 - \phi_2 ) } ) + A_2^2 = \\
+    & = A_1^2 + A_2^2 + 2 A_1 A_2 \cos{ (\phi_1 - \phi_2 ) }
+  \end{aligned} \\
+A_1 e^{ i \phi_1 } + A_2 e^{ i\phi_2 } = A_1 \cos{ \phi_1 } + iA_1 \sin{ \phi_1 } + A_2 \cos{ \phi_2 } + i A_2 \sin{ \phi_2} ; \quad \tan{ \phi} = \frac{ A_1 \sin{ \phi_1 } + A_2 \sin{ \phi_2 } }{ A_1 \cos{ \phi_1 } + A_2 \cos{ \phi_2 } } \\
+A = \sqrt{ A_1^2 + A_2^2 + 2A_1 A_2 \cos{ (\phi_1 - \phi_2 ) } }; \quad \phi = \arctan{ \left( \frac{ A_1 \sin{ \phi_1 } + a_2 \sin{ \phi_2 } }{ A_1 \cos{ \phi_1 } + A_2 \sin{ \phi_2 } } \right) }
+\end{gathered}
+\]
+
+\problemhead{6.2} 
+\[
+\begin{gathered}
+  \frac{ \omega }{ k } = \frac{ c }{ n } = \frac{ c }{ \sqrt{ \epsilon (\omega ) }}; \quad \quad \omega \sqrt{ \epsilon (\omega ) } = c k = \omega n \\
+  \Longrightarrow n + \omega \frac{ dn}{ d\omega } = c \frac{ dk }{ d \omega } \geq 1 ; \quad \quad \frac{ d \omega }{ dk } \leq c ; \quad \frac{1}{c} \leq \frac{ dk}{d\omega } \\
+  \Longrightarrow \omega \frac{ dn}{ d\omega } + n - 1 \geq 0 
+\end{gathered}
+\]
+
+\problemhead{6.4}
+\[
+\begin{gathered}
+  \nu_1 ; \quad 1.06 \nu_1 = \nu_2 \\
+  \Delta \nu = \nu_2  - \nu_1 = 1.06 \nu_1 - \nu_1 = 0.06\nu_1 \\
+  \Delta \nu \Delta t ~ 1 \Longrightarrow \Delta t ~ \frac{1}{ \Delta \nu } \\
+  \begin{aligned}
+    \left( \frac{1}{ \Delta t} \right)_{tuba} & = (32.7 \, cps)(0.06) = \frac{ 2 \, notes }{ sec} \\
+    \left( \frac{1}{ \Delta t } \right)_{flute} & = (2093 \, cps)(0.06) = \frac{ 120 \, notes }{ sec} 
+\end{aligned}
+\end{gathered}
+\]
+
+\problemhead{6.5} 
+Complainer cannot hear frequencies above and below some bandwidth or frequency range.  
+
+\problemhead{6.6}
+\begin{enumerate}
+\item Clap and echo - group velocity.  \\
+Mailing tube - phase velocity.  
+\item Chopped light beam - group velocity.   \\
+Resonant cavity - phase velocity.  
+\end{enumerate}
+
+\problemhead{6.7}
+\[
+\begin{gathered}
+  \begin{gathered}
+    k = \frac{ n \omega }{ c} \\
+    \frac{ \partial k}{ \partial \omega } = \frac{n}{c} + \frac{ \omega }{c} \frac{ dn}{d\omega }
+  \end{gathered} \quad \quad \, 
+\begin{gathered}
+  \omega \lambda_0 = 2\pi c \\
+  \frac{ dn}{d\lambda_0} \frac{ d\lambda_0}{ d\omega } = \frac{dn}{d \lambda_0 } \left( \frac{ -2 \pi c }{ \omega^2 } \right) 
+\end{gathered} \\
+\Longrightarrow \boxed{ \frac{1}{ v_g} = \frac{1}{ v_{\phi}} + \frac{-\lambda_0}{c} \frac{ dn}{d\lambda_0 } }
+\end{gathered}
+\]
+
+\problemhead{6.8}
+
+Recall how the dielectric constant was defined.  
+\[
+\begin{gathered}
+  \begin{aligned}
+    &  E_Q = \text{ electric field due to the charge $Q$ on the plates } \\
+    & P = \text{ induced electric polarization } 
+  \end{aligned} \\
+  \mathbf{E}(t) = \mathbf{E}_Q(t) - 4 \pi \mathbf{P}(t) \\
+  \mathbf{P}(t) = Nqx(t) \vec{e}_x = \text{ induced dipole per unit volume } \\
+  \epsilon = \frac{E_Q}{E} = 1 + \frac{4\pi P}{E} = 1 + \frac{ 4\pi N q x }{E }
+\end{gathered}
+\]
+$\epsilon =$ dielectric constant, the factor by which capacitance $C$ increases with induced electric polarization.   \medskip \\
+We had assumed that glass is \emph{isotropic} and homogeneous.  
+
+
+Recall the simple model of glass molecules.  
+\[
+\begin{aligned}
+  M\ddot{x} & = - M \omega_0^2 x - M \Gamma \dot{x} + qE(t) \\
+  x(t) & = A_{el} \cos{\omega t} + A_{ab} \sin{\omega t} 
+\end{aligned} \quad \quad \, 
+\begin{aligned}
+  M & = \text{ mass of charge about massive nucleus } \\
+  q & = \text{ electric charge of charge about massive nucleus } 
+\end{aligned}
+\]
+For $\omega$ far from resonance, $A_{el}$ dominate.  \\
+Assume light damping.  
+\[
+\begin{gathered}
+  \Longrightarrow (\omega_0^2 - \omega^2) A_{el} = \frac{qE_0}{M}  \\
+  n^2 = \epsilon = 1 + \frac{4 \pi Nq A_{el}}{E_0}  = 1 + \frac{ 4\pi N q^2 }{M} \frac{1}{ \omega_0^2 - \omega^2 }
+\end{gathered}
+\]
+
+For the phase velocity,
+\[
+v_{\phi} T = d \quad \quad v_{\phi} = \frac{d}{T}; \quad \quad d,T \text{ are measured values } 
+\]
+You first thought: $\frac{d}{T} = v_{\phi} = c$ \\
+Actually, $v_{\phi} = \frac{\omega}{k} = \frac{c}{n} = \frac{d}{T}$ $\Longrightarrow c= n \frac{d}{T}$ \medskip \\
+$n_{air} = 1 + 0.3 \times 10^{-3} = 1+\beta$ \medskip \\
+Correction $=\frac{d}{T} \beta \approx c \beta = 8.993775 \times 10^6 \, cm/sec$ (we have to \emph{add} this to our measured value to get $c$, the vacuum light speed).  
+
+We were given that \\
+$\begin{aligned}
+  & N_{air} \approx 2.7 \times 10^{19} \\
+  & N_{glass} \approx 2.6 \times 10^{22}
+\end{aligned}$
+
+Assume visible light is far from any resonance and the total average resonance frequency for air.  \\
+Assume air is \emph{isotropic} and homogeneous.  
+\[
+n^2 = 1 + \frac{4 \pi N q^2}{M} \frac{1}{ \omega_0^2 - \omega^2 }
+\]
+Assume charge and mass for bound charges and total average resonance frequency is the same for glass and air.  
+\[
+\begin{gathered}
+  \frac{n_{glass}^2 - 1 }{ n_{air}^2 - 1 } = \frac{N_{glass}}{ N_{air}} = \alpha \Longrightarrow n^2_{glass} = \alpha n^2_{air} + 1 - \alpha \\
+  2 n_{glass} \frac{dn_{glass}}{d \lambda_0} = \alpha 2 n_{air} \frac{dn_{air}}{d\lambda_0} \Longrightarrow \frac{dn_{air}}{d\lambda_0} = \frac{n_{glass}}{\alpha n_{air}} \frac{ dn_{glass}}{d\lambda_0} 
+\end{gathered}
+\]
+For the visible range of light, taking the vacuum wavelength to be $6.0 \times 10^{-5} cm$ (we just want an estimate of the correction), taking the index of refraction for glass to be roughly $1.5$ for this vacuum wavelength, and taking the roughly constant $\frac{dn_{glass}}{d\lambda_0}$ from Table 4.2, Sec. 4.3, 
+\[
+\lambda_0 \frac{d n_{air}}{d\lambda_0} \simeq \frac{ 1.5 (6\times 10^{-5} \, cm ) }{ \frac{2.6 \times 10^{22}}{ 2.7 \times 10^{19}} (1 + 0.3 \times 10^{-3} ) } \frac{ 0.006}{-(10^{-5}cm) } \simeq 5.6 \times 10^{-5}
+\]
+
+We can get $v_{g}$, the group velocity, from the result obtained from Problem 6.7.
+\[
+\begin{gathered}
+\begin{aligned}
+  & \frac{1}{v_g} = \frac{1}{v_{\phi}} - \frac{\lambda_0}{c} \frac{dn_{air}(\lambda_0)}{ d \lambda_0 } ; \quad \quad \, v_{\phi, \, air } = \frac{c}{ n_{air} } \\
+  & \frac{1}{v_g} = \frac{n_{air}}{c} - \frac{ \lambda_0}{c} \frac{ dn_{air}(\lambda_0)}{ d\lambda_0 } = \frac{1}{c} ( n_{air} - \lambda_0 \frac{d n_{air}(\lambda_0)}{d\lambda_0} ) 
+\end{aligned} \\
+v_g = \frac{c}{ n_{air} - \lambda_0 \frac{dn_{air}(\lambda_0)}{d\lambda_0} } = \frac{c}{ 1 + \beta - \lambda_0 \frac{dn_{air}(\lambda_0)}{d\lambda_0} } \simeq  c ( 1 - (3\times 10^{-4} - 5.6 \times 10^{-5} ) ) \\
+  c ( \beta - \lambda_0 \frac{ dn_{air}(\lambda_0)}{d\lambda_0}) \simeq 1.1 \times 10^7 \, cm/sec \quad \, ( \text{ You have to \emph{add} this to your $v_{g, \, actual}$ to get $c$ } )
+\end{gathered}
+\]
+You should \emph{use the correction for the group velocity} because you are actually sending a signal, a pulse, at the group velocity (anytime you have a pulse, a signal that starts and stops after some, even a large, period of time, then it must travel at the group velocity).  
+
+\problemhead{6.9}
+We want damped oscillations for the transient decay.  
+\[
+\begin{gathered}
+  \psi = A e^{\kappa t} \\
+  M\ddot{\psi} = -M \Gamma \dot{\psi} - K \psi
+\end{gathered} \quad \quad \Longrightarrow 
+\begin{gathered}
+  \kappa^2 = - \kappa \Gamma - \frac{K}{M} \\
+  \kappa = \frac{ -\Gamma }{2} \pm i \sqrt{ \omega_0^2 - \left( \frac{\Gamma}{2} \right)^2 } = -\Gamma/2 \pm i \omega_1 \\
+  \omega_0^2 -(\Gamma/2)^2 = \omega_1^2 
+\end{gathered}
+\]
+$\psi = e\left( \frac{-\Gamma}{2} t \right) A \cos{(\omega_1 t) }$ (without loss of generality) \\
+$\dot{\psi} = \frac{-\Gamma}{2} \psi + e\left( \frac{-\Gamma}{2} t \right) (\omega_1) (-A S(\omega_1 t))$
+
+The power exerted by the frictional drag on the oscillator, and thus the decreasing energy of the oscillator per time, is 
+\[
+-M\Gamma \dot{\psi}^2 = -M \Gamma ( (\Gamma/2)^2 \psi^2 + e(-\Gamma t) \omega_1^2 A^2 S^2 + \Gamma \psi e(-\Gamma t/2) \omega_1 A S(\omega_1 t) )
+\]
+The energy stored in the damped harmonic oscillator is going to be (I think) the total energy, the sum of the kinetic energy and potential energy 
+\[
+\begin{aligned}
+  & \frac{K}{2} \psi^2 = \frac{M \omega_0^2}{2} \psi^2  \\
+  & \frac{1}{2} M \dot{\psi}^2 = \frac{M}{2} ( (\Gamma/2)^2 \psi^2 + e(-\Gamma t) \omega_1^2 A^2 S^2 + \Gamma \psi e(-\Gamma t/2) \omega_1 A S(\omega_1 t) )
+\end{aligned}
+\]
+We could also say that the $E_{stored}$ is the maximum potential energy at each period, with the amplitude following the decaying exponential envelope, $KA^2 e(-\Gamma t)/2 = \frac{M}{2} (e(-\Gamma t) \omega_0^2 A^2 )$
+
+Now for the approximation.  Suppose in one period, the amplitude doesn't change much, but the damping cannot be ignored.  So we average over a period. 
+\[
+\begin{gathered}
+  \begin{aligned}
+    & \langle -M \Gamma \dot{\psi}^2 \rangle = - M \Gamma ( (\Gamma/2)^2 e(-\Gamma t) A^2 /2 + e(-\Gamma t) \omega_1^2 A^2/2 ) = -M\Gamma ( e(-\Gamma t) \omega_0^2 A^2/2 ) \\
+    & \langle K \psi^2/2 \rangle = \frac{M}{2} \omega_0^2 (e(-\Gamma t) A^2/2) \\
+    & \langle M \dot{\psi}^2/2 \rangle = \frac{M}{2} ( (\Gamma/2)^2 e(-\Gamma t) A^2 /2 + e(-\Gamma t) \omega_1^2 A^2/2 )
+  \end{aligned} \\
+\Longrightarrow -\langle -M\Gamma \dot{\psi}^2 \rangle / (\langle K\psi^2/2 \rangle + \langle M\dot{\psi}^2/2 \rangle ) \text{ or } -\langle -M \Gamma \dot{\psi}^2 \rangle / \left( \frac{M}{2} (e(-\Gamma t) \omega_0^2 A^2 ) \right) = \frac{ M \Gamma (e(-\Gamma t))(\omega_0^2 A^2/2 ) }{ \frac{M}{2} (e(-\Gamma t) \omega_0^2 A^2) }= \Gamma = \frac{1}{\tau}
+\end{gathered}
+\]
+
+So the only problem is the assumption that we could average over one period.  It would mean that $e(-\Gamma t)$ didn't change much over one transient period, $2\pi/\omega_1$, so that $2\pi \Gamma / \omega_1$ is small.  But then that would immediately imply $\omega_0 \approx \omega_1$ from $\omega_0^2 - (\Gamma/2)^2 = \omega_1^2$ and so we really didn't need to take the average over a period, because we could just plug in \emph{these} approximations.  
+
+\problemhead{6.14} \textbf{ Group velocity at cutoff.} 
+\[
+\omega^2 = \frac{g}{l} + \frac{4K}{m} \sin^2{\left( \frac{ka}{2} \right) } \, \text{ (dispersion relation for coupled pendulums) } \Longrightarrow \begin{aligned}
+  & \omega_{\text{ hf c.o. } }^2 = \frac{g}{l} + \frac{4K}{m} \\
+  & \omega_{\text{ lf c.o. } }^2 = \frac{g}{l} 
+\end{aligned}
+\]
+
+The phase velocities at the cutoff frequencies are
+\[
+\begin{aligned}
+  & v_{\phi}(\omega_{ \text{ hf c.o. } }) = \frac{ \sqrt{ g/l + \frac{4K}{m} } }{ (2j+1)\pi/a } \\
+  & v_{\phi}(\omega_{ \text{ lf c.o. } }) = \frac{ \sqrt{g/l}}{ 2\pi j /a} 
+\end{aligned}
+\]
+
+Take the partial derivative with respect to $k$ to get the group velocity, $\omega_k$,
+\[
+2 \omega \omega_k = \frac{4K}{m} a \sin{ \left( \frac{ka}{2} \right)} \cos{ \left( \frac{ka}{2} \right)} 
+\]
+When $\omega = \omega_{ \text{ hf c.o. }} = \omega_{ \text{ lf c.o. } }$, $\cos{ \left( \frac{ka}{2} \right) } = 0$ or $\sin{ \left( \frac{ka}{2} \right) } = 0 $, respectively.  So the group velocity is zero in both cases.  
+
+$\omega = \sqrt{ \frac{g}{l} + \frac{4K}{m} \sin^2{\left( \frac{ka}{2} \right)} }$.  For $\omega_0^2 = \frac{K}{m}$, let's try to rewrite this dispersion relation with unitless quantities as much as we could: \\
+$\omega/\omega_0 = \left( \left( \frac{ \omega_g}{\omega_0} \right)^2 + 4 \sin^2{ \left( \frac{ka}{2} \right) } \right)^{1/2}$
+
+To read, from the diagram, the group velocity, recognize that $\omega_k \equiv v_g$ is the tangent slope at some $k$, and simply take $\omega$ over $k$ for the phase velocity.  
+
+\problemhead{6.15} \textbf{ Fourier analysis of exponential function.} \\
+Fourier integrals involving real functions: \medskip \\
+Recall $\begin{aligned}
+  & \psi(t) = \int_0^{\infty} A(\omega) \sin{\omega t} d\omega + \int_0^{\infty} B(\omega) \cos{\omega t} d\omega \\
+  & A(\omega) = \frac{1}{\pi} \int_{-\infty}^{\infty} \psi(t) \sin{\omega t} dt \\
+  & B(\omega) = \frac{1}{\pi} \int_{-\infty}^{\infty} \psi(t) \cos{\omega t} dt 
+\end{aligned}$ \medskip \\
+
+To do $\int e\left( -\gamma t \right) s(\omega t) dt$, $\int e\left( -\gamma t \right) c(\omega t) dt$ integrals, my trick is to build the integral from the derivatives: \\
+$\begin{aligned}
+  & (e(-\gamma t) s(\omega t))' = -\gamma e(-\gamma t) s(\omega t) + \omega e(-\gamma t)c(\omega t) \\
+  & (e(-\gamma t) c(\omega t))' = -\gamma e(-\gamma t) c(\omega t) - \omega e(-\gamma t)s(\omega t)
+\end{aligned}$ 
+
+So 
+\[
+\begin{aligned}
+  & \begin{gathered}
+  A = \frac{1}{\pi} \int_0^{\infty} e\left( \frac{-t}{2\tau} \right) s(\omega t) dt \\
+  \int_0^{\infty} e(-\gamma t) s(\omega t) = \left. \frac{ \gamma e(-\gamma t) s(\omega t) + \omega e(-\gamma t) c(\omega t) }{ -\gamma^2 - \omega^2} \right|_0^{\infty} = \frac{\omega}{ \gamma^2 + \omega^2 } \\
+  \Longrightarrow \boxed{ A = \frac{1}{\pi} \frac{ \omega }{ (1/2\tau)^2 + \omega^2 }  }
+\end{gathered} \\
+  & \begin{gathered}
+  B = \frac{1}{\pi} \int_0^{\infty} e\left( \frac{-t}{2\tau} \right) c(\omega t) dt \\
+  \int_0^{\infty} e(-\gamma t) c(\omega t) = \left. \frac{ \omega e(-\gamma t) s(\omega t) - \gamma e(-\gamma t) c(\omega t) }{ \gamma^2 + \omega^2} \right|_0^{\infty} = \frac{\gamma}{ \gamma^2 + \omega^2 } \\
+  \Longrightarrow \boxed{ B = \frac{1}{\pi} \frac{ \gamma }{ (1/2\tau)^2 + \omega^2 }  }
+\end{gathered} 
+\end{aligned}
+\]
+
+Now let's consider how to do this with complex integrals.  
+
+Complex Fourier integrals:  \\
+\[
+\begin{aligned}
+  C(\omega) & = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(t) dt e^{-\omega t} = \frac{1}{2\pi} \int_0^{\infty} dt e\left( \frac{-t}{2\tau} + i \omega t \right) = \frac{1}{2\pi} \left. \frac{ e\left( t \left( \frac{-1}{2\tau} + i \omega \right) \right) }{ 2\pi \left( \frac{-1}{2\tau} + i \omega \right) } \right|_0^{\infty} = \frac{1}{ 2\pi \left( \frac{1}{2\tau} - i \omega \right) } = \\
+  & = \frac{ \frac{1}{2\tau} + i \omega }{ 2\pi \left( \left( \frac{1}{2\tau}\right)^2 + \omega^2 \right) }
+\end{aligned}
+\]
+
+What if we wanted to check if this $C(\omega)$ will return us back to $f(t)$?  The integral, unless you're smart with real integrals, involves a contour integral which I'll demonstrate: 
+\[
+\begin{gathered}
+  f(t) = \int_{-\infty}^{\infty} C(\omega) e^{- i \omega t} d\omega = \frac{1}{2\pi } \int \frac{ 1/2\tau + i \omega }{ (1/2\tau)^2 (1 + (2\tau \omega)^2 ) } e(-i\omega t) = \frac{1\gamma^2}{2\pi  } \int \frac{ 1/\gamma + i \omega }{ 1 + ( \gamma \omega)^2 } e(-i \omega t)  \\
+\quad \\ 
+\begin{gathered}
+  \int \frac{ e(-i \omega t)}{ 1 + (\gamma \omega)^2 } = \frac{1}{ \gamma} \int \frac{e\left( -i \frac{x}{\gamma} t \right) }{ 1 + x^2 } = \frac{1}{ \gamma} \oint_C \frac{e^{ -i \frac{x}{\gamma} t } }{ 2 i } \left( \frac{1}{x-i} - \frac{1}{x+i} \right) = \frac{-2\pi i}{ 2i \gamma} (e(t/\gamma) - e(-t/\gamma)) \\
+  \int \frac{ \omega e(-i \omega t)}{ 1 + (\gamma \omega)^2 } = \frac{1}{ \gamma^2} \int \frac{x e\left( -i \frac{x}{\gamma} t \right) }{ 1 + x^2 } = \frac{1}{ \gamma^2} \oint_C \frac{e^{ -i \frac{x}{\gamma} t } }{ 2  } \left( \frac{1}{x-i} + \frac{1}{x+i} \right) = \frac{-2\pi i}{ 2 \gamma^2} (e(t/\gamma) + e(-t/\gamma)) 
+\end{gathered} \\
+\Longrightarrow f(t) = e(-t/\gamma)
+\end{gathered}
+\]
+Notice the contour integration with the two poles at $x=\pm i$ in the last step of the two last integrals above.  
+
+\problemhead{6.16} \textbf{ Truncated sine wave with one oscillation.}  \quad \\ 
+Let's define the truncated sine wave signal in this manner: \\
+$f(t) = \begin{cases} C_0 s\left( \frac{2 \pi (t-t_0) }{ \Delta t} \right) = C_0 s( \omega_0 (t-t_0) ) & \text{ for } t_1 = t_0 - \frac{\Delta t}{2} < t < t_0 + \frac{ \Delta t}{2} = t_2 \\
+  0 & \text{ otherwise } 
+\end{cases} $\smallskip \\
+Then we can calculate $C(\omega)$ for the complex Fourier transform:
+\[
+\begin{aligned}
+  C(\omega) & = \frac{1}{2\pi} \int_{t_1}^{t_2} C_0 s(\omega_0 (t-t_0)) e^{-i\omega t} dt = \frac{C_0}{4\pi i} \int_{t_1}^{t_2} (e^{i\omega_0 (t-t_0)} - e^{ - i \omega_0(t-t_0) } )e^{ i \omega t } = \\
+  & = \left( \frac{C_0}{4\pi i } \right) \left. e^{-i \omega_0 t_0 } \left( \frac{ e^{ (i (\omega_0 + \omega) t) } }{ i (\omega_0 + \omega ) } \right) - e^{ i \omega_0 t_0 } \frac{ e^{ -i(\omega_0 - \omega) t } }{ -i (\omega_0 - \omega) } \right|_{t_1}^{t_2} = \\
+  & = \left( \frac{C_0}{ 4 \pi i } \right) \left(  \frac{ e^{i \omega_0 \frac{\Delta t}{2}  + i \omega t_2 } - e^{ i \omega_0 \frac{-\Delta t}{2} + i \omega t_1 } }{ i (\omega_0 + \omega ) } + \frac{ e^{ - i \omega_0 \frac{ \Delta t}{2} + i \omega t_2 } - e^{ i \omega_0 \frac{ \Delta t}{2} + i \omega t_1 } }{ i (\omega_0 - \omega) } \right) = \\
+  & = \frac{ -C_0}{4\pi } \left( \frac{ - e^{ i \omega t_2 } + e^{i \omega t_1 }}{ \omega_0 + \omega } + \frac{ - e^{ i \omega (t_0 + \frac{\Delta t}{2} ) } + e^{ i \omega (t_0 - \frac{ \Delta t}{2} ) } }{ \omega_0 - \omega } \right)  = \boxed{ \frac{ i C_0 }{ 2 \pi } (e^{ i \omega t_0 } ) (\sin{ (\omega \frac{ \Delta t}{2} ) }) \left( \frac{ 2 \omega_0 }{ \omega_0^2 - \omega^2 } \right)  }
+\end{aligned}
+\]
+Or in terms of the real and imaginary parts,
+\[
+\begin{aligned}
+  & A = \frac{C_0}{\pi} c(\omega t_0) s(\omega \Delta t/2) \left( \frac{ \omega_0}{ \omega_0^2 - \omega^2 } \right) \\
+  & B = -\frac{C_0}{\pi} s(\omega t_0) s(\omega \Delta t/2) \left( \frac{ \omega_0 }{ \omega_0^2 - \omega^2 } \right) 
+\end{aligned}
+\]
+
+We could confirm this result by using the real number version of the Fourier integrals. 
+\[
+\begin{aligned}
+  A(\omega) & = \frac{1}{ \pi }\int_{-\infty}^{\infty} dt \psi(t) s(\omega t) = \frac{1}{ \pi} \int_{t_1}^{t_2} dt C_0 s(\omega_0(t-t_0) ) s(\omega t) = \\
+  & \xrightarrow{ t-t_0 \to t } \frac{1}{\pi} \int_{-\Delta t/2}^{\Delta t/2 } dt C_0 s(\omega_0 t ) s(\omega (t +t_0) ) 
+\end{aligned}
+\]
+Use the trick of building the desired solution in the previous problem to do this integration.  So note that \\
+$\begin{aligned}
+ & (s(\omega_0 t) c(\omega (t+t_0)))' = \omega_0 c(\omega_0 t ) c(\omega( t+t_0) ) - \omega s(\omega_0 t) s(\omega (t+t_0)) \\
+ & (c(\omega_0 t) s(\omega (t+t_0)))' = -\omega_0 s(\omega_0 t ) s(\omega( t+t_0) ) + \omega c(\omega_0 t) c(\omega (t+t_0)) 
+\end{aligned}$
+So then
+\[
+A = \frac{C_0}{\pi} \frac{ (-\omega_0) ( s(\omega t_2) - s(\omega t_1 ) ) }{ (\omega^2 - \omega_0^2 ) } = \frac{C_0}{\pi} \frac{ \omega_0 (c(\omega t_0) s(\omega \Delta t/2) ) }{ \omega_0^2 - \omega^2 } 
+\]
+Similarly for $B$.  
+
+\problemhead{6.17} \textbf{ Beaded string.}
+\[
+\begin{gathered}
+  \omega^2 = \frac{4T_0}{ma} \sin^2{\left( \frac{ka}{2} \right) } \quad \text{ (dispersion relation for beaded string) } \\
+  2 \omega v_g = \frac{4 T_0 }{ma} a s\left( \frac{ka}{2} \right) c\left( \frac{ka}{2} \right) \Longrightarrow v_g = \frac{ \frac{4T_0}{m} s\left( \frac{ka}{2} \right) c\left( \frac{ka}{2} \right) }{ 2 \sqrt{ \frac{4T_0}{ma} } s\left( \frac{ka}{2} \right) } = \sqrt{\frac{ T_0 a }{m} } c\left( \frac{ka}{2} \right) \\
+  \omega = 2 \sqrt{ \frac{T_0}{ma} } \sin{ \left( \frac{ka}{2}\right) } \\
+  v_{\phi} = \sqrt{ \frac{T_0 a}{m}} \frac{s(ka/2) }{ ka/2} 
+\end{gathered}
+\]
+$k_{max}$ is when $\frac{ka}{2} = \pi/2$.  
+
+See the sketches for the plot.  Notice that the group velocity goes to zero towards the high frequency cutoff, but the phase velocity doesn't go to zero from $k=0$ to $k=k_{max}$.  
+  
+\problemhead{6.18} \textbf{ Phase and group velocities for light in glass.}
+\begin{enumerate}
+\item $n^2 = 1 + \frac{ \omega_p^2}{ \omega_0^2 - \omega^2 } = 1 + \frac{ (\omega_p/\omega_0)^2 }{ 1 - (\omega/\omega_0)^2 }$ \\
+$\begin{aligned}
+  & y = 1 + \frac{k}{1-x^2} \\
+  & y' = \frac{2xk}{1-x^2 }
+\end{aligned}$ \smallskip \\
+ When $n^2 < 0$, we are shaking the charges a little too fast from resonance, so the charge doesn't move as much (as so much $\pi/2$ out of phase lag) to compensate for not enough $\omega^2$ return force.  So instead of absorbing completely the incoming wave, the charges will move in the opposite manner a little and send back an opposite $E$ field.  The glass reflects back, acting like a mirror.  
+
+For $\omega < \omega_0$, but $\omega$ near $\omega_0$, the glass becomes more opaque.  
+\item 
+\[
+\begin{gathered}
+  c^2 k^2 = \omega^2 \left( 1 + \frac{\omega_p^2}{ \omega_0^2 - \omega^2 } \right) = \omega^2 n^2(\omega) \xrightarrow{ \partial_k} 2 c^2 k = 2 \omega v_g n^2 + \omega^2 \left( \frac{2 \omega_p^2 \omega }{ (\omega_0^2 - \omega^2 )^2 } \right)v_g \\
+  \Longrightarrow \left( \frac{v_g}{c} \right)^2 = \frac{ \omega^2 n^2 }{ (n^2 + \frac{ \omega^2 \omega_p^2 }{ (\omega_0^2 - \omega^2 )^2 } )^2 } \\
+  \xrightarrow{\text{ denominator } } \frac{ \omega_0^4 - 2 \omega_0^2 \omega^2 + \omega^4 + \omega_p^2 \omega_0^2 - \omega^2 \omega_p^2 + \omega^2 \omega_p^2 }{ (\omega_0^2 - \omega^2 )^2 } = 1 + \frac{ \omega_p^2 \omega_0^2 }{ (\omega_0^2 - \omega^2 )^2 } \\
+  \Longrightarrow \boxed{ \left( \frac{v_g}{c} \right)^2 = \frac{ n^2}{ \left( 1 + \frac{ \omega_p \omega_0^2}{ (\omega_0^2 - \omega^2)^2 } \right) } = \frac{ 1 + \frac{ \omega_p^2 }{ \omega_0^2 - \omega^2 }}{ \left( 1 + \frac{ \omega_p^2 \omega_0^2 }{ (\omega_0^2 - \omega^2 )^2 } \right)^2 } }
+\end{gathered}
+\]
+We've seen that $n^2 = 1 + \frac{k^2}{ 1 - (x)^2 }$ with $k^2 = \omega_p^2 \omega_0^2$ and $x = \omega/\omega_0$.  We've seen that $n^2$ could become infinitely negative for frequencies slightly above resonance.  We will only be concerned then with showing that $\left( \frac{v_g}{c} \right)^2$ is less than $1$ (could be infinitely negative), because when $n^2$ is negative, the denominator of $\left( \frac{v_g}{c} \right)^2$ must be positive, so it's negative, and thus less than $1$.  \smallskip \\
+So for the denominator $\left( 1 + \frac{k^2}{ (1-x^2)^2 } \right)^2 = 1 + \frac{2k^2}{(1-x^2)^2 } + \frac{k^4}{(1-x^2)^4 }$
+
+\[
+\begin{gathered}
+  1 + \frac{2k^2}{(1-x^2)^2 } + \frac{k^4}{(1-x^2)^4} \\
+  \frac{ 2 }{ (1-x^2)^2 } + \frac{k^2 }{ (1-x^2)^4} \\
+  2(1-x^2)^2 + k^2 \\
+    1 - x^2 - x^4 +x^6 +k^2 \\
+  (1-x^4)(1-x^2) +k^2 \\
+  (1-x^2)^2(1+x^2) + k^2 
+\end{gathered} \quad \quad \quad 
+\begin{gathered}
+  1 + \frac{k^2}{1-x^2} \\
+  \frac{1}{1-x^2} \\
+  (1-x^2)^3 \\
+  0 \\
+  0 \\
+  0 \\
+\end{gathered}
+\]
+So $(1-x^2)^2(1+x^2) + k^2 >0$ and so $\left( 1 + \frac{ k^2}{ (1-x^2)^2 } \right)^2  > 1 + \frac{k^2}{ 1-x^2} $ or $\left( \frac{v_g}{c} \right)^2 < 1$.  
+
+Again, since the denominator is always positive (it's squared), and the denominator is essentially $n^2$, then $v_g^2$ is negative in the same frequency region where $n^2$ is negative.  
+
+\end{enumerate}
+
+\problemhead{6.19} \textbf{ Phase and group velocities for deep-water waves}.  
+\[
+  \omega^2 = gk + \frac{Tk^3}{\rho} 
+\]
+\[
+\begin{gathered}
+  \quad \\
+  \begin{aligned}
+    & 2 \omega \omega_k = g + \frac{ 3T}{\rho } k^2 \\
+    & \omega_k = \frac{ g + \frac{ 3 T}{\rho} k^2 }{ 2 \omega } = \frac{ g + \frac{3T}{\rho }k^2 }{ 2 \sqrt{ gk + \frac{Tk^3}{\rho } }} = \frac{ g + \frac{3T}{\rho} \frac{ (2\pi)^2 }{\lambda^2} }{ 2 \sqrt{ \frac{2\pi g}{\lambda} + \frac{ T(2\pi)^3}{ \rho \lambda^3 } } } 
+  \end{aligned} \\
+\end{gathered}
+\]
+\[
+\begin{gathered}
+  \quad \\
+  v_{\phi} = \frac{ \omega}{k}  = \sqrt{ \frac{g}{k} + \frac{Tk}{\rho} } = \sqrt{ \frac{ g\lambda}{2\pi }  + \frac{T (2\pi)}{ \rho \lambda} }  \\
+\quad \\
+\begin{aligned}
+  & v_{\phi} = \omega_k \\
+  & v^2_{\phi}  = \omega_k^2 = \frac{g}{k} + \frac{Tk}{\rho} = \frac{ \left( g + \frac{3T}{\rho} k^2 \right)^2 }{ 4 \left( gk + \frac{T k^3 }{ \rho} \right) } \Longrightarrow 4 \left( g + \frac{Tk^2}{\rho} \right)^2 = \left( g + \frac{3T}{\rho} k^2 \right)^2 
+\end{aligned} 
+\end{gathered}
+\]
+\[
+k^2 = \frac{  g }{  T/\rho }; \quad \quad \, \lambda = \left(  \frac{T}{ \rho g} \right)^{1/2} 2\pi \simeq \boxed{ 1.7 \, cm }
+\]
+
+Let $k_0 = \left( \frac{ \rho g }{ T } \right)^{1/2}$, the wavenumber when the group velocity and phase velocity of water waves transmitted are equal.  Then we rewrite the equations for the group and phase velocities in this convenient form:
+\[
+\begin{gathered}
+  \begin{aligned}
+    & \omega_k = \frac{ \sqrt{g} \left( 1 + 3 \left( \frac{k}{k_0} \right)^2 \right) }{ 2 \sqrt{k } \sqrt{ 1 + (k/k_0)^2 } } \\
+    & v_{\phi} = \sqrt{ \frac{g}{k} } \sqrt{ 1 + (k/k_0)^2 } 
+  \end{aligned} \\
+  \begin{aligned}
+    & k \gg k_0 \text{ surface-tension waves}; \begin{aligned} 
+      & \omega_k \to \frac{ 3 \left( \frac{k}{k_0} \right) \sqrt{g} }{ 2 \sqrt{k} } 
+      & v_{\phi} \to \sqrt{ g/k} (k/k_0 ) 
+    \end{aligned} \\
+    & k \ll k_0 \text{ gravity waves }; 
+    \begin{aligned}
+      & \omega_k \to \frac{1}{2} \sqrt{ g/ k } \\
+      & v_{\phi} \to \sqrt{ g /k }
+    \end{aligned}
+  \end{aligned}
+\end{gathered}
+\]
+We have the expressions for $v_g$ and $v_{\phi}$.  Thus, we can calculate the following deep-water waves, for long wavelengths
+\[
+\begin{aligned}
+  \lambda (cm) & \quad \quad  \nu (cps) & v_{\phi} (cm/sec, km/hr) & \quad \quad  v_g (cm/sec, km/hr) & \frac{v_g}{v_{\phi}} \\
+  12800 & \quad \quad 0.110 & 1413 cm/sec; \, 50.9 km/hr & \quad \quad 706.5 cm/sec; \, 25.7 km/hr & 0.50 \\
+  25600 & \quad \quad 0.078 & 19.98 cm/sec; \, 71.9 km/hr & \quad \quad 999.1 cm/sec; \, 36.0 km/hr & 0.50 
+\end{aligned}
+\]
+
+\problemhead{6.20} \textbf{ Fourier analysis of a single square pulse in time}.  Consider a square pulse $\psi(t)$ which is zero for all $t$ not in the interval $t_1$ to $t_2$.  Within that interval, $\psi(t)$ has the constant value $1/\Delta t$, where $\Delta t = t_2 - t_1$.  Let $t_0$ be the time at the center of the interval. 
+
+\[
+\begin{gathered}
+\psi(t) = \int_0^{\infty} A(\omega) \sin{ \omega t} d \omega + \int_0^{\infty} B(\omega) \cos{ (\omega t) } d\omega \\
+\begin{aligned}
+  A(\omega) & = \frac{1}{\pi} \int_{-\infty}^{\infty} \psi(t) \sin{ \omega t} dt \\
+  B(\omega) & = \frac{1}{ \pi} \int_{-\infty}^{\infty} \psi(t) \cos{ \omega t} dt 
+\end{aligned}  \\
+t \to t- t_0 \\
+\begin{aligned}
+  \psi(t) & = \int_0^{\infty} A(\omega) \sin{ (\omega (t-t_0) ) } d\omega + \int_0^{\infty} B(\omega) \cos{ (\omega(t-t_0) ) } d\omega \\
+  & = \int_0^{\infty} B(\omega) \cos{ (\omega (t-t_0 ) )} d\omega \quad \text{ (since $\psi(t)$ is even about $t_0$ ) } 
+\end{aligned} \\
+\begin{aligned}
+  B(\omega) & = \frac{1}{ \pi} \int_{ -\infty}^{\infty} \psi(t) \cos{ \omega (t-t_0) } dt = \frac{1}{\pi} \int_{-\infty}^{\infty} \psi(t') \cos{ \omega (t') } dt' = \frac{1}{ \pi } \int_{ -\Delta t /2 }^{\Delta t /2 } \frac{1}{ \Delta t} \cos{ \omega t' } dt' = \\
+  & = \frac{1}{ \pi \Delta t} \frac{ 2 \sin{ (\omega \Delta t /2 ) } }{ \omega }  = \frac{ \sin{ \left( \frac{ \omega \Delta t}{2 } \right) } }{ \left( \frac{ \omega \pi \Delta t}{ 2 } \right) } 
+\end{aligned} \\
+\Delta t \to 0 ; \quad \lim_{ \Delta t \to 0 } B(\omega) = \frac{1}{ \pi }
+\end{gathered}
+\]
+
+In complex numbers, \\
+$f(t) = \begin{cases} \frac{1}{\Delta t} = 1/\tau & ; t_0 - \tau/2 = t_1 < t < t_0 +\tau/2 = t_2  \\
+  0 & \text{ otherwise } \end{cases}$  \\
+$C(\omega) = \frac{1}{ 2\pi \tau} \int_{t_1}^{t_2} e^{i\omega t} dt = \frac{1}{ 2 \pi \tau i \omega }(e^{i \omega t_2 } - e^{i \omega t_1} ) = \frac{ e^{i\omega t_0} (\sin{ (\omega \tau /2) } ) }{ 2 \pi (\tau \omega /2) }$ \\
+$f(t) = \int_{-\infty}^{\infty} C(\omega) e^{-i \omega t} d\omega = \int_{-\infty}^{\infty} e^{- i\omega (t - t_0) } \left( \frac{ \sin{ (\omega \tau/2) } }{ 2 \pi \omega \tau /2 } \right) d\omega $ \\
+\quad \quad \, $\lim_{\tau \to 0} C(\omega) e^{ - i \omega t_0 } = 1/2 \tau $  
+
+\problemhead{6.21} \textbf{ Fourier analysis of a truncated harmonic oscillation }.  Suppose $\psi(t)$ is zero outside of the interval from $t_1$ to $t_2$, which has duration $t_2 - t_1 = \Delta t$ and central value $\frac{1}{2} (t_1 + t_2) = t_0$.  Suppose $\psi(t)$ is equal to $\cos{ \omega_0 (t-t_0)}$ within that interval.  
+
+\begin{enumerate}
+\item In complex numbers, for $f(t) = \begin{cases} \cos{ (\omega_0 (t-t_0))} & t_1 = t_0 - \tau/2 < t < t_2 = t_0 + \tau/2 \\
+0 & \text{ otherwise } \end{cases} $, 
+\[
+\begin{aligned}
+  C(\omega) & = \frac{1}{2\pi } \int_{t_1}^{t_2} \cos{ (\omega_0 (t-t_0 ) ) }e^{i \omega t} dt = \frac{1}{ 2 \pi } \int_{-\tau/2}^{\tau/2} \cos{ (\omega_0 t) } e^{i\omega (t- t_0) } dt = \frac{ e^{  i \omega t_0 } }{ 4 \pi } \int_{-\tau/2}^{\tau/2} e^{i (\omega + \omega_0) t} + e^{-i (\omega_0 - \omega ) t} = \\
+  & = \frac{e^{ i \omega t_0}}{4\pi} \left( \frac{ e^{ i (\omega + \omega_0) \tau/2} - e^{ - i (\omega+\omega_0) \tau/2 } }{ i (\omega + \omega_0)/2 } + \frac{ e^{- i (\omega_0 - \omega) \tau/2} - e^{ i (\omega_0 + \omega) \tau/2} }{ -i (\omega_0 - \omega) /2 } \right)  = \\
+  & = \frac{e^{i \omega t_0}}{2\pi} \left( \frac{ \sin{ (\omega+\omega_0)\tau/2} }{ (\omega + \omega_0)/2} + \frac{ \sin{ (\omega_0 - \omega)\tau/2} }{ (\omega_0  - \omega)/2 } \right)
+\end{aligned}
+\]
+
+For real variables, recall again that
+\[
+\begin{gathered}
+\psi(t) = \int_0^{\infty} A(\omega) \sin{ \omega t} d \omega + \int_0^{\infty} B(\omega) \cos{ (\omega t) } d\omega \\
+\begin{aligned}
+  A(\omega) & = \frac{1}{\pi} \int_{-\infty}^{\infty} \psi(t) \sin{ \omega t} dt \\
+  b(\omega) & = \frac{1}{ \pi} \int_{-\infty}^{\infty} \psi(t) \cos{ \omega t} dt 
+\end{aligned}  \\
+t \to t- t_0 \\
+\begin{aligned}
+  \psi(t) & = \int_0^{\infty} A(\omega) \sin{ (\omega (t-t_0) ) } d\omega + \int_0^{\infty} B(\omega) \cos{ (\omega(t-t_0) ) } d\omega \\
+  & = \int_0^{\infty} B(\omega) \cos{ (\omega (t-t_0 ) )} d\omega \quad \text{ (since $\psi(t)$ is even about $t_0$ ) } 
+\end{aligned} \\
+\begin{aligned}
+  B(\omega) & = \frac{1}{ \pi} \int_{ -\infty}^{\infty}  \psi(t) \cos{ \omega (t- t_0) } dt = \frac{1}{ \pi } \int_{-\Delta t /2 }^{ \Delta t/2} \cos{ \omega_0 t'} \cos{ \omega t'} dt' = \frac{1}{ 2 \pi } \int_{-\Delta t/2}^{ \Delta t/2} C(\omega_0 + \omega)t' + C(\omega_0 - \omega)t' = \\
+  & = \frac{1}{ 2\pi} \left. \left( \frac{ S(\omega_0 + \omega)t' }{ \omega_0 + \omega} + \frac{ S(\omega_0 - \omega)t' }{ \omega_0 - \omega} \right) \right|_{-\Delta t/2}^{\Delta t/2} \\
+  \Longrightarrow \pi B(\omega) & = \frac{ S(\omega_0 + \omega) \frac{ \Delta t}{2} }{ \omega_0 + \omega } + \frac{ S(\omega_0 - \omega) \frac{ \Delta t}{2} }{ \omega_0 - \omega } 
+\end{aligned}
+\end{gathered}
+\]
+\item $\lim_{\Delta t \to 0} \pi B(\omega) = \Delta t $
+\item 
+\[
+\begin{gathered}
+|\omega_0 - \omega| \ll |\omega_0 + \omega | \Longrightarrow \frac{1}{ |\omega_0 + \omega| } \ll \frac{1}{ |\omega_0 - \omega| } \\
+\pi B(\omega) \Longrightarrow \frac{ \sin{ \left( \frac{ (\omega_0 - \omega) \Delta t }{2} \right) } }{ \omega_0 - \omega }
+\end{gathered}
+\]
+\item See sketch that I drew myself in my text.  
+\end{enumerate}
+
+\problemhead{6.22} \textbf{ Fourier analysis of almost periodically repeated square pulse}.  
+From Prob. 6.20, \\
+\phantom{ From } Square pulse, $\psi(t) = \frac{1}{ \Delta t}$ if $t_1 \leq t \leq t_2$; \quad $\Delta t = t_2 - t_1 $.  
+\[
+B(\omega) = \frac{1}{ \pi} \frac{ S\left( \frac{ \Delta t \omega}{2} \right) }{ \left( \frac{ \Delta t \omega}{2} \right) }
+\]
+
+From Prob. 2.30, \\
+\phantom{ From } $F$ is a periodically repeated square pulse of width $\Delta t$ and repeated every $T_1$ time interval.  $\nu_1 = \frac{1}{ T_1}$ 
+\[
+\begin{aligned}
+  & F = \sum B_j C(j \omega_1 t ); \quad \, \omega_1 = \frac{2\pi}{T_1} \\
+  & B_j = \frac{2}{ j \pi } S( j \pi \nu_1 \Delta t) = \frac{ S\left( \frac{ \omega_1}{2} j \Delta t \right) }{ j \pi /2 }
+\end{aligned}
+\]
+
+Consider a train of repeated square pulses of duration $\Delta t$ \\
+Note that the train itself is a pulse.  
+
+$T_{long}$ is a train of square pulses, a superposition of square pulses at different times; each square pulse has harmonics of $\nu_1 = \frac{1}{T_1}$, $T_1$ is the repetition time period, $j \pi \nu_1$ are the harmonics.  But since the train lasts only for $T_{long}$, like how the single square pulse with band $\frac{1}{\Delta t}$, $\frac{1}{ T_{long}}$ is a band of frequencies for each harmonic.  \\
+$\Delta t$ is the smallest of the period and so determines the most important harmonics (with this overall ``envelope'' that is like the $\frac{\sin{x}}{x}$ function ); \quad $\nu_{max} \approx \frac{1}{ \Delta t}$; each of the harmonics fall off rapidly for $\frac{ \omega_1 j \Delta t}{ 2}$ considered not small.  
+
+Remember, even though the square pulses of the train occur at different times in the train, in frequency space, all that matters is the frequency.  
+
+\problemhead{6.24} \textbf{Frequency delta function}.  We considered the superposition
+\[
+\psi(t) = \int_0^{\infty} B(\omega) \cos{ \omega t} d\omega 
+\]
+of a ``square'' frequency spectrum given by setting $B(\omega) = 1/\Delta \omega$ for $\omega$ in the interval from $\omega_1$ to $\omega_2 = \omega_1 + \Delta \omega$ and setting $B(\omega) = 0$ elsewhere.  We found that superposition to be
+\[
+\psi(t) = \left[ \frac{ \sin{ \frac{1}{2} \Delta \omega t} }{ \frac{1}{2} \Delta \omega t } \right] \cos{ \omega_0 t}
+\]
+where $\omega_0$ is the frequency at the center of the band $\Delta \omega$.  Let $t_{max}$ be a time longer than the duraction of whatever experiment you have in mind.  
+\[
+\begin{gathered}
+  \Delta \omega t_{max} \ll 1 \text{ so } \psi(t) \simeq \cos{ \omega_0 t} \\
+  \begin{aligned}
+    B(\omega) & = \left( \frac{1}{ \Delta \omega } \right) \text{ when } \omega_1 \leq \omega \leq \omega_2  = \omega_1 + \Delta \omega_1 \quad \text{ zero otherwise, (as given) } \\
+    \int B(\omega) & = \frac{1}{ \Delta \omega} (\omega_1 + \Delta \omega - \omega_1 )  = 1 
+  \end{aligned}
+\end{gathered}
+\]
+
+\textbf{ Exact solution}.  
+
+For an exact solution, consider when we want $N$ number of individual pulses in the pulse train.  \\
+Suppose $N= 2N_e$ is even.  Without loss of generality, center the train on time $0$, in between the $N_e$th and $N_e+1$th pulses.  Let $T = (2N_e + 1)T_s$ (we need to account for one extra period to account for the the one-half time period of $T_s$ to turn off the laser before the start of the train and at the end of the last pulse).  
+\[
+f(t) = \begin{cases} \frac{1}{\tau} & jT_s +\frac{T_s}{2} - \tau/2 < t < jT_s + \frac{T_s}{2} + \tau/2 \text{ for } j = -N_e \dots N_e -1 \\
+  0 & \text{ otherwise } \\
+\end{cases}
+\]
+So then 
+\[
+\begin{aligned}
+  C(\omega) & = \frac{1}{2\pi } \sum_{j={-N_e}}^{N_e -1} \int_{T_s/2 + jT_s -\tau/2}^{T_s/2 + jT_s + \tau/2} \frac{1}{\tau} e^{i\omega t} dt = \frac{1}{ 2\pi \tau i \omega} \sum_{j=-N_e}^{N_e-1} e^{ i \omega (T_s/2 + jT_s ) }(e^{i\tau/2} - e^{-i\tau/2} ) = \\
+  & = \frac{1}{ \pi \tau \omega} \sum_{j=-N_e}^{N_e-1} e^{i \omega (T_s/2 + jt_s) } \sin{ (\omega \tau/2) } 
+\end{aligned}
+\]
+\[
+\begin{gathered}
+  \sum_{j=-N_e}^{N_e-1} e^{i \omega T_s j } = \sum_{j=-N_e}^{-1} e^{ i \omega T_s j } + 1 + \sum_{j = 1}^{N_e-1} e^{i \omega T_s j } = \sum_{j=1}^{N_e} e^{ - i \omega T_s j} + 1 + \left( \frac{ e^{ i \omega T_s } - e^{i \omega N_e T_s }}{ 1 - e^{ i \omega T_s } } \right) \\
+  = \left( \frac{ e^{ -i \omega T_s/2} ( 1 - e^{ -i \omega N_e } ) }{ e^{i \omega T_s/2} - e^{ -i \omega T_s/2} } \right) + 1 + \left( \frac{ e^{ i \omega T_s/2} ( 1 - e^{ i \omega T_s (N_e - 1) } ) }{ - e^{ i \omega T_s/2} + e^{ -i \omega T_s/2} } \right) = e^{ -i \omega T_s/2}\left( \frac{ \sin{ \omega T_s N_e } }{ \sin{ \omega T_s/ 2 } } \right) \\
+\Longrightarrow C(\omega) = \frac{ \sin{ (\omega \tau /2 )}}{ \pi \omega \tau } \frac{ \sin{ (\omega T_s N/2)}}{ \sin{ (\omega T_s/2 )} }`
+\end{gathered}
+\]
+Even if the pulse train consists of $N$ odd pulses, we'll get the same result.  \\
+For $N$ odd, $N = 2N_o + 1$, $f(t) = \begin{cases} \frac{1}{\tau} & j T_s - \frac{\tau}{2} < t < j T_s + \frac{ \tau}{2}, \quad \, j = -N_0 < j < N_0 \\
+  0 & \text{ otherwise } \end{cases} $ \\
+\[
+\begin{gathered}
+  C(\omega) = \frac{1}{ 2\pi } \sum_{j = -N_0}^{N_0} \int_{jT_s - \tau/2}^{ j T_s + \tau/2} \frac{1}{\tau} e^{ i \omega t } dt = \frac{1}{  \pi \tau \omega} \sum_{j= -N_o}^{N_o} e^{i \omega T_s j } \sin{ (\omega \tau/2) } \\
+  \sum_{j=-N_o}^{N_o} e^{i \omega T_s j} = \sum_{j=-N_o}^{-1} e^{ i \omega T_s j} + 1 + \sum_{j=1}^{N_o} e^{ i \omega T_s j } = \sum_{j=1}^{N_o} e^{ -i \omega T_s j } + 1 + \frac{ e^{ i \omega T_s} - e^{ i \omega (N_o+1) T_s } }{ 1 - e^{ i\omega T_s } } = \\
+  = \frac{ e^{-i\omega T_s/2} ( 1 - e^{ -i \omega N_o T_s } ) }{ e^{ i \omega T_s/2 } - e^{ -i \omega T_s/2 } } + 1 + \frac{ e^{ i \omega T_s/2} ( 1 - e^{ i \omega N_o T_s } ) }{ -e^{ i \omega T_s/2} + e^{ -i \omega T_s /2 } } = \frac{ \sin{ ( T_s \omega (N_o + 1/2) ) } }{ \sin{ (T_s \omega/2) } } \\
+  \Longrightarrow C(\omega) = \frac{ \sin{ (\omega \tau /2 )}}{ \pi \omega \tau } \frac{ \sin{ (\omega T_s N/2)}}{ \sin{ (\omega T_s/2 )} }
+\end{gathered}
+\]
+$\frac{ \sin{ (\omega \tau /2 )}}{ \pi \omega \tau }$ acts as an envelope for sharp pulses in frequency space from $\frac{ \sin{ (\omega T_s N/2)}}{ \sin{ (\omega T_s/2 )} }$.  
+
+\problemhead{6.23} \textbf{ Mode-locking of a laser to achieve narrow pulses of visible light. }
+\begin{enumerate}
+  \item $\nu_{neon} = \frac{c}{ \lambda_{vacuum} } = \frac{3 \times 10^{10} \, cm /s}{ 6.328 \times 10^{-5} \, cm} = 0.4741 \times 10^{15} \, Hz $ \\
+$\nu_1 = \frac{1}{T} = \left( \frac{2L}{ c / n} \right)^{-1} = \frac{ 3 \times 10^{10} \, cm/s}{ 2 (100 \, cm ) } = 1.5 \times 10^8 \, Hz$ (we had assumed that $n \simeq 1$ \\
+$ m \nu_1 = \nu_{neon} $; \quad \, $\Delta \nu = 10^9 \, Hz$.  $\Longrightarrow m = \frac{\nu_{neon}}{ \nu_1} = \frac{1}{3} \times 10^7 \simeq 3 \times 10^6$ \\
+$\Delta m \nu_1 = \Delta \nu $ \quad $\Longrightarrow \Delta m = \frac{ \Delta \nu }{ \nu_1} = \frac{10^9 \, Hz }{ 3/2 \times 10^8 \, Hz } = \frac{2}{3} \times 10 = 6$
+  \item See sketch.  
+  \item Consider \\
+$C(\omega) = \begin{cases} A & \text{ for } (m+j)\nu_1 - \delta \nu /2 < \frac{ \omega }{ 2\pi } < (m+j)\nu_1 + \delta \nu /2 \, ; \quad j = -3 \dots 3 \\
+    0 & \text{ otherwise } 
+\end{cases} $
+with $2\pi \nu_1 = \omega_1$ \, ; \quad $2\pi \delta \nu = \delta \omega$ \, ; \quad $T_{long} = 1/\delta \nu$ 
+\[
+\begin{aligned}
+  f(t) & = \int_{-\infty}^{\infty} C(\omega) e^{ - i \omega t} d\omega = \sum_{j=-3}^3 \int_{ (m+j)\omega_1 - \delta \omega/2}^{ (m+j)\omega_1 + \delta \omega/2 } Ae^{ - i \omega t} d\omega = \sum \frac{A}{ -i t } ( e^{ -i t (m+j) \omega_1} ( e^{ -i t \delta \omega/2 } - e^{ i t \delta \omega/2 } )) = \\
+  & = \sum \frac{2A}{t} e^{ -it m \omega_1} \sin{ (t \delta \omega/2) } e^{ -it \omega_1 j } = \sin{ \left( t \frac{ \delta \omega}{2} \right) } \frac{2A}{t} e^{ -it m \omega_1 } \sum_{j=-3}^3 e^{ -it \omega_1 j } 
+\end{aligned}
+\]
+Now
+\[
+\begin{aligned}
+  \sum_{j=-3}^3 e^{-it \omega_1 j } & = \sum_{j=1}^3 e^{-it \omega_1 j } + 1 + \sum_{j=-1}^{-3} e^{-it \omega_1 j } = \frac{ e^{-it\omega_1 } - e^{-it4 \omega_1 } }{ 1 - e^{-it \omega_1 } } + 1  + \frac{ e^{it \omega_1 } - e^{-it \omega_1 4 } }{ 1 - e^{it\omega_1 } } = \\
+  & = \frac{ e^{ -it \omega_1/2} (1 - e^{-it3 \omega_1 } ) }{ e^{it\omega_1/2} - e^{-it \omega_1/2} } + 1 + \frac{ e^{it\omega_1/2 } (1- e^{it\omega_1 3 } ) }{ e^{-it\omega_1/2} - e^{it\omega_1/2 } } = \frac{-e^{-it7\omega_1/2} +e^{ it \omega_1 7/2} }{ e^{it\omega_1/2} - e^{-it\omega_1/2} }  = \sin{ (t\omega_1 7/2 ) } / \sin{ (t\omega_1/2) } 
+\end{aligned}
+\]
+$\Longrightarrow f(t) = 2A \frac{ \sin{ (t \delta \omega/2) }}{2} \frac{ \sin{ \left( \frac{7}{2} t \omega_1 \right) } }{ \sin{ (t \omega_1/2 ) } } e^{-it m\omega_1 }$ \\
+$2A \frac{ \sin{ (t \delta \omega/2) }}{t}$ is the envelope with $T_{long} \simeq 1/\delta \omega$.
+\end{enumerate}
+
+\problemhead{6.24} \textbf{ Resonance in tidal waves. } $\psi(t) = \int_0^{\infty} B(\omega) \cos{ \omega t} d\omega$ \smallskip \\
+$\psi(t) = \frac{ \sin{ \left( \frac{1}{2} \Delta \omega t \right) } }{ \frac{1}{2} \Delta \omega t } \cos{ \omega_0 t }$  \quad \quad \, $\Delta t_{max} \ll 1$ so $\psi(t) \simeq \cos{ \omega_0 t} $ \\
+$B(\omega) = \left( \frac{1}{ \Delta \omega } \right)$ when $\omega_1 \leq \omega \leq \omega_2 = \omega_1 + \Delta \omega$, zero otherwise (as given).  \medskip \\
+$\int B(\omega) = \frac{1}{ \Delta \omega} ( \omega_1 + \Delta \omega - \omega_1 ) =1 $
+
+\problemhead{6.26} \textbf{Nondispersive waves}
+\[
+\begin{aligned}
+  \partial_z f(t') & = \frac{ \partial t'}{ \partial z} f' = \frac{-1}{v} f' ; \quad \partial_{zz} f = \frac{1}{v^2} f'' ; \quad \partial_{tt} f = f'' \Longrightarrow v^2 \partial_{zz} f = \partial_{tt} f \\
+  \partial_z g(t'') & = \frac{ \partial t''}{ \partial z} f' = \frac{1}{v} f' ; \quad \partial_{zz} g = f'' ; \quad \partial{tt} g = g'' \Longrightarrow v^2 \partial_{zz} g = \partial_{tt} g 
+\end{aligned}
+\]
+
+\problemhead{6.27} \textbf{ Amplitude modulation and nonlinearity.}
+\begin{enumerate}
+\item 
+\[
+\begin{aligned}
+  V & = IR = I_0 \cos{(\omega_0 t )} R_0 (1 + a_m \cos{ (\omega_{mod} t ) } ) = I_0 R_0 ( \cos{ (\omega_0 t) } + a_m \cos{ (\omega_0 t) } \cos{ (\omega_{mod} t) } ) = \\
+  & = I_0 R_0 ( \cos{ (\omega_0 t)} + a_m/2 ( \cos{ ((\omega_0 + \omega_{mod} )t) } + \cos{ ((\omega_0 - \omega_{mod})t)  })   )
+\end{aligned}
+\]
+\item $V_0 = A_0 \cos{ \omega_0 t}$ \quad \, $V_m = A_m \cos{ \omega_{mod} t}$.  \\
+Let $\begin{aligned} \omega_0 & = \frac{ \omega_1 + \omega_2}{2} \\ \omega_{mod} & = \frac{ \omega_1 - \omega_2}{2} \end{aligned}$. \quad \,  $\begin{aligned} & \omega_1 = \omega_0 + \omega_{mod} \text{ is the ``upper'' sideband. } \\ & \omega_2 = \omega_0 - \omega_{mod} \text{ is the ``lower'' sideband. } \end{aligned}$.  \\
+Superimpose them (add them up).  
+\[
+\begin{aligned}
+  V_0 + V_m & = A_0 \cos{ \omega_0 t} + A_m \cos{ \omega_{mod} t } = A_0 \cos{ \left( \frac{ \omega_1 + \omega_2 }{2} \right) t } + A_m \cos{ \left( \frac{ \omega_1 - \omega_2}{2} t \right) } = \\ 
+  & = (A_0 + A_m) \cos{ \left( \frac{ \omega_1 t }{2} \right) } \cos{ \left( \frac{ \omega_2 t}{2} \right) } + (A_0 - A_m) \sin{ \left( \frac{ \omega_1 t}{2} \right) } \sin{\left( \frac{ \omega_2 t}{2} \right) }
+\end{aligned}
+\]
+we wanted to get something of the form $(a_0 e^{-i\omega_{mod} t})e^{-i\omega_0 t} = \mathcal{A}_m(t) e^{-i\omega_0 t}$.  But we can't with this scheme.  
+\item Linear amplifier means we multiply a constant.  It still doesn't work since it won't affect the phase relationship between $V_0$ and $V_m$ (by superposition principle), i.e. we can increase the amplitude factor, but it'll only affect the total amplitude factor, but not how the voltages ``mix'' together.  
+\item $V_{out} = A_1 V_{in} + A_2 (V_{in})^2$ \quad \quad \, $V_{in} = V_0 + V_m$ \\
+$\begin{aligned}  (V_0 + V_m)^2 & = V_0^2 + 2V_0 V_m + V_m^2 = A_0^2 C^2(\omega_0 t) + 2 A_0 A_m C(\omega_0 t) C(\omega_{mod} t) + A_m^2 C^2(\omega_{mod} t) = \\
+  & = \frac{A_0^2}{2} ( 1 + C(2 \omega_0 t) ) + (2 A_0 A_m C(\omega_{mod} t) )C(\omega_0 t ) + \frac{A_m^2}{2 } ( 1 + C(2 \omega_{mod} t ) )
+\end{aligned}$ \\
+$\begin{aligned}
+  \Longrightarrow V_{out} & = A_1 ( A_0 C(\omega_0 t) + A_m C(\omega_{mod} t ) ) + \\
+  & \quad + A_2 \left( \frac{A_0^2 + A_m^2 }{2 } + \frac{A_0^2}{2} C(2 \omega_0 t) + \frac{A_m^2}{2} C(2\omega_{mod} t) + 2A_0 A_m C(\omega_{mod} t )C(\omega_0 t) \right) \end{aligned}$
+\item The other frequencies are $\omega_{mod}$, $2\omega_0$, $2\omega_{mod}$.  We need a bandpass filter that will filter frequencies greater than $\omega_1$ and less than $\omega_2$.  
+
+Recall how to make a bandpass filter.  (From Crawford, pp. 127) Now, the gravitational return force on each pendulum depends on the displacement of that pendulum but not on its coupling to the other pendulum.  Similarly, we want to provide an emf to drive each inductance independently of its coupling to the other.  We do this by breaking the inductance into 2 halves and inserting a capacitor $C_0$ in series in the middle of the inductance.  Finally, we neglect the fact that each inductance has resistance $R$ (from the coil of wire that makes up the inductance).  All other resistance is neglected. \medskip \\
+$\dot{Q}_j = I_j$, where $Q_j$ is the charge displaced through the $j$th set of 2 inductors.  Let $q_{ja}$ be the charge on the $j$th capacitor. \smallskip \\
+$I_j = \dot{q}_{(j+1)a} + I_{j+1}$ (by charge conservation), so $\Longrightarrow q_{(j+1)a} = Q_j - Q_{j+1}$ 
+
+Taking the voltage loop around 
+\[
+-\frac{q_{ja}}{C} + \frac{L}{2} \dot{I}_j + \frac{Q_j}{C_0} + \frac{L}{2} \dot{I}_j + \frac{q_{(j+1)a}}{C} = 0 
+\]   
+\[
+\begin{gathered}
+  \frac{1}{C} (-Q_{j-1} + Q_j + Q_j - Q_{j+1} ) + L \ddot{Q}_j + \frac{Q_j}{C_0} \Longrightarrow (1/C)(2Q_j - Q_{j-1} - Q_{j+1} ) + \frac{Q_j}{C_0} = -L \ddot{Q}_j \\
+  \Longrightarrow \omega^2 = \frac{1}{LC_0} + \frac{4}{LC} \sin^2{ \left( \frac{ka}{2} \right)}
+\end{gathered}
+\]
+Where $\omega_r^2 = \frac{1}{LC_0}$ is the the return force due to capacitor $C_0$, $Q_j = q_{0j} e^{ i kaj - i\omega t}$.  
+\end{enumerate}
+
+So we have to set the $\omega_r$ (by changing the parameters for $L$,$C$) to be $\omega_2$ and $\sqrt{ \omega_r^2 + \frac{4}{LC}}$ to be $\omega_1$.  
+
+\problemhead{6.28} \textbf{Amplitude demodulation and nonlinearity.}  Again, notation $\cos{(\omega t)} = c(\omega t)$ and $\omega_{mod} = \omega_m$.    
+\[
+V = V_0 c(\omega_0 t)(1 + a_mc(\omega_{mod} t) ) = V_0 c(\omega_0 t) + v_0 a_m c(\omega_0t) c(\omega_m t) = V_0 \left( c(\omega_0 t) + \frac{a_m}{2} ( c(\omega_1 t) = c(\omega_2 t) ) \right)
+\]
+\[
+\begin{aligned}
+  V^2 & = V_0^2 \left( c^2(\omega_ t) + 2 a_m c^2(\omega_0 t) c(\omega_m t) + a_m^2 c^2(\omega_0 t) c^2(\omega_m t) \right) = \\
+  & = V_0^2 \left( \frac{ c(2\omega_0 t) - 1 }{2} + 2 a_m \left( \frac{ c(2\omega_0 t) - 1 }{2} \right) c(\omega_m t) + a_m^2 \left( \frac{ c(2\omega_0 t )-1}{2} \right)\left( \frac{ c(2 \omega_m t) -1 }{2} \right) \right) = \\
+  & = \frac{V_0^2}{2} \left( c(2 \omega_0 t) - 1 + 2 a_m c(2 \omega_0 t) c(\omega_m t) - 2 a_m c(\omega_m t) + \frac{a_m^2 }{2} (c(2\omega_0 t) c(2 \omega_m t) - c(2 \omega_0 t) - c(2 \omega_m t) + 1 ) \right)
+\end{aligned}
+\]
+\[
+\begin{gathered}
+  V^2 = \frac{V_0^2}{2} \left( \left( 1 - \frac{a_m^2}{2} \right) c(2 \omega_0 t)  - 1 + \frac{a_m^2}{2} + a_m c(2 \omega_0 + \omega_m )t + a_m c( 2 \omega_0 - \omega_m )t - \right. \\
+  \left. - 2 a_m c(\omega_m t) - \frac{a_m^2}{2} c(2 \omega_m t) + \frac{a_m^2}{2} c(2 \omega_1 t) + \frac{a_m^2}{2} c(2\omega_2 t) \right)
+\end{gathered}
+\]
+So for $A_1 V_{in} + A_2 V_{in}^2$, we have a superposition of harmonic terms (i.e. oscillating at only one frequency) of frequencies $\omega_0, \omega_1, \omega_2, 2 \omega_0, 2 \omega_0 + \omega_{mod}, 2 \omega_0 - \omega_{mod}, \omega_{mod}, 2 \omega_{mod}, 2 \omega_1, 2 \omega_2$.  $\omega_{mod}$ is the smallest of the frequencies, so we simply need to apply a high pass filter (recall, to filter out the high frequencies, in the dispersion relation, $\omega^2 =\left( \frac{1}{LC_0} \right)^2 + \frac{4}{LC} (\sin{ \left( \frac{ka}{2} \right) } )$, make $C_0 \to \infty$ by shorting the capacitor $C_0$, and make $\sqrt{ \frac{4}{LC}}$ smaller than the second smallest frequency, $2 \omega_{mod}$.  
+
+\problemhead{6.29} \textbf{Frequency modulation (FM).} $V = V_0 \cos{ (\omega_0 (1 + a_m \cos{ \omega_{mod} t } ) t) } = V_0 \cos{\omega t}$ where $ \omega  = \omega_0 + \omega_0 a_m \cos{ \omega_{mod} t}$.  $c_m$ small, $c_m \ll q$.  
+\[
+\begin{gathered}
+C = C(t) = C_0 (1 + c_m \cos{ (\omega_{mod} t )} )
+\end{gathered}
+\]
+\[
+\begin{aligned}
+  \omega & = \frac{1}{ \sqrt{ LC} } = \\ 
+  & = L^{-1/2}C_0^{-1/2} ( 1 + c_m \cos{(\omega_{mod} t) } )^{-1/2} \simeq \\
+  & \simeq L^{-1/2}C_0^{-1/2} (1 + \frac{-c_m}{2} \cos{(\omega_{mod} t) } ) = \omega_0 ( 1 + a_m \cos{(\omega_{mod} t) } )
+\end{aligned}
+\]
+\[
+\Longrightarrow V = V_0 \cos{(\omega t)}  = V_0 \cos{ (\omega_0 ( 1 + a_m \cos{ (\omega_{mod} t) } ) ) }
+\]
+where $\boxed{ a_m = \frac{-c_m}{2}}$
+
+Note that 
+\[
+L \frac{dI}{dt} + \frac{Q}{C} = 0 \text{ or } \frac{Q}{C} = -L \frac{dI}{dt} = -L \frac{d}{dt} \frac{dQ}{dt} = -L \frac{d^2}{dt^2} (CV) = V
+\]
+where $C= C(t)$.  
+
+$V$ still satisfies this differential equation since we neglect terms of the order of $c_m^2$.  
+
+\problemhead{6.30} \textbf{Phase modulation (PM).} $V = V_0 \cos{ (\omega_0 t + a_m \sin{ \omega_{mod} t } ) } = V_0 \cos{ ( \omega_0 t + \varphi )}$ where $\varphi = a_m \sin{ \omega_{mod} t }$.  
+\[
+\omega = \omega_0 + \frac{d\varphi}{dt} = \omega_0 + a_m \omega_{mod} \cos{ \omega_{mod} t} 
+\]
+\begin{enumerate}
+\item
+\[
+\begin{aligned}
+  \Longrightarrow V & = V_0 e^{ i (\omega_0 t+ \varphi) } = V_0 e^{ i \omega_0 t} e^{i \varphi} = V_0 e^{i \omega_0 t} e^{ i a_m \sin{ (\omega_m t) } } = V_0 e^{i \omega_0 t} \sum_{j=0}^{\infty} \frac{ (a_m \sin{(\omega_m t) } )^j}{ j!} = \\
+  & = V_0 e^{i \omega_0 t} \sum_{j=0}^{\infty} \frac{a_m^j}{j! (2i)^j } (e^{i \omega_m t} - e^{- i \omega_m t} )^j = V_0 e^{ i\omega_0 t} \sum_{j=0}^{\infty} \frac{ a_m^j }{j! (2i)^j } \sum_{k=0}^j \binom{j}{k} (e^{ i \omega_m t} )^k (e^{ -i \omega_m t})^{j-k} (-1)^{j-k} = \\
+  & = V_0 \sum_{j=0}^{\infty} \frac{ a_m^j }{ j! (2i)^j }(-1)^j \sum_{k=0}^j (-1)^{-k} \binom{j}{k} e^{ i ( \omega_m (2k-j) + \omega_0 ) t }
+\end{aligned}
+\]
+So the first few terms of $V$ are 
+\[
+\begin{gathered}
+  V_0 \left( \cos{ (\omega_0 t) } + \frac{-a_m}{2} ( \sin{ (\omega_0 - \omega_m )t }- \sin{ (\omega_0 + \omega_m ) t} ) + \frac{a_m^2}{-4} ( \cos{ (\omega_0 - 2 \omega_m ) t } + - 2\cos{(\omega_0 t)} + \cos{ (\omega_0 + 2 \omega_m ) t} ) + \right. \\ 
+  + \left.  \frac{a_m^3}{48}  ( \sin{ ( \omega_0 - 3 \omega_m )t } - 3 \sin{ (\omega_0 - \omega_m) t } + 3 \sin{ ( \omega_0 + \omega_m) t } + \sin{ (\omega_0 + 3 \omega_m ) t } ) \right)
+\end{gathered}
+\]
+\item 
+If $a_m \ll 1$, then neglect terms of order $a_m^2$.  
+\[
+\Longrightarrow V = V_0 \left( \cos{(\omega_0 t) } + \frac{-a_m}{2} \sin{ (\omega_0 - \omega_m)t } + \frac{a_m}{2} \sin{ (\omega_0 + \omega_m ) t}  \right)
+\]
+\item For PM (phase modulation), the harmonic terms are $ \cos{ (\omega_0 t)}$ and $\sin{ (\omega_0 \pm \omega_m ) t} = \cos{ ( (\omega_0 \pm \omega_m )t - \frac{\pi}{2} ) }$.  So the phase difference for PM is 
+\[
+(\omega_0 \pm \omega_m )t - \frac{\pi}{2} - \omega_0 t = \pm \omega_m t - \frac{pi}{2}
+\]
+
+For AM, $V = V_0 ( \cos{(\omega_0 t) } + \frac{a_m}{2} ( \cos{(\omega_0 + \omega_{mod} ) t} + \cos{ (\omega_0 - \omega_{mod} ) t } ) )$. So the phase difference is $(\omega_0 \pm \omega_m)t - \omega_0 = \pm \omega_m t$
+\item Phase shift by $\pi/2$.  
+\end{enumerate} 
+
+\problemhead{6.31} \textbf{ Single sideband transmission}.  
+
+\section{ Waves in Two and Three Dimensions }
+
+\problemhead{7.1} 3-dim. traveling harmonic waves form a ``complete set'' of functions for describing 3-dim. waves.
+\[
+\begin{gathered}
+  \psi = A \sin{ (k_y y) } \cos{ (k_z z  - \omega t) } \\
+  k_1 = (k_y,k_z); \quad \, k_2 = (-k_y, k_z) \\
+  AS(k_1 \cdot - \omega t) - A S (k_2 \cdot r - \omega t)  = - AS(k_y y + k_z z - \omega t) - AS(-k_y y + k_z z - \omega t) = \\
+  \begin{aligned}
+  & = A (S(k_y y) C(k_z z - \omega t) + C(k_y y) S(k_z z - \omega t) - (- S(k_y y) C(k_z z - \omega t) + C(k_y y) S(k_z z - \omega t) ) ) = \\
+    & = A(2 S(k_y y) C(k_z z - \omega t) )
+  \end{aligned}
+\end{gathered}
+\]
+
+\problemhead{7.31} Assume $\psi_y$ has the form $\psi_y = A C(\omega t - kx)f(y)$.  
+\[
+\begin{gathered}
+  \partial_y \psi_y = f' AC(\omega t - kx) = -\partial_x \psi_x(x,y,t) \Longrightarrow \psi_x = \frac{ g(y)}{k} (+A) S(\omega t - kx) \\
+  \partial_x \psi_y = kA S(\omega t - kx) f(y) = \frac{ g' A}{k} S(\omega t - kx) \\
+  k^2 f = g' = f'' \quad \, f = Ae^{ky} + Be^{-ky}; \quad \, g = Ae^{ky} - Be^{-ky} \\
+  \psi_y(y=-H) = 0 = A_0 C(\omega t - kx) (Ae^{-kH} + Be^{kH}) =  0 \, \quad B = -A e^{-2kH} 
+\end{gathered}
+\]
+We are then able to obtain the following two equations, equations 75 and 76:
+\[
+\begin{aligned}
+  \psi_y & = A_0 C(\omega t - kx)(e^{ky} - e^{-2kH} e^{-ky} ) \\
+  \psi_x & = A_0 S(\omega t - kx)(e^{ky} + e^{-2kH} e^{-ky} )
+\end{aligned}
+\]
+From 75, 76, it can be easily shown that for deep-water traveling waves a given water droplet travels in a circle in the $xy$ plane.  
+
+\problemhead{7.34} \textbf{Plane electromagnetic waves}
+
+Assuming plane electromagnetic waves, waves that obey Maxwell's equations, are in vacumm space, and have components that depend only upon $z$-axis, propagation axis (thus, ``plane'' waves), then we obtain the following:
+\[
+\begin{aligned}
+  \frac{1}{c} \partial_t E_x & = - \partial_z B_y \\
+  \frac{1}{c} \partial_t B_y & = -\partial_z E_x
+\end{aligned}
+\]
+
+Assume $E_x = AC(\omega t- kz)$.  
+\[
+\begin{aligned}
+  \frac{-1}{c} \partial_t E_x & = \frac{\omega}{c} A S(\omega t - kz) = \partial_z E_x = \partial
+\end{aligned}
+\]
+
+\quad \\ 
+
+
+
+\section{Polarization}
+
+\subsection*{Problems and Home Experiments}
+
+\problemhead{8.1} Given $A_1 \neq A_2$, $\varphi_1, \, \varphi_2$ arbitrary, and $\psi(t) = \hat{x} A_1 \cos{ (\omega t+ \varphi_1) } + \hat{y} A_2 \cos{( \omega t + \varphi_2) }$
+\[
+\begin{aligned}
+  x & = A_1 \cos{(\omega t+ \varphi_1) } & = A_1 ( c(\omega t)c(\varphi_1) - s(\omega t)s(\varphi_1)  ) \\
+  y & = A_2 \cos{(\omega t + \varphi_2) } & = A_2 (c(\omega t)c(\varphi_2) - s(\omega t)s(\varphi_2 ) ) 
+\end{aligned} \Longrightarrow \left[ \begin{matrix} x \\ y \end{matrix} \right] = \left[ \begin{matrix} A_1 c(\varphi_1)  & -A_1 s(\varphi_1) \\ A_2 c(\varphi_2)  & -A_2 s(\varphi_2) \end{matrix} \right] \left[ \begin{matrix} c(\omega t) \\ s(\omega t)  \end{matrix} \right]
+\]
+Using the inverse for 2-dim. matrices, i.e. if $ A = \left[ \begin{matrix} a & b \\ c & d \end{matrix} \right]$, then $A^{-1} = \frac{1}{ad - bc} \left[ \begin{matrix} d & -b \\ -c & a \end{matrix} \right]$  
+\[
+\Longrightarrow \left[ \begin{matrix} -A_2 s\varphi_2 & A_1 s\varphi_1 \\ -A_2 c\varphi_2 & A_1 c\varphi_1 \end{matrix} \right] \left[ \begin{matrix} x \\ y \end{matrix} \right] = \left[ \begin{matrix} -A_2 x s\varphi_2 + A_1 y s\varphi_1 \\ -A_2 x c\varphi_2 + A_1 y c\varphi_1 \end{matrix} \right] \left( \frac{1}{ A_1 A_2 \sin{(\varphi_1 - \varphi_2) }} \right) = \left[ \begin{matrix} c(\omega t) \\ s(\omega t) \end{matrix} \right]
+\]
+
+\[
+\Longrightarrow A_2 x^2 + A_1^2 y^2 - 2A_1 A_2 xy c( \varphi_1 - \varphi_2) = A_1^2 A_2^2 \sin^2{(\varphi_1 - \varphi_2 )}
+\]
+
+\problemhead{8.2} \begin{itemize}
+\item[(a)] Recall that retardation plate cannot convert ``unpolarized'' light into polarized light.  Qualitatively, for unpolarized light, there's a ``random'' phase relation between $x,y$ components when averaged over the observation time interval.  The relative phase shift introduced by retardation plate still leaves the relation of $x,y$ phases as random as before.  $R=64$.  
+\item[(b)] linear polarizer gives no variation in intensity for any angle about line of sight for unpolarized light.  
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\problemhead{8.3} For circularly polarized light of intensity $I_0$ (energy flux per unit area per unit time), $I_0 = \frac{c}{4\pi} \langle E^2 \rangle = \langle S \rangle$, where Poynting vector $S$ gives time averaged energy flux,
+\[
+\Psi(z,t) = A \left( \begin{matrix} 1 \\ i \end{matrix} \right) e^{ i (kz - \omega t)}
+\]  Note $| \Psi |^2 = A^2 +A^2 = 2A^2$
+
+Recall $\langle E^2 \rangle = \frac{1}{2} |E_c|^2$ (only real part is wanted).  
+\[
+I_0 = \left( \frac{c}{4\pi } \right) (A^2)
+\]
+Consider polarization in $\theta$ direction.  
+
+\[
+\left( \begin{matrix} \cos^2{\theta} & \cos{\theta} \sin{\theta} \\ \cos{\theta} \sin{\theta} & \sin^2{\theta} \end{matrix} \right)\left( \begin{matrix} 1 \\ i \end{matrix} \right) = \left( \begin{matrix} c{\theta}(c\theta + i s\theta ) \\ s{\theta}(c\theta + i s\theta) \end{matrix} \right) = e^{i\theta} \left( \begin{matrix} c\theta \\ s{\theta} \end{matrix} \right) \text{ so then } |P_{\theta} \psi |^2 = (1)A^2 \Longrightarrow \boxed{ |P_{\theta} \psi |^2 = \frac{I_0}{2} }
+\]
+
+\problemhead{8.4} $E_0 \to E_0\cos{\theta} \to E_0 \cos^2{\theta}$  $\boxed{ I = I_0 \cos^4{\theta} }$
+
+\problemhead{8.5} $\Psi = A \left( \begin{matrix} 1 \\ i \end{matrix} \right) e^{i(kz - \omega t) }$  $| \Psi |^2 = 2A^2$ and $\langle E^2 \rangle = \frac{1}{2} | \Psi^2 | =A^2$, so $A^2 ~ I_0$.  
+
+Without loss of generality, consider first polaroid $P_{\varphi} = P_0$.  
+\[
+\begin{gathered}
+  P_0 \Psi = \left( \begin{matrix} 1 \\ 0 \end{matrix} \right) \\ 
+  \Longrightarrow P_{\theta} P_0 \Psi = \left( \begin{matrix} c^2{\theta} & c{\theta}s{\theta} \\ c{\theta}s{\theta} & s^2{\theta} \end{matrix} \right) \left( \begin{matrix} 1 \\ 0 \end{matrix} \right) = \left( \begin{matrix} c^2{\theta} \\ c{\theta} s{\theta} \end{matrix} \right) = c{\theta} \left( \begin{matrix} c{\theta} \\ s{\theta} \end{matrix} \right) \\ 
+    P_{\frac{\pi}{2} }P_{\theta}P_0 \Psi = \left( \begin{matrix} 0 \\ \cos{\theta} \end{matrix} \right)
+\end{gathered} \quad \quad \, \Longrightarrow \boxed{ I = \frac{1}{2} I_0 \cos^2{\theta} \sin^2{\theta} }
+\]
+
+\problemhead{8.6} For very large number $N+1$, \\
+consider the first polaroid, and initial linear polarization in the $x$ axis.  Now $\theta = N \alpha$ and so $\alpha = \frac{\theta}{N}$.  Since $N$ very large, then it's justified to say that $\alpha$ very small.  Then note that 
+\[
+\begin{aligned}
+  \cos^2{\alpha} & = \frac{1 +\cos{2 \alpha }}{2} = \frac{ 1 + \left( 1 - \frac{4 \alpha^2}{2} \right) }{2} = \frac{ 2 ( 1-\alpha^2) }{2} = 1 - \alpha^2 \\  
+  \sin^2{\alpha} & = \frac{1 -\cos{2 \alpha }}{2} =  \frac{1 - (1 - \frac{4\alpha^2}{2} ) }{ 2} = \alpha^2
+\end{aligned} \quad \quad \, \cos{\alpha}\sin{\alpha} = (1 - \frac{\alpha^2}{2} ) (\alpha - \frac{ \alpha^3 }{6} ) = \alpha - \frac{\alpha^3}{6} - \frac{\alpha^3 }{2} = \alpha - \frac{2}{3} \alpha^3 
+\]
+Then
+\[
+P_{\alpha} \left( \begin{matrix} 1 \\ 0 \end{matrix} \right) = \left( \begin{matrix} 1 - \alpha^2 & \alpha - \frac{2}{3} \alpha^3 \\ \alpha - \frac{2}{3} \alpha^3 & \alpha^2 \end{matrix} \right) \left( \begin{matrix} 1 \\ 0 \end{matrix} \right) = \left( \begin{matrix} 1 - \alpha^2 \\ \alpha - \frac{2}{3} \alpha^3 \end{matrix} \right)
+\]
+and 
+\[
+(P_{\alpha} e_x)^2 = 1- 2\alpha^2 + \alpha^4 + \alpha^2 - \frac{4}{3} \alpha^4 + \frac{4}{9}^6 = 1 - \alpha^2 - \frac{1}{3} \alpha^4
+\]
+So magnitude of $E$ is multiplied by a factor of $\sqrt{ 1 - \alpha^2 - \frac{1}{3} \alpha^4 }$ each time or 
+\[
+1 + \frac{-1}{2} ( \alpha^2 - \frac{1}{3} \alpha^4 ) + \frac{-1}{4\cdot 2} (\alpha^2 + \frac{1}{3} \alpha^4)^2 \simeq 1 - \frac{\alpha^2}{2} + \frac{1}{6} \alpha^4 - \frac{\alpha^4 }{8} = 1 - \frac{\alpha^2}{2} + \frac{1}{24} \alpha^4
+\]
+\[
+E_f = (1 - \frac{\alpha^2}{2} + \frac{\alpha^4}{24} )^N E_0 \simeq ( 1 + (N)( \frac{-\alpha^2}{2} + \frac{\alpha^4}{24} ) + \frac{N(N-1)}{2} \left( \frac{-\alpha^2}{2} + \frac{\alpha^4}{24} \right)^2 )E_0 \simeq 1 - \frac{ N\alpha^2}{2} = 1 - \frac{ \theta^2}{2N }
+\]
+\[
+\Longrightarrow \boxed{ I_f =  \left( 1 - \frac{\theta^2}{N} + \text{higher order terms} \right)I_0^2 }
+\]
+
+
+
+
+
+\section{Interference and Diffraction}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

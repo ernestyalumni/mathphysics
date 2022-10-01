@@ -246,6 +246,144 @@ pp. 39.  Feller (1968)  \cite{Fell1968}.  Consider cells themselves indistinguis
 
 cf. Feller (1968)  \cite{Fell1968}
 
+\section{Distributions and Densities}
+
+cf. Ch. 5 "Important Distributions and Densities", Grinstead and Snell (1997) \cite{GrSn1997}
+
+\subsection{Discrete Uniform Distribution}
+
+$X:=$ random variable representing outcome of an experiment where all outcomes equally likely, so $X$ \emph{uniformly distributed}. \\
+
+If sample space $S$ is size $n$, where $0 < n < \infty$, then distribution function
+\[
+m(\omega) = \frac{1}{n} \quad \, \forall \, \omega \in S
+\]
+
+Consider $1 + \lfloor x \rfloor \in \lbrace 1 \dots n \rbrace$, \\
+with probability $\frac{1}{n}$ ($\lfloor x \rfloor$ denotes greatest integer not exceeding $x$).
+
+If sample space is uncountable set with positive finite length, such as $[0, 1]$, then use cont. density function.
+
+\subsection{Poisson Random Variable}
+
+Sec. 5.2 "The Poisson Random Variable", Ross (2000) \cite{Ross2000}.
+
+random variable $X$, $X \in \lbrace 0, 1, 2, \dots \rbrace$ is \textbf{Poisson random variable} with parameter $\lambda$, $\lambda > 0$, if its probability mass function is 
+\begin{equation}
+P \lbrace X = i \rbrace = e^{-\lambda} \frac{\lambda^i }{ i!}, \quad \, i = 0, 1, \dots
+\end{equation}
+Since 
+\[
+\sum_{i=0}^{\infty} p(i) = e^{-\lambda} \sum_{i=0}^{\infty} \frac{\lambda^i}{i!} = e^{-\lambda} e^{\lambda} = 1
+\]
+then $P\lbrace X = i \rbrace = e^{-\lambda} \frac{ \lambda^i}{i!}$ defines a probability mass function. \\
+
+\emph{Moment generating function} $\phi(t)$ for \emph{Poisson random variable}
+
+\begin{equation}
+	\begin{gathered}
+		\phi(t) = E[e^{tX}] = \sum_{i=0}^{\infty} e^{ti} e^{-\lambda} \frac{\lambda^i}{i!} = e^{-\lambda} \sum_{i=0}^{\infty} \frac{ (\lambda e^t)^i }{ i!} = e^{-\lambda} e^{\lambda e^t} = \exp{ [ \lambda ( e^t - 1 )]}
+	\end{gathered}
+\end{equation}
+
+Both \emph{mean} and \emph{variance} of Poisson random variable equal to parameter $\lambda$, since
+\[
+\begin{aligned}
+	& \phi'(t) = \phi \cdot (\lambda e^t) = \lambda e^t \exp{ [\lambda ( e^t - 1)]} \\
+	& \phi''(t) = \phi' (\lambda e^t ) + \phi \lambda e^t = (\lambda e^t) (\lambda e^t + 1 ) \phi \\
+	& E[X] = \phi'(0) = \lambda \\
+	& \text{Var}(X) = \phi''(0) - (E[X])^2 = \lambda ( \lambda + 1 ) - \lambda^2 = \lambda
+\end{aligned}
+\]
+
+Poisson random variable when $n$ large, $p$ small, may be used as an approximation for binomial random variable. \\
+Suppose $X$ binomial random variable with parameters $(n, p)$, $\lambda = np$
+
+\[
+\begin{gathered}
+	P \lbrace X = i \rbrace = \frac{ n!}{ (n-i)! i!} p^i (1- p)^{n- i} = \binom{n}{i} \left( \frac{\lambda}{n} \right)^i \left( 1 - \frac{\lambda}{n} \right)^{n-i} = \frac{ n (n-1) \dots (n- i + 1) }{n^i } \frac{\lambda^i }{i!} \frac{ ( 1 - \lambda / n )^n }{ (1 - \lambda / n)^i}
+\end{gathered}
+\]
+For $n$ large, $p$ small, 
+\[
+\begin{gathered}
+	\left( 1 - \frac{ \lambda}{n} \right)^n \approx e^{-\lambda} \quad \quad \, \frac{ n (n- 1 ) \dots (n- i + 1) }{n^i } \approx 1 \quad \quad \, \left( 1 - \frac{\lambda}{n} \right)^i \approx 1
+\end{gathered}
+\]
+
+Hence, for $n$ large, $p$ small
+\begin{equation}
+	P\lbrace X = i \rbrace \approx e^{-\lambda} \frac{\lambda^i}{i!}
+\end{equation}
+
+i.e. if $n$ independent trials, each of which results in "success" with probability $p \ll 1$, then when $n$ large ($n \gg 1$) and $p$ small ($p \ll 1$), \\
+number of successes occurring is approximately Poisson random variable with mean $\lambda = np$. \\
+
+Examples of $n$ large, $p$ small for random variables that obey to good approximation the Poisson probability law:
+
+\begin{enumerate}
+	\item number of misprints on page (or group of pages) of book \\
+	Suppose there's small probability $p$ each letter typed on page will be misprinted,\\
+	so number of misprints on a given page will be approximately Poisson with mean $\lambda = np$ where $n$ is (presumably) the large number of letters on the page
+	\item number of people in community living to 100 years of age \\
+	Suppose each person in a given community, independently, has a small probability $p$ of reaching age 100, and so number of people that do will have approximately a Poisson distribution with mean $np$ where $n$ is large number of people in the community.
+	\item number of wrong telephone numbers that are dialed in a day
+	\item number of transistors that fail on first day of use
+	\item number of customers entering post office on given day
+	\item number of $\alpha$-particles discharged in fixed period of time from some radioactive particle
+\end{enumerate}
+
+Example 5.2a (Ross (2000) \cite{Ross2000}), Suppose average number of accidents occurring weekly on highway equals 3. Calculate probability that there's at least 1 accident this week.
+
+\solutionhead{Example 5.2a, Ross (2000) \cite{Ross2000}} Let $X$ denote number of accidents occurring on highway during this week. It's reasonable to suppose there's a large number of cars passing along stretch, each having small probability of being involved in an accident.
+
+\[
+\begin{gathered}
+	P\lbrace X \geq 1 \rbrace = 1 - P \lbrace X < 1 \rbrace = 1 - P \lbrace X = 0 \rbrace = 1 - e^{-3} \frac{3^0}{0!} = 1 - e^{-3} = 0.9502
+\end{gathered}
+\]
+
+Example 5.2b. of Ross (2000) \cite{Ross2000}. Suppose $p = $ prob. item produced by certain machine is defective $= 0.1$. \\
+Find prob. sample of $N=10$ items will contain at most 1 defective item.
+
+\solutionhead{Example 5.2b, Ross (2000) \cite{Ross2000}}
+\[
+\begin{aligned}
+& P(X \leq 1) = \sum_{j=0}^1 \binom{N}{j} p^j (1-  p)^{N-j} = 0.7361 \text{ for } N = 10, \, p = 0.1 \\
+& P(X \leq 1) \approx \sum_{j=0}^1 e^{-\lambda} \frac{\lambda^j}{j!} = e^{-1} \left( \frac{1^0 }{ 0!} + \frac{1^1}{1!} \right) = 2 e^{-1}
+\end{aligned}
+\]
+
+Example 5.2c of Ross (2000) \cite{Ross2000}. Consider experiment counting number of $\alpha$-particles given off in 1-sec. interval. \\
+If on average 3.2 $\alpha$-particles given off, \\
+What's good approximation to prob. that no more than 2 $\alpha$-particles will appear?
+
+\solutionhead{Example 5.2c, Ross (2000) \cite{Ross2000}}
+
+$\lambda = Np = 3.2$
+\[
+P(X\leq 2) = \sum_{j=0}^2 e^{-\lambda} \frac{\lambda^j}{j!} = e^{-\lambda} \left( 1 + \sum_{j=1}^2 \frac{ \lambda^j}{j!} \right)
+\]
+
+Example 5.2d of Ross (2000) \cite{Ross2000}. If average number of claims handled daily by insurance company is 5, \\
+what proportion of days have less than 3 claims? \\
+What's prob. there'll be 4 claims in exactly 3 of the next 5 days? \\
+Assume number of claims on different days is independent.
+
+\solutionhead{Example 5.2d, Ross (2000) \cite{Ross2000}}
+
+Suppose $N = $ number of possible claims/clients large, so small prob. of making claim,
+\[
+\lambda = 5
+\]
+\[
+P(X< 3) = \sum_{j=0}^2 e^{-\lambda} \frac{ \lambda^j}{j!} = e^{-\lambda} \sum_{j=0}^2 \frac{\lambda^j}{j!}
+\]
+
+By law of large numbers (different days independent) $P(X < 3) = 0.125$ days have fewer than 3 claims.  \\
+
+$P(X=4) =$ prob. there'll be 4 claims on a day $= e^{-\lambda} \frac{\lambda^4}{4!}$ \\
+$P(Y=3) = $ prob. of 4 claims in exactly 3 of next 5 days $= \binom{5}{3} (P(X=4))^3 (1 - P(X=4))^2 = \binom{5}{3} (e^{-\lambda} \frac{\lambda^4 }{ 4!} )^3 (1 - e^{-\lambda} \frac{\lambda^4}{ 4!} )^2$
 
 
 
@@ -12632,7 +12770,11 @@ Schuller references 2nd. year Mechanik in German: \url{https://www.video.uni-erl
 \bibitem{Fell1968}
 William Feller.  \textbf{An Introduction to Probability Theory and Its Applications}, Vol. 1, 3rd Edition.  1968.  ISBN-13: 978-0471257080
 
+\bibitem{GrSn1997}
+Charles M. Grinstead. J. Laurie Snell. \textbf{Introduction to Probability}. Second Revised Edition. American Mathematical Society. 1997.
 
+\bibitem{Ross2000}
+Sheldon M. Ross. \textbf{Introduction to Probability and Statistics for Engineers and Scientists}. Second Edition. Academic Press. 2000.
 
 \bibitem{JLee2009}
 Jeffrey M. Lee. \textbf{Manifolds and Differential Geometry}, \emph{Graduate Studies in Mathematics} Volume: 107, American Mathematical Society, 2009. ISBN-13: 978-0-8218-4815-9
