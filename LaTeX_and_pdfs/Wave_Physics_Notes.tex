@@ -1,0 +1,1039 @@
+%
+%	Wave_Physics_Notes.tex
+%
+%	-----		Preamble		-----
+%
+\documentclass[twoside, 10pt]{amsart}
+\usepackage{graphics}
+\usepackage{times}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{latexsym}
+\usepackage{epsfig}
+\pagestyle{plain}
+%
+%   	%% Proclamations for Theorem environment %%
+%
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}{Notation}
+\newtheorem{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}   %   The first argument is the name of the environment that will invoke the theorem; the second argument, Theorem, is the name that will be used when the proclamation is typeset
+%
+%	%% End of Theorem proclamations %%
+%
+%\renewcommand{\baselinestretch}{1.25}
+%\oddsidemargin0cm
+\topmargin-2cm     %I recommend adding these three lines to increase the 
+%\textwidth16.5cm   %amount of usable space on the page (and save trees)
+\textheight25.0cm
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2.75ex plus 0.5ex minus 0.5ex}
+%\setlength{\textwidth}{16.5cm}
+%\setlength{\oddsidemargin}{0cm}
+%\setlength{\evensidemargin}{0cm}
+%\topmargin-2cm
+%
+%	document begin
+%
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+  {\bigskip\bigskip
+   \noindent{\small\bf Question #1.}
+   \bigskip}
+
+\newcommand{\problemhead}[1]
+  {\bigskip\bigskip
+   \noindent{\small\bf Problem #1.}
+   \bigskip}
+
+\newcommand{\exercisehead}[1]
+  {\medskip
+   \noindent{\small\bf Exercise #1.}
+   \medskip}
+
+\newcommand{\solutionhead}[1]
+  {\medskip\bigskip
+   \noindent{\small\bf Solution #1.}
+   \bigskip}
+
+\begin{document}
+	\title{	Notes on Classical Wave Physics }		
+		\author{ Ernest Yeung.	}%\thanks{}
+		\maketitle
+
+
+\section{ Notes on \emph{waves - berkeley physics course - volume 3 } by Frank S. Crawford, Jr.  McGraw-Hill, Inc. }
+
+\subsection{ Free Oscillations of Simple Systems }
+
+Mass $M$ slides on a frictionless surface.  \\
+Mass $M$ is connected to the two springs on its two sides.  \\
+\quad The identical, zero mass springs have constant $K$, relaxed length $a_0$.  \\
+Spring is stretched to equilibrium by $a$.  \\
+\quad So the tension in the spring is $K(a-a_0)$ at equilibrium of the total system.  \\
+Let $z$ be the distance for $M$ from the left-hand wall.  
+
+The left-hand spring exerts a force $K(z-a_0)$ in the $-z$ direction.  \\
+The right-hand spring exerts a force $K(2a-z-a_0)$ in the $+z$ direction.  \\
+The total force $F_z$ in the $+z$ direction is the superposition (sum) of these two forces:
+\[
+\begin{aligned}
+  F_z & = -K(z-a_0) + K(2a-z-a_0) \\
+  & = -2K(z-a)
+\end{aligned}
+\]
+
+\subsubsection*{ Slinky approximation }
+
+With $a_0 = \text{ relaxed length of spring }$ \\
+\phantom{With} $a = \text{ length spring is stretched to equilibrium } $ \\
+\phantom{With} $l = \text{ length the spring is stretched to by some displacement } $ \\ 
+For a slinky, the relaxsed length $a_0$ is very small $a_0 \ll a; \quad \frac{a_0}{a} \ll 1$ \\
+\quad $a < l$ always, so $\frac{a_0}{l} \ll 1$.  
+
+If in the system of coupled pendulums, we allow the length of the pendulum strings to become infinite, then the strings are always vertical and never give any return force.  (The strings are then equivalent to supporting the bobs on a ``frictionless table.'')  Then the lowest mode frequency is zero (corresponding to translational motion).  we we drive the system at one end, we have a low-pass filter which passes frequencies from zero to the high-frequency cutoff.  
+
+\subsection{ Traveling Waves } 
+\subsubsection*{ Longitudinal waves on a beaded spring } The dispersion law can be obtained from that for the transverse waves by simply replacing the tension $T_0$ by the spring constant $K$ times the bead spacing $a$.  In the continuous limit, we obtain (substituting $Ka$ for $T_0$ in $v_{\phi} = \sqrt{ \frac{T_0}{\rho_0} }$ 
+\begin{equation}\label{E:Dispersion_Relation_continuous_longitudinal_spring}
+  v_{\phi} = \sqrt{ \frac{Ka}{\rho_0} }  = \sqrt{ \frac{ K_L L}{\rho_0} }
+\end{equation}
+where we wrote $Ka = K_L L$ to remind you that if you add springs in series to make a long spring of total length $L$, the total spring constant $K_L$ is just $a/L$ times the spring constant $K$ of one spring segment of length $a$.  According to Eq. (\ref{E:Dispersion_Relation_continuous_longitudinal_spring}), logitudinal waves on a continuous spring are nondispersive.  \subsubsection*{ Phase velocity of sound - Newton's model }
+If air is confined in a closed container, it exerts an outward pressure on the walls.  \medskip \\
+\phantom{ If ai} Thus, air acts like a compressed spring which would like to extend itself.  
+
+Suppose we have air in a piston.  Thus air is like a compressed spring extending along the cylinder 
+\[
+\begin{gathered}
+  \begin{gathered}
+    F_{on \, piston} = -K(L - L_1) = -F_{on \, air} \\
+    dF = -K dL
+  \end{gathered} \quad \quad \, 
+  \begin{aligned}
+    & pV = p_0 V_0 \\
+    & \frac{dP}{dV} = \frac{- p_0 V_0 }{ V^2 }
+  \end{aligned} \\
+  \begin{aligned}
+    & F = pA \\
+    & dF = A dp = A \left( \frac{dp}{dV} \right)_0 A dL 
+  \end{aligned} \quad \quad \, \Longrightarrow K = A^2 \left( \frac{dp}{dV} \right)_0
+\end{gathered}
+\]
+Using the compressed spring analogy,
+\[
+\begin{gathered}
+  v^2 = \frac{Ka}{\sigma} = \frac{- L_0 A^2 \left( \frac{dp}{dv} \right)_0 }{ \rho_0 A} = \frac{ -v_0 \left( \frac{dp}{dv} \right)_0 }{ \rho_0 } \\
+  \Longrightarrow v_{Newton}^2 = \frac{ -v_0 \left( \frac{-p_0 V_0}{V_0^2 } \right) }{ \rho_0} = \frac{P_0}{\rho_0}
+\end{gathered}
+\]
+For air at STP, we have 
+\[
+\begin{aligned}
+  & p_0 = 1 \, atm = 1.01 \times 10^6 \, dyne/cm^2 \\
+  & \rho_0 = \frac{ 29 \, gm/mole }{ 22.4 \, liter/mole } = 1.29 \times 10^{-3} \, gm/cm^3 
+\end{aligned}
+\]
+Thus Newton finds for the velocity of sound
+\[
+v_{Newton} = \sqrt{ \frac{ 1.01 \times 10^6}{ 1.29 \times 10^{-3}} } = 2.80 \times 10^4 \, cm/sec = 280 \, meter/sec 
+\]
+The \emph{experimental} velocity is, for air at STP
+\[
+\begin{aligned}
+  v & = 332 \, meter/sec \\
+  & = 745 \, miles/hr \\
+  & = 1 mile/4.8 sec
+\end{aligned}
+\]
+\subsubsection*{ Correcting Newton's mistake }
+The trouble came from assuming Boyle's law, which holds only at constant temperature.  The temperature in a sound wave does \emph{not} remain constant.  The air located (at a given instant) in a region of compression has had work done on it.  It is slightly hotter than its equilibrium temperature.  The neighboring regions one half-wavelength away are regions of rarefaction.  They have cooled slightly in expanding.  (Energy is conserved; the excess energy at a compression equals the energy deficit at a rarefaction.)  Because of the increase in temperature in a compression, the pressure in the compression is \emph{larger} than predicted by Boyle's law, and the pressure in a rarefaction is \emph{less} than that predicted.  
+
+Instead of Boyle's law (which holds at constant temperature), we should use \emph{adiabatic gas law}, which gives the relation between $p$ and $V$ when no heat is allowed to flow.  (There is not sufficient time for heat to flow from the compressions to the rarefactions so as to equalize the temperature.  Before that can happen, a half-cycle has elapsed, and a former region of compression has become a region of rarefaction.  Thus the result is the same as if there were ``walls'' preventing the heat from flowing from one region to another.) 
+\[
+\begin{gathered}
+  \begin{aligned}
+    & pV^{\gamma} = p_0 V_0^{\gamma} \\
+    & p = p_0 \frac{V_0^{\gamma}}{ V^{\gamma} }
+  \end{aligned} \quad \quad \, 
+  \begin{aligned}
+    & \frac{dp}{dV} = p_0 V_0^{\gamma} (-\gamma) V^{-\gamma -1} \\
+    & \left( \frac{dp}{dV} \right)_{V_0} = - p_0 \gamma V_0^{-1} 
+  \end{aligned} \\
+  v^2 = \frac{-v_0 (- p_0 \gamma V_0^{-1}) }{ \rho_0 } = \frac{\gamma p_0}{\rho_0}
+\end{gathered}
+\]
+Now
+\[
+\gamma = 1.40 \text{ for air at STP }
+\]
+So
+\[
+v_{sound} = \sqrt{ \frac{ \gamma p_0}{ \rho_0} } = \sqrt{1.40} v_{Newton} = 332 \, meter/sec
+\]
+
+\subsubsection*{ Example: Radiation of longitudinal waves on a spring (Crawford's Example 9, pp. 196) }
+In the equations of motion for longitudinal motion of a beaded spring, the quantity $Ka$ enters in exactly the same way as does the equilibrium tension $T_0$ in the equations of motion for transverse oscillation of the beaded spring.  That's why the phase velocities are obtained one from the other by interchanging $T_0$ and $Ka$.  
+\[
+\begin{aligned}
+  & v_{\phi} = \sqrt{ \frac{T_0}{\rho_0} } \text{ units of $cm/sec$ } \, (103) \\
+  & Z = \frac{T_0}{v_{\phi}} = \sqrt{ T_0 \rho_0} \text{ units of $dyne/(cm/sec)$ } \, (104) \\
+  & P(z,t) = Z \left[ \frac{ \partial \psi(z,t)}{ \partial t } \right]^2 \, (107) \\
+  & P(z,t) = \frac{1}{Z} \left[ -T_0 \frac{ \partial \psi(z,t) }{\partial z } \right]^2 \, (108) 
+\end{aligned}
+\quad \quad \, 
+\begin{aligned}
+  & v_{\phi} = \sqrt{ \frac{Ka}{\rho_0} } \\
+  & Z = \sqrt{ Ka \rho_0 } \\
+  & P(z,t) = Z \left[ \frac{ \partial \psi(z,t) }{ \partial t } \right]^2 \\
+  & P(z,t) = \frac{1}{Z} \left[ -Ka \frac{ \partial \psi(z,t) }{ \partial z} \right]^2 
+\end{aligned}
+\]
+Note that for $+z$ direction traveling waves, 
+\[
+\begin{aligned}
+  & \partial_t \psi = -i\omega \psi \\
+  & \partial_z \psi = i k \psi
+\end{aligned} \quad \quad 
+\begin{aligned}
+  \partial_t \psi & = \frac{-\omega}{k} \partial_z \psi = \\
+  & = -v_{\phi} \partial_z \psi
+\end{aligned}
+\]
+
+$\psi(z,t) = $ displacement from its equilibrium position of that part of the string having equilibrium position $z$; it is positive if the displacement is in the $+z$ direction.  \\
+\phantom{displacement} Thus if $\begin{aligned} 
+  & \partial_z \psi > 0 & \text{ we have a rarefaction } \\
+  &  \partial_z \psi < 0 & \text{ we have a compression } 
+\end{aligned}$.  \\
+The quantity $-Ka \partial \psi(z,t)/\partial z \gtrless 0$ turns out to be the force in the $\pm z$ direction exerted on that part of the spring with equilibrium position to the right of point $z$ by that having equilibrium position to the left of point $z$, after the equilibrium value of that force, $F_0$, has been subtracted out:
+\[
+F_z(L \text{ on } R) = F_0 - Ka \frac{ \partial \psi(z,t) }{\partial z } \quad \quad (111)
+\]
+The force $F_0$ in Eq. (111) is due to the stretching or compression of the springs in their equilibrium configuration.  it makes no contribution to any waves.  That's why it's only the excess above $F_0$, $-Ka \partial \psi/\partial z$, that appears in $P(z,t)$.  
+\subsubsection*{ Index of Refraction and Dispersion }
+\begin{align}
+  & \boxed{ v_{\phi} = \frac{c}{ \sqrt{ \mu \epsilon }} } \\
+    & k = n \frac{ \omega}{ c} 
+\end{align}
+\textbf{ Of course the frequency of the driving force is not affected by the medium, and $c$ means the velocity of light in vacuum.  }
+
+\section{ Notes on \emph{The Physics of Waves} by Howard Georgi.  Prentice Hall.  }
+
+\subsection{ Exponential solutions or ``irreducible'' solutions }
+
+The simplest possible $z(t)$ under time translation if 
+\begin{equation}
+z(t +a) = h(a) z(t)
+\end{equation}
+i.e. we would like a solution that reproduces itself up to an overall constant near which we reset our clocks by $a$  
+\[
+\begin{gathered}
+\frac{d}{da} (z(t+a)) = h'(a) z(t)   \\
+a = 0 \Longrightarrow Hz(t) = z'(t)   \\
+\text{ (for $z'(t)$ we made a quick label switch for $t,a$ ) } \quad \begin{aligned} & x = a+t \\ & dx = da \end{aligned}  \\
+\Longrightarrow z = e^{Ht}
+\end{gathered}
+\]
+
+Note that if we replace time with one-dimensional space, we could describe space translation invariance in one dimension.  
+
+To solve for $K \psi = - M \ddot{\psi}$, then 
+\[
+H^2 = \frac{-K}{M} \text{ so } H = \pm i \omega; \quad \omega^2 = \frac{K}{M}
+\]
+
+\subsection{ Normal Modes }
+
+Consider no damping.  \medskip \\
+The equation of motion is 
+\begin{equation}
+M \ddot{Z} = - K Z ; \quad \ddot{Z} = - M^{-1} KZ 
+\end{equation}
+where $K$ symmetric, $M$ diagonal.  
+
+By time translation invariance,
+\begin{equation}
+  Z(t) \to Z(t+a) = e^{i\omega a} Z(t)  \quad \text{ (time translation invariance) }
+\end{equation}
+
+Suppose $Z(t) = Ae^{i\omega t}$.  
+\[
+\omega^2 A = M^{-1}KA \to det( -\omega^2 I + M^{-1}K) = 0; \quad \omega_{\lambda}^2 (A^{\lambda})^T = (A^{\lambda})^T KM^{-1}  
+\]
+
+Let 
+\[
+C = \left( \begin{matrix} A^{1} & A^{2} & \dots & A^{\lambda} & \dots & A^{n} \end{matrix} \right) \text{ such that } \, C_{ij} = (A_i^{j})
+\]
+
+What about normalization?
+
+Normally, I would consider unitary matrix $C$ (unitary since $C^* C = 1$, from the orthogonality of the eigenvectors as columns of $C$) consisting of normalized $A^{\lambda}$ eigenvectors, but the normalization here isn't clear.
+
+Suppose 
+\begin{equation}
+B^{\lambda} =  (A^{\lambda})^T M
+\end{equation}
+\[
+(B^{\lambda})_{ij} = \sum_{k=1}^n (A^{\lambda})_{ik}^T M_{kj} = \sum_{k=1}^n A_{ki}^{\lambda} \delta_{kj} m_k = A_j^{\lambda_i} m_j 
+\]
+
+\[
+\begin{aligned}
+  & B^{\lambda}M^{-1} K = (A^{\lambda})^T MM^{-1} K =  (A^{\lambda})^T K = \omega_{\lambda}^2 (A^{\lambda})^T M = B^{\lambda} \omega_{\lambda}^2 \\
+  & B^{\lambda} (M^{-1} K - \omega_{\lambda}^2 I ) = 0 
+\end{aligned} 
+\]
+We've shown that $B^{\lambda}$ is the corresponding ``left eigenvector'' for eigenvalue $\lambda$.  
+
+Note that this $B^{\lambda}$ will be used as the transformation operator taking a vector in the original basis and yielding a vector written with coordinates in the eigenvector basis; call it \emph{normalized coordinates}.  
+
+\begin{equation}
+  B^{\lambda} X = \sum_{k=1}^n B_k^{\lambda} X_k = X^{\lambda}
+\end{equation}
+
+Indeed, these normalized coordinates $X^{\lambda}$ work since
+\[
+\frac{d^2X^{\lambda}}{ dt^2 } = B^{\lambda} \frac{d^2 X}{dt^2}  = B^{\lambda} (- M^{-1}K X) = -\omega_{\lambda}^2 B^{\lambda} X = -\omega_{\lambda}^2 X^{\lambda}
+\]
+$X^{\lambda}$ is the normal coordinate that oscillates with angular frequency $\omega_{\lambda}$.
+
+\subsection{ Useful Matrices from Vectors }
+Construct $I$ in eigenvector basis by simply considering 
+\[
+\begin{gathered}
+  B^{\lambda_1} A^{\lambda_2} = (B^{\lambda_1}  A^{\lambda_1} ) \delta_{\lambda_1 \lambda_2 }   \\
+  \frac{ A^{\lambda_2} B^{\lambda_1} }{ (B^{\lambda_1} A^{\lambda_2 } )} = \delta_{\lambda_1 \lambda_2}
+\end{gathered}
+\]
+So then
+\[
+M^{-1} K = M^{-1}K I = M^{-1} K \sum_{\lambda} \frac{ A^{\lambda}B^{\lambda} }{ B^{\lambda} A^{\lambda} } =\sum_{\lambda} \frac{ \omega_{\lambda}^2 A^{\lambda} B^{\lambda} }{ B^{\lambda} A^{\lambda} } 
+\]
+
+\subsection{ Waves }
+
+For an infinite spring system with only local interactions and label symmetry, 
+\begin{equation}
+  K_{ij} = C \delta_{ij} + (-b)( \delta_{j,j+1} + \delta_{i,j-1} )
+\end{equation}
+Now $S$ symmetry matrix such that $S_{ij} = \delta_{i,j-1}$.  
+\[
+A_j' = (SA)_{j1} = \sum_k S_{jk} A_{k1} = \sum_k \delta_{j,k-1} A_k =A_{j+1}  
+\]
+The eigenvectors of $S$ are also the normal modes of the system 
+\[
+\begin{aligned}
+SA & = A' = \beta A  \\
+A_j' & = A_{j+1} = \beta A_j 
+\end{aligned}
+\]
+
+If $A_0 = 1, A_i = \beta \Longrightarrow A_j = \beta^j $  \medskip \\
+$\beta \in \mathbb{R}$, since there's no finite, discrete, label symmetry or wrap around symmetry.  
+
+If $M=mI$, let $(M^{-1}K)_{ij} =E \delta_{ij} + (-B)(\delta_{i,j+1}+\delta_{i,j-1}); E = \frac{C}{m}; B=\frac{b}{m}$
+\[
+\begin{aligned}
+  ((M^{-1}K)A^{\beta})_{j1} & = \sum_k (M^{-1} K)_{jk}A_k^{\beta} = \sum_k (E \delta_{jk} + (-B)(\delta_{j,k+1} + \delta_{j,k-1} )) A_k^{\beta}  \\
+  & = EA_j^{\beta} + (-B)(A_{j-1}^{\beta} +A_{j+1}^{\beta}) = E \beta^j + (-B)(\beta^{j-1} + \beta^{j+1}) = \omega^2 A_j^{\beta} = \omega^2 \beta^j 
+\end{aligned}
+\]
+So then
+\begin{equation}
+  \omega^2 = E + (-B)(\beta+\beta^{-1})
+\end{equation}
+Note that if $\beta = \pm 1$, $\omega^2 = E \mp 2B$.  
+
+\subsubsection{ Finite mass or bead system}
+
+Solve the boundary conditions for 
+\[
+\omega^2 = E + (-B)(\beta+\beta^{-1})
+\]
+At $j=0$, we want the displacement to be zero
+\begin{equation}
+  A_0=1
+\end{equation}
+
+For each possible value of $\omega^2$, we have to worry about only 2 normal modes, the 2 solutions to $\omega^2 = E +(-B)(\beta + \beta^{-1})$.  
+$A=A^{\beta} - A^{\beta-1}$ is another normal mode (for $\omega^2$).  Also $A_0^{\beta} - A_0^{\beta-1} = 1-1=0$, which is what we want.  
+\[
+A_j = A_j^{\beta}-A_{j}^{\beta^{-1}} = \beta^j -\beta^{-j}
+\]
+Now for $j=N+1$
+\[
+\begin{gathered}
+  A_j = \frac{ \beta^{2j} - 1}{ \beta^j} = 0, \text{ so } |\beta | = 1 \Longrightarrow \beta = e^{i\theta}  \\
+  \Longrightarrow A_j = c_j \sin{j \theta}  \\
+ \begin{aligned}
+   j = N+1 &  \\
+   & A_{N+1} = 0 = C_{N+1} \sin{ ((N+1)\theta) } = 0; \Longrightarrow \theta = \frac{ \pi n}{ N+1}  \\
+   & \Longrightarrow A_j^n =\sin{ \left( \frac{  jn\pi}{ N+1 } \right) } \text{ for } n=1,2 \dots N \\ 
+   & \quad \quad \text{ for the finite spring system with hard wall boundaries at $j=0$, $j=N+1$ }
+ \end{aligned}
+\end{gathered}
+\]
+
+Note that $\beta = e^{ika} = e^{ika + i 2\pi n} = e^{-La} e^{ia (K+ \frac{ 2\pi n}{a} ) } $ for $k = K+ iL$.  \bigskip \\
+\quad \textbf{ So let } $ -\pi/9 < \Re k \leq \pi/9$ 
+
+\subsection{ Dispersion relations}
+
+Start with $\omega^2 = E + (-B)(\beta + \beta^{-1})$.  \medskip \\
+Add spatial translation invariance for a discrete system; 
+\[
+\begin{aligned}
+& A_j = A(ja)  \\
+& A_{j+1} = \beta A_j \Longrightarrow A((j+1)a) = \beta A(ja) \Longrightarrow A(x+a) = \beta A(x) 
+\end{aligned}
+\]
+We know the irreducible solution to $A(x+a) = \beta A(x)$ is for $\beta = e^{i ka}$ \medskip \\
+\quad \quad So the dispersion relation infinite oscillating system with spatial translation invariance is 
+\begin{equation}
+  \boxed{ \omega^2 = E + (-B)(2 \cos{ (ka)} ) }
+\end{equation}
+
+\subsubsection{ Forced Oscillations }
+$\omega = \omega_d$ for the case of forced oscillation by $Z_0 e^{-i \omega_d t }$ forcing term, since the steady state solution must oscillate with the driving force.  
+\[
+k = \frac{1}{a} \arccos{ \left( \frac{ E- \omega_d^2 }{ B} \right) } 
+\]
+
+\begin{itemize}
+\item Note, importantly, with some, fixed $\omega_d$, \textbf{ we're exciting only one mode} $k=k_d$. 
+\item $\phi$ is a vector whose components are the oscillating positions of the $j$th block (prepare later to go into the continuum where we parametrize the $j$ component index into space coordinate $x$).  
+\end{itemize}
+
+Consider the fixed end at $j=0$.  
+
+Repeating the previous observation, $A^{\beta} -A^{\beta^{-1}}; A_{j=0}^{\beta} - A_{j=0}^{\beta^{-1}} = 1 - 1 =0 $ so that's what we want.  
+\[
+\begin{gathered}
+  A_j^{\beta} - A_j^{\beta^{-1}} = \beta^j -\beta^{-j}, \, \beta = e^{ika}
+  \Longrightarrow A_j = C \sin{(kja)} \Longrightarrow A(x) = C \sin{ (kx)} \\
+  \phi(x,t) = C \sin{ (kx)}e^{i\omega_d t} \\
+\end{gathered}
+\] 
+
+For the other side that's being driven, $A_N = z_0 e^{i\omega_d t}; Na = L$.  
+\[
+\begin{gathered}
+  \phi(L,t) = z_0 e^{i\omega_d t } = C \sin{ (kL) } e^{i \omega_d t }; C = \frac{z_0}{ \sin{ (kL)} }  \\
+  \Longrightarrow \phi(x,t) = \left( \frac{ z_0}{ \sin{ (kL)} } \right) \sin{ (kx) } e^{i\omega_d t}
+\end{gathered}
+\]
+
+\subsection{Wavelength}
+\begin{definition} The wavenumber is related to the wavelength by  
+\begin{equation}
+\lambda = \frac{ 2\pi }{ k }
+\end{equation}
+\end{definition}
+We can get $k$ or $\lambda$ by considering the smallest length $\lambda$ such that a change of $x$ by $\lambda$ leaves the mode unchanged.  
+
+$k$ is usually determined by the boundary conditions.  
+
+\subsection{ LC circuits }
+\subsubsection{ Free ends for LC circuits }
+\[
+\begin{aligned}
+m & \longleftrightarrow L \\
+k & \longleftrightarrow 1/C \\
+x_j & \longleftrightarrow Q_j 
+\end{aligned}
+\]
+where $Q_j$ is the charge ``displaced'' through the $j$th inductor.  
+
+Because the system is linear and space translation invariant, the modes of the infinite system are proportional to $e^{\pm ikx }$.  
+
+Also label symmetry applies to $Q$.  
+\[
+Q_j(t) = q_0 e^{ikja}e^{i\omega t}
+\]
+Current through the $j$th inductor
+\[
+I_j = \frac{d}{dt} Q_j(t) = i\omega q_0 e^{ikja} e^{i\omega t }
+\]
+$q_j$ is the charge on the $j$th capacitor (notice how we can define different variables for the different charge amounts on the inductors and capacitors which makes it very clear).  
+\[
+q_j = Q_j -Q_{j+1}
+\]
+\[
+\begin{gathered}
+V_j = \frac{ (Q_j - Q_{j+1}) }{ C} = \frac{ q (1-e^{ika} ) e^{ikja} e^{i\omega t} }{ C}  \\
+L\frac{dI_j}{dt} = V_{j-1}-V_j  \\
+\Longrightarrow \omega^2 = -\frac{1}{LC} (1-e^{ika})(e^{-ika} - 1) = \frac{ 4 \sin^2{ \left( \frac{ka}{2} \right) } }{ LC}
+\end{gathered}
+\]
+
+\subsection{Free ends}
+Consider transverse oscillations of a beaded string.  \\
+Consider attaching the strings at the ends to massless rings that are free to slide in the transverse direction on frictionless rods.  
+
+Imagine this to be part of an infinite bead system with space translation invariance.  \\
+The massless rings sliding on frictionless rods have been replaced by imaginery (dashed) beads.  \\
+\quad Physics: the imaginery bead must move up or down with the last bead, so that the coupling string is horizontal and exerts no transverse restoring force on the real bead.  
+
+But we haven't yet chosen where to put the origin.  How do we form a linear combination of the complex exponential modes, $e^{\pm ikx}$, and choose $k$ to be consistent with this boundary condition?  
+\[
+\begin{aligned}
+A_0 & = \\
+A_N & = A_{n+1} 
+\end{aligned}
+\]
+
+We can write the linear combination, whatever it is, in the form
+\[
+\begin{gathered}
+\cos{ (kx - \theta)}  \\
+  A_0 = A_1 \Longrightarrow \cos{ (kx_0 - \theta)} = \cos{ ( kx_1 - \theta )}   
+\end{gathered}
+\]
+Then either 
+\begin{itemize}
+\item $\cos{ (kx - \theta)}$ has an extrema at $\frac{ x_0 + x_1}{2} $ or 
+\item $kx_1 -kx_0$ is a multiple of $2\pi$ 
+\end{itemize}
+
+Choose our coordinates so that the pt. $\frac{ x_0 + x_1}{2} $ is $x=0$.  
+\[
+\begin{gathered}
+\cos{ (kx - \theta)} = 1 \text{ at } x = 0 \Longrightarrow \theta = 0 \\
+\Longrightarrow A_j = \cos{ ( ka(j-\frac{1}{2} ) ) }
+\end{gathered}
+\]
+
+Impose boundary condition on the other end.  \\
+\quad We want to have an extreme midway between bead $N$ and bead $N+1$ at $x=Na$.  
+\[
+\begin{gathered}
+  \cos{ (k(x=Na) } = \cos{ (kNa) } = \pm 1 \Longrightarrow kNa = \pi n \quad k = \frac{ \pi n}{Na}  \\
+    | \Re k | \leq \frac{\pi}{a} \text{ so } n=0,1,\dots N-1 \\
+    \Longrightarrow A_j = \cos{ (ka (j-\frac{1}{2} ) )} \text{ with } k=\frac{ \pi n}{ Na}; n=0,1,\dots N-1  \\
+    \text{ or } \\
+    A^{\lambda}(x) = \cos{ (k (x-\frac{a}{2} ) ) } = \cos{ (\frac{\pi n}{ Na} (x - \frac{a}{2} ) ) }  \\
+    \phi_j = \sum_{n=0}^{N-1} A_j^{\lambda_n} (b_n \cos{ \omega_n t } + c_n \sin{ (\omega_n t )} ) 
+\end{gathered}
+\]
+Now obtain $\omega_n$ from the dispersion relation.
+
+\subsection{ Boundary at Infinity }
+
+\subsubsection{ Infinite systems }  \quad \\
+2 semi-infinite strings connected at $x=0$ to a massless ring.  
+
+The rod can exert a horizontal force on the ring, so the tensions in the 2 strings need not be the same.  
+\[
+\omega^2 = \frac{T_{1,2}}{\rho_{1,2}} k_{1,2}^2 
+\]
+
+Boundary conditions: 1. continuity in displacement of string.  $1+R = \tau$ \quad \, ($ R, \tau \in \mathbb{C}$ in general ) \\
+2. transverse component of forces on massless ring must sum to zero.  
+
+\[
+\begin{aligned}
+  & F_{inc} + F_{ref} = - F_{trans} \\
+  & \begin{aligned}
+    & F_{inc} & = -Z_1 A(-i\omega )e^{i(kx - \omega t) } = T_1 \partial_x \psi_{inc} = -Z_1 \partial_t \psi_{inc} \\
+    & F_{ref} & = -Z_1 R A(-i\omega )e^{i(kx + \omega t) } = T_1 \partial_x \psi_{ref} = Z_1 \partial_t \psi_{ref} \\
+    & F_{trans.} & = Z_2 \tau A(-i\omega )e^{i(kx - \omega t) } = T_2 \partial_x \psi_{trans} = Z_2 \partial_t \psi_{trans} \end{aligned}  \quad \, \Longrightarrow
+\begin{aligned}
+  \tau & = \frac{ 2 Z_1 }{ Z_1 + Z_2 } \\
+  R & = \frac{Z_1 - Z_2}{ Z_1 + Z_2 }
+\end{aligned}
+\end{aligned}
+\]
+This is mathematically the general case.  
+
+For 2 semi-infinite strings with the same tension but different densities,
+\[
+\begin{gathered}
+  \psi(x,t) = \begin{cases} 
+    A e^{i (kx-\omega t)} + RA e^{-i(kx+\omega t) } & ; x \leq 0 \\
+    \tau A e^{i(k'x-\omega t) } & ; x \geq 0 
+  \end{cases} \\
+  \omega^2 = k_{1,2} \frac{T}{\rho_{1,2}}
+\end{gathered}
+\]
+
+Boundary conditions: \\
+ Continuity of the displacement of the string: $\psi(x=0^-,t) = \psi(x=0^+,t) = 1+R = \tau $ \\
+ vertical forces on the massless knot connecting the strings must add up to zero.  
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    F_{inc} & = T \partial_x \psi_{inc} = T ik A e^{i(kx-\omega t) } \\
+    F_{ref} & = T \partial_x \psi_{ref} = -T ik R A e^{-i(kx+\omega t) } \\
+    F_{trans} & = -T \partial_x \psi_{trans} = -T ik' \tau A e^{i(k'x-\omega t) } 
+  \end{aligned} \quad \Longrightarrow k(1-R) = k' \tau  \\
+  \begin{gathered}
+    1 +R = \tau \\
+    k(1-R) = k' \tau 
+  \end{gathered} \quad \, \Longrightarrow 
+  \begin{aligned}
+    & \tau = \frac{2}{ 1 + k'/k} \\
+    & R = \frac{1-k'/k }{1+k'/k}
+  \end{aligned}
+\end{gathered}
+\]
+
+\subsubsection{Traveling Waves are more general than Standing Waves.} \quad \\
+Consider $A\cos{ (kx-\omega t) } + RA \cos{ (kx+\omega t) }$ \\
+Consider at maximum crest pt. on the waveform: $\xrightarrow{\partial_x}$ $S(kx-\omega t) + RS(kx +\omega t) = 0$ \\
+\[
+\begin{gathered}
+  S(kx) C(\omega t) - S(\omega t)C(kx) + R(S(kx)C(\omega t) + S(\omega t) C(kx) ) = 0 \\
+  (1+R)S(kx)C(\omega t) = (1-R)C(kx)S(\omega t) \Longrightarrow \tan{(kx)} = \frac{1-R}{1+R} \tan{\omega t}
+\end{gathered}
+\]
+$\partial_t$ to get the velocity: $k(1+\tan^2{(kx)} )\frac{ \partial x}{ \partial t} = \left( \frac{1-R}{1+R} \right) \omega \frac{1}{ \cos^2{(\omega t) } } $ 
+\[
+\frac{ \partial x}{ \partial t} = \frac{1-R}{1+R} \frac{ \omega }{k} \frac{1}{ \left( 1 + \left( \frac{1-R}{1+R} \right)^2 \tan^2{ \omega t} \right) \cos^2{ \omega t } } = \frac{ (1-R)(1+R) v_{\phi} }{ (1+R)^2 \cos^2{ \omega t}+ (1-R)^2 \sin^2{ \omega t } }
+\]
+
+\subsubsection{ Power required for traveling waves.}  The Power required to produce a traveling wave that's partially reflected.
+
+\[
+\begin{gathered}
+  \begin{aligned}
+    & \psi(x,t) = \Re{(A+ e^{i(kx -\omega t) } + A_- e^{-i (kx+\omega t)} ) } = R_+ \cos{(kx - \omega t + \phi_+ )} + R_- \cos{ (-kx - \omega t+ \phi_-)}  \\
+    &  \partial_t \psi = \omega R_+ \sin{(kx - \omega t + \phi_+)} + \omega R_- \sin{(-k x- \omega t + \phi_- ) } 
+  \end{aligned} \\
+  \begin{aligned}
+    F_+(t) & = \text{ force required to produce $\psi_+$ } = Z \frac{\partial}{\partial t} \psi_+(0,t) = Z \omega R_+ \sin{( -\omega t + \phi_+) } \\
+    F_-(t) & = \text{ force required to produce $\psi_-$ } = -Z \frac{\partial}{\partial t} \psi_-(0,t) = - Z \omega R_+ \sin{( -\omega t + \phi_-) } 
+  \end{aligned} \\
+P(t) = F(t) \left. \frac{ \partial}{ \partial t} \psi(x,t) \right|_{x=0} = Z \omega^2 R_+^2 \sin^2{( -\omega t + \phi_+) } + -Z \omega^2 R_-^2 \sin^2{ (-\omega t + \phi_- ) } \\
+\langle P(t) \rangle = \frac{1}{2} Z \omega^2 ( |A_+|^2 - |A_-|^2 )  
+\end{gathered}
+\]
+By energy conservation, 
+\[
+\begin{aligned}
+  & \text{ avg. pwr. to produce wave in region $1$ } = Z_1 \omega^2 - Z_1 \omega^2 R^2 \\
+  & \text{ avg. pwr. to produce wave in region $2$ } = Z_2 \omega^2 - Z_2 \omega^2 \tau^2 
+\end{aligned} \quad \, \Longrightarrow Z_1 \omega^2 (1-R^2) = Z_2 \omega^2 \tau^2 
+\]
+
+\subsubsection{ Mass on a strong }
+
+From translational invariance and boundary condition at $x= \infty$, 
+\[
+\psi(x,t) = \begin{cases} Ae^{ i (kx - \omega t)} + RA e^{-(kx + \omega t) } & \text{ for } x \leq 0 \\
+  \tau A e^{i(kx - \omega t) } & \text{ for } x \geq 0 
+\end{cases} 
+\]
+Boundary conditions: \\
+\quad Continuity $1+R = \tau$ \\
+\quad $F=ma$: the horizontal component of the tension in the string must equal on both sides: both are equal to $T$, for small displacements.  
+
+If there's a kink in the string, the vertical components don't match:
+\[
+\begin{gathered}
+  T \left( \left. \frac{ \partial}{ \partial x} \psi(x,t)  \right|_{x = 0^+} - \frac{ \partial}{ \partial x } \left. \psi(x,t) \right|_{x=0^-} \right) = m \frac{ \partial^2 }{ \partial t^2 } \psi(0,t) \\
+  ik T(R- 1 + \tau) = - m \omega^2 \tau \\
+  \text{ Let } \epsilon = \frac{ m \omega^2}{kT } \\
+  \begin{gathered}
+    1+R = \tau \\
+    1-R = (1-i \epsilon)\tau 
+  \end{gathered} \quad \, \Longrightarrow 
+  \begin{aligned}
+    \tau & = \frac{2}{ 2 - i \epsilon } \\
+    R & = \frac{ i \epsilon }{ 2 - i \epsilon } x
+  \end{aligned}
+\end{gathered}
+\]
+
+\subsubsection{ Voltage and current reflection coefficients}.  
+
+A driving voltage $V(t)$ from the left end produces a traveling current wave $I(z,t)$ such that at the transmitter $(z=0)$, $V_0 \cos{ (\omega t) } = V(t) = Z_1 I(0,t)$ \\
+$V(z,t) = V_0 \cos{ (\omega t -k_1 z) }$; \quad \, $I = I_0 \cos{ (\omega t - k_1 z) }$ ; \quad \, $V_ 0 =Z_1 I_0$ \medskip \\
+Consider a short-circuited end, zero impedance.  \\
+Short the end of the line with a wire.  Voltage across the end is permanently zero.  \\
+$R_V \equiv \text{ voltage reflection coefficient } = -1$ \smallskip \\
+The current has reflection coefficient $+1$ and have twice the value (at the end of the line) than it would have if the line was perfectly terminated.  
+
+Open circuited end - infinite impedance. 
+
+If the right hand end is connected across an infinite resistance (or left ``open'' with no resistor at all).  \\
+No current can flow across from one conductor to the other.  \\
+The current is permanently zero at an open-circuited end. \\
+\quad \quad \, $\begin{aligned}
+  & R_I = \text{ current reflection coefficient } = -1 
+  & R_V = \text{ voltage reflection coefficient } = + 1 
+\end{aligned}$
+
+$R_V = \frac{Z_2 - Z_1 }{ Z_2 + Z_1 } = +R_{12} $ ; \quad $R_{12} = -R_V$ (so notice how the reflection coefficient for the voltage has an extra minus sign factor).  
+
+\subsection{Transfer Matrices (from Georgi, Sec. 9.3)}
+
+\subsubsection*{$k$ changes}
+
+\[
+k = 
+\begin{cases}
+  k_1 & \text{ if } (2j-2)L \leq x \leq (2j-1)L \text{ for } j = 1, \dots, n \\ 
+  k_2 & \text{ if } (2j-1)L \leq x \leq 2jL \text{ for } j = 1, \dots n 
+\end{cases}
+\]
+
+From the dispersion relation, 
+\[
+\omega^2 = \frac{T}{\rho} k^2 = T \frac{ k_{1,2}^2 }{ \rho_{1,2} } = v_{\phi}^2 k_{1,2}^2, \text{ so } k_{1,2}^2 = \frac{ \rho_{1,2} \omega^2 }{T} 
+\]
+
+Zeroth step.  
+\[
+\psi(x,t) = \begin{cases} A e^{ -i \omega t} (e^{ikx} + R e^{-ikx} ) & x < 0 \\ Ae^{-i\omega t} (T e^{ikx} + R_1 e^{-ikx} ) & L > x > 0 \end{cases} 
+\]
+
+boundary conditions: continuous and sum of the vertical forces at boundary is zero; otherwise it will break.  
+
+First step:
+\[
+\psi(x,t) = \begin{cases} A e^{-i\omega t} (e^{i k_1 x} + Re^{ik_1 x} ) & 0 < x < L \\ Ae^{-i\omega t} (T e^{ik_2 x} + R_1 e^{-ik_2 x} ) & L < x < 2L \end{cases}
+\]
+
+Boundary conditions: \\
+continuous: $e^{i(k_1 L)} + R e^{-ik_1 L } = Te^{ik_2 L} + R_1 e^{-ik_2 L } $ \\ 
+no net force: $ -T \partial_x \psi^- + T \partial_x \psi^+ = 0 $ or $ \partial_x \psi^+ = \partial_x \psi^-$
+\[
+\Longrightarrow i k_1 e^{i k_1 L} + R ( -ik_1 e^{-ik_1 L }) = T ik_2 e^{ik_2 L } + R_1 (-ik_2 )e^{-ik_2 L } 
+\]
+
+So then
+\[
+\begin{gathered}
+e^{ik_1 L} + R e^{-ik_1 L } = \tau e^{ik_2 L } + R_2 e^{-ik_2 L } \\ 
+k_1 e^{ik_1 L } - Rk_1 e^{-ik_1 L } = \tau k_2 e^{ik_2 L } - R_2 k_2 e^{-ik_2 L } \end{gathered} \quad \, 
+\]
+\[
+\text{ so } \quad \begin{gathered}
+  2 k_1 e^{ik_1 L  } = k_1 ( \tau e^{ik_2 L } + R_2 e^{-ik_2 L } ) + k_2 (\tau e^{ik_2 L } - R_2 e^{-ik_2 L } ) \\ 
+  2 R k_1 e^{-ik_1 L } = k_1 ( \tau e^{ik_2 L } + R_2 e^{-ik_2 L } ) - k_2 (\tau e^{ik_2 L } - R_2 e^{-ik_2 L } )
+\end{gathered}
+\]
+
+Then we can write, in matrix form, 
+\[
+\left( \begin{matrix} 1 \\ R \end{matrix} \right) = d(k_1,k_2,L) \left( \begin{matrix} \tau \\ R_2 \end{matrix} \right) = \frac{1}{2} \left[ \begin{matrix} \left( 1 + \frac{k_2}{k_1} \right) e^{i (k_2 - k_1 ) L } & \left( 1 - \frac{k_2}{k_1} \right) e^{-i (k_2 + k_1 ) L } \\ \left( 1 - \frac{k_2}{k_1 } \right) e^{ i (k_2 + k_1 ) L } & \left( 1 + \frac{k_2}{k_1 } \right) e^{-i ( k_2 - k_1 ) L } \end{matrix} \right] \left( \begin{matrix} \tau \\ R_2 \end{matrix} \right)
+\]
+where
+\[
+d(k_1, k_2, l) = b(k_1, l)^{-1} \tau(k_1,k_2) b(k_2,l) = \left( \begin{matrix} e^{-ik_1 L} & \\ & e^{ik_1 L } \end{matrix} \right) \frac{1}{2} \left( \begin{matrix} \left( 1 + \frac{k_2}{k_1} \right) & \left( 1 - \frac{k_2}{k_1} \right) \\ \left( 1 - \frac{k_2}{k_1} \right) & \left( 1 + \frac{k_2}{k_1} \right) \end{matrix} \right) \left( \begin{matrix} e^{ik_2 L } & \\ & e^{-ik_2 L } \end{matrix} \right)
+\]
+
+If we go from a region of $k_1$ to $k_2$, $k_1 \to k_2$, then for $x_b = L, 3L, \dots, (2j-1)L , \dots (2n-1)L$ ; \quad $j=1, \dots n$, then for a general wave,
+\[
+\psi(x,t) = \begin{cases} T_I A e^{ i (k_1 x - \omega t)} + R_I A e^{-i (k_1 x + \omega t) } \\ T_{II} A e^{ i ( k_2 x - \omega t ) } + R_{II} A e^{ -i (k_2 x + \omega t) } \end{cases}
+\]  
+From the boundary conditions: \\
+continuity: $ T_{I} e^{i (k_1 ( 2k-1)L ) } + R_I e^{-ik_1 ( 2k-1)L } = T_{II} e^{i (k_2 (2k-1) L )} + R_{II} e^{-ik_2(2k-1) L } $
+\[
+ik_1 (T_I e^{ik_1 ( 2k-1)L } + -R_I e^{-ik_1 x } ) = ik_2 (T_{II} e^{ik_2 x} - R_{II} e^{-ik_2 x} )
+\]
+So 
+\[
+\left( \begin{matrix} T_I \\ R_I \end{matrix} \right) = d(k_1,k_2,(2j-1)L) \left( \begin{matrix} T_{II} \\ R_{II} \end{matrix} \right)
+\]
+
+\[
+\begin{gathered}
+  d(k_1,k_2,(2k-1)L) = b(k_1,(2j-1)L)^{-1} \tau(k_1,k_2) b(k_2,(2j-1)L ) = \\
+  = \left( \begin{matrix} e^{-ik_1 (2k-1) L } & \\ & e^{ik_1(2j-1) L } \end{matrix} \right) \frac{1}{2} \left( \begin{matrix} \left( 1 + \frac{k_2}{k_1} \right) & \left( 1 - \frac{k_2}{k_1} \right) \\ \left( 1 - \frac{k_2}{k_1} \right) & \left( 1 + \frac{k_2}{k_1} \right) \end{matrix} \right) \left( \begin{matrix} e^{i_2 ( 2k-1) L } & \\ & e^{-ik_2(2j-1) L } \end{matrix} \right)
+\end{gathered}
+\]
+
+Then, by label symmety, when we go from $k_2 \to k_1$, $x_b = 2L, \dots, 2jL, \dots 2nL$, $j=1,\dots n$.  
+\[
+\left( \begin{matrix} T_{II} \\ R_{II} \end{matrix} \right)  = d(k_2,k_1, 2jL ) \left( \begin{matrix} T_I \\ R_I \end{matrix} \right)
+\]
+
+
+
+\subsection{Signals, Fourier Analysis; Modulations, Pulses, and Wave Packets }
+
+\subsubsection{Fourier integrals.}  
+
+Take apart signal $f(t)$ into its component angular frequencies:
+\[
+f(t) = \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i \omega t}
+\]
+
+Properties of Fourier integrals: \medskip \\
+If $f(t) \in \mathbb{R}$, 
+\[
+\begin{gathered}
+  f(t) = \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i\omega t} = f(t)^* = \int_{-\infty}^{\infty} d(\omega) C^*(\omega) e^{i\omega t} = \int_{-\infty}^{\infty} d\omega C(-\omega)^* e^{-i\omega t} \\
+  \Longrightarrow C(\omega) = C(-\omega)^*
+\end{gathered}
+\]
+
+$\frac{1}{2\pi} \int_{-\infty}^{\infty} f(t) e^{- i \omega t} = ?$
+\[
+\int dt \int_{-\infty}^{\infty} d\omega' C(\omega') e^{- i \omega' t} e^{i\omega t} = \int d\omega' C(\omega') \int e^{- i( \omega' - \omega)t } dt = \int C(\omega') d\omega' \delta(\omega' - \omega) = C(\omega)
+\]
+
+In another way to get $C(\omega)$, the inverse Fourier transform, as the limit of a Fourier waves, consider $\psi(-\pi l,t) = \psi(\pi l,t) $, periodic boundary condition (notice the period is $2\pi l = T$), 
+\[
+\xrightarrow{ \text{ in general } } \psi(x) = \sum_{j=-\infty}^{\infty} c_j e^{-ijx/l}
+\]
+
+Likewise, for $f(t)$, s.t. $f(-\pi T) = f(\pi T)$, $T$ large
+\[
+\begin{aligned}
+  & f(t) = \sum_{j=-\infty}^{\infty} c_j e^{-ijt/T} \quad \quad \, \text{ (Fourier transform in time ) } \\
+  & c_j = \frac{1}{2\pi T} \int_{-\pi T}^{\pi T} dt e^{ijt/T} f(t) 
+\end{aligned}
+\]
+
+$\lim_{t\to \infty} f(t) = 0$, then $c_j \to 0$ as $T \to \infty$.  $\Longrightarrow \begin{aligned}
+  & c_j T \to C(\omega) \\
+  & j/T \to \omega 
+\end{aligned}$, so then
+\[
+f(t) = \sum c_j e^{-ij t/T} = \sum (c_j T) e^{-ijt/T} \frac{1}{T} \to \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i \omega t} 
+\]
+So we have these important results:
+\begin{align}
+ & \boxed{ f(t)  = \int_{-\infty}^{\infty} C(\omega) e^{- i\omega t}  }\\
+ & \boxed{ C(\omega)  = \frac{1}{2\pi} \int_{-\infty}^{\infty} dt f(t) e^{ i \omega t}  }
+\end{align}
+
+So we have
+\[
+\Longrightarrow \psi(x,t) = \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i\omega t + ikx}
+\]
+since each frequency component of the force produces a wave traveling in $+x$ direction, so we use linear superposition.  
+
+We'll also show a property of any \emph{square-integrable} function, particularly a very, very general relation with its frequency and time bandwidths.  
+
+By definition, an average of a function of time $t$, $g= g(t)$ is weighted by the signal strength at each time $t$:
+\[
+\langle g(t) \rangle = \frac{ \int_{-\infty}^{\infty} dt g(t) |f(t)|^2 }{ \int_{-\infty}^{\infty} dt |f(t)|^2 }
+\]
+$\langle (t-\langle t \rangle )^2 \rangle = \Delta t^2$ \smallskip \\
+Now a trick (one of two needed) is this:
+\[
+\int_{-\infty}^{\infty} d\omega \, \omega C(\omega) e^{-i\omega t} = i \partial_t \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i\omega t} = i \partial_t f(t) 
+\]
+Now 
+\[
+\begin{gathered}
+  \langle \omega \rangle = \frac{ \int_{-\infty}^{\infty} dt f^*(t) i \partial_t f(t) }{ \int_{-\infty}^{\infty} dt |f(t)|^2 } \text{ since } \\
+  \begin{gathered}
+    \int_{-\infty}^{\infty} dt f^*(t) i \partial_t f(t) = \int_{-\infty}^{\infty} dt \int_{-\infty}^{\infty} d\omega' C^*(\omega')e^{ i \omega't } \int_{-\infty}^{\infty} d\omega \omega C(\omega) e^{-i\omega t} = \\
+    = \int_{-\infty}^{\infty} d\omega' \int_{-\infty}^{\infty} d \omega C^*(\omega')\omega C(\omega) \int_{-\infty}^{\infty} dt e^{it(\omega'-\omega) }  = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} d\omega' d\omega C^*(\omega')\omega C(\omega) \delta(\omega-\omega') = \\ 
+    = \int_{-\infty}^{\infty} d\omega |C(\omega)|^2 \omega 
+\end{gathered} \\
+  \quad \\
+\int_{-\infty}^{\infty} dt |f(t)|^2 =\int_{-\infty}^{\infty} d\omega |C(\omega)|^2  \text{ so we have } \\
+\langle \omega \rangle = \int_{-\infty}^{\infty} d\omega |C(\omega)|^2 \omega / \int_{-\infty}^{\infty} d\omega |C(\omega)|^2 
+\end{gathered}
+\]
+Now consider $\langle (\omega - \langle \omega \rangle )^2 \rangle = \frac{ \int_{-\infty}^{\infty} d\omega ( \omega - \langle \omega \rangle )^2 |C(\omega)|^2 }{ \int_{-\infty}^{\infty} d\omega | C(\omega)|^2 } $, particularly its numerator,
+\[
+\begin{gathered}
+  \begin{aligned}
+    f^* & = \int_{-\infty}^{\infty} d\omega C^*(\omega) e^{ i \omega t} \\
+    \partial_t f^* & = i \int_{-\infty}^{\infty} d\omega \, \omega C^*(\omega) e^{i \omega t} 
+  \end{aligned} \text{ so } \\
+  \begin{aligned}
+    & \int_{-\infty}^{\infty} dt | (i \partial_t - \langle \omega \rangle ) f(t) |^2 = \int_{-\infty}^{\infty} dt ( - i \partial_t f^* - \langle \omega \rangle f^* ) (i \partial_t f - \langle \omega \rangle f ) = \\
+    & \quad = \int_{-\infty}^{\infty} dt ( \partial_t f^* \partial_t f + i \partial_t f^* \langle \omega \rangle f - i \langle \omega \rangle f^* \partial_t f + \langle \omega \rangle^2 f* f ) = \\
+    & \quad = \int_{-\infty}^{\infty} d\omega \omega^2 |C(\omega)|^2 - \int_{-\infty}^{\infty} d\omega \omega |C(\omega)|^2 \langle \omega \rangle - \int_{-\infty}^{\infty} d\omega \omega |C(\omega)|^2 \langle \omega \rangle + \langle \omega \rangle^2 \int_{-\infty}^{\infty} d\omega \langle \omega \rangle^2 |C(\omega)|^2 = \\
+    & \quad = \int_{-\infty}^{\infty} (\omega- \langle \omega \rangle )^2 |C(\omega)|^2 d\omega 
+\end{aligned}
+\end{gathered}
+\]
+Note that we had used $\int_{-\infty}^{\infty} e^{it (\omega- \omega') } = \delta(\omega - \omega')$ alot.  
+
+Let 
+\[
+r(t) = \left( (t- \langle t \rangle ) - i \kappa (i\partial_t - \langle \omega \rangle ) \right)f(t)
+\]
+(this is trick 2)
+\[
+|r(t)|^2 = (t-\langle t \rangle )^2 |f|^2 + -i (t- \langle t \rangle )f^* \kappa (i \partial_t - \langle \omega \rangle )f + i \kappa (-i\partial_t - \langle \omega \rangle)f^* (t- \langle t \rangle ) + \kappa^2 |i\partial_t - \langle \omega \rangle |^2 |f|^2
+\]
+Consider the cross terms of $|r(t)|^2$
+\[
+\begin{gathered}
+\begin{aligned}
+  & -i(t- \langle t \rangle )f^* \kappa ((i \partial_t f) - \langle \omega \rangle f ) = \kappa ( t f^* \partial_t f - \langle t \rangle f^* \partial_t f ) + i \kappa (t- \langle t \rangle ) f^* \langle \omega \rangle f \\
+  & i \kappa (-i \partial_t f^* - \langle \omega \rangle f^* ) ( t- \langle t \rangle )f = \kappa \partial_t f^* (t- \langle t \rangle )f - i \kappa \langle \omega \rangle f^* (t- \langle t \rangle )f
+\end{aligned} \\
+\begin{aligned}
+  \int_{-\infty}^{\infty} dt \partial_t f^* (t- \langle t \rangle )f & = \left. f^* (t- \langle t \rangle) f \right|_{-\infty}^{\infty} - \int_{-\infty}^{\infty} dt f^* (f + (t- \langle t \rangle ) \partial_t f ) = \\
+  & = - \int |f|^2 - \int_{-\infty}^{\infty} dt f^* (t - \langle t \rangle) \partial_t f 
+\end{aligned} \\
+\xrightarrow{ \int_{-\infty}^{\infty} dt } \text{ crossterms of } |r(t)|^2 =  - \kappa \int |f|^2 
+\end{gathered} 
+\]
+Then
+\[
+\begin{gathered}
+  \frac{ \int |r(t)|^2}{ \int |f(t)|^2 } = (\Delta t)^2 + \kappa^2 (\Delta \omega)^2 - \kappa \geq 0 \\
+  \text{ minimize by $\kappa$ } \Longrightarrow \kappa_{min} = \frac{1}{ 2 (\Delta \omega)^2 } \\
+  \Longrightarrow (\Delta t)(\Delta \omega) \geq \frac{1}{2} 
+\end{gathered}
+\]
+\subsubsection{ Group velocity }
+
+Suppose for some range of frequencies near some $\omega_0$, the dispersion relation is strong varying. 
+\[
+\begin{gathered}
+  \omega(k) = \omega_0 + (k-k_0) \left. \frac{ \partial \omega}{ \partial k }  \right|_{k=k_0} + \dots  \\
+  \omega_0 \equiv \omega(k_0) \\
+  \text{ for } \omega_0 - \Delta \omega < \omega < \omega_0 + \Delta \omega
+\end{gathered}
+\]
+We could then write, for small enough ``bandwidth'' $\Delta \omega$, 
+\[
+  \omega(k) = \omega_0 + (k-k_0)v_g \Longrightarrow k = \frac{\omega}{v_g} + k_0 - \frac{\omega_0}{v_g}
+\]
+
+For a modulated signal, $f(t) = f_s(t) \cos{(\omega_{av} t)}$ $\Longrightarrow f(t) = f_{mod}(t) e^{-i\omega_{av} t}$ ; \\
+$f_{mod}(t) = \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i\omega t}$, $C(\omega) \approx 0 $ for $|\omega - \omega_0| > \Delta \omega$
+\[
+\begin{gathered}
+  \psi(0,t) = f(t) = f_{mod}(t) e^{-i\omega_{av} t } = \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i (\omega + \omega_{av}) t } = \int_{-\infty}^{\infty} d\omega C(\omega - \omega_{av}) e^{-i \omega t} \\
+  \xrightarrow{ \text{ traveling waves } } \\
+  \begin{aligned} \psi(x,t) & = \int_{-\infty}^{\infty} d\omega C(\omega - \omega_{av}) e^{- i (\omega t - kx ) } = \int_{-\infty}^{\infty} d\omega C(\omega - \omega_{av}) e^{-i(\omega t - \left( \frac{\omega}{v_g} + b\right)x ) } = \\
+    & = \int d\omega C(\omega) e^{\left( -i ( \omega + \omega_{av} )\left( t - \frac{x}{v_g} \right) + i bx \right)} = f_{mod}\left( t - \frac{x}{v_g} \right) e\left( -i \omega_{av} \left( t - \frac{x}{v_g} \right) + i \left( k_{av} - \frac{\omega_{av} }{ v_g} \right) x \right) = \\
+    & = f_{mod}\left( t - \frac{x}{v_g} \right) e\left( -i (\omega_{av} t - k_{av} x ) \right)
+\end{aligned}
+\end{gathered}
+\]
+
+\subsection{Two and Three Dimensions}
+
+Consider the 2-dim. beaded mesh.  \\
+First step is to remove the walls and consider infinite system by extending the interior in all directions.  \\
+translational invariance in $x$ and $y$ $\Longrightarrow \begin{aligned} \psi(x,y+a_v) & = e^{i k_y a_v } \phi_x(x) \\ \psi(x+a_H,y) & = e^{i k_x a_h} \phi_y(y) \end{aligned} \Longrightarrow \psi(x,y) = A e^{ik_x x } e^{i k_y y } = A e^{i k\cdot r }$
+
+$\omega^2$ is simply the sum of vertical and horizontal contributions, each of which look like the dispersion relation for the one-dimensional case: 
+\[
+\omega^2 = \frac{ 4 T_H}{ ma_H} \sin^{ \frac{k_x a_H}{2} } + \frac{4 T_V}{ m a_V} \sin^2{\frac{ k_y a_V}{2} }
+\]
+
+Quantity that characterize the surface: \\
+\phantom{Quan} surface mass density $\sigma_s = m/a^2$ \\
+\phantom{Quan} surface tension is the pull per unit length exerted by the membrane; $T_s = T/a$ 
+\[
+\frac{Ta}{m} = \frac{ T/a }{ m/a^2 } = T_s / \sigma_s
+\]
+Consider system of masses connected by elastic rods in 3-dim., good model for an elastic solid.  \\
+\phantom{Consi} Consider longitudinal oscillations.  \medskip \\
+Consider a wave with wave number $\mathbf{k}$, normal modes will have the form $\mathbf{A} e^{ \pm i \mathbf{k}\cdot r\mathbf{r} }$ \\
+If there's rotational invariance, only $\mathbf{k}$ picks out a direction.  \\
+\phantom{If} Then normal modes must be a longitudinal or ``compressional'' mode \\
+\phantom{If and} and transverse or ``shear'' mode $\mathbf{A} \perp \mathbf{k}$ 
+
+\subsubsection{Sound Waves}
+In liquid or gas, there are no shear waves because there's no restoring force that keeps the system in a particular shape, i.e. replace elastic modes of a rectangular box full of air. \\
+\phantom{In} $P(x,y,z)  = \text{ gas pressure at $(x,y,z)$ } $\\ 
+\phantom{In} $\psi(x,y,z)  = \text{ air displacement; wave compression or rarefaction } $   \smallskip \\
+\phantom{In the } $\mathbf{\psi} \propto \nabla P \text{(air is getting pushed along by high pressure regions)}$ \\
+\phantom{In the } $P \propto - \nabla \cdot \mathbf{\psi} \text{(increase in pressure causes rarefactions)}$ \\
+
+Mathematical statements for gas actually pushed from regions of high pressure to regions of low pressure, so pressure gradient perpendicular to the boundary must vanish.  
+
+\subsubsection{ Plane Boundaries  } \quad \, \\
+$\psi(r,t) =A e^{ i (k\cdot r - \omega t)}$ are ``plane waves.'' \\
+$\psi$ travels in $\mathbf{k}$ direction, $\psi$ is a constant on planes of constant $k \cdot r$, planes $\perp \mathbf{k}$\medskip \\
+Consider 2-dim. membrances stretched out in $x-y$ plane. 
+
+\subsection{Interference and Diffraction}
+
+At $z=0$, oscillating amplitude is $f(x,y) e^{-i \omega t}$  
+\begin{equation}
+  \psi(r,t) = \int dk_x dk_y C(k_x,k_y) e^{ i (k\cdot r - \omega t) } \text{ for } z > 0 
+\end{equation}
+At $z=0$,
+\[
+\begin{aligned}
+  f(x,y) & = \int dk_x dk_y C(k_x,k_y) e^{ i (k_x x + k_y y ) } \\ 
+  C(k_x,k_y) & = \frac{1}{4\pi^2} \int dx dy f(x,y) e^{ -i (k_x x + k_y y) }
+\end{aligned}
+\]
+
+
+For small $z$ 
+\[
+C(k_x,k_y) \to 0 \text{ for } k \equiv \sqrt{ k_x^2 + k_y^2} \gg \frac{1}{L}
+\]
+Typically, $L$ is the size of the smallest important feature in $f(x,y)$, the smallest distance over which $f(x,y)$ changes appreciably.  
+
+\[
+k_z z = \sqrt{ \frac{ \omega^2}{v^2} - k_x^2 - k_y^2 } = \frac{z \omega }{v} \sqrt{  1 - \frac{ v^2 (k_x^2 + k_y^2 ) }{\omega^2 } } \simeq \frac{z\omega}{v} \left( 1 - \frac{ v^2 ( k_x^2  + k_y^2 ) }{ 2 \omega^2 } - \frac{1}{8} \left( \frac{ v^2 ( k_x^2 + k_y^2 ) }{ \omega^2 } \right)^2  \right) \simeq \frac{z\omega }{v} 
+\]
+\[
+\psi(r,t) \approx \int dk_x dk_y C(k_x,k_y) e^{ i (k_x x + k_y y + z\omega/v - \omega t) } \approx f(x,y) e^{ i \omega \left( \frac{ z - vt}{ v} \right) }
+\]
+when $\frac{ z v (k_x^2 + k_y^2) }{\omega} \approx 1$.  $z \approx \frac{ \omega L^2}{v} = \frac{2 \pi L^2 }{\lambda}$ (when small $z$ approximation breaks down).  
+
+Large $z$.  At $\vec{R} = (X,Y,Z)$.  
+\[
+(x,y,z) = (X,Y,Z) \text{ for } Z \gg \frac{ \omega L^2 }{v}
+\]
+
+Then you cannot see the details of the shape of the opening or other details of $f(x,y)$, only its position.  \\
+The wave you detect at some far away point must have come from the opening and if you are far enough away, it is almost a plane wave.  \\
+\quad Thus the only contribution to the integral that counts is that proportional to $e^{ik\cdot R}$, where $k$ points from the opening to receiver.  
+
+Amplitude is also inversely proportional to $R = \sqrt{ X^2 + Y^2 + Z^2}$, because the intensity must fall off as $R^{-2}$, as in a spherical wave, by energy conservation.
+\[
+k \propto R \Longrightarrow \frac{k_x}{X} = \frac{k_y}{Y} = \frac{k_z}{Z} = \frac{k}{R} = \frac{ \omega/v}{ R}
+\]
+
+\[
+\int dx \int dy f(x,y) e^{ -i (k_x x + k_y y )} = \int dx \int dy f(x,y) e^{- i (xX + yY )k/R }
+\]
+
+Stationary Phases.  
+
+Consider $\psi(r,t) = \int dk_x dk_y C(k_x,k_y) e^{i (k\cdot r - \omega t) }$ for $z>0$.  
+
+Phase of exponential is rapidly varying as $k_x,k_y$ except for special values of $k_x,k_y$, where derivatives of phase with respect to $k_x,k_y$ vanish.  
+
+Then
+\[
+\begin{gathered}
+  k\cdot r = k_x X + k_y Y + Z \sqrt{ \omega^2 /v^2 - k_x^2 - k_y^2 } \\ 
+  \begin{aligned}
+    \partial_{k_x} (k\cdot r) & = X + Z \left( \frac{ \omega^2}{v^2} - k_x^2 - k_y^2 \right)^{-1/2}(-k_x) = 0 \\
+    \partial_{k_y} (k\cdot r) & = Y + Z \left( \frac{ \omega^2}{v^2} - k_x^2 - k_y^2 \right)^{-1/2}(-k_y) = 0 
+  \end{aligned}
+\end{gathered}
+\]
+
+\subsubsection{Angles.}
+
+What happens if the plane wave in (13.15) is coming in toward the opaque barrier at an angle?
+\[
+k_x = k \sin{\theta} \quad \, k_z = k \cos{\theta}
+\]
+
+$\Longrightarrow f_{\theta}(x,y)  = f(x,y) e^{ ik x \sin{\theta} }$ at $z=0$, where the additional $x$ dependence has simply been inherited from the $x$-dependence of the incoming wave.  
+
+\subsubsection{Periodic $f(x,y)$ }
+
+Suppose $f(x+a,y) = f(x,y)$.  \\
+$C(k_x,k_y) \neq 0$ only if $k_x = \frac{2\pi n}{a}$, since 
+\[
+C(k_x,k_y) = \frac{1}{4\pi^2} \int dx dy f(x+a,y)e^{i (k_x x+ k_y y) } = \frac{1}{4\pi^2} \int dx dy f(x,y) e^{i (k_x x +k_y y) } e^{-ik_x a} = e^{-i k_x a} C(k_x,k_y)
+\]
+where we had use the substitution $x \to x -a$.  
+
+So the above equation implies $C(k_x,k_y) =0$ or $e^{-ik_x a} = 1$.  
+
+(implication:) Thus any infinite regular pattern produces a discrete sequence of $k$'s.  
+
+
+\end{document}
