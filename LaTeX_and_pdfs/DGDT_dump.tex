@@ -2317,7 +2317,7 @@ where $f:M \to N$.
 	\item[(b)] Consider $(t', x', y', z') \to (t, x, y, z)$. Let $\rho = (x^2 + y^2)^{1/2}$. Consider the Jacobian:
 	\[
 	\left| \begin{matrix} 1 & & & \\ 
-		\omega \rho s(phi - \omega t) & \frac{x}{\rho} c(\phi - \omega t) &  \frac{y}{\rho} c(\phi - \omega t) & \\
+		\omega \rho s(\phi - \omega t) & \frac{x}{\rho} c(\phi - \omega t) &  \frac{y}{\rho} c(\phi - \omega t) & \\
 		 -\omega \rho  c(\phi - \omega t) &  \frac{x}{\rho} s(\phi - \omega t) &  \frac{y}{\rho} s(\phi - \omega t) & \\
 		 0 & & 1 \end{matrix} \right|
 	\]
@@ -4506,7 +4506,7 @@ Now for
 
 \section{Connections of Vector Bundles}
 
-\cite{Mori2001}
+Morita (2001) \cite{Mori2001}
 
 \begin{definition}[Connection in a vector bundle]
 	\textbf{connection in a vector bundle} $\pi : E \to M$ over $C^{\infty}$ manifold $M$, is a bilinear map
@@ -4519,6 +4519,33 @@ Now for
 		\item[(ii)] $\nabla_X(fs) = f\nabla_Xs + (Xf)s$ where $f\in C^{\infty}(M)$, $X \in \mathfrak{X}(M)$, $s\in \Gamma(E)$
 	\end{enumerate}
 $\nabla_Xs$ is covariant derivative of $s$ relative to $X$ (for Morita (2001)\cite{Mori2001})
+
+Alternatively, Jost (2017) \cite{Jost2017} defines in the following way: \\
+
+Let vector bundle $(E, \pi, M)$, where differentiable manifold $M$, vector bundle $E$ over $M$; a covariant derivative or (linear) connection is map
+\begin{equation}
+	D:\Gamma(E) \to \Gamma(E) \otimes \Gamma(T^*M) \equiv \Gamma(E) \otimes \mathfrak{X}(M)
+\end{equation}
+(we may also consider $D$ as map $D: \mathfrak{X}(M) \otimes \Gamma(E) \to \Gamma(E)$, with $s \in \Gamma(E), X \in \mathfrak{X}(M), DX(s) \equiv D_X s$) s.t.
+
+\begin{enumerate}
+	\item $D$ is tensorial in $\mathfrak{X}(M)$, 
+	\begin{equation}
+		\begin{gathered}
+			D_{X +Y} s = D_X s + D_Y s \quad \, \forall \, X,Y \in T_xM, \, s\in \Gamma(E) \\
+			D_{fX} s = fD_X s \quad \, \forall \, f \in C^{\infty}(M, \mathbb{R}), \, X \in \Gamma(TM)
+		\end{gathered}
+	\end{equation}
+\item $D$ is $\mathbb{R}$-linear in $s$, 
+\begin{equation}
+	D_X(s+t ) = D_X s + D_X t \quad \, \forall \, X \in T_xM , \, s,t \in \Gamma(E) 
+\end{equation}
+and product rule
+\begin{equation}
+	D_X(fs) = X(f) \cdot s + fD_X(s) \quad \, \forall \, f \in C^{\infty} (M, \mathbb{R})
+\end{equation}
+\end{enumerate}
+
 \end{definition} 
 
 \underline{Claim}: \emph{Any vector bundle admits a connection}.
@@ -4559,6 +4586,316 @@ Let $\nabla_i$ ($1 \leq i \leq k$) be $k$ connections in a given vector bundle. 
 \begin{proof}
 	TODO: Ex. 5.5
 \end{proof} 
+
+\subsection{Directional derivatives of tensor fields; Connections on a tensor product}
+
+cf. Schuller (2015) \cite{Schul2015}, \href{https://youtu.be/nEaiZBbCVtI}{Lecture 7: Connections (International Winter School on Gravity and Light 2015))}.
+
+\begin{definition}[Connection on tensor fields]
+	A \textbf{connection} $\nabla$ or smooth manifolds $(M, \mathcal{O}, \mathcal{A})$ is a map $\nabla : \mathfrak{X}(M) \times \Gamma(TM^p \otimes T^*M^q) \to \Gamma(TM^p \otimes T^*M^q)$, \\
+	where $\binom{p}{q}$ tensor-field section $\equiv \Gamma (TM^p \otimes T^*M^q)$
+	
+	\begin{enumerate}
+		\item $\nabla_X f = Xf \quad \, \forall \, f \in C^{\infty}(M)$ 
+		\item $\nabla_X(T+S) = \nabla_XT  + \nabla_XS$ 
+		\item $\nabla_X(T(\omega, Y)) = (\nabla_XT)(\omega, Y) + T(\nabla_X \omega, Y) + T(\omega, \nabla_X Y)$, where $T(\omega, Y) \in C^{\infty}(M)$ \\
+		
+		This is written for a $(1, 1)$ tensor field $T$, but is analogously true $\forall \, (p, q)$ tensor field. 
+		\item $\nabla_{fX + Z} T = f\nabla_X T + \nabla_Z Y$, where $f\in C^{\infty}(M)$ \\
+		
+		Consider also product rule $\nabla_X(fT) = X(f) T + f\nabla_XT \quad \, \forall \, f \in C^{\infty}(M, \mathbb{R})$
+	\end{enumerate}
+
+A manifold with connection is a quadruple $(M, \mathcal{O}, \mathcal{A}, \nabla)$
+\end{definition}
+
+Consider 
+\[
+\begin{gathered}
+	\begin{aligned}
+		\nabla_X Y & = \nabla_{X^i \frac{ \partial }{ \partial x^i} } \left(Y^m \frac{\partial }{ \partial x^m } \right) = X^i \nabla_{\frac{\partial}{\partial x^i} } \left( Y^m \frac{ \partial }{\partial x^m} \right) = X^i \left[ \left( \nabla_{\frac{ \partial }{ \partial x^i} } Y^m \right) \frac{\partial }{ \partial x^m} + Y^m \nabla_{\frac{\partial }{ \partial x^i} } \frac{\partial}{ \partial x^m} \right] = \\
+		& = X^i \frac{\partial Y^m}{\partial x^i} \frac{\partial }{\partial x^m } + X^i Y^m  \Gamma^q_{ \, mi } \frac{\partial}{\partial x^q}
+	\end{aligned}
+\end{gathered}\]
+
+so then
+
+\begin{definition}[Connection coefficient functions, i.e. Christoffel Symbols]
+	\begin{equation}
+		\begin{aligned}
+			\Gamma^i_{\, jk} & : \mathcal{U} \to \mathbb{R} \\
+			& p \mapsto ( dx^i \left( \nabla_{\frac{\partial}{\partial x^k} } \frac{\partial }{ \partial x^j} \right) )(p)
+		\end{aligned}
+	\end{equation}
+\end{definition}
+
+Now since
+\[
+\begin{gathered}
+	\begin{gathered}
+		\nabla_{\frac{\partial}{\partial x^m} } \left( dx^i \left( \frac{ \partial }{ \partial x^j} \right) \right) = \nabla_{\frac{\partial}{\partial x^m} } (\delta^i_{\, \, j} ) = 0 \text{ so } \\
+		\nabla_{\frac{\partial}{\partial x^m} } \left( dx^i \left( \frac{ \partial }{ \partial x^j} \right) \right) = \left( \nabla_{\frac{\partial}{\partial x^m} } dx^i \right) \left( \frac{\partial }{ \partial x^j} \right) + dx^i \left( \nabla_{\frac{\partial}{\partial x^m} } \frac{\partial }{ \partial x^j} \right) = \left( \nabla_{\frac{\partial}{\partial x^m} } dx^i \right) \left( \frac{\partial }{ \partial x^j} \right) + dx^i \Gamma^q_{\, jm} \frac{ \partial }{ \partial x^q} = 0 \\
+		\Longrightarrow \boxed{ \left( \nabla_{\frac{\partial}{\partial x^m} } dx^i \right) \left( \frac{\partial }{ \partial x^j} \right) = -\Gamma^i_{\, jm} } \text{ since } \\
+		dx^i \Gamma^q_{\,  jm} \frac{\partial }{ \partial x^q} = \Gamma^q_{\, jm} dx^i \left( \frac{\partial }{ \partial x^q} \right) = \Gamma^q_{\, jm} \delta^i_{\, q} = \Gamma^i_{\, jm}
+	\end{gathered}
+\end{gathered}\]
+
+	\subsubsection{Change of $\Gamma$'s under change of chart}
+
+cf. \href{https://youtu.be/nEaiZBbCVtI?t=4130}{1:08:50 3. Change of $\Gamma$'s under change of chart}, Schuller (2015) \cite{Schul2015}
+
+$(U,x)$, $(V,y) \in \mathcal{A}$ and $U \cap V \neq \emptyset$
+
+\[
+\Gamma^i_{jk}(y) := dy^i \left( \nabla_{ \frac{ \partial}{ \partial y^k} } \frac{ \partial }{ \partial y^j} \right) = \frac{ \partial y^i}{ \partial x^q }dx^q \left( \nabla_{\frac{ \partial x^p}{ \partial y^k}  \frac{ \partial }{ \partial x^p} } \frac{ \partial x^s}{ \partial y^j} \frac{ \partial }{ \partial x^s } \right)
+\]
+because, \\
+since $y^i$ is a function, i.e. \\
+$y^i = y^i(x)$, and $d$ acts on a function, then $dy^i = dy^i(x) = \frac{ \partial y^i}{\partial x^q} dx^q$, and since
+\[
+\frac{\partial f(y) }{ \partial y^k} = \frac{\partial f(x(y)) }{ \partial y^k} = \frac{ \partial x^p }{ \partial y^k} \frac{ \partial f(x) }{ \partial x^p} \text{ so } \frac{ \partial }{ \partial y^k} = \frac{\partial x^p}{ \partial y^k} \frac{\partial}{ \partial x^p} \text{ by chain rule }
+\]
+
+Note $\nabla_{fX}$ is $C^{\infty}$-linear for $fX$
+
+covector $dy^i$ is $C^{\infty}$-linear in its argument
+\[
+\begin{aligned}
+	\Longrightarrow \Gamma_{jk}^i(y) & = \frac{ \partial y^i}{ \partial x^q} dx^q \left( \frac{ \partial x^p}{ \partial y^k} \left[ \left( \nabla_{ \frac{ \partial }{ \partial x^p} } \frac{ \partial x^s}{ \partial y^j} \right) \frac{ \partial }{ \partial x^s} + \frac{ \partial x^s}{ \partial y^j} \left( \nabla_{ \frac{ \partial }{ \partial x^p } } \frac{ \partial }{ \partial x^s } \right)  \right] \right) = \\
+	& = \frac{ \partial y^i}{ \partial x^q} \underbrace{\frac{ \partial x^p }{ \partial y^k} \frac{ \partial }{ \partial x^p }}_{\frac{\partial}{\partial y^k} } \frac{ \partial x^s}{ \partial y^j } \delta^q_{ \, \, s} + \frac{ \partial y^i}{ \partial x^q} \frac{ \partial x^p }{ \partial y^k} \frac{ \partial x^s}{ \partial y^j} \Gamma^q_{sp}(x)
+\end{aligned}
+\]
+
+
+In summary (Schuller says to commit this to memory):
+\begin{equation}\label{Eq:ChangeofGamma}
+	\boxed{ \Gamma^i_{jk}(y) = \frac{ \partial y^i}{ \partial x^q} \frac{ \partial^2 x^q}{ \partial y^j \partial y^k} + \frac{ \partial y^i}{ \partial x^q } \frac{ \partial x^s }{ \partial y^j} \frac{ \partial x^p }{ \partial y^k} \Gamma^q_{sp}(x) }
+\end{equation}
+Eq. (\ref{Eq:ChangeofGamma}) is the change of connection coefficient function under the change of chart $(U\cap V,x) \to (U\cap V,y)$ Notice especially the second-order partial derivative term: for any linear transformation, this term will "not be felt" (i.e. will be zero), but otherwise for a nonlinear transformation of coordinates, you'll "feel it."
+
+
+\subsubsection{Normal Coordinates}
+
+Let $p \in M$ of $(M, \mathcal{O}, \mathcal{A}, \nabla)$
+
+Then one can construct a chart $(U,x)$ with $p\in U$ such that 
+\begin{equation}\label{Eq:SymmetricPartZeroForNormalCoordinates}
+\begin{gathered}
+	\Gamma(x)^i_{\,\, (jk)}(p) = 0
+\end{gathered} 
+\end{equation}
+\emph{at} the point $p$. \textbf{Not} necessarily in any neighborhood. Note the $(jk)$ subscript, meaning the symmetric part vanishes, i.e. equals zero. So Eq. \ref{Eq:SymmetricPartZeroForNormalCoordinates} says we can choose a coordinate system such that at a point the symmetric part of the Christoffel Symbol is zero.
+
+Recall the definition of symmetric and antisymmetric parts of some tensor $T$. Define the symmetric and antisymmetric parts, respectively:
+\[
+\begin{aligned}
+	& T_{(ab)} = \frac{1}{2} ( T_{ab} + T_{ba}) \\
+	& T_{[ab]} = \frac{1}{2} ( T_{ab} - T_{ba}) \\
+\end{aligned}
+\]
+
+\begin{proof}
+	Let $(V,y)$ be any chart (with) $p\in V$.
+	
+	Thus, in general: $\Gamma(y)^i_{\,\, jk} \neq 0$
+	
+	Then consider a new chart $(U, x)$ to which one transits by virtue of 
+	\[
+	\begin{gathered}
+		(x\circ y^{-1})^{i}(\alpha^1, \dots, \alpha^d) := \alpha^i - \frac{1}{2} \Gamma(y)^i_{\,\, (jk)}(p) \alpha^j \alpha^k 
+	\end{gathered}
+	\]
+	for $p = x^{-1}(\alpha^1, \dots , \alpha^d)$
+	
+	\[
+	\begin{gathered}
+		\begin{aligned} 
+			& \left(\frac{\partial x^i}{ \partial y^j}\right)_p = \partial_j (x^i \circ y^{-1}) = \delta^i_j - \Gamma(y)^i_{\,\, mj}(p) \left. \alpha^m \right|_{\alpha = 0} = \delta^i_j \\
+			& \frac{\partial x^i}{ \partial y^k \partial y^j}(p) = - \Gamma(y)^i_{ \, \, (kj)} (p)
+		\end{aligned} 
+	\end{gathered}
+	\]
+where the partial derivative acting on the second term with the Christoffel symbol is because of the following:
+\[
+\begin{gathered}
+	\frac{\partial}{\partial y^j} \frac{1}{2} \Gamma(y)^i_{\, (lk)} (p) \alpha^l \alpha^k = \frac{\partial}{\partial \alpha^j} \frac{1}{2} \Gamma(y)^i_{\, (lk)} (p) \alpha^l \alpha^k = \frac{1}{2} \Gamma(y)^i_{\, (lk)} (p) \delta^l_{\, j} \alpha^k + \frac{1}{2} \Gamma(y)^i_{\, (lk)} (p) \alpha^l \delta^k_{\, j} = \\
+	= \frac{1}{2} \Gamma(y)^i_{\, (jk)} (p)  \alpha^k + \frac{1}{2} \Gamma(y)^i_{\, (lj)} (p)  \alpha^l = \Gamma(y)^i_{\, (jm)}(p) \alpha^m
+\end{gathered}
+\]
+where the last step is by the symmetry property of the symmetric part of $\Gamma^i_{\, jm}$, $\Gamma^i_{\, (jm)}$.
+
+Then use Eq. (\ref{Eq:ChangeofGamma}), the change of Christoffel symbols equation we just derived:
+\[
+\begin{gathered}
+\Gamma^i_{jk}(y) = \frac{ \partial y^i}{ \partial x^q} \frac{ \partial^2 x^q}{ \partial y^j \partial y^k} + \frac{ \partial y^i}{ \partial x^q } \frac{ \partial x^s }{ \partial y^j} \frac{ \partial x^p }{ \partial y^k} \Gamma^q_{sp}(x)	= \frac{ \partial y^i}{ \partial x^q} \left( - \Gamma(y)^q_{ \, \, (kj)} (p) \right) + \frac{ \partial y^i}{ \partial x^q } \Gamma^q_{ \, \, jk} (x)
+\end{gathered}
+\]
+
+\emph{If} $\frac{\partial y^i}{\partial x^q} = -\delta^i_{\, \, q}$ then we obtain 
+\[
+\begin{gathered}
+	\Gamma^i_{\, \, jk} (y) = + \Gamma(y)^i_{\,\, (jk)} - \Gamma^i_{\,\, jk} (x) \text{ or  } \\
+	\Gamma^i_{\, \, jk} (x) = - \Gamma^i_{\, \, jk} (y) + \Gamma^i_{\, \, (jk)} (y) = \Gamma(y)^i_{\, \, [kj]}
+\end{gathered}
+\]
+
+
+Compare this against what Schuller (2015) \cite{Schul2015} obtains:
+	\[
+	\begin{gathered}
+		\begin{aligned} 
+			\Longrightarrow \Gamma(x)^i_{jk}(p) & = \Gamma(y)^i_{\,\, (jk)}(p)  -  \Gamma(y)^i_{\,\, kj}(p) =  \\
+			& = \Gamma(y)^i_{[jk]}(p) = T(y)^i_{\,\,jk}
+		\end{aligned} 
+	\end{gathered}
+	\]
+	
+	\underline{Terminology}: $(U,x)$ is called a \textbf{normal coordinate chart} of $\nabla$ at {$\mathbf{p\in M}$}.
+	
+\end{proof}
+
+
+
+cf. pp. 164, 4.1 \emph{Connections in Vector Bundles}, Jost (2017) \cite{Jost2017}
+
+Let $x_0 \in M$, let open neighborhood $U$ of $x_0$ s.t. $\exists$ chart for $M$, $\exists\,$ bundle chart for $E$ on $U$. Thus, $\exists$ coordinate vector fields $\frac{\partial }{ \partial x^1} , \cdots \frac{\partial }{ \partial x^d}$ and through identification
+\[
+\left. E \right|_U \simeq U \times \mathbb{R}^n
+\]
+$n = $ fiber dim. of $E$.
+
+For \emph{a} basis of $\mathbb{R}^n$ yields basis $\mu_1 \dots \mu_n \equiv e_q \dots e_n$ of sections of $\left. E \right|_U \equiv \Gamma(\left. E \right|_U )$. Define Christoffel symbols $\Gamma^k_{\, ij}$ ($j,k =1\dots n, i =1 \dots d$) (pp. 164, Jost (2017) \cite{Jost2017}) 
+
+\begin{equation}
+	\begin{aligned}
+		D_{\frac{\partial}{\partial x^i} } \mu_j & := \Gamma^k_{\, ij} e_k \quad \, (\text{4.1.5, Jost (2017)\cite{Jost2017}}) \\
+		\equiv D_{\frac{\partial}{\partial x^j} } e_i & \Gamma^k_{\, ij} e_k \quad \, (\text{Schuller's notation})\\
+	\end{aligned}
+\end{equation}
+
+Let $\mu \equiv s \in \Gamma(E)$, ($\mu$ is the notation of Jost (2017) \cite{Jost2017}) locally $s(y) = a^k(y) e_k(y)$, let $c(t) =$ smooth curve in $U$. \\
+Let $s(t):= s(c(t))$, to define a section of $E$ along $c$. \\
+Let $X(t) = \dot{c}(t) = \dot{c}^i(t) \frac{\partial}{\partial x^i}$ \\
+
+Then
+\[
+\begin{gathered}
+	D_{X(t)} s(t) = D_{\dot{c}^i \frac{\partial}{\partial x^i} } s(t) = \dot{c}^i D_{ \frac{\partial }{\partial x^i}} a^k e_k = \dot{c}^i \left( \frac{ \partial a^k}{ \partial x^i} \right) e_k + \dot{c}^i a^k \Gamma^q_{\, ki} e_q = \\
+	= \left( \dot{a}^k + \dot{c}^j a^i \Gamma^k_{\, ij} \right) e_k
+\end{gathered}\]
+where we had used chain rule:
+\[
+\dot{a}^k \equiv \frac{da^k}{dt} = \frac{\partial a^k}{\partial x^i} (x(t)) \frac{dc^i}{dt}
+\]
+So if $D_{x(t)} s(t) = 0$, we have $k=1 \dots n$ first order linear equations, solving for $a^1, \dots a^n(t)$.
+
+So by a fundamental theorem for ordinary differential equations (ODEs), for given initial values $s(0) \in E_{c(0)}$, $\exists !$ solution to $D_{x(t)} s(t) = 0$.
+
+\begin{definition}[Parallel transport of section of vector bundle, Def. 4.1.2, Jost (2017)\cite{Jost2017}]
+The solution set of $D_{x(t)} s(t) = 0$	 is called the parallel transport of $s(0)$ along curve $c$.
+\end{definition}
+
+Given $X \in T_xM$, let curve $c$ in $M$ with $c(0) = x$, $\dot{c}(0) = X$, $\forall \, s \in \Gamma(E)$, then
+\[
+D_X s := \lim_{t \to 0} \frac{ P_{c,t}(s(c(t))) - s(c(0)) }{ t}
+\]
+EY: This seems to be the covariant derivative.
+
+pp. 165 Jost (2017) \cite{Jost2017} claims that parallel transport on Riemannian manifold can obtain covariant derivative.
+
+\begin{proof}
+	Let $P_{c,t} : E_{c(t)} \to E_{c(0)} $ be identification by parallel transport along $c$.
+	
+	Select a basis of parallel sections $\mu_1(t), \dots \mu_n(t) \equiv e_1(t) \dots e_n(t)$ of $E$ along $c$, i.e.
+	\[
+	D_{\dot{c}(t) } e_j(t) = 0 \quad \, \forall \, j = 1 \dots n
+	\]
+	
+	$\forall \,$ arbitrary section $s$ of $E$ along $c$, then 
+	\[
+	s(t) = a^k(t) e_k(t)
+	\]
+	and for $X = \dot{c}(0)$,
+	\[
+	\begin{gathered}
+		D_X s(t) = D_X(a^k(t) e_k(t)) = D_X(a^k(t)) e_k(t) + a^k(t) D_X e_k(t) = \dot{a}^k(t) e_k(t)
+	\end{gathered}
+	\]
+	where $D_Xe_k(t)=0$ by parallel transport.
+	
+	So
+	\[
+	\begin{gathered}
+		(D_Xs) (c(0)) = \lim_{t\to 0} \frac{a^k(t) - a^k(0) }{ t} e_k(0) = \lim_{t\to 0} \frac{ P_{c,t} (s(t)) - s(0) }{t}
+	\end{gathered}
+	\]
+\end{proof}
+
+Consider tangent space at pt. $\psi \equiv s$ to the total space $E$ of a vector bundle $T_sE$. \\
+Inside $T_sE$, there's a distinguished subspace, namely the tangent space to the fiber $E_x$ containing $s$ ($x=\pi(s)$). \\
+This space is called vertical space $V_s$. \\
+
+However, there's no distinguished "horizontal space" $H_s$ complementary to $V_s$, i.e. $T_sE = V_s \oplus H_s$. \\
+If we have covariant derivative $D$, we can parallel transport $s$, $\forall\, X \in T_xM$ along curve $c(t)$ with 
+\[
+c(0) = x, \, \dot{c}(0) = X
+\]
+
+Thus, $\forall \, X$, we obtain a curve $s(t) $ in $E$. \\
+subspace of $T_sE$ spanned by all trangent vectors to $E$ at $s$ of the form
+\[
+\left. \frac{d}{dt} s(t) \right|_{t=0}
+\]
+then is the horizontal space $H_s$.
+
+Suppose $X = X^i \frac{\partial}{\partial x^i} \in \mathfrak{X}(M)$, $s = s^i e_i \in \Gamma(E)$,
+\[
+D_X s =X^j D_{\frac{\partial }{ \partial x^j} } s^i e_i = X^j \left( \frac{\partial s^i}{\partial x^j} e_i + s^i D_{\frac{\partial }{\partial x^j} } e_i \right) = X^j \left( \frac{\partial s^k}{\partial x^j } + s^i \Gamma^k_{\, ij} \right) e_k
+\]
+
+Consider $\Gamma^k_{\, ij}$ as an ($n\times n$) matrix valued 1-form on $U$ \, $\forall \, j = 1 \dots d$.
+
+\begin{equation}
+	\Gamma^k_{\, ij} \in \Gamma( \mathfrak{gl}(n, \mathbb{R}) \otimes \left. T^* M \right|_U)
+\end{equation}
+cf. Eq. (4.1.12), pp. 166, Jost (2017) \cite{Jost2017}.
+
+Abstract this to
+\[
+D = d+A
+\]
+where $d$ is the exterior derivative and $A \in \Gamma( \mathfrak{gl}(n, \mathbb{R}) \otimes \left. T^* M \right|_U)$.
+
+Given $a^j e_j$
+\[
+D(a^j e_j) = e_k \otimes (da^k) + A_j a \otimes dx^j
+\]
+
+where $d(a^k)(X) = (da^k)(X) = X(a^k) = X^j \frac{\partial a^k}{\partial x^j}$. 
+
+Let $(U_{\alpha})_{\alpha \in A}$ be covering of $M$ by open sets which the bundle is trivial, with transition maps
+\[
+\varphi_{\beta \alpha} : U_{\alpha} \cap U_{\beta} \to GL(n;\mathbb{R})
+\]
+
+Let section $s$ be represented by $s_{\alpha}$ on $U_{\alpha}$.
+
+Thus,
+\[
+s_{\beta} = \varphi_{\beta \alpha} s_{\alpha} \text{ on } U_{\alpha} \cap U_{\beta}
+\]
+
+But then
+\[
+\begin{gathered}
+	\varphi_{\beta \alpha} (d+A_{\alpha}) s_{\alpha} = (d+A_{\beta}) s_{\beta} \text{ on } U_{\alpha} \cap U_{\beta} \\
+	\begin{gathered}
+		\varphi_{\beta \alpha} ds_{\alpha} + \varphi_{\beta \alpha} A_{\alpha} s_{\alpha} = d\varphi_{\beta \alpha} s_{\alpha} + A_{\beta} \varphi_{\beta \alpha} s_{\alpha} \\
+		A_{\alpha} s_{\alpha} = -ds_{\alpha} + \varphi^{-1}_{\beta \alpha} d\varphi_{\beta \alpha} s_{\alpha} + \varphi^{-1}_{\beta \alpha} A_{\beta} \varphi_{\beta \alpha} s_{\alpha}
+	\end{gathered}
+\end{gathered}
+\]
+
 
 
 \part{Holonomy}
@@ -4834,7 +5171,7 @@ Let $\sigma = \sigma^i_{ \,\, j} e_i \otimes e^j \in \Gamma(\text{End}(E))$
 	= (d\sigma^k_{ \,\, j} + \sigma^i_{ \,\, j} A^k_{ \,\, i} ) e_k \otimes e^j + \sigma^k_{ \,\, i} e_j \otimes (- A^i_{ \, \, j}) e^j = (d\sigma^k_{ \,\, j} + [A,\sigma]^k_{ \,\, j}) e_k\otimes e^j
 \end{gathered}
 \end{equation}
-cf. Def. 4.1.4 of Jost (2011), pp. 138.  
+cf. Def. 4.1.4 of Jost (2017) \cite{Jost2017}, pp. 138.  
 
 For $\mu \in \Gamma(E)$, smooth $s:[a,b] \to M$, $X(t) = \dot{s}(t)$,
 \begin{equation}
@@ -12881,6 +13218,9 @@ Robert M. Wald. \textbf{General Relativity}. The University of Chicago Press. 19
 \bibitem{Schu2015}
 \href{https://www.youtube.com/c/FredericSchuller}{Frederic Schuller}. \href{https://youtube.com/playlist?list=PLPH7f_7ZlzxTi6kS4vCmv4ZKm9u8g5yic}{\textbf{Lectures on the Geometric Anatomy of Theoretical Physics}}. Sept. 2015.
 
+\bibitem{Schul2015}
+\href{https://www.youtube.com/@thewe-heraeusinternational2060/featured}{The WE-Heraeus International Winter School on Gravity and Light 2015}. \href{https://youtube.com/playlist?list=PLFeEvEPtX_0S6vxxiiNPrJbLu9aK1UVC_}{Central Lecture Course}.  
+
 \bibitem{YChoquet-Bruhat2009}
 Yvonne Choquet-Bruhat.  \textbf{General Relativity and the Einstein Equations} (Oxford Mathematical Monographs) 1st Edition.  Oxford Mathematical Monographs (February 4, 2009) ISBN-13: 978-0199230723
 
@@ -12900,6 +13240,9 @@ Third Edition,
 
 \bibitem{Mori2001} 
 Shigeyuki Morita. \textbf{Geometry of Differential Forms} (Translations of Mathematical Monographs, Vol. 201). American Mathematical Society (August 28, 2001). ISBN-10: 0821810456
+
+\bibitem{Jost2017}
+J\"{u}rgen Jost. \textbf{Riemannian Geometry and Geometric Analysis}. Seventh Edition. Springer. 2017.
 
 \bibitem{Apos1991} 
 Tom M. Apostol. \textbf{Calculus, Vol. 1: One-Variable Calculus, with an Introduction to Linear Algebra}. Wiley; 2nd edition (January 16, 1991).ISBN-13: 978-0471000051
