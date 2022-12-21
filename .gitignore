@@ -182,3 +182,7 @@ TSWLatexianTemp*
 
 # KBibTeX
 *~[0-9]*
+
+# Python virtual environment directories.
+*/venv/*
+venv/*

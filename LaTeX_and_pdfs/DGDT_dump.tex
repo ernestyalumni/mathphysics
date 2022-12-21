@@ -4773,6 +4773,8 @@ For \emph{a} basis of $\mathbb{R}^n$ yields basis $\mu_1 \dots \mu_n \equiv e_q 
 	\end{aligned}
 \end{equation}
 
+\subsection{Parallel Transport}
+
 Let $\mu \equiv s \in \Gamma(E)$, ($\mu$ is the notation of Jost (2017) \cite{Jost2017}) locally $s(y) = a^k(y) e_k(y)$, let $c(t) =$ smooth curve in $U$. \\
 Let $s(t):= s(c(t))$, to define a section of $E$ along $c$. \\
 Let $X(t) = \dot{c}(t) = \dot{c}^i(t) \frac{\partial}{\partial x^i}$ \\
@@ -4842,11 +4844,187 @@ c(0) = x, \, \dot{c}(0) = X
 \]
 
 Thus, $\forall \, X$, we obtain a curve $s(t) $ in $E$. \\
-subspace of $T_sE$ spanned by all trangent vectors to $E$ at $s$ of the form
+subspace of $T_sE$ spanned by all tangent vectors to $E$ at $s$ of the form
 \[
 \left. \frac{d}{dt} s(t) \right|_{t=0}
 \]
 then is the horizontal space $H_s$.
+
+\subsubsection{Parallelity of vector fields}
+
+cf. Lecture 8, Schuller (2015) \cite{Schul2015}.
+
+Assume smooth affine manifold $(M, \mathcal{O}, \mathcal{A}, \nabla)$ with connection.
+
+\begin{definition}[Parallely Transported]
+	vector field $X$ on $M$ is \textbf{parallely transported} along smooth curve $\gamma:\mathbb{R} \to M$ if 
+	\begin{equation}
+		\nabla_{v_{\gamma}} X = 0
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Parallel]
+	vector field $X$ in $M$ is \textbf{parallel} along curve $\gamma:\mathbb{R} \to M$ if $\nabla_{v_{\gamma}} = \mu \cdot X$
+\end{definition}
+
+\begin{center}
+	\begin{tikzpicture}
+	\draw[thick, blue] (-4,0) .. controls (-5,1.2) and (0,1.5) .. (-1,3);
+	\draw[thick, blue] (0,0) .. controls (-1,1.2) and (4,1.5) .. (3,3);
+	\draw[thick, blue] (5,0) .. controls (4,1.2) and (9,1.5) .. (8,3);
+	%
+	\draw[->, thick, rotate around={45: (-4,0)}] (-4,0) -- (-4,1);
+	\draw[->, thick, rotate around={45: (-3.5,0.95)}] (-3.5,0.95) -- (-3.5,1.95);
+	\draw[->, thick, rotate around={45:(-2.5,1.38)}] (-2.5,1.38) -- (-2.5,2.38);
+	\draw[->, thick, rotate around={45:(-1.5,1.85)}] (-1.5,1.85) -- (-1.5,2.85);
+	\draw[->, thick, rotate around={45:(-0.9,2.4)}] (-0.9,2.4) -- (-0.9,3.4);
+	%
+	\draw[->, thick, rotate around={45: (0,0)}] (0,0) -- (0,1.5);
+	\draw[->, thick, rotate around={45: (0.5,0.95)}] (0.5,0.95) -- (0.5,1.55);
+	\draw[->, thick, rotate around={45:(1.5,1.38)}] (1.5,1.38) -- (1.5,0.38);
+	\draw[->, thick, rotate around={45:(2.5,1.85)}] (2.5,1.85) -- (2.5,2.5);
+	\draw[->, thick, rotate around={45:(3.1,2.4)}] (3.1,2.4) -- (3.1,4.4);
+	% 
+	\draw[->, thick, rotate around={50: (5,0)}] (5,0) -- (5,1);
+	\draw[->, thick, rotate around={-25: (5.5,0.95)}] (5.5,0.95) -- (5.5,1.5);
+	\draw[->, thick] (6.5,1.38) -- (6.5,0.2);
+	\draw[->, thick, rotate around={60:(7.5,1.85)}] (7.5,1.85) -- (7.5,3);
+	\draw[->, thick, rotate around={-45:(8.1,2.4)}] (8.1,2.4) -- (8.1,3.4);
+	\end{tikzpicture}
+\end{center}
+The left drawing is a parallely transported vector field, the middle drawing is a parallel vector field. For the middle drawing, it's important that the vector field vanishes in-between points when it points "up" vs. "down" because $\mu:\mathbb{R} \to \mathbb{R}$ is smooth. The right drawing is not even parallel.
+
+\subsubsection{Autoparallelly Transported Curves}
+
+\begin{definition}[Autoparallely Transported]
+	smooth curve $\gamma : \mathbb{R} \to M$ \textbf{autoparallely transported} if 
+	\begin{equation}
+		\nabla_{v_{\gamma}} v_{\gamma} = 0
+	\end{equation}
+\end{definition}
+
+\begin{definition}
+	smooth curve $\gamma : \mathbb{R} \to M$ is autoparallel 
+	\begin{equation}
+		\nabla_{v_{\gamma}} v_{\gamma} = \mu v_{\gamma}
+	\end{equation}
+for some smooth $\mu:\mathbb{R}\to \mathbb{R}$
+\end{definition}
+
+For autoparallel, it means we move in the straightest line. We are not talking about the shortest line because we do not have a notion of distance.
+
+Note that the straightest line might not actually look straight when "viewed from above." That is, if we embed the manifold into a higher dimensional one, and then just look at the curve, it might be curved. For example, on a sphere, a straight line traces out a portion of a circle around the sphere. This doesn't look straight in the (higher, Euclidean) embedding, but \emph{on the surface} of the sphere, it's the straightest line.
+
+\begin{center}
+	\begin{tikzpicture} 
+	\draw[thick] (-2,-2) -- (-1.5,-1.5);
+	\draw[thick] (-1.4,-1.4) -- (-0.9,-0.9);
+	\draw[thick] (-0.8,-0.8) -- (-0.3,-0.3);
+	\draw[thick] (-0.2,-0.2) -- (0.3,0.3);
+	\draw[thick] (0.4,0.4) -- (0.9,0.9);
+	\draw[thick] (1,1) -- (1.5,1.5);
+	%
+	\draw[thick] (2,-2) -- (2.5,-1.5);
+	\draw[thick] (2.6,-1.4) -- (3,-1);
+	\draw[thick] (3.1,-0.9) -- (3.3,-0.7);
+	\draw[thick] (3.4,-0.6) -- (3.5,-0.5);
+	\draw[thick] (3.6,-0.4) -- (3.8,-0.2);
+	\draw[thick] (3.9,-0.1) -- (4.3,0.3);
+	\draw[thick] (4.4,0.4) -- (4.9,0.9);
+	\draw[thick] (5,1) -- (5.5,1.5);
+	\end{tikzpicture}
+\end{center}
+Left is an autoparallely transported curve, and the right is just an autoparallel.
+
+Consider 
+\[
+\begin{gathered}
+	\dot{\gamma}(t) = v(\gamma(t)) = v^i(\gamma^1(t) \dots \gamma^n(t)) \frac{\partial}{\partial x^i} \in T_{\gamma(t)} U
+\end{gathered}\]
+Then
+\[
+\begin{gathered}
+	\frac{d}{dt}\dot{\gamma}(t) = \frac{d}{dt} v^i(\gamma^1(t) \dots \gamma^n(t)) \frac{\partial}{\partial x^i} = \frac{d}{dt} v^i(x^1 \dots x^n ) \frac{\partial}{\partial x^i} = \frac{\partial v^i}{\partial x^j}(x) \dot{x}^j \frac{\partial}{\partial x^i} = \dot{\gamma}^j \frac{\partial \dot{\gamma}^i}{\partial x^j} \frac{\partial }{ \partial x^i}
+\end{gathered}\]
+So
+\[
+\begin{gathered}
+	\nabla_{v_{\gamma}} v_{\gamma} = \nabla_{v^j \frac{\partial}{\partial x^j} } v^i \frac{\partial}{\partial x^i} = v^j \left[ \frac{\partial v^i}{\partial x^j} \frac{\partial}{\partial x^i} + v^i \Gamma^k_{\, ij} \frac{\partial }{\partial x^k} \right] = \ddot{\gamma}(t) + \dot{\gamma}^i \dot{\gamma}^j \Gamma^k_{\, ij} \frac{\partial}{\partial x^k} \text{ i.e. }
+\end{gathered}\]
+
+\begin{equation}
+	\boxed{ \nabla_{v_{\gamma}} v_{\gamma} = \left( \ddot{\gamma}^k(t) + \dot{\gamma}^i \dot{\gamma}^j \Gamma^k_{\, \, ij} \right) \frac{\partial }{ \partial x^k}  }
+\end{equation}
+with $\Gamma^k_{\, \, ij} = \Gamma^k_{\, \, ij}(\gamma(t))$.
+
+\subsubsection{Torsion}
+cf. Lecture 8, Schuller (2015) \cite{Schul2015}
+
+\begin{definition}[torsion]
+	The \textbf{torsion} of a connection $\nabla$ is the $(1,2)$-\textbf{tensor field}
+	\begin{equation}
+		T(\omega,X,Y) := \omega( \nabla_X Y - \nabla_Y X - [X,Y])
+	\end{equation}
+where $[\cdot, \cdot] : \Gamma(TM) \times \Gamma(TM) \to \Gamma(TM)$ is the commutator on $\Gamma(TM)$, that yields a vector field, $[X, Y]$ defined by
+\begin{equation}
+	[X,Y]f:= X(Yf) - Y(Xf)
+\end{equation}
+\end{definition}
+
+\begin{theorem}
+$T$ is $C^{\infty}$-linear in each entry
+\end{theorem}
+
+\begin{proof}
+	check 
+	
+	\[
+	\begin{gathered}
+		T(f\cdot \omega, X, Y) = f\cdot \omega(\dots) = fT(\omega, X, Y) \\
+		T(\omega + \psi, X, Y) = \dots = T(\omega, X, Y) + T(\psi, X, Y) \\
+		T(\omega, fX, Y) = \omega( \nabla_{fX} Y - \nabla_Y (fX) - [fX, Y]) = \\
+		= \omega(f\nabla_X Y - (Yf)X - f\nabla_Y X - f[X,Y] + (Yf)X) = fT(\omega,X,Y)
+	\end{gathered}
+	\]
+	since
+	\[
+	\begin{gathered} 
+		[fX,Y] g = fX(Yg) - Y(fXg) = fX(Yg) - (Yf) (Xg) - fY(Xg) = \\
+		= f\cdot [X,Y] g - (Yf) Xg = (f\cdot [X,Y] - (Yf)X) g
+	\end{gathered} 
+	\]
+	
+	\[
+	T(\omega, X, Y) = -T(\omega, Y , X)  \quad \, \checkmark
+	\]
+\end{proof}
+
+\begin{definition}
+	An affine manifold $(M, \mathcal{O}, \mathcal{A}, \nabla)$ is called torsion-free if $T=0$. This can also be written as
+	\begin{equation}
+		\nabla_X Y - \nabla_Y X = [X,Y] \quad \, \forall \, X, Y \in \Gamma(TM)
+	\end{equation}	
+\end{definition}
+
+In a chart 
+\[
+\begin{aligned}
+	T^i_{ \, \, ab } := T\left(dx^i , \frac{ \partial }{ \partial x^a} , \frac{ \partial }{ \partial x^b}  \right) & = dx^i ( \dots ) \\ 
+	& = \Gamma^i_{ \, \, ba} - \Gamma^i_{ \, \, ab} = -2 \Gamma^i_{ \, \, [ab] }
+\end{aligned}
+\]
+since
+\[
+\begin{gathered}
+	[\frac{ \partial }{ \partial x^a}, \frac{ \partial }{ \partial x^b}] = 0 \text{ and } \\
+	\nabla_{\frac{ \partial }{ \partial x^a} } \frac{ \partial }{ \partial x^b} = \Gamma^k_{\, \, ba} \\
+	\nabla_{\frac{ \partial }{ \partial x^b} } \frac{ \partial }{ \partial x^a} = \Gamma^k_{\, \, ab} 
+\end{gathered}\]
+So what this means is that if the torsion is $0$, i.e. $T = T^i_{\, \, ab} = 0$, then the \emph{anti-symmetric} part of the connection coefficients, i.e. Christoffel symbols, is zero, $\Gamma^k_{\, [ij]} = 0$. So the Christoffel symbols only have a symmetric part and is thus symmetric in indices $i, j$.
+
+From now on, in these lectures, we only use torsion-free connections. 
+
+
 
 Suppose $X = X^i \frac{\partial}{\partial x^i} \in \mathfrak{X}(M)$, $s = s^i e_i \in \Gamma(E)$,
 \[
@@ -4896,7 +5074,71 @@ But then
 \end{gathered}
 \]
 
+\subsection{Curvature}
 
+cf. Lecture 8, Schuller (2015) \cite{Schul2015}.
+
+\begin{definition}[Riemann Curvature]
+	The \textbf{Riemann curvature} of a connection $\nabla$ is the $(1,3)$-tensor field
+	\begin{equation}
+		\text{Riem}(\omega,Z,X,Y) := \omega( \nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z - \nabla_{[X,Y]} Z)
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Ricci Curvature]
+	Let Riem be the Riemann curvature tensor of connection $\nabla$. \\
+	Define the Ricci curvature tensor as $(0, 2)$-tensor field
+	\begin{equation}
+		\text{Ric}(X, Y) := \text{Riem}(f^k, Y, X, e_k)
+	\end{equation}
+where $f^l(e_m) = \delta^l_{\, \, m}$
+
+In terms of components, the Ricci curvature tensor is given by
+\begin{equation}
+	\text{Ric}_{ab} = \text{Riem}^m_{\, \, amb}
+\end{equation}
+\end{definition}
+
+\begin{theorem}
+	Riem is $C^{\infty}$-linear in each slot.
+\end{theorem}
+
+\begin{proof}
+\[
+\begin{gathered}
+	\begin{aligned}
+		\text{ since } & \text{Riem}(\omega, Z, X, Y) = \omega (\nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z - \nabla_{[X,Y]} Z) \\
+		& \text{Riem}(f\omega, Z, X, Y) = f\omega (\nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z - \nabla_{[X,Y]} Z) = f\text{Riem}(\omega, Z, X, Y) \\
+		& \text{Riem}(\omega + \sigma, Z, X, Y) = (\omega + \sigma) (\nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z - \nabla_{[X,Y]} Z) = \text{Riem}(\omega, Z, X, Y) + \text{Riem}(\sigma, Z, X, Y) 
+	\end{aligned} 
+\end{gathered}\]
+\[
+\begin{gathered}
+	\text{Riem}(\omega, Z, fX, Y) = \omega (f\nabla_X \nabla_Y Z - Y(f) \nabla_X Z - f\nabla_Y \nabla_X Z -  \nabla_{f[X,Y] - (Yf)X} Z ) = \\
+	= \omega (f\nabla_X \nabla_Y Z - Y(f) \nabla_X Z - f\nabla_Y \nabla_X Z - f \nabla_{[X, Y]}Z + (Yf)\nabla_X Z) = f\text{Riem}(\omega, Z, X, Y) 
+\end{gathered}\]
+where the second and last term cancel each other out in the second to last expression.
+
+\end{proof}
+
+The Riemann curvature tensor Riemm is antisymmetric in its last 2 entries. This is because
+
+\[
+\begin{gathered}
+	\text{Riem}(\omega, Z, Y, X) = \omega(\nabla_Y \nabla_X Z - \nabla_X \nabla_Y Z - \nabla_{[Y,X]} Z) = -\omega(\nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z + \nabla_{-[X,Y]} Z ) = \\
+	= -\text{Riem}(\omega, Z, X, Y)
+\end{gathered}
+\]
+since $\nabla_{-[X,Y]}Z = -\nabla_{[X,Y]}Z$
+
+Therefore, Riem has $d^3 (d-1)/2$ independent components. This is because $d^4$ is the total number of components (there are 4 indices, each index running from 1 to d) if the indices are completely independent of each other. 
+
+Since two entries are antisymmetric, imagine a $dxd$ matrix with only the entries in the "top half triangle" being independent. It excludes the diagonal entries (they'd be all 0). There are $\frac{d(d-1)}{2}$ entries. For each of those antisymmetric entries, there are still $d^2$ ways to choose the other 2 entries of the Riem. Thus, the number of independent components are
+\[
+\begin{gathered}
+	d^4 = \left( \frac{d(d-1)}{2} \right) d^2 = d^4 - \frac{ (d^2 - d)d^2}{2} = d^4 - \frac{d^4- d^3}{2} = d^3(d-1)/2
+\end{gathered}
+\]
 
 \part{Holonomy}
 
@@ -10971,7 +11213,7 @@ Holonomy
 	
 	\subsection*{EY developments}
 	
-	I roughly follow the spirit in Theodore Frankel's \textbf{The Geometry of Physics: An Introduction} Second Ed. 2003, Chapter 9 Covariant Differentiation and Curvature, Section 9.3b. The Covariant Differential of a Vector Field. P.S. EY : 20150320 I would like a copy of the Third Edition but I don't have the funds right now to purchase the third edition: go to my tilt crowdfunding campaign, \url{http://ernestyalumni.tilt.com}, and help with your financial support if you can or send me a message on my various channels and ernestyalumni gmail email address if you could help me get a hold of a digital or hard copy as a pro bono gift from the publisher or author.  
+	I roughly follow the spirit in Theodore Frankel's \textbf{The Geometry of Physics: An Introduction} Second Ed. 2003, Chapter 9 Covariant Differentiation and Curvature, Section 9.3b. The Covariant Differential of a Vector Field. P.S. EY : 20150320 I would like a copy of the Third Edition but I don't have the funds right now to purchase the third edition: go to my tilt crowdfunding campaign, \url{http://ernestyalumni.tilt.com}, and help with your financial support if you can or send me a message on my various channels and ernestyalumni gmail email address if you could help me get a hold of a digital or hard copy as a pro bono gift from the publisher or author.  EY : 20221220 Update: I'm gainfully employed now and I've obtained a digital copy of the 3rd Ed. of Frankel! I don't have the tilt campaign, but if you'd like to donate still, PayPal me \href{mailto:ernestyalumni@gmail.com}{@ernestyalumni} or better yet Venmo me @ernestyalumni
 	
 	The spirit of the development is the following:
 	\begin{quote}
