@@ -21,6 +21,7 @@
 \usepackage{listings}
 \usepackage[table]{xcolor}
 \usepackage{pdfpages}
+\usepackage{pgfplots}
 %\usepackage[version=3]{mhchem}
 %\usepackage{mhchem}
 
@@ -567,6 +568,184 @@ version 2, possible alternative (bottomline: not right): \\
 \end{definition}
 
 \section{Examples}
+
+\subsection{Euclidean space}
+
+\subsubsection{$\mathbb{R}^2$}
+
+Consider $\mathbb{R}^2$ as a smooth manifold.  
+
+Clearly, $\mathbb{R}^2$ is covered by 1 chart, with so-called \emph{Cartesian} coordinates (that also happen to be global coordinates, in this particular case): $(\mathbb{R}^2, \mathcal{O}_{\text{std}}, \mathcal{A} = \lbrace = \lbrace (\mathbb{R}^2, \varphi_{\text{cart}} ) \rbrace )$, with the chart (which is a homeomorphism, by definition)
+\[
+\begin{aligned}
+	& \varphi_{\text{cart}} : \mathbb{R}^2 \to \mathbb{R}^2 \\ 
+	& \varphi_{\text{cart}} : p \equiv (x,y) \mapsto (x,y)
+\end{aligned}
+\]
+Clearly, $\varphi_{\text{cart}} = 1_{\mathbb{R}^2}$ is a homeomorphism; in fact, it's a smooth diffeomorphism.  
+
+$\mathcal{O}_{\text{std}}$ denotes the so-called ``standard'' topology, that open sets consists of Euclidean $d$-balls.  I will assume this topology for this discussion of $\mathbb{R}^d$'s.  
+
+Clearly, the above discussion generalizes to $\mathbb{R}^d$.  
+
+Consider the so-called \emph{polar} coordinates 
+\begin{equation}\label{Eq:R2polarcoordinates}
+	\begin{aligned}
+		& x = r\cos{\varphi} \\ 
+		& y = r\sin{\varphi}
+	\end{aligned}
+\end{equation}
+where $r\geq 0$ and $\varphi \in \mathbb{R}$.  
+
+Recall the definition of a coordinate char: a \emph{coordinate chart} (or just chart) on $M$ is a pair $(U, \varphi)$ where $U$ is an open subset of $M$, homeomorphism $\varphi : U \to \widehat{U}$, where open subset $\widehat{U} = \varphi(U) \subseteq \mathbb{R}^n$.
+
+We want to construct a homeomorphism $\varphi^{-1}_{\text{pol}}$ from an open subset $V \subseteq \mathbb{R}^2$ to $M = \mathbb{R}^2$ according to these polar coordinates:
+\[
+\begin{aligned}
+	& \varphi_{\text{pol}}^{-1}: V \subseteq \mathbb{R}^2 \to \varphi_{\text{pol}}^{-1}(V) \subseteq M = \mathbb{R}^2 \\ 
+	& \varphi^{-1}_{\text{pol}}:(r,\varphi) \mapsto (x,y)
+\end{aligned}
+\]
+Immediately, from this choice of polar coordinates, we see problems with defining a homeomorphism, which is a bijection by definition.  For instance, let $(\varphi_{\text{pol}}^{-1})^{-1} \equiv \varphi_{\text{pol}}$ (defining this highly suggestive notation), and so 
+\[
+\begin{aligned}
+	& \varphi_{\text{pol}}:\mathbb{R}^2 \to \mathbb{R}^2 \\ 
+	& \varphi_{\text{pol}}:(x,y) \mapsto (r,\varphi)
+\end{aligned}
+\]
+The single point, the origin of $\mathbb{R}^2$, gets mapped to many possible values! In other words,
+\[
+\varphi_{\text{pol}}(0,0) = \lbrace (r,\varphi) | r=0 \text{ and } \varphi \in \mathbb{R} \rbrace
+\]
+Clearly this must be the case for any kind of coordinates involving $\cos$'s, $\sin$'s, etc. (i.e. transcendental functions).  So the choice of these kinds of coordinates necessitate giving up on the possibility of a single chart covering the entire manifold of the Euclidean space.  
+
+Consider 
+\[
+\begin{aligned}
+	& V := \lbrace (r,\varphi) | r>0, \varphi \in (0,2\pi) \rbrace \subset \mathbb{R}^2 \\ 
+	& [0,\infty) \times [0,2\pi ) - V = \lbrace (r,\varphi) | r = 0 \text{ or } \varphi = 0 \rbrace
+\end{aligned}
+\]
+Now $\varphi_{\text{pol}}^{-1}( [0,\infty) \times [0,2\pi)) = \mathbb{R}^2$, i.e. $\varphi_{\text{pol}}^{-1}$ maps $[0,\infty) \times [0,2\pi)$ \emph{onto} $\mathbb{R}^2$. But it maps $\varphi^{-1}_{\text{pol}}(0, \varphi)$ onto $(0, 0)$ for infinitely many values of $\varphi \in [0, 2\pi)$.
+
+Now consider if $\varphi=0$.  Then $\begin{aligned} & \quad \\
+	& x = r \\ 
+	& y = 0 \end{aligned}$ for $r>0$.  So $x>0$ and $y=0$.  If $r=0$, then $(x,y)=(0,0)$.  Thus
+\[
+\varphi_{\text{pol}}^{-1}( [0,\infty) \times [0,2\pi)-V) = \lbrace (x,y) | x\geq 0 \text{ and } y=0 \rbrace
+\]
+(If you have trouble seeing this, think of the union of the cases when $r=0$ or when $\varphi=0$).  Thus
+\[
+\varphi^{-1}_{\text{pol}}(V) = \lbrace (x,y) | x<0 \text{ or } y \neq 0 \rbrace
+\]
+
+Thus, in summary, we can include this chart into atlas $\mathcal{A}$:
+
+\begin{equation} \label{Eq:UR2}
+	\begin{gathered}
+		(U, \varphi_{\text{pol}}) \in \mathcal{A} \\ 
+		\begin{aligned}
+			U & = \lbrace (x,y) | x<0 \text{ or } y \neq 0 \rbrace  \\
+			\varphi_{\text{pol}}(U) & = \lbrace (r,\varphi) | r >0, \varphi \in (0,2\pi) \rbrace
+		\end{aligned} \quad \quad \, \begin{aligned}
+			& \varphi_{\text{pol}}:U \to \mathbb{R}^2 \\ 
+			& \varphi_{\text{pol}}(x,y) = ( \sqrt{x^2 + y^2}, \begin{cases} \text{arccot}{ \left( \frac{x}{y} \right) }  & \text{ if } (x > 0 \text{ and } y \geq 0 ) \text{ or } (x > 0 \text{ and } y \leq 0) \\ \text{arccot}{ \left( \frac{x}{y} \right) } + \pi & \text{ if } ( x < 0 \text{and } y \leq 0) \text{ or } (x \geq 0 \text{ and } y < 0) \end{cases} ) \\ 
+			& \varphi^{-1}_{\text{pol}}: \varphi_{\text{pol}}(U) \to \mathbb{R}^2 \\ 
+			& \varphi^{-1}_{\text{pol}}(r,\varphi) = (r\cos{\varphi}, r\sin{\varphi}) = (x,y)
+		\end{aligned}
+	\end{gathered}
+\end{equation}
+where $0 < \text{arccot}(x) < \pi$, with limits $\lim_{x \to -\infty} \text{arccot}(x) = \pi$ and $\lim_{x \to \infty} \text{arccot}(x) = 0$ being well defined.
+
+Recall the plots of $\arctan$ and $\text{arccot}$:
+
+%\begin{figure}
+	%\centering
+	\begin{tikzpicture}
+		\begin{axis}[axis lines=middle,xlabel={$x$},ylabel={$y$},
+			width=0.32\textwidth,
+			trig format plots=rad,
+			samples=101,
+			unbounded coords=jump,
+			xmin=-pi,xmax=pi,
+			ymin=-pi/2-0.2,ymax=pi/2+0.5,
+			xtick={-pi/2,pi/2},xticklabels={$-\frac{\pi}{2}$,$\frac{\pi}{2}$},
+			%ytick={-pi/2,pi},yticklabels={$-\frac{\pi}{2}$,$\frac{\pi}{2}$},
+			ytick={-pi/2,pi/2},yticklabels={$-\frac{\pi}{2}$,$\frac{\pi}{2}$},
+			grid=major,grid style={densely dashed},
+			legend style={at={(0.01,0.99)},anchor=north west}
+			]
+			\addplot[blue,thick,variable=\t,domain=-pi/2+0.1:pi/2-0.1] ({tan(\t)},\t);
+			\addlegendentry{$y=\arctan(x)$}
+			%\addplot[red,dashed,thick,variable=\t,domain=-10:10] (\t,{atan(\t)});
+			%\addplot[green!60!black,variable=\t,domain=-pi/2+0.1:pi/2-0.1] ({cot(\t)},\t);
+			%\addplot[green!60!black,variable=\t,domain=-0.0+0.1:pi-0.1] ({cot(\t)},\t);
+			%\draw[green!60!black,dashed] (0,-2) -- (0,2);
+			%\addlegendentry{$y=\text{arccot}(x)$}
+		\end{axis}
+	\end{tikzpicture}
+
+	\begin{tikzpicture}
+	\begin{axis}[axis lines=middle,xlabel={$x$},ylabel={$y$},
+		width=0.32\textwidth,
+		trig format plots=rad,
+		samples=101,
+		unbounded coords=jump,
+		xmin=-pi,xmax=pi,
+		ymin=-0.0-0.2,ymax=pi+0.5,
+		xtick={-pi/2,pi/2},xticklabels={$-\frac{\pi}{2}$,$\frac{\pi}{2}$},
+		%ytick={-pi/2,pi},yticklabels={$-\frac{\pi}{2}$,$\frac{\pi}{2}$},
+		ytick={0.0, pi/2, pi},yticklabels={$0.0$,$\frac{\pi}{2}$, $\pi$},
+		grid=major,grid style={densely dashed},
+		legend style={at={(0.01,0.99)},anchor=north west}
+		]
+		%\addplot[green!60!black,variable=\t,domain=-pi/2+0.1:pi/2-0.1] ({cot(\t)},\t);
+		\addplot[green!60!black,variable=\t,domain=-0.0+0.1:pi-0.1] ({cot(\t)},\t);
+		\draw[green!60!black,dashed] (0,-2) -- (0,2);
+		\addlegendentry{$y=\text{arccot}(x)$}
+	\end{axis}
+\end{tikzpicture}
+	%\caption{``Standard'' branches of the multivalued functions $\arctan$ and $\text{arccot}$.}
+%\end{figure}
+
+%If someone really wanted to, one can try to cover $\mathbb{R}^2$ with another polar coordinate chart, but I would argue that we already have the cartesian coordinate chart that singlely covers $\mathbb{R}^2$. Also note that the transition map between polar coordinate charts and the cartesian coordinate chart is easy, since the cartesian chart is the identity.  
+
+Let's try to cover $\mathbb{R}^2$ as much as possible with these "polar coordinate"-type charts. Unfortunately, we'll find out that we can't cover the origin in a well-defined (meaning with one-to-one functions) manner, so we'll have to consider $\mathbb{R}^2\backslash 0 := \mathbb{R}^2 - \lbrace 0 \rbrace$ (the Euclidean space $\mathbb{R}^2$ but without the origin).
+
+Repeat some of the steps we did above. Consider open subset 
+\[
+U_+ = \lbrace (x, y) | x > 0 \text{ or } y \neq 0 \rbrace
+\]
+obtained by considering
+\[
+\begin{aligned}
+& V_+ = \lbrace (r, \varphi) | r >0, \, \varphi \in (-\pi, \pi) \rbrace \in \mathbb{R}^2 \\
+& [0, \infty) \times (-\pi, \pi] - V_+ = \lbrace (r, \varphi) | r = 0 \text{ or } \varphi = \pi \rbrace
+\end{aligned}
+\]
+Consider if $\varphi = \pi$. Then $\begin{aligned} & \quad \\
+	& x = -r \\
+	& y = 0 \end{aligned}$ \, for $r> 0$, so $x<0 $ and $y=0$. If $r=0$, then $(x, y) = (0,0)$. So $\varphi^{-1}_{\text{pol}, +}(V_+) = \lbrace ( x, y) | x > 0 \text{ or } y\neq 0 \rbrace$
+
+\begin{equation} \label{Eq:UR22}
+	\begin{gathered}
+		(U_+, \varphi_{\text{pol},+}) \in \mathcal{A} \\ 
+		\begin{aligned}
+			U_+ & = \lbrace (x,y) | x>0 \text{ or } y \neq 0 \rbrace  \\
+			\varphi_{\text{pol}, +}(U) & = \lbrace (r,\varphi) | r >0, \varphi \in (-\pi,\pi) \rbrace
+		\end{aligned} \\
+	 \begin{aligned}
+			& \varphi_{\text{pol},+}:U_+ \to \mathbb{R}^2 \backslash 0 \\ 
+			& \varphi_{\text{pol},+}(x,y) = ( \sqrt{x^2 + y^2}, \begin{cases} \arctan{ \left( \frac{y}{x} \right) }  & \text{ if } (x > 0 \text{ and } y \geq 0 ) \text{ or } (x > 0 \text{ and } y \leq 0) \\ \arctan{ \left( \frac{y}{x} \right) } + \pi & \text{ if } ( x \leq 0 \text{ and } y > 0)) \\
+			\arctan{ \left( \frac{y}{x} \right) } - \pi & \text{ if } (x\leq 0 \text{ and } y < 0) \end{cases} ) \\ 
+			& \varphi^{-1}_{\text{pol},+}: \varphi_{\text{pol},+}(U) \to \mathbb{R}^2\backslash 0 \\ 
+			& \varphi^{-1}_{\text{pol},+}(r,\varphi) = (r\cos{\varphi}, r\sin{\varphi}) = (x,y)
+		\end{aligned}
+	\end{gathered}
+\end{equation}
+where $\pi/ 2 < \arctan(x) < \pi/ 2$, with limits $\lim_{x \to -\infty} \arctan(x) = -\pi/2$ and $\lim_{x \to \infty} \arctan(x) = \pi/2$ being well defined.
+
+
 
 \subsection{Spheres}
 
@@ -5121,7 +5300,7 @@ where the second and last term cancel each other out in the second to last expre
 
 \end{proof}
 
-The Riemann curvature tensor Riemm is antisymmetric in its last 2 entries. This is because
+The Riemann curvature tensor Riem is antisymmetric in its last 2 entries. This is because
 
 \[
 \begin{gathered}
