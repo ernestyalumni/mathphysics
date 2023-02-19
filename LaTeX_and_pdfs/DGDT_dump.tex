@@ -7454,8 +7454,6 @@ where $\mathbf{a}_r := \left( \frac{ d^2 \mathbf{r}}{dt^2} \right)_r$ is the app
 	\]
 \end{enumerate}
 
-
-
 Corresponding to right-invariant $\dot{g}_t = \mathbf{\omega} g_t$ of the tangent vector, the angular momentum is written in the right-invariant way as 
 \begin{equation}
 M_t = J \dot{g}_t = \overline{M} g_t, \quad \, \overline{M} = J \mathbf{\omega}
@@ -7528,6 +7526,98 @@ From Eq. \ref{Eq:ActiveAndPassiveRotationsEqual}, $A = B$ but
 \end{equation}
 
 \section{Rigid Body Dynamics, Rigid Body Motion}
+
+\subsection{Moment of Inertia}
+
+\solutionhead{Hand and Finch (1998) \cite{HaFi1998}, Problem 3, pp. 327}
+Hand and Finch (1998) \cite{HaFi1998}, Problem 3: (Moment of inertia tensor) from "Moment of Inertia Tensor", pp. 327. Which of the symmetric 3x3 matrices below could represent a physical moment of inertia tensor?
+
+\begin{equation}
+I_1 = \left( \begin{matrix} 1 & 2 & 1 \\ \dots & 0 & 2 \\ \dots & \dots & 1 \end{matrix}\right), \quad \, I_2 = \left( \begin{matrix} 1.94791 & .0347273 & -.394509 \\ \dots & 2.42924 & -.823746 \\ \dots & \dots & 1.62285 \end{matrix} \right)
+\end{equation} See Hand and Finch (1998) \cite{HaFi1998}, (8.131)
+
+Recall that 
+\[
+\begin{aligned}
+& I_{ij} = \sum m (r^2_l \delta_{ij} - x_i x_j) \\
+& I_{ii} = \sum m (r_j^2 + r_i^2)
+\end{aligned}
+\]
+
+$I_1$ is not physical since 
+\[
+\begin{gathered}
+\sum m (x^2 + z^2) = 0 \\
+\Longrightarrow \sum mx^2 = -\sum mz^2
+\end{gathered}
+\]
+but both sums on the left and right-hand sides are positive.
+
+\subsubsection{Moments of Inertia of Some Simple Objects}
+
+\begin{enumerate}
+\item[(a)] \textbf{Uniform thin ring of mass $M$ and radius $R$, around the axis of symmetry of the ring} \\
+
+See Kleppner and Kolenkow (2014) \cite{KlKo2014}, pp. 247, "Angular Momentum and Fixed Axis Rotation, Example 7.3 Moments of Inertia of Some Simple Objects; Hand and Finch (1998) \cite{HaFi1998}
+ for Problem 4: ($I$ for a circular hoop), pp. 327, Ch. 8 "The Dynamics of Rigid Bodies".
+
+Get the mass density $\lambda$ of a thin ring or i.e. circular hoop.
+
+\[
+M = \int \rho(\mathbf{x}) d\mathbf{x} \equiv \int \rho(\mathbf{s}) d\mathbf{s} = \int_0^{2 \pi} \rho (\theta) R d\theta = R \lambda 2\pi \Longrightarrow \boxed{ \lambda  = \frac{M}{ 2\pi R} = \rho(s)}
+\] 
+where $\lambda =$ mass density of a thin ring of total mass $M$, radius $R$ and where we can say $\lambda$ is constant because it's a \emph{uniform} thin ring.
+
+\begin{equation}
+I = \int r^2 dm  = \int_0^{2\pi} R^2 \lambda R d\theta = MR^2
+\end{equation}
+
+Now from Hand and Finch (1998) \cite{HaFi1998}, Problem 4, pp. 327, for the principal axes and moments, recall that
+\[
+\begin{aligned}
+	& I_3 = \int (x^2 + y^2) dm \\
+	& I_2 = \int (x^2 + z^2) dm = \int x^2 dm \\
+	& I_1 = \int (y^2 +z^2 ) dm = \int y^2 dm
+\end{aligned}
+\]
+and that
+\[
+\begin{gathered}
+I_3 = \int R^2 dm = M^2 
+ \quad \quad \, \Longrightarrow 
+\begin{gathered}
+I_3 = I_1 + I_2 \text{ so that by symmetry } I_1 = I_2 = \frac{MR^2}{2}
+\end{gathered}
+\end{gathered}
+\]
+
+\item[(b)] \textbf{Uniform thin disk of mass $M$ and radius $R$, around the axis of symmetry of the disk} \\
+
+\[
+\begin{tikzpicture}
+\fill[top color=gray!50!black,bottom color=gray!10,middle color=gray,shading=axis,opacity=0.25] (0,0) circle (2cm and 0.5cm);
+\fill[left color=gray!50!black,right color=gray!50!black,middle color=gray!50,shading=axis,opacity=0.25] (2,0) -- (2,0.5) arc (360:180:2cm and 0.5cm) -- (-2,0) arc (180:360:2cm and 0.5cm);
+\fill[top color=gray!90!,bottom color=gray!2,middle color=gray!30,shading=axis,opacity=0.25] (0,0.5) circle (2cm and 0.5cm);
+\draw (-2,0.5) -- (-2,0) arc (180:360:2cm and 0.5cm) -- (2,0.5) ++ (-2,0) circle (2cm and 0.5cm);
+\draw[densely dashed] (-2,0) arc (180:0:2cm and 0.5cm);
+\end{tikzpicture}
+\]
+
+
+Using the fact that the disk is uniform, so mass density $\sigma$ is uniform
+\[
+M = \int \rho (\mathbf{x}) d\mathbf{x} = \int \rho(\mathbf{s}) d\mathbf{s} = \sigma \int r d\theta dr = \sigma \frac{1}{2} R^2 2\pi = \sigma \pi R^2
+\]
+\[
+\sigma = \frac{M}{\pi R^2} = \text{ mass per unit area }
+\]
+
+\begin{equation}
+I  = \int r^2 dm = \int r^2 \sigma r d\theta dr = \sigma \frac{1}{4} r^4 2\pi = \boxed{ \frac{MR^2}{2} }
+\end{equation}
+
+\end{enumerate}
+
 
 \subsection{Euler's equations of motion, Euler's rotation equations}
 
