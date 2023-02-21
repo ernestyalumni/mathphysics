@@ -7631,6 +7631,204 @@ In the body frame, inertia tensor $J \equiv I$ is time-independent.
 
 Use (Eq. (4.36) Kambe (2009) \cite{TKambe2009}
 
+\section{Waves}
+
+\subsection{Forced Oscillation and Resonance, and Damped Oscillations}
+
+See Georgi (1992) \cite{Geor1992}.
+
+\subsubsection{Damped Oscillators}
+
+See Sec. 2.1 "Damped Oscillations", Georgi (1992) \cite{Geor1992}.
+
+For small velocities, frictional force takes the form of
+
+\begin{equation}
+	-m\Gamma v
+\end{equation}
+See (2.1.1) of Georgi (1992) \cite{Geor1992}. $1/\Gamma$ has the dimensions of time.
+
+Now
+\[
+\begin{gathered}
+	\sum F = m\ddot{x} = -m \Gamma v - Kx
+\end{gathered}
+\]
+or
+\begin{equation}
+	\ddot{x} + \Gamma \dot{x} + \frac{K}{m} x = \ddot{x} + \Gamma \dot{x} + \omega_0^2 x = 0
+\end{equation}
+where $\omega_0 = \sqrt{ \frac{K}{m} }$. See (2.1.2) of Georgi (1992) \cite{Geor1992}.
+
+Since $\ddot{x} + \Gamma \dot{x} + \omega_0^2 x = 0$ is 1. time translation invariant, i.e. if $x(t+a)$ is a solution, then $x(t)$ is a solution, and 2. linearity, then find irreducible solutions of form $z(t) = e^{\alpha t}$.
+
+\[
+\Longrightarrow \alpha^2 + \Gamma \alpha + \omega_0^2 =0 \text{ or } \alpha = \frac{ -\Gamma \pm \sqrt{ \Gamma^2 - 4\omega_0^2}}{2}
+\]
+
+\subsubsection{Overdamped oscillations} See Sec. 2.1.1 "Overdamped Oscillations" of Georgi (1992) \cite{Geor1992}.
+
+If $\frac{\Gamma}{2} > \omega_0$, let
+\begin{equation}
+	\Gamma_{\pm} = \frac{\Gamma}{2} \pm \sqrt{ \frac{\Gamma^2}{4} - \omega_0^2}
+\end{equation}
+See (2.1.8) of Georgi (1992) \cite{Geor1992}
+
+\begin{equation}
+	x(t) = A_+ e^{-\Gamma_+ t} + A_- e^{-\Gamma_- t}
+\end{equation}
+See (2.1.7) of Georgi (1992) \cite{Geor1992}.
+
+\subsubsection{Underdamped Oscillations} See Sec. 2.1.2 "Underdamped Oscillations" of Georgi (1992) \cite{Geor1992}.
+
+If $\frac{\Gamma}{2} < \omega_0$, so
+\[
+\alpha = \frac{-\Gamma }{2} \pm i \sqrt{ \omega_0^2 - \frac{\Gamma^2}{2} } 
+\]
+
+so 
+\begin{equation}
+	\omega^2 = \omega_0^2 - \frac{ \Gamma^2}{4}
+\end{equation}
+
+\begin{equation}
+	x(t) = Ae^{\frac{-\Gamma}{2} t} \cos{ (\omega t- \theta)}
+\end{equation}
+See (2.1.10) of Georgi (1992) \cite{Geor1992}.
+
+\[
+x(t) = A e^{\frac{-\Gamma}{2} t} c(\omega t - \theta) = Ae^{\frac{-\Gamma}{2}t } (c(\omega t) c(\theta) + s(\omega t) s(\theta))
+\]
+\begin{equation}
+	x(t) = e^{-\frac{\Gamma}{2}t} (c \cos{(\omega t)} + d\sin{(\omega t)})
+\end{equation}
+See (2.1.11) of Georgi (1992) \cite{Geor1992}, where $c= A\cos{\theta}$, $d=A\sin{\theta}$.
+
+\subsubsection{Critically Damped Oscillations} See Sec. 2.1.3 "Critically Damped Oscillations" of Georgi (1992) \cite{Geor1992}.
+
+If $\frac{\Gamma}{2} = \omega_0$, we only get $e^{\frac{-\Gamma}{2} t}$. We know that there will be 2 solutions to the 2nd-order differential equation.
+
+One way to find the other solution is to approach this situation from underdamped case as a limit, i.e.
+\[
+\omega \to 0 \text{from} \omega > 0
+\]
+
+\[
+\begin{gathered}
+	\begin{aligned}
+		& \lim_{\omega \to 0} e^{ \frac{-\Gamma}{2}(t) } c\cos{(\omega t)} = e^{ \frac{-\Gamma}{2} t} \\
+		& \lim_{\omega\to 0} e^{\frac{-\Gamma}{2} t} d \sin{\omega t} = 0
+	\end{aligned}
+\end{gathered}
+\]
+
+Divide the second term by $\omega$, because $\omega$ doesn't depend on $\omega$, $\frac{1}{\omega} e^{\frac{-\Gamma}{2} t} d\sin{\omega t}$ is still a solution.
+
+\[
+\begin{gathered}
+	\lim_{\omega \to 0} e^{ \frac{-\Gamma}{2} t} \frac{ \sin{ \omega t} }{\omega} = te^{\frac{-\Gamma}{2} t} (\text{by L'Hopital's rule})
+\end{gathered}
+\]
+So
+\[
+x(t) = ce^{ - \Gamma t/2} + dte^{-\Gamma t/2}
+\]
+
+\subsubsection{Forced oscillations} See Sec. 2.2 "Forced Oscillations" of Georgi (1992) \cite{Geor1992}.
+Equation of motion is
+\begin{equation}
+	\ddot{x}(t) + \Gamma \dot{x} + \omega_0^2 x = F(t) /m 
+\end{equation}
+where
+\begin{equation}
+	F(t) = F_0 \cos{(\omega_dt)}
+\end{equation}
+See (2.1.5), (2.1.4) of Georgi (1992) \cite{Geor1992}, respectively. \\
+
+$\frac{\omega_d}{2\pi} = $ driving frequency, driving frequency can be tuned completely independently of the other parameters of the system.
+
+If we let 
+\[
+\ddot{z}(t) + \Gamma \dot{z}(t) + \omega_0^2 z(t) = \mathcal{F}(t) /m
+\]
+where $\mathcal{F}(t) = F_0 e^{-i \omega_0 t}$.
+
+Then if we look for steady state solution of the form
+\[
+z(t) = A e^{-i \omega_{\alpha} t}
+\]
+
+One can think like the steady state solution is such that the system is driven with driving frequency $\omega_d$.
+
+\begin{equation}
+	(-\omega_d^2 + (-i \omega_d)\Gamma + \omega_0^2)A = \frac{F_0}{m} 
+\end{equation}
+See (2.20) of Georgi (1992) \cite{Geor1992}
+
+or
+\begin{equation}
+	A = \frac{ F_0 / m }{ \omega_0^2 - i\omega_d \Gamma - \omega_d^2}
+\end{equation}
+See (2.21) of Georgi (1992) \cite{Geor1992}
+
+The amplitude $A$ of the displacement is proportional to amplitude of driving force; this is as expected from linearity.
+
+\[
+\begin{gathered}
+	\begin{aligned}
+		& A = \frac{ \frac{F_0}{m} (\omega_0^2 + i \omega_d \Gamma - \omega_d^2 )}{ (\omega_0^2 - \omega_d^2)^2 + (\omega_d \Gamma)^2 } \text{ with } & \\
+		& \Re{A} = \frac{ (\omega_0^2 - \omega_d^2) F_0/m }{(\omega_0^2 - \omega_d^2)^2 + (\omega_d \Gamma)^2} & \Im{A} \equiv B = \frac{ \Gamma \omega_d F_0 /m }{ (\omega_0^2 - \omega_d^2)^2 + (\Gamma \omega_d )^2 }
+			\end{aligned} \\
+		\mathcal{A} e^{- i\omega_d t} = \mathcal{A} ( c(\omega_dt) - i s(\omega_dt)) \xrightarrow{\Re} \Re{A } c(\omega_d t) + \Im{A} s(\omega_d t)
+\end{gathered}
+\]
+where I use $\mathcal{A} \equiv A$ notation interchangeably, relying on context on whether it's real or complex, and $\cos{\omega_d t} \equiv c(\omega_d t)$, $\sin{\omega_d t} \equiv s(\omega_d t)$ as shorthand notation for sin and cos. \\
+
+For 
+\[
+x(t) = \Re{z(t)} = (\Re{A}) c(\omega_d t) + Bs(\omega_d t)
+\]
+
+Term proportional to $B$ is $90^{\circ}$ out of phase. \\
+Real part of $\mathcal{A}$, $A = \Re{A}$ is the \emph{elastic amplitude.} \\
+Imaginary part of $\mathcal{A}$, $B = \Im{A}$ is called the \emph{absorptive amplitude}. \\
+
+\subsubsection{Resonances} See Sec. 2.3 "Resonances" of Georgi (1992) \cite{Geor1992}.
+
+\[
+\omega_d = \omega_0
+\]
+so $\Re{A} = 0$, $B = \frac{ F_0 / m}{ \Gamma \omega_d}$.
+
+\subsubsection{Work, Work done by forced oscillation on the system}
+
+Work is a nonlinear function of force, so we must use real force and real displacement.
+
+\[
+P(t) = F(t) \frac{\partial }{\partial t} X(t) = F_0 c(\omega_d t) (\omega_d) (-\Re{A} s(\omega_d t) + B c(\omega_d t))
+\]
+
+The first term is proportional to $s(2\omega_d t)$ and averages to 0 over a half period.
+
+\[
+\int_{t_0}^{t_0 + \pi / \omega_d} s(2\omega_d t) dt = \left. \frac{ -c(2\omega_d t) }{2 \omega_d } \right|_{t_0}^{t_0 + \pi /\omega_d} = 0
+\]
+
+This is why $\Re{A}$ is called elastic amplitude. If $A$ dominates, then energy fed into the system at 1 time is returned at a later time, as in elastic collision in mechanics.
+\[
+\begin{gathered}
+	P_{\text{average}} \text{of 2nd. term} = P_{\text{average}} \\
+	\text{ Consider } \\
+	F_0 \omega_d B \int_{t_0}^{t_0 + \pi/ \omega_d} c^2 (\omega_d t) dt = F_0 \omega_d B \int_{t_0}^{t_0 + \pi/ \omega_d} \frac{ c(2\omega_d t) + 1}{2} dt = \\
+	F_0 \omega_d B \left. \left( \frac{ s(2\omega_d t) }{ 4 \omega_d } + \frac{t}{2} \right) \right|_{t_0}^{t_0 + \frac{\pi}{\omega_d} } = F_0 \omega_d B \frac{\pi}{2\omega_d} = \frac{F_0 B\pi}{2} \\
+	P_{\text{average}} = \frac{ \int_{t_0}^{t_0 + \pi / \omega_d} P(t) }{ \Delta t}  \text{ where } \Delta t = \pi / \omega_d \\
+	\Longrightarrow P_{\text{average}} = \frac{ F_0 B\pi /2}{ \pi / \omega_d}  = \boxed{ \frac{F_0 \omega_d B}{2} }
+\end{gathered}
+\]
+
+
+
+
 \section{Fluid Mechanics, Fluid Flow}
 
 \subsubsection{Courses to consider}
@@ -13725,6 +13923,9 @@ Vladimir I. Arnold, Valery V. Kozlov, Anatoly I. Neishtadt.  \textbf{Mathematica
 Ralph Abraham and Jerrold E. Marsden. 
 \textbf{Foundations of Mechanics} (Ams Chelsea Publishing) Hardcover – May 21, 2008.  American Mathematical Society; 2 edition (May 21, 2008). ISBN-10: 0821844385
 ISBN-13: 978-0821844380
+
+\bibitem{Geor1992}
+Howard Georgi. \textbf{The Physics of Waves}. Benjamin Cummings; 1st edition. 1992. ISBN-13:978-0136656210.
 
 \bibitem{Wald1984}
 Robert M. Wald. \textbf{General Relativity}. The University of Chicago Press. 1984.
