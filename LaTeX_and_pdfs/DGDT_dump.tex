@@ -7710,7 +7710,7 @@ If $\frac{\Gamma}{2} = \omega_0$, we only get $e^{\frac{-\Gamma}{2} t}$. We know
 
 One way to find the other solution is to approach this situation from underdamped case as a limit, i.e.
 \[
-\omega \to 0 \text{from} \omega > 0
+\omega \to 0 \text{ from } \omega > 0
 \]
 
 \[
@@ -7826,7 +7826,67 @@ This is why $\Re{A}$ is called elastic amplitude. If $A$ dominates, then energy 
 \end{gathered}
 \]
 
+Recall that
+\[
+B = \frac{ \Gamma \omega_d F_0 /m }{ (\omega_0^2 - \omega_d^2)^2 + (\Gamma \omega_d)^2 }
+\]
 
+\[
+\begin{gathered}
+	P_{\text{average}} = \frac{F_0 \omega_d B}{2} = \frac{ (F_0 \omega_d)^2 \Gamma /2m }{ (\omega_0^2 - \omega_d^2)^2 + (\Gamma \omega_d)^2 } \xrightarrow{ \omega_d\to \omega_0} \frac{F_0^2}{ 2m \Gamma}
+\end{gathered}
+\]
+
+The maximum average power is inversely proportional to $\Gamma$. \\
+
+To find the width (for fixed height) of the resonance curve (curve of $P_{\text{average}}$, depending on $\omega_d$), \\
+find the value $\omega_d = \omega_{1/2}$ s.t. 
+\[
+P_{\text{average}} = \frac{P_{\text{average,max}}}{2} = \frac{F_0^2}{4m \Gamma}
+\]
+Then
+
+\[
+\begin{gathered}
+\frac{P_{\text{average,max}}}{2} = \frac{F_0^2}{4m \Gamma} = \frac{ (F_0^2 \Gamma /2m ) \omega_{1/2}^2 }{ (\omega_{1/2}^2 - \omega_0^2)^2 + (\Gamma \omega_{1/2})^2 } \text{ or } \omega_{1/2}^4 -2\omega_{1/2}^2 \omega_0^2 + \omega_0^2 + \Gamma^2 \omega_{1/2}^2 = 2\Gamma^2 \omega_{1/2}^2 \text{ or } \\
+\begin{aligned}
+& \omega_{1/2}^4 - (2\omega_0^2 + \Gamma^2) \omega_{1/2}^2 + \omega_0^4 = 0 \\
+& \omega_{1/2}^2 = \frac{ (2 \omega_0^2 + \Gamma^2) \pm \sqrt{ ( \Gamma^2 + 2\omega_0^2)^2 - 4\omega_0^4 } }{2} = \omega_0^2 + \frac{ \Gamma^2}{2} \pm \sqrt{ \frac{\Gamma^4 }{4}  + \Gamma^2 \omega_0^2 } = \omega_0^2 + \frac{ \Gamma^2}{2} \pm \Gamma \sqrt{ \frac{\Gamma^2 }{4}  +  \omega_0^2 }
+\end{aligned}
+\end{gathered}
+\]
+Now (EY: it seems like you would have needed to have known the answer beforehand to have tried this factorization)
+\[
+\begin{gathered}
+\omega_{1/2}^2 = \left( \sqrt{ \omega_0^2 + \frac{\Gamma^2}{4} } \right)^2 \pm 2 \frac{\Gamma}{2} \sqrt{ \frac{\Gamma^2}{4} + \omega_0^2 } + \left( \frac{\Gamma}{2} \right)^2  = \left( \sqrt{ \omega_0^2 + \frac{ \Gamma^2}{4} } \pm \frac{\Gamma}{2} \right)^2
+\end{gathered}
+\]
+Then
+\begin{equation}
+\boxed{ \omega_{1/2} = \sqrt{ \omega_0^2 + \frac{\Gamma^2}{4} } \pm \frac{\Gamma}{2} }
+\end{equation}
+
+The "free oscillation" of the system would be the case of underdamped oscillations; recall
+\[
+x(t) = A \exp{ \left( \frac{-\Gamma t}{2} \right) }\cos{ (\omega t - \theta) }
+\]
+Notice the exponential decay behavior of the amplitude or i.e. magnitude of $x(t)$ due to the $\exp{ \left( \frac{-\Gamma t}{2} \right)}$ factor. Let's just say the "lifetime" of free oscillation is the time for the amplitude to drop to half its value, i.e.
+\[
+\begin{gathered}
+\frac{1}{2} = \exp{ \left( \frac{-\Gamma t_{1/2} }{2} \right) } \text{ or } -\ln{2} = \frac{-\Gamma t_{1/2} }{2} , \quad \text{ or } t_{1/2} = \frac{2\ln{2} }{\Gamma}
+\end{gathered}
+\]
+
+For the time dependence of the free oscillation, i.e. $x(t) = A \exp{ \left( \frac{-\Gamma t}{2} \right) }\cos{ (\omega t - \theta) }$, then we say that the lifetime of the state in free oscillation is of order $1/\Gamma$, i.e.
+\[
+t_{1/2} = \frac{2\ln{2}}{ \Gamma}
+\]
+
+The width of the resonance peak in forced oscillation is 
+\[
+\Delta \omega_{1/2} = \Gamma
+\]
+so width of the resonance peak in forced oscillation is inversely proportional to the lifetime of the corresponding normal mode of free oscillation.
 
 
 \section{Fluid Mechanics, Fluid Flow}
