@@ -29,7 +29,7 @@
 \usetikzlibrary{matrix,arrows,decorations.pathmorphing}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{cd}
-
+\usetikzlibrary{decorations.pathmorphing}
 
 \usepackage{pifont} % http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf
 
@@ -7736,7 +7736,7 @@ x(t) = ce^{ - \Gamma t/2} + dte^{-\Gamma t/2}
 
 \subsubsection{Forced oscillations} See Sec. 2.2 "Forced Oscillations" of Georgi (1992) \cite{Geor1992}.
 Equation of motion is
-\begin{equation}
+\begin{equation}\ref{Eq:ForcedOscillationEquationOfMotion}
 	\ddot{x}(t) + \Gamma \dot{x} + \omega_0^2 x = F(t) /m 
 \end{equation}
 where
@@ -7888,6 +7888,62 @@ The width of the resonance peak in forced oscillation is
 \]
 so width of the resonance peak in forced oscillation is inversely proportional to the lifetime of the corresponding normal mode of free oscillation.
 
+\subsection{Apply Fourier Transform to Forced Oscillations}
+
+So for the equation of motion, Eq. \ref{Eq:ForcedOscillationEquationOfMotion},
+\[
+\ddot{x} + \Gamma \dot{x} + \omega_0^2 x = F(t)
+\]
+
+Assume we drive the system at frequency $\omega_d$ and that system's response's frequency is also $\omega_d$.
+
+Then
+
+\[
+\begin{gathered}
+(i\omega_d)^2 \widehat{x} + (i\omega_d) \Gamma \widehat{x} + \omega_0^2 \widehat{x} = \widehat{F}(\omega_d) \text{ or } \frac{ \widehat{x}(\omega_d) }{ \widehat{F}(\omega_d) } = \frac{1}{ - (\omega_d^2 - i \omega_d \Gamma - \omega_0^2) }
+\end{gathered}
+\]
+
+So in general, $\frac{ \widehat{x}(\omega_d) }{ \widehat{F}(\omega_d) }$ has a real part and imaginary part.
+
+
+\subsection{Apply Laplace Transform to Forced Oscillations}
+
+Recall Eq. \ref{Eq:ForcedOscillationEquationOfMotion},
+\[
+\ddot{x} + \Gamma \dot{x} + k x = mF(t)
+\]
+so that if $\frac{k}{m} = \omega_0^2$, then
+\[
+\begin{gathered}
+\xrightarrow{ \mathcal{L}} s^2 \widehat{x}(s) - s x(0) - x'(0) + \Gamma (s\widehat{x}(s) - x(0)) + \omega_0^2 \widehat{x}(s) = \widehat{F}(s) \text{ or } \\
+(s^2 + \Gamma s + \omega_0^2) \widehat{x}(s) - (\Gamma + s) x(0) - x'(0) = \widehat{F}(s)
+\end{gathered}
+\]
+
+If $x'(0) = 0$, and we start system at $x(0) =0$, so that we rely upon $F(t)$ to drive system, then we get a ratio of output or "response" to input, the driving, forced oscillation, per mass,
+\[
+\begin{gathered}
+	\frac{ \widehat{x}(s) }{ \widehat{F}(s) } = \frac{1}{ s^2 + \Gamma s + \omega_0^2 } = \frac{1}{ \left( s + \frac{ \Gamma + \sqrt{ \Gamma^2 - 4 \omega_0^2 } }{ 2 } \right) \left( s + \frac{ \Gamma - \sqrt{ \Gamma^2 - 4 \omega_0^2 } }{ 2} \right) }
+\end{gathered}
+\]
+Now look at where the denominator "blows up", the singularities. We had the case that if $\Gamma^2 - 4\omega^2 \geq 0 $ or $\frac{\Gamma}{2} \geq \omega_0$, we had overdamped or critically damped exponential decay. Then, the value of $s$ where a singularity occurs would be completely real. For the underdamped case with free oscillation, the value of $s$ where a singularity occurs would have an imaginary part.
+
+If initial conditions can't be ignored, \\
+then if $x'(0) =0$,
+\[
+\begin{gathered}
+(s^2 + \Gamma s + \omega_0^2) \widehat{x}(s) - x'(0) = \widehat{F}(s) \text{ or } \frac{ \widehat{x}(s) }{ \widehat{F}(s) } = \frac{ 1 + x'(0) / \widehat{F}(s) }{ s^2 + \Gamma s + \omega_0^2 }
+\end{gathered}
+\]
+
+But if $x'(0) =0$,
+\[
+\begin{gathered}
+\frac{ \widehat{x}(s) }{ \widehat{F}(s) } = \frac{ 1 + (\Gamma +s )x(0) / \widehat{F}(s) }{ s^2 + \Gamma s + \omega_0^2 }
+\end{gathered}
+\]
 
 \section{Fluid Mechanics, Fluid Flow}
 
@@ -7947,7 +8003,27 @@ buoyancy $F \equiv$ force exerted vertically on body by its surrounding fluid $ 
 
 For a body floating in a fluid, the magnitude of the buoyancy force acting on the body is equal to the magnitude of the gravitational force on the fluid displaced by the part of the body submerged in the fluid.
 
+% https://tex.stackexchange.com/questions/341318/to-draw-a-diagram-like-this-what-code-do-i-need
 
+\begin{tikzpicture}
+
+\fill [shade,
+        top color=white,
+        bottom color=blue] (-4,0) rectangle (4,-5);
+
+\draw [decoration={random steps,segment length=0.3cm,amplitude=.1cm},
+        decorate,
+        rounded corners=.1cm]
+     (-3,-4) -- (3,-4) -- (0,2) -- (-3,-4);
+
+
+\draw [thick,blue] (-4,0) -- (4,0);
+
+\node [above=2mm] at (0,0) {$V_{as}$};
+\node [below=1cm] at (0,0) {$V_{is}$};
+
+\draw [orange] (0.2,2) to[bend left] node[pos=0.5,sloped,below,font=\tiny,black] {WYSIWYG} (1.3,0.1);
+\end{tikzpicture}
 
 \subsection{Fluids as a State of Matter}
 
@@ -13986,6 +14062,9 @@ ISBN-13: 978-0821844380
 
 \bibitem{Geor1992}
 Howard Georgi. \textbf{The Physics of Waves}. Benjamin Cummings; 1st edition. 1992. ISBN-13:978-0136656210.
+
+\bibitem{Mauc2004}
+Sean Mauch. \textbf{Introduction to Methods of Applied Mathematics or Advanced Mathematical Methods for Scientists and Engineers}. January 24, 2004. Mauch Publishing Company, un-Incorporated. 
 
 \bibitem{Wald1984}
 Robert M. Wald. \textbf{General Relativity}. The University of Chicago Press. 1984.

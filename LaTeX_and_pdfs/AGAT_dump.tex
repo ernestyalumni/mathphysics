@@ -7992,7 +7992,7 @@ now $f=h_1g_1 + \dots +h_tg_t+ \overline{f}^G$
 \subsection{Solving Equations via Eigenvalues and Eigenvectors}
 
 
-\section{ Resultants }
+\section{Resultants}
 
 \section{Computation in Local Rings}
 
@@ -8281,6 +8281,511 @@ then $g$ also a monomial.
 
 
 \href{https://martinralbrecht.files.wordpress.com/2010/07/20131022_buchberger_dtu.pdf}{Gr\"{o}bner Bases, Martin R. Albrecht of the DTU Crypto Group}
+
+\part{Fourier Transform}
+
+\section{Derivation of Fourier Transform; Definition}
+
+We will follow Sec. 32.2 of Mauch (2004) \cite{Mauc2004}.
+
+Consider now this definition of the Fourier Transform, different from Mauch (2004) \cite{Mauc2004}.
+
+\begin{definition}
+\begin{equation}
+\begin{aligned}
+\widehat{f}(k) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} dx f(x) e^{-ikx} \\
+f(x) & = \int_{-\infty}^{\infty} dk \widehat{f}(k) e^{ikx} \quad \, \forall \, x \in \mathbb{R}
+\end{aligned}
+\end{equation}
+\end{definition}
+
+\subsection{Fourier Transform Properties}
+
+Recall "Fourier Transformation of a Derivative", Mauch (2004) \cite{Mauc2004}.
+
+\[
+\begin{gathered}
+\mathcal{F}[y'(x)] = \frac{1}{2\pi} \int_{-\infty}^{\infty} dx y'(x) e^{-i\omega x } = \left[ \frac{1}{2\pi} y(x) e^{-i\omega x} \right]_{-\infty}^{\infty} - \frac{1}{2\pi} \int_{-\infty}^{\infty} dx y(x) e^{-i\omega x} (-i \omega) = \\
+= i\omega \mathcal{F}[y(x)]
+\end{gathered}
+\]
+Next, consider $y''(x)$:
+\[
+\begin{gathered}
+\mathcal{F}[y''(x)] = \frac{1}{2\pi} \int_{-\infty}^{\infty} dx y''(x) e^{-i\omega x } = \left[ \frac{1}{2\pi} y'(x) e^{-i\omega x} \right]_{-\infty}^{\infty} + i \omega \mathcal{F}[y'(x)] = \\
+= (i\omega)^2 \mathcal{F}[y(x)]
+\end{gathered}
+\]
+Then 
+\begin{equation}
+\mathcal{F}[y^{(n)}(x) ] = (i\omega)^n \mathcal{F}[y(x)]
+\end{equation}
+
+\part{Laplace Transform}
+
+\begin{quotation}
+This is for you, you, my number one \\
+This is for you, you, my number one \\
+
+This is for you, you, my number one \\
+
+Spotlights, big stage \\
+Fifty thousand fans screamin' in a rage \\
+Bodyguards and limousines \\
+This is the way I see you in my dreams \\
+\end{quotation}
+- Usher, "Superstar" \\
+
+\begin{quotation}
+Me: In which category or functor in category theory do Laplace transforms belong in? \\
+
+Chat-GPT: Laplace transforms can be studied in the category of topological vector spaces. More specifically, the Laplace transform can be seen as a functor from the category of functions of exponential growth to the category of holomorphic functions defined on a half-plane in the complex plane. \\
+
+In this category, the morphisms are continuous linear maps that preserve the exponential growth of functions. The Laplace transform functor takes a function in the source category and maps it to its Laplace transform in the target category. \\
+
+The use of category theory provides a powerful framework for studying Laplace transforms and their properties in a more abstract and general way.
+\end{quotation}
+
+\section{Laplace Transform: Definitions and Properties}
+
+\subsection{Laplace Transform Definition and Examples}
+
+We will follow Mauch (2004) \cite{Mauc2004}.
+
+\begin{definition}
+\begin{equation}
+\mathcal{L}[f(t)] = \int_0^{\infty} e^{-st} f(t) dt \equiv \widehat{f}(s)
+\end{equation}
+\end{definition}
+
+\begin{definition}
+A function $f(t)$ is of \textbf{exponential order} $\alpha$ if $\exists \, $ constants $t_0$, and $M$ s.t.
+\begin{equation}
+|f(t) | < M e^{\alpha t} \quad \, \forall \, t > t_0
+\end{equation}
+\end{definition}
+
+If $\exists \, $ $\int_0^{t_0} f(t) dt$ and $f(t)$ is of exponential order $\alpha$, then $\exists \, \widehat{f}(s)$ \, $\forall \, \Re{(s)} > \alpha$.
+
+\begin{proof}
+\[
+\begin{gathered}
+| \int_0^{\infty} e^{-st} f(t) dt | = | \int_0^{\infty} \exp{ (-\Re{(s)} t - i \Im{ (s)} t )} f(t) dt | \leq \int_0^{\infty} \exp{( -\Re{(s)} t)} |f(t)| dt < \\
+< \int_0^{\infty} \exp{ (- \Re{(s)} t) } Me^{\alpha t} dt   = M \int_0^{\infty} dt \exp{ (- (\Re{ (s)} - \alpha ) t ) } = M \left. \left( \frac{ \exp{ (- (\Re{ (s)} - \alpha ) t} }{ - (\Re{ (s)} - \alpha ) } \right) \right|_0^{\infty} = \frac{M }{ \Re{ (s) } - \alpha }
+\end{gathered}
+\]
+if $\Re{(s)} > \alpha$
+\end{proof}
+
+For example, \\
+$\sin{(t)}$ is of exponential order 0. \\
+$te^{2t}$ is of exponential order $\alpha$, \, $\forall \, \alpha >2$.
+
+Example 31.1 (Mauch (2004) \cite{Mauc2004}). Consider the Laplace transform of $f(t) = 1$.  Since $f(t)= 1$ is of exponential order $\alpha $ \, $\forall \, \alpha >0$, Laplace transform integral converges for $\Re{(s)} < 0$.
+
+\[
+\begin{gathered}
+\widehat{f}(s) = \int_0^{\infty} e^{-st} dt = \left[ \frac{-1}{s} e^{-st} \right]_0^{\infty} = \frac{1}{s}
+\end{gathered}
+\]
+
+Example 31.1.3. Consider Laplace transform of the Heaviside function
+\[
+\begin{gathered}
+H(t-c) = \begin{cases}
+0 & \text{ for } t < c \\
+1 & \text{ for } t > c
+\end{cases}
+\end{gathered}
+\]
+where $c>0$.
+
+\[
+\begin{gathered}
+\mathcal{L}[H(t-c)] = \int_0^{\infty} e^{-st} H(t-c) dt = \int_c^{\infty} e^{-st} dt = \left[ \frac{e^{-st}}{-s} \right]_c^{\infty} = \frac{e^{-cs}}{s} \quad \, \forall \, \Re{(s)} > 0
+\end{gathered}
+\]
+
+Example 31.1.4. Consider $H(t-c) f(t-c)$
+\[
+\begin{gathered}
+\mathcal{L}[H(t-c) f(t-c)] = \int_0^{\infty} dt e^{-st} H(t-c) f(t-c) = \int_c^{\infty} dt e^{-st} f(t-c) = \int_0^{\infty} dt e^{-s(t+c) } f(t) = e^{-cs} \widehat{f}(s)
+\end{gathered}
+\]
+
+\subsubsection{Laplace Transform Properties and Formulae}
+
+\begin{theorem}
+\begin{equation}
+\begin{aligned}
+& \mathcal{L}\left[ \frac{d}{dt} f(t) \right] = s\widehat{f}(s) - f(0) \\
+& \mathcal{L}\left[ \frac{d^2}{dt^2} f(t) \right] = s^2 \widehat{f}(s) - sf(0) - f'(0)
+\end{aligned}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+To deserve these formulas,
+\[
+\begin{gathered}
+\begin{aligned}
+\mathcal{L}\left[ \frac{d}{dt} f(t) \right] & = \int_0^{\infty} dt e^{-st} f'(t) = \left[ e^{-st}f(t) \right]_0^{\infty} - \int_0^{\infty}dt (-se^{-st}) f(t) = -f(0) + s\widehat{f}(s) \\
+\mathcal{L}\left[ \frac{d^2}{dt^2} f(t) \right] & = \int_0^{\infty} dt e^{-st} f''(t) = \left[ e^{-st} f'(t) \right]_0^{\infty} - \int_0^{\infty} dt (-se^{-st} ) f'(t) = -f'(0) + s \mathcal{L} [ \frac{d}{dt} f'(t) ] = \\
+& = -f'(0) - sf(0 ) + s^2 \widehat{f}(s)
+\end{aligned}
+\end{gathered}
+\]
+\end{proof}
+
+\subsection{Inverse Laplace Transform: Definition}
+
+\begin{definition}
+The inverse Laplace transform is denoted
+\begin{equation}
+f(t) = \mathcal{L}^{-1}[ \widehat{f}(s) ]
+\end{equation}
+Compute the inverse Laplace transform with the Mellin inversion formula:
+
+\begin{equation}
+f(t) = \frac{1}{2\pi i} \int_{\alpha - i \infty}^{\alpha + i \infty} ds e^{st} \widehat{f}(s)
+\end{equation}
+where $\alpha$ is a real constant that's to the right of the singularities of $\widehat{f}(s)$.
+\end{definition}
+
+Consider 
+\[
+\begin{gathered}
+\mathcal{L} [ \mathcal{L}^{-1} [\widehat{f}(s)] ] =  \mathcal{L} \left[ \frac{1}{2\pi i} \int_{\alpha - i \infty}^{\alpha + i \infty} dz e^{zt} \widehat{f}(z) \right] = \int_0^{\infty} dt e^{-st} \frac{1}{2\pi i} \int_{\alpha - i \infty}^{\alpha + i \infty} dz e^{zt} \widehat{f}(z)
+\end{gathered}
+\]
+Interchange order of integration:
+\[
+\begin{gathered}
+\frac{1}{2\pi i} \int_{\alpha - i \infty }^{\alpha + i \infty} dz \widehat{f}(z) \int_0^{\infty} dt e^{-(s- z) t}
+\end{gathered}
+\]
+Since $\Re{ (z)} = \alpha$ (because $z$ is from $\alpha - i \infty$ to $\alpha + i \infty$, the integral in $t$ exists for $\Re{ (s)} > \alpha$.
+So
+\[
+\begin{gathered}
+\int_0^{\infty} dt e^{-(s-z)t} =  \left( \frac{ e^{-(s-z)t} }{ -(s-z) } \right)_0^{\infty} = \frac{1}{s-z} \Longrightarrow \frac{1}{2 \pi i} \int_{\alpha - i \infty}^{\alpha + i \infty} dz \frac{\widehat{f}(z) }{ s-z}
+\end{gathered}
+\]
+
+\part{Waves}
+
+\section{Waves}
+
+\subsection{Forced Oscillation and Resonance, and Damped Oscillations}
+
+See Georgi (1992) \cite{Geor1992}.
+
+\subsubsection{Damped Oscillators}
+
+See Sec. 2.1 "Damped Oscillations", Georgi (1992) \cite{Geor1992}.
+
+For small velocities, frictional force takes the form of
+
+\begin{equation}
+	-m\Gamma v
+\end{equation}
+See (2.1.1) of Georgi (1992) \cite{Geor1992}. $1/\Gamma$ has the dimensions of time.
+
+Now
+\[
+\begin{gathered}
+	\sum F = m\ddot{x} = -m \Gamma v - Kx
+\end{gathered}
+\]
+or
+\begin{equation}
+	\ddot{x} + \Gamma \dot{x} + \frac{K}{m} x = \ddot{x} + \Gamma \dot{x} + \omega_0^2 x = 0
+\end{equation}
+where $\omega_0 = \sqrt{ \frac{K}{m} }$. See (2.1.2) of Georgi (1992) \cite{Geor1992}.
+
+Since $\ddot{x} + \Gamma \dot{x} + \omega_0^2 x = 0$ is 1. time translation invariant, i.e. if $x(t+a)$ is a solution, then $x(t)$ is a solution, and 2. linearity, then find irreducible solutions of form $z(t) = e^{\alpha t}$.
+
+\[
+\Longrightarrow \alpha^2 + \Gamma \alpha + \omega_0^2 =0 \text{ or } \alpha = \frac{ -\Gamma \pm \sqrt{ \Gamma^2 - 4\omega_0^2}}{2}
+\]
+
+\subsubsection{Overdamped oscillations} See Sec. 2.1.1 "Overdamped Oscillations" of Georgi (1992) \cite{Geor1992}.
+
+If $\frac{\Gamma}{2} > \omega_0$, let
+\begin{equation}
+	\Gamma_{\pm} = \frac{\Gamma}{2} \pm \sqrt{ \frac{\Gamma^2}{4} - \omega_0^2}
+\end{equation}
+See (2.1.8) of Georgi (1992) \cite{Geor1992}
+
+\begin{equation}
+	x(t) = A_+ e^{-\Gamma_+ t} + A_- e^{-\Gamma_- t}
+\end{equation}
+See (2.1.7) of Georgi (1992) \cite{Geor1992}.
+
+\subsubsection{Underdamped Oscillations} See Sec. 2.1.2 "Underdamped Oscillations" of Georgi (1992) \cite{Geor1992}.
+
+If $\frac{\Gamma}{2} < \omega_0$, so
+\[
+\alpha = \frac{-\Gamma }{2} \pm i \sqrt{ \omega_0^2 - \frac{\Gamma^2}{2} } 
+\]
+
+so 
+\begin{equation}
+	\omega^2 = \omega_0^2 - \frac{ \Gamma^2}{4}
+\end{equation}
+
+\begin{equation}
+	x(t) = Ae^{\frac{-\Gamma}{2} t} \cos{ (\omega t- \theta)}
+\end{equation}
+See (2.1.10) of Georgi (1992) \cite{Geor1992}.
+
+\[
+x(t) = A e^{\frac{-\Gamma}{2} t} c(\omega t - \theta) = Ae^{\frac{-\Gamma}{2}t } (c(\omega t) c(\theta) + s(\omega t) s(\theta))
+\]
+\begin{equation}
+	x(t) = e^{-\frac{\Gamma}{2}t} (c \cos{(\omega t)} + d\sin{(\omega t)})
+\end{equation}
+See (2.1.11) of Georgi (1992) \cite{Geor1992}, where $c= A\cos{\theta}$, $d=A\sin{\theta}$.
+
+\subsubsection{Critically Damped Oscillations} See Sec. 2.1.3 "Critically Damped Oscillations" of Georgi (1992) \cite{Geor1992}.
+
+If $\frac{\Gamma}{2} = \omega_0$, we only get $e^{\frac{-\Gamma}{2} t}$. We know that there will be 2 solutions to the 2nd-order differential equation.
+
+One way to find the other solution is to approach this situation from underdamped case as a limit, i.e.
+\[
+\omega \to 0 \text{ from } \omega > 0
+\]
+
+\[
+\begin{gathered}
+	\begin{aligned}
+		& \lim_{\omega \to 0} e^{ \frac{-\Gamma}{2}(t) } c\cos{(\omega t)} = e^{ \frac{-\Gamma}{2} t} \\
+		& \lim_{\omega\to 0} e^{\frac{-\Gamma}{2} t} d \sin{\omega t} = 0
+	\end{aligned}
+\end{gathered}
+\]
+
+Divide the second term by $\omega$, because $\omega$ doesn't depend on $\omega$, $\frac{1}{\omega} e^{\frac{-\Gamma}{2} t} d\sin{\omega t}$ is still a solution.
+
+\[
+\begin{gathered}
+	\lim_{\omega \to 0} e^{ \frac{-\Gamma}{2} t} \frac{ \sin{ \omega t} }{\omega} = te^{\frac{-\Gamma}{2} t} (\text{by L'Hopital's rule})
+\end{gathered}
+\]
+So
+\[
+x(t) = ce^{ - \Gamma t/2} + dte^{-\Gamma t/2}
+\]
+
+\subsubsection{Forced oscillations} See Sec. 2.2 "Forced Oscillations" of Georgi (1992) \cite{Geor1992}.
+Equation of motion is
+\begin{equation}\label{Eq:ForcedOscillationEquationOfMotion}
+	\ddot{x}(t) + \Gamma \dot{x} + \omega_0^2 x = F(t) /m 
+\end{equation}
+where
+\begin{equation}
+	F(t) = F_0 \cos{(\omega_dt)}
+\end{equation}
+See (2.1.5), (2.1.4) of Georgi (1992) \cite{Geor1992}, respectively. \\
+
+$\frac{\omega_d}{2\pi} = $ driving frequency, driving frequency can be tuned completely independently of the other parameters of the system.
+
+If we let 
+\[
+\ddot{z}(t) + \Gamma \dot{z}(t) + \omega_0^2 z(t) = \mathcal{F}(t) /m
+\]
+where $\mathcal{F}(t) = F_0 e^{-i \omega_0 t}$.
+
+Then if we look for steady state solution of the form
+\[
+z(t) = A e^{-i \omega_{\alpha} t}
+\]
+
+One can think like the steady state solution is such that the system is driven with driving frequency $\omega_d$.
+
+\begin{equation}
+	(-\omega_d^2 + (-i \omega_d)\Gamma + \omega_0^2)A = \frac{F_0}{m} 
+\end{equation}
+See (2.20) of Georgi (1992) \cite{Geor1992}
+
+or
+\begin{equation}
+	A = \frac{ F_0 / m }{ \omega_0^2 - i\omega_d \Gamma - \omega_d^2}
+\end{equation}
+See (2.21) of Georgi (1992) \cite{Geor1992}
+
+The amplitude $A$ of the displacement is proportional to amplitude of driving force; this is as expected from linearity.
+
+\[
+\begin{gathered}
+	\begin{aligned}
+		& A = \frac{ \frac{F_0}{m} (\omega_0^2 + i \omega_d \Gamma - \omega_d^2 )}{ (\omega_0^2 - \omega_d^2)^2 + (\omega_d \Gamma)^2 } \text{ with } & \\
+		& \Re{A} = \frac{ (\omega_0^2 - \omega_d^2) F_0/m }{(\omega_0^2 - \omega_d^2)^2 + (\omega_d \Gamma)^2} & \Im{A} \equiv B = \frac{ \Gamma \omega_d F_0 /m }{ (\omega_0^2 - \omega_d^2)^2 + (\Gamma \omega_d )^2 }
+			\end{aligned} \\
+		\mathcal{A} e^{- i\omega_d t} = \mathcal{A} ( c(\omega_dt) - i s(\omega_dt)) \xrightarrow{\Re} \Re{A } c(\omega_d t) + \Im{A} s(\omega_d t)
+\end{gathered}
+\]
+where I use $\mathcal{A} \equiv A$ notation interchangeably, relying on context on whether it's real or complex, and $\cos{\omega_d t} \equiv c(\omega_d t)$, $\sin{\omega_d t} \equiv s(\omega_d t)$ as shorthand notation for sin and cos. \\
+
+For 
+\[
+x(t) = \Re{z(t)} = (\Re{A}) c(\omega_d t) + Bs(\omega_d t)
+\]
+
+Term proportional to $B$ is $90^{\circ}$ out of phase. \\
+Real part of $\mathcal{A}$, $A = \Re{A}$ is the \emph{elastic amplitude.} \\
+Imaginary part of $\mathcal{A}$, $B = \Im{A}$ is called the \emph{absorptive amplitude}. \\
+
+\subsubsection{Resonances} See Sec. 2.3 "Resonances" of Georgi (1992) \cite{Geor1992}.
+
+\[
+\omega_d = \omega_0
+\]
+so $\Re{A} = 0$, $B = \frac{ F_0 / m}{ \Gamma \omega_d}$.
+
+\subsubsection{Work, Work done by forced oscillation on the system}
+
+Work is a nonlinear function of force, so we must use real force and real displacement.
+
+\[
+P(t) = F(t) \frac{\partial }{\partial t} X(t) = F_0 c(\omega_d t) (\omega_d) (-\Re{A} s(\omega_d t) + B c(\omega_d t))
+\]
+
+The first term is proportional to $s(2\omega_d t)$ and averages to 0 over a half period.
+
+\[
+\int_{t_0}^{t_0 + \pi / \omega_d} s(2\omega_d t) dt = \left. \frac{ -c(2\omega_d t) }{2 \omega_d } \right|_{t_0}^{t_0 + \pi /\omega_d} = 0
+\]
+
+This is why $\Re{A}$ is called elastic amplitude. If $A$ dominates, then energy fed into the system at 1 time is returned at a later time, as in elastic collision in mechanics.
+\[
+\begin{gathered}
+	P_{\text{average}} \text{of 2nd. term} = P_{\text{average}} \\
+	\text{ Consider } \\
+	F_0 \omega_d B \int_{t_0}^{t_0 + \pi/ \omega_d} c^2 (\omega_d t) dt = F_0 \omega_d B \int_{t_0}^{t_0 + \pi/ \omega_d} \frac{ c(2\omega_d t) + 1}{2} dt = \\
+	F_0 \omega_d B \left. \left( \frac{ s(2\omega_d t) }{ 4 \omega_d } + \frac{t}{2} \right) \right|_{t_0}^{t_0 + \frac{\pi}{\omega_d} } = F_0 \omega_d B \frac{\pi}{2\omega_d} = \frac{F_0 B\pi}{2} \\
+	P_{\text{average}} = \frac{ \int_{t_0}^{t_0 + \pi / \omega_d} P(t) }{ \Delta t}  \text{ where } \Delta t = \pi / \omega_d \\
+	\Longrightarrow P_{\text{average}} = \frac{ F_0 B\pi /2}{ \pi / \omega_d}  = \boxed{ \frac{F_0 \omega_d B}{2} }
+\end{gathered}
+\]
+
+Recall that
+\[
+B = \frac{ \Gamma \omega_d F_0 /m }{ (\omega_0^2 - \omega_d^2)^2 + (\Gamma \omega_d)^2 }
+\]
+
+\[
+\begin{gathered}
+	P_{\text{average}} = \frac{F_0 \omega_d B}{2} = \frac{ (F_0 \omega_d)^2 \Gamma /2m }{ (\omega_0^2 - \omega_d^2)^2 + (\Gamma \omega_d)^2 } \xrightarrow{ \omega_d\to \omega_0} \frac{F_0^2}{ 2m \Gamma}
+\end{gathered}
+\]
+
+The maximum average power is inversely proportional to $\Gamma$. \\
+
+To find the width (for fixed height) of the resonance curve (curve of $P_{\text{average}}$, depending on $\omega_d$), \\
+find the value $\omega_d = \omega_{1/2}$ s.t. 
+\[
+P_{\text{average}} = \frac{P_{\text{average,max}}}{2} = \frac{F_0^2}{4m \Gamma}
+\]
+Then
+
+\[
+\begin{gathered}
+\frac{P_{\text{average,max}}}{2} = \frac{F_0^2}{4m \Gamma} = \frac{ (F_0^2 \Gamma /2m ) \omega_{1/2}^2 }{ (\omega_{1/2}^2 - \omega_0^2)^2 + (\Gamma \omega_{1/2})^2 } \text{ or } \omega_{1/2}^4 -2\omega_{1/2}^2 \omega_0^2 + \omega_0^2 + \Gamma^2 \omega_{1/2}^2 = 2\Gamma^2 \omega_{1/2}^2 \text{ or } \\
+\begin{aligned}
+& \omega_{1/2}^4 - (2\omega_0^2 + \Gamma^2) \omega_{1/2}^2 + \omega_0^4 = 0 \\
+& \omega_{1/2}^2 = \frac{ (2 \omega_0^2 + \Gamma^2) \pm \sqrt{ ( \Gamma^2 + 2\omega_0^2)^2 - 4\omega_0^4 } }{2} = \omega_0^2 + \frac{ \Gamma^2}{2} \pm \sqrt{ \frac{\Gamma^4 }{4}  + \Gamma^2 \omega_0^2 } = \omega_0^2 + \frac{ \Gamma^2}{2} \pm \Gamma \sqrt{ \frac{\Gamma^2 }{4}  +  \omega_0^2 }
+\end{aligned}
+\end{gathered}
+\]
+Now (EY: it seems like you would have needed to have known the answer beforehand to have tried this factorization)
+\[
+\begin{gathered}
+\omega_{1/2}^2 = \left( \sqrt{ \omega_0^2 + \frac{\Gamma^2}{4} } \right)^2 \pm 2 \frac{\Gamma}{2} \sqrt{ \frac{\Gamma^2}{4} + \omega_0^2 } + \left( \frac{\Gamma}{2} \right)^2  = \left( \sqrt{ \omega_0^2 + \frac{ \Gamma^2}{4} } \pm \frac{\Gamma}{2} \right)^2
+\end{gathered}
+\]
+Then
+\begin{equation}
+\boxed{ \omega_{1/2} = \sqrt{ \omega_0^2 + \frac{\Gamma^2}{4} } \pm \frac{\Gamma}{2} }
+\end{equation}
+
+The "free oscillation" of the system would be the case of underdamped oscillations; recall
+\[
+x(t) = A \exp{ \left( \frac{-\Gamma t}{2} \right) }\cos{ (\omega t - \theta) }
+\]
+Notice the exponential decay behavior of the amplitude or i.e. magnitude of $x(t)$ due to the $\exp{ \left( \frac{-\Gamma t}{2} \right)}$ factor. Let's just say the "lifetime" of free oscillation is the time for the amplitude to drop to half its value, i.e.
+\[
+\begin{gathered}
+\frac{1}{2} = \exp{ \left( \frac{-\Gamma t_{1/2} }{2} \right) } \text{ or } -\ln{2} = \frac{-\Gamma t_{1/2} }{2} , \quad \text{ or } t_{1/2} = \frac{2\ln{2} }{\Gamma}
+\end{gathered}
+\]
+
+For the time dependence of the free oscillation, i.e. $x(t) = A \exp{ \left( \frac{-\Gamma t}{2} \right) }\cos{ (\omega t - \theta) }$, then we say that the lifetime of the state in free oscillation is of order $1/\Gamma$, i.e.
+\[
+t_{1/2} = \frac{2\ln{2}}{ \Gamma}
+\]
+
+The width of the resonance peak in forced oscillation is 
+\[
+\Delta \omega_{1/2} = \Gamma
+\]
+so width of the resonance peak in forced oscillation is inversely proportional to the lifetime of the corresponding normal mode of free oscillation.
+
+\subsection{Apply Fourier Transform to Forced Oscillations}
+
+So for the equation of motion, Eq. \ref{Eq:ForcedOscillationEquationOfMotion},
+\[
+\ddot{x} + \Gamma \dot{x} + \omega_0^2 x = F(t)
+\]
+
+Assume we drive the system at frequency $\omega_d$ and that system's response's frequency is also $\omega_d$.
+
+Then
+
+\[
+\begin{gathered}
+(i\omega_d)^2 \widehat{x} + (i\omega_d) \Gamma \widehat{x} + \omega_0^2 \widehat{x} = \widehat{F}(\omega_d) \text{ or } \frac{ \widehat{x}(\omega_d) }{ \widehat{F}(\omega_d) } = \frac{1}{ - (\omega_d^2 - i \omega_d \Gamma - \omega_0^2) }
+\end{gathered}
+\]
+
+So in general, $\frac{ \widehat{x}(\omega_d) }{ \widehat{F}(\omega_d) }$ has a real part and imaginary part.
+
+\subsection{Apply Laplace Transform to Forced Oscillations}
+
+Recall Eq. \ref{Eq:ForcedOscillationEquationOfMotion},
+\[
+\ddot{x} + \Gamma \dot{x} + k x = mF(t)
+\]
+so that if $\frac{k}{m} = \omega_0^2$, then
+\[
+\begin{gathered}
+\xrightarrow{ \mathcal{L}} s^2 \widehat{x}(s) - s x(0) - x'(0) + \Gamma (s\widehat{x}(s) - x(0)) + \omega_0^2 \widehat{x}(s) = \widehat{F}(s) \text{ or } \\
+(s^2 + \Gamma s + \omega_0^2) \widehat{x}(s) - (\Gamma + s) x(0) - x'(0) = \widehat{F}(s)
+\end{gathered}
+\]
+
+If $x'(0) = 0$, and we start system at $x(0) =0$, so that we rely upon $F(t)$ to drive system, then we get a ratio of output or "response" to input, the driving, forced oscillation, per mass,
+\[
+\begin{gathered}
+	\frac{ \widehat{x}(s) }{ \widehat{F}(s) } = \frac{1}{ s^2 + \Gamma s + \omega_0^2 } = \frac{1}{ \left( s + \frac{ \Gamma + \sqrt{ \Gamma^2 - 4 \omega_0^2 } }{ 2 } \right) \left( s + \frac{ \Gamma - \sqrt{ \Gamma^2 - 4 \omega_0^2 } }{ 2} \right) }
+\end{gathered}
+\]
+Now look at where the denominator "blows up", the singularities. We had the case that if $\Gamma^2 - 4\omega^2 \geq 0 $ or $\frac{\Gamma}{2} \geq \omega_0$, we had overdamped or critically damped exponential decay. Then, the value of $s$ where a singularity occurs would be completely real. For the underdamped case with free oscillation, the value of $s$ where a singularity occurs would have an imaginary part.
+
+If initial conditions can't be ignored, \\
+then if $x'(0) =0$,
+\[
+\begin{gathered}
+(s^2 + \Gamma s + \omega_0^2) \widehat{x}(s) - x'(0) = \widehat{F}(s) \text{ or } \frac{ \widehat{x}(s) }{ \widehat{F}(s) } = \frac{ 1 + x'(0) / \widehat{F}(s) }{ s^2 + \Gamma s + \omega_0^2 }
+\end{gathered}
+\]
+
+But if $x'(0) =0$,
+\[
+\begin{gathered}
+\frac{ \widehat{x}(s) }{ \widehat{F}(s) } = \frac{ 1 + (\Gamma +s )x(0) / \widehat{F}(s) }{ s^2 + \Gamma s + \omega_0^2 }
+\end{gathered}
+\]
 
 \part{Statistical Mechanics: Ising Model}  
 
@@ -11534,6 +12039,13 @@ Steve Awodey. \textbf{Category Theory} (Oxford Logic Guides) 2nd Edition. Oxford
 
 \bibitem{BaWe2012}
 Michael Barr, Charles Wells. \textbf{Category Theory for Computing Science}. 2012
+
+\bibitem{Mauc2004}
+Sean Mauch. \textbf{Introduction to Methods of Applied Mathematics or Advanced Mathematical Methods for Scientists and Engineers}. January 24, 2004. Mauch Publishing Company, un-Incorporated. 
+
+\bibitem{Geor1992}
+Howard Georgi. \textbf{The Physics of Waves}. Benjamin Cummings; 1st edition. 1992. ISBN-13:978-0136656210.
+
 
 \bibitem{FrSc2007} 
 Franz Schwabl. \textbf{Quantum Mechanics}. Springer-Verlag Berlin Heidelberg. 2007. 4th Edition. ISBN 978-3-540-71933-5
