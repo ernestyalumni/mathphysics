@@ -1,11 +1,12 @@
 ENABLE_TESTING()
 
 ADD_EXECUTABLE(Check
-  ProtoFiles/PhysicalConstants/Fundamental_tests.cpp
+  MessagePack/Tutorial_tests.cpp
+  #ProtoFiles/PhysicalConstants/Fundamental_tests.cpp
 )
 
 TARGET_LINK_LIBRARIES(Check
-  ProtoBinding
+  #ProtoBinding
   gtest_main
   )
 

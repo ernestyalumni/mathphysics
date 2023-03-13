@@ -1,3 +1,20 @@
+# MessagePack
+
+## Installation
+
+See https://github.com/msgpack/msgpack-c/tree/cpp_master
+
+```
+git clone https://github.com/msgpack/msgpack-c.git
+cd msgpack-c/
+
+# This build step only works from the "root" directory of the repository.
+sudo cmake --build . --target install
+
+```
+
+I tried building `msgpack-c` from my own, user-created, subdirectory, say "Build", but it fails on the `cmake --build ../ ...` step, saying it cannot find `cache`.
+
 # Protocol Buffers
 
 ## Installation

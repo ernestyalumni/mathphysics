@@ -46,9 +46,9 @@ MESSAGE("CMAKE_CXX_STANDARD: " ${CMAKE_CXX_STANDARD})
 # cf. https://github.com/shaochuan/cmake-protobuf-example/blob/master/proto/CMakeLists.txt
 # cf. https://cmake.org/cmake/help/latest/module/FindProtobuf.html
 # FindProtobuf - locate and configure Google Protocol Buffers library.
-INCLUDE(FindProtobuf)
-FIND_PACKAGE(Protobuf REQUIRED)
-INCLUDE_DIRECTORIES(${Protobuf_INCLUDE_DIRS})
+#INCLUDE(FindProtobuf)
+#FIND_PACKAGE(Protobuf REQUIRED)
+#INCLUDE_DIRECTORIES(${Protobuf_INCLUDE_DIRS})
 
 FIND_PROGRAM(CCACHE_FOUND ccache)
 
@@ -73,5 +73,5 @@ FetchContent_MakeAvailable(googletest)
 # Add_subdirectory call makes use of libraries.
 # Add_subdirectory adds the source CMakeLists.txt and code files in the
 # directory.
-ADD_SUBDIRECTORY(ProtoFiles)
+#ADD_SUBDIRECTORY(ProtoFiles)
 ADD_SUBDIRECTORY(UnitTests)
