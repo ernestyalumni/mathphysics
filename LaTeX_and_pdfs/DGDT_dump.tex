@@ -7699,7 +7699,7 @@ See (2.1.10) of Georgi (1992) \cite{Geor1992}.
 \[
 x(t) = A e^{\frac{-\Gamma}{2} t} c(\omega t - \theta) = Ae^{\frac{-\Gamma}{2}t } (c(\omega t) c(\theta) + s(\omega t) s(\theta))
 \]
-\begin{equation}
+\begin{equation}\label{Eq:UnderdampedOscillationsSolution}
 	x(t) = e^{-\frac{\Gamma}{2}t} (c \cos{(\omega t)} + d\sin{(\omega t)})
 \end{equation}
 See (2.1.11) of Georgi (1992) \cite{Geor1992}, where $c= A\cos{\theta}$, $d=A\sin{\theta}$.
@@ -7736,7 +7736,7 @@ x(t) = ce^{ - \Gamma t/2} + dte^{-\Gamma t/2}
 
 \subsubsection{Forced oscillations} See Sec. 2.2 "Forced Oscillations" of Georgi (1992) \cite{Geor1992}.
 Equation of motion is
-\begin{equation}\ref{Eq:ForcedOscillationEquationOfMotion}
+\begin{equation}\label{Eq:ForcedOscillationEquationOfMotion}
 	\ddot{x}(t) + \Gamma \dot{x} + \omega_0^2 x = F(t) /m 
 \end{equation}
 where
@@ -7753,9 +7753,25 @@ If we let
 \]
 where $\mathcal{F}(t) = F_0 e^{-i \omega_0 t}$.
 
+For in particular numerical computation applications, we can transform Eq. \ref{Eq:ForcedOscillationEquationOfMotion} into a system of first order equations: \\
+Let 
+\[
+\begin{aligned}
+& x_1(t) = x(t) \\
+& x_2(t) = \dot{x}(t)
+\end{aligned}
+\]
+so that
+\[
+\begin{aligned}
+& \dot{x}_1 = x_2 \\
+& \dot{x}_2 = -\Gamma x_2 - \omega_0^2 x_1 + f(t)
+\end{aligned}
+\]
+
 Then if we look for steady state solution of the form
 \[
-z(t) = A e^{-i \omega_{\alpha} t}
+z(t) = A e^{-i \omega_d t}
 \]
 
 One can think like the steady state solution is such that the system is driven with driving frequency $\omega_d$.
@@ -7766,7 +7782,7 @@ One can think like the steady state solution is such that the system is driven w
 See (2.20) of Georgi (1992) \cite{Geor1992}
 
 or
-\begin{equation}
+\begin{equation}\label{Eq:ForcedOscillationSteadyStateSolutionAmplitude}
 	A = \frac{ F_0 / m }{ \omega_0^2 - i\omega_d \Gamma - \omega_d^2}
 \end{equation}
 See (2.21) of Georgi (1992) \cite{Geor1992}
@@ -7792,6 +7808,54 @@ x(t) = \Re{z(t)} = (\Re{A}) c(\omega_d t) + Bs(\omega_d t)
 Term proportional to $B$ is $90^{\circ}$ out of phase. \\
 Real part of $\mathcal{A}$, $A = \Re{A}$ is the \emph{elastic amplitude.} \\
 Imaginary part of $\mathcal{A}$, $B = \Im{A}$ is called the \emph{absorptive amplitude}. \\
+
+In the case where 
+\[
+	F(t) = F_0 \sin{(\omega_dt)}
+\]
+we'll see that the fundamental physical characteristics don't change, but the initial conditions for the solution do change, which is important for actual modeling (but gets looked over a bit in physics that concern about high-level concepts).
+
+If $F(t) = F_0 \sin{(\omega_d t)}$, while the following doesn't change:
+\[
+\begin{gathered}
+\begin{aligned}
+& z(t) = \mathcal{A} e^{-i\omega_d t} \\
+& \dot{z}(t) = (-i \omega_d) z \\
+& \ddot{z}(t) = (-\omega_d^2)z
+\end{aligned}
+\end{gathered}
+\]
+but now consider 
+\[
+\begin{gathered}
+\mathcal{F}(t) = + i F_0 e^{-i\omega_d t} = +i F_0 (c(\omega_d t)  -i s(\omega_d t) ) \\
+\Re{(\mathcal{F}(t) )} = F_0 s(\omega_dt)
+\end{gathered}
+\]
+so then
+\[
+\begin{gathered}
+	(-\omega_d^2 + (-i \omega_d)\Gamma + \omega_0^2)\mathcal{A} = \frac{iF_0}{m}  \text{ or } 	\\
+	\mathcal{A} = \frac{ iF_0 / m }{ \omega_0^2 - \omega_d^2- i\omega_d \Gamma} = \frac{ \frac{iF_0}{m} (\omega_0^2 - \omega_d^2 + i \omega_d \Gamma  )}{ (\omega_0^2 - \omega_d^2)^2 + (\omega_d \Gamma)^2 }
+\end{gathered}
+\]
+
+So then in this case, 
+\begin{equation}\label{Eq:AmplitudeValuesForcedOscillationsForceProportionalToSine}
+\begin{aligned}
+& \Re{A} = \frac{ -\Gamma \omega_d F_0 /m }{ (\omega_0^2 - \omega_d^2)^2 + (\Gamma \omega_d )^2 } \equiv A \\
+& \Im{A} = \frac{ (\omega_0^2 - \omega_d^2) F_0/m }{(\omega_0^2 - \omega_d^2)^2 + (\omega_d \Gamma)^2} \equiv B 
+\end{aligned}
+\end{equation}
+
+and so the general form of the steady-state solution doesn't change, but the values for the amplitudes get switched:
+
+\[
+\begin{gathered}
+x(t) = \Re{ z(t)} = Ac(\omega_d t) + Bs(\omega_dt) \\
+\dot{x}(t) = \omega_d \left[ -A s(\omega_dt) + Bc(\omega_dt) \right]
+\end{gathered}
+\]
 
 \subsubsection{Resonances} See Sec. 2.3 "Resonances" of Georgi (1992) \cite{Geor1992}.
 
@@ -7838,6 +7902,20 @@ B = \frac{ \Gamma \omega_d F_0 /m }{ (\omega_0^2 - \omega_d^2)^2 + (\Gamma \omeg
 \]
 
 The maximum average power is inversely proportional to $\Gamma$. \\
+
+This analysis doesn't change when $F(t) = F_0 \sin{(\omega_d t)}$.
+
+\[
+\begin{gathered}
+P(t) = F(t) \dot{x}(t) = F_0 s(\omega_d t) \omega_d [ -A s(\omega_d t) + Bc(\omega_d t) ] \\
+\begin{aligned}
+& \int_{t_0}^{t_0 + \frac{\pi}{\omega_d} } dt c(\omega_dt) s(\omega_d t) = \left. \frac{1}{2 \omega_d} s^2(\omega_d t) \right|_{t_0}^{t_0 + \frac{\pi}{\omega_d} } = 0 \\
+& \int_{t_0}^{t_0 + \frac{\pi}{\omega_d} } dt s^2(\omega_dt) = \int_{t_0}^{t_0 + \frac{\pi}{\omega_d} } dt \frac{1 - c(2\omega_dt)}{2} = \frac{\pi}{2 \omega_d} - \left. \frac{s(2\omega_dt)}{ 4\omega_d} \right|_{t_0}^{t_0 + \frac{\pi}{\omega_d} } = \frac{\pi}{2\omega_d}
+\end{aligned} \\
+P_{\text{average}} = \frac{ \int_{t_0}^{t_0 + \frac{\pi}{\omega_d} } dt P(t) }{ \pi /\omega_d} = \frac{-F_0 A \pi}{2 / \pi/\omega_d} = \frac{-F_0 A \omega_d}{2}
+\end{gathered}
+\]
+So $B$ is now the elastic amplitude and $A$ is the absorptive amplitude, but the same values are obtained, since $A$ and $B$ are effectively switched for $F(t) = F_0 \sin{\omega_d t}$.
 
 To find the width (for fixed height) of the resonance curve (curve of $P_{\text{average}}$, depending on $\omega_d$), \\
 find the value $\omega_d = \omega_{1/2}$ s.t. 
@@ -7943,6 +8021,77 @@ But if $x'(0) =0$,
 \begin{gathered}
 \frac{ \widehat{x}(s) }{ \widehat{F}(s) } = \frac{ 1 + (\Gamma +s )x(0) / \widehat{F}(s) }{ s^2 + \Gamma s + \omega_0^2 }
 \end{gathered}
+\]
+
+\subsubsection{General solution to forced oscillation}
+
+For subscript $s$ meaning steady-state driven solution, see Eq. \ref{Eq:ForcedOscillationSteadyStateSolutionAmplitude}
+\[
+\begin{gathered}
+x_s(t) = Ac(\omega_d t) + Bs(\omega_d t) \\
+\begin{aligned}
+& A = \frac{ (\omega_0^2 - \omega_d^2) F_0 / m }{ (\omega_0^2 - \omega_d^2)^2 + (\omega_d \Gamma)^2 } \\
+& B = \frac{ \Gamma \omega_d F_0 / m }{ (\omega_0^2 - \omega_d^2)^2 + (\Gamma \omega_d)^2 }
+\end{aligned}
+\end{gathered}
+\] 
+so then
+\[
+\begin{aligned}
+& x_s(0) = A \\
+& \dot{x}_s(0) = \omega_dB
+\end{aligned}
+\]
+
+Let $x_{\text{free}}$ denote the response, or solution, or the resulting motion for the "free oscillation", the underdamped, exponential decaying solution, for $\omega_0 > \frac{\Gamma}{2}$. See Eq. \ref{Eq:UnderdampedOscillationsSolution},
+
+\[
+\begin{gathered}
+\begin{aligned}
+x_{\text{free}}(t) & = \exp{ \left( \frac{-\Gamma t}{2} \right) } (c\cos{(\omega t)} + d\sin{ (\omega t)} ), \quad \, \omega^2 = \omega_0^2 -\frac{\Gamma^2}{2} \\
+x_{\text{free}}(0) &= c \\
+\dot{x}_{\text{free}}(t) & = \frac{-\Gamma}{2} x_{\text{free}}(t) + e^{-\frac{\Gamma}{2} t} \omega( - cs(\omega t) + dc(\omega t) ) \\
+\dot{x}_{\text{free}}(0) & = \frac{-\Gamma}{2} c + \omega d
+\end{aligned}
+\end{gathered}
+\]
+
+The most general solution $x(t)$ is of the form
+\[
+\begin{gathered}
+x(t) = x_{\text{free}}(t) + x_s(t)
+\end{gathered}
+\]
+with initial conditions
+\[
+\begin{aligned}
+& x(0) = c + A \text{ so } c = x(0) - A \\
+& \dot{x}(0) = \frac{-\Gamma}{2} c + \omega d + \omega_d B \text{ so } d = \frac{1}{\omega} \left[ \dot{x}(0) + \frac{\Gamma}{2} (x(0) - A) - \omega_d B \right]
+\end{aligned}
+\]
+
+And so the full, general solution is 
+\begin{equation}
+\begin{gathered}
+x(t) = e^{\frac{-\Gamma t}{2} } (c\cos{(\omega t)} + d \sin{ (\omega t)} ) + A \cos{ (\omega_d t)} + B \sin{(\omega_d t)} \\
+\text{ where } \\
+\begin{aligned}
+& A = \frac{ (\omega_0^2 - \omega_d^2) F_0 / m }{ (\omega_0^2 - \omega_d^2)^2 + (\omega_d \Gamma)^2 } \\
+& B = \frac{ \Gamma \omega_d F_0 / m }{ (\omega_0^2 - \omega_d^2)^2 + (\Gamma \omega_d)^2 }
+& \omega^2 = \omega_0^2 - \frac{\Gamma^2}{4}, \\
+& c = x(0) - A, \\
+& d = \frac{1}{\omega} \left[ \dot{x}(0) + \frac{\Gamma}{2} (x(0) - A) - \omega_d B \right]
+\end{aligned}
+\end{gathered}
+\end{equation}
+
+For the case of $F(t) = F_0 \sin{(\omega_d t)}$, i.e. the force is proportional to $\sin$, then the exact same analysis leads to the same result as above, but for $A,B$ values switched to be as Eq. \ref{Eq:AmplitudeValuesForcedOscillationsForceProportionalToSine}.
+
+\[
+\begin{aligned}
+& \Re{A} = \frac{ -\Gamma \omega_d F_0 /m }{ (\omega_0^2 - \omega_d^2)^2 + (\Gamma \omega_d )^2 } \equiv A \\
+& \Im{A} = \frac{ (\omega_0^2 - \omega_d^2) F_0/m }{(\omega_0^2 - \omega_d^2)^2 + (\omega_d \Gamma)^2} \equiv B 
+\end{aligned}
 \]
 
 \section{Fluid Mechanics, Fluid Flow}
