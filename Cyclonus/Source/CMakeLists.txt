@@ -46,9 +46,11 @@ MESSAGE("CMAKE_CXX_STANDARD: " ${CMAKE_CXX_STANDARD})
 # cf. https://github.com/shaochuan/cmake-protobuf-example/blob/master/proto/CMakeLists.txt
 # cf. https://cmake.org/cmake/help/latest/module/FindProtobuf.html
 # FindProtobuf - locate and configure Google Protocol Buffers library.
-#INCLUDE(FindProtobuf)
+INCLUDE(FindProtobuf)
+# TODO: Consider if Protobuf should be required, or that there's a better option.
 #FIND_PACKAGE(Protobuf REQUIRED)
-#INCLUDE_DIRECTORIES(${Protobuf_INCLUDE_DIRS})
+FIND_PACKAGE(Protobuf)
+INCLUDE_DIRECTORIES(${Protobuf_INCLUDE_DIRS})
 
 FIND_PROGRAM(CCACHE_FOUND ccache)
 
