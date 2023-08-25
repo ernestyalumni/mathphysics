@@ -24,7 +24,8 @@
 %\usepackage{mhchem}
 
 \usepackage{tikz}
-\usetikzlibrary{matrix,arrows,backgrounds} % background for framed option
+% decorations.pathmorphing for decoration, snake
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing,backgrounds} % background for framed option
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{cd}
 
@@ -8282,6 +8283,328 @@ then $g$ also a monomial.
 
 \href{https://martinralbrecht.files.wordpress.com/2010/07/20131022_buchberger_dtu.pdf}{Gr\"{o}bner Bases, Martin R. Albrecht of the DTU Crypto Group}
 
+\part{Probability}
+
+\section{Measure Theory}
+
+\subsection{Measure Theory -Lect05- Frederic Schuller}
+
+\href{https://youtu.be/6ad9V8gvyBQ?si=c8X7MUMjokirSn0F}{Measure Theory -Lec05- Frederic Schuller}, Schuller (2016) \cite{Schu2016}.
+
+Lecture 5: \textbf{Measure Theory}
+
+Short recap of basic notions of measure theory - without proofs - for two reasons:
+
+EY: Without proofs because it would take too much time and they're relatively straightforward.
+
+\begin{enumerate}
+	\item spectral theory (Schuller: for self-adjoint operators) requires the (projection-valued) measures.
+	\item \textbf{the} most commonly emerging $\infty$-dim. separable Hilbert space in quantum mechanics \\
+	$L^2(\mathbb{R}^d)$ (Schuller: $d$ typically $=3$; you have to take the equivalence classes of square-integrable functions, almost everywhere; for physicists, theorems for exchanging integration and limits, for Riemann integral, you need uniform convergence, but for Lebesque integral you need not strong conditions). 
+\end{enumerate}
+
+\subsubsection{1. General measure spaces}
+
+The basic definition is:
+\begin{definition}
+	Let $M$ be a non-empty set. \\
+	Then a collection of subsets  
+	\[
+	\sigma \subseteq \mathcal{P}(M)
+	\] is called \\
+	a \textbf{$\sigma$-algebra for $M$} \\
+	if \begin{enumerate}
+		\item $M \in \sigma$ \\
+		\item $A \in \sigma \Longrightarrow M  \setminus A \in \sigma$
+		\item $A_1, A_2, \dots \in \sigma$ and $A_i \cap A_j = \emptyset$, $i\neq j$
+		\[
+		\Longrightarrow \bigcup_{n\geq 1} A_n \in \sigma
+		\]
+	\end{enumerate}
+\end{definition}
+
+\textbf{Terminology} $A\in \sigma$ called a \textbf{measurable set} in $M$. \\
+\phantom{Terminology} $(M, \sigma)$ is called a \textbf{measurable} space. \\
+
+Schuller: Volume will be called measure soon. Only sets in $\sigma$-algebra can be assigned a volume, i.e. measure. $\sigma$-algebra could be called set of all measurable subsets.
+
+\textbf{Remark}: Clearly, taking $\sigma = \mathcal{P}(M)$. \\
+In general, however, it does not provide a useful $\sigma$-algebra if $M$ is non-countable. (Schuller: e.g. discrete topology doesn't provide a useful topology)  \\
+
+($\Longrightarrow$ problem sheet, Banach-Taichi paradox)
+
+\begin{definition}
+	A measure $\mu : \sigma \to \mathbb{R}_0^+$ on a measurable space $(M, \sigma)$ is a map satisfying:
+	\begin{enumerate}
+		\item[(i)] $\mu(\emptyset) = 0$
+		\item[(ii)] $A_1, A_2, \dots \in \sigma$ pairwise disjoint: $\forall i \neq j$, \, $A_i \cap A_j = \emptyset$ \\
+		$\Longrightarrow \mu (\bigcup_{n \geq 1} A_n ) = \sum_{n > 1} \mu(A_n)$ (Schuller: this is often called "sigma additivity")
+	\end{enumerate}
+\end{definition}
+
+\textbf{Terminology}: $ \underbrace{ ( \underbrace{M, \sigma}_{\text{measurable space}}, \mu) }_{\text{measure space}}$
+
+\textbf{Properties} of a measure.
+\begin{enumerate}
+	\item[(i)] \textbf{monotony}: $\underbrace{A_1}_{\in \sigma} \subseteq \underbrace{A_2}_{\in \sigma} \Longrightarrow \mu(A_1) \leq \mu(A_2)$ (Schuller, EY: Equality could happen if sets 1,2 differ by a point or in general a set of measure 0)
+	\item[(ii)] \textbf{sub-additivity} $\lbrace A_1, A_2, \dots \rbrace \subseteq \sigma$ : $\mu \left( \bigcup_{n\geq 1} A_n \right) \leq \sum_{n\geq 1} \mu (A_n)$
+	\item[(iii)] \textbf{"continuity" from below}: \emph{Increasing exhaustive} sequence of measurable sets
+	\[
+	A_q \subseteq A_2 \subseteq \dots \quad \quad \, (\text{increasing})
+		\]
+		\[
+		\bigcup_{n \geq 1} A_n = A \quad \quad \, \text{(exhastive)}
+		\]
+		
+		Then $\lim_{n\to \infty} \mu(A_n) = \mu(A)$
+	\item[(iv)] \textbf{"continuity from above"}: \\
+	decreasing sequence enveloping: 
+	\[
+	\underbrace{A_1}_{\in \sigma} \supseteq \underbrace{A_2}_{\in \sigma} \subseteq \dots \text{ and } A = \bigcap_{n \geq 1 } A_n \, \left( \in \sigma \text{ due to \textbf{de Morgan} rule }\right)
+	\]
+	(Schuller: if these are measurable, $A_1, A_2, \dots$, are $A$ measurable?)
+
+	\textbf{deMorgan} $M \setminus \bigcup_{n \geq 1} A_n = \bigcap_{n \geq 1} M \setminus A_n$
+
+	\textbf{ and } $\mu (A_1) < \infty$
+
+\[
+\Longrightarrow \lim_{n \to \infty} \mu(A_n) = \mu(A)
+\]
+
+\begin{proof}
+	$\Longrightarrow$ Problem Sheet.
+\end{proof}
+
+\end{enumerate}
+
+
+\begin{definition} A measure $\mu$ is called finite if 
+	\[
+	\exists \lbrace A_1, A_2, \dots \rbrace \subseteq \sigma
+	\]
+	with $\bigcup_{n \geq 1} A_n = M$ s.t. $\mu (A_n) < \infty$, \, $\forall \, n \in \mathbb{N}$
+\end{definition}
+
+\subsubsection{2. Borel-$\sigma$-algebras}
+
+How does one specify, in practice, a $\sigma$-algebra?
+
+Schuller: measurability isn't a property of a set, but a property of a collection of sets. It's measurable with respect to a system.
+
+\begin{definition}
+	\begin{theorem}
+		The smallest $\sigma$-algebra $\sigma$ for a set $M$ that \textbf{contains} (among other subsets of $M$) a collection of subsets $\mathcal{E} \subseteq \mathcal{P}(M)$ is called / defined as 
+		\[
+		\begin{aligned}
+		\sigma(\mathcal{E}) & = \lbrace A \subseteq M | \forall \, \sigma-\text{algebras} \sigma \text{ of } M \text{ with } \mathcal{E} \subseteq \sigma: A \in \sigma \rbrace \\
+		& = \bigcap_{\substack{ \sigma-\text{algebra (for $M$) } \sigma \\ \mathcal{E} \subseteq \sigma } } \sigma
+		\end{aligned}
+		\]
+	\end{theorem}
+\end{definition}
+
+\begin{proof}
+	(that $\sigma(\mathcal{E})$), generating set $\mathcal{E}$
+\end{proof}
+
+\begin{theorem}
+	Every $\sigma$-algebra can be written as
+	\[
+	\sigma = \sigma(\mathcal{E})
+	\] some $\mathcal{E}$
+
+This construction immediately allows to link the notions of topology and $\sigma$-algebra for a set $M$
+\end{theorem}
+
+\begin{definition}
+	Let $(M, \mathcal{O})$ be a topological space.
+	
+	Then $\sigma(\mathcal{O})$ is called the \textbf{Borel-$\sigma$-algebra} of $(M, \mathcal{O})$
+\end{definition}
+Schuller the $\sigma$ generated by set of open sets. $\mathcal{O}$ is a generating set of $\sigma$ algebra. There are non-open set in the $\sigma$ algebra.
+
+\textbf{Instructive example}. \\
+$M = \mathbb{R}$, $\mathcal{O} = \mathcal{O}_{ \substack{ \mathbb{R} \\ \text{ standard } } }$ "standard topology". \\
+
+\textbf{Clearly}: $\sigma := \sigma(\mathcal{O})$ \\
+
+$\forall \, a, b \in \mathbb{R}$: $(a,b) \in \sigma$ \\
+
+$\Longrightarrow$ (by (iii) of $\sigma$-algebra and deMorgan) 
+\[
+\bigcap_{n \geq 1} \left( a - \frac{1}{n}, b \right) =: A_n \in \sigma(\mathcal{O}) = [a, b)
+ \]
+Schuller: So for instance, the half-open intervals are in the Borel-$\sigma$-algebra.
+
+\subsubsection{3. Lebesgue measure on $M = \mathbb{R}^d$}
+
+Schuller: There's a Lebesgue integral from measurable spaces, but only a Lebesgue measure on $\mathbb{R}^d$, not in general for measurable spaces.
+
+Special construction of a measure 
+\[
+\begin{aligned}
+	& M = \mathbb{R}^d \quad \quad \, \text{ some } d \in \mathbb{N}^+ \\
+	& \sigma = \sigma \left( \mathcal{O}_{\mathbb{R}^d, \text{ standard } } \right)
+\end{aligned}
+\]
+
+Then the \emph{\textbf{unique}} map $\mu_{\text{Lebesgue, $\mathbb{R}^d$} } \equiv \lambda : \sigma(\mathcal{O}) \to \overline{ \mathbb{R}}^+_0$ \\
+
+$\mathbb{R}^2$:
+
+Defined by
+
+\[
+\lambda \left( [a_1, b_1) \times [a_2, b_2) \times \dots \times [a_d, b_d) \right) = (b_1 - a_1) \cdot \dots \cdot (b_d - a_d) 
+\]
+$a_i < b_i$
+
+is called \textbf{the} \textbf{Lebesgue-measure on} $\mathbb{R}^d$ \\
+
+\textbf{Remark}: $(\underbrace{ \mathbb{R}, +, \cdot}_{\lambda}, |\cdot |) \rightsquigarrow \mathcal{O}_s \rightsquigarrow \sigma(\mathcal{O}_s)$ \quad \quad \, $(\mathbb{R}, \sigma(\mathcal{O}), \lambda)$ where $\sigma(\mathcal{O})$ is the \textbf{Borel}-$\sigma$-algebra, and $\lambda$ the Lebesgue measure \\
+
+\textbf{From now on}: tacit agreement \\
+\phantom{From now on} that $\mathbb{R}^d$ always be equipped, \\
+\phantom{From now on} if the need arises, with \\
+\phantom{From now on} Borel $\sigma$-algebra $\sigma(\mathcal{O}_{\mathbb{R}^d, s})$ and the Lebesgue measure. \\
+
+\textbf{Remarks}: 
+\begin{enumerate}
+	\item[(i)] obviously, $\lambda$ is a finite measure.
+	\item[(ii)]  an alternative, unique, characterization of $\lambda$ is that it is \textbf{the} measure that is invariant \\
+	under translation: $\lambda(A + v) = \lambda(A) \quad \, \forall A \in \sigma(\mathcal{O}), \, \forall v \in \mathbb{R}^d$ \\
+	and which sends $\lambda([0, 1]^{xd}) = +1$
+\end{enumerate}
+
+\subsubsection{4. Measurable maps}
+
+\textbf{Standard philosophy}: $(M, \sigma_{M}) \xrightarrow{ \text{ study maps } } (N, \sigma_N)$
+
+\begin{definition}
+	A map $F: M \to N$ is called \textbf{measurable} (with respect to $\sigma_M$ and $\sigma_N$) if $\forall \, A \in \sigma_N : \text{preim}_f(A) \in \sigma_M$.
+\end{definition}
+
+\begin{lemma}
+	Schuller: all the sets $A$ in the generator $E$
+
+	To show that $f$ is \textbf{measurable} it suffices to check whether
+	\[
+	\forall \, A \in \mathcal{E}: \text{preim}_f(A) \in \sigma_M
+	\]
+	where $\sigma_N = \sigma(\mathcal{E})$
+\end{lemma}
+
+\begin{corollary}
+	\begin{enumerate}
+		\item[(i)] any continuous map is measurable with respect to the \textbf{Borel}-$\sigma$-algebras.
+		\item[(ii)] any monotonous map
+		\[
+		f:\mathbb{R} \to \mathbb{R}
+		\]
+		is measurable with respect to Borel $\sigma$-algebra.
+		\begin{proof}
+			$\text{preim}_f(\text{interval})$ is an interval.
+			
+			Schuller: because open, half-open, half-closed, closed intervals are measurable with respect to Borel $\sigma$-algebra, it's measurable.
+		\end{proof}
+	\end{enumerate}
+\end{corollary}
+
+\begin{theorem}
+	The composition $f\circ g : A \to C$ of two measurable maps \\
+	$f:B\to C$ and $g:A \to B$ \\
+	is again measurable.
+\end{theorem}
+
+\begin{proof}
+	Problem sheet.
+\end{proof}
+
+Schuller: many more we can Lebesgue integrate than Riemann integrate.
+
+\subsubsection{5. Push forward of a measure}
+
+Let $(M, \sigma, \mu)$ be a \textbf{measure} space \\
+and let $(N, \tau)$ be a measurable space \\
+
+Schuller: measurable space, you don't know the measure for each set but you know it can be assigned a measure.
+
+Further: Let $M \xrightarrow{f} N$ be a measurable map.
+
+\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
+	{ 
+		M & N \\
+		\sigma, \mu & \tau \\
+	};
+	\draw[->] (m-1-1) -- node[above] {$f$} (m-1-2);
+	\draw[->,decorate,decoration={snake}] (m-1-1) -- (m-2-1);
+	\draw[->,decorate,decoration={snake}] (m-1-2) -- (m-2-2);
+\end{tikzpicture}
+
+Schuller: could I push forward $\sigma$, $\mu$? A new $\mu$ induced?
+
+Then the so-called \textbf{push-forward} $f_*\mu$ is a measure on $(N, \tau)$ defined by 
+\[
+\begin{gathered}
+\begin{aligned}
+f_*\mu : & \tau \to \overline{\mathbb{R}}^+_0 \\
+& A \mapsto (f_* \mu)(A) := \mu(\text{preim}_f(A))
+\end{aligned}
+\end{gathered}
+\]
+where $\begin{aligned}
+	& \mu : \sigma \to \overline{\mathbb{R}}^+_0 \\
+	& f: M \to N
+\end{aligned}$
+
+\begin{proof}
+	Problem sheet.
+\end{proof}
+
+\subsubsection{6. Sets of measure zero, and "almost everywhere"}
+
+Schuller $\sigma$ you can assign a measure or volume, $\mu$ is the measure or volume.
+
+\begin{definition}
+	Let $(M, \sigma, \mu)$ be a measure space. Then
+	$A\in \sigma$ is called a \textbf{set of measure zero} (null set) if
+	\[
+	\mu(A) = 0
+	\]
+\end{definition}
+
+\textbf{Remark}: There may be other null sets then $\emptyset$.
+
+\textbf{Terminology}: A condition, e.g. equality or convergence or \dots is said to hold \textbf{"almost everywhere"} (a.e.) if it holds $\forall \, m \in M \setminus N$ ($\leftarrow$ some $N$ with $\mu(N) = 0$).
+
+\textbf{Examples}. 
+\begin{enumerate}
+	\item[(a)]
+Let $\begin{aligned} & \quad \\
+	& f: M \to N \\
+	& g: M \to N \end{aligned}$ maps $\begin{aligned} & (M, \sigma, \mu) \\
+	& N \text{ and naked set } \end{aligned}$
+\begin{definition}
+	\[
+	f =_{\text{a.e.}} g : \Longleftrightarrow \exists \, A \in \sigma, \, \mu(A) = 0 \, \forall \, m \in M \setminus A : f(m) = g(m) 
+	\]
+\end{definition}
+\item[(b)] 
+\[
+\begin{gathered}
+	\left. \begin{aligned} & f_n: M \to N \\
+		& f: M \to N \end{aligned}
+\right\}  \begin{aligned} & (M, \sigma, \mu) \\ & (N, \mathcal{O}) \end{aligned} \\
+f_n \to_{\text{a.e.} } f : \Longleftrightarrow \forall \, m \in M \setminus A: f_n(m) \to f(M) \\
+\text{ where } A \in \sigma : \mu(A) = 0
+\end{gathered}
+\]
+\end{enumerate}
+
+Durrett (2019) \cite{Durr2019}.
+
 \part{Fourier Transform}
 
 \section{Derivation of Fourier Transform; Definition}
@@ -12649,6 +12972,12 @@ Steve Awodey. \textbf{Category Theory} (Oxford Logic Guides) 2nd Edition. Oxford
 
 \bibitem{BaWe2012}
 Michael Barr, Charles Wells. \textbf{Category Theory for Computing Science}. 2012
+
+\bibitem{Schu2016}
+\href{https://www.youtube.com/c/FredericSchuller}{Frederic Schuller}. \href{https://youtube.com/playlist?list=PLPH7f_7ZlzxQVx5jRjbfRGEzWY_upS5K6&si=rtLLBi4xcb-Z6bfH}{\textbf{Lectures on Quantum Theory}}. March 2016.
+
+\bibitem{Durr2019}
+Rick Durrett. \textbf{Probability: Theory and Examples}. Version 5. Jan. 11, 2019.
 
 \bibitem{Mauc2004}
 Sean Mauch. \textbf{Introduction to Methods of Applied Mathematics or Advanced Mathematical Methods for Scientists and Engineers}. January 24, 2004. Mauch Publishing Company, un-Incorporated. 
