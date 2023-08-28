@@ -8331,23 +8331,24 @@ Schuller: Volume will be called measure soon. Only sets in $\sigma$-algebra can 
 \textbf{Remark}: Clearly, taking $\sigma = \mathcal{P}(M)$. \\
 In general, however, it does not provide a useful $\sigma$-algebra if $M$ is non-countable. (Schuller: e.g. discrete topology doesn't provide a useful topology)  \\
 
-($\Longrightarrow$ problem sheet, Banach-Taichi paradox)
+($\Longrightarrow$ problem sheet, Banach-Taichi paradox) (EY: Banach-Tarski paradox)
 
-\begin{definition}
+\begin{definition}\label{Def:measure}
 	A measure $\mu : \sigma \to \mathbb{R}_0^+$ on a measurable space $(M, \sigma)$ is a map satisfying:
 	\begin{enumerate}
 		\item[(i)] $\mu(\emptyset) = 0$
 		\item[(ii)] $A_1, A_2, \dots \in \sigma$ pairwise disjoint: $\forall i \neq j$, \, $A_i \cap A_j = \emptyset$ \\
-		$\Longrightarrow \mu (\bigcup_{n \geq 1} A_n ) = \sum_{n > 1} \mu(A_n)$ (Schuller: this is often called "sigma additivity")
+		$\Longrightarrow \mu (\bigcup_{n \geq 1} A_n ) = \sum_{n \geq 1} \mu(A_n)$ (Schuller: this is often called "sigma additivity")
 	\end{enumerate}
 \end{definition}
 
 \textbf{Terminology}: $ \underbrace{ ( \underbrace{M, \sigma}_{\text{measurable space}}, \mu) }_{\text{measure space}}$
 
-\textbf{Properties} of a measure.
+\textbf{Properties} of a measure.\label{Thm:MeasureProperties}
 \begin{enumerate}
 	\item[(i)] \textbf{monotony}: $\underbrace{A_1}_{\in \sigma} \subseteq \underbrace{A_2}_{\in \sigma} \Longrightarrow \mu(A_1) \leq \mu(A_2)$ (Schuller, EY: Equality could happen if sets 1,2 differ by a point or in general a set of measure 0)
-	\item[(ii)] \textbf{sub-additivity} $\lbrace A_1, A_2, \dots \rbrace \subseteq \sigma$ : $\mu \left( \bigcup_{n\geq 1} A_n \right) \leq \sum_{n\geq 1} \mu (A_n)$
+	\item[(ii)] Schuller: What if you dropped pairwise-disjoint property in the definition Def. \ref{Def:measure}? \\
+	\textbf{sub-additivity} $\lbrace A_1, A_2, \dots \rbrace \subseteq \sigma$ : $\mu \left( \bigcup_{n\geq 1} A_n \right) \leq \sum_{n\geq 1} \mu (A_n)$
 	\item[(iii)] \textbf{"continuity" from below}: \emph{Increasing exhaustive} sequence of measurable sets
 	\[
 	A_q \subseteq A_2 \subseteq \dots \quad \quad \, (\text{increasing})
@@ -8603,7 +8604,173 @@ f_n \to_{\text{a.e.} } f : \Longleftrightarrow \forall \, m \in M \setminus A: f
 \]
 \end{enumerate}
 
-Durrett (2019) \cite{Durr2019}.
+Proof for Thm. \ref{Thm:MeasureProperties}, from Ch. 1. Measure Theory of Durrett (2019) \cite{Durr2019}.
+
+\begin{proof}
+\begin{enumerate}
+	\item \textbf{monotonicity} or i.e. \textbf{monotony}: Recall set difference $B-A = B \cap A^c$. Let $x \in B-A$, so $x\in B$ and $x\neq A$. Then $x\in B \cap A^c$. If $B-A = \emptyset$ i.e. $B\cap A = B$, then $B\cap A^c = \emptyset$. Then $B-A \subseteq B \cap A^c$. \\
+	Let $x\in B\cap A^c$, so $x\in B$ and $x\in A^c$. So $x\in B$ and $x\notin A$. $x\in B-A$. $B\cap A^c \subseteq B-A$. Thus $B\cap A^c = B-A$. \\
+	
+	Given $A\subset B$, $B=B-A + B\cap A = B-A + A$ (where $+$ denotes disjoint union), $\mu(B) = \mu (A) + \mu(B-A) \geq \mu(A)$
+	\item EY: Insight, we know from Def. \ref{Def:measure} that if we have pairwise disjoint sets, we can say something about the measure. Thus, construct pairwise disjoint sets. \\
+	
+	Consider $B_1 = A_1$, $B_2 = A_2 - A_2 \cap A_1, \, B_3 = A_3 - A_3 \cap B_2 - A_3 \cap B_1 $.\\
+	
+	Let 
+	\[
+	B_i = A_i - \sum_{j=1}^{i-1} A_i \cap B_j
+	\]
+	
+	The difference with union is as follows:
+	\[
+	S - (T_1 \cup T_2) = (S-T_1) (S-T_2)
+	\]
+	where we use the notation $A \cup B \equiv AB$ interchangeably and because
+	\[
+	\begin{gathered}
+		S-(T_1 \cup T_2) = S \cap (T_1 \cup T_2)^c = S \cap (T_1^c T_2^c) = ST_1^c ST_2^c = (S-T_1) \cap (S-T_2)
+	\end{gathered}
+	\]
+
+Likewise, the difference with intersection is $S - (T_1 \cap T_2) = (S - T_1) \cup (S-T_2)$ since
+\[
+\begin{gathered}
+S-(T_1 \cap T_2) = S (T_1T_2)^c = S (T_1^c \cup T_2^c) = ST_1^c \cup ST_2^c = (S - T_1) \cup (S -T_2)
+\end{gathered}
+\]
+where we used set theory' distributive theorem at the second to last equality.
+	
+	Thus
+	\[
+	\begin{gathered}
+		B_{i+1} \cap B_i = (A_{i+1} - \sum_{j=1}^i A_{i + 1} \cap B_j) \cap B_i = \prod_{j=1}^i (A_{i + 1} - A_{i+1} \cap B_j) \cap B_i = \prod_{j=1}^{i - 1} (A_{i + 1} - A_{i+1} \cap B_j) (A_{i+1} - A_{i + 1} \cap B_i) B_i \\
+		\text{ and since } (A_{i+1} A_{i+1}^c \cup A_{i+1} B_i^c) B_i = A_{i+1}B_i^c B_i = \emptyset, \text{ then } \\
+		B_{i+1} \cap B_i = (A_{i+1} - \sum_{j=1}^i A_{i + 1} \cap B_j) \cap B_i = \emptyset \quad \, \text{(they're disjoint!)}
+	\end{gathered}
+	\]
+	
+We can use the same step used as above for $\forall i, j$, given $i > j$ (since they're be a $l$, $1 \leq l < i$ such that $l = j$), and use induction to show that $B_i$, $B_j$ disjoint.	
+
+By construction, $\bigcup_{n=1}B_n = \bigcup_{n=1} A_n$. And because $B_i$'s pairwise disjoint, use Def. \ref{Def:measure}, (ii), to say
+\[
+\mu(\bigcup_{n \geq 1} A_n) = \mu(\bigcup_{n \geq 1} B_n) = \sum_{n\geq 1} \mu(B_n)
+\]
+
+Since we had defined $B_i = A_i - \sum_{j=1}^{i-1} A_i \cap B_j$, $B_i \subseteq A_i$. By Def. \ref{Def:measure}, $\mu(B_n) \leq \mu(A_n)$. Thus
+
+\[
+\mu(\bigcup_{n \geq 1} A_n) \leq \sum_{n=1} \mu(A_n)
+\]
+
+\end{enumerate}	
+\end{proof}
+
+\subsection{Integration of measurable functions -Lec06- Frederic Schuller}
+
+\href{https://youtu.be/ot253Lhx2_o?si=0teIskVSrMHCaoGU}{Integration of measurable functions -Lec06- Frederic Schuller}, Schuller (2016) \cite{Schu2016}.
+
+Lecture 6: \textbf{Integration of measurable functions}
+
+Key definition: Lebesgue integral.\\
+key application: definition: $L^p$ spaces. special: $p=2$
+
+\subsubsection{1. Simple functions}
+
+As a technical tool, we introduce
+
+Schuller: for a measurable function, I need to know the $\sigma$ algebra on $M$ and $\sigma$ on $\mathbb{R}_0^+$.
+\begin{definition} A measurable function $s: M \to \mathbb{R}_0^+$ is called a \textbf{simple function} if 
+	\[
+	s(M) = \lbrace s_1, \dots , s_N \rbrace
+	\]
+for some $N\in \mathbb{N}$.
+\end{definition}
+
+Schuller: for measurable function $s:M \to \mathbb{R}_0^+$, must know $\sigma$-algebra, $\sigma$ for $M$ and usually take the Borel $\sigma$ algebra $\sigma (\left. \mathcal{O}_s \right|_{\mathbb{R}_0^+} )$
+
+\textbf{Implication}: \begin{enumerate}
+	\item[(1)] $\text{preim}_S( \lbrace s_i \rbrace) \in \sigma$
+	
+	$s_i$ Borel-measurable.
+	\item[(2)] $s = \sum_{z \in s(M)} z \cdot \chi_{\text{preim}_s(\lbrace z \rbrace) }$ \\
+where $s(M)$ is finite.
+
+\textbf{characteristic function} \\
+$\begin{aligned}
+	\chi_{A } : & M \to \mathbb{R} \\
+	& m \mapsto \chi_A(m) := \begin{cases} 1 & m \in A \\
+		0 & m \notin A \end{cases}
+\end{aligned}$ where $A$ is any $A \subseteq M$. \\
+
+Schuller: So $\sum_{z \in s(M)}$ in $s = \sum_{z \in s(M)} z \cdot \chi$ is a finite sum, and not a sequence, so there's no convergence issues. 
+
+\end{enumerate}
+
+\subsubsection{2. Integration for \emph{non-negative} measurable functions}
+
+\begin{definition} By a non-negative measurable function, we mean
+\[
+f : M \to \underbrace{ \overline{\mathbb{R}}}_{ \mathbb{R} \cup \lbrace -\infty, + \infty \rbrace }
+\]
+such that \begin{enumerate}
+	\item[(i)] $f(m) \geq 0 $ for all $m\in M$
+	\item[(ii)] $f$ measurable.
+\end{enumerate}
+Schuller: where $\overline{\mathbb{R}}$ equipped with the $\sigma$ algebra \\
+$\overline{\sigma} = \lbrace A \subseteq \overline{\mathbb{R}} | A \cap \mathbb{R} \in \sigma(\mathcal{O}_{\mathbb{R}}) \rbrace$
+
+\end{definition}
+
+In order to define the integral of a non-neg. measurable function, we need to have a measure $\mu$ on the \textbf{domain}.
+
+Schuller: Riemann - find area under the cover; Lebesgue - look at all the simple functions, find the suprenum of the simple functions.
+
+\begin{definition}
+	Let $(M, \sigma, \mu)$ be a measure space. \\
+	$[(\overline{R}, \overline{\sigma}) \text{ is a measurable space }]$ \\
+	Then the integral $\int f d\mu$ of a non-negative measurable function $f: M \to \overline{\mathbb{R}}$ is the number $(\in \overline{\mathbb{R}})$
+\[
+\int f d\mu := \sup{ \lbrace \sum_{z \in s(M)} z \cdot \mu\left( \underbrace{ \text{preim}_s(\lbrace z \rbrace) }_{\in \sigma} \right) \rbrace }
+\]
+
+simple functions $s$ with $0\leq s \leq f$
+
+\end{definition}
+
+\begin{definition}
+	Let $A \in \sigma$, i.e., a measurable subset $A \subseteq M$, then we define
+	\[
+	\int_A f d\mu := \int f \cdot \chi_A d\mu
+	\]
+	Schuller: $f\cdot \chi_A$, these are the function proper, not the function values.
+	\[
+	(f\cdot \chi_A)(m) := f(m) \underbrace{\cdot}_{\mathbb{R}} \chi_A(m)
+	\]
+
+\textbf{Notation}: It is often VERY convenient to write 
+\[
+\int f(x) \mu(dx) \text{ instead of } := \int f d\mu
+\]
+\textbf{application}: 
+
+$\begin{aligned}
+	\text{sq}_{\mathbb{R}} : & \mathbb{R} \to \mathbb{R} \\
+	& x \mapsto x^2 
+\end{aligned}$
+\[
+\int \underbrace{ \text{sq}_{\mathbb{R}}(x) }_{x^2} \mu(dx) \equiv   \int \text{sq}_{\mathbb{R}} d\mu
+\]
+
+\textbf{Properties}: $f$ \emph{non-negative} measurable
+\begin{enumerate}
+	\item[(i)] Markov inequality: $z \in \mathbb{R}^+_0$
+	\[
+	\int f d\mu \leq z \cdot \mu(\text{preim}_f(\lbrace z \rbrace))
+	\]
+\end{enumerate}
+
+
+\end{definition}
 
 \part{Fourier Transform}
 
