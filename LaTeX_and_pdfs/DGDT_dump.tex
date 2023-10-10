@@ -1953,6 +1953,95 @@ which reduces to an autonomous system of ordinary differential equations (ODEs)
 \end{gathered} 
 \]
 
+\section{Vector Bundle}
+
+See Sec. 7.1 The definitions in Renteln (2014) \cite{Rent2014}.
+
+\begin{definition}[Vector Bundle]
+\textbf{vector bundle} $(E,M,Y,\pi)$ over manifold $M$ is manifold $E$, projection map $\pi:E \to M$ s.t. (3 axioms)
+\begin{enumerate}
+\item (\emph{All fibers are isomorphic}) $\forall \, $ fiber $\pi^{-1}(p)$, $p\in M$ is isomorphic to fixed vector space $Y$ of dim. $m$ ($m$ is rank of vector bundle)
+\item (manifold $E$ is locally a product) $\forall \, p \in M$, $\exists \, $ neighborhood $U\ni p$ and diffeomorphism
+\begin{equation}\label{Eq:VectorBundleTotalSpaceIsLocalProduct}
+\varphi_U: \pi^{-1}(U) \to U\times Y
+\end{equation}
+($\varphi_U$ called \textbf{local trivialization} of $E$ over $U$)
+\item (local trivialization $\varphi_U$ carries fibers to fibers and restriction is linear) 
+\begin{equation}
+\varphi_U: \pi^{-1}(p) \to \pi^{-1}_1(p)
+\end{equation}
+is linear $\forall \, p$. $\pi_1: U\times Y \to U$ is a projection onto first factor $(p,g) \mapsto p$
+\end{enumerate}
+
+Manifold $E$ is called \textbf{total space} or \textbf{bundle space}, manifold $M$ is called \textbf{base space}, $\pi$ bundle projection of vector bundle $(E,M,Y,\pi)$.
+\end{definition}
+
+Suppose $U,V$ are 2 overlapping neighborhoods of $p$ on $M$. Then we get
+\begin{equation}
+\begin{aligned}
+& \varphi_V \circ \varphi_U^{-1} : (U \cap V) \times Y \to (U \cap V) \times Y \\
+& (\varphi_V \circ \varphi_U^{-1}) (p, y_U) = (p, y_V)
+\end{aligned}
+\end{equation}
+where $y_v= g_{VU}(p) y_U$ for some nondegenerate endomorphism $g_{VU}(p) : Y \to Y$ that varies smoothly with $p$. Endomorphism $g_{VU}$ is called \textbf{bundle transition} function.
+
+TODO: Show this endomorphism $g$ explicitly:
+\[
+\begin{gathered}
+\varphi_U^{-1}: (U \cap V) \times Y \to \pi^{-1}(U \cap V) \\
+\varphi_U^{-1}: (p, y) \mapsto e \\
+\varphi_V(e) \mapsto (p, y_V)
+\end{gathered}
+\]
+
+\begin{corollary}
+These so-called \textbf{cocycle conditions} are true:
+\begin{equation}
+\begin{aligned}
+& g_{UU}(p) = 1 \\
+& g_{UV}(p) g_{VU}(p) = 1 \\
+& g_{UV}(p) g_{VW}(p) g_{WU}(p) = 1
+\end{aligned}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+\begin{enumerate}
+\item $\varphi_U \circ \varphi_U^{-1}: U\times Y \to U\times Y$ \\
+$\varphi_U \circ \varphi_U^{-1} =1$. So $1:(p,y) \mapsto (p, y)$ and so $y = g_{UU}(p) y \Longrightarrow g_{UU}(p) = 1$.
+\item $(\varphi_V \circ \varphi_U^{-1}) (p,y_U) = (p, y_V) $ s.t. $y_V = g_{VU}(p) y_U$. \\
+
+$(\varphi_U \circ \varphi_V^{-1}) (p,z_V) = (p, z_U) $ s.t. $z_U = g_{UV}(p) z_V$. \\
+\[
+\begin{gathered}
+(\varphi_U\circ \varphi_V^{-1}) (p, y_V) = (\varphi_U\circ \varphi_V^{-1}) (\varphi_V\circ \varphi_U^{-1}) (p, y_U) = 1 (p, y_U) = (p, g_{UV}(p) g_{VU}(p) y_U) \Longrightarrow g_{UV}(p) g_{VU}(p) = 1
+\end{gathered}
+\] Likewise,
+\item \[
+\begin{aligned}
+& (\varphi_U \circ \varphi_V^{-1}) (p, y_V) = (p, g_{UV}(p) y_V) \\
+& (\varphi_V \circ \varphi_W^{-1}) (p, y_W) = (p, g_{VW}(p) y_W) \\
+& (\varphi_W \circ \varphi_U^{-1}) (p, y_U) = (p, g_{WU}(p) y_U) \\
+\end{aligned}
+\] and so
+\[
+\begin{gathered}
+(\varphi_U \circ \varphi_V^{-1}) (\varphi_V \circ \varphi_W^{-1})(\varphi_W \circ \varphi_U^{-1}) (p, y_U) = (p, g_{UV}(p)g_{VW}(p)g_{WU}(p)y_U) = 1 (p, y_U)
+\end{gathered}
+\]
+so $g_{UV}(p)g_{VW}(p)g_{WU}(p) = 1$
+\end{enumerate}
+\end{proof}
+
+\begin{definition}[(vector bundle) section]
+(smooth) section of $E$ is smooth map 
+\begin{equation}
+s : M \to E
+\end{equation}
+s.t. $\pi \circ s=1$
+\end{definition}
+This definition implies that $s$ is a vector-valued map (EY: $\pi^{-1}(p) \simeq $ vector space $Y$ so for $p \in M$, $s(p) = (y_1, y_2, \dots y_m) = (s_1(p), s_2(p), \dots s_m(p))$.
+
 \section{Push-forward, Pull-back}
 
 \subsection{Push-forward in coordinates, $f_*  : T_p M \to T_{f(p)}N$}
@@ -7630,6 +7719,295 @@ In the body frame, inertia tensor $J \equiv I$ is time-independent.
 \]
 
 Use (Eq. (4.36) Kambe (2009) \cite{TKambe2009}
+
+\section{Waves}
+
+\subsection{Signals, Fourier Analysis}
+
+See Ch. 10 "Signals and Fourier Anaylsis" of Georgi (1992) \cite{Geor1992}.
+
+\subsubsection{Example: A pulse on a String}
+
+See 10.1.1 "A Pulse on a String", Sec. 10.1 "Signals in Forced Oscillation" of Georgi (1992) \cite{Geor1992}.
+
+Consider transvere oscillation of a semiinfinite string stretched from $x=0$ to $x=\infty$, driven at $x=0$ with some arbitrary transverse signal $f(t)$, with a boundary condition at $\infty$ that there's no incoming traveling waves.
+
+If given dispersion relation (10.1) of Georgi (1992) \cite{Geor1992}
+\begin{equation}\label{Eq:NondispersiveDispersionRelation}
+	\omega^2 = v^2 k^2
+\end{equation}
+This implies system that satisfies wave equation
+\begin{equation}\label{Eq:NondispersiveWaveEquation}
+	\frac{\partial^2}{\partial t^2} \psi(x,t) = v^2 \frac{\partial^2}{\partial x^2} \psi(x,t)
+\end{equation}
+((10.2) of Georgi (1992) \cite{Geor1992})
+
+Its a mathematical fact that the general solution to Eq. \ref{Eq:NondispersiveWaveEquation} 
+\begin{equation}
+	\psi(x,t) = g(x- vt) + h(x+vt)
+\end{equation}
+where $g,h $ arbitrary. This fact is because of this straightforward derivation:
+
+\[
+\begin{aligned}
+& \frac{\partial^2}{ \partial t^2} \psi(x,t) = v^2 (g''(x-vt) + h''(x+vt)) \\
+&	\frac{\partial^2}{ \partial x^2} \psi(x,t) = g''(x-vt) + h''(x+vt)
+\end{aligned}
+\]
+
+Boundary condition at $\infty$ implies $h=0$, because $h$ function describes wave moving in $-x$ direction. EY: by going to infinity, by physical intuition, we don't expect a reflection back from infinity.
+
+Boundary condition at $x=0$ (substitute $x=0$ into $g$ and thus for $\psi$):
+\begin{equation}
+	g(-vt) = \psi(0,t) = f(t)
+\end{equation}
+((10.6) of Georgi (1992) \cite{Geor1992})
+
+EY: Consider $\tau = t- \frac{x}{v}$:
+\[
+\begin{aligned}
+	& g(-v\tau) = g(x-vt) \\
+	& f(\tau) = f(t-\frac{x}{v})
+\end{aligned}
+\]
+
+Thus we guess that 
+\begin{equation}
+	\psi(x,t) = f(t- \frac{x}{v})
+\end{equation}
+((10.7) of Georgi (1992) \cite{Geor1992})
+
+e.g. 
+
+\begin{equation}
+	f(t) = \begin{cases} 1 - |t| & \text{ for } |t| \leq 1 \\
+		0 & \text{for } |t| >1 \end{cases}
+\end{equation}
+((10.8) of Georgi (1992) \cite{Geor1992})
+
+\subsubsection{Introduction to Fourier integrals}
+
+The idea is to use linearity in a clever way. \\
+We can take $f(t)$ apart into its component angular frequencies. \\
+We already know how to solve forced oscillatio nproblem for each angular frequency. \\
+\begin{itemize}
+	\item Take individual solutions and add them back up. 
+	\item The advantage of this is that it works for any dispersion relation, not just for Eq. \ref{Eq:NondispersiveDispersionRelation}.
+\end{itemize}
+
+\begin{equation}\label{Eq:FourierIntegral}
+	f(t) = \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i\omega t}
+\end{equation}
+((10.9) of Georgi (1992) \cite{Geor1992})
+
+\begin{theorem}[Properties of Fourier integrals, coefficients]
+In Eq. \ref{Eq:FourierIntegral}
+\begin{equation}
+	C(\omega) = C(-\omega)^*
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+If $f(t) \in \mathbb{R}$, $f(t) = f^*(t)$ and so
+\[
+\begin{gathered}
+	f(t) = \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i\omega t} = f(t)^* = \int_{-\infty}^{\infty} d(\omega) C^*(\omega) e^{i\omega t} = \int_{\infty}^{-\infty} d(-\omega) C(-\omega)^* e^{-i\omega t} = \int_{-\infty}^{\infty} d(\omega) C(-\omega)^* e^{-i\omega t} \\
+	\Longrightarrow C(\omega) = C(-\omega)^*
+\end{gathered}
+\]
+\end{proof}
+
+Since each frequency component of the force produces a wave traveling in $+x$ direction, we use linear superposition, and so we have
+\[
+\Longrightarrow \psi(x,t) = \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i\omega t + ikx}
+\]
+
+\subsubsection{Dispersive Media, Group Velocity}
+
+See 10.2.1 "Group Velocity", Sec. 10.2 "Dispersive Media and Group Velocity" of Georgi (1992) \cite{Geor1992}.
+
+\subsubsection{Group Velocity}
+
+You can send signals in a dispersive medium; the trick is to send the signal not directly as the function, $f(t)$, but as modulation of harmonic signal,
+\begin{equation}
+	f(t) = f_s(t) \cos{\omega_0 t}
+\end{equation}
+((10.17) of Georgi (1992) \cite{Geor1992}), where $f_s(t)$ is the signal. Very often, you want to do this anyway because the important frequencies in your signal, \\
+$f_s(t)$, \\
+may not match frequencies of the waves with which you want to send the signal, $\omega_0$ of $\cos{\omega_0 t}$. \\
+
+Example: AM radio transmission, in which signal is derived from sound with a typical frequency of a few hundred cycles per second (Hz), but is carried as a modulation of amplitude of an electromagnetic radio wave, with frequency of a few million cycles per second ($\omega_0$).
+
+Consider 
+\[
+\cos{ (k_+ x - \omega_+ t)} + \cos{ (k_- x - \omega_- t)} \equiv c(k_+ x - \omega_+ t) + c(k_- x - \omega_- t)
+\]
+Let $k_{\pm} = k_0 \pm k_s$, $\omega_{\pm} = \omega_0 \pm \omega_s$ for $k_s \ll k_0$, $\omega_s \ll \omega_0$.
+
+Then
+\begin{equation}\label{Eq:Example2TravelingWavesWithCarrierFrequency}
+\begin{gathered}
+	c(k_{\pm} x - \omega_{\pm}t) = c(k_{\pm} x) c(\omega_{\pm}t) + s(k_{\pm} x) s(\omega_{\pm} t) 
+\end{gathered}
+\end{equation}
+and so for each term,
+\[
+\begin{gathered}
+\begin{gathered}
+	c(k_{\pm} x) c(\omega_{\pm} t) = c((k_0 \pm k_s) x) c((\omega_0 \pm \omega_s) t) = (c(k_0x) c(k_s x) \mp s(k_0x) s(k_s x)) (c(\omega_0 t) c(\omega_s t) \mp s(\omega_0 t) s(\omega_0 t)) = \\
+= c(k_s x) c(\omega_s t)c(k_0x) c(\omega_0 t) \mp c(k_s x) s(\omega_s t) c(k_0 x) s(\omega_0t) \mp s(k_sx) c(\omega_s t) s(k_0x) c(\omega_0 t) + s(k_s x) s(\omega_s t) s(k_0x ) s(\omega_0 t) 
+\end{gathered} \\
+\quad \quad \\
+\begin{gathered}
+	s(k_{\pm}x) s(\omega_{\pm} t) = s(k_0 \pm k_s)x s(\omega_0 \pm \omega_s) t = (s(k_0x) c(k_sx) \pm c(k_0x) s(k_sx) ) (s (\omega_0 t) c(\omega_s t) \pm c(\omega_0 t) s(\omega_s t) ) = \\
+	= c(k_s x) c(\omega_s t) s(k_0 x) s(\omega_0 t) \pm c(k_s x) s(\omega_s t) s(k_0x) c(\omega_0 t) \pm s(k_s x) s(\omega_0 t) c(k_0x) s(\omega_0 t) + s(k_s x) s(\omega_s t) c(k_0x) c(\omega_0 t)
+\end{gathered}
+\end{gathered}
+\]
+Terms with $\pm$ or $\mp$ in front cancel for when considering the total expression summing 2 terms in Eq. \ref{Eq:Example2TravelingWavesWithCarrierFrequency}, and so
+\begin{equation}\label{Eq:SignalAndCarrierWavesAs2TravelingWaves}
+\begin{gathered}
+	\Longrightarrow 2 \cdot \left[ c(k_sx) c(\omega_s t) (c(k_0x - \omega_0t)) + s(k_s x) s(\omega_s t) c(k_0x - \omega_0t) \right] = 2 c(k_s x - \omega_s t) c(k_0x - \omega_0 t)
+\end{gathered}
+\end{equation}
+((10.21) of Georgi (1992) \cite{Geor1992})
+
+Since $k_s \ll k_0$, and $\omega_s \ll \omega_0$, so $c(k_s x - \omega_s t)$ varies slowly in $x$ and $t$ compared to second factor. You should think of this first factor as the signal in Eq. \ref{Eq:SignalAndCarrierWavesAs2TravelingWaves}. The second factor is called the \textbf{carrier wave}.
+
+Then Eq. \ref{Eq:SignalAndCarrierWavesAs2TravelingWaves} describes a signal that moves with velocity
+\begin{equation}
+	v_s = \frac{ \omega_s }{k_s } = \frac{ \omega_+ - \omega_- }{ k_+ - k_- }
+\end{equation}
+((10.22) of Georgi (1992) \cite{Geor1992}) while smaller waves associated with second factor, carrier wave, move with velocity 
+\begin{equation}
+	v_0 = \frac{\omega_0}{k_0}
+\end{equation}
+((10.23) of Georgi (1992) \cite{Geor1992})
+
+In limit as $k_+ - k_- = 2k_s$ becomes small, $v_s \equiv \frac{\omega_+ - \omega_- }{ k_+ - k_-} \mapsto \left. \frac{\partial \omega}{\partial k} \right|_{k=k_0}$.
+
+$v_g = \left. \frac{\partial \omega}{ \partial k} \right|_{k=k_0}$ is called the "group velocity"; measures the speed the signal can actually be sent.
+
+Suppose dispersion relation is slowly varying for some range of frequencies near some frequency $\omega_0$, 
+\[
+\begin{gathered}
+	\omega = \omega(k) = \omega_0 + (k- k_0) \left. \frac{ \partial \omega}{ \partial k } \right|_{k=k_0} + \dots \\
+	\omega_0 \equiv \omega(k_0)
+\end{gathered}
+\]
+Higher order terms negligible only if $\Delta \omega \ll \omega_0$. If so let 
+\[
+\begin{gathered}
+	\begin{gathered}
+		\omega = vk + a \\
+		k = \frac{\omega}{v} + b
+	\end{gathered} \text{ \quad \, since \quad \, } \begin{gathered}
+	a = \omega_0 - k_v \\
+	b = -\frac{a}{v} = k_0 - \frac{ \omega_0}{v}
+\end{gathered}
+\end{gathered}
+\]
+
+$v$ is group velocity, $\left. v = \frac{\partial \omega}{ \partial k} \right|_{k=k_0}$
+
+Send signal of form $f(t) e^{-i\omega_0 t}$ (modulate the amplitude by $f(t)$ that's non-zero for some range of frequencies, of carrier wave $e^{-i \omega_0 t}$):
+\[
+\begin{gathered}
+	\psi(0,t) = f(t) e^{-i \omega_0 t} = \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i\omega t} e^{-i\omega_0 t} = \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i(\omega + \omega_0)t} = \int_{-\infty}^{\infty} d\omega C(\omega - \omega_0) e^{-i\omega t}
+\end{gathered}
+\]
+where we used linearity or i.e. linear superposition or i.e. adding up frequency components for second equality, and $u= \omega + \omega_0$ substitution for 3rd equality.
+
+Thus
+\[
+\psi(x,t) = \int_{-\infty}^{\infty} d\omega C(\omega - \omega_0) e^{-i\omega t} e^{ikx}
+\]
+
+For approximation $k = \frac{\omega }{v} + b$, 
+\[
+\begin{gathered}
+\psi(x,t) = \int_{-\infty}^{\infty} d\omega C(\omega - \omega_0) e^{-i\omega t} e^{ i \left( \frac{\omega x}{v} + bx \right) } = \int_{-\infty}^{\infty} d\omega C(\omega - \omega_0) e^{ -i \omega \left( t - \frac{x}{v} \right) } e^{ibx } = \\
+= \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i (\omega + \omega_0) \left( t - \frac{x}{v} \right) } e^{ibx} = f(t - \frac{x}{v})	 e^{-i \omega_0 (t - \frac{x}{v} ) + ibx}
+\end{gathered}
+\]
+
+Thus, for signal $f(t)$ s.t. $C(\omega) \approx 0$ for $| \omega - \omega_0| > \Delta \omega$, where $\Delta \omega \ll \omega_0$, \\
+modulation $f(t)$ travels without change of shape at group velocity $v = \left. \frac{ \partial \omega}{ \partial k } \right|_{k=k_0}$. \\
+Phase velocity $v_{\phi} = \frac{\omega}{k}$ has nothing to do with transmission of information, but notice because of $e^{ibx} = \exp{ \left( i \left( k_0 - \frac{ \omega_0}{v} \right) \right) }$ carrier wave travels at phase velocity
+\[
+\begin{gathered}
+	\frac{ \omega_0 }{ b + \frac{\omega_0}{v} } = \frac{ \omega_0}{ k_0 - \frac{\omega_0}{v} + \frac{\omega_0}{v} } = \frac{\omega_0}{k_0} = v_{\phi}
+\end{gathered}
+\]
+
+"You can see the difference between phase velocity and group velocity in your pool or bathtub by making a wave packet consisting of severla shorter waves." pp. 232, Sec. 10.2 of Georgi (1992) \cite{Geor1992}).
+
+\subsubsection{Bandwidth, Fidelity, Uncertainty}
+
+See Sec. 10.3 "Bandwidth, Fidelity, and Uncertainty" of Georgi (1992) \cite{Geor1992}.
+
+\subsubsection{Inverse Fourier Transform}
+
+Now suppose we have the inverse Fourier transform to be of this form:
+\begin{equation}\label{Eq:InverseFourierTransform}
+C(\omega) = \frac{1}{ 2\pi} \int_{-\infty}^{\infty} dt f(t) e^{i\omega t}
+\end{equation}
+
+Recall $f(t) = \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i\omega t}$ of Eq. \ref{Eq:FourierIntegral}. 
+
+Given $\frac{1}{2\pi}\int_{-\infty}^{\infty} dt f(t) e^{i\omega t}$ of Eq. \ref{Eq:InverseFourierTransform}, insert Eq. \ref{Eq:FourierIntegral} for $f(t)$:
+\[
+\begin{gathered}
+	\frac{1}{2\pi} \int_{-\infty}^{\infty}dt \int_{-\infty}^{\infty} d\omega' C(\omega') e^{i (\omega- \omega')t} = \frac{1}{2\pi} \int_{-\infty}^{\infty} d\omega' C(\omega') \int_{-\infty}^{\infty} dt e^{i (\omega - \omega') t} 
+\end{gathered}
+\]
+$\int_{-\infty}^{\infty} e^{ i(\omega - \omega') t} $ averages to zero unless $\omega' = \omega$.
+
+Therefore $\frac{1}{2\pi} \int_{-\infty}^{\infty} dt f(t) e^{i\omega t} $ is proportional to $C(\omega)$.
+
+Now consider $f(t) = e^{-\Gamma|t|}$.
+
+\[
+\begin{gathered}
+	\int_{-\infty}^{\infty} dt e^{-\Gamma|t|} e^{i\omega t} =\int_0^{\infty} dt e^{t(i\omega - \Gamma)} + \int_{-\infty}^0 dt e^{i(i\omega + \Gamma) } = \left. \frac{ e^{t(i\omega - \Gamma)} }{ i\omega - \Gamma} \right|_0^{\infty} + \left. \frac{ e^{t(i\omega + \Gamma)} }{ i\omega + \Gamma} \right|_{-\infty}^0 = \frac{ i\omega + \Gamma}{ \omega^2 + \Gamma^2} + \frac{-i\omega + \Gamma}{ \omega^2 +\Gamma^2} = \frac{2\Gamma}{ \omega^2 + \Gamma^2}
+\end{gathered}
+\]
+Note that for $\frac{1}{ i\omega - \Gamma}$, $\frac{1}{ i\omega + \Gamma}$, if $\omega = \mp i\Gamma$, there's a pole; otherwise $\forall \, \omega \in \mathbb{R}$, integral is well-behaved.
+
+Then for this particular case $C(\omega) = \frac{1}{2\pi} \frac{ 2\Gamma}{ \omega^2 + \Gamma^2}$.
+
+For $f(t) = e^{-\Gamma |t|}$, $f(0) = 1$. Then
+\[
+\int_{-\infty}^{\infty} d\omega C(\omega) e^{-i\omega t} = \int_{-\infty}^{\infty} d\omega \frac{1}{\pi} \frac{ \Gamma e^{-i\omega t} }{ \omega^2 + \Gamma^2} = \frac{1}{\pi} \int_{-\infty}^{\infty} \frac{d\omega \Gamma}{ \omega^2 + \Gamma^2} = \frac{1}{ \pi} \int_{-\pi/2}^{\pi/2} \frac{ \Gamma \sec^2{\theta} d\theta \Gamma}{ \Gamma^2 (\tan^2{\theta} + 1) } = 1
+\]
+So $\frac{1}{2\pi}$ factor is obtained.
+
+In another way to get $C(\omega)$, the inverse Fourier transform, as the limit of a Fourier waves, consider $\psi(-\pi l,t) = \psi(\pi l,t) $, periodic boundary condition (notice the period is $2\pi l = T$), 
+\[
+\xrightarrow{ \text{ in general } } \psi(x) = \sum_{j=-\infty}^{\infty} c_j e^{-ijx/l}
+\]
+Notice that changing $c_j e^{-ijx/l}$ by $2\pi l$ just changes the phase of the exponential by some multiple of $2\pi$ and so each factor indeed obeys the periodic boundary condition.
+
+Likewise, for $f(t)$, s.t. $f(-\pi T) = f(\pi T)$, $T$ large
+\[
+\begin{aligned}
+	& f(t) = \sum_{j=-\infty}^{\infty} c_j e^{-ijt/T} \quad \quad \, \text{ (Fourier transform in time ) } \\
+	& c_j = \frac{1}{2\pi T} \int_{-\pi T}^{\pi T} dt e^{ijt/T} f(t) 
+\end{aligned}
+\]
+
+$\lim_{t\to \infty} f(t) = 0$, then $c_j \to 0$ as $T \to \infty$.  $\Longrightarrow \begin{aligned}
+	& c_j T \to C(\omega) \\
+	& j/T \to \omega 
+\end{aligned}$, so then
+\[
+f(t) = \sum c_j e^{-ij t/T} = \sum (c_j T) e^{-ijt/T} \frac{1}{T} \to \int_{-\infty}^{\infty} d\omega C(\omega) e^{-i \omega t} 
+\]
+So we have these important results:
+\begin{align}
+	& \boxed{ f(t)  = \int_{-\infty}^{\infty} C(\omega) e^{- i\omega t}  }\\
+	& \boxed{ C(\omega)  = \frac{1}{2\pi} \int_{-\infty}^{\infty} dt f(t) e^{ i \omega t}  }
+\end{align}
 
 
 \section{Fluid Mechanics, Fluid Flow}
@@ -13781,6 +14159,10 @@ Third Edition,
 
 \bibitem{Mori2001} 
 Shigeyuki Morita. \textbf{Geometry of Differential Forms} (Translations of Mathematical Monographs, Vol. 201). American Mathematical Society (August 28, 2001). ISBN-10: 0821810456
+
+\bibitem{Rent2014}
+Paul Renteln. \textbf{Manifolds, Tensors, and Forms: An Introduction for Mathematicians and Physicists}. Cambridge University Press. 2014. 
+
 
 \bibitem{Jost2017}
 J\"{u}rgen Jost. \textbf{Riemannian Geometry and Geometric Analysis}. Seventh Edition. Springer. 2017.
