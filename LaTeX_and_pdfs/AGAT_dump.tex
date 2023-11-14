@@ -29,6 +29,12 @@
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{cd}
 
+% https://tex.stackexchange.com/questions/132783/how-to-write-checkmark-in-latex
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+% https://tex.stackexchange.com/questions/75525/how-to-write-crossed-out-math-in-latex
+\usepackage[makeroom]{cancel}
+
 \usepackage{multicol}
 
 % ----------------------------------------------------------------------------------------
@@ -89,6 +95,10 @@
    \noindent{\small\bf Solution #1.}
    }
 
+% We need the seminorm symbol from functional analysis.
+% https://tex.stackexchange.com/questions/237749/curly-line-close-together
+\newcommand\dblwr{\wr\mkern-2mu\wr}
+\newcommand{\seminorm}[1]{\mathopen{\dblwr}#1\mathclose{\dblwr}}
 
 \title{The Algebraic Geometry Algebraic Topology Dump}
 \author{Ernest Yeung \href{mailto:ernestyalumni@gmail.com}{ernestyalumni@gmail.com}}
@@ -8679,7 +8689,7 @@ key application: definition: $L^p$ spaces. special: $p=2$
 As a technical tool, we introduce
 
 Schuller: for a measurable function, I need to know the $\sigma$ algebra on $M$ and $\sigma$ on $\mathbb{R}_0^+$.
-\begin{definition} A measurable function $s: M \to \mathbb{R}_0^+$ is called a \textbf{simple function} if 
+\begin{definition} A \emph{measurable function} $s: M \to \mathbb{R}_0^+$ is called a \textbf{simple function} if 
 	\[
 	s(M) = \lbrace s_1, \dots , s_N \rbrace
 	\]
@@ -8696,6 +8706,7 @@ Schuller: for measurable function $s:M \to \mathbb{R}_0^+$, must know $\sigma$-a
 where $s(M)$ is finite.
 
 \textbf{characteristic function} \\
+
 $\begin{aligned}
 	\chi_{A } : & M \to \mathbb{R} \\
 	& m \mapsto \chi_A(m) := \begin{cases} 1 & m \in A \\
@@ -8718,7 +8729,6 @@ such that \begin{enumerate}
 \end{enumerate}
 Schuller: where $\overline{\mathbb{R}}$ equipped with the $\sigma$ algebra \\
 $\overline{\sigma} = \lbrace A \subseteq \overline{\mathbb{R}} | A \cap \mathbb{R} \in \sigma(\mathcal{O}_{\mathbb{R}}) \rbrace$
-
 \end{definition}
 
 In order to define the integral of a non-neg. measurable function, we need to have a measure $\mu$ on the \textbf{domain}.
@@ -8765,12 +8775,288 @@ $\begin{aligned}
 \begin{enumerate}
 	\item[(i)] Markov inequality: $z \in \mathbb{R}^+_0$
 	\[
-	\int f d\mu \leq z \cdot \mu(\text{preim}_f(\lbrace z \rbrace))
+	\int f d\mu \geq z \cdot \mu(\text{preim}_f(\lbrace z \rbrace))
+	\]
+	\item[(ii)] 
+	\[
+	f \leq_{\text{almost everywhere}} g \Longrightarrow \int f d\mu \leq \int g d\mu
+	\]
+	\item[(iii)] 
+	\[
+	f =_{\text{almost everywhere }} g \Longrightarrow \int f d\mu = \int g d\mu
+	\]
+	\item[(iv)] 
+	\[
+	\int f d\mu = 0 \Longrightarrow f =_{\text{almost everywhere} } 0 
+	\]
+	\item[(v)]
+	\[
+	\int f d\mu < \infty \Longrightarrow f <_{\text{almost everywhere}} \infty
 	\]
 \end{enumerate}
 
-
 \end{definition}
+
+The pivotal theorem of (Lebesgue) integration theory is \textbf{Theorem on monotone convergence}. \\
+
+Let $0 \leq f_1 \leq f_2 \leq \dots$ be a sequence of measurable functions $f_n: M \to \overline{\mathbb{R}}$ \\
+
+Provided $f := \sup_{n \geq 1} f_n$ \textbf{pointwise}. \\
+
+Then
+\[
+\lim_{n\to \infty} \int f_n d\mu = \int f d\mu
+\]
+
+EY (20231114): Schuller says in Riemann integration, pointwise is unheard of but here we can exchange the $\lim$ with $\int$. This is a much more general, much more powerful notion of integration.
+
+Let's collect 2 results.
+
+\begin{theorem}
+	Let $f,g \geq 0$ be measurable. \\
+	Let $\alpha \in \mathbb{R}^+_0$. \\
+	Then $\int (f + \alpha g) d\mu = \int f d\mu + \alpha \int g d\mu$ (EY (20231114): Schuller says integration acts linearly as expected) 
+\end{theorem}
+
+\begin{theorem}
+	For any sequence $f_n:M \to \overline{\mathbb{R}}_0^+$ (measurable) \\
+	We have
+	\[
+	\int \left( \sum_{n=1}^{\infty} f_n \right) d\mu = \sum_{n=1}^{\infty} \int f_n d\mu
+	\]
+\end{theorem}
+
+\subsubsection{3. Integrable functions}
+
+In order for a general (not necessarily non-negative function as discussed so far) function
+\[
+f: M \to \overline{\mathbb{R}}
+\]
+to be integrable (having $\int f d\mu$ defined) one needs, beyond $f$ being measurable, one very small extra technical condition. If this extra condition is satisfied, $f$ is called \textbf{integrable}.
+
+More precisely:
+
+\begin{definition}
+	A function $f: M \to \overline{\mathbb{R}}$ is called \textbf{integrable} if 
+	\begin{enumerate}
+		\item[(i)] $f$ is \textbf{measurable}. EY (20231114): Schuller writes in thought bubble: ($(M, \sigma)$ measure space, $(\overline{\mathbb{R}}, \overline{\sigma})$ measure space).
+		\item[(ii)] $\int |f| d\mu < \infty$
+	\end{enumerate} 
+\end{definition}
+
+\emph{Remark} (ii) $\Longleftrightarrow \int f^+ d\mu < \infty$ \emph{and} $\int f^- d\mu < \infty$ where $f = f^+ - f^-$ EY (20231114): Schuller has in thought bubbles $f^+ \leftarrow := \max{(f,0)} \text{ pointwise }$, $f^- \leftarrow := \max{(-f, 0)} \text{ pointwise }$
+
+\begin{definition} The integral $\int fd\mu$ of an \emph{integrable} $f$ is defined as 
+	\[
+	\int f d\mu := \int f^+ d\mu - \int f^- d\mu
+	\]
+\end{definition}
+EY (20231114): Schuller says: restrict them, either of the 2 is $\infty$, $\infty - \infty$ is not good, you don't know what that is supposed to be. $0 - \infty$ is good, it's $-\infty$, $\infty - 0 = \infty$ is good.
+
+\emph{Remark}: In Quantum Mechanics, we need to deal with 
+\[
+f: M \to \mathbb{C}
+\]
+Their integration theory follows immediately by treating $\Re{(f)}$ and $\Im{(f)}$ separately.
+
+\[
+\int f d\mu := \int \Re{(f)} d\mu + i \int \Im{(f)} d\mu
+\]
+
+\textbf{Properties}: $f,g$ \textbf{integrable}: $M \to \mathbb{R}$
+\begin{enumerate}
+	\item[(i)] $f \leq_{\text{almost everywhere}} g \Longrightarrow \int f d\mu \leq \int g d\mu$
+	\item[(ii)] $\forall \, \alpha \in \mathbb{R}$: $\int (f+\alpha g) d\mu = \int f d\mu + \alpha \int g d\mu$
+\end{enumerate}
+
+\subsubsection*{Theorem on dominant convergence}
+
+\begin{theorem}
+	Let \begin{enumerate}
+		\item[(a)] $f_1, f_2, \dots$ sequence of measurable function. 
+		\item[(b)] $f_n \to_{\text{almost everywhere}} f$ pointwise for some function $f$. 
+		\item[(c)] $g$ be non-negative measurable with $\int g d\mu < \infty$ s.t.
+		\[
+		\forall n \in \mathbb{N} : \, |f_n| \leq_{\text{almost everywhere}} g
+		\]
+	\end{enumerate}
+\end{theorem}
+
+Then we have
+\begin{enumerate}
+	\item[(i)] $f$ and $f_1, f_2, f_3, \dots$ are integrable.
+	\item[(ii)] \[
+	\lim_{n\to \infty} \int |f_n - f| d\mu < \infty
+	\] EY (20231115) Schuller says the LHS is finite.
+	\item[(iii)] 
+	\[
+	\lim_{n\to \infty} \int f_n d\mu = \int f d\mu
+	\]
+\end{enumerate}
+
+\textbf{Markov} $\forall \, z \in \mathbb{R}_0^+ : \int f d\mu \geq z \cdot \mu(\text{preim}_f([z, \infty) ))$
+
+\subsubsection{4. The function spaces $L^p(M, \sigma, \mu)$}
+
+\textbf{Fact}: Quantum mechanics of a particle in 3 space-dimensions rests on the (as we will see: Hilbert) space
+\[
+L^2(\mathbb{R}^3, \sigma(\mathcal{O}_{\mathbb{R}^3} ), \lambda^3)
+\]
+
+While we will need the theory for the special case $p=2$ only, it is worthwhile to develop it for any \emph{real} $1 \leq p < \infty$.
+
+\begin{definition}
+	The set $\mathcal{L}^p := \lbrace f: M \to \mathbb{C} | f \text{ measurable and } \int |f|^p d\mu < \infty \rbrace$
+\end{definition}
+
+Equipping $\mathcal{L}^p$ with pointwise $+$ and $\cdot$ makes $(\mathcal{L}^p(M, \sigma, \mu), +, \cdot)$ into a $\mathbb{C}$-vector space: 
+\[
+\begin{gathered}
+\begin{aligned}
++ & : \mathcal{L}^p \times \mathcal{L}^p & \to \mathcal{L}^p \\
+& (f,g) & \mapsto (f + g)
+\end{aligned} \\
+(f \underbrace{+}_{\mathcal{L}^p} g)(m) := f(m) \underbrace{+}_{\mathbb{C}} g(m) \quad \, \forall \, m \in M \\
+\begin{aligned}
+	\cdot & : \mathbb{C} \times \mathcal{L}^p & \to \mathcal{L}^p \\
+	& (\alpha, f) & \mapsto \alpha \cdot_{\mathbb{C}} f \\
+(\alpha \cdot f)(m) = \alpha \cdot_{\mathbb{C}} f(m) \quad \, \forall \, m \in M
+\end{aligned}
+\end{gathered}
+\]
+
+\begin{theorem}
+	The map: $ \seminorm{\cdot}_p : \mathcal{L}^p \to \mathbb{R}$ defined as 
+	\[
+	\seminorm{f}_p := (\int |f|^p d\mu)^{\frac{1}{p} }_{1\leq \underbrace{p}_{\in \mathbb{R}} < \infty}
+	\]
+	is a \textbf{semi-norm}:
+	\begin{enumerate}
+		\item[(i)] 
+		\[
+		\forall \, \alpha \in \mathbb{C}: \seminorm{\alpha f}_p = |\alpha| \cdot \seminorm{f}_p
+		\]
+		\item[(ii)]
+		\[
+		\seminorm{ f + g}_p \leq \seminorm{ f }_p + \seminorm{ g}_p
+		\]
+		\item[(iii)]
+		\[
+		\seminorm{f}_p \geq 0
+		\]
+		\[
+		\cancel{ \seminorm{f}_p = 0 \Longrightarrow f = 0 }
+		\]
+	\end{enumerate}
+\end{theorem}
+
+\textbf{Remark}: $\seminorm{f}_p = 0 \Longrightarrow f =_{\text{almost everywhere}} 0$, and this makes
+\[
+(\mathcal{L}^p, +, \cdot, \seminorm{\cdot}) \text{ not even a normed space }
+\]
+
+To remove the troublesome $f$ which are zero almost everywhere while refusing to be zero everywhere define the following equivalence relation:
+
+Call $f, g\in \mathcal{L}^p$ equivalent: $f \sim g : \Longleftrightarrow f =_{\text{almost everywhere}} g$ \quad \quad \, $g =_{\text{almost everywhere}} h$
+
+Equivalence Relation:
+\[
+\begin{aligned}
+	\checkmark & f\sim g \\
+	\checkmark & f \sim f \\
+	& f \sim g \, \& \, g \sim h \Longrightarrow f \sim h
+\end{aligned}
+\]
+\[
+\begin{gathered}
+	0 \leq \mu (A\bigcup B) \leq \mu(A) + \mu(B) \\
+	= 0 \\
+	\begin{aligned}
+		& \mu(A) = 0 \\
+		& \mu(B) = 0
+	\end{aligned}
+\end{gathered}
+\]
+EY (20231115): Schuller says: Equivalence relations are looking at things in a more forgiving way. I choose to ignore.
+
+For any equivalence relation $\sim$ on $M$ (EY (20231115) Schuller says $M$ is $L^p$) one has the so-called \textbf{quotient space}
+\[
+M / \sim := \lbrace [m] | m \in M \rbrace
+\]
+\[
+[m] := \lbrace \overline{m} | \overline{m} \sim m \rbrace
+\]
+EY (20231115): Schuller says: You have the set of the boys and the girls. You ignore the tall boy, or the short boy. You say they're equivalent is by definition of gender.
+
+$m_1 \sim m_2 : \Longleftrightarrow g(m_1) = g(m_2)$
+
+EY (20231115): Schuller says: equivalence class is when you forget the elements inside the set. Here, we're identifying the functions that are different on set of measure zero.
+
+For our $f\sim g : \Longleftrightarrow f =_{\text{almost everywhere}} g$ we have
+\[
+L^p := \mathcal{L}^p / \sim = \lbrace [f]_{\sim} | f \in \mathcal{L}^p \rbrace
+\]
+\textbf{Check}: 
+\[
+\begin{gathered}
+[f]_{\sim} +_{L^p} [g]_{\sim} := [f +_{\mathcal{L}^p} g]_{\sim} \\
+\alpha \cdot_{L^p} [f]_{\sim} := [\alpha \cdot_{L^p} f]
+\end{gathered}
+\]
+are well-defined.
+
+Show: $\underbrace{[0]}_{\mathcal{L}^p} + [f] = [f]$
+
+Inherit 
+\[
+\begin{aligned} 
+	\| \cdot \| : & L^p \to \mathbb{R}
+& \underbrace{[f]}_{ \in \mathcal{L}^p } \mapsto \| [f] \| := \seminorm{f}  
+\end{aligned}	\quad \quad \quad \, \text{\emph{Well-defined}}
+\]
+
+\begin{theorem}	
+	\[
+	\| \cdot \|_p : L^p \to \mathbb{R}
+	\] is a \textbf{norm} on $L^p$.
+	\[
+	(\Longrightarrow (L^p(M, \sigma, \mu), + , \cdot , \| \cdot \|_p ) \text{ is a normed space } )
+	\]
+\end{theorem}
+\begin{theorem}
+	$(L^p, \dots)$ is a \textbf{Banach space}.
+\end{theorem}
+\textbf{Fact}: H\"{o}lder inequality: $1 \leq p,q < \infty$ and $\frac{1}{p} + \frac{1}{q} = 1$, then
+\[
+\| \int \overline{f}\cdot g d\mu \| \leq  \left( \int |f|^p d\mu \right)^{\frac{1}{p}} + \left( \int |g|^q d\mu \right)^{\frac{1}{q}}
+\]
+(H\"{o}lder inequality) \\
+
+\textbf{Observation}: Letting $\begin{aligned}
+& 	\quad \\ 
+& \langle [f], [g] \rangle := \int \overline{f}\cdot g d\mu \quad \quad \, (\text{well-defined}) \\
+& \langle \cdot, \cdot \rangle : L^p \times L^p \to \mathbb{C} 
+\end{aligned}$
+
+\emph{Check} sesquilinear inner product
+
+\[
+\Longrightarrow |\langle f, g \rangle | \leq \| f \|_2 + \| g \|_2
+\]
+EY (20231115) Schuller says: Only for the case $p=2$ do you get the Cauchy inequality.
+\[
+\underbrace{\Longrightarrow}_{p = 2} |\langle f, g \rangle | \leq \| f \|_2 + \| g \|_2 \quad \quad \, \text{Cauchy inequality}
+\]
+
+\begin{theorem}
+	$(L^2(M, \sigma, \mu), +, \cdot, \langle \cdot | \cdot \rangle)$ is a Hilbert space. \\
+
+	("the (so-called) square-\textbf{integrable} [complex functions]") \\
+
+EY (20231115) Schuller uses [] to denote equivalence classes in [complex functions].
+\end{theorem}
+
+EY (20231115) Schuller says: we keep in mind that equal almost everywhere. We work with the representative of the equivalence class. We make a pick.
 
 \part{Fourier Transform}
 
