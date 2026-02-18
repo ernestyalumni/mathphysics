@@ -1,0 +1,31 @@
+% Amplitudes Notes - Master File
+% Branch: feat/amplitudes-notes
+% Usage: Compile this file to build the complete notes
+% Each \input pulls in a modular chapter
+
+\input{00-preamble}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% Part I: Foundations
+\part{Quantum Field Theory (QFT Foundations)}
+\input{01-qft-review}
+\input{02-helicity}
+
+% Part II: Modern Methods
+\part{Spinor-Helicity Formalism}
+\input{03-spinor-helicity}
+\input{04-mhv}
+\input{05-bcfw}
+
+% Part III: Tools and Implementation
+\part{Computational Tools}
+\input{06-tools}
+
+% Part IV: Open Directions
+\part{Research Frontiers}
+\input{07-open-directions}
+
+\end{document}

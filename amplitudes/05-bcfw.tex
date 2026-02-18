@@ -1,0 +1,65 @@
+% Chapter 5: BCFW Recursion
+% Based on research from 2026-02-17
+
+\chapter{On-Shell Recursion (BCFW)}
+\label{ch:bcfw}
+
+\section{The BCFW Shift}
+
+Choose two legs $i$ and $j$. Deform their spinors:
+\begin{align}
+\lambda_i &\to \lambda_i + z \lambda_j \\
+\tilde{\lambda}_j &\to \tilde{\lambda}_j - z \tilde{\lambda}_i
+\end{align}
+
+Under this shift:
+\begin{equation}
+p_i(z) + p_j(z) = p_i + p_j \quad \text{(momentum conserved)}
+\end{equation}
+
+\section{The Recursion Formula}
+
+If $A_n(z) \to 0$ as $z \to \infty$, then by Cauchy's theorem:
+\begin{equation}
+\boxed{A_n = \sum_{\text{channels } P} A_L^{\text{on-shell}} \frac{1}{P^2} A_R^{\text{on-shell}}}
+\end{equation}
+
+where the sum runs over all factorization channels where $P$ is on-shell ($P^2 = 0$).
+
+\section{Why It Works}
+
+Traditional Feynman diagrams explode combinatorially:
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$n$ gluons & Feynman diagrams \\
+\hline
+4 & 4 \\
+5 & 25 \\
+6 & 220 \\
+10 & $\sim 10^7$ \\
+\hline
+\end{tabular}
+\end{center}
+
+BCFW recursion reduces this to $O(n^3)$ complexity.
+
+\section{Application to Single-Minus}
+
+The arXiv:2602.12176 paper uses BCFW with:
+\begin{itemize}
+\item All-plus reference leg
+\item Single-minus shifted leg
+\item Induction on $n$
+\end{itemize}
+
+This proves the nonvanishing of single-minus amplitudes for all $n$.
+
+\section{Soft Limits}
+
+As $p_n \to 0$:
+\begin{equation}
+A_n \to \frac{\langle n-1, n \rangle}{\langle n, 1 \rangle} A_{n-1}
+\end{equation}
+
+This provides a consistency check on amplitude formulas.

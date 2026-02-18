@@ -1,0 +1,57 @@
+% Chapter 6: Computational Tools
+% Based on cas-tools-research from 2026-02-17
+
+\chapter{Computational Tools}
+\label{ch:tools}
+
+\section{Recommended Tool Stack}
+
+Priority order for OpenClaw physics agent:
+
+\begin{enumerate}
+\item \textbf{lips} — Spinor-helicity brackets, phase-space generation
+\item \textbf{SymPy} — Gamma matrix algebra, symbolic manipulation
+\item \textbf{CADABRA2} — Tensor calculus, field theory
+\item \textbf{FORM} — Large-scale polynomial algebra
+\end{enumerate}
+
+\section{lips}
+
+\begin{verbatim}
+pip install lips
+\end{verbatim}
+
+Features:
+\begin{itemize}
+\item Spinor brackets $\langle ij \rangle$, $[ij]$
+\item Massless phase-space over $\mathbb{C}$, $\mathbb{F}_p$, $\mathbb{Q}_p$
+\item Symbol alphabet generation
+\item 2-loop amplitudes via \texttt{antares-results}
+\end{itemize}
+
+\section{SymPy}
+
+\begin{verbatim}
+import sympy as sp
+from sympy import symbols, simplify, latex
+
+# Spinor bracket
+def angle_bracket(i, j, lam):
+    return lam[i][0]*lam[j][1] - lam[i][1]*lam[j][0]
+\end{verbatim}
+
+\section{CADABRA2}
+
+\begin{verbatim}
+sudo apt install cadabra2
+\end{verbatim}
+
+Python bindings available. Best for tensor operations in field theory.
+
+\section{FORM}
+
+Industrial-scale. No Python API — subprocess only:
+\begin{verbatim}
+import subprocess
+result = subprocess.run(['form', 'script.frm'], capture_output=True)
+\end{verbatim}

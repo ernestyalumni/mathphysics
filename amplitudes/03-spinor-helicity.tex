@@ -1,0 +1,54 @@
+% Chapter 3: Spinor-Helicity Formalism
+% Based on research from 2026-02-17
+
+\chapter{Spinor-Helicity Formalism}
+\label{ch:spinor-helicity}
+
+\section{The Factorization of Null Momenta}
+
+For massless particles, the momentum $p^\mu$ satisfies $p^2 = 0$. In spinor notation, we can factorize this as:
+\begin{equation}
+p_{\alpha\dot{\alpha}} = \lambda_\alpha \tilde{\lambda}_{\dot{\alpha}}
+\end{equation}
+where $\lambda_\alpha$ and $\tilde{\lambda}_{\dot{\alpha}}$ are commuting (bosonic) spinors. This factorization is unique up to the little group scaling:
+\begin{equation}
+\lambda_\alpha \to t \lambda_\alpha, \quad \tilde{\lambda}_{\dot{\alpha}} \to t^{-1} \tilde{\lambda}_{\dot{\alpha}}
+\end{equation}
+
+\section{Spinor Brackets}
+
+The fundamental Lorentz-invariant contractions are:
+\begin{align}
+\angleb{i}{j} &= \langle i j \rangle = \epsilon^{\alpha\beta} \lambda_{i\alpha} \lambda_{j\beta} = \lambda_i^\alpha \lambda_{j\alpha} \\
+\squareb{i}{j} &= [i j] = \epsilon^{\dot{\alpha}\dot{\beta}} \tilde{\lambda}_{i\dot{\alpha}} \tilde{\lambda}_{j\dot{\beta}} = \tilde{\lambda}_{i\dot{\alpha}} \tilde{\lambda}_j^{\dot{\alpha}}
+\end{align}
+
+\section{Schouten Identity}
+
+For any three spinors $\lambda_i$, $\lambda_j$, $\lambda_k$:
+\begin{equation}
+\langle i j \rangle \lambda_{k\alpha} + \langle j k \rangle \lambda_{i\alpha} + \langle k i \rangle \lambda_{j\alpha} = 0
+\end{equation}
+
+Equivalently:
+\begin{equation}
+\langle i j \rangle \langle k l \rangle = \langle i k \rangle \langle j l \rangle + \langle i l \rangle \langle k j \rangle
+\end{equation}
+
+\section{Polarization Vectors}
+
+For a gluon of momentum $p$ and helicity $\pm$:
+\begin{align}
+\varepsilon^+_\mu &= \frac{\langle r | \gamma_\mu | p ]}{\sqrt{2} \langle r p \rangle} \\
+\varepsilon^-_\mu &= \frac{\langle p | \gamma_\mu | r ]}{\sqrt{2} [p r]}
+\end{align}
+where $r$ is an arbitrary reference spinor.
+
+\section{Momentum Twistors}
+
+For planar amplitudes, momentum twistors $\mathcal{Z}_i^A = (\lambda_i^\alpha, \mu_i^{\dot{\alpha}})$ provide a dual description where:
+\begin{equation}
+x_i^{\alpha\dot{\alpha}} - x_{i+1}^{\alpha\dot{\alpha}} = p_i^{\alpha\dot{\alpha}} = \lambda_i^\alpha \tilde{\lambda}_i^{\dot{\alpha}}
+\end{equation}
+
+The dual conformal symmetry becomes manifest in these variables.

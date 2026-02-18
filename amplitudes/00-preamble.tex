@@ -1,0 +1,55 @@
+% Amplitudes Notes - Preamble
+% Branch: feat/amplitudes-notes
+% Created: 2026-02-18
+
+\documentclass[11pt,a4paper]{book}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{slashed} % Dirac slash notation
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.pathmorphing,calc}
+
+% Page setup
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=red}
+
+% Theorem environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+
+% Custom commands for amplitudes
+% Spinor brackets
+\newcommand{\angleb}[2]{\langle #1 #2 \rangle}
+\newcommand{\squareb}[2]{[ #1 #2 ]}
+\newcommand{\ab}[1]{\langle #1 \rangle}
+\renewcommand{\sb}[1]{[ #1 ]}
+
+% Helicity labels
+\newcommand{\plus}{+}
+\newcommand{\minus}{-}
+\newcommand{\mhv}{\text{MHV}}
+\newcommand{\nmhv}{\text{NMHV}}
+
+% Common notation
+\newcommand{\lam}{\lambda}
+\newcommand{\lamtilde}{\tilde{\lambda}}
+\newcommand{\spaa}[2]{\langle #1 #2 \rangle}
+\newcommand{\spbb}[2]{[ #1 #2 ]}
+
+% Title info
+\title{Scattering Amplitudes: From QFT to Modern Methods}
+\author{Ernest Yeung}
+\date{\today}
+
+\begin{document}

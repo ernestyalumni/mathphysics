@@ -1,0 +1,60 @@
+% Chapter 4: MHV Amplitudes
+% Based on arXiv:2602.12176 and research from 2026-02-17
+
+\chapter{Maximally Helicity Violating (MHV) Amplitudes}
+\label{ch:mhv}
+
+\section{The Parke-Taylor Formula}
+
+For $n$-gluon scattering with helicity configuration $(1^-, 2^+, \ldots, n^+)$, the tree-level amplitude is:
+\begin{equation}
+\boxed{A_n^{\text{MHV}}(1^-, 2^+, \ldots, n^+) = i \frac{\langle 12 \rangle^4}{\langle 12 \rangle \langle 23 \rangle \cdots \langle n1 \rangle}}
+\end{equation}
+
+This compact formula replaces $O(n!)$ Feynman diagrams with a single expression. The numerator $\langle 12 \rangle^4$ ensures the little group scaling is correct for the negative helicity gluon.
+
+\section{Helicity Configuration Table}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Helicity Configuration & Tree Amplitude & Status \\
+\hline
+$(-,-,+,+,\ldots,+)$ & $\neq 0$ & MHV \\
+$(-,+,+,+,\ldots,+)$ & $\neq 0$ & MHV (Parke-Taylor) \\
+$(+,-,+,+,\ldots,+)$ & $\neq 0$ & MHV (cyclic) \\
+$(-,-,-,+,\ldots,+)$ & $\neq 0$ & NMHV \\
+$(-,+,+,+,+,+)$ & $\neq 0$ & Single-minus (2026 result) \\
+$(+,+,+,+,+,+)$ & $= 0$ & Vanishing \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Single-Minus Amplitudes Are Nonzero}
+
+Recent work (Guevara, Lupsasca, Skinner, Strominger, Weil, arXiv:2602.12176) proves that single-minus tree amplitudes are nonzero for all $n$.
+
+The formula conjectured by GPT-5.2 Pro and proved in the paper:
+\begin{equation}
+A_n(1^-, 2^+, \ldots, n^+) \neq 0 \quad \text{(nonzero!)}
+\end{equation}
+
+This breaks the old conjecture that only MHV and NMHV configurations were nonvanishing.
+
+\section{BCJ Relations}
+
+The Bern-Carrasco-Johansson (BCJ) relations express amplitude redundancies:
+\begin{equation}
+\sum_{i=2}^{n-1} \frac{s_{1i}}{\langle 1i \rangle [i1]} A_n(2, \ldots, i, 1, i+1, \ldots, n) = 0
+\end{equation}
+
+These reduce the number of independent color-ordered amplitudes from $(n-3)!$ to $(n-3)!/2$.
+
+\section{Double Copy}
+
+Gauge theory amplitudes factorize into gravity amplitudes via:
+\begin{equation}
+M_n^{\text{gravity}} = \sum_{\text{duals}} \frac{A_n^{\text{gauge}} \tilde{A}_n^{\text{gauge}}}{\text{kinematic factors}}
+\end{equation}
+
+This is the KLT (Kawai-Lewellen-Tye) relation.
