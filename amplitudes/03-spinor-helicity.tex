@@ -40,6 +40,21 @@ The dot product of two massless momenta is encoded by:
 \end{equation}
 In particular $p_i^2 = 0$ implies $\langle ii\rangle = [ii] = 0$.
 
+\section{Affine (Inhomogeneous) Spinor Coordinates}
+\label{sec:affine-spinors}
+
+For explicit calculations (as in arXiv:2602.12176v1, Eq.~(2)), one fixes the little-group gauge and writes the spinors in affine coordinates on $\mathbb{CP}^1$:
+\begin{equation}
+|i\rangle \equiv \lambda_i = \begin{pmatrix} 1 \\ z_i \end{pmatrix}, \qquad
+|i] \equiv \tilde{\lambda}_i = \omega_i \begin{pmatrix} 1 \\ \tilde{z}_i \end{pmatrix},
+\end{equation}
+where $z_i, \tilde{z}_i \in \mathbb{C}$ are inhomogeneous (affine) coordinates on the Riemann sphere and $\omega_i \in \mathbb{C}^*$ carries the little-group weight (so $\omega_i \to t^{-1}\omega_i$ under $\lambda\to t\lambda$). In this gauge the spinor brackets read:
+\begin{align}
+\langle ij\rangle &= z_j - z_i, \\
+[ij] &= \omega_i \omega_j\, (\tilde{z}_j - \tilde{z}_i).
+\end{align}
+The dot product identity \eqref{eq:dot-product-brackets} then becomes $2p_i\cdot p_j = (z_j-z_i)\,\omega_i\omega_j(\tilde{z}_i - \tilde{z}_j)$. This coordinate patch is particularly convenient for the half-collinear kinematics relevant to single-minus amplitudes (\S\ref{sec:single-minus}).
+
 \section{Schouten Identity}
 
 For any three spinors $\lambda_i$, $\lambda_j$, $\lambda_k$:

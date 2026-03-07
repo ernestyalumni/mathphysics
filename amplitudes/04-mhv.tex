@@ -61,15 +61,32 @@ A_n(1^-, 2^+, \ldots, n^+) \neq 0 \quad \forall\, n \ge 4.
 
 This breaks the longstanding conjecture that only $m_-\ge 2$ configurations were generically nonvanishing.
 
-\paragraph{Explicit single-minus ansatz (Strominger et al.).}
-The amplitude lives on the \emph{half-collinear} support $\langle 1a\rangle = 0$ for all $a\ne 1$, i.e.\ the negative-helicity spinor $\lambda_1$ is collinear with all others. The ansatz is:
+\paragraph{Half-collinear locus (arXiv:2602.12176 Eq.~(13)).}
+The single-minus amplitude is supported on the \emph{half-collinear locus}:
 \begin{equation}
-A_n = i^{2-n}\, \frac{\langle r 1\rangle^{n+1}}{\langle r 2\rangle \langle r 3\rangle \cdots \langle rn\rangle}\, A_{1\cdots n}
-\prod_{a=2}^{n} \delta\!\bigl(\langle 1 a\rangle\bigr)\,
-\delta^2\!\Bigl(\sum_{i=1}^n \langle r i\rangle\, \tilde\lambda_i\Bigr)
-\label{eq:single-minus-ansatz}
+\langle ij\rangle = 0 \quad \forall\, i,j \in \{1,\dots,n\}.
+\label{eq:half-collinear-locus}
 \end{equation}
-where $r$ is the reference spinor (same as in polarization vectors), $A_{1\cdots n}$ is a scalar prefactor, and the delta functions enforce the half-collinear kinematic support. The factor $\delta^2(\sum_i \langle ri\rangle\tilde\lambda_i)$ is a 2-component $\dot\alpha$ delta function imposing a residual momentum constraint.
+This means all $\lambda_i$ are proportional, i.e.\ $\lambda_i = c_i\,\lambda_1$ for some $c_i\in\mathbb{C}$, so all $n$ momenta are collinear. The $\delta(\langle 1a\rangle)$ factors in the ansatz below enforce this support explicitly for $a=2,\dots,n$.
+
+\paragraph{Explicit single-minus ansatz (arXiv:2602.12176 Eq.~(15)).}
+The ansatz is:
+\begin{align}
+\mathcal{A}_n(1^-,2^+,\dots,n^+)
+&= i^{2-n}\, \frac{\langle r 1\rangle^{n+1}}{\langle r 2\rangle \langle r 3\rangle \cdots \langle rn\rangle}\, A_{1\cdots n}
+\prod_{a=2}^{n} \delta\!\bigl(\langle 1 a\rangle\bigr) \notag\\
+&\quad \times\; \delta^2\!\Bigl(\sum_{i=1}^n \langle r i\rangle\, \tilde\lambda_i\Bigr)
+\label{eq:single-minus-ansatz}
+\end{align}
+where $r$ is the reference spinor, $A_{1\cdots n}$ is a scalar prefactor, and $\delta^2(\cdots)$ is a 2-component ($\dot\alpha$) delta function imposing a residual momentum constraint. In affine coordinates (\S\ref{sec:affine-spinors}), $\langle 1a\rangle = z_a - z_1$, so the delta functions set $z_a = z_1$ for all $a$.
+
+\paragraph{MHV comparison (arXiv:2602.12176 Eq.~(11)).}
+For comparison, the MHV amplitude in the same notation with negative-helicity legs $r,s$ reads:
+\begin{equation}
+\mathcal{A}_n^{\text{MHV}} = i\,\langle rs\rangle^4\;\mathrm{PT}_{\mathrm{cyc}}\;\delta^4\!\Bigl(\sum_{k=1}^n p_k\Bigr),
+\label{eq:mhv-ptcyc}
+\end{equation}
+where $\mathrm{PT}_{\mathrm{cyc}} \equiv 1/(\langle 12\rangle\langle 23\rangle\cdots\langle n1\rangle)$ is the cyclic Parke-Taylor denominator. The full 4-momentum-conserving delta function $\delta^4(\sum_k p_k)$ is displayed explicitly here (it was left implicit in \eqref{eq:mhv-ptcyc}). The structural contrast with \eqref{eq:single-minus-ansatz} is striking: MHV has a standard $\delta^4(P)$ on generic kinematics, while single-minus is localized on the half-collinear locus \eqref{eq:half-collinear-locus} via the $\prod_a\delta(\langle 1a\rangle)$ factors.
 
 \section{BCJ Relations}
 
