@@ -6,22 +6,39 @@
 
 \section{The Factorization of Null Momenta}
 
-For massless particles, the momentum $p^\mu$ satisfies $p^2 = 0$. In spinor notation, we can factorize this as:
+For massless particles, the momentum $p^\mu$ satisfies $p^2 = 0$. In the Van der Waerden notation, the momentum bi-spinor is defined via the Pauli matrices $\sigma^\mu = (\mathbf{1}, \vec{\sigma}_\text{Pauli})$:
+\begin{equation}
+p_{\alpha\dot{\alpha}} = p^\mu (\sigma_\mu)_{\alpha\dot{\alpha}}.
+\end{equation}
+Explicitly in 2×2 matrix form:
+\begin{equation}
+p_{\alpha\dot{\alpha}} = \begin{pmatrix} p^0 + p^3 & p^1 + i p^2 \\ p^1 - i p^2 & p^0 - p^3 \end{pmatrix}.
+\end{equation}
+For massless $p$ ($p^2 = 0$), $\det(p_{\alpha\dot\alpha}) = (p^0)^2 - |\mathbf{p}|^2 = 0$, so this matrix has rank 1 and factorizes as:
 \begin{equation}
 p_{\alpha\dot{\alpha}} = \lambda_\alpha \tilde{\lambda}_{\dot{\alpha}}
 \end{equation}
-where $\lambda_\alpha$ and $\tilde{\lambda}_{\dot{\alpha}}$ are commuting (bosonic) spinors. This factorization is unique up to the little group scaling:
+where $\lambda_\alpha$ and $\tilde{\lambda}_{\dot{\alpha}}$ are commuting (bosonic) Weyl spinors (Srednicki Sec.\ 20.3, 42.1). This factorization is unique up to the little group scaling:
 \begin{equation}
-\lambda_\alpha \to t \lambda_\alpha, \quad \tilde{\lambda}_{\dot{\alpha}} \to t^{-1} \tilde{\lambda}_{\dot{\alpha}}
+\lambda_\alpha \to t \lambda_\alpha, \quad \tilde{\lambda}_{\dot{\alpha}} \to t^{-1} \tilde{\lambda}_{\dot{\alpha}}, \quad t \in \mathbb{C}^*.
 \end{equation}
+For real momenta $t \in U(1)$; for complex momenta $\lambda$ and $\tilde\lambda$ are independent. A left-handed (positive helicity $+\tfrac12$) Weyl spinor scales as $\lambda \to t\lambda$; a right-handed one as $\tilde\lambda \to t^{-1}\tilde\lambda$.
 
 \section{Spinor Brackets}
 
-The fundamental Lorentz-invariant contractions are:
+The fundamental Lorentz-invariant contractions are (Srednicki eq.\ 42.16):
 \begin{align}
-\angleb{i}{j} &= \langle i j \rangle = \epsilon^{\alpha\beta} \lambda_{i\alpha} \lambda_{j\beta} = \lambda_i^\alpha \lambda_{j\alpha} \\
-\squareb{i}{j} &= [i j] = \epsilon^{\dot{\alpha}\dot{\beta}} \tilde{\lambda}_{i\dot{\alpha}} \tilde{\lambda}_{j\dot{\beta}} = \tilde{\lambda}_{i\dot{\alpha}} \tilde{\lambda}_j^{\dot{\alpha}}
+\angleb{i}{j} &= \langle i j \rangle = \epsilon^{\alpha\beta} \lambda_{i\alpha} \lambda_{j\beta} = \lambda_i^0 \lambda_j^1 - \lambda_i^1 \lambda_j^0 \\
+\squareb{i}{j} &= [i j] = \epsilon^{\dot{\alpha}\dot{\beta}} \tilde{\lambda}_{i\dot{\alpha}} \tilde{\lambda}_{j\dot{\beta}}
 \end{align}
+with $\epsilon^{01} = -\epsilon^{10} = 1$ (Levi-Civita). These are antisymmetric: $\langle ij\rangle = -\langle ji\rangle$, $[ij]=-[ji]$.
+
+The dot product of two massless momenta is encoded by:
+\begin{equation}
+2\, p_i \cdot p_j = \mathrm{tr}(\slashed{p}_i \slashed{p}_j) = \langle i j \rangle [j i].
+\label{eq:dot-product-brackets}
+\end{equation}
+In particular $p_i^2 = 0$ implies $\langle ii\rangle = [ii] = 0$.
 
 \section{Schouten Identity}
 

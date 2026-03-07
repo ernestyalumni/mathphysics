@@ -4,14 +4,34 @@
 \chapter{Maximally Helicity Violating (MHV) Amplitudes}
 \label{ch:mhv}
 
+\section{Why ``Maximally Helicity Violating''?}
+
+For a tree-level $n$-gluon amplitude $A_n(h_1,\dots,h_n)$ with $h_i=\pm 1$:
+\begin{itemize}
+  \item Let $m_-$ denote the number of negative-helicity gluons.
+  \item Naive Yang--Mills vertices with all same helicity ($+\cdots+$ or $-\cdots-$) are strongly suppressed --- amplitudes with $m_-=0$ or $m_-=n$ vanish at tree level (and at all loops).
+  \item Amplitudes with $m_-=1$ (single-minus) were long conjectured to vanish; see \S\ref{sec:single-minus}.
+  \item In twistor space (Witten 2004), tree amplitudes are supported on curves of degree $d = m_- - 1 + \ell$, so at tree level $\ell=0$ the non-zero sector requires $0 \le m_- \le 4$ generically.
+\end{itemize}
+\textbf{MHV = maximally helicity violating} corresponds to $m_- = 2$, i.e.\ $m_+ = n-2$. This is the maximum number of ``wrong-helicity'' gluons that gives a generically non-zero amplitude, in the sense that every cyclic ordering is non-zero. The name reflects that having only 2 negative-helicity gluons out of $n$ is the extreme violation of a naive helicity-conservation intuition.
+
 \section{The Parke-Taylor Formula}
 
-For $n$-gluon scattering with helicity configuration $(1^-, 2^+, \ldots, n^+)$, the tree-level amplitude is:
+For $n$-gluon scattering with legs $j$ and $k$ carrying negative helicity, the tree-level color-ordered amplitude is:
 \begin{equation}
-\boxed{A_n^{\text{MHV}}(1^-, 2^+, \ldots, n^+) = i \frac{\langle 12 \rangle^4}{\langle 12 \rangle \langle 23 \rangle \cdots \langle n1 \rangle}}
+\boxed{A_n^{\text{MHV}}(\ldots, j^-, \ldots, k^-, \ldots) = i \frac{\langle j k \rangle^4}{\langle 12 \rangle \langle 23 \rangle \cdots \langle n1 \rangle}}
 \end{equation}
+(momentum-conserving delta function $\delta^4(P)$ implicit).
+For the canonical choice $(j,k)=(1,2)$ this reads $i\,\langle 12\rangle^4 / (\langle 12\rangle\langle 23\rangle\cdots\langle n1\rangle)$.
 
-This compact formula replaces $O(n!)$ Feynman diagrams with a single expression. The numerator $\langle 12 \rangle^4$ ensures the little group scaling is correct for the negative helicity gluon.
+This compact formula replaces $O(n!)$ Feynman diagrams with a single expression.
+
+\paragraph{Little group weight check.}
+Under $\lambda_i \to t_i \lambda_i$, $\tilde\lambda_i \to t_i^{-1}\tilde\lambda_i$, a helicity-$h_i$ gluon requires the amplitude to scale as $t_i^{-2h_i}$.
+\begin{itemize}
+  \item Negative-helicity legs $j,k$: numerator $\langle jk\rangle^4 \sim t_j^4 t_k^4$, denom contributes $t_j^{-1}t_k^{-1}$ (one factor each), net $t_j^4/t_j^{-1}=t_j^{4+1}$... more carefully: $\langle jk\rangle^4$ in numerator gives weight $+4$ for $j$ and $+4$ for $k$; each $\langle \cdot j\cdot\rangle$ in denominator gives $-1$; there are exactly 2 such factors, so net weight for $j$ is $4-2=+2 = -2h_j$ with $h_j=-1$. \checkmark
+  \item Positive-helicity legs: appear twice in the denominator (once as $\langle i{,}i{+}1\rangle$ and once as $\langle i{-}1{,}i\rangle$), giving weight $-2 = -2(+1)$. \checkmark
+\end{itemize}
 
 \section{Helicity Configuration Table}
 
@@ -31,15 +51,25 @@ $(+,+,+,+,+,+)$ & $= 0$ & Vanishing \\
 \end{center}
 
 \section{Single-Minus Amplitudes Are Nonzero}
+\label{sec:single-minus}
 
-Recent work (Guevara, Lupsasca, Skinner, Strominger, Weil, arXiv:2602.12176) proves that single-minus tree amplitudes are nonzero for all $n$.
+Recent work (Guevara, Lupsasca, Skinner, Strominger, Weil, arXiv:2602.12176) proves that single-minus ($m_-=1$) tree amplitudes are non-zero for all $n\ge 4$.
 
-The formula conjectured by GPT-5.2 Pro and proved in the paper:
 \begin{equation}
-A_n(1^-, 2^+, \ldots, n^+) \neq 0 \quad \text{(nonzero!)}
+A_n(1^-, 2^+, \ldots, n^+) \neq 0 \quad \forall\, n \ge 4.
 \end{equation}
 
-This breaks the old conjecture that only MHV and NMHV configurations were nonvanishing.
+This breaks the longstanding conjecture that only $m_-\ge 2$ configurations were generically nonvanishing.
+
+\paragraph{Explicit single-minus ansatz (Strominger et al.).}
+The amplitude lives on the \emph{half-collinear} support $\langle 1a\rangle = 0$ for all $a\ne 1$, i.e.\ the negative-helicity spinor $\lambda_1$ is collinear with all others. The ansatz is:
+\begin{equation}
+A_n = i^{2-n}\, \frac{\langle r 1\rangle^{n+1}}{\langle r 2\rangle \langle r 3\rangle \cdots \langle rn\rangle}\, A_{1\cdots n}
+\prod_{a=2}^{n} \delta\!\bigl(\langle 1 a\rangle\bigr)\,
+\delta^2\!\Bigl(\sum_{i=1}^n \langle r i\rangle\, \tilde\lambda_i\Bigr)
+\label{eq:single-minus-ansatz}
+\end{equation}
+where $r$ is the reference spinor (same as in polarization vectors), $A_{1\cdots n}$ is a scalar prefactor, and the delta functions enforce the half-collinear kinematic support. The factor $\delta^2(\sum_i \langle ri\rangle\tilde\lambda_i)$ is a 2-component $\dot\alpha$ delta function imposing a residual momentum constraint.
 
 \section{BCJ Relations}
 
