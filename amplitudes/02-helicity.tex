@@ -1,13 +1,365 @@
-% Chapter 2: Helicity States
-% Based on Srednicki Ch. 33-41
+% Chapter 2: Helicity States and Weyl Spinors
+% Drawn from Srednicki QFT Ch. 34, 35, 36 (with Cadabra2-verified results)
+% and adapted for the amplitudes context.
 
 \chapter{Helicity States and Weyl Spinors}
 \label{ch:helicity}
 
-\section{Weyl Representation}
+This chapter builds the spinor algebra that underlies everything in
+Parts~II and~III.  The physical target is simple: massless particles carry
+definite \emph{helicity} $h = \pm\tfrac{1}{2}$ (or $\pm 1$ for gluons), and
+the two-component Weyl spinors $\lambda_\alpha$ and $\tilde\lambda_{\dot\alpha}$
+are precisely the objects that represent those helicity eigenstates.
+We establish this connection carefully here so that Chapter~\ref{ch:spinor-helicity}
+can use the spinor-bracket formalism without re-deriving its foundations.
 
-\section{Dotted and Undotted Indices}
+%% ============================================================
+\section{Lorentz Group Representations}
+%% ============================================================
 
-\section{Helicity Projectors}
+The Lorentz algebra $\mathfrak{so}(1,3)$ is (complexified) isomorphic to
+$\mathfrak{su}(2)_L \oplus \mathfrak{su}(2)_R$ via the non-Hermitian combinations
+\begin{align}
+  N_i &\equiv \tfrac{1}{2}(J_i - iK_i), &
+  N_i^\dagger &\equiv \tfrac{1}{2}(J_i + iK_i),
+\end{align}
+where $J_i$ are rotation generators and $K_i$ are boost generators.
+They satisfy $[N_i, N_j] = i\varepsilon_{ijk}N_k$,
+$[N_i^\dagger, N_j^\dagger] = i\varepsilon_{ijk}N_k^\dagger$,
+$[N_i, N_j^\dagger] = 0$, so irreducible representations are labelled
+by two half-integers $(n,\, n')$.
 
-% TODO: Expand from Srednicki Ch. 33-41
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}ccccc@{}}
+  \toprule
+  $(n,n')$ & Srednicki & Dim & Field & Index type \\
+  \midrule
+  $(0,0)$ & $(1,1)$ & 1 & scalar $\phi$ & none \\
+  $(\tfrac{1}{2},0)$ & $(2,1)$ & 2 & left-handed Weyl $\psi_\alpha$ & undotted \\
+  $(0,\tfrac{1}{2})$ & $(1,2)$ & 2 & right-handed Weyl $\tilde\psi_{\dal}$ & dotted \\
+  $(\tfrac{1}{2},\tfrac{1}{2})$ & $(2,2)$ & 4 & vector $A^\mu$ & spacetime \\
+  \bottomrule
+\end{tabular}
+\end{center}
+\medskip
+
+The key point for helicity: under a rotation by angle $\theta$ about the
+momentum axis (the little group of a massless particle), a
+$(\tfrac{1}{2},0)$ field picks up phase $e^{-i\theta/2}$ (helicity $-\tfrac{1}{2}$)
+and a $(0,\tfrac{1}{2})$ field picks up $e^{+i\theta/2}$ (helicity $+\tfrac{1}{2}$).
+
+%% ============================================================
+\section{Left-Handed Weyl Spinors \texorpdfstring{$\psi_\alpha$}{psi\_alpha}}
+%% ============================================================
+
+A left-handed Weyl field $\psi_\alpha(x)$ lives in the $(\tfrac{1}{2},0)$
+representation.  Under an infinitesimal Lorentz transformation
+$\delta\omega_{\mu\nu}$:
+\begin{equation}
+  \delta\psi_\alpha = \tfrac{i}{2}\,\delta\omega_{\mu\nu}\,
+    (S^{\mu\nu}_{\mathrm{L}})_\alpha{}^\beta\,\psi_\beta.
+\end{equation}
+The six generators are explicitly (Srednicki eqs.~34.9--34.10):
+\begin{align}
+  (S^{ij}_{\mathrm{L}})_\alpha{}^\beta &= \tfrac{1}{2}\varepsilon^{ijk}\sigma_k, &
+  (S^{k0}_{\mathrm{L}})_\alpha{}^\beta &= \tfrac{i}{2}\sigma_k,
+\end{align}
+where $\sigma_k$ are the Pauli matrices:
+\begin{equation}
+  \sigma_1 = \begin{pmatrix}0&1\\1&0\end{pmatrix},\quad
+  \sigma_2 = \begin{pmatrix}0&-i\\i&0\end{pmatrix},\quad
+  \sigma_3 = \begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\end{equation}
+These satisfy the Lorentz algebra $[S^{\mu\nu}_L, S^{\rho\sigma}_L]
+= i(g^{\nu\rho}S^{\mu\sigma}_L - \cdots)$.  The boost generators
+$S^{k0}_L$ are anti-Hermitian (the Lorentz group is non-compact),
+reflecting that boosts are not unitary.
+
+%% ============================================================
+\section{Right-Handed Weyl Spinors \texorpdfstring{$\tilde\psi_{\dal}$}{psi-tilde}}
+%% ============================================================
+
+Hermitian conjugation swaps $N_i \leftrightarrow N_i^\dagger$, sending
+$(\tfrac{1}{2},0) \to (0,\tfrac{1}{2})$.  So
+\begin{equation}
+  (\psi_\alpha)^\dagger \equiv \tilde\psi_{\dal}(x)
+\end{equation}
+is a \emph{right-handed} Weyl field with a \emph{dotted} index.
+Its generators are (Srednicki eq.~34.17):
+\begin{equation}
+  \boxed{
+    (S^{\mu\nu}_{\mathrm{R}})_{\dal}{}^{\dbe} = -[(S^{\mu\nu}_{\mathrm{L}})_\alpha{}^\beta]^*
+  }
+\end{equation}
+Concretely this reverses the sign of boosts (consistent with
+$L \leftrightarrow R$ under parity) and from eq.~(35.22):
+\begin{equation}
+  S^{\mu\nu}_{\mathrm{R}}
+  = -\tfrac{i}{4}(\sbar^\mu\sigma^\nu - \sbar^\nu\sigma^\mu).
+\end{equation}
+
+\paragraph{Convention note.}
+We adopt Srednicki's metric $g^{\mu\nu} = \mathrm{diag}(+1,-1,-1,-1)$
+and $\varepsilon^{12} = \varepsilon_{21} = +1$ throughout.
+The amplitudes literature often uses the same conventions; we flag any
+deviation when it appears.
+
+%% ============================================================
+\section{The \texorpdfstring{$\varepsilon$}{epsilon} Symbol:
+  SL\texorpdfstring{$(2,\mathbb{C})$}{(2,C)} Metric}
+%% ============================================================
+
+From $({\tfrac12},0)\otimes({\tfrac12},0) = (0,0)_A\oplus(1,0)_S$
+there is a unique (up to scale) invariant antisymmetric symbol.
+With Srednicki's normalization (eq.~34.22 / 35.1):
+\begin{equation}
+  \varepsilon^{12} = \varepsilon_{21} = +1, \qquad
+  \varepsilon^{21} = \varepsilon_{12} = -1,
+\end{equation}
+so in matrix form:
+\begin{equation}
+  \varepsilon_{\alpha\beta} = \begin{pmatrix}0&-1\\1&0\end{pmatrix}, \qquad
+  \varepsilon^{\alpha\beta} = \begin{pmatrix}0&+1\\-1&0\end{pmatrix}, \qquad
+  \varepsilon_{\alpha\beta}\varepsilon^{\beta\gamma} = \delta_\alpha{}^\gamma.
+\end{equation}
+The same structure holds for dotted indices.
+
+\subsection{Raising and lowering}
+
+\begin{align}
+  \psi^\alpha &= \varepsilon^{\alpha\beta}\psi_\beta, &
+  \psi_\alpha &= \varepsilon_{\alpha\beta}\psi^\beta.
+\end{align}
+
+\textbf{Sign trap (Srednicki eq.~34.27):}
+\begin{equation}
+  \psi^a\chi_a = \varepsilon^{ab}\psi_b\chi_a = -\varepsilon^{ba}\psi_b\chi_a = -\psi_b\chi^b.
+\end{equation}
+Hence $\psi^\alpha\chi_\alpha = -\psi_\alpha\chi^\alpha$: \emph{index
+position matters and carries a sign}.
+
+%% ============================================================
+\section{Lorentz-Invariant Spinor Products}
+%% ============================================================
+
+The fundamental Lorentz-invariant bilinears are:
+\begin{align}
+  \psi\chi &\equiv \psi^\alpha\chi_\alpha
+  = \varepsilon^{\alpha\beta}\psi_\alpha\chi_\beta, \label{eq:angle-bra}\\
+  \tilde\psi\tilde\chi &\equiv \tilde\psi_{\dal}\tilde\chi^{\dal}
+  = \varepsilon_{\dal\dbe}\tilde\psi^{\dal}\tilde\chi^{\dbe}. \label{eq:square-bra}
+\end{align}
+For Grassmann-valued fields, $\psi\chi = +\chi\psi$ (two minus signs cancel;
+Srednicki eq.~35.25), and $(\psi\chi)^\dagger = \tilde\chi\tilde\psi$.
+
+These are the precursors of the spinor brackets $\angleb{i}{j}$ and
+$\squareb{i}{j}$ introduced in Chapter~\ref{ch:spinor-helicity}: when
+$\psi_\alpha = \lambda_{i\alpha}$ and $\chi_\alpha = \lambda_{j\alpha}$ are
+the spinors of massless momenta $p_i$, $p_j$, then
+$\angleb{i}{j} = \varepsilon^{\alpha\beta}\lambda_{i\alpha}\lambda_{j\beta}$
+and $\squareb{i}{j} = \varepsilon_{\dal\dbe}\tilde\lambda_i^{\dal}\tilde\lambda_j^{\dbe}$.
+
+%% ============================================================
+\section{The \texorpdfstring{$\sigma^\mu$}{sigma\^{}mu} Symbol:
+  Vector--Spinor Dictionary}
+%% ============================================================
+
+A field in the $(\tfrac{1}{2},\tfrac{1}{2})$ representation carries one
+undotted and one dotted index.  The dictionary to 4-vectors is
+(Srednicki eq.~34.28--34.30):
+\begin{equation}
+  A_{\alpha\dal} = \sigma^\mu_{\alpha\dal}\,A_\mu, \qquad
+  \sigma^\mu_{\alpha\dal} = (I,\,\vec\sigma).
+\end{equation}
+Explicitly:
+\begin{equation}
+  \sigma^0 = \begin{pmatrix}1&0\\0&1\end{pmatrix},\;
+  \sigma^1 = \begin{pmatrix}0&1\\1&0\end{pmatrix},\;
+  \sigma^2 = \begin{pmatrix}0&-i\\i&0\end{pmatrix},\;
+  \sigma^3 = \begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\end{equation}
+Raising both spinor indices via the $\varepsilon$ symbols gives
+(Srednicki eq.~35.19--35.20):
+\begin{equation}
+  \sbar^{\mu\,\dal\alpha} \equiv \varepsilon^{\alpha\beta}\varepsilon^{\dal\dbe}\,
+  \sigma^\mu_{\beta\dbe} = (I,\,-\vec\sigma).
+\end{equation}
+
+\subsection{Key identities}
+
+\begin{align}
+  \sigma^\mu_{\alpha\dal}\,\sigma_{\mu\beta\dbe}
+    &= -2\,\varepsilon_{\alpha\beta}\,\varepsilon_{\dal\dbe},
+    \tag{35.4} \\
+  \varepsilon^{\alpha\beta}\varepsilon^{\dal\dbe}\,
+  \sigma^\mu_{\alpha\dal}\,\sigma^\nu_{\beta\dbe}
+    &= -2\,g^{\mu\nu},
+    \tag{35.5} \\
+  \operatorname{tr}(\sigma^\mu\sbar^\nu) \equiv
+  \sigma^\mu_{\alpha\dal}\,\sbar^{\nu\,\dal\alpha}
+    &= 2\,g^{\mu\nu}, \\
+  \sigma^\mu\sbar^\nu + \sigma^\nu\sbar^\mu
+    &= -2\,g^{\mu\nu}\,I_2.
+    \tag{35-Clifford}
+\end{align}
+The last line is the Weyl-spinor analogue of the Dirac Clifford algebra.
+The generators are its antisymmetric part:
+\begin{equation}
+  S^{\mu\nu}_{\mathrm{L}} = \tfrac{i}{4}(\sigma^\mu\sbar^\nu - \sigma^\nu\sbar^\mu).
+  \tag{35.21}
+\end{equation}
+
+\subsection{Momentum bi-spinor}
+
+For any 4-momentum $p^\mu$, define
+\begin{equation}
+  p_{\alpha\dal} \equiv \sigma^\mu_{\alpha\dal}\,p_\mu
+  = \begin{pmatrix} p^0+p^3 & p^1+ip^2 \\ p^1-ip^2 & p^0-p^3 \end{pmatrix}.
+\end{equation}
+Then $\det(p_{\alpha\dal}) = (p^0)^2 - |\mathbf{p}|^2 = p^2$, so $p^2=0$
+iff the matrix has rank 1 --- the factorization $p_{\alpha\dal}=\lambda_\alpha\tilde\lambda_{\dal}$
+is equivalent to masslessness.  This is the starting point of
+Chapter~\ref{ch:spinor-helicity}.
+
+%% ============================================================
+\section{Helicity from the Little Group}
+\label{sec:helicity-little-group}
+%% ============================================================
+
+For a massless particle with momentum $p^\mu$, the little group (the
+subgroup of the Lorentz group that fixes $p^\mu$) is $ISO(2)$,
+whose compact part is $U(1)$.  Under the $U(1)$ rotation by angle
+$\theta$, a field of helicity $h$ transforms as $e^{-2ih\theta}$.
+
+In terms of spinors: the little-group generator rescales
+\begin{equation}
+  \lambda_\alpha \to e^{i\theta/2}\lambda_\alpha, \qquad
+  \tilde\lambda_{\dal} \to e^{-i\theta/2}\tilde\lambda_{\dal},
+\end{equation}
+i.e.\ the continuous parameter $t = e^{i\theta/2}$ acts as
+\begin{equation}
+  \lambda \to t\lambda, \qquad \tilde\lambda \to t^{-1}\tilde\lambda.
+  \label{eq:little-group-scaling}
+\end{equation}
+A state created by $\lambda_\alpha$ has helicity $-\tfrac{1}{2}$ (left-handed,
+positive-chirality), and one created by $\tilde\lambda_{\dal}$ has
+helicity $+\tfrac{1}{2}$ (right-handed, negative-chirality).
+
+For a spin-1 gluon the helicity-$\pm 1$ polarization vectors scale as
+$\varepsilon^\pm_\mu \to t^{\mp 2}\varepsilon^\pm_\mu$ under
+\eqref{eq:little-group-scaling}; this determines the form of $\varepsilon^\pm$
+in terms of spinors (see \S\ref{sec:spinor-helicity-polarization}).
+
+%% ============================================================
+\section{The Weyl Lagrangian}
+\label{sec:weyl-lagrangian}
+%% ============================================================
+
+For a single left-handed Weyl field $\psi_\alpha$, the Lorentz-invariant
+hermitian Lagrangian is (Srednicki eq.~36.2):
+\begin{equation}
+  \boxed{
+    \mathcal{L}
+    = i\tilde\psi_{\dal}\,\sbar^{\mu\,\dal\alpha}\,\partial_\mu\psi_\alpha
+    - \tfrac{1}{2}m\,\varepsilon^{\alpha\beta}\psi_\alpha\psi_\beta
+    - \tfrac{1}{2}m\,\varepsilon_{\dal\dbe}\tilde\psi^{\dal}\tilde\psi^{\dbe}.
+  }
+\end{equation}
+The kinetic term is real modulo a total divergence.  The mass term is a
+\emph{Majorana mass}: it breaks the $U(1)$ symmetry $\psi\to e^{i\alpha}\psi$
+and is non-zero because $\psi_\alpha$ are Grassmann-valued.
+
+\subsection{Equations of motion}
+
+Varying with respect to $\tilde\psi^{\dal}$:
+\begin{equation}
+  -i\,\sbar^{\mu\,\dal\alpha}\,\partial_\mu\psi_\alpha + m\,\tilde\psi^{\dal} = 0.
+  \tag{36.4}
+\end{equation}
+For $m=0$ this is the \textbf{Weyl equation} for a massless left-handed
+spinor.  It is the field equation whose plane-wave solutions give
+the spinors $\lambda_\alpha(p)$ used in amplitude calculations.
+
+\subsection{Gamma matrices: Weyl representation}
+
+Assembling $\psi_\alpha$ and $\tilde\psi_{\dal}$ into a 4-component
+Majorana spinor $\Psi = (\psi_\alpha, \tilde\psi^{\dal})^T$, the equations
+of motion take the Dirac form $(-i\gamma^\mu\partial_\mu + m)\Psi = 0$ with
+(Srednicki eq.~36.7):
+\begin{equation}
+  \gamma^\mu =
+  \begin{pmatrix} 0 & \sigma^\mu_{\alpha\dbe} \\
+                  \sbar^{\mu\,\dal\beta} & 0 \end{pmatrix},
+  \qquad
+  \{\gamma^\mu,\gamma^\nu\} = -2g^{\mu\nu}I_4.
+  \tag{36.7, 36.9}
+\end{equation}
+The chiral projectors are
+$P_L = \tfrac{1}{2}(I-\gamma^5) = \mathrm{diag}(I_2,0)$ and
+$P_R = \tfrac{1}{2}(I+\gamma^5) = \mathrm{diag}(0,I_2)$
+with $\gamma^5 = i\gamma^0\gamma^1\gamma^2\gamma^3 = \mathrm{diag}(-I_2,+I_2)$.
+
+%% ============================================================
+\section{Majorana and Dirac Fermions}
+%% ============================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}lll@{}}
+  \toprule
+  Property & Majorana & Dirac \\
+  \midrule
+  Weyl fields & 1 ($\psi$) & 2 ($\chi$, $\xi$) \\
+  $U(1)$ symmetry & No & Yes \\
+  Conserved charge & None & $Q = \int j^0\,d^3x$ \\
+  Self-conjugate ($\Psi^C = \Psi$) & Yes & No \\
+  Lagrangian & $\tfrac{i}{2}\bar\Psi\gamma^\mu\partial_\mu\Psi - \tfrac{m}{2}\bar\Psi\Psi$ &
+               $i\bar\Psi\gamma^\mu\partial_\mu\Psi - m\bar\Psi\Psi$ \\
+  Real d.o.f. & 2 & 4 \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+In amplitude calculations with external gluons (massless spin-1), the
+internal spinors are always effectively massless Weyl spinors; the
+Majorana/Dirac distinction matters for external fermion lines.
+
+%% ============================================================
+\section{Summary: Spinor Toolkit}
+%% ============================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}p{5cm}p{8.5cm}@{}}
+  \toprule
+  Object & Expression / Rule \\
+  \midrule
+  Left-handed field & $\psi_\alpha$ \quad (undotted index, helicity $-\tfrac{1}{2}$) \\
+  Right-handed field & $\tilde\psi_{\dal} = (\psi_\alpha)^\dagger$ \quad (dotted, $+\tfrac{1}{2}$) \\
+  Rotation generator & $(S^{ij}_L)_\alpha{}^\beta = \tfrac{1}{2}\varepsilon^{ijk}\sigma_k$ \\
+  Boost generator & $(S^{k0}_L)_\alpha{}^\beta = \tfrac{i}{2}\sigma_k$ \\
+  R-generators & $S^{\mu\nu}_R = -[S^{\mu\nu}_L]^*$ \\
+  $\varepsilon$ normalization & $\varepsilon^{12}=\varepsilon_{21}=+1$ \\
+  Raise/lower & $\psi^\alpha = \varepsilon^{\alpha\beta}\psi_\beta$, \quad $\psi_\alpha = \varepsilon_{\alpha\beta}\psi^\beta$ \\
+  Sign identity & $\psi^\alpha\chi_\alpha = -\psi_\alpha\chi^\alpha$ \\
+  Angle bracket & $\psi\chi = \varepsilon^{\alpha\beta}\psi_\alpha\chi_\beta = +\chi\psi$ \\
+  Square bracket & $\tilde\psi\tilde\chi = \varepsilon_{\dal\dbe}\tilde\psi^{\dal}\tilde\chi^{\dbe}$ \\
+  $\sigma^\mu$ & $(I,\vec\sigma)$, \quad $\sbar^\mu = (I,-\vec\sigma)$ \\
+  Trace & $\mathrm{tr}(\sigma^\mu\sbar^\nu) = 2g^{\mu\nu}$ \\
+  Clifford & $\sigma^\mu\sbar^\nu + \sigma^\nu\sbar^\mu = -2g^{\mu\nu}I_2$ \\
+  Momentum bi-spinor & $p_{\alpha\dal} = \sigma^\mu_{\alpha\dal}p_\mu$, \quad $\det = p^2$ \\
+  Little group & $\lambda\to t\lambda$, $\tilde\lambda\to t^{-1}\tilde\lambda$ \\
+  Weyl Lagrangian & $i\tilde\psi\sbar^\mu\partial_\mu\psi - \tfrac{m}{2}\psi\psi - \tfrac{m}{2}\tilde\psi\tilde\psi$ \\
+  Weyl equation ($m=0$) & $i\sbar^{\mu\,\dal\alpha}\partial_\mu\psi_\alpha = 0$ \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent\textbf{Next:} Chapter~\ref{ch:spinor-helicity} uses the momentum
+bi-spinor factorization $p_{\alpha\dal}=\lambda_\alpha\tilde\lambda_{\dal}$
+(which follows directly from $p^2=0$ and the rank-1 condition above) to
+build the spinor-bracket formalism and polarization vectors for massless
+gauge bosons.
