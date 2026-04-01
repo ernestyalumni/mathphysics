@@ -1,0 +1,1018 @@
+{
+  "_generated": "export_dashboard_json.py",
+  "_source": "/Monoclaw/Python/Cadabra2/Srednicki",
+  "roadmap": [
+    "ch34",
+    "ch35",
+    "ch36",
+    "ch37",
+    "ch38",
+    "ch39",
+    "ch40",
+    "ch41",
+    "ch42",
+    "ch43",
+    "ch48",
+    "ch60",
+    "ch76",
+    "ch77",
+    "ch80",
+    "bcfw",
+    "adscft"
+  ],
+  "chapters": [
+    {
+      "id": "ch34",
+      "number": "34",
+      "title": "Left/Right Weyl Spinors",
+      "status": "done",
+      "scriptFile": "ch34_left_right_spinors.py",
+      "description": "Introduces two-component Weyl spinor formalism. Defines undotted (left-handed) and dotted (right-handed) spinor indices, the epsilon tensor, van der Waerden notation. Mostly-plus metric g=diag(-1,+1,+1,+1).",
+      "equations": [
+        {
+          "label": "34.1",
+          "latex": "U(\\Lambda)^{-1}\\,\\psi_a(x)\\,U(\\Lambda)\n  = {L_a}^b(\\Lambda)\\,\\psi_b(\\Lambda^{-1}x).",
+          "section": "Left-Handed Spinor Field \\texorpdfstring{$\\psi_a$"
+        },
+        {
+          "label": "34.3",
+          "latex": "{L_a}^b(1{+}\\delta\\omega)\n  = \\delta_a{}^b + \\tfrac{i}{2}\\,\\delta\\omega_{\\mu\\nu}\\,\n    {(S^{\\mu\\nu}_{\\mathrm{L}})_a}^b.",
+          "section": "Left-Handed Spinor Field \\texorpdfstring{$\\psi_a$"
+        },
+        {
+          "label": "34.4",
+          "latex": "[S^{\\mu\\nu}_{\\mathrm{L}},\\, S^{\\rho\\sigma}_{\\mathrm{L}}]\n  = i\\Bigl(\n      g^{\\nu\\rho} S^{\\mu\\sigma}_{\\mathrm{L}}\n    - g^{\\mu\\rho} S^{\\nu\\sigma}_{\\mathrm{L}}\n    - g^{\\nu\\sigma} S^{\\mu\\rho}_{\\mathrm{L}}\n    + g^{\\mu\\sigma} S^{\\nu\\rho}_{\\mathrm{L}}\n    \\Bigr).",
+          "section": "Generators \\texorpdfstring{$S^{\\mu\\nu"
+        },
+        {
+          "label": "34.8",
+          "latex": "\\sigma_1 = \\begin{pmatrix}0 & 1 \\\\ 1 & 0\\end{pmatrix},\\qquad\n  \\sigma_2 = \\begin{pmatrix}0 & -i \\\\ i & 0\\end{pmatrix},\\qquad\n  \\sigma_3 = \\begin{pmatrix}1 & 0 \\\\ 0 & -1\\end{pmatrix}",
+          "section": "Generators \\texorpdfstring{$S^{\\mu\\nu"
+        },
+        {
+          "label": "34.9",
+          "latex": "{(S^{ij}_{\\mathrm{L}})_a}^b = \\tfrac{1}{2}\\varepsilon^{ijk}\\sigma_k",
+          "section": "Generators \\texorpdfstring{$S^{\\mu\\nu"
+        },
+        {
+          "label": "34.10",
+          "latex": "{(S^{k0}_{\\mathrm{L}})_a}^b = \\tfrac{i}{2}\\sigma_k",
+          "section": "Generators \\texorpdfstring{$S^{\\mu\\nu"
+        },
+        {
+          "label": "34.11",
+          "latex": "[\\psi_a(x)]^\\dagger = \\psidag_{\\dot{a}}(x).",
+          "section": "Generators \\texorpdfstring{$S^{\\mu\\nu"
+        },
+        {
+          "label": "34.17",
+          "latex": "\\boxed{(S^{\\mu\\nu}_{\\mathrm{R}})_{\\dot{a}}{}^{\\dot{b}}\n  = -\\bigl[(S^{\\mu\\nu}_{\\mathrm{L}})_a{}^b\\bigr]^*}",
+          "section": "Generators \\texorpdfstring{$S^{\\mu\\nu"
+        },
+        {
+          "label": "35.21 preview",
+          "latex": "\\langle\\psi\\chi\\rangle\n  \\equiv \\varepsilon^{\\alpha\\beta}\\psi_\\alpha\\chi_\\beta\n  = \\psi^\\alpha\\chi_\\alpha",
+          "section": "Lorentz-Invariant Spinor Products"
+        },
+        {
+          "label": "34.28",
+          "latex": "A_{a\\dot{a}} = \\sigma^\\mu_{a\\dot{a}}\\,A_\\mu.",
+          "section": "The \\texorpdfstring{$\\sigma^\\mu$"
+        },
+        {
+          "label": "boxed",
+          "latex": "[N_i, N_j] = \\tfrac{1}{4}\\cdot 4i\\varepsilon_{ijk}N_k = i\\varepsilon_{ijk}N_k.",
+          "section": ""
+        },
+        {
+          "label": "boxed",
+          "latex": "[N_i^\\dagger, N_j^\\dagger] = i\\varepsilon_{ijk}N_k^\\dagger.",
+          "section": ""
+        },
+        {
+          "label": "boxed",
+          "latex": "[N_i, N_j^\\dagger] = 0.",
+          "section": ""
+        },
+        {
+          "label": "boxed",
+          "latex": "(2,1)\\otimes(2,1) = (1,1)_A \\oplus (3,1)_S.",
+          "section": ""
+        },
+        {
+          "label": "boxed",
+          "latex": "(2,2)\\otimes(2,2) = (1,1)_S \\oplus (3,1)_A \\oplus (1,3)_A \\oplus (3,3)_S.",
+          "section": ""
+        }
+      ],
+      "sections": [
+        {
+          "title": "Tensor Product Decompositions of Lorentz Representations",
+          "subsections": [
+            "Warmup: \\texorpdfstring{$\\mathrm{SU",
+            "Lorentz tensor products: \\texorpdfstring{$(2,1)\\otimes(2,1)$",
+            "Lorentz tensor products: \\texorpdfstring{$(2,2)\\otimes(2,2)$",
+            "Summary table of tensor product decompositions"
+          ]
+        },
+        {
+          "title": "Lorentz Group Representations",
+          "subsections": []
+        },
+        {
+          "title": "Left-Handed Spinor Field \\texorpdfstring{$\\psi_a$",
+          "subsections": []
+        },
+        {
+          "title": "Generators \\texorpdfstring{$S^{\\mu\\nu",
+          "subsections": [
+            "Commutation relations",
+            "Explicit matrices",
+            "Boost generators: explicit metric-convention comparison",
+            "Why hermitian conjugation flips the representation",
+            "Right-handed generators and the dotted-index rule"
+          ]
+        },
+        {
+          "title": "The \\texorpdfstring{$\\varepsilon$",
+          "subsections": [
+            "Normalization (Srednicki convention, eq.~34.22)",
+            "Raising and lowering"
+          ]
+        },
+        {
+          "title": "Lorentz-Invariant Spinor Products",
+          "subsections": [
+            "Left-handed (``angle bracket'')",
+            "Right-handed (``square bracket'')"
+          ]
+        },
+        {
+          "title": "The \\texorpdfstring{$\\sigma^\\mu$",
+          "subsections": [
+            "West coast \\texorpdfstring{$(+{-",
+            "East coast \\texorpdfstring{$(-{+",
+            "Trace identity in both conventions"
+          ]
+        },
+        {
+          "title": "Summary",
+          "subsections": []
+        }
+      ],
+      "verifications": [
+        "All $\\binom{6",
+        "$\\varepsilon_{ab",
+        "West coast trace identity verified numerically: max error $0.0e+00$."
+      ],
+      "texFile": "ch34_left_right_spinors.tex",
+      "dockerCmd": "docker run --rm -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch34_left_right_spinors.py"
+    },
+    {
+      "id": "ch35",
+      "number": "35",
+      "title": "Sigma Matrix Algebra",
+      "status": "done",
+      "scriptFile": "ch35_sigma_algebra.py",
+      "description": "Sigma and sigma-bar matrix identities, trace relations, completeness. Combines Weyl spinors into Dirac spinors and derives gamma matrices.",
+      "equations": [
+        {
+          "label": "1.8",
+          "latex": "\\boxed{g_{\\mu\\nu} = g^{\\mu\\nu} = \\mathrm{diag}(-1,+1,+1,+1)}",
+          "section": "Setup: \\texorpdfstring{$\\varepsilon$"
+        },
+        {
+          "label": "35.1",
+          "latex": "\\varepsilon^{12} = \\varepsilon^{\\dot{1}\\dot{2}}\n  = \\varepsilon_{21} = \\varepsilon_{\\dot{2}\\dot{1}} = +1.",
+          "section": "Setup: \\texorpdfstring{$\\varepsilon$"
+        },
+        {
+          "label": "35.2",
+          "latex": "\\sigma^\\mu_{\\alpha\\dot{\\alpha}} = (I,\\,\\sigma_1,\\,\\sigma_2,\\,\\sigma_3).",
+          "section": "Setup: \\texorpdfstring{$\\varepsilon$"
+        },
+        {
+          "label": "35.4",
+          "latex": "\\boxed{\n    \\sigma^\\mu_{\\alpha\\dot{\\alpha}}\\,\\sigma_{\\mu\\beta\\dot{\\beta}}\n    = -2\\,\\varepsilon_{\\alpha\\beta}\\,\\varepsilon_{\\dot{\\alpha}\\dot{\\beta}}\n  }",
+          "section": "Key Identity: \\texorpdfstring{$\\sigma^\\mu_{a\\dot{a"
+        },
+        {
+          "label": "35.5",
+          "latex": "\\boxed{\n    \\varepsilon^{\\alpha\\beta}\\varepsilon^{\\dot\\alpha\\dot\\beta}\\,\n    \\sigma^\\mu_{\\alpha\\dot\\alpha}\\,\\sigma^\\nu_{\\beta\\dot\\beta}\n    = -2\\,g^{\\mu\\nu}\n  }",
+          "section": "Key Identity: \\texorpdfstring{$\\sigma^\\mu_{a\\dot{a"
+        },
+        {
+          "label": "35.19",
+          "latex": "\\bar\\sigma^{\\mu\\,\\dot\\alpha\\alpha}\n  \\equiv \\varepsilon^{\\alpha\\beta}\\varepsilon^{\\dot\\alpha\\dot\\beta}\\,\n         \\sigma^\\mu_{\\beta\\dot\\beta}.",
+          "section": "\\texorpdfstring{$\\bar\\sigma^\\mu$"
+        },
+        {
+          "label": "35.20",
+          "latex": "\\bar\\sigma^{\\mu\\,\\dot\\alpha\\alpha}\n  = (I,\\,-\\sigma_1,\\,-\\sigma_2,\\,-\\sigma_3).",
+          "section": "\\texorpdfstring{$\\bar\\sigma^\\mu$"
+        },
+        {
+          "label": "35-trace",
+          "latex": "\\operatorname{tr}(\\sigma^\\mu\\bar\\sigma^\\nu)\n  \\equiv \\sigma^\\mu_{\\alpha\\dot\\alpha}\\,\\bar\\sigma^{\\nu\\,\\dot\\alpha\\alpha}\n  = -2\\,g^{\\mu\\nu}.",
+          "section": "\\texorpdfstring{$\\bar\\sigma^\\mu$"
+        },
+        {
+          "label": "35.21",
+          "latex": "\\bigl(S^{\\mu\\nu}_{\\mathrm{L}}\\bigr)_\\alpha{}^\\beta\n  &= \\tfrac{i}{4}\n    \\bigl(\\sigma^\\mu_{\\alpha\\dot\\alpha}\\,\\bar\\sigma^{\\nu\\,\\dot\\alpha\\beta}\n         -\\sigma^\\nu_{\\alpha\\dot\\alpha}\\,\\bar\\sigma^{\\mu\\,\\dot\\alpha\\beta}\\bigr),\n  \\\\[6pt]\n  \\bigl(S^{\\mu\\nu}_{\\mathrm{R}}\\bigr)^{\\dot\\alpha}{}_{\\dot\\beta}\n  &= -\\tfrac{i}{4}\n    \\bigl(\\bar\\sigma^{\\mu\\,\\dot\\alpha\\alpha}\\,\\sigma^\\nu_{\\alpha\\dot\\beta}\n         -\\bar\\sigma^{\\nu\\,\\dot\\alpha\\alpha}\\,\\sigma^\\mu_{\\alpha\\dot\\beta}\\bigr).",
+          "section": "Generators \\texorpdfstring{$S^{\\mu\\nu"
+        },
+        {
+          "label": "35.22",
+          "latex": "\\bigl(S^{\\mu\\nu}_{\\mathrm{L}}\\bigr)_\\alpha{}^\\beta\n  &= \\tfrac{i}{4}\n    \\bigl(\\sigma^\\mu_{\\alpha\\dot\\alpha}\\,\\bar\\sigma^{\\nu\\,\\dot\\alpha\\beta}\n         -\\sigma^\\nu_{\\alpha\\dot\\alpha}\\,\\bar\\sigma^{\\mu\\,\\dot\\alpha\\beta}\\bigr),\n  \\\\[6pt]\n  \\bigl(S^{\\mu\\nu}_{\\mathrm{R}}\\bigr)^{\\dot\\alpha}{}_{\\dot\\beta}\n  &= -\\tfrac{i}{4}\n    \\bigl(\\bar\\sigma^{\\mu\\,\\dot\\alpha\\alpha}\\,\\sigma^\\nu_{\\alpha\\dot\\beta}\n         -\\bar\\sigma^{\\nu\\,\\dot\\alpha\\alpha}\\,\\sigma^\\mu_{\\alpha\\dot\\beta}\\bigr).",
+          "section": "Generators \\texorpdfstring{$S^{\\mu\\nu"
+        },
+        {
+          "label": "35-Clifford",
+          "latex": "\\bigl(\\sigma^\\mu\\bar\\sigma^\\nu + \\sigma^\\nu\\bar\\sigma^\\mu\\bigr)_\\alpha{}^\\beta\n  = -2\\,g^{\\mu\\nu}\\,\\delta_\\alpha{}^\\beta.",
+          "section": "Generators \\texorpdfstring{$S^{\\mu\\nu"
+        },
+        {
+          "label": "35.14",
+          "latex": "\\bigl(g^{\\mu\\rho}\\delta^{\\nu}{}_\\tau - g^{\\nu\\rho}\\delta^{\\mu}{}_\\tau\\bigr)\n  \\sigma^\\tau_{\\alpha\\dot\\alpha}\n  + i\\bigl(S^{\\mu\\nu}_{\\mathrm{L}}\\bigr)_\\alpha{}^\\beta\n    \\sigma^\\rho_{\\beta\\dot\\alpha}\n  + i\\bigl(S^{\\mu\\nu}_{\\mathrm{R}}\\bigr)_{\\dot\\alpha}{}^{\\dot\\beta}\n    \\sigma^\\rho_{\\alpha\\dot\\beta}\n  = 0.",
+          "section": "Covariance Check: \\texorpdfstring{$\\sigma^\\mu$"
+        },
+        {
+          "label": "35.23a",
+          "latex": "\\chi\\psi &\\equiv \\chi^\\alpha\\psi_\\alpha\n  = \\varepsilon^{\\alpha\\beta}\\chi_\\alpha\\psi_\\beta\n  \\\\\n  \\chi^\\dagger\\psi^\\dagger\n  &\\equiv \\chi^\\dagger_{\\dot\\alpha}\\psi^{\\dagger\\,\\dot\\alpha}\n  = \\varepsilon_{\\dot\\alpha\\dot\\beta}\\chi^{\\dagger\\,\\dot\\alpha}\\psi^{\\dagger\\,\\dot\\beta}",
+          "section": "Index-Free Notation and Spinor Bilinears \\quad [eq.~35.23--35.29]"
+        },
+        {
+          "label": "35.23b",
+          "latex": "\\chi\\psi &\\equiv \\chi^\\alpha\\psi_\\alpha\n  = \\varepsilon^{\\alpha\\beta}\\chi_\\alpha\\psi_\\beta\n  \\\\\n  \\chi^\\dagger\\psi^\\dagger\n  &\\equiv \\chi^\\dagger_{\\dot\\alpha}\\psi^{\\dagger\\,\\dot\\alpha}\n  = \\varepsilon_{\\dot\\alpha\\dot\\beta}\\chi^{\\dagger\\,\\dot\\alpha}\\psi^{\\dagger\\,\\dot\\beta}",
+          "section": "Index-Free Notation and Spinor Bilinears \\quad [eq.~35.23--35.29]"
+        },
+        {
+          "label": "35.25",
+          "latex": "\\chi\\psi = \\chi^\\alpha\\psi_\\alpha\n  = -\\psi_\\alpha\\chi^\\alpha \\quad\\text{(Grassmann)}\n  = +\\psi^\\alpha\\chi_\\alpha = \\psi\\chi.",
+          "section": "Index-Free Notation and Spinor Bilinears \\quad [eq.~35.23--35.29]"
+        },
+        {
+          "label": "35.26",
+          "latex": "(\\chi\\psi)^\\dagger = (\\chi^\\alpha\\psi_\\alpha)^\\dagger\n  = (\\psi_\\alpha)^\\dagger(\\chi^\\alpha)^\\dagger\n  = \\psi^\\dagger_{\\dot\\alpha}\\chi^{\\dagger\\,\\dot\\alpha}\n  = \\psi^\\dagger\\chi^\\dagger.",
+          "section": "Index-Free Notation and Spinor Bilinears \\quad [eq.~35.23--35.29]"
+        },
+        {
+          "label": "35.27",
+          "latex": "\\psi^\\dagger\\bar\\sigma^\\mu\\chi\n  \\equiv \\psi^\\dagger_{\\dot\\alpha}\\,\\bar\\sigma^{\\mu\\,\\dot\\alpha\\alpha}\\,\\chi_\\alpha.",
+          "section": "Index-Free Notation and Spinor Bilinears \\quad [eq.~35.23--35.29]"
+        },
+        {
+          "label": "35.28",
+          "latex": "U(\\Lambda)^{-1}\\,[\\psi^\\dagger\\bar\\sigma^\\mu\\chi]\\,U(\\Lambda)\n  = {\\Lambda^\\mu}{}_\\nu\\,[\\psi^\\dagger\\bar\\sigma^\\nu\\chi].",
+          "section": "Index-Free Notation and Spinor Bilinears \\quad [eq.~35.23--35.29]"
+        },
+        {
+          "label": "35.29",
+          "latex": "[\\psi^\\dagger\\bar\\sigma^\\mu\\chi]^\\dagger = \\chi^\\dagger\\bar\\sigma^\\mu\\psi.",
+          "section": "Index-Free Notation and Spinor Bilinears \\quad [eq.~35.23--35.29]"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Setup: \\texorpdfstring{$\\varepsilon$",
+          "subsections": [
+            "Metric convention",
+            "\\texorpdfstring{$\\varepsilon$",
+            "\\texorpdfstring{$\\sigma^\\mu$"
+          ]
+        },
+        {
+          "title": "Key Identity: \\texorpdfstring{$\\sigma^\\mu_{a\\dot{a",
+          "subsections": [
+            "Statement and physical meaning",
+            "Index structure and metric dependence",
+            "Nonzero components",
+            "Statement and physical meaning",
+            "Physical interpretation"
+          ]
+        },
+        {
+          "title": "\\texorpdfstring{$\\bar\\sigma^\\mu$",
+          "subsections": [
+            "Definition (eq.~35.19)",
+            "Explicit result (eq.~35.20)",
+            "Trace identity"
+          ]
+        },
+        {
+          "title": "Generators \\texorpdfstring{$S^{\\mu\\nu",
+          "subsections": [
+            "Formulas",
+            "Explicit matrices",
+            "Statement",
+            "Relation to generators"
+          ]
+        },
+        {
+          "title": "Covariance Check: \\texorpdfstring{$\\sigma^\\mu$",
+          "subsections": [
+            "Statement"
+          ]
+        },
+        {
+          "title": "Index-Free Notation and Spinor Bilinears \\quad [eq.~35.23--35.29]",
+          "subsections": [
+            "Index-free spinor products (eq.~35.23)",
+            "Symmetry of the bilinear (eq.~35.25)",
+            "Hermitian conjugate (eq.~35.26)",
+            "The vector bilinear (eq.~35.27--35.28)"
+          ]
+        },
+        {
+          "title": "Summary of Chapter 35 Results",
+          "subsections": []
+        }
+      ],
+      "verifications": [
+        "All 16 components of eq.~(35.4): max error $0.0$\\textrm{e",
+        "All 16 components of eq.~(35.5): max error $0.0$\\textrm{e",
+        "$\\bar\\sigma^{\\mu",
+        "$\\operatorname{tr",
+        "$S^{\\mu\\nu",
+        "$\\sigma^\\mu\\bar\\sigma^\\nu + \\sigma^\\nu\\bar\\sigma^\\mu = -2g^{\\mu\\nu",
+        "Covariance condition [eq.~35.14] for all $(\\mu,\\nu,\\rho,\\alpha,\\dot\\alpha)$: max residual $0.0$\\textrm{e"
+      ],
+      "texFile": "ch35_sigma_algebra.tex",
+      "dockerCmd": "docker run --rm -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch35_sigma_algebra.py"
+    },
+    {
+      "id": "ch36",
+      "number": "36",
+      "title": "Weyl Lagrangian & Symmetries",
+      "status": "done",
+      "scriptFile": "ch36_weyl_lagrangian.py",
+      "description": "Symmetries of the Weyl Lagrangian: U(1) fermion number, C, P, T. Noether current for fermion number. Mass terms.",
+      "equations": [
+        {
+          "label": "36.2",
+          "latex": "\\boxed{\n    \\mathcal{L}\n    = i\\psi^\\dagger_{\\dot{a}}\\,\\bar{\\sigma}^{\\mu\\,\\dot{a}\\alpha}\\,\\partial_\\mu\\psi_\\alpha\n    - \\tfrac{1}{2}m\\,\\varepsilon^{\\alpha\\beta}\\psi_\\alpha\\psi_\\beta\n    - \\tfrac{1}{2}m\\,\\varepsilon_{\\dot{\\alpha}\\dot{\\beta}}\\psi^{\\dagger\\dot{\\alpha}}\\psi^{\\dagger\\dot{\\beta}}\n  }",
+          "section": "The Weyl Lagrangian"
+        },
+        {
+          "label": "36.1",
+          "latex": "(i\\psi^\\dagger\\bar{\\sigma}^\\mu\\partial_\\mu\\psi)^\\dagger\n  = i\\psi^\\dagger\\bar{\\sigma}^\\mu\\partial_\\mu\\psi\n    - i\\partial_\\mu(\\psi^\\dagger\\bar{\\sigma}^\\mu\\psi)\\,.",
+          "section": "The Weyl Lagrangian"
+        },
+        {
+          "label": "36.3--36.4",
+          "latex": "0 = -\\frac{\\delta S}{\\delta\\psi^{\\dagger\\dot{a}}}\n    = -i\\,\\bar{\\sigma}^{\\mu\\,\\dot{a}c}\\,\\partial_\\mu\\psi_c\n      + m\\,\\psi^{\\dagger\\dot{a}}\\,.",
+          "section": "Equations of Motion"
+        },
+        {
+          "label": "36.5",
+          "latex": "0 = -i\\,\\sigma^\\mu_{a\\dot{c}}\\,\\partial_\\mu\\psi^{\\dagger\\dot{c}}\n      + m\\,\\psi_a\\,.",
+          "section": "Equations of Motion"
+        },
+        {
+          "label": "36.6",
+          "latex": "\\begin{pmatrix}\n    m\\,\\delta_a{}^c & -i\\,\\sigma^\\mu_{a\\dot{c}}\\,\\partial_\\mu \\\\\n    -i\\,\\bar{\\sigma}^{\\mu\\,\\dot{a}c}\\,\\partial_\\mu & m\\,\\delta^{\\dot{a}}{}_{\\dot{c}}\n  \\end{pmatrix}\n  \\begin{pmatrix} \\psi_c \\\\ \\psi^{\\dagger\\dot{c}} \\end{pmatrix}\n  = 0\\,.",
+          "section": "Equations of Motion"
+        },
+        {
+          "label": "36.7",
+          "latex": "\\gamma^\\mu \\equiv\n  \\begin{pmatrix}\n    0 & \\sigma^\\mu_{a\\dot{c}} \\\\\n    \\bar{\\sigma}^{\\mu\\,\\dot{a}c} & 0\n  \\end{pmatrix}.",
+          "section": "Gamma Matrices in the Weyl Representation"
+        },
+        {
+          "label": "36.9",
+          "latex": "\\boxed{\\{\\gamma^\\mu,\\,\\gamma^\\nu\\} \\equiv \\gamma^\\mu\\gamma^\\nu + \\gamma^\\nu\\gamma^\\mu\n  = -2\\,g^{\\mu\\nu}\\,I_4\\,,}",
+          "section": "Clifford Algebra Verification"
+        },
+        {
+          "label": "36.8a",
+          "latex": "\\sigma^\\mu\\bar{\\sigma}^\\nu + \\sigma^\\nu\\bar{\\sigma}^\\mu &= -2g^{\\mu\\nu}\\,I_2\\,,\n  \\\\\n  \\bar{\\sigma}^\\mu\\sigma^\\nu + \\bar{\\sigma}^\\nu\\sigma^\\mu &= -2g^{\\mu\\nu}\\,I_2\\,.",
+          "section": "Clifford Algebra Verification"
+        },
+        {
+          "label": "36.8b",
+          "latex": "\\sigma^\\mu\\bar{\\sigma}^\\nu + \\sigma^\\nu\\bar{\\sigma}^\\mu &= -2g^{\\mu\\nu}\\,I_2\\,,\n  \\\\\n  \\bar{\\sigma}^\\mu\\sigma^\\nu + \\bar{\\sigma}^\\nu\\sigma^\\mu &= -2g^{\\mu\\nu}\\,I_2\\,.",
+          "section": "Clifford Algebra Verification"
+        },
+        {
+          "label": "36.43",
+          "latex": "\\gamma^5 \\equiv i\\gamma^0\\gamma^1\\gamma^2\\gamma^3\n  = \\begin{pmatrix}-I_2 & 0 \\\\ 0 & +I_2\\end{pmatrix}.",
+          "section": "Clifford Algebra Verification"
+        },
+        {
+          "label": "36.44",
+          "latex": "P_L &\\equiv \\tfrac{1}{2}(I - \\gamma^5)\n     = \\begin{pmatrix}I_2&0\\\\0&0\\end{pmatrix},\n  &\n  P_R &\\equiv \\tfrac{1}{2}(I + \\gamma^5)\n     = \\begin{pmatrix}0&0\\\\0&I_2\\end{pmatrix}.",
+          "section": "Clifford Algebra Verification"
+        },
+        {
+          "label": "36.10",
+          "latex": "\\Psi \\equiv \\begin{pmatrix}\\psi_c\\\\\\psi^{\\dagger\\dot{c}}\\end{pmatrix}.",
+          "section": "Majorana 4-Component Spinor"
+        },
+        {
+          "label": "36.11",
+          "latex": "\\boxed{(-i\\gamma^\\mu\\partial_\\mu + m)\\Psi = 0\\,.}",
+          "section": "Majorana 4-Component Spinor"
+        },
+        {
+          "label": "36.32",
+          "latex": "\\mathcal{C} = \\begin{pmatrix}\\varepsilon_{ac}&0\\\\0&\\varepsilon^{\\dot{a}\\dot{c}}\\end{pmatrix}\n  = \\begin{pmatrix}0 & -1 & 0 & 0 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 0 & 0 & -1 & 0\\end{pmatrix}\\,.",
+          "section": "Majorana 4-Component Spinor"
+        },
+        {
+          "label": "36.36",
+          "latex": "\\mathcal{C}^T = \\mathcal{C}^\\dagger = \\mathcal{C}^{-1} = -\\mathcal{C}\\,.",
+          "section": "Majorana 4-Component Spinor"
+        },
+        {
+          "label": "36.40",
+          "latex": "\\mathcal{C}^{-1}\\gamma^\\mu\\mathcal{C} = -(\\gamma^\\mu)^T\\,.",
+          "section": "Majorana 4-Component Spinor"
+        },
+        {
+          "label": "36.41",
+          "latex": "\\mathcal{L} = \\tfrac{i}{2}\\overline{\\Psi}\\gamma^\\mu\\partial_\\mu\\Psi\n              - \\tfrac{1}{2}m\\,\\overline{\\Psi}\\Psi\\,.",
+          "section": "Majorana 4-Component Spinor"
+        },
+        {
+          "label": "36.16",
+          "latex": "\\mathcal{L}\n  = i\\chi^\\dagger\\bar{\\sigma}^\\mu\\partial_\\mu\\chi\n  + i\\xi^\\dagger\\bar{\\sigma}^\\mu\\partial_\\mu\\xi\n  - m\\,\\chi\\xi - m\\,\\xi^\\dagger\\chi^\\dagger\\,,",
+          "section": "Dirac Fermion from Two Weyl Fields"
+        },
+        {
+          "label": "36.17",
+          "latex": "\\chi \\to e^{-i\\alpha}\\chi\\,, \\qquad \\xi \\to e^{+i\\alpha}\\xi\\,.",
+          "section": "Dirac Fermion from Two Weyl Fields"
+        },
+        {
+          "label": "36.19, 36.22",
+          "latex": "\\Psi \\equiv \\begin{pmatrix}\\chi_c\\\\\\xi^{\\dagger\\dot{c}}\\end{pmatrix}\\,,\n  \\qquad\n  \\overline{\\Psi} = \\Psi^\\dagger\\beta = (\\xi^a,\\,\\chi^\\dagger_{\\dot{a}})\\,.",
+          "section": "Dirac Fermion from Two Weyl Fields"
+        },
+        {
+          "label": "36.28",
+          "latex": "\\boxed{\\mathcal{L} = i\\overline{\\Psi}\\gamma^\\mu\\partial_\\mu\\Psi - m\\overline{\\Psi}\\Psi\\,,}",
+          "section": "Dirac Fermion from Two Weyl Fields"
+        },
+        {
+          "label": "36.23",
+          "latex": "\\overline{\\Psi}\\Psi = \\xi^a\\chi_a + \\chi^\\dagger_{\\dot{a}}\\xi^{\\dagger\\dot{a}}\\,.",
+          "section": "Dirac Fermion from Two Weyl Fields"
+        },
+        {
+          "label": "36.30",
+          "latex": "j^\\mu = \\overline{\\Psi}\\gamma^\\mu\\Psi\n        = \\chi^\\dagger\\bar{\\sigma}^\\mu\\chi - \\xi^\\dagger\\bar{\\sigma}^\\mu\\xi\\,.",
+          "section": "Dirac Fermion from Two Weyl Fields"
+        }
+      ],
+      "sections": [
+        {
+          "title": "The Weyl Lagrangian",
+          "subsections": [
+            "Lagrangian terms",
+            "Hermiticity of the kinetic term",
+            "Mass term and Majorana mass"
+          ]
+        },
+        {
+          "title": "Equations of Motion",
+          "subsections": [
+            "Combined 4-component form"
+          ]
+        },
+        {
+          "title": "Gamma Matrices in the Weyl Representation",
+          "subsections": [
+            "Definition",
+            "Explicit matrices"
+          ]
+        },
+        {
+          "title": "Clifford Algebra Verification",
+          "subsections": [
+            "The algebra",
+            "Numerical verification table",
+            "The \\texorpdfstring{$\\gamma^5$"
+          ]
+        },
+        {
+          "title": "Majorana 4-Component Spinor",
+          "subsections": [
+            "Definition",
+            "Majorana condition",
+            "Majorana Lagrangian"
+          ]
+        },
+        {
+          "title": "Dirac Fermion from Two Weyl Fields",
+          "subsections": [
+            "Two-Weyl-field Lagrangian",
+            "Dirac spinor and Lagrangian"
+          ]
+        },
+        {
+          "title": "Dirac vs.\\ Majorana --- Comparison",
+          "subsections": []
+        },
+        {
+          "title": "Summary",
+          "subsections": []
+        }
+      ],
+      "verifications": [
+        "$\\sigma^\\mu\\bar{\\sigma",
+        "Clifford algebra: all 10 pairs verified. Max error: $0.0e+00$.",
+        "$\\gamma^5 = \\mathrm{diag",
+        "$P_L^2=P_L$, $P_R^2=P_R$, $P_LP_R=0$: max error $0.0e+00$.",
+        "$\\mathcal{C"
+      ],
+      "texFile": "ch36_weyl_lagrangian.tex",
+      "dockerCmd": "docker run --rm -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch36_weyl_lagrangian.py"
+    },
+    {
+      "id": "ch37",
+      "number": "37",
+      "title": "Canonical Quantization of Weyl Fields",
+      "status": "done",
+      "scriptFile": "ch37_canonical_quantization.py",
+      "description": "Promotes Weyl field to quantum operator via canonical anticommutation. Creation/annihilation operators, Fock space, fermion propagator, spin-sum completeness, Feynman slash.",
+      "equations": [
+        {
+          "label": "37.3",
+          "latex": "\\boxed{\n    \\bigl\\{\\psi_\\alpha(\\mathbf{x},t),\\;\\psi^{\\dagger\\dot\\beta}(\\mathbf{y},t)\\bigr\\}\n    = \\sigma^0{}_{\\alpha}{}^{\\dot\\beta}\\,\\delta^{(3)}(\\mathbf{x}-\\mathbf{y})\n    = \\delta_\\alpha{}^{\\dot\\beta}\\,\\delta^{(3)}(\\mathbf{x}-\\mathbf{y})\n  }",
+          "section": "Canonical Anticommutation Relations"
+        },
+        {
+          "label": "37.4a",
+          "latex": "\\bigl\\{\\psi_\\alpha(\\mathbf{x},t),\\,\\psi_\\beta(\\mathbf{y},t)\\bigr\\} &= 0,\n  \\\\\n  \\bigl\\{\\psi^{\\dagger\\dot\\alpha}(\\mathbf{x},t),\\,\\psi^{\\dagger\\dot\\beta}(\\mathbf{y},t)\\bigr\\} &= 0.",
+          "section": "Canonical Anticommutation Relations"
+        },
+        {
+          "label": "37.4b",
+          "latex": "\\bigl\\{\\psi_\\alpha(\\mathbf{x},t),\\,\\psi_\\beta(\\mathbf{y},t)\\bigr\\} &= 0,\n  \\\\\n  \\bigl\\{\\psi^{\\dagger\\dot\\alpha}(\\mathbf{x},t),\\,\\psi^{\\dagger\\dot\\beta}(\\mathbf{y},t)\\bigr\\} &= 0.",
+          "section": "Canonical Anticommutation Relations"
+        },
+        {
+          "label": "37.7",
+          "latex": "\\psi_\\alpha(x) = \\int\\!\\frac{d^3p}{(2\\pi)^3}\\sum_s\n  \\Bigl[b_s(\\mathbf{p})\\,u^s_\\alpha(\\mathbf{p})\\,e^{ip\\cdot x}\n       +d^\\dagger_s(\\mathbf{p})\\,v^s_\\alpha(\\mathbf{p})\\,e^{-ip\\cdot x}\\Bigr]",
+          "section": "Mode Expansion of the Weyl Field"
+        },
+        {
+          "label": "37.8a",
+          "latex": "\\{b_s(\\mathbf{p}),\\,b^\\dagger_{s'}(\\mathbf{p}')\\}\n  &= (2\\pi)^3\\,\\delta^{(3)}(\\mathbf{p}-\\mathbf{p}')\\,\\delta_{ss'},\n  \\\\\n  \\{d_s(\\mathbf{p}),\\,d^\\dagger_{s'}(\\mathbf{p}')\\}\n  &= (2\\pi)^3\\,\\delta^{(3)}(\\mathbf{p}-\\mathbf{p}')\\,\\delta_{ss'},\n  \\\\\n  \\{b_s,b_{s'}\\} &= \\{d_s,d_{s'}\\} = \\{b_s,d_{s'}\\} = \\cdots = 0.",
+          "section": "Mode Expansion of the Weyl Field"
+        },
+        {
+          "label": "37.8b",
+          "latex": "\\{b_s(\\mathbf{p}),\\,b^\\dagger_{s'}(\\mathbf{p}')\\}\n  &= (2\\pi)^3\\,\\delta^{(3)}(\\mathbf{p}-\\mathbf{p}')\\,\\delta_{ss'},\n  \\\\\n  \\{d_s(\\mathbf{p}),\\,d^\\dagger_{s'}(\\mathbf{p}')\\}\n  &= (2\\pi)^3\\,\\delta^{(3)}(\\mathbf{p}-\\mathbf{p}')\\,\\delta_{ss'},\n  \\\\\n  \\{b_s,b_{s'}\\} &= \\{d_s,d_{s'}\\} = \\{b_s,d_{s'}\\} = \\cdots = 0.",
+          "section": "Mode Expansion of the Weyl Field"
+        },
+        {
+          "label": "37.8c",
+          "latex": "\\{b_s(\\mathbf{p}),\\,b^\\dagger_{s'}(\\mathbf{p}')\\}\n  &= (2\\pi)^3\\,\\delta^{(3)}(\\mathbf{p}-\\mathbf{p}')\\,\\delta_{ss'},\n  \\\\\n  \\{d_s(\\mathbf{p}),\\,d^\\dagger_{s'}(\\mathbf{p}')\\}\n  &= (2\\pi)^3\\,\\delta^{(3)}(\\mathbf{p}-\\mathbf{p}')\\,\\delta_{ss'},\n  \\\\\n  \\{b_s,b_{s'}\\} &= \\{d_s,d_{s'}\\} = \\{b_s,d_{s'}\\} = \\cdots = 0.",
+          "section": "Mode Expansion of the Weyl Field"
+        },
+        {
+          "label": "37.5a",
+          "latex": "p_{\\alpha\\dot\\alpha}\\,\\tilde u^{\\dot\\alpha s}(p) &= +m\\,u^s_\\alpha(p),\n  \\\\\n  p_{\\alpha\\dot\\alpha}\\,\\tilde v^{\\dot\\alpha s}(p) &= -m\\,v^s_\\alpha(p),",
+          "section": "Basis Spinors \\texorpdfstring{$u^s(p)$"
+        },
+        {
+          "label": "37.5b",
+          "latex": "p_{\\alpha\\dot\\alpha}\\,\\tilde u^{\\dot\\alpha s}(p) &= +m\\,u^s_\\alpha(p),\n  \\\\\n  p_{\\alpha\\dot\\alpha}\\,\\tilde v^{\\dot\\alpha s}(p) &= -m\\,v^s_\\alpha(p),",
+          "section": "Basis Spinors \\texorpdfstring{$u^s(p)$"
+        },
+        {
+          "label": "37.10",
+          "latex": "\\sum_s u^s_\\alpha(p)\\,\\tilde u^{\\dot\\beta s}(p) &= -p_{\\alpha}{}^{\\dot\\beta} + m\\,\\delta_\\alpha{}^{\\dot\\beta},\n  \\\\\n  \\sum_s v^s_\\alpha(p)\\,\\tilde v^{\\dot\\beta s}(p) &= -p_{\\alpha}{}^{\\dot\\beta} - m\\,\\delta_\\alpha{}^{\\dot\\beta}.",
+          "section": "Basis Spinors \\texorpdfstring{$u^s(p)$"
+        },
+        {
+          "label": "37.11",
+          "latex": "\\sum_s u^s_\\alpha(p)\\,\\tilde u^{\\dot\\beta s}(p) &= -p_{\\alpha}{}^{\\dot\\beta} + m\\,\\delta_\\alpha{}^{\\dot\\beta},\n  \\\\\n  \\sum_s v^s_\\alpha(p)\\,\\tilde v^{\\dot\\beta s}(p) &= -p_{\\alpha}{}^{\\dot\\beta} - m\\,\\delta_\\alpha{}^{\\dot\\beta}.",
+          "section": "Basis Spinors \\texorpdfstring{$u^s(p)$"
+        },
+        {
+          "label": "37.17",
+          "latex": "\\boxed{:H: = \\int\\!\\frac{d^3p}{(2\\pi)^3}\\,\\omegap\n  \\Bigl[b^\\dagger_s(\\mathbf{p})b_s(\\mathbf{p}) + d^\\dagger_s(\\mathbf{p})d_s(\\mathbf{p})\\Bigr]}",
+          "section": "Normal-Ordered Hamiltonian"
+        },
+        {
+          "label": "3.21",
+          "latex": "\\widetilde{dp} \\equiv \\frac{d^3p}{(2\\pi)^3\\,2\\omega_{\\mathbf{p}}},\n  \\qquad \\omega_{\\mathbf{p}} = \\sqrt{|\\mathbf{p}|^2 + m^2}.",
+          "section": "Lorentz-Invariant Measure and Feynman Slash"
+        },
+        {
+          "label": "36.14",
+          "latex": "\\slashed{p} \\equiv p_\\mu\\gamma^\\mu\\,.",
+          "section": "Lorentz-Invariant Measure and Feynman Slash"
+        },
+        {
+          "label": "36.15",
+          "latex": "\\slashed{p}^2 = p_\\mu p_\\nu \\gamma^\\mu\\gamma^\\nu\n  = \\tfrac{1}{2}p_\\mu p_\\nu\\{\\gamma^\\mu,\\gamma^\\nu\\}\n  = -p_\\mu p^\\mu = m^2 \\quad(\\text{on-shell})",
+          "section": "Lorentz-Invariant Measure and Feynman Slash"
+        },
+        {
+          "label": "36.11",
+          "latex": "(\\slashed{p} + m)\\,u_s(p) &= 0, & (-\\slashed{p}+m)\\,v_s(p) &= 0, \\\\\n  \\bar u_s(p)\\,(\\slashed{p}+m) &= 0, & \\bar v_s(p)\\,(-\\slashed{p}+m) &= 0.",
+          "section": "Lorentz-Invariant Measure and Feynman Slash"
+        },
+        {
+          "label": "38.28--29",
+          "latex": "\\boxed{\n    \\sum_s u_s(p)\\,\\bar u_s(p) = -\\slashed{p} + m\\,,\n    \\qquad\n    \\sum_s v_s(p)\\,\\bar v_s(p) = -\\slashed{p} - m\\,.\n  }",
+          "section": "Spin-Sum Completeness (4-component)"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Canonical Anticommutation Relations",
+          "subsections": [
+            "Equal-time CARs",
+            "Origin from Legendre transform"
+          ]
+        },
+        {
+          "title": "Mode Expansion of the Weyl Field",
+          "subsections": [
+            "Plane-wave expansion",
+            "Operator CARs"
+          ]
+        },
+        {
+          "title": "Basis Spinors \\texorpdfstring{$u^s(p)$",
+          "subsections": [
+            "Weyl equations",
+            "Explicit construction at rest",
+            "Massless case",
+            "Completeness relations"
+          ]
+        },
+        {
+          "title": "Deriving the CARs from the Mode Expansion",
+          "subsections": []
+        },
+        {
+          "title": "Normal-Ordered Hamiltonian",
+          "subsections": [
+            "Classical Hamiltonian density",
+            "Mode expansion form",
+            "Normal ordering"
+          ]
+        },
+        {
+          "title": "Spin-Statistics Theorem",
+          "subsections": []
+        },
+        {
+          "title": "Lorentz-Invariant Measure and Feynman Slash",
+          "subsections": [
+            "The measure \\texorpdfstring{$\\widetilde{dp",
+            "Feynman slash notation"
+          ]
+        },
+        {
+          "title": "Spin-Sum Completeness (4-component)",
+          "subsections": []
+        },
+        {
+          "title": "Summary",
+          "subsections": []
+        }
+      ],
+      "verifications": [
+        "$\\sigma^0 = I_2$: max error $0.0e+00$.",
+        "$\\slashed{p",
+        "$\\sum_s u_s\\bar u_s = -\\slashed{p",
+        "$\\sum_s v_s\\bar v_s = -\\slashed{p"
+      ],
+      "texFile": "ch37_canonical_quantization.tex",
+      "dockerCmd": "docker run --rm -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch37_canonical_quantization.py"
+    },
+    {
+      "id": "ch38",
+      "number": "38",
+      "title": "Spinor Technology & Feynman Rules",
+      "status": "done",
+      "scriptFile": "ch38_spinor_technology.py",
+      "description": "Spinor algebra toolkit: sigma-completeness, trace identities, Fierz rearrangement. Feynman rules for spinor QED.",
+      "equations": [
+        {
+          "label": "38.1",
+          "latex": "\\boxed{\n    \\sigma^\\mu{}_{\\alpha\\dot\\alpha}\\,\\sigma_\\mu{}^{\\beta\\dot\\beta}\n    = -2\\,\\delta_\\alpha{}^\\beta\\,\\delta_{\\dot\\alpha}{}^{\\dot\\beta}\n  }",
+          "section": "\\texorpdfstring{$\\sigma^\\mu$"
+        },
+        {
+          "label": "35.5",
+          "latex": "\\varepsilon^{\\alpha\\beta}\\varepsilon^{\\dot\\alpha\\dot\\beta}\\,\n  \\sigma^\\mu{}_{\\alpha\\dot\\alpha}\\,\\sigma^\\nu{}_{\\beta\\dot\\beta}\n  = -2\\,g^{\\mu\\nu}",
+          "section": "\\texorpdfstring{$\\sigma^\\mu$"
+        },
+        {
+          "label": "38.5",
+          "latex": "\\boxed{\n    \\mathrm{Tr}[\\sigma^\\mu\\bar\\sigma^\\nu]\n    \\equiv \\sigma^\\mu{}_{\\alpha\\dot\\alpha}\\,\\bar\\sigma^{\\nu\\dot\\alpha\\alpha}\n    = -2\\,g^{\\mu\\nu}\n  }",
+          "section": "Trace Identities"
+        },
+        {
+          "label": "38.6",
+          "latex": "\\boxed{\n    \\mathrm{Tr}[\\sigma^\\mu\\bar\\sigma^\\nu\\sigma^\\rho\\bar\\sigma^\\sigma]\n    = 2\\bigl(g^{\\mu\\nu}g^{\\rho\\sigma} - g^{\\mu\\rho}g^{\\nu\\sigma}\n          + g^{\\mu\\sigma}g^{\\nu\\rho}\\bigr)\n      + 2i\\,\\varepsilon^{\\mu\\nu\\rho\\sigma}\n  }",
+          "section": "Trace Identities"
+        },
+        {
+          "label": "38.6$'$",
+          "latex": "\\mathrm{Tr}[\\bar\\sigma^\\mu\\sigma^\\nu\\bar\\sigma^\\rho\\sigma^\\sigma]\n  = 2\\bigl(g^{\\mu\\nu}g^{\\rho\\sigma} - g^{\\mu\\rho}g^{\\nu\\sigma}\n        + g^{\\mu\\sigma}g^{\\nu\\rho}\\bigr)\n    - 2i\\,\\varepsilon^{\\mu\\nu\\rho\\sigma}",
+          "section": "Trace Identities"
+        },
+        {
+          "label": "38.7",
+          "latex": "\\psi_\\alpha &= \\varepsilon_{\\alpha\\beta}\\,\\psi^\\beta\n  &\\text{(lower undotted)},\n  \\\\\n  \\psi^\\alpha &= \\varepsilon^{\\alpha\\beta}\\,\\psi_\\beta\n  &\\text{(raise undotted)},\n  \\\\\n  \\chi_{\\dot\\alpha} &= \\varepsilon_{\\dot\\alpha\\dot\\beta}\\,\\chi^{\\dot\\beta}\n  &\\text{(lower dotted)},\n  \\\\\n  \\chi^{\\dot\\alpha} &= \\varepsilon^{\\dot\\alpha\\dot\\beta}\\,\\chi_{\\dot\\beta}\n  &\\text{(raise dotted)},",
+          "section": "Van der Waerden Index Gymnastics"
+        },
+        {
+          "label": "38.8",
+          "latex": "\\psi_\\alpha &= \\varepsilon_{\\alpha\\beta}\\,\\psi^\\beta\n  &\\text{(lower undotted)},\n  \\\\\n  \\psi^\\alpha &= \\varepsilon^{\\alpha\\beta}\\,\\psi_\\beta\n  &\\text{(raise undotted)},\n  \\\\\n  \\chi_{\\dot\\alpha} &= \\varepsilon_{\\dot\\alpha\\dot\\beta}\\,\\chi^{\\dot\\beta}\n  &\\text{(lower dotted)},\n  \\\\\n  \\chi^{\\dot\\alpha} &= \\varepsilon^{\\dot\\alpha\\dot\\beta}\\,\\chi_{\\dot\\beta}\n  &\\text{(raise dotted)},",
+          "section": "Van der Waerden Index Gymnastics"
+        },
+        {
+          "label": "38.9",
+          "latex": "\\psi_\\alpha &= \\varepsilon_{\\alpha\\beta}\\,\\psi^\\beta\n  &\\text{(lower undotted)},\n  \\\\\n  \\psi^\\alpha &= \\varepsilon^{\\alpha\\beta}\\,\\psi_\\beta\n  &\\text{(raise undotted)},\n  \\\\\n  \\chi_{\\dot\\alpha} &= \\varepsilon_{\\dot\\alpha\\dot\\beta}\\,\\chi^{\\dot\\beta}\n  &\\text{(lower dotted)},\n  \\\\\n  \\chi^{\\dot\\alpha} &= \\varepsilon^{\\dot\\alpha\\dot\\beta}\\,\\chi_{\\dot\\beta}\n  &\\text{(raise dotted)},",
+          "section": "Van der Waerden Index Gymnastics"
+        },
+        {
+          "label": "38.10",
+          "latex": "\\psi_\\alpha &= \\varepsilon_{\\alpha\\beta}\\,\\psi^\\beta\n  &\\text{(lower undotted)},\n  \\\\\n  \\psi^\\alpha &= \\varepsilon^{\\alpha\\beta}\\,\\psi_\\beta\n  &\\text{(raise undotted)},\n  \\\\\n  \\chi_{\\dot\\alpha} &= \\varepsilon_{\\dot\\alpha\\dot\\beta}\\,\\chi^{\\dot\\beta}\n  &\\text{(lower dotted)},\n  \\\\\n  \\chi^{\\dot\\alpha} &= \\varepsilon^{\\dot\\alpha\\dot\\beta}\\,\\chi_{\\dot\\beta}\n  &\\text{(raise dotted)},",
+          "section": "Van der Waerden Index Gymnastics"
+        },
+        {
+          "label": "38.13",
+          "latex": "\\bar\\sigma^{\\mu\\dot\\alpha\\alpha}\n  = \\varepsilon^{\\alpha\\beta}\\,\\varepsilon^{\\dot\\alpha\\dot\\beta}\\,\n    \\sigma^\\mu{}_{\\beta\\dot\\beta}",
+          "section": "Van der Waerden Index Gymnastics"
+        },
+        {
+          "label": "38.14a",
+          "latex": "\\chi\\psi &\\equiv \\chi^\\alpha\\psi_\\alpha\n  = \\varepsilon^{\\alpha\\beta}\\chi_\\alpha\\psi_\\beta\n  &\\text{Lorentz scalar (left-handed)}\n  \\\\\n  \\chi^\\dagger\\psi^\\dagger &\\equiv \\chi^\\dagger_{\\dot\\alpha}\\psi^{\\dagger\\dot\\alpha}\n  &\\text{Lorentz scalar (right-handed)}\n  \\\\\n  \\chi^\\dagger_{\\dot\\alpha}\\,\\bar\\sigma^{\\mu\\dot\\alpha\\alpha}\\,\\psi_\\alpha\n  &\n  &\\text{Lorentz 4-vector}",
+          "section": "Spinor Bilinears"
+        },
+        {
+          "label": "38.14b",
+          "latex": "\\chi\\psi &\\equiv \\chi^\\alpha\\psi_\\alpha\n  = \\varepsilon^{\\alpha\\beta}\\chi_\\alpha\\psi_\\beta\n  &\\text{Lorentz scalar (left-handed)}\n  \\\\\n  \\chi^\\dagger\\psi^\\dagger &\\equiv \\chi^\\dagger_{\\dot\\alpha}\\psi^{\\dagger\\dot\\alpha}\n  &\\text{Lorentz scalar (right-handed)}\n  \\\\\n  \\chi^\\dagger_{\\dot\\alpha}\\,\\bar\\sigma^{\\mu\\dot\\alpha\\alpha}\\,\\psi_\\alpha\n  &\n  &\\text{Lorentz 4-vector}",
+          "section": "Spinor Bilinears"
+        },
+        {
+          "label": "38.14c",
+          "latex": "\\chi\\psi &\\equiv \\chi^\\alpha\\psi_\\alpha\n  = \\varepsilon^{\\alpha\\beta}\\chi_\\alpha\\psi_\\beta\n  &\\text{Lorentz scalar (left-handed)}\n  \\\\\n  \\chi^\\dagger\\psi^\\dagger &\\equiv \\chi^\\dagger_{\\dot\\alpha}\\psi^{\\dagger\\dot\\alpha}\n  &\\text{Lorentz scalar (right-handed)}\n  \\\\\n  \\chi^\\dagger_{\\dot\\alpha}\\,\\bar\\sigma^{\\mu\\dot\\alpha\\alpha}\\,\\psi_\\alpha\n  &\n  &\\text{Lorentz 4-vector}",
+          "section": "Spinor Bilinears"
+        },
+        {
+          "label": "38.17",
+          "latex": "\\boxed{\n    \\varepsilon_{\\alpha\\gamma}\\,\\varepsilon_{\\beta\\delta}\n    = \\varepsilon_{\\alpha\\beta}\\,\\varepsilon_{\\gamma\\delta}\n    - \\varepsilon_{\\alpha\\delta}\\,\\varepsilon_{\\gamma\\beta}\n  }",
+          "section": "Fierz Identities"
+        },
+        {
+          "label": "38.18",
+          "latex": "\\bigl(\\bar\\sigma^\\mu\\bigr)^{\\dot\\alpha\\alpha}\\,\\bigl(\\sigma_\\mu\\bigr)_{\\beta\\dot\\beta}\n  = -2\\,\\delta^\\alpha_\\beta\\,\\delta^{\\dot\\alpha}_{\\dot\\beta}",
+          "section": "Fierz Identities"
+        },
+        {
+          "label": "38.21",
+          "latex": "\\bigl(\\chi^\\dagger_{\\dot\\alpha}\\bar\\sigma^{\\mu\\dot\\alpha\\alpha}\\psi_\\alpha\\bigr)\n  \\bigl(\\xi^\\dagger_{\\dot\\beta}\\bar\\sigma_\\mu{}^{\\dot\\beta\\beta}\\eta_\\beta\\bigr)\n  = -2\\,\\bigl(\\chi^\\dagger_{\\dot\\alpha}\\xi^{\\dagger\\dot\\alpha}\\bigr)\n         \\bigl(\\eta^\\beta\\psi_\\beta\\bigr)",
+          "section": "Fierz Identities"
+        },
+        {
+          "label": "38.22",
+          "latex": "\\boxed{\n    2m\\,\\bar u_{s'}(\\mathbf{p}')\\,\\gamma^\\mu\\,u_s(\\mathbf{p})\n    = \\bar u_{s'}(\\mathbf{p}')\\bigl[(p'+p)^\\mu - 2i\\,S^{\\mu\\nu}(p'-p)_\\nu\\bigr]\n      u_s(\\mathbf{p})\n  }",
+          "section": "Gordon Identity"
+        },
+        {
+          "label": "38.41",
+          "latex": "\\bar u_{s'}(\\mathbf{p}')\\bigl[(p'+p)^\\mu - 2iS^{\\mu\\nu}(p'-p)_\\nu\\bigr]\n  \\gamma^5\\,u_s(\\mathbf{p}) = 0.",
+          "section": "Gordon Identity"
+        },
+        {
+          "label": "38.28--29",
+          "latex": "\\boxed{\n    \\sum_s u_s(p)\\,\\bar u_s(p) = -\\slashed{p} + m\\,,\n    \\qquad\n    \\sum_s v_s(p)\\,\\bar v_s(p) = -\\slashed{p} - m\\,.\n  }",
+          "section": "Helicity and Spin-Sum Completeness"
+        },
+        {
+          "label": "38.21a",
+          "latex": "\\bar u_{s'}(\\mathbf{p})\\,\\gamma^\\mu\\,u_s(\\mathbf{p})\n    &= 2p^\\mu\\,\\delta_{s's}, \\\\\n  \\bar v_{s'}(\\mathbf{p})\\,\\gamma^\\mu\\,v_s(\\mathbf{p})\n    &= 2p^\\mu\\,\\delta_{s's}, \\\\\n  \\bar u_{s'}(\\mathbf{p})\\,\\gamma^0\\,v_s(-\\mathbf{p})\n    &= 0, \\\\\n  \\bar v_{s'}(\\mathbf{p})\\,\\gamma^0\\,u_s(-\\mathbf{p})\n    &= 0.",
+          "section": "Helicity and Spin-Sum Completeness"
+        },
+        {
+          "label": "38.21b",
+          "latex": "\\bar u_{s'}(\\mathbf{p})\\,\\gamma^\\mu\\,u_s(\\mathbf{p})\n    &= 2p^\\mu\\,\\delta_{s's}, \\\\\n  \\bar v_{s'}(\\mathbf{p})\\,\\gamma^\\mu\\,v_s(\\mathbf{p})\n    &= 2p^\\mu\\,\\delta_{s's}, \\\\\n  \\bar u_{s'}(\\mathbf{p})\\,\\gamma^0\\,v_s(-\\mathbf{p})\n    &= 0, \\\\\n  \\bar v_{s'}(\\mathbf{p})\\,\\gamma^0\\,u_s(-\\mathbf{p})\n    &= 0.",
+          "section": "Helicity and Spin-Sum Completeness"
+        },
+        {
+          "label": "38.22a",
+          "latex": "\\bar u_{s'}(\\mathbf{p})\\,\\gamma^\\mu\\,u_s(\\mathbf{p})\n    &= 2p^\\mu\\,\\delta_{s's}, \\\\\n  \\bar v_{s'}(\\mathbf{p})\\,\\gamma^\\mu\\,v_s(\\mathbf{p})\n    &= 2p^\\mu\\,\\delta_{s's}, \\\\\n  \\bar u_{s'}(\\mathbf{p})\\,\\gamma^0\\,v_s(-\\mathbf{p})\n    &= 0, \\\\\n  \\bar v_{s'}(\\mathbf{p})\\,\\gamma^0\\,u_s(-\\mathbf{p})\n    &= 0.",
+          "section": "Helicity and Spin-Sum Completeness"
+        },
+        {
+          "label": "38.22b",
+          "latex": "\\bar u_{s'}(\\mathbf{p})\\,\\gamma^\\mu\\,u_s(\\mathbf{p})\n    &= 2p^\\mu\\,\\delta_{s's}, \\\\\n  \\bar v_{s'}(\\mathbf{p})\\,\\gamma^\\mu\\,v_s(\\mathbf{p})\n    &= 2p^\\mu\\,\\delta_{s's}, \\\\\n  \\bar u_{s'}(\\mathbf{p})\\,\\gamma^0\\,v_s(-\\mathbf{p})\n    &= 0, \\\\\n  \\bar v_{s'}(\\mathbf{p})\\,\\gamma^0\\,u_s(-\\mathbf{p})\n    &= 0.",
+          "section": "Helicity and Spin-Sum Completeness"
+        }
+      ],
+      "sections": [
+        {
+          "title": "\\texorpdfstring{$\\sigma^\\mu$",
+          "subsections": [
+            "Main identity",
+            "Alternative form"
+          ]
+        },
+        {
+          "title": "Trace Identities",
+          "subsections": [
+            "Two-sigma trace",
+            "Four-sigma trace"
+          ]
+        },
+        {
+          "title": "Van der Waerden Index Gymnastics",
+          "subsections": [
+            "Raising and lowering spinor indices",
+            "Raising both spinor indices of \\texorpdfstring{$\\sigma^\\mu$"
+          ]
+        },
+        {
+          "title": "Spinor Bilinears",
+          "subsections": [
+            "Lorentz transformation properties",
+            "Momentum matrix in spinor space",
+            "Gordon identity"
+          ]
+        },
+        {
+          "title": "Fierz Identities",
+          "subsections": [
+            "Schouten identity",
+            "$\\sigma$-matrix Fierz",
+            "Four-Fermi Fierz"
+          ]
+        },
+        {
+          "title": "Gordon Identity",
+          "subsections": [
+            "Main identity",
+            "Derivation",
+            "Extended Gordon identity with \\texorpdfstring{$\\gamma^5$",
+            "Physical content"
+          ]
+        },
+        {
+          "title": "Helicity and Spin-Sum Completeness",
+          "subsections": [
+            "Spin-sum completeness",
+            "Bilinear identities",
+            "Helicity and chirality"
+          ]
+        },
+        {
+          "title": "Numerical Verification Summary",
+          "subsections": []
+        },
+        {
+          "title": "Summary",
+          "subsections": []
+        }
+      ],
+      "verifications": [
+        "Max error: $0.0e+00$.",
+        "Max error vs $-2g^{\\mu\\nu",
+        "$\\mathrm{Tr",
+        "$\\mathrm{Tr",
+        "All 256 components verified. Max error: $0.0e+00$.",
+        "Conjugate trace: max error $0.0e+00$.",
+        "$\\varepsilon^{\\alpha\\beta",
+        "All four $\\mu$ values verified: max error $0.0e+00$.",
+        "Schouten identity: max error $0.0e+00$.",
+        "$\\{\\gamma^5,\\gamma^\\mu\\",
+        "Gordon: $2m\\bar u'\\gamma^\\mu u = \\bar u'(2p^\\mu)u$ at $p'=p$: max error $<10^{-14",
+        "Spin-sum $\\sum_s u_s\\bar u_s = -\\slashed{p",
+        "Bilinear off-diagonal = 0; orthogonality $\\bar u\\gamma^0 v = 0$: verified.",
+        "Massless chirality projectors: $P_Lu_- = u_-$, $P_Ru_+ = u_+$."
+      ],
+      "texFile": "ch38_spinor_technology.tex",
+      "dockerCmd": "docker run --rm -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch38_spinor_technology.py"
+    },
+    {
+      "id": "ch39",
+      "number": "39",
+      "title": "Feynman Rules for Dirac Fields",
+      "status": "not-started",
+      "scriptFile": "ch39_feynman_rules_dirac.py",
+      "description": "Dirac propagator, QED Feynman rules, spin sums, trace theorems.",
+      "equations": [],
+      "sections": []
+    },
+    {
+      "id": "ch40",
+      "number": "40",
+      "title": "Spin Sums",
+      "status": "not-started",
+      "scriptFile": "ch40_spin_sums.py",
+      "description": "Spin-averaging, trace theorems, helicity vs trace approach.",
+      "equations": [],
+      "sections": []
+    },
+    {
+      "id": "ch41",
+      "number": "41",
+      "title": "Gamma Matrix Technology",
+      "status": "not-started",
+      "scriptFile": "ch41_gamma_technology.py",
+      "description": "Weyl representation, Clifford algebra, chiral projectors, Fierz identities.",
+      "equations": [],
+      "sections": []
+    },
+    {
+      "id": "ch42",
+      "number": "42",
+      "title": "Spinor-Helicity (Core of MHV)",
+      "status": "not-started",
+      "scriptFile": "ch42_spinor_helicity.py",
+      "description": "THE foundational chapter: massless momentum as spinor outer product, angle/square brackets, little group scaling.",
+      "equations": [],
+      "sections": []
+    },
+    {
+      "id": "ch43",
+      "number": "43",
+      "title": "Feynman Rules for Majorana Fields",
+      "status": "not-started",
+      "scriptFile": "ch43_feynman_rules_majorana.py",
+      "description": "Majorana condition, propagator with 1/2 factor, four-fermion contact terms.",
+      "equations": [],
+      "sections": []
+    },
+    {
+      "id": "ch48",
+      "number": "48",
+      "title": "Massless Particles & Spinor-Helicity",
+      "status": "not-started",
+      "scriptFile": "ch48_massless_spinor_helicity.py",
+      "description": "Angle and square spinors for massless momenta, polarization vectors, Schouten identity.",
+      "equations": [],
+      "sections": []
+    },
+    {
+      "id": "ch60",
+      "number": "60",
+      "title": "MHV Amplitudes (Parke-Taylor)",
+      "status": "done",
+      "scriptFile": "ch60_spinor_helicity.py",
+      "description": "Parke-Taylor formula for MHV gluon scattering amplitudes.",
+      "equations": [],
+      "sections": []
+    },
+    {
+      "id": "ch76",
+      "number": "76",
+      "title": "Nonabelian Gauge Theory (SU(N))",
+      "status": "not-started",
+      "scriptFile": "ch76_nonabelian_gauge.py",
+      "description": "SU(N) gauge fields, covariant derivative, field strength, QCD Lagrangian.",
+      "equations": [],
+      "sections": []
+    },
+    {
+      "id": "ch77",
+      "number": "77",
+      "title": "Group Representations (SU(N))",
+      "status": "not-started",
+      "scriptFile": "ch77_group_representations.py",
+      "description": "SU(N) reps, Casimir operators, color factor algebra, Fierz identities.",
+      "equations": [],
+      "sections": []
+    },
+    {
+      "id": "ch80",
+      "number": "80",
+      "title": "Feynman Rules for Nonabelian Gauge Theory",
+      "status": "not-started",
+      "scriptFile": "ch80_feynman_rules_nonabelian.py",
+      "description": "Gluon propagator, ghost-gluon vertex, three/four-gluon vertices, color-ordered rules.",
+      "equations": [],
+      "sections": []
+    },
+    {
+      "id": "bcfw",
+      "number": "BCFW",
+      "title": "BCFW Recursion Relations",
+      "status": "not-started",
+      "scriptFile": "bcfw_recursion.py",
+      "description": "On-shell recursion for tree-level amplitudes via complex momentum shifts.",
+      "equations": [],
+      "sections": []
+    },
+    {
+      "id": "adscft",
+      "number": "AdS/CFT",
+      "title": "AdS/CFT Correspondence",
+      "status": "not-started",
+      "scriptFile": "adscft_intro.py",
+      "description": "Maldacena duality, holographic dictionary, GKPW relation.",
+      "equations": [],
+      "sections": []
+    }
+  ]
+}

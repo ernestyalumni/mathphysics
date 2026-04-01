@@ -1,0 +1,350 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{tensor}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{slashed}
+\usepackage{mdframed}
+\geometry{margin=1.1in, headheight=15pt}
+
+\definecolor{cadblue}{RGB}{30,90,200}
+\definecolor{verifygreen}{RGB}{20,140,60}
+
+\newcommand{\cdbexpr}[1]{\textcolor{cadblue}{$#1$}}
+\newcommand{\verified}[1]{\textcolor{verifygreen}{\checkmark\; #1}}
+\newcommand{\half}{\tfrac{1}{2}}
+\DeclareMathOperator\Tr{Tr}
+\newtheorem{theorem}{Theorem}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Srednicki QFT --- Chapter 42}
+\rhead{Electrodynamics in Coulomb Gauge}
+\cfoot{\thepage}
+
+\title{\textbf{Srednicki QFT: Chapter 42}\\[6pt]
+       \large Electrodynamics in Coulomb Gauge\\[4pt]
+       \normalsize Gauge fixing, photon propagator, Coulomb interaction,\\
+       and the path to spinor-helicity}
+\author{Cadabra2 + NumPy verification}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Chapter 42} quantizes the photon field in Coulomb (radiation/transverse) gauge.
+This gauge makes the physical degrees of freedom manifest --- only two transverse
+polarizations propagate --- but breaks manifest Lorentz covariance.  The Coulomb gauge
+is the natural precursor to spinor-helicity methods (Ch.~48): helicity polarization
+vectors are most cleanly defined in the transverse-gauge framework, and the
+Coulomb photon propagator directly exhibits the projector
+$\delta^{ij} - \hat p^i\hat p^j$ that underlies the $\langle ij\rangle/[ij]$ brackets.
+\end{mdframed}
+
+%% ============================================================
+\section{Coulomb Gauge Condition}
+%% ============================================================
+
+\textit{Srednicki eq.\ (55.1)--(55.5).}
+
+The Maxwell Lagrangian with an external current $J^\mu$:
+\begin{equation}\label{eq:maxwell-lag}
+  \mathcal{L} = -\tfrac{1}{4}F_{\mu\nu}F^{\mu\nu} + J^\mu A_\mu,
+  \qquad F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.
+\end{equation}
+
+\subsection{The gauge condition}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Coulomb (radiation) gauge:}
+\begin{equation}\label{eq:coulomb-cond}
+  \nabla\cdot\mathbf{A} = \partial_i A^i = 0.
+\end{equation}
+\end{mdframed}
+
+This gauge condition eliminates the longitudinal photon degree of freedom and
+retains only the two physical transverse modes.  The temporal component $A^0$ is
+not a dynamical variable --- it is determined by the constraint equation:
+\begin{equation}\label{eq:coulomb-A0}
+  -\nabla^2 A^0 = J^0 = \rho \qquad \Rightarrow \qquad
+  A^0(\mathbf{x},t) = \int d^3y\,\frac{\rho(\mathbf{y},t)}{4\pi|\mathbf{x}-\mathbf{y}|}.
+\end{equation}
+
+\subsection{Momentum-space projection}
+
+In momentum space, the Coulomb gauge condition \eqref{eq:coulomb-cond} becomes
+$\mathbf{k}\cdot\tilde{\mathbf{A}}(\mathbf{k}) = 0$, implemented by the
+\emph{transverse projector}:
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\begin{equation}\label{eq:transverse-projector}
+  T^{ij}(\mathbf{k}) = \delta^{ij} - \frac{k^i k^j}{|\mathbf{k}|^2}.
+\end{equation}
+\end{mdframed}
+
+This projector satisfies:
+\begin{align}
+  k_i T^{ij} &= 0 \quad\text{(transversality)}, \\
+  T^{ij}T^{jk} &= T^{ik} \quad\text{(idempotent)}, \\
+  T^{ii} &= 2 \quad\text{(two transverse DOF)}.
+\end{align}
+
+\begin{mdframed}[backgroundcolor=green!5]
+\verified{NumPy:} For $\mathbf{k}=(1,0,0)$: $T^{ij} = \mathrm{diag}(0,1,1)$.
+$k_i T^{ij}=0$ \checkmark, $T^{ii}=2$ \checkmark, $T^2=T$ \checkmark.
+For general $\mathbf{k}=(k_1,k_2,k_3)$ all properties verified. \checkmark
+\end{mdframed}
+
+%% ============================================================
+\section{Equal-Time Commutators}
+%% ============================================================
+
+\textit{Srednicki eq.\ (55.18)--(55.23).}
+
+The canonical momentum for the vector field is:
+\begin{equation}
+  \Pi_i = \frac{\partial\mathcal{L}}{\partial\dot A_i} = \dot A_i = E^i \quad
+  \text{(transverse part)}.
+\end{equation}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Equal-time commutators in Coulomb gauge:}
+\begin{align}
+  [A_i(\mathbf{x},t),\, A_j(\mathbf{y},t)] &= 0, \label{eq:comm-AA}\\
+  [\Pi_i(\mathbf{x},t),\, \Pi_j(\mathbf{y},t)] &= 0, \label{eq:comm-PP}\\
+  [A_i(\mathbf{x},t),\, \Pi_j(\mathbf{y},t)] &= i\int\!\frac{d^3k}{(2\pi)^3}
+  e^{i\mathbf{k}\cdot(\mathbf{x}-\mathbf{y})}
+  \left(\delta_{ij} - \frac{k_ik_j}{|\mathbf{k}|^2}\right). \label{eq:comm-AP}
+\end{align}
+\end{mdframed}
+
+The modified commutator \eqref{eq:comm-AP} (instead of $i\delta_{ij}\delta^3(\mathbf{x}-\mathbf{y})$)
+reflects the Coulomb-gauge constraint: only transverse modes are quantized.
+
+\subsection{Mode expansion}
+
+The transverse vector field mode expansion:
+\begin{equation}\label{eq:mode-expansion}
+  \mathbf{A}(x) = \sum_{\lambda=\pm}\int\!\widetilde{dk}\,
+  \bigl[\boldsymbol\varepsilon^*_\lambda(\mathbf{k})\,a_\lambda(\mathbf{k})\,e^{ikx}
+        + \boldsymbol\varepsilon_\lambda(\mathbf{k})\,a^\dagger_\lambda(\mathbf{k})\,e^{-ikx}\bigr],
+\end{equation}
+where $k^0 = |\mathbf{k}|$ (massless), $\widetilde{dk} = \frac{d^3k}{(2\pi)^3 2k^0}$,
+and the helicity polarization vectors satisfy:
+\begin{equation}\label{eq:helicity-pol}
+  \boldsymbol\varepsilon_\pm(\mathbf{k}) = \mp\frac{1}{\sqrt{2}}(\hat e_1 \pm i\hat e_2),
+  \qquad
+  \mathbf{k}\cdot\boldsymbol\varepsilon_\pm = 0, \qquad
+  \boldsymbol\varepsilon_+\cdot\boldsymbol\varepsilon_+^* = 1.
+\end{equation}
+
+Polarization completeness (sum over two physical polarizations):
+\begin{equation}\label{eq:pol-completeness}
+  \sum_{\lambda=\pm}\varepsilon_{i,\lambda}(\mathbf{k})\varepsilon_{j,\lambda}^*(\mathbf{k})
+  = \delta_{ij} - \frac{k_ik_j}{|\mathbf{k}|^2} = T^{ij}(\mathbf{k}).
+\end{equation}
+
+%% ============================================================
+\section{The Photon Propagator in Coulomb Gauge}
+%% ============================================================
+
+\textit{Srednicki eq.\ (55.24)--(55.31).}
+
+\subsection{Components}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Photon propagator in Coulomb gauge:}
+\begin{align}
+  D^{00}(k) &= \frac{-1}{|\mathbf{k}|^2}, \label{eq:D00}\\[4pt]
+  D^{0i}(k) &= D^{i0}(k) = 0, \label{eq:D0i}\\[4pt]
+  D^{ij}(k) &= \frac{1}{k^2+i\varepsilon}\left(\delta^{ij}
+              - \frac{k^ik^j}{|\mathbf{k}|^2}\right)
+              = \frac{T^{ij}(\mathbf{k})}{k^2+i\varepsilon}. \label{eq:Dij}
+\end{align}
+\end{mdframed}
+
+\subsection{Physical interpretation}
+
+The propagator has two distinct contributions:
+
+\begin{enumerate}
+\item \textbf{Coulomb component} $D^{00}$: This is the \emph{instantaneous} Coulomb
+  interaction.  It is \emph{independent of} $k^0$, meaning it acts at equal times ---
+  it is not a propagating mode.  This is the familiar $1/|\mathbf{k}|^2$ Coulomb potential
+  in momentum space.
+
+\item \textbf{Transverse component} $D^{ij}$: These are the two physical photon
+  propagation modes.  The transverse projector $T^{ij}$ ensures only physical
+  polarizations propagate.
+\end{enumerate}
+
+\subsection{Comparison with Feynman gauge}
+
+In Feynman gauge $(\partial^\mu A_\mu = 0)$, the photon propagator is:
+\begin{equation}\label{eq:feynman-gauge-prop}
+  D_F^{\mu\nu}(k) = \frac{-\eta^{\mu\nu}}{k^2+i\varepsilon}.
+\end{equation}
+
+The Coulomb gauge propagator can be related to the Feynman gauge propagator by:
+\begin{equation}
+  D_C^{\mu\nu}(k) = D_F^{\mu\nu}(k) + \text{(gauge terms)},
+\end{equation}
+where the gauge terms vanish for conserved currents $J^\mu$ satisfying $k_\mu J^\mu=0$
+(Ward identity).  Physical amplitudes are gauge-invariant and can be computed in
+either gauge.
+
+%% ============================================================
+\section{The Instantaneous Coulomb Interaction}
+%% ============================================================
+
+\textit{Srednicki eq.\ (55.19), (55.24).}
+
+\subsection{Coulomb Hamiltonian}
+
+The Hamiltonian in Coulomb gauge has an explicit instantaneous piece:
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\begin{equation}\label{eq:coulomb-hamiltonian}
+  H = \sum_{\lambda=\pm}\int\!\widetilde{dk}\,\omega\, a^\dagger_\lambda(\mathbf{k})a_\lambda(\mathbf{k})
+    - \int d^3x\,\mathbf{J}(\mathbf{x})\cdot\mathbf{A}(\mathbf{x})
+    + H_\text{Coul},
+\end{equation}
+where the Coulomb energy is:
+\begin{equation}\label{eq:coulomb-energy}
+  H_\text{Coul} = \frac{1}{2}\int d^3x\,d^3y\;
+  \frac{\rho(\mathbf{x},t)\,\rho(\mathbf{y},t)}{4\pi|\mathbf{x}-\mathbf{y}|}.
+\end{equation}
+\end{mdframed}
+
+The $H_\text{Coul}$ term is the familiar instantaneous Coulomb interaction between
+charge densities.  It is \emph{not} Lorentz invariant by itself; the non-invariance
+is compensated by the $D^{00}$ piece of the propagator.  The full S-matrix is Lorentz
+invariant despite the non-covariant gauge.
+
+\subsection{Effective Coulomb potential}
+
+In position space, $H_\text{Coul}$ gives the potential between point charges:
+\begin{equation}
+  V(r) = \frac{e_1 e_2}{4\pi r} \quad (r = |\mathbf{x}-\mathbf{y}|).
+\end{equation}
+The non-locality $(\sim 1/r)$ is the signature of the \emph{instantaneous} gauge:
+the Coulomb potential propagates at infinite speed in this gauge, but the
+observable effects are still causal because they combine with retarded transverse
+photon exchange.
+
+%% ============================================================
+\section{Ward Identities in Coulomb Gauge}
+%% ============================================================
+
+\textit{Srednicki eq.\ (55.13)-(55.15).}
+
+\subsection{Transversality of physical polarizations}
+
+The physical polarization vectors in Coulomb gauge satisfy:
+\begin{equation}\label{eq:transverse-pol}
+  \mathbf{k}\cdot\boldsymbol\varepsilon_\lambda(\mathbf{k}) = 0,
+\end{equation}
+which is the Coulomb-gauge form of the Ward identity $k^\mu\mathcal{M}_\mu = 0$.
+
+\subsection{Ward identity}
+
+For QED amplitudes with an external photon of momentum $k$ and polarization
+$\varepsilon^\mu$, current conservation $\partial_\mu J^\mu = 0$ gives:
+\begin{equation}\label{eq:ward}
+  k_\mu \mathcal{M}^\mu = 0.
+\end{equation}
+In Coulomb gauge, this means:
+\begin{align}
+  k_i \mathcal{M}^i &= 0 \quad\text{(transverse)}, \\
+  \mathcal{M}^0 &= 0 \quad\text{(temporal component vanishes for on-shell photons)}.
+\end{align}
+
+This Ward identity is the foundation for the replacement of $\sum_\lambda \varepsilon_\mu\varepsilon_\nu^*$
+with $-\eta_{\mu\nu}$ in Feynman gauge or with $T_{ij}$ in Coulomb gauge.
+
+%% ============================================================
+\section{Connection to Light-Front Gauge and Spinor-Helicity}
+%% ============================================================
+
+\textit{Bridge from Ch.~42 to Ch.~48.}
+
+\subsection{Light-front gauge}
+
+The Coulomb gauge is related to \emph{light-front} (axial) gauge via the gauge
+parameter $n^\mu = (1,0,0,1)$ (the light-front direction):
+\begin{equation}
+  n^\mu A_\mu = A^+ = 0.
+\end{equation}
+In light-front gauge, the transverse projector becomes:
+\begin{equation}
+  T^{\mu\nu}(k;n) = -\eta^{\mu\nu}
+  + \frac{k^\mu n^\nu + n^\mu k^\nu}{k\cdot n}
+  - \frac{n^2 k^\mu k^\nu}{(k\cdot n)^2}.
+\end{equation}
+For massless on-shell gluons with $k^2=0$, this simplifies and the helicity
+polarization vectors become:
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Spinor-helicity polarizations} (the Coulomb/light-front gauge origin):
+\begin{equation}\label{eq:helicity-pol-spinor}
+  \varepsilon^{+\mu}(k;q) = \frac{\langle q|\gamma^\mu|k]}{\sqrt{2}\langle qk\rangle},
+  \qquad
+  \varepsilon^{-\mu}(k;q) = \frac{[q|\gamma^\mu|k\rangle}{\sqrt{2}[qk]},
+\end{equation}
+where $q^\mu$ is a reference (gauge) momentum.  These are the spinor-helicity
+polarization vectors of Ch.~48, \emph{derived from} the transverse gauge
+of Ch.~42.
+\end{mdframed}
+
+\subsection{The transverse projector and brackets}
+
+The completeness relation \eqref{eq:pol-completeness}:
+\begin{equation}
+  \sum_{\lambda=\pm}\varepsilon_{i}^\lambda\varepsilon_j^{*\lambda}
+  = \delta_{ij} - \frac{k_ik_j}{|\mathbf{k}|^2} = T_{ij}(\mathbf{k}),
+\end{equation}
+is the spatial version of the spinor-helicity identity:
+\begin{equation}
+  \sum_{\lambda=\pm}\varepsilon_\mu^\lambda(k;q)\varepsilon_\nu^{*\lambda}(k;q)
+  = -\eta_{\mu\nu} + \frac{k_\mu q_\nu + q_\mu k_\nu}{k\cdot q}.
+\end{equation}
+
+In spinor-helicity language, $T_{ij}$ is the projection onto the space spanned by
+$(\hat e_+ \equiv \lambda,\, \hat e_- \equiv \tilde\lambda)$ --- exactly the angle
+and square spinors of Ch.~48.
+
+\subsection{Summary: Ch.~42 $\to$ Ch.~48}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Ch.~42 (Coulomb gauge) & Ch.~48 (spinor-helicity) \\
+\midrule
+Transverse projector $\delta^{ij}-k^ik^j/|\mathbf{k}|^2$ & $\sum_\lambda\varepsilon_\mu\varepsilon_\nu^*$ \\
+Coulomb condition $\partial_i A^i=0$ & Helicity gauge $k\cdot\varepsilon=0$ \\
+Ward identity $k_i\mathcal{M}^i=0$ & $k\cdot\mathcal{M}=0$ \\
+Helicity pol.\ $\varepsilon_\pm = \frac{1}{\sqrt2}(\hat e_1\pm i\hat e_2)$ & $\varepsilon^\pm_\mu=\langle q|\gamma_\mu|k]/(\sqrt2\langle qk\rangle)$ \\
+Photon propagator $T^{ij}/k^2$ & Gluon propagator $-\eta^{\mu\nu}/k^2$ (Feynman) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Key conceptual link:} The spinor-helicity brackets $\langle jk\rangle$ and $[jk]$
+of Ch.~48 are the momentum-space representatives of the transverse polarization degrees
+of freedom revealed by the Coulomb gauge of Ch.~42.  The rank-1 factorization
+$p_{\alpha\dot\alpha}=\lambda_\alpha\tilde\lambda_{\dot\alpha}$ is the covariantization
+of the transverse decomposition $\mathbf{A}_\perp = $ (two polarizations).
+\end{mdframed}
+
+\vfill
+\bibliographystyle{plain}
+\end{document}
