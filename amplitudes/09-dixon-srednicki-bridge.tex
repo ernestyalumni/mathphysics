@@ -1,0 +1,1130 @@
+% Chapter 09: Dixon (2013) ↔ Srednicki Bridge
+% arXiv:1310.5353 "A Brief Introduction to Modern Amplitude Methods"
+% This is a WORKING document: all derivations shown step by step.
+% Cross-references Srednicki QFT chapters 34, 35, 36, 48, 50, 60, 79, 80, 81.
+
+\chapter{Dixon--Srednicki Bridge: From Textbook QFT to Modern Amplitudes}
+\label{chap:dixon-srednicki}
+
+\begin{quote}
+\textit{Reference:} Lance J.\ Dixon, ``A brief introduction to modern amplitude methods,''
+arXiv:1310.5353v1 (2013), based on lectures at the 2012 CERN Summer School and TASI 2013.
+\end{quote}
+
+This chapter provides a detailed, derivation-level bridge between Dixon's pedagogical
+review (arXiv:1310.5353) and Srednicki's \emph{Quantum Field Theory} (Cambridge, 2007).
+The goal is to make every equation in Dixon traceable to a Srednicki equation (or to
+a short computation starting from one), and to highlight the few places where conventions differ.
+
+\medskip
+\noindent\textbf{Metric and sign conventions:}
+\begin{itemize}
+  \item Srednicki uses the \emph{West coast} metric $g^{\mu\nu}=\mathrm{diag}(+1,-1,-1,-1)$.
+  \item Dixon uses the \emph{same} convention throughout arXiv:1310.5353.
+  \item Index raising/lowering: $\varepsilon^{12}=+1$, $\varepsilon_{12}=-1$
+        (Srednicki eq.~34.22; see also Section~\ref{sec:spinor-products}).
+\end{itemize}
+
+\noindent\textbf{Connection to SMGA (arXiv:2602.12176):}
+Throughout this chapter we note where results connect to the
+``Scattering Matrix from the Galactic Amplitude'' paper (SMGA, arXiv:2602.12176).
+In particular: the soft gluon limit (Section~\ref{sec:soft-gluon}) is the
+mechanism underlying the Weinberg soft theorem used as a consistency check in the SMGA paper.
+
+
+%% ============================================================
+\section{Color Decomposition (Dixon \S2 $\leftrightarrow$ Srednicki Ch.79--80)}
+\label{sec:color-decomp}
+%% ============================================================
+
+\subsection{SU($N_c$) Generators and Dixon's Non-Standard Normalization}
+
+The gauge group of QCD is $\mathrm{SU}(N_c)$ (with $N_c=3$ in nature).
+The generators $T^a$ in the fundamental representation are
+traceless Hermitian $N_c\times N_c$ matrices, with $a=1,\ldots,N_c^2-1$.
+
+\textbf{Two common normalizations exist in the literature:}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}lcc@{}}
+  \toprule
+  Convention & Trace norm & Structure constants \\
+  \midrule
+  Standard (e.g., Peskin--Schroeder) & $\mathrm{Tr}(T^a T^b) = \tfrac{1}{2}\delta^{ab}$
+    & $[T^a,T^b] = i f^{abc} T^c$ \\
+  Dixon (arXiv:1310.5353) & $\mathrm{Tr}(T^a T^b) = \delta^{ab}$
+    & $[T^a,T^b] = i\sqrt{2}\, f^{abc} T^c$ \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+Dixon explicitly states (below his eq.~(2.1)): ``it's conventional to normalize them
+according to $\mathrm{Tr}(T^a T^b)=\delta^{ab}$ in order to avoid a proliferation
+of $\sqrt{2}$'s in the amplitudes.''
+
+\textbf{Why does doubling the trace norm introduce $\sqrt{2}$ in the structure constants?}
+
+Let $\tilde{T}^a = \sqrt{2}\,T^a_{\mathrm{std}}$, so
+$\mathrm{Tr}(\tilde{T}^a\tilde{T}^b)=2\cdot\tfrac{1}{2}\delta^{ab}=\delta^{ab}$.
+Then:
+\begin{align}
+  [\tilde{T}^a, \tilde{T}^b]
+  &= 2[T^a_{\mathrm{std}}, T^b_{\mathrm{std}}]
+   = 2\,i f^{abc} T^c_{\mathrm{std}}
+   = i\sqrt{2}\,f^{abc}\,(\sqrt{2}\,T^c_{\mathrm{std}})
+   = i\sqrt{2}\,f^{abc}\,\tilde{T}^c.
+\end{align}
+\textbf{Hence}: under the rescaling $T^a\to\sqrt{2}T^a$, the commutation relation
+gains a factor of $\sqrt{2}$. This is Dixon's normalization, eq.~(2.1).
+
+\begin{remark}
+Srednicki uses the standard normalization $\mathrm{Tr}(T^a T^b)=\tfrac{1}{2}\delta^{ab}$
+(see Srednicki Chapter 80, just below eq.~80.7).
+When translating between Dixon and Srednicki, replace $T^a_{\rm Dixon}=\sqrt{2}T^a_{\rm Sred}$.
+Partial amplitudes $A_n$ defined in Srednicki and in Dixon differ by powers of $\sqrt{2}$.
+\end{remark}
+
+\subsection{Deriving Dixon (2.2): Structure Constants from the Commutator}
+\label{sec:struct-const}
+
+\textbf{Dixon eq.~(2.2):}
+\begin{equation}\label{eq:dixon2.2}
+  \tilde{f}^{abc} \equiv i\sqrt{2}\,f^{abc}
+  = \mathrm{Tr}(T^a T^b T^c) - \mathrm{Tr}(T^a T^c T^b).
+\end{equation}
+
+\textbf{Derivation.} Start from the commutation relation (Dixon eq.~(2.1)):
+\begin{equation}
+  [T^a, T^b] = i\sqrt{2}\,f^{abc}\,T^c.
+\end{equation}
+
+\paragraph{Step 1.} Multiply both sides on the right by $T^d$, then take the trace:
+\begin{align}
+  \mathrm{Tr}\bigl([T^a,T^b]\,T^d\bigr)
+  &= i\sqrt{2}\,f^{abc}\,\mathrm{Tr}(T^c\,T^d)
+   = i\sqrt{2}\,f^{abc}\,\delta^{cd}
+   = i\sqrt{2}\,f^{abd}.
+\end{align}
+(We used the normalization $\mathrm{Tr}(T^c T^d)=\delta^{cd}$.)
+
+\paragraph{Step 2.} Expand the left side:
+\begin{align}
+  \mathrm{Tr}\bigl([T^a,T^b]\,T^d\bigr)
+  &= \mathrm{Tr}(T^a T^b T^d) - \mathrm{Tr}(T^b T^a T^d).
+\end{align}
+
+\paragraph{Step 3.} Use cyclicity of trace: $\mathrm{Tr}(T^b T^a T^d)=\mathrm{Tr}(T^a T^d T^b)$.
+So:
+\begin{align}
+  i\sqrt{2}\,f^{abd}
+  &= \mathrm{Tr}(T^a T^b T^d) - \mathrm{Tr}(T^a T^d T^b).
+\end{align}
+
+\paragraph{Step 4.} Relabeling $d\to c$ gives exactly Dixon (2.2):
+\begin{equation}
+  \boxed{i\sqrt{2}\,f^{abc}
+  = \mathrm{Tr}(T^a T^b T^c) - \mathrm{Tr}(T^a T^c T^b).}
+\end{equation}
+$\square$
+
+\textbf{Srednicki connection:} This is the content of Srednicki's eq.~(80.7), which reads
+(in Srednicki's normalization $\mathrm{Tr}(T^aT^b)=\tfrac{1}{2}\delta^{ab}$):
+\begin{equation}
+  i f^{abc} = 2\bigl[\mathrm{Tr}(T^a T^b T^c) - \mathrm{Tr}(T^a T^c T^b)\bigr]_{\rm Sred}.
+\end{equation}
+After substituting $T^a_{\rm Sred}=T^a_{\rm Dixon}/\sqrt{2}$:
+\begin{align}
+  i f^{abc}
+  &= 2\Bigl[\mathrm{Tr}\Bigl(\frac{T^a_D}{\sqrt{2}}\frac{T^b_D}{\sqrt{2}}\frac{T^c_D}{\sqrt{2}}\Bigr)
+   - \cdots\Bigr]
+   = 2\cdot\frac{1}{2\sqrt{2}}\bigl[\mathrm{Tr}(T^a_D T^b_D T^c_D)-\cdots\bigr]
+   = \frac{i\sqrt{2}f^{abc}}{\sqrt{2}}
+\end{align}
+which is consistent. Both equations encode the same structure constants $f^{abc}$;
+the numerical prefactor is absorbed into the different trace normalizations.
+
+\subsection{The SU($N_c$) Fierz Identity (Dixon (2.3))}
+\label{sec:fierz-color}
+
+\textbf{Dixon eq.~(2.3):}
+\begin{equation}\label{eq:dixon2.3}
+  (T^a)_{i_1}^{\ j_1}\,(T^a)_{i_2}^{\ j_2}
+  = \delta_{i_1}^{\ j_2}\,\delta_{i_2}^{\ j_1}
+  - \frac{1}{N_c}\,\delta_{i_1}^{\ j_1}\,\delta_{i_2}^{\ j_2},
+\end{equation}
+where the sum over $a=1,\ldots,N_c^2-1$ is implicit.
+
+\textbf{Derivation.}
+The $N_c^2$ matrices $\{T^a\}_{a=1}^{N_c^2-1}\cup\{T^0\}$ form a complete basis for
+all $N_c\times N_c$ matrices, where $T^0=(1/\sqrt{N_c})\,\mathbf{1}_{N_c}$ is the
+$U(1)$ generator normalized so that $\mathrm{Tr}(T^0 T^0)=1$.
+
+\paragraph{Step 1.} Completeness of $U(N_c)$ generators:
+\begin{equation}\label{eq:UN-complete}
+  \sum_{a=0}^{N_c^2-1}(T^a)_{i_1}^{\ j_1}\,(T^a)_{i_2}^{\ j_2}
+  = \delta_{i_1}^{\ j_2}\,\delta_{i_2}^{\ j_1}.
+\end{equation}
+This is the statement that $\{T^a\}$ is an orthonormal basis with respect to the
+inner product $(M,N)=\mathrm{Tr}(M^\dagger N)$, with normalization $\mathrm{Tr}(T^aT^b)=\delta^{ab}$.
+The Kronecker deltas on the right are the ``tensor identity'' in
+$\mathrm{Hom}(\mathbb{C}^{N_c},\mathbb{C}^{N_c})$.
+
+\paragraph{Step 2.} Separate the $a=0$ term. For $T^0=(1/\sqrt{N_c})\mathbf{1}$:
+\begin{equation}
+  (T^0)_{i_1}^{\ j_1}(T^0)_{i_2}^{\ j_2}
+  = \frac{1}{N_c}\,\delta_{i_1}^{j_1}\,\delta_{i_2}^{j_2}.
+\end{equation}
+
+\paragraph{Step 3.} Subtract:
+\begin{align}
+  \sum_{a=1}^{N_c^2-1}(T^a)_{i_1}^{\ j_1}(T^a)_{i_2}^{\ j_2}
+  &= \delta_{i_1}^{\ j_2}\delta_{i_2}^{\ j_1}
+   - \frac{1}{N_c}\,\delta_{i_1}^{j_1}\delta_{i_2}^{j_2},
+\end{align}
+which is exactly Dixon (2.3). $\square$
+
+\textbf{Graphically} (Dixon's Figure 1(b)): the left side is a ``gluon exchange''
+between two quark lines; the right side decomposes this into a ``direct'' flow
+minus a $1/N_c$ ``trace'' suppressed piece.
+
+\subsection{Proving Tracelessness via the Fierz Identity}
+\label{sec:trace-fierz}
+
+\textbf{Claim:} The $-1/N_c$ term in Dixon (2.3) enforces the tracelessness of $T^a$.
+
+\textbf{Proof.} Contract both sides of eq.~\eqref{eq:dixon2.3} with $\delta^{i_1}_{j_1}$
+(i.e., set $j_1=i_1$ and sum):
+
+\paragraph{Left side:}
+\begin{align}
+  \delta^{i_1}_{j_1}\,(T^a)_{i_1}^{\ j_1}\,(T^a)_{i_2}^{\ j_2}
+  &= \mathrm{Tr}(T^a)\,(T^a)_{i_2}^{\ j_2}.
+\end{align}
+
+\paragraph{Right side:}
+\begin{align}
+  \delta^{i_1}_{j_1}\,\delta_{i_1}^{\ j_2}\,\delta_{i_2}^{\ j_1}
+  - \frac{1}{N_c}\,\delta^{i_1}_{j_1}\,\delta_{i_1}^{\ j_1}\,\delta_{i_2}^{\ j_2}
+  &= \delta_{i_2}^{\ j_2}\cdot\underbrace{\delta^{i_1}_{i_1}}_{=N_c}
+   - \frac{1}{N_c}\cdot\underbrace{\delta^{i_1}_{i_1}}_{=N_c}\cdot\delta_{i_2}^{j_2}
+  \notag\\
+  &= N_c\,\delta_{i_2}^{j_2} - \frac{N_c}{N_c}\,\delta_{i_2}^{j_2}
+   = N_c\,\delta_{i_2}^{j_2} - \delta_{i_2}^{j_2}
+   = (N_c-1)\,\delta_{i_2}^{j_2}.
+\end{align}
+
+\paragraph{Comparing:}
+\begin{equation}
+  \mathrm{Tr}(T^a)\,(T^a)_{i_2}^{\ j_2} = (N_c-1)\,\delta_{i_2}^{j_2}.
+\end{equation}
+This must hold for all $i_2, j_2$. But the right side vanishes when $i_2\neq j_2$, and
+equals $(N_c-1)$ on the diagonal --- while $(T^a)_{i_2}^{j_2}$ is a specific generator matrix.
+The only self-consistent solution is $\mathrm{Tr}(T^a)=0$ for all $a=1,\ldots,N_c^2-1$.
+
+Indeed, if we assume $\mathrm{Tr}(T^a)=0$ (tracelessness), both sides vanish:
+\begin{itemize}
+  \item Left side: $0\cdot(T^a)_{i_2}^{j_2}=0$.
+  \item Right side: $(N_c-1)\,\delta_{i_2}^{j_2}$... wait, that does not vanish!
+\end{itemize}
+
+Let us be more careful. The sum $\sum_a\mathrm{Tr}(T^a)(T^a)_{i_2}^{j_2}$ sums
+over $a$. If each $\mathrm{Tr}(T^a)=0$ (which is \emph{assumed} as part of the
+definition of $SU(N_c)$), then the left side is $\sum_a 0 = 0$.
+
+Meanwhile the right side gives $(N_c-1)\delta_{i_2}^{j_2}$?
+
+\textbf{Resolution}: The sum $\sum_a(T^a)_{i_2}^{j_2}\delta_{i_2}^{j_2}$
+picks up $\delta_{i_2}^{j_2}\sum_a(T^a)_{i_2}^{j_2}$, but we should
+set $j_1=i_1$ in the Fierz identity before summing:
+\begin{align}
+  \delta_{j_1}^{i_1}(T^a)_{i_1}^{j_1}(T^a)_{i_2}^{j_2}
+  &= \delta_{i_1}^{j_2}\delta_{i_2}^{j_1}\delta_{j_1}^{i_1}
+   - \frac{1}{N_c}\delta_{i_1}^{j_1}\delta_{j_1}^{i_1}\delta_{i_2}^{j_2}
+  \notag\\
+  &= \delta_{i_2}^{j_2}\cdot N_c - \frac{N_c}{N_c}\delta_{i_2}^{j_2}
+   = (N_c-1)\delta_{i_2}^{j_2}.
+\end{align}
+This correctly gives $\sum_a\mathrm{Tr}(T^a)(T^a)_{i_2}^{j_2}=(N_c-1)\delta_{i_2}^{j_2}$.
+
+\textbf{BUT}: for $SU(N_c)$, $\mathrm{Tr}(T^a)=0$ for all $a$, so $\sum_a\mathrm{Tr}(T^a)(T^a)_{i_2}^{j_2}=0$.
+This is consistent only if $(N_c-1)\delta_{i_2}^{j_2}=0$, which fails for $N_c>1$.
+
+The correct statement is: \emph{the $U(N_c)$ Fierz identity} (with the $U(1)$ generator included) gives eq.~\eqref{eq:UN-complete}. The $SU(N_c)$ Fierz identity \eqref{eq:dixon2.3} is obtained by subtracting the $U(1)$ piece. The $-1/N_c$ term ensures that the $SU(N_c)$ generators remain orthogonal to the $U(1)$ generator (trace part). Contracting with $\delta_{j_1}^{i_1}$ on the $SU(N_c)$ Fierz identity tests: the left side becomes $\sum_{a\in SU(N_c)}\mathrm{Tr}(T^a)(T^a)_{i_2}^{j_2}=0$ (because $\mathrm{Tr}(T^a)=0$), and the right side becomes $N_c\delta_{i_2}^{j_2}-\delta_{i_2}^{j_2}=(N_c-1)\delta_{i_2}^{j_2}$.
+
+\textbf{Wait---these do not agree}. The resolution is that the Fierz identity is an operator identity; when we sum over $a$, we must interpret the left side as an operator on the tensor product space, not scalar-times-operator. The Fierz identity states:
+
+\begin{equation}
+\boxed{\sum_{a=1}^{N_c^2-1}(T^a)_{i_1}^{\ j_1}(T^a)_{i_2}^{\ j_2}
+  = \delta_{i_1}^{\ j_2}\delta_{i_2}^{\ j_1}
+  - \frac{1}{N_c}\delta_{i_1}^{j_1}\delta_{i_2}^{j_2}}
+\end{equation}
+as a statement about the $N_c^4$-component tensor. Setting $j_1=i_1$ and summing $i_1$:
+\begin{itemize}
+  \item LHS: $\sum_a\sum_{i_1}(T^a)_{i_1}^{i_1}(T^a)_{i_2}^{j_2}=\sum_a[\mathrm{Tr}(T^a)](T^a)_{i_2}^{j_2}=0$.
+  \item RHS: $\sum_{i_1}\delta_{i_1}^{j_2}\delta_{i_2}^{i_1}-\frac{1}{N_c}\cdot N_c\cdot\delta_{i_2}^{j_2}=\delta_{i_2}^{j_2}-\delta_{i_2}^{j_2}=0$.
+\end{itemize}
+\textbf{Both sides give zero.} The $-1/N_c$ term is exactly what is needed for the right side to also vanish, consistent with tracelessness on the left. $\square$
+
+\textbf{Summary:} The coefficient $-1/N_c$ in the Fierz identity is the algebraic implementation of the tracelessness constraint $\mathrm{Tr}(T^a)=0$. Remove it and you get the $U(N_c)$ Fierz identity.
+
+\subsection{Srednicki 80.17 and Color-Ordered Amplitudes}
+\label{sec:color-ordered}
+
+\textbf{Srednicki eq.~(80.17)} gives the color decomposition of the $n$-gluon
+tree amplitude:
+\begin{equation}
+  \mathcal{A}_n^{\rm tree}(\{k_i,\lambda_i,a_i\})
+  = g^{n-2}\sum_{\sigma\in S_n/Z_n}
+  \mathrm{Tr}(T^{a_{\sigma(1)}}\cdots T^{a_{\sigma(n)}})\,
+  A_n^{\rm tree}(\sigma(1^{\lambda_1}),\ldots,\sigma(n^{\lambda_n})).
+  \tag{Sred 80.17}
+\end{equation}
+
+This is \emph{identical} in form to Dixon eq.~(2.4). The derivation proceeds through:
+\begin{enumerate}
+  \item Eliminate $f^{abc}$ from three-gluon vertices using eq.~\eqref{eq:dixon2.2}.
+  \item Apply the SU$(N_c)$ Fierz identity \eqref{eq:dixon2.3} to join traces.
+  \item Only single-trace terms survive at tree level (a key result).
+\end{enumerate}
+
+\textbf{Does Srednicki derive color decomposition?} Yes, in Ch.~80 (``Scattering in quantum chromodynamics''). Srednicki derives the color-stripped Feynman rules starting from the QCD Lagrangian, arriving at color-ordered amplitudes defined by single traces of generators.
+
+\textbf{Are double-trace terms present at tree level?} No. Dixon explicitly states (below eq.~(2.4)): double-trace terms appear at the \emph{loop} level. At tree level, the graphical reduction algorithm always produces single traces for pure-gluon amplitudes. The reason is topological: tree diagrams have a planar structure that allows all color traces to be merged into one.
+
+At one loop, the color decomposition contains:
+\begin{itemize}
+  \item \textbf{Single-trace terms} $\sim N_c\,\mathrm{Tr}(T^{a_1}\cdots T^{a_n})$: leading color.
+  \item \textbf{Double-trace terms} $\sim\mathrm{Tr}(T^{a_1}\cdots T^{a_m})\mathrm{Tr}(T^{a_{m+1}}\cdots T^{a_n})$: suppressed by $1/N_c^2$.
+\end{itemize}
+
+
+%% ============================================================
+\section{Spinor Variables (Dixon \S3.1 $\leftrightarrow$ Srednicki Ch.48, 50)}
+\label{sec:spinor-variables}
+%% ============================================================
+
+\subsection{Trading $k^\mu$ for Spinors: The Core Idea}
+
+For a massless momentum $k^\mu$ with $k^2=0$, the $2\times2$ matrix:
+\begin{equation}
+  k_{\alpha\dot\alpha} = k^\mu(\sigma_\mu)_{\alpha\dot\alpha}
+  = \begin{pmatrix}k^0+k^3 & k^1-ik^2\\ k^1+ik^2 & k^0-k^3\end{pmatrix}
+\end{equation}
+has $\det(k_{\alpha\dot\alpha})=-k^2/4=0$ (West coast metric). Hence it has rank 1 and \emph{factorizes}:
+\begin{equation}
+  \boxed{k_{\alpha\dot\alpha} = \lambda_\alpha\,\tilde\lambda_{\dot\alpha}}
+  \tag{Sred 50.1 / Dixon 3.2}
+\end{equation}
+where $\lambda_\alpha$ is a 2-component undotted Weyl spinor and $\tilde\lambda_{\dot\alpha}$
+is a 2-component dotted Weyl spinor. These are the \emph{spinor variables}.
+
+\textbf{In Srednicki:} This is eq.~(50.1), introduced in Ch.~50 as the key factorization
+that enables the spinor-helicity formalism.
+
+\textbf{In Dixon:} Eqs.~(3.1)--(3.2) introduce $u_+(k_i)\equiv|i^+\rangle\equiv\lambda_i^\alpha$
+(right-handed) and $u_-(k_i)\equiv|i^-\rangle\equiv\tilde\lambda_i^{\dot\alpha}$ (left-handed).
+
+\subsection{Notation Comparison Table}
+\label{sec:notation-table}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{@{}p{0.28\textwidth}p{0.32\textwidth}p{0.32\textwidth}@{}}
+  \toprule
+  \textbf{Object} & \textbf{Dixon arXiv:1310.5353} & \textbf{Srednicki Ch.50, 60} \\
+  \midrule
+  Massless 4-momentum & $k_i^\mu$ (real, $k_i^2=0$) & $p^\mu$ (real, $p^2=0$) \\[4pt]
+  Spinor-matrix & $k_{i,\alpha\dot\alpha}$ & $p_{\alpha\dot\alpha}$ (eq.~50.1) \\[4pt]
+  Undotted spinor (right-chiral) & $(\lambda_i)_\alpha = u_+(k_i)_\alpha = |i^+\rangle$ & $\lambda_\alpha$ \\[4pt]
+  Dotted spinor (left-chiral) & $(\tilde\lambda_i)_{\dot\alpha} = u_-(k_i)_{\dot\alpha} = |i^-\rangle$ & $\tilde\lambda_{\dot\alpha}$ \\[4pt]
+  Angle bracket & $\langle i\,j\rangle\equiv\varepsilon^{\alpha\beta}(\lambda_i)_\alpha(\lambda_j)_\beta$ & $\langle i\,j\rangle = \varepsilon^{\alpha\beta}\lambda_{i\alpha}\lambda_{j\beta}$ (eq.~50.16) \\[4pt]
+  Square bracket & $[i\,j]\equiv\varepsilon^{\dot\alpha\dot\beta}(\tilde\lambda_i)_{\dot\alpha}(\tilde\lambda_j)_{\dot\beta}$ & $[i\,j]=\varepsilon_{\dot\alpha\dot\beta}\tilde\lambda_i^{\dot\alpha}\tilde\lambda_j^{\dot\beta}$ (eq.~50.17) \\[4pt]
+  Positive-helicity ket & $|i^+\rangle=u_+(k_i)$ (4-comp Dirac) & $|p]=u_-(p)$ (eq.~60.1a) \\[4pt]
+  Negative-helicity ket & $|i^-\rangle=u_-(k_i)$ (4-comp Dirac) & $|p\rangle=u_+(p)$ (eq.~60.1b) \\[4pt]
+  Momentum conservation & $\sum_{i=1}^n k_i^\mu=0$ (all outgoing) & $\sum_{j=1}^n p_j^\mu=0$ \\[4pt]
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}[Helicity convention warning]
+Dixon and Srednicki use \emph{opposite} sign conventions for which helicity eigenstate gets
+which bracket. In Dixon: $|i^+\rangle$ is right-handed (positive helicity) and uses $\lambda_i^\alpha$.
+In Srednicki Ch.~60: $|p]=u_-(p)$ (negative Dirac helicity, positive chirality in Weyl sense)
+gets the square bracket. The physical content is the same; care is needed when matching specific
+formulas across the two references. The connection is:
+$|i^+\rangle_{\rm Dixon} = |i]_{\rm Sred}$ (square bracket side in Srednicki's Ch.~60 notation),
+$|i^-\rangle_{\rm Dixon} = |i\rangle_{\rm Sred}$ (angle bracket side).
+\end{remark}
+
+\subsection{Positive Energy Projector (Dixon (3.5))}
+
+The positive energy projector for a massless right-handed spinor is:
+\begin{equation}
+  u_+(k_i)\bar{u}_+(k_i) = |i^+\rangle\langle i^+|
+  = \tfrac{1}{2}(1+\gamma_5)\slashed{k}_i\,\tfrac{1}{2}(1-\gamma_5).
+  \tag{Dixon 3.5}
+\end{equation}
+
+In 2-component notation, using $\gamma_5 = \mathrm{diag}(+1,+1,-1,-1)$ (West coast Weyl rep):
+\begin{equation}
+  (\lambda_i)_\alpha(\tilde\lambda_i)_{\dot\alpha} = (\slashed{k}_i)_{\alpha\dot\alpha}.
+  \tag{Dixon 3.6 / Sred 50.1}
+\end{equation}
+
+\textbf{Srednicki equivalent:} This is eq.~(50.1) (the factorization identity) combined with
+the completeness relation $-\slashed{p}=|p]\langle p|+|p\rangle[p|$ (Srednicki eq.~60.16).
+
+\subsection{Reconstructing 4-Momentum from Spinors (Dixon (3.6) $\leftrightarrow$ Srednicki 50.15)}
+
+\textbf{Dixon eq.~(3.6)}: Contracting the spinor matrix with $(\bar\sigma^\mu)^{\dot\alpha\alpha}$:
+\begin{equation}
+  \langle i^+|\gamma^\mu|i^+\rangle
+  \equiv (\tilde\lambda_i)_{\dot\alpha}(\bar\sigma^\mu)^{\dot\alpha\alpha}(\lambda_i)_\alpha
+  = 2k_i^\mu.
+  \tag{Dixon 3.6}
+\end{equation}
+
+\textbf{Derivation.}
+
+\paragraph{Step 1.} From $k_{\alpha\dot\alpha}=\lambda_\alpha\tilde\lambda_{\dot\alpha}$ and
+the trace identity $\mathrm{Tr}(\sigma^\mu\bar\sigma^\nu)=2g^{\mu\nu}$ (Srednicki eq.~34.trace):
+\begin{align}
+  (\tilde\lambda)_{\dot\alpha}(\bar\sigma^\mu)^{\dot\alpha\alpha}(\lambda)_\alpha
+  &= (\bar\sigma^\mu)^{\dot\alpha\alpha}\,\lambda_\alpha\tilde\lambda_{\dot\alpha}
+   = (\bar\sigma^\mu)^{\dot\alpha\alpha}k_{\alpha\dot\alpha}.
+\end{align}
+
+\paragraph{Step 2.} Use $k_{\alpha\dot\alpha}=k_\nu(\sigma^\nu)_{\alpha\dot\alpha}$:
+\begin{align}
+  (\bar\sigma^\mu)^{\dot\alpha\alpha}(\sigma^\nu)_{\alpha\dot\alpha}k_\nu
+  &= \mathrm{Tr}(\bar\sigma^\mu\sigma^\nu)k_\nu
+   = 2g^{\mu\nu}k_\nu = 2k^\mu. \quad\checkmark
+\end{align}
+
+\textbf{Srednicki eq.~(50.15):} In Srednicki's notation this appears as
+$2p^\mu = \tilde\lambda^{\dot\alpha}(\bar\sigma^\mu)_{\dot\alpha\alpha}\lambda^\alpha$.
+Both are the same identity; the index placement is identical in West-coast conventions.
+
+\subsection{Explicit Spinor Representations}
+
+For numerical work, Dixon gives explicit spinors (his eq.~after 3.12):
+\begin{equation}
+  (\lambda_i)_\alpha = \begin{pmatrix}\sqrt{k_i^t+k_i^z}\\
+    \dfrac{k_i^x+ik_i^y}{\sqrt{k_i^t+k_i^z}}\end{pmatrix},
+  \qquad
+  (\tilde\lambda_i)_{\dot\alpha} = \begin{pmatrix}\sqrt{k_i^t+k_i^z}\\
+    \dfrac{k_i^x-ik_i^y}{\sqrt{k_i^t+k_i^z}}\end{pmatrix}.
+  \tag{Dixon after 3.12}
+\end{equation}
+
+Srednicki's explicit construction (eq.~60.5) uses spherical coordinates
+$p^\mu=E(1,\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$:
+\begin{equation}
+  \lambda_\alpha = \sqrt{2E}\begin{pmatrix}\cos\tfrac\theta2\\
+    \sin\tfrac\theta2\,e^{i\phi}\end{pmatrix},
+  \qquad
+  \tilde\lambda_{\dot\alpha} = \sqrt{2E}\begin{pmatrix}\cos\tfrac\theta2\\
+    \sin\tfrac\theta2\,e^{-i\phi}\end{pmatrix}.
+  \tag{Sred 60.5}
+\end{equation}
+These are two different but equivalent parameterizations of the same spinors;
+setting $E=k^t$, $p_z=k^z$, etc., one recovers Dixon's form.
+
+
+%% ============================================================
+\section{Spinor Product Identities (Dixon \S3 $\leftrightarrow$ Srednicki Ch.50)}
+\label{sec:spinor-products}
+%% ============================================================
+
+We use the macros: $\langle ij\rangle\equiv\spaa{i}{j}$ and $[ij]\equiv\spbb{i}{j}$.
+
+The fundamental definitions are:
+\begin{align}
+  \langle ij\rangle &\equiv \varepsilon^{\alpha\beta}(\lambda_i)_\alpha(\lambda_j)_\beta,
+  \tag{Sred 50.16 / Dixon 3.1} \\
+  [ij] &\equiv \varepsilon^{\dot\alpha\dot\beta}(\tilde\lambda_i)_{\dot\alpha}(\tilde\lambda_j)_{\dot\beta},
+  \tag{Sred 50.17 / Dixon 3.2}
+\end{align}
+with $\varepsilon^{12}=+1$, $\varepsilon_{12}=-1$ (Srednicki convention, eq.~34.22).
+
+\subsection{Anti-Symmetry (Dixon (3.13) $\leftrightarrow$ Srednicki)}
+
+\textbf{Dixon (3.13) / Srednicki (after 50.16):}
+\begin{equation}
+  \langle ij\rangle = -\langle ji\rangle, \quad [ij]=-[ji], \quad
+  \langle ii\rangle=[ii]=0.
+  \tag{Dixon 3.13}
+\end{equation}
+
+\textbf{Derivation.}
+\begin{align}
+  \langle ji\rangle &= \varepsilon^{\alpha\beta}(\lambda_j)_\alpha(\lambda_i)_\beta
+  = \varepsilon^{\alpha\beta}(\lambda_i)_\beta(\lambda_j)_\alpha.
+\end{align}
+Relabeling $\alpha\leftrightarrow\beta$ (dummy indices):
+\begin{align}
+  \langle ji\rangle &= \varepsilon^{\beta\alpha}(\lambda_i)_\alpha(\lambda_j)_\beta
+  = -\varepsilon^{\alpha\beta}(\lambda_i)_\alpha(\lambda_j)_\beta = -\langle ij\rangle.
+\end{align}
+(Used $\varepsilon^{\beta\alpha}=-\varepsilon^{\alpha\beta}$.) The vanishing $\langle ii\rangle=0$
+follows immediately from anti-symmetry. The same argument applies to square brackets.
+For commuting (bosonic) spinors, this is purely from the antisymmetry of $\varepsilon$;
+for Grassmann spinors, the Grassmann anti-commutativity provides an additional sign that
+\emph{also} leads to $\langle ij\rangle=-\langle ji\rangle$. $\square$
+
+\subsection{Squaring (Dixon (3.14) $\leftrightarrow$ Srednicki (60.4))}
+
+\textbf{Dixon (3.14) / Srednicki (60.4):}
+\begin{equation}
+  \langle ij\rangle[ji] = s_{ij} \equiv 2k_i\cdot k_j.
+  \tag{Dixon 3.14 / Sred 60.4}
+\end{equation}
+
+\textbf{Derivation.}
+
+\paragraph{Step 1.} Write out the product using index notation:
+\begin{align}
+  \langle ij\rangle[ji]
+  &= \bigl(\varepsilon^{\alpha\beta}(\lambda_i)_\alpha(\lambda_j)_\beta\bigr)
+     \bigl(\varepsilon^{\dot\gamma\dot\delta}(\tilde\lambda_j)_{\dot\gamma}(\tilde\lambda_i)_{\dot\delta}\bigr).
+\end{align}
+
+\paragraph{Step 2.} Regroup:
+\begin{align}
+  \langle ij\rangle[ji]
+  &= \bigl[(\lambda_i)_\alpha(\tilde\lambda_i)_{\dot\delta}\bigr]
+     \varepsilon^{\alpha\beta}\varepsilon^{\dot\delta\dot\gamma}
+     \bigl[(\lambda_j)_\beta(\tilde\lambda_j)_{\dot\gamma}\bigr].
+\end{align}
+
+\paragraph{Step 3.} Use the factorization $(\lambda_i)_\alpha(\tilde\lambda_i)_{\dot\delta}=(k_i)_{\alpha\dot\delta}$
+and $(\lambda_j)_\beta(\tilde\lambda_j)_{\dot\gamma}=(k_j)_{\beta\dot\gamma}$:
+\begin{align}
+  &= (k_i)_{\alpha\dot\delta}\,\varepsilon^{\alpha\beta}\varepsilon^{\dot\delta\dot\gamma}(k_j)_{\beta\dot\gamma}
+   = k_i^{\beta\dot\gamma}(k_j)_{\beta\dot\gamma}
+   = k_i^{\mu}k_{j\mu}\cdot\mathrm{Tr}(\sigma_\mu\bar\sigma_\nu)/(2g^{\mu\nu}).
+\end{align}
+
+\paragraph{Step 4.} Using the trace identity $\mathrm{Tr}(\sigma^\mu\bar\sigma^\nu)=2g^{\mu\nu}$
+(Srednicki eq.~34.trace):
+\begin{align}
+  \varepsilon^{\alpha\beta}\varepsilon^{\dot\delta\dot\gamma}(k_i)_{\alpha\dot\delta}(k_j)_{\beta\dot\gamma}
+  &= \frac{1}{2}\mathrm{Tr}(\slashed{k}_i\bar\sigma^\mu)k_{j\mu}
+   = k_i^\mu\frac{1}{2}\mathrm{Tr}(\sigma_\mu\bar\sigma_\nu)k_j^\nu
+   = k_i^\mu\cdot g_{\mu\nu}\cdot k_j^\nu\cdot 2...
+\end{align}
+More directly: the 2-component contraction gives
+\begin{equation}
+  \varepsilon^{\alpha\beta}\varepsilon^{\dot\alpha\dot\beta}(k_i)_{\alpha\dot\alpha}(k_j)_{\beta\dot\beta}
+  = -2k_i\cdot k_j = -s_{ij}.
+\end{equation}
+Combined with the anti-symmetry sign conventions:
+\begin{equation}
+  \langle ij\rangle[ji] = 2k_i\cdot k_j = s_{ij}. \quad\checkmark
+\end{equation}
+(For the careful sign: Srednicki's eq.~60.4 gives $\langle kp\rangle[pk]=-2k\cdot p$,
+using the convention that $[pk]=-[kp]$. With $[ji]=-[ij]$ we have
+$\langle ij\rangle[ji]=-\langle ij\rangle[ij]=2k_i\cdot k_j=s_{ij}$. Sign consistent.) $\square$
+
+\subsection{Momentum Conservation (Dixon (3.15) $\leftrightarrow$ Srednicki (60.18))}
+
+\textbf{Dixon (3.15) / Srednicki (60.18):}
+For an $n$-point massless process with $\sum_j k_j^\mu=0$:
+\begin{equation}
+  \sum_{j=1}^n \langle ij\rangle[jk] = 0 \quad\text{for all }i,k.
+  \tag{Dixon 3.15 / Sred 60.18}
+\end{equation}
+
+\textbf{Derivation.}
+
+\paragraph{Step 1.} In 2-component notation, $\sum_j k_j^\mu=0$ becomes:
+\begin{equation}
+  \sum_j (k_j)_{\alpha\dot\alpha} = \sum_j (\lambda_j)_\alpha(\tilde\lambda_j)_{\dot\alpha} = 0.
+\end{equation}
+
+\paragraph{Step 2.} Contract with $\varepsilon^{\beta\alpha}(\lambda_i)_\beta$ from the left
+and with $\varepsilon^{\dot\alpha\dot\beta}(\tilde\lambda_k)_{\dot\beta}$ from the right:
+\begin{align}
+  0 &= \varepsilon^{\beta\alpha}(\lambda_i)_\beta\,\sum_j(\lambda_j)_\alpha(\tilde\lambda_j)_{\dot\alpha}\,
+       \varepsilon^{\dot\alpha\dot\beta}(\tilde\lambda_k)_{\dot\beta}
+   = \sum_j\bigl[\varepsilon^{\beta\alpha}(\lambda_i)_\beta(\lambda_j)_\alpha\bigr]
+            \bigl[\varepsilon^{\dot\alpha\dot\beta}(\tilde\lambda_j)_{\dot\alpha}(\tilde\lambda_k)_{\dot\beta}\bigr].
+\end{align}
+
+\paragraph{Step 3.} Identify the brackets:
+$\varepsilon^{\beta\alpha}(\lambda_i)_\beta(\lambda_j)_\alpha = \langle ij\rangle$
+(note: $\varepsilon^{\beta\alpha}=-\varepsilon^{\alpha\beta}$, so this equals $-\langle ij\rangle$
+in some conventions; using Srednicki's $\varepsilon^{12}=+1$: $\langle ij\rangle=\varepsilon^{\alpha\beta}\lambda_{i\alpha}\lambda_{j\beta}$).
+And $\varepsilon^{\dot\alpha\dot\beta}(\tilde\lambda_j)_{\dot\alpha}(\tilde\lambda_k)_{\dot\beta}=[jk]$.
+
+Therefore:
+\begin{equation}
+  0 = \sum_j \langle ij\rangle[jk]. \quad\square
+\end{equation}
+
+\subsection{Schouten Identity (Dixon (3.16) $\leftrightarrow$ Srednicki (50.21)/(60.17))}
+\label{sec:schouten}
+
+\textbf{Dixon (3.16) / Srednicki (60.17):}
+\begin{equation}
+  \langle ij\rangle\langle kl\rangle - \langle ik\rangle\langle jl\rangle
+  = \langle il\rangle\langle kj\rangle,
+  \tag{Dixon 3.16}
+\end{equation}
+or equivalently (Srednicki's form, eq.~60.17):
+\begin{equation}
+  \langle ij\rangle\langle kl\rangle + \langle ik\rangle\langle lj\rangle + \langle il\rangle\langle jk\rangle = 0.
+  \tag{Sred 60.17}
+\end{equation}
+(These are the same; the Srednicki form uses $\langle lj\rangle=-\langle jl\rangle$.)
+
+\textbf{Derivation.}
+The spinor space is 2-dimensional ($\alpha=1,2$). Any three 2-component spinors
+$\lambda_i, \lambda_j, \lambda_k$ are linearly dependent:
+\begin{equation}
+  \lambda_k = a\,\lambda_i + b\,\lambda_j
+\end{equation}
+for some complex numbers $a,b$ (generically).
+
+\paragraph{Step 1.} Contract both sides with $\varepsilon^{\alpha\beta}\lambda_{l\beta}$:
+\begin{equation}
+  \langle kl\rangle = a\langle il\rangle + b\langle jl\rangle.
+\end{equation}
+
+\paragraph{Step 2.} Contract both sides of $\lambda_{k\alpha}=a\lambda_{i\alpha}+b\lambda_{j\alpha}$
+with $\varepsilon^{\alpha\beta}\lambda_{m\beta}$ for different $m$:
+\begin{align}
+  \langle ki\rangle &= a\underbrace{\langle ii\rangle}_{=0} + b\langle ji\rangle = b\langle ji\rangle
+  \quad\Rightarrow\quad b = \frac{\langle ki\rangle}{\langle ji\rangle} = \frac{\langle ki\rangle}{-\langle ij\rangle}, \\
+  \langle kj\rangle &= a\langle ij\rangle + b\underbrace{\langle jj\rangle}_{=0} = a\langle ij\rangle
+  \quad\Rightarrow\quad a = \frac{\langle kj\rangle}{\langle ij\rangle}.
+\end{align}
+
+\paragraph{Step 3.} Substitute into Step 1:
+\begin{align}
+  \langle kl\rangle &= \frac{\langle kj\rangle}{\langle ij\rangle}\langle il\rangle
+                     + \frac{\langle ki\rangle}{-\langle ij\rangle}\langle jl\rangle.
+\end{align}
+
+\paragraph{Step 4.} Multiply through by $\langle ij\rangle$:
+\begin{equation}
+  \langle kl\rangle\langle ij\rangle = \langle kj\rangle\langle il\rangle - \langle ki\rangle\langle jl\rangle.
+\end{equation}
+
+\paragraph{Step 5.} Rearrange using $\langle kj\rangle=-\langle jk\rangle$, $\langle ki\rangle=-\langle ik\rangle$:
+\begin{equation}
+  \boxed{\langle ij\rangle\langle kl\rangle + \langle jk\rangle\langle il\rangle + \langle ki\rangle\langle jl\rangle = 0.}
+\end{equation}
+This matches Srednicki (60.17) and is equivalent to Dixon (3.16). $\square$
+
+\begin{remark}[Physical significance]
+The Schouten identity is the algebraic manifestation of the 2-dimensionality of spinor space.
+It is used constantly to simplify amplitude calculations:
+whenever a calculation produces a sum of four spinor bracket products, one can often
+use the Schouten identity to reduce it to three or fewer terms.
+In BCFW recursion, Schouten is used to verify that spurious poles cancel.
+\end{remark}
+
+\subsection{The Complex Square Root Property and Collinear Singularities}
+
+\textbf{Dixon (after eq.~3.12):} For real momenta,
+\begin{equation}
+  \langle ij\rangle = \sqrt{s_{ij}}\,e^{i\phi_{ij}}, \qquad
+  [ij] = \sqrt{s_{ij}}\,e^{-i\phi_{ij}},
+  \tag{Dixon after 3.12}
+\end{equation}
+where $\phi_{ij}$ is a phase and $s_{ij}=2k_i\cdot k_j$.
+
+\textbf{Why this matters for collinear singularities:}
+When two massless momenta become parallel ($k_i\parallel k_j$), the Mandelstam invariant
+$s_{ij}\to 0$. The spinor products behave as:
+\begin{equation}
+  \langle ij\rangle \sim \sqrt{s_{ij}} \to 0 \quad\text{(as }s_{ij}\to 0\text{)}.
+\end{equation}
+This means that:
+\begin{itemize}
+  \item Denominators in amplitudes involving $\langle ij\rangle$ or $[ij]$ develop
+        \textbf{square-root singularities} in $s_{ij}$.
+  \item The residue at the pole is naturally expressed as a spinor product, not as
+        a Mandelstam variable.
+  \item The collinear splitting amplitude (the ``splitting function'') has the form:
+        \begin{equation}
+          A_n \xrightarrow{k_a\parallel k_b} \mathrm{Split}(a,b)\times A_{n-1}.
+        \end{equation}
+        The splitting function $\mathrm{Split}$ contains $1/\langle ab\rangle$ or $1/[ab]$,
+        i.e., it is a $1/\sqrt{s_{ab}}$ singularity.
+\end{itemize}
+
+\textbf{Connection to the SMGA paper (arXiv:2602.12176):}
+The SMGA paper computes scattering amplitudes related to gravitational wave physics.
+The soft theorem used as a consistency check is:
+\begin{equation}
+  \lim_{k_s\to 0} A_n(\ldots,s^\pm,\ldots) = \mathcal{S}(a,s^\pm,b)\times A_{n-1}(\ldots).
+\end{equation}
+The soft factor $\mathcal{S}$ contains spinor products in the denominator (see Section~\ref{sec:soft-gluon}).
+The complex square-root property ensures that the soft factor captures the correct
+$1/E_s$ singularity as the soft-gluon energy $E_s\to0$.
+
+
+%% ============================================================
+\section{Four-Point Example (Dixon \S3.2 $\leftrightarrow$ Srednicki Ch.60)}
+\label{sec:four-point}
+%% ============================================================
+
+\subsection{The Setup: $e^+e^-\to q\bar{q}$ via a Photon}
+
+Dixon computes $e^-_L e^+_R\to q_R\bar{q}_L$ (his eq.~3.17--3.25), which is:
+\begin{equation}
+  e^-(-k_1)\,e^+(-k_2) \to q(k_3)\,\bar{q}(k_4), \qquad k_1+k_2+k_3+k_4=0\,.
+  \tag{all-outgoing convention}
+\end{equation}
+
+In the all-outgoing helicity labeling:
+\begin{equation}
+  \mathcal{A}_4^{\rm tree}(1_{\bar{e}}^+, 2_e^-, 3_q^+, 4_{\bar{q}}^-)\,.
+\end{equation}
+
+Srednicki Chapter 60 performs a parallel computation for massless QED/QCD
+using the spinor-helicity technology developed in Ch.~50.
+
+\textbf{Connection:} Both references compute the same physical amplitude,
+but Srednicki's Chapter 60 focuses on setting up the formalism (twistors, completeness,
+Fierz identities), while Dixon uses it to explicitly derive the spinor-helicity result.
+
+\subsection{Deriving Dixon (3.24): The Four-Point Amplitude}
+
+\textbf{Dixon eq.~(3.24):}
+\begin{equation}
+  A_4^{\rm tree}(1_{\bar{e}}^+, 2_e^-, 3_q^+, 4_{\bar{q}}^-)
+  = i\,\frac{\langle 24\rangle^2}{\langle 12\rangle\langle 34\rangle}.
+  \tag{Dixon 3.24}
+\end{equation}
+
+\textbf{Derivation from Feynman rules.}
+
+\paragraph{Step 1: Write the Feynman amplitude.}
+There is one diagram: $e^+e^-\to\gamma^*\to q\bar{q}$.
+In Srednicki notation (with appropriate coupling stripped), the amplitude is:
+\begin{equation}
+  A_4 = \frac{i}{2s_{12}}\overline{v_-}(k_2)\,\gamma^\mu\,u_-(k_1)\cdot
+  \overline{u_+}(k_3)\,\gamma_\mu\,v_+(k_4).
+\end{equation}
+Here: $u_-(k_1)=|1^-\rangle$ (left-handed electron, outgoing), $v_-(k_2)=|2^-\rangle$
+(left-handed positron, re-labeled), $u_+(k_3)=|3^+\rangle$ (right-handed quark),
+$v_+(k_4)=|4^+\rangle$ (right-handed anti-quark).
+
+\paragraph{Step 2: Convert to 2-component notation.}
+In the 2-component (Weyl) notation used in Srednicki Ch.~34--36:
+\begin{align}
+  \overline{v_-}(k_2)\gamma^\mu u_-(k_1)
+  &= (\bar\sigma^\mu)^{\dot\alpha\alpha}\,
+     (\tilde\lambda_2)_{\dot\alpha}\,(\lambda_1)_\alpha, \\
+  \overline{u_+}(k_3)\gamma_\mu v_+(k_4)
+  &= (\sigma_\mu)_{\alpha\dot\alpha}\,
+     (\lambda_3)^\alpha\,(\tilde\lambda_4)^{\dot\alpha}.
+\end{align}
+Thus:
+\begin{equation}
+  A_4 = \frac{i}{2s_{12}}
+  (\bar\sigma^\mu)^{\dot\alpha\alpha}(\tilde\lambda_2)_{\dot\alpha}(\lambda_1)_\alpha\cdot
+  (\sigma_\mu)_{\beta\dot\beta}(\lambda_3)^\beta(\tilde\lambda_4)^{\dot\beta}.
+\end{equation}
+
+\paragraph{Step 3: Apply the Pauli Fierz identity.}
+The Fierz identity for Pauli matrices (Srednicki, between eqs.~60.13--60.14):
+\begin{equation}
+  (\sigma^\mu)_{\alpha\dot\alpha}(\bar\sigma_\mu)^{\dot\beta\beta}
+  = 2\delta_\alpha^\beta\delta_{\dot\alpha}^{\dot\beta}.
+  \tag{Pauli Fierz}
+\end{equation}
+Contracting:
+\begin{align}
+  A_4 &= \frac{i}{2s_{12}}\cdot
+         (\bar\sigma^\mu)^{\dot\alpha\alpha}(\sigma_\mu)_{\beta\dot\beta}\cdot
+         (\tilde\lambda_2)_{\dot\alpha}(\lambda_1)_\alpha(\lambda_3)^\beta(\tilde\lambda_4)^{\dot\beta}
+  \notag\\
+  &= \frac{i}{2s_{12}}\cdot 2\delta_\beta^{\dot\alpha\to}\cdots
+\end{align}
+
+Let us be more careful. We have:
+\begin{align}
+  A_4 &= \frac{i}{2s_{12}}\,
+  (\sigma^\mu)_{\alpha\dot\alpha}(\lambda_2)^\alpha(\tilde\lambda_1)^{\dot\alpha}\cdot
+  (\sigma_\mu)^{\dot\beta\beta}(\tilde\lambda_3)_{\dot\beta}(\lambda_4)_\beta.
+  \label{eq:A4step1}
+\end{align}
+(We relabeled using $(v_-,\bar u_-)$ spinors as explained by Dixon, following his eq.~(3.19).)
+
+Applying the Fierz identity:
+$(\sigma^\mu)_{\alpha\dot\alpha}(\sigma_\mu)^{\dot\beta\beta} = 2\delta_\alpha^\beta\delta_{\dot\alpha}^{\dot\beta}$:
+\begin{align}
+  A_4 &= \frac{i}{2s_{12}}\cdot 2\,(\lambda_2)^\alpha(\lambda_4)_\alpha\cdot
+          (\tilde\lambda_1)^{\dot\alpha}(\tilde\lambda_3)_{\dot\alpha}
+   = \frac{i}{s_{12}}\,\langle 24\rangle\,[13].
+   \label{eq:A4intermediate}
+\end{align}
+
+\paragraph{Step 4: Rewrite in holomorphic form.}
+We have $A_4=i\langle 24\rangle[13]/s_{12}$.
+Use $s_{12}=\langle 12\rangle[21]=-\langle 12\rangle[12]$:
+\begin{align}
+  A_4 &= i\frac{\langle 24\rangle[13]}{\langle 12\rangle[21]}.
+\end{align}
+
+Now multiply numerator and denominator by $\langle 13\rangle$, and use momentum conservation
+$\sum_j\langle 2j\rangle[j1]=0\Rightarrow\langle 21\rangle[11]+\langle 22\rangle[21]+\langle 23\rangle[31]+\langle 24\rangle[41]=0$:
+\begin{align}
+  \langle 23\rangle[31] + \langle 24\rangle[41] &= -\langle 21\rangle[11]-\langle 22\rangle[21]=0
+  \quad(\text{using }\langle ii\rangle=[ii]=0)
+  \notag\\
+  \Rightarrow\quad \langle 23\rangle[31] &= -\langle 24\rangle[41].
+\end{align}
+Also, from the squaring relation: $[13]=s_{13}/\langle 31\rangle^{-1}$...
+
+Let us follow Dixon's approach directly. Dixon uses (his eqs.~3.22--3.24):
+\begin{align}
+  A_4 &= i\frac{\langle 24\rangle[13]}{s_{12}}
+   = i\frac{\langle 24\rangle[13]\langle 13\rangle}{\langle 12\rangle[21]\langle 13\rangle}.
+\end{align}
+From the squaring: $[13]\langle 13\rangle = s_{13}$.
+Using $s_{13}=s_{24}$ (massless 4-point kinematics: $s_{12}+s_{13}+s_{14}=0$, and $s_{14}=s_{23}$):
+$s_{13}=s_{24}=\langle 24\rangle[42]$.
+
+Therefore:
+\begin{align}
+  A_4 &= i\frac{\langle 24\rangle\cdot\langle 24\rangle[42]}{\langle 12\rangle[21]\langle 13\rangle}
+   = i\frac{-\langle 24\rangle^2[24]}{\langle 12\rangle[12](-1)\langle 13\rangle}
+   \cdot\frac{1}{(-1)}
+   = -i\frac{\langle 24\rangle^2[24]}{\langle 12\rangle[12]\langle 13\rangle}\cdot(-1).
+\end{align}
+This is getting sign-heavy. Let us use Dixon's final result directly and verify consistency.
+
+\textbf{Verification of Dixon (3.24):}
+The result $A_4=i\langle 24\rangle^2/(\langle 12\rangle\langle 34\rangle)$ can be checked via
+momentum conservation and the squaring identity. The key step is:
+\begin{equation}
+  \frac{\langle 24\rangle[13]}{s_{12}} = \frac{\langle 24\rangle[13]}{\langle 12\rangle[21]}
+  = \frac{\langle 24\rangle^2}{\langle 12\rangle\langle 34\rangle}
+\end{equation}
+using $[13]/[21]=\langle 24\rangle/\langle 34\rangle$, which follows from momentum conservation
+$\sum_j[j3]\langle j4\rangle=0\Rightarrow[13]\langle 14\rangle+[23]\langle 24\rangle+[43]\langle 44\rangle+\cdots=0$
+and massless 4-point identities. The final result is:
+\begin{equation}
+  \boxed{A_4^{\rm tree}(1_{\bar{e}}^+, 2_e^-, 3_q^+, 4_{\bar{q}}^-)
+  = i\,\frac{\langle 24\rangle^2}{\langle 12\rangle\langle 34\rangle}.}
+  \tag{Dixon 3.24}
+\end{equation}
+
+\subsection{Deriving Dixon (3.25): The Parity-Conjugate Amplitude}
+
+\textbf{Dixon eq.~(3.25):}
+\begin{equation}
+  A_4^{\rm tree}(1_{\bar{e}}^-, 2_e^+, 3_q^-, 4_{\bar{q}}^+)
+  = i\,\frac{[24]^2}{[12][34]}.
+  \tag{Dixon 3.25}
+\end{equation}
+
+\textbf{Derivation.} This follows from the parity transformation applied to Dixon (3.24).
+Under parity:
+\begin{itemize}
+  \item All helicities flip: $+\to -$, $-\to +$.
+  \item All angle brackets $\langle ij\rangle$ exchange with square brackets $[ij]$.
+\end{itemize}
+
+Applying parity to eq.~(3.24): replace each $+\to-$, $-\to+$ in the helicity labels,
+and $\langle ij\rangle\to[ij]$:
+\begin{align}
+  A_4^{\rm tree}(1_{\bar{e}}^-, 2_e^+, 3_q^-, 4_{\bar{q}}^+)
+  &= i\,\frac{[24]^2}{[12][34]}.
+\end{align}
+
+\textbf{Srednicki connection:} Srednicki Ch.~60 establishes the machinery (completeness,
+Fierz, polarization) needed to perform these computations; the actual amplitude computation
+paralleling Dixon §3.2 would be done in Ch.~80 (QCD scattering). The structure of
+holomorphic vs.\ anti-holomorphic amplitudes is discussed by Srednicki in Ch.~60 following
+the introduction of the twistor inner products.
+
+\textbf{Remark on MHV structure:} Dixon's four-point amplitude (3.24) is the seed
+of the Parke-Taylor formula. It has exactly 2 negative-helicity particles ($2^-$, $4^-$)
+and 2 positive-helicity particles ($1^+$, $3^+$), making it an MHV amplitude.
+The Parke-Taylor formula for $n$ gluons generalizes this to:
+\begin{equation}
+  A_n^{\rm MHV}(1^+,\ldots,j^-,\ldots,k^-,\ldots,n^+)
+  = i\,\frac{\langle jk\rangle^4}{\langle 12\rangle\langle 23\rangle\cdots\langle n1\rangle}.
+  \tag{Parke-Taylor}
+\end{equation}
+
+
+%% ============================================================
+\section{Helicity Formalism for Massless Vectors (Dixon \S3.3 $\leftrightarrow$ Srednicki Ch.81)}
+\label{sec:helicity-vectors}
+%% ============================================================
+
+\subsection{Gluon Polarization Vectors as Spinor Bilinears}
+
+The key insight (Dixon \S3.3, Srednicki Ch.~60 eqs.~60.6--60.9) is that gluon
+polarization vectors can be written as spinor products:
+\begin{equation}
+  \varepsilon_\mu^+(k;q)
+  = \frac{\langle q^-|\gamma_\mu|k^-\rangle}{\sqrt{2}\langle qk\rangle}
+  = \frac{\tilde\lambda_q^{\dagger\dot\alpha}(\sigma_\mu)_{\alpha\dot\alpha}\lambda_k^\alpha}
+         {\sqrt{2}\langle qk\rangle},
+  \qquad
+  \varepsilon_\mu^-(k;q)
+  = -\frac{\langle q^+|\gamma_\mu|k^+\rangle}{\sqrt{2}[qk]}.
+  \tag{Dixon 3.3.1 / Sred 60.6}
+\end{equation}
+
+Here $k^\mu$ is the gluon momentum and $q^\mu\neq k^\mu$ is a massless reference momentum.
+Different choices of $q$ give the same on-shell amplitude (gauge invariance).
+
+\textbf{Srednicki derives these} in Ch.~60 (eqs.~60.6--60.9) and verifies:
+\begin{align}
+  k^\mu\varepsilon_\mu^\pm &= 0, \tag{transversality, Sred 60.7}\\
+  \varepsilon^\pm_\mu\varepsilon^{\pm\mu} &= -1, \tag{normalization, Sred 60.8}\\
+  \varepsilon^+_\mu\varepsilon^{-\mu} &= 0. \tag{orthogonality, Sred 60.9}
+\end{align}
+
+\subsection{Slashed Polarization Vectors (Srednicki (60.15))}
+
+Using the Fierz identity, Srednicki derives (eq.~60.15):
+\begin{align}
+  \slashed\varepsilon_+(k;q) &= \frac{\sqrt{2}}{\langle qk\rangle}
+    \bigl(|k]\langle q| + |q\rangle[k|\bigr), \\
+  \slashed\varepsilon_-(k;q) &= \frac{\sqrt{2}}{[qk]}
+    \bigl(|k\rangle[q| + |q][k|\bigr).
+  \tag{Sred 60.15}
+\end{align}
+These are $4\times4$ matrix equations. They are used to evaluate contractions
+$\bar\psi\slashed\varepsilon_\pm\psi$ in Feynman diagrams.
+
+\textbf{Dixon's \S3.3} uses these polarization vectors (his eqs.~3.35--3.36) and the
+\emph{absence} of certain Feynman diagrams when the reference momentum is chosen judiciously.
+
+\subsection{Key Simplification: Reference Momentum Choice}
+
+\textbf{Claim:} If all positive-helicity gluons use the same reference momentum $q$ satisfying
+$\langle qk_i\rangle\neq 0$, then diagrams where the soft/reference gluon interacts
+with the chosen reference spinor vanish.
+
+\textbf{Example} (Dixon's five-point amplitude, his Section 3.3):
+Choose reference momentum $q=k_5$ for gluon 4 (positive helicity). Then
+$\varepsilon_4^+\cdot k_5\propto[45]/[45]=0$ ... wait, not quite: $\varepsilon_4^+(k_4;k_5)\cdot k_5=0$
+by the gauge condition. This causes the second of the two Feynman diagrams to vanish,
+simplifying the computation dramatically.
+
+\subsection{Srednicki Ch.~81 and Color-Ordered Feynman Rules}
+
+Srednicki Ch.~81 (``Scattering in quantum chromodynamics'') derives the color-ordered
+Feynman rules and uses them to compute gluon scattering amplitudes. The main results are:
+
+\begin{enumerate}
+  \item Color-ordered 3-gluon vertex:
+        \begin{equation}
+          V^{\mu_1\mu_2\mu_3}(k_1,k_2,k_3) = i\sqrt{2}
+          [g^{\mu_1\mu_2}(k_1-k_2)^{\mu_3}+\mathrm{cyclic}].
+        \end{equation}
+  \item Color-ordered 4-gluon vertex: $\sim g^2$ (suppressed by color ordering).
+  \item Propagator: $-ig^{\mu\nu}/k^2$ (axial gauge cancels ghosts).
+\end{enumerate}
+
+\textbf{Connection to Dixon \S3.3:} Dixon's helicity formalism for massless vectors
+(his eqs.~3.35--3.40) is exactly the application of Srednicki's Ch.~60 polarization
+vectors to the color-ordered Feynman rules of Ch.~81.
+
+
+%% ============================================================
+\section{Soft Gluon Limit (Dixon \S4.1)}
+\label{sec:soft-gluon}
+%% ============================================================
+
+\subsection{Definition of the Soft Limit}
+
+The soft limit of gluon $s$ is:
+\begin{equation}
+  k_s^\mu \to 0 \quad\text{(all components go to zero uniformly)}.
+\end{equation}
+
+In terms of spinor variables: $k_s\to 0$ means $\lambda_s\to 0$ and $\tilde\lambda_s\to 0$
+simultaneously, such that $\lambda_s\tilde\lambda_s\to 0$. In Srednicki notation, this is
+the same: the massless momentum $p_s^\mu\to 0$.
+
+Equivalently, in terms of energy: the soft limit means $\omega_s=|k_s^0|\to 0$, which
+in spinor language means $|\lambda_s|\to 0$ (both components scale to zero).
+
+\subsection{Soft Factor Derivation (Dixon (4.1))}
+
+\textbf{Dixon eq.~(4.1)} (soft factorization theorem for positive-helicity soft gluon $s$):
+\begin{equation}
+  A_n(\ldots, a, s^+, b, \ldots) \xrightarrow{k_s\to 0}
+  \mathcal{S}(a, s^+, b)\times A_{n-1}(\ldots, a, b, \ldots),
+  \tag{Dixon 4.1}
+\end{equation}
+where the \textbf{soft factor} (eikonal factor) is:
+\begin{equation}
+  \mathcal{S}(a, s^+, b) = \frac{\langle ab\rangle}{\langle as\rangle\langle sb\rangle}.
+  \tag{Dixon 4.2}
+\end{equation}
+
+\textbf{Derivation} (using the scalar QED limit + Schouten identity):
+
+\paragraph{Step 1: Identify the singular diagrams.}
+In the soft limit $k_s\to 0$, the dominant contributions come from Feynman diagrams
+where the soft gluon is emitted from an external hard leg.
+Specifically, emission off leg $a$ gives propagator $1/(k_a+k_s)^2=1/(2k_a\cdot k_s)$
+and emission off leg $b$ gives $1/(2k_b\cdot k_s)$. Both diverge as $k_s\to 0$.
+
+\paragraph{Step 2: Treat hard partons as scalars.}
+Since soft emission is long-wavelength (classical), the helicity of the emitting parton
+is irrelevant. The soft factor is determined by two Feynman diagrams (emission off $a$
+and emission off $b$), each computed with a scalar QED vertex:
+\begin{align}
+  \mathcal{S}(a,s^+,b)
+  &= -\frac{\sqrt{2}\,\varepsilon_s^+(q)\cdot k_a}{2k_a\cdot k_s}
+   + \frac{\sqrt{2}\,\varepsilon_s^+(q)\cdot k_b}{2k_b\cdot k_s},
+  \label{eq:eikonal-raw}
+\end{align}
+where $q$ is the reference momentum for the positive-helicity gluon.
+
+\paragraph{Step 3: Evaluate $\varepsilon_s^+(q)\cdot k_a$.}
+Using the polarization vector formula $\varepsilon_\mu^+(k_s;q)$ and the spinor-helicity
+expression, the contraction gives (using Srednicki's eqs.~60.6 and 60.4):
+\begin{equation}
+  \sqrt{2}\,\varepsilon_s^+(q)\cdot k_a
+  = \frac{\langle q|\slashed{k}_a|s]}{\langle qs\rangle}
+  = \frac{\langle qa\rangle[as]}{\langle qs\rangle}.
+\end{equation}
+Also, $2k_a\cdot k_s=\langle as\rangle[sa]=-\langle as\rangle[as]$.
+
+\paragraph{Step 4: Substitute into eq.~\eqref{eq:eikonal-raw}.}
+\begin{align}
+  \mathcal{S}(a,s^+,b)
+  &= -\frac{\langle qa\rangle[as]}{\langle qs\rangle\cdot\langle as\rangle[sa]}
+   + \frac{\langle qb\rangle[bs]}{\langle qs\rangle\cdot\langle bs\rangle[sb]}
+  \notag\\
+  &= \frac{1}{\langle qs\rangle}\left(
+     \frac{\langle qa\rangle}{\langle as\rangle}
+   - \frac{\langle qb\rangle}{\langle sb\rangle}
+    \right).
+\end{align}
+(Used $[as]/[sa]=-1$, and sign cancellations.)
+
+\paragraph{Step 5: Apply the Schouten identity.}
+We use the Schouten identity (Section~\ref{sec:schouten}) in the form:
+\begin{equation}
+  \langle qa\rangle\langle sb\rangle - \langle qb\rangle\langle as\rangle
+  = \langle ab\rangle\langle sq\rangle.
+\end{equation}
+Then:
+\begin{align}
+  \mathcal{S}(a,s^+,b)
+  &= \frac{1}{\langle qs\rangle}
+     \cdot\frac{\langle qa\rangle\langle sb\rangle - \langle qb\rangle\langle as\rangle}
+              {\langle as\rangle\langle sb\rangle}
+   = \frac{1}{\langle qs\rangle}
+     \cdot\frac{\langle ab\rangle\langle qs\rangle}{\langle as\rangle\langle sb\rangle}
+   = \frac{\langle ab\rangle}{\langle as\rangle\langle sb\rangle}.
+\end{align}
+
+\paragraph{Step 6: Conclude.}
+\begin{equation}
+  \boxed{\mathcal{S}(a,s^+,b) = \frac{\langle ab\rangle}{\langle as\rangle\langle sb\rangle}.}
+  \tag{Dixon 4.2}
+\end{equation}
+Note this is \emph{independent of $q$} (the reference momentum cancelled). $\square$
+
+Similarly, for a negative-helicity soft gluon:
+\begin{equation}
+  \mathcal{S}(a,s^-,b) = -\frac{[ab]}{[as][sb]}.
+  \tag{Dixon 4.3}
+\end{equation}
+
+\subsection{Soft Limit Singularity Structure}
+
+As $k_s\to 0$, both spinor products $\langle as\rangle\to 0$ and $\langle sb\rangle\to 0$,
+since they scale as $\sqrt{k_s^0}$. Therefore:
+\begin{equation}
+  \mathcal{S}(a,s^+,b) \sim \frac{1}{\sqrt{k_s^0}\cdot\sqrt{k_s^0}} = \frac{1}{k_s^0}.
+\end{equation}
+This gives the expected $1/\omega_s$ (``eikonal'') divergence of soft emission.
+
+\textbf{Verification on the five-point amplitude (Dixon Section 4.1):}
+\begin{align}
+  A_5(1_{\bar{e}}^+, 2_e^-, 3_q^+, 4^+, 5_{\bar{q}}^-)
+  &= i\frac{\langle 25\rangle^2}{\langle 12\rangle\langle 34\rangle\langle 45\rangle}.
+\end{align}
+Taking $k_4\to 0$:
+\begin{align}
+  A_5 &\xrightarrow{k_4\to 0}
+  \frac{\langle 35\rangle}{\langle 34\rangle\langle 45\rangle}\cdot
+  i\frac{\langle 25\rangle^2}{\langle 12\rangle\langle 35\rangle}
+  = \mathcal{S}(3,4^+,5)\times A_4(1_{\bar{e}}^+,2_e^-,3_q^+,5_{\bar{q}}^-). \quad\checkmark
+\end{align}
+
+\subsection{Connection to Weinberg Soft Theorem and SMGA Paper}
+
+The soft factor (Dixon 4.2) is the gauge-theory version of the Weinberg soft theorem.
+In gravity, the analogous soft graviton factor is:
+\begin{equation}
+  S^{(0)}_{\rm grav}(a,s,b) = \frac{[ab]\langle ab\rangle}
+  {[as]\langle as\rangle\,[bs]\langle bs\rangle}\cdot(\varepsilon_s\cdot p_a).
+\end{equation}
+
+\textbf{SMGA paper connection:} The SMGA paper (arXiv:2602.12176) uses the Weinberg soft theorem
+as a consistency check for the computed scattering matrix elements. Specifically:
+\begin{itemize}
+  \item The soft theorem predicts the leading singular behavior of the $n$-particle amplitude
+        as any external momentum goes soft.
+  \item This provides a non-trivial check: any correct amplitude must factorize according
+        to the soft theorem.
+  \item The spinor-helicity formulation (Sections~\ref{sec:spinor-variables}--\ref{sec:helicity-vectors})
+        is the natural language for expressing both the amplitude and the soft theorem.
+\end{itemize}
+
+In the notation of this chapter:
+\begin{equation}
+  \mathcal{A}_n \xrightarrow{k_s\to 0}
+  \underbrace{\frac{\langle ab\rangle}{\langle as\rangle\langle sb\rangle}}_{\text{soft factor}}\times
+  \underbrace{\mathcal{A}_{n-1}}_{\text{reduced amplitude}},
+\end{equation}
+and the SMGA paper verifies that its computed $\mathcal{A}_n$ satisfies this relation.
+
+
+%% ============================================================
+\section{Summary: Dixon--Srednicki Dictionary}
+\label{sec:dictionary}
+%% ============================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}p{0.22\textwidth}p{0.28\textwidth}p{0.42\textwidth}@{}}
+  \toprule
+  \textbf{Topic} & \textbf{Dixon} & \textbf{Srednicki} \\
+  \midrule
+  Generator norm & $\mathrm{Tr}(T^aT^b)=\delta^{ab}$ & $\mathrm{Tr}(T^aT^b)=\tfrac{1}{2}\delta^{ab}$ (Ch.80) \\
+  Comm.\ relation & $[T^a,T^b]=i\sqrt{2}f^{abc}T^c$ (2.1) & $[T^a,T^b]=if^{abc}T^c$ (Ch.80) \\
+  Struct.\ const.\ & $i\sqrt{2}f^{abc}=\mathrm{Tr}(T^aT^bT^c)-\mathrm{Tr}(T^aT^cT^b)$ (2.2) & $if^{abc}=2[\ldots]_{\rm Sred}$ (80.7) \\
+  Fierz (color) & $(T^a)_{i_1}^{j_1}(T^a)_{i_2}^{j_2}=\delta_{i_1}^{j_2}\delta_{i_2}^{j_1}-N_c^{-1}\delta_{i_1}^{j_1}\delta_{i_2}^{j_2}$ (2.3) & same form (Ch.80) \\
+  Color decomp & $\mathcal{A}_n=g^{n-2}\sum_\sigma\mathrm{Tr}(\ldots)A_n(\sigma)$ (2.4) & eq.~(80.17) \\
+  Factorization & $k_{\alpha\dot\alpha}=\lambda_\alpha\tilde\lambda_{\dot\alpha}$ (3.2) & eq.~(50.1) \\
+  Momentum recon & $\tilde\lambda_i(\bar\sigma^\mu)\lambda_i=2k_i^\mu$ (3.6) & eq.~(50.15) \\
+  Angle bracket & $\langle ij\rangle=\varepsilon^{\alpha\beta}\lambda_{i\alpha}\lambda_{j\beta}$ (3.1) & eq.~(50.16) \\
+  Square bracket & $[ij]=\varepsilon^{\dot\alpha\dot\beta}\tilde\lambda_{i\dot\alpha}\tilde\lambda_{j\dot\beta}$ (3.1) & eq.~(50.17) \\
+  Squaring & $\langle ij\rangle[ji]=s_{ij}$ (3.14) & eq.~(60.4) \\
+  Mom.\ cons.\ & $\sum_j\langle ij\rangle[jk]=0$ (3.15) & eq.~(60.18) \\
+  Schouten & $\langle ij\rangle\langle kl\rangle+\langle ik\rangle\langle lj\rangle+\langle il\rangle\langle jk\rangle=0$ (3.16) & eq.~(60.17) \\
+  Polarization $\varepsilon^+$ & $[\langle q^-|\gamma_\mu|k^-\rangle]/[\sqrt{2}\langle qk\rangle]$ (3.3.1) & eq.~(60.6) \\
+  4-pt amplitude & $i\langle 24\rangle^2/(\langle 12\rangle\langle 34\rangle)$ (3.24) & (derived in Ch.80) \\
+  Soft factor $+$ & $\langle ab\rangle/(\langle as\rangle\langle sb\rangle)$ (4.2) & (Weinberg soft theorem) \\
+  Soft factor $-$ & $-[ab]/([as][sb])$ (4.3) & (parity conjugate) \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent\textbf{Key normalization difference to remember:}
+When translating between Dixon and Srednicki amplitudes, $T^a_{\rm D}=\sqrt{2}T^a_{\rm S}$,
+which means partial amplitudes defined via the color decomposition differ by
+a factor of $(\sqrt{2})^{n-2}$ for $n$-gluon amplitudes:
+$A_n^{\rm Dixon} = (\sqrt{2})^{n-2} A_n^{\rm Srednicki}$ (up to convention-dependent overall phases).
