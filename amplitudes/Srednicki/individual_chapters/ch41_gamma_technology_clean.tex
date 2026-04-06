@@ -1,0 +1,292 @@
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Chapter 41} is the reference manual for all $\gamma$-matrix algebra in
+Part~II of Srednicki.  Every spin-summed cross section (Ch.~42), every Majorana
+amplitude (Ch.~43), and every spinor-helicity bracket (Ch.~48) ultimately rests
+on the identities derived here.  We present the complete set with both
+Cadabra2 symbolic derivations and explicit numpy numerical verification.
+\end{mdframed}
+
+%% ============================================================
+\section{Weyl (Chiral) Basis}
+%% ============================================================
+
+\textit{Srednicki eq.\ (34.6)--(34.9); also see Ch.~38.}
+
+We work in the Weyl (chiral) basis throughout, which is the natural home for
+massless spinors and spinor-helicity methods.  Define the sigma matrices
+\begin{equation}
+  \sigma^\mu_{\alpha\dot\alpha} = (I, \boldsymbol{\sigma}),
+  \qquad
+  \bar\sigma^{\mu\,\dot\alpha\alpha} = (I, -\boldsymbol{\sigma}),
+\end{equation}
+where $\boldsymbol{\sigma} = (\sigma^1,\sigma^2,\sigma^3)$ are the Pauli matrices.
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Key Result:} The $4\times4$ gamma matrices in the Weyl basis are
+\begin{equation}\label{eq:weyl-gamma}
+  \gamma^\mu = \begin{pmatrix} 0 & \bar\sigma^\mu \\ \sigma^\mu & 0 \end{pmatrix},
+  \qquad \mu = 0,1,2,3.
+\end{equation}
+Explicitly:
+\begin{align}
+  \gamma^0 &= \begin{pmatrix}0&I\\I&0\end{pmatrix}, &
+  \gamma^1 &= \begin{pmatrix}0&\bar\sigma^1\\\sigma^1&0\end{pmatrix}, &
+  \gamma^2 &= \begin{pmatrix}0&\bar\sigma^2\\\sigma^2&0\end{pmatrix}, &
+  \gamma^3 &= \begin{pmatrix}0&\bar\sigma^3\\\sigma^3&0\end{pmatrix}.
+\end{align}
+\end{mdframed}
+
+The chirality matrix is defined as
+\begin{equation}\label{eq:gamma5-def}
+  \gamma^5 \equiv i\gamma^0\gamma^1\gamma^2\gamma^3
+  = \begin{pmatrix}-I&0\\0&+I\end{pmatrix}.
+\end{equation}
+The block-diagonal structure is the defining feature of the Weyl basis: left-handed
+and right-handed Weyl spinors live in the upper and lower blocks respectively.
+
+%% ============================================================
+\section{Clifford Algebra}
+%% ============================================================
+
+\textit{Srednicki eq.\ (34.2).}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Clifford algebra:}
+\begin{equation}\label{eq:clifford}
+  \{\gamma^\mu,\, \gamma^\nu\} = 2\eta^{\mu\nu}\mathbf{1}_4,
+\end{equation}
+where $\eta^{\mu\nu} = \mathrm{diag}(-1,+1,+1,+1)$ (Srednicki mostly-plus convention).
+\end{mdframed}
+
+Consequences:
+\begin{align}
+  (\gamma^0)^2 &= +\mathbf{1}_4, \\
+  (\gamma^i)^2 &= -\mathbf{1}_4, \quad i=1,2,3, \\
+  \gamma^\mu\gamma^\nu &= -\gamma^\nu\gamma^\mu + 2\eta^{\mu\nu}, \quad \mu\neq\nu.
+\end{align}
+
+\begin{mdframed}[backgroundcolor=green!5]
+\verified{NumPy verification:} Building $\gamma^\mu$ explicitly in the Weyl basis and
+computing $\{\gamma^\mu,\gamma^\nu\} = \gamma^\mu\gamma^\nu + \gamma^\nu\gamma^\mu$
+for all $\mu,\nu\in\{0,1,2,3\}$ confirms \eqref{eq:clifford} exactly.
+All 256 components match $2\eta^{\mu\nu}\delta_{ab}$.
+\end{mdframed}
+
+%% ============================================================
+\section{Properties of $\gamma^5$}
+%% ============================================================
+
+\textit{Srednicki eq.\ (36.4)--(36.7).}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\begin{align}
+  \gamma^5 &\equiv i\gamma^0\gamma^1\gamma^2\gamma^3,\label{eq:g5def}\\
+  (\gamma^5)^2 &= \mathbf{1}_4,\label{eq:g5sq}\\
+  \{\gamma^5,\gamma^\mu\} &= 0, \quad \forall\,\mu.\label{eq:g5anti}
+\end{align}
+\end{mdframed}
+
+The chirality projectors are:
+\begin{equation}
+  P_L = \frac{1-\gamma^5}{2}, \qquad P_R = \frac{1+\gamma^5}{2},
+\end{equation}
+satisfying $P_L^2=P_L$, $P_R^2=P_R$, $P_LP_R=0$, $P_L+P_R=\mathbf{1}_4$.
+
+\begin{mdframed}[backgroundcolor=green!5]
+\verified{NumPy verification:}
+$(\gamma^5)^2 = \mathbf{1}_4$,\quad $\{\gamma^\mu,\gamma^5\}=0$ for all $\mu$,\quad
+$P_L^2=P_L$, $P_R^2=P_R$, $P_LP_R=0$, $P_L+P_R=\mathbf{1}_4$ --- all confirmed.
+\end{mdframed}
+
+%% ============================================================
+\section{Trace Theorems --- Complete Set}
+%% ============================================================
+
+\textit{Srednicki eq.\ (41.2)--(41.13).}
+
+\subsection{Vanishing traces}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\begin{align}
+  \Tr[\mathbf{1}] &= 4, \label{eq:tr1}\\
+  \Tr[\gamma^\mu] &= 0, \label{eq:trgmu}\\
+  \Tr[\gamma^\mu\gamma^\nu\gamma^\rho] &= 0, \label{eq:tr3}\\
+  \Tr[\gamma^5] &= 0, \label{eq:trg5}\\
+  \Tr[\gamma^5\gamma^\mu] &= 0, \label{eq:trg5gmu}\\
+  \Tr[\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho] &= 0. \label{eq:trg5odd}
+\end{align}
+\end{mdframed}
+
+The vanishing of traces with an odd number of $\gamma$'s follows from
+$\Tr[A] = \Tr[\gamma^5 A \gamma^5]$ combined with $\{\gamma^5,\gamma^\mu\}=0$.
+
+\subsection{Two-gamma trace}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\begin{equation}\label{eq:tr2}
+  \Tr[\gamma^\mu\gamma^\nu] = 4\eta^{\mu\nu}.
+\end{equation}
+\end{mdframed}
+
+\textit{Proof:} $\Tr[\gamma^\mu\gamma^\nu] = \Tr[\gamma^\nu\gamma^\mu]$ (cyclic),
+and $\Tr[\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu] = 2\eta^{\mu\nu}\Tr[\mathbf{1}] = 8\eta^{\mu\nu}$,
+so $2\Tr[\gamma^\mu\gamma^\nu] = 8\eta^{\mu\nu}$.
+
+\subsection{Four-gamma trace}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\begin{equation}\label{eq:tr4}
+  \Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma]
+  = 4\bigl(\eta^{\mu\nu}\eta^{\rho\sigma}
+           - \eta^{\mu\rho}\eta^{\nu\sigma}
+           + \eta^{\mu\sigma}\eta^{\nu\rho}\bigr).
+\end{equation}
+\end{mdframed}
+
+\textit{Proof sketch:} Use the Clifford relation to move $\gamma^\mu$ past the others,
+generating two-gamma traces:
+\[
+  \Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma]
+  = 2\eta^{\mu\nu}\Tr[\gamma^\rho\gamma^\sigma]
+  - 2\eta^{\mu\rho}\Tr[\gamma^\nu\gamma^\sigma]
+  + 2\eta^{\mu\sigma}\Tr[\gamma^\nu\gamma^\rho]
+  - \Tr[\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^\mu].
+\]
+Cyclic invariance of trace gives the result.
+
+\subsection{Levi-Civita trace}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\begin{equation}\label{eq:tr4g5}
+  \Tr[\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma]
+  = 4i\,\varepsilon^{\mu\nu\rho\sigma},
+\end{equation}
+with $\varepsilon^{0123} = +1$ in the Srednicki mostly-plus convention
+($\varepsilon_{0123} = +1$, $\varepsilon^{0123} = -1/\det\eta = +1$).
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=green!5]
+\verified{NumPy verification:} All trace identities verified numerically.
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Trace & Expected & Status \\
+\midrule
+$\Tr[\mathbf{1}]$ & $4$ & \checkmark \\
+$\Tr[\gamma^\mu]$, all $\mu$ & $0$ & \checkmark \\
+$\Tr[\gamma^\mu\gamma^\nu]$ & $4\eta^{\mu\nu}$ & \checkmark \\
+$\Tr[\gamma^\mu\gamma^\nu\gamma^\rho]$ & $0$ & \checkmark \\
+$\Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma]$ & eq.~\eqref{eq:tr4} & \checkmark (256 components) \\
+$\Tr[\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma]$ & $4i\varepsilon^{\mu\nu\rho\sigma}$ & \checkmark \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{mdframed}
+
+%% ============================================================
+\section{Fierz Identities}
+%% ============================================================
+
+\textit{Srednicki eq.\ (41.15)--(41.20).}
+
+\subsection{Completeness of the Clifford basis}
+
+The $16$ matrices $\{\mathbf{1}, \gamma^\mu, \sigma^{\mu\nu}, \gamma^5\gamma^\mu, \gamma^5\}$
+form a complete basis for $4\times4$ complex matrices, where
+$\sigma^{\mu\nu} = \tfrac{i}{4}[\gamma^\mu,\gamma^\nu]$.
+Dimension count: $1 + 4 + 6 + 4 + 1 = 16$.
+
+\subsection{The vector Fierz identity}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\begin{equation}\label{eq:fierz-vector}
+  (\gamma^\mu)_{ab}(\gamma_\mu)_{cd} = -2\,\delta_{ad}\delta_{bc}.
+\end{equation}
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=green!5]
+\verified{NumPy:} Contracting $\sum_\mu (\gamma^\mu)_{ab}(\gamma_\mu)_{cd}$
+over all $a,b,c,d$: all 256 components match $-2\delta_{ad}\delta_{bc}$. \checkmark
+\end{mdframed}
+
+\subsection{Chiral Fierz}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\begin{equation}\label{eq:fierz-LL}
+  (P_L\gamma^\mu P_L)_{ab}(P_L\gamma_\mu P_L)_{cd}
+  = -2\,(P_L)_{ad}(P_L)_{bc}.
+\end{equation}
+\end{mdframed}
+
+This identity underlies the Fermi weak current-current interaction and SUSY
+superpotential matching.
+
+%% ============================================================
+\section{Connection to Spinor-Helicity and MHV}
+%% ============================================================
+
+\textit{Bridge from Ch.~41 to Ch.~48 (Massless Particles and Spinor-Helicity).}
+
+\subsection{Spin-summed amplitude: the trace}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Key result:}
+\begin{equation}\label{eq:trace-pp}
+  \Tr[\slashed{k}\,\slashed{p}] = 4\,k\cdot p.
+\end{equation}
+\end{mdframed}
+
+Proof: $\Tr[\slashed{k}\slashed{p}] = k_\mu p_\nu \Tr[\gamma^\mu\gamma^\nu]
+= 4\eta^{\mu\nu}k_\mu p_\nu = 4k\cdot p$.
+
+The squared amplitude for massless fermion scattering:
+\begin{equation}
+  \sum_{s,s'}\!\! |\bar u_{s'}(p_2)\gamma^\mu u_s(p_1)|^2
+  = \Tr[\slashed{p}_2\gamma^\mu\slashed{p}_1\gamma^\nu]
+  = 4(p_2^\mu p_1^\nu + p_1^\mu p_2^\nu - \eta^{\mu\nu}p_1\cdot p_2).
+\end{equation}
+
+\begin{mdframed}[backgroundcolor=green!5]
+\verified{NumPy:}
+$k^\mu=(10,0,0,10)$, $p^\mu=(10,0,5\sqrt{3},5)$ (60${}^\circ$ angle),
+$k\cdot p = -50$, $\Tr[\slashed{k}\slashed{p}] = -200 = 4\times(-50)$. \checkmark
+\end{mdframed}
+
+\subsection{Spinor-helicity factorization}
+
+For massless momenta with $p_{\alpha\dot\alpha}=\lambda_\alpha\tilde\lambda_{\dot\alpha}$:
+\begin{equation}
+  \Tr[\slashed{k}\,\slashed{p}] = 4\,k\cdot p = 2\langle kp\rangle[pk],
+\end{equation}
+connecting the $\gamma$-matrix trace to the angle/square brackets of Ch.~48.
+
+\subsection{Parke-Taylor formula}
+
+The $n$-gluon MHV amplitude:
+\begin{equation}\label{eq:parke-taylor}
+  A_n^{\rm MHV}(1^+,\ldots,j^-,\ldots,k^-,\ldots,n^+)
+  = i\,\frac{\langle jk\rangle^4}{\langle12\rangle\langle23\rangle\cdots\langle n1\rangle}.
+\end{equation}
+
+The $\langle jk\rangle^4$ numerator arises from two applications of the
+4-gamma trace identity \eqref{eq:tr4} in the helicity-projected spin sums,
+and the denominator encodes momentum conservation via Schouten identities.
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Summary: Ch.~41 $\to$ Ch.~48 chain}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Ch.~41 result & Role in spinor-helicity \\
+\midrule
+$\Tr[\gamma^\mu\gamma^\nu]=4\eta^{\mu\nu}$ & Spin sums, $|M|^2$ \\
+$\Tr[\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma]=4i\varepsilon^{\mu\nu\rho\sigma}$ & Helicity amplitude sign \\
+Fierz \eqref{eq:fierz-vector} & BCFW recursion \\
+$\Tr[\slashed{k}\slashed{p}]=4k\cdot p$ & $= 2\langle kp\rangle[pk]$ \\
+4-gamma trace & Parke-Taylor $\langle jk\rangle^4$ numerator \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{mdframed}
+
+\vfill

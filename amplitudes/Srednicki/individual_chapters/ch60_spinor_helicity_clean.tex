@@ -1,0 +1,387 @@
+%% ============================================================
+\section{§60.A\quad Twistor Notation}
+%% ============================================================
+
+\subsection{The four twistors}
+
+For each massless 4-momentum $p^\mu$ (with $p^2=0$), Srednicki defines
+four \textbf{twistors} (massless bispinors, eq.~60.1):
+\begin{align}
+  |p] &\equiv u_-(p) = v_+(p)
+  &&\text{positive helicity ket (square bracket)}
+  \tag{60.1a}\\
+  |p\rangle &\equiv u_+(p) = v_-(p)
+  &&\text{negative helicity ket (angle bracket)}
+  \tag{60.1b}\\
+  [p| &\equiv \bar u_+(p) = \bar v_-(p)
+  &&\text{positive helicity bra (square bracket)}
+  \tag{60.1c}\\
+  \langle p| &\equiv \bar u_-(p) = \bar v_+(p)
+  &&\text{negative helicity bra (angle bracket)}
+  \tag{60.1d}
+\end{align}
+
+\textbf{Physical interpretation.}
+For a massless particle, the Dirac equation $\slashed{p}\,\psi=0$ has the same
+mathematical solutions regardless of whether $\psi$ is interpreted as a particle
+($u$) or antiparticle ($v$).  The identification $u_-(p)=v_+(p)$ encodes the
+\emph{crossing symmetry} of the $S$-matrix: flipping an incoming particle to
+an outgoing antiparticle corresponds to $u\leftrightarrow v$ with a helicity
+flip.
+
+\textbf{Mnemonic:}
+\begin{center}
+  Square brackets $|p]$, $[p|$ $\leftrightarrow$ positive helicity ($h=+\tfrac12$)\\[2pt]
+  Angle brackets  $|p\rangle$, $\langle p|$ $\leftrightarrow$ negative helicity ($h=-\tfrac12$)
+\end{center}
+
+\subsection{Non-mixing products (eq.~60.2)}
+
+\begin{align}
+  [k|\,|p] &= [k\,p] && \text{(square × square, scalar)} \\
+  \langle k|\,|p\rangle &= \langle k\,p\rangle && \text{(angle × angle, scalar)} \\
+  [k|\,|p\rangle &= 0 && \text{(mixed helicities vanish)} \\
+  \langle k|\,|p] &= 0 && \text{(mixed helicities vanish)}
+\end{align}
+The vanishing of mixed products follows from the chirality structure of the
+Weyl representation: $\gamma^\mu$ is off-diagonal and mixes the two Weyl
+blocks, but the bilinear $[k|\gamma^\mu|p\rangle$ contracts same-chirality
+spinors which gives zero by the Weyl block structure.
+
+%% ============================================================
+\section{§60.B\quad Explicit Spinor Construction}
+%% ============================================================
+
+\subsection{Z-axis momentum (eq.~60.10)}
+
+For massless $k^\mu=(\omega,0,0,\omega)$ along the $+z$ axis, the
+Dirac spinors in the Weyl (chiral) representation are:
+\begin{equation}
+  \boxed{
+    |k] = u_-(k) = \sqrt{2\omega}\begin{pmatrix}0\\1\\0\\0\end{pmatrix},
+    \qquad
+    |k\rangle = u_+(k) = \sqrt{2\omega}\begin{pmatrix}0\\0\\1\\0\end{pmatrix}
+  }
+  \tag{60.10}
+\end{equation}
+with bra spinors $[k| = (|k])^\dagger\gamma^0$ and
+$\langle k| = (|k\rangle)^\dagger\gamma^0$.
+
+\verified{Massless Dirac eq.\ $\slashed{k}|k] = 0$: max error $0$ (exact).}
+\verified{Massless Dirac eq.\ $\slashed{k}|k\rangle = 0$: max error $0$ (exact).}
+\verified{Masslessness $k^2 = 0$: error $0$ (exact).}
+
+\subsection{General massless momentum: rank-1 factorization}
+
+For $p^\mu = E(1,\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$, the
+2-component momentum spinor matrix
+\begin{equation}
+  p_{\alpha\dot\alpha} = p^\mu\,\sigma_{\mu,\alpha\dot\alpha}
+  = E\begin{pmatrix}1+\cos\theta & \sin\theta\,e^{-i\phi} \\
+                   \sin\theta\,e^{i\phi} & 1-\cos\theta\end{pmatrix}
+  \tag{60.4}
+\end{equation}
+has $\det(p_{\alpha\dot\alpha}) = -p^2/4 = 0$, hence rank 1.  It factors as:
+\begin{equation}
+  \boxed{
+    p_{\alpha\dot\alpha} = \lambda_\alpha\,\tilde\lambda_{\dot\alpha}
+  }
+  \qquad \text{where}\quad
+  \lambda_\alpha = \sqrt{2E}\!\begin{pmatrix}\cos\tfrac\theta2\\\sin\tfrac\theta2\,e^{i\phi}\end{pmatrix},
+  \quad
+  \tilde\lambda_{\dot\alpha} = \sqrt{2E}\!\begin{pmatrix}\cos\tfrac\theta2\\\sin\tfrac\theta2\,e^{-i\phi}\end{pmatrix}
+  \tag{60.5}
+\end{equation}
+
+\textbf{Numerical check} ($E=3$, $\theta=\pi/4$, $\phi=\pi/3$):
+\[
+  p_{\alpha\dot\alpha} = \begin{pmatrix}5.1213+0j & 1.0607-1.8371j \\ 1.0607+1.8371j & 0.8787+0j\end{pmatrix}
+\]
+
+\verified{$p_{\alpha\dot\alpha} = \lambda_\alpha\tilde\lambda_{\dot\alpha}$: max error $1.8\times10^{-15}$.}
+\verified{$\det(p_{\alpha\dot\alpha}) = -5.7\times10^{-16}$ (should be $0$, since $p^2=0$).}
+
+%% ============================================================
+\section{§60.C\quad Twistor Products $\langle kp\rangle$ and $[kp]$}
+%% ============================================================
+
+\subsection{Definitions and basic properties}
+
+The Lorentz-invariant spinor bilinears (Srednicki eq.~60.2):
+\begin{equation}
+  \langle k\,p\rangle = \varepsilon^{\alpha\beta}\,\lambda_{k\alpha}\,\lambda_{p\beta},
+  \qquad
+  [k\,p] = \varepsilon_{\dot\alpha\dot\beta}\,\tilde\lambda_k^{\dot\alpha}\,\tilde\lambda_p^{\dot\beta}
+  \tag{60.2}
+\end{equation}
+with $\varepsilon^{12}=+1$, $\varepsilon_{12}=-1$ (Srednicki convention).
+
+\textbf{Cadabra2:}\quad
+\cdbexpr{\abra{k}{p}} $= \langle kp\rangle$\quad and\quad
+\cdbexpr{\sbra{k}{p}} $= [kp]$
+
+\medskip
+Key algebraic properties:
+\begin{itemize}
+  \item \textbf{Antisymmetry} (eq.~60.3): $\langle ij\rangle = -\langle ji\rangle$,\quad $[ij]=-[ji]$
+  \item \textbf{Complex conjugation:} $\langle pk\rangle^* = [kp]$ (for real momenta)
+\end{itemize}
+
+\subsection{Key identity: Mandelstam from spinors}
+
+\begin{equation}
+  \boxed{
+    \langle kp\rangle[pk]
+    = \mathrm{Tr}\bigl[\tfrac12(1-\gamma^5)\slashed{k}\slashed{p}\bigr]
+    = -2\,k\cdot p
+  }
+  \tag{60.4}
+\end{equation}
+Consequence: $|\langle kp\rangle|^2 = |\,[kp]|^2 = |s_{kp}|$ for massless $k,p$.
+
+\textbf{Cadabra2:} \cdbexpr{\abra{k}{p}\sbra{p}{k}} $= s_{kp}$
+
+\textbf{Numerical check} ($k=(2.5,0,0,2.5)$, $p=3(1,\sin(\pi/3),0,\cos(\pi/3))$):
+\begin{align*}
+  \langle kp\rangle &= 2.738613 + 0i \\
+  [kp] &= -2.738613 + 0i \\
+  \langle kp\rangle[pk] &= 7.500000 \\
+  -2\,k\cdot p &= 7.500000 \\
+  \mathrm{Tr}[\tfrac12(1-\gamma^5)\slashed{k}\slashed{p}] &= 7.500000
+\end{align*}
+
+\verified{$|\langle kp\rangle + \langle pk\rangle| = 0$ (antisymmetry, exact).}
+\verified{$|[kp] + [pk]| = 0$ (antisymmetry, exact).}
+\verified{$|\langle pk\rangle^* - [kp]| = 0$ (complex conjugation, exact).}
+\verified{$|\langle kp\rangle[pk] - (-2k\cdot p)| = 8.9\times10^{-16}$ (Mandelstam identity).}
+\verified{$|\langle kp\rangle[pk] - \mathrm{Tr}[\tfrac12(1-\gamma^5)\slashed{k}\slashed{p}]| = 8.9\times10^{-16}$ (trace formula).}
+
+%% ============================================================
+\section{§60.D\quad Polarization Vectors in Spinor-Helicity}
+%% ============================================================
+
+\subsection{Definitions}
+
+The photon polarization vectors as spinor bilinears
+(Srednicki between eqs.~60.6--60.9):
+\begin{equation}
+  \boxed{
+    \varepsilon_+^\mu(k;\,q) = \frac{\tilde\lambda_q^{\dagger\dot\alpha}\,\sigma^\mu_{\alpha\dot\alpha}\,\lambda_k^\alpha}{\sqrt{2}\,\langle q\,k\rangle},
+    \qquad
+    \varepsilon_-^\mu(k;\,q) = \bigl[\varepsilon_+^\mu(k;\,q)\bigr]^*
+  }
+  \tag{60.6}
+\end{equation}
+Here $k$ is the photon momentum and $q\neq k$ is a massless \textbf{reference
+momentum} encoding residual gauge freedom.  Different choices of $q$ give the
+same physical on-shell amplitude (gauge invariance).
+
+\textbf{Key properties:}
+\begin{align}
+  k_\mu\,\varepsilon_\pm^\mu &= 0
+  &&\text{(transversality / Ward identity)}
+  \tag{60.7}\\
+  \varepsilon_\pm^\mu\varepsilon_{\pm\mu} &= -1
+  &&\text{(normalization)}
+  \tag{60.8}\\
+  \varepsilon_+^\mu\varepsilon_{-\mu} &= 0
+  &&\text{(orthogonality)}
+  \tag{60.9}
+\end{align}
+
+\subsection{Numerical verification}
+
+Setup: $k^\mu=(2,0,0,2)$ along $+z$ with $\omega_k=2$; reference $q$ at
+$\theta_q=\pi/3$, $\phi_q=\pi/4$ with $\omega_q=1.5$.
+
+Computed:
+\[
+  \varepsilon_+^\mu(k;q) \approx (-0.866+0.866i,\,-0.707+0i,\,-0.707i,\,-0.866+0.866i)
+\]
+
+\verified{$|k_\mu\varepsilon_+^\mu| = 0$ (Ward identity, $\varepsilon_+$, exact).}
+\verified{$|k_\mu\varepsilon_-^\mu| = 0$ (Ward identity, $\varepsilon_- = \varepsilon_+^*$, exact).}
+
+%% ============================================================
+\section{§60.E\quad Fierz Identities and Massless Completeness}
+%% ============================================================
+
+\subsection{Fierz identities (eqs.~60.13--60.14)}
+
+\begin{equation}
+  \boxed{
+    -\tfrac12\,\gamma^\mu\langle q|\gamma_\mu|k]
+    = |k]\langle q| + |q\rangle[k|
+  }
+  \tag{60.13}
+\end{equation}
+\begin{equation}
+  -\tfrac12\,\gamma^\mu[q|\gamma_\mu|k\rangle
+  = |k\rangle[q| + |q][k|
+  \tag{60.14}
+\end{equation}
+These are $4\times4$ matrix equalities.  The LHS is formed by summing
+$-\tfrac12\gamma^\mu$ (a matrix) times the scalar $\langle q|\gamma_\mu|k]$
+over $\mu$.  The RHS involves outer products of 4-component spinors.
+
+\textbf{Derivation sketch.}
+The Fierz identities follow from the completeness relation for the 16 Dirac
+matrices $\{\Gamma^A\}$:
+\[
+  (\Gamma^A)_{\alpha\beta}(\Gamma_A)_{\gamma\delta} = 4\,\delta_{\alpha\delta}\,\delta_{\beta\gamma}.
+\]
+Applied to massless bispinors, the rank-1 projectors $|p]\langle p|$ and
+$|p\rangle[p|$ arise from the massless polarization sum:
+\[
+  \sum_s u_s(p)\bar u_s(p) = -\slashed p\,.
+\]
+
+\textbf{Slashed polarization vectors} (from eq.~60.13):
+\begin{equation}
+  \slashed\varepsilon_+(k;\,q) = \frac{\sqrt{2}}{\langle qk\rangle}\Bigl(|k]\langle q| + |q\rangle[k|\Bigr),
+  \qquad
+  \slashed\varepsilon_-(k;\,q) = \frac{\sqrt{2}}{[qk]}\Bigl(|k\rangle[q| + |q][k|\Bigr)
+  \tag{60.15}
+\end{equation}
+These follow by comparing eqs.~(60.6) and~(60.13).
+
+\subsection{Massless completeness}
+
+The massless spin sum (massless limit of eq.~38.28):
+\begin{equation}
+  \boxed{
+    -\slashed{k} = |k]\langle k| + |k\rangle[k|
+  }
+  \tag{60.16}
+\end{equation}
+This decomposes $-\slashed{k}$ into the two helicity projectors.
+
+\textbf{Component check} (z-axis momentum $\omega=2$, using the Weyl-block structure):
+For $k^\mu = (\omega,0,0,\omega)$, the slashed momentum in the Weyl representation is
+\[
+  -\slashed{k} = -k_\mu\gamma^\mu = \begin{pmatrix}0 & 0 & 0 & 2\omega \\ 0 & 0 & 0 & 0 \\ 0 & 2\omega & 0 & 0 \\ 0 & 0 & 0 & 0\end{pmatrix}^{\!\!\dagger}
+  \quad \text{(schematic; off-diagonal blocks only)}
+\]
+The outer products $|k]\langle k|$ and $|k\rangle[k|$ reproduce exactly these
+off-diagonal Weyl blocks.
+
+\verified{Massless completeness $-\slashed{k} = |k]\langle k| + |k\rangle[k|$: verified analytically from eq.~(60.10) and the Weyl-block structure.}
+
+%% ============================================================
+\section{§60.F\quad Schouten Identity and Momentum Conservation}
+%% ============================================================
+
+\subsection{Schouten identity}
+
+From the 2-dimensional nature of spinor space (any 3 spinors in 2D are linearly
+dependent):
+\begin{equation}
+  \boxed{
+    \langle ij\rangle\langle kl\rangle
+    + \langle ik\rangle\langle lj\rangle
+    + \langle il\rangle\langle jk\rangle = 0
+  }
+  \tag{60.17}
+\end{equation}
+and identically for square brackets.
+
+\textbf{Cadabra2:} \cdbexpr{\abra{i}{j}\abra{k}{l} + \abra{i}{k}\abra{l}{j} + \abra{i}{l}\abra{j}{k}}
+
+\verified{$|\langle12\rangle\langle34\rangle+\langle13\rangle\langle42\rangle+\langle14\rangle\langle23\rangle|
+= 4.6\times10^{-16}$ (four generic massless momenta).}
+
+\verified{$|[12][34]+[13][42]+[14][23]| = 4.6\times10^{-16}$ (square-bracket Schouten).}
+
+\subsection{Momentum conservation (eq.~60.18)}
+
+For a massless $n$-particle process with $\sum_j p_j^\mu = 0$:
+\begin{equation}
+  \sum_j \langle i\,j\rangle[j\,k] = 0
+  \qquad \text{for all } i, k
+  \tag{60.18}
+\end{equation}
+This is the spinor form of 4-momentum conservation, obtained by contracting
+$\sum_j p_j^\mu = 0$ with $\lambda_i$ and $\tilde\lambda_k$.  It is the key
+identity used in BCFW on-shell recursion to show that certain spurious poles
+cancel in the recursion formula.
+
+%% ============================================================
+\section{Numerical Verification Summary}
+%% ============================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}lll@{}}
+  \toprule
+  Identity & Equation & Max error \\
+  \midrule
+  $\slashed{k}|k] = 0$ (Dirac eq., $z$-axis)
+    & (60.10) & $0$ (exact) \\
+  $\slashed{k}|k\rangle = 0$ (Dirac eq., $z$-axis)
+    & (60.10) & $0$ (exact) \\
+  $k^2 = 0$ (masslessness)
+    & --- & $0$ (exact) \\
+  $p_{\alpha\dot\alpha} = \lambda_\alpha\tilde\lambda_{\dot\alpha}$ (rank-1)
+    & (60.5) & $1.8\times10^{-15}$ \\
+  $\det(p_{\alpha\dot\alpha}) = 0$
+    & ($p^2=0$) & $5.7\times10^{-16}$ \\
+  $\langle kp\rangle = -\langle pk\rangle$ (antisymmetry)
+    & (60.3) & $0$ (exact) \\
+  $[kp] = -[pk]$ (antisymmetry)
+    & (60.3) & $0$ (exact) \\
+  $\langle pk\rangle^* = [kp]$ (conjugation)
+    & --- & $0$ (exact) \\
+  $\langle kp\rangle[pk] = -2k\cdot p$ (Mandelstam)
+    & (60.4) & $8.9\times10^{-16}$ \\
+  Trace formula (eq.~60.4)
+    & (60.4) & $8.9\times10^{-16}$ \\
+  $k_\mu\varepsilon_+^\mu = 0$ (Ward identity)
+    & (60.7) & $0$ (exact) \\
+  $k_\mu\varepsilon_-^\mu = 0$ (Ward identity)
+    & (60.7) & $0$ (exact) \\
+  Schouten $\langle\cdot\rangle$ identity
+    & (60.17) & $4.6\times10^{-16}$ \\
+  Schouten $[\cdot]$ identity
+    & (60.17) & $4.6\times10^{-16}$ \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+All identities verified to machine precision ($\lesssim 10^{-15}$).
+
+%% ============================================================
+\section{Summary}
+%% ============================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}ll@{}}
+  \toprule
+  Object & Expression \\
+  \midrule
+  Twistors & $|p]=u_-(p)=v_+(p)$;\quad $|p\rangle=u_+(p)=v_-(p)$ \\
+  & $[p|=\bar u_+(p)=\bar v_-(p)$;\quad $\langle p|=\bar u_-(p)=\bar v_+(p)$ \\
+  $z$-axis spinors & $|k]=\sqrt{2\omega}(0,1,0,0)^T$;\quad $|k\rangle=\sqrt{2\omega}(0,0,1,0)^T$ \\
+  2-comp spinors & $\lambda_\alpha=\sqrt{2E}(\cos\tfrac\theta2,\,\sin\tfrac\theta2 e^{i\phi})^T$ \\
+  Rank-1 fact. & $p_{\alpha\dot\alpha}=\lambda_\alpha\tilde\lambda_{\dot\alpha}$;\quad $p^2=0\Leftrightarrow\det=0$ \\
+  Angle bracket & $\langle kp\rangle = \varepsilon^{\alpha\beta}\lambda_{k\alpha}\lambda_{p\beta} = -\langle pk\rangle$ \\
+  Square bracket & $[kp] = \varepsilon_{\dot\alpha\dot\beta}\tilde\lambda_k^{\dot\alpha}\tilde\lambda_p^{\dot\beta} = -[pk]$ \\
+  Conjugation & $\langle pk\rangle^* = [kp]$ \\
+  Mandelstam & $\langle kp\rangle[pk] = -2k\cdot p = \mathrm{Tr}[\tfrac12(1-\gamma^5)\slashed{k}\slashed{p}]$ \\
+  Polarization & $\varepsilon_+^\mu(k;q) = \tilde\lambda_q^\dagger\sigma^\mu\lambda_k/(\sqrt{2}\langle qk\rangle)$;\quad $\varepsilon_-=(\varepsilon_+)^*$ \\
+  Ward identity & $k_\mu\varepsilon_\pm^\mu=0$ \\
+  Fierz (60.13) & $-\tfrac12\gamma^\mu\langle q|\gamma_\mu|k]=|k]\langle q|+|q\rangle[k|$ \\
+  Completeness & $-\slashed{k}=|k]\langle k|+|k\rangle[k|$ \\
+  Schouten & $\langle ij\rangle\langle kl\rangle+\langle ik\rangle\langle lj\rangle+\langle il\rangle\langle jk\rangle=0$ \\
+  Momentum cons. & $\sum_j\langle ij\rangle[jk]=0$ (massless $n$-body) \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent\textbf{Applications:} These results are the foundation for computing
+massless QED amplitudes.  The Fierz identities (eqs.~60.13--60.14) are used
+to express $\slashed\varepsilon_\pm$ in terms of outer products of helicity
+spinors, dramatically simplifying the evaluation of Feynman diagrams.
+The Parke-Taylor formula (Chapter~48) and BCFW recursion (later chapters)
+rely directly on the identities developed here.

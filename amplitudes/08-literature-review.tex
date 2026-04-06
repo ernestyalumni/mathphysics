@@ -1,0 +1,128 @@
+% Literature Review & Paper Notes
+% Chapter 8 of Amplitudes Notes
+
+\chapter{Literature Review and Paper Notes}
+\label{chap:literature-review}
+
+This chapter contains our own notes, breakdowns, and computations related to important papers in the amplitudes literature.
+
+\section{A Brief Introduction to Modern Amplitude Methods}
+\label{sec:dixon-2013}
+
+\textbf{Paper:} Lance J. Dixon, ``A brief introduction to modern amplitude methods'', arXiv:1310.5353 (2013).
+
+This is an excellent pedagogical review based on lectures at the 2012 CERN Summer School and TASI 2013. It is one of the best entry points into modern amplitude methods.
+
+\subsection{Key Concepts Covered}
+
+\begin{itemize}
+\item \textbf{Color decomposition}: Trace-based decomposition of QCD amplitudes into color-ordered partial amplitudes.
+\item \textbf{Spinor helicity formalism}: Review of massless spinors, angle and square brackets, polarization vectors expressed as spinor bilinears.
+\item \textbf{Factorization}: Universal soft and collinear factorization of tree-level gauge theory amplitudes.
+\item \textbf{Parke-Taylor MHV amplitudes}: The famous one-term formula for maximally helicity violating gluon scattering.
+\item \textbf{BCFW recursion}: On-shell recursion relations at tree level.
+\item \textbf{Unitarity methods}: Brief introduction to how these ideas extend to loop level.
+\end{itemize}
+
+\subsection{Important Results \& Equations}
+
+\textbf{Parke-Taylor MHV formula (color-ordered):}
+\begin{equation}
+A_n^{\text{tree}}(1^-,2^-;3^+,\dots,n^+) = \frac{\langle 1 2 \rangle^4}{\langle 1 2 \rangle \langle 2 3 \rangle \cdots \langle n 1 \rangle}
+\label{eq:parke-taylor}
+\end{equation}
+
+\textbf{BCFW recursion relation:}
+\begin{equation}
+A_n = \sum_{P} A_L(z_P) \frac{1}{P^2(z_P)} A_R(z_P)
+\label{eq:bcfw}
+\end{equation}
+where the sum is over factorization channels and $z_P$ is the value that puts the internal propagator on-shell.
+
+\textbf{Polarization vectors in spinor helicity:}
+\begin{align}
+\varepsilon^+_\mu(k;q) &= \frac{\langle q | \gamma_\mu | k ]}{\sqrt{2} \langle q k \rangle}, \\
+\varepsilon^-_\mu(k;q) &= \frac{[q | \gamma_\mu | k \rangle}{\sqrt{2} [q k ]}.
+\end{align}
+
+\subsection{Why This Paper Matters for Our Project}
+
+This paper connects directly to our existing work:
+- It builds on the spinor technology from Srednicki Ch. 48 and Ch. 60.
+- The Parke-Taylor formula is the seed amplitude we will verify with Cadabra2.
+- BCFW recursion is the next major topic after MHV (see Ch. 05 in our notes).
+
+We will add detailed derivations, Cadabra2 checks of the spinor identities, and explicit computations of low-point MHV amplitudes in subsequent sections.
+
+\newpage
+
+\section{Single-Minus Gluon Tree Amplitudes Are Nonzero}
+\label{sec:smga-2025}
+
+\textbf{Paper:} Guevara, Lupsasca, Skinner, Strominger, Weil (on behalf of OpenAI), ``Single-minus gluon tree amplitudes are nonzero'', arXiv:2602.12176v2 (2025).
+
+\textbf{Significance:} This is the first physics discovery made by an AI system (GPT-5.2 Pro). The key formula was \emph{conjectured} by GPT and then \emph{proved} by a new internal OpenAI model.
+
+\subsection{The Discovery}
+
+It was long believed that single-minus tree-level gluon amplitudes $\mathcal{A}_n(1^-,2^+,\dots,n^+)$ vanish at tree level for generic kinematics. The standard argument uses a clever choice of reference spinor to show all polarization vectors are orthogonal, so the amplitude requires more powers of momenta in the numerator than vertices can supply.
+
+The \textbf{loophole}: when all angle brackets vanish ($\langle ij\rangle = 0$ for all $i,j$), the reference spinor choice becomes singular. This ``half-collinear'' regime exists in $(2,2)$ Klein signature or for complexified momenta.
+
+\subsection{Key Equations}
+
+\textbf{The stripped amplitude ansatz:}
+\begin{equation}
+\mathcal{A}_n = i^{2-n} A_{1\cdots n} \prod_{a=2}^{n} \delta(\langle 1a\rangle) \cdot \delta^2\!\left(\sum_{i=1}^{n} \langle ri\rangle \tilde\lambda_i\right)
+\end{equation}
+
+\textbf{The main result (Eq.~16 of the paper):}
+\begin{equation}
+A_{1\cdots n}\Big|_{\mathcal{R}_1} = \frac{1}{2^{n-2}} \prod_{m=2}^{n-1} \left(\mathrm{sg}_{m,m+1} + \mathrm{sg}_{1,2\cdots m}\right)
+\label{eq:smga-main}
+\end{equation}
+where $\mathrm{sg}_{ij} = \mathrm{sg}([\tilde\lambda_i \tilde\lambda_j])$ and $\mathcal{R}_1$ is the kinematic region where particle 1 has $\omega_1 < 0$ and all others have $\omega_a > 0$.
+
+\textbf{Concrete low-point examples:}
+\begin{align}
+A_{123}\big|_{\mathcal{R}_1} &= \tfrac{1}{2}(\mathrm{sg}_{23} + \mathrm{sg}_{12}), \\
+A_{1234}\big|_{\mathcal{R}_1} &= \tfrac{1}{4}(\mathrm{sg}_{23} + \mathrm{sg}_{12})(\mathrm{sg}_{34} + \mathrm{sg}_{41}).
+\end{align}
+
+Each factor is $\frac{1}{2}(\pm 1 \pm 1) \in \{-1, 0, +1\}$, so the stripped amplitude is \textbf{piecewise-constant}.
+
+\subsection{Proof Strategy}
+
+The proof proceeds in three steps:
+\begin{enumerate}
+\item Show that in $\mathcal{R}_1$, the vertex function $V_{\tilde\lambda_2\cdots\tilde\lambda_n} = 0$ (a causality condition).
+\item Show the Berends--Giele recursion collapses: $A_{1\cdots n} = \bar{V}_{\tilde\lambda_2\cdots\tilde\lambda_n}$.
+\item Evaluate $\bar{V}$ using momentum conservation to recover Eq.~\eqref{eq:smga-main}.
+\end{enumerate}
+
+A key ingredient is the ``master identity'' (App.~A), a generalization of a standard distributional identity involving sign functions and $\delta$-functions.
+
+\subsection{Open Directions (from the paper)}
+
+The authors note several extensions we should explore:
+\begin{itemize}
+\item General formula outside $\mathcal{R}_1$ (they give explicit results through $n=6$)
+\item Graviton amplitude generalization
+\item Supersymmetric extensions
+\item Connection to $\mathcal{L}w_{1+\infty}$ algebra and celestial holography
+\item Mellin transforms yielding Lauricella functions
+\item Possible yet-simpler expressions via different variable choices
+\end{itemize}
+
+\subsection{Why This Paper Matters for Our Project}
+
+This paper demonstrates that:
+\begin{enumerate}
+\item AI systems can make genuine discoveries in scattering amplitudes.
+\item The discovery method was pattern recognition from computed data (GPT conjectured the formula from $n=3,\ldots,6$ examples).
+\item The proof was also AI-assisted.
+\end{enumerate}
+
+Our goal is to reproduce this methodology and find new results in related areas.
+
+\newpage

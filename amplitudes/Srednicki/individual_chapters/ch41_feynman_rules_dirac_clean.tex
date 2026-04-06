@@ -1,0 +1,128 @@
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Note:} This chapter applies Ch.37's canonical quantization to Dirac
+fields. The Feynman propagator and spin sums here are used in every fermion-loop
+and external-leg calculation throughout the rest of the course.
+\end{mdframed}
+
+\section{Dirac Propagator}\label{sec:propagator}
+
+The Feynman propagator is the time-ordered vev:
+\begin{equation}
+S_F(x-y) = \langle0| T\{\psi(x)\bar\psi(y)\}|0\rangle .
+\end{equation}
+Evaluating via the mode expansion gives, in momentum space:
+\begin{mdframed}[backgroundcolor=green!5]
+\begin{equation}
+S_F(k) = \frac{i(k\!\!\!/+m)}{k^2-m^2+i\varepsilon}
+      = \frac{i}{k\!\!\!/-m+i\varepsilon} .
+\tag{39.3}
+\end{equation}
+\end{mdframed}
+
+The Feynman $i\varepsilon$ prescription places poles at $k^0 = \pm E_\mathbf{k} \mp i\varepsilon$,
+specifying which contour deformation gives the correct time ordering.
+
+\section{External Fermion Wave Functions}\label{sec:external}
+
+For a fermion with momentum $p^\mu=(E,\mathbf{p})$ and spin label $s=\pm$:
+\begin{equation}
+u_s(p) = \begin{pmatrix}
+\sqrt{E+\mathbf{p}\cdot\boldsymbol{\sigma}}\,\chi_s \\
+\sqrt{E-\mathbf{p}\cdot\boldsymbol{\sigma}}\,\chi_s
+\end{pmatrix},
+\qquad
+\chi_+ = \begin{pmatrix}1\\0\end{pmatrix},\;
+\chi_- = \begin{pmatrix}0\\1\end{pmatrix} .
+\tag{39.5}
+\end{equation}
+In the massless limit and for $\mathbf{p}=(0,0,E)$ (along $+z$):
+\begin{equation}
+u_+(p) = \sqrt{2E}\begin{pmatrix}1\\0\\1\\0\end{pmatrix},
+\qquad
+u_-(p) = \sqrt{2E}\begin{pmatrix}0\\1\\0\\-1\end{pmatrix} .
+\tag{39.6}
+\end{equation}
+
+\section{Spin Sums}\label{sec:spin_sums}
+
+The completeness (spin-sum) identities are:
+\begin{mdframed}[backgroundcolor=yellow!5]
+\begin{align}
+\sum_s u_s(p)\,\bar u_s(p) &= p\!\!\!/+m , \tag{39.8}\\
+\sum_s v_s(p)\,\bar v_s(p) &= p\!\!\!/-m . \tag{39.9}
+\end{align}
+\end{mdframed}
+
+For unpolarized cross sections, each initial fermion spin contributes a factor $\frac12$.
+
+\section{Trace Theorems}\label{sec:traces}
+
+The fundamental trace identities (4D Minkowski, $\eta=\mathrm{diag}(-1,+1,+1,+1)$):
+\begin{mdframed}[backgroundcolor=red!5]
+\begin{align}
+\Tr[\mathbf{1}] &= 4 , \tag{39.10}\\
+\Tr[\gamma^\mu\gamma^\nu] &= 4\eta^{\mu\nu} , \tag{39.12}\\
+\Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma]
+&= 4\bigl(\eta^{\mu\nu}\eta^{\rho\sigma}
+          -\eta^{\mu\rho}\eta^{\nu\sigma}
+          +\eta^{\mu\sigma}\eta^{\nu\rho}\bigr) . \tag{39.14}
+\end{align}
+\end{mdframed}
+
+\begin{center}                                                                                                                                                                                              
+\textbf{Numpy verification of trace theorems:} 
+\textbf{Numpy verification of trace theorems:}
+\end{center}
+\begin{center}
+\begin{tabular}{|l|c|}
+\hline
+Check & Result \\
+\hline
+$\Tr[\gamma^\mu\gamma^\nu] = 4\eta^{\mu\nu}$ & FAIL \\
+$\Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma]$ identity & PASS \\
+$\Tr[\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma] = -4i\varepsilon^{\mu\nu\rho\sigma}$ & See Ch.41 \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{QED Feynman Rules}\label{sec:qed_rules}
+
+\begin{center}
+\begin{tabular}{|l|c|}
+\hline
+Object & Rule \\
+\hline
+Photon propagator & $\displaystyle\frac{-i\eta_{\mu\nu}}{q^2+i\varepsilon}$ \\
+Fermion propagator & $\displaystyle\frac{i(p\!\!\!/+m)}{p^2-m^2+i\varepsilon}$ \\
+QED vertex & $-ie\,\gamma_\mu$ \\
+External fermion & $u_s(p)$, $\bar u_s(p)$ \\
+External antifermion & $v_s(p)$, $\bar v_s(p)$ \\
+External photon & $\varepsilon_\mu(k,\lambda)$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Spinor Completeness (Massless)}\label{sec:spin_completeness}
+
+For massless $p^\mu=(E,0,0,E)$ along $+z$, the spin-sum gives:
+\begin{mdframed}
+\begin{align*}
+\sum_s u_s\bar u_s
+&= p\!\!\!/ = \begin{pmatrix}
+0&0&E&0\\0&0&0&-E\\E&0&0&0\\0&-E&0&0
+\end{pmatrix} .
+\end{align*}
+Numpy difference from $p\!\!\!/$: $\|$diff$\|_F = $4.90e+00 \\
+(Zero = PASS)
+\end{mdframed}
+
+\section{Significance for the MHV Program}
+
+Ch.39 is foundational because:
+\begin{enumerate}
+\item Every QCD amplitude with external quarks uses the spin-sum formula
+  $\sum u\bar u = p\!\!\!/+m$.
+\item The trace theorems reduce loop calculations to scalar products of momenta.
+\item In the massless chiral limit, the Dirac spinor basis becomes the
+  helicity-spinor basis of Ch.42: $u_+(k)\to\lambda$, $u_-(k)\to\tilde\lambda$.
+\end{enumerate}

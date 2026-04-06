@@ -1,0 +1,236 @@
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Chapter 43} covers a special spinor: the \emph{Majorana field},
+where the particle is its own antiparticle.  Majorana fermions appear in:
+supersymmetric theories (gauginos, neutralinos), potential neutrino mass terms,
+and as a theoretical tool in the construction of MHV amplitudes in $\mathcal{N}=4$ SYM.
+\end{mdframed}
+
+%% ============================================================
+\section{The Majorana Condition}
+%% ============================================================
+
+\textit{Srednicki eq.\ (43.1)--(43.5).}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Majorana condition:}
+\begin{equation}\label{eq:majorana}
+  \psi(x) = \psi^c(x) \equiv C\,\bar\psi^T(x),
+\end{equation}
+where $C = i\gamma^2\gamma^0$ is the charge-conjugation matrix satisfying:
+\begin{align}
+  C^2 &= -\mathbf{1}, \\
+  C\gamma^\mu C^{-1} &= -(\gamma^\mu)^T, \\
+  C^T &= -C, \quad C^\dagger = C^{-1}.
+\end{align}
+\end{mdframed}
+
+The Majorana condition \eqref{eq:majorana} states that the particle is
+\emph{its own antiparticle}: there is no distinction between $\psi$ and $\psi^c$.
+This halves the degrees of freedom from 4 (Dirac) to 2.
+
+\subsection{Comparison of spinor types}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Property & Weyl & Majorana & Dirac \\
+\midrule
+Degrees of freedom & 2 & 2 & 4 \\
+EM charge & 0 & 0 & $\pm e$ \\
+Particle $=$ antiparticle & --- & \checkmark & $\times$ \\
+Lorentz rep. & $(\half,0)$ or $(0,\half)$ & $(0,\half)\oplus(\half,0)$ & $(0,\half)\oplus(\half,0)$ \\
+SUSY partner & scalar & gaugino & sfermion pair \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Majorana from Weyl}
+
+A Majorana spinor can be constructed from a single left-handed Weyl spinor $\chi_\alpha$:
+\begin{equation}
+  \psi_M = \begin{pmatrix}\chi_\alpha \\ \bar\chi^{\dot\alpha}\end{pmatrix}
+  = \begin{pmatrix}\chi \\ i\sigma^2\chi^*\end{pmatrix}.
+\end{equation}
+This is automatically self-conjugate: $\psi_M = C\bar\psi_M^T$.
+
+%% ============================================================
+\section{Majorana Lagrangian and Mass}
+%% ============================================================
+
+\textit{Srednicki eq.\ (43.6)--(43.11).}
+
+The free Majorana Lagrangian:
+\begin{equation}
+  \mathcal{L}_M = \frac{i}{2}\psi^T C\slashed\partial\psi
+               - \frac{m_M}{2}\psi^T C\psi + \text{h.c.}
+\end{equation}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Majorana mass term:}
+\begin{equation}\label{eq:majorana-mass}
+  \mathcal{L}_\text{mass} = -\frac{m_M}{2}\psi^T C\psi + \text{h.c.}
+  = -\frac{m_M}{2}(\chi\chi + \bar\chi\bar\chi),
+\end{equation}
+where the $\tfrac{1}{2}$ reflects particle $=$ antiparticle (no double-counting).
+\end{mdframed}
+
+MSSM examples:
+\begin{align}
+  \text{Gaugino masses:} &\quad \frac{1}{2}M_1\tilde\lambda_B\tilde\lambda_B
+                                + \frac{1}{2}M_2\tilde\lambda_W\tilde\lambda_W
+                                + \frac{1}{2}M_3\tilde g\tilde g + \text{h.c.},\\
+  \text{Higgsino masses:} &\quad \mu H_u H_d + \text{h.c.}
+\end{align}
+
+%% ============================================================
+\section{The Majorana Propagator}
+%% ============================================================
+
+\textit{Srednicki eq.\ (43.12)--(43.15).}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Majorana propagator:}
+\begin{equation}\label{eq:majorana-prop}
+  S_F^M(k) = \frac{i(\slashed{k}+m)}{k^2+m^2-i\varepsilon}.
+\end{equation}
+The Wick contraction produces a factor of $\tfrac{1}{2}$ relative to Dirac:
+\begin{equation}
+  \langle T\,\psi_\alpha(x)\bar\psi_\beta(y)\rangle_M
+  = \tfrac{1}{2}\,\langle T\,\psi_\alpha(x)\bar\psi_\beta(y)\rangle_D,
+\end{equation}
+because each fermion line can be traversed in only one direction (particle $=$ antiparticle).
+\end{mdframed}
+
+%% ============================================================
+\section{Feynman Rules for Majorana Fields}
+%% ============================================================
+
+\textit{Srednicki eq.\ (43.16)--(43.22).}
+
+\subsection{Standard rules}
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Object & Feynman rule \\
+\midrule
+Majorana propagator & $\displaystyle\frac{i(\slashed{k}+m)}{k^2+m^2-i\varepsilon}$ \\[8pt]
+External incoming Majorana & $u_s(\mathbf{p})$ or $v_s(\mathbf{p})$ \\
+External outgoing Majorana & $\bar u_s(\mathbf{p})$ or $\bar v_s(\mathbf{p})$ \\
+Yukawa vertex $g\phi\psi\psi$ & $-ig$ \\
+4-Majorana contact $\lambda(\psi\psi)^2$ & $-4i\lambda$ \\
+Closed Majorana loop & $+\tfrac{1}{2}\Tr[\cdots]$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Sign rules}
+
+Majorana spinors obey the same anticommutation statistics as Dirac.  For external
+legs the relative sign between diagrams is determined by the fermion-flow arrows:
+when two diagrams differ by an exchange of identical Majorana particles, a relative
+$(-1)$ is required.
+
+%% ============================================================
+\section{Why Majorana Matters for MHV}
+%% ============================================================
+
+\textit{Connecting Ch.~43 to Ch.~48 and beyond.}
+
+\subsection{Gluinos are Majorana}
+
+In $\mathcal{N}=1$ Super QCD (SQCD), the gluino $\tilde g^a$ is the superpartner
+of the gluon.  It transforms in the adjoint of $SU(N_c)$ and is \emph{Majorana}:
+\begin{equation}
+  \tilde g^a = C\,\overline{\tilde g}^{\,a\,T}.
+\end{equation}
+This follows from the gauge symmetry of the $\mathcal{N}=1$ vector multiplet:
+since the gauge field $A_\mu^a$ is real (no particle/antiparticle distinction in
+the adjoint representation), its superpartner must also be self-conjugate.
+
+\subsection{Spin sums for Majorana spinors}
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Key:} For a Majorana fermion, particle and antiparticle states are
+identical, so the spin sum is:
+\begin{equation}\label{eq:majorana-spinsum}
+  \sum_s u_s(\mathbf{p})\bar u_s(\mathbf{p}) = -\slashed{p} + m,
+\end{equation}
+\emph{exactly} as for a Dirac fermion.  The Majorana condition does not modify
+the spin-sum completeness relation.
+\end{mdframed}
+
+The proof is straightforward: since $v_s(\mathbf{p}) = C\bar u_s^T(\mathbf{p})$
+for a Majorana spinor, the $v$-sum equals the $u$-sum, and both give $-\slashed{p}+m$
+(massless: $\sum_s u_s\bar u_s = -\slashed{p}$).
+
+\subsection{The MHV amplitude with a gluino pair}
+
+Consider the MHV amplitude in $\mathcal{N}=4$ SYM with two external gluinos
+(Majorana, adjoint) at positions $j,k$ and $n-2$ positive-helicity gluons:
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\begin{equation}\label{eq:mhv-gluino}
+  A_n^{\rm MHV}(1^+,\ldots,j^{\tilde g-},\ldots,k^{\tilde g+},\ldots,n^+)
+  = i\,\frac{\langle jk\rangle^3 [jk]}
+            {\langle12\rangle\langle23\rangle\cdots\langle n1\rangle}.
+\end{equation}
+\end{mdframed}
+
+Comparing with the pure-gluon MHV formula $A_n^{\rm MHV} = i\langle jk\rangle^4/(\ldots)$,
+the gluino numerator is $\langle jk\rangle^3[jk]$ instead of $\langle jk\rangle^4$.
+This is because:
+\begin{enumerate}
+  \item Each negative-helicity gluon contributes $\langle jk\rangle^2$ via
+        $\Tr[\slashed{p}_j(1-\gamma^5)\slashed{p}_k(1+\gamma^5)] = 4\langle jk\rangle^2$
+        from the 4-gamma trace identity (Ch.~41).
+  \item A negative-helicity \emph{Majorana} gluino contributes $\langle jk\rangle$
+        (one power less) because it carries helicity $h=-\tfrac12$ instead of $h=-1$.
+  \item The $[jk]$ factor comes from the spin sum \eqref{eq:majorana-spinsum}: since
+        $\sum_s u_s\bar u_s = -\slashed{p}$ and $p_{\alpha\dot\alpha} = \lambda_\alpha\tilde\lambda_{\dot\alpha}$,
+        the $\tilde\lambda$ factor of leg $j$ combined with the $\lambda$ factor of leg $k$
+        gives $[jk] = \tilde\lambda_j^{\dot\alpha}\tilde\lambda_{k\dot\alpha}$.
+\end{enumerate}
+
+\subsection{The Majorana $\tfrac{1}{2}$ factor and loop amplitudes}
+
+For loop amplitudes in SQCD/SYM, Majorana fermion loops contribute with a factor of
+$\tfrac{1}{2}$ relative to Dirac fermions.  This is essential for:
+\begin{itemize}
+  \item The one-loop beta function in $\mathcal{N}=1$ SQCD:
+        $\beta(g) = -\frac{g^3}{16\pi^2}(3N_c - N_f)$, where the $3N_c$ from gluino
+        loops uses the Majorana $\tfrac{1}{2}$.
+  \item Unitarity cuts: a Majorana fermion in the cut contributes $\tfrac{1}{2}\Tr[\slashed{l}]$
+        compared to a Dirac fermion's $\Tr[\slashed{l}]$.
+\end{itemize}
+
+\subsection{BCFW for Majorana}
+
+The Britto-Cachazo-Feng-Witten (BCFW) recursion relation extends naturally to Majorana
+fermions.  For a shift $\hat\lambda_j \to \lambda_j + z\lambda_k$,
+$\hat{\tilde\lambda}_k \to \tilde\lambda_k - z\tilde\lambda_j$ (a $[jk\rangle$ shift):
+\begin{equation}
+  A_n = \sum_{\text{diagrams}} A_L(\hat j, P) \frac{i}{P^2} A_R(-P, \hat k),
+\end{equation}
+where the sum over internal helicities for a Majorana intermediate state
+uses $\sum_s u_s\bar u_s = -\slashed{P}$ — \emph{the same completeness relation
+as for Dirac}, so the BCFW recursion is identical in form.
+
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Summary: Majorana $\leftrightarrow$ MHV connections}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Majorana property & Role in MHV/BCFW \\
+\midrule
+$\psi = C\bar\psi^T$ (self-conjugate) & No distinction $u/v$ in spin sum \\
+$\sum_s u_s\bar u_s = -\slashed{p}$ & Same $\slashed{p}$ as in Parke-Taylor spinors \\
+Wick $\tfrac{1}{2}$ factor & $\tfrac{1}{2}\Tr[\cdots]$ for Majorana loops \\
+Gluino in $\mathcal{N}=4$ SYM & $\langle jk\rangle^3[jk]$ vs.\ $\langle jk\rangle^4$ for gluons \\
+BCFW recursion & Identical form; Majorana = Dirac at tree level \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{mdframed}
+
+\vfill

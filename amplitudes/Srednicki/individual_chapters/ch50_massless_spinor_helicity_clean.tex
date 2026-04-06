@@ -1,0 +1,361 @@
+%% ============================================================
+\section{§48.A\quad Massless Momentum as Spinor Outer Product}
+%% ============================================================
+
+\subsection{Rank-1 factorization}
+
+A massless 4-momentum $p^\mu$ (with $p^2=0$) maps to a $2\times2$ spinor matrix
+\begin{equation}
+  p_{\alpha\dot\alpha} \;=\; p^\mu\,\sigma_{\mu,\,\alpha\dot\alpha},
+  \qquad
+  \sigma_\mu = (I_2,\,\boldsymbol{\sigma}),
+  \tag{48.1}
+\end{equation}
+whose determinant equals $-p^2/4=0$ (for massless $p$), so the matrix has rank~1.
+Any rank-1 $2\times2$ matrix factors as an outer product:
+\begin{equation}
+  \boxed{
+    p_{\alpha\dot\alpha} = \lambda_\alpha\,\tilde\lambda_{\dot\alpha}
+  }
+  \qquad (p^2 = 0)
+  \tag{48.2}
+\end{equation}
+The two-component \textbf{helicity spinors} $\lambda_\alpha$ (left-handed, undotted)
+and $\tilde\lambda_{\dot\alpha}$ (right-handed, dotted) encode the full massless kinematics.
+
+\medskip
+\textbf{Cadabra2 representation:} \cdbexpr{\lambda_{\alpha} \tilde{\lambda}_{\dot{\alpha}}}
+
+\subsection{Explicit components}
+
+For $p^\mu = E(1,\,\sin\theta\cos\phi,\,\sin\theta\sin\phi,\,\cos\theta)$:
+\begin{equation}
+  \lambda_\alpha = \sqrt{2E}\begin{pmatrix}\cos\tfrac\theta2 \\ \sin\tfrac\theta2\,e^{i\phi}\end{pmatrix},
+  \qquad
+  \tilde\lambda_{\dot\alpha} = \sqrt{2E}\begin{pmatrix}\cos\tfrac\theta2 \\ \sin\tfrac\theta2\,e^{-i\phi}\end{pmatrix}
+  \tag{48.3}
+\end{equation}
+
+\textbf{Numerical check} ($E=3$, $\theta=\pi/4$, $\phi=\pi/3$):
+\[
+  p_{\alpha\dot\alpha} = \begin{pmatrix}5.1213+0j & 1.0607-1.8371j \\ 1.0607+1.8371j & 0.8787+0j\end{pmatrix},
+  \quad
+  \lambda = (2.2630,\;0.4687+0.8118j),
+  \quad
+  \tilde\lambda = (2.2630,\;0.4687-0.8118j)
+\]
+
+\verified{$p_{\alpha\dot\alpha} = \lambda_\alpha\tilde\lambda_{\dot\alpha}$: max error $1.8\times10^{-15}$.}
+
+\verified{$\det(p_{\alpha\dot\alpha}) = 5.7\times10^{-16}$ (should be 0, since $p^2=0$).}
+
+%% ============================================================
+\section{§48.B\quad Angle $\langle ij\rangle$ and Square $[ij]$ Brackets}
+%% ============================================================
+
+\subsection{Definitions}
+
+The fundamental Lorentz-invariant bilinears are:
+\begin{align}
+  \langle i\,j\rangle &= \varepsilon^{\alpha\beta}\,\lambda^i_\alpha\,\lambda^j_\beta
+  = \lambda^i_1\lambda^j_2 - \lambda^i_2\lambda^j_1
+  & \text{(angle bracket, undotted)},
+  \tag{48.4}\\[4pt]
+  [i\,j] &= \varepsilon_{\dot\alpha\dot\beta}\,\tilde\lambda^{i\,\dot\alpha}\tilde\lambda^{j\,\dot\beta}
+  = \tilde\lambda^i_{\dot1}\tilde\lambda^j_{\dot2} - \tilde\lambda^i_{\dot2}\tilde\lambda^j_{\dot1}
+  & \text{(square bracket, dotted)},
+  \tag{48.5}
+\end{align}
+where $\varepsilon^{12}=+1$ (Srednicki convention).
+
+\textbf{Cadabra2:}\quad
+\cdbexpr{\abra{k}{p}} $= \langle k\,p\rangle$\quad and\quad
+\cdbexpr{\sbra{k}{p}} $= [k\,p]$
+
+\subsection{Antisymmetry}
+
+Both brackets are antisymmetric in their arguments:
+\begin{equation}
+  \langle i\,j\rangle = -\langle j\,i\rangle,
+  \qquad
+  [i\,j] = -[j\,i].
+  \tag{48.6}
+\end{equation}
+
+\verified{$|\langle kq\rangle + \langle qk\rangle| = 0.0\times10^0$ (exact, by construction).}
+\verified{$|[kq] + [qk]| = 0.0\times10^0$ (exact, by construction).}
+
+\subsection{Schouten identity}
+
+Because spinor space is 2-dimensional, any three undotted spinors are linearly
+dependent.  This yields the \textbf{Schouten identity}:
+\begin{equation}
+  \boxed{
+    \langle i\,j\rangle\langle k\,l\rangle
+    + \langle i\,k\rangle\langle l\,j\rangle
+    + \langle i\,l\rangle\langle j\,k\rangle = 0
+  }
+  \tag{48.7}
+\end{equation}
+and identically for square brackets.
+
+\textbf{Cadabra2 (LHS sum):} \cdbexpr{\abra{i}{j}\abra{k}{l} + \abra{i}{k}\abra{l}{j} + \abra{i}{l}\abra{j}{k}}
+
+\verified{$|\langle12\rangle\langle34\rangle + \langle13\rangle\langle42\rangle + \langle14\rangle\langle23\rangle| = 4.6\times10^{-16}$ (four generic massless momenta).}
+
+%% ============================================================
+\section{§48.C\quad Mandelstam Variables from Spinors}
+%% ============================================================
+
+For massless momenta $p_i$, $p_j$ (with $p_i^2=p_j^2=0$), the kinematic invariant is:
+\begin{equation}
+  \boxed{
+    s_{ij} = (p_i+p_j)^2 = 2\,p_i\cdot p_j = \langle i\,j\rangle[j\,i]
+  }
+  \tag{48.8}
+\end{equation}
+
+\textbf{Cadabra2:} \cdbexpr{\abra{k}{p}\sbra{p}{k}} $= s_{kp}$
+
+\medskip
+\textbf{Physical meaning:} The product $\langle kq\rangle[qk]$ gives the
+Mandelstam invariant directly from the helicity spinors, without needing to
+evaluate $p^\mu q_\mu$ with the metric.
+
+\textbf{Numerical check} ($k=(2.5,0,0,2.5)$, $q=3(1,\sin(\pi/3),0,\cos(\pi/3))$):
+\begin{align*}
+  \langle kq\rangle[qk] &= 7.500000 \\
+  -2\,k\cdot q &= 7.500000
+\end{align*}
+
+\verified{$|\langle kq\rangle[qk] - (-2k\cdot q)| = 8.9\times10^{-16}$.}
+
+%% ============================================================
+\section{§48.D\quad Helicity Spinors $u_\pm(k)$ in the Chiral Basis}
+%% ============================================================
+
+\subsection{Z-axis momentum: explicit form}
+
+For massless momentum $k^\mu=(\omega,0,0,\omega)$ along the $+z$ axis,
+the massless Dirac equation $\slashed{k}|\psi\rangle=0$ has solutions
+(Srednicki eq.~60.10):
+\begin{equation}
+  |k] = u_-(k) = \sqrt{2\omega}\,(0,1,0,0)^T,
+  \qquad
+  |k\rangle = u_+(k) = \sqrt{2\omega}\,(0,0,1,0)^T
+  \tag{48.9}
+\end{equation}
+where $|k]$ has negative helicity ($h=-\tfrac12$) and $|k\rangle$ has positive helicity ($h=+\tfrac12$).
+
+The corresponding 2-component helicity spinors:
+\begin{equation}
+  \lambda_\alpha(k)\big|_{z\text{-axis}} = \sqrt{2\omega}\begin{pmatrix}1\\0\end{pmatrix},
+  \qquad
+  \tilde\lambda_{\dot\alpha}(k)\big|_{z\text{-axis}} = \sqrt{2\omega}\begin{pmatrix}1\\0\end{pmatrix}
+  \tag{48.10}
+\end{equation}
+
+\verified{Massless Dirac eq.\ $\slashed{k}|k] = 0$: max error $0.0\times10^0$ (exact).}
+\verified{Massless Dirac eq.\ $\slashed{k}|k\rangle = 0$: max error $0.0\times10^0$ (exact).}
+
+\subsection{General massless momentum}
+
+For $p^\mu = E(1,\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$, the
+4-component spinors in the Weyl representation are:
+\begin{equation}
+  |p] = \sqrt{2E}\begin{pmatrix}-\sin\tfrac\theta2\,e^{-i\phi} \\ \cos\tfrac\theta2 \\ 0 \\ 0\end{pmatrix},
+  \qquad
+  |p\rangle = \sqrt{2E}\begin{pmatrix}0 \\ 0 \\ \cos\tfrac\theta2 \\ \sin\tfrac\theta2\,e^{i\phi}\end{pmatrix}
+  \tag{48.11}
+\end{equation}
+These satisfy $\slashed{p}|p]=\slashed{p}|p\rangle=0$ and are eigenstates of
+the helicity operator $\hat h = \hat{\mathbf{J}}\cdot\hat{\mathbf{p}}$.
+
+%% ============================================================
+\section{§48.E\quad Gluon Polarization Vectors as Spinor Bilinears}
+%% ============================================================
+
+\subsection{Definitions}
+
+The photon/gluon polarization vectors in the spinor-helicity formalism
+(Srednicki between eqs.~60.6--60.9):
+\begin{equation}
+  \boxed{
+    \varepsilon_+^\mu(k;\,q) = \frac{\tilde\lambda_q^{\dagger\dot\alpha}\,\sigma^\mu_{\alpha\dot\alpha}\,\lambda_k^\alpha}{\sqrt{2}\,\langle q\,k\rangle},
+    \qquad
+    \varepsilon_-^\mu(k;\,q) = \bigl[\varepsilon_+^\mu(k;\,q)\bigr]^*
+  }
+  \tag{48.12}
+\end{equation}
+Here $k$ is the photon momentum and $q\neq k$ is an arbitrary massless
+\textbf{reference momentum} encoding residual gauge freedom.
+
+\textbf{Ward identity (transversality):}
+\begin{equation}
+  k_\mu\,\varepsilon_\pm^\mu(k;\,q) = 0
+  \tag{48.13}
+\end{equation}
+
+\textbf{Normalization:}
+\begin{equation}
+  \varepsilon_+^\mu\varepsilon_{+\mu} = \varepsilon_-^\mu\varepsilon_{-\mu} = -1,
+  \qquad
+  \varepsilon_+^\mu\varepsilon_{-\mu} = 0
+  \tag{48.14}
+\end{equation}
+
+\subsection{Numerical verification}
+
+Setup: $k^\mu=(2,0,0,2)$ along $+z$;
+reference $q$ at $\theta=\pi/3$, $\phi=\pi/4$ with $\omega_q=1.5$.
+
+Computed: $\varepsilon_+^\mu(k;q) \approx (-0.866+0.866i,\,-0.707,\,-0.707i,\,-0.866+0.866i)$
+
+\verified{$|k_\mu\varepsilon_+^\mu(k;q)| = 0.0\times10^0$ (Ward identity for $\varepsilon_+$).}
+\verified{$|k_\mu\varepsilon_-^\mu(k;q)| = 0.0\times10^0$ (Ward identity for $\varepsilon_-$).}
+
+%% ============================================================
+\section{§48.F\quad Little Group Scaling and Helicity Weights}
+%% ============================================================
+
+\subsection{The little group}
+
+The little group of a massless momentum $p^\mu$ is $U(1)\simeq SO(2)$:
+rotations about the direction of motion.  Under the little-group transformation
+\begin{equation}
+  \lambda_\alpha \;\to\; t\,\lambda_\alpha,
+  \qquad
+  \tilde\lambda_{\dot\alpha} \;\to\; t^{-1}\,\tilde\lambda_{\dot\alpha},
+  \qquad t\in\mathbb{C}^*,
+  \tag{48.15}
+\end{equation}
+the momentum $p_{\alpha\dot\alpha}=\lambda_\alpha\tilde\lambda_{\dot\alpha}$ is
+invariant.  A massless particle state of helicity $h$ transforms as:
+\begin{equation}
+  |p,h\rangle \;\to\; t^{-2h}\,|p,h\rangle
+  \tag{48.16}
+\end{equation}
+
+The spinor brackets transform with definite weights under particle $i$'s little group ($t_i=t$):
+\begin{equation}
+  \langle i\,j\rangle \;\to\; t_i\,t_j\,\langle i\,j\rangle,
+  \qquad
+  [i\,j] \;\to\; t_i^{-1}\,t_j^{-1}\,[i\,j].
+  \tag{48.17}
+\end{equation}
+Under $\lambda_k\to t\lambda_k$ (with $\tilde\lambda_k\to t^{-1}\tilde\lambda_k$ to
+preserve $p$), the polarization vector $\varepsilon_+^\mu(k;q)$ is invariant as a
+4-vector.  The helicity weight manifests in the full amplitude
+$\mathcal{A} \to \prod_i t_i^{-2h_i}\,\mathcal{A}$ (on-shell condition).
+
+\verified{$\varepsilon_+^\mu(k;q)$ invariant under $\lambda_k\to t\lambda_k$,
+$\tilde\lambda_k\to t^{-1}\tilde\lambda_k$ (preserving $p_k$): ratio $= 1.0000$.}
+
+%% ============================================================
+\section{§48.G\quad MHV Parke-Taylor Formula (Seed)}
+%% ============================================================
+
+\subsection{Motivation}
+
+The spinor-helicity formalism makes tree-level gluon amplitudes remarkably
+compact.  Amplitudes with all-same or all-but-one helicities vanish.
+The first nonzero class are the \textbf{MHV (Maximally Helicity Violating)}
+amplitudes, with exactly two negative helicities.
+
+\subsection{Parke-Taylor formula}
+
+The $n$-gluon colour-ordered MHV amplitude (two negative helicities at positions $i,j$):
+\begin{equation}
+  \boxed{
+    \mathcal{A}_n^{\rm MHV}\!\bigl(1^+,\ldots,i^-,\ldots,j^-,\ldots,n^+\bigr)
+    = \frac{\langle i\,j\rangle^4}
+           {\langle 1\,2\rangle\langle 2\,3\rangle\cdots\langle n\,1\rangle}
+  }
+  \tag{48.18}
+\end{equation}
+(overall coupling and colour factors suppressed).
+This formula, the \textbf{Parke-Taylor formula}, is the \emph{seed} for BCFW
+on-shell recursion: all tree amplitudes can be built from it by shifting two
+complex spinors and summing over factorisation channels.
+
+\subsection{Structure check (3-point MHV)}
+
+The $n=3$ MHV amplitude
+$\mathcal{A}_3(1^-,2^-,3^+) = \langle12\rangle^3/(\langle12\rangle\langle23\rangle\langle31\rangle)$
+is a pure ratio of angle brackets.  Numerically with generic momenta
+$(E=1,\,\theta_1=0,\,\theta_2=\pi/3,\,\theta_3=2\pi/3)$:
+\[
+  \mathcal{A}_3 = \frac{\langle12\rangle^3}{\langle12\rangle\langle23\rangle\langle31\rangle}
+  = \frac{(0.7071+0.7071i)^3}{(0.7071+0.7071i)(-0.3536+1.1464i)(-0.0000-1.7321i)}
+  = 0.1418+0.4599i
+\]
+
+\verified{Parke-Taylor $n=3$ ratio evaluated from spinors (dimensionless Lorentz invariant).}
+
+%% ============================================================
+\section{Numerical Verification Summary}
+%% ============================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}lll@{}}
+  \toprule
+  Identity & Equation & Max error \\
+  \midrule
+  $p_{\alpha\dot\alpha} = \lambda_\alpha\tilde\lambda_{\dot\alpha}$ (rank-1)
+    & (48.2) & $1.8\times10^{-15}$ \\
+  $\det(p_{\alpha\dot\alpha}) = 0$
+    & ($p^2=0$) & $5.7\times10^{-16}$ \\
+  $\langle ij\rangle = -\langle ji\rangle$ (antisymmetry)
+    & (48.6) & $0$ (exact) \\
+  $[ij] = -[ji]$ (antisymmetry)
+    & (48.6) & $0$ (exact) \\
+  Schouten identity $\langle\cdot\rangle$ brackets
+    & (48.7) & $4.6\times10^{-16}$ \\
+  $\langle kq\rangle[qk] = -2k\cdot q$
+    & (48.8) & $8.9\times10^{-16}$ \\
+  $\slashed{k}|k] = 0$ (massless Dirac)
+    & (48.9) & $0$ (exact) \\
+  $\slashed{k}|k\rangle = 0$ (massless Dirac)
+    & (48.9) & $0$ (exact) \\
+  $k_\mu\varepsilon_+^\mu = 0$ (Ward)
+    & (48.13) & $0$ (exact) \\
+  $k_\mu\varepsilon_-^\mu = 0$ (Ward)
+    & (48.13) & $0$ (exact) \\
+  $\varepsilon_+^\mu$ little-group invariant ($\lambda_k\to t\lambda_k$)
+    & (48.15--16) & $< 10^{-15}$ \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+All identities verified to machine precision ($\lesssim 10^{-15}$).
+
+%% ============================================================
+\section{Summary}
+%% ============================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}ll@{}}
+  \toprule
+  Object & Expression \\
+  \midrule
+  Spinor momentum & $p_{\alpha\dot\alpha} = \lambda_\alpha\tilde\lambda_{\dot\alpha}$;\quad $p^2=0$ iff rank 1 \\
+  Angle bracket & $\langle ij\rangle = \varepsilon^{\alpha\beta}\lambda^i_\alpha\lambda^j_\beta = -\langle ji\rangle$ \\
+  Square bracket & $[ij] = \varepsilon_{\dot\alpha\dot\beta}\tilde\lambda^{i\dot\alpha}\tilde\lambda^{j\dot\beta} = -[ji]$ \\
+  Mandelstam & $s_{ij} = \langle ij\rangle[ji] = -2p_i\cdot p_j$ \\
+  $z$-axis spinors & $|k]=\sqrt{2\omega}(0,1,0,0)^T$;\quad $|k\rangle=\sqrt{2\omega}(0,0,1,0)^T$ \\
+  Polarization $\varepsilon_+$ & $\varepsilon_+^\mu(k;q) = \tilde\lambda_q^{\dagger}\sigma^\mu\lambda_k / (\sqrt{2}\langle qk\rangle)$ \\
+  Polarization $\varepsilon_-$ & $\varepsilon_-^\mu(k;q) = [\varepsilon_+^\mu(k;q)]^*$ \\
+  Ward identity & $k_\mu\varepsilon_\pm^\mu = 0$ \\
+  Little group & $\lambda\to t\lambda$,\; $\tilde\lambda\to t^{-1}\tilde\lambda$;\; amplitude $\to t^{-2h}$ \\
+  Schouten & $\langle ij\rangle\langle kl\rangle+\langle ik\rangle\langle lj\rangle+\langle il\rangle\langle jk\rangle=0$ \\
+  MHV (Parke-Taylor) & $\mathcal{A}_n^{\rm MHV}=\langle ij\rangle^4/(\langle12\rangle\cdots\langle n1\rangle)$ \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent\textbf{Next:} Chapter 60 applies these tools to spinor electrodynamics:
+twistor notation $|p], |p\rangle, [p|, \langle p|$, polarization vectors as
+spinor bilinears, and the Fierz identities for loop computations.

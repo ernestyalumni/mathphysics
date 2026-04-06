@@ -1,0 +1,82 @@
+\begin{mdframed}[backgroundcolor=blue!5]
+\textbf{Chapter 40 bridges the gap between Feynman rules (Ch.39) and
+observable cross sections.} Every experimental prediction requires
+summing over final spins and averaging over initial spins. This chapter
+shows how to do that efficiently using trace theorems.
+\end{mdframed}
+
+\section{Spin-Averaging Factors}\label{sec:averaging}
+For an unpolarized initial state:
+\begin{itemize}
+\item Fermion (spin-$\frac12$): average over 2 spin states $\to \frac12$
+\item Photon/gluon: average over 2 physical polarizations $\to \frac12$ (QED/QCD gauge)
+\end{itemize}
+For $e^+e^-\to\mu^+\mu^-$ at high energy ($s\gg m_\mu^2$):
+\begin{equation}
+\frac{d\sigma}{d\Omega}
+= \frac{\alpha^2}{4s}\left[1+\cos^2\theta\right] .
+\tag{40.$\star$}
+\end{equation}
+
+\section{Trace Method}\label{sec:trace_method}
+Squared amplitudes with closed fermion loops become traces:
+\begin{mdframed}[backgroundcolor=green!5]
+\begin{equation}
+\frac{1}{4}\sum_{\rm spins}|M|^2
+= \frac{1}{4}\,\Tr\bigl[(\slashed{p}_1+m)\gamma^\mu(\slashed{p}_2+m)\gamma^\nu\bigr]\;
+\Tr\bigl[(\slashed{p}_3+m')\gamma_\mu(\slashed{p}_4+m')\gamma_\nu\bigr] .
+\tag{40.1}
+\end{equation}
+\end{mdframed}
+Each closed fermion loop contributes one trace.
+
+\section{Trace Theorems}\label{sec:trace_theorems}
+Fundamental identities ($\eta=\mathrm{diag}(-1,+1,+1,+1)$):
+\begin{align}
+\Tr[\mathbf{1}] &= 4, &
+\Tr[\gamma^\mu\gamma^\nu] &= 4\eta^{\mu\nu}, \\[2mm]
+\Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma]
+&= 4\bigl(\eta^{\mu\nu}\eta^{\rho\sigma}
+          -\eta^{\mu\rho}\eta^{\nu\sigma}
+          +\eta^{\mu\sigma}\eta^{\nu\rho}\bigr) .
+\end{align}
+
+Contracted trace identity (used in every QED cross-section):
+\begin{equation}
+\Tr[(\slashed{p}_1+m)\gamma^\mu(\slashed{p}_2+m)\gamma^\nu]
+= 2\Bigl[p_1^\mu p_2^\nu + p_1^\nu p_2^\mu
+         -\eta^{\mu\nu}(p_1\cdot p_2-m^2)\Bigr] .
+\tag{40.2}
+\end{equation}
+
+\section{Helicity vs. Trace Method}\label{sec:vs_helicity}
+\begin{center}
+\begin{tabular}{|l|p{0.35\linewidth}|p{0.35\linewidth}|}
+\hline
+Feature & Trace Method & Helicity Method (Ch.42) \\
+\hline
+Output & Scalar products $p_i\cdot p_j$ & $\langle ij\rangle$, $[ij]$ \\
+Best for & Loops, fermions & Gluon tree amplitudes \\
+Result size & $O(n!)$ terms & Single expression for MHV \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Klein-Nishina (Compton Scattering)}\label{sec:compton}
+\begin{mdframed}[backgroundcolor=red!5]
+\begin{equation}
+\frac{d\sigma}{d\Omega}
+= \frac{\alpha^2}{2m_e^2}
+\left(\frac{\omega'}{\omega}\right)^2
+\left[\frac{\omega'}{\omega}+\frac{\omega}{\omega'}
+-\sin^2\theta\cos^2\phi\right] .
+\tag{40.$\star\star$}
+\end{equation}
+\end{mdframed}
+In the Thomson limit $\omega\gg m_e$: $\sigma\to\sigma_T=\frac{8\pi r_e^2}{3}$.
+
+\section{Significance for MHV Research}
+Ch.40 is the last chapter before Ch.42 that uses only Lorentz-covariant
+methods.  The trace theorems here are replaced by Schouten identities in the
+helicity formalism: the same algebraic structure, but packaged in spinor
+brackets that make helicity selection rules transparent.
