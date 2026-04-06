@@ -19,8 +19,9 @@ a short computation starting from one), and to highlight the few places where co
 \medskip
 \noindent\textbf{Metric and sign conventions:}
 \begin{itemize}
-  \item Srednicki uses the \emph{West coast} metric $g^{\mu\nu}=\mathrm{diag}(+1,-1,-1,-1)$.
-  \item Dixon uses the \emph{same} convention throughout arXiv:1310.5353.
+  \item Srednicki uses the \emph{mostly-plus} metric $g_{\mu\nu}=\mathrm{diag}(-1,+1,+1,+1)$ (Srednicki Eq.~2.4).
+  \item Dixon uses the \emph{mostly-minus} metric $g_{\mu\nu}=\mathrm{diag}(+1,-1,-1,-1)$ throughout arXiv:1310.5353.
+  \item \textbf{Warning:} These are \emph{opposite} conventions. When translating between them, factors of $(-1)$ can appear in $p^2$, $s_{ij}$, and propagators. We flag these explicitly below.
   \item Index raising/lowering: $\varepsilon^{12}=+1$, $\varepsilon_{12}=-1$
         (Srednicki eq.~34.22; see also Section~\ref{sec:spinor-products}).
 \end{itemize}
@@ -311,7 +312,7 @@ For a massless momentum $k^\mu$ with $k^2=0$, the $2\times2$ matrix:
   k_{\alpha\dot\alpha} = k^\mu(\sigma_\mu)_{\alpha\dot\alpha}
   = \begin{pmatrix}k^0+k^3 & k^1-ik^2\\ k^1+ik^2 & k^0-k^3\end{pmatrix}
 \end{equation}
-has $\det(k_{\alpha\dot\alpha})=-k^2/4=0$ (West coast metric). Hence it has rank 1 and \emph{factorizes}:
+has $\det(k_{\alpha\dot\alpha})=0$ for $k^2=0$. Hence it has rank 1 and \emph{factorizes}:
 \begin{equation}
   \boxed{k_{\alpha\dot\alpha} = \lambda_\alpha\,\tilde\lambda_{\dot\alpha}}
   \tag{Sred 50.1 / Dixon 3.2}
@@ -366,7 +367,7 @@ The positive energy projector for a massless right-handed spinor is:
   \tag{Dixon 3.5}
 \end{equation}
 
-In 2-component notation, using $\gamma_5 = \mathrm{diag}(+1,+1,-1,-1)$ (West coast Weyl rep):
+In 2-component notation, using $\gamma_5 = \mathrm{diag}(-1,-1,+1,+1)$ (Srednicki's mostly-plus Weyl rep):
 \begin{equation}
   (\lambda_i)_\alpha(\tilde\lambda_i)_{\dot\alpha} = (\slashed{k}_i)_{\alpha\dot\alpha}.
   \tag{Dixon 3.6 / Sred 50.1}
