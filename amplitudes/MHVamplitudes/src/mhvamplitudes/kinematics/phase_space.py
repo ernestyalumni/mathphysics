@@ -13,6 +13,34 @@ Region R_1 (SMGA eq. 25):
 Momentum conservation (half-collinear):
     sum_i omega_i = 0
     sum_i omega_i * tilde_z_i = 0
+
+Convention note: SMGA half-collinear frame vs Srednicki
+=======================================================
+
+This module generates phase-space points in the SMGA half-collinear frame,
+which is specific to (2,2) Klein signature. This frame has NO direct analogue
+in Srednicki's Lorentzian (1,3) framework.
+
+In the half-collinear limit (SMGA sec. 2):
+    - All holomorphic spinors become proportional: |i> ~ |1> (z_i -> z for all i)
+    - The angle brackets <ij> = z_i - z_j -> 0
+    - Momenta are parametrized entirely by (omega_i, tilde_z_i)
+    - The 4-momentum is p_i^{mu} ~ omega_i * q^{mu} + O(epsilon) where
+      q is the common collinear direction
+
+In Srednicki's Lorentzian framework:
+    - Collinear limits exist but single-minus amplitudes A(1^-,2^+,...,n^+) = 0
+      identically (by helicity selection rules / holomorphy of MHV amplitudes)
+    - Phase-space generators would use explicit 4-momenta satisfying
+      p^2 = 0 and momentum conservation sum p_i = 0
+    - Spinors are complex: lambda_i and tilde_lambda_i are related by
+      complex conjugation for real momenta
+
+The omega_i parameters here are NOT the same as energies in Srednicki. They
+are components of the tilde-lambda spinors along a reference direction. The
+sign of omega_i determines the "region" (R_1, R_2, ...) and hence which
+helicity configurations give nonzero amplitudes in (2,2) signature. In
+Lorentzian signature, all omega_i would be positive for physical momenta.
 """
 
 import numpy as np

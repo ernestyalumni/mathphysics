@@ -15,6 +15,37 @@ where:
 
 Particles are 1-indexed in the physics convention but 0-indexed in code:
     paper particle 1 -> code index 0, etc.
+
+Convention note: Why this formula has no Srednicki analogue
+===========================================================
+
+This closed-form formula computes single-minus gluon tree amplitudes
+A(1^-, 2^+, ..., n^+) in (2,2) Klein signature. In Srednicki's Lorentzian
+(-,+,+,+) signature, these amplitudes vanish IDENTICALLY:
+
+    A_tree(1^-, 2^+, ..., n^+) = 0  for all n >= 3  [Lorentzian]
+
+This is a consequence of the supersymmetric Ward identities / the
+holomorphy of MHV amplitudes. The Parke-Taylor formula
+    A(i^-, j^-, rest^+) = <ij>^4 / (<12><23>...<n1>)
+only gives nonzero results for configurations with exactly 2 minus-helicity
+gluons (MHV), not 1 minus (which would be "anti-googly" or "all-plus-one-minus").
+
+The SMGA paper's key insight is that in (2,2) signature, the reality conditions
+change: lambda and tilde-lambda are both real and independent, the holomorphy
+argument breaks down, and single-minus amplitudes become nonzero piecewise-
+constant functions (taking values in Z / 2^{n-2}).
+
+The sg_{ij} function below computes sg([ij]) = sg(omega_i * omega_j * (tz_i - tz_j)).
+In Srednicki's framework, [ij] is complex, so sg([ij]) is not defined. The
+entire piecewise-constant structure — chambers separated by walls where some
+[ij] = 0 — is specific to the real kinematics of (2,2) signature.
+
+The "stripped" amplitude A_{1...n} here is related to the full color-ordered
+partial amplitude by A_{full} = PT_{1...n} * A_{1...n} where PT is the
+Parke-Taylor denominator 1/(<12><23>...<n1>). In Srednicki's notation, the
+color decomposition is given in Chapter 60 (eq. 60.25), and the stripped
+amplitude corresponds to removing the Parke-Taylor prefactor.
 """
 
 from ..kinematics.spinor_helicity import sg

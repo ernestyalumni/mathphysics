@@ -24,6 +24,90 @@ Convention: the LAST particle in the label list is minus-helicity.
 To compute A_{1,...,n} with particle 1 minus, use cyclicity:
     A_{1,...,n} = A_{2,...,n,1}
 and call stripped_amplitude((2,...,n,1)).
+
+Convention comparison: SMGA Berends-Giele vs Srednicki / standard BG
+=====================================================================
+
+WHAT IS "BERENDS-GIELE RECURSION"?
+
+The name "Berends-Giele" refers to a general technique (Berends & Giele,
+Nucl. Phys. B306 (1988) 759) for computing tree-level gluon amplitudes
+by recursively building off-shell currents. The SMGA paper adapts this
+idea to their specific context but with significant differences from the
+standard Lorentzian version.
+
+STANDARD BG (Srednicki / Lorentzian):
+    - Constructs off-shell currents J^{mu}(1,2,...,k) recursively
+    - Uses the Yang-Mills 3-gluon and 4-gluon vertices from the Lagrangian
+    - Propagators are i/(P^2 + i*epsilon) with P = sum of momenta
+    - The amplitude is obtained by amputating the final propagator
+    - Srednicki discusses Yang-Mills vertices in Ch. 72 (eq. 72.7) with
+      structure constants f^{abc} normalized via [T^a, T^b] = i*f^{abc}*T^c
+    - Srednicki's color-ordering strips f^{abc} down to partial amplitudes
+      (Ch. 60), and BG recursion can be formulated for these partial amplitudes
+
+SMGA BG (this code / Klein (2,2)):
+    - Does NOT use Feynman-rule vertices from the Lagrangian directly
+    - Instead uses "vertex functions" V and V-bar defined combinatorially
+      via products of sign functions and Heaviside step functions
+    - The key objects are:
+        V: product of sg_{k,k+1} * Theta(-ratio)  [SMGA eq. 7]
+        V-bar: product of sg_{k,k+1} * Theta(+ratio)
+        PT-hat = V - V-bar  (on-shell Parke-Taylor, stripped)
+    - These vertex functions encode the piecewise-constant structure of
+      amplitudes in (2,2) signature — they are NOT smooth functions of momenta
+    - Propagators are absent because the amplitudes are piecewise constant:
+      1/P^2 factors cancel against numerator factors in the half-collinear limit
+    - The recursion produces the STRIPPED amplitude directly, not an off-shell current
+
+KEY STRUCTURAL DIFFERENCES:
+
+1. VERTEX FUNCTIONS:
+    - Srednicki: 3-gluon vertex ~ f^{abc}[g^{mu nu}(k1-k2)^rho + cyclic]
+      (eq. 72.7). 4-gluon vertex ~ f^{abe}f^{cde}[g^{mu rho}g^{nu sigma} - ...]
+      (eq. 72.8). These are smooth (polynomial) functions of momenta.
+    - SMGA: V and V-bar involve step functions Theta and sign functions sg.
+      They are piecewise constant with discontinuities at chamber walls.
+      There is no 4-gluon vertex analogue; the recursion structure is different.
+
+2. PROPAGATORS:
+    - Srednicki: Gluon propagator in Feynman gauge:
+      i*delta^{ab}*(-g^{mu nu}) / (k^2 + i*epsilon)  (eq. 72.6)
+    - SMGA: No propagators appear. The half-collinear limit is a degenerate
+      kinematic regime where s_{ij} -> 0 but ratios remain finite. The
+      piecewise-constant result emerges after all propagator poles cancel.
+
+3. COLOR STRUCTURE:
+    - Srednicki: Full amplitudes involve color factors f^{abc}; partial
+      (color-ordered) amplitudes are obtained after color decomposition.
+      Structure constants use [T^a, T^b] = i*f^{abc}*T^c.
+    - SMGA: Works directly with color-ordered (partial) amplitudes.
+      The recursion is formulated for the stripped amplitude, which is
+      the partial amplitude divided by the Parke-Taylor denominator.
+
+4. CYCLICITY AND MINUS-PARTICLE PLACEMENT:
+    - Srednicki: Color-ordered amplitudes A(1,2,...,n) are invariant under
+      cyclic permutations. The minus-helicity particles can be anywhere.
+    - SMGA: Same cyclic symmetry. This code places the minus-helicity
+      particle LAST in the label list (the recursion partitions the
+      preceding plus-helicity particles). To compute A_{1^-,2^+,...,n^+},
+      we use cyclicity to get A_{2^+,...,n^+,1^-}.
+
+5. GAUGE CHOICE / REFERENCE SPINOR:
+    - Srednicki: MHV computations often use a reference spinor |q] for
+      plus-helicity polarization vectors (Ch. 60). Results are q-independent.
+    - SMGA: No explicit gauge choice. The half-collinear frame is a
+      specific kinematic limit, not a gauge choice. The vertex functions V
+      and V-bar implicitly encode the gauge structure through the Parke-Taylor.
+
+6. REALITY CONDITIONS:
+    - Srednicki: In Lorentzian signature, spinor brackets are complex.
+      The recursion produces complex amplitudes. For single-minus
+      configurations, the result is zero.
+    - SMGA: In Klein (2,2) signature, all brackets are real. The recursion
+      produces real, piecewise-constant amplitudes taking values in Z/2^{n-2}.
+      The sign function sg() and step function Theta() are well-defined
+      precisely because the brackets are real.
 """
 
 import numpy as np
@@ -111,6 +195,14 @@ class BerendsGieleRecursion:
         -------
         float
             The vertex value (0 or +/-1).
+
+        Srednicki comparison:
+            This has no direct analogue in Srednicki. The closest object is
+            the color-ordered 3-gluon vertex (Srednicki eq. 72.7, stripped of
+            color), but V is defined for an ARBITRARY number of vectors, not
+            just 3. V is piecewise constant (0 or +/-1) — it is not a smooth
+            function of momenta. The Theta function and sg function are only
+            meaningful because all brackets are real in (2,2) signature.
         """
         n = len(vectors)
         if n <= 1:
@@ -181,6 +273,16 @@ class BerendsGieleRecursion:
 
         This is the LSZ-reduced Parke-Taylor factor that appears in the
         recursion for the stripped amplitude (SMGA below eq. 8).
+
+        Srednicki comparison:
+            The Parke-Taylor formula in Srednicki is (eq. 60.31):
+                A(i^-,j^-,...) = <ij>^4 / (<12><23>...<n1>)
+            which is a smooth, complex-valued function of the kinematics.
+            PT-hat here is the STRIPPED, ON-SHELL, PIECEWISE-CONSTANT version
+            in (2,2) signature: it takes values in {-1, 0, +1}. The
+            relationship is: the full Parke-Taylor = PT-hat * product of
+            angle brackets (which diverge in the half-collinear limit), and
+            the stripped amplitude = full amplitude / full Parke-Taylor.
         """
         return self.vertex_V(vectors) - self.vertex_Vbar(vectors)
 
@@ -201,6 +303,21 @@ class BerendsGieleRecursion:
         -------
         float
             The preamplitude value.
+
+        Srednicki comparison:
+            The preamplitude A-bar_S is the SMGA analogue of the Berends-Giele
+            off-shell current J^mu(q,...,p) in Srednicki/standard BG. However:
+            - Standard BG current J carries a Lorentz index mu and is a
+              complex-valued vector function of momenta
+            - A-bar_S is a scalar, real-valued, piecewise-constant function
+            - The base cases differ: Srednicki's J^mu(q) = epsilon^mu(q) (the
+              polarization vector), while A-bar_q = 1 (dimensionless)
+            - A-bar_{qp} = 0 because in the half-collinear limit, the 2-particle
+              off-shell current has its propagator pole cancelled. In standard BG,
+              J^mu(q,p) is generically nonzero.
+            - The recursion sums over partitions into >= 3 blocks (not >= 2 as
+              in standard BG), because the "2-block" contribution is absorbed
+              into the definition of V.
         """
         S = tuple(S)
         if S in self._preamplitude_cache:
