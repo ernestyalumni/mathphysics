@@ -29,6 +29,10 @@ chNN_<topic>.log         # LaTeX build artifact
 
 **Only commit `.py` files and any `.md` files you create. Never commit build artifacts.**
 
+Exception: `Srednicki_Companion_Full.pdf` is the curated full companion output and may be
+committed when `Srednicki_Companion_Full.tex` changes. Do not commit the full companion
+LaTeX intermediates (`.aux`, `.log`, `.out`, `.toc`, `.fls`, `.fdb_latexmk`).
+
 ## Running Scripts
 
 All Cadabra2 scripts run inside Docker:

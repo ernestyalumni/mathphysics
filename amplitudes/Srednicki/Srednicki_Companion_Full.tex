@@ -11,14 +11,13 @@
 
 %% ---- Layout ----
 \usepackage[margin=1.1in, headheight=15pt]{geometry}
-\usepackage{fullpage}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{colortbl}
 
 %% ---- Color & links ----
 \usepackage{xcolor}
-\usepackage{hyperref}
+\usepackage[hypertexnames=false]{hyperref}
 \hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
 
 %% ---- Headers ----
@@ -31,7 +30,7 @@
 
 %% ---- Physics packages ----
 \usepackage{slashed}
-\usepackage{mhchem}
+\usepackage[version=4]{mhchem}
 \usepackage{mdframed}
 
 %% ---- tcolorbox ----
@@ -85,6 +84,15 @@
   breakable
 }
 
+%% ---- Chapter assembly helpers ----
+\newcommand{\inputstandalonechapter}[1]{%
+  \begingroup
+  \renewcommand{\tableofcontents}{}%
+  \renewcommand{\newpage}{}%
+  \input{#1}%
+  \endgroup
+}
+
 %% ============================================================
 \title{\textbf{Srednicki Quantum Field Theory}\\[8pt]
        \large Complete Cadabra2 Companion\\[4pt]
@@ -101,7 +109,7 @@
 %% ============================================================
 \chapter{Ch.\ 34 --- Left- and Right-Handed Spinor Fields}
 %% ============================================================
-\input{individual_chapters/ch34_left_right_spinors_clean}
+\inputstandalonechapter{individual_chapters/ch34_left_right_spinors_clean}
 
 %% ============================================================
 \chapter{Ch.\ 35 --- Manipulating Spinor Indices}
