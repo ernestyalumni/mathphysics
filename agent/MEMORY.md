@@ -53,7 +53,11 @@ See `RESEARCH-AGENDA.md`, `DISCOVERY-LOOPS.md`, `EVAL-AND-TOOLING.md`, `MARKETIN
 
 ## Status / Open Threads
 
-- (Update each session.) Initial seeding by Cyclonus on 2026-06-16. No discovery loops registered yet. No evals built yet. Marketing pipeline empty.
+- **2026-07-19:** MHV reproduction baseline is stronger than the stale April task files indicated. Focused amplitude tests pass 43/43; Script 08 passes; full suite has 62 passes and 2 unrelated failures in pre-existing uncommitted massless-spinor work.
+- The source paper proves an all-n formula. Our finite `n = 3..10` comparison is a reproducibility/product artifact, not an extension or new result.
+- Active critical path: `tasks/TASK-000-baseline-reproducibility.md` → `TASK-009-demo-dashboard.md` → durable TASK-002/TASK-003 evidence reports.
+- First true discovery experiment remains after the reproducible baseline and must exclude cyclic relabelings/already-covered chambers.
+- No complete discovery loop or eval has shipped yet.
 
 ## Working rules (recap)
 

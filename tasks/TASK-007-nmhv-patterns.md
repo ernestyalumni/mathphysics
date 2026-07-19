@@ -1,38 +1,35 @@
-# TASK-007 — NMHV / multi-minus pattern search (discovery)
+# TASK-007 — NMHV / multi-minus pattern search
 
-Status: TODO
+Status: DEFERRED UNTIL AFTER 2026-07-27
 Priority: P2
-Depends on: TASK-002 (engine + regime machinery)
-Estimated size: 1–2 sessions; timebox
-Branch suggestion: `feat/task-007-nmhv`
+Depends on: TASK-002, TASK-004
+Estimated size: multiple time-boxed sessions
+Branch suggestion: `experiment/task-007-nmhv-patterns`
 
 ## Goal
 
-Look for closed-form or structured behavior of NMHV (three-minus) and multi-minus
-amplitudes in half-collinear regimes — the natural "one step harder" ladder after the
-single-minus results. Also the first place graviton generalization could enter (the SMGA
-paper mentions it directly).
+Determine whether the verifier-and-pattern-search workflow transfers from the single-minus half-collinear problem to the smallest nontrivial multi-minus configurations. A useful negative map is acceptable; novelty is not required.
 
-## Method
+## First bounded experiment
 
-1. In the R₁ regime machinery from TASK-002/003, evaluate NMHV configurations for
-   n = 5…8 (all inequivalent minus-position placements, using cyclic/reflection symmetry
-   to reduce the set).
-2. Normalize the same way SMGA strips their amplitudes; tabulate.
-3. Pattern-hunt with the same candidate family as TASK-006 (sign-function products,
-   ratios of sign-function products, low-degree rational functions of the regime
-   parameters). Fit on one point set, verify on a disjoint set.
-4. Optional stretch: repeat one small case (n = 5) for gravitons via KLT/double-copy from
-   the gluon engine, if the gluon side is solid.
+1. Choose exactly one helicity family and multiplicities `n = 5, 6`.
+2. Write down conventions and the known reference expression before generating candidates.
+3. Generate reproducible kinematic samples with held-out seeds.
+4. Fit only a predeclared, small candidate-expression class.
+5. Test survivors on held-out points and against soft/collinear limits.
+6. Run a literature search before using the word “new.”
 
 ## Deliverables
 
-- `amplitudes/scripts/11_nmhv_patterns.py`
-- `amplitudes/results/nmhv_patterns.md` — tables + candidate fits + verification stats,
-  negative results included.
+- `amplitudes/experiments/nmhv/README.md` with hypothesis class and stop condition.
+- One runnable experiment script.
+- `amplitudes/results/nmhv-first-map.md`, including failed candidate families.
+- A discovery log only if an actual proposer/critic/verifier loop ran.
 
 ## Definition of done
 
-n = 5, 6 NMHV tables exist with at least one candidate-form fit attempted and its
-verification outcome recorded. Anything promising gets escalated into its own task file
-(create `TASK-0XX-*.md` and link it from `tasks/README.md`).
+The experiment can be reproduced from a fixed command, all seeds and tolerances are logged, and the report clearly separates known reference results, fitted conjectures, held-out verification, and unresolved cases.
+
+## Stop condition
+
+Stop after two sessions or 20 candidate families, whichever comes first. Re-scope before spending more time.

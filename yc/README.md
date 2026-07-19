@@ -1,43 +1,38 @@
-# yc/ — Y Combinator Application Kit
+# Public YC Companion — TMP Fall 2026
 
-**Deadline: Sunday, July 27, 2026** (https://www.ycombinator.com/apply)
-Application in progress at: https://apply.ycombinator.com/apps/f5c17dff-08c6-4400-8dfe-b6edaef88a04/edit
-Today-anchor: this kit was drafted 2026-07-19 → **8 days**.
+**Drafted:** 2026-07-19
+**Official on-time deadline:** 2026-07-27 at 8:00 PM PT
+**Internal submit target:** 2026-07-25
 
-## What we're applying with
+This directory contains public-safe product language and rehearsal material for TMP's YC application. Authenticated application links, equity, employment, user/revenue facts, and other private founder information do not belong in this public research repo.
 
-**TMP — a discovery engine for theoretical & mathematical physics.** AI agents that
-conjecture, compute, and *verify* results in QFT / scattering amplitudes, grounded in
-symbolic computation (Cadabra2, SymPy, FORM), with a physics-hallucination eval suite as
-the commercial wedge. First domain: MHV / single-minus gluon amplitudes, benchmarked
-against arXiv:2602.12176v2. Long arc: arXiv milestone papers → Nobel/Fields-level problem
-programs run as agent fleets.
+## Product thesis
 
-## Files in this kit
+TMP is an AI research system for theoretical physics that generates candidate calculations, checks them with independent symbolic or numerical verifiers, and records why each result passed, failed, or remained inconclusive.
 
-| File | What | Status |
-|------|------|--------|
-| `application-answers.md` | Draft answers to every YC form question | DRAFT — Ernest reviews, fills `[FILL]`s |
-| `founder-video-script.md` | 1-minute founder video script + shooting notes | DRAFT |
-| `demo-video-script.md` | ~2-min product demo script (uses TASK-009 dashboard) | Blocked on TASK-009 |
-| `pitch-deck.md` | 10-slide deck, one section per slide with speaker notes | DRAFT |
+The first wedge is scattering amplitudes. The current prototype implements two separate code paths from arXiv:2602.12176v2—a closed-form expression and the paper's specialized recurrence—and compares them through `n = 10`. This is a reproducibility milestone, not an extension beyond the paper's all-`n` result and not an original discovery.
 
-## 8-day plan (owner: Ernest unless tagged AGENT)
+## Files
 
-| Day | Do | Output |
-|-----|----|--------|
-| Jul 19–20 | AGENT: TASK-001 + TASK-003 (engine + Eq.16 verification) | passing tests, results JSON |
-| Jul 20–21 | AGENT: TASK-009 demo dashboard | one-command demo |
-| Jul 21 | Ernest: review `application-answers.md`, fill `[FILL]`s, paste into the YC form (save draft early — the form autosaves per question) | form 80% done |
-| Jul 22 | Ernest: record founder video (1 take culture — 3 takes max), unlisted YouTube upload | video link in form |
-| Jul 23 | Ernest: record demo video off the dashboard using `demo-video-script.md` | demo link in form |
-| Jul 24 | AGENT: red-team pass — read the full application as a skeptical YC partner, list the 5 hardest interview questions + suggested answers into `yc/red-team.md` | red-team memo |
-| Jul 25 | Ernest: final edit + **submit** (do NOT ride it to Jul 27; submit 2 days early) | submitted |
-| Jul 26–27 | Buffer only | — |
+| File | Purpose | Status |
+|---|---|---|
+| `application-answers.md` | Public-safe answer language; private facts omitted | DRAFT |
+| `founder-video-script.md` | Bullet rehearsal guide; do not recite | DRAFT |
+| `demo-video-script.md` | Product-demo shot list | Blocked on TASK-009 |
+| `pitch-deck.md` | Ten-slide outline | DRAFT, lower priority |
 
-## Honesty rules for every artifact in this directory
+## Technical critical path
 
-- Reproduction results are described as reproductions; conjectures as conjectures.
-- No revenue, users, or LOIs are claimed unless they exist.
-- claw-dj (H Company hackathon) is cited as evidence Ernest ships fast — it is a separate
-  side project, and the application says so plainly if asked.
+1. TASK-000 — reproducible developer/test entry point.
+2. TASK-009 — passing and deliberately failing demo cases plus evidence ledger.
+3. TASK-002/TASK-003 — persistent reproduction reports with run metadata.
+4. Record videos only after the behavior and numbers are frozen.
+
+## Truth rules
+
+- The 2026 paper reports that GPT-5.2 Pro conjectured its key formula and that another model proved it; the authors checked it using recurrence and consistency relations.
+- Our current code reproduces known work using separately implemented code paths derived from that paper.
+- Do not say our `n = 10` checks go beyond an all-`n` result.
+- Do not claim users, revenue, pilots, market prices, or original physics without evidence.
+- Keep the long-term scientific ambition distinct from the near-term product proof.
+- Publishing, uploading, or submitting requires Ernest's approval.

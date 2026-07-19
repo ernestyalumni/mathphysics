@@ -1,123 +1,83 @@
-# YC Application — Draft Answers
+# YC Application — Public-Safe Draft Language
 
-Paste-ready drafts for the standard YC form questions. `[FILL]` marks facts only Ernest
-can supply — do not submit with any `[FILL]` remaining. Keep answers in your own voice;
-these are 90% drafts, not scripts. YC reads for clarity and honesty, not polish.
-
----
+**Status:** DRAFT
+**Note:** The exact authenticated form, personal/company facts, and character limits are maintained outside this public repo. No text here should be pasted without Ernest's review.
 
 ## Company name
 
-TMP Labs *(working name — alternatives: Amplitude Labs, Verifier Physics. Pick one and
-stop thinking about it; YC does not care about names.)*
+TMP *(working name)*
 
-## Describe what your company does (50 characters)
+## Short description
 
-AI agents that discover and verify new physics.
+AI agents that verify theoretical-physics calculations.
 
-## What is your company going to make? Please describe your product and what it does or will do.
+## What will the company make?
 
-We build a discovery engine for theoretical and mathematical physics: fleets of AI agents
-that read the literature, conjecture new results, and — the part that matters — **verify
-every claim with symbolic and numerical computation** (Cadabra2, SymPy, FORM) before it's
-allowed to be called a result. LLMs are already good enough to conjecture real physics: in
-Feb 2026, a GPT-5.2-conjectured closed form for single-minus gluon amplitudes was published
-by Strominger's group (arXiv:2602.12176). The bottleneck isn't ideas — it's trustworthy
-verification at scale. That's what we automate.
+TMP is an AI research system for theoretical physics. It generates candidate calculations, routes them to independent symbolic or numerical checks, and records an explicit pass, failure residual, or inconclusive result.
 
-Two products come out of the same engine: (1) the research engine itself, which does the
-work of a team of graduate students — our milestones are arXiv papers it materially
-produced; (2) a physics-hallucination eval suite and verifier API, where every test item is
-machine-gradable by our symbolic backends — sold to frontier AI labs, who currently pay
-heavily for exactly this kind of hard, un-gameable reasoning eval.
+We are starting with scattering amplitudes, where plausible output can still be wrong by a sign, convention, symmetry, or physical limit. The long-term product is a research workspace in which agents can explore aggressively because verification and provenance are built into the loop.
 
-## Why did you pick this idea to work on? Do you have domain expertise in this area? How do you know people need what you're making?
+## Why this problem?
 
-I hold a graduate degree in Theoretical and Mathematical Physics from LMU Munich [FILL:
-exact degree/program wording], and I've spent [FILL: N] years building GPU/CUDA numerical
-and simulation software in industry [FILL: 1-line strongest industry credential]. This is
-the field I was trained for, now attackable with tools that didn't exist two years ago.
+Language models can produce convincing physics that is subtly wrong. Computer algebra systems can reliably execute specified calculations, but an expert still has to decide what to try, maintain conventions, run independent checks, and preserve negative results.
 
-Demand evidence: frontier labs (OpenAI, Google DeepMind, Anthropic) are publicly racing to
-demonstrate AI-driven science — the 2602.12176 paper *is* OpenAI demonstrating demand — and
-labs pay for expert-constructed hard evals (FrontierMath-style) precisely because they can't
-generate trustworthy ones internally. Meanwhile theory groups run on grad-student labor
-that costs ~$80k/yr/person and is chronically scarce.
+TMP connects those two modes: a creative proposer and a deliberately boring verifier with a persistent evidence ledger.
 
-## What's new about what you're making? What substitutes do people resort to because it doesn't exist (or they don't know about it)?
+## Founder fit
 
-New: verifier-in-the-loop discovery. Everyone else demos an LLM writing plausible physics;
-we wire the LLM to symbolic engines that mechanically check every sign, index, and limit,
-so wrong conjectures die in seconds instead of surviving into papers. Substitutes today:
-grad students (scarce, slow), Mathematica in expert hands (not autonomous), and raw LLMs
-(hallucinate silently — wrong signs and index placements that read as correct).
+Ernest has a B.S. in Physics from Caltech, an M.Sc. in Physics from LMU Munich's Theoretical and Mathematical Physics program, and production aerospace software experience across embedded C++, Rust, CUDA, and Python. That combination supports both the domain work and the reliability discipline required to build the product.
 
-## Who are your competitors? What do you understand about your business that they don't?
+## Key insight
 
-Frontier labs' internal science teams (OpenAI's work with Strominger et al.), Google
-DeepMind (AlphaProof/AlphaEvolve lineage), academic groups using LLMs ad hoc, and
-math-adjacent startups (Harmonic, Axiom-style formal-math efforts). What we understand:
-formal proof (Lean) is the wrong substrate for theoretical physics — physicists work in
-computer algebra, and the verification layer that matters is symbolic computation with
-correct conventions (metric signatures, spinor conventions), which is exactly the
-unglamorous expertise we have and labs keep getting silently wrong. Also: labs will pay
-for evals *from outside* precisely because internal evals leak into training.
+Proposal and verification should be separate systems with different incentives. The agent can be creative and cheap to rerun; the verifier should be deterministic wherever possible and must be allowed to reject the claim or return “inconclusive.”
 
-## How do or will you make money? How much could you make?
+Scattering amplitudes are a useful first wedge because exact identities, recurrence relations, symmetries, and soft/collinear limits make correctness measurable.
 
-Near-term: (1) eval-suite licensing + private benchmark runs for frontier labs — deals in
-this market run $[FILL: research current FrontierMath/Epoch-style deal sizes]00k+/yr per
-lab; (2) verifier API + research-agent platform for physics and physics-adjacent R&D
-groups (national labs, quant firms, aerospace) on seats + compute. Long-term: the lab that
-owns verified AI-driven discovery in physics owns a piece of every downstream result. The
-honest version: this starts as a high-margin evals/tooling business with a research lab
-attached, and the research lab is the moat and the marketing.
+## Current progress
 
-## How far along are you?
+- A Python implementation of the closed-form expression from arXiv:2602.12176v2.
+- A separate implementation of the specialized recurrence described in the same paper.
+- Focused unit/integration suite: 43 tests passed on 2026-07-19.
+- Code-path comparison through `n = 10`.
+- Standalone checks of explicit low-multiplicity expressions, discrete structure, cyclicity, and a soft theorem.
 
-- Working spinor-helicity + amplitude computation stack (Python package with tests, 8
-  verification scripts: color/Fierz identities, Parke-Taylor, soft limits, SMGA stripped
-  amplitudes) in a public repo [FILL: link].
-- Reproduction of arXiv:2602.12176's results with independent verification of their
-  Eq.(16) to n = 10, beyond the paper's published checks [status: in progress this week —
-  update before submitting].
-- Symbolic verification layer over Cadabra2/SymPy with known-answer tests.
-- Agent-orchestration layer (multi-agent task board, autonomous sessions) already running
-  this repo day-to-day.
-- Related shipping proof: built claw-dj, an autonomous DJ agent, at the H Company
-  hackathon [FILL: result/placement], solo, in [FILL: timeframe].
+This is a verified reproduction of a known result. The paper itself gives an all-`n` formula and proof, so our finite-range test is an engineering/reproducibility milestone—not evidence that we extended the physics.
 
-## How long have each of you been working on this? Full-time?
+## Competitors and substitutes
 
-Working on the physics-agent stack since [FILL: month] 2026, alongside contract/interview
-pipeline; going full-time on it through the batch. [Adjust to reality — do not overstate.]
+- General LLM assistants propose derivations but do not provide dependable ground truth.
+- Mathematica, FORM, Cadabra2, SymPy, and theorem provers verify bounded tasks but generally require expert-directed workflows.
+- Scientific-agent systems automate broader research tasks; TMP's starting point is physics-specific verifier contracts and evidence persistence.
 
-## Who writes code, or does other technical work on your product?
+These systems are inputs and complements, not merely competitors.
 
-Ernest Yeung — 100%. All research, code, and agent infrastructure. [If applying solo,
-answer the solo-founder question head-on: you've shipped an entire working stack alone in
-months; you're open to a cofounder with [FILL: complementary skill] and have [FILL: any
-actual candidate/network, else delete].]
+## Users and go to market
 
-## What is your company going to do next? (or: What's your plan for the batch?)
+The first potential users are theoretical-physics researchers and scientific-AI teams with calculations that can be rejected by exact identities or physical constraints. The working plan is to release a reproducible benchmark, recruit design partners directly, and integrate one painful existing calculation per team.
 
-Batch goal: ship the first arXiv paper with a genuinely new, machine-verified result in
-gluon amplitudes (regions beyond R₁ / NMHV extensions — concrete candidate results already
-mapped), and close 2 paid eval-suite pilots with AI labs. Demo-day story: "our agents found
-and verified something humans hadn't, and labs pay us to test their models against it."
+This is a hypothesis until real user conversations support it. Do not claim users or demand in this public draft.
 
-## Equity / legal
+## Business model hypothesis
 
-[FILL: not yet incorporated / incorporated as X. If not incorporated: say so plainly;
-YC handles incorporation at funding. 100% Ernest.]
+Paid private team workspaces plus managed model/compute usage, with public local verifiers and benchmarks supporting adoption. Collaboration, private research context, audit logs, and domain integrations are candidate paid features.
 
----
+No pricing or revenue claim is made here.
 
-## Founder video
+## Why now?
 
-1 minute, unlisted YouTube. Script: `founder-video-script.md`. YC's guidance: no slides,
-no production value, just the founder talking. Face the light, phone at eye level.
+Models can now write code and use tools over multi-step workflows, while mature symbolic systems provide deterministic checks for bounded classes of claims. The new opportunity is to connect them into a closed research loop and measure it with domain-specific evals.
 
-## Demo video (optional but we include it)
+## Near-term milestones
 
-Script: `demo-video-script.md`, recorded off the TASK-009 dashboard.
+1. Ship a repeatable proposer/verifier/evidence-ledger demo.
+2. Recruit serious design partners and observe real workflows.
+3. Release a small spinor-helicity eval with measured baselines.
+4. Explore a bounded research question outside the reproduced baseline, logging failures as well as successes.
+5. Convert a repeated user workflow into a paid pilot.
+
+## Risks
+
+- The initial research wedge may not become a product people pay for.
+- Verifiers cover bounded claim classes and must expose inconclusive cases.
+- Original results are rare; verification and reproducibility must create value before novelty.
+- Founder commitment, legal structure, users, and revenue must be answered from private facts, not inferred here.

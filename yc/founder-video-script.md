@@ -1,36 +1,24 @@
-# Founder Video — 1-Minute Script
+# Founder Video — One-Minute Bullet Guide
 
-Rules: one take energy, 3 takes max, no slides, no editing beyond trimming ends. Phone at
-eye level, window light on your face, quiet room. Talk like you're explaining to a smart
-friend, not pitching. ~150 words ≈ 60 seconds — this script is 148.
+YC's published instructions ask founders to speak naturally from bullet points rather than reciting a script. The founder video is not the product demo.
 
----
+## Five beats
 
-Hi, I'm Ernest Yeung, founder of TMP Labs.
+1. Ernest: physics training at Caltech/LMU and production aerospace software.
+2. TMP: AI agents propose theoretical-physics calculations and separate tools verify them.
+3. Problem: fluent physics can be subtly wrong; checking is the bottleneck.
+4. Evidence: two code paths for a known amplitudes result; focused suite currently 43 tests through `n = 10`.
+5. Founder fit: able to work on both the physics and reliable software system.
 
-I trained as a theoretical physicist — graduate work in theoretical and mathematical
-physics at LMU Munich — and then spent years building GPU and simulation software in
-industry.
+## Rehearsal-only wording
 
-Here's what changed: this year, an AI model conjectured a genuinely new formula for gluon
-scattering amplitudes, and it ended up in a paper with Andrew Strominger. Ideas are no
-longer the bottleneck in theoretical physics. **Verification is.** Language models produce
-physics that looks right and is silently wrong — wrong signs, wrong indices.
+> I'm Ernest Yeung. I studied physics at Caltech and theoretical and mathematical physics at LMU, then built production software for rockets and satellites. I'm building TMP, an AI research system that proposes theoretical-physics calculations and independently checks them with symbolic or numerical tools. The key insight is to separate the creative model from a boring verifier that can return a pass, a failure residual, or an inconclusive result. Our first prototype reproduces a known scattering-amplitude result using two code paths through ten particles, with 43 focused tests passing. I can build this because I've worked on both sides: the equations and production systems where an unverified answer is not acceptable.
 
-So I'm building the verifier: AI agents that conjecture new physics, wired into symbolic
-math engines that mechanically check every claim before it can be called a result. The
-same engine produces un-gameable physics evals that frontier labs already pay for.
+Learn the beats, then say them naturally. Do not read the paragraph on camera.
 
-I've built the whole working stack solo, in months. Milestones are arXiv papers. The goal
-is discovery at industrial scale.
+## Recording checks
 
----
-
-## Shooting notes
-
-- If the Eq.(16)-to-n=10 verification (TASK-003) is done by recording day, swap the "built
-  the whole working stack" line for the concrete result: "My agents independently verified
-  that formula further than the paper itself did — automatically."
-- Don't rush the "Verification is." beat — pause half a second before it.
-- No hoodie-mumble, no reading off screen; memorize the 5 beats (who I am → what changed →
-  the bottleneck → what I'm building → traction/ambition) and improvise the words.
+- About one minute; founders talking only.
+- No product footage, slides, montage, music, or claims of original discovery.
+- If the founder list changes, include every founder.
+- Verify the final test count and scope immediately before recording.

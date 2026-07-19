@@ -1,62 +1,65 @@
-# Research Plan: MHV Amplitudes & Modern Methods in Scattering Theory
+# Research Plan: Verified MHV Amplitudes as the First Discovery-Engine Wedge
 
-**Repository:** `mathphysics`
-**Goal:** Produce an arXiv-quality review + original work paper on MHV amplitudes, spinor-helicity formalism, and BCFW recursion, with heavy symbolic computation using Cadabra2.
+**Last updated:** 2026-07-19
+**Owner:** Ernest Yeung + TMPAI
+**Active branch:** `feat/yc-mhv-execution-2026-07`
 
-We are building on the style of the recent MHV paper that leveraged LLMs (ChatGPT), but we will make ours more rigorous by grounding everything in Cadabra2 symbolic computations and Srednicki.
+## Outcome
 
-## Core Philosophy
-- **Cadabra2 First:** Every major result in the paper should have a corresponding Cadabra2 script that computes or verifies it.
-- **Modular:** Keep LaTeX chapters clean and pull in computed expressions from Cadabra2 via `Ex._latex_()` and custom export scripts.
-- **Reproducible:** All computations must be runnable in the `cadabra2-ubuntu:24.04` Docker environment.
+Build a theoretical-physics research agent whose claims are checked by independent numerical or symbolic verifiers. The first narrow wedge is single-minus gluon amplitudes in the half-collinear region studied in arXiv:2602.12176v2 (SMGA).
 
-## Reading List (Priority Order)
+The immediate objective is not to claim a new result. It is to make the existing reproduction legible and runnable in under two minutes, then use that artifact as the foundation for more ambitious discovery loops.
 
-### Must-Read Papers
-1. **Parke-Taylor (1986)** — Original MHV paper. Short and foundational.
-2. **BCFW Recursion (Britto, Cachazo, Feng, Witten 2005)** — Core of Ch.05.
-3. **The recent MHV paper that used ChatGPT** — (provide arXiv number when available).
-4. **Elvang-Huang Review** (if available) — Excellent modern reference on spinor-helicity.
-5. **Dixon's MHV Review** — Classic reference.
+## Verified baseline on 2026-07-19
 
-### Srednicki Chapters (Target Completion Order)
-- Ch. 48–52: Spinor-Helicity basics
-- Ch. 60+: Scattering amplitudes and advanced topics
-- Revisit Ch. 36, 37, 38 (as we did previously with Cadabra2)
+- `amplitudes/scripts/08_smga_stripped_amplitudes.py` runs successfully and checks explicit low-multiplicity formulas, discrete structure, the soft theorem, and cyclicity.
+- The focused MHV suite passes: **43 tests passed** across the amplitude unit tests and the SMGA integration test.
+- The integration suite compares two separately implemented paths—the specialized SMGA Berends–Giele recurrence and the closed form—for multiplicities through `n = 10`.
+- The complete package suite currently reports **62 passed and 2 failed**. Both failures are in pre-existing, uncommitted `massless_spinors.py` work and are not on the MHV demo path.
+- The default `uv run pytest` entry point is not yet clean because package metadata/dependencies need hardening. See `tasks/TASK-000-baseline-reproducibility.md`.
 
-## Paper Structure (Target)
+These are reproduction and verification results. They are not evidence of original physics yet.
 
-- **Part I:** Foundations (Spinor-Helicity)
-- **Part II:** MHV Amplitudes (Parke-Taylor, single-minus, why MHV?)
-- **Part III:** BCFW On-Shell Recursion
-- **Part IV:** Computational Tools (Cadabra2, FORM, SymPy integration)
-- **Part V:** New Results / Open Directions
+## July 19–25 critical path
 
-## Cadabra2 Integration Strategy
+1. **Reproducible entry point** — one documented command from a fresh checkout.
+2. **Two-minute demo** — show a candidate formula, an independent recurrence, verifier output, and an honest result ledger.
+3. **Application-facing explanation** — state the product as verifier-grounded scientific work, not “a chatbot for physics.”
+4. **Record founder and demo videos** — founder video is a separate, founder-only one-minute recording; the demo may show the product.
+5. **Submit by July 25** — July 26–27 are contingency, not planned workdays.
 
-We will create two scripts per major topic:
-- `chNN_topic.py` — performs the symbolic computation
-- `chNN_export_latex.py` — converts results to clean LaTeX using `Ex._latex_()` and `mat2pmatrix()`
+## Research sequence after the application
 
-All scripts will live in `Cadabra2/` and be referenced from the LaTeX document.
+1. Generate a permanent Eq. (16) verification report for `n = 3..10` with seeds and run metadata.
+2. Add field-theory consistency checks: cyclicity, reflection, U(1) decoupling, selected KK relations, soft and collinear behavior.
+3. Stabilize a machine-readable Cadabra2/SymPy verifier interface with known-true and known-false tests.
+4. Explore regions adjacent to `R_1` with a proposer → critic → verifier → logger loop.
+5. Only after fresh-point verification and literature review, promote a surviving conjecture into a paper section.
 
-## Immediate Next Steps (Next 24h)
+## Deliberate non-goals before July 25
 
-1. Create `feat/mhv-paper-v2` branch
-2. Finish reading Parke-Taylor + BCFW papers
-3. Expand Ch.05 with BCFW recursion (using Cadabra2 to verify recursion relations)
-4. Integrate existing Cadabra2 MHV results from Monoclaw into the LaTeX document
-5. Update `99-master.tex` with better structure and cross-references
+- No NMHV or graviton expansion.
+- No general-purpose physics-agent platform rewrite.
+- No elaborate dashboard if a CLI plus static report communicates the loop clearly.
+- No arXiv novelty claim.
+- No cleanup of unrelated Srednicki build artifacts or the uncommitted massless-spinor work.
 
-## Milestones
+## Source-of-truth files
 
-- **Week 1:** Complete Ch.05 draft + Cadabra2 verification of BCFW
-- **Week 2:** Full draft of Parts I–III with all symbolic results embedded
-- **Week 3:** Tools chapter + clean compilation
-- **Week 4:** Polish, figures, and submission readiness
+- Agent-sized work: `tasks/README.md`
+- Current execution queue: `TASKS.md`
+- Demo handoff: `AGENT-HANDOFF-2026-07-19.md`
+- Product charter: `TMP-MISSION.md`
+- Loop and eval rules: `agent/DISCOVERY-LOOPS.md`, `agent/EVAL-AND-TOOLING.md`
+- Public research material: `amplitudes/`
 
----
+## Truth standard
 
-**Last Updated:** 2026-04-04  
-**Owner:** Cyclonus + Ernest  
-**Status:** Active Planning Phase
+Every public statement must be one of:
+
+- **reproduced** — matches a cited known result;
+- **verified** — a named verifier returned a recorded result;
+- **conjectured** — proposed but not proved;
+- **inconclusive** — the verifier could not decide.
+
+“Discovered” is reserved for a result that survives independent verification and a real literature search.

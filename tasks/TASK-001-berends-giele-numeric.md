@@ -1,46 +1,43 @@
-# TASK-001 — Berends-Giele numeric recursion, hardened + tested
+# TASK-001 — Harden the existing specialized SMGA recurrence
 
-Status: TODO
-Priority: P0 (blocks TASK-002, TASK-003)
+Status: PARTIAL — implementation and integration tests already exist
+Priority: P1
+Depends on: TASK-000
 Estimated size: one session (3–5 h)
 Branch suggestion: `feat/task-001-berends-giele`
 
 ## Goal
 
-A trustworthy, tested numerical implementation of Berends-Giele off-shell recursion for
-color-ordered tree-level gluon amplitudes, arbitrary helicity configuration, n ≤ 10, in the
-`amplitudes/MHVamplitudes/` package. This is the workhorse every downstream verification
-task calls.
+Audit and harden the existing **specialized SMGA half-collinear recurrence** for stripped
+single-minus amplitudes through n ≤ 10. Do not turn it into a generic Lorentzian,
+arbitrary-helicity Berends–Giele engine in this task; the current implementation explicitly
+does something narrower.
 
 ## Inputs / starting points
 
-- Existing package: `amplitudes/MHVamplitudes/src/mhvamplitudes/` (spinors module exists;
-  note `spinors/invariants.py` and `spinors/massless_spinors.py` have uncommitted edits on
-  master — inspect and either adopt or reconcile them).
+- Existing implementation: `amplitudes/MHVamplitudes/src/mhvamplitudes/amplitudes/berends_giele.py`.
+- Existing integration comparison: `tests/integration_tests/test_smga_reproduction.py`.
+- Pre-existing uncommitted spinor edits are unrelated. Preserve and do not stage them.
 - Existing scripts: `amplitudes/scripts/02_spinor_construction.py` through
   `08_smga_stripped_amplitudes.py` — reuse, don't rewrite.
-- Reference: Dixon arXiv:1310.5353 §2–3 (color decomposition, off-shell currents);
-  Srednicki conventions per repo default (mostly-plus).
+- Primary reference: arXiv:2602.12176v2, especially the recurrence and Appendix B.
+- Background reference: Dixon arXiv:1310.5353 for standard amplitude conventions;
+  Srednicki mostly-plus remains the repo default where applicable.
 
 ## Steps
 
-1. Implement (or harden the existing) `berends_giele(momenta, helicities)` returning the
-   color-ordered partial amplitude as a complex number, using complex spinor-helicity
-   variables so complex/analytically-continued kinematics are supported.
-2. Random-momentum generator: massless, on-shell, momentum-conserving n-point phase-space
-   points (complex deformation optional flag), seedable for reproducibility.
-3. Tests (pytest, in `amplitudes/MHVamplitudes/tests/`):
-   - MHV configurations match Parke-Taylor ⟨ij⟩⁴/(⟨12⟩⟨23⟩…⟨n1⟩) to 1e-10 relative
-     error for n = 4…8, ≥ 20 random points each.
-   - All-plus and single-plus amplitudes vanish (to numerical zero) for n = 4…8.
-   - Cyclic invariance of the color-ordered amplitude at random points.
-   - 4- and 5-point known answers cross-checked against `amplitudes/scripts/04_*.py`, `06_*.py`.
+1. Map every implemented recurrence component to the exact SMGA equation and notation.
+2. Add boundary/degeneracy behavior tests for zero brackets and chamber walls.
+3. Confirm deterministic results for fixed seeds through n = 10.
+4. Profile n = 8..10 and document practical runtime and recurrence growth.
+5. Make error messages distinguish invalid kinematics, chamber-boundary points, and code failure.
 
 ## Definition of done
 
-`cd amplitudes/MHVamplitudes && uv run pytest tests/ -k berends` passes, and a short note
-in `TESTING.md` documents how to run it and observed tolerances.
+The focused recurrence/integration suite passes; equation mapping and runtime notes are in
+`TESTING.md`; and no unrelated spinor work is included in the commit.
 
 ## Out of scope
 
-Gravitons, loops, symbolic (Cadabra2) versions — later tasks.
+Generic Lorentzian BG currents, arbitrary helicities, gravitons, loops, and symbolic
+Cadabra2 recursion.

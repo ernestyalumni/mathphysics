@@ -1,8 +1,8 @@
 # TASK-002 — Reproduce SMGA stripped amplitudes A_123 … A_123456
 
-Status: TODO
+Status: PARTIAL — Script 08 and tests pass; durable generated report is missing
 Priority: P0
-Depends on: TASK-001
+Depends on: TASK-000
 Estimated size: one session (3–6 h)
 Branch suggestion: `feat/task-002-smga-repro`
 
@@ -19,7 +19,7 @@ structure. This is the benchmark reproduction that anchors all discovery claims.
 - Existing attempt: `amplitudes/scripts/08_smga_stripped_amplitudes.py` — read first;
   extend rather than duplicate.
 - Notes: `amplitudes/08-literature-review.tex`.
-- Berends-Giele engine from TASK-001.
+- Existing recurrence implementation; TASK-001 hardening is not required to generate the first report.
 
 ## Steps
 

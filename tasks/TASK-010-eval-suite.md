@@ -1,49 +1,46 @@
-# TASK-010 — Physics-hallucination eval suite v0
+# TASK-010 — Spinor-helicity eval suite v0
 
-Status: TODO
-Priority: P1 (this is the most commercially legible artifact — see `../yc/README.md`)
-Depends on: TASK-005 (verifier wrapper); TASK-004 helps
-Estimated size: 1–2 sessions
-Branch suggestion: `feat/task-010-eval-suite`
+Status: TODO AFTER DEMO
+Priority: P1
+Depends on: TASK-005
+Estimated size: 4–6 hours
+Branch suggestion: `feat/task-010-spinor-eval-v0`
 
 ## Goal
 
-v0 of an eval suite that measures whether an LLM produces *silently wrong* physics —
-wrong signs, index placement, tensor structure, dropped terms, invalid limits — with every
-item machine-gradable by the symbolic/numeric verifiers in this repo. This is the
-"frontier labs pay for hard verified evals" wedge in the TMP mission.
+Build the smallest benchmark that measures whether an AI model can produce machine-verifiable spinor-helicity reasoning rather than plausible text.
 
-## Design
+## Scope
 
-- Item format (one YAML/JSON per item in `evals/items/`):
-  `{id, domain, prompt, ground_truth_expr, verifier: {backend: sympy|cadabra2|numeric, script},
-  distractor_notes, difficulty, source: path-or-citation}`.
-- Grading: model answer → parsed expression → verifier computes (answer − truth) and
-  simplifies / evaluates numerically at random points → pass/fail. Parsing failures are
-  scored separately from wrong-physics failures.
-- **Every ground truth must itself be verified** by a repo script before an item ships.
+Exactly 10 public problems:
 
-## v0 scope: 25 items
+- 2 antisymmetry/sign-convention checks;
+- 2 Schouten-identity manipulations;
+- 2 little-group weight checks;
+- 2 momentum-conservation identities;
+- 1 soft-limit problem;
+- 1 deliberately underspecified problem where admitting uncertainty is correct.
 
-- 8 × spinor-helicity identities and ⟨⟩[] manipulations (source: Srednicki 48–50 +
-  existing `amplitudes/scripts/03_spinor_product_identities.py`).
-- 6 × amplitude values / limits (Parke-Taylor cases, soft/collinear leading behavior).
-- 6 × sign/convention traps (mostly-plus vs mostly-minus translations, conjugation,
-  ordering reversals) — the classic silent-failure zone.
-- 5 × "is this derivation valid?" items with a planted flawed step; ground truth is the
-  location of the flaw, gradable because the flawed identity fails the verifier.
+Keep any future held-out set outside public prompts; do not pretend these first 10 are a statistically meaningful leaderboard.
 
 ## Deliverables
 
-- `evals/README.md` (format, grading protocol, how to add items, honesty rules —
-  no items whose ground truth wasn't machine-verified).
-- `evals/items/` with 25 verified items.
-- `evals/run_eval.py --model <name>` — runs via the Claude API (default
-  `claude-sonnet-5`; get current model ids from the `claude-api` skill when implementing),
-  emits per-domain pass rates to `evals/results/<model>-<date>.json`.
-- A baseline run on at least one model, committed.
+- `evals/spinor-helicity-v0/README.md`
+- `evals/spinor-helicity-v0/problems.jsonl`
+- `evals/spinor-helicity-v0/verifier.py`
+- `evals/spinor-helicity-v0/harness.py`
+- verifier unit tests containing known-pass, known-fail, and inconclusive cases
+
+## Scoring
+
+Report:
+
+- exact verifier passes;
+- confident wrong answers;
+- admitted unknowns;
+- inconclusive verifier outcomes;
+- prompt/model/verifier versions.
 
 ## Definition of done
 
-All 25 ground truths pass their own verifiers; one baseline model run committed; README
-documents the scoring so a stranger could re-run it.
+The verifier tests pass locally, a mock model adapter can exercise the harness end to end, and the README states that no model baseline has been measured unless one actually ran.

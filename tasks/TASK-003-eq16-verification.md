@@ -1,27 +1,29 @@
 # TASK-003 — Verify SMGA Eq.(16) for n = 3…10
 
-Status: TODO
+Status: PARTIAL — n=3..10 integration tests exist; durable report and broader sampling are missing
 Priority: P0 (feeds the YC demo, TASK-009)
-Depends on: TASK-001
+Depends on: TASK-000
 Estimated size: one session (2–4 h)
 Branch suggestion: `feat/task-003-eq16`
 
 ## Goal
 
-Independently verify the SMGA closed-form conjecture
+Compare the SMGA closed-form expression
 
     A_{1...n}|_{R₁} = (1/2^{n-2}) ∏_{m=2}^{n-1} (sg_{m,m+1} + sg_{1,2...m})
 
-against direct Berends-Giele evaluation for n = 3…10, at many random points inside R₁.
-This is exactly the "AI conjectured, symbolic/numeric engine verified" loop the discovery
-engine is about — the paper's formula was conjectured by an LLM; we check it harder and
-further (they may not have pushed to n = 10; going further is a talking point).
+against a separately implemented version of the paper's Berends–Giele recurrence for
+n = 3…10 at many random points inside R₁.
+This is a useful engineering version of the "AI conjectured, verifier checked" loop. The
+paper gives and proves an all-n formula, so finite tests through n = 10 do **not** extend
+the physics result. They validate our implementation and create a reproducible regression
+artifact for the product demo.
 
 ## Inputs
 
 - SMGA paper source (see TASK-002 for path), especially the definitions of the sign
   functions sg_{i,j} and sg_{1,2...m} and the boundaries of R₁.
-- Berends-Giele engine from TASK-001.
+- Existing specialized recurrence and `tests/integration_tests/test_smga_reproduction.py`.
 
 ## Steps
 
@@ -42,7 +44,8 @@ further (they may not have pushed to n = 10; going further is a talking point).
 both result files; max relative error < 1e-8 for all n in the interior, or the deviation is
 documented with reproduction seeds.
 
-## Discovery hooks (report, don't chase yet)
+## Diagnostic hooks (report, don't market as discoveries)
 
-- Does the formula degrade or stay exact as n grows?
-- Anything special at n where new sign-function combinations first appear?
+- Does runtime or numerical behavior degrade with n?
+- Do chamber-boundary samples expose implementation ambiguity or invalid-input handling?
+- Does a deliberately perturbed expression reliably produce a nonzero residual?

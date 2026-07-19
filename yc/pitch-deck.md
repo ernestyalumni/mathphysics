@@ -1,67 +1,63 @@
-# Pitch Deck — 10 Slides
+# TMP Pitch Deck — Public Ten-Slide Outline
 
-YC's application doesn't require a deck, but you want one ready for the interview and for
-any investor conversation this triggers. Build as HTML deck per the Monoclaw short-form
-pipeline (or Keynote — whatever's fastest). One idea per slide, big type, no paragraphs.
+The YC written application does not require a conventional deck. Build this only after the written answers, demo, and founder video are ready.
 
----
+## 1. TMP
 
-## 1. Title
-**TMP Labs** — AI agents that discover and verify new physics.
-Ernest Yeung · ernestyalumni@gmail.com · [repo link]
+Verified AI research for theoretical physics.
 
-## 2. The moment (why now)
-Feb 2026: an LLM conjectured a new closed-form gluon amplitude formula → published with
-Andrew Strominger (arXiv:2602.12176). *Speaker note: this is the single most important
-slide — an outside, maximally credible proof that AI can source real theoretical physics.*
+## 2. The problem
 
-## 3. The problem
-Ideas are no longer the bottleneck. **Trust is.** LLMs produce physics that looks right
-and is silently wrong: signs, indices, tensor structure, invalid limits. Today's
-verification layer is grad students — scarce, slow, ~$80k/yr each — or nothing.
+Plausible physics is not reliable physics: wrong signs, conventions, indices, or limits can survive fluent explanations.
 
-## 4. The product
-A discovery engine with a verifier in the loop: agents read → conjecture → **symbolic
-engines (Cadabra2/SymPy/FORM) mechanically check** → only verified claims survive.
-Diagram: conjecture → verify → publish loop, with the FAIL branch prominent.
+## 3. The product
 
-## 5. Demo
-Screenshot of the TASK-009 dashboard: the Strominger-paper formula verified to n=10 live;
-the flipped-sign version caught in seconds. *Speaker note: "this system cannot be
-bullshitted" — say it out loud.*
+```text
+proposer → critic → symbolic/numeric verifier → evidence ledger
+```
 
-## 6. Business
-Two revenue lines off one engine:
-- **Evals & private benchmarks for frontier labs** — physics-hallucination suite where
-  every item is machine-gradable; labs already pay six figures for hard reasoning evals
-  that can't leak into training.
-- **Verifier API / research agents** for physics-adjacent R&D (national labs, aerospace,
-  quant). *The research lab is the moat and the marketing; evals are the margin.*
+Every run ends in PASS, FAIL with residual, or INCONCLUSIVE.
 
-## 7. Milestones (traction slide, kept honest)
-- Working amplitude + verification stack, public, tested. ✅
-- SMGA reproduction + Eq.(16) verified beyond the paper's published range. [status]
-- Next: first arXiv paper with a new machine-verified result (regions beyond R₁, NMHV).
-- Long arc: agent fleets running Nobel/Fields-scale problem programs.
+## 4. Why amplitudes first
 
-## 8. Why me
-LMU Munich grad work in Theoretical & Mathematical Physics + years of industry GPU/CUDA
-numerical software + demonstrated agent-infrastructure builder (this stack solo in months;
-claw-dj autonomous DJ built at H Company hackathon). Rare combo: can do the physics AND
-build the fleet.
+- Exact identities and recurrence relations.
+- Strong symmetry and soft/collinear checks.
+- Narrow enough to measure real correctness.
 
-## 9. Competition
-Frontier labs' internal science pushes (they validate the market, and they'll buy evals
-externally *because* internal ones leak), formal-math startups (Lean is the wrong
-substrate for physics — physicists live in computer algebra), ad-hoc academic LLM use (no
-verification discipline).
+## 5. Prototype
 
-## 10. The ask / vision
-YC batch goals: 1 arXiv paper the engine materially produced + 2 paid lab pilots.
-Vision: the institution where AI does physics that humans then get to stand on —
-discovery at industrial scale.
+- Two code paths derived from arXiv:2602.12176v2.
+- Comparison through `n = 10`.
+- 43 focused tests passed on 2026-07-19.
+- Truth label: verified reproduction, not extension of the paper's all-`n` result.
 
----
+## 6. Technical differentiation
 
-*Design: follow the dataviz/artifact-design skills if built as HTML; dark, sparse, one
-hero visual per slide (helicity diagrams on 2–4, dashboard on 5).*
+- Separate proposal and verification.
+- Explicit residuals and tolerances.
+- Persisted conventions and run metadata.
+- Negative and inconclusive results remain visible.
+
+## 7. Initial user
+
+Theoretical-physics and scientific-AI teams whose calculations can be checked by exact identities or physical constraints.
+
+Add only real design-partner evidence before presenting this as traction.
+
+## 8. Business hypothesis
+
+Private team workspaces plus managed compute/API usage; public local benchmarks and verifiers support adoption. Pricing and market size remain to be validated.
+
+## 9. Founder
+
+Caltech physics, LMU theoretical/mathematical physics, production aerospace software, and hands-on agent/verifier development.
+
+## 10. Next milestones
+
+1. Design partners and real workflow observation.
+2. Verifier workspace and evidence ledger.
+3. Public spinor-helicity eval with measured baselines.
+4. Bounded exploration beyond the reproduction baseline.
+5. First paid pilot.
+
+Close: “Start where correctness is measurable; build the verification layer for scientific AI.”
