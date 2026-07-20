@@ -13,7 +13,9 @@ class EpsilonTensor:
     """
 
     def __init__(self):
+        # ε_{12}=-1
         self.eps_lower = np.array([[0, -1], [1, 0]], dtype=complex)
+        # ε^{12}=+1
         self.eps_upper = np.array([[0, 1], [-1, 0]], dtype=complex)
 
     def raise_index(self, psi_lower: np.ndarray) -> np.ndarray:

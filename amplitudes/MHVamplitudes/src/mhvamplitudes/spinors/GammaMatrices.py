@@ -5,8 +5,9 @@ import numpy as np
 
 class GammaMatrices:
     Z2 = np.zeros((2, 2), dtype=complex)
-    def __init__(self, sigma: SigmaMatrices):
-        self.sigma = SigmaMatrices()
+
+    def __init__(self, sigma: SigmaMatrices | None = None):
+        self.sigma = sigma if sigma is not None else SigmaMatrices()
         self.metric = LorentzMetric()
     # 4×4 γ matrices in Weyl representation: γ^μ =
     # [[  0    ,  σ^μ  ], [ σ̄^μ  ,   0   ]]
@@ -23,7 +24,8 @@ class GammaMatrices:
         return [self.gamma_mu(mu) for mu in range(4)]
 
     def gamma5(self):
-        return 1j * self.gam[0] @ self.gam[1] @ self.gam[2] @ self.gam[3]
+        gam = self.gam()
+        return 1j * gam[0] @ gam[1] @ gam[2] @ gam[3]
 
     def gam_mu_lower(self, mu: int):
-        return self.gamma_mu(mu) @ self.metric[(mu, mu)]
+        return self.metric[(mu, mu)] * self.gamma_mu(mu)

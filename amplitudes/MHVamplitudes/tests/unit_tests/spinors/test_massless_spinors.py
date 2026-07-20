@@ -1,5 +1,7 @@
-from mhvamplitudes.spinors.GammaMatrices import GammaMatrices
+import numpy as np
+
 from mhvamplitudes.spinors import massless_spinors
+from mhvamplitudes.spinors.GammaMatrices import GammaMatrices
 # =============================================================================
 # §60.B  EXPLICIT SPINOR CONSTRUCTION (WEYL REPRESENTATION)
 # =============================================================================
@@ -36,15 +38,10 @@ def test_verify_massless_Dirac_equation():
 
     gamma = GammaMatrices()
     gam = gamma.gam()
-    g = gamma.metric
+    g = gamma.metric.g
 
-    slash_k = sum(g[mu, mu] * k_mu[mu] * gam[mu] for mu in range(4))
-    # NOTE: with Srednicki's (-,+,+,+) metric, p/ = k^μ γ_μ = Σ_μ g_{μμ} k^μ γ^μ
-    #       = -k^0 γ^0 + k^i γ^i  (time component picks up minus sign)
-    # Lowering: p_μ = g_{μν} p^ν → p_0 = +p^0, p_i = -p^i
-    # So p/ = γ^0 p_0 + γ^i p_i = γ^0 p^0 - γ^i p^i (Einstein convention)
-    # Direct: p/ = γ^μ p_μ with p_μ = (ω, 0, 0, -ω) for k^μ = (ω,0,0,ω)
-    k_lower = np.array([omega, 0., 0., -omega])   # k_μ = g_{μν} k^ν
+    # With Srednicki's (-,+,+,+) metric, k_μ = (-ω, 0, 0, ω).
+    k_lower = g @ k_mu
     slash_k = sum(k_lower[mu] * gam[mu] for mu in range(4))
 
     dirac_sq = slash_k @ ket_sq_k
@@ -71,13 +68,13 @@ def test_helicity_check():
     # In Weyl rep, γ^5 = diag(-I_2, +I_2), so helicity eigenstates are:
     #   positive h = +½: lower components nonzero → |k⟩ = u_+(k)
     #   negative h = -½: upper components nonzero → |k]  = u_-(k)
-    print("\nHelicity check (for +z momentum): lower 2 components = + helicity:")
-    print(f"  |k] upper (a=0,1): {ket_sq_k[:2]}  (should be 0 for negative helicity)")
-    print(f"  |k] lower (a=2,3): {ket_sq_k[2:]}  (upper 2 in Weyl block)")
-    print(f"  |k⟩ lower (a=2,3): {ket_an_k[2:]}  (should be 0 for positive helicity)")
-    print(f"  |k⟩ upper (a=0,1): {ket_an_k[:2]}  (lower 2 in Weyl block)")
+    sigma_three = np.diag([1.0, -1.0])
+    helicity = 0.5 * np.block(
+        [
+            [sigma_three, np.zeros((2, 2))],
+            [np.zeros((2, 2)), sigma_three],
+        ]
+    )
 
-    assert np.allclose(ket_sq_k[:2], 0), "k/ |k] ≠ 0!"
-    assert np.allclose(ket_sq_k[2:], 0), "k/ |k] ≠ 0!"
-    assert np.allclose(ket_an_k[2:], 0), "k/ |k⟩ ≠ 0!"
-    assert np.allclose(ket_an_k[:2], 0), "k/ |k⟩ ≠ 0!"
+    assert np.allclose(helicity @ ket_sq_k, -0.5 * ket_sq_k)
+    assert np.allclose(helicity @ ket_an_k, 0.5 * ket_an_k)
