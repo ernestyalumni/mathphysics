@@ -5,7 +5,7 @@
 
 ## Company name
 
-TMP *(working name)*
+Explore The Universe
 
 ## Short description
 
@@ -13,7 +13,7 @@ AI agents that verify theoretical-physics calculations.
 
 ## What will the company make?
 
-TMP is an AI research system for theoretical physics. It generates candidate calculations, routes them to independent symbolic or numerical checks, and records an explicit pass, failure residual, or inconclusive result.
+Explore The Universe is an AI research system for theoretical physics. It generates candidate calculations, routes them to independent symbolic or numerical checks, and records an explicit pass, failure residual, or inconclusive result.
 
 We are starting with scattering amplitudes, where plausible output can still be wrong by a sign, convention, symmetry, or physical limit. The long-term product is a research workspace in which agents can explore aggressively because verification and provenance are built into the loop.
 
@@ -21,7 +21,7 @@ We are starting with scattering amplitudes, where plausible output can still be 
 
 Language models can produce convincing physics that is subtly wrong. Computer algebra systems can reliably execute specified calculations, but an expert still has to decide what to try, maintain conventions, run independent checks, and preserve negative results.
 
-TMP connects those two modes: a creative proposer and a deliberately boring verifier with a persistent evidence ledger.
+Explore The Universe connects those two modes: a creative proposer and a deliberately boring verifier with a persistent evidence ledger.
 
 ## Founder fit
 
@@ -47,7 +47,7 @@ This is a verified reproduction of a known result. The paper itself gives an all
 
 - General LLM assistants propose derivations but do not provide dependable ground truth.
 - Mathematica, FORM, Cadabra2, SymPy, and theorem provers verify bounded tasks but generally require expert-directed workflows.
-- Scientific-agent systems automate broader research tasks; TMP's starting point is physics-specific verifier contracts and evidence persistence.
+- Scientific-agent systems automate broader research tasks; Explore The Universe's starting point is physics-specific verifier contracts and evidence persistence.
 
 These systems are inputs and complements, not merely competitors.
 

@@ -1,8 +1,8 @@
-# TMP Pitch Deck — Public Ten-Slide Outline
+# Explore The Universe Pitch Deck — Public Ten-Slide Outline
 
 The YC written application does not require a conventional deck. Build this only after the written answers, demo, and founder video are ready.
 
-## 1. TMP
+## 1. Explore The Universe
 
 Verified AI research for theoretical physics.
 
