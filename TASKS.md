@@ -1,16 +1,18 @@
 # Current Execution Queue — TMP / MHV Discovery Engine
 
-**Last updated:** 2026-07-19
-**Deadline driving this queue:** application-ready demo by 2026-07-25
+**Last updated:** 2026-07-25
+**Deadline driving this queue:** YC application deadline 2026-07-27, 8:00 PM PT
 **Detailed task packets:** [`tasks/README.md`](tasks/README.md)
 
 ## Do now, in order
 
-1. **TASK-000 — baseline reproducibility**
-   Make the focused MHV test command work from a fresh checkout and document the two unrelated WIP failures separately.
+1. ~~**TASK-000 — baseline reproducibility**~~ DONE 2026-07-25. `uv run pytest` now works
+   from a fresh checkout with no ad hoc flags: focused suite 43 passed, full suite 64 passed
+   (the previously-noted WIP failures are gone — committed in `619b505`).
 
-2. **TASK-009 — two-minute verification demo**
-   Produce one command and one static report that show closed form vs independent recurrence through `n = 10`.
+2. ~~**TASK-009 — two-minute verification demo**~~ DONE 2026-07-25. See
+   [`amplitudes/DEMO.md`](amplitudes/DEMO.md) and
+   `amplitudes/scripts/09_verification_demo.py`.
 
 3. **TASK-002 / TASK-003 — durable result reports**
    Convert the already-working checks into human- and machine-readable artifacts with seeds, versions, and explicit scope.
@@ -33,26 +35,24 @@
 ## Current evidence
 
 ```text
-Focused amplitude suite: 43 passed, 1 marker warning
-Full suite:              62 passed, 2 failures in uncommitted massless-spinor WIP
+Focused amplitude suite: 43 passed, no warnings
+Full suite:              64 passed, 0 failures
 Script 08:               OVERALL: PASS
+Demo (script 09):        correct candidate PASS n=3..10; broken candidate correctly FAILs
 ```
 
-Reproduction command used on 2026-07-19:
-
-```bash
-uv run --no-project --with numpy env \
-  PYTHONPATH=amplitudes/MHVamplitudes/src \
-  python amplitudes/scripts/08_smga_stripped_amplitudes.py
-```
-
-Focused test command used on 2026-07-19:
+Reproduction command, verified 2026-07-25 (no ad hoc `--with`/`--no-project` flags needed
+anymore — see `tasks/TASK-000-baseline-reproducibility.md`):
 
 ```bash
 cd amplitudes/MHVamplitudes
-uv run --no-project --with numpy --with pytest env PYTHONPATH=src \
-  pytest -q tests/unit_tests/amplitudes \
-  tests/integration_tests/test_smga_reproduction.py
+uv run pytest -q tests/unit_tests/amplitudes tests/integration_tests/test_smga_reproduction.py
+```
+
+Two-minute demo command, from repo root:
+
+```bash
+uv run --project amplitudes/MHVamplitudes python amplitudes/scripts/09_verification_demo.py
 ```
 
 ## Agent rules

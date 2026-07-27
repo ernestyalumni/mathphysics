@@ -8,6 +8,12 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "numpy>=1.24",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
 ]
 
 [tool.poetry]
@@ -16,3 +22,8 @@ packages = [{include = "mhvamplitudes", from = "src"}]
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: exponential-in-n recursion cases (n >= 8); deselect with '-m \"not slow\"'",
+]
