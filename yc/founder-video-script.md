@@ -1,24 +1,84 @@
-# Founder Video — One-Minute Bullet Guide
+# Founder Video — One Minute
 
-YC's published instructions ask founders to speak naturally from bullet points rather than reciting a script. The founder video is not the product demo.
+YC: *"Do not recite a written script: Use bullet points instead... just talk spontaneously as
+you would to a friend."* Bullet card first. Spoken text is the same thing written to be said.
 
-## Five beats
+---
 
-1. Ernest: physics training at Caltech/LMU and production aerospace software.
-2. Explore The Universe: AI agents propose theoretical-physics calculations and separate tools verify them.
-3. Problem: fluent physics can be subtly wrong; checking is the bottleneck.
-4. Evidence: two code paths for a known amplitudes result; focused suite currently 43 tests through `n = 10`.
-5. Founder fit: able to work on both the physics and reliable software system.
+## Bullet card
 
-## Rehearsal-only wording
+1. Ernest — physics. Caltech B.S., LMU Munich masters, thesis in topological QFT.
 
-> I'm Ernest Yeung. I studied physics at Caltech and theoretical and mathematical physics at LMU, then built production software for rockets and satellites. I'm building Explore The Universe, an AI research system that proposes theoretical-physics calculations and independently checks them with symbolic or numerical tools. The key insight is to separate the creative model from a boring verifier that can return a pass, a failure residual, or an inconclusive result. Our first prototype reproduces a known scattering-amplitude result using two code paths through ten particles, with 43 focused tests passing. I can build this because I've worked on both sides: the equations and production systems where an unverified answer is not acceptable.
+2. 8+ yrs new space, flight + ground software. Virgin Orbit, first company:
+   led AFSS → our launch license.
 
-Learn the beats, then say them naturally. Do not read the paragraph on camera.
+2. 8+ yrs new space, flight + ground software. from rockets to space satellites
+
+3. Now building **Explore The Universe**.
+4. Prompted by OpenAI — GPT-5.2 finding a key formula in theoretical physics.
+   The researchers used it as a *tool*.
+5. That's how academia still sees AI: a tool, a chatbot. Wrong.
+   We want agents *doing* the research.
+
+6. One founder with agents > multi-company, multi-university consortium
+   building a one-size-fits-all AI tool.
+
+
+7. Models are good enough now. The work is the harness.
+8. **Close** — the first arXiv paper where the discovery came from the agents.
+
+1. Ernest — physics. Caltech B.S., LMU Munich masters, thesis in topological QFT.
+2. 8+ yrs new space, flight + ground software. from rockets to space satellites
+3. Now building **Explore The Universe**.
+4. Prompted by OpenAI — researchers used GPT-5.2 to find a key formula in theoretical physics.
+   The researchers still sees it as a *tool*.
+5. That's where academia still gets AI wrong: a tool, a chatbot.
+   We want agents *doing* the research.
+7. Models are good enough now. The work is the harness.
+8. **Close** — the first arXiv paper where the discovery came from the agents.
+
+
+---
+
+## Spoken text (~150 words, ~60 seconds)
+
+Lines are breath marks. Look at the lens between them.
+
+Hi, I'm Ernest Yeung.
+
+My background is physics — B.S. from Caltech, masters from LMU Munich, thesis in topological
+quantum field theory.
+
+Then eight years in new space, flight and ground software.
+
+At Virgin Orbit, my first company, I led the AFSS development that got us our launch license.
+
+Now I'm building Explore The Universe.
+
+It was prompted by what OpenAI did — GPT-5.2 finding a key formula in theoretical physics.
+
+The researchers said they used it as a tool.
+
+That's how academia still sees AI. A tool, or a chatbot. I think that's wrong.
+
+We want the agents doing the research.
+
+And I think one founder with agents moves faster than a multi-company, multi-university
+consortium building a one-size-fits-all AI tool.
+
+The models are good enough now. The work is the harness around them.
+
+I want the first arXiv paper where the discovery came from the agents.
+
+That's what I'm building.
+
+> **Cut first if long:** "flight and ground" → "flight software"; drop "multi-company,".
 
 ## Recording checks
 
-- About one minute; founders talking only.
-- No product footage, slides, montage, music, or claims of original discovery.
-- If the founder list changes, include every founder.
-- Verify the final test count and scope immediately before recording.
+- One minute. Founder talking only — no slides, footage, or music.
+- **Shoot 1080p, not 4K.** Upload cap is 100 MB; a minute of 4K is 300+ MB.
+- Over 100 MB:
+  `ffmpeg -i in.mov -vf scale=1280:-2 -c:v libx264 -crf 28 -preset veryfast -c:a aac -b:a 96k out.mp4`
+- Horizontal, front-lit, quiet room, phone propped. Two takes beats one perfect one.
+- No claims of original physics, users, or revenue.
