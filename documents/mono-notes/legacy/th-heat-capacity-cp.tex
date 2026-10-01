@@ -1,0 +1,59 @@
+\noindent\textit{2015 manuscript.}
+
+\section{Heat capacity at constant pressure}
+\noindent\textit{Manuscript section title: Heat Capacity.}
+
+Let $\Sigma$ be a (topological) manifold of dim. 2.  
+
+Suppose $U$ is a global coordinate on $\Sigma$.  Then consider 1 chart $(U,V)$.  
+
+Consider $\sigma = \sigma(U,V) \in C^{\infty}(\Sigma)$.  
+
+Recall the thermodynamic identity 
+\[
+\tau d\sigma = dU + pdV
+\]
+Thus
+\[
+d\sigma = \frac{1}{\tau} dU + \frac{p}{\tau} dV \Longrightarrow \begin{aligned} & \frac{p}{\tau} = \left( \frac{ \partial \sigma}{ \partial V} \right)_U \\
+  & \frac{1}{\tau}  =\left( \frac{ \partial \sigma}{ \partial U} \right)_V \end{aligned}
+\]
+
+
+
+From Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, pp. 165-166, Chapter 6: Ideal Gas, ``Heat Capacity'',
+\[
+Q = Q(\tau,p) = \Lambda_p dp + C_p d\tau = dU + W = dU + p dV 
+\]
+Let $c\in \Sigma$ s.t. $dp(\dot{c})=0$ (constant pressure).  And so 
+\[
+Q(\dot{c}) = 0 + C_p d\tau(\dot{c}) = \tau d\sigma (\dot{c}) = dU(\dot{c}) + pdV(\dot{c})
+\]
+for $c=(\tau,0)$, $\dot{c} = \frac{\partial }{ \partial \tau} \in T\Sigma$.  
+
+\[
+\Longrightarrow C_p = \tau \left( \frac{ \partial \sigma }{ \partial \tau} \right)_p = \left( \frac{ \partial U}{ \partial \tau} \right)_p + p \left( \frac{ \partial V}{ \partial \tau} \right)_p
+\]
+for heat capacity at constant pressure is larger than $C_V$ because additional heat must be added to perform the work needed to expand volume of gas against constant pressure.  
+
+Now recall for enthalpy 
+\[
+\begin{aligned}
+  & H = U+ pV \\ 
+  & H = H(\sigma, p)
+\end{aligned}
+\]
+Then
+\[
+dH = dU+ pdV + Vdp = Q + Vdp 
+\]
+Thus, for $c\in \Sigma$, $dp(\dot{c})=0$ (constant pressure).  Hence
+\[
+dH(\dot{c}) = \left( \frac{ \partial H}{ \partial \tau} \right)_p = Q(\dot{c})  +  0 = C_p
+\]
+Hence, 
+\[
+C_p = \left( \frac{ \partial H}{ \partial \tau } \right)_p = \left( \frac{ \partial Q}{ \partial \tau} \right)_p
+\]
+
+

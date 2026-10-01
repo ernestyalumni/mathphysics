@@ -1,0 +1,478 @@
+\noindent\textit{2008 manuscript.}
+
+\section{Kinetic Theory}
+
+\noindent\textit{The wall-collision argument for \(P=N\tau/V\) is in \S\ref{sec:dilute-gas}.}
+
+\subsection*{Kinetic Theory of the Ideal Gas Law}
+
+Consider molecule strike unit area of wall. \\
+Let $v_z \equiv $ velocity component normal to plane of wall. \\
+Suppose molecules, of mass $M$, reflected specularly (mirror-like) from wall,
+\[
+\Delta p_z = -2M|v_z|
+\]
+Let $a(v_z)dv_z$, number of molecules per unit volume with $z$-component of velocity between $v_z$ and $v_z + dv_z$.  
+\[
+\int a(v_z)dv_z = \frac{N}{V} = n
+\]
+$a(v_z) v_z dv_z$ number of molecules in $(v_z, v_z + dv_z)$  velocity range that strike unit area of wall in (per) unit time
+\[
+\text{pressure } p = \int_0^{\infty}2M v_za(v_z)v_z dv_z = M\int_{-\infty}^{\infty}v_z^2 a(v_z) dv_z = Mn\langle v_z^2 \rangle
+\]
+$\frac{1}{2}M\langle v_z^2 \rangle = \frac{1}{2} \tau$ by equipartition of energy (Ch.3)
+\[
+p = nM \langle v_z^2 \rangle = n\tau = \frac{N\tau}{V}
+\]
+\subsubsection*{Maxwell Distribution of Velocities}  
+
+cf. Ch.6. distribution function of ideal gas $f(\epsilon_n) = \lambda \exp{ \left( \frac{-\epsilon_n}{\tau} \right)}$
+
+Recall, Ch. 6, Sec. ``Classical Limit'' of Kittel and Kroemer \cite{CKittelHKroemer1980}, \textbf{an ideal gas is defined as a system of free noninteracting particles in the classical regime}.  \\
+$f(\epsilon) \equiv $ average occupancy of an orbital at energy $\epsilon$ \\
+$\epsilon \equiv $ energy of orbital occupied by 1 particle; not energy of system of $N$ particles \\
+Fermi-Dirac and Bose-Einstein distribution $f(\epsilon) = \frac{1}{ \exp{ [ (\epsilon - \mu )/\tau ] } \pm 1 }$ \\
+In order for $f(\epsilon) \ll 1$ $\forall \, $ orbitals, $\exp{ [ (\epsilon-\mu)/\tau ] } \gg 1\, \forall \, \epsilon$.  
+\[
+\Longrightarrow f(\epsilon) \simeq \exp{ [(\mu - \epsilon )/\tau]} = \lambda \exp{ (-\epsilon/\tau)} \quad \, \lambda \equiv \exp{ \left( \frac{ \mu }{\tau} \right) }
+\]
+$f(\epsilon)$, average occupancy of orbital of energy $\epsilon$, is classical distribution function.  
+
+particle in a box: $\epsilon_n = \frac{1}{2M} \left( \frac{\pi n}{L} \right)^2 $ (for, recall $\frac{1}{2M} \left( \frac{1}{i} \partial \right)^2 \psi = \frac{-1}{2M} \partial^2 \psi = E \psi$)
+
+number of orbitals in range of quantum number $(n,n+dn)$, probability such orbital is occupied
+
+\[
+(\frac{1}{2} \pi n^2 dn)f(\epsilon_n) = \frac{1}{2} \pi n^2 \lambda \exp{ (-\epsilon_n/\tau) } dn
+\]
+\[
+\frac{1}{2} Mv^2 = \frac{1}{2M} \left( \frac{ \pi n}{ L } \right)^2 \text{ or } n^2 = \frac{ (ML)^2 }{ \pi^2} v^2 \text{ or } n = \frac{MLv}{\pi}
+\]
+
+Consider system of $N$ particles in volume $V$.  
+
+Let $NP(v) dv$ number of atoms with velocity magnitude in range $dv$ at $v$
+\[
+NP(v) dv = \frac{1}{2} \pi n^2 \lambda \exp{ ( -\epsilon_n /\tau)} \frac{dn}{dv} dv = \frac{1}{2} \pi \lambda \left( \frac{ ML }{ \pi } \right)^3 v^2 \exp{ \left( \frac{ -Mv^2 }{2\tau } \right) }dv
+\]
+cf. Ch. 6, $\lambda = \frac{n}{n_Q} = \frac{N}{L^3} \left( \frac{ 2\pi \hbar^2 }{ M \tau } \right)^{3/2}$
+
+\[
+\frac{1}{2} \pi \frac{N}{L^3} \left( \frac{2\pi }{ M \tau} \right)^{3/2} \left( \frac{ ML }{\pi } \right)^3 = 4\pi N \left( \frac{N}{2\pi \tau} \right)^{3/2}
+\]
+\begin{correction}{Maxwell prefactor}
+The right-hand side above is not the prefactor of the speed density in the next display.
+That density is normalized, as checked in \S\ref{sec:maxwell-norm}.
+\end{correction}
+\begin{equation}
+\Longrightarrow P(v) = 4\pi \left( \frac{M}{2\pi \tau } \right)^{3/2} v^2 \exp{ \left( \frac{- Mv^2}{ 2\tau } \right) } 
+\end{equation}
+$P(v)$ is \textbf{Maxwell velocity distribution}, $P(v)dv$ is probability particle has speed in $dv$ at $v$
+
+\subsubsection*{Experimental verification}
+
+velocity distribution of atoms which exit from slit of oven.  
+
+exit beam weighted in favor of atoms of high velocity at expense of those at low velocity. 
+
+weight factor is velocity component $v\cos{\theta}$ normal to plane of hole. 
+
+\[
+\begin{gathered}
+  \int (\cos{\theta}) dr rd\varphi r \sin{\theta} d\theta = (\frac{1}{3} (2\pi ) R^3) \int \cos{\theta} \sin{\theta} d\theta = ( \frac{2\pi}{3} R^3) \int \frac{\sin{2\theta} d\theta}{ 2 } = \frac{2\pi R^3}{3} \left. \left( \frac{ - \cos{2\theta} }{4} \right) \right|_0^{\pi/2} = \\
+  = \frac{ 2\pi R^3}{3} \left( \frac{1+ 1}{4} \right) = \frac{ 2\pi R^3}{3} \left( \frac{1}{2} \right)
+\end{gathered}
+\]
+Probability atom leaves hole will have velocity in $(v,v+dv)$ : $P_{\text{beam}}(v) dv$
+
+\[
+P_{\text{beam}}(v) \propto vP_{\text{Maxwell} } \propto v^3 \exp{ \left( \frac{ -Mv^2}{ 2\tau } \right) }
+\]
+with, recall $P_{\text{Maxwell}} = 4\pi \left( \frac{ M }{ 2\pi \tau } \right)^{3/2} v^2 \exp{ \left( \frac{-Mv^2}{ 2\tau } \right) }$ 
+
+$P_{\text{beam}}$ distribution of transmission through a hole is Maxwell transmission distribution. 
+
+\[
+\begin{gathered}
+  \langle v_{\text{out}} \rangle = \int \int_0^{\pi/2} v\cos{\theta} \sin{\theta} d\theta P_{\text{Maxwell}}(v) dv = 4\pi \left( \frac{ M}{ 2\pi \tau} \right)^{3/2} \frac{1}{2} \int_0^{\infty} v^3 \exp{ \left( \frac{-M}{2\tau} v^2 \right) } dv = \\
+  = 4\pi \left( \frac{M}{2\pi \tau} \right)^{3/2} \frac{1}{2} \left( \frac{1}{-2\alpha} \right) \left[ 0 - \frac{1}{\alpha} \right] = 4\pi \left( \frac{ M}{2\pi \tau} \right)^{3/2} \frac{1}{4} \left( \frac{4\tau^2}{M^2} \right) = \boxed{ \frac{ 2^{1/2} }{ \pi^{1/2} } \left( \frac{\tau}{M} \right)^{1/2} }
+\end{gathered}
+\]
+for (doing the integration by hand) 
+\[
+\begin{aligned}
+  & (e^{-\alpha v^2} )' = -2\alpha v e^{-\alpha v^2} \\
+  & (v^2 e^{-\alpha v^2} )' = -2\alpha v^3 e^{-\alpha v^2} + 2v e^{-\alpha v^2} \\ 
+  & (v^2 e^{-\alpha v^2} + \frac{e^{-\alpha v^2} }{ \alpha } )' = -2\alpha v^3 e^{-\alpha v^2}
+\end{aligned}
+\]
+
+
+
+
+\subsubsection*{Particle Diffusion}
+
+pp. 399 of Kittel and Kroemer \cite{CKittelHKroemer1980}
+
+Consider a system.  \\
+One end in diffusive contact with reservoir at chemical potential $\mu_1$ \\
+Other end in diffusive contact with reservoir at chemical potential $\mu_2$ \\
+Constant temperature $\tau$.  \\
+If $\mu_1 > \mu_2$, particle flow through system from reservoir 1 to reservoir 2; $1\to 2$.   \\
+$n_i \equiv $ particle concentration in $i$ 
+
+Take
+\begin{equation}
+\mathbf{j}_n = -D \text{grad}n
+\end{equation}
+which is \textbf{Fick's law}, and where $D \equiv$ particle diffusion constant or \textbf{diffusivity}.  
+
+Mean free path $l$.  Particles freely travel over $l$.  
+
+Assume in a collision at $z$, particles come into local equilibrium at local chemical potential $\mu(z)$, local concentration $n(z)$.  
+
+At $z$, particle flux density in positive $z$ direction \qquad $\frac{1}{2} n(z-l_z) \overline{c}_z$ \\
+\phantom{At $z$, } particle flux density in negative $z$ direction \qquad $-\frac{1}{2} n(z+l_z) \overline{c}_z$
+
+Note $n(z-l_z)$ is particle concentration at $z-l_z$
+\[
+J_n^z = \frac{1}{2} \left[ n(z-l_z) - n(z+l_z) \right] \overline{c}_z = -\frac{dn}{dz} \overline{c}_z l_z
+\]
+where $\begin{aligned} & \quad \\
+  & \overline{c}_z = \overline{c} \cos{\theta}  \\
+  & \overline{l}_z = \overline{l} \cos{\theta}  
+\end{aligned}$
+
+\[
+\langle \overline{c}_z l_z \rangle = \overline{c} \overline{l} \frac{ \int_{\text{hemisphere} } \cos^2{\theta} dS }{ \int_{\text{hemisphere} } dS } = \overline{c}\overline{l} \frac{ \int_0^{\pi/2}d\theta \int_0^{2\pi } d\varphi \cos^2{\theta} \sin{\theta} d\theta }{ \int_0^{\pi/2} d\theta \sin{\theta} \int_0^{2\pi } d\varphi } = \overline{c} \overline{l} \frac{1}{3}
+\]
+Comparing with Fick's law, 
+\[
+J_n^z = \frac{-1}{3} \overline{c}\overline{l} \frac{dn}{dz} \text{ or } \mathbf{J}_N = -\frac{1}{3} \overline{c}\overline{l} \nabla n
+\]
+For diffusivity $D$ is then $D = \frac{1}{3} \overline{c}\overline{l}$.  
+
+Now recall that $\overline{l}$, the \emph{mean free path}, was derived from kinetic theory:
+\[
+l = \frac{1}{n\pi d^2}
+\]
+where $d$ is the diameter of the particle.  
+
+The mean thermal velocity was derived from the Maxwell distribution:
+\[
+\overline{c} = \left( \frac{ 8 \tau }{M \pi} \right)^{1/2}
+\]
+
+
+
+
+
+\subsection*{Problems}
+
+\problemhead{1. Mean speeds in a Maxwellian distribution}
+
+\begin{enumerate}
+  \item[(a)] $P(v) = 4\pi \left( \frac{M}{2\pi \tau} \right)^{3/2} v^2 \exp{ \left( \frac{-Mv^2}{2\tau} \right) }$
+
+Now
+\[
+\begin{gathered}
+  \int_0^{\infty} dv v^4 \exp{ (-\alpha v^2 )} = \int_0^{\infty} v^3 \left( \frac{ \exp{ (-\alpha v^2) } }{ -2 \alpha } \right)' = 0 - \int 3v^2 \frac{ \exp{ (-\alpha v^2)} }{ -2\alpha } = \int_0^{\infty} \frac{3}{2\alpha} v^2 \exp{ (-\alpha v^2 )} = \\
+  = \frac{3}{2\alpha } \int v \left( \frac{e^{-\alpha v^2 }}{ -2\alpha } \right)' = \frac{3}{2\alpha } \left[ 0 - \int \frac{e^{-\alpha v^2 } }{ -2\alpha } \right] = \frac{3}{4\alpha^2 } \frac{ \sqrt{ \pi }}{ 2\sqrt{ \alpha }}
+\end{gathered}
+\]
+So
+\[
+\langle v^2 \rangle = \int_0^{\infty} v^2 P(v) = 4\pi \left( \frac{M}{2\pi \tau } \right)^{3/2} \frac{3}{4 \left( \frac{M}{2\tau} \right)^2 } \frac{ \sqrt{\pi }}{ \sqrt{ \frac{M}{2\tau} } } \frac{1}{2} = \frac{3}{ \frac{M}{2\tau} } \frac{1}{2} = \frac{3\tau }{M}
+\]
+so 
+\[
+\boxed{ v_{rms} = \left( \frac{3\tau}{M} \right)^{1/2} }
+\]
+Now
+\[
+\langle v^2 \rangle = 3\langle v_x^2 \rangle = \frac{3\tau}{M} \text{ so } \langle v_x^2 \rangle^{1/2} = \left( \frac{\tau}{M} \right)^{1/2}
+\]
+  \item[(b)] \[
+\begin{gathered}
+  \frac{ \partial P(v) }{ \partial v} = \frac{2 P(v)}{v} + P(v) \left( \frac{-M}{\tau} \right)v = P(v) \left[ \frac{2}{v} - \frac{M}{\tau}v \right] = 0  \text{ if } v_{mp} = 0 \text{ or } v_{mp} = \boxed{ \sqrt{ \frac{2\tau}{M} } }
+\end{gathered}
+\]
+where $mp$ stands for most probable.  
+
+\[
+v_{mp} = \sqrt{ \frac{2\tau}{M} } < \sqrt{ \frac{3\tau}{M} } = v_{rms}
+\]
+  \item[(c)] \[
+\begin{gathered}
+  \overline{c} = \int_0^{\infty} dv v P(v) =: \langle v \rangle = \int_0^{\infty}dv 4\pi \left( \frac{M}{ 2\pi \tau} \right)^{3/2} v^3 \exp{ \left( \frac{-Mv^2}{2\tau} \right) } = 4 \pi \left( \frac{M}{2\pi \tau} \right)^{3/2} \int_0^{\infty}dv v^2 \left( \frac{ e^{ -\frac{Mv^2}{2\tau} } }{ \frac{-M}{\tau} } \right)' = \\
+  = 4\pi \left( \frac{M}{2\pi \tau} \right)^{3/2} \left[ 0 - \int_0^{\infty} dv 2v \frac{e^{ -\frac{Mv^2}{2\tau } } }{ \frac{-M}{\tau} } \right] = 4\pi \left( \frac{M}{2\pi \tau} \right)^{3/2} \left[ \frac{2\tau}{M} \left. \left( \frac{e^{-\frac{Mv^2}{ 2\tau } } }{ -\frac{M}{\tau} } \right) \right|_0^{\infty} \right] = 4 \pi \left( \frac{M}{2\pi \tau} \right)^{3/2} \frac{2\tau^2}{M^2} = \\
+   = \frac{1}{(2\pi )^{3/2} } 8 \pi \sqrt{ \frac{\tau}{M}} = \boxed{ \sqrt{ \frac{8\tau}{\pi M} } }
+\end{gathered}
+\]
+Note
+\[
+\begin{gathered}
+  \frac{v_{rms}}{ \overline{c}} = \frac{ \left( \frac{3\tau}{M} \right)^{1/2} }{ \left( \frac{8\tau}{\pi M} \right)^{1/2} } = \left( \frac{3\pi }{8} \right)^{1/2}
+\end{gathered}
+\]
+\item[(d)] $|v_z| = |v\cos{\theta} | = v|\cos{\theta}|$.  For for a fixed $\theta$, $v\cos{\theta}$ is 1 point on a sphere, whereas $v|\cos{\theta}|$ could be 2 pts on a sphere.  
+
+Now
+\[
+\begin{gathered}
+\int_0^{\pi} |\cos{\theta}| \sin{\theta}d\theta = \int_0^{\pi/2} \cos{\theta} \sin{\theta} d\theta + \int_{\pi/2}^{\pi} - \cos{\theta} \sin{\theta} d\theta = \int_0^{\pi/2} \frac{\sin{2\theta} d\theta}{ 2} + \int_{\pi/2}^{\pi} \frac{ - \sin{2\theta} d\theta}{2} = \\
+= \left. \left( \frac{ \cos{2\theta} d\theta}{-4} \right) \right|_0^{\pi/2} + \left. \left( \frac{ \cos{2\theta} }{ 4} \right) \right|_{\pi/2}^{\pi} = \frac{1}{2} + \frac{1 + 1 }{4} = 1 
+\end{gathered}
+\]
+$P(v)dv$ is probability that particle has speed or velocity magnitude in $(v,v+dv)$.  \\
+It counts the event of $v\cos{\theta}$ and $v\cos{(\pi-\theta)}$, so it counts $v|\cos{\theta}|$ twice.  $P(v)dv = \int_0^{\pi/2} d\theta 2 P(v|\cos{\theta}|) $
+\[
+\Longrightarrow \overline{c}_z = \langle |v_z| \rangle = \langle |v\cos{\theta}| \rangle = \langle v |\cos{\theta} | \rangle = \int_0^{\pi} \int_0^{\infty} v \frac{ P(v) dv}{2} |\cos{\theta}| d\theta = \left( \frac{2\tau}{\pi M } \right)^{1/2}
+\]
+
+\end{enumerate}
+
+
+
+\section{Propagation}
+
+\subsection*{Heat Conduction Equation}
+
+nonrelativistic case: 
+
+Let manifold $N = \mathbb{R} \times M$, with $\text{dim}M = n$.  
+
+Let $\mathbf{J} \in \mathfrak{X}(N) = \mathfrak{X}(\mathbb{R}\times M)$ be a vector field in $N$.  \\
+Let $\begin{aligned} & \quad \\ 
+  & \rho \in C^{\infty}(N) \\ 
+  & \rho = \rho(t,x) \text{ locally } \end{aligned}$ be a smooth function on $N$.  \\
+Let $J \in \Omega^1(N)$ be a 1-form on $N$ that is isomorphic to $\mathbf{J}$ (Tangent-Cotangent isomorphism theorem), i.e.
+\[
+\begin{aligned}
+& J = \mathbf{J}^{\flat}  \\
+& J_i = g_{ij} \mathbf{J}^j
+\end{aligned}
+\]
+with $g_{ij}$ being the metric on $N$ (not just $M$!)
+
+Note that as $N = \mathbb{R}\times M$, $g_{0j} = \delta_{0j}$
+
+The local form of $\mathbf{J}$ is the following:
+\[
+\mathbf{J} = \rho \frac{ \partial }{ \partial t} + \mathbf{j}^i \frac{ \partial }{ \partial x^i} \quad \quad \, i=1\dots n
+\]
+
+So 
+\[
+\begin{gathered}
+  J = J_i dx^i = g_{ij} \mathbf{J}^j dx^i = \rho dt + j_k dx^k \quad \quad \, k = 1 \dots n 
+\end{gathered}
+\]
+Thus
+\begin{equation}
+  J = \rho dt + j_k dx^k \quad \quad \, k=1\dots n
+\end{equation}
+
+Now do the Hodge star operator, resulting in a $n$-form
+\[
+*J \in \Omega^n(N)
+\]
+and so
+\[
+\begin{gathered}
+  *J = \rho * dt + j_k * dx^k = \rho \text{vol}^n + i_{\mathbf{j}}\text{vol}^{n+1}
+\end{gathered}
+\]
+as
+\[
+\begin{gathered}
+  \rho * dt = \rho \frac{ \sqrt{g}}{ n !} \epsilon^0_{ \, \, i_1 \dots i_n} dx^i_1 \wedge \dots \wedge dx^{i_n} \quad \quad \, i_1 \dots i_n \in \lbrace 1 \dots n \rbrace \\ 
+  j_k * dx^k = g_{kl} j^l \frac{ \sqrt{g}}{ (n+1)!} \epsilon^k_{ \, \, i_1 \dots i_n} dx^{i_1} \wedge \dots \wedge dx^{i_n} = i_{\mathbf{j}} \text{vol}^{n+1} 
+\end{gathered}
+\]
+so thus
+\[
+*J = \rho \text{vol}^n + i_{\mathbf{j}} \text{vol}^{n+1}
+\]
+
+Hence
+\begin{equation}
+  d*J = \frac{ \partial }{ \partial t} (\rho \sqrt{g} ) \frac{1}{ \sqrt{g}} \text{vol}^{n+1} + \frac{ \partial }{ \partial x^k} (\sqrt{g} j_k) \frac{1}{ \sqrt{g}} \text{vol}^{n+1} = d(\rho \text{vol}^n) + di_{\mathbf{j}} \text{vol}^{n+1}
+\end{equation}
+
+Special case: $\frac{ \partial \sqrt{g}}{ \partial t} = 0$
+
+\[
+d*J = \frac{ \partial \rho}{ \partial t} \text{vol}^{n+1} + \left( \frac{ \partial }{ \partial x^k} \ln{ \sqrt{g}} \right) j_k \text{vol}^{n+1} + \frac{ \partial j_k}{ \partial x^k} \text{vol}^{n+1} = 0 
+\]
+\[
+\Longrightarrow \frac{ \partial \rho }{ \partial t} + \left( \frac{ \partial }{ \partial x^k} \ln{ \sqrt{g}} \right) j_k + \frac{ \partial j_k }{ \partial x^k } = 0 
+\]
+
+Special case: if $\sqrt{g}$ constant, $\frac{ \partial \rho }{ \partial t } + \frac{ \partial j_k}{ \partial x^k} = 0 $
+
+Let $j \equiv -D \mathbf{d}\rho$ ($j$ is a closed form on $M$) where $\mathbf{d}\rho = \frac{ \partial \rho }{ \partial x^i } dx^i$ \quad \, $i=1 \dots n$, $D$ constant
+
+\[
+d * J  = d\rho \text{vol}^n + - Dd * \text{d}\rho = 0 
+\]
+For flat metric, $\sqrt{g}$ constant,
+\[
+\frac{ \partial \rho }{ \partial t} = D \frac{ \partial^2 \rho }{ ( \partial x^k )^2}
+\]
+
+For relativistic case, 
+
+Consider manifold $M$, with dimension $\text{dim}M = n+1$
+\[
+\mathbf{J} = \rho \frac{ \partial }{ \partial t} + \mathbf{j}^i \frac{ \partial }{ \partial x^i}
+\]
+
+Let $J = \mathbf{J}^{\flat}$.  $J_{\mu} = g_{\mu \nu} \mathbf{J}^{\nu}$
+
+For special case of flat Minkowski space,
+\[
+J  = - \rho dt + j_i dx^i
+\]
+
+\[
+\begin{aligned}
+  *J & = - \rho * dt + j_i * dx^i \\ 
+  & -\rho \frac{ \sqrt{g}}{ (n+1)!} \epsilon^0_{ \, \, i_1 \dots i_n} dx^{i_1} \wedge \dots \wedge dx^{i_n} + j_i \frac{ \sqrt{g} }{ (n+1)!} \epsilon^i_{ \, \, \mu_1 \dots \mu_n } dx^{\mu_1} \wedge \dots \wedge dx^{\mu_n}
+\end{aligned}
+\]
+\[
+d* J = -\frac{ \partial (\rho \sqrt{g}  )}{  \partial t } \frac{1}{ \sqrt{g} } \text{vol}^{n+1} + \frac{ \partial (j_i \sqrt{g} )}{  \partial x^i } \frac{1}{ \sqrt{g}} \text{vol}^{n+1} = 0 
+\]
+\[
+\Longrightarrow - \frac{ \partial (\rho \sqrt{g})}{  \partial t} + \frac{ \partial (j_i \sqrt{g} )}{ \partial x^i } = 0 
+\]
+
+Fick law (14.19) for particle flux density, $j = -D_n \mathbf{d}n$ where $\begin{aligned}  & \quad \\ 
+  & D_n  & \text{ particle diffusivity constant } \\ 
+  & n   & \text{ particle concentration } \end{aligned}$ 
+
+\[
+J = n dt + j
+\]
+
+thermal conductivity; homogeneous medium
+$\widehat{C}$ heat capacity per unit volume.  $j_u = -K \mathbf{d}\tau$
+
+$J = \widehat{C} \tau dt + j_u$
+
+\begin{equation}
+\widehat{C} \frac{ \partial \tau}{ \partial t} + \frac{ \partial (j_u)_k}{ \partial x^k} = 0 \quad \quad \quad \, (5)
+\end{equation}
+
+\begin{equation}
+  \frac{ \partial \tau}{ \partial t} = D_{\tau} \frac{ \partial^2 \tau}{ ( \partial x^k)^2 } \quad \quad \, D_{\tau} \equiv K/\widehat{C} \quad \quad \quad \, (6) 
+\end{equation}
+
+\subsection*{Propagation of Sound Waves in Gases}
+
+pressure associated with sound wave 
+
+\begin{equation}
+  \delta p = \delta p_0 \exp{ [ i (kx - \omega t) ] } \quad \quad \quad \, (27) 
+\end{equation}
+
+Suppose ideal gas: 
+\begin{equation}
+  pV = N \tau \text{ or } p = \rho \tau /M \quad \quad \quad \, (28)
+\end{equation}
+Consider ``solid ball'' or ``billiard ball'' particle (extended particle, not pt. particle, but no internal structure)
+\[
+\rho = \frac{NM}{V}
+\]
+Force on particle 
+\[
+F = \frac{dP}{dt} = \frac{d}{dt} \int \rho \text{vol}^n u = \frac{M}{V} \int \mathcal{L}_{ \frac{ \partial }{ \partial t} + \mathbf{u} }\mathbf{u} = \frac{M}{V} \int \frac{ \partial u}{ \partial t} + [u,u]
+\]
+Suppose $[u,u]=0$ (certainly for flat spaces; what about for curved spaces? $[u,u] \neq 0$? Possibly? I don't know. EY: 20150317
+
+\begin{equation}
+dU + p dV = \tau d\sigma
+\end{equation}
+
+define fractional deviations $s,\theta$
+
+\begin{equation}
+  \begin{aligned}
+    & \rho = \rho_0(1+s) \\
+    & \tau = \tau_0 (1 + \theta) 
+\end{aligned} \quad \quad \quad \, (5)
+\end{equation}
+where $\rho_0$, $\tau_0$ are density and temperature in absence of sound wave. \\
+assume $u,s,\theta$ have form of traveling $\exp{ [ i (kx - \omega t)]}$
+
+\begin{align}
+& \omega u - \left( \frac{k \tau}{M} \right) s - \left( \frac{ k \tau }{M} \right) \theta =0  \quad \quad \quad \, (39) \\ 
+& \omega s - ku =0 \quad \quad \quad \, (40) \\ 
+& \tau \widehat{C}_V \theta - ps = 0 \text{ or } \widehat{C}_V \theta - ns = 0 \quad \quad \quad \, (41)
+\end{align}
+
+\[
+\begin{gathered}
+  \omega u = \frac{k\tau}{ M} \left( 1 + \frac{n}{ \widehat{C}_V} \right) s \\ 
+  \omega = \frac{k\tau}{M} \left( 1 + \frac{n}{ \widehat{C}_V} \right) \frac{k}{\omega}
+\end{gathered}
+\]
+So 
+\begin{equation}
+  \omega = \left( \frac{ \gamma \tau}{M} \right)^{1/2} k  \quad \quad \quad \, (42)
+\end{equation}
+
+\[
+\begin{gathered}
+  \gamma = \frac{ \widehat{C}_V + n }{ \widehat{C}_V } = \frac{\widehat{C}_p}{ \widehat{C}_V } \\ 
+ v_s = \frac{ \partial \omega}{ \partial k} = \left( \frac{\gamma \tau}{ M} \right)^{1/2}
+\end{gathered}
+\]
+
+\subsection*{Problems}
+
+\problemhead{1} \textbf{Fourier analysis of pulse}
+
+$t=0$ 
+
+\begin{equation}
+  \theta(x,0) = \delta(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} dk \exp{ (ikx)} \quad \quad \quad \, (58) 
+\end{equation}
+
+\begin{equation}
+  \theta(x,t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} dk \exp{ [ i (kx-\omega t) ]} \quad \quad \quad \, (59) 
+\end{equation}
+
+Given a dispersion relation at this form:
+\begin{equation}
+  Dk^2  = i \omega \quad \quad \, (10)
+\end{equation}
+
+\begin{equation}
+\theta(x,t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} dk \exp{ [ ikx - Dk^2 t] } \quad \quad \quad \, (60)
+\end{equation}
+
+and so, doing the Gaussian integral,
+\begin{equation}
+  \theta(x,t) = \frac{1}{ \sqrt{ 4\pi Dt} } \exp{ \left( \frac{-x^2}{ 4Dt } \right)} \quad \quad \quad \, (14)
+\end{equation}
+
+
+\problemhead{Diffusion in two and three dimensions}
+
+\begin{enumerate}
+\item[(a)] \[
+\begin{aligned}
+  & \frac{ \partial \theta_2}{ \partial t} = - \frac{ \theta_2}{t} + \frac{r^2}{4} \frac{ \theta_2}{ Dt^2 } \\ 
+  & \frac{ \partial^2\theta_2}{ (\partial x^i)^2} = - \frac{1}{2} \frac{ \theta_2}{Dt} - \frac{1}{2} \frac{\theta_2}{ Dt} + \frac{1}{4} \frac{ \theta_2}{ D^2 t^2} (x^2+ y^2) 
+\end{aligned}
+\]
+\[
+\Longrightarrow \frac{ \partial \theta_2}{ \partial t} = D \frac{ \partial^2 \theta_2}{ (\partial x^i)^2 }
+\]
+\item[(b)]
+\item[(c)]
+\end{enumerate}
+

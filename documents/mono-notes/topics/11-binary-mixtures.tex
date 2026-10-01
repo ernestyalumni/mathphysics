@@ -1,0 +1,124 @@
+\section{Binary mixtures}
+\label{sec:binary-mixtures}
+
+The 2008 chapter heading was empty. The entropy-of-mixing solution under the ideal-gas heading is also empty. The 2015 manuscript derives the distinct-gas increase and the identical-gas cancellation, and its general two-volume formula repeats \(V_A\) in the second logarithm. The derivation here is the one to use. It uses the Sackur--Tetrode entropy already obtained in that manuscript,
+\begin{equation}
+\label{eq:sackur}
+\sigma = N\Biggl[\ln\biggl(\frac{n_Q}{n}\biggr) + 1 + \frac{d}{2}\Biggr],
+\qquad
+n = \frac{N}{V},
+\qquad
+n_Q = \biggl(\frac{M\tau}{2\pi\hbar^2}\biggr)^{d/2},
+\end{equation}
+for a classical monatomic ideal gas of one species in \(d\) dimensions. The usual case is \(d=3\), where \(1 + d/2 = 5/2\). The hypotheses are: the gas is classical, \(n\ll n_Q\); the particles of one species are indistinguishable, which has already put the \(1/N!\) into \eqref{eq:sackur}; different species are distinguishable from each other; and there is no interaction energy, so entropies of different species in the same volume add.
+
+\subsection{Two different species}
+
+Put species \(A\) in volume \(V_A\) and species \(B\) in volume \(V_B\), at the same \(\tau\), and then let each occupy the total volume
+\begin{equation}
+V = V_A + V_B
+\end{equation}
+without changing \(N_A\), \(N_B\), or \(\tau\). A partition removed at fixed total volume is this process. Because \(n_Q\) depends on \(\tau\) and on the mass, and \(\tau\) is fixed,
+\begin{align}
+\sigma_A
+&= N_A\Biggl[\ln\biggl(\frac{n_{QA} V_A}{N_A}\biggr) + 1 + \frac{d}{2}\Biggr], \nonumber\\
+\sigma_A'
+&= N_A\Biggl[\ln\biggl(\frac{n_{QA} V}{N_A}\biggr) + 1 + \frac{d}{2}\Biggr].
+\label{eq:sigma-A-before-after}
+\end{align}
+Subtract:
+\begin{equation}
+\label{eq:delta-sigma-A}
+\sigma_A' - \sigma_A = N_A \ln\biggl(\frac{V}{V_A}\biggr).
+\end{equation}
+The same subtraction for \(B\), with \(V_B\) in the denominator, gives the mixing entropy
+\begin{equation}
+\label{eq:entropy-of-mixing}
+\Delta\sigma
+= N_A\ln\biggl(\frac{V}{V_A}\biggr) + N_B\ln\biggl(\frac{V}{V_B}\biggr).
+\end{equation}
+The 2015 general formula writes \(V_A\) in both denominators. The second term of \eqref{eq:entropy-of-mixing} is the \(B\) contribution \eqref{eq:delta-sigma-A} with the labels exchanged.
+
+If \(N_A = N_B = N\) and \(V_A = V_B\), then \(V/V_A = 2\) and
+\begin{equation}
+\label{eq:equal-halves}
+\Delta\sigma = 2N\ln 2.
+\end{equation}
+That is the result in the 2015 manuscript for equal amounts of two different gases.
+
+If the initial pressures and temperature agree, the ideal-gas law \(pV_i = N_i\tau\) gives \(V_i/V = N_i/N\) with \(N = N_A + N_B\). Then
+\begin{equation}
+\label{eq:mixing-mole-fraction}
+\Delta\sigma = - N_A\ln x_A - N_B\ln x_B,
+\qquad
+x_i = \frac{N_i}{N}.
+\end{equation}
+Each \(-x\ln x\) is nonnegative for \(x\in(0,1]\), so \(\Delta\sigma\ge 0\).
+
+\subsection{The same species}
+
+Now let both sides be the same species, the same \(n_Q\), with \(N\) particles in volume \(V\) on each side. The initial entropy is the sum of two separate applications of \eqref{eq:sackur}:
+\begin{equation}
+\label{eq:identical-initial}
+\sigma_{\mathrm{i}}
+= 2N\Biggl[\ln\biggl(\frac{n_Q V}{N}\biggr) + 1 + \frac{d}{2}\Biggr].
+\end{equation}
+After the partition is removed there is one system of \(2N\) indistinguishable particles in volume \(2V\). One application of \eqref{eq:sackur} gives
+\begin{equation}
+\label{eq:identical-final}
+\sigma_{\mathrm{f}}
+= 2N\Biggl[\ln\biggl(\frac{n_Q\,(2V)}{2N}\biggr) + 1 + \frac{d}{2}\Biggr]
+= \sigma_{\mathrm{i}}.
+\end{equation}
+The ratio \((2V)/(2N)\) equals \(V/N\), so
+\begin{equation}
+\label{eq:identical-delta}
+\Delta\sigma = 0.
+\end{equation}
+Counting the final state as two distinguishable species, each \(N\) in volume \(2V\), would instead add \(2N\ln 2\). The single factorial \((2N)!\) removes that amount. With \eqref{eq:stirling} truncated at \(n\ln n - n\),
+\begin{align}
+\ln((2N)!) - 2\ln(N!)
+&= \bigl(2N\ln(2N) - 2N\bigr) - 2\bigl(N\ln N - N\bigr) \nonumber\\
+&= 2N\ln 2 + 2N\ln N - 2N\ln N \nonumber\\
+&= 2N\ln 2.
+\label{eq:stirling-cancellation}
+\end{align}
+That is the Gibbs cancellation: the extra \(2N\ln 2\) from doubling the volume available to each group is the same \(2N\ln 2\) that appears when two groups of \(N\) identical particles are entered as one group of \(2N\).
+
+\subsection{Chemical potential in an ideal mixture}
+
+For one species, the Helmholtz free energy consistent with \eqref{eq:sackur} and with \(F = U - \tau\sigma\), \(U = (d/2) N\tau\), is the expression in the 2015 ideal-gas summary,
+\begin{equation}
+\label{eq:helmholtz-ideal}
+F = N\tau\Biggl[\ln\biggl(\frac{n}{n_Q}\biggr) - 1\Biggr].
+\end{equation}
+Differentiate at fixed \(\tau\) and \(V\). The \(N\) inside \(n = N/V\) contributes one power of \(N\):
+\begin{align}
+\biggl(\frac{\partial F}{\partial N}\biggr)_{\tau,V}
+&= \tau\Biggl[\ln\biggl(\frac{n}{n_Q}\biggr) - 1\Biggr]
+ + N\tau\cdot\frac{1}{N} \nonumber\\
+&= \tau\ln\biggl(\frac{n}{n_Q}\biggr).
+\label{eq:mu-one-species}
+\end{align}
+So \(\mu = \tau\ln(n/n_Q)\).
+
+In a mixture of ideal gases the species share \(V\) and \(\tau\), and the free energy is the sum of \eqref{eq:helmholtz-ideal} over species because the interaction energy was assumed to vanish. For species \(j\),
+\begin{equation}
+\label{eq:mu-mixture}
+\mu_j
+= \tau\ln\biggl(\frac{n_j}{n_{Qj}}\biggr)
+= \tau\ln x_j + \tau\ln\biggl(\frac{n}{n_{Qj}}\biggr),
+\end{equation}
+where \(n_j = N_j/V\), \(n = \sum_i n_i\), and \(x_j = n_j/n\). The mixture pressure is \(p = n\tau\). A pure gas of species \(j\) at the same \(\tau\) and at that same total pressure \(p\) would have density \(n\), hence chemical potential \(\tau\ln(n/n_{Qj})\). Call that pure-gas value \(\mu_j^{0}(\tau,p)\). Then
+\begin{equation}
+\label{eq:ideal-mixture-mu}
+\mu_j(\tau,p,x_j) = \mu_j^{0}(\tau,p) + \tau\ln x_j.
+\end{equation}
+The partial pressure follows from the same ideal-gas law applied to \(n_j\):
+\begin{equation}
+\label{eq:partial-pressure}
+p_j = n_j\tau = x_j\, p,
+\qquad
+\sum_j p_j = p.
+\end{equation}
+Equations \eqref{eq:entropy-of-mixing}, \eqref{eq:identical-delta}, \eqref{eq:ideal-mixture-mu}, and \eqref{eq:partial-pressure} are the content that the empty chapter and the empty mixing solution did not contain.

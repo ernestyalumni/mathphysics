@@ -1,0 +1,271 @@
+\section{Resolutions}
+\label{sec:resolutions}
+
+Each item states the correct relation, the hypotheses, and the manuscript line it replaces. The manuscript text is still in the preceding sections.
+
+\subsection{Ideal-gas internal energy, and the adiabatic path}
+\label{sec:adiabatic-question}
+
+The 2015 notes ask why, on an adiabatic path, one may write \(dU = C_V\, d\tau\) and drop \((\partial U/\partial V)_{\tau}\, dV\). They also write, in that question, \(dU = C_V\tau\). The differential is \(C_V\, d\tau\). The product \(C_V\tau\) is not that differential.
+
+Start from \eqref{eq:thermo-identity} at fixed \(N\),
+\begin{equation}
+\label{eq:dU-fixed-N}
+dU = \tau\, d\sigma - p\, dV.
+\end{equation}
+Take \(U = U(\tau,V)\) on the equilibrium surface, so
+\begin{equation}
+\label{eq:dU-tau-V}
+dU
+= \biggl(\frac{\partial U}{\partial\tau}\biggr)_{V} d\tau
++ \biggl(\frac{\partial U}{\partial V}\biggr)_{\tau} dV.
+\end{equation}
+The definition \(C_V = (\partial U/\partial\tau)_{V}\) turns the first coefficient into \(C_V\). It remains to compute the second. From \(F = U - \tau\sigma\) and \(dF = -\sigma\, d\tau - p\, dV\),
+\begin{equation}
+\label{eq:maxwell-sigma-p}
+\biggl(\frac{\partial\sigma}{\partial V}\biggr)_{\tau}
+= \biggl(\frac{\partial p}{\partial\tau}\biggr)_{V}.
+\end{equation}
+Hold \(\tau\) fixed in \eqref{eq:dU-fixed-N} and solve for the volume derivative:
+\begin{equation}
+\label{eq:dU-dV}
+\biggl(\frac{\partial U}{\partial V}\biggr)_{\tau}
+= \tau\biggl(\frac{\partial\sigma}{\partial V}\biggr)_{\tau} - p
+= \tau\biggl(\frac{\partial p}{\partial\tau}\biggr)_{V} - p.
+\end{equation}
+The second equality is \eqref{eq:maxwell-sigma-p}. This identity is general at fixed \(N\). It has not used an ideal-gas law and it has not used \(Q=0\).
+
+Now restrict to a classical ideal gas,
+\begin{equation}
+\label{eq:ideal-gas-law}
+p = \frac{N\tau}{V}.
+\end{equation}
+Then \((\partial p/\partial\tau)_{V} = N/V = p/\tau\), and \eqref{eq:dU-dV} collapses:
+\begin{equation}
+\label{eq:joule-law}
+\biggl(\frac{\partial U}{\partial V}\biggr)_{\tau}
+= \tau\cdot\frac{p}{\tau} - p
+= 0.
+\end{equation}
+So \(U = U(\tau)\) only. Equation \eqref{eq:dU-tau-V} becomes
+\begin{equation}
+\label{eq:dU-ideal}
+dU = C_V(\tau)\, d\tau
+\end{equation}
+on every path on the ideal-gas surface, adiabatic or not. The term that the 2015 question could not place is zero because of \eqref{eq:ideal-gas-law}, before \(Q=0\) is imposed.
+
+The reversible heat is then
+\begin{equation}
+\label{eq:Q-ideal}
+Q = dU + p\, dV = C_V\, d\tau + \frac{N\tau}{V}\, dV.
+\end{equation}
+An adiabatic reversible path is \(Q=0\). If \(C_V\) is independent of \(\tau\), which is the classical gas with a temperature-independent heat capacity,
+\begin{equation}
+\label{eq:separate-adiabatic}
+\frac{d\tau}{\tau} + \frac{N}{C_V}\frac{dV}{V} = 0.
+\end{equation}
+Integrate from an initial state to a final state:
+\begin{equation}
+\label{eq:adiabatic-TV}
+\ln\frac{\tau_f}{\tau_i} + \frac{N}{C_V}\ln\frac{V_f}{V_i} = 0,
+\qquad
+\tau\, V^{N/C_V} = \mathrm{constant}.
+\end{equation}
+
+The difference \(C_p - C_V\) uses the same two facts, \(U=U(\tau)\) and \eqref{eq:ideal-gas-law}, and does not need the monatomic value of \(C_V\). The enthalpy is \(H = U + pV = U + N\tau\), so
+\begin{equation}
+\label{eq:Cp-minus-CV}
+C_p
+= \biggl(\frac{\partial H}{\partial\tau}\biggr)_{p}
+= \biggl(\frac{\partial U}{\partial\tau}\biggr)_{p} + N
+= C_V + N,
+\end{equation}
+where \((\partial U/\partial\tau)_{p} = (\partial U/\partial\tau)_{V}\) because \(U\) does not depend on \(V\) or on \(p\). Therefore
+\begin{equation}
+\label{eq:gamma-minus-one}
+\frac{N}{C_V} = \frac{C_p - C_V}{C_V} = \gamma - 1,
+\qquad
+\gamma = \frac{C_p}{C_V},
+\end{equation}
+and \(\tau V^{\gamma-1}\) is constant. For a monatomic gas in three dimensions, equipartition gives \(C_V = 3N/2\) and \(\gamma = 5/3\). For a diatomic gas with \(C_V = 5N/2\), the same \(C_p - C_V = N\) holds and \(\gamma = 7/5\). The 2015 question about molecules other than monatomic ones is this split: \(C_p - C_V = N\) is the ideal-gas law, while the value of \(C_V\) is the internal spectrum.
+
+The Carnot-cycle notes ask why \(C_V\), whose definition holds \(V\) fixed, may be used on the adiabatic leg \(2\to 3\), where \(V\) changes. The subscript \(V\) names the variable held fixed in the partial derivative that defines the state function \(C_V(\tau)\). It does not name a constraint on the path. Once \eqref{eq:joule-law} is in force, \eqref{eq:dU-ideal} is the differential of \(U\) along the adiabatic leg and along every other leg.
+
+\subsection{Path dependence is the failure of \(dQ=0\)}
+\label{sec:not-topology}
+
+The 2008 notes say that a reversible process is one whose 1-forms are exact, and later that \(Q\) and \(W\) are not necessarily exact, so the state space would have to be topologically nontrivial. Those two sentences cannot stand together with \(Q = \tau\, d\sigma\).
+
+The energy \(U\) is a state function, so \(dU\) is exact. On a reversible path the heat 1-form is defined to be
+\begin{equation}
+\label{eq:Q-reversible}
+Q = \tau\, d\sigma.
+\end{equation}
+Its exterior derivative, with \(\tau\) and \(\sigma\) treated as coordinates, or as functions whose differentials are known, is
+\begin{equation}
+\label{eq:dQ}
+dQ = d(\tau\, d\sigma) = d\tau\wedge d\sigma.
+\end{equation}
+The 2-form \(d\tau\wedge d\sigma\) vanishes when \(\tau\) is a function of \(\sigma\) alone. In the \((\tau,V)\) chart it does not vanish: \(\sigma = \sigma(\tau,V)\) and \(C_V\) is not the whole story of \(Q\), because of the second term in \eqref{eq:Q-ideal}. So \(Q\) fails to be closed. On an open set of \(\mathbb{R}^2\), which is contractible, the Poincaré lemma says that a closed 1-form is exact. The contrapositive used here is local: a 1-form that is not closed is not exact, on a domain with no interesting topology. Path dependence of the reversible heat is \(dQ\neq 0\). It is already visible for an ideal gas in the \((\tau,V)\) plane.
+
+The work 1-form \(W_{\mathrm{by}} = p\, dV\) is likewise not closed once \(p = p(\tau,V)\). Their sum \(Q - W_{\mathrm{by}} = dU\) is exact. Exactness belongs to \(dU\), including on irreversible processes when \(U\) is evaluated between equilibrium endpoints. It is not the definition of a reversible path.
+
+\subsection{Work sign in the heat-and-work notes}
+\label{sec:work-sign}
+
+One line in the heat-and-work notes writes \(dU = Q + W = \tau\, d\sigma + p\, dV\). The identity in force everywhere else in that discussion is \eqref{eq:dU-fixed-N}, and the Carnot calculation a few lines later uses \(\oint dU = 0 = \oint \tau\, d\sigma - \oint p\, dV\). The plus sign on \(p\, dV\) in that one line is the slip. The Carnot algebra that follows it uses the minus sign and is not changed by the slip.
+
+\subsection{Derivative of the Helmholtz free energy}
+\label{sec:helmholtz-sign}
+
+From \(F = U - \tau\sigma\) and \eqref{eq:dU-fixed-N},
+\begin{equation}
+\label{eq:dF}
+dF = -\sigma\, d\tau - p\, dV
+\end{equation}
+at fixed \(N\), so
+\begin{equation}
+\label{eq:sigma-from-F}
+\biggl(\frac{\partial F}{\partial\tau}\biggr)_{V} = -\sigma.
+\end{equation}
+The heat-and-work notes record \eqref{eq:sigma-from-F}. The gas--solid solution in the phase chapter states the opposite, \((\partial F/\partial\tau)_{V} = \sigma\), and then differentiates \(F_s\). The entropy computed there is \(-\sigma\) under \eqref{eq:sigma-from-F}. That solution then drops the solid entropy by the assumption stated in the problem, and the boxed \(N_g\) and \(p_g\) come from minimizing \(F\) in \(N_g\):
+\begin{align}
+F
+&= -\epsilon_0 (N-N_g) + N_g\tau\Biggl[\ln\biggl(\frac{N_g}{V n_Q}\biggr) - 1\Biggr], \nonumber\\
+\biggl(\frac{\partial F}{\partial N_g}\biggr)
+&= \epsilon_0 + \tau\ln\biggl(\frac{N_g}{V n_Q}\biggr).
+\label{eq:dF-dNg}
+\end{align}
+The \(\tau\) terms \(-\tau + \tau\) from the product rule cancelled. Setting the derivative to zero gives \(N_g = V n_Q e^{-\epsilon_0/\tau}\), and \(p_g = N_g\tau/V\) gives the boxed pressure. Those two boxed results do not use the flipped entropy identity.
+
+\subsection{Enthalpy per particle}
+\label{sec:enthalpy-per-particle}
+
+The extensive enthalpy is \(H = U + pV\). Divide by \(N\):
+\begin{equation}
+\label{eq:enthalpy-per-particle}
+\hat h = \frac{H}{N} = \hat\epsilon + p v,
+\qquad
+\hat\epsilon = \frac{U}{N},
+\qquad
+v = \frac{V}{N}.
+\end{equation}
+The sum \(\hat\epsilon + pV\) adds an energy per particle to an energy. The 2015 definition writes that sum, and the later reminder writes it again as \(\check h = \check\epsilon + pV\). The line \(\hat h\, dN = (\hat\epsilon + pv)\, dN\), in the same subsection, has the volume right. Dimensions select \eqref{eq:enthalpy-per-particle}. The conduction term \(\tau N\, d\hat\sigma\) and the convection term \(\hat h\, dN\) then add as energies. This is the comparison the 2019 note in the differential-geometry dump asked for.
+
+\subsection{Joule--Thomson sign}
+\label{sec:jt-sign}
+
+The 2015 derivation of the coefficient is kept. With \(\alpha = V^{-1}(\partial V/\partial\tau)_{p}\) and \((\partial\sigma/\partial p)_{\tau} = -(\partial V/\partial\tau)_{p}\) from \(dG = -\sigma\, d\tau + V\, dp\),
+\begin{equation}
+\label{eq:dH-JT}
+dH = C_p\, d\tau + V(1 - \tau\alpha)\, dp.
+\end{equation}
+At fixed \(H\),
+\begin{equation}
+\label{eq:mu-JT}
+\biggl(\frac{\partial\tau}{\partial p}\biggr)_{H}
+= -\frac{V(1-\tau\alpha)}{C_p}.
+\end{equation}
+For the ideal gas, \(\alpha = 1/\tau\), so the coefficient vanishes and an isenthalpic expansion does not change \(\tau\).
+
+Below the inversion temperature one has \(\tau\alpha > 1\), so \eqref{eq:mu-JT} is positive. An expansion has \(dp<0\), and therefore \(d\tau<0\): the gas cools. The 2015 sentence for that side agrees.
+
+Above the inversion temperature, \(\tau\alpha < 1\), so \eqref{eq:mu-JT} is negative. The same expansion has \(dp<0\), and the product is
+\begin{equation}
+\label{eq:warming}
+d\tau = \biggl(\frac{\partial\tau}{\partial p}\biggr)_{H} dp > 0.
+\end{equation}
+The gas warms. The 2015 sentence for that side says both \(dT<0\) and that the gas warms. The warming conclusion matches \eqref{eq:warming}. The clause \(dT<0\) does not.
+
+The inversion curve itself, where the coefficient vanishes, is \(\tau\alpha = 1\). For a van der Waals gas that locus is a curve in the \((\tau,p)\) plane. Equation \eqref{eq:mu-JT} does not by itself produce the numerical inversion temperature; a model for \(\alpha(\tau,p)\) does. The 2015 note already says that.
+
+\subsection{Rotational factor in the ideal-gas summary}
+\label{sec:rotation}
+
+In the 2015 summary the energy of translation plus rotation is written correctly as
+\begin{equation}
+\label{eq:eps-rotor}
+\epsilon_{\mathbf{n},j}
+= \frac{\hbar^2}{2M}\biggl(\frac{\pi}{L}\biggr)^{2}\mathbf{n}^{2} + j(j+1)\epsilon_0,
+\end{equation}
+and then the Boltzmann factor is written with \(2\pi\) in place of \(2M\) in the translational piece and with \(e^{j(j+1)\epsilon_0}\) in place of the rotational factor. The factor required by \eqref{eq:eps-rotor} is
+\begin{equation}
+\label{eq:boltzmann-rotor}
+\exp(-\epsilon_{\mathbf{n},j}/\tau)
+= \exp\Biggl(-\frac{\hbar^2 \pi^2 \mathbf{n}^{2}}{2M L^2\tau}\Biggr)
+  \exp\biggl(-\frac{j(j+1)\epsilon_0}{\tau}\biggr).
+\end{equation}
+One line in that summary also sets the power on \(M\tau/(2\pi\hbar^2)\) equal to \(2\). The quantum concentration in three dimensions is the power \(3/2\), as in \eqref{eq:nQ-def}.
+
+The later replacement of the rotational sum by \(\tau/\epsilon_0\) is the high-temperature integral, and it is consistent with the minus sign in \eqref{eq:boltzmann-rotor}. For a linear rotor, \(g(j) = 2j+1\). When \(\epsilon_0\ll\tau\) the sum over \(j\) is the integral
+\begin{equation}
+\label{eq:Z-rot-integral}
+\sum_{j=0}^{\infty} (2j+1)\exp\biggl(-\frac{j(j+1)\epsilon_0}{\tau}\biggr)
+\approx \int_{0}^{\infty} (2j+1)\exp\biggl(-\frac{j(j+1)\epsilon_0}{\tau}\biggr)\, dj.
+\end{equation}
+Set \(y = j(j+1)\). Then \(dy = (2j+1)\, dj\), and
+\begin{equation}
+\label{eq:Z-rot}
+\int_{0}^{\infty} e^{-y\epsilon_0/\tau}\, dy = \frac{\tau}{\epsilon_0}.
+\end{equation}
+The hypothesis \(\epsilon_0\ll\tau\) is what licenses the integral. The factorization \(Z_1 = n_Q V\, Z_{\mathrm{int}}\) in that summary survives; the displayed exponential between \eqref{eq:eps-rotor} and \eqref{eq:Z-rot} is the line to replace by \eqref{eq:boltzmann-rotor}.
+
+\subsection{Maxwell speed distribution}
+\label{sec:maxwell-norm}
+
+The kinetic-theory notes contain an intermediate reduction whose right-hand side is \(4\pi N (N/(2\pi\tau))^{3/2}\). That expression does not have the dimension of the prefactor of a speed distribution, and it is not the prefactor that appears in the final formula. The final formula is the Maxwell speed density
+\begin{equation}
+\label{eq:maxwell}
+P(v) = 4\pi\biggl(\frac{M}{2\pi\tau}\biggr)^{3/2} v^2 \exp\biggl(-\frac{M v^2}{2\tau}\biggr),
+\qquad v\ge 0.
+\end{equation}
+It is normalized. Set \(\alpha = M/(2\tau)\). The Gaussian integrals
+\begin{equation}
+\label{eq:gaussian-moments}
+\int_{-\infty}^{\infty} e^{-\alpha v^2}\, dv = \sqrt{\frac{\pi}{\alpha}},
+\qquad
+\int_{-\infty}^{\infty} v^2 e^{-\alpha v^2}\, dv = \frac{1}{2}\sqrt{\frac{\pi}{\alpha^3}}
+\end{equation}
+give, because \(v^2 e^{-\alpha v^2}\) is even,
+\begin{equation}
+\label{eq:half-moment}
+\int_{0}^{\infty} v^2 e^{-\alpha v^2}\, dv = \frac{1}{4}\sqrt{\frac{\pi}{\alpha^3}}.
+\end{equation}
+Then
+\begin{align}
+\int_{0}^{\infty} P(v)\, dv
+&= 4\pi\biggl(\frac{\alpha}{\pi}\biggr)^{3/2}\cdot\frac{1}{4}\sqrt{\frac{\pi}{\alpha^3}} \nonumber\\
+&= \pi\cdot\frac{\alpha^{3/2}}{\pi^{3/2}}\cdot\frac{\pi^{1/2}}{\alpha^{3/2}}
+= 1.
+\label{eq:maxwell-normalized}
+\end{align}
+The mean-speed solution that follows \eqref{eq:maxwell} in the manuscript is using this normalized density. The intermediate prefactor line is not an input to that solution.
+
+\subsection{Donor arithmetic}
+\label{sec:donor-pointer}
+
+The preserved donor solution reports \(n_Q = 1263\,\mathrm{cm}^{-3}\) and \(n = 2\times 10^{-18}\,\mathrm{cm}^{-3}\) at \(T=100\,\mathrm{K}\), \(m^{\!*}=0.3\, m_e\), and \(N_d = 10^{17}\,\mathrm{cm}^{-3}\). Section~\ref{sec:semiconductors} evaluates \eqref{eq:nQ-eV} and the hydrogenic binding energy \eqref{eq:hydrogenic-I} at \(\epsilon_r = 11.7\), and it solves the quadratic \eqref{eq:donor-root}. The result is \(n = 2.965\times 10^{16}\,\mathrm{cm}^{-3}\).
+
+\subsection{A numerical check that already matched}
+\label{sec:checked-numbers}
+
+The adiabatic compression in the 2015 background uses \(\gamma = 1.4\), \(V_i/V_f = 15\), and \(\tau_i = 293.15\,\mathrm{K}\), which is \(20^{\circ}\mathrm{C}\) on the Celsius shift used in \texttt{Propulsion/thermo.py}. Equation \eqref{eq:adiabatic-TV} gives
+\begin{equation}
+\label{eq:diesel}
+\tau_f = \tau_i \biggl(\frac{V_i}{V_f}\biggr)^{\gamma-1}
+= 293.15 \times 15^{0.4}
+= 866.017\,\mathrm{K}.
+\end{equation}
+The pressure ratio at fixed \(N\) is
+\begin{equation}
+\label{eq:diesel-p}
+\frac{p_f}{p_i}
+= \frac{V_i}{V_f}\frac{\tau_f}{\tau_i}
+= 15^{1.4}
+= 44.313.
+\end{equation}
+Both match the values written in that solution, \(866.01\,\mathrm{K}\) and \(44.31\).
+
+\subsection{Left blank on purpose}
+
+Radiation solution 16 is absent from the 2008 file. Parts (b) and (c) of the last propagation problem are empty and the problem statement is not in the file. Those three slots were not filled with a guessed question. Entropy of mixing, which was an empty heading, is \S\ref{sec:binary-mixtures}.

@@ -1,0 +1,60 @@
+\noindent\textit{2015 manuscript.}
+
+\section{Heating and the dilute gas}
+\noindent\textit{Manuscript section title: Background.}
+\cite{RBaierlein1999}
+\subsection{Heating and Temperature}
+
+Heating: keep in mind 3 different types of heating for energy exchange between two systems:
+
+\begin{enumerate}
+  \item Heating by conduction - literal contact, molecules jiggle faster from molecules jiggling faster by bouncing off them
+  \item Heating by radiation - em waves from hot source strike and excite target
+  \item heating by convection - energy transport by flow (perhaps a fluid)
+\end{enumerate}
+
+This all relates to \\
+$Q$
+
+\subsection{Some dilute gas relationships}
+\label{sec:dilute-gas}
+
+\subsubsection*{Pressure according to kinetic theory} i.e. some kinetic theory
+
+$F \equiv $ force on area $A$ due to molecules \\
+$\Delta p \equiv $ momentum transferred to wall per collision \\
+$n \equiv$ number of collisions in time $\Delta t$
+
+Thus
+\[
+F = \frac{ (\Delta p)n }{ \Delta t }
+\]
+
+Now $\Delta p = 2 m v_x$ since $\Delta p = mv_x - (-mv_x) = 2mv_x$ (elastic collision with momentum conversation)
+
+$v_x \Delta t A$ is a volume, inside of which gas molecules can be within distance $v_x \Delta t$ toward the wall.  \\
+$\frac{N}{V}$ number density of molecules
+
+Assume equal distribution of velocities: Thus $\frac{1}{2}$
+\[
+ n = (v_x \Delta t A) \frac{1}{2} \frac{N}{V}
+\]
+\[
+P = \frac{F}{A} = \frac{ (2mv_x)(v_x \Delta t A ) \frac{1}{2} \frac{N}{V} }{ A \Delta t} = mv_x^2 \frac{N}{V}
+\]
+
+Suppose $\langle v^2 \rangle = \langle v_x^2 \rangle + \langle v_y^2 \rangle + \langle v_z^2 \rangle = 3 \langle v_x^2 \rangle = d \langle v_x^2 \rangle$.  
+\[
+\Longrightarrow P = \frac{mN}{dV} \langle v^2 \rangle = \frac{2}{d} \frac{1}{2} m \langle v^2 \rangle \frac{N}{V}
+\]
+
+\subsubsection*{An empirical gas law}
+Now 
+\[
+P = \frac{N\tau}{V} \quad \, \text{(empirical)}
+\]
+
+\[
+\Longrightarrow \frac{1}{2} m \langle v^2 \rangle = \frac{d}{2} \tau
+\]
+

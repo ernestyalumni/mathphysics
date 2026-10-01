@@ -1,0 +1,554 @@
+\noindent\textit{2008 manuscript.}
+
+\section{Phase Transformations}
+
+\subsection*{Vapor Pressure Equation}
+
+\subsubsection*{Derivation of the Coexistence Curve $p$ versus $\tau$}
+
+Suppose $\mu_g(p_0,\tau_0) = \mu_l(p_0,\tau_0)$ and $\mu_g(p_0 + dp, \tau_0 + d\tau) = \mu_l(p_0 + dp, \tau_0 + d\tau)$
+\[
+\Longrightarrow \mu_g(p_0,\tau_0) + \left( \frac{ \partial \mu_g }{ \partial p} \right)_{\tau} dp + \left( \frac{ \partial \mu_g }{ \partial \tau} \right)_{p} d\tau + \dots = \mu_l(p_0,\tau_0) + \left( \frac{ \partial \mu_l }{ \partial p} \right)_{\tau} dp + \left( \frac{ \partial \mu_l }{ \partial \tau} \right)_{p} d\tau + \dots
+\]
+
+\[
+\frac{dp}{d\tau} = \frac{ \left( \frac{ \partial \mu_l }{ \partial \tau} \right)_p - \left( \frac{ \partial \mu_g }{ \partial \tau} \right)_p }{ \left( \frac{ \partial \mu_g }{ \partial \tau} \right)_{\tau} - \left( \frac{ \partial \mu_l }{ \partial p} \right)_{\tau} }
+\]
+
+
+
+
+$\begin{aligned}
+  & v \equiv V/N \\ 
+  & s \equiv \sigma /N
+\end{aligned}$
+
+\[
+\begin{aligned}
+  & \frac{1}{N} \left( \frac{ \partial G}{ \partial p } \right)_{N,\tau} = v = \left( \frac{ \partial \mu }{ \partial p } \right)_{\tau} \\ 
+  & \frac{1}{N} \left( \frac{ \partial G}{ \partial \tau} \right)_{N,p} = \frac{-\sigma}{N} = -s = \left( \frac{ \partial \mu }{ \partial \tau} \right)_p
+\end{aligned}
+\]
+
+
+$s_g-s_l$ related directly to quantity of heat that must be added to system to transfer 1 molecule reversibly from liquid to gas, while temperature constant.  (if heat isn't added to system from outside in the process, temperature will decrease when molecule transferred to gas)
+\begin{equation}
+  L \equiv \tau(s_g - s_l)
+\end{equation}
+\textbf{latent heat of vaporization}
+
+\begin{equation}
+  \Delta v = v_g - v_l
+\end{equation}
+change of volume when 1 molecule transferred from liquid to gas
+
+\begin{equation}
+  \frac{dp}{d \tau} = \frac{ L }{ \tau \Delta v}
+\end{equation}
+is the \textbf{ Clausius-Clapeyron equation} or \textbf{vapor pressure equation}.  
+
+Assumptions:
+\begin{enumerate}
+  \item[(a)] if assume $v_g \gg v_l$, then $\Delta v \cong v_g = V_g/N_g$ at $p=1$ atm (at atmospheric pressure), $v_g/v_l \approx 10^3$
+  \item[(b)] ideal gas law $pV_g = N_g \tau \Longrightarrow \Delta v \cong \tau/p$
+\end{enumerate}
+\[
+\frac{dp}{d\tau} = \frac{L}{\tau^2}p \text{ or } \frac{d}{d\tau} \ln{p} = \frac{L}{\tau^2}
+\]
+$L \equiv $ latent heat per molecule
+
+If latent heat $L$ independent of temperature over temperature range of interest, $L = L_0$ \\
+\phantom{\quad \, } $\int \frac{dp}{p} = L_0 \int \frac{d\tau}{\tau^2}$ whence $\ln{p} = -L_0/\tau + \text{const}$ or $p(\tau) = p_0\exp{ (-L_0/\tau)}$
+
+
+
+Consider $\frac{L_0}{\tau}$, $L_0$, latent heat of vaporization of \emph{1 molecule}.  
+
+Now compare it with $\frac{L_0}{RT}$, \\
+where $R \equiv N_0 k_B \equiv $ gas constant.  
+
+$N_0 = 6.02205 \times 10^{23} \frac{1}{ \text{mol}}$ \\
+$k_B = 1.38066 \times 10^{-23} \, J/K$ (usual Boltzmann constant) \\
+$R = 8.31441 \, J/K\cdot \text{mol}$ 
+
+So for 
+\[
+\frac{L_0}{RT} = \frac{L_0}{N_0 k_B T}
+\]
+Then that implies
+\[
+\frac{1}{ 1 \text{ particle} } \frac{1}{N_0} = \frac{1}{ 1 \text{ particle } \frac{1}{ \text{ mol }} }
+\]
+which implies that $L_0$ now is the latent heat of vaporization of a \emph{mole (mol)} of the gas.  
+
+
+
+\subsubsection*{Latent heat and enthalpy}
+
+crossing the coexistence curve,
+\[
+\tau d\sigma = dU + pdV - (\mu_g - \mu_l) dN
+\]
+if liquid $\to$ gas, $\mu_l > \mu_g$ (or $0 > \mu_g - \mu_l$)
+
+on coexistence curve, $\mu_g = \mu_l$
+\[
+L = \tau d\sigma(\dot{\gamma}) = dU(\dot{\gamma}) + pdV(\dot{\gamma}) = (dU+ pdV)(\dot{\gamma}) + 0 = (dU + pdV)(\dot{\gamma}) + Vdp(\dot{\gamma}) = dH(\dot{\gamma}) = H_g -H_l
+\]
+where $dp(\dot{\gamma}) = 0$ since $\gamma$ is a path s.t. pressure $p$ is constant.  
+
+Recall that $\begin{gathered} \quad \\
+  H = U + pV \\
+  dH = dU+ pdV + Vdp \end{gathered}$.  
+
+
+$C_p = \tau \left( \frac{ \partial \sigma }{ \partial \tau} \right)_p = \tau\sigma(\tau,p)(\dot{\gamma}) = (dU(\tau,p)(\dot{\gamma}) + pdV(\tau,p)(\dot{\gamma}) ) = \left( \frac{ \partial H}{ \partial \tau} \right)_p$
+
+Then $H = \int C_p d\tau = \int_{\gamma} C_p d\tau$
+
+\textbf{Example: Model system for gas-solid equilibrium} (pp.285 Ch. 10 ``Phase transformations'', Kittel and Kroemer (1980) \cite{CKittelHKroemer1980})
+
+imagine solid of $N$ atoms \\
+each atom bound as harmonic oscillator of frequency $\omega$ \\
+binding energy of each atom in ground state $\epsilon_0$, i.e. energy of atom in ground state is $-\epsilon_0$ \\
+energy of a single oscillator $\epsilon = n\hbar \omega - \epsilon_0$, $n\in \mathbb{Z}^+$ 
+
+$Z_s \equiv $ partition function of a single oscillator in solid, $\beta \equiv 1/\tau$
+\[
+Z_s = \sum_n \exp{ [ -\beta (n\hbar \omega - \epsilon_0) ]} = \epsilon^{\beta \epsilon_0} \sum_n (e^{-\beta \omega} )^n = \frac{ e^{\beta \epsilon_0}}{ 1 - e^{-\beta \omega }}
+\]
+
+Free energy $F_s = U_s - \tau \sigma_s = -\tau \ln{Z_s}$
+
+Gibbs free energy in the solid, per atom 
+\[
+G_s = U_s - \tau \sigma_s + pv_s = F_s + pV_s = \mu_s
+\]
+
+
+Supposing $v_s \ll v_g$ (volume $v_s$ per atom in solid phase much smaller than volume $v_g$ per atom in gas phase)
+\[
+\begin{gathered}
+  \mu_s = F_s + pv_s \approx F_s \\ 
+  \lambda_s := \exp{ (\beta \mu_s)} \simeq \exp{ (\beta F_s)} = \exp{ (-\ln{ Z_s }) } = \frac{1}{Z_s} = \exp{ (-\beta \epsilon_0 )} (1- \exp{ (-\beta \omega )} )
+\end{gathered}
+\]
+use ideal gas approximation to describe gas phase, and spin of atom to be $0$.  From Ch. 6,
+\[
+\lambda_g = \frac{n}{n_Q} = \frac{p}{\tau n_Q} = \frac{p}{\tau} \left( \frac{2\pi \hbar^2 }{ M \tau} \right)^{3/2}
+\]
+
+gas in equilibrium with solid with $\lambda_g = \lambda_s$, or 
+\[
+\begin{gathered}
+  \frac{p}{ \tau n_Q} = \lambda_g = \lambda_s = e^{-\beta \epsilon_0} ( 1-  e^{-\beta \omega } ) \Longrightarrow p = \left( \frac{M}{ 2\pi \hbar^2 } \right)^{3/2} \tau^{5/2} \exp{ (-\epsilon_0/\tau) } (1- \exp{ ( -\hbar \omega / \tau ) } )
+\end{gathered}
+\]
+
+
+\subsection*{Van Der Waals Equation of State}
+
+
+\[
+F(\text{ideal gas}) = -N\tau [ \ln{ (n_Q/n) } + 1 ]
+\]
+$n:= \frac{N}{V} = \frac{N}{V-Nb}$ (hardcore repulsion at short distances)
+
+\subsubsection*{Mean Field Method}
+
+Let $\varphi(r) := $ potential energy of interaction of 2 atoms separated by distance $r$.
+
+average value of total interaction of all other atoms on atom at $r=0$
+\[
+\int_0^{\infty} dV \varphi(r)n = n \int_b^{\infty} dV \varphi(r) = -2na \quad \, (2 \text{ factor is convention})
+\]
+
+excluded hardcore sphere of volume $b$ from volume of integration. \\
+assumed mean value of $n$, concentration $n$ constant throughout volume accessible to gas molecules. \\
+\phantom{ \quad \, } ignored increase of concentration in regions of strong attractive potential energy i.e. \\
+\phantom{ \quad \quad \, } mean field method meglects correlations between interacting molecules.
+
+$\Delta F \simeq \Delta U = \frac{-1}{2} (2 N na) = -N^2 a/ V $ \\
+\phantom{\quad \, } where $\frac{1}{2} N(N-1) \simeq \frac{1}{2} N^2 $ ($N$ large)
+
+\[
+\Longrightarrow F(\text{vdW}) = -N\tau ( \ln{ [n_Q (V-Nb)/N ]} + 1) - N^2 a /V
+\]
+\[
+p = -\left( \frac{ \partial F}{ \partial V} \right)_{\tau,N} = \frac{N\tau}{ V-Nb} - \frac{N^2 a}{V^2} \text{ or } \left( p + \frac{N^2 a}{V^2} \right)(V-Nb) = N\tau
+\]
+
+\subsubsection*{Critical Points for the Van der Waals Gas}
+
+\[
+\begin{aligned}
+  & p_c = \frac{a}{27 b^2} \\ 
+  & V_c = 3Nb \\ 
+  & \tau_c = \frac{8a}{ 27b}
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+  & \widehat{p} := \frac{p}{p_c} \\ 
+  & \widehat{V} := \frac{V}{V_c} \\ 
+  & \widehat{\tau} := \frac{ \tau}{ \tau_c}
+\end{aligned}
+\]
+since
+\[
+\begin{gathered}
+\begin{aligned}
+  & \left( \frac{p}{p_c} + \frac{3}{ (V/V_c)^2 } \right)\left( \frac{V}{V_c} - \frac{1}{3} \right) = \frac{8 \tau }{ 3\tau_c} \\
+  & \left( \frac{p}{p_c} + \frac{3}{ (V/V_c)^2} \right) = \frac{1}{p_c} ( p + \frac{3a/27b^2}{ V^2/9N^2 b^2 } ) = \frac{1}{p_c} ( p + \frac{N^2 a}{V^2} ) 
+\end{aligned} \quad \quad \, 
+\begin{aligned}
+  & \frac{8\tau}{3\tau_c} = \frac{8 \tau}{ 3 \frac{ 8a}{27b} } = \frac{9\tau}{a/b} \\ 
+  & \frac{1}{p_c V_c} = \frac{1}{ \frac{a}{27 b^2} 3Nb } = \frac{9}{a/b}
+\end{aligned} \\
+\left( \frac{V}{V_c} - \frac{1}{3} \right) = \frac{1}{V_0}(V-Nb)
+\end{gathered}
+\]
+
+\[
+\Longrightarrow \left( \widehat{p} + \frac{3}{ \widehat{V}^2 } \right)\left( \widehat{V} - \frac{1}{3} \right) = \frac{8}{3} \widehat{\tau} \text{ or } \widehat{p} = \frac{ \frac{8}{3} \widehat{\tau} }{ \widehat{V} - \frac{1}{3} } - \frac{3}{ \widehat{V}^2}
+\]
+
+at $\widehat{p} =1$, $\widehat{V}=1$, $\widehat{\tau}=1$, $\widehat{\tau}$ constant, $\left( \frac{ \partial \widehat{p}}{ \partial \widehat{V}} \right)_{\widehat{\tau}} =0$, $\left( \frac{ \partial^2 \widehat{p}}{ \partial \widehat{V}^2} \right)_{\widehat{\tau}} =0$ \\
+Above $\tau_c$, no phase separation exists.  
+
+\subsubsection*{Gibbs Free Energy of the Van der Waals Gas} $G= F+pV$
+\[
+G(\tau,V,N) = \frac{ N \tau V}{ V - Nb} - \frac{2N^2 a}{V} - N\tau ( \ln{ [n_Q(V-Nb)/N] } + 1)
+\]
+
+Recall $dG = \mu dN - \sigma d\tau + Vdp$
+\[
+\Longrightarrow \left( \frac{ \partial G}{ \partial N} \right)_{\tau,p} = \mu = \mu(p,\tau) \text{ or } G(N,p,\tau) = N\mu(p,\tau)
+\]
+cf. (9.13) of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}
+
+$G(\tau,p,N)$ solved numerically.
+
+on p-V diagram, \\
+\phantom{ \, } coexistence line: 
+\phantom{ \, \quad } consider $dG = -\sigma d\tau + Vdp + \mu dN$ \\
+\phantom{ \, \quad \, } at constant $\tau$, constant total number of particles, $N$, \\
+$dG(\dot{\gamma}) = Vdp(\dot{\gamma}) = G_g - G_l = \int V dp$
+
+
+if $\int V dp =0$, $G_p =G_l$, $G_g(\tau,p) = G_l(\tau,p)$, so $\mu_g(\tau,p) = \mu_l(\tau,p)$ along horizontal coexistence line
+
+\subsubsection*{Nucleation}
+
+Let $\Delta \mu = \mu_g - \mu_l$ chemical potential difference between \\
+vapor surrounding small liquid droplet and \\
+liquid in bulk (infinitely large drop) 
+
+surface free energy of liquid drop is positive and tends to increase free energy of liquid \\
+for small drop radii, surface can be dominant and drop can be unstable with respect to gas 
+
+$n_l \equiv $ concentration of molecules in liquid 
+\[
+\Delta G = G_l -G_g = - \left( \frac{4\pi}{3} \right) R^3 n_l \Delta \mu + 4\pi R^2 \gamma 
+\]
+where $\gamma$ surface free energy per limit area.  
+
+\[
+\frac{d \Delta G}{dR} = 0 = -4\pi R^2 n_l \Delta \mu + 8 \pi R \gamma \text{ or } R_c = \frac{2\gamma }{ n_l \Delta \mu}
+\]
+$R_c \equiv $ critical radius for nucleation \\
+when $R< R_c$, $\Delta G >0$, so drop will evaporate (to gas) spontaneously \\
+when $R >R_c$, $\Delta G <0$, drop will tend to grow spontaneously
+
+\[
+(\Delta G)_c = \frac{16 \pi}{3} [ \frac{ \gamma^3}{ n_l^2 (\Delta \mu)^2 } ]
+\]
+where $(\Delta G)_c = \Delta G(R= R_c)$
+
+assume vapor behaves like ideal gas: 
+\[
+\Delta \mu = \tau \ln{ \left( \frac{ p}{ p_{\text{eq}} } \right) }
+\]
+Eq. (12a), chemical potential of the ideal gas, $\mu = \tau \ln{ \left( \frac{n}{n_Q} \right)} = \tau \ln{ \left( \frac{p}{ p_{\text{eq}}} \right)}$ \\
+\phantom{\quad \, } $p \equiv $ vapor pressure in gas phase \\ 
+\phantom{\quad \, } $p_{\text{eq}} \equiv $ equilibrium vapor pressure of bulk liquid $(R \to \infty)$ \\
+use $\gamma = 72 \, \frac{\text{erg}}{\text{cm}^2}$, $p =1.1 p_{\text{eq}}$, $\tau = 300 \, K$ ($H_2O$), $R_c = \frac{2\gamma}{n_l \Delta \mu } = 1\times 10^{-6}$ cm.  
+
+
+
+\subsection*{Problems}
+
+\problemhead{1} \textbf{Entropy, energy, and enthalpy of van der Waals gas}.  
+\begin{enumerate}
+\item[(a)]
+Recall the generalized thermodynamic identity; starting with $\sigma = \sigma(U,V,N) \in C^{\infty}(\Sigma) = C^{\infty}((U,V,N))$, the identity is $dU = \tau d\sigma - pdV + \mu dN$.  
+
+By definition, $F=U-\tau \sigma$, so that 
+\[
+dF = dU- d\tau \sigma -\tau d\sigma = - pdV + \mu dN - \sigma d\tau 
+\]
+Then clearly, $\left( \frac{ \partial F}{ \partial \tau} \right)_{V,N} = -\sigma$.  
+
+
+
+Now 
+\[
+F(\text{vdW}) = -N\tau ( \ln{ [n_Q (V-Nb)/N ]} + 1) - N^2 a /V
+\]
+as was postulated about the hardcore repulsion inside a molecule, making $V$ into $V-Nb$.  
+
+Remembering that quantum concentration does depend on $\tau$: $n_Q \equiv \left( \frac{ M \tau}{ 2\pi \hbar^2 } \right)^{3/2}$
+
+
+Consider 
+\[
+\left( \ln{ ( \left( \frac{M \tau}{ 2\pi \hbar^2} \right)^{3/2} \frac{ (V-Nb)}{ N} )} + 1 \right) = \left( \frac{3}{2} \ln{\tau} + \ln{ \left( \left( \frac{M}{2\pi \hbar^2} \right)^{3/2} \frac{(V-Nb)}{N} \right) } + 1 \right) \xrightarrow{ \frac{ \partial }{\partial \tau} } \frac{3}{2\tau}
+\]
+Thus
+\[
+\sigma = - \left( \frac{ \partial F}{ \partial \tau } \right)_{V,N} = N \left( \ln{ \left( \frac{n_Q(V-Nb)}{N} \right) } +1 \right) + N \frac{3}{2} = N \left( \ln{ \left( \frac{n_Q(V-Nb)}{N} \right) } + \frac{5}{2} \right)
+\]
+
+\item[(b)] Recall that $F:= U-\tau \sigma$ or $U = F+\tau \sigma = F- \tau \left( \frac{ \partial F}{ \partial \tau} \right)_{V,N} = -\tau^2 \left( \frac{ \partial }{ \partial \tau} \left( \frac{F}{\tau} \right) \right)_{V,N}$  
+\[
+ U = -\tau^2 \frac{3}{2\tau}(-N) + \frac{N^2a }{V} = \boxed{ \frac{3N\tau}{2} + \frac{N^2a }{V} = U }
+\]
+\item[(c)] Give to first order in the van der Waals correction terms $a,b$.  
+
+\[
+p = \frac{N\tau}{V-Nb} - \frac{N^2a}{V^2} = \frac{N\tau}{ V(1- Nb/V)} - \frac{N^2 a}{V^2} = \frac{N\tau}{V} ( 1 + \frac{Nb}{V} ) - \frac{N^2 a}{V^2}
+\]
+where $Nb \ll V$.  
+
+Thus,
+\[
+\boxed{ H(\tau,V) := U + pV = \frac{5}{2} N\tau  + \frac{N^2 b\tau}{V} - \frac{2N^2 a}{V} }
+\]
+\end{enumerate}
+
+
+\problemhead{2} \textbf{Calculation of $dT/dp$ for water}
+
+Using the \textbf{Clausius-Clapeyron equation} or \textbf{vapor pressure equation}, 
+\[
+\frac{dp}{d\tau} = \frac{L}{\tau \Delta v}
+\]
+
+assume $\Delta v := v_g - v_l \approx v_g \equiv \frac{V_g}{N_g}$ (i.e. the volume of the gas is much bigger than the volume of the liquid), and $pV_g = N_g \tau$ or $\frac{V_g}{N_g} = \frac{\tau}{p}$ (i.e. water vapor acts like an ideal gas)
+
+\[
+\frac{L}{ \tau \Delta v} \approx \frac{L}{ \tau^2 p}
+\] 
+
+Looking up fundamental constants and unit conversions \emph{manually} appears, to me at least, in the 21st century, to be an obsolete exercise (``an exercise in insanity?'').  I would like to propose presenting the fundamental constants and unit conversions, sourced from the NIST (National Institute of Standards and Technology) website, and using Python library \verb|pandas|, as panda dataframe objects, to make the data accessible and computable, and persisting them or databasing the values as panda dataframe objects.  
+
+Open up \verb|thermo.py|, which relies on the \verb|Physique| repository (I'll put it up on my \verb|github|, \verb|ernestyalumni|).  
+
+\begin{lstlisting}
+N_A = FundConst[ FundConst["Quantity"].str.contains("Avogadro")].loc[42,:]
+k_BOLTZ = FundConst[ FundConst["Quantity"].str.contains("Boltzmann") ].loc[49,:]
+P_frmATM = conv[ conv["Toconvertfrom"].str.contains("atm") ].loc[15,:] # 1 atm to Pascal conversion for pressure
+
+...
+
+## 2. Calculation of $dT/dp$ for water
+
+L = 2260 # J g^{-1}
+boilingwatertemp_K = KCconv.subs(T_C,100).rhs # room temperature in Kelvin
+tau_boilingwater = boilingwatertemp_K * k_BOLTZ.Value
+P = 1 # atm
+
+dpdtau_1002 = L*18.0153/float(N_A.Value)/( tau_boilingwater**2 )
+dtaudp_1002 = 1./ dpdtau_1002 # in J/Pascal
+dTdp_1002 = dtaudp_1002 / (k_BOLTZ.Value )  # 28.4348535111262 K/atm
+\end{lstlisting}
+
+$\boxed{ \frac{dT}{dp} = 28.43 K/\text{atm} }$
+
+
+\problemhead{3} \textbf{Heat of vaporization of ice}
+
+Given
+\[
+\begin{aligned}
+  & P(\ce{H2O} \text{ vapor} )(T = -2^{\circ}C) = 3.88 \, mm \, Hg \\ 
+  & P(\ce{H2O} \text{ vapor})(T = 0^{\circ}C) = 4.58 \, mm \, Hg 
+\end{aligned}
+\]
+
+Use the \textbf{Clausius-Clapeyron equation} or \textbf{vapor pressure equation} (for coexistence equilibrium).  
+
+\[
+\begin{gathered}
+  \frac{dp}{d\tau} = \frac{L}{ \tau \Delta v} \approx \frac{L}{ \tau^2/p} \\ 
+  \text{ with } \frac{dp}{d\tau} \approx \frac{\Delta p}{ \Delta \tau} = \frac{ p(\tau_2) - p(\tau_1) }{ \tau_2- \tau_1 }
+\end{gathered}
+\]
+
+Now idealizing water vapor as a perfect ideal gas, $p = \frac{N}{V}\tau$, so $p$ linear in $\tau$, i.e. $p=p(\tau)$.  
+
+Note that while $p$ is linear in $\tau$, the given temperature values correspond to $T$, in $K$, and so one would need this form of the slope equation $y=mx+b$, where $m=\frac{N}{V}$ times a bunch of conversion factors, and one must also include a nonzero $b$ constant, the result of choice of units (celsius versus energy units).  
+
+Thus, $L = \frac{dp}{d\tau} \frac{\tau^2}{p}$, with $L$ being the latent heat of vaporization per particle.  
+
+Note, I treat Avogadro's number as a units conversion, $1 = N_A = 6.02205 \times 10^{23} \, \frac{ \text{ particles }}{ \text{ mol } }$.  So in the end, for the desired $J/\text{mol}$, multiply $L$ by $N_A$, $LN_A$.  
+
+\begin{lstlisting}
+L1003 = ( 4.58 - 3.88 )/(0 - (-2.) )*((KCconv.subs(T_C,1.).rhs)**2)/( (4.58-3.88)/(0 - (-2)) * ( 1.) + 3.88 ) * 
+k_BOLTZ.Value*N_A.Value  # 51705.6757640485 
+\end{lstlisting}
+
+\[
+\boxed{L = 5.17 \times 10^4 \, J/\text{mol} }
+\]
+
+\problemhead{4} \textbf{Gas-solid equilibrium}
+
+\begin{enumerate}
+\item[(a)] Let's review the quantum harmonic oscillator (qho).  
+
+Recall the Hamiltonian in $d$ dimensions
+\[
+\widehat{H} = \frac{ \widehat{p}^2}{2m} + \frac{1}{2} m \omega^2 \widehat{x}^2
+\]
+where $\widehat{p} = -i \frac{ \partial }{ \partial x^i} \mathbf{e}_i$.  
+
+Suppose for the Hilbert space $\mathcal{H}$, that $\mathcal{H} = \mathcal{H}_{x^1} \otimes \mathcal{H}_{x^2} \otimes \mathcal{H}_{x^3}$, 
+\[
+| \psi \rangle \in \mathcal{H} = \mathcal{H}_{x^1} \otimes \mathcal{H}_{x^2} \otimes \mathcal{H}_{x^3} \Longrightarrow |\psi \rangle = | \psi_{x^1} \rangle \otimes  | \psi_{x^2} \rangle \otimes | \psi_{x^3} \rangle \equiv | \psi_{x^1} \rangle | \psi_{x^2} \rangle | \psi_{x^3} \rangle
+\]
+Now
+\[
+\widehat{H} | \psi \rangle = \sum_{i=1}^d \left( \frac{-1}{2m} \left( \frac{ \partial }{ \partial x^i} \right)^2  + \frac{1}{2} m \omega^2 (\widehat{x}^i)^2 \right) |\psi \rangle \equiv \left( \frac{-1}{2m} \left( \frac{ \partial }{ \partial x^i} \right)^2  + \frac{1}{2} m \omega^2 (\widehat{x}^i)^2 \right) |\psi \rangle
+\]
+The ladder operators make it much more simpler and straightforward than directly solving the differential equation.  Let
+\[
+\begin{aligned}
+  & a_i =  \sqrt{ \frac{m\omega}{2} } \left( \widehat{x}^i + \frac{i}{m\omega} \widehat{p}_i \right) \\
+  & a_i^{\dag} = \sqrt{ \frac{m\omega}{2} } \left( \widehat{x}^i - \frac{i}{m\omega} \widehat{p}_i \right)
+\end{aligned} \quad \quad \, \begin{aligned}
+  & \widehat{x}^i = \sqrt{ \frac{1}{2m\omega} } (a_i + a_i^{\dag}) \\ 
+  & \widehat{p}_i = i \sqrt{ \frac{m \omega}{2 } } (a_i^{\dag} - a_i ) \\ 
+\end{aligned}
+\]
+Now let 
+\[
+N_i = a_i^{\dag} a_i = \frac{m\omega}{2} ((\widehat{x}^i)^2 + \frac{ (\widehat{p}_i)^2}{ (m\omega)^2 } ) - \frac{1}{2}
+\]
+where the uncertainty principle commutator relation was used: 
+\[
+\widehat{x}^i \widehat{p}_i - \widehat{p}_i\widehat{x}^i = [\widehat{x}^i , \widehat{p}_i ] =  i 
+\]
+Thus
+\[
+\widehat{H} = (N_1 + \frac{1}{2} ) \omega + (N_2 + \frac{1}{2} ) \omega + (N_3 + \frac{1}{2} ) \omega
+\]
+\[
+\widehat{H} | \psi \rangle = ((n_x + \frac{1}{2} )\omega + (n_y + \frac{1}{2}) \omega + (n_z + \frac{1}{2} ) \omega ) | \psi \rangle
+\]
+
+Consider 
+\[
+Z_s = \sum_{n_x,n_y,n_z} \exp{ \left[ - \beta((n_x + \frac{1}{2} )\omega + (n_y + \frac{1}{2}) \omega + (n_z + \frac{1}{2} )\omega -\epsilon_0 ) \right] } = e^{\beta \epsilon_0} \left( \sum_n (e^{-\beta \omega })^n \right)^d = e^{\beta \epsilon_0} \left( \frac{1}{ 1 - e^{-\beta \omega } } \right)^d
+\]
+
+The derivation of $p = p(\tau)$ goes, as above (with Example: Model system for gas-solid equilibrium (pp.285 Ch. 10 ``Phase transformations'', Kittel and Kroemer (1980) \cite{CKittelHKroemer1980})); recall
+\[
+\lambda_g = \lambda_s \, ,  \, \lambda_g = \frac{n}{n_Q} = \frac{p}{\tau n_Q}
+\]
+and so for $\tau \gg \hbar \omega$ or $1 \gg \beta \omega$, 
+\[
+p = \left( \frac{M}{2\pi \hbar^2} \right)^{3/2} \tau^{5/2} e^{-\beta \epsilon_0}(1- e^{-\beta \omega} )^d \cong \left( \frac{M}{2\pi } \right)^{3/2} \frac{1}{\hbar^3} \tau^{5/2} e^{-\beta \epsilon_0} \beta^d \omega^d
+\]
+For $d=3$,
+\[
+\boxed{ p = \left( \frac{M}{2\pi }\right)^{3/2} \frac{\omega^3}{\tau^{1/2}} e^{-\beta \epsilon_0} }
+\]
+
+
+
+\item[(b)] 
+From above part (a),
+\[
+\frac{dp}{d\tau}\frac{1}{p} = \frac{-1}{2} \tau^{-1} + (-\epsilon_0 \left( \frac{-1}{\tau^2} \right) )
+\]
+Now using the approximation that $\Delta v \approx v_g$, and the ideal gas idealization,
+\[
+L = \frac{dp}{d\tau} \frac{\tau^2}{p} = \epsilon_0 - \frac{\tau}{2}
+\]
+My explanation: we must excite the atom by its (bounded) ground state energy, $\epsilon_0$.  On the other hand, thermal energy of gas, with increasing linear temperature, helps to remove atom from solid to gas.  
+\end{enumerate} 
+
+
+\problemhead{5} \textbf{Gas-solid equilibrium}
+
+\begin{enumerate}
+\item[(a)] 
+Now 
+\[
+F_s = -\tau \ln{ \frac{Z_s^{N_s} }{N_s!} } = -\tau \left( N_s \ln{Z_s} - \ln{N_s!} \right) \simeq -\tau ( N_s \ln{Z_s} - N_s \ln{N_s} + N_s )
+\]
+where Stirling's approximation was used and $(1/N_s!)$ factor is for indistinguishability (from quantum mechanics).  
+
+Recall
+\[
+Z_s = \frac{e^{\beta \epsilon_0}}{ (1- e^{-\beta \omega})^d} \text{ so } \ln{Z_s} = \beta \epsilon_0 - d\ln{ (1-e^{-\beta \omega} )}
+\]
+from Example: Model system for gas-solid equilibrium (pp.285 Ch. 10 ``Phase transformations'', Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}).  
+
+Then
+\begin{equation}\label{Eq:Prob1005aF_s}
+  F_s = -N_s \epsilon_0 + N_s \tau d\ln{(1-e^{-\beta \omega} )} + \tau N_s \ln{ N_s} - N_s\tau
+\end{equation}
+Recall this useful relation (it's easy to calculate $\sigma$ from Helmholtz free energy $F$):
+\[
+\left( \frac{ \partial F}{ \partial \tau} \right)_V = \sigma
+\]
+\begin{correction}{Helmholtz derivative}
+Differentiating $F = U - \tau\sigma$ gives $(\partial F/\partial\tau)_V = -\sigma$.
+The minimization in $N_g$ below does not use this line.
+The boxed $N_g$ and $p_g$ are unchanged.
+See \S\ref{sec:helmholtz-sign}.
+\end{correction}
+and so
+\begin{equation}\label{Eq:Prob1005aentropy}
+\begin{aligned}
+  \frac{ \partial F_s}{ \partial \tau} & = N_s d\ln{(1- e^{-\omega/\tau} )} + N_s \ln{ N_s} - N_s + N_s \tau d \left( \frac{1}{ 1 - e^{-\beta \omega} } \right)(-e^{-\beta \omega} )(-\omega)\left( \frac{-1}{\tau} \right) = \\
+  & = N_s d\ln{ (1- e^{-\beta \omega} )} + N_s \ln{N_s} - N_s - N_s d\beta \omega \frac{e^{-\beta \omega} }{ 1 - e^{-\beta \omega} } = \sigma
+\end{aligned}
+\end{equation}
+
+
+Suppose $\tau \gg \omega$ or $1 \gg \beta \omega$.  Then $\sigma = N_s d\ln{ (1-e^{-\beta \omega})} + N_s \ln{N_s} - N_s(1+d)$.  
+
+So take the (given) ``extreme assumption that the entropy of the solid maybe neglected over the temperature range of interest.'' \cite{CKittelHKroemer1980}
+
+Then comparing $\sigma$ from Eq. \ref{Eq:Prob1005aentropy} and $F_s$ from Eq. \ref{Eq:Prob1005aF_s}, then
+\[
+F_s \simeq -N_s \epsilon_0
+\]
+
+
+\[
+\boxed{ F = F_s + F_g = -N_s \epsilon_0 + N\tau \left[ \ln{ \left( \frac{N_g}{Vn_Q} \right) } - 1 \right] }
+\]
+\item[(b)] Now
+\[
+F = -N_s \epsilon_0 + N_g \tau [ \ln{ \left( \frac{N_g}{Vn_Q} \right)} -1 ] = -\epsilon_0 (N-N_g) + N_g \tau \left( \ln{ \left( \frac{N_g}{Vn_Q} \right) - 1 } \right)
+\]
+Now, taking the partial derivative,
+\[
+\frac{ \partial F}{ \partial N_g} = \epsilon_0 + \tau \left( \ln{ \left( \frac{N_g}{Vn_Q} \right) }-1 \right) + N_g \tau \frac{1}{N_g}
+\]
+Taking the minimum free energy with respect to $N_g$, i.e. set the partial derivative to $0$,
+\[
+\frac{ \partial F}{ \partial N_g } = 0 = \epsilon_0 + \tau \ln{\left( \frac{N_g}{Vn_Q} \right) } \text{ or } \boxed{ N_g = n_Q V \exp{ \left( \frac{-\epsilon_0}{\tau} \right) } }
+\]
+\item[(c)] Idealize the gas with the ideal gas law.  
+\[
+pV = N_g \tau \Longrightarrow p_g = n_Q \tau \exp{ \left( \frac{-\epsilon_0}{\tau} \right) } = \boxed{ \left( \frac{M}{2\pi \hbar^2 } \right)^{3/2} \tau^{5/2} \exp{ \left( \frac{-\epsilon_0}{\tau} \right) } = p_g }
+\]
+\end{enumerate}
+
+

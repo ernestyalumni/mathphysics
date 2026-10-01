@@ -1,0 +1,500 @@
+\noindent\textit{2008 manuscript.}
+
+\section{Thermal Radiation and Planck Distribution}
+
+\subsection*{Problems}
+
+\solutionhead{1} \textbf{Number of thermal photons}.  
+
+We consider a cavity of volume $V$, and of edge length $L$ (so $V ~ L^3$).  So then $\omega_n = n \pi c/L$.  
+
+Now $\frac{1}{ \exp{ \left(  \frac{ \hbar \omega_n}{ \tau } \right) } - 1 }$ is the thermal average number of photons in a single mode frequency $\omega$.  So then
+\[
+\sum \langle s_n \rangle = \sum \frac{1}{ \exp{ \left( \frac{ \hbar \omega_n }{\tau} \right)} - 1 }
+\]
+
+Consider $(n_x, n_y, n_z)$ on positive octant, and 2 independent polarization $s$ of em field.  
+\[
+\begin{gathered}
+  \sum_n \frac{1}{ \exp{ \left( \frac{ \hbar n \pi c}{ L \tau} \right) } - 1 } = \frac{ (2)}{ 8 } \int_0^{\infty} 4 \pi n^2 dn \frac{1}{ \exp{ \left( \frac{ \hbar n \pi c}{ L \tau } \right)} - 1 } = \pi \int_0^{\infty} \frac{ n^2 dn }{ \exp{ \left( \frac{ \hbar n \pi c}{ L \tau} \right)} - 1 } = \\
+  = \pi \left( \frac{ L \tau }{ \hbar \pi c }\right)^3 \int_0^{\infty} \left( \frac{ x^2  dx}{ e^x - 1 } \right) = \boxed{ N = \frac{ V }{ \pi^2 } \left( \frac{ \tau }{ \hbar c} \right)^3 (2.404) }
+\end{gathered}
+\]
+
+where I used the substitutions \[ \begin{gathered} x = \frac{ \hbar \pi c n}{ L \tau } \\ \frac{ L \tau x }{ \hbar \pi c} = n \\ (dx) \frac{ L \tau }{ \hbar \pi c} = dn \end{gathered} \]
+
+Now $\sigma(\tau) = (4 \pi^2 V/ 45)(\tau / \hbar c)^3$, so then 
+\[
+\frac{ \sigma}{ N} = \frac{1}{2.404} \left( \frac{ 4 \pi^4}{ 45 } \right) \simeq \boxed{ 3.602 }
+\]
+
+\textbf{Now how was $\int_0^{\infty} dx \frac{ x^2 dx }{ e^x - 1 }$ evaluated?}  
+
+
+
+
+
+
+
+
+\solutionhead{2}  \textbf{ Surface temperature of a Sun}.  
+Given the \textbf{solar constant} of the Earth, the total radiant energy flux density at the Earth from the Sun normal to the incident rays, integrated over all emission wavelengths, 
+\[
+\text{ solar constant } = 0.136 \, J \, s^{-1} \, cm^{-2}, \quad \quad \quad \, (49)
+\]
+\begin{itemize}
+\item[(a)] \[
+4 \pi (1.49 \times 10^{11} \, m )^2 \cdot 0.136 \, J \, s^{-1} \, cm^{-2} \left( \frac{ 10^2 \, cm}{ 1 \, m } \right)^2 = (4 \pi ) ( 1.49)^2 10^{22} \cdot 0.136 \times 10^4 = \boxed{ 3.8 \times 10^{26} \, J \cdot s^{-1} }
+\]
+Note that I had used $1.49 \times 10^{11} \, m$ as the distance of the Earth from the Sun.  
+\item[(b)] $J_{\nu} = $ energy flux density or rate of energy emission per unit area.  
+
+$\sigma_B = \frac{ \pi^2 k_B^4}{ 60 \hbar^3 c^2 } = 5.670 \times 10^{-8} \, W \, m^{-2} \, K^{-4}$.
+
+Note that $W = \frac{1 \, J}{s}$.  I will use $R_{\circ} = 6.9599 \times 10^{10} \, cm$ as the radius of the Sun.  
+
+\[
+\frac{ 4 \times 10^{26} \, J \cdot s^{-1} }{ 4 \pi ( 6.9599 \times 10^{10} \, cm)^2 } = J_{\nu} = \sigma_B T^4
+\]
+
+\[
+\frac{ 4 \times 10^{26} \, J \cdot s^{-1} }{ 4 \pi ( 6.9599 \times 10^{10} \, cm)^2 } \left( \frac{ 1 \, m^2 \left( \frac{ 10^2 \, cm }{ 1 \, m } \right)^2  }{ 5.670 \times 10^{-8} \, J/s } \right)k^4 = T^4
+\]
+\[
+\boxed{ T \simeq 5830 \, K }
+\]
+\end{itemize} 
+
+\solutionhead{3} \textbf{Average temperature of the interior of the Sun}.  
+\begin{itemize}
+\item[(a)] 
+\[
+\begin{aligned}
+  U & = - \int_0^R \frac{ G \left( \frac{4}{3} \pi \rho r^3 \right) ( 4\pi r^2 \rho dr ) }{ r} = - \frac{16}{3} \pi^2 G \rho^2 \int_0^R r^4 dr = \frac{-16}{15} \pi^2 \rho^2 GR^5; \, M = \frac{4}{3} \pi R^3 \rho \\ 
+  U & = \frac{- 3 GM^2 }{5 R } \\
+  U & = -\frac{1}{2} \int_0^R \frac{ G \left( \frac{4}{3} \pi \rho r^3  \right) }{ r } (4 \pi r^2 \rho dr ) = \frac{ - 8 }{3} \pi^2 G \rho^2 \int_0^R r^4 dr = \frac{- 8 }{15} \pi^2 \rho^2 GR^5 = \\ 
+  & = \frac{-8}{15} \pi^2 GR^5 \left( \frac{ M }{ \frac{4}{3} \pi R^3 } \right)^2 = \frac{-3}{10} \frac{GM^2 }{R} = 1.14 \times 10^{41} \, J
+\end{aligned}
+\]
+\item[(b)] Using the virial theorem of mechanics, note that 
+\[
+\frac{-1}{2} U = \frac{3}{20} \frac{ GM^2}{R} = \frac{3}{20} \frac{ 6.67 \times 10^{-11} \, kg \cdot \frac{m}{s^2} \cdot \frac{m^2}{ kg^2} \cdot 2 \times 10^{33} \, g \left( \frac{ 1 \, kg }{ 10^3 \, g } \right) }{ 7 \times 10^{10} \, cm \left( \frac{1 \, m}{ 10^2 \, cm } \right) } = 5.72 \times 10^{40} \, J
+\]
+Now $\langle s \rangle = \frac{1}{ \exp{ ( \hbar \omega /\tau )} - 1 }$, is the Planck distribution function, giving the thermal average number of photons in a single mode frequency $\omega$.  
+
+thermal average energy $\langle \epsilon \rangle = \langle s \rangle \hbar \omega = \frac{ \hbar \omega}{ \exp{ ( \hbar \omega/\tau )} - 1 }$ for $\tau \ll \hbar \omega$, $\langle \epsilon \rangle \simeq \tau$
+
+So then $5.72 \times 10^{40} \, J = N \langle \epsilon \rangle = N \tau$.
+
+\[
+\tau = \frac{ 5.72 \times 10^{40} \, J }{ 1 \times 10^{57 } ( 1.381 \times 10^{-23} \, J/K ) } = \boxed{ 4.14 \times 10^6 \, K }
+\]
+\end{itemize}  
+
+
+
+\solutionhead{4} \textbf{Age of the Sun}.  
+\begin{itemize}
+\item[(a)] Consider  $4H \to ^4_2He$.  Then $4 (1.0078) - 4.0026 = 0.0286 \, amu$.  Then 
+\[
+(0.0286 \, amu)\left( \frac{ 1.6726 \times 10^{-27} \, kg}{1.00727647 \, u} \right)(3\times 10^8 \, m/s)^2 = 4.27 \times 10^{-12} \, J
+\] 
+Given $M_{\odot} = 2 \times 10^33 \, g$, 
+\[
+(2 \times 10^{30} \, kg)(0.10)\left( \frac{1}{ 4 \times (1.0078 \, amu) } \right) \left( \frac{ 1.00727647 \, u}{ 1.6726 \times 10^{-27} \, kg } \right) (4.27 \times 10^{-12} \, J ) = 1.28 \times 10^{44} J
+\]
+So $\boxed{ 1.28 \times 10^{44} \, J}$ energy is available.  
+\item[(b)]
+\[
+\frac{1.15 \times 10^{45} \, J}{ 4 \times 10^{26} J \cdot s^{-1} } \left( \frac{ 1 \, hr }{3600 \, s} \right) \left( \frac{ 1\, day }{ 24 \, hr } \right) \left( \frac{ 1 \, yr }{365 \, days} \right) = 1.02  \times 10^{10} \, years 
+\]
+\end{itemize}
+
+\solutionhead{5} \textbf{Surface temperature of the Earth.}  
+$J_S = \sigma_b T_{\odot}^4$ is the radiant power per unit area.  \\
+Total emitted radiation energy of the sun is $J_S 4\pi R_{\odot}^2$.   \quad \\
+$\frac{4 \pi R_{\odot}^2 J_S }{ 4\pi R_{ES}^2} = \frac{R_{\odot}^2}{R_{ES}^2} J_S = \text{ radiation energy hitting $1 \, cm^2$ of Earth's surface in one second }$  
+
+Since the Earth is considered a black-body, the rate of absorption must equal the rate of emission: 
+\[
+\frac{R_{\odot}^2}{R_{ES}^2} \sigma_b T_{\odot}^4 = \sigma_b T_e^4 \text{ or } T_e^4 = T_{\odot}^4 R_{\odot}^2 \Longrightarrow T_e = 5800 \, K \sqrt{ \frac{ 7 \times 10^{10}\, cm}{ 1.5 \times 10^{13} \, cm} } = 396.2 \, K = 123 \, C
+\]
+
+
+
+
+\solutionhead{6} \textbf{Pressure of thermal radiation}.  \begin{itemize}
+\item[(a)] $s_j = $ number of photons in that mode.  Suppose modes of $\omega_j$, $j=0,1,2,\dots$.  \\
+$\epsilon_j = s_j \hbar \omega_j = $ total energy in $j$th mode, $s_j$ photons in $j$th mode.  
+
+\[
+U = \sum_j \epsilon_j = \sum_j s_j \hbar \omega_j \quad \quad \, P = - \frac{ \partial U}{ \partial V} = - \sum_j s_j \hbar \frac{ \partial \omega_j}{\partial V}
+\]
+\item[(b)] $\omega_j = j\pi c/L$, \, $V= L^3$.  So then $\omega_j = j\pi c V^{-1/3}$.  
+\[
+\Longrightarrow \frac{d\omega_j}{dV} = \frac{-1}{3} j \pi c V^{-4/3} = \frac{-1}{3}  \frac{\omega_j}{V}
+\]
+\item[(c)] $p = \frac{U}{3V}$   
+\item[(d)] We want the Kinetic pressure at a concentration of $(1 \, mol/cm^3)$.  Recalling $P =  \frac{Nk_B T}{V}$, 
+\[
+P = \left( \frac{ 1 \, mol }{ cm^3} \right) \left( \frac{ 6.022 \times 10^{23} }{ 1\, mol } \right)\left( \frac{ 10^2 \, cm}{1 \, m }\right)^3 \left( 1.381 \times 10^{-23} \, \frac{J}{K} \right) (2 \times 10^7 \, K) = 1.663 \times 10^{14} \, \frac{N}{m^2}
+\]
+
+Now for the thermal radiation pressure,
+\[
+p = \frac{U}{3V} = \frac{1}{3} \frac{ \pi^2}{ 15 \hbar^3 c^3 } \tau^4 = 4.03 \times 10^{13} \, \frac{N}{m^2}
+\]
+where $t = 2\times 10^7 \, K$.  
+
+For the pressures to be equal, 
+\[
+\frac{1}{3} \frac{ \pi^2 }{15 \hbar^3 c^3} k_B^4 T^4 = \frac{Nk_B}{V} T \text{ or } T^3 = \frac{45 ( \hbar c)^3 Nk_B }{ \pi^2 k_B^4 V } \text{ so that } \boxed{ T = 3.2 \times 10^7 \, K} 
+\]
+\end{itemize}
+
+\solutionhead{7} \textbf{ Free energy of a photon gas}
+\begin{itemize}
+\item[(a)] $Z = \prod_n \frac{1}{1- e^{-\hbar \omega_n /\tau} }$  Consider $Z = \sum_{s=0}^{\infty} e^{-s\hbar \omega/\tau} = \frac{1}{ 1 -e^{-\hbar \omega/\tau}}$ for a single mode.  
+\item[(b)] $F = -\tau \ln{Z} = \tau \sum_n \ln{ (1 - e^{-\hbar \omega_n/\tau} )}$ \quad \, $\omega_n = \frac{ n \pi c}{L}$.  
+\[
+\begin{aligned}
+  F & = \tau \sum_n \ln{ ( 1 - e^{-\hbar \omega_n/\tau} )} = \tau \int_0^{\infty} \frac{ 4\pi n^2 dn }{8} (2) \ln{ (1 - e^{-\hbar n \pi c/\tau L} )} = \pi \tau \int_0^{\infty} dn n^2 \ln{ (1 - e^{-\hbar n \pi c/\tau L})} = \\
+  & = \pi \tau \left( \left. (n^3 \ln{ (1-e^{-\hbar n \pi c/\tau L} ) })\right|_0^{\infty} - \int_0^{\infty} dn \frac{n^3 e^{-\hbar n \pi c/\tau L} }{ 1 - e^{-\hbar n \pi c/\tau L} } \left( \frac{ - \hbar \pi c}{\tau L} \right) \right) = - \frac{ \hbar \pi^2 c }{L} \int_0^{\infty} dn \frac{n^3}{e^{\hbar n \pi /\tau L} -1 } =\\ 
+  & =  - \left( \frac{ \tau L}{ \hbar \pi c} \right)^3 \int_0^{\infty} \frac{x^3}{e^x- 1}   = -\frac{(\tau L)^3}{ (\hbar^2 c^3)} \frac{\pi^2}{45}
+\end{aligned}
+\]
+where I used $x = \frac{ \hbar n \pi c}{\tau L}$.  
+\end{itemize}
+
+
+
+\solutionhead{8} \textbf{Heat shields.} For $J_u = \sigma_B(T_u^4 - T_l^4)$, the thermal flux without the heat shield, in the middle region.  Plane $m$ absorbs $\sigma_B T_u^4 + \sigma_B T_l^4$ and emits $J_m = \sigma_B (T_u^4 + T_l^4) = \sigma T_m^4$.  
+
+$T_m = (T_u^4 + T_l^4)^{1/4}$.  The key point is that, by symmetry, plane $m$ emits $\frac{J_m}{2}$ flux on each side.  
+\[
+J_{net} = \sigma_B T_u^4 - ( \sigma_B \left( \frac{T_u^4 + T_l^4}{2} \right) ) = \sigma_B \left( \frac{T_u^4 - T_l^4}{ 2} \right) = \frac{J_u}{2} 
+\]
+$J_{net}$ is the same for the other side of the heat shield:
+\[
+J_{net} = -\sigma_B T_l^4 + \sigma_B \left( \frac{T_u^4 + T_l^4}{2} \right) = \sigma_B \left( \frac{ T_u^4 - T_l^4 }{2} \right)
+\]
+
+
+
+
+
+\solutionhead{9} \textbf{Photon gas in one dimension.}   $E = E_0\sin{(kx)}\cos{(\omega t)}$ is the form of a solution with $kL=n\pi$ or $k = \frac{n\pi}{L}$, since
+\[
+v^2 E_xx = E_tt \to v^2 k^2 = \omega^2 \text{ or } \frac{\omega}{k} = v, \, \omega_n = v \frac{n\pi}{L}
+\]
+\[
+Z_j = \sum_{s=0}^{\infty} e^{-s\hbar \omega/\tau} = \frac{1}{ 1 - e^{-\hbar \omega /\tau}}
+\]
+where $Z_j$ is the partition function for a particular mode frequency $\omega$.  
+\[
+\begin{aligned}
+  \langle s \rangle & = \frac{ \sum_{s=0}^{\infty} s e^{ - \frac{ s \hbar \omega_n }{\tau} }  }{Z } = Z^{-1} \frac{d}{ d(-\hbar \omega_n /\tau )} (1 -  \exp{ \left( \frac{-\hbar \omega_n}{\tau} \right) } )^{-1} = Z^{-1} (1- \exp{ \left( \frac{ -\hbar \omega}{\tau} \right)} )^{-2}  \exp{ \left( \frac{- \hbar \omega_n}{\tau} \right)}  = \\
+  &=  \frac{ \exp{ \left( -\hbar \omega_n /\tau \right) }}{ 1 - \exp{ (-\hbar \omega_n /\tau )} }
+\end{aligned}
+\]
+So
+\[
+\langle s \rangle \hbar \omega_n = \langle \epsilon_n \rangle = \frac{\hbar \omega_n}{ \exp{ \left( \frac{\hbar \omega_n }{\tau} \right) } - 1 } \quad \quad \, U = \sum_{n} \langle \epsilon_n \rangle = \sum_n \frac{\hbar v n \pi/L }{ \exp{ \left( \frac{ \hbar v n \pi }{L \tau} \right) } - 1 }
+\]
+\[
+\frac{\partial U}{ \partial \tau} = \sum_n \frac{ - \hbar vn \pi/L}{ \left( \exp{\left( \frac{\hbar v n \pi }{L \tau} \right) } - 1 \right)^2 } \left( \exp{\left( \frac{ \hbar v n \pi}{L\tau } \right) } \left( \frac{ -\hbar v n \pi }{ L \tau^2 } \right) \right) = \sum_n \frac{ \left( \frac{ \hbar v \pi }{L \tau} \right)^2 n^2 \exp{ \left( \frac{ \hbar vn \pi}{L\tau } \right) } }{ (\exp{ \left( \frac{ \hbar nv \pi }{L\tau} \right) } - 1 )^2 } = \sum_n \frac{ \left( \frac{ \hbar v \pi}{L\tau} \right)^2 n^2 \exp{ \left( \frac{ \hbar v \pi n }{ L \tau } \right) } }{ ( \exp{ \left( \frac{ \hbar v \pi }{L\tau} n \right) } - 1 )^2 }
+\] 
+Now $\sum_n \to \int_0^{\infty} dn$ for one-dimensional photon.  Let $\alpha = \frac{\hbar v\pi}{L\tau}$.  
+
+Letting $x = \alpha n$,
+\[
+\frac{\partial U}{ \partial \tau} = \left( \frac{ n v \pi}{ L\tau} \right)^2 \int dn \frac{n^2 \exp{(\alpha n )} }{(e^{\alpha n } -1 )^2 } = \frac{1}{ \alpha } \int dx \frac{x^2 e^x }{ (e^x - 1 )^2 } = \frac{1}{\alpha} \lbrace \frac{-x^2 }{ (e^x - 1 ) } + \int_0^{\infty} \frac{x dx }{e^x - 1 } \rbrace 
+\]
+Coefficient of $k$ term of $f(k)$ is $ j =\int_0^{\infty}  \frac{x}{e^x - 1 } dx$.  Now $f(k) = \int_0^{\infty} \frac{\sin{(kx)} }{ e^x -  1 } dx$, $\sin{(kx)} = kx - \frac{ (kx)^3 }{3!} + \dots$, so that 
+\[
+\frac{ \pi^2 }{6}  = \int_0^{\infty} \frac{x}{e^x-  1 } dx
+\]
+
+\[
+\frac{\partial U}{\partial \tau} = \frac{L\tau}{ \hbar v\pi} \left( \frac{\pi^2 }{6} \right) = \boxed{ \frac{ L\tau \pi}{6\hbar v} = C_V }
+\]
+
+
+
+
+
+
+
+
+\solutionhead{10} \textbf{Heat capacity of intergalactic space}.  
+
+Given the density $1$ atom $m^{-3}$, considering thermal radiation at $2.9 \, K$, then $k_B T = (1.381 \times 10^{-23} \, J/K)(2.9 \, K)$, $\hbar c = (1.05457 \times 10^{-34} \, J\cdot s)(3\times 10^8 \, \frac{m}{s} )$.  
+
+Recall for radiation, that the energy per unit volume: $\frac{U}{V} = \frac{\pi^2 }{ 15 \hbar^3 c^3 } \tau^4$ so that  $\frac{\partial U}{\partial \tau} = \frac{4\pi^2 }{15 \hbar^3 c^3 } \tau^3 V$.  
+
+Assume hydrogen atoms modeled as ideal gas: $U = \frac{3}{2} N \tau$, $\frac{dU}{d\tau} = \frac{3}{2} N$.  
+\[
+\frac{C_{V_{matter}} }{ C_{V_{radiation}} } = \frac{ \frac{3}{2} N }{ \frac{4\pi^2 }{ 15 \hbar^3 c^3 } \tau^3 V } = \frac{ 45 (\hbar c)^3 (N/V) }{ 8 \pi^2 (k_B T)^3 } = 2.8 \times 10^{-10}
+\]
+
+
+
+\solutionhead{11} \textbf{Heat capacity of solids in high temperature limit}.  $ \frac{\hbar \omega_n }{\tau} = \frac{\pi \hbar v n}{L\tau}$; $ \omega_n = \frac{\pi  v n}{L}$.  For $\tau \ll \hbar \omega_n$, $ 0 \leq n \leq n_D$.  
+
+\[
+\exp{ \left( \frac{\hbar \omega_n}{\tau} \right)} - 1 \simeq 1 + \frac{\hbar \omega_n}{\tau} + \left( \frac{\hbar \omega_n }{ \tau} \right)^2 \left( \frac{1}{2} \right) + \frac{1}{6} \left( \frac{\hbar \omega_n}{\tau} \right)^3  + \dots - 1 
+\]
+By doing long division
+\[
+\frac{\hbar \omega_n }{ \exp{ \left( \frac{\hbar \omega_n }{\tau} \right) - 1} }  \simeq  \frac{\hbar \omega_n }{ \frac{\hbar \omega_n }{ \tau} \left( 1 + \frac{\hbar \omega_n }{ 2 \tau } + \frac{ (\hbar \omega_n)^2 }{ 6 \tau^2  } \right) } = \frac{ \tau }{ 1 + \frac{\hbar \omega_n }{ 2 \tau } + \frac{ (\hbar \omega_n)^2 }{ 6 \tau^2  } } = \tau + -\frac{\hbar \omega_n}{2} + \frac{ (\hbar \omega_n)^2 }{ 12 \tau} + \dots
+\]
+
+For $n_p = (6N/\pi)^{1/3}$
+\[
+\begin{aligned}
+  U & = \frac{3\pi}{2} \int_0^{n_D} dn n^2 ( \tau - \frac{\hbar \omega_n}{2} + \frac{ (\hbar \omega_n)^2 }{12 \tau } ) = \frac{3\pi}{2} \int_0^{n_D} dn n^2 ( \tau - \frac{\hbar }{2} \frac{\pi v n }{L} + \frac{\hbar^2 \pi^2 v^2 n^2 }{ 12 \tau L^2 } ) = \\
+  & = \frac{3\pi}{2} \lbrace \frac{1}{3} n_D^3 \tau - \frac{\hbar \pi v}{2L} \frac{n_D^4 }{4} + \frac{ \hbar^2 \pi^2 v^2 }{ 12 \tau L^2 } \frac{1}{5} n_D^5 \rbrace   = \frac{\pi}{2} \frac{6N }{\pi} \tau - \frac{ 3 \pi^2 \hbar v}{ 16 L} \left( \frac{6 N}{\pi} \right)^{4/3} + \frac{3\hbar^2 \pi^3 v^2 (6N /\pi)^{5/3} }{ 120 \tau L^2 }
+\end{aligned}
+\]
+
+
+So 
+\[
+U = 3 N \tau - \frac{3 \pi^2 \hbar v}{ 16 L} \left( \frac{6N }{\pi} \right)^{4/3} + \frac{ 3\hbar^2 \pi^3 V^2 ( 6 N/\pi)^{5/3} }{ 120 \tau L^2 }
+\]
+Now $T = \theta$, $\theta = \left( \frac{ \hbar v }{k_B} \right) \frac{ (6\pi^2 N )^{1/3} }{L}$
+
+So then 
+\[
+U = 3 N \frac{ \hbar v (6\pi^2 N)^{1/3} }{ L } - \frac{3\pi^2 \hbar v }{16 L } \frac{ 6^{1/3} N^{4/3} 6 }{ \pi^{4/3} } = \frac{15}{8} \frac{ (6\pi^2 N)^{1/3} \hbar v}{L}  = N k_B \theta \left( \frac{15}{8} \right)
+\]
+
+\[
+\frac{U}{\theta} = N k_B \left( \frac{15}{8} \right) = \left( \frac{15}{8} \right) (1.381 \times 10^{-23} \, J/K) \left( \frac{6.022 \times 10^{23} \, particles }{ 1 \, mol } \right) = 15.59
+\]
+which is very close to experimental values.  
+
+
+
+
+\solutionhead{12} \textbf{Heat capacity of photons and phonons}.  For a photon: $U = \frac{ \pi^2 V}{ 15 \hbar^3 c^3 } \tau^4$ \quad \, 
+$\partial_{\tau} U = \frac{4\pi^2 V}{15 \hbar^3 c^3 } \tau^3 $. 
+
+phonon: $U(\tau) = \frac{3\pi^4 N \tau^4 }{ 5 (k_B \theta)^3 }$.  \quad \, 
+$\frac{\partial U}{ \partial \tau} = \frac{12 \pi^4 N \tau^3 }{ 5 (k_B \theta)^3 }$ \\
+So then
+\[
+C_V = \frac{12 \pi^4 10^{22} }{5} \left( \frac{1}{100} \right)^3  = 2.3 \times 10^{18}  
+\]
+for a phonon.  
+
+For a photon, 
+\[
+\frac{4\pi^2 }{15} \frac{ (1.381 \times 10^{-23} J/K )^3 }{ (1.05457 \times 10^{-34} J\cdot s (3\times 10^{10} \, cm/s))^3 } \tau^3 = 220 \, /K^3 \tau^3
+\]
+
+Temperature at which to photon contribution equals to phonon contribution:
+\[
+ (220 /K^3 )\tau^3 = 2.3 \times 10^{18 } \Longrightarrow \boxed{ \tau = 2.2 \times 10^{5} \, K}
+\]
+
+
+
+
+
+
+
+
+\solutionhead{13} \textbf{Energy fluctuations in a solid at low temperatures}.  
+
+\[
+\tau^2 \left( \frac{ \partial U}{ \partial \tau} \right)_V = \langle (\epsilon - \langle \epsilon \rangle )^2 \rangle
+\]
+Recall that 
+\[
+\left( \frac{ \partial U}{\partial \tau} \right)_V = \frac{12}{5} \frac{\pi^4  N \tau^3 }{ ( k_B \theta)^3 } \text{ where } U = \frac{3 \pi^4 N \tau^4 }{ 5 (k_B \theta)^3 }
+\]
+\[
+\frac{ \langle (\epsilon - \langle \epsilon \rangle )^2 \rangle }{ \langle \epsilon \rangle^2 }= \frac{ 12 \pi^4 N \tau^5 }{ 5 (k_B \theta)^3 } \left( \frac{1}{ \frac{ 9 \pi^8 N^2 \tau^8 }{ 25 (k_B \theta)^6 } } \right) = \frac{ 20 }{3} \left( \frac{1}{\pi^4 } \right) \left( \frac{1}{N} \right)\left( \frac{1}{\tau^3 } \right) (k_B \theta)^3  = \frac{ 0.068 }{N} \left( \frac{ \theta }{T}\right)^3 
+\]
+\[
+\mathcal{F} = \sqrt{ \frac{ 0.070 }{10^{15}} \left( \frac{200}{10^{-2} } \right)^3  } = 0.02
+\]
+
+
+
+
+\solutionhead{14}  \textbf{Heat capacity of liquid $^4He$ at low temperatures}.  \begin{itemize}
+\item[(a)] Given $v = 2.383 \times 10^4$ $cm \, s^{-1}$ and accounting for only longitudinal waves (only longitudinal polarization), then the Debye temperature is 
+\[
+\begin{aligned}
+\theta & = \left( \frac{ \hbar v }{k_B } \right) \left( \frac{ 18 \pi^2 N }{V} \right)^{1/3} = \frac{ (1.05457 \times 10^{-34} \, J\cdot s )(2.383 \times 10^4 \, cm/s) }{ 1.381 \times 10^{-23} \, J/K} \left( \frac{ 18 \pi^2 0.145 \, g }{cm^3 } \left( \frac{ 1.00727647 \, u \left( \frac{ 1 \, He }{ 4.0026 u } \right) }{ 1.67262 \times 10^{-24 } \, g } \right) \right)^{1/3} = \\
+& = \boxed{ 28.6 \, K }
+\end{aligned}
+\]
+\item[(b)] Recall the derivation for $U$ for phonons in a solid.  \emph{Account for only longitudinal waves (only longitudinal polarization)}.  
+\[
+U = \frac{\pi}{2} \int_0^{n_D} dn \frac{ n^2 \hbar \omega_n }{ \exp{ (\hbar \omega_n /\tau) } - 1 } = \frac{\pi}{2} \int_0^{n_D} n^2 dn \frac{ \hbar \frac{ \pi n v }{L} }{ \exp{ (x)} - 1 } = \frac{ \hbar \pi^2 v}{2L} \int_0^{n_D} \frac{ n^3 }{\exp{ (x) } - 1 } dn
+\]
+With $\omega_n = \frac{\pi n }{L} v$, $x = \frac{ \hbar \pi n v}{L \tau} $ or $\left( \frac{ L \tau}{\hbar \pi v} \right) x = n$, then 
+\[
+U  = \left( \frac{ \hbar^2 v}{ 2L } \right) \left( \frac{ L \tau }{ \hbar \pi v} \right)^4 \int_0^{n_D} \frac{x^3}{e^x - 1 } dx 
+\]
+For low temperatures, $\tau$ small so take $x_D = \left( \frac{ \hbar \pi n_D v}{ L \tau} \right) = \left( \frac{\hbar \pi v}{ L \tau} \right) \left( \frac{18 N}{\pi} \right)^{1/3} = \frac{ 18^{1/3} \hbar \pi^{2/3} n^{1/3} v }{ \tau}$ to go to $\infty$.  
+\[
+U \to \left( \frac{ \pi^2 }{ 2 (\hbar v )^3} \right) \frac{ \tau^4 }{15} V
+\]
+Recall that $C_V = \left( \frac{ \partial U}{\partial \tau} \right)_{V}$.  Then $C_V/V = \frac{2}{15} \left( \frac{ \pi^2 }{ (\hbar v)^3 } \right) \tau^3 $.  Recall $\tau_B = k_B T$, and given $v= 2.383 \times 10^4 \, cm/s$, then
+\[
+\frac{ k_B }{ \hbar v} = \frac{ (1.381 \times 10^{-23} \, J/K )}{ (1.05457266 \times 10^{-34} \, J\cdot s )( 2.383 \times 10^{4} \, cm/s ) } = 5.495 \times 10^6 \, (1/K\cdot cm )
+\]
+So if we take $C_V/V$ and divide by the given density $\rho = 0.145 \, g/cm^3$ to get the heat capacity per gram, (and multiply by $k_B$, the Boltzmann constant to get the correct units; Kittel and Kroemer likes using dimensionless formulas ) then
+\[
+(C_V/V)/\rho = (k_B) \frac{2}{15} \pi^2 \left( \frac{k_B}{ \hbar v} \right)^3 T^3 \left( \frac{cm^3}{0.145 \, g } \right) = \boxed{ 0.0208 \times T^3 }
+\]
+\end{itemize}
+
+\solutionhead{15} \textbf{Angular distribution of radiant energy flux}.  
+
+\begin{itemize}
+\item[(a)] Recall 
+\[
+u_{\omega} = \frac{ \hbar}{ \pi^2 c^2} \frac{ \omega^3}{ \exp{ \left( \frac{ \hbar \omega}{ \tau } \right) } - 1 } 
+\]
+is the radiation energy per unit volume per unit frequency range.  
+
+$cu_{\omega} = $ energy per unit time, per cross sectional area per unit frequency range.  
+
+em waves emitted spherically from pt. Q.  
+
+Suppose em wave comes in at a funny angle other than directly inward.  
+
+Consider area $da$ that's from the spherical wave from pt. Q.  How much of that goes into solid angle $d\Omega$?
+\[
+\Longrightarrow cu_{\omega} \cos{\theta} dA
+\]
+So $c u_{\omega} \cos{\theta}$ is the energy per unit time, per cross-sectional area, per unit frequency range, that enters into some solid angle $d\Omega$.  
+
+\[
+\frac{ r^2 d\Omega}{ 4 \pi r^2} = \frac{ d \Omega }{ 4 \pi}
+\]
+is the fraction of the spectral density that if arrives in solid angle $d\Omega$.  
+
+\[
+\Longrightarrow \boxed{ cu_{ \omega} \cos{\theta} \frac{d\Omega}{ 4\pi} }
+\]
+is the spectral density of radiant energy flux that arrives in solid angle $d\Omega$.  
+\item[(b)]
+\[
+\int \cos{\theta} \sin{\theta } d\theta d\varphi = 2\pi \int \frac{ \sin{2\theta}}{ 2} d\theta = - \pi \left. \left( \frac{ \cos{2 \theta}}{ 2 } \right) \right|_0^{\pi/2} = - \pi \left( \frac{ -1 -1 }{2} \right)  = \pi
+\]
+\[
+\Longrightarrow \boxed{ \frac{ cu_{\omega} }{4} }
+\]
+\end{itemize}
+
+
+
+
+
+
+\solutionhead{17} \textbf{Entropy and occupancy.} 
+\[
+\begin{aligned}
+  Z & = \sum_{s=0}^{\infty} e^{-s\hbar \omega/ \tau} = \frac{1}{1- e^{-\hbar \omega/\tau}} \\
+  \partial_{\tau} Z & = \sum_{s=0}^{\infty} e^{-s\hbar \omega/ \tau} \left( \frac{s \hbar \omega}{ \tau^2 } \right)  = - (1-  e^{-\hbar \omega/\tau} )^{-2} (-e^{-\hbar \omega/\tau} )\left( \frac{\hbar \omega}{\tau^2} \right)  = Z \frac{\hbar \omega}{\tau^2} \langle s \rangle
+\end{aligned}
+\]
+
+Then 
+\[
+\langle s \rangle = \frac{ e^{-\hbar \omega/\tau} }{ 1 - e^{-\hbar \omega/\tau} } \quad \quad \, \langle s +1 \rangle  = \frac{1}{1- e^{-\hbar \omega/\tau } }
+\]
+\[
+\sigma = \partial_{\tau} (\tau \ln{Z})  = \ln{Z} + \tau \frac{ \partial_{\tau} Z}{ Z} = \ln{ \langle s + 1 \rangle } + \tau \frac{\hbar \omega}{\tau^2} \langle s \rangle = \ln{ \langle s + 1 \rangle } + \frac{\hbar \omega }{\tau } \langle s \rangle
+\]
+Now (nyn\'{i})
+\[
+\langle s \rangle \ln{ \left( \frac{ \langle s  +1 \rangle }{ \langle s  \rangle } \right) } = Z e^{-\hbar \omega/\tau } \ln{ e^{ \hbar \omega/\tau } } = \frac{ \hbar \omega}{\tau} \langle s \rangle 
+\]
+\[
+\Longrightarrow \boxed{ \sigma = \langle s + 1 \rangle \ln{ \langle s + 1 \rangle } + \langle s \rangle \ln{ \langle s \rangle } }
+\]
+
+
+
+
+
+\solutionhead{18} \textbf{Isentropic expansion of photon gas}. \begin{itemize}
+\item[(a)] $\tau_i V_i^{1/3} = \tau_f V_f^{1/3}$ or 
+\[
+\left( \frac{V_i}{V_f} \right)^{1/3} = \frac{\tau_f}{\tau_i} = \frac{2.9 \, K}{ 3000 \, K } = 10^{-3}
+\]
+$r = r(t) = \alpha t$ so that $\Delta r = \alpha \Delta t$ or $\frac{\Delta r}{r} = \frac{\Delta t}{t}$
+
+\[
+\frac{ r_f - r_i }{r_f} = 1 - \frac{r_i}{r_f} = \frac{t_f - t_i}{t_f}= 1 - \frac{t_i}{t_f} 
+\]
+Knwowing that $\frac{r_i}{r_f} = 10^{-3}$, then $\frac{t_i}{t_f} = 10^{-3}$.  
+\item[(b)] Now
+\[
+\begin{aligned}
+  \sigma = \tau V^{1/3} \\ 
+  \left( \frac{ \sigma}{\tau} \right)^3 = V \\ 
+\end{aligned}
+\]
+For \emph{constant entropy} expansion.  
+\[
+\frac{U}{V} = \frac{\pi^2 }{ 15 \hbar^3 c^3 } \tau^4 \quad \quad U = \frac{\pi^2 }{ 15 (\hbar c)^3 } V \left( \frac{\sigma^4}{ V^{4/3} } \right) = \frac{\pi^2 }{15 ( \hbar c)^3 } \frac{\sigma^4 }{ V^{1/3} } 
+\]
+\[
+\left( \frac{ \partial U}{ \partial V} \right)_{\sigma} = \frac{\pi^2 }{15 (\hbar c)^3 } \sigma^4 \left( \frac{-1}{3} V^{-4/3} \right)
+\]
+\[
+W = \int p dV  = \frac{\pi^2 }{15(\hbar c)^3 } \sigma^4 \left. (-V^{-1/3} ) \right|_{V_i}^{V_f} = \frac{\pi^2 \sigma^4 }{ 15 (\hbar c)^3 } \left( \frac{1}{V_i^{1/3}} - \frac{1}{V_f^{1/3}} \right) = \frac{\pi^2 V_i^{4/3} \tau_i^4 }{15 (\hbar c)^3 } \left( \frac{1}{V_i^{1/3}} - \frac{\tau_f}{\tau_i V_i^{1/3} } \right) = \frac{\pi^2 V_i \tau_i^3}{ 15(\hbar c)^3 } (\tau_i - \tau_f)
+\]
+\end{itemize}
+
+
+
+
+
+\exercisehead{19} \textbf{Reflective heat shield and Kirchhoff's law}.  
+
+For a left plane sheet at $\tau_u$ temperature, right plane sheet at $\tau_l$ temperature
+\[
+\begin{gathered}
+  +J_u = \sigma_b \tau_u^4 \\
+  \begin{aligned}
+    & \text{ reflection }  -r J_u = - (1-a) \sigma_b \tau_u^4 \\ 
+    & \text{ absorb (left) } aJ_u = a \sigma_b \tau_u^4 
+\end{aligned}
+\end{gathered}
+ \quad \quad \quad \begin{gathered}
+   -J_l = \sigma_b \tau_l^4  \\ 
+  \begin{aligned}
+    & \text{ reflection } r J_l = (1- a) \sigma_b \tau_l^4 \\ 
+    & \text{ absorb (left) } aJ_l = a \sigma_b \tau_l^4 
+\end{aligned}
+\end{gathered}
+\]
+
+total absorption: $a(J_u + J_l) = a\sigma_b(\tau_u^4 + \tau_l^4 ) $ \\
+total emission: $a\sigma_b (\tau_u^4 + \tau_l^4 )$.  By symmetry, $\frac{a(J_u + J_l ) }{2}$ emitted to the left, and to right.\\
+$e$ emissivity, where emissivity is defined so radiation flux emitted by the object is $e$ times the flux emitted by a blackbody at the same temperature.  
+
+By Kirchhoff law, for equilibrium, $a=e$; object must emit at same rate as it absorbs.  
+
+\[
+\begin{aligned}
+  J_{net} & = \frac{-a(J_u + J_l )}{2} - r J_u + J_u = \frac{ - (1-r)(J_u  + J_l ) }{2} + (1-r) J_u = \frac{(1-r) J_u }{2} - \frac{(1-r) J_l }{2} = (1-r) \frac{(J_u - J_l)}{2} = \\
+  & = (1-r) \left( \frac{ \sigma_b (\tau_u^4 - \tau_l^4  )}{2} \right)  = \frac{a(J_u + J_l )}{2} + r J_l - J_l    = \boxed{ \frac{(1-r) (J_u - J_l) }{2}  }
+\end{aligned} 
+\]
+
+
+
+
+
+
+

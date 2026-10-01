@@ -1,0 +1,55 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{2013}{--}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry,multicol}
+\ifdefined\screenedition
+  \geometry{paperwidth=1200pt,paperheight=700pt,margin=35pt,columnsep=18pt}
+  \newenvironment{notesbody}{\begin{multicols}{2}\raggedcolumns}{\end{multicols}}
+\else
+  \geometry{letterpaper,margin=0.85in}
+  \newenvironment{notesbody}{}{}
+\fi
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\graphicspath{{/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/LaTeX_and_pdfs/}}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows}
+\usepackage{listings}
+\usepackage[version=3]{mhchem}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\lstset{language=Python,
+ frame=bottomline,
+ breaklines=true,
+ basicstyle=\scriptsize,
+ identifierstyle=\color{blue},
+ keywordstyle=\bfseries,
+ commentstyle=\color{darkgreen},
+ stringstyle=\color{red},
+ }
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{axiom}{Axiom}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
+\newenvironment{correction}[1]{%
+  \par\medskip\noindent\textbf{Correction (#1).}\space\ignorespaces
+}{\par\medskip}
+\newcommand{\questionhead}[1]{%
+  \bigskip\bigskip\noindent{\small\bf Question #1.}\bigskip}
+\newcommand{\problemhead}[1]{\noindent{\small\bf Problem #1.}}
+\newcommand{\exercisehead}[1]{\smallskip\noindent{\small\bf Exercise #1.}}
+\newcommand{\solutionhead}[1]{\noindent{\small\bf Solution #1.}}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\author{Ernest Yeung}
+\date{30 September 2026}

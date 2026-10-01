@@ -1,0 +1,177 @@
+\noindent\textit{2015 manuscript.}
+
+\section{Phase Equilibrium}
+
+\subsection{Condition of coexistence; Coexistence of phases}
+
+cf. Chapter 10: Phase Transformation, earlier sections of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}; Subsection 3.5.2. ``Coexistence of phases'' of Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004}
+
+The \emph{condition of coexistence} is 
+\[
+\mu_1(\tau,p) = \mu_2(\tau,p)
+\]
+For example $\begin{aligned} & \quad \\
+  & 1 = g = \text{ gas } \\
+  & 2 = l = \text{ liquid } \end{aligned}$
+
+Then Taylor expand:
+\[
+\mu_1(\tau_0,p_0) = \mu_2(\tau_0,p_0) = \mu_1(\tau_0,p_0) + \left( \frac{ \partial \mu_1}{ \partial p} \right)_{\tau} dp + \left( \frac{ \partial \mu_1}{ \partial \tau } \right)_p d\tau + \dots = \mu_2(\tau_0,p_0) + \left( \frac{ \partial \mu_2}{ \partial p} \right)_{\tau} dp + \left( \frac{ \partial \mu_2}{ \partial \tau} \right) d\tau + \dots
+\]
+\[
+\Longrightarrow \frac{dp}{d\tau} = \frac{ \left( \frac{ \partial \mu_1}{ \partial \tau} \right)_p - \left( \frac{ \partial \mu_2}{ \partial \tau} \right)_p }{ \left( \frac{ \partial \mu_2}{ \partial p} \right)_{\tau} - \left( \frac{ \partial \mu_1}{ \partial p }\right)_{\tau}  }
+\]
+Now
+\[
+G= N\mu(\tau,p)
+\]
+and so define
+\[
+\begin{aligned}
+  & \frac{1}{N} \left( \frac{ \partial G}{ \partial \tau} \right)_{N,p} = \frac{-\sigma}{N} \equiv - \widehat{\sigma} =  \left( \frac{ \partial \mu }{ \partial \tau} \right)_{N,p} \\
+  & \frac{1}{N} \left( \frac{ \partial G}{ \partial p} \right)_{N,\tau} = \frac{V}{N} \equiv v =  \left( \frac{ \partial \mu }{ \partial p} \right)_{N,\tau} 
+\end{aligned}
+\]
+and so
+\[
+\Longrightarrow \frac{dp}{d\tau} = \frac{ \widehat{\sigma}_2 - \widehat{\sigma}_1}{ v_2 - v_1}
+\]
+Equation 11 in Chapter 10 of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980} and Eq. 3.96 of Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004} agree. 
+
+Now consider $\tau N d\widehat{\sigma}$ for constant $\tau$, 
+\[
+Q = \tau N d\widehat{\sigma} \Longrightarrow \int Q = \tau N( \widehat{\sigma}_2 - \widehat{\sigma}_1) \text{ or } \frac{ \int Q}{ N} = \tau (\widehat{\sigma}_2 - \widehat{\sigma}_1 ) 
+\]
+which is the heat added in the transfer.  
+
+Define the \textbf{latent heat of vaporization}
+\begin{equation}
+  L := \tau(\widehat{\sigma}_2 - \widehat{\sigma}_1) \qquad \, (\text{latent heat of vaporization})
+\end{equation}
+For the change of volume when 1 molecule is transferred from liquid to gas or 1 to 2, $\Delta v$, $\Delta v \equiv v_2 - v_1$, and so 
+\begin{equation}
+\left. \frac{dp}{d\tau } \right|_{\text{coexist}} = \frac{L }{ \Delta v \tau}
+\end{equation}
+
+
+\subsection{Latent heat}
+
+$p,T$ const., liquid $\to $ gas, e.g. $ \begin{aligned} & \quad \\
+  & p = 1 \text{ atm } \\
+  & T = 373 \, K \end{aligned}$
+
+latent heat of vaporization $L_{\text{vap}}$ (by def.) amount of energy supplied by heating.  \\
+$Q = dU + W$ \\
+$\epsilon := U/N = $ average (internal) energy per molecule  \\
+$v:= V/N = $ volume per molecule 
+
+$L_{\text{vap}} = d\epsilon + p dV$ \\
+\phantom{\quad \, } $d\epsilon(\dot{\gamma}) = \epsilon_{\text{vap}} - \epsilon_{\text{liq}}$ \\
+\phantom{\quad \, } $dv(\dot{\gamma}) = v_{\text{vap}} - v_{\text{liq}} >0$
+
+if $p$ const., $L_{\text{vap}} = d(\epsilon + pV) = dh$, $h:= H/N = \frac{ U + pV}{N}$
+
+EY : 20151031 Another way to think about it is this: recall that
+\[
+\begin{aligned}
+  & Q = dU + W = dU + pdV = \tau d\sigma \\ 
+  & H = U + pV \text{ so } dH = dU + pdV + Vdp = Q + Vdp
+\end{aligned}
+\]
+Consider a path $\gamma \in M$ s.t. $\begin{aligned} & \quad \\
+  & d\tau(\dot{\gamma}) = 0 \\
+  & dp(\dot{\gamma}) = 0 \end{aligned}$ \quad \, (constant $\tau,p$)
+
+\[
+\begin{aligned}
+  & Q(\dot{\gamma}) = dH(\dot{\gamma}) - Vdp(\dot{\gamma}) = dH(\dot{\gamma}) - 0 = dH(\dot{\gamma})
+  & Q(\dot{\gamma}) = \tau d\sigma(\dot{\gamma}) \\ 
+  & \int Q(\dot{\gamma}) = \int \tau d\sigma(\dot{\gamma}) = \tau(\sigma_g - \sigma_l)
+\end{aligned}
+\]
+Thus
+\[
+\begin{gathered}
+  \frac{ \int Q(\dot{\gamma})}{ N} = \tau (s_g - s_l ) = \frac{H_g}{N} - \frac{H_l}{N} \\ 
+  L \equiv \tau(s_g - s_l) = \frac{ \int Q(\dot{\gamma})}{ N} = \frac{1}{N} (H_g -H_l)
+\end{gathered}
+\]
+
+\subsubsection*{Latent heat versus heat capacity}
+
+Take slow, reversible process.  
+
+Now 
+\[
+\begin{aligned}
+  & C_V := \tau \left( \frac{ \partial \sigma }{ \partial \tau} \right)_V \\ 
+  & C_P := \tau \left( \frac{ \partial \sigma }{ \partial \tau } \right)_P
+\end{aligned}
+\]
+
+It's stated in Kittel and Kroemer (1980), pp. 166, Equation (37), Chapter 6: Ideal Gas, Subsection ``Heat capacity'' \cite{CKittelHKroemer1980}, that 
+\begin{equation}
+  C_P = \tau \left( \frac{ \partial \sigma }{ \partial \tau} \right)_P = \left( \frac{ \partial U }{ \partial \tau} \right)_P + p \left( \frac{ \partial V}{ \partial \tau} \right)_p
+\end{equation}
+
+Suppose $\sigma = \sigma(\tau, V)$.  With $\tau d\sigma = dU + W = \tau d\sigma = dU + pdV$, 
+\[
+\begin{aligned}
+  & d\sigma = \frac{ \partial \sigma }{ \partial \tau } d\tau + \frac{ \partial \sigma }{ \partial V} dV = \frac{dU}{ \tau} + \frac{p}{\tau} dV \\ 
+  & d\sigma(\dot{\gamma}) = \left( \frac{ \partial \sigma}{ \partial \tau} \right)_V + 0 = \frac{1}{\tau} dU(\dot{\gamma}) = \frac{1}{\tau} \left( \frac{ \partial U}{ \partial \tau} \right)_V
+\end{aligned}
+\]
+Then it's clear that 
+\[
+\tau \left( \frac{ \partial \sigma }{ \partial \tau } \right)_V = \left( \frac{ \partial U}{ \partial \tau} \right)_V = C_V
+\]
+
+Now suppose $\sigma = \sigma(\tau, p)$.  
+
+Consider also the enthalpy,  $H = U + pV$, and so
+\[
+dH = dU + Vdp + pdV = \tau d\sigma + Vdp
+\]
+Now for $\sigma = \sigma(\tau,p)$,
+\[
+\begin{aligned}
+  & \sigma = \sigma(\tau,p) \\ 
+  & d\sigma = \frac{ \partial \sigma }{ \partial \tau} d\tau + \frac{ \partial \sigma }{ \partial p } dp = \frac{dH}{\tau} - \frac{V}{\tau} dp
+\end{aligned} \Longrightarrow d\sigma(\dot{\gamma}) = \left( \frac{ \partial \sigma }{ \partial \tau} \right)_p + 0 = \frac{1}{\tau} \left( \frac{ \partial H}{ \partial \tau} \right)_p - 0 
+\]
+
+So 
+\[
+C_p := \tau \left( \frac{ \partial \sigma }{ \partial \tau } \right)_p = \left( \frac{ \partial H}{ \partial \tau} \right)_p
+\]
+Now 
+\[
+\begin{gathered}
+  dH(\dot{\gamma}) = dU(\dot{\gamma}) + Vdp(\dot{\gamma} ) + pdV(\dot{\gamma}) = \left( \frac{ \partial U }{ \partial \tau} \right)_p + 0 + p \left( \frac{ \partial V}{ \partial \tau} \right)_p = \left( \frac{ \partial H }{ \partial \tau } \right)_p \text{ so } \\ 
+  C_p = \tau \left( \frac{ \partial \sigma }{ \partial \tau} \right)_p = \left( \frac{ \partial U}{ \partial \tau} \right)_p + p\left( \frac{ \partial V}{ \partial \tau} \right)_p 
+\end{gathered}
+\]
+
+Kittel and Kroemer (1980) \cite{CKittelHKroemer1980} argues that for ideal gas, 
+\[
+\left( \frac{ \partial U}{ \partial \tau} \right)_p = \left( \frac{ \partial U}{ \partial \tau} \right)_V
+\]
+since $U = U(\tau)$.  
+
+\subsection{Conditions for coexistence} Sec. 12.3 of Baierlein (1999) \cite{RBaierlein1999}.  
+
+Recall 
+\[
+G = F + pV = U + pV - \tau \sigma =G(\tau,p,N)
+\]
+
+Now 
+\[
+\begin{gathered}
+  G = G(\tau, p, N_{\text{vap}}, N_{\text{liq}} )
+\Longrightarrow dG = \frac{ \partial G}{ \partial N_{\text{vap}}} dN_{\text{vap}} + \frac{ \partial G}{ \partial N_{\text{liq}} } dN_{\text{liq}} = \mu_{\text{vap}} 1 + \mu_{\text{liq}} (-1) = 0  \\
+\Longrightarrow \mu_{\text{vap}}(\tau,p) = \mu_{\text{liq}}(\tau,p)
+\end{gathered}
+\]
+
+

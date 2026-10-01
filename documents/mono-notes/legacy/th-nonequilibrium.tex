@@ -1,0 +1,320 @@
+\noindent\textit{2015 manuscript.}
+
+\part{Nonequilibrium}
+
+\section{Irreversible processes: macroscopic theory}
+
+Chapter 6 of Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004}
+
+\subsection{Flux, affinities, transport coefficients}
+
+Section 6.1 of Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004}. 
+
+Assume system composed of homogeneous cells, small on macroscopic scale, but large on microscopic, labelled $(a,b,\dots )$.  \\
+Assume cells weakly interacting, so each cell independently attains local equilibrium with microscopic relaxation time $\tau_{\text{micro}}$ \\
+Assume $\tau_{\text{micro}} \ll \tau_{\text{macro}}$ where \\
+\phantom{Assume } $\tau_{\text{macro}}$ macroscopic relaxation time, for global equilibrium 
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Affinities and transport coefficients}
+
+Suppose neighboring cells $a,b$ have different intensive variables $\gamma_i$, an exchange of $A_i$ will take place between them.
+
+
+
+
+
+
+
+
+Recall, from the Gibbs-Duhem relation, \ref{Eq:Gibbs-Duhem},
+\[
+N d\mu + \sigma d\tau -Vdp = 0 
+\]
+For the $d\tau =0$ isothermal case, define
+\begin{equation}
+n := \frac{N}{V} \equiv \text{ particle density }
+\end{equation}
+Then 
+\begin{equation}
+\begin{gathered}
+  dp = n d\mu \\ 
+  \Longrightarrow \boxed{ \left( \frac{ \partial p }{ \partial \mu } \right)_{\tau} = n }
+\end{gathered}
+\end{equation}
+
+
+Recall
+
+
+
+\subsubsection{Dissipation and Entropy Production}
+
+cf. Subsection 6.1.5 of Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004}. 
+
+
+
+
+
+\begin{equation}
+  \frac{dS(a)}{dt} + \sum_{b\neq a} \Phi_S(a\to b) = \frac{1}{2} \sum_{i,b\neq a} \Gamma_i(a,b) \Phi_i(a\to b)
+\end{equation}
+since 
+\[
+\frac{dS(a)}{dt} = -\sum_{i,b\neq a} \frac{1}{2} ( \gamma_i(a) + \gamma_i(b)) \Phi_i(a\to b) + \frac{1}{2} \sum_{i,b\neq a} \Gamma_i(a,b) \Phi_i(a\to b)
+\]
+and since
+\begin{equation}
+\Phi_S(a\to b) = \frac{1}{2} \sum_i (\gamma_i(a) + \gamma_i(b))\Phi_i(a\to b) = -\Phi_S(b\to a)
+\end{equation}
+
+Calculate $\frac{dS_{\text{tot}}}{dt}$, evolution of total entropy.  
+\[
+\frac{dS_{\text{tot}}}{dt} = \frac{d}{dt} \sum_a S(a) = \sum_a \frac{dS(a)}{dt}
+\]
+Note that 
+\[
+\Phi_S(b\to a) + \Phi_S(a\to b) = 0 
+\]
+by antisymmetry of $\Phi_S(a\to b)$. 
+
+The $\sum_a \sum_{b\neq a}$ is the summation of all the ways of making a size 2 ordered choice of 2 elements out of the possible cells $\lbrace a, b, \dots \rbrace$; if there are $n$ total cells, then there are $n(n-1)$ ways of picking out 2, \emph{in order}.  Note that $n(n-1)$ \emph{must} be even.  Then
+\[
+\sum_a \sum_{b\neq a} \Phi_S(a\to b) = \frac{1}{2} \sum_a \sum_{b\neq a} \Phi_S(a\to b) + \frac{1}{2} \sum_b \sum_{a\neq b} \Phi_S(b\to a) = \frac{1}{2} \sum_a \sum_{b\neq a} \Phi_S(a\to b) + \frac{1}{2} \sum_b \sum_{a\neq b} - \Phi_S(a\to b) = 0 
+\]
+So $\Phi_S$ doesn't contribute to $\frac{d S_{\text{tot}}}{dt}$: $\Longrightarrow $ \emph{reversible exchange}
+
+\[
+\frac{dS_{\text{tot}}}{dt} = \frac{1}{2} \sum_a \sum_{i,b\neq a} \Gamma_i(a,b) \Phi_i(a\to b)
+\]
+entropy production, called \emph{dissipation}; all physical phenomena accompanied by entropy production called \emph{dissipative}.  
+
+
+
+
+
+\subsubsection{Particle Diffusion}
+
+cf. pp. 399 of Kittel and Kroemer \cite{CKittelHKroemer1980}
+
+Consider a system.  \\
+One end in diffusive contact with reservoir at chemical potential $\mu_1$ \\
+Other end in diffusive contact with reservoir at chemical potential $\mu_2$ \\
+Constant temperature $\tau$.  \\
+If $\mu_1 > \mu_2$, particle flow through system from reservoir 1 to reservoir 2; $1\to 2$.   \\
+$n_i \equiv $ particle concentration in $i$ 
+
+Take
+\begin{equation}
+\mathbf{j}_n = -D \text{grad}n
+\end{equation}
+which is \textbf{Fick's law}, and where $D \equiv$ particle diffusion constant or \textbf{diffusivity}.  
+
+Mean free path $l$.  Particles freely travel over $l$.  
+
+Assume in a collision at $z$, particles come into local equilibrium at local chemical potential $\mu(z)$, local concentration $n(z)$.  
+
+At $z$, particle flux density in positive $z$ direction \qquad $\frac{1}{2} n(z-l_z) \overline{c}_z$ \\
+\phantom{At $z$, } particle flux density in negative $z$ direction \qquad $-\frac{1}{2} n(z+l_z) \overline{c}_z$
+
+Note $n(z-l_z)$ is particle concentration at $z-l_z$
+\[
+J_n^z = \frac{1}{2} \left[ n(z-l_z) - n(z+l_z) \right] \overline{c}_z = -\frac{dn}{dz} \overline{c}_z l_z
+\]
+where $\begin{aligned} & \quad \\
+  & \overline{c}_z = \overline{c} \cos{\theta}  \\
+  & \overline{l}_z = \overline{l} \cos{\theta}  
+\end{aligned}$
+
+\[
+\langle \overline{c}_z l_z \rangle = \overline{c} \overline{l} \frac{ \int_{\text{hemisphere} } \cos^2{\theta} dS }{ \int_{\text{hemisphere} } dS } = \overline{c}\overline{l} \frac{ \int_0^{\pi/2}d\theta \int_0^{2\pi } d\varphi \cos^2{\theta} \sin{\theta} d\theta }{ \int_0^{\pi/2} d\theta \sin{\theta} \int_0^{2\pi } d\varphi } = \overline{c} \overline{l} \frac{1}{3}
+\]
+Comparing with Fick's law, 
+\[
+J_n^z = \frac{-1}{3} \overline{c}\overline{l} \frac{dn}{dz} \text{ or } \mathbf{J}_N = -\frac{1}{3} \overline{c}\overline{l} \nabla n
+\]
+For diffusivity $D$ is then $D = \frac{1}{3} \overline{c}\overline{l}$.  
+
+Now recall that $\overline{l}$, the \emph{mean free path}, was derived from kinetic theory:
+\[
+l = \frac{1}{n\pi d^2}
+\]
+where $d$ is the diameter of the particle.  
+
+The mean thermal velocity was derived from the Maxwell distribution:
+\[
+\overline{c} = \left( \frac{ 8 \tau }{M \pi} \right)^{1/2}
+\]
+
+
+
+
+
+
+
+
+\subsubsection{Momentum conservation}
+
+Introduce \emph{stress tensor} $\mathcal{P}_{\alpha \beta}$, $-\mathcal{P}_{\alpha \beta}$ is $\alpha$ component of force per unit area applied by fluid outside parallelopiped on surface $\mathcal{S}_{\beta}$.  
+
+
+
+
+
+
+
+
+
+\subsubsection{Hydrodynamics of the perfect fluid}
+
+cf. Subsection 6.5.2 Hydrodynamics of the perfect fluid, of Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004}.  
+
+Consider a fluid where the only internal force is pressure.  Assume there's no thermal conduction.  In such a fluid, dissipation is absent.  The fluid is a so-called ``perfect fluid.''  Then right hand side for these transport equations (Eq. (6.87), (6.88) of Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004} is $0$:
+\[
+\begin{aligned}
+  \mathbf{j}_E' & = L_{EE} \mathbf{\nabla} \frac{1}{T} \\  
+\mathcal{P}_{\alpha \beta} - \delta_{\alpha \beta} \mathcal{P}  & = -\xi \delta_{\alpha \beta} (\partial_{\gamma} u_{\gamma} ) - 2 \eta \Delta_{\alpha \beta}
+\end{aligned}
+\]
+
+\begin{enumerate}
+  \item Consider the force acting on a fluid volume element $\text{vol}^n \in \Omega^n(N)$, where spatial manifold has dimension $n$, i.e. $\text{dim}N =n$.  
+
+The \textbf{total force} applied by rest of fluid in fluid enclosed in parallelpipe (generalized to $V$), integrate over $\partial V$ (all forces)
+\[
+\begin{gathered}
+  -\int_{\partial V} \mathcal{P}_{\alpha \beta} dx^{\alpha} \otimes dS^{\beta} = -\int_{ \partial V} \mathcal{P}_{\alpha \beta} dS^{\beta} \otimes dx^{\alpha} = -\int_V d(\mathcal{P}_{\alpha beta} dS^{\beta}) \otimes dx^{\alpha} = -\int_V \frac{ \partial (\mathcal{P}_{\alpha \beta}\sqrt{g})}{ \partial x^{\beta} } \frac{1}{\sqrt{g}} \text{vol}^n \otimes dx^{\alpha}
+\end{gathered}
+\]
+Now consider the ``left-hand side'' which describes the dynamics (or kinematics?).  For \emph{total} momentum $\Pi$
+\[
+\begin{gathered}
+  \Pi = \int_V \rho u_i dx^i \otimes \text{vol}^n \\ 
+  \frac{d\Pi}{dt} = \dot{\Pi} = \frac{d}{dt} \int_V \rho u_i \text{vol}^n \otimes dx^i =\int_V \frac{ \partial (\rho u_i )}{ \partial t} \text{vol}^n \otimes dx^i + \int_V \mathcal{L}_{\mathbf{u}} \rho u_i \text{vol}^n \otimes dx^i = \int_V \frac{ \partial ( \rho u_i ) }{ \partial t} \text{vol}^n \otimes dx^i + \int_V \mathbf{d}(\rho u_i u^j dS_j )
+\end{gathered}
+\]
+Now
+\[
+\mathbf{d}(\rho u_i u^j dS_j) = \frac{ \partial \rho }{ \partial x^j} u^j u_i \text{vol}^n + \rho \left[ \frac{ \partial u_i}{ \partial x^j} u^j \text{vol}^n + u_i \frac{ \partial u^j}{ \partial x^j} \text{vol}^n \right]
+\]
+where, recalling
+\[
+dS_j = \frac{\sqrt{g}}{ (n-1)!} \epsilon_{ji_2 \dots i_n} dx^{i_2} \wedge \dots \wedge dx^{i_n}
+\]
+then
+\[
+dx^k \wedge dS_j = \frac{\sqrt{g}}{ (n-1)!} \epsilon_{ji_2 \dots i_n} dx^k \wedge dx^{i_2} \wedge \dots \wedge dx^{i_n} = \frac{ \sqrt{g}}{ (n-1)!} \epsilon_{ji_2 \dots i_n} \epsilon^{ki_2 \dots i_n}_{12\dots n} \frac{dx^1 \wedge \dots \wedge dx^n}{n} = \delta_j^k \text{vol}^n
+\]
+  \item Consider the \emph{lab frame} (with unprimed notation).  \\
+Consider the frame \emph{at rest in the fluid's frame} (with primed notation).  
+
+Note that 
+\[
+\frac{d}{dt} \int_V \text{vol}^n = \int_V \mathcal{L}_{\frac{\partial}{\partial t} + \mathbf{u}} \text{vol}^n = \int_V 0 + \mathbf{d}i_{\mathbf{u}} \text{vol}^n + 0 = \int_{\partial V} i_{\mathbf{u}} \text{vol}^n = \int_{\partial V} u^i dS_i
+\]
+Let $s\equiv S/V \equiv \overline{\sigma} \equiv \frac{\sigma}{V}$ entropy per unit volume in fluid's frame \\
+\phantom{Let } $h' \equiv H/V$ enthalpy per unit volume in \emph{fluid's frame}.  
+
+Note that $s=s'$ since entropy is Galilean invariant.  
+
+Now
+\[
+\begin{aligned}
+  & \check{s} \equiv S/N \equiv \check{\sigma} \equiv \sigma /N \\ 
+  &  \check{h}' \equiv H/N
+\end{aligned}
+\]
+
+
+
+
+Let's review Subsubsection \ref{SubsubSec:ConductionConvection}, which is on pp.137 at the end of Section 3.5.1. Basic formulae of Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004}.  
+
+\subsubsection{Conduction and Convection}
+
+Consider system at equilibrium, with thermostate at temperature $T$, kept at pressure $p$, able to exchange particles, with reservoir at chemical potential $\mu$.  
+
+For 1 kind of particle, let 
+\[
+\begin{aligned}
+  & \check{s} \equiv S/N \text{ entropy per particle } \\ 
+  & \check{\epsilon} \equiv E/N \text{ energy per particle }
+\end{aligned}
+\]
+Thus
+\[
+\tau d\sigma = \tau d(N \check{\sigma}) = \tau N d\check{\sigma} + \tau \check{\sigma} dN
+\]
+where 
+\[
+\begin{aligned}
+  & \tau N d\check{\sigma} \text{ is entropy change due to change in entropy per particle, i.e. \textbf{ conduction term } } \\
+  & \tau \check{\sigma} dN \text{ is entropy change due to change in number of particles, i.e. \textbf{ convection term } }
+\end{aligned}
+\]
+For constant volume,
+\[
+dE = TN d\check{\sigma} + (T\check{\sigma} +\mu)dN = TN d\check{\sigma} + \check{h} dN
+\]
+where $\check{h} = \overline{H}/N = \check{\epsilon} + Pv$ is enthalpy per particle, since, recall,
+\[
+\begin{gathered}
+  \overline{H}(S,P) = E+ PV \\ 
+  \mu N = E-TS + PV =G
+\end{gathered}
+\]
+\emph{physical interpretation} of $\check{h}dN$: if $dN$ particles transported into a given volume by convection, 
+energy increases by $\check{\epsilon}dN$.  \\
+\phantom{\emph{physical interpretation} of $\check{h}dN$: } But to return to initial volume, it's necessary to compress by $vdN$ and so add energy to do work $PvdN$ by pressure.
+
+Example: hydrodynamics, where 1 uses Eulerian description in fixed volume. 
+
+Define energy density $\epsilon = \frac{E}{V} = \check{\epsilon}n$. 
+\[
+d\epsilon = Tn d\check{s} + \check{h} dn
+\]
+separates conduction and convection terms.  
+
+To reiterate, in my notation,
+\[
+\begin{gathered}
+  H = E + pV \xrightarrow{ 1/N} \check{h} = \check{\epsilon} + pV \\ 
+  G = F+ pV = E-\tau \sigma + pV = \mu N = H-\tau \sigma \Longrightarrow \mu = \check{h} - \tau \check{\sigma}\\
+  dE = Q + W + \mu dN \Longrightarrow dE = \tau d\sigma - pdV + \mu dN \\
+  = \tau N d\check{\sigma} + \tau \check{\sigma}dN - pdV + \mu dN = \tau N d\check{\sigma} + (\tau \check{\sigma} + \mu ) dN = \tau N d\check{\sigma} + \check{h} dN
+\end{gathered}
+\]
+where the process considered was for constant volume, and so $dV=0$, and one must keep in mind that the general form of the (internal) energy is as a function of $\sigma, V, \lbrace N_i \rbrace$, so that
+\begin{correction}{enthalpy per particle, again}
+The same per-particle enthalpy is $\check\epsilon + pv$, with $v = V/N$.
+\end{correction} 
+\[
+dE = \tau d\sigma - pdV + \sum_i \mu_i dN_i
+\]
+
+\end{enumerate}
+
+
+
+
+%\begin{figure}[b]
+%  \centering
+%  \includegraphics[width=\columnwidth]{../eps/Nielsen2011RBB_qualitative_report_topicsentiment}
+%  \caption{Web service screenshot with text from Wikipedia
+%    article ``Lundbeck''.}
+%  \label{fig:topicsentiment}
+%\end{figure}
+
+
+
+
+
+

@@ -1,0 +1,104 @@
+\noindent\textit{2015 manuscript.}
+
+\section{Pressure} 
+
+cf. pp. 64 of Ch. 3 "Boltzmann Distribution and Helmholtz Free Energy", Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}.
+
+\quad \\ 
+Consider a system of quantum states of energy $\epsilon_s$. \\
+Assume $\epsilon_s$ is a function of volume of the system. \\
+Volume is decreased slowly from $V$ to $V-\Delta V$ by an applied external force. \\
+Let volume change take place sufficiently slowly so that system remains in the same quantum state $s$ throughout compression.
+\[
+\epsilon_s(V-\Delta V) = \epsilon_s(V) - \frac{d\epsilon_s}{ dV} \Delta V + \dots \equiv  \text{energy of states after reversible volume change }
+\]
+cf. Eq. (21) of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, pp. 64, Ch. 3. 
+
+Now
+\[
+U(V- \Delta V) - U(V) = \Delta U = -\left( \frac{d\epsilon_s}{ dV} \right)\Delta V
+\]
+cf. Eq. (22) of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, pp. 64, Ch. 3. 
+
+Let $A = $ area of 1 face of a cube.
+
+Then 
+\[
+\Delta V = A(\Delta x + \Delta y + \Delta z) = A\Delta x + A\Delta y + A\Delta z
+\]
+cf. Eq. (23) of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, pp. 66, Ch. 3. 
+
+(Total) work done in compression is 
+\[
+\Delta U = p_s A(\Delta x + \Delta y + \Delta z) = p_s \Delta V
+\]
+cf. Eq. (24) of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, pp. 66, Ch. 3. 
+
+Then 
+\[
+p_s = - \left( \frac{ \partial \epsilon_s }{ \partial V} \right) 
+\]
+cf. Eq. (25) of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, pp. 66, Ch. 3. 
+
+Take the average of $p_s = -\left( \frac{\partial \epsilon_s }{ \partial V} \right)$ over all states of the ensemble to obtain the average pressure $p$:
+
+\begin{equation}
+\boxed{ p = - \left( \frac{ \partial U}{ \partial V} \right)_{\sigma} }
+\end{equation}
+cf. Eq. (26) of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, pp. 66, Ch. 3. 
+
+Entropy is held constant because the number of states in ensemble is unchanged in reversible compression.
+
+Alternatively, consider that 
+\[
+dU = Q - pdV
+\]
+Let $c= c(t) = (U,V) = (U(t), V(t))$ s.t. $\sigma$ const. $\dot{c} = \dot{U} \frac{ \partial }{\partial U} + \dot{V} \frac{ \partial }{ \partial V}$.
+
+\quad \\ 
+Let $t=V$. Then $\dot{c} = \left(\frac{\partial U}{\partial V} \right)_{\sigma} + \frac{\partial}{\partial V}$, 
+\begin{equation}
+\Longrightarrow dU(\dot{c}) = \left( \frac{ \partial U}{ \partial V} \right)_{\sigma} = -pdV (\dot{c}) = -p \Longrightarrow \boxed{ p = - \left( \frac{ \partial U}{ \partial V} \right)_{\sigma} }
+\end{equation} 
+
+We can also derive the following thermodynamic identity: for $U- U(\sigma, V)$, $dU = \tau d\sigma - pdV$, then for
+\[
+\begin{gathered}
+\begin{aligned}
+& \left( \frac{ \partial U}{ \partial \sigma} \right)_V = \tau \\
+& \left( \frac{ \partial U}{ \partial V} \right)_{\sigma}  = -p 
+\end{aligned}
+\end{gathered}
+\]
+\begin{equation}
+\Longrightarrow \boxed{ - \left( \frac{ \partial p }{ \partial \sigma} \right)_V =  \left( \frac{ \partial \tau}{ \partial V} \right)_{\sigma} } 
+\end{equation}
+
+For \emph{another expression} for pressure $p$, consider that entropy $\sigma$ is a function of internal energy $U$ and volume $V$:
+\[
+\begin{gathered}
+	\sigma = \sigma(U,V) \\ 
+	d\sigma = \left(\frac{ \partial \sigma }{\partial U } \right)_V dU + \left(\frac{ \partial \sigma }{\partial V } \right)_U dV 
+\end{gathered}
+\]
+
+Let $c=(U,V)$ s.t. $\sigma$ const., then 
+\[
+\begin{gathered}
+d\sigma(\cdot{c}) = 0 = \left( \frac{ \partial \sigma}{ \partial U} \right)_V \dot{U} + \dot{V} \left( \frac{\partial \sigma}{\partial V} \right)_U
+\end{gathered}
+\]
+Now
+\[
+\frac{1}{\tau} := \left( \frac{ \partial \sigma}{ \partial U} \right)_V
+\]
+
+Let $c=c(t) = (U(t), V(t))$ and $t=V$
+\[
+\begin{gathered} 
+\frac{1}{\tau} \left( \frac{ \partial U}{ \partial V} \right)_{\sigma} + \left( \frac{ \partial \sigma }{ \partial V} \right)_U = \frac{-p}{\tau} + \left(\frac{ \partial \sigma}{\partial V} \right)_U = 0 \\
+p = \tau \left( \frac{\partial \sigma}{ \partial V} \right)_U
+\end{gathered}
+\]
+
+

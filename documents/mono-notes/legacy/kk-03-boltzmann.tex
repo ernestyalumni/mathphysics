@@ -1,0 +1,469 @@
+\noindent\textit{2008 manuscript.}
+
+\section{Boltzmann Distribution and Helmholtz Free Energy}
+
+cf. \textbf{Example: Energy and heat capacity of a two state system}, pp. 62 of Kittel and Kroemer \cite{CKittelHKroemer1980}.  Kittel and Kroemer introduces the heat capacity very early, specific to this example.  
+
+\begin{definition}
+\textbf{heat capacity} $C_V$ at constant volume is defined as 
+\begin{equation}
+  C_V := \tau \left( \frac{ \partial \sigma }{ \partial \tau} \right)_V
+\end{equation}
+\end{definition}
+
+Recall the thermodynamic identity (which is introduced many equations later): 
+\[
+dU = \tau d\sigma - pdV \in \Omega^1(\Sigma)
+\]
+where $\Sigma$ is a manifold of states of all systems.
+
+Consider local coordinates of $\Sigma$, $(\sigma,V)$.  Consider curve $\begin{aligned} & \quad \\ 
+  & c : \mathbb{R} \to \Sigma \\
+  & c(\tau) \in \Sigma \end{aligned}$ s.t. $c$ generates a vector field $\dot{c} = \dot{\sigma} \frac{ \partial }{ \partial \sigma}$ i.e. no component in the $V$ direction.  Notice the prescient choice of parameter $\tau$.  
+
+Now for internal energy $U \in C^{\infty}(\Sigma)$, taking the exterior derivative $d$ results in 
+\[
+dU = \frac{ \partial U}{ \partial \sigma} d\sigma + \frac{ \partial U}{ \partial V} dV
+\]
+Then applying $dU$ onto vector field $\dot{\sigma}\frac{\partial}{\partial \sigma}$,
+\[
+dU\left(\dot{\sigma} \frac{\partial }{ \partial \sigma} \right) = \frac{ \partial U}{ \partial \sigma} \dot{\sigma} = \dot{\sigma} \tau + 0 
+\]
+Now,
+\[
+\left( \frac{ \partial U}{ \partial \sigma} \right)_V \left( \frac{ \partial \sigma }{ \partial \tau} \right)_V = \left( \frac{ \partial U}{ \partial \tau} \right)_V = \left( \frac{ \partial \sigma }{ \partial \tau} \right)_V \tau
+\]
+Hence, 
+\begin{equation}
+C_V := \tau \left( \frac{ \partial \sigma }{ \partial \tau } \right)_V = \left( \frac{ \partial U}{ \partial \tau} \right)_V
+\end{equation}
+
+EY: 20150825 Why do we need differential geometry? It's because I always wondered why you could do this:
+\[
+C_V := \tau \left( \frac{ \partial \sigma }{ \partial \tau} \right)_V \overset{?}{=} \left( \frac{ \partial U}{ \partial \tau} \right)_V \text{ with } \tau d\sigma = dU \Longrightarrow \tau \partial \sigma \overset{?}{=} \partial U
+\]
+and talk of ``differentials.''  
+
+\textbf{Definition: Reversible process}.  EY : 20150824 Mathematically, 1-forms are exact.
+
+\subsection*{Pressure}
+
+Consider coordinates $(\sigma,V)\in \Sigma$ of manifold of thermodynamic states $\Sigma$.  \\
+Imagine a reversible compression of a cube system (so imagine $dV<0$; cube's volume get smaller).  \\
+$\sigma$ constant, i.e. $d\sigma =0$ (on this curve in $\Sigma$) because as particles in cube gets squeezed, less positions particles could sit in, but they get more kinetic energy, more energetic (more momentum squared).  
+
+Now $U= U(\sigma,V) \in C^{\infty}(\Sigma)$.  \\
+$\Longrightarrow dU = \left( \frac{\partial U}{ \partial \sigma} \right)_V d\sigma + \left( \frac{ \partial U}{ \partial V} \right)_{\sigma} dV$  \\
+Again, imagine a curve $c: \mathbb{R}\to \Sigma$, connecting 1 state $(\sigma,V) \in \Sigma$ to another state $(\sigma, V+dV) \in \Sigma$ s.t. $\dot{c} = \dot{V} \frac{ \partial }{ \partial V}$.  
+\[
+\Longrightarrow dU(\dot{c}) = \left( \frac{ \partial U}{ \partial V} \right)_{\sigma}\dot{V}
+\]
+Introduce 1-form $W \in \Omega^1(\Sigma)$ of work done on the cube system from some external agent
+\[
+W = -pdV
+\]
+so $W >0$ when $dV <0$.  
+
+Then
+\[
+\begin{gathered}
+W(\dot{c}) = -p \dot{V} = dU(\dot{c}) = \left( \frac{ \partial U}{ \partial V} \right)_{\sigma} \dot{V} \\
+\end{gathered}
+\]
+\begin{equation}
+\Longrightarrow \boxed{ p = - \left( \frac{ \partial U}{ \partial V} \right)_{\sigma} }
+\end{equation}
+
+Consider another set of coordinates $(U,V) \in \Sigma$ for manifold $\Sigma$.  Now entropy $\sigma$ is a function of $U,V$, as $\sigma = \sigma(U,V) \in C^{\infty}(M)$, so that \\
+$d\sigma = \left( \frac{ \partial \sigma}{ \partial U} \right)_V dU + \left( \frac{ \partial \sigma}{ \partial V} \right)_U dV$
+
+Consider curve $c = (U,V) \in \Sigma$.  Then $\dot{c} = \dot{U} \frac{ \partial }{ \partial U} + \dot{V}\frac{ \partial }{ \partial V}$.  For this curve $c$, $\sigma$ is constant, meaning $d\sigma(\dot{c}) =0$ (it's a ``null curve'' of $d\sigma$
+\[
+\begin{gathered}
+  d\sigma(\dot{c})=0 = \left( \frac{ \partial \sigma}{ \partial U} \right)_V \dot{U} + \left( \frac{ \partial \sigma}{ \partial V} \right)_U \dot{V} 
+\end{gathered}
+\]
+Now define
+\begin{definition}
+\begin{equation}
+  \frac{1}{\tau} := \left( \frac{ \partial \sigma }{ \partial U} \right)_V
+\end{equation}
+\end{definition}
+So then we have $\frac{1}{\tau} \dot{U} + \left( \frac{ \partial \sigma}{ \partial V} \right)_U \dot{V} =0$.  For the parameter of curve $c$, choose the parameter to be $V$, knowing that $\sigma$ is constant on this curve, or thermodynamic process.  Thus
+\[
+\frac{1}{\tau} \left( \frac{ \partial U}{ \partial V} \right)_{\sigma} = -\left( \frac{ \partial \sigma}{ \partial V} \right)_U \Longrightarrow \frac{-p}{\tau} = - \left( \frac{ \partial \sigma}{ \partial V} \right)_{U} \text{ or }
+\]
+\begin{equation}
+\boxed{ p = \tau \left( \frac{ \partial \sigma}{ \partial V} \right)_U }
+\end{equation}
+
+\subsubsection*{Thermodynamic Identity}
+
+Let $\sigma = \sigma(U,V) \in C^{\infty}(\Sigma)$.  Then \\
+\phantom{Let} $d\sigma = \left( \frac{ \partial \sigma}{ \partial U} \right)_V dU + \left( \frac{ \partial \sigma}{ \partial V} \right)_U dV \in \Omega^1(\Sigma)$.  
+
+Now recall the quantities we've recently used: $\frac{1}{\tau} := \left( \frac{ \partial \sigma }{ \partial U} \right)_V$ (this is a definition) and $\frac{p}{\tau} = \left( \frac{ \partial \sigma}{ \partial V} \right)_U$ (it comes from the physics, of doing work on the system, by some external agent).  Then the \textbf{thermodynamic identity} is obtained:
+
+\begin{theorem}\label{Thm:thermodynamicidentity}
+\begin{equation}
+\boxed{ \tau d\sigma = dU + p dV }
+\end{equation}
+\end{theorem}
+
+
+\subsection*{Ideal Gas: A First Look}
+
+\subsubsection*{One atom in a box}
+
+one atom of mass $M$ in cubical box of volume $V = L^3$
+
+$ \frac{-\hbar^2}{2M} \nabla^2 \psi = \epsilon \psi $ \quad \, $ p = \frac{\hbar}{i} \nabla $ \quad \, $p^2 \psi = \epsilon \psi$ \\
+$\Longrightarrow \psi(x) = A\sin{ \left( \frac{n_x \pi x}{ L} \right)} \sin{ \left( \frac{n_y \pi y}{ L} \right)} \sin{ \left( \frac{n_z \pi z}{L} \right)}$
+
+$\epsilon_n = \frac{\hbar^2}{ 2M} \left( \frac{ \pi}{L} \right)^2 (n_x^2 + n_y^2 + n_z^2)$
+
+Then the partition function $Z_1$ is 
+\[
+Z_1  = \sum_n \exp{ \left( \frac{-\epsilon_n}{ \tau} \right) } = \sum_{ (n_x,n_y,n_z)} \exp{ \left( \frac{-\hbar^2}{ 2M \tau} \left( \frac{\pi}{L} \right)^2 (n_x^2 + n_y^2 + n_z^2) \right) }
+\]
+Let 
+\[
+\alpha^2  =\frac{\hbar^2 \pi^2}{ 2M L^2 \tau} \text{ or } \alpha = \frac{\hbar \pi }{ (2M\tau)^{1/2} V^{2/d} }
+\]
+Then 
+\[
+Z_1 = \int_0^{\infty} dn_x \int_0^{\infty} dn_y \int_0^{\infty}dn_z \exp{ [-\alpha^2(n_x^2 + n_y^2+n_z^2)] } = \left( \int_0^{\infty} dn_x \exp{ (-\alpha^2 n_x^2 ) } \right)^3 = \left( \frac{1}{\alpha} \right)^3 \left( \frac{\pi^{1/2} }{ 2} \right)^3 = \left( \frac{\pi^{1/2} }{ 2\alpha } \right)^3
+\]
+In general, $Z_1 = \left( \frac{\pi^{1/2}}{ 2\alpha} \right)^d$
+
+Now 
+\[
+Z_1 = \left( \frac{ \pi^{1/2} V^{1/d} }{ 2 \frac{ \hbar \pi }{ (2M \tau)^{1/2} } } \right)^d = \frac{V}{ \left( \frac{2 \hbar \pi }{ M \tau } \right)^{d/2} } = n_Q V = \frac{n_Q}{n}
+\]
+in terms of concentration $n=1/V$.  
+
+$n_Q := \left( \frac{M\tau}{ 2\pi \hbar^2} \right)^{d/2}$ is the \textbf{quantum concentration}.  ``\emph{It is the concentration associated with one atom in a cube of side equal to the thermal average de Broglie wavelength}.'' (pp. 73, Ch. 3: Boltzmann Distribution and Helmholtz Free Energy, Section ``Ideal Gas: A First Look'' of Kittel and Kroemer \cite{CKittelHKroemer1980})
+
+
+
+From Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, Example : $N$ atoms in a box, Chapter 3: ``Boltzmann Distribution and Helmholtz Free Energy'', 
+
+state of energy $\epsilon_{\alpha}(1) + \epsilon_{\beta}(2) + \dots + \epsilon_{\xi}(N)$, $\alpha, \beta, \dots \xi$ denote orbital indces of atoms in successive boxes.  \\
+each entry occurs $N!$ times in $Z_1^N$ (EY: 20151022) $N!$ ways to fill $\alpha, \beta \dots \xi$ orbitals with $N$ distinguishable particles.  Thus,
+\[
+Z_N = \frac{1}{N!} Z_1^N = \frac{1}{N!} (n_Q V)^N
+\]
+
+
+\subsection*{Problems}
+
+\solutionhead{1} \textbf{Free energy of a two state system}.  \begin{itemize}
+\item[(a)] 
+\[
+\begin{gathered}
+  Z = 1 + e^{-\epsilon/\tau} \\
+  F = -\tau \ln{Z} = -\tau \ln{ ( 1 + e^{-\epsilon/\tau} ) }
+\end{gathered}
+\]
+\item[(b)] 
+\[
+\begin{gathered}
+  U = - \tau^2 \frac{ \partial (F/\tau )}{ \partial \tau} = \frac{ \epsilon e^{-\epsilon/\tau } }{ 1 + e^{-\epsilon/\tau} } \\
+  \sigma = - \frac{ \partial F}{\partial \tau} = \ln{ ( 1 + e^{-\epsilon/\tau} ) } + \frac{ \frac{ \epsilon }{\tau} e^{-\epsilon/\tau } }{ ( 1 + e^{-\epsilon/\tau } ) }
+\end{gathered}
+\]
+\end{itemize}
+
+
+
+
+
+\solutionhead{2} \textbf{Magnetic susceptibility} 
+\begin{itemize}
+\item[(a)] Remember to calculate the \textbf{multiplicity} in the $N$-spin system (it's not enough to sum up $\exp{(-\epsilon_s /\tau) }$ factors).  
+\[
+\begin{gathered}
+  M = 2sm \quad \quad \, U_s = - MB = -2sm B \quad \quad \, N = N_+ + N_- \quad \, \\ 
+  2s = N_+ - N_- = N_+ - (N - N_+ ) = 2N_+ - N
+\end{gathered}
+\] 
+\[
+\begin{aligned}
+  Z & = \sum_{s=-N/2}^{N/2} \binom{N}{N_+} \exp{ \left( \frac{ 2 s m B}{\tau} \right) } = \sum_{ s = -N/2}^{N/2} \frac{ N!}{ \left( \frac{N}{2} + s \right)! \left( \frac{N}{2} -s \right)! } \exp{ \left( \frac{2 m B s}{\tau} \right) } = \sum_{s=0}^N \frac{N! }{ s! (N-s)! } \exp{ \left( \frac{2mB}{\tau} \left( s - \frac{N}{2} \right) \right) } = \\
+  & = e^{-\frac{NmB}{\tau} } (1 + e^{\frac{2mB}{\tau}} )^N = 2^N \cosh^N{\left( \frac{mB}{\tau} \right) }
+\end{aligned}
+\]
+where it was \textbf{crucial} to use $(1+ x)^N = \sum_{j=1}^N \binom{N}{j} x^j$.  Note, in changing the sum index, since $N$ is large, we can neglect dropping the $s=0$ term.
+\begin{correction}{binomial index}
+The binomial theorem starts at $j=0$: $(1+x)^N = \sum_{j=0}^{N} \binom{N}{j} x^j$.
+The $j=0$ term is $1$, and the closed form on the previous line includes it.
+\end{correction}  
+\[
+\begin{gathered}
+  \partial_{\tau} Z = 2^N (N) (\cosh^{N-1}{\left( \frac{mB}{\tau} \right) } ) \sinh{ \left( \frac{mB}{\tau} \right) } \left( \frac{-m}{\tau^2 }\right)  \\
+  M  = -\tau^2 \frac{\partial }{\partial \tau} \ln{Z} = N m \tanh{ \left( \frac{mB}{\tau } \right) } \\ 
+\chi = \frac{\partial M}{\partial B} = \frac{Nm^2}{\tau} sech^2{\left( \frac{mB}{\tau} \right) }
+\end{gathered}
+\]
+\item[(b)]
+\[
+F = -\tau \ln{Z} = -\tau \ln{ \left( (2\cosh{ \left( \frac{mB}{\tau} \right) } )^N \right)} = -N\tau \ln{ (2 \cosh{ \left( \frac{mB}{\tau} \right) } )}
+\]
+For $x \equiv \frac{ M}{ nm } = \tanh{ \left( \frac{mB}{\tau} \right) }$.  Now $1 - \tanh^2{y} = sech^2{y}$.  $F = - N \tau \ln{ \left( \frac{2}{ \sqrt{ 1 - x^2 } } \right) } = \frac{- N\tau}{2} \ln{ \left( \frac{4}{1 - x^2} \right) }$.  
+\item[(c)] For $\frac{mB}{\tau} \ll 1$, $\cosh^2{\left( \frac{mB}{\tau} \right)} \to 1$.  $\boxed{ \chi = \frac{m^2 N}{\tau} }$
+\end{itemize}
+
+
+
+
+
+
+\solutionhead{3} \textbf{Free energy of a harmonic oscillator}  
+\begin{itemize}
+\item[(a)]
+\[
+\begin{gathered}
+  Z = \sum_{s=0}^{\infty} \exp{ \left( \frac{-s \hbar \omega_0 }{\tau} \right) } = \frac{1}{ 1 - e^{-\hbar \omega_0 /\tau } } = (1 - e^{-\hbar \omega_0 /\tau} )^{-1} \\ 
+  F = - \tau \ln{Z} = \tau \ln{ ( 1 - e^{-\hbar \omega_0 /\tau } ) } \simeq \tau \ln{ \left( \frac{\hbar \omega_0}{\tau } \right) } \text{ for } 1 \gg \frac{\hbar \omega_0}{\tau }
+\end{gathered}
+\]
+\item[(b)] 
+\[
+\sigma = -\frac{\partial F}{\partial \tau} =  - \lbrace \ln{(1-e^{-\hbar \omega_0/\tau } ) } + \frac{\tau}{ 1 - e^{-\hbar \omega_0/\tau } } ( -e^{-\hbar \omega_0/ \tau} ) \left( \frac{\hbar \omega_0 }{\tau} \right) \rbrace = \frac{-\hbar \omega_0/\tau}{ e^{\hbar \omega_0/\tau } - 1 }  - \ln{  ( 1 - e^{-\frac{\hbar \omega_0 }{\tau } } ) }
+\]
+\end{itemize}
+
+
+
+
+
+\solutionhead{4} \textbf{Energy fluctuations.}  
+\[
+\begin{aligned} \frac{1}{\tau} & = \beta \\ \frac{\partial}{\partial \tau } & = \frac{\partial \beta}{ \partial \tau} \frac{\partial }{ \partial \beta} = -\frac{1}{\tau^2} \frac{\partial }{ \partial \beta} \end{aligned} \quad \quad \, \begin{aligned} Z & = \sum_s e^{-\epsilon_s \beta} \\ \partial_{\beta} Z & = \sum_s -\epsilon e^{-\epsilon_s \beta } \\ \partial^2_{\beta} Z & = \sum_s \epsilon_s^2 e^{-\epsilon_s \beta} \end{aligned} \quad \quad \, U  = \frac{ \sum_s \epsilon_s e^{- \epsilon_s/\tau} }{Z } = -\partial_{\beta} \ln{Z} 
+\]
+\[
+\begin{gathered}
+  \frac{\partial U}{\partial \tau} = - \beta^2 \frac{\partial }{\partial \beta} U  = \beta^2 \left( \partial_{\beta} \left( \frac{ \partial_{\beta} Z }{ Z} \right) \right) = \beta^2 \left( \frac{ (\partial_{\beta}^2 Z )Z - (\partial_{ \beta} Z )^2 }{ Z^2} \right) = \beta^2 \left( \frac{ \partial_{\beta}^2 Z }{Z} - \left( \frac{ \partial_{\beta} Z}{Z} \right)^2 \right) = \\
+  \Longrightarrow \tau^2 \frac{ \partial U}{\partial \tau} = \langle \epsilon^2 \rangle - \langle \epsilon \rangle^2
+\end{gathered}
+\]
+
+
+
+
+
+
+
+
+\solutionhead{5} \textbf{Overhauser effect.}  System $\mathcal{S}$ in energy eigenstate $E_n = n\epsilon$.  \\
+$P(E) = (1) g_{\mathcal{R}}(E)$ \\
+Note $\Delta U_{\mathcal{R}} = (\alpha - 1 )\epsilon$.  \quad \, $\Delta U_{\mathcal{S}} = \epsilon$.  $\frac{dU_{\mathcal{S}} }{ d\epsilon } + \frac{dU_{\mathcal{R} }}{d\epsilon } =  1 + (\alpha -1) = \alpha = \frac{dU_{tot}}{d\epsilon }$ in a specific energy eigenstate; $g_{\mathcal{S} }(n\epsilon) = 1$  
+
+While $g_{\mathcal{R}}(U_{\mathcal{R}}) =$ multiplicity of reservoir $\mathcal{R}$ with $U_{\mathcal{R}}$ energy.  
+
+Now
+\[
+\frac{ \partial \sigma_{\mathcal{R}} }{ \partial E_s } = \frac{1}{\tau}
+\]
+and 
+\[
+g_{\mathcal{R} }(U_{\mathcal{R}}) = \exp{ ( \sigma_{\mathcal{R}}(U_{\mathcal{R}} ) )}
+\]
+If $\epsilon \frac{dU_{\mathcal{R}} }{ d\epsilon } = (\alpha - 1)\epsilon = \Delta U_{\mathcal{R}}$ small compared to $U_{\mathcal{R}}$.  
+
+\[
+\begin{aligned}
+  & U_{\mathcal{R}}( E_{\mathcal{S} } = (n+1)\epsilon ) = U_{\mathcal{R} }(n\epsilon ) + \frac{dU_{\mathcal{R}} }{ d\epsilon } \epsilon = U_{\mathcal{R}}(n\epsilon ) + (\alpha - 1)\epsilon  \\
+  & \sigma_{\mathcal{R}}(U_{\mathcal{R} }((n+1)\epsilon ) ) \simeq \sigma_{\mathcal{R} }(U_{\mathcal{R}}(n\epsilon )) + \frac{1}{\tau} (\alpha - 1) \epsilon 
+\end{aligned}
+\]
+\[
+\frac{ P(E_{\mathcal{S}} = (n+1)\epsilon ) }{ P(E_{\mathcal{S}} = n\epsilon ) } = \frac{ \exp{ ( \sigma_{\mathcal{R}}(U_{\mathcal{R}}(n\epsilon) ) + \frac{1}{\tau}(\alpha -1)\epsilon ) } }{ \exp{ (\sigma_{\mathcal{R}} (U_{\mathcal{R}}(n\epsilon) ) )} } = \boxed{ \exp{ \left( - \frac{\epsilon}{\tau} ( 1 - \alpha ) \right) } }
+\]
+
+
+
+
+
+
+
+\solutionhead{6} \textbf{Rotation of diatomic molecules.} 
+\begin{itemize}
+\item[(a)] $\epsilon(j) = j(j+1) \epsilon_0$.  $g(j) = 2j+1$  \\
+Remember that $Z$ is a sum over all states, not over all levels.  
+\[
+Z = \sum_{j=0}^{\infty} (2j+1) e^{-j(j+1) \epsilon_0 /\tau} = \sum_{j=0}^{\infty} \frac{d}{dj} (e^{- (j^2  + j) \epsilon_0/\tau } ) \left( \frac{-\tau}{\epsilon_0} \right) = \frac{-\tau}{\epsilon_0} \sum_{j=0}^{\infty} \frac{d}{dj}  \left( e^{-\epsilon_0/\tau} \right)^{j^2 + j} 
+\]
+\item[(b)] For $1 \gg \frac{\epsilon_0}{\tau}$
+\[
+Z_R(\tau)  =-\frac{\tau}{\epsilon_0} \int_0^{\infty} \frac{d}{dx}  \left( e^{-\epsilon_0/\tau} \right)^{x^2 +  x}  dx = -\frac{\tau}{\epsilon_0} \left( (e^{-\epsilon_0/\tau})^{x^2 + x} - (e^{-\epsilon_0/\tau} )^0 \right) = \frac{\tau}{\epsilon_0}
+\]
+\item[(c)] For $\frac{\tau}{\epsilon_0} \ll 1$
+\[
+Z_R(\tau) = 1 + 3 e^{-2\epsilon_0 /\tau}
+\]
+\item[(d)] 
+\[
+\begin{gathered}
+  U = \tau^2 \frac{\partial \ln{Z}}{ \partial \tau} \quad \quad \quad \text{ for } 1 \gg \frac{\epsilon_0 }{\tau} \quad \, U  =\tau^2  \partial_{\tau} \left( \ln{ \frac{\tau}{\epsilon_0} } \right) = \tau
+\end{gathered}
+\]
+\[
+\text{ for } \frac{\tau }{\epsilon_0 } \ll 1, \, U = \tau^2 \left( \frac{1}{ 1 + 3 e^{-2\epsilon_0/\tau}  } \right) (3e^{-2\epsilon_0/\tau }) \left( \frac{2\epsilon_0 }{\tau^2} \right) = \frac{ 6 \epsilon_0 e^{-2\epsilon_0/\tau} }{ 1 + 3 e^{-2\epsilon_0/\tau } }
+\]
+\[
+\boxed{ C_V = \left( \frac{ \partial U}{ \partial \tau} \right)_V = 1 \text{ when } 1 \gg \frac{\epsilon_0}{\tau} }
+\]
+\[
+C_V = 6 \epsilon_0 \left( \frac{ e^{-2\epsilon_0/\tau} \left( \frac{2\epsilon_0 }{\tau^2 }\right) (1 + 3 e^{-2\epsilon_0/\tau} ) - (3e^{-2\epsilon_0/ \tau} )\left( \frac{2\epsilon_0 }{\tau^2 } \right)e^{-2\epsilon_0/\tau} }{ (1 + 3e^{-2\epsilon_0/\tau} )^2 } \right) = 12 \epsilon_0^2 \frac{e^{-2\epsilon_0/\tau }}{\tau^2 }\left( \frac{1}{  ( 1 + 3 e^{-2\epsilon_0/\tau} )^2 } \right)
+\]
+For very small $\frac{\tau }{\epsilon_0} \ll 1$, $\boxed{ C_V \approx 12 \left( \frac{ e^{-2\epsilon_0 /\tau } }{ (\tau/\epsilon_0 )^2 } \right)}$  
+\item[(e)] See sketch.
+\end{itemize}
+
+
+
+
+
+
+\solutionhead{7} \textbf{Zipper problem.}  \begin{itemize}
+\item[(a)]$N$ links.  $\epsilon_s = 0$ closed, $\epsilon$ open.  
+\[
+Z = \sum_{s=0}^N \exp{ (-s\epsilon/\tau ) } = \frac{1 - e^{-(N+1)\epsilon/\tau} }{ 1 - e^{-\epsilon/\tau} }
+\]
+\item[(b)] $1 \gg \frac{\tau}{ \epsilon }$.  \\
+$Z = \sum_{s=0}^N \exp{ ( - s \epsilon B ) }$
+\[
+\begin{aligned}
+  \frac{-1}{\epsilon} \partial_{ \beta} \ln{Z} & = \frac{-1}{\epsilon} \frac{ \sum_{s=0}^N (-s\epsilon) e^{-s\epsilon \beta} }{Z} = \langle s \rangle = \\ 
+  & = \left( \frac{1 - e^{- \epsilon/\tau } }{ 1 - e^{ - (N+1)\epsilon/\tau} } \right) \left( \frac{  -e^{-(N+1)\epsilon/\tau } (-(N+1) \epsilon)(1 - e^{-\epsilon/\tau} ) - (-e^{-\epsilon/\tau} ) (- \epsilon )(1 - e^{-(N+1)/\epsilon/\tau } ) }{ (1 - e^{-\epsilon/\tau} )^2 } \right) = \\
+& = \frac{  \epsilon e^{-\epsilon/\tau} ( e^{-N\epsilon \beta} ( N+1) (1-e^{-\epsilon \beta} ) - (1 - e^{-(N+1)\epsilon/\tau} ) ) }{  ( 1 - e^{-(N+1) \epsilon/\tau } ) (1- e^{-\epsilon/\tau} ) } \simeq \frac{ \epsilon e^{-\epsilon/\tau} ( e^{-N\epsilon \beta} (N+1)(1 - e^{-\epsilon \beta }) - 1 ) }{ (1- e^{-\epsilon \beta} ) }
+\end{aligned}
+\]
+
+This still does not give the desired approximation.  Consider the following:
+\[
+\begin{aligned}
+  Z & = \frac{ 1 - e^{ - (N+1) \epsilon \beta } }{ 1 - e^{- \epsilon \beta} } = \frac{ e^{\epsilon \beta} - e^{-N \epsilon \beta} }{ e^{\epsilon \beta} - 1 } \\
+  \partial_{\beta} Z & = \frac{ \epsilon ( ( e^{\epsilon \beta} + N\beta e^{-N \epsilon \beta}  ) (e^{\epsilon \beta} - 1 ) - (e^{\epsilon \beta} )(e^{\epsilon \beta} - e^{- N \epsilon \beta} )  ) }{ (e^{\epsilon \beta} - 1 )^2 } = \frac{ \epsilon ( e^{\epsilon \beta} (e^{ \epsilon \beta} + N e^{- N\epsilon \beta} - e^{\epsilon \beta}  + e^{-N \epsilon \beta} ) - e^{ \epsilon \beta} - N e^{-N \epsilon \beta} ) }{ (e^{ \epsilon \beta} - 1 )^2 }
+\end{aligned}
+\]
+\[
+\begin{aligned}
+  \frac{ \partial_{\beta} Z}{Z} & = \frac{ \epsilon (e^{\epsilon \beta} ( N+1)e^{-N\epsilon \beta } - e^{\epsilon \beta} - N e^{-N \epsilon \beta} ) }{ (e^{\epsilon \beta} - 1 ) (e^{\epsilon \beta} - e^{-N\epsilon \beta} ) } \simeq \frac{ \epsilon (e^{\epsilon \beta} (  N + 1) e^{-N \epsilon \beta} -e^{+ \epsilon \beta} - N e^{-N \epsilon \beta} ) }{ e^{2\epsilon \beta} }= \\ 
+& = \frac{ \epsilon (Ne^{- (N-1) \epsilon \beta} + e^{-(N-1) \epsilon \beta} - e^{\epsilon \beta} - N e^{-N \epsilon \beta} ) }{ e^{2\epsilon \beta} }  = \frac{ \epsilon ( (N+1) e^{-(N-1) \epsilon \beta } - (e^{\epsilon \beta} + Ne^{-N \epsilon \beta} ) ) }{ e^{2\epsilon \beta} } = \\
+  & = \frac{ \epsilon \left( \frac{ (N+1) e^{\epsilon \beta} }{ e^{N \epsilon \beta} } - \frac{n}{e^{N\epsilon \beta} } - e^{\epsilon \beta} \right) }{ e^{2\epsilon \beta} } = \frac{ \epsilon \left( \frac{ (N+1) e^{\epsilon \beta}  - N }{ e^{N\epsilon \beta} } - e^{\epsilon \beta} \right) }{ e^{2\epsilon \beta} } = \frac{ \epsilon \left( \frac{ N e^{\epsilon \beta}  + e^{\epsilon \beta} - e^{\epsilon \beta} e^{N \epsilon \beta} }{ e^{N \epsilon \beta} } \right) }{ e^{2 \epsilon \beta}} = \epsilon \left( \frac{ N - e^{N \epsilon \beta} }{ e^{N \epsilon \beta} e^{\epsilon \beta} } \right)  \simeq \\
+  & \simeq \frac{ \epsilon ( -e^{N \epsilon \beta}  ) }{ e^{N \epsilon \beta} e^{\epsilon \beta} } = -\epsilon e^{-\epsilon \beta} 
+\end{aligned}
+\]
+\[
+\Longrightarrow \boxed{ \langle s \rangle = e^{- \epsilon /\tau }   }
+\]
+\end{itemize}
+
+
+
+
+
+
+
+\solutionhead{8} \textbf{Quantum concentration.}  Now $\Psi(x,y,z) = A\sin{ \left( \frac{ n_x \pi x}{L} \right) }\sin{\left( \frac{n_y \pi y }{ L} \right) }\sin{ \left( \frac{n_z \pi z}{L} \right) }$.  $ p = \frac{1}{i} \nabla$, \quad \, $\frac{p^2}{2m} = -\frac{1}{2m} \nabla^2$.  \\
+Ground orbital: $n_x = n_y = n_z = 1$.  
+\[
+T = \frac{3}{2m} \left( \frac{\pi}{L} \right)^2 \langle \psi_0 | \psi_0 \rangle = \frac{3}{2m } \left( \frac{\pi}{L}\right)^2 
+\]
+where $\langle \psi_0 | \psi_0 \rangle =1$, $\psi$ normalized.  It was normalized in this way:
+\[
+\int_0^{\infty} \sin^2{\left( \frac{ n_x \pi x}{L} \right) } dn_x = \int_0^L \frac{ 1 - \cos{ \left( \frac{ 2n_x \pi x}{L} \right) } }{2} dn_x = \left. \left( \frac{n_x - \sin{\left( \frac{ 2 n_x \pi x}{L} \right) } \left( \frac{L}{2n_x \pi } \right) }{ 2} \right) \right|_0^L = \frac{L}{2}
+\]
+\[
+\langle \psi | \psi \rangle = A^2 \left( \frac{L}{2} \right)^3 = \frac{A^2 L^3}{8} = 1 \text{ or } A^2 = \frac{8}{L^3}
+\]
+
+Recall that $n_Q =  \left( \frac{m \tau}{ 2\pi \hbar^2 } \right)^{3/2}$.  
+
+Consider the condition that there will be a concentration for which the zero-point quantum kinetic energy is equal to the temperature $\tau$:
+\[
+\Longrightarrow \frac{3}{2m} \frac{\pi^2 }{L^2 }  = \frac{3}{2m} \pi^2 n^{2/3} = \tau \text{ or } n^{2/3} = \frac{2m\tau}{3\pi^2 \hbar^2 } \text{ or } n = \left( \frac{2m \tau}{3 \pi^2 \hbar^2 } \right)^{3/2} 
+\]
+\[
+\Longrightarrow \boxed{ n = ( \left( \frac{4}{3\pi} \right) \frac{m\tau}{ 2\pi \hbar^2 } )^{3/2} = \left( \frac{4}{3\pi }\right)^{3/2} n_Q }
+\]
+
+
+\solutionhead{9} \textbf{ Partition function for two systems.}
+\[
+\begin{aligned}
+  Z(1+2) & = \sum_{E_{1+2} } g(E_{1+2} ) \exp{ \left( \frac{- E_{1+2}}{\tau} \right) } = \sum_{E_1 + E_2 = E_0 } g(E_1 + E_2) \exp{ \left( \frac{-E_1}{\tau} \right) } \exp{ \left( \frac{-E_2}{\tau} \right) }= \\
+  & = \sum_{E_1} \sum_{E_2} g(E_1)g(E_2) \exp{\left( \frac{-E_1}{\tau} \right) } \exp{\left( \frac{-E_2}{\tau} \right) }  = Z(1)Z(2)
+\end{aligned}
+\]
+since systems are independent.  
+
+
+
+
+
+
+
+
+
+
+\solutionhead{10} \textbf{Elasticity of polymers}. \begin{itemize}
+\item[(a)] Consider $2s = N_+ - N_-$; \, $N = N_+ + N_-$, \, $2s = N_+ - (N-N_+) = 2N_+ - N$.  \quad $N_+  = \frac{2s + N}{2}$.  \\
+For $2s$, consider $-2s = N_+ - (N-N_+) = 2N_+ - N$.  \quad \, $N_+ = \frac{-2s + N}{2}$.  
+\[
+\Longrightarrow \boxed{ g(N,-s) + g(N,s) = \frac{2N!}{ \left( \frac{N}{2} + s \right)! \left( \frac{N}{2} - s \right)!} }
+\]
+\item[(b)] $|s| \ll N$
+\[
+\begin{aligned}
+\sigma(l)  & =\ln{ \left( g\left( N, \frac{l}{2\rho } \right) + g\left( N, \frac{-l}{2\rho} \right) \right) }= \ln{ \left( \frac{ 2 (N!) }{ \left( \frac{N}{2} + \frac{l}{2\rho } \right)! \left( \frac{N}{2} + \frac{-l}{2\rho}\right)! } \right) } = \\
+& = \ln{ (2N!) } = \lbrace \left( \frac{N}{2} + \frac{L}{2\rho } \right) \ln{ \left( \frac{N}{2} + \frac{l}{2\rho} \right) } - \left( \frac{N}{2} + \frac{l}{2\rho } \right) + \left( \frac{N}{2} - \frac{l}{2\rho} \right) \ln{ \left( \frac{N}{2} - \frac{l}{2\rho } \right) }  - \left( \frac{N}{2} - \frac{l}{2\rho} \right) \rbrace
+\end{aligned}
+\]
+where we used $ln{ ( x + \Delta x )} \simeq \ln{x} + \frac{1}{x} \Delta x$.  
+\[
+ \begin{aligned} 
+\sigma(l) & = \ln{( 2N!)} - \lbrace \left( \frac{N}{2} + \frac{l}{2\rho} \right) \left( \ln{\left( \frac{N}{2} \right) } + \frac{1}{N/2} \frac{l}{2\rho } \right) - \frac{N}{2} + \left( \frac{N}{2} - \frac{l}{2\rho} \right) \left( \ln{\left( \frac{N}{2} \right) } + \frac{1}{N/2} \left( \frac{ - l }{2\rho }\right) \right) \rbrace = \\
+& = \ln{(2N!)} - \lbrace \frac{N}{2} \ln{\frac{N}{2}} - \frac{N}{2} + \frac{N}{2} \ln{\frac{N}{2}} - \frac{N}{2} + \frac{l}{2\rho} \ln{\left( \frac{N}{2} \right) } + \frac{l}{2\rho} + \frac{2}{N} \left( \frac{l}{2\rho} \right)^2 + \frac{ - l }{2\rho} - \frac{l}{2\rho } \ln{\left( \frac{N}{2} \right) } + \frac{l^2 }{ N 2\rho^2 } \rbrace 
+\end{aligned}
+\]
+\[
+\boxed{ \sigma(l)  = \ln{ \left( \frac{2N!}{ \left( \frac{N}{2} \right)! \left( \frac{N}{2} \right)!} \right) } - \frac{l^2 }{N \rho^2 } }
+\]
+\item[(c)] \[
+\begin{gathered}
+  \frac{\partial \sigma}{\partial l} = \frac{-2l}{N\rho^2} \quad \, \Longrightarrow \boxed{ f = \frac{2l\tau}{N \rho^2} }
+\end{gathered}
+\]
+\end{itemize}
+
+
+
+
+
+
+\solutionhead{11} \textbf{One-dimensional gas}.  
+\[
+\begin{gathered}
+  \epsilon_n = \frac{\hbar^2}{2m} \left( \frac{\pi}{L} \right)^2 n^2 \quad \, \text{ in one dimension } \\ 
+  Z_1 = \sum_{n=1}^{ \infty} \exp{ \left( \frac{-\hbar^2}{2m} \left( \frac{\pi}{L} \right)^2 n^2/\tau \right) } \Longrightarrow \int_0^{\infty} dn e^{-\alpha^2 n ^2}  = \frac{\sqrt{\pi}}{2 \alpha}
+\end{gathered}
+\]
+where $\begin{aligned} \alpha^2 & = \frac{\hbar^2}{2 m \tau} \left( \frac{\pi}{L} \right)^2 \\ \alpha & = \frac{\hbar \pi /L }{ \sqrt{2m } \tau^{1/2 } } \end{aligned}$.  
+
+Recall that $\sigma= \left( \frac{ \partial F}{\partial \tau} \right)$, $F = U- \tau \sigma$, so that 
+\[
+\begin{aligned}
+  F & = -\tau \ln{Z} = -\tau N \ln{ \frac{\sqrt{\pi}}{ 2 \alpha} } = \tau N \ln{ \left( \frac{2\alpha }{\sqrt{\pi}} \right) } = \tau N \ln{ \left( \frac{ 2 \hbar \pi/L }{ \sqrt{\pi} \sqrt{ 2m} \tau^{1/2} } \right) } = \\
+  & = \tau N \ln{ \left( \frac{ \sqrt{2\pi } \hbar}{ \sqrt{m} L \tau^{1/2} } \right) } = \frac{1}{2} \tau N \ln{ \left( \frac{ 2\pi \hbar^2 }{ mL^2 \tau} \right) }
+\end{aligned}
+\]
+\[
+\begin{aligned}
+  \frac{ \partial F}{\partial \tau} & = \frac{1}{2} N \ln{\left( \frac{2\pi \hbar^2}{mL^2 \tau} \right)} + \frac{\tau N}{2} \left( \frac{1}{ \left( \frac{2\pi \hbar^2}{mL^2 \tau} \right) } \right) \left( \frac{-2\pi \hbar^2 }{mL^2 \tau^2 } \right) = \\
+    & = \frac{1}{2} N \ln{\left( \frac{2\pi \hbar^2}{mL^2 \tau} \right) } + \frac{-\tau N}{2\tau} = \boxed{ \frac{N}{2} \left(\ln{ \left( \frac{2\pi \hbar^2}{mL^2 \tau} \right) } - 1 \right) }
+\end{aligned}
+\]
+

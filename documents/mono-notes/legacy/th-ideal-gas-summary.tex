@@ -1,0 +1,111 @@
+\noindent\textit{2015 manuscript.}
+
+\section{Ideal gas (summary)}
+
+The gist of concepts involving the ideal gas, from Chapters 3,5,6 of Kittel and Kroemer \cite{CKittelHKroemer1980} are the following.  Consider the partition function for 1 atom in a box, $Z_1$
+\[
+Z_1 = \frac{n_Q}{n} = n_Q V \text{ where } n_Q := \left( \frac{M\tau}{2\pi \hbar^2} \right)^{d/2}
+\]
+where $d$ is the dimension of space, usually $d=3$.  
+
+From Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, Example : $N$ atoms in a box, Chapter 3: ``Boltzmann Distribution and Helmholtz Free Energy'', 
+
+state of energy $\epsilon_{\alpha}(1) + \epsilon_{\beta}(2) + \dots + \epsilon_{\xi}(N)$, $\alpha, \beta, \dots \xi$ denote orbital indces of atoms in successive boxes.  \\
+each entry occurs $N!$ times in $Z_1^N$ (EY: 20151022) $N!$ ways to fill $\alpha, \beta \dots \xi$ orbitals with $N$ distinguishable particles.  Thus,
+\[
+Z_N = \frac{1}{N!} Z_1^N = \frac{1}{N!} (n_Q V)^N
+\]
+
+
+Then for $N$ \emph{indistinguishable particles}, the partition function of the system $Z_N$ is 
+\begin{equation}
+  Z_N = \frac{1}{N!} Z_1^N = \frac{1}{N!}(n_QV)^N
+\end{equation}
+
+Then the Helmholtz free energy $F$ is 
+\begin{equation}
+  F = -\tau \ln{Z_N} = -\tau \left[ N \ln{ (n_Q V) } - (N\ln{N} - N) \right] = \tau N \left[ \ln{ \left( \frac{n}{n_Q} \right) - 1  }\right]
+\end{equation}
+and so 
+\[
+\begin{gathered}
+  \frac{ \partial F}{ \partial \tau} = - N \ln{ \left( \frac{n_Q V}{N} \right) } - N - \tau N \frac{d}{2} \frac{1}{\tau}  = -N \left[ \ln{ \left( \frac{n_Q}{n} \right) } + \left( \frac{d}{2} + 1 \right) \right] 
+\end{gathered}
+\]
+\begin{equation}
+  \sigma = \frac{ -\partial F}{ \partial \tau} = N \left[ \ln{ \left( \frac{n_Q}{n} \right) } + \left( \frac{d}{2} + 1 \right) \right]
+\end{equation}
+
+Also, from using 
+\[
+\begin{gathered}
+  F := U -\tau \sigma \\ 
+  dF = dU -\tau d\sigma - \sigma d\tau = - p dV - \sigma d\tau 
+\end{gathered}
+\]
+then
+\[
+p=\frac{\tau N}{V} \text{ or } pV = \tau N
+\]
+Keep in mind that 
+\[
+\mu(\tau, V,N) \equiv \left( \frac{ \partial F}{\partial N} \right)_{\tau,V}
+\]
+
+I shall attempt to generalize the Sackur-Tetrode equation to consider vibrational and rotational energy modes, and so we should review its derivation.  
+
+Consider the example of a molecule with translational \emph{and } rotational degrees of freedom.  Note that $\mathbf{n} = (n_x,n_y,n_z)$ are good quantum numbers discretizing the translational degrees of freedom, and $j \in \mathbb{N} = \lbrace 0 ,1 , \dots \rbrace$ is a good quantum number discretizing the rotational degrees of freedom.  Then the energy (eigenvalue) for quantum state (described by particular values of ) $\mathbf{n},j$ is
+\[
+\epsilon_{\mathbf{n},j} = \frac{ \hbar^2}{2M} \left( \frac{\pi}{L} \right)^2 \mathbf{n}^2 + j(j+1) \epsilon_0 \equiv \frac{\hbar^2}{2M} \left( \frac{\pi}{L} \right)^2 (n_x^2 + n_y^2 + n_z^2 ) + j(j+1) \epsilon_0
+\]
+keeping in mind the multiplicity of the energy state from the multiplicity of the rotational energy, $g(j) = 2j+1$.  
+
+Then
+\[
+\exp{\left( -\frac{1}{\tau} \epsilon_{\mathbf{n},j} \right) } = \exp{ \left( -\frac{\hbar^2}{2M\tau} \left( \frac{\pi}{L} \right)^2 \mathbf{n}^2 \right) } e^{j(j+1) \epsilon_0 }
+\]
+Then the partition function for \emph{1} molecule in a box is 
+\[
+\begin{gathered}
+  Z_1 = \sum_{\mathbf{n},j} g(j) \exp{ \left( \frac{-\hbar^2}{2\pi \tau} \left( \frac{\pi}{L} \right)^2 \mathbf{n}^2 \right) } e^{j(j+1) \epsilon_0 } = \sum_{\mathbf{n}} \exp{ \left( \frac{ -\hbar^2}{2\pi \tau} \left( \frac{\pi}{L} \right)^2 \mathbf{n}^2 \right) } \sum_j g(j) e^{j(j+1)\epsilon_0 } = n_Q V \cdot \sum_j g(j) e^{j(j+1)\epsilon_0} = \\
+  =  n_Q V \frac{\tau}{\epsilon_0 }
+\end{gathered}
+\]
+with $n_Q := \left( \frac{M\tau}{2\pi \hbar^2 } \right)^2$.
+\begin{correction}{rotational factor}
+The Boltzmann factor of $j(j+1)\epsilon_0$ carries a minus sign and a factor $1/\tau$.
+In three dimensions the power on $M\tau/(2\pi\hbar^2)$ is $3/2$.
+The integral that produces $\tau/\epsilon_0$ is \S\ref{sec:rotation}.
+\end{correction} 
+
+From the indistinguishability of quantum particles, for $N$ of these particles,
+\[
+Z_N = \frac{ (n_Q V \frac{ \tau}{\epsilon_0 } )^N }{ N!} 
+\]
+and noting that 
+\[
+\ln{Z_N} = N\left[ \ln{ (n_Q V)} + \ln{ \left( \frac{\tau}{\epsilon_0 } \right) } \right] - \ln{N!} \simeq N \ln{ \left( \frac{n_Q}{n} \right) } + N \ln{ \left( \frac{\tau}{\epsilon_0 } \right) } + N 
+\]
+then
+\[
+\begin{aligned}
+  & F := -\tau \ln{Z_N} = -\tau N \left[ \ln{ \left( \frac{n_Q}{n} \right) } + 1 \right] + - \tau N \ln{ \left( \frac{\tau}{\epsilon_0 } \right) } \equiv - \tau N \left[ \ln{ \left( \frac{n_Q}{n} \right) } + 1 \right] + F(\text{int}) \\ 
+  & \sigma := -\left( \frac{ \partial F}{ \partial \tau } \right) = N \left[ \ln{ \left( \frac{n_Q}{n} \right) } + \left( \frac{d}{2} + 1 \right) \right] + N \left( \ln{ \left( \frac{\tau}{\epsilon_0} \right) } + 1 \right)
+\end{aligned}
+\]
+
+Examining the steps above, it's clear how to generalize to when the form of the energy eigenvalues in the vibrational and rotational degrees of freedom (internal degrees of freedom), described by quantum numbers $\mathbf{k}$, is unknown:
+\[
+\begin{gathered}
+  \epsilon_{\mathbf{n},\mathbf{k}} = \frac{ \hbar^2}{2M} \left( \frac{\pi}{L} \right)^2 \mathbf{n}^2  + \epsilon'_{\text{int}}(\mathbf{k}) \\
+  g(\mathbf{k}) \in \mathbb{Z}^+ \text{ is the multiplicity of the internal degrees of freedom } \\ 
+  Z_1 = n_Q V \cdot Z_{1,\text{int}} \text{ with } Z_{1,\text{int}} = \sum_{\mathbf{k}} g(k) e^{ -\frac{1}{\tau} \epsilon_{\text{int}}'(\mathbf{k}) } \\ 
+  Z_N = \frac{ (n_Q V)^N}{N!} (Z_{1,\text{int}})^N  \Longrightarrow \ln{Z_N} = N \left( \ln{ \left( \frac{n_Q}{n} \right) } + 1 \right) + N \ln{ Z_{1,\text{int}} } \\ 
+  F = -\tau N \left[ \ln{ \left( \frac{n_Q}{n} \right) + 1 } \right] + F(\text{int})(\tau) \\ 
+  \sigma = N \left[ \ln{ \left( \frac{n_Q}{n} \right) } + \left( \frac{d}{2} + 1 \right) \right] + \sigma_{\text{int}}
+\end{gathered}
+\]
+with $F(\text{int})(\tau)$ emphasizing that we could surmise or conjecture that the Helmholtz free energy contribution due to internal degrees of freedom can be a function of temperature $\tau$ (cf. Eq. (42.4) of Landau and Lifshitz (1980) \cite{LLandauELifshitz1980}).  
+
+
+

@@ -1,0 +1,70 @@
+\noindent\textit{2015 manuscript.}
+
+\section{Mixtures of ideal gases}
+
+\subsection{Gibbs paradox}
+
+
+Kittel and Kroemer (1980) \cite{CKittelHKroemer1980} Problem 6 \textbf{Entropy of mixing} of Chapter 6: Ideal Gas,
+
+Prof. Steven Anlage, Introduction to Thermodynamics and Statistical Mechanics, Spring 2011, University of Maryland Physics 404, Homework 8 Solutions, Question 9, \footnote{\url{http://www.physics.umd.edu/courses/Phys404/Anlage_Spring11/hw8solv5.pdf}}
+
+Consider adding together the entropies of ideal gas A with initial volume $V$, and molecular mass $M_A$ (so it has a $n_{Q_A}$ quantum concentration), and of ideal gas B with initial volume $V$, molecular mass $M_B$, $n_{Q_B}$ quantum concentration:
+\[
+\begin{gathered}
+  \sigma_{\text{initial}} = \sigma_A + \sigma_B = N_A \ln{ \left( \frac{n_{Q_A} V}{N_A} \right) } + N_A \left( 1 + \frac{d}{2} \right)  + N_B \ln{ \left( \frac{n_{Q_B} V}{N_B} \right) } + N_B \left( 1 + \frac{d}{2} \right) 
+\end{gathered}
+\]
+After diffusive equilibrium is reached means that each of the gases now occupy a volume $2V$, gas A is free to roam in volume $2V$, as is gas B.  Thus, the entropy increases:
+\[
+\begin{gathered}
+  \sigma_{\text{final}} = N_A \ln{ \left( \frac{n_{Q_A} 2V}{N_A} \right) } + N_A \left( 1 + \frac{d}{2} \right)  + N_B \ln{ \left( \frac{n_{Q_B} 2V}{N_B} \right) } + N_B \left( 1 + \frac{d}{2} \right) 
+\end{gathered}
+\]
+and so
+\[
+\Delta \sigma = (N_A + N_B)\ln{2} = 2N\ln{2} \text{ (if $N_A=N_B=N$) }
+\]
+
+In general,
+\[
+\Delta \sigma = N_A \ln{ \left( \frac{V_A + V_B}{V_A} \right) } + N_B \ln{ \left( \frac{V_A + V_B}{V_A} \right) }
+\]
+\begin{correction}{mixing volumes}
+The second logarithm is $\ln((V_A+V_B)/V_B)$.
+The derivation is \S\ref{sec:binary-mixtures}, equation \eqref{eq:entropy-of-mixing}.
+\end{correction}
+
+
+For identical atoms $(A\equiv B)$, 
+\[
+\sigma_A = N \ln{ \left( \frac{ n_Q V}{N} \right) } + N \left( 1 + \frac{d}{2} \right) = \sigma_B
+\]
+and so
+\[
+\sigma_{\text{initial}} = \sigma_A + \sigma_B = 2N \ln{ \left( \frac{n_Q V}{N} \right) } + 2N\left( 1 + \frac{d}{2} \right) 
+\]
+For the final entropy after mixing, treat the system as a (whole) system of $2N$ indistinguishable particles occupying a volume of $2V$:
+\[
+\sigma_{\text{final}} = 2N \ln{ \left( \frac{n_Q(2V)}{2N} \right) } + 2N \left( 1 + \frac{d}{2} \right)
+\]
+and so $\Delta \sigma =0$
+
+
+From Sec. 93. Mixtures of ideal gases of Landau and Lifshitz (1980) \cite{LLandauELifshitz1980}, additivity of thermodynamic quantities (such as energy and entropy) holds only if interaction between various parts of body is negligible. 
+
+But for mixture of several substances, e.g. mixture of liquids, thermodynamic quantities are not equal to sums of thermodynamic quantities for individual components of the mixture. 
+
+Mixtures of ideal gases are an exception, since interaction between molecules is by definition negligible.  
+
+But for partial pressure of $i$th gas, $p_i = \frac{N_i\tau}{V} = \frac{N_i p}{N}$, $N = $ total number of molecules in mixture, $N_i$ number of molecules of $i$th gas.  
+
+So
+\[
+p_j = \frac{ N_j \tau }{V} = \frac{ N_j}{N} p = X_j p 
+\]
+where $X_j$ is mole fraction or particle fraction.  
+
+
+
+

@@ -1,0 +1,133 @@
+\section{Cryogenics}
+\label{sec:cryogenics}
+
+The 2008 heading was empty. The process written here is cooling by adiabatic demagnetization of the two-state paramagnet of \S\ref{sec:model-system}. The energy is the expectation of the spin Hamiltonian, not a Legendre transform that moves the field term to the other side of the identity.
+
+\subsection{Canonical free energy of \(N\) independent moments}
+
+Each element has energies \(-mB\) and \(+mB\). The single-element partition function is
+\begin{equation}
+\label{eq:Z1-spin}
+Z_1 = e^{mB/\tau} + e^{-mB/\tau} = 2\cosh x,
+\qquad
+x = \frac{mB}{\tau}.
+\end{equation}
+The \(N\) elements are fixed on sites and are distinguishable by those sites, so there is no \(1/N!\). The Helmholtz free energy is
+\begin{equation}
+\label{eq:F-spin}
+F(\tau,B) = -N\tau\ln Z_1 = -N\tau\ln(2\cosh x).
+\end{equation}
+Hold \(B\) fixed and differentiate in \(\tau\). Then \(\partial x/\partial\tau = -x/\tau\), and
+\begin{align}
+\frac{\partial}{\partial\tau}\bigl(\tau\ln(2\cosh x)\bigr)
+&= \ln(2\cosh x) + \tau\cdot\tanh x\cdot\biggl(-\frac{x}{\tau}\biggr) \nonumber\\
+&= \ln(2\cosh x) - x\tanh x.
+\label{eq:dF-dT-spin}
+\end{align}
+Therefore
+\begin{equation}
+\label{eq:sigma-spin}
+\sigma
+= -\biggl(\frac{\partial F}{\partial\tau}\biggr)_{B}
+= N\bigl[\ln(2\cosh x) - x\tanh x\bigr].
+\end{equation}
+At \(B=0\), one has \(x=0\) and \(\sigma = N\ln 2\), which is \(\ln(2^N)\). The mean energy per element is \(-\partial\ln Z_1/\partial\beta\) with \(\beta = 1/\tau\):
+\begin{equation}
+\label{eq:U-spin}
+U = -N m B\tanh x = -N\tau\, x\tanh x.
+\end{equation}
+The total moment along the field, defined by \(U = -\mathcal{M} B\), is
+\begin{equation}
+\label{eq:moment}
+\mathcal{M} = N m \tanh x.
+\end{equation}
+Check \(F = U - \tau\sigma\):
+\begin{align}
+U - \tau\sigma
+&= -N\tau\, x\tanh x
+ - N\tau\ln(2\cosh x)
+ + N\tau\, x\tanh x \nonumber\\
+&= F.
+\label{eq:F-check}
+\end{align}
+The \(\tau\) derivative at fixed \(B\) was arranged so that \((\partial F/\partial\tau)_B = -\sigma\). The \(B\) derivative at fixed \(\tau\) is
+\begin{equation}
+\label{eq:dF-dB}
+\biggl(\frac{\partial F}{\partial B}\biggr)_{\tau}
+= -N\tau\cdot\tanh x\cdot\frac{m}{\tau}
+= -\mathcal{M},
+\end{equation}
+because \(\partial x/\partial B = m/\tau\). Thus
+\begin{equation}
+\label{eq:dF-magnetic}
+dF = -\sigma\, d\tau - \mathcal{M}\, dB.
+\end{equation}
+From \(U = F + \tau\sigma\),
+\begin{align}
+dU
+&= dF + \sigma\, d\tau + \tau\, d\sigma \nonumber\\
+&= -\mathcal{M}\, dB + \tau\, d\sigma.
+\label{eq:dU-magnetic}
+\end{align}
+Equation \eqref{eq:dU-magnetic} is the thermodynamic identity for this choice of \(U\). A convention that uses \(U' = U + \mathcal{M} B\) moves the work term to \(+B\, d\mathcal{M}\). That \(U'\) is not the expectation of \(-mB\sum_i \epsilon_i\).
+
+For \(|x|\ll 1\), \(\tanh x = x + O(x^3)\), so
+\begin{equation}
+\label{eq:curie-energy}
+U = -N m B\bigl(x + O(x^3)\bigr)
+= -\frac{N m^2 B^2}{\tau} + O(x^3)\, N\tau.
+\end{equation}
+The leading term is \eqref{eq:paramagnet-energy}, from the microcanonical Gaussian. The two counts agree in the regime where both apply.
+
+\subsection{Isothermal magnetization}
+
+Hold \(\tau = \tau_i\) and increase \(B\) from \(0\) to \(B_i\). Then \(x\) goes from \(0\) to \(x_i = m B_i/\tau_i\). The entropy change of the spins is
+\begin{equation}
+\label{eq:delta-sigma-mag}
+\Delta\sigma
+= N\bigl[\ln(\cosh x_i) - x_i\tanh x_i\bigr].
+\end{equation}
+The subtraction of \(N\ln 2\) produced \(\ln(\cosh x_i) = \ln(2\cosh x_i) - \ln 2\). Define \(f(x) = \ln(\cosh x) - x\tanh x\). Then \(f(0) = 0\) and
+\begin{equation}
+\label{eq:f-prime}
+f'(x)
+= \tanh x - \tanh x - x\,\mathrm{sech}^2 x
+= -x\,\mathrm{sech}^2 x.
+\end{equation}
+For \(x>0\), \(f'(x)<0\), so \(f(x)<0\) and \(\Delta\sigma<0\). The heat entering the spin system along this reversible isotherm is
+\begin{equation}
+\label{eq:heat-to-bath}
+Q = \tau_i\,\Delta\sigma < 0.
+\end{equation}
+The bath receives \(-Q\).
+
+\subsection{Adiabatic demagnetization}
+
+After the magnetization, isolate the sample and reduce the field. Two cases use \eqref{eq:sigma-spin}.
+
+If the spins are the whole system, isolation at fixed entropy means \(\sigma(x)\) is constant. Equation \eqref{eq:sigma-spin} depends on \(\tau\) and \(B\) only through \(x = mB/\tau\). Constant \(\sigma\) therefore means constant \(x\), hence
+\begin{equation}
+\label{eq:tau-proportional-B}
+\frac{\tau}{B} = \mathrm{constant}
+\end{equation}
+along that path. Reducing \(B\) reduces \(\tau\) in the same ratio. Reaching \(B=0\) at this frozen entropy would require \(\tau\to 0\), because \(\sigma < N\ln 2\) whenever \(x\neq 0\), while \(\sigma(B=0) = N\ln 2\) at every finite \(\tau\).
+
+A lattice in the Debye regime has heat capacity \(C_V = A\tau^3\) with \(A\) constant, at temperatures far below the Debye temperature. Then
+\begin{equation}
+\label{eq:lattice-entropy}
+\biggl(\frac{\partial\sigma_{\mathrm{latt}}}{\partial\tau}\biggr)_{V}
+= \frac{C_V}{\tau} = A\tau^2,
+\qquad
+\sigma_{\mathrm{latt}} = \frac{A}{3}\tau^3,
+\end{equation}
+where the integration constant is zero because \(\sigma_{\mathrm{latt}}\to 0\) as \(\tau\to 0\). Assume the spins and the lattice share one \(\tau\) during the demagnetization. That is an equilibrium assumption. If the spins decouple from the lattice, \eqref{eq:tau-proportional-B} applies to the spins and the lattice entropy stays where it was. When they do share \(\tau\), isolation conserves the sum
+\begin{equation}
+\label{eq:demag-balance}
+N\bigl[\ln(2\cosh x) - x\tanh x\bigr] + \frac{A}{3}\tau^3
+= \mathrm{constant},
+\qquad
+x = \frac{mB}{\tau}.
+\end{equation}
+The constant is fixed by the state at the end of the isothermal step: \(x_i\) and \(\tau_i\). Lowering \(B\) at fixed \(\tau\) would increase the spin entropy toward \(N\ln 2\). With the sum fixed, that increase is paid for by a decrease of \(\sigma_{\mathrm{latt}}\), which by \eqref{eq:lattice-entropy} means a lower \(\tau\). Equation \eqref{eq:demag-balance} is the equation for the final temperature once a final field and a value of \(A\) are given. No particular \(A\) is assumed here.
+
+The refrigerator cycle is then: magnetize in contact with the bath, isolate, demagnetize. The heat \(-Q\) of \eqref{eq:heat-to-bath} left the sample during the contact step. The later drop in \(\tau\) is the useful cooling. Repeating the cycle requires a heat switch, because the sample has to be put back into contact with a bath at the new, lower temperature if another isothermal magnetization is to dump entropy again. The switch is a thermal path that can be opened and closed. The entropy accounting above does not model the switch; it states where the contact is required.

@@ -1,0 +1,74 @@
+\section{Scope, notation, and what was already written}
+\label{sec:scope}
+
+This is the thermodynamics part of the mono notes. The source is one file. \texttt{master.tex} is US Letter, single column. \texttt{screen.tex} is the same text on a \(1200\,\mathrm{pt}\times 700\,\mathrm{pt}\) page in two columns, the widescreen size used in \texttt{DGDT\_dump.tex} and in \texttt{Propulsion/LaTeXandpdfs/thermo.tex}. Build both with \texttt{documents/mono-notes/build.sh}. The originals below were not edited.
+
+\subsection{Where the Kittel--Kroemer notes actually are}
+
+There is no second, fuller set of reading notes on Kittel and Kroemer. The 2008 file
+
+\begin{center}
+\texttt{mathphysics/LaTeX\_and\_pdfs/Kittel\_Kroemer\_Thermal\_Physics.tex}
+\end{center}
+
+is a solutions manuscript with reading notes in front of some chapters. Its own abstract says the solutions are nearly complete and that notes were to be added before the problems. What is present:
+
+\begin{itemize}
+\item Chapter 1, States of a Model System: the heading only. Written here as \S\ref{sec:model-system}.
+\item Chapter 2, Entropy and Temperature: a short derivation of thermal equilibrium, then solutions 1--4.
+\item Chapter 3, Boltzmann distribution and Helmholtz free energy: heat capacity, pressure, the thermodynamic identity, and the one-atom partition function, then solutions 1--11.
+\item Chapter 4, thermal radiation: solutions 1--15, 17, and 18. There is no solution 16 in the file.
+\item Chapter 5, chemical potential: notes and solutions 1--14.
+\item Chapter 6, ideal gas: notes and solutions. Solution 6, entropy of mixing, is a heading with no solution. The derivation is in \S\ref{sec:binary-mixtures}. Solutions 1--4 under this heading are Fermi--Dirac and orbital-counting calculations; the next section heading is Fermi and Bose gases. They were left in the order of the manuscript.
+\item Chapter 7, Fermi and Bose gases: problems and solutions 1--10.
+\item Chapter 8, heat and work: the long geometric discussion of engines, Legendre transforms, and the Carnot cycle, then solutions 1--9.
+\item Chapter 9, Gibbs free energy: solutions 1--4.
+\item Chapter 10, phase transformations: notes and problems 1--5.
+\item Chapters 11--13, binary mixtures, cryogenics, and semiconductor statistics: headings only. Written here as \S\ref{sec:binary-mixtures}, \S\ref{sec:cryogenics}, and \S\ref{sec:semiconductors}.
+\item Chapter 14, kinetic theory: the ideal-gas law, the Maxwell speed distribution, effusion, and diffusion, then the mean-speed problem.
+\item Chapter 15, propagation: the continuity equation written with the Hodge star, sound speed, and the start of the diffusion problems. Parts (b) and (c) of the last problem have no solution and no statement in the file, so they were not invented.
+\end{itemize}
+
+The conceptual manuscript is the 2015 file
+
+\begin{center}
+\texttt{Propulsion/LaTeXandpdfs/thermo.tex}
+\end{center}
+
+already set to the same widescreen page. Its sections sit in this sequence next to the topic they extend. The part title Thermodynamics (Revisited) is not used. Overlap is kept, so nothing in either file is only in the old PDF. A preserved block begins with the year of its manuscript. Where a section title was changed so that two blocks would not share a name, the manuscript title is the italic line under the new heading.
+
+Two neighboring files were checked and not copied. \texttt{Propulsion/thermo.py} is the SymPy scratch pad for a few numerical problems; the diesel-engine values in the 2015 notes match it, and that check is in \S\ref{sec:checked-numbers}. \texttt{Propulsion.tex} recalls Kittel--Kroemer results inside the propulsion dump. \texttt{DGDT\_dump.tex} has a 2019 reminder to compare the convection form of enthalpy with Kittel--Kroemer and with Sonntag; that split is already in the 2015 manuscript, and the per-particle formula is corrected in \S\ref{sec:enthalpy-per-particle}.
+
+The geometry books named in the 2008 bibliography are Schutz \cite{BSchutz1980}, Bamberg and Sternberg \cite{PBambergSSternberg1990}, and Frankel \cite{TFrankel2004}.
+
+\subsection{Notation and the energy identity}
+
+Kittel and Kroemer measure temperature and entropy in energy units. That convention is the one used in the new sections.
+
+\begin{equation}
+\label{eq:tau-sigma}
+\tau = k_B T,
+\qquad
+\sigma = \ln g,
+\qquad
+S = k_B \sigma.
+\end{equation}
+
+Here \(g\) is the multiplicity of a macrostate, \(T\) is the kelvin temperature, and \(k_B\) is Boltzmann's constant. Partial derivatives are written as fractions. The variables held fixed are the subscripts. Einstein summation is used where a coordinate index is repeated, without a separate reminder.
+
+The energy differential adopted for the new sections, and for every correction below, is
+\begin{equation}
+\label{eq:thermo-identity}
+dU = \tau\, d\sigma - p\, dV + \sum_j \mu_j\, dN_j.
+\end{equation}
+The reversible heat 1-form is \(Q = \tau\, d\sigma\). The work done on the system by a slow volume change is \(-p\, dV\), so the work done by the system is \(p\, dV\). The engineering line \(dU = Q - W\) with that work by the system is the same statement. Equation~\eqref{eq:thermo-identity} is already the identity labeled in the 2008 notes and the one used for the Helmholtz differential \(dF = -\sigma\, d\tau - p\, dV\). The places where a preserved line uses the opposite work sign, or writes \((\partial F/\partial \tau)_V = \sigma\), are marked in the manuscript and collected in \S\ref{sec:resolutions}.
+
+A correction environment in the preserved text is a later check. The surrounding sentences and formulas are the manuscript. Where they disagree, the correction is the one to use.
+
+\subsection{Order}
+
+Counting, entropy, and temperature come first, then heating and the dilute-gas law. The Boltzmann distribution is followed by the pressure derivation, the first law, and both heat capacities. Radiation, the chemical potential, and the Gibbs distribution come next, then the ideal gas and mixtures. Fermi and Bose gases are followed by engines and magnetic cooling, the catalogue of potentials, the Gibbs chapter, chemical equilibrium, and semiconductors. Phase coexistence, the Joule--Thomson expansion, kinetic theory, and hydrodynamics follow. Nonequilibrium transport is the next part, because it is the theory of fluxes and entropy production. The resolutions close the notes.
+
+\subsection{What is new}
+
+New writing is \S\ref{sec:model-system}, \S\ref{sec:binary-mixtures}, \S\ref{sec:cryogenics}, \S\ref{sec:semiconductors}, and \S\ref{sec:resolutions}. The resolutions answer the adiabatic question left open in 2015, the use of \(C_V\) on a path whose volume changes, the claim that path-dependent heat requires nontrivial topology, and the arithmetic and transcription errors listed there.

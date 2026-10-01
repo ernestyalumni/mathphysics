@@ -1,0 +1,90 @@
+\noindent\textit{2015 manuscript.}
+
+%\part{Notes and Solutions on \emph{Fundamentals of Thermodynamics}, 8th Edition, by Claus Borgnakke, Richard E. Sonntag}
+\cite{CBorgnakkeRSonntag2012}
+
+%\section{}
+
+\section{Properties of a Pure Substance}
+
+EY : 20151030 Is the word vapor the same as gas?  vapour, gaz, gas, vapore
+
+For coexistence equilibrium, 
+\[
+\begin{aligned}
+  & \mu_g(p_0,\tau_0) = \mu_l(p_0,\tau_0) \text{ and } \\ 
+  & \mu_g(p_0 + dp, \tau_0+d\tau) = \mu_l(p_0 + dp, \tau_0+d\tau)
+\end{aligned}
+\]
+and so 
+\begin{equation}
+  \frac{dp}{d\tau} = \frac{L}{\tau \Delta v}
+\end{equation}
+where $v\equiv \frac{V}{N}$, the so-called \textbf{vapor pressure equation} or \textbf{Clausius-Clapeyron} equation.  
+
+For (2) approximations, $\Delta v = v_g - v_l \approx v_g = \frac{V_g}{N_g}$ and idealize vapor as ideal gas, $pV = N\tau$ so $\frac{dp}{d\tau} = \frac{L}{\tau^2/p}$.  
+
+Second, if $L$ constant, 
+\begin{equation}\label{Eq:CCeq_pvsT}
+  p(\tau) = p_0 \exp{ (-L_0/\tau)} \text{ or } \ln{ \left( \frac{p(\tau)}{p_0} \right) } = \frac{-L_0}{\tau}
+\end{equation}
+cf. Ch. 10 Phase Transformations, pp. 278-284, ``Derivation of the Coexistence Curve, $p$ Versus $\tau$'' of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}.  
+
+Eq. \ref{Eq:CCeq_pvsT} explains the shape of the coexistence curve between solid and gas (vapor) (sublimation) and liquid and gas (vapor) (vaporization; vaporization curve).  
+
+\textbf{Saturation} is this $p=p(\tau)$ coexistence curve.  
+
+
+\textbf{Isotherms, Isothermals}
+
+Recall $\begin{aligned} 
+  & \quad \\
+  & G = F + pV \\
+  & F = U-\tau \sigma \end{aligned}$ and so $\begin{aligned}
+  & \quad \\
+  & dG = dF + Vdp + pdV = dU - \tau d\sigma - \sigma d\tau + pdV + Vdp = -\sigma d\tau + Vdp \\
+  & dG = -\sigma d\tau + Vdp \end{aligned}$
+
+So then $\begin{aligned} & \quad \\
+  & G = G(\tau, p) \\
+  & G= G(\tau, p, N) \end{aligned}$ 
+
+where the latter statement is when we include particle transfer, so that 
+\[
+dG = -\sigma d\tau + Vdp + \mu dN \text{ for } \mu = \mu(\tau,p)
+\]
+
+For the \emph{ideal gas}:
+
+\[
+\begin{gathered}
+  F(\tau,V) = F= -N\tau \left( \ln{ \left( \frac{n_Q}{n} \right)} + 1 \right) \\ 
+  \text{ where }  \begin{aligned}
+    & n_Q = \left( \frac{M\tau }{2\pi \hbar^2 } \right)^{3/2} \\ 
+    & n \equiv N/V = \frac{p}{\tau} 
+  \end{aligned} \\
+  G(\tau,p, N) = -N \tau ( \ln{ \left( \frac{n_Q}{n} \right) } + 1 ) + N \tau = - N\tau ( \ln{ \left( \frac{n_Q}{n} \right) } ) = -N\tau \ln{ \left( \left( \frac{M\tau}{2\pi \hbar^2 } \right)^{3/2} \frac{\tau}{p} \right) } \\
+  \text{ so then }
+\left( \frac{ \partial G}{ \partial N} \right)_{\tau,p} = \mu = -\tau \ln{ \left( \left( \frac{M\tau}{2\pi \hbar^2} \right)^{3/2} \frac{\tau}{p} \right) }
+\end{gathered}
+\]
+
+For the \emph{Van der Waals gas}
+\[
+\begin{gathered}
+  F(vdW) = -N\tau \left( \ln{ \left( \frac{n_Q (V-Nb)}{N} \right) }  + 1 \right) - \frac{N^2 a }{V} \\ 
+  p = -\left( \frac{\partial F}{ \partial V} \right)_{\tau,N} = \frac{N\tau}{V-Nb} - \frac{N^2a}{V^2} \\
+  G(\tau,V,N) = \frac{N\tau V}{ V-Nb} - \frac{2N^2 a}{V} - N\tau ( \ln{ \left( \frac{n_Q (V-Nb)}{N} \right) } + 1 )
+\end{gathered}
+\]
+
+Nevertheless, consider, when considering isotherms, isothermals, 
+\[
+dG = -\sigma d\tau  + Vdp + \mu dN
+\]
+Consider a path $\gamma$ on constant $\tau$, constant total number of particles $N$, and so
+\[
+dG(\dot{\gamma}) = Vdp(\dot{\gamma}) = G_g-G_l = \int_{\gamma} Vdp
+\]
+
+

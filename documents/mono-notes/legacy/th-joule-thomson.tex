@@ -1,0 +1,107 @@
+\noindent\textit{2015 manuscript.}
+
+\section{Joule-Thomson Effect}
+
+cf. Problem 1.7.6 of Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004}, Lecture 18, Sections ``Throttling Processes'', ``The Joule-Thomson Effect'' of Groth, Phys301 Fall 1999 \footnote{Edward J. Groth, 1999, Fall 1999 Physics 301, \href{http://grothserver.princeton.edu/~groth/phys301f99/lect18.pdf}{Phys301 23-Nov-1999 18-10} }
+
+From Prob. 1.7.6 of Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004}, their setup is the following: \\
+gas initially confined in fixed volume escapes freely without exchanging heat with its environment, 
+\begin{itemize}
+\item initially, gas in compartment and $(T_1,V_1,p_1)$ 
+\item expands into container of volume $V_2$ under constant pressure $p_2$ ($p_2<p_1$)
+\item 2 compartments are thermally isolated; connected by porous plug to maintain pressure difference
+\item adiabatic (but not quasi-static) expansion.
+\end{itemize}
+
+$Q=0$.  So $Q=0 = dU -W$.  Then
+\[
+\int dU - \int W = \Delta U - \int W = 0 
+\]
+
+Now
+\[
+\Delta H = H_2 - H_1 = u_2 + p_2 V_2 - U_1 - p_1 V_1 = \Delta U + p_2 V_2 - p_1 V_1 
+\]
+Treat the process of gas evacuating, or going from compartment 1 to container 2 as 2 processes:  $\int W = W_1 + W_2$ where \\
+$W_1 = -p_1 (0-V_1) = p_1 V_1 \equiv $ work done on gas as the gas evacuates the compartment. \\
+$W_2 = -p_2(V_2-0) = -p_2 V_2 = $ work done by gas as gas expands into container at constant pressure $p_2$.  
+
+Thus $\int W = W_1 + W_2 = p_1 V_1 - p_2 V_2$ and so 
+\[
+\boxed{ \Delta H = 0 }
+\]
+The enthalpy is constant for this expansion.  
+
+For an ideal gas, $H= U + pV = \frac{\gamma}{\gamma -1} N\tau$, for an ideal gas has $U = \frac{1}{\gamma -1} N\tau$.  $\gamma = \frac{5}{3}$ and $\frac{\gamma}{\gamma-1} = \frac{5/3}{ 2/3} = 5/2$.  Nevertheless, since $H$ is constant, $T$ is constant, and so there's no cooling of an ideal gas in a Joule-Thomson apparatus!  But an ideal gas has no interaction energy, and it can be argued that one has to consider interaction energy between molecules for liquefaction (cf. Groth (1999) \cite{EGroth1999}, \href{http://grothserver.princeton.edu/~groth/phys301f99/lect18.pdf}{Lecture 18 Physics 301 Fall 1999}).  
+
+From the ``Derivation of the Joule-Thomson (Kelvin) coefficient'' section of the \emph{Joule-Thomson effect} article in \href{https://en.wikipedia.org/wiki/Joule–Thomson_effect}{Wikipedia}, recall the definition of enthalpy $H:= U + pV$, and so that $dH= dU+ pdV + Vdp=\tau d\sigma + Vdp$.  
+
+Let $\sigma = \sigma(\tau,p)$.  
+\[
+\begin{gathered}
+  dH = \tau \left( \frac{ \partial \sigma}{ \partial \tau } \right)_p d\tau + (V + \tau \left( \frac{ \partial \sigma }{ \partial p }\right)_{\tau} ) dp = C_p d\tau + (V + \tau \left( \frac{ \partial \sigma }{ \partial p }\right)_{\tau} ) dp
+\end{gathered}
+\]
+since
+\[
+\begin{gathered}
+Q = Q(\tau,p) = \frac{ \partial Q}{ \partial \tau} d\tau + \frac{ \partial Q}{ \partial p } dp = C_p d\tau + \frac{ \partial Q}{ \partial p} dp
+\end{gathered}
+\]
+and so for a thermodynamic process $\gamma$ such that $dp(\dot{\gamma})=0$ (i.e. constant pressure), then we can say
+\[
+\frac{C_p}{\tau}d\tau = d\sigma \xrightarrow{ \int_{\gamma } } \int_{\gamma} \frac{C_p}{\tau} d\tau = \Delta \sigma \Longrightarrow \tau \left( \frac{ \partial \sigma }{ \partial \tau } \right)_p = C_p
+\]
+And now 
+\[
+dG = -\sigma d\tau  + Vdp = \left( \frac{ \partial G}{ \partial \tau } \right)_p d\tau + \left( \frac{ \partial G}{ \partial p } \right)_{\tau} dp
+\]
+and since $\frac{ \partial^2 G}{ \partial \tau \partial p} = \frac{ \partial^2 G}{ \partial p \partial \tau}$, 
+\[
+\left( \frac{ \partial \sigma }{ \partial p } \right)_{\tau} = - \left( \frac{ \partial V}{ \partial \tau} \right)_p = -V\alpha
+\]
+Then
+\[
+dH = C_p d\tau + V(1-\tau \alpha) dp
+\]
+and so 
+\begin{equation}\label{Eq:JouleThomsoncoeff}
+\left( \frac{ \partial \tau}{ \partial p }\right)_H = \frac{ V(1-\tau \alpha )}{-C_p}
+\end{equation}
+is the \textbf{Joule-Thomson coefficient}, where $\alpha$ is the coefficient of thermal expansion.  
+
+For an ideal gas, 
+\[
+\begin{gathered}
+  pV = N\tau \\ 
+  V = \frac{N\tau}{p}
+\end{gathered} \Longrightarrow \frac{ \partial V}{ \partial \tau} = \frac{N}{p} = \frac{V}{\tau}
+\]
+so
+\[
+dH = C_pd\tau + ( V + \tau \left( \frac{-V}{\tau} \right) ) dp = C_p d\tau 
+\]
+so that 
+\[
+\left( \frac{ \partial \tau}{ \partial p} \right)_H = 0 
+\]
+for an ideal gas.  
+
+For every real gas, every real gas has an \emph{inversion temperature} such that \\
+below the inversion temperature, $\left( \frac{ \partial T}{ \partial p} \right)_H$ is positive, and so $dp <0$ always in an expansion, and so $dT <0$ and the gas cools, and \\
+above the inversion temperature, $\left( \frac{ \partial T}{ \partial p} \right)_H$ is negative, and so $dp <0$ always in an expansion, and so $dT <0$ and the gas warms.
+\begin{correction}{Joule--Thomson warming}
+Above inversion the coefficient is negative and $dp<0$, so $d\tau>0$.
+The gas warms.
+The clause $dT<0$ in the sentence has the wrong sign.
+See \S\ref{sec:jt-sign}.
+\end{correction}  
+
+An inversion temperature must exist because when the molecules are close enough, there are intermolecular forces that'll make them attract each other (such as temporary configurations so a slightly (electrically) negative cloud of electrons attract slightly positively charged part of another molecule) so the interaction energy is negative.  
+
+However, it appears that this inversion temperature is not found from the Joule-Thomson coefficient expression, Eq. \ref{Eq:JouleThomsoncoeff}, but from, possibly, the Van der Waals expression or another model (cf. Lecture 18 of Groth (1999) \cite{EGroth1999}).  
+
+Looking at Figure 1.16 of  Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004}, for isenthalpy curves ($H=$ const.), in $(T,p)$ plane, $T$ vs. $p$, the dashed line intersects the points on each isenthalpy curves where $\left( \frac{ \partial T}{ \partial p } \right)_H =0$ and for lower pressures ($dp<0$, gas expands), cooling occurs.  
+
+There's a maximum temperature, about $300^{\circ} \, C$ for nitrogen, where the dashed line meets the $p=0 \, \text{atm}$ axis, meaning $\left( \frac{ \partial \tau}{ \partial p} \right)_H <0$ \, $\forall \, p >0$, so no cooling occurs.  
+

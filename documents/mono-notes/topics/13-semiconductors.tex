@@ -1,0 +1,105 @@
+\section{Semiconductor statistics}
+\label{sec:semiconductors}
+
+The 2008 heading was empty. The preserved solution of the donor-impurity problem, in the Gibbs chapter, adapts the hydrogen ionization mass action and then evaluates a number. The quantum concentration in that arithmetic is not the concentration defined by the formula next to it. This section writes the mass action, the unit-consistent \(n_Q\), and the hydrogenic binding energy, and it solves the quadratic that the low-ionization shortcut does not justify at the corrected numbers. The preserved solution is unchanged in the Gibbs chapter; a pointer there sends the numerical claim here.
+
+\subsection{Classical electrons and holes}
+
+Use Kittel and Kroemer's orbital quantum concentration, which does not include a spin factor,
+\begin{equation}
+\label{eq:nQ-def}
+n_Q(m,\tau) = \biggl(\frac{m\tau}{2\pi\hbar^2}\biggr)^{3/2}.
+\end{equation}
+In electron-volt units the same quantity is
+\begin{equation}
+\label{eq:nQ-eV}
+n_Q
+= \Biggl(\frac{(mc^2)\,(k_B T)}{2\pi (\hbar c)^2}\Biggr)^{3/2},
+\qquad
+\tau = k_B T.
+\end{equation}
+The factors of \(c\) are required because \(mc^2\) is an energy and \(\hbar c\) is an energy times a length. A quotient of \(mc^2\) and \((\hbar)^2\) with \(\hbar\) in \(\mathrm{eV}\cdot\mathrm{s}\) is not a number per volume.
+
+For a parabolic conduction band edge at energy \(\epsilon_c\), the classical density of electrons, still without a spin factor \(2\), is
+\begin{equation}
+\label{eq:n-electron}
+n = n_Q(m_e^{\!*},\tau)\, \exp\bigl((\mu - \epsilon_c)/\tau\bigr).
+\end{equation}
+For holes in a valence band edge at \(\epsilon_v\),
+\begin{equation}
+\label{eq:p-hole}
+p = n_Q(m_h^{\!*},\tau)\, \exp\bigl((\epsilon_v - \mu)/\tau\bigr).
+\end{equation}
+The product is independent of \(\mu\):
+\begin{equation}
+\label{eq:mass-action-intrinsic}
+np = n_Q(m_e^{\!*},\tau)\, n_Q(m_h^{\!*},\tau)\, \exp\bigl(-(\epsilon_c-\epsilon_v)/\tau\bigr).
+\end{equation}
+In an intrinsic sample the only source of carriers is the promotion across the gap, so charge neutrality says \(n = p\). Then each density is the square root of \eqref{eq:mass-action-intrinsic}. A spin factor \(2\) in both \(n\) and \(p\) multiplies the product by \(4\) and each density by \(2\). The preserved hydrogen solution does not put that factor into \(n_Q\), and the donor arithmetic below follows that choice. The omission is a convention to keep visible, not a claim that spin is absent.
+
+\subsection{Donors}
+
+The preserved solution treats a donor as a hydrogenic center, with the reaction written there as \(e + H^{+} \rightleftharpoons H\), and with the mass action
+\begin{equation}
+\label{eq:donor-mass-action}
+\frac{n\, n_{+}}{n_{0}} = n_Q(m^{\!*},\tau)\, \exp(-I/\tau).
+\end{equation}
+Here \(n\) is the conduction-electron density, \(n_{+}\) the density of ionized donors, and \(n_{0}\) the density of neutral donors. Charge neutrality, with no acceptors, is \(n = n_{+}\). Number conservation is \(n_{0} + n_{+} = N_d\), so \(n_{0} = N_d - n\). Equation \eqref{eq:donor-mass-action} becomes
+\begin{equation}
+\label{eq:donor-quadratic-setup}
+\frac{n^2}{N_d - n} = K,
+\qquad
+K = n_Q(m^{\!*},\tau)\, e^{-I/\tau}.
+\end{equation}
+Rearrange:
+\begin{equation}
+\label{eq:donor-quadratic}
+n^2 + K n - K N_d = 0.
+\end{equation}
+The positive root is
+\begin{equation}
+\label{eq:donor-root}
+n = \frac{ -K + \sqrt{K^2 + 4 K N_d} }{2}.
+\end{equation}
+If \(n\ll N_d\), then \(N_d - n\) may be replaced by \(N_d\) and \(n \approx \sqrt{K N_d}\). That replacement has to be checked against the root it produces.
+
+The preserved numerical inputs are \(N_d = 10^{17}\,\mathrm{cm}^{-3}\), \(T = 100\,\mathrm{K}\), and \(m^{\!*}/m_e = 0.3\). The constants used to evaluate \eqref{eq:nQ-eV} are
+\begin{align}
+k_B &= 8.617333262145\times 10^{-5}\,\mathrm{eV}/\mathrm{K}, \nonumber\\
+m_e c^2 &= 0.5109989461\times 10^{6}\,\mathrm{eV}, \nonumber\\
+\hbar c &= 197.3269718\,\mathrm{eV}\cdot\mathrm{nm}.
+\label{eq:constants-donor}
+\end{align}
+They give
+\begin{equation}
+\label{eq:nQ-number}
+n_Q(0.3\, m_e,\, k_B\cdot 100\,\mathrm{K})
+= 3.9677\times 10^{17}\,\mathrm{cm}^{-3}.
+\end{equation}
+The value \(1263\,\mathrm{cm}^{-3}\) in the preserved solution is the result of dividing an energy by \((\mathrm{eV}\cdot\mathrm{s})^2\) and calling the quotient a concentration. Equation \eqref{eq:nQ-number} is the evaluation of the displayed formula.
+
+The binding energy in the preserved solution is written \(I = (13.6\,\mathrm{eV})/\epsilon\), which divides the hydrogen potential by a dielectric constant and holds the Bohr radius fixed. For a hydrogenic donor the radius scales as \(\epsilon_r m_e/m^{\!*}\), and the energy scales as
+\begin{equation}
+\label{eq:hydrogenic-I}
+I = (13.6\,\mathrm{eV})\, \frac{m^{\!*}/m_e}{\epsilon_r^{2}}.
+\end{equation}
+The static dielectric constant of silicon is not in the preserved solution. The usual value \(\epsilon_r = 11.7\) is used here so that \eqref{eq:hydrogenic-I} has a number, and it is an added assumption:
+\begin{equation}
+\label{eq:I-number}
+I = (13.6\,\mathrm{eV})\, \frac{0.3}{(11.7)^2} = 0.02980\,\mathrm{eV}.
+\end{equation}
+Then \(I/\tau = I/(k_B\cdot 100\,\mathrm{K}) = 3.458\), and
+\begin{equation}
+\label{eq:K-number}
+K = 1.249\times 10^{16}\,\mathrm{cm}^{-3}.
+\end{equation}
+The quadratic \eqref{eq:donor-root} gives
+\begin{equation}
+\label{eq:n-number}
+n = 2.965\times 10^{16}\,\mathrm{cm}^{-3},
+\qquad
+\frac{n}{N_d} = 0.296.
+\end{equation}
+The shortcut \(\sqrt{K N_d} = 3.53\times 10^{16}\,\mathrm{cm}^{-3}\) is about twenty percent higher, and it is not consistent with \(n\ll N_d\). The reported density is \eqref{eq:n-number}. Changing \(m^{\!*}/m_e\) or \(\epsilon_r\) inside their experimental range moves \(n\) by more than this arithmetic does. The preserved value \(2\times 10^{-18}\,\mathrm{cm}^{-3}\) comes from \(n_Q\sim 10^{3}\,\mathrm{cm}^{-3}\) together with a binding energy of order one electron-volt. Both inputs differ from \eqref{eq:nQ-number} and \eqref{eq:I-number}.
+
+A spin degeneracy \(g=2\) of the neutral donor, or a factor \(2\) in the conduction-band density, replaces \(K\) by \(K/2\) or by \(2K\). Either change is outside the mass action as written in the preserved solution, so it is not folded into \eqref{eq:n-number}.

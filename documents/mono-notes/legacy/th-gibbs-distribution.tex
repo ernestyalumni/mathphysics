@@ -1,0 +1,173 @@
+\noindent\textit{2015 manuscript.}
+
+\section{Gibbs distribution}
+\noindent\textit{Manuscript section title: Reactions. Equilibrium in reactions is \S\ref{sec:reaction-equilibrium}.}
+
+\subsection{Gibbs (review)}
+
+cf. Chapter 5: Chemical Potential and Gibbs Distribution of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}
+
+Recall that 
+\[
+\begin{aligned}
+  F & = U - \tau \sigma \\ 
+  dF & = dU - \tau d\sigma - \sigma d\tau = -pdV - \sigma d\tau \text{ or } dF = +\mu dN - pdV - \sigma d\tau 
+\end{aligned}
+\]
+so $F = F(\tau,V)$.  
+
+Total entropy of system $+$ reservoir $\sigma = \sigma_{\mathcal{R}} + \sigma_{\mathcal{S}}$ 
+
+\[
+\sigma = \sigma_{\mathcal{R}} + \sigma_{\mathcal{S}} = \sigma_{\mathcal{R}}(U- U_{\mathcal{S}}) + \sigma_{\mathcal{S}}(U_{\mathcal{S}}) \simeq \sigma_{\mathcal{R}}(U) - U_{\mathcal{S}} \left( \frac{ \partial \sigma_{\mathcal{S}} }{\partial U_{\mathcal{R}} } \right)_{V,N} + \sigma_{\mathcal{S}}(U_{\mathcal{S}})
+\]
+Now
+\[
+\left( \frac{ \partial \sigma_{\mathcal{R}} }{ \partial U_{\mathcal{R}} } \right)_{V,N} \equiv \frac{1}{\tau}
+\]
+and so 
+\[
+\sigma = \sigma_{\mathcal{R}}(U) - \frac{1}{\tau} U_{\mathcal{S}} + \sigma_{\mathcal{S}} = \sigma_{\mathcal{R}}(U) - F_{\mathcal{S}} / \tau
+\]
+$F_{\mathcal{S}}$ must be a minimum with respect to $U_{\mathcal{S}}$ when system in its most probable state.  
+
+EY : 20151218 Consider $\sigma = \frac{U}{\tau} - \frac{F}{\tau}$, so
+\[
+d\sigma = \frac{dU}{\tau} - \frac{U d\tau }{\tau^2} - \frac{dF}{\tau} + \frac{F}{\tau^2} d\tau
+\]
+Consider curve $\gamma : \mathbb{R} \to \Sigma$, s.t. $d\tau(\dot{\gamma})=0$, i.e. $\gamma$ represents a thermodynamic process at constant temeprature.  System in thermal equilibrium with reservoir.  
+
+Now for every thermodynamic process, entropy must increase, and so 
+\[
+d\sigma(\dot{\gamma} ) = \frac{dU}{\tau}(\dot{\gamma} ) - \frac{dF(\dot{\gamma} )}{\tau } \geq 0
+\]
+Thus, if $\int dU(\dot{\gamma} ) < 0$, $\int dF(\dot{\gamma} ) <0$, and so $F$ is a minimum.  
+
+If $d\sigma(\dot{\gamma})=0$, $dU(\dot{\gamma}) = dF(\dot{\gamma})$.  $U$ is minimized, so $F$ is minimized.  
+
+Consider $\mathcal{S}_1$, $\mathcal{S}_2$ in thermal and diffusive contact, $\mathcal{S}_1$, $\mathcal{S}_2$ in thermal contact with large reservoir, with $V_1$,$V_2$ held constant,
+\[
+\begin{aligned}
+  & F = F_1 + F_2 \\ 
+  & N = N_1 + N_2 \text{ constant } 
+\end{aligned}
+\]
+\[
+dF = \left( \frac{ \partial F_1}{ \partial N_1} \right)_{\tau,V_1} dN_1 +  \left( \frac{ \partial F_2}{ \partial N_2} \right)_{\tau,V_2} dN_2 = \left[  \left( \frac{ \partial F_1}{ \partial N_1} \right)_{\tau,V_1}  -  \left( \frac{ \partial F_2}{ \partial N_2} \right)_{\tau,V_2} \right] dN_1 = 0 
+\]
+and so $\mu_1 = \mu_2$ for diffusive equilibrium.  
+
+Note that 
+\begin{equation}
+  \mu(\tau,V,N) := \left( \frac{ \partial F}{ \partial N} \right)_{\tau,V}
+\end{equation}
+
+\textbf{Example: Chemical potential of ideal gas}.  If $\mu_1 > \mu_2$, then $dF <0$, when $dN_1 <0$, \emph{particles flow from high chemical potential to low chemical potential}.  
+
+Recall
+\[
+\begin{gathered}
+  F = -\tau [ N \ln{Z_1} - \ln{N!} ] \\ 
+  Z_1 = n_Q V = \left( \frac{M\tau}{2\pi \hbar^2} \right)^{3/2} V
+\end{gathered}
+\]
+Then
+\[
+\begin{aligned}
+  & \mu = -\tau (\ln{Z_1} - \ln{N} ) = \tau \ln{(N/Z_1 ) } \\ 
+  & \mu = \tau \ln{ (n/n_Q ) } \\ 
+  & \mu = \tau \ln{ \left( \frac{p}{\tau n_Q } \right) }
+\end{aligned}
+\]
+
+Note that the \emph{total chemical potential} $\mu$ is 
+\[
+\mu = \mu_{\text{tot}} = \mu_{\text{ext} } + \mu_{\text{int}}
+\]
+
+Examples of $\mu$:
+\[
+\mu = \tau \ln{ \left( \frac{n}{n_Q} \right) } + q\Delta V
+\]
+
+\textbf{Example: Variation of barometric pressure with altitude}.  \[
+\mu = \tau \ln{ \left( \frac{n}{n_Q} \right) } + Mgh
+\]
+
+\subsubsection{Chemical Potential and Entropy} cf. pp. 131 of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, Ch.5.  
+\[
+\begin{gathered}
+  \sigma = \sigma(U,V,N) \\ 
+  \tau d\sigma = dU + pdV - \mu dN \\
+  - \left( \frac{ \partial \sigma }{ \partial N} \right)_{U,V} = \frac{\mu}{\tau}
+\end{gathered}
+\]
+
+\subsection{Gibbs Factor and Gibbs Sum} cf. pp. 134 of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, Ch.5.  
+Consider system $\mathcal{S}$, with $(N,\epsilon_S)$, number of particles and internal energy, respectively, and reservoir $\mathcal{R}$, with $(N_0-N,U_0-\epsilon_S)$, in thermal and diffusive contact.  
+
+System probability $P(N,\epsilon_S) \propto g(N_0- N,U_0-\epsilon_S)$
+\[
+\frac{ P(N_1,\epsilon_1) }{ P(N_2,\epsilon_2) } = \frac{ g(N_0-N_1, U_0-\epsilon_1)}{ g(N_0-N_2, U_0-\epsilon_2) }
+\]
+Now by definition of entropy, $g(N_0,U_0) \equiv \exp{ [\sigma(N_0,U_0)]}$,
+\[
+\begin{gathered}
+  \frac{ P(N_1,\epsilon_1) }{ P(N_2,\epsilon_2) } = \exp{ (\Delta \sigma )} = \exp{ ( \sigma(N_0 -N_1, U_0 -\epsilon_1) - \sigma(N_0 -N_2, U_0 -\epsilon_2) ) }  = \exp{ \left[ (N_1-N_2) \frac{\mu}{\tau} - \frac{ (\epsilon_1-\epsilon_2)}{\tau} \right] }
+\end{gathered}
+\]
+so 
+\[
+\exp{ \left[ \frac{(N\mu - \epsilon )}{\tau } \right] }
+\]
+is the Gibbs factor.  
+
+Gibbs sum or grand sum or grand partition function $\mathcal{Z}$ is   
+\[
+\mathcal{Z}(\mu,\tau) = \sum_{N=0}^{\infty} \sum_{s(N)} \exp{ \left[ (N \mu - \epsilon_{s(N)} )/\tau \right] } = \sum_{ASN} \exp{ \left[ \frac{(N\mu - \epsilon_{s(N)} ) }{\tau} \right] }
+\]
+where $ASN = $ overall states of the system for all number of particles.  
+
+
+
+
+
+
+Problem 3 \textbf{Potential energy of gas in gravitational field} of Chapter 5: Chemical Potential and Gibbs Distribution from Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}: ``Consider a column of atoms each of mass $M$ at temperature $\tau$ in a uniform gravitational field $g$.''
+
+Consider an infinitesimal layer at height $h$ and at height $h+dh$.  At each height $h$, the layers of atoms are in \emph{diffusive} and \emph{thermal equilibrium}, and so
+\[
+\tau(h+dh) = \tau(h) = \tau
+\]
+(thermal equilibrium) and 
+\[
+\mu(h+dh) = \mu(h)
+\]
+(diffusive equilibrium).  
+
+Now for chemical potential $\mu = \mu(\tau,V,N)$,
+\[
+\mu = \mu_{\text{int}} + \mu_{\text{ext}} = \tau \ln{ \left( n \left( \frac{ 2\pi \hbar^2 }{M\tau} \right)^{3/2} \right) } + Mgh
+\]
+
+Thus, to first order,
+\[
+\tau \frac{1}{n(h) } \frac{ dn(h) }{dh} = -Mg \text{ or } n(h) = n(0) \exp{ \left( \frac{-Mgh}{\tau} \right) }
+\]
+
+The thermal average potential energy per atom is 
+\[
+\begin{gathered}
+  \langle U \rangle = \frac{ \int_0^{\infty} dh Mgh n(h) }{ \int_0^{\infty} dh n(h) } = Mg \frac{ \left. \left[ \frac{ h \exp{ \left( \frac{-Mgh}{\tau} \right) } }{ -Mg/\tau } + - \frac{ \exp{ \left( \frac{-Mgh}{\tau} \right) } }{ (-Mg/\tau)^2 } \right] \right|_0^{\infty} }{ \left. \left( \frac{ \exp{ \left( \frac{-Mgh}{\tau } \right) } }{ -Mg/\tau} \right) \right|_0^{\infty} } = Mg \frac{\tau}{Mg} = \boxed{ \tau = \langle U \rangle }
+\end{gathered}
+\]
+
+From Ch.3, Eq. (64) of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, 
+\[
+U = \frac{ \sum_{\mathbf{n}} \epsilon_{\mathbf{n}} \exp{ \left[ -\epsilon_{\mathbf{n}} /\tau \right] } }{Z_1} = \tau^2 \frac{ \partial \ln{Z_1}}{\partial \tau } = \frac{3\tau}{2}
+\]
+So the total heat capacity per atom $C$ is 
+\[
+C = \frac{ \partial E}{ \partial \tau} = \frac{ \partial ( \langle U \rangle + U ) }{ \partial \tau } = \frac{ \partial }{ \partial \tau} ( \tau + \frac{3\tau}{2} ) = \boxed{ \frac{5}{2}  = C}
+\]
+

@@ -1,0 +1,79 @@
+\noindent\textit{2015 manuscript.}
+
+\section{The coexistence curve}
+\noindent\textit{Manuscript section title: Phase Equilibrium.}
+
+
+\begin{description}
+\item Phase Equilibrium
+\item Phase Diagram
+\item (Phase) Coexistence Curve 
+\item Antoine Equation (parameters)
+\end{description}
+
+
+For coexistence equilibrium, $\mu_g(p_0,\tau_0) = \mu_l(p_0,\tau_0)$ and $\mu_g(p_0 + dp, \tau_0 + d\tau) = \mu_l(p_0 + dp, \tau_0+d\tau)$, and so $\frac{dp}{d\tau} = \frac{L}{ \tau \Delta v}$ with $v \equiv \frac{V}{N}$.  
+
+Make the approximation that $\Delta v \equiv v_g - v_l \approx v_g = \frac{V_g}{N_g}$ and idealize vapor as ideal gas, $pV = N\tau$, so $\frac{dp}{d\tau} = \frac{L}{\tau^2/p}$.  
+
+If $L$ constant, 
+\begin{equation}
+p(\tau) = p_0 \exp{ (-L_0 /\tau)} \text{ or } \ln{ \left( \frac{p(\tau)}{p_0} \right) } = \frac{-L_0}{\tau}
+\end{equation}
+
+Consider the Antoine Equation Parameters given in the NIST (National Institute of Standards and Technology) Chemistry WebBook \footnote{\href{http://webbook.nist.gov/cgi/cbook.cgi?ID=C7782447&Mask=4\#Thermo-Phase}{Phase change data for Oxygen}}
+
+\begin{equation}
+  \log_{10}(P) = A- (B/(T+C))
+\end{equation}
+
+Then
+\[
+\begin{gathered}
+  P = 10^{ A = \frac{B}{T+C}} = 10^A 10^{-\frac{B}{T+C}} = 10^A \exp{ \left( \frac{-B}{T+C} \ln{10} \right) }
+\end{gathered}
+\]
+Now $\frac{D}{T+C} = \frac{D}{T} - \frac{DC}{T(T+C)}$, and so
+\[
+P = 10^A \exp{ \left( \frac{ (B\ln{10} )C }{T(T+C)} \right) }\exp{ \left( \frac{-B\ln{10} }{ T} \right) }
+\]
+Consider how much the pressure is changed due to this $C$ parameter.  Consider $P_0$, $P_1$, defined as such:
+\[
+\begin{gathered}
+  \begin{aligned}
+    & P_0 = 10^A  \exp{ \left( \frac{-B\ln{10} }{ T} \right) }
+    & P_1 = 10^A \exp{ \left( \frac{ (B\ln{10} )C }{T(T+C)} \right) }\exp{ \left( \frac{-B\ln{10} }{ T} \right) }
+  \end{aligned} \Longrightarrow \frac{P_0}{P_1} = \exp{ \left( \frac{ (B\ln{10} )C }{ T(T+C) } \right)}
+\end{gathered}
+\]
+So a deviation can be estimated from $1 - \frac{P_0}{P_1}$.  
+
+Open up \verb|thermochem.py|.  The \emph{saturation curve} or \emph{coexistence curve} for, for example, oxygen, from liquid to gas, can be reproduced.  One needs to input in the Antoine parameters from the NIST website \footnote{\url{http://webbook.nist.gov/cgi/cbook.cgi?ID=C7782447&Mask=4\#Thermo-Phase}}
+
+\begin{lstlisting}
+>>> O2coec = CoexistCurve(3.85845, 325.675, -5.667 )                                            
+>>> plot( O2coec.curveSI.rhs, (T,54.36,100.16) )   
+
+>>> N(O2coec.curveSI.rhs.subs(T,60.))
+731.804072053687
+>>> N(O2coec.curveSI.rhs.subs(T,70.))
+6253.42680398774
+>>> N(O2coec.curveSI.rhs.subs(T,75.))
+14494.1195824433
+\end{lstlisting}
+
+%  \quad \quad \quad \begin{tikzpicture}
+%  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+%  {
+%& u_t(x):= u(x,t) = U(a,t) =: U_t(a)    \\
+%    a  & x(a,t)=x   \\
+%};
+%  \path[|->]
+%  (m-2-1) edge node [above] {$U_t $} (m-1-2)
+%          edge node [above] {$g(t) = g_t$} (m-2-2)
+%  (m-2-2) edge node [auto]  {$$} (m-1-2)
+%          edge [bend left=30] node [below] {$g_t^{-1} = g_{-t}$} (m-2-1)
+%  ;
+%\end{tikzpicture}  
+
+

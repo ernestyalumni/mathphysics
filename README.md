@@ -7,6 +7,7 @@
 | codename        | directory | Keywords | Description             | External links |
 | --------------- | :------------------------------------- | :---------------------: | :------------------ | :-------------| 
 | `the geometry of physics problems.tex` | `./LaTeX_and_pdfs/the geometry of physics problems`                     | Frankel, geometry, topology, physics,                           | Notes and solutions for Frankel's **The Geometry of Physics** | |
+| `master.tex` | `./documents/mono-notes` | thermodynamics, statistical mechanics, Kittel, Kroemer | Mono notes, first part. Letter and widescreen from one source. | |
 
 # Creating and starting a virtual environment for Python 3
 

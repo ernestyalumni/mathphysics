@@ -1,0 +1,171 @@
+\section{States of a model system}
+\label{sec:model-system}
+
+The 2008 manuscript begins with this heading and no text. The counting below is the input to the paramagnet solution in the entropy chapter. Nothing here is quoted from the book.
+
+\subsection{Two-state elements and the spin excess}
+
+Take \(N\) elements, \(N\) even, each with two states. Label the states up and down. Let \(N_{\uparrow}\) and \(N_{\downarrow}\) be the occupation numbers,
+\begin{equation}
+\label{eq:occupation-sum}
+N_{\uparrow} + N_{\downarrow} = N.
+\end{equation}
+The spin excess \(2s\) is the difference,
+\begin{equation}
+\label{eq:spin-excess}
+2s = N_{\uparrow} - N_{\downarrow},
+\qquad
+s \in \mathbb{Z},
+\qquad
+|s| \le N/2.
+\end{equation}
+Solving \eqref{eq:occupation-sum} and \eqref{eq:spin-excess} gives
+\begin{equation}
+\label{eq:occupations}
+N_{\uparrow} = \frac{N}{2} + s,
+\qquad
+N_{\downarrow} = \frac{N}{2} - s.
+\end{equation}
+Both are nonnegative integers in the range just stated. The elements are treated as distinguishable by their positions in the model, as in a lattice of fixed sites. The multiplicity of the macrostate \(s\) is the binomial count
+\begin{equation}
+\label{eq:multiplicity}
+g(N,s) = \frac{N!}{N_{\uparrow}!\, N_{\downarrow}!}
+= \frac{N!}{\bigl(\tfrac{N}{2}+s\bigr)!\, \bigl(\tfrac{N}{2}-s\bigr)!}.
+\end{equation}
+The entropy in the units \eqref{eq:tau-sigma} is \(\sigma(N,s) = \ln g(N,s)\).
+
+An external field \(B\) is not required for the count. When the only energy is the coupling of each element to that field, take the single-element energies to be \(-mB\) and \(+mB\). Then
+\begin{equation}
+\label{eq:two-state-energy}
+U(s) = -mB\, N_{\uparrow} + mB\, N_{\downarrow} = -mB\,(N_{\uparrow}-N_{\downarrow}) = -2mB\, s.
+\end{equation}
+The symbol \(m\) is the magnitude of the moment of one element. Equation \eqref{eq:two-state-energy} is the energy used in the preserved paramagnet solution.
+
+\subsection{Stirling's approximation}
+
+For a positive integer \(n\),
+\begin{equation}
+\label{eq:stirling}
+\ln n! = n\ln n - n + \tfrac{1}{2}\ln(2\pi n) + \varepsilon_n,
+\end{equation}
+with \(\varepsilon_n \to 0\) as \(n\to\infty\). The exponent computed next uses the terms \(n\ln n - n\). The square-root term is restored at the central multiplicity, and it is checked that it does not change the coefficient of \(s^2/N\).
+
+Substitute \eqref{eq:stirling}, without \(\varepsilon_n\) and without the square-root term, into \eqref{eq:multiplicity}:
+\begin{align}
+\ln g(N,s)
+&= \ln N! - \ln N_{\uparrow}! - \ln N_{\downarrow}! \nonumber\\
+&= N\ln N - N
+ - N_{\uparrow}\ln N_{\uparrow} + N_{\uparrow}
+ - N_{\downarrow}\ln N_{\downarrow} + N_{\downarrow} \nonumber\\
+&= N\ln N - N_{\uparrow}\ln N_{\uparrow} - N_{\downarrow}\ln N_{\downarrow}.
+\label{eq:ln-g-before-x}
+\end{align}
+The linear terms \(-N + N_{\uparrow} + N_{\downarrow}\) cancel by \eqref{eq:occupation-sum}.
+
+\subsection{Gaussian peak}
+
+Set
+\begin{equation}
+\label{eq:x-def}
+x = \frac{2s}{N},
+\qquad
+|x| \le 1,
+\end{equation}
+so \(N_{\uparrow} = (N/2)(1+x)\) and \(N_{\downarrow} = (N/2)(1-x)\). Then
+\begin{align}
+N_{\uparrow}\ln N_{\uparrow}
+&= \frac{N}{2}(1+x)\bigl(\ln(N/2) + \ln(1+x)\bigr), \nonumber\\
+N_{\downarrow}\ln N_{\downarrow}
+&= \frac{N}{2}(1-x)\bigl(\ln(N/2) + \ln(1-x)\bigr).
+\label{eq:split-logs}
+\end{align}
+Add \eqref{eq:split-logs}:
+\begin{align}
+N_{\uparrow}\ln N_{\uparrow} + N_{\downarrow}\ln N_{\downarrow}
+&= N\ln(N/2) \nonumber\\
+&\quad + \frac{N}{2}\bigl[\ln(1-x^2) + x\ln\bigl((1+x)/(1-x)\bigr)\bigr].
+\label{eq:sum-logs}
+\end{align}
+The coefficient of \(\ln(N/2)\) is \((N/2)(1+x) + (N/2)(1-x) = N\). Insert \eqref{eq:sum-logs} into \eqref{eq:ln-g-before-x}:
+\begin{equation}
+\label{eq:ln-g-exact-stirling}
+\ln g(N,s)
+= N\ln 2
+- \frac{N}{2}\ln(1-x^2)
+- \frac{Nx}{2}\ln\biggl(\frac{1+x}{1-x}\biggr).
+\end{equation}
+The identity \(N\ln N - N\ln(N/2) = N\ln 2\) was used. Also \(Nx/2 = s\).
+
+For the peak, take \(|x|\ll 1\), which is \(|s|\ll N/2\). The Taylor expansions through order \(x^3\) in the logarithms are
+\begin{align}
+\ln(1-x^2) &= -x^2 + O(x^4), \nonumber\\
+\ln\biggl(\frac{1+x}{1-x}\biggr)
+&= 2\bigl(x + O(x^3)\bigr).
+\label{eq:log-series}
+\end{align}
+Hence
+\begin{align}
+-\frac{N}{2}\ln(1-x^2)
+&= \frac{N}{2}x^2 + O(N x^4)
+= \frac{2s^2}{N} + O\biggl(\frac{s^4}{N^3}\biggr), \nonumber\\
+-\frac{Nx}{2}\ln\biggl(\frac{1+x}{1-x}\biggr)
+&= -N x^2 + O(N x^4)
+= -\frac{4s^2}{N} + O\biggl(\frac{s^4}{N^3}\biggr).
+\label{eq:two-contributions}
+\end{align}
+The first line uses \((N/2)x^2 = (N/2)(4s^2/N^2) = 2s^2/N\). The second uses \(N x^2 = N(4s^2/N^2) = 4s^2/N\). Add them:
+\begin{equation}
+\label{eq:gaussian-entropy}
+\ln g(N,s)
+= N\ln 2 - \frac{2s^2}{N} + O\biggl(\frac{s^4}{N^3}\biggr).
+\end{equation}
+At \(s = 0\), the same truncation gives \(\ln g(N,0) = N\ln 2\), so
+\begin{equation}
+\label{eq:gaussian-multiplicity}
+g(N,s) \simeq g(N,0)\, \exp\biggl(-\frac{2s^2}{N}\biggr),
+\qquad
+g(N,0) \simeq 2^{N},
+\end{equation}
+inside the approximation that dropped both the square-root Stirling term and \(O(s^4/N^3)\). Restoring \(\tfrac{1}{2}\ln(2\pi n)\) at \(s=0\) replaces the central estimate by
+\begin{equation}
+\label{eq:central-prefactor}
+g(N,0) \simeq 2^{N}\sqrt{\frac{2}{\pi N}}.
+\end{equation}
+The check is the standard one: \(\ln N! - 2\ln((N/2)!)\) with \eqref{eq:stirling} produces \(N\ln 2 + \tfrac{1}{2}\ln(2/(\pi N))\). The \(s\)-dependent piece of those square-root terms is \(-\tfrac{1}{2}\ln(1-x^2) = O(s^2/N^2)\), which is smaller than \(s^2/N\) by one power of \(N\). It does not change the coefficient \(-2\) in \eqref{eq:gaussian-entropy}.
+
+The peak is sharp in the fractional excess. From \eqref{eq:gaussian-entropy}, \(\sigma(s)-\sigma(0) = -2s^2/N\) at this order. At \(s = \sqrt{N}\) the multiplicity has fallen by a factor \(e^{-2}\) relative to the center, while the fractional excess is \(s/(N/2) = 2 N^{-1/2}\). For large \(N\) almost every state in the count sits at a fractional excess of order \(N^{-1/2}\) or smaller.
+
+\subsection{Temperature of the paramagnet in this approximation}
+
+Solve \eqref{eq:two-state-energy} for the excess, \(s = -U/(2mB)\), and substitute into the exponent of \eqref{eq:gaussian-entropy}:
+\begin{equation}
+\frac{2s^2}{N}
+= \frac{2}{N}\cdot\frac{U^2}{4 m^2 B^2}
+= \frac{U^2}{2 m^2 B^2 N}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:paramagnet-entropy}
+\sigma(N,U)
+= \sigma_0 - \frac{U^2}{2 m^2 B^2 N},
+\qquad
+\sigma_0 = \ln g(N,0),
+\end{equation}
+in the same small-excess regime, and with \(N\) and \(B\) held fixed. Differentiate:
+\begin{equation}
+\label{eq:paramagnet-temperature}
+\frac{1}{\tau}
+= \biggl(\frac{\partial \sigma}{\partial U}\biggr)_{N}
+= -\frac{U}{m^2 B^2 N}.
+\end{equation}
+Hence
+\begin{equation}
+\label{eq:paramagnet-energy}
+U = -\frac{N m^2 B^2}{\tau}.
+\end{equation}
+From \eqref{eq:two-state-energy}, \(U = -2mB\, s\), so the fractional excess in this regime is
+\begin{equation}
+\label{eq:fractional-magnetization}
+\frac{2s}{N} = \frac{mB}{\tau}.
+\end{equation}
+Equation \eqref{eq:paramagnet-temperature} is the derivative written in the preserved paramagnet solution. That solution starts from the Gaussian multiplicity \eqref{eq:gaussian-multiplicity} and does not derive it. The canonical two-state free energy is in \S\ref{sec:cryogenics}. Its small-field expansion reproduces \eqref{eq:paramagnet-energy}.

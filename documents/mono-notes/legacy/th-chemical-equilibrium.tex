@@ -1,0 +1,93 @@
+\noindent\textit{2015 manuscript.}
+
+\section{Equilibrium in Reactions}
+\label{sec:reaction-equilibrium}
+
+cf. Section Equilibrium in Reactions for Chapter 9: Gibbs Free Energy and Chemical Reactions of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}
+
+\begin{equation}
+  \nu_1 A_1 + \nu_2 A_2 + \dots + \nu_l A_l = 0 \text{ or } \sum_j \nu_j A_j = 0
+\end{equation}
+where $\nu_j \in \mathbb{Z}$, $A_j$ chemical species, where we consider the finite set of chemical elements, and nonnegative integers $\mathbb{Z}^+$ for each element, signifying how many of the element in the molecule.  
+
+Now clearly,
+\[
+dN_j = \nu_j d\widehat{N}
+\]
+where $d\widehat{N} \equiv$ how many times reaction takes place.
+
+Now
+\[
+dG = \sum_j \mu_j dN_j - \sigma d\tau + Vdp
+\]
+and so for constant temperature, constant pressure, 
+\[
+dG = \sum_j \mu_j dN_j = \sum_j \mu_j \nu_j d\widehat{N} 
+\]
+then for equilibrium $dG=0$, 
+\begin{equation}
+\boxed{ \sum_j \nu_j \mu_j = 0 }
+\end{equation}
+
+
+\subsection{Equilibrium for Ideal Gases}
+
+cf. Subsection Equilibrium for Ideal Gases for Chapter 9: Gibbs Free Energy and Chemical Reactions of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}
+
+From Eq. (6.48) of Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}, 
+\[
+\mu = \tau [ \ln{ \left( \frac{n}{n_Q} \right)} - \ln{ Z_{\text{int}} } ]
+\]
+and so
+\[
+\mu_j = \tau (\ln{ n_j} - \ln{c_j})
+\]
+where 
+\[
+c_j \equiv n_{Q_j} Z_j(\text{int})
+\]
+where
+\[
+Z_j(\text{int}) = \sum_{\text{int}} \exp{ \left( \frac{-\epsilon_{\text{int}} }{\tau} \right) }
+\]
+Thus
+\[
+\Longrightarrow \sum_j \nu_j \ln{n_j} = \sum_j \nu_j \ln{c_j}
+\]
+and so the \textbf{law of mass action} is obtained:
+\begin{equation}
+  \boxed{ \prod_j n_j^{\nu_j} = K(\tau) \equiv \prod_j n_{Q_j}^{\nu_j} \exp{ \left( -\nu_j F_j(\text{int})/ \tau \right) }  }
+\end{equation}
+where
+\[
+F_j(\text{int}) = -\tau \ln{Z_j(\text{int}) }
+\]
+
+From Problem 6 \textbf{Rotation of diatomic molecules} of Chapter 3: Boltzmann Distribution and Helmholtz Free Energy, Kittel and Kroemer \cite{CKittelHKroemer1980}, \\
+rotational energy at level $j\in \mathbb{Z}^+$, $\epsilon(j) = j(j+1) \epsilon_0$ \\
+multiplicity $g(j) = 2j+1$
+
+\[
+Z_R = \sum_{j=0}^{\infty} (2j+1)\exp{ \left( \frac{1}{-\tau} j(j+1) \epsilon_0 \right) } = \frac{-\tau}{\epsilon_0} \sum_{j=0}^{\infty} \frac{d}{dj} \left[ (e^{-\epsilon_0 /\tau})^{j^2+j} \right] 
+\]
+For $1 \gg \frac{\epsilon_0}{\tau}$, 
+\[
+Z_R(\tau) = \frac{-\tau}{\epsilon_0} \int_0^{\infty} \frac{d}{dx} \left[ (e^{-\epsilon_0/\tau})^{x^2 + x} \right] = \frac{\tau}{\epsilon_0}
+\]
+So 
+\[
+F_R = -\tau \ln{Z_R} = -\tau \ln{ \left( \frac{\tau}{\epsilon_0} \right)}
+\]
+and 
+\[
+\exp{ (-\nu_j F_j(\text{int})/\tau) } = \exp{ ( \nu_j \ln{ \left( \frac{\tau}{\epsilon_{0;j}} \right) } ) } = \exp{ ( \nu_j \ln{ \left( \frac{\tau}{\epsilon_{0;j}} \right) } ) } = \left( \frac{\tau}{\epsilon_{0;j} } \right)^{\nu_j}
+\]
+and so 
+\[
+K(\tau) = \prod_j (n_{Q_j})^{\nu_j} \left( \frac{\tau}{\epsilon_{0;j}} \right)^{\nu_j} = \prod_j \left[ \left( \frac{ M_j \tau }{ 2\pi \hbar^2} \right)^{d/2} \frac{\tau}{ \epsilon_{0;j} } \right]^{\nu_j}
+\]
+
+
+
+
+

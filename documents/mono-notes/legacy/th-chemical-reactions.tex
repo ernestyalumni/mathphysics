@@ -1,0 +1,113 @@
+\noindent\textit{2015 manuscript.}
+
+\section{Chemical Reactions}
+Topics:
+\begin{itemize}
+  \item Heat of formation i.e. standard enthalpy of formation
+\end{itemize}
+
+I will follow Chapter 10, ``Chemical Reactions'', of Landau and Lifshitz (1980) \cite{LLandauELifshitz1980}.  
+
+From Sec. 101. The condition for chemical equilibrium of Landau and Lifshitz (1980) \cite{LLandauELifshitz1980}, for a chemical reaction,
+\[
+\sum_i \nu_i A_i = 0 \qquad \nu_i \in \mathbb{Z}
+\]
+Denote thermodynamic potential $\Phi$.  
+
+In equilibrium, say at constant temperature and pressure, 
+\[
+\begin{gathered}
+  d\Phi\left( \frac{ \partial }{ \partial N_i} \right) = \frac{ \partial \Phi}{ \partial N_1} + \frac{ \partial \Phi}{ \partial N_2} \frac{ \partial N_2}{ \partial N_1} + \frac{ \partial \Phi}{ \partial N_3} \frac{ \partial N_3}{ \partial N_1} + \dots = 0 \text{ for }  \\
+  d\Phi = \frac{ \partial \Phi}{ \partial N_1} dN_1 + \frac{ \partial \Phi}{ \partial N_2} dN_2 + \dots 
+\end{gathered}
+\]
+where $N_1, N_2 \dots =$ number of particles of particles of various substances taking place in reaction. 
+
+It's clear that 
+\[
+dN_i = \frac{ \nu_i}{ \nu_1} dN_1
+\]
+so 
+\[
+\sum_i \frac{ \partial \Phi}{ \partial N_i} \frac{ \nu_i}{ \nu_1} = 0 
+\]
+Let $\mu_i := \frac{ \partial \Phi}{ \partial N_i}$.  
+\begin{equation}
+\Longrightarrow \sum_i \nu_i \mu_i = 0 
+\end{equation}
+
+Here, I will follow Section 3.5 Chemical potential of Le Bellac, Mortessagne, Batrouni (2004) \cite{MLeBellacFMortessagneGBatrouni2004}.  
+
+Recall that 
+\[
+\begin{gathered}
+  G(N,\tau,p) = N\mu(\tau,p) \\
+  G = \sum_j \mu_j N_j 
+\end{gathered}
+\]
+from Eq. \ref{Eq:Gibbspotential}, and Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}.  Therefore,
+\[
+dG = \sum_j \mu_j dN_j + N_j d\mu_j = -\sigma d\tau + Vdp + \sum_j \mu_j dN_j
+\]
+and so the \textbf{Gibbs-Duhem} relation is (correctly) obtained:
+\begin{equation}\label{Eq:Gibbs-Duhem}
+  0 = \sigma d\tau - V dp + \sum_j N_j d\mu_j
+\end{equation}
+
+\subsubsection{Conduction and Convection}\label{SubsubSec:ConductionConvection}
+
+In $\tau d\sigma$, let's distinguish the \emph{conduction} component and \emph{convection} component.
+
+Consider system at equilibrium, thermal equilibrium with thermostat at temperature $\tau$ \\
+\qquad kept at pressure $p$ \\
+\qquad able to exchange particles with reservoir at chemical potential $\mu$
+
+Define
+
+\[
+\begin{aligned}
+  & \widehat{\sigma} := \frac{ \sigma}{N } \qquad \, & \text{ \textbf{entropy per particle } } \\
+  & \widehat{\epsilon} := \frac{ E}{N } \qquad \, & \text{ \textbf{energy per particle } } 
+\end{aligned}
+\]
+
+Then, 
+\[
+\boxed{ 
+\tau d\sigma = \tau d(\widehat{\sigma}N) = \tau N d\widehat{\sigma} + \tau \widehat{\sigma} dN
+}
+\]
+where \\
+
+$\tau N d\widehat{\sigma}$ is \emph{entropy change due to change in entropy per particle}, i.e. \emph{conduction term} and \\
+
+$\tau \widehat{\sigma} dN$ is \emph{entropy change due to change in number of particles} i.e. \emph{ convection term}.  
+
+So
+\[
+dE = Q + W + \mu dN = \tau d\sigma + 0 + \mu dN = \tau Nd\widehat{\sigma} + (\tau \widehat{\sigma} + \mu ) dN = \tau N d\widehat{\sigma} + \widehat{h} dN
+\]
+where
+\[
+\widehat{h} := \frac{H}{N} = \widehat{\epsilon} + pV \text{ is \textbf{enthalpy per particle} }
+\]
+since 
+\[
+\begin{gathered}
+H = E + pV \\ 
+G = E-\tau \sigma + pV = \mu N = H-\tau \sigma
+\end{gathered} \Longrightarrow \tau \widehat{\sigma} + \mu = \frac{H}{N} = \widehat{h}
+\]
+
+Interpretation of $\widehat{h}dN$: If $dN$ particles are transported into a given volume by convection, energy increases by $\widehat{\epsilon}dN$.  \\
+However, to return to initial volume, it's necessary to compress by $vdN =: \frac{V}{N}dN$ and add work done by pressure $pvdN$
+\[
+\Longrightarrow \widehat{h}dN = (\widehat{\epsilon} + pv)dN
+\]
+An example of this is \emph{Joule-Thomson expansion}.
+\begin{correction}{enthalpy per particle}
+$\hat h = H/N = \hat\epsilon + pv$ with $v = V/N$.
+The display that adds $pV$ to $\hat\epsilon$ mixes an energy per particle with an energy.
+See \S\ref{sec:enthalpy-per-particle}.
+\end{correction}  
+

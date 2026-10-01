@@ -1,0 +1,712 @@
+\noindent\textit{2008 manuscript.}
+
+\section{Heat and Work}
+
+\subsection*{Energy and Entropy transfer: Definition of Heat and Work}
+
+Consider $\Sigma$, a manifold consisting of points representing thermodynamic states of a single system.  For instance, for global coordinates $(U,V)$, \\
+$(U,V) \in \Sigma$.  
+
+Consider $W,Q \in \Omega^1(\Sigma)$, 1-forms on $\Sigma$.  
+
+Now define $Q$ as 
+
+\[
+Q \equiv \tau d\sigma
+\]
+with $\begin{aligned}
+ & \quad \\
+  & \sigma = \sigma(U,V) \in C^{\infty}(\Sigma) \\
+   & \tau = \tau(U,V) \in C^{\infty}(\Sigma) \end{aligned}$
+
+Recall energy conservation in this form:
+\[
+dU = W + Q
+\]
+Consider pure heat and, so, no work.  Now $Q = \tau d\sigma$ 
+
+\subsection*{Heat Engines: Conversion of Heat into Work}
+
+Consider curve $\begin{aligned} & \quad \\ 
+  & c : \mathbb{R} \to \Sigma \\
+  & c(t) \in \Sigma \end{aligned}$ s.t. $c$ generates vector field $\dot{c} = \frac{ \partial }{ \partial \sigma }$ ($U$ is suited for this).  
+
+Act on this vector field $\frac{ \partial }{ \partial \sigma} \in \mathfrak{X}(\Sigma)$ with $Q$, i.e.
+\[
+Q \left( \frac{ \partial }{ \partial \sigma } \right) = \tau
+\]
+This is what's meant when it's said ``reversible heat transfer accompanying 1 unit of entropy is given by temperature $\tau$'' \cite{CKittelHKroemer1980}.  
+
+Consider Figure 8.1 on page 229 of Kittel and Kroemer \cite{CKittelHKroemer1980}.  Roughly it looks like this:
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
+  {
+\phantom{x} &    \tau = \tau_h & d\sigma_h = Q_h /\tau_h & Q_h & \\
+\phantom{x} & \phantom{x}                 &               \phantom{x}          & \phantom{x}     & W \\
+\phantom{x} & \tau = \tau_l    & d\sigma_l = Q_l /\tau_l & Q_l &    \\  };
+  \path[->]
+  (m-3-1) edge node [left] {$\tau$} (m-1-1)
+  (m-1-3) edge node [auto] {$$} (m-3-3)
+  (m-1-4) edge node [auto] {$$} (m-3-4)
+  (m-2-4) edge node [below] {$$} (m-2-5)
+;
+\end{tikzpicture}
+
+But what's really going on? 
+
+Consider $Q_h = dU$, the initial heat input at high temperature (I'll show that later) $\tau_h$.  \\
+Consider a curve $c_0 \in \Sigma$ s.t. $\dot{c}_0 = \dot{\sigma}_0 \frac{ \partial }{ \partial \sigma}$.  Then
+\[
+Q_h(\dot{c}_0) = dU(\dot{c}_0 ) = \left( \frac{ \partial U}{ \partial \sigma} \right)_V = \tau \dot{\sigma}_0 \equiv \tau_h \dot{\sigma}_0
+\]
+We can integrate the 1-form $dU \in \Omega^1(\Sigma)$ for 2 reasons: mathematically, it is an exact form.  Physically, we are considering a reversible process, passing through thermodynamic states of the system, starting with the system being in energy $U_0$ and ending up with energy $U_1$, and all the energy states ($\in \mathbb{R}$) in between.  
+\[
+\Longrightarrow U_1 - U_0 = \int_0^1 \tau_h d\sigma
+\]
+If this is conducted all at temperature $\tau_h$ during the whole process, then $U_1 - U_0 = \tau_h \int_0^1 d\sigma = \tau_h ( \sigma_1 - \sigma_0)$.  It's in this case that $d\sigma$ is an exact form and can be integrated over that curve $c_0$.  
+
+\subsection*{Legendre transforms revisited}
+
+Let's recall 2 of our favorite thermodynamic potentials, $U$, and Helmholtz free energy $F$.  They are related by Legendre transformations that transform 1 coordinate into its conjugate coordinate, somewhat like how the Legendre transform transforms that Lagrangian in canonical coordinates into a Hamiltonian written with the conjugate momentum.  However, I do want to point out that, for Lagrangians and Hamiltonians, the Legendre transformation is a fiber derivative between tangent bundle to the cotangent bundle on the manifold.  In our current case, we want a mundane Legendre transformation between convex function to another convex function, a coordinate transformation by a $C^{\infty}$ function, not a morphism between vector spaces.  
+
+Recall $F$. It's defined as such: \\
+$F\equiv U -\tau \sigma$, so \\
+$dF = dU- \tau d\sigma - \sigma d\tau = -\sigma d\tau - pdV$
+
+Consider curve $\begin{aligned} & \quad \\
+  & c : \mathbb{R} \to \Sigma \\
+  & c(t) \in \Sigma \end{aligned}$
+
+Consider 2 curves that generate vector fields: 
+\[
+\dot{c} = \dot{\tau} \frac{ \partial }{ \partial \tau } \text{ or } \dot{c} = \dot{V} \frac{ \partial }{ \partial V}
+\]
+Now, in general, mathematically,
+\[
+dF = + \left( \frac{ \partial F}{ \partial \tau } \right)_V d\tau + \left( \frac{ \partial F}{ \partial V} \right)_{\tau} dV
+\]
+Thus,
+\[
+\begin{aligned}
+  & \left( \frac{ \partial F}{ \partial \tau} \right)_V = -\sigma \\ 
+  & \left( \frac{ \partial F}{ \partial V} \right)_{\tau} = -p 
+\end{aligned}
+\]
+Maxwell relations are easily derived:
+\[
+\frac{ \partial^2 F}{ \partial V \partial \tau} = \frac{ \partial^2 F}{ \partial \tau \partial V} \text{ so } \left( \frac{ \partial \sigma }{ \partial V} \right)_{\tau} = \left( \frac{ \partial p }{ \partial \tau} \right)_V
+\]
+So-called natural coordinates for $F$ are $\tau,V$.  So $\Sigma \ni (\tau,V)$ (i.e. after a Legendre transformation, the coordinates become $(\tau,V)$ for each thermodynamic state.  
+
+Recall $U$ as a thermodynamic potential.  Using energy conservation and how $Q$ is defined, 
+\[
+dU = Q + W = \tau d\sigma +  pdV
+\]
+\begin{correction}{work sign}
+The identity used in the rest of these notes is $dU = \tau\, d\sigma - p\, dV$.
+The plus sign on $p\, dV$ in the display above disagrees with that identity and with the Carnot integral later in this section.
+See \S\ref{sec:work-sign}.
+\end{correction}
+Natural coordinates are $\sigma, V$ for $U$.  So $\Sigma \ni (\sigma, V)$.  
+
+
+\textbf{heat engine}
+
+ideal heat engine: 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=1em]
+  {
+ & 1 &   & \\
+0 &  & 2 & \phantom{x}\\  };
+  \path[->]
+  (m-2-1) edge node [left] {$Q_h = \tau_h d\sigma_h$} (m-1-2)
+  (m-1-2) edge node [left] {$Q_l = \tau_l d\sigma_l$} (m-2-3)
+  (m-1-2) edge node [right] {$W$} (m-2-4)
+;
+\end{tikzpicture} \quad \quad \, \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=1em]
+  {
+ & (\sigma_1,V_0) &   & \\
+(\sigma_0,V_0) &  & (\sigma_2,V_1) & \\  };
+  \path[|->]
+  (m-2-1) edge node [left] {$Q_h = \tau_h d\sigma_h$} (m-1-2)
+  (m-1-2) edge node [right] {$Q_l = \tau_l d\sigma_l$} (m-2-3)
+;
+\end{tikzpicture}
+\[
+\begin{gathered}
+W+ Q_l = Q_h \text{ or } W=Q_h - Q_l \\
+W = Q_h - Q_l \leq \frac{ \tau_h - \tau_l}{ \tau_h} Q_h = \eta_C Q_h
+\end{gathered} \quad \quad \quad \, 
+\begin{gathered}
+  \sigma_l = \sigma_h \text{ so } \frac{ Q_h}{\tau_h } = \frac{ Q_l }{ \tau_l}
+\end{gathered}
+\]
+
+\textbf{Carnot efficiency} $\eta_C \equiv \frac{\tau_h - \tau_l}{\tau_h}$ is the ratio of the work generated to the heat added, in the reversible process.  
+
+
+
+\subsection*{Carnot cycle}
+
+\quad \quad \, 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=1em]
+  {
+3 & 2  \\
+4 & 1 \\  };
+  \path[->]
+  (m-2-2) edge node [right] {$-W_1^2 = Q_h$} (m-1-2)
+  (m-1-2) edge node [above] {$W_2^3$} (m-1-1)
+  (m-1-1) edge node [left] {$W_3^4$} (m-2-1)
+  (m-2-1) edge node [below] {$W_4^1$} (m-2-2)
+;
+\end{tikzpicture} \quad \quad 
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=1em]
+  {
+(\sigma_H,\tau_l) & (\sigma_H, \tau_h) \\
+(\sigma_L, \tau_l) & (\sigma_L,\tau_h) 
+\\  };
+  \path[->]
+  (m-2-2) edge node [right] {$-W_1^2 = Q_h$} (m-1-2)
+  (m-1-2) edge node [above] {$W_2^3$} (m-1-1)
+  (m-1-1) edge node [left] {$W_3^4$} (m-2-1)
+  (m-2-1) edge node [below] {$W_4^1$} (m-2-2)
+;
+\end{tikzpicture}
+
+The total work is as such: $\oint dU =0$ for 2 reasons: mathematically, the integration of an exact 1-form around a closed curve is $0$, and physically, we return the system back to its original state, as this is a reversible process.  
+\[
+\oint dU = 0 = \oint \tau d\sigma - \oint p dV \Longrightarrow -\oint W = \oint \tau d\sigma = \left[ \tau_h(\sigma_H - \sigma_L) + 0 + \tau_l (\sigma_L - \sigma_H) + 0 \right] = (\tau_h - \tau_l)(\sigma_H - \sigma_L)
+\]
+
+\subsubsection*{Example: Carnot cycle for an ideal gas}
+
+\quad \quad \, 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=1em]
+  {
+3 & 2  \\
+4 & 1 \\  };
+  \path[->]
+  (m-2-2) edge node [right] {$-W_1^2 = Q_h$} (m-1-2)
+  (m-1-2) edge node [above] {$W_2^3$} (m-1-1)
+  (m-1-1) edge node [left] {$W_3^4=-Q_l$} (m-2-1)
+  (m-2-1) edge node [below] {$W_4^1$} (m-2-2)
+;
+\end{tikzpicture} \quad \quad \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=1em]
+  {
+(\sigma_H,\tau_l,V_3) & (\sigma_H,\tau_h,V_2)  \\
+(\sigma_L,\tau_l,V_4) & (\sigma_L,\tau_h,V_1)   \\  };
+  \path[->]
+  (m-2-2) edge node [right] {$-W_1^2 = Q_h$} (m-1-2)
+  (m-1-2) edge node [above] {$W_2^3$} (m-1-1)
+  (m-1-1) edge node [left] {$W_3^4=-Q_l$} (m-2-1)
+  (m-2-1) edge node [below] {$W_4^1$} (m-2-2)
+;
+\end{tikzpicture}
+
+with
+
+\[
+\begin{aligned}
+\text{isothermal expansion }  & Q_h =- W_1^2 = \int_1^2 p dV = N\tau_h \ln{ \left( \frac{V_2}{ V_1} \right) } \\
+\text{adiabatic expansion }  & W_2^3 = - \int_2^3 dU = U(\tau_h) - U(\tau_l) = C_V(\tau_h-\tau_l) \\
+\text{isothermal compression } & -Q_l = W_3^4 = \int_3^4-pdV = N\tau_l \ln{ \frac{V_3}{V_4}} \\
+\text{adiabatic compression } & W_4^1 = C_V (\tau_h - \tau_l)
+\end{aligned} \quad \quad \quad \, \begin{aligned} 
+& \quad \\
+  & \tau_l V_3^{\gamma-1} = \tau_h V_2^{\gamma-1} \text{ or } \frac{V_3}{V_2}  = \left( \frac{ \tau_h}{ \tau_l} \right)^{\frac{1}{\gamma-1} } \\
+  & \quad \\
+  & \frac{V_4}{V_1} = (\frac{\tau_h}{ \tau_l } )^{ \frac{1}{\gamma-1 } }
+\end{aligned}
+\]
+
+EY : 20150911 I don't have a good reason why $C_V$ which is defined for constant $V$, that $C_V \equiv \left( \frac{ \partial U}{ \partial \tau} \right)_V$, can be used in the isentropic (i.e. adiabatic) expansion from $2\to 3$.
+\begin{correction}{heat capacity on an adiabatic leg}
+The subscript on $C_V = (\partial U/\partial \tau)_V$ names the derivative.
+On the ideal-gas surface $U = U(\tau)$, so $dU = C_V\, d\tau$ along the adiabatic leg as well.
+The argument is \S\ref{sec:adiabatic-question}.
+\end{correction}  
+
+The total work done is 
+\[
+W = N(\tau_h - \tau_l) \ln{ \left( \frac{V_2}{V_1} \right)}
+\]
+
+\subsubsection*{Energy Conversion and the Second Law of Thermodynamics}
+
+\quad \quad \, 
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=4em]
+  {
+1_1 &     & &     & 1_2 & \phantom{x}\\
+    & 0_1 & & 0_2 &     &  \\
+    &     & &     &     &
+\\ };
+  \path[->]
+  (m-1-1) edge node [auto] {$Q_h$} (m-2-2) 
+          edge node [auto] {$Q_h$} (m-2-4)
+  (m-1-5) edge node [above] {$W_1 = \eta_1 Q_h$} (m-1-1)
+          edge node [above] {$W_{\text{out}} = \eta_2 Q_h - \eta_1 Q_h$} (m-1-6) 
+          edge node [right] {$Q_{l_2}$} (m-2-4)
+          edge[bend left=120] node [below] {$Q_{l_2}=(1-\eta_2)Q_h$} (m-2-2)
+  (m-2-4) edge[transform canvas={xshift=-3mm}] node [auto] {$Q_h$} (m-1-5)
+  (m-2-2) edge[transform canvas={xshift=-3mm}] node [left] {$Q_{l_1}=(1-\eta_1)Q_h$} (m-1-1)        
+  (m-3-1) edge node [left] {$Q(\text{in})=(\eta_2-\eta_1)Q_h$} (m-2-2)        
+;
+\end{tikzpicture}
+
+$Q_{l_2}$ waste heat
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=4em, minimum width=2em]
+  {
+1_1 &     & &     & 1_2 & \phantom{x}\\
+    & 0_1 & & 0_2 &     &  \\
+    &     & &     &     &
+\\ };
+  \path[->]
+  (m-1-1) edge node [auto] {$$} (m-2-2) 
+          edge node [auto] {$Q_h$} (m-2-4)
+  (m-1-5) edge node [above] {$W_1$} (m-1-1)
+          edge node [above] {$W_{\text{out}}$} (m-1-6) 
+          edge node [auto] {$$} (m-2-4)
+          edge[bend left=120] node [below] {$Q_{l_2}$} (m-2-2)
+  (m-2-4) edge[transform canvas={xshift=-3mm}] node [auto] {$$} (m-1-5)
+  (m-2-2) edge[transform canvas={xshift=-3mm}] node [auto] {$$} (m-1-1)        
+  (m-3-1) edge node [left] {$Q(\text{in})$} (m-2-2)        
+;
+\end{tikzpicture}
+
+So with $Q(\text{in})$ heat in, $W_{\text{out}}$ net work can be done.  But that's a decrease in overall entropy.  This violates the law of increasing entropy.  
+
+Define $H = U + pV$.  $H \in C^{\infty}(\Sigma)$, where $\Sigma$ is the manifold of equilibrium (and non-equilibrium) states of the system.  
+
+\subsubsection*{Path Dependence of Heat and Work}
+
+Mathematically, $Q$ and $W$ are not necessarily \emph{exact} 1-forms.  So they are path-dependent.
+
+EY : 20150911 That $Q$, $W$ are not necessarily exact 1-forms would imply that $\Sigma$ has some nontrivial, interesting \emph{topological} features.
+\begin{correction}{topology}
+Path dependence of the reversible heat is $dQ = d\tau\wedge d\sigma \neq 0$.
+That failure is local on an open set of $\mathbb{R}^2$.
+See \S\ref{sec:not-topology}.
+\end{correction}  
+
+\subsection*{Heat and Work at Constant Temperature or Constant Pressure}
+
+\subsubsection*{isothermal work}
+
+\[
+\begin{gathered}
+  dU = W + Q = W + \tau d\sigma \\ 
+  F = U-\tau \sigma \\ 
+  dF = dU - \tau d\sigma - \sigma d\tau = W -\sigma d\tau
+\end{gathered}
+\]
+If $d\tau =0$, on an isothermal curve, \\
+$dF = W$, $W$ becomes an exact 1-form, with potential function $F$, the Helmholtz free energy.
+
+\subsubsection*{isobaric heat and work}
+
+e.g. boiling of liquid.  When liquid boils under atmospheric pressure, vapor pressure displacing atmospheric odes work against atmospheric pressure.  isobaric process.
+
+Consider this change of volume: \\
+$dx = \frac{dV}{A}$.  Now \\
+$p_{\text{eq}} = $ vapor pressure.  \\
+
+$F = p_{\text{eq}}A = p_{\text{atm}}A$ (force equilibrium)
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=4em, column sep=4em, minimum width=2em]
+  {
+(\sigma_1, V_1) \\ 
+    (\sigma_0, V_0)
+\\ };
+  \path[|->]
+  (m-2-1) edge node [auto] {$W = -p_{\text{atm}}A dx = -p_{\text{atm}}dV$} (m-1-1) 
+;
+\end{tikzpicture}
+
+$W = -p_{\text{atm}}dV \equiv - pdV = -d(pV)$ is part of total work done on system.  \\
+
+If $-d(pV) >0$, work provided by environment and is ``free''.  \\
+If $-d(pV)<0$, work delivered to environment and not extractable from system for other purposes.  \\
+\[
+W + d(pV) = dU- Q + d(pV) = dH-Q
+\]
+
+Recall that for enthalpy $H = U+pV$, 
+\[
+dH = dU + Vdp + pdV = dU - W + Vdp = \tau d\sigma + Vdp 
+\]
+$\sigma, p$ are natural coordinates of $H$.  
+
+\[
+dH - Q = W + d(pV)
+\]
+An isobaric curve s.t. $dp=0$, \\
+$dH = Q + W + d(pV)$ \\
+so \\
+$Q+W$ is an exact 1-form of $H-pV \Longrightarrow d(H-pV) = W+Q$.  
+
+2 classes of constant pressure processes:
+\begin{enumerate}
+\item[(a)] \[
+\begin{aligned} 
+  & W + d(pV) = 0 \\
+  & dH = Q \end{aligned}
+\]
+e.g. liquid evaporation from open vessel, because no effective work is done.  \\
+heat of evaporation is enthalpy difference between vapor phase and liquid phase
+\item[(b)] constant temperature and constant pressure.  
+\[
+\begin{aligned}
+&  G = F + pV = U-\tau \sigma + pV \\ 
+& dG = dF + V dp + p dV = dU - \tau d\sigma - \sigma d\tau + V dp  + p dV = V dp- \sigma d\tau \\
+&  dG = W - \sigma d\tau + d(pV) = W + d(pV) - \sigma d\tau
+\end{aligned}
+\]
+with natural variables are $p,\tau$ 
+
+at constant temperature, $W + d(pV)$ is exact 1-form, $dG$  
+\end{enumerate}
+
+\subsection*{Problems}
+
+\solutionhead{1} \textbf{Heat pump.} \begin{itemize}
+\item[(a)] For a heat pump, \\
+input: $\sigma_h = \frac{Q_h}{\tau_h}$ \\
+output: $\sigma_l = \frac{ Q_l}{\tau_l}$
+
+Reversible condition: $\sigma_h = \sigma_l = \frac{Q_h}{\tau_h} =  \frac{Q_l}{ \tau_l}$  so that $Q_h = \frac{\tau_h}{\tau_l} Q_l$.  
+
+$Q_h - Q_l = Q_h - \frac{ \tau_l}{\tau_h} Q_h = \frac{\tau_h - \tau_l }{\tau_h } Q_h $ net heat inputted to pump heat.  
+
+Thus,
+\[
+\frac{W}{Q_h} = \eta_c = \frac{ \tau_h - \tau_l }{\tau_h}
+\]
+If heat pump is not reversible, $\sigma_h > \sigma_l$, so that $\frac{Q_h}{\tau_h } > \frac{ Q_l}{\tau_l}$ or $\frac{ \tau_l }{ \tau_h } Q_h > Q_l$,
+\[
+\frac{W}{Q_h} = \frac{Q_h - Q_l }{Q_h } < \frac{Q_h - \frac{\tau_l}{\tau_h} Q_h }{ Q_h } = \eta_{c,\, ideal}
+\]
+\item[(b)] $Q_h = $ electricity consumed by reversible heat pump.  
+
+Carnot engine: $W = (\tau_{hh} - \tau_l)(\sigma_{hh} - \sigma_l)$, with $\sigma_{hh} = \frac{Q_{hh}}{\tau_{hh}}$, and $\sigma_l = \frac{Q_l}{\tau_l}$
+
+Condition that electricity consumed by reversible heat pump:
+\[
+W = (\tau_{hh} - \tau_l) \left( \frac{ Q_{hh} }{\tau_{hh}} - \frac{Q_l}{ \tau_l } \right) = Q_h 
+\]
+Note we let $\sigma_l = \frac{Q_l}{\tau_l}$ since both heat pump andCarnot engine are reversible.  
+\[
+\begin{gathered}
+ \Longrightarrow  \left( \frac{ Q_{hh}}{\tau_{hh}} - \frac{Q_h}{\tau_h} \right) = \frac{Q_h}{ \tau_{hh} - \tau_l}  \Longrightarrow   \frac{ Q_{hh}}{\tau_{hh}} = Q_h \left( \frac{1}{ \tau_{hh} - \tau_l } + \frac{1}{\tau_h} \right) \Longrightarrow \boxed{ \frac{ Q_{hh}}{ Q_h}  = \frac{ \tau_{hh} (\tau_h + \tau_{hh} - \tau_l )}{ \tau_h ( \tau_{hh} - \tau_l ) } }
+\end{gathered}
+\]
+For $T_{hh} = 600 \, K$, $T_h = 300 \, K$, $T_l = 270 \, K$, 
+\[
+\frac{Q_{hh}}{Q_h} = \frac{ 600 (300 + 600 - 270) }{ 300 (600 - 270) } = 3.82
+\]
+
+\item[(c)] See Figure (\ref{Fi:Problem08.1(c)}).  \begin{center}
+
+\scalebox{.50}{\includegraphics{Kittel_Kroemer_Thermal_Physics_01_01.png}}\par\noindent\textbf{Problem 8.1(c)}\label{Fi:Problem08.1(c)}
+\end{center}
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\solutionhead{2} \textbf{Absorption refrigerator}.  
+\begin{itemize}
+\item[(a)] See Figure (\ref{Fi:Problem08.2(a)}).  \begin{center}
+
+\scalebox{.50}{\includegraphics{Kittel_Kroemer_Thermal_Physics_01_02.png}}\par\noindent\textbf{Problem 8.2(a)}\label{Fi:Problem08.2(a)}
+\end{center}
+
+\item[(b)] Given $\tau_{hh} > \tau_h$, \\
+  by energy conservation: $Q_{hh} + Q_l - Q_h = 0$ \\
+  reversible refrigerator: $\sigma_{hh} + \sigma_l - \sigma_h = 0$,
+\[
+\Longrightarrow \frac{Q_{hh} }{ \tau_{hh} } + \frac{ Q_l }{ \tau_l} - \frac{Q_h}{ \tau_h } = 0 
+\]
+\[
+\frac{Q_{hh}}{\tau_{hh} } + \frac{Q_l}{ \tau_l } = \frac{Q_{hh}+Q_l }{ \tau_h} \text{ or } Q_{hh} \left( \frac{1}{ \tau_{hh}} - \frac{1}{\tau_h} \right) = Q_l \left( \frac{1}{\tau_h } - \frac{1}{ \tau_l } \right)
+\]
+\[
+\frac{Q_l}{ Q_{hh}} = \left( \frac{1}{ \tau_{hh} } - \frac{1}{\tau_h} \right)/ \left( \frac{1}{\tau_h} - \frac{1}{ \tau_l } \right) = \left( \frac{ \tau_h - \tau_{hh}}{ \tau_h \tau_{hh}} \right)/ \left( \frac{\tau_l - \tau_h }{ \tau_h \tau_l } \right) = \boxed{ \left( \frac{\tau_{hh} - \tau_h }{ \tau_h - \tau_l } \right)\left( \frac{\tau_l }{ \tau_{hh} } \right) = \frac{Q_l }{ Q_{hh}} }
+\]
+
+Note that $Q_l - Q_h = Q_l - (Q_{hh} + Q_l ) = -Q_{hh}$; we've removed $Q_{hh}$ heat from refrigerator's inside.  
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\solutionhead{3} \textbf{Photon Carnot engine.} Recall, photons are relativistic: $\epsilon  = pc$.  Recall $ p = \frac{ \hbar }{ i} \nabla$.  $ \Longrightarrow \epsilon_s = pc = \hbar k_s c = \left( \frac{ n_s \pi }{L} \right) \hbar c$.  
+
+Recalling that there are 2 polarization states for a photon in 3-dim. space,
+\[
+\begin{aligned}
+  U & = (2) \left( \frac{1}{8} \right) (4\pi ) \int_0^{\infty} n^2 dn \left( \frac{n \pi }{L} \hbar c \right) e^{ - \frac{ n \pi}{L} \hbar c /\tau } = \frac{\pi^2 \hbar c }{L } \int_0^{\infty} n^3 dn exp{ \left( \frac{- \pi \hbar c}{ L \tau} n \right) } = \\
+& = \left( \frac{ \pi^2 \hbar c}{L} \right) \lbrace \left. n^3 exp{ \left( \frac{ - \pi \hbar c}{ L \tau } n \right) } \left( \frac{ L \tau }{ -\pi \hbar c} \right) \right|_0^{\infty} - \int_0^{\infty} 3n^2 exp{ \left( \frac{ - \pi \hbar c}{ L \tau } n \right) } \left( \frac{ L \tau }{ -\pi \hbar c} \right) dn \rbrace = \\
+  & = \left( \frac{\pi^2 \hbar c}{L} \right) \lbrace (-1) \left( \frac{ - K \tau}{\pi \hbar c} \right) 3 \int_0^{\infty} n^2 exp{ \left( \frac{ - \pi \hbar c}{ L \tau } n \right) } dn \rbrace = \\
+  & = \left( \frac{ \pi^2  \hbar c}{L} \right) \lbrace (-1) \left( \frac{-L \tau}{\pi \hbar c} \right)3 \lbrace \left. n^2 exp{ \left( \frac{ - \pi \hbar c}{ L \tau } n \right) } \left( \frac{ L \tau }{ -\pi \hbar c} \right) \right|_0^{\infty} - \int_0^{\infty} 2n exp{ \left( \frac{ - \pi \hbar c}{ L \tau } n \right) } \left( \frac{ L \tau }{ -\pi \hbar c} \right) dn = 
+\end{aligned} 
+\]
+\[
+\begin{aligned} 
+ & = \left( \frac{ \pi^2 \hbar c}{L} \right) (-1)^2 \left( \frac{ - L \tau}{ \pi \hbar c } \right)^2 3 (2) \int_0^{\infty} n exp{ \left( \frac{ - \pi \hbar c}{ L \tau } n \right) } \left( \frac{ L \tau }{ -\pi \hbar c} \right) dn = \\
+  & = \left( \frac{\pi^2 \hbar c}{L} \right)(-1)^3 \left( \frac{ -L \tau}{\pi \hbar c} \right)^3 3(2)(1) \int_0^{\infty } exp{ \left( \frac{ - \pi \hbar c}{ L \tau } n \right) } dn = \left( \frac{\pi^2 \hbar c}{L} \right)(-1)^3 \left( \frac{-L \tau}{\pi \hbar c} \right)^4 3(2)1 \left. \left( \exp{ \left( \frac{-\pi \hbar c}{ L \tau} n \right) } \right) \right|_0^{\infty} = \\
+  & = 6 \left( \frac{ L }{ \pi^2 \hbar c } \right)^3 \tau^4 = \boxed{ 6 \frac{ V}{ (\pi^2 \hbar c )^3} \tau^4  = U }
+\end{aligned}
+\]
+
+To get the entropy, \emph{recall}, $\left( \frac{ \partial \sigma}{ \partial U} \right)_V = \frac{1}{\tau}$, and using this is usually the \emph{most direct way to obtain entropy}.
+\[
+\Longrightarrow d\sigma = \int \frac{dU}{ \tau} = \int \frac{6V}{ (\pi^2 \hbar^2 c)^3 } 4 \tau^3 \frac{d\tau}{ \tau} = \frac{6V}{ (\pi^2 \hbar^2 c)^3} \frac{1}{3} \tau^3 \Longrightarrow \boxed{ \sigma(\tau) = \frac{ 8 V \tau^3 }{ (\pi^2 \hbar^2 c)^3 } }
+\]  
+
+Consider  \\
+Isothermal expansion: Helmholtz free energy $F$ is needed.  
+\[
+F = U - \tau \sigma = \frac{ 6V}{ (\pi^2 \hbar^2 c)^3 } \tau^4 - \tau \frac{ 8 V \tau^3 }{ (\pi^2 \hbar^2 c)^3 } = -\frac{ 2 V \tau^4 }{ (\pi^2 \hbar^2 c)^3 }
+\]
+Then 
+\[
+\begin{gathered}
+p  = -\left( \frac{ \partial F}{ \partial V} \right)_{ \tau, \, N} = \frac{2 \tau^4}{ (\pi^2 \hbar^2 c)^3 } \\
+W_{12} = p (V_2 - V_1) = \frac{ 2 \tau_h^4 }{ (\pi^2 \hbar^2 c)^3 } (V_2 - V_1)
+\end{gathered} \quad \quad \, 
+\begin{gathered}
+\sigma_{12} = \frac{ 8 \tau_h^3 }{ (\pi^2 \hbar^2 c)^3 }(V_2 - V_1)  \\
+\Delta Q_{12} = \frac{ \tau} \Delta \sigma = \frac{ 8 \tau_h^4}{ (\pi^2 \hbar^2 c)^3} (V_2 - V_1)
+\end{gathered}
+\]
+
+Isentropic expansion: $\Longrightarrow V_2 \tau_h^3 = V_3 \tau_l^3$ or $V_3 = V_2 \left( \frac{ \tau_h}{\tau_l }\right)^3$.  
+
+So for this isentropic process, $V_2 \tau_h^3 = V\tau^3$, 
+\[
+U = \frac{6V}{ (\pi^2 \hbar^2 c)^3} \left( \frac{V_2 \tau_h^3}{V}\right)^{4/3} = \frac{ 6(V_2 \tau_h^3 )^{4/3} }{ (\pi^2 \hbar^2 c)^3} V^{-1/3}
+\]
+\[
+p = \frac{- \partial U}{ \partial V} = - \frac{ 6 (V_2 \tau_h^3 )^{4/3} }{ (\pi^2 \hbar^2 c)^3} \left( \frac{-1}{3} V^{-4/3} \right) = \frac{ 2 ( V_2 \tau_h^3 )^{4/3} }{ (\pi^2 \hbar^2 c )^3 } V^{-4/3}
+\]
+\[
+\begin{aligned}
+W_{23} & = \int p dV = \int \frac{ 2 (V_2 \tau_h^3 )^{4/3}}{ (\pi^2 \hbar^2 c)^3 } V^{-4/3} dV = \left. \frac{ 2 (V_2 \tau_h^3 )^{4/3} }{ (\pi^2 \hbar^2 c)^3}  ( -3V^{-1/3} ) \right|_{V_2}^{V_3} = \frac{ -6 (V_2 \tau_h^3 )^{4/3} }{ (\pi^2 \hbar^2 c)^3 } \left( \frac{1}{V_3^{1/3}} - \frac{1}{ V_2^{1/3} } \right) = \\
+& = \frac{ 6 V_2 \tau_h^4}{ (\pi^2 \hbar^2 c)^3} \left( 1 - \frac{\tau_l }{\tau_h} \right)
+\end{aligned}
+\]
+
+Isothermal compression: $W_{34} = \frac{ 2\tau_l^4}{ (\pi^2 \hbar^2 c)^3 } (V_4 - V_3) = \frac{ 2 \tau_h^3 \tau_l }{ (\pi^2 \hbar^2 c)^3 } (V_1 - V_2)$.  \\  $\sigma_{34} = \frac{8 \tau_l^3}{ (\pi^2 \hbar c)^3} (V_4 - V_3) = \frac{ 8 \tau_h^3 }{(\pi^2 \hbar c)^3} (V_1 -V_2 )$.  
+
+Isentropic compressiong: $V_4 \tau_l^3 = V_1 \tau_h^3$ or $V_4 = V_1 \left( \frac{\tau_h}{\tau_l} \right)^3$.  
+\[
+W_{41} = \frac{ 6 (V_4 \tau_l^3 )^{4/3} }{ (\pi^2 \hbar^2 c)^3 } \left( \frac{1}{V_4^{1/3}} - \frac{1}{V_1^{1/3}} \right) = \frac{ -6 V_1 \tau_h^4}{ (\pi^2 \hbar^2 c)^3} \left( 1 - \frac{ \tau_l }{\tau_h } \right)
+\]
+
+\[
+\Delta W = \frac{ 2 \tau_h^4}{ (\pi^2 \hbar^2 c)^3} (V_2 - V_1) + \frac{ 6 V_2 \tau_h^4}{ (\pi^2 \hbar^2 c)^3} \left( 1 - \frac{\tau_l}{\tau_h} \right) + \frac{ 2 \tau_h^3 \tau_l }{ (\pi^2 \hbar^2 c)^3} (V_1 - V_2) + \frac{ -6 V_1 \tau_h^4}{ (\pi^2 \hbar^2 c)^3} \left( 1 - \frac{\tau_l }{\tau_h} \right) = \frac{ 8 \tau_h^4 ( V_2 -V_1)}{ (\pi^2 \hbar^2 c)^3} \left( 1 - \frac{\tau_l }{\tau_h} \right)
+\]
+\[
+Q_h = \frac{ 8 \tau_h^4 (V_2 - V_1) }{ (\pi^2 \hbar c)^3} \Longrightarrow \boxed{ \frac{ \Delta W}{ Q_h } = 1 - \frac{\tau_l}{\tau_h} }
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+\solutionhead{4} \textbf{Heat engine-refrigerator cascade}.  Consider the heat engine as a Carnot cycle.  
+\[
+W + W_r = (\tau_h - \tau_l) \sigma_h
+\]
+where $W_r = $ work consumed by refrigerator.  
+\[
+\sigma_h = \frac{Q_h}{\tau_h} = \frac{Q_l}{\tau_l} = \sigma_l
+\]
+This must be true for \emph{any} heat engine undergoing Carnot cycle; furthermore, we can say it's the most efficient heat engine possible.  
+
+reversible refrigerator: $Q_L + W_r = Q_H$, (by $E$-consv.) \\
+$\sigma_L = \sigma_H = \frac{Q_L}{\tau_L} = \frac{Q_H}{\tau_H}$, (by reversible condition)
+
+Note, $Q_l$ is energy transfer from heat engine to $\tau_l$ reservoir.  $Q_L$ is energy transfer from $\tau_l$ reservoir to refrigerator.  $Q_L \geq Q_l$, otherwise, no cooling, no thermal energy extracted from $\tau_l$ resevoir to lower its temperature.  $Q_L = Q_l$ at equilibrium; no further cooling, $\tau_r$ reached.  
+
+Note that $\tau_l$ is given as the environmental temperature.  Assume refrigerator throws out $Q_H$ heat into the environment.  $\to \tau_H = \tau_l$.  Since $Q_L$ heat inputed into refrigerator from a $\tau_l$ reservoir now lowered to $\tau_r$, $\tau_l \to \tau_r$.  
+\[
+W_r = \frac{\tau_l }{ \tau_r } Q_L -  Q_L = \left( \frac{ \tau_l }{ \tau_r } - 1 \right) Q_L
+\]
+since for a reversible refrigerator, $\sigma_L = \sigma_H = \frac{ Q_L}{\tau_L} = \frac{Q_H}{\tau_H}$.  
+
+\[
+\Longrightarrow \frac{W}{Q_h} = \left( 1 - \frac{\tau_r }{\tau_h} \right) - \left( \frac{ \tau_l }{ \tau_r} - 1 \right) \frac{Q_L}{Q_h} = \left( 1 - \frac{\tau_r }{ \tau_h } \right) - \left( \frac{\tau_l }{ \tau_r } -1 \right) \left( \frac{\tau_r }{\tau_h } \right) = \boxed{ 1 - \frac{\tau_l }{\tau_h} }
+\]
+Combinations of reversible systems $=$ reversible system.  
+
+
+
+
+
+
+
+
+\solutionhead{5} \textbf{Thermal pollution}.  Given $\begin{aligned} T_l & = 20^{\circ} \, C \\ T_h & = 500^{\circ} \, C \end{aligned}$.  Consider a Carnot cycle.  
+\[
+W = (\tau_h - \tau_l )\sigma_l = (\tau_h - \tau_l) \frac{Q_l}{\tau_l} = \left( \frac{\tau_h}{\tau_l} - 1 \right) Q_l = \left( \frac{500}{20} - 1 \right) 1500 \, MW = \boxed{ 36000 MW }
+\]
+
+If improvements in hot-steam technology would permit raising $T_h$ by $100^{\circ} \, C$, 
+\[
+W = \left( \frac{600}{20}  -1 \right) 1500 \, MW = (29)(1500 \, MW)  = 43500 \, MW 
+\]
+There was a $17.2 \, \%$ increase in output.  
+
+
+
+
+
+\solutionhead{6} \textbf{Room air conditioner}.  \begin{itemize}
+\item[(a)] \[
+\begin{gathered}
+  W = (\tau_h - \tau_l) \frac{Q_l}{\tau_l} = \left( \frac{\tau_h }{\tau_l }- 1 \right)Q_ l \\
+  P = \left( \frac{\tau_h}{\tau_l} - 1 \right) \frac{dQ_l}{dt} = \left( \frac{\tau_h }{\tau_l }-1 \right) A (\tau_h - \tau_l ) \Longrightarrow \frac{P}{A} \tau_l = (\tau_h - \tau_l )(\tau_h - \tau_l) = \tau_h^2 - 2\tau_h \tau_l + \tau_l^2
+\end{gathered}
+\]
+
+\[
+\Longrightarrow \tau_l^2 - 2\tau_h \tau_l  - \frac{P}{A} \tau_l + \tau_h^2 = 0 
+\]
+\[
+\boxed{ \tau_l = \tau_h + \frac{P}{2A} - \sqrt{ (\tau_h + \frac{P}{2A} )^2 - \tau_h^2 } }
+\]
+\item[(b)] For $T_l = 17^{\circ} \, C = 290 \, K$, $T_h = 310 \, K$, 
+\[
+A = \frac{P\tau_l }{ (\tau_h - \tau_l)^2 } = \frac{ ( 2 \, kW )(290 \, K) }{ (310 - 290)^2 } = \frac{580 \times 10^3 \, W }{ 400 \, K } = \boxed{ 1450 \, \frac{W}{K} }
+\]
+\end{itemize}
+
+
+
+
+
+
+\solutionhead{7} \textbf{Light bulb in a refrigerator}
+
+Carnot refrigerator draws 100 W.  For any Carnot cycle,
+\[
+W = (\tau_h - \tau_l) \frac{Q_l}{\tau_l} = \left( \frac{\tau_h }{\tau_l } - 1 \right) Q_l = \left( 1 - \frac{\tau_l }{\tau_h} \right) Q_h 
+\]
+
+Carnot refrigerator expels $Q_h$ thermal energy to hot $\tau_h$ environment and \emph{inputs} $Q_l$ thermal energy from $\tau_l$ reservoir.  
+\[
+Q_l + W = Q_h
+\]
+
+Work $W$ must be drawn by Carnot refrigerator to do work.  Suppose Carnot cycle part of the refrigerator must input in heat from light bulb to cool down its inside, i.e. consider Carnot refrigerator in \emph{equilibrium with light bulb, now inputting in heat from light bulb} $Q_{ext}$, and drawing in work to expend out $Q_h$ thermal energy into the environment.  
+\[
+\Longrightarrow \boxed{ Q_{ext} = Q_l }
+\]
+$\dot{W} = \dot{Q}_l$ in this case, so 
+\[
+\left( \frac{\tau_h}{\tau_l } - 1 \right) Q_l - Q_l = 0 \text{ or } \left( \frac{\tau_h }{\tau_l } - 2 \right) Q_l = 0 
+\]
+\[
+\Longrightarrow \boxed{ \tau_l = \frac{\tau_h}{2} } = \frac{300 \, K}{2} = 150 \, K
+\]
+
+
+
+
+
+
+
+
+
+
+
+\solutionhead{8} \textbf{Geothermal energy}.  
+
+Given $\Delta Q_h = -MC dT_h$, \\
+$T_l$ lower reservoir temperature stays constant.   $\tau_h$ decreasing, $d\tau_h < 0$.  
+
+\[
+\Delta W = (\tau_h - \tau_l ) \frac{\Delta Q_h}{\tau_h} = \left( 1 - \frac{\tau_l}{\tau_h} \right) (-MC) \frac{d\tau_h }{k_B} 
+\]
+\[
+\Longrightarrow W = - \left( \frac{MC}{k_B} \right) \left. ( \tau_h - \tau_l \ln{ \tau_h } ) \right|_{\tau_i}^{\tau_f} = - \left( \frac{MC}{k_B} \right) \left( \tau_l \ln{ \left( \frac{\tau_i }{\tau_f} \right)} - (\tau_i - \tau_f ) \right) 
+\]
+
+For $M = 10^{17} \, g$, $C = 1 \, J/g\cdot K$, $T_l = 20^{\circ} \, C = 293 \, K$, $T_i = 600^{\circ} \, C = 873 \, K$, $T_f = 110^{\circ} \, C = 383 \, K$
+\[
+W = 2.486 \times 10^{19} \, J
+\]
+Note that $10^{14} \, kWh = 10^{17} \, \frac{J}{s} \cdot h \left( \frac{3600 \, sec}{1 \, h }\right) = 3.6\times 10^{20} \, J$.  
+
+
+
+
+
+
+\solutionhead{9} \textbf{Cooling of nonmetallic solid to $T=0$}.  Recall that $C = aT^3 = \left( \frac{ \partial U}{ \partial T} \right)_V$.  Then $dQ_l = aT_l^3 dT_l$.  Now $d\tau_l <0$ since $\tau_l$ decreasing.  
+
+For the refrigerator: $Q_l + W = Q_h$.  
+
+\[
+\begin{aligned}
+  dW & = (\tau_h - \tau_l ) \frac{ Q_l}{\tau_l } = - \left( \frac{\tau_h}{\tau_l } - 1 \right) (a\tau_l^3 d\tau_l ) \left( \frac{1}{k_B^4} \right) = \frac{ -a}{k_B^4} \left( \frac{ \tau_h }{\tau_l } - 1 \right) \tau_l^3 d\tau_l = \frac{-a}{k_B^4} ( \tau_h \tau_l^2 - \tau_l^3 ) d\tau_l 
+\end{aligned}
+\]
+\[
+\begin{aligned}
+  W = \left. \frac{-a}{k_B^4} \left( \tau_h \frac{1}{3} \tau_l^3 - \frac{1}{4} \tau_l^4 \right) \right|_{\tau_h}^0 = \boxed{ \frac{a T_h^3}{ 12 k_B } =W }
+\end{aligned}
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

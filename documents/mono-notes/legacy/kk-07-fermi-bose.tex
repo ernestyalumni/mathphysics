@@ -1,0 +1,300 @@
+\noindent\textit{2008 manuscript.}
+
+\section{Fermi and Bose Gases}
+
+\subsection*{Problems}
+
+\problemhead{1} \textbf{Density of orbitals in one and two dimensions}.  \begin{itemize} \item[(a)] Show that the density of orbitals of a free electron in one dimension is 
+\begin{equation}
+  \mathcal{D}_1(\epsilon) = (L/\pi)(2 m/ \hbar^2 \epsilon)^{1/2},
+\end{equation}
+where $L$ is the length of the line.  \item[(b)] Show that in two dimensions, for a square of area $A$, 
+\begin{equation}
+  \mathcal{D}_2(\epsilon) = A m /\pi \hbar^2
+\end{equation}
+independent of $\epsilon$.  
+\end{itemize}
+
+\solutionhead{1} Recall, for the free electron: $H = \frac{p^2}{2m} = \frac{-\hbar^2}{2m} \nabla^2$ \\
+$\Longrightarrow \epsilon_s = \frac{ \hbar^2}{2m} \frac{n_x^2 \pi^2}{L^2}$ for 1 dim., $\epsilon_s = \frac{\hbar^2}{2m} \frac{ (n_x^2 + n_y^2 ) \pi^2 }{L^2}$ for 2-dim.  
+
+If $\epsilon_F = $ Fermi energy, energy of the highest filled orbital,  \\
+1-dim: $N = 2n_F$.  2-dim.: $N = (2) \left( \frac{1}{4} \right) (\pi n_F^2) = \frac{ \pi n_F^2}{2}$   \\
+2 factor for 2 possible spin states.  \\
+
+
+1-dim: $\epsilon_F = \frac{ \hbar^2}{2m} \left( \frac{ N}{2} \right)^2 \frac{ \pi^2 }{L^2} = \frac{1}{2m} \left( \frac{  \hbar \pi N}{2} \right)^2 \left( \frac{1}{V^2} \right) = \frac{1}{2m} \left( \frac{ \hbar m}{2} \right)^2 n^2 $ $\quad \, N = \sqrt{ 2 m \epsilon_F \left( \frac{2 V}{\hbar \pi } \right)^2} $   \\
+2-dim: $\epsilon_F = \frac{ \hbar^2}{2m} \left( \frac{ 2N }{\pi} \right) \left( \frac{\pi}{L} \right)^2 = \frac{ \hbar^2 }{m} \frac{N}{\pi} \frac{\pi^2}{V} = \frac{ \hbar^2}{m} \frac{N \pi }{V} = \frac{\hbar^2 \pi}{m} n$ $\quad \,  N = \frac{ mV \epsilon_F}{ \pi \hbar^2} $ \\
+
+
+1-dim.: $\mathcal{D}(\epsilon) = \frac{dN}{d\epsilon} = \sqrt{ 2m \left( \frac{2V}{ \hbar \pi }\right)^2 } \frac{1}{2} (\epsilon_F)^{-1/2} = \frac{N}{2 \epsilon } = \left( \frac{L}{\pi} \right) \left( \frac{2m} \hbar^2 \epsilon \right)^{1/2}$ \\
+2-dim.: $N \epsilon = Am/ \pi \hbar^2$  
+
+
+\problemhead{2} \textbf{Energy of relativistic Fermi gas}.  For electrons with an energy $\epsilon \gg mc^2$, where $m$ is the rest mass of the electron, the energy is given by $\epsilon \simeq pc$, where $p$ is the momentum.  For electrons in a cube of volume $V = L^3$ the momentum is of the form $(\pi \hbar /L)$, multiplied by $(n_x^2 + n_y^2 + n_z^2)^{1/2}$, exactly as for the nonrelativistic limit.  \begin{itemize} \item[(a)] Show that in this extreme relativistic limit the Fermi energy of a gas of $N$ electrons is given by
+\begin{equation}
+  \epsilon_F = \hbar \pi c (3 n/\pi)^{1/3},
+\end{equation}
+where $n=N/V$.  \item[(b)] Show that the total energy of the ground state of the gas is 
+\begin{equation}
+  U_0 = \frac{3}{4} N \epsilon_F.
+\end{equation}
+The general problem is treated by F. J\"{u}ttner, Zeitschrift f\"{u}r Physik \textbf{47}, 542 (1928).  
+\end{itemize}
+
+\solutionhead{2}\begin{itemize}
+\item[(a)] $\epsilon \simeq pc = \frac{ \hbar n \pi}{L} c$, \quad \, $\epsilon_F = \frac{ \hbar n_F \pi}{L} c$.  
+
+Recall, for 3-dim.: $N = (2) \left( \frac{1}{8} \right) \left( \frac{4}{3} \pi n_F^3 \right) = \frac{\pi}{3} n_F^3$.  \quad \, $n_F = \left( \frac{ 3N }{\pi} \right)^{1/3}$.  \\
+
+$\epsilon_F = \frac{\pi \hbar}{L} \left( \frac{3N}{\pi} \right)^{1/3} = \hbar \pi c \left( \frac{3n}{\pi} \right)^{1/3}$
+\item[(b)] 
+\[
+\begin{aligned}
+  U_0 & = 2 \sum_{n\leq n_F} \epsilon_n = 2 * \frac{1}{8} * 4\pi \int_0^{n_F} dn n^2 \frac{ \hbar n \pi c}{L} = \frac{\hbar \pi^2 c}{L} \int_0^{n_F} dn n^3 = \frac{ \hbar \pi^2 c}{4 L} n_F^4 = \\
+  & = \frac{\hbar \pi^2 c}{ 4L} \left( \frac{ \epsilon_F L }{ \hbar \pi c } \right)^4 = \frac{ \hbar \pi^2 c}{ 4L} \left( \frac{ 3N}{ \pi} \right) \left( \frac{ \epsilon_F L}{ \hbar \pi c} \right) = \boxed{ \frac{3}{4} N \epsilon_F }
+\end{aligned}
+\]
+\end{itemize}
+\problemhead{3} \textbf{Pressure and entropy of degenerate Fermi gas}.  \begin{itemize} \item[(a)] Show that a Fermi electron gas in the ground state exerts a pressure
+\begin{equation}
+  p = \frac{(3\pi^2 )^{2/3} }{5} \frac{ \hbar^2}{m} \left( \frac{N}{V} \right)^{5/3}
+\end{equation}
+In a uniform decrease of the volume of a cube every orbital has its energy raised: The energy of an orbital is proportional to $1/L^2$ or to $1/V^{2/3}$.  \item[(b)] Find an expression for the entropy of a Fermi electron gas in the region $\tau \ll \epsilon_F$.  Notice that $\sigma \to 0$ as $\tau \to 0$.  \end{itemize}
+
+\solutionhead{3} \begin{itemize}
+\item[(a)] Recall $U_0 = \frac{3}{5} N \frac{ \hbar^2}{2m} (3\pi^2 N)^{2/3} V^{-2/3}$
+\[
+\frac{ \partial U}{ \partial V} = \frac{3}{5} N \frac{ \hbar^2 }{2m} (3\pi^2 N )^{2/3} \left( \frac{-2}{3} \right) V^{-5/3} = \frac{-1}{5} \frac{ \hbar^2}{m} (3\pi^2 )^{2/3} \left( \frac{N}{V} \right)^{5/3}
+\]
+So then 
+\[
+\boxed{ p = \frac{ - \partial U_0}{ \partial V} = \frac{1}{5} \frac{ \hbar^2}{m} (3\pi^2)^{2/3} \left( \frac{N}{V} \right)^{5/3} }
+\]
+\item[(b)] Recall that $\epsilon_F \equiv \tau_F = \frac{ \hbar^2}{2m} \left( \frac{ 3\pi^2 N}{V} \right)^{2/3}$ and that the heat capacity of an electron gas is $C_{el} = \frac{1}{2} \pi^2 N \frac{\tau }{\tau_F} = \frac{ \partial U}{ \partial \tau }$, which \emph{helps directly} with finding the entropy.  
+\[
+\sigma(\tau) - \sigma(\tau_0) = \int_{\tau_0}^{\tau} \frac{1}{\tau} dU = \int_{\tau_0}^{\tau} \frac{1}{\tau} \frac{1}{2} \pi^2 N \frac{ \tau}{\tau_F} d\tau = \frac{ \pi^2 N}{ 2 \tau_F} \tau
+\]
+Let $\sigma(\tau_0 =0) =0$, 
+\[
+\boxed{ \sigma(\tau) = \frac{ \pi^2 N}{ 2\tau_F }\tau   }
+\]
+\end{itemize}
+
+\problemhead{4} \textbf{Chemical potential versus temperature}.  Explain graphically why the initial curvature of $\mu$ versus $\tau$ is upward for a fermion gas in one dimension and downward in three dimensions (Figure 7.7).  \emph{Hint:} The $\mathcal{D}_1(\epsilon)$ and $\mathcal{D}_3(\epsilon)$ curves are different, where $\mathcal{D}_1$ is given in Problem 1.  It will be found useful to set up the integral for $N$, the number of particles, and to consider from the graphs the behavior of the integrand between zero temperature and a finite temperature.  
+
+\solutionhead{4} Recall, $N = \int_0^{\epsilon_F} d\epsilon \mathcal{D}(\epsilon)$.  
+
+1-dim: \[ \begin{aligned} N & = \int_0^{\epsilon_F} d\epsilon \mathcal{D}_1(\epsilon) = \int_0^{\epsilon_F} d\epsilon \left( \frac{L}{\pi} \right) \left( \frac{2m}{\hbar^2 \epsilon } \right)^{1/2} = \left( \frac{L}{\pi} \right) \frac{(2m)^{1/2} }{\hbar} \int_0^{\epsilon_F} d\epsilon \epsilon^{-1/2} = \\ & = \left. \left( \frac{L}{\pi} \right) \frac{(2m)^{1/2} }{\hbar}  (2 \epsilon^{1/2} )\right|_0^{\epsilon_F} = \left( \frac{L}{\pi} \right) \frac{ (2m)^{1/2}}{ \hbar} 2 \epsilon_F^{1/2} 
+\end{aligned}
+\]
+
+3-dim:
+\[
+N = \int_0^{\epsilon_F} d\epsilon \frac{V}{2\pi^2} \left( \frac{2m}{ \hbar^2} \right)^{3/2} \epsilon^{1/2} = \left. \frac{V}{2\pi^2} \left( \frac{2m}{ \hbar^2} \right)^{3/2} \left( \frac{2}{3} \epsilon^{3/2} \right) \right|_0^{\epsilon_F} = \frac{V}{3\pi^2} \left( \frac{2m}{ \hbar^2 }\right)^{3/2} \epsilon_F^{3/2}
+\]
+
+Note the difference in the concavity of the $N(\epsilon)$ curves.
+
+\solutionhead{5}
+\begin{itemize}
+\item[(a)] For $^{3}He$, given $I = 1/2$, density of liquid $0.081 \, g \, cm^{-3}$, we want to find $v_F$, $\epsilon_F$, $\tau_F$.  
+\[
+\begin{gathered}
+  \epsilon_F = \left( \frac{ \hbar^2}{ 2m} \right) (3\pi^2 n)^{2/3} = \\
+  = \frac{ (6.582 \times 10^{-22} \, MeV \cdot s )^2 }{ 2 \cdot 3 \cdot 938 \, MeV/c^2 \left( \frac{1 \, c}{ 3\times 10^{10} \, cm/s } \right)^2 } \left( \left( 3 \pi^2 \frac{ 0.081 \, g }{cm^3} \right) \left( \frac{1 \, kg}{ 10^3 \, g} \right) \left( \frac{1 \, u }{ 1.67 \times 10^{-27} \, kg } \right) \left( \frac{ 1 \, ^{3}He}{ 3 \, u } \right) \right)^{2/3} = \\
+  = 4.24 \times 10^{-10} \, MeV = 4.24 \times 10^{-4} \, eV
+\end{gathered}
+\]
+
+Now suppose we have a nonrelativistic gas.  Then $\frac{1}{2} m v_F^2$ or $v_F^2 = \frac{2\epsilon_F}{m}$.
+\[
+v_F = 1.675 \times 10^4 \, \frac{cm}{sec}
+\]
+
+\[
+T_F  = \frac{4.24 \times 10^{-4 } eV}{ 0.8619 \times 10^{-4} \, eV/K } = 4.92 \, K
+\]
+\item[(b)] 
+\[
+C_{el} = \frac{\pi^2}{3} \mathcal{D}(\epsilon_F)\tau = \frac{\pi^2}{3} \frac{3N}{2\tau_F} \tau = \frac{\pi^2}{2} N \frac{\tau}{\tau_F} = 1.003 k_B T N
+\]
+\end{itemize}
+
+
+
+
+
+\solutionhead{6} \textbf{Mass-radius relationship for white dwarfs.}  
+\begin{itemize}
+\item[(a)] 
+\[
+U  = \int \rho(r) \phi(r) r^2 4\pi dr = -4\pi \int \rho \frac{ G \frac{4}{3} \pi r^3 \rho }{r} r^2 dr = 4\pi \frac{M }{ \frac{4}{3} \pi R^3 } G \frac{4}{3} \pi  \frac{1}{5} R^5 \frac{M}{ \frac{4}{3} \pi R^3} = \boxed{ \frac{-3 GM^2}{5R} }
+\]
+\item[(b)] \[
+\epsilon_F = \left( \frac{\hbar^2}{2m} \right) (3\pi^2 n )^{2/3}
+\]
+is the Fermi energy.  
+
+With $V = \frac{4}{3} \pi R^3$, 
+\[
+\begin{aligned}
+T_{tot} & = N \frac{1}{2} m v^2 = N \epsilon_F = N \frac{h^2}{2m} \left( \frac{3\pi^2 N }{V} \right)^{2/3} = \frac{ (3\pi^2)^{2/3} }{ 2} \left( \frac{\hbar^2}{m} \frac{ N^{5/3} }{ V^{2/3}} \right) = \frac{(3\pi^2 )^{2/3} }{2} \frac{\hbar^2}{m} \frac{N^{5/3}}{ \left( \frac{4}{3} \pi \right)^{2/3} R^2}  = \\
+ & = \frac{ \left( \frac{ 9 \pi }{4} \right)^{2/3} }{ 2} \frac{ \hbar^2 N^{5/3}}{ mR^2 } \simeq \hbar^2 \frac{ ( M/M_H)^{5/3} }{ mR^2}
+\end{aligned}
+\]
+since $N = \frac{M}{M_H}$ since $M_H \ll m$.  
+\item[(c)] 
+\[
+\frac{\hbar^2  M^{5/3} }{ m M_H^{5/3} R^2} = \frac{GM^2}{R} \quad \, \Longrightarrow M^{1/3} R \simeq \frac{ \hbar^2 /G }{ m M_H^{5/3} }
+\] 
+
+\[
+\frac{ ( 6.582 \times 10^{-22} \, MeV\cdot s)( 1.05457 \times 10^{-34} \, J \cdot s ) }{ 0.511 \, MeV/c^2 ( ( 1.67 \times 10^{-27} \, kg  ) \left( \frac{  10^3 \, g }{ 1 \, kg} \right) )^{5/3} } \left( \frac{ 10^3 \, g}{ 1 \, kg } \right)^2 / (6.67 \times 10^{-11} \, \frac{ m^3/s^2}{ kg } ) \left( \frac{ (3\times 10^8 \, m/s )^2}{ 1\, c^2} \right) 
+\]
+Dealing with units and dimensions,
+\[
+J = kg \cdot \frac{m^2}{s^2}; \quad \quad \, \frac{N \cdot m^2}{kg^2} = kg \cdot \frac{m^3/s^2}{kg^2} = \frac{ m^3/s^2}{ kg }
+\]
+\[
+\frac{ (6.582 \times 10^{-22} \, MeV \cdot s )( 1.05457 \times 10^{-34} \, kg \cdot \frac{m^2}{s} ) \left( \frac{10^2 \, cm}{ 1 \, m } \right)^2 \left( \frac{ 10^3 \, g }{ 1 \, kg } \right)^2 }{ (0.511 \, MeV/c^2 )( 1.67 \times 10^{-24} \, g )^{5/3} (6.67 \times 10^{-11} \, \frac{m^3/s^2}{ kg} \times \left( \frac{10^2 \, cm}{ 1 \, m } \right)^3 ) } \left( \frac{ (3\times 10^{10} \, cm/s )^2}{ 1 \, c^2} \right) ~ 10^{20} \, g^{1/3} \, cm
+\]
+\item[(d)] \[
+\begin{gathered}
+  \rho = \frac{M}{ \frac{4}{3} \pi R^3} = \frac{ M }{ \frac{4}{3} \pi \left( \frac{ 10^{20} \, g^{1/3} \, cm }{ M^{1/3} } \right)^3 } = \frac{M^2}{ \frac{4}{3} \pi 10^{60} \, g \, cm^3 } = \frac{ ( 2 \times 10^{33} \, g)^2}{ \frac{4}{3} \pi 10^{60} \, g \, cm^3 } = \frac{ 3 \times 10^{66} \, g^2 }{ \pi 10^{60} \, g \, cm^3} \\
+  ~ 10^6 \, \frac{g}{cm^3}
+\end{gathered}
+\] 
+\item[(e)] \[
+M^{1/3} R \simeq \frac{ \hbar^2/G }{ m M_H^{5/3}} ~ 10^{17} \, g^{1/3} \, cm \quad \, \Longrightarrow R = \frac{ 10^{17} g^{1/3} \, cm }{ (2\times 10^{33} \, g)^{1/3} } = 7.937 \, km
+\]
+\end{itemize}
+
+\solutionhead{7} \textbf{Photon condensation}.  $N_e = 2.404 V \tau^3/ \pi^2 \hbar^3 c^3$.  
+
+The condition is that $N=N_e$:
+\[
+N = N_e = \frac{ 2.404 V \tau^3}{ \pi^2 \hbar^3 c^3}
+\]
+\[
+\boxed{ \tau = \left( \frac{\pi^2 \hbar^3 c^3}{2.404 } \frac{ N}{ V} \right)^{1/3} }
+\]
+With a concentration of $10^{20} \, cm^{-3}$, 
+$T = 1.7 \times 10^{6} \, K$ (the critical temperature in $K$ below which $N_e < N$.  
+
+\solutionhead{8} \textbf{Energy, heat capacity, and entropy of degenerate boson gas}.  
+
+Recall that the distribution function for bosons is 
+\[
+f(\epsilon,\tau) = \frac{1}{ \exp{ [ ( \epsilon - \mu)/\tau ] } - 1 }
+\]
+Consider $N$ noninteracting bosons of spin zero.
+
+$\epsilon =0$ for ground state.  Thus, $f(0,\tau) = \frac{1}{ \exp{ \left( \frac{- \mu}{ \tau} \right) } - 1 }$.  
+Recall that 
+\[
+N_{\epsilon}(\tau) = \int_0^{\infty} d\epsilon \mathcal{D}(\epsilon) f(\epsilon, \tau) = \int_0^{\infty} d\epsilon \frac{V}{4 \pi^2} \left( \frac{ 2M }{ \hbar^2} \right)^{3/2} \epsilon^{1/2} \frac{1}{ \lambda^{-1} \exp{ \left( \frac{ \epsilon}{\tau} \right)} - 1 } 
+\]
+
+Recall, 
+\[
+\begin{gathered}
+  U = 0 \left( \frac{1}{ \exp{ ( - \mu/\tau) } - 1 } \right) + \int_0^{\infty} \frac{ \epsilon}{ e^{ (\epsilon -\mu )/ \tau } - 1 } \mathcal{D}(\epsilon) d\epsilon = \int_0^{\infty} \frac{ \epsilon }{ e^{(\epsilon - \mu)/\tau} - 1 } \frac{V}{4\pi^2} \left( \frac{ 2M}{\hbar^2} \right)^{3/2} \epsilon^{1/2} d\epsilon = \\
+    = \frac{V}{4\pi^2 } \left( \frac{ 2M }{ \hbar^2} \right)^{3/2} \int_0^{\infty} \frac{ \epsilon^{3/2}}{ e^{ (\epsilon - \mu )/\tau}  -1 }
+\end{gathered}
+\]
+
+$\tau < \tau_{\epsilon}$, so $\lambda \approx 1$, for $N_0$ to be sufficiently large.  
+\[
+\Longrightarrow U = \frac{V}{4 \pi^2} \left( \frac{2M}{ \hbar^2} \right)^{3/2} \int_0^{\infty} \frac{ \epsilon^{3/2}}{ e^{\epsilon/ \tau}  -1 } 
+\]
+
+Using $\begin{aligned} x & = \epsilon/\tau  \\ dx & = d\epsilon/\tau \end{aligned}$  
+
+\[
+\Longrightarrow U = \frac{V}{4 \pi^2 } \left( \frac{ 2M}{ \hbar^2} \right)^{3/2} \tau^{5/2} \int_0^{\infty} \frac{ x^{3/2} dx }{ e^x - 1 } = B_0 \tau^{5/2} C_0
+\]
+
+It's true that $\partial_{\tau} ( e^{\epsilon/\tau} ) = e^{\epsilon/ \tau} \left( \frac{ -\epsilon}{\tau^2} \right)$
+\[
+C_V = \left( \frac{5}{2} \right) \frac{V}{4 \pi^2} \left( \frac{ 2M}{\hbar^2} \right)^{3/2} \tau^{3/2} \int_0^{\infty} \frac{ x^{3/2}dx}{ e^x  -1 }
+\]
+Now $\frac{1}{\tau} = \left( \frac{ \partial \sigma}{ \partial U} \right)_V$.  
+
+\[
+\begin{gathered}
+  \sigma(U) - \sigma(U_0) = \int \frac{1}{\tau} dU =  \int \frac{ VB_0 \frac{5}{2} \tau^{3/2} C_0 d\tau }{ \tau} = VB_0 \frac{5}{2} C_0 \int \tau^{1/2} d\tau = \\ 
+  \xrightarrow{ dU = VB_0 \frac{5}{2} \tau^{3/2} C_0 d\tau } = \left. VB_0 \frac{5}{2} C_0 \frac{2}{3} \tau^{3/2} \right|_0^{\tau}
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+  \sigma(U) = VB_0 \frac{5}{3} C_0 \tau^{3/2} = VB_0 \frac{5}{3} C_0 \frac{U^{3/5}}{ (VB_0 C_0)^{3/5} } = (VB_0 C_0)^{2/5} \frac{5}{3} U^{3/5} = \\ 
+  = \left( \frac{V}{4\pi} \left( \frac{2M}{ \hbar^2} \right)^{3/2} \int_0^{\infty} \frac{ x^{3/2} dx }{ e^x - 1 } \right)^{2/5} \frac{5}{3} U^{3/5}
+\end{gathered}
+\]
+where we had used $U = VB_0 \tau^{5/2} C_0$ or $\left( \frac{ U}{VB_0 C_0 } \right)^{3/5} = \tau^{3/2}$.  
+
+\solutionhead{9} \textbf{Boson gas in one dimension}. 
+
+In one-dim., 
+\[
+\epsilon_s = \frac{ \hbar^2}{2m} \frac{ \pi^2 n^2}{L^2} = \frac{ \hbar^2}{2m } \frac{\pi^2 n ^2}{V^2} \text{ or } \frac{ 2 m V^2}{\hbar^2 \pi^2} \epsilon_s = n^2
+\]
+\[
+\Longrightarrow n = \left( \frac{ 2 m V^2}{ \hbar^2 \pi^2} \right)^{1/2} \epsilon^{1/2} \Longrightarrow \frac{dn}{d\epsilon} = \left( \frac{ 2 m V^2}{ \hbar^2 \pi^2 } \right)^{1/2} \frac{1}{2 \epsilon^{1/2}}
+\]
+
+Note the difference with 3-dim.: For spinless bosons, 
+\[
+\begin{gathered}
+\mathcal{D}(n) dn = \frac{ 4 \pi n^2 dn }{8} = \frac{\pi}{2} \left( \frac{ 2m L^2}{ \hbar^2 \pi^2} \epsilon_s \right) \left( \frac{ 2 mL^2}{ \hbar^2 \pi^2} \right)^{1/2} \frac{1}{2 \epsilon^{1/2}} d\epsilon = \\
+= \frac{\pi}{4} \left( \frac{ 2 m L^2}{ \hbar^2 \pi^2} \right)^{3/2} \epsilon^{1/2} d\epsilon = \mathcal{D}(\epsilon) d\epsilon
+\end{gathered}
+\]
+\[
+\begin{gathered}
+  N_{\epsilon}( \tau) = \int_0^{\infty} d\epsilon \mathcal{D}(\epsilon) f(\epsilon,\tau) = \int_0^{\infty} d\epsilon \left( \frac{ 2 m V^2}{ \hbar^2 \pi^2 } \right)^{1/2} \frac{1}{2\epsilon^{1/2}} \frac{ 1 }{ \lambda^{-1}} \exp{ \left( \frac{ \epsilon}{ \tau} \right) - 1 } =  \\
+     = \frac{1}{2} \left( \frac{ 2 m V^2 }{ \hbar^2 \pi^2} \right)^{1/2} \int_0^{\infty} \frac{ d \epsilon}{ \epsilon^{1/2}} (\lambda^{-1} \exp{ \left( \frac{ \epsilon}{\tau} \right)} - 1 )
+\end{gathered}
+\]
+For $\epsilon \to 0$, $N_{ \epsilon}(\tau) \to \infty$ which is not characteristic of a Boson.  
+
+
+
+\solutionhead{10} \textbf{Relativistic white dwarf stars}.  
+$\epsilon \simeq pc$  \quad \, $\lambda = 2\pi \hbar /p$.  
+
+Virial theorem:
+\[
+2 \langle T \rangle = - \langle U \rangle \quad \quad \, 2 \langle T \rangle = k \langle U \rangle
+\]
+\[
+2 \left( \frac{3}{4} N \epsilon_F \right) = \frac{3}{2} N^{4/3} \hbar \pi c \left( \frac{3}{\pi } \right)^{1/3} \frac{1}{L} = - \left( - \frac{ 3 GM^2}{ 5 R } \right) = \frac{ 3 GM^2 }{ 5 R }
+\]
+\[
+\epsilon_F = \hbar \pi c \left( \frac{ 3 n}{ \pi } \right)^{1/3}
+\]
+Approximating the sphere as a box,
+\[
+\begin{aligned}
+  & L^3 = \frac{4}{3} \pi R^3 \\ 
+  & L = \left( \frac{ 4}{3} \right)^{1/3} \pi^{1/3} R
+\end{aligned} \quad \quad \, \left( \frac{ 3}{ 4 \pi } \right)^{1/3} L = R
+\]
+\[
+\begin{gathered}
+N^{4/3} = \left( \frac{ GM^2}{ 5 R} \right)\left( \frac{ 2L}{ \hbar \pi^{2/3} c 3^{1/3}} \right) \Longrightarrow N = \left( \left( \frac{ GM^2}{ 5R} \right)\left( \frac{ 2 L }{ \hbar \pi^{2/3} c 3^{1/3}} \right) \right)^{3/4} = \left( \left( \frac {2 GM^2}{ 5 } \right) \frac{ 4^{1/3} }{ \hbar 3^{2/3} \pi^{1/3} c } \right)^{3/4}
+\end{gathered}
+\]
+Now $M = Nm_H$, where $m_H$ is the mass of hydrogen, so
+\[
+\begin{gathered}
+  1 = \left( \left( \frac{ 2 G m_H^2}{ 5} \right) \frac{ 4^{1/3} }{ \hbar 3^{2/3} \pi^{1/3} c } \right)^{3/4} N^{1/2} \\ 
+  \Longrightarrow N = \left( \frac{ 5 \hbar (3^{2/3}) \pi^{1/3} c }{ 4^{1/3} (2Gm_H^2) } \right)^{3/2} = \left( \frac{ (1.05457 \times 10^{-34} \, J\cdot s )( 3\times 10^8 \, m/s) }{ (6.67 \times 10^{-11} \, \frac{m^3}{ kg\cdot s^2} ) ( 1.67 \times 10^{-27} \, kg)^2 } \right)^{3/2} \cdot \left( \frac{ 5 (3^{2/3}) \pi^{1/3} }{ 4^{1/3} 2 } \right)^{3/2} = 2.2 \times 10^{58}
+\end{gathered}
+\]
+
+
+

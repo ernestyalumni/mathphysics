@@ -1,0 +1,371 @@
+\noindent\textit{2015 manuscript.}
+
+\section{Thermodynamic potentials}
+\noindent\textit{In the 2015 manuscript these subsections stood in the section Reactions, after the Gibbs sum.}
+
+\subsection{Gibbs Free Energy}
+
+cf. Section ``Gibbs Free Energy'' of Ch. 9 Gibbs Free Energy and Chemical Reactions from Kittel and Kroemer (1980) \cite{CKittelHKroemer1980}
+
+Recall 
+\[
+\begin{aligned}
+  & F = U- \tau \sigma \\ 
+  & dF = dU - \tau d\sigma - \sigma d\tau = - \sigma d\tau -pdV + \mu dN
+\end{aligned}
+\]
+where the \emph{generalized} thermodynamic identity
+\[
+dU = Q + W + \mu dN = \tau d\sigma - pdV + \mu dN
+\]
+was used. 
+
+Now
+\[
+\begin{aligned}
+  & G \equiv U - \tau \sigma + pV = F + pV \\ 
+  & dG = dU - \tau d\sigma - \sigma d\tau + pdV + Vdp = \mu dN - \sigma d\tau + Vdp
+\end{aligned}
+\]
+and so $G = G(N,\tau , p)$.  
+
+Now \[
+\begin{gathered}
+  \sigma = \frac{1}{\tau} [ U +pV - G ] \\
+  \Longrightarrow d\sigma = \frac{-1}{\tau^2} d\tau ( U + pV - G) + \frac{1}{\tau} (dU + V dp + pdV - dG)
+\end{gathered}
+\]
+Consider a curve $\gamma : \mathbb{R} \to \Sigma$ s.t. $dU(\dot{\gamma}) = dp(\dot{\gamma}) = dV(\dot{\gamma})=0$ corresponding to minimized internal energy, constant pressure, and constant volume.  Then
+\[
+\begin{gathered}
+  d\sigma(\dot{\gamma}) = 0 + 0 + 0 + -dG(\dot{\gamma}) \geq 0 
+\end{gathered}
+\]
+and so $dG(\dot{\gamma}) \leq 0$, so $G$ must be a minimum, because $d\sigma(\dot{\gamma}) \geq 0$ represents the fact that entropy must always increase for any thermodynamic process.  $G$ must move to a minimum at equilibrium, i.e. ``For any irreversible change taking place entirely within $\mathcal{S}$ will increase $\sigma$ and thus decrease $G_{\mathcal{S}}$'' \cite{CKittelHKroemer1980} for $\mathcal{S}$ signifying the system.  
+
+$\tau,p$ are \textbf{intensive quantities}; they do not change value when 2 identical systems are put together.  
+
+$U,\sigma,V,G$ are linear in $N$; their values doubles when 2 identical systems are put together; apart from interface effects \\
+$U,\sigma,V,N,G$ are \textbf{extensive quantities}.  
+
+
+\[
+\begin{gathered}
+G = N\varphi(\tau,p) \\
+\left( \frac{ \partial G}{ \partial N} \right)_{p,\tau} = \varphi(\tau,p) = \mu \Longrightarrow G(N,\tau,p) = N\mu(\tau,p)
+\end{gathered}
+\]
+
+If more than 1 chemical species present, 
+\begin{equation}\label{Eq:Gibbspotential}
+  \boxed{ 
+    \begin{gathered}
+      G = \sum_j N_j \mu_j  \\
+      \tau d\sigma = dU + pdV - \sum_j \mu_j dN_j \\
+      dG = \sum_j \mu_j dN_j - \sigma d\tau + Vdp 
+      \end{gathered}
+    }
+\end{equation}
+
+
+\subsection{Summary of Thermodynamic Potentials}
+
+With Eq. \ref{Eq:Gibbspotential}, I will summarize the thermodynamic potentials we have, obtained through Legendre transformations:
+\[
+\begin{gathered}
+  Q = dU - W = dU + p dV
+\end{gathered}
+\]
+For curve or thermodynamic process in $\Sigma$, $\gamma$, s.t. $dp(\dot{\gamma})=0$ (thermodynamic process at \emph{constant pressure}),
+\[
+\begin{gathered}
+  Q(\dot{\gamma}) = dH(\dot{\gamma}) -Vdp(\dot{\gamma}) = dH(\dot{\gamma}) - 0 \\
+  \Longrightarrow \int_{\gamma} Q(\dot{\gamma}) = \int dH(\dot{\gamma}) = H_f - H_i \qquad \, \text{ for constant $p$ }
+\end{gathered}
+\]
+with 
+\[
+\begin{gathered}
+  H = U + pV \\
+  dH = dU + pdV + Vdp = Q + Vdp
+\end{gathered}
+\]
+For the thermodynamic potential
+\begin{equation}\label{Eq:ThermodynamicPotentialsSummary}
+\begin{gathered}
+  \begin{gathered}
+    dU = \tau d\sigma - pdV \\ 
+    \boxed{ U = U(\sigma, V) } \\
+    dU = \tau d\sigma - pdV + \sum_j \mu_j dN_j \qquad \, U = U(\sigma, V,N_j)
+\end{gathered} \\
+  \begin{gathered}
+    F = U -\tau \sigma  \\
+    dF = dU- \tau d\sigma - \sigma d\tau = -pdV - \sigma d\tau  \Longrightarrow \boxed{ F = F(\tau,V) } \\  
+    dF = Q + W - d(\tau \sigma ) 
+\end{gathered} \\
+  \begin{gathered}
+    G = F + pV \\ 
+    dG = -\sigma d\tau + Vdp \Longrightarrow \boxed{ G = G(\tau,p) } \\
+    dG = (Q - pdV ) + pdV + Vdp - d(\tau \sigma ) = Q + Vdp - d(\tau \sigma)
+\end{gathered}
+\end{gathered}
+\end{equation}
+Let $\Delta H := H_f - H_i$.  \\
+If $\Delta H < 0$, $\int_{\gamma} Q(\dot{\gamma}) <0$, heat transferred to surroundings: reaction is \emph{exothermic}.  \\
+If $\Delta H > 0$, $\int_{\gamma} Q(\dot{\gamma}) >0$, heat transferred to system: reaction is \emph{endothermic}.  
+Now $dH = Q + Vdp$.  Suppose $Q = C_p(\tau) d\tau$.  then for constant presure, $dp(\dot{\gamma})=0$ and so 
+\[
+\int_{\gamma} dH = \Delta H = \int_{\gamma} C_p(\tau) d\tau
+\]
+
+For constant volume, $dV(\dot{\gamma}_V)=0$, and so 
+\[
+Q(\dot{\gamma}_V) \equiv Q_V = dU(\dot{\gamma}_V)
+\]
+
+\subsubsection{Relations between derivatives of thermodynamic quantities}
+
+For an adiabatic process, $Q=0$. 
+
+For $Q= Q(\tau, V)$, 
+\begin{equation}\label{Eq:QAsA1Form}
+Q = \tau d\sigma = C_V d\tau + \left( \frac{ \partial Q}{ \partial V} \right)_{\tau} dV
+\end{equation}
+and $\sigma = \sigma(\tau, V)$, so 
+\begin{equation}\label{Eq:EntropyAsA1Form}
+\tau d\sigma = \tau \left( \frac{ \partial \sigma}{ \partial \tau } \right)_V d\tau + \tau \left( \frac{ \partial \sigma}{ \partial V} \right)_{\tau} dV
+\end{equation}
+So by comparing terms between Eq. \ref{Eq:QAsA1Form} and Eq. \ref{Eq:EntropyAsA1Form}, conclude that 
+\begin{equation}\label{Eq:CompareQAndEntropyTermsInTheDifferentialForms}
+\left( \frac{ \partial Q}{ \partial V} \right)_{\tau} = \tau \left( \frac{ \partial \sigma}{\partial V} \right)_{\tau}
+\end{equation} 
+For curve $c= c(t) = (\tau(t), V(t))$ s.t. $\sigma = \sigma(\tau, V) = $ constant, 
+\[
+\begin{gathered}
+ \dot{c} = \dot{\tau} \frac{ \partial }{ \partial \tau} + \dot{V} \frac{ \partial }{\partial V}  \\
+ Q(\dot{c}) = 0 = C_V\dot{\tau} + \dot{V} \left( \frac{ \partial Q}{\partial V} \right)_{\tau} \text{ or } \dot{\tau} = \frac{- \dot{V}}{C_V} \left( \frac{\partial Q}{ \partial V} \right)_{\tau} 
+\end{gathered}
+\]
+
+\quad \\ 
+Let $t=V$. Let $\dot{\tau} = \left( \frac{\partial \tau}{\partial V} \right)_{\sigma}$, \, $\dot{V} = 1$.  So using Eq. \ref{Eq:CompareQAndEntropyTermsInTheDifferentialForms}, 
+\begin{equation}\label{Eq:ConstantVolumeHeatCapacityDifferentialRelationship}
+ \left( \frac{ \partial \tau}{ \partial V} \right)_{\sigma} = \frac{-\tau}{C_V} \left( \frac{ \partial \sigma}{ \partial V} \right)_{\tau}
+\end{equation}
+
+Likewise, for $Q= Q(\tau, p)$, $\sigma = \sigma(\tau, p)$, 
+\[
+Q = Q(\tau, p) = C_p d\tau + \left( \frac{\partial Q}{\partial p } \right)_{\tau} dp = \tau d\sigma = \tau \left( \frac{\partial \sigma}{\partial \tau} \right)_p d\tau + \tau \left( \frac{\partial \sigma}{ \partial p} \right)_{\tau} dp
+\]
+and repeating all steps for $p$, but instead using $V$ (what I call "label symmetry"), 
+\begin{equation}\label{Eq:ConstantPressureHeatCapacityDifferentialRelationship}
+\left( \frac{\partial \tau}{\partial p } \right)_{\sigma} = \frac{-\tau}{C_p} \left( \frac{\partial \sigma}{\partial p} \right)_{\tau}
+\end{equation}
+
+Divide Eq. \ref{Eq:ConstantPressureHeatCapacityDifferentialRelationship} by Eq. \ref{Eq:ConstantVolumeHeatCapacityDifferentialRelationship}:
+\begin{equation}\label{Eq:ConstantPressureHeatCapacityRelationshipOverConstantVolume}
+\frac{ \left( \frac{\partial \tau}{\partial p}\right)_{\sigma} }{ \left( \frac{\partial \tau}{\partial V}\right)_{\sigma} } = \frac{C_V}{C_p} \frac{ \left( \frac{\partial \sigma}{\partial p}\right)_{\tau} }{ \left( \frac{\partial \sigma}{\partial V}\right)_{\tau} }
+\end{equation} 
+
+Since $F= F(\tau, V)$, 
+\[
+\begin{gathered}
+dF = -pdV - \sigma d\tau \\
+\begin{aligned}
+& \left(\frac{\partial F}{\partial \tau} \right)_V = -\sigma \\ 
+& \left(\frac{\partial F}{\partial V} \right)_{\tau} = - p 
+\end{aligned}
+\end{gathered}
+\]
+and it is sufficient that $\left(\frac{\partial F}{\partial \tau} \right)_V$, $\left(\frac{\partial F}{\partial V} \right)_{\tau}$ are continuous on a neighborhood of $(\tau, V)$ and $\frac{\partial^2 F}{ \partial \tau \partial V}$ exists and is continuous on neighborhood of $(\tau, V)$, then
+\[
+\left(\frac{\partial^2 F}{\partial \tau \partial V} \right) = \left(\frac{\partial^2 F}{\partial V \partial \tau} \right)
+\]
+(cf. search for Clairaut's Thm., mean value Thm., or Fubini's Thm.)
+
+\begin{equation}\label{Eq:2ndOrderPartialDerivativeHelmholtzRelationship}
+\Longrightarrow \left( \frac{ \partial \sigma}{ \partial V} \right)_{\tau} = \left(\frac{\partial p}{\partial \tau } \right)_V \qquad \text{(from Helmholtz's free energy $F$)}
+\end{equation}
+
+\quad \\ 
+Similarly, with the Gibbs free energy $G$ given in Eq. \ref{Eq:ThermodynamicPotentialsSummary}, \\
+since $G=G(\tau, p)$, 
+\[
+dG = -\sigma d\tau + Vdp
+\]
+then 
+\[
+\begin{gathered}
+	\begin{aligned}
+		& \left( \frac{\partial G}{\partial \tau} \right)_p = -\sigma \\ 
+		& \left( \frac{ \partial G}{\partial p} \right)_{\tau} = V
+	\end{aligned} 
+\end{gathered}
+\]
+so 
+\begin{equation}\label{Eq:2ndOrderPartialDerivativeGibbsRelationship}
+-\left( \frac{ \partial \sigma}{ \partial p} \right)_{\tau} = \left(\frac{\partial V}{\partial \tau } \right)_p \qquad \text{(from Gibbs free energy $G$)}
+\end{equation}
+
+Use Eqns. \ref{Eq:2ndOrderPartialDerivativeHelmholtzRelationship}, \ref{Eq:2ndOrderPartialDerivativeGibbsRelationship} in Eq. \ref{Eq:ConstantPressureHeatCapacityRelationshipOverConstantVolume}:
+
+\begin{equation}\label{Eq:ConstantPressureHeatCapacityRelationshipOverConstantVolume2}
+\frac{ \left( \frac{\partial \tau}{\partial p}\right)_{\sigma} }{ \left( \frac{\partial \tau}{\partial V}\right)_{\sigma} } = \frac{-C_V}{C_p} \frac{ \left( \frac{\partial V}{\partial \tau}\right)_p }{ \left( \frac{\partial p}{\partial \tau}\right)_V } 
+\end{equation}
+
+\quad \\ 
+Consider an \emph{adiabatic} process, such as adiabatic compression. Then $Q = \tau d\sigma = 0$. So choose curves in $\Sigma$ s.t. $\sigma$ is constant along the curve.
+
+\quad \\
+Let $\sigma(\tau, V), d\sigma = \left( \frac{\partial \sigma}{\partial \tau} \right)_V d\tau + \left( \frac{\partial \sigma}{\partial V} \right)_{\tau} dV$. \\
+Let $c=c(t)= (\tau, p) = (\tau(t), p(t))$ s.t. $\sigma$ constant. Then
+\begin{equation}\label{Eq:AdiabaticDifferentialRelationship1}
+\begin{gathered}
+d\sigma(\dot{c}) = 0 = \left( \frac{\partial \sigma}{\partial \tau} \right)_V \dot{\tau} + \left( \frac{\partial \sigma}{\partial V} \right)_{\tau} \dot{p} \left( \frac{\partial V}{ \partial p } \right)_{\sigma} \Longrightarrow \\
+\left( \frac{\partial V}{\partial p} \right)_{\sigma} = \frac{ - \dot{\tau} \left( \frac{\partial \sigma}{\partial \tau} \right)_V }{ \dot{p} \left( \frac{\partial \sigma}{\partial V} \right)_{\tau} }\xrightarrow{t = p} \frac{ - \left( \frac{\partial \tau}{\partial p} \right)_{\sigma} \left( \frac{\partial \sigma}{\partial \tau}\right)_V }{ \left( \frac{\partial \sigma}{\partial V}\right)_{\tau} } 
+\end{gathered}
+\end{equation}
+ 
+\quad \\
+Now let $c=c(t) = (\tau, V) = (\tau(t), V(t))$ s.t. $\sigma$ constant.
+
+\[
+d\sigma(\dot{c}) = 0 = \left( \frac{\partial \sigma}{\partial \tau} \right)_V \dot{\tau} + \left( \frac{\partial \sigma}{\partial V} \right)_{\tau} \dot{V} \text{ or } \frac{ \left( \frac{\partial \sigma}{\partial \tau}\right)_V }{ \left( \frac{\partial \sigma}{\partial V}\right)_{\tau} } = \frac{  - \dot{V}}{\dot{\tau}} \xrightarrow{ t = V} \frac{-1}{ \left( \frac{\partial \tau}{\partial V} \right)_{\sigma} }
+\]
+Then plugging in the previous expression into Eq. \ref{Eq:AdiabaticDifferentialRelationship1}, we obtain
+\begin{equation}\label{Eq:AdiabaticCompressionOfV}
+\Longrightarrow \left( \frac{\partial V}{ \partial p} \right)_{\sigma} = \frac{ \left( \frac{\partial \tau }{\partial p} \right)_{\sigma} }{ \left( \frac{\partial \tau}{\partial V} \right)_{\sigma} }
+\end{equation}
+
+Using label symmetry for $p, V \mapsto V, p$, then
+\[
+\begin{gathered}
+\left( \frac{\partial p}{\partial V} \right)_{\sigma} =  \frac{ - \left( \frac{\partial \tau}{\partial V} \right)_{\sigma} \left( \frac{\partial \sigma}{\partial \tau}\right)_p }{ \left( \frac{\partial \sigma}{\partial p}\right)_{\tau} } = \frac{ \left( \frac{\partial \tau }{\partial V} \right)_{\sigma} }{ \left( \frac{\partial \tau}{\partial p} \right)_{\sigma} } \text{ since } \\
+\frac{ \left( \frac{\partial \sigma}{\partial \tau}\right)_p }{ \left( \frac{\partial \sigma}{\partial p}\right)_{\tau} } = \frac{-1}{ \left( \frac{\partial \tau}{\partial p} \right)_{\sigma} }
+\end{gathered}
+\]
+
+The previous expression and its derivation from first principles (namely that $d\sigma$ is a 1-form on 2-dim. $\Sigma$ and thermodynamic quantities are coordinates for $\Sigma$) leads me to strongly exhort the following: stop memorizing and using "hand-wavey" formulae that claim to transform partial derivatives "to different independent variables" such as the "Jacobians" in Landau and Lifshitz (1980) \cite{LLandauELifshitz1980}), pp. 53, Ch. 11 "Thermodynamic Quantities", Sec. 16 "Relations between the Derivatives of Thermodynmaic Quantities", Eq. (IV) and related:
+\[
+\frac{ \partial (u,v)}{ \partial (x,y)} = \frac{ \partial (u,v) }{ \partial (t,s)} \cdot \frac{\partial (t,s) }{ \partial (x,y) }
+\]
+or in Appendix 4, "Summary of Thermodynamic Relations", pp. 577 of Sabersky, et. al. (1998) \cite{SAHG1998}, which claim that the "rules of differential calculus" (???) allows for some to write, for $z = z(x,y)$, 
+\[
+\begin{gathered} 
+dz = \left( \frac{ \partial z}{ \partial x} \right)_y dx + \left( \frac{ \partial z}{ \partial y} \right)_x dy \text{ or } \\
+\left( \frac{ \partial x }{ \partial y} \right)_z \left( \frac{ \partial z }{ \partial x} \right)_y \left( \frac{ \partial y}{ \partial z }\right)_x = -1
+\end{gathered}
+\]
+For the latter, the "differential", $dx$, $dy$ is ill-defined. It is \href{https://math.stackexchange.com/questions/2101896/what-is-the-meaning-of-a-differential-in-terms-of-an-exact-differential}{"an outdated concept from the time of Liebniz which was used to define derivatives and integrals before limits came along."}. For the former, the "Jacobian" is not general enough (at least for me), being only applicable to Euclidean spaces and is another unnecessary formula to memorize.
+
+Instead, consider the coordinate transformation of 2-dim. manifold $\Sigma$:
+\[
+(\tau, V) \mapsto (\tau, p)
+\]
+Consider then that in general, $p = p(\tau, V)$, so that 
+\[
+dp = \left( \frac{ \partial p }{ \partial \tau} \right)_V d\tau + \left( \frac{ \partial p }{ \partial V} \right)_{\tau} dV
+\]
+Consider curve $c\subset \Sigma$, $c=c(t) = (\tau, p) = (\tau(t), p(t))$, so that 
+\[
+\dot{c} = ( \dot{\tau}, \dot{p}) = \dot{\tau} \frac{ \partial }{ \partial \tau } + \dot{p} \frac{ \partial }{ \partial p}
+\]
+
+Then
+\begin{equation}\label{Eq:CoordinateTransformationOfPressurep}
+dp(\dot{c}) = \dot{p} = \dot{\tau} \left( \frac{ \partial p }{ \partial \tau} \right)_V + \dot{p} \left( \frac{\partial p}{ \partial V}\right)_{\tau}  \left( \frac{ \partial V}{ \partial p } \right)_{\tau}
+\end{equation}
+where we used the fact that $dV \left( \frac{ \partial }{ \partial \tau } \right) = 0 $ ($\tau$ and $V$ are still independent coordinates for $\Sigma$) and \\
+$dV\left( \frac{ \partial }{ \partial p} \right) = \left( \frac{ \partial V}{ \partial p } \right)_{\tau}$ since $\tau$ is held constant for the component of $\dot{c} \in \mathfrak{X}(\Sigma)$ in $p$ (i.e. $\frac{\partial }{ \partial p}$).
+
+Consider letting parameter $t=V$ for $c$. Then
+\[
+\dot{\tau} = \left( \frac{ \partial \tau }{ \partial V } \right)_p, \qquad \dot{p} = \left( \frac{ \partial p }{ \partial V} \right)_{\tau}
+\]
+
+Consider letting $t=p$. Then $\dot{\tau} = \left( \frac{ \partial \tau}{ \partial p} \right)_V$ and $\dot{p} = 1$. $V$ is help constant for $\dot{\tau} = \left( \frac{ \partial \tau}{ \partial p} \right)_V$ because of how $p = p(\tau, V)$ for 
+\[
+dp = \left(\frac{ \partial p}{ \partial \tau} \right)_V d\tau + \left( \frac{ \partial p }{ \partial V} \right)_{\tau} dV
+\]
+so
+\begin{equation}\label{Eq:CoordinateTransformationOfPressurep2}
+\Longrightarrow 1 = \left( \frac{ \partial \tau }{ \partial p } \right)_V \left( \frac{ \partial p }{ \partial \tau } \right)_V + \left( \frac{ \partial p }{ \partial V } \right)_{\tau} \left( \frac{ \partial V }{ \partial p } \right)_{\tau}
+\end{equation}
+
+Plug in Eq. \ref{Eq:CoordinateTransformationOfPressurep2} into Eq. \ref{Eq:CoordinateTransformationOfPressurep}:
+\[
+\begin{gathered}
+	\dot{p} = \dot{\tau} \left( \frac{ \partial p}{ \partial \tau} \right)_V + \dot{p} \left[ 1 - \left( \frac{ \partial \tau}{ \partial V} \right)_p \left( \frac{\partial p}{ \partial \tau} \right)_V \right] \Longrightarrow \dot{p} \left( \frac{ \partial \tau }{ \partial V } \right)_p \left( \frac{ \partial p }{ \partial \tau } \right)_V = \dot{\tau} \left( \frac{ \partial p }{ \partial \tau } \right)_V \text{ or }
+\end{gathered}
+\]
+\begin{equation}
+\boxed{ \left( \frac{ \partial p }{ \partial V} \right)_{\tau} = \frac{\left( \frac{ \partial \tau }{ \partial V } \right)_p }{ \left( \frac{ \partial \tau }{ \partial p } \right)_V} }
+\end{equation}
+
+Consider the coordinate transformation $(\tau, p) \mapsto (\tau, V)$. By "label symmetry" (i.e. substitute $p$ for $V$, $V$ for $p$, for example),
+\begin{equation}
+\boxed{ \left( \frac{\partial V}{ \partial p } \right)_{\tau} = \frac{ \left( \frac{ \partial \tau }{ \partial p } \right)_V}{ \left( \frac{ \partial \tau }{ \partial V } \right)_p } }
+\end{equation}
+
+In fact, furthermore, by label symmetry, consider $(\tau, p) \mapsto (\tau, \rho)$, $\rho \equiv $ density, then
+\begin{equation}
+\boxed{ \left( \frac{\partial p}{ \partial \rho } \right)_{\tau} = \frac{ \left( \frac{ \partial \tau }{ \partial \rho } \right)_p}{ \left( \frac{ \partial \tau }{ \partial p } \right)_{\rho} } }
+\end{equation}
+
+Compare the previous expressions to the equation before (16.14) and (16.14) of Landau and Lifshitz (1980) \cite{LLandauELifshitz1980}, pp. 54,
+\[
+\begin{gathered}
+\left( \frac{\partial V}{ \partial  P } \right)_S = \frac{\partial (V, S) }{ \partial (P, S)} = \frac{\partial( V,S) / \partial (V, T) }{ \partial (P, S)/ \partial (P, T)} \cdot \frac{ \partial (V, T) }{ \partial (P ,T)} = \frac{(\partial S/ \partial T)_V }{ (\partial S / \partial T)_P} \cdot \left( \frac{ \partial V}{ \partial P} \right)_T \\
+\left( \frac{\partial V}{ \partial  P } \right)_S = \frac{ C_V}{ C_p} \left( \frac{\partial V}{ \partial  P } \right)_T
+\end{gathered}
+\]
+
+Similarly with Eq. (A-4.9a) on pp. 577 with Appendix 4 of  Sabersky, et. al. (1998) \cite{SAHG1998}:
+\[
+\left( \frac{ \partial p }{ \partial \rho} \right)_s = - \frac{ (\partial s / \partial \rho)_p }{ (\partial s / \partial p)_{\rho}}  = - \frac{ (\partial s / \partial T)_p (\partial T / \partial \rho)_p }{ (\partial s / \partial p)_{\rho} (\partial T / \partial p )_{\rho}} = \frac{ (\partial s / \partial T)_p }{ (\partial s / \partial T)_{\rho}} \left( \frac{ \partial p }{ \partial \rho} \right)_T
+\]
+
+The expression we'll need uses $V$:
+\[
+\begin{gathered}
+V = V(\tau, p) \Longrightarrow \\
+dV = \left( \frac{\partial V}{\partial \tau} \right)_p d\tau + \left( \frac{\partial V}{\partial p} \right)_{\tau} dp 
+\end{gathered}
+\]
+Let $c=(\tau, p)$  be a curve for when $V$ is constant.
+
+\[
+\begin{gathered}
+dV(\dot{c}) = 0 = \left( \frac{\partial V}{\partial \tau} \right)_p \dot{\tau} + \left( \frac{\partial V}{ \partial p } \right){\tau} \dot{p} \xrightarrow{ t = \tau} - \left( \frac{\partial V}{ \partial \tau} \right)_p = \left( \frac{\partial V}{\partial p} \right)_{\tau} \left( \frac{\partial p}{\partial \tau} \right)_V \text{ or } 
+\end{gathered}
+\]
+\begin{equation}
+\left( \frac{\partial V}{\partial p} \right)_{\tau} = -\frac{\left( \frac{\partial V}{\partial \tau} \right)_p }{ \left( \frac{\partial p}{\partial \tau} \right)_V}
+\end{equation}
+
+Using label symmetry for $V, p \mapsto p, V$, then also
+\[
+\left( \frac{\partial p}{\partial V} \right)_{\tau} = -\frac{\left( \frac{\partial p}{\partial \tau} \right)_V }{ \left( \frac{\partial V}{\partial \tau} \right)_p}
+\]
+
+Then using both Eq. \ref{Eq:AdiabaticCompressionOfV} and the previous equation in Eq. \ref{Eq:ConstantPressureHeatCapacityRelationshipOverConstantVolume2}, then we get 
+\begin{equation}
+\begin{gathered}
+\boxed{ \left( \frac{\partial V}{\partial p }\right)_{\sigma} = \frac{C_V}{C_p} \left( \frac{\partial V}{\partial p } \right)_{\tau} }
+\end{gathered}
+\end{equation}
+This is the equation for the \emph{adiabatic compressibility} $\left( \frac{\partial V}{ \partial P} \right)_{\sigma}$ of a body. The inequality $C_p > C_v$ implies that adiabatic compressibility is always smaller in absolute value than isothermal compressibility. Compare this to Eq. (16.14) of Landau and Lifshitz (1980) and Eq. (A-4.10) of Appendix 4, "Summary of Thermodynamic Relations", pp. 577 of Sabersky, et. al. (1998) \cite{SAHG1998}.
+
+The previous equation can be expressed as 
+\[
+\left(\frac{\partial p}{\partial V }\right)_{\sigma} = \frac{C_p}{C_V} \left( \frac{\partial p}{\partial V } \right)_{\tau} 
+\]
+From the definition of density $\rho$, $\rho := \frac{MN}{V}$ or $V = \frac{MN}{\rho}$, and assuming $N$ constant, then
+\[
+\frac{\partial}{\partial V} = \frac{\partial \rho}{\partial V} \frac{\partial }{\partial \rho} = \frac{-MN}{V^2} \frac{\partial}{\partial \rho} = \frac{-\rho^2}{MN} \frac{\partial }{\partial \rho}
+\]
+so that 
+\[
+\left(\frac{\partial p}{\partial \rho }\right)_{\sigma} = \frac{C_p}{C_V} \left( \frac{\partial p}{\partial \rho  } \right)_{\tau} 
+\]
+

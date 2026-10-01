@@ -1,0 +1,158 @@
+\noindent\textit{2015 manuscript.}
+
+\section{The First Law of Thermodynamics}
+
+\[
+dU = Q - W \text{ or } Q = dU + W 
+\]
+
+Consider $W = Q-dU$.  
+
+Consider path in $M$, $\gamma$, $\begin{aligned} & \quad \\
+  & \gamma : \mathbb{R} \to M = (U,V) \\
+  & \gamma(t) = (U(t), V(t)) \end{aligned}$
+
+$\dot{\gamma} \in \mathfrak{X}(M)$, $\dot{\gamma} = \dot{U} \frac{\partial }{ \partial U} + \dot{V} \frac{ \partial }{ \partial V}$
+
+\[
+W(\dot{\gamma}) = pdV(\dot{\gamma}) = p\dot{V} = Q(\dot{\gamma}) - dU(\dot{\gamma}) = Q(\dot{\gamma}) - \dot{U}
+\]
+Suppose $Q(\dot{\gamma}) = Q(t)dt(\dot{\gamma} \frac{ \partial }{ \partial t} ) = Q(t) \dot{\gamma}$.  
+\[
+\begin{gathered}
+  \int p \dot{V} dt = \int Q(t) \dot{\gamma}dt - \int \dot{U}dt \\ 
+  \Longrightarrow p\Delta V = \Delta Q - \Delta U
+\end{gathered}
+\]
+$p\Delta V$ interpreted as work done by gas. $\Delta Q$ is heat transferred to gas system.  $-\Delta U$ is the drop in internal energy of gas system as it does work.  
+
+\subsection{Heat capacity}
+
+\[
+Q = Q(\tau,V) = \left( \frac{ \partial Q}{ \partial \tau} \right)_V d\tau +  \left( \frac{ \partial Q}{ \partial V} \right)_{\tau} dV
+\]
+So define $C_V \equiv \left( \frac{ \partial Q}{ \partial \tau} \right)_V$ or interpret $C_V$ as energy input by heating at constant volume over ensuing change in temperature.  
+
+In this case, $\left( \frac{ \partial U}{ \partial \tau } \right)_V$.  
+
+For the case of a monatomic gas, $U =\frac{d}{2} \tau N$, $\frac{ \partial U}{ \partial \tau} = \frac{d}{2} N$.  
+\[
+C_V = \frac{d}{2} N
+\]
+$N \equiv $ number of molecules.  
+
+Now 
+\[
+\begin{aligned}
+  & Q = \Lambda_p dp + C_p d\tau \\ 
+  & Q = \Lambda_V dV + C_V d\tau
+\end{aligned} \Longrightarrow \begin{aligned}
+  & Q \wedge dp = C_p d\tau \wedge dp \\ 
+  & Q \wedge dp = \Lambda_V dV \wedge dp + C_V d\tau \wedge dp
+\end{aligned}
+\]
+Now from the thermodynamic identity, $Q = W + dU = pdV + dU$,
+\[
+Q \wedge dp = p dV \wedge dp + dU \wedge dp
+\]
+and from (empirical) ideal gas law, $pV = N\tau$ (which defines a hypersurface on $M$),
+\[
+dp V + p dV = N d\tau \Longrightarrow p dV \wedge dp = N d\tau \wedge dp
+\]
+so then
+\[
+Q \wedge dp = N d\tau \wedge dp + dU \wedge dp
+\]
+In the case of the monatomic gas, $U = \frac{d}{2} \tau N$, and so $dU = \frac{d}{2} N d\tau = C_V d\tau$ and so comparing all the equations above, one recovers
+\[
+C_p = N + C_V = \frac{2+d}{2} N
+\]
+EY: 20151019 I'm curious to know how this all generalizes for $C_V$, $C_P$ heat capacities, regardless of the type of molecule we consider.  
+
+
+\subsubsection*{The adiabatic relation for a classical ideal gas}
+
+Consider the adiabatic expansion (or contraction!) of a classical ideal gas.  \\
+This means that $Q=0$; there is no heat exchange to or from the gas system.  
+
+Recall $Q = dU + W$.  \\
+If $Q=0$, and supposing $W = pdV$, then $0 = dU + pdV$.  
+
+EY : 20151019 Either by definition, or the thermodynamic identity, $\tau d\sigma = dU + pdV$, then $C_V := \left( \frac{ \partial U}{ \partial \tau} \right)_V$.  My question is this: for manifold of thermodynamic states $M$, $M=(U,V)$, i.e. $U$ is a global coordinate and $V$ is a ``local'' coordinate.  One can make a Legendre transformation such that $M$ is parametrized by $(\tau,V)$, where $\tau$ is the temperature.  In general, one should say that $U=U(\tau,V) \in C^{\infty}(M)$, and so $dU = \frac{ \partial U }{ \partial \tau} d\tau + \frac{ \partial U}{ \partial V} dV$, $dU \in \Omega^1(M)$.    
+
+However, for this adiabatic process, we want
+\[
+Q = 0 = dU + W = dU + pdV = C_V d\tau + pdV
+\]
+which implies that $dU = C_V d\tau$.  What happened to the $\frac{ \partial U}{ \partial V} dV$? Is it that in this adiabatic process, the internal energy of the gas system goes to either doing work (expansion) or increases due to work being done on it (contraction), and is characterized completely by a drop or increase in its temperature, respectively?  And so $dU = C_V \tau$, and $pdV$ completely describes what's going on with work done or work done on it?
+\begin{correction}{adiabatic question}
+On the ideal-gas surface $(\partial U/\partial V)_{\tau} = 0$, so $dU = C_V\, d\tau$ on every path.
+The product $C_V\tau$ is not that differential.
+The derivation is \S\ref{sec:adiabatic-question}.
+\end{correction}
+
+Nevertheless, using the (empirical) ideal gas law, $pV = N\tau$, 
+\[
+0 = C_V d\tau + pdV = C_V d\tau + \frac{N\tau}{V} dV
+\]
+Consider a path $\begin{aligned} & \quad \\
+  & \gamma : \mathbb{R} \to M \\ 
+  & \gamma(t) = (\tau(t), V(t)) \end{aligned}$ \quad \, in $M$, so that $\dot{\gamma}(t) = \dot{\tau} \frac{ \partial }{ \partial \tau } + \dot{V} \frac{ \partial }{ \partial V} \in \mathfrak{X}(M)$.  
+
+Thus, 
+\[
+\begin{gathered}
+  0 = C_v \dot{\tau} + \frac{N \tau}{V} \dot{V} \text{ so } \frac{ \dot{\tau}}{\tau} + \frac{N}{C_V} \frac{ \dot{V}}{V} \\
+  \xrightarrow{ \int dt } \ln{ \frac{ \tau_f}{ \tau_i } } + \frac{N}{C_V} \ln{ \frac{V_f}{ V_i } } = 0 \text{ or } \ln{\tau V^{\frac{N}{C_V}} } = \text{ const. }
+\end{gathered}
+\]
+
+Now
+\[
+\frac{N}{C_V} = \frac{C_P - C_V}{ C_V} = \gamma -1 
+\]
+which is true, assuming the (empirical) ideal gas law, the thermodynamic identity, and, surely, for the case of a monatomic gas.  
+
+Thus
+\[
+\tau_f V_f^{\gamma-1} = \tau_i V_i^{\gamma -1}
+\]
+
+\subsection*{Problems}
+
+\problemhead{4} \emph{Adiabatic compression}. 
+
+A diesel engine doesn't have a spark plug to ignite and explode the fuel.  Instead, the air in the cylinder is compressed so highly that the fuel ignites spontaneously when sprayed into the cylinder.  
+
+\begin{enumerate}
+\item[(a)] 
+\[
+\begin{gathered}
+  \frac{ \tau_f V_f^{\gamma -1} }{ \tau_i V_i^{\gamma -1} } = \frac{ P_f V_f^{\gamma }}{ P_i V_i^{\gamma} } = 1 \\
+  \tau_f = \left( \frac{V_i}{V_f} \right)^{\gamma -1 }\tau_i
+\end{gathered}
+\]
+
+Run the Python script \verb|thermo.py| to do the calculations.  Here is (some of) the code from \verb|thermo.py| for doing so (one still needs to import the necessary libraries):
+
+\begin{lstlisting}
+roomtemp_K = KCconv.subs(T_C,20).rhs # room temperature in Kelvin                               
+
+Prob0104ans = adia_tV.subs(gamma,1.4).subs(V_f,1).subs(V_i,15).subs(tau_i, roomtemp_K) # answer to Problem 4 of Chapter 1                                                                           
+
+Prob0104ans = N( Prob0104ans.lhs) # 866.016969686253 K                                         
+Prob0104ansC = solve( KCconv.subs( T_K, Prob0104ans), T_C )[0] # 592.866969686253 C            
+solve( FCconv.subs( T_C, Prob0104ansC ), T_F)[0] # 1099.16054543526 F   
+\end{lstlisting}
+
+The final temperature is $866.01 \, K$ or $592.87 \, C$ or $1099.16 \, F$
+
+\item[(b)] Now from the ideal gas law, which is obeyed at all thermodynamic states
+\[
+\begin{gathered}
+  \frac{P_f}{ P_i} = \frac{V_i}{V_f} \frac{ \tau_f}{ \tau_i}
+\end{gathered}
+\]
+and so $\frac{P_f}{P_i} = 44.31$
+\end{enumerate}
+

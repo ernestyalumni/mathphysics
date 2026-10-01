@@ -1,0 +1,187 @@
+\noindent\textit{2008 manuscript.}
+
+\section{Gibbs Free Energy and Chemical Reactions}
+
+\solutionhead{1} \textbf{Thermal expansion near absolute zero} \begin{itemize}
+\item[(a)] \[
+\begin{aligned}
+  \left( \frac{ \partial G}{ \partial \tau} \right)_{N, \, p } & = - \sigma \\ 
+  \left( \frac{ \partial^2 G}{ \partial p \partial \tau} \right)_{\tau}  & = - \left( \frac{ \partial \sigma}{ \partial p } \right)_{\tau}
+\end{aligned} \quad \, \begin{aligned} \left( \frac{ \partial G }{ \partial p } \right)_{\tau} & = V \\ \left( \frac{ \partial^2 G}{ \partial \tau \partial p } \right)_p  & =\left( \frac{ \partial V}{ \partial \tau} \right)_p  \end{aligned} \quad \Longrightarrow \boxed{ \left( \frac{ \partial V}{ \partial \tau} \right)_p = -\left( \frac{ \partial \sigma }{ \partial p } \right)_{\tau} }
+\]
+\[
+\begin{aligned}
+  \left( \frac{ \partial G}{ \partial N} \right)_{ p } & =  \mu \\ 
+  \left( \frac{ \partial^2 G}{ \partial p \partial N} \right)_{N}  & =  \left( \frac{ \partial \mu}{ \partial p } \right)_{N}
+\end{aligned} \quad \, \begin{aligned} \left( \frac{ \partial G }{ \partial p } \right)_{\tau} & = V \\ \left( \frac{ \partial^2 G}{ \partial N \partial p } \right)_p  & =\left( \frac{ \partial V}{ \partial N} \right)_p  \end{aligned} \quad \Longrightarrow \boxed{ \left( \frac{ \partial V}{ \partial N} \right)_p = \left( \frac{ \partial \mu }{ \partial p } \right)_{N} }
+\]
+\[
+\begin{aligned}
+  \left( \frac{ \partial^2 G}{ \partial \tau \partial N} \right)_{N}  & =  \left( \frac{ \partial \mu}{ \partial \tau } \right)_{N}
+\end{aligned} \quad \, \begin{aligned} 
+\left( \frac{ \partial^2 G}{ \partial N \partial \tau } \right)_\tau  & = - \left( \frac{ \partial \sigma}{ \partial N} \right)_{\tau}  \end{aligned} \quad \Longrightarrow \boxed{ \left( \frac{ \partial \mu}{ \partial \tau } \right)_N = -\left( \frac{ \partial \sigma }{ \partial N } \right)_{\tau} }
+\]
+\item[(b)] $\alpha = \frac{1}{V} \left( \frac{ \partial V}{ \partial \tau} \right)_p = \frac{-1}{V} \left( \frac{ \partial \sigma }{ \partial p } \right)_{\tau} = 0$ as $\tau \to 0$ since $\sigma \to $ constant as $\tau \to 0$ by third law of thermodynamics.  
+\end{itemize}
+
+\solutionhead{2} \textbf{Thermal ionization of hydrogen}.  
+\begin{itemize}
+\item[(a)] Given $e + H^+ \rightleftarrows H$, note that $e + H^+ - H =0$.  Recall
+\[
+\frac{ [e][H^+] }{ [H] } = K(\tau) = \prod_j n_{Q_j}^{\nu_j} \exp{ [ -\nu_j F_j(int) /\tau ] }
+\]
+where $n_Q = \left( \frac{ M \tau}{2\pi \hbar^2 } \right)^{3/2} V$.  
+
+For dissocation of $H$ into $e^- + H^+$ choose zero of internal energy of each composite particle (here $H$) to concide with energy of dissociated particles (here $H^+$, $e^-$) at rest; place energy of ground state of composite particle $H$ at $-I$, $I$ is energy required in reaction to dissociate composite particle into its constituents and is taken to be positive, i.e. the ionization energy.  
+
+\[
+K(\tau) = (n_{e^-})^1 \exp{ [- F_{int}(e^-)/\tau ]} \cdot (n_{H^+} )^1 \exp{ [ -F_{int}(H^+)/ \tau ] } (n_{H})^{-1} \exp{ (- (-1) (F_{int}(H)/\tau) )}
+\]
+Note that $n_{H^+} \simeq n_{H}$.  Let $n_{e^-} = n_Q$.  \emph{Importantly}, note
+\[
+\boxed{ F_{int}(e^-) + F_{int}(H^+) - F_{int}(H) = I }
+\]
+$F_{int}(H)$ is at a lower free energy than $e^-$ and $H^+$.  
+\[
+\Longrightarrow K(\tau) = n_Q e^{-I/\tau} \Longrightarrow \boxed{ \frac{ [e][H^+] }{ [H] } = n_Qe^{-I/\tau}  }
+\]
+
+\item[(b)] By charge conservation, $[e] = [H^+]$, so that 
+\[
+[e] = [H]^{1/2} n_Q^{1/2} \exp{ (-I/2\tau)}
+\]
+Given $[H] \simeq 10^{23} \, cm^{-3}$, $m_e = 0.511 \, MeV/c^2$, $T = 5000 \, K$, $I = 13.6 \, eV$ ionization energy,
+\[
+[e] = (10^{23} \, cm^{-3})^{1/2} ( 2.92 \times 10^{10} 1/cm^{3/2})^{1/2} \exp{ ( - 13.6 \, eV / 2 k_B 5000 \, K) } =  1.3 \times 10^{15} \, cm^{-3}
+\]
+
+\emph{Note that $H(exc)$ and $H$ are just two different states of atomic hydrogen.  Their concentrations must therefore be proportional to the probability of occurrence of these states, and the ratio of probabilities is the ratio of the respective Boltzmann}
+\[
+\frac{ [H(exc) ] }{[H] } = \frac{p(H(exc) )}{ p(H) }
+\]
+
+\emph{If $\epsilon_{H(exc)}$ is the internal energy of the first excited state and $\epsilon_H$ is the internal energy of the ground state of atomic hydrogen, we are given that $\epsilon_{H(exc)} - \epsilon_H = \frac{3}{4} I$}.  \textbf{We also need to take into account the fact that the first excited electronic state of hydrogen is 4-fold degenerate i.e. one 2s-orbital and three 2p-orbitals.}\footnote{(from solutions to Homework 8, Ph12c, Caltech, June 6, 2008, by Prabha Mandayam, Heywood Tam)} Therefore,
+\[
+\frac{ [H(exc)]}{[H]} = \frac{ p(H(exc)) }{ p(H)} = \frac{ 4e^{-\epsilon_{H(exc)}/\tau } }{ e^{-\epsilon_H/\tau} } = 4 e^{-3I/4\tau}
+\]   
+\[
+[H(exc)] = 4[H] e^{-3I/4\tau} = \boxed{ 2.092 \times 10^{13} \, cm^{-3} }
+\]
+\[
+\frac{ [e] }{ [H(exc) ]} = 62
+\]
+
+\end{itemize}
+
+
+
+\solutionhead{3} \textbf{Ionization of donor impurities in semiconductors}.
+
+Consider a pentavalent impurity (donor), introduced in place of tetravalent silicon atom, acts like a hydrogen atom in free space.  
+
+Then recall, from Problem 3, $e + H^+ \rightleftarrows H$, and so 
+\[
+\frac{ [e][H^+]}{ [H] } =  n_Q  \exp{ (-I/\tau)}
+\]
+where $n_Q \equiv \left( \frac{ m\tau }{2\pi \hbar^2 } \right)^{3/2}$ refers to the electron.  
+
+By charge conservation, $[e] = [H^+]$.  
+
+So
+\[
+[e] = [H]^{1/2} n_Q^{1/2} \exp{ (-I/2\tau)}
+\]
+
+Now given $[H] = 10^{17}$ donors per $\text{cm}^3$,  $\tau = 100 \, K$, 
+\[
+n_Q = \left( \frac{m^* \tau}{2\pi \hbar^2 }\right)^{3/2} = \left( \frac{ 0.3 \cdot 0.511 \, MeV/c^2* 100 \, K \cdot 0.00008617 \, eV/K }{ 2 \pi (4.136 \times 10^{-15} \, eV/s)^2 } \right)^{3/2} = 1263. \text{ donors per $\text{cm}^3$ }
+\]
+Now $F = \frac{q_1q_2}{r^2}$, 
+\[
+W = \int -F dr = - \int_{r_0}^{\infty} \frac{q_1 q_2}{r^2} dr = + \left. \left( \frac{q_1 q_2 }{r} \right) \right|_{r_0}^{\infty} = \frac{-q_1 q_2}{r_0}
+\]
+and so $I = \frac{e^2}{\epsilon r_0} = \frac{1}{\epsilon}(13.6 \, eV)$ where $13.6 \, eV$ is the ionization energy of an electron from a (real) hydrogen atom. 
+
+So
+\[
+[e]= 2. \times 10^{-18} \, \text{ donors per $\text{cm}^3$ }
+\]
+\begin{correction}{donor density}
+The value $1263\,\mathrm{cm}^{-3}$ for $n_Q$ does not evaluate $(m\tau/(2\pi\hbar^2))^{3/2}$.
+The hydrogenic binding energy and the quadratic for $n$ are in \S\ref{sec:semiconductors}.
+At $m^{\!*}=0.3\, m_e$, $\epsilon_r = 11.7$, and $T=100\,\mathrm{K}$, that calculation gives $n = 2.965\times 10^{16}\,\mathrm{cm}^{-3}$.
+\end{correction}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\solutionhead{4} \textbf{Biopolymer growth.}  
+
+Recall that $G(N,p,\tau) = N\mu(p,\tau)$, since $G$ was chosen to be an \emph{extensive} quantity (it scales with size).  For more than one chemical species $G = \sum_j N_j \mu_j$.  \\
+$dF = 0$ for equilibrium, for constant $P,\tau$.   \quad \\ 
+
+$\mu_j = $ chemical potential of species $j$, $\mu_j = (\partial G/\partial N_j)_{ \tau, p}$.   \quad \\ 
+
+Given $\sum_i \nu_j A_j$, e.g. $H_2 + Cl_2 = 2HCl$, \\
+$dG = (\sum_j \nu_j \mu_j )d\hat{N}$ where $dN_j = \nu_j d\hat{N}$, $dG = 0 \to \sum_j \nu_j \mu_j =0$.   \quad \\ 
+
+Recall the mass action law derivation: assume constituents act as ideal gases; $\mu_j  = \tau(\ln{n_j} - \ln{c_j})$, $n_j$ concentration of species $j$; $c_j \equiv n_{Q_j} Z_j(int)$.  
+\[
+\sum_j \nu_j\ln{n_j} = \sum_j \nu_j \ln{c_j} \Longrightarrow \sum_j \ln{n_j^{\nu_j}} = \sum_j \ln{c_j^{\nu_j}} = \ln{ \prod_j n_j^{\nu_j} } = \ln{ K(\tau) }
+\]
+\[
+\prod_j n_j^{\nu_j} = K(\tau) \quad \quad \, \text{ mass action law }
+\]
+\hrulefill
+
+\begin{itemize}
+\item[(a)] By mass action law, $\frac{ [\text{ monomer}][N\text{mer}] }{[(N+1)\text{mer}]} = \frac{ [1][N]}{[N+1]} = K_N$.  
+\[
+\begin{gathered}
+  \frac{[1][1]}{[2]} = K_1 \quad \quad \, \frac{ [1]^2}{[2]}\frac{[1][2]}{[3]} = \frac{[1]^3}{[3]} = K_1 K_2 \\ 
+  \frac{ [1]^{j+1} }{[j+1]} \frac{ [1][j+1] }{[j+2]} = \prod^j_{l=1} K_l K_{j+1} = \frac{[1]^{j+2}}{[j+2]} = \prod_{l=1}^{j+1} K_l 
+\end{gathered} \quad \quad \, \Longrightarrow \boxed{ [N+1]= [1]^{N+1}/K_1 K_2 K_3 \dots K_N }
+\]
+\item[(b)] Recall that $K(\tau) = \prod_j n_{Q_j}^{\nu_j} \exp{ [ - \nu_j F_j(int)/\tau ]}$  
+\[
+K_N = \frac{n_Q(N)n_Q(1)}{ n_Q(N+1)} \exp{ \left[ \frac{-F_N}{\tau} - \frac{F_1}{\tau} \right] }\exp{ \left[ \frac{ F_{N+1}}{\tau} \right] } = \frac{ n_Q(N)n_Q(1) }{n_Q(N+1)} \exp{ \left[ \frac{ - (F_N + F_1 - F_{N+1} )}{\tau} \right]}
+\]
+where $n_Q(N) = \left( \frac{M_N \tau}{2\pi \hbar^2} \right)^{3/2}$ and $M_N$ is the mass of $N$mer molecules, $F_N$ is the free energy of one $N$mer molecule.  
+\item[(c)] Assume $N \ll 1$ so $n_Q(N) \simeq n_Q(N+1)$.  Assume $[1] = 10^{20} \, cm^{-3}$.  Assume $\Delta F = F_{N+1} - F_N - F_1 = 0$, meaning zero free energy change in the basic reaction step.  We're given the molecular weight of the monomer to be 200.  
+
+We want $\frac{[N+1]}{[N]}$ at room temperature.  Now $K_N \simeq n_Q(1) = \left( \frac{ M_1 \tau}{2\pi \hbar^2} \right)^{3/2}$.  
+\[
+\frac{[1][N]}{[N+1]} = n_Q(1) = \left( \frac{M_1 \tau}{2\pi \hbar^2} \right)^{3/2} \text{ or } \frac{ [N+1]}{[N]} = \frac{[1]}{n_Q(1)} = \left( \frac{2\pi \hbar^2}{M_1 \tau} \right)^{3/2} 10^{20} \, cm^{-3}
+\]
+Note that $\left( \frac{ 2\pi (6.582 \times 10^{-22} \, MeV \cdot s)^2 }{ 200 (938 MeV/c^2)(0.8617 \times 10^{-4} eV/K)(298 \, K) } \left( \frac{ 3\times 10^{10} \, cm/s}{1 \, c} \right)^2 \right)^{3/2} = 0.3627 \times 10^{-27} \, cm$.  
+
+\[
+\Longrightarrow \boxed{ \frac{ [N+1]}{[N]} = 3.627 \times 10^{-8} }
+\]
+\item[(d)] We want the condition
+\[
+1 < \frac{ [N+1]}{[N]} = \frac{[1]}{n_Q(1)} \exp{ \left( \frac{ -\Delta F}{\tau} \right) } \text{ or } \ln{ \frac{n_Q(1)}{[1]}} < \frac{ - \Delta F}{\tau} 
+\]
+\[
+\Longrightarrow \Delta F < \tau \ln{  \frac{ [1]}{ n_Q(1)} } = \boxed{ - 0.44 \, eV}
+\]
+\end{itemize}
+
+
+
+
+
+
+
