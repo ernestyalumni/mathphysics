@@ -1,0 +1,230 @@
+% Imported from LaTeX_and_pdfs/AGAT_dump.tex; see provenance.json.
+\part{Statistical Mechanics: Ising Model}
+  
+
+\section{Ising Model}  
+
+\subsection{Definition of Ising Model}  
+
+cf. \href{https://en.wikipedia.org/wiki/Ising_model}{Wikipedia, "Ising model"}
+
+Consider set of lattice sites $\Lambda$, each with set of adjacent sites (e.g. \textbf{graph}) forming $d$-dim. lattice.  \\
+$\forall \, $ lattice site $k\in \Lambda$, $\exists \, $ discrete variable $\sigma_k$, s.t. $\sigma_k \in \lbrace -1, 1\rbrace$.  \\
+spin configuration $\equiv \sigma = (\sigma_k)_{k\in \Lambda}$ is an assignment of spin value to each lattice site.  
+
+i.e. 
+
+$d=1$, consider "line" configuration: $i \in \mathbb{Z}$, $i=0,1,\dots L-1$.  Lattice site $k \in \Lambda = \Lambda_{d=1}$.  $\forall \, k \in \Lambda$, \\ 
+$\exists \, $ bijection to its index $i$, $k\mapsto i$, and $\exists \, \sigma_k$ i.e. 
+\[
+\begin{aligned}
+	& \sigma : \Lambda \leftrightarrow \sigma: \mathbb{Z} \to \mathbb{Z}_2 \\ 
+	& \sigma(k) \equiv \sigma_k \leftrightarrow \sigma(i) \equiv \sigma_i \mapsto \lbrace -1, 1 \rbrace
+\end{aligned}
+\]
+spin configuration $\sigma : \Lambda \mapsto (\sigma_k)_{k\in \Lambda} \in \lbrace -1,1 \rbrace^{| \Lambda |}$, where $|\Lambda | =L$.  \\
+$\forall \, k \in \Lambda$, $\exists \, ! $ only at most 2 edges, given, for $k\mapsto i$, $i+1,i-1$, $\forall \, i = 1 \dots L-2$.  
+
+$d=2$, "rectangle" configuration.  $(i,j) \in \mathbb{Z}^2$.   $\begin{aligned} & \quad \\ 
+&	 i \in 0,1,\dots L_x-1 \\ 
+&	 j \in 0,1,\dots L_y-1 \end{aligned}$.  Lattice site $\mathbf{k} \in \Lambda = \Lambda_{d=2}$.  \\ $\forall \, \mathbf{k} \in \Lambda$, $\exists \, $ bijection to its "grid coordinates" $(i,j)$, $\mathbf{k} \mapsto (i,j)$, and $\exists \, \sigma_{\mathbf{k}} $ i.e. $\sigma_{\mathbf{k}} = \sigma_{ij} \in \lbrace -1,1\rbrace$.  \\
+spin configuration $\sigma: \Lambda \mapsto (\sigma_{\mathbf{k}})_{\mathbf{k} \in \Lambda} \in \lbrace -1,1\rbrace^{|\Lambda|}$, where $|\Lambda | \equiv |\Lambda_{d=2} | = L_xL_y$.  \\
+$\forall \, \mathbf{k} \in \Lambda$, $\exists \, !$ only at most 4 edges, given by $\mathbf{k} \mapsto (i,j)$, $(i \pm 1, j ), (i,j\pm 1)$, \  $\begin{aligned} & \quad \\ & i = 1\dots L_x -2 \\ & j = 1\dots L_y-2 \end{aligned}$.  
+
+Note that in both cases, I haven't yet defined the boundary conditions, and leave that to be discussed thoroughly in the future (i.e. following sections).  
+
+There are $2^{|\Lambda|}$ number of configurations in any dim. $d$.  
+
+cf. \href{https://en.wikipedia.org/wiki/Ising_model}{Wikipedia, "Ising model"}
+
+\subsubsection{Interaction $J_{ij} \equiv J_{\mathbf{k} \mathbf{l}}$, Hamiltonian (energy functional)for a configuration $H(\sigma)$}  
+
+$\forall \, $ 2 adjacent (lattice) sites, $i,j \equiv \mathbf{k}, \mathbf{l} \in \Lambda$, let there be an interaction $J_{ij} \equiv J_{\mathbf{k} \mathbf{l}}$ i.e. $\begin{aligned} & \quad \\ 
+& J : \Lambda^2 \to \mathbb{R} \\ 
+& J: (\mathbf{k}, \mathbf{l}) \mapsto J_{\mathbf{k} \mathbf{l}} \end{aligned}$.   \\
+Adjacent means $\exists \, $ edge $\mathbf{k} \mapsto \mathbf{l}$ (the mapping is the edge)  
+
+Suppose $\forall \, $ site $j \equiv \mathbf{l} \in \Lambda$ , $\exists \, $ external magnetic field $h_j \equiv h_{\mathbf{l}}$ interacting with it.  \\
+Given (site) configuration $\sigma : \Lambda \mapsto (\sigma_{\mathbf{k}})_{\mathbf{k} \in \Lambda} \in \lbrace -1 ,1 \rbrace^{ | \Lambda | }$.  
+\begin{equation}
+H(\sigma) = -\sum_{ \langle i j \rangle } J_{ij} \sigma_i \sigma_j - \mu \sum_j h_j \sigma_j \equiv H(\sigma(\Lambda)) = -\sum_{\langle \mathbf{k} \mathbf{l} \rangle } J_{\mathbf{k} \mathbf{l} }\sigma_{\mathbf{k}} \sigma_{\mathbf{l}} - \mu \sum_{ \mathbf{k} \in \Lambda } h_{\mathbf{k}} \sigma_{ \mathbf{k}}
+\end{equation}
+where $\sum_{ \langle \mathbf{k} \mathbf{l} \rangle }$ is overall pairs of adjacent spins (every pair is counted once),  \\
+\phantom{where } $\langle \mathbf{k}, \mathbf{l} \rangle \equiv $ sites $\mathbf{k}, \mathbf{l}$ are nearest neighbors.  
+
+Note sign in 2nd. term, $-\mu \sum_{\mathbf{k}} h_{\mathbf{k}} \sigma_{\mathbf{k}}$ should be positive because of electron's magnetic moment is antiparallel to its spin, but negative term used conventionally.  
+
+Nothing was said about boundary conditions, I propose that it can be either fixed in the summation or by setting $J_{\mathbf{k} \mathbf{l}}=0$.  
+
+$\forall \, \mathbf{k} \in \Lambda$, let $\begin{aligned} & \quad \\
+	& \mathbf{y} : \Lambda \to E \\ 
+		& \mathbf{y}: \mathbf{k} \mapsto \lbrace \langle \mathbf{k}, \mathbf{l} \rangle_{\mathbf{l}} \end{aligned}$, with $\lbrace \langle \mathbf{k}, \mathbf{l} \rangle \rbrace_{\mathbf{l}}$ be set of all edges from $\mathbf{k}$
+		
+		Then clearly $\sum_{\langle \mathbf{k} \mathbf{l} \rangle } = \frac{1}{2} \sum_{\mathbf{k} \in \Lambda} \sum_{ \lbrace \langle \mathbf{k} \mathbf{l} \rangle \rbrace_{\mathbf{l}}}$.  
+		
+		
+Taking into account only interaction between adjoining dipoles, on a square lattice: 
+\[
+E(\sigma) = -J \sum_{k,l=0}^{L-1} ( \sigma_{kl}\sigma_{k,l+1} + \sigma_{kl} \sigma_{k+1, l} )
+\]
+cf. Landau and Lifshitz \cite{agat:LaLi1980}
+
+
+EY : 20171223 Things to check from Hjorth-Jensen (2015) \cite{agat:Hjor2015}:  
+
+2-dim. Ising model, with $\mathcal{B} \equiv h_j =0$, undergoes phase transition of 2nd. order: meaning below given critical temperature $T_C$, there's spontaneous magnetization with $\langle \mathcal{M} \rangle \equiv \langle \mathbf{M} \rangle \neq 0$.  $\langle \mathbf{B} \rangle \to 0$ at $T_C$ with \emph{infinite} slope, a behavior called \emph{critical phenomena}.  Critical phenomenon normally marked by 1 or more thermodynamical variables which is 0 above a critical point.  In this case, $\langle \mathbf{B} \rangle \neq 0$, such a parameter normally called \emph{order parameter}.  
+
+Critical phenomena; we still don't have a satisfactory understanding of system's properties close to the critical point, even for simplest 3-dim. systems.  Even mean-field models can predict wrong physics; mean-field theory results in a 2nd.-order phase transition for 1-dim. Ising model, wherea 1-dim. Ising model doesn't predict any spontaneous magnetization at any finite temperature $T$.  
+
+e.g. Consider 1-dim. $N$-spin system.  Assume periodic boundary conditions.  Consider state of all spins up, with total energy $-NJ$ and magnetization $N$.  Flip half of spins (e.g. all spins of index $i>N/2$) so 1st half of spins point upwards and last half points downwards.  Energy is $-NJ + 4J$, net magnetization $0$.  This is an example of a possible disordered state with net magnetization $0$.  Change in energy is too small to stabilize disordered state (to $-NJ$).  
+
+\begin{definition}[configuration probability]
+\textbf{configuration probability} $P_{\beta}(\sigma)$ given by Boltzmann distribution:  
+\begin{equation}\label{agat:Eq:Isingconfigprob}
+ P_{\beta}(\sigma) = \frac{ \exp{ (-\beta H(\sigma))} }{ Z_{\beta} } = \text{ prob. of configuration } \sigma \equiv \sigma(\Lambda) \equiv (\sigma_{\mathbf{k}})_{\mathbf{k} \in \Lambda}
+\end{equation} with the partition function as normalization constant $Z_{\beta}$: 
+\begin{equation}\label{agat:Eq:IsingPartitionFuncZ}
+Z_{\beta} = \sum_{\sigma} \exp{ -\beta H(\sigma)}
+\end{equation}
+\end{definition}  
+
+
+
+cf. pp. 504 Sec. 151 Phase transitions of the second kind in a 2-dim. lattice,  Landau and Lifshitz \cite{agat:LaLi1980}
+
+
+\begin{equation}\label{agat:Eq:2dIsingZexact}
+Z = 2^N(1-x^2)^{-N} \coprod_{p,q=0}^{L-1} \left[ (1+x^2)^2 - 2x(1-x^2) \left( \cos{ \frac{2\pi p}{L} } + \cos{ \frac{2\pi q }{L} } \right) \right]^{1/2} 
+\end{equation}
+cf. (151.11) of Landau and Lifshitz \cite{agat:LaLi1980}, where $x= \tanh{\theta}$, $\theta = J/T \equiv J/\tau = \beta J$.  
+
+\begin{equation}
+\begin{gathered}
+\Phi \equiv F = -\tau \ln{Z} = \\
+= -\tau N \ln{2} + \tau N \ln{ (1-x^2)} - \frac{\tau}{2} \sum_{p,q=0}^L \ln{ \left[ (1+x^2)^2 - 2x(1-x^2) \left( \cos{ \frac{2\pi p}{L} } + \cos{ \frac{2\pi q }{L} } \right) \right] }
+\end{gathered}
+\end{equation}
+
+Let $\begin{aligned}& \quad \\ 
+& \omega_1 = \frac{2\pi p }{ L } \text{ with } p\to 0 \text{ as } L \to \infty \\ 
+& \omega_2 = \frac{2\pi q }{ L } \text{ with } q\to 0 \text{ as } L \to \infty \end{aligned}$ so $\begin{aligned} & \quad \\ 
+& \frac{ L d\omega_1 }{2\pi } = dp \\ 
+& \frac{ L d\omega_2}{ 2\pi } = dq \end{aligned}$ and using $L^2 = N$.  
+
+
+\[
+\Phi = -\tau N \ln{2} + \tau N \ln{ (1-x^2)} - \frac{N\tau }{ 2(2\pi)^2 } \int_0^{2\pi } \int_0^{2\pi } d\omega_1 d\omega_2 \ln{ \left[ (1-x^2) -  2x(1-x^2) \left( \cos{  \omega_1 } + \cos{  \omega_2 } \right) \right]  }
+\] 
+
+$F \equiv \Phi$ has singularity when $  (1-x^2) -  2x(1-x^2) \left( \cos{  \omega_1 } + \cos{  \omega_2 } \right)  $ in $\ln{ \left[ (1-x^2) -  2x(1-x^2) \left( \cos{  \omega_1 } + \cos{  \omega_2 } \right) \right]  }$.  \\
+$  (1-x^2) -  2x(1-x^2) \left( \cos{  \omega_1 } + \cos{  \omega_2 } \right) $ minimized when $\cos{\omega_1} = \cos{\omega_2}=1$ (since $-1 < x < 1$) 
+\[
+\begin{gathered}
+\Longrightarrow (1+x^2)^2 - 4x(1-x^2 ) = 1+2x^2 + x^4 - 4x + 4x^3 = (x^2+2x-1)^2 =0 \Longrightarrow x = \frac{-2 \pm \sqrt{ 4-4(-1) } }{2} = -1 + \sqrt{2} \\
+x = \tanh{\theta} = \frac{e^{\theta} - e^{-\theta} }{ e^{\theta} + e^{-\theta} } = \sqrt{2}  -1 \text{ or } \begin{gathered}
+\qquad \\ e^{\theta} - e^{-\theta} = \sqrt{2} e^{\theta} + \sqrt{2} e^{-\theta} - e^{\theta} - e^{-\theta} \text{ so } \\ 
+(2-\sqrt{2}) e^{\theta} = \sqrt{2} e^{-\theta} \\
+e^{2\theta} = \frac{\sqrt{2}}{ 2-\sqrt{2}} \left( \frac{2+\sqrt{2} }{ 2 + \sqrt{2}} \right) \text{ or } \\ 
+2\theta = \ln{ (1+ \sqrt{2})}
+\end{gathered}
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+\frac{J}{T_c} = \frac{1}{2} \ln{ (1+\sqrt{2})} \text{ or } 
+\end{gathered}
+\]
+\begin{equation}
+\boxed{ \tau_c = \frac{2J}{ \ln{ (1+\sqrt{2}) }} }
+\end{equation}
+so that $\tau_C \equiv T_C$ is where phase transition occurs.  
+
+Let $t:= \tau - \tau_c$.  $\theta = \frac{J}{\tau} = \frac{J}{t+\tau_C}$  
+
+Expand about minimum  
+
+EY:20171230 do this explicitly 
+
+\[
+\begin{gathered}
+\int_0^{2\pi } \int_0^{2\pi} d\omega_1 d\omega_2 \ln{ [ c_1 t^2 + c_2(\omega_1^2 + \omega_2^2 )]} \\ 
+F  \equiv \Phi \simeq a + \frac{1}{2} b (\tau-\tau_c)^2 \ln{ |\tau-\tau_c|} \\ 
+C = \frac{ \partial^2 F}{ \partial \tau } \simeq - b\tau_c \ln{ |\tau-\tau_c| }
+\end{gathered}
+\]
+with $C$ being heat capacity.  
+
+Order parameter $\langle M \rangle \equiv \eta = \text{constant}(\tau_c - \tau)^{1/8} = \begin{cases} 0 & \text{ if } \tau > \tau_c \\ 
+\text{ constant } (\tau_c-\tau)^{1/8} & \text{ if } \tau < \tau_c \end{cases}$  
+
+cf. pp. 505 Sec. 151 Phase transitions of the second kind in a 2-dim. lattice,  Landau and Lifshitz \cite{agat:LaLi1980}, L.Onsager 1947.  
+
+\subsection{An actual calculation of a small number of spins with Ising model}  
+
+Sec. 3.7 "An actual calculation" on pp. 76 of Newman and Barkema (1999) \cite{agat:NeBa1999}
+goes through a simple actual Monte Carlo calculation as a test case check so to compare this exact calculation/solution to the simulation, as a test of whether the simulation/program is correct.  This is done in Sec. 1.3 of Newman and Barkema (1999) \cite{agat:NeBa1999}.  
+
+However, none of these promised simple calculations were shown explicitly in Newman and Barkema (1999) \cite{agat:NeBa1999}.  I will forego this simple case.  
+
+\subsection{Explicit calculation showing stencil operation on each spin on a periodic lattice grid}  
+
+Consider 
+\[
+\begin{gathered}
+H(\sigma) = -\sum_{ \langle \mathbf{k} \mathbf{l} \rangle } J \sigma_{\mathbf{k}} \sigma_{\mathbf{l}} =  -J \sum_{i=0}^{L_x-1} \sum_{j=0}^{L_y-1} \sigma_{ij}( \sigma_{i+1j} + \sigma_{ij+1} ) = \\	
+= \frac{-J}{2} \left( \sum_{i=0}^{L_x-1} \sum_{j=0}^{L_y-1} \sigma_{ij} (\sigma_{i+1 j} + \sigma_{ij+1} ) + \sum_{i=1}^{L_x} \sum_{j=0}^{L_y-1}   \sigma_{i-1j} (\sigma_{ij} + \sigma_{i-1 j+1} ) \right) = \\
+	= \frac{-J}{2} \left( \sum_{i=0}^{L_x-1} \sum_{j=0}^{L_y-1} \sigma_{ij} (\sigma_{i+1 j} + \sigma_{ij+1} ) + \sum_{i=1}^{L_x} \sum_{j=0}^{L_y-1}   \sigma_{i-1j} \sigma_{ij} + \sum_{i=0}^{L_x-1} \sum_{j=1}^{L_y} \sigma_{i j-1} \sigma_{ij} \right) 
+\end{gathered}
+\]
+Now for each of these terms, 
+\[
+\begin{gathered}
+	\sum_{i=1}^{L_x} \sum_{j=0}^{L_y-1} \sigma_{i-1 j} \sigma_{ij} = \sum_{i=1}^{L_x} \left( \sum_{j=1}^{ L_y-1 } \sigma_{i-1 j} \sigma_{ij} + \sigma_{i-1 0 }\sigma_{i0} \right) = \sum_{i=1}^{L_x-1} \left( \sum_{j=1}^{L_y-1} \sigma_{i-1 j} \sigma_{ij} + \sigma_{i-10} \sigma_{i0} \right) + \left( \sum_{j=1}^{L_y-1} \sigma_{L_x-1 j } \sigma_{L_xj} \right) + \sigma_{L_x-1 0 } \sigma_{L_x0}   \\ 
+\sum_{i=0}^{L_x-1} \sum_{j=1}^{L_y} \sigma_{ij-1} \sigma_{ij} = \sum_{j=1}^{L_y-1} \left( \sum_{i=1}^{L_x-1} \sigma_{ij-1} \sigma_{ij}+ \sigma_{0j-1} \sigma_{0j} \right)  + \sum_{i=1}^{L_x-1} \sigma_{i L_y-1} \sigma_{iL_y} + \sigma_{0L_y-1} \sigma_{0L_y} 
+\end{gathered}
+\]
+\[
+\begin{gathered}
+	\sum_{i=0}^{L_x-1} \sum_{j=0}^{L_y-1} \sigma_{ij} (\sigma_{i+1j } + \sigma_{ij+1} ) = \sum_{i=0}^{L_x-1} \left( \sum_{j=1}^{L_y} \sigma_{ij} ( \sigma_{i+1j } + \sigma_{ij+1} ) + \sigma_{i0} (\sigma_{i+1 0 } + \sigma_{i1} ) \right) = \\
+	\sum_{i=1}^{L_x-1} \left( \sum_{j=1}^{L_y-1} \sigma_{ij} (\sigma_{i+1j}  + \sigma_{ij+1}) + \sigma_{i0} (\sigma_{i+1 0 } + \sigma_{i1}) \right) + \sum_{j=1}^{L_y-1} \sigma_{0j} (\sigma_{1j} + \sigma_{0j+1} ) + \sigma_{00} (\sigma_{10} + \sigma_{01} )
+\end{gathered}
+\]
+
+Apply periodic boundary conditions.  Adding up all the terms above, clearly we obtain 1 term which shows the stencil operation for spins on the "interior" of the grid: 
+\[
+\sum_{i=1}^{L_x-1} \sum_{j=1}^{L_y-1} \sigma_{ij} ( \sigma_{i+1j} + \sigma_{ij+1} + \sigma_{i-1j} + \sigma_{ij-1} )
+\]
+and if we apply \emph{periodic} boundary conditions, neatly, we'll see all the lattice sites at the boundary also will have this stencil operation:  
+\[
+\begin{gathered}
+	\sum_{i=1}^{L_x - 1} \sigma_{i0} (\sigma_{i+10} + \sigma_{i1} ) + \sum_{j=1}^{L_y-1} \sigma_{0j} (\sigma_{1j} + \sigma_{0j+1} ) + \sigma_{00} (\sigma_{10} + \sigma_{01} ) + \left( \sum_{i=1}^{L_x-1} \sigma_{iL_y-1} \sigma_{i0} \right) + \sigma_{0L_y-1} \sigma_{00} + \sum_{j=1}^{L_y-1} \sigma_{0j-1} \sigma_{0j} +  \\
+	+ \sum_{j=1}^{L_y - 1} \sigma_{L_x- 1 j} \sigma_{0j} + \sigma_{L_x-1 0} \sigma_{00} + \sum_{i=1}^{L_x-1} \sigma_{i-10} \sigma_{i0} 
+\end{gathered}
+\]
+
+Now, we can obtain the following for Hamiltonian, given spin configuration $\sigma$ with a lattice grid obeying periodic conditions:  
+
+\begin{equation}
+\begin{gathered}
+H(\sigma) = -\frac{J}{2} \sum_{i=0}^{L_x-1} \sum_{j=0}^{L_y-1} \sigma_{ij} (\sigma_{i+1j } + \sigma{i-1j} + \sigma_{ij+1} + \sigma_{ij-1} ) = \\
+= \frac{-J}{2} \left[  \sum_{i=0}^{L_x-1} \left( \sum_{ \substack{ j=0 \\ j \neq j' \\ } }^{L_y -1} \sigma_{ij} ( \sigma_{i+1j} +  \sigma_{i-1j} + \sigma_{ij+1} + \sigma_{ij-1} ) + \sigma_{ij'} ( \sigma_{i+1j'} + \sigma_{i-1j'} + \sigma_{ij'+1} + \sigma_{ij'-1}  ) \right)  + \right. \\ 
+\left. \sum_{ \substack{j=0 \\ j\neq j' \\ } }^{L_y-1} \sigma_{i'j} ( \sigma_{i'+1j} + \sigma_{i'-1j} + \sigma_{i'j+1} + \sigma_{i'j-1} ) + \sigma_{i'j'} ( \sigma_{i'+1j'}  + \sigma_{i'-1j'} + \sigma_{i'j'+1} + \sigma_{i'j'-1}) \right] 
+ \end{gathered}
+\end{equation}
+
+Consider a psin flip of $\sigma_{i'j'}$.  Contribution to $\Delta H$ at stencil operation on $\sigma_{i'j'}$, at $(i'j') \in \Lambda$, is 
+\[
+\frac{-J}{2} ( - \sigma_{i'j'} - \sigma_{i'j'} ) (\sigma_{i'+1j'} + \sigma_{i'-1j'} + \sigma_{i'j'+1} + \sigma_{i'j'-1}) = J\sigma_{i'j'} ( \sigma_{i'+1j'} + \sigma_{i'-1j'} + \sigma_{i'j'+1} + \sigma_{i'j'-1})
+\]
+Consider $\sigma_{i'j'} \sigma_{i'+1j'}$.  Clearly, term $\sigma_{i-1j'} \sigma_{ij'}$ with $i=i'+1$ only occurs once more in the summation.  Thus, we can definitely conclude that for $\Delta H \equiv \Delta H(\Delta \sigma_{i'j'})$ due to a single spin-flip is 
+\begin{equation}
+\Delta H(\Delta \sigma_{i'j'}) = 2J\sigma_{i'j'} ( \sigma_{i'+1j'} + \sigma_{i'-1j'} + \sigma_{i'j'+1} + \sigma_{i'j'-1} )
+\end{equation}
+
+
+\url{https://www.colorado.edu/physics/phys7240/phys7240_fa12/notes/Week3.pdf}
+\href{https://www.colorado.edu/physics/phys7240/phys7240_fa12/notes/Week3.pdf}{Victor Gurarie, Advanced Statistical Mechanics, Fall 2012}
+Exact solution by transfer matrices for 2-dim. Ising model.  
+
+

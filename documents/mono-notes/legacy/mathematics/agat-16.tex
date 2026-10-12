@@ -1,0 +1,1396 @@
+% Imported from LaTeX_and_pdfs/AGAT_dump.tex; see provenance.json.
+\part{Tensors, Tensor networks; Singular Value Decomposition, QR decomposition, Density Matrix Renormalization Group (DMRG), Matrix Product states (MPS)}
+
+
+\section{Introductions to Tensor Networks}
+
+Jos\'{e} Barbon (IFT-CSIC, Univ. Autonoma de Madrid) gave the \href{Workshop introductory overview}{https://youtu.be/nsxgAOAEgbg} for the workshop "Black Holes, Quantum Information, Entanglement, and all that," (29 May-1 June, 2017, with the organizing committee of Thibault Damour (IHES), Vasily Pestun (IHES), Eliezer Rabinovici (IHES \& Hebrew Univ. of Jerusalem).  
+
+In the talk, 
+
+
+cf. \href{https://youtu.be/nsxgAOAEgbg?t=43m13s}{43:13}  
+
+\subsection*{The church of the doubled Hilbert space}
+ 
+Any thermal box can be obtained by tracing over a second identical copy, if appropriately entangled into a global pure state.  
+
+\[
+\rho_R = \text{Tr}_L \sum_n C_n \Psi_n^L \otimes \Psi_n^R
+\]
+\[
+(C_n)_{\text{thermal}} = \left[ \frac{ e^{-\beta E_n} }{ \sum_m e^{-\beta E_M} } \right]^{1/2}
+\]
+
+But!!
+
+If the entanglement basis is taken to be the high-energy band of two "entangled" CFTs ... 
+\[
+|TFD \rangle \sim \sum_{E_n} e^{-\beta E_n/2} | E_n \rangle_L \otimes | E_n \rangle_R
+\]
+neglecting the tiny $e^{-S}$ spacings. we can approximate by continuous spectrum of fields in the background of an AdS black hole, to get ... 
+ 
+\[
+\int_E e^{-\beta E/2} |E\rangle_L \otimes | E\rangle_R 
+\]
+The HH state of the bulk fields!  
+
+cf. \href{https://youtu.be/nsxgAOAEgbg?t=46m16s}{46:16}
+
+SLOGAN: EPR $=$ ER
+Maldacena-Susskind  
+
+Accumulating a density of entanglement of $S \gg 1$ well-separated Bell pairs within a transversal size of order $(GS)^{1/2}$  seems to generate a geometrical bridge of area $GS$.  
+
+
+
+cf. \href{https://youtu.be/nsxgAOAEgbg?t=49m26s}{49:26}  
+
+\subsection*{Parametrizing complexity of entanglement}
+
+Pick a tensor decomposition of Hilbert space of dimension $\exp{(S)}$ into $S$ factors of $O(1)$ dimension.  
+\[
+\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes \dots \otimes \mathcal{H}_S
+\]
+A tensor of S indices gives a generic state.  
+
+cf. \href{https://youtu.be/nsxgAOAEgbg?t=50m27s}{50:27}  
+
+The decomposition of the big tensor in small building blocks gives a notion of "complexity of entanglement"  
+
+rather simple entanglement pattern  
+
+somewhat more complex entanglement pattern
+
+picture from M von Raamsdonk  
+
+cf. \href{https://youtu.be/nsxgAOAEgbg?t=55m10s}{55:10}
+
+\subsection*{A list of open questions \& problems}
+
+\begin{itemize}
+\item Need exactly calculable toy models of AdS/CFT along the lines of SYK model  
+\item Give a "renormalized" definition of quantum complexity for continuum CFTs 
+\item Can tensor networks describe bulk gravitons?  
+\item What is the space-time meaning of quantum complexity saturation?  
+\item Can we define approximate local observables for black hole inferiors?  
+\item Are there obstructions related to firewalls and/or fuzzballs?   
+\end{itemize}
+
+\href{https://youtu.be/nsxgAOAEgbg}{Workshop introductory overview } by Jos\'{e} Barbon for the \href{https://www.youtube.com/channel/UC4R1IsRVKs_qlWKTm9pT82Q}{Institut des Hautes Études Scientifiques (IHÉS)} gave me the first impetus to understand tensor networks as I sought to also understand the condensates of entanglement pairs within the black hole.  
+
+A Google search for introductions to tensor networks that are on arxiv ("Introduction Tensor Network arxiv") yielded Bridgeman and Chubb's course notes (bf. Bridgeman and Chubb (2017) \cite{agat:BrCh2017}).    
+
+\subsection{List of stuff I want to look at/do/study}  
+I would like to compare/contrast the following:  
+\begin{itemize}
+\item Rotman (2010) \cite{agat:JRotman2010}, Ch. 8, but starting from 8.4 Tensor Products, pp. 574  
+\item Jeffrey Lee (2009) \cite{agat:JLee2009}, Ch. 7 Tensors 
+\item \url{http://www.irisa.fr/sage/bernard/publis/SVD-Chapter06.pdf}, \url{https://math.stackexchange.com/questions/694339/parallel-algorithms-for-svd}
+\end{itemize}
+
+
+
+Maldacena and Susskind (2013) \cite{agat:MaSu2013}  
+
+Lectures on Gravity and Entanglement.  Mark Van Raamsdonk  \cite{agat:Raam2016}
+
+\begin{itemize}
+\item Consider as physical system AdS-Schwarzchild black hole   
+\item CFT 
+\begin{itemize}
+\item \href{https://arxiv.org/pdf/1601.05000.pdf}{PFL Lectures on Conformal Field Theory in $D\geq 3$ Dimensions}, Rychkov (2016) \cite{agat:Rych2016}.  
+\end{itemize}
+\end{itemize}
+
+Evenbly and Vidal (2011) \cite{agat:EvVi2011}, Tensor network states and geometry
+
+Loose ends (might not be useful links)
+\begin{itemize}
+\item \url{https://arxiv.org/pdf/1506.06958.pdf}
+\item \url{https://arxiv.org/pdf/1512.02532.pdf} One-point Functions in AdS/dCFT from Matrix Product States
+\end{itemize}
+
+Numerical implementation strategy: 1st, CUDA cuSolver, 2nd, Numerical Recepes version, 3rd, parallel algorithm review.
+
+
+\subsection{Tensor operations; Tensor properties}
+
+\subsubsection{rank}
+
+$r=$ rank tensor of dim. $d_1\times \dots \times d_r$ is element of $\mathbb{C}^{d_1\times \dots \times d_r}$  
+
+Tensor product
+\begin{equation}
+	[A \otimes B]_{i_1 \dots i_r, j_1 \dots j_s } := A_{i_1 \dots i_r} \cdot B_{j_1 \dots j_s }
+\end{equation}
+
+\subsubsection{Trace}
+Given tensor $A$, $x$th, $y$th indices have identical dims. ($d_x = d_y$), \\
+partial trace over these 2 dims. is simply joint summation over that index
+\begin{equation}
+	[\text{Tr}_{x,y} A]_{i_1\dots i_{x-1}i_{x+1} \dots i_{y-1}i_{y+1} \dots i_r} = \sum_{\alpha=1}^{d_x} A_{i_1 \dots i_{x-1} \alpha i_{x+1} \dots i_{y-1} \alpha i_{y+1} \dots i_r}
+\end{equation}
+
+\subsubsection{Contraction}
+
+\subsubsection{Group and splitting, Bridgeman and Chubb (2017) \cite{agat:BrCh2017} }
+
+"Rank is a rather fluid concept in the study of tensor networks."  Bridgeman and Chubb (2017) \cite{agat:BrCh2017}.  
+
+$\mathbb{C}^{a_1 \times \dots \times a_n} \simeq \mathbb{C}^{b_1 \times \dots \times b_m}$ isomorphic as vector spaces if $\prod_i a_i = \prod_i b_i$.  
+
+We can "group" or "split" indices to lower or raise rank of given tensor, resp.  
+
+Consider contracting 2 arbitrary tensors.  
+
+If we group together indices which are and are not involved in contraction, \\
+"It should be noted that not only is this reduction to matrix multiplication pedagogically handy, but this is precisely the manner in which numerical tensor packages perform contraction, allowing them to leverage highly optimised matrix multiplication code." (cf. Bridgeman and Chubb (2017) \cite{agat:BrCh2017}; check this)
+
+"Owing to freedom in choice of basis, precise details of grouping and splitting aren't unique." (cf. Bridgeman and Chubb (2017) \cite{agat:BrCh2017}).  
+
+1 specific choice of convention:  \\
+tensor product basis, defining basis on product space by product of respective bases.  
+
+"The canonical use of tensor product bases in quantum information allows for grouping and splitting described above to be - dealt with implicitly."  
+
+
+\begin{equation}
+ | 0 \rangle \otimes | 1 \rangle \equiv | 0 \rangle 
+\end{equation} and precisely this grouping, 
+\begin{equation}
+\begin{gathered}
+	| 0 \rangle \otimes | 1 \rangle \in \text{Mat}_{\mathbb{C}}(2,2), \text{ whilst } \\ 
+ | 0 1 \rangle \in \mathbb{C}^4  
+\end{gathered}
+\end{equation}
+
+Suppose rank $n+m$ tensor $T$, group its first $n$ indices, last $m$ indices together.
+\[
+T_{I,J} := T_{i_1\dots i_n,j_1\dots j_m}
+\]
+where 
+\[
+\begin{aligned}
+	& I := i_1 + d_1^{(i)} i_2 + d_1^{(i)}  d_2^{(i)} i_3 + \dots + d_1^{(i)} \dots d_{n-1}^{(i)} i_n \\ 
+	& J := j_1 + d_1^{(j)} j_2 + d_1^{(j)}  d_2^{(j)} j_3 + \dots + d_1^{(j)} \dots d_{m-1}^{j)} j_m 
+\end{aligned}
+\]
+
+EY : 20170627 to elaborate, consider a functor \verb|flatten| that does what's described above, in the context of category theory (and so this is the generalization):
+
+\begin{equation}
+\begin{gathered}
+	\mathbb{K}^{d_1^{(i)} } \times \mathbb{K}^{d_2^{(i)} } \times \dots \times \mathbb{K}^{d_n^{(i)} } \times \mathbb{K}^{d_1^{(j)} } \times \mathbb{K}^{d_2^{(j)} } \times \dots \times \mathbb{K}^{d_m^{(j)} } \xrightarrow{ \text{ flatten } } \mathbb{K}^{ \prod_{p=1}^n d_p^{(i)} } \times \mathbb{K}^{ \prod_{q=1}^m d_q^{(j)} }   \\
+T_{i_1 \dots i_n, j_1 \dots j_m } \xmapsto{ \text{ flatten } } T_{I,J}   \\
+\lbrace 0 ,1, \dots d_1^{(i)} \rbrace \times \lbrace 0 ,1, \dots d_2^{(i)} \rbrace \times \dots \times \lbrace 0 ,1, \dots d_n^{(i)} \rbrace \times \lbrace 0 ,1, \dots d_1^{(j)} \rbrace \times \lbrace 0 ,1, \dots d_2^{(j)} \rbrace \times \dots \times \lbrace 0 ,1, \dots d_m^{(j)} \rbrace \xrightarrow{ \text{ flatten } } \\
+\xrightarrow{ \text{ flatten } }  \lbrace 0 ,1, \dots  \prod_{p=1}^n d_p^{(i)} -1 \rbrace \times \lbrace 0 ,1, \dots \prod_{q=1}^m d_q^{(j)} - 1 \rbrace  \\
+(i_1,i_2, \dots i_n, j_1,j_2 \dots j_m ) \xmapsto{ \text{ flatten } } (I,J) := (i_1 + d_1^{(i)} i_2 + \dots + d_1^{(i)} \dots d_{n-1}^{(i)} i_n ,j_1 + d_1^{(j)} j_2 + \dots + d_1^{(j)} \dots d_{m-1}^{(j)} j_m ) \\ 
+\end{gathered}
+\end{equation}
+It doesn't make sense to call this "row-major" or "column-major" ordering generalization, because we are not dealing with only 2 indices where we can definitely say the first index indexes the "row" and the second index indexes the "column."  At most, possibly, you can alternatively have this:
+\[
+(i_1 \dots i_n,j_1\dots j_m) \xmapsto{ \text{ flatten } } (I,J) := (d_2^{(i)} \dots d_n^{(i)}i_1 + d_3^{(i)} \dots d_n^{(i)} i_2 + \dots + i_n , d_2^{(j)} \dots d_m^{(j)} j_1 + \dots + j_m )
+\]
+Note that this is all \emph{$0$-based counting} (i.e. we start counting from $0$ just like in C,C++,Python, etc.).  If you really wanted $1$-based counting, you'd have to complicate the above formulas as such:
+\[
+\begin{gathered}
+(I,J) := (i_1 + d_1^{(i)} (i_2-1) + \dots + d_1^{(i)} \dots d_{n-1}^{(i)} (i_n-1) ,j_1 + d_1^{(j)} (j_2-1) + \dots + d_1^{(j)} \dots d_{m-1}^{(j)} (j_m-1) ) \\ 
+\end{gathered}
+\]
+Note that formulas are easily checked by pluggin in the minimum and maximum values for the indices and seeing if they make sense (e.g. plug in $(0,0,\dots ,0)$ for all indices for $0$-based counting and make sure you get back $I=0$ or $J=0$).  
+
+\subsection{Singular Value Decomposition}  
+
+\begin{equation}
+\begin{gathered}
+	T_{I,J} = \sum_{\alpha} U_{I,\alpha} S_{\alpha,\alpha} \overline{V}_{J,\alpha} \\ 
+ \text{Mat}_{\mathbb{K}}(N,M) \xrightarrow{ \text{ SVD } } \text{Mat}_{\mathbb{K}}(N,P) \times \text{Mat}_{\mathbb{K}}(P,P) \times \text{Mat}_{\mathbb{K}}(M,P)    \\
+	T_{I,J} \xmapsto{ \text{ SVD } } U_{I,\alpha}, S_{\alpha,\alpha} , \overline{V}_{I,\alpha} \text{ s.t. } \\
+T_{I,J} = \sum_{\alpha} U_{I,\alpha} S_{\alpha, \alpha} \overline{V}_{J,\alpha}    \\
+T=USV^{\dag}
+\end{gathered}
+\end{equation}
+For the higher-dimensional version of SVD, 
+\begin{equation}
+\begin{gathered}
+	\mathbb{K}^{d_1^{(i)} } \otimes \dots \otimes \mathbb{K}^{d^{(i)}_N} \otimes \mathbb{K}^{d_1^{(j)} }\otimes \dots \otimes \mathbb{K}^{d_M^{(j)} }  \xrightarrow{ \text{ flatten } } \text{Mat}_{\mathbb{K}}(N,M) \xrightarrow{ \text{ SVD } }     \text{Mat}_{\mathbb{K}}(N,P) \times \text{Mat}_{\mathbb{K}}(P,P) \times \text{Mat}_{\mathbb{K}}(M,P) \xrightarrow{ \text{ splitting } } \\ 
+\xrightarrow{ \text{ splitting } } \mathbb{K}^{d_1^{(i)} } \otimes \dots \otimes \mathbb{K}^{d^{(i)}_N} \otimes \mathbb{K}^P \times \text{Mat}_{\mathbb{K}}(P,P) \times  \mathbb{K}^{d_1^{(j)} }\otimes \dots \otimes \mathbb{K}^{d_M^{(j)} } \otimes \mathbb{K}^P  \\
+T_{i_1\dots i_N,j_1 \dots j_M} = \sum_{\alpha} U_{i_1\dots i_N,\alpha} S_{\alpha,\alpha} \overline{V}_{j_1 \dots j_M, \alpha}
+\end{gathered}
+\end{equation}
+
+\section{Density Matrix Renormalization Group; Matrix Product States (MPS)}
+
+\subsection{Introduction; physical system (physical setup)}
+
+cf. "Density Matrix Renormalization Group/Matrix Product States" lectures by Schollw\"{o}ck (2017) \cite{agat:ArSo2017}.
+
+Recall the fundamental Hamiltonian (frequently in solid state physics), for \emph{electrons moving in a Hamiltonian potential}. 
+\begin{equation}
+H = \sum_{j=1}^{ e^-} \frac{\mathbf{p}_j^2}{ 2m_e} + \frac{1}{2} \frac{1}{ 4\pi \epsilon_0} \frac{q_e^2}{ |\mathbf{r}_i - \mathbf{r}_j|^2 } + \sum_{j=1}^{e^-} V_{\text{eff}}(\mathbf{r}_j)
+\end{equation}
+where $\frac{\mathbf{p}_j^2}{ 2m_e}$ is the kinetic energy term, $\sum_{j=1}^{e^-} V_{\text{eff}}(\mathbf{r}_j)$ is the lattice potential.
+The problem is in the 2nd. term, electron-electron interaction, $\frac{1}{2} \frac{1}{ 4\pi \epsilon_0} \frac{q_e^2}{ |\mathbf{r}_i - \mathbf{r}_j|^2 }$
+
+Typical models include the following:
+
+\begin{itemize}
+	\item Hubbard model (tight, binding-like model; basis states are not energy states but \emph{Wannier basis} states):
+	\begin{equation}
+	H = -t \sum_{ \langle i, j \rangle, \sigma } c^{\dag}_{i \sigma} c_{j \sigma} + h.c. + U \sum_i n_{i \uparrow} n_{i \downarrow }
+	\end{equation}
+	where $\langle i, j \rangle$ denotes nearest neighbors, $\sigma$ index is for all possible states, $h.c.$ stands for hermitian conjugate, and \\
+	$d \equiv$ number of states of single spin site. \\
+	$-t \sum_{ \langle i, j \rangle, \sigma } c^{\dag}_{i \sigma} c_{j \sigma} + h.c.$ is the kinetic energy term, \\
+	$U \sum_i n_{i \uparrow} n_{i \downarrow }$ is the Coulomb energy.
+	
+	Hilbert space for the Hubbard model is 
+	\begin{equation}
+	\lbrace | \emptyset \rangle , | \uparrow \rangle , | \downarrow \rangle , | \uparrow \downarrow \rangle \rbrace^{ \otimes L}, \qquad \, d = 4
+	\end{equation}
+	\item Heisenberg model (large -$U$ Hubbard at half-filling)
+	\begin{equation}
+	H = J \sum_{ \langle i , j \rangle } \mathbf{S}_i \cdot \mathbf{S}_j = J \sum_{ \langle i, j \rangle } \frac{1}{2} (S_i^{+} S_j^- + S_j^{+} S_i^-) + S_i^z S_j^z  )
+	\end{equation}
+	Hilbert space $\lbrace | \uparrow \rangle, | \downarrow \rangle \rbrace^{\otimes L}$, $d=2$ 
+\end{itemize}
+
+\subsubsection{Compression of information viewpoint for solid-state Hamiltonians, quantum many-body systems}.
+
+"emergent" macroscopic quantities, $\tau, p$ (temperature, pressure). For 
+\[
+	H = J \sum_{ \langle i , j \rangle } \mathbf{S}_i \cdot \mathbf{S}_j = J \sum_{ \langle i, j \rangle } \frac{1}{2} (S_i^{+} S_j^- + S_j^{+} S_i^-) + S_i^z S_j^z  )
+\]
+
+$H$ as classical spins: thermodynamic limit $N \to \infty$. 2 angles required to describe unit vector on unit sphere ($S^3$) $\Longrightarrow 2N $ degrees of freedom (linear)
+
+quantum spins: superposition of states, thermodynamic limit: $N \to \infty$, $2^N$ degrees of freedom (exponential).
+
+\subsubsection{Definitions; notation and conventions}
+
+Quantum system living on $L$ lattice sites; cf. Schollw\"{o}ck (2017) \cite{agat:ArSo2017}, lattice can be in any dim., effectively most useful in 1-dim., think of the example of a 1-dim. chain of $L$ sites. \\
+
+$d$ local states per site $\lbrace \sigma_i \rangle$, $i \in \lbrace 1,2, \dots L\rbrace$
+
+e.g. spin $\frac{1}{2}$, $d=2$, $| \uparrow \rangle, | \downarrow \rangle$.
+
+Hilbert space: $\mathcal{H} = \otimes_{i=1}^L \mathcal{H}_i$, $\mathcal{H}_i = \lbrace | 1_i \rangle , \dots | d_i \rangle \rbrace$. 
+
+Notice, there are \emph{exponentially many coefficients}, $c$'s. Most general state (not necessarily 1-dim.) is 
+\begin{equation}
+|\psi \rangle = \sum_{\sigma_1 \dots \sigma_L} c^{\sigma_1 \dots \sigma_L} | \sigma_1 \dots \sigma_L \rangle
+\end{equation}
+
+abbreviations: $\lbrace \sigma \rbrace = \sigma_1 \dots \sigma_L$. And so we can write $c^{\lbrace \sigma \rbrace}$. 
+
+\subsection{MPS, matrix product states}
+
+\begin{equation}
+| \psi \rangle = \sum_{\sigma_1 \dots \sigma_L} M^{\sigma_1} M^{\sigma_2} \dots M^{\sigma_L} | \sigma_1 \sigma_2 \dots \sigma_L \rangle
+\end{equation}
+
+The $\sum_{\sigma_1 \dots \sigma_L}$ means that all basis states participate; Schollw\"{o}ck is not kicking out any states arbitrarily. 
+\[
+c^{\lbrace \sigma \rbrace} = M^{\sigma_1} M^{\sigma_2} \dots M^{\sigma_L} \in \mathbb{C}
+\] so
+
+$M^{\sigma_1} \in \text{Mat}_{\mathbb{C}}(1, n_1)$ so to get a scalar in the product of matrices. Likewise, $M^{\sigma_L} \in \text{Mat}_{\mathbb{C}}(m_L, 1)$
+
+(variational) constraint is in expansion coefficients. 
+
+$\forall \, $ $d$ local basis states, $|\sigma_i \rangle \in V_i \equiv V$,$\text{dim}V = d$, let there be 1 matrix $M$, i.e. $M^{\sigma_i}$.  \\
+Thus, $dL$ matrices altogether (in total).
+
+Assume matrix size has upper limit $D$ (a computer limitation).
+
+Up to $dLD^2$ coefficients, instead of exponentially many ($c^{\lbrace \sigma \rbrace}$, and sum over $\lbrace \sigma \rbrace$). 
+
+\subsubsection{Product States and MPS}
+
+Mean-filed approximation/product state misses essential quantum feature: \textbf{entanglement}. 
+
+Consider 2 spin $\frac{1}{2}$ systems: $\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2$, $\mathcal{H}_i = \lbrace | \uparrow \rangle, | \downarrow \rangle \rbrace$
+
+General state is 
+\[
+| \psi \rangle = c^{ \uparrow \uparrow} | \uparrow \uparrow \rangle + c^{ \uparrow \downarrow} | \uparrow \downarrow \rangle + c^{ \downarrow \uparrow} | \downarrow \uparrow \rangle + c^{ \downarrow \downarrow} | \downarrow \downarrow \rangle 
+\]
+
+e.g. singlet state: $|\psi \rangle = \frac{1}{ \sqrt{2} } | \uparrow \downarrow \rangle - \frac{1}{ \sqrt{2} } | \downarrow \uparrow \rangle $. 
+
+As an exercise, show that the singlet state cannot be written as product of local coefficients, i.e. 
+\[
+c_{\uparrow \downarrow } \neq c^{\uparrow} c^{ \downarrow }
+\]
+
+Instead of writing products of scalars, write product of matrices, i.e. $e^{\sigma_1} \cdot e^{\sigma_2} \to M^{\sigma_1} M^{\sigma_2}$
+
+\[
+\begin{gathered}
+\begin{aligned}
+	& M^{\uparrow 1} = \left[ \begin{matrix} 1 & 0 \end{matrix} \right]
+	& M^{\downarrow 1} = \left[ \begin{matrix} 0 & 1 \end{matrix} \right] 
+	\end{aligned} \quad \quad \, \begin{aligned}
+	& M^{\uparrow 2 } = \left[ \begin{matrix} 0 \\ \frac{-1}{\sqrt{2}} \end{matrix} \right] \\
+	& M^{\downarrow 2} = \left[ \begin{matrix} \frac{1}{\sqrt{2}} \\ 0 \end{matrix} \right] 
+	\end{aligned}
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+M^{\uparrow 1} M^{\downarrow 2} = \frac{1}{\sqrt{2}} \\ 
+M^{\downarrow 1} M^{\uparrow 2} = \frac{-1}{\sqrt{2}} 
+\end{gathered}
+\]
+
+\subsubsection{AKLT model (Affleck-Kennedy-Lieb-Tasaki)}
+
+MPS is useful even for matrices of dim. 2.
+
+
+\subsection{General matrix product state (MPS) and SVD (Singular Value Decomposition)}
+
+cf. Schollw\"{o}ck (2017) \cite{agat:ArSo2017}
+
+The general matrix product state (MPS) is the following:
+\begin{equation}
+|\psi \rangle = \sum_{ \sigma_1 \dots \sigma_L } M^{\sigma_1} M^{\sigma_2} \dots M^{\sigma_L} | \sigma_1 \sigma_2 \dots \sigma_L \rangle
+\end{equation}
+where $\sigma_i \in V_i$, $\text{dim}V_i = d_i$ and \\
+$M^{\sigma_1} \in \text{Mat}_{\mathbb{C}}(1, D_1)$ \\ 
+$M^{\sigma_2} \in \text{Mat}_{\mathbb{C}}(D_1, D_2)$ \\ 
+$\vdots$ \\ 
+$M^{\sigma_{L-1}} \in \text{Mat}_{\mathbb{C}}(D_{L-2}, D_{L-1})$ \\ 
+$M^{\sigma_L} \in \text{Mat}_{\mathbb{C}}(D_{L-1}, 1)$ \\ 
+
+Notice the non-unique \textbf{gauge degree of freedom}:
+
+$\forall \, A \in \text{Mat}_{\mathbb{C}}(m,n)$, then for $k = \min{(m,n)}$, 
+\begin{equation}
+\begin{gathered}
+A = U SV^{\dagger} \equiv U \Sigma V^{\dagger} \text{ where }
+\end{gathered}
+\end{equation}
+
+$U \in \text{Mat}_{\mathbb{C}}(m,k)$, $U^{\dagger} U =1$ (i.e. $U$ consists of orthonormal columns, or $k$ number of $u$'s $\in \mathbb{C}^m$); if $m=k$, $UU^{\dagger} = 1$, \\
+$S \in \text{Mat}_{\mathbb{C}}(k,k)$ s.t. $S \in \text{diag}_{\mathbb{C}}(k)$, $s_1 \geq s_2 \geq s_3 \geq \dots s_i \geq 0$, $s_j$'s non-negative "singular values" (adjacent "singular" in name doesn't imply anything), non-vanishing = $\text{rank} r \leq k$. \\
+$V^{\dagger} \in \text{Mat}_{\mathbb{C}}(k,n)$, $V^{\dagger} V = 1$, (orthonormal rows, or $k$ number of $v\in \mathbb{C}^n$); if $k=n $, $VV^{\dagger} = 1$
+
+Recall eigenvalue equation and thus so-called eigenvalue decomposition.
+
+For $A \in \text{Mat}_{\mathbb{C}}(m,m)$, 
+\[
+\begin{gathered}
+	Au_j = \lambda_j u_j ; \qquad \, j =1 \dots r ; \, r \equiv \text{ rank }, \quad \, u_j \in \text{Mat}_{\mathbb{C}}(m, 1) \\
+	A_{ik} u_{kj} = \lambda_j u_{ij} = u_{ik} \delta_{kj} \lambda_j \Longrightarrow AU = U \Lambda
+\end{gathered}
+\]
+with $U \in \text{Mat}_{\mathbb{C}}(m, r)$, $\Lambda \in \text{Mat}_{\mathbb{C}}(r, r)$.
+
+And so
+\[
+\begin{gathered}
+\begin{aligned}
+& AA^{\dagger} = USV^{\dagger} VSU^{\dagger} = US^2 U^{\dagger} \Longrightarrow (AA^{\dagger})U = US^2 \\ 
+& A^{\dagger} A = VSU^{\dagger} U SV^{\dagger} = VS^2 V^{\dagger} \Longrightarrow (A^{\dagger}A)V = VS^2
+\end{aligned}
+\end{gathered}
+\]
+so if we treat $U$ and $V$, matrices of left, right singular vectors, then $S^2$ singular value squared are eigenvalues.
+
+Start with 
+
+\begin{equation}
+| \psi \rangle = \sum_{\sigma_1 \dots \sigma_L} c^{\sigma_1 \dots \sigma_L} | \sigma_1 \dots \sigma_L \rangle \in V \text{ s.t. } \text{dim} V = d^L
+\end{equation}
+
+Note the \emph{abuse of notation}: while $c^{\sigma_1 \dots \sigma_L} \in \mathbb{C}$ itself, also denote $c^{\sigma_1 \dots \sigma_L} \in \mathbb{C}^{d^L}$ as a shorthand for $\sum_{\sigma_1 \dots \sigma_L} c^{\sigma_1 \dots \sigma_L} | \sigma_1 \dots \sigma_L \rangle$
+
+Reshape coefficient vector into matrix of (size) dimension ($d\times d^{L-1}$). 
+\[
+\begin{gathered}
+\mathbb{C}^{d^L} \xrightarrow{\text{reshape}} \text{Mat}_{\mathbb{C}}(d, d^{L-1}) \\
+c^{\sigma_1 \dots \sigma_L} \xmapsto{\text{reshape}} \Psi_{\sigma_1, (\sigma_2 \dots \sigma_L)} 
+\end{gathered}
+\]
+
+Then do SVD:
+\[
+\Psi_{\sigma_1, (\sigma_2 \dots \sigma_L)}  \stackrel{ \text{SVD} }{=} \sum_{a_1} U_{\sigma_1 a_1} S_{a_1 a_1} V^{\dagger}_{a_1, \sigma_2 \dots L} = U_{\sigma_1 a_1} S_{a_1 a_1 } V^{\dagger}_{a_1, \sigma_2 \dots \sigma_L}
+\]
+
+
+Let's utilize commutative diagrams to summarize the reshaping and SVD operations that we've done.
+
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.55em, column sep=4.7em, minimum width=3.2em]
+{
+	\mathbb{C}^{d^L} = \text{Mat}_{\mathbb{C}}(1, d^L) & \text{Mat}_{\mathbb{C}}(d, d^{L-1}) & \text{Mat}_{\mathbb{C}}(d, r_1) \times \text{Mat}_{\mathbb{C}}(r_1, r_1) \times \text{Mat}_{\mathbb{C}}(r_1 , d^{L-1}) \\
+	\left| \Psi \right. \rangle \equiv c^{\sigma_1 \dots \sigma_L} & \Psi_{\sigma_1, (\sigma_2 \dots \sigma_L) } & \Psi_{\sigma_1, (\sigma_2 \dots \sigma_L) } \stackrel{\text{SVD}}{=} U_{\sigma_1 a_1 } S_{a_1 a_1} V^{\dagger}_{a_1, \sigma_2 \dots \sigma_L} \\
+};
+\path[->]
+(m-1-1) edge node [above] { \text{reshape} } (m-1-2)
+(m-1-2) edge node [above] { \text{SVD} } (m-1-3)
+;
+\path[|->]
+(m-2-1) edge node [above] { \text{reshape} } (m-2-2)
+(m-2-2) edge node [above] { \text{SVD} } (m-2-3)
+;
+\end{tikzpicture}  
+\]
+where I abuse notation for the SVD operation in that, SVD maps a matrix (in this case, $\Psi$) into 3 matrices, that obey the equality relationship when they're multiplied together (i.e. $\Psi = USV^{\dagger}$). 
+
+
+Slice $U$ into $d$ row vectors, i.e. for $U \in \text{Mat}_{\mathbb{C}}(d,r_1)$.
+\[
+\begin{gathered}
+\begin{aligned}
+\text{Mat}_{\mathbb{C}}(d, r_1) & \xrightarrow{\text{slice}} \text{Mat}_{\mathbb{C}}(1, r_1)^d \\
+U_{\sigma_1 a_1} & \mapsto \lbrace A^{\sigma_1} \rbrace \equiv \lbrace A^{\sigma_1}_{1, a_1} \rbrace_{\sigma_1} \text{ s.t. } A^{\sigma_1}_{1,a_1} = U_{\sigma_1 a_1} \text{ and } | \lbrace A^{\sigma_1}_{1, a_1} \rbrace | = d
+\end{aligned}
+\end{gathered}
+\]
+
+Collecting all the operations, and doing the following notation rewrite,
+\[
+\begin{gathered}
+c^{\sigma_1 \sigma_2 \dots \sigma_L} \mapsto \Psi_{\sigma_1 \sigma_2 \dots \sigma_L} = \sum_{a_1} A^{\sigma_1}_{1 a_1} S_{a_1 a_1} V^{\dagger}_{a_1, \sigma_2 \dots \sigma_L} = \sum_{a_1} A^{\sigma_1}_{1a_1} c^{a_1 \sigma_2 \sigma_3 \dots \sigma_L}
+\end{gathered}
+\]
+where
+\[
+c^{a_1 \sigma_2 \sigma_3 \dots \sigma_L} = S_{a_1 a_1} V^{\dagger}_{a_1 \sigma_2 \dots \sigma_L}
+\]
+
+Do the same procedure again. 
+
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.55em, column sep=4.7em, minimum width=3.2em]
+{
+	\text{Mat}_{\mathbb{C}}(r_1, d^{L-1}) & \text{Mat}_{\mathbb{C}}(r_1d, d^{L-2}) & \text{Mat}_{\mathbb{C}}(r_1d, r_2) \times \text{Mat}_{\mathbb{C}}(r_2, r_2) \times \text{Mat}_{\mathbb{C}}(r_2 , d^{L-2}) \\
+	c^{a_1, \sigma_2 \sigma_3 \dots \sigma_L} & \Psi_{a_1\sigma_2, (\sigma_3 \dots \sigma_L) } & \Psi_{a_1 \sigma_2, (\sigma_3 \dots \sigma_L) } \stackrel{\text{SVD}}{=} U_{a_1 \sigma_2, a_2 } S_{a_2 a_2} V^{\dagger}_{a_2, \sigma_3 \dots \sigma_L} \\
+};
+\path[->]
+(m-1-1) edge node [above] { \text{reshape} } (m-1-2)
+(m-1-2) edge node [above] { \text{SVD} } (m-1-3)
+;
+\path[|->]
+(m-2-1) edge node [above] { \text{reshape} } (m-2-2)
+(m-2-2) edge node [above] { = } (m-2-3)
+;
+\end{tikzpicture}  
+\]
+
+Then slice $U$ into $d$ matrices, and then matrix multiply the $S$ and $V^{\dagger}$ matrices together:
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.55em, column sep=4.7em, minimum width=3.2em]
+{
+	\text{Mat}_{\mathbb{C}}(r_1d, r_2) \times \text{Mat}_{\mathbb{C}}(r_2, r_2) \times \text{Mat}_{\mathbb{C}}(r_2 , d^{L-2}) & \text{Mat}_{\mathbb{C}}(r_1, r_2)^d \times \text{Mat}_{\mathbb{C}}(r_2, d^{L-2}) \\
+	\sum_{a_2} U_{a_1 \sigma_2, a_2 } S_{a_2 a_2} V^{\dagger}_{a_2, \sigma_3 \dots \sigma_L} & = \sum_{a_2} A^{\sigma_2}_{a_1 a_2} c^{a_2, a_3 \dots \sigma_L} \text{ where } A^{\sigma_2}_{a_1 a_2} = U_{a_1\sigma_2, \sigma_3 \dots \sigma_L } \\
+};
+\path[->]
+(m-1-1) edge node [above] { \text{slice and multiply} } (m-1-2)
+;
+\path[|->]
+(m-2-1) edge node [above] { = } (m-2-2)
+;
+\end{tikzpicture}  
+\]
+
+
+
+
+
+Thus, generalize the \emph{$i$th procedure}: for $i = 1 \dots L$, 
+
+Let $r_0 = 1$.
+
+\begin{equation}\label{agat:Eq:LeftMPSoperation}
+\begin{tikzpicture}[framed]
+\matrix (m) [matrix of math nodes, row sep=2.55em, column sep=7.7em, minimum width=6.2em]
+{
+	\text{Mat}_{\mathbb{C}}(r_{i-1}, d^{L-(i-1)}) & \text{Mat}_{\mathbb{C}}(r_{i-1}d, d^{L-i}) & \text{Mat}_{\mathbb{C}}(r_{i-1}d, r_i) \times \text{Mat}_{\mathbb{C}}(r_i, r_i) \times \text{Mat}_{\mathbb{C}}(r_i , d^{L-i}) & \text{Mat}_{\mathbb{C}}(r_{i-1}, r_i)^d \times \text{Mat}_{\mathbb{C}}(r_i, d^{L-i}) \\
+	c^{a_{i-1}, \sigma_i \sigma_{i+1} \dots \sigma_L} & \Psi_{a_{i-1}\sigma_i, (\sigma_{i+1} \sigma_{i+2} \dots \sigma_L) } &  U_{a_{i-1} \sigma_i, a_i } S_{a_i a_i} V^{\dagger}_{a_i, \sigma_{i+1} \dots \sigma_L} & A^{\sigma_i}_{a_{i-1}, a_i} c^{a_i, \sigma_{i+1} \dots \sigma_L} \\
+};
+\path[->]
+(m-1-1) edge node [above] { \text{reshape} } (m-1-2)
+(m-1-2) edge node [above] { \text{SVD} } (m-1-3)
+(m-1-3) edge node [above] { \text{slice and multiply} } (m-1-4)
+;
+\path[|->]
+(m-2-1) edge node [above] { \text{reshape} } (m-2-2)
+(m-2-2) edge node [above] { = } (m-2-3)
+(m-2-3) edge node [above] { = } (m-2-4)
+;
+\end{tikzpicture}  
+\end{equation}
+
+Remember that $r_i \leq \min{(r_{i-1} d, d^{L-i})} $ and for $i=L$, there is no need to do a SVD, but only a reshape, and slice and multiply.
+
+Collecting all the $A$ matrices:
+
+\begin{equation}
+\boxed{
+	\begin{gathered}
+\begin{aligned}
+& A^{\sigma_1}_{1, a_1} \in \text{Mat}_{\mathbb{C}}(1,r_1); \qquad \, r_1 \leq d \\
+& A^{\sigma_2}_{a_1, a_2} \in \text{Mat}_{\mathbb{C}}(r_1,r_2); \qquad \, r_2 \leq r_1 d \\
+& \vdots \\
+& A^{\sigma_i}_{a_{i-1}, a_i} \in \text{Mat}_{\mathbb{C}}(r_{i-1},r_i); \qquad \, r_i \leq \min{(r_{i-1}d, d^{L-i})} \\
+& \vdots \\
+& A^{\sigma_L}_{a_{L-1}, a_L} \in \text{Mat}_{\mathbb{C}}(r_{L-1}, 1); \qquad \, r_{L-1} \leq d
+\end{aligned}
+	\end{gathered}}
+\end{equation}
+
+
+
+\subsubsection{Left and Right Normalization, $A$ and $B$ matrices, "special gauge" from normalization}
+
+Choose orthonormal basis states $\forall \, a_l, \, \forall \, l = 1, 2, \dots L$
+For
+\[
+\begin{aligned}
+& | a_l \rangle = \sum_{ a_{l-1} \sigma_l } M^{\sigma_l}_{a_{l-1}a_l } | a_{l-1} \sigma_l \rangle \\
+& \langle a_l' | = \sum_{a'_{l-1} \sigma_l'} \langle a'_{l-1} \sigma'_l | (M^{\sigma_l'}_{a'_{l-1} a'_l})^*
+\end{aligned}
+\]
+then,
+\begin{equation}
+\begin{gathered}
+\delta_{a'_l a_l} = \langle a'_l | a_l \rangle = \sum_{a'_{l-1}\sigma_l', a_{l-1}\sigma_l } M^{\sigma_l' *}_{a'_{l-1} a'_l} M^{\sigma_l}_{a_{l-1} a_l} \langle a'_{l-1} \sigma'_l | a_{l-1} \sigma_l \rangle = \sum_{a_{l-1} \sigma_l } M^{\sigma_l *}_{a_{l-1} a'_l} M^{\sigma_l}_{a_{l-1} a_l} = \\
+= \sum_{\sigma_l} ( (M^{\sigma_l})^{\dag} M^{\sigma_l})_{a_l' a_l}
+\end{gathered}
+\end{equation}
+
+\textbf{Left normalization} comes from a property of SVD in that $\forall \, U$ matrices, $U^{\dagger} U =1$, and so 
+\begin{equation}
+\begin{gathered}
+(U^{\dagger})_{a'_i k_i} U_{k_i a_i} =  \delta_{a'_i a_i} = U^*_{ k_i a_i'} U_{k_i a_i} = U^*_{a'_{i-1} \sigma_i, a_i'} U_{a''_{i-1}\sigma_i, a_i} = \\ 
+= A^{\sigma_i *}_{a''_{i-1}, a_i'} A^{\sigma_i}_{a''_{i-1}, a_i} = (A^{\sigma_i})^{\dagger} A^{\sigma_i} = \boxed{ \sum_{\sigma_i} (A^{\sigma_i})^{\dagger} A^{\sigma_i} = 1 }
+\end{gathered}
+\end{equation}
+
+For right normalization, consider doing the operations of Eq. \ref{agat:Eq:LeftMPSoperation} "on the right":
+
+
+
+
+
+
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=2.55em, column sep=7.7em, minimum width=6.2em]
+{
+	\text{Mat}_{\mathbb{C}}( d^{L}, 1 ) & \text{Mat}_{\mathbb{C}}(d^{L-1}, d ) & \text{Mat}_{\mathbb{C}}(d^{L-1},r_1 ) \times \text{Mat}_{\mathbb{C}}(r_1, r_1) \times \text{Mat}_{\mathbb{C}}(r_1 , d) & \text{Mat}_{\mathbb{C}}(d^{L-1}, r_1) \times \text{Mat}_{\mathbb{C}}(r_1, 1)^d \\
+	c^{\sigma_1 \sigma_{2} \dots \sigma_L} & \Psi_{\sigma_1 \dots  \sigma_{L-1}, \sigma_L } &  U_{ \sigma_1 \dots \sigma_{L-1} a_1 } S_{a_1 a_1} V^{\dagger}_{a_1, \sigma_{L} } & \sum_{\sigma_L} c^{\sigma_{1} \dots \sigma_{L-1}, a_1 } B^{\sigma_L}_{a_{1}, 1}\\
+};
+\path[->]
+(m-1-1) edge node [above] { \text{reshape} } (m-1-2)
+(m-1-2) edge node [above] { \text{SVD} } (m-1-3)
+(m-1-3) edge node [above] { \text{slice and multiply} } (m-1-4)
+;
+\path[|->]
+(m-2-1) edge node [above] { \text{reshape} } (m-2-2)
+(m-2-2) edge node [above] { = } (m-2-3)
+(m-2-3) edge node [above] { = } (m-2-4)
+;
+\end{tikzpicture}  
+\]
+
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=2.55em, column sep=7.7em, minimum width=6.2em]
+{
+	\text{Mat}_{\mathbb{C}}( d^{L-1}, r_1 ) & \text{Mat}_{\mathbb{C}}(d^{L-2}, r_1d ) & \text{Mat}_{\mathbb{C}}(d^{L-2},r_2 ) \times \text{Mat}_{\mathbb{C}}(r_2, r_2) \times \text{Mat}_{\mathbb{C}}(r_2 , r_1d) & \text{Mat}_{\mathbb{C}}(d^{L-2}, r_2) \times \text{Mat}_{\mathbb{C}}(r_2, r_1)^d \\
+	c^{\sigma_1  \dots \sigma_{L-1} a_1} & \Psi_{\sigma_1 \dots \sigma_{L-2}, \sigma_{L-1} a_1 } &  U_{ \sigma_1 \dots \sigma_{L-2}, a_2 } S_{a_2 a_2} V^{\dagger}_{a_2, \sigma_{L-1} a_1 } & \sum_{\sigma_{L-1}} c^{\sigma_{1} \dots \sigma_{L-2}, a_2 } B^{\sigma_{L-1}}_{a_{2}, a_1} \\
+};
+\path[->]
+(m-1-1) edge node [above] { \text{reshape} } (m-1-2)
+(m-1-2) edge node [above] { \text{SVD} } (m-1-3)
+(m-1-3) edge node [above] { \text{slice and multiply} } (m-1-4)
+;
+\path[|->]
+(m-2-1) edge node [above] { \text{reshape} } (m-2-2)
+(m-2-2) edge node [above] { = } (m-2-3)
+(m-2-3) edge node [above] { = } (m-2-4)
+;
+\end{tikzpicture}   \\
+\vdots
+\end{gathered}
+\]
+
+\begin{equation}\label{agat:Eq:RightMPSoperation}
+\begin{gathered}
+\begin{tikzpicture}[framed]
+\matrix (m) [matrix of math nodes, row sep=2.55em, column sep=7.7em, minimum width=6.2em]
+{
+	\text{Mat}_{\mathbb{C}}( d^{L-(i-1)}, r_{i-1} ) & \text{Mat}_{\mathbb{C}}(d^{L-i}, r_{i-1}d ) & \text{Mat}_{\mathbb{C}}(d^{L-i},r_i ) \times \text{Mat}_{\mathbb{C}}(r_i, r_i) \times \text{Mat}_{\mathbb{C}}(r_i , r_{i-1}d) & \text{Mat}_{\mathbb{C}}(d^{L-i}, r_i) \times \text{Mat}_{\mathbb{C}}(r_i, r_{i-1})^d \\
+	c^{\sigma_1  \dots \sigma_{L-(i-1)} a_{i-1}} & \Psi_{\sigma_1 \dots \sigma_{L-i}, \sigma_{L-(i-1)} a_{i-1 } } &  U_{ \sigma_1 \dots \sigma_{L-i}, a_i } S_{a_i a_i} V^{\dagger}_{a_i, \sigma_{L-(i-1)} a_{i-1} } & \sum_{\sigma_{L-(i-1)}} c^{\sigma_{1} \dots \sigma_{L-i}, a_i } B^{\sigma_{L-(i-1)}}_{a_{i}, a_{i-1}} \\
+};
+\path[->]
+(m-1-1) edge node [above] { \text{reshape} } (m-1-2)
+(m-1-2) edge node [above] { \text{SVD} } (m-1-3)
+(m-1-3) edge node [above] { \text{slice and multiply} } (m-1-4)
+;
+\path[|->]
+(m-2-1) edge node [above] { \text{reshape} } (m-2-2)
+(m-2-2) edge node [above] { = } (m-2-3)
+(m-2-3) edge node [above] { = } (m-2-4)
+;
+\end{tikzpicture}   
+\end{gathered}
+\end{equation}
+
+Remember that $r_i \leq \min{(d^{L-i}, r_{i-1} d)} $ and for $i=L$, just do reshape and slice and multiply operations.
+
+Then, finally, the \textbf{right normalization} is derived and is such:
+\[
+	\begin{gathered}
+	V^{\dagger}V = 1 \Longrightarrow \\
+	(V^{\dagger}V)_{a_i a'_i} = \delta_{a_i a'_i} = V^{\dagger}_{a_i, \sigma_{L-(i-1)}a_{i-1}} V_{\sigma_{L-(i-1)}a_{i-1}, a_i'} = B^{\sigma_{L - (i-1)}}_{a_i, a_{i-1}} (V^{\dagger})^{\dagger}_{ \sigma_{L - (i-1)}a_{i-1}, a_i' } = \\
+	= B^{\sigma_{L- (i-1)}}_{ a_i a_{i-1}} (V^{\dagger})^*_{a_i', \sigma_{L- (i-1)}, a_{i-1}} = B^{\sigma_{L-(i-1)}}_{ a_i, a_{i-1}} B^{\sigma_{L - (i-1)}}_{a_i' , a_{i-1}} = B^{\sigma_{L-(i-1)}}_{a_i a_{i-1}} (B^{\dagger})^{\sigma_{L-(i-1)}}_{ a_{i-1} a_i'} \qquad \, \forall i = 1 \dots L
+	\end{gathered}
+\]
+
+\begin{equation}
+\Longrightarrow \sum_{ \sigma_{L-(i-1)}} B^{\sigma_{L-(i-1)}} (B^{\dagger})^{\sigma_{L-(i-1)}} = 1
+\end{equation}
+
+
+
+
+
+
+
+
+
+cf. Sec. 4, Matrix Product States (MPS) of Schollw\"{o}ck \cite{agat:Scho2010}.  
+
+Necessarily, given matrix $M\in \text{Mat}_{\mathbb{K}}(M,N)$ (notation in Bridgeman and Chubb (2017) \cite{agat:BrCh2017} and \href{http://docs.nvidia.com/cuda/cusolver/index.html}{CUDA Toolkit Documentation}; I will follow the notation in Schollw\"{o}ck \cite{agat:Scho2010} since his $A$,$B$ denote specific physical meaning).  
+
+For 
+\[
+U\in \text{Mat}_{\mathbb{K}}(N_A, \min{(N_A,N_B)}) \text{ s.t. } UU^{\dag}=1
+\]
+\[
+S \in \text{Mat}_{\mathbb{K}}(\min{(N_A,N_B)}, \min{(N_A,N_B)} )
+\]
+s.t. $S$ diagonal with nonnegative $S_{aa} = s_a$, i.e. $S_{ij} = \delta_{ij}s_i$ s.t. $s_i\geq 0$ \, $\forall \, i = 1,2, \dots \min{(N_A,N_B)}$.  
+
+$r\equiv $ (Schmidt) rank of $M :=$ number of nonzero singular values.  
+
+Assume $s_1\geq s_2 \geq \dots \geq s_r \geq 0$.  
+
+$V^{\dag} \in \text{Mat}_{\mathbb{K}}(\min{(N_A,N_B)},N_B)$ s.t. $V^{\dag}V=1$.  
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.75em, column sep=4.8em, minimum width=1.2em]
+  {
+	\text{Mat}_{\mathbb{K}}(N_A,N_B) & U_{\mathbb{K}}(N_A,\min{(N_A,N_B)}) \times \text{diag}_{\mathbb{K}}(\min{(N_A,N_B)}) \times U_{\mathbb{K}}(\min{(N_A,N_B)},N_B) \\ 
+    M &  USV^{\dag} \\
+};
+  \path[->]
+  (m-1-1) edge node [above] { SVD } (m-1-2)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] {  SVD } (m-2-2)
+  ;
+\end{tikzpicture}  
+
+Optimal approximation of $M$ (rank $r$ by matrix $M'$ (rank $r' <r$) property.  
+
+In Frobenius norm $\| M \|_F^2 := \sum_{i,j} |M_{ij}|^2$, induced by inner product $\langle M | N \rangle =\text{tr}M^{\dag}N$.  Indeed, 
+\[
+\text{tr}M^{\dag}N = (M^{\dag})_{ik} N_{ki} = \overline{M}_{ki} N_{ki}
+\]
+and so for 
+\begin{equation}
+M'=US'V^{\dag}, \qquad \, S'=\text{diag}(s_1,s_2 \dots s_{r'}, 0 \dots ) \qquad \,
+\end{equation}
+cf. Eq. (19) of Schollw\"{o}ck \cite{agat:Scho2010}, i.e. 1 sets all but 1st $r'$ singualr values to $0$.  
+
+Use singular value decomposition (SVD) to derive Schmidt decomposition of general quantum state. 
+
+$\forall \, $ pure state $|\psi \rangle$ on $AB$, 
+\[
+|\psi \rangle = \sum_{i,j} \Psi_{ij}|i\rangle_A |j\rangle_B
+\]
+where $\lbrace |i\rangle_A \rbrace, \lbrace |j\rangle_B \rbrace$ orthonormal bases of $A,B$ ((complex) Hilbert spaces), with dim. $N_A,N_B$, respectively.  
+
+Let $\Psi_{i,j} \in \text{Mat}_{\mathbb{K}}(N_A,N_B)$.  
+
+Then \textbf{reduced density operators} $\widehat{\rho}_A,\widehat{\rho}_B$ are such that 
+\[
+\begin{gathered}
+\begin{aligned} 
+	& \widehat{\rho}_A = \text{tr}_B|\psi \rangle \langle \psi | \\ 
+	& \widehat{\rho}_B = \text{tr}_A|\psi \rangle \langle \psi | \\ 
+\end{aligned}
+\end{gathered}
+\]
+In matrix form, 
+\[
+\begin{aligned}
+	& \rho_A = \Psi \Psi^{\dag} \\ 
+	& \rho_B = \Psi^{\dag} \Psi 
+\end{aligned}
+\]
+Indeed, 
+\[
+\begin{gathered}
+\begin{aligned} 
+	& (\rho_A)_{ij} = \Psi_{ik} \overline{\Psi}_{jk} \\
+	& (\rho_B)_{ij} = \overline{\Psi}_{ki}  \Psi_{kj} \end{aligned} \\
+\begin{gathered}
+|\psi \rangle \langle \psi | = \sum_{i,j} \Psi_{ij} |i\rangle_A |j\rangle_B \sum_{l,m} \overline{\Psi}_{lm}\langle l |_A \langle m |_B \\
+\text{tr}_B|\psi \rangle \langle \psi | = \sum_{i,j} \Psi_{ik} \overline{\Psi}_{jk} |i \rangle_A \rangle j |_A
+\end{gathered}
+\end{gathered}
+\]
+In matrix form, 
+\[
+\begin{aligned}
+	& \rho_A = \Psi \Psi^{\dag} \\ 
+	&  \rho_B = \Psi^{\dag} \Psi
+\end{aligned}
+\]
+Carry out SVD on $\Psi$ in Eq. (20) of Schollw\"{o}ck \cite{agat:Scho2010}, 
+\[
+|\psi \rangle = \sum_{i,j} \Psi_{ij} |i\rangle_A |j\rangle_B
+\]
+\[
+\begin{gathered}
+|\psi \rangle = \sum_{ij} \Psi_{ij} | i \rangle_A |j \rangle_B = \sum_{ij} \sum_{a=1}^{\min{(N_A,N_B)}} U_{ia} S_{aa} \overline{V}_{ja} |i \rangle_A | j \rangle_B = \sum_{a=1}^{ \min{(N_A,N_B)}} \sum_i U_{ia} | i \rangle_A s_a \sum_j \overline{V}_{ja} | j \rangle_B = \sum_{a=1}^{ \min{ (N_A,N_B)} } s_a |a \rangle_A |a\rangle_B
+\end{gathered}
+\]
+Due to orthogonality of $U,V^{\dag}$, $\lbrace |a \rangle_A \rangle, \lbrace | a \rangle_B \rbrace$ orthonormal, and can be extended to be orthonormal bases of $A,B$.  
+
+If we restrict the sum to run only over the $r\leq \min{(N_A,N_B)}$ positive nonzero singular values (i.e., for $\sum_{a=1}^{\min{(N_A,N_B)}}$, $_a>0$ \, $\forall \, a \leq r$, and so 
+\[
+|\psi \rangle =\sum_{a=1}^r s_a |a\rangle_A |a\rangle_B
+\]
+$r=1$ (classical) product states.  $|\psi \rangle = s_1 |1\rangle_A |1\rangle_B$.  \\
+$r>1$ entangled (quantum) states.  
+
+Schmidt decomposition on reduced density operators for $A$ and $B$:  
+
+\[
+\begin{aligned}
+	& \widehat{\rho}_A =\sum_{a=1}^r s_a^2 |a\rangle_A \langle a |_A \\ 
+	& \widehat{\rho}_B = \sum_{a=1}^r s_a^2 |a\rangle_B \langle a |_B
+\end{aligned}
+\]
+Respective eigenvectors are left and right singular vectors.  
+
+Von Neumann entropy can be read off:  
+\[
+S_{A|B}(|\psi \rangle) = -\text{tr}\widehat{\rho}_A \log_2{\widehat{\rho}_A} = -\sum_{a=1}^r s_a^2 \log_2{s_a^2}
+\]
+
+In view of large size of Hilbert spaces, approximate $| \psi \rangle$ by some $| \widetilde{\psi} \rangle$ spanned over state spaces $A,B$ that have dims. $r'$ only.  
+
+Since 2-norm of $| \psi \rangle$, 
+\[
+\| | \psi\rangle \|_2^2 = \sum_{ij} |\Psi_{ij} |^2 = \| \Psi \|^2_F
+\]
+since
+\[
+\| | \psi\rangle \|_2^2 = \sum_{a=1}^r s_a^2 = \sum_{ij} |\Psi_{ij} |^2
+\] 
+iff $\lbrace |i \rangle \rbrace , \lbrace | j  \rangle \rbrace$ orthonormal.  Optimal approx. of 2-norm given by optimal approx. of $\Psi$ by $\overline{\Psi}$ in Frobenius norm, where $\overline{\Psi}$ is matrix of rank $r'$.  
+
+$\overline{\Psi} = US'V^{\dag}$, $S' =\text{diag}(s_1 , \dots s_{r'} , 0\dots )$ from above. 
+
+$\Longrightarrow $ Schmidt decomposition of approximate state 
+\begin{equation}
+| \overline{\Psi}\rangle = \sum_{a=1}^{r'} s_a|a\rangle_A | a \rangle_B
+\end{equation}
+cf. Eq. (27) of  Schollw\"{o}ck \cite{agat:Scho2010}, where $s_a$ must be rescaled if normalization desired.  
+
+\subsection{QR decomposition}
+cf. 4.1.2. of  Schollw\"{o}ck \cite{agat:Scho2010}.  
+
+If actual value of singular values not used explicitly, then use \emph{QR decomposition}.  
+
+QR decomposition: $\forall \, M \in \text{Mat}_{\mathbb{K}}(N_A,N_B)$, 
+\begin{equation}
+M=QR, \, Q\in U_{\mathbb{K}}(N_A), \text{ i.e. } Q^{\dag}Q = 1=QQ^{\dag} , \, R \in \text{Mat}_{\mathbb{K}}(N_A,N_B) \text{ s.t. } \text{ upper triangular, i.e. } R_{ij}= 0 \text{ if } i >j 
+\end{equation}
+\textbf{thin} QR decomposition: assume $N_A>N_B$.  Then bottom $N_A-N_B$ rows of $R$ are $0$, so 
+\[
+\begin{gathered}
+M=Q \left[ \begin{matrix} R_1 \\ 0 \end{matrix} \right] = \left[ \begin{matrix} Q_1 & Q_2 \end{matrix} \right] \left[ \begin{matrix} R_1 \\ 0 \end{matrix} \right] = Q_1R_1 \\
+\begin{aligned}
+& Q_1 \in \text{Mat}_{\mathbb{K}}(N_A,N_B) \\ 
+& R_1 \in \text{Mat}_{\mathbb{K}}(N_B,N_B) 
+\end{aligned}
+\end{gathered}
+\]
+While $Q_1^{\dag}Q_1=1$ in general $Q_1 Q_1^{\dag} \neq 1$
+
+\section{Matrix Product States (MPS)}
+
+cf. Section 4.13 Decomposition of arbitrary quantum states into MPS of  Schollw\"{o}ck \cite{agat:Scho2010}.  
+
+Consider lattice of $L$ sites, $d$-dim. local state spaces $\lbrace \sigma_i \rbrace_{i=1,\dots L}$.  
+
+Most general pure quantum state on lattice (assume normalized) 
+\begin{equation}
+|\psi \rangle = \sum_{\sigma_1 \dots \sigma_L} c_{\sigma_1 \dots \sigma_L }|\sigma_1 \dots \sigma_L \rangle
+\end{equation}
+cf. Eq. (30) of  Schollw\"{o}ck \cite{agat:Scho2010},
+
+\subsection{Left-canonical matrix product state}  
+cf.  Schollw\"{o}ck \cite{agat:Scho2010},
+
+Consider the process of refactoring or "flattening", which I claim to be a functor \emph{flatten}: 
+\[
+| \psi \rangle \in \mathcal{H} \text{ s.t. } \text{dim}\mathcal{H} = d^L \mapsto \Psi \in \text{Mat}_{\mathbb{K}}(d,d^{L-1})
+\]
+\[
+\Psi_{\sigma_1, (\sigma_2 \dots \sigma_L) } = c_{\sigma_1 \dots \sigma_L}
+\]
+\begin{equation}
+\begin{gathered}
+\xrightarrow{ \text{ SVD } } c_{\sigma_1 \dots \sigma_L} = \Psi_{\sigma_1, (\sigma_2 \dots \sigma_L)} = \sum_a^{r_1} U_{\sigma_1, a_1} S_{a_1,a_1} (V^{\dag})_{a_1, (\sigma_2 \dots \sigma_L)} \equiv \sum_{a_1}^{r_1} U_{\sigma_1 , a_1} c_{a_1 , \sigma_2 \dots \sigma_L}
+\end{gathered}
+\end{equation}
+i.e.
+\[
+\begin{aligned}
+	& (\mathbb{K}^d)^L \to \text{Mat}_{\mathbb{K}}(1,r) \times \text{Mat}_{\mathbb{K}}(r_1 d, d^{L-2}) \\ 
+	& c_{\sigma_1 \dots \sigma_L} \mapsto A_{a_1}^{\sigma_1} , \Psi_{(a_1\sigma_2), (\sigma_3\dots \sigma_L)} 
+\end{aligned}
+\]
+s.t. 
+\[
+c_{\sigma_1\dots \sigma_L} = \sum_{a_1}^{r_1} A_{a_1}^{\sigma_1} \Psi_{(a_1\sigma_2), (\sigma_3 \dots \sigma_L)}
+\]
+where rank $r_1 \leq d$.  
+\[
+U \in \text{Mat}_{\mathbb{K}}(d,\min{(d,r)}) = \text{Mat}_{\mathbb{K}}(d,r)
+\]
+Consider $d$ row vectors $A^{\sigma_1}$, $A^{\sigma_1}_{a_1} = U_{\sigma_1,a_1}$.  
+
+\[
+\begin{gathered}
+c_{a_1\sigma_2 \dots \sigma_L } = \sum_{a_1}^{r_1} A_{a_1}^{\sigma_1} \Psi_{(a_1,\sigma_2),(\sigma_3\dots \sigma_L)} \text{ with } \\
+\Psi_{(a_1\sigma_2),(\sigma_3\dots \sigma_L)}\in \text{Mat}_{\mathbb{K}}(r_1d,d^{L-2})
+\end{gathered}
+\]
+So from Eq. (34) of  Schollw\"{o}ck \cite{agat:Scho2010},
+\begin{equation}
+\begin{gathered}
+	c_{\sigma_1 \dots \sigma_L} = \sum_{a_1}^{r_1} \sum_{a_2}^{r_2} A_{a_1}^{\sigma_1} U_{ (a_1\sigma_2) , a_2} S_{a_2,a_2} (V^{\dag})_{a_2, (\sigma_3\dots \sigma_L)} = \sum_{a_1}^{r_1} \sum_{a_2}^{r_2} A_{a_1}^{\sigma_1} A_{a_1,a_2}^{\sigma_2} \Psi_{(a_2\sigma_3), (\sigma_4\dots \sigma_L)}
+\end{gathered}
+\end{equation}
+So for 
+\[
+U\in \text{Mat}_{\mathbb{K}}(d,r_1\times r_2) \mapsto \lbrace A^{\sigma_2} \rbrace_{\sigma_2}, \qquad \, | \lbrace A^{\sigma_2} \rbrace_{\sigma_2} | = d , \qquad \, A^{\sigma_2} \in \text{Mat}_{\mathbb{K}}(r_1,r_2)
+\]
+$A^{\sigma_2}_{a_1,a_2} = U_{(a_1,\sigma_2),a_2}$ and multiplied $S$ and $V^{\dag}$, 
+\[
+SV^{\dag} \mapsto \Psi \in \text{Mat}_{\mathbb{K}}(r_2d, d^{L-3}); \qquad \, r_2 \leq r_1 d \leq d^2
+\]
+and so continuing the application of SVD and refactoring (what I call applying the \emph{flatten} functor)
+\[
+\begin{gathered}
+\xrightarrow{ \text{ SVD } } c_{\sigma_1 \dots \sigma_L} = \sum_{a_1 \dots a_{L-1}} A^{\sigma_1}_{a_1} A^{\sigma_2}_{a_1 a_2} \dots A^{\sigma_{L-1}}_{a_{L-2}, a_{L-1} } A^{\sigma_L }_{a_L-1 } \equiv A^{\sigma_1} A^{\sigma_2} \dots A^{\sigma_{L-1}} A^{\sigma_L}
+\end{gathered}
+\]
+
+\subsubsection{Matrix Product State (definition)}
+
+\begin{definition}[Matrix Product State]
+\begin{equation}
+|\psi \rangle = \sum_{\sigma_1 \dots \sigma_L} A^{\sigma_1}A^{\sigma_2} \dots A^{\sigma_{L-1}} A^{\sigma_L} | \sigma_1 \dots \sigma_L \rangle
+\end{equation}
+\end{definition}
+
+Maximally, the dims. are 
+\[
+(1\times d), (d\times d^2) \dots (d^{L/2-1} \times d^{L/2} ), (d^{L/2} \times d^{L/2-1} ) \dots (d^2 \times d), (d\times 1)
+\]
+Since $\forall \, $ SVD, $U^{\dag} U=1$, 
+\[
+\delta_{a_l , a_l'} = \sum_{a_{l-1} a_l} (U^{\dag})_{a_l,(a_{l-1} \sigma_l)} U_{(a_{l-1} \sigma_l),a'_l } = \sum_{a_{l-1} \sigma_l} (A^{\sigma_l})^{\dag}_{a_l,a_{l-1}} A^{\sigma_l}_{a_{l-1},a_l'} = \sum_{\sigma_l} ( (A^{\sigma_2})^{\dag} A^{\sigma_l} )_{a_l,a_l'}
+\]
+or 
+\begin{equation}
+	\sum_{\sigma_l} (A^{\sigma_l})^{\dag} A^{\sigma_l} = 1
+\end{equation}
+cf. Eq. (38) of  Schollw\"{o}ck \cite{agat:Scho2010},
+
+If for $\lbrace A^{\sigma_l} \rbrace_{\sigma_l} $, $\sum_{\sigma_l} (A^{\sigma_l})^{\dag} A = 1$, $\lbrace A^{\sigma_l} \rbrace_{\sigma_l}$ are \textbf{left-normalized}; matrix product states that consist of only left-normalized matrices are \textbf{left-canonical}.  
+
+View Density Matrix Renormalization Group (DMRG) decomposition of universe into blocks $A$ and $B$, split lattice into parts $A$,$B$, where $A$ compries sites $1$ through $l$ and $B$ sites $l+1$ through $L$.  
+
+\[
+\begin{aligned}
+	& | a_l \rangle_A = \sum_{\sigma_1 \dots \sigma_l} (A^{\sigma_1} A^{\sigma_2} \dots A^{\sigma_l} )_{a_l,1} | \sigma_1 \dots \sigma_l \rangle \\ 
+		& | a_l \rangle_B = \sum_{\sigma_{l+1} \dots \sigma_L} (A^{\sigma_{l+1}} A^{\sigma_{l+2}} \dots A^{\sigma_L} )_{a_l,1} | \sigma_{l+1} \dots \sigma_L \rangle 
+\end{aligned}
+\]
+s.t. matrix product state (MPS) is 
+\[
+|\psi \rangle =\sum_{a_l} | a_l \rangle_A | a_l \rangle_B
+\]
+
+\subsubsection{Summarize this procedure of constructing, from a pure state, the matrix product state (version) by successive application Singular Value Decomposition (SVD) from the Category Theory point of view}
+
+Consider all applications of SVD to get to a matrix product state (MPS): 
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.75em, column sep=4.8em, minimum width=1.2em]
+  {
+	(\mathbb{K}^d)^L & (\text{Mat}_{\mathbb{K}}(1,r_1))^d \times (\text{Mat}_{\mathbb{K}}(r_1,r_2))^d \times \dots \times (\text{Mat}_{\mathbb{K}}(r_{L-2},r_{L-1}))^d \times (\text{Mat}_{\mathbb{K}}(r_{L-1},1))^d \\
+    c_{\sigma_1 \dots \sigma_L}  &  c_{\sigma_1\dots \sigma_L} = \sum_{a_1 \dots a_{L-1}} A^{\sigma_1}_{a_1} A_{a_1a_2}^{\sigma_2} \dots A^{\sigma_{L-1}}_{a_{L-2}, a_{L-1}} A_{a_{L-1}}^{\sigma_L} \\
+};
+  \path[->]
+  (m-1-1) edge node [above] { SVD } (m-1-2)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] {  SVD } (m-2-2)
+  ;
+\end{tikzpicture}  
+and remember the maximal values that the $r_i$'s can take:
+\[
+\begin{gathered}
+	\begin{aligned}
+& r_1 \leq d \\ 
+	& r_2 \leq d^2 
+\end{aligned}	 \qquad \, 	\begin{aligned}
+& r_{L/2} \leq d^{L/2} \\ 
+	& r_{L/2+1} \leq d^{L/2-1} 
+\end{aligned} \qquad \, 	\begin{aligned}
+& r_{L-2} \leq d^2 \\ 
+	& r_{L-1} \leq d 
+\end{aligned}
+\end{gathered}
+\]
+
+Let us explicitly note the functors (that were applied) flatten (and its inverse), and the application of SVD, explicitly:
+
+
+
+
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.75em, column sep=2.8em, minimum width=1.2em]
+  {
+	(\mathbb{K}^d)^L & \text{Mat}_{\mathbb{K}}(d,d^{L-1})  & U_{\mathbb{K}}(d,r_1) \times \text{diag}_{\mathbb{K}}(r_1) \times U_{\mathbb{K}}(r_1,d^{L-1}) &  (\text{Mat}_{\mathbb{K}}(1,r_1))^d \times \text{Mat}_{\mathbb{K}}(r_1d, d^{L-2}) &   (\text{Mat}_{\mathbb{K}}(1,r_1))^d \times (\mathbb{K}^{r_1}) \times (\mathbb{K}^d)^{L-1}  
+ \\
+	    c_{\sigma_1 \dots \sigma_L} & c_{\sigma_1 \dots \sigma_L} = \Psi_{\sigma_1,(\sigma_2\dots \sigma_L)} & \Psi_{\sigma_1,(\sigma_2\dots \sigma_L)} = \sum_{a_1}^{r_1}U_{\sigma_1a_1} S_{a_1,a_1} (V^{\dag})_{a_1,(\sigma_2 \dots \sigma_L)} & c_{a_1\sigma_2\dots \sigma_L} = \sum_{a_1}^{r_1} A_{a_1}^{\sigma_1} \Psi_{(a_1,a_2),(\sigma_3 \dots \sigma_L)} &  c_{a_1\sigma_2\dots \sigma_L} = \sum_{a_1}^{r_1} A^{\sigma_1}_{a_1} c_{a_1 \sigma_2 \dots \sigma_L} \\
+};
+  \path[->]
+  (m-1-1) edge node [above] { $\text{flatten}^{-1}$ } (m-1-2)
+  (m-1-2) edge node [above] { SVD } (m-1-3)
+  (m-1-3) edge node [above] { $\cong$ } (m-1-4)
+  (m-1-4) edge node [above] { flatten } (m-1-5)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] { $\text{flatten}^{-1}$ } (m-2-2)
+  (m-2-2) edge node [above] { SVD } (m-2-3)
+  (m-2-3) edge node [above] { $\cong$ } (m-2-4)
+  (m-2-4) edge node [above] { flatten } (m-2-5)
+  ;
+\end{tikzpicture}  
+\]
+with $\cong$ in this case denoting an isomorphism (clearly).  
+
+
+In considering some kind of recursive algorithm, so to repeat some series of steps until a matrix product state is obtained, consider this:
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.75em, column sep=4.8em, minimum width=1.2em]
+  {
+	(\mathbb{K}^d)^L & (\text{Mat}_{\mathbb{K}}(1,r_1))^d \times \mathbb{K}^{r_1} \times (\mathbb{K}^d)^{L-1} \\
+    c_{\sigma_1 \dots \sigma_L}  &  c_{\sigma_1\dots \sigma_L} = \sum_{a_1}^{r_1} A^{\sigma_1}_{a_1} c_{a_1 \sigma_2\dots \sigma_L} \\ 
+};
+  \path[->]
+  (m-1-1) edge node [above] {  } (m-1-2)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] {  } (m-2-2)
+  ;
+\end{tikzpicture}  
+\]
+
+So in summary, to obtain matrix product states, starting from a matrix, 
+\begin{equation}
+\begin{tikzpicture}[framed]
+  \matrix (m) [matrix of math nodes, row sep=1.55em, column sep=1.7em, minimum width=1.2em]
+  {
+	\text{Mat}_{\mathbb{K}}(d,d^{L-1})  & (\text{Mat}_{\mathbb{K}}(1,r_1))^d \times \text{Mat}_{\mathbb{K}}(r_1d, d^{L-2}) & \dots &   (\text{Mat}_{\mathbb{K}}(1,r_1))^d \times (\text{Mat}_{\mathbb{K}}(r_1,r_2))^d \times \dots \times (\text{Mat}_{\mathbb{K}}(r_{n-1},r_{n}))^d \times (\text{Mat}_{\mathbb{K}}(r_{n}d,d^{L-(n+1)}))^d    \\
+    \Psi_{\sigma_1,(\sigma_2\dots \sigma_L)} &   \sum_{a_1}^{r_1} A_{a_1}^{\sigma_1} \Psi_{(a_1,\sigma_2),(\sigma_3 \dots \sigma_L)}  & \dots & \sum_{a_1,a_2,\dots a_n}^{r_1,r_2,\dots r_n} A^{\sigma_1}_{a_1} A^{\sigma_2}_{a_1a_2}\dots A^{\sigma_n}_{a_{n-1}a_n} \Psi_{ (a_n \sigma_{n+1}), (\sigma_{n+2}\dots \sigma_L) } \\ 
+};
+  \path[->]
+  (m-1-1) edge node [above] {  } (m-1-2)
+  (m-1-2) edge node [above] {  } (m-1-3)
+  (m-1-3) edge node [above] {  } (m-1-4)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] {  } (m-2-2)
+  (m-2-2) edge node [above] {  } (m-2-3)
+  (m-2-3) edge node [above] {  } (m-2-4)
+;
+\end{tikzpicture}  
+\end{equation}
+
+
+
+
+
+
+\subsection{Right-canonical matrix product state}  
+cf.  Schollw\"{o}ck \cite{agat:Scho2010},
+
+We can start from right in order to obtain 
+\[
+\begin{gathered}
+	c_{\sigma_1\dots \sigma_L} = \Psi_{(\sigma_1 \dots \sigma_{L-1}), \sigma_L } = \sum_{a_{L-1}} U_{(\sigma_1 \dots \sigma_{L-1} ), a_{L-1} } S_{a_{L-1}, a_{L-1} } (V^{\dag})_{a_{L-1}, \sigma_L } = \sum_{a_{L-1}} \Psi_{(\sigma_1\dots \sigma_{L-2}), (\sigma_{L-1} a_{L-1} ) } B^{\sigma_L}_{a_{L-1}} = \\ 
+ = \sum_{a_{L-1},a_{L-2}} U_{(\sigma_1 \dots \sigma_{L-2} ), a_{L-2} } S_{a_{L-2}, a_{L-2} } (V^{\dag})_{a_{L-2}, (\sigma_{L-1}a_{L-1}) } B^{\sigma_L}_{a_{L-1}}  = \sum_{a_{L-2},a_{L-1}} \Psi_{(\sigma_1\dots \sigma_{L-3}), (\sigma_{L-2} a_{L-2} ) } B^{\sigma_{L-1}}_{a_{L-2},a_{L-1}} B^{\sigma_L}_{a_{L-1}} = \dots \\ 
+\end{gathered}
+\]
+or consider 
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.95em, column sep=3.8em, minimum width=1.8em]
+  {
+	(\mathbb{K}^d)^L & \text{Mat}_{\mathbb{K}}(d^{L-1},d)  & U_{\mathbb{K}}(d^{L-1},r_{L-1}) \times \text{diag}_{\mathbb{K}}(r_{L-1}) \times U_{\mathbb{K}}(r_{L-1},d ) &  \text{Mat}_{\mathbb{K}}(d^{L-2},d r_{L-1})  \times ( \text{Mat}_{\mathbb{K}}(r_{L-1}, 1))^d &   \qquad \, 
+ \\
+	    c_{\sigma_1 \dots \sigma_L} & c_{\sigma_1 \dots \sigma_L} = \Psi_{(\sigma_1\dots \sigma_{L-1}),\sigma_L} & c_{\sigma_1 \dots \sigma_L} =  \sum_{a_{L-1}}^{r_{L-1}}U_{(\sigma_1 \dots \sigma_{L-1}), a_{L-1}} S_{a_{L-1},a_{L-1}} (V^{\dag})_{a_{L-1}, \sigma_L} & \begin{gathered}
+	U_{(\sigma_1 \dots \sigma_{L-1}), a_{L-1} } S_{a_{L-1}, a_{L-1}} = \Psi_{(\sigma_1\dots \sigma_{L-2}), (\sigma_{L-1} a_{L-1}) } \\ 
+(V^{\dag})_{a_{L-1},\sigma_L} = B^{\sigma_L}_{a_{L-1}} \\
+c_{\sigma_1\dots \sigma_L} = \sum_{a_{L-1}} \Psi_{(\sigma_1 \dots \sigma_{L-2} ) , (\sigma_{L-1}, a_{L-1})} B_{a_{L-1}}^{\sigma_L} 
+\end{gathered}  &  \qquad \,  \\
+\qquad \, & U_{\mathbb{K}}(d^{L-2},r_{L-2}) \times \text{diag}_{\mathbb{K}}(r_{L-2}) \times U_{\mathbb{K}}(r_{L-2},dr_{L-1} ) \times  ( \text{Mat}_{\mathbb{K}}(r_{L-1}, 1))^d  & \text{Mat}_{\mathbb{K}}(d^{L-3},d r_{L-2})   \times  ( \text{Mat}_{\mathbb{K}}(r_{L-2}, r_{L-1}))^d  \times  ( \text{Mat}_{\mathbb{K}}(r_{L-1}, 1))^d &  &  \\
+\qquad \,  & c_{\sigma_1\dots \sigma_L} = \sum_{a_{L-1},a_{L-2}} U_{(\sigma_1 \dots \sigma_{L-2} ), a_{L-2} } S_{a_{L-2}, a_{L-2} } (V^{\dag})_{a_{L-2}, (\sigma_{L-1}a_{L-1}) } B^{\sigma_L}_{a_{L-1}} &   \begin{gathered}
+	U_{(\sigma_1 \dots \sigma_{L-2}), a_{L-2} } S_{a_{L-2}, a_{L-2}} = \Psi_{(\sigma_1\dots \sigma_{L-3}), (\sigma_{L-2} a_{L-2}) } \\ 
+(V^{\dag})_{a_{L-2},(\sigma_{L-1}a_{L-1})} = B^{\sigma_{L-1}}_{a_{L-2}a_{L-1}} \\
+c_{\sigma_1\dots \sigma_L} = \sum_{a_{L-1}, a_{L-2}} \Psi_{(\sigma_1 \dots \sigma_{L-3} ) , (\sigma_{L-2}, a_{L-2})} B_{a_{L-2},a_{L-1}}^{\sigma_{L-1}} B^{\sigma_L}_{a_{L-1}} 
+\end{gathered}   & &  \\
+};
+  \path[->]
+  (m-1-1) edge node [above] { $\text{flatten}^{-1}$ } (m-1-2)
+  (m-1-2) edge node [above] { SVD } (m-1-3)
+  (m-1-3) edge node [above] { $\cong$ } (m-1-4)
+  (m-1-4) edge node [above] { SVD } (m-1-5)
+ (m-3-1) edge node [above] { SVD } (m-3-2)
+  (m-3-2) edge node [above] { $\cong$ } (m-3-3)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] { $\text{flatten}^{-1}$ } (m-2-2)
+  (m-2-2) edge node [above] { SVD } (m-2-3)
+  (m-2-3) edge node [above] { $\cong$ } (m-2-4)
+  (m-2-4) edge node [above] { SVD } (m-2-5)
+  (m-4-1) edge node [above] { SVD } (m-4-2)
+  (m-4-2) edge node [above] { $\cong$ } (m-4-3)
+  ;
+\end{tikzpicture}  
+\]
+with $\cong$ in this case denoting an isomorphism (clearly).  
+
+And so we can explicitly state the recursion step, for the purpose of writing numerical implementations/algorithms: $\forall \, l = 1,2\dots L$,
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.75em, column sep=4.8em, minimum width=1.2em]
+  {
+\text{Mat}_{\mathbb{K}}(d^{L-l},d r_{L-(l-1)}) 	 & \text{Mat}_{\mathbb{K}}(d^{L-(l+1)},d r_{L-l}) \times (\text{Mat}_{\mathbb{K}}(r_{L-l},r_{L-(l-1)}))^d \\
+    \Psi_{(\sigma_1\dots \sigma_{L-l}), (\sigma_{L-(l-1)} a_{L-(l-1)}) }   &      \Psi_{(\sigma_1\dots \sigma_{L-l}), (\sigma_{L-(l-1)} a_{L-(l-1)}) } = \sum_{a_{L-l}}     \Psi_{(\sigma_1\dots \sigma_{L-(l+1)}), (\sigma_{L-l} a_{L-l}) } B_{a_{L-l},a_{L-(l-1)}}^{\sigma_{L-(l-1)}}  \\ 
+};
+  \path[->]
+  (m-1-1) edge node [above] {  } (m-1-2)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] {  } (m-2-2)
+  ;
+\end{tikzpicture}  
+
+and we finally obtained, after successive applications SVD, the matrix product state:
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.75em, column sep=4.8em, minimum width=1.2em]
+  {
+(\mathbb{K}^d)^L  & \text{Mat}_{\mathbb{K}}(d^{L-1},d )  & (\text{Mat}_{\mathbb{K}}( 1, r_1))^d \times  (\text{Mat}_{\mathbb{K}}(r_1,r_2))^d \times \dots \times (\text{Mat}_{\mathbb{K}}(r_{L-2},r_{L-1}))^d \times (\text{Mat}_{\mathbb{K}}(r_{L-1}, 1 ))^d \\
+    c_{\sigma_1\dots \sigma_L} & \Psi_{(\sigma_1\dots \sigma_{L-l}), \sigma_L }   & c_{\sigma_1\dots \sigma_L} =      \sum_{ a_1 \dots a_{L-1} }  B_{a_1}^{\sigma_1}  B_{a_1a_2}^{\sigma_2 } \dots  B_{a_{L-2}a_{L-1}}^{\sigma_{L-1} }  B_{a_{L-1}}^{\sigma_L} \\ 
+};
+  \path[->]
+  (m-1-1) edge node [above] {  } (m-1-2)
+  (m-1-2) edge node [above] {  } (m-1-3)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] {  } (m-2-2)
+  (m-2-2) edge node [above] {  } (m-2-3)
+  ;
+\end{tikzpicture}  
+
+
+
+Since 
+\begin{equation}
+V^{\dag} V =1
+\end{equation},
+then
+\begin{equation}
+	\delta_{a_l a_l'} = \sum_{\sigma_m a_m } (V^{\dag})_{a_l (\sigma_ma_m) } V_{(\sigma_m a_m) a_l'} = \sum_{\sigma_m a_m } B_{a_l a_m}^{\sigma_m} \overline{B}^{\sigma_m}_{a_l' a_m} \Longrightarrow \sum_{\sigma_m} \boxed{ B^{\sigma_m} (B^{\sigma_m})^{\dag} = 1 }
+\end{equation}
+The $B$-matrices that obey this condition are referred to as \textbf{right-normalized} matrices.  A matrix product state (MPS) entirely consisting of a product of these right-normalized matrices is called \textbf{right-canonical}.  
+
+\subsection{Matrix Product Operators (MPO)}
+
+The form of a general operator, $\widehat{O}$ is the following:
+\begin{equation}
+\begin{gathered}
+\widehat{O} = \sum_{ \lbrace \sigma \rbrace } \sum_{ \lbrace \sigma' \rbrace } c^{\sigma_1 \dots \sigma_L, \sigma_1' \dots \sigma_L'} | \sigma_1 \dots \sigma_L \rangle \langle \sigma_1' \dots \sigma_L' | \in \mathcal{H} \otimes \mathcal{H}^* 
+\end{gathered}
+\end{equation}
+with $\text{dim}\mathcal{H} = \text{dim}\mathcal{H}^* = d^L$. 
+
+For MPO, do the same decomposition as done in Eq. \ref{agat:Eq:LeftMPSoperation} or in \ref{agat:Eq:RightMPSoperation}, but with the double index $\sigma_i \sigma_i'$ taking the role of index $\sigma_i$ in MPS (i.e. do this substitution and the decomposition will proceed \emph{exactly} as before).
+
+
+
+
+
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=2.55em, column sep=7.7em, minimum width=6.2em]
+{
+	\text{Mat}_{\mathbb{C}}(d^L, d^L)  \\
+	\text{Mat}_{\mathbb{C}}(1, (d^2)^{L}) & \text{Mat}_{\mathbb{C}}(d^2, (d^2)^{L-1}) & \text{Mat}_{\mathbb{C}}(d^2, r_i) \times \text{Mat}_{\mathbb{C}}(r_i, r_i) \times \text{Mat}_{\mathbb{C}}(r_i , (d^2)^{L-1}) & \text{Mat}_{\mathbb{C}}(1, r_i)^d \times \text{Mat}_{\mathbb{C}}(r_i, (d^2)^{L-1}) \\
+	c^{\sigma_1 \dots \sigma_L, \sigma_1' \dots \sigma_L'}  \\
+	c^{\sigma_1 \sigma_1' \sigma_2 \sigma_2' \dots \sigma_L \sigma_L'} & \Psi_{\sigma_1 \sigma_1', (\sigma_{2} \sigma_2', \sigma_{3} \sigma_3' \dots \sigma_L \sigma_L') } &  U_{ \sigma_1\sigma_1', a_1 } S_{a_1 a_1} V^{\dagger}_{a_1, (\sigma_{2} \sigma_2' \dots \sigma_L \sigma_L'} & \sum_{\sigma_1 \sigma_1'} A^{\sigma_1 \sigma_1'}_{1, a_1} c^{a_1, \sigma_{2}\sigma_2' \dots \sigma_L\sigma_L'} \\
+};
+\path[->]
+(m-1-1) edge node [right] { \text{reorder} } (m-2-1)
+(m-2-1) edge node [above] { \text{reshape} } (m-2-2)
+(m-2-2) edge node [above] { \text{SVD} } (m-2-3)
+(m-2-3) edge node [above] { \text{slice and multiply} } (m-2-4)
+;
+\path[|->]
+(m-3-1) edge node [right] { \text{reorder} } (m-4-1)
+(m-4-1) edge node [above] { \text{reshape} } (m-4-2)
+(m-4-2) edge node [above] { = } (m-4-3)
+(m-4-3) edge node [above] { = } (m-4-4)
+;
+\end{tikzpicture}  
+\]
+
+\begin{equation}\label{agat:Eq:LeftMPOoperation}
+\begin{tikzpicture}[framed]
+\matrix (m) [matrix of math nodes, row sep=2.55em, column sep=7.7em, minimum width=6.2em]
+{
+	\text{Mat}_{\mathbb{C}}(r_{i-1}, (d^2)^{L-(i-1)}) & \text{Mat}_{\mathbb{C}}(r_{i-1}d^2, (d^2)^{L-i}) & \text{Mat}_{\mathbb{C}}(r_{i-1}d^2, r_i) \times \text{Mat}_{\mathbb{C}}(r_i, r_i) \times \text{Mat}_{\mathbb{C}}(r_i , (d^2)^{L-i}) & \text{Mat}_{\mathbb{C}}(r_{i-1}, r_i)^{d^2} \times \text{Mat}_{\mathbb{C}}(r_i, (d^2)^{L-i}) \\
+	c^{a_{i-1}, \sigma_i \sigma_i' \sigma_{i+1} \sigma_{i+1}' \dots \sigma_L \sigma_L'} & \Psi_{a_{i-1}\sigma_i \sigma_i', (\sigma_{i+1}\sigma_{i+1}' \sigma_{i+2}\sigma_{i+2}' \dots \sigma_L\sigma_L') } &  U_{a_{i-1} \sigma_i \sigma_i', a_i } S_{a_i a_i} V^{\dagger}_{a_i, \sigma_{i+1} \sigma_{i+1}' \dots \sigma_L\sigma_L'} & \sum_{\sigma_i \sigma_i'}^{max}A^{\sigma_i \sigma_i'}_{a_{i-1}, a_i} c^{a_i, \sigma_{i+1} \sigma_{i+1}' \dots \sigma_L \sigma_L'} \\
+};
+\path[->]
+(m-1-1) edge node [above] { \text{reshape} } (m-1-2)
+(m-1-2) edge node [above] { \text{SVD} } (m-1-3)
+(m-1-3) edge node [above] { \text{slice and multiply} } (m-1-4)
+;
+\path[|->]
+(m-2-1) edge node [above] { \text{reshape} } (m-2-2)
+(m-2-2) edge node [above] { = } (m-2-3)
+(m-2-3) edge node [above] { = } (m-2-4)
+;
+\end{tikzpicture}  
+\end{equation}
+
+
+
+
+
+\subsubsection{Numerical implementation; both in BLAS and cuBLAS}
+
+As stated in the \href{http://docs.nvidia.com/cuda/cusolver/index.html#cuds-lt-t-gt-gesvd}{CUDA Toolkit Documentation v8.0} for cuSOLVER, under section 5.3.6. \verb|cusolverDn<t>gesvd()| and Remark 1, \verb|gesvd| "only supports" \verb|m>=n|, for matrix you want to decompose $A\in \text{Mat}_{\mathbb{K}}(m,n)$.  So number of rows must be greater than or equal to number of columns.  And so we can only consider right-normalized matrices in a practical implementation.  
+
+I suspect it's the same in BLAS.  
+
+Consider the very first step, $l=1$, in a procedure to calculate the matrix product state.  
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.95em, column sep=3.8em, minimum width=1.8em]
+  {
+	 \text{Mat}_{\mathbb{K}}(d^{L-1},d)  &  U_{\mathbb{K}}(d^{L-1},r_{L-1}) \times \text{diag}_{\mathbb{K}}(r_{L-1}) \times U_{\mathbb{K}}(r_{L-1},d ) &  \text{Mat}_{\mathbb{K}}(d^{L-2},d r_{L-1})  \times ( \text{Mat}_{\mathbb{K}}(r_{L-1}, 1))^d &   \qquad \,  \\	    
+ \Psi_{(\sigma_1\dots \sigma_{L-1}),\sigma_L} &  = \sum_{a_{L-1}}^{r_{L-1}}U_{(\sigma_1 \dots \sigma_{L-1}), a_{L-1}} S_{a_{L-1},a_{L-1}} (V^{\dag})_{a_{L-1}, \sigma_L} & \begin{gathered}
+	U_{(\sigma_1 \dots \sigma_{L-1}), a_{L-1} } S_{a_{L-1}, a_{L-1}} = \Psi_{(\sigma_1\dots \sigma_{L-2}), (\sigma_{L-1} a_{L-1}) } \\ 
+(V^{\dag})_{a_{L-1},\sigma_L} = B^{\sigma_L}_{a_{L-1}} 
+\end{gathered} \\
+};
+  \path[->]
+  (m-1-1) edge node [above] { SVD } (m-1-2)
+  (m-1-2) edge node [above] { $\cong$ } (m-1-3)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] { SVD } (m-2-2)
+  (m-2-2) edge node [above] { $\cong$ } (m-2-3)
+  ;
+\end{tikzpicture}  
+with $\cong$ in this case denoting an isomorphism, the \emph{reshaping} of a matrix into different matrix size dimensions, which should be the inverse of a "flatten" functor, which I'll denote as $\text{flatten}^{-1}$ as well (and this is this same isomorphism we're talking about).  
+
+Let's deal with the specific procedure of $\text{flatten}^{-1}$, how it reshapes indices in accordance with different matrix size dimensions, and with the so-called "stride" when going from, say, 2-dimensional indices to a "flattened" 1-dimensional index.  
+
+Note also as a practical numerical implementation design point, LAPACK's linear algebra BLAS library package and CUBLAS assumes \emph{column}-major ordering.  
+
+Consider $i= 1,2,\dots L-1$ (for site $i$) (or for $0$-based counting, starting to count from $0$, $i=0,1,\dots L-2$; be aware of this difference as in practical numerical implementation, in C, C++, Python, it assumes $0$-based counting).  
+
+For a state space of dimension $d$, we can consider the specific example of $d=2$, representing say a spin-$1/2$ system.  Then index $\sigma_i$ can be $0$ or $1$: $\sigma_i \in \lbrace 0 ,1\rbrace$.  In general, $\sigma_i \in \lbrace 0 ,1, \dots d-1\rbrace$.  I may use $d$ or $2$ in the context of the number of states (basis vectors) of the spin system (state vector space).  
+
+Consider site $i$.  Suppose the spin system there interacts most with sites $i-1$, $i+1$, and then next sites $i-2$, $i+2$, etc.  So the values at $\sigma_{i-1}, \sigma_{i+1}$, etc. are most important in calculating interactions with spin system at site $i$.  
+
+Then we seek this reshaping of the matrix index - assuming $0$-based counting/ordering, for $l=1$:
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.95em, column sep=3.8em, minimum width=1.8em]
+  {
+	\lbrace 0 ,1 \rbrace^{L-1} & \lbrace 0 ,1, \dots 2^{L-1} -1 \rbrace \\
+	(\sigma_0,\sigma_1, \dots \sigma_{L-2}) & I_{L-1} := \sigma_0 + 2\sigma_1 + \dots + 2^i \sigma_i + \dots + 2^{L-2}\sigma_{L-2} = \sum_{i=0}^{L-2} 2^i \sigma_i \\
+};
+  \path[->]
+  (m-1-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-1-2)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-2-2)
+  ;
+\end{tikzpicture}  
+
+In this way, states of a site $i$ are closest in memory addresses in the allocation of a 1-dim. array, on CPU or GPU memory, so that memory access operations should be efficient.  
+
+Assuming SVD doesn't change the striding, and defining the result of matrix multiplication:
+\[
+U_{(\sigma_0, \sigma_1 \dots \sigma_{L-2}), a_{L-1} } S_{a_{L-1}, a_{L-1}} =: (US)_{(\sigma_0 \dots \sigma_{L-2} ), a_{L-1} } \in \text{Mat}_{\mathbb{K}}(d^{L-1},r_{L-1} )
+\]
+
+We can reshape (i.e. $(\text{flatten})^{-1}$) in such a manner: 
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.95em, column sep=3.8em, minimum width=1.8em]
+  {
+	\text{Mat}_{\mathbb{K}}(d^{L-1},r_{L-1})  & \text{Mat}_{\mathbb{K}}(d^{L-2},dr_{L-1}) \\ 
+	(US)_{(\sigma_0 \dots \sigma_{L-2} ), a_{L-1} }  & \Psi_{(\sigma_0,\sigma_1 ,\dots \sigma_{L-3}), (\sigma_{L-2} a_{L-1}) }     \\
+	\lbrace 0 ,1,\dots 2^{L-1}-1 \rbrace \times \lbrace 0 ,1,\dots r_{L-1} -1 \rbrace & \lbrace 0 ,1,\dots 2^{L-2}-1 \rbrace \times \lbrace 0 ,1,\dots dr_{L-1} -1 \rbrace \\
+I_{L-1}, a_{L-1}  & I_{L-1} \mod{ 2^{L-2}} , \frac{ I_{L-1} }{ 2^{L-2} } + da_{L-1} \\
+};
+  \path[->]
+  (m-1-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-1-2)
+  (m-3-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-3-2)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-2-2)
+  (m-4-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-4-2)
+  ;
+\end{tikzpicture}  
+\]
+Reshaping $V^{\dag}$ at iteration $l=1$ can be done as follows:  
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.95em, column sep=3.8em, minimum width=1.8em]
+  {
+	U_{\mathbb{K}}(r_{L-1},d)  & ( \text{Mat}_{\mathbb{K}}( r_{L-1} , 1) )^d \\ 
+	(V^{\dag})_{a_{L-1},\sigma_{L-1 } }   & (V^{\dag})_{a_{L-1},\sigma_{L-1} } = B_{a_{L-1}}^{\sigma_{L-1}}     \\
+	\lbrace 0 ,1,\dots r_{L-1} -1  \rbrace \times \lbrace 0 ,1,\dots d -1 \rbrace &  (   \lbrace 0 ,1,\dots  r_{L-1}-1 \rbrace )^d \\
+a_{L-1}, \sigma_{L-1}  & a_{L-1}  \\
+};
+  \path[->]
+  (m-1-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-1-2)
+  (m-3-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-3-2)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-2-2)
+  (m-4-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-4-2)
+  ;
+\end{tikzpicture}  
+\]
+
+Let's do this same procedure, reshaping or $(\text{flatten})^{-1}$, for a general $l$ iteration.  
+
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.95em, column sep=3.8em, minimum width=1.8em]
+  {
+	\text{Mat}_{\mathbb{K}}(d^{L-l},r_{L-l})  & \text{Mat}_{\mathbb{K}}(d^{L-(l+1)},dr_{L-l}) \\ 
+	(US)_{(\sigma_0 \dots \sigma_{L-(l+1)} ), a_{L-l } }  & \Psi_{(\sigma_0,\sigma_1 ,\dots \sigma_{L-(l+2)}), (\sigma_{L-(l+1)} a_{L-l}) }     \\
+	\lbrace 0 ,1,\dots d^{L-l}-1 \rbrace \times \lbrace 0 ,1,\dots r_{L-l} -1 \rbrace & \lbrace 0 ,1,\dots d^{L-(l+1)}-1 \rbrace \times \lbrace 0 ,1,\dots dr_{L-l} -1 \rbrace \\
+I_{L-l}, a_{L-l}  & I_{L-l} \mod{ d^{L-(l+1)}} , \frac{ I_{L-l} }{ d^{L-(l+1)} } + da_{L-l} \\
+};
+  \path[->]
+  (m-1-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-1-2)
+  (m-3-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-3-2)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-2-2)
+  (m-4-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-4-2)
+  ;
+\end{tikzpicture}  
+\]
+
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=1.95em, column sep=3.8em, minimum width=1.8em]
+  {
+	U_{\mathbb{K}}(r_{L-l},dr_{L-(l-1)})  & ( \text{Mat}_{\mathbb{K}}( r_{L-l} , r_{L-(l-1)}) )^d \\ 
+	(V^{\dag})_{a_{L-l}, (\sigma_{L-l } a_{L-(l-1)}) }   & (V^{\dag})_{a_{L-l}, ( \sigma_{L-l} a_{L-(l-1)} ) } = B^{\sigma_{L-l}}_{a_{L-l}, a_{L-(l-1)}}         \\
+	\lbrace 0 ,1,\dots r_{L-l} -1  \rbrace \times \lbrace 0 ,1,\dots d r_{L-(l-1)} -1 \rbrace &  (   \lbrace 0 ,1,\dots  r_{L}-1 \rbrace \times \lbrace 0 ,1,\dots  r_{L-(l-1)}-1 \rbrace  )^d \\
+a_{L-l}, ( \sigma_{L-l} a_{L-(l-1)} ) := a_{L-l}, \sigma_{L-1} + da_{L-(l-1)}   & a_{L-l} , \frac{ (\sigma_{L-1}  a_{L-(l-1)} ) }{d} \, ; \, \sigma_{L-l}  = (\sigma_{L-l} a_{L-(l-1)} ) \mod{d} \\
+};
+  \path[->]
+  (m-1-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-1-2)
+  (m-3-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-3-2)
+  ;
+  \path[|->]
+  (m-2-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-2-2)
+  (m-4-1) edge node [above] { $(\text{flatten})^{-1}$ } (m-4-2)
+  ;
+\end{tikzpicture}  
+\]
+
+\subsubsection{Numerical implementations of initial states}
+
+Something else that shouldn't be overlooked is the numerical implementation of \emph{initial states}, the $c$'s of a state $| \psi \rangle = \sum_{ \lbrace \sigma \rbrace } c^{\sigma} | \lbrace \sigma \rbrace \rangle$ for a many-body quantum system. Remember what the postulates of quantum mechanics say and interpret accordingly (and correctly). While we call them "probability amplitudes", one should be careful about what physical interpretation we may (or may not!) assign them. One thing's for certain: $c \in \mathbb{C}$ and normalization of the quantum state: $ | \langle \psi | \psi \rangle |^2 = 1$
+
+Here are some setups to try:
+
+$d= 2, L=2$, $d^L = 2^2=4$.
+\[
+\left[ \begin{matrix} c_{\uparrow \uparrow} & c_{\uparrow \downarrow} & c_{\downarrow \uparrow} & c_{\downarrow \downarrow} \end{matrix} \right] \mapsto \left[ \begin{matrix} c_{\uparrow \uparrow} & c_{\uparrow \downarrow} \\
+c_{\downarrow \uparrow} & c_{\downarrow \downarrow} \end{matrix} \right]
+\]
+
+Singlet state: $|\psi \rangle = \frac{1}{ \sqrt{2}} | \uparrow \downarrow \rangle -  \frac{1}{\sqrt{2}} | \downarrow \uparrow \rangle $, $\left[ \begin{matrix} 0 & \frac{1}{\sqrt{2}} \\ \frac{-1}{\sqrt{2}} & 0 \end{matrix} \right]$ 
+
+$d=2, L=3, d^L = 2^8 = 8$
+
+For notational convenience, let $\uparrow \equiv 1$, $\downarrow \equiv 0$
+
+\[
+\left[ \begin{matrix} c_{000} & c_{001} & c_{010} & c_{011} & c_{100} & \dots & c_{111}  \end{matrix} \right] \mapsto \left[ \begin{matrix} c_{000} & c_{001} & \dots & c_{011} \\
+c_{100} & c_{001} & \dots & c_{111} \end{matrix} \right]
+\]
+
+$d=3, L=2$, $d^L = 3^2 = 9$
+
+\[
+\left[ \begin{matrix} c_{-1-1} & c_{-10 } & c_{-11} & \dots  & c_{11} \end{matrix} \right] \mapsto \left[ \begin{matrix} c_{-1-1} & c_{-10} &  c_{-11} \\
+c_{0-1} & c_{00} &  c_{01} \\ 
+c_{1-1} & c_{10} & c_{11} \end{matrix} \right]
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+

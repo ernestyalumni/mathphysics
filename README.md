@@ -71,3 +71,8 @@ Because I only have a **single Python 3 kernel**, the above command didn't work,
 ```
 python -m ipykernel install --user
 ```
+## Mathematical-physics master notes
+
+The unified [collected notes and worked problems](documents/mono-notes/README.md)
+combine algebra, geometry, mechanics, thermodynamics, and quantum/relativity
+material in one source, with portrait and screen PDF editions.

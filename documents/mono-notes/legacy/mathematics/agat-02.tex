@@ -1,0 +1,3766 @@
+% Imported from LaTeX_and_pdfs/AGAT_dump.tex; see provenance.json.
+\part{Category Theory}
+
+
+\section{Note on notation}
+
+From the section on ``Terminology'' of the Preface of Barr and Wells (1998) \cite{agat:BW1998}:
+
+\begin{quote}
+	``In most scientific disciplines, notation and terminology are standardized, of- ten by an international nomenclature committee. (Would you recognize Einstein’s equation if it said $p = HU^2$?) We must warn the nonmathematician reader that such is not the case in mathematics. There is no standardization body and terminology and notation are individual and often idiosyncratic.''
+\end{quote}
+
+To try to bridge the difference choice of notation and through comparison, suggest the ``best'' notation that's easy to remember and easy to use, I'll present all the different types of notation that I come across as much as I can. My plan of attack is the following:
+\begin{enumerate}
+	\item I'll try to present different types of notation and reference the authors of the text when I can.
+	\item I'll try to defer to the notation used in Wikipedia, first.
+	\item I'll make a final decision of what notation works best (for me).
+\end{enumerate}
+
+\section{Category $\mathbf{A}$, (definition)}
+
+\begin{definition}[Category $\mathbf{A}$]
+\textbf{category} $\mathbf{A}$ is quadruple $\mathbf{A} = (\text{Obj}(\mathbf{A}), \text{Mor}\mathbf{A}, 1,\circ)$ 
+\begin{equation}
+\mathbf{A} = (\text{Obj}(\mathbf{A}), \text{Mor}\mathbf{A}, 1,\circ)
+\end{equation}
+s.t.
+\begin{enumerate}
+	\item $\text{Obj}{(\mathbf{A})}$ is a \emph{class}, whose elements, $A \in \text{Obj}(\mathbf{A})$, are called \emph{objects}
+	\item $\text{Mor}\mathbf{A}$ is a \emph{class}.
+	\begin{enumerate}
+		\item From Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{agat:AHS2004}, Kashiwara and Schapira (2006) \cite{agat:KaSch2006}, \\
+		$\forall \, A, B \in \text{Obj}(\mathbf{A})$, $\exists \, \text{Hom}(A,B) \subseteq \text{Mor}(\mathbf{A})$. Therefore, 
+		\begin{equation}
+		\text{Mor}\mathbf{A} = \bigcup_{ A,B \in \text{Obj}(\mathbf{A}) } \text{Hom}(A,B)
+		\end{equation}
+		\item $\forall \, f \in \text{Hom}(A,B)$, $f: A \to B \in \text{Hom}(A,B)$ is a \emph{morphism}. Leinster (2014) \cite{agat:Lein2014} also calls them on pp. 10 \textbf{maps} or \textbf{arrow} from $A$ to $B$.
+	\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B  \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+;
+\end{tikzpicture}
+\]
+	\end{enumerate}
+	\item $\forall \, A \in \text{Obj}(\mathbf{A})$, $\exists \, 1_A : A \to A$, i.e. $\exists \, \mathbf{1}_A \in \text{Hom}_{\mathbf{A}}(A,A) \equiv \text{Hom}(A,A)$, 
+	\[
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		A & A  \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$1_A$} (m-1-2)
+	;
+	\end{tikzpicture} \text{ or } \begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		A   \\
+	};
+	\path[->]
+	(m-1-1) edge [loop left] node [above] {$\mathbf{1}_A$} (m-1-1)
+	;
+	\end{tikzpicture}
+	\]
+	\item \textbf{composition:} 
+	$\forall \, A,B,C \in \text{Obj}\mathbf{A}$, define \textbf{composition} to be a map
+	\begin{equation}
+	\begin{aligned}
+		\text{Hom}_{\mathbf{A}}(A, B) \times \text{Hom}_{\mathbf{A}}(B, C) & \to \text{Hom}_{\mathbf{A}}(A, C) \\
+		 (f, g) & \mapsto g\circ f
+ 	\end{aligned}
+\end{equation}, i.e.
+	
+	$\forall \, \begin{aligned} & \quad \\
+	& f: A \to B \in \text{Hom}(A,B) \\
+	& g:B\to C \in \text{Hom}(B,C) \end{aligned}$, i.e. $f,g \in \text{Mor}\mathbf{A}$, \\
+	then $g\circ f : A \to C \in \text{Hom}(A,C)$, $g\circ f \in \text{Mor}\mathbf{A}$ i.e. 
+	\[
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		A & B & C  \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$f$} (m-1-2)
+	(m-1-2) edge node [above] {$g$} (m-1-3)
+	(m-1-1) edge [bend right=30] node [below] {$g\circ f$} (m-1-3) 
+	;
+	\end{tikzpicture}
+	\]
+	s.t. 
+	\begin{enumerate}
+		\item \emph{associativity} $\forall \, \begin{aligned} & \quad \\
+		& f: A \to B \\
+		& g: B \to C \\
+		& h: C \to D \end{aligned}$, $h\circ (g\circ f) = (h\circ g) \circ f $ i.e.
+		
+		\[
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+		{
+			A & B & C  & D \\
+		};
+		\path[->]
+		(m-1-1) edge node [above] {$f$} (m-1-2)
+		(m-1-2) edge node [above] {$g$} (m-1-3)
+		(m-1-3) edge node [above] {$h$} (m-1-4)
+		(m-1-1) edge [bend right=30] node [below] {$g\circ f$} (m-1-3) 
+		(m-1-2) edge [bend left=30] node [above] {$h\circ g$} (m-1-4) 
+		;
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+		(m-1-1) edge [bend left=45] node [above] {$(h \circ g)\circ f$} (m-1-4)
+		edge [bend right=45] node [below] {$h \circ (g\circ f)$} (m-1-4);
+		\end{tikzpicture}
+		\]
+		
+		\item $\forall \, f:A \to B \in \text{Hom}(A,B)$, $1_B \circ f = f $ and $f\circ 1_A = f$ i.e.
+		
+		$\forall \, f \in \text{Hom}_{\mathbf{A}}(A,B)$,
+		\[
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+		{
+			A & B  \\
+		};
+		\path[->]
+		(m-1-1) edge node [above] {$f$} (m-1-2)
+		edge [loop left] node [left] {$1_A$} (m-1-1)
+		(m-1-2) edge [loop right] node [right] {$1_B$} (m-1-2)
+		;
+		\end{tikzpicture}
+		\]
+		\item Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{agat:AHS2004} posited further that $\text{Hom}(A,B) \in \text{Mor}\mathbf{A}$ pairwise disjoint (i.e. $\text{Hom}(A,B) \bigcap \text{Hom}(C,D) \neq \emptyset$ if $C\neq A$ or $D\neq B$)
+	\end{enumerate}
+\end{enumerate}	
+\end{definition}
+
+\subsection{Examples of categories}
+
+\begin{itemize}
+	\item $\textbf{Set} = (\text{Obj}{(\textbf{Set})}, \text{Hom}{\textbf{Set}},\mathbf{1},\circ)$ where \\
+	$\text{Obj}{(\textbf{Set})}$ is the class of all sets \\
+	$\text{Hom}{\textbf{Set}}$ is the class of all functions on a set to another set
+	\item $\textbf{Vec}$
+	
+	\[
+	\begin{aligned}
+	& \text{Obj}\textbf{Vec} & \equiv \text{ all real vector spaces } \\ 
+	& \text{Mor}\textbf{Vec} & \equiv \text{ all linear transformations between them (between real vector spaces) }
+	\end{aligned}
+	\]
+	\item \emph{preorder} cf. Ch. 1, Example 7, pp. 8, Awodey (2010) \cite{agat:Awod2010}. \\
+	\emph{preorder} $P$, set $P$ equipped with binary relation $p\leq q $, that's both \\
+	reflexive: $a\leq a$, and \\
+	transitive: if $a \leq b$ and $b \leq c$, then $a\leq c$. 
+	
+	\quad \\
+	$\forall \, $ preorder $P$ can be regarded as a category: \\
+	$\text{Obj}(P) = P$ \\
+	$a \to b$ iff $a\leq b \in \text{Mor}P$. \\
+	identity: $1 :a \to a$ since $a\leq a$ \\
+	composition: $f:a\to b$, $g:b\to c$, $(g\circ f)a = g(b) = c$, $a\leq b$ and $b\leq c$, so $a\leq c$. 
+	
+	Going in the other direction, a category with at most 1 arrow between 2 objects determines a preorder.
+	\item \textbf{Monoid}.  Consider a monoid as a triple $(M, \cdot, e)$.  \\
+	Every semigroup $(M,\cdot)$ (recall that a \emph{semigroup} is a set $S$ with binary operation $\cdot $, i.e. s.t.
+	
+	\quad \,  $\begin{aligned} & \quad \\
+	& S\times S \xrightarrow{\cdot } S \\ 
+	& \forall \, a,b ,c \in S, \, (a\cdot b)\cdot c = a\cdot (b\cdot c) \quad \, \text{ (associativity) } \end{aligned}$ 
+	
+	\quad \, (but no inverse, necessarily!)) that also has a unit $e$ can be made into a category $\mathbf{C}$ 
+	
+	$\Longrightarrow \mathbf{C}(M,\cdot ,e) = (\text{Obj}(\mathbf{C}), \text{Hom}(\mathbf{C}), \mathbf{1}, \circ)$, a category $\mathbf{C}$ with only 1 object, i.e. $\text{Obj}(\mathbf{C}) = \lbrace M \rbrace$, so that \\
+	$\text{Obj}(\mathbf{C}) = \lbrace M \rbrace$ \\
+	$\text{Hom}(M,M) = M$ \\
+	$\mathbf{1}_M = e$ \\
+	$y \circ x = y \cdot x$
+	
+	cf. pp. 10, Example 12 of Awodey (2010) \cite{agat:Awod2010}.
+
+\subsubsection{Monoid as a category}
+
+Recall the definition of a \emph{category} $\mathbf{A}$: category $\mathbf{A} = (\text{Obj}(\mathbf{A}), \text{Mor}{\mathbf{A}}, 1, \circ)$ s.t.\\
+$A \in \text{Obj}\mathbf{A}$, \\
+$\forall \, A, B \in \text{Obj}\mathbf{A}$, $\exists \, \text{Hom}(A,B) \subseteq \text{Mor}\mathbf{A}$, \\
+$\forall \, f \in \text{Hom}(A,B)$, $f:A \to B$ is a morphism.\\
+$\forall \, A \in \text{Obj}\mathbf{A}$, $\exists \, 1_A : A \to A$, i.e. $\exists \, 1_A \in \text{Hom}_{\mathbf{A}}(A,A)$. \\
+$\forall \, A, B, C \in \text{Obj}\mathbf{A}$,  \\
+\[
+\begin{aligned} 
+	& \text{Hom}_{\mathbf{A}}(A, B) \times \text{Hom}_{\mathbf{A}}(B,C) \to \text{Hom}_{\mathbf{A}}(A, C) \\ 
+	& (f,g) \mapsto g\circ f \end{aligned} \] \\
+
+Recall the definition of a \emph{monoid}:
+monoid $(M, \cdot, e)$, set $M$, \\
+$\cdot : M\times M \to M$, \\
+$e \in M$ s.t. $\forall \, x \in M$, $e\cdot x = x \cdot e = x$ \\
+
+$\Longrightarrow \mathbf{C}(M)$ (monoid as a category) \\
+$\text{Obj}\mathbf{C}(M) = \lbrace M \rbrace$ \\
+$\text{Hom}(M, M) = \text{Mor}\mathbf{C}(M)$ and $\forall \, f \in \text{Hom}(M, M)$, 
+\[
+f = m \in M
+\]
+i.e. the morphism \emph{is} an element in monoid $M$ (there's a 1-to-1 correspondence).
+
+$\forall \, n \in M$, $f:n \mapsto m\cdot n \in M$. \\
+$1_M : M \to M$ \\
+$1_M : x \mapsto e\cdot x = x$ \\
+$m\cdot n \cdot x = m\cdot (n\cdot x) = (m\cdot n) \cdot x$ (composition)
+
+
+	
+\subsubsection{Examples of monoids}
+	Examples of monoids: $\mathbb{N}, \mathbb{Q}, \mathbb{R}$ under either addition and $e=0$, or multiplication and $e=1$. \\
+	$\forall \, $ set $X$, set of functions from $X$ to $X$, $\text{Hom}_{\mathbf{Sets}}(X, X)$ is a monoid under composition. 
+	
+	In general, \\
+	$\forall \, $ object $C \in \text{Obj}(\mathbf{C})$, $\forall \, $ category $\mathbf{C}$, $\text{Hom}_{\mathbf{C}}(C,C)$ is a monoid under composition of $\mathbf{C}$. 
+	
+	Since monoids are structured sets, $\exists \, $ category $\textbf{Mon}$, s.t. $\text{Obj}\mathbf{Mon} \ni $ monoids, $\text{Mor} \textbf{Mon} \ni $ functions that preserve monoid structure.
+	
+	In detail, homomorphism from monoid $M$ to monoid $N$ is function $h:M \to N$ s.t. $\forall \, m,n \in M$. 
+	
+	\[
+	h(m \cdot_M n) = h(m) \cdot_N h(n)
+	\]
+	and
+	\[
+	h(e_M) =  e_N
+	\]
+	
+	\quad \\ 
+	Check: Consider functor $F: M \to N$. \\
+	$F: \text{Hom}_M(a,b) \to \text{Hom}_N(F(a), F(b))$
+	\[
+	\begin{gathered}
+	m\cdot a =b \qquad \, n \cdot_N F(a)  = F(b) \\
+	F(m) \cdot_N F(a) = F(b) = F(m \cdot_M a) 
+	\end{gathered}
+	\]
+	so functor $F$ is a monoid homomorphism, and so \\
+	\emph{a monoid homomorphism from $M$ to $N$ is the same thing as a functor from $M$ regarded as a category to $N$ regarded as a category.}
+	\item \textbf{Poset} cf. Ch. 1, pp. 6, Awodey (2010) \cite{agat:Awod2010}. partially ordered set or poset is a set $A$, equipped with binary relation $a \leq_A b$ s.t. $\forall \, a, b, c \in A$, \\
+	reflexivity: $a \leq_A a$ \\
+	transitivity: if $a\leq_A b$, $b\leq_A c$, then $a\leq_A  c$ \\
+	antisymmetry: if $a\leq_A b$, $b\leq_A a$, then $a=b$.
+	
+	An arrow from a poset $A$ to a poset $B$ is a function,
+	\[
+	m : A \to B
+	\]
+that is monotone, i.e. $\forall \, a, a' \in A$, 
+\[
+\text{ if } a \leq_A a', \text{ then } m(a) \leq_B m(a')
+\]	
+category $\textbf{Pos}$ of posets, and monotone functions, 
+\[
+\forall \, A \in \text{Obj}(\textbf{Pos}), \, \exists \, 1_A : A \to A, \text{ since } 
+\]
+since if $a \leq_A a'$, then $a\leq_A a'$, so $1_A$ monotone.
+
+\quad \\ 
+\emph{composition}: $\forall \, f:A \to B, \, g:B \to C$, \, $\forall \, A,B,C \in \text{Obj}(\textbf{Pos})$, $f,g$ monotone, \\
+$\forall \, a \leq_A a'$, $f(a) \leq_B f(a')$, and since \\
+$\forall \, b \leq_B b'$, $g(b) \leq_C g(b')$, then $g(f(a)) \leq_C g(f(a'))$, or $(g\circ f)(a) \leq_C (g\circ f)(a') \, \forall \, a\leq_A a'$, so $g\circ f : A \to C$ is monotone.
+
+$\text{Mor}\textbf{Pos} = \bigcup_{A, B \in \text{Obj}(\textbf{Pos}) } \text{ monotone functions $A \to B$ }$  
+
+\quad \\ 
+A \emph{poset} is a \emph{preorder}, satisfying additional condition of antisymmetry:
+if $a\leq b$, and $b\leq a$, $a=b$. \\
+e.g. $\forall \, X$, power set $P(X)$ is a poset under inclusion $U\subseteq V$, $\forall \, $ subsets $U,V \subseteq X$.
+
+\begin{itemize}
+	\item cf. Ch. 1, Example 8, pp. 9, Awodey (2010) \cite{agat:Awod2010}.
+	$\textbf{Pos}$ categories and functors: functor $F: \mathbf{D} \to \mathbf{Q}$ between poset categories $\mathbf{P}, \mathbf{Q}$. \\
+	They are the monotone functions.
+	\begin{proof} 
+	Consider 
+	\[
+	F : \text{Hom}_{\mathbf{P}}(A,B) \to \text{Hom}_{\mathbf{Q}}(F(A), F(B))
+	\]
+	$f\in \text{Hom}_{\mathbf{P}}(A,B)$ so if $a\leq_A a'$, $f(a) \leq_B f(a')$
+	
+	Let $g\in \text{Hom}_{\mathbf{Q}}(F(A), F(B))$, so if $c\leq_{F(A)} c'$, $g(c)\leq_{F(B)} g(c')$. \\
+	
+	$F(f) \in \text{Hom}_{\mathbf{Q}}(F(A), F(B))$ (by definition of a functor), so if $c\leq_{F(A)} c'$, $F(f)(c) \leq_{F(B)} F(f)(c')$ or $F(f(c)) \leq_{F(B)} F(f(c'))$. \\
+	
+	So $F$ itself is monotone.
+	\end{proof}
+\end{itemize}
+\item cf. \emph{An example from computer science}, Example 10, pp. 9 of Awodey (2010) \cite{agat:Awod2010}.
+Given a functional programming language $L$, $\exists \, $ associated category, \\
+$\text{Obj}\mathbf{L} \ni $ data types of $L$ \\
+$\text{Mor}\mathbf{L} \ni $ computable functions of $L$ ("processes", "procedures", "programs") \\
+composition (of 2 such programs) $X \xrightarrow{f} Y \xrightarrow{g} Z$ given by applying $g$ to output of $f$ \\
+(notation note: $g\circ f = f; g$) \\
+identity is the "do nothing" program. 
+
+\quad \\
+if $\mathbf{C}(L)$ is the category just defined, then \\
+denotational semantics of language $L$ in category $\mathbf{D}$ of say Scott demands is simply functor
+\[
+S:\mathbf{C}(L) \to \mathbf{D} 
+\]
+since $S$ assigns domains to the types of $L$, \\
+continuous functions to programs.
+
+This example and Example 9, pp. 9, of Awodey (2010) \cite{agat:Awod2010} are related to the notion of "Cartesian closed category."
+
+From Barr and Wells (2012) \cite{agat:BaWe2012}, a \emph{functional programming language} $L$ has
+\begin{enumerate}
+	\item primitive data types (built into the language) 
+	\item constants of each type
+	\item operations, which are functions between types
+	\item constructors, which are applied to data types and operations, to produce derived data types and operations of the language.	
+\end{enumerate}
+
+	For a $\mathbf{C}(L)$ category corresponding to functional programming language $L$, \\
+	
+	$\mathbf{C}(L)$ category corresponding to functional programming language $L$, \\
+	$\text{Obj}\mathbf{C}(L) = \lbrace \text{ types of $L$ } \rbrace$ \\
+	$\text{Mor}\mathbf{C}(L) = \lbrace \text{ operations (functions; primitive and derived) of $L$ } \rbrace$ \\
+
+identity: $\forall \, $ type $T \in \text{Obj}\mathbf{C}(L)$, $\exists \, 1_T :T \to T$ i.e. $1_T \in \text{Hom}(T,T)$. \\
+
+composition: $\forall \, $ types $T,U,V \in \text{Obj}\mathbf{C}(L)$, defines composition 
+\[
+\begin{aligned}
+\text{Hom}(T,U) \times \text{Hom}(U,V) & \to \text{Hom}(T,V) \\ 
+(f,g) & \mapsto g \circ f
+\end{aligned}
+\]
+
+Assume $L$ has a do nothing operation $1_T$, and composition constructor, $\text{Hom}(T,U) \times \text{Hom}(U,V) \to \text{Hom}(T, V)$. \\
+
+Add additional type $1$ s.t. $\forall \, $ type $T \in \text{Obj}\mathbf{C}(L)$, $\exists \, !$ operation (function) to $1, T \to 1$ \\
+Interpret each constant $c$ of type $A$ as arrow (morphism) $c:1\to A$.  \\
+
+As a concrete example (cf. Example 2.2.5 of Barr and Wells (2012) \cite{agat:BaWe2012}), suppose a simple language with 3 data types, \texttt{int}, \texttt{bool}, \texttt{char}. \\
+
+For \texttt{int}, $\exists \, $ constant $0:1 \to \texttt{int}$, consider $\texttt{succ}:\texttt{int} \to \texttt{int} \in \text{Hom}(\texttt{int}, \texttt{int})$, \\
+For \texttt{bool}, $\exists \, $ constants $\texttt{true} : 1 \to \texttt{bool}$, $\texttt{false} : 1 \to \texttt{bool}$; consider $\neg \in \text{Hom}(\texttt{bool}, \texttt{bool})$, s.t.
+\[
+\begin{aligned}
+& \neg \circ \texttt{true} = \texttt{false} \\ 
+& \neg \circ \texttt{false} = \texttt{true} 
+\end{aligned}
+\]
+
+For \texttt{char}, $\exists \, $ constants $c:1 \to \texttt{char}$, \, $\forall \, \texttt{char} c$.
+
+Since $\forall \, T,U \in \text{Obj}(\mathbf{C}(L))$, $\exists \, \text{Hom}(T,U) \subseteq \text{Mor}\mathbf{C}(L)$. So consider $\texttt{ord}:\texttt{char} \to \texttt{int}$, $\texttt{chr}: \texttt{int} \to \texttt{char}$, s.t. 
+\[
+\texttt{char} \circ \texttt{ord} = 1_{\texttt{char}}
+\]
+
+So $\text{Obj}\mathbf{C}(L) = \lbrace \texttt{int}, \texttt{bool}, \texttt{char}, 1 \rbrace$, \\
+\phantom{So } $\text{Mor}\mathbf{C}(L)$ consists of all programs.
+
+See 5.3.14 Record Types and 5.7.6, 14.2 for flow of control in Barr and Wells (2012) \cite{agat:BaWe2012} to complete the programming language. For here, see section \ref{agat:SubSubSec:RecordTypesProduct}
+
+\item \textbf{Groups}, cf. pp. 11, Def. 1.4, Sec. 1.5 \textbf{Isomorphisms}, Awodey (2010) \cite{agat:Awod2010}.
+
+A \emph{group} $G$ is a monoid with inverse $g^{-1}$, $\forall \, g \in G$. \\
+Thus, $G$ is a category with 1 object, $\forall \, f \in \text{Mor}G$ is an isomorphism.
+
+$\forall \, $ set $X$, group $\text{Aut}(X)$ of automoprhisms (or "permutations") of $X$ i.e. $f:X\to X$ \\
+$\text{Aut}(X)$ is closed under composition $\circ$ because a permutation of a permutation is another permutation.
+
+Homomorphisms of groups $h: G\to H$ is just a homomorphism of monoids, preserving inverses.\\
+Given $h$, then $h(gg') = h(g) h(g')$. \\
+$G,H$ are monoids. Then $h$ monoid homomorphism.
+\end{itemize}
+
+Concrete categories: informally, categories which objects are sets, possibly equipped with some structure, and arrows are certain, possibly structure-preserving functions.
+
+From pp. 10 of Mac Lane (1978) \cite{agat:MacL1978}, Leinster (2014) \cite{agat:Lein2014}, Examples 1.1.8 (Categories as mathematical structures), pp. 13, and Sec. 1.4 Examples of Categories, 5. Finite Categories, pp.7 of Awodey (2010) \cite{agat:Awod2010}.
+
+Category $\mathbf{1}$.  $\text{Obj}{\mathbf{1}} = \lbrace A \rbrace$ \\
+$\text{Mor}{\mathbf{1}} = \lbrace 1_A \rbrace$; $1_A : A \to A$.  \\
+
+The only composition to consider is $1_A \circ 1_A : A \to A$, and $1_A \circ 1_A \circ 1_A$, so on and so for.
+
+Category $\mathbf{2}$.  $\text{Obj}{\mathbf{2}} = \lbrace A, B \rbrace$. \\
+$\text{Hom}(A, B) = \lbrace f \rbrace$, $f:A\to B$. \\
+
+The only "non-trivial" composition to consider is $1_B \circ f \circ 1_A : A \to B$. \\
+ 
+Category $\mathbf{3}$. pp. 11, Sec. 2 Categories of Mac Lane (1978) \cite{agat:MacL1978}, Example 5. "Finite Categories", Sec. 1.4, pp. 7 of Awodey (2010) \cite{agat:Awod2010}. 
+
+$\text{Obj}{\mathbf{3}} = \lbrace A, B, C \rbrace$ \\
+$\text{Hom}{(A, B)} = \lbrace f \rbrace$ \\
+$\text{Hom}{(A, C)} = \lbrace g \rbrace$ \\
+$\text{Hom}{(B, C)} = \lbrace h \rbrace$ \\
+$\text{Hom}{(C, \cdot)} = \emptyset $ \\
+$\text{Hom}{(B, A)} = \emptyset$ \\
+
+The only "non-trivial" compositions to consider are the following:
+$1_C \circ h \circ f : A \to C$, \\
+$1_C \circ g$, $1_C \circ h$ (and likewise) \\
+
+
+\subsection{Duality, opposite category}
+
+Given a category $\mathbf{A} = ( \text{Ob}, \text{hom}_{\mathbf{A}}, 1, \circ)$, 
+\begin{definition}[dual opposite category]
+	\textbf{dual} or \textbf{opposite} category of $\mathbf{A} = (\text{Obj}(\mathbf{A}), \text{Mor}\mathbf{A}, \mathbf{1}, \circ)$, denoted $\mathbf{A}^{\text{op}}$, is   
+	\begin{equation}
+	\mathbf{A}^{\text{op}}  =  (\text{Obj}(\mathbf{A}), \text{Mor}\mathbf{A}^{\text{op}}, \mathbf{1}, \circ^{\text{op}})
+	\end{equation}
+	s.t.
+\begin{itemize}
+	\item 
+	\begin{equation}
+	\text{Obj}(\mathbf{A}^{\text{op}}) = \text{Obj}(\mathbf{A})
+	\end{equation}
+	\item $\forall \, A, B \in \text{Obj}(\mathbf{A}^{\text{op}})$, $\text{Hom}_{\mathbf{A}^{\text{op}}}(A,B) \subseteq \text{Mor}\mathbf{A}^{\text{op}}$, 
+		\begin{equation}
+\text{Hom}_{\mathbf{A}^{\text{op}}}(A,B) = \text{Hom}_{\mathbf{A}}(B,A) \subseteq \text{Mor}\mathbf{A}
+		\end{equation}
+		\item \emph{Define} the new composition 
+		\begin{equation}
+\begin{gathered}
+		f \circ^{\text{op}} g \text{ of } \begin{aligned} & \quad \\
+		& g \in \text{Hom}_{\mathbf{A}^{\text{op}}}(C,B) \\
+		& f \in \text{Hom}_{\mathbf{A}^{\text{op}}}(B,A) 
+		\end{aligned}		 \\
+		\text{ then } \\
+		f \circ^{\text{op}} g = g\circ f
+\end{gathered}
+		\end{equation}
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B & C \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+(m-1-2) edge node [above] {$g$} (m-1-3);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-1) edge[bend right=45] node [below] {$g\circ f$} (m-1-3);
+\end{tikzpicture} \qquad \qquad \, \, \text{ dual :} \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B & C \\
+};
+\path[->]
+(m-1-3) edge node [above] {$g$} (m-1-2)
+(m-1-2) edge node [above] {$f$} (m-1-1);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-3) edge[bend left=45] node [below] {$f\circ^{\text{op}} g$} (m-1-1);
+\end{tikzpicture}
+\]		
+or, equivalently (notation-wise)
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B & C \\
+};
+\path[->]
+(m-1-3) edge node [above] {$g$} (m-1-2)
+(m-1-2) edge node [above] {$f$} (m-1-1);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-3) edge[bend left=45] node [below] {$f \circ g$} (m-1-1);
+\end{tikzpicture}
+\qquad \qquad \, \, \text{ dual :} 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B & C \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+(m-1-2) edge node [above] {$g$} (m-1-3);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-1) edge[bend right=45] node [below] {$g\circ^{\text{op}} f$} (m-1-3);
+\end{tikzpicture} 
+\]		
+in that 
+\[
+\begin{gathered}
+g \circ^{\text{op}} f \text{ of } \begin{aligned} & \quad \\
+& f \in \text{Hom}_{\mathbf{A}^{\text{op}}}(A,B) \\
+& g \in \text{Hom}_{\mathbf{A}^{\text{op}}}(B,C) 
+\end{aligned}		 \\
+\text{ then } \\
+g \circ^{\text{op}} f = f\circ g
+\end{gathered}
+\]
+\end{itemize}
+\end{definition}
+
+i.e. (in summary) $\mathbf{C}^{\text{op}}$ s.t. $\text{Obj}\mathbf{C}^{\text{op}} = \text{Obj}\mathbf{C}$, \\
+Denote $\forall \, \overline{C} \in \text{Obj}\mathbf{C}^{\text{op}}$, $\overline{C} = C \in \text{Obj}\mathbf{C}$. \\
+$\text{Hom}_{\mathbf{C}^{\text{op}}}(\overline{A}, \overline{B}) \ni \overline{f} : \overline{C} \to \overline{D}$, in $\mathbf{C}^{\text{op}}$, for $f:D\to C$ in $\mathbf{C}$.  \\
+
+\[
+\begin{gathered}
+1_{\overline{C}} = 1_C \\
+	\overline{f} \circ \overline{g} \equiv \overline{f} \circ_{\text{op}} \overline{g} = g\circ f 
+\end{gathered}
+\]
+
+Diagram in $\mathbf{C}$:
+
+\[
+\begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	A   &  B \\
+	  & C  \\
+};
+\path[->]
+(m-1-1) edge node[above]{$f$} (m-1-2)
+edge node[left]{$g\circ f$} (m-2-2) 
+(m-1-2) edge node[right]{$g$} (m-2-2);
+\end{tikzpicture} 
+\]
+
+Diagram in $\mathbf{C}^{\text{op}}$:
+
+\[
+\begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	\overline{A}   &  \overline{B} \\
+	& \overline{C}  \\
+};
+\path[->]
+(m-1-2) edge node[above]{$\overline{f}$} (m-1-1)
+(m-2-2) edge node[left]{$\overline{f}\circ \overline{g}$} (m-1-1)
+edge node[right]{$\overline{g}$} (m-1-2);
+\end{tikzpicture} 
+\]
+
+e.g. $\mathbf{Sets}$ is dual to category of complete, atomic Boolean algebras.
+
+e.g. if $\mathbf{A} = (M,\cdot, e)$ monoid, then $\mathbf{A}^{\text{op}} = (M, \widehat{\cdot},e)$ where $a\widehat{\cdot} b = b\cdot a$
+
+
+\subsubsection{Example}
+
+\begin{itemize}
+	\item $\text{Vec}^{\text{op}}$
+	\[
+	\textbf{Vec}^{\text{op}} = (\text{Obj}(\textbf{Vec}), \text{Hom}_{\textbf{Vec}^{\text{op}}}, 1, \circ^{\text{op}})
+	\]
+	s.t.
+	\[
+	\text{Hom}_{\textbf{Vec}^{\text{op}} }(W,V) = \text{Hom}_{\textbf{Vec}}(V,W)
+	\]
+\[	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		U & V & W \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$f$} (m-1-2)
+	(m-1-2) edge node [above] {$g$} (m-1-3);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+	(m-1-1) edge[bend right=45] node [below] {$g\circ f$} (m-1-3);
+	\end{tikzpicture} \qquad \, \begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		U & V & W \\
+	};
+	\path[->]
+	(m-1-3) edge node [above] {$g$} (m-1-2)
+	(m-1-2) edge node [above] {$f$} (m-1-1);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-3) 	edge[bend left=45] node [below] {$f\circ^{\text{op}} g$} (m-1-1);
+	\end{tikzpicture}
+\]
+\end{itemize}
+
+\subsection{Kinds of morphisms}
+
+cf. pp. 11, Definition 1.3 of Awodey (2010) \cite{agat:Awod2010}
+\begin{definition}[isomorphism]
+	\textbf{isomorphism} - $\forall \, $ category $\mathbf{C}$, $\text{Mor}\mathbf{C} \ni $ morphism $f:A \to B$ is an isomorphism if $\exists \, g : B \to A$ s.t. $f\circ g = 1_B$, $g\circ f = 1_A$, $g$ unique. $g$ called inverse of $f,f^{-1}$
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	A & B \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+		edge [loop left] node [left] {$1_A$} (m-1-1);
+		\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-2) edge[bend left=45] node [below] {$g$} (m-1-1);
+\end{tikzpicture}	\qquad \, 
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+{
+	B & A \\
+};
+\path[->]
+(m-1-1) edge node [above] {$g$} (m-1-2)
+		edge [loop left] node [left] {$1_B$} (m-1-1);
+\path[-{>[scale=1.15]}, line width=0.5pt]
+(m-1-2) edge[bend left=45] node [below] {$f$} (m-1-1);
+\end{tikzpicture}	
+	\end{gathered}	
+	\]
+\end{definition}
+
+\begin{theorem}[Cayley]
+cf. pp. 11, Sec. 1.5. \textbf{Isomorphisms}, Awodey (2010) \cite{agat:Awod2010}
+
+$\forall \, $ group $G$, 
+\[
+G \cong \text{ group of permutations }
+\]
+(isomorphic $\equiv \cong$)
+
+\end{theorem} 
+
+\begin{proof}
+	Define Cayley representation $\overline{G}$ of $G$ to be following group of permutations: \\
+	underlying set of $\overline{G}$ is just $G$, \\
+	$\forall \, g\in G$, we have permutation $\overline{g}$, defined $\forall \, h \in G$, 
+	\[
+	\overline{g}(h) = g\cdot h
+	\]
+	Let $\overline{g} = \overline{h}$. \\
+	$\forall \, g' \in G$, \\
+	$\begin{aligned}
+	& \overline{g}(g') = gg' \\ 
+	& \overline{h}(g') = hg'
+	\end{aligned}$ \\
+	$g' \in G$, so $\exists \, (g')^{-1}$ s.t. $g'(g')^{-1} =e$, so $gg'(g')^{-1}= g=h$.
+	
+	\quad \\
+	Define homomorphisms $\begin{aligned} & \quad \\ 
+	& i : G \to \overline{G} \\
+	& i(g) = \overline{g}
+	\end{aligned}$, \qquad \, $\begin{aligned} & \quad \\ 
+	& j : \overline{G} \to G \\
+	& j(\overline{g}) =  g
+	\end{aligned}$
+	
+	\[
+	\begin{gathered} 
+	i(gg') = \overline{(gg')} \\
+	\begin{aligned}
+	& \overline{(gg')} = h = gg' h = g(g'h) = g(\overline{g}'(h)) = \overline{g}(\overline{g}'(h)) = i(g) = i(g') h \\ 
+	& \Longrightarrow i(gg') = i(g) \circ i(g') \\
+	& j(\overline{g}) = j(\overline{g}') h = j(\overline{g}) (g'h) = gg'h = j(\overline{gg'})h = j(\overline{g} \cdot \overline{g}') h \\
+	& j(\overline{g}) \cdot j(\overline{g}') = j(\overline{g} \cdot \overline{g}')
+	\end{aligned} \\
+	\begin{aligned}
+	& i\circ j = 1_{\overline{G}}, \, j \circ i = 1_G \text{ since } \\
+	& i \circ j (\overline{g}) = i\circ g = \overline{g} \\
+	& j\circ i (g) = j(\overline{g}) = g
+	\end{aligned}
+\end{gathered} 	
+	\]
+	$i,j$ are isomorphisms between $G,\overline{G}$, which is in category $\textbf{Groups}$ of groups and group homomorphisms. \\
+	permutations $\overline{g} \in \overline{G}$ are themselves isomorphisms in $\textbf{Sets}$. \\
+	Cayley's Thm. says that any abstract group can be represented as a "concrete" one, i.e. group of permutations of a set.
+\end{proof}
+
+Example 1.1.5 (Leinster (2014) \cite{agat:Lein2014}) isomorphisms in $\textbf{Set}$ are exactly bijections. \\
+$\Longrightarrow $ function has 2-sided inverse iff function is injective and surjective (this is not trivial)
+
+Example 1.1.7 Leinster (2014) \cite{agat:Lein2014} isomorphisms in $\textbf{Top}$ are exactly homeomorphisms. \\
+bijective map in $\textbf{Top}$ is not necessarily an isomorphism:
+\[
+\begin{aligned}
+	[0, 1) & \to \lbrace z \in \mathbb{C} | |z| = 1 \rbrace \\
+	t & \mapsto e^{2\pi i t}
+\end{aligned}
+\]
+is a continuous bijection but not a homeomorphism (cont. bijection with cont. $f^{-1}$). 
+\[
+\ln{ \left( \frac{w}{2\pi i} \right) } = f^{-1}(w)
+\]
+
+Example 1.1.8 Leinster (2014) \cite{agat:Lein2014} (Categories as mathematical structures) (b) \textbf{Discrete} categories contain no maps at all apart from identities. Just a class of objects.
+
+\exercisehead{1.1.13 pp. 16, Leinster (2014) \cite{agat:Lein2014}}
+
+Suppose for morphism $f: A \to B$, $\exists \,$ inverse $g$, s.t. $f\circ g = 1_B$, $g\circ f = 1_A$ \\
+Now $f^{-1} \circ f = 1_A$, $f\circ f^{-1} = 1_B$ \\
+\phantom{Now} $f^{-1} \circ f \circ g = f^{-1} \circ 1_B = 1_A \circ g = f^{-1} \circ 1_B \Longrightarrow g= f^{_1}$ 
+
+
+\begin{definition}[endomorphism]
+	\textbf{endomorphism} - morphism with same source and target, that is, morphism $f:A \to A$
+\end{definition}
+
+\begin{definition}[automorphism]
+\textbf{automorphism} - endomorphism which is an isomorphism
+\end{definition}
+
+\begin{definition}[parallel]
+	\textbf{parallel} - 2 morphisms $f,g$ are parallel if they have same source and same target:
+	\[
+	\begin{aligned}
+	& f:A \to B \\
+	& g:A \to B
+	\end{aligned}
+	\]
+\end{definition}
+
+\begin{definition}[monomorphism]
+	\text{monomorphism} - morphism $f: A \to B$ is a monomorphism if $\forall \, $ pair of parallel $\begin{aligned}
+	& \quad \\
+	& g_1: C \to A \\
+	& g_2:C \to A
+	\end{aligned}$, 
+	\begin{equation}
+	f\circ g_1 = f\circ g_2 \text{ implies } g_1 = g_2
+	\end{equation}
+	i.e.
+	\[
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+	{
+		C & B \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$f \circ g_1$} (m-1-2);
+	\path[-{>[scale=1.15]}, line width=0.5pt]
+	(m-1-2) edge[bend left=45] node [below] {$f\circ g_2$} (m-1-1);
+	\end{tikzpicture} \text{ implies } C \xrightarrow{ g_1 = g_2 } A	
+	\]
+\end{definition}
+
+\begin{definition}[epimorphism]
+\textbf{epimorphism} - morphism $f:A \to B$ is an epimorphism if $f^{\text{op}} : B^{\text{op}} \to A^{\text{op}}$ is a monomorphism in $\mathbf{A}^{\text{op}}$. \\
+Hence $f$ epimorphism iff $\forall \, $ parallel morphisms $\begin{aligned} & \quad \\ 
+	& g_1 : B \to C \\
+	& g_2 : B\to C\end{aligned}$, $g_1 \circ f = g_2 \circ f $ \\
+	 implies $g_1 = g_2$
+\end{definition}
+
+\begin{proposition}[monomorphism, epimorphism iff injective]
+	$f$ monomorphism iff $f \circ : \text{Hom}_{\mathbf{A}}(C,A) \to \text{Hom}_{\mathbf{A}}(C,B)$ injective \, $\forall \, C \in \text{Obj}(\mathbf{A})$, i.e.
+	\begin{equation}
+	\begin{gathered}
+\begin{gathered} 
+	\text{Hom}_{\mathbf{A}}(C, A) \xrightarrow{f \circ } \text{Hom}_{\mathbf{A}}(C,B) \\
+ g_1 , g_2 \xmapsto{f \circ} f\circ g_1 , f\circ g_2
+\end{gathered}, \\ \text{ then } \\
+f \circ \text{ is injective if } \\
+	f \circ g_1 = f \circ g_2 \Longrightarrow g_1 = g_2
+\end{gathered} 
+	\end{equation}
+$f$ epimorphism iff map $\circ f : \text{Hom}_{\mathbf{A}}(B,C) \to \text{Hom}_{\mathbf{A}}(A,C)$ injective $\forall \, C \in \text{Obj}(\mathbf{A})$
+\begin{equation}
+\begin{gathered}
+\begin{gathered} 
+\text{Hom}_{\mathbf{A}}(B, C) \xrightarrow{\circ f} \text{Hom}_{\mathbf{A}}(A,C) \\
+g_1 , g_2  \xmapsto{ \circ f} g_1\circ f , g_2 \circ f
+\end{gathered}, \\ \text{ then } \\
+\circ f \text{ is injective if } \\ 
+g_1 \circ f = g_2 \circ f \Longrightarrow g_1 = g_2
+\end{gathered}
+\end{equation}
+\end{proposition}
+
+\begin{definition}[inverses]
+	$\forall \, $ 2 morphisms, $f:X\to Y$, $g: Y \to X$ s.t. $f\circ g= 1_Y$,\\
+	$f$ is called left inverse of $g$, $g$ is called right inverse of $f$.
+	
+	We also say, $g$ is a section of $f$, or $f$ is a cosection of $g$. \\
+	$f$ is an epimorphism, $g$ is a monomorphism.
+\end{definition}
+
+\subsection{More definitions with categories}
+
+\begin{definition}[subcategory]
+category $\mathbf{A}'$, $\mathbf{A}' \subset \mathbf{A}$, if $\text{Obj}(\mathbf{A}') \subset \text{Obj}(\mathbf{A})$, $\text{Hom}_{\mathbf{A}'}(A,B) \subset \text{Hom}_{\mathbf{A}}(A,B)$, $\forall \, A, B \in \mathbf{A}'$.
+
+Composition in $\mathbf{A}'$ is induced by composition in $\mathbf{A}$.\\
+identity morphisms in $\mathbf{A}'$ are identity morphisms in $\mathbf{A}$
+\end{definition}
+
+\begin{definition}[full subcategory]
+	subcategory $\mathbf{A}'$ of $\mathbf{A}$ is full if $\text{Hom}_{\mathbf{A}'}(A,B) = \text{Hom}_{\mathbf{A}}(A,B)$, $\forall \, A, B \in \mathbf{A}'$	
+\end{definition}
+
+\begin{definition}[saturated subcategory]
+full subcategory $\mathbf{A}'$ of $\mathbf{A}$ saturated if $A \in \mathbf{A}$ belongs to $\mathbf{A}'$ whenever $A$ is isomorphic to object of $\mathbf{A}'$	
+\end{definition}
+
+\begin{definition}[discrete category]
+	\textbf{discrete} - discrete category if all morphisms are identity morphisms.
+\end{definition}
+
+\begin{definition}[nonempty category]
+	\textbf{nonempty} - nonempty category if $\text{Obj}(\mathbf{A})$ is nonempty
+\end{definition}
+
+\begin{definition}[groupoid]
+\textbf{groupoid} - category $\mathbf{A}$ is a \textbf{groupoid} if all morphisms are isomorphisms.
+\end{definition}
+
+\begin{definition}[finite category]
+	finite - finite category if set of all morphisms in $\mathbf{A}$ (hence, in particular, set of objects) is a finite set
+\end{definition}
+
+\begin{definition}[connected]
+	connected category $\mathbf{A}$ if it's nonempty, and $\forall \, A,B \in \text{Obj}\mathbf{A}$, $\exists \, $ finite sequence of objects $(A_0 \dots A_n)$, $A_0 = A$, $A_n = B$, s.t. at least 1 of the sets $\text{Hom}_{\mathbf{A}}(A_j, A_{j+1})$ or $\text{Hom}_{\mathbf{A}}(A_{j+1}, A_j)$ is nonempty $\forall \, j \in \mathbb{N}$, with $0\leq j \leq n-1$
+\end{definition}
+
+\begin{definition}[monoid $M$]
+	\textbf{monoid} $M$ (set endowed with internal product with associative and unital law) is nothing but a category with only 1 object (to $M$, associate category $\mathbf{M}$, with single object $A$, and morphisms $\text{Hom}_{\mathbf{M}}(A,A) = M$)
+\end{definition}
+
+cf. Def. 1.2.5 of Kashiwara and Schapira (2006) \cite{agat:KaSch2006}.
+
+\begin{definition}[Morphisms as a category]
+	Let category $\mathcal{C} \equiv \mathbf{A}$.
+	
+	$\text{Mor}(\mathbf{A})$ is a category.
+	
+	$\text{Obj}(\text{Mor}(\mathbf{A})) = \text{Mor}\mathbf{A}$ (objects of category $\text{Mor}(\mathbf{A})$ are morphisms in $\mathbf{A}$).
+	
+	Let $\begin{aligned} & \quad \\ 
+	& f:X \to Y \\
+	& g: X' \to Y'\end{aligned}$, $f,g \in \text{Mor}(\mathbf{A})$ (i.e. $\begin{aligned} & \quad \\ 
+	& f \in \text{Hom}(X,Y) \\ 
+	&g \in \text{Hom}(X', Y') \end{aligned}$, for $X, Y, X', Y' \in \text{Obj}(\mathbf{A})$)
+	
+	Then
+	\[
+	\text{Hom}_{\text{Mor}(\mathbf{A})}(f,g) = \lbrace u :X \to X', v: Y \to Y'; g \circ u = v \circ f \rbrace
+	\]
+	Composition and identity in $\text{Mor}(\mathbf{A})$ are the obvious ones.
+	
+	So 
+	\[
+	\begin{gathered} 
+	\text{Obj}(\text{Mor}(\mathbf{A})) = \text{Mor}(\mathbf{A}) \\
+	\text{Mor}(\text{Mor}(\mathbf{A})) = \bigcup_{f,g \in \text{Mor}(\mathbf{A})} \text{Hom}(f,g) = \bigcup_{f,g \in \text{Mor}(\mathbf{A}) } \lbrace u : X\to X', v: Y \to Y' ; g \circ u = v \circ f \rbrace 
+	\end{gathered} 
+	\]
+\[
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	X & Y \\
+	X' & Y' \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+edge node [auto] {$u$} (m-2-1)
+(m-1-2) edge node [auto] {$v$} (m-2-2)
+(m-2-1) edge node [auto] {$g$} (m-2-2);
+\end{tikzpicture}
+\]
+\end{definition}
+
+cf. Def. 1.2.6 of Kashiwara and Schapira (2006) \cite{agat:KaSch2006}.
+
+\begin{definition}
+	\begin{enumerate}
+		\item object $P \in \mathcal{C} \equiv \mathbf{A}$ is called \emph{initial} if $\forall \, X \in \mathbf{A}$, ($\equiv \forall \, x \in \text{Obj}(\mathbf{A})$), $\text{Hom}_{\mathbf{A}}(P, X) \simeq \lbrace \text{pt} \rbrace$. \\
+		(Denote by $\emptyset_{\mathbf{A}}$ an \emph{initial object} in $\mathbf{A}$). \\
+		(Note that if $P_1$ and $P_2$ are initial, then $\exists \, !$ isomorphism $P_1 \simeq P_2$)
+		\item $P$ is terminal in $\mathbf{A}$ if $P$ is initial in $\mathbf{A}^{\text{op}}$, i.e. 
+		
+		$\forall \, X \in \mathbf{A}$, $\text{Hom}_{\mathbf{A}}(X, P) \simeq \lbrace \text{pt} \rbrace$. 
+		
+		Denote $\text{pt}_{\mathbf{A}}$ a terminal object in $\mathbf{A}$. 
+		\item $P$ is zero ($0$) object if it's both initial and terminal. 
+		
+		Such a $P$ is denoted by $0$.
+		
+		If $\mathbf{A}$ has a zero object, $\forall \, $ object $X, Y \in \mathbf{A} \equiv \text{Obj}\mathbf{A}$, the morphism obtained as composition $X\to 0 \to Y$ is still denoted by $0: X\to Y$.
+		
+		(Note that composition of $0:X \to Y$, and any morphism $f:Y \to Z$ is $0:X \to Z$)
+	\end{enumerate}
+\end{definition}
+
+cf. Example 1.2.7 of Kashiwara and Schapira (2006) \cite{agat:KaSch2006}. 
+Example 
+\begin{enumerate}
+	\item[(i)] In category $\mathbf{Set}$, $\emptyset$ initial, $\lbrace \text{pt} \rbrace$ terminal. 
+	\item[(ii)] Zero module $0$ is zero object in $\text{Mod}(R)$.
+\end{enumerate}
+
+Notation 1.2.8 of Kashiwara and Schapira (2006) \cite{agat:KaSch2006}:
+\begin{enumerate}
+	\item $\mathbf{Pt} \equiv $ category with a single object and a single morphism (the identity of this object)
+	\item $\emptyset \equiv $ empty category with no objects (hence, no morphisms)
+	\item $\bullet \to \bullet \equiv$ category which consists of 2 objects, say $a,b$, and 1 morphism, $a\to b$, other than $\text{id}_a, \text{id}_b \equiv 1_a, 1_b$. Denote this category by $\mathbf{Arr}$.  
+\end{enumerate}
+
+cf. Example 1.2.9 of Kashiwara and Schapira (2006) \cite{agat:KaSch2006}. 
+
+Let $R$ be a ring. Let $N\in \text{Mod}(R^{\text{op}})$, $M\in \text{Mod}(R)$.
+
+Category $\mathbf{C}$: 
+
+$\text{Obj}\mathbf{C} \ni (f, L)$, where $L\in \text{Mod}(\mathbb{Z})$, $f$ bilinear map $f: N \times M \to L$ (i.e. it's $\mathbb{Z}$-bilinear and satisfies
+\[
+f(na, m) = f(n,am), \quad \, \forall \, a \in R
+\])
+
+Morphism from $f:N \times M \to L$ to $g: N\times M$ is a linear map $h:L\to K$ s.t. $h\circ f =g$. 
+
+Since any bilinear map $f: N\times M \to L$ (i.e. any object of $\mathbf{C}$) factorizes uniquely through
+\[
+u  : N\times M \to N \otimes_R M
+\]
+object $(u, N \otimes_R M)$ is initial in $\mathbf{C}$
+
+\section{Functors}
+
+cf. Def. 1.2.10 of Kashiwara and Schapira (2006) \cite{agat:KaSch2006}, with terminology from pp. 13, Sec. 3. "Functors" from Mac Lane (1978) \cite{agat:MacL1978}
+
+\begin{definition}[(covariant) Functor]\label{agat:Def:Functor}
+\begin{enumerate}
+	\item (covariant functor) Let categories $\mathbf{C}$, $\mathbf{D}$. \\
+(covariant) \textbf{functor} $F: \mathbf{C} \to \mathbf{D}$ consists of (Mac Lane (1978) \cite{agat:MacL1978} says 2 suitably related functions)
+\begin{itemize}
+	\item map $F: \text{Obj}(\mathbf{C}) \to \text{Obj}(\mathbf{D})$ (i.e. $\forall \, C \in \text{Obj}(\mathbf{C})$, $F(C) \in \text{Obj}(\mathbf{D})$), \\
+	(Mac Lane (1978) \cite{agat:MacL1978} calls this the \emph{object function} $T$ or $F$ in our notation; we'll call it the \emph{object map}) and 
+	\item maps $F: \text{Hom}_{\mathbf{C}}(X,Y) \to \text{Hom}_{\mathbf{D}}(F(X), F(Y))$, so that 
+		\[	
+			F(f) : F(X) \to F(Y) \text{ or } F(f)(F(X)) = F(f(X)) 
+		\] \, $\forall \, X,Y \in \text{Obj}(\mathbf{C})$ s.t.
+	\begin{equation}
+	\begin{gathered}
+	F(1_X) = 1_{F(X)} \qquad \, \forall \, X \in \mathbf{C} \\
+	F(g\circ f) = F(g) \circ F(f) \qquad \, \forall \, \begin{aligned} & \quad \\ 
+	& f: X \to Y \\
+	& g: Y \to Z \end{aligned}, \qquad \, X,Y,Z \in \text{Obj}(\mathbf{C})
+	\end{gathered}
+	\end{equation}
+	Mac Lane (1978) \cite{agat:MacL1978} calls this the \emph{arrow function} (also written as $T$ for Mac Lane's notation; $F$ for our notation); we'll call $F$ to be the \emph{morphism map}. 
+\end{itemize}
+\item (composition law for functors) \\
+For categories $\mathbf{A} , \mathbf{B}, \mathbf{C}$, functors $F: \mathbf{A} \to \mathbf{B}$, $G: \mathbf{B} \to \mathbf{C}$, \\
+Composition $G\circ F : \mathbf{A} \to \mathbf{C}$, is a functor defined by 
+\begin{equation}
+\begin{aligned}
+& (G\circ F)(X) = G(F(X)) \qquad \, \forall \, X \in \text{Obj}\mathbf{A}, \text{ and } \\
+& (G\circ F)(f) = G(F(f)), \qquad \, \forall \, \text{ morphism } f \in \text{Mor}(\mathbf{C})
+\end{aligned}
+\end{equation}
+\end{enumerate}
+\end{definition}
+Diagrammatically,
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.8em, column sep=1.8em, minimum width=1.2em]
+{
+	X & Y \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2);
+\end{tikzpicture} \quad \xrightarrow{F} \quad
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.8em, column sep=1.8em, minimum width=1.2em]
+{
+	F(X) & F(Y) \\
+};
+\path[->]
+(m-1-1) edge node [above] {$F(f)$} (m-1-2);
+\end{tikzpicture} \\
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.8em, column sep=1.8em, minimum width=1.2em]
+{
+	X & Y & Z \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+edge[bend right=45] node [below] {$g\circ f$} (m-1-3)
+(m-1-2) edge node [above] {$g$} (m-1-3)
+;
+\end{tikzpicture} 
+\quad \xrightarrow{F} \quad \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=1.8em, column sep=1.8em, minimum width=1.2em]
+{
+	F(X) & F(Y) & F(Z) \\
+};
+\path[->]
+(m-1-1) edge node [above] {$F(f)$} (m-1-2)
+edge[bend right=45] node [below] {$F(g\circ f)$} (m-1-3)
+(m-1-2) edge node [above] {$F(g)$} (m-1-3)
+;
+\end{tikzpicture} 
+\end{gathered}
+\]
+i.e.
+\[
+\begin{gathered} 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	X & Y \\
+	F(X) & F(Y) \\
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+edge node [auto]  {$F$} (m-2-1)
+(m-1-2) edge node [auto]  {$F$} (m-2-2)
+(m-2-1) edge node [above] {$F(f)$} (m-2-2)        
+;
+\end{tikzpicture} \text{ and } 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	X & Y & Z \\
+	F(X) & F(Y) & F(Z) \\ 
+};
+\path[->]
+(m-1-1) edge node [above] {$f$} (m-1-2)
+edge[bend left=45] node [above] {$g\circ f$} (m-1-3)
+edge node [auto] {$F$} (m-2-1)
+(m-1-2) edge node [above] {$g$} (m-1-3)
+edge node [auto] {$F$} (m-2-2)
+(m-1-3) edge node [auto] {$F$} (m-2-3)
+(m-2-1) edge node [above] {$F(f)$} (m-2-2)
+edge[bend right=45] node [below] {$F(g\circ f) = F(g) \circ F(f)$} (m-2-3)
+(m-2-2) edge node [above] {$F(g)$} (m-2-3)  
+;
+\end{tikzpicture} 
+\end{gathered}
+\]
+
+\subsection{Examples of Functors}
+
+cf. pp. 13, 3. Functors, Maclane (1978) \cite{agat:MacL1978}
+
+\emph{Power Set Functor}. 
+\[
+\begin{gathered}
+	\begin{aligned}
+		& P : \textbf{Set} \to \textbf{Set} \\
+		& P:\text{Obj}\textbf{Set} \to \text{Obj}(\textbf{Set}) \\
+		& P: X \in \text{Obj}\textbf{Set} \mapsto 2^X \in \text{Obj}\textbf{Set}, \text{ i.e. } \\
+		& P:X \mapsto 2^X = \lbrace S | S \subseteq X \rbrace 
+	\end{aligned} \\
+P : \text{Hom}_{\textbf{Set}}(X,Y) \to \text{Hom}_{\textbf{Set}}(P(X), P(Y)) \\
+\begin{aligned} 
+& P(f): P(X) \to P(Y) \text{ or } P(f)(P(X)) = P(f(X)) \\
+& P(f): S \in 2^X \mapsto f(S) \in 2^Y \text{ or } f(S) \subseteq Y 
+\end{aligned} 
+\end{gathered}
+\]
+\[
+\begin{gathered}
+P(1_X) = 1_{PX} \text{ and } P(g\circ f) = P(g) P(f), \text{ so $P$ defines a functor }
+\end{gathered}
+\]
+
+Algebraic topology; singular homology in a given dim. $n$ ($n \in \mathbb{N}$) Maclane (1978) \cite{agat:MacL1978}
+
+$\forall \, $ topological space $X$, assign $X \mapsto $ abelian group $H_n(X) \equiv n$th homology group of $X$, also \\
+$\forall \, $ cont. $f:X \to Y$ of spaces corresponding group homomorphism. 
+\[
+\begin{gathered}
+H_n(f) : H_n(X) \to H_n(Y) \\
+\begin{aligned}
+& H_n: \text{Obj}(\mathbf{Top}) \to \text{Obj}(\textbf{Ab}) \\
+& H_n: X \mapsto H_n(X) 
+\end{aligned} \\
+H_n(f)(H_n(X)) = H_n(f(X))
+\end{gathered}
+\]
+$\Longrightarrow H_n: \textbf{Top} \to \textbf{Ab}$.
+
+e.g. if $X=Y = S^1$, $H_1(S^1) = \mathbb{Z}$
+
+So group homomorphism $H_1(f): \mathbb{Z} \to \mathbb{Z}$ determined by integer $d\in \mathbb{Z}$ (image of 1) \\
+$d$ is usual "degree" of cont. map $f:S^1 \to S^1$. 
+
+In this case, and in general, homotopic maps $f,g : X \to Y$ \\
+Then $\exists \,$ homotopy $H:X \times [0,1] \to Y$ s.t. $H(x,0) = f(x)$; $H(x,1) = g(x) \, \forall \, x \in X$
+
+
+
+
+Example 1.2.3 (forgetful functors) Leinster (2014) \cite{agat:Lein2014}, pp. 18
+
+\begin{enumerate}
+	\item[(a)] $U : \textbf{Grp} \to \textbf{Set}$ \\
+	if group $G$ then $U(G)$ is underlying set of $G$. \\
+	If group homomorphism $f:G \to H$, \\
+	$U(f)$ is function $f$ itself. \\
+	So $U$ forgets group structure of groups and forgets group homomorphisms are homomorphisms.
+	\item[(c)] $\textbf{Ab} \equiv $ category of abelian groups \\
+	$\textbf{Ring} \to \textbf{Ab}$ forgets multiplicative structure. \\
+	$U:\textbf{Ring} \to \textbf{Mon}$ forgets additive structure; $\textbf{Mon} \equiv $ category of monoids
+\end{enumerate}
+
+
+
+
+\begin{itemize}
+	\item (monoid) homomorphism $h: M \to N$, $\forall \, $ monoid $M, N$ s.t. $\forall \, m,n \in M$, \\
+	$h(m\cdot n) \equiv h(m\cdot_M n) = h(m) \cdot h(n) \equiv h(m) \cdot_N h(n)$ and \\
+	$h(e_M) = e_N$. \\
+	
+	$h:m \mapsto h(m)$ so $h: \text{Obj}\mathbf{C}(M) \to \text{Obj}\mathbf{C}(N)$. \\
+	Let $m\cdot n \equiv f_m(n)$, $f_m \in \text{Hom}\mathbf{C}(M)$
+	\[
+	\begin{aligned}
+		& h(m) \cdot h(n) \equiv f_{h(m)}(h(n)), \, f_{h(m)} \in \text{Hom}\mathbf{C}(N) \\
+ 		& h(f_m) = h(m) \\
+		& h(f_m)(h(n)) = h(m)\cdot h(n) = h(m\cdot n) = h(f_m\cdot n)
+	\end{aligned}
+	\]
+	Compare the last statement with $F(f)(F(X)) = F(f(X))$.
+	\item poset $P, Q$ (set $P$, equipped with $\leq$), poset as category $\mathbf{P}, \mathbf{Q}$, $\text{Obj}\mathbf{P} = P$, $\text{Obj}\mathbf{Q} = Q$ \\
+	$\text{Hom}\mathbf{P} \ni m$ s.t. $m:x \mapsto y$ iff $x\leq y$. \\
+	
+	Let functor $F: \mathbf{P} \to \mathbf{Q}$ s.t. 
+	\[
+	\begin{aligned} 
+		& F: \text{Obj}\mathbf{P} \to \text{Obj}\mathbf{Q} \\  
+		&	F: x \mapsto F(x)
+	\end{aligned} 
+	\]
+	\[
+	\begin{aligned}
+		& F: \text{Hom}\mathbf{P} \to \text{Hom}\mathbf{Q} \\ 
+		& F: m \mapsto F(m)
+	\end{aligned}
+	\]
+	s.t. for $m(x) =y$ and $x\leq y$, \\
+	$F(m): F(x) \mapsto F(y)$ and $F(x) \leq F(y)$ (so that $F(m)$ is also monotone), i.e.
+	\[
+	F(m)(F(X)) = F(m(X)) = F(y)
+	\]
+\end{itemize}
+
+Kleene closure itself is a functor from $\mathbf{Set}$ to $\textbf{Set}$, from $A$ to $A^*$, from $f$ to $f^*$. \\
+It's the composition of $U\circ F$ of underlying functor $U:\textbf{Mon} \to \textbf{Set}$ and free functor $F:\textbf{Set} \to \textbf{Mon}$. 
+
+\begin{itemize}
+	\item \emph{arrow category} $\mathbf{C}^{\rightarrow}$ of category $\mathbf{C}$:
+\[
+\text{Obj}\mathbf{C}^{\rightarrow} = \text{Mor}\mathbf{C}
+\]
+
+Given $f:A \to B$, $f':A' \to B'$, morphism (arrow) $g: f \mapsto f'$ is a "commutative square", i.e. $g: \text{Hom}_{\mathbf{C}}(A\to B) \to \text{Hom}_{\mathbf{C}}(A' \to B')$
+
+\[
+\begin{gathered} 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	A & A' \\
+	B & B' \\
+};
+\path[->]
+(m-1-1) edge node [above] {$g_1$} (m-1-2)
+edge node [auto]  {$f$} (m-2-1)
+(m-1-2) edge node [auto]  {$f'$} (m-2-2)
+(m-2-1) edge node [above] {$g_2$} (m-2-2)        
+;
+\end{tikzpicture} 
+\end{gathered}
+\]
+where $g_1, g_2 \in \text{Mor}\mathbf{C}$, \\
+i.e. such a morphism (arrow) is a pair of morphisms (arrows) $g=(g_1,g_2)$ in $\mathbf{C}$ s.t.
+\[
+g_2 \circ f = f'\circ g
+\]
+
+identity morphism (arrow) $1_f$ on object $f:A\to B$ is pair $(1_A, 1_B)$.
+
+Composition of arrows is done componentwise:
+\[
+(h_1,h_2) \circ (g_1, g_2) = (h_1 \circ g_1, h_2\circ g_2)
+\]
+
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	A & A' & A'' \\
+	B & B' & B'' \\ 
+};
+\path[->]
+(m-1-1) edge node [above] {$g_1$} (m-1-2)
+edge[bend left=45] node [above] {$h_1\circ g_1$} (m-1-3)
+edge node [auto] {$f$} (m-2-1)
+(m-1-2) edge node [above] {$h_1$} (m-1-3)
+edge node [auto] {$f'$} (m-2-2)
+(m-1-3) edge node [auto] {$f''$} (m-2-3)
+(m-2-1) edge node [above] {$g_2$} (m-2-2)
+edge[bend right=45] node [below] {$h_2\circ g_2$} (m-2-3)
+(m-2-2) edge node [above] {$h_2$} (m-2-3)  
+;
+\end{tikzpicture} 
+\]
+
+Observe that there are 2 functors:
+
+\[
+\begin{gathered} 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\mathbf{C} & \mathbf{C}^{\rightarrow} & \mathbf{C} \\
+};
+\path[->]
+(m-1-2) edge node [above] {$\textbf{dom}$} (m-1-1)
+edge node [auto]  {$\textbf{cod}$} (m-1-3)
+;
+\end{tikzpicture} 
+\end{gathered}
+\]
+
+\item \emph{algebra} cf. pp. 14, Sec. 3, "Functors" of Mac Lane (1978) \cite{agat:MacL1978}.
+
+$\forall \, $ commutative ring $K$, set of all non-singular $n\times n$ matrices with entries in $K = $ general linear group $GL_n(K)$. \\
+$\forall \, $ homomorphism $f: K \to K'$ of rings produces \\
+homomorphism $GL_n f : GL_n(K) \to GL_n(K)$ of groups.  \\
+
+$\forall \, n \in \mathbb{N}$ (natural numbers), defined functor $GL_n: \textbf{CRng} \to \textbf{Grp} \equiv GL_n \textbf{CommRing} \to \textbf{Grp}$.  \\
+
+
+$\forall \, $ group $G$, set of all products of commutators $xyx^{-1} y^{-1}$ ($x,y \in G$) is a normal subgroup $[G, G]$ of $G$ called commutator subgroup. \\
+
+Since $\forall \, $ homomorphism $G \to H$ of groups carries commutators to commutators.  \\
+$G \mapsto [G, G]$ defines evident functor $\textbf{Grp} \to \textbf{Grp}$, \\
+while $G \mapsto G/[G, G]$ define functor $\textbf{Grp} \to \textbf{Ab}$, factor-commutator functor. \\
+TODO - understand the previous commutators.
+
+\end{itemize} 
+
+\subsubsection{Endofunctor}
+
+\begin{definition}[Endofunctor]\label{agat:Def:Endofunctor}
+Consider \textbf{endofunctor} $T : \mathbf{C} \to \mathbf{C}$. This implies that, for the \\
+
+object map $\begin{aligned} & \quad \\ 
+	& T : \text{Obj}{\mathbf{C}} \to \text{Obj}{\mathbf{C}} \\ 
+	& T : X \to Y \end{aligned}$, \\
+	
+	object map $T$ acts like a morphism, in $\text{Mor}\mathbf{C}$ (!!!). In this case $T$ acts like $T\in \text{Hom}_{\mathbf{C}}(X, Y)$.  \\
+	
+	morphism map $T: \text{Hom}_{\mathbf{C}}(X, Y) \to \text{Hom}_{\mathbf{C}}(F(X), F(Y))$ s.t. 
+	\begin{equation}
+	\begin{gathered} 
+		T(f) \equiv Tf:T(X) \to T(Y) \text{ so that } Tf \in \text{Hom}_{\mathbf{C}}(T(X), T(Y))  \\
+		T(1_X) = 1_{T(X)} \in \text{Hom}_{\mathbf{C}}(T(X), T(Y)) (\text{implied from Kashiwara and Schapira (2006) \cite{agat:KaSch2006} in that} \, 1_X \in \text{Hom}(X,X)) \\
+		T(g\circ f) = T(g) \circ T(f), \, \forall \, f:X \to Y, \, g:Y \to Z, \, X,Y,Z\in \text{Obj}{\mathbf{C}}
+	\end{gathered} 
+	\end{equation} 
+	So $T(f) \equiv Tf$ is indeed a morphism map.
+
+\end{definition}
+
+\subsubsection{Hom functors}
+
+Let $\mathbf{C}$ locally-small category (i.e. category s.t. hom-classes are actually sets and not proper classes).
+
+$\forall \, A, B \in \text{Obj}\mathbf{C}$, 
+
+\begin{definition}[covariant Hom functor]
+	\textbf{covariant Hom functor} $\text{Hom}(A, -): \mathbf{C} \to \mathbf{Set}$
+	\begin{equation}
+	\begin{aligned}
+	& \text{Hom}(A, - ) : \text{Obj}\mathbf{C} \to  2^{\text{Mor}(\mathbf{C})} \\ 
+	& \text{Hom}(A, - ) : X \mapsto \text{Hom}(A,X) \\ 
+	& \text{Hom}(A, - ) : \text{Mor}\mathbf{C} \to (\text{Mor}(\mathbf{C}) \to \text{Mor}(\mathbf{C})) \\
+	& \text{Hom}(A, - ) : \text{Hom}(X,Y) \to (\text{Hom}(A,X) \to \text{Hom}(A,Y)) \\
+	& \text{Hom}(A, - ) : f \mapsto \text{Hom}(A,f) \text{ where } \\
+	& \begin{aligned} \text{Hom}(A,f) : & \text{Hom}(A,X) \to \text{Hom}(A,Y) \\ 
+	& g\mapsto f\circ g \quad \, \forall \, g \in \text{Hom}(A,X) 
+	\end{aligned} 
+	\end{aligned}
+	\end{equation}
+\end{definition}
+
+\begin{claim}
+$\text{Hom}(A, -)$ is a functor.
+\end{claim}
+
+\begin{proof}
+	\begin{itemize}
+		\item \emph{identity}: $\text{Hom}(A,-) : 1_X \mapsto \text{Hom}(A, 1_X) \text{ where }$ 
+		\[
+		\begin{aligned}
+			\text{Hom}(A, 1_X) : & \text{Hom}(A,X) \to \text{Hom}(A,X) \\ 
+			& g\mapsto 1_X \cdot g = g , \quad \, \forall \, g\in \text{Hom}(A,X)
+		\end{aligned}
+		\]
+		Hence
+		\[
+		\text{Hom}(A, -)(1_X) = 1_{\text{Hom}(A,X)} \in (\text{Hom}(A,X) \to \text{Hom}(A,X))
+		\]
+		\item \text{composition}: Let 
+		\[
+		\begin{aligned}
+		& f \in \text{Hom}(X,Y) \\ 
+		& g \in \text{Hom}(Y,Z) \\ 
+		& k \in \text{Hom}(A,X) 
+		\end{aligned}
+		\]
+		\[
+		\text{Hom}(A, g) \circ \text{Hom}(A,f)(k) = \text{Hom}(A,g)(f\circ k) = g\circ f \circ k = (g\circ f)(k) = \text{Hom}(A, g\circ f)(k)
+		\]
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[contravariant Hom functor]
+	\textbf{contravariant Hom functor} $\text{Hom}(-, B): \mathbf{C} \to \mathbf{Set}$
+	\begin{equation}
+	\begin{aligned}
+	& \text{Hom}(-, B ) : \text{Obj}\mathbf{C} \to  2^{\text{Mor}(\mathbf{C})} \\ 
+	& \text{Hom}(-, B ) : X \mapsto \text{Hom}(X,A) \\ 
+	& \text{Hom}(-, B ) : \text{Mor}\mathbf{C} \to (\text{Mor}(\mathbf{C}) \to \text{Mor}(\mathbf{C})) \\
+	& \text{Hom}(-, B ) : \text{Hom}(X,Y) \to (\text{Hom}(Y,B) \to \text{Hom}(X,B)) \\
+	& \text{Hom}(-, B ) : h \mapsto \text{Hom}(h,B) \text{ where } \\
+	& \begin{aligned} \text{Hom}(h,B) : & \text{Hom}(Y,B) \to \text{Hom}(X,B) \\ 
+	& g\mapsto g\circ h \quad \, \forall \, g \in \text{Hom}(Y,B) 
+	\end{aligned} 
+	\end{aligned}
+	\end{equation}
+\end{definition}
+
+$\text{Hom}(A,-)$, $\text{Hom}(-,B)$ are related in a natural manner: for
+\[
+\begin{gathered}
+\begin{aligned}
+& f : B\to B', \, f\in \text{Hom}(B,B') \\ 
+& g:A \to A', \, g\in \text{Hom}(A,A')
+\end{aligned} \\
+\begin{aligned}
+& \text{Hom}(A,f) : \text{Hom}(A, B) \to \text{Hom}(A,B') \\ 
+& \text{Hom}(g, B) : \text{Hom}(A,B) \to \text{Hom}(A', B)
+\end{aligned}
+\end{gathered}
+\]
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=4.8em, column sep=4.8em, minimum width=4.2em]
+{
+	\text{Hom}(A,B) & \text{Hom}(A',B) \\
+	\text{Hom}(A,B') & \text{Hom}(A',B') \\
+};
+\path[->]
+(m-1-1) edge node [above] {$\text{Hom}(g,B)$} (m-1-2)
+ edge node [left] {$\text{Hom}(A,f)$} (m-2-1)
+(m-1-2) edge node [right] {$\text{Hom}(A',f)$} (m-2-2)
+(m-2-1) edge node [above] {$\text{Hom}(g,B')$} (m-2-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+
+\begin{definition}[2-variable Hom functor]
+	2-variable Hom functor $\text{Hom}(-,-)$ is a bifunctor.
+	\[
+	\text{Hom}(-,-) : \mathbf{C}^{\text{op}} \times \mathbf{C} \to \textbf{Set} 
+	\]
+	
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=4.8em, column sep=4.8em, minimum width=4.2em]
+{
+	& D \\
+	C & B \\
+	A &  \\
+};
+\path[->]
+(m-2-1) edge node [left] {$f\circ g \circ h$} (m-1-2)
+edge node [above] {$ g \circ h$} (m-2-2)
+edge node [left] {$  h$} (m-3-1)
+(m-2-2) edge node [right] {$f$} (m-1-2)
+(m-3-1) edge node [right] {$g$} (m-2-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+
+$\text{Hom}(-,-)$ is a functor such that:
+\[
+\begin{gathered}
+\begin{aligned} 
+& \text{Hom}(h, f)(g) = f\circ g \circ h \\
+& \text{Hom}(h, f) : \text{Hom}(A, B) \to \text{Hom}(C, D) 
+\end{aligned} \\
+\begin{aligned}
+& h : C \to A, \, h \in \text{Hom}(C,A) \\ 
+& f: B\dot D, \, f \in \text{Hom}(B,D)
+\end{aligned} \\
+(h,f) \in \text{Hom}(C,A) \times \text{Hom}(B,D) \mapsto \text{Hom}(h,f) \in (\text{Hom}(A,B) \to \text{Hom}(C,D)) \\
+\text{Hom}(-,-) : \text{Hom}(C,A) \times \text{Hom}(B,D) \to (\text{Hom}(A,B) \to \text{Hom}(C,D) )
+\end{gathered}
+\]
+and 
+\[
+\begin{aligned}
+& \text{Hom}(-,-) : \text{Obj}\mathbf{C}^{\text{op}} \times \mathbf{C} \\ 
+& \text{Hom}(-,-) : (C,D) \mapsto \text{Hom}(C,D)
+\end{aligned}
+\]
+\end{definition}
+
+
+\section{Construction of Categories}
+
+\subsection{Slice category}
+
+cf. Construction 4 of Awodey (2010) \cite{agat:Awod2010}, pp. 15.
+
+\textbf{Slice category} $\mathbf{C}/C$, of category $\mathbf{C}$ over object $C \in \text{Obj}\mathbf{C}$, \\
+$\text{Obj}\mathbf{C}/C \ni f \in \text{Mor}\mathbf{C}$ s.t. $\text{cod}(f) = C$ \\
+$\text{Mor}\mathbf{C}/C \ni g$ from $f:X \to C$ to $f':X' \to C$ is a morphism (arrow) \, $g: X\to X'$ in $\mathbf{C}$ s.t. $f'\circ g = f$
+
+\begin{equation}
+\begin{gathered}
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	X & & X' \\
+	& C &  \\
+};
+\path[->]
+(m-1-1) edge node [above] {$g$} (m-1-3)
+(m-1-1) edge node [below] {$f$} (m-2-2)
+(m-1-3) edge node [below] {$f'$} (m-2-2);
+\end{tikzpicture} \qquad \, 
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	X  \\
+	C  \\
+};
+\path[->]
+(m-1-1) edge node [left] {$f$} (m-2-2)
+edge [loop right] node [right] {$1_{\mathbf{C}/C}$} (m-1-1);
+\end{tikzpicture} \qquad \, 
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	X & X' & X'' \\
+	& C &  \\
+};
+\path[->]
+(m-1-1) edge node [above] {$g$} (m-1-2)
+	edge node [left] {$f$} (m-2-1)
+(m-1-2) edge node [above] {$h$} (m-1-3)
+edge node [left] {$f'$} (m-2-2)
+(m-1-3) edge node [right] {$f''$} (m-2-2);
+\end{tikzpicture}
+\end{gathered}
+\end{equation}
+
+If $\mathbf{C} = \mathbf{P}$ poset category, $p\in \mathbf{P}$ (i.e. $p \in \text{Obj}(\mathbf{P})$), then
+\[
+\mathbf{P} / p \simeq \downarrow (p)
+\]
+Slice category $\mathbf{P} / p$ is just the "principal ideal" $\downarrow(p)$ of elements $q\in \mathbf{P}$ with $q \leq p$.
+
+\subsubsection{$S$-indexed set $X$ and indexed functions as morphisms of slice category $\mathbf{Set}/S$}
+
+\begin{definition}[typed set]
+	$S$-indexed set is set $X$ together with function $\tau : X \to S$. \\
+	
+	If $x\in X$, $\tau(x) = s$, then $x$ is of \textbf{type} $s$, so $X$ is a \textbf{typed set}. \\
+	
+	$\lbrace \tau^{-1}(s) | s \in S \rbrace$, $\tau^{-1}(s) \subset X \equiv $ family of sets indexed by $S$. \\
+	
+\end{definition} 
+cf. 2.6.11 of Barr and Wells (2012) \cite{agat:BaWe2012}
+
+\begin{definition}
+	set $X$ typed by $S \to $ set $X'$ typed by $S$ that preserves typing (element of type $s\mapsto $ element of type $s$), is exactly an arrow (morphism) of slice category $\mathbf{Set}/S$, called \textbf{indexed function} or \textbf{typed function}.
+\end{definition}
+
+cf. 2.6.13 Indexed functions of Barr and Wells (2012) \cite{agat:BaWe2012}
+
+\subsubsection{Underlying functor of the slice $F$}
+
+Let $f: A\to C$, $f\in \text{Hom}(A,C) \subset \text{Mor}\mathbf{C}$ and $f\in \text{Obj}\mathbf{C}/C$.  \\
+
+Let $f,g \in \text{Obj}\mathbf{C}/C$, s.t. $f\in \text{Hom}(A,C)$, $g\in \text{Hom}(B,C)$ \\
+$h\in \text{Hom}(f,g) \subseteq \text{Mor}\mathbf{C}/C$ in that \\
+$h : f\to g$ s.t. $h:A \to B$, so that $g\circ h = f$. \\
+
+\textbf{underlying functor of the slice $F$} (notation $U$ in Barr and Wells (2012) \cite{agat:BaWe2012}):
+
+\begin{equation}
+\begin{aligned}
+& F: \mathbf{C} /C \to \mathbf{C} \\ 
+& F:\text{Obj}\mathbf{C}/C \to \text{Obj}\mathbf{C} \\ 
+& F:f\mapsto F(f) = A \\ 
+& F:\text{Mor}\mathbf{C}/C \to \text{Mor}\mathbf{C} \\ 
+& F: h \mapsto h 
+\end{aligned} 
+\end{equation}
+
+Special case: $\mathbf{C} = \textbf{Set}$, $C = S \ni \text{Obj}\textbf{Set}$, i.e. $S$ is a set.
+
+For $f\in \text{Obj}\textbf{Set}/S$, $f: T \to S$, where $T$ is a set, object $f$ is an $S$-indexed set. (e.g. $x(i) \in T \subset \mathbb{R}$, where for some $y\in T \subset \mathbb{R}$, $\exists \, i \in \mathbb{Z}$ s.t. $y\mapsto i$).
+
+\[
+\begin{aligned}
+& F:\textbf{Set}/S \to \textbf{Set} \\ 
+&  F:f \mapsto T
+\end{aligned}
+\]
+
+The underlying functor $F$ forgets the $S$-indexing.
+
+\subsubsection{Coslice category}
+
+\[
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	X & & X' \\
+	& C &  \\
+};
+\path[->]
+(m-1-3) edge node [above] {$\overline{g}$} (m-1-1)
+(m-2-2) edge node [below] {$\overline{f}$} (m-1-1)
+ edge node [below] {$\overline{f'}$} (m-1-3);
+\end{tikzpicture} 
+\]
+
+Coslice category $C/\mathbf{C}$ of category $\mathbf{C}$ under object $C \in \text{Obj}\mathbf{C}$: \\
+$\text{Obj}(C/\mathbf{C}) = \overline{f} \in \text{Mor}\mathbf{C}$ s.t. $\text{dom}\overline{f} = \overline{C} = C$, \\
+$\text{Mor}(C/\mathbf{C}) \ni \begin{aligned} & \quad \\ & \overline{g} : \overline{X}' \to \overline{X} \text{s.t. } \\
+& \overline{g} \circ \overline{f'} = \overline{f} \end{aligned}$ 
+
+cf. Example 1.8 of Awodey (2010) \cite{agat:Awod2010}, pp. 15. \emph{pointed sets}
+
+$\textbf{Sets}_*$ of pointed sets consisting of sets $A$ and distinguished element $a\in A$, and, i.e. \\
+$\text{Obj}\textbf{Set}_* \ni $ set $A$ with distinguished element $a\in A$, \\
+$\text{Mor}\textbf{Set}_* \ni f : (A, a) \to (B, b)$, function $f:A\to B$ preserves the "points" $f(a) = b$.
+
+\[
+\textbf{Sets}_* = \textbf{Set}_* \simeq 1 / \textbf{Sets}
+\]
+i.e. $\textbf{Sets}_*$ isomorphic to coslice category of sets "under" any singleton $1 = \lbrace * \rbrace$
+
+\quad \\ 
+functions $a: 1 \to A$ correspond uniquely to elements \\
+\phantom{functions} $a(*) = a \in A$ \\
+morphisms (arrows) $f:(A, a) \to (B, b)$ correspond exactly to 
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	1 & A \\ 
+	&  B   \\
+};
+\path[->]
+(m-1-1) edge node [above] {$a$} (m-1-2)
+edge node [left] {$b$} (m-2-2)
+(m-1-2) edge node [auto] {$f$} (m-2-2)
+;
+\end{tikzpicture} 
+\]
+
+\subsection{Free monoid}
+
+Given set $S$, e.g. $S = $ "alphabet" $A$, \\
+\emph{free monoid} $S^*$ is set $S^*$. \\
+
+$S^* = $ set of all lists (finite sequences) of elements of $S$, \\
+e.g. set of all \emph{words} (finite sequence of letters) \emph{over $A$ } $= A^*$. \\
+
+\emph{Concatenation}: $* : \, \forall \, w , w^* \in A^*$, $w * w' = ww'$ \\
+empty list (e.g. empty word "-"), $()$, $*$, or $\epsilon$ is a unit. Or we'll use this notation: \texttt{""}
+
+\[
+\Longrightarrow (S^*, *, \texttt{""}) \text{is a monoid. }
+\]
+
+monoid $M$ is \textbf{freely generated} by subset $A$ of $M$, if 
+\begin{enumerate}
+	\item "no junk": $\forall \, m \in M$, $m$ can be written as product of elements of $A$,
+	\[
+	m = a_1 \dots a_n, \, a_i \in A 
+	\]
+	\item "no noise": no "nontrivial" relations hold in $M$, i.e. if $a_1 \dots a_j = a_1' \dots a_k'$, then this is required by the axioms for monoid.
+\end{enumerate}
+
+$A^* = $ Kleene closure.
+
+\subsubsection{Free monoid functor: underlying functor}
+
+\[
+\begin{aligned}
+& F: \textbf{Set} \to \textbf{Mon} \\
+& F: A \in \text{Obj}\textbf{Set} \mapsto \text{ free monoid } F(A) = \text{ Kleene closure } A^* 
+\end{aligned}
+\]
+For $f:A \to B$, $f\in \text{Hom}_{\textbf{Set}}(A, B)$, 
+\[
+\begin{aligned}
+& F: f\mapsto F(f) \text{ s.t. } \\
+& F(f)(w) = F(f)(a_1 \dots a_m) = (f(a_1), \dots f(a_m)) = w' \in B^*, \text{ i.e. } \\
+& F(f) = f^* : F(A) \to F(B)
+\end{aligned}
+\]
+
+
+\section{Universal mapping property}
+
+\subsection{Examples of Universal mapping property}
+
+cf. Ch. 0 "Introduction" of Leinster (2014) \cite{agat:Lein2014}.
+
+Example 0.1. Let $\lbrace 1 \rbrace$ denote set with 1 element. \\
+Then $\forall \, $ sets $X \in \textbf{Set}$, $\exists \, ! $ map $X \to \lbrace 1 \rbrace$
+\[
+X \xrightarrow{ f} \lbrace 1 \rbrace 
+\]
+
+\begin{proof}
+$\exists \, X \to \lbrace 1 \rbrace$, $\forall \, X$ because define $f: X \to \lbrace 1 \rbrace$ s.t. $f(x) = 1$, $\forall \, x \in X$. \\
+(!) if for $X \to \lbrace 1 \rbrace$, then $x\mapsto 1$, so map is equal to $f$.
+\end{proof} 
+
+Example 0.2. $\forall \, $ rings $R$ with multiplicative identity $1$, $\exists \, !$ homomorphism $\mathbb{Z} \to R$. \label{agat:Example:integerringhomomorphism}
+
+Define $\phi : \mathbb{Z} \to R$ by 
+\[
+\phi(n) = \begin{cases}  \sum_{i=1}^n 1 & \text{ if } n > 0 \\ 
+0 & \text{ if } n = 0 \\
+-\phi(-n) & \text{if } n < 0 \end{cases} 
+\]
+
+Check that $\phi$ homomorphism. (TODO)\\
+
+(!) $\psi(1)= 1$ (homomorphisms preserve multiplicative identities) \\
+homomorphisms preserve addition:
+\[
+\psi(n) = \psi(\sum_{i=1}^n 1) = \sum_{i=1}^n \psi(1) = \sum_{i = 1}^n 1 = \phi(n)
+\]
+
+homomorphisms preserve zero: $\psi(0) = 0 = \phi(0)$
+
+homomorphisms preserve negatives: $\psi(n) = -\psi(-n) = -\sum_{i=1}^{-n} 1 = -\phi(-n) = \phi(n)$.
+
+\begin{lemma}[0.3 Leinster (2014) \cite{agat:Lein2014}]
+	Let ring $A$ s.t. $\forall \,$ rings $R, \exists \, !$ homomorphism $A \to R$ (i.e. $A$ is "initial"). Then $A \cong \mathbb{Z}$ (isomorphic). 	
+\end{lemma}
+
+\begin{proof}
+		$A$ initial, so $\exists \, !$ homomorphism $\phi:A \to \mathbb{Z}$. \\
+		$\mathbb{Z}$ initial from Ex. \ref{agat:Example:integerringhomomorphism}. $\exists \, !$ homomorphism $\phi' : \mathbb{Z} \to A$. \\
+		
+		$\phi' \circ \phi : A \to A$, $1_A : A \to A$ are homomorphisms. \\
+		Since $A$ initial, $\phi' \circ \phi = 1_A$. \\
+		$\phi \circ \phi' : \mathbb{Z}\to \mathbb{Z}$.  Since $\mathbb{Z}$ initial, $1_{\mathbb{Z}} : \mathbb{Z} \to \mathbb{Z} \Longrightarrow \phi \circ \phi' = 1_{\mathbb{Z}}$. 
+		\[
+		\Longrightarrow A \cong \mathbb{Z} \text{ (isomorphic) }
+		\]
+\end{proof}
+
+Example 0.4. pp. 3 Leinster (2014) \cite{agat:Lein2014} Let vector space $V$ with basis $(v_s)_{s \in S}$ (.e.g if $V$ finite-dim., e.g. $S = \lbrace 1, 2 \dots , n \rbrace$).  \\
+Thus $\forall \, $ vector space $W$, $\exists \, $ natural 1-to-1 correspondence between linear maps $\lbrace V \to W \rbrace$ and functions $S \to W$. \\
+i.e. define $\begin{aligned} & \quad \\ 
+& i : S \to V \\
+& i(s) = v_s \quad \, (s \in S)\end{aligned}$ 
+
+Then universal mapping property (given $i, f, \exists \, ! \overline{f}$)
+\[
+\begin{gathered} 
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	S & V  \\ 
+	  & W   \\
+};
+\path[->]
+(m-1-1) edge node [above] {$i$} (m-1-2)
+ edge node [below] {$f$} (m-2-2)
+;
+\path[dashed,->]
+(m-1-2)        edge node [right] {$\overline{f}$} (m-2-2)
+;
+\end{tikzpicture} \text{ or } \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	V & W  \\ 
+	S &    \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$\overline{f}$} (m-1-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$i$} (m-1-1)
+edge node [below] {$f$} (m-1-2)
+;
+\end{tikzpicture}
+\end{gathered} 
+\]
+
+\[
+\begin{gathered}
+\begin{aligned}
+\lbrace S \to W \rbrace & \to \lbrace \text{ linear } V \to W \rbrace \\
+\overline{f} \circ i & \mapsto \overline{f} 
+\end{aligned} \quad \, \text{ bijective }
+\end{gathered}
+\]
+
+Example 0.5. pp. 4 Leinster (2014) \cite{agat:Lein2014}. Given set $S$, topological space $D(S)$; equip $D(S)$ with discrete topology (all subsets open). \\
+$\Longrightarrow \forall \, $ map $S \to $ space $X$ is cont. 
+
+i.e. 
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	D(S) & X  \\ 
+	S &    \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$\overline{f}$} (m-1-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$i$} (m-1-1)
+edge node [below] {$f$} (m-1-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+
+$\forall \, $ topological space $X$, $\forall \, f : S \to X$, $\exists \, !$ cont. $\overline{f} : D(S) \to X$ s.t. $\overline{f} \circ i = f$. \\
+If $D(S)$ equipped with indiscrete topology (open $S = \lbrace \phi, S \rbrace$), then property is false.
+
+Example 0.6. pp. 4 Leinster (2014) \cite{agat:Lein2014}. Given vector space $U, V, W$, bilinear map $f: U\times V \to W$ is linear. 
+\[
+\begin{gathered}
+f(u, v_1 + \lambda v_2) = f(u, v_1) + \lambda f(u, v_2) \\
+f(u_1 + \lambda u_2, v) = f(u_1, v) + \lambda f(u_2, v)
+\end{gathered}
+\]
+$\forall \, u, u_1, u_2 \in U$, $v, v_1,v_2 \in V$, scalars $\lambda$. \\
+e.g. scalar product (dot product) $\mathbf{u}\cdot \mathbf{v}$ bilniear, cross product bilinear. \\
+
+$\exists \, $ "universal bilinear map out of $U\times V$", i.e. \\
+$\exists \, $ vector space $T$, $\exists \, $ bilinear map $b:U\times V \to T$
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	T & W  \\ 
+	U \times V &    \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$\overline{f}$} (m-1-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$b$} (m-1-1)
+edge node [below] {$f$} (m-1-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+i.e. $\forall \, $ bilinear $f$, given $b$, $\exists \, !$ linear $\overline{f}$, s.t. $\overline{f} \circ b = f$
+
+\begin{lemma}[0.7, pp. 5 Leinster (2014) \cite{agat:Lein2014}]\label{agat:Lemma:UniveralMappingVectorSpaceProducts}
+	Let vector spaces $U, V$. Suppose $\begin{aligned} & \quad \\ 
+	& b : U \times V \to T \\
+	& b' : U\times V \to T'\end{aligned}$ \quad , both universal bilinear maps. 
+	
+	Then $T \cong T'$, i.e. $\exists \, !$ isomorphism $j: T \to T'$ s.t. $j\circ b = b'$
+\end{lemma}
+
+\begin{proof}
+	Take $b': U\times V \to T' \Longrightarrow \exists \, b$, $\exists \, !$ linear map $j: T \to T'$ s.t. $j\circ b = b'$. 
+	
+	Take $b:U \times V \to T$. $\exists \, b'$, $\exists \, !$ linear map $j':T' \to T$ s.t. $j'\circ b' = b$
+	
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	T & T'  \\ 
+	U \times V & T   \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$j$} (m-1-2)
+(m-1-2) edge node [above] {$j'$} (m-2-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$b$} (m-1-1)
+edge node [below] {$b'$} (m-1-2)
+edge node [below] {$b$} (m-2-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+Now linear $j'\circ j : T\to T$, s.t. $(j'\circ j) \circ b = b$. 
+
+But also $1_T : T\to T$ linear and $1_T \circ b = b$
+
+\[
+\Longrightarrow j' \circ j = 1_T
+\]
+i.e. 
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	T & T  \\ 
+	U \times V &    \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$j'\circ j$} (m-1-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$b$} (m-1-1)
+edge node [below] {$b$} (m-1-2)
+;
+\end{tikzpicture}
+\qquad \, \text{ but so is } \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	T & T  \\ 
+	U \times V &    \\
+};
+\path[dashed,->]
+(m-1-1) edge node [above] {$1_T$} (m-1-2)
+;
+\path[->]
+(m-2-1) edge node [left] {$b$} (m-1-1)
+edge node [below] {$b$} (m-1-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\]
+
+Similarly for $j\circ j' = 1_{T'}$. 
+
+So $j$ is an isomorphism.
+
+\end{proof} 
+
+By Lemma \ref{agat:Lemma:UniveralMappingVectorSpaceProducts}, $\exists \, !$ tensor product $U\otimes V$, not "a" tensor product.
+
+Example 0.8 of Leinster (2014) \cite{agat:Lein2014}. Let $\theta : G \to H$ be homomorphism of groups.
+
+\[
+\begin{tikzcd}
+\text{ker}{(\theta)} \arrow[r, hook, "i"] & G \arrow[r, shift left, "\theta"] \arrow[r, shift right, "\epsilon"]& H \\
+\end{tikzcd}
+\]
+
+where $i$ inclusion, $\epsilon$ trivial homomorphism, i.e.$i(x) = x \, \forall \, x \in \text{ker}(\theta)$, $\epsilon(g) = 1$ \, $\forall \, g \in G$.
+
+map $i$ into $G$ s.t. $\theta \circ i = \epsilon \circ i$ and is universal (Ex. 0.11)
+
+Example 0.9 of Leinster (2014) \cite{agat:Lein2014}. Let topological space $X = U \cup V$ be covered by 2 open subsets $U, V$.
+
+\[
+\begin{tikzcd}[sep=large] 
+	U \cap V \arrow[r, hook, "i"] \arrow[d, hook, "j"] & U \arrow[d, hook, "j'"] \\
+	V \arrow[r, hook, "i'"] & X
+\end{tikzcd}
+\]
+has universal property
+\[
+\begin{tikzcd}[sep=large] 
+U \cap V \arrow[r, hook, "i"] \arrow[d, hook, "j"] & U \arrow[d, hook, "j'"] \arrow[ddr, "f"] & \\
+V \arrow[r, hook, "i'"] \arrow[drr, "g"] & X \arrow[dr, dotted, "h"] & \\
+& & Y 
+\end{tikzcd}
+\]
+$\forall \, g, Y, f$ s.t. $f\circ i = g\circ j$, $\exists ! \, $ cont. $h: X\to Y$ s.t. $h\circ j' = f$, $h\circ i' = g$.
+
+Under favorable conditions, induced diagram of fundamental groups.
+
+\[
+\begin{tikzcd}[sep=large] 
+\pi_1(U \cup V) \arrow[r, "i_*"] \arrow[d, "j_*"] & \pi_1(U) \arrow[d, "j'_*"] \\
+\pi_1(V) \arrow[r, "i'_*"] & \pi_1(X)
+\end{tikzcd}
+\]
+has same universal property: Van Kampen's thm.
+
+\[
+\begin{aligned}
+& \theta : G \to H \\ 
+& \epsilon : G \to H
+\end{aligned}
+\]
+
+$\theta, \epsilon$ have common domain and codomain.
+
+$i: \text{ker}(\theta) \to G$ is s.t. $\theta \circ i = \epsilon \circ i$
+
+\[
+\begin{tikzcd}
+\text{ker}{(\theta)} \arrow[r, hook, "i"] & G \arrow[r, shift left, "\theta"] \arrow[r, shift right, "\epsilon"]& H \\
+J \arrow[u, dotted, "u"] \arrow[ur, "a"] & & \\
+\end{tikzcd}
+\]
+$\forall \, a : J \to G$ s.t. $\theta \circ a = \epsilon \circ a$, then $\exists \, ! \, u : J \to \text{ker}{\theta}$ s.t. 
+\[
+a = i \circ u 
+\]
+
+\subsubsection{Free monoid $A^*$ on set $A$}
+
+$\exists \, i : A \to A^*$, given any monoid $N$, any $f: A \to |N|$ (where $|N|$ is the underlying set of monoid $N$), \\
+$\exists \, ! $ monoid homomorphism $\overline{f}: A^* \to N$ s.t. $|\overline{f}| \circ i = f$.
+
+
+\[
+\begin{aligned}
+\textbf{Mon} : & 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	A^* &  N \\
+};
+\path[->]
+(m-1-1) edge [dotted] node [above] {$\overline{f}$} (m-1-2);
+\end{tikzpicture}  \\
+\quad \\ 
+\textbf{Sets} : & \begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+{
+	\lvert A^* \rvert &  \lvert N \rvert \\
+	A & \\
+};
+\path[->]
+(m-1-1) edge [dotted] node [above] {$|\overline{f}|$} (m-1-2)
+(m-2-1) edge node [left] {$i$} (m-1-1)
+edge node [right] {$f$} (m-1-2);
+\end{tikzpicture}  
+\end{aligned} 
+\]
+
+\begin{proposition}[Proposition 1.9, Awoday (2010) \cite{agat:Awod2010}]] $A^*$ has universal mapping property of free monoid on $A$.
+	\end{proposition} 
+\begin{proof}
+	Givne $f: A \to |N|$, define $\overline{f} : A^* \to N$, by 
+	\[
+	\begin{aligned}
+	& \overline{f}("") = e_N \\ 
+	& \overline{f}(a_1 \dots a_n) = f(a_1) \dots f(a_n) 
+	\end{aligned}
+	\]	
+	$\overline{f}$ is thus a homomorphism with $\overline{f}(a) = f(a)$ \quad \, $\forall \, a \in A$. \\
+	
+	If $g: A^* \to N$ s.t. $g(a) =f(a)$ \quad \, $\forall \, a \in A$, then $\forall \, (a_1, \dots a_n) \in A^*$, 
+	\[
+	\overline{f}(a_1 \dots a_n) = \overline{f}(a_1) \dots \overline{f}(a_n) = f(a_1) \dots f(a_n) = g(a_1) \dots g(a_n) = g(a_1 \dots a_n)
+	\]
+	since $\overline{f} = g$, $\overline{f}$ unique.
+\end{proof} 
+
+Existence part of UMP is "no noise." \\
+Unique part of UMP is "no junk."
+
+TODO Prop. 1.10, Awodey.
+
+
+
+
+
+
+\exercisehead{1} cf. 3.1.23 Exercises of Barr and Wells (2012) \cite{agat:BaWe2012}
+
+Given semigroup $S$, construct monoid $M = S \cup \lbrace e \rbrace$, $e\notin S$. \\
+Let $e=\lbrace S \rbrace$. \\
+Multiplication in $M$ defined as 
+\begin{enumerate}
+	\item $xy \in S$ if $x,y \in S$ 
+	\item $xe=ex = x \quad \, \forall \, x \in M$
+\end{enumerate}
+$M \equiv S^1$ in semigroup literature.
+
+\begin{enumerate}
+	\item $S^1$ is a monoid (Show). \\
+	If $a,b,c \in S \subset M$, then $(ab)c = a(bc)$ (associative holds by definition of semigroup). \\
+	$\forall \, a \in S$, $ae = ea =a$, by how we defined multiplication. \\
+	$ee = ee =e $ by either definition, or that multiplication in semigroup $S$ is closed.
+	\[
+	\lbrace S \rbrace \lbrace S \rbrace = \lbrace S \rbrace \lbrace S \rbrace = \lbrace S \rbrace
+	\]
+	
+	If for $a,b,c \in M$, any of $a,b$ or $c=e$, use multiplication to show equality for $(ab)c = a(bc)$; e.g.
+	\[
+	\begin{aligned}
+	& (eb) c = (b)\cdot c = bc = e(bc) = bc \\ 
+	& (ae) c = a\cdot c =a \cdot (ec) = a(ec)
+	\end{aligned}
+	\]
+	$S^1$ is a monoid.
+	\item 
+\end{enumerate}
+
+\section{Actions, Finite State Machines}
+
+\begin{definition}
+Let monoid $M$ with identity $1$, and a set $S$. \\
+\textbf{action} of $M$ on $S$, $\alpha$, \\
+\begin{equation}
+\begin{aligned}
+& \alpha : M \times S \to S \text{ s.t. } \\  
+& \alpha(1,s) = s \quad \, \forall \, s \in S \\
+& \alpha(mn, s) = \alpha(m, \alpha(n, s)) \quad \, \forall \, m,n \in M, \, s\in S
+\end{aligned}
+\end{equation}
+
+Write $ms \equiv \alpha(m, s)$ then 
+\[
+\begin{gathered} 
+1s = s \\
+(mn) s = m (ns) \quad \, \forall \, m, n \in M, \, s \in S
+\end{gathered}
+\]
+\end{definition}
+
+\begin{definition}[equivariant map]
+	Let monoid $M$ with actions on sets $S,T$. \\
+	\textbf{equivariant map} $\phi:S \to T$ s.t. $m\phi(s) = \phi(ms)$
+\end{definition}
+
+Suppose 2 equivariant maps $\phi_{TS}$, $\phi_{UT}$, sets $S,T,U$ s.t. monoid $M$ has actions on $S,T,U$: 
+\[
+\begin{aligned}
+& \phi_{TS} : S \to T \\ 
+& \phi_{UT} : T \to U
+\end{aligned}
+\]
+
+\[
+m\phi_{UT} \circ \phi_{TS}(s) = m \phi_{UT}(\phi_{TS}(s)) = \phi_{UT}(m\phi_{TS}(s)) = \phi_{UT} \phi_{TS} (ms) 
+\]
+
+Let $\phi_{UT} \circ \phi_{TS} \equiv \phi_{US}$. $\phi_{US}$ equivariant.
+
+Associativity: given equivariant maps 
+\[
+\begin{aligned}
+& \phi_{TS} : S \to T \\ 
+& \phi_{UT} : T \to U \\ 
+& \phi_{VU} : U \to V 
+\end{aligned}
+\]
+
+\[
+m \phi_{VU} \phi_{UT} \phi_{TS}(s) = m \phi_{VU} (\phi_{UT} \phi_{TS}(s)) = \phi_{VU} (m \phi_{UT} \phi_{TS}(s)) = (\phi_{VU} \phi_{UT}) (\phi_{TS}(ms))
+\]
+
+Thus, equivariant maps obey associativity on $\forall \, S \in \text{Obj}(M-\mathbf{Act})$, (set $S$ that $M$ has action on) \\
+category $M-\mathbf{Act}$, $\text{Obj}(M-\mathbf{Act}) = \lbrace \text{ sets that monoid $M$ has action on }\rbrace$ \\
+\phantom{category $M-\mathbf{Act}$,} $\text{Mor}(M-\mathbf{Act}) = \lbrace \text{ equivariant maps $\phi$ s.t. } \forall \, m \in M, \, m\phi(s) = \phi(ms) \rbrace$.
+
+\subsection{Actions as functors}
+
+Let $\alpha$ action of monoid $M$ on set $S$. \\
+
+Consider $\mathbf{C}(M)$ (monoid as a category; i.e. $\text{Obj}\mathbf{C}(M) = \lbrace M \rbrace, \, \text{Mor}\mathbf{C}(M) = M$). \\
+action $\alpha$ determines function $F_{\alpha} : \mathbf{C}(M) \to \mathbf{Set}$, 
+\begin{enumerate}
+	\item $F_{\alpha}(*) = S \equiv F_{\alpha}(\lbrace M \rbrace ) = S$
+	\item  $F_{\alpha}(m) = s \mapsto \alpha(m, s) \, \forall \, m \in M, s \in S$
+\end{enumerate}
+i.e.
+
+\[
+\begin{gathered}
+\begin{aligned}
+& F_{\alpha} : \text{Obj}\mathbf{C}(M) \to \text{Obj}\mathbf{Set} \\ 
+& F_{\alpha} : \lbrace M \rbrace \mapsto S 
+\end{aligned} \\
+\begin{aligned}
+& F_{\alpha} : \text{Mor}\mathbf{C}(M) \to \text{Mor}\textbf{Set} \\ 
+& F_{\alpha} : m \mapsto (s\mapsto \alpha(m,s)) \in \text{Hom}(S,S)
+\end{aligned}
+\end{gathered}
+\]
+
+Barr and Wells (1998) \cite{agat:BW1998} uses this notation: $\mathcal{M} = (A, S, s_0, \phi)$ for a "machine." Compare this to the notation used in these notes:
+\[
+\text{FSM} = (\Sigma, S, s_0, \delta)
+\]
+
+Take note that the finite set or input alphabet $A \equiv \Sigma$ is \textbf{not} a monoid. \\
+
+$\forall \, $ string $\equiv $ finite sequence $\equiv $ "word" induces sequence of transitions in FSM starting at $s_0$, and ending on some final state; precisely, define
+\[
+\begin{aligned}
+& \delta^* : \Sigma^* \times S \to S \\ 
+& \delta^*("", s) = s \quad \, \forall \in s \in S \\ 
+& \delta^*((a)w, s) = \delta(a, \delta^*(w,s)) \quad \, \forall \, s \in S, \, w\in \Sigma^*, \, a\in A
+\end{aligned}
+\]
+
+Recall free monoid $\Sigma^*$, $(\Sigma^*, *, "")$ where $\Sigma^* \in \text{Obj}\mathbf{Set}$ is a set. \\
+
+\begin{proposition}
+	$\delta^*$ is an action of $\Sigma^*$ on $S$.
+\end{proposition}
+
+\begin{proof}
+	Assume
+	\[
+	\delta^*(wv, s) = \delta^*(w, \delta^*(v,s))
+	\]	
+	then
+	\[
+	\begin{gathered}
+		\delta^*((a)wv, s) = \delta(a, \delta^*(wv, s)) = \delta(a, \delta^*(w, \delta^*(v,s))) = \delta^*(aw, \delta^*(v,s)) 
+	\end{gathered}
+	\]
+1st., 3rd. equalities from $\delta^*((a)w, s) = \delta(a, \delta^*(w,s))$ (definition of $\delta^*$). \\
+2nd. equality is from inductive hypothesis.
+\end{proof}
+
+\textbf{recognizer} - subset $L\subseteq A^*$ of strings which drive FSM from $s_0$ (start state) to acceptor state, is then set of strings, or language, which is \textbf{recognized} by machine FSM, this is the machine as \textbf{recognizer}.
+
+\textbf{transducer} - FSM outputs string of symbols (not necessarily in same alphabet) $\forall \, $ state it enters, or each transition it undergoes.
+
+\subsection{Set-valued functors as actions}
+
+cf. 3.2.6 of Barr and Wells (2012) \cite{agat:BaWe2012}. 
+
+
+\section{Products, Coproducts}
+
+\subsection{Sources}
+
+It appears Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{agat:AHS2004} defines \emph{sources} to simply give a name and formalize a tuple.  
+
+\begin{definition}[source]
+	\textbf{source} is a tuple: $(a, (f_i)_{i\in I})$, $f_i:A\to A_i$
+\end{definition}
+
+\subsection{Products}
+
+\begin{definition}[Products]\label{agat:Def:Products}
+	
+	(in Turi's notation \cite{agat:Turi2001})
+	
+	Given objects $C_1,C_2$ of category $\mathbb{C}$, \textbf{product} (if exists) consists of object $C_1 \times C_2$ of $\mathbb{C}$ and $\begin{aligned} & \quad \\
+	& \pi_1 : C_1 \times C_2 \to C_1 \\
+	& \pi_2: C_1 \times C_2 \to C_2 \end{aligned}$ s.t. \\
+	$\forall \, $ object $A$ of $\mathbb{C}$, \, $\forall \, \begin{aligned} & \quad \\
+	& f : A \to C_1 \\
+	& g : A \to C_2 \end{aligned}$ \quad \, $\exists \, ! \quad \, \langle f,g \rangle : A \to C_1 \times C_2$ s.t. $\begin{aligned} & \quad \\
+	& f = \pi_1 \circ \langle f,g \rangle \\
+	& g = \pi_2 \circ \langle f,g \rangle \end{aligned}$, i.e. 
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& A & \\ 
+		C_1  & C_1 \times C_2  &  C_2  \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$f$} (m-2-1)
+	edge node [above] {$g$} (m-2-3)
+	(m-2-2) edge node [below] {$\pi_1$} (m-2-1)
+	edge node [below] {$\pi_2$} (m-2-3)
+	;
+	\path[dashed] 
+	(m-1-2) edge node [right] {$\langle f,g\rangle$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	
+	(compare with Leinster (2014) \cite{agat:Lein2014})
+	
+	Let category $\mathcal{A}$, $X,Y \in \mathcal{A}$, \textbf{product} of $X,Y$ consists of object $P$ and maps
+	
+	(compare this definition with Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{agat:AHS2004} and their notation)
+	
+	\textbf{product} consisting of 
+	\[
+	\begin{aligned}
+	C_1 \times C_2 \times \dots \times C_{\mathcal{N}} \in \text{Obj}\mathbf{C} \\
+	\pi_1 : C_1 \times C_2 \times \dots \times C_{\mathcal{N}} \to C_1 \\ 
+	\pi_2 : C_1 \times C_2 \times \dots \times C_{\mathcal{N}} \to C_2 \\ 
+	\vdots \\
+	\pi_{\mathcal{N}} : C_1 \times C_2 \times \dots \times C_{\mathcal{N}} \to C_{\mathcal{N}} \\ 
+	\end{aligned}
+	\]
+	
+	is s.t. 
+	
+	$\forall \, \begin{aligned}  \quad \\ 
+	A \in \text{Obj}\mathbf{C} \\
+	f_1 : A \to C_1 \\
+	f_2 : A \to C_2 \\
+	\vdots \\
+	f_{\mathcal{N}} : A \to C_{\mathcal{N}} \end{aligned}$, 
+	
+	$\exists \, ! \langle f_1 ,f_2 , \dots , f_{\mathcal{N}} \rangle : A \to C_1 \times C_2 \times \dots \times C_{\mathcal{N}}$ s.t.
+	\[
+	\begin{aligned}
+	f_1 = \pi_1 \circ \langle f_1 , f_2 , \dots f_{\mathcal{N}} \rangle \\ 
+	f_2 = \pi_2 \circ \langle f_1 , f_2 , \dots f_{\mathcal{N}} \rangle \\ 
+	\vdots  \\ 
+	f_{\mathcal{N}} = \pi_{\mathcal{N}} \circ \langle f_1 , f_2 , \dots f_{\mathcal{N}} \rangle 
+	\end{aligned}
+	\]
+\end{definition}
+
+Let's use the notation of Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{agat:AHS2004}. Also note that these references \emph{assume} the \emph{universal mapping property} in the definition of a \textbf{product}.
+
+\begin{definition}[Product (assuming univeral mapping property)]
+	\begin{equation}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=4em, column sep=4em, minimum width=3em]
+{
+	& & A \\
+	P & A_i & \\
+	& A_{i'} & \\
+};
+\path[->]
+(m-2-1) edge node [above] {$p_i$} (m-2-2)
+edge node [above] {$p_{i'}$} (m-3-2)
+(m-1-3) edge node [above] {$f_i$} (m-2-2)
+edge node [above] {$f_{i'}$} (m-3-2)
+;
+\path[dashed,->]
+(m-1-3) edge node [above] {$f$} (m-2-1)
+;
+\end{tikzpicture} 
+\end{gathered}
+\end{equation}
+For the case of only 2 objects associated with $I$, 
+	\begin{equation}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  & \\ 
+	A_1  & P  & A_2   \\
+};
+\path[->]
+(m-1-2) edge node [above] {$f_1$} (m-2-1)
+edge node [above] {$f_2$} (m-2-3)
+(m-2-2) edge node [above] {$p_1$} (m-2-1)
+edge node [above] {$p_2$} (m-2-3)
+;
+\path[dashed,->]
+(m-1-2) edge node [right] {$f$} (m-2-2)
+;
+\end{tikzpicture} 
+\end{gathered}
+\end{equation}
+
+
+\textbf{product} $P, \lbrace p_i, A_i \rbrace_{i\in I}$ s.t. $\forall \, A, \lbrace f_i, A_i \rbrace_{i \in I}$, $\exists \, !$ morphism $f:A \to P$ s.t. $f_i = p_i \circ f$, $i\in I$.
+\end{definition}
+This definition is the same one used in pp. 35, Def. 2.16, of Awodey (2010) \cite{agat:Awod2010}.
+
+Consider the definition that doesn't use the universal mapping property from Pareigis (2004) \cite{agat:Pare2004}. 
+
+\begin{definition}[Product without universal property]
+	Given objects $A, B \in \text{Obj}\mathbf{C}$, category $\mathbf{C}$. 
+	
+	Object $A\times B$, morphisms $p_A, p_B$, $\begin{aligned} & \quad \\ 
+		& p_A : A \times B \to A \\ 
+		& p_B : A\times B \to B
+		\end{aligned}$ is called a (not the) (categorical) product of $A, B$, projections $p_A, p_B$. 
+		
+		If $\forall \, $ object $T\in \text{Obj}\mathbf{C}$, $\exists \, $ isomorphism
+
+		\begin{equation}
+			\text{Mor}_{\mathbf{C}}(T, A \times B)  \cong \text{Mor}_{\mathbf{C}}(T, A) \times \text{Mor}_{\mathbf{C}}(T,B)		
+		\end{equation}
+(where $\text{Mor}_{\mathbf{C}}$ is the Cartesian product) s.t.
+
+\begin{equation}\label{agat:Eq:ProductDefinitionWithoutUniversalPropertyDiagram}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=4em]
+{
+	& \text{Mor}_{\mathbf{C}}(T, A\times B)  & \\ 
+	\text{Mor}_{\mathbf{C}}(T, A)  & \text{Mor}_{\mathbf{C}}(T, A) \times \text{Mor}_{\mathbf{C}}(T, B)  & \text{Mor}_{\mathbf{C}}(T, B)   \\
+};
+\path[->]
+(m-1-2) edge node [left] {$\text{Mor}_{\mathbf{C}}(T,p_A)$} (m-2-1)
+edge node [right] {$\text{Mor}_{\mathbf{C}}(T,p_B)$} (m-2-3)
+(m-2-2) edge node [above] {$p_{\text{Mor}_{\mathbf{C}}(T, A)}$} (m-2-1)
+edge node [above] {$p_{\text{Mor}_{\mathbf{C}}(T, B)}$} (m-2-3)
+;
+\path[dashed,->]
+(m-1-2) edge node [right] {$h$} (m-2-2)
+;
+\end{tikzpicture} \\
+\quad \\ 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=4em]
+{
+	& u  & \\ 
+	f  & h(u) = (f,g)  & g   \\
+};
+\path[|->]
+(m-1-2) edge node [left] {$\text{Mor}_{\mathbf{C}}(T,p_A)$} (m-2-1)
+edge node [right] {$\text{Mor}_{\mathbf{C}}(T,p_B)$} (m-2-3)
+(m-2-2) edge node [above] {$p_{\text{Mor}_{\mathbf{C}}(T, A)}$} (m-2-1)
+edge node [above] {$p_{\text{Mor}_{\mathbf{C}}(T, B)}$} (m-2-3)
+;
+\path[dashed,|->]
+(m-1-2) edge node [right] {$h$} (m-2-2)
+;
+\end{tikzpicture} 
+\end{gathered}
+\end{equation}
+where $\begin{aligned} & \quad \\ 
+& \text{Mor}_{\mathbf{C}}(T, p_A)(u) = f = p_{\text{Mor}_{\mathbf{C}}(T, A)} h(u) \\
+& \text{Mor}_{\mathbf{C}}(T, p_B)(u) = g = p_{\text{Mor}_{\mathbf{C}}(T, B)} h(u) \end{aligned}$
+\end{definition}
+
+\begin{proposition}[Equivalent definition of product by universal mapping property]
+Given objects $A, B \in \text{Obj}\mathbf{C}$, category $\mathbf{C}$, object $A\times B$, morphisms $\begin{aligned} & \quad \\ 
+	p_A: A\times B \to A \\
+	p_B: A\times B \to B \end{aligned}$ is a (categorical) product, \\
+	
+iff $\forall \, $ object $T \in \text{Obj}\mathbf{C}$, $\forall \, \begin{aligned} & \quad \\ 
+& f: T\to A \\
+& g: T \to B \end{aligned}$, $\exists \, !$ morphism $(f,g) : T \to A\times B$, s.t. 
+
+\begin{equation}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& T  & \\ 
+	A  & A\times B  & B   \\
+};
+\path[->]
+(m-1-2) edge node [left] {$f$} (m-2-1)
+edge node [right] {$g$} (m-2-3)
+(m-2-2) edge node [above] {$p_A$} (m-2-1)
+edge node [above] {$p_B$} (m-2-3)
+;
+\path[dashed,->]
+(m-1-2) edge node [left] {$(f,g)$} (m-2-2)
+;
+\end{tikzpicture} 
+\end{equation}	
+\end{proposition}
+cf. Proposition "Characterization of products by universal mapping property", 2.7.4 in Pareigis (2004) \cite{agat:Pare2004}.
+
+\begin{proof}
+$\Longleftarrow$ : \\
+
+	Let $(A\times B, p_A, p_B)$ be a "product" of $A\times B$, obeying the universal (mapping) property. Let $T\in \text{Obj}\mathbf{C}$. Let $u\in \text{Mor}_{\mathbf{C}}(T, A\times B)$. \\
+	
+	Define $\begin{aligned} & \quad  \\
+	& f:= p_A \circ u : T \to A \\ 
+	& g:= p_b \circ u : T \to B\end{aligned}$  \\
+	Then $(f,g) \in \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)$. \\
+	
+	Define $h(u):= (f,g) \in \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)$. \\
+	Then, 
+	\[
+	\begin{aligned}
+		& \text{Mor}_{\mathbf{C}}(T,p_A)(u) = p_A \circ u = f = p_{\text{Mor}_{\mathbf{C}}(T,A)} \circ h(u) \\	
+		& \text{Mor}_{\mathbf{C}}(T,p_B)(u) = p_B \circ u = g = p_{\text{Mor}_{\mathbf{C}}(T,B)} \circ h(u) \\	
+	\end{aligned}	
+	\]
+	(so Diagram \ref{agat:Eq:ProductDefinitionWithoutUniversalPropertyDiagram} commutes). \\
+	
+	Show: $h$ bijective. \\
+	Construct inverse map $k$:
+	\[
+	\begin{aligned}
+		& k : \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B) \to \text{Mor}_{\mathbf{C}}(T,A\times B) \\
+		& k((f,g))  := u
+	\end{aligned}
+	\]
+	where $(f,g) \in \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)$
+	
+	By universal (mapping) property, $\exists \, ! \, u :T\to A\times B$ s.t. $\begin{aligned} & \quad \\ 
+	& p_A \circ u=f \\
+	& p_B \circ u = g \end{aligned}$.
+	
+	Let $(f,g) \in \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)$. \\
+	Then $(h\circ k)((f\circ g)) = h(u) = (p_A\circ u, p_B \circ u) = (f,g)$. Hence $h\circ k =1$ or i.e. $h\circ k 1_{\text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)}$. \\
+	
+	Let $u\in \text{Mor}_{\mathbf{C}}(T,A\times B)$. \\
+	Then $(k\circ h)(u) = k((f, g)) = k((p_A \circ u, p_B \circ u))= u'$ where $u':T\to A\times B$ and \\
+	\[
+	\begin{aligned} 
+	& p_A \circ u' = p_A \circ k((p_A \circ u, p_B \circ u)) = p_A \circ k ((f,g)) = p_A \circ u \quad \, (\text{since $k((f,g)) := u$}) \\
+	& p_B \circ u' = p_B \circ k((p_A \circ u, p_B \circ u)) = p_B \circ k ((f,g)) = p_B \circ u \quad \, (\text{since $k((f,g)) := u$}) 
+	\end{aligned} 
+	\]
+	2nd. equality is by universal (mapping) property.
+
+$\Longrightarrow u= u'$ (by component-wise equality), and \\
+$k\circ h = 1_{\text{Mor}_{\mathbf{C}}(T,A\times B)}$. \\
+$\Longrightarrow h$ isomorphic. \\
+
+$\Longrightarrow$ : \\
+
+Given morphisms
+\[
+\begin{aligned}
+& f:T \to A \\ 
+& g:T \to B
+\end{aligned}
+\]
+then $(f, g) \in \text{Mor}_{\mathbf{C}}(T, A) \times \text{Mor}_{\mathbf{C}}(T,B)$.
+
+$\forall \, $ object $T\in \text{Obj}\mathbf{C}$, $\exists \, $ isomorphism $h$ s.t. $\text{Mor}_{\mathbf{C}}(T, A\times B) \cong \text{Mor}_{\mathbf{C}}(T,A) \times \text{Mor}_{\mathbf{C}}(T,B)$, \\
+Then $u:=h^{-1}((f, g))$ is a unique morphism, $u\in \text{Mor}_{\mathbf{C}}(T, A\times B)$. \\
+Also, by Diagram \ref{agat:Eq:ProductDefinitionWithoutUniversalPropertyDiagram}, 
+\[
+\begin{aligned}
+& \text{Mor}_{\mathbf{C}}(T,p_A)(u) = f = p_{\text{Mor}_{\mathbf{C}}(T,A)} \circ h(u) \\ 
+& \text{Mor}_{\mathbf{C}}(T,p_B)(u) = f = p_{\text{Mor}_{\mathbf{C}}(T,B)} \circ h(u) 
+\end{aligned}
+\]
+
+Now
+\[
+\begin{aligned}
+& \text{Mor}_{\mathbf{C}}(T, p_A)(u) = p_A \circ u \\
+& \text{Mor}_{\mathbf{C}}(T, p_B)(u) = p_B \circ u \\
+\end{aligned}
+\]
+(by definition).
+
+So
+\[
+\begin{aligned} 
+& f = p_A \circ u \\ 
+& g = p_B \circ u
+\end{aligned} 
+\]
+So universal mapping property is satisfied.
+\end{proof}
+
+Thus,
+
+\begin{definition}[Product, generalized, assuming universal property]
+	Give $A_i \in \text{Obj}\mathbf{C}$, $i\in I$, category $\mathbf{C}$, \\
+	\textbf{product} is object $\prod_{i \in I} A_i \in \text{Obj}\mathbf{C}$, morphisms $p_j : \prod_{i\in I} A_i \to A_j$, $j\in I$, \\
+	s.t. $\forall \, $ object $A\in \in \text{Obj}\mathbf{C}$, \\
+	$\exists \, !$ morphism $\langle f_i \rangle : A \to \prod_{i\in I} A_i$, \\
+	s.t. 
+\begin{equation}\label{agat:Eq:GeneralizedProductDiagram}
+	\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  \\ 
+	A_j  & \prod_{i\in I} A_i   \\
+};
+\path[->]
+(m-1-2) edge node [left] {$f_j$} (m-2-1)
+(m-2-2) edge node [below] {$p_j$} (m-2-1)
+;
+\path[dashed,->]
+(m-1-2)        edge node [right] {$\langle f_i \rangle$} (m-2-2)
+;
+\end{tikzpicture}  
+\end{equation} 	
+i.e. $\pi_j \circ \langle f_i \rangle = f_j \, \forall \, i,j \in I$
+\end{definition}
+
+\subsubsection{Example: Set always has products}
+
+$\forall \, $ sets $X,Y \in \text{Obj}(\text{Set})$, $\exists \, $ product $X\times Y \in \text{Obj}(\text{Set})$.  
+
+Let $A \in \text{Obj}(\text{Set})$, $\begin{aligned} & \quad \\
+& f_1 : A \to X \\
+& f_2 : A \to Y \end{aligned}$ \qquad \, Define $\begin{aligned} & \langle f_1, f_2 \rangle : A \to X \times Y  \\
+& \langle f_1 ,f_2 \rangle (a) = (f_1(a), f_2(a)) \end{aligned}$
+
+Then $\begin{aligned} & \quad \\
+& \pi_1 \circ \langle f_1 , f_2 \rangle (a) = f_1(a) \\
+& \pi_2 \circ \langle f_1, f_2 \rangle (a) = f_2(a) \end{aligned}$ \qquad \, $\Longrightarrow \begin{aligned}  & \quad \\
+& \pi_1 \circ \langle f_1 , f_2 \rangle = f_1 \\
+& \pi_2 \circ \langle f_1,f_2 \rangle = f_2 \end{aligned}$
+
+Suppose $f': A \to X\times Y$ s.t. $\begin{aligned} & \quad \\
+& \pi_1 \circ f' = f_1 \\
+& \pi_2 \circ f' = f_2 \end{aligned}$
+
+Write $f'(a) = (x,y)$
+\[
+\begin{aligned}
+& f_1(a) = \pi_1 \circ f'(a) = \pi_1(x,y) =x \\ 
+& f_2(a) = \pi_2 \circ f'(a) = \pi_2(x,y) =y \\ 
+\end{aligned} \qquad \, \Longrightarrow f'(a) = (f_1(a), f_2(a)) = \langle f_1, f_2 \rangle (a)
+\]
+$\langle f_1, f_2 \rangle $ unique.  
+
+\subsubsection{Example: "Record Types", classes (in computer science, C++, Python)}\label{agat:SubSubSec:RecordTypesProduct}
+
+cf. pp. 174, 5.3.14 "Record Types" Barr and Wells (1998) \cite{agat:BW1998}.
+
+Look at Diagram \ref{agat:Eq:GeneralizedProductDiagram} again.
+
+To allow operations depending on several variables in a functional programming language $L$, \\
+e.g. assume $\forall \,$ types $A_j$, $\forall \, j \in I$, language $L$ has record type $\prod_{i\in I} A_i$, and field selectors $p_j$
+\[
+p_j : \prod_{i\in I} A_i \to A_j
+\]
+Insist that any data in $\prod_{i\in I} A_i$ be determined completely by those fields $A_j$, $j\in I$, \\
+then $\forall \, $ operations $f_j$, $f_j : A \to A_j$, \, $\forall \, j \in I$, \\
+there ought to be an unique operation $\lbrace f_i \rangle : A \to \coprod_{i\in I} A_i$ s.t. 
+\[
+p_j\langle f_i \rangle = f_j, \quad \, \forall \, i, j \in I
+\]
+This would make $\prod_{i\in I} A_i$ the product of $A_i$'s, with selectors as product projections.
+
+Thus, to say that one can always construct record types in a functional programming language $L$ to say that the corresponding category $C(L)$ has finite products. 
+
+
+\begin{proposition}
+	If product $(A_1 \times \dots \times A_{\mathcal{N}} \xrightarrow{ \pi_i } A_i )_{i\in I}$, if $\exists \,  i_0 \in I$ s.t. $\text{Hom}(A_{i_0}, A_i) \neq \emptyset$, \, $\forall \, i \in I$, \\
+	then $\pi_{i_0}$ \emph{retraction }
+\end{proposition}
+
+\begin{proof}
+	$\forall \, i \in I$, choose $f_i \in \text{Hom}(A_{i_0}, A_i)$ with $f_{i_0} = 1_{A_{i_0}}$.  
+	
+	Then $\langle f_i \rangle : A_{i_0} \to A_1 \times \dots \times A_{\mathcal{N}}$ is a morphism s.t. 
+	\[
+	\pi_{i_0} \circ \langle f_i \rangle = f_{i_0} = 1_{A_{i_0}}
+	\]
+\end{proof}
+
+
+Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{agat:AHS2004} and their notation) calls a \textbf{sink} what Leinster (2014) \cite{agat:Lein2014} calls a \textbf{cocone}.  
+\begin{definition}
+	\textbf{sink} $((f_i)_{i\in I}, A) \equiv (f_i , A)_I \equiv (A_i \xrightarrow{ f_i } A)_I$, object $A$, family of morphisms $f_i : A_i \to A$
+\end{definition}
+
+For the \emph{coproduct}, consider this enlightening comparision:
+\[
+\begin{aligned}
+\begin{gathered}
+\text{ product } ( \prod_{i\in I } A_i, \pi_j )_{j \in I} \\ 
+\text{ projection } \pi_j : \prod_{i\in I} A_i \to A_j  \\
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  \\ 
+	A_j  & \prod_{i\in I} A_i   \\
+};
+\path[->]
+(m-1-2) edge node [above] {$f_j$} (m-2-1)
+edge node [right] {$\langle f_i \rangle$} (m-2-2)
+(m-2-2) edge node [below] {$\pi_j$} (m-2-1)
+;
+\end{tikzpicture}  \\
+C\xrightarrow{ \langle f, g \rangle } A\times B \\
+\prod_{i \in I } f_i  \, , \text{ or if } i = \lbrace 1,2 \rbrace, \, f\times g
+\end{gathered} & \qquad \, 
+\begin{gathered}
+\text{ coproduct } ( \mu_j, \coprod_{i\in I } A_i  )_{j \in I} \\ 
+\text{ injection } \mu_j : A_j \to \coprod_{i\in I} A_i  \\
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  \\ 
+	A_j  & \coprod_{i\in I} A_i   \\
+};
+\path[->]
+(m-2-1) edge node [above] {$f_j$} (m-1-2)
+edge node [above] {$\mu_j$} (m-2-2)
+(m-2-2) edge node [right] {$[f_i]$} (m-1-2)
+;
+\end{tikzpicture}  \\
+C\xleftarrow{ [ f, g ] } A +  B \\
+\coprod_{i \in I } f_i  \, , \text{ or if } i = \lbrace 1,2 \rbrace, \, f +  g
+\end{gathered}
+\end{aligned}
+\]
+
+\subsubsection{Examples (of coproducts)} 
+
+\begin{itemize}
+	\item if $(A_i)_I$ pairwise-disjoint family of sets, then $(\mu_j, \bigcup_{i\in I} A_i)_{j\in I}$ is coproduct in $\text{Set}$.  \\
+	If $(A_i)_I$ arbitrary set-indexed family of sets, then it can be ``made disjoint'' by pairing each $A_i$ with index $i$, i.e. by working with $A_i \times \lbrace i \rbrace$ rather than $A_i$.  
+	
+	So $\bigcup_{i\in I } (A_i \times \lbrace i \rbrace)$ disjoint.  Consider 
+	\[
+	\begin{aligned}
+	&  \mu_j : A_j \to \bigcup_{i \in I} A_i \times \lbrace i \rbrace \\ 
+	&  \mu_i(a) = (a,j)
+	\end{aligned}
+	\]
+	$(\mu_j, \bigcup_{i\in I} A_i \times \lbrace i \rbrace )_{j\in I}$ is a coproduct in $\text{Set}$.  
+	
+	Indeed, given $\begin{aligned} & \quad \\
+	& f_j:A_j \to A \\
+	& f_j(a) \in A \end{aligned}$, 
+	\[
+	\begin{aligned}
+	& [f_i] : \coprod_{i\in I} A_i \times \lbrace i \rbrace \to A \\ 
+	& [f_i]\circ \mu_j = f_j 
+	\end{aligned}
+	\]
+	where
+	\[
+	f_j(a) = [f_i]\circ \mu_j(a) = [f_i](a,j) = f_j(a)
+	\]
+	\item  $\text{Top}$ coproducts are ``topological sums''; they're ``concrete'' coproducts (Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{agat:AHS2004})
+	\item $\text{Vec}$ (nonconcrete) coproducts called \emph{direct sums}
+	
+	direct sum $\bigoplus_{i\in I} A_i$ of vector spaces $A_i$ is subspace of direct product $\prod_{i\in I} A_i$ \\
+	consisting of all elements $(a_i)_{i\in I}$ with finite carrier (i.e. $\lbrace i \in I | a_i \neq 0 \rbrace$ is finite), \\
+	\qquad injections \[
+	\begin{aligned} & \quad \\
+	& \mu_j : A_j \to \bigoplus_{i\in I } A_i  \\
+	& \mu_j(a) = (a_i)_{i\in I} \text { with } a_i = \begin{cases} a & \text{ if } i = j  \\ 0 & \text{ if } i \neq j \end{cases}
+	\end{aligned}
+	\]
+	
+	\item $\text{Grp}$ has nonconcrete coproducts, ``free products''
+\end{itemize}
+
+\section{Naturality; Natural transformations}
+
+\begin{definition}[Natural Transformation]\label{agat:Def:NaturalTransformation}
+	If functors $F,G$, categories $\mathbf{C}, \mathbf{D}$, 
+	\[
+	\begin{aligned}
+	& F:\mathbf{C} \to \mathbf{D} \\ 
+	& G:\mathbf{C} \to \mathbf{D} 
+	\end{aligned}
+	\]
+	the \textbf{natural transformation} $\eta$ from $F$ to $G$ is a family of morphisms s.t. \\
+	
+	\begin{enumerate} 
+		\item $\forall \, X \in \text{Obj}\mathbf{C}$, $\eta_X : F(X) \to G(X)$ s.t. $F(X), G(X) \in \text{Obj}\mathbf{D}$. morphisms $\eta_X \in \text{Hom}_{\mathbf{D}}(F(X), G(X)) \subset \text{Mor}\mathbf{D}$ is called \textbf{component} of $\eta$ at $X$.
+		\item components must be s.t. $\forall \, $ morphism $f: X \to Y$ in $\mathbf{C}$, i.e. $f\in \text{Hom}_{\mathbf{C}}(X, Y) \in \text{Mor}\mathbf{C}$, 
+		\begin{equation}
+		\eta_Y \circ F(f) = G(f) \circ \eta_X
+		\end{equation} 
+		i.e. 
+		\[
+		       \begin{tikzpicture}
+		\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+		{
+			       F(X) & F(Y) \\
+			       G(X) & G(Y) \\
+			};
+		\path[->]
+		(m-1-1) edge node [above] {$F(f)$} (m-1-2)
+		edge node [auto] {$\eta_X$} (m-2-1)
+		(m-1-2) edge node [auto] {$\eta_Y$} (m-2-2)
+		(m-2-1) edge node [auto] {$G(f)$} (m-2-2);
+		\end{tikzpicture}
+		\]
+		
+		If both $F,G$ contravariant, 
+		\[
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+		{
+			       F(X) & F(Y) \\
+			       G(X) & G(Y) \\
+			};
+		\path[->]
+		(m-1-2) edge node [above] {$F(f)$} (m-1-1)
+		(m-1-1) edge node [auto] {$\eta_X$} (m-2-1)
+		(m-1-2) edge node [auto] {$\eta_Y$} (m-2-2)
+		(m-2-2) edge node [auto] {$G(f)$} (m-2-1);
+		\end{tikzpicture}
+		\]
+		\end{enumerate} 
+	\end{definition}
+cf. \href{https://en.wikipedia.org/wiki/Natural_transformation}{Wikipedia, "Natural transformation"}
+
+Notation: natural transformation from $F$ to $G$, $\eta:F \to G$, i.e. family of morphisms $\eta_X : F(X) \to G(X)$ is natural in $X$.
+
+cf. Ad\'{a}mek, Herrlich, and Strecker (2004) \cite{agat:AHS2004}.  \\
+
+From pp. 16, Sec. 14 "Natural Transformations", Mac Lane (1978) \cite{agat:MacL1978}, \\
+
+$\forall \,$ arrow $f: C \to C'$ in $C$, i.e. notation: $\forall \, $ morphism $f:X \to Y$ in $\mathbf{C}$, 
+
+Mac Lane's notation:
+\[
+\begin{gathered}
+\begin{tikzcd} 
+c \arrow{d}{f} \\
+c'
+\end{tikzcd} \qquad \, 
+\begin{tikzcd}
+Sc \arrow{d}{Sf} \arrow{r}{\tau c} & Tc \arrow{d}{Tf} \\
+Sc' \arrow{r}{\tau c'} & Tc'
+\end{tikzcd}
+\end{gathered}
+\]
+
+My notation:
+\[
+\begin{gathered}
+\begin{tikzcd} 
+X \arrow{d}{f} \\
+Y
+\end{tikzcd} \qquad \,
+\begin{tikzcd}
+FX \arrow{d}{Ff} \arrow{r}{\eta_X} & GX \arrow{d}{Gf} \\
+FY \arrow{r}{\eta_Y} & GY
+\end{tikzcd}
+\end{gathered}
+\]
+
+We say that $\tau_c : Sc \to Tc$ is natural in $C$; $\eta_X : FX \to GX$ is natural in $X$. \\
+
+If we think of functor $S$ as giving a picture in $B$ of (all the objects, arrows of) $C$, then \\
+natural transformation $\tau$ is set of arrow $s$ mapping (or, translating) the picture $S$ to picture $T$, with all squares (and parallelograms!) like that above commutative:
+
+Mac Lane's notation:
+\[
+\begin{gathered}
+\begin{tikzcd}
+a \arrow{dr}{f} \arrow{dd}{h} & \\
+& b \arrow{dl}{g} \\ 
+c & 
+\end{tikzcd} \qquad \, 
+\begin{tikzcd}
+Sa \arrow{dr}{Sf} \arrow{dd}{Sh} \arrow{rr}{\tau a} & & Ta \arrow[dd, crossing over]{} \arrow{dr}{Tf} &  \\
+& Sb \arrow{dl}{Sg} \arrow{rr}[swap, pos=0.2]{\tau b} & & Tb \arrow{dl}{Tg} \\ 
+Sc \arrow{rr}{\tau c} & & Tc & 
+\end{tikzcd} 
+\end{gathered}
+\]
+
+My notation:
+\[
+\begin{gathered}
+\begin{tikzcd}
+X \arrow{dr}{f} \arrow{dd}{g} & \\
+& Y \arrow{dl}{h} \\ 
+Z & 
+\end{tikzcd} \qquad \,
+\begin{tikzcd}
+FX \arrow{dr}{Ff} \arrow{dd}{Fg} \arrow{rr}{\eta_X} & & GX \arrow[dd, crossing over]{} \arrow{dr}{Gf} &  \\
+& FY \arrow{dl}{Fh} \arrow{rr}[swap, pos=0.2]{\eta_Y} & & GY \arrow{dl}{Gh} \\ 
+FZ \arrow{rr}{\eta_Z} & & GZ & 
+\end{tikzcd} 
+\end{gathered}
+\]
+
+\emph{natural equivalence} or i.e. natural isomorphism - natural transformation $\tau$ with $\forall \, $ component $\tau c$ invertible in $B$, $\tau : S \cong T$.  \\
+notation: $\eta$ with $\forall \, $ component $\eta_X$ invertible in $\mathbf{D}$; $\eta : F \cong G$. \\
+$\Longrightarrow $ inverses $(\tau c)^{-1}$ in $B$ are components of natural isomorphism $\tau^{-1} :T \to S$. \\
+notation: inverses $(\eta_X)^{-1}$ in $\mathbf{D}$ are components of natural isomorphism $\eta^{-1}: G\to F$. 
+
+
+\subsection{Examples of Natural transformations}
+
+e.g. Hurewicz homomorphism $\pi_n(X) \to H_n(X)$ $\forall \, $ topological space $X$ is a natural transformation from $n$th homology functor. \\
+$\pi_n : \textbf{Top} \to \mathbf{Grp}$ to $n$th homology functor $H_n : \textbf{Top} \to \textbf{Grp}$.
+
+e.g. \textbf{determinant} $\det$ is a natural transformation (cf. Mac Lane (1978) \cite{agat:MacL1978}). \\
+Let $\det_KM = $ determinant of $n\times n$ matrix $M$, with entries in commutative ring $K$, while \\
+$K^* \equiv $ group of units (invertible elements) of $K$ \\
+
+Thus $M$ non-singular when $\det_KM$ is a unit, and $\det_K$ is a morphism $GL_nK \to K^*$ of groups. \\
+Because $\det$ is defined by same formula $\forall \,$ ring $K$, each morphism $f: K \to K'$ of commutative rings leads to 
+\[
+\begin{tikzcd}
+GL_nK \arrow{d}{GL_nf} \arrow{r}{\det_K} & K^* \arrow{d}{f^*} \\
+GL_nK' \arrow{r}{\det_{K'}} & (K')^*
+\end{tikzcd}
+\]
+
+$\Longrightarrow \det : GL_n \to ()^*$ is natural between 2 functors $\textbf{CRng} \to \textbf{Grp}$
+
+TODO: Work out examples of natural transformations involving group commutators on pp. 17 of Mac Lane (1978) \cite{agat:MacL1978}.
+
+e.g. category $\textbf{Finord} = $ all finite ordinal numbers $n$ \\
+category $\textbf{Set}_f = $ all finite sets (in some universe $U$) \\ 
+$\forall \, $ ordinal $n = \lbrace 0 , 1 , \dots n-1 \rbrace$ is a finite set, so inclusion $S$ is a functor $S: \textbf{FinOrd} \to \textbf{Set}_f$ \\
+$\forall \, $ finite set $X$ determines ordinal number $n = \# X$, number of elements in $X$ \\
+$\forall \, X$, choose bijection $\theta_X:X \to \# X$ \\
+$\forall \, $ function $f:X \to Y$, $X,Y$ finite sets, \\
+Choose corresponding function $\# f : \# X \to \# Y$ between ordinals by $\# f = \theta_Y f \theta_X^{-1}$, so that 
+\begin{equation}\label{agat:Eq:NaturalIsomorphismOrdinalNumbersFiniteSets}
+\begin{tikzcd}
+X \arrow{d}{f} \arrow{r}{\theta_X} & \# X \arrow{d}{\# f} \\
+Y \arrow{r}{\theta_Y} & \# Y
+\end{tikzcd}
+\end{equation}
+
+$\Longrightarrow \# $ a functor $\# : \textbf{Set}_f \to \textbf{FinOrd}$ \\
+If $X$ itself an ordinal number, take $\theta_X$ to be an identity. \\
+$\Longrightarrow \# \circ S$ is identity functor $I'$ of $\textbf{FinOrd}$ \\
+$S \circ \#$ is not identity functor $I : \textbf{Set}_f \to \textbf{Set}_f$ because \\
+$S \circ \#$ sends each finite set $X$ to a special finite set - ordinal number $n$ with same number of elements as $X$. \\
+However $\theta: I \to S \#$ is a natural isomorphism by square diagram above (Eq. \ref{agat:Eq:NaturalIsomorphismOrdinalNumbersFiniteSets}).  
+\[
+I \cong S\circ \# , \quad \, I' = \# \circ S 
+\]
+
+equivalence between categories $\mathbf{C}, \mathbf{D} =$ \\
+pair of functors $\begin{aligned} & \quad \\ 
+& S : \mathbf{C} \to \mathbf{D} \\ 
+& T : \mathbf{C} \to \mathbf{D} \end{aligned}$ and \\
+natural isomorphisms $I_C \cong T \circ S$, $I_D \cong S \circ T$. 
+
+
+
+
+
+\section{Limits}
+
+\subsection{Pullback}
+
+\begin{definition}
+	For some category $\mathbf{A}$, and for 
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+	{
+		& Y \\
+		X & Z \\
+	};
+	\path[->]
+	(m-1-2) edge node [right] {$t$} (m-2-2)
+	(m-2-1) edge node [below] {$s$} (m-2-2);
+	\end{tikzpicture}
+	
+	$X,Y,Z \in \text{Obj}\mathbf{A}$.  
+	
+	$\begin{aligned} & \quad \\
+	& s : X \to Z \\
+	& t: Y \to Z \end{aligned}$ ; \qquad \, $s,t \in \text{Mor}\mathbf{A}$
+	
+	Then the \textbf{pullback} or ``pullback square'' consists of $P \in \text{Obj}\mathbf{A}$, $\begin{aligned} & \quad \\
+	& \pi_1 : P \to X \\
+	& \pi_2: P \to Y \end{aligned}$ s.t. 
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+	{
+		P & Y \\
+		X & Z \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$\pi_2$} (m-1-2)
+	edge node [auto] {$\pi_1$} (m-2-1)
+	(m-1-2) edge node [auto] {$t$} (m-2-2)
+	(m-2-1) edge node [auto] {$s$} (m-2-2);
+	\end{tikzpicture}
+	
+	commutes and s.t. $\forall \, $ commutative square in $\mathbf{A}$ 
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+	{
+		A & Y \\
+		X & Z \\
+	};
+	\path[->]
+	(m-1-1) edge node [above] {$f_2$} (m-1-2)
+	edge node [auto] {$f_1$} (m-2-1)
+	(m-1-2) edge node [auto] {$t$} (m-2-2)
+	(m-2-1) edge node [auto] {$s$} (m-2-2);
+	\end{tikzpicture}
+	
+	then $\exists \, ! \, f: A \to P$ s.t. 
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=5em, minimum width=2em]
+	{
+		A &   & \\ 
+		& P & Y \\
+		& X & Z \\
+	};
+	\path[->]
+	(m-2-2) edge node [above] {$\pi_2$} (m-2-3)
+	edge node [auto] {$\pi_1$} (m-3-2)
+	(m-2-3) edge node [auto] {$t$} (m-3-3)
+	(m-3-2) edge node [auto] {$s$} (m-3-3)
+	(m-1-1) edge node [above] {$f_2$} (m-2-3)
+	edge node [above] {$f$} (m-2-2)
+	edge node [below] {$f_1$} (m-3-2);
+	\end{tikzpicture}
+	
+	
+\end{definition}
+
+Simmons (2011) \cite{agat:Simm2011}
+
+cf. 3.3 \emph{Some less simple functors}, pp. 79, of Simmons (2011) \cite{agat:Simm2011}
+
+\section{Monads}
+
+cf. Ch. 6, Monads and Algebras, starting on pp. 137 of Mac Lane (1971) \cite{agat:MacL1978}.
+
+\subsection{Monads in a Category}
+
+\subsubsection{Development of a Monad}
+
+Let's follow the development of a Monad according to Mac Lane (1971) \cite{agat:MacL1978} starting on pp. 137 in Sec. 1. "Monads in a Category."
+
+$\forall \, $ endofunctor $T: X \to X$, $T$ has composites $T^2 = T\circ T : X \to X$, $T^3 = T^2 \circ T:X \to X$ in Mac Lane's notation, $X$ is a category. In our notation, $\mathbf{C}$ denotes the category. And so for endofunctor $T: \mathbf{C} \to \mathbf{C}$, $T^2 = T\circ T: \mathbf{C} \to \mathbf{C}$, $T^3 = T^2 \circ T: \mathbf{C} \to \mathbf{C}$. 
+
+Recall from Def. \ref{agat:Def:Endofunctor}, that for endofunctor $T:\mathbf{C} \to \mathbf{C}$, the \emph{object map} $T: \text{Obj}{\mathbf{C}} \to \text{Obj}{\mathbf{C}}$ acts just like a morphism in $\text{Mor}{\mathbf{C}}$! So $T: X \to T(X)$ for $X, T(X) \in \text{Obj}{\mathbf{C}}$. Also, recall that the \emph{morphism map} $T: \text{Mor}_{\mathbf{C}} \to \text{Mor}_{\mathbf{C}}$ acts like the usual morphism map, such that $Tf : T(X) \to T(Y)$ if $f:X\to Y$, for $X,Y \in \text{Obj}{\mathbf{C}}$. \\
+
+If $\mu:T^2 \to T$ is a \emph{natural transformation}, then recall the definition of the natural transformation, Def. \ref{agat:Def:NaturalTransformation}, and apply that onto $\mu$. \\
+
+$\forall \, X \in \text{Obj}{\mathbf{C}}$, $\mu_X: T^2(X) \to T(X)$ with $T^2(X), T(X) \in \text{Obj}{\mathbf{C}}$. $\mu_X$ is a morphism $\in \text{Hom}_{\mathbf{C}}(T^2(X), T(X))$ (!!), as well as being a component of $\mu$ at $X$. \\
+
+$\forall \,$ morphism $f: X\to Z$ in $\mathbf{C}$, $X, Z \in \text{Obj}{\mathbf{C}}$ (the notation of using $Z$ to emphasize that $f$ can map $X$ to \emph{any} arbitrary object in $\text{Obj}{\mathbf{C}}$), 
+\[
+\mu_Z \circ T^2f = Tf \circ \mu_X 
+\]
+i.e. 
+\[
+\begin{tikzcd}
+	T^2(X) \arrow{d}{T^2f} \arrow{r}{\mu_X} & T(X) \arrow{d}{Tf} \\
+	T^2(Z) \arrow{r}{\mu_Z} & T(Z)
+\end{tikzcd}
+\]
+
+Let $T\mu : T^3 \to T^2$ \emph{denote} a natural transformation with components $(T\mu)_X = T(\mu_X) : T^3(X) \to T^2(X)$, \\
+while $\mu T: T^3\to T^2$ denotes another natural transformation with components $(\mu T)_X  = \mu_{T(X)}$.  
+
+$T\mu$, $\mu T$ are "horizontal" composites in the sense of Sec. II. 5, "The Category of All Categories". (TODO: Understand what Mac Lane (1971) \cite{agat:MacL1978} means when he says this on pp. 137). \\
+
+Let's jump the gun and consider what natural transformation $\eta : 1_{\mathbf{C}} \to T$ means with respect to the definition of a natural transformation, Def. \ref{agat:Def:NaturalTransformation}. $1_{\mathbf{C}}$ is the identity functor, mapping everything to itself. \\
+
+$\forall \, X \in \text{Obj}{\mathbf{C}}$, $\eta_X: 1_{\mathbf{C}}(X) \to T(X)$ with $1_{\mathbf{C}}(X) = X, T(X) \in \text{Obj}{\mathbf{C}}$. $\eta_X$ is a morphism $\in \text{Hom}_{\mathbf{C}}(1_{\mathbf{C}}(X), T(X)) = \text{Hom}_{\mathbf{C}}(X, T(X))$ (!!!), as well as being a component of $\eta$ at $X$. Not only that, it applies $T$ onto $X$! \\
+
+$\forall \,$ morphism $f: X\to Z$ in $\mathbf{C}$, $X, Z \in \text{Obj}{\mathbf{C}}$, 
+\[
+\eta_Z \circ 1_{\mathbf{C}}f = \eta_Z \circ f = Tf \circ \eta_X 
+\]
+i.e. 
+\[
+\begin{tikzcd}
+1_{\mathbf{C}}(X) \arrow{d}{1_{\mathbf{C}}f} \arrow{r}{\eta_X} & T(X) \arrow{d}{Tf} \\
+1_{\mathbf{C}}(Z) \arrow{r}{\eta_Z} & T(Z)
+\end{tikzcd} \Longrightarrow 
+\begin{tikzcd}
+X \arrow{d}{f} \arrow{r}{\eta_X} & T(X) \arrow{d}{Tf} \\
+Z \arrow{r}{\eta_Z} & T(Z)
+\end{tikzcd}
+\]
+
+\subsubsection{Definitions and Properties of a Monad}
+
+\begin{definition}[Monad]\label{agat:Def:Monad}
+\textbf{monad} $T = \langle T, \eta, \mu \rangle$ in category $\mathbf{C}$ consists of functor $T: \mathbf{C} \to \mathbf{C}$ and 2 natural transformations
+\begin{equation}
+\begin{aligned}
+& \eta : 1_{\mathbf{C}} \to T \\ 
+& \mu : T^2 \to T
+\end{aligned}
+\end{equation}	
+s.t. 
+\begin{equation}\label{agat:Eq:MonadAssociativeDiagram}
+\begin{tikzcd}
+T^3 \arrow{d}{\mu T} \arrow{r}{T\mu} & T^2 \arrow{d}{\mu} \\
+T^2 \arrow{r}{\mu} & T
+\end{tikzcd}
+\end{equation}
+being like an "associative" diagram, and 
+\begin{equation}\label{agat:Eq:MonadLeftRightUnitLawsDiagram}
+\begin{tikzcd}
+	1T \arrow[equal]{d} \arrow{r}{\eta T} & T^2 \arrow{d}{\mu} & T1 \arrow{l}[swap]{T \eta} \arrow[equal]{d} \\
+	T \arrow[equal]{r} & T & T \arrow[equal]{l}
+\end{tikzcd}
+\end{equation}
+being a diagram that could be said to express the left and right unit laws.
+\end{definition} 
+
+Formally, the monad definition is like that of a monoid $M$ in $\mathbf{Sets}$: \\
+set $M$ of elements of monad \quad $\to $ \, replaced by endofunctor $T : X \to X$ \\
+Cartesian product $\times$ of 2 sets \quad $\to $ \, composite of 2 functors \\
+binary operation $\mu : M \times M \to M$ of multiplication \quad $\to $ \, transformation $\mu : T^2 \to T$ and \\
+unit (identity) element $\eta:1 \to M$ \quad $\to $ \, $\eta : 1_{\mathbf{C}} \to T$. \\
+
+Thus, call \\
+$\eta$ the \textbf{unit} of monad $T$. The first commutative diagram, Eq. \ref{agat:Eq:MonadAssociativeDiagram}, is the associative law for a monad, and \\
+$\mu$ the \textbf{multiplication} of monad $T$. The 2nd. and 3rd. diagrams, Eq. \ref{agat:Eq:MonadLeftRightUnitLawsDiagram} expresses the left and right \emph{unit laws}.
+
+\begin{proposition}[Coherence conditions]\label{agat:Prop:MonadCoherenceConditions}
+	\begin{equation}
+	\begin{aligned}
+	& \mu \circ T \mu = \mu \circ \mu T \quad (\text{as natural transformations $T^3 \to T$, $\mu \circ T\mu$ and $\mu \circ \mu T$, that is}) \\ 
+	& \mu \circ T \eta = \mu \circ \eta T = 1_T \quad (\text{as natural transformations $T \to T$, $1_T \equiv$ identity functor}) 
+	\end{aligned}
+	\end{equation}
+	
+	For the last statement, it is equal to commutative diagram Eq. \ref{agat:Eq:MonadLeftRightUnitLawsDiagram}, since it can be redrawn as follows:
+\[
+\begin{tikzcd}
+	T \arrow{d}{ T \eta} \arrow{r}{\eta T} \arrow[equal]{dr} & T^2 \arrow{d}{\mu} \\
+	T^2 \arrow{r}{\mu} & T
+\end{tikzcd}	
+\]
+	
+\end{proposition}
+
+\subsection{Monads and Adjoints}
+
+cf. Ch. 6, Monads and Algebras, pp. 138 of Mac Lane (1971) \cite{agat:MacL1978}.
+\begin{proposition}
+	adjunction $\langle F, G, \eta, \epsilon \rangle : X \to A$, $\exists \, $ monad in category $X$ (notation $\langle F,G, \eta, \epsilon \rangle : \mathbf{C} \to \mathbf{D}$, $\exists \, $ monad in category $\mathbf{C}$). 
+	
+	Specifically, 2 functors $F:\mathbf{C} \to \mathbf{D}$, $G:\mathbf{D} \to \mathbf{C}$ have composite $T = GF$, an endofunctor, \\
+	unit $\eta$ of adjunction is natural transformation $\eta : 1 \to T$, \\
+	counit $\epsilon :FG \to 1_A$ of adjunction yields by horizontal composition; a natural transformation
+	\[
+	\mu = G\epsilon F: GFGF \to GF = T
+	\] 
+\end{proposition}
+
+TODO: adjunction.
+
+\subsection{Applications of Monads: Correspondence between Monads in Computer Science and Monads in Category Theory}
+
+cf. \href{https://ncatlab.org/nlab/show/monad+%28in+computer+science%29}{monad (in computer science), nLab}
+
+For monads in computer science, \\
+maps type $X$ to new type $T(X)$, \\
+equipped with rule for composing 2 functions of form $f:X \to T(Y)$ (called Kleisli functions), $g:Y \to T(Z)$ to function 
+\[
+g\circ f : X \to T(Z) \quad \text{(their Kleisi composition)}
+\]
+associative in evident sense, unital with respect to given unit function called $\text{pure}_X: X \to T(X)$ to be thought of as taking a value to the pure computation that simply returns that value. \\
+
+e.g. when monad $T(-)$ forms product types $T(X) = X \times Q$, some fixed type $Q$ that carries structure of monoid. \\
+Then Kleisi function $f:X \to Y \times Q$ is a function $X\to Y$  that produces as a side effect output of type $Q$. \\
+Kleisi composition of $\begin{aligned} &  \quad \\
+	& f:X\to Y\times Q \\
+	& g: Y \to Z\times Q\end{aligned}$ \, not only evaluates the 2 programs in sequence, but also combines their $Q$-output using monoid operation of $Q$, e.g.
+	
+	if $\begin{aligned} & \quad \\ 
+	& fx = (y, q) \\ 
+	& gy = (z,q')\end{aligned}$  \, then $(g\circ f)(x) = (z, qq')$ \\
+	
+Let syntactic category be denoted $\mathbf{C}$. \\
+
+$\text{Obj}{\mathbf{C}} \ni X$ \quad \, $\to $ \, types of the (programming) language \\
+$\text{Hom}_{\mathbf{C}}(X,Y)$ \quad \, $\to $ \, "programs" that takes value of type $X$ as input and returns value of type $Y$ \\
+
+endofunctor $T: \mathbf{C} \to \mathbf{C}$ \\
+object map $T:X \to T(X)$ sends each type $X\in \text{Obj}{\mathbf{C}}$ to another type $T(X) \in \text{Obj}{\mathbf{C}}$.  \\
+
+unit natural transformation $\epsilon:1_{\mathbf{C}} \to T$ provides $\forall \,$ type $X$ a component morphism $\text{pure}_X :X \to T(X)$ (notation, \href{https://ncatlab.org/nlab/show/monad+%28in+computer+science%29}{ncat} uses the notation $\epsilon$; we will use $\eta$ for the "unit" natural transformation of a monad):
+	\[
+		\begin{aligned}
+		&  \eta : 1_{\mathbf{C}} \to T \\ 
+		& \eta_X : X\to T(X) \equiv \text{pure}_X : X \to T(X)
+		\end{aligned}	
+	\]
+
+multiplication natural transformation $\mu :T^2 \to T$ provides $\mu_X : T^2(X) \to T(X)$ which induces Klesli composition by formula
+\begin{equation}
+\begin{aligned} 
+	(g\circ f) & := (Y \xrightarrow{g} T(Z)) \circ_{\text{Klesli}} (X\xrightarrow{f} T(Y)) \\
+	& := X \xrightarrow{f} T(Y) \xrightarrow{T(g)} T(T(Z)) \xrightarrow{ \mu(Z) } TZ
+\end{aligned} 
+\end{equation}
+$T(g)$ uses fact that $T(-)$ is functor morphism $\mu(Z)$ is 1 that implements "$T$-computation".
+
+Now \href{https://ncatlab.org/nlab/show/monad+%28in+computer+science%29}{nLab} says this about the "bind" operation: \\
+	"bind" \quad $\leftrightarrow$ \, multiplication on monad $M$, \\
+	\begin{equation}\label{agat:Eq:BindAsStrongMonad}
+	\begin{gathered} 
+	MA \to (MB)^A \to MB \text{ equivalent to map } MA \times MB^A \to MB \\ 
+	 MA \times MB^A \xrightarrow{ \text{ strength } } M(A\times MB^A) \xrightarrow{ M_{\text{eval}_{A, MB} } } MMB \xrightarrow{ mB } MB
+	\end{gathered} 
+	\end{equation}
+To try to make sense of Eq. \ref{agat:Eq:BindAsStrongMonad}, consider the following: 
+\[
+\begin{gathered}
+\text{Recall for natural transformation $\eta$, the component $\eta_X$: } \mu_X : T^2(X) \to T(X) \text{ and for some morphism $f \in \text{Mor}{\mathbf{C}}$}, \\
+	f:X\to Z \\
+	Tf:T(X) \to T(Z)
+\end{gathered} 
+\]
+So if $f:X\to T(Y)$ instead, 
+\[
+\begin{gathered}
+Tf:T(X) \to T^2(Y) \\ 
+(\mu_Y \circ Tf) : T(X) \to T(Y)
+\end{gathered} 
+\]
+Form a Cartesian product of $T(X)$ and $\text{Hom}_{\mathbf{C}}(X,T(Y)) \ni f$ as inputs: $T(X) \times \text{Hom}_{\mathbf{C}}(X, T(Y))$. \\
+
+Then I suggest that Eq. \ref{agat:Eq:BindAsStrongMonad} is translated as follows:
+\begin{equation}
+T(X) \times \text{Hom}_{\mathbf{C}}(X, T(Y)) \xrightarrow{ \text{ apply } T } T( T(X) \times \text{Hom}_{\mathbf{C}}(X, T(Y))) \xrightarrow{ Tf} T^2(Y) \xrightarrow{ \mu_Y } T(Y) 
+\end{equation}
+where apply $T$ is on $f\in \text{Hom}_{\mathbf{C}}(X,T(Y))$ in order to form $Tf$.
+
+\subsubsection{More on Klesli composition}
+
+cf. \href{https://ncatlab.org/nlab/show/Kleisli+category}{Kleisli category, nLab}.
+
+\begin{proposition}\label{agat:Prop:KlesliCompositionForm}
+	Klesli composition of $g\circ f$ of $\begin{aligned} & \quad \\ 
+	& f: X\to T(Y) \\ 
+	& g: Y \to T(Z) \end{aligned}$ \, is given by 
+	\[
+	X \xrightarrow{f} TY \xrightarrow{ Tg} T^2Z \xrightarrow{\mu_Z} TZ 
+	\]
+	i.e. 
+	\begin{equation}
+		\boxed{ g \circ_{\text{Klesli}} f = \mu_Z \circ Tg \circ f }
+	\end{equation}
+	with $ \mu_Z \circ Tg \circ f : X \to T(Z)$
+\end{proposition}
+
+\begin{proof}
+	Fullness of functor $T$: \\
+	
+	$\forall \, $ morphism $g: T(X) \to T(Y)$ has antecedent the composition
+	\[
+	X\xrightarrow{ \eta_X} T(X) \xrightarrow{g} T(Y) 
+	\]
+	i.e. $g\circ \eta_X : X \to T(Y)$. \\
+	
+Consider $T(g \circ \eta_X) = Tg \circ T \eta_X : T(X) \to T^2(Y)$ for 
+\[
+\begin{aligned} 
+	& T\eta_X : T(X) \to T^2(X) \\ 
+	& Tg : T^2(X) \to T^2(Y) \\ 
+	& \mu_Y : T^2(Y) \to T(Y) 
+\end{aligned} 
+\]
+So 
+\[
+\mu_Y \circ Tg \circ T\eta_X = \mu_Y \circ T(g\circ \eta_X) : T(X) \to T(Y)
+\]
+Because $g$ is a morphism of algebras (TODO: understand what this means, from \href{https://ncatlab.org/nlab/show/Kleisli+category}{Kleisli category, nLab}), 
+\[
+\mu_Y \circ Tg \circ T\eta_X = g\circ \mu_X \circ T\eta_X = g
+\]
+where $\mu_Y \circ Tg = g\circ \mu_X$ uses natural transformation definition \ref{agat:Def:NaturalTransformation} for the property $\mu_Z \circ T^2 f = Tf \circ \mu_X$ (TODO: Show $g=Tf$ is of this form), \\
+and $\mu \circ T\eta = \mu \circ \eta T = 1_T$ (coherence condition from Prop. \ref{agat:Prop:MonadCoherenceConditions}).  \\
+
+Faithfulness: \\
+
+If $\mu_Y \circ Tf = \mu_Y \circ Tg$, then precompose by $\eta_X$ yields 
+\[
+\mu_Y \circ Tf \circ \eta_X = \mu_Y \circ  \eta_{f(X)} \circ f = \mu_Y \circ \eta_{T(Y)} \circ f = f
+\]
+where \\
+$Tf\circ \eta_X = \eta_{T(Y)} \circ f$ from natural transformation def. \ref{agat:Def:NaturalTransformation} was used, and $\mu \circ \eta T = 1_T$ (coherence condition) was also used, for $f:X \to T(Y)$. \\
+
+Similarly for $g$. $\mu_Y \circ Tf = \mu_Y \circ Tg \Longrightarrow f=g$.
+\end{proof} 
+
+Notice that the multiplication natural transformation $\mu:T^2 \to T$ was needed to induce the Klesli composition.
+
+\subsubsection{Dictionary between Monads in Computer Science and Monads in Category Theory}
+
+\[
+\boxed{ \texttt{join} \quad \text{ is } \, \mu_X : T^2(X) \to T(X)}
+\]
+
+\[
+\boxed{ \texttt{return} \quad \text{ is } \, \eta_X: X \to T(X) }
+\]
+
+\[
+\boxed{ \texttt{fmap} \quad \text{ is the morphism map (arrow map) for functor } F}
+\]
+
+\[
+\boxed{ \texttt{bind} \quad \text{ is } \, \mu_Y \circ Tf : T(X) \to T(Y) \text{ but ... }}
+\]
+\texttt{bind} is more nuanced in that, from the Haskell and functional programming perspective, it takes in \emph{two} inputs. \\
+
+One of them is an element $x$ in the object $X$, $x \in X$. The other is a "transformation of type $X \to T(Y)$." I believe that would mean a morphism $f: X \to T(Y)$.  \\
+
+What \v{C}uki\'{c} in \v{C}uki\'{c} (2018) \cite{agat:Cuki2018} calls \texttt{transform} is the \emph{morphism map} (arrow map) for a functor $F$. However, note that when it comes to concrete implementation, the concrete implementation applies to \emph{instances} of a type $X \in \text{Obj}{\mathbf{C}}$. For a given type $X$, e.g. \verb|int| (the integer type in C or C++), there are many values that will have that type. It would be good that we work out how the definitions, theorems, and commutative diagrams apply in this case.
+
+
+
+I don't think there's a great way to reconcile what Haskell and functional programming programmers mean by \texttt{bind} with the corresponding concept in category theory. 
+
+\subsection{Examples of Monads in Computer Science}
+
+
+\subsubsection{Reader Monad; Function Monad; Environment Monad} $[W, -] : \mathbf{C}\to \mathbf{C}$.
+
+Given $W \in \text{Obj}{\mathbf{C}}$, ($W$ is a type), 
+\[
+[W, - ] = (W \to (-))
+\]
+where $[-, -] : \mathbf{C}^{\text{op}} \times \mathbf{C} \to \mathbf{C}$.
+
+$W \mapsto $ internal hom out of $W$.
+
+\[
+\begin{aligned} 
+& \eta_X : X \to [W, -](X) \\ 
+& \eta_W: W \to [W, -](W) \\ 
+& \eta_W : w \mapsto [W,-](W)(w) \text{ \, value to constant functions with that value } \\ 
+& \Delta : X \in \text{Obj}{\mathbf{C}} \xrightarrow{ (1,1) } X \times X \\ 
+& \Delta : x \mapsto (w,w)
+\end{aligned} 
+\]
+
+"read in " state of type $W$ (an environment)
+
+\href{https://en.wikipedia.org/wiki/Monad_(functional_programming)#State_monads}{wikipedia} calls this the Environment Nomad. \\
+
+\texttt{reader}: $T \to E \to T = t\mapsto e \mapsto t$ corresponds to $\eta_X : X \to T(X)$ where $T(X) = \text{Hom}_{\mathbf{C}}(E,X)$ s.t. $\eta_X$ sends values $x\in X $ to constant functions (on $E$) to value $x$. \\
+
+Therefore, rewrite the unit component at $X$, i.e. \texttt{reader}, as \\
+\begin{equation}
+\begin{gathered}
+\begin{aligned}
+& X \to E \to X \\
+& x \mapsto e \mapsto x
+\end{aligned} \qquad \, 
+\begin{aligned}
+	& \eta_X : X \to \text{Hom}_{\mathbf{C}}(E,X) \\ 
+	& \eta_X : x \mapsto (e\mapsto x)
+\end{aligned}
+\end{gathered}
+\end{equation}
+Thus, the \emph{unit} component at $X$, called \texttt{unit} or \texttt{return} by programmers, truly maps a value $x \in X$ to a \emph{constant function}:
+\begin{equation}
+\eta_X : x \mapsto (e \mapsto x) \in \text{Hom}_{\mathbf{C}}(E, X)
+\end{equation}
+
+
+\texttt{bind}: $(E\to T) \to (T\to E \to T') \to E \to T' = r\mapsto f \mapsto e \mapsto f(re)e$ corresponds to $\mu_Y \circ Tf:T(X) \to T(Y)$ where $T(X) = \text{Hom}_{\mathbf{C}}(E,X)$, $T(Y) = \text{Hom}_{\mathbf{C}}(E,Y)$, and \\
+$f:X\to T(Y)$ or $f:X\to \text{Hom}_{\mathbf{C}}(E,Y)$ \\
+$Tf : T(X) \to T^2(Y)$ or $Tf : \text{Hom}_{\mathbf{C}}(E,X) \to \text{Hom}_{\mathbf{C}}(E,T(Y)) = \text{Hom}_{\mathbf{C}}(E, \text{Hom}_{\mathbf{C}}(E,Y))$. \\
+
+So let's rewrite \texttt{bind} in our notation:
+\[
+\begin{aligned}
+	& (E\to X) \to & (X \to E \to Y) \to & E \to & Y \\
+	& r \mapsto & f \mapsto & e \mapsto (f(r))(e)(e)
+\end{aligned}
+\]
+
+To clarify these definitions, rewrite the reader monad: the endomorphism $T$ is defined as
+\begin{equation}
+\boxed{  \begin{aligned} & T := [E, -] \\ & T(X) = [E, X] \end{aligned} }
+\end{equation}
+
+For any morphism $f : X \to T(Y) = [E, Y]$, then \\
+recall the Klesli composition: $g \circ_{\text{Klesli}} f = \mu_Z \circ Tg \circ f$ with $g: Y \to T(Z) = [E,Z]$. 
+
+But if you take a look at how wikipedia defines "bind" for the reader monad, then bind \emph{is not} the Klesli composition, but rather it's $\mu_Y \circ Tf$ (!!!):
+\begin{equation}
+\begin{gathered}
+\mu_Y \circ Tf: T(X) \to T(Y) \text{ or } \mu_Y \circ Tf : [E, X] \to [E, Y] \\ 
+r \in [E,X] \qquad \, r(e) \in X \text{ for } e \in E \qquad \, f(r(e)) \in T(Y) = [E,Y] \qquad \, f(r(e))(e) \in Y
+\end{gathered}
+\end{equation}
+bind, as defined by wikipedia for the reader monad \emph{is not} the Klesli composition.
+
+As an example, consider the following example: \\
+$T(Y) \ni (E\to Y) \in \text{Hom}_{\mathbf{C}}(E,Y)$ \\
+$e = $ "dag" $\mapsto y = $ "Hello Dag!" \\
+
+$T(X) \ni (E\to X) \in \text{Hom}_{\mathbf{C}}(E,X)$ \\
+$e \equiv $ \texttt{name} $\mapsto x = $ "Hi \texttt{name}!" \\
+
+$f:X\to T(Y) \to f:X\to \text{Hom}{(E,Y)}$ \\
+$f(x) = $ replace "Hi" with "Hello" in $X$. \\
+
+\texttt{ask}: $E\to E = 1_E$. \\
+\texttt{ask} operation used to retrieve current context. \\
+
+\texttt{local}: $(E\to E) \to (E\to T) \to E \to T = f \mapsto c \mapsto e \mapsto c(fe)$ \\
+local executes a computation in a modified subcontext. $(E\to E)$ modifies the environment, $(E\to T)$ uses the modified environment. \\
+Rewrite \texttt{local} in our notation: \\
+\[
+\begin{aligned} 
+	& (E\to E) \to & (E\to X) \to & E \to & X \\
+	& f \mapsto & c \mapsto & e \mapsto & c(f(e))
+\end{aligned}
+\]
+To make sense of this, let $f \in [E, E]$, $c\in [E,X] = T(X)$, $c\circ f \in [E, X]$ so $(c\circ f)(e) \in X$. \\
+
+
+\subsubsection{Writer Monad} $W \times (-) : \mathbf{C} \to \mathbf{C}$ where $W \in \text{Obj}{\mathbf{C}}$. If $W$ equipped with the structure of monoid, $W \times (-)$ canonically inherits the structure of a \emph{monad}. Hence, the Writer \emph{Monad}.  
+
+Recall $W$ monoid if $W$ is a set equipped with binary operation $\mu : M \times M \to M$ s.t. $(xy)z = x(yz)$ and $1 \in M$ s.t. $1\cdot x = x = x \cdot 1$. \\
+
+\subsubsection{State Monad}
+
+cf. \href{https://ncatlab.org/nlab/show/state+monad}{state monad, nLab}
+
+Input of type $X$, output of type $Y$, mutable state type $W$.
+
+Consider morphism 
+\[
+X\times W \to Y\times W
+\]
+
+Under (Cartesian product $\vdash$ internal hom) adjunction, this is equivalently given by its adjunt, which is a function of type
+\[
+X \to [W, W\times Y]
+\]
+$[W, W\times (-)]$ is the monad, induced by the above adjunction. \\
+
+$X \to [W, W\times Y]$ regarded as a morphism.
+
+$[W, W\times Y]:\mathbf{H} \to \mathbf{H}$ is called \emph{state monad} for mutable states of type $W$.
+
+TODO: Understand the above.
+
+Writer comonad $W \times (-):\mathbf{C} \to \mathbf{C}$, \\
+
+Given by forming Cartesian product with $W$. \\
+
+Reader Monad $\circ$ Writer Comonad is state monad.
+
+cf. \href{https://en.wikipedia.org/wiki/Monad_(functional_programming)#State_monads}{wikipedia}
+
+unit or "return":
+\begin{equation}\label{agat:Eq:ReturnStateMonadWikipedia}
+\begin{aligned}
+& X \to & S \to X \times S \\
+& x \mapsto & (s \mapsto (x, s))
+\end{aligned}
+\end{equation} 
+Compare this to 
+\[
+\begin{aligned} 
+	& \eta_X : X \to T(X) = [S, S \times X] \\ 
+	& \eta_X : x \mapsto (S \to S \times X)
+\end{aligned} 
+\]
+
+"bind" was given by \href{https://en.wikipedia.org/wiki/Monad_(functional_programming)#State_monads}{wikipedia} as 
+\begin{equation}\label{agat:Eq:BindStateMonadWikipedia}
+\begin{aligned} 
+	& (S \to X \times S)  \to & (X \to S \to Y \times S) \to & S \to & Y \times S \\ 
+	& m \mapsto & k \mapsto & s \mapsto & k(x)(s) 
+\end{aligned} 
+\end{equation}
+where $(x, t) = m(s)$
+
+\subsubsection{Properties of the State Monad}
+
+For the unit or "return", $\eta_X : X \to T(X) = [S, S \times X]$, \\
+
+\begin{equation}
+\begin{gathered} 
+\eta_X : x \mapsto (S \to S \times X) \text{ s.t. } \\
+(S \to S \times X) : s \mapsto (s, x)
+\end{gathered} 
+\end{equation}
+Therefore, for the unit component at $X$ of a state monad,
+\begin{equation}
+\boxed{ \eta_X(x)(s) = (s, x) \text{ for } s \in S }
+\end{equation}
+Compare this to what wikipedia says how it defines the "\texttt{return}" operation in Eq. \ref{agat:Eq:ReturnStateMonadWikipedia}.
+
+Consider any morphism $f : X \to T(Y) = [S, S\times Y]$,
+\begin{equation}
+\begin{aligned}
+& f : X \to T(Y) = [S, S\times Y] \\
+& f:x \mapsto (S \to S\times Y) \text{ s.t. } (S \to S \times Y) : s \mapsto (t = f_s(s, x), y = f_x(s, x))
+\end{aligned}
+\end{equation}
+
+Allow morphism $f$ to have "freedom" to set state to arbitrary $t$.
+
+\begin{equation}
+\begin{aligned}
+& Tf:T(X) \to T^2(Y) \to Tf : [S, S\times X] \to T([S, S\times Y]) = [S, S \times [S, S\times Y]] \\
+& Tf:(S \to S \times X) \mapsto (S \to S \times (S \to S \times Y))
+\end{aligned}
+\end{equation}
+
+Then
+\begin{equation}
+\begin{aligned}
+& \mu_Y \circ Tf : T(X) \to T(Y) \text{ or } \mu_Y \circ Tf : [S, S \times X] \to [S, S \times Y] \\ 
+& \mu_Y \circ Tf: (S \to S \times X) \mapsto (S \to S \times Y)
+\end{aligned}
+\end{equation}
+
+Note that 
+\begin{equation}
+	\begin{aligned}
+	& \mu_X : T^2(X) \to T(X) \\ 
+	& \mu_X : (S \to S \times (S \to S \times X)) \mapsto (S \to S \times X)
+	\end{aligned}
+\end{equation} 
+
+\begin{equation}
+\begin{aligned}
+& T^2 f : T^2(X) \to T^3(Y) \\  
+& T^2 f: (S \to S \times (S \to S\times X)) \mapsto (S \to S \times (S \to S \times (S \to S \times Y)))
+\end{aligned}
+\end{equation}
+
+Now
+\[
+\begin{gathered} 
+ \mu_X \circ T^2 f : (S \to (S \times (S \to S \times X))) \mapsto (S \to S \times (S \to S \times Y)) \\ 
+ Tf \circ \mu_X : (S \to S \times (S \to S \times X)) \mapsto (S \to S \times (S \to S \times Y))
+\end{gathered} 
+\]
+and so 
+\[
+\Longrightarrow \mu_X T^2 = Tf \mu_X 
+\]
+Thus, $\mu$, as defined above, \emph{is} a natural transformation.
+
+Show $\eta_{T(Y)} \circ f = Tf\circ \eta_X$. 
+\[
+\begin{gathered} 
+	Tf \circ \eta_X (x) = (S \to S \times (S \to S \times Y)) \\ 
+ \eta_{T(Y)} \circ f(x) = \eta_{T(Y)} (S \to S \times Y) = (S \to S \times (S \to S \times Y))
+\end{gathered} 
+\]
+
+
+Prove now the coherence conditions, Prop. \ref{agat:Prop:MonadCoherenceConditions}. For the first one,
+\[
+\mu \circ T \mu = \mu \circ \mu T
+\]
+
+\[
+\begin{gathered} 
+	\mu \circ T \mu (S \to (S \to S \times (S\to S \times X))) = \mu \circ T (S \times (S \to S \times X)) = \mu (S \to S \times (S \times (S \to S \times Y))) = \\
+	= (S \times (S \to S \times Y)) \\ 
+ \mu\circ \mu T (S \to (S \to S \times (S\to S \times X))) = \mu^2 (S \to S \times (S \to (S \to S \times (S \to S \times Y)))) = \\
+ 	= S \times (S \to S \times Y)
+\end{gathered} 
+\]
+\[
+\Longrightarrow \mu \circ T \mu = \mu \circ \mu T
+\]
+So the first coherence condition is proven.
+
+For the second, 
+\[
+\begin{gathered}
+\mu \circ T \eta (S\to S \times X) = \mu \circ T (S \to S \times (S \to S \times X)) = (S \to S \times (S \to S \times X)) \\
+\mu \eta T (S\to S \times X) = \mu \circ (S \to S \times T(S \to S \times X)) = T(S \to S \times X) = (S \to S \times (S \to S \times X))
+\end{gathered}
+\]
+
+\[
+\]
+Thus, it's been shown that the choice of endomorphism for the state monad, $X \to [S, S \times X]$, fulfills the monad coherence conditions being of this form.
+
+
+
+
+
+
+
+
+
+
+
+
+Consider what "bind" means in category theory. Given
+\begin{equation}
+\begin{aligned}
+& f:X \to T(Y) = [S, S \times Y] \\ 
+& g: Y \to T(Z) = [S, S\times Z] \\ 
+& f(x) = (S \to S\times Y) \\
+& f(x)(s) = (t, y) \text{ where } s, t \in W \\ 
+& g(y) = (S \to S \times Z) \\ 
+& g(y)(t) = (u, z)
+\end{aligned}
+\end{equation}
+Therefore, if we define the usual projection operations on a Cartesian product,
+\begin{equation}
+\begin{aligned}
+& \Pi_W : W \times X \to W \\
+& \Pi_W(w,x) = w
+\end{aligned} \qquad \, 
+\begin{aligned}
+& \Pi_X : W \times X \to X \\
+& \Pi_X(w,x) = x
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+& \mu_Z \circ Tg \circ f : X \to T(Z) = [S, S\times Z] \ni (W \to W \times Z) \\ 
+& \mu_Z \circ Tg \circ f : x \mapsto (S \to S \times Z) \equiv \mu_Z \circ Tg \circ f(x)
+\end{aligned}
+\end{equation}
+such that 
+\begin{equation}
+\boxed{ g(y)(t) = (u,z) \text{ where } y = \Pi_Y(f(x)(s)), \, t = \Pi_W(f(x)(s)) }
+\end{equation}
+Compare this to what wikipedia says in Eq. \ref{agat:Eq:BindStateMonadWikipedia}.
+
+\subsubsection{Continuation Monad}
+
+From \href{https://ncatlab.org/nlab/show/continuation+monad}{nLab}, \\
+In a category $\mathbf{C}$ with internal homs $[-, -]$, so internal homs $[-,-]$ belong to $\text{Obj}{\mathbf{C}}$ (they're objects as well), given object $Y \in \text{Obj}{\mathbf{C}}$, the \emph{continuation monad} is endofunctor
+\begin{equation}
+\boxed{ X \mapsto [[X, Y], Y] } \text{ i.e. } T(X) = [[X, Y], Y] \text{ for object $Y \in \text{Obj}{\mathbf{C}}$ } 
+\end{equation}
+so that $T = X\mapsto [[X, Y] , Y]$
+
+From \href{https://en.wikipedia.org/wiki/Monad\_(functional\_programming)\#Continuation\_monad}{wikipedia},
+
+unit or return:  \\
+
+return type $Y$, maps type $X$ into functions of type $(X \to Y) \to Y$
+\begin{equation} 
+\begin{aligned}
+	& X \to & (X\to Y) \to & Y \\
+	& x\mapsto & f \mapsto & f(x) = y
+\end{aligned}
+\end{equation}
+
+Compare this to
+\begin{equation}
+\begin{aligned}
+& T : X \to [[X, Y], Y] \\ 
+& \eta_X : X \to T(X) = [[X,Y], Y]
+\end{aligned}
+\end{equation}
+
+And so for the \emph{unit} of the Continuation monad,
+\begin{equation}
+\boxed{
+\begin{aligned}
+& \eta_X : X \to T(X) = [[X, Y], Y] \\
+& \eta_X : x\mapsto (f \to y) \\ 
+& \eta_X(x)(f) = y = f(x)
+\end{aligned}
+}
+\end{equation}
+
+bind: \\
+
+\begin{equation}\label{agat:Eq:ContinuationMonadBindWiki}
+\begin{aligned}
+& ((X\to Y) \to Y) \to & (X \to (X' \to Y) \to Y) \to & (X' \to Y) \to & Y \\
+& c \mapsto & f \mapsto & k \mapsto &  c(t\mapsto ftk)
+\end{aligned}
+\end{equation}
+
+From \href{https://ncatlab.org/nlab/show/continuation+monad}{nLab}, if morphism $f:X\to Y$ is in Klesi category of the continuation monad, then it's a morphism in $\mathbf{C}$ of form $X\to T(Y)$ in $\mathbf{C}$. Hence morphism in original category \emph{of the form} $X\to [[Y,S], S]$ is much like a map from $X \to Y$, only instead of "returning" output $Y$ directly, it instead feeds it into given function $Y\to S$, which hence \textbf{continues} the computation. 
+
+So for $X \to [[Y, S], S]$, \href{https://ncatlab.org/nlab/show/internal+hom}{nLab} gives the corresponding \emph{computation rule} for function types of the internal hom $[X, S]$:
+\[
+(y \mapsto a(y))(x) = a(x)
+\]
+
+Hence for $X \to [[X, Y], Y]$, we have $x\mapsto f \mapsto f(x)$ because $f \in [X, Y]$ because $f$ is treated as an object in $\mathbf{C}$. \\
+
+So do the following "rewrite" or change of notation on Eq. \ref{agat:Eq:ContinuationMonadBindWiki}:
+
+\begin{equation}\label{agat:Eq:ContinuationMonadBindWiki2}
+\begin{aligned}
+& ((X \to Z) \to Z) \to (X \to (Y\to Z) \to Z) \to (Y \to Z) \to Z \\ 
+& T(X) \to (X \to T(Y)) \equiv \text{Hom}(X, T(Y)) \to \text{Hom}(Y,Z) \to Z
+\end{aligned}
+\end{equation}
+Let $c\in T(X) = [[X,Z], Z]$. \\
+Let $k \in [Y,Z]$ \\
+Let $f(x) \in [[Y,Z], Z]$ and so \\
+$f(x)(k) \in Z$ \\
+
+Form $x \mapsto f(x)(k) \in [X,Z]$, so $c(x\mapsto f(x)(k)) \in Z$. \\
+
+So "bind" as defined in wikipedia, Haskell/Functional Programming isn't the Klesli composition, but it's
+\[
+\mu_Y \circ Tf : T(X) \to T(Y) = [[Y,Z], Z]
+\]
+
+Write this as 
+\begin{equation}
+\boxed{
+\begin{aligned}
+& (\mu_Y \circ T)(f)(c) \in T(Y) = [[Y,Z], Z] \\
+& (\mu_Y \circ T)(f)(c)(k) \in Z
+\end{aligned}}
+\end{equation}
+
+
+\emph{call with current continuation} function defined as follows: \\
+call/cc
+\begin{equation}\label{agat:Eq:CallCurrentContinuationContinuationMonad}
+\begin{aligned}
+((X \to (X' \to Y) \to Y) \to (X\to Y) \to Y) & \to (X\to Y)  & \to Y \\ 
+f & \mapsto k & \mapsto (f(t\mapsto x \mapsto kt) k) 
+\end{aligned}
+\end{equation}
+
+Let's look at Eq. \ref{agat:Eq:CallCurrentContinuationContinuationMonad}, step-by-step.
+\[
+\begin{gathered}
+\begin{aligned} 
+& (X\to (X' \to Y) \to Y) \\
+& f
+\end{aligned} \text{ corresponds to } \\
+\begin{gathered}
+X \to [[X' , Y], Y] = T(X') \\
+f \equiv f_{XX'} : X \to T(X')
+\end{gathered}
+\end{gathered}
+\]
+
+\subsubsection{\texttt{future} as Continuation Monad}
+
+ \v{C}uki\'{c} (2018) \cite{agat:Cuki2018} asks first if \verb|std::future| in C++ is a functor. Recall the definition of a functor, Def. \ref{agat:Def:Functor}:
+
+\[
+\begin{aligned}
+& F: \mathbf{C} \to \mathbf{D} \text{ with "object" map } \\ 
+& F: \text{Obj}{\mathbf{C}} \to \text{Obj}{\mathbf{D}} \\ 
+& F: X \to F(X)
+\end{aligned}
+\] 
+and the functor's "morphism map":
+\[
+\begin{aligned}
+& Ff :F(X) \to F(Y) \\ 
+& f:X \to Y, \, f \in \text{Hom}_{\mathbf{C}}(X, Y)
+\end{aligned}
+\]
+
+Suppose $X = $ \texttt{T1}, $Y = $ \texttt{T2}. Then in the example on pp. 220, Sec. 10.7.1 Futures as monads" example of \v{C}uki\'{c} (2018) \cite{agat:Cuki2018}, 
+\[
+\begin{aligned}
+& F(X) = \verb|future<T1>| \\ 
+& F(Y) = \verb|future<T2>|
+\end{aligned}
+\]
+
+Instead, the morphisms to consider is of this form:
+\[
+f:X \to T(Y)
+\]
+where $T$ is a functor but a special one: the endomorphism. And $T$ is \verb|std::future|.
+
+Here are examples of morphisms $f, g$:
+\[
+\begin{aligned}
+& \verb|future<std::string> user_full_name(const std::string& login);| \\
+& \verb|future<std::string> to_html(const std::string& text);|
+\end{aligned}
+\]
+
+Now $Tf:T(X) \to T^2(Y)$, how the morphism map for $T$ applies to morphism $f$, now. Recall that we can compose this with the multiplication natural transformation component at $X$, $\mu_X$:
+\[
+\begin{aligned}
+& \mu_X \circ Tf : T(X) \to T(Y) \\ 
+& \mu_X : T^2(X) \to T(X)
+\end{aligned}
+\]
+
+In order to compose morphisms, say $f,g$, recall the "Klesli composition", Prop. \ref{agat:Prop:KlesliCompositionForm}
+\begin{equation}
+g\circ_{\text{Klesili}} f = \mu_Z \circ Tg \circ f
+\end{equation}
+If we call $\mu_Z \circ T$ "bind", $\mu_Z \circ T: \text{Hom}(Y, T(Z)) \to \text{Hom}(T(Y), T(Z))$. The correspondence is such:
+\begin{equation}
+(\texttt{bind}(\verb|to_html|))(\verb|user_full_name|) \Longleftrightarrow \mu_Z \circ Tg \circ f: X \to T(Z)
+\end{equation}
+
+
+\subsubsection{Resources for implementations of Monads} Python and C++ code. \\
+
+\url{https://github.com/Iasi-C-CPP-Developers-Meetup/presentations-code-samples}, namely \\
+\url{https://github.com/Iasi-C-CPP-Developers-Meetup/presentations-code-samples/tree/master/radugeorge} \\
+
+\url{https://github.com/dbrattli/OSlash}, namely \\
+\url{https://github.com/dbrattli/OSlash/tree/master/tests} \\
+
+\href{https://gist.github.com/pfultz2/f538423ebc9bbbe3df92}{State Monad implementation in C++}
+
+
+\section{Applications of Category Theory on Hybrid Systems}
+
+cf. Ames (2006) \cite{agat:Ames2006}.
+	
+\subsection{D-Categories}
+
+$D$ stands for discrete.
+
+Recall that a small category $\mathbf{C}$ is called \emph{small} if both $\text{Obj}(\mathbf{C})$ and $\text{hom}(\mathbf{C})$ are sets, not proper classes. 
+
+\begin{definition}[Axiomatic D-categories]
+Let D-category be a \emph{small} category $\mathbf{D}$ s.t.
+\begin{enumerate}
+	\item $\forall \, D \in \text{Obj}(\mathbf{D})$, \\
+	$\exists \,$ morphism $f \in \text{Mor}(\mathbf{D})$ s.t. $f \neq 1$ s.t. \\
+	$f \in \text{Hom}(D, *)$ or $f\in \text{Hom}(*, D)$, but never both, \\
+	i.e. $\forall \, $ diagram $a_0 \xrightarrow{ \alpha_1} a_1 \xrightarrow{ \alpha_2} \dots \xrightarrow{ \alpha_n} a_n$ in $\mathbf{D}$, all but 1 morphism must be identity (i.e. longest chain of composite non-identity morphisms is of length 1). 
+	\item If for $D\in \text{Obj}(\mathbf{D})$, $D$ is the domain of a non-identity morphism, i.e. $\exists \, f_1 \in \text{Mor}(\mathbf{D})$ s.t. 
+	\[
+	f_1 \in \text{Hom}(D, *), \, f_1 \neq 1
+	\]
+	then $\exists \, f_2 \in \text{Hom}(D, *)$, $f_2 \neq f_1$, $f_2 \neq 1$ and $\forall \, f \in \text{Hom}(D, *)$ s.t. $f\neq f_1,f_2$, \, $f=1$
+\end{enumerate}
+\end{definition}
+	
+cf. 1.2.1 Important objects in D-categories, Ames (2006) \cite{agat:Ames2006}.
+
+Let 
+\[
+\begin{gathered}
+	\text{Mor}{\mathbf{A}} = \bigcup_{A, B \in \text{Obj}(\mathbf{A})} \text{Hom}(A,B) \qquad \, \text{(my notation)} \\
+	\text{Mor}(\mathcal{D}) = \bigcup_{(a,b) \in \text{Obj}(\mathcal{D}) \times \text{Obj}(\mathcal{D}) } \text{Hom}_{\mathcal{D}}(a,b) \qquad \, \text{ (Ames' notation) }
+\end{gathered}
+\]	
+	
+Let 
+\begin{equation}
+\text{Mor}_{1}{\mathbf{A}} := \lbrace A \in \text{Mor}(\mathbf{A}) | A \neq 1 \rbrace 
+\end{equation}
+
+For a D-category, consider these subset of $\text{Obj}(\mathbf{D})$, 
+
+\begin{definition}[Edge set]
+	\textbf{edge set} of $\mathbf{D}$, $E(\mathbf{D})$, 
+\begin{equation}
+\begin{gathered}
+E(\mathbf{D}) := \lbrace A \in \text{Obj}(\mathbf{D}) | \alpha \in \text{Hom}(A, *), \beta \in \text{Hom}(A, *), \alpha, \beta \in \text{Mor}_{1}(\mathbf{D}), \, \alpha \neq \beta \rbrace \text{ i.e. } \\
+E(\mathbf{D}) := \lbrace A \in \text{Obj}(\mathbf{D}) | \alpha, \beta \in \text{Hom}(A, *), \, \alpha, \beta \neq 1, \, \alpha \neq \beta \rbrace
+\end{gathered}
+\end{equation}	
+\end{definition}
+i.e. $\forall \, A \in E(\mathbf{D})$, $\exists \, \alpha, \beta \in \text{Mor}(\mathbf{D})$, \, $\alpha, \beta \neq 1$, s.t. $\alpha, \beta \in \text{Hom}(D, *)$; denote these morphisms by $s_a,t_a$ (this specific choice will define an \textbf{orientation}).
+
+Conversely, given morphism $\gamma \in \text{Mor}(\mathbf{D})$, $\gamma \neq 1$, $\exists \, ! \, A \in E(\mathbf{D})$ s.t. $\gamma = s_a$ or $\gamma = t_a$, i.e. $\gamma \in \text{Hom}(A, *)$. 
+
+\begin{definition}[Vertex set]
+\textbf{vertex set} of $\mathbf{D}$:
+\begin{equation}
+ V(\mathbf{D}) = (E(\mathbf{D}))^c
+\end{equation} 
+\end{definition}
+
+\begin{definition}[Orientation]
+	Orientation of D-category $\mathbf{D}$ is a pair of functions $(s,t)$ between sets.
+	
+\end{definition}
+
+
+	
+
+

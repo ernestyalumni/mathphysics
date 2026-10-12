@@ -1,0 +1,41 @@
+% Imported from LaTeX_and_pdfs/AGAT_dump.tex; see provenance.json.
+\part{Fourier Transform}
+
+
+\section{Derivation of Fourier Transform; Definition}
+
+We will follow Sec. 32.2 of Mauch (2004) \cite{agat:Mauc2004}.
+
+Consider now this definition of the Fourier Transform, different from Mauch (2004) \cite{agat:Mauc2004}.
+
+\begin{definition}
+\begin{equation}
+\begin{aligned}
+\widehat{f}(k) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} dx f(x) e^{-ikx} \\
+f(x) & = \int_{-\infty}^{\infty} dk \widehat{f}(k) e^{ikx} \quad \, \forall \, x \in \mathbb{R}
+\end{aligned}
+\end{equation}
+\end{definition}
+
+\subsection{Fourier Transform Properties}
+
+Recall "Fourier Transformation of a Derivative", Mauch (2004) \cite{agat:Mauc2004}.
+
+\[
+\begin{gathered}
+\mathcal{F}[y'(x)] = \frac{1}{2\pi} \int_{-\infty}^{\infty} dx y'(x) e^{-i\omega x } = \left[ \frac{1}{2\pi} y(x) e^{-i\omega x} \right]_{-\infty}^{\infty} - \frac{1}{2\pi} \int_{-\infty}^{\infty} dx y(x) e^{-i\omega x} (-i \omega) = \\
+= i\omega \mathcal{F}[y(x)]
+\end{gathered}
+\]
+Next, consider $y''(x)$:
+\[
+\begin{gathered}
+\mathcal{F}[y''(x)] = \frac{1}{2\pi} \int_{-\infty}^{\infty} dx y''(x) e^{-i\omega x } = \left[ \frac{1}{2\pi} y'(x) e^{-i\omega x} \right]_{-\infty}^{\infty} + i \omega \mathcal{F}[y'(x)] = \\
+= (i\omega)^2 \mathcal{F}[y(x)]
+\end{gathered}
+\]
+Then 
+\begin{equation}
+\mathcal{F}[y^{(n)}(x) ] = (i\omega)^n \mathcal{F}[y(x)]
+\end{equation}
+

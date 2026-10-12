@@ -1,0 +1,109 @@
+% Imported from LaTeX_and_pdfs/DGDT_dump.tex; see provenance.json.
+\part{Jets, Jet bundles, $h$-principle, $h$-Prinzipien}
+
+
+cf. Eliashberg and Misahchev (2002) \cite{dgdt:ElMi2002}
+
+cf. Ch. 1 Jets and Holonomy, Sec. 1.1 Maps and sections of Eliashberg and Misahchev (2002) \cite{dgdt:ElMi2002}.  
+
+Visualize $f:\mathbb{R}^n \to \mathbb{R}^q$ as graph $\Gamma_f \subset \mathbb{R}^n \times \mathbb{R}^q$.  
+
+Consider this graph as image of $\begin{aligned} & \quad \\ 
+	& \mathbb{R}^n \to \mathbb{R}^n \times \mathbb{R}^q \\
+	& x \mapsto (x,f(x)) \end{aligned}$, i.e. 
+
+$\begin{aligned} & \quad \\ 
+	& \mathbb{R}^n \to \mathbb{R}^n \times \mathbb{R}^q \\
+	& x \mapsto (x,f(x)) \end{aligned}$ is called section (by mathematicians), \\
+is called \emph{field} or $\mathbb{R}^q$-valued field (by physicists).  
+
+cf. Ch. 1 Jets and Holonomy, Sec. 1.2 Coordinate definition of jets of Eliashberg and Misahchev (2002) \cite{dgdt:ElMi2002}.  
+
+\begin{definition}[$r$-jet]
+Given (smooth) $f: \mathbb{R}^n \to \mathbb{R}^q$, given $x\in \mathbb{R}^n$.  
+
+$r$-jet of $f$ at $x$ - sequence of derivatives of $f$, up to order $r$, $\equiv$ 
+\begin{equation}
+J^r_f(x) = (f(x),f'(x) \dots f^{(r)}(x) )
+\end{equation}
+\end{definition}
+
+$f^{(q)}$ consists of all partial derivatives $D^{\alpha}f$, $\alpha= (\alpha_1\dots \alpha_n)$, $|\alpha| = \alpha_1 + \dots + \alpha_n =s$, ordered lexicographically.  
+
+e.g. $q=1$, \\
+$f: \mathbb{R}^n \to \mathbb{R}$.   \\
+1-jet of $f$ at $x = J_f^1(x) = (f(x), f^{(1)}(x))$.  
+\[
+f^{(1)}(x) = \lbrace D^{\alpha}f| \alpha = (\alpha_1 \dots \alpha_n), |\alpha| = \alpha_1  + \dots + \alpha_n  =1 \rbrace = \left( \frac{ \partial f}{ \partial x^1 }, \frac{ \partial f}{ \partial x^2 } , \dots \frac{ \partial f}{ \partial x^n } \right)
+\]
+Let $d_r = d(n,r) = $ number of all partial derivatives $D^{\alpha}$ of order $r$ of function $\mathbb{R}^n \to \mathbb{R}$.  
+
+Consider $r$-jet $J^r_f(x)$ of map $f:\mathbb{R}^n\to \mathbb{R}^q$ as pt. of space $\mathbb{R}^q \times \mathbb{R}^{qd_1} \times \mathbb{R}^{qd_2} \times \dots \times \mathbb{R}^{qd_r} = \mathbb{R}^{q N_r}$, where $N_r = N(n,r) = 1 + d_1 + d_2 + \dots + d_r$, i.e. 
+\[
+J_f^r(x) = (f(x),f^{(1)}(x) , \dots f^{(r)}(x) ) \in \mathbb{R}^q \times \mathbb{R}^{qd_1} \times  \dots \times \mathbb{R}^{qd_r} = \mathbb{R}^{q N_r}
+\]
+
+
+\exercisehead{1}  
+
+Given order $r$, consider $n$-tuple of (positive) integers $(r_1,r_2\dots r_n)$ s.t. $r_1 + r_2 + \dots + r_n = r$, and $r_k\geq 0$. \\
+ Imagine $r_k = $ occupancy number, num ber of balls in $k$th cell.  $(r_1\dots r_n)$ describes a positive ocnfiguration of occupancy numbers, with indistinguishable balls; 2 distributions are distinguishable only if corresponding $n$-tuples $(r_1 \dots r_n)$ not identical.  
+
+Represent balls by stars, and indicate $n$ cells by $n$ spaces between $n+1$ bars.  
+
+With $n+1$ bars, $r$ stars, 2 bars are fixed. $n-1$ bars and $r$ stars to arrange linearly, so a total of $n-1+r$ objects to arrange.  $r$ stars indistinguishable amongst themselves, so choose $r$ out of $n-1+r$ to be stars.  
+\begin{equation}
+\Longrightarrow d_r = d(n,r)=\binom{n-1+r}{r}
+\end{equation}
+
+Use \emph{induction} (cf. \href{http://www.cs.columbia.edu/~cs4205/files/CM4.pdf}{Ch. 4 Binomial Coefficients}).  
+\[
+\begin{aligned}
+	& N_0 = N(n,0) = \binom{n-1+0}{0} = 1 \\ 
+	& N_1 = N(n,1) = 1+ \binom{n-1+1}{1} = 1 + n = \frac{ (n+1)!}{n! 1!}
+\end{aligned}
+\]
+Induction step: 
+\[
+N_{r-1} = N(n,r-1) = \sum_{k=1}^{r-1} d_k + 1 = \binom{ n+r-1}{r-1}
+\]
+and so 
+\[
+\begin{gathered}
+N_r = N(n,r) = \sum_{k=1}^r d_k + 1 = \sum_{k=1}^r \binom{n-1+k}{k} + 1 = \sum_{k=1}^{r-1} \binom{ n-1 +k}{k} + \binom{n-1+r}{r} + 1 = \\
+	 =  \binom{n+r-1}{r-1} + \binom{n-1+r}{r} = \frac{ (n+r-1)! }{ (r-1)! n!} + \frac{ (n-1+r)! }{ r! (n-1)! } = \frac{ (n+r)!}{n!r!} = \binom{n+r}{r}
+\end{gathered}
+\]
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+    \mathbb{R}^{qN_r} &  \\ 
+    \mathbb{R}^n & \mathbb{R}^q \\ 
+};
+  \path[->]
+  (m-2-1) edge node [auto] {$ J_f^r $} (m-1-1)
+          edge node [auto] {$f $} (m-2-2)
+  ;
+\end{tikzpicture}   \quad \quad \, \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+  {
+   J_f^r(x)  &  \\ 
+    x & f(x) \\ 
+};
+  \path[|->]
+  (m-2-1) edge node [auto] {$ J_f^r $} (m-1-1)
+          edge node [auto] {$f $} (m-2-2)
+  ;
+\end{tikzpicture}  
+\]
+
+\begin{definition}[space of $r$-jets]
+space of $r$-jects of maps $\mathbb{R}^n \to \mathbb{R}^q$ or space of $r$-jets of sections $\mathbb{R}^n \to \mathbb{R}^n \times \mathbb{R}^q \equiv $
+\begin{equation}
+J^r(\mathbb{R}^n, \mathbb{R}^q) = \mathbb{R}^n \times \mathbb{R}^{qN_r} \equiv \mathbb{R}^n \times \mathbb{R}^q \times \mathbb{R}^{qd_1} \times \mathbb{R}^{qd_2} \times \dots \times \mathbb{R}^{qd_r}
+\end{equation}
+e.g. $J^1(\mathbb{R}^n, \mathbb{R}^q) = \mathbb{R}^n \times \mathbb{R}^q \times M_{q\times n}$, where $M_{q\times n} = \mathbb{R}^{qn}$ is the space of $(q\times n)$-matrices.  
+\end{definition}
+
+

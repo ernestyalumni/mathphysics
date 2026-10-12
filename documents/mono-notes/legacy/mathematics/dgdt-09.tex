@@ -1,0 +1,737 @@
+% Imported from LaTeX_and_pdfs/DGDT_dump.tex; see provenance.json.
+\part{Holonomy}
+
+
+\begin{definition}[Conlon, 10.1.2] If $X,Y\in \mathfrak{X}(M)$, $M\subset \mathbb{R}^m$, \textbf{Levi-Civita connection} on $M\subset \mathbb{R}^m$
+	\begin{equation}
+	\begin{aligned}
+	& \nabla : \mathfrak{X}(M) : \mathfrak{X}(M) \to \mathfrak{X}(M) \\
+	\nabla_XY := p(D_XY)
+	\end{aligned}
+	\end{equation}
+	with 
+	\[
+	D_XY := \sum_{j=1}^m X(Y^j) \frac{ \partial }{ \partial x^j} = \sum_{i,j=1}^m X^i \frac{ \partial Y^j}{ \partial x^i} \frac{ \partial }{ \partial x^j} \qquad \,  \begin{aligned} & \quad \\ 
+		& \forall \, X=\sum_{i=1}^m X^i \frac{ \partial }{ \partial x^i},  \\
+		& \forall \, Y=\sum_{i=1}^m Y^i \frac{\partial }{ \partial x^i } \end{aligned}
+	\]
+\end{definition}
+
+\[
+\begin{aligned}
+	& \nabla_{fX}Y = f(D_{fX}Y) = p(fD_XY) = fpD_XY = f\nabla_XY \\ 
+	&  \nabla_X fY = p(D_XfY) = p \left( \sum_{i,j=1}^m \left( X^i f\frac{ \partial Y^j}{ dx^i } + X^i Y^j \frac{ \partial f}{ \partial x^i} \right) \frac{ \partial }{ \partial x^j} \right) = f\nabla_X Y + p \sum_{j=1}^m X(f) Y^j \frac{ \partial }{ \partial x^j} = f\nabla_XY + X(f) p(Y)
+\end{aligned}
+\]
+
+
+\begin{definition}[Conlon, 10.1.4; Christoffel symbols] 
+\begin{equation}
+\begin{gathered}
+	\nabla_{\frac{ \partial }{ \partial x^i} \frac{ \partial }{ \partial x^j} = \Gamma^k_{ij} \frac{ \partial }{ \partial x^k} \qquad \, \text{ (Conlon's notation) }  }   \\
+	\nabla_{\frac{ \partial }{ \partial x^j} \frac{ \partial }{ \partial x^i} = \Gamma^k_{ij} \frac{ \partial }{ \partial x^k} \qquad \, \text{ (F. Schuller's notation) }  }
+\end{gathered}
+\end{equation}
+\end{definition}
+
+
+
+
+
+\begin{definition}[torsion]
+\begin{equation}
+\begin{aligned}
+	& T:\mathfrak{X}(M) \in \mathfrak{X}(M) \to \mathfrak{X}(M) \\ 
+	& T(X,Y) = \nabla_XY - \nabla_Y X - [X,Y] 
+\end{aligned}
+\end{equation}
+If $T=0$, $\nabla$ torsion-free or symmetric.  
+\end{definition}
+\[
+\begin{gathered}
+T(fX,Y) = f\nabla_XY - (f\nabla_Y X + Y(f)X) - \lbrace (fXY - (Y(f)X + fYX) \rbrace = fT(X,Y) \\ 
+T(X,fY) = f\nabla_XY + X(f)Y - f\nabla_Y X   - \lbrace ( ( X(f) Y +fXY) -  fYX \rbrace = fT(X,Y)  
+\end{gathered}
+\]
+Thus, $T(X,Y)$ $C^{\infty}(M)$-bilinear.  
+
+$T\in \tau_1^2 (M)$.  
+
+$T(v,w) \in T_xM$ defined, $\forall \, v,w \in T_xM$, $\forall \, x\in M$.
+
+Thus, torsion is a \textbf{tensor}.
+
+\exercisehead{10.1.7 Conlon (2008)\cite{dgdt:Conl2008} }.  
+
+If $T(X,Y)=0$,
+\[
+T(e_i,e_j) = \Gamma^k_{ji} e_k - \Gamma^k_{ij} e_k - 0 = 0 \Longrightarrow \Gamma_{ji}^k = \Gamma^k_{ij}
+\]
+
+If $\Gamma^k_{ij} = \Gamma^k_{ji}$, $T(e_i,e_j)=0$.  
+
+\exercisehead{10.1.8, Conlon (2008)\cite{dgdt:Conl2008}} 
+
+If $M\subset \mathbb{R}^m$ smoothly embedded submanifold,  
+$\forall \, \frac{ \partial }{ \partial x^j}, \frac{ \partial }{ \partial x^i} \in T_xM$, spanning $T_xM$, consider $\frac{ \partial }{ \partial x^j} = X^k_j \frac{ \partial }{ \partial \widetilde{x}^k}$, $\frac{ \partial }{ \partial x^i} = X_i^k(\widetilde{x}) \frac{ \partial }{ \partial \widetilde{x}^k}$  
+
+\[
+\begin{gathered}
+	\nabla_{\frac{\partial }{ \partial x^j} } \frac{ \partial }{ \partial x^i} = p D_{ X^k_j \frac{ \partial }{ \partial \widetilde{x}^k } } X^l_i \frac{ \partial }{ \partial \widetilde{x}^l } = p \left( X^k_j \frac{ \partial X^l_i}{  \partial \widetilde{x}^k } \frac{ \partial }{ \partial \widetilde{x}^l } \right) =   X^k_j  p \left( \frac{ \partial X^l_i}{  \partial \widetilde{x}^k } \frac{ \partial }{ \partial \widetilde{x}^l } \right)  \\ 
+	\nabla_{\frac{\partial }{ \partial x^i} } \frac{ \partial }{ \partial x^j} =  X^k_i p \left(  \frac{ \partial X^l_j }{ \partial \widetilde{x}^k }   \frac{ \partial }{ \partial \widetilde{x}^l  } \right) 
+\end{gathered}
+\]
+
+
+
+
+
+
+
+
+
+If $X\in \mathfrak{X}(M)$, smooth $s:[a,b]\to M$, 
+
+then $\forall \, s(t)$, 
+\[
+X'_{s(t)} = \nabla_{\dot{s}(t)} X \in T_{s(t)}M
+\]
+In fact, it's often natural to consider fields $X_{s(t)}$ along $s$, parametrized by parameter $t$, allowing
+\[
+X_{s(t_1)} \neq X_{s(t_2)}
+\]
+each of $s(t_1)=s(t_2)$.  
+
+\begin{definition}[10.1.9] Let smooth $s:[a,b] \to M$.  
+
+Vector field along $s$ is smooth $v:[a,b]\to TM$ s.t. 
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, row sep=7.8em, column sep=12.8em, minimum width=5.2em]
+  {
+   &  TM  \\ 
+	\left[ a,b \right] & M \\ 
+};
+  \path[|->]
+  (m-2-1) edge node [above] {$ v $} (m-1-2)
+edge node [above] {$s$} (m-2-2)
+  (m-1-2) edge node [left] {$ \pi $} (m-2-2)
+  ;
+\end{tikzpicture}  
+\]
+commutes.
+
+Note that $v\in \mathfrak{X}(s) \subset \mathfrak{X}(M)$
+\end{definition}
+
+e.g. $(Y|s)(t) = Y_{s(t)}$, restriction of $Y\in \mathfrak{X}(M) $ to $s$.  
+
+e.g. $\dot{s}(t) \in \mathfrak{X}(M)$.  
+
+$\forall \, v,w \in \mathfrak{X}(s)$, $v+w \in \mathfrak{X}(s)$, 
+\[
+\begin{gathered}
+	(fv+gv)(t) := (f(s(t)) + g(s(t)) )v(t) = f(s(t)) v(t) + g(s(t)) v(t) = (f+g)v(t)
+\end{gathered}
+\]
+Likewise, 
+\[
+f(v+w) = fv+fw
+\]
+$\mathfrak{X}(s)$ is a real vector space and $C^{\infty}[a,b]$-module.  
+
+\begin{definition}[10.1.10]
+Let conection $\nabla$ on $M$.  
+
+\textbf{Associated covariant derivative} is operator 
+\[
+\frac{\nabla}{dt} \mathfrak{X}(s) \to \mathfrak{X}(s)
+\]
+$\forall \, $ smooth $s$ on $M$, s.t. 
+\begin{enumerate}
+\item $\frac{\nabla}{dt}$ $\mathbb{R}$-linear 
+\item $\left( \frac{\nabla}{dt} \right)(fv) = \frac{df}{dt} v+ f\frac{\nabla}{dt} v$, $\forall \, f \in C^{\infty}[a,b]$, $\forall \, v\in \mathfrak{X}(s)$  
+\item If $Y\in \mathfrak{X}(M)$, then
+\[
+\frac{\nabla}{dt} (Y|s)(t) = \nabla_{ \dot{s}(t)}Y \in T_{s(t)} M, \quad \, a\leq t \leq b
+\]
+\end{enumerate}
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}[Conlon Thm. 10.1.11\cite{dgdt:Conl2008} ]
+	$\forall \, $ connection $\nabla$ on $M$, $\exists \, !$ \, associated covariant derivative $\frac{ \nabla }{dt}$
+\end{theorem}
+
+\begin{proof}
+	Consider arbitrary coordinate chart $(U,x^1 \dots x^n)$.  
+	
+	Consider smooth curve $s:[a,b]\to U$.  
+	
+	Let $v\in \mathfrak{X}(s)$, $v(t) = v^i(t) \frac{ \partial }{ \partial x^i}$; $\dot{s}(t) = s^j \frac{ \partial }{ \partial x^j}$.  
+	\[
+	\begin{gathered}
+	\frac{ \nabla v}{ dt} = \frac{dv^i(t) }{dt}\frac{ \partial }{ \partial x^i} + v^i(t) \frac{ \nabla}{dt} \frac{ \partial }{ \partial x^i} = \frac{ d v^i }{dt}	\frac{ \partial }{ \partial x^i} + v^i \nabla_{ \dot{s}(t) } \frac{ \partial }{ \partial x^i } = \dot{v}^i \frac{ \partial }{ \partial x^i } + v^i\dot{s}^j \Gamma^k_{ij} \frac{ \partial }{ \partial x^k} = \left( \dot{v}^k + v^i \dot{s}^j \Gamma^k_{ij} \right)\frac{ \partial }{ \partial x^k} \end{gathered}
+	\]
+	This is an explicit, local formula in terms of connection, proving uniqueness.  
+	
+	Existence: $\forall \, $ coordinate chart $(U,x^1\dots x^n)$, $\left( \dot{v}^k + v^i \dot{s}^j \Gamma_{ij}^k \right) \frac{ \partial }{ \partial x^k } =: \frac{ \nabla v}{dt}$.  
+	
+	\[
+	\begin{gathered}
+	\frac{\nabla}{dt}(fv) = \dot{f}v^k + f\dot{v}^k + fv^i \dot{s}^j = \dot{f}v + f\frac{ \nabla v}{dt}
+	\end{gathered}
+	\]
+If $f$ constant, then $\frac{\nabla}{dt}$ is $\mathbb{R}$-linear.  	
+
+\end{proof}
+
+\begin{definition}[10.1.12 Conlon (2008)\cite{dgdt:Conl2008}]
+	Let $(M,\nabla)$.  Let $v\in\mathfrak{X}(s)$ for smooth $s:[a,b] \to M$.  
+
+If $\frac{\nabla v}{dt} \equiv 0$ on $s$, then $v$ is \textbf{parallel } along $s$.  
+\end{definition}
+
+\begin{theorem}[10.1.13] 
+Let $(M,\nabla)$, smooth $s:[a,b]\to M$, $c\in [a,b]$, $v_0 \in T_{s(c)}M$.  
+
+Then $\exists \, !$ parallel field $v\in \mathfrak{X}(s)$ s.t. $v(c) = v_0$.  
+
+$v$ parallel transport along $s$.  
+\end{theorem}
+\begin{proof}
+	\[
+\begin{aligned}
+	& \dot{s}(t) = \dot{s}^j(t) e_j \\ 
+	&  v(t) = v^i(t) e_i  \\
+& v_0 = a^i e_i
+\end{aligned}
+\]
+\[
+0 = \left( \frac{dv^k}{dt}(t) + v^i(t) \dot{s}^j(t) \Gamma^k_{ij}(s(t)) \right) e_k
+\]
+or equivalently
+\begin{equation}
+	\frac{dv^k}{dt} = - v^i \dot{s}^j \Gamma^k_{ij} , \qquad \, 1\leq k \leq n \qquad \, (10.1)
+\end{equation}
+with initial conditions $v^k(c) = a^k$, $1\leq k \leq n$.  
+
+By existence and uniqueness of solutions of O.D.E.  
+
+$\exists \, \epsilon > 0$ s.t. $\exists \, !$ solutions $v^k(t)$.  For $c-\epsilon < t < c+\epsilon$.  
+
+In fact, these ODEs being linear in $v^k$,  by ODE theory (Appendix C, Thm. C.4.1).  
+
+$\nexists \, $ restriction on $\epsilon$, so $\exists \, ! \, v^k(t)$ \, $\forall \, t \in [a,b]$, $1\leq k \leq n$  
+
+\end{proof}
+
+
+
+
+\subsection{Principal bundle, vector bundle case for parallel transport}  
+
+Recall the 2 different forms or viewpoints for Lie-algebra valued 1-forms, or vector-valued 1-forms, or sections of 1-form-valued endomorphisms:
+\[
+\omega^k_{ \,\, i\mu} dx^{\mu} \equiv \omega^k_{\,\,i} \in \Omega^1(M,\mathfrak{gl}(n,\mathbb{F})) = \Gamma(\mathfrak{gl}(n,\mathbb{R} \otimes \left. T^* M \right|_U ) )
+\] 
+for $\begin{aligned} & \quad \\
+	& i,k = 1\dots n =\text{dim}E \\ 
+	& \mu = 1\dots d =\text{dim}E \end{aligned}$.  
+
+Now
+\[
+D_X\mu = X^{\mu} D_{\frac{\partial }{ \partial x^{\mu}}}\mu = X^{\mu} \left[ \left( \frac{ \partial }{ \partial x^{\mu}} \mu^k \right) e_k + \mu^i \omega^k_{ \,\, i\mu} e_k \right] = \left( X(\mu^k) + \mu^i \omega^k_{ \,\, i}(X) \right) e_k = \left( d\mu^k(X) + \mu^i \omega^k_{ \,\, i}(X) \right) e_k
+\]
+So then define 
+\begin{equation}
+	\begin{aligned}
+		& D: \Gamma(E) \to \Gamma(E) \otimes \Gamma(T^*M) \\
+	& D\mu  = D(\mu^i e_i) = e_k ( d\mu^k +\mu^i \omega^k_{ \,\, i}) \equiv (d+A)\mu
+	\end{aligned}
+\end{equation}
+
+Also, $D$ can be defined for this case:
+\[
+D: \Gamma (\text{End}(E)) \to \Gamma(\text{End}E) \otimes \Gamma(T^*M)
+\]
+Let $\sigma = \sigma^i_{ \,\, j} e_i \otimes e^j \in \Gamma(\text{End}(E))$
+
+\begin{equation}
+\begin{gathered}
+	D\sigma = D(\sigma^i_{ \,\, j} e_i ) \otimes e^j + \sigma^i_{ \,\, j} e_i \otimes D^* e^j = \left( d\sigma^k_{ \,\, j} + \sigma^i A^k_{ \,\, i} \right) e_k \otimes e^j + \sigma^i_{ \,\, j} e_i \otimes (A^*)_k^{ \,\, j} e^k = \\
+	= (d\sigma^k_{ \,\, j} + \sigma^i_{ \,\, j} A^k_{ \,\, i} ) e_k \otimes e^j + \sigma^k_{ \,\, i} e_j \otimes (- A^i_{ \, \, j}) e^j = (d\sigma^k_{ \,\, j} + [A,\sigma]^k_{ \,\, j}) e_k\otimes e^j
+\end{gathered}
+\end{equation}
+cf. Def. 4.1.4 of Jost (2017) \cite{dgdt:Jost2017}, pp. 138.  
+
+For $\mu \in \Gamma(E)$, smooth $s:[a,b] \to M$, $X(t) = \dot{s}(t)$,
+\begin{equation}
+D_{\dot{s}(t)}\mu = \dot{s}^{\mu}D_{\frac{ \partial }{ \partial x^{\mu}} } \mu = \dot{s}^{\mu} \left[ \frac{ \partial \mu^k }{ \partial x^{\mu}} e_k + \mu^i \omega^k_{ \, \, i\mu} e_k \right] = \left[ \dot{s}^{\mu} \frac{ \partial \mu^k}{ \partial x^{\mu} } + \dot{s}^{\mu} \mu^i \omega^k_{ \,\, i \mu} \right] e_k =\frac{d}{dt} \mu(s(t)) + \mu^i \dot{s}^{\mu} \omega^k_{ \,\, i \mu} e_k
+\end{equation}
+
+Let $D_{\dot{s}(t)}\mu=0$.  Then, 
+\begin{equation}
+\frac{d}{dt} \mu(s(t)) = -\mu^i \dot{s}^{\mu}\omega^k_{ \,\, i\mu} e_k
+\end{equation}
+
+
+Recall, given vector bundle $E\xrightarrow{ \pi} N$, given $\varphi : M\to N$, then pullback 
+\begin{equation}
+	\varphi^* E \to M
+\end{equation}
+i.e. 
+
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\varphi^* E &  E  \\
+	M  &  N  \\
+};
+\path[->]
+(m-1-2) edge node [auto] {$ \varphi^*  $} (m-1-1)
+edge node [auto] {$ \pi $} (m-2-2)
+(m-2-1) edge node [auto]  {$  \varphi $} (m-2-2)
+(m-1-1) edge node [auto] {$\psi$} (m-2-1)
+;
+\end{tikzpicture}
+\qquad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	(\varphi^* E)_x = E_{\varphi(x)}  \\
+	 x\in M \\
+};
+ \path[|->]
+	(m-2-1) edge node [auto] {$$} (m-1-1)
+;
+\end{tikzpicture}
+\]
+i.e. if $s\in \Gamma(E)$, 
+\[
+\varphi^* s = s \circ \varphi \in \Gamma( \varphi^* E)
+\]
+Thus,
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\gamma^* E &  E  \\
+	\left[a,b\right]  &  M  \\
+};
+\path[->]
+(m-1-2) edge node [auto] {$ \gamma^*  $} (m-1-1)
+edge node [auto] {$ \pi $} (m-2-2)
+(m-2-1) edge node [auto]  {$  \gamma $} (m-2-2)
+(m-1-1) edge node [auto] {$ $} (m-2-1)
+;
+\end{tikzpicture}
+\qquad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	(\varphi^* E)_c = E_{\gamma(c)}  \\
+	 c\in  [a,b]\\
+};
+ \path[|->]
+	(m-2-1) edge node [auto] {$$} (m-1-1)
+;
+\end{tikzpicture}
+\]
+
+
+
+
+
+
+
+For 
+\[
+\begin{gathered}
+\dot{v}^k = -v^i \dot{s}^j \Gamma^k_{ \, \, ij}   \\
+v^k(c) = v_0^k \qquad \, 1 \leq k \leq m
+\end{gathered}
+\]
+\[
+\dot{v} = -v^i \dot{s}^j \Gamma_{ij}
+\]
+\[
+\begin{gathered}
+\dot{ (v+w) } = -(v^i + w^i) \dot{s}^j \Gamma_{ij}
+(v+w)(c) = v(c) + w(c) = v_0 + w_0 
+\end{gathered}
+\]
+so $v+w\in \mathfrak{X}(s)$ is parallel transport of $v_0 + w_0$.  
+
+Likewise, $\forall \, a \in \mathbb{F}$, $av \in \mathfrak{X}(s)$ is the parallel transport of $av_0$.  
+
+\[
+\dot{\mu}^k = - \mu^i \dot{s}^{\mu} \omega^k_{ \, \, i \mu} = -\mu^i \omega^k_{ \,\, i}(\dot{s}^{\mu})
+\]
+
+
+Suppose $\gamma^*E$ trivialized over $[a,b]$.  
+
+Closed interval is contractible, so this is always possible.  
+
+For chart $(U,\varphi)$, 
+\[
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\gamma^* E   &  E    \\
+	\left[a,b\right]  &  M  \\
+};
+\path[->]
+(m-1-2) edge node [auto] {$ \gamma^*  $} (m-1-1)
+edge node [auto] {$ \pi $} (m-2-2)
+(m-2-1) edge node [auto]  {$  \gamma $} (m-2-2)
+(m-1-1) edge node [auto] {$ $} (m-2-1)
+;
+\end{tikzpicture} \qquad \, 
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=3.8em, column sep=4.8em, minimum width=2.2em]
+{
+	\left. E \right|_U   &   U\times V  \\
+	U \subset M    &    \\
+};
+\path[->]
+(m-2-1) edge node [auto] {$ \pi^{-1}  $} (m-1-1)
+edge node [auto] {$  $} (m-1-2)
+(m-1-1) edge node [auto]  {$  \psi $} (m-1-2)
+;
+\end{tikzpicture}
+\]
+Consider 
+\[
+\begin{aligned}
+& \varphi:[a,b]  \times V \to \gamma^* E \\ 
+& \varphi(t,\cdot ) = \gamma^* \circ \psi^{-1}(\gamma(t), \cdot ) 
+\end{aligned}
+\]
+$\forall \, \mu \in \Gamma( \left. E\right|_{x\in M} )$, \\ 
+$\mu = \mu^i e_i$.  
+
+$\varphi(t,e_i) = \epsilon_i$ is a basis for $\gamma^* E$.  
+
+$\forall \, \sigma \in \Gamma(\gamma^*E)$,  
+\[
+\sigma  = \sigma^i \epsilon_i, \quad \, \sigma^i: [a,b] \to \mathbb{F}
+\]
+\[
+\begin{gathered}
+	\nabla_{ \frac{ \partial }{ \partial x^{\mu} } } \sigma = \frac{ \partial \sigma^k}{ \partial x^{\mu}  } \epsilon_k + \omega^k_{ \, \, j \mu } \sigma^j \epsilon_k = \left( \frac{ \partial \sigma ^k }{ \partial x^{\mu } } + \omega^k_{ \ , \, j \mu} \sigma^j  \right)  \epsilon_k \\ 
+ \nabla \sigma = \epsilon_k \otimes ( d\sigma^k + \omega^k_{ \, \, j \mu} dx^{\mu} \sigma^j ) = \epsilon_k \otimes (d\sigma^k + \omega^k_{ \, \, j} \sigma^j  )  \\
+ \nabla_{ \frac{d}{dt} } \sigma = \epsilon_k \otimes \left( \frac{d\sigma^k }{ dt } + \omega^k_{ \, \, j \mu } \dot{x}^{\mu} \sigma^j  \right)
+\end{gathered}
+\]
+Now
+\[
+\frac{d}{dt} = \dot{x}^{\nu} \frac{ \partial }{ \partial x^{\nu } }
+\]
+Then $\sigma$ parallel along $\gamma$ if 
+\[
+\frac{ d\sigma^k}{ dt} + \omega^k_{ \, \, j\mu} \dot{x}^{\mu} \sigma^j = 0 
+\]
+\begin{definition}[3.1.4 \cite{dgdt:ClSa2012}]  Parallel transport along $\gamma$ is 
+\begin{equation}
+\begin{aligned}
+	& P_{\gamma} : E_{\gamma(a)} \to E_{\gamma(b)} \\ 
+	& P_{\gamma}(v) \mapsto \sigma(b)
+\end{aligned}
+\end{equation}
+where $\sigma \in \Gamma(\gamma^*E)$, $\sigma$ unique and s.t. $\sigma(a)=v$.  
+\end{definition}
+
+
+
+
+
+
+
+\begin{lemma}[10.1.16\cite{dgdt:Conl2008}]
+	holonomy 
+	\[
+	h_s:T_xM \to T_{x_0}M
+	\]
+	if $\nabla$ around piecewise smooth loop $s$ is a linear transformation.  
+\end{lemma}
+
+
+
+
+
+
+\begin{lemma}[10.1.18 Conlon (2008)\cite{dgdt:Conl2008}] 
+	Let piecewise smooth loop $s:[a,b] \to M$ at $x_0$.  
+
+Let weak reparametrization $\widetilde{s} = s\circ r: [c,d] \to M$.  
+
+If reparametrization is orientation-preserving, then $h_{\widetilde{s}} = h_s$, \\
+If reparametrization is orientation-reversing, then $h_{\widetilde{s}} = h^{-1}_s$, 
+
+\end{lemma}
+\begin{proof}
+	Without loss of generality,  assume smooth $s,r$
+\[
+\begin{aligned}
+	& \widetilde{s}(\tau) = s(r(\tau)) \\ 
+	& \widetilde{v}(\tau) = v(r(\tau))
+\end{aligned}
+\]
+\[
+\begin{aligned}
+	& \widetilde{u}^j(\tau) = \frac{dt}{d\tau}(\tau) u^j(r(\tau)) \\ 
+	& \frac{d\widetilde{v}^k}{d\tau} (\tau) = \frac{dr}{d\tau}(\tau) \frac{dv^k}{dt}(r(\tau)) \\ 
+	& \frac{d\widetilde{v}^k }{ d\tau} = -\widetilde{v}^i \widetilde{u}^j \Gamma^k_{ij} 
+\end{aligned}
+\]
+since \[
+\begin{gathered}
+	\frac{dv^k}{dt} = -v^i u^j \Gamma^k_{ij} ; \qquad \, 1\leq k \leq n \\ 
+v^k(c) = a^k; \qquad \, 1\leq k \leq a 
+\end{gathered}
+\]
+\[
+\frac{dr}{d\tau} \frac{dv^k}{ dt} = -v^i \frac{dr}{d\tau} u^j \Gamma^k_{ \, \, ij} = \frac{d\widetilde{v}^k}{d\tau} = -\widetilde{v}^i \widetilde{u}^j \Gamma^k_{ \, \, ij}
+\]
+Thus, if $r(c) = a$, $r(d)=b$
+\[
+h_{\widetilde{s}}(v_0) = \widetilde{v}(d) = v(b) = h_s(v_0)
+\]
+If $r(c)=a$, $r(d)=b$, then 
+\[
+\widetilde{v}(c) = v(b) = h_s(v_0)
+\]
+and 
+\[
+h_{\widetilde{s}}(h_s(v_0)) = h_{\widetilde{s}}(v(b)) = \widetilde{v}(d) = v(a) = v_0
+\]
+At this point, I will switch to my notation because it clarified to me, at least, what was going on, in that a holonomy $h_s$ is \emph{invariant} under orientation-preserving reparametrization, and its inverse is well-defined.  
+
+For $\widetilde{s} = s\circ t:[c,d] \to M$, \\
+piecewise smooth $t$ is reparametrized, i.e. 
+\begin{equation}
+	t:[c,d] \to [a,b]
+\end{equation}  
+Now, 
+\[
+\begin{gathered}
+	\frac{d}{d\tau}\widetilde{s}(\tau) = \frac{d}{d\tau} \widetilde{s}(t(\tau)) = \dot{s}(t) \frac{dt}{d\tau}(\tau) \equiv \dot{s} \frac{dt}{d\tau} \\ 
+v^k(t) = v^k(t(\tau)) = v^k(\tau) \\ 
+ \frac{dv^k}{d\tau}(t(\tau) ) = \frac{dv^k}{dt} \frac{dt}{ d\tau } = \frac{dt}{d\tau}(-v^i( \tau) \dot{s}^j(t) \Gamma^k_{ \,\, ij} ) = -v^i(\tau) \frac{d\widetilde{s}^j }{ d\tau} \Gamma^k_{ \, \, ij} 
+\end{gathered}
+\]
+Consider 
+\[
+h_s(v_0) = v(b)
+\]
+If $\begin{aligned} & \quad \\ 
+	& t(c) = a \\ 
+	& t(d)=b \end{aligned}$, 
+\[
+h_{\widetilde{s}}(v_0) = \widetilde{v}(d) = v(t(d)) = v(b) = h_s(v_0)
+\]
+If $\begin{aligned} & \quad \\ 
+	& t(c) = b \\ 
+	& t(d)=a \end{aligned}$, 
+\[
+\begin{gathered}
+h_{\widetilde{s}}(h_s(v_0) )  = h_{\widetilde{s}}( v(b)) = h_{\widetilde{s}}(v(t(c))) = h_{\widetilde{s}}(\widetilde{v}(c)) = \\
+	= \widetilde{v}(d) = v(t(d)) = v(a) = v_0
+\end{gathered}
+\]
+Thus, 
+\[
+\boxed{ h_{\widetilde{s}}= h_s^{-1} }
+\]
+
+
+\end{proof}
+
+I am working through Conlon (2008) \cite{dgdt:Conl2008} , Clarke and Santoro (2012) \cite{dgdt:ClSa2012}, and Schreiber and Waldorf (2007)\cite{dgdt:ScWa2007}, concurrently, for holonomy.  
+
+\section{Path Groupoid of a smooth manifold; generalization of paths}
+cf. Schreiber and Waldorf (2007)\cite{dgdt:ScWa2007}.  
+
+\begin{definition}[path]
+	\textbf{path} is a smooth map $\gamma:[0,1] \to M$, between 2 pts. $x,y \in M$, \\
+	which has a sitting instant; i.e. number $0 < \epsilon < \frac{1}{2}$ s.t. 
+	\begin{equation}
+	\gamma(t) = \begin{cases} x & \text{ for } 0 \leq t < \epsilon \\
+	y & \text{ for } 1 - \epsilon < t \leq 1 \end{cases}
+	\end{equation}
+
+Denote the set of such paths by $PM$, 
+\begin{equation}
+PM \equiv \lbrace \gamma \in \Gamma(M) | \text{ smooth } \gamma : [0,1] \to M \text{ s.t. } \exists \, 0 < \epsilon < \frac{1}{2} \text{ s.t. } \begin{cases} x & \text{ for } 0 \leq t < \epsilon \\
+y & \text{ for } 1 - \epsilon < t \leq 1 \end{cases} \rbrace
+\end{equation}
+\end{definition}
+cf. Def. 2.1. of Schreiber and Waldorf (2007)\cite{dgdt:ScWa2007}  
+
+Define \emph{composition}: \\
+Given paths $\gamma_1, \gamma_2$; $\begin{aligned} & \qquad \\ 
+& \gamma_1(0) = x \\
+& \gamma_1(1) = y \end{aligned}$, \, $\begin{aligned} & \qquad \\ 
+& \gamma_2(0) = y \\
+& \gamma_2(1) = z \end{aligned}$, \\
+define composition to be path 
+\begin{equation}
+\begin{gathered}
+\gamma_2 \circ \gamma_1 \\
+(\gamma_2 \circ \gamma_1)(t) := \begin{cases} \gamma_1(2t) & \text{ for } 0 \leq t \leq \frac{1}{2} \\
+\gamma_2(2t-1) & \text{ for } \frac{1}{2} \leq t \leq 1 \end{cases} 
+\end{gathered}
+\end{equation}
+
+$\gamma_2 \circ \gamma_1$ smooth since $\gamma_1, \gamma_2$ both constant near gluing pt., due to sitting instants $\epsilon_1, \epsilon_2$, respectively. 
+
+Define \emph{inverse}:
+\begin{equation}
+\begin{gathered}
+\gamma^{-1} : [0,1] \to M \\
+\gamma^{-1}(t) := \gamma(1-t)
+\end{gathered}
+\end{equation}
+(so that $\gamma^{1}(t) =  \begin{cases} y & \text{ for } 1-\epsilon < 1-t \leq 1 \text{ or } 0 \leq t < \epsilon  \\
+x & \text{ for } 0  \leq 1 - t < \epsilon \text{ or } 1 - \epsilon < t \leq 1 \end{cases}$)
+
+\begin{definition}[thin homotopy equivalent]
+2 paths $\gamma_1$, $\gamma_2$ s.t. $\begin{aligned} & \quad \\ & \gamma_1(0) = \gamma_2(0) = x \\
+& \gamma_1(1) = \gamma_2(1) = y \end{aligned}$, $\gamma_1, \gamma_2$ are thin homotopy equivalent, \\
+if $\exists \, $ smooth $h: [0,1] \times [0,1] \to M$ s.t. 
+\begin{enumerate}
+	\item $\exists \, 0 < \epsilon < \frac{1}{2} $ with 
+	\begin{enumerate}
+		\item $\begin{aligned} & \qquad \\
+		& h(s,t) = x \text{ for } 0 \leq t < \epsilon \\
+		& h(s,t) = y \text{ for } 1-\epsilon < t \leq  1 \end{aligned}$ 
+		\item 		\item $\begin{aligned} & \qquad \\
+		& h(s,t) = \gamma_1(t) \text{ for } 0 \leq s < \epsilon \\
+		& h(s,t) = \gamma_2(t) \text{ for } 1-\epsilon < s \leq  1 \end{aligned}$
+	\end{enumerate}
+\item differential of $h$ has at most rank 1 everywhere, i.e. 
+\begin{equation}
+\text{rank}(\left. dh\right|_{(s,t)}) \leq 1 \qquad \, \forall \, (s,t) \in [0,1]\times [0,1]
+\end{equation}
+\end{enumerate}
+\end{definition}
+cf. Def. 2.2. of Schreiber and Waldorf (2007)\cite{dgdt:ScWa2007}  
+
+$\begin{aligned} & \qquad \\
+& h(s,t) = \gamma_1(t) \text{ for } 0 \leq s < \epsilon \\
+& h(s,t) = \gamma_2(t) \text{ for } 1-\epsilon < s \leq  1 \end{aligned}$ is the homotopy from $\gamma_1$ to $\gamma_2$, i.e. $\begin{aligned} & \quad \\ 
+& h(0,t) = \gamma_1(t) \\
+& h(1,t) = \gamma_2(t) \end{aligned}$  \\
+and define an equivalence relation on $PM$.  
+
+Note that for $h:[0,1] \times [0,1] \to M$, 
+\[
+\left. (Dh) \right|_{(s,t)} = \left[ \frac{ \partial h^i }{ \partial s} , \frac{\partial h^i }{ \partial t} \right]
+\]
+
+
+\begin{equation}
+\begin{gathered}
+P^1 M \equiv \text{ set of thin homotopy classes of paths, i.e. } \\ 
+P^1 M = \lbrace [ \gamma] | \gamma_1 \in PM, \text{ if } \exists \, \text{ smooth } h:[0,1]\times [0,1] \to M \text{ s.t. } h \text{ thin homotopy of } \gamma_1 \text{ and } \gamma_2, \gamma_1 \sim \gamma_2 \rbrace
+\end{gathered}
+\end{equation}
+
+$\text{pr}:PM \to P^1M$ is projection to classes.
+
+Denote thin homotopy class of path $\gamma$, $\begin{aligned} & \qquad \\ 
+& \gamma(0) = x \\
+& \gamma(1) = y \end{aligned}$, by $\overline{\gamma}$, or $[\gamma]$.  
+
+\subsection{Reparametrization of thin homotopies}
+
+Let $\beta: [0,1] \to [0,1]$, $\begin{aligned} & \quad \\ 
+& \beta(0) = 0 \\
+& \beta(1) = 1 \end{aligned}$.  
+
+Then $\forall \, $ path $\gamma$, $\begin{aligned} & \quad \\ 
+& \gamma(0) = x \\
+& \gamma(1) = y \end{aligned}$, $\gamma \circ \beta$ is also a path $\begin{aligned} & \quad \\ 
+& \gamma\circ \beta(0) = x \\
+& \gamma\circ \beta(1) = y \end{aligned}$ and 
+\begin{equation}
+h(s,t) := \gamma(t\beta(1-s) + \beta(t) \beta(s)
+\end{equation}
+defines a homotopy from $\gamma$ to $\gamma \circ \beta$.
+
+\[
+\gamma_1 \circ \gamma_2 \in PM \xmapsto{\text{pr}} [\gamma_1 \circ \gamma_2] = [\gamma_1][ \gamma_2] \in P^1M
+\]
+
+Composition of thin homotopy classes of paths obeys following rules:
+\begin{lemma}\label{dgdt:Eq:CompositionOfThinHomotopyClassesOfPaths}
+$\forall$ path $\gamma$, $\begin{aligned} & \quad \\ 
+& \gamma(0) = x \\
+& \gamma(1) = y \end{aligned}$
+\begin{enumerate}
+	\item $\overline{\gamma} \circ \overline{\text{id}_x} = \overline{\gamma} = \overline{\text{id}_y} \circ \overline{\gamma} \equiv [\gamma]1_x = [\gamma] = 1_y [\gamma] $ 
+	\item for paths $\gamma'$; $\begin{aligned} & \quad \\ 
+		& \gamma'(0) = y \\
+		& \gamma'(1) = z \end{aligned}$, \quad $\begin{aligned} & \quad \\ 
+	& \gamma''(0) = z \\
+& \gamma''(1) = w \end{aligned}$
+\begin{equation}
+(\overline{\gamma}'' \circ \overline{\gamma}') \circ \overline{\gamma} = \overline{\gamma}'' \circ (\overline{\gamma}' \circ \overline{\gamma}) \equiv ( [\gamma''][\gamma'])[\gamma] = [\gamma'']([\gamma'][\gamma])
+\end{equation}
+\item $\overline{\gamma} \circ \overline{\gamma}^{-1} = \overline{\text{id}_y}$ and $\overline{\gamma^{-1}} \circ \overline{\gamma} = \overline{\text{id}_x}$ $\equiv [\gamma] [\gamma^{-1}] = 1_y \text{ and } [\gamma^{-1}][\gamma] = 1_x$
+\end{enumerate} 	
+\end{lemma}
+cf. Lemma 2.3. of Schreiber and Waldorf (2007)\cite{dgdt:ScWa2007}  
+
+\begin{definition}[path groupoid]
+	$\forall \, $ smooth manifold $M$, \\
+	consider category whose set of objects is $M$, \\
+	whose set of morphisms is $P^1M$, where class $[\gamma]$, $\begin{aligned} & \qquad \\ 
+	& [\gamma](0) = x \\
+	& [\gamma](1) = y \end{aligned}$ is a morphism from $x$ to $y$ and \\
+	composition $[\gamma_1 ][\gamma_2] = [\gamma_1 \circ \gamma_2] \in P^1M$  
+	Lemma \ref{dgdt:Eq:CompositionOfThinHomotopyClassesOfPaths} are axioms of a category, 3rd. property says $\forall \,$ morphism is invertible.  
+	
+	Hence, we've defined a groupoid, called \textbf{path groupoid} of $M$, $\mathcal{P}_1(M)$. 
+\end{definition}
+
+So 
+\[
+\begin{gathered}
+\text{Obj}(\mathcal{P}_1(M)) = M \\
+\text{Mor}(\mathcal{P}_1(M)) = P^1M
+\end{gathered}
+\]
+$\forall \, $ smooth $f:M \to N$, denote functor $f_*$
+\begin{equation}
+f_* : \mathcal{P}_1(M) \to \mathcal{P}_1(N)
+\end{equation}
+with 
+\[
+\begin{gathered}
+f_*(x) = f(x) \\
+(f_*)([\gamma]) := [f\circ \gamma]
+\end{gathered}
+\]
+If $\gamma \sim \gamma'$, for $f\circ \gamma$, $f\circ \gamma'$, \\
+$f\circ h(s,t) $ with $\begin{aligned} & \quad \\ 
+& f\circ h(0,t) = f\circ \gamma(t) \\
+& f\circ h(1,t) = f\circ \gamma'(t) \end{aligned}$, \\
+so $f\circ h$ is a thin homotopy between $f\circ \gamma$, $f\circ \gamma'$ and so $[f\circ \gamma]$ \emph{well-defined}.
+
+
+
+

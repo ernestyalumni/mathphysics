@@ -1,0 +1,161 @@
+% Imported from LaTeX_and_pdfs/DGDT_dump.tex; see provenance.json.
+\part{Pr\'{a}staro}
+
+
+Pr\'{a}staro (1996) \cite{dgdt:Pras1996}
+
+\subsubsection{Affine Spaces}
+
+cf. Sec. 1.2 - \emph{Affine Spaces} of Pr\'{a}staro (1996) \cite{dgdt:Pras1996}
+
+\begin{definition}[affine space]
+  \begin{equation}
+\begin{gathered}
+    \text{ affine space \qquad \, } (M, \mathbf{M}, \alpha )  \\
+    \text{ with } \\
+    \begin{aligned}
+      & M \equiv \text{ set (set of pts.) }  \\ 
+      & \mathbf{M} \equiv \text{ vector space (space of free vectors) } \\
+      & \alpha \equiv \mathbf{M} \times M \to M \equiv \text{ translation operator } \\
+      & \alpha : (v,p ) \mapsto p' \equiv p + v
+      \end{aligned}
+\end{gathered}
+  \end{equation}
+  Note: $\alpha$ is a \textbf{transitive} action and without fixed pts. (free).
+
+  i.e. $\forall \, p \in M$, 
+  \end{definition}
+
+$\forall \, $ pt. $O \in M$, $\alpha:(v,O) \mapsto O' \equiv O + v$, $\alpha (\cdot , O) \equiv \alpha_O \equiv \alpha(O)$.  $\alpha_O(v) = O' = O + \mathbf{v}$ \qquad \, $\forall \, O' \in M$, $\exists \, \mathbf{v} \in \mathbf{M}$ s.t. $O' = O + \mathbf{v}$ \\
+$\Longrightarrow M \equiv \mathbf{M}$.
+
+$\forall \, (O, \lbrace e_i \rbrace)_{1 \leq i \leq n }$, where $\lbrace e_i \rbrace$ basis of $\mathbf{M}$, $M \equiv \mathbf{M} = \mathbb{R}^n$ so isomorphism $M \simeq \mathbb{R}^n$ \\
+
+i.e. $\alpha$ is \textbf{without fixed pts.}, meaning, 
+
+Given pointed space $(M, O)$, where base pt. $O\in M$, we can associate $\forall \, p \in M$, vector $\mathbf{x} \in \mathbf{M}$, by 1-to-1 mapping $M\to \mathbf{M}$. 
+
+So for 
+\[
+\begin{aligned}
+& \alpha : \mathbf{M} \times M \to M \\ 
+& \alpha(\mathbf{x}, p) = p' = p + \mathbf{x}
+\end{aligned}
+\]
+Consider 
+\[
+\begin{gathered}
+	\alpha(\mathbf{x}, O) = p = \alpha_O(\mathbf{x}) = p \Longrightarrow \exists \, \alpha_O^{-1}(p) = \mathbf{x} \in \mathbf{M}
+\end{gathered}
+\]
+
+\begin{enumerate}
+	\item tangent space of $M$ in $p\in M$ is vector space $T_pM \equiv (\mathbf{M}, p) \cong M$
+	\item If $\mathbf{M}$ Euclidean space, affine space $(M, \mathbf{M}, \alpha)$ is Euclidean
+	\item Call dim. of affine space $(M, \mathbf{M}, \alpha)$, dim. of $\mathbf{M} \equiv \text{dim}{\mathbf{M}}$
+\end{enumerate}
+$\lbrace \mathbf{e}_i \rbrace$ basis of $\mathbf{M}$
+
+
+
+
+\begin{definition}
+  $(O, \lbrace e_i \rbrace) \equiv $ affine frame.
+
+  $\forall \, $ affine frame $(O,\lbrace e_i \rbrace)$, $\exists \, $ coordinate system $x^{\alpha} : M \to \mathbb{R}$, \\
+  where $x^{\alpha}(p)$ is $\alpha$th component, in basis $\lbrace e_i \rbrace$, of vector $p-O$
+  \end{definition}
+
+\begin{proposition}[1.6, Pr\'{a}staro (1996) \cite{dgdt:Pras1996}]
+	$\forall \, O \in M$, we have canonical identification $M \equiv \mathbf{M}$, since
+	\[
+	\begin{gathered}
+	\begin{aligned}
+	& \alpha^{-1}_O:M \to \mathbf{M} \\
+	& \alpha^{-1}_O(p) = \mathbf{x} 
+	\end{aligned} \qquad \quad \, 
+	\begin{aligned}
+	& \alpha_O : \mathbf{M} \to M \\
+	& \alpha_O: \mathbf{x} = \alpha(\mathbf{x}, O) = p
+	\end{aligned}
+	\end{gathered}
+	\]
+	Furthermore, \\
+	$\forall \, $ \textbf{affine frame} $(O, \lbrace \mathbf{e}_i \rbrace)_{1\leq i \leq d}$, where $\lbrace \mathbf{e}_i \rbrace$ basis of $\mathbf{M}$, \\
+	\phantom{Furthermore} $\exists \, $ isomorphism $M \cong \mathbb{R}^d$, \\
+	Then, $\forall \, (O, \lbrace \mathbf{e}_i \rbrace)_{1 \leq i \leq d}$, \\
+	\phantom{Then} $\exists \, $ coordinate system $x^{\alpha} : M \to \mathbb{R}$, \\
+	\phantom{Then $\exists \, $} where $x^{\alpha}(p) = \alpha$th component, in basis $\lbrace \mathbf{e}_i \rbrace$, of vector $p - O$. 
+	
+	
+	
+\end{proposition}
+
+\begin{theorem}[1.4 Pr\'{a}staro (1996) \cite{dgdt:Pras1996}]
+  Let $(x^{\alpha}), (\overline{a}^{\alpha})$ 2 coordinate systems correspond to affine frames $(O, \lbrace e_i \rbrace)$, $( \overline{O}, \lbrace \overline{e}_i \rbrace )$, respectively.
+\begin{equation}
+  \overline{x}^{\alpha} = A^{\alpha}_{ \, \, \beta} x^{\beta} + y^{\alpha}
+\end{equation}
+where
+\[
+y^{\alpha} \in \mathbb{R}^n, \qquad \, A^{\alpha}_{ \, \, \beta} \in GL(n; \mathbb{R})
+\]
+\end{theorem}
+
+\begin{definition}[1.10 Pr\'{a}staro (1996) \cite{dgdt:Pras1996}]
+  \begin{equation}
+    A(n) \equiv Gl(n,\mathbb{R}) \times \mathbb{R}^n
+  \end{equation}
+  affine group of dim. $n$
+  \end{definition}
+
+\begin{theorem}[1.5] symmetry group of $n$-dim. affine space, called affine group $A(M)$ of $M$.  $\exists \, $ isomorphism,
+  \begin{equation}
+    A(M) \simeq A(n), \qquad \, f\mapsto (f^{\alpha}_{ \, \, \beta} , y^{\alpha}) \, ; \qquad \, f^{\alpha} \equiv x^{\alpha} \circ f = f^{\alpha}_{ \, \, \beta} x^{\beta} + y^{\alpha}
+  \end{equation}
+cf. Eq. 1.4 Pr\'{a}staro (1996) \cite{dgdt:Pras1996}
+  \end{theorem}
+
+\begin{definition}[metric]
+	Let smooth manifold $M$, $\text{dim}M = n$, $\forall \, p \in M$, $\exists \, $ vector space $T_pM$, and so for 
+	\begin{equation}
+	\begin{aligned}
+	& g_p (T_pM)^2 \to \mathbb{R} \\
+	& g_p : (X_p,Y_p) \mapsto g_p(X_p,Y_p) \in \mathbb{R}
+	\end{aligned}
+	\end{equation}
+	with $g_p$ being bilinear, symmetric (in $X_p,Y_p$), nondegenerate (i.e. if $g_p(X_p,Y_p)=0$, then $X_p$ or $Y_p=0$)
+	
+	Note that 
+	\[
+	g\in \Gamma((TM \otimes TM)^*)
+	\]
+	and that for $\begin{aligned} & \quad \\ 
+	& X = X^i \frac{ \partial }{ \partial x^i } \\
+	& Y = Y^i \frac{ \partial }{ \partial x^i } \end{aligned}$  
+	so 	
+	\[
+	g(X,Y) = g_{ij} X^i Y^j
+	\]  
+	
+\end{definition}
+
+Now for 
+\[
+\begin{gathered}
+\begin{aligned} 
+& F: M \to N \\
+& F: x \mapsto y = y(x) 
+\end{aligned} \qquad \, \begin{aligned}
+& DF \equiv F_* : T_p M \to T_{F(p)}N \\ 
+&  DF : X_p \mapsto (DF) (X^j \frac{ \partial }{ \partial x^j }) = X^j \frac{\partial y^i}{\partial x^j} \frac{ \partial }{ \partial y^i}
+\end{aligned}
+\end{gathered}
+\]
+\[
+\begin{gathered}
+(F^* g')(X,Y) = (F^*g')(X^i \frac{ \partial }{ \partial x^i } , Y^j \frac{ \partial }{ \partial x^j} ) = (F^*g')_{ij} X^i Y^j = g'(F_*X, F_*Y) = \\
+= 
+\end{gathered}
+\]
+

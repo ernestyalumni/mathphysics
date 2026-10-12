@@ -1,0 +1,61 @@
+% Imported from LaTeX_and_pdfs/AGAT_dump.tex; see provenance.json.
+\part{Algebraic Topology}
+  
+
+cf. Bredon (1997) \cite{agat:Bred1997}
+
+
+\section{Simplicial Complexes}  
+
+cf. pp. 245, from Sec. 21 Simplicial Complexes of Ch. 4 Homology Theory in Bredon (1997) \cite{agat:Bred1997}
+
+$\mathbf{v}_0, \dots \mathbf{v}_n \in \mathbb{R}^{\infty}$, "affinely independent" if they span an affine $n$-plane, i.e. 
+\[
+\text{ if } \left( \sum_{i=0}^n \lambda_i \mathbf{v}_i =0 , \, \sum_{i=0}^n \lambda_i = 0 \right), \text{ then } \Longrightarrow \forall \, \lambda_i = 0
+\]
+If not, then, e.g. $\lambda_0 \neq 0$, assume $\lambda_0 =-1$, and solve the equations to get 
+
+\[
+\begin{gathered}
+\mathbf{v}_0 = \sum_{i=1}^n \lambda_i \mathbf{v}_i \\
+\sum_{i=1}^n \lambda_i = 1
+\end{gathered}
+\]
+i.e. $\mathbf{v}_0$ is in affine space spanned by $\mathbf{v}_1\dots \mathbf{v}_n$.  
+
+If $\mathbf{v}_0, \dots \mathbf{v}_n$ affinely independent, then 
+\begin{equation}
+\sigma = ( \mathbf{v}_0, \dots \mathbf{v}_n) = \lbrace \sum_{i=0}^n \lambda_i \mathbf{v}_i | \sum_{i=0}^n \lambda_i = 1, \, \lambda_i \geq 0 \rbrace
+\end{equation}
+is "affine simplex" spanned by $\mathbf{v}_i$; also convex hull of $\mathbf{v}_i$.  
+
+$\forall \, k \leq n$, $k$-face of $\sigma$ is any affine simplex of form $(\mathbf{v}_{i_1}, \dots \mathbf{v}_{i_k})$, where vertices all distinct, so are affinely independent.  
+
+\begin{definition}
+	(geometric) simplicial complex $K:= $ collection of affine simplices s.t. \begin{enumerate}
+		\item $\sigma \in K \Longrightarrow $ any face of $\sigma \in K$; and 
+		\item $\sigma, \tau \in K \Longrightarrow \sigma \bigcap \tau $ is a face of both $\sigma$ and $\tau$, or $\sigma \bigcap \tau =\emptyset$
+	\end{enumerate}
+
+If $K$ simplicial complex, $|K| = \bigcup \lbrace \sigma | \sigma \in K \rbrace \equiv $ "polyhedron" of $K$
+\end{definition}
+
+\begin{definition}[Def. 21.2 of Bredon (1997) \cite{agat:Bred1997}]
+	polyhedron $:= $ space $X$ if $\exists \, $ homeomorphism $h: |K| \xrightarrow{ \approx } X$ for some simplicial complex $K$.  
+	$h,K$ is triangulation of $X$; (map $h$, complex $K$)
+\end{definition}
+
+Let $K$ finite simplicial complex.  \\
+Choose ordering of vertices $\mathbf{v}_0,\mathbf{v}_1\dots $ of $K$.  \\
+If $\sigma = (\mathbf{v}_{\sigma_0}, \dots \mathbf{v}_{\sigma_n})$ is simplex of $K$, where $\sigma_0 < \dots < \sigma_n$, then  \\
+\phantom{If } let $f_{\sigma} : \Delta_n \to |K|$ be 
+\[
+f_{\sigma} = [\mathbf{v}_{\sigma_b}, \dots \mathbf{v}_{\sigma_n}]
+\]
+in notation of Def. 1.2.  Bredon (1997) \cite{agat:Bred1997}.  
+
+Then this gives CW-complex structure on $|K|$ with $f_{\sigma}$ as characteristic maps.  
+
+
+
+

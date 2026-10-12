@@ -1,0 +1,69 @@
+% Imported from LaTeX_and_pdfs/DGDT_dump.tex; see provenance.json.
+\part{Cohomology; Stoke's Theorem}
+
+
+\section{Stoke's Theorem}
+
+\begin{theorem}[Stoke's Theorem]
+	Let $M$ be oriented, smooth $n$-manifold with boundary, \\
+	let $\omega$ be a compactly supported smooth $(n-1)$-form on $M$, or if $\omega \in A_c^{n-1}(M)$, \\
+	Then
+	\begin{equation}
+	\int_M d\omega = \int_{\partial M} \omega
+	\end{equation} 
+	If $\partial M = \emptyset$, then $\int_{\partial M} \omega = 0$
+	
+	$\int_{\partial M} \omega$ interpreted as $\int_{\partial M} i^*_{\partial M} \omega = \int_{\partial M} i^*\omega$ so 
+	\begin{equation}
+	\int_M d\omega = \int_{\partial M} i^*(\omega)
+	\end{equation}
+	where inclusion $i: \partial M \hookrightarrow M$
+\end{theorem}
+
+\begin{proof}
+Begin with very special case: \\
+Suppose $M = \mathbb{H}^n$ (upper half space), $\partial M = \mathbb{R}^{n-1}$ \\
+$\omega$ has compact support, so $\exists \, R >0$ s.t. $\text{supp}\omega \subseteq $ rectangle $A=[-R,R] \times \dots \times [-R, R] \times [0,R]$.  
+
+$\forall \, \omega \in A_c^{n-1}(\mathbb{H}^n)$
+\begin{equation}
+\omega = \sum_{j=1}^n (-1)^{j-1} f_j dx^1 \wedge \dots \wedge \widehat{dx}^j \wedge \dots \wedge dx^n \equiv \sum_{i=1}^n \omega_i dx^1 \wedge \dots \wedge \widehat{dx}^i \wedge \dots \wedge dx^n
+\end{equation}
+with Conlon (2008) \cite{dgdt:Conl2008} and John Lee (2012) \cite{dgdt:JLee2012}'s notation, respectively, and where $f_j$ has compact support.  
+
+\[
+i^*\omega = (f_1 \circ i) dx^2 \wedge \dots \wedge dx^n \in A_c^{n-1}(\partial \mathbb{H}^n)
+\]
+\[ 
+\begin{aligned}
+d\omega & = \sum_{i=1}^n d\omega_i \wedge dx^1 \wedge \dots \wedge \widehat{dx}^i \wedge \dots \wedge dx^n = \sum_{i,j=1}^n \frac{\partial \omega_i}{ \partial x^j} dx^j \wedge dx^1 \wedge \dots \wedge \widehat{dx}^i \wedge \dots \wedge dx^n = \\
+& = \sum_{i=1}^n (-1)^{i-1} \frac{ \partial \omega_i}{ \partial x^i } dx^1 \wedge \dots \wedge dx^n
+\end{aligned}
+\]
+i.e. (for another notation)
+\[
+d\omega = \left( \sum_{j=1}^n \frac{\partial f_j}{ \partial x^j} \right) dx^1 \wedge \dots \wedge dx^n \in A_c^n(\mathbb{H}^n)
+\]
+
+\[
+d\omega = \left( \sum_{j=1}^n \frac{\partial f_j}{ \partial x^j} \right) dx^1 \wedge \dots \wedge dx^n \in A_c^n(\mathbb{H}^n)
+\]
+
+\[
+\int_{\mathbb{H}^n} d\omega = \sum_{i=1}^n (-1)^{i-1} \int_A \frac{ \partial \omega_i}{ \partial x^i } dx^1 \wedge \dots \wedge dx^n = \sum_{i=1}^n (-1)^{i-1} \int_0^R \int_{-R}^R \dots \int_{-R}^R dx^1 \dots dx^n \frac{ \partial \omega_i}{\partial x^i}(x)
+\]
+
+We can change order of integration in each term so to do $x^i$ integration first. 
+
+By fundamental thm. of calculus, terms for which $i\neq n$ reduce to 
+\[
+\begin{gathered}
+\sum_{i=1}^{n-1} (-1)^{i-1} \int_0^R \int_{-R}^R \dots \int_{-R}^R \frac{\partial \omega_i}{\partial x^i}(x) dx^1 \dots dx^n = \sum_{i=1}^{n-1} (-1)^{i-1} \int_0^R \int_{-R}^R \dots \int_{-R}^R \frac{\partial \omega_i}{\partial x^i}(x) dx^i dx^1 \dots \widehat{dx}^i \dots dx^n = \\
+= \sum_{i=1}^{n-1} (-1)^{i-1} \int_0^R \int_{-R}^R \dots \int_{-R}^R [\omega_i(x)]_{x^i = -R}^{x^i = R} dx^1 \dots \widehat{dx}^i \dots dx^n = 0 
+\end{gathered} 
+\]
+because we've chosen $R$ large enough that $\omega =0 $ when $x^i = \pm R$.  
+	
+	
+\end{proof}
+

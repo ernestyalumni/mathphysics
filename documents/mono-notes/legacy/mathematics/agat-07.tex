@@ -1,0 +1,767 @@
+% Imported from LaTeX_and_pdfs/AGAT_dump.tex; see provenance.json.
+\part{Probability}
+
+
+\section{Measure Theory}
+
+\subsection{Measure Theory -Lect05- Frederic Schuller}
+
+\href{https://youtu.be/6ad9V8gvyBQ?si=c8X7MUMjokirSn0F}{Measure Theory -Lec05- Frederic Schuller}, Schuller (2016) \cite{agat:Schu2016}.
+
+Lecture 5: \textbf{Measure Theory}
+
+Short recap of basic notions of measure theory - without proofs - for two reasons:
+
+EY: Without proofs because it would take too much time and they're relatively straightforward.
+
+\begin{enumerate}
+	\item spectral theory (Schuller: for self-adjoint operators) requires the (projection-valued) measures.
+	\item \textbf{the} most commonly emerging $\infty$-dim. separable Hilbert space in quantum mechanics \\
+	$L^2(\mathbb{R}^d)$ (Schuller: $d$ typically $=3$; you have to take the equivalence classes of square-integrable functions, almost everywhere; for physicists, theorems for exchanging integration and limits, for Riemann integral, you need uniform convergence, but for Lebesque integral you need not strong conditions). 
+\end{enumerate}
+
+\subsubsection{1. General measure spaces}
+
+The basic definition is:
+\begin{definition}
+	Let $M$ be a non-empty set. \\
+	Then a collection of subsets  
+	\[
+	\sigma \subseteq \mathcal{P}(M)
+	\] is called \\
+	a \textbf{$\sigma$-algebra for $M$} \\
+	if \begin{enumerate}
+		\item $M \in \sigma$ \\
+		\item $A \in \sigma \Longrightarrow M  \setminus A \in \sigma$
+		\item $A_1, A_2, \dots \in \sigma$ and $A_i \cap A_j = \emptyset$, $i\neq j$
+		\[
+		\Longrightarrow \bigcup_{n\geq 1} A_n \in \sigma
+		\]
+	\end{enumerate}
+\end{definition}
+
+\textbf{Terminology} $A\in \sigma$ called a \textbf{measurable set} in $M$. \\
+\phantom{Terminology} $(M, \sigma)$ is called a \textbf{measurable} space. \\
+
+Schuller: Volume will be called measure soon. Only sets in $\sigma$-algebra can be assigned a volume, i.e. measure. $\sigma$-algebra could be called set of all measurable subsets.
+
+\textbf{Remark}: Clearly, taking $\sigma = \mathcal{P}(M)$. \\
+In general, however, it does not provide a useful $\sigma$-algebra if $M$ is non-countable. (Schuller: e.g. discrete topology doesn't provide a useful topology)  \\
+
+($\Longrightarrow$ problem sheet, Banach-Taichi paradox) (EY: Banach-Tarski paradox)
+
+\begin{definition}\label{agat:Def:measure}
+	A measure $\mu : \sigma \to \mathbb{R}_0^+$ on a measurable space $(M, \sigma)$ is a map satisfying:
+	\begin{enumerate}
+		\item[(i)] $\mu(\emptyset) = 0$
+		\item[(ii)] $A_1, A_2, \dots \in \sigma$ pairwise disjoint: $\forall i \neq j$, \, $A_i \cap A_j = \emptyset$ \\
+		$\Longrightarrow \mu (\bigcup_{n \geq 1} A_n ) = \sum_{n \geq 1} \mu(A_n)$ (Schuller: this is often called "sigma additivity")
+	\end{enumerate}
+\end{definition}
+
+\textbf{Terminology}: $ \underbrace{ ( \underbrace{M, \sigma}_{\text{measurable space}}, \mu) }_{\text{measure space}}$
+
+\textbf{Properties} of a measure.\label{agat:Thm:MeasureProperties}
+\begin{enumerate}
+	\item[(i)] \textbf{monotony}: $\underbrace{A_1}_{\in \sigma} \subseteq \underbrace{A_2}_{\in \sigma} \Longrightarrow \mu(A_1) \leq \mu(A_2)$ (Schuller, EY: Equality could happen if sets 1,2 differ by a point or in general a set of measure 0)
+	\item[(ii)] Schuller: What if you dropped pairwise-disjoint property in the definition Def. \ref{agat:Def:measure}? \\
+	\textbf{sub-additivity} $\lbrace A_1, A_2, \dots \rbrace \subseteq \sigma$ : $\mu \left( \bigcup_{n\geq 1} A_n \right) \leq \sum_{n\geq 1} \mu (A_n)$
+	\item[(iii)] \textbf{"continuity" from below}: \emph{Increasing exhaustive} sequence of measurable sets
+	\[
+	A_q \subseteq A_2 \subseteq \dots \quad \quad \, (\text{increasing})
+		\]
+		\[
+		\bigcup_{n \geq 1} A_n = A \quad \quad \, \text{(exhastive)}
+		\]
+		
+		Then $\lim_{n\to \infty} \mu(A_n) = \mu(A)$
+	\item[(iv)] \textbf{"continuity from above"}: \\
+	decreasing sequence enveloping: 
+	\[
+	\underbrace{A_1}_{\in \sigma} \supseteq \underbrace{A_2}_{\in \sigma} \subseteq \dots \text{ and } A = \bigcap_{n \geq 1 } A_n \, \left( \in \sigma \text{ due to \textbf{de Morgan} rule }\right)
+	\]
+	(Schuller: if these are measurable, $A_1, A_2, \dots$, are $A$ measurable?)
+
+	\textbf{deMorgan} $M \setminus \bigcup_{n \geq 1} A_n = \bigcap_{n \geq 1} M \setminus A_n$
+
+	\textbf{ and } $\mu (A_1) < \infty$
+
+\[
+\Longrightarrow \lim_{n \to \infty} \mu(A_n) = \mu(A)
+\]
+
+\begin{proof}
+	$\Longrightarrow$ Problem Sheet.
+\end{proof}
+
+\end{enumerate}
+
+
+\begin{definition} A measure $\mu$ is called finite if 
+	\[
+	\exists \lbrace A_1, A_2, \dots \rbrace \subseteq \sigma
+	\]
+	with $\bigcup_{n \geq 1} A_n = M$ s.t. $\mu (A_n) < \infty$, \, $\forall \, n \in \mathbb{N}$
+\end{definition}
+
+\subsubsection{2. Borel-$\sigma$-algebras}
+
+How does one specify, in practice, a $\sigma$-algebra?
+
+Schuller: measurability isn't a property of a set, but a property of a collection of sets. It's measurable with respect to a system.
+
+\begin{definition}
+	\begin{theorem}
+		The smallest $\sigma$-algebra $\sigma$ for a set $M$ that \textbf{contains} (among other subsets of $M$) a collection of subsets $\mathcal{E} \subseteq \mathcal{P}(M)$ is called / defined as 
+		\[
+		\begin{aligned}
+		\sigma(\mathcal{E}) & = \lbrace A \subseteq M | \forall \, \sigma-\text{algebras} \sigma \text{ of } M \text{ with } \mathcal{E} \subseteq \sigma: A \in \sigma \rbrace \\
+		& = \bigcap_{\substack{ \sigma-\text{algebra (for $M$) } \sigma \\ \mathcal{E} \subseteq \sigma } } \sigma
+		\end{aligned}
+		\]
+	\end{theorem}
+\end{definition}
+
+\begin{proof}
+	(that $\sigma(\mathcal{E})$), generating set $\mathcal{E}$
+\end{proof}
+
+\begin{theorem}
+	Every $\sigma$-algebra can be written as
+	\[
+	\sigma = \sigma(\mathcal{E})
+	\] some $\mathcal{E}$
+
+This construction immediately allows to link the notions of topology and $\sigma$-algebra for a set $M$
+\end{theorem}
+
+\begin{definition}
+	Let $(M, \mathcal{O})$ be a topological space.
+	
+	Then $\sigma(\mathcal{O})$ is called the \textbf{Borel-$\sigma$-algebra} of $(M, \mathcal{O})$
+\end{definition}
+Schuller the $\sigma$ generated by set of open sets. $\mathcal{O}$ is a generating set of $\sigma$ algebra. There are non-open set in the $\sigma$ algebra.
+
+\textbf{Instructive example}. \\
+$M = \mathbb{R}$, $\mathcal{O} = \mathcal{O}_{ \substack{ \mathbb{R} \\ \text{ standard } } }$ "standard topology". \\
+
+\textbf{Clearly}: $\sigma := \sigma(\mathcal{O})$ \\
+
+$\forall \, a, b \in \mathbb{R}$: $(a,b) \in \sigma$ \\
+
+$\Longrightarrow$ (by (iii) of $\sigma$-algebra and deMorgan) 
+\[
+\bigcap_{n \geq 1} \left( a - \frac{1}{n}, b \right) =: A_n \in \sigma(\mathcal{O}) = [a, b)
+ \]
+Schuller: So for instance, the half-open intervals are in the Borel-$\sigma$-algebra.
+
+\subsubsection{3. Lebesgue measure on $M = \mathbb{R}^d$}
+
+Schuller: There's a Lebesgue integral from measurable spaces, but only a Lebesgue measure on $\mathbb{R}^d$, not in general for measurable spaces.
+
+Special construction of a measure 
+\[
+\begin{aligned}
+	& M = \mathbb{R}^d \quad \quad \, \text{ some } d \in \mathbb{N}^+ \\
+	& \sigma = \sigma \left( \mathcal{O}_{\mathbb{R}^d, \text{ standard } } \right)
+\end{aligned}
+\]
+
+Then the \emph{\textbf{unique}} map $\mu_{\text{Lebesgue, $\mathbb{R}^d$} } \equiv \lambda : \sigma(\mathcal{O}) \to \overline{ \mathbb{R}}^+_0$ \\
+
+$\mathbb{R}^2$:
+
+Defined by
+
+\[
+\lambda \left( [a_1, b_1) \times [a_2, b_2) \times \dots \times [a_d, b_d) \right) = (b_1 - a_1) \cdot \dots \cdot (b_d - a_d) 
+\]
+$a_i < b_i$
+
+is called \textbf{the} \textbf{Lebesgue-measure on} $\mathbb{R}^d$ \\
+
+\textbf{Remark}: $(\underbrace{ \mathbb{R}, +, \cdot}_{\lambda}, |\cdot |) \rightsquigarrow \mathcal{O}_s \rightsquigarrow \sigma(\mathcal{O}_s)$ \quad \quad \, $(\mathbb{R}, \sigma(\mathcal{O}), \lambda)$ where $\sigma(\mathcal{O})$ is the \textbf{Borel}-$\sigma$-algebra, and $\lambda$ the Lebesgue measure \\
+
+\textbf{From now on}: tacit agreement \\
+\phantom{From now on} that $\mathbb{R}^d$ always be equipped, \\
+\phantom{From now on} if the need arises, with \\
+\phantom{From now on} Borel $\sigma$-algebra $\sigma(\mathcal{O}_{\mathbb{R}^d, s})$ and the Lebesgue measure. \\
+
+\textbf{Remarks}: 
+\begin{enumerate}
+	\item[(i)] obviously, $\lambda$ is a finite measure.
+	\item[(ii)]  an alternative, unique, characterization of $\lambda$ is that it is \textbf{the} measure that is invariant \\
+	under translation: $\lambda(A + v) = \lambda(A) \quad \, \forall A \in \sigma(\mathcal{O}), \, \forall v \in \mathbb{R}^d$ \\
+	and which sends $\lambda([0, 1]^{xd}) = +1$
+\end{enumerate}
+
+\subsubsection{4. Measurable maps}
+
+\textbf{Standard philosophy}: $(M, \sigma_{M}) \xrightarrow{ \text{ study maps } } (N, \sigma_N)$
+
+\begin{definition}
+	A map $F: M \to N$ is called \textbf{measurable} (with respect to $\sigma_M$ and $\sigma_N$) if $\forall \, A \in \sigma_N : \text{preim}_f(A) \in \sigma_M$.
+\end{definition}
+
+\begin{lemma}
+	Schuller: all the sets $A$ in the generator $E$
+
+	To show that $f$ is \textbf{measurable} it suffices to check whether
+	\[
+	\forall \, A \in \mathcal{E}: \text{preim}_f(A) \in \sigma_M
+	\]
+	where $\sigma_N = \sigma(\mathcal{E})$
+\end{lemma}
+
+\begin{corollary}
+	\begin{enumerate}
+		\item[(i)] any continuous map is measurable with respect to the \textbf{Borel}-$\sigma$-algebras.
+		\item[(ii)] any monotonous map
+		\[
+		f:\mathbb{R} \to \mathbb{R}
+		\]
+		is measurable with respect to Borel $\sigma$-algebra.
+		\begin{proof}
+			$\text{preim}_f(\text{interval})$ is an interval.
+			
+			Schuller: because open, half-open, half-closed, closed intervals are measurable with respect to Borel $\sigma$-algebra, it's measurable.
+		\end{proof}
+	\end{enumerate}
+\end{corollary}
+
+\begin{theorem}
+	The composition $f\circ g : A \to C$ of two measurable maps \\
+	$f:B\to C$ and $g:A \to B$ \\
+	is again measurable.
+\end{theorem}
+
+\begin{proof}
+	Problem sheet.
+\end{proof}
+
+Schuller: many more we can Lebesgue integrate than Riemann integrate.
+
+\subsubsection{5. Push forward of a measure}
+
+Let $(M, \sigma, \mu)$ be a \textbf{measure} space \\
+and let $(N, \tau)$ be a measurable space \\
+
+Schuller: measurable space, you don't know the measure for each set but you know it can be assigned a measure.
+
+Further: Let $M \xrightarrow{f} N$ be a measurable map.
+
+\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
+	{ 
+		M & N \\
+		\sigma, \mu & \tau \\
+	};
+	\draw[->] (m-1-1) -- node[above] {$f$} (m-1-2);
+	\draw[->,decorate,decoration={snake}] (m-1-1) -- (m-2-1);
+	\draw[->,decorate,decoration={snake}] (m-1-2) -- (m-2-2);
+\end{tikzpicture}
+
+Schuller: could I push forward $\sigma$, $\mu$? A new $\mu$ induced?
+
+Then the so-called \textbf{push-forward} $f_*\mu$ is a measure on $(N, \tau)$ defined by 
+\[
+\begin{gathered}
+\begin{aligned}
+f_*\mu : & \tau \to \overline{\mathbb{R}}^+_0 \\
+& A \mapsto (f_* \mu)(A) := \mu(\text{preim}_f(A))
+\end{aligned}
+\end{gathered}
+\]
+where $\begin{aligned}
+	& \mu : \sigma \to \overline{\mathbb{R}}^+_0 \\
+	& f: M \to N
+\end{aligned}$
+
+\begin{proof}
+	Problem sheet.
+\end{proof}
+
+\subsubsection{6. Sets of measure zero, and "almost everywhere"}
+
+Schuller $\sigma$ you can assign a measure or volume, $\mu$ is the measure or volume.
+
+\begin{definition}
+	Let $(M, \sigma, \mu)$ be a measure space. Then
+	$A\in \sigma$ is called a \textbf{set of measure zero} (null set) if
+	\[
+	\mu(A) = 0
+	\]
+\end{definition}
+
+\textbf{Remark}: There may be other null sets then $\emptyset$.
+
+\textbf{Terminology}: A condition, e.g. equality or convergence or \dots is said to hold \textbf{"almost everywhere"} (a.e.) if it holds $\forall \, m \in M \setminus N$ ($\leftarrow$ some $N$ with $\mu(N) = 0$).
+
+\textbf{Examples}. 
+\begin{enumerate}
+	\item[(a)]
+Let $\begin{aligned} & \quad \\
+	& f: M \to N \\
+	& g: M \to N \end{aligned}$ maps $\begin{aligned} & (M, \sigma, \mu) \\
+	& N \text{ and naked set } \end{aligned}$
+\begin{definition}
+	\[
+	f =_{\text{a.e.}} g : \Longleftrightarrow \exists \, A \in \sigma, \, \mu(A) = 0 \, \forall \, m \in M \setminus A : f(m) = g(m) 
+	\]
+\end{definition}
+\item[(b)] 
+\[
+\begin{gathered}
+	\left. \begin{aligned} & f_n: M \to N \\
+		& f: M \to N \end{aligned}
+\right\}  \begin{aligned} & (M, \sigma, \mu) \\ & (N, \mathcal{O}) \end{aligned} \\
+f_n \to_{\text{a.e.} } f : \Longleftrightarrow \forall \, m \in M \setminus A: f_n(m) \to f(M) \\
+\text{ where } A \in \sigma : \mu(A) = 0
+\end{gathered}
+\]
+\end{enumerate}
+
+Proof for Thm. \ref{agat:Thm:MeasureProperties}, from Ch. 1. Measure Theory of Durrett (2019) \cite{agat:Durr2019}.
+
+\begin{proof}
+\begin{enumerate}
+	\item \textbf{monotonicity} or i.e. \textbf{monotony}: Recall set difference $B-A = B \cap A^c$. Let $x \in B-A$, so $x\in B$ and $x\neq A$. Then $x\in B \cap A^c$. If $B-A = \emptyset$ i.e. $B\cap A = B$, then $B\cap A^c = \emptyset$. Then $B-A \subseteq B \cap A^c$. \\
+	Let $x\in B\cap A^c$, so $x\in B$ and $x\in A^c$. So $x\in B$ and $x\notin A$. $x\in B-A$. $B\cap A^c \subseteq B-A$. Thus $B\cap A^c = B-A$. \\
+	
+	Given $A\subset B$, $B=B-A + B\cap A = B-A + A$ (where $+$ denotes disjoint union), $\mu(B) = \mu (A) + \mu(B-A) \geq \mu(A)$
+	\item EY: Insight, we know from Def. \ref{agat:Def:measure} that if we have pairwise disjoint sets, we can say something about the measure. Thus, construct pairwise disjoint sets. \\
+	
+	Consider $B_1 = A_1$, $B_2 = A_2 - A_2 \cap A_1, \, B_3 = A_3 - A_3 \cap B_2 - A_3 \cap B_1 $.\\
+	
+	Let 
+	\[
+	B_i = A_i - \sum_{j=1}^{i-1} A_i \cap B_j
+	\]
+	
+	The difference with union is as follows:
+	\[
+	S - (T_1 \cup T_2) = (S-T_1) (S-T_2)
+	\]
+	where we use the notation $A \cup B \equiv AB$ interchangeably and because
+	\[
+	\begin{gathered}
+		S-(T_1 \cup T_2) = S \cap (T_1 \cup T_2)^c = S \cap (T_1^c T_2^c) = ST_1^c ST_2^c = (S-T_1) \cap (S-T_2)
+	\end{gathered}
+	\]
+
+Likewise, the difference with intersection is $S - (T_1 \cap T_2) = (S - T_1) \cup (S-T_2)$ since
+\[
+\begin{gathered}
+S-(T_1 \cap T_2) = S (T_1T_2)^c = S (T_1^c \cup T_2^c) = ST_1^c \cup ST_2^c = (S - T_1) \cup (S -T_2)
+\end{gathered}
+\]
+where we used set theory' distributive theorem at the second to last equality.
+	
+	Thus
+	\[
+	\begin{gathered}
+		B_{i+1} \cap B_i = (A_{i+1} - \sum_{j=1}^i A_{i + 1} \cap B_j) \cap B_i = \prod_{j=1}^i (A_{i + 1} - A_{i+1} \cap B_j) \cap B_i = \prod_{j=1}^{i - 1} (A_{i + 1} - A_{i+1} \cap B_j) (A_{i+1} - A_{i + 1} \cap B_i) B_i \\
+		\text{ and since } (A_{i+1} A_{i+1}^c \cup A_{i+1} B_i^c) B_i = A_{i+1}B_i^c B_i = \emptyset, \text{ then } \\
+		B_{i+1} \cap B_i = (A_{i+1} - \sum_{j=1}^i A_{i + 1} \cap B_j) \cap B_i = \emptyset \quad \, \text{(they're disjoint!)}
+	\end{gathered}
+	\]
+	
+We can use the same step used as above for $\forall i, j$, given $i > j$ (since they're be a $l$, $1 \leq l < i$ such that $l = j$), and use induction to show that $B_i$, $B_j$ disjoint.	
+
+By construction, $\bigcup_{n=1}B_n = \bigcup_{n=1} A_n$. And because $B_i$'s pairwise disjoint, use Def. \ref{agat:Def:measure}, (ii), to say
+\[
+\mu(\bigcup_{n \geq 1} A_n) = \mu(\bigcup_{n \geq 1} B_n) = \sum_{n\geq 1} \mu(B_n)
+\]
+
+Since we had defined $B_i = A_i - \sum_{j=1}^{i-1} A_i \cap B_j$, $B_i \subseteq A_i$. By Def. \ref{agat:Def:measure}, $\mu(B_n) \leq \mu(A_n)$. Thus
+
+\[
+\mu(\bigcup_{n \geq 1} A_n) \leq \sum_{n=1} \mu(A_n)
+\]
+
+\end{enumerate}	
+\end{proof}
+
+\subsection{Integration of measurable functions -Lec06- Frederic Schuller}
+
+\href{https://youtu.be/ot253Lhx2_o?si=0teIskVSrMHCaoGU}{Integration of measurable functions -Lec06- Frederic Schuller}, Schuller (2016) \cite{agat:Schu2016}.
+
+Lecture 6: \textbf{Integration of measurable functions}
+
+Key definition: Lebesgue integral.\\
+key application: definition: $L^p$ spaces. special: $p=2$
+
+\subsubsection{1. Simple functions}
+
+As a technical tool, we introduce
+
+Schuller: for a measurable function, I need to know the $\sigma$ algebra on $M$ and $\sigma$ on $\mathbb{R}_0^+$.
+\begin{definition} A \emph{measurable function} $s: M \to \mathbb{R}_0^+$ is called a \textbf{simple function} if 
+	\[
+	s(M) = \lbrace s_1, \dots , s_N \rbrace
+	\]
+for some $N\in \mathbb{N}$.
+\end{definition}
+
+Schuller: for measurable function $s:M \to \mathbb{R}_0^+$, must know $\sigma$-algebra, $\sigma$ for $M$ and usually take the Borel $\sigma$ algebra $\sigma (\left. \mathcal{O}_s \right|_{\mathbb{R}_0^+} )$
+
+\textbf{Implication}: \begin{enumerate}
+	\item[(1)] $\text{preim}_S( \lbrace s_i \rbrace) \in \sigma$
+	
+	$s_i$ Borel-measurable.
+	\item[(2)] $s = \sum_{z \in s(M)} z \cdot \chi_{\text{preim}_s(\lbrace z \rbrace) }$ \\
+where $s(M)$ is finite.
+
+\textbf{characteristic function} \\
+
+$\begin{aligned}
+	\chi_{A } : & M \to \mathbb{R} \\
+	& m \mapsto \chi_A(m) := \begin{cases} 1 & m \in A \\
+		0 & m \notin A \end{cases}
+\end{aligned}$ where $A$ is any $A \subseteq M$. \\
+
+Schuller: So $\sum_{z \in s(M)}$ in $s = \sum_{z \in s(M)} z \cdot \chi$ is a finite sum, and not a sequence, so there's no convergence issues. 
+
+\end{enumerate}
+
+\subsubsection{2. Integration for \emph{non-negative} measurable functions}
+
+\begin{definition} By a non-negative measurable function, we mean
+\[
+f : M \to \underbrace{ \overline{\mathbb{R}}}_{ \mathbb{R} \cup \lbrace -\infty, + \infty \rbrace }
+\]
+such that \begin{enumerate}
+	\item[(i)] $f(m) \geq 0 $ for all $m\in M$
+	\item[(ii)] $f$ measurable.
+\end{enumerate}
+Schuller: where $\overline{\mathbb{R}}$ equipped with the $\sigma$ algebra \\
+$\overline{\sigma} = \lbrace A \subseteq \overline{\mathbb{R}} | A \cap \mathbb{R} \in \sigma(\mathcal{O}_{\mathbb{R}}) \rbrace$
+\end{definition}
+
+In order to define the integral of a non-neg. measurable function, we need to have a measure $\mu$ on the \textbf{domain}.
+
+Schuller: Riemann - find area under the cover; Lebesgue - look at all the simple functions, find the suprenum of the simple functions.
+
+\begin{definition}
+	Let $(M, \sigma, \mu)$ be a measure space. \\
+	$[(\overline{R}, \overline{\sigma}) \text{ is a measurable space }]$ \\
+	Then the integral $\int f d\mu$ of a non-negative measurable function $f: M \to \overline{\mathbb{R}}$ is the number $(\in \overline{\mathbb{R}})$
+\[
+\int f d\mu := \sup{ \lbrace \sum_{z \in s(M)} z \cdot \mu\left( \underbrace{ \text{preim}_s(\lbrace z \rbrace) }_{\in \sigma} \right) \rbrace }
+\]
+
+simple functions $s$ with $0\leq s \leq f$
+
+\end{definition}
+
+\begin{definition}
+	Let $A \in \sigma$, i.e., a measurable subset $A \subseteq M$, then we define
+	\[
+	\int_A f d\mu := \int f \cdot \chi_A d\mu
+	\]
+	Schuller: $f\cdot \chi_A$, these are the function proper, not the function values.
+	\[
+	(f\cdot \chi_A)(m) := f(m) \underbrace{\cdot}_{\mathbb{R}} \chi_A(m)
+	\]
+
+\textbf{Notation}: It is often VERY convenient to write 
+\[
+\int f(x) \mu(dx) \text{ instead of } := \int f d\mu
+\]
+\textbf{application}: 
+
+$\begin{aligned}
+	\text{sq}_{\mathbb{R}} : & \mathbb{R} \to \mathbb{R} \\
+	& x \mapsto x^2 
+\end{aligned}$
+\[
+\int \underbrace{ \text{sq}_{\mathbb{R}}(x) }_{x^2} \mu(dx) \equiv   \int \text{sq}_{\mathbb{R}} d\mu
+\]
+
+\textbf{Properties}: $f$ \emph{non-negative} measurable
+\begin{enumerate}
+	\item[(i)] Markov inequality: $z \in \mathbb{R}^+_0$
+	\[
+	\int f d\mu \geq z \cdot \mu(\text{preim}_f(\lbrace z \rbrace))
+	\]
+	\item[(ii)] 
+	\[
+	f \leq_{\text{almost everywhere}} g \Longrightarrow \int f d\mu \leq \int g d\mu
+	\]
+	\item[(iii)] 
+	\[
+	f =_{\text{almost everywhere }} g \Longrightarrow \int f d\mu = \int g d\mu
+	\]
+	\item[(iv)] 
+	\[
+	\int f d\mu = 0 \Longrightarrow f =_{\text{almost everywhere} } 0 
+	\]
+	\item[(v)]
+	\[
+	\int f d\mu < \infty \Longrightarrow f <_{\text{almost everywhere}} \infty
+	\]
+\end{enumerate}
+
+\end{definition}
+
+The pivotal theorem of (Lebesgue) integration theory is \textbf{Theorem on monotone convergence}. \\
+
+Let $0 \leq f_1 \leq f_2 \leq \dots$ be a sequence of measurable functions $f_n: M \to \overline{\mathbb{R}}$ \\
+
+Provided $f := \sup_{n \geq 1} f_n$ \textbf{pointwise}. \\
+
+Then
+\[
+\lim_{n\to \infty} \int f_n d\mu = \int f d\mu
+\]
+
+EY (20231114): Schuller says in Riemann integration, pointwise is unheard of but here we can exchange the $\lim$ with $\int$. This is a much more general, much more powerful notion of integration.
+
+Let's collect 2 results.
+
+\begin{theorem}
+	Let $f,g \geq 0$ be measurable. \\
+	Let $\alpha \in \mathbb{R}^+_0$. \\
+	Then $\int (f + \alpha g) d\mu = \int f d\mu + \alpha \int g d\mu$ (EY (20231114): Schuller says integration acts linearly as expected) 
+\end{theorem}
+
+\begin{theorem}
+	For any sequence $f_n:M \to \overline{\mathbb{R}}_0^+$ (measurable) \\
+	We have
+	\[
+	\int \left( \sum_{n=1}^{\infty} f_n \right) d\mu = \sum_{n=1}^{\infty} \int f_n d\mu
+	\]
+\end{theorem}
+
+\subsubsection{3. Integrable functions}
+
+In order for a general (not necessarily non-negative function as discussed so far) function
+\[
+f: M \to \overline{\mathbb{R}}
+\]
+to be integrable (having $\int f d\mu$ defined) one needs, beyond $f$ being measurable, one very small extra technical condition. If this extra condition is satisfied, $f$ is called \textbf{integrable}.
+
+More precisely:
+
+\begin{definition}
+	A function $f: M \to \overline{\mathbb{R}}$ is called \textbf{integrable} if 
+	\begin{enumerate}
+		\item[(i)] $f$ is \textbf{measurable}. EY (20231114): Schuller writes in thought bubble: ($(M, \sigma)$ measure space, $(\overline{\mathbb{R}}, \overline{\sigma})$ measure space).
+		\item[(ii)] $\int |f| d\mu < \infty$
+	\end{enumerate} 
+\end{definition}
+
+\emph{Remark} (ii) $\Longleftrightarrow \int f^+ d\mu < \infty$ \emph{and} $\int f^- d\mu < \infty$ where $f = f^+ - f^-$ EY (20231114): Schuller has in thought bubbles $f^+ \leftarrow := \max{(f,0)} \text{ pointwise }$, $f^- \leftarrow := \max{(-f, 0)} \text{ pointwise }$
+
+\begin{definition} The integral $\int fd\mu$ of an \emph{integrable} $f$ is defined as 
+	\[
+	\int f d\mu := \int f^+ d\mu - \int f^- d\mu
+	\]
+\end{definition}
+EY (20231114): Schuller says: restrict them, either of the 2 is $\infty$, $\infty - \infty$ is not good, you don't know what that is supposed to be. $0 - \infty$ is good, it's $-\infty$, $\infty - 0 = \infty$ is good.
+
+\emph{Remark}: In Quantum Mechanics, we need to deal with 
+\[
+f: M \to \mathbb{C}
+\]
+Their integration theory follows immediately by treating $\Re{(f)}$ and $\Im{(f)}$ separately.
+
+\[
+\int f d\mu := \int \Re{(f)} d\mu + i \int \Im{(f)} d\mu
+\]
+
+\textbf{Properties}: $f,g$ \textbf{integrable}: $M \to \mathbb{R}$
+\begin{enumerate}
+	\item[(i)] $f \leq_{\text{almost everywhere}} g \Longrightarrow \int f d\mu \leq \int g d\mu$
+	\item[(ii)] $\forall \, \alpha \in \mathbb{R}$: $\int (f+\alpha g) d\mu = \int f d\mu + \alpha \int g d\mu$
+\end{enumerate}
+
+\subsubsection*{Theorem on dominant convergence}
+
+\begin{theorem}
+	Let \begin{enumerate}
+		\item[(a)] $f_1, f_2, \dots$ sequence of measurable function. 
+		\item[(b)] $f_n \to_{\text{almost everywhere}} f$ pointwise for some function $f$. 
+		\item[(c)] $g$ be non-negative measurable with $\int g d\mu < \infty$ s.t.
+		\[
+		\forall n \in \mathbb{N} : \, |f_n| \leq_{\text{almost everywhere}} g
+		\]
+	\end{enumerate}
+\end{theorem}
+
+Then we have
+\begin{enumerate}
+	\item[(i)] $f$ and $f_1, f_2, f_3, \dots$ are integrable.
+	\item[(ii)] \[
+	\lim_{n\to \infty} \int |f_n - f| d\mu < \infty
+	\] EY (20231115) Schuller says the LHS is finite.
+	\item[(iii)] 
+	\[
+	\lim_{n\to \infty} \int f_n d\mu = \int f d\mu
+	\]
+\end{enumerate}
+
+\textbf{Markov} $\forall \, z \in \mathbb{R}_0^+ : \int f d\mu \geq z \cdot \mu(\text{preim}_f([z, \infty) ))$
+
+\subsubsection{4. The function spaces $L^p(M, \sigma, \mu)$}
+
+\textbf{Fact}: Quantum mechanics of a particle in 3 space-dimensions rests on the (as we will see: Hilbert) space
+\[
+L^2(\mathbb{R}^3, \sigma(\mathcal{O}_{\mathbb{R}^3} ), \lambda^3)
+\]
+
+While we will need the theory for the special case $p=2$ only, it is worthwhile to develop it for any \emph{real} $1 \leq p < \infty$.
+
+\begin{definition}
+	The set $\mathcal{L}^p := \lbrace f: M \to \mathbb{C} | f \text{ measurable and } \int |f|^p d\mu < \infty \rbrace$
+\end{definition}
+
+Equipping $\mathcal{L}^p$ with pointwise $+$ and $\cdot$ makes $(\mathcal{L}^p(M, \sigma, \mu), +, \cdot)$ into a $\mathbb{C}$-vector space: 
+\[
+\begin{gathered}
+\begin{aligned}
++ & : \mathcal{L}^p \times \mathcal{L}^p & \to \mathcal{L}^p \\
+& (f,g) & \mapsto (f + g)
+\end{aligned} \\
+(f \underbrace{+}_{\mathcal{L}^p} g)(m) := f(m) \underbrace{+}_{\mathbb{C}} g(m) \quad \, \forall \, m \in M \\
+\begin{aligned}
+	\cdot & : \mathbb{C} \times \mathcal{L}^p & \to \mathcal{L}^p \\
+	& (\alpha, f) & \mapsto \alpha \cdot_{\mathbb{C}} f \\
+(\alpha \cdot f)(m) = \alpha \cdot_{\mathbb{C}} f(m) \quad \, \forall \, m \in M
+\end{aligned}
+\end{gathered}
+\]
+
+\begin{theorem}
+	The map: $ \seminorm{\cdot}_p : \mathcal{L}^p \to \mathbb{R}$ defined as 
+	\[
+	\seminorm{f}_p := (\int |f|^p d\mu)^{\frac{1}{p} }_{1\leq \underbrace{p}_{\in \mathbb{R}} < \infty}
+	\]
+	is a \textbf{semi-norm}:
+	\begin{enumerate}
+		\item[(i)] 
+		\[
+		\forall \, \alpha \in \mathbb{C}: \seminorm{\alpha f}_p = |\alpha| \cdot \seminorm{f}_p
+		\]
+		\item[(ii)]
+		\[
+		\seminorm{ f + g}_p \leq \seminorm{ f }_p + \seminorm{ g}_p
+		\]
+		\item[(iii)]
+		\[
+		\seminorm{f}_p \geq 0
+		\]
+		\[
+		\cancel{ \seminorm{f}_p = 0 \Longrightarrow f = 0 }
+		\]
+	\end{enumerate}
+\end{theorem}
+
+\textbf{Remark}: $\seminorm{f}_p = 0 \Longrightarrow f =_{\text{almost everywhere}} 0$, and this makes
+\[
+(\mathcal{L}^p, +, \cdot, \seminorm{\cdot}) \text{ not even a normed space }
+\]
+
+To remove the troublesome $f$ which are zero almost everywhere while refusing to be zero everywhere define the following equivalence relation:
+
+Call $f, g\in \mathcal{L}^p$ equivalent: $f \sim g : \Longleftrightarrow f =_{\text{almost everywhere}} g$ \quad \quad \, $g =_{\text{almost everywhere}} h$
+
+Equivalence Relation:
+\[
+\begin{aligned}
+	\checkmark & f\sim g \\
+	\checkmark & f \sim f \\
+	& f \sim g \, \& \, g \sim h \Longrightarrow f \sim h
+\end{aligned}
+\]
+\[
+\begin{gathered}
+	0 \leq \mu (A\bigcup B) \leq \mu(A) + \mu(B) \\
+	= 0 \\
+	\begin{aligned}
+		& \mu(A) = 0 \\
+		& \mu(B) = 0
+	\end{aligned}
+\end{gathered}
+\]
+EY (20231115): Schuller says: Equivalence relations are looking at things in a more forgiving way. I choose to ignore.
+
+For any equivalence relation $\sim$ on $M$ (EY (20231115) Schuller says $M$ is $L^p$) one has the so-called \textbf{quotient space}
+\[
+M / \sim := \lbrace [m] | m \in M \rbrace
+\]
+\[
+[m] := \lbrace \overline{m} | \overline{m} \sim m \rbrace
+\]
+EY (20231115): Schuller says: You have the set of the boys and the girls. You ignore the tall boy, or the short boy. You say they're equivalent is by definition of gender.
+
+$m_1 \sim m_2 : \Longleftrightarrow g(m_1) = g(m_2)$
+
+EY (20231115): Schuller says: equivalence class is when you forget the elements inside the set. Here, we're identifying the functions that are different on set of measure zero.
+
+For our $f\sim g : \Longleftrightarrow f =_{\text{almost everywhere}} g$ we have
+\[
+L^p := \mathcal{L}^p / \sim = \lbrace [f]_{\sim} | f \in \mathcal{L}^p \rbrace
+\]
+\textbf{Check}: 
+\[
+\begin{gathered}
+[f]_{\sim} +_{L^p} [g]_{\sim} := [f +_{\mathcal{L}^p} g]_{\sim} \\
+\alpha \cdot_{L^p} [f]_{\sim} := [\alpha \cdot_{L^p} f]
+\end{gathered}
+\]
+are well-defined.
+
+Show: $\underbrace{[0]}_{\mathcal{L}^p} + [f] = [f]$
+
+Inherit 
+\[
+\begin{aligned} 
+	\| \cdot \| : & L^p \to \mathbb{R}
+& \underbrace{[f]}_{ \in \mathcal{L}^p } \mapsto \| [f] \| := \seminorm{f}  
+\end{aligned}	\quad \quad \quad \, \text{\emph{Well-defined}}
+\]
+
+\begin{theorem}	
+	\[
+	\| \cdot \|_p : L^p \to \mathbb{R}
+	\] is a \textbf{norm} on $L^p$.
+	\[
+	(\Longrightarrow (L^p(M, \sigma, \mu), + , \cdot , \| \cdot \|_p ) \text{ is a normed space } )
+	\]
+\end{theorem}
+\begin{theorem}
+	$(L^p, \dots)$ is a \textbf{Banach space}.
+\end{theorem}
+\textbf{Fact}: H\"{o}lder inequality: $1 \leq p,q < \infty$ and $\frac{1}{p} + \frac{1}{q} = 1$, then
+\[
+\| \int \overline{f}\cdot g d\mu \| \leq  \left( \int |f|^p d\mu \right)^{\frac{1}{p}} + \left( \int |g|^q d\mu \right)^{\frac{1}{q}}
+\]
+(H\"{o}lder inequality) \\
+
+\textbf{Observation}: Letting $\begin{aligned}
+& 	\quad \\ 
+& \langle [f], [g] \rangle := \int \overline{f}\cdot g d\mu \quad \quad \, (\text{well-defined}) \\
+& \langle \cdot, \cdot \rangle : L^p \times L^p \to \mathbb{C} 
+\end{aligned}$
+
+\emph{Check} sesquilinear inner product
+
+\[
+\Longrightarrow |\langle f, g \rangle | \leq \| f \|_2 + \| g \|_2
+\]
+EY (20231115) Schuller says: Only for the case $p=2$ do you get the Cauchy inequality.
+\[
+\underbrace{\Longrightarrow}_{p = 2} |\langle f, g \rangle | \leq \| f \|_2 + \| g \|_2 \quad \quad \, \text{Cauchy inequality}
+\]
+
+\begin{theorem}
+	$(L^2(M, \sigma, \mu), +, \cdot, \langle \cdot | \cdot \rangle)$ is a Hilbert space. \\
+
+	("the (so-called) square-\textbf{integrable} [complex functions]") \\
+
+EY (20231115) Schuller uses [] to denote equivalence classes in [complex functions].
+\end{theorem}
+
+EY (20231115) Schuller says: we keep in mind that equal almost everywhere. We work with the representative of the equivalence class. We make a pick.
+

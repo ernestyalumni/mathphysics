@@ -1,0 +1,270 @@
+% Imported from LaTeX_and_pdfs/DGDT_dump.tex; see provenance.json.
+\part{Combinatorics, Probability Theory}
+
+
+\begin{theorem}[4.2. of Feller (1968)  \cite{dgdt:Fell1968}]
+	Let $r_1,\dots r_k \in \mathbb{Z}$, s.t. $r_1 + r_2 + \dots + r_k = n$;, $r_i \geq 0$.  
+
+Let 
+\begin{equation}
+\frac{ N! }{r_1! r_2! \dots r_k!} = 
+\end{equation}
+number of ways in which $n$ elemnts can be divided into $k$ ordered parts (partitioned into $k$ subpopulations).  cf. Eq. (4.7) of Feller (1968)  \cite{dgdt:Fell1968}.  
+
+Note that the order of the subpopulations is essential in the sense that ($r_1 = 2,r_2 =3$) and ($r_1=3,r_2=2$) represent different partitions.  However, no attention is paid to the order within the groups.  
+
+\end{theorem}
+\begin{proof}
+\begin{equation}
+\binom{n}{r_1} \binom{n-r_1}{r_2} \binom{n-r_1-r_2}{r_3} \dots \binom{n-r_1-\dots - r_{k-2} }{ r_{k-1} } = \frac{n!}{ r_1! r_2! \dots r_k! }
+\end{equation}
+i.e. in order to effect the desired partition, we have to select $r_1$ elementsout of $n$, remaining $n-r_1$ elements select a second group of size $r_2$, etc.  After forming the $(k-1)$st group there remains $n-r_1 -r_2 - \dots - r_{k-1} = r_k$ elements, and these form the last group.  
+\end{proof}
+
+cf. pp. 37 of Feller (1968)  \cite{dgdt:Fell1968}
+Examples.  (g) Bridge.  32 cards are partitioned into 4 equal groups $\to 52!/(13!)^4$.  
+
+Probability each player has an ace (?).  
+
+The 4 aces can be ordered in $4! = 24$ ways, each order presents 1 possibility of giving 1 ace to each player.  \\
+Remaining 48 cards distributed $(48!)/( 12!)^4$ ways.  
+
+\[
+\to p = 24 \frac{ 48!}{ (12!)^4 } / \frac{ 52!}{ (13!)^4}
+\]
+
+(h) A throw of 12 dice $\to  6^{12}$ different outcomes total.  Event each face appears twice can occur in as many ways as 12 dice can be arranged in 6 groups of 2 each.  
+\[
+\frac{12!}{(2!)^6} / \frac{ 52!}{ (13!)^4} 
+\]
+
+\subsubsection{Application to Occupancy Problems; binomial coefficients}
+
+cf. Sec. 5 Application to Occupancy Problems of Feller (1968)  \cite{dgdt:Fell1968}.  
+
+Consider randomly placing $r$ balls intos $n$ cells.  
+
+Let $r_k = $ occupancy number $=$ number of balls in $k$th cell.  
+
+Every $n$-tuple of integers satisfying $r_1 + r_2 + \dots + r_n = r$;  $r_k \geq 0$.  describes a possible configuration of occupancy numbers.  
+
+With indistinguishable balls 2 distributions are distinguishable only if the corresponding $n$-tuples ($r_1,\dots r_n$) are not identical.  
+
+\begin{enumerate}
+\item[(i)] number of distinguishable distributions is 
+\begin{equation}
+A_{r,n} = \binom{n+r-1}{r} = \binom{n+r-1}{n-1}  
+\end{equation} cf. Eq. (5.2) of Feller (1968)  \cite{dgdt:Fell1968}
+\item[(ii)]  number of distinguishable distributions in which no cell remains empty is $\binom{r-1}{n-1}$.  
+\end{enumerate}
+
+\begin{proof}
+Represent balls by stars, indicate $n$ cells by $n$ spaces between $n+1$ bars.  e.g. $\begin{aligned} & \quad \\ 
+& r= 8 \text{ balls } \\
+& n = 6 \text{ cells } \end{aligned}$.  
+
+\[
+\begin{aligned}
+	& 3 	  & 1   & 0 & 0 & 0 & 4 \\
+	& | * * * & | * & | & |   & | & | **** |  
+\end{aligned}
+\]
+
+Such a symbol necessarily starts and ends with a bar, but remaining $n-1$ bars and $r$ starts appear in an arbitrary order.  In this way, it becomes apparent that the number of distinguishable distributions equals the number of ways of selecting.  
+
+$r$ places out of $n+r-1$, $\frac{ (n+r-1)! }{ (n-1)! r!} = \binom{n-1+r}{r} $  
+
+\[
+\begin{aligned}
+	& | | | | \dots | | \qquad \, n+1 \text{ bars } \\ 
+	& * * * \dots * * \qquad \, r \text{ stars leave } r-1 \text{ spaces }
+\end{aligned}
+\]
+
+Condition that no cell be empty imposes the restriction that no 2 bars be adjacent.  $r$ stars leave $r-1$ spaces of which $n-1$ are to be occupied by bars.  Thus $\binom{r-1}{n-1}$ choices.  
+
+
+\end{proof}
+
+
+Probability to obtain given occupancy numbers $r_1,\dots r_n = \frac{r!}{ r_1! r_2! \dots r_n! } / n^r$, with $ \begin{aligned} & \quad \\ 
+	& r \text{ balls } \\ 
+& n \text{ cells } \end{aligned}$  given by Thm. 4.2. of Feller (1968)  \cite{dgdt:Fell1968}, which is the Maxwell-Boltzmann distribution.  
+
+\begin{enumerate}
+\item[(a)] Bose-Einstein and Fermi-Dirac statistics.  Consider $r$ indistinguishable particles, $n$ cells, each particle assigned to 1 cell.  
+
+State of the system - random distribution of $r$ particles in $n$ cells.  
+
+If $n$ cells distinguishable, $n^r$ arrangements equiprobable $\to $ Maxwell-Boltzmann statistics.  
+
+Bose-Einstein statistics: only distinguishable arrangements are considered, and each assigned probability $\frac{1}{A_{r,n}}$  
+\begin{equation}
+A_{r,n} = \binom{n+r-1}{r} = \binom{n-1+r}{n-1}  
+\end{equation}
+cf. Eq. 5.2 of Feller (1968)  \cite{dgdt:Fell1968}
+
+Fermi-Dirac statistics.  
+\begin{enumerate}
+\item[(1)] impossible for 2 or more particles to be in the same cell.  $\to r \leq n$.  
+\item[(2)] all distinguishable arrangements satisfying the first condition have equal probabilities.  
+
+$\to$ an arrangement is completely described by stating which of the $n$ cells contain a particle  
+
+$r$ particles $\to \binom{n}{r}$ ways $r$ cells chosen.  
+
+Fermi-Dirac statistics, there are $\binom{n}{r}$ possible arrangements, prob. $1/\binom{n}{r}$.  
+\end{enumerate}
+\end{enumerate}
+pp. 39.  Feller (1968)  \cite{dgdt:Fell1968}.  Consider cells themselves indistinguishable!  Disregard order among occupancy numbers.  
+
+
+
+
+
+
+
+
+cf. Feller (1968)  \cite{dgdt:Fell1968}
+
+\section{Distributions and Densities}
+
+cf. Ch. 5 "Important Distributions and Densities", Grinstead and Snell (1997) \cite{dgdt:GrSn1997}
+
+\subsection{Discrete Uniform Distribution}
+
+$X:=$ random variable representing outcome of an experiment where all outcomes equally likely, so $X$ \emph{uniformly distributed}. \\
+
+If sample space $S$ is size $n$, where $0 < n < \infty$, then distribution function
+\[
+m(\omega) = \frac{1}{n} \quad \, \forall \, \omega \in S
+\]
+
+Consider $1 + \lfloor x \rfloor \in \lbrace 1 \dots n \rbrace$, \\
+with probability $\frac{1}{n}$ ($\lfloor x \rfloor$ denotes greatest integer not exceeding $x$).
+
+If sample space is uncountable set with positive finite length, such as $[0, 1]$, then use cont. density function.
+
+\subsection{Poisson Random Variable}
+
+Sec. 5.2 "The Poisson Random Variable", Ross (2000) \cite{dgdt:Ross2000}.
+
+random variable $X$, $X \in \lbrace 0, 1, 2, \dots \rbrace$ is \textbf{Poisson random variable} with parameter $\lambda$, $\lambda > 0$, if its probability mass function is 
+\begin{equation}
+P \lbrace X = i \rbrace = e^{-\lambda} \frac{\lambda^i }{ i!}, \quad \, i = 0, 1, \dots
+\end{equation}
+Since 
+\[
+\sum_{i=0}^{\infty} p(i) = e^{-\lambda} \sum_{i=0}^{\infty} \frac{\lambda^i}{i!} = e^{-\lambda} e^{\lambda} = 1
+\]
+then $P\lbrace X = i \rbrace = e^{-\lambda} \frac{ \lambda^i}{i!}$ defines a probability mass function. \\
+
+\emph{Moment generating function} $\phi(t)$ for \emph{Poisson random variable}
+
+\begin{equation}
+	\begin{gathered}
+		\phi(t) = E[e^{tX}] = \sum_{i=0}^{\infty} e^{ti} e^{-\lambda} \frac{\lambda^i}{i!} = e^{-\lambda} \sum_{i=0}^{\infty} \frac{ (\lambda e^t)^i }{ i!} = e^{-\lambda} e^{\lambda e^t} = \exp{ [ \lambda ( e^t - 1 )]}
+	\end{gathered}
+\end{equation}
+
+Both \emph{mean} and \emph{variance} of Poisson random variable equal to parameter $\lambda$, since
+\[
+\begin{aligned}
+	& \phi'(t) = \phi \cdot (\lambda e^t) = \lambda e^t \exp{ [\lambda ( e^t - 1)]} \\
+	& \phi''(t) = \phi' (\lambda e^t ) + \phi \lambda e^t = (\lambda e^t) (\lambda e^t + 1 ) \phi \\
+	& E[X] = \phi'(0) = \lambda \\
+	& \text{Var}(X) = \phi''(0) - (E[X])^2 = \lambda ( \lambda + 1 ) - \lambda^2 = \lambda
+\end{aligned}
+\]
+
+Poisson random variable when $n$ large, $p$ small, may be used as an approximation for binomial random variable. \\
+Suppose $X$ binomial random variable with parameters $(n, p)$, $\lambda = np$
+
+\[
+\begin{gathered}
+	P \lbrace X = i \rbrace = \frac{ n!}{ (n-i)! i!} p^i (1- p)^{n- i} = \binom{n}{i} \left( \frac{\lambda}{n} \right)^i \left( 1 - \frac{\lambda}{n} \right)^{n-i} = \frac{ n (n-1) \dots (n- i + 1) }{n^i } \frac{\lambda^i }{i!} \frac{ ( 1 - \lambda / n )^n }{ (1 - \lambda / n)^i}
+\end{gathered}
+\]
+For $n$ large, $p$ small, 
+\[
+\begin{gathered}
+	\left( 1 - \frac{ \lambda}{n} \right)^n \approx e^{-\lambda} \quad \quad \, \frac{ n (n- 1 ) \dots (n- i + 1) }{n^i } \approx 1 \quad \quad \, \left( 1 - \frac{\lambda}{n} \right)^i \approx 1
+\end{gathered}
+\]
+
+Hence, for $n$ large, $p$ small
+\begin{equation}
+	P\lbrace X = i \rbrace \approx e^{-\lambda} \frac{\lambda^i}{i!}
+\end{equation}
+
+i.e. if $n$ independent trials, each of which results in "success" with probability $p \ll 1$, then when $n$ large ($n \gg 1$) and $p$ small ($p \ll 1$), \\
+number of successes occurring is approximately Poisson random variable with mean $\lambda = np$. \\
+
+Examples of $n$ large, $p$ small for random variables that obey to good approximation the Poisson probability law:
+
+\begin{enumerate}
+	\item number of misprints on page (or group of pages) of book \\
+	Suppose there's small probability $p$ each letter typed on page will be misprinted,\\
+	so number of misprints on a given page will be approximately Poisson with mean $\lambda = np$ where $n$ is (presumably) the large number of letters on the page
+	\item number of people in community living to 100 years of age \\
+	Suppose each person in a given community, independently, has a small probability $p$ of reaching age 100, and so number of people that do will have approximately a Poisson distribution with mean $np$ where $n$ is large number of people in the community.
+	\item number of wrong telephone numbers that are dialed in a day
+	\item number of transistors that fail on first day of use
+	\item number of customers entering post office on given day
+	\item number of $\alpha$-particles discharged in fixed period of time from some radioactive particle
+\end{enumerate}
+
+Example 5.2a (Ross (2000) \cite{dgdt:Ross2000}), Suppose average number of accidents occurring weekly on highway equals 3. Calculate probability that there's at least 1 accident this week.
+
+\solutionhead{Example 5.2a, Ross (2000) \cite{dgdt:Ross2000}} Let $X$ denote number of accidents occurring on highway during this week. It's reasonable to suppose there's a large number of cars passing along stretch, each having small probability of being involved in an accident.
+
+\[
+\begin{gathered}
+	P\lbrace X \geq 1 \rbrace = 1 - P \lbrace X < 1 \rbrace = 1 - P \lbrace X = 0 \rbrace = 1 - e^{-3} \frac{3^0}{0!} = 1 - e^{-3} = 0.9502
+\end{gathered}
+\]
+
+Example 5.2b. of Ross (2000) \cite{dgdt:Ross2000}. Suppose $p = $ prob. item produced by certain machine is defective $= 0.1$. \\
+Find prob. sample of $N=10$ items will contain at most 1 defective item.
+
+\solutionhead{Example 5.2b, Ross (2000) \cite{dgdt:Ross2000}}
+\[
+\begin{aligned}
+& P(X \leq 1) = \sum_{j=0}^1 \binom{N}{j} p^j (1-  p)^{N-j} = 0.7361 \text{ for } N = 10, \, p = 0.1 \\
+& P(X \leq 1) \approx \sum_{j=0}^1 e^{-\lambda} \frac{\lambda^j}{j!} = e^{-1} \left( \frac{1^0 }{ 0!} + \frac{1^1}{1!} \right) = 2 e^{-1}
+\end{aligned}
+\]
+
+Example 5.2c of Ross (2000) \cite{dgdt:Ross2000}. Consider experiment counting number of $\alpha$-particles given off in 1-sec. interval. \\
+If on average 3.2 $\alpha$-particles given off, \\
+What's good approximation to prob. that no more than 2 $\alpha$-particles will appear?
+
+\solutionhead{Example 5.2c, Ross (2000) \cite{dgdt:Ross2000}}
+
+$\lambda = Np = 3.2$
+\[
+P(X\leq 2) = \sum_{j=0}^2 e^{-\lambda} \frac{\lambda^j}{j!} = e^{-\lambda} \left( 1 + \sum_{j=1}^2 \frac{ \lambda^j}{j!} \right)
+\]
+
+Example 5.2d of Ross (2000) \cite{dgdt:Ross2000}. If average number of claims handled daily by insurance company is 5, \\
+what proportion of days have less than 3 claims? \\
+What's prob. there'll be 4 claims in exactly 3 of the next 5 days? \\
+Assume number of claims on different days is independent.
+
+\solutionhead{Example 5.2d, Ross (2000) \cite{dgdt:Ross2000}}
+
+Suppose $N = $ number of possible claims/clients large, so small prob. of making claim,
+\[
+\lambda = 5
+\]
+\[
+P(X< 3) = \sum_{j=0}^2 e^{-\lambda} \frac{ \lambda^j}{j!} = e^{-\lambda} \sum_{j=0}^2 \frac{\lambda^j}{j!}
+\]
+
+By law of large numbers (different days independent) $P(X < 3) = 0.125$ days have fewer than 3 claims.  \\
+
+$P(X=4) =$ prob. there'll be 4 claims on a day $= e^{-\lambda} \frac{\lambda^4}{4!}$ \\
+$P(Y=3) = $ prob. of 4 claims in exactly 3 of next 5 days $= \binom{5}{3} (P(X=4))^3 (1 - P(X=4))^2 = \binom{5}{3} (e^{-\lambda} \frac{\lambda^4 }{ 4!} )^3 (1 - e^{-\lambda} \frac{\lambda^4}{ 4!} )^2$
+
+
+

@@ -5,6 +5,7 @@
 \usepackage{lmodern}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{geometry,multicol}
+\usepackage{xurl}
 \ifdefined\screenedition
   \geometry{paperwidth=1200pt,paperheight=700pt,margin=35pt,columnsep=18pt}
   \newenvironment{notesbody}{\begin{multicols}{2}\raggedcolumns}{\end{multicols}}
@@ -14,9 +15,9 @@
 \fi
 \usepackage[table]{xcolor}
 \usepackage{graphicx}
-\graphicspath{{/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/LaTeX_and_pdfs/}}
+\graphicspath{{../../LaTeX_and_pdfs/}}
 \usepackage{tikz}
-\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{matrix,arrows,arrows.meta,cd,calc,decorations.pathmorphing,backgrounds}
 \usepackage{listings}
 \usepackage[version=3]{mhchem}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
@@ -52,4 +53,29 @@
 \setlength{\emergencystretch}{3em}
 \allowdisplaybreaks
 \author{Ernest Yeung}
-\date{30 September 2026}
+\date{12 October 2026}
+
+\usepackage[makeroom]{cancel}
+\usepackage{caption,pdfpages,pgfplots,pifont}
+\pgfplotsset{compat=1.18}
+\newcommand\dblwr{\wr\mkern-2mu\wr}
+\newcommand{\seminorm}[1]{\mathopen{\dblwr}#1\mathclose{\dblwr}}
+\theoremstyle{definition}
+\newtheorem*{exercise}{Exercise}
+
+\makeatletter
+\renewcommand{\@pnumwidth}{2.5em}
+\renewcommand{\@tocrmarg}{3.5em}
+\makeatother
+% Large tensor-network diagrams retain their original scale on wide pages.
+\newcommand{\widetopic}[1]{%
+  \end{notesbody}\clearpage
+  \begingroup
+  \newgeometry{left=35pt,top=35pt,textwidth=1130pt,textheight=630pt}
+  \paperwidth=1200pt\paperheight=700pt
+  \pdfpagewidth=1200pt\pdfpageheight=700pt
+  \input{#1}\clearpage
+  \endgroup
+  \restoregeometry
+  \begin{notesbody}
+}

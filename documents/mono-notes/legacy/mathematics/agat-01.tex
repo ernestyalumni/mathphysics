@@ -1,0 +1,3051 @@
+% Imported from LaTeX_and_pdfs/AGAT_dump.tex; see provenance.json.
+\part{Algebra; Groups, Rings, R-Modules, Categories}
+
+
+We should know some algebra.  I will follow mostly Rotman (2010) \cite{agat:JRotman2010}.  
+
+\section{Prime numbers, GCD (greatest common denominator), integers, Euler's totient, Chinese Remainder Theorem, integer divison, modulus, remainders; Euclid's Lemma}
+
+
+
+
+
+
+\begin{definition}[natural numbers $\mathbb{N}$]
+	natural numbers $\mathbb{N}$  
+	
+	\begin{equation}
+	\mathbb{N} = \lbrace \text{ integers } n | n \geq 0 \rbrace  
+	\end{equation}
+i.e. $\mathbb{N}$ is set of all nonnegative integers.  	
+\end{definition}
+
+\begin{definition}[prime]
+natural number $p$ is \textbf{prime} if $p\geq 2$, and $\nexists$ \emph{ factorization} $p=ab$, where $a<p$, $b<p$ are natural numbers.  	
+\end{definition}
+
+\begin{definition}
+	$a,b\in \mathbb{Z}$ \textbf{relatively prime} if $\gcd(a,b)=1 $
+\end{definition}
+
+
+
+
+
+
+
+
+
+\begin{axiom} \textbf{Least Integer Axiom}
+	$\exists \, $ smallest integer in every $C \subset \mathbb{N}$, $C\neq \emptyset$
+\end{axiom}
+cf. pp. 1, Ch. 1 Things Past of Rotman (2010) \cite{agat:JRotman2010}  
+
+
+\begin{theorem}[\textbf{Division Algorithm}]\label{agat:Thm:DivisionAlgorithm} 
+	$\forall \, a , b \in \mathbb{Z}$, $a\neq 0$, $\exists \, ! \, q,r \in \mathbb{Z}$ s.t. 
+	\[
+	b = qa + r \text{ and } 0 \leq r < |a|
+	\]
+\end{theorem}
+
+
+\begin{proof}
+	Consider $n \in \mathbb{Z}$, $b-na \in \mathbb{Z}$ \\
+	Let $C= \lbrace b - na | n \in \mathbb{Z} \rbrace \bigcap \mathbb{N}$.  \\
+	\phantom{\quad} $C\neq \emptyset$ (otherwise, consider $b-na < 0$, $b<na$, then contradiction) \\
+	By Least Integer Axiom, $\exists \, $ smallest $r\in C$, $r= b-na$.  \\
+	\phantom{\quad } define $q=n$ when $r=b-na$.  \\
+	Suppose \\
+	$\begin{aligned}  & \quad \\ & qa + r = q'a + r' \\ & (q-q')a = r'-r \\ & |(q-q')a| = |r'-r| \end{aligned}$, \\
+
+	$0\leq r' < |a|$.  Now $0\leq |r'-r | < |a|$ \\
+	\phantom{\quad } if $|q-q'| \neq 0$, $|(q-q')a | \geq |a|$ 
+	\[
+	\Longrightarrow q=q', r=r'
+	\]
+	Conclude both sides are $0$ (by contradiction)
+\end{proof}
+cf. pp. 2, Thm. 1.4, Ch. 1 Things Past of Rotman (2010) \cite{agat:JRotman2010}  
+
+\begin{definition}[divisor]
+	$a,b \in \mathbb{Z}$, $a$ \textbf{divisor} of $b$ if $\exists \, d \in \mathbb{Z}$ s.t. $b=ad$. \\
+	$a$ \textbf{divides} $b$ or $b$ multiple of $a$, denote 
+	\[
+	a | b
+	\]
+	$a|b$ iff $b$ has remainder $r=0$ after dividing by $a$
+\end{definition}
+cf. pp. 3, Ch. 1 Things Past of Rotman (2010) \cite{agat:JRotman2010}  
+
+
+\subsection{Greatest Common Denominator (GCD); Euclid's Lemma}
+
+\begin{definition}[common divisor]
+	\textbf{common divisor} of integers $a$ and $b$, is integer $c$, s.t. $ c | a$ \emph{and} $c|b$.  
+
+\textbf{greatest common divisor} or \textbf{gcd} of $a$ and $b$, denoted $(a,b) \equiv \text{gcd}(a,b)$ defined by 
+\[
+(a,b) \equiv \text{gcd}(a,b) = \begin{cases} 0 & \text{ if } a = 0 = b \\ 
+ \text{ the largest common divisor of $a$ and $b$ } & \text{ otherwise } \end{cases}  
+\]
+	\end{definition} 
+cf. pp. 3, Ch. 1 Things Past of Rotman (2010) \cite{agat:JRotman2010}  
+
+\begin{definition}[Greatest Common Divisor (GCD), practical definition]
+Say $\text{gcd}(a, b) = d$. Thus, we have that $\exists \,  a = dr$ and $b = ds$, $a, b\in \mathbb{Z}$, where $\text{gcd}(r, s) = 1$
+\end{definition}
+cf. \href{https://math.stackexchange.com/questions/1535408/proof-of-greatest-common-divisor}{Proof of greatest common divisor, math stackexchange}
+
+
+\begin{theorem}\label{agat:Thm:lincombgcd}
+	If $a,b\in \mathbb{Z}$, then $\text{gcd}(a,b) \equiv (a,b)=d$ is linear combination of a and b, i.e. $\exists \, s,t \in \mathbb{Z}$ s.t.
+\begin{equation}
+d= sa + tb
+\end{equation}
+\end{theorem}
+cf. pp.4, Thm. 1.7, Ch. 1 Things Past of Rotman (2010) \cite{agat:JRotman2010}
+
+\begin{proof}
+Let $I:=$ 
+\[
+I :=\lbrace sa+tb|s,t\in \mathbb{Z} \rbrace
+\]
+If $I\neq \lbrace 0 \rbrace$, let $d$ be smallest positive integer in $I$.   \\
+$d\in I$, so $d=sa + tb$ for some $s,t\in \mathbb{Z}$.  
+
+Claim: $I=(d) \equiv \lbrace kd| k\in \mathbb{Z} \rbrace = $ set of all multiples of $d$.  
+
+Clearly $(d)\subseteq I$, since $kd=k(sa+tb) = (ks)a+(kt)b\in I$.  
+
+Let $c\in I$.  
+
+By division algorithm Thm. \ref{agat:Thm:DivisionAlgorithm}, $c=qd + r$, $0\leq r <d$
+\[
+r=c-qd = s'a+t'b - qsa - qtb = (s'-sq)a + (t'-qt)b \in I
+\]
+If $r\in I$, but $r<d$, contradiction that $\min_{ \substack{ i \in I \\ i>0 \\ } } i =d$.  
+
+So $r=0$, and $d|c=c/d$.  
+\[
+c \in (d), \text{ so } I\subseteq (d) \Longrightarrow I =(d)
+\]
+\end{proof}
+
+
+\begin{theorem}[\textbf{Euclid's Lemma}; 1.10 of Rotman (2010) \cite{agat:JRotman2010}]
+If $p$ prime and $p|ab$, then $p|a$ or $p|b$.  
+
+More generally,  \\
+if prime $p$ divides product $a_1a_2\dots a_n$, \\
+then it must divide at least 1 of the factors $a_i$.  
+
+i.e. (notation),  
+
+If prime $p$, and $ab/p \in \mathbb{Z}$, \\
+then $a/p\in \mathbb{Z}$ or $b/p \in \mathbb{Z}$.  
+
+More generally, \\
+if prime $p$, s.t. $a_1a_2 \dots a_n/p \in \mathbb{Z}$, \\
+then $\exists \, $ 1 \, $a_i$ s.t. $a_i/p \in \mathbb{Z}$
+\end{theorem}
+\begin{proof}
+If $p\nmid a$, i.e. $a/p \notin \mathbb{Z}$, then $\text{gcd}(p,a)  \equiv (p,a) =1$.  
+
+From Thm. \ref{agat:Thm:lincombgcd}, 
+\[
+1 = sp+ta
+\]
+\[
+\Longrightarrow b = spb + tab = p(sb+td)
+\]
+$ab/p$ and so $ab=pd$, so $b=spb+tdp$, i.e. $b$ is a multiple of $p$ ($b/p \in \mathbb{Z} \equiv p | b$).  
+
+
+
+
+\end{proof}
+
+\begin{corollary}[1.11 of Rotman (2010) \cite{agat:JRotman2010}]\label{agat:Cor:relprimefactors}
+Let $a,b,c \in \mathbb{Z}$.  
+
+If $c,a$ relatively prime, i.e. $\text{gcd}(c,a)=1$, and if $c|ab \equiv ab/c\in \mathbb{Z}$,
+then $c|b \equiv b/c \in \mathbb{Z}$
+\end{corollary}
+\begin{proof}
+\[
+\text{gcd}(c,a)=1 = sc+ta \Longrightarrow b=sbc + tab = sbc + t(qc) = c(sb+tq) \Longrightarrow b/c = sb+tq 
+\]
+\end{proof}
+
+\begin{theorem}[Euclidean Algorithm]
+	Let $a,b \in \mathbb{Z}^+$.  \\
+	$\exists \, $ algorithm that finds $d= \gcd{a,b}$
+\end{theorem}
+
+cf. pp. 5, Thm. 1.14 (Euclidean Algorithm), Ch. 1 Things Past of Rotman (2010) \cite{agat:JRotman2010}.  
+
+\begin{proof}
+	\end{proof}
+
+\begin{definition}
+	Let fixed $m\geq 0$.  Then $a,b \in \mathbb{Z}$ are \textbf{congruent modulo } $m$, denoted by 
+	\[
+	a \equiv b \bmod{m} 
+	\]
+if $m|(a-b)$, i.e. $(a-b)/m \in \mathbb{Z}$, i.e. if $(a-b)/m\in\mathbb{Z}$, i.e. $(a-b)$ integer multiple of $m$
+\end{definition}
+
+\begin{proposition}
+	If $m\geq 0$ is fixed, $m\in \mathbb{Z}$, then $\forall \, a,b,c \in \mathbb{Z}$
+	\begin{enumerate}
+		\item $a \equiv a\bmod{m}$ 
+		\item if $a \equiv b\bmod{m}$, then $b \equiv a\bmod{m}$
+		\item if $a \equiv b\bmod{m}$, and $b \equiv c\bmod{m}$, then $a \equiv c\bmod{m}$
+	\end{enumerate}
+\end{proposition}
+
+cf. Prop. 1.18 of Rotman (2010) \cite{agat:JRotman2010}
+
+\begin{proof}
+	\begin{enumerate}
+		\item $(a-a)/m=0/m=0$
+		\item $(b-a)/m=(-1)(a-b)/m \in \mathbb{Z}$
+		\item $(a-c)/m=(a-b+b-c)/m=(a-b)/m+(b-c)/m\in\mathbb{Z}$  
+	\end{enumerate}
+\end{proof}
+
+EY : 20171225 to recap, 
+
+\begin{equation}
+\boxed{ 
+	\begin{gathered}
+	a \equiv b \bmod{n} \\
+	\text{ meaning } \\ 
+	\frac{a-b}{n} \in \mathbb{Z} \text{ or }  a- b =kn, \  k\in \mathbb{Z} \text{ or } a  = b+kN \text{ but rather } \\
+	\begin{aligned}
+	& a = pn + r \\
+	& b= qn +r
+	\end{aligned}
+	\end{gathered}	
+}
+\end{equation}
+for $a= b+ kn$, but $b$ need not be a remainder of division of $a$ by $n$.  More precisely, $a= b\bmod{n}$ asserts that $a,b$ have the same remainder when divided by $n$, i.e. 
+\[
+\begin{aligned}
+& a = pn + r \\ 
+& b = qn + r
+\end{aligned}
+\]
+
+
+So $a\sim b$ or $[a] = [b]$ is an equivalence relation since \\
+$a\sim a$ since $a\equiv a \bmod{N}$, since $a=a+0N$, \\
+if $a\sim b$, then $b\sim a$, since $a-b=kN$, then $b=a-kN$ \\
+if $a\sim b$, $b\sim c$, then $a\sim c$, since $\begin{aligned} & \quad \\ 
+	& a-b = kN \\
+	& b-c = lN \end{aligned}$, then $a-c = (k+l)N$.  
+	
+	
+
+
+
+cf. Prop. 1.19 of Rotman (2010) \cite{agat:JRotman2010}  
+\begin{proposition}
+Let $m\geq 0$ be fixed 
+\begin{enumerate}
+	\item If $a=qm +r$, then $a \equiv r \bmod{m}$ 
+	\item  If $0\leq r' <r <m$, then $r \not\equiv\bmod{m}$ i.e. $r$ and $r'$ aren't congruent $\bmod{m}$  
+	\item $a \equiv b \bmod{m}$ iff $a,b$ leave same remainder after dividing by $m$  
+	\item If $m\geq 2$, $\forall \, a \in \mathbb{Z}$, $a \equiv b \bmod{m}$ for some $b\in 0,1,\dots m-1$  
+\end{enumerate}	
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+	\item If $a=qm +r$, then $a \equiv r \bmod{m}$ 
+	\[
+	\frac{a-r}{m} = q \in \mathbb{Z}  
+	\]
+	\item  \emph{Want}: If $0\leq r' <r <m$, then $r \not\equiv\bmod{m}$.  
+	
+	Suppose $\frac{r-r'}{m} = k \in \mathbb{Z}$.  Then $r-r' = km$ or $r=r' + km$.  
+	\[
+	\begin{gathered}
+	m > r > r' \leq 0 \\
+	m > r' + km > r' \leq 0 \\
+	m-r' > km > 0 
+	\end{gathered}
+	\]
+	But $k>0$ (since $m>0$ and $r-r' = km >0$) and $m-r' > km > 0$ is a contradiction.  
+	
+	\item \emph{Want}: $a \equiv b \bmod{m}$ iff $a,b$ leave same remainder after dividing by $m$.  By 
+	
+	By Division Algorithm, this is true: 
+	\[
+	\begin{aligned}
+	& a=q_a m + r_a \\ 
+	 & b= q_b m + r_b 
+	\end{aligned}
+	\] 
+	\[
+	\begin{gathered}
+	\frac{a-b}{m} = q_a + \frac{r_a}{m} - q_b - \frac{r_b}{m} = k = q_a - q_b + \frac{r_a - r_b}{m} \in \mathbb{Z}
+	\end{gathered}
+	\]
+	Now 
+	\[
+	\begin{aligned}
+	& |m| > r_a \leq 0 \\ 
+	& |m| > r_b \leq 0 
+	\end{aligned}
+		\]
+		$2|m| > r_a + r_b$.  
+		
+		And if $r_a > r_b$, $|m| > r_a > r_a -r_b > 0$.  
+		
+		In both cases, $r_a=r_b$ since $q_a - q_b + \frac{r_a - r_b}{m} \in \mathbb{Z}$ needs to be enforced.   
+		
+	\item \emph{Want}: If $m\geq 2$, $\forall \, a \in \mathbb{Z}$, $a \equiv b \bmod{m}$ for some $b\in 0,1,\dots m-1$.  
+	
+	By Division Algorithm Thm. \ref{agat:Thm:DivisionAlgorithm}, $a = q_a m + r_a$, \, $0 \leq r_a < |m|$.  $\frac{a-r_a}{m} = q_a \in \mathbb{Z}$ so let $b= r_a$.  
+	
+\end{enumerate}	
+\end{proof}
+
+\begin{theorem}[1.26 of Rotman (2010) \cite{agat:JRotman2010}]\label{agat:Thm:relprimeinvertible} 
+If $\text{gcd}(a,m) \equiv (a,m) = 1$, then $\forall \, b \in \mathbb{Z}$, $\exists \, x $ s.t. 
+\[
+ax \equiv b\bmod{m}
+\]
+In fact, $x=sb$, where $sa\equiv 1\bmod{m}$ is 1 solution.  Moreover, any 2 solutions are congruent $\bmod{m}$.
+
+i.e.  
+
+If $\gcd{a,b} = 1$, then $\forall \, y \in \mathbb{Z}$, $\exists \, x$ s.t. $ax \equiv y \bmod{b}$, $x=sy$, where $sa\equiv 1\bmod{b}$ is 1 solution.  \\
+Moreover, any 2 solutions are congruent $\bmod{m}$.  This implies that    \\
+
+$ax\equiv y \bmod{b}$ or $\frac{Ax-y}{b} \in \mathbb{Z}$, and $\frac{(as-1)y }{b} \in \mathbb{Z}$.  \\
+$sa \equiv 1 \bmod{b}$ or $\frac{sa-1}{b} \in \mathbb{Z}$, which implies that $sa-1 = b(-t)$ or 
+
+\[
+sa + tb =1
+\]
+for some $s,t\in \mathbb{Z}$.  
+\end{theorem}
+\begin{proof}
+$\gcd(a,m) = 1=sa+tm$, by Thm. \ref{agat:Thm:lincombgcd}   
+
+Then $b=b\cdot 1=  b(sa+tm) = sab+tmb$ or $b=tbm+sab$ or $a(sb) = -tbm + b$.  
+
+So $a(sb)\bmod{m}  \equiv b$.  
+
+Let $x:= sb$ and so $ax \bmod{m}=b$.   \\
+Now suppose $x \neq sb$ s.t. $ax\bmod{m}=b$.  Then $ax=qm +b$.  From $a(sb) \bmod{m}=b$, we also get $a(sb) = q'm + b$.  Then $a(x-sb) \bmod{m}=0$, so $m|a(x-sb) \equiv a(x-sb)/m\in \mathbb{Z}$.  
+
+By Corollary \ref{agat:Cor:relprimefactors} (which says, if $\gcd(c,a)=1$ and if $ab/c\in\mathbb{Z}$, then $b/c \in \mathbb{Z}$), 
+since $\gcd(m,a) = (m,a)=1$, and since $a(x-sb)/m \in \mathbb{Z}$, then $(x-sb)/m\in\mathbb{Z}$.  So $(x-sb)=qm$ or $(sb)\bmod{m} = x$.  
+
+
+\end{proof}
+
+
+
+\begin{proposition}[3.1 of Scheinerman (2006) \cite{agat:Sche2006}]\label{agat:Prop:commongcd}
+Let $a,b\in \mathbb{Z}$, let $c=a\bmod{b}$, i.e. $a=qb+c$ s.t. $0\leq c <b$.  
+
+Then 
+\begin{equation}
+\text{gcd}(a,b) = \text{gcd}(b,c)
+\end{equation}
+\end{proposition}
+cf. Sec. 3.3 Euclid's method of Scheinerman (2006) \cite{agat:Sche2006}
+
+\begin{proof}
+If $d$ common divisor of $a,b$, i.e. $a/d, b/d \in \mathbb{Z} \equiv d|a, d|b$.   \\
+$c/d \in \mathbb{Z} \equiv d|c$ since $c=a-qb$.  
+
+If $d$ is common divisor of $b,c$, i.e. $d|b, d|c \equiv c/d, b/d\in\mathbb{Z}$, \\
+then $d|a \equiv a/d \in \mathbb{Z}$ since $a=qb+c$.  So set of common divisors of $a,b$ same as set of common divisors of $b$ and $c$.  
+
+Then $\text{gcd}(a,b) = \text{gcd}(b,c)$.  
+\end{proof}
+
+
+
+
+\subsection{Euler's totient; relatively prime}
+
+
+
+
+
+
+
+
+
+cf. Ch. 5 Arrays, Sec. 5.1 Euler's totient of Scheinerman (2006) \cite{agat:Sche2006}
+
+For 
+\[
+\begin{aligned}
+	& \varphi : \mathbb{Z}^+ \to \mathbb{Z}^+ \\ 
+	& \varphi : n \mapsto \varphi(n) := \text{ number of elements of } \lbrace 1,2, \dots n \rbrace \\
+	\text{ that are relative prime to } \\
+	& n = | \lbrace i | i \in \lbrace 1,2, \dots n \rbrace , (n,i)=1 \text{ or equivalently } n \propto i \rbrace |
+\end{aligned}
+\]
+
+e.g. $\varphi(10) = 4$ since $\varphi(10) = | \lbrace 1,3,7,9\rbrace|$.  
+
+we want $|(a,b) | 1 \leq a,b, \leq n , \text{gcd}(a,b) \equiv (a,b) = 1 |$.  
+
+\[
+\begin{gathered}
+p_n = \frac{1}{n^2} \left[ -1 + 2\sum_{i=1}^n \varphi(k) \right] = \\
+= \text{ probability that 2 integers, chosen uniformly and independently from $\lbrace 1,2,\dots n\rbrace$ are relatively prime }
+\end{gathered}
+\]
+
+If $p$ is prime, $\forall \, i \in \lbrace 1,2,\dots p \rbrace$, $(p,i) \equiv \text{gcd}(p,i)=1$, i.e. relatively prime to $p$, except 1 $i\in \lbrace 1,2,\dots p\rbrace$.  
+
+Therefore 
+\[
+\varphi(p) = p-1
+\]
+Consider $\varphi(p^2)$.  
+
+$\lbrace 1,2,\dots p^2\rbrace$, only numbers \emph{not} relatively prime to $p^2$ are multiples of $p$ since \\
+$p,2p, 3p, \dots p^2$ all divide $p^2$, i.e. $p|p^2, 2p|p^2 \dots (p-1)p | p^2 \equiv p^2 /p , p^2 /2p , \dots p^2 / p(1-p)$.  
+
+Assume $\varphi(p^n) = p^2 - p^{n-1} = p^{n-1}(p-1)$.  
+
+\[
+\varphi(p^{n+1}) = \varphi(pp^{n}) = p^n\varphi(p) = p^n(p-1)
+\]
+Therefore,
+\begin{proposition}[5.1]
+Let $p$ prime, $n\in \mathbb{Z}^+$
+\end{proposition}
+
+
+e.g. $\varphi(77)$.  
+
+$\forall \, n $ s.t. $1\leq n \leq 77$.  
+\[
+\begin{aligned}
+	& \text{gcd}(n,77)=1 \\ 
+	& \text{gcd}(n,7)=1 \\ 
+	& \text{gcd}(n,11)=1  
+\end{aligned}
+\]
+By Prop. \ref{agat:Prop:commongcd}, 
+\[
+\begin{aligned}
+	& \text{gcd}(n,7) = \text{gcd}(7, n\mod{7}) \\ 
+	& \text{gcd}(n,11) = \text{gcd}(11, n\mod{11}) 
+\end{aligned}
+\]
+
+
+
+
+cf. Example (10) of Dummit and Foote \cite{agat:DuFo2003}.  
+
+To recap, 
+\begin{definition}[Euler $\varphi$-function]
+$\forall \, n \in \mathbb{Z}^+$, \\
+let $\varphi(n)  := $ number of positive integers $a \leq n$ with a relatively prime to $n$, i.e. $\gcd(a,n) = 1 \equiv (a,n)$
+\end{definition}
+e.g. $\varphi(12)=4$, since $1,5,7,11$ are only positive integers less than or equal to 12.  
+
+If $p$ prime, 
+$\varphi(p) = p-1$.  \\
+More generally, \\
+$\forall \, a \geq 1$, 
+\begin{equation}\label{agat:Eq:EulerTotientOfPrimeFactor}
+\boxed{ \varphi(p^a) = p^a - p^{a-1} = p^{a-1} (p-1) }
+\end{equation}
+
+$\varphi$ is multiplicative in the sense that 
+\begin{equation}\label{agat:Eq:EulerTotientIsMultiplicative}
+\varphi(ab) = \varphi(a) \varphi(b)  \text{ if } \gcd(a,b) = 1
+\end{equation}
+$\Longrightarrow $ general formula.  
+
+If $n=p_1^{\alpha_1}p_2^{\alpha_2} \dots p_s^{\alpha_s}$ (Fumdanetal Thm. of Arithmetic, $\forall \, n \in \mathbb{Z}, n>1$), then 
+\begin{equation}
+\boxed{ 
+	\begin{aligned}
+	\varphi(n) & = \varphi(p_1^{\alpha_1})  \varphi(p_2^{\alpha_2}) \dots \varphi(p_s^{\alpha_s}) \\ 
+	& p_1^{\alpha_1 - 1 } (p_1 - 1) p_2^{\alpha_2 - 1} (p_2 - 1 ) \dots p_s^{\alpha_s -1} (p_s - 1) 
+	\end{aligned} }
+\end{equation}
+
+
+cf. pp. 69 Thm. 5.4 (Chinese Remainder) of Scheinerman (2006) \cite{agat:Sche2006}.  
+\begin{theorem}
+	Let $n\in \mathbb{Z}^+$, \\
+	let $p_1,p_2, \dots p_t$ be distinct prime divisors of $n$ (i.e. $\forall \, p_i$, $\frac{n}{p_i^{k_i}} \in \mathbb{Z}$ for some $k_i \geq 1$) \\
+	Then
+	\begin{equation}
+	\varphi(n) = n\left( 1 - \frac{1}{p_1} \right)\left( 1- \frac{1}{p_2} \right) \ldots \left( 1 - \frac{1}{p_t} \right) 	
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	By Fundamental Thm. of Arithmetic, 
+	\[
+	n = p_1^{e_1} p_2^{e_2} \dots p_t^{e_t} 
+	\]
+	where $p_j$ are distinct primes, and $e_j$ are positive integers.  
+	
+	From Eqns. \ref{agat:Eq:EulerTotientOfPrimeFactor}, \ref{agat:Eq:EulerTotientIsMultiplicative}, i.e. where 
+	\[
+	\begin{gathered}
+	\varphi(p^a) = p^a - p^{a-1} = p^{a-1} (p-1) \\
+	\varphi(ab) = \varphi(a) \varphi(b)  \text{ if } \gcd(a,b) = 1
+		\end{gathered}
+		\]
+		\[
+		\begin{gathered}
+	\varphi(n) = \varphi(p_1^{e_1}p_2^{e_2} \dots p_t^{e_t}) = \varphi(p_1^{e_1}) \varphi(p_2^{e_2}) \dots \varphi(p_t^{e_t}) = \\
+	= p_1^{e_1} (1- \frac{1}{p_1} )p_2^{e_2} (1- \frac{1}{p_2} ) \dots p_t^{e_t} (1- \frac{1}{p_t} ) = n(1- \frac{1}{p_1}) (1- \frac{1}{p_2}) \dots (1- \frac{1}{p_t})
+		\end{gathered}
+		\]
+	\end{proof}
+
+
+\exercisehead{10}
+cf. pp. 7 Exercise 10 Dummit and Foote \cite{agat:DuFo2003}.  
+
+Prove: $\forall \, $ given $N \in \mathbb{Z}^+$ (positive number), \\
+$\exists \, $ only finite many integers $n$ with $\varphi(n) = N$, where $\varphi$ denotes Euler's $\varphi$-function.  
+
+EY, Indeed, by definition, \\
+\[
+\begin{gathered}
+\varphi(n) = N \\
+a_1, a_2 \dots a_N \text{ s.t. } a_i \leq n \\
+\gcd(a_i,n)=1 \text{ i.e. } 1 = s_i a_i + t_i n 
+\end{gathered}
+\]
+
+
+Given $N \in \mathbb{Z}^+$, let $n \in \mathbb{Z}$, s.t. $\varphi(n) = N$ (given hypothesis).  
+
+Let $p= $ least (i.e. smallest) prime s.t. $p > N+1$.  
+
+If $q\geq p$ is a prime divisor of $n$, i.e. 
+\[
+n = q^k m 
+\]
+for some $k\geq 1$, and $m$ with $q$ not dividing $m$.  
+
+Then 
+\[
+\varphi(n) = \varphi(q^k) \varphi(m) = q^{k-1}(q-1) \varphi(m) \geq q-1 \geq p -1 > N
+\]
+Contradiction.  
+
+Thus, $\nexists$ prime divisor of $n$ greater than $N+1$.  
+
+Particularly, distinct prime divisors of $n$ belong to a finite set, say these primes are $p_1,p_2 \dots p_m$.  
+
+\begin{definition}
+	prime divisor $q$ of $n$ if $q$ is prime and 
+	\begin{equation}
+	 \frac{n}{q} \in \mathbb{Z} \text{ i.e. } n =q^k m \text{ for some } k \geq 1 \text{ and } \frac{m}{q} \notin \mathbb{Z}^+
+	\end{equation}
+\end{definition}
+
+Now
+\[
+n=p_1^{a_1}p_2^{a_2} \dots p_m^{a_m} 
+\]
+for some $0<a_i$, so 
+\[
+\varphi(n) = \varphi(p_1^{a_1}) \varphi(p_2^{a_2}) \dots \varphi( p_m^{a_m}), \text{ so } \varphi(n) = \prod_{i=1}^m p_i^{ a_i -1} (p_i-1)
+\]
+Note, $\forall \, $ prime $p_i$, $\varphi(n) \geq p_i^{a_i -1}(p_i-1) \geq p_i - 1 > N$ for sufficiently large $a_i$.  
+
+Thus, $\forall \, p_i$, $\exists \, $ only finitely many permissible choices for exponents $a_i$.  \\
+So set of all $n$ with $\varphi(n) = N$ is subset of finite set, hence finite.  
+
+$\forall \, N \in \mathbb{Z}^+$, $\exists \, $ largest integer $n$ with $\varphi(n) = N$.  \\
+Thus, as $n\to \infty$, $\varphi(n) \to \infty$.  
+
+
+
+
+
+
+
+
+
+
+Scheinerman (2006) \cite{agat:Sche2006}
+
+cf. Ex. 1.19, pp. 13, Sec. 1.1 Some Number Theory of Rotman (2010) \cite{agat:JRotman2010}
+\exercisehead{1.19}
+If $a$ and $b$ are relatively prime and if each divides an integer $n$, then their product $ab$ also divides $n$, i.e. 
+\begin{theorem}\label{agat:Thm:relprimeproddivisible}
+	If $\gcd{a,b}=1$, and if $n/a \in \mathbb{Z} \equiv a | n$, and $n/b \in \mathbb{Z} \equiv b | n$, then $n/ab \in \mathbb{Z} \equiv ab | n$.  
+\end{theorem}
+\begin{proof}
+	$\gcd{a,b}=1$, so $sa + tb= 1$ for some $s,t \in \mathbb{Z}$ (Thm. \ref{agat:Thm:relprimeinvertible}).  
+	
+	$\frac{n}{a}, \frac{n}{b} \in \mathbb{Z}$, so $n=au$, $n=bv$  
+	
+	$n = n\cdot 1 = n(sa+tb) = bvsa + autb = ab(vs + ut)$, so $\frac{n}{ab} = vs + ut \in \mathbb{Z}$.  
+	\end{proof}
+
+\subsubsection{Chinese Remainder Theorem}
+
+\begin{theorem}
+	If $m,m'$ relatively prime (i.e. $\gcd(m,m')=1$), then for 
+\[
+\begin{aligned}
+	& x \equiv b \bmod{m} \\ 
+	& x\equiv b'\bmod{m'}
+\end{aligned}
+\]
+i.e. given $b,b'm,m'$, and wanting to find $x$, 
+$\exists \, x$ and $\forall \, 2 x$'s, $x=x'\mod{mm'}$, i.e.  \\  
+
+  Let $m,n$ relatively prime positive integers (i.e. $\gcd{m,n}=1$), \\
+  $\forall \, a,b\in \mathbb{Z}$, \\
+  then pair of congruences \\
+  $\begin{aligned}
+  & x \equiv a\bmod{m} \\
+  & x \equiv b\bmod{n} 
+  \end{aligned}$
+ 
+ has a solution ($x$), and this solution $x$ is uniquely determined, modulo $mn$.  
+\end{theorem}
+
+
+\begin{proof}
+cf. \href{http://www.math.uconn.edu/~kconrad/blurbs/ugradnumthy/crt.pdf}{The Chinese Remainder Theorem by Keith Conrad}
+
+
+Suppose  \\
+$
+\begin{aligned}
+& (x-a) / m \in \mathbb{Z} \text{ or } x - a = my \\ 
+& (x-b)/n \in \mathbb{Z} \text{ or } x-b= nz \text{ or } a + my - b = nz 
+\end{aligned}
+$ \\
+$\gcd{m,n}  =1$, so then $\forall \, b \in \mathbb{Z}$, $\exists \, w$ s.t. $mw \equiv b \bmod{n}$ i.e. $\frac{mw-b}{n} \in \mathbb{Z}$, in fact, $w=sb$, where $sm \equiv 1\bmod{n}$, or $\frac{sm-1}{n} \in \mathbb{Z}$, is 1 solution (Thm. \ref{agat:Thm:relprimeinvertible}).  
+
+\[
+\begin{aligned}
+my & = b-a+nz \\
+smy & = sb - sa + snz = (1+nv) y = s(b-a) + snz \text{ or } y = s(b-a) + n(sz-vy) \\
+\text{ or } y & \equiv s(b-a) \bmod{n}  
+\end{aligned}\]
+
+\[
+\begin{aligned}
+x = a+my & = a+m(s(b-a) + n(sz-vy)) = a+ ms(b-a) + mn(sz-vy) \equiv a+ms(b-a) + mnu \\ 
+x-a & = m(s(b-a) + nu) \Longrightarrow x = a\bmod{m} \\
+x-b & = a+ms(b-a) + mnu -b = a+(1+m)(b-a) + mnu -b = m(b-a) + mnu \Longrightarrow x \equiv b\bmod{n}
+\end{aligned}
+\]
+
+
+\textbf{Uniqueness}:  
+Suppose $x,y \in \mathbb{Z}$ s.t. 
+\[
+\begin{aligned} 
+& x \equiv a \bmod{m} \\
+& x \equiv b \bmod{n} \end{aligned} \qquad \  
+\begin{aligned} 
+& y \equiv a \bmod{m} \\
+& y \equiv b \bmod{n} \end{aligned}
+\]
+
+Given $\gcd{m,n}=1$, $sm+tn=1$.  
+
+Since $\frac{x-a}{m}, \frac{y-a}{m} \in \mathbb{Z}$, $\frac{x-y}{m} \in \mathbb{Z}$, likewise, $\frac{x-a}{n}, \frac{y-a}{n} \in \mathbb{Z}$, $\frac{x-y}{n} \in \mathbb{Z}$ \\
+Since $\frac{x-y}{m}, \frac{x-y}{n} \in \mathbb{Z}$, $\frac{x-y}{mn} \in \mathbb{Z}$ by Thm. \ref{agat:Thm:relprimeproddivisible}.  
+
+Thus, $x-y = mn k$ for some $k\in \mathbb{Z}$.  For instance, $k=0$, $x=y$.  
+
+This shows any 2 solutions are the same, modulo $mn$.  
+\end{proof}
+
+
+cf. Ch. 1 Things Past, Thm. 1.28 of Rotman (2010) \cite{agat:JRotman2010}, pp. 68 Thm. 5.2 (Chinese Remainder) of Scheinerman (2006) \cite{agat:Sche2006}.  
+
+
+
+
+\section{Groups}
+cf. pp. 16 Chapter 1 Introduction to Groups. Dummit and Foote (2004) \cite{agat:DuFo2003}
+\begin{definition}[binary operation]
+	\begin{enumerate}
+		\item binary operation $*$ on set $G$ is a function $*: G \times G \to G$.  $\forall \, a, b \in G$, $a* b \equiv *(a,b)$
+		\item binary operation $*$ on set $G$ is \emph{associative}: if $\forall \, a, b, c \in G$, $a*(b*c) = (a*b) * c$ 
+		\item If $*$ is binary operation on set $G$, $a,b $ of $G$ commute if $a*b = b*a$. \\
+		$*$ (or $G$) is \textbf{commutative} if $\forall \, a, b \in G$ $a* b = b*a$.  
+	\end{enumerate}
+\end{definition}
+cf. pp. 16. Sec. 1.1. Basic Axioms and Examples, Dummit and Foote (2004) \cite{agat:DuFo2003} 
+
+\begin{definition}[Group]
+\begin{enumerate}
+\item Group is an ordered pair $(G, *)$ where $G$ is a set, $*$ is a binary operation on $G$ s.t. 
+\begin{enumerate}
+\item $(a*b)*c = a*(b*c)$, $\forall \, a,b ,c \in G$, i.e. $*$ \emph{associative}
+\item $\exists \, e \in G$, s.t. $\forall \, a\in G$, $a*e = e*a = a$  ($\exists \, $ \emph{identity} $e$)
+\item $\forall \, a\in G$, $\exists \, a^{-1}\in G$, called an \emph{inverse} of $a$, s.t. $a*a^{-1} = a^{-1} * a = e$
+\end{enumerate}
+\item (optional; abelian or \emph{commutative}) $(G,*)$ abelian (or commutative) if $a*b = b*a$, $\forall \, a,b \in G$. 
+\end{enumerate}
+\end{definition}
+e.g.
+\begin{enumerate}
+\item  $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$ are groups under $+$ with $e=0$ and $a^{-1} = -a$, $\forall \, a$. 
+\item $\mathbb{Q} - \lbrace 0 \rbrace$, $\mathbb{R} - \lbrace 0 \rbrace$, $\mathbb{C} - \lbrace 0 \rbrace, \mathbb{Q}^+, \mathbb{R}^+$ groups under $\times$ with $e=1$, $a^{-1} = \frac{1}{a}$
+\item (\textbf{direct product of groups})If $(A,*), (B,\circ)$ are groups, we can form new group $A\times B$ called \textbf{direct product} s.t.
+\[
+A \times B = \lbrace (a,b) | a\in A, b\in B\rbrace
+\] and $(a_1,b_1)(a_2,b_2) = (a_1*a_2, b_1 \circ b_2)$ cf. Example 6, Sec. 1.1 Dummit and Foote (2004) \cite{agat:DuFo2003}
+\end{enumerate}
+
+\begin{proposition}
+If $G$ group under operation $*$, then 
+\begin{enumerate}
+\item identity of $G$ is unique
+\item $\forall \, a \in G$, $a^{-1}$ uniquely determined.
+\item $(a^{-1})^{-1} = a \quad \, \forall \, a \in G$ 
+\item $(a*b)^{-1} = (b^{-1}) * (a^{-1})$ 
+\item $\forall \, a_1, a_2, \dots a_n \in G$, $a_1 , a_2 \dots a_n $ independent of how expression is bracketed (generalized associative law)
+\end{enumerate}
+\end{proposition}
+cf. Prop. 1, Sec. 1.1 Dummit and Foote (2004)\cite{agat:DuFo2003}
+
+\subsection{$\mathbb{Z} / n \mathbb{Z}$: The Integers Modulo $n$}
+
+cf. Dummit and Foote (2004) \cite{agat:DuFo2003}, Sec. 0.3, $\mathbb{Z}/n\mathbb{Z}$: The Integers Modulo $n$.
+
+Recall Sec. 0.2 Properties of the Integers, pp. 4, Dummit and Foote (2004) \cite{agat:DuFo2003}. $\forall \, a, b \in \mathbb{Z}$, $a | b$ if $\exists \, c \in \mathbb{Z}$ s.t. $b=ac$. 
+
+\begin{definition}[modulo equivalence relation]
+Let $n\in \mathbb{Z}^+$ (positive integer). Define
+\begin{equation}
+a \sim b \text{ iff } n | (b-a), \text{ i.e. } 
+\end{equation}
+$\exists \, c \in \mathbb{Z}$ s.t. $b-a = nc$ or $a+nc = b$. Rewrite this as $a= b- nc \equiv b + Nk$ or even $\begin{aligned} & \quad \\ & a = pn + r \\ & b = qn + r \end{aligned}$. 
+\end{definition} 
+
+\begin{proposition}[modulo is an equivalence relation]
+	modulo $n$ is an equivalence relation
+\end{proposition} 
+
+\begin{proof}
+Clearly $a \sim a$ (choose $k=0$ in $a= b + Nk$), $a\sim b$ implies $b\sim a$ (choose $k \mapsto -k$) $\forall \, a, b \in \mathbb{Z}$, so $\sim $ is reflexive and symmetric.
+
+If $a\sim b$, and $b\sim c$, $a= b + Nk$, $b=c +Nl$, so $a= c + N(k+l)$, so $a\sim c$, and $\sim$ is transitive.
+
+$\Longrightarrow \sim$ is equivalence relation.
+
+\end{proof} 
+
+$a \equiv b \bmod{n}$ or $a \equiv b \bmod{n}$, i.e. $a$ is congruent to $b \bmod{n}$ if $a\sim b$. 
+
+$\forall \, k \in \mathbb{Z}$ denote equivalence class of $a \equiv \overline{a}$, called \emph{congruence class} or \textbf{residue class} of $a\bmod{n}$.
+
+\begin{equation}
+\overline{a} = \lbrace a + kn | k \in \mathbb{Z} \rbrace = \lbrace a , a \pm n, a \pm 2n, a \pm 3n ,\dots \rbrace 
+\end{equation}
+
+If $\overline{a} = pn +r$, $\frac{ \overline{a}}{n} = p + \frac{r}{n}$ , $0\leq r < n$, so remainder $r$ determines equivalence class $\overline{a}$.
+
+These residue classes partition $\mathbb{Z}$. 
+\begin{definition}[$\mathbb{Z} / n \mathbb{Z}$]
+$\mathbb{Z} / n\mathbb{Z} \equiv$ set of equivalence classes under this equivalence relation $\equiv$ called integers modulo $n$ (or integers mod $n$)
+\end{definition} 
+
+\begin{definition}[modular arithmetic]
+	$\forall \, \overline{a}, \overline{b} \in \mathbb{Z} / n \mathbb{Z}$, define sum and product by 
+	\begin{equation}
+	\overline{a} + \overline{b} = \overline{a+b}, \, \overline{a} \cdot \overline{b} = \overline{ab}
+	\end{equation}
+	i.e. $\forall \, \overline{a}, \overline{b}$ in $\mathbb{Z}/n\mathbb{Z}$, take \emph{any representive} integer $a$ in class $\overline{a}$ and \emph{any representative} integer $b$ in class $\overline{b}$ and add (respectively, multiply), as usual in $\mathbb{Z}$, and take equivalence class of result.
+\end{definition}
+
+\begin{theorem}[Theorem 3 of Dummit and Foote (2004) \cite{agat:DuFo2003}, Sec. 0.3]
+	$\overline{a} + \overline{b} = \overline{a+b}$, $\overline{a} \cdot \overline{b} = \overline{ab}$ on $\mathbb{Z}/n\mathbb{Z}$ well-defined, and don't depend on representation choice, i.e. $a_1, a_2 \in \mathbb{Z}$, $b_1, b_2 \in \mathbb{Z}$, with $\overline{a}_1 = \overline{b}_1$, $\overline{a}_2 = \overline{b}_2$, then $\overline{a_1 + a_2} = \overline{b_1 + b_2}$, and $\overline{a_1 a_2} = \overline{b_1 b_2}$
+\end{theorem} 
+
+\begin{proof}
+	Suppose $a_1 = b_1 \bmod{n}$, so $a_1 = b_1 + sn$, likewise $a_2 = b_2 \bmod{n}$ means $a_2 = b_2 + tn$, so \\
+	$a_1 + a_2 = b_1 + b_2 + (s+t)n$, so $\overline{a_1 + a_2} = \overline{b_1 + b_2}$ from $a_1 + a_2 = (b_1 + b_2) \bmod{n}$
+
+This shows that sum of residue classes is independent of the representatives chosen.
+
+Similarly, 
+\[
+a_1 a_2 = (b_1 + sn) (b_2 + tn) = b_1 b_2 + (b_1 t + b_2 s + stn) n \text{ so } a_1 a_2 = b_1b_2(\bmod{n})
+\]
+
+\end{proof}
+
+\subsubsection{Elementary number theory application: Last 2 digits of $2^{1000}$}
+
+What is the last 2 digits of $2^{1000}$?
+
+Now $2^{1000} / 100 =$ last 2 digits of $2^{1000}$. So $2^{1000} \bmod{100} = $?
+
+Observe $2^{10} = 1024$ \qquad \, $2^{10} \bmod{100} = 24$
+
+\[
+\begin{gathered}
+\begin{aligned}
+& 2^{20} \bmod{100} = (2^{10})^2 \bmod{100} = (24)^2 \bmod{100} = 576 \bmod{100} = 76 \bmod{100} \\
+& 2^{80} \bmod{100} = 2^{160} \bmod{100} = 2^{320} \bmod{100} = 2^{640} \bmod{100} = 76 \bmod{100}
+\end{aligned}
+\end{gathered}
+\]
+where $(2^{20})^4 \bmod{100} = 76^4 \bmod{100} = 76 \bmod{100}$, \\
+$(76)^{2} \bmod{100} = 76 \bmod{100}$ \\
+
+So $2^{1000} \bmod{100} = 2^{640} 2^{320} 2^{40} \bmod{100} = 76 \cdot 76 \cdot 76 \bmod{100} = 76 \bmod{100}$ where $(76)^3 \bmod{100} = 76 \bmod{100}$. 
+
+Note that we used $\overline{a_1a_2} = \overline{a}_1 \cdot \overline{a}_2$ definition extensively.
+
+$2^{1000} \bmod{100} = 76 \bmod{100}$
+
+Collection of residue classes having multiplicative inverse in $\mathbb{Z} / n\mathbb{Z}$ is an important subset of $\mathbb{Z} / n\mathbb{Z}$, $\equiv (\mathbb{Z} / n\mathbb{Z})^{\times}$
+
+\begin{definition}[cf. pp. 10, Dummit and Foote (2003)\cite{agat:DuFo2003}]
+\begin{equation}
+(\mathbb{Z} / n\mathbb{Z})^{\times} = \lbrace \overline{a} \in \mathbb{Z} / n \mathbb{Z} | \exists \, \overline{c} \in \mathbb{Z} / n \mathbb{Z} \text{ with } \overline{a} \cdot \overline{c} = 1 \rbrace 
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Prop. 4, pp. 10, Dummit and Foote (2003) \cite{agat:DuFo2003}]
+\[
+(\mathbb{Z} / n\mathbb{Z})^{\times} = \lbrace \overline{a} \in \mathbb{Z} / n \mathbb{Z} | (a,n) = 1 \rbrace
+\], representatives of residue classes $\overline{a}$ are relatively prime to $n$.
+
+$(a,n) \equiv \gcd{(a,n)}$, greatest common divisor of $a$ and $n$. 
+\end{proposition}
+
+\begin{proof}
+	Since $(a,n) = 1$, $1= sa + tn$ so $as = 1 - tn$, so $as = 1 \bmod{n} \equiv \overline{1}$, so $\overline{s} = s\bmod{n}$ is a multiplicative inverse of $\overline{a}$.
+	
+	$\Longrightarrow \overline{a} \in (\mathbb{Z} / n\mathbb{Z})^{\times}$.  If $\overline{a} \cdot \overline{c} = \overline{1}$, then $ac= 1 + kn$ or $ac+ k' n=1$
+	
+\end{proof}
+
+\exercisehead{2} cf. Ex. 2, pp. 11, Dummit and Foote (2003) \cite{agat:DuFo2003}, Sec. 0.3. $\mathbb{Z} / n \mathbb{Z} \ni \overline{a}$ if $\overline{a} = a + kn$. \\
+By Division Algorithm, Thm. \ref{agat:Thm:DivisionAlgorithm}, $\forall \, a, N \in \mathbb{Z}$, $n\neq 0$, $a=qn + r$, $0\leq r < |n| = n$.
+
+Comparing expressions $a=  r + qn$ and $\overline{a} = a + kn$, then equivalence classes of $\mathbb{Z}/n\mathbb{Z}$ can only be of $r$ s.t. $0\leq r < |n|$.
+
+\exercisehead{3} cf. Ex. 3, pp. 11, Dummit and Foote (2003) \cite{agat:DuFo2003}, Sec. 0.3. If $a= \sum_{j=0}^{n-1} a_j b^j$, $b=10$, $a\in \mathbb{Z}^+$ (positive integer), then prove $a \equiv a_n + a_{n-1} + \dots + a_1 + a_0 (\bmod{9})$. 
+
+\emph{Observe} that $10 \equiv 1 (\bmod{9})$. So, \\
+
+Use the fact that $b\equiv 1 \bmod{(b-1)}$.
+\[
+\begin{gathered}
+	a_j b^j \bmod{(b-1)} = a_j \bmod{(b-1)} \cdot b^j \bmod{(b-1)} = a^j \bmod{(b-1)} \cdot (b \bmod{(b-1)})^j = a_j \bmod{(b-1)} 1^j \bmod{(b-1)} = \\
+	a^j \bmod{(b-1)} \\
+	a \bmod{(b-1)} = \sum_{j=0}^{n-1} a^jb^j \bmod{(b-1)} = \sum_{j=0}^{n-1} a^j \bmod{(b-1)} = \left( \sum_{j=0}^{n-1} a_j \right) \bmod{(b-1)}
+\end{gathered}
+\]
+
+if $b=0$, this says that remainder after division by 9 is same as sum of the decimal digits mod 9 - particularly, an integer is divisible by 9 iff sum of digits is divisible by 9.
+
+If $b=2$, this says $a$ odd (even) if sum of bits is odd (even).
+
+\subsubsection{As an abelian group}
+
+cf. Dummit and Foote, pp. 17, Ch. 1, Sec. 1.1, Examples, Example 4.
+
+$\mathbb{Z}/n\mathbb{Z}$ is an abelian group under operation $+$ of addition of residue classes, as described in Ch. 0. In Ch. 3 of Dummit and Foote (2003) \cite{agat:DuFo2003}, prove binary operation $+$ is well-defined and associative.
+
+$(\overline{a})^{-1} = \overline{-a}$ \, $\forall \, a \in \mathbb{Z}/ n \mathbb{Z}$, identity of $\angle \mathbb{Z}/n\mathbb{Z}, + \rangle = \overline{0}$.
+
+\exercisehead{3} cf. Exercise 3 in pp. 21, Exercises, of Sec. 1.1, Dummit and Foote (2003) \cite{agat:DuFo2003}. 
+
+\[
+\overline{a}  + (\overline{b} + \overline{c}) = (\overline{a} + \overline{b}) + \overline{c} 
+\]
+is associative, since,
+\[
+\begin{gathered}
+\overline{a} + (\overline{b} + \overline{c}) = \overline{a} + (\overline{b+c}) = \overline{a} + (\overline{b + tn + c + un}) = \overline{a} + \overline{b+c} = \overline{a+b+c} \\
+(\overline{a} + \overline{b}) + \overline{c} = (\overline{a+b}) + \overline{c} = (\overline{a + sn + b+ tn}) + \overline{c} = \overline{a+b} + \overline{c} = \overline{a+b+c}
+\end{gathered}
+\]
+
+\subsection{Cyclic groups and cyclic subgroups}
+
+cf. Sec. 2.3, pp. 54, Dummit and Foote (2003), \cite{agat:DuFo2003}
+
+\begin{definition}[Cyclic group]\label{agat:Def:CyclicGroup}
+	group $H$ is \textbf{cyclic} if $H$ can be generated by a single element, i.e. $\exists \, x \in H$ s.t. $H= \lbrace x^n | n\in \mathbb{Z} \rbrace$ ("multiplication" operation notation) $\equiv H = \lbrace nx | n \in \mathbb{Z} \rbrace$ ("additive" operation notation). \\
+	
+	In both cases, write $H = \langle x \rangle$ and say $H$ \emph{generated} by $x$ (i.e. $x$ is \emph{generator} of $H$)
+\end{definition}
+	cyclic group may have more than 1 generator; e.g. $H = \langle x \rangle$ and $H = \langle x^{-1} \rangle$ because $(x^{-1})^n = x^{-n}$ and $-n \in \mathbb{Z}$. 
+	
+\exercisehead{19} cf. Exercise 19, Sec. 1.1, pp. 22, Dummit and Foote (2003) \cite{agat:DuFo2003}.
+
+Let $x \in G, a, b\in \mathbb{Z}^+$
+
+In the following steps, I'll use induction a lot.
+\begin{enumerate}
+	\item[(a)] $x^{a+b} = x^a x^b $ and $(x^a)^b = x^{ab}$, prove.
+	\[
+	\begin{gathered}
+		x^ax^b = x^a \cdot x \cdot x^{b-1} = x^{a+1} x^{b-1} = \dots = x^{a+b - 1} \cdot x = x^{a+b} \quad \, (\text{used associativity of group operation}) \\
+		(x^a)^b = \underbrace{x^a \cdot x^a \cdots x^a }_{b \text{ times } } = x^{2a} \cdot \underbrace{x^a \dots x^a}_{ b- 2 \text{ times} } = x^{3a} \cdot \underbrace{x^a \dots x^a }_{b-3 \text{ times } } = \dots = x^{(b-1) a} \cdot x^a = x^{ (b-1) a + a} = x^{ba}
+	\end{gathered}
+	\]
+	\item[(b)] 
+	\[
+	\begin{gathered}
+		x^a \cdot x^{-a} = x^a \cdot (x^{-1})^a = x^{a-1} \cdot 1 \cdot (x^{-1})^{a-1} = \dots = x\cdot x^{-1} = 1 \Longrightarrow (x^a)^{-1} = x^{-a}
+	\end{gathered}
+	\]
+	The steps previous depended upon defining $x^{-a} = (x^{-1})^a$
+	\item[(c)] if $b=0$, $x^{a+0} = x^a = x^a x^b \Longrightarrow x^0 = 1$. $x^{ab} = x^0 = (x^a)^0 = 1$. \\
+	
+	$x^{a-b} = x^a \cdot x^{-b}$ since $x^{-b} = (x^{-1})^b$. \\
+	
+	$(x^a)^{-b} = ((x^a)^{-1})^b = (x^{-a})^b = x^{-ab}$ \\
+	
+	So $x^{a+b} = x^a x^b$, $(x^a)^{-1} = x^{-a}$ $\, \forall \, a,b \in \mathbb{Z}$
+\end{enumerate}
+
+\begin{theorem}[Cyclic groups are abelian]\label{agat:Thm:CyclicGroupsAreAbelian}
+	Cyclic groups are abelian since $x^a x^b = x^{a+b} = x^{b+a} = x^b x^a$
+\end{theorem}
+
+\begin{proposition}[]\label{agat:Prop:OrderDividesExponentOfCyclicGroupGeneratorRelation}
+cf. Dummit and Foote (2003) \cite{agat:DuFo2003}, Prop. 3, pp. 55, Sec. 2.3
+
+	Let arbitrary group $G$, $x\in G$, let $m, n \in \mathbb{Z}$. \\
+
+	If $x^n = 1$, $x^m = 1$, then $x^d =1$, where $d= (m,n) \equiv \gcd{(m,n)}$ \\
+	If $x^m = 1$, for some $m \in \mathbb{Z}$, then $|x|$ divides $m$ (recall $|x| \equiv $ order of $x :=$ smallest positive integer $n$ s.t. $x^n = 1$, Def. on pp. 20, Sec. 1.1 of Dummit and Foote (2003) \cite{agat:DuFo2003}).
+\end{proposition}
+
+\begin{proof}
+	By Euclidean Algorithm (Sec. 0.2, (6) of Dummit and Foote (2003) \cite{agat:DuFo2003}), $\exists \, r, s \in \mathbb{Z}$ s.t. since $d= \gcd{(m,n)}$, $d|m$ and $d|n$, i.e. $m/d, n/d \in \mathbb{Z}$, i.e. $m = pd + r$, $n=qd + s$, with $r=s=0$. \\
+	
+	Consider $mr+ns = pdr + qds = (pr+qs)d$. Choose $r,s$ s.t. $pr + qs = 1$ (TODO: need to prove Euclidean Algorithm) \\
+
+	$x^d = x^{mr + ns} = (x^m)^r (x^n)^s = 1^r 1^s = 1$. \\
+	
+	If $x^m = 1$, let $n=|x|$. If $m=0$, $n |m$, i.e. $m/n = 0/n$, so assume $m \neq 0$. \\
+	
+	Since some nonzero power of $x,m$, is identity $n < \infty$. \\
+	
+	Let $d= (m,n) = \gcd{(m,n)}$, so $x^d = 1$ by preceding result for Prop. \ref{agat:Prop:OrderDividesExponentOfCyclicGroupGeneratorRelation}. \\
+	
+	Since $0 < d \leq n$, and $n$ is smallest positive power of $x$ s.t. $x^n= 1$ (def. of order of a group), $d=n$, so $n | m \equiv m/n = m / |x|$. 
+\end{proof} 
+
+\begin{theorem}[Dummit and Foote, Thm. 4 (2003) \cite{agat:DuFo2003}]\label{agat:Thm:CyclicGroupSameOrderIsomorphism}
+	Any 2 cyclic groups of the same order are isomorphic; more specifically, 
+	\begin{enumerate}
+		\item[(1)] if $n\in \mathbb{Z}^+$, $\langle x \rangle, \langle y \rangle$ are cyclic groups of order $n$, then
+		\begin{equation}
+			\begin{aligned}
+				\varphi : & \langle x \rangle \to \langle y \rangle \\
+				& x^k \mapsto y^k 
+			\end{aligned}
+		\end{equation}
+		is well-defined and an isomorphism.
+		\item[(2)] If $\langle x \rangle$ is infinite cyclic group, map $\varphi$ 
+		\begin{equation}
+			\begin{aligned}
+				\varphi & : \mathbb{Z} \to \langle x \rangle \\
+				& k \mapsto x^k
+			\end{aligned}
+		\end{equation}
+		is well-defined and is an isomorphism.
+	\end{enumerate}
+\end{theorem} 
+
+\begin{proof}
+	Suppose $\langle x \rangle, \langle y \rangle$ are cyclic groups of order $n$. Let $\varphi: \langle x \rangle \to \langle y \rangle$ s.t. $\varphi(x^k) = y^k$. \\
+	
+	$\varphi$ \textbf{well-defined}? \emph{Prove}: \\
+	if $x^r = x^s$, then $\varphi(x^r) = \varphi(x^s)$. \\
+	
+	Since $x^{r-s} = 1$, by Prop. \ref{agat:Prop:OrderDividesExponentOfCyclicGroupGeneratorRelation}, $|x| | r-s$, i.e. $r-s / |x|$, so $r-s = |x|$ or $r = tn + s$, so 
+	\[
+	\varphi(x^r) = \varphi(x^{tn + s}) = y^{tn + s} = (y^n)^t y^s = 1^t y^s = y^s = \varphi(x^s)
+	\]
+	
+	$\varphi$ well-defined. \\
+
+$\varphi(x^a x^b) = \varphi(x^{a+b}) = y^{a+b} = y^a y^b = \varphi(x^a) \varphi(x^b)$, so $\varphi$ homomorphism.  \\
+
+Since $y^k = \varphi(x^k)$, $\varphi$ surjective. \\
+
+Since both groups have same finite order, any surjection from 1 to the other is bijection, so $\varphi$ isomorphism.  \\
+
+Alternatively, $\begin{aligned}
+& \varphi^{-1}:\langle y \rangle \to \langle x \rangle
+& \varphi^{-1}(y^k) = x^k 
+\end{aligned}$ \quad \, and \quad \, $\begin{aligned} & \varphi \circ \varphi^{-1}(y^k) = y^k \\
+& \varphi^{-1}\circ \varphi(x^k) = x^k \end{aligned}$.
+
+If $\langle x \rangle$ infinite cyclic group, let $\varphi : \mathbb{Z} \to \langle x \rangle$ defined by $\varphi(k) = x^k$.  $\varphi$ well-defined since if $k = l$ for $x,y \in \mathbb{Z}$, 
+\[
+x^k = x^l = \varphi(k) = \varphi(l)
+\]
+
+By Prop. 2 of Dummit and Foote (2003) \cite{agat:DuFo2003}, pp. 55, Sec. 2.3, (if $H=\langle x \rangle$, $|H| = |x|$), if $x^a \neq x^b$, $\forall\, a, b \in \mathbb{Z}$, $a\neq b$, $\varphi$ injective. $\forall \, x^k \in \langle x \rangle$, $k \in \mathbb{Z}$, so $\varphi(k) = x^k$ is surjective. \\
+Law of exponents ensure $\varphi$ homomorphism, (as above), hence $\varphi$ isomorphism. 
+
+\end{proof}
+
+\begin{theorem}[Cyclic Group and Integer Modulo $N$ are isomorphic]\label{agat:Thm:CyclicGroupIntegerModuloNIsomorphic}
+	Up to isomorphism, $Z_n$ is the unique cyclic group of order $n$ and $Z_n \simeq \mathbb{Z}/ n\mathbb{Z}$
+\end{theorem}
+
+\subsection{Binary Representation, fixed-width integers as Abelian group}
+
+For $x\in \mathbb{Z}$, $B2U(x) = \sum_{i=0}^{w-1} x_i \cdot 2^i \equiv \sum_{i=0}^{w-1} x_i b^i$, where $b=2$, $w= $ total number of bits to represent $x$. \\
+
+Consider $n=2^w$. \\
+
+Observe that if $\sum_{i=0}^{w-1} 1 \cdot 2^i = S$, $2S = \sum_{i=1}^{w-1} 2^i + 2^w = S - 1  + 2^w$. So $S = 2^w-1$, and so consider integers modulo $n=2^w$. 
+
+\[
+\mathbb{Z} / 2^w \mathbb{Z} = \lbrace \overline{a} = \lbrace a + kn | k \in \mathbb{Z} \rbrace \rbrace = \lbrace \overline{a} = \lbrace a + k 2^w | k \in \mathbb{Z} \rbrace \rbrace
+\]
+and was shown that $0\leq a < 2^w$.
+
+Observe that if $x=  2^w + \sum_{i=0}^{w-1} x_i \cdot 2^i$, \\
+
+since $x \leq 2^w - 1$, \, $\forall \, x,y \in \mathbb{Z} / 2^w \mathbb{Z}$, $x+y\leq 2 \cdot 2^w - 2 = 2^{w+1} - 2 = \sum_{i=0}^w 2^i + 1 - 2 = \sum_{i=0}^w 2^i - 1 \sim \left( \sum_{i=0}^{w-1} 2^i - \right) \bmod{2^w}$ \\
+
+
+Consider $2^w - 1 = \sum_{i=0}^{w-1} 1 \cdot 2^i$. Then $2^w = \sum_{i=0}^{w-1} 1 \cdot 2^i + 1  = \sum_{i=0}^w x_i \cdot 2^i$ where $x_i = 0$ unless $i=w$, so $x_w = 1$. Define one's complement addition s.t. $2^w \bmod{2^w} = 0 \bmod 2^w$ \\
+
+Then $B2U(x) \bmod{2^w}$ is a cyclic group s.t. $(\overline{1})^{2^w} \equiv \sum_{i=1}^{2^w} 1 = \sum_{i=0}^{2^w -1} 1 = 2^w \bmod{2^w} = 0 \bmod{w^2}$, $\forall \, w \in \mathbb{Z}^+$.
+
+\section{Groups; normal subgroups}  
+
+\begin{definition}[normal subgroup $K \lhd G$] \qquad \, \\
+\textbf{normal subgroup} $K$ of $G \equiv K \lhd G$   - 
+
+subgroup $K\subset G$, if $\forall \, k \in K$, $\forall \, g \in G$, 
+\[
+gkg^{-1} \in K
+\]
+\end{definition}
+
+\begin{definition}[quotient group] \qquad \, \\
+\textbf{quotient group} $G\mod{K} \equiv G/K$ -  
+
+if $G/K = $ family of all left cosets of subgroups $K\subset G = $
+\[ 
+= \lbrace gK | g\in G, gK = \lbrace gk | k \in K \rbrace 
+\]
+and 
+
+$K = $ normal subgroup of $G$, i.e. $K \lhd G$, and so 
+\[
+aK bK = abK \qquad \, \forall \, a,b \in G, 
+\]
+so $G/K $ group.  
+\end{definition}
+
+
+
+
+
+
+
+\begin{definition}[exact sequence of groups]
+	\textbf{exact sequence} if $\text{im}f_{n+1} = \text{ker}f_n$  \qquad \, $\forall \, n $ for sequence of group homomorphisms and groups 
+\begin{equation}
+\begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+	G_{n+1}   &  G_n & G_{n-1} \\
+};
+\path[->]
+(m-1-1) edge node[auto]{$f_{n+1}$} (m-1-2)
+(m-1-2) edge node[auto]{$f_n$} (m-1-3);
+\end{tikzpicture} 
+\end{equation}
+\end{definition}
+
+	
+\begin{theorem}
+	\begin{enumerate}
+		\item \[
+		\begin{tikzpicture}
+		\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+		{
+			1   &  A & B \\
+		};
+		\path[->]
+		(m-1-2) edge node[auto]{$f$} (m-1-3);
+		\end{tikzpicture} 
+		\]
+		\item \[
+		\begin{tikzpicture}
+		\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+		{
+			B   &  C & 1 \\
+		};
+		\path[->]
+		(m-1-1) edge node[auto]{$g$} (m-1-2);
+		\end{tikzpicture} 
+		\]
+		\item \[
+		\begin{tikzpicture}
+		\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+		{
+			1 & A   &  B & 1 \\
+		};
+		\path[->]
+		(m-1-2) edge node[auto]{$h$} (m-1-3);
+		\end{tikzpicture} 
+		\]
+		
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item $\text{im}(1\to A)=1$, since $1\to A$ is a group homomorphism $((1\to A)(1) = 1_A)$.  \\
+		if $1\to A \xmapsto[]{f} B$ exact, $\text{ker}f = \text{im}(1\to A)=1$, so if $f(x)=1$, $x=1$, $f$ injective.  \\
+		If $f$ injective, $\text{ker}f=1$.  $1=\text{im}(1\to A)$.  $1\to A \xmapsto{f}B$, exact.  
+		\item $\text{ker}(C\to 1) = C$, by def. of $C\to 1$ \\
+		if $B \xmapsto{g} C \to 1$ exact, $\text{im}g = g(B) = \text{ker}(C\to 1)= C$.  $g(B) = C$ implies $g$ surjective.  \\
+		If $g$ surjective, $g(B) = C =\text{ker}(C\to 1)$.  $B\xmapsto{g} C \to 1$ exact.  
+		\item From (i), $1\to A \xmapsto{h}B$ exact iff $h$ injective.  
+		From (ii), $A\xmapsto{h}B \to 1$, exact iff $h$ surjective.  \\
+		$h$ isomorphism.  
+	\end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{1st, 2nd, 3rd Isomorphism Theorems}
+
+\begin{theorem}[1st Isomorphism Theorem (Modules) Thm. 7.8 of Rotman (2010) \cite{agat:JRotman2010}]
+If $f:M\to N$ is $R$-map of modules, then $\exists \, R$-isomorphism s.t. 
+\begin{equation}
+	\begin{aligned}
+	& \varphi : M /\text{ker}f \to \text{im}f \\ 
+	& \varphi: m + \text{ker}f \mapsto f(m)
+\end{aligned} \qquad \qquad \, \begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+M   &  N \\
+M/\text{ker}f  &  \\};
+\path[->]
+(m-1-1) edge node[auto]{$f$} (m-1-2)
+edge node[auto]{$\pi$} (m-2-1) 
+(m-2-1) edge node[right]{$\varphi = \cong$} (m-1-2);
+\end{tikzpicture} 
+\end{equation}
+
+
+
+
+\end{theorem}
+
+\begin{proof}
+	View $M,N$ as abelian groups.  
+
+Recall natural map $ \begin{aligned} & \quad \\ 
+	& \pi : M \to M/N \\
+& m\mapsto m + N \end{aligned}$  
+
+Define $\varphi$ s.t. $\varphi \pi = f$.  
+
+($\varphi$ well-defined).  Let $m+\text{ker}f = m' + \text{ker}f$, $m,m' \in M$, then $\exists \,  n \in \text{ker}f$ s.t. $m=m'+n$.  
+\[
+\varphi(m+\text{ker}f) = \varphi\pi (m) = f(m) = f(m' +n ) = f(m') + f(n) = \varphi \pi(m') + 0 = \varphi(m' + \text{ker}f )
+\]
+$\Longrightarrow \varphi $ well-defined.  
+
+($\varphi$ surjective).  Clearly, $\text{im}\varphi \subseteq  \text{im} f$.   \\
+Let $y\in \text{im}f$.  So $\exists \,  m \in M$ s.t. $y=f(m)$.  $f(m) = \varphi \pi (m) = \varphi(m+\text{ker}f) = y$.  So $y\in \text{im}\varphi$.  $\text{im}f\subseteq \text{im}\varphi$.  \\
+$\Longrightarrow \varphi $ surjective.  
+
+($\varphi$ injective)  If $\varphi(a+\text{ker}f) = \varphi(b+\text{ker}f)$, then 
+\[
+\begin{gathered}
+\varphi\pi(a) = \varphi\pi(b) \text{ or } f(a) = f(b) \text{ or } 0 = f(a) -f(b) = f(a-b) \text{ so } a-b \in \text{ker}f
+	(a-b) + \text{ker}f = \text{ker}f \text{ so } a + \text{ker}f = b +\text{ker}f 
+\end{gathered}
+\]
+$\varphi$ isomorphism.  
+
+$\varphi$ $R$-map.  $\varphi(r(m+N)) = \varphi(rm+N) = f(rm)$.    \\
+Since $f$ $R$-map, $f(rm) = rf(m) = r\varphi(m+N)$.  $\varphi$ is $R$-map indeed.  
+
+
+\end{proof}
+
+
+\begin{theorem}[2nd Isomorphism Theorem (Modules) Thm. 7.9 of Rotman (2011) \cite{agat:JRotman2010}]
+If $S,T$ are submodules of module $M$, i.e. $S,T \in M$, then $\exists \, $ $R-$isomorphism  
+\begin{equation}
+\begin{gathered}
+	S/(S\cap T) \to (S+T)/T
+\end{gathered} \qquad \, 
+\qquad \qquad \, \begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+S   &  (S+T)/T = \text{im}h \\
+S/(S\cap T) = S/\text{ker}h  &  \\};
+\path[->]
+(m-1-1) edge node[auto]{$h$} (m-1-2)
+edge node[auto]{$\left. \pi \right|_S$} (m-2-1) 
+(m-2-1) edge node[right]{$ \cong$} (m-1-2);
+\end{tikzpicture} 
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let natural map $\pi : M \to M/T$.   \\
+\phantom{Let} So $\text{ker}\pi = T$.  
+
+Define $h:= \left. \pi \right|_S$, so $h: S\to M/T$, so $\text{ker}h = S\cap T$, 
+\[
+(S+T)/T = \lbrace (s+t) + T | a\in S+T, s\in S, t\in T \rbrace
+\]
+i.e. $(S+T)/T$ consists of all those cosets in $M/T$ having a representation in $S$.  
+
+By 1st. isomorphism theorem, 
+\[
+S/S\cap T \xrightarrow{ \cong} (S+T)/T
+\]
+
+\end{proof}  
+
+\begin{theorem}[3rd Isomorphism Theorem (Modules) Thm. 7.10 of Rotman (2011) \cite{agat:JRotman2010}]
+If $T\subseteq S \subseteq M$ is a tower of submodules, then $\exists \, $ $R$-isomorphism
+\begin{equation}
+\begin{gathered}
+	(M/T)/(S/T) \to M/S
+\end{gathered} \qquad \,  \begin{tikzpicture}
+\matrix(m)[matrix of math nodes, row sep=4em, column sep=4em]
+{
+M/T   &  M/S\\
+(M/T)/(S/ T) = (M/T)/\text{ker}g  &  \\};
+\path[->]
+(m-1-1) edge node[auto]{$g$} (m-1-2)
+edge node[auto]{$ \pi $} (m-2-1) 
+(m-2-1) edge node[right]{$ \cong$} (m-1-2);
+\end{tikzpicture} 
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+	Define $g:M/T \to M/S$ to be \textbf{coset enlargement}, i.e. 
+\begin{equation}
+	g:M +T \mapsto m+S
+\end{equation}
+$g$ well-defined: if $m+T = m'+T$, then $m-m' \in T\subseteq S$, and $m+S = m'+S \Longrightarrow g(m+T) = g(m'+T)$
+
+$\text{ker}g = S/T$ since 
+\[
+\begin{aligned}
+	& g(s+T) = s+S = S  \qquad \, (S/T \subseteq \text{ker}g)   \\
+	& g(m+T) = m + S = 0 = S = s + S, \text{ so } m=s \Longrightarrow \text{ker}g \subseteq S/T
+\end{aligned}
+\]
+$\text{im}g = M/S $ since 
+\[
+\begin{aligned}
+	& g(m+T) = m+S \Longrightarrow \text{ im}g \subseteq M/S \\ 
+ 	& m+S = g(m+T)
+\end{aligned}
+\]
+Then by 1st isomorphism, and commutative diagram, done.  
+\end{proof} 
+
+\section{Rings} 
+
+cf. Ch. 7 "Introduction to Rings" pp. 223, Dummit and Foote (2014)\cite{agat:DuFo2003}
+
+\begin{definition}[Ring]
+ring $R$ is a set, together with 2 binary operations $+, \times $ (addition and multiplication, $\times \equiv \cdot $) s.t. 
+\begin{enumerate} 
+\item \begin{enumerate}
+	\item $(R, +)$ abelian group 
+	\item $\times $ associative: $a(bc) = (ab)c \quad \, \forall \, a, b, c \in R$  
+	\item distributivity in $R$: $\forall \, a , b, c \in R$ 
+	\[
+	(a+b)c = ac + bc \text{ and } a(b+c) = ab + ac
+	\]
+\end{enumerate}	
+\item $R$ \emph{commutative} if multiplication commutative
+\item $R$ has an identity $1$ if $\exists \, 1 \in R$ s.t.
+\[
+1a = a1 = a \quad \, \forall \, a \in R
+\]
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[division ring]
+	ring $R$ with identity $1$, where $1\neq 0$ is a \textbf{division ring} (or skew field) if $\forall \, a \in R$, $a\neq 0$, $\exists \, $ multiplicative inverse $1/a$, i.e. $\exists \, b\in R$ s.t. $ab=ba = 1$
+\end{definition}
+
+e.g. 
+\begin{enumerate}
+	\item rational numbers $\mathbb{Q}$ \\
+	real numbers $\mathbb{R}$ \\
+	complex numbers $\mathbb{C}$ \\ 
+	are commutative rings with identity (in fact, they're fields) \\
+	Ring axioms for each follow ultimately from ring axioms for $\mathbb{Z}$ \\
+	(verified when $\mathbb{Z}$ constructed from $\mathbb{Z}$ (Sec. 7.5)), $\mathbb{C}$ from $\mathbb{R}$ (Example 1, Sec. 13.1). \\
+	Construction of $\mathbb{R}$ from $\mathbb{Z}$ carried out in basic analysis texts
+	\item \textbf{quotient group} $\mathbb{Z}/n\mathbb{Z}$ is a commutative ring with identity (element 1) under operations of addition and multiplication of residue classes (frequently referred to as "modular arithmetic").  \\
+	We saw additive abelian groups axioms followed from general principles of theory of quotient groups ($\mathbb{Z}/n\mathbb{Z}$) was prototypical quotient group. cf. Example 4, pp. 224, Dummit and Foote (2014)\cite{agat:DuFo2003}
+	\item \textbf{the (real) Hamiltonian Quaternions}.  
+	\begin{definition}[(real) Hamiltonian Quaternions]
+		Let $\mathbb{H} = \lbrace a+ bi + cj + dk | a,b,c,d \in \mathbb{R} \rbrace$ s.t. 
+		"componentwise" addition is defined as 
+		\begin{equation}
+		(a+bi + cj+dk) + (a' + b'i + c'j + d'k) = (a+a') + (b+b')i + (c+c')j + (d+d')k
+		\end{equation} and multiplication defined by expanding using distributive laws 
+		\[
+		(a+bi + cj +dk)(a' + b'i + c'j +d' k)
+		\]
+		using 
+		\begin{equation}
+		\begin{aligned}
+		& i^2 = j^2 =k^2 = -1 \\
+		& ij = -ji = k \\
+		& jk = -kj = i \\
+		& ki = -ik = j
+		\end{aligned}
+		\end{equation}
+	\end{definition}
+Working out the multiplication
+\[
+\begin{gathered}
+(a+bi + cj + dk)(a'+b'i + c'j + d'k) =  \\
+= \begin{aligned}
+& aa' + ab' i + ac'j + ad'k + ba' i - bb' + bc' k -bd' j + \\
+& ca'j - cb' k - cc' + cd' i + da' k + db' j - dc' i -dd' = \\
+\end{aligned} \\
+= aa' - bb' -cc' -dd' + (ab' + ba' + cd' -dc')i + (ac' - bd' + ca' +db')j + (ad' + bc' - cb' + da')k 
+\end{gathered}
+\]
+Hamiltonian Quaternions are noncommutative ring with identity ($1= 1 + 0i + 0j + 0k$). 
+
+Similarly define \emph{rational} Hamiltonian Quaternions ring by taking $a,b,c,d\in \mathbb{Q}$.  
+
+real and rational Hamiltonian Quaternions both are divison rings, where inverse of nonzero element defined as 
+
+
+\begin{equation}
+(a+bi +cj + dk)^{-1} = \frac{ a-bi -cj -dk}{ a^2 + b^2 + c^2 + d^2 }
+\end{equation} cf. Example 5, pp. 224, Dummit and Foote (2014)\cite{agat:DuFo2003}
+
+\item \textbf{rings of functions} (important class) \\
+Let $X$ be any nonempty set. \\
+Let $A$ be any ring. 
+
+\begin{definition}[function ring]
+	collection $R= \lbrace f:X\to A \rbrace$ is a ring under pointwise addition and multiplication of functions s.t. 
+	\begin{equation}
+	\begin{aligned}
+	(f+g)(x) & = f(x) + g(x) \\
+	(fg)(x) & = f(x)g(x)
+	\end{aligned}
+	\end{equation}
+\end{definition}
+	
+cf. Example 6, pp. 225, Dummit and Foote (2014)\cite{agat:DuFo2003}
+
+\item cf. Example 7 of p. 225, Dummit and Foote (2014)\cite{agat:DuFo2003} \emph{ring which doesn't have an identity}:
+
+\begin{itemize}
+	\item  ring $2\mathbb{Z}$ of even integers (sum and product of even integers is an even integer) \\
+\item function $f: \mathbb{R} \to \mathbb{R}$ has compact support if $\exists \, a, b \in \mathbb{R}$, (depending on $f$) s.t. $f(x) = 0$, \quad \, $\forall \, x \notin [a,b]$ \\
+$\lbrace f: \mathbb{R}\to \mathbb{R} | f \text{ has compact support } \rbrace$ is a commutative ring without identity (since an identity couldn't have compact support), 
+
+Similarly, \\
+$\lbrace \text{ cont. } f : \mathbb{R} \to \mathbb{R} | f \text{ has compact support } \rbrace$ is a commutative ring without identity. 
+\end{itemize}	
+\end{enumerate}
+
+\begin{proposition}[Dummit and Foote (2014)\cite{agat:DuFo2003}, Prop. 1, pp. 226]
+Let $R$ be a ring. \\
+Then
+\begin{enumerate}
+	\item $0a = a0 = 0$ \, $\forall \, a \in R$ 
+	\item $(-a) 0 = a(-b) = -(ab) \quad \, \forall \, a,b \in R$ (recall $-a$ is additive inverse of $a$)
+	\item $(-a)(-b) =ab$ \quad \, $\forall \, a, b \in R$ 
+	\item if $R$ has identity $1$, identity unique and $-a = (-1) a$
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Use distributivity and additive existence inverse for abelian group $(R, +)$. 
+
+\begin{enumerate}
+	\item \[
+	\begin{gathered}
+	0a = (0 + 0) a = 0a + 0a \to 0a = 0 
+	a0 = a(0 + 0) = a0 + a0 \text{ so } a0 = 0 	
+	\end{gathered}
+	\]
+	\item 
+	\[
+	\begin{gathered} 
+	ab + (-a)b = (a + (-a)) b = 0b = 0 \Longrightarrow (-a) b = -(ab) \\
+	ab + a(-b) = a(b + (-b)) = a0 = 0 \Longrightarrow a(-b) = -(ab) 	
+	\end{gathered} 
+	\]
+	\item \[
+	(-a)(b + (-b)) = (-a)b + (-a)(-b) = -(ab) + (-a)(-b) = 0 \Longrightarrow (-a)(-b) =ab
+	\]
+	\item \[
+	(-1)a  + a = (-1) a + 1a = (-1 + 1) a = 0a = 0 \text{ so } -a = (-1) a
+	\]
+	Suppose $\exists \, 1'$ s.t. $1' a = a1' = a$ and $1' \neq 1$  
+	\[
+	\begin{gathered}
+	-a + a = 0 = (-1) a + 1' a = (-1 + 1') a = 0 a \Longrightarrow 0 = -1 + 1' 
+	\end{gathered}
+	\]
+	Then $1' = 1$. Contradiction. 
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Let $R$ be a ring.
+\begin{enumerate}
+	\item \textbf{zero divisor} $a$, $a\neq 0$, $a\in R$ if $\exists \,  b\in R, \, b\neq 0$ so either $ab= 0$ or $ba=0$. 
+	\item Assume $R$ has identity $1\neq 0$. \\
+	\textbf{unit} in $R$, $u\in R$ if $\exists \,$ some $v\in R$ s.t. $uv = vu =1$. \\
+	$R^x \equiv $ set of units in $R$. 
+	\[
+	\forall \, u,v \in R^x, \, (uv) (v^{-1}u^{-1}) = u(1)u^{-1} = 1
+	\]
+	$1 \in R^x$ so, $1u = u1 = u$ \\
+	if $u\in R^x$, $u^{-1} \in R^x$ since $uu^{-1} = u^{-1} u =1$ 
+$R^x$ is a \textbf{group of units}
+\end{enumerate}	
+\end{definition} 
+
+Thus a \emph{field} $= $ commutative ring $F$ with identity $1\neq 0$ s.t. $\forall \, a\in $ field, $a\neq 0$ is a unit, i.e. $F^x = F - \lbrace 0 \rbrace$. 
+
+\begin{proposition}
+	zero divisor can never be a unit. 
+\end{proposition}
+
+\begin{proof}
+	Suppose a unit in $R$, and $ab=0$ for some $b\neq 0$, $b\neq R$. \\
+	Then $va=1$ s.t. some $v\in R$ and 
+	\[
+	b =1b = vab = v(ab) = v(0) = 0
+	\]
+	Contradiction.
+\end{proof} 	
+
+\section{Commutative Rings}
+
+cf. Ch. 3 "Commutative Rings I" of Rotman (2010) \cite{agat:JRotman2010}
+
+
+\begin{definition} commutative ring $R$ is a set with 2 binary operations, addition and multiplication, s.t.
+	\begin{enumerate}
+		\item[(i)] $R$ abelian group under addition 
+		\item[(ii)] (commutativity) $ab=ba$ \quad $\forall \, a,b \in R$  (this isn't there for noncommutativity)
+		\item[(iii)] (associativity) $a(bc) = (ab)c$ \quad \, $\forall \, a,b,c\in R$
+		\item[(iv)] $\exists \, 1 \in R$ s.t. $1a = a$ \, $\forall \, a  \in R$ \quad \, (many names used: one, unit, identity)
+		\item[(v)] (distributivity) $a(b+c) = ab+ac$ \quad \, $a,b,c \in R$ (this splits up into 2 distributivity laws for noncommutativity)
+	\end{enumerate}
+\end{definition}
+
+To reiterate, abelian group under addition $R$ (is defined as)
+\begin{enumerate}
+	\item associative $\forall \, x , y ,z \in R$, $x + (y+z) = (x+y)+z$ 
+	\item $\exists \, 0 \in R$, $0+x = x + 0$, \, $\forall \, x \in R$ 
+	\item $\forall \, x \in R$, $\exists \, (-x) \in R$ s.t. $x+(-x) = 0 = (-x) + x$
+\end{enumerate}
+abelian, if commutativity: $x+y=y+x$.  
+
+\subsection{Linear Algebra; Linear Algebra with commutative rings as fields}
+
+\subsubsection{Linear Algebra}
+
+\begin{definition}[subspace]
+	If $V$ vector space over field $k$, \\
+	then \textbf{subspace} of $V$ is subset $U$ of $V$ s.t. 
+	\begin{enumerate}
+		\item $0\in U$
+		\item $u,u' \in U$ imply $u+u' \in U$ 
+		\item $u\in U$, and $a\in k$ imply $au \in U$
+	\end{enumerate}
+	\textbf{proper subspace} of $V \equiv U \subsetneq V$ is subspace $U \subseteq V$ with $U \neq V$.
+\end{definition}
+$U =V$, $U = \lbrace 0 \rbrace$ are always subspaces of a vector space $V$. 
+
+\textbf{Examples} (Example 3.70 Rotman (2010) \cite{agat:JRotman2010}) 
+\begin{enumerate}
+	\item[(ii)] If $V=(a_1, \dots a_n)$, $v\neq 0$, $v\in \mathbb{R}^n$, \\
+	line through origin $l = \lbrace av | a \in \mathbb{R} \rbrace$ is a subspace of $\mathbb{R}^n$. \\
+	plane through origin $=\lbrace av_1 + bv_2 | v_1 , v_2 \text{ fixed pair of noncollinear vectors, } a,b \in \mathbb{R} \rbrace$ are subspaces of $\mathbb{R}^n$
+	\item[(iii)] If $m\leq n$, $\mathbb{R}^m$ regarded as set of all vectors in $\mathbb{R}^n$ s.t. last $n-m$ coordinates are $0$, then $\mathbb{R}^m$ subspace of $\mathbb{R}^n$.
+	e.g. $\mathbb{R}^2 = \lbrace (x,y,0) \in \mathbb{R}^3 \rbrace \subsetneq \mathbb{R}^3$
+	\item[(iv)] If $k$ field, \textbf{homogeneous linear system over $k$ } of $m$ equations in $n$ unknowns is a set of equations
+	\[
+	\begin{aligned}
+	a_{11} x_1 + \dots + a_{1n} x_n = 0 & \\
+	a_{21} x_1 + \dots + a_{2n} x_n = 0 & \\
+	\vdots \vdots & \\
+		a_{m1} x_1 + \dots + a_{mn} x_n = 0 & 
+	\end{aligned}
+	\] 
+	where $a_{ji} \in k$.
+	
+	\textbf{solution} of this system is vector $(c_1 \dots c_n) \in k^n$ s.t. $\sum_i a_{ji} c_i  =0$, $\forall \, j$. \\
+	solution $(c_1 \dots c_n)$ \textbf{nontrivial} if $\exists$ some $c_i \neq 0$. \\
+	\textbf{solution space} (or null space) of system $=$ set of all solutions. \\
+	solution space also a subspace of $k^n$
+\end{enumerate}
+
+e.g. $k = \mathbb{I}_p$, 
+\[
+\begin{aligned}
+& 3x - 2y + z \equiv 1 \bmod{7} \\
+& x + y -2 z \equiv 0 \bmod{7} \\
+& -x + 2y + z \equiv 4 \bmod{7}
+\end{aligned}
+\]
+\begin{definition}[list]
+	list $:=$ vector space $V$ is ordered set $v_1 \dots v_n$ of vectors in $V$, i.e. 
+	$\exists \, $ some $n\geq 1$, $\exists \, $ some function $\varphi$ 
+	\[
+	\varphi : \lbrace 1,2\dots n \rbrace \to V
+	\]
+	with $\varphi(i) = v_i \quad \, \forall \, i$
+\end{definition}
+
+Thus, $X = \text{im}\varphi$.
+
+$X$ ordered, $\varphi$ need not be injective. 
+
+\begin{definition}[k-linear combination]
+	$k$-linear combination of list $v_1\dots v_n$ in $V$, $V\equiv $ vector space over field $k$, is vector $v$ of form 
+	\[
+	v = a_1 v_1 + \dots + a_n v_n  = \sum_{i=1} a_i v_i \quad \, \forall \, a_i \in k, \, \quad \, \forall \, i
+	\]
+\end{definition}
+
+\begin{definition}[list]
+	If list $X = v_1 \dots v_m$ in vector space $V$, then \\
+	\textbf{subspace spanned by } $X$, $\langle v_1 \dots v_m \rangle := $ set of all $k$-linear combinations of $v_1 \dots v_m$.  Also, say $v_1 \dots v_m $ spans $\langle v_1 \dots v_m\rangle$. 
+\end{definition}
+
+\begin{lemma}[$\langle v_1 \dots v_m \rangle$ is smallest subspace of $V$ containing $v_1\dots v_m$]\label{agat:Lemma:smallest_subspace}
+\begin{enumerate}
+	\item[(i)] Every intersection of subspaces of $V$ is itself a subspace.
+	\item[(ii)] If $X= v_1 \dots v_m$ list in $V$, then intersection of all subspaces of $V$ containing $X$ is $\langle v_1 \dots v_m \rangle$, subspace spanned by $v_1\dots v_m$, so $\langle v_1 \dots v_m \rangle$ is smallest subspace of $V$ containing $X$. 
+\end{enumerate}
+\end{lemma}
+cf. (Lemma 3.71 Rotman (2010) \cite{agat:JRotman2010}) 
+
+\begin{proof}
+\begin{enumerate}
+	\item[(i)] Consider $\bigcap_{\alpha \in I} V_{\alpha}$, $\forall \, \alpha \in I$, $V_{\alpha} $ subspace of $V$
+	\begin{enumerate}
+		\item[(i)] $0\in V_{\alpha}$, $\forall \, \alpha \in I$, so $0\in \bigcap_{\alpha \in I} V_{\alpha}$,
+		\item[(ii)] Let $u,u' \in \bigcap_{\alpha \in I} V_{\alpha}$. Then $u,u' \in V_{\alpha}$, $\forall \, \alpha \in I$. Consider $\beta \in I$. $u, u' \in V_{\beta}$, so $u+u' \in V_{\beta}$.  Without loss of generality, $u + u' \in V_{\alpha}$, $\forall \, \alpha \in I$.  Then $u+u' \in \bigcap_{\alpha \in I} V_{\alpha}$
+		\item[(iii)] Let $u\in \bigcap_{\alpha \in I} V_{\alpha}$.  Consider $\alpha \in k$. Since $u\in V_{\alpha}$, $\forall \, \alpha \in I$, $au\in V_{\alpha}$, $\forall \, \alpha \in I$.  \\
+		Then $au \in \bigcap_{\alpha \in I} V_{\alpha}$
+	\end{enumerate}
+\item[(ii)] Let $X = \lbrace v_1 \dots v_m \rbrace$, let $\mathcal{S} \equiv $ family of all subspaces of $V$ containing $X$. 
+
+$\bigcap_{S \in \mathcal{S}} S \subseteq \langle v_1 \dots v_m \rangle$ because $\langle v_1 \dots v_m \rangle \in \mathcal{S}$, since, \\
+\qquad \, $\langle v_1 \dots v_m \rangle$ is \emph{a} subspace of $V$ containing $X$. 
+
+If $S\in \mathcal{S}$, then $S\ni v_1 \dots v_m$.  As shown above, $\forall \, v\in \langle v_1 \dots v_m \rangle$, $v\in S$, and thus $v\in \bigcap_{S\in \mathcal{S}} S$. $\langle v_1 \dots v_m \rangle \subseteq \bigcap_{S\in \mathcal{S}} S$.  
+\end{enumerate}
+	\end{proof}
+
+Were all terminology in algebra consistent, \\
+$\langle v_1 \dots v_m \rangle \equiv $ subspace \emph{generated} by $X$.  
+
+Reason for different terms is that group theory, rings, vector spaces developed independently of each other.
+
+\textbf{Example 3.72 of Rotman (2010) \cite{agat:JRotman2010}}
+\begin{enumerate}
+	\item[(i)]
+	\item[(ii)]
+	\item[(iii)] \textbf{polynomial vector space; polynomials as a vector space}.  \\
+	Vector space need not be spanned by finite list. \\
+	e.g. $V=k[x]$, \\
+	Suppose $X= f_1(x) \dots f_m(x)$ finite list in $V$. \\
+	If $d= $ largest degree of any of $f_i(x)$, \\
+	then every (nonzero) $k$-linear combination of $f_1(x), \dots f_m(x)$ has degree at most $d$. \\
+	Thus $x^{d+1} \notin \langle f_1(x) \dots f_m(x) \rangle$, so $X$ doesn't span $k[x]$
+\end{enumerate}
+
+\begin{definition}[finite-dimensional vector space; infinite-dimensional vector space]
+	Vector space $V$ is \textbf{finite-dimensional} if it's spanned by a finite list; otherwise $V$ is \textbf{infinite-dimensional}.
+\end{definition}
+
+\begin{proposition}[linear dependent span properties]
+If vector space $V$, list $X=v_! \dots v_m$ spanning $V$, following are equivalent:
+	\begin{enumerate}
+		\item[(i)] $X$ isn't shortest spanning list 
+		\item[(ii)] some $v_i$ is in subspace spanned by others, i.e. $v_i \in \langle v_i \dots \widehat{v}_i \dots v_m \rangle$, 
+		\item[(iii)]		$\exists \, a_1 \dots a_m$ not all $0$ s.t. $\sum_{l=1}^m a_l v_l = 0$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $\Longrightarrow$ (ii). If $X$ isn't shortest spanning list, then 1 of vectors in $X$ can be thrown out, and shorter list still spans, i.e. cf. Lemma \ref{agat:Lemma:smallest_subspace}(Lemma 3.71, Rotman (2010) \cite{agat:JRotman2010}); let $\mathcal{S} \equiv $ family of all subspaces of $V$ containing $X$. 
+
+EY: 20180610 
+Let $\bigcap_{S\in \mathcal{S}} S$. $\bigcap_{S \in \mathcal{S}} S \neq \langle v_1 \dots v_m \rangle$, $\bigcap_{S \in \mathcal{S}} S \subset \langle v_1 \dots v_m \rangle$ \\
+$\exists \, v \in \langle v_1 \dots v_m \rangle$, say$v= \sum_{i=1}^m a_i v_i$ s.t. $\exists \, S \in \mathcal{S}$, s.t. $v\notin S$.  
+
+(ii) $\Longrightarrow$ (iii) If $v_i = \sum_{j\neq i} c_j v_j$, define $a_i  = -1 \neq 0$, $a_j = c_j$, $\forall \, j \neq i$.  Then $\sum_{l=1}^m a_l v_l = -v_i + \sum_{j\neq i } c_j v_j = 0$
+
+(iii) $\Longrightarrow$ (i) Suppose for $i \in 1 \dots m$, $a_i \neq 0$.  $v_i = -\sum_{j\neq i} \frac{a_j}{a_i} v_j$.  $\langle v_1 \dots \widehat{v}_i \dots v_m\rangle$ still spans $V$ (i.e. deleting $v_i$ gives a shorter list, which still spans).  
+
+For instance, if $v\in \langle v_1 \dots v_m \rangle$, $v= \sum_{l=1}$
+
+
+
+
+
+	\end{proof}
+
+\exercisehead{3.67} Suppose $\text{dim}V >1$. Then $\exists \, $ at least 2 elements in a basis of $V$, say $e_1$, $e_2$. (Thm. 3.78 of Rotman (2010) \cite{agat:JRotman2010}, "Every finite-dim. vector space $V$ has a basis; Def. of $\text{dim}$, "number of elements in a basis of $V$").   
+
+Consider subspaces $\langle e_1 \rangle$, $\langle e_2 \rangle$, subspaces spanned by $e_1,e_2$, respectively. Whether $V= \langle e_1, e_2 \rangle$ or $V= \langle e_1, e_2\rangle$, $\langle e_1 \rangle , \langle e_2 \rangle \neq \lbrace 0 \rbrace$ nor $V$. Contradiction of hypothesis.  
+
+Thus, "If only subspaces of a vector space $V$ are $\lbrace 0 \rbrace$ and $V$ itself, $\text{dim}(V) \leq 1$."
+
+
+
+\begin{proposition}[Matrix representation of linear transformation; 3.94 of Rotman (2010) \cite{agat:JRotman2010}]\label{agat:Prop:MatRepofLinearTransform}
+	If linear transformation $T: k^n \to k^m$, then $\exists \,  A \in \text{Mat}_k(m,n)$ s.t. 
+	\[
+	T(y) = Ay, \qquad \  \forall \, y \in k^n
+	\]
+\end{proposition}
+
+\begin{proof}
+	Let $\begin{aligned} & (e_1\dots e_n) & \text{standard basis of $k^n$ }   \\
+	& (e_1' \dots e_m') & \text{standard basis of $k^m$ }  \end{aligned}$
+
+Define $A=[a_{ij}]$, s.t. $T(e_j) = A_{*j} = A_{ij} e_i'$ ($j$th column), 
+
+If $\begin{aligned} 
+& S:k^n \to k^m \\ 
+& S(y) = A(y) \end{aligned}$, then 
+\[
+T(e_j) = a_{ij}e_i' = Ae_j
+\]
+and so $\forall \, y = y_je_j \in k^n$, 
+\[
+T(y) = T(y_je_j) = y_j T(e_j) = y_j A_{ij}e'_i = Ay
+\]
+
+
+	\end{proof}
+
+\section{Modules}
+
+\subsection{R-modules}
+
+cf. Sec. 7.1 Modules of Rotman (2010) \cite{agat:JRotman2010}
+
+\begin{definition}[$R$-module]
+	$R$-module is (additive) abelian group $M$, \\
+	equipped with scalar multiplication $\begin{aligned} & \quad \\
+	& R \times M \to M \\
+	& (r,m) \mapsto rm \end{aligned}$ 
+	
+	s.t. $\forall \, m,m' \in M$, $\forall \, r,r',1 \in R$
+	\begin{enumerate}
+		\item[(i)] $r(m+m')=rm+rm'$
+		\item[(ii)] $(r+r')m = rm+r'm$
+		\item[(iii)] $(rr')m = r(r'm)$
+		\item[(iv)] $1m = m$
+	\end{enumerate}
+\end{definition}
+
+Example 7.1 \begin{enumerate}
+	\item[(i)] $\forall \, $ \emph{vector space} over field $k$ is a $k$-module.  (by inspection of the axioms for a vector space, associativity, distributivity!)
+	\item[(ii)] $\forall \, $ abelian group is a $\mathbb{Z}$-module, by laws of exponents (Prop. 2.23)
+	
+	Indeed, for
+	\[
+	\begin{aligned}
+	\mathbb{Z} \times M & \to M \\ 
+	(r,m) & \mapsto rm \equiv m^r 
+	\end{aligned}
+	\]
+	and so
+	\[
+	r(m\cdot m') \equiv (m\cdot m')^r = m^r (m')^r = rm + rm' 
+	\]
+	(since $M$ abelian)
+	\item[(iii)] For commutative ring, scalar multiplication, defined to be given multiplication of elements of $R$
+	\[
+	\begin{aligned}
+	R\times R & \to R \\
+	(a,b) & \mapsto ab 
+	\end{aligned}
+	\]
+	For reference, recall some of the properties of a commutative ring:
+	\[
+	\begin{aligned}
+	& ab = ba \\ 
+	& a(bc) = (ab)c \\ 
+	& 1a = a \\ 
+	& a(b+c) = ab + ac
+	\end{aligned}
+	\]
+	
+	$\forall \, $ ideal $I$ in $R$ is an $R$-module, \\
+	for if $\begin{aligned} & \quad \\
+	& i \in I \\
+	& r\in R \end{aligned}$ , then $ri \in I$.
+	
+	$0\in I$ \\
+	$\forall \, a,b \in I, \, a+b \in I$
+	
+	
+	If $a\in I$, $r\in R$, then $ra \in I$.
+	
+	
+	\item[(iv)]
+	\item[(v)] Let linear $T:V \to V$, $V$ finite-dim. vector space over field $k$.  
+	
+	Recall $k[x] \equiv $ set of polynomials with coefficients in $k$.  
+	
+	Define $\begin{aligned} & \quad \\
+	& k[x] \times V \to V \\
+	& f(x)v =\left(\sum_{i=0}^m c_i x^i\right)v =\sum_{i=0}^m c_iT^i(v) \end{aligned}$ \quad \, $\forall \, f(x) = \sum_{i=0}^m c_ix^i \in k[x]$
+	
+	$\Longrightarrow $ denote $k[x]$-module $V^T$.  
+	
+	Special case: Let $A \in \text{Mat}_k(n,n)$, let linear $\begin{aligned} & \quad \\
+	& T :k^n \to k^n \\
+	& T(w) = Aw \end{aligned}$.  
+	
+	vector space $k^n$ is $k[x]$-module if we define scalar multiplication 
+	\[
+	\begin{aligned} & \quad \\
+	& k[x] \times k^n \to k^n \\
+	& f(x)w = \left( \sum_{i=0}^m c_ix^i \right)w = \sum_{i=0}^m c_i A^i w \end{aligned}
+	\] 
+	\quad \, $\forall \, f(x) = \sum_{i=0}^m c_ix^i \in k[x]$
+	
+	In $(k^n)^T$, $xw = T(w)$ \\
+	In $(k^n)^A$, $xw = Ax $ \\
+	$T(w) = Ax$ and so $(k^n)^T = (k^n)^A$  (EY : 20151015 because of induction?)
+\end{enumerate}
+
+
+\begin{definition}[R-homomorphism (or R-map)]
+If ring $R$, $R$-modules $M,N$, then \\
+function $f: M\to N$, \\
+if $\forall \, m, m' \in M$, $\forall \, r\in R$, 
+\[
+\begin{gathered}
+	f(m+m') = f(m) + f(m') \\ 
+f(rm) = rf(m)
+\end{gathered}
+\]
+\end{definition}
+
+Example 7.2. of Rotman (2011) on pp. 425 \cite{agat:JRotman2010}] 
+
+\begin{enumerate}
+	\item[(i)] If $R$ field, then $R$-modules are vector spaces and $R$-maps are linear transformations.  Isomorphisms are then nonsingular linear transformations.  
+	\item[(ii)] 
+	\item[(iii)]
+	\item[(iv)]
+	\item[(v)] Let linear $T:V \to V$, let $v_1 \dots v_n$ be basis of $V$, let $A$ be matrix of $T$ relative to this basis.  
+	
+	Let $e_1 \dots e_n$ be standard basis of $k^n$.  \\
+	Define $\begin{aligned} & \quad \\
+	& \varphi : V \to k^n \\
+	& \varphi(v_i) = e_i \end{aligned}$
+	
+	\[
+	\begin{aligned}
+	& \varphi(xv_i) = \varphi(T(v_i)) = \varphi(v_j a_{ji} ) = a_{ji} \varphi(v_j) = a_{ji}e_j \\
+	& x\varphi(v_i) = A\varphi(v_i) = Ae_i
+	\end{aligned}
+	\]
+	$\Longrightarrow \varphi(xv) = x\varphi(v) \quad \, \forall \, v \in V$
+	
+	By induction on $\deg{f}$, $\varphi(f(x)v) = f(x) \varphi(v)$ \quad \, $\forall \, f(x) \in k[x]$ \quad \, $\forall \, v \in V$ 
+	
+	$\Longrightarrow \varphi$ is $k[x]$-map \\
+	$\Longrightarrow \varphi$ is $k[x]$-isomorphism of $V^T$ and $(k^n)^A$.  
+	
+\end{enumerate}
+
+
+\begin{proposition}[7.3 of Rotman (2011) \cite{agat:JRotman2010}]\label{agat:Prop:kxmoduleisomorphism}
+	Let vector space over field $k$, $V$, let linear $T,S : V \to V$ \\
+	Then $k[x]$-modules $V^T, V^S$ are $k[x]$-isomorphic iff $\exists \, $ vector space isomorphism $\varphi : V \to V$ s.t. $S = \varphi T \varphi^{-1}$.  
+\end{proposition}
+
+\begin{proof}
+	If $\varphi:V^T \to V^S$is a $k[x]$-isomorphism, 
+	\[
+	\varphi(f(x)v) = f(x)\varphi(v) \quad \, \forall \, v \in V , \, \forall \, f(x) \in k[x]
+	\]
+	if $f(x)=x$, then $\varphi(xv) = x\varphi(v)$
+	\[
+	\begin{aligned}
+	& xv = T(v) \\ 
+	& x\varphi(v) = S(\varphi(v)) \\ 
+	\Longrightarrow & \varphi \circ T(v) = S \circ \varphi(v) \Longrightarrow \varphi \circ T = S \circ \varphi 
+	\end{aligned}
+	\]
+	$\varphi$ isomorphism, so $S = \varphi \circ T \circ \varphi^{-1}$
+	
+	Conversely, if given isomorphism $\varphi: V \to V$ s.t. $S = \varphi T \varphi^{-1}$, then $S\varphi = \varphi T$.  
+	\[
+	S\varphi(v) = \varphi T(v) = \varphi(xv) = x\varphi(v)
+	\]
+	Then by induction, $\varphi(x^nv) = x^n\varphi(v)$ (for $S^n\varphi(v) = x^n\varphi(v) = (\varphi T \varphi^{-1})^n \varphi(v) = \varphi T^n v = \varphi(x^nv)$).  \\
+	By induction on $\deg{(f)}$, $\varphi(f(x)v) = f(x)\varphi(v)$.  
+	
+	
+\end{proof}
+
+
+
+\begin{corollary}[7.4 of Rotman (2011) \cite{agat:JRotman2010}] 
+	Let $k$ be a field, \\
+	Let $A,B \in \text{Mat}_k(n,n)$.  \\
+	Then $k[x]$-modules $(k^n)^A$, $(k^n)^B$ are $k[x]$-isomorphic.  
+	
+	(recall, $k[x]\equiv $ set of polynomials with coefficients in $k = \lbrace \sum_{i=0}^m c_ix^i | c_i \in k \rbrace$, and define scalar multiplication 
+	\[
+	\begin{aligned}
+		& k[x] \times k^n \to k^n \\
+		& f(x) w = \left( \sum_{i=0}^m c_i x^i \right) w = \sum_{i=0}^m c_iA^i w, \qquad \  \forall \, f(x) = \sum_{i=0}^m c_i x^i \in k[x] 
+	\end{aligned}
+	\]
+	)
+	
+	iff $\exists \, $ nonsingular $P$ with 
+	\[
+	B=PAP^{-1}
+	\]
+	
+	\end{corollary}
+
+\begin{proof}
+	Define 
+	
+	$\begin{aligned} & T:k^n \to k^n \\
+	& T(y) = A(y) \end{aligned}$
+where $y\in k^n $ is a column.  
+
+By Example 7.1 (v) of Rotman (2011)  \cite{agat:JRotman2010}, recall, 
+
+and so for $k[x]$-module, $(k^n)^T = (k^n)^A$.  
+
+Similarly, define 
+\[
+\begin{aligned} 
+	& S: k^n \to k^n  \\
+	& S(y) = B(y) 
+	\end{aligned}
+	\]
+	Denote corresponding $k[x]$-module by $(k^n)^B$.  
+	
+	Given $(k^n)^A \cong (k^n)^B$ (isomorphic), by Prop. \ref{agat:Prop:kxmoduleisomorphism}, \\
+	$\exists \, $ isomorphism $\varphi :k^n \to k^n$ s.t. $B=\varphi A \varphi^{-1}$.  
+
+By Prop. \ref{agat:Prop:MatRepofLinearTransform}, i.e. Prop. 3.94 of Rotman (2011)  \cite{agat:JRotman2010}, in that every linear transformation has a matrix representation (even in the standard "Euclidean" basis), $\exists \,  P \in \text{Mat}_{k}(n,n)$, s.t. 
+\[
+\varphi(y) = Py \qquad \  y\in k^n
+\]
+($P$ nonsingular because $\varphi$ isomorphism)
+
+Thus, 
+\[
+\begin{aligned}
+& B\varphi(y) = \varphi A(y)  \\ 
+& BPy = P(Ay) \qquad \  \forall \, y \in k^n  \\
+\Longrightarrow & PA = BP \text{or } B= PAP^{-1}
+\end{aligned}
+\]
+
+Conversely, given $B=PAP^{-1}$, $P$ nonsingular matrix,  \\
+define isomorphism 
+\[
+\begin{aligned}
+& \varphi :k^n \to k^n \\ 
+& \varphi(y) = Py \qquad \  \forall \, y \in k^n
+\end{aligned}
+\]
+
+By Prop. \ref{agat:Prop:kxmoduleisomorphism}, \\
+$(k^n)^B$, $(k^n)^A$ are $k[x]$-isomorphic.  \\
+i.e. $\varphi : (k^n)^A \to (k^n)^B $ is a $k[x]$-module isomorphism.  
+
+
+	\end{proof}
+
+\begin{definition}[$\text{Hom}_R(M,N)$]
+\begin{equation}
+\text{Hom}_R(M,N) = \lbrace \text{ all $R$-homomorphisms $M\to N$ } \rbrace = \lbrace f | f:M\to N , \text{ s.t. } \forall \, m,m' \in M, \, \forall \, r \in R, \begin{aligned} & f(m+m') =f(m) + f(m') \\ & f(rm) = rf(m) \end{aligned} \rbrace
+\end{equation}
+If $f,g \in \text{Hom}_R(M,N)$, \\
+define
+\begin{equation}
+\begin{aligned}
+& f+g:M \to N \\
+& f+g:m\mapsto f(m) + g(m)
+\end{aligned}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[$\text{Hom}_R(M,N)$ $R$-module, 7.5 of Rotman (2011)  \cite{agat:JRotman2010}]
+	If $M,N$ $R$-modules, where $R$ commutative ring, \\
+	then $\text{Hom}_R(M,N)$ $R$-module, \\
+	with addition 
+	\[
+	\begin{aligned}
+	& f+g: M\to N \qquad \  \forall \, f,g \in \text{Hom}_R(M,N) \\
+	& f+g:m\mapsto f(m) + g(m)
+	\end{aligned}
+	\]
+and scalar multiplication 
+\[
+rf:m \mapsto f(rm)
+\]
+	Moreover, distributive laws: \\
+	If $p:M'\to M$, $q:N\to N'$, then 
+	\[
+	(f+g)p = fp+gp \text{ and } q(f+g) = qf + qg
+	\]
+$\forall \, f,g \in \text{Hom}_R(M,N)$	
+	
+	
+	
+\end{proposition}
+
+\begin{proof}
+	$\forall \, f,g \in \text{Hom}_R(M,N)$, $\forall \, r,r', 1 \in R$, 
+	\begin{enumerate}
+		\item[(i)] 
+		\[
+		r(f+g)(m) = (f+g)(rm) = f(rm) + g(rm) = rf(m) + rg(m) = (rf+rg)(m) 
+		\]
+		\item[(ii)]
+		\[
+		(r+r')f(m) = f((r+r')m) = f(rm+r'm) = f(rm) + f(r'm) = (rf+ r'f)(m)
+		\]
+		\item[(iii)]
+		\[
+		(rr')f(m) = f(rr'm) = rf(r'm) = f(r'rm) = f(rr'm) \Longrightarrow (rr')f = r(r'f)
+		\]
+		\item[(iv)]
+		\[
+		1f(m) = f(1m) = f(m) \Longrightarrow 1f =f
+		\]
+	\end{enumerate}
+	\end{proof}
+
+
+
+\begin{definition}
+	if $R$-module $M$, the submodule $N$ of $M$, denoted $N\subseteq M$, is additive subgroup $N$ of $M$, \\
+	closed under scalar multiplication $rn \in N$ whenever $n\in N$, $r\in R$
+\end{definition}
+
+
+
+
+\begin{definition}[quotient module $M/N$] \qquad \, \\ 
+\textbf{quotient module} $M/N$  -
+
+For submodule $N$ of $R$-module $M$, then, \\
+remember $M$ abelian group, $N$ subgroup, \\
+quotient group $M/N$ equipped with scalar multiplication 
+\[
+\begin{gathered}
+	r(m+N) = rm+N \\ 
+M/N = \lbrace m +N | m \in M \rbrace
+\end{gathered}
+\]
+\textbf{natural map} 
+\begin{equation}
+\begin{aligned}
+& \pi : M \to M /N \\ 
+& m\mapsto m + N 
+\end{aligned}
+\end{equation}
+easily seen to be $R$-map.  
+
+Scalar multiplication in quotient module well-defined: \\
+If $m+N=m'+N$, $m-m' \in N$, so $r(m-m') \in N$ (because $N$ submodule), so 
+\[
+rm - rm' \in N \text{ and } rm+ N = rm' +N
+\]
+
+
+\end{definition}
+
+
+\begin{proposition}[7.15 of Rotman (2010) \cite{agat:JRotman2010}]  
+\begin{enumerate}
+\item[(i)] $S \bigsqcup T \simeq M$ 
+\item[(ii)] $\exists \, $ injective $R$-maps $\begin{aligned} & \quad \\ 
+	& i : S\to M \\ 
+& j :T \to M \end{aligned}$, s.t. 
+
+\begin{equation}
+\begin{gathered} 
+M = \text{im}(i) + \text{im}(j)  \text{ and } \\ 
+\text{im}(i) \bigcap \text{im}(j) = \lbrace 0 \rbrace  
+\end{gathered}
+\end{equation}
+\item[(iii)] $\exists \, $ R-maps 
+\[
+\begin{aligned}
+	& i : S\to M \\ 
+	& j : T\to M 
+\end{aligned}
+\]
+s.t. $\forall \, m \in M$, $\exists \, !$ 
+\[
+\begin{aligned}
+	& s \in S \\ 
+	& t \in T 
+\end{aligned}
+\] with $m=is + jt$.  
+\item[(iv)] $\exists \, $ R-maps 
+\[
+\begin{gathered}
+\begin{aligned}  & i: S\to M \\ 
+& j:T \to M \end{aligned} \qquad \, \begin{aligned}
+& p : M \to S \\ 
+& q : M \to T \end{aligned}
+\end{gathered}
+\]
+s.t. 
+\[
+\begin{gathered}
+	\begin{aligned}
+	& pi = 1_S \\ 
+& qj = 1_T 
+\end{aligned} \qquad \ , \begin{aligned}
+	& pj = 0  \\
+	& qi = 0 
+\end{aligned} \qquad \, ip + jq = 1_M
+\end{gathered}
+\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{itemize}
+\item (i)$\to$ (ii)  Given $S \bigsqcup T \simeq  M$,  \\ 
+ let $\varphi : S \bigsqcup T \to   M$ be this isomorphism.  
+
+Define
+\[
+\begin{aligned}
+	& i:= \varphi \lambda_S \qquad \, & (\lambda_S : s\mapsto (s,0)) \qquad \, & i :S \to M \\ 
+	& j:= \varphi \lambda_T \qquad \, & (\lambda_T : t\mapsto (0,t)) \qquad \, & j :T \to M 
+\end{aligned}
+\]
+$i,j$ are injections, being composites of injections.  
+
+If $m\in M$, $\exists \, ! \, (s,t) \in S\bigsqcup T$, s.t. $\varphi(s,t)=m$.  
+
+Then 
+\[
+m = \varphi(s,t) = \varphi((s,0) + (0,t)) = \varphi\lambda_S(s)  \varphi \lambda_T(t) = is + jt \in \text{im}(i) + \text{im}(j)
+\]
+
+Let $c\in \text{im}(i) + \text{im}(j)$.  Since $\begin{aligned}  & \quad \\ 
+	& i : S\to M \\
+& j : T \to M \end{aligned}$, $c\in M$.  
+
+$\Longrightarrow M = \text{im}(i) + \text{im}(j)$.  
+
+
+
+If $x\in \text{im}(i) \bigcap \text{im}(j)$, 
+\[
+\begin{aligned}
+	& x = i(s) \text{ for some } s\in S \\ 
+		& x = j(t) \text{ for some } t\in T  
+\end{aligned}
+\]
+
+\[
+\begin{gathered}
+	is=jt = \varphi \lambda_S(s) = \varphi \lambda_T(t) = \varphi(s,0) = \varphi(0,t) 
+\end{gathered}
+\]
+$\varphi$ isomorphism, so $\exists \, \varphi^{-1}$ $\Longrightarrow (s,0) = (0,t)$, so $s=t=0$.  $x=0$  
+\item (ii)$\to $ (iii) Given $\begin{aligned} & \quad \\ & i:S\to M \\ & j:T\to M \end{aligned}$, s.t. $M= \text{im}(i) + \text{im}(j)$, so \\
+
+$\forall \, m \in M$, $m=i(s) + j(t)$ for some $s\in S,t\in T$.  
+
+Suppose $\begin{aligned} & \quad \\ 
+	& s' \in S \\
+& t' \in T \end{aligned}$, s.t. $m=i(s'_ + j(t')$.  
+\[
+i(s-s') = j(t-t') \in \text{im}(i) \bigcap \text{im}(j) = \lbrace 0 \rbrace
+\]
+So $s=s',t=t'$, since $i,j$ injective.  
+\item (iii)$\to$ (iv)   
+
+Given $\forall \, m \in M$, $\exists \, ! \, s\in S,t\in T$ s.t. 
+\[
+m=i(s) + j(t)
+\]
+Define 
+\[
+\begin{aligned}
+	& p:M \to S \\ 
+	& p(m) := s
+\end{aligned} \qquad \, \begin{aligned}
+	& q: M \to T \\ 
+	& q(m) := t
+\end{aligned}
+\]
+\[
+\begin{aligned}
+	& pi(s) = s \\ 
+	& qj(t) = t 
+\end{aligned} \qquad \, \begin{aligned}
+& pj(t) =0  \\
+& qi(s) = 0 \end{aligned} \qquad \, 
+(ip+jq)(m) = ip(m) + jq(m) = i(s) + j(t) = m 
+\]
+\end{itemize}
+\end{proof}
+
+\subsection{Vector Spaces as a Module}
+
+Lang made the key insight on vector spaces as a whole in Sec 5. "Vector Spaces" in pp. 139-140 of Lang (2005) \cite{agat:Lang2005}: 
+
+\begin{theorem}[Existence of a basis for vector spaces, Thm. 5.1 Lang (2005) \cite{agat:Lang2005}]\label{agat:Thm:ExistenceOfBasisForVectorSpaces}
+	Let $V$ be a vector space over a field $K$, assume $V \neq \lbrace 0 \rbrace$. 
+	
+	Let $\Gamma$ be a set of generators of $V$ over $K$ and let $S$ be a subset of $\Gamma$ which is linearly independent. 
+	
+	Then $\exists \, $ basis $\mathcal{B}$ of $V$ s.t. $S \subset \mathcal{B} \subset \Gamma$.
+
+\end{theorem}
+	
+Indeed, while this wikipedia article \footnote{\url{https://en.wikipedia.org/wiki/Vector_space}} on Vector space does a good job generalizing the properties defining a vector in a vector space, a vector's properties is separate from what \emph{characterizes} a vector space. Here, we can \emph{specify} a vector space by its generators, and furthermore, from Thm. \ref{agat:Thm:ExistenceOfBasisForVectorSpaces}, it has a basis that characterizes a vector space. This can be useful for implementation in C++.
+
+\section{Vector Spaces}
+
+cf. Ch. 11, "Vector Spaces" pp. 408, Dummit and Foote \cite{agat:DuFo2003}
+
+\begin{center}
+\begin{tabular}{l | l }
+\textbf{Terminology for $R$ any Ring} & \textbf{Terminology for $R$ a Field } \\
+\hline
+$M$ is an $R$-module & $M$ is a vector space over $R$ \\
+$m$ is an element of $M$ & $m$ is a vector in $M$ \\
+$\alpha$ is a ring element & $\alpha$ is a scalar \\
+$N$ is a submodule of $M$ & $N$ is a subspace of $M$ \\
+$M/N$ is a quotient module & $M/N$ is a quotient space \\
+$M$ is a free module of rank $n$ & $M$ is a vector space of dimension $n$ \\
+$M$ is a finitely generated module & $M$ is a finite dimensional vector space \\
+$M$ is a nonzero cyclic module & $M$ is a 1-dimensional vector space \\
+$\varphi : M \to N$ is a $R$-module homomorphism & $\varphi : M \to N$ is a linear transformation \\
+$M$ and $N$ are isomorphic as $R$-modules & $M$ and $N$ are isomorphic vector spaces \\
+the subset $A$ of $M$ generates $M$ & the subset $A$ of $M$ spans $M$ \\
+$M = RA$ & each element of $M$ is a linear combination of elements of $A$ i.e., $M=\text{Span}(A)$
+\end{tabular} 
+\end{center}
+cf. pp. 408, 11.1 "Definitions and Basic Theory", Dummit and Foote \cite{agat:DuFo2003}
+
+Vector spaces are free $F$-modules, i.e. vector spaces have bases.  \\
+
+\emph{Examples}:
+
+\begin{enumerate}
+	\item Space $V= F[x]$ of polynomials in the variable $x$ with coefficients from field $F$ is a vector space over $F$. elements $1,x,x^2, \dots $ are linearly independent by def. (i.e. polynomial is $0$ iff all its coefficients are $0$). Since these elements also span $V$, by def., they're a basis for $V$ (basis of vector space $V$ is ordered set of linearly independent vectors which span $V$)
+	\item Collection of solutions of a linear, homogeneous, constant coefficient differential equation (e.g. $y'' - 3y' + 2y = 0$) over $\mathbb{C}$ form a vector space over $\mathbb{C}$, since differentiation is a linear operator. \\
+ 	e.g. $e^t, e^{2t}$ are linearly independent ($ae^t + be^{2t} =0$, then so $a+b =0 \, (t=0)$, $ae + be^2 = 0 \, (t=1) \Longrightarrow a=b=0$) \\
+ 	By Thm. in differential eqns. that these elements span set of solutions of this eqn., hence form a basis.
+\end{enumerate}
+
+\begin{proposition}[1, Dummit and Foote \cite{agat:DuFo2003}]
+	Assume set $\mathcal{A} = \lbrace v_1, v_2 , \dots v_n \rbrace$ spans vector space $V$ but no proper subset of $\mathcal{A}$ spans $V$. Then $\mathcal{A}$ basis of $V$. In particular, any finitely generated (finitely spanned) vector space over $F$ is a free $F$-module.
+\end{proposition}
+
+\begin{proof}
+\emph{Want}: $v_1, v_2, \dots v_n$ linearly independent. \\
+
+Suppose $\sum_{i=1}^n \alpha_i v_i = 0$ s.t. not all $\alpha_i = 0$. \\
+
+By reordering, assume $\alpha_1 \neq 0$ and then $v_1 = \frac{-1}{\alpha_1} (\alpha_2 v_2 + \dots + \alpha_n v_n)$. \\
+Then $\lbrace v_2, v_3, \dots v_n \rbrace$ also spans $V$ since any linear combination of $v_1, v_2, \dots v_n$ can be written as a linear combination of $v_2, v_3, \dots v_n$ using $v_1 = \frac{-1}{\alpha_1} (\alpha_2 v_2 + \dots + \alpha_n v_n)$. Contradiction.	
+	
+\end{proof}
+
+
+\emph{Example}. 
+
+Let $F$ be a field, consider $F[x]/(f(x))$ where $f(x) = x^n + \sum_{j=0}^{n-1} a_j x^j$ \\
+ideal $(f(x))$ is a subspace of vector space $F[x]$, quotient $F[x]/(f(x))$ is a vector space over $F$. \\
+
+By Euclidean Algorithm, $\forall \, $ polynomial $a(x) \in F[x]$ can be written uniquely in form
+\[
+a(x) = q(x) f(x) + r(x)
+\]
+where $r(x) \in F[x]$, and $0\leq \text{deg}{r(x)} \leq n -1$ \\
+Since $q(x) f(x) \in (f(x))$, it follows $\forall\, $ element of quotient is represented by polynomial $r(x)$ of degree $\leq n - 1$ \\
+2 distinct such polynomials cannot be the same in the quotient since this would say their difference (which is a polynomial of degree at most $n-1$) would be divisible by $f(x)$ (which is of degree $n$), i.e. 
+\[
+f(x) = x^n + \sum_{j=1}^{n-1} a_j x^j
+\]
+$\forall \, a(x) \in F[x]$, $a(x) = q(x) f(x) + r(x)$, $q(x) f(x) \in (f(x))$ (ideal) \\
+
+Consider $r_1(x)$, $\text{deg}(r_1(x)) = n_1 \leq n -1$, $\text{deg}(r_2(x)) = n_2 \leq n -1$. \\
+If $a_1(x), a_2(x) \in F[x]$, $\begin{aligned} 
+& \quad \\ 
+a_1(x) & = q_1(x) f(x) + r_1(x) \\ 
+a_2(x) & = q_2(x) f(x) + r_2(x) \end{aligned}$  $a_1(x) - a_2(x) = (q_1(x) - q_2(x)) f(x) + (r_1(x) - r_2(x))$.
+
+If $r_1(x) = r_2(x)$, then $a_1(x) - a_2(x) = (q_1(x) - q_2(x)) f(x)$, so $a_1(x) - a_2(x)$ divisible by $f(x)$.
+
+$\Longrightarrow \overline{1}, \overline{x}, \overline{x^2} , \dots \overline{x^{n-1}}$ (bar denotes image of these elements in the quotient) span $F[x]/f(x)$, as vector space over $F$. \\
+No proper subset of these elements also spans, hence elements give basis for $F[x]/(f(x))$.
+
+
+
+
+
+\section{Categories; Category Theory}  
+
+\subsection{Categories}
+
+cf. 7.2 Categories of Rotman (2010) \cite{agat:JRotman2010}
+
+\subsubsection{Russell paradox, Russell set}  
+
+\begin{definition}[Russell set]
+Russell set  - set $S$ that's not a member of itself, i.e. $S\notin R$
+\end{definition}
+
+If $R$ is family of all Russell sets,  \\
+Let $X\in R$.  Then $X\notin X$.  But $X\in R$.  $X\notin R$.  \\
+Let $R\notin R$.  Then $R$ in family of Russell Sets.  $R\in R$.  Contradiction.  
+
+Then consider \emph{class} as primitive term, instead of set.  
+
+\begin{definition}[Category]
+Category $\mathcal{C}$ (Rotman's notation) $\equiv \mathbf{C}$ (my notation), consists of class $\text{obj}(\mathcal{C})$ (Rotman's notation) $\equiv \text{Obj}(\mathbf{C}) \equiv \text{Obj}\mathbf{C}$ (my notation) of objects, set of  morphisms $\text{Hom}(A,B)$ $\forall \,  (A,B)$ of ordered tuples of objects, composition 
+\[
+\begin{gathered} 
+	\text{Hom}(A,B)\times \text{Hom}(B ,C) \to \text{Hom}(A,C) \\
+(f,g)\mapsto gf \end{gathered}
+\], s.t.
+\begin{enumerate}
+\item $\exists \, \mathbf{1}$, $\forall \, f:A\to B$, $\exists \, \begin{aligned} & \quad \\ 
+1_A : A \to A \\
+1_B : B \to B \end{aligned}$, s.t. $1_B \cdot f = f= f\cdot 1_A$, and 
+\item associativity, $\forall \, \begin{aligned} & \quad \\
+& f : A\to B \\
+& g: B\to C \\
+& h: C\to D \end{aligned}$, then $h\circ (g\circ f) = (h\circ g) \circ f$ 
+\end{enumerate}
+
+In summary, 
+\begin{equation}
+	\mathbf{C} := (\text{Obj}(\mathbf{C}), \text{Mor}\mathbf{C}, \circ, \mathbf{1}) \equiv (\text{Obj}\mathbf{C}, \text{Mor}\mathbf{C}, \circ_{\mathbf{C}}, \mathbf{1}_{\mathbf{C}})
+\end{equation}
+s.t. 
+\[
+\text{Mor}\mathbf{C} = \bigcup_{A,B \in \text{Obj}\mathbf{C}} \text{Hom}(A,B)
+\]
+\end{definition}
+
+Examples (7.25 of Rotman (2010)\cite{agat:JRotman2010}): 
+\begin{enumerate}
+\item[(i)] $\mathbf{C} = \mathbf{\text{Sets}}$  
+\item[(ii)] $\mathbf{C} = \mathbf{\text{Groups}} = \mathbf{\text{Grps}}$ 
+\item[(iii)]  $\mathbf{C} = \mathbf{\text{CommRings}}$
+\item[(iv)]  $\mathbf{C} = {}_R\textbf{Mod}$, if $R=\mathbb{Z}$, ${}_{\mathbb{Z}}\textbf{Mod} = \textbf{Ab}$, i.e. $\mathbb{Z}-$modules are just abelian groups.   
+\item[(v)] $\mathbf{C} =\textbf{PO}(X)$, If partially ordered set $X$, regard $X$ as category, s.t. $\textbf{Obj}, \textbf{PO}(X) = \lbrace x | x\in X\rbrace$, $\forall \, \text{Hom}(x,y) \in \textbf{Mor}_{\textbf{PO}}(X)$, $\text{Hom}(x,y) = \begin{cases} \emptyset & \text{ if } x \npreceq y \\  \kappa_y^x & \text{ if } x \preceq y   \end{cases}$ where $\kappa_y^x \equiv $ unique element in $\text{Hom}$ set when $x \preceq y$) s.t. 
+\[
+\kappa_z^y \kappa_y^x  =\kappa_z^x
+\]
+Also, notice that 
+\[
+1_x = \kappa_x^x
+\]
+\end{enumerate}
+
+\begin{definition}[isormorphisms or equivalences]
+$f:A\to B$, $f\in \text{Hom}(A,B)$, if $\exists \, $ \textbf{inverse} $g:B\to A$, $g\in \text{Hom}(B,A)$, s.t. 
+\[
+\begin{aligned}
+& gf = 1_A \\ 
+& fg = 1_B
+\end{aligned}
+\]
+and if $\mathbf{C} = \textbf{Top}$, equivalences (isomorphisms) are homeomorphisms.  
+\end{definition}
+
+Feature of category ${}_R\textbf{Mod}$ not shared by more general categories: \emph{Homomorphisms can be added.}
+
+\begin{definition}[pre-additive Category]
+category $\mathbf{C}$
+\end{definition}  
+
+
+
+
+
+
+
+
+We can force 2 overlapping subsets $A,B$ to be disjoint by ``disjointifying'' them: e.g. consider $(A\cup B) \times \lbrace 1,2 \rbrace$, consider $\begin{aligned} & \quad \\
+& A' = A\times \lbrace 1 \rbrace \\
+& B' = B\times \lbrace 2 \rbrace \end{aligned}$.
+
+\[
+\Longrightarrow A' \cap B' = \emptyset 
+\]
+since $(a,1) \neq (b,2)$ \, $\forall \, a \in A$, $\forall \, b \in B$.
+
+Let bijections $\begin{aligned} & \quad \\
+& \alpha : A \to A' \\
+& \beta : B \to B' \end{aligned}$, \qquad \, $\begin{aligned} & \quad \\
+& \alpha : a \mapsto (a,1) \\
+& \beta : b\mapsto (b,2) \end{aligned}$, denote $A'\bigcup B' \equiv A \coprod B$.
+
+From Rotman (2010) \cite{agat:JRotman2010}, pp. 447,
+\begin{definition}
+	\textbf{coproduct} $A \coprod B \equiv C \in \text{Obj}(\mathcal{C})$
+\end{definition}
+
+In my notation,
+
+\textbf{coproduct}
+\begin{equation}
+\begin{aligned}
+& (\mu_1 , A_1 \coprod A_2 ) \\ 
+& (\mu_2 , A_1 \coprod A_2 ) 
+\end{aligned}
+\end{equation}
+where injection (morphisms)
+\begin{equation}
+\begin{aligned}
+& \mu_1 : A_1 \to A_1 \coprod A_2 \\ 
+& \mu_2 : A_1 \to A_1 \coprod A_2 
+\end{aligned}
+\end{equation}
+s.t.
+\[
+\forall \, A \in \text{Obj}\mathbf{A}, \, \forall \, f_1 ,f_2 \in \text{Mor}\mathbf{A} \text{ s.t. } \begin{aligned} & \quad \\
+& f_1 : A_1 \to A \\
+& f_2 : A_2 \to A \end{aligned}
+\]
+then
+\begin{equation}
+\begin{gathered}
+\exists \, ! [ f_i ] \equiv [f_1, f_2 ] \in \text{Mor} \mathbf{A}, \, [f_1, f_2] : A_1 \coprod A_2 \to A \text{ s.t. } \\ 
+\begin{aligned}
+& [f_1,f_2] \mu_1 = f_1 \\ 
+& [f_1,f_2] \mu_2 = f_2 \\
+\end{aligned}
+\end{gathered}
+\end{equation}
+i.e. 
+\begin{equation}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  \\ 
+	A_1  &  A_1 \coprod A_2   \\
+	A_2 & \\
+};
+\path[->]
+(m-2-1) edge node [above] {$f_1$} (m-1-2)
+edge node [above] {$\mu_1$} (m-2-2)
+(m-3-1) edge node [right] {$f_2$} (m-1-2)
+edge node [below] {$\mu_2$} (m-2-2)
+;
+\path[dashed,->]
+(m-2-2) edge node [right] {$[f_1,f_2]$} (m-1-2)
+;
+\end{tikzpicture}
+\end{gathered}
+\end{equation}
+
+So to generalized, for $i\in I$, (finite set $I$?)
+
+\textbf{coproduct} $(\mu_j, \coprod_{i\in I} A_i)_{j\in I}$, where \\
+(family of) injection (morphisms) $\mu_j : A_j \to \coprod_{i \in I } A_i$
+
+s.t.
+
+\[
+\forall \, A \in \text{Obj}\mathbf{A}, \, \forall \, f_i \in \text{Mor}\mathbf{A}, \, i \in I, \, f_i : A_i \to A
+\]
+then
+\begin{equation}
+\begin{gathered}
+\exists \, ! \, [f_i ] \equiv [f_i]_{i\in I} \in \text{Mor}\mathbf{A} , \, [f_i] : \coprod_{i\in I} A_i \to A \text{ s.t. } \\ 
+[f_i] \mu_j = f_j \qquad \, \forall \, j \in I
+\end{gathered}
+\end{equation}
+i.e.
+
+\begin{equation}
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& A  \\ 
+	A_j  & \coprod_{i\in I} A_i   \\
+};
+\path[->]
+(m-2-1) edge node [above] {$f_j$} (m-1-2)
+edge node [above] {$\mu_j$} (m-2-2)
+;
+\path[dashed,->]
+(m-2-2) edge node [right] {$[f_i]$} (m-1-2)
+;
+\end{tikzpicture} 
+\end{gathered}
+\end{equation}
+
+
+
+For notation purposes only, recall that it's denoted the sets $\text{Hom}(A,B)$ in ${}_R\textbf{Mod}$ by
+\[
+\text{Hom}_R(A,B)
+\]
+i.e., in my notation, for $A,B \in \text{Obj}{ {}_R \textbf{Mod}}$, $\text{Hom}(A,B) \subset \text{Mor}( {}_R\textbf{Mod})$, $\text{Hom}(A,B) \equiv \text{Hom}_R(A,B)$
+
+\begin{definition}[pre-additive category] 
+	category $\mathbf{C}$ is \textbf{pre-additive} if $\forall \,  \text{Hom}(A,B)$, $\text{Hom}(A,B)$ equipped with binary operation $+$ s.t. $\forall \, f,g  \in \text{Hom}(A,B)$, 
+	\begin{enumerate}
+		\item if $p: B\to B'$, then 
+		\[
+		p(f+g) = pf + pg \in \text{Hom}(A,B')
+		\]
+		\item if $q: A'\to A$, then 
+		\[
+		(f+g)q = fq + gq \in \text{Hom}(A',B)
+		\]
+		and 
+		\[
+		f+g= g+f \qquad \, \text{ (additive abelian) }
+		\] 
+	\end{enumerate}
+\end{definition}
+
+\subsubsection{Examples of extra assumptions on sets, ${}_R\textbf{Mod}$ we take for granted}
+
+In Prop. 7.15(iii) Rotman (2010) \cite{agat:JRotman2010}, \\
+direct sum $M=A\oplus B$ if $\exists \, $ homomorphisms $\begin{aligned} & \quad \\
+& p:M\to A \\
+& q:M\to B \\
+& i:A\to M \\
+& j:B\to M \end{aligned}$ s.t. $\begin{aligned} & \quad \\
+& pi = 1_A \\
+& qj = 1_B \\ 
+& pj = 0 \\ & qi = 0 \end{aligned}$, 
+\[
+ip + jq = 1_M
+\]
+direct sum $M = A\oplus B$ uses property that morphisms can be added ${}_R\textbf{Mod}$ has this property. $\textbf{Sets}$ don't.  
+
+In Corollary 7.17, \\
+direct sum in terms of arrows, \\
+$\exists \, $ map $\rho:M \to S$ s.t. $\rho(s)=s$.  Moreover $\text{ker}\rho = \text{im}j$, $\text{im}\rho = \text{im}i$ and $\rho(s)=s$, \, $\forall \, s \in \text{im}\rho$.  
+
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	S & M & T \\ 
+};
+\path[->]
+(m-1-1) edge node [above] {$i$} (m-1-2)
+(m-1-3) edge node [above] {$j$} (m-1-2)
+;
+\end{tikzpicture} 
+and $M\simeq S \coprod T$, \\
+where $\begin{aligned} & \quad \\
+& i: s \mapsto s \\ 
+& j : t \mapsto t \end{aligned}$ (i.e. inclusions)
+
+This makes sense in $\textbf{Sets}$, but doesn't make sense in arbitrary categories because image of morphism may fail, e.g. $\text{Mor}(\mathcal{C}(G))$ are elements in $\text{Hom}(*,*) =G$, not functions.  
+
+Categorically, object $S$ is (equivalent to) retract of object $M$, $S,M \in \text{Obj}\mathbf{C}$, if $\exists \, $ morphisms $i,p\in \text{Mor}(\mathbf{C})$, s.t. 
+\[
+\begin{aligned}
+& i: S\to M \\
+& p:M \to S 
+\end{aligned}
+\]
+s.t. $pi=1_S$, $(ip)^2=ip$ (for modules, define $\rho = ip$)
+
+\begin{definition}[free products]
+	\textbf{free products} are coproducts in groups
+\end{definition}
+
+Prop. 7.26, Rotman (2010) \cite{agat:JRotman2010}
+\begin{proposition}[7.26, Rotman]
+	If $A,B$ are $R$-modules, \\
+	then their coproducts in ${}_R\textbf{Mod}$ exists, and it's the direct sum $C= A\coprod B$.  
+\end{proposition}
+
+\begin{proof}
+	Define 
+	\[
+	\begin{gathered}
+	\begin{aligned}
+	& \mu : A \to C \\
+	& \mu : a \mapsto (a,c)
+	\end{aligned}
+	\qquad \, 
+	\begin{aligned}
+	& \nu : B \to C \\
+	& \nu : b \mapsto (0,b)
+	\end{aligned} \qquad \, \text{ (Rotman's notation) } \begin{aligned}
+	& \alpha : A \to C \\
+	& \beta : B\to C 
+	\end{aligned}
+	\end{gathered}
+	\]
+	Let $X$ be a module, $f:A\to X$, $g:B\to X$ homomorphisms
+\end{proof}
+
+Define 
+\[
+\begin{aligned}
+& \theta : C \to X \\ 
+& \theta: (a,b) \mapsto f(a) + g(b)
+\end{aligned}
+\]
+\[
+\begin{aligned}
+& \theta \mu (a) = \theta(a,0) = f(a) \\ 
+&  \theta\nu (b) = \theta(0,b)  = g(b)
+\end{aligned}
+\]
+so diagram commutes, i.e. 
+
+\[
+\begin{gathered}
+\begin{tikzpicture}
+\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+{
+	& X  & \\ 
+	A  & C & B   \\
+};
+\path[->]
+(m-2-1) edge node [above] {$f$} (m-1-2)
+edge node [above] {$\mu$} (m-2-2)
+(m-2-3) edge node [above] {$g$} (m-1-2)
+edge node [above] {$\nu$} (m-2-2)
+;
+\path[dashed,->]
+(m-2-2) edge node [right] {$\theta$} (m-1-2)
+;
+\end{tikzpicture} 
+\end{gathered}
+\]
+
+If $\psi: C\to X$ makes diagram commute, 
+\[
+\begin{aligned}
+& \psi((a,0)) = f(a) \qquad \, \forall \, a\in A \\
+& \psi((0,b)) = g(b) \qquad \, \forall \, b\in B \\
+\end{aligned}
+\]
+and since $\psi$ is a homomorphism, $\psi((a,b)) = \psi((a,0)) + \psi((0,b)) = f(a) + g(b)  = \theta((a,b))$.  $\psi = \theta$.  
+
+Prop. 7.27, Rotman (2010) \cite{agat:JRotman2010}
+\begin{proposition}[7.27, Rotman]
+	If category $\mathcal{C} = \mathbf{C}$, and if $A,B \in \text{Obj}\mathbf{C}$, then $\forall \, $ 2 coproducts of $A,B$, if they $\exists \, $, are equivalent.  
+\end{proposition}
+\begin{proof}
+	Suppose $C,D$ coproducts of $A,B$.  Suppose coproducts $\begin{aligned} & \quad \\ 
+	& \mu_A : A \to C , \qquad \, & \nu_A: A\to D \\
+	& \mu_B : B \to C , \qquad \, & \nu_B : B \to D \end{aligned}$  
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& D  & \\ 
+		A  & C & B   \\
+	};
+	\path[->]
+	(m-2-1) edge node [above] {$\nu_A$} (m-1-2)
+	edge node [above] {$\mu_A$} (m-2-2)
+	(m-2-3) edge node [above] {$\nu_B$} (m-1-2)
+	edge node [above] {$\mu_B$} (m-2-2)
+	;
+	\path[dashed,->]
+	(m-2-2) edge node [right] {$\theta$} (m-1-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	Just substitute $X=D$ in diagram above.  
+	
+	Then substitute again: 
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& C  & \\ 
+		A  & D & B   \\
+	};
+	\path[->]
+	(m-2-1) edge node [above] {$\mu_A$} (m-1-2)
+	edge node [above] {$\nu_A$} (m-2-2)
+	(m-2-3) edge node [above] {$\mu_B$} (m-1-2)
+	edge node [above] {$\nu_B$} (m-2-2)
+	;
+	\path[dashed,->]
+	(m-2-2) edge node [right] {$\psi$} (m-1-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	Then combine the 2 diagrams: $\psi \theta = 1_C$.  Likewise by label symmetry of $C,D$, $\theta \psi = 1_D$.  
+	
+	Then $C,D$ are equivalent.  
+\end{proof}
+
+
+Exer. 7.29 on pp. 459 of Rotman (2010) \cite{agat:JRotman2010}
+
+\begin{definition}
+	If $A,B\in \text{Obj}\mathbf{C}$, then their \textbf{product}; $A\prod B = P \in \text{Obj}\mathbf{C}$, and morphisms $\begin{aligned} & \quad \\ 
+	& p : P \to A \\ 
+	& q : P \to B \end{aligned}$  s.t. $\forall \, X \in \text{Obj}\mathbf{C}$, \, $\forall \, \begin{aligned} & \quad \\ 
+	& f : X \to A \in \text{Mor}\mathbf{C} \\ 
+	& g : X \to B \in \text{Mor}\mathbf{C} \end{aligned}$, \\
+	$\exists \, ! \, \theta:X \to P$, s.t. 
+	
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& X  & \\ 
+		A  & A \prod B & B   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$f$} (m-2-1)
+	edge node [above] {$g$} (m-2-3)
+	(m-2-2) edge node [above] {$p$} (m-2-1)
+	edge node [above] {$q$} (m-2-3)
+	;
+	\path[dashed,->]
+	(m-1-2) edge node [right] {$\theta$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	
+	In the notation of Kashiwara and Schapira (2006) \cite{agat:KaSch2006}, 
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& Y  & \\ 
+		X_0  & X_0 \prod X_1 & X_1   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$f_0$} (m-2-1)
+	edge node [above] {$f_1$} (m-2-3)
+	(m-2-2) edge node [above] {$p_0$} (m-2-1)
+	edge node [above] {$p_1$} (m-2-3)
+	;
+	\path[dashed,->]
+	(m-1-2) edge node [right] {$[f_0f_1]$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	In general
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& Y  \\ 
+		X_j  & \prod_{i\in I} X_i   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$f_j$} (m-2-1)
+	(m-2-2) edge node [below] {$p_i$} (m-2-1)
+	;
+	\path[dashed,->]
+	(m-1-2)        edge node [right] {$[f_i]_{i\in I}$} (m-2-2)
+	;
+	\end{tikzpicture}  
+	\end{gathered}
+	\]
+	
+	\textbf{product} of $X_i$'s, 
+	\[ 
+	\prod_i X_i \equiv \prod_{i\in I} X_i
+	\]
+	given by 
+	\begin{equation}
+	\prod_i X_i := \lim_{ \longleftarrow } \alpha 
+	\end{equation}
+	
+	When $X_i = X$, $\forall \, i \in I$, denote product by $X^{ \prod I} \equiv X^I$.  	
+\end{definition}
+
+e.g. Cartesian product $P= A\times B$ of 2 sets $A,B$, $A,B \in \text{Obj}\textbf{Sets}$.  
+
+Define 	
+\[
+\begin{gathered}
+\begin{aligned}
+& p:A\times B \to A \\
+& p(a,b) \mapsto a 
+\end{aligned} \qquad \, 
+\begin{aligned}
+& q:A\times B \to B \\
+& q(a,b) \mapsto b 
+\end{aligned}
+\end{gathered}
+\]
+If $X \in \text{Obj}\textbf{Sets}$,  \\
+if 
+$	\begin{aligned} & \quad \\ 
+& f: X \to A \\
+& g : X  \to B 
+\end{aligned}
+$, then $\begin{aligned} & \quad \\ 
+& \theta: X \to A\times B \\
+& \theta : x \mapsto (f(x),g(x)) \in A\times B
+\end{aligned}
+$
+
+\begin{proposition}[7.28 Rotman (2010); equivalence of products, if it exists]
+	If $A,B \in \text{Obj}\mathbf{C}$, then $\forall \, $ 2 products of $A$ and $B$, should they exist, are equivalent. 
+\end{proposition}
+
+\begin{proof}
+	Suppose $C,D$ products of $A,B$.  Suppose products $\begin{aligned} & \quad \\ 
+	& p_A : C \to A , \qquad \, & q_A: D\to A \\
+	& p_B : C \to B , \qquad \, & q_B : D \to B \end{aligned}$  
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& D  & \\ 
+		A  & C & B   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$q_A$} (m-2-1)
+	edge node [above] {$q_B$} (m-2-3)
+	(m-2-2) edge node [above] {$p_A$} (m-2-1)
+	edge node [above] {$p_B$} (m-2-3)
+	;
+	\path[dashed,->]
+	(m-1-2) edge node [right] {$\theta$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	Just substitute $X=D$ in diagram above.  
+	
+	Then substitute again: 
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& C  & \\ 
+		A  & D & B   \\
+	};
+	\path[-{>[scale=3.0]}]
+	(m-1-2) edge node [above] {$p_A$} (m-2-1)
+	edge node [above] {$p_B$} (m-2-3) 
+	(m-2-2) edge node [above] {$q_A$} (m-2-1)
+	edge node [above] {$q_B$} (m-2-3)
+	;
+	\path[dashed,->]
+	(m-1-2) edge node [right] {$\psi$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	\end{gathered}
+	\]
+	Then combine the 2 diagrams: $\psi \theta = 1_C$.  Likewise by label symmetry of $C,D$, $\theta \psi = 1_D$.  
+	
+	Then $C,D$ are equivalent.  
+	
+	
+\end{proof}
+
+\subsubsection{Products of Modules and Sets}  
+
+\begin{proposition}[7.29 Rotman (2010); products of R-modules are equivalent]
+	If commutative ring $R$, \\
+	R-modules $A,B$, \\
+	then $\exists \, $ their (categorical) product $A\sqcup B$, in fact 
+	\begin{equation}
+	A \sqcap B \cong A\sqcup B
+	\end{equation}
+	
+\end{proposition}
+
+\begin{proof}
+	If $A\sqcup B \cong M$, then 
+	$\exists \, $ R-maps, $\begin{aligned} & \quad \\
+	& i : S\to M \\ 
+	& j : T \to M \end{aligned}$, \qquad \,  $\begin{aligned} & \quad \\
+	& p : M\to S \\ 
+	& q : M \to T \end{aligned}$
+	s.t. $\begin{aligned} & \quad \\
+	& pi = 1_A \\ 
+	& qj = 1_B \end{aligned}$ \qquad \, and $\begin{aligned} & \quad \\
+	& pj = 0 \\ 
+	& qi = 0 \end{aligned}$, and $ip + jq = 1_M$, i.e.   
+	
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		A & M & B \\ 
+	};
+	\path[->]
+	($(m-1-2)+(0,-0.1)$) edge node [below] {$p$} ($(m-1-1.east)+(0,-0.1)$)
+	edge node [below] {$q$} ($(m-1-3.west)+(0,-0.1)$) 
+	($(m-1-1)+(0,0.1)$) edge node [above] {$i$} ($(m-1-2.west)+(0,0.1)$)
+	($(m-1-3)+(0,0.1)$) edge node [above] {$j$} ($(m-1-2.east)+(0,0.1)$)
+	;
+	\end{tikzpicture} 
+	
+	If module $X$, since $\begin{aligned}
+	& \quad \\ 
+	& f: X \to A \\
+	& g:X\to B
+	\end{aligned}	$ 
+	are homomorphisms, 
+	
+	define 
+	$\begin{aligned}
+	& \theta: X \to A \sqcup B \\
+	& \theta(x) = if(x) + jg(x)
+	\end{aligned}
+	$
+	so that 
+	\[
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& X  & \\ 
+		A  & A\sqcup  & B   \\
+	};
+	\path[-{>[scale=4.0]}]
+	(m-1-2) edge node [above] {$f$} (m-2-1)
+	edge node [above] {$g$} (m-2-3) 
+	(m-2-2) edge node [above] {$p$} (m-2-1)
+	edge node [above] {$q$} (m-2-3)
+	;
+	\path[dashed,->]
+	(m-1-2) edge node [right] {$\theta$} (m-2-2)
+	;
+	\end{tikzpicture} 
+	\]
+	since, $\forall \, x \in X$, 
+	\[
+	p\theta(x) = pif(x) + pjg(x) = pif(x) + 0 = f(x)
+	\]
+	since $ip + jq=1_{A\sqcup B}$  
+	
+	\[
+	\psi = ip\psi + jq \psi = i f + jf = \theta
+	\]
+	so product is unique.  
+\end{proof}
+
+\begin{definition}
+	Let $R$ be commutative ring, \\
+	let $\lbrace A_i : i \in I \rbrace$ be indexed family of $R$-modules.  
+	
+	\textbf{direct product} $\prod_{i\in I} A_i$ is cartesian product (i.e. set of all $I$-tuples $(a_i)$ whose $i$th coordinate $a_i$ lies in $A_i \quad \, \forall \, i$) with coordinate wise addition and scalar multiplication: 
+	\[
+	\begin{gathered}
+	(a_i) + (b_i) = (a_i + b_i) \\
+	r(a_i) = (ra_i)
+	\end{gathered}
+	\]
+	where $r\in R$, $a_i, b_i \in A_i$, \, $\forall \, i $  
+\end{definition}
+
+
+
+
+cf. Thm. 7.32 of Rotman (2010) \cite{agat:JRotman2010}
+\begin{theorem}[7.32, Rotman]
+	Let commutative ring $R$.  \\
+	$\forall \, R$-module $A$, $\forall \,$ family $\lbrace B_i | i \in I \rbrace$ of $R$-modules,
+	\begin{equation}
+	\begin{gathered}
+	\text{Hom}_R(A, \coprod_{i\in I} B_i ) \simeq \coprod_{i \in I} \text{Hom}_R(A,B_i)
+	\end{gathered}
+	\end{equation}
+	via $R$-isomorphism
+	\[
+	\varphi : f\mapsto (p_if)
+	\]
+	where $p_i $ are projections of product $\coprod_{i\in I }B_i$
+\end{theorem}
+
+\begin{proof}
+	Let $a\in A$, $f,g \in \text{Hom}_R(A,\coprod_{i\in I} B_i)$.
+	\[
+	\varphi(f+g)(a) = (p_i(f+g))(a) = (p_i(f(a) + g(a))) = (p_if + p_ig)(a)
+	\]
+	$\varphi$ additive.
+	
+	$\forall \, i, \, \forall \, r \in R$, $p_i rf = rp_i f$ (since product of $R$-modules, $\coprod_{i\in I}B_i$ is also an $R$-module of $\text{Obj}{}_R\textbf{Mod}$, by def. of product).
+	\[
+	\varphi rf \mapsto (p_i rf) = (r p_i f) = r(p_i f) = r\varphi(f)
+	\]
+	So $\varphi$ is $R$-map.
+	
+	If $(f_i) \in \coprod_i \text{Hom}{}_R(A,B_i)$, then $f_i : A\to B_i$ \, $\forall \, i$
+	
+	By Rotman's Prop. 7.31 (If family of $R$-modules $\lbrace A_i | i \in I \rbrace$, then direct product $C = \coprod_{i\in I} A_i$ is their product in ${}_R \textbf{Mod}$), \\
+	\phantom{ \qquad \, } By def. or product, $\exists \, ! \, R$-map , \, $\theta : A \to \coprod_{i\in I} B_i$ s.t. $p_i \theta = f_i$ \, $\forall \, i$
+	
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& A  \\ 
+		B_i  & \prod_{i\in I} B_i   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$f_i$} (m-2-1)
+	(m-2-2) edge node [below] {$p_i$} (m-2-1)
+	;
+	\path[dashed,->]
+	(m-1-2)        edge node [right] {$\theta$} (m-2-2)
+	;
+	\end{tikzpicture}  
+	\end{gathered}
+	\]
+	
+	
+	
+	
+	Then 
+	\[
+	f_i = (p_i\theta) = \varphi(\theta)
+	\]
+	, and so $\varphi$ \emph{surjective}.
+	
+	Suppose $f\in \text{ker}\varphi$, so $\theta = \varphi(f) = (p_if)$.  Thus $p_i f=0$ \, $\forall \, i$
+	
+	\[
+	\begin{gathered}
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=5em, column sep=4em, minimum width=3em]
+	{
+		& A  \\ 
+		B_i  & \prod_{i\in I} B_i   \\
+	};
+	\path[->]
+	(m-1-2) edge node [above] {$0$} (m-2-1)
+	edge node [right] {$f$} (m-2-2)
+	(m-2-2) edge node [below] {$p_i$} (m-2-1)
+	;
+	\end{tikzpicture}  
+	\end{gathered}
+	\]
+	
+	But $0$-homomorphism also makes this diagram commute, so uniqueness of homomorphism $A \to \prod B_i$ gives $f=0$.  
+	
+	
+	
+	
+\end{proof}
+
+
+
+
+
+
+
+\section{Applications of Category Theory: Finite State Machines (FSM)}
+
+\begin{definition}[Finite State Machines $\equiv$ Finite State Automaton]
+	A deterministic finite state machine or acceptor deterministic finite state machine is a quintuple ($\Sigma, S, s_0, \delta F$) where \\
+	$\Sigma \equiv $ input alphabet (finite, non-empty set of symbols) \\
+ 	$S \equiv $ finite, non-empty set of states \\
+ 	$s_0 \equiv $ initial state, $s_0 \in S$ \\
+ 	$\delta \equiv $ state-transition function; $\delta : S \times \Sigma \to S$ (in a nondeterministic finite automaton, it would be $\delta : S \times \Sigma \to \mathcal{P}(S)$), i.e. $\delta$ would return a set of states; $\mathcal{P}(S) \equiv $ set of all subsets of $S$, including $\emptyset$ and $S \equiv$ power set. \\
+ 	$F \equiv $ set of final states, (possibly empty subset of $S$; $F\subseteq S$ or $F \subseteq S \cup \lbrace \emptyset \rbrace$)
+
+	Finite State Machine (FSM) is also known as a Finite State Automaton.
+\end{definition}
+cf. \href{https://xlinux.nist.gov/dads/HTML/finiteStateMachine.html}{Black, Paul E (12 May 2008). "Finite State Machine". \emph{Dictionary of Algorithms and Data Structres}}. U.S. National Institute of Standards and Technology (NIST).
+
+For both deterministic and non-deterministic FSMs, it's conventional to allow $\delta$ to be a partial function, i.e. 
+$\delta(q,x)$ doesn't have to be defined for every combination of $q \in S$, $x \in \Sigma$
+
+If FSM $M$ is in state $q$; the next symbol (input?) is $x$ and $\delta(q,x)$ not defined; then $M$ can announce an error (i.e. reject the input (???)). 
+
+
+\begin{definition}[Alphabet]
+	alphabet $:= $ nonempty set of symbols $\equiv \Sigma$ \\
+	string $:=$ finite sequence of members (i.e. symbols) of an underlying base set (i.e. \textbf{alphabet}) \\
+	$\Sigma^n \equiv $ set of all strings of length $n$.
+\end{definition}
+
+In Curino and Spivak (2011)\cite{agat:SpCu2011}, on pp. 6, Sec. 4.2 "A new concept of state transformations", they say that "Legend has it that Eilenberg and MacLane spent the effort to invent category theory because they needed to formalize the concept now known as natural transformation." 
+
+It goes and says "The definition of natural transformations between states naturally captures much of the semantics for what remains unchanged when performing an update."
+
+
+

@@ -1,0 +1,153 @@
+% Imported from LaTeX_and_pdfs/AGAT_dump.tex; see provenance.json.
+\part{Laplace Transform}
+
+
+\begin{quotation}
+This is for you, you, my number one \\
+This is for you, you, my number one \\
+
+This is for you, you, my number one \\
+
+Spotlights, big stage \\
+Fifty thousand fans screamin' in a rage \\
+Bodyguards and limousines \\
+This is the way I see you in my dreams \\
+\end{quotation}
+- Usher, "Superstar" \\
+
+\begin{quotation}
+Me: In which category or functor in category theory do Laplace transforms belong in? \\
+
+Chat-GPT: Laplace transforms can be studied in the category of topological vector spaces. More specifically, the Laplace transform can be seen as a functor from the category of functions of exponential growth to the category of holomorphic functions defined on a half-plane in the complex plane. \\
+
+In this category, the morphisms are continuous linear maps that preserve the exponential growth of functions. The Laplace transform functor takes a function in the source category and maps it to its Laplace transform in the target category. \\
+
+The use of category theory provides a powerful framework for studying Laplace transforms and their properties in a more abstract and general way.
+\end{quotation}
+
+\section{Laplace Transform: Definitions and Properties}
+
+\subsection{Laplace Transform Definition and Examples}
+
+We will follow Mauch (2004) \cite{agat:Mauc2004}.
+
+\begin{definition}
+\begin{equation}
+\mathcal{L}[f(t)] = \int_0^{\infty} e^{-st} f(t) dt \equiv \widehat{f}(s)
+\end{equation}
+\end{definition}
+
+\begin{definition}
+A function $f(t)$ is of \textbf{exponential order} $\alpha$ if $\exists \, $ constants $t_0$, and $M$ s.t.
+\begin{equation}
+|f(t) | < M e^{\alpha t} \quad \, \forall \, t > t_0
+\end{equation}
+\end{definition}
+
+If $\exists \, $ $\int_0^{t_0} f(t) dt$ and $f(t)$ is of exponential order $\alpha$, then $\exists \, \widehat{f}(s)$ \, $\forall \, \Re{(s)} > \alpha$.
+
+\begin{proof}
+\[
+\begin{gathered}
+| \int_0^{\infty} e^{-st} f(t) dt | = | \int_0^{\infty} \exp{ (-\Re{(s)} t - i \Im{ (s)} t )} f(t) dt | \leq \int_0^{\infty} \exp{( -\Re{(s)} t)} |f(t)| dt < \\
+< \int_0^{\infty} \exp{ (- \Re{(s)} t) } Me^{\alpha t} dt   = M \int_0^{\infty} dt \exp{ (- (\Re{ (s)} - \alpha ) t ) } = M \left. \left( \frac{ \exp{ (- (\Re{ (s)} - \alpha ) t} }{ - (\Re{ (s)} - \alpha ) } \right) \right|_0^{\infty} = \frac{M }{ \Re{ (s) } - \alpha }
+\end{gathered}
+\]
+if $\Re{(s)} > \alpha$
+\end{proof}
+
+For example, \\
+$\sin{(t)}$ is of exponential order 0. \\
+$te^{2t}$ is of exponential order $\alpha$, \, $\forall \, \alpha >2$.
+
+Example 31.1 (Mauch (2004) \cite{agat:Mauc2004}). Consider the Laplace transform of $f(t) = 1$.  Since $f(t)= 1$ is of exponential order $\alpha $ \, $\forall \, \alpha >0$, Laplace transform integral converges for $\Re{(s)} < 0$.
+
+\[
+\begin{gathered}
+\widehat{f}(s) = \int_0^{\infty} e^{-st} dt = \left[ \frac{-1}{s} e^{-st} \right]_0^{\infty} = \frac{1}{s}
+\end{gathered}
+\]
+
+Example 31.1.3. Consider Laplace transform of the Heaviside function
+\[
+\begin{gathered}
+H(t-c) = \begin{cases}
+0 & \text{ for } t < c \\
+1 & \text{ for } t > c
+\end{cases}
+\end{gathered}
+\]
+where $c>0$.
+
+\[
+\begin{gathered}
+\mathcal{L}[H(t-c)] = \int_0^{\infty} e^{-st} H(t-c) dt = \int_c^{\infty} e^{-st} dt = \left[ \frac{e^{-st}}{-s} \right]_c^{\infty} = \frac{e^{-cs}}{s} \quad \, \forall \, \Re{(s)} > 0
+\end{gathered}
+\]
+
+Example 31.1.4. Consider $H(t-c) f(t-c)$
+\[
+\begin{gathered}
+\mathcal{L}[H(t-c) f(t-c)] = \int_0^{\infty} dt e^{-st} H(t-c) f(t-c) = \int_c^{\infty} dt e^{-st} f(t-c) = \int_0^{\infty} dt e^{-s(t+c) } f(t) = e^{-cs} \widehat{f}(s)
+\end{gathered}
+\]
+
+\subsubsection{Laplace Transform Properties and Formulae}
+
+\begin{theorem}
+\begin{equation}
+\begin{aligned}
+& \mathcal{L}\left[ \frac{d}{dt} f(t) \right] = s\widehat{f}(s) - f(0) \\
+& \mathcal{L}\left[ \frac{d^2}{dt^2} f(t) \right] = s^2 \widehat{f}(s) - sf(0) - f'(0)
+\end{aligned}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+To deserve these formulas,
+\[
+\begin{gathered}
+\begin{aligned}
+\mathcal{L}\left[ \frac{d}{dt} f(t) \right] & = \int_0^{\infty} dt e^{-st} f'(t) = \left[ e^{-st}f(t) \right]_0^{\infty} - \int_0^{\infty}dt (-se^{-st}) f(t) = -f(0) + s\widehat{f}(s) \\
+\mathcal{L}\left[ \frac{d^2}{dt^2} f(t) \right] & = \int_0^{\infty} dt e^{-st} f''(t) = \left[ e^{-st} f'(t) \right]_0^{\infty} - \int_0^{\infty} dt (-se^{-st} ) f'(t) = -f'(0) + s \mathcal{L} [ \frac{d}{dt} f'(t) ] = \\
+& = -f'(0) - sf(0 ) + s^2 \widehat{f}(s)
+\end{aligned}
+\end{gathered}
+\]
+\end{proof}
+
+\subsection{Inverse Laplace Transform: Definition}
+
+\begin{definition}
+The inverse Laplace transform is denoted
+\begin{equation}
+f(t) = \mathcal{L}^{-1}[ \widehat{f}(s) ]
+\end{equation}
+Compute the inverse Laplace transform with the Mellin inversion formula:
+
+\begin{equation}
+f(t) = \frac{1}{2\pi i} \int_{\alpha - i \infty}^{\alpha + i \infty} ds e^{st} \widehat{f}(s)
+\end{equation}
+where $\alpha$ is a real constant that's to the right of the singularities of $\widehat{f}(s)$.
+\end{definition}
+
+Consider 
+\[
+\begin{gathered}
+\mathcal{L} [ \mathcal{L}^{-1} [\widehat{f}(s)] ] =  \mathcal{L} \left[ \frac{1}{2\pi i} \int_{\alpha - i \infty}^{\alpha + i \infty} dz e^{zt} \widehat{f}(z) \right] = \int_0^{\infty} dt e^{-st} \frac{1}{2\pi i} \int_{\alpha - i \infty}^{\alpha + i \infty} dz e^{zt} \widehat{f}(z)
+\end{gathered}
+\]
+Interchange order of integration:
+\[
+\begin{gathered}
+\frac{1}{2\pi i} \int_{\alpha - i \infty }^{\alpha + i \infty} dz \widehat{f}(z) \int_0^{\infty} dt e^{-(s- z) t}
+\end{gathered}
+\]
+Since $\Re{ (z)} = \alpha$ (because $z$ is from $\alpha - i \infty$ to $\alpha + i \infty$, the integral in $t$ exists for $\Re{ (s)} > \alpha$.
+So
+\[
+\begin{gathered}
+\int_0^{\infty} dt e^{-(s-z)t} =  \left( \frac{ e^{-(s-z)t} }{ -(s-z) } \right)_0^{\infty} = \frac{1}{s-z} \Longrightarrow \frac{1}{2 \pi i} \int_{\alpha - i \infty}^{\alpha + i \infty} dz \frac{\widehat{f}(z) }{ s-z}
+\end{gathered}
+\]
+

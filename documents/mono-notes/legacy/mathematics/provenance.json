@@ -1,0 +1,266 @@
+{
+  "transformations": [
+    "Drop historical front matter and comments",
+    "Use master layout in place of embedded multicols",
+    "Prefix labels, references, citations and bibliography keys by source",
+    "Split at original part headings; preserve mathematical bodies",
+    "Remove blank paragraphs inside math and TikZ environments",
+    "Move alignment tab outside left delimiter in set-theory display",
+    "Repair RecordTypesProduct and RightMPSoperation reference typos",
+    "Disambiguate repeated equation labels and their subsequent references"
+  ],
+  "parts": [
+    {
+      "id": "agat-01",
+      "title": "Algebra; Groups, Rings, R-Modules, Categories",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-01.tex"
+    },
+    {
+      "id": "agat-02",
+      "title": "Category Theory",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-02.tex"
+    },
+    {
+      "id": "agat-03",
+      "title": "Category Theory and Databases",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-03.tex"
+    },
+    {
+      "id": "agat-04",
+      "title": "Reading notes on Cox, Little, O'Shea's \\emph{Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra}",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-04.tex"
+    },
+    {
+      "id": "agat-05",
+      "title": "Reading notes on Cox, Little, O'Shea's \\emph{Using Algebraic Geometry}",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-05.tex"
+    },
+    {
+      "id": "agat-06",
+      "title": "Set Theory",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-06.tex"
+    },
+    {
+      "id": "agat-07",
+      "title": "Probability",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-07.tex"
+    },
+    {
+      "id": "agat-08",
+      "title": "Fourier Transform",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-08.tex"
+    },
+    {
+      "id": "agat-09",
+      "title": "Laplace Transform",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-09.tex"
+    },
+    {
+      "id": "agat-10",
+      "title": "Waves",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-10.tex"
+    },
+    {
+      "id": "agat-11",
+      "title": "Statistical Mechanics: Ising Model",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-11.tex"
+    },
+    {
+      "id": "agat-12",
+      "title": "Conformal Field Theory; Virasoro Algebra",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-12.tex"
+    },
+    {
+      "id": "agat-13",
+      "title": "Quantum Mechanics",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-13.tex"
+    },
+    {
+      "id": "agat-14",
+      "title": "Algebraic Topology",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-14.tex"
+    },
+    {
+      "id": "agat-15",
+      "title": "Graphs, Finite Graphs",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-15.tex"
+    },
+    {
+      "id": "agat-16",
+      "title": "Tensors, Tensor networks; Singular Value Decomposition, QR decomposition, Density Matrix Renormalization Group (DMRG), Matrix Product states (MPS)",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-16.tex"
+    },
+    {
+      "id": "agat-17",
+      "title": "Algebraic Geometry",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-17.tex"
+    },
+    {
+      "id": "agat-18",
+      "title": "Algebraic Geometry applications",
+      "source": "LaTeX_and_pdfs/AGAT_dump.tex",
+      "source_sha256": "1ee9fcef61207be526780073aea4d8546cac2dfe13a2febb662b0d782d1ef4d9",
+      "output": "legacy/mathematics/agat-18.tex"
+    },
+    {
+      "id": "dgdt-01",
+      "title": "Combinatorics, Probability Theory",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-01.tex"
+    },
+    {
+      "id": "dgdt-02",
+      "title": "Linear Algebra Review",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-02.tex"
+    },
+    {
+      "id": "dgdt-03",
+      "title": "Analytical Geometry",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-03.tex"
+    },
+    {
+      "id": "dgdt-04",
+      "title": "Manifolds",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-04.tex"
+    },
+    {
+      "id": "dgdt-05",
+      "title": "Lie Groups, Lie Algebra",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-05.tex"
+    },
+    {
+      "id": "dgdt-06",
+      "title": "Cohomology; Stoke's Theorem",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-06.tex"
+    },
+    {
+      "id": "dgdt-07",
+      "title": "Pr\\'{a}staro",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-07.tex"
+    },
+    {
+      "id": "dgdt-08",
+      "title": "Connections",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-08.tex"
+    },
+    {
+      "id": "dgdt-09",
+      "title": "Holonomy",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-09.tex"
+    },
+    {
+      "id": "dgdt-10",
+      "title": "Complex Manifolds",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-10.tex"
+    },
+    {
+      "id": "dgdt-11",
+      "title": "Jets, Jet bundles, $h$-principle, $h$-Prinzipien",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-11.tex"
+    },
+    {
+      "id": "dgdt-12",
+      "title": "Morse Theory",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-12.tex"
+    },
+    {
+      "id": "dgdt-13",
+      "title": "Classical Mechanics",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-13.tex"
+    },
+    {
+      "id": "dgdt-14",
+      "title": "Classical Mechanics applications",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-14.tex"
+    },
+    {
+      "id": "dgdt-15",
+      "title": "Quantum Field Theory",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-15.tex"
+    },
+    {
+      "id": "dgdt-16",
+      "title": "The Standard Model",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-16.tex"
+    },
+    {
+      "id": "dgdt-17",
+      "title": "General Relativity",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-17.tex"
+    },
+    {
+      "id": "dgdt-18",
+      "title": "WE Heraeus International Winter School on Gravity and Light",
+      "source": "LaTeX_and_pdfs/DGDT_dump.tex",
+      "source_sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "output": "legacy/mathematics/dgdt-18.tex"
+    }
+  ]
+}

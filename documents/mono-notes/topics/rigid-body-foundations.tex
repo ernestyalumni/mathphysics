@@ -1,0 +1,118 @@
+\part{Geometric Mechanics and Rigid-Body Flight}
+\section{Configuration, velocity, and degrees of freedom}
+A point mass in Euclidean space has configuration space $Q=\mathbb R^3$.
+A rigid body with fixed center has configuration space $SO(3)$. A freely
+moving rigid body has configuration space $\mathbb R^3\times SO(3)$,
+identified with $SE(3)$ as a manifold. Its group law is
+\begin{equation}\label{gnc:group-law}
+ (\mathbf r,R)(\mathbf s,S)=(\mathbf r+R\mathbf s,RS).
+\end{equation}
+The rotation acts on the translation in Eq.~\eqref{gnc:group-law}; this is
+why the rigid-motion group is a semidirect product.
+
+Degrees of freedom count independent configuration coordinates. The
+three translational and three rotational degrees of freedom give twelve
+independent position--velocity state variables for a second-order rigid-body
+model. A unit quaternion uses four components to represent three rotational
+degrees of freedom, subject to one scalar constraint. A translational
+three-DOF flight model omits attitude dynamics under additional modeling
+assumptions; it does not follow merely by invoking symmetry reduction.
+
+\section{Angular velocity and the rotating-frame derivative}
+Let $R(t)$ map body components to inertial components, with
+$R^{T}R=I$ and $\det R=1$. Differentiating the first identity gives
+\begin{align}
+ \dot R^{T}R+R^{T}\dot R&=0,\notag\\
+ (R^{T}\dot R)^{T}&=-R^{T}\dot R.\label{gnc:skew}
+\end{align}
+Equation~\eqref{gnc:skew} makes $R^{T}\dot R$ a skew-symmetric matrix.
+Define $\widehat{\boldsymbol\omega}_B=R^{T}\dot R$ by
+$\widehat{\boldsymbol\omega}_B\mathbf a=\boldsymbol\omega_B\times\mathbf a$.
+Multiplication by $R$ then yields
+\begin{equation}\label{gnc:attitude-kinematics}
+ \dot R=R\widehat{\boldsymbol\omega}_B.
+\end{equation}
+For any physical vector with components $\mathbf a_I=R\mathbf a_B$,
+apply the product rule and substitute Eq.~\eqref{gnc:attitude-kinematics}:
+\begin{align}
+ \dot{\mathbf a}_I
+ &=\dot R\mathbf a_B+R\dot{\mathbf a}_B\notag\\
+ &=R\bigl(\boldsymbol\omega_B\times\mathbf a_B
+                  +\dot{\mathbf a}_B\bigr).
+ \label{gnc:transport}
+\end{align}
+The derivative on the left is taken in an inertial frame. The derivative of
+body components on the right includes the change of basis through the
+cross-product term.
+
+\section{Momentum balances about the center of mass}
+Assume a closed rigid body with constant mass $m>0$, constant positive-definite
+body inertia $J_B$, and a body origin at its center of mass. Let
+$\mathbf r_I$ and $\mathbf v_I$ be its inertial position and velocity.
+The total external force is $\mathbf F_I$; the external moment about the
+center of mass has components $\boldsymbol\tau_B$.
+With linear momentum $\mathbf p_I=m\mathbf v_I$, Newton's balance is
+\begin{equation}\label{gnc:linear-balance}
+ \dot{\mathbf r}_I=\mathbf v_I,\qquad
+ \dot{\mathbf p}_I=\mathbf F_I,\qquad
+ m\dot{\mathbf v}_I=\mathbf F_I.
+\end{equation}
+Define angular momentum $\mathbf h_B=J_B\boldsymbol\omega_B$, so that
+$\mathbf h_I=R\mathbf h_B$. Its inertial balance is
+$\dot{\mathbf h}_I=R\boldsymbol\tau_B$. Substitution into
+Eq.~\eqref{gnc:transport} gives
+\begin{align}
+ R\bigl(\dot{\mathbf h}_B+
+        \boldsymbol\omega_B\times\mathbf h_B\bigr)
+   &=R\boldsymbol\tau_B,\notag\\
+ J_B\dot{\boldsymbol\omega}_B+
+ \boldsymbol\omega_B\times(J_B\boldsymbol\omega_B)
+   &=\boldsymbol\tau_B.\label{gnc:euler}
+\end{align}
+The second line uses constant $J_B$ and multiplication by $R^{T}$.
+Similarly, setting $\mathbf v_I=R\mathbf v_B$ in
+Eq.~\eqref{gnc:linear-balance}, and using Eq.~\eqref{gnc:transport}, gives
+\begin{equation}\label{gnc:body-translation}
+ m\bigl(\dot{\mathbf v}_B+
+       \boldsymbol\omega_B\times\mathbf v_B\bigr)=\mathbf F_B,
+ \qquad \mathbf F_B=R^{T}\mathbf F_I.
+\end{equation}
+Equations~\eqref{gnc:linear-balance}, \eqref{gnc:attitude-kinematics}, and
+\eqref{gnc:euler} form a constant-mass rigid-body six-DOF model after the
+force and moment laws are specified. Rocket mass loss requires open-system
+momentum balances; replacing $m$ by $m(t)$ alone does not derive them.
+
+For zero external moment, Eq.~\eqref{gnc:euler} implies
+$\dot{\mathbf h}_I=0$, although $\mathbf h_B$ generally changes.
+The rotational kinetic energy satisfies
+\begin{align}
+ T_{\mathrm{rot}}&=\tfrac12\boldsymbol\omega_B^{T}
+                            J_B\boldsymbol\omega_B,\notag\\
+ \dot T_{\mathrm{rot}}
+ &=\boldsymbol\omega_B\cdot J_B\dot{\boldsymbol\omega}_B\notag\\
+ &=\boldsymbol\omega_B\cdot\boldsymbol\tau_B
+ -\boldsymbol\omega_B\cdot
+       \bigl(\boldsymbol\omega_B\times J_B\boldsymbol\omega_B\bigr)\notag\\
+ &=\boldsymbol\omega_B\cdot\boldsymbol\tau_B.
+\end{align}
+The cross-product term vanishes because it is perpendicular to
+$\boldsymbol\omega_B$. Zero moment therefore conserves both inertial
+angular momentum and rotational kinetic energy.
+
+\section{Reading geometric mechanics}
+Holm, Schmah, and Stoica \cite{HSS2009} provide the geometric foundation.
+Start with Chapter~1 (pp.~3--42), then manifolds in Chapter~2
+(pp.~43--98) and geometry in Chapter~3 (pp.~99--154). Read mechanics on
+manifolds in Chapter~4 (pp.~155--186), Lie groups and algebras in
+Chapter~5 (pp.~187--208), and group actions in Chapter~6 (pp.~209--240).
+The first destination is Sections~7.1--7.3 (pp.~241--260): rigid-body
+mechanics and Euler--Poincar\'e reduction. Sections~7.4--7.5
+(pp.~261--280) introduce the heavy top and advected parameters.
+Chapters~8--9 (pp.~281--324) develop momentum maps and Lie--Poisson
+reduction. Printed page numbers refer to the 2009 Oxford edition.
+
+Derive Eq.~\eqref{gnc:euler} again from the reduced variational principle
+when studying Chapter~7. Compare that derivation with the momentum balance
+above. Keep frame conventions explicit throughout. Guidance, estimation,
+feedback control, aerodynamic models, and open-system propulsion balances
+require further material beyond these geometric-mechanics chapters.
