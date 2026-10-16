@@ -23,6 +23,57 @@ components by
 so it represents the same rotation $R$ as in Eq.~\eqref{gnc:attitude-kinematics},
 where $\mathbf x_I=R\mathbf x_B$. The rotation acts on vectors (active form).
 
+\subsection{Notation of these notes and of the sources}\label{quat:sec:notation}
+Each book on this subject has its own symbols for the same objects. These
+notes fix one set, which we call \emph{our} notation, and translate every
+other author into it at the first use. Our notation is the one already used
+in the Lie-groups part (\S\ref{dgdt:sec:lie-groups}), which follows
+Kosmann-Schwarzbach \cite{dgdt:YKosmann-Schwarzbach2010}:
+\begin{itemize}
+ \item the Lie algebra of a matrix group $G$ is
+  $\mathfrak g=\{\gamma'(0):\gamma \text{ a } C^1 \text{ curve in } G,\
+  \gamma(0)=1\}$, and $X\in\mathfrak g$ if and only if $\exp(tX)\in G$ for
+  all $t$ (Theorem~\ref{dgdt:Thm:5.1YKos}, which is Kosmann-Schwarzbach's
+  Theorem~5.1);
+ \item $\mathfrak{su}(2)=\{X\in\mathfrak{gl}(2,\mathbb C):X+X^\dagger=0,\
+  \operatorname{tr}X=0\}$ with the basis $\xi_1,\xi_2,\xi_3$
+  (\S\ref{dgdt:sec:KS-su2-bases});
+ \item conjugation $\mathcal C_g(h)=ghg^{-1}$, the adjoint action
+  $\mathrm{Ad}_g=D_1\mathcal C_g$, so that $\mathrm{Ad}_gY=gYg^{-1}$, and its
+  derivative $\mathrm{ad}_XY=[X,Y]$
+  (\S\ref{dgdt:sec:adjoint-representation}).
+\end{itemize}
+To these we add the symbols introduced in this part: the hat map
+$\widehat{\boldsymbol\omega}=\omega^jE_j$ (Eq.~\eqref{quat:hat}), the map
+$\Sigma(\mathbf x)=x^k\sigma_k$ to traceless Hermitian matrices
+(Eq.~\eqref{quat:Sigma}), and the homomorphism
+$\Phi\colon SU(2)\to SO(3)$ (Eq.~\eqref{quat:Phi}). The table lists
+Frankel's symbol for each object beside ours. Holm's symbols are given in
+the text where they occur.
+\begin{center}
+\small
+\begin{tabular}{lll}
+ object & Frankel \cite{TFrankel2012} & ours\\\hline
+ Lie algebra of $G$ & $\mathfrak g$ & $\mathfrak g$\\
+ Lie algebra of $SU(2)$ & $\mathfrak g$ & $\mathfrak{su}(2)$\\
+ traceless Hermitian $2\times2$ & $i\mathfrak g$ & $i\,\mathfrak{su}(2)$\\
+ $\mathbb R^3\to i\,\mathfrak{su}(2)$ & $\mathbf x\mapsto\mathbf x_*$ &
+   $\mathbf x\mapsto\Sigma(\mathbf x)$\\
+ generator of rotations & $\mathbf E\bullet\boldsymbol\omega$ &
+   $\widehat{\boldsymbol\omega}$\\
+ conjugation $h\mapsto ghg^{-1}$ & --- & $\mathcal C_g$\\
+ action on $\mathfrak g$ & $\mathrm{Ad}(g)$ & $\mathrm{Ad}_g$\\
+ $SU(2)\to SO(3)$ & $\mathrm{Ad}$ & $\Phi$\\
+ derivative at $I$ & $\mathrm{Ad}_*$ & $d\Phi$\\
+ ``corresponds under $_*$'' & $\sim$ & an equation in $\Sigma$
+\end{tabular}
+\end{center}
+Frankel uses $\mathrm{Ad}$ both for the action on matrices and for the
+resulting $3\times3$ matrix, and writes $\sim$ between a vector and the
+matrix it corresponds to. We keep the two apart: $\mathrm{Ad}_u$ acts on
+matrices, $\Phi(u)$ acts on $\mathbb R^3$, and Eq.~\eqref{quat:Phi} relates
+them with an equality.
+
 \section{The Lie algebra \texorpdfstring{$\mathfrak{so}(n)$}{so(n)} and Frankel's basis of \texorpdfstring{$\mathfrak{so}(3)$}{so(3)}}\label{quat:sec:so-n}
 Let $G\subseteq GL(n,\mathbb R)$ be a closed matrix group. Its Lie algebra is
 \begin{equation}\label{quat:matrix-lie-algebra}
@@ -51,6 +102,18 @@ skew-symmetric matrix vanishes. By Eq.~\eqref{quat:matrix-lie-algebra},
  \dim\mathfrak{so}(n)=\frac{n(n-1)}{2},
 \end{equation}
 the dimension being the number of entries above the diagonal.
+
+Count the dimension of the group the same way. A matrix $g\in GL(n,\mathbb R)$
+has $n^2$ real entries. The matrix $g^Tg$ is symmetric for every $g$, because
+$(g^Tg)^T=g^Tg$, so the equation $g^Tg=I$ imposes only the $n(n+1)/2$
+conditions on and above the diagonal. Hence
+\begin{equation}\label{quat:dim-On}
+ \dim O(n)=n^2-\frac{n(n+1)}{2}=\frac{n(n-1)}{2}=\dim\mathfrak{so}(n).
+\end{equation}
+On $O(n)$, $(\det g)^2=\det(g^Tg)=1$, so $\det g=\pm1$. The condition
+$\det g=1$ selects the matrices with one of these two values and removes no
+further dimension. For $n=3$ the count is $9-6=3$, and the three parameters
+are an axis direction (two) and an angle (one), as shown below.
 
 \subsection{The basis \texorpdfstring{$E_{ab}$}{E\_ab} and its brackets}
 Let $e_a$ be the standard basis column vectors of $\mathbb R^n$ and define
@@ -185,31 +248,177 @@ Since $\mathbf r$ is arbitrary,
 \end{equation}
 Frankel's Eq.~(19.2) and his structure constants of $SO(3)$.
 
-\subsection{Angular velocity}
-Equation~\eqref{quat:Ei-cross} identifies the hat map of the rigid-body
-part: for $\boldsymbol\omega\in\mathbb R^3$,
-\begin{equation}\label{quat:hat}
- \widehat{\boldsymbol\omega}=\omega^jE_j ,\qquad
- \widehat{\boldsymbol\omega}\,\mathbf r=\boldsymbol\omega\times\mathbf r ,
-\end{equation}
-which is the definition of $\widehat{\boldsymbol\omega}_B$ after
-Eq.~\eqref{gnc:skew}. By Eq.~\eqref{quat:so3-brackets}, the hat map is a
-Lie algebra isomorphism from $(\mathbb R^3,\times)$ to $\mathfrak{so}(3)$:
-$[\widehat{\mathbf u},\widehat{\mathbf v}]=u^iv^j\epsilon_{ijk}E_k
-=\widehat{\mathbf u\times\mathbf v}$. A one-parameter group of rotations
-$R(t)=\exp(tS)$ moves $\mathbf r(t)=R(t)\mathbf r(0)$ with
-$\frac{d\mathbf r}{dt}(0)=S\mathbf r(0)$. If the angular velocity is the
-constant $\boldsymbol\omega$, then $\frac{d\mathbf r}{dt}(0)
-=\boldsymbol\omega\times\mathbf r(0)$ for every $\mathbf r(0)$, so
-$S=\widehat{\boldsymbol\omega}$ and
-\begin{equation}\label{quat:frankel-19-3}
- R(t)=\exp\bigl(t\,\omega^jE_j\bigr),\qquad
- R(\theta)=\exp\bigl(\theta\,n^jE_j\bigr)
-\end{equation}
-for rotation by $\theta$ about the unit vector $\mathbf n$. These are
-Frankel's Eqs.~(19.3)--(19.4), p.~493.
+\subsection{Rotation about an axis and the angular velocity vector}
+Frankel's Figure~19.1 (p.~492) shows a point $\mathbf r$ carried around
+the $z$ axis, and he states $\frac{d\mathbf r}{dt}(0)=\boldsymbol\omega
+\times\mathbf r(0)$. This follows from what a rotation about an axis does
+to a vector, together with the definition of the angular velocity vector.
 
-\input{topics/frankel-19-1-notes-2015.tex}
+Let $\mathbf n$ be a unit vector and $\mathbf r_0\in\mathbb R^3$. Split
+$\mathbf r_0$ into its parts along and perpendicular to $\mathbf n$:
+\begin{equation}\label{quat:split}
+ \mathbf r_0=(\mathbf n\cdot\mathbf r_0)\,\mathbf n+\mathbf r_\perp ,
+ \qquad \mathbf r_\perp=\mathbf r_0-(\mathbf n\cdot\mathbf r_0)\,\mathbf n,
+ \qquad \mathbf n\cdot\mathbf r_\perp=0 .
+\end{equation}
+Since $\mathbf n\times\mathbf n=0$, we have
+$\mathbf n\times\mathbf r_0=\mathbf n\times\mathbf r_\perp$. This vector is
+perpendicular to both $\mathbf n$ and $\mathbf r_\perp$, and has length
+$|\mathbf n||\mathbf r_\perp|\sin\frac{\pi}{2}=|\mathbf r_\perp|$. So
+$\mathbf r_\perp$ and $\mathbf n\times\mathbf r_0$ are perpendicular
+vectors of equal length spanning the plane perpendicular to $\mathbf n$.
+A rotation by the angle $\theta$ about $\mathbf n$, counterclockwise when
+viewed from the tip of $\mathbf n$, leaves the component along $\mathbf n$
+unchanged and turns $\mathbf r_\perp$ through $\theta$ toward
+$\mathbf n\times\mathbf r_0$:
+\begin{equation}\label{quat:rotate-about-n}
+ \mathbf r(\theta)=(\mathbf n\cdot\mathbf r_0)\,\mathbf n
+ +\cos\theta\,\mathbf r_\perp+\sin\theta\,\mathbf n\times\mathbf r_0 .
+\end{equation}
+For $\mathbf n=\mathbf e_3$ and $\mathbf r_0=(x,y,z)$, the perpendicular
+part is $\mathbf r_\perp=(x,y,0)$ and $\mathbf e_3\times\mathbf r_0=(-y,x,0)$.
+Equation~\eqref{quat:rotate-about-n} then gives
+$(x\cos\theta-y\sin\theta,\;x\sin\theta+y\cos\theta,\;z)$, which is
+$R(\theta)\mathbf r_0$ for the matrix of Eq.~\eqref{quat:Rz}. So
+``counterclockwise about $\mathbf n$'' is the same sense as Frankel's
+$R(\theta)$.
+
+Now let the angle change in time, $\theta=\theta(t)$ with $\theta(0)=0$,
+about the fixed axis $\mathbf n$. The \emph{angular velocity vector} is
+defined as
+\begin{equation}\label{quat:omega-def}
+ \boldsymbol\omega=\frac{d\theta}{dt}\,\mathbf n ,
+\end{equation}
+the rate of turning times the axis, oriented by the right-hand rule.
+Differentiate Eq.~\eqref{quat:rotate-about-n} with $\theta=\theta(t)$ by the
+chain rule. The first term is constant:
+\begin{equation}
+ \frac{d\mathbf r}{dt}
+ =\frac{d\theta}{dt}\Bigl(-\sin\theta\,\mathbf r_\perp
+   +\cos\theta\,\mathbf n\times\mathbf r_0\Bigr).
+\end{equation}
+At $t=0$, $\theta=0$, so $\sin\theta=0$ and $\cos\theta=1$:
+\begin{equation}\label{quat:drdt-omega}
+ \frac{d\mathbf r}{dt}(0)=\frac{d\theta}{dt}(0)\,\mathbf n\times\mathbf r_0
+ =\boldsymbol\omega\times\mathbf r(0).
+\end{equation}
+This is Frankel's statement. It is the definition~\eqref{quat:omega-def}
+applied to the geometry of Eq.~\eqref{quat:rotate-about-n}, not a separate
+fact.
+
+\subsection{One-parameter subgroups are exponentials}
+Frankel next says that the rotations at constant angular velocity form a
+one-parameter subgroup, ``of the form $R(t)=e^{tS}$ for some skew symmetric
+matrix $S$''. Two facts are used: these rotations form a one-parameter
+subgroup, and every one-parameter subgroup is an exponential.
+
+\emph{The rotations about a fixed axis form a one-parameter subgroup.} Let
+$R_{\mathbf n}(\theta)$ denote the linear map~\eqref{quat:rotate-about-n}.
+Choose a unit vector $\mathbf u\perp\mathbf n$ and put
+$\mathbf v=\mathbf n\times\mathbf u$. Then $(\mathbf u,\mathbf v,\mathbf n)$
+is a right-handed orthonormal basis, since
+$\mathbf u\times\mathbf v=\mathbf u\times(\mathbf n\times\mathbf u)
+=(\mathbf u\cdot\mathbf u)\mathbf n-(\mathbf u\cdot\mathbf n)\mathbf u
+=\mathbf n$. Applying Eq.~\eqref{quat:rotate-about-n} to $\mathbf u$,
+$\mathbf v$ and $\mathbf n$, and using
+$\mathbf n\times\mathbf v=\mathbf n\times(\mathbf n\times\mathbf u)=-\mathbf u$,
+\begin{equation}
+ R_{\mathbf n}(\theta)\mathbf u=\cos\theta\,\mathbf u+\sin\theta\,\mathbf v,
+ \quad
+ R_{\mathbf n}(\theta)\mathbf v=-\sin\theta\,\mathbf u+\cos\theta\,\mathbf v,
+ \quad
+ R_{\mathbf n}(\theta)\mathbf n=\mathbf n .
+\end{equation}
+In the basis $(\mathbf u,\mathbf v,\mathbf n)$ the matrix of
+$R_{\mathbf n}(\theta)$ is therefore the matrix of Eq.~\eqref{quat:Rz}, and
+the addition formulas shown there give
+$R_{\mathbf n}(\theta)R_{\mathbf n}(\varphi)=R_{\mathbf n}(\theta+\varphi)$.
+At constant angular velocity, $\theta(t)=\frac{d\theta}{dt}t$, so
+$R(t)=R_{\mathbf n}(\frac{d\theta}{dt}t)$ satisfies
+$R(t)R(s)=R(t+s)$ and $R(0)=I$.
+
+\emph{Every differentiable one-parameter subgroup is an exponential.} Let
+$R\colon\mathbb R\to GL(n,\mathbb R)$ be differentiable with $R(0)=I$ and
+$R(t+s)=R(t)R(s)$ for all $s,t$, and put $S=\frac{dR}{dt}(0)$. Differentiate
+$R(t+s)=R(t)R(s)$ with respect to $s$, holding $t$ fixed, and set $s=0$:
+\begin{equation}\label{quat:one-param-ode}
+ \frac{dR}{dt}(t)=R(t)S .
+\end{equation}
+Let $M(t)=R(t)\exp(-tS)$. Since
+$\frac{d}{dt}\exp(-tS)=-S\exp(-tS)$, the product rule and
+Eq.~\eqref{quat:one-param-ode} give
+\begin{equation}
+ \frac{dM}{dt}(t)=R(t)S\exp(-tS)-R(t)S\exp(-tS)=0 .
+\end{equation}
+So $M(t)=M(0)=I$, and multiplying on the right by $\exp(tS)$,
+\begin{equation}\label{quat:one-param-exp}
+ R(t)=\exp(tS),\qquad S=\frac{dR}{dt}(0).
+\end{equation}
+This is the content of Theorem~\ref{dgdt:Thm:5.1YKos}(ii) for one-parameter
+subgroups, and of Frankel's Section~15.2 (p.~398). When $R(t)\in SO(3)$, the
+generator $S$ is skew-symmetric by Eq.~\eqref{quat:skew}.
+
+\emph{Identifying $S$.} With $\mathbf r(t)=R(t)\mathbf r_0
+=\exp(tS)\mathbf r_0$, differentiation at $t=0$ gives
+$\frac{d\mathbf r}{dt}(0)=S\mathbf r_0$. Comparing with
+Eq.~\eqref{quat:drdt-omega},
+\begin{equation}\label{quat:S-omega}
+ S\mathbf r_0=\boldsymbol\omega\times\mathbf r_0
+ \quad\text{for every }\mathbf r_0\in\mathbb R^3 .
+\end{equation}
+
+\subsection{The generators act by cross products}
+Frankel notes that $E_j(\mathbf r)=\mathbf e_j\times\mathbf r$. Check it
+for each $j$ with $\mathbf r=(x,y,z)$. Multiplying the matrices of
+Eq.~\eqref{quat:frankel-Ei} into $\mathbf r$, and computing the cross
+products from $\mathbf a\times\mathbf b=(a^2b^3-a^3b^2,\;a^3b^1-a^1b^3,\;
+a^1b^2-a^2b^1)$,
+\begin{align}
+ E_1\mathbf r&=(0,\,-z,\,y),&
+ \mathbf e_1\times\mathbf r&=(0\cdot z-0\cdot y,\;0\cdot x-1\cdot z,\;
+   1\cdot y-0\cdot x)=(0,\,-z,\,y),\notag\\
+ E_2\mathbf r&=(z,\,0,\,-x),&
+ \mathbf e_2\times\mathbf r&=(1\cdot z-0\cdot y,\;0\cdot x-0\cdot z,\;
+   0\cdot y-1\cdot x)=(z,\,0,\,-x),\notag\\
+ E_3\mathbf r&=(-y,\,x,\,0),&
+ \mathbf e_3\times\mathbf r&=(0\cdot z-1\cdot y,\;1\cdot x-0\cdot z,\;
+   0\cdot y-0\cdot x)=(-y,\,x,\,0).\label{quat:Ej-explicit}
+\end{align}
+In index form this is Eq.~\eqref{quat:Ei-cross}, used above for the
+brackets. The cross product is
+linear in its first factor, so for $\boldsymbol\omega=\omega^j\mathbf e_j$
+\begin{equation}\label{quat:hat}
+ \boldsymbol\omega\times\mathbf r=\omega^j\,\mathbf e_j\times\mathbf r
+ =\omega^jE_j\mathbf r ,\qquad
+ \widehat{\boldsymbol\omega}:=\omega^jE_j .
+\end{equation}
+This $\widehat{\boldsymbol\omega}$ is the hat map of the rigid-body part,
+defined after Eq.~\eqref{gnc:skew}, and it is Frankel's
+$\mathbf E\bullet\boldsymbol\omega$. Holm calls the same map the hat map.
+
+Equations~\eqref{quat:S-omega} and \eqref{quat:hat} give
+$S=\widehat{\boldsymbol\omega}$, and Eq.~\eqref{quat:one-param-exp} becomes
+\begin{equation}\label{quat:frankel-19-3}
+ R(t)=\exp\bigl(t\,\omega^jE_j\bigr)=\exp\bigl(t\,\widehat{\boldsymbol\omega}\bigr),
+\end{equation}
+Frankel's Eq.~(19.3), p.~493. At constant rate the angle is
+$\theta=t\frac{d\theta}{dt}$, so $t\boldsymbol\omega=\theta\mathbf n$ by
+Eq.~\eqref{quat:omega-def}, and
+\begin{equation}\label{quat:frankel-19-4}
+ R_{\mathbf n}(\theta)=\exp\bigl(\theta\,n^jE_j\bigr),
+\end{equation}
+Frankel's Eq.~(19.4): the rotation through $\theta$ about the unit vector
+$\mathbf n$.
+
+By Eq.~\eqref{quat:so3-brackets}, the hat map is a Lie algebra
+isomorphism from $(\mathbb R^3,\times)$ to $\mathfrak{so}(3)$:
+\begin{equation}
+ [\widehat{\mathbf u},\widehat{\mathbf v}]=u^iv^j[E_i,E_j]
+ =u^iv^j\epsilon_{ijk}E_k=(\mathbf u\times\mathbf v)^kE_k
+ =\widehat{\mathbf u\times\mathbf v}.
+\end{equation}
+
+\input{topics/su2-so3-covering.tex}
 
 \section{Two bases of \texorpdfstring{$\mathfrak{su}(2)$}{su(2)}: Kosmann-Schwarzbach and Frankel}
 \S\ref{dgdt:sec:KS-su2-bases} records Kosmann-Schwarzbach's basis
@@ -342,11 +551,12 @@ $\mathbb H$ onto the real span of $I$ and $-i\sigma_a$.
 Two scalings differ from ours. Frankel's real basis of $\mathfrak{su}(2)$ is
 $\sigma_a/(2i)=\tfrac12e_a$, which has the $\mathfrak{so}(3)$ brackets
 (p.~493). His identification of $\mathbb R^3$ with traceless Hermitian
-matrices, Eq.~(19.7), p.~494, is $\mathbf x_*=x^a\sigma_a$, while our
-pure quaternion is
+matrices, Eq.~(19.7), p.~494, is $\mathbf x_*=\Sigma(\mathbf x)=x^a\sigma_a$
+(Eq.~\eqref{quat:Sigma}), while our pure quaternion is
 \begin{equation}\label{quat:frankel-star}
- x^ae_a=x^a(-i\sigma_a)=\frac{\mathbf x_*}{i}.
+ x^ae_a=x^a(-i\sigma_a)=-i\Sigma(\mathbf x),
 \end{equation}
+which is Holm's $\widetilde{\mathbf x}$.
 
 \section{The half angle in both notations}
 Frankel's Eq.~(19.15), p.~497, sends
@@ -421,9 +631,6 @@ Section~19.2c before the two are combined. For matrix Lie groups, the
 exponential, $\mathfrak{su}(2)$ representations and universal covers in a
 single Lie-theoretic notation, use Chapters~1--5 of Hall \cite{BCHall2015}.
 
-Derive the kernel $\{\pm I\}$ of $\mathrm{Ad}$ as Frankel does in
-Section~19.1d and compare it with the Kosmann-Schwarzbach treatment of
-$SU(2)$ and $SO(3)$ in the Lie-groups part. Then derive
-Eq.~\eqref{quat:body-to-inertial} from $\mathrm{Ad}$ under
+Derive Eq.~\eqref{quat:body-to-inertial} from Eq.~\eqref{quat:Phi} under
 Eq.~\eqref{quat:frankel-star}, and the quaternion kinematics matching
 Eq.~\eqref{gnc:attitude-kinematics}.

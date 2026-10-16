@@ -1,0 +1,588 @@
+\section{The group \texorpdfstring{$SU(2)$}{SU(2)} and its Lie algebra \texorpdfstring{$\mathfrak{su}(2)$}{su(2)}}\label{quat:sec:su2}
+This section follows Frankel's Section~19.1b (pp.~493--495) in the
+notation of \S\ref{quat:sec:notation}.
+
+\subsection{The group}
+As in the Lie-groups part,
+\begin{equation}\label{quat:SU2-def}
+ SU(2)=\{U\in GL(2,\mathbb C):UU^\dagger=1,\ \det U=1\}.
+\end{equation}
+Dropping $\det U=1$ gives the unitary group $U(2)$. For square matrices
+$UU^\dagger=1$ and $U^\dagger U=1$ are equivalent, and they say that $U$
+preserves the Hermitian inner product $\langle z,w\rangle=z^\dagger w$ on
+$\mathbb C^2$: $(Uz)^\dagger(Uw)=z^\dagger U^\dagger Uw=z^\dagger w$.
+
+Every element has a standard form. Write
+$U=\begin{bmatrix}a&b\\c&d\end{bmatrix}$. Since $\det U=1$, the inverse is
+$U^{-1}=\begin{bmatrix}d&-b\\-c&a\end{bmatrix}$; since $UU^\dagger=1$,
+the inverse is also $U^\dagger=\begin{bmatrix}\bar a&\bar c\\
+\bar b&\bar d\end{bmatrix}$. Equating entries gives $d=\bar a$ and
+$-b=\bar c$, that is $b=-\bar c$. Then $\det U=a\bar a-(-\bar c)c
+=|a|^2+|c|^2$. Writing $\alpha=a$, $\beta=c$,
+\begin{equation}\label{quat:su2-general}
+ SU(2)=\Bigl\{\begin{bmatrix}\alpha&-\bar\beta\\ \beta&\bar\alpha\end{bmatrix}
+ :\alpha,\beta\in\mathbb C,\ |\alpha|^2+|\beta|^2=1\Bigr\}.
+\end{equation}
+Conversely, every matrix of this form satisfies $UU^\dagger=1$ and
+$\det U=1$, by direct multiplication.
+
+\emph{Dimension.} $GL(2,\mathbb C)$ has four complex entries, so real
+dimension $8$. The matrix $U^\dagger U$ is Hermitian for every $U$, so
+$U^\dagger U=1$ imposes only four real conditions: the two real diagonal
+entries and the real and imaginary parts of one off-diagonal entry. Hence
+$\dim U(2)=8-4=4$. On $U(2)$,
+$|\det U|^2=\det(U^\dagger)\det U=\det(U^\dagger U)=1$, so
+$\det U=e^{i\phi}$ for some real $\phi$, and $\det U=1$ is one further real
+condition:
+\begin{equation}\label{quat:dim-SU2}
+ \dim SU(2)=4-1=3 .
+\end{equation}
+Equation~\eqref{quat:su2-general} agrees: $(\alpha,\beta)\in\mathbb C^2$
+has four real parameters and $|\alpha|^2+|\beta|^2=1$ is one real equation.
+
+\subsection{The Lie algebra}
+Let $U(t)$ be a curve in $SU(2)$ with $U(0)=1$ and $X=\frac{dU}{dt}(0)$.
+Differentiating $U(t)U(t)^\dagger=1$ by the product rule at $t=0$ gives
+$X+X^\dagger=0$. For the determinant use
+$\det\exp(tX)=e^{t\operatorname{tr}X}$: by
+Theorem~\ref{dgdt:Thm:5.1YKos}(ii), $\exp(tX)\in SU(2)$ for all $t$, so
+$e^{t\operatorname{tr}X}=1$ for all $t$; differentiating at $t=0$ gives
+$\operatorname{tr}X=0$. Conversely, if $X^\dagger=-X$ and
+$\operatorname{tr}X=0$, then $\exp(tX)^\dagger\exp(tX)=\exp(-tX)\exp(tX)=1$
+and $\det\exp(tX)=e^0=1$. So
+\begin{equation}\label{quat:su2-def}
+ \mathfrak{su}(2)=\{X\in\mathfrak{gl}(2,\mathbb C):X+X^\dagger=0,\
+ \operatorname{tr}X=0\},
+\end{equation}
+the definition recorded in \S\ref{dgdt:sec:KS-su2-bases}. Frankel writes
+$\mathfrak{su}(2)=\mathfrak g$ and calls its elements skew-Hermitian
+matrices with trace $0$.
+
+\emph{Dimension.} $X^\dagger=-X$ makes the diagonal entries purely
+imaginary (two real parameters) and fixes $X_{21}=-\overline{X_{12}}$ (two
+real parameters in $X_{12}$). Then $\operatorname{tr}X$ is purely imaginary,
+and $\operatorname{tr}X=0$ is one real condition. Every
+$X\in\mathfrak{su}(2)$ is therefore
+\begin{equation}\label{quat:su2-general-X}
+ X=\begin{bmatrix}ia&w\\-\bar w&-ia\end{bmatrix},\qquad a\in\mathbb R,\
+ w\in\mathbb C,\qquad \dim\mathfrak{su}(2)=4-1=3=\dim SU(2).
+\end{equation}
+$\mathfrak{su}(2)$ is a vector space over $\mathbb R$, not over
+$\mathbb C$: if $X\in\mathfrak{su}(2)$ is nonzero then
+$(iX)^\dagger=-iX^\dagger=iX$, so $iX$ is Hermitian and not in
+$\mathfrak{su}(2)$.
+
+\emph{Hermitian generators.} Multiplication by $i$ is therefore a real
+linear isomorphism from $\mathfrak{su}(2)$ onto the traceless Hermitian
+matrices, which Frankel calls $i\mathfrak g$ and we write
+$i\,\mathfrak{su}(2)$. Physics texts usually work in
+$i\,\mathfrak{su}(2)$ (Hermitian generators, observables) and write group
+elements as $\exp(-iH)$ with $H$ Hermitian; Frankel follows this with
+$e^{th/i}$.
+
+\emph{Bases.} The Pauli matrices
+$\sigma_1=\begin{bmatrix}0&1\\1&0\end{bmatrix}$,
+$\sigma_2=\begin{bmatrix}0&-i\\i&0\end{bmatrix}$,
+$\sigma_3=\begin{bmatrix}1&0\\0&-1\end{bmatrix}$ are Hermitian and
+traceless. The products
+\begin{equation}\label{quat:minus-i-sigma}
+ -i\sigma_1=\begin{bmatrix}0&-i\\-i&0\end{bmatrix},\qquad
+ -i\sigma_2=\begin{bmatrix}0&-1\\1&0\end{bmatrix},\qquad
+ -i\sigma_3=\begin{bmatrix}-i&0\\0&i\end{bmatrix}
+\end{equation}
+give $x^k(-i\sigma_k)=\begin{bmatrix}-ix^3&-x^2-ix^1\\x^2-ix^1&ix^3
+\end{bmatrix}$. This equals the $X$ of Eq.~\eqref{quat:su2-general-X} exactly
+when $x^3=-a$, $x^2=-\operatorname{Re}w$, $x^1=-\operatorname{Im}w$, so
+every $X\in\mathfrak{su}(2)$ is $x^k(-i\sigma_k)$ for unique real $x^k$.
+Thus
+\begin{equation}\label{quat:su2-bases}
+ \{-i\sigma_k\}=\{\sigma_k/i\}\ \text{is a basis of }\mathfrak{su}(2),
+ \qquad \{\sigma_k\}\ \text{is a basis of } i\,\mathfrak{su}(2).
+\end{equation}
+These are Frankel's bases. Holm uses the same basis $-i\sigma_k$ of
+$\mathfrak{su}(2)$ (Section~3.2.3, p.~102). Kosmann-Schwarzbach's basis
+$\xi_k$ of \S\ref{dgdt:sec:KS-su2-bases} is related to them by
+$\sigma_1=-2i\xi_1$, $\sigma_2=2i\xi_2$, $\sigma_3=-2i\xi_3$, so
+$\xi_k=\pm\frac12(-i\sigma_k)$ with the signs $(-,+,-)$; the meaning of the
+signs is Eq.~\eqref{quat:KS-vs-Frankel}.
+
+\subsection{Vectors as traceless Hermitian matrices}
+Define the real linear map
+\begin{equation}\label{quat:Sigma}
+ \Sigma\colon\mathbb R^3\to i\,\mathfrak{su}(2),\qquad
+ \Sigma(\mathbf x)=x^k\sigma_k
+ =\begin{bmatrix}z&x-iy\\x+iy&-z\end{bmatrix},
+\end{equation}
+for $\mathbf x=(x,y,z)$; the matrix is
+$x\sigma_1+y\sigma_2+z\sigma_3$ added entry by entry, and
+$\Sigma(\mathbf e_k)=\sigma_k$. This is Frankel's Eq.~(19.7), where
+$\Sigma(\mathbf x)$ is written $\mathbf x_*=\mathbf x\bullet\boldsymbol\sigma$.
+Holm writes the same matrix as $\mathbf r\cdot\boldsymbol\sigma$
+(Eq.~(3.2.13), p.~101). Multiplying by $-i$ lands in $\mathfrak{su}(2)$
+instead: Holm's tilde map (Eq.~(3.2.14), p.~102) is
+$\widetilde{\mathbf q}=-i\,\mathbf q\cdot\boldsymbol\sigma=-i\Sigma(\mathbf q)$,
+which is our pure quaternion $q^ae_a$ under Eq.~\eqref{quat:dictionary}.
+In the basis $\xi_k$ the analogous identification is
+$\mathbf x\mapsto x^k\xi_k\in\mathfrak{su}(2)$.
+
+To invert $\Sigma$, use Frankel's anticommutator
+$\sigma_j\sigma_k+\sigma_k\sigma_j=2\delta_{jk}I$ (Eq.~(19.18)). Taking
+the trace, $2\operatorname{tr}(\sigma_j\sigma_k)=2\delta_{jk}\operatorname{tr}I
+=4\delta_{jk}$, so $\operatorname{tr}(\sigma_j\sigma_k)=2\delta_{jk}$. Then
+\begin{equation}\label{quat:Sigma-inverse}
+ \operatorname{tr}\bigl(\Sigma(\mathbf x)\sigma_j\bigr)
+ =x^k\operatorname{tr}(\sigma_k\sigma_j)=2x^j,\qquad
+ x^j=\tfrac12\operatorname{tr}\bigl(\Sigma(\mathbf x)\sigma_j\bigr),
+\end{equation}
+Frankel's Eq.~(19.8). With his real scalar product
+$\langle h,h'\rangle=\operatorname{tr}(hh')$ on $i\,\mathfrak{su}(2)$
+(Eq.~(19.9)),
+\begin{equation}\label{quat:Sigma-metric}
+ \langle\Sigma(\mathbf x),\Sigma(\mathbf y)\rangle
+ =x^jy^k\operatorname{tr}(\sigma_j\sigma_k)=2\,\mathbf x\cdot\mathbf y ,
+\end{equation}
+so the Pauli matrices are orthogonal, each of length $\sqrt2$. The same
+symmetrization as in Eq.~\eqref{quat:sigma-square} gives
+$\Sigma(\mathbf x)^2=x^jx^k\sigma_j\sigma_k=|\mathbf x|^2I$, and from the
+matrix in Eq.~\eqref{quat:Sigma},
+$\det\Sigma(\mathbf x)=-z^2-(x-iy)(x+iy)=-|\mathbf x|^2$.
+
+\subsection{The adjoint action of \texorpdfstring{$SU(2)$}{SU(2)}}
+Frankel asks the reader to recall that every Lie group acts on its Lie
+algebra by the adjoint action. In our notation this is
+$\mathrm{Ad}_g=D_1\mathcal C_g$, $\mathrm{Ad}_gY=gYg^{-1}$
+(\S\ref{dgdt:sec:adjoint-representation}), and
+Theorem~\ref{dgdt:Thm:5.1YKos}(iii) states that $gYg^{-1}\in\mathfrak g$.
+The reason is short. In $(gYg^{-1})^k$ every inner $g^{-1}g$ cancels, for
+example $(gYg^{-1})^2=gYg^{-1}gYg^{-1}=gY^2g^{-1}$, so
+\begin{equation}\label{quat:conj-exp}
+ \exp\bigl(t\,gYg^{-1}\bigr)=\sum_{k=0}^{\infty}\frac{t^k}{k!}gY^kg^{-1}
+ =g\exp(tY)g^{-1}=\mathcal C_g\bigl(\exp(tY)\bigr)\in G ,
+\end{equation}
+and Theorem~\ref{dgdt:Thm:5.1YKos}(ii) gives $gYg^{-1}\in\mathfrak g$.
+Differentiating Eq.~\eqref{quat:conj-exp} at $t=0$ shows that $gYg^{-1}$ is
+the derivative of $\mathcal C_g$ along $\exp(tY)$, which is why
+$\mathrm{Ad}_g=D_1\mathcal C_g$. Each $\mathrm{Ad}_g$ is linear, and
+$\mathrm{Ad}_{gg'}Y=gg'Y(gg')^{-1}=g(g'Yg'^{-1})g^{-1}
+=\mathrm{Ad}_g\mathrm{Ad}_{g'}Y$.
+
+Frankel lets $SU(2)$ act on $i\,\mathfrak{su}(2)$ instead of
+$\mathfrak{su}(2)$ and still calls the action $\mathrm{Ad}$ (his
+Eq.~(19.10)). This is the same action: $\mathrm{Ad}_u$ is complex linear on
+$2\times2$ matrices, so $\mathrm{Ad}_u(iX)=i\,\mathrm{Ad}_u(X)$. Directly,
+for Hermitian traceless $h$ and $u^{-1}=u^\dagger$,
+$(uhu^{-1})^\dagger=(uhu^\dagger)^\dagger=uh^\dagger u^\dagger=uhu^{-1}$ and
+$\operatorname{tr}(uhu^{-1})=\operatorname{tr}(hu^{-1}u)=\operatorname{tr}h=0$.
+
+\subsection{The homomorphism \texorpdfstring{$\Phi$}{Phi}}
+Since $u\Sigma(\mathbf x)u^{-1}$ is traceless Hermitian, it is
+$\Sigma$ of exactly one vector. Define $\Phi(u)\mathbf x$ to be that vector:
+\begin{equation}\label{quat:Phi}
+ \Sigma\bigl(\Phi(u)\mathbf x\bigr)=u\,\Sigma(\mathbf x)\,u^{-1}
+ =\mathrm{Ad}_u\Sigma(\mathbf x),
+ \qquad u\in SU(2),\ \mathbf x\in\mathbb R^3 .
+\end{equation}
+$\Phi(u)$ is linear in $\mathbf x$, and by Eq.~\eqref{quat:Sigma-inverse}
+its matrix entries are
+\begin{equation}\label{quat:Phi-entries}
+ \Phi(u)_{jk}=\tfrac12\operatorname{tr}\bigl(\sigma_j\,u\sigma_ku^{-1}\bigr).
+\end{equation}
+Equation~\eqref{quat:Phi} says that this square commutes:
+\begin{equation}
+\begin{tikzcd}
+ \mathbb R^3 \arrow[r,"\Phi(u)"] \arrow[d,"\Sigma"'] &
+ \mathbb R^3 \arrow[d,"\Sigma"]\\
+ i\,\mathfrak{su}(2) \arrow[r,"\mathrm{Ad}_u"'] & i\,\mathfrak{su}(2)
+\end{tikzcd}
+\end{equation}
+Frankel writes both $\Phi(u)$ and $\mathrm{Ad}_u$ as $\mathrm{Ad}(u)$, and
+writes $\mathrm{Ad}\,u\,\mathbf x\sim\mathrm{Ad}\,u\,\mathbf x_*$ for
+Eq.~\eqref{quat:Phi}: the $\sim$ means ``corresponds under $\Sigma$''.
+Because $\Sigma(\mathbf x)/i\in\mathfrak{su}(2)$ and
+$\mathrm{Ad}_u(\Sigma(\mathbf x)/i)=\mathrm{Ad}_u(\Sigma(\mathbf x))/i$,
+$\Phi(u)$ is also the matrix of $\mathrm{Ad}_u$ on $\mathfrak{su}(2)$ in
+the basis $\sigma_k/i$. So $\Phi$ is the adjoint representation of $SU(2)$
+written as $3\times3$ real matrices, which is why Frankel calls it
+$\mathrm{Ad}$.
+
+$\Phi$ is a homomorphism. Apply Eq.~\eqref{quat:Phi} twice:
+\begin{equation}
+ \Sigma\bigl(\Phi(uu')\mathbf x\bigr)=uu'\Sigma(\mathbf x)(uu')^{-1}
+ =u\,\Sigma\bigl(\Phi(u')\mathbf x\bigr)u^{-1}
+ =\Sigma\bigl(\Phi(u)\Phi(u')\mathbf x\bigr),
+\end{equation}
+and $\Sigma$ is injective, so $\Phi(uu')=\Phi(u)\Phi(u')$.
+
+$\Phi(u)$ is orthogonal. By Eq.~\eqref{quat:Sigma-metric} and cyclicity of
+the trace,
+\begin{align}
+ 2|\Phi(u)\mathbf x|^2
+ &=\operatorname{tr}\Bigl(\Sigma\bigl(\Phi(u)\mathbf x\bigr)^2\Bigr)
+  =\operatorname{tr}\bigl(u\Sigma(\mathbf x)u^{-1}u\Sigma(\mathbf x)u^{-1}\bigr)\notag\\
+ &=\operatorname{tr}\bigl(u\Sigma(\mathbf x)^2u^{-1}\bigr)
+  =\operatorname{tr}\bigl(\Sigma(\mathbf x)^2\bigr)=2|\mathbf x|^2 .
+\end{align}
+A linear map that preserves lengths preserves inner products, since
+$2\mathbf x\cdot\mathbf y=|\mathbf x+\mathbf y|^2-|\mathbf x|^2-|\mathbf y|^2$.
+So $\Phi(u)^T\Phi(u)=I$ and $\det\Phi(u)=\pm1$. That the sign is $+1$
+needs the topology of $SU(2)$.
+
+\section{\texorpdfstring{$SU(2)$}{SU(2)} is the 3-sphere}\label{quat:sec:su2-sphere}
+This section follows Frankel's Section~19.1c (p.~495). Let
+\begin{equation}
+ S^3=\{(z_1,z_2)^T\in\mathbb C^2:|z_1|^2+|z_2|^2=1\}\subset\mathbb C^2\cong\mathbb R^4 .
+\end{equation}
+A unitary matrix preserves $|z|^2=z^\dagger z$, so each $u\in SU(2)$ maps
+$S^3$ to itself. This is what Frankel means by ``$SU(2)\colon S^3\to S^3$;
+this is the meaning of being unitary''.
+
+\subsection{The action is transitive}
+A group $G$ \emph{acts transitively} on a set $M$ if for every pair of
+points $x,y\in M$ some $g\in G$ has $gx=y$ (Frankel, Section~17.2a,
+p.~456): one can move from any point to any other. It is enough to reach
+every point from one fixed point $x_0$. If $x=gx_0$ and $y=g'x_0$, then
+$g'g^{-1}x=y$.
+
+Take $x_0=(1,0)^T$ and any $(z_1,z_2)^T\in S^3$. The matrix
+\begin{equation}\label{quat:frankel-19-11}
+ u=\begin{bmatrix}z_1&-\bar z_2\\z_2&\bar z_1\end{bmatrix}
+\end{equation}
+is Eq.~\eqref{quat:su2-general} with $\alpha=z_1$, $\beta=z_2$, so
+$u\in SU(2)$. Also $u(1,0)^T$ is the first column of $u$, which is
+$(z_1,z_2)^T$. This is Frankel's Eq.~(19.11). So $SU(2)$ acts transitively
+on $S^3$.
+
+\subsection{From the orbit to a homeomorphism}
+Frankel's Fundamental Principle~(17.10), Section~17.2a, p.~457, states:
+\emph{if $G$ acts transitively on $M$, $x_0\in M$, and
+$H=\{g\in G:gx_0=x_0\}$ is the stability (isotropy) subgroup of $x_0$, then
+$gH\mapsto gx_0$ is a one-to-one correspondence between the left cosets
+$G/H$ and $M$.} It comes from the orbit map $g\mapsto gx_0$. This map is
+onto by transitivity. Two elements have the same image exactly when they lie
+in one coset: $gx_0=g'x_0\iff g^{-1}g'x_0=x_0\iff g^{-1}g'\in H\iff
+gH=g'H$. Theorem~(17.11), p.~458, adds that for a closed subgroup $H$ of a
+Lie group $G$, $G/H$ is a manifold of dimension $\dim G-\dim H$.
+
+For $x_0=(1,0)^T$, write $u$ in the form~\eqref{quat:su2-general}. Then
+$u(1,0)^T=(\alpha,\beta)^T$, and $u(1,0)^T=(1,0)^T$ forces $\alpha=1$,
+$\beta=0$, hence
+\begin{equation}
+ u=\begin{bmatrix}1&-\bar0\\0&\bar1\end{bmatrix}=I,\qquad H=\{I\}.
+\end{equation}
+The stability subgroup is trivial because Eq.~\eqref{quat:su2-general}
+determines the whole matrix from its first column. Each coset $uH$ is the
+single element $u$, so $G/H=SU(2)$, and the correspondence of (17.10) is
+\begin{equation}\label{quat:first-column}
+ F\colon SU(2)\to S^3,\qquad F(u)=u\begin{bmatrix}1\\0\end{bmatrix}
+ =\begin{bmatrix}u_{11}\\u_{21}\end{bmatrix}.
+\end{equation}
+Its inverse is the matrix of Eq.~\eqref{quat:frankel-19-11},
+$F^{-1}(z_1,z_2)=\begin{bmatrix}z_1&-\bar z_2\\z_2&\bar z_1\end{bmatrix}$.
+Check both compositions. $F(F^{-1}(z_1,z_2))$ is the first column
+$(z_1,z_2)^T$. For $u$ in the form~\eqref{quat:su2-general},
+$F(u)=(\alpha,\beta)^T$ and $F^{-1}(\alpha,\beta)=u$. In real coordinates the
+entries of $F$ and $F^{-1}$ are linear in the real and imaginary parts of
+their arguments, so both maps are continuous, indeed smooth. Therefore $F$ is
+a homeomorphism:
+\begin{equation}
+ SU(2)\approx S^3 .
+\end{equation}
+The dimensions agree: $S^3$ is cut out of $\mathbb R^4$ by one equation,
+giving $4-1=3=\dim SU(2)$.
+
+In quaternion form, put $\alpha=q_0-iq_3$ and $\beta=q_2-iq_1$. By
+Eq.~\eqref{quat:minus-i-sigma},
+\begin{equation}
+ q_0I+q^a(-i\sigma_a)
+ =\begin{bmatrix}q_0-iq_3&-iq_1-q_2\\-iq_1+q_2&q_0+iq_3\end{bmatrix}
+ =\begin{bmatrix}\alpha&-\bar\beta\\ \beta&\bar\alpha\end{bmatrix},
+\end{equation}
+and $|\alpha|^2+|\beta|^2=q_0^2+q_1^2+q_2^2+q_3^2=|q|^2$. Under
+Eq.~\eqref{quat:dictionary}, $SU(2)$ is the group of unit quaternions, the
+unit sphere $S^3\subset\mathbb H\cong\mathbb R^4$. Holm writes the same
+matrix as $Q$ (Eq.~(3.2.11), p.~100).
+
+\subsection{Connectedness, and \texorpdfstring{$\det\Phi(u)=+1$}{det Phi(u)=+1}}
+A topological space $X$ is \emph{connected} if it is not the union of two
+disjoint nonempty open subsets. Equivalently, every continuous map
+$f\colon X\to\{-1,+1\}$ is constant. If $f$ took both values, then
+$f^{-1}(-1)$ and $f^{-1}(+1)$ would split $X$; if $X=U\cup V$ were split,
+$f=-1$ on $U$ and $f=+1$ on $V$ would be continuous and not constant.
+
+$X$ is \emph{path-connected} if any two points are joined by a continuous
+path $\gamma\colon[0,1]\to X$. Path-connected implies connected: if
+$f\colon X\to\{\pm1\}$ is continuous, then $f\circ\gamma\colon[0,1]\to
+\{\pm1\}$ is continuous, and by the intermediate value theorem it cannot
+pass from $-1$ to $+1$, so $f(\gamma(0))=f(\gamma(1))$.
+
+$S^3$ is path-connected. Let $p,q\in S^3$ with $q\ne-p$. If
+$(1-t)p+tq=0$ for some $t\in[0,1]$, then taking lengths gives $1-t=t$, so
+$t=\frac12$ and $q=-p$. Hence the segment from $p$ to $q$ avoids $0$, and
+\begin{equation}
+ \gamma(t)=\frac{(1-t)p+tq}{|(1-t)p+tq|}
+\end{equation}
+is a continuous path in $S^3$ from $p$ to $q$. If $q=-p$, choose
+$r\in S^3$ with $r\ne\pm p$ and join $p$ to $r$ and then $r$ to $-p$. Thus
+$S^3$ is connected, and so is $SU(2)$, its image under the continuous map
+$F^{-1}$. This is Frankel's ``in particular $SU(2)=S^3$ is connected''.
+
+Now apply this to $\det\Phi(u)$. By Eq.~\eqref{quat:Phi-entries}, the entries
+of $\Phi(u)$ are polynomials in the real and imaginary parts of the entries
+of $u$, using $u^{-1}=u^\dagger$. So $u\mapsto\det\Phi(u)$ is continuous on
+$SU(2)$, with values in $\{\pm1\}$ because $\Phi(u)$ is orthogonal. On the
+connected $SU(2)$ it is constant, and at $u=I$ we have $\Phi(I)=I$, with
+determinant $1$. Therefore
+\begin{equation}
+ \Phi\colon SU(2)\to SO(3).
+\end{equation}
+By contrast, $O(3)$ is not connected: $\det\colon O(3)\to\{\pm1\}$ is
+continuous and takes both values, at $I$ and at $-I$.
+
+\section{\texorpdfstring{$\Phi\colon SU(2)\to SO(3)$}{Phi: SU(2) to SO(3)} is onto and two-to-one}\label{quat:sec:covering}
+This section follows Frankel's Section~19.1d (pp.~496--497).
+
+\begin{theorem}[Frankel (19.12)]\label{quat:thm:covering}
+$\Phi\colon SU(2)\to SO(3)$ is onto. For each $R\in SO(3)$ there are
+exactly two elements $\pm u\in SU(2)$ with $\Phi(\pm u)=R$.
+\end{theorem}
+
+Frankel states this for $\mathrm{Ad}$ of his Eq.~(19.10), which is our
+$\Phi$. In his proof $h$ denotes both a vector of $\mathbb R^3$ and the
+Hermitian matrix $h^j\sigma_j$. We write $\mathbf h\in\mathbb R^3$ and
+$\Sigma(\mathbf h)$. His $\mathrm{Ad}_*$ is the derivative of $\Phi$ at $I$,
+which we write $d\Phi$.
+
+\subsection{The derivative of \texorpdfstring{$\Phi$}{Phi}}
+\emph{One-parameter subgroups of $SU(2)$.} The argument of
+Eqs.~\eqref{quat:one-param-ode}--\eqref{quat:one-param-exp} works verbatim in
+$GL(2,\mathbb C)$, so every differentiable one-parameter subgroup of
+$SU(2)$ is $u(t)=\exp(tX)$ with $X\in\mathfrak{su}(2)$. By
+Eq.~\eqref{quat:su2-bases}, $X=-i\Sigma(\mathbf h)$ for a unique
+$\mathbf h\in\mathbb R^3$:
+\begin{equation}\label{quat:u-of-t}
+ u(t)=\exp\bigl(-it\,\Sigma(\mathbf h)\bigr)
+ =\exp\Bigl(\frac{t}{i}\,h^j\sigma_j\Bigr).
+\end{equation}
+This is Frankel's $u(t)=e^{th/i}=e^{-ith}$.
+
+\emph{Its image is a one-parameter subgroup of $SO(3)$.} Since $\Phi$ is a
+homomorphism, $\Phi(u(t+s))=\Phi(u(t)u(s))=\Phi(u(t))\Phi(u(s))$ and
+$\Phi(u(0))=I$. By Eq.~\eqref{quat:one-param-exp},
+\begin{equation}
+ \Phi\bigl(u(t)\bigr)=\exp(tS),\qquad
+ S=\frac{d}{dt}\Phi\bigl(u(t)\bigr)\Big|_{t=0}=:d\Phi(X).
+\end{equation}
+
+\emph{Computing $S$.} Apply Eq.~\eqref{quat:Phi} with $u=u(t)$:
+\begin{equation}
+ \Sigma\bigl(\Phi(u(t))\mathbf x\bigr)
+ =e^{-it\Sigma(\mathbf h)}\,\Sigma(\mathbf x)\,e^{it\Sigma(\mathbf h)} .
+\end{equation}
+Differentiate at $t=0$. On the left, $\Sigma$ is linear and does not depend
+on $t$, so the derivative is $\Sigma(S\mathbf x)$. On the right, the product
+rule with $\frac{d}{dt}e^{\mp it\Sigma(\mathbf h)}\big|_{t=0}
+=\mp i\Sigma(\mathbf h)$ gives
+\begin{equation}
+ \Sigma(S\mathbf x)=-i\Sigma(\mathbf h)\Sigma(\mathbf x)
+   +\Sigma(\mathbf x)\,i\Sigma(\mathbf h)
+ =-i\bigl[\Sigma(\mathbf h),\Sigma(\mathbf x)\bigr].
+\end{equation}
+Expand the commutator with Frankel's Eq.~(19.6),
+$[\sigma_j,\sigma_k]=2i\epsilon_{jkl}\sigma_l$, and
+$(\mathbf h\times\mathbf x)^l=\epsilon_{ljk}h^jx^k=\epsilon_{jkl}h^jx^k$:
+\begin{align}
+ -i\bigl[\Sigma(\mathbf h),\Sigma(\mathbf x)\bigr]
+ &=-ih^jx^k[\sigma_j,\sigma_k]
+  =-ih^jx^k\,2i\,\epsilon_{jkl}\sigma_l\notag\\
+ &=2\epsilon_{jkl}h^jx^k\sigma_l
+  =2(\mathbf h\times\mathbf x)^l\sigma_l
+  =\Sigma(2\mathbf h\times\mathbf x).\label{quat:dPhi-computation}
+\end{align}
+So $\Sigma(S\mathbf x)=\Sigma(2\mathbf h\times\mathbf x)$ for every
+$\mathbf x$. Since $\Sigma$ is injective, $S\mathbf x=2\mathbf h\times\mathbf x$,
+that is $S=\widehat{2\mathbf h}$ by Eq.~\eqref{quat:hat}. The
+one-parameter group $\Phi(u(t))$ rotates with angular velocity
+$\boldsymbol\omega=2\mathbf h$, and Eq.~\eqref{quat:frankel-19-3} gives
+\begin{equation}\label{quat:frankel-19-13}
+ \Phi\Bigl(\exp\bigl(-it\,\Sigma(\mathbf h)\bigr)\Bigr)
+ =\exp\bigl(t\,(2h)^jE_j\bigr).
+\end{equation}
+This is Frankel's Eq.~(19.13),
+$\mathrm{Ad}\exp(\frac{\boldsymbol\sigma}{i}\bullet\mathbf ht)\mathbf x_*
+\sim R(t)\mathbf x=\exp(\mathbf E\bullet2\mathbf ht)\mathbf x$. Each $\sim$
+there is an instance of Eq.~\eqref{quat:Phi}: the matrix on the left is
+$\Sigma$ of the vector on the right.
+
+\emph{$d\Phi$ is $\mathrm{ad}$.} The first equality of
+Eq.~\eqref{quat:dPhi-computation} reads, with $X=-i\Sigma(\mathbf h)$,
+\begin{equation}
+ \Sigma\bigl(d\Phi(X)\mathbf x\bigr)=\bigl[X,\Sigma(\mathbf x)\bigr]
+ =\mathrm{ad}_X\Sigma(\mathbf x).
+\end{equation}
+So $d\Phi(X)$ is $\mathrm{ad}_X$ written in the coordinates $\Sigma$, just as
+$\Phi(u)$ is $\mathrm{Ad}_u$ written in those coordinates. The identity
+$\Phi(\exp tX)=\exp(t\,d\Phi(X))$ is the relation
+$\mathrm{Ad}_{\exp(tX)}=\exp(t\,\mathrm{ad}_X)$ of
+\S\ref{dgdt:sec:adjoint-representation}, read in $\mathbb R^3$.
+
+\emph{Frankel's Eq.~(19.14).} Take $X=\sigma_a/(2i)=-i\Sigma(\frac12\mathbf e_a)$.
+Then $\mathbf h=\frac12\mathbf e_a$, $2\mathbf h=\mathbf e_a$, and
+$\widehat{\mathbf e_a}=E_a$:
+\begin{equation}\label{quat:frankel-19-14}
+ d\Phi\Bigl(\frac{\sigma_a}{2i}\Bigr)=E_a .
+\end{equation}
+Frankel calls this unsurprising given the remarks after his Eq.~(19.6): the
+basis $\sigma_a/(2i)$ has the same structure constants as $E_a$
+(Eq.~\eqref{quat:Fa-brackets}). For Kosmann-Schwarzbach's basis,
+$d\Phi(\xi_1)=-E_1$, $d\Phi(\xi_2)=E_2$, $d\Phi(\xi_3)=-E_3$ by
+Eq.~\eqref{quat:KS-vs-Frankel}. In either case $d\Phi$ carries a basis to a
+basis, so $d\Phi\colon\mathfrak{su}(2)\to\mathfrak{so}(3)$ is a linear
+isomorphism between spaces of dimension $3$.
+
+\subsection{Example: rotations about the \texorpdfstring{$z$}{z} axis}
+Take $\mathbf h=\mathbf e_3$, so $\Sigma(\mathbf h)=\sigma_3$; Frankel
+writes $\mathbf h=\boldsymbol\sigma(0,0,1)^T$, that is $\mathbf h=\sigma_3$.
+Since $\sigma_3/i=-i\sigma_3=\operatorname{diag}(-i,i)$ is diagonal, every
+power is diagonal and the exponential is taken entry by entry:
+\begin{equation}
+ u(\theta)=\exp\Bigl(\theta\frac{\sigma_3}{i}\Bigr)
+ =\begin{bmatrix}e^{-i\theta}&0\\0&e^{i\theta}\end{bmatrix}.
+\end{equation}
+By Eq.~\eqref{quat:frankel-19-13} with $t=\theta$,
+$\Phi(u(\theta))=\exp(2\theta E_3)$, which is $R(2\theta)$ by
+Eq.~\eqref{quat:exp-E3} with $\theta$ replaced by $2\theta$.
+
+The same result follows directly from Eq.~\eqref{quat:Phi}, without
+derivatives. Multiplying on the left by $u(\theta)$ multiplies row~1 by
+$e^{-i\theta}$ and row~2 by $e^{i\theta}$. Multiplying on the right by
+$u(\theta)^{-1}=\operatorname{diag}(e^{i\theta},e^{-i\theta})$ multiplies
+column~1 by $e^{i\theta}$ and column~2 by $e^{-i\theta}$:
+\begin{equation}
+ u(\theta)\Sigma(\mathbf x)u(\theta)^{-1}
+ =\begin{bmatrix}z&e^{-2i\theta}(x-iy)\\e^{2i\theta}(x+iy)&-z\end{bmatrix}.
+\end{equation}
+This is $\Sigma(\mathbf x')$ with $z'=z$ and
+$x'+iy'=e^{2i\theta}(x+iy)=(x\cos2\theta-y\sin2\theta)
++i(x\sin2\theta+y\cos2\theta)$. So $\Phi(u(\theta))=R(2\theta)$.
+
+As $\theta$ runs from $0$ to $2\pi$, $e^{-i\theta}$ goes once around the unit
+circle, so $u(\theta)$ is a simple closed curve in $SU(2)$, passing through
+$u(\pi)=-I$. Its image $R(2\theta)$ makes two full rotations, returning to
+$I$ at $\theta=\pi$ and at $\theta=2\pi$. The half $0\le\theta\le\pi$ is a
+path from $I$ to $-I$ in $SU(2)$ whose image is a closed loop in $SO(3)$; that
+loop is the one studied in Frankel's Section~19.2a and in his
+Section~21.2.
+
+\subsection{\texorpdfstring{$\Phi$}{Phi} is onto}
+Frankel uses that every rotation is a rotation about some axis. Let
+$R\in SO(3)$. Then
+\begin{align}
+ \det(R-I)&=\det\bigl(R(I-R^T)\bigr)=\det R\,\det\bigl((I-R)^T\bigr)\notag\\
+ &=\det(I-R)=(-1)^3\det(R-I),
+\end{align}
+using $RR^T=I$, $\det R=1$, and $\det A^T=\det A$. So $\det(R-I)=0$, and $R$
+has a unit eigenvector $\mathbf n$ with $R\mathbf n=\mathbf n$. $R$ preserves
+the plane perpendicular to $\mathbf n$: if $\mathbf x\cdot\mathbf n=0$ then
+$R\mathbf x\cdot\mathbf n=R\mathbf x\cdot R\mathbf n=\mathbf x\cdot\mathbf n=0$.
+In a right-handed orthonormal basis $(\mathbf u,\mathbf n\times\mathbf u,
+\mathbf n)$, the matrix of $R$ is block diagonal with an upper $2\times2$
+block $A$ and a $1$ in the corner. $A$ has orthonormal columns and
+$\det A=\det R=1$. Its first column is a unit vector
+$(\cos\theta,\sin\theta)$ for some $\theta$. The second is a unit vector
+orthogonal to it, $\pm(-\sin\theta,\cos\theta)$, and $\det A=1$ selects the
+plus sign. So $R=R_{\mathbf n}(\theta)=\exp(\theta\,n^jE_j)$ by
+Eq.~\eqref{quat:frankel-19-4}.
+
+Now take $\mathbf h=\frac12\mathbf n$ and $t=\theta$ in
+Eq.~\eqref{quat:frankel-19-13}:
+\begin{equation}\label{quat:onto}
+ \Phi\Bigl(\exp\Bigl(-i\frac{\theta}{2}\Sigma(\mathbf n)\Bigr)\Bigr)
+ =\exp\bigl(\theta\,n^jE_j\bigr)=R .
+\end{equation}
+This is Frankel's $\mathrm{Ad}\exp(\boldsymbol\sigma/2i\bullet\boldsymbol\omega
+\theta)=R$, with his $\boldsymbol\omega$ the unit axis $\mathbf n$. By
+Eq.~\eqref{quat:half-angle}, the element of $SU(2)$ in Eq.~\eqref{quat:onto}
+is $\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}\Sigma(\mathbf n)$, the unit
+quaternion of Eq.~\eqref{quat:axis-angle}. So $\Phi$ is onto.
+
+\subsection{\texorpdfstring{$\Phi$}{Phi} is two-to-one, and \texorpdfstring{$SO(3)\approx\mathbb RP^3$}{SO(3) = RP3}}
+For every $u$, $(-u)\Sigma(\mathbf x)(-u)^{-1}
+=(-1)(-1)^{-1}u\Sigma(\mathbf x)u^{-1}=u\Sigma(\mathbf x)u^{-1}$, so
+$\Phi(-u)=\Phi(u)$. $\Phi$ is therefore at least two-to-one; in Frankel's
+words, the representation is not faithful.
+
+\emph{The kernel.} $\Phi(u)=I$ means $u\Sigma(\mathbf x)u^{-1}=\Sigma(\mathbf x)$
+for all $\mathbf x$. Taking $\mathbf x=\mathbf e_k$, and conversely by
+linearity, this holds exactly when $u$ commutes with $\sigma_1,\sigma_2,\sigma_3$.
+Since $\sigma_k^{-1}=\sigma_k$, commuting with $\sigma_k$ is
+$\sigma_ku\sigma_k=u$, Frankel's $\sigma_\alpha^{-1}u\sigma_\alpha=u$. Write $u$
+in the form~\eqref{quat:su2-general}. Conjugating by
+$\sigma_3=\operatorname{diag}(1,-1)$ changes the sign of the off-diagonal
+entries, and conjugating by $\sigma_1$ exchanges both the rows and the
+columns:
+\begin{equation}
+ \sigma_3u\sigma_3=\begin{bmatrix}\alpha&\bar\beta\\-\beta&\bar\alpha\end{bmatrix},
+ \qquad
+ \sigma_1u\sigma_1=\begin{bmatrix}\bar\alpha&\beta\\-\bar\beta&\alpha\end{bmatrix}.
+\end{equation}
+The first equals $u$ only if $-\bar\beta=\bar\beta$, so $\beta=0$. The
+second equals $u$ only if $\bar\alpha=\alpha$, so $\alpha$ is real. Then
+$|\alpha|^2+|\beta|^2=1$ gives $\alpha=\pm1$, and
+\begin{equation}
+ \ker\Phi=\{I,-I\}.
+\end{equation}
+
+\emph{The fibers.} $\Phi(u)=\Phi(u')$ if and only if
+$\Phi(u^{-1}u')=\Phi(u)^{-1}\Phi(u')=I$, if and only if
+$u^{-1}u'\in\{\pm I\}$, if and only if $u'=\pm u$. Since $u\ne-u$, every
+rotation has exactly two preimages. This completes the proof of
+Theorem~\ref{quat:thm:covering}.
+
+\emph{The quotient.} Frankel quotes the group-theory fact that an onto
+homomorphism $\varphi\colon G\to G'$ with kernel $H$ identifies $G'$ with
+$G/H$. This is again (17.10). Let $G$ act on $G'$ by
+$g\cdot g'=\varphi(g)g'$. The action is transitive, because $\varphi$ is onto:
+to move $g_1'$ to $g_2'$, choose $g$ with $\varphi(g)=g_2'g_1'^{-1}$. The
+stability subgroup of the identity $e'$ is
+$\{g:\varphi(g)=e'\}=\ker\varphi$. For $\Phi$ this gives
+$SO(3)\leftrightarrow SU(2)/\{\pm I\}$.
+
+In the coordinates of Eq.~\eqref{quat:first-column},
+$F(-u)=-F(u)$, so each fiber $\{u,-u\}$ is a pair of antipodal points of
+$S^3$. Identifying antipodal points of $S^3$ gives the real projective space
+$\mathbb RP^3=S^3/\{\pm1\}$, the space of lines through $0$ in $\mathbb R^4$,
+since each such line meets $S^3$ in one antipodal pair:
+\begin{equation}
+\begin{tikzcd}
+ S^3 \arrow[r,"\approx"] \arrow[d,"p"'] & SU(2) \arrow[d,"\Phi"]\\
+ \mathbb RP^3 \arrow[r,"\approx"] & SO(3)
+\end{tikzcd}
+\end{equation}
+Here $p(x)=\{x,-x\}$. The induced map $\mathbb RP^3\to SO(3)$ is a
+continuous bijection. $\mathbb RP^3$ is compact, as the image of the compact
+$S^3$ under $p$, and $SO(3)\subset\mathbb R^9$ is Hausdorff, so the map is a
+homeomorphism: $SO(3)\approx\mathbb RP^3$. By Theorem~(17.11), $SU(2)$ is a
+principal bundle over $SU(2)/\{\pm I\}=SO(3)$ with the two-point fiber
+$\{\pm I\}$, that is, a two-sheeted covering. Its dimension count is
+$\dim SO(3)=\dim SU(2)-\dim\{\pm I\}=3-0$. Also, $SO(3)=\Phi(SU(2))$ is
+connected, as the continuous image of a connected space.
+
+\section{Dimension accounting}\label{quat:sec:dimensions}
+\begin{center}
+\small
+\begin{tabular}{llll}
+ space & ambient & conditions & dimension\\\hline
+ $SO(3)$ & $9$ real entries & $g^Tg=I$: $6$; $\det g=1$: none & $3$\\
+ $\mathfrak{so}(3)$ & $9$ & $X^T=-X$: $6$ & $3$\\
+ $SU(2)$ & $8$ real & $U^\dagger U=1$: $4$; $\det U=1$: $1$ & $3$\\
+ $\mathfrak{su}(2)$ & $8$ & $X^\dagger=-X$: $4$; $\operatorname{tr}X=0$: $1$ & $3$\\
+ $S^3$ & $\mathbb R^4$ & $|z_1|^2+|z_2|^2=1$: $1$ & $3$\\
+ $\ker\Phi$ & --- & $\{\pm I\}$, two points & $0$
+\end{tabular}
+\end{center}
+$\Phi$ maps a $3$-dimensional group onto a $3$-dimensional group with a
+$0$-dimensional kernel, and $d\Phi$ is an isomorphism of the
+$3$-dimensional Lie algebras. The Lie algebras are isomorphic and the groups
+are not: $d\Phi$ only describes $\Phi$ near the identity, and the two-point
+kernel is global information that $\mathfrak{su}(2)\cong\mathfrak{so}(3)$ does
+not detect.

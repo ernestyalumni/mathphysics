@@ -64,9 +64,14 @@ applications in Propulsion (attitude code, MEKF) draw from this topic.
 The same topic derives Frankel's §19.1a in general form: $\mathfrak{so}(n)$ as
 skew matrices, the $E_{ab}$ brackets, Frankel's $E_i$, and the hat map. It
 relates Kosmann-Schwarzbach's $\mathfrak{su}(2)$ basis to Frankel's: they
-differ by $\mathrm{Ad}(j)$, a rotation by $\pi$. Ernest's 2015 notes on
-Frankel §19.1 are imported verbatim in `topics/frankel-19-1-notes-2015.tex`,
-with corrections marked.
+differ by $\mathrm{Ad}(j)$, a rotation by $\pi$.
+`topics/su2-so3-covering.tex` (input from that topic) develops Frankel
+§§19.1b–19.1d in our notation: $SU(2)$ and $\mathfrak{su}(2)$ with dimension
+counts, the map $\Sigma(\mathbf x)=x^k\sigma_k$ (Frankel's $\mathbf x_*$),
+the adjoint action, $SU(2)\approx S^3$ and connectedness, and the
+two-to-one homomorphism $\Phi\colon SU(2)\to SO(3)$ with $SO(3)\approx
+\mathbb RP^3$. It absorbs Ernest's earlier Frankel §19.1 working from
+`LaTeX_and_pdfs/the geometry of physics problems/19TheDiracEquation.tex`.
 
 ## Source and provenance
 
