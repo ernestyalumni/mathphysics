@@ -61,6 +61,13 @@ Ch. 19 with §§15.3, 17.4c, 21.2, 22.3–22.4c and 19.5; Holm, *Geometric
 Mechanics II*, Chs. 3–5; Lawson–Michelsohn Ch. I; Hall Chs. 1–5. Quaternion
 applications in Propulsion (attitude code, MEKF) draw from this topic.
 
+The same topic derives Frankel's §19.1a in general form: $\mathfrak{so}(n)$ as
+skew matrices, the $E_{ab}$ brackets, Frankel's $E_i$, and the hat map. It
+relates Kosmann-Schwarzbach's $\mathfrak{su}(2)$ basis to Frankel's: they
+differ by $\mathrm{Ad}(j)$, a rotation by $\pi$. Ernest's 2015 notes on
+Frankel §19.1 are imported verbatim in `topics/frankel-19-1-notes-2015.tex`,
+with corrections marked.
+
 ## Source and provenance
 
 The historical `LaTeX_and_pdfs/AGAT_dump.tex` and `DGDT_dump.tex` remain

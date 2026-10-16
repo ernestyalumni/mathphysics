@@ -23,6 +23,285 @@ components by
 so it represents the same rotation $R$ as in Eq.~\eqref{gnc:attitude-kinematics},
 where $\mathbf x_I=R\mathbf x_B$. The rotation acts on vectors (active form).
 
+\section{The Lie algebra \texorpdfstring{$\mathfrak{so}(n)$}{so(n)} and Frankel's basis of \texorpdfstring{$\mathfrak{so}(3)$}{so(3)}}\label{quat:sec:so-n}
+Let $G\subseteq GL(n,\mathbb R)$ be a closed matrix group. Its Lie algebra is
+\begin{equation}\label{quat:matrix-lie-algebra}
+ \mathfrak g=\{X\in\mathfrak{gl}(n,\mathbb R)\;:\;\exp(tX)\in G
+ \text{ for all } t\in\mathbb R\},
+\end{equation}
+the characterization recorded from Kosmann-Schwarzbach in the Lie-groups
+part. If $g(t)$ is a differentiable curve in $G$ with $g(0)=I$, then
+$\frac{dg}{dt}(0)\in\mathfrak g$; this is how Frankel computes the basis
+below.
+
+\subsection{\texorpdfstring{$\mathfrak{so}(n)$}{so(n)} is the skew-symmetric matrices}
+Take $G=SO(n)=\{g\in GL(n,\mathbb R):g^Tg=I,\ \det g=1\}$ and a curve
+$g(t)$ in $SO(n)$ with $g(0)=I$ and $X=\frac{dg}{dt}(0)$. Differentiate
+$g(t)^Tg(t)=I$ by the product rule and evaluate at $t=0$:
+\begin{align}
+ \frac{dg}{dt}(t)^T g(t)+g(t)^T\frac{dg}{dt}(t)&=0,\notag\\
+ X^T+X&=0 .\label{quat:skew}
+\end{align}
+Conversely, let $X^T=-X$. Then $X^T$ and $X$ commute, so
+$\exp(tX)^T\exp(tX)=\exp(tX^T)\exp(tX)=\exp(-tX)\exp(tX)=I$, and
+$\det\exp(tX)=e^{t\operatorname{tr}X}=e^0=1$ because the diagonal of a
+skew-symmetric matrix vanishes. By Eq.~\eqref{quat:matrix-lie-algebra},
+\begin{equation}\label{quat:so-n}
+ \mathfrak{so}(n)=\{X\in\mathfrak{gl}(n,\mathbb R):X^T=-X\},\qquad
+ \dim\mathfrak{so}(n)=\frac{n(n-1)}{2},
+\end{equation}
+the dimension being the number of entries above the diagonal.
+
+\subsection{The basis \texorpdfstring{$E_{ab}$}{E\_ab} and its brackets}
+Let $e_a$ be the standard basis column vectors of $\mathbb R^n$ and define
+\begin{equation}\label{quat:Eab}
+ E_{ab}=e_ae_b^T-e_be_a^T,\qquad
+ (E_{ab})_{cd}=\delta_{ac}\delta_{bd}-\delta_{bc}\delta_{ad}.
+\end{equation}
+Then $E_{ba}=-E_{ab}$, and $\{E_{ab}:a<b\}$ is a basis of
+$\mathfrak{so}(n)$. Using $e_b^Te_c=\delta_{bc}$, multiply out:
+\begin{align}
+ E_{ab}E_{cd}&=\delta_{bc}\,e_ae_d^T-\delta_{bd}\,e_ae_c^T
+              -\delta_{ac}\,e_be_d^T+\delta_{ad}\,e_be_c^T,\notag\\
+ E_{cd}E_{ab}&=\delta_{ad}\,e_ce_b^T-\delta_{bd}\,e_ce_a^T
+              -\delta_{ac}\,e_de_b^T+\delta_{bc}\,e_de_a^T .\notag
+\end{align}
+Subtract the second line from the first and pair terms with the same
+Kronecker delta:
+\begin{align}
+ [E_{ab},E_{cd}]
+ &=\delta_{bc}\bigl(e_ae_d^T-e_de_a^T\bigr)
+  -\delta_{bd}\bigl(e_ae_c^T-e_ce_a^T\bigr)\notag\\
+ &\quad-\delta_{ac}\bigl(e_be_d^T-e_de_b^T\bigr)
+  +\delta_{ad}\bigl(e_be_c^T-e_ce_b^T\bigr)\notag\\
+ &=\delta_{bc}E_{ad}-\delta_{bd}E_{ac}-\delta_{ac}E_{bd}+\delta_{ad}E_{bc}.
+ \label{quat:so-n-brackets}
+\end{align}
+Equation~\eqref{quat:so-n-brackets} holds for every $n$. A pair of
+generators has a nonzero bracket only when the two planes share an axis.
+
+\subsection{Three dimensions: Frankel's \texorpdfstring{$E_i$}{E\_i}}
+For $n=3$ the dimension is $3$, and each coordinate plane has a unique
+normal axis. Define
+\begin{equation}\label{quat:Ei-from-Eab}
+ E_i=-\tfrac12\epsilon_{ijk}E_{jk}.
+\end{equation}
+By Eq.~\eqref{quat:Eab},
+\begin{equation}\label{quat:Ei-entries}
+ (E_i)_{ab}=-\tfrac12\epsilon_{ijk}
+   \bigl(\delta_{ja}\delta_{kb}-\delta_{ka}\delta_{jb}\bigr)
+ =-\tfrac12\bigl(\epsilon_{iab}-\epsilon_{iba}\bigr)
+ =-\epsilon_{iab}.
+\end{equation}
+Reading off the entries, $(E_1)_{23}=-1$, $(E_1)_{32}=1$, and similarly
+for $E_2$ and $E_3$:
+\begin{equation}\label{quat:frankel-Ei}
+ E_1=\begin{bmatrix}0&0&0\\0&0&-1\\0&1&0\end{bmatrix},\qquad
+ E_2=\begin{bmatrix}0&0&1\\0&0&0\\-1&0&0\end{bmatrix},\qquad
+ E_3=\begin{bmatrix}0&-1&0\\1&0&0\\0&0&0\end{bmatrix}.
+\end{equation}
+These are Frankel's Eq.~(19.1), p.~492, and the basis
+$(E_1,E_2,E_3)$ recorded from Kambe in \S\ref{dgdt:sec:kambe-so3}.
+In the notation of Eq.~\eqref{quat:Eab}, $E_1=E_{32}$, $E_2=E_{13}$,
+$E_3=E_{21}$.
+
+Frankel obtains $E_3$ from the rotations about the $z$ axis,
+\begin{equation}\label{quat:Rz}
+ R(\theta)=\begin{bmatrix}\cos\theta&-\sin\theta&0\\
+ \sin\theta&\cos\theta&0\\0&0&1\end{bmatrix}.
+\end{equation}
+The addition formulas give $R(\theta)R(\varphi)=R(\theta+\varphi)$: the
+upper-left block of the product is
+\begin{equation}
+ \begin{bmatrix}\cos\theta\cos\varphi-\sin\theta\sin\varphi&
+  -\cos\theta\sin\varphi-\sin\theta\cos\varphi\\
+  \sin\theta\cos\varphi+\cos\theta\sin\varphi&
+  -\sin\theta\sin\varphi+\cos\theta\cos\varphi\end{bmatrix}
+ =\begin{bmatrix}\cos(\theta+\varphi)&-\sin(\theta+\varphi)\\
+  \sin(\theta+\varphi)&\cos(\theta+\varphi)\end{bmatrix},
+\end{equation}
+and the third row and column are those of $I$. So $R$ is a one-parameter
+subgroup, and its generator is its derivative at the identity. Differentiate
+entry by entry, using $\frac{d}{d\theta}\cos\theta=-\sin\theta$ and
+$\frac{d}{d\theta}\sin\theta=\cos\theta$, then set $\theta=0$:
+\begin{equation}\label{quat:E3-derivative}
+ \frac{dR}{d\theta}(0)
+ =\begin{bmatrix}-\sin0&-\cos0&0\\\cos0&-\sin0&0\\0&0&0\end{bmatrix}
+ =\begin{bmatrix}0&-1&0\\1&0&0\\0&0&0\end{bmatrix}=E_3 .
+\end{equation}
+In the other direction, sum $\exp(\theta E_3)$. Let
+$P=\operatorname{diag}(1,1,0)$. Direct multiplication gives $E_3^2=-P$, and
+$P^2=P$, $PE_3=E_3$. Hence for $m\ge1$
+\begin{equation}
+ E_3^{2m}=(-1)^mP,\qquad E_3^{2m+1}=(-1)^mE_3 ,
+\end{equation}
+the second also for $m=0$. Separate the $m=0$ even term and split the
+series into even and odd powers:
+\begin{align}
+ \exp(\theta E_3)
+ &=I+\sum_{m=1}^{\infty}\frac{(-1)^m\theta^{2m}}{(2m)!}\,P
+   +\sum_{m=0}^{\infty}\frac{(-1)^m\theta^{2m+1}}{(2m+1)!}\,E_3\notag\\
+ &=I+(\cos\theta-1)P+\sin\theta\,E_3 .\label{quat:exp-E3}
+\end{align}
+The first sum is the cosine series without its leading $1$. The diagonal
+of Eq.~\eqref{quat:exp-E3} is $(\cos\theta,\cos\theta,1)$ and its
+off-diagonal part is $\sin\theta\,E_3$, which is Eq.~\eqref{quat:Rz}.
+Thus $R(\theta)=\exp(\theta E_3)$.
+
+\subsection{The brackets of \texorpdfstring{$\mathfrak{so}(3)$}{so(3)}}
+Frankel states $[E_1,E_2]=E_3$. Multiply the matrices of
+Eq.~\eqref{quat:frankel-Ei}. Row $2$ of $E_1$ is $-e_3^T$, so row $2$ of
+$E_1E_2$ is minus row $3$ of $E_2$; row $3$ of $E_1$ is $e_2^T$, so row $3$
+of $E_1E_2$ is row $2$ of $E_2$, which is zero. Likewise for $E_2E_1$:
+\begin{equation}
+ E_1E_2=\begin{bmatrix}0&0&0\\1&0&0\\0&0&0\end{bmatrix},\qquad
+ E_2E_1=\begin{bmatrix}0&1&0\\0&0&0\\0&0&0\end{bmatrix},\qquad
+ E_1E_2-E_2E_1=\begin{bmatrix}0&-1&0\\1&0&0\\0&0&0\end{bmatrix}=E_3 .
+\end{equation}
+All nine brackets follow at once from the action of $E_i$ on vectors. By
+Eq.~\eqref{quat:Ei-entries}, for $\mathbf r\in\mathbb R^3$,
+\begin{equation}\label{quat:Ei-cross}
+ (E_i\mathbf r)_a=-\epsilon_{iab}r^b=\epsilon_{aib}r^b
+ =(\mathbf e_i\times\mathbf r)_a ,
+\end{equation}
+using $(\mathbf u\times\mathbf v)_a=\epsilon_{acb}u^cv^b$ with
+$\mathbf u=\mathbf e_i$. The Jacobi identity for the cross product,
+$\mathbf a\times(\mathbf b\times\mathbf r)+\mathbf b\times(\mathbf r\times\mathbf a)
++\mathbf r\times(\mathbf a\times\mathbf b)=0$, rearranges to
+$\mathbf a\times(\mathbf b\times\mathbf r)-\mathbf b\times(\mathbf a\times\mathbf r)
+=(\mathbf a\times\mathbf b)\times\mathbf r$. With
+$\mathbf a=\mathbf e_i$, $\mathbf b=\mathbf e_j$,
+\begin{align}
+ [E_i,E_j]\mathbf r
+ &=\mathbf e_i\times(\mathbf e_j\times\mathbf r)
+  -\mathbf e_j\times(\mathbf e_i\times\mathbf r)\notag\\
+ &=(\mathbf e_i\times\mathbf e_j)\times\mathbf r
+  =\epsilon_{ijk}\,\mathbf e_k\times\mathbf r
+  =\epsilon_{ijk}E_k\mathbf r .\notag
+\end{align}
+Since $\mathbf r$ is arbitrary,
+\begin{equation}\label{quat:so3-brackets}
+ [E_i,E_j]=\epsilon_{ijk}E_k ,\qquad c_{ij}{}^k=\epsilon_{ijk},
+\end{equation}
+Frankel's Eq.~(19.2) and his structure constants of $SO(3)$.
+
+\subsection{Angular velocity}
+Equation~\eqref{quat:Ei-cross} identifies the hat map of the rigid-body
+part: for $\boldsymbol\omega\in\mathbb R^3$,
+\begin{equation}\label{quat:hat}
+ \widehat{\boldsymbol\omega}=\omega^jE_j ,\qquad
+ \widehat{\boldsymbol\omega}\,\mathbf r=\boldsymbol\omega\times\mathbf r ,
+\end{equation}
+which is the definition of $\widehat{\boldsymbol\omega}_B$ after
+Eq.~\eqref{gnc:skew}. By Eq.~\eqref{quat:so3-brackets}, the hat map is a
+Lie algebra isomorphism from $(\mathbb R^3,\times)$ to $\mathfrak{so}(3)$:
+$[\widehat{\mathbf u},\widehat{\mathbf v}]=u^iv^j\epsilon_{ijk}E_k
+=\widehat{\mathbf u\times\mathbf v}$. A one-parameter group of rotations
+$R(t)=\exp(tS)$ moves $\mathbf r(t)=R(t)\mathbf r(0)$ with
+$\frac{d\mathbf r}{dt}(0)=S\mathbf r(0)$. If the angular velocity is the
+constant $\boldsymbol\omega$, then $\frac{d\mathbf r}{dt}(0)
+=\boldsymbol\omega\times\mathbf r(0)$ for every $\mathbf r(0)$, so
+$S=\widehat{\boldsymbol\omega}$ and
+\begin{equation}\label{quat:frankel-19-3}
+ R(t)=\exp\bigl(t\,\omega^jE_j\bigr),\qquad
+ R(\theta)=\exp\bigl(\theta\,n^jE_j\bigr)
+\end{equation}
+for rotation by $\theta$ about the unit vector $\mathbf n$. These are
+Frankel's Eqs.~(19.3)--(19.4), p.~493.
+
+\input{topics/frankel-19-1-notes-2015.tex}
+
+\section{Two bases of \texorpdfstring{$\mathfrak{su}(2)$}{su(2)}: Kosmann-Schwarzbach and Frankel}
+\S\ref{dgdt:sec:KS-su2-bases} records Kosmann-Schwarzbach's basis
+\begin{equation}\label{quat:KS-xi}
+ \xi_1=\frac i2\begin{bmatrix}0&1\\1&0\end{bmatrix},\qquad
+ \xi_2=\frac12\begin{bmatrix}0&-1\\1&0\end{bmatrix},\qquad
+ \xi_3=\frac i2\begin{bmatrix}1&0\\0&-1\end{bmatrix},\qquad
+ [\xi_k,\xi_l]=\epsilon_{klm}\xi_m .
+\end{equation}
+Frankel's basis is $F_a=\sigma_a/(2i)$. From his Eq.~(19.6),
+$[\sigma_a,\sigma_b]=2i\epsilon_{abc}\sigma_c$,
+\begin{equation}\label{quat:Fa-brackets}
+ [F_a,F_b]=\frac{1}{(2i)^2}[\sigma_a,\sigma_b]
+ =-\frac14\,2i\,\epsilon_{abc}\sigma_c
+ =\epsilon_{abc}\frac{\sigma_c}{2i}
+ =\epsilon_{abc}F_c ,
+\end{equation}
+using $-\frac{i}{2}=\frac{1}{2i}$. Both bases therefore have the structure
+constants of Eq.~\eqref{quat:so3-brackets}, and the linear maps
+$\xi_k\mapsto E_k$ and $F_a\mapsto E_a$ are both Lie algebra isomorphisms
+$\mathfrak{su}(2)\to\mathfrak{so}(3)$. The second is Frankel's
+Eq.~(19.14), $\mathrm{Ad}_*(\sigma_a/2i)=E_a$.
+
+The two isomorphisms differ. Compare entries with the Pauli matrices of
+Eq.~\eqref{quat:pauli}: $\xi_1=\frac i2\sigma_1$, while
+$F_1=\frac{1}{2i}\sigma_1=-\frac i2\sigma_1$; next
+$F_2=\frac{1}{2i}\begin{bmatrix}0&-i\\i&0\end{bmatrix}
+=\frac12\begin{bmatrix}0&-1\\1&0\end{bmatrix}$; and
+$\xi_3=\frac i2\sigma_3=-F_3$. Thus
+\begin{equation}\label{quat:KS-vs-Frankel}
+ (\xi_1,\xi_2,\xi_3)=(-F_1,\,F_2,\,-F_3).
+\end{equation}
+This change of basis is conjugation by an element of $SU(2)$. Let
+$u=-i\sigma_2=\begin{bmatrix}0&-1\\1&0\end{bmatrix}$, so $u^{-1}=i\sigma_2$.
+Since distinct Pauli matrices anticommute (Frankel's Eq.~(19.18)) and
+$\sigma_2^2=I$,
+\begin{align}
+ u\sigma_1u^{-1}&=\sigma_2\sigma_1\sigma_2=-\sigma_1\sigma_2\sigma_2=-\sigma_1,\notag\\
+ u\sigma_2u^{-1}&=\sigma_2\sigma_2\sigma_2=\sigma_2,\notag\\
+ u\sigma_3u^{-1}&=\sigma_2\sigma_3\sigma_2=-\sigma_3\sigma_2\sigma_2=-\sigma_3 ,
+ \label{quat:conjugate-by-j}
+\end{align}
+where the factors $(-i)(i)=1$ cancel. Dividing by $2i$ and comparing with
+Eq.~\eqref{quat:KS-vs-Frankel},
+$\xi_a=uF_au^{-1}=\mathrm{Ad}(u)F_a$. Under
+Eq.~\eqref{quat:dictionary} $u$ is the quaternion $e_2=j$, which is
+Eq.~\eqref{quat:axis-angle} with $\theta=\pi$ and $\mathbf A=\mathbf e_2$:
+the rotation by $\pi$ about the second axis,
+$\operatorname{diag}(-1,1,-1)$, as the signs in
+Eq.~\eqref{quat:KS-vs-Frankel} show.
+
+This is an instance of a general fact. Two bases with the same structure
+constants determine the same Lie algebra, but the isomorphism between them
+is fixed only up to an automorphism. For $\mathfrak{so}(3)$, identified
+with $(\mathbb R^3,\times)$ by Eq.~\eqref{quat:hat}, the automorphisms are
+exactly $SO(3)$. Let $A\in GL(3,\mathbb R)$ satisfy
+$A(\mathbf u\times\mathbf v)=A\mathbf u\times A\mathbf v$ for all
+$\mathbf u,\mathbf v$.
+
+\emph{$A$ is orthogonal.} The Killing form $B(X,Y)=\operatorname{tr}
+(\operatorname{ad}_X\operatorname{ad}_Y)$ is preserved by automorphisms,
+since $A[X,A^{-1}Y]=[AX,Y]$ gives
+$\operatorname{ad}_{AX}=A\operatorname{ad}_XA^{-1}$ and the trace is
+invariant under conjugation. On $(\mathbb R^3,\times)$,
+$\operatorname{ad}_{\mathbf e_i}=E_i$ by Eq.~\eqref{quat:Ei-cross}, so by
+Eq.~\eqref{quat:Ei-entries}
+\begin{equation}
+ B(\mathbf e_i,\mathbf e_j)=(E_i)_{ab}(E_j)_{ba}
+ =\epsilon_{iab}\epsilon_{jba}=-\epsilon_{iab}\epsilon_{jab}=-2\delta_{ij}.
+\end{equation}
+Hence $A$ preserves the Euclidean inner product, $A^TA=I$.
+
+\emph{$\det A=1$.} For any $A\in GL(3,\mathbb R)$ and all
+$\mathbf u,\mathbf v,\mathbf w$,
+\begin{equation}
+ (A\mathbf u\times A\mathbf v)\cdot A\mathbf w
+ =\det[A\mathbf u,A\mathbf v,A\mathbf w]
+ =\det A\,\det[\mathbf u,\mathbf v,\mathbf w]
+ =\det A\,(\mathbf u\times\mathbf v)\cdot\mathbf w ,
+\end{equation}
+so $A^T(A\mathbf u\times A\mathbf v)=\det A\,(\mathbf u\times\mathbf v)$.
+With $A^T=A^{-1}$ and $A\mathbf u\times A\mathbf v=A(\mathbf u\times\mathbf v)$
+this reads $\mathbf u\times\mathbf v=\det A\,(\mathbf u\times\mathbf v)$.
+Choosing $\mathbf u\times\mathbf v\neq0$ gives $\det A=1$. Conversely, the
+same identity with $A^T=A^{-1}$ and $\det A=1$ shows that every
+$R\in SO(3)$ preserves the cross product. Through Eq.~\eqref{quat:hat} this
+reads $R\,\widehat{\mathbf v}\,R^{-1}=\widehat{R\mathbf v}$, so each
+automorphism of $\mathfrak{so}(3)$ is $\mathrm{Ad}(R)$ for a rotation $R$.
+Kosmann-Schwarzbach's and Frankel's identifications of $\mathfrak{su}(2)$
+with $\mathfrak{so}(3)$ differ by the rotation
+$\operatorname{diag}(-1,1,-1)=\mathrm{Ad}(j)$.
+
 \section{The quaternion basis in Frankel and in Holm}
 Frankel \cite{TFrankel2012} works with the Pauli matrices
 \begin{equation}\label{quat:pauli}

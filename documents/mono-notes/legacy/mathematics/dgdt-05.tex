@@ -1398,7 +1398,7 @@ In summary,
 
 From Chapter 5 ``Lie Groups $SU(2)$ and $SO(3)$'' of Kosmann-Schwarzbach (2010) \cite{dgdt:YKosmann-Schwarzbach2010}, 
 
-\subsubsection{Bases of $\mathfrak{su}(2)$, Subsection 1.1 of Chapter 5of Kosmann-Schwarzbach (2010) \cite{dgdt:YKosmann-Schwarzbach2010}}
+\subsubsection{Bases of $\mathfrak{su}(2)$, Subsection 1.1 of Chapter 5of Kosmann-Schwarzbach (2010) \cite{dgdt:YKosmann-Schwarzbach2010}}\label{dgdt:sec:KS-su2-bases}
 
 Recall that 
 
@@ -1551,7 +1551,7 @@ And finally the traceless property of the Pauli matrices:
 0
 \end{lstlisting} 
 
-\subsection{Rotation Group $SO(N)$ and Lie Algebra $\textbf{so}(3)$}
+\subsection{Rotation Group $SO(N)$ and Lie Algebra $\textbf{so}(3)$}\label{dgdt:sec:kambe-so3}
 
 cf. Kambe (2009) \cite{dgdt:TKambe2009}, Appendix C
 
@@ -1566,6 +1566,12 @@ $\mathbf{a} = \xi'(0)$ is an element of tangent space $T_1 SO(N)$ i.e. the Lie a
 (1 + t\mathbf{a} + \dots ) (1 + t\mathbf{a}^T + \dots )  = 1 \Longrightarrow \mathbf{a} + \mathbf{a}^T = 0 \text{ or } \mathbf{a} = \mathbf{a}^T
 \end{equation}
 $\Longrightarrow  \mathbf{a}$ skew-symmetric.
+\begin{correction}{skew symmetry}
+The alternative in Eq.~\eqref{dgdt:Eq:SO(N)LieAlgebraIsSkewSymmetric} should read
+$\mathbf a=-\mathbf a^T$. The first-order term of the product is
+$t(\mathbf a+\mathbf a^T)$, and it must vanish.
+The derivation for $\mathfrak{so}(n)$ is in \S\ref{quat:sec:so-n}.
+\end{correction}
 
 \subsubsection{$\mathbf{so}(3)$}
 
