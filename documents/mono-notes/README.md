@@ -49,7 +49,9 @@ layout review; the build report makes remaining overflow explicit.
 `topics/rigid-body-foundations.tex` adds the bridge from rotations and
 momentum balances to a constant-mass six-DOF model, with a Holm--Schmah--Stoica
 reading sequence. It states frame and physical assumptions locally. The
-Holm book's active OCR run is not a dependency of the notes.
+Holm page-reconciled parse is beside the PDF, in
+`Holm-Schmah-Stoica-GeometricMechanicsAndSymmetry-2009/ocr-compare/reconciled/resolved.md`.
+These notes do not copy the book.
 
 ## Source and provenance
 
