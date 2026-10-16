@@ -13,9 +13,30 @@ AI agents that verify theoretical-physics calculations.
 
 ## What will the company make?
 
-Explore The Universe is an AI research system for theoretical physics. It generates candidate calculations, routes them to independent symbolic or numerical checks, and records an explicit pass, failure residual, or inconclusive result.
+*(Submitted answer, Fall 2026 application.)*
 
-We are starting with scattering amplitudes, where plausible output can still be wrong by a sign, convention, symmetry, or physical limit. The long-term product is a research workspace in which agents can explore aggressively because verification and provenance are built into the loop.
+Explore The Universe is a team of AI agents that does theoretical and mathematical physics
+research — the work a group of graduate students and postdocs does, carried out by agents.
+
+One agent proposes a calculation and works it out with symbolic computation. A separate agent
+verifies it independently. Every run ends in a pass, a failure, or an explicit
+"inconclusive," and the reasoning is recorded. Proposal and verification are kept apart
+deliberately: fluent physics can be wrong by a sign or a factor of two, and checking is the
+bottleneck in real research.
+
+We start with scattering amplitudes, because exact identities, recurrence relations,
+symmetries and soft limits make correctness measurable there. The prototype reproduces a
+known amplitudes result through two independent implementations, and rejects a deliberately
+broken candidate.
+
+The hard part is not the model. It is the harness — memory, task decomposition, tool use, and
+verification the agents cannot argue their way past. The models are already capable enough,
+and ability transfers from code to physics.
+
+The goal is a peer-reviewed arXiv paper whose result came from the agents.
+
+**Note:** deliberately names no specific CAS or library. The stack is expected to change; the
+claim is about the agent team and the proposer/verifier split, not the tooling.
 
 ## Why this problem?
 
