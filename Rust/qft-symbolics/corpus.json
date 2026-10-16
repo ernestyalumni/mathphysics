@@ -1,0 +1,328 @@
+{
+  "schema_version": 1,
+  "created": "2026-10-16",
+  "description": "Known textbook reproduction corpus; not a held-out AI benchmark or chapter completion ledger.",
+  "conventions": {
+    "eta": [
+      -1,
+      1,
+      1,
+      1
+    ],
+    "gamma_anticommutator": "-2 eta",
+    "epsilon_upper_12": 1,
+    "epsilon_lower_12": -1,
+    "polynomial_field": "Q(i) with checked i128 range",
+    "polarization_api": "sqrt(2) epsilon",
+    "implicit_einstein_contraction": false
+  },
+  "sources": {
+    "notes": {
+      "path": "LaTeX_and_pdfs/Srednicki_QFT.tex",
+      "sha256": "a2cbbb4fbb4b8276566f21192847c0eb5ec1f22db3a67adfc95181848db0085f",
+      "role": "User-supplied worked notes; preserve unchanged, not an infallible answer key"
+    },
+    "book_marker": {
+      "path": "workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).marker.md",
+      "role": "Existing transcription used for problem identifiers; source statements not comprehensively visually certified"
+    },
+    "book_mmd": {
+      "path": "workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).mmd",
+      "role": "Secondary existing transcription, known malformed equations; prerequisite locations read explicitly"
+    },
+    "cadabra": {
+      "commit": "67cdebce798dbb2e230ae3246221ca3302a03129",
+      "role": "Scope inspection and independent live algebra oracle; no translated C++"
+    }
+  },
+  "immediate_prerequisites": {
+    "source": "Book mmd chapter headers; selected subgraph, not complete transitive closure or mastery claim",
+    "chapters": {
+      "33": [
+        2
+      ],
+      "34": [
+        3,
+        33
+      ],
+      "35": [
+        34
+      ],
+      "36": [
+        22,
+        35
+      ],
+      "37": [
+        36
+      ],
+      "38": [
+        37
+      ],
+      "39": [
+        38
+      ],
+      "41": [
+        5,
+        39
+      ],
+      "42": [
+        39
+      ],
+      "43": [
+        9,
+        42
+      ],
+      "44": [
+        43
+      ],
+      "45": [
+        10,
+        12,
+        41,
+        43
+      ],
+      "46": [
+        45
+      ],
+      "47": [
+        36
+      ],
+      "48": [
+        46,
+        47
+      ],
+      "50": [
+        48
+      ],
+      "54": [
+        3
+      ],
+      "55": [
+        54
+      ],
+      "56": [
+        5,
+        55
+      ],
+      "57": [
+        8,
+        56
+      ],
+      "58": [
+        45,
+        57
+      ],
+      "59": [
+        48,
+        58
+      ],
+      "60": [
+        50,
+        59
+      ],
+      "69": [
+        24,
+        58
+      ],
+      "70": [
+        69
+      ],
+      "71": [
+        53,
+        69
+      ],
+      "72": [
+        71
+      ],
+      "73": [
+        70,
+        72
+      ],
+      "78": [
+        73
+      ],
+      "79": [
+        78
+      ],
+      "80": [
+        10
+      ],
+      "81": [
+        60,
+        79,
+        80
+      ]
+    },
+    "prioritized_tool_path": [
+      35,
+      47,
+      50,
+      60,
+      69,
+      70,
+      71,
+      72,
+      79,
+      80,
+      81
+    ],
+    "warning": "This is a tool-building order, NOT an assertion that omitted physics prerequisites can be ignored."
+  },
+  "entries": [
+    {
+      "id": "35.1",
+      "task": "Exact evaluation of raised sigma matrices",
+      "file": "tests/algebra.rs",
+      "test": "ch35_1_raised_sigma_and_completeness",
+      "evidence": "exact_finite_components",
+      "source": "LaTeX_and_pdfs/Srednicki_QFT.tex:5644-5696; book marker:6164",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    },
+    {
+      "id": "35.2",
+      "task": "Left Lorentz generators and all Lorentz commutators",
+      "file": "tests/algebra.rs",
+      "test": "ch35_2_lorentz_generators",
+      "evidence": "exact_finite_components",
+      "source": "LaTeX_and_pdfs/Srednicki_QFT.tex:5698-5718; book marker:6165",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    },
+    {
+      "id": "47.1",
+      "task": "Trace gamma5 gamma(mu) gamma(nu)",
+      "file": "tests/textbook.rs",
+      "test": "ch47_1_gamma5_two_gamma_trace",
+      "evidence": "exact_finite_components",
+      "source": "book marker:8678; book mmd:6610-6706",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    },
+    {
+      "id": "47.2",
+      "task": "Contracted gamma identities",
+      "file": "tests/textbook.rs",
+      "test": "ch47_2_contracted_gamma_equations_four_dimensions_only",
+      "evidence": "partial_d4_only",
+      "source": "book marker:8679; book mmd:6691-6706",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    },
+    {
+      "id": "47.3",
+      "task": "Sixteen-member orthogonal Dirac matrix basis",
+      "file": "tests/textbook.rs",
+      "test": "ch47_3_sixteen_dirac_basis_matrices_are_orthogonal",
+      "evidence": "exact_basis_and_dimension_argument",
+      "source": "book marker:8680; book mmd:6706",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    },
+    {
+      "id": "50.1a",
+      "task": "Massless slash completeness",
+      "file": "tests/algebra.rs",
+      "test": "ch50_1a_completeness_symbolic_components",
+      "evidence": "exact_polynomial",
+      "source": "LaTeX_and_pdfs/Srednicki_QFT.tex:7175-7206; book marker:9147-9153",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    },
+    {
+      "id": "50.1b",
+      "task": "Slash spinor sandwiches",
+      "file": "tests/textbook.rs",
+      "test": "ch50_1b_slash_sandwiches_are_polynomial_identities",
+      "evidence": "exact_polynomial",
+      "source": "book marker:9153; book mmd:6990-7010",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    },
+    {
+      "id": "50.3",
+      "task": "Schouten identity",
+      "file": "tests/algebra.rs",
+      "test": "schouten_is_polynomial_identity_and_wrong_sign_is_not",
+      "evidence": "exact_polynomial_with_negative_control",
+      "source": "book marker:9157-9161",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    },
+    {
+      "id": "50.4",
+      "task": "Chiral four-slash trace as bracket product",
+      "file": "tests/textbook.rs",
+      "test": "ch50_4_chiral_four_slash_trace",
+      "evidence": "exact_polynomial_identity_not_full_scalar_evaluation",
+      "source": "book marker:9163-9169",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    },
+    {
+      "id": "60.1a",
+      "task": "Momentum-polarization contraction and transversality",
+      "file": "tests/textbook.rs",
+      "test": "ch60_1a_polarization_dot_products_and_transversality",
+      "evidence": "exact_polynomial_nonzero_reference_domain",
+      "source": "book marker:10734-10747",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    },
+    {
+      "id": "60.1b",
+      "task": "Pairwise polarization dot products",
+      "file": "tests/textbook.rs",
+      "test": "ch60_1b_polarization_pair_products",
+      "evidence": "exact_polynomial_nonzero_reference_domain",
+      "source": "book marker:10749-10757",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    },
+    {
+      "id": "60.2a",
+      "task": "Momentum conservation bracket sums",
+      "file": "tests/textbook.rs",
+      "test": "ch60_2a_momentum_conservation_factorization",
+      "evidence": "symbolic_five_leg_factorization_and_all_n_linearity_argument",
+      "source": "book marker:10759-10763",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false
+    }
+  ],
+  "additional_checks": [
+    {
+      "task": "Parke-Taylor cyclicity, reflection and little-group witnesses",
+      "test": "parke_taylor_cyclicity_reflection_and_weights",
+      "warning": "Not a Lagrangian/BG derivation and not a Ward identity"
+    },
+    {
+      "task": "BCFW shift kinematics",
+      "test": "bcfw_shift_preserves_rank_one_and_total_momentum",
+      "warning": "Not BCFW amplitude recursion"
+    },
+    {
+      "task": "Half-collinear (2,2) SMGA formula versus interval-DP BG",
+      "test": "smga_exact_bg_vs_formula_n3_to_n10",
+      "cases": 200,
+      "multiplicities": [
+        3,
+        10
+      ],
+      "seeds": [
+        0,
+        24
+      ],
+      "zero": 133,
+      "nonzero": 67,
+      "warning": "Finite exact fixtures, no all-n proof; Python parity is numerical with 1e-10 tolerance"
+    }
+  ],
+  "next_gates": [
+    "Arbitrary precision and typed tensor indices with fail-closed contractions",
+    "47.2 formal d-dimensional verification; 50.2; complete 50.4 evaluated trace",
+    "60.2b, 60.3, 60.4 with explicit momentum-conservation constraints",
+    "Nonabelian color and gluon vertices; ordinary Lorentzian/complexified BG",
+    "4/5-point MHV amplitude from independent recurrence/Feynman rules; BCFW amplitude recursion"
+  ]
+}

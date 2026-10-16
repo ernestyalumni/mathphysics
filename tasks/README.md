@@ -25,6 +25,16 @@ read only that file (plus the files it points to) and produce the deliverable.
 6. **No overclaiming:** results are "verified" only if a script in the repo reproduces them.
    "Conjectured" and "verified" must never be conflated in any writeup.
 
+## October 16 update — directly authorized Rust migration
+
+Ernest requested a Rust symbolic-QFT/Python port and a source-grounded corpus.
+The first bounded slice and verification receipt are at
+[../Rust/qft-symbolics/README.md](../Rust/qft-symbolics/README.md).
+[CONTINUE.md](../Rust/qft-symbolics/CONTINUE.md) lists the next implementation
+units; root TASKS.md records current status. The historical "do not
+reimplement" instruction below still applies to redundant Python work, not
+this explicitly requested Rust migration. Existing Python remains an oracle.
+
 ## Task index
 
 | Task | Title | Depends on | Priority |

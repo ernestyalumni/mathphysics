@@ -9,6 +9,16 @@
 | `the geometry of physics problems.tex` | `./LaTeX_and_pdfs/the geometry of physics problems`                     | Frankel, geometry, topology, physics,                           | Notes and solutions for Frankel's **The Geometry of Physics** | |
 | `master.tex` | `./documents/mono-notes` | thermodynamics, statistical mechanics, Kittel, Kroemer | Mono notes, first part. Letter and widescreen from one source. | |
 
+## Verified Rust QFT tools
+
+The [exact Rust QFT kernel](Rust/qft-symbolics/README.md) starts the
+Cadabra-inspired symbolic/Python migration: spinors, Clifford algebra,
+selected Srednicki problems, and exact half-collinear SMGA recurrence checks.
+See its [corpus](Rust/qft-symbolics/corpus.json) and
+[verification scope](Rust/qft-symbolics/docs/VERIFICATION.md).
+[TheoPhysEval research-workflow lessons](agent/research/2026-10-16-theophyseval.md)
+explain the verifier-first approach and the paper's limits.
+
 # Creating and starting a virtual environment for Python 3
 
 Create a directory for a virtual environment:

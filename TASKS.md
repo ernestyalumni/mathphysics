@@ -1,7 +1,24 @@
 # Current Execution Queue — TMP / MHV Discovery Engine
 
-**Last updated:** 2026-07-25
-**Deadline driving this queue:** YC application deadline 2026-07-27, 8:00 PM PT
+**Last updated:** 2026-10-16
+
+## Active: Rust QFT corpus (Ernest's October 16 request)
+
+- First bounded slice implemented at [Rust/qft-symbolics](Rust/qft-symbolics/README.md):
+  exact algebra, 12 named textbook entries (some partial), 25 integration tests
+  plus two compile-fail doctests, and 200 exact SMGA recurrence comparisons.
+- [Research-workflow findings](agent/research/2026-10-16-theophyseval.md) from
+  the supplied TheoPhysEval paper are recorded with source/provenance limits.
+- [Continuation units](Rust/qft-symbolics/CONTINUE.md): typed-index/metric
+  kernel, selected Srednicki gaps, nonabelian vertices, ordinary Yang–Mills
+  BG, then independently verified MHV/BCFW amplitudes.
+- The Rust port is specifically requested; retain existing Python as an
+  independent oracle until full parity. No chapter or whole-port completion
+  is inferred from selected tests.
+
+## Historical July application queue
+
+**Deadline driving this historical queue:** YC application deadline 2026-07-27, 8:00 PM PT
 **Detailed task packets:** [`tasks/README.md`](tasks/README.md)
 
 ## Do now, in order
