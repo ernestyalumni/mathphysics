@@ -162,6 +162,23 @@ Rules:
 - Truthful: if Ernest re-derived a known result, frame it as that.
 - Suggest Manim / Cadabra2 visualization where it helps.
 
+### OCR / document parsing for math & physics sources
+
+```text
+TMPAI, parse <PATH-OR-FORMAT> using the ocr-compare pipeline. Read its README.md + AGENTS.md first; normalize non-PDF inputs to PDF; report page coverage, dropped pages, conflicts, and output paths.
+```
+
+Rules:
+
+- Single source of truth: `/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/Monoclaw/Python/ocr-compare/`.
+- Before parsing/OCR/extraction work, read that directory's `README.md` and `AGENTS.md`; they override generic OCR assumptions.
+- Pipeline is PDF-in only. Convert `.djvu`, `.ps`, or images to PDF first (`ddjvu`, `ps2pdf`, `img2pdf` / ImageMagick), installing converters if needed.
+- Marker is the authoritative full-page backbone; Nougat is an untrusted per-equation cross-check because it can drop/repeat pages.
+- Use `scripts/run_ocr.sh PDF --out DIR` for short papers and `scripts/run_ocr_large.sh PDF --out DIR` for books/large PDFs. Do not run `marker_single` directly on books.
+- Inspect `reconciled/equations.json` after reconcile. Report page coverage, Nougat dropped-page ranges, conflict count, and locations of marker markdown, Nougat `.mmd`, and `reconciled/merged.md`.
+- For books, run `scripts/triage_conflicts.py` first and escalate only genuine symbol disagreements to the vision-judge tier.
+- Do not commit venvs, weights, `out/`, or OCR-generated bulk outputs; change machine-local paths only through environment variables / `scripts/env.sh`.
+
 ## Persistent artifacts to create / update over time
 
 Under `agent/` (or repo root when public-facing):

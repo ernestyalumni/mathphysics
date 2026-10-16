@@ -40,6 +40,37 @@ Don't dump large `.tex` bodies into chat. Use `read_file` with `offset` / `limit
 - **Eval build** — `evals/<name>/{README,problems.jsonl,verifier.py,harness.py}` at repo root; 10 problems; symbolic ground truth; pinned baseline model.
 - **Short-form draft** — `agent/marketing/drafts/YYYY-MM-DD-<slug>.md` with 60-90s script + visual beats + closing hook; mark `STATUS: DRAFT — awaiting approval`.
 
+## OCR / Document Parsing for Math & Physics Sources
+
+Whenever a task involves parsing, OCR'ing, or extracting text/equations from a document (PDF, `.djvu`, `.ps` / PostScript, scanned papers, textbooks) — or improving/debugging/extending that capability — use the Monoclaw `ocr-compare` pipeline as the single source of truth:
+
+`/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/Monoclaw/Python/ocr-compare/`
+
+Before doing anything, read both files in that directory; they override assumptions:
+
+- `README.md` — workflow and commands.
+- `AGENTS.md` — hard assumptions, conventions, load-bearing pins.
+
+Pipeline summary: Marker is the authoritative backbone with full page coverage; Nougat is a per-equation cross-check with cleaner arXiv-style LaTeX but can drop/repeat pages, so it is untrusted by default. `combine.py` reconciles by `\tag{N}` and writes `reconciled/equations.json`; `resolve.py` is the optional vision-judge tier (Grok, or Claude Code via manifest).
+
+Hard rules:
+
+- This box has an NVIDIA GPU. Scripts install the CUDA torch build only; do not add CPU fallbacks.
+- Machine-local paths/GPU settings live in `scripts/env.sh` / `scripts/_paths.sh` (`OCR_STORAGE`, `CUDA_VISIBLE_DEVICES=0`). Never hardcode paths; change locations via env vars only.
+- Never commit venvs, weights, `out/`, or OCR-generated bulk outputs.
+- Nougat pins are load-bearing: `transformers==4.38.2`, `albumentations==1.3.1`, `pypdfium2==4.30.0`. Do not bump without re-validating.
+- Big PDFs/books OOM under `marker_single`; use `scripts/run_ocr_large.sh`, not `scripts/run_ocr.sh`.
+
+Input normalization: the pipeline is PDF-in only. For non-PDF inputs, convert to PDF first, then run the pipeline:
+
+- `.djvu` → `ddjvu -format=pdf in.djvu out.pdf` (or `djvups | ps2pdf`).
+- `.ps` → `ps2pdf in.ps out.pdf`.
+- images → `img2pdf` or ImageMagick `convert`.
+
+If the converter is missing, install it (`apt`) before proceeding or report the blocker; never feed non-PDF input directly into the pipeline. The venvs and weights are expected to already exist at `OCR_STORAGE`; do not rerun `scripts/setup_envs.sh` unless they are missing or broken.
+
+On parse completion, inspect `reconciled/equations.json` and report page coverage, Nougat dropped-page ranges, conflict count, and output locations (`marker` markdown, Nougat `.mmd`, `reconciled/merged.md`). For books, run `scripts/triage_conflicts.py` and separate cosmetic auto-resolutions from genuine symbol disagreements before escalating to a vision judge.
+
 ## Persistent Artifacts
 
 Create / update under `agent/` (persona-local) or repo root (public-facing) as needed:
