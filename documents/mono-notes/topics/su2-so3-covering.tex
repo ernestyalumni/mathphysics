@@ -147,26 +147,87 @@ $\Sigma(\mathbf x)^2=x^jx^k\sigma_j\sigma_k=|\mathbf x|^2I$, and from the
 matrix in Eq.~\eqref{quat:Sigma},
 $\det\Sigma(\mathbf x)=-z^2-(x-iy)(x+iy)=-|\mathbf x|^2$.
 
-\subsection{The adjoint action of \texorpdfstring{$SU(2)$}{SU(2)}}
-Frankel asks the reader to recall that every Lie group acts on its Lie
-algebra by the adjoint action. In our notation this is
-$\mathrm{Ad}_g=D_1\mathcal C_g$, $\mathrm{Ad}_gY=gYg^{-1}$
-(\S\ref{dgdt:sec:adjoint-representation}), and
-Theorem~\ref{dgdt:Thm:5.1YKos}(iii) states that $gYg^{-1}\in\mathfrak g$.
-The reason is short. In $(gYg^{-1})^k$ every inner $g^{-1}g$ cancels, for
-example $(gYg^{-1})^2=gYg^{-1}gYg^{-1}=gY^2g^{-1}$, so
+\subsection{The adjoint representation}\label{quat:sec:adjoint}
+Frankel writes ``Recall that every Lie group $G$ acts on its Lie algebra
+$\mathfrak g$ by the adjoint action $\mathrm{Ad}\colon G\to Gl(\mathfrak g)$,
+$\mathrm{Ad}(g)(X)=gXg^{-1}$'' (p.~494). Two words need definitions.
+An \emph{action} of a group $G$ on a set $M$ is a map
+$G\times M\to M$, $(g,x)\mapsto g\cdot x$, with $1\cdot x=x$ and
+$(gh)\cdot x=g\cdot(h\cdot x)$. When $M=E$ is a vector space and each map
+$x\mapsto g\cdot x$ is linear, the action is the same thing as a group
+homomorphism $\rho\colon G\to GL(E)$, $\rho(g)x=g\cdot x$: a
+\emph{representation} $(E,\rho)$ of $G$, in Kosmann-Schwarzbach's notation
+(\S\ref{dgdt:sec:lie-groups}). So the claim is that $\mathrm{Ad}$ is a
+representation of $G$ on its own Lie algebra. It is short enough to prove.
+
+\begin{proposition}[adjoint representation]\label{quat:prop:Ad}
+Let $G\subseteq GL(n,\mathbb C)$ be a matrix Lie group with Lie algebra
+$\mathfrak g$, and for $g\in G$ put $\mathrm{Ad}_gY=gYg^{-1}$. Then
+\begin{enumerate}
+ \item[(i)] $\mathrm{Ad}_gY\in\mathfrak g$ for every $Y\in\mathfrak g$;
+ \item[(ii)] $\mathrm{Ad}_g\colon\mathfrak g\to\mathfrak g$ is linear and
+  invertible, with inverse $\mathrm{Ad}_{g^{-1}}$;
+ \item[(iii)] $\mathrm{Ad}_1=\mathrm{id}$ and
+  $\mathrm{Ad}_{gh}=\mathrm{Ad}_g\circ\mathrm{Ad}_h$, so
+  $\mathrm{Ad}\colon G\to GL(\mathfrak g)$ is a representation;
+ \item[(iv)] $\mathrm{Ad}_g[X,Y]=[\mathrm{Ad}_gX,\mathrm{Ad}_gY]$, so each
+  $\mathrm{Ad}_g$ is a Lie algebra automorphism;
+ \item[(v)] $\mathrm{Ad}_g$ is the derivative at $1$ of the conjugation
+  $\mathcal C_g(h)=ghg^{-1}$, and
+  $\frac{d}{dt}\mathrm{Ad}_{\exp(tX)}Y\big|_{t=0}=[X,Y]=\mathrm{ad}_XY$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(i) In $(gYg^{-1})^k$ every inner $g^{-1}g$ cancels, for example
+$(gYg^{-1})^2=gYg^{-1}gYg^{-1}=gY^2g^{-1}$. Summing the exponential series,
 \begin{equation}\label{quat:conj-exp}
  \exp\bigl(t\,gYg^{-1}\bigr)=\sum_{k=0}^{\infty}\frac{t^k}{k!}gY^kg^{-1}
- =g\exp(tY)g^{-1}=\mathcal C_g\bigl(\exp(tY)\bigr)\in G ,
+ =g\exp(tY)g^{-1}=\mathcal C_g\bigl(\exp(tY)\bigr).
 \end{equation}
-and Theorem~\ref{dgdt:Thm:5.1YKos}(ii) gives $gYg^{-1}\in\mathfrak g$.
-Differentiating Eq.~\eqref{quat:conj-exp} at $t=0$ shows that $gYg^{-1}$ is
-the derivative of $\mathcal C_g$ along $\exp(tY)$, which is why
-$\mathrm{Ad}_g=D_1\mathcal C_g$. Each $\mathrm{Ad}_g$ is linear, and
-$\mathrm{Ad}_{gg'}Y=gg'Y(gg')^{-1}=g(g'Yg'^{-1})g^{-1}
-=\mathrm{Ad}_g\mathrm{Ad}_{g'}Y$.
+The right side is a product of three elements of $G$, so it lies in $G$
+for all $t$, and Theorem~\ref{dgdt:Thm:5.1YKos}(ii) gives
+$gYg^{-1}\in\mathfrak g$.
 
-Frankel lets $SU(2)$ act on $i\,\mathfrak{su}(2)$ instead of
+(ii) Matrix multiplication is linear in $Y$. Also
+$\mathrm{Ad}_{g^{-1}}\mathrm{Ad}_gY=g^{-1}gYg^{-1}g=Y$, and likewise in the
+other order.
+
+(iii) $\mathrm{Ad}_1Y=Y$, and
+$\mathrm{Ad}_{gh}Y=ghY(gh)^{-1}=g(hYh^{-1})g^{-1}=\mathrm{Ad}_g(\mathrm{Ad}_hY)$,
+using $(gh)^{-1}=h^{-1}g^{-1}$.
+
+(iv) Insert $g^{-1}g=1$ between the factors:
+$g(XY-YX)g^{-1}=gXg^{-1}gYg^{-1}-gYg^{-1}gXg^{-1}
+=[\mathrm{Ad}_gX,\mathrm{Ad}_gY]$.
+
+(v) By Eq.~\eqref{quat:conj-exp}, $\mathcal C_g$ carries the curve
+$\exp(tY)$, whose velocity at $t=0$ is $Y$, to the curve
+$\exp(t\,gYg^{-1})$, whose velocity at $t=0$ is $gYg^{-1}$. So the derivative
+of $\mathcal C_g$ at $1$ sends $Y$ to $\mathrm{Ad}_gY$. For the last
+statement, differentiate $\exp(tX)Y\exp(-tX)$ at $t=0$ by the product rule:
+$XY+Y(-X)=[X,Y]$.
+\end{proof}
+Kosmann-Schwarzbach takes (v) as the definition, $\mathrm{Ad}_g=D_1\mathcal
+C_g$, and derives $\mathrm{Ad}_gY=gYg^{-1}$
+(\S\ref{dgdt:sec:adjoint-representation}); Frankel takes the formula as the
+definition. By (v) the two agree.
+
+\begin{center}
+\small
+\begin{tabular}{llll}
+ & Frankel & Kosmann-Schwarzbach & ours\\\hline
+ conjugation & --- & $\mathcal C_g$ & $\mathcal C_g$\\
+ adjoint action & $\mathrm{Ad}(g)(X)$ & $\mathrm{Ad}_g=D_1\mathcal C_g$ &
+   $\mathrm{Ad}_gX$\\
+ its target & $Gl(\mathfrak g)$ & $GL(\mathfrak g)$ & $GL(\mathfrak g)$\\
+ representation & ``by $3\times3$ matrices'' & $(E,\rho)$,
+   $\rho\colon G\to GL(E)$ & $(E,\rho)$\\
+ derivative of $\mathrm{Ad}$ & $\mathrm{Ad}_*$ & $\mathrm{ad}_X$ &
+   $\mathrm{ad}_X$, $d\Phi$
+\end{tabular}
+\end{center}
+
+For $G=SU(2)$, Frankel lets $SU(2)$ act on $i\,\mathfrak{su}(2)$ instead of
 $\mathfrak{su}(2)$ and still calls the action $\mathrm{Ad}$ (his
 Eq.~(19.10)). This is the same action: $\mathrm{Ad}_u$ is complex linear on
 $2\times2$ matrices, so $\mathrm{Ad}_u(iX)=i\,\mathrm{Ad}_u(X)$. Directly,
@@ -226,6 +287,78 @@ A linear map that preserves lengths preserves inner products, since
 $2\mathbf x\cdot\mathbf y=|\mathbf x+\mathbf y|^2-|\mathbf x|^2-|\mathbf y|^2$.
 So $\Phi(u)^T\Phi(u)=I$ and $\det\Phi(u)=\pm1$. That the sign is $+1$
 needs the topology of $SU(2)$.
+
+\subsection{What ``yields the standard representation of \texorpdfstring{$SO(3)$}{SO(3)}'' means}\label{quat:sec:standard-rep}
+Frankel announces (p.~493): ``the adjoint representation
+$\mathrm{Ad}(g)Y=gYg^{-1}$ of $SU(2)$ on its $3$-dimensional Lie algebra
+$\mathfrak{su}(2)$ yields (see Theorem (19.12)) the standard representation
+of $SO(3)$ on $\mathbb R^3$.'' Here are the definitions involved.
+
+The \emph{standard} (defining) representation of a matrix group
+$G\subseteq GL(n,\mathbb R)$ is the inclusion: $g\in G$ acts on
+$\mathbf x\in\mathbb R^n$ by matrix multiplication, $\mathbf x\mapsto g\mathbf x$.
+For $SO(3)$ this is the rotation of vectors in $\mathbb R^3$. Composing it
+with $\Phi$ gives a representation $(\mathbb R^3,\Phi)$ of $SU(2)$.
+
+For representations $(E_1,\rho_1)$ and $(E_2,\rho_2)$ of a group $G$, an
+\emph{intertwining operator} is a linear map $T\colon E_1\to E_2$ with
+$\rho_2(g)\,T=T\,\rho_1(g)$ for all $g\in G$. Following Kosmann-Schwarzbach's
+Definition~1.12, $\rho_1$ and $\rho_2$ are \emph{equivalent} if there is a
+bijective intertwining operator for them. Equivalent representations are the
+same representation written in two coordinate systems: $T$ translates one
+into the other.
+
+\begin{proposition}\label{quat:prop:standard}
+The map $\Sigma\colon\mathbb R^3\to i\,\mathfrak{su}(2)$ is a bijective
+intertwining operator from $(\mathbb R^3,\Phi)$ to
+$(i\,\mathfrak{su}(2),\mathrm{Ad})$. Likewise
+$-i\Sigma\colon\mathbb R^3\to\mathfrak{su}(2)$ is one from $(\mathbb R^3,\Phi)$
+to $(\mathfrak{su}(2),\mathrm{Ad})$. Hence the adjoint representation of
+$SU(2)$ is equivalent to the standard representation of $SO(3)$ composed with
+$\Phi$. By Theorem~\ref{quat:thm:covering}, every rotation occurs as some
+$\Phi(u)$.
+\end{proposition}
+\begin{proof}
+Eq.~\eqref{quat:Phi} reads $\mathrm{Ad}_u\circ\Sigma=\Sigma\circ\Phi(u)$
+for every $u\in SU(2)$, which is the intertwining condition. $\Sigma$ is
+linear, and it is bijective because $\{\sigma_k\}$ is a basis of
+$i\,\mathfrak{su}(2)$ (Eq.~\eqref{quat:su2-bases}). Multiplying by $-i$
+commutes with $\mathrm{Ad}_u$ and maps $i\,\mathfrak{su}(2)$ bijectively
+onto $\mathfrak{su}(2)$. The last sentence is Theorem~\ref{quat:thm:covering}.
+\end{proof}
+So ``$\mathrm{Ad}$ yields the standard representation'' combines two
+statements. In the coordinates $\Sigma$, the operators $\mathrm{Ad}_u$
+\emph{are} rotation matrices, by Proposition~\ref{quat:prop:standard} and
+$\det\Phi(u)=1$. And all rotations are obtained, by
+Theorem~\ref{quat:thm:covering}.
+
+\emph{What suggests this before any computation.} Four facts, each already
+available, point to it.
+\begin{enumerate}
+ \item Dimension: $\dim\mathfrak{su}(2)=3$ (Eq.~\eqref{quat:su2-general-X}),
+  so $\mathrm{Ad}_u$ is a $3\times3$ real matrix.
+ \item Invariant inner product: $\langle h,h'\rangle=\operatorname{tr}(hh')$
+  is positive definite on $i\,\mathfrak{su}(2)$ (Eq.~\eqref{quat:Sigma-metric})
+  and $\mathrm{Ad}_u$ preserves it, by cyclicity of the trace. A linear map
+  preserving a positive-definite inner product is orthogonal in an
+  orthonormal basis, so $\mathrm{Ad}_u\in O(3)$.
+ \item Matching brackets: the basis $\sigma_a/(2i)$ of $\mathfrak{su}(2)$
+  satisfies $[\sigma_a/2i,\sigma_b/2i]=\epsilon_{abc}\,\sigma_c/2i$
+  (Eq.~\eqref{quat:Fa-brackets}), exactly the relations
+  $[E_a,E_b]=\epsilon_{abc}E_c$ of $\mathfrak{so}(3)$
+  (Eq.~\eqref{quat:so3-brackets}). These are Frankel's ``remarks after
+  (19.6)''. The Lie algebras are isomorphic, and by
+  Proposition~\ref{quat:prop:Ad}(v) the derivative of $\mathrm{Ad}$ is
+  $\mathrm{ad}$, which carries $\sigma_a/2i$ to $E_a$
+  (Eq.~\eqref{quat:frankel-19-14}).
+ \item Connectedness: $SU(2)$ is connected (\S\ref{quat:sec:su2-sphere}),
+  so $\det\mathrm{Ad}_u$ cannot jump from $+1$ to $-1$.
+\end{enumerate}
+Frankel adds a fifth, which he does not prove here (p.~493): $SU(2)$ is
+simply connected, and Lie theory then lifts the Lie algebra isomorphism
+$\mathfrak{su}(2)\cong\mathfrak{so}(3)$ to a group homomorphism
+$SU(2)\to SO(3)$. In these notes $\Phi$ is constructed directly instead, by
+Eq.~\eqref{quat:Phi}.
 
 \section{\texorpdfstring{$SU(2)$}{SU(2)} is the 3-sphere}\label{quat:sec:su2-sphere}
 This section follows Frankel's Section~19.1c (p.~495). Let
@@ -505,6 +638,86 @@ Eq.~\eqref{quat:half-angle}, the element of $SU(2)$ in Eq.~\eqref{quat:onto}
 is $\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}\Sigma(\mathbf n)$, the unit
 quaternion of Eq.~\eqref{quat:axis-angle}. So $\Phi$ is onto.
 
+\subsection{\texorpdfstring{$\Phi$}{Phi} in closed form: onto and two-to-one explicitly}\label{quat:sec:Phi-closed}
+Every $u\in SU(2)$ is $u=q_0I-i\Sigma(\mathbf q)$ with
+$q_0^2+|\mathbf q|^2=1$ (the quaternion form in
+\S\ref{quat:sec:su2-sphere}, since $q^a(-i\sigma_a)=-i\Sigma(\mathbf q)$), and
+$u^{-1}=u^\dagger=q_0I+i\Sigma(\mathbf q)$ because $\Sigma(\mathbf q)$ is
+Hermitian. Computing $\Phi(u)$ from Eq.~\eqref{quat:Phi} needs one product
+rule for Pauli matrices. Adding half of Frankel's anticommutator
+(Eq.~(19.18)) and half of his commutator (Eq.~(19.6)) gives
+$\sigma_j\sigma_k=\delta_{jk}I+i\epsilon_{jkl}\sigma_l$, so
+\begin{equation}\label{quat:Sigma-product}
+ \Sigma(\mathbf a)\Sigma(\mathbf b)=a^jb^k\sigma_j\sigma_k
+ =(\mathbf a\cdot\mathbf b)\,I+i\,\Sigma(\mathbf a\times\mathbf b),
+\end{equation}
+Frankel's Eq.~(19.19), with $(\mathbf a\times\mathbf b)^l=\epsilon_{jkl}a^jb^k$.
+Its antisymmetric part is
+$[\Sigma(\mathbf a),\Sigma(\mathbf b)]=2i\,\Sigma(\mathbf a\times\mathbf b)$.
+Now expand
+\begin{equation}
+ u\Sigma(\mathbf x)u^{-1}
+ =q_0^2\Sigma(\mathbf x)
+  +iq_0\bigl[\Sigma(\mathbf x),\Sigma(\mathbf q)\bigr]
+  +\Sigma(\mathbf q)\Sigma(\mathbf x)\Sigma(\mathbf q),
+\end{equation}
+and treat the last two terms separately. The middle term is
+$iq_0\cdot2i\,\Sigma(\mathbf x\times\mathbf q)=2q_0\Sigma(\mathbf q\times\mathbf x)$.
+For the last term apply Eq.~\eqref{quat:Sigma-product} twice. The scalar
+$(\mathbf q\times\mathbf x)\cdot\mathbf q$ vanishes, and
+$(\mathbf q\times\mathbf x)\times\mathbf q=|\mathbf q|^2\mathbf x
+-(\mathbf q\cdot\mathbf x)\mathbf q$ by
+$(\mathbf a\times\mathbf b)\times\mathbf c=(\mathbf a\cdot\mathbf c)\mathbf b
+-(\mathbf b\cdot\mathbf c)\mathbf a$:
+\begin{align}
+ \Sigma(\mathbf q)\Sigma(\mathbf x)\Sigma(\mathbf q)
+ &=\bigl((\mathbf q\cdot\mathbf x)I+i\Sigma(\mathbf q\times\mathbf x)\bigr)
+   \Sigma(\mathbf q)\notag\\
+ &=(\mathbf q\cdot\mathbf x)\Sigma(\mathbf q)
+   -\Sigma\bigl((\mathbf q\times\mathbf x)\times\mathbf q\bigr)\notag\\
+ &=2(\mathbf q\cdot\mathbf x)\Sigma(\mathbf q)-|\mathbf q|^2\Sigma(\mathbf x).
+\end{align}
+Collecting terms inside $\Sigma$ and using Eq.~\eqref{quat:Phi},
+\begin{equation}\label{quat:euler-rodrigues}
+ \Phi(u)\mathbf x=\bigl(q_0^2-|\mathbf q|^2\bigr)\mathbf x
+ +2q_0\,\mathbf q\times\mathbf x+2(\mathbf q\cdot\mathbf x)\,\mathbf q .
+\end{equation}
+In matrix form this is
+$\Phi(u)=(q_0^2-|\mathbf q|^2)I+2q_0\widehat{\mathbf q}+2\mathbf q\mathbf q^T$,
+the Euler--Rodrigues formula.
+
+\emph{Two-to-one, explicitly.} Every term of Eq.~\eqref{quat:euler-rodrigues}
+is quadratic in $(q_0,\mathbf q)$. Replacing $u$ by $-u$ replaces
+$(q_0,\mathbf q)$ by $(-q_0,-\mathbf q)$ and leaves $\Phi(u)$ unchanged.
+The kernel can also be read off. If $\Phi(u)=I$ and $\mathbf q\ne0$, take a
+unit $\mathbf x\perp\mathbf q$. Then Eq.~\eqref{quat:euler-rodrigues} gives
+$(q_0^2-|\mathbf q|^2)\mathbf x+2q_0\,\mathbf q\times\mathbf x=\mathbf x$. The
+two terms are perpendicular, so $q_0^2-|\mathbf q|^2=1$, which together with
+$q_0^2+|\mathbf q|^2=1$ forces $\mathbf q=0$, a contradiction. So
+$\mathbf q=0$, $q_0=\pm1$, and $u=\pm I$.
+
+\emph{Onto, explicitly.} Given $R=R_{\mathbf n}(\theta)$, which covers every
+rotation by the axis argument above, put $q_0=\cos\frac{\theta}{2}$ and
+$\mathbf q=\sin\frac{\theta}{2}\mathbf n$. The double-angle formulas give
+$q_0^2-|\mathbf q|^2=\cos\theta$, $2q_0\mathbf q=\sin\theta\,\mathbf n$, and
+$2\mathbf q\mathbf q^T=(1-\cos\theta)\mathbf n\mathbf n^T$. Then
+Eq.~\eqref{quat:euler-rodrigues} becomes
+\begin{equation}
+ \Phi(u)\mathbf x=\cos\theta\,\mathbf x+\sin\theta\,\mathbf n\times\mathbf x
+ +(1-\cos\theta)(\mathbf n\cdot\mathbf x)\mathbf n ,
+\end{equation}
+which is Eq.~\eqref{quat:rotate-about-n} after writing
+$\mathbf x=(\mathbf n\cdot\mathbf x)\mathbf n+\mathbf x_\perp$. So the two
+preimages of the rotation by $\theta$ about $\mathbf n$ are
+\begin{equation}\label{quat:two-preimages}
+ \pm u=\pm\Bigl(\cos\frac{\theta}{2}\,I-i\sin\frac{\theta}{2}\,\Sigma(\mathbf n)\Bigr).
+\end{equation}
+The minus sign is the same formula with $\theta+2\pi$ in place of $\theta$,
+since $\cos\frac{\theta+2\pi}{2}=-\cos\frac{\theta}{2}$ and
+$\sin\frac{\theta+2\pi}{2}=-\sin\frac{\theta}{2}$. The rotation angles
+$\theta$ and $\theta+2\pi$ give the same rotation of $\mathbb R^3$ but
+different elements of $SU(2)$.
+
 \subsection{\texorpdfstring{$\Phi$}{Phi} is two-to-one, and \texorpdfstring{$SO(3)\approx\mathbb RP^3$}{SO(3) = RP3}}
 For every $u$, $(-u)\Sigma(\mathbf x)(-u)^{-1}
 =(-1)(-1)^{-1}u\Sigma(\mathbf x)u^{-1}=u\Sigma(\mathbf x)u^{-1}$, so
@@ -538,14 +751,61 @@ $u^{-1}u'\in\{\pm I\}$, if and only if $u'=\pm u$. Since $u\ne-u$, every
 rotation has exactly two preimages. This completes the proof of
 Theorem~\ref{quat:thm:covering}.
 
-\emph{The quotient.} Frankel quotes the group-theory fact that an onto
-homomorphism $\varphi\colon G\to G'$ with kernel $H$ identifies $G'$ with
-$G/H$. This is again (17.10). Let $G$ act on $G'$ by
-$g\cdot g'=\varphi(g)g'$. The action is transitive, because $\varphi$ is onto:
-to move $g_1'$ to $g_2'$, choose $g$ with $\varphi(g)=g_2'g_1'^{-1}$. The
-stability subgroup of the identity $e'$ is
-$\{g:\varphi(g)=e'\}=\ker\varphi$. For $\Phi$ this gives
-$SO(3)\leftrightarrow SU(2)/\{\pm I\}$.
+\emph{The elementary result of group theory.} Frankel continues: ``It is an
+elementary result of group theory that if $\phi\colon G\to G'$ is a
+homomorphism of $G$ onto $G'$, then $G'$ is isomorphic to the coset space
+$G/H$, where $H=\phi^{-1}(e')$ is the kernel'' (pp.~496--497). This is the first
+isomorphism theorem for groups. The algebra part proves the same theorem for
+modules (Theorem~\ref{agat:Thm:FirstIsoModules}, from Rotman). Modules are
+abelian groups, where every subgroup is normal; for groups, normality of the
+kernel is the extra step. Dummit and Foote state the group version as
+Theorem~16 of their Section~3.3 \cite{agat:DuFo2003}. Quotient groups appear
+in Jordan's and H\"older's work on composition series (1870--1889); the
+isomorphism theorems in their general form are usually credited to Emmy
+Noether (1927), and they reached textbooks through van der Waerden's
+\emph{Moderne Algebra} (1930).
+
+\begin{theorem}[first isomorphism theorem]\label{quat:thm:first-iso}
+Let $\varphi\colon G\to G'$ be a group homomorphism and
+$K=\varphi^{-1}(e')$ its kernel. Then $K$ is a normal subgroup of $G$, the
+cosets $G/K$ form a group under $(gK)(hK)=ghK$, and
+\begin{equation}
+ \bar\varphi\colon G/K\to\varphi(G),\qquad \bar\varphi(gK)=\varphi(g),
+\end{equation}
+is a well-defined group isomorphism. If $\varphi$ is onto, $G/K\cong G'$.
+\end{theorem}
+\begin{proof}
+\emph{$K$ is normal.} For $k\in K$ and $g\in G$,
+$\varphi(gkg^{-1})=\varphi(g)\,e'\,\varphi(g)^{-1}=e'$, so $gKg^{-1}\subseteq K$.
+
+\emph{The coset product is well defined.} If $g'=gk$ and $h'=hk'$ with
+$k,k'\in K$, then $g'h'=gh\,(h^{-1}kh)\,k'$, and $h^{-1}kh\in K$ by
+normality, so $g'h'K=ghK$.
+
+\emph{$\bar\varphi$ is well defined and injective.} For $g,h\in G$,
+\begin{equation}
+ gK=hK\iff g^{-1}h\in K\iff\varphi(g^{-1}h)=e'\iff\varphi(g)=\varphi(h).
+\end{equation}
+Reading the chain left to right shows that $\bar\varphi(gK)$ does not depend
+on the representative $g$; reading it right to left shows that $\bar\varphi$
+is injective.
+
+\emph{$\bar\varphi$ is a homomorphism onto $\varphi(G)$.}
+$\bar\varphi(gK\,hK)=\bar\varphi(ghK)=\varphi(gh)=\varphi(g)\varphi(h)$, and
+every $\varphi(g)$ equals $\bar\varphi(gK)$.
+\end{proof}
+Frankel derives the same correspondence from his Fundamental
+Principle~(17.10). $G$ acts on $G'$ by $g\cdot g'=\varphi(g)g'$. The action
+is transitive when $\varphi$ is onto: to move $g_1'$ to $g_2'$, choose $g$
+with $\varphi(g)=g_2'g_1'^{-1}$. The stability subgroup of $e'$ is
+$\ker\varphi$. That argument gives the bijection
+$G/\ker\varphi\leftrightarrow G'$ of sets.
+Theorem~\ref{quat:thm:first-iso} adds that the bijection respects
+multiplication. For $\Phi$, which is onto with kernel $\{\pm I\}$,
+\begin{equation}\label{quat:SO3-quotient}
+ SU(2)/\{\pm I\}\cong SO(3)\quad\text{as groups},\qquad
+ \bar\Phi\bigl(\{u,-u\}\bigr)=\Phi(u).
+\end{equation}
 
 In the coordinates of Eq.~\eqref{quat:first-column},
 $F(-u)=-F(u)$, so each fiber $\{u,-u\}$ is a pair of antipodal points of
