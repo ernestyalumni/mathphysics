@@ -1,9 +1,9 @@
 # Verification demo -- latest run
 
-- Timestamp (UTC): 2026-07-27T01:59:25.733969+00:00
-- Git SHA: 619b5055a348d0b287160802906d002d2d2f38e8
-- Branch: feat/yc-mhv-execution-2026-07
-- Backend: python 3.12.12, numpy 2.5.1
+- Timestamp (UTC): 2026-07-27T20:46:39.258824+00:00
+- Git SHA: 946f2ffdeff51598f8c8c79de97e39c1ed8e3861
+- Branch: master
+- Backend: python 3.13.3, numpy 2.5.1
 - Reference: arXiv:2602.12176 (Guevara, Lupsasca, Skinner, Strominger, Weil)
 
 ## Pass/fail criteria
