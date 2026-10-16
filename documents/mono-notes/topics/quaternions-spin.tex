@@ -1,0 +1,150 @@
+\part{Quaternions, \texorpdfstring{$\mathrm{Spin}(3)$}{Spin(3)}, and \texorpdfstring{$SU(2)$}{SU(2)}}
+\section{Conventions}
+Use the Hamiltonian quaternions $\mathbb H$ with the multiplication rules
+$i^2=j^2=k^2=-1$, $ij=-ji=k$, $jk=-kj=i$, $ki=-ik=j$, as defined in
+the ring examples of the algebra part. Write the imaginary units as
+\begin{equation}\label{quat:basis}
+ (e_1,e_2,e_3)=(i,j,k),\qquad e_1e_2=e_3,\quad e_2e_3=e_1,\quad e_3e_1=e_2,
+ \qquad e_a^2=-1 .
+\end{equation}
+A quaternion is written scalar first,
+\begin{equation}\label{quat:scalar-first}
+ q=q_0+q^ae_a,\qquad q_0\in\mathbb R,\quad (q^1,q^2,q^3)\in\mathbb R^3 .
+\end{equation}
+Its conjugate is $\bar q=q_0-q^ae_a$ and its norm satisfies
+$|q|^2=q\bar q=q_0^2+q^aq^a$. A vector $\mathbf x\in\mathbb R^3$ is
+identified with the pure quaternion $x^ae_a$.
+
+For attitude, the unit quaternion $q$ carries body components to inertial
+components by
+\begin{equation}\label{quat:body-to-inertial}
+ x_I^ae_a=q\,(x_B^ae_a)\,\bar q ,
+\end{equation}
+so it represents the same rotation $R$ as in Eq.~\eqref{gnc:attitude-kinematics},
+where $\mathbf x_I=R\mathbf x_B$. The rotation acts on vectors (active form).
+
+\section{The quaternion basis in Frankel and in Holm}
+Frankel \cite{TFrankel2012} works with the Pauli matrices
+\begin{equation}\label{quat:pauli}
+ \sigma_1=\begin{bmatrix}0&1\\1&0\end{bmatrix},\qquad
+ \sigma_2=\begin{bmatrix}0&-i\\i&0\end{bmatrix},\qquad
+ \sigma_3=\begin{bmatrix}1&0\\0&-1\end{bmatrix}
+\end{equation}
+(his Eq.~(19.5), p.~493). Here the $i$ inside $\sigma_2$ is the complex
+unit, not the quaternion $e_1$. His product relations, Eq.~(19.17), p.~499,
+are
+\begin{equation}\label{quat:pauli-products}
+ \sigma_1\sigma_2=i\sigma_3,\qquad
+ \sigma_2\sigma_3=i\sigma_1,\qquad
+ \sigma_3\sigma_1=i\sigma_2,\qquad
+ \sigma_a^2=I .
+\end{equation}
+Holm \cite{DDHolm2011} writes a quaternion as a tetrad
+$q=[q_0,\mathbf q]=q_0J_0+q^aJ_a$ and identifies $J_0=\sigma_0=I$ and
+$J_a=-i\sigma_a$ (Section~3.1.1, Eqs.~(3.1.1)--(3.1.3), pp.~79--81).
+Frankel uses $\sigma_a/i$, and $1/i=-i$, so both authors use the same
+matrices:
+\begin{equation}\label{quat:dictionary}
+ e_a\;\longleftrightarrow\;J_a\;=\;-i\sigma_a\;=\;\frac{\sigma_a}{i}.
+\end{equation}
+Check that these matrices satisfy Eq.~\eqref{quat:basis}. Using
+Eq.~\eqref{quat:pauli-products},
+\begin{align}
+ (-i\sigma_1)(-i\sigma_2)&=(-i)^2\sigma_1\sigma_2
+   =-\sigma_1\sigma_2=-i\sigma_3,\notag\\
+ (-i\sigma_a)^2&=(-i)^2\sigma_a^2=-I .\label{quat:dictionary-check}
+\end{align}
+The first line is $e_1e_2=e_3$ under Eq.~\eqref{quat:dictionary}; the
+cyclic permutations of Eq.~\eqref{quat:pauli-products} give $e_2e_3=e_1$
+and $e_3e_1=e_2$ in the same way. Both books therefore follow Hamilton's
+order, and Eq.~\eqref{quat:dictionary} is an algebra isomorphism from
+$\mathbb H$ onto the real span of $I$ and $-i\sigma_a$.
+
+Two scalings differ from ours. Frankel's real basis of $\mathfrak{su}(2)$ is
+$\sigma_a/(2i)=\tfrac12e_a$, which has the $\mathfrak{so}(3)$ brackets
+(p.~493). His identification of $\mathbb R^3$ with traceless Hermitian
+matrices, Eq.~(19.7), p.~494, is $\mathbf x_*=x^a\sigma_a$, while our
+pure quaternion is
+\begin{equation}\label{quat:frankel-star}
+ x^ae_a=x^a(-i\sigma_a)=\frac{\mathbf x_*}{i}.
+\end{equation}
+
+\section{The half angle in both notations}
+Frankel's Eq.~(19.15), p.~497, sends
+$\exp\bigl(\tfrac{\boldsymbol\sigma}{2i}\cdot\mathbf A\theta\bigr)\in SU(2)$
+to $\exp(\theta\,\mathbf E\cdot\mathbf A)\in SO(3)$, the rotation by
+$\theta$ about the unit vector $\mathbf A$. To sum the left side, use his
+anticommutator, Eq.~(19.18), p.~499:
+$\sigma_a\sigma_b+\sigma_b\sigma_a=2\delta_{ab}I$. For a unit vector
+$\mathbf A$,
+\begin{align}
+ (\boldsymbol\sigma\cdot\mathbf A)^2
+ &=A^aA^b\sigma_a\sigma_b
+  =\tfrac12A^aA^b\bigl(\sigma_a\sigma_b+\sigma_b\sigma_a\bigr)\notag\\
+ &=A^aA^b\delta_{ab}I=I .\label{quat:sigma-square}
+\end{align}
+The symmetrization in the first line is allowed because $A^aA^b$ is
+symmetric in $a,b$. Put $N=\boldsymbol\sigma\cdot\mathbf A/i
+=A^a(-i\sigma_a)$, the pure unit quaternion $A^ae_a$ under
+Eq.~\eqref{quat:dictionary}. Then Eq.~\eqref{quat:sigma-square} gives
+$N^2=(1/i)^2I=-I$, hence
+\begin{equation}
+ N^{2m}=(-1)^mI,\qquad N^{2m+1}=(-1)^mN .
+\end{equation}
+Split the exponential series into even and odd powers:
+\begin{align}
+ \exp\Bigl(\frac{\theta}{2}N\Bigr)
+ &=\sum_{m=0}^{\infty}\frac{(\theta/2)^{2m}}{(2m)!}N^{2m}
+  +\sum_{m=0}^{\infty}\frac{(\theta/2)^{2m+1}}{(2m+1)!}N^{2m+1}\notag\\
+ &=\sum_{m=0}^{\infty}\frac{(-1)^m(\theta/2)^{2m}}{(2m)!}\,I
+  +\sum_{m=0}^{\infty}\frac{(-1)^m(\theta/2)^{2m+1}}{(2m+1)!}\,N\notag\\
+ &=\cos\frac{\theta}{2}\,I+\sin\frac{\theta}{2}\,N .\label{quat:half-angle}
+\end{align}
+Since $N=-i\,\boldsymbol\sigma\cdot\mathbf A$, Eq.~\eqref{quat:half-angle}
+is Frankel's $\cos(\theta/2)I-i\sin(\theta/2)\,\boldsymbol\sigma\cdot\mathbf A$
+(p.~500). In the notation of Eq.~\eqref{quat:scalar-first} it is
+\begin{equation}\label{quat:axis-angle}
+ q=\cos\frac{\theta}{2}+\sin\frac{\theta}{2}\,A^ae_a .
+\end{equation}
+Replacing $\theta$ by $\theta+2\pi$ changes the signs of both
+$\cos(\theta/2)$ and $\sin(\theta/2)$, so $q\mapsto-q$ while the rotation
+$\exp(\theta\,\mathbf E\cdot\mathbf A)$ is unchanged.
+
+\section{Reading quaternions geometrically}
+Frankel \cite{TFrankel2012} is the spine. Printed pages refer to the third
+edition. Read Sections~19.1--19.2 (pp.~491--503): $SO(3)$ and
+$\mathfrak{so}(3)$, the Lie algebra $\mathfrak{su}(2)$, $SU(2)\cong S^3$,
+the homomorphism $\mathrm{Ad}\colon SU(2)\to SO(3)$ and its kernel,
+spinors, Hamilton's composition of rotations, and Clifford algebras.
+Review Section~15.3 (pp.~402--406) for the exponential map when needed.
+Then read Section~21.2 (pp.~567--575) on the fundamental group, covering
+spaces, and the universal covering group, which gives
+$\pi_1(SO(3))=\mathbb Z_2$ and $SU(2)$ as the universal cover.
+Read the Hopf bundle in Section~17.4c (p.~473) and the Hopf map in
+Section~22.4c (pp.~606--607), after the homotopy groups of
+Section~22.3 (pp.~596--604). Read the spinor bundle and spin connection of
+Section~19.5 (pp.~515--522) after the connections part of these notes.
+
+Holm \cite{DDHolm2011} then puts the same group into mechanics.
+Chapter~3 (pp.~77--110) covers quaternion multiplication through Pauli
+matrices, Cayley--Klein parameters, pure quaternions and $SU(2)$, the tilde
+map $\mathbb R^3\cong\mathfrak{su}(2)\cong\mathfrak{so}(3)$ and its dual
+(Sections~3.2.3--3.2.4, pp.~102--103), and Poincar\'e's sphere with the
+Hopf fibration (Section~3.2.6, p.~105). Continue with Sections~4.1--4.2
+(pp.~112--123) on Cayley--Klein rigid-body dynamics and the AD, Ad, ad,
+Ad$^*$ and ad$^*$ actions, and Chapter~5 (pp.~131--140) on $SO(3)$.
+Compare Section~3.2.6 with Frankel's Section~22.4c.
+
+For Clifford algebras and spin groups in general dimension, read Chapter~I
+of Lawson and Michelsohn \cite{HBLawsonMLMichelsohn1989}. Its sign
+convention for the Clifford relation must be compared with Frankel's
+Section~19.2c before the two are combined. For matrix Lie groups, the
+exponential, $\mathfrak{su}(2)$ representations and universal covers in a
+single Lie-theoretic notation, use Chapters~1--5 of Hall \cite{BCHall2015}.
+
+Derive the kernel $\{\pm I\}$ of $\mathrm{Ad}$ as Frankel does in
+Section~19.1d and compare it with the Kosmann-Schwarzbach treatment of
+$SU(2)$ and $SO(3)$ in the Lie-groups part. Then derive
+Eq.~\eqref{quat:body-to-inertial} from $\mathrm{Ad}$ under
+Eq.~\eqref{quat:frankel-star}, and the quaternion kinematics matching
+Eq.~\eqref{gnc:attitude-kinematics}.

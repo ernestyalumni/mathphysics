@@ -53,6 +53,14 @@ Holm page-reconciled parse is beside the PDF, in
 `Holm-Schmah-Stoica-GeometricMechanicsAndSymmetry-2009/ocr-compare/reconciled/resolved.md`.
 These notes do not copy the book.
 
+`topics/quaternions-spin.tex` follows the Lie-groups part. It fixes the
+quaternion convention (Hamilton, scalar first, body to inertial, matching the
+rigid-body topic), maps Frankel's and Holm's Pauli-matrix bases onto it, sums
+the half-angle exponential, and gives the reading sequence: Frankel 3e
+Ch. 19 with §§15.3, 17.4c, 21.2, 22.3–22.4c and 19.5; Holm, *Geometric
+Mechanics II*, Chs. 3–5; Lawson–Michelsohn Ch. I; Hall Chs. 1–5. Quaternion
+applications in Propulsion (attitude code, MEKF) draw from this topic.
+
 ## Source and provenance
 
 The historical `LaTeX_and_pdfs/AGAT_dump.tex` and `DGDT_dump.tex` remain
