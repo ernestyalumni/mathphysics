@@ -1,0 +1,72 @@
+% Imported from LeeJM/ by import_lee.py; see legacy/lee/provenance.json.
+\section{Vector Bundles }
+
+\subsection*{Vector Bundles }
+
+\textbf{ (real) vector bundle of rank $k$ over $M$ } is topological space $E$, \\
+\quad surjective cont. $\pi: E \to M$ s.t.
+\begin{enumerate}
+\item[(i)] $\forall \, p \in M$, $E_p = \pi^{-1}(p)$ endowed with structure of $k$-dim. real vector space
+\item[(ii)] $\forall \, p \in M$, \\
+  $\exists \, $ neighborhood $U \ni p$ \\
+  $ \exists \, $ homeomorphism $\Phi : \pi^{-1}{(U)} \to U \times \mathbb{R}^k$ (local trivialization of $E$ over $U$) \\
+
+s.t. 
+
+\begin{itemize}
+\item $\pi_U \circ \Phi = \pi$ (where $\pi_U : U \times \mathbb{R}^k \to U$) 
+\item $\forall \, q\in U$, $\left. \Phi \right|_{E_q}$ is vector space isomorphism from $E_q$ to $\lbrace q \rbrace \times \mathbb{R}^k \cong \mathbb{R}^k$
+\end{itemize}
+\end{enumerate}
+
+if $M, E$ smooth manifolds with or without boundary, $\pi$ smooth, local trivializations $\Phi$ can be chosen to be diffeomorphisms, \\
+$E$ \textbf{smooth vector bundle}, \\
+$\forall \, \Phi$ that's a diffeomorphism onto its image a \textbf{ smooth local trivialization} \\
+
+(real) line bundle - rank 1 vector bundle 
+
+complex vector bundle - $\mathbb{R}^k$ replaced by $\mathbb{C}^k$
+
+\exercisehead{10.1} Suppose $E$ smooth vector bundle over $M$. \\
+$\pi$ surjective by def.  
+
+EY : 20140204
+
+submersion at $p \in M$, $F$, if for differentiable manifolds $M, N$, differentiable $F: M \to N$, \\
+\quad differential $DF_p : T_p M \to T_{F(p)}N$ \\
+\quad \, is surjective \\
+
+By def., $\forall \, p \in M$, $\exists \, U, \Phi$ \\
+\quad $\Phi$ vector space isomorphism and can be chosen to be diffeomorphism \\
+\quad $\Phi$ diffeomorphism if $\Phi$ bijection, $\Phi^{-1}$ differentiable \\
+
+$\begin{aligned}
+& \quad \\ 
+  & \Phi: \pi^{-1}(U) \to U \times \mathbb{R}^k \\
+  & D\Phi : T\pi^{-1}(U) \to T(U \times \mathbb{R}^k ) = TU \times T\mathbb{R}^k 
+\end{aligned}$ \\
+
+$\begin{aligned} 
+  & \quad \\
+  & \pi_U : U \times \mathbb{R}^k \to U \\
+  & D\pi_U : T(U \times \mathbb{R}^k ) \to TU \end{aligned}$  \\
+
+$\begin{gathered}
+\pi:\pi^{-1}(U) \to U \\
+\pi = \pi_U \circ \Phi \end{gathered}$ \\
+
+So by chain rule, 
+
+\[
+D\pi = D\pi_U D\Phi
+\]
+\[
+D\pi : T\pi^{-1}(U) \to TU
+\]
+$D\pi_U$ clearly a surjection.  
+
+$D\Phi$ bijection. 
+
+So $D\pi$ a surjection.  
+
+\hrulefill

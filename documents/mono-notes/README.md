@@ -83,6 +83,14 @@ two-to-one homomorphism $\Phi\colon SU(2)\to SO(3)$ with $SO(3)\approx
 \mathbb RP^3$. It absorbs Ernest's earlier Frankel §19.1 working from
 `LaTeX_and_pdfs/the geometry of physics problems/19TheDiracEquation.tex`.
 
+`legacy/lee/lee-01.tex` … `lee-25.tex` (after the Manifolds part) carry Ernest's notes and
+solutions for John M. Lee, *Introduction to Smooth Manifolds*, imported from `LeeJM/` by
+`import_lee.py` with provenance in `legacy/lee/provenance.json`: 22 chapters and appendices
+A–C. One inline section ("The Cotangent Bundle", `lee-06`) follows first-edition numbering;
+the chapter files follow the second edition. Exercise identifiers and printed pages are being
+checked against the parsed second edition in
+`Data/Public/books/Mathematics/LeeJM-IntroSmoothManifolds-2e/`.
+
 ## Source and provenance
 
 The historical `LaTeX_and_pdfs/AGAT_dump.tex` and `DGDT_dump.tex` remain

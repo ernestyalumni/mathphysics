@@ -1,0 +1,65 @@
+% Imported from LeeJM/ by import_lee.py; see legacy/lee/provenance.json.
+\section{Lie Group Actions}
+
+\subsection{ Group Actions }
+
+action $G$ on $M$ cont. if $\begin{aligned} & \quad \\ & G \times M \to M \\ & (g,p) \mapsto gp \end{aligned}$ or $\begin{aligned} & \quad \\ & M \times G \to M \\ & (p,g) \mapsto pg \end{aligned}$ cont.  
+
+For cont. action, $\theta_g$ homeomorphism, since $\exists \, $ cont. inverse $\theta_{g^{-1}}$.  $\theta_g : M \to M$
+
+orbit \\
+$\forall \, p \in M$, orbit of $p = Gp = \lbrace gp | g \in G \rbrace$ 
+
+action $\theta$ transitive if $\forall \, p, q \in M$, $\exists \, g$ s.t. $gp = q$, i.e. $Gp = M$
+
+isotropy group of $p$, $G_p = \lbrace g \in G | gp = p \rbrace$ 
+
+action $\theta$ is free if the only element of $G$ that fixes any element of $M$ is $e$, \\
+i.e. if $g \cdot p = p$, $ p \in M$, $g=e$.  \\ 
+i.e. $G_p = 1$ \, $\forall \, p \in M$
+
+Example 9.1 (Lie Group Actions)
+\begin{enumerate}
+\item[(a)] trivial action of $G$ on $M$ is $gp = p$ \, $\forall \, g \in G$, \, $G_p = G$
+\item[(b)] action of $GL(n,\mathbb{R}) $ on $\mathbb{R}^n$, $(A,x) \mapsto Ax$; $x \in \mathbb{R}^n$ column matrix.  \\
+$Ax $ smooth, because components of $Ax$ depend polynomially on matrix entries of $A$ and components of $x$.  \\
+Exactly only 2 orbits : $0, \mathbb{R}^n - 0$ \, ($\forall \, y =0$, $y\in \mathbb{R}^n$, $\begin{aligned} & \quad \\ 
+  & Ax  =y \\ 
+  & x = A^{-1}y \end{aligned}$ ) 
+\item[(c)] $O(n) \times \mathbb{R}^n \to \mathbb{R}^n$  \\
+orbits : $0, S^{n-1}(R)$, \, $\forall \, R >0$.  To show this, complete $\frac{v}{ |v|}, \frac{v'}{|v'|}$, \, $\forall \, v , v' \neq 0$, to orthonormal bases.  Let $A, A'$ columsn be these orthonormal bases 
+\[
+A' A^{-1}(v) = v'
+\]
+\item[(d)] $O(n) \times S^{n-1} \to S^{n-1}$.  $O(n)$ transitive action of $O(n)$ on $S^{n-1}$.  \\
+action $O(n) \times S^{n-1} \to S^{n-1}$ smooth by Corollary 8.25, $S^{n-1}$ embedded submanifold of $\mathbb{R}^n$
+
+\end{enumerate}
+
+
+
+
+
+\subsubsection*{Representations}
+
+If $G$ Lie group, \\
+(finite-dim.) representation of $G$ is a Lie group homomorphism 
+\[
+\rho : G \to GL(V)
+\]
+$\forall \, $ representation $\rho$ yields or smooth left action of $G$ on $V$, 
+\[
+g\cdot v = \rho(g) v , \quad \quad \, \forall \, g \in G, \, v \in V
+\]
+
+
+\subsection*{Equivariant Maps }
+
+\subsection*{Proper Actions}
+
+\subsection*{Quotient of Manifolds by Group Actions}
+
+Suppose Lie group $G$ acts on manifold $M$ \\
+$p\sim q$ if $\exists \, g \in G$ s.t. $gp = q$ \quad equivalence classes are exactly the orbits of $G$ in $M$  
+
+$M/G$ set of orbits, with quotient topology, orbit space of the action

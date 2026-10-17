@@ -1,0 +1,223 @@
+{
+  "transformations": [
+    "Drop the title page, contact block, acknowledgments, table of contents and comments",
+    "Expand \\input chapter files in document order",
+    "Split at \\section; the first file opens the part",
+    "Replace the appendix environment by sections titled Appendix A/B/C",
+    "MnSymbol \\righthalfcup (interior product) -> amssymb \\lrcorner; drop decorative \\staveXXIX",
+    "Prefix labels and references with lee:",
+    "Remove blank paragraphs inside display math and TikZ"
+  ],
+  "sources": [
+    {
+      "path": "LeeJM/LeeJM_IntroSmoothManifolds_sol.tex",
+      "sha256": "7ce81b57a6e738498a3d8c8a0e57b05f571250a4eccc3b236241841e138aaadb"
+    },
+    {
+      "path": "LeeJM/01smoothmanifolds.tex",
+      "sha256": "eb5cd051a95ea776bae58d12bdabd10fd39b30d4e16645620d3ff182f853ecfa"
+    },
+    {
+      "path": "LeeJM/02smoothmaps.tex",
+      "sha256": "535208efcbe2b9cb74b43c351a3d72b68fe1a6f95fababc97ca93bdef97f1bcf"
+    },
+    {
+      "path": "LeeJM/03tangentvectors.tex",
+      "sha256": "79525fd06fe1cb9eeeb7344a6e262666362cd2fc00698d8354bafaaabb698662"
+    },
+    {
+      "path": "LeeJM/04submersionsimmersionsembeddings.tex",
+      "sha256": "60a128005f46670880468db16cad20e49ec5175a5a7865d0d7e540728c61690b"
+    },
+    {
+      "path": "LeeJM/05submanifolds.tex",
+      "sha256": "76fa80bf01493aea9d7821ca4aa591c631f0992efc8b8ab729a3df2e2d9ada63"
+    },
+    {
+      "path": "LeeJM/07LieGroups.tex",
+      "sha256": "9feb93e64aeab58af7925b5bd4436cf4ccc6667cc56abb153fac23b624ab2358"
+    },
+    {
+      "path": "LeeJM/08VectorFields.tex",
+      "sha256": "c33a9a368a9ae39233dbae688aac1c2235570c5cf5840de13a3743f4b69ceb9e"
+    },
+    {
+      "path": "LeeJM/09IntegralCurvesandFlows.tex",
+      "sha256": "14e4cd6778814b93738b05c951e76bda148b07e0e7f4a5d76953dab38b02eef1"
+    },
+    {
+      "path": "LeeJM/12tensors.tex",
+      "sha256": "6e2d8c1506c7f73c495df395bf8609e143f29dcb31f9116fbab02cd93e2a57af"
+    },
+    {
+      "path": "LeeJM/13riemannianmetrics.tex",
+      "sha256": "91d5cd4876686885e5b5cef97e65b9d925b2744ea320425f7548fd57f7b8a701"
+    },
+    {
+      "path": "LeeJM/14differentialforms.tex",
+      "sha256": "62b9480faee8fab1d62115847a681198e30372cd384c6a11b4a5701cf6101992"
+    },
+    {
+      "path": "LeeJM/15orientations.tex",
+      "sha256": "58655fc8f4d98dabd790109b5710aeb37f68ebb6883feae4e3ddd7e1bb4cf36f"
+    },
+    {
+      "path": "LeeJM/16integrationonmanifolds.tex",
+      "sha256": "0d92a5ac285ad9e3a5eef6a72c9690ae3a5bcec39fb354e0e6fa4421a00baf6b"
+    },
+    {
+      "path": "LeeJM/19DistributionsaFoliations.tex",
+      "sha256": "05df7266d33161f9654cb3dc0a298a739ab10571b9d64a897a5189e8c5d2c9b0"
+    },
+    {
+      "path": "LeeJM/20ExponentialMap.tex",
+      "sha256": "5ca243fbf0f8ee5fd1c056306cdfc85e39b4b0e7e8803b50860b1b1e08144109"
+    },
+    {
+      "path": "LeeJM/22SymplecticManifolds.tex",
+      "sha256": "494d112ff97846fb1be91c9aab75c4053fa2939efbc239694e1695fdb96a113b"
+    },
+    {
+      "path": "LeeJM/AReviewofTopology.tex",
+      "sha256": "5d622c945c9c55a7bfa29c7cf05643a5685096cec91855678a35e09030ad366d"
+    },
+    {
+      "path": "LeeJM/BReviewofLinearAlgebra.tex",
+      "sha256": "ac421fd50f5c7e7f7a5a2b41429397f30a231b1c3d39316488f8a387190ad17c"
+    },
+    {
+      "path": "LeeJM/CReviewofCalculus.tex",
+      "sha256": "a5f2ee4f5e69483cf7a7da8a46e8adf65d7fe741434f2376aebdd9e225d31bdc"
+    }
+  ],
+  "parts": [
+    {
+      "id": "lee-01",
+      "title": "Smooth Manifolds",
+      "output": "legacy/lee/lee-01.tex"
+    },
+    {
+      "id": "lee-02",
+      "title": "Smooth Maps",
+      "output": "legacy/lee/lee-02.tex"
+    },
+    {
+      "id": "lee-03",
+      "title": "Tangent Vectors",
+      "output": "legacy/lee/lee-03.tex"
+    },
+    {
+      "id": "lee-04",
+      "title": "Submersions, Immersions, and Embeddings",
+      "output": "legacy/lee/lee-04.tex"
+    },
+    {
+      "id": "lee-05",
+      "title": "Submanifolds",
+      "output": "legacy/lee/lee-05.tex"
+    },
+    {
+      "id": "lee-06",
+      "title": "The Cotangent Bundle",
+      "output": "legacy/lee/lee-06.tex"
+    },
+    {
+      "id": "lee-07",
+      "title": "Lie Groups",
+      "output": "legacy/lee/lee-07.tex"
+    },
+    {
+      "id": "lee-08",
+      "title": "Vector Fields",
+      "output": "legacy/lee/lee-08.tex"
+    },
+    {
+      "id": "lee-09",
+      "title": "Integral Curves and Flows",
+      "output": "legacy/lee/lee-09.tex"
+    },
+    {
+      "id": "lee-10",
+      "title": "Vector Bundles",
+      "output": "legacy/lee/lee-10.tex"
+    },
+    {
+      "id": "lee-11",
+      "title": "The Cotangent Bundle",
+      "output": "legacy/lee/lee-11.tex"
+    },
+    {
+      "id": "lee-12",
+      "title": "Lie Group Actions",
+      "output": "legacy/lee/lee-12.tex"
+    },
+    {
+      "id": "lee-13",
+      "title": "Tensors",
+      "output": "legacy/lee/lee-13.tex"
+    },
+    {
+      "id": "lee-14",
+      "title": "Riemannian Metrics",
+      "output": "legacy/lee/lee-14.tex"
+    },
+    {
+      "id": "lee-15",
+      "title": "Differential Forms",
+      "output": "legacy/lee/lee-15.tex"
+    },
+    {
+      "id": "lee-16",
+      "title": "Orientations",
+      "output": "legacy/lee/lee-16.tex"
+    },
+    {
+      "id": "lee-17",
+      "title": "Integration on Manifolds",
+      "output": "legacy/lee/lee-17.tex"
+    },
+    {
+      "id": "lee-18",
+      "title": "De Rham Cohomology",
+      "output": "legacy/lee/lee-18.tex"
+    },
+    {
+      "id": "lee-19",
+      "title": "Distributions and Foliations",
+      "output": "legacy/lee/lee-19.tex"
+    },
+    {
+      "id": "lee-20",
+      "title": "The Exponential Map",
+      "output": "legacy/lee/lee-20.tex"
+    },
+    {
+      "id": "lee-21",
+      "title": "Quotient Manifolds",
+      "output": "legacy/lee/lee-21.tex"
+    },
+    {
+      "id": "lee-22",
+      "title": "Symplectic Manifolds",
+      "output": "legacy/lee/lee-22.tex"
+    },
+    {
+      "id": "lee-23",
+      "title": "Appendix A: Review of Topology",
+      "output": "legacy/lee/lee-23.tex"
+    },
+    {
+      "id": "lee-24",
+      "title": "Appendix B: Review of Linear Algebra",
+      "output": "legacy/lee/lee-24.tex"
+    },
+    {
+      "id": "lee-25",
+      "title": "Appendix C: Review of Calculus",
+      "output": "legacy/lee/lee-25.tex"
+    }
+  ],
+  "post_import_edits": [
+    "Layout only (2026-10-17): long display rows broken at top-level equalities in lee-01, -02, -03, -08, -09, -13, -14, -15; bare \\[...\\] rows wrapped in gathered where needed; one \\text line split in lee-14; the four TikZ flow diagrams in lee-09 set to footnotesize labels with tighter columns. No mathematical content changed. Re-running import_lee.py discards these edits."
+  ]
+}

@@ -1,0 +1,20 @@
+% Imported from LeeJM/ by import_lee.py; see legacy/lee/provenance.json.
+\section{The Cotangent Bundle}
+
+\subsection*{Covectors}
+
+\exercisehead{11.2} For linear $\omega : V \to \mathbb{R}$, $\omega \in V^*$ 
+\[
+\begin{gathered}
+\omega(E_j) = \omega( \delta^i_{ \, j} E_i) = \delta^i_{ \, j } \omega(E_i) = \omega(E_i) \epsilon^i(E_j) \\
+\Longrightarrow \omega = \omega(E_i)\epsilon^i
+\end{gathered}
+\]
+So $\omega$ spanned by $\epsilon^i$, \, $i = 1 \dots n$
+
+Suppose $0 = \omega_i \epsilon^i$.  Then $\forall \, x \in V$, \[
+\omega_i \epsilon^i(x^j E_j) = \omega_i x^j \delta^i_{ \, j } = \omega_i x^i = \omega(E_i) x^i = \omega(x) = 0 
+\]
+Then $\omega=0$ since $\omega(x) =0, \, \forall\, x \in V$.  So $\epsilon^i$ form a linear basis of $V^*$.  
+
+By theorem, $\text{dim}{ V^*} = \text{dim}{V}$

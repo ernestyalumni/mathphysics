@@ -1,0 +1,79 @@
+% Imported from LeeJM/ by import_lee.py; see legacy/lee/provenance.json.
+\section{Appendix A: Review of Topology}
+
+\subsection*{Topological Spaces}
+
+\begin{itemize}
+  \item \textbf{neighborhood of $p$} open subset $\mathcal{O}$ containing $p$
+\end{itemize}
+
+
+
+\subsubsection*{Bases and Countability}
+
+Suppose $X$ topological space.
+
+\textbf{basis for topology of $X$ } \[
+\mathcal{B} = \lbrace B | \text{ open } B \subseteq X, \, \forall \,  \text{ open } \mathcal{O} \subset X, \, \mathcal{O} = \bigcup_{\alpha} B_{\alpha} \rbrace
+\]
+
+\textbf{neighborhood basis at $p$ } $\mathcal{B}_p = \lbrace \text{neighborhoods } B_p \text{ of $p$ } | \forall \, \mathcal{O} \text{ of } p,  B_p \subset \mathcal{O}, \, B_p \in \mathcal{B}_p \text{ for at least 1 } \rbrace$
+
+$X$ \textbf{first countable }- if $\exists \, $ countable neighborhood basis $\forall \, p$
+
+\textbf{second countable } if $\exists \, $ countable basis
+
+\begin{proposition}[A.16]  Let $X$ second countable topological space. \\
+$\forall \, $ open cover of $X$ has countable subcover
+\end{proposition}
+
+\begin{proof}
+  $X$ second countable. $\exists \, $ countable basis $\mathcal{B}$ for $X$ \\
+Let $\mathcal{U}$ arbitrary open cover of $X$. \\
+Let $\mathcal{B}' \subseteq \mathcal{B}$ s.t. $\mathcal{B}' = \lbrace  B | B \in \mathcal{B}, B\subseteq U \text{ for some } U \in \mathcal{U} \rbrace$ \\
+
+$\forall \, B \in \mathcal{B}'$, choose particular $U_B \in \mathcal{U}$ containing $B$ \\
+
+$\lbrace U_B | B \in \mathcal{B}'\rbrace$ countable \\
+
+$\forall \, x \in X$ , $\exists \, V \in \mathcal{U}$, $x\in V$ \\
+$\mathcal{B} $ basis, s.t. $\exists \, B \in \mathcal{B}$ s.t. $x\in B \subseteq V$ \\
+then $B \in \mathcal{B}'$, so $x\in B \subseteq U_B$
+\end{proof} 
+
+\subsection*{Subspaces, Products, Disjoint Unions, and Quotients }
+
+
+\section*{Review of Topology}
+
+\subsection*{Topological Spaces}
+
+Let $X$ set \\
+topology on $X = $ collection $\tau = \lbrace U | U \subseteq X \rbrace$, $U$ called open subsets s.t.
+\begin{enumerate}
+\item[(i)] $X, \emptyset$ open 
+\item[(ii)] $\bigcup_{\alpha} U_{\alpha}$ is open, $\forall \, U_{\alpha}$ open subset
+\item[(iii)] $\bigcap_{i=1}^n U_i$ is open
+\end{enumerate}
+
+$(X,\tau)$ topological space
+
+
+\textbf{Example A.5. (Metric Spaces)}
+metric space $=$ set $M$ with metric $d: M \times M \to \mathbb{R}$ s.t. $\forall \, x, y, z \in M$
+\begin{enumerate}
+\item[(i)] \textsc{Positivity} $d(x,y) \geq 0$, $d(x,y) =0$ iff $x=y$ 
+\item[(ii)] \textsc{Symmetry} $d(x,y) =d(y,x)$
+\item[(iii)] \textsc{Triangle inequality} $d(x,z) \leq d(x,y) + d(y,z)$
+\end{enumerate}
+
+if $M$ metric space, $x\in M$, $r>0$ \\
+\phantom{\quad } \textbf{open ball of radius $r$ around $x$ } 
+\[
+B_r(x) = \{ y \in M | d(x,y) < r \}
+\]
+\phantom{\quad \quad } \textbf{closed ball of radius $r$ }
+\[
+\underline{B}_r(x) = \{ y \in M | d(x,y) \leq r \}
+\]
+\textbf{metric topology on $M$ } defined by declaring $S \subseteq M$ open iff $\forall \, x \in S$, $\exists \, r >0$ s.t. $B_r(x) \subseteq S$

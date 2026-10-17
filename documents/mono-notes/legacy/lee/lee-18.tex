@@ -1,0 +1,83 @@
+% Imported from LeeJM/ by import_lee.py; see legacy/lee/provenance.json.
+\section{De Rham Cohomology}
+
+$d\omega = 0$ closed \\
+$\omega = d\eta$ exact.   \\
+
+Prop. 6.24 smooth 1-form conservative iff exact.
+
+\subsection*{ The de Rham Cohomology Groups}
+
+closed 1-form 
+\begin{equation}
+\omega = \frac{ x dy - y dx}{ x^2 + y^2 }  \quad \quad \quad \, (15.1)
+\end{equation}
+
+Suppose 
+\[
+\begin{gathered}
+\begin{aligned}
+  x & = r\cos{\theta} \\ 
+  y & = r s_{\theta} 
+\end{aligned} \quad \quad \, \begin{aligned}
+  dx & = c_{\theta}dr + -r s_{\theta} d\theta \\ 
+  dy & = s_{\theta} dr + rc_{\theta} d\theta
+\end{aligned} \\
+d\alpha = \omega = \frac{ x dy - y dx}{ x^2 + y^2 } = \frac{ x}{ x^2 + y^2 } - \frac{y}{x^2 + y^2} dx = \frac{1}{r} c_{\theta} ( s_{\theta} dr + rc_{\theta} d\theta ) - \frac{s_{\theta}}{r} ( c_{\theta} dr - rs_{\theta} d\theta) = d\theta 
+\end{gathered}
+\]
+
+$M$ smooth manifold
+
+$d: \mathcal{A}^p(M) \to \mathcal{A}^{p+1}(M)$ linear, $\text{ker}$, $\text{im}$ linear subspaces.  \\
+$\mathcal{Z}^p(M) = \text{ker}{ [ d : \mathcal{A}^p(M) \to \mathcal{A}^{p+1}(M)] } = \lbrace \text{ closed $p$-forms on $M$ } \rbrace$ \\
+$\mathcal{B}^p(M) = \text{im}{ [ d: \mathcal{A}^{p-1}(M) \to \mathcal{A}^p(M)]} = \lbrace \text{ exact $p$-forms on $M$ } \rbrace$
+
+
+By convention, $\mathcal{A}^p(M)$ zero vector space, $p < 0$ or $p>n = \text{dim}{M}$
+
+e.g.
+
+\[
+\begin{aligned}
+  \mathcal{B}^0(M)=0 \\ 
+  \mathcal{Z}^n(M) = \mathcal{A}^n(M)
+\end{aligned}
+\]
+
+$d^2=0$ so \\
+$\forall \, $ exact form closed.  $\mathcal{B}^p(M) \subset \mathcal{Z}^p(m)$
+
+\[
+H^p_{dR}(M) = \frac{\mathcal{Z}^p(M)}{ \mathcal{B}^p(M) }
+\]
+
+
+\subsection*{Homotopy Invariance}
+
+\begin{lemma}[15.4] (Existence of a Homotopy Operator)
+  $\forall \, $ smooth manifold $M$, $\exists \, $ homotopy operator $\mathcal{i}_0^*$, $\mathcal{i}^*_1$
+\end{lemma}
+
+\begin{proof} $\forall \, p$, define linear $h: \mathcal{A}^p(M\times I) \to \mathcal{A}^{p -1}(M)$ s.t. 
+\begin{equation}
+h(d\omega ) + d(h \omega) = \mathcal{i}^*_1 \omega - \mathcal{i}_0^*\omega  \quad \quad \, (15.5)
+\end{equation}
+
+
+define $h\omega = \int_0^1 \left( \frac{ \partial }{\partial t} \lrcorner \omega \right) dt$
+
+
+$h \omega$ \, $(p-1)$ form on $M$ whose action on $X_1 \dots X_{p-1} \in T_qM$ is 
+\[
+(h\omega)_q(X_1  \dots X_{p-1}) = \int_0^1 \left( \frac{ \partial }{ \partial t} \lrcorner \omega(q,t) \right)(X_1 \dots X_{p-1} ) dt = \int_0^1 \omega_{(q,t)}\left( \frac{ \partial}{\partial t}, X_1 \dots X_{p-1} \right) dt 
+\]
+
+choose smooth local coordinates $(x^i)$ on $M$.
+
+Consider separately $\begin{aligned} & \quad \\ 
+  \omega  & = f(x,t) dt \wedge dx^{i_1} \wedge \dots \wedge dx^{i_{p-1} } \\  
+  \omega & = f(x,t) dx^{i_1} \wedge \dots \wedge dx^{i_p } \end{aligned}$
+
+
+\end{proof}
