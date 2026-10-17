@@ -16,7 +16,10 @@ $M$ topological manifold of $\text{dim}{n}$, or topological $n$-manifold
 \end{itemize}
 
 
-\exercisehead{1.1} Recall, $M$ locally Euclidean $\dim{n}$ $\forall \, p \in M$, $\exists \,$ neighborhood homeomorphic to open subset. \\
+\begin{exercise}[Lee 2e, Exercise 1.1, p.~3 \cite{dgdt:JLee2012}]
+Show that equivalent definitions of manifolds are obtained if instead of allowing $U$ to be homeomorphic to \emph{any} open subset of $\mathbb{R}^n$, we require it to be homeomorphic to an open ball in $\mathbb{R}^n$, or to $\mathbb{R}^n$ itself.
+\end{exercise}
+\paragraph{Solution.} Recall, $M$ locally Euclidean $\dim{n}$ $\forall \, p \in M$, $\exists \,$ neighborhood homeomorphic to open subset. \\
 open subset $\mathcal{O} \subseteq \mathbb{R}^n$ homeomorphic to open ball and $\mathcal{O}$ homeomorphic is $\mathbb{R}^n$ since $\mathbb{R}^n$ homeomorphic to open ball.  
 
 To see this explicitly, that open ball $B_{\epsilon}(x_0) \subseteq \mathbb{R}^n $ homeomorphic to $\mathbb{R}^n$
@@ -151,7 +154,8 @@ cont. $\varphi_i$ bijective, $\varphi_i^{-1}$ cont. $\varphi_i$ homeomorphism.
 
 From a previous edition: 
 
-\exercisehead{1.2} 
+\exercisehead{1.2 (Lee, 1st~ed.)}
+{\small\emph{Note.} Lee, first edition, Exercise~1.2. There is no second-edition exercise with this content: the argument (multiplication by $t$ is a homeomorphism, so the quotient map $\pi$ is open) is part of Exercise~1.6, p.~7 \cite{dgdt:JLee2012}.}\par\noindent 
 
 
 Let $ \begin{aligned} & \quad \\ 
@@ -170,7 +174,11 @@ Note $\begin{aligned} & \quad  \\
 $\mathbb{R}^n$ 2nd. countable, $\mathbb{R}P^n$ 2nd. countable.  
 
 
-\exercisehead{1.3}
+\begin{exercise}[Lee 2e, Exercise 1.7, p.~7 \cite{dgdt:JLee2012}]
+Show that $\mathbb{RP}^n$ is compact. [Hint: show that the restriction of $\pi$ to $\mathbb{S}^n$ is surjective.]
+\end{exercise}
+\noindent\emph{Note.} Numbered Exercise~1.3 in an earlier edition. The work below is the hint; the full solution is under Exercise~1.7.
+\paragraph{Solution.}
 
 $S^n$ compact. \\
 $\pi :\mathbb{R}^{n+1}\backslash \lbrace 0 \rbrace \to \mathbb{R}P^n$ \\
@@ -181,7 +189,10 @@ $\left. \pi \right|_{S^n}$ surjective.
 
 
 
-\exercisehead{1.6}
+\begin{exercise}[Lee 2e, Exercise 1.6, p.~7 \cite{dgdt:JLee2012}]
+Show that $\mathbb{RP}^n$ is Hausdorff and second-countable, and is therefore a topological $n$-manifold.
+\end{exercise}
+\paragraph{Solution.}
 
 First, note that $\sim $ on $\mathbb{R}^{n+1} -0$ in the definition of $\mathbb{R}P^n$ is an open $\sim$ i.e. open equivalence relation.  
 
@@ -242,7 +253,10 @@ Z = X/ \sim = \pi{ \left( \bigcup_{B \in \mathcal{B}} B \right) } = \bigcup_{B \
 Now let $Y = \mathbb{R}^n-0$ and \\
 \phantom{Now let } $Z = \mathbb{R}P^n = \mathbb{R}^n-0 / \sim$
 
-\exercisehead{1.7}
+\begin{exercise}[Lee 2e, Exercise 1.7, p.~7 \cite{dgdt:JLee2012}]
+Show that $\mathbb{RP}^n$ is compact. [Hint: show that the restriction of $\pi$ to $\mathbb{S}^n$ is surjective.]
+\end{exercise}
+\paragraph{Solution.}
 
 $S^n$ compact so $S^n/\lbrace \pm \rbrace$ compact by Theorem, as $\pi_S(S^n) = S^n/ \lbrace \pm \rbrace$, as $\pi_S$ cont. surjective ($\forall \, [x] \in S^n/\lbrace \pm \rbrace$, $\exists \, x \in S^n$ s.t. $\pi_S(S^n) = [x]$) \\
 $g$ cont. bijective as defined above so since $g(S^n/\lbrace \pm \rbrace) = \mathbb{R}P^n$, $\mathbb{R}P^n$ compact.  
@@ -361,7 +375,11 @@ To check maximal,
   $\forall \, $ smooth $M$ has countable basis of regular coordinate balls
 \end{proposition}
 
-\exercisehead{1.20}
+\begin{exercise}[Lee 2e, Exercise 1.20, p.~15 \cite{dgdt:JLee2012}]
+Prove Proposition 1.19.
+\end{exercise}
+\noindent\emph{Note.} Proposition~1.19: every smooth manifold has a countable basis of regular coordinate balls.
+\paragraph{Solution.}
 
 smooth manifold $M$ has smooth structure \\
 \quad Suppose single smooth chart $\varphi$ has entire $M$ as domain
@@ -547,7 +565,23 @@ $\varphi(U_Q) = L(P;Q)$
 
 \subsection*{Problems}
 
-\problemhead{1.7} (This was Problem 1.5 in previous editions)
+\begin{exercise}[Lee 2e, Problem 1-7, p.~30 \cite{dgdt:JLee2012}]
+Let $N$ denote the \textbf{north pole} $(0,\ldots,0,1)\in\mathbb{S}^n\subseteq\mathbb{R}^{n+1}$, and let $S$ denote the \textbf{south pole} $(0,\ldots,0,-1)$. Define the \textbf{stereographic projection} $\sigma\colon\mathbb{S}^n\smallsetminus\{N\}\to\mathbb{R}^n$ by
+\[
+\sigma(x^1,\ldots,x^{n+1})=\frac{(x^1,\ldots,x^n)}{1-x^{n+1}}.
+\]
+Let $\widetilde{\sigma}(x)=-\sigma(-x)$ for $x\in\mathbb{S}^n\smallsetminus\{S\}$.
+\begin{enumerate}
+\item[(a)] For any $x\in\mathbb{S}^n\smallsetminus\{N\}$, show that $\sigma(x)=u$, where $(u,0)$ is the point where the line through $N$ and $x$ intersects the linear subspace where $x^{n+1}=0$ (Fig.~1.13). Similarly, show that $\widetilde{\sigma}(x)$ is the point where the line through $S$ and $x$ intersects the same subspace. (For this reason, $\widetilde{\sigma}$ is called \emph{stereographic projection from the south pole}.)
+\item[(b)] Show that $\sigma$ is bijective, and
+\[
+\sigma^{-1}(u^1,\ldots,u^n)=\frac{(2u^1,\ldots,2u^n,|u|^2-1)}{|u|^2+1}.
+\]
+\item[(c)] Compute the transition map $\widetilde{\sigma}\circ\sigma^{-1}$ and verify that the atlas consisting of the two charts $(\mathbb{S}^n\smallsetminus\{N\},\sigma)$ and $(\mathbb{S}^n\smallsetminus\{S\},\widetilde{\sigma})$ defines a smooth structure on $\mathbb{S}^n$. (The coordinates defined by $\sigma$ or $\widetilde{\sigma}$ are called \emph{stereographic coordinates}.)
+\item[(d)] Show that this smooth structure is the same as the one defined in Example 1.31.
+\end{enumerate}
+\end{exercise}
+\paragraph{Solution.} (This was Problem 1.5 in previous editions)
 
 \[
 S^n = \lbrace ( x_1 \dots x_{n+1} \rbrace \in \mathbb{R}^{n+1} | \sum_{i=1}^{n+1} x_i^2 = 1 \rbrace \subset \mathbb{R}^{n+1}

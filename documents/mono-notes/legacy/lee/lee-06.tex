@@ -10,7 +10,11 @@ $V$ finite-dim. vector space
 
 
 
-\exercisehead{6.1} Suppose $\sum a_i \epsilon^i = A = 0$.  Consider arbitrary $v= v^i e_i$.  $A(v) = \sum a_i \epsilon^i (v^j e_j) = \sum a_i v^i = 0 $
+\begin{exercise}[Lee 2e, Exercise 11.2, p.~273 \cite{dgdt:JLee2012}]
+Prove Proposition 11.1.
+\end{exercise}
+\noindent\emph{Note.} Numbered Exercise~6.1 in the first edition; second-edition Exercise~6.1 is about sets of measure zero. Proposition~11.1: if $(E_1,\ldots,E_n)$ is a basis for $V$ and $\varepsilon^i(E_j)=\delta^i_j$, then $(\varepsilon^1,\ldots,\varepsilon^n)$ is a basis for $V^*$, so $\dim V^*=\dim V$.
+\paragraph{Solution.} Suppose $\sum a_i \epsilon^i = A = 0$.  Consider arbitrary $v= v^i e_i$.  $A(v) = \sum a_i \epsilon^i (v^j e_j) = \sum a_i v^i = 0 $
 
 $v$ arbitrary so let $v = \delta_k^{\, \, j} e_j$.  $\forall \, i, \, a_i =0$.  linearly independent.  
 
@@ -25,7 +29,11 @@ So $\omega$ spanned by $\omega_j \epsilon^j$.  Done.
 
 
 
-\exercisehead{6.2} $X \in V$ 
+\begin{exercise}[Lee 2e, Exercise 11.3, p.~273 \cite{dgdt:JLee2012}]
+Show that $A^*\omega$ is actually a linear functional on $V$, and that $A^*$ is a linear map.
+\end{exercise}
+\noindent\emph{Note.} Numbered Exercise~6.2 in the first edition.
+\paragraph{Solution.} $X \in V$ 
 
 \[
 \begin{gathered}
@@ -38,7 +46,11 @@ linear map $A^* \omega :V \to \mathbb{R}$ is a functional.
 A^*(a\omega + b\nu)(X) = (a\omega + b\nu )(AX) = a\omega(AX)+ b \nu(AX) \in \mathbb{R}
 \]
 
-\exercisehead{6.3}
+\begin{exercise}[Lee 2e, Exercise 11.5, p.~274 \cite{dgdt:JLee2012}]
+Prove the preceding proposition.
+\end{exercise}
+\noindent\emph{Note.} Numbered Exercise~6.3 in the first edition. The preceding proposition is Proposition~11.4: $(A\circ B)^*=B^*\circ A^*$, and $(\mathrm{Id}_V)^*\colon V^*\to V^*$ is the identity map of $V^*$.
+\paragraph{Solution.}
 
 \begin{enumerate}
 \item[(a)] \begin{tikzpicture}

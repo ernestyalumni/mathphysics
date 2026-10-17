@@ -22,7 +22,10 @@ tensor product $S\otimes T: V \times \dots \times V \to \mathbb{R}$, covariant $
   S \otimes T(x_1 \dots x_{k+l}) = S(x_1 \dots x_k) T(x_{k+1} \dots x_{k+l}) \\ 
 \]
 
-\exercisehead{12.3}  
+\begin{exercise}[Lee 2e, Exercise 12.3, p.~306 \cite{dgdt:JLee2012}]
+Show that the tensor product operation is bilinear and associative: $F\otimes G$ depends bilinearly on $F$ and $G$, and $(F\otimes G)\otimes H=F\otimes(G\otimes H)$.
+\end{exercise}
+\paragraph{Solution.}  
 \[
 \begin{gathered}
   F(v_1 \dots av_i + bw_i \dots v_k) G(v_{k+1} \dots v_{k+l}) = aF(v_1 \dots v_i \dots v_k) G + b F(v_1 \dots w_i \dots v_k)G = \\
@@ -73,7 +76,11 @@ free vector space on $S$, $\mathbb{R}\langle S \rangle = \lbrace \mathcal{F} \rb
 \quad \quad finite formal linear combination - function $\mathcal{F} : S \to \mathbb{R}$ s.t. $\mathcal{F}(s) = 0$ for all but finite many $s \in S$ \\
 \quad \quad $\forall \, \mathcal{F} \in \mathbb{R} \langle S \rangle$, $\mathcal{F} = \sum_{i=1}^m a_i x_i$, \, $x_1 \dots x_m \in S$ s.t. $\mathcal{F}(x_i) \neq 0$, $a_i = \mathcal{F}(x_i)$
 
-\exercisehead{12.6} (Characteristic Property of Free Vector Spaces)
+\begin{exercise}[Lee 2e, Exercise 12.6, p.~308 \cite{dgdt:JLee2012}]
+Prove the preceding proposition.
+\end{exercise}
+\noindent\emph{Note.} The preceding proposition is Proposition~12.5 (Characteristic Property of the Free Vector Space): for any set $S$ and any vector space $W$, every map $A\colon S\to W$ has a unique extension to a linear map $\overline{A}\colon\mathcal{F}(S)\to W$.
+\paragraph{Solution.} (Characteristic Property of Free Vector Spaces)
 
 \[
 \begin{aligned}
@@ -257,7 +264,17 @@ c_{ij} e_i \otimes f_j = 0 = c_{ij} \delta_{ik} \delta_{jl} = c_{kl} = 0 \quad \
 \begin{corollary}[11.5] $V$ finite-dim. real vector space, space $T^k(V)$ of covariant $k$-tensors on $V$ canonically isomorphic to $k$-fold tensor product $V^* \otimes \dots \otimes V^*$
 \end{corollary}
 
-\exercisehead{11.3} Prove Corollary 11.5.  
+\begin{exercise}[Lee 2e, Corollary 12.12, p.~313 \cite{dgdt:JLee2012}]
+Let $V$ be an $n$-dimensional real vector space. Suppose $(E_i)$ is any basis for $V$ and $(\varepsilon^j)$ is the dual basis for $V^*$. Then the following sets constitute bases for the tensor spaces over $V$:
+\begin{align*}
+&\{\varepsilon^{i_1}\otimes\cdots\otimes\varepsilon^{i_k}:1\le i_1,\ldots,i_k\le n\}&&\text{for }T^k(V^*);\\
+&\{E_{i_1}\otimes\cdots\otimes E_{i_k}:1\le i_1,\ldots,i_k\le n\}&&\text{for }T^k(V);\\
+&\{E_{i_1}\otimes\cdots\otimes E_{i_k}\otimes\varepsilon^{j_1}\otimes\cdots\otimes\varepsilon^{j_l}:1\le i_1,\ldots,i_k,j_1,\ldots,j_l\le n\}&&\text{for }T^{(k,l)}(V).
+\end{align*}
+Therefore, $\dim T^k(V^*)=\dim T^k(V)=n^k$ and $\dim T^{(k,l)}(V)=n^{k+l}$.
+\end{exercise}
+\noindent\emph{Note.} First-edition Exercise~11.3, which asked for a proof of Corollary~11.5 there.
+\paragraph{Solution.} Prove Corollary 11.5.  
 
 It's enough to consider the basis (good strategy).  
 
@@ -290,7 +307,11 @@ Then $f\sigma$, $\sigma \otimes \tau$ also smooth tensor fields whose
 \]
 \end{lemma}
 
-\exercisehead{11.7}
+\begin{exercise}[Lee 2e, Exercise 12.23, p.~318 \cite{dgdt:JLee2012}]
+Prove Proposition 12.22.
+\end{exercise}
+\noindent\emph{Note.} First-edition Exercise~11.7 (Lemma~11.7 there). Proposition~12.22: if $A\in\mathcal{T}^k(M)$, $B\in\mathcal{T}^l(M)$ and $f\in C^\infty(M)$, then $fA$ and $A\otimes B$ are smooth tensor fields, with components $(fA)_{i_1\ldots i_k}=fA_{i_1\ldots i_k}$ and $(A\otimes B)_{i_1\ldots i_{k+l}}=A_{i_1\ldots i_k}B_{i_{k+1}\ldots i_{k+l}}$.
+\paragraph{Solution.}
 
 Prove Lemma 11.7.  Note $T^0M = T_0M = M \times \mathbb{R}$
 
@@ -329,7 +350,11 @@ Suppose smooth $\begin{aligned} & \quad \\
 \end{enumerate}
 \end{proposition}
 
-\exercisehead{11.9} Prove Prop. 11.9
+\begin{exercise}[Lee 2e, Exercise 12.26, p.~320 \cite{dgdt:JLee2012}]
+Prove Proposition 12.25.
+\end{exercise}
+\noindent\emph{Note.} First-edition Exercise~11.9 (Proposition~11.9 there, stated above). Proposition~12.25 is Properties of Tensor Pullbacks.
+\paragraph{Solution.} Prove Prop. 11.9
 
 \begin{corollary}[11.10] Let smooth $F:M \to N$, $\sigma \in \mathcal{T}^k(N)$ \\
 If $p\in M$, smooth coordinates $(y^j)$ for $N$ on neighborhood of $F(p)$, then $F^*\sigma$ near $p$ 
@@ -347,7 +372,16 @@ However, in the special case of a diffeomorphism, tensor fields of any variance 
 
 20130919
 
-\exercisehead{11.10}
+\begin{exercise}[Lee 2e, Exercise 12.13, p.~314 \cite{dgdt:JLee2012}]
+Show that the following are equivalent for a covariant $k$-tensor $\alpha$:
+\begin{enumerate}
+\item[(a)] $\alpha$ is symmetric.
+\item[(b)] For any vectors $v_1,\ldots,v_k\in V$, the value of $\alpha(v_1,\ldots,v_k)$ is unchanged when $v_1,\ldots,v_k$ are rearranged in any order.
+\item[(c)] The components $\alpha_{i_1\ldots i_k}$ of $\alpha$ with respect to any basis are unchanged by any permutation of the indices.
+\end{enumerate}
+\end{exercise}
+\noindent\emph{Note.} First-edition Exercise~11.10.
+\paragraph{Solution.}
 
 \[
 T_{i_1 \dots i_k} = T(E_{i_1} \dots E_{i_k} ) = T(E_{i_1} \dots E_{i_s} \dots E_{i_r} \dots E_{i_k} ) = T_{i_1 \dots i_s \dots i_r \dots i_k } \quad \quad \, r<s
@@ -377,7 +411,11 @@ ST(X_1 \dots X_{k+l}) = \frac{1}{ (k+l)!} \sum_{ \sigma \in S_{k+l} } S(X_{\sigm
 \end{proposition}
 
 20130919
-\exercisehead{12.16} Prove Proposition 12.15
+\begin{exercise}[Lee 2e, Exercise 12.16, p.~315 \cite{dgdt:JLee2012}]
+Prove Proposition 12.15.
+\end{exercise}
+\noindent\emph{Note.} Proposition~12.15 is Properties of the Symmetric Product.
+\paragraph{Solution.} Prove Proposition 12.15
 
 \begin{enumerate}
 \item[(a)]
@@ -404,7 +442,11 @@ direct application of definition of $ST \equiv \text{Sym}{(S\otimes T)}$ and $S\
 \begin{lemma}[12.30] smooth $M,V,A$, $\exists \, $ (12.8) $\forall \, p \in M$, and defines $\mathcal{L}_VA$ as smooth tensor field on $M$
 \end{lemma}
 
-\exercisehead{12.31}
+\begin{exercise}[Lee 2e, Exercise 12.31, p.~321 \cite{dgdt:JLee2012}]
+Prove the preceding lemma.
+\end{exercise}
+\noindent\emph{Note.} The preceding lemma is Lemma~12.30: the derivative in (12.8) exists for every $p\in M$ and defines $\mathcal{L}_VA$ as a smooth tensor field on $M$.
+\paragraph{Solution.}
 
 Suppose smooth $M$, smooth $V$, smooth covariant tensor $A$
 

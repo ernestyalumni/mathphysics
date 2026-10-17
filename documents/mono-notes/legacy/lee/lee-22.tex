@@ -4,7 +4,15 @@
 
 \subsection{Symplectic Tensors}
 
-\exercisehead{22.1}
+\begin{exercise}[Lee 2e, Exercise 22.1, p.~565 \cite{dgdt:JLee2012}]
+Show that the following are equivalent for 2-covector $\omega$ on a finite-dimensional vector space $V$:
+\begin{enumerate}
+\item[(a)] $\omega$ is nondegenerate.
+\item[(b)] For each nonzero $v\in V$, there exists $w\in V$ such that $\omega(v,w)\ne 0$.
+\item[(c)] In terms of some (hence every) basis, the matrix $(\omega_{ij})$ representing $\omega$ is nonsingular.
+\end{enumerate}
+\end{exercise}
+\paragraph{Solution.}
 
 {\scriptsize{\url{http://math.stackexchange.com/questions/342267/non-degenerate-bilinear-forms-and-invertible-matrices}}} (shout out to Branimir Cacic for the answer)  gave me a hint at how to approach this exercise, even though the original question was for symmetric bilinear forms.  
 
@@ -52,7 +60,10 @@ then if $\forall \, w \in V$, $\omega(v,w) =0$, then $v=0$ \\
 $\omega(v,w) = \widehat{\omega}(v)(w) = 0$ implies $v=0$, $\forall \, w \in V$.  \\
 Then $\text{ker}\widehat{\omega}=0$.  So $\widehat{\omega}$ linear isomorphism.  So $\omega$ nondegenerate.  
 
-\exercisehead{22.4} There was a proof of this in Konstantin Athanassopoulos, \textbf{Notes on Symplectic Geometry}, Iraklion, 2013
+\begin{exercise}[Lee 2e, Exercise 22.4, p.~566 \cite{dgdt:JLee2012}]
+Let $(V,\omega)$ be a symplectic vector space and $S\subseteq V$ be a linear subspace. Show that $(S^\perp)^\perp=S$.
+\end{exercise}
+\paragraph{Solution.} There was a proof of this in Konstantin Athanassopoulos, \textbf{Notes on Symplectic Geometry}, Iraklion, 2013
 \url{http://www.math.uoc.gr/~athanako/symplectic.pdf}
 
 Recall that \\
@@ -77,7 +88,10 @@ $\text{dim}S \leq \text{dim} (S^{\perp})^{\perp}$ with equality iff $S= (S^{\per
 
 \subsection{Symplectic Structures on Manifolds}
 
-\exercisehead{22.10} $F:N\to M$ smooth immersion.  Recall definition: $F_*$ injective.  Recall Appendix B, Exercise B.22 (EY: 20150512 This exercise is \textbf{very useful}; I can't emphasize that enough).  $F_*$ injective so $\text{rank}F_* = \text{dim}N$. (implying $\text{ker}F_*=0$).  
+\begin{exercise}[Lee 2e, Exercise 22.10, p.~568 \cite{dgdt:JLee2012}]
+Suppose $(M,\omega)$ is a symplectic manifold and $F\colon N\to M$ is a smooth immersion. Show that $F$ is isotropic if and only if $F^*\omega=0$, and $F$ is symplectic if and only if $F^*\omega$ is a symplectic form.
+\end{exercise}
+\paragraph{Solution.} $F:N\to M$ smooth immersion.  Recall definition: $F_*$ injective.  Recall Appendix B, Exercise B.22 (EY: 20150512 This exercise is \textbf{very useful}; I can't emphasize that enough).  $F_*$ injective so $\text{rank}F_* = \text{dim}N$. (implying $\text{ker}F_*=0$).  
 
 Recall that $F$ isotropic if \\
 
@@ -217,7 +231,11 @@ Now $\theta_s \circ \gamma : I \to M$
 \end{enumerate}
 \end{proof}
 
-\problemhead{22.1} 
+\begin{exercise}[Lee 2e, Problem 22-1, p.~590 \cite{dgdt:JLee2012}]
+Prove Proposition 22.5 (properties of symplectic, isotropic, coisotropic, and Lagrangian subspaces).
+\end{exercise}
+\noindent\emph{Note.} Proposition~22.5: (a) $S$ is symplectic iff $S^\perp$ is; (b) $S$ is symplectic iff $\omega|_S$ is nondegenerate; (c) $S$ is isotropic iff $\omega|_S=0$; (d) $S$ is coisotropic iff $S^\perp$ is isotropic; (e) $S$ is Lagrangian iff $\omega|_S=0$ and $\dim S=\tfrac12\dim V$.
+\paragraph{Solution.} 
 
 \begin{proof}
 \begin{enumerate}
@@ -246,7 +264,31 @@ If $\text{dim}S = \frac{1}{2} \text{dim}V$, $\text{dim}S^{\perp} = \frac{1}{2} \
 
 
 
-\problemhead{22.-17} Given Hamiltonian system $(T^*Q, \omega,E)$.  
+\begin{exercise}[Lee 2e, Problem 22-17, p.~593 \cite{dgdt:JLee2012}]
+Consider the 2-body problem, that is, the Hamiltonian system $(T^*Q,\omega,E)$ described in Example 22.18 in the special case $n=2$. Suppose that the potential energy $V$ depends only on the distance between the particles. More precisely, suppose that $V(q)=v(r(q))$ for some smooth function $v\colon(0,\infty)\to\mathbb{R}$, where
+\[
+r(q)=|\mathbf{q}_1-\mathbf{q}_2|=\sqrt{(q_1^1-q_2^1)^2+(q_1^2-q_2^2)^2+(q_1^3-q_2^3)^2}.
+\]
+\begin{enumerate}
+\item[(a)] Let $\mathbf{u}=(u^1,u^2,u^3)$ be a unit vector in $\mathbb{R}^3$, and show that the function $P\colon T^*Q\to\mathbb{R}$ defined by
+\begin{align*}
+P(q,p)&=\mathbf{u}\cdot\mathbf{p}_1+\mathbf{u}\cdot\mathbf{p}_2\\
+&=u^1p_1^1+u^2p_1^2+u^3p_1^3+u^1p_2^1+u^2p_2^2+u^3p_2^3
+\end{align*}
+is a conserved quantity (called the \emph{total linear momentum in the $\mathbf{u}$-direction}), and that the corresponding infinitesimal symmetry generates translations in the $\mathbf{u}$-direction:
+\begin{align*}
+\theta_t(q,p)&=(\mathbf{q}_1+t\mathbf{u},\mathbf{q}_2+t\mathbf{u},\mathbf{p}_1,\mathbf{p}_2)\\
+&=(q_1^1+tu^1,q_1^2+tu^2,q_1^3+tu^3,q_2^1+tu^1,q_2^2+tu^2,\\
+&\qquad q_2^3+tu^3,p_1^1,p_1^2,p_1^3,p_2^1,p_2^2,p_2^3).
+\end{align*}
+\item[(b)] Show that the function $L\colon T^*Q\to\mathbb{R}$ defined by
+\[
+L(q,p)=q_1^1p_1^2-q_1^2p_1^1+q_2^1p_2^2-q_2^2p_2^1
+\]
+is a conserved quantity (called the \emph{total angular momentum about the $z$-axis}), and find the flow of the corresponding infinitesimal symmetry. Explain what this has to do with rotational symmetry.
+\end{enumerate}
+\end{exercise}
+\paragraph{Solution.} Given Hamiltonian system $(T^*Q, \omega,E)$.  
 
 Recall that 
 \[
@@ -352,7 +394,10 @@ L(q,p) = q_1^1 p_1^2 - q_1^2 p_1^1 + q_2^1p_2^2 - q_2^2 p_2^1
 \end{enumerate}
 
 
-\problemhead{22-18}
+\begin{exercise}[Lee 2e, Problem 22-18, p.~593 \cite{dgdt:JLee2012}]
+Prove Proposition 22.21 (properties of conserved quantities and infinitesimal symmetries).
+\end{exercise}
+\paragraph{Solution.}
 
 \begin{enumerate}
 \item[(a)] if $f\in C^{\infty}(M)$ conserved quantity, by def. $f$ constant on every integral curve of $X_H$

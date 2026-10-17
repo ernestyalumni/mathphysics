@@ -243,13 +243,22 @@ Suppose $(M,g)$, Riemannian submanifold $S\subset M$ \\
 
 \subsection*{The Riemannian Distance Function}
 
-\exercisehead{13.23}
+\begin{exercise}[Lee 2e, Exercise 13.23, p.~337 \cite{dgdt:JLee2012}]
+Suppose $\gamma\colon[a,b]\to M$ is a piecewise smooth curve segment and $a<c<b$. Show that
+\[
+L_g(\gamma)=L_g(\gamma|_{[a,c]})+L_g(\gamma|_{[c,b]}).
+\]
+\end{exercise}
+\paragraph{Solution.}
 \[
 L_g(\gamma) = \int_a^b |\gamma'(t)|_g dt = \int_a^c |\gamma'(t)|_g dt  + \int_c^b |\gamma'(t) |_g dt = L_g(\left. \gamma \right|_{ [a,c] } ) + L_g( \left. \gamma \right|_{[c,b]} )
 \]
 
 
-\exercisehead{13.24}
+\begin{exercise}[Lee 2e, Exercise 13.24, p.~337 \cite{dgdt:JLee2012}]
+Show that lengths of curves are local isometry invariants of Riemannian manifolds. More precisely, suppose $(M,g)$ and $(\widetilde{M},\widetilde{g})$ are Riemannian manifolds with or without boundary, and $F\colon M\to\widetilde{M}$ is a local isometry. Show that $L_{\widetilde{g}}(F\circ\gamma)=L_g(\gamma)$ for every piecewise smooth curve segment $\gamma$ in $M$.
+\end{exercise}
+\paragraph{Solution.}
 
 On every coordinate patch, consider on some interval $I \subset \mathbb{R}$ parametrizing curve $\gamma$ on $M$ and $\widetilde{\gamma}$ on $\widetilde{M}$ in the same way, and that $F^* \widetilde{\gamma} = \widetilde{\gamma}$
 
@@ -483,7 +492,19 @@ $\text{grad}f = g^{ij} \frac{ \partial f}{ \partial x^i} \frac{ \partial }{ \par
 
 
 
-\problemhead{11-1} Recall $\forall $ bilinear $A : V\times W \to Y$, $\exists \, !$ \, linear $\widetilde{A} : Z \to Y$ s.t. 
+\begin{exercise}[Lee 2e, Problem 12-3, p.~324 \cite{dgdt:JLee2012}]
+Let $V$ and $W$ be finite-dimensional real vector spaces. Show that the tensor product space $V\otimes W$ is uniquely determined up to canonical isomorphism by its characteristic property (Proposition 12.7). More precisely, suppose $\widetilde{\pi}\colon V\times W\to Z$ is a bilinear map into a vector space $Z$ with the following property: for any bilinear map $B\colon V\times W\to Y$, there is a unique linear map $\widetilde{B}\colon Z\to Y$ such that the following diagram commutes:
+\[
+\begin{array}{ccc}
+V\times W & \xrightarrow{\;B\;} & Y\\
+{\scriptstyle\widetilde{\pi}}\big\downarrow & \nearrow{\scriptstyle\widetilde{B}} & \\
+Z & &
+\end{array}
+\]
+Then there is a unique isomorphism $\Phi\colon V\otimes W\to Z$ such that $\widetilde{\pi}=\Phi\circ\pi$, where $\pi\colon V\times W\to V\otimes W$ is the canonical projection. [Remark: this shows that the details of the construction used to define the tensor product space are irrelevant, as long as the resulting space satisfies the characteristic property.]
+\end{exercise}
+\noindent\emph{Note.} First-edition Problem~11-1. The statement runs onto p.~325.
+\paragraph{Solution.} Recall $\forall $ bilinear $A : V\times W \to Y$, $\exists \, !$ \, linear $\widetilde{A} : Z \to Y$ s.t. 
 
 \begin{tikzpicture}
   \matrix (m) [matrix of math nodes, row sep=2em, column sep=3em, minimum width=1em]
@@ -549,7 +570,11 @@ So $\Phi$ is an isomorphism between $Z, V\otimes W$.  As $\lambda $ is unique, s
 
 
 
-\problemhead{11-2}
+\begin{exercise}[Lee 2e, Problem 12-2, p.~324 \cite{dgdt:JLee2012}]
+For any finite-dimensional real vector space $V$, prove that there are canonical isomorphisms $\mathbb{R}\otimes V\cong V\cong V\otimes\mathbb{R}$.
+\end{exercise}
+\noindent\emph{Note.} First-edition Problem~11-2.
+\paragraph{Solution.}
 
 tensor product of $U,V$ is vector space $U\otimes V$ with bilinear map $\begin{aligned} & \quad \\ 
   \otimes : & U \times V \to U\otimes V \\ 
@@ -591,7 +616,15 @@ $u \mapsto u\otimes 1$
 then $U\otimes K \simeq U$
 
 
-\problemhead{11-3} $\begin{aligned} & \quad \\
+\begin{exercise}[Lee 2e, Problem 12-4, p.~325 \cite{dgdt:JLee2012}]
+Let $V_1,\ldots,V_k$ and $W$ be finite-dimensional real vector spaces. Prove that there is a canonical (basis-independent) isomorphism
+\[
+V_1^*\otimes\cdots\otimes V_k^*\otimes W\cong \mathrm{L}(V_1,\ldots,V_k;W).
+\]
+(In particular, this means that $V^*\otimes W$ is canonically isomorphic to the space $\mathrm{L}(V;W)$ of linear maps from $V$ to $W$.)
+\end{exercise}
+\noindent\emph{Note.} First-edition Problem~11-3. The solution below is the case $k=1$, $U^*\otimes V\cong\operatorname{Hom}(U,V)$.
+\paragraph{Solution.} $\begin{aligned} & \quad \\
   & U^* \times V \to \text{Hom}{(U,V)} \\
   & (u^*, v) \to ( u \to u^*(u), v) \end{aligned}$ induces a natural homomorphism (injective), $U^* \otimes V \to \text{Hom}{(U,V)}$ 
 \begin{tikzpicture}

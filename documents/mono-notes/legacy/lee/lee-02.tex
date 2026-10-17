@@ -35,7 +35,10 @@ U & f(U) \subset \mathbb{R}^k  \\
 
 
 
-\exercisehead{2.3} Given $f: M \to \mathbb{R}^k$ smooth, \\
+\begin{exercise}[Lee 2e, Exercise 2.3, p.~33 \cite{dgdt:JLee2012}]
+Let $M$ be a smooth manifold with or without boundary, and suppose $f\colon M\to\mathbb{R}^k$ is a smooth function. Show that $f\circ\varphi^{-1}\colon\varphi(U)\to\mathbb{R}^k$ is smooth for \emph{every} smooth chart $(U,\varphi)$ for $M$.
+\end{exercise}
+\paragraph{Solution.} Given $f: M \to \mathbb{R}^k$ smooth, \\
 Consider $p \in M$.  $M$ smooth manifold, so $\exists \, $ chart $(U,\varphi)$ s.t. $p \in U$ \\
 $\varphi : U \subset M \to \mathbb{R}^m$ \\
 $\varphi$ homeomorphism, $\varphi(U)$ open in $\mathbb{R}^m$  
@@ -92,7 +95,11 @@ U & F(U) \subseteq V  \\
 \end{tikzpicture} 
 
 
-\exercisehead{2.6}
+\begin{exercise}[Lee 2e, Exercise 2.9, p.~35 \cite{dgdt:JLee2012}]
+Suppose $F\colon M\to N$ is a smooth map between smooth manifolds with or without boundary. Show that the coordinate representation of $F$ with respect to \emph{every} pair of smooth charts for $M$ and $N$ is smooth.
+\end{exercise}
+\noindent\emph{Note.} Numbered Exercise~2.6 in the first edition.
+\paragraph{Solution.}
 
 smooth $F: M \to N$  \\
 $(U,\varphi)$, $(U',\varphi')$ smooth chart for $M$
@@ -176,7 +183,11 @@ Lie group - smooth manifold $G$, with $\begin{aligned} & \quad \\
   & i : G \to G \\
   & i(g) = g^{-1} \end{aligned}$ \quad \quad $m,i$ smooth.  
 
-\exercisehead{2.10}
+\begin{exercise}[Lee 2e, Exercise 7.2, p.~151 \cite{dgdt:JLee2012}]
+Prove Proposition 7.1.
+\end{exercise}
+\noindent\emph{Note.} Numbered Exercise~2.10 in the first edition. Proposition~7.1: if $G$ is a smooth manifold with a group structure such that the map $G\times G\to G$ given by $(g,h)\mapsto gh^{-1}$ is smooth, then $G$ is a Lie group.
+\paragraph{Solution.}
 \[
 \begin{aligned}
   & f:G\times G \to G \\ 
@@ -278,7 +289,16 @@ Lemma 1.13(b), so $\text{supp}{\widetilde{f}} = \overline{ \bigcup_{p\in A} \tex
 
 \subsection*{ Problems}
 
-\problemhead{2-11}
+\begin{exercise}[Lee 2e, Proposition 7.14, p.~156 \cite{dgdt:JLee2012}]
+Suppose $G$ is a Lie group, and $W\subseteq G$ is any neighborhood of the identity.
+\begin{enumerate}
+\item[(a)] $W$ generates an open subgroup of $G$.
+\item[(b)] If $W$ is connected, it generates a connected open subgroup of $G$.
+\item[(c)] If $G$ is connected, then $W$ generates $G$.
+\end{enumerate}
+\end{exercise}
+\noindent\emph{Note.} Problem~2-11 in the first edition; in the second edition it is part~(c) of this proposition, proved in the text.
+\paragraph{Solution.}
 
 $G$ connected Lie group.   \\
 $U \subset G$ neighborhood of identity $e$.  

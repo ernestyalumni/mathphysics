@@ -107,7 +107,11 @@ e.g. of rescaling  - $2t = 2\cdot 1 = 2 \quad \, a=2$
 
 \end{lemma}
 
-\exercisehead{9.5}
+\begin{exercise}[Lee 2e, Exercise 9.5, p.~208 \cite{dgdt:JLee2012}]
+Prove the translation lemma.
+\end{exercise}
+\noindent\emph{Note.} The translation lemma is Lemma~9.4: if $\gamma\colon J\to M$ is an integral curve of $V$, then for any $b\in\mathbb{R}$ the curve $\widehat\gamma\colon\widehat J\to M$, $\widehat\gamma(t)=\gamma(t+b)$, is also an integral curve of $V$, where $\widehat J=\{t:t+b\in J\}$.
+\paragraph{Solution.}
 \begin{proof}
 \[  
 \begin{aligned}
@@ -514,7 +518,10 @@ d(\theta_{-t})_{\theta_t(x)}(W_{\theta_t(x)}) = \frac{ \partial \theta^i}{ \part
 
 \end{proof}
 
-\exercisehead{9.37}
+\begin{exercise}[Lee 2e, Exercise 9.37, p.~229 \cite{dgdt:JLee2012}]
+Suppose $v\in\mathbb{R}^n$ and $W$ is a smooth vector field on an open subset of $\mathbb{R}^n$. Show that the directional derivative $D_vW(p)$ defined by (9.15) is equal to $(\mathcal{L}_VW)_p$, where $V$ is the vector field $V=v^i\,\partial/\partial x^i$ with constant coefficients in standard coordinates.
+\end{exercise}
+\paragraph{Solution.}
 
 Given $V = v^i \frac{ \partial }{ \partial x^i}$ with constant coefficients (i.e. $v^i$ constant)
 
@@ -567,7 +574,11 @@ From (9.16)
 \end{enumerate}
 \end{corollary}
 
-\exercisehead{9.40}
+\begin{exercise}[Lee 2e, Exercise 9.40, p.~230 \cite{dgdt:JLee2012}]
+Prove this corollary.
+\end{exercise}
+\noindent\emph{Note.} The corollary is Corollary~9.39: (a) $\mathcal{L}_VW=-\mathcal{L}_WV$; (b) $\mathcal{L}_V[W,X]=[\mathcal{L}_VW,X]+[W,\mathcal{L}_VX]$; (c) $\mathcal{L}_{[V,W]}X=\mathcal{L}_V\mathcal{L}_WX-\mathcal{L}_W\mathcal{L}_VX$; (d) $\mathcal{L}_V(gW)=(Vg)W+g\mathcal{L}_VW$ for $g\in C^\infty(M)$; (e) $F_*(\mathcal{L}_VX)=\mathcal{L}_{F_*V}F_*X$ for a diffeomorphism $F$.
+\paragraph{Solution.}
 
   \begin{enumerate}
     \item[(a)] \[
@@ -959,7 +970,19 @@ Thus, we can conclude that
 \subsection*{ Problems }
 
 
-\problemhead{9-21} Note that from wikipedia, 
+\begin{exercise}[Lee 2e, Problem 9-21, p.~247 \cite{dgdt:JLee2012}]
+Let $M$ be a smooth manifold. A \emph{smooth isotopy of $M$} is a smooth map $H\colon M\times J\to M$, where $J\subseteq\mathbb{R}$ is an interval, such that for each $t\in J$, the map $H_t\colon M\to M$ defined by $H_t(p)=H(p,t)$ is a diffeomorphism. (In particular, if $J$ is the unit interval, then $H$ is a homotopy from $H_0$ to $H_1$ through diffeomorphisms.) This problem shows that smooth isotopies are closely related to time-dependent flows.
+\begin{enumerate}
+\item[(a)] Suppose $J\subseteq\mathbb{R}$ is an open interval and $H\colon M\times J\to M$ is a smooth isotopy. Show that the map $V\colon J\times M\to TM$ defined by
+\[
+V(t,p)=\frac{\partial}{\partial t}H(p,t)
+\]
+is a smooth time-dependent vector field on $M$, whose time-dependent flow is given by $\psi(t,t_0,p)=H_t\circ H_{t_0}^{-1}(p)$ with domain $J\times J\times M$.
+\item[(b)] Conversely, suppose $J$ is an open interval and $V\colon J\times M\to M$ is a smooth time-dependent vector field on $M$ whose time-dependent flow is defined on $J\times J\times M$. For any $t_0\in J$, show that the map $H\colon M\times J\to M$ defined by $H(t,p)=\psi(t,t_0,p)$ is a smooth isotopy of $M$.
+\end{enumerate}
+\end{exercise}
+\noindent\emph{Note.} Two slips in the printed statement, reproduced above as printed: in (b) the codomain of $V$ should be $TM$, and the map should read $H(p,t)=\psi(t,t_0,p)$, to match $H\colon M\times J\to M$.
+\paragraph{Solution.} Note that from wikipedia, 
 
 ambient isotopy \\
 Let $N, M$ manifolds, \\

@@ -3,7 +3,16 @@
 
 \subsection{Linear Maps}
 
-\exercisehead{B.1}
+\begin{exercise}[Lee 2e, Exercise B.1, p.~619 \cite{dgdt:JLee2012}]
+Let $V$ be a vector space. Prove the following statements.
+\begin{enumerate}
+\item[(a)] If $S\subseteq V$ is linearly independent, then every subset of $S$ is linearly independent.
+\item[(b)] If $S\subseteq V$ is linearly dependent or spans $V$, then every subset of $V$ that properly contains $S$ is linearly dependent.
+\item[(c)] A subset $S\subseteq V$ containing more than one element is linearly dependent if and only if some element $v\in S$ can be expressed as a linear combination of elements of $S\smallsetminus\{v\}$.
+\item[(d)] If $(v_1,\ldots,v_k)$ is a linearly dependent $k$-tuple in $V$ with $v_1\ne 0$, then some $v_i$ can be expressed as a linear combination of the \emph{preceding} vectors $(v_1,\ldots,v_{i-1})$.
+\end{enumerate}
+\end{exercise}
+\paragraph{Solution.}
 \begin{enumerate}
   \item[(a)]
 \item[(b)]
@@ -26,7 +35,10 @@ So in general, $v_i = \frac{ -\sum_{j=1}^{i-1} a^j v_j }{ a^i}$
 \end{proof}
 \end{enumerate}
 
-\exercisehead{B.9}
+\begin{exercise}[Lee 2e, Exercise B.9, p.~621 \cite{dgdt:JLee2012}]
+Let $V$ be a finite-dimensional vector space. Show that every subspace $S\subseteq V$ has a complementary subspace in $V$. In fact, given an arbitrary basis $(E_1,\ldots,E_n)$ for $V$, show that there is some subset $\{i_1,\ldots,i_k\}$ of the integers $\{1,\ldots,n\}$ such that $\operatorname{span}(E_{i_1},\ldots,E_{i_k})$ is a complement to $S$. [Hint: choose a basis $(F_1,\ldots,F_m)$ for $S$, and apply Exercise B.1(d) to the ordered $(m+n)$-tuple $(F_1,\ldots,F_m,E_1,\ldots,E_n)$.]
+\end{exercise}
+\paragraph{Solution.}
 given $(E_1 \dots E_n)$ basis for $V$ \\
 \phantom{ \quad } $\exists \, \lbrace i_1 \dots i_k \rbrace \subset \lbrace 1 \dots n \rbrace$ s.t. \\
 \phantom{ \quad \, } $ \text{span}(E_{i_1} \dots E_{i_k} )$ is complement to $S$ \\
@@ -62,7 +74,10 @@ $\Longrightarrow $ given fixed basis of $V$, $(E_1 \dots E_n)$, subspace $S \sub
 \end{proof}
 
 
-\exercisehead{B.13}  Suppose $\exists \, $ linear $T: V \to W $ s.t. $T(E_i) = w_i$, \quad \, $i = 1 \dots n$ \\
+\begin{exercise}[Lee 2e, Exercise B.13, p.~623 \cite{dgdt:JLee2012}]
+Let $V$ and $W$ be vector spaces, and let $(E_1,\ldots,E_n)$ be a basis for $V$. For any $n$ elements $w_1,\ldots,w_n\in W$, show that there is a unique linear map $T\colon V\to W$ satisfying $T(E_i)=w_i$ for $i=1,\ldots,n$.
+\end{exercise}
+\paragraph{Solution.}  Suppose $\exists \, $ linear $T: V \to W $ s.t. $T(E_i) = w_i$, \quad \, $i = 1 \dots n$ \\
 Suppose $\exists \, $ linear $T':V \to W$ s.t. $T'(E_i)= w_i$, \quad \, $i = 1 \dots n$
 
 Let $x\in V$, so $x  = x^i E_i$ (the key idea is that with a basis, the vector space is completely determined, vectors in the vector space are spanned by the basis elements)
@@ -80,7 +95,10 @@ $T$ exists by construction.
 
 \textbf{affine map } $F: V \to W$ if $F(v) = w + Tv$ for some $T: V \to W$, some fixed $w\in W$ \\
 
-\exercisehead{B.16}
+\begin{exercise}[Lee 2e, Exercise B.16, p.~623 \cite{dgdt:JLee2012}]
+Suppose $F\colon V\to W$ is an affine map. Show that $F(V)$ is an affine subspace of $W$, and the sets $F^{-1}(z)$ for $z\in W$ are parallel affine subspaces of $V$.
+\end{exercise}
+\paragraph{Solution.}
 
 Let $a,b \in \mathbb{C}$, $x, y \in F(V)$ \\
 
@@ -94,7 +112,19 @@ F(V) = \lbrace y | y = w + Tv = F(v), \, v \in V, \text{ fixed } w \in W , \text
 
 
 
-\exercisehead{B.22} Suppose $V,W, X$ finite-dim. vector spaces \\
+\begin{exercise}[Lee 2e, Exercise B.22, p.~627 \cite{dgdt:JLee2012}]
+Suppose $V,W,X$ are finite-dimensional vector spaces, and $S\colon V\to W$ and $T\colon W\to X$ are linear maps. Prove the following statements.
+\begin{enumerate}
+\item[(a)] $\operatorname{rank}S\le\dim V$, with equality if and only if $S$ is injective.
+\item[(b)] $\operatorname{rank}S\le\dim W$, with equality if and only if $S$ is surjective.
+\item[(c)] If $\dim V=\dim W$ and $S$ is either injective or surjective, then it is an isomorphism.
+\item[(d)] $\operatorname{rank}(T\circ S)\le\operatorname{rank}S$, with equality if and only if $\operatorname{Im}S\cap\operatorname{Ker}T=\{0\}$.
+\item[(e)] $\operatorname{rank}(T\circ S)\le\operatorname{rank}T$, with equality if and only if $\operatorname{Im}S+\operatorname{Ker}T=W$.
+\item[(f)] If $S$ is an isomorphism, then $\operatorname{rank}(T\circ S)=\operatorname{rank}T$.
+\item[(g)] If $T$ is an isomorphism, then $\operatorname{rank}(T\circ S)=\operatorname{rank}S$.
+\end{enumerate}
+\end{exercise}
+\paragraph{Solution.} Suppose $V,W, X$ finite-dim. vector spaces \\
 $S:V\to W$, \, $T:W \to X$
 
 \begin{enumerate}
@@ -200,7 +230,10 @@ If $V$ real vector space, \\
 c|v|_1 \leq |v|_2 \leq C|v|_1 \quad \quad \, \forall \, v \in V
 \]
 
-\exercisehead{B.49} $\forall \, x \in V$, \\
+\begin{exercise}[Lee 2e, Exercise B.49, p.~638 \cite{dgdt:JLee2012}]
+Show that equivalent norms determine the same topology.
+\end{exercise}
+\paragraph{Solution.} $\forall \, x \in V$, \\
 Consider $B_r(x) = \{ y \in V | |y-x|_2 < r \}$ \\
 \phantom{ \quad } Note $y-x \in V$ as $V$ is a vector space
 

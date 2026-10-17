@@ -218,6 +218,8 @@
     }
   ],
   "post_import_edits": [
-    "Layout only (2026-10-17): long display rows broken at top-level equalities in lee-01, -02, -03, -08, -09, -13, -14, -15; bare \\[...\\] rows wrapped in gathered where needed; one \\text line split in lee-14; the four TikZ flow diagrams in lee-09 set to footnotesize labels with tighter columns. No mathematical content changed. Re-running import_lee.py discards these edits."
+    "Layout only (2026-10-17): long display rows broken at top-level equalities in lee-01, -02, -03, -08, -09, -13, -14, -15; bare \\[...\\] rows wrapped in gathered where needed; one \\text line split in lee-14; the four TikZ flow diagrams in lee-09 set to footnotesize labels with tighter columns. No mathematical content changed. Re-running import_lee.py discards these edits.",
+    "Exercise headings (2026-10-17): each of the 71 \\exercisehead/\\problemhead items now opens with the STYLE.md exercise environment: the Lee second-edition identifier, printed page, \\cite{dgdt:JLee2012}, and the statement reproduced from the second edition (Marker OCR checked against Nougat and the printed page; source Data/Public/books/Mathematics/LeeJM-IntroSmoothManifolds-2e). The original solutions follow under \\paragraph{Solution.} unchanged. Items numbered by the first edition are mapped by content to their second-edition counterpart and say so in a Note; three first-edition exercises with no second-edition counterpart (1.2, 4.1, 4.2) keep their heading with a Note.",
+    "Correction (2026-10-17): lee-15, Exercise 14.4 solution, T(X_{sigma(1)} ... T_{sigma(k)}) -> T(X_{sigma(1)} ... X_{sigma(k)}); the last argument is a vector, as in the line above it."
   ]
 }

@@ -15,11 +15,15 @@
 
 
 
-\exercisehead{12.2} If $T$ alternating, by Exercise 12.1, $T(X_{\sigma(1)} \dots X_{\sigma{(k)} } ) = (\text{sgn}{\sigma})T(X_1 \dots X_k)$
+\begin{exercise}[Lee 2e, Exercise 14.4, p.~351 \cite{dgdt:JLee2012}]
+Prove Proposition 14.3.
+\end{exercise}
+\noindent\emph{Note.} First-edition Exercise~12.2. Proposition~14.3 (Properties of Alternation): (a) $\operatorname{Alt}\alpha$ is alternating; (b) $\operatorname{Alt}\alpha=\alpha$ if and only if $\alpha$ is alternating. The solution below is part (b).
+\paragraph{Solution.} If $T$ alternating, by Exercise 12.1, $T(X_{\sigma(1)} \dots X_{\sigma{(k)} } ) = (\text{sgn}{\sigma})T(X_1 \dots X_k)$
 
 \[
 \begin{gathered}
-  \frac{1}{k!} \sum_{\sigma \in S_k} (\text{sgn}{\sigma}) T(X_{\sigma{(1)} } \dots T_{\sigma{(k)} } ) \\
+  \frac{1}{k!} \sum_{\sigma \in S_k} (\text{sgn}{\sigma}) T(X_{\sigma{(1)} } \dots X_{\sigma{(k)} } ) \\
   = \frac{1}{k!} \sum_{\sigma \in S_k} (\text{sgn}{\sigma})(\text{sgn}{\sigma}) T(X_1 \dots X_k) \\
   = \frac{1}{k!} \sum_{\sigma \in S_k} T(X_1 \dots X_k) \\
   = T(X_1 \dots X_k) \Longrightarrow \text{Alt}{T} = T
@@ -114,7 +118,10 @@ Recall $T^k T^*M$ bundle of covariant $k$-tensors on $M$ \\
 \Lambda^k T^*M = \coprod_{ p \in M} \Lambda^k{ ( T^*_p M )}
 \]
 
-\exercisehead{14.14} 
+\begin{exercise}[Lee 2e, Exercise 14.14, p.~359 \cite{dgdt:JLee2012}]
+Show that $\Lambda^kT^*M$ is a smooth subbundle of $T^kT^*M$, and therefore is a smooth vector bundle of rank $\binom{n}{k}$ over $M$.
+\end{exercise}
+\paragraph{Solution.} 
 
 $\Lambda^k T^*M$ smooth subbundle of $T^kT^*M$
 
@@ -200,7 +207,11 @@ F^*( \omega_{\underline{I}} dy^{\underline{I}} ) = (\omega_{\underline{I}} F) ( 
 
 
 
-\exercisehead{14.17}
+\begin{exercise}[Lee 2e, Exercise 14.17, p.~361 \cite{dgdt:JLee2012}]
+Prove this lemma.
+\end{exercise}
+\noindent\emph{Note.} The lemma is Lemma~14.16: for smooth $F\colon M\to N$, (a) $F^*\colon\Omega^k(N)\to\Omega^k(M)$ is linear over $\mathbb{R}$; (b) $F^*(\omega\wedge\eta)=(F^*\omega)\wedge(F^*\eta)$; (c) the coordinate formula for $F^*$.
+\paragraph{Solution.}
 
 $\omega, \eta \in \Omega^k(N)$ \quad \quad \, $\begin{aligned} & \quad \\
   & F^* \omega = \alpha \\
@@ -413,7 +424,11 @@ Then $b^i_{jk} = -c^i_{jk}$
 
 Proof is Exercise 14.31.  
 
-\exercisehead{14.31}
+\begin{exercise}[Lee 2e, Exercise 14.31, p.~369 \cite{dgdt:JLee2012}]
+Use (14.28) to prove the preceding proposition.
+\end{exercise}
+\noindent\emph{Note.} The preceding proposition is Proposition~14.30: for a smooth local frame $(E_i)$ with dual coframe $(\varepsilon^i)$, if $d\varepsilon^i=\sum_{j<k}b^i_{jk}\,\varepsilon^j\wedge\varepsilon^k$ and $[E_j,E_k]=c^i_{jk}E_i$, then $b^i_{jk}=-c^i_{jk}$.
+\paragraph{Solution.}
 
 \begin{proof}
   Assume $j <k$ without loss of generality.  

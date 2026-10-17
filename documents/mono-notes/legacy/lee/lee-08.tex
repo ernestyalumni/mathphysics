@@ -5,7 +5,8 @@
 
 
 
-\exercisehead{4.1} 
+\exercisehead{4.1 (Lee, 1st~ed.)}
+{\small\emph{Note.} Lee, first edition, Exercise~4.1 ($T\mathbb{R}^n\approx\mathbb{R}^{2n}$). There is no second-edition exercise with this content; take $(U,\varphi)=(\mathbb{R}^n,\mathrm{Id})$ in the charts (3.13) of Proposition~3.18, p.~66 \cite{dgdt:JLee2012}.}\par\noindent 
 Consider $ \begin{aligned} & \quad \\ 
   & 1 : \mathbb{R}^n \to \mathbb{R}^n \\ & x^i(x) = x^i \end{aligned}$, \quad \, smooth structure on $\mathbb{R}^n$, that's open.  
 
@@ -14,7 +15,8 @@ Consider $\begin{aligned} & \quad \\
 & F(x^1 \dots x^n, v^1 \dots v^n ) = (x^1 \dots x^n, v^1 \dots v^n) \end{aligned}$ \\
 $F= F^{-1}$, so clearly $F = 1_{T\mathbb{R}^n} $ is cont., bijective, and it's inverse cont. and smooth.  $F$ diffeomorphism.  
 
-\exercisehead{4.2}  $F:M \to N$.  Consider (3.6)
+\exercisehead{4.2 (Lee, 1st~ed.)}
+{\small\emph{Note.} Lee, first edition, Exercise~4.2 (the pushforward in coordinates). There is no second-edition exercise with this content; it is the coordinate formula (3.9)--(3.10) for the differential, p.~62 \cite{dgdt:JLee2012}.}\par\noindent  $F:M \to N$.  Consider (3.6)
 
 \[
 \begin{gathered}
@@ -123,7 +125,11 @@ It suffices to compute in a single smooth chart.
 
 \end{proof}
 
-\exercisehead{4.6}
+\begin{exercise}[Lee 2e, Exercise 8.29, p.~188 \cite{dgdt:JLee2012}]
+Prove part (d) of the preceding proposition.
+\end{exercise}
+\noindent\emph{Note.} Numbered Exercise~4.6 in the first edition. The preceding proposition is Proposition~8.28 (Properties of the Lie Bracket); part (d) is $[fX,gY]=fg[X,Y]+(fXg)Y-(gYf)X$.
+\paragraph{Solution.}
 
 For Lemma 4.15 (Properties of the Lie Bracket), part (d), 
 
@@ -225,7 +231,10 @@ Suppose $X$ smooth vector field along $A$.  \\
 Give open $U \supset A$, $\exists \, $ smooth global vector field $\widetilde{X}$ on $M$ s.t. $\left. \widetilde{X} \right|_A = X$ and $\text{supp}{\widetilde{X}} \subseteq U$
 \end{lemma}
 
-\exercisehead{8.9}
+\begin{exercise}[Lee 2e, Exercise 8.9, p.~177 \cite{dgdt:JLee2012}]
+Prove Proposition 8.8.
+\end{exercise}
+\paragraph{Solution.}
 
 \begin{enumerate}
 \item[(a)] $\forall \, p \in M$, \, $\begin{aligned} & \quad \\
@@ -525,7 +534,10 @@ DL_X = \frac{ \partial}{ \partial A^k_{ \, \, j} } ( XA)^i_{ \, \, j} = \frac{ \
 
 \subsection*{Problems}
 
-\problemhead{8-1}
+\begin{exercise}[Lee 2e, Problem 8-1, p.~199 \cite{dgdt:JLee2012}]
+Prove Lemma 8.6 (the extension lemma for vector fields).
+\end{exercise}
+\paragraph{Solution.}
 
 $\forall \, p \in A$, choose neighborhood $W_p$ of $p$, smooth $\widetilde{X}:A \to TM$ s.t. $\widetilde{X} = X$ on $W_p \bigcap A$
 
@@ -566,7 +578,10 @@ so $\widetilde{X}^i$ extension of $X$
 
 \hrulefill
 
-\problemhead{8-2} \textsc{Euler's Homogeneous Function Theorem} 
+\begin{exercise}[Lee 2e, Problem 8-2, p.~199 \cite{dgdt:JLee2012}]
+\textsc{Euler's Homogeneous Function Theorem}: Let $c$ be a real number, and let $f\colon\mathbb{R}^n\smallsetminus\{0\}\to\mathbb{R}$ be a smooth function that is \emph{positively homogeneous of degree $c$}, meaning that $f(\lambda x)=\lambda^c f(x)$ for all $\lambda>0$ and $x\in\mathbb{R}^n\smallsetminus\{0\}$. Prove that $Vf=cf$, where $V$ is the Euler vector field defined in Example 8.3.
+\end{exercise}
+\paragraph{Solution.} \textsc{Euler's Homogeneous Function Theorem} 
 $y = \lambda x$
 \[
 \frac{ \partial f}{ \partial y^i } \frac{ \partial y^i}{ \partial \lambda} = x^i \frac{ \partial f}{ \partial y^i} = x^i \frac{ \partial f}{ \partial ( \lambda x^i)} = \frac{d}{d\lambda} f(y) = \frac{d}{d\lambda} f(\lambda x) = \frac{d}{d\lambda} ( \lambda^c f(x)) = c \lambda^{c-1} f(x)
@@ -584,7 +599,25 @@ $\lambda = 1$
 
 
 
-\problemhead{8-29}
+\begin{exercise}[Lee 2e, Problem 8-29, p.~203 \cite{dgdt:JLee2012}]
+Theorem 8.46 implies that the Lie algebra of any Lie subgroup of $\mathrm{GL}(n,\mathbb{R})$ is canonically isomorphic to a subalgebra of $\mathfrak{gl}(n,\mathbb{R})$, with a similar statement for Lie subgroups of $\mathrm{GL}(n,\mathbb{C})$. Under this isomorphism, show that
+\begin{align*}
+\operatorname{Lie}\bigl(\mathrm{SL}(n,\mathbb{R})\bigr)&\cong\mathfrak{sl}(n,\mathbb{R}),\\
+\operatorname{Lie}\bigl(\mathrm{SO}(n)\bigr)&\cong\mathfrak{o}(n),\\
+\operatorname{Lie}\bigl(\mathrm{SL}(n,\mathbb{C})\bigr)&\cong\mathfrak{sl}(n,\mathbb{C}),\\
+\operatorname{Lie}\bigl(\mathrm{U}(n)\bigr)&\cong\mathfrak{u}(n),\\
+\operatorname{Lie}\bigl(\mathrm{SU}(n)\bigr)&\cong\mathfrak{su}(n),
+\end{align*}
+where
+\begin{align*}
+\mathfrak{sl}(n,\mathbb{R})&=\{A\in\mathfrak{gl}(n,\mathbb{R}):\operatorname{tr}A=0\},\\
+\mathfrak{o}(n)&=\{A\in\mathfrak{gl}(n,\mathbb{R}):A^T+A=0\},\\
+\mathfrak{sl}(n,\mathbb{C})&=\{A\in\mathfrak{gl}(n,\mathbb{C}):\operatorname{tr}A=0\},\\
+\mathfrak{u}(n)&=\{A\in\mathfrak{gl}(n,\mathbb{C}):A^*+A=0\},\\
+\mathfrak{su}(n)&=\mathfrak{u}(n)\cap\mathfrak{sl}(n,\mathbb{C}).
+\end{align*}
+\end{exercise}
+\paragraph{Solution.}
 
 \[
 \begin{aligned}

@@ -102,7 +102,11 @@ Note $\left. \frac{ \partial }{ \partial x^i } \right|_a = \left. D_{e_i} \right
 linear $X: C^{\infty}M  \to \mathbb{R}$ derivation at $p$ if $X(fg) = f(p) Xg + g(p) Xf$.  $\forall\, f,g \in C^{\infty}M$  \\
 tangent space $T_pM = $ set of all derivations of $C^{\infty}M$
 
-\exercisehead{3.1} Lemma 3.4
+\begin{exercise}[Lee 2e, Exercise 3.5, p.~54 \cite{dgdt:JLee2012}]
+Prove Lemma 3.4.
+\end{exercise}
+\noindent\emph{Note.} Numbered Exercise~3.1 in the first edition. Lemma~3.4: for $v\in T_pM$ and $f,g\in C^\infty(M)$, (a) if $f$ is constant then $vf=0$; (b) if $f(p)=g(p)=0$ then $v(fg)=0$.
+\paragraph{Solution.} Lemma 3.4
 \begin{enumerate}
 \item[(a)] $f$ const. So let $f=0$.  
 \[
@@ -138,7 +142,11 @@ gf_* = g_* f_*:T_pM \to T_{gf(p)}P
 \end{enumerate}
 \end{lemma}
 
-\exercisehead{3.2} 
+\begin{exercise}[Lee 2e, Exercise 3.7, p.~56 \cite{dgdt:JLee2012}]
+Prove Proposition 3.6.
+\end{exercise}
+\noindent\emph{Note.} Numbered Exercise~3.2 in the first edition. Proposition~3.6 (Properties of Differentials): $dF_p$ is linear; $d(G\circ F)_p=dG_{F(p)}\circ dF_p$; $d(\mathrm{Id}_M)_p=\mathrm{Id}_{T_pM}$; if $F$ is a diffeomorphism, $dF_p$ is an isomorphism with $(dF_p)^{-1}=d(F^{-1})_{F(p)}$.
+\paragraph{Solution.} 
 \begin{enumerate}
 \item[(a)]
 \item[(b)]$\begin{aligned} & \quad \\ 
@@ -244,7 +252,11 @@ In particular, this means that any tangent vector $X \in T_pM$ can be unambiguou
 
 \begin{proposition}[3.7] open submanifold $U \subset M$, inclusion $i: U \hookrightarrow M$.  $\forall \, p \in U$, $i_* : T_pU \to T_p M$ isomorphism. \end{proposition}
 
-\exercisehead{3.3} If $F: M \to N$ local diffeomorphism, 
+\begin{exercise}[Lee 2e, Proposition 3.6(d), p.~55 \cite{dgdt:JLee2012}]
+If $F$ is a diffeomorphism, then $dF_p\colon T_pM\to T_{F(p)}N$ is an isomorphism, and $(dF_p)^{-1}=d(F^{-1})_{F(p)}$.
+\end{exercise}
+\noindent\emph{Note.} First-edition Exercise~3.3 (local diffeomorphisms). In the second edition it follows from this part of Proposition~3.6, applied to $F|_U$, together with Proposition~3.9 (the tangent space to an open submanifold).
+\paragraph{Solution.} If $F: M \to N$ local diffeomorphism, 
 
 $\forall \, p \in M$, $\exists \, $ open $U \ni p$ s.t. $F(U)$ open in $N$ and $\left. F\right|_U : U \to F(U)$ diffeomorphism.  
 
@@ -499,7 +511,10 @@ This space is isomorphic to the tangent space as we've defined it (Prob. 3-7).
 
 \subsection*{Problems}
 
-\problemhead{3-1} $M$ connected.  \\
+\begin{exercise}[Lee 2e, Problem 3-1, p.~75 \cite{dgdt:JLee2012}]
+Suppose $M$ and $N$ are smooth manifolds with or without boundary, and $F\colon M\to N$ is a smooth map. Show that $dF_p\colon T_pM\to T_{F(p)}N$ is the zero map for each $p\in M$ if and only if $F$ is constant on each component of $M$.
+\end{exercise}
+\paragraph{Solution.} $M$ connected.  \\
 $X \in T_pM$
 \[
 F_*X(fg) = X((fg)F) = X((fF)(gF)) = f(F(p)) X(gF) + g(F(p))X(fF) = 0 
@@ -507,7 +522,11 @@ F_*X(fg) = X((fg)F) = X((fF)(gF)) = f(F(p)) X(gF) + g(F(p))X(fF) = 0
 
 Let $g= f \in C^{\infty}M$.  $f(F(p))X(fF) = 0$ $X(fF) =0$.  $fF$ const. by properties of tangent vector $X$.  $f$ arbitrary, so $F$ const.  
 
-\problemhead{3-3} $M^m$ diffeomorphic to $N^n$ by $F$.  \\
+\begin{exercise}[Lee 2e, Theorem 2.17, p.~39 \cite{dgdt:JLee2012}]
+\textbf{(Diffeomorphism Invariance of Dimension).} A nonempty smooth manifold of dimension $m$ cannot be diffeomorphic to an $n$-dimensional smooth manifold unless $m=n$.
+\end{exercise}
+\noindent\emph{Note.} First-edition Problem~3-3. Second-edition Problem~3-3 is a different problem ($T(M\times N)\approx TM\times TN$).
+\paragraph{Solution.} $M^m$ diffeomorphic to $N^n$ by $F$.  \\
 $T_pM$ isomorphic to $T_{F(p)}N$.  Then $\text{dim}{ (T_pM)} = \text{dim}{ (T_{F(p)}N)}$  $m=n$  \\
 cf. Tu, Corollary 8.8.  Indeed for $\begin{aligned} & \quad \\ 
   & (U,\varphi), \, U \ni p \\ 
@@ -517,7 +536,10 @@ cf. Tu, Corollary 8.8.  Indeed for $\begin{aligned} & \quad \\
 
 
 cf. wj32 has some good solutions specifically for Lee (2012) \url{http://wj32.org/wp/wp-content/uploads/2012/12/Introduction-to-Smooth-Manifolds.pdf}
-\problemhead{3-4} 
+\begin{exercise}[Lee 2e, Problem 3-4, p.~75 \cite{dgdt:JLee2012}]
+Show that $T\mathbb{S}^1$ is diffeomorphic to $\mathbb{S}^1\times\mathbb{R}$.
+\end{exercise}
+\paragraph{Solution.} 
 
 Adapted from wj32 \url{http://wj32.org/wp/wp-content/uploads/2012/12/Introduction-to-Smooth-Manifolds.pdf}
 
