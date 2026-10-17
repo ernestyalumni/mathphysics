@@ -48,26 +48,48 @@ $\widehat{\boldsymbol\omega}=\omega^jE_j$ (Eq.~\eqref{quat:hat}), the map
 $\Sigma(\mathbf x)=x^k\sigma_k$ to traceless Hermitian matrices
 (Eq.~\eqref{quat:Sigma}), and the homomorphism
 $\Phi\colon SU(2)\to SO(3)$ (Eq.~\eqref{quat:Phi}). The table lists
-Frankel's symbol for each object beside ours. Holm's symbols are given in
-the text where they occur.
+Frankel's and Kosmann-Schwarzbach's symbols for each object beside ours;
+page numbers for Kosmann-Schwarzbach are those of the 2010 Universitext
+edition, Chapter~5 unless stated. Holm's symbols are given in the text
+where they occur.
 \begin{center}
 \small
-\begin{tabular}{lll}
- object & Frankel \cite{TFrankel2012} & ours\\\hline
- Lie algebra of $G$ & $\mathfrak g$ & $\mathfrak g$\\
- Lie algebra of $SU(2)$ & $\mathfrak g$ & $\mathfrak{su}(2)$\\
- traceless Hermitian $2\times2$ & $i\mathfrak g$ & $i\,\mathfrak{su}(2)$\\
- $\mathbb R^3\to i\,\mathfrak{su}(2)$ & $\mathbf x\mapsto\mathbf x_*$ &
-   $\mathbf x\mapsto\Sigma(\mathbf x)$\\
+\begin{tabular}{llll}
+ object & Frankel \cite{TFrankel2012} &
+   Kosmann-Schwarzbach \cite{dgdt:YKosmann-Schwarzbach2010} & ours\\\hline
+ Lie algebra of $G$ & $\mathfrak g$ & $\mathfrak g$ & $\mathfrak g$\\
+ Lie algebra of $SU(2)$ & $\mathfrak g$ & $\mathfrak{su}(2)$ &
+   $\mathfrak{su}(2)$\\
+ traceless Hermitian $2\times2$ & $i\mathfrak g$ & $i\,\mathfrak{su}(2)$ &
+   $i\,\mathfrak{su}(2)$\\
+ basis of $\mathfrak{su}(2)$ with $\mathfrak{so}(3)$ brackets &
+   $\sigma_a/2i$ & $\xi_k$ (p.~71) & $\xi_k$\\
+ quaternion units in $\mathfrak{su}(2)$ & $\sigma_a/i$ &
+   $\mathcal I,\mathcal J,\mathcal K=2\xi_k$ (p.~72) & $e_a=-i\sigma_a$\\
+ basis of $\mathfrak{so}(3)$ & $E_a$ & $\eta_k$ (p.~73) & $E_k$\\
+ cross product & $\times$ & $\wedge$ & $\times$\\
  generator of rotations & $\mathbf E\bullet\boldsymbol\omega$ &
-   $\widehat{\boldsymbol\omega}$\\
- conjugation $h\mapsto ghg^{-1}$ & --- & $\mathcal C_g$\\
- action on $\mathfrak g$ & $\mathrm{Ad}(g)$ & $\mathrm{Ad}_g$\\
- $SU(2)\to SO(3)$ & $\mathrm{Ad}$ & $\Phi$\\
- derivative at $I$ & $\mathrm{Ad}_*$ & $d\Phi$\\
- ``corresponds under $_*$'' & $\sim$ & an equation in $\Sigma$
+   $M_a$, $M_ax=a\wedge x$ (p.~75) & $\widehat{\boldsymbol\omega}$\\
+ $\mathbb R^3\to i\,\mathfrak{su}(2)$ & $\mathbf x\mapsto\mathbf x_*$ &
+   --- & $\mathbf x\mapsto\Sigma(\mathbf x)$\\
+ $\mathbb R^3\to\mathfrak{su}(2)$ & --- &
+   $a\mapsto X_a=a^1\mathcal I+a^2\mathcal J+a^3\mathcal K$ (p.~77) &
+   $\mathbf x\mapsto-i\Sigma(\mathbf x)$\\
+ conjugation $h\mapsto ghg^{-1}$ & --- & $\mathcal C_g$ (Ch.~4, p.~64) &
+   $\mathcal C_g$\\
+ action on $\mathfrak g$ & $\mathrm{Ad}(g)$ & $\mathrm{Ad}_g$ (Ch.~4, p.~65) &
+   $\mathrm{Ad}_g$\\
+ $SU(2)\to SO(3)$ & $\mathrm{Ad}$ & $\varphi$ (p.~77) & $\Phi$\\
+ derivative at $I$ & $\mathrm{Ad}_*$ & $\mathrm{ad}$ (p.~78) & $d\Phi$\\
+ rotation by $\theta$ about $\mathbf n$ & $R(\theta)$ (19.4) &
+   $\mathrm{Rot}(n,\theta)$ (p.~74) & $R_{\mathbf n}(\theta)$\\
+ ``corresponds under $_*$'' & $\sim$ & --- & an equation in $\Sigma$
 \end{tabular}
 \end{center}
+Kosmann-Schwarzbach's $\varphi$ is not literally our $\Phi$: her
+$\mathcal J=-i\sigma_2$ but $\mathcal I=+i\sigma_1$ and $\mathcal K=+i\sigma_3$,
+and \S\ref{quat:sec:KS-phi} shows $\varphi(g)=\Phi(ugu^{-1})$ for a fixed
+$u\in SU(2)$.
 Frankel uses $\mathrm{Ad}$ both for the action on matrices and for the
 resulting $3\times3$ matrix, and writes $\sim$ between a vector and the
 matrix it corresponds to. We keep the two apart: $\mathrm{Ad}_u$ acts on
@@ -510,6 +532,104 @@ automorphism of $\mathfrak{so}(3)$ is $\mathrm{Ad}(R)$ for a rotation $R$.
 Kosmann-Schwarzbach's and Frankel's identifications of $\mathfrak{su}(2)$
 with $\mathfrak{so}(3)$ differ by the rotation
 $\operatorname{diag}(-1,1,-1)=\mathrm{Ad}(j)$.
+
+\subsection{Kosmann-Schwarzbach's covering map \texorpdfstring{$\varphi$}{phi}}\label{quat:sec:KS-phi}
+Kosmann-Schwarzbach builds her covering map from the same sign choice. Her
+quaternion basis of $\mathfrak{su}(2)$ is
+\cite[Ch.~5 \S1.1(d), p.~72]{dgdt:YKosmann-Schwarzbach2010}
+\begin{equation}\label{quat:KS-IJK}
+ \mathcal I=2\xi_1=i\sigma_1,\qquad
+ \mathcal J=2\xi_2=-i\sigma_2,\qquad
+ \mathcal K=2\xi_3=i\sigma_3,
+\end{equation}
+with $\mathcal I^2=\mathcal J^2=\mathcal K^2=-I$, $\mathcal I\mathcal J=\mathcal K$,
+$\mathcal J\mathcal K=\mathcal I$, $\mathcal K\mathcal I=\mathcal J$, and she
+identifies the quaternion units $i,j,k$ with $\mathcal I,\mathcal J,\mathcal K$
+(p.~73). Under Eq.~\eqref{quat:dictionary} these are
+$(-e_1,e_2,-e_3)=(je_1j^{-1},\,je_2j^{-1},\,je_3j^{-1})$; for instance
+$je_1j^{-1}=-je_1j=-(-e_3)j=e_3e_2=-e_1$. So her units are ours conjugated
+by $j$, again Hamilton's order since conjugation is an algebra
+automorphism.
+
+She identifies $\mathbb R^3$ with $\mathfrak{su}(2)$ by
+$a\mapsto X_a=a^1\mathcal I+a^2\mathcal J+a^3\mathcal K$ (\S2.2, p.~77), and
+$\det X_a=\|a\|^2$ (her Eq.~(1.1), p.~73). Put
+$D=\operatorname{diag}(-1,1,-1)$. By Eq.~\eqref{quat:KS-IJK},
+\begin{equation}\label{quat:KS-Xa}
+ X_a=i a^1\sigma_1-i a^2\sigma_2+i a^3\sigma_3
+ =-i\bigl((-a^1)\sigma_1+a^2\sigma_2+(-a^3)\sigma_3\bigr)
+ =-i\Sigma(Da).
+\end{equation}
+Her map $\varphi\colon SU(2)\to GL(3,\mathbb R)$ sends $g$ to the matrix of
+$\mathrm{Ad}_g$ in the basis $(\mathcal I,\mathcal J,\mathcal K)$
+(\S2.3, pp.~77--78), that is, $\mathrm{Ad}_gX_a=X_{\varphi(g)a}$. Compute the
+left side with Eq.~\eqref{quat:Phi}, $g\Sigma(\mathbf x)g^{-1}=\Sigma(\Phi(g)\mathbf x)$,
+and $D^2=I$:
+\begin{equation}
+ \mathrm{Ad}_gX_a=-i\,g\Sigma(Da)g^{-1}=-i\Sigma\bigl(\Phi(g)Da\bigr)
+ =-i\Sigma\bigl(D\,(D\Phi(g)D)\,a\bigr)=X_{D\Phi(g)Da}.
+\end{equation}
+Since $a\mapsto X_a$ is a bijection, $\varphi(g)=D\Phi(g)D^{-1}$. By
+Eq.~\eqref{quat:conjugate-by-j}, $u=-i\sigma_2$ satisfies
+$u\Sigma(\mathbf e_1)u^{-1}=\Sigma(-\mathbf e_1)$,
+$u\Sigma(\mathbf e_2)u^{-1}=\Sigma(\mathbf e_2)$,
+$u\Sigma(\mathbf e_3)u^{-1}=\Sigma(-\mathbf e_3)$, so $\Phi(u)=D$. Because
+$\Phi$ is a homomorphism,
+\begin{equation}\label{quat:KS-phi}
+ \varphi(g)=\Phi(u)\Phi(g)\Phi(u)^{-1}=\Phi(ugu^{-1}),\qquad
+ \varphi=\Phi\circ\mathcal C_u,\qquad u=-i\sigma_2 .
+\end{equation}
+Thus $\varphi$ is $\Phi$ preceded by an automorphism of $SU(2)$, and
+everything proved for $\Phi$ transfers. $\varphi$ is onto $SO(3)$ because
+$\mathcal C_u$ is onto $SU(2)$. Also $\varphi(g)=I$ if and only if
+$ugu^{-1}\in\ker\Phi=\{\pm I\}$, if and only if $g=\pm I$, which is her
+$\operatorname{Ker}\varphi=\{I,-I\}$ (p.~78). She concludes that $SU(2)$
+is the double-sheeted universal cover of $SO(3)$ (Proposition~2.6, p.~78).
+
+\emph{Her half angle.} Kosmann-Schwarzbach writes $\mathrm{Rot}(a,t)$ for
+the rotation through $t$ about the unit vector $a$,
+$\mathrm{Rot}(a,t)x=x+(1-\cos t)\,a\wedge(a\wedge x)+\sin t\,a\wedge x$
+(her Eq.~(2.1), p.~74). This is our $R_{\mathbf n}(\theta)$: expanding
+$a\wedge(a\wedge x)=(a\cdot x)a-x$ and writing $x=(a\cdot x)a+x_\perp$
+gives Eq.~\eqref{quat:rotate-about-n}.
+Her Proposition~2.5(iii) (p.~78) states
+\begin{equation}\label{quat:KS-half-angle}
+ \varphi\bigl(\exp(tX_a)\bigr)=\mathrm{Rot}(a,2t)\qquad(\|a\|=1).
+\end{equation}
+Check it against Eq.~\eqref{quat:two-preimages}. By her Proposition~2.4
+(p.~77), $\exp(tX)=\cos t\,I+\sin t\,X$ when $X\in\mathfrak{su}(2)$ and
+$\det X=1$. With Eq.~\eqref{quat:KS-Xa},
+$\exp(tX_a)=\cos t\,I-i\sin t\,\Sigma(Da)$, which is
+Eq.~\eqref{quat:two-preimages} with $\theta=2t$ and $\mathbf n=Da$. So
+$\Phi(\exp(tX_a))=R_{Da}(2t)$, and by Eq.~\eqref{quat:KS-phi}
+\begin{equation}
+ \varphi\bigl(\exp(tX_a)\bigr)=D\,R_{Da}(2t)\,D^{-1}=R_{D^2a}(2t)=R_a(2t),
+\end{equation}
+using $gR_{\mathbf n}(\theta)g^{-1}=R_{g\mathbf n}(\theta)$ for
+$g\in SO(3)$ (her Eq.~(2.2), p.~75; $g$ preserves the cross product, so
+$gR_{\mathbf n}(\theta)g^{-1}$ fixes $g\mathbf n$ and turns the plane
+perpendicular to it through $\theta$ in the same sense). Her parameter $t$
+is our half angle $\theta/2$.
+
+\emph{Why her signs.} Her Proposition~2.5(i) (p.~78) says the matrix of
+$\mathrm{ad}_{\xi_k}$ in the basis $(\xi_1,\xi_2,\xi_3)$ is $\eta_k$, and
+her $\eta_k$ (\S1.2, p.~73) are the matrices $E_k$ of
+Eq.~\eqref{quat:Ei-entries}. So $d\varphi(\xi_k)=E_k$ with no signs, and
+her Lie algebra isomorphism $\xi_k\mapsto\eta_k$ (p.~73) is exactly
+$d\varphi$. For $\Phi$ the same basis gives
+$d\Phi(\xi_k)=(-E_1,E_2,-E_3)$ (\S\ref{quat:sec:covering}); differentiating
+$\varphi=D\Phi D^{-1}$ gives $d\varphi(\xi_k)=D\,d\Phi(\xi_k)D^{-1}$, and
+$DE_1D^{-1}=\widehat{D\mathbf e_1}=-E_1$, $DE_2D^{-1}=E_2$,
+$DE_3D^{-1}=-E_3$ by $R\widehat{\mathbf v}R^{-1}=\widehat{R\mathbf v}$,
+which cancels the signs. Frankel's choice makes $F_a\mapsto E_a$ equal to
+$d\Phi$; Kosmann-Schwarzbach's makes $\xi_k\mapsto\eta_k$ equal to
+$d\varphi$. Each author chose the $\mathbb R^3$ identification that makes
+their own basis map to $E_k$.
+
+\emph{Isomorphism theorem.} Kosmann-Schwarzbach states only that a kernel
+is a normal subgroup and that $p\colon G\to G/H$ is a morphism (Ch.~1,
+p.~2). The isomorphism $SU(2)/\{\pm I\}\cong SO(3)$ is
+Theorem~\ref{quat:thm:first-iso} applied to $\varphi$ or $\Phi$.
 
 \section{The quaternion basis in Frankel and in Holm}
 Frankel \cite{TFrankel2012} works with the Pauli matrices
