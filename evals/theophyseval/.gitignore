@@ -1,0 +1,9 @@
+# Answer-bearing and generated files stay local: TheoPhysEval keeps its answer keys off the
+# public web (gated dataset) to avoid training-data contamination, and this repo is public.
+problems.jsonl
+references.local.json
+RESULTS.local.md
+results/
+runs/
+out/
+__pycache__/

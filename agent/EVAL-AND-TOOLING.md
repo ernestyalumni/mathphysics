@@ -126,6 +126,14 @@ Aggregate scores per eval run:
 - **Ground truth:** exists in the Srednicki solutions (or already-verified `.tex` in this repo).
 - **Problem count target:** 20, drawn from chapters currently covered in `amplitudes/`.
 
+### EVAL-006 — `theophyseval` (external benchmark, harness built 2026-10-17)
+
+- **Source:** TheoPhysEval, arXiv:2610.16733. 50 unpublished research-level problems in 11 themes, numeric answers; official prompts and keys in the gated HF dataset `RameshChandra1/TheoPhysEval`.
+- **Directory:** `evals/theophyseval/` (README there). Includes `harness.py` (`claude -p` realistic/isolated tracks with a per-problem `--max-budget-usd` cap, or an OpenAI-compatible endpoint; dry run unless `--execute`), `verifier.py` (numeric, judge-free, with `confident_wrong`), and `extract_problems.py`.
+- **References:** self-computed and cross-checked for 4 problems: three maple-leaf problems and theta-logistic. They are kept in untracked `references.local.json` because the benchmark keeps answers off the public web. Not official until compared with the HF keys.
+- **Paper baseline:** Opus 5.5 + Claude Code 46/50 (realistic and isolated); GPT-6-Astra + Codex 49/50 realistic.
+- **Lesson adopted:** grade numbers, not symbols. Fixing every parameter removes the LLM judge.
+
 ## Harness
 
 `harnesses/` (to be created) holds:
