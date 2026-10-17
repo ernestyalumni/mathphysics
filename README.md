@@ -21,6 +21,18 @@ See its [corpus](Rust/qft-symbolics/corpus.json) and
 [TheoPhysEval research-workflow lessons](agent/research/2026-10-16-theophyseval.md)
 explain the verifier-first approach and the paper's limits.
 
+## Frankel Lie groups — Rust and C++
+
+[Scalar-generic Rust](Rust/lie-groups/README.md) and
+[matching C++20](CppMath/LieGroups/README.md) implement numerical and exact symbolic
+SO(3), so(3), SU(2), su(2), epsilon/cross products, exponentials, Pauli bases and
+the double cover. Rust supports f32/f64 and software binary16; C++ supports
+float/double/long double. Exact symbolic charts and polynomial Lie identities
+are cross-checked with live SymPy, SageMath and Cadabra.
+See the [source audit](Rust/lie-groups/docs/SOURCE-AUDIT.md) and
+[verification contract](Rust/lie-groups/docs/VERIFICATION.md).
+These are independently authored known-result tools, not complete CAS ports.
+
 # Creating and starting a virtual environment for Python 3
 
 Create a directory for a virtual environment:

@@ -53,6 +53,19 @@ See `RESEARCH-AGENDA.md`, `DISCOVERY-LOOPS.md`, `EVAL-AND-TOOLING.md`, `MARKETIN
 
 ## Status / Open Threads
 
+- **2026-10-17:** New Frankel tooling on feat/lie-groups-so3-su2:
+  Rust/lie-groups and CppMath/LieGroups implement numerical/symbolic SO3/so3,
+  SU2/su2. Compile-time scalars/dimensions; validated private group state;
+  f32/f64/software binary16 Rust; float/double/long double C++; exact polynomial,
+  one-angle quotient and stereographic group charts. Normalize explicitly:
+  T=-i sigma/2 maps to E; F=-i sigma maps to 2E. Opposite SU2 lifts remain distinct.
+  Joint debug/release, C++ ASan/UBSan, live CAS and negative controls passed.
+  Important review fixes: revalidate floating SO3 inverse; reset moved-from C++
+  symbolic denominators/group values to valid states.
+  Sage 10.8 generic SO(3,QQ) admitted a reflection; independently require det+1.
+  Source audit/derivations and continuation are local to Rust/lie-groups.
+  No original Propulsion code, book text, mono-notes or CAS source was changed.
+
 - **2026-10-16:** Ernest directly authorized Rust QFT migration and TheoPhysEval
   lessons. Current implementation: Rust/qft-symbolics on feat/rust-qft-verifier.
   Two bounded slices: checked exact arithmetic, spinors/Clifford, strict typed

@@ -29,6 +29,15 @@ impl Poly {
         }
         assert!(self.0.len() <= MAX_TERMS, "polynomial term budget");
     }
+    /// Conjugate coefficients only; variables are left unchanged. This equals
+    /// complex conjugation of a polynomial value only when variables are real.
+    pub fn conjugate_coefficients(&self) -> Self {
+        Self(self.0.iter().map(|(m, c)| (m.clone(), c.conj())).collect())
+    }
+    /// Variables remain formal; this does not assert that their values are real.
+    pub fn has_real_coefficients(&self) -> bool {
+        self.0.values().all(|c| c.im.is_zero())
+    }
     pub fn is_zero(&self) -> bool {
         self.0.is_empty()
     }

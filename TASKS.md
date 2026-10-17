@@ -1,12 +1,26 @@
 # Current Execution Queue — TMP / MHV Discovery Engine
 
-**Last updated:** 2026-10-16
+**Last updated:** 2026-10-17
+
+## Implemented: Frankel SO(3)/SU(2) tooling (October 17 request)
+
+- [Rust/lie-groups](Rust/lie-groups/README.md) and
+  [CppMath/LieGroups](CppMath/LieGroups/README.md): generic matrix storage,
+  distinct validated groups/algebras, f32/f64/software binary16 Rust backends,
+  exact symbolic matrices/real charts and normalization-aware exponentials.
+- Rust: 27 integration tests +4 doctests; C++: 13 named contract groups +epsilon
+  regression, debug/release/ASan+UBSan. Actual SymPy/Sage/Cadabra differential
+  checks and 25 independent numerical references; original QFT suite rerun.
+- Original matrix implementations and mono-notes kept untouched.
+  Scope, limitations and evidence: Rust/lie-groups/docs/VERIFICATION.md.
+- Optional continuation: Rust/lie-groups/CONTINUE.md. No background job running.
 
 ## Active: Rust QFT corpus (Ernest's October 16 request)
 
 - Two bounded slices implemented at [Rust/qft-symbolics](Rust/qft-symbolics/README.md):
   exact algebra, strict typed tensor/index kernel, 13 named textbook entries
-  (partial chapters), 54 integration tests plus two compile-fail doctests,
+  (partial chapters), now 55 integration tests plus two compile-fail doctests
+  (including the shared polynomial-conjugation regression),
   and 200 exact SMGA recurrence comparisons. New: formal-d 47.2, angular 50.2a,
   evaluated 50.4, and live Cadabra positive/negative tensor differential checks.
 - [Research-workflow findings](agent/research/2026-10-16-theophyseval.md) from

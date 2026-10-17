@@ -1,0 +1,180 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\SU}{\operatorname{SU}}
+\newcommand{\SO}{\operatorname{SO}}
+\newcommand{\su}{\mathfrak{su}}
+\newcommand{\so}{\mathfrak{so}}
+\begin{document}
+\title{Frankel's rotation groups: numerical and symbolic encodings}
+\author{mathphysics implementation notes}
+\date{17 October 2026}
+\maketitle
+These are known mathematical identities implemented independently in Rust
+and C++, not new results. Our source conventions follow Frankel
+\cite[pp.~492--493, Eqs.~(19.1)--(19.6)]{Frankel};
+the original PDF pages555--556 were directly checked.
+Code uses zero-based indices: its $\epsilon(0,1,2)=1$ is the book's
+$\epsilon_{123}=1$. These are Euclidean three-dimensional symbols, not the
+two-component spinor or Lorentzian four-dimensional epsilon conventions.
+
+\section{Matrices, group elements, and Lie algebra elements}
+A general matrix is an unconstrained array. By contrast,
+\begin{align*}
+\SO(3)&=\{R\in M_3(\R):R^TR=I,\ \det R=1\},\\
+\so(3)&=\{A\in M_3(\R):A^T=-A\},\\
+\SU(2)&=\{U\in M_2(\mathbb C):U^\dagger U=I,\ \det U=1\}.
+\end{align*}
+Rotation matrices are not closed under matrix addition or arbitrary entry
+mutation. Therefore our group types contain matrices rather than inherit
+general matrix mutators. Floating membership is checked at a finite stated
+tolerance; it is not an exact proof of these equations.
+
+Frankel's basis is
+\[
+ E_1=\begin{pmatrix}0&0&0\\0&0&-1\\0&1&0\end{pmatrix},\quad
+ E_2=\begin{pmatrix}0&0&1\\0&0&0\\-1&0&0\end{pmatrix},\quad
+ E_3=\begin{pmatrix}0&-1&0\\1&0&0\\0&0&0\end{pmatrix}.
+\]
+For example,
+\[
+ E_1E_2=\begin{pmatrix}0&0&0\\1&0&0\\0&0&0\end{pmatrix},\quad
+ E_2E_1=\begin{pmatrix}0&1&0\\0&0&0\\0&0&0\end{pmatrix},
+\]
+so $[E_1,E_2]=E_3$. Cyclic permutation and antisymmetry give
+\[
+ [E_2,E_3]=E_1,\qquad [E_3,E_1]=E_2,\qquad
+ [E_i,E_j]=\epsilon_{ijk}E_k .
+\]
+Every implemented basis pair, including zero and reversed brackets, is tested.
+
+\section{Epsilon, hat map, and cross product}
+The alternating symbol is the sign of a permutation and vanishes on
+repetitions. Its contraction identity is
+\[
+ \epsilon_{ijk}\epsilon_{k\ell m}
+ =\delta_{i\ell}\delta_{jm}-\delta_{im}\delta_{j\ell},
+ \qquad \epsilon_{ijk}\epsilon_{\ell jk}=2\delta_{i\ell}.
+\]
+In a general oriented coordinate frame the metric volume tensor instead has
+ordered component $\sqrt{|\det g|}$; the bare symbol is not that entire tensor.
+
+Write $\widehat v=v^iE_i$. The chosen signs give
+\[
+ \widehat v=\begin{pmatrix}0&-v_3&v_2\\v_3&0&-v_1\\-v_2&v_1&0\end{pmatrix},
+ \qquad \widehat v\,w=v\times w .
+\]
+Applying the epsilon contraction to the product gives
+\[
+ \widehat u\,\widehat v=vu^T-(u\cdot v)I,\qquad
+ [\widehat u,\widehat v]=\widehat{u\times v}.
+\]
+The epsilon identity also gives the Jacobi identity. Cadabra independently
+reduces these structure-constant contractions; it does not infer them from
+the letter $E$ without declarations.
+
+\section{Exponential and Rodrigues formula}
+Let $r^2=v\cdot v$ and $K=\widehat v$. The preceding product identity gives
+\[
+ K^2=vv^T-r^2I,\qquad K^3=-r^2K .
+\]
+Reduce each term of the matrix exponential series using this cubic relation.
+The odd powers sum to $\sin r\,K/r$; the nonconstant even powers sum to
+$(1-\cos r)K^2/r^2$. Thus
+\[
+ e^{\widehat v}=I+\frac{\sin r}{r}\widehat v+
+                 \frac{1-\cos r}{r^2}\widehat v^2.
+\]
+The coefficients have limits1 and$1/2$ at zero. For $|n|=1$,
+\[
+ e^{\theta\widehat n}
+ =I+\sin\theta\,\widehat n+(1-\cos\theta)\widehat n^2.
+\]
+Our numerical small-angle branch uses truncated coefficient series rather
+than subtract nearly equal floating numbers. The symbolic branch uses the
+exact ring $\mathbb Q[s,c]/(s^2+c^2-1)$, with normal form $a(s)+c\,b(s)$.
+It describes one common formal angle, not a general trigonometric CAS.
+
+\section{Pauli matrices and the normalization distinction}
+Frankel gives
+\[
+ \sigma_1=\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad
+ \sigma_2=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\quad
+ \sigma_3=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\]
+Direct multiplication gives
+\[
+ \sigma_i\sigma_j=\delta_{ij}I+i\epsilon_{ijk}\sigma_k,\qquad
+ [\sigma_i,\sigma_j]=2i\epsilon_{ijk}\sigma_k .
+\]
+The Pauli matrices are Hermitian and determinant$-1$, not elements of the
+real anti-Hermitian Lie algebra
+\[
+ \su(2)=\{X:X^\dagger=-X,\ \operatorname{tr}X=0\}.
+\]
+Use explicitly distinguished bases
+\[
+ T_i=\frac{\sigma_i}{2i},\quad F_i=\frac{\sigma_i}{i}=2T_i,\qquad
+ [T_i,T_j]=\epsilon_{ijk}T_k,\quad
+ [F_i,F_j]=2\epsilon_{ijk}F_k.
+\]
+Consequently, coordinates in the $T$ basis have the same cross-product
+bracket as $\so(3)$. Coordinates in the full $F$ basis require the factor two.
+The new API names these normalizations rather than relying on letter names
+used differently in older notes.
+
+Since $(n\cdot\sigma)^2=I$ for unit $n$, separate even/odd series once more:
+\[
+ \exp(\theta n^iT_i)
+ =\cos(\theta/2)I-i\sin(\theta/2)n\cdot\sigma ,
+\]
+whereas
+\[
+ \exp(\theta n^iF_i)
+ =\cos\theta I-i\sin\theta\,n\cdot\sigma .
+\]
+For $n=e_3$ the latter is exactly
+$\operatorname{diag}(e^{-i\theta},e^{i\theta})$.
+The symbolic implementation retains whether its $s,c$ mean the full or half
+angle; identical formal matrices without this metadata would be ambiguous.
+
+\section{Quaternions, double cover, and exact symbolic charts}
+For a real unit quaternion $q=(a,b)$ with $a^2+|b|^2=1$, define
+\[
+ U(q)=aI-i\,b\cdot\sigma,\qquad
+ R(q)=(a^2-|b|^2)I+2bb^T+2a\,\widehat b .
+\]
+Pauli multiplication gives
+\[
+ (a,b)(c,d)=(ac-b\cdot d,\ ad+cb+b\times d).
+\]
+Independent polynomial tests verify
+\[
+ U(qp)=U(q)U(p),\qquad R(qp)=R(q)R(p),\qquad
+ U(q)(x\cdot\sigma)U(q)^\dagger=(R(q)x)\cdot\sigma .
+\]
+For $q=(\cos(\theta/2),n\sin(\theta/2))$, $R(q)$ is the Rodrigues rotation.
+The differential sends $T_i\mapsto E_i$ and $F_i\mapsto2E_i$.
+The two lifts $q,-q$ give different SU(2) values but the same SO(3) value.
+A$2\pi$ spinor turn gives$-I$, not$I$; a$4\pi$ turn gives$I$.
+
+A useful exact symbolic parameterization is
+\[
+ q(t)=\frac{(1-|t|^2,\ 2t)}{1+|t|^2},\qquad t\in\R^3 .
+\]
+Its denominator is positive, and its unit norm follows from
+$(1-|t|^2)^2+4|t|^2=(1+|t|^2)^2$.
+This chart misses$-I$ in SU(2); its negative misses$+I$, so together they cover
+the group. One projected chart already covers SO(3), because the two omitted/
+included lifts have the same image. These are quaternion stereographic
+parameters $t=n\tan(\theta/4)$, not the usual matrix Cayley parameters.
+Polynomial coefficients are rational, while the formal parameters are real;
+rational evaluation witnesses alone do not cover every real group value.
+
+\begin{thebibliography}{1}
+\bibitem{Frankel}
+Theodore Frankel, \emph{The Geometry of Physics: An Introduction},
+3rd edition, Cambridge University Press, Secs.~19.1a--b,
+pp.~492--493 in the supplied PDF.
+\end{thebibliography}
+\end{document}

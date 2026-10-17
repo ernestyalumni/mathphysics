@@ -1,0 +1,12 @@
+[package]
+name = "lie-groups"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Scalar-generic numerical and exact symbolic SO(3)/SU(2) tools"
+
+[dependencies]
+qft-symbolics = { path = "../qft-symbolics" }
+
+[profile.release]
+overflow-checks = true

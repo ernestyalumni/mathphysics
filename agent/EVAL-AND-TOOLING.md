@@ -1,6 +1,6 @@
 # EVAL-AND-TOOLING.md — Registered Evals & Harnesses
 
-Last updated: 2026-10-16
+Last updated: 2026-10-17
 
 This file registers TMPAI's evaluation benchmarks and harnesses. Evals measure whether an LLM-driven loop is actually doing physics, not just producing plausible physics text.
 
@@ -16,6 +16,21 @@ See its corpus and verification receipt for exact domain/coverage boundaries.
 This is an **open known-result tool/corpus**, not a held-out benchmark, a model
 score, a complete Cadabra replacement, ordinary Yang–Mills derivation, or an
 unattended discovery loop. No new model API evaluation has been run.
+
+## Implemented Lie-group tool foundation — October 17
+
+[../Rust/lie-groups/README.md](../Rust/lie-groups/README.md) and matching C++20
+implement scalar-generic SO(3)/SU(2), compact-real algebra conventions, exact
+symbolic exponentials and real stereographic charts. Rust 27 integration tests
++4 doctests; C++ 13 named contract groups +epsilon regression. Joint validation
+uses actual SymPy/Sage/Cadabra and independent Taylor exponentials; the original
+QFT suite now has 55 integration tests with the added conjugation regression.
+
+This is verified known mathematics/tooling, not a new LLM benchmark or novelty
+claim. Source audit distinguishes compact real forms from split Cartan models,
+Hermitian Pauli matrices from su2 generators, and indexed epsilon from metric
+volume forms. The native Sage generic SO/QQ validator accepted a reflection;
+our verifier independently gates determinant+1 rather than trusting its name.
 
 ## Why evals matter for TMP
 
