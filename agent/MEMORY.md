@@ -28,7 +28,7 @@
 ## Conventions
 
 - **Metric:** Srednicki mostly-plus by default.
-- **Symbolic verification:** Cadabra2 first (Docker image `cadabra2-ubuntu:24.04`). SymPy / FORM as fallback.
+- **Symbolic verification:** Cadabra2 first (Docker image `cadabra2-ubuntu: 24.04`). SymPy / FORM as fallback.
 - **LaTeX:** `amplitudes/99-master.tex` is the master document. `\cite{}` requires a bibliography block.
 - **Source priority:** `.tex` > `.mmd` (nougat) > plain text.
 - **Branches:** never master. `feat/`, `fix/`, `chore/`, `experiment/` only.
@@ -52,6 +52,17 @@
 See `RESEARCH-AGENDA.md`, `DISCOVERY-LOOPS.md`, `EVAL-AND-TOOLING.md`, `MARKETING.md` for the live state.
 
 ## Status / Open Threads
+
+- **2026-10-16:** Ernest directly authorized Rust QFT migration and TheoPhysEval
+  lessons. Current implementation: Rust/qft-symbolics on feat/rust-qft-verifier.
+  Two bounded slices: checked exact arithmetic, spinors/Clifford, strict typed
+  tensor/index kernel, formal-d 47.2, evaluated 50.4, angular 50.2a, specialized
+  SMGA recurrence.54 integration tests +2 compile-fail doctests; 13 textbook
+  entries (partial chapters); 200 exact SMGA fixtures; live Cadabra differential
+  checks. No arbitrary precision, ordinary Yang–Mills amplitudes, full BCFW
+  recursion, held-out LLM eval, or background discovery loop.
+  Canonical next steps: Rust/qft-symbolics/CONTINUE.md. This supersedes the July
+  task order below for this directly requested tool-building project.
 
 - **2026-07-19:** MHV reproduction baseline is stronger than the stale April task files indicated. Focused amplitude tests pass 43/43; Script 08 passes; full suite has 62 passes and 2 unrelated failures in pre-existing uncommitted massless-spinor work.
 - The source paper proves an all-n formula. Our finite `n = 3..10` comparison is a reproducibility/product artifact, not an extension or new result.

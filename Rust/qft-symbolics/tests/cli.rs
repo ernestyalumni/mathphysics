@@ -33,6 +33,15 @@ fn actual_cli_budget_and_invalid_input_never_pass() {
     }
 }
 #[test]
+fn tensor_cases_cli_computes_twelve_verdicts() {
+    let row = cli(&["tensor-cases"]);
+    assert_eq!(row.status.code(), Some(0));
+    let output = String::from_utf8(row.stdout).unwrap();
+    assert!(output.contains("\"status\":\"PASS\""));
+    assert_eq!(output.matches("\"id\":").count(), 12);
+    assert_eq!(output.matches("\"residual_zero\":false").count(), 3);
+}
+#[test]
 fn actual_cli_json_escapes_untrusted_labels() {
     let row = cli(&["gamma-trace", "a\"\\", "b"]);
     assert_eq!(row.status.code(), Some(0));

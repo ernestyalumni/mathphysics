@@ -9,7 +9,7 @@ assumed error-free ground truth.
 ## 35.1: raise both spinor indices
 
 With epsilon^{12}=1, let
-E = [[0,1],[-1,0]]. The definition, with row index dotted, is
+E = [[0, 1],[-1, 0]]. The definition, with row index dotted, is
 
     barsigma^(mu,dota,a) = sum_(b,dotb) E[a,b] E[dota,dotb] sigma^(mu)[b,dotb].
 
@@ -56,7 +56,10 @@ four gamma*gamma5 and gamma5. Their Hilbert–Schmidt Gram matrix is diagonal
 with nonzero entries. Orthogonality proves independence; 16 independent
 elements span the 16-dimensional complex vector space of 4x4 matrices.
 
-47.2 is checked **only at d=4**. Do not infer its d=4-epsilon continuation.
+The original checks here specialize47.2 to d=4. The second slice adds the
+formal-d identities via explicit sandwich reduction and independent Cadabra:
+see [TEXTBOOK-EXTENDED.md](TEXTBOOK-EXTENDED.md). This is not a full
+dimensional-regularization/gamma5 scheme.
 
 ## 50.1: completeness and slash sandwiches
 
@@ -65,8 +68,8 @@ variables. Raising a spinor gives (phi1,-phi0).
 Srednicki's definitions give
 
     p_(a,dota)=-phi_a phi-star_dota,
-    |p] = (phi,0),       <p| = (0,phi-star),
-    |p> = (0,raised phi-star), [p| = (raised phi,0).
+    |p] = (phi, 0),       <p| = (0,phi-star),
+    |p> = (0,raised phi-star), [p| = (raised phi, 0).
 
 The sum of the two outer products is minus the off-diagonal slash matrix:
 
@@ -85,7 +88,9 @@ The same rank-one blocks show
 
     <pq>[qr]<rs>[sp] = Tr[(1-gamma5) slash(p)slash(q)slash(r)slash(s)/2],
 
-the 50.4 four-slash identity. The chiral trace is expanded symbolically.
+the50.4 four-slash identity. The chiral trace is expanded symbolically.
+Its fully evaluated scalar/epsilon expression is now independently verified;
+see [TEXTBOOK-EXTENDED.md](TEXTBOOK-EXTENDED.md).
 
 ## 50.3: Schouten
 
@@ -132,7 +137,7 @@ The generic Parke–Taylor ratio checks cyclicity and reflection by exact
 cross-multiplication, and little-group weights at exact rational witnesses.
 These checks do not derive the formula from a Lagrangian.
 
-The SMGA implementation computes the existing half-collinear (2,2)
+The SMGA implementation computes the existing half-collinear (2, 2)
 sign-function formula and its separately implemented preamplitude recurrence.
 At 200 conserved rational fixtures, n=3..10, both agree exactly.
 They also agree with both old NumPy paths within 1e-10.

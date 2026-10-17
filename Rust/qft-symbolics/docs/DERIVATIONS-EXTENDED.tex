@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\title{Further exact Srednicki checks}
+\author{TMPAI verification corpus}
+\date{16 October 2026}
+\maketitle
+These are re-derivations of known results, not original physics.
+Executable checks and provenance are in the adjacent Markdown documents
+and \texttt{../corpus.json}. Original textbook sources remain unchanged.
+
+\section*{Conventions}
+We use $\eta=\operatorname{diag}(-1,1,1,1)$,
+$\{\gamma^\mu,\gamma^\nu\}=-2\eta^{\mu\nu}$,
+$\gamma_5=i\gamma^0\gamma^1\gamma^2\gamma^3$, and
+$\epsilon^{0123}=+1$, hence $\epsilon_{0123}=-1$.
+The ordered Clifford reducer uses $h=-\eta$.
+Plain gamma-label strings never imply Einstein contraction.
+
+\section*{47.2: explicit formal-dimensional sandwich}
+For $W=\gamma^{a_1}\cdots\gamma^{a_k}$ let $W_{\widehat j}$ omit
+the $j$th factor while preserving the order of all other factors.
+Successive anticommutation, with $\gamma^\mu\gamma_\mu=-d$, gives
+\[
+ \gamma^\mu W\gamma_\mu
+ =(-1)^{k+1}d\,W+
+  2\sum_{j=1}^k(-1)^j W_{\widehat j}\gamma^{a_j}.
+\]
+In particular,
+\begin{align*}
+\gamma^\mu\gamma^\nu\gamma^\rho\gamma_\mu
+ &=4\eta^{\nu\rho}+(4-d)\gamma^\nu\gamma^\rho,\\
+\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma_\mu
+ &=2\gamma^\sigma\gamma^\rho\gamma^\nu
+   +(d-4)\gamma^\nu\gamma^\rho\gamma^\sigma .
+\end{align*}
+The symbolic reducer and live Cadabra independently give zero residuals.
+This is not a prescription for $d$-dimensional $\gamma_5$.
+
+\section*{50.4: fully evaluated chiral trace}
+Let
+\[
+ A=(p\cdot q)(r\cdot s)-(p\cdot r)(q\cdot s)
+      +(p\cdot s)(q\cdot r),\qquad
+ D=\det\begin{pmatrix}p^0&p^1&p^2&p^3\\q^0&q^1&q^2&q^3\\
+ r^0&r^1&r^2&r^3\\s^0&s^1&s^2&s^3\end{pmatrix}.
+\]
+Lowering the four contracted vector components gives
+$\epsilon^{\mu\nu\rho\sigma}p_\mu q_\nu r_\rho s_\sigma=-D$.
+Therefore
+\[
+ \operatorname{Tr}\left[
+ \frac{1-\gamma_5}{2}\not p\not q\not r\not s\right]
+ =2A+2i\epsilon^{\mu\nu\rho\sigma}p_\mu q_\nu r_\rho s_\sigma
+ =2A-2iD.
+\]
+For massless twistor momenta this is
+$\langle pq\rangle[qr]\langle rs\rangle[sp]$.
+The opposite chirality has $2A+2iD$.
+Generic symbolic-component matrix multiplication verifies both identities.
+For $p=(1,0,0,1)$, $q=(1,1,0,0)$, $r=(1,0,1,0)$,
+$s=(1,0,0,-1)$, one obtains $A=2$, $D=-2$ and left trace $4+4i$.
+
+\section*{50.2a: exact angular spinor}
+Put $s=\sin(\theta/2)$, $c=\cos(\theta/2)$,
+$x=\cos\varphi$, $y=\sin\varphi$, and $a=\sqrt{2\omega}>0$.
+Then
+\[
+ \phi=a\binom{-s(x-iy)}{c},\qquad
+ p^\mu=\frac{a^2}{2}(1,2scx,2scy,c^2-s^2).
+\]
+Using $s^2+c^2=x^2+y^2=1$,
+\[
+ -\phi\phi^\dagger
+ =a^2\begin{pmatrix}-s^2&sc(x-iy)\\sc(x+iy)&-c^2\end{pmatrix}
+ =p_\mu\sigma^\mu .
+\]
+The executable rational construction supplies $a$ directly, avoiding
+approximate square roots, and validates both unit circles.
+Forty-eight exact witnesses supplement, but do not replace, this derivation.
+Problem 50.2b's boosted-spinor limit is not yet implemented.
+\end{document}

@@ -1,7 +1,7 @@
 # tasks/ — Agent-Sized Task Board for the TMP Discovery Engine
 
 **Mission:** AI-driven discovery engine for theoretical & mathematical physics. First target
-area: MHV / single-minus gluon scattering amplitudes, benchmarked against arXiv:2602.12176v2
+area: MHV / single-minus gluon scattering amplitudes, benchmarked against arXiv: 2602.12176v2
 (SMGA). See `../TMP-MISSION.md` and `../amplitudes/DISCOVERY-PLAN.md` for the big picture.
 
 This directory breaks the mission into tasks small enough for **one agent session each**
@@ -28,7 +28,8 @@ read only that file (plus the files it points to) and produce the deliverable.
 ## October 16 update — directly authorized Rust migration
 
 Ernest requested a Rust symbolic-QFT/Python port and a source-grounded corpus.
-The first bounded slice and verification receipt are at
+Two bounded slices, including a typed-index kernel and further textbook checks,
+and the verification receipt are at
 [../Rust/qft-symbolics/README.md](../Rust/qft-symbolics/README.md).
 [CONTINUE.md](../Rust/qft-symbolics/CONTINUE.md) lists the next implementation
 units; root TASKS.md records current status. The historical "do not

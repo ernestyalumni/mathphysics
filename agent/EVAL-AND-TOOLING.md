@@ -1,8 +1,21 @@
 # EVAL-AND-TOOLING.md — Registered Evals & Harnesses
 
-Last updated: 2026-06-16
+Last updated: 2026-10-16
 
 This file registers TMPAI's evaluation benchmarks and harnesses. Evals measure whether an LLM-driven loop is actually doing physics, not just producing plausible physics text.
+
+## Implemented verifier foundation — October 16
+
+[../Rust/qft-symbolics/README.md](../Rust/qft-symbolics/README.md) now provides
+exact Q(i) polynomial/Clifford/spinor tools, a strict bounded typed tensor
+kernel, 13 selected textbook entries, 54 integration tests plus two compile-fail
+doctests, and 200 exact specialized SMGA fixtures. Twelve positive/negative
+tensor residuals and formal-d gamma identities agree with live Cadabra.
+See its corpus and verification receipt for exact domain/coverage boundaries.
+
+This is an **open known-result tool/corpus**, not a held-out benchmark, a model
+score, a complete Cadabra replacement, ordinary Yang–Mills derivation, or an
+unattended discovery loop. No new model API evaluation has been run.
 
 ## Why evals matter for TMP
 

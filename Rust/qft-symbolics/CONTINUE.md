@@ -1,50 +1,62 @@
 # Continue the Rust QFT corpus
 
-Branch: `feat/rust-qft-verifier`. Start by reading README.md, corpus.json,
-docs/MIGRATION.md, docs/DERIVATIONS.md, docs/VERIFICATION.md and the paper
-lessons at ../../agent/research/2026-10-16-theophyseval.md.
+Branch: feat/rust-qft-verifier. Read root AGENTS.md, this crate's README.md,
+corpus.json, docs/{MIGRATION,DERIVATIONS,TENSOR,TEXTBOOK-EXTENDED,VERIFICATION}.md,
+and ../../agent/research/2026-10-16-theophyseval.md.
 
 ## Current stopping boundary
 
-The first bounded implementation slice is complete and tested, not the
-user's whole long-term request. It provides actual exact algebra, selected
-Srednicki checks and an exact port of the existing specialized SMGA routines.
-No background autonomous job was installed or left running.
+Two bounded implementation slices are complete, not the user's entire project.
+Current suite: 54 integration tests plus two compile-fail doctests; 13 named
+textbook entries (partial chapter coverage); 200 exact SMGA fixtures.
+No autonomous background job was installed or left running.
 
-## Next implementation units, in order
+Second slice implements:
+- Strict Lorentz/dotted/undotted indices and variance; validated free signatures
+  and typed zeros; hygienic local dummy binders and multiplication.
+- Independent bounded exhaustive commuting-factor/signed-symmetry orbits,
+  including Lorentz dummy variance orientation and sign-stabilizer zeros.
+- Constant symmetric Lorentz metric and typed delta contractions; formal d.
+- Twelve positive/negative tensor residuals agreeing with live Cadabra.
+- Formal-d47.2 via a derived explicit Clifford sandwich operation, independently
+  checked by Cadabra and 498 finite matrix component assignments.
+- Fully evaluated 50.4 chiral trace, scalar invariants and epsilon orientation.
+- Validated rational angular 50.2a constructor, general derivation and 48 exact
+  witnesses; invalid-angle and direct spinor-phase controls.
 
-1. **Typed-index kernel:** separate Lorentz/dotted/undotted spaces, variance,
-   validated free/dummy signatures, constant metric/delta contractions.
-   Reject triple occurrences and free-index mismatch. Start with bounded,
-   independently implemented symmetry-orbit enumeration; do not pretend
-   alphabetical names implement Cadabra/xPerm.
-   Positive/negative Cadabra differential checks before extending the corpus.
-2. **Coefficient/resource layer:** arbitrary-precision rationals and structured
-   budget errors. Obtain any needed new dependencies under local policy.
-   Current checked i128 arithmetic is deliberately finite-range.
-3. **Finish the selected textbook base:** formal d in 47.2 only after index
-   semantics; 50.2, evaluated 50.4; 60.2b–60.4 with explicit conservation.
-   Preserve original problem IDs and statement/hint text where legible.
-   Consult source PDF for malformed transcriptions before adopting formulas.
-4. **Nonabelian/QCD branch:** 69/70/71/72, then 79/80/81, following the
-   prerequisite subgraph. Color traces and antisymmetric structure constants,
-   derive and verify 3-/4-gluon vertices.
-5. **Independent amplitudes:** ordinary complexified/Lorentzian Yang–Mills
-   BG or explicit diagrams at four/five points versus the Parke–Taylor ratio;
-   then full BCFW amplitude recursion. The existing BCFW function is only a
-   kinematic shift, and the SMGA BG port is a different recurrence.
-6. Only then propose bounded generalizations. Human still owns scientific
-   relevance; exact verifier, fresh-point tests and literature audit precede
-   any originality claim.
+Read-only review corrections are recorded in docs/VERIFICATION.md.
+
+## Next implementation units
+
+1. **Coefficient/resource layer:** arbitrary-precision rational coefficients
+   and uniformly structured arithmetic errors. No dependency downloads or
+   system installation have been approved/performed. Current checked i128
+   coefficients and legacy Clifford operations can panic on exhaustion;
+   tensor validation/orbit errors already return Result.
+2. **Remaining selected textbook base:**50.2b's explicit boosted-spinor
+   massless limit; 60.2b–60.4 with explicit conservation. Preserve problem IDs,
+   statements and hints; consult source PDF for malformed transcriptions.
+3. **Nonabelian/QCD branch:**69/70/71/72 then 79/80/81, following the corpus
+   prerequisite subgraph. Derive color traces/Jacobi and 3-/4-gluon vertices.
+   Extend tensor facilities only as required; current factors all commute.
+4. **Independent amplitudes:** ordinary complexified/Lorentzian Yang–Mills BG
+   or explicit diagrams at4/5 points against Parke–Taylor, including Ward
+   identities and all normalization conventions; only then BCFW recursion.
+   Existing BCFW is a kinematic shift; SMGA BG is a different recurrence.
+5. **Tensor followups:** scalable signed group algorithms; explicit spinor
+   epsilon raising/lowering; multi-term identities; noncommuting statistics
+   and derivative/dependency semantics. Do not imply these already exist.
+6. Only then propose bounded generalizations. Human owns scientific relevance;
+   fresh verification, literature audit and held-out tests precede novelty.
 
 ## Guardrails
 
-- Read root AGENTS.md; inspect PDD ownership again if adding a managed project.
-- Never stage existing mono-notes PDF/build-output changes.
-- All build/output logs go to external cache; never commit target/, Python
-  caches, LaTeX intermediates or generated per-run JSON.
-- Keep negative controls, poles, invalid inputs and resource exhaustion
-  first-class. Library process failure is not verified.
-- Do not silently turn wall/domain errors into skipped-success examples.
-- MIT crate code was independently authored. A future translation of Cadabra's
-  GPL C++ requires a separate licensing decision, not merely Rust syntax.
+- Reinspect PDD ownership when introducing a managed project.
+- Never stage existing mono-notes PDFs/build outputs.
+- Keep all build products, generated logs/JSON and Python caches outside git.
+- Preserve negative controls and all designated SMGA fixtures; domain/budget
+  errors are not skipped-success points. A failed process is not verified.
+- Clifford label strings still do not imply tensor summation. Formal-d gamma
+  sandwich is an explicit operation, not generic gamma/tensor contraction.
+- MIT crate algebra is independently authored. Translating GPL Cadabra C++
+  would require a separate licensing decision, not merely Rust syntax.

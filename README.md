@@ -13,7 +13,9 @@
 
 The [exact Rust QFT kernel](Rust/qft-symbolics/README.md) starts the
 Cadabra-inspired symbolic/Python migration: spinors, Clifford algebra,
-selected Srednicki problems, and exact half-collinear SMGA recurrence checks.
+a strict bounded typed-index kernel, selected Srednicki problems (including
+formal-d gamma identities and evaluated chiral traces), and exact
+half-collinear SMGA recurrence checks.
 See its [corpus](Rust/qft-symbolics/corpus.json) and
 [verification scope](Rust/qft-symbolics/docs/VERIFICATION.md).
 [TheoPhysEval research-workflow lessons](agent/research/2026-10-16-theophyseval.md)

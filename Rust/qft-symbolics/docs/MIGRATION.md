@@ -10,7 +10,7 @@ Paths below are relative to
 
 ### Display is not symbolic verification
 
-- `ch50_massless_spinor_helicity.py:84–88`: constructs and displays Schouten
+- `ch50_massless_spinor_helicity.py: 84–88`: constructs and displays Schouten
   in Cadabra, but never transforms a residual to zero. There are no numerical
   assertions in this file.
 - Same file, lines 139–143: prints Ward success and comments that choosing
@@ -21,7 +21,7 @@ Paths below are relative to
   but most failures only print a mismatch. Only epsilon normalization is
   asserted. Its line 646 trace summary has the wrong sign compared with
   its own implemented -2g check at lines 296–316.
-- `ch41_gamma_technology.py:46,63,90`: defines mostly-plus eta and gamma
+- `ch41_gamma_technology.py: 46, 63, 90`: defines mostly-plus eta and gamma
   matrices satisfying {gamma,gamma}=-2eta, then compares against +2eta.
   Lines 134–147 use the corresponding wrong two-gamma trace sign. These are
   nonfatal diagnostics, not enforced acceptance checks.
@@ -46,7 +46,7 @@ Observed command (read-only source mount; Docker network disabled):
 ```bash
 docker run --rm --network none \
   -v "$PWD/amplitudes/Srednicki/individual_chapters:/chapters:ro" \
-  cadabra2-ubuntu:24.04 python3 /chapters/ch60_spinor_helicity.py
+  cadabra2-ubuntu: 24.04 python3 /chapters/ch60_spinor_helicity.py
 ```
 
 **Observed exit 1:** `AssertionError: q/ |q⟩ ≠ 0!`.
@@ -70,7 +70,8 @@ Do not inherit the final "ALL VERIFIED" summary.
 | MHVamplitudes/kinematics/spinor_helicity.py brackets | smga::bracket | Explicit preserved sign, no copied explanatory claims |
 | MHVamplitudes/amplitudes/smga.py | smga::formula_r1 | Rational/conserved R1 domain checked |
 | MHVamplitudes/amplitudes/berends_giele.py | smga::recursion | Interval dynamic programming, not line-by-line translation |
-| Generic massless momentum constructors / Lorentz package | — | Not ported |
+| Angular massless spinor constructor | twistor::from_rational_angles | Validated exact rational parameterization, 48 witnesses; not full Lorentz-package parity |
+| Typed index/property core | tensor | Independently implemented bounded symmetry orbit, metric/delta contractions and hygienic dummies |
 | Ordinary QCD vertices / BG / BCFW amplitude recursion | — | Not ported |
 
 The old package's SMGA docstrings incorrectly cite chapter 60 as containing
@@ -95,5 +96,8 @@ variance, index spaces and derivative dependencies—not parsing LaTeX.
 Sorting symbols alphabetically would not reproduce that machinery.
 
 This crate starts with the narrower algebra needed for spinor-helicity and
-small gamma calculations. No generic tensor equivalence, arbitrary Fierz,
-Majorana flip rule or dimensional-regularization result is claimed.
+small gamma calculations. The second slice adds the independent bounded typed
+tensor kernel and specialized formal-d gamma sandwich identities. See
+[TENSOR.md](TENSOR.md) and [TEXTBOOK-EXTENDED.md](TEXTBOOK-EXTENDED.md).
+No general tensor equivalence, arbitrary Fierz, Majorana flip rule or full
+dimensional-regularization scheme is claimed; no Cadabra source was translated.

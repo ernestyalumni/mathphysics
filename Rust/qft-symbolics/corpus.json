@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "created": "2026-10-16",
   "description": "Known textbook reproduction corpus; not a held-out AI benchmark or chapter completion ledger.",
   "conventions": {
@@ -14,7 +14,10 @@
     "epsilon_lower_12": -1,
     "polynomial_field": "Q(i) with checked i128 range",
     "polarization_api": "sqrt(2) epsilon",
-    "implicit_einstein_contraction": false
+    "implicit_einstein_contraction": false,
+    "tensor_contraction": "Validated repeated opposite-variance indices only; raw Clifford labels never imply sums",
+    "epsilon_upper_0123": 1,
+    "epsilon_lower_0123": -1
   },
   "sources": {
     "notes": {
@@ -201,13 +204,14 @@
     },
     {
       "id": "47.2",
-      "task": "Contracted gamma identities",
-      "file": "tests/textbook.rs",
-      "test": "ch47_2_contracted_gamma_equations_four_dimensions_only",
-      "evidence": "partial_d4_only",
+      "task": "Formal-d contracted gamma identities, with independent finite-component and Cadabra checks",
+      "file": "tests/clifford_dimension.rs",
+      "test": "ch47_2_formal_dimension_equations",
+      "evidence": "exact_formal_dimension_polynomial_and_live_cadabra",
       "source": "book marker:8679; book mmd:6691-6706",
       "classification": "known_result_reproduction",
-      "chapter_complete": false
+      "chapter_complete": false,
+      "warning": "Not a full dimensional-regularization or gamma5 scheme"
     },
     {
       "id": "47.3",
@@ -240,6 +244,17 @@
       "chapter_complete": false
     },
     {
+      "id": "50.2a",
+      "task": "Angular Weyl spinor and massless rank-one factorization",
+      "file": "tests/textbook_extended.rs",
+      "test": "ch50_2a_exact_rational_angular_factorization_witnesses",
+      "evidence": "general_written_factorization_derivation_and_48_exact_rational_witnesses",
+      "source": "book marker:9154; docs/TEXTBOOK-EXTENDED.md",
+      "classification": "known_result_reproduction",
+      "chapter_complete": false,
+      "warning": "50.2b boosted-spinor massless limit is not implemented"
+    },
+    {
       "id": "50.3",
       "task": "Schouten identity",
       "file": "tests/algebra.rs",
@@ -251,10 +266,10 @@
     },
     {
       "id": "50.4",
-      "task": "Chiral four-slash trace as bracket product",
-      "file": "tests/textbook.rs",
-      "test": "ch50_4_chiral_four_slash_trace",
-      "evidence": "exact_polynomial_identity_not_full_scalar_evaluation",
+      "task": "Bracket product and fully evaluated chiral four-slash invariant/epsilon expression",
+      "file": "tests/textbook_extended.rs",
+      "test": "ch50_4_bracket_product_equals_evaluated_invariants",
+      "evidence": "exact_polynomial_invariants_epsilon_and_independent_chiral_matrices",
       "source": "book marker:9163-9169",
       "classification": "known_result_reproduction",
       "chapter_complete": false
@@ -292,6 +307,20 @@
   ],
   "additional_checks": [
     {
+      "task": "Typed commuting tensor residuals with signed symmetry, hygienic dummies and metric/delta contractions",
+      "test": "shared_cases_include_nonzero_controls",
+      "cases": 12,
+      "zero": 9,
+      "nonzero": 3,
+      "oracle": "validation/tensor_oracle.py",
+      "warning": "Bounded mono-term commuting tensor algebra; no multi-term/Grassmann/gamma factor equivalence"
+    },
+    {
+      "task": "Fully evaluated chiral traces of four arbitrary symbolic vectors",
+      "test": "ch50_4_evaluated_trace_for_arbitrary_symbolic_vectors",
+      "warning": "Strictly four-dimensional gamma5 and epsilon orientation"
+    },
+    {
       "task": "Parke-Taylor cyclicity, reflection and little-group witnesses",
       "test": "parke_taylor_cyclicity_reflection_and_weights",
       "warning": "Not a Lagrangian/BG derivation and not a Ward identity"
@@ -319,10 +348,11 @@
     }
   ],
   "next_gates": [
-    "Arbitrary precision and typed tensor indices with fail-closed contractions",
-    "47.2 formal d-dimensional verification; 50.2; complete 50.4 evaluated trace",
-    "60.2b, 60.3, 60.4 with explicit momentum-conservation constraints",
+    "Arbitrary precision and uniformly structured arithmetic errors",
+    "50.2b explicit boosted-spinor massless limit",
+    "60.2b,60.3,60.4 with explicit momentum-conservation constraints",
     "Nonabelian color and gluon vertices; ordinary Lorentzian/complexified BG",
-    "4/5-point MHV amplitude from independent recurrence/Feynman rules; BCFW amplitude recursion"
+    "4/5-point MHV amplitude from independent recurrence/Feynman rules; BCFW amplitude recursion",
+    "Scalable/general tensor symmetries, explicit spinor epsilon lowering, statistics and dependencies"
   ]
 }

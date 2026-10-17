@@ -48,6 +48,32 @@ pub fn normal_order(labels: &[&str]) -> NormalWord {
     );
     out
 }
+/// Explicit Lorentz-contracted sandwich gamma^mu W gamma_mu in Srednicki's
+/// {gamma,gamma}=-2 eta convention. Ordinary labels in W remain unsummed.
+/// This uses a formal dimension d from gamma^mu gamma_mu=-d, with NO gamma5
+/// or dimensional-regularization prescription. The metric variables remain h=-eta.
+pub fn sandwich_srednicki(labels: &[&str], dimension: &Poly) -> NormalWord {
+    assert!(labels.len() <= 8, "gamma sandwich length budget");
+    let k = labels.len();
+    let mut result = NormalWord::new();
+    let leading = Poly::constant(if k.is_multiple_of(2) { -1 } else { 1 }) * dimension.clone();
+    for (w, p) in normal_order(labels) {
+        add(&mut result, w, leading.clone() * p);
+    }
+    for j in 0..k {
+        let mut rest: Vec<_> = labels
+            .iter()
+            .enumerate()
+            .filter_map(|(i, s)| if i == j { None } else { Some(*s) })
+            .collect();
+        rest.push(labels[j]);
+        let coefficient = Poly::constant(if j.is_multiple_of(2) { -2 } else { 2 });
+        for (w, p) in normal_order(&rest) {
+            add(&mut result, w, coefficient.clone() * p);
+        }
+    }
+    result
+}
 /// Four-component Dirac trace without gamma5, exact in symbolic h.
 /// Oriented pairing recurrence, independent of normal_order's swap algorithm.
 pub fn trace(labels: &[&str]) -> Poly {

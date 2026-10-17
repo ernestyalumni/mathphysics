@@ -33,6 +33,14 @@ fn run(args: &[String]) -> Result<i32, String> {
                 json(if r.is_zero(){"PASS"}else{"FAIL"}),json(&r.to_string()));
             Ok(if r.is_zero(){0}else{1})
         },
+        "tensor-cases"=>{
+            if args.len()!=1{return Err("usage: tensor-cases".into());}
+            let cases=qft_symbolics::tensor_cases::cases().map_err(|e|e.to_string())?;
+            let pass=cases.iter().all(|c|c.residual.is_zero()==c.expected_zero);
+            let rows=cases.iter().map(|c|format!("{{\"id\":{},\"residual_zero\":{},\"expected_zero\":{}}}",json(c.id),c.residual.is_zero(),c.expected_zero)).collect::<Vec<_>>().join(",");
+            println!("{{\"status\":{},\"checks\":[{}]}}",json(if pass{"PASS"}else{"FAIL"}),rows);
+            Ok(if pass{0}else{1})
+        },
         "gamma-trace"=>{
             let labels:Vec<_>=args[1..].iter().map(String::as_str).collect();
             println!("{{\"status\":\"COMPUTED\",\"convention\":\"anticommutator=2h; h=-eta for Srednicki; no implicit sums\",\"result\":{}}}",
@@ -70,7 +78,7 @@ fn run(args: &[String]) -> Result<i32, String> {
             println!("{{\"status\":\"PASS\",\"scope\":\"Schouten and gamma trace identities; finite exact SMGA fixtures, not an all-n proof\",\"schouten_residual\":\"0\",\"negative_control\":\"correctly rejected\",\"smga_passed\":{passed},\"zero_amplitudes\":{zero},\"nonzero_amplitudes\":{nonzero},\"excluded\":{excluded}}}");
             Ok(0)
         },
-        _=>Err("commands: demo | schouten [--wrong-sign] | gamma-trace [labels...] | smga-fixture n seed".into()),
+        _=>Err("commands: demo | schouten [--wrong-sign] | tensor-cases | gamma-trace [labels...] | smga-fixture n seed".into()),
     }
 }
 fn main() {

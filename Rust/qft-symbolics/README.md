@@ -15,6 +15,7 @@ export CARGO_TARGET_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/mathphysics-rust/target
 cargo test --offline
 cargo run --offline -- demo
 cargo run --offline -- schouten
+cargo run --offline -- tensor-cases
 cargo run --offline -- schouten --wrong-sign  # intentionally FAIL, exit 1
 cargo run --offline -- gamma-trace a b c d
 cargo run --offline -- smga-fixture 6 0
@@ -29,7 +30,7 @@ bash validation/run.sh
 
 It uses the existing Python environment at
 `../../amplitudes/MHVamplitudes/.venv/bin/python` and existing
-`cadabra2-ubuntu:24.04` image. Override `PYTHON`, `CADABRA_IMAGE`,
+`cadabra2-ubuntu: 24.04` image. Override `PYTHON`, `CADABRA_IMAGE`,
 `CARGO_TARGET_DIR` or `MATHPHYSICS_RUN_DIR` if needed. No package installation,
 downloads, model calls or network access are required; Docker runs with
 `--network none`. Build products and validation logs stay in the external cache.
@@ -40,14 +41,21 @@ downloads, model calls or network access are required; Docker runs with
 | --- | --- | --- |
 | `scalar` | Reduced rational and Gaussian-rational arithmetic | Exact **within checked i128 intermediate range**, not arbitrary precision |
 | `polynomial` | Commuting sparse polynomials; rational-function cross-multiplication | Q(i); explicit nonzero-denominator domain |
-| `clifford` | Ordered gamma-word normalisation and trace pairing recurrence | Symbolic symmetric Clifford form h; **no implicit Einstein sums** |
+| `clifford` | Ordered gamma-word normalisation, trace pairing, explicit formal-d sandwich contractions | Symbolic Clifford form h=-eta; labels alone never imply sums |
+| `tensor` | Typed spaces/variance, free signatures, hygienic dummies, signed commuting-factor orbits, metric/delta contractions | Bounded independent implementation; see [contract](docs/TENSOR.md) |
+| `lorentz` | Evaluated chiral four-slash traces and epsilon contraction | Four dimensions, arbitrary commuting vectors, explicit orientation |
 | `matrices` | Pauli, epsilon, sigma/bar-sigma, chiral gamma, Lorentz generators | Exact finite matrices, eta=(-,+,+,+) |
 | `twistor` | Srednicki brackets, wavefunctions, momenta, slash, polarization numerators | Polynomial identities in independent phi and phi-star components |
 | `spinor` | Component determinant algebra, Parke–Taylor ratio, BCFW shift | Bare color-ordered formula; no coupling/phase normalization inferred |
-| `smga` | Closed R1 formula and interval-DP preamplitude/BG recurrence | **Half-collinear (2,2)**, conserved rational vectors; not ordinary Lorentzian BG |
+| `smga` | Closed R1 formula and interval-DP preamplitude/BG recurrence | **Half-collinear (2, 2)**, conserved rational vectors; not ordinary Lorentzian BG |
 
 Start with `corpus.json` for named textbook checks, source anchors, direct
-chapter prerequisites, and explicit partial coverage.
+chapter prerequisites, and explicit partial coverage. The current suite has
+**54 integration tests plus two compile-fail doctests**, in debug and release.
+Thirteen named textbook entries now include formal-d 47.2, angular 50.2a and
+fully evaluated 50.4. Live Cadabra agrees on 12 positive/negative tensor cases
+and both formal-d gamma identities; a wrong-sign control stays nonzero.
+See [extended derivations](docs/TEXTBOOK-EXTENDED.md).
 See [derivations](docs/DERIVATIONS.md), [migration audit](docs/MIGRATION.md)
 and [verification record](docs/VERIFICATION.md).
 
@@ -70,7 +78,7 @@ and [verification record](docs/VERIFICATION.md).
   color factors or sqrt(2) vertex normalizations. It tests algebraic structure,
   not derivation from Yang–Mills Feynman rules.
 - Independent spinors in polynomial/BCFW algebra do not impose a Lorentzian
-  reality condition. Real rational SMGA vectors belong to the separate (2,2)
+  reality condition. Real rational SMGA vectors belong to the separate (2, 2)
   calculation. Do not transfer a sign-function formula to real Lorentzian QFT.
 - Cyclicity is **not** a gauge Ward identity. Polarization transversality and
   cyclicity are separate checks.
@@ -84,9 +92,9 @@ singular domain, exhausted budget, arithmetic overflow or internal panic
 
 Library arithmetic operators deliberately panic on unrepresentable
 intermediates; callers must catch that boundary or let their process fail.
-**Never promote a process failure to verified.** Polynomials have 8,192-term
+**Never promote a process failure to verified.** Polynomials have 8, 192-term
 and degree-64 limits; gamma operations accept at most 12 factors with a
-100,000-rewrite budget for normal ordering. SMGA supports 3..12 legs (CLI
+100, 000-rewrite budget for normal ordering. SMGA supports 3..12 legs (CLI
 fixtures 3..10). Complexity still grows rapidly.
 
 An identically zero residual proves an identity only in the stated algebra
@@ -95,16 +103,15 @@ recurrence tests, is not an all-n theorem or a novelty claim.
 
 ## Not implemented / next gates
 
-1. Arbitrary-precision coefficients and structured resource-error types.
-2. Typed Lorentz/dotted/undotted indices, free-index signature validation,
-   dummy renaming, symmetric/antisymmetric tensor canonicalisation, and
-   flat metric/delta elimination. Do **not** pass a gamma label named "mu"
-   and assume contraction occurs.
+1. Arbitrary-precision coefficients and uniformly structured arithmetic errors.
+   Tensor validation/work-budget errors already return Result.
+2. Scalable/general tensor canonicalisation beyond the implemented bounded
+   commuting-factor layer. Plain Clifford labels still never imply sums.
 3. General Grassmann algebra, general Fierz/Majorana identities, derivative
-   barriers, dimension-dependent tensor relations.
-4. d-dimensional gamma contractions, epsilon/gamma5 regularization schemes;
-   the current gamma5 checks are strictly four-dimensional.
-5. Full Python-module parity; chapter 50.2, 60.2b–60.4; nonabelian color algebra,
+   barriers, multiterm and dimension-dependent tensor relations.
+4. General gamma/tensor contractions and epsilon/gamma5 regularization
+   schemes. Specialized formal-d 47.2 is implemented; gamma5 remains 4D.
+5. Full Python-module parity; chapter 50.2b, 60.2b–60.4; nonabelian color algebra,
    three-/four-gluon vertices, ordinary Yang–Mills BG, then independent
    4-/5-point MHV verification and BCFW recursion.
 6. Expression parser / arbitrary candidate ingestion, LLM harness, held-out

@@ -24,6 +24,39 @@ pub fn angle(p: &Twistor, k: &Twistor) -> Poly {
     bracket(&p.star, &k.star)
 }
 impl Twistor {
+    /// Exact angular construction for 50.2a. amplitude=sqrt(2 omega) is
+    /// supplied as a rational, so no approximate square root is introduced.
+    /// sin_half/cos_half describe theta in [0,pi]; cos_phi/sin_phi a unit phase.
+    /// As elsewhere in this crate, checked-i128 intermediate overflow can panic;
+    /// Result reports domain errors, not arbitrary-precision arithmetic failures.
+    pub fn from_rational_angles(
+        amplitude: Q,
+        sin_half: Q,
+        cos_half: Q,
+        cos_phi: Q,
+        sin_phi: Q,
+    ) -> Result<Self, String> {
+        let unit_range = |q: Q| q.numerator().unsigned_abs() <= q.denominator() as u128;
+        if amplitude.sign() != 1
+            || [sin_half, cos_half, cos_phi, sin_phi]
+                .iter()
+                .any(|q| !unit_range(*q))
+            || sin_half.sign() < 0
+            || cos_half.sign() < 0
+            || sin_half * sin_half + cos_half * cos_half != Q::ONE
+            || cos_phi * cos_phi + sin_phi * sin_phi != Q::ONE
+        {
+            return Err("invalid normalized rational angular spinor parameters".into());
+        }
+        let phi = [
+            C::from(-amplitude * sin_half) * C::new(cos_phi, -sin_phi),
+            C::from(amplitude * cos_half),
+        ];
+        Ok(Self {
+            phi: phi.map(Poly::constant),
+            star: phi.map(|z| Poly::constant(z.conj())),
+        })
+    }
     pub fn named(label: &str) -> Self {
         Self {
             phi: named(&format!("{label}p")),
