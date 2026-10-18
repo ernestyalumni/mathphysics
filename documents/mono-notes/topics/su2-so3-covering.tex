@@ -987,6 +987,109 @@ $\Phi\circ\Psi=\mathrm{Id}$ everywhere. Then
 $\Psi\circ\gamma$ would be a closed lift of $\gamma$, contradicting the
 monodromy argument above.
 
+\section{Compactness, and what it buys}\label{quat:sec:compactness}
+A topological space is compact if every open cover has a finite subcover
+(Lee, p.~608). Compactness is a finiteness condition. A fact that holds near
+each point, with its own neighborhood and its own constant, holds on finitely
+many of those neighborhoods, so it holds everywhere with the worst of finitely
+many constants. The same condition says that an infinite process cannot
+escape. Suppose a sequence has no cluster point. Then each point has an open
+neighborhood containing only finitely many terms, and these neighborhoods form
+an open cover with no finite subcover.
+
+\begin{proposition}\label{quat:prop:compact}
+$SU(2)$ and $SO(3)$ are compact.
+\end{proposition}
+\begin{proof}
+$SO(3)=\{g\in\mathbb R^{3\times3}: g^Tg=I,\ \det g=1\}$ is the common zero
+set of the continuous functions $g\mapsto g^Tg-I$ and $g\mapsto\det g-1$, so
+it is closed in $\mathbb R^9$. The columns of $g$ are unit vectors, so
+$\|g\|_F^2=\operatorname{tr}(g^Tg)=\operatorname{tr}I=3$, and $SO(3)$ is
+bounded. By Heine--Borel it is compact. In the same way, $SU(2)\approx S^3$ is
+closed and bounded in $\mathbb R^4$, so it is compact. Alternatively,
+$SO(3)=\Phi\bigl(SU(2)\bigr)$ is the continuous image of a compact space (Lee,
+Proposition~A.45(a), p.~608). Hall gives the same argument for $O(n)$,
+$SO(n)$, $U(n)$, $SU(n)$ \cite[\S1.3, p.~16]{BCHall2015}.
+\end{proof}
+Compactness was used once already. In \S\ref{quat:sec:covering}, the
+continuous bijection $\mathbb RP^3\to SO(3)$ is a homeomorphism because its
+domain is compact and its target is Hausdorff (Lee's closed map lemma,
+Lemma~A.52, p.~610).
+
+\subsection{No global three-parameter chart}
+\begin{proposition}\label{quat:prop:no-global-chart}
+No chart of $SO(3)$ has all of $SO(3)$ as its domain.
+\end{proposition}
+\begin{proof}
+A chart is a homeomorphism $\varphi$ from an open subset of $SO(3)$ onto an
+open subset $\varphi(SO(3))$ of $\mathbb R^3$. If its domain were all of
+$SO(3)$, then $\varphi(SO(3))$ would be compact by
+Proposition~\ref{quat:prop:compact}, hence closed in $\mathbb R^3$. A nonempty
+subset of the connected $\mathbb R^3$ that is open and closed is
+$\mathbb R^3$, which is not compact.
+\end{proof}
+Euler angles, rotation vectors, Rodrigues--Gibbs parameters and modified
+Rodrigues parameters are charts, so each of them is singular or multivalued
+somewhere. Gimbal lock is the boundary of the Euler-angle chart.
+
+\subsection{No continuous choice of sign}
+$\Phi$ is a local diffeomorphism everywhere, so four parameters with the
+constraint $u\in SU(2)$ describe every rotation without singularity. The price
+is the sign: $\Phi(-u)=\Phi(u)$.
+\begin{proposition}\label{quat:prop:no-section}
+There is no continuous map $s\colon SO(3)\to SU(2)$ with
+$\Phi\circ s=\mathrm{Id}_{SO(3)}$.
+\end{proposition}
+\begin{proof}
+Let $\gamma(\theta)=R(2\theta)$, $0\le\theta\le\pi$, be the loop of
+\S\ref{quat:sec:smooth-cover}, with lift
+$u(\theta)=\operatorname{diag}(e^{-i\theta},e^{i\theta})$ from $u(0)=I$ to
+$u(\pi)=-I$. Suppose $s$ exists. Then $s\circ\gamma$ is continuous, closed
+($s\circ\gamma(0)=s\circ\gamma(\pi)=s(I)$), and satisfies
+$\Phi\circ(s\circ\gamma)=\gamma$, so it is a lift of $\gamma$ starting at
+$s(I)\in\{\pm I\}$. By unique lifting (Lee, Proposition~A.77(a)), it equals
+$u$ if $s(I)=I$, which ends at $-I$, and $-u$ if $s(I)=-I$, which ends at $I$.
+Either way $s\circ\gamma$ is not closed, a contradiction.
+\end{proof}
+The proof uses only the restriction of $s$ to the loop $\gamma$. So every rule
+that assigns one unit quaternion to each rotation is discontinuous somewhere
+on every full turn about an axis. For example, the rule
+``$\operatorname{tr}u\ge0$'' (scalar part $\ge0$) jumps from $u$ to $-u$ at
+the rotations by $\pi$, where $\operatorname{tr}u(\theta)=2\cos\theta$ changes
+sign. A continuous path $g(t)$ in $SO(3)$ does have a continuous lift $u(t)$,
+unique once $u(0)$ is chosen (Lee, Proposition~A.77(a)(b)). A propagated
+attitude can therefore be continuous in $SU(2)$, while the sign of a quaternion
+built from a rotation matrix cannot be chosen continuously.
+
+\subsection{Compactness and quantization}
+\begin{remark}\label{quat:rem:compact-quantized}
+For a compact group, averaging an inner product over the group, with the
+invariant integral in place of a finite sum, makes every finite-dimensional
+representation unitary, hence completely reducible (Hall, Theorem~4.28,
+p.~92, proved this way). By the Peter--Weyl theorem, every irreducible unitary
+representation of a compact Lie group is finite-dimensional, and the
+irreducibles form a discrete family. For $SU(2)$ they are labeled by
+$m=0,1,2,\ldots$, of dimension $m+1$ (Hall, Theorem~4.32, p.~96), that is,
+$j=m/2\in\{0,\frac12,1,\ldots\}$. The integer-$j$ representations factor
+through $SO(3)$; the half-integer ones do not (Hall, Proposition~4.35,
+p.~101), because $-I\in\ker\Phi$ acts as $(-1)^{m}$. A connected noncompact
+simple Lie group, such as the Lorentz group, has no nontrivial
+finite-dimensional unitary representations, so its unitary representations of
+physical interest are infinite-dimensional.
+
+The same mechanism discretizes spectra. The Laplacian of a compact Riemannian
+manifold without boundary has discrete eigenvalues of finite multiplicity,
+because its
+resolvent is a compact operator. On $S^2$ the eigenvalues of
+$-\Delta_{S^2}$ are $\ell(\ell+1)$, the spectrum of $\mathbf L^2/\hbar^2$.
+On the noncompact $\mathbb R^n$ the spectrum of $-\Delta$ is continuous. The
+contrast between Fourier series on the compact $S^1$ (frequencies
+$\mathbb Z$) and the Fourier transform on $\mathbb R$ (frequencies
+$\mathbb R$) is the abelian case. A confining potential produces a discrete
+spectrum through the same condition, a compact resolvent, without a compact
+configuration space.
+\end{remark}
+
 \section{Dimension accounting}\label{quat:sec:dimensions}
 \begin{center}
 \small
