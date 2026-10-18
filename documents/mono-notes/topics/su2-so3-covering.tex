@@ -830,6 +830,163 @@ $\{\pm I\}$, that is, a two-sheeted covering. Its dimension count is
 $\dim SO(3)=\dim SU(2)-\dim\{\pm I\}=3-0$. Also, $SO(3)=\Phi(SU(2))$ is
 connected, as the continuous image of a connected space.
 
+\section{The smooth statements, with Lee's theorems}\label{quat:sec:smooth-cover}
+The preceding sections prove statements about sets, groups and continuous
+maps. Frankel's ``$\approx$'' and ``principal bundle'' need the smooth
+versions. Lee's \emph{Introduction to Smooth Manifolds}, second edition
+\cite{dgdt:JLee2012}, supplies each one; below, every step names the result
+it uses, with its printed page.
+
+\subsection{\texorpdfstring{$S^3$}{S3} and \texorpdfstring{$SU(2)$}{SU(2)} are smooth manifolds}
+Let $f(x)=|x|^2$ on $\mathbb R^4$. Then $df_x=2x^T\ne0$ on $S^3=f^{-1}(1)$,
+so $1$ is a regular value. By the regular level set theorem
+(Lee, Corollary~5.14, p.~106), $S^3$ is a properly embedded submanifold of
+codimension $1$, of dimension $3$. $SU(2)$ is a properly embedded
+$(2^2-1)$-dimensional Lie subgroup of $U(2)$, hence embedded in
+$GL(2,\mathbb C)$ (Lee, Example~7.30, p.~168, and Problem~7-14, p.~172).
+Likewise $SO(3)$ is an embedded Lie subgroup of $GL(3,\mathbb R)$ (Lee,
+Example~7.28, p.~167).
+
+Two facts about restrictions are used repeatedly. If $G\colon M\to N$ is
+smooth and $S\subseteq M$ is an embedded submanifold, then $G|_S$ is smooth
+(Lee, Theorem~5.27, p.~112). If $G\colon N\to M$ is smooth with image in an
+embedded submanifold $S\subseteq M$, then $G$ is smooth as a map into $S$
+(Lee, Corollary~5.30, p.~113).
+
+\subsection{\texorpdfstring{$SU(2)$}{SU(2)} is diffeomorphic to \texorpdfstring{$S^3$}{S3}}
+This is Lee's Problem~7-16 (p.~172). The map $F$ of
+Eq.~\eqref{quat:first-column} is the restriction to $SU(2)$ of the linear map
+$M(2,\mathbb C)\to\mathbb C^2$, $u\mapsto u(1,0)^T$, with image in $S^3$. Its
+inverse is the restriction to $S^3$ of the real-linear map
+$\mathbb C^2\to M(2,\mathbb C)$ of Eq.~\eqref{quat:frankel-19-11}, with image
+in $SU(2)$. Linear maps are smooth. By the two restriction facts, $F$ and
+$F^{-1}$ are smooth, so $F$ is a diffeomorphism:
+\begin{equation}\label{quat:SU2-diffeo-S3}
+ SU(2)\approx S^3\quad\text{(diffeomorphic)}.
+\end{equation}
+
+\subsection{\texorpdfstring{$\Phi$}{Phi} is a smooth double covering}
+By Eq.~\eqref{quat:Phi-entries}, with $u^{-1}=u^\dagger$, each entry of
+$\Phi(u)$ is a polynomial in the real and imaginary parts of the entries of
+$u$. So $\Phi$ is the restriction of a smooth map $M(2,\mathbb C)\to
+M(3,\mathbb R)$, with image in $SO(3)$, and the restriction facts make
+$\Phi\colon SU(2)\to SO(3)$ smooth. It is a homomorphism, hence a Lie group
+homomorphism. Every Lie group homomorphism has constant rank (Lee,
+Theorem~7.5, p.~153). By Eq.~\eqref{quat:frankel-19-14}, $d\Phi$ at $I$ is an
+isomorphism, so $d\Phi_u$ has rank $3$ at every $u$.
+
+Lee's Theorem~7.5 is a short computation. With $L_u$ left multiplication,
+$\Phi\circ L_u=L_{\Phi(u)}\circ\Phi$ because $\Phi$ is a homomorphism. The
+chain rule gives $d\Phi_u\circ d(L_u)_I=d(L_{\Phi(u)})_I\circ d\Phi_I$, and
+both $d(L_u)_I$ and $d(L_{\Phi(u)})_I$ are isomorphisms, since $L_u$ and
+$L_{\Phi(u)}$ are diffeomorphisms. So $d\Phi_u$ and $d\Phi_I$ have the same
+rank.
+
+Both groups are connected (\S\ref{quat:sec:su2-sphere} and
+\S\ref{quat:sec:covering}). Lee's Theorem~21.31 (Homomorphisms with Discrete
+Kernels, p.~557) states that for connected Lie groups $G,H$ and a Lie group
+homomorphism $F\colon G\to H$ the following are equivalent: (a) $F$ is
+surjective and has discrete kernel; (b) $F$ is a smooth covering map; (c) $F$
+is a local diffeomorphism; (d) $F_*\colon\operatorname{Lie}(G)\to
+\operatorname{Lie}(H)$ is an isomorphism. Here (a) is
+Theorem~\ref{quat:thm:covering} with $\ker\Phi=\{\pm I\}$, and (d) is
+Eq.~\eqref{quat:frankel-19-14}; either one gives (b):
+\begin{equation}\label{quat:Phi-smooth-cover}
+ \Phi\colon SU(2)\to SO(3)\ \text{is a smooth two-sheeted covering map.}
+\end{equation}
+This is the precise content of Frankel's ``principal bundle with two-point
+fiber''.
+
+\subsection{\texorpdfstring{$\mathbb RP^3\approx SU(2)/\{\pm I\}\cong SO(3)$}{RP3 = SU(2)/{+-I} = SO(3)}}
+Theorem~\ref{quat:thm:first-iso} identifies $SU(2)/\{\pm I\}$ with $SO(3)$ as
+groups. Lee's First Isomorphism Theorem for Lie Groups (Theorem~21.27,
+p.~556) adds the smooth structure: the kernel $\{\pm I\}$ is a closed normal
+Lie subgroup, and $\Phi$ descends to a Lie group isomorphism
+\begin{equation}
+ \bar\Phi\colon SU(2)/\{\pm I\}\to SO(3),
+\end{equation}
+that is, a group isomorphism that is also a diffeomorphism. The quotient
+$SU(2)/\{\pm I\}$ carries the smooth structure of Lee's Theorem~21.29
+(p.~556): $\{\pm I\}$ is a discrete subgroup of the connected $SU(2)$, so the
+quotient map is a smooth normal covering map.
+
+For $\mathbb RP^3$, the group $\{\pm1\}$ acts on $S^3$ by $x\mapsto\pm x$. The
+action is smooth and free, and it is proper because $\{\pm1\}$ is compact
+(Lee, Corollary~21.6, p.~544). Lee's Theorem~21.13 (p.~549) makes
+$S^3/\{\pm1\}=\mathbb RP^3$ a smooth manifold with $p\colon S^3\to\mathbb RP^3$
+a smooth normal covering map; for $\mathbb RP^n$ with its standard structure
+this is Lee's Problem~4-10 (p.~96). Since $F(-u)=-F(u)$, the composite
+$S^3\xrightarrow{F^{-1}}SU(2)\to SU(2)/\{\pm I\}$ is constant on the fibers
+of $p$. A smooth covering map is a surjective smooth submersion, so the
+composite descends to a smooth map $\mathbb RP^3\to SU(2)/\{\pm I\}$ (Lee,
+Theorem~4.30, Passing Smoothly to the Quotient, p.~90). The same argument
+with $F$ in place of $F^{-1}$ gives its smooth inverse. Composing with
+$\bar\Phi$,
+\begin{equation}\label{quat:SO3-RP3-smooth}
+ \mathbb RP^3\;\approx\;SU(2)/\{\pm I\}\;\cong\;SO(3),
+\end{equation}
+a diffeomorphism. This upgrades the homeomorphism of the previous section.
+
+This is Lee's Problem~21-21 (p.~562), in quaternion language. There $S$ is
+the group of unit quaternions, $E$ the imaginary quaternions, and $\rho(q)$
+the matrix of $v\mapsto qvq^*$ on $E$ in the basis $(\mathbf i,\mathbf
+j,\mathbf k)$. Under the dictionary~\eqref{quat:dictionary},
+$e_a\leftrightarrow-i\sigma_a$, the imaginary quaternion $x^ae_a$ corresponds
+to $-i\Sigma(\mathbf x)$, and $q^*=q^{-1}$ for a unit quaternion. Multiplying
+Eq.~\eqref{quat:Phi} by $-i$ gives
+$u\bigl(-i\Sigma(\mathbf x)\bigr)u^{-1}=-i\Sigma\bigl(\Phi(u)\mathbf x\bigr)$.
+So $\Phi(u)$ is Lee's $\rho(q)$, and the problem's parts (a)--(c) are
+Eqs.~\eqref{quat:Phi}, \eqref{quat:euler-rodrigues} and
+\eqref{quat:SO3-RP3-smooth}.
+
+\subsection{\texorpdfstring{$\pi_1(SO(3))=\mathbb Z/2$}{pi1(SO(3)) = Z/2}}
+$S^3$ is simply connected (Lee, Proposition~A.68(b), p.~614), hence so is
+$SU(2)$ by Eq.~\eqref{quat:SU2-diffeo-S3}. So $\Phi$ is the universal
+covering of $SO(3)$, and $SU(2)$ is the universal covering group of Lee's
+Theorem~7.7 (p.~154).
+
+\emph{An explicit non-contractible loop.} The rotations $R(2\theta)$ about the
+$z$ axis, $0\le\theta\le\pi$, form a closed loop $\gamma$ in $SO(3)$ based at
+$I$. By the example of \S\ref{quat:sec:covering}, its lift starting at $I$ is
+$u(\theta)=\operatorname{diag}(e^{-i\theta},e^{i\theta})$, which ends at
+$u(\pi)=-I$. By Lee's monodromy theorem (Proposition~A.77(c), p.~616),
+path-homotopic paths have lifts with the same endpoint. The constant loop
+lifts to the constant path at $I$, which ends at $I\ne-I$. So $\gamma$ is not
+null-homotopic, and $\pi_1(SO(3))\ne1$. The loop $\gamma*\gamma$ (two full
+turns) lifts to $u(\theta)$, $0\le\theta\le2\pi$, a closed loop in the simply
+connected $SU(2)$. Contract it there and push the contraction down by $\Phi$:
+$\gamma*\gamma$ is null-homotopic.
+
+\emph{The whole group.} The covering automorphisms of $\Phi$ are $u\mapsto u$
+and $u\mapsto-u$. A covering automorphism is determined by the image of one
+point (unique lifting, Lee, Proposition~A.77(a)), and it must send $I$ into
+$\Phi^{-1}(I)=\{\pm I\}$. Lee's Problem~21-19 (p.~562) quotes the fact that
+for a universal covering the automorphism group is isomorphic to the
+fundamental group of the base (proved in Lee's \emph{Introduction to
+Topological Manifolds}, Ch.~12). Hence
+\begin{equation}\label{quat:pi1-SO3}
+ \pi_1\bigl(SO(3)\bigr)\cong\ker\Phi=\{\pm I\}\cong\mathbb Z/2 .
+\end{equation}
+This is the topological fact behind spin~$\tfrac12$. A continuous family of
+rotations of $\mathbb R^3$ that starts and ends at $I$ lifts to $SU(2)$ and
+ends at $I$ or at $-I$. A $2\pi$ turn ends at $-I$; a $4\pi$ turn ends at $I$.
+
+\emph{Lie algebras do not see this.} $d\Phi$ identifies $\mathfrak{su}(2)$ with
+$\mathfrak{so}(3)$. Since $SU(2)$ is simply connected, Lee's Theorem~20.19
+(p.~530) lifts every Lie algebra homomorphism out of $\mathfrak{su}(2)$ to a
+Lie group homomorphism out of $SU(2)$. The inverse $d\Phi^{-1}\colon
+\mathfrak{so}(3)\to\mathfrak{su}(2)$ has no such lift out of $SO(3)$: a lift
+$\Psi\colon SO(3)\to SU(2)$ with $\Psi_*=d\Phi^{-1}$ would give the
+homomorphism $\Phi\circ\Psi$, whose induced Lie algebra map is the identity.
+By naturality of $\exp$ (Lee, Proposition~20.8(g), p.~520),
+$\Phi\circ\Psi(\exp X)=\exp X$ for every $X\in\mathfrak{so}(3)$, so
+$\Phi\circ\Psi=\mathrm{Id}$ on the image of $\exp$, which contains a
+neighborhood of $I$ (Proposition~20.8(f)). A neighborhood of $I$ generates the
+connected $SO(3)$ (Lee, Proposition~7.14(c), p.~156), so
+$\Phi\circ\Psi=\mathrm{Id}$ everywhere. Then
+$\Psi\circ\gamma$ would be a closed lift of $\gamma$, contradicting the
+monodromy argument above.
+
 \section{Dimension accounting}\label{quat:sec:dimensions}
 \begin{center}
 \small
