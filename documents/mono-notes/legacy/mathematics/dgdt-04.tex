@@ -1192,7 +1192,19 @@ f^{-1}(1) = O(n) \\
 Df_A(B) = \lim_{s\to 0} \frac{ f(A+sB) - f(A) }{s} = \lim_{s\to 0} \frac{(A+sB)(A^T + sB^T)- AA^T}{s} = AB^T +BA^T
 \end{gathered}
 \]
-If $Df_A : T_A\text{Mat}(n,n) \to T_{f(A)}\text{Sym}(n)$ surjective when $A\in f^{-1}(1) = O(n)$ (???).  
+To complete the surjectivity step, let $A\in O(n)$ and let
+$S\in\text{Sym}(n)$ be arbitrary. For this map $f(A)=AA^T$, choose
+$B=\tfrac12SA$. The differential computed above gives
+\[
+ Df_A(\tfrac12SA)
+ =\tfrac12AA^TS^T+\tfrac12SAA^T
+ =\tfrac12S+\tfrac12S=S.
+\]
+Thus $Df_A$ is surjective, $I$ is a regular value, and
+$O(n)$ is an embedded submanifold of dimension
+$n^2-n(n+1)/2=n(n-1)/2$. Section~\ref{quat:sec:orthogonal-submanifold}
+develops the equivalent column-inner-product map $F(A)=A^TA-I$,
+the determinant condition for $SO(n)$, and the tangent spaces.
 
 
 

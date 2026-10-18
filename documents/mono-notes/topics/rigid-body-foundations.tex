@@ -1,7 +1,23 @@
 \part{Geometric Mechanics and Rigid-Body Flight}
 \section{Configuration, velocity, and degrees of freedom}
 A point mass in Euclidean space has configuration space $Q=\mathbb R^3$.
-A rigid body with fixed center has configuration space $SO(3)$. A freely
+A rigid body with one material point fixed has configuration space $SO(3)$,
+whether or not that point is the center of mass. Choose a right-handed
+orthonormal body frame at that point and a right-handed inertial frame.
+Our rotation $R$ maps body components to inertial components:
+\begin{equation}\label{gnc:configuration-map}
+ \mathbf x_I=R\mathbf x_B,\qquad R^TR=I,\qquad \det R=1.
+\end{equation}
+The columns of $R$ are the body basis vectors expressed in the inertial
+frame; the inverse component transformation is $\mathbf x_B=R^T\mathbf x_I$.
+We distinguish configurations by a fixed material frame, even if the
+body's shape or inertia has a symmetry.
+Section~\ref{quat:sec:orthogonal-submanifold} proves that these rotations
+form a three-dimensional embedded submanifold of $\mathbb R^9$.
+Its regular-value argument justifies the count $9-6=3$.
+The motion $t\mapsto R(t)$ is a curve on this manifold, rather than an
+arbitrary curve through nine independent matrix entries.
+A freely
 moving rigid body has configuration space $\mathbb R^3\times SO(3)$,
 identified with $SE(3)$ as a manifold. Its group law is
 \begin{equation}\label{gnc:group-law}
@@ -17,6 +33,43 @@ model. A unit quaternion uses four components to represent three rotational
 degrees of freedom, subject to one scalar constraint. A translational
 three-DOF flight model omits attitude dynamics under additional modeling
 assumptions; it does not follow merely by invoking symmetry reduction.
+
+\subsection{Euler angles are local coordinates}
+For a concrete choice, use yaw--pitch--roll (Tait--Bryan) angles with
+active right-handed rotations,
+\begin{equation}\label{gnc:zyx-angles}
+ R=R_z(\psi)R_y(\theta)R_x(\phi).
+\end{equation}
+Other axis orders have different singular sets. Let
+$E_i=\widehat{\mathbf e_i}$ be the generators of
+Eq.~\eqref{quat:frankel-Ei}. Differentiating Eq.~\eqref{gnc:zyx-angles}
+and multiplying by $R^T$ gives
+\begin{align*}
+ R^T\dot R
+ &=E_1\dot\phi+R_x^TE_2R_x\dot\theta\\
+ &\quad+R_x^TR_y^TE_3R_yR_x\dot\psi.
+\end{align*}
+Define $\widehat{\boldsymbol\omega}_B=R^T\dot R$.
+Using $R^T\widehat{\mathbf a}R=\widehat{R^T\mathbf a}$ to read off
+the axial vector yields
+\begin{equation}\label{gnc:zyx-rate-map}
+ \boldsymbol\omega_B=
+ \begin{pmatrix}
+  1&0&-\sin\theta\\
+  0&\cos\phi&\sin\phi\cos\theta\\
+  0&-\sin\phi&\cos\phi\cos\theta
+ \end{pmatrix}
+ \begin{pmatrix}\dot\phi\\\dot\theta\\\dot\psi\end{pmatrix}.
+\end{equation}
+The determinant of the rate matrix is
+$\cos\theta(\cos^2\phi+\sin^2\phi)=\cos\theta$.
+When $\cos\theta\ne0$, the inverse function theorem gives a local
+coordinate chart after restricting the angle ranges. At
+$\theta=\pm\pi/2$ the angle map loses rank and cannot give three
+independent tangent directions. This is a coordinate singularity
+(gimbal lock); the manifold $SO(3)$ remains smooth there.
+A unit quaternion avoids this angle singularity, but uses four constrained
+components and the two representatives $q,-q$ of one rotation.
 
 \section{Angular velocity and the rotating-frame derivative}
 Let $R(t)$ map body components to inertial components, with
@@ -98,6 +151,76 @@ The rotational kinetic energy satisfies
 The cross-product term vanishes because it is perpendicular to
 $\boldsymbol\omega_B$. Zero moment therefore conserves both inertial
 angular momentum and rotational kinetic energy.
+
+\section{Which metric makes rigid-body motion geodesic?}\label{gnc:sec:geodesic}
+The submanifold proof does not by itself specify the body's dynamics.
+For a rigid body with a material point $P$ fixed, assume a constant
+positive-definite body inertia tensor $J_P$ about that point. The kinetic
+energy defines a Riemannian metric on $SO(3)$ by
+\begin{equation}\label{gnc:kinetic-metric}
+ g_R(R\widehat{\mathbf a},R\widehat{\mathbf b})
+ =\mathbf a^TJ_P\mathbf b,\qquad
+ T=\tfrac12g_R(\dot R,\dot R)
+  =\tfrac12\boldsymbol\omega_B^TJ_P\boldsymbol\omega_B.
+\end{equation}
+If $P$ is the center of mass, $J_P$ is the $J_B$ used above.
+The metric inherited directly from the Euclidean matrix space gives
+\[
+ \operatorname{tr}\bigl((R\widehat{\mathbf a})^T
+                         R\widehat{\mathbf b}\bigr)
+ =\operatorname{tr}(\widehat{\mathbf a}^{\,T}\widehat{\mathbf b})
+ =2\mathbf a\cdot\mathbf b.
+\]
+It is proportional to the kinetic metric only for spherical inertia
+$J_P=jI$. The embedding in $\mathbb R^9$ therefore does not determine
+the metric of a general rigid body.
+
+In any local coordinates $q^a$ on $SO(3)$, write
+$T=\tfrac12g_{ab}(q)\dot q^a\dot q^b$. For a smooth time-independent
+potential $V(q)$, the Lagrangian $L=T-V$ has
+\[
+ \frac{\partial L}{\partial\dot q^a}=g_{ab}\dot q^b,\qquad
+ \frac{\partial L}{\partial q^a}
+ =\tfrac12\frac{\partial g_{bc}}{\partial q^a}\dot q^b\dot q^c
+  -\frac{\partial V}{\partial q^a}.
+\]
+Substituting into the Euler--Lagrange equations gives
+\begin{equation}\label{gnc:metric-euler-lagrange}
+ \frac{d}{dt}(g_{ab}\dot q^b)
+ -\tfrac12\frac{\partial g_{bc}}{\partial q^a}\dot q^b\dot q^c
+ =-\frac{\partial V}{\partial q^a}.
+\end{equation}
+For constant $V$, Eq.~\eqref{gnc:metric-euler-lagrange} is the
+affinely parameterized geodesic equation of $g$ in physical time.
+For a general $V$, the right-hand side is a force term.
+
+At fixed energy $E=T+V$, on the region $E>V$, Jacobi's principle
+describes the same configuration paths as geodesics of
+\begin{equation}\label{gnc:jacobi-metric}
+ g^{(E)}=2(E-V)g.
+\end{equation}
+Indeed, $ds_g/dt=\sqrt{g_R(\dot R,\dot R)}=\sqrt{2(E-V)}$, so
+\begin{equation}\label{gnc:jacobi-time}
+ ds_E=\sqrt{2(E-V)}\,ds_g,\qquad
+ \frac{ds_E}{dt}=2(E-V).
+\end{equation}
+The reduced action $\int p_a\,dq^a$ equals $\int ds_E$ along
+energy-$E$ parametrizations, because
+$p_a\,dq^a=g_{ab}\dot q^b\dot q^a\,dt=2T\,dt=ds_E$.
+Its stationary paths are therefore geodesics for $g^{(E)}$.
+Frankel \cite{TFrankel2012}, Section~10.2c, Theorem~(10.19),
+uses $d\rho=\sqrt{E-V}\,ds_g$, so his metric is
+$(E-V)g=\tfrac12g^{(E)}$; the constant factor changes arc length
+but not the geodesic paths. The metric degenerates at $E=V$, and
+physical time is generally not its affine geodesic parameter.
+
+If $E>\max_{SO(3)}V$, the Jacobi metric is positive everywhere on
+the compact configuration manifold. Closed-geodesic results can then
+be used to establish periodic motions, as in Frankel's Section~10.2d.
+A closed geodesic returns with the same tangent direction; returning
+to the same configuration alone is insufficient.
+Its physical period is recovered by integrating
+$dt=ds_E/[2(E-V)]$ around the closed geodesic.
 
 \section{Reading geometric mechanics}
 Holm, Schmah, and Stoica \cite{HSS2009} provide the geometric foundation.

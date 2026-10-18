@@ -53,6 +53,16 @@ Holm page-reconciled parse is beside the PDF, in
 `Holm-Schmah-Stoica-GeometricMechanicsAndSymmetry-2009/ocr-compare/reconciled/resolved.md`.
 These notes do not copy the book.
 
+Frankel §1.1d is developed in the quaternion topic's "Orthogonal groups as
+regular level sets": the differential of the Gram map, its explicit right
+inverse, the regular-value proof for O(n), the open determinant-sign subset
+SO(n), and tangent spaces. The earlier row-Gram calculation in
+`legacy/mathematics/dgdt-04.tex` now includes its missing surjectivity step.
+The rigid-body topic uses body-to-inertial R, derives the yaw–pitch–roll
+coordinate singularity, and distinguishes the inertia metric from the
+ambient matrix metric. Its Jacobi-metric discussion states the fixed-energy
+and positive-kinetic-energy assumptions behind Frankel's geodesic remark.
+
 `topics/quaternions-spin.tex` follows the Lie-groups part. It fixes the
 quaternion convention (Hamilton, scalar first, body to inertial, matching the
 rigid-body topic), maps Frankel's and Holm's Pauli-matrix bases onto it, sums

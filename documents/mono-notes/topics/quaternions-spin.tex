@@ -107,6 +107,84 @@ part. If $g(t)$ is a differentiable curve in $G$ with $g(0)=I$, then
 $\frac{dg}{dt}(0)\in\mathfrak g$; this is how Frankel computes the basis
 below.
 
+\subsection{Orthogonal groups as regular level sets}\label{quat:sec:orthogonal-submanifold}
+Frankel \cite{TFrankel2012}, Section~1.1d, pp.~9--11, proves that the
+orthogonal matrices form a submanifold. We give the argument for $n\times n$
+matrices, using the differential notation of our manifold notes. His
+matrix $x$ becomes $A$, an orthogonal base point $x_0$ becomes $R$, and
+$F_*v=w$ becomes $DF_R(H)=S$. Here $\operatorname{Sym}(n)$ denotes
+the symmetric $n\times n$ matrices; its argument is the matrix size.
+For $n=3$ this is Frankel's six-dimensional space $\mathrm{Sym}_6$.
+
+Identify $\operatorname{Mat}(n,n)$ with $\mathbb R^{n^2}$ by its entries.
+A symmetric matrix is specified by its diagonal and entries above it, so
+\begin{equation}\label{quat:symmetric-dimension}
+ \operatorname{Sym}(n)=\{S\in\operatorname{Mat}(n,n):S^T=S\},
+ \qquad \dim\operatorname{Sym}(n)=\frac{n(n+1)}2.
+\end{equation}
+Define the smooth polynomial map
+\begin{equation}\label{quat:orthogonality-map}
+ F:\operatorname{Mat}(n,n)\longrightarrow\operatorname{Sym}(n),
+ \qquad F(A)=A^TA-I.
+\end{equation}
+Its zero set is $O(n)$. For $n=3$ its entries are the column inner products
+$(F(A))_{ij}=\sum_{k=1}^3 A_{ki}A_{kj}-\delta_{ij}$.
+Since $(F(A))_{ij}=(F(A))_{ji}$, there are six distinct scalar equations.
+To subtract six from nine, we must also prove independence of their
+differentials at every orthogonal matrix.
+
+Hold $A$ and the ambient direction $H\in\operatorname{Mat}(n,n)$ fixed.
+Expanding before taking the derivative gives
+\begin{align}
+ F(A+sH)-F(A)
+ &=s(H^TA+A^TH)+s^2H^TH,\notag\\
+ DF_A(H)
+ &=\lim_{s\to0}\frac{F(A+sH)-F(A)}s
+   =H^TA+A^TH.\label{quat:orthogonality-differential}
+\end{align}
+Now let $R\in O(n)$ and let $S\in\operatorname{Sym}(n)$ be arbitrary.
+Choose $H=\tfrac12RS$. Substitute $R^TR=I$ and $S^T=S$ into
+Eq.~\eqref{quat:orthogonality-differential}:
+\begin{align}
+ DF_R\left(\tfrac12RS\right)
+ &=\tfrac12S^TR^TR+\tfrac12R^TRS\notag\\
+ &=\tfrac12S+\tfrac12S=S.\label{quat:orthogonality-right-inverse}
+\end{align}
+Thus $S\mapsto\tfrac12RS$ is a right inverse of $DF_R$, so $DF_R$
+is surjective at every $R\in F^{-1}(0)$. Zero is a regular value.
+The preimage theorem in the manifold part, equivalently Lee's regular
+level set theorem \cite{dgdt:JLee2012}, Chapter~5, makes $O(n)$ an embedded
+submanifold with
+\begin{equation}\label{quat:dim-On}
+ \dim O(n)=n^2-\frac{n(n+1)}2=\frac{n(n-1)}2.
+\end{equation}
+This proves differential independence on the level set, rather than
+inferring it merely from the number of displayed equations.
+
+For $R\in O(n)$, $(\det R)^2=\det(R^TR)=1$, so $\det R\in\{+1,-1\}$.
+Moreover,
+\[
+ SO(n)=O(n)\cap\det^{-1}((0,\infty)).
+\]
+The determinant is continuous, so $SO(n)$ is open in $O(n)$. It inherits
+the same dimension and local submanifold charts. Consequently $SO(3)$ is
+an embedded three-dimensional submanifold of $\mathbb R^9$; the determinant
+condition selects a sign and imposes no additional local scalar constraint.
+Locally, the implicit function theorem lets us solve six matrix entries
+smoothly in terms of three others, with the choice depending on the point.
+
+The tangent space is the kernel of the differential:
+\begin{align}
+ T_RO(n)
+ &=\{H:H^TR+R^TH=0\}\notag\\
+ &=\{RX:X^T=-X\}.\label{quat:orthogonal-tangent}
+\end{align}
+Indeed, set $X=R^TH$, so $H=RX$ and $X^T+X=H^TR+R^TH$.
+At $R\in SO(n)$ the tangent space is the same, because $SO(n)$ is open
+in $O(n)$. At $R=I$ it consists of the skew-symmetric matrices.
+Along a curve $R(t)\in SO(3)$ this gives $R^T\dot R\in\mathfrak{so}(3)$,
+the angular-velocity construction in Eq.~\eqref{gnc:skew}.
+
 \subsection{\texorpdfstring{$\mathfrak{so}(n)$}{so(n)} is the skew-symmetric matrices}
 Take $G=SO(n)=\{g\in GL(n,\mathbb R):g^Tg=I,\ \det g=1\}$ and a curve
 $g(t)$ in $SO(n)$ with $g(0)=I$ and $X=\frac{dg}{dt}(0)$. Differentiate
@@ -125,17 +203,12 @@ skew-symmetric matrix vanishes. By Eq.~\eqref{quat:matrix-lie-algebra},
 \end{equation}
 the dimension being the number of entries above the diagonal.
 
-Count the dimension of the group the same way. A matrix $g\in GL(n,\mathbb R)$
-has $n^2$ real entries. The matrix $g^Tg$ is symmetric for every $g$, because
-$(g^Tg)^T=g^Tg$, so the equation $g^Tg=I$ imposes only the $n(n+1)/2$
-conditions on and above the diagonal. Hence
-\begin{equation}\label{quat:dim-On}
- \dim O(n)=n^2-\frac{n(n+1)}{2}=\frac{n(n-1)}{2}=\dim\mathfrak{so}(n).
-\end{equation}
-On $O(n)$, $(\det g)^2=\det(g^Tg)=1$, so $\det g=\pm1$. The condition
-$\det g=1$ selects the matrices with one of these two values and removes no
-further dimension. For $n=3$ the count is $9-6=3$, and the three parameters
-are an axis direction (two) and an angle (one), as shown below.
+The regular-value argument in
+\S\ref{quat:sec:orthogonal-submanifold} justifies the group dimension
+in Eq.~\eqref{quat:dim-On}; Eq.~\eqref{quat:so-n} independently gives
+the same dimension for its Lie algebra. Axis and angle describe rotations,
+but require identifications at zero angle and at angle $\pi$ and are not
+a single global coordinate chart.
 
 \subsection{The basis \texorpdfstring{$E_{ab}$}{E\_ab} and its brackets}
 Let $e_a$ be the standard basis column vectors of $\mathbb R^n$ and define
