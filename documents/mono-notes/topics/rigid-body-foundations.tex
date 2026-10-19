@@ -1,5 +1,37 @@
 \part{Geometric Mechanics and Rigid-Body Flight}
 \section{Configuration, velocity, and degrees of freedom}
+\begin{definition}[Rigid body; Goldstein 3e, \S\S1.2--1.3, pp.~11--12,
+and \S4.1, p.~134 \cite{dgdt:GPS2001}]\label{gnc:def:rigid-body}
+A rigid body is a system of $N$ mass points, with masses $m_i>0$ and
+inertial positions $\mathbf r_i(t)\in\mathbb R^3$, $i=1,\dots,N$,
+subject to the holonomic constraints
+\begin{equation}\label{gnc:rigid-constraints}
+ f_{ij}(\mathbf r_1,\dots,\mathbf r_N)
+ =(\mathbf r_i-\mathbf r_j)\cdot(\mathbf r_i-\mathbf r_j)-c_{ij}^2=0,
+ \qquad 1\le i<j\le N,
+\end{equation}
+for all $t$, where the $c_{ij}=c_{ji}>0$ are constants.
+\end{definition}
+Equivalently, $\lvert\mathbf r_i(t)-\mathbf r_j(t)\rvert=c_{ij}$ for every
+pair and every time. The configuration space is the level set
+\begin{equation}\label{gnc:rigid-level-set}
+ Q_{\mathrm{rigid}}
+ =\bigl\{(\mathbf r_1,\dots,\mathbf r_N)\in\mathbb R^{3N}:
+   f_{ij}=0\ \text{for all}\ i<j\bigr\}.
+\end{equation}
+Each $f_{ij}$ depends on the coordinates only, not explicitly on $t$,
+so the constraints are holonomic and time-independent.
+
+Goldstein's holonomic form is Eq.~(1.37),
+$f(\mathbf r_1,\mathbf r_2,\mathbf r_3,\dots,t)=0$; his rigid-body
+example on p.~12 is $(\mathbf r_i-\mathbf r_j)^2-c_{ij}^2=0$, with
+$(\mathbf r_i-\mathbf r_j)^2$ meaning the dot product written in
+Eq.~\eqref{gnc:rigid-constraints}. In \S1.2 his $\mathbf r_{ij}$ is the
+vector $\mathbf r_i-\mathbf r_j$. In Eq.~(4.1), $r_{ij}=c_{ij}$, his $r_{ij}$
+is the distance $\lvert\mathbf r_i-\mathbf r_j\rvert$. There are
+$\tfrac12N(N-1)$ such equations, which exceeds $3N$ for $N>7$; they are not
+independent, and Goldstein's \S4.1 count gives six degrees of freedom.
+
 A point mass in Euclidean space has configuration space $Q=\mathbb R^3$.
 A rigid body with one material point fixed has configuration space $SO(3)$,
 whether or not that point is the center of mass. Choose a right-handed
@@ -25,6 +57,25 @@ identified with $SE(3)$ as a manifold. Its group law is
 \end{equation}
 The rotation acts on the translation in Eq.~\eqref{gnc:group-law}; this is
 why the rigid-motion group is a semidirect product.
+
+Rigid motions preserve the constraints of
+Definition~\ref{gnc:def:rigid-body}. Fix body components $\mathbf s_i$ of
+the mass points, satisfying
+$\lvert\mathbf s_i-\mathbf s_j\rvert=c_{ij}$, and set
+$\mathbf r_i=\mathbf r+R\mathbf s_i$. The translation cancels in the
+difference, and $R^TR=I$ removes the rotation:
+\begin{align*}
+ (\mathbf r_i-\mathbf r_j)\cdot(\mathbf r_i-\mathbf r_j)
+ &=\bigl(R(\mathbf s_i-\mathbf s_j)\bigr)^T R(\mathbf s_i-\mathbf s_j)\\
+ &=(\mathbf s_i-\mathbf s_j)^TR^TR(\mathbf s_i-\mathbf s_j)\\
+ &=c_{ij}^2.
+\end{align*}
+The calculation uses only $R^TR=I$, so an improper orthogonal matrix
+($\det R=-1$) also satisfies Eq.~\eqref{gnc:rigid-constraints}; it gives the
+mirror-image configuration. A continuous motion $R(t)$ starting at $R(0)=I$
+has $\det R(t)$ continuous with values $\pm1$, hence $\det R(t)=1$.
+This is why the configuration map~\eqref{gnc:configuration-map} imposes
+$\det R=1$.
 
 Degrees of freedom count independent configuration coordinates. The
 three translational and three rotational degrees of freedom give twelve
