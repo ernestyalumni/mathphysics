@@ -90,6 +90,16 @@ on 2026-09-12 and will be refined with him.
   and distinguish a moving quasi-steady target from the actual solution.
   Justify neglecting a term by its magnitude relative to retained terms;
   a small state variable alone does not establish a small time derivative.
+- Do the algebra in equations, not in words. A phrase such as "dotting
+  with", "comparing coefficients", "expanding the same way" or
+  "substituting gives" must sit beside the displayed lines that perform the
+  step, down to the Kronecker-delta contraction. Words may accompany an
+  equation; they never replace one. Before finishing, check every verb of
+  calculation in the prose against the displayed line that carries it out
+  (Ernest, 2026-10-19).
+- State each result in one form, index or index-free, whichever the
+  argument needs. Do not restate an index equation in matrix form, or the
+  reverse; the reader converts between them (Ernest, 2026-10-19).
 - Keep commentary such as “add and subtract,” “iterate,” and “sum the
   geometric series,” and display the corresponding work. Show the inserted
   zero before regrouping and applying an inequality; write the first few
