@@ -3,34 +3,23 @@
 \begin{definition}[Rigid body; Goldstein 3e, \S\S1.2--1.3, pp.~11--12,
 and \S4.1, p.~134 \cite{dgdt:GPS2001}]\label{gnc:def:rigid-body}
 A rigid body is a system of $N$ mass points, with masses $m_i>0$ and
-inertial positions $\mathbf r_i(t)\in\mathbb R^3$, $i=1,\dots,N$,
-subject to the holonomic constraints
+inertial positions $\mathbf r_i(t)\in\mathbb R^3$, subject for all $t$ to
+the holonomic constraints
 \begin{equation}\label{gnc:rigid-constraints}
  f_{ij}(\mathbf r_1,\dots,\mathbf r_N)
  =(\mathbf r_i-\mathbf r_j)\cdot(\mathbf r_i-\mathbf r_j)-c_{ij}^2=0,
  \qquad 1\le i<j\le N,
 \end{equation}
-for all $t$, where the $c_{ij}=c_{ji}>0$ are constants.
-\end{definition}
-Equivalently, $\lvert\mathbf r_i(t)-\mathbf r_j(t)\rvert=c_{ij}$ for every
-pair and every time. The configuration space is the level set
+with constants $c_{ij}=c_{ji}>0$. Its configuration space is
 \begin{equation}\label{gnc:rigid-level-set}
  Q_{\mathrm{rigid}}
  =\bigl\{(\mathbf r_1,\dots,\mathbf r_N)\in\mathbb R^{3N}:
-   f_{ij}=0\ \text{for all}\ i<j\bigr\}.
+   \lvert\mathbf r_i-\mathbf r_j\rvert=c_{ij},\ 1\le i<j\le N\bigr\}.
 \end{equation}
-Each $f_{ij}$ depends on the coordinates only, not explicitly on $t$,
-so the constraints are holonomic and time-independent.
-
-Goldstein's holonomic form is Eq.~(1.37),
-$f(\mathbf r_1,\mathbf r_2,\mathbf r_3,\dots,t)=0$; his rigid-body
-example on p.~12 is $(\mathbf r_i-\mathbf r_j)^2-c_{ij}^2=0$, with
-$(\mathbf r_i-\mathbf r_j)^2$ meaning the dot product written in
-Eq.~\eqref{gnc:rigid-constraints}. In \S1.2 his $\mathbf r_{ij}$ is the
-vector $\mathbf r_i-\mathbf r_j$. In Eq.~(4.1), $r_{ij}=c_{ij}$, his $r_{ij}$
-is the distance $\lvert\mathbf r_i-\mathbf r_j\rvert$. There are
-$\tfrac12N(N-1)$ such equations, which exceeds $3N$ for $N>7$; they are not
-independent, and Goldstein's \S4.1 count gives six degrees of freedom.
+\end{definition}
+Goldstein writes Eq.~\eqref{gnc:rigid-constraints} as
+$(\mathbf r_i-\mathbf r_j)^2-c_{ij}^2=0$ (p.~12) and as Eq.~(4.1),
+$r_{ij}=c_{ij}$, where $r_{ij}=\lvert\mathbf r_i-\mathbf r_j\rvert$.
 
 A point mass in Euclidean space has configuration space $Q=\mathbb R^3$.
 A rigid body with one material point fixed has configuration space $SO(3)$,
