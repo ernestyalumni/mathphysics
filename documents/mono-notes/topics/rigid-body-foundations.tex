@@ -74,6 +74,152 @@ degrees of freedom, subject to one scalar constraint. A translational
 three-DOF flight model omits attitude dynamics under additional modeling
 assumptions; it does not follow merely by invoking symmetry reduction.
 
+\subsection{Direction cosines}\label{gnc:sec:direction-cosines}
+Let $\mathbf e_1,\mathbf e_2,\mathbf e_3$ be the inertial basis and
+$\mathbf b_1,\mathbf b_2,\mathbf b_3$ the body basis of
+Eq.~\eqref{gnc:configuration-map}, both orthonormal and right-handed.
+The direction cosines are
+\begin{equation}\label{gnc:direction-cosines}
+ R_{ij}=\mathbf e_i\cdot\mathbf b_j
+ =\cos\angle(\mathbf e_i,\mathbf b_j),\qquad i,j=1,2,3;
+\end{equation}
+the second equality holds because both are unit vectors.
+Write $\mathbf b_j=\beta^k\mathbf e_k$. Dotting with $\mathbf e_i$ and
+using $\mathbf e_i\cdot\mathbf e_k=\delta_{ik}$ gives
+$\beta^i=\mathbf e_i\cdot\mathbf b_j=R_{ij}$. Expanding $\mathbf e_i$ in
+the body basis the same way, its coefficients are
+$\mathbf b_j\cdot\mathbf e_i=R_{ij}$. Hence
+\begin{equation}\label{gnc:dcm-basis}
+ \mathbf b_j=R_{ij}\mathbf e_i,\qquad
+ \mathbf e_i=R_{ij}\mathbf b_j .
+\end{equation}
+Column $j$ of $R$ lists the inertial components of $\mathbf b_j$; row $i$
+lists the body components of $\mathbf e_i$.
+
+Let a vector be $\mathbf a=a_I^i\mathbf e_i=a_B^j\mathbf b_j$;
+$a_I^i$ is component $i$ of $\mathbf a_I$. Substituting the first of
+Eqs.~\eqref{gnc:dcm-basis},
+$\mathbf a=a_B^jR_{ij}\mathbf e_i$, and comparing coefficients of
+$\mathbf e_i$; then dotting $\mathbf a$ with $\mathbf b_j$:
+\begin{equation}\label{gnc:dcm-components}
+ a_I^i=R_{ij}a_B^j,\qquad
+ a_B^j=\mathbf b_j\cdot\mathbf a=R_{ij}a_I^i .
+\end{equation}
+In matrix form these are $\mathbf a_I=R\mathbf a_B$, which is
+Eq.~\eqref{gnc:configuration-map}, and $\mathbf a_B=R^T\mathbf a_I$.
+The matrix of direction cosines is the $R$ of this part.
+
+Orthonormality of each basis constrains the nine $R_{ij}$. Dot the
+expansions~\eqref{gnc:dcm-basis} pairwise:
+\begin{align}
+ \delta_{jk}=\mathbf b_j\cdot\mathbf b_k
+ &=R_{ij}R_{lk}\,\mathbf e_i\cdot\mathbf e_l
+  =R_{ij}R_{lk}\delta_{il}=R_{ij}R_{ik},\notag\\
+ \delta_{il}=\mathbf e_i\cdot\mathbf e_l
+ &=R_{ij}R_{lk}\,\mathbf b_j\cdot\mathbf b_k
+  =R_{ij}R_{lk}\delta_{jk}=R_{ij}R_{lj}.\label{gnc:dcm-orthogonality}
+\end{align}
+These are $R^TR=I$ and $RR^T=I$. Each is a symmetric matrix equation,
+so six independent conditions remain on nine entries; the regular-value
+proof of Section~\ref{quat:sec:orthogonal-submanifold} makes the count
+$9-6=3$ rigorous. The nine direction cosines are therefore not
+independent generalized coordinates. Right-handedness,
+$\mathbf b_1\times\mathbf b_2=\mathbf b_3$, fixes the determinant.
+With $(\mathbf u\times\mathbf v)\cdot\mathbf w=\epsilon_{ikl}u^iv^kw^l$
+in the right-handed inertial components, and column $j$ of $R$ equal to
+$\mathbf b_j$,
+\begin{equation}\label{gnc:dcm-determinant}
+ \det R=\epsilon_{ikl}R_{i1}R_{k2}R_{l3}
+ =(\mathbf b_1\times\mathbf b_2)\cdot\mathbf b_3
+ =\mathbf b_3\cdot\mathbf b_3=1 .
+\end{equation}
+
+Engineering texts call such a matrix the direction cosine matrix (DCM).
+The name does not fix which matrix is meant: $R^T$ also consists of
+direction cosines, and many texts use it. Read the convention from the
+defining equation. In the table, the space (inertial) basis is listed
+first and the body basis second.
+\begin{center}
+\small
+\begin{tabular}{@{}llll@{}}
+ source & bases & direction cosines & matrix\\\hline
+ ours & $\mathbf e_i$; $\mathbf b_j$ &
+   $R_{ij}=\mathbf e_i\cdot\mathbf b_j$ & $R$\\
+ Section~\ref{dgdt:subsec:direction-cosine-matrix} &
+   $\mathbf e_i$; $\mathbf e'_i$ &
+   $C_{ij}=\mathbf e'_i\cdot\mathbf e_j$ & $C=R^T$\\
+ Goldstein \cite{dgdt:GPS2001} & $\mathbf i,\mathbf j,\mathbf k$;
+   $\mathbf i',\mathbf j',\mathbf k'$ &
+   $a_{ij}=\cos\theta_{ij}$ & $A=R^T$\\
+ Landau \cite{LLandauELifshitz1976} & $X,Y,Z$; $x_1,x_2,x_3$ &
+   $n_{3x},n_{3y},n_{3z}$ & column 3 of $R$\\
+ Wie \cite{BWie2008} & $\vec a_i$; $\vec b_i$ &
+   $C_{ij}=\vec b_i\cdot\vec a_j$ & $C^{B/A}=R^T$\\
+ Shuster \cite{MDShuster1993} & reference; body &
+   attitude matrix & $A=R^T$\\
+ Groves \cite{PDGroves2013} & $i$; $b$ &
+   $\mathbf x^i=C^i_b\mathbf x^b$ & $C^i_b=R$
+\end{tabular}
+\end{center}
+
+Goldstein (\S4.1, pp.~137--138; \S4.2, pp.~139--140) takes the primed
+axes fixed in the body, so $\mathbf i,\mathbf j,\mathbf k$ are
+$\mathbf e_1,\mathbf e_2,\mathbf e_3$ and $\mathbf i',\mathbf j',\mathbf k'$
+are $\mathbf b_1,\mathbf b_2,\mathbf b_3$. In his Eq.~(4.2) the first index
+of $\theta_{ij}$ is primed and the second unprimed, so
+$\cos\theta_{ij}=\mathbf b_i\cdot\mathbf e_j=R_{ji}$, and his
+$a_{ij}=\cos\theta_{ij}$ (Eq.~(4.11)) gives $A=R^T$. His
+Eqs.~(4.5) and~(4.12$'$), $x'_i=a_{ij}x_j$, are the second of
+Eqs.~\eqref{gnc:dcm-components}. His Eq.~(4.9),
+$\sum_l\cos\theta_{lm'}\cos\theta_{lm}=\delta_{m'm}$, reads
+$R_{m'l}R_{ml}=\delta_{m'm}$, and his Eq.~(4.15),
+$a_{ij}a_{ik}=\delta_{jk}$, reads $R_{ji}R_{ki}=\delta_{jk}$. Both are
+$RR^T=I$, the second of Eqs.~\eqref{gnc:dcm-orthogonality}; in his matrix,
+$A^TA=I$.
+
+Landau (\S31, p.~96) uses fixed axes $X,Y,Z$ and body axes $x_1,x_2,x_3$,
+and fixes the orientation by three independent angles, the Eulerian
+angles of \S35 (p.~110). He does not name the direction cosines. In \S37
+(p.~121) his $n_{3x},n_{3y},n_{3z}$, the fixed-axis components of the unit
+vector $\mathbf n_3$ along $x_3$, are $R_{13},R_{23},R_{33}$.
+
+Wie (\S5.1, pp.~323--325) writes Eq.~(5.1) as $\vec b_i=C_{ij}\vec a_j$
+with $C_{ij}=\vec b_i\cdot\vec a_j$, calls $C^{B/A}$ the direction cosine
+matrix ``to B from A'' (Eq.~(5.2)), and transforms components by
+$\mathbf H'=C^{B/A}\mathbf H$ (Eq.~(5.8)). With $A$ the inertial frame,
+$C^{B/A}=R^T$. His elementary rotations of Eq.~(5.9) are therefore
+transposes of active ones: $C_k(\theta)=R_k(\theta)^T$, with
+$R_1=R_x$, $R_2=R_y$, $R_3=R_z$. For example,
+\[
+ C_3(\theta)=
+ \begin{pmatrix}\cos\theta&\sin\theta&0\\-\sin\theta&\cos\theta&0\\0&0&1
+ \end{pmatrix}
+ =R_z(\theta)^T .
+\]
+Transposing Eq.~\eqref{gnc:zyx-angles} gives the corresponding
+yaw--pitch--roll product,
+$R^T=R_x(\phi)^TR_y(\theta)^TR_z(\psi)^T=C_1(\phi)C_2(\theta)C_3(\psi)$.
+
+Shuster's attitude matrix maps reference-frame components to body
+components, $\mathbf a_B=A\mathbf a_I$, so $A=R^T$. Inertial-navigation
+texts such as Groves write $C^\alpha_\beta$ for the matrix taking
+$\beta$-frame components to $\alpha$-frame components, so the
+body-to-inertial $C^i_b$ is $R$.
+
+Correction to the example of
+Section~\ref{dgdt:subsec:direction-cosine-matrix}. There
+$\mathbf e'_x=\cos(\omega t)\mathbf e_x-\sin(\omega t)\mathbf e_y$ and
+$\mathbf e'_y=\sin(\omega t)\mathbf e_x+\cos(\omega t)\mathbf e_y$.
+At $\omega t=\pi/2$ these are $\mathbf e'_x=-\mathbf e_y$ and
+$\mathbf e'_y=\mathbf e_x$, so the primed frame turns clockwise, about
+$-\mathbf e_z$. The fixed vector $\mathbf e_x$ has primed coordinates
+$y^i=C_{ij}x^j$ with $x=(1,0)$:
+$y=(\mathbf e'_x\cdot\mathbf e_x,\ \mathbf e'_y\cdot\mathbf e_x)
+=(\cos\omega t,\ \sin\omega t)$, which equals $(0,1)$ at $\omega t=\pi/2$,
+consistent with $\mathbf e_x=\mathbf e'_y$. The coordinate pair turns
+counterclockwise because the frame turns clockwise; the earlier text
+assigns the counterclockwise sense to the frame.
+
 \subsection{Euler angles are local coordinates}
 For a concrete choice, use yaw--pitch--roll (Tait--Bryan) angles with
 active right-handed rotations,
