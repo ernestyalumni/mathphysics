@@ -681,62 +681,6 @@ For the basis transformation derivation, recall the push forward transformation 
 \end{gathered}
 \]
 
-\subsubsection{Direction Cosine Matrix (DCM)}\label{dgdt:subsec:direction-cosine-matrix}
-
-cf. pp. 134, 4.1 "The Independent Coordinates of a Rigid Body", Goldstein, Poole, Safko (2001) \cite{dgdt:GPS2001}
-
-Consider frame $F, \, \lbrace \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3 \rbrace$, \\
-\phantom{Consider} frame $F', \lbrace \mathbf{e}'_1, \mathbf{e}'_2, \mathbf{e}'_3 \rbrace$ 
-
-If 
-\[
-\begin{gathered}
-	\mathbf{e}_i' = C_{ij} \mathbf{e}_j
-\end{gathered}
-\]
-and so then
-\[
-\begin{gathered}
-	\mathbf{e}'_i \cdot \mathbf{e}_k = C_{ij} \delta_{jk} = C_{ik} \\
-	\Longrightarrow \mathbf{e}_i' = (\mathbf{e}_i' \cdot \mathbf{e}_j ) \mathbf{e}_j
-\end{gathered}
-\]
-So for $\mathbf{r}' = y^i \mathbf{e}_i' = x^j \mathbf{e}_j$, 
-\begin{equation}\label{dgdt:Eq:DirectionCosineMatrixCoordinateTransformation}
-\begin{gathered}
-	\Longrightarrow y^k = x^j (\mathbf{e}_k' \cdot \mathbf{e}_j )  \text{ or } y^i = (\mathbf{e}'_i \cdot \mathbf{e}_j) x^j
-\end{gathered}
-\end{equation}
-
-So $\cos{\theta_{ij}} = \mathbf{e}_i' \cdot \mathbf{e}_j$ completely specifies the orientation of $F'$ relative to $F$.
-
-Now use this fact, that $\mathbf{e}_m \cdot \mathbf{e}_m' = \delta_{mm'}$, to show that
-\[
-\begin{gathered}
-	\mathbf{e}_m \cdot \mathbf{e}_m' = \delta_{mm'} = (\mathbf{e}_m \cdot \mathbf{e}'_l ) \mathbf{e}'_l \cdot (\mathbf{e}_{m'} \cdot \mathbf{e}'_{l'}) \mathbf{e}'_{l'} = (\mathbf{e}_m \cdot \mathbf{e}'_l)(\mathbf{e}_{m'} \cdot \mathbf{e}'_{l'}) \delta_{ll'} = (\mathbf{e}'_l \cdot \mathbf{e}_m )( \mathbf{e}'_l \cdot \mathbf{e}_{m'}) = \cos{\theta_{lm}} \cos{\theta_{lm'} }
-\end{gathered}
-\]
-
-So $\cos{\theta_{ij}}$ are 9 coordinates that can't be generalized coordinates.
-
-Be careful about the interpretation of the DCM. Note that we had derived the following from Eq. \ref{dgdt:Eq:DirectionCosineMatrixCoordinateTransformation}:
-\begin{equation}
-\begin{gathered}
-	\boxed{ y^i = C_{ij} x^j } \text{ with } \\
-	\mathbf{e}'_i = C_{ij} \mathbf{e}_j \text{ and } \boxed{ C_{ij} = \mathbf{e}'_i \cdot \mathbf{e}_j }
-\end{gathered}	
-\end{equation}
-So this is a transformation of the same vector between two different frames, not an "active" rotation of the vector itself. Nevertheless, $C_{ij} : F \to F'$, a mapping from frame $F$ to $F'$.
-
-For example, consider
-\[
-\begin{aligned}
-& \mathbf{e}'_x = \cos{(\omega t)} \mathbf{e}_x - \sin{(\omega t)} \mathbf{e}_y \\ 
-& \mathbf{e}'_y = \sin{(\omega t)} \mathbf{e}_x + \cos{(\omega t)} \mathbf{e}_y 	
-\end{aligned}
-\]
-This isn't an active rotation in the negative z, clockwise direction, but this is the same vector with coordinates in a frame that's rotating in the counterclockwise, positive z direction.
-
 \subsection{Euler Angles}
 
 cf. pp. 150, 4.4 "Euler Angles", Goldstein, Poole, Safko (2001) \cite{dgdt:GPS2001}

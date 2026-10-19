@@ -4,10 +4,15 @@ Ernest's `LaTeXandpdfs/Propulsion.tex`, especially the Runge–Kutta discussion,
 is a guide to the exposition. These conventions were made explicit by Ernest
 on 2026-09-12 and will be refined with him.
 
-- Preserve his sequence, meaningful equation labels, wording and mathematical
-  work when incorporating an existing passage almost verbatim. Add connected
-  explanations and the missing calculations. Record necessary mathematical
-  corrections with their reasons; do not silently change the meaning.
+- Write the notes from first principles while reading. Ernest's earlier
+  writing is the guide to style, notation and conventions; it is not an
+  authority on content. When an earlier passage is correct, keep his
+  sequence, meaningful equation labels and wording, and add the missing
+  calculations. When it is wrong or superseded by a new topic, write the
+  correct mathematics once and delete the old passage from the notes. Keep
+  one clean line of development: no correction paragraphs, errata,
+  "the earlier text says" remarks, or legacy copies kept for history.
+  Git holds the history (Ernest, 2026-10-19).
 - Keep textbook exercises/problems and their solutions inline in the relevant
   shared topic, rather than creating a separate solutions manuscript.
 - Reproduce exercise/problem statements and supplied hints verbatim, including
@@ -119,5 +124,5 @@ on 2026-09-12 and will be refined with him.
 
 These conventions are inherited from Propulsion/documents/notes/STYLE.md.
 For new work here, the shared topic is the source for both PDF editions.
-Historical imported notes retain their existing exposition; these conventions
-guide additions and deliberate revisions, rather than silent rewriting.
+Imported legacy files are raw material, not a record to preserve. Rewrite,
+correct, or delete their passages as topics replace them.

@@ -121,4 +121,5 @@ Read `STYLE.md` before adding derivations. Add a topic under `topics/`, input it
 at the appropriate subject location in `master.tex`, and add its citations to
 `backmatter.tex`. Both editions then receive the same mathematics. Keep
 exercises and solutions inline, state assumptions before a derivation, show
-the algebra, and preserve historical content with explicit corrections.
+the algebra, and keep one clean line of development: when a topic replaces
+or corrects a legacy passage, delete that passage rather than annotating it.

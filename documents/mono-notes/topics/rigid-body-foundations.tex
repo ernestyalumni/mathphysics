@@ -145,9 +145,6 @@ first and the body basis second.
  source & bases & direction cosines & matrix\\\hline
  ours & $\mathbf e_i$; $\mathbf b_j$ &
    $R_{ij}=\mathbf e_i\cdot\mathbf b_j$ & $R$\\
- Section~\ref{dgdt:subsec:direction-cosine-matrix} &
-   $\mathbf e_i$; $\mathbf e'_i$ &
-   $C_{ij}=\mathbf e'_i\cdot\mathbf e_j$ & $C=R^T$\\
  Goldstein \cite{dgdt:GPS2001} & $\mathbf i,\mathbf j,\mathbf k$;
    $\mathbf i',\mathbf j',\mathbf k'$ &
    $a_{ij}=\cos\theta_{ij}$ & $A=R^T$\\
@@ -206,19 +203,19 @@ texts such as Groves write $C^\alpha_\beta$ for the matrix taking
 $\beta$-frame components to $\alpha$-frame components, so the
 body-to-inertial $C^i_b$ is $R$.
 
-Correction to the example of
-Section~\ref{dgdt:subsec:direction-cosine-matrix}. There
-$\mathbf e'_x=\cos(\omega t)\mathbf e_x-\sin(\omega t)\mathbf e_y$ and
-$\mathbf e'_y=\sin(\omega t)\mathbf e_x+\cos(\omega t)\mathbf e_y$.
-At $\omega t=\pi/2$ these are $\mathbf e'_x=-\mathbf e_y$ and
-$\mathbf e'_y=\mathbf e_x$, so the primed frame turns clockwise, about
-$-\mathbf e_z$. The fixed vector $\mathbf e_x$ has primed coordinates
-$y^i=C_{ij}x^j$ with $x=(1,0)$:
-$y=(\mathbf e'_x\cdot\mathbf e_x,\ \mathbf e'_y\cdot\mathbf e_x)
-=(\cos\omega t,\ \sin\omega t)$, which equals $(0,1)$ at $\omega t=\pi/2$,
-consistent with $\mathbf e_x=\mathbf e'_y$. The coordinate pair turns
-counterclockwise because the frame turns clockwise; the earlier text
-assigns the counterclockwise sense to the frame.
+The components of a fixed vector turn opposite to the frame. Let the body
+frame turn by $\alpha$ about $\mathbf e_3$:
+$\mathbf b_1=\cos\alpha\,\mathbf e_1+\sin\alpha\,\mathbf e_2$,
+$\mathbf b_2=-\sin\alpha\,\mathbf e_1+\cos\alpha\,\mathbf e_2$,
+$\mathbf b_3=\mathbf e_3$. By Eq.~\eqref{gnc:direction-cosines} the columns
+of $R$ are these components, so $R=R_z(\alpha)$, and the second of
+Eqs.~\eqref{gnc:dcm-components} gives
+\[
+ \mathbf a_B=R_z(\alpha)^T\mathbf a_I=R_z(-\alpha)\mathbf a_I .
+\]
+For $\mathbf a=\mathbf e_1$ and $\alpha=\pi/2$,
+$\mathbf a_B=(0,-1,0)$: indeed $\mathbf b_2=-\mathbf e_1$. The vector is
+unchanged; its body components are those of a rotation by $-\alpha$.
 
 \subsection{Euler angles are local coordinates}
 For a concrete choice, use yaw--pitch--roll (Tait--Bryan) angles with
