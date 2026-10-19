@@ -104,19 +104,15 @@ so $\beta_j^{\,i}=R_{ij}$ and $\gamma_i^{\,j}=R_{ij}$:
 \end{equation}
 
 Let a vector be $\mathbf a=a_I^i\mathbf e_i=a_B^j\mathbf b_j$;
-$a_I^i$ is component $i$ of $\mathbf a_I$. Dot each expansion with
-$\mathbf e_i$, then with $\mathbf b_j$:
+$a_I^i$ is component $i$ of $\mathbf a_I$. By
+Eq.~\eqref{gnc:direction-cosines},
 \begin{align*}
- \mathbf e_i\cdot\mathbf a
- &=a_I^k\,\mathbf e_i\cdot\mathbf e_k=a_I^k\delta_{ik}=a_I^i,&
- \mathbf e_i\cdot\mathbf a
- &=a_B^j\,\mathbf e_i\cdot\mathbf b_j=R_{ij}a_B^j,\\
- \mathbf b_j\cdot\mathbf a
- &=a_B^k\,\mathbf b_j\cdot\mathbf b_k=a_B^k\delta_{jk}=a_B^j,&
- \mathbf b_j\cdot\mathbf a
- &=a_I^i\,\mathbf b_j\cdot\mathbf e_i=R_{ij}a_I^i.
+ R_{ij}a_B^j&=a_B^j\,\mathbf e_i\cdot\mathbf b_j
+  =\mathbf e_i\cdot\mathbf a=a_I^i,\\
+ R_{ij}a_I^i&=a_I^i\,\mathbf e_i\cdot\mathbf b_j
+  =\mathbf b_j\cdot\mathbf a=a_B^j,
 \end{align*}
-Equating the two values of each dot product,
+so
 \begin{equation}\label{gnc:dcm-components}
  a_I^i=R_{ij}a_B^j,\qquad
  a_B^j=R_{ij}a_I^i .
