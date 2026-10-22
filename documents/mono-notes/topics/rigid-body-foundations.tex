@@ -85,20 +85,20 @@ The direction cosines are
 \end{equation}
 the second equality holds because both are unit vectors. The nine
 $R_{ij}$ form a real $3\times3$ matrix, $R\in M_3(\mathbb R)$.
-Expand each basis in the other, with coefficients $\beta_j^{\,k}$ and
-$\gamma_i^{\,k}$, and dot with a basis vector:
+Expand each basis in the other, with coefficients $\beta_j^{\,\,k}$ and
+$\gamma_i^{\,\,k}$, and dot with a basis vector:
 \begin{align*}
- \mathbf b_j=\beta_j^{\,k}\mathbf e_k:&\qquad
+ \mathbf b_j=\beta_j^{\,\,k}\mathbf e_k:&\qquad
  \mathbf e_i\cdot\mathbf b_j
- =\beta_j^{\,k}\,\mathbf e_i\cdot\mathbf e_k
- =\beta_j^{\,k}\delta_{ik}=\beta_j^{\,i},\\
- \mathbf e_i=\gamma_i^{\,k}\mathbf b_k:&\qquad
+ =\beta_j^{\,\,k}\,\mathbf e_i\cdot\mathbf e_k
+ =\beta_j^{\,\,k}\delta_{ik}=\beta_j^{\,\,i},\\
+ \mathbf e_i=\gamma_i^{\,\,k}\mathbf b_k:&\qquad
  \mathbf b_j\cdot\mathbf e_i
- =\gamma_i^{\,k}\,\mathbf b_j\cdot\mathbf b_k
- =\gamma_i^{\,k}\delta_{jk}=\gamma_i^{\,j}.
+ =\gamma_i^{\,\,k}\,\mathbf b_j\cdot\mathbf b_k
+ =\gamma_i^{\,\,k}\delta_{jk}=\gamma_i^{\,\,j}.
 \end{align*}
 Both left-hand sides are $R_{ij}$ by Eq.~\eqref{gnc:direction-cosines},
-so $\beta_j^{\,i}=R_{ij}$ and $\gamma_i^{\,j}=R_{ij}$:
+so $\beta_j^{\,\,i}=R_{ij}$ and $\gamma_i^{\,\,j}=R_{ij}$:
 \begin{equation}\label{gnc:dcm-basis}
  \mathbf b_j=R_{ij}\mathbf e_i,\qquad
  \mathbf e_i=R_{ij}\mathbf b_j .
@@ -120,8 +120,20 @@ components to inertial components of the same vector,
  (a_B^1,a_B^2,a_B^3)\mapsto(a_I^1,a_I^2,a_I^3),\quad
  a_I^i=R_{ij}a_B^j .
 \]
-It changes the basis in which $\mathbf a$ is described; $\mathbf a$
-itself does not move.
+This is a \emph{passive rotation}: it changes the basis in which
+$\mathbf a$ is described; $\mathbf a$ itself does not move.
+For the \emph{active} interpretation, hold the inertial basis fixed and
+let $\mathcal R$ rotate $\mathbf e_j$ into $\mathbf b_j$:
+\begin{equation}\label{gnc:dcm-active}
+ \mathcal R\mathbf e_j=\mathbf b_j,\qquad
+ \mathcal R\mathbf a=a_I^j\mathbf b_j
+ =R_{ij}a_I^j\mathbf e_i .
+\end{equation}
+Here the vector changes and both its input and output components use the
+inertial basis. Goldstein's $A=R^T$ instead converts inertial components
+to body components passively, or represents $\mathcal R^{-1}$ actively
+in the fixed inertial basis (\S4.2, Eqs.~(4.18)--(4.19), pp.~142--143
+\cite{dgdt:GPS2001}).
 
 Orthonormality of each basis constrains the nine $R_{ij}$. Dot the
 expansions~\eqref{gnc:dcm-basis} pairwise:
@@ -247,42 +259,399 @@ These are the components of $\mathbf e_1$ rotated by $-\alpha$. At
 $\alpha=\pi/2$, $a_B=(0,-1,0)$, which checks against
 $\mathbf b_2=-\mathbf e_1$.
 
-\subsection{Euler angles are local coordinates}
-For a concrete choice, use yaw--pitch--roll (Tait--Bryan) angles with
-active right-handed rotations,
-\begin{equation}\label{gnc:zyx-angles}
- R=R_z(\psi)R_y(\theta)R_x(\phi).
+\subsection{Coordinate changes, conjugation, and the adjoint representation}
+\label{gnc:sec:conjugation}
+Goldstein \S4.3, Eqs.~(4.40)--(4.41), pp.~148--149
+\cite{dgdt:GPS2001}, transforms both the input and output coordinates of
+an operator. Write the coordinate change as
+\begin{equation}\label{gnc:coordinate-change}
+ \begin{aligned}
+ B&\colon\mathbb R^3_{\mathrm{old}}\longrightarrow
+          \mathbb R^3_{\mathrm{new}},\qquad B\in GL(3,\mathbb R),\\
+ x&\longmapsto y=Bx,\qquad y^i=B_{ij}x^j .
+ \end{aligned}
 \end{equation}
-Other axis orders have different singular sets. Let
-$E_i=\widehat{\mathbf e_i}$ be the generators of
-Eq.~\eqref{quat:frankel-Ei}. Differentiating Eq.~\eqref{gnc:zyx-angles}
-and multiplying by $R^T$ gives
+The subscripts label coordinate copies of $\mathbb R^3$ describing the
+same vectors. For our body-to-inertial conversion, $B=R\in SO(3)$.
+Let $A\in\operatorname{End}(\mathbb R^3_{\mathrm{old}})$ be any linear
+map and $F\in\mathbb R^3_{\mathrm{old}}$ any input column vector; put
+$G=AF$. Here $\operatorname{End}(V)$ is the vector space of linear maps
+$V\to V$; in these coordinates $A$ is a $3\times3$ matrix.
+Set $F'=BF$ and $G'=BG$. Then
+\begin{equation}\label{gnc:operator-similarity}
+ \begin{aligned}
+ G'&=BG=BAF=BAB^{-1}F'=A'F',\\
+ A'&=BAB^{-1},\qquad A\in\operatorname{End}(\mathbb R^3_{\mathrm{old}}),
+ \quad A'\in\operatorname{End}(\mathbb R^3_{\mathrm{new}}).
+ \end{aligned}
+\end{equation}
+This is Goldstein's \emph{similarity transformation}: the geometric
+operator is unchanged. The factor $B^{-1}$ converts the input to old
+coordinates; $A$ acts; $B$ converts the output to new coordinates.
+
+For a matrix Lie group $G\subseteq GL(n,\mathbb R)$ with Lie algebra
+$\mathfrak g=T_I G$ and $B\in G$, conjugation and its derivative at the identity are
+\begin{equation}\label{gnc:conjugation-adjoint}
+ \begin{aligned}
+ c_B&\colon G\longrightarrow G,
+       &h&\longmapsto BhB^{-1},\\
+ \operatorname{Ad}_B=(dc_B)_I&\colon\mathfrak g\longrightarrow\mathfrak g,
+       &X&\longmapsto
+       \left.\frac{d}{dt}\bigl(B\exp(tX)B^{-1}\bigr)\right|_{t=0}
+       =BXB^{-1}.
+ \end{aligned}
+\end{equation}
+Thus each $\operatorname{Ad}_B$ is a similarity transformation restricted
+to $\mathfrak g$. The \emph{adjoint representation} is the homomorphism
+\[
+ \operatorname{Ad}\colon G\longrightarrow GL(\mathfrak g),\qquad
+ B\longmapsto\operatorname{Ad}_B,
+\]
+proved in Proposition~\ref{quat:prop:Ad}.
+For $B\in SO(3)$, the hat map~\eqref{quat:hat} makes this concrete:
+\begin{equation}\label{gnc:so3-adjoint-hat}
+ \operatorname{Ad}_B\colon\mathfrak{so}(3)\longrightarrow\mathfrak{so}(3),
+ \qquad\widehat{\omega}\longmapsto
+ B\widehat{\omega}B^T=\widehat{B\omega}.
+\end{equation}
+Indeed, for every $v\in\mathbb R^3$, rotation invariance of the cross
+product gives
+\[
+ (B\widehat{\omega}B^T)v
+ =B(\omega\times B^Tv)
+ =(B\omega)\times(BB^Tv)
+ =(B\omega)\times v=\widehat{B\omega}\,v.
+\]
+With $B=R$, this identifies the coordinate laws
+$\omega_I=R\omega_B$ and
+$\widehat{\omega_I}=R\widehat{\omega_B}R^T$.
+
+\subsection{Euler angles and Tait--Bryan coordinates}
+Our convention remains $a_I=Ra_B$: a passive change of components.
+The same matrix gives the active attitude of a body initially aligned
+with the inertial axes. Put $c(\phi)\equiv\cos\phi$ and
+$s(\phi)\equiv\sin\phi$. The elementary positive right-handed active
+rotations are
+\begin{equation}\label{gnc:elementary-rotations}
+ \begin{aligned}
+ R_x(\phi)&=\begin{pmatrix}1&0&0\\0&c(\phi)&-s(\phi)\\0&s(\phi)&c(\phi)\end{pmatrix},\\
+ R_y(\phi)&=\begin{pmatrix}c(\phi)&0&s(\phi)\\0&1&0\\-s(\phi)&0&c(\phi)\end{pmatrix},\\
+ R_z(\phi)&=\begin{pmatrix}c(\phi)&-s(\phi)&0\\s(\phi)&c(\phi)&0\\0&0&1\end{pmatrix}.
+ \end{aligned}
+\end{equation}
+
+\paragraph{Goldstein's moving-axis $ZXZ$ sequence.}
+The dictionary to Goldstein \S4.4, pp.~151--154
+\cite{dgdt:GPS2001}, is
+\[
+ (\phi_G,\theta_G,\psi_G)=(\phi,\theta,\psi),\qquad
+ (x,x')=(a_I,a_B),\qquad A_G=R_E^T=R_E^{-1}.
+\]
+Let $Q_k$ have the $k$th frame's basis vectors as columns in inertial
+coordinates. His successive positive axis rotations give
+\begin{equation}\label{gnc:zxz-frames}
+ \begin{aligned}
+ Q_0&=I,& Q_1&=R_z(\phi),\\
+ Q_2&=Q_1R_x(\theta),& Q_3&=Q_2R_z(\psi)=R_E.
+ \end{aligned}
+\end{equation}
+The physical axes are $e_3$, $Q_1e_1$ (the line of nodes), and $Q_2e_3$.
+\input{topics/euler-frames-diagram.tex}
+For one fixed vector $a=a_k^jQ_ke_j$, $a_0=a_I$ and $a_3=a_B$:
+\begin{equation}\label{gnc:goldstein-passive-sequence}
+ \begin{aligned}
+ a_1&=\underbrace{R_z(-\phi)}_{D_G}a_0,\\
+ a_2&=\underbrace{R_x(-\theta)}_{C_G}a_1,\\
+ a_3&=\underbrace{R_z(-\psi)}_{B_G}a_2
+     =B_GC_GD_Ga_I=A_Ga_I,\\
+ A_G&=R_z(-\psi)R_x(-\theta)R_z(-\phi).
+ \end{aligned}
+\end{equation}
+Thus, in our body-to-inertial convention,
+\begin{equation}\label{gnc:zxz-angles}
+ R_E=R_z(\phi)R_x(\theta)R_z(\psi).
+\end{equation}
+The multiplication is explicit:
+\begin{align}
+ R_z(\phi)R_x(\theta)
+ &=\begin{pmatrix}
+ c(\phi)&-s(\phi)c(\theta)&s(\phi)s(\theta)\\
+ s(\phi)&c(\phi)c(\theta)&-c(\phi)s(\theta)\\
+ 0&s(\theta)&c(\theta)
+ \end{pmatrix},\notag\\
+ R_E&=\begin{pmatrix}
+ c(\phi)c(\psi)-s(\phi)c(\theta)s(\psi)&
+ -c(\phi)s(\psi)-s(\phi)c(\theta)c(\psi)&s(\phi)s(\theta)\\
+ s(\phi)c(\psi)+c(\phi)c(\theta)s(\psi)&
+ -s(\phi)s(\psi)+c(\phi)c(\theta)c(\psi)&-c(\phi)s(\theta)\\
+ s(\theta)s(\psi)&s(\theta)c(\psi)&c(\theta)
+ \end{pmatrix}.\label{gnc:zxz-expanded}
+\end{align}
+Its transpose is Goldstein's Eq.~(4.46).
+
+\paragraph{Active readings: specify the axes.}
+The positive physical rotations about those moving axes, all represented
+in the fixed inertial basis, are
+\[
+ U_1=Q_1,\qquad U_2=Q_1R_x(\theta)Q_1^T,\qquad
+ U_3=Q_2R_z(\psi)Q_2^T.
+\]
+Their chronological product is
+\[
+ U_2U_1=Q_1R_x(\theta)Q_1^TQ_1=Q_2,\qquad
+ U_3U_2U_1=Q_2R_z(\psi)Q_2^TQ_2=R_E.
+\]
+Equivalently, the same $R_E$ actively rotates vectors about fixed axes in
+chronological order $z(\psi),x(\theta),z(\phi)$.
+Reading Goldstein's $D_G,C_G,B_G$ actively instead gives
+\[
+ v_I\xmapsto{D_G}v_I^{(1)}\xmapsto{C_G}v_I^{(2)}
+ \xmapsto{B_G}v_I^{(3)}=A_Gv_I=R_E^{-1}v_I,
+\]
+with all components in the inertial basis and fixed-axis rotations
+$z(-\phi),x(-\theta),z(-\psi)$.
+Goldstein defines the angles by rotating axes and uses the passive
+component law. For physical body motion the active $R_E$ is equally
+useful; its inverse describes the opposite motion.
+
+\paragraph{Goldstein's $y$-convention: $ZYZ$.}
+Replace the second moving axis by $Q_1e_2$:
+\begin{equation}\label{gnc:zyz-angles}
+ R_{E,y}(\phi,\theta,\psi)=R_z(\phi)R_y(\theta)R_z(\psi),\qquad
+ A_{G,y}=R_{E,y}^T.
+\end{equation}
+The products are
+\begin{align}
+ R_z(\phi)R_y(\theta)
+ &=\begin{pmatrix}
+ c(\phi)c(\theta)&-s(\phi)&c(\phi)s(\theta)\\
+ s(\phi)c(\theta)&c(\phi)&s(\phi)s(\theta)\\
+ -s(\theta)&0&c(\theta)
+ \end{pmatrix},\notag\\
+ R_{E,y}&=\begin{pmatrix}
+ c(\phi)c(\theta)c(\psi)-s(\phi)s(\psi)&
+ -c(\phi)c(\theta)s(\psi)-s(\phi)c(\psi)&c(\phi)s(\theta)\\
+ s(\phi)c(\theta)c(\psi)+c(\phi)s(\psi)&
+ -s(\phi)c(\theta)s(\psi)+c(\phi)c(\psi)&s(\phi)s(\theta)\\
+ -s(\theta)c(\psi)&s(\theta)s(\psi)&c(\theta)
+ \end{pmatrix}.\label{gnc:zyz-expanded}
+\end{align}
+The exact dictionary between his $x$- and $y$-conventions follows from
+\begin{align*}
+ R_x(\theta)&=R_z(-\pi/2)R_y(\theta)R_z(\pi/2),\\
+ R_E(\phi,\theta,\psi)
+ &=R_z(\phi-\pi/2)R_y(\theta)R_z(\psi+\pi/2)\\
+ &=R_{E,y}(\phi-\pi/2,\theta,\psi+\pi/2).
+\end{align*}
+The active/passive rules above apply with $x$ replaced by $y$.
+
+\paragraph{Standard $ZYX$ yaw--pitch--roll convention.}
+We use the standard aerospace $3$--$2$--$1$ sequence with yaw $\psi$,
+pitch $\theta$, and roll $\phi$; our matrix direction is body to inertial.
+For the same angles, MathWorks's \texttt{eul2rotm} returns $R$, while its
+aerospace \texttt{angle2dcm} returns $R^T$
+\cite{MathWorksRotationConventions}.
+The positive moving-axis
+sequence is $z(\psi),y'(\theta),x''(\phi)$; equivalently, the fixed-axis
+active order is $x(\phi),y(\theta),z(\psi)$:
+\begin{equation}\label{gnc:zyx-angles}
+ R=R_z(\psi)R_y(\theta)R_x(\phi),\qquad
+ a_B=R_x(-\phi)R_y(-\theta)R_z(-\psi)a_I.
+\end{equation}
+The corresponding multiplication gives
+\begin{align}
+ R_y(\theta)R_x(\phi)
+ &=\begin{pmatrix}
+ c(\theta)&s(\theta)s(\phi)&s(\theta)c(\phi)\\
+ 0&c(\phi)&-s(\phi)\\
+ -s(\theta)&c(\theta)s(\phi)&c(\theta)c(\phi)
+ \end{pmatrix},\notag\\
+ R&=\begin{pmatrix}
+ c(\psi)c(\theta)&c(\psi)s(\theta)s(\phi)-s(\psi)c(\phi)&
+ c(\psi)s(\theta)c(\phi)+s(\psi)s(\phi)\\
+ s(\psi)c(\theta)&s(\psi)s(\theta)s(\phi)+c(\psi)c(\phi)&
+ s(\psi)s(\theta)c(\phi)-c(\psi)s(\phi)\\
+ -s(\theta)&c(\theta)s(\phi)&c(\theta)c(\phi)
+ \end{pmatrix}.\label{gnc:zyx-expanded}
+\end{align}
+Goldstein's ``$xyz$-convention'' means three distinct axes; here we fix
+its order as $ZYX$. The dictionary of chronological rotations is
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+ convention & moving axes (intrinsic) & fixed axes (active)\\\hline
+ $x$: $ZXZ$ & $z(\phi),x'(\theta),z''(\psi)$ & $z(\psi),x(\theta),z(\phi)$\\
+ $y$: $ZYZ$ & $z(\phi),y'(\theta),z''(\psi)$ & $z(\psi),y(\theta),z(\phi)$\\
+ ours: $ZYX$ & $z(\psi),y'(\theta),x''(\phi)$ & $x(\phi),y(\theta),z(\psi)$
+\end{tabular}
+\end{center}
+Goldstein's names are yaw (heading), pitch (attitude), and roll (bank). For the same attitude,
+\[
+ R_E(\phi_x,\theta_x,\psi_x)
+ =R_{E,y}(\phi_y,\theta_y,\psi_y)
+ =R_z(\psi)R_y(\theta)R_x(\phi)=R.
+\]
+Use the entries of this common matrix to convert between all three:
+\begin{equation}\label{gnc:euler-angle-dictionary}
+ \begin{aligned}
+ \phi_x&=\operatorname{atan2}(R_{13},-R_{23}),&
+ \theta_x&=\arccos R_{33},&
+ \psi_x&=\operatorname{atan2}(R_{31},R_{32}),\\
+ \phi_y&=\operatorname{atan2}(R_{23},R_{13}),&
+ \theta_y&=\arccos R_{33},&
+ \psi_y&=\operatorname{atan2}(R_{32},-R_{31}),\\
+ \psi&=\operatorname{atan2}(R_{21},R_{11}),&
+ \theta&=\arcsin(-R_{31}),&
+ \phi&=\operatorname{atan2}(R_{32},R_{33}).
+ \end{aligned}
+\end{equation}
+Here $0<\theta_x,\theta_y<\pi$ and $-\pi/2<\theta<\pi/2$; outer angles
+are taken modulo $2\pi$. In particular,
+\[
+ \theta=\arcsin\bigl(-s(\theta_x)s(\psi_x)\bigr)
+       =\arcsin\bigl(s(\theta_y)c(\psi_y)\bigr).
+\]
+Both repeated-axis conventions are singular at $\sin\theta=0$; for
+example $R_E(\phi,0,\psi)=R_z(\phi+\psi)$.
+Our Tait--Bryan angles are regular near the identity and singular at
+$\cos\theta=0$.
+
+For the rate calculation use our $ZYX$ choice~\eqref{gnc:zyx-angles}.
+Let $E_i=\widehat{\mathbf e_i}$ be the generators of
+Eq.~\eqref{quat:frankel-Ei}. Differentiating and multiplying by $R^T$ gives
 \begin{align*}
  R^T\dot R
  &=E_1\dot\phi+R_x^TE_2R_x\dot\theta\\
  &\quad+R_x^TR_y^TE_3R_yR_x\dot\psi.
 \end{align*}
 Define $\widehat{\boldsymbol\omega}_B=R^T\dot R$.
-Using $R^T\widehat{\mathbf a}R=\widehat{R^T\mathbf a}$ to read off
-the axial vector yields
+Using $R^T\widehat{\mathbf a}R=\widehat{R^T\mathbf a}$ gives
 \begin{equation}\label{gnc:zyx-rate-map}
  \boldsymbol\omega_B=
  \begin{pmatrix}
-  1&0&-\sin\theta\\
-  0&\cos\phi&\sin\phi\cos\theta\\
-  0&-\sin\phi&\cos\phi\cos\theta
+  1&0&-s(\theta)\\
+  0&c(\phi)&s(\phi)c(\theta)\\
+  0&-s(\phi)&c(\phi)c(\theta)
  \end{pmatrix}
  \begin{pmatrix}\dot\phi\\\dot\theta\\\dot\psi\end{pmatrix}.
 \end{equation}
 The determinant of the rate matrix is
-$\cos\theta(\cos^2\phi+\sin^2\phi)=\cos\theta$.
-When $\cos\theta\ne0$, the inverse function theorem gives a local
+$c(\theta)\bigl(c(\phi)^2+s(\phi)^2\bigr)=c(\theta)$.
+When $c(\theta)\ne0$, the inverse function theorem gives a local
 coordinate chart after restricting the angle ranges. At
-$\theta=\pm\pi/2$ the angle map loses rank and cannot give three
-independent tangent directions. This is a coordinate singularity
-(gimbal lock); the manifold $SO(3)$ remains smooth there.
-A unit quaternion avoids this angle singularity, but uses four constrained
-components and the two representatives $q,-q$ of one rotation.
+$\theta=\pm\pi/2$ the angle map loses rank (gimbal lock); $SO(3)$ remains
+smooth. A unit quaternion avoids this angle singularity, but uses four
+constrained components and the two representatives $q,-q$ of one rotation.
+
+\subsection{Cayley--Klein parameters, quaternions, and angles}
+\label{gnc:sec:cayley-klein}
+Use subscripts to distinguish Goldstein's complex parameters
+(\S4.5, pp.~154--155 \cite{dgdt:GPS2001}) from the angles:
+\begin{equation}\label{gnc:ck-constraints}
+ \begin{gathered}
+ \alpha_{\mathrm{CK}},\beta_{\mathrm{CK}},\gamma_{\mathrm{CK}},
+ \delta_{\mathrm{CK}}\in\mathbb C,\qquad
+ \gamma_{\mathrm{CK}}=-\beta_{\mathrm{CK}}^*,\quad
+ \delta_{\mathrm{CK}}=\alpha_{\mathrm{CK}}^*,\\
+ |\alpha_{\mathrm{CK}}|^2+|\beta_{\mathrm{CK}}|^2=1,\qquad
+ K=\begin{pmatrix}\alpha_{\mathrm{CK}}&\beta_{\mathrm{CK}}\\
+                  -\beta_{\mathrm{CK}}^*&\alpha_{\mathrm{CK}}^*\end{pmatrix}.
+ \end{gathered}
+\end{equation}
+Here $^*$ denotes complex conjugation. The constraints give
+\[
+ K^\dagger K=(|\alpha_{\mathrm{CK}}|^2+|\beta_{\mathrm{CK}}|^2)I=I,
+ \qquad \det K=|\alpha_{\mathrm{CK}}|^2+|\beta_{\mathrm{CK}}|^2=1;
+ \qquad K\in SU(2).
+\]
+
+\paragraph{Dictionary to our quaternion.}
+Goldstein's four real \emph{Euler parameters} are
+\begin{equation}\label{gnc:euler-parameters}
+ \begin{gathered}
+ (e_0,e_1,e_2,e_3)_G=(q_0,q^1,q^2,q^3)\in\mathbb R^4,\qquad
+ q_0^2+(q^1)^2+(q^2)^2+(q^3)^2=1,\\
+ \alpha_{\mathrm{CK}}=q_0+iq^3,\qquad
+ \beta_{\mathrm{CK}}=q^2+iq^1,\qquad
+ q=q_0+q^je_j\in S^3\subset\mathbb H.
+ \end{gathered}
+\end{equation}
+The $e_j$ in $q$ are our Hamilton units~\eqref{quat:basis}; the $i$ in
+$\alpha_{\mathrm{CK}},\beta_{\mathrm{CK}}$ is the complex unit.
+Conversely,
+\[
+ q_0=\Re\alpha_{\mathrm{CK}},\quad q^3=\Im\alpha_{\mathrm{CK}},\qquad
+ q^2=\Re\beta_{\mathrm{CK}},\quad q^1=\Im\beta_{\mathrm{CK}}.
+\]
+Under our quaternion--Pauli dictionary~\eqref{quat:dictionary},
+\begin{equation}\label{gnc:ck-su2-dictionary}
+ U(q)=q_0I-iq^j\sigma_j
+ =\begin{pmatrix}q_0-iq^3&-q^2-iq^1\\q^2-iq^1&q_0+iq^3\end{pmatrix},
+ \qquad K=U(q)^\dagger=U(\bar q).
+\end{equation}
+Thus the covering map~\eqref{quat:Phi} gives
+\begin{equation}\label{gnc:ck-rotation}
+ \begin{aligned}
+ R(q)&=\Phi(U(q))
+ =(q_0^2-\mathbf q\cdot\mathbf q)I
+   +2\mathbf q\mathbf q^T+2q_0\widehat{\mathbf q},\\
+ A_G&=\Phi(K)=\Phi(U(q)^{-1})=R(q)^{-1}=R(q)^T,
+ \qquad\mathbf q=(q^1,q^2,q^3)^T.
+ \end{aligned}
+\end{equation}
+This is Eq.~\eqref{quat:euler-rodrigues}. For example, Goldstein's complex
+entry becomes
+\begin{align*}
+ (A_G)_{13}
+ &=\gamma_{\mathrm{CK}}\delta_{\mathrm{CK}}
+   -\alpha_{\mathrm{CK}}\beta_{\mathrm{CK}}\\
+ &=(-q^2+iq^1)(q_0-iq^3)-(q_0+iq^3)(q^2+iq^1)\\
+ &=2(q^1q^3-q_0q^2)=R(q)_{31}.
+\end{align*}
+All entries are real quadratic expressions; $q$ and $-q$ give the same
+$R\in SO(3)$. These are four constrained real coordinates for attitude,
+with no Euler-angle singularity.
+
+\paragraph{Angles to quaternions and back.}
+Put $q_a(\phi)=c(\phi/2)+e_a s(\phi/2)$ for $a=1,2,3$. Hamilton multiplication
+follows the same order as the body-to-inertial matrices:
+\begin{equation}\label{gnc:angle-quaternion-products}
+ \begin{aligned}
+ q_{ZXZ}&=q_3(\phi)q_1(\theta)q_3(\psi),\\
+ q_{ZYZ}&=q_3(\phi)q_2(\theta)q_3(\psi),\\
+ q_{ZYX}&=q_3(\psi)q_2(\theta)q_1(\phi).
+ \end{aligned}
+\end{equation}
+Writing the results scalar first, with $u=(\phi+\psi)/2$ and
+$v=(\phi-\psi)/2$,
+\begin{equation}\label{gnc:proper-euler-quaternions}
+ q_{ZXZ}\ \longleftrightarrow\
+ \begin{pmatrix}c(\theta/2)c(u)\\s(\theta/2)c(v)\\
+ s(\theta/2)s(v)\\c(\theta/2)s(u)\end{pmatrix},\qquad
+ q_{ZYZ}\ \longleftrightarrow\
+ \begin{pmatrix}c(\theta/2)c(u)\\-s(\theta/2)s(v)\\
+ s(\theta/2)c(v)\\c(\theta/2)s(u)\end{pmatrix}.
+\end{equation}
+For Tait--Bryan angles,
+\begin{equation}\label{gnc:tait-bryan-quaternion}
+ q_{ZYX}\ \longleftrightarrow\
+ \begin{pmatrix}
+ c(\psi/2)c(\theta/2)c(\phi/2)+s(\psi/2)s(\theta/2)s(\phi/2)\\
+ c(\psi/2)c(\theta/2)s(\phi/2)-s(\psi/2)s(\theta/2)c(\phi/2)\\
+ c(\psi/2)s(\theta/2)c(\phi/2)+s(\psi/2)c(\theta/2)s(\phi/2)\\
+ s(\psi/2)c(\theta/2)c(\phi/2)-c(\psi/2)s(\theta/2)s(\phi/2)
+ \end{pmatrix}.
+\end{equation}
+In particular Goldstein's $ZXZ$ angles give directly
+\[
+ \alpha_{\mathrm{CK}}=c(\theta/2)e^{iu},\qquad
+ \beta_{\mathrm{CK}}=s(\theta/2)\bigl(s(v)+ic(v)\bigr)
+                   =i\,s(\theta/2)e^{-iv}.
+\]
+For the reverse conversion, compute $R(q)$ from
+Eq.~\eqref{gnc:ck-rotation} and apply
+Eq.~\eqref{gnc:euler-angle-dictionary} on its stated angle branches.
+
+\input{topics/rotation-axis-angle.tex}
 
 \section{Angular velocity and the rotating-frame derivative}
 Let $R(t)$ map body components to inertial components, with
@@ -364,6 +733,8 @@ The rotational kinetic energy satisfies
 The cross-product term vanishes because it is perpendicular to
 $\boldsymbol\omega_B$. Zero moment therefore conserves both inertial
 angular momentum and rotational kinetic energy.
+
+\input{topics/free-rigid-body-simulation}
 
 \section{Which metric makes rigid-body motion geodesic?}\label{gnc:sec:geodesic}
 The submanifold proof does not by itself specify the body's dynamics.

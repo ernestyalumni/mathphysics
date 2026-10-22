@@ -1,0 +1,106 @@
+\section{A free six-DOF model and its numerical realization}
+\label{gnc:sec:free-simulation}
+Take the body origin at the center of mass, SI units, constant mass $m>0$
+and constant physical inertia $J=J_B=J^T>0$. Its principal moments satisfy
+$J_i\le J_j+J_k$. Write $\mathcal R:S^3\to SO(3)$ for our Hamilton,
+scalar-first quaternion map, $q=(q_0,\mathbf q)$, with
+$\mathcal R(q)\mathbf a_B=\mathbf a_I$. The state and evolution are
+\begin{align}
+ \mathcal X&=\mathbb R^3\times\mathbb R^3\times S^3\times\mathbb R^3,
+ &z&=(\mathbf r_I,\mathbf v_I,q,\boldsymbol\omega_B),\notag\\
+ \dot{\mathbf r}_I&=\mathbf v_I,
+ &\dot{\mathbf v}_I&=m^{-1}\bigl(\mathcal R(q)\mathbf F_B+
+                              \mathbf F_{I,\mathrm{ext}}\bigr),\notag\\
+ \dot q&=\tfrac12 q\otimes(0,\boldsymbol\omega_B),
+ &\dot{\boldsymbol\omega}_B
+ &=J^{-1}\bigl(\boldsymbol\tau_B-
+                  \boldsymbol\omega_B\times J\boldsymbol\omega_B\bigr).
+ \label{gnc:simulation-rhs}
+\end{align}
+Thus $\dim\mathcal X=12$ although $z$ stores $13$ real components;
+$q\sim-q$ gives the same physical state. The moment $\boldsymbol\tau_B$
+is about the center of mass; a force at body offset $\boldsymbol\rho_B$
+contributes $\boldsymbol\rho_B\times\mathbf F_B$.
+
+For $\mathbf F_B=\mathbf F_{I,\mathrm{ext}}=\boldsymbol\tau_B=0$,
+\begin{align}
+ \mathbf r_I(t)&=\mathbf r_I(0)+t\mathbf v_I(0),
+ &\mathbf p_I&=m\mathbf v_I=\mathrm{const},\notag\\
+ \mathbf H_I&=\mathcal R(q)J\boldsymbol\omega_B=\mathrm{const},
+ &E&=\tfrac12m\lVert\mathbf v_I\rVert^2+
+            \tfrac12\boldsymbol\omega_B^TJ\boldsymbol\omega_B
+            =\mathrm{const}.\label{gnc:simulation-invariants}
+\end{align}
+Here $\mathbf H_I$ is spin about the center of mass; total angular momentum
+about the inertial origin is $\mathbf r_I\times\mathbf p_I+\mathbf H_I$.
+Generally $\dot{\boldsymbol\omega}_B\ne0$ even with no external wrench.
+For distinct principal moments, steady spin about the largest or smallest
+principal moment is stable; spin about the intermediate moment is unstable
+(Goldstein \S5.6, pp.~200--208 \cite{dgdt:GPS2001}).
+
+\subsection{Midpoint momentum and a Cayley attitude step}
+For step size $h>0$, let $\boldsymbol\ell_n=J\boldsymbol\omega_{B,n}$.
+For a body-fixed wrench held constant over the step, solve
+\begin{align}
+ \bar{\boldsymbol\ell}&=\tfrac12(\boldsymbol\ell_n+
+                                              \boldsymbol\ell_{n+1}),
+ &\bar{\boldsymbol\omega}&=J^{-1}\bar{\boldsymbol\ell},\notag\\
+ \boldsymbol\ell_{n+1}-\boldsymbol\ell_n
+ &=h\bigl(\boldsymbol\tau_B-
+               \bar{\boldsymbol\omega}\times\bar{\boldsymbol\ell}\bigr),
+ &u&=\frac{(1,\tfrac h2\bar{\boldsymbol\omega})}
+             {\sqrt{1+\tfrac{h^2}4\lVert\bar{\boldsymbol\omega}\rVert^2}},
+ \notag\\
+ q_{n+1}&=q_n\otimes u,
+ &R_{n+1}&=R_n\,
+ \underbrace{(I-\tfrac h2\widehat{\bar{\boldsymbol\omega}})^{-1}
+             (I+\tfrac h2\widehat{\bar{\boldsymbol\omega}})}_
+             {\operatorname{cay}(h\widehat{\bar{\boldsymbol\omega}})}.
+ \label{gnc:midpoint-cayley}
+\end{align}
+The nonlinear solve uses its residual, rather than a fixed number of
+iterations, to decide convergence. Let
+$q_{1/2}=(q_n+q_{n+1})/\lVert q_n+q_{n+1}\rVert$ using these continuous
+quaternion lifts. Then
+\begin{align*}
+ \mathbf a_{1/2}
+ &=m^{-1}\bigl(\mathcal R(q_{1/2})\mathbf F_B+
+                                      \mathbf F_{I,\mathrm{ext}}\bigr),\\
+ \mathbf v_{n+1}&=\mathbf v_n+h\mathbf a_{1/2},\qquad
+ \mathbf r_{n+1}=\mathbf r_n+\tfrac h2(\mathbf v_n+\mathbf v_{n+1}).
+\end{align*}
+In exact arithmetic, for zero wrench,
+\begin{align*}
+ T_{\mathrm{rot},n+1}-T_{\mathrm{rot},n}
+ &=\bar{\boldsymbol\omega}\cdot
+                 (\boldsymbol\ell_{n+1}-\boldsymbol\ell_n)=0,\\
+ (I+\tfrac h2\widehat{\bar{\boldsymbol\omega}})
+       \boldsymbol\ell_{n+1}
+ &=(I-\tfrac h2\widehat{\bar{\boldsymbol\omega}})
+       \boldsymbol\ell_n
+ \ \Longrightarrow\ R_{n+1}\boldsymbol\ell_{n+1}
+                         =R_n\boldsymbol\ell_n.
+\end{align*}
+Floating-point conservation is limited by the nonlinear residual and
+roundoff. This is a second-order trajectory approximation, not the exact
+flow: even spherical inertia gives the step angle
+$2\arctan(h\lVert\boldsymbol\omega\rVert/2)$ rather than
+$h\lVert\boldsymbol\omega\rVert$.
+Check both invariant drift and attitude/position convergence against an
+independent reference; invariant preservation alone cannot bound phase error.
+
+\subsection{What the model resolves; what to read next}
+Equations~\eqref{gnc:simulation-rhs} suffice for an ideal rigid body in
+force-free, torque-free space. A browser clock requests elapsed time;
+the backend advances fixed physical steps. Applied controls are explicit
+external wrenches; releasing them returns to free coast.
+
+For dynamics, read Goldstein \S\S5.1, 5.3--5.6 (pp.~184--208)
+\cite{dgdt:GPS2001}; for an engineering connection, Wie
+\S5.5 (p.~339) and \S\S6.1--6.7 (pp.~349--371)
+\cite{BWie2008}. Wie \S\S7.3--7.7 add quaternion feedback, momentum
+management and jet selection; Chapters~8--9 add flexibility and slosh.
+Spacecraft fidelity additionally requires measured mass properties and
+appropriate environment/actuator models. Numerical verification does not
+by itself validate those physical assumptions. NASA's six-DOF check cases
+\cite{NASA6DOF2015} provide a later independent benchmark target.

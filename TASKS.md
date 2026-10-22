@@ -1,6 +1,6 @@
 # Current Execution Queue — TMP / MHV Discovery Engine
 
-**Last updated:** 2026-10-17
+**Last updated:** 2026-10-21
 
 ## Implemented: Frankel SO(3)/SU(2) tooling (October 17 request)
 
@@ -14,6 +14,28 @@
 - Original matrix implementations and mono-notes kept untouched.
   Scope, limitations and evidence: Rust/lie-groups/docs/VERIFICATION.md.
 - Optional continuation: Rust/lie-groups/CONTINUE.md. No background job running.
+
+## Implemented: Goldstein rotation dictionaries (October 21)
+
+- Extended Rust/lie-groups and CppMath/LieGroups, added Python/rotations,
+  and condensed mono-notes Goldstein §§4.6–4.7. Reusable numerical maps,
+  explicit inverse branches, exact symbolic identities and independent
+  cross-language/CAS regression all pass.
+- Receipt: Rust/lie-groups/docs/GOLDSTEIN-VERIFICATION.md. No background test
+  process is required to interpret this completed receipt.
+
+## Implemented: interactive ideal six-DOF lab (October 21)
+
+- `./run_rigid_body_lab.sh`: local Python backend plus WebGL viewer at
+  <http://127.0.0.1:8765>, keyboard/touch force and torque, free coasting,
+  tumbling/flip presets, live conservation telemetry, pause and single step.
+- Reusable C++/Rust/Python dynamics share the body-to-inertial convention;
+  implicit midpoint momentum with Cayley attitude, full COM inertia.
+- Analytic, DOP853, cross-language, symbolic and actual-browser checks pass.
+  Scope, commands and evidence:
+  [six-DOF verification](JavaScript/rigid-body-viewer/VERIFICATION.md).
+- Concise theory and engineering reading added to both mono-notes PDFs.
+  The interactive server remains running by user request; test jobs finished.
 
 ## Active: Rust QFT corpus (Ernest's October 16 request)
 

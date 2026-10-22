@@ -31,6 +31,9 @@ on 2026-09-12 and will be refined with him.
   symbols, their roles, and the explicit map to our symbols. Keep the original
   notation long enough to make the comparison checkable. Name the point at
   which our notation takes over.
+- For rotation angles, prefer `$\phi$` and `$\theta$`, adding `$\psi$`
+  for a third angle. Use convention subscripts when comparing angle triples;
+  retain source symbols for quantities such as complex Cayley--Klein parameters.
 - Write the mass ratio explicitly as `\frac{M_f}{M(0)}` in our
   notation, or `\frac{m_f}{m_0}` when using Sutton's mass symbols.
   Use `\frac{M(0)}{M_f}` for the reciprocal. Ernest prefers the

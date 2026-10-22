@@ -33,6 +33,29 @@ See the [source audit](Rust/lie-groups/docs/SOURCE-AUDIT.md) and
 [verification contract](Rust/lie-groups/docs/VERIFICATION.md).
 These are independently authored known-result tools, not complete CAS ports.
 
+## Goldstein rotation libraries
+
+The [Python rotation library and validation runner](Python/rotations/README.md),
+[Rust API](Rust/lie-groups/docs/GOLDSTEIN-API.md), and
+[C++ API](CppMath/LieGroups/README.md) implement the matrix, Euler-angle,
+axis–angle, Hamilton-quaternion and Cayley–Klein dictionaries used in the
+mono-notes. Independent numerical and exact symbolic checks cover signs,
+composition order, singular branches, conjugation and Cayley–Hamilton.
+See the [verification receipt](Rust/lie-groups/docs/GOLDSTEIN-VERIFICATION.md)
+for executed checks, commands and domain limits.
+
+## Interactive six-DOF rigid-body lab
+
+Run `./run_rigid_body_lab.sh`, then open <http://127.0.0.1:8765>.
+The Python backend advances fixed 1/240 s physical steps; the local WebGL
+viewer provides spacecraft translation/rotation controls, free tumbling,
+intermediate-axis instability, pause/step, and live conservation diagnostics.
+See [the viewer and controls](JavaScript/rigid-body-viewer/README.md) and
+[the dynamics model and validation](Python/rotations/DYNAMICS.md).
+The model is an ideal constant-mass rigid body with explicit external wrenches;
+measured spacecraft properties, gravity, flexibility, slosh, and actuator
+hardware are separate model extensions.
+
 # Creating and starting a virtual environment for Python 3
 
 Create a directory for a virtual environment:

@@ -1,0 +1,148 @@
+\subsection{Euler's theorem: one axis and one finite angle}
+\label{gnc:sec:euler-theorem}
+Goldstein \S4.6, pp.~155--161, Eqs.~(4.48), (4.56)--(4.61)
+\cite{dgdt:GPS2001}. In our notation the statement is
+\[
+ R\in SO(3)\quad\Longrightarrow\quad
+ \exists\,n\in S^2:\ Rn=n.
+\]
+Indeed, putting $d=\det(R-I)$,
+\begin{align*}
+ (R-I)R^T&=I-R^T,\\
+ d&=\det\bigl((R-I)R^T\bigr)
+   =\det(I-R^T)=\det(I-R)=-\det(R-I)=-d,\\
+ d&=0,\qquad \ker(R-I)\ne\{0\}.
+\end{align*}
+Choose $n\in\ker(R-I)$ with $|n|=1$, $|u|=1$, $u\perp n$, and
+$v=n\times u$. Then $S=(u\ v\ n)\in SO(3)$ and
+\begin{equation}\label{gnc:rotation-normal-form}
+ S^TRS=\begin{pmatrix}c(\phi)&-s(\phi)&0\\s(\phi)&c(\phi)&0\\0&0&1\end{pmatrix}.
+\end{equation}
+The sign of $n$ can be chosen so that $0\le\phi\le\pi$.
+Consequently,
+\begin{equation}\label{gnc:rotation-spectrum}
+ \begin{gathered}
+ \operatorname{spec}_{\mathbb C}R=\{1,e^{i\phi},e^{-i\phi}\},\qquad
+ \operatorname{tr}R=1+2c(\phi),\\
+ \dim\ker(R-I)=\begin{cases}3,&R=I,\\1,&R\ne I.\end{cases}
+ \end{gathered}
+\end{equation}
+The characteristic polynomial and Cayley--Hamilton identity are
+\begin{equation}\label{gnc:rotation-cayley-hamilton}
+ \begin{aligned}
+ \chi_R(\lambda)&=(\lambda-1)(\lambda^2-2c(\phi)\lambda+1),\\
+ \chi_R(R)&=R^3-\tau R^2+\tau R-I=0,\qquad\tau=\operatorname{tr}R.
+ \end{aligned}
+\end{equation}
+The determinant argument uses odd dimension; $-I_2\in SO(2)$ has no
+nonzero fixed vector.
+
+\paragraph{Finite rotations and the exponential map.}
+Goldstein \S4.7, pp.~161--163, Eqs.~(4.62)--(4.63), uses axis--angle
+coordinates for the same rotation. Put $N=\widehat n\in\mathfrak{so}(3)$,
+$Nx=n\times x$. The vector triple product gives
+\[
+ N^2x=n\times(n\times x)=n(n\cdot x)-x,\qquad
+ N^2=nn^T-I,\qquad N^3=Nnn^T-N=-N.
+\]
+Reducing the exponential series with $N^3=-N$,
+\begin{align}
+ \exp(\phi N)
+ &=I+\sum_{m=0}^{\infty}\frac{(-1)^m\phi^{2m+1}}{(2m+1)!}\,N
+    +\sum_{m=1}^{\infty}\frac{(-1)^{m-1}\phi^{2m}}{(2m)!}\,N^2\notag\\
+ &=I+s(\phi)N+(1-c(\phi))N^2\notag\\
+ &=c(\phi)I+(1-c(\phi))nn^T+s(\phi)\widehat n
+ =:R_{n,\phi}.\label{gnc:rodrigues-matrix}
+\end{align}
+Thus the exponential is surjective,
+\[
+ \exp\colon\mathfrak{so}(3)\longrightarrow SO(3),\qquad
+ \phi\widehat n\longmapsto R_{n,\phi},
+\]
+and the corresponding active vector map is precisely
+\begin{equation}\label{gnc:finite-vector-map}
+ \begin{aligned}
+ R_{n,\phi}&\colon\mathbb R^3\longrightarrow\mathbb R^3,\\
+ x&\longmapsto c(\phi)x+(1-c(\phi))n(n\cdot x)+s(\phi)n\times x.
+ \end{aligned}
+\end{equation}
+This agrees with Eq.~\eqref{quat:rotate-about-n}.
+Goldstein's Eq.~(4.62) has the opposite active sense:
+\begin{equation}\label{gnc:goldstein-finite-dictionary}
+ \begin{aligned}
+ A_G&=R_{n,\phi}^T=R_{n,-\phi},\\
+ A_Gx&=c(\phi)x+(1-c(\phi))n(n\cdot x)+s(\phi)x\times n.
+ \end{aligned}
+\end{equation}
+
+\paragraph{Recovering the axis and angle.}
+Equations~\eqref{gnc:rotation-spectrum} and~\eqref{gnc:rodrigues-matrix}
+give
+\begin{equation}\label{gnc:axis-angle-recovery}
+ \begin{gathered}
+ \phi=\arccos\!\left(\frac{\operatorname{tr}R-1}{2}\right),\qquad
+ R-R^T=2s(\phi)\widehat n,\\
+ n=\frac1{2s(\phi)}\begin{pmatrix}R_{32}-R_{23}\\R_{13}-R_{31}\\R_{21}-R_{12}\end{pmatrix},
+ \qquad 0<\phi<\pi.
+ \end{gathered}
+\end{equation}
+At $R=I$, every axis is possible. At $\phi=\pi$,
+\[
+ \frac{R+I}{2}=nn^T,\qquad n\sim-n.
+\]
+For example, choose $j$ with maximal $R_{jj}$ and take
+$n_j=\sqrt{(R_{jj}+1)/2}>0$; then
+$n_i=(R_{ij}+\delta_{ij})/(2n_j)$.
+
+\paragraph{One rotation, several representations.}
+With convention subscripts on the Euler angles,
+\begin{equation}\label{gnc:rotation-representation-dictionary}
+ \begin{aligned}
+ R&=R_z(\phi_E)R_x(\theta_E)R_z(\psi_E)\\
+  &=R_z(\psi_T)R_y(\theta_T)R_x(\phi_T)\\
+  &=\exp(\phi\widehat n)=\Phi(U(q)),\\
+ q&=\pm\bigl(c(\phi/2)+n^je_j s(\phi/2)\bigr),\qquad
+ K=U(q)^\dagger,\quad A_G=\Phi(K)=R^T.
+ \end{aligned}
+\end{equation}
+Use Eqs.~\eqref{gnc:euler-angle-dictionary},
+\eqref{gnc:proper-euler-quaternions} and~\eqref{gnc:tait-bryan-quaternion}
+for the conversions. In particular, for the principal angle $0\le\phi\le\pi$,
+\begin{equation}\label{gnc:goldstein-half-angle}
+ c(\phi/2)=|q_0|
+ =\left|c(\theta_E/2)c\bigl((\phi_E+\psi_E)/2\bigr)\right|.
+\end{equation}
+Goldstein's Eq.~(4.63) chooses the continuous lift near the identity;
+the absolute value selects the principal angle globally.
+
+For a body-fixed vector $a_B$, its finite displacement between two times is
+\[
+ a_I(t_2)=R(t_2)a_B=R(t_2)R(t_1)^Ta_I(t_1).
+\]
+Euler's theorem applies to $R(t_2)R(t_1)^T$; its axis generally differs
+from the instantaneous angular-velocity direction.
+
+\paragraph{Chasles: translation, rotation, and a screw axis.}
+The free rigid displacement is
+\[
+ (r,R)\in SE(3),\qquad x\longmapsto r+Rx.
+\]
+For $R=R_{n,\phi}\ne I$, put $h=n\cdot r$, $r_\perp=r-hn$, and
+\[
+ p=\frac12\left(r_\perp+\cot(\phi/2)n\times r_\perp\right).
+\]
+Since $R=c(\phi)I+s(\phi)N$ on $n^\perp$ and $N^2=-I$ there,
+\begin{align*}
+ (I-R)p
+ &=\tfrac12\bigl((1-c(\phi))I-s(\phi)N\bigr)
+       \bigl(I+\cot(\phi/2)N\bigr)r_\perp\\
+ &=\tfrac12\Bigl((1-c(\phi)+s(\phi)\cot(\phi/2))I
+       +((1-c(\phi))\cot(\phi/2)-s(\phi))N\Bigr)r_\perp\\
+ &=r_\perp.
+\end{align*}
+Hence
+\[
+ r+Rx=p+R(x-p)+hn.
+\]
+The axis is $p+\mathbb R n$ and the translation along it is $hn$.
+For $R=I$ the motion is pure translation.

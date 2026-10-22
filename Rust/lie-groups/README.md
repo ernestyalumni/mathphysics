@@ -1,7 +1,8 @@
 # SO(3), so(3), SU(2), su(2) — numerical and symbolic Rust
 
-An independently authored, scalar-generic toolkit following Frankel §§19.1a–b.
-The original C++/Rust experiments, book corpus and study notes remain unchanged.
+An independently authored, scalar-generic toolkit following Frankel §§19.1a–b
+and Goldstein §§4.2–4.7. Original experiment files and the book corpus remain
+unchanged; the shared mono-notes develop the matching mathematics.
 Matching C++20 implementation: [../../CppMath/LieGroups](../../CppMath/LieGroups).
 
 ## Compile-time scalar and dimension selection
@@ -70,6 +71,21 @@ default tolerance and can fail on drift. No silent normalization or projection
 onto the group occurs. SU(2) inversion/antipodes preserve its quaternion norm
 by sign changes. Small-angle series avoid cancellation; large-angle error is
 still limited by scalar precision and library trigonometric argument reduction.
+
+## Goldstein rotation conversions
+
+[Goldstein API](docs/GOLDSTEIN-API.md) adds ZXZ/ZYZ/ZYX products,
+branch-aware Euler extraction, stable axis-angle and quaternion extraction,
+Goldstein Cayley–Klein conventions, conjugation and Cayley–Hamilton residuals.
+New Euler arrays use product order: ZXZ/ZYZ `[phi,theta,psi]`, ZYX
+`[yaw psi,pitch theta,roll phi]`. Forward numerical maps are scalar-generic;
+inverse extraction uses f64 and exposes singularities.
+
+`MultiTrig<N>` extends the exact layer to independent real angles in
+`Q[s_i,c_i]/(s_i²+c_i²-1)`, with explicit resource bounds. It is distinct
+from a general symbolic-expression engine.
+[Python verification](../../Python/rotations/README.md) provides reusable
+numerical functions and independent SymPy/Cadabra/native-language comparisons.
 
 ## Exact symbolic APIs: three different encodings
 
@@ -148,6 +164,53 @@ Artifacts stay under ~/.cache/mathphysics-lie-groups/.
 CLI exit 0 means PASS or COMPUTED (not interchangeable), 1 means FAIL, 2 means
 INCONCLUSIVE. The fixed-symbol interchange files are trusted producer outputs;
 CAS expression evaluators are **not safe arbitrary-model-input parsers**.
+
+## COM-centered 6DOF dynamics
+
+`rigid_body` adds f64 numerical `Model`, `State`, `Wrench`, `Derivative`,
+`StepOptions`, and `StepResult`, reusing the existing matrix/SU(2)/SO(3) types.
+`State::default()` has zero position/velocity/angular velocity and identity
+attitude; `Wrench::default()` has zero body force, body torque and inertial force.
+There is no implicit gravity or damping. Positions/velocities refer to the COM
+in inertial axes; `omega_body` and full inertia use COM body axes; the
+scalar-first Hamilton quaternion maps body to inertial.
+
+```rust
+use lie_groups::{Matrix, rigid_body::{Model,State,Wrench,StepOptions}};
+let model = Model::new(2.0, Matrix::from_rows([
+    [2.0,0.2,0.1], [0.2,3.0,0.3], [0.1,0.3,4.0]
+])).unwrap();
+let initial = State { omega_body: [0.3,-0.4,0.8], ..State::default() };
+let derivative = model.rhs(initial, Wrench::default()).unwrap();
+let next = model.step(initial, 1.0/240.0, Wrench::default(),
+    StepOptions::default()).unwrap().state;
+```
+
+Mass must be positive finite. Full symmetric SPD inertia is validated with
+physical principal-moment triangle inequalities (`1e-12` relative tolerance);
+accepted symmetry roundoff is averaged and solves use scaled Cholesky factors.
+Quaternion inputs require squared norm within `1e-10` of one, then normalize
+only that accepted roundoff, retaining the SU(2) lift sign.
+`rhs` implements Euler's body equation and Hamilton quaternion kinematics.
+`step` solves implicit midpoint in body momentum with an analytic Jacobian,
+then uses the Cayley quaternion increment, midpoint body-force attitude, and
+midpoint translational velocity. Inputs stay constant over a step.
+Defaults are 20 Newton iterations and residual infinity norm at most
+`1e-12*(1+|h0|inf+dt*|torque_body|inf)`. Invalid data, nonfinite arithmetic,
+singular Jacobians and nonconvergence return `Error`; finite `dt>0` has no
+arbitrary cap. Large converged steps may still be inaccurate.
+Newton options require tolerance in `(0,1e-4]` and iterations in `[1,100]`.
+
+Free steps preserve rotational energy, momentum norm and full inertial COM
+spin vector in exact arithmetic. Forced steps satisfy a body-torque discrete
+work identity, not an exact inertial-torque midpoint quadrature.
+`kinetic_energy` is total kinetic energy; `momentum_inertial` excludes orbital
+angular momentum about a separate origin. Eight integration tests cover exact
+solutions, full-inertia invariants, an intermediate-axis flip, second-order
+convergence, forcing signs, lift equivariance, and invalid/failing solves.
+`cargo run --example rigid_body_fixtures` emits eight native JSONL fixtures.
+See the [Python dynamics](../../Python/rotations/DYNAMICS.md) for shared equations
+and independent DOP853 checks, and the C++ README for the matching C++ API.
 
 ## Licensing
 

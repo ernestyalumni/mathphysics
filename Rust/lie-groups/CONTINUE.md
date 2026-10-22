@@ -1,6 +1,8 @@
 # Continuation — Frankel rotation-group toolkit
 
-The requested bounded implementation is complete on feat/lie-groups-so3-su2.
+The Frankel toolkit and Goldstein rotation extensions are implemented on
+feat/lie-groups-so3-su2. See docs/GOLDSTEIN-API.md and
+docs/GOLDSTEIN-VERIFICATION.md for the October 21 additions.
 Read README.md, docs/SOURCE-AUDIT.md and docs/VERIFICATION.md first.
 
 Preserve conventions:
@@ -14,10 +16,12 @@ Preserve conventions:
 Optional future units (not completed and no background job running):
 1. Arbitrary-precision Rust coefficient backend and uniform fallible arithmetic;
    coordinate with ../qft-symbolics/CONTINUE.md rather than introduce two CASes.
-2. Explicit logarithm/branch APIs (pi rotations and antipodal spinors need a
-   documented branch choice); additional independent stress/property cases.
-3. Multiple symbolic angles or an expression-DAG layer, only if physics tasks
-   need it. Current Trig has one common angle and retains half-angle metadata.
+2. Broader logarithm/branch APIs: f64 axis-angle/quaternion/Euler extraction
+   now has explicit principal branches and endpoint coverage; extending inverse
+   transcendental support to other scalar backends remains separate work.
+3. A general expression-DAG layer remains separate work. MultiTrig<N> now
+   supports up to eight independent real angles in a bounded circle quotient;
+   the original Trig still retains one-angle/half-angle metadata.
 4. Higher-spin/Wigner representations with a documented Cartesian/spherical
    basis change; do not conflate j=1 matrices with the standard Cartesian basis.
 5. If required, introduce a separate Euclidean3 index space when integrating

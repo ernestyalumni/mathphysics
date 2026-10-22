@@ -3,6 +3,14 @@
 Run bash validation/run.sh from this crate. The latest full-run location is
 recorded below; source hashes bind the actual tested tree.
 
+## Goldstein extension — 2026-10-21
+
+The [Goldstein verification receipt](GOLDSTEIN-VERIFICATION.md) records the
+new Euler/axis-angle/Cayley–Klein/characteristic-polynomial coverage and
+completed independent Python/SymPy/Cadabra and full native/QFT regressions.
+The original October 17 receipt below is historical; new counts and domains
+are recorded in the extension receipt and [API guide](GOLDSTEIN-API.md).
+
 ## Acceptance gates
 
 - Rust 27 integration tests and 4 doctests (three compile-fail, one positive),

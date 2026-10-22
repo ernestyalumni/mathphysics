@@ -21,8 +21,11 @@
 //! let b=Matrix::<f64,2,2>::identity();
 //! let impossible=&a*&b;
 //! ```
+pub mod goldstein;
 pub mod half;
 pub mod matrix;
+pub mod multitrig;
+pub mod rigid_body;
 pub mod scalar;
 pub mod so3;
 pub mod su2;

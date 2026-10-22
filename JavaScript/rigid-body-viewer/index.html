@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#080e17" />
+  <meta name="description" content="An interactive six-degree-of-freedom rigid-body laboratory. Apply body-frame thrust, observe free rotation, and track conserved quantities." />
+  <title>INERTIA — Rigid body flight lab</title>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Inertia rigid body lab"><span class="brand-mark" aria-hidden="true">◇</span><span><strong>INERTIA</strong><small>RIGID BODY FLIGHT LAB</small></span></a>
+    <div class="environment"><span class="chip">6 DOF</span><span>VACUUM · NO GRAVITY · NO DRAG</span></div>
+    <div class="connection" id="connection" data-testid="connection-status"><i></i><span>CONNECTING TO SOLVER</span></div>
+  </header>
+  <main class="workspace">
+    <aside class="panel setup-panel" aria-label="Experiment setup">
+      <div class="panel-heading"><span class="eyebrow">01 / EXPERIMENT</span><span class="tiny-muted">SI UNITS</span></div>
+      <h1>Explore motion.</h1><p class="intro">An asymmetric body. Six degrees of freedom. Nothing to slow it down.</p>
+      <div class="presets" role="group" aria-label="Experiment presets">
+        <button class="preset selected" data-preset="free-tumble" data-testid="preset-free-tumble"><span class="preset-icon">↻</span><span><strong>Free tumble</strong><small>Torque-free rotation</small></span><span class="preset-arrow">↗</span></button>
+        <button class="preset" data-preset="principal-spin" data-testid="preset-principal-spin"><span class="preset-icon">◎</span><span><strong>Principal-axis spin</strong><small>A steady rotation</small></span><span class="preset-arrow">↗</span></button>
+        <button class="preset" data-preset="intermediate-axis-flip" data-testid="preset-intermediate-axis-flip"><span class="preset-icon">⤨</span><span><strong>Intermediate-axis flip</strong><small>The tennis-racket effect</small></span><span class="preset-arrow">↗</span></button>
+        <button class="preset" data-preset="thruster-sandbox" data-testid="preset-thruster-sandbox"><span class="preset-icon">↗</span><span><strong>Thruster sandbox</strong><small>Take the controls</small></span><span class="preset-arrow">↗</span></button>
+      </div>
+      <form id="initial-form">
+        <div class="section-divider"><span>INITIAL CONDITIONS</span><span>↙</span></div>
+        <label class="wide-field">Mass <span>kg</span><input id="mass" data-testid="mass" type="number" min="0.1" max="1000000" step="0.1" value="100" required></label>
+        <label class="field-caption">Body dimensions <span>m · X / Y / Z</span></label>
+        <div class="triple-fields"><label><i class="axis-x">X</i><input id="dimension-x" aria-label="Body X dimension" type="number" min="0.1" max="100" step="0.1" value="3" required></label><label><i class="axis-y">Y</i><input id="dimension-y" aria-label="Body Y dimension" type="number" min="0.1" max="100" step="0.1" value="2" required></label><label><i class="axis-z">Z</i><input id="dimension-z" aria-label="Body Z dimension" type="number" min="0.1" max="100" step="0.1" value="1" required></label></div>
+        <label class="field-caption">Initial angular velocity <span>rad/s · BODY</span></label>
+        <div class="triple-fields"><label><i class="axis-x">ωx</i><input id="omega-x" data-testid="omega-x" aria-label="Initial angular velocity X" type="number" min="-50" max="50" step="0.1" value="0.3" required></label><label><i class="axis-y">ωy</i><input id="omega-y" aria-label="Initial angular velocity Y" type="number" min="-50" max="50" step="0.1" value="1.2" required></label><label><i class="axis-z">ωz</i><input id="omega-z" aria-label="Initial angular velocity Z" type="number" min="-50" max="50" step="0.1" value="0.5" required></label></div>
+        <button class="button apply-button" type="submit" data-testid="apply-initial">Apply & restart <span>↗</span></button>
+      </form>
+      <div class="model-note"><span class="note-icon">i</span><p>Uniform cuboid inertia.<br>Body frame: <b>+X nose</b>, <b>+Y starboard</b>, <b>+Z belly</b>.</p></div>
+    </aside>
+    <section class="scene-panel" aria-label="Interactive 3D spacecraft view">
+      <div id="viewport" data-testid="viewport" tabindex="0" aria-label="3D view. Drag to orbit, scroll to zoom. Use flight keys to control the body."></div>
+      <div class="viewport-top"><div><div class="eyebrow">LIVE SIMULATION</div><h2 id="experiment-title">Free tumble</h2><p id="experiment-description">Angular momentum stays fixed. The body does not.</p></div><div class="view-mode" role="group" aria-label="Camera mode"><button data-camera="orbit" class="active" aria-pressed="true">Orbit</button><button data-camera="chase" aria-pressed="false">Chase</button></div></div>
+      <div id="scene-error" class="scene-error" hidden></div>
+      <div class="scene-center-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="frame-label"><span class="status-dot"></span> INERTIAL REFERENCE <span class="frame-unit">[m]</span></div>
+      <div class="viewport-bottom"><div class="scene-legend"><span><i class="axis-x"></i>X / NOSE</span><span><i class="axis-y"></i>Y / STARBOARD</span><span><i class="axis-z"></i>Z / BELLY</span></div><div class="view-help">DRAG TO ORBIT <span>·</span> SCROLL TO ZOOM <button id="recenter" title="Recenter camera" aria-label="Recenter camera">⌖</button></div></div>
+      <div class="rate-monitor"><div class="graph-heading"><span>ω<sub>B</sub> / rad s⁻¹</span><span id="rate-norm">0.000</span></div><svg id="rate-graph" viewBox="0 0 240 66" role="img" aria-label="Recent body-frame angular velocity components"><path class="graph-grid" d="M0 16H240M0 33H240M0 50H240"/><path id="graph-x" class="axis-x"/><path id="graph-y" class="axis-y"/><path id="graph-z" class="axis-z"/></svg></div>
+      <div class="transport">
+        <div class="playback-buttons"><button id="pause" class="play-button" data-testid="pause" title="Pause / resume (Space)"><span id="pause-icon">Ⅱ</span><span id="pause-label">Pause</span></button><button id="step" data-testid="step" title="Advance one solver step" aria-label="Advance one solver step">▷│</button><button id="reset" data-testid="reset" title="Restart current experiment" aria-label="Restart current experiment">↺</button></div>
+        <div class="simulation-clock"><span>SIM TIME</span><strong id="sim-time" data-testid="sim-time">00:00.000</strong></div>
+        <label class="speed-control"><span>RATE</span><select id="speed" data-testid="speed" aria-label="Simulation speed"><option value="0.1">0.1×</option><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="5">5×</option><option value="10">10×</option></select></label>
+      </div>
+    </section>
+    <aside class="panel flight-panel" aria-label="Flight controls and live state">
+      <div class="panel-heading"><span class="eyebrow">02 / FLIGHT CONTROLS</span><span class="key-hint">⌨</span></div>
+      <div class="wrench-status" id="wrench-status" data-testid="wrench-status"><i></i><span>COASTING</span><small>ZERO EXTERNAL WRENCH</small></div>
+      <div class="control-caption">TRANSLATION <span>BODY FRAME</span></div>
+      <div class="control-grid">
+        <button class="flight-key" data-code="KeyW" data-testid="thrust-forward"><kbd>W</kbd><span>Forward</span></button><button class="flight-key" data-code="KeyS"><kbd>S</kbd><span>Reverse</span></button><button class="flight-key" data-code="KeyA"><kbd>A</kbd><span>Port</span></button><button class="flight-key" data-code="KeyD"><kbd>D</kbd><span>Starboard</span></button><button class="flight-key" data-code="KeyR"><kbd>R</kbd><span>Rise</span></button><button class="flight-key" data-code="KeyF"><kbd>F</kbd><span>Descend</span></button>
+      </div>
+      <div class="control-caption attitude-caption">ATTITUDE <span>BODY TORQUE</span></div>
+      <div class="control-grid attitude-grid"><button class="flight-key" data-code="ArrowUp"><kbd>↑</kbd><span>Nose up</span></button><button class="flight-key" data-code="ArrowDown"><kbd>↓</kbd><span>Nose down</span></button><button class="flight-key" data-code="ArrowLeft"><kbd>←</kbd><span>Yaw left</span></button><button class="flight-key" data-code="ArrowRight"><kbd>→</kbd><span>Yaw right</span></button><button class="flight-key" data-code="KeyQ"><kbd>Q</kbd><span>Roll left</span></button><button class="flight-key" data-code="KeyE"><kbd>E</kbd><span>Roll right</span></button></div>
+      <div class="power-controls"><label>THRUST <strong><output id="force-value">25</output> N</strong><input id="force-scale" aria-label="Thrust magnitude" type="range" min="1" max="250" step="1" value="25"></label><label>TORQUE <strong><output id="torque-value">10</output> N·m</strong><input id="torque-scale" aria-label="Torque magnitude" type="range" min="0.5" max="50" step="0.5" value="10"></label></div>
+      <div class="boost-help"><kbd id="boost-indicator">SHIFT</kbd><span>4× translation boost</span></div>
+      <p class="coast-help">Hold to fire. Release to coast.<br><span>No brakes. No automatic stabilization.</span></p>
+      <div class="section-divider state-divider"><span>LIVE STATE</span><span>SI</span></div>
+      <dl class="state-rows"><div><dt>Position <sub>I</sub> / m</dt><dd id="position-value">0.00 / 0.00 / 0.00</dd></div><div><dt>Velocity <sub>I</sub> / m s⁻¹</dt><dd id="velocity-value">0.00 / 0.00 / 0.00</dd></div><div><dt>Angular rate <sub>B</sub> / rad s⁻¹</dt><dd id="omega-value">0.00 / 0.00 / 0.00</dd></div></dl>
+      <div class="display-options"><label><input id="show-grid" type="checkbox" checked> Reference grid</label><label><input id="show-momentum" type="checkbox" checked> Momentum vector</label></div>
+    </aside>
+  </main>
+  <footer class="telemetry" aria-label="Conservation diagnostics">
+    <div class="telemetry-title"><div class="eyebrow">03 / CONSERVATION</div><span id="reference-label">COAST SEGMENT</span><small id="drift-explanation">Drift scaled by max(reference, 1 SI unit)</small></div>
+    <div class="metric"><span>TOTAL ENERGY <small>J</small></span><strong id="energy-value">—</strong><small><span title="|E − E_ref| / max(|E_ref|, 1 J)">SCALED |ΔE|</span> <b id="energy-drift">—</b></small></div>
+    <div class="metric"><span>ANGULAR MOMENTUM <small>N·m·s</small></span><strong id="angular-value">—</strong><small><span title="‖H − H_ref‖ / max(‖H_ref‖, 1 N·m·s)">SCALED ‖ΔH‖</span> <b id="angular-drift">—</b></small></div>
+    <div class="metric"><span>LINEAR MOMENTUM <small>kg·m/s</small></span><strong id="linear-value">—</strong><small><span title="‖P − P_ref‖ / max(‖P_ref‖, 1 kg·m/s)">SCALED ‖ΔP‖</span> <b id="linear-drift">—</b></small></div>
+    <div class="metric quaternion-metric"><span>UNIT QUATERNION <small>wxyz</small></span><strong id="quaternion-value">1 / 0 / 0 / 0</strong><small>‖q‖ <b id="qnorm-value">1.0000000000</b></small></div>
+  </footer>
+  <div id="notice" class="notice" role="status" hidden></div>
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

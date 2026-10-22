@@ -1,0 +1,61 @@
+\begin{center}
+\begingroup
+\begin{tikzpicture}[
+ x={(0.34cm,-0.54cm)},y={(0.94cm,0.20cm)},z={(0cm,0.82cm)},
+ >=Stealth,font=\small,
+ before/.style={->,gray!65,dashed},
+ after/.style={->,blue!70!black,thick},
+ axis/.style={->,orange!85!black,very thick},
+ turn/.style={->,red!70!black,thick}]
+\pgfmathsetmacro{\ca}{cos(35)}
+\pgfmathsetmacro{\sa}{sin(35)}
+\pgfmathsetmacro{\cb}{cos(40)}
+\pgfmathsetmacro{\sb}{sin(40)}
+\pgfmathsetmacro{\cg}{cos(30)}
+\pgfmathsetmacro{\sg}{sin(30)}
+\begin{scope}
+ \draw[before] (0,0,0)--(1.65,0,0) node[right] {$e_1$};
+ \draw[before] (0,0,0)--(0,1.65,0) node[right] {$e_2$};
+ \draw[after] (0,0,0)--({1.65*\ca},{1.65*\sa},0) node[right] {$\xi$};
+ \draw[after] (0,0,0)--({-1.65*\sa},{1.65*\ca},0) node[above] {$\eta$};
+ \draw[axis] (0,0,0)--(0,0,1.65) node[above] {$e_3=\zeta$};
+ \draw[turn] plot[domain=0:35,samples=16,variable=\t]
+  ({0.85*cos(\t)},{0.85*sin(\t)},0);
+ \node at ({1.15*cos(17.5)},{1.15*sin(17.5)},0) {$\phi$};
+ \node at (0,0,-1.8) {$Q_0\longrightarrow Q_1$};
+\end{scope}
+\begin{scope}[xshift=4.2cm]
+ \draw[before] (0,0,0)--({-1.65*\sa},{1.65*\ca},0);
+ \draw[before] (0,0,0)--(0,0,1.65);
+ \draw[after] (0,0,0)--({-1.65*\sa*\cb},{1.65*\ca*\cb},{1.65*\sb})
+  node[above] {$\eta'$};
+ \draw[after] (0,0,0)--({1.65*\sa*\sb},{-1.65*\ca*\sb},{1.65*\cb})
+  node[left] {$\zeta'$};
+ \draw[axis] (0,0,0)--({1.65*\ca},{1.65*\sa},0)
+  node[right] {$\xi=\xi'$};
+ \draw[turn] plot[domain=0:40,samples=16,variable=\t]
+  ({-0.85*\sa*cos(\t)},{0.85*\ca*cos(\t)},{0.85*sin(\t)});
+ \node at ({-1.1*\sa*cos(20)},{1.1*\ca*cos(20)},{1.1*sin(20)}) {$\theta$};
+ \node at (0,0,-1.8) {$Q_1\longrightarrow Q_2$};
+\end{scope}
+\begin{scope}[xshift=8.4cm]
+ \draw[before] (0,0,0)--({1.65*\ca},{1.65*\sa},0);
+ \draw[before] (0,0,0)--({-1.65*\sa*\cb},{1.65*\ca*\cb},{1.65*\sb});
+ \draw[after] (0,0,0)--({1.65*(\ca*\cg-\sa*\cb*\sg)},
+  {1.65*(\sa*\cg+\ca*\cb*\sg)},{1.65*\sb*\sg}) node[right] {$b_1$};
+ \draw[after] (0,0,0)--({1.65*(-\ca*\sg-\sa*\cb*\cg)},
+  {1.65*(-\sa*\sg+\ca*\cb*\cg)},{1.65*\sb*\cg}) node[above] {$b_2$};
+ \draw[axis] (0,0,0)--({1.65*\sa*\sb},{-1.65*\ca*\sb},{1.65*\cb})
+  node[left] {$\zeta'=b_3$};
+ \draw[turn] plot[domain=0:30,samples=16,variable=\t]
+  ({0.85*(\ca*cos(\t)-\sa*\cb*sin(\t))},
+   {0.85*(\sa*cos(\t)+\ca*\cb*sin(\t))},{0.85*\sb*sin(\t)});
+ \node[below] at ({1.2*(\ca*cos(15)-\sa*\cb*sin(15))},
+  {1.2*(\sa*cos(15)+\ca*\cb*sin(15))},{1.2*\sb*sin(15)}) {$\psi$};
+ \node at (0,0,-1.8) {$Q_2\longrightarrow Q_3$};
+\end{scope}
+\end{tikzpicture}
+\par\small $ZXZ$: previous axes dashed, new axes blue, rotation axis orange.
+Illustrated at $(\phi,\theta,\psi)=(35^\circ,40^\circ,30^\circ)$.
+\endgroup
+\end{center}
