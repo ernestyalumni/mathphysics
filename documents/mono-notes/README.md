@@ -27,7 +27,10 @@ runs three passes per edition with shell escape disabled in a temporary
 working directory. It publishes both PDFs only after both compile, together
 with `build-report.json` containing source hashes, PDF hashes, page counts,
 reference/citation warnings and overfull-box measurements. Intermediates stay
-outside the repository. Generated PDFs and build reports should not be staged.
+outside the repository. The tracked `master.pdf` and `screen.pdf` are the final
+reading editions; update them together after both editions build successfully
+and their hashes match the build report. Keep generated intermediates and
+`build-report.json` out of commits.
 
 ## Subject organization
 
