@@ -1,0 +1,705 @@
+\part{Quantum Field Theory}
+
+\section{Relativistic fields and the scalar action}\label{qft:sec:scalar}
+A particle trajectory assigns a position to each time. A classical field
+assigns a value to each event. For a real scalar field the value lies in
+$\mathbb R$; for a spinor field it lies in a complex representation space.
+The transformation law of that space is part of the definition of the
+field. Quantization will replace the classical field by an
+operator-valued distribution; it does not turn a classical field into a
+one-particle wavefunction.
+
+We begin with a real scalar field and derive its dynamics before introducing
+spin. Compare Srednicki, Chapters~2--3, pp.~15--30
+\cite{MSrednicki2007}. The Lorentz representations and spinor algebra below
+connect with Chapters~33--36, pp.~205--231; the trace identities connect
+with Chapter~47, pp.~294--297. The order here follows the objects and their
+relations rather than the order of exercises.
+
+\subsection{The interval and the mass shell}
+Work on flat spacetime $\mathbb R^{1,3}$, with $\hbar=c=1$. Use
+\begin{equation}\label{qft:metric}
+ x^\mu=(t,\mathbf x),\qquad
+ \eta_{\mu\nu}=\operatorname{diag}(-1,1,1,1),\qquad
+ x_\mu=\eta_{\mu\nu}x^\nu .
+\end{equation}
+Greek indices range from $0$ to $3$ and spatial indices from $1$ to $3$.
+Srednicki writes this metric as $g_{\mu\nu}$; our $\eta_{\mu\nu}$ has the
+same signature. In particular,
+\begin{equation}\label{qft:interval}
+ x\cdot y=\eta_{\mu\nu}x^\mu y^\nu
+ =-x^0y^0+\mathbf x\cdot\mathbf y .
+\end{equation}
+For a nonzero future-directed on-shell four-momentum $p^\mu=(E_{\mathbf p},\mathbf p)$,
+\begin{equation}\label{qft:mass-shell}
+ p^2=-m^2,\qquad
+ E_{\mathbf p}=\sqrt{\mathbf p^2+m^2}>0 .
+\end{equation}
+Here $m\geq0$ is the mass in natural units. Before quantization it is the
+inverse-length parameter of the classical wave equation; the particle
+interpretation follows from its energy spectrum.
+
+A Lorentz transformation preserves Eq.~\eqref{qft:interval}. Substituting
+$x'^\mu=\Lambda^\mu{}_{\rho}x^\rho$ and
+$y'^\nu=\Lambda^\nu{}_{\sigma}y^\sigma$ gives
+\begin{align}
+ \eta_{\mu\nu}x'^\mu y'^\nu
+ &=\eta_{\mu\nu}\Lambda^\mu{}_{\rho}
+       \Lambda^\nu{}_{\sigma}x^\rho y^\sigma,\notag\\
+ \eta_{\mu\nu}\Lambda^\mu{}_{\rho}
+       \Lambda^\nu{}_{\sigma}&=\eta_{\rho\sigma}.
+ \label{qft:lorentz-condition}
+\end{align}
+For $\Lambda^\mu{}_{\nu}=\delta^\mu{}_{\nu}
++\omega^\mu{}_{\nu}+O(\omega^2)$, the terms linear in $\omega$ are
+\begin{equation}\label{qft:lorentz-infinitesimal}
+ \eta_{\rho\sigma}+\omega_{\sigma\rho}+\omega_{\rho\sigma}
+ =\eta_{\rho\sigma},\qquad
+ \omega_{\rho\sigma}=-\omega_{\sigma\rho}.
+\end{equation}
+Thus the infinitesimal transformations have six independent parameters:
+three spatial rotations and three boosts.
+
+A scalar field satisfies $\varphi'(x')=\varphi(x)$. The chain rule, with
+$x=\Lambda^{-1}x'$, gives
+\begin{equation}\label{qft:scalar-gradient}
+ \frac{\partial\varphi'}{\partial x'^\mu}(x')
+ =(\Lambda^{-1})^\nu{}_{\mu}
+   \frac{\partial\varphi}{\partial x^\nu}(x).
+\end{equation}
+The gradient is a covector. Contracting two such gradients with
+$\eta^{\mu\nu}$ produces a scalar by
+Eq.~\eqref{qft:lorentz-condition}.
+
+\subsection{Stationary action and the field equation}
+For a smooth real field, take the free action
+\begin{equation}\label{qft:scalar-action}
+ S[\varphi]=\int d^4x\,\mathcal L,\qquad
+ \mathcal L=-\frac12\eta^{\mu\nu}
+  \frac{\partial\varphi}{\partial x^\mu}
+  \frac{\partial\varphi}{\partial x^\nu}
+  -\frac12m^2\varphi^2 .
+\end{equation}
+This is a choice of a local, quadratic, Lorentz-invariant dynamics. Lorentz
+invariance alone would also permit interactions such as $\varphi^4$; the
+word \emph{free} specifies their absence. With dimensionless action,
+$d^4x$ has mass dimension $-4$, so
+\begin{equation}\label{qft:scalar-dimensions}
+ [\mathcal L]=4,\qquad [\varphi]=1,\qquad [m]=1,
+\end{equation}
+where brackets denote mass dimension, not a commutator.
+
+Let $f$ be a smooth compactly supported variation and set
+$\varphi_\epsilon=\varphi+\epsilon f$. Differentiating at $\epsilon=0$
+and using the symmetry of $\eta^{\mu\nu}$,
+\begin{align}
+ \left.\frac{dS[\varphi_\epsilon]}{d\epsilon}\right|_{\epsilon=0}
+ &=\int d^4x\left[
+ -\frac12\eta^{\mu\nu}\left(
+ \frac{\partial f}{\partial x^\mu}
+ \frac{\partial\varphi}{\partial x^\nu}
+ +\frac{\partial\varphi}{\partial x^\mu}
+ \frac{\partial f}{\partial x^\nu}\right)-m^2\varphi f\right]\notag\\
+ &=\int d^4x\left[
+ -\eta^{\mu\nu}\frac{\partial\varphi}{\partial x^\nu}
+                \frac{\partial f}{\partial x^\mu}-m^2\varphi f\right]
+ \notag\\
+ &=\int d^4x\left[
+ \eta^{\mu\nu}\frac{\partial^2\varphi}
+ {\partial x^\mu\partial x^\nu}-m^2\varphi\right]f.
+ \label{qft:scalar-variation}
+\end{align}
+The last line follows by integration by parts; compact support removes the
+boundary integral. Since $f$ is arbitrary, stationarity gives
+\begin{equation}\label{qft:klein-gordon}
+ \left(-\frac{\partial^2}{\partial t^2}
+ +\sum_{i=1}^3\frac{\partial^2}{\partial (x^i)^2}-m^2\right)
+ \varphi=0 .
+\end{equation}
+Equivalently, define
+$\Box=\eta^{\mu\nu}\frac{\partial^2}
+{\partial x^\mu\partial x^\nu}$, so the equation is
+$(\Box-m^2)\varphi=0$. Multiplying by $-1$ gives Srednicki's
+$(-\partial^2+m^2)\varphi=0$, with his $\partial^2=\Box$.
+
+For $\varphi(x)=A e^{ip\cdot x}$ the derivatives are
+\begin{equation}\label{qft:plane-wave}
+ \frac{\partial\varphi}{\partial x^\mu}=ip_\mu\varphi,
+ \qquad
+ (\Box-m^2)\varphi=(-p^2-m^2)\varphi .
+\end{equation}
+A nonzero plane wave therefore lies on the mass shell
+\eqref{qft:mass-shell}. Its positive-frequency phase is
+$p\cdot x=-E_{\mathbf p}t+\mathbf p\cdot\mathbf x$.
+
+\subsection{Canonical momentum and energy}
+Separating time and space in Eq.~\eqref{qft:scalar-action},
+\begin{equation}\label{qft:scalar-lagrangian-time}
+ \mathcal L=\frac12\left(\frac{\partial\varphi}{\partial t}\right)^2
+ -\frac12|\boldsymbol\nabla\varphi|^2-\frac12m^2\varphi^2 .
+\end{equation}
+At fixed $\varphi$ and spatial derivatives, the canonical momentum is
+\begin{equation}\label{qft:canonical-momentum}
+ \pi=\frac{\partial\mathcal L}
+ {\partial(\frac{\partial\varphi}{\partial t})}
+ =\frac{\partial\varphi}{\partial t}.
+\end{equation}
+The Legendre transform gives
+\begin{align}
+ \mathcal H
+ &=\pi\frac{\partial\varphi}{\partial t}-\mathcal L\notag\\
+ &=\pi^2-\frac12\pi^2
+   +\frac12|\boldsymbol\nabla\varphi|^2+\frac12m^2\varphi^2\notag\\
+ &=\frac12\left(\pi^2+|\boldsymbol\nabla\varphi|^2+m^2\varphi^2\right),
+ \qquad H=\int d^3x\,\mathcal H .\label{qft:scalar-hamiltonian}
+\end{align}
+For fields with sufficient spatial decay, variation at fixed time and
+spatial integration by parts give
+\begin{align}
+ \delta H&=\int d^3x\left[
+ \pi\,\delta\pi+
+ \sum_{i=1}^3\frac{\partial\varphi}{\partial x^i}
+ \frac{\partial\delta\varphi}{\partial x^i}+m^2\varphi\,\delta\varphi
+ \right]\notag\\
+ &=\int d^3x\left[
+ \pi\,\delta\pi+
+ \left(-\sum_{i=1}^3\frac{\partial^2\varphi}{\partial(x^i)^2}
+ +m^2\varphi\right)\delta\varphi\right].
+ \label{qft:hamiltonian-variation}
+\end{align}
+Reading off the functional derivatives, Hamilton's equations are
+\begin{align}
+ \frac{\partial\varphi}{\partial t}
+ &=\frac{\delta H}{\delta\pi}=\pi,\notag\\
+ \frac{\partial\pi}{\partial t}
+ &=-\frac{\delta H}{\delta\varphi}
+ =\sum_{i=1}^3\frac{\partial^2\varphi}{\partial(x^i)^2}-m^2\varphi.
+ \label{qft:hamilton-field-equations}
+\end{align}
+Substituting the first equation into the second recovers
+Eq.~\eqref{qft:klein-gordon}. The nonnegative energy in
+Eq.~\eqref{qft:scalar-hamiltonian} fixes the kinetic sign for this free
+scalar theory.
+
+\section{From field modes to particles}\label{qft:sec:quantization}
+\subsection{Each free Fourier mode is an oscillator}
+For classical fields of sufficient decay write
+\begin{equation}\label{qft:spatial-fourier}
+ \varphi(t,\mathbf x)=\int\frac{d^3p}{(2\pi)^3}
+ \widetilde\varphi(t,\mathbf p)e^{i\mathbf p\cdot\mathbf x}.
+\end{equation}
+Reality requires
+$\widetilde\varphi(t,-\mathbf p)=\widetilde\varphi(t,\mathbf p)^*$.
+The spatial second derivatives contribute $-\mathbf p^2$, so
+Eq.~\eqref{qft:klein-gordon} gives
+\begin{equation}\label{qft:mode-oscillator}
+ \frac{\partial^2\widetilde\varphi}{\partial t^2}
+ +(\mathbf p^2+m^2)\widetilde\varphi=0.
+\end{equation}
+Its frequency is precisely $E_{\mathbf p}$ in
+Eq.~\eqref{qft:mass-shell}. This is why oscillator quantization enters a
+free field theory.
+
+For the oscillator construction take $m>0$, so every momentum has
+positive frequency. If $m=0$, the zero-momentum mode needs separate
+treatment. In a periodic box of volume $V$, write its spatially constant
+field as $\varphi_0(t)=q_0(t)/\sqrt V$. Its Lagrangian and Hamiltonian are
+\begin{equation}\label{qft:massless-zero-mode}
+ L_0=\frac12\left(\frac{dq_0}{dt}\right)^2,\qquad
+ p_{q_0}=\frac{dq_0}{dt},\qquad H_0=\frac12p_{q_0}^2.
+\end{equation}
+This is a free particle degree of freedom, with no positive-frequency
+oscillator vacuum. It cannot be included by setting $E_{\mathbf 0}=0$
+in the ladder-operator formulas.
+
+For one oscillator, with $[q,p_q]=i$ and frequency $\omega>0$, define
+\begin{equation}\label{qft:oscillator-ladder}
+ a=\sqrt{\frac\omega2}\,q+\frac{i}{\sqrt{2\omega}}p_q,
+ \qquad
+ a^\dagger=\sqrt{\frac\omega2}\,q-\frac{i}{\sqrt{2\omega}}p_q .
+\end{equation}
+Direct multiplication gives
+\begin{align}
+ [a,a^\dagger]
+ &=-\frac i2[q,p_q]+\frac i2[p_q,q]=1,\notag\\
+ a^\dagger a
+ &=\frac\omega2q^2+\frac{1}{2\omega}p_q^2
+   +\frac i2[q,p_q]
+ =\frac\omega2q^2+\frac{1}{2\omega}p_q^2-\frac12,\notag\\
+ \frac12(p_q^2+\omega^2q^2)&=\omega\left(a^\dagger a+\frac12\right).
+ \label{qft:oscillator-energy}
+\end{align}
+
+\subsection{Equal-time commutators and normalization}
+Canonical quantization postulates, at equal time,
+\begin{equation}\label{qft:canonical-commutators}
+ [\varphi(t,\mathbf x),\pi(t,\mathbf y)]
+ =i\delta^3(\mathbf x-\mathbf y),\qquad
+ [\varphi(t,\mathbf x),\varphi(t,\mathbf y)]
+ =[\pi(t,\mathbf x),\pi(t,\mathbf y)]=0.
+\end{equation}
+Linear fields and their commutators are interpreted as distributions,
+with field operators defined by smearing against suitable test functions.
+Smearing alone does not define coincident products such as $\pi(x)^2$;
+these require a regulator or a specified composite operator, such as a Wick
+product. A field at a point is not an ordinary finite-dimensional matrix.
+
+Choose the oscillator normalization
+\begin{equation}\label{qft:mode-commutator}
+ [a(\mathbf p),a^\dagger(\mathbf q)]
+ =(2\pi)^3\delta^3(\mathbf p-\mathbf q),\qquad
+ [a(\mathbf p),a(\mathbf q)]=0.
+\end{equation}
+The Hermitian free field and its momentum are then
+\begin{align}
+ \varphi(x)
+ &=\int\frac{d^3p}{(2\pi)^3\sqrt{2E_{\mathbf p}}}
+ \left[a(\mathbf p)e^{ip\cdot x}
+       +a^\dagger(\mathbf p)e^{-ip\cdot x}\right],
+ \label{qft:field-modes}\\
+ \pi(x)
+ &=\int\frac{d^3p}{(2\pi)^3}
+ \left[-i\sqrt{\frac{E_{\mathbf p}}2}a(\mathbf p)e^{ip\cdot x}
+       +i\sqrt{\frac{E_{\mathbf p}}2}a^\dagger(\mathbf p)e^{-ip\cdot x}\right].
+ \label{qft:momentum-modes}
+\end{align}
+The sign in the second line follows by differentiating
+$p\cdot x=-E_{\mathbf p}t+\mathbf p\cdot\mathbf x$.
+Using Eq.~\eqref{qft:mode-commutator}, the two nonzero terms at equal time
+are
+\begin{align}
+ [\varphi(t,\mathbf x),\pi(t,\mathbf y)]
+ &=\frac i2\int\frac{d^3p}{(2\pi)^3}
+ \left[e^{i\mathbf p\cdot(\mathbf x-\mathbf y)}
+       +e^{-i\mathbf p\cdot(\mathbf x-\mathbf y)}\right]\notag\\
+ &=i\delta^3(\mathbf x-\mathbf y).
+ \label{qft:mode-normalization-check}
+\end{align}
+The other two commutators are
+\begin{align}
+ [\varphi(t,\mathbf x),\varphi(t,\mathbf y)]
+ &=\int\frac{d^3p}{(2\pi)^3\,2E_{\mathbf p}}
+ \left[e^{i\mathbf p\cdot(\mathbf x-\mathbf y)}
+       -e^{-i\mathbf p\cdot(\mathbf x-\mathbf y)}\right]=0,\notag\\
+ [\pi(t,\mathbf x),\pi(t,\mathbf y)]
+ &=\int\frac{d^3p}{(2\pi)^3}\frac{E_{\mathbf p}}2
+ \left[e^{i\mathbf p\cdot(\mathbf x-\mathbf y)}
+       -e^{-i\mathbf p\cdot(\mathbf x-\mathbf y)}\right]=0.
+ \label{qft:equal-time-zero}
+\end{align}
+In each integral, changing $\mathbf p\mapsto-\mathbf p$ in the second
+term makes it the negative of the first.
+
+Srednicki also uses a covariant oscillator normalization. Write that
+oscillator as $b(\mathbf p)$ here to distinguish it from ours:
+\begin{align}
+ b(\mathbf p)&=\sqrt{2E_{\mathbf p}}\,a(\mathbf p),\notag\\
+ [b(\mathbf p),b^\dagger(\mathbf q)]
+ &=(2\pi)^3\,2E_{\mathbf p}\delta^3(\mathbf p-\mathbf q),\notag\\
+ \varphi(x)&=\int\frac{d^3p}{(2\pi)^3\,2E_{\mathbf p}}
+ \left[b(\mathbf p)e^{ip\cdot x}
+       +b^\dagger(\mathbf p)e^{-ip\cdot x}\right].
+ \label{qft:covariant-normalization}
+\end{align}
+The change is a normalization of the modes, not a change of the field.
+For a massive shell, the measure follows by integrating out positive energy:
+\begin{align}
+ &\int\frac{d^4p}{(2\pi)^3}\,	heta(p^0)\delta(p^2+m^2)F(p)
+ \notag\\
+ &\quad=\int\frac{d^3p}{(2\pi)^3}
+ \int_0^\infty dp^0\,
+ \frac{\delta(p^0-E_{\mathbf p})+\delta(p^0+E_{\mathbf p})}
+ {2E_{\mathbf p}}F(p)
+ =\int\frac{d^3p}{(2\pi)^3\,2E_{\mathbf p}}
+ F(E_{\mathbf p},\mathbf p).
+ \label{qft:invariant-shell-measure}
+\end{align}
+The four-dimensional measure, the mass-shell constraint and the positive-energy
+condition are invariant under proper orthochronous Lorentz transformations.
+The massless formula holds away from the zero-momentum tip, with its usual
+distributional interpretation.
+
+Let $a(\mathbf p)|0\rangle=0$. Evaluate the quadratic quantum
+Hamiltonian first in a finite periodic box with a momentum cutoff; sums
+then replace the integrals below. Continue to use $m>0$. Normal ordering
+places creation operators to the left of annihilation operators and fixes
+the free vacuum energy to zero.
+
+To see every contribution, substitute Eqs.~\eqref{qft:field-modes} and
+\eqref{qft:momentum-modes} into Eq.~\eqref{qft:scalar-hamiltonian}.
+The time derivatives contribute $(-iE_{\mathbf p})(-iE_{\mathbf q})$
+to $aa$ and $(-iE_{\mathbf p})(iE_{\mathbf q})$ to
+$aa^\dagger$. The spatial derivatives give
+$(ip^i)(iq^i)$ and $(ip^i)(-iq^i)$, respectively. Thus define
+\begin{align}
+ C_-(\mathbf p,\mathbf q)
+ &=-E_{\mathbf p}E_{\mathbf q}-\mathbf p\cdot\mathbf q+m^2,
+ \notag\\
+ C_+(\mathbf p,\mathbf q)
+ &= E_{\mathbf p}E_{\mathbf q}+\mathbf p\cdot\mathbf q+m^2.
+ \label{qft:hamiltonian-kernel-coefficients}
+\end{align}
+The conjugate terms have the same respective coefficients. The full
+substitution is
+\begin{align}
+ H&=\int\frac{d^3p\,d^3q}{(2\pi)^6}
+ \int\frac{d^3x}{4\sqrt{E_{\mathbf p}E_{\mathbf q}}}
+ \mathcal K(p,q;x),\notag\\
+ \mathcal K(p,q;x)
+ &=C_-(\mathbf p,\mathbf q)\big[
+ a(\mathbf p)a(\mathbf q)e^{i(p+q)\cdot x}\notag\\
+ &\hspace{5em}+a^\dagger(\mathbf p)a^\dagger(\mathbf q)e^{-i(p+q)\cdot x}
+ \big]\notag\\
+ &\quad+C_+(\mathbf p,\mathbf q)\big[
+ a(\mathbf p)a^\dagger(\mathbf q)e^{i(p-q)\cdot x}\notag\\
+ &\hspace{5em}+a^\dagger(\mathbf p)a(\mathbf q)e^{-i(p-q)\cdot x}
+ \big].\label{qft:hamiltonian-full-kernel}
+\end{align}
+For the equal-sign terms,
+\begin{align}
+ \int d^3x\,e^{i(\mathbf p+\mathbf q)\cdot\mathbf x}
+ &=(2\pi)^3\delta^3(\mathbf p+\mathbf q),\notag\\
+ \frac{C_-(\mathbf p,-\mathbf p)}{4E_{\mathbf p}}
+ &=\frac{-E_{\mathbf p}^2+\mathbf p^2+m^2}{4E_{\mathbf p}}=0.
+ \label{qft:hamiltonian-pair-cancellation}
+\end{align}
+For the mixed terms,
+\begin{align}
+ \int d^3x\,e^{i(\mathbf p-\mathbf q)\cdot\mathbf x}
+ &=(2\pi)^3\delta^3(\mathbf p-\mathbf q),\notag\\
+ \frac{C_+(\mathbf p,\mathbf p)}{4E_{\mathbf p}}
+ &=\frac{E_{\mathbf p}^2+\mathbf p^2+m^2}{4E_{\mathbf p}}
+ =\frac{E_{\mathbf p}}2.
+ \label{qft:hamiltonian-mixed-coefficient}
+\end{align}
+Hence the Hamiltonian and its normal-ordered form are
+\begin{align}
+ H&=\frac12\int\frac{d^3p}{(2\pi)^3}E_{\mathbf p}
+ \left[a(\mathbf p)a^\dagger(\mathbf p)
+       +a^\dagger(\mathbf p)a(\mathbf p)\right],\notag\\
+ :H:&=\int\frac{d^3p}{(2\pi)^3}E_{\mathbf p}
+ a^\dagger(\mathbf p)a(\mathbf p),\notag\\
+ [:H:,a^\dagger(\mathbf q)]
+ &=\int\frac{d^3p}{(2\pi)^3}E_{\mathbf p}
+ a^\dagger(\mathbf p)(2\pi)^3\delta^3(\mathbf p-\mathbf q)
+ =E_{\mathbf q}a^\dagger(\mathbf q).
+ \label{qft:particle-energy}
+\end{align}
+The first line carries the regulated vacuum constant. Normal ordering
+here fixes the zero of energy in the free flat-spacetime theory; vacuum
+effects in interacting theories and in gravity require their own analysis.
+Equation~\eqref{qft:particle-energy} gives the particle interpretation:
+$a^\dagger(\mathbf q)|0\rangle$ has energy $E_{\mathbf q}$ above the vacuum.
+Sharp-momentum states are delta-normalized; normalizable states are wave
+packets obtained by integrating them against momentum profiles.
+
+\section{Pauli matrices, Lorentz vectors and two-component spinors}
+\label{qft:sec:spinors}
+\subsection{The Pauli product}
+Take the orientation $\epsilon_{123}=1$ and define
+\begin{equation}\label{qft:pauli-matrices}
+ \sigma_1=\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad
+ \sigma_2=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\quad
+ \sigma_3=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\end{equation}
+Multiplication gives $\sigma_i^2=I_2$ and
+\begin{equation}\label{qft:pauli-cyclic}
+ \sigma_1\sigma_2=\begin{pmatrix}i&0\\0&-i\end{pmatrix}=i\sigma_3,
+ \qquad \sigma_2\sigma_3=i\sigma_1,\qquad
+ \sigma_3\sigma_1=i\sigma_2.
+\end{equation}
+Each reversed product has the opposite sign. Therefore
+\begin{equation}\label{qft:pauli-product}
+ \sigma_i\sigma_j=\delta_{ij}I_2+i\epsilon_{ijk}\sigma_k,
+ \qquad \operatorname{tr}\sigma_i=0.
+\end{equation}
+For ordinary commuting vectors $\mathbf u,\mathbf v$, this gives
+\begin{align}
+ (u^i\sigma_i)(v^j\sigma_j)
+ &=u^iv^j\delta_{ij}I_2+i u^iv^j\epsilon_{ijk}\sigma_k\notag\\
+ &=(\mathbf u\cdot\mathbf v)I_2
+   +i(\mathbf u\times\mathbf v)^k\sigma_k.
+ \label{qft:pauli-vector-product}
+\end{align}
+In particular, $(\mathbf p\cdot\boldsymbol\sigma)^2=\mathbf p^2I_2$.
+
+\subsection{A four-vector as a Hermitian matrix}
+Associate to a real four-vector $p$ the Hermitian matrix
+\begin{equation}\label{qft:hermitian-vector}
+ P=p^0I_2+p^i\sigma_i
+ =\begin{pmatrix}p^0+p^3&p^1-ip^2\\p^1+ip^2&p^0-p^3\end{pmatrix}.
+\end{equation}
+Its determinant is the Lorentz norm with a minus sign:
+\begin{align}
+ \det P&=(p^0+p^3)(p^0-p^3)-(p^1-ip^2)(p^1+ip^2)\notag\\
+ &=(p^0)^2-(p^3)^2-(p^1)^2-(p^2)^2=-p^2.
+ \label{qft:hermitian-determinant}
+\end{align}
+For $M\in SL(2,\mathbb C)$ set $P'=MPM^\dagger$. Then
+\begin{equation}\label{qft:sl2-action}
+ (P')^\dagger=P',\qquad
+ \det P'=\det M\,\det P\,\overline{\det M}=\det P.
+\end{equation}
+The induced real linear transformation preserves the interval. The matrices
+$M$ and $-M$ have the same action on $P$, but opposite actions on a spinor
+$\lambda\in\mathbb C^2$, which transforms as $\lambda'=M\lambda$.
+For example, rotations about the third axis are represented by
+\begin{equation}\label{qft:spinor-full-turn}
+ M(\theta)=e^{-i\theta\sigma_3/2}
+ =\begin{pmatrix}e^{-i\theta/2}&0\\0&e^{i\theta/2}\end{pmatrix},
+ \quad M(2\pi)=-I_2,\quad M(4\pi)=I_2 .
+\end{equation}
+This relates spinors to the $SU(2)$ rotations already developed in the
+quaternion part; the spinor itself is not a spatial vector.
+
+\subsection{The alternating form and spinor brackets}
+For undotted indices $a,b\in\{1,2\}$, choose
+\begin{equation}\label{qft:spinor-epsilon}
+ (\varepsilon_{ab})=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\quad
+ (\varepsilon^{ab})=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\quad
+ \varepsilon^{ab}\varepsilon_{bc}=\delta^a{}_c.
+\end{equation}
+These conventions fix lowering and raising:
+\begin{equation}\label{qft:spinor-raising}
+ \lambda_a=\varepsilon_{ab}\lambda^b,
+ \qquad \lambda^a=\varepsilon^{ab}\lambda_b,
+ \qquad (\lambda_1,\lambda_2)=(\lambda^2,-\lambda^1).
+\end{equation}
+For $M=\begin{pmatrix}A&B\\C&D\end{pmatrix}$, the explicit invariance
+calculation is
+\begin{equation}\label{qft:epsilon-invariance}
+ M^T\varepsilon M
+ =\begin{pmatrix}A&C\\B&D\end{pmatrix}
+  \begin{pmatrix}C&D\\-A&-B\end{pmatrix}
+ =(AD-BC)\varepsilon=\varepsilon
+ \quad (\det M=1).
+\end{equation}
+Thus the alternating pairing of two commuting spinors is invariant:
+\begin{equation}\label{qft:angle-bracket}
+ \langle\lambda\,\chi\rangle
+ :=\varepsilon_{ab}\lambda^a\chi^b
+ =\lambda^1\chi^2-\lambda^2\chi^1
+ =-\langle\chi\,\lambda\rangle.
+\end{equation}
+The word \emph{commuting} matters. Classical fermion fields in a
+Grassmann formulation have anticommuting components; exchanging them
+introduces an additional sign. The spinors in the determinant identities
+here have commuting complex components.
+
+The dimension of the spinor space gives the Schouten identity. In the
+first component,
+\begin{align}
+ &\langle u\,v\rangle w^1+\langle v\,w\rangle u^1
+       +\langle w\,u\rangle v^1\notag\\
+ &=u^1v^2w^1-u^2v^1w^1+v^1w^2u^1
+   -v^2w^1u^1+w^1u^2v^1-w^2u^1v^1=0.
+ \label{qft:schouten-component}
+\end{align}
+The second component cancels independently:
+\begin{align}
+ &\langle u\,v\rangle w^2+\langle v\,w\rangle u^2
+       +\langle w\,u\rangle v^2\notag\\
+ &=u^1v^2w^2-u^2v^1w^2+v^1w^2u^2
+   -v^2w^1u^2+w^1u^2v^2-w^2u^1v^2=0.
+ \label{qft:schouten-component-two}
+\end{align}
+Hence, without dividing by any bracket,
+\begin{equation}\label{qft:schouten-vector}
+ \langle u\,v\rangle w^a+\langle v\,w\rangle u^a
+       +\langle w\,u\rangle v^a=0.
+\end{equation}
+Contracting this equation with $\varepsilon_{ab}z^b$ gives
+\begin{equation}\label{qft:schouten-four}
+ \langle u\,v\rangle\langle w\,z\rangle
+ +\langle v\,w\rangle\langle u\,z\rangle
+ +\langle w\,u\rangle\langle v\,z\rangle=0.
+\end{equation}
+It also holds for linearly dependent spinors, where attempts to solve by
+dividing by a bracket would fail.
+
+For a nonzero future-directed null momentum, Eq.~\eqref{qft:hermitian-vector}
+has eigenvalues $p^0\pm|\mathbf p|=2p^0,0$. It is therefore a positive
+rank-one matrix and can be written
+\begin{equation}\label{qft:null-spinor-factorization}
+ P=\lambda\lambda^\dagger,\qquad
+ \lambda^\dagger\lambda=2p^0.
+\end{equation}
+Indeed, if $e$ is a unit eigenvector for $2p^0$, take
+$\lambda=\sqrt{2p^0}\,e$. The phase replacement
+$\lambda\mapsto e^{i\alpha}\lambda$ leaves $P$ unchanged.
+For complexified momenta, Hermitian conjugation is no longer the relevant
+constraint; two independent spinors replace $\lambda$ and its conjugate.
+This is the entry to massless spinor-helicity variables; compare Srednicki,
+Chapter~50, pp.~308--313 \cite{MSrednicki2007}.
+
+\section{Clifford algebra and Dirac traces}\label{qft:sec:clifford}
+\subsection{Factoring the relativistic wave operator}
+The scalar wave equation is second order. Seek a first-order matrix
+operator whose square supplies its second derivatives. Define
+\begin{equation}\label{qft:sigma-four}
+ \sigma^\mu=(I_2,\sigma_1,\sigma_2,\sigma_3),\qquad
+ \bar\sigma^\mu=(I_2,-\sigma_1,-\sigma_2,-\sigma_3).
+\end{equation}
+By Eq.~\eqref{qft:pauli-product}, the time-time, mixed and spatial cases
+are respectively
+\begin{align}
+ \sigma^0\bar\sigma^0+\sigma^0\bar\sigma^0&=2I_2,\notag\\
+ \sigma^0\bar\sigma^i+\sigma^i\bar\sigma^0&=-\sigma_i+\sigma_i=0,\notag\\
+ \sigma^i\bar\sigma^j+\sigma^j\bar\sigma^i
+ &=-(\sigma_i\sigma_j+\sigma_j\sigma_i)=-2\delta_{ij}I_2.
+ \label{qft:sigma-metric-cases}
+\end{align}
+Together these say
+\begin{equation}\label{qft:sigma-metric}
+ \sigma^\mu\bar\sigma^\nu+\sigma^\nu\bar\sigma^\mu
+ =-2\eta^{\mu\nu}I_2.
+\end{equation}
+Exchanging the bars gives the same relation. Form the block matrices
+\begin{equation}\label{qft:gamma-definition}
+ \gamma^\mu=\begin{pmatrix}0&\sigma^\mu\\\bar\sigma^\mu&0\end{pmatrix}.
+\end{equation}
+Block multiplication and Eq.~\eqref{qft:sigma-metric} give the Clifford
+relation in Srednicki's convention:
+\begin{equation}\label{qft:clifford-relation}
+ \gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu
+ =-2\eta^{\mu\nu}I_4.
+\end{equation}
+In particular $(\gamma^0)^2=I_4$ and $(\gamma^i)^2=-I_4$.
+
+For a smooth four-component spinor $\psi$, commuting partial derivatives
+remove the antisymmetric matrix part. Explicitly,
+\begin{align}
+ \gamma^\mu\gamma^\nu
+ \frac{\partial^2\psi}{\partial x^\mu\partial x^\nu}
+ &=\frac12(\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu)
+ \frac{\partial^2\psi}{\partial x^\mu\partial x^\nu}
+ =-\Box\psi,\notag\\
+ \left(i\gamma^\mu\frac{\partial}{\partial x^\mu}+m\right)
+ \left(i\gamma^\nu\frac{\partial}{\partial x^\nu}-m\right)\psi
+ &=(\Box-m^2)\psi.
+ \label{qft:dirac-square}
+\end{align}
+The cross terms cancel because $m$ and the matrices are constant. A
+solution of the free Dirac equation
+\begin{equation}\label{qft:dirac-equation}
+ \left(i\gamma^\mu\frac{\partial}{\partial x^\mu}-m\right)\psi=0
+\end{equation}
+therefore has Klein--Gordon components. The converse does not follow:
+the first-order equation also relates the spinor components.
+
+\subsection{Ordering products without losing metric signs}
+The defining relation can be used in either direction:
+\begin{equation}\label{qft:gamma-swap}
+ \gamma^\mu\gamma^\nu=-\gamma^\nu\gamma^\mu
+ -2\eta^{\mu\nu}I_4.
+\end{equation}
+The second term is essential even when reordering a long product.
+Introduce $h^{\mu\nu}=-\eta^{\mu\nu}$ only when comparing the generic
+Clifford convention $\{\gamma^\mu,\gamma^\nu\}=2h^{\mu\nu}I_4$.
+For the rest of this derivation we use $\eta$ and
+Eq.~\eqref{qft:gamma-swap} directly.
+
+Define $\not p=p_\mu\gamma^\mu$. For ordinary commuting four-vectors,
+\begin{align}
+ (\not p)^2
+ &=\frac12p_\mu p_\nu
+  (\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu)
+ =-p^2I_4,\notag\\
+ \not p\not q+\not q\not p&=-2(p\cdot q)I_4.
+ \label{qft:slash-product}
+\end{align}
+On shell, $(\not p)^2=m^2I_4$. The contraction uses the physical
+metric $\eta$, even though the Clifford anticommutator contains $-\eta$.
+
+\subsection{Odd traces and the first even traces}
+We now use the four-dimensional complex Dirac representation:
+$\operatorname{tr}I_4=4$. Define
+\begin{equation}\label{qft:chirality}
+ \gamma_5=i\gamma^0\gamma^1\gamma^2\gamma^3
+ =\begin{pmatrix}-I_2&0\\0&I_2\end{pmatrix},\qquad
+ \gamma_5^2=I_4,\qquad
+ \gamma_5\gamma^\mu=-\gamma^\mu\gamma_5.
+\end{equation}
+For a product $G=\gamma^{\mu_1}\cdots\gamma^{\mu_n}$, cyclicity and
+Eq.~\eqref{qft:chirality} give
+\begin{equation}\label{qft:odd-trace}
+ \operatorname{tr}G
+ =\operatorname{tr}(\gamma_5G\gamma_5)
+ =(-1)^n\operatorname{tr}(G\gamma_5^2)
+ =(-1)^n\operatorname{tr}G.
+\end{equation}
+Thus odd traces vanish. This argument is specifically four-dimensional;
+a continuation in dimension requires additional assumptions, particularly
+for $\gamma_5$.
+
+For two factors, trace cyclicity and
+Eq.~\eqref{qft:clifford-relation} give
+\begin{align}
+ 2\operatorname{tr}(\gamma^\mu\gamma^\nu)
+ &=\operatorname{tr}(\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu)
+ =-2\eta^{\mu\nu}\operatorname{tr}I_4,\notag\\
+ \operatorname{tr}(\gamma^\mu\gamma^\nu)&=-4\eta^{\mu\nu}.
+ \label{qft:trace-two}
+\end{align}
+For four factors, move the first matrix through the remaining three,
+using Eq.~\eqref{qft:gamma-swap} at every step:
+\begin{align}
+ \gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma
+ &=-\gamma^\nu\gamma^\mu\gamma^\rho\gamma^\sigma
+       -2\eta^{\mu\nu}\gamma^\rho\gamma^\sigma\notag\\
+ &=\gamma^\nu\gamma^\rho\gamma^\mu\gamma^\sigma
+       +2\eta^{\mu\rho}\gamma^\nu\gamma^\sigma
+       -2\eta^{\mu\nu}\gamma^\rho\gamma^\sigma\notag\\
+ &=-\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^\mu
+       -2\eta^{\mu\sigma}\gamma^\nu\gamma^\rho
+       +2\eta^{\mu\rho}\gamma^\nu\gamma^\sigma
+       -2\eta^{\mu\nu}\gamma^\rho\gamma^\sigma.
+ \label{qft:four-gamma-ordering}
+\end{align}
+The trace of the first term in the last line is minus the original trace.
+Bringing it to the left and substituting Eq.~\eqref{qft:trace-two},
+\begin{align}
+ 2\operatorname{tr}(\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma)
+ &=-2\eta^{\mu\sigma}(-4\eta^{\nu\rho})
+   +2\eta^{\mu\rho}(-4\eta^{\nu\sigma})
+   -2\eta^{\mu\nu}(-4\eta^{\rho\sigma}),\notag\\
+ \operatorname{tr}(\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma)
+ &=4\left(\eta^{\mu\nu}\eta^{\rho\sigma}
+ -\eta^{\mu\rho}\eta^{\nu\sigma}
+ +\eta^{\mu\sigma}\eta^{\nu\rho}\right).
+ \label{qft:trace-four}
+\end{align}
+For example, $\mu=\nu=0$ in Eq.~\eqref{qft:trace-two} gives $4$, while
+$\mu=\nu=i$ with fixed spatial $i$ gives $-4$, as required by the squares
+of the matrices. Contracting Eq.~\eqref{qft:trace-four} with four covectors
+produces
+\begin{align}
+ &\operatorname{tr}(\not p\not q\not r\not s)\notag\\
+ &\quad=4\left[(p\cdot q)(r\cdot s)-(p\cdot r)(q\cdot s)
+                  +(p\cdot s)(q\cdot r)\right].
+ \label{qft:slash-trace-four}
+\end{align}
+This expression is a Lorentz scalar and needs no particular matrix basis.
+
+\subsection{A contracted Clifford identity}
+Lower the matrix index with the same physical metric,
+$\gamma_\mu=\eta_{\mu\nu}\gamma^\nu$. Contracting the anticommutator,
+\begin{align}
+ 2\gamma^\mu\gamma_\mu
+ &=\eta_{\mu\nu}(\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu)
+ =-2\eta_{\mu\nu}\eta^{\mu\nu}I_4=-8I_4,\notag\\
+ \gamma^\mu\gamma_\mu&=-4I_4.
+ \label{qft:gamma-contraction}
+\end{align}
+Now move $\gamma^\nu$ past $\gamma_\mu$ and apply
+Eq.~\eqref{qft:gamma-contraction}:
+\begin{align}
+ \gamma^\mu\gamma^\nu\gamma_\mu
+ &=\gamma^\mu(-\gamma_\mu\gamma^\nu-2\delta^\nu{}_\mu I_4)\notag\\
+ &=-\gamma^\mu\gamma_\mu\gamma^\nu-2\gamma^\nu
+ =4\gamma^\nu-2\gamma^\nu=2\gamma^\nu.
+ \label{qft:gamma-sandwich}
+\end{align}
+The sign would change if the contracted index were lowered using $h=-\eta$
+instead. A contraction is therefore specified by both the algebraic
+relation and the bilinear form used to lower the index.

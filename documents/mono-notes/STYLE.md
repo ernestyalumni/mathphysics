@@ -139,3 +139,14 @@ These conventions are inherited from Propulsion/documents/notes/STYLE.md.
 For new work here, the shared topic is the source for both PDF editions.
 Imported legacy files are raw material, not a record to preserve. Rewrite,
 correct, or delete their passages as topics replace them.
+
+## Manuscript and implementation boundary
+
+The mono notes develop mathematical physics independently of any particular
+program, library, repository or implementation. Do not interleave code names,
+filenames, APIs, implementation-status narration or expression-to-code maps
+with the mathematical exposition. Bidirectional maps belong in separate
+implementation documentation near the code and may refer back to stable
+mathematical equation labels. This is a strict authoring rule (Ernest,
+2026-10-31). Physical and mathematical conventions are still defined and
+derived in the manuscript itself.

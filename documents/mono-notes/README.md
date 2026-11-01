@@ -91,6 +91,22 @@ the chapter files follow the second edition. Exercise identifiers and printed pa
 checked against the parsed second edition in
 `Data/Public/books/Mathematics/LeeJM-IntroSmoothManifolds-2e/`.
 
+## Quantum field theory
+
+`topics/qft-foundations.tex` develops the opening of the QFT part from
+first principles: Minkowski conventions, the scalar action and Hamiltonian,
+Fourier modes and canonical quantization, the massless zero mode, Pauli
+matrices, Lorentz-vector/spinor relations, the alternating spinor pairing
+and Schouten identity, then the Clifford relation, free Dirac equation
+and trace/contraction identities. Srednicki supplies a reading reference;
+the topic is organized by mathematical and physical dependencies.
+
+The manuscript is independent of any specific implementation. Code names,
+APIs and bidirectional expression-to-code maps belong in separate
+implementation documentation near the code, with references back to stable
+note labels. Read the strict boundary in `STYLE.md` before extending it.
+This is an opening foundation, not complete coverage of QFT or Srednicki.
+
 ## Source and provenance
 
 The historical `LaTeX_and_pdfs/AGAT_dump.tex` and `DGDT_dump.tex` remain

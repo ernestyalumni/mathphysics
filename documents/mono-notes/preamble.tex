@@ -5,6 +5,7 @@
 \usepackage{lmodern}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{geometry,multicol}
+\usepackage{etoolbox}
 \usepackage{xurl}
 \ifdefined\screenedition
   \geometry{paperwidth=1200pt,paperheight=700pt,margin=35pt,columnsep=18pt}
@@ -64,6 +65,9 @@
 \newtheorem*{exercise}{Exercise}
 
 \makeatletter
+% Three-digit section numbers need more than article's default 1.5em.
+\patchcmd{\l@section}{1.5em}{2.4em}{}%
+  {\PackageError{mono-notes}{Cannot widen section numbers in contents}{Check the article contents definition.}}
 \renewcommand{\@pnumwidth}{2.5em}
 \renewcommand{\@tocrmarg}{3.5em}
 \makeatother
