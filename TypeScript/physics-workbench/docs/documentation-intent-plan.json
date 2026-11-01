@@ -1,0 +1,57 @@
+{
+  "acceptance": {
+    "reasons": [
+      "critical boundary"
+    ],
+    "sentence": "Implement repo documentation/PDD artifacts for frontend at TypeScript/physics-workbench; parent copies source.",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "implement-repo-documentation-pdd-artifacts-for-f-925a51d5",
+  "original_request": "Implement repo documentation/PDD artifacts for frontend at TypeScript/physics-workbench; parent copies source. Own ONLY docs/prompts/config/story updates, never frontend source. Record actual Notebook and Pixel styles, file search/favorites/history, paired TeX and integrated PDF.js page/text rendering/zoom, safe local previews/export, live Rust Clifford. Desktop and actual harness sessions remain pending. Update unified UX story and delivery status truthfully. Create bounded .prompt specifications for TypeScript modules including pdf.ts, architecture and PDD.md declaring manual implementation, not automated regeneration. Preserve existing repository dirt; no commits, provider changes or new agents.",
+  "original_request_sha256": "925a51d56afc4f6eac1bf7575f66dac862752704bc24181bacd8a446de58af85",
+  "project": {
+    "adoption_scenario": "new_subproject_design",
+    "exists": false,
+    "kind": "greenfield",
+    "pdd_signals": [],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/TypeScript/physics-workbench",
+    "scope_kind": "subproject"
+  },
+  "recommended_workflow": "design_greenfield",
+  "review": {
+    "examples": [],
+    "must_preserve": [
+      "Own ONLY docs/prompts/config/story updates, never frontend source."
+    ],
+    "open_decisions": [
+      "This sits inside a larger repository. Confirm we should only change this folder.",
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "critical boundary"
+    ],
+    "recommended": true
+  },
+  "title": "Implement repo documentation/PDD artifacts for frontend at...",
+  "warnings": []
+}

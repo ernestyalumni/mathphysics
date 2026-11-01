@@ -1,0 +1,90 @@
+{
+  "acceptance": {
+    "reasons": [
+      "critical boundary"
+    ],
+    "sentence": "Patch approved gateway launcher only: default books root MUST be existing Physics/Srednicki-QuantumFieldTheory corpus, never whole books tree; absent optional corpus MUST warn and serve mathphysics...",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": "architecture.json",
+      "matched_terms": [
+        "approved",
+        "gateway",
+        "launcher",
+        "offline",
+        "workbench"
+      ],
+      "output_path": "../../run_workbench.sh",
+      "product_area": "Offline external-cache workbench build and read-only local gateway launch",
+      "prompt_path": "prompts/launcher_bash.prompt",
+      "score": 20
+    },
+    {
+      "architecture_path": "architecture.json",
+      "matched_terms": [
+        "existing",
+        "existing physics",
+        "gateway",
+        "physics"
+      ],
+      "output_path": "src/main.rs",
+      "product_area": "Loopback read-only file/static gateway and existing physics-tools bridge",
+      "prompt_path": "prompts/gateway_rust.prompt",
+      "score": 17
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "patch-approved-gateway-launcher-only-default-boo-2d7797eb",
+  "original_request": "Patch approved gateway launcher only: default books root MUST be existing Physics/Srednicki-QuantumFieldTheory corpus, never whole books tree; absent optional corpus MUST warn and serve mathphysics root alone. Root ID mathphysics consistently. npm stays offline by default; WORKBENCH_NPM_OFFLINE=0 explicitly opts into online npm ci dependency bootstrap, documented without executing online bootstrap now. Update launcher README and prompt. Preserve unrelated dirt.",
+  "original_request_sha256": "2d7797eb25a7c42daf08a6fea9d0cef67a0f9185d313f84a2735848c0d139d0d",
+  "project": {
+    "adoption_scenario": "existing_pdd_subproject_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      ".pddrc",
+      "architecture.json",
+      "2 prompt file(s)"
+    ],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/physics-gateway",
+    "scope_kind": "subproject"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [],
+    "must_preserve": [
+      "Patch approved gateway launcher only: default books root MUST be existing Physics/Srednicki-QuantumFieldTheory corpus, never whole books tree; absent optional corpus MUST warn and serve mathphysics root alone.",
+      "npm stays offline by default; WORKBENCH_NPM_OFFLINE=0 explicitly opts into online npm ci dependency bootstrap, documented without executing online bootstrap now."
+    ],
+    "open_decisions": [
+      "This sits inside a larger repository. Confirm we should only change this folder.",
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "critical boundary"
+    ],
+    "recommended": true
+  },
+  "title": "Patch approved gateway launcher only: default books root MUST be...",
+  "warnings": []
+}

@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>CSS</language>
+Generate src/explore-standalone.css. Independent game-first base reset, gamebar, brand, sound andfieldguide, typography,buttons,inputs,focus,reducedmotion,mobile layout. Never import notebookCSS, stylesheetvariables,workbench chrome. Mathreadability andoriginalpixelart remain. Fullwindow game,journal,andlab use existingexplore.css scopedcomponents. No notebook themeswitch or notebook controls.

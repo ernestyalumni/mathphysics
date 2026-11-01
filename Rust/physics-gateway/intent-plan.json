@@ -1,0 +1,59 @@
+{
+  "acceptance": {
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "sentence": "Implement Rust/physics-gateway at /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/physics-gateway, staging exclusively /tmp/mathphysics-workbench-gateway.",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "implement-rust-physics-gateway-at-645d6101",
+  "original_request": "Implement Rust/physics-gateway at /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/physics-gateway, staging exclusively /tmp/mathphysics-workbench-gateway. Native Rust loopback-only HTTP service serving built TypeScript static files and read-only approved filesystem roots. MUST implement GET roots, bounded files/search, whitelisted UTF8 text with tex/pdf pairing, streamed PDF GET/HEAD ranges, POST tool forwarding physics_tools::handle_bytes, truthful PATH-only five harness discovery, health. MUST reject unsafe hosts/origins, traversal and escaping symlinks, enforce 1MiB bodies and 2MiB source text, max4 workers, max200 results/10000 visited/500ms scanning and exclude cache recursion. CLI --static-dir ABS --root id=ABS repeat --port default8876. MUST preserve display aliases and hidden entries. No API writes, frontend, models, new agents, repository edits, commits or publication. Provide offline Cargo.lock, integration HTTP tests including actual trace, versioned prompts/config/architecture and README. Manual implementation; full PDD generation unverified. Authorization carries forward from user. Exact endpoint schemas are specified in prompts/gateway_rust.prompt.",
+  "original_request_sha256": "645d61014900e73f06b5438b21be8186fc1a8f15eac2004d183f906f6681bdb0",
+  "project": {
+    "adoption_scenario": "new_subproject_design",
+    "exists": false,
+    "kind": "greenfield",
+    "pdd_signals": [],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/physics-gateway",
+    "scope_kind": "subproject"
+  },
+  "recommended_workflow": "design_greenfield",
+  "review": {
+    "examples": [],
+    "must_preserve": [
+      "MUST implement GET roots, bounded files/search, whitelisted UTF8 text with tex/pdf pairing, streamed PDF GET/HEAD ranges, POST tool forwarding physics_tools::handle_bytes, truthful PATH-only five harness discovery, health.",
+      "MUST reject unsafe hosts/origins, traversal and escaping symlinks, enforce 1MiB bodies and 2MiB source text, max4 workers, max200 results/10000 visited/500ms scanning and exclude cache recursion.",
+      "MUST preserve display aliases and hidden entries."
+    ],
+    "open_decisions": [
+      "This sits inside a larger repository. Confirm we should only change this folder.",
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "file",
+    "ref": "/tmp/mathphysics-workbench-gateway/request.txt"
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "recommended": true
+  },
+  "title": "Implement Rust/physics-gateway at...",
+  "warnings": []
+}

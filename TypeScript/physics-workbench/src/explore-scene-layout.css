@@ -1,0 +1,592 @@
+/* Scene-first Explore: the instrument takes the screen, details arrive when asked. */
+body {
+  background: #101f2b;
+}
+.game-bar {
+  min-height: 64px;
+  padding: 10px 22px;
+  background: #0b1e29;
+  border-color: #bb9656;
+}
+.game-bar > span {
+  display: none;
+}
+.game-brand {
+  font-size: 14px;
+}
+.game-footer {
+  display: none;
+}
+#journey {
+  max-width: none;
+}
+.explore-shell,
+[data-style="pixel"] .explore-shell {
+  min-height: calc(100dvh - 64px);
+  padding: 10px 18px 14px;
+  background: radial-gradient(ellipse at 50% 0, #263d49, #0f202a 70%);
+  color: #e0ebdb;
+}
+.explore-header {
+  max-width: none;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: space-between;
+}
+.explore-header h1 {
+  font-size: 19px !important;
+  line-height: 1.3;
+  color: #f0dfb0 !important;
+  margin: 0;
+}
+.explore-header > p {
+  display: none;
+}
+.explore-eyebrow {
+  display: none;
+}
+.explore-header .explore-actions {
+  margin: 0;
+  gap: 6px;
+}
+.explore-header button {
+  min-height: 34px;
+  font-size: 12px;
+  padding: 6px 10px;
+  background: #28444a;
+  color: #e5edcf;
+  border-color: #6b8d87;
+}
+.explore-lab,
+[data-style="pixel"] .explore-lab {
+  position: relative;
+  background: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+}
+.explore-lab-heading {
+  display: none;
+}
+.explore-scene-host {
+  height: calc(100dvh - 222px);
+  min-height: 280px;
+  width: 100%;
+  position: relative;
+  background: #0b1724;
+  border: 2px solid #547676;
+  box-shadow: inset 0 0 30px #0005;
+}
+.scene-computation {
+  display: block;
+  font-size: 12px;
+  color: #e1d7a9;
+  text-align: center;
+  min-height: 25px;
+  padding: 4px;
+}
+.scene-dock {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px;
+  background: #132d36;
+  border: 1px solid #5f7d77;
+  flex-wrap: wrap;
+}
+.scene-dock button {
+  min-height: 44px;
+  background: #23454c;
+  border: 2px solid #557f7e;
+  color: #ecedc8;
+  box-shadow: 0 3px #081a25;
+  font-size: 14px;
+  min-width: 80px;
+}
+.scene-dock button[aria-pressed="true"] {
+  border-color: #f4cc7a;
+  background: #3d5e58;
+  color: #fff4c5;
+}
+.scene-dock button:hover {
+  background: #3f6263;
+}
+.explore-shell > p[role="status"]:not(:empty) {
+  position: fixed;
+  z-index: 30;
+  bottom: 90px;
+  left: 20px;
+  max-width: min(500px, 90vw);
+  margin: 0;
+  background: #173b41;
+  color: #fff0bc;
+  border: 1px solid #bb9c5c;
+  padding: 10px;
+  font-size: 13px;
+}
+.explore-recovery {
+  background: #fff7d8;
+  color: #233f39;
+  padding: 12px;
+}
+.explore-world-host {
+  max-width: none;
+}
+.observatory-world {
+  border-color: #54736a !important;
+  border-radius: 0 !important;
+  background: #123336 !important;
+  box-shadow: none !important;
+}
+.world-hud {
+  padding: 8px 16px;
+}
+.world-hud h2 {
+  font-size: 19px;
+}
+.world-eyebrow {
+  display: none;
+}
+.world-instructions {
+  font-size: 12px;
+  padding: 6px 14px;
+}
+.world-canvas {
+  width: min(100%, calc(177.78dvh - 586px));
+  height: auto;
+  max-height: none;
+  margin: auto;
+}
+.world-footer {
+  padding: 8px 14px;
+}
+.world-dpad {
+  grid-template-columns: repeat(3, 32px);
+  grid-template-rows: repeat(2, 30px);
+}
+.world-dpad button {
+  min-width: 30px;
+  min-height: 30px;
+  font-size: 18px;
+}
+.world-status {
+  font-size: 12px;
+}
+.world-enter {
+  font-size: 13px;
+}
+dialog.explore-scanner,
+dialog.explore-journal-dialog,
+dialog.explore-atlas,
+#field-guide {
+  background: #f7f2dc;
+  color: #243d38;
+  border: 3px solid #658c80;
+  box-shadow: 7px 7px #061b22b3;
+  padding: 20px;
+  width: min(820px, 95vw);
+  max-width: 95vw;
+  max-height: 88dvh;
+  overflow: auto;
+}
+dialog::backdrop {
+  background: #06121cb3;
+  backdrop-filter: blur(2px);
+}
+.overlay-close,
+#guide-close {
+  float: right;
+  margin: 0 0 12px 12px;
+  background: #294b4d;
+  color: #fff3c9;
+}
+.explore-scanner .explore-layout {
+  display: block;
+}
+.explore-scanner .explore-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  color: #233d36;
+}
+.explore-scanner .explore-matrix {
+  grid-column: 1/-1;
+}
+.explore-scanner .explore-record {
+  margin-top: 20px;
+}
+.explore-scanner .explore-record input,
+.explore-scanner .explore-record textarea {
+  width: 100%;
+  margin-bottom: 8px;
+}
+.explore-journal-dialog .explore-journal,
+.explore-atlas .explore-future {
+  margin: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+.explore-scanner .plot-readout {
+  color: #37584a;
+}
+.explore-journal-dialog h2,
+.explore-atlas h2,
+.explore-scanner h2 {
+  font-size: 22px;
+  color: #2b4b3d;
+}
+.explore-shell dialog label {
+  color: #274d40;
+}
+.explore-shell dialog .explore-actions button,
+.explore-shell dialog button {
+  font-size: 14px;
+}
+.explore-shell dialog .progress-note {
+  color: #4f6958;
+}
+.game-bar #field-guide {
+  color: #263b35;
+}
+#field-guide:not([open]) {
+  display: none;
+}
+#field-guide[open] {
+  margin: auto;
+}
+.explore-journal-entry {
+  border-bottom: 1px solid #b5c4a1;
+  padding: 12px 0;
+}
+@media (max-width: 700px) {
+  .game-bar {
+    padding: 8px 12px;
+    min-height: 56px;
+    gap: 8px;
+  }
+  .game-brand {
+    flex-basis: auto;
+    margin-right: auto;
+    font-size: 11px;
+  }
+  .game-bar button {
+    font-size: 11px;
+    min-height: 32px;
+    padding: 5px 8px;
+  }
+  .game-bar label {
+    font-size: 11px;
+  }
+  .explore-shell {
+    padding: 6px 8px 10px;
+  }
+  .explore-header {
+    display: block;
+    margin-bottom: 6px;
+  }
+  .explore-header h1 {
+    font-size: 16px !important;
+    margin-bottom: 7px;
+  }
+  .explore-header .explore-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .explore-header button {
+    font-size: 11px;
+    min-height: 30px;
+  }
+  .explore-scene-host {
+    height: calc(100dvh - 265px);
+    min-height: 280px;
+  }
+  .scene-dock {
+    gap: 6px;
+    padding: 6px;
+  }
+  .scene-dock button {
+    min-width: calc(33.33% - 6px);
+    min-height: 36px;
+    font-size: 12px;
+  }
+  .scene-computation {
+    font-size: 11px;
+  }
+  .world-footer {
+    gap: 6px;
+  }
+  .world-status {
+    max-width: 22ch;
+    font-size: 11px;
+  }
+  .world-hud h2 {
+    font-size: 16px;
+  }
+  .world-badge {
+    font-size: 10px;
+  }
+  .world-instructions {
+    font-size: 11px;
+  }
+  .world-canvas {
+    width: 100%;
+  }
+  dialog.explore-scanner,
+  dialog.explore-journal-dialog,
+  dialog.explore-atlas {
+    padding: 12px;
+    max-height: 90dvh;
+  }
+  .scene-dock button:focus-visible {
+    outline-offset: 1px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog::backdrop {
+    backdrop-filter: none;
+  }
+}
+
+.scene-axis {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  background: #163d49;
+  color: #f5df9f;
+  border: 2px solid #b9a263;
+  font-size: 12px;
+  min-height: 38px;
+}
+.scene-axis:focus-visible {
+  outline: 3px solid #edbf65;
+  outline-offset: 3px;
+}
+/* Keep every contextual tool on screen even when the mobile HUD wraps. */
+#game {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.game-bar {
+  flex: none;
+}
+#journey {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  margin: 0;
+}
+.explore-shell[data-location="lab"] {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.explore-shell[data-location="lab"] > .explore-header {
+  flex: none;
+}
+.explore-shell[data-location="lab"] > .explore-lab {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.explore-shell[data-location="lab"] .explore-scene-host {
+  flex: 1;
+  height: auto;
+  min-height: 150px;
+}
+.scene-computation,
+.scene-dock {
+  flex: none;
+}
+@media (max-height: 550px) {
+  .explore-shell[data-location="lab"] .explore-scene-host {
+    min-height: 100px;
+  }
+  .game-bar {
+    min-height: 40px;
+  }
+  .explore-header h1 {
+    display: none;
+  }
+}
+
+/* Contemporary pixel chrome: tactile materials, clear labels and original pictograms. */
+.scene-dock {
+  background: linear-gradient(#304e4c, #1b3439);
+  border: 2px solid #92a18a;
+  box-shadow:
+    inset 0 2px #d3c99b66,
+    0 3px #061c26;
+  gap: 8px;
+}
+.scene-dock button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-color: #9aa98c;
+  background: linear-gradient(#385c59, #274646);
+  box-shadow:
+    inset 0 2px #b7c4a233,
+    0 3px #0d2228;
+  border-radius: 3px;
+}
+.scene-dock button:hover {
+  background: linear-gradient(#517a68, #345b52);
+  border-color: #dfc88f;
+}
+.scene-dock button:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 2px #122f35;
+}
+.scene-dock button[aria-pressed="true"] {
+  background: linear-gradient(#6c7451, #475d48);
+  border-color: #e5c984;
+  box-shadow:
+    inset 0 2px #f3e4a755,
+    0 3px #132a2b;
+}
+.tool-pictogram {
+  font-family: system-ui, sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  color: #f1d79f;
+}
+.tool-shortcut {
+  font:
+    10px/1.2 system-ui,
+    sans-serif;
+  color: #c0d0bc;
+  border: 1px solid #81977e;
+  border-radius: 2px;
+  padding: 2px;
+  min-width: 13px;
+  background: #193c3d;
+}
+.scene-axis {
+  background: linear-gradient(#f0e7c2, #d8d4a6);
+  border-color: #a38857;
+  box-shadow:
+    inset 0 2px #fff8da,
+    2px 3px #142b32;
+  color: #27483e;
+}
+.scene-dock button[aria-busy="true"] {
+  border-color: #e9c179;
+}
+.discovery-kept {
+  outline: 2px solid #b6e8a4;
+  outline-offset: 2px;
+}
+.discovery-kept:after {
+  content: "✦";
+  position: absolute;
+  right: 4px;
+  top: -16px;
+  color: #f2d47d;
+  font-size: 21px;
+  text-shadow: 1px 2px #213b38;
+  animation: discovery-rise 1.05s ease-out both;
+}
+.discovery-kept[data-feedback="memory"]:after {
+  content: "↥";
+  color: #ffd19b;
+}
+@keyframes discovery-rise {
+  from {
+    transform: translateY(5px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-11px);
+    opacity: 0;
+  }
+}
+dialog.explore-tips {
+  width: min(480px, 94vw);
+  max-height: 85dvh;
+  overflow: auto;
+  background: #f4eed0;
+  color: #2b493c;
+  border: 4px solid #7d9670;
+  box-shadow: 6px 6px #102c36aa;
+  padding: 20px;
+}
+.tips-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  clear: both;
+}
+.tips-heading h2 {
+  font:
+    600 22px/1.3 system-ui,
+    sans-serif;
+}
+.tips-companion {
+  display: grid;
+  place-items: center;
+  min-width: 46px;
+  height: 46px;
+  background: #567c62;
+  border: 3px solid #d0b977;
+  box-shadow: 3px 3px #a4b28a;
+  color: #ffe2a0;
+  font-size: 28px;
+}
+.explore-tips p {
+  line-height: 1.65;
+}
+.explore-tips .explore-actions {
+  gap: 10px;
+}
+.explore-tips .explore-actions button {
+  background: #315d4c;
+  color: #fff1ca;
+  border-color: #7f996c;
+}
+.explore-tips .progress-note {
+  color: #526c53;
+}
+.explore-header button:hover {
+  border-color: #d5c68e;
+  background: #426359;
+}
+@media (max-width: 700px) {
+  .scene-dock button {
+    gap: 4px;
+    padding: 5px 6px;
+    font-size: 11px;
+  }
+  .tool-pictogram {
+    font-size: 16px;
+  }
+  .tool-shortcut {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .discovery-kept:after {
+    animation: none;
+    top: 2px;
+    right: 2px;
+    font-size: 13px;
+  }
+  .scene-dock button:active {
+    transform: none;
+  }
+}
+@media (max-width: 700px) {
+  .scene-dock button {
+    min-height: 44px;
+  }
+}

@@ -1,0 +1,7 @@
+<version>1.0.0</version>
+<language>TypeScript</language>
+<include>prompts/model_typescript.prompt</include>
+Generate only src/api.ts.
+Export typed Listing/TextFile and request, query, getRoots, getFiles, getText, pdfUrl, runTrace. Use same-origin /api/roots, /api/files, /api/text, /api/pdf and POST /api/tool. Encode root/path/q with URLSearchParams; pass abort signal through file searches. Extract string or structured error messages on non-OK JSON responses. Trace payload is command gamma_trace, labels supplied by caller, domain formal_symmetric_h, budget10395. Preserve kernel response statuses and formal_proof flag; never reinterpret metadata or exact algebra as proof. Do not launch processes or call model providers from the browser.
+
+This is a manually implemented browser slice described by versioned specifications. Automated PDD regeneration, synchronization and generated story contracts remain unverified. Preserve independent tests; satisfy the unified workspace story without expanding to desktop/harness sessions.

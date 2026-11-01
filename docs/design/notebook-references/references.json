@@ -1,0 +1,676 @@
+{
+  "schema_version": 1,
+  "acquired_at_utc": "2026-10-31T20:41:20.018924+00:00",
+  "root": "/tmp/mathphysics-ux-references",
+  "inspection": "source/text only; no rendered visual or runtime inspection",
+  "sources": [
+    {
+      "id": "snes.css",
+      "url": "https://github.com/devMiguelCarrero/snes.css/",
+      "status": "downloaded_git_shallow",
+      "commit": "d749a5e310478731684ba110dae952d8ea48c529",
+      "license": "MIT",
+      "license_path": "snes.css/LICENSE",
+      "reuse": "scoped software adaptation; exclude uncleared third-party artwork"
+    },
+    {
+      "id": "csswitch",
+      "url": "https://remiscan.fr/csswitch/",
+      "status": "downloaded_html_and_selected_linked_source",
+      "repository": null,
+      "commit": null,
+      "license": null,
+      "reuse": "reference_only",
+      "provenance_chain": [
+        "https://remiscan.fr/csswitch/",
+        "https://remiscan.fr/",
+        "https://remiscan.fr/projet/csswitch"
+      ],
+      "not_downloaded": [
+        "switch.ogg",
+        "game artwork",
+        "OG preview",
+        "all transitive modules"
+      ]
+    },
+    {
+      "id": "pressstart2p",
+      "repository": "https://github.com/google/fonts",
+      "commit": "e06fe11c39051bddaef73ec338a9d1c8175723f1",
+      "font_path": "pressstart2p-Regular.ttf",
+      "license": "OFL-1.1",
+      "license_path": "pressstart2p-OFL-pinned.txt",
+      "reuse": "short UI labels; retain license and reserved-name conditions"
+    },
+    {
+      "id": "mathematica-notebook",
+      "url": "https://reference.wolfram.com/language/tutorial/UsingANotebookInterface.html",
+      "path": "wolfram-notebook.html",
+      "reuse": "layout concepts only",
+      "screenshots_downloaded": false
+    }
+  ],
+  "downloads": [
+    {
+      "url": "https://remiscan.fr/csswitch/page--1722970052.css",
+      "final_url": "https://remiscan.fr/csswitch/page--1722970052.css",
+      "path": "csswitch-source/page--1722970052.css",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://remiscan.fr/csswitch/scripts--1722970052.js",
+      "final_url": "https://remiscan.fr/csswitch/scripts--1722970052.js",
+      "path": "csswitch-source/scripts--1722970052.js",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://remiscan.fr/csswitch/modules/comp_NintendoSwitch--1728827414.js",
+      "final_url": "https://remiscan.fr/csswitch/modules/comp_NintendoSwitch--1728827414.js",
+      "path": "csswitch-source/modules/comp_NintendoSwitch--1728827414.js",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://remiscan.fr/csswitch/modules/comp_NintendoSwitch--1722970052.css",
+      "final_url": "https://remiscan.fr/csswitch/modules/comp_NintendoSwitch--1722970052.css",
+      "path": "csswitch-source/modules/comp_NintendoSwitch--1722970052.css",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://remiscan.fr/csswitch/modules/comp_NintendoSwitch.template--1722970052.js",
+      "final_url": "https://remiscan.fr/csswitch/modules/comp_NintendoSwitch.template--1722970052.js",
+      "path": "csswitch-source/modules/comp_NintendoSwitch.template--1722970052.js",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://remiscan.fr/csswitch/jeux/menu/template--1722970052.js",
+      "final_url": "https://remiscan.fr/csswitch/jeux/menu/template--1722970052.js",
+      "path": "csswitch-source/jeux/menu/template--1722970052.js",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://remiscan.fr/csswitch/jeux/menu/styles--1722970052.css",
+      "final_url": "https://remiscan.fr/csswitch/jeux/menu/styles--1722970052.css",
+      "path": "csswitch-source/jeux/menu/styles--1722970052.css",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://remiscan.fr/csswitch/strings--1722970052.json",
+      "final_url": "https://remiscan.fr/csswitch/strings--1722970052.json",
+      "path": "csswitch-source/strings--1722970052.json",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://reference.wolfram.com/language/tutorial/UsingANotebookInterface.html",
+      "final_url": "https://reference.wolfram.com/language/tutorial/UsingANotebookInterface.html",
+      "path": "wolfram-notebook.html",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://remiscan.fr/csswitch/modules/comp_MainMenu--1728827414.js",
+      "path": "csswitch-mainmenu.js",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://remiscan.fr/mon-portfolio/projets/csswitch/",
+      "status": "failed",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/pressstart2p/OFL.txt",
+      "path": "pressstart2p-OFL.txt",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://api.github.com/repos/google/fonts/commits?path=ofl/pressstart2p&per_page=1",
+      "path": "font-commit.json",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://remiscan.fr/",
+      "path": "csswitch-author.html",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/google/fonts/e06fe11c39051bddaef73ec338a9d1c8175723f1/ofl/pressstart2p/PressStart2P-Regular.ttf",
+      "path": "pressstart2p-Regular.ttf",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/google/fonts/e06fe11c39051bddaef73ec338a9d1c8175723f1/ofl/pressstart2p/OFL.txt",
+      "path": "pressstart2p-OFL-pinned.txt",
+      "status": "downloaded"
+    }
+  ],
+  "additional_downloads": [
+    {
+      "url": "https://remiscan.fr/csswitch/",
+      "path": "csswitch.html",
+      "status": "downloaded"
+    },
+    {
+      "url": "https://remiscan.fr/projet/csswitch",
+      "path": "csswitch-project.html",
+      "status": "downloaded"
+    }
+  ],
+  "files": [
+    {
+      "path": "csswitch-author.html",
+      "bytes": 98946,
+      "sha256": "b2bca785743c3ec9a68c3717c2bca8df2df30e697dc132925e7d1a4d9c5f692b"
+    },
+    {
+      "path": "csswitch-mainmenu.js",
+      "bytes": 3304,
+      "sha256": "1e8b71d227ff2821a4533b5ef392380f5c7ea8f6ab2f067111f0fe35963dabf9"
+    },
+    {
+      "path": "csswitch-project.html",
+      "bytes": 98862,
+      "sha256": "825c51cfc9c2fab10aca2842a0a6e53c4c363f6a5f51406127a80af66d2d78e1"
+    },
+    {
+      "path": "csswitch-source/jeux/menu/styles--1722970052.css",
+      "bytes": 5009,
+      "sha256": "b33999ef6c9b12a51cbe77a87a83864caa33b2627bdb710a95a1d2f29aa65bc3"
+    },
+    {
+      "path": "csswitch-source/jeux/menu/template--1722970052.js",
+      "bytes": 1022,
+      "sha256": "9bc88ff25c24798e8084b0d3f6485f1aaca83d105cf832675ce38bb20c63140f"
+    },
+    {
+      "path": "csswitch-source/modules/comp_NintendoSwitch--1722970052.css",
+      "bytes": 11594,
+      "sha256": "db69a16eab64ae06609c9f48becbb24ef837c59fa3d6e5ff27d29a0991315876"
+    },
+    {
+      "path": "csswitch-source/modules/comp_NintendoSwitch--1728827414.js",
+      "bytes": 11301,
+      "sha256": "81e98afa5fc577741c22cc9c840c9277281aab108e2bd9e03d8df44bedeeab53"
+    },
+    {
+      "path": "csswitch-source/modules/comp_NintendoSwitch.template--1722970052.js",
+      "bytes": 2898,
+      "sha256": "75251acc8c39aa20c2dd5c025617f4885da7f2e9f3b572c0c3b1933cb2309a2e"
+    },
+    {
+      "path": "csswitch-source/page--1722970052.css",
+      "bytes": 1576,
+      "sha256": "aac2eb06dd43ef831a21887ee220146f748c3fc2144125f4ffc20332b678fa1a"
+    },
+    {
+      "path": "csswitch-source/scripts--1722970052.js",
+      "bytes": 1263,
+      "sha256": "3a339f6f342879f459a7c59122b27cf0b038f3da850ab428db68ed039f08475c"
+    },
+    {
+      "path": "csswitch-source/strings--1722970052.json",
+      "bytes": 6695,
+      "sha256": "38d7fbd3d2d03c24e2c5cc3e5cd5dbe279272d9138d16cca005175cd43f80061"
+    },
+    {
+      "path": "csswitch.html",
+      "bytes": 5118,
+      "sha256": "cb5e60163571e9618f284779b9c659203da61bd8e4cc04b3d2a182a781d87b68"
+    },
+    {
+      "path": "download-log.json",
+      "bytes": 2360,
+      "sha256": "64699ad8ab5ab109c6142f77c21c1f21a4db2617d47899063fd0303b35232d59"
+    },
+    {
+      "path": "final-download-log.json",
+      "bytes": 535,
+      "sha256": "1a99fec1512ddc823e9423e4855a7f95ac852fe19317bc19eaea0815918ca2e0"
+    },
+    {
+      "path": "font-commit.json",
+      "bytes": 3589,
+      "sha256": "a36c7be20cf97a6e51e54342c3a51b1569f57edd4cfb3ee0005f054cebbe2397"
+    },
+    {
+      "path": "pressstart2p-OFL-pinned.txt",
+      "bytes": 4413,
+      "sha256": "705960c3281a5765ecc0b59bd4ed7ca59eed165748076bc2fc3e8fdbfeb944b0"
+    },
+    {
+      "path": "pressstart2p-OFL.txt",
+      "bytes": 4413,
+      "sha256": "705960c3281a5765ecc0b59bd4ed7ca59eed165748076bc2fc3e8fdbfeb944b0"
+    },
+    {
+      "path": "pressstart2p-Regular.ttf",
+      "bytes": 118204,
+      "sha256": "034c77f1f05ec89421e4a63f0e3a4ca1ecf852cc6d2bf611f126f275728e017d"
+    },
+    {
+      "path": "snes.css/.eslintrc.json",
+      "bytes": 305,
+      "sha256": "704fc0699e6cdf6d8086f3b7761cc9904e1f3e52c904f63c0cfc57d5be95bfcf"
+    },
+    {
+      "path": "snes.css/.gitignore",
+      "bytes": 350,
+      "sha256": "921a49598c072dce50227d72e036d8ed72e1d3a19e0b3d798825b451de16f2fa"
+    },
+    {
+      "path": "snes.css/LICENSE",
+      "bytes": 1071,
+      "sha256": "ee1ee40d1ee340e8d672cc5cce3ef78d09e8ab64f0744bca219c73bdf1f2b589"
+    },
+    {
+      "path": "snes.css/README.md",
+      "bytes": 2095,
+      "sha256": "e0465cb9898ff52d957c9c1ff2ebdba8967ba95b8ac7450f20b398a0750152f7"
+    },
+    {
+      "path": "snes.css/assets/img/frame-hd.png",
+      "bytes": 15603,
+      "sha256": "19e4d3501a2834ee62107dc835beb238e0e7abd76bca99c080d0edd0f37fb6ea"
+    },
+    {
+      "path": "snes.css/next.config.js",
+      "bytes": 94,
+      "sha256": "549704cecfddd6f6c20e181566bbabb2e390f729be865edf881a4464ff50f50d"
+    },
+    {
+      "path": "snes.css/package-lock.json",
+      "bytes": 296762,
+      "sha256": "50e0cc5a3aeb9bcb0d59bbd38e7dbb1a2b820a5eae0a909c681d43e83377b430"
+    },
+    {
+      "path": "snes.css/package.json",
+      "bytes": 2288,
+      "sha256": "a23fd6de61b3d4bec203825ede674cceb4a32f6336afe356c0ea065cd4810c3b"
+    },
+    {
+      "path": "snes.css/postcss.config.js",
+      "bytes": 140,
+      "sha256": "463abe67c470e34e79ff8dcf4a4ef3045388ddcdd094a729f0a50fc47119d9dd"
+    },
+    {
+      "path": "snes.css/public/next.svg",
+      "bytes": 1375,
+      "sha256": "55995dfad6ecb4945a1e856ddca03c5e16aa5bf13fd21b4df6a74ae79357bcfc"
+    },
+    {
+      "path": "snes.css/public/vercel.svg",
+      "bytes": 629,
+      "sha256": "3fa5cd757b418e18afc68ddebad55f443206e410327921ddb2bf1be731658880"
+    },
+    {
+      "path": "snes.css/scss/base/elements/body.scss",
+      "bytes": 377,
+      "sha256": "4896c67b544bb64c9ec440eccc116dd798739a8317fed52ca10d57de8b276280"
+    },
+    {
+      "path": "snes.css/scss/base/elements/elements.scss",
+      "bytes": 77,
+      "sha256": "f8f3b556ca496c7074b729939d5b817006ada97fe9bb0681c0bd3dfe76b6cc98"
+    },
+    {
+      "path": "snes.css/scss/base/elements/links.scss",
+      "bytes": 49,
+      "sha256": "2f194c2a4eced3463dfb79585f99bbe80c47fd8d2307f051edcdad84de11e3cb"
+    },
+    {
+      "path": "snes.css/scss/base/elements/paragraph.scss",
+      "bytes": 84,
+      "sha256": "09c072c831ff847b70f763008739141a69f933d53b2b967e2440baf49ac8eaea"
+    },
+    {
+      "path": "snes.css/scss/base/elements/pre.scss",
+      "bytes": 181,
+      "sha256": "850510c399f372f70b68c05895ad2b36edf0a24b5cff15e68530ebd430ca91d9"
+    },
+    {
+      "path": "snes.css/scss/base/index.scss",
+      "bytes": 31,
+      "sha256": "53e4d42164a57bad53766b2b8a5447a07d804de06e92120e92792fcf3122e7ca"
+    },
+    {
+      "path": "snes.css/scss/common/fonts/index.scss",
+      "bytes": 85,
+      "sha256": "8757d50c96d837406983ac78a6f94bb0c91e701425197ec285fe09235ac39656"
+    },
+    {
+      "path": "snes.css/scss/common/icons/approve.scss",
+      "bytes": 1588,
+      "sha256": "7978bac0b085099a91cae910928b54d2861dcac670a8db2a38b024733c984ee9"
+    },
+    {
+      "path": "snes.css/scss/common/icons/caret.scss",
+      "bytes": 1293,
+      "sha256": "f5965ac90c0c406d563d8dc85bf8d11f2317425f2923e0035883ebb58ea6a706"
+    },
+    {
+      "path": "snes.css/scss/common/icons/checkbox-empty.scss",
+      "bytes": 1181,
+      "sha256": "92333ba32ee1b1748331587bc89eb3856e834bf7ebd99707eac3763129f27597"
+    },
+    {
+      "path": "snes.css/scss/common/icons/checkbox.scss",
+      "bytes": 1289,
+      "sha256": "4dce72db2d7994aee223b47b8d7afdd5e821c2e932dfc5598961b915e2847a88"
+    },
+    {
+      "path": "snes.css/scss/common/icons/diamond.scss",
+      "bytes": 1373,
+      "sha256": "56448da26b32aca1cc693ea11a25ca5476c96f18464a01b5d87aaa7277256d13"
+    },
+    {
+      "path": "snes.css/scss/common/icons/error.scss",
+      "bytes": 1587,
+      "sha256": "2ee677d3ba661d3ae99bacc1eaa4ab4a0ee66e7b0527e6e3d5a21e9a110ec3b9"
+    },
+    {
+      "path": "snes.css/scss/common/icons/index.scss",
+      "bytes": 62,
+      "sha256": "24ad212c8921492b2b2a3fafedad59eff373e2193f511427ce122244ed5dc849"
+    },
+    {
+      "path": "snes.css/scss/common/icons/list-icon.scss",
+      "bytes": 921,
+      "sha256": "e6a0642d3ae92cfda20fd7bb6fcd67ae3e06237d4794cbe3e891182380c4f917"
+    },
+    {
+      "path": "snes.css/scss/common/icons/megaman.scss",
+      "bytes": 2122,
+      "sha256": "ba41ac65d37c520c2ad6df9192c77c7d37419fdce2a906f8302ff97c277344d2"
+    },
+    {
+      "path": "snes.css/scss/common/icons/warning.scss",
+      "bytes": 1458,
+      "sha256": "faca6f1b777d3a67967cde57e86b84a0f0c671ae5107b2cada50de66fecd14cb"
+    },
+    {
+      "path": "snes.css/scss/common/main-split.scss",
+      "bytes": 88,
+      "sha256": "b862e63622cdab3866a398e66a9c0840e28b8a96fd21d2f07ca7d202493c4027"
+    },
+    {
+      "path": "snes.css/scss/common/mixins/mixins.scss",
+      "bytes": 3314,
+      "sha256": "f9ca3e80509d9df69d7455fc7da59dbf3f8978538b77b6e2f3a849b5860f89d4"
+    },
+    {
+      "path": "snes.css/scss/common/variables/border-image.scss",
+      "bytes": 20863,
+      "sha256": "54647ffe6568505bffca1d33731dae96fce4a39479d75348a609f4f3edd56bc4"
+    },
+    {
+      "path": "snes.css/scss/common/variables/clip-paths.scss",
+      "bytes": 946,
+      "sha256": "8f75619708ded33665b867dacadf91f062c32016f71f6a838344b665cdc6cc5f"
+    },
+    {
+      "path": "snes.css/scss/common/variables/colors.scss",
+      "bytes": 2190,
+      "sha256": "d4509eb0b98a544a22a4d97776ae5811c808dda7ae17dfeee3265165332d704d"
+    },
+    {
+      "path": "snes.css/scss/common/variables/index.scss",
+      "bytes": 199,
+      "sha256": "467d2c10da481c32ee87e3db9c78580c49b83ff2211a9c34cd56ee412f5312f3"
+    },
+    {
+      "path": "snes.css/scss/common/variables/media-queries.scss",
+      "bytes": 882,
+      "sha256": "93b498e80a2403c8ab63d64ab6f9b0aef0e009f032a1a586d26516666e83f7ad"
+    },
+    {
+      "path": "snes.css/scss/common/variables/pixels.scss",
+      "bytes": 42,
+      "sha256": "3c74011ce2811e2e81da4fb5c88bb1376349eefcc31af635a2bcc0f142791362"
+    },
+    {
+      "path": "snes.css/scss/common/variables/sizes.scss",
+      "bytes": 225,
+      "sha256": "323a7ad57b2bf26190105b5ecb8347d6cf4e1d4a7717a90d1bee60d96ba57d03"
+    },
+    {
+      "path": "snes.css/scss/common/variables/transitions.scss",
+      "bytes": 284,
+      "sha256": "bc82d7ef54d4c578defb79a6d91c88262b0e7a785426f48b9d48b22be7e0e055"
+    },
+    {
+      "path": "snes.css/scss/common/variables/typography.scss",
+      "bytes": 1582,
+      "sha256": "382c9308c55ff3b20359ae99e474aa90fd92b521be273967a5f70cbb6a8e0e68"
+    },
+    {
+      "path": "snes.css/scss/common/variables/variables.scss",
+      "bytes": 216,
+      "sha256": "984e4f422dc569bc92846e722187af95a83ff40c881a9e354636a6f9569168ec"
+    },
+    {
+      "path": "snes.css/scss/components/blockquote.scss",
+      "bytes": 549,
+      "sha256": "6d718280f71e894312d97069ffc91cbc68a496e8850aaeae970e05229b3f629b"
+    },
+    {
+      "path": "snes.css/scss/components/buttons.scss",
+      "bytes": 622,
+      "sha256": "3c005db5c54291042c2cd7611af6c185b1f7b2e65d31d552f13aebbb34dca794"
+    },
+    {
+      "path": "snes.css/scss/components/checkbox.scss",
+      "bytes": 1721,
+      "sha256": "99fcbdf567b318de8d85781cb2560ca434d3122fe8c9aae0b545b46cbf1dfe6c"
+    },
+    {
+      "path": "snes.css/scss/components/container-title.scss",
+      "bytes": 587,
+      "sha256": "1235b661750b9626a7e742d2f99eaae04f3229b62a2e218a7236838a968876a2"
+    },
+    {
+      "path": "snes.css/scss/components/container.scss",
+      "bytes": 523,
+      "sha256": "487f785242ef89648f280b71cbf16198a696aaf02d328f06093aa69f4d2235e3"
+    },
+    {
+      "path": "snes.css/scss/components/image.scss",
+      "bytes": 180,
+      "sha256": "9c3450cf38991107cc1330b68f3212b9af0072c5ed4300c58190ae3ee2e7ce55"
+    },
+    {
+      "path": "snes.css/scss/components/index.scss",
+      "bytes": 230,
+      "sha256": "a3fe7a7063f9d5f77a54a603a8d369c72ad7a0a90dd81d3fdf5d8f0c38c67290"
+    },
+    {
+      "path": "snes.css/scss/components/input.scss",
+      "bytes": 3113,
+      "sha256": "80b02305f54cbd884c9eff04f0930efbc6ff263843e679d871497b026a076011"
+    },
+    {
+      "path": "snes.css/scss/components/link.scss",
+      "bytes": 696,
+      "sha256": "c874abc253df1703ed5c6771e09042aea5013d6c751b21e5ebc0011dbf116198"
+    },
+    {
+      "path": "snes.css/scss/components/list.scss",
+      "bytes": 834,
+      "sha256": "7b906fbb9c29010b12f762eade55b06898328c3d783e24b51a4230994457b1ab"
+    },
+    {
+      "path": "snes.css/scss/components/radio.scss",
+      "bytes": 1633,
+      "sha256": "05d9787ec11c505f28aa71795f336d161972a414c2b8e7d5e52e3290661c63cb"
+    },
+    {
+      "path": "snes.css/scss/components/range.scss",
+      "bytes": 1931,
+      "sha256": "a56a6a1dae557b7529f85869178f60c98df38af0a74a441ce40da652a284c76e"
+    },
+    {
+      "path": "snes.css/scss/generic/box-sizing.scss",
+      "bytes": 266,
+      "sha256": "ec1dbfd88aa6214c971bd6fac8a4bf4b99fcb6f83c560e280649d701c9055ea7"
+    },
+    {
+      "path": "snes.css/scss/generic/index.scss",
+      "bytes": 24,
+      "sha256": "eea87233b2ee6a45e3ee9104a6cfadb6a02e26b1eaeea0d13fcfa07468dbda21"
+    },
+    {
+      "path": "snes.css/scss/snes.scss",
+      "bytes": 823,
+      "sha256": "8d92cd4b94d3886a0437b05d5af6975647129f6c12a70439c1fdaa333ed79b54"
+    },
+    {
+      "path": "snes.css/src/app/about/page.tsx",
+      "bytes": 3515,
+      "sha256": "c655b9a110057f4aa5325cc4993eca81b0963161f8781ee995da946c656dad6f"
+    },
+    {
+      "path": "snes.css/src/app/donate/page.tsx",
+      "bytes": 1386,
+      "sha256": "ef3178a3226ff81642f91d8a955d55bca5a7bfbcc1936458d81041180391f5c2"
+    },
+    {
+      "path": "snes.css/src/app/favicon.ico",
+      "bytes": 25931,
+      "sha256": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932"
+    },
+    {
+      "path": "snes.css/src/app/globals.css",
+      "bytes": 876,
+      "sha256": "b6f0ae9711a83895b931426e1ab610338a0d58421b875fbb31b6713337a72e58"
+    },
+    {
+      "path": "snes.css/src/app/layout.tsx",
+      "bytes": 1087,
+      "sha256": "7e2e6cb943fe1c04958816ddb326fc25a233538eef53ef3630fb69eee770725a"
+    },
+    {
+      "path": "snes.css/src/app/page.tsx",
+      "bytes": 2109,
+      "sha256": "8b9d389d1c87558d3edd7f0751cf290f3a75a6faabe5a5312d634b744131fc5c"
+    },
+    {
+      "path": "snes.css/src/components/grid/BlockquoteGrid/index.tsx",
+      "bytes": 1875,
+      "sha256": "c87d20c924791079f822792b62624e4432ed0174c2657c967e5fab4524f1e4eb"
+    },
+    {
+      "path": "snes.css/src/components/grid/ButtonGrid/index.tsx",
+      "bytes": 1986,
+      "sha256": "8f43817e34778f708be2745f1e95b76c36f4f34069de3a8e6068d46577795049"
+    },
+    {
+      "path": "snes.css/src/components/grid/CheckboxGrid/index.tsx",
+      "bytes": 7373,
+      "sha256": "5a6fa4810157c3207ec7ba88cee68485100d9c53ef37dacadcd521c1bb5c6f0a"
+    },
+    {
+      "path": "snes.css/src/components/grid/InputGrid/index.tsx",
+      "bytes": 4633,
+      "sha256": "44da0ef5126fdca07be4016a972e50ce52dad9ae2b5196dcc072f184e7658345"
+    },
+    {
+      "path": "snes.css/src/components/grid/LinkGrid/index.tsx",
+      "bytes": 1905,
+      "sha256": "5455797516d4bf72af8f10d2d13b281cf82314975b5ae8fcd24b907c6651bb77"
+    },
+    {
+      "path": "snes.css/src/components/grid/ListGrid/index.tsx",
+      "bytes": 2009,
+      "sha256": "165ae2e145ef26650ab528a889036ba7ef09a4e14ce5bec4e1fa83c201cb1373"
+    },
+    {
+      "path": "snes.css/src/components/grid/RadioControlGrid/index.tsx",
+      "bytes": 13078,
+      "sha256": "1c7f9251b9efe7179762de6d3dd64c1bfd0abcc965cf3eb911a2a3ebc9f98c3c"
+    },
+    {
+      "path": "snes.css/src/components/grid/RangeGrid/index.tsx",
+      "bytes": 5002,
+      "sha256": "2a3b753abda2b1d3426da048fc5d3da198448a71815c4e96530efb0db56e1efb"
+    },
+    {
+      "path": "snes.css/src/components/grid/SelectGrid/index.tsx",
+      "bytes": 4361,
+      "sha256": "f4b912bd88ab1e5ab7422f66e1394e7ea5d215e83ab932122040485bc7884daf"
+    },
+    {
+      "path": "snes.css/src/components/grid/TextAreaGrid/index.tsx",
+      "bytes": 3777,
+      "sha256": "871124698774119fd381479427e820bced88520ad79699e2a50acae3e876182c"
+    },
+    {
+      "path": "snes.css/src/components/grid/TextGrid/index.tsx",
+      "bytes": 1474,
+      "sha256": "e343c6675d9726b3f22b0c2d17586f534a165e582209dcb3989377e94d49e769"
+    },
+    {
+      "path": "snes.css/src/components/utilities/CodeBlock/code-block.module.scss",
+      "bytes": 837,
+      "sha256": "949fcf1a85befb3879dac539f8cfe96162f1a793c391153f0b28ce653eecdb70"
+    },
+    {
+      "path": "snes.css/src/components/utilities/CodeBlock/index.js",
+      "bytes": 954,
+      "sha256": "a74ebe6196296f3c8e6560669d7a4a52e241bc72726918e391b95202f7fd645b"
+    },
+    {
+      "path": "snes.css/src/components/utilities/MainNavigation/index.tsx",
+      "bytes": 3038,
+      "sha256": "1cfc04bc8f233a69582363f6bd284dbc666982c4717c207cdad97c730cd0b5c4"
+    },
+    {
+      "path": "snes.css/src/components/utilities/MainNavigation/main-navigation.module.scss",
+      "bytes": 1721,
+      "sha256": "1aba93bc3b7a9562cc86776d2d634d6487d8c43659ac91009ac21b6fa060d6ef"
+    },
+    {
+      "path": "snes.css/src/shared/assets/img/author-image.jpg",
+      "bytes": 40153,
+      "sha256": "04b5b946ada3f386a945cce5dfdbc3db617c7d8dd7deaf5d9f2f3c9a25bbc256"
+    },
+    {
+      "path": "snes.css/src/shared/lib/menu/menu.ts",
+      "bytes": 355,
+      "sha256": "938b3eb029550d93c080d37fc8fa0da2b1d45170a871f933ab69c00436f5f85d"
+    },
+    {
+      "path": "snes.css/tailwind.config.ts",
+      "bytes": 552,
+      "sha256": "96fc865c7176cc92b60fdc81e22d5bb3ce341ac1819c8e834e2bf20359eef004"
+    },
+    {
+      "path": "snes.css/tsconfig.json",
+      "bytes": 599,
+      "sha256": "6c957671079b5d136602e2c7ec3c7228a378ba7200d4cd7c154701aaa6af1b59"
+    },
+    {
+      "path": "snes.css/webpack.config.js",
+      "bytes": 2118,
+      "sha256": "095b3c7aec3f59147d66de8d8f1321f960a182ef719e904e3c2ed15c205c7ab0"
+    },
+    {
+      "path": "supplement-download-log.json",
+      "bytes": 622,
+      "sha256": "4fa6f47f05f9bb887ccb4a11dae47b12342a0dd322426525ffba96c4c9d5309e"
+    },
+    {
+      "path": "wolfram-notebook.html",
+      "bytes": 168255,
+      "sha256": "dd442a4f97660bc878ccb1ebc0ba185fc8831f055690d3766fa6892f83925b83"
+    }
+  ],
+  "failures": [
+    "Initial sandbox DNS failure; escalated downloads succeeded",
+    "python unavailable; used python3",
+    "Web tool failed NotebookInterface.html; official tutorial downloaded instead",
+    "Historical portfolio URL HTTP 403",
+    "SNES checkout has no dist directory"
+  ],
+  "constraints": {
+    "target_repo_mutated": false,
+    "downloaded_code_executed": false,
+    "installs": false,
+    "agents_created": false
+  }
+}

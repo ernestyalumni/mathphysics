@@ -1,0 +1,8 @@
+Version: 1.1.0
+Output: src/explore-world.ts only; parent owns CSS.
+Preserve mountWorld(host,onEnter,onSound): {dispose(): void}.
+MUST draw original deterministic warm detailed pixel geometry with Canvas2D only: layered grass/shrubs/borders/shadows, stone and wood paths, lanterns, pond reflections, crisp signs, expressive scientist coat/spectacles/boots. Adventure/farming pixel inspiration; no copied art, raster assets, dependencies or strict SNES.css constraint.
+MUST highlight station on hover/touch and proximity with clear contextual prompt and path arrows. Enter/E plus legacy Space enter nearby. Click/tap building/doorway and native direct button always enter independently of distance or missing canvas context. Never gate parent tools or fabricate math or NPC agents.
+MUST preserve focused WASD/arrows, normalized diagonals, clamped movement, collisions, native dpad pointer hold/keyboard activation, scaled mobile coordinates, focus and accessible fallback. Clear held input on blur/cancel/hide/disposal. Sound only on deliberate actions. Status updates only when changed.
+MUST skip hidden/background drawing/movement and reset timestep; live reduced motion supported, static ambient artwork. Idempotent cleanup cancels RAF, aborts listeners and removes owned DOM only; independent mounts.
+MUST edit only this prompt and src/explore-world.ts, prompt before code. No CSS/graph/story/provider changes or commits. Manual implementation, no provider apply/regeneration claim. Verify strict TS and isolated browser with cached dependencies; evidence outside repository.

@@ -1,0 +1,61 @@
+{
+  "acceptance": {
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "sentence": "And btw we're going to make a very cool looking and appealing unified front end.",
+    "story_recommended": true
+  },
+  "ask_the_human": [
+    "What language or runtime should this be built with?"
+  ],
+  "candidate_targets": [],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "unified-mathematical-physics-browser-and-desktop-9ab0834d",
+  "original_request": "And btw we're going to make a very cool looking and appealing unified front end. For cross platform, we should have a \"main\" browser version, but also out to Linux and Mac OS a dedicated application one can \"double clikc\" in Applications and start and would be fully connected to all the available AI harnesses and AI agents to use just like a MCP, (same with browser version), claude code, codex, grok build, hermes agent, pi. This unified front end will have a Mathematica like look a like make it look as much like Mathematica as possible. And then a Stardew-Valley, Super Mario World, Legend of Zelda SNES pixel version that, while has a comparable font size to Mathematica (so things are readable), its design UX, buttons, etc. will have sound effects like those games, and have a design language like those games. Download from the internet, i think github have some repos with this nintendo design language, for this effort. this https://github.com/devMiguelCarrero/snes.css/ or this https://remiscan.fr/csswitch/ for example\n\nmake the UX discussion a user story please and work that along with the Srednicki tooling work please",
+  "original_request_sha256": "9ab0834d27fc7c4caafa25d3af79fb7123687cbead2e96488fed9f2d147b4507",
+  "project": {
+    "adoption_scenario": "new_subproject_design",
+    "exists": false,
+    "kind": "greenfield",
+    "pdd_signals": [],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/TypeScript/physics-workbench",
+    "scope_kind": "subproject"
+  },
+  "recommended_workflow": "design_greenfield",
+  "review": {
+    "examples": [
+      "this https://github.com/devMiguelCarrero/snes.css/ or this https://remiscan.fr/csswitch/ for example"
+    ],
+    "must_preserve": [],
+    "open_decisions": [
+      "No language or runtime was named; decide the technology before any generation is attempted.",
+      "This sits inside a larger repository. Confirm we should only change this folder."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "recommended": true
+  },
+  "title": "Unified mathematical physics browser and desktop notebook UX",
+  "warnings": [
+    "A new project cannot pick a language on its own. Apply will refuse until the request names one or the agent asserts it."
+  ]
+}

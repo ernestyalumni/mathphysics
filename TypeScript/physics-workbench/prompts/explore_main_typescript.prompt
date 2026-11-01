@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>TypeScript</language>
+Generate src/explore-main.ts. Standalone Explore Physics application launched at root by run_explore.sh or /explore.html. No imports of notebook main/model/renderer/pdf or notebook CSS. Own gamefirst chrome, readable field guide, local sound preference and export shortcut. MountExplore as independent world/lab/journal; optional read-only source references use shared Rust API directly, never notebook callbacks. Preserve existing mathphysics.explore.v1 records, never read notebook storage. No notebook tabs/cells/pinning or Mathematica terminology. Clean up and restore on BFCache.

@@ -1,0 +1,59 @@
+{
+  "acceptance": {
+    "reasons": [],
+    "sentence": "Approved bounded physics-gateway follow-up: MUST support .mmd as markdown and .jsonl/.yaml/.yml/.csv as text through existing bounded UTF8 JSON source endpoint, no broader extensions; preserve...",
+    "story_recommended": false
+  },
+  "ask_the_human": [
+    "What language or runtime should this be built with?"
+  ],
+  "candidate_targets": [],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "approved-bounded-physics-gateway-follow-up-must--b81ae58c",
+  "original_request": "Approved bounded physics-gateway follow-up: MUST support .mmd as markdown and .jsonl/.yaml/.yml/.csv as text through existing bounded UTF8 JSON source endpoint, no broader extensions; preserve tex/pdf pairing and HTML rejection. MUST add X-Frame-Options SAMEORIGIN to static and PDF stream responses to allow own iframe. Stage ONLY /tmp/mathphysics-workbench-gateway; preserve running server and binary using target directory suffix extensions. Run focused HTTP tests and Clippy. Manual implementation, full PDD generation unverified.",
+  "original_request_sha256": "b81ae58c9cfaec8fc9508914c57bf77319cc32540bda91f5dc44352dd4bec1de",
+  "project": {
+    "adoption_scenario": "new_subproject_design",
+    "exists": false,
+    "kind": "greenfield",
+    "pdd_signals": [],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/physics-gateway",
+    "scope_kind": "subproject"
+  },
+  "recommended_workflow": "design_greenfield",
+  "review": {
+    "examples": [],
+    "must_preserve": [
+      "Approved bounded physics-gateway follow-up: MUST support .mmd as markdown and .jsonl/.yaml/.yml/.csv as text through existing bounded UTF8 JSON source endpoint, no broader extensions; preserve tex/pdf pairing and HTML rejection.",
+      "MUST add X-Frame-Options SAMEORIGIN to static and PDF stream responses to allow own iframe."
+    ],
+    "open_decisions": [
+      "No language or runtime was named; decide the technology before any generation is attempted.",
+      "This sits inside a larger repository. Confirm we should only change this folder.",
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "none",
+    "matched": [],
+    "reasons": [],
+    "recommended": false
+  },
+  "title": "Approved bounded physics-gateway follow-up: MUST support .mmd as...",
+  "warnings": [
+    "A new project cannot pick a language on its own. Apply will refuse until the request names one or the agent asserts it."
+  ]
+}

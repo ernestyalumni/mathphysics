@@ -1,0 +1,64 @@
+{
+  "acceptance": {
+    "reasons": [
+      "user-visible behavior",
+      "critical boundary"
+    ],
+    "sentence": "Implement the first actual shared TypeScript mathphysics browser workbench from the approved unified UX story: live switchable Notebook (Mathematica-like) and readable Pixel (SNES-style)...",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "notebook-and-pixel-workbench-with-files-pdf-and--d39c8158",
+  "original_request": "Implement the first actual shared TypeScript mathphysics browser workbench from the approved unified UX story: live switchable Notebook (Mathematica-like) and readable Pixel (SNES-style) appearances, persistent documents/preferences and optional user-activated sounds; fast file finding and PDF/LaTeX source+math viewing based on the behaviors of Monoclaw/JavaScript/latex-viewer and Monoclaw/Rust/personal-files. The user explicitly requested beginning actual UX implementation with these references while continuing the mathematical tooling program.\n\nThe application MUST use one document/workspace state for both styles and preserve editing/tab/PDF state on a style change. It MUST offer a useful file list/path/search, favorites and recent places, and quick opening of paired .tex/.pdf files. It MUST display real PDFs via the browser viewer, safely render supported LaTeX/Markdown locally, and distinguish source/math preview from full TeX compilation. It MUST call the actual existing Rust Clifford trace tool through a local-only Rust gateway, and show truthful unconnected status for harnesses without adapters. It MUST NOT fake mathematical proof, all-harness connectivity, desktop packaging, full TeX compilation or a full CAS. Existing Monoclaw applications, original user documents and mathematical sources MUST remain unchanged. Runtime mathematical/file services MUST be Rust; frontend source MUST be TypeScript. Save preferences/drafts locally and allow exporting rather than silently overwriting source files. Bind the gateway to loopback with approved roots and confined read-only filesystem access.\n\nFor example, switch Notebook to Pixel while editing and retain exact cell contents, then open a .tex source and its matching compiled PDF and search for a different file without losing those tabs. Evaluate gamma_trace of mu,nu with the real bounded Rust kernel and show computed exact algebra, not a formal proof.",
+  "original_request_sha256": "d39c81589476ac79f1e2572776b8a318ccb442a014e48bcddf688fd40e00e67c",
+  "project": {
+    "adoption_scenario": "new_subproject_design",
+    "exists": false,
+    "kind": "greenfield",
+    "pdd_signals": [],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/TypeScript/physics-workbench",
+    "scope_kind": "subproject"
+  },
+  "recommended_workflow": "design_greenfield",
+  "review": {
+    "examples": [
+      "For example, switch Notebook to Pixel while editing and retain exact cell contents, then open a .tex source and its matching compiled PDF and search for a different file without losing those tabs."
+    ],
+    "must_preserve": [
+      "The application MUST use one document/workspace state for both styles and preserve editing/tab/PDF state on a style change.",
+      "It MUST offer a useful file list/path/search, favorites and recent places, and quick opening of paired .tex/.pdf files.",
+      "It MUST display real PDFs via the browser viewer, safely render supported LaTeX/Markdown locally, and distinguish source/math preview from full TeX compilation.",
+      "It MUST call the actual existing Rust Clifford trace tool through a local-only Rust gateway, and show truthful unconnected status for harnesses without adapters.",
+      "It MUST NOT fake mathematical proof, all-harness connectivity, desktop packaging, full TeX compilation or a full CAS."
+    ],
+    "open_decisions": [
+      "This sits inside a larger repository. Confirm we should only change this folder."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "user-visible behavior",
+      "critical boundary"
+    ],
+    "recommended": true
+  },
+  "title": "Notebook and Pixel workbench with files PDF and LaTeX",
+  "warnings": []
+}

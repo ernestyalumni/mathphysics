@@ -1,0 +1,23 @@
+{
+  "name": "mathphysics-workbench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "check": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build",
+    "test:browser": "playwright test"
+  },
+  "dependencies": {
+    "dompurify": "3.4.13",
+    "katex": "0.16.47",
+    "marked": "18.0.11",
+    "pdfjs-dist": "6.4.299"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "typescript": "6.0.3",
+    "vite": "6.4.4"
+  }
+}

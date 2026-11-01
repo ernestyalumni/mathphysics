@@ -1,0 +1,14 @@
+<version>1.0.0</version>
+<language>TypeScript</language>
+<include>prompts/model_typescript.prompt</include>
+<include>prompts/api_typescript.prompt</include>
+<include>prompts/renderer_typescript.prompt</include>
+<include>prompts/pdf_typescript.prompt</include>
+Generate only src/main.ts.
+Compose a browser-only TypeScript workbench with one persistent shared workspace. Offer Notebook/Pixel via html.dataset.style and aria-pressed without replacing active editors or mounted PDF on style changes. Text/math cells show readable output by default with Edit source controls; trace input remains visible. Add/remove/preview cells, Shift+Enter evaluates trace through actual Rust route. Distinguish computed exact algebra, invalid_input and over_budget; show assumptions and raw details, never proof or connected harness claims. Cancel/ignore stale trace results when input changes. Provide roots, bounded filename search, path/breadcrumbs, navigation, favorites and recent/frequent places; clear automatic history without clearing favorites. Debounce/abort stale searches and guard document races. Multiple closeable tabs, paired TeX/PDF actions, safe source+math preview and local file input; drafts/export never silently overwrite originals. Mount PDF.js with page and zoom controls; dispose when leaving/closing view and retain current PDF page across style changes. Reopen local PDF after restart rather than persisting blob access. Support notebook import validation and replacement confirmation; export exact source or notebook JSON via downloads. Sound defaults muted, requires user activation, persists mute/volume, and never substitutes for visible status. Ctrl/Cmd+K focuses search; mobile drawer Escape closes with focus return; Ctrl/Cmd+S exports. Availability listing is not live harness sessions. No arbitrary browser process execution, desktop shell or TeX compilation.
+
+This is a manually implemented browser slice described by versioned specifications. Automated PDD regeneration, synchronization and generated story contracts remain unverified. Preserve independent tests; satisfy the unified workspace story without expanding to desktop/harness sessions.
+
+Approved Explore extension: import mountExplore and provide a separate Explore tab/sidebar entry independent of Notebook/Pixel styles. activeTab=explore is a version1-compatible experience identifier; preserve cells, source tabs, drafts and style on transitions. Dispose animation/network/world listeners on exit; pin experiment notes to notebook and reopen recorded root-scoped sources via existing openFile. Never claim pending QFT destinations implemented.
+
+Superseding separation requirement: main.ts is notebook-only. Do not import or mount Explore modules; no Explore tab or experimental controls. An optional external link may open /explore.html in a separate tab. Preserve notebook cells/tabs/style/storage and safely recover a previously stored activeTab=explore to the notebook.

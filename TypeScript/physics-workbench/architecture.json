@@ -1,0 +1,234 @@
+[
+  {
+    "filename": "model_typescript.prompt",
+    "filepath": "src/model.ts",
+    "description": "Export Style, Kind, Root, Entry, Place, FileTab, Cell and Workspace types and initialWorkspace, restoreWorkspace, saveWorkspace, rememberPlace",
+    "reason": "Bounded manual implementation specification; automated regeneration unverified",
+    "dependencies": [],
+    "priority": 1,
+    "tags": [
+      "browser",
+      "manual-implementation",
+      "UX"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "api_typescript.prompt",
+    "filepath": "src/api.ts",
+    "description": "Export typed Listing/TextFile and request, query, getRoots, getFiles, getText, pdfUrl, runTrace",
+    "reason": "Bounded manual implementation specification; automated regeneration unverified",
+    "dependencies": [
+      "model_typescript.prompt"
+    ],
+    "priority": 2,
+    "tags": [
+      "browser",
+      "manual-implementation",
+      "UX"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "renderer_typescript.prompt",
+    "filepath": "src/renderer.ts",
+    "description": "Export renderMath(source,display=false) and renderDocument(source,kind)",
+    "reason": "Bounded manual implementation specification; automated regeneration unverified",
+    "dependencies": [],
+    "priority": 3,
+    "tags": [
+      "browser",
+      "manual-implementation",
+      "UX"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "pdf_typescript.prompt",
+    "filepath": "src/pdf.ts",
+    "description": "Export PdfView {goTo(page):void,setZoom(zoom):void,dispose():void} and mountPdf(host,url,initialPage,onPage)",
+    "reason": "Bounded manual implementation specification; automated regeneration unverified",
+    "dependencies": [],
+    "priority": 4,
+    "tags": [
+      "browser",
+      "manual-implementation",
+      "UX"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "main_typescript.prompt",
+    "filepath": "src/main.ts",
+    "description": "Compose a browser-only TypeScript workbench with one persistent shared workspace",
+    "reason": "Bounded manual implementation specification; automated regeneration unverified",
+    "dependencies": [
+      "model_typescript.prompt",
+      "api_typescript.prompt",
+      "renderer_typescript.prompt",
+      "pdf_typescript.prompt"
+    ],
+    "priority": 5,
+    "tags": [
+      "browser",
+      "manual-implementation",
+      "UX"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "style_css.prompt",
+    "filepath": "src/style.css",
+    "description": "Emit only CSS for the existing workbench class contract",
+    "reason": "Bounded manual implementation specification; automated regeneration unverified",
+    "dependencies": [],
+    "priority": 6,
+    "tags": [
+      "browser",
+      "manual-implementation",
+      "UX"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "explore_typescript.prompt",
+    "filepath": "src/explore.ts",
+    "description": "Approved mathematical physics Explore experience, manually implemented",
+    "reason": "Game exploration user story",
+    "dependencies": [
+      "explore_world_typescript.prompt",
+      "explore_plots_typescript.prompt",
+      "explore_css.prompt",
+      "explore_scene_typescript.prompt"
+    ],
+    "priority": 7,
+    "tags": [
+      "browser",
+      "exploration"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "explore_world_typescript.prompt",
+    "filepath": "src/explore-world.ts",
+    "description": "Approved mathematical physics Explore experience, manually implemented",
+    "reason": "Game exploration user story",
+    "dependencies": [],
+    "priority": 7,
+    "tags": [
+      "browser",
+      "exploration"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "explore_plots_typescript.prompt",
+    "filepath": "src/explore-plots.ts",
+    "description": "Approved mathematical physics Explore experience, manually implemented",
+    "reason": "Game exploration user story",
+    "dependencies": [],
+    "priority": 7,
+    "tags": [
+      "browser",
+      "exploration"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "explore_css.prompt",
+    "filepath": "src/explore.css",
+    "description": "Original exploration layout, world and lab chrome",
+    "reason": "Approved game exploration story",
+    "dependencies": [],
+    "priority": 7,
+    "tags": [
+      "browser",
+      "exploration"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "explore_main_typescript.prompt",
+    "filepath": "src/explore-main.ts",
+    "description": "Standalone game-first Explore Physics entry and presentation",
+    "reason": "Approved separation correction",
+    "dependencies": [
+      "explore_typescript.prompt",
+      "explore_standalone_css.prompt",
+      "explore_scene_layout_css.prompt"
+    ],
+    "priority": 8,
+    "tags": [
+      "standalone",
+      "explore"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "explore_standalone_css.prompt",
+    "filepath": "src/explore-standalone.css",
+    "description": "Standalone game-first Explore Physics entry and presentation",
+    "reason": "Approved separation correction",
+    "dependencies": [],
+    "priority": 8,
+    "tags": [
+      "standalone",
+      "explore"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "explore_scene_typescript.prompt",
+    "filepath": "src/explore-scene.ts",
+    "description": "Scene-first game interaction and contextual layout",
+    "reason": "Approved unshackle-from-notebook correction",
+    "dependencies": [],
+    "priority": 8,
+    "tags": [
+      "game",
+      "scene-first"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "explore_scene_layout_css.prompt",
+    "filepath": "src/explore-scene-layout.css",
+    "description": "Scene-first game interaction and contextual layout",
+    "reason": "Approved unshackle-from-notebook correction",
+    "dependencies": [],
+    "priority": 8,
+    "tags": [
+      "game",
+      "scene-first"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  }
+]

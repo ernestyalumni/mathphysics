@@ -1,0 +1,28 @@
+version: "1.0"
+contexts:
+  gateway:
+    paths: ["prompts/gateway_rust.prompt", "src/main.rs", "tests/http.rs"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/main.rs
+      test_output_path: tests/
+      default_language: rust
+  launcher:
+    paths: ["prompts/launcher_bash.prompt", "../../run_workbench.sh"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: ../../run_workbench.sh
+      default_language: bash
+  su2:
+    paths: ["prompts/su2_rust.prompt", "src/su2.rs", "tests/http.rs"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/su2.rs
+      test_output_path: tests/
+      default_language: rust
+  explore_launcher:
+    paths: ["prompts/explore_launcher_bash.prompt", "../../run_explore.sh"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: ../../run_explore.sh
+      default_language: bash

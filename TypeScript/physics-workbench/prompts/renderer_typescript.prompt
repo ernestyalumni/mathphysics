@@ -1,0 +1,6 @@
+<version>1.0.0</version>
+<language>TypeScript</language>
+Generate only src/renderer.ts.
+Export renderMath(source,display=false) and renderDocument(source,kind). Use KaTeX with trust=false, maxExpand1000, maxSize20 and a fresh bounded macro dictionary each render. Protect math delimiters and supported align/equation environments before Markdown parsing; leave fenced/inline code inert. Supported TeX headings and math are preview only: preserve unknown commands as visible source, not fabricated compilation. Sanitize user HTML with DOMPurify; forbid scripts/styles/frames/objects/embeds/forms/input, style/srcdoc attributes and data attributes; remove unsafe URL schemes and srcset. Insert trusted KaTeX output after sanitizing user markup via text-node slots. Escape all errors and plain text; display explicit unsupported/oversized warnings at250000 characters. No TeX engine, shell, network macro loading or persistent user macro state.
+
+This is a manually implemented browser slice described by versioned specifications. Automated PDD regeneration, synchronization and generated story contracts remain unverified. Preserve independent tests; satisfy the unified workspace story without expanding to desktop/harness sessions.

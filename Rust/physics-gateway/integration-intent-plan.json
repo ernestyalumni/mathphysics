@@ -1,0 +1,59 @@
+{
+  "acceptance": {
+    "reasons": [
+      "critical boundary"
+    ],
+    "sentence": "Integrate approved gateway stage into mathphysics/Rust/physics-gateway preserving all unrelated dirt; use ../physics-tools dependency.",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "integrate-approved-gateway-stage-into-mathphysic-e7685248",
+  "original_request": "Integrate approved gateway stage into mathphysics/Rust/physics-gateway preserving all unrelated dirt; use ../physics-tools dependency. Add root run_workbench.sh launcher building TypeScript/physics-workbench into external cache with Rust external target and read-only repo/book roots. No commits. Gateway and launcher only; do not change frontend. Check Rust tests and Clippy actual location. Launcher must not install dependencies or produce build artifacts inside repository; use cached/offline dependencies. Do not stop an existing server.",
+  "original_request_sha256": "e7685248595af63db47385cbff64bc6d46dbd0f92c32bc84c778ae5032954304",
+  "project": {
+    "adoption_scenario": "new_subproject_design",
+    "exists": false,
+    "kind": "greenfield",
+    "pdd_signals": [],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/physics-gateway",
+    "scope_kind": "subproject"
+  },
+  "recommended_workflow": "design_greenfield",
+  "review": {
+    "examples": [],
+    "must_preserve": [
+      "Gateway and launcher only; do not change frontend.",
+      "Launcher must not install dependencies or produce build artifacts inside repository; use cached/offline dependencies.",
+      "Do not stop an existing server."
+    ],
+    "open_decisions": [
+      "This sits inside a larger repository. Confirm we should only change this folder.",
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "critical boundary"
+    ],
+    "recommended": true
+  },
+  "title": "Integrate approved gateway stage into mathphysics/Rust/physics-...",
+  "warnings": []
+}

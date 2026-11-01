@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Bash</language>
+Generate ../../run_explore.sh only. Dedicated standalone Explore Physics launch. Resolve repo path; exportWORKBENCH_APP=explore, WORKBENCH_PORT fromEXPLORE_PORT default8877 andcachefromEXPLORE_CACHE_DIR defaultXDGcache/mathphysics-explore. Delegate externalcachebuild andRustservice to run_workbench.sh withargv preserved. Sharedbuilder selects onlyexploreHTML entry whenapp=explore, omitsPDFassets andcopiesexplore.html toserved index.html so rootdirectstart/refreshworks. No notebookJS/CSS entry bundled orloaded forgameonlybuild. Neverdelete savednotebook/experiments. No desktoppackagingclaimed.

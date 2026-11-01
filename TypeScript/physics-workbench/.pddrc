@@ -1,0 +1,100 @@
+version: "1.0"
+contexts:
+  model_typescript:
+    paths: ["prompts/model_typescript.prompt", "src/model.ts"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/model.ts
+      test_output_path: tests/
+      default_language: typescript
+  api_typescript:
+    paths: ["prompts/api_typescript.prompt", "src/api.ts"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/api.ts
+      test_output_path: tests/
+      default_language: typescript
+  renderer_typescript:
+    paths: ["prompts/renderer_typescript.prompt", "src/renderer.ts"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/renderer.ts
+      test_output_path: tests/
+      default_language: typescript
+  pdf_typescript:
+    paths: ["prompts/pdf_typescript.prompt", "src/pdf.ts"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/pdf.ts
+      test_output_path: tests/
+      default_language: typescript
+  main_typescript:
+    paths: ["prompts/main_typescript.prompt", "src/main.ts"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/main.ts
+      test_output_path: tests/
+      default_language: typescript
+  style_css:
+    paths: ["prompts/style_css.prompt", "src/style.css"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/style.css
+      test_output_path: tests/
+      default_language: css
+  explore_typescript:
+    paths: ["prompts/explore_typescript.prompt", "src/explore.ts"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/explore.ts
+      test_output_path: tests/
+      default_language: typescript
+  explore_world_typescript:
+    paths: ["prompts/explore_world_typescript.prompt", "src/explore-world.ts"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/explore-world.ts
+      test_output_path: tests/
+      default_language: typescript
+  explore_plots_typescript:
+    paths: ["prompts/explore_plots_typescript.prompt", "src/explore-plots.ts"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/explore-plots.ts
+      test_output_path: tests/
+      default_language: typescript
+  explore_css:
+    paths: ["prompts/explore_css.prompt", "src/explore.css"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/explore.css
+      test_output_path: tests/
+      default_language: css
+  explore_main_typescript:
+    paths: ["prompts/explore_main_typescript.prompt", "src/explore-main.ts"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/explore-main.ts
+      test_output_path: tests/
+      default_language: typescript
+  explore_standalone_css:
+    paths: ["prompts/explore_standalone_css.prompt", "src/explore-standalone.css"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/explore-standalone.css
+      test_output_path: tests/
+      default_language: css
+  explore_scene_typescript:
+    paths: ["prompts/explore_scene_typescript.prompt", "src/explore-scene.ts"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/explore-scene.ts
+      test_output_path: tests/
+      default_language: typescript
+  explore_scene_layout_css:
+    paths: ["prompts/explore_scene_layout_css.prompt", "src/explore-scene-layout.css"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/explore-scene-layout.css
+      test_output_path: tests/
+      default_language: css

@@ -1,0 +1,3 @@
+Maybe we need to separate this explore physics effort away from the mathematica like ux already established by notebook. We wanna get away from any of the interactions via notebook. Could we have Explore Physics be launched separately? And then the UX is truly new, built from the ground up to be more interative and video game like than a notebook. We really want to get away from the Mathematica like language
+
+Include that in user stories that are relevant please

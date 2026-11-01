@@ -1,0 +1,71 @@
+[
+  {
+    "filename": "su2_rust.prompt",
+    "filepath": "src/su2.rs",
+    "description": "Bounded numerical SU2 laboratory state and validation",
+    "reason": "Approved exploration story",
+    "dependencies": [],
+    "priority": 1,
+    "tags": [
+      "rust",
+      "numerical",
+      "SU2"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "gateway_rust.prompt",
+    "filepath": "src/main.rs",
+    "description": "Loopback read-only file/static gateway and existing physics-tools bridge",
+    "reason": "Bounded UX gateway; manual implementation, full PDD generation unverified",
+    "dependencies": [
+      "su2_rust.prompt"
+    ],
+    "priority": 1,
+    "tags": [
+      "rust",
+      "UX05",
+      "read-only",
+      "http"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "launcher_bash.prompt",
+    "filepath": "../../run_workbench.sh",
+    "description": "Offline external-cache workbench build and read-only local gateway launch",
+    "reason": "Approved integration launcher; manual implementation, generation unverified",
+    "dependencies": [
+      "gateway_rust.prompt"
+    ],
+    "priority": 2,
+    "tags": [
+      "bash",
+      "launcher"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "explore_launcher_bash.prompt",
+    "filepath": "../../run_explore.sh",
+    "description": "Independent Explore Physics game launcher",
+    "reason": "Approved standalone correction",
+    "dependencies": [
+      "launcher_bash.prompt"
+    ],
+    "priority": 3,
+    "tags": [
+      "bash",
+      "standalone"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  }
+]

@@ -1,0 +1,44 @@
+<version>1.1.0</version>
+<language>Rust</language>
+Generate only src/su2.rs. Export pub fn handle_bytes(body:&[u8])->Result<serde_json::Value,&'static str>. No IO, silent normalization or formal-proof claims.
+Approved SU(2) lab extension (2026-10-31), manual implementation authorized.
+Source: docs/su2-request.txt, docs/su2-intent-plan.json and the approved
+../../user_stories/story__mathematical-physics-exploration.md, scenarios 2–5.
+This prompt owns src/su2.rs; the gateway imports mod su2 and maps errors to HTTP400.
+POST /api/su2 only (other methods405). Reuse existing Host/Origin/body guards.
+Input MUST be exactly {axis:[nx,ny,nz],t:number,slice:number}; reject missing,
+unknown fields, wrong types/lengths, nonfinite numbers, zero/nonunit axes400.
+Axis norm tolerance abs(hypot(nx,ny,nz)-1)<=1e-12; never normalize inputs.
+Finite dimensionless angular t in radians with abs(t)<=1e6. Finite slice may
+be outside [-1,1]. Only add lie-groups path dependency; no frontend changes.
+Use serde_json for parsing/serialization and lie_groups::su2_observation::observe for ALL mathematics.
+U=a0 I+i a.sigma; a0=cos(t/2), a=-axis*sin(t/2). No sign canonicalization.
+Return convention:'pauli-plus-i-v1', input t/axis, coordinates:[a0,a1,a2,a3],
+alpha:[a0,a3], beta:[a2,a1], matrix complex pairs by rows
+[[alpha,beta],[-conj(beta),conj(alpha)]].
+Return stereographic:{status:'finite'|'pole',point:[x,y,z]|null} using
+x=a/(1-a0), numerically stable -axis*cot(t/4). Exact f64 multiples of4pi
+are poles; an unrepresentable finite chart result is also reported as pole
+(numerical off-chart), never clipped or serialized as null components.
+Return slice:{coordinate:c,radius:number|null,status:'sphere'|'point'|'empty'}:
+abs(c)>1 empty/null, abs(c)==1 point/0, otherwise sqrt((1-c)*(1+c)).
+Return bloch:[x,y,z] for U rho Udagger applied to initial +x on S2, distinct
+from SU(2)=S3. z-axis positive t moves +x toward +y.
+checks:{unitarity_error,determinant_error}: respectively maximum complex
+entry magnitude of Udagger U-I and complex magnitude of det(U)-1.
+Return evidence_kind:'numerical', formal_proof:false on every success.
+Independent tests MUST build Pauli matrices and complex products separately,
+check 0/pi/2pi/4pi, mixed axes, signs/composition, matrix/Bloch invariants,
+chart pole and near-pole, slice boundaries/outside, malformed/nonunit input,
+method/Host/Origin and both declared/chunked body limits. Offline locked
+fmt/Clippy/tests use external target and local socket permission.
+This is manual prompt-first implementation; no provider calls, intent apply,
+automated regeneration/baseline or generated story-contract success claimed.
+
+LIB01/LIB02: mathematical rules above describe library outputs serialized here.
+No mathematical formulas/residual calculations in HTTP adapter. Preserve error
+precedence: axis validation before t parsing; t validation before slice parsing.
+Library exposes typed Observation, Chart::Finite/Pole, Slice::Sphere/Point/Empty,
+Checks and Error. No serde/IO/frontend/book dependency. Reuse quaternion_matrix
+with explicit q=[a0,-a1,-a2,-a3]. Do not normalize or force strict Su2 constructor.
+Independent library Pauli/Bloch tests and direct external consumer prove reuse.

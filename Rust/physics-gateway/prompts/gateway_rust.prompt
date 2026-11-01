@@ -1,0 +1,67 @@
+physics-gateway native Rust implementation specification v2 (2026-10-31)
+Output src/main.rs, independent acceptance tests tests/http.rs.
+Approved target: mathphysics/Rust/physics-gateway. Temporary staging and absolute
+physics-tools dependency are packaging mechanics; parent replaces path with
+../physics-tools on integration. Source user story is
+../../user_stories/story__unified-notebook-workspace.md. See request.txt and
+intent-plan.json. Authorization persists; manual implementation explicitly
+permitted. Never claim automated intent apply/generation/story contract success.
+
+Use native Rust, cached pinned tiny_http0.12.0, serde_json1.0.151,
+percent-encoding2.3.2, mime_guess2.0.5 and existing physics-tools library.
+No frontend, GTK, model launching, subprocess tools, filesystem API writes,
+new agents, provider changes, repositories/source corpus mutations, commits.
+
+CLI --static-dir ABS required; --root id=ABS repeat with labels equal IDs;
+--port N default8876. Bind127.0.0.1 only, at most4 worker threads; zero port may
+select ephemeral test port printed as URL. Require directories, unique valid IDs.
+Validate singular Host exactly localhost:boundport or127.0.0.1:boundport.
+When Origin is present require exact http://Host origin; deny null/cross-origin.
+No wildcard CORS. Reject relative path parent components, absolute paths,
+backslashes, NUL and malformed encoding; decode once before validation. Confine
+canonical paths including symlink targets to approved roots/static directory.
+Preserve user-relative paths for displays and returned metadata, including aliases.
+Bodies <=1MiB with declared-length early rejection and limited reader for chunked.
+Structured JSON errors {error:{code:number,message:string}}; appropriate statuses.
+
+GET /api/roots -> {roots:[{id,label,path}]}, canonical configured root paths.
+GET /api/files?root=ID&path=REL&q=TEXT ->
+{root,path,entries:[{name,path,kind,size:number,modified_secs:number}],truncated,visited}.
+path defaults ''. Kinds directory/pdf/tex/markdown/text/file. Directory listing
+includes hidden entries, directories first. Nonempty q recursively matches filename
+case-insensitively. Scan <=200 results,10000 visited entries,~500ms; no recursive
+.git/node_modules/target/build/.cache/__pycache__/dist/.next/.venv. Canonical visited
+set prevents loops; confine every entry. Never read document contents to search.
+GET /api/text?root=ID&path=REL ->
+{root,path,text,kind,paired:null|{path,kind:'pdf'|'tex'},modified_secs}.
+Allow only case-insensitive .tex/.md/.mmd/.txt/.json/.jsonl/.yaml/.yml/.csv/.prompt/.rs/.toml. <=2MiB actual
+bytes; reject invalid UTF8 and oversized text, no silent truncation. .tex files
+pair only same-stem .pdf inside configured root. Return source as JSON string,
+never execute HTML. No PDF metadata endpoint is introduced.
+GET/HEAD /api/pdf?root=ID&path=REL streams case-insensitive .pdf only,
+application/pdf inline, no full-file buffer. Single byte range supports closed,
+open and suffix syntax;206 Content-Range/length,416 Content-Range bytes */length
+for invalid/unsatisfiable ranges. HEAD has headers and no payload.
+POST /api/tool validates JSON transport, forwards unmodified bytes to
+physics_tools::handle_bytes, returns actual response JSON. Well-formed semantic
+errors remain HTTP200; malformed transport JSON400. Never infer proof.
+GET /api/harnesses -> {harnesses:[{id,name,available:boolean,status,detail}]}.
+Names exactly ClaudeCode/Codex/GrokBuild/HermesAgent/Pi. IDs claude-code/codex/
+grok-build/hermes-agent/pi. PATH executable probes claude/codex/grok/hermes/pi;
+never invoke versions/models. Status not_connected when found else not_found.
+GET /api/health -> {status:'ok',version,read_only:true}.
+Static root / resolves index.html; canonical confinement; MIME inferred and nosniff.
+No SPA fallback for absent assets. Unknown API404, unsupported methods405.
+
+Acceptance: ephemeral stdTcpStream actual server tests, Host/Origin denial,
+traversal decoded and static, symlink escape and alias preservation, hidden files,
+search pruning and limits, paired source, invalid UTF8/HTML/large text/body,
+PDF ranges and HEAD, actual gamma_trace with explicit domain/budget forwarded
+faithfully, semantic/malformed errors and truthful harness discovery.
+
+Approved parsed-source extension v2: .mmd is markdown; .jsonl/.yaml/.yml/.csv
+are text. No other extension expansion. Static and PDF stream responses MUST
+include X-Frame-Options: SAMEORIGIN to allow the workbench own iframe.
+
+
+Approved SU(2) integration: declare mod su2. POST /api/su2 uses existing Host/Origin/method/body guards and forwards bytes to su2::handle_bytes. Map errors to HTTP400 JSON errors. Mathematical implementation and response schema belong to su2_rust.prompt.

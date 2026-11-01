@@ -1,0 +1,5 @@
+<version>1.0.0</version>
+<language>CSS</language>
+Generate src/explore-scene-layout.css as final standalone layer: viewportdominant interactive scene, compact darkgameHUD and contextualhotbar, originalSNES/Metroid-style atmosphere. Hide longpaperlike hero/worksheetlayout bymovingdetails into native modal scanner/journal/atlas. Readable equations live inscrollableonrequestscanner, notdefaultpage; mapalsofitsviewport. Touch/keyboardvisiblefocus, mobilescenelegibility and reducedmotion. No notebookorIDEchrome.
+
+Mobile hotbar targets retain minimum44px height while theviewportflexlayoutkeepsallactions onscreen. Tactile icons retainreadable labels/AXnames; reducedmotionavoidsmovementfeedback.

@@ -1,0 +1,6 @@
+<version>1.0.0</version>
+<language>CSS</language>
+Generate only src/style.css.
+Emit only CSS for the existing workbench class contract. Default professional Notebook white canvas/silver toolbar/subtle orange accent, blue cell brackets and labels; alternate html[data-style=pixel] cream/sage/navy with stepped borders and tactile chrome. CSS-only landscape decoration; no game art. Keep body/math readable at comparable effective scale in both themes; selective local PressStart2P for chrome/headings, never math/source editors. Preserve local font notices and focus-visible, reduced motion and forced-color support. Grid sidebar240px/document minmax(0,1fr)/inspector240px, hide inspector below1100; parent-controlled sidebar drawer below760. Scroll wide equations/files/tabs inside containers without page overflow. Style source editing toggles, PDF canvas/textLayer selection/alignment, page/zoom controls, tabs, status badges and truthful errors. Buttons target32px minimum. Do not suppress keyboard focus or use global tiny pixel fonts. Use local assets only.
+
+This is a manually implemented browser slice described by versioned specifications. Automated PDD regeneration, synchronization and generated story contracts remain unverified. Preserve independent tests; satisfy the unified workspace story without expanding to desktop/harness sessions.

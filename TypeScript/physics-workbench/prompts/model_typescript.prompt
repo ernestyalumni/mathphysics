@@ -1,0 +1,6 @@
+<version>1.0.0</version>
+<language>TypeScript</language>
+Generate only src/model.ts.
+Export Style, Kind, Root, Entry, Place, FileTab, Cell and Workspace types and initialWorkspace, restoreWorkspace, saveWorkspace, rememberPlace. Keep version 1 localStorage key mathphysics.workbench.v1, notebook/pixel styles, shared cells/tabs, favorites/recent/visit counts, location, sound/volume and notebook zoom. Reject malformed saved cells, clamp volume, cap restored cells200/tabs30/favorites100/recent7; default safely on parse/storage failures. Saving returns a boolean so callers report quota failure. Deduplicate recent places by root/path and count visits. Local PDF object URLs are session capabilities and must not be treated as persistent files. No filesystem writes or credentials.
+
+This is a manually implemented browser slice described by versioned specifications. Automated PDD regeneration, synchronization and generated story contracts remain unverified. Preserve independent tests; satisfy the unified workspace story without expanding to desktop/harness sessions.

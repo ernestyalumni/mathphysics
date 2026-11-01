@@ -123,3 +123,21 @@ python -m ipykernel install --user
 The unified [collected notes and worked problems](documents/mono-notes/README.md)
 combine algebra, geometry, mechanics, thermodynamics, and quantum/relativity
 material in one source, with portrait and screen PDF editions.
+
+## Rust mathematical physics platform
+
+The [approved program and execution status](docs/plans/rust-physics-platform/EXECUTION.md)
+tracks the Rust tool/CAS and full-Srednicki work. [physics-contracts](Rust/physics-contracts/README.md)
+validates item/evidence metadata; [physics-tools](Rust/physics-tools/README.md) exposes
+a bounded native JSON Clifford-trace interface for agents. Source inventories and
+metadata validity do not establish mathematical proofs or completed chapters.
+
+Playable mathematical physics: run `./run_explore.sh` and open http://127.0.0.1:8877. Explore is a separate game-first application; Notebook keeps its own launcher. The first SU(2) observatory includes linked plots and an experiment journal; see [Explore verification and limits](docs/plans/rust-physics-platform/game-exploration/IMPLEMENTATION.md).
+
+Run the reusable Rust library example directly from this repository (build artifacts remain external):
+
+```sh
+CARGO_TARGET_DIR=/tmp/mathphysics-rust-target cargo run --offline --locked --manifest-path Rust/qft-symbolics/Cargo.toml --example reuse
+```
+
+Source: [Rust/qft-symbolics/examples/reuse.rs](Rust/qft-symbolics/examples/reuse.rs).
