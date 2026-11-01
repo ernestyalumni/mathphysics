@@ -21,8 +21,57 @@ fn json(s: &str) -> String {
     out.push('"');
     out
 }
+fn calculation_error(error: qft_symbolics::computation::Error) -> i32 {
+    use qft_symbolics::computation::Error;
+    let status = match &error {
+        Error::ZeroDenominator
+        | Error::DivisionByZero
+        | Error::InvalidInteger
+        | Error::MissingVariable { .. } => "INVALID_INPUT",
+        _ => "INCONCLUSIVE",
+    };
+    let (code, details) = match &error {
+        Error::ResourceLimit {
+            resource,
+            limit,
+            required,
+        } => (
+            "resource_limit",
+            format!(
+                ",\"resource\":{},\"limit\":{limit},\"required\":{required}",
+                json(&format!("{resource:?}"))
+            ),
+        ),
+        Error::Overflow { operation } => (
+            "arithmetic_overflow",
+            format!(",\"operation\":{}", json(operation)),
+        ),
+        Error::ZeroDenominator => ("zero_denominator", String::new()),
+        Error::DivisionByZero => ("division_by_zero", String::new()),
+        Error::InvalidInteger => ("invalid_integer", String::new()),
+        Error::MissingVariable { .. } => ("missing_variable", String::new()),
+        Error::UnsupportedDomain { .. } => ("unsupported_domain", String::new()),
+    };
+    println!("{{\"status\":{},\"formal_proof\":false,\"error\":{{\"code\":{},\"message\":{}{details}}}}}",json(status),json(code),json(&error.to_string()));
+    2
+}
 fn run(args: &[String]) -> Result<i32, String> {
     match args.first().map(String::as_str).unwrap_or("demo"){
+        "rational"=>{
+            if args.len()!=6{return Err("usage: rational add|sub|mul|div numerator denominator numerator denominator".into());}
+            let mut budget=qft_symbolics::computation::Budget::default();
+            let result=(||{
+                let a=qft_symbolics::exact::BigQ::parse(&args[2],&args[3],&mut budget)?;
+                let b=qft_symbolics::exact::BigQ::parse(&args[4],&args[5],&mut budget)?;
+                match args[1].as_str(){"add"=>a.checked_add(&b,&mut budget),"sub"=>a.checked_sub(&b,&mut budget),"mul"=>a.checked_mul(&b,&mut budget),"div"=>a.checked_div(&b,&mut budget),_=>Err(qft_symbolics::computation::Error::UnsupportedDomain{message:"rational operation must be add/sub/mul/div"})}
+            })();
+            match result{Ok(value)=>{println!("{{\"status\":\"COMPUTED\",\"formal_proof\":false,\"arithmetic\":\"arbitrary_precision_rational\",\"result\":{},\"operations\":{}}}",json(&value.to_string()),budget.used());Ok(0)},Err(e)=>Ok(calculation_error(e))}
+        },
+        "gamma-trace-checked"=>{
+            let labels:Vec<_>=args[1..].iter().map(String::as_str).collect();
+            let mut budget=qft_symbolics::computation::Budget::default();
+            match qft_symbolics::clifford::try_trace(&labels,&mut budget){Ok(value)=>{println!("{{\"status\":\"COMPUTED\",\"formal_proof\":false,\"arithmetic\":\"checked_i128_exact\",\"result\":{},\"operations\":{}}}",json(&value.to_string()),budget.used());Ok(0)},Err(e)=>Ok(calculation_error(e))}
+        },
         "schouten"=>{
             if args.len()>2 || args.get(1).is_some_and(|s|s!="--wrong-sign"){return Err("usage: schouten [--wrong-sign]".into());}
             let (a,b,c,d)=(named("a"),named("b"),named("c"),named("d"));

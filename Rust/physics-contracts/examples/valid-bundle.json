@@ -1,0 +1,76 @@
+{
+  "schema_version": "mathphysics.contracts.v1",
+  "assumptions": [
+    {
+      "id": "commutative",
+      "statement": "Multiplication is commutative in the declared polynomial algebra."
+    }
+  ],
+  "conventions": [
+    {
+      "id": "rational-polynomials-v1",
+      "statement": "Formal commuting variables; exact rational coefficients."
+    }
+  ],
+  "items": [
+    {
+      "id": "example-book:ch001:equation:1.1",
+      "statement": "a + b = b + a",
+      "domain": "commutative polynomial algebra over rational coefficients",
+      "sources": [
+        {
+          "path": "synthetic-source-not-a-textbook.pdf",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 1,
+            "printed_page": null
+          },
+          "review": "candidate"
+        }
+      ],
+      "assumption_refs": [
+        "commutative"
+      ],
+      "convention_ref": "rational-polynomials-v1",
+      "implementation": "specified",
+      "evidence_ids": [
+        "example-trace"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "example-trace",
+      "item_id": "example-book:ch001:equation:1.1",
+      "statement": "a + b = b + a",
+      "domain": "commutative polynomial algebra over rational coefficients",
+      "assumption_refs": [
+        "commutative"
+      ],
+      "convention_ref": "rational-polynomials-v1",
+      "kind": "source_derivation",
+      "outcome": "computed",
+      "arithmetic": "not_applicable",
+      "operation": {
+        "name": "example-record-only",
+        "input_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "implementation_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "artifacts": [
+        {
+          "path": "example-not-executed.txt",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "checker": null,
+      "numerical": null,
+      "reason": "Synthetic metadata example; this artifact was not computed or checked.",
+      "resources": {
+        "wall_clock_seconds": 1,
+        "memory_bytes": 1048576,
+        "operation_limit": 100
+      }
+    }
+  ]
+}

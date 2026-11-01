@@ -1,0 +1,3259 @@
+{
+  "schema_version": "mathphysics.f17.exploratory-capabilities.v1",
+  "task_id": "F17",
+  "date_utc": "2026-10-31",
+  "status": "exploratory_input_for_F01_review_not_shared_schema",
+  "write_scope": "/tmp/mathphysics-wave1-capabilities",
+  "feature_count": 46,
+  "ownership": {
+    "shared_schema_owner": "F01/integrator",
+    "repository_mutation_authorized_here": false,
+    "production_implementation": false
+  },
+  "repository": {
+    "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics",
+    "head": "f1be4d993c21ed932045f3b36db69048963152bd",
+    "git_status_snapshot": " M .gitignore\n M AGENTS.md\n M Python/rotations/README.md\n?? PDD.md\n?? Python/rotations/.pdd/\n?? Python/rotations/.pddrc\n?? Python/rotations/architecture.json\n?? Python/rotations/docs/\n?? Python/rotations/prompts/\n?? Python/rotations/tests/test_rotation_conventions.py\n?? Python/rotations/user_stories/\n?? docs/\n?? documents/mono-notes/build-report.json\n",
+    "snapshot_note": "Read-only observations; concurrent agents may change files. Per-source byte hashes identify inspected versions."
+  },
+  "upstream_sage": {
+    "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage",
+    "commit": "36e49d91b0568f07ad4373362c15ce8970587e67",
+    "version": "11.0.beta5",
+    "runtime": "not_probed"
+  },
+  "book_source": {
+    "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+    "sha256_recomputed": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+    "matches_plan_manifest": true,
+    "review": "Hash verification only; no new page or mathematical statement audit."
+  },
+  "existing_corpus": {
+    "entries_observed": 13,
+    "ids": [
+      "35.1",
+      "35.2",
+      "47.1",
+      "47.2",
+      "47.3",
+      "50.1a",
+      "50.1b",
+      "50.2a",
+      "50.3",
+      "50.4",
+      "60.1a",
+      "60.1b",
+      "60.2a"
+    ],
+    "coverage": "selected partial exercises; no per-chapter completeness inference"
+  },
+  "evidence_policy": {
+    "positive_negative_examples_executed": false,
+    "rust_tests_rerun": false,
+    "oracle_runtimes_executed": false,
+    "sources": "Primary upstream docs/local source and project implementation/plan files only.",
+    "agreement": "Optional oracle agreement is corroboration; shared dependencies limit independence.",
+    "target_kinds": "Desired evidence per feature, not achieved evidence.",
+    "status_mapping": "Integrate with F01 vocabulary; do not replace existing CLI verdict contract.",
+    "numerics": "Declare precision, conditioning, tolerance/error bounds and seed; never promote sampling to exactness.",
+    "certificates": "State checker, arithmetic, trust assumptions, input/source digest and replay outcome.",
+    "examples": "Original acceptance proposals, not copied vendor tests or executable product specifications."
+  },
+  "source_references": {
+    "plan": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/docs/plans/rust-physics-platform/README.md",
+      "kind": "local_primary_plan",
+      "sha256": "79d57f8dc2e7bb926a1023803b0201c254656add4675a7cf51273abb64ccf808",
+      "bytes": 25546
+    },
+    "handoff": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/docs/plans/rust-physics-platform/HANDOFF.md",
+      "kind": "local_primary_plan",
+      "sha256": "8b32c62b50a6ea1113c3b102c0c0dc84b8eb15fb4b1c2da871563aa20dd65826",
+      "bytes": 8235
+    },
+    "chapters": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/docs/plans/rust-physics-platform/chapters.csv",
+      "kind": "provisional_source_map",
+      "sha256": "b92a60f97a03ca920f654c2cab95f58ab01947401a2fef066b92666783debeec",
+      "bytes": 15499
+    },
+    "inventory": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/docs/plans/rust-physics-platform/source-inventory.json",
+      "kind": "local_provenance_manifest",
+      "sha256": "c74a367bb4271a55e4aa24ffaab4a1ecfb04e61551c80db4e64ed701ff5dede2",
+      "bytes": 3937
+    },
+    "corpus": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/corpus.json",
+      "kind": "local_partial_coverage_manifest",
+      "sha256": "2483092534ea9d4e1043f6b9a20d51bb3916880766b37131ae84f1cc1abaf562",
+      "bytes": 10709
+    },
+    "qft": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/README.md",
+      "kind": "implementation_documentation",
+      "sha256": "50bdebb859aead2702a7e9c3443e5dc48761debcb75a64f61611e42d517ea3b9",
+      "bytes": 7592
+    },
+    "tensor": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/docs/TENSOR.md",
+      "kind": "implementation_contract",
+      "sha256": "b27996716af5a65a4c666f003878450fae34f2e396d531f6088bbed33481a998",
+      "bytes": 4936
+    },
+    "lie": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/README.md",
+      "kind": "implementation_documentation",
+      "sha256": "ec14198e17f9f98e440be4da22e3bb3f514505996931f233bbf9bbf16e5c6609",
+      "bytes": 12147
+    },
+    "scalar_rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/scalar.rs",
+      "kind": "implementation_source",
+      "sha256": "fafb7308662affb8427a8b6ab24e67147eeb08cf6540e3634e51f8db5d294297",
+      "bytes": 4532
+    },
+    "poly_rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/polynomial.rs",
+      "kind": "implementation_source",
+      "sha256": "c21c535f026a05e0a7f6266306b3a30310908c8f3ebc042dee0fc34e59f22292",
+      "bytes": 4956
+    },
+    "tensor_rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/tensor.rs",
+      "kind": "implementation_source",
+      "sha256": "7ff25532819e2b7838a8186ddf05eec6295cfbb57860d958971396584f516cf5",
+      "bytes": 24623
+    },
+    "gamma_rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/clifford.rs",
+      "kind": "implementation_source",
+      "sha256": "999cd37618b7691f31193f407e948cfe0f16d30cf3dc208dae6b2b4646f951b0",
+      "bytes": 3746
+    },
+    "twistor_rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/twistor.rs",
+      "kind": "implementation_source",
+      "sha256": "a0139e3e1f9d9ccda6b6d8943e54d3d87cfdcc06fdf520695c75ef9cc2fdc17d",
+      "bytes": 5389
+    },
+    "spinor_rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/spinor.rs",
+      "kind": "implementation_source",
+      "sha256": "4ce240dcf232e104f20fe4ed9edd4a0bf2a1409a35f71e2773da932083b9c478",
+      "bytes": 1948
+    },
+    "smga_rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/smga.rs",
+      "kind": "implementation_source",
+      "sha256": "5e319eeff61ca5d7b52701937ca3cc85592351e22dd55834620c419cca70f6c6",
+      "bytes": 5455
+    },
+    "cli_rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/main.rs",
+      "kind": "implementation_source",
+      "sha256": "dd4a8b4fcb296203ee04b922073f54ca26de63c63a5567a15d8c93ddb8b718c1",
+      "bytes": 5422
+    },
+    "sage_rational": {
+      "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage/src/sage/rings/rational.pyx",
+      "kind": "local_upstream_source",
+      "sha256": "06146b02fc351c6200b312129dce7b6d00c358149e61269aad8d720bacd4198a",
+      "bytes": 127552
+    },
+    "sage_ideals": {
+      "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage/src/sage/rings/polynomial/multi_polynomial_ideal.py",
+      "kind": "local_upstream_source",
+      "sha256": "3aee3a8119c11f72c028e08c480e1f8cf971b041a7cbb3a939dc505ca1b75e19",
+      "bytes": 233107
+    },
+    "sage_forms": {
+      "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage/src/sage/manifolds/differentiable/diff_form.py",
+      "kind": "local_upstream_source",
+      "sha256": "1c70ff2a738174e62ec11acaec8a61601e68462e471c697f9ab9ba7ef25bd89d",
+      "bytes": 66487
+    },
+    "sage_chains": {
+      "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage/src/sage/homology/chain_complex.py",
+      "kind": "local_upstream_source",
+      "sha256": "622b1bf3f2d3cbfc4ed8423b4250d92da950853476ce8b4ca579023adda10902",
+      "bytes": 81191
+    },
+    "sage_characters": {
+      "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage/src/sage/combinat/root_system/weyl_characters.py",
+      "kind": "local_upstream_source",
+      "sha256": "019209d171ea1ef2e919b0677e2c8c1512355532e3bc2104de4fec14203f87d1",
+      "bytes": 80966
+    },
+    "cadabra": {
+      "url": "https://cadabra.science/man.html",
+      "kind": "official_documentation",
+      "scope": "Index of tensor, spinor and gamma algorithms; related operation families only",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "cadabra_canonical": {
+      "url": "https://cadabra.science/manual/canonicalise.html",
+      "kind": "official_documentation",
+      "scope": "Tensor index canonicalisation; no general multiterm completeness claim",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "cadabra_grassmann": {
+      "url": "https://cadabra.science/manual/AntiCommuting.html",
+      "kind": "official_documentation",
+      "scope": "Anticommuting declarations",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "sympy_poly": {
+      "url": "https://docs.sympy.org/latest/modules/polys/basics.html",
+      "kind": "official_documentation",
+      "scope": "Polynomial domains and operations",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "sympy_calculus": {
+      "url": "https://docs.sympy.org/latest/modules/calculus/index.html",
+      "kind": "official_documentation",
+      "scope": "Calculus reference",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "sympy_integrals": {
+      "url": "https://docs.sympy.org/latest/modules/integrals/integrals.html",
+      "kind": "official_documentation",
+      "scope": "Integration, conditions and transform conventions",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "sympy_special": {
+      "url": "https://docs.sympy.org/latest/modules/functions/special.html",
+      "kind": "official_documentation",
+      "scope": "Gamma and related special functions",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "sympy_solvers": {
+      "url": "https://docs.sympy.org/latest/modules/solvers/solvers.html",
+      "kind": "official_documentation",
+      "scope": "Equation solving with assumptions and solution verification",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "sage_docs": {
+      "url": "https://doc.sagemath.org/html/en/reference/index.html",
+      "kind": "official_documentation",
+      "scope": "Broad mathematical subject index; not a QFT solver claim",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "sage_manifolds": {
+      "url": "https://doc.sagemath.org/html/en/reference/manifolds/index.html",
+      "kind": "official_documentation",
+      "scope": "Differential geometry module reference",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "sage_homology": {
+      "url": "https://doc.sagemath.org/html/en/reference/homology/index.html",
+      "kind": "official_documentation",
+      "scope": "Chain complexes and homology reference",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "lean": {
+      "url": "https://lean-lang.org/doc/reference/latest/Elaboration-and-Compilation/",
+      "kind": "official_documentation",
+      "scope": "Elaboration and kernel checking, not automatic QFT formalization",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "mcp": {
+      "url": "https://github.com/modelcontextprotocol/rust-sdk",
+      "kind": "official_upstream_repository",
+      "scope": "Rust MCP SDK; harness compatibility still requires qualification",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    },
+    "webgpu": {
+      "url": "https://www.w3.org/TR/webgpu/",
+      "kind": "primary_specification",
+      "scope": "Browser GPU rendering and compute API; TypeScript is our frontend choice",
+      "accessed_utc": "2026-10-31",
+      "retrieval": "web tool opened successfully; no byte-level snapshot hash available"
+    }
+  },
+  "features": [
+    {
+      "id": "cap:coefficients",
+      "title": "Exact coefficient domains",
+      "operation": "Exact coefficient domains",
+      "domain": "Z,Q,Q(i), later algebraic extensions",
+      "priority": "P0",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          1,
+          2,
+          3
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Arbitrary precision Rust coefficients and structured division/overflow errors; explicit algebraic extensions later.",
+        "optional_oracle": "SageMath,SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Checked i128 rational/Gaussian rational arithmetic; overflow panics, not arbitrary precision.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "2^200 / 2^199 = 2 in Q; (1+i)(1-i)=2.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Construct 1/0; or return a wrapped i128 value for 2^200.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Euclidean gcd reduction plus independent integer cross-products."
+      },
+      "prerequisites": [],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "scalar_rs",
+        "sage_rational",
+        "sympy_poly"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:expressions",
+      "title": "Typed expressions and hygienic substitution",
+      "operation": "Typed expressions and hygienic substitution",
+      "domain": "Symbol scopes, binders, assumptions, real/complex distinction",
+      "priority": "P0",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          3,
+          8,
+          9,
+          22,
+          43
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Polynomials and tensor binder hygiene exist; no general expression parser/AST.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Substitute x->y into Integral(x+y,(y,0,1)) with fresh binder z: Integral(y+z,(z,0,1)).",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Capture y by returning Integral(2*y,(y,0,1)); or accept malformed repeated tensor indices.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Compare free-variable sets before and after alpha-renaming."
+      },
+      "prerequisites": [
+        "cap:coefficients"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "tensor_rs",
+        "poly_rs",
+        "cli_rs",
+        "plan"
+      ],
+      "limitations": "Separate algebraic equality, textual representation, binder identity and assumptions."
+    },
+    {
+      "id": "cap:polynomials",
+      "title": "Polynomial and rational-function normalization",
+      "operation": "Polynomial and rational-function normalization",
+      "domain": "Commuting multivariate polynomials over explicit fields",
+      "priority": "P0",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          3,
+          10,
+          14,
+          28
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy,SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Sparse Q(i) polynomials and ratio cross-products; degree/term limits.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "(x^2-1)/(x-1)=x+1 conditional on x!=1.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Declare same expression defined at x=1 after cancellation.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Multiply denominators and retain original domain guards."
+      },
+      "prerequisites": [
+        "cap:coefficients",
+        "cap:expressions"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "poly_rs",
+        "sympy_poly"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:polynomial-ideals",
+      "title": "Ideal reduction and elimination certificates",
+      "operation": "Ideal reduction and elimination certificates",
+      "domain": "Groebner bases over Q or finite fields; term order explicit",
+      "priority": "P2",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SageMath,SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "In Q[x,y], x^2-1 belongs to <x-y,y^2-1>: (x-y)(x+y)+(y^2-1).",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Assert x belongs to that ideal; evaluation x=y=1 refutes it.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Replay polynomial multiplier certificate; separately evaluate counterexample."
+      },
+      "prerequisites": [
+        "cap:polynomials"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sage_ideals",
+        "sympy_poly"
+      ],
+      "limitations": "Sage source delegates much ideal work to Singular; Sage/Singular agreement is not independent."
+    },
+    {
+      "id": "cap:assumptions",
+      "title": "Assumption-sensitive scalar identities",
+      "operation": "Assumption-sensitive scalar identities",
+      "domain": "Real/complex elementary functions and branch cuts",
+      "priority": "P0",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          1,
+          14,
+          25,
+          50
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "sqrt(x^2)=abs(x) for real x; sqrt(x^2)=x when x>=0.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Accept sqrt(x^2)=x at x=-3; merge principal logs without conditions.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Evaluate x=-3 and principal-branch complex counterexamples."
+      },
+      "prerequisites": [
+        "cap:expressions"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sympy_calculus",
+        "sympy_solvers",
+        "lie"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:differentiate",
+      "title": "Symbolic differentiation and chain rules",
+      "operation": "Symbolic differentiation and chain rules",
+      "domain": "Ordinary/multivariate calculus with explicit dependencies",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          3,
+          6,
+          22,
+          30
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "d/dx sin(x^2)=2*x*cos(x^2).",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Return cos(x^2), losing the inner derivative.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Independent dual-number or high-precision derivative sampling plus rule replay."
+      },
+      "prerequisites": [
+        "cap:expressions",
+        "cap:polynomials"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sympy_calculus",
+        "plan"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:integrate",
+      "title": "Conditional integrals and contour residues",
+      "operation": "Conditional integrals and contour residues",
+      "domain": "Definite/indefinite integrals; convergence and contours",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          6,
+          7,
+          14,
+          25,
+          51
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Integral_0^infinity exp(-a*x) dx=1/a for Re(a)>0; residue 1/z at 0 is 1.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Apply first formula at a=-1; or omit contour orientation when reporting 2*pi*i.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Differentiate primitive, inspect endpoints; contour parameterization for residue."
+      },
+      "prerequisites": [
+        "cap:differentiate",
+        "cap:assumptions"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sympy_integrals",
+        "plan"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:series",
+      "title": "Series, Laurent expansions and perturbative order",
+      "operation": "Series, Laurent expansions and perturbative order",
+      "domain": "Formal series distinct from convergent approximations",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          14,
+          18,
+          28,
+          31,
+          62
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy,SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "exp(e)=1+e+e^2/2+O(e^3); coefficient of e^2 in product (1+e)^2 is 1.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Discard e^2 before multiplying and claim exact equality; mix expansion orders silently.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Formal coefficient recurrence and explicit truncated-ring multiplication."
+      },
+      "prerequisites": [
+        "cap:polynomials",
+        "cap:differentiate"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sympy_special",
+        "sage_docs"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:special-functions",
+      "title": "Special-function recurrence and evaluation",
+      "operation": "Special-function recurrence and evaluation",
+      "domain": "Gamma/Beta, Bessel, polylogarithms with branch metadata",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          14,
+          20,
+          51,
+          62,
+          93
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy,SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Gamma(5)=24; Gamma(z+1)=z*Gamma(z) away from poles.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Return finite Gamma(0); use principal polylog across a cut without continuation.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Integer factorial witness and recurrence residual; numerical checks remain approximate."
+      },
+      "prerequisites": [
+        "cap:assumptions",
+        "cap:series"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sympy_special",
+        "sage_docs"
+      ],
+      "limitations": "Add named families incrementally; no universal special-function simplifier."
+    },
+    {
+      "id": "cap:transforms-distributions",
+      "title": "Transforms and distributional calculus",
+      "operation": "Transforms and distributional calculus",
+      "domain": "Fourier conventions, delta, principal value, test functions",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          3,
+          4,
+          5,
+          13,
+          42,
+          54
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "For Schwartz f, Integral delta(x-a)*f(x) dx=f(a); Integral delta_prime(x)*f(x) dx=-f_prime(0).",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Return +f_prime(0); multiply delta(x)^2 as an ordinary function.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Distribution pairing definitions with compactly supported smooth witnesses."
+      },
+      "prerequisites": [
+        "cap:integrate",
+        "cap:expressions"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sympy_integrals",
+        "plan"
+      ],
+      "limitations": "Fourier normalization must be explicit; external transform defaults may differ from book."
+    },
+    {
+      "id": "cap:solvers",
+      "title": "Algebraic solving and constraint sets",
+      "operation": "Algebraic solving and constraint sets",
+      "domain": "Roots, inequalities, multiplicity and admissible domains",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          25,
+          30,
+          32,
+          84
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy,SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Real solutions x^2=4 are {-2,2}; x^2+1=0 has no real solutions.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Report only +2 as exhaustive; return i as a real root.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Substitute each root and establish completeness using degree/Sturm certificate."
+      },
+      "prerequisites": [
+        "cap:polynomials",
+        "cap:assumptions"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sympy_solvers",
+        "sage_docs"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:linear-algebra",
+      "title": "Exact linear algebra and spectral checks",
+      "operation": "Exact linear algebra and spectral checks",
+      "domain": "Matrices over fields; rank, kernel, determinants, Hermitian spectra",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          2,
+          33,
+          38,
+          70,
+          88,
+          91
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SageMath,SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Small exact/numeric matrices, Pauli/gamma and fixed-size products; no general decomposition engine.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "A=[[1,2],[2,4]] has null vector (-2,1) and determinant 0.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Invert A without singular status; accept nonzero A*(-2,1).",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Exact multiplication and fraction-free determinant independent of solver."
+      },
+      "prerequisites": [
+        "cap:coefficients",
+        "cap:polynomials"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "lie",
+        "qft",
+        "sage_docs"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:numerics",
+      "title": "Precision, quadrature and uncertainty contracts",
+      "operation": "Precision, quadrature and uncertainty contracts",
+      "domain": "Conditioned numerical evaluation; interval or error estimates",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          12,
+          20,
+          25,
+          64,
+          82,
+          92
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SageMath,SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "f32/f64/Half rotation numerics; no general validated numerical engine.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Integrate x^2 on [0,1] with enclosure containing 1/3 and width <=1e-10.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Label ten matching decimal digits as exact proof; accept NaN or invalid tolerance.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Compare analytic integral; refine precision and bound enclosure."
+      },
+      "prerequisites": [
+        "cap:assumptions",
+        "cap:integrate"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "numerical",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "lie",
+        "sage_docs",
+        "sympy_integrals"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:ode-pde",
+      "title": "ODE/PDE residuals and controlled evolution",
+      "operation": "ODE/PDE residuals and controlled evolution",
+      "domain": "Initial/boundary value problems; analytic residual and numerical error",
+      "priority": "P2",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          3,
+          54,
+          92
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy,SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "y=exp(-t) satisfies y_prime=-y,y(0)=1; discrete refinement reproduces it.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Accept exp(t) or wrong initial data because one sample agrees.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Differentiate analytic witness; independently bound global numerical error."
+      },
+      "prerequisites": [
+        "cap:differentiate",
+        "cap:numerics"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra_or_numerical",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sympy_solvers",
+        "sage_docs",
+        "lie"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:tensors",
+      "title": "Typed tensor contraction and canonicalisation",
+      "operation": "Typed tensor contraction and canonicalisation",
+      "domain": "Spaces, variance, mono-term symmetries, hygienic dummies",
+      "priority": "P0",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          2,
+          35,
+          47,
+          54,
+          69
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "Cadabra",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Bounded commuting-factor orbit implementation; no general Grassmann factors.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Symmetric S_ab contracted with antisymmetric A^ab is zero.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Permit A^mu B_mu C^mu D_mu with ambiguous fourfold mu; erase free signature of zero.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Explicit 2D rational component matrices and independent index enumeration."
+      },
+      "prerequisites": [
+        "cap:coefficients",
+        "cap:expressions"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "tensor",
+        "tensor_rs",
+        "cadabra_canonical"
+      ],
+      "limitations": "Current documented bounds: 8 factors,20 slots,rank8,100000 work steps; no scalability claim."
+    },
+    {
+      "id": "cap:tensor-relations",
+      "title": "Multiterm and dimension-dependent identities",
+      "operation": "Multiterm and dimension-dependent identities",
+      "domain": "Bianchi, Schouten, Young symmetry and epsilon relations",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          2,
+          35,
+          47,
+          50,
+          69
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "Cadabra",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Existing tensor kernel explicitly does not infer multiterm identities.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "For 2D vectors, [ab][cd]+[ac][db]+[ad][bc]=0 by determinant expansion.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Apply 2D Schouten relation to arbitrary higher-dimensional antisymmetric bilinears.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Expand independent coordinates; include dimension mismatch controls."
+      },
+      "prerequisites": [
+        "cap:tensors",
+        "cap:polynomials"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "tensor",
+        "cadabra"
+      ],
+      "limitations": "Do not equate mono-term canonical form with full tensor equivalence."
+    },
+    {
+      "id": "cap:grassmann",
+      "title": "Grassmann and graded differential algebra",
+      "operation": "Grassmann and graded differential algebra",
+      "domain": "Odd generators, left/right derivatives, Berezin orientation",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          34,
+          36,
+          43,
+          44,
+          49,
+          71,
+          74,
+          95
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "Cadabra",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "theta1*theta2=-theta2*theta1; left d/dtheta2(theta1*theta2)=-theta1.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Commute odd generators; apply same sign for left and right derivatives.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Independent exterior-basis bitmask algebra and explicit swap parity."
+      },
+      "prerequisites": [
+        "cap:expressions",
+        "cap:coefficients"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "cadabra_grassmann",
+        "qft"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:clifford",
+      "title": "Clifford words, traces and declared dimensions",
+      "operation": "Clifford words, traces and declared dimensions",
+      "domain": "{gamma_a,gamma_b}=2*h_ab; Srednicki h=-eta",
+      "priority": "P0",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          36,
+          38,
+          46,
+          47,
+          48
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "Cadabra",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Word normal ordering/trace pairings and specialized formal-d sandwich; gamma5 only 4D.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Tr(gamma_a gamma_b)=4*h_ab; anticommutator=2*h_ab.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Change sign of h mapping; infer an Einstein sum from opaque gamma labels.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Explicit 4x4 matrices in 4D; independently implement trace pairing recurrence."
+      },
+      "prerequisites": [
+        "cap:polynomials",
+        "cap:tensors"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "gamma_rs",
+        "qft",
+        "cadabra"
+      ],
+      "limitations": "Formal d without gamma5 is not a dimensional regularization scheme."
+    },
+    {
+      "id": "cap:spinor-helicity",
+      "title": "Spinor, Fierz and helicity constructions",
+      "operation": "Spinor, Fierz and helicity constructions",
+      "domain": "Dotted/undotted spaces, 4D reality and polarization reference guards",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          33,
+          34,
+          35,
+          38,
+          46,
+          49,
+          50,
+          60
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "Cadabra",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Determinant brackets, selected spinor identities, BCFW shifts, polarization numerators; general Fierz/Majorana absent.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "For a=(1,0),b=(0,1),c=(1,1),d=(2,3), determinant Schouten residual is zero.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Use q=k in polarization; drop sqrt(2) scaling metadata; treat independent conjugate variables as real momenta.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Expand four two-component vectors independently; compare finite gamma representations."
+      },
+      "prerequisites": [
+        "cap:clifford",
+        "cap:tensor-relations",
+        "cap:grassmann"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "spinor_rs",
+        "twistor_rs",
+        "corpus",
+        "cadabra"
+      ],
+      "limitations": "Existing formula conventions and partial exercise checks must survive migration."
+    },
+    {
+      "id": "cap:operators",
+      "title": "Canonical operators and ordered products",
+      "operation": "Canonical operators and ordered products",
+      "domain": "Commutators, anticommutators, normal/time ordering",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          3,
+          4,
+          7,
+          37,
+          39
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "Cadabra",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "[a,a_dagger]=1 implies [a,(a_dagger)^2]=2*a_dagger.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Canonicalize a*a_dagger as commuting; claim finite matrices realize CCR exactly.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Rewrite with an independent word algebra; explicitly track finite truncation boundary defects."
+      },
+      "prerequisites": [
+        "cap:expressions",
+        "cap:grassmann"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "qft",
+        "plan",
+        "cadabra"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:lie-groups",
+      "title": "Lie groups, Lie brackets and coordinate charts",
+      "operation": "Lie groups, Lie brackets and coordinate charts",
+      "domain": "SO(3),SU(2), real forms and broader Lie families",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          2,
+          24,
+          33,
+          69,
+          70,
+          97
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SageMath,SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "SO3/SU2 exact/numeric routines; rational quaternion charts and trig quotients.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "SU2 lifts q and -q map to same SO3 rotation; [hat(ex),hat(ey)]=hat(ez).",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Identify compact real su2 with split sl2(R) without a map; accept det=-1 reflection as SO3.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Explicit matrix commutator and quaternion sandwich action."
+      },
+      "prerequisites": [
+        "cap:linear-algebra",
+        "cap:polynomials"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "lie",
+        "sage_docs"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:representations",
+      "title": "Weights, characters and representation decompositions",
+      "operation": "Weights, characters and representation decompositions",
+      "domain": "Compact Lie representations, tensor products and charge conventions",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          24,
+          33,
+          70,
+          75,
+          87,
+          88,
+          89,
+          95,
+          97
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Only selected su2/so3 representations and Lorentz matrices identified.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "SU2 spin1/2 tensor spin1/2 decomposes into spin0 plus spin1; dimensions 4=1+3.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Return only spin1; confuse Lie algebra representation with global group descent.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Construct swap-symmetric/antisymmetric subspaces of C2 tensor C2."
+      },
+      "prerequisites": [
+        "cap:lie-groups",
+        "cap:linear-algebra"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sage_characters",
+        "sage_docs",
+        "lie"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:geometry",
+      "title": "Differential forms, connections and curvature",
+      "operation": "Differential forms, connections and curvature",
+      "domain": "Charts, exterior derivative, wedge, pullback, metric and orientation",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          54,
+          69,
+          74,
+          92,
+          93
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SageMath,Cadabra",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "For alpha=x*dy, d(alpha)=dx wedge dy and d(d(alpha))=0.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Return dy wedge dx with same sign; compute chart transition without Jacobian.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Coordinate exterior derivative with independent signed basis enumeration."
+      },
+      "prerequisites": [
+        "cap:tensors",
+        "cap:differentiate",
+        "cap:grassmann"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sage_forms",
+        "sage_manifolds",
+        "cadabra"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:homology",
+      "title": "Chain complexes and topological invariants",
+      "operation": "Chain complexes and topological invariants",
+      "domain": "Finite cellular/simplicial complexes; integer homology",
+      "priority": "P2",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          82,
+          92,
+          93,
+          94
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "For a triangle boundary, H0=Z,H1=Z; for filled triangle H1=0.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Accept boundary maps with d*d!=0; infer continuum confinement from finite homology.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Exact boundary matrices and independently replayed Smith normal form."
+      },
+      "prerequisites": [
+        "cap:linear-algebra"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sage_chains",
+        "sage_homology"
+      ],
+      "limitations": "Finite homology is not a general solver of homotopy or continuum QFT topology."
+    },
+    {
+      "id": "cap:variation",
+      "title": "Variational derivatives and Noether checks",
+      "operation": "Variational derivatives and Noether checks",
+      "domain": "Local action jets, integration by parts, boundary terms",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          3,
+          22,
+          36,
+          54,
+          69
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy,Cadabra",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "L=(qdot^2-m^2*q^2)/2 gives qddot+m^2*q=0.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Drop a boundary term without support/BC assumptions; flip potential sign.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Direct first variation of compactly supported perturbations."
+      },
+      "prerequisites": [
+        "cap:differentiate",
+        "cap:expressions",
+        "cap:tensors"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sympy_calculus",
+        "plan"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:gaussian-functionals",
+      "title": "Finite Gaussian integrals and formal functionals",
+      "operation": "Finite Gaussian integrals and formal functionals",
+      "domain": "Positive Euclidean matrices; oscillatory prescriptions explicit",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          6,
+          7,
+          8,
+          9,
+          43,
+          44,
+          53
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "For A=diag(2,3), integral exp(-x^T*A*x/2) d2x=2*pi/sqrt(6).",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Apply positive-definite Gaussian formula to A=diag(2,-3); call formal path integral a defined measure.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Product of two scalar Gaussian integrals with explicit positivity."
+      },
+      "prerequisites": [
+        "cap:integrate",
+        "cap:linear-algebra",
+        "cap:grassmann"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "sympy_integrals",
+        "plan"
+      ],
+      "limitations": "Infinite-dimensional functional manipulations need separate formal status and regulator."
+    },
+    {
+      "id": "cap:wick-diagrams",
+      "title": "Wick contractions and graph symmetry factors",
+      "operation": "Wick contractions and graph symmetry factors",
+      "domain": "Bosonic/fermionic contractions; labelled graphs and automorphisms",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          9,
+          10,
+          19,
+          44,
+          45,
+          49,
+          72,
+          80
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "Cadabra,SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Centered scalar Gaussian fourth moment is 3*C^2 from three pairings.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Count only one pairing or omit a closed-fermion-loop sign.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Independently enumerate four labelled vertices and pairing permutations."
+      },
+      "prerequisites": [
+        "cap:operators",
+        "cap:grassmann",
+        "cap:gaussian-functionals"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "cadabra",
+        "sage_docs"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:scattering",
+      "title": "LSZ, phase space and cross-section normalization",
+      "operation": "LSZ, phase space and cross-section normalization",
+      "domain": "On-shell constraints, state normalization, units and thresholds",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          5,
+          11,
+          12,
+          41,
+          48,
+          56,
+          59,
+          61
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Equal-mass two-body CM momentum has magnitude sqrt(s-4*m^2)/2 for s>=4*m^2.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Report real outgoing momentum below threshold; omit identical-state factor without changing convention.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Energy-momentum conservation in CM frame; independent dimensional analysis."
+      },
+      "prerequisites": [
+        "cap:solvers",
+        "cap:integrate",
+        "cap:tensors"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "sympy_integrals"
+      ],
+      "limitations": "Kinematic witness alone does not establish a fully normalized cross section."
+    },
+    {
+      "id": "cap:analytic-structure",
+      "title": "Propagators, spectral densities and prescriptions",
+      "operation": "Propagators, spectral densities and prescriptions",
+      "domain": "i0 limits, poles, cuts, Kallen-Lehmann assumptions",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          5,
+          13,
+          25,
+          42,
+          56
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "As distributions, 1/(x+i0)=PV(1/x)-i*pi*delta(x).",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Use +i*pi*delta(x) for same prescription; replace distribution by pointwise equality at x=0.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Integrate against smooth test functions and inspect regulated epsilon limit."
+      },
+      "prerequisites": [
+        "cap:transforms-distributions",
+        "cap:integrate"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "sympy_integrals"
+      ],
+      "limitations": "Spectral positivity and unstable-particle approximations require explicit physical premises."
+    },
+    {
+      "id": "cap:loop-integrals",
+      "title": "Regulated loop integrals and parameterization",
+      "operation": "Regulated loop integrals and parameterization",
+      "domain": "Euclidean/Minkowski contour, UV/IR regulators and Gamma poles",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          14,
+          15,
+          16,
+          17,
+          20,
+          26,
+          51,
+          62,
+          63,
+          64,
+          65,
+          73
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "For A,B>0, 1/(A*B)=Integral_0^1 dx/[x*A+(1-x)*B]^2.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Swap power 2 for 1; shift a divergent integral before specifying a regulator.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Elementary integral in one parameter and coincident A=B limit."
+      },
+      "prerequisites": [
+        "cap:integrate",
+        "cap:series",
+        "cap:special-functions",
+        "cap:analytic-structure"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "sympy_special",
+        "sympy_integrals"
+      ],
+      "limitations": "Start scalar one-loop families; general multiloop IBP/reduction is later scoped work."
+    },
+    {
+      "id": "cap:renormalization",
+      "title": "Counterterms, RG and EFT matching",
+      "operation": "Counterterms, RG and EFT matching",
+      "domain": "Scheme/scale/order metadata, pole subtraction, operator dimensions",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          18,
+          19,
+          21,
+          27,
+          28,
+          29,
+          31,
+          52,
+          66,
+          73
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "For dg/dlog(mu)=b*g^3, d(1/g^2)/dlog(mu)=-2*b at this order.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Mix MS and on-shell finite parts or compare results at unequal truncation orders.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Differentiate implicit running solution; independent pole-cancellation ledger."
+      },
+      "prerequisites": [
+        "cap:loop-integrals",
+        "cap:series",
+        "cap:differentiate"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "sympy_calculus"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:gauge-brst",
+      "title": "Gauge transformations, Ward identities and BRST",
+      "operation": "Gauge transformations, Ward identities and BRST",
+      "domain": "Abelian/nonabelian differential and graded algebra",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          54,
+          67,
+          68,
+          69,
+          71,
+          72,
+          74,
+          78,
+          79
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "Cadabra",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Abelian BRST s(A_mu)=partial_mu c, s(c)=0 gives s^2(A_mu)=0 when s commutes with partial.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Use ordinary rather than graded Leibniz rule for ghost products; label cyclic amplitude symmetry a Ward identity.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Independent graded derivation expansion and explicit on-shell gauge replacement."
+      },
+      "prerequisites": [
+        "cap:geometry",
+        "cap:grassmann",
+        "cap:variation",
+        "cap:operators"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "cadabra",
+        "sage_forms"
+      ],
+      "limitations": "Nonabelian nilpotency requires explicit structure constants, Jacobi and sign conventions."
+    },
+    {
+      "id": "cap:color-amplitudes",
+      "title": "Color algebra and independently derived tree amplitudes",
+      "operation": "Color algebra and independently derived tree amplitudes",
+      "domain": "Lie invariants, Yang-Mills vertices and recursive amplitudes",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          60,
+          69,
+          70,
+          72,
+          79,
+          80,
+          81
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "Cadabra,SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Bare Parke-Taylor ratio and half-collinear (2,2) SMGA recurrence; no ordinary Yang-Mills BG.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "With T_a=sigma_a/2, Tr(T_a*T_b)=delta_ab/2 and [T1,T2]=i*T3.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Port (2,2) sign formula to real Lorentzian momenta; claim bare MHV ratio includes all coupling/color factors.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Explicit Pauli multiplication; later compare independent Feynman and recursion derivations."
+      },
+      "prerequisites": [
+        "cap:representations",
+        "cap:spinor-helicity",
+        "cap:wick-diagrams",
+        "cap:gauge-brst"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "smga_rs",
+        "spinor_rs",
+        "qft",
+        "cadabra"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:anomalies",
+      "title": "Chiral anomalies and regulated symmetry tests",
+      "operation": "Chiral anomalies and regulated symmetry tests",
+      "domain": "Representation traces, gamma5 and regulator-dependent identities",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          75,
+          76,
+          77,
+          88,
+          94
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SageMath,Cadabra",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Left-handed U1 charges {1,-1} have sum q=0 and sum q^3=0.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Mark {1,1} anomaly-free; force anticommuting gamma5 in arbitrary d without a scheme.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Direct rational charge sums plus independent finite representation traces."
+      },
+      "prerequisites": [
+        "cap:representations",
+        "cap:clifford",
+        "cap:loop-integrals",
+        "cap:gauge-brst"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "cadabra",
+        "sage_characters"
+      ],
+      "limitations": "Charge sums are limited cancellation tests; they do not prove every global/mixed anomaly absent."
+    },
+    {
+      "id": "cap:symmetry-breaking",
+      "title": "Vacua, Hessians, Higgs and mass mixing",
+      "operation": "Vacua, Hessians, Higgs and mass mixing",
+      "domain": "Stationary points, gauge redundancies, Goldstone and flavor conventions",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          30,
+          31,
+          32,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy,SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "V=lambda*(x^2+y^2-v^2)^2, lambda>0,v>0: at (v,0), Hessian diag(8*lambda*v^2,0).",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Count zero gauge directions as physical massless particles without quotient/gauge fixing.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Independent second derivatives and exact Hessian eigenvectors."
+      },
+      "prerequisites": [
+        "cap:variation",
+        "cap:solvers",
+        "cap:linear-algebra",
+        "cap:representations"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "sympy_solvers",
+        "sage_docs"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:lattice",
+      "title": "Finite lattice observables and Monte Carlo",
+      "operation": "Finite lattice observables and Monte Carlo",
+      "domain": "Finite volume, discretization, statistical errors and gauge links",
+      "priority": "P2",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          82,
+          83
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "For SU2 plaquette U=I, ReTr(U)/2=1, invariant under U->g*U*g^-1.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Report finite-volume Wilson-loop evidence as a proof of continuum confinement; hide autocorrelation.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Exact small-link gauge transform and independent seeded estimator/error analysis."
+      },
+      "prerequisites": [
+        "cap:lie-groups",
+        "cap:numerics",
+        "cap:gauge-brst"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra_or_numerical",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "sage_docs"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:solitons-instantons",
+      "title": "Solitons, boundary charges and instanton witnesses",
+      "operation": "Solitons, boundary charges and instanton witnesses",
+      "domain": "Classical finite-energy profiles and topological sector assumptions",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          92,
+          93,
+          94
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "SymPy",
+          "role": "related_reference_not_feature_parity"
+        },
+        {
+          "system": "SageMath",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "SymPy,SageMath",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "phi(x)=tanh(x) satisfies phi_doubleprime=2*phi*(phi^2-1), with limits +/-1.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Accept tanh(2*x) in same equation; assign winding without boundary/regularity conditions.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Analytic derivative residual plus independently checked asymptotic boundary values."
+      },
+      "prerequisites": [
+        "cap:ode-pde",
+        "cap:geometry",
+        "cap:homology",
+        "cap:variation"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "sage_forms",
+        "sage_manifolds"
+      ],
+      "limitations": "Specific classical solutions do not solve the full nonperturbative quantum theory."
+    },
+    {
+      "id": "cap:supersymmetry",
+      "title": "Supersymmetry and graded component expansions",
+      "operation": "Supersymmetry and graded component expansions",
+      "domain": "Supercharges, superfields, Grassmann coordinates and auxiliary fields",
+      "priority": "P2",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          95,
+          96,
+          97
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [
+        {
+          "system": "Cadabra",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "Cadabra",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Finite graded model Q=[[0,1],[0,0]], Qbar=[[0,0],[1,0]] has Q^2=0 and {Q,Qbar}=I.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Use [Q,Qbar] instead of anticommutator; claim finite toy model verifies 4D SUSY normalization.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Explicit matrix multiplication, then separately derive spinor-index component identities."
+      },
+      "prerequisites": [
+        "cap:grassmann",
+        "cap:spinor-helicity",
+        "cap:representations",
+        "cap:variation"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "cadabra_grassmann"
+      ],
+      "limitations": "Toy acceptance checks engine grading; full SUSY algebra/action normalization remains a separate gate."
+    },
+    {
+      "id": "cap:certificates",
+      "title": "Replayable algebra certificates and counterexamples",
+      "operation": "Replayable algebra certificates and counterexamples",
+      "domain": "Trust boundary, ring/domain guards and transformation traces",
+      "priority": "P0",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "No external oracle required; independent replay/analytic witness.",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Replay x^2-y^2=(x-y)*(x+y) by independently expanded integer polynomial coefficients.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Accept a trace after changing one coefficient or its assumption digest.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Separate minimal checker recomputes each step from serialized inputs."
+      },
+      "prerequisites": [
+        "cap:polynomials",
+        "cap:expressions"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "certificate_replay",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "lean",
+        "plan",
+        "poly_rs"
+      ],
+      "limitations": "This row is a bounded operation family, not a claim of complete CAS or chapter coverage."
+    },
+    {
+      "id": "cap:formal-proof",
+      "title": "Formal proof backend qualification",
+      "operation": "Formal proof backend qualification",
+      "domain": "Lean theorem statements, universes, axioms and kernel artifacts",
+      "priority": "P1",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [
+        {
+          "system": "Lean",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Rust owns adapter, artifact identity and trust report; evaluate existing checker before building a foundation.",
+        "optional_oracle": "Lean",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Kernel-check theorem forall n:Nat, n+0=n and report dependency/axiom inventory.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Accept an unchecked sorry-derived theorem, incompatible export, or timeout as formal proof.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Pinned Lean kernel replay; separately evaluate Rust checker compatibility and trust base."
+      },
+      "prerequisites": [
+        "cap:expressions",
+        "cap:certificates"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "formal_kernel",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "lean",
+        "plan"
+      ],
+      "limitations": "No general QFT formalization or Rust proof-kernel compatibility established by this audit."
+    },
+    {
+      "id": "cap:source-evidence",
+      "title": "Source item inventory and evidence accounting",
+      "operation": "Source item inventory and evidence accounting",
+      "domain": "Distinct equation/exercise/prose/figure IDs and immutable provenance",
+      "priority": "P0",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [
+          1,
+          35,
+          47,
+          50,
+          60,
+          97
+        ],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": false
+      },
+      "reference_systems": [],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "No external oracle required; independent replay/analytic witness.",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "13 selected exercise entries plus 3011 equation candidates in planning manifest; neither exhaustive review nor book completion.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "srednicki:ch035:exercise:35.1 and srednicki:ch035:equation:35.1 resolve separately with hash+page anchors.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Merge IDs by printed number; convert unresolved OCR or inventory completion into implemented coverage.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Hash source bytes, reconcile distinct namespaces and independent chapter sampling."
+      },
+      "prerequisites": [
+        "cap:expressions"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "source_derivation",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "corpus",
+        "inventory",
+        "chapters",
+        "handoff"
+      ],
+      "limitations": "Chapter ranges are provisional plan data; original PDF review remains with source specialists."
+    },
+    {
+      "id": "cap:agent-tools",
+      "title": "Versioned Rust tools and actual harness integration",
+      "operation": "Versioned Rust tools and actual harness integration",
+      "domain": "Typed CLI/MCP requests, capability discovery and verdict semantics",
+      "priority": "P0",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [
+        {
+          "system": "Rust MCP SDK",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "Rust CLI first; optional official Rust MCP SDK adapter after version inspection.",
+        "optional_oracle": "Rust MCP SDK",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Existing JSON CLI has demos/traces with PASS/FAIL/INCONCLUSIVE boundaries; no arbitrary expression engine/MCP qualification.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "A new request expression gets result+domain+input digest; wrong-sign request returns counterexample with nonzero residual.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Treat subprocess exit2, unknown operation, unsupported harness, timeout or panic as PASS.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Black-box per-harness tests with independently authored requests and parser/schema mutations."
+      },
+      "prerequisites": [
+        "cap:expressions",
+        "cap:source-evidence",
+        "cap:certificates"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "protocol_and_exact_algebra",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "cli_rs",
+        "mcp",
+        "handoff"
+      ],
+      "limitations": "Hermes/Pi/Claude Code/Codex/Grok Build each need actual installed-harness qualification."
+    },
+    {
+      "id": "cap:sandbox-budgets",
+      "title": "Bounded execution and reproducible job manifests",
+      "operation": "Bounded execution and reproducible job manifests",
+      "domain": "Cancellation, time/memory/term limits, deterministic seed and scheduling",
+      "priority": "P0",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [],
+      "implementation_strategy": {
+        "native_rust": "Implement bounded reusable Rust operations from mathematical definitions; declare unsupported domains.",
+        "optional_oracle": "No external oracle required; independent replay/analytic witness.",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "inspected_partial",
+        "description": "Some algebra term/work budgets and CLI panic catching exist; no unified job service.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "A too-large tensor orbit returns exhausted-budget/inconclusive with input digest and no partial-proof label.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Retry without bound or return PASS after process termination; mutate host credentials in an oracle job.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Inject exhausted budgets, malformed inputs and cancellation; inspect status and artifact completeness."
+      },
+      "prerequisites": [
+        "cap:agent-tools"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "protocol_and_resource_tests",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "cli_rs",
+        "tensor",
+        "plan"
+      ],
+      "limitations": "Define allocations separately from mathematical work steps; no OS sandbox guarantee implied by a rewrite count."
+    },
+    {
+      "id": "cap:gpu-exact",
+      "title": "GPU batched exact algebra with CPU checking",
+      "operation": "GPU batched exact algebra with CPU checking",
+      "domain": "Finite fields, reconstruction bounds and tensor batches",
+      "priority": "P2",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [],
+      "implementation_strategy": {
+        "native_rust": "Rust CPU reference and backend ownership; bounded CUDA C++ kernels only after measured bottleneck.",
+        "optional_oracle": "No external oracle required; independent replay/analytic witness.",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Evaluate polynomial x^2+1 mod101 at x=10: result0, matching CPU modular arithmetic.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Infer polynomial identically zero from this one root; overflow modular multiply; omit reconstruction bound.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Independent CPU exact modular arithmetic; certified reconstruction if claiming rational identity."
+      },
+      "prerequisites": [
+        "cap:polynomials",
+        "cap:certificates",
+        "cap:sandbox-budgets"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "exact_algebra_or_probabilistic_identity_test",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "poly_rs"
+      ],
+      "limitations": "No GPU benchmark or runtime probe in F17; record transfers/warmup/checking and device compatibility before adoption."
+    },
+    {
+      "id": "cap:gpu-numeric",
+      "title": "GPU numerical batches and end-to-end profiling",
+      "operation": "GPU numerical batches and end-to-end profiling",
+      "domain": "Amplitudes, contractions, Monte Carlo and heterogeneous precision",
+      "priority": "P2",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [],
+      "implementation_strategy": {
+        "native_rust": "Rust service schedules backend and reference checks; CUDA C++ only for justified kernels.",
+        "optional_oracle": "No external oracle required; independent replay/analytic witness.",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "Batch identity-matrix-vector products reproduces CPU vectors within declared precision/error bound.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Advertise speedup omitting transfer/allocation/check costs; label f32 agreement exact.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "CPU reference, high-precision small samples, conditioning tests and total-time crossover sweep."
+      },
+      "prerequisites": [
+        "cap:numerics",
+        "cap:sandbox-budgets"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "numerical_and_benchmark",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "plan",
+        "lie"
+      ],
+      "limitations": "No fresh device availability, VRAM allocation or speed claims; retain CPU functionality."
+    },
+    {
+      "id": "cap:graphics",
+      "title": "TypeScript mathematical graphics and evidence inspection",
+      "operation": "TypeScript mathematical graphics and evidence inspection",
+      "domain": "Plots, manifold/vector scenes, diagrams and derivation provenance",
+      "priority": "P2",
+      "source_chapter_relevance": {
+        "book": "Srednicki Quantum Field Theory",
+        "chapters": [],
+        "status": "proposed_from_plan_chapter_map_not_item_review",
+        "source_ref": "chapters",
+        "broader_cas": true
+      },
+      "reference_systems": [
+        {
+          "system": "WebGPU specification",
+          "role": "related_reference_not_feature_parity"
+        }
+      ],
+      "implementation_strategy": {
+        "native_rust": "TypeScript frontend, Rust service/WASM only where useful; browser WebGPU or other browser graphics.",
+        "optional_oracle": "WebGPU specification",
+        "foreign_runtime_required_for_core": false
+      },
+      "existing_coverage": {
+        "classification": "not_identified_in_inspected_scope",
+        "description": "No implementation identified in inspected Rust crates.",
+        "runtime_verified_this_assignment": false
+      },
+      "acceptance_examples": {
+        "status": "authored_independently_for_future_execution_not_run",
+        "positive": {
+          "input_or_statement": "TypeScript plot of unit circle uses math coordinates (cos t,sin t), displays domain and evidence type; resource IDs link to source.",
+          "expected": "Accept in the explicitly stated domain."
+        },
+        "negative": {
+          "input_or_statement": "Silently transpose axes/units or show numerical mesh as formal proof; require native CUDA in browser.",
+          "expected": "Reject claimed equality, reject invalid input, or report unsupported/inconclusive as appropriate; never PASS."
+        },
+        "independent_check": "Independent analytic sample coordinates and round-trip scene metadata checks."
+      },
+      "prerequisites": [
+        "cap:source-evidence",
+        "cap:agent-tools",
+        "cap:numerics"
+      ],
+      "evidence": {
+        "audit_classification": "source_inspection_and_design_proposal",
+        "target_kind": "visualization_and_protocol",
+        "external_agreement_is_proof": false,
+        "formal_proof_claim": false
+      },
+      "source_references": [
+        "webgpu",
+        "plan",
+        "sage_docs"
+      ],
+      "limitations": "WebGPU is a graphics/compute API, not a CAS oracle; visualization cannot upgrade mathematical evidence."
+    }
+  ]
+}

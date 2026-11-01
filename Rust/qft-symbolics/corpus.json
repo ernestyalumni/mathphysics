@@ -345,14 +345,299 @@
       "zero": 133,
       "nonzero": 67,
       "warning": "Finite exact fixtures, no all-n proof; Python parity is numerical with 1e-10 tolerance"
+    },
+    {
+      "task": "ch35 profiles preserve components and expose signs",
+      "file": "tests/textbook_research.rs",
+      "test": "ch35_profiles_preserve_components_and_expose_signs",
+      "source_equations": [
+        "35.1"
+      ],
+      "evidence": "symbolic_and_component",
+      "source_manifest": "validation/research-conventions.json",
+      "chapter_complete": false,
+      "warning": "Individual claim/boundary check; evaluated witnesses are not a general formal proof."
+    },
+    {
+      "task": "ch35 sigma contraction all components independent epsilon",
+      "file": "tests/textbook_research.rs",
+      "test": "ch35_sigma_contraction_all_components_independent_epsilon",
+      "source_equations": [
+        "35.4",
+        "35.19",
+        "35.20"
+      ],
+      "evidence": "complete_finite_tensor_components",
+      "source_manifest": "validation/research-conventions.json",
+      "chapter_complete": false,
+      "warning": "Individual claim/boundary check; evaluated witnesses are not a general formal proof."
+    },
+    {
+      "task": "ch47 symbolic four trace pairings and rename control",
+      "file": "tests/textbook_research.rs",
+      "test": "ch47_symbolic_four_trace_pairings_and_rename_control",
+      "source_equations": [
+        "47.13"
+      ],
+      "evidence": "symbolic_polynomial",
+      "source_manifest": "validation/research-conventions.json",
+      "chapter_complete": false,
+      "warning": "Individual claim/boundary check; evaluated witnesses are not a general formal proof."
+    },
+    {
+      "task": "ch47 component trace words through six pauli oracle",
+      "file": "tests/textbook_research.rs",
+      "test": "ch47_component_trace_words_through_six_pauli_oracle",
+      "source_equations": [
+        "47.1",
+        "47.4",
+        "47.6",
+        "47.8",
+        "47.13"
+      ],
+      "evidence": "evaluated_component_words",
+      "source_manifest": "validation/research-conventions.json",
+      "chapter_complete": false,
+      "warning": "Individual claim/boundary check; evaluated witnesses are not a general formal proof."
+    },
+    {
+      "task": "ch47 formal dimension and component sandwiches",
+      "file": "tests/textbook_research.rs",
+      "test": "ch47_formal_dimension_and_component_sandwiches",
+      "source_equations": [
+        "47.18",
+        "47.19",
+        "47.20",
+        "47.21"
+      ],
+      "evidence": "formal_one_word_and_evaluated_sandwiches",
+      "source_manifest": "validation/research-conventions.json",
+      "chapter_complete": false,
+      "warning": "Individual claim/boundary check; evaluated witnesses are not a general formal proof."
+    },
+    {
+      "task": "ch50 schouten symbolic both profiles and renamed components",
+      "file": "tests/textbook_research.rs",
+      "test": "ch50_schouten_symbolic_both_profiles_and_renamed_components",
+      "source_equations": [
+        "50.36"
+      ],
+      "evidence": "symbolic_polynomial",
+      "source_manifest": "validation/research-conventions.json",
+      "chapter_complete": false,
+      "warning": "Individual claim/boundary check; evaluated witnesses are not a general formal proof."
+    },
+    {
+      "task": "ch50 exact rational boundary and invalid domains",
+      "file": "tests/textbook_research.rs",
+      "test": "ch50_exact_rational_boundary_and_invalid_domains",
+      "source_equations": [],
+      "evidence": "arithmetic_and_domain_controls",
+      "source_manifest": "validation/research-conventions.json",
+      "chapter_complete": false,
+      "warning": "Individual claim/boundary check; evaluated witnesses are not a general formal proof."
+    },
+    {
+      "task": "ch50 massless factorization symbolic and rational pauli witness",
+      "file": "tests/textbook_research.rs",
+      "test": "ch50_massless_factorization_symbolic_and_rational_pauli_witness",
+      "source_equations": [
+        "50.12",
+        "50.15"
+      ],
+      "evidence": "symbolic_null_and_evaluated_factorization",
+      "source_manifest": "validation/research-conventions.json",
+      "chapter_complete": false,
+      "warning": "Individual claim/boundary check; evaluated witnesses are not a general formal proof."
+    },
+    {
+      "task": "ch50 four bracket chiral trace rational component witness",
+      "file": "tests/textbook_research.rs",
+      "test": "ch50_four_bracket_chiral_trace_rational_component_witness",
+      "source_equations": [
+        "50.37"
+      ],
+      "evidence": "evaluated_chiral_trace",
+      "source_manifest": "validation/research-conventions.json",
+      "chapter_complete": false,
+      "warning": "Individual claim/boundary check; evaluated witnesses are not a general formal proof."
+    },
+    {
+      "task": "ch50 nonnull determinant sign control",
+      "file": "tests/textbook_research.rs",
+      "test": "ch50_nonnull_determinant_sign_control",
+      "source_equations": [
+        "50.15"
+      ],
+      "evidence": "nonnull_sign_control",
+      "source_manifest": "validation/research-conventions.json",
+      "chapter_complete": false,
+      "warning": "Individual claim/boundary check; evaluated witnesses are not a general formal proof."
+    },
+    {
+      "task": "problem 2 1 metric first order forces lowered antisymmetry",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_1_metric_first_order_forces_lowered_antisymmetry",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problem 2 2 conditional antisymmetric coefficient extraction",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_2_conditional_antisymmetric_coefficient_extraction",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problem 2 3 linearized tensor matches commutator coefficients",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_3_linearized_tensor_matches_commutator_coefficients",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problem 2 5 linearized vector matches commutator coefficients",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_5_linearized_vector_matches_commutator_coefficients",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problems 2 4 and 2 6 all j k h p relations in differential representation",
+      "file": "tests/chapter_two.rs",
+      "test": "problems_2_4_and_2_6_all_j_k_h_p_relations_in_differential_representation",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problem 2 7 exact translation group law requires commuting mixed coefficients",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_7_exact_translation_group_law_requires_commuting_mixed_coefficients",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problem 2 8 a orbital sign and exact normal form with hbar",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_8_a_orbital_sign_and_exact_normal_form_with_hbar",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problem 2 8 b ordered double action includes product rule",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_8_b_ordered_double_action_includes_product_rule",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problem 2 8 c jacobi in free associative algebra",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_8_c_jacobi_in_free_associative_algebra",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problem 2 8 d nested commutator preserves action order",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_8_d_nested_commutator_preserves_action_order",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problem 2 8 e orbital brackets all indices exact normal forms",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_8_e_orbital_brackets_all_indices_exact_normal_forms",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problem 2 8 f central ambiguity survives field actions",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_8_f_central_ambiguity_survives_field_actions",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "reusable rapidity positive boost group and rejected domains",
+      "file": "tests/chapter_two.rs",
+      "test": "reusable_rapidity_positive_boost_group_and_rejected_domains",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problems 2 4 and 2 6 general component contractions symbolic hbar",
+      "file": "tests/chapter_two.rs",
+      "test": "problems_2_4_and_2_6_general_component_contractions_symbolic_hbar",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "problem 2 8 a scalar covariance coefficient derivation",
+      "file": "tests/chapter_two.rs",
+      "test": "problem_2_8_a_scalar_covariance_coefficient_derivation",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "orbital constructor all components against independent sparse maps",
+      "file": "tests/chapter_two.rs",
+      "test": "orbital_constructor_all_components_against_independent_sparse_maps",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "first order conjugation is ordered coefficient identity",
+      "file": "tests/chapter_two.rs",
+      "test": "first_order_conjugation_is_ordered_coefficient_identity",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "translation unitarity alone does not force commutativity",
+      "file": "tests/chapter_two.rs",
+      "test": "translation_unitarity_alone_does_not_force_commutativity",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
+    },
+    {
+      "task": "reusable rapidity exact finite witness and conditional symbolic metric",
+      "file": "tests/chapter_two.rs",
+      "test": "reusable_rapidity_exact_finite_witness_and_conditional_symbolic_metric",
+      "source_manifest": "validation/chapter-two.json",
+      "chapter_complete": false,
+      "warning": "Evidence and premises classified per part; upstream U-conjugation and absence of central terms are not automatically proved."
     }
   ],
   "next_gates": [
-    "Arbitrary precision and uniformly structured arithmetic errors",
+    "Remaining legacy tensor/transport migration to explicit checked coefficient/error profiles",
     "50.2b explicit boosted-spinor massless limit",
     "60.2b,60.3,60.4 with explicit momentum-conservation constraints",
     "Nonabelian color and gluon vertices; ordinary Lorentzian/complexified BG",
     "4/5-point MHV amplitude from independent recurrence/Feynman rules; BCFW amplitude recursion",
     "Scalable/general tensor symmetries, explicit spinor epsilon lowering, statistics and dependencies"
-  ]
+  ],
+  "convention_profiles": {
+    "legacy_corpus": "Existing conventions above remain unchanged.",
+    "epsilon_profiles": "conventions::EpsilonConvention::{Library,MonoNotes}; explicit profile selection and conversion required",
+    "details": "docs/SREDNICKI-CHECKS.md"
+  }
 }

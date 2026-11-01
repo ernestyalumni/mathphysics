@@ -1,0 +1,62 @@
+{
+  "assumptions": [
+    {
+      "id": "ch035-finite-components",
+      "statement": "Undotted and dotted spinor spaces are distinct complex two-dimensional spaces; Lorentz indices have four components. Pauli and invariant tensors have commuting complex entries, independent of field statistics."
+    },
+    {
+      "id": "ch035-index-typing",
+      "statement": "Preserve dottedness, variance, slot order and free signatures. Contract epsilon on its second slot for raising/lowering. A first-slot contraction adds a minus sign; dummy changes must avoid capture."
+    },
+    {
+      "id": "ch035-lorentz",
+      "statement": "L and R are left/right Weyl representation matrices compatible with the sigma invariant and eta=(-,+,+,+). Covariance is considered in the connected proper orthochronous group and its spin cover, with inherited chapter34 representation conventions."
+    },
+    {
+      "id": "ch035-infinitesimal",
+      "statement": "Retain terms linear in antisymmetric delta-omega_mu_nu in the expansion 1+(i/2)delta-omega_mu_nu S^mu nu; repeated antisymmetric Lorentz pairs are summed in this convention. Drop O(delta-omega^2) only when deriving first-order identities."
+    },
+    {
+      "id": "ch035-grassmann",
+      "statement": "For the bilinear manipulations assume the indicated Weyl components are odd generators with anticommuting products. The printed (35.24) is used as an algebraic premise; it is not certified as an unrestricted unequal-time quantum-operator relation in every interacting or massive theory."
+    },
+    {
+      "id": "ch035-adjoint",
+      "statement": "Hermitian conjugation is an antilinear order-reversing operation, interchanges dotted and undotted spinor types, and conjugates complex matrix entries. It does not by itself introduce a Grassmann swap sign."
+    },
+    {
+      "id": "ch035-local-products",
+      "statement": "Same-point field bilinears are formal composite expressions here. Operator domains, smearing, renormalization of products and a full spin-statistics theorem are outside the present source inventory."
+    },
+    {
+      "id": "ch035-chapter34",
+      "statement": "Exercises35.2 and35.3 import (34.9),(34.10),(34.17). The imported statements were text-read on PDF234/235 (printed210/211); those prerequisite pages were not visually reviewed in this assignment."
+    },
+    {
+      "id": "ch035-generator-independent-parameters",
+      "statement": "Conditional inherited generator convention: S_L, S_R and S_V satisfy S^{mu nu}=-S^{nu mu}. Lowered delta-omega_mu_nu is antisymmetric with six independently variable entries mu<nu; the repeated ordered-pair sum in +(i/2)delta-omega*S counts both orders. Coefficient extraction is only at first order with O(delta-omega^2) discarded. These are premises for the source derivation, not a certified proof of generator antisymmetry."
+    },
+    {
+      "id": "ch035-left-lowered-symmetry",
+      "statement": "Conditional source premise: the two-lower-undotted generator is symmetric in its spinor slots, as stated by srednicki:ch035:prose:p217-generator-symmetry-left following srednicki:ch035:equation:35.8. Use this named source result conditionally; no proof artifact or independent verification is supplied."
+    },
+    {
+      "id": "ch035-right-lowered-symmetry",
+      "statement": "Conditional source premise: the two-lower-dotted generator is symmetric in its spinor slots, as stated by srednicki:ch035:prose:p217-generator-symmetry-right by the dotted analogue of epsilon invariance. Use this named source result conditionally; index typing alone does not establish it and no proof artifact is supplied."
+    },
+    {
+      "id": "ch035-projection-relation",
+      "statement": "Conditional source premise: the generator/sigma relation is exactly the ordered expression recorded by srednicki:ch035:equation:35.16, obtained in the source from srednicki:ch035:equation:35.15 using srednicki:ch035:equation:35.4. Projection consumes this relation, the appropriate lowered-generator symmetry and the ordered epsilon contraction. This names a derivation dependency, not an established theorem."
+    },
+    {
+      "id": "ch035-inherited-field-adjoint-compatibility",
+      "statement": "Conditional inherited chapter34 premises for srednicki:ch035:equation:35.28: the two left Weyl fields obey the same L field transformation at Lambda^-1 x; daggered fields obey the compatible conjugate/right Weyl transformation with explicit epsilon variance conversion and invariant sigma compatibility. U is invertible, implements the declared transformation by U^-1(.)U and this action respects products and the antilinear order-reversing adjoint. In a Hilbert-space realization require U dagger=U^-1 on a common invariant domain; no such realization, domain theorem or prerequisite proof is certified here. These inherited field/adjoint premises are distinct from checking finite sigma matrices."
+    }
+  ],
+  "conventions": [
+    {
+      "id": "srednicki-ch035-local-v1",
+      "statement": "Chapter35 local convention pending F04 normalization: eta=g=diag(-1,+1,+1,+1); epsilon^12=epsilon^(dot1 dot2)=epsilon_21=epsilon_(dot2 dot1)=+1, epsilon^21=epsilon^(dot2 dot1)=epsilon_12=epsilon_(dot1 dot2)=-1, diagonal epsilon entries zero. Raise/lower by contracting epsilon second slot. sigma^mu_(a dota)=(I,Pauli1,Pauli2,Pauli3); barsigma^(mu dota a)=epsilon^(ab) epsilon^(dota dotb) sigma^mu_(b dotb)=(I,-Pauli1,-Pauli2,-Pauli3). Suppressed undotted contraction is upper-then-lower, chi^a psi_a; suppressed dotted contraction is lower-then-upper, chi-dagger_dota psi-dagger^dota. Left-handed fields are written without daggers, right-handed fields as daggers. Lorentz generator expansion uses +(i/2)delta-omega*S. The mixed-index S_R in (35.22) has FIRST dotted index upper and SECOND lower, unlike the lower-upper S_R in (35.12); epsilon conversions must be explicit. Existing Rust context uses Clifford=-2eta, not +2eta; Clifford is not needed to state this chapter."
+    }
+  ]
+}

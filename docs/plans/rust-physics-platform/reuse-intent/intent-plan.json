@@ -1,0 +1,126 @@
+{
+  "acceptance": {
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "sentence": "also, in previous implementation, maybe it was my fault, but Isaw that the implementation was closely tied to and was just for each subsection of Srednicki it was writing functions e.g.",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": "TypeScript/physics-workbench/architecture.json",
+      "matched_terms": [
+        "implementation",
+        "place",
+        "workspace"
+      ],
+      "output_path": "src/model.ts",
+      "product_area": "Export Style, Kind, Root, Entry, Place, FileTab, Cell and Workspace types and initialWorkspace, restoreWorkspace, saveWorkspace,...",
+      "prompt_path": "TypeScript/physics-workbench/prompts/model_typescript.prompt",
+      "score": 11
+    },
+    {
+      "architecture_path": "TypeScript/physics-workbench/architecture.json",
+      "matched_terms": [
+        "implementation",
+        "workspace"
+      ],
+      "output_path": "src/main.ts",
+      "product_area": "Compose a browser-only TypeScript workbench with one persistent shared workspace",
+      "prompt_path": "TypeScript/physics-workbench/prompts/main_typescript.prompt",
+      "score": 9
+    },
+    {
+      "architecture_path": "Python/rotations/architecture.json",
+      "matched_terms": [
+        "functions",
+        "library",
+        "python"
+      ],
+      "output_path": "rotations.py",
+      "product_area": "Standard-library SO(3), Euler, Hamilton quaternion and Goldstein Cayley\u2013Klein conversions with strict validation.",
+      "prompt_path": "Python/rotations/prompts/rotations_python.prompt",
+      "score": 9
+    },
+    {
+      "architecture_path": "Rust/physics-contracts/architecture.json",
+      "matched_terms": [
+        "point",
+        "rust"
+      ],
+      "output_path": "src/main.rs",
+      "product_area": "Bounded JSON file/stdin validator CLI",
+      "prompt_path": "Rust/physics-contracts/prompts/main_rust.prompt",
+      "score": 7
+    },
+    {
+      "architecture_path": "Rust/physics-gateway/architecture.json",
+      "matched_terms": [
+        "rust",
+        "story"
+      ],
+      "output_path": "src/su2.rs",
+      "product_area": "Bounded numerical SU2 laboratory state and validation",
+      "prompt_path": "Rust/physics-gateway/prompts/su2_rust.prompt",
+      "score": 7
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "reusable-research-grade-rust-mathematical-physic-defc67dd",
+  "original_request": "also, in previous implementation, maybe it was my fault, but Isaw that the implementation was closely tied to and was just for each subsection of Srednicki it was writing functions e.g. Python functions for each subsection. As a user (user story time), I want to create out of Srednicki's book a reusable Rust library. I don't want to duplicate code again and again per subsection, that's not the point and defaeats the purpose. I want a reusable Rust library that can not only just work for Srednicki's Quantum Field Theory, but extrensivble to production code for active quantum field theory research and proving out other texts, papers, (arixv papers especially). Please follow the good C++ (we're not coding in C++ but some of the structure of how we do C++ coding can be useful, follow anomalogously not strictly or literally) and some Rust code we have in the repos /home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA /home/propdev/.openclaw/workspace/workspace2/repos/Propulsion but more later dates the better, is a good place to look",
+  "original_request_sha256": "defc67dd100ba23decdda859af07b8e14f07b43a34e46acaa61dc02c4801e22c",
+  "project": {
+    "adoption_scenario": "existing_pdd_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      "Python/rotations/.pddrc",
+      "Rust/physics-contracts/.pddrc",
+      "Rust/physics-gateway/.pddrc",
+      "Rust/physics-tools/.pddrc",
+      "TypeScript/physics-workbench/.pddrc",
+      "Python/rotations/architecture.json",
+      "Rust/physics-contracts/architecture.json",
+      "Rust/physics-gateway/architecture.json",
+      "Rust/physics-tools/architecture.json",
+      "TypeScript/physics-workbench/architecture.json",
+      "23 prompt file(s)"
+    ],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "scope_kind": "repository"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [
+      "also, in previous implementation, maybe it was my fault, but Isaw that the implementation was closely tied to and was just for each subsection of Srednicki it was writing functions e.g."
+    ],
+    "must_preserve": [
+      "I don't want to duplicate code again and again per subsection, that's not the point and defaeats the purpose."
+    ],
+    "open_decisions": []
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "recommended": true
+  },
+  "title": "Reusable research-grade Rust mathematical physics library",
+  "warnings": []
+}

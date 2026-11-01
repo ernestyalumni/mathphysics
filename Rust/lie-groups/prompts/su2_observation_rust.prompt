@@ -1,0 +1,8 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Public pure numerical observe(axis:[f64;3],t:f64,slice:f64)->Result<Observation,Error> in src/su2_observation.rs.
+Expose input axis/t, coordinates, alpha,beta,matrix complex pairs,bloch, Chart::Finite([f64;3])/Pole, Slice::Sphere{coordinate,radius}/Point{coordinate}/Empty{coordinate}, Checks residuals.
+Validate finite inputs, axis abs(hypot norm-1)<=1e-12, |t|<=1e6. Never normalize; preserve accepted axis. Export validate_axis and validate_t to preserve gateway parse error precedence.
+a0=cos(t/2), a=-axis*sin(t/2). Reuse quaternion_matrix([a0,-a1,-a2,-a3]) because its basis is minus-i. Do not force old strict constructor/exp: drift and phase must remain unchanged. Compute actual matrix residuals.
+Chart helper -axis*cot(t/4), exact f64 multiples of4pi and nonrepresentable chart results are Pole. Slice sqrt((1-c)*(1+c)), |c|=1 Point, |c|>1 Empty. Bloch action U rho Udagger on +x. Preserve signed U/-U, negative/near-pole/subnormal t.
+No serde/IO/frontend/book dependencies. Independent Pauli matrix/Bloch tests; direct public client with fresh axis. Manual prompt-first implementation; no automated regeneration claim.

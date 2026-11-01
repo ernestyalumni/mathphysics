@@ -1,0 +1,36 @@
+{
+  "status": "pass",
+  "items": 61,
+  "primary_owned": 33,
+  "supporting_owned": 28,
+  "missing_owners": [],
+  "duplicate_owners": [],
+  "unknown_references": [],
+  "stable_ids_sources_statements_domains_preserved": true,
+  "all_unassessed_empty_evidence": true,
+  "definitions_bundle_items_consistent": true,
+  "coverage_consumer_map_matches_batches": true,
+  "repo_inputs_unchanged": true,
+  "batch_counts": {
+    "CH035-B01": {
+      "primary": 6,
+      "supporting": 4
+    },
+    "CH035-B02": {
+      "primary": 3,
+      "supporting": 3
+    },
+    "CH035-B03": {
+      "primary": 17,
+      "supporting": 10
+    },
+    "CH035-B04": {
+      "primary": 6,
+      "supporting": 9
+    },
+    "CH035-B05": {
+      "primary": 1,
+      "supporting": 2
+    }
+  }
+}

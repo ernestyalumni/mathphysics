@@ -1,0 +1,755 @@
+{
+  "chapter": 3,
+  "status": "initial_inventory_complete_with_explicit_source_issues; mathematical_certification_not_performed",
+  "pdf_path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+  "pdf_sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+  "pdf_pages_1based": [
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54
+  ],
+  "printed_pages": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "all_pages_text_checked": true,
+  "all_pages_visually_checked": true,
+  "source_review_meaning": "Direct page-image reading and comparison with text/parsed source for inventory; not proof or error-free transcription certification.",
+  "item_count": 102,
+  "namespace_counts": {
+    "equation": 50,
+    "prose": 23,
+    "definition": 10,
+    "example": 2,
+    "exercise": 17
+  },
+  "source_equations": [
+    {
+      "label": "3.1",
+      "item_id": "srednicki:ch003:equation:3.1",
+      "printed_page": 22,
+      "pdf_page": 46,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.2",
+      "item_id": "srednicki:ch003:equation:3.2",
+      "printed_page": 22,
+      "pdf_page": 46,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.3",
+      "item_id": "srednicki:ch003:equation:3.3",
+      "printed_page": 22,
+      "pdf_page": 46,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.4",
+      "item_id": "srednicki:ch003:equation:3.4",
+      "printed_page": 22,
+      "pdf_page": 46,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.5",
+      "item_id": "srednicki:ch003:equation:3.5",
+      "printed_page": 23,
+      "pdf_page": 47,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.6",
+      "item_id": "srednicki:ch003:equation:3.6",
+      "printed_page": 23,
+      "pdf_page": 47,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.7",
+      "item_id": "srednicki:ch003:equation:3.7",
+      "printed_page": 23,
+      "pdf_page": 47,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.8",
+      "item_id": "srednicki:ch003:equation:3.8",
+      "printed_page": 23,
+      "pdf_page": 47,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.9",
+      "item_id": "srednicki:ch003:equation:3.9",
+      "printed_page": 24,
+      "pdf_page": 48,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.10",
+      "item_id": "srednicki:ch003:equation:3.10",
+      "printed_page": 24,
+      "pdf_page": 48,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.11",
+      "item_id": "srednicki:ch003:equation:3.11",
+      "printed_page": 24,
+      "pdf_page": 48,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.12",
+      "item_id": "srednicki:ch003:equation:3.12",
+      "printed_page": 24,
+      "pdf_page": 48,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.13",
+      "item_id": "srednicki:ch003:equation:3.13",
+      "printed_page": 25,
+      "pdf_page": 49,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.14",
+      "item_id": "srednicki:ch003:equation:3.14",
+      "printed_page": 25,
+      "pdf_page": 49,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.15",
+      "item_id": "srednicki:ch003:equation:3.15",
+      "printed_page": 25,
+      "pdf_page": 49,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.16",
+      "item_id": "srednicki:ch003:equation:3.16",
+      "printed_page": 25,
+      "pdf_page": 49,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.17",
+      "item_id": "srednicki:ch003:equation:3.17",
+      "printed_page": 25,
+      "pdf_page": 49,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.18",
+      "item_id": "srednicki:ch003:equation:3.18",
+      "printed_page": 26,
+      "pdf_page": 50,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.19",
+      "item_id": "srednicki:ch003:equation:3.19",
+      "printed_page": 26,
+      "pdf_page": 50,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.20",
+      "item_id": "srednicki:ch003:equation:3.20",
+      "printed_page": 26,
+      "pdf_page": 50,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.21",
+      "item_id": "srednicki:ch003:equation:3.21",
+      "printed_page": 26,
+      "pdf_page": 50,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.22",
+      "item_id": "srednicki:ch003:equation:3.22",
+      "printed_page": 26,
+      "pdf_page": 50,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.23",
+      "item_id": "srednicki:ch003:equation:3.23",
+      "printed_page": 26,
+      "pdf_page": 50,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.24",
+      "item_id": "srednicki:ch003:equation:3.24",
+      "printed_page": 26,
+      "pdf_page": 50,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.25",
+      "item_id": "srednicki:ch003:equation:3.25",
+      "printed_page": 27,
+      "pdf_page": 51,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.26",
+      "item_id": "srednicki:ch003:equation:3.26",
+      "printed_page": 27,
+      "pdf_page": 51,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.27",
+      "item_id": "srednicki:ch003:equation:3.27",
+      "printed_page": 27,
+      "pdf_page": 51,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.28",
+      "item_id": "srednicki:ch003:equation:3.28",
+      "printed_page": 28,
+      "pdf_page": 52,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.29",
+      "item_id": "srednicki:ch003:equation:3.29",
+      "printed_page": 28,
+      "pdf_page": 52,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.30",
+      "item_id": "srednicki:ch003:equation:3.30",
+      "printed_page": 28,
+      "pdf_page": 52,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.31",
+      "item_id": "srednicki:ch003:equation:3.31",
+      "printed_page": 28,
+      "pdf_page": 52,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.32",
+      "item_id": "srednicki:ch003:equation:3.32",
+      "printed_page": 28,
+      "pdf_page": 52,
+      "occurs_inside_exercise": false
+    },
+    {
+      "label": "3.33",
+      "item_id": "srednicki:ch003:equation:3.33",
+      "printed_page": 29,
+      "pdf_page": 53,
+      "occurs_inside_exercise": true
+    },
+    {
+      "label": "3.34",
+      "item_id": "srednicki:ch003:equation:3.34",
+      "printed_page": 29,
+      "pdf_page": 53,
+      "occurs_inside_exercise": true
+    },
+    {
+      "label": "3.35",
+      "item_id": "srednicki:ch003:equation:3.35",
+      "printed_page": 29,
+      "pdf_page": 53,
+      "occurs_inside_exercise": true
+    },
+    {
+      "label": "3.36",
+      "item_id": "srednicki:ch003:equation:3.36",
+      "printed_page": 30,
+      "pdf_page": 54,
+      "occurs_inside_exercise": true
+    },
+    {
+      "label": "3.37",
+      "item_id": "srednicki:ch003:equation:3.37",
+      "printed_page": 30,
+      "pdf_page": 54,
+      "occurs_inside_exercise": true
+    },
+    {
+      "label": "3.38",
+      "item_id": "srednicki:ch003:equation:3.38",
+      "printed_page": 30,
+      "pdf_page": 54,
+      "occurs_inside_exercise": true
+    }
+  ],
+  "source_exercises": [
+    {
+      "label": "3.1",
+      "item_id": "srednicki:ch003:exercise:3.1",
+      "subparts": [],
+      "unlettered_goals": []
+    },
+    {
+      "label": "3.2",
+      "item_id": "srednicki:ch003:exercise:3.2",
+      "subparts": [],
+      "unlettered_goals": []
+    },
+    {
+      "label": "3.3",
+      "item_id": "srednicki:ch003:exercise:3.3",
+      "subparts": [],
+      "unlettered_goals": [
+        "mode-laws",
+        "state-law"
+      ]
+    },
+    {
+      "label": "3.4",
+      "item_id": "srednicki:ch003:exercise:3.4",
+      "subparts": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "unlettered_goals": []
+    },
+    {
+      "label": "3.5",
+      "item_id": "srednicki:ch003:exercise:3.5",
+      "subparts": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "unlettered_goals": []
+    }
+  ],
+  "lettered_subparts": 10,
+  "unlettered_derivation_steps": [
+    {
+      "id": "srednicki:ch003:equation:p022-eq3.1-position",
+      "within_numbered_equation": "3.1",
+      "printed_page": 22
+    },
+    {
+      "id": "srednicki:ch003:equation:p024-eq3.10-first-variation",
+      "within_numbered_equation": "3.10",
+      "printed_page": 24
+    },
+    {
+      "id": "srednicki:ch003:equation:p024-eq3.10-boundary",
+      "within_numbered_equation": "3.10",
+      "printed_page": 24
+    },
+    {
+      "id": "srednicki:ch003:equation:p025-eq3.13-dummy",
+      "within_numbered_equation": "3.13",
+      "printed_page": 25
+    },
+    {
+      "id": "srednicki:ch003:equation:p025-eq3.14-reality",
+      "within_numbered_equation": "3.14",
+      "printed_page": 25
+    },
+    {
+      "id": "srednicki:ch003:equation:p025-eq3.14-relabel",
+      "within_numbered_equation": "3.14",
+      "printed_page": 25
+    },
+    {
+      "id": "srednicki:ch003:equation:p026-eq3.20-field",
+      "within_numbered_equation": "3.20",
+      "printed_page": 26
+    },
+    {
+      "id": "srednicki:ch003:equation:p026-eq3.21-linear-combination",
+      "within_numbered_equation": "3.21",
+      "printed_page": 26
+    },
+    {
+      "id": "srednicki:ch003:equation:p027-eq3.26-mode-products",
+      "within_numbered_equation": "3.26",
+      "printed_page": 27
+    },
+    {
+      "id": "srednicki:ch003:equation:p027-eq3.26-spatial-integral",
+      "within_numbered_equation": "3.26",
+      "printed_page": 27
+    },
+    {
+      "id": "srednicki:ch003:equation:p027-eq3.26-prime-integral",
+      "within_numbered_equation": "3.26",
+      "printed_page": 27
+    },
+    {
+      "id": "srednicki:ch003:equation:p027-eq3.26-onshell-cancel",
+      "within_numbered_equation": "3.26",
+      "printed_page": 27
+    }
+  ],
+  "other_unnumbered_items": [
+    "srednicki:ch003:prose:p022-prerequisite",
+    "srednicki:ch003:definition:p022-bracket-statistics",
+    "srednicki:ch003:prose:p022-unit-restoration",
+    "srednicki:ch003:prose:p022-creation-momentum",
+    "srednicki:ch003:prose:p023-additive-spectrum",
+    "srednicki:ch003:prose:p023-relativistic-reconstruction",
+    "srednicki:ch003:definition:p023-real-scalar",
+    "srednicki:ch003:prose:p023-field-not-wavefunction",
+    "srednicki:ch003:definition:p024-action-density",
+    "srednicki:ch003:prose:p024-measure-action-invariance",
+    "srednicki:ch003:prose:p024-scalar-contractions",
+    "srednicki:ch003:prose:p024-fundamental-variation",
+    "srednicki:ch003:example:p024-plane-wave",
+    "srednicki:ch003:prose:p024-general-mode-scope",
+    "srednicki:ch003:prose:p024-negative-frequency",
+    "srednicki:ch003:definition:p025-reality-constraint",
+    "srednicki:ch003:definition:p025-lorentz-phase",
+    "srednicki:ch003:definition:p025-onshell",
+    "srednicki:ch003:prose:p025-positive-support",
+    "srednicki:ch003:prose:p026-weight-choice",
+    "srednicki:ch003:definition:p026-bidirectional-derivative",
+    "srednicki:ch003:prose:p026-mode-time-independence",
+    "srednicki:ch003:prose:p026-discrete-to-field-legendre",
+    "srednicki:ch003:prose:p027-ordered-quantization",
+    "srednicki:ch003:definition:p027-canonical-promotion",
+    "srednicki:ch003:definition:p028-adjoint",
+    "srednicki:ch003:prose:p028-volume-delta",
+    "srednicki:ch003:prose:p028-vacuum-divergence",
+    "srednicki:ch003:prose:p028-vacuum-subtraction",
+    "srednicki:ch003:prose:p028-mode-normalization",
+    "srednicki:ch003:prose:p029-mass-restoration-review",
+    "srednicki:ch003:prose:p029-fermion-obstruction",
+    "srednicki:ch003:example:p029-local-interactions",
+    "srednicki:ch003:prose:p029-next-chapter",
+    "srednicki:ch003:definition:p029-translation-setup"
+  ],
+  "diagrams": [],
+  "numbered_examples": [],
+  "unnumbered_examples": [
+    "srednicki:ch003:example:p024-plane-wave",
+    "srednicki:ch003:example:p029-local-interactions"
+  ],
+  "ocr_candidate_equation_tags": [
+    "3.1",
+    "3.2",
+    "3.3",
+    "3.4",
+    "3.5",
+    "3.6",
+    "3.7",
+    "3.8",
+    "3.9",
+    "3.10",
+    "3.11",
+    "3.12",
+    "3.13",
+    "3.14",
+    "3.15",
+    "3.16",
+    "3.17",
+    "3.18",
+    "3.19",
+    "3.20",
+    "3.21",
+    "3.22",
+    "3.23",
+    "3.24",
+    "3.25",
+    "3.26",
+    "3.27",
+    "3.28",
+    "3.29",
+    "3.30",
+    "3.31",
+    "3.32",
+    "3.33",
+    "3.34",
+    "3.36",
+    "3.37",
+    "3.38"
+  ],
+  "source_labels_absent_from_original_equation_records": [
+    "3.35"
+  ],
+  "ambiguities": [
+    {
+      "id": "mass-restoration",
+      "printed_page": 29,
+      "pdf_page": 53,
+      "status": "visually_checked_source_issue_unresolved",
+      "description": "Printed particle-mass restoration is hbar*c*m; dimensional consistency with inverse-length m requires review. No silent emendation."
+    },
+    {
+      "id": "cutoff-approximation",
+      "printed_page": 28,
+      "pdf_page": 52,
+      "status": "visually_checked_qualification_recorded",
+      "description": "(3.32) prints equality, but immediately assumes Lambda much greater than m; inventory explicitly treats massive result as leading asymptotic."
+    },
+    {
+      "id": "delta-roots",
+      "printed_page": 25,
+      "pdf_page": 49,
+      "status": "visually_checked_qualification_recorded",
+      "description": "Both k0 roots exist before theta selects positive support; only-zero prose is support-restricted."
+    },
+    {
+      "id": "translation-index",
+      "printed_page": 23,
+      "pdf_page": 47,
+      "status": "visually_checked_source_issue_unresolved",
+      "description": "Passive coordinate relation prints free index mu on x-bar and nu on additive translation a; scalar definition retained independently of this typographic inconsistency."
+    },
+    {
+      "id": "operator-domain",
+      "status": "mathematical_foundations_unreviewed",
+      "description": "No rigorous self-adjointness/common-domain, distribution-product or continuum-limit proof supplied by this inventory."
+    },
+    {
+      "id": "fermionic-occupation-versus-constant",
+      "printed_page": 29,
+      "pdf_page": 53,
+      "status": "unresolved_printed_claim_mathematical_refinement_pending",
+      "description": "Printed H=-Omega0*V is not an established cancellation identity. Occupation-dependent terms, a residual regulator-dependent c-number and subtraction must be separated; scalar field/mode CAR consistency remains unproved."
+    }
+  ],
+  "unreviewed_cases": [
+    "Mathematical proofs and exercise solutions; no computation or runtime coverage audited.",
+    "Formal operator/distribution domains and exact massive cutoff integral not independently derived.",
+    "F04 shared convention normalization and independent inventory review pending."
+  ],
+  "page_ledger": [
+    {
+      "pdf_page": 46,
+      "printed_page": 22,
+      "review": "visually_checked",
+      "image": "/tmp/mathphysics-wave1-ch003/images/ch003-046.png",
+      "image_sha256": "fcb07636791460348369515fba342cc32f89cf03c9217b59ab24910a2a12b897",
+      "item_ids": [
+        "srednicki:ch003:equation:3.1",
+        "srednicki:ch003:equation:3.2",
+        "srednicki:ch003:equation:3.3",
+        "srednicki:ch003:equation:3.4",
+        "srednicki:ch003:equation:p022-eq3.1-position",
+        "srednicki:ch003:prose:p022-prerequisite",
+        "srednicki:ch003:definition:p022-bracket-statistics",
+        "srednicki:ch003:prose:p022-unit-restoration",
+        "srednicki:ch003:prose:p022-creation-momentum"
+      ]
+    },
+    {
+      "pdf_page": 47,
+      "printed_page": 23,
+      "review": "visually_checked",
+      "image": "/tmp/mathphysics-wave1-ch003/images/ch003-047.png",
+      "image_sha256": "dcae0109bece45c81f56169a7de9b5d1ba77e89f962c26b5630096c119dd182e",
+      "item_ids": [
+        "srednicki:ch003:equation:3.5",
+        "srednicki:ch003:equation:3.6",
+        "srednicki:ch003:equation:3.7",
+        "srednicki:ch003:equation:3.8",
+        "srednicki:ch003:prose:p022-creation-momentum",
+        "srednicki:ch003:prose:p023-additive-spectrum",
+        "srednicki:ch003:prose:p023-relativistic-reconstruction",
+        "srednicki:ch003:definition:p023-real-scalar",
+        "srednicki:ch003:prose:p023-field-not-wavefunction",
+        "srednicki:ch003:definition:p024-action-density"
+      ]
+    },
+    {
+      "pdf_page": 48,
+      "printed_page": 24,
+      "review": "visually_checked",
+      "image": "/tmp/mathphysics-wave1-ch003/images/ch003-048.png",
+      "image_sha256": "03a81c2b3ca5aebab0b50e51aaaf3463ef9adf93a20c885f44c18fcaaf87e463",
+      "item_ids": [
+        "srednicki:ch003:equation:3.9",
+        "srednicki:ch003:equation:3.10",
+        "srednicki:ch003:equation:3.11",
+        "srednicki:ch003:equation:3.12",
+        "srednicki:ch003:equation:p024-eq3.10-first-variation",
+        "srednicki:ch003:equation:p024-eq3.10-boundary",
+        "srednicki:ch003:definition:p024-action-density",
+        "srednicki:ch003:prose:p024-measure-action-invariance",
+        "srednicki:ch003:prose:p024-scalar-contractions",
+        "srednicki:ch003:prose:p024-fundamental-variation",
+        "srednicki:ch003:example:p024-plane-wave",
+        "srednicki:ch003:prose:p024-general-mode-scope",
+        "srednicki:ch003:prose:p024-negative-frequency"
+      ]
+    },
+    {
+      "pdf_page": 49,
+      "printed_page": 25,
+      "review": "visually_checked",
+      "image": "/tmp/mathphysics-wave1-ch003/images/ch003-049.png",
+      "image_sha256": "5bf6cd28aa7b43dc61ffb27add2db6ec780bd111bc288749da4fa90dc1d0b6cd",
+      "item_ids": [
+        "srednicki:ch003:equation:3.13",
+        "srednicki:ch003:equation:3.14",
+        "srednicki:ch003:equation:3.15",
+        "srednicki:ch003:equation:3.16",
+        "srednicki:ch003:equation:3.17",
+        "srednicki:ch003:equation:p025-eq3.13-dummy",
+        "srednicki:ch003:equation:p025-eq3.14-reality",
+        "srednicki:ch003:equation:p025-eq3.14-relabel",
+        "srednicki:ch003:prose:p024-negative-frequency",
+        "srednicki:ch003:definition:p025-reality-constraint",
+        "srednicki:ch003:definition:p025-lorentz-phase",
+        "srednicki:ch003:definition:p025-onshell",
+        "srednicki:ch003:prose:p025-positive-support"
+      ]
+    },
+    {
+      "pdf_page": 50,
+      "printed_page": 26,
+      "review": "visually_checked",
+      "image": "/tmp/mathphysics-wave1-ch003/images/ch003-050.png",
+      "image_sha256": "f38087f783669c824a3b792fdd55199ebaf6172d0145def6f3b438aab4d99d21",
+      "item_ids": [
+        "srednicki:ch003:equation:3.18",
+        "srednicki:ch003:equation:3.19",
+        "srednicki:ch003:equation:3.20",
+        "srednicki:ch003:equation:3.21",
+        "srednicki:ch003:equation:3.22",
+        "srednicki:ch003:equation:3.23",
+        "srednicki:ch003:equation:3.24",
+        "srednicki:ch003:equation:p026-eq3.20-field",
+        "srednicki:ch003:equation:p026-eq3.21-linear-combination",
+        "srednicki:ch003:prose:p026-weight-choice",
+        "srednicki:ch003:definition:p026-bidirectional-derivative",
+        "srednicki:ch003:prose:p026-mode-time-independence",
+        "srednicki:ch003:prose:p026-discrete-to-field-legendre"
+      ]
+    },
+    {
+      "pdf_page": 51,
+      "printed_page": 27,
+      "review": "visually_checked",
+      "image": "/tmp/mathphysics-wave1-ch003/images/ch003-051.png",
+      "image_sha256": "0fe7f84fd7b06090b6b61481c4f2c444b29719baa7d134eb84acecb8af9a567b",
+      "item_ids": [
+        "srednicki:ch003:equation:3.25",
+        "srednicki:ch003:equation:3.26",
+        "srednicki:ch003:equation:3.27",
+        "srednicki:ch003:equation:p027-eq3.26-mode-products",
+        "srednicki:ch003:equation:p027-eq3.26-spatial-integral",
+        "srednicki:ch003:equation:p027-eq3.26-prime-integral",
+        "srednicki:ch003:equation:p027-eq3.26-onshell-cancel",
+        "srednicki:ch003:prose:p027-ordered-quantization",
+        "srednicki:ch003:definition:p027-canonical-promotion"
+      ]
+    },
+    {
+      "pdf_page": 52,
+      "printed_page": 28,
+      "review": "visually_checked",
+      "image": "/tmp/mathphysics-wave1-ch003/images/ch003-052.png",
+      "image_sha256": "c909318cece2475d1fc890913bc4bd35bd06e1643817021b3c2c48a58faddb59",
+      "item_ids": [
+        "srednicki:ch003:equation:3.28",
+        "srednicki:ch003:equation:3.29",
+        "srednicki:ch003:equation:3.30",
+        "srednicki:ch003:equation:3.31",
+        "srednicki:ch003:equation:3.32",
+        "srednicki:ch003:definition:p027-canonical-promotion",
+        "srednicki:ch003:definition:p028-adjoint",
+        "srednicki:ch003:prose:p028-volume-delta",
+        "srednicki:ch003:prose:p028-vacuum-divergence",
+        "srednicki:ch003:prose:p028-vacuum-subtraction",
+        "srednicki:ch003:prose:p028-mode-normalization"
+      ]
+    },
+    {
+      "pdf_page": 53,
+      "printed_page": 29,
+      "review": "visually_checked",
+      "image": "/tmp/mathphysics-wave1-ch003/images/ch003-053.png",
+      "image_sha256": "0cf6479c98b57b6582690c2ed354550a61575c789aa420c516a6cfd33742069b",
+      "item_ids": [
+        "srednicki:ch003:equation:3.33",
+        "srednicki:ch003:equation:3.34",
+        "srednicki:ch003:equation:3.35",
+        "srednicki:ch003:prose:p028-mode-normalization",
+        "srednicki:ch003:prose:p029-mass-restoration-review",
+        "srednicki:ch003:prose:p029-fermion-obstruction",
+        "srednicki:ch003:example:p029-local-interactions",
+        "srednicki:ch003:prose:p029-next-chapter",
+        "srednicki:ch003:definition:p029-translation-setup",
+        "srednicki:ch003:exercise:3.1",
+        "srednicki:ch003:exercise:3.2",
+        "srednicki:ch003:exercise:3.3",
+        "srednicki:ch003:exercise:3.4",
+        "srednicki:ch003:exercise:3.4.a",
+        "srednicki:ch003:exercise:3.4.b",
+        "srednicki:ch003:exercise:3.3.mode-laws",
+        "srednicki:ch003:exercise:3.3.state-law"
+      ]
+    },
+    {
+      "pdf_page": 54,
+      "printed_page": 30,
+      "review": "visually_checked",
+      "image": "/tmp/mathphysics-wave1-ch003/images/ch003-054.png",
+      "image_sha256": "775bcb7dbc64a938464705c6fe462385940aaa74915d629ba7c1d9f960d5ce16",
+      "item_ids": [
+        "srednicki:ch003:equation:3.36",
+        "srednicki:ch003:equation:3.37",
+        "srednicki:ch003:equation:3.38",
+        "srednicki:ch003:definition:p029-translation-setup",
+        "srednicki:ch003:exercise:3.4",
+        "srednicki:ch003:exercise:3.4.c",
+        "srednicki:ch003:exercise:3.4.d",
+        "srednicki:ch003:exercise:3.4.e",
+        "srednicki:ch003:exercise:3.5",
+        "srednicki:ch003:exercise:3.5.a",
+        "srednicki:ch003:exercise:3.5.b",
+        "srednicki:ch003:exercise:3.5.c",
+        "srednicki:ch003:exercise:3.5.d",
+        "srednicki:ch003:exercise:3.5.e"
+      ]
+    }
+  ],
+  "mathematical_refinement_status": "pending; C1-C3 metadata/wording refined without new source proof",
+  "independent_review_refinement": {
+    "review_path": "/tmp/mathphysics-wave1-baseline/CH003-REVIEW.md",
+    "review_sha256": "f97434696c9a8d989e3b19897bd3d39b742fe6e021addb1ce0d6bdf96f50412d",
+    "findings_addressed": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "item_count_preserved": 102,
+    "item_ids_and_order_preserved": true,
+    "source_locators_and_review_states_preserved": true,
+    "new_mathematical_proof": false
+  }
+}

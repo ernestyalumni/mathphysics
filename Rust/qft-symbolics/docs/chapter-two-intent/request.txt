@@ -1,0 +1,24 @@
+also like would it be reasonable capability for our Rust symoblic calculation to be able to do these problems??? Problems
+2.1) Verify that eq. (2.8) follows from eq. (2.3).
+2.2) Verify that eq. (2.14) follows from U (Λ)−1 U (Λ␂ )U (Λ) = U (Λ−1 Λ␂ Λ).
+2.3) Verify that eq. (2.16) follows from eq. (2.14).20
+Quantum Field Theory
+2.4) Verify that eq. (2.17) follows from eq. (2.16).
+2.5) Verify that eq. (2.18) follows from eq. (2.15).
+2.6) Verify that eq. (2.19) follows from eq. (2.18).
+2.7) What property should be attributed to the translation operator T (a) that could be used to prove eq. (2.20)?
+2.8) a) Let Λ = 1 + δω in eq. (2.26), and show that
+[ϕ(x), M μν ] = Lμν ϕ(x) ,(2.29)
+Lμν ≡ ␂i (xμ ∂ ν − xν ∂ μ ) .(2.30)
+where
+b) Show that [[ϕ(x), M μν ], M ρσ ] = Lμν Lρσ ϕ(x).
+c) Prove the Jacobi identity, [[A, B], C] + [[B, C], A] + [[C, A], B] = 0. Hint:
+write out all the commutators.
+d) Use your results from parts (b) and (c) to show that
+[ϕ(x), [M μν , M ρσ ]] = (Lμν Lρσ − Lρσ Lμν )ϕ(x) .
+(2.31)
+e) Simplify the right-hand side of eq. (2.31) as much as possible.
+f) Use your results from part (e) to verify eq. (2.16), up to the possibility of a term on the right-hand side that commutes with ϕ(x) and its derivatives.
+(Such a term, called a central charge, in fact does not arise for the Lorentz algebra.) also make sure we have an implementation of "Rapidity" from that chapter 2 that's reusable
+
+Scoped implementation: reusable rapidity, Lorentz metric/vector/boost operations; bounded ordered free algebra and first-order coefficient extraction; polynomial differential operators with product/chain-rule checks; Chapter2 fixtures for the listed derivational claims, preserving explicit assumptions and central-term ambiguity. MUST use Srednicki eta=(-,+,+,+), hbar/i=-i hbar, positive off-diagonal boost convention (2.37). MUST NOT write per-problem production solvers, assume commutativity for operators, infer unitarity from finite nonunitary Lorentz matrices, silently equate finite numerical witnesses with general operator proofs, or claim central extensions absent from these tests. Numeric and exact symbolic evidence must stay distinct. Mono notes remain theory-only and untouched; explanations and mappings near code. No provider calls, commits or pushes; manual PDD mode retained after prior external-provider approval rejection.

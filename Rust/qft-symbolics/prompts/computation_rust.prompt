@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/computation.rs only. Export Result/Error/Resource/Limits/Budget. Shared errors cover arithmetic overflow, zero denominator/division, invalid integer, missing variable, unsupported domain and typed resource exhaustion. Budget validates operations, terms,degree,coefficientbits,inputbytes,wordlength with checked counters and nonmutating failed charges. Zero limits are meaningful. Limits are deterministic algebra/input bounds, not wall-clock/OS-memory isolation or allocator-abort recovery. No IO/model calls. Manual adoption; full automatic regeneration unverified.

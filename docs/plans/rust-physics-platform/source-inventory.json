@@ -1,0 +1,87 @@
+{
+  "schema_version": "mathphysics.plan.sources.v1",
+  "date": "2026-10-31",
+  "sources": [
+    {
+      "role": "book_pdf",
+      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+      "bytes": 4213968,
+      "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+      "source_review": "not_established_by_hash"
+    },
+    {
+      "role": "merged_text",
+      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/merged.md",
+      "bytes": 1645977,
+      "sha256": "ea9a89803e217e7a25ee7e466af023bd8df28867e6add428aafcecc31acca36d",
+      "source_review": "not_established_by_hash"
+    },
+    {
+      "role": "resolved_text",
+      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/resolved.md",
+      "bytes": 1600185,
+      "sha256": "98c3ae6f4f278701d15a164290c7c6dff071f38ef7922aa5808a6447625791f5",
+      "source_review": "not_established_by_hash"
+    },
+    {
+      "role": "equation_records",
+      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/equations_resolved.json",
+      "bytes": 1308290,
+      "sha256": "8438cff68f74fc52535a11222de46ef926f44053ef68916e0280668f50ae35da",
+      "source_review": "not_established_by_hash"
+    },
+    {
+      "role": "original_equation_records",
+      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/equations.json",
+      "bytes": 1016515,
+      "sha256": "1a6dfcc3fd2f61fd854cd9dcab16191d5f509813b99ea1c994221db54f7f90c9",
+      "source_review": "not_established_by_hash"
+    },
+    {
+      "role": "combined_verdicts",
+      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/combined_verdicts.json",
+      "bytes": 268074,
+      "sha256": "39a1901320e9899e89c825109d3c8e54eea239589f67accf3036ce7360ffc172",
+      "source_review": "not_established_by_hash"
+    },
+    {
+      "role": "solution_tex",
+      "path": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/LaTeX_and_pdfs/Srednicki_QFT.tex",
+      "bytes": 493509,
+      "sha256": "a2cbbb4fbb4b8276566f21192847c0eb5ec1f22db3a67adfc95181848db0085f",
+      "source_review": "not_established_by_hash"
+    },
+    {
+      "role": "dgdt_tex",
+      "path": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/LaTeX_and_pdfs/DGDT_dump.tex",
+      "bytes": 582444,
+      "sha256": "01a1e97250cd8a268713a8e9fa14d63f77bb0cc93050fdf14274e51874f71049",
+      "source_review": "not_established_by_hash"
+    },
+    {
+      "role": "dgdt_pdf",
+      "path": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/LaTeX_and_pdfs/DGDT_dump.pdf",
+      "bytes": 1257204,
+      "sha256": "5c27bc73d5a4fd7f914974eddf9c2e44a8111a4f13847a35357da3211b8c48a6",
+      "source_review": "not_established_by_hash"
+    },
+    {
+      "role": "existing_corpus",
+      "path": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/qft-symbolics/corpus.json",
+      "bytes": 10709,
+      "sha256": "2483092534ea9d4e1043f6b9a20d51bb3916880766b37131ae84f1cc1abaf562",
+      "source_review": "not_established_by_hash"
+    }
+  ],
+  "chapter_count": 97,
+  "equation_candidate_records": 3011,
+  "plausible_chapter_tag_records": 2939,
+  "existing_selected_exercise_entries": 13,
+  "ocr_status_counts": {
+    "agree": 1366,
+    "marker_only": 651,
+    "conflict": 766,
+    "nougat_only": 228
+  },
+  "warning": "Candidate records are not source-certified statements, unique equations, complete book coverage, or implemented tests."
+}

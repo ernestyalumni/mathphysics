@@ -1,0 +1,100 @@
+version: "1.0"
+contexts:
+  computation:
+    paths: ["prompts/computation_rust.prompt", "src/computation.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/computation.rs
+      test_output_path: tests/
+      default_language: rust
+  coefficient:
+    paths: ["prompts/coefficient_rust.prompt", "src/coefficient.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/coefficient.rs
+      test_output_path: tests/
+      default_language: rust
+  scalar:
+    paths: ["prompts/scalar_rust.prompt", "src/scalar.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/scalar.rs
+      test_output_path: tests/
+      default_language: rust
+  exact:
+    paths: ["prompts/exact_rust.prompt", "src/exact.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/exact.rs
+      test_output_path: tests/
+      default_language: rust
+  polynomial:
+    paths: ["prompts/polynomial_rust.prompt", "src/polynomial.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/polynomial.rs
+      test_output_path: tests/
+      default_language: rust
+  clifford:
+    paths: ["prompts/clifford_rust.prompt", "src/clifford.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/clifford.rs
+      test_output_path: tests/
+      default_language: rust
+  main:
+    paths: ["prompts/main_rust.prompt", "src/main.rs", "tests/cli.rs"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/main.rs
+      test_output_path: tests/
+      default_language: rust
+  checked:
+    paths: ["prompts/checked_rust.prompt", "src/checked.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/checked.rs
+      test_output_path: tests/
+      default_language: rust
+  expression:
+    paths: ["prompts/expression_rust.prompt", "src/expression.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/expression.rs
+      test_output_path: tests/
+      default_language: rust
+  conventions:
+    paths: ["prompts/conventions_rust.prompt", "src/conventions.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/conventions.rs
+      test_output_path: tests/
+      default_language: rust
+  replay:
+    paths: ["prompts/replay_rust.prompt", "src/replay.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/replay.rs
+      test_output_path: tests/
+      default_language: rust
+  relativity:
+    paths: ["prompts/relativity_rust.prompt", "src/relativity.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/relativity.rs
+      test_output_path: tests/
+      default_language: rust
+  ordered:
+    paths: ["prompts/ordered_rust.prompt", "src/ordered.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/ordered.rs
+      test_output_path: tests/
+      default_language: rust
+  differential:
+    paths: ["prompts/differential_rust.prompt", "src/differential.rs", "tests/"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/differential.rs
+      test_output_path: tests/
+      default_language: rust

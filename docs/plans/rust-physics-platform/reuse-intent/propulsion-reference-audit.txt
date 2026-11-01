@@ -1,0 +1,38 @@
+Read-only Propulsion source audit for parent story/architecture guidance
+Root: /home/propdev/.openclaw/workspace/workspace2/repos/Propulsion
+HEAD 95249d8, 2026-10-27. Initial git status --short empty. No repository changes, builds, network, credentials or tests run. No AGENTS.md found at workspace2, workspace2/repos, repository root or scoped Cosmos/Stunticons search; supplied workspace instructions read. Dates are Git author dates (%cs), not mtimes. Listed commits are latest path changes, not necessarily line introductions. Recommendations below are architectural inferences.
+
+4 PATTERNS TO BORROW
+
+1. Capability/domain libraries with explicit dependency direction.
+Cosmos/Rust/Cargo.toml:1-3 declares numerical, propulsion, dynamics and web workspace members [bd66277c5606c07f97c50821bf9c4611abcdfc88, 2026-10-25].
+Cosmos/Rust/cosmos_dynamics/Cargo.toml:5-9 explicitly depends on cosmos_numerical [9650005610cc2006a7ab0c41aea6b9bcec9bc69e, 2026-10-25].
+Guidance: reusable mathphysics algebra/numerics/domain kernels; chapter examples and checks consume them. Srednicki subsection IDs belong in examples/evidence rather than determining public API boundaries. No particular crate count follows from this evidence.
+
+2. Shared driver plus interchangeable algorithms, using Rust composition.
+Cosmos/Rust/cosmos_numerical/src/ode/runge_kutta/embedded.rs:55-103 defines Interpolant, Trial and EmbeddedPair with an associated interpolant and FnMut RHS; :105-128 separates end derivative, stiffness and interpolation operations [bd66277c5606c07f97c50821bf9c4611abcdfc88, 2026-10-25].
+C++ analogue Cosmos/Source/Numerical/ODE/ODEInt.h:14-29,45-56,75-77 separates templated driver, derivative and stepper [b3c3b941c170d2fcbfe35b7ca669b8272badbb83, 2026-03-07].
+Guidance: borrow responsibility boundaries; use traits, associated types and composition rather than transplanting C++ inheritance.
+
+3. Explicit mathematical conventions and representation adapters.
+Cosmos/QuaternionConventionLab/cpp/quaternion.hpp:18-34 states Hamilton/scalar-first/active-body-to-world conventions and defines scalar-last representation.
+Rust analogue Cosmos/QuaternionConventionLab/rust/src/lib.rs:1-4,25-39,143-160; tests :194-246 check antipodal rotation equivalence, positive-z quarter-turn x-to-y and scalar-layout round trip.
+Both files: 999ca8c02a385d17a37ef98936126fdf55103940, 2026-08-17.
+Guidance: conventions belong on reusable types/operations and explicit adapters; exercise them with physically meaningful assertions.
+
+4. Mathematical checks plus stored reference comparisons.
+Cosmos/Rust/cosmos_numerical/src/ode/runge_kutta/order_conditions.rs:1-8,60-89 computes rooted-tree order-condition residuals.
+Cosmos/Rust/cosmos_numerical/src/ode/runge_kutta/hairer_reference_tests.rs:213-250 compares times, states, dense output, outcome and evaluation/step counters; :254-281 loads stored fixtures covering several tolerances, backward integration, componentwise tolerances and stiffness.
+Both files: 9650005610cc2006a7ab0c41aea6b9bcec9bc69e, 2026-10-25.
+Guidance: require identity/invariant checks and independent reference cases. Retain textbook identifiers in evidence without duplicating kernels for each subsection. Reference provenance described in comments was read, not independently regenerated/validated.
+
+2 CAUTIONS
+
+1. Existing structure/test names do not establish API quality or correctness.
+Stunticons/wildrider/src/algebra/modules/vectors/quaternions.rs:39-47 indexes data[index_value - 1], so index zero cannot access the first element; :115-133 contains only a dot-product test in this file [d85a67cc143757216af810f3c8fd7651f5f79298, 2023-02-17].
+Cosmos/Source/UnitTests/Numerical/ODE/ODEInt_tests.cpp:51-54 has a Constructs test containing only SUCCEED() [b3c3b941c170d2fcbfe35b7ca669b8272badbb83, 2026-03-07].
+Require behavioral and invalid-input evidence; do not infer whole-repository test coverage from these inspected files.
+
+2. Preserve domains and portability assumptions.
+QuaternionConventionLab Rust lib.rs (full path above):14-16,53-55 asserts nonzero norm; :163-170 deliberately identifies q and -q in SO(3) attitude distance [999ca8c02a385d17a37ef98936126fdf55103940, 2026-08-17]. Do not turn that into SU(2) element equality; consider fallible operations for public research-library input.
+Hairer reference tests (full path above):30-35 require exact agreement on Linux x86_64 and 1e-9 elsewhere; :10-19 explains libm and operation-order assumptions [9650005610cc2006a7ab0c41aea6b9bcec9bc69e, 2026-10-25]. Qualify numerical evidence by platform/tolerance. Borrow architecture and evidence strategy, not code or bitwise acceptance rules blindly.

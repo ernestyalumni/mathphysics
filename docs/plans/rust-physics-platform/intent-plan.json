@@ -1,0 +1,76 @@
+{
+  "acceptance": {
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "sentence": "As a user story or user of mathphysics (please help me create this user story), I want to have the same and / or even better AI functions, tools, AI tools, AI agents that would help validate...",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": "Python/rotations/architecture.json",
+      "matched_terms": [
+        "functions",
+        "public",
+        "python",
+        "validate"
+      ],
+      "output_path": "rotations.py",
+      "product_area": "Standard-library SO(3), Euler, Hamilton quaternion and Goldstein Cayley\u2013Klein conversions with strict validation.",
+      "prompt_path": "Python/rotations/prompts/rotations_python.prompt",
+      "score": 11
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "rust-mathematical-physics-tools-and-complete-sre-5f45bd76",
+  "original_request": "As a user story or user of mathphysics (please help me create this user story), I want to have the same and / or even better AI functions, tools, AI tools, AI agents that would help validate propositions, theorems, and even just general work, just as much as the math community uses lean. https://github.com/leanprover/lean4 I'll show you where I cloned it for your reference once it's done. And while the mathematical physics community uses Cadabra2 (you should have the docker container for it somewhere, here: cadabra2-ubuntu:24.04                                              48e6f90b4716       4.25GB             0B        \n and sympy and Sage math and you have a copy here: /media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage As a user we don't want to use C++. We don't want to use Python. We want to use only Rust if possible. And then C++. and then Python. But Rust primarily. and for front end just Typescript. and then as much of the GPU as possible, consider CUDA C++ for graphics (or maybe even maissively paralel symbolic computation!). So while the math community in open AI embraces using lean4 as an AI tool, AI mcp, etc. for their agents, and running multiple agents in parallel, we'll rely on the available API calls, available AI harnesses we're using from hermes-agent, to PI, along with the ones available for claude code, codex, grok build, and in mathphysics repo we want to build our mostly or exclusively Rust versions of cadabra2, sage math, sympy as we go. Next user story: I want to be able to have \"implemented\" all the mathematical equations and physics, etc. shown in Quantum Field Theory by Mark Srednicki. We've already parsed out the book. I've already worked out almost all the problems and solutions. in /home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/LaTeX_and_pdfs this: -rw-rw-r--  1 propdev propdev  493509 Feb  9  2014  Srednicki_QFT.tex\n and some QFT and differential geometry that's related here: -rw-rw-r--  1 propdev propdev 1257204 Feb 18  2026  DGDT_dump.pdf\n-rw-rw-r--  1 propdev propdev  582444 Feb 18  2026  DGDT_dump.tex\n and parsed book here: /home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory while I read it from here: /home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf but as a user, I want to be able to (oh keep in mind Mathematica as well, but like that's proprietary and we wanna be able to recreate anything Mathematica features or abilitie as well) to recreate all those smyoblic calculations derivations, etc, not just the problems but anything discussed in MArk Srednicki's book; I wanna be able to have computed by my choice of AI agent, AI harness, equipped with our Rust written functions in mathphysics, that can either draw upon and recreate functionality from, including these (don't exclude yourself to just these) Maple, Mathematica, sage math, sympy, cadabra 2, etc. or we'll create our own. Please go through the whole book and create these tools and capability please. End of user story. Make a plan to do this so we can break  it out into tasks for subagents and other AI harnesses that i'm running please.",
+  "original_request_sha256": "5f45bd76de7bdd36aba7749bf4a8db825d07fbe4eba125e51d5c5fd871a63d17",
+  "project": {
+    "adoption_scenario": "existing_pdd_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      "Python/rotations/.pddrc",
+      "Python/rotations/architecture.json",
+      "1 prompt file(s)"
+    ],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "scope_kind": "repository"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [],
+    "must_preserve": [
+      "and sympy and Sage math and you have a copy here: /media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage As a user we don't want to use C++.",
+      "We don't want to use Python.",
+      "and parsed book here: /home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory while I read it from here: /home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf but as a user, I want to be able to (oh keep in mind Mathematica as well, but like that's proprietary and we wanna be able to recreate anything Mathematica features or abilitie as well) to recreate all those smyoblic calculations derivations, etc, not just the problems but anything discussed in MArk Srednicki's book; I wanna be able to have computed by my choice of AI agent, AI harness, equipped with our Rust written functions in mathphysics, that can either draw upon and recreate functionality from, including these (don't exclude yourself to just these) Maple, Mathematica, sage math, sympy, cadabra 2, etc."
+    ],
+    "open_decisions": [
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "recommended": true
+  },
+  "title": "Rust mathematical physics tools and complete Srednicki coverage",
+  "warnings": []
+}

@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Outputsrc/main.rs. Preserveexistingdemo/schouten/wrong-sign/tensor-cases/gamma-trace/smga-fixture stdoutJSON/exitcontracts andlegacycatchboundary. Add reusable rational CLI taking operationadd/sub/mul/div andtwo numerator/denominatordecimalpairs; useexactBigQ andsharedBudget, outputdecimalrational JSONcomputed versus typedinvalid/inconclusiveerror. Add gamma-trace-checked usingnewfalliblelegacycoefficient trace; typedresourcefailures neverPASS. No model/network/Python, no arbitraryexpressionparserclaim. Bigarithmetic precisionopt-in, legacycommands retainboundedbehavior. No userargs panic; outputerrorcode/resource/limit/required andformal_proof=false ontypedpaths.

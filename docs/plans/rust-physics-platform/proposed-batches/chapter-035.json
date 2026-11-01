@@ -1,0 +1,693 @@
+{
+  "status": "proposal_only_not_started",
+  "batches": [
+    {
+      "id": "CH035-B01",
+      "scope": "Typed epsilon raising/lowering and sigma/barsigma components",
+      "item_ids": [
+        "srednicki:ch035:equation:35.1",
+        "srednicki:ch035:equation:35.2",
+        "srednicki:ch035:equation:35.3",
+        "srednicki:ch035:equation:35.19",
+        "srednicki:ch035:equation:35.20",
+        "srednicki:ch035:exercise:35.1"
+      ],
+      "depends_on": [
+        "F01-reviewed-contract",
+        "F04-reviewed-conventions",
+        "F05-bounded-adoption"
+      ],
+      "capabilities": [
+        "exact Q(i) arithmetic",
+        "typed dotted/undotted slots",
+        "ordered epsilon contraction"
+      ],
+      "negative_controls": [
+        "flip epsilon_12 sign",
+        "contract epsilon first slot",
+        "transpose sigma2 without conjugation"
+      ],
+      "supporting_item_ids": [
+        "srednicki:ch035:prose:p216-prerequisite",
+        "srednicki:ch035:definition:p216-raise-lower-second-slot",
+        "srednicki:ch035:definition:p218-suppressed-orders",
+        "srednicki:ch035:prose:p220-ex35.1-hint"
+      ],
+      "implementation_boundary": "Reuse audited library operations or specify a generic extension once; item IDs/expected results remain validation data."
+    },
+    {
+      "id": "CH035-B02",
+      "scope": "Sigma completeness and invariant-tensor contractions",
+      "item_ids": [
+        "srednicki:ch035:equation:35.4",
+        "srednicki:ch035:equation:35.5",
+        "srednicki:ch035:exercise:35.4"
+      ],
+      "depends_on": [
+        "CH035-B01"
+      ],
+      "capabilities": [
+        "explicit Lorentz sums with eta signs",
+        "free-signature validation",
+        "component and indexed certificate cross-check"
+      ],
+      "negative_controls": [
+        "mostly-minus metric substitution",
+        "omit factor -2",
+        "contract dotted with undotted slot"
+      ],
+      "supporting_item_ids": [
+        "srednicki:ch035:prose:p216-invariant-contraction",
+        "srednicki:ch035:prose:p216-footnote-compatibility",
+        "srednicki:ch035:prose:p217-vector-proportionality"
+      ],
+      "implementation_boundary": "Reuse audited library operations or specify a generic extension once; item IDs/expected results remain validation data."
+    },
+    {
+      "id": "CH035-B03",
+      "scope": "Infinitesimal invariance and Weyl generator reconstruction",
+      "item_ids": [
+        "srednicki:ch035:equation:35.6",
+        "srednicki:ch035:equation:35.7",
+        "srednicki:ch035:equation:35.8",
+        "srednicki:ch035:equation:35.9",
+        "srednicki:ch035:equation:35.10",
+        "srednicki:ch035:equation:35.11",
+        "srednicki:ch035:equation:35.12",
+        "srednicki:ch035:equation:35.13",
+        "srednicki:ch035:equation:35.14",
+        "srednicki:ch035:equation:35.15",
+        "srednicki:ch035:equation:35.16",
+        "srednicki:ch035:equation:35.17",
+        "srednicki:ch035:equation:35.18",
+        "srednicki:ch035:equation:35.21",
+        "srednicki:ch035:equation:35.22",
+        "srednicki:ch035:exercise:35.2",
+        "srednicki:ch035:exercise:35.3"
+      ],
+      "depends_on": [
+        "CH035-B01",
+        "CH035-B02",
+        "CH034-reviewed-generator-conventions"
+      ],
+      "capabilities": [
+        "linear infinitesimal expansion",
+        "symmetry contraction",
+        "variance-aware matrix representation conversion"
+      ],
+      "negative_controls": [
+        "wrong i/4 sign",
+        "compare S_R mismatched variances",
+        "omit i/2 double-counting convention"
+      ],
+      "supporting_item_ids": [
+        "srednicki:ch035:prose:p217-generator-symmetry-left",
+        "srednicki:ch035:prose:p217-generator-symmetry-right",
+        "srednicki:ch035:equation:p217-eq35.8-unlowered-step",
+        "srednicki:ch035:equation:p217-infinitesimal-vector",
+        "srednicki:ch035:prose:p217-extract-generator-coefficient",
+        "srednicki:ch035:equation:p218-epsilon-symmetric-zero",
+        "srednicki:ch035:equation:p218-epsilon-trace-minus-two",
+        "srednicki:ch035:prose:p218-project-left-generator",
+        "srednicki:ch035:prose:p218-project-right-generator",
+        "srednicki:ch035:prose:p218-generator-slots"
+      ],
+      "implementation_boundary": "Reuse audited library operations or specify a generic extension once; item IDs/expected results remain validation data."
+    },
+    {
+      "id": "CH035-B04",
+      "scope": "Grassmann spinor contractions and adjoints",
+      "item_ids": [
+        "srednicki:ch035:equation:35.23",
+        "srednicki:ch035:equation:35.24",
+        "srednicki:ch035:equation:35.25",
+        "srednicki:ch035:equation:35.26",
+        "srednicki:ch035:equation:35.27",
+        "srednicki:ch035:equation:35.29"
+      ],
+      "depends_on": [
+        "CH035-B01",
+        "F04-reviewed-statistics-domain"
+      ],
+      "capabilities": [
+        "graded ordered products",
+        "antilinear order-reversing adjoints",
+        "dummy-index hygiene"
+      ],
+      "negative_controls": [
+        "commuting-spinor substitution",
+        "extra sign on adjoint order reversal",
+        "wrong dotted contraction order"
+      ],
+      "supporting_item_ids": [
+        "srednicki:ch035:prose:p218-statistics-premise",
+        "srednicki:ch035:equation:p219-eq35.25-field-swap",
+        "srednicki:ch035:equation:p219-eq35.25-epsilon-swap",
+        "srednicki:ch035:equation:p219-eq35.26-adjoint-order",
+        "srednicki:ch035:prose:p219-dagger-bilinear-symmetry",
+        "srednicki:ch035:definition:p219-chirality-dagger",
+        "srednicki:ch035:equation:p219-eq35.29-type-conjugation",
+        "srednicki:ch035:equation:p219-eq35.29-hermiticity",
+        "srednicki:ch035:prose:p219-barsigma-hermitian"
+      ],
+      "implementation_boundary": "Reuse audited library operations or specify a generic extension once; item IDs/expected results remain validation data."
+    },
+    {
+      "id": "CH035-B05",
+      "scope": "Mixed bilinear Lorentz-vector covariance",
+      "item_ids": [
+        "srednicki:ch035:equation:35.28"
+      ],
+      "depends_on": [
+        "CH035-B03",
+        "CH035-B04",
+        "CH034-reviewed-field-transformations"
+      ],
+      "capabilities": [
+        "finite/infinitesimal field transformations",
+        "explicit spacetime argument substitution",
+        "formal local composite typing"
+      ],
+      "negative_controls": [
+        "omit Lambda^-1 x",
+        "use scalar transformation for vector bilinear",
+        "swap R variance without epsilons"
+      ],
+      "supporting_item_ids": [
+        "srednicki:ch035:example:p219-vector-bilinear",
+        "srednicki:ch035:prose:p219-vector-arguments"
+      ],
+      "implementation_boundary": "Reuse audited library operations or specify a generic extension once; item IDs/expected results remain validation data."
+    }
+  ],
+  "limits": "Shared-task names are dependency requirements, not claims of reviewed completion or authority to implement.",
+  "item_consumer_map": {
+    "srednicki:ch035:equation:35.1": {
+      "owner_batch_id": "CH035-B01",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B01",
+        "CH035-B02",
+        "CH035-B03",
+        "CH035-B04"
+      ]
+    },
+    "srednicki:ch035:equation:35.2": {
+      "owner_batch_id": "CH035-B01",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B01",
+        "CH035-B02",
+        "CH035-B03",
+        "CH035-B04"
+      ]
+    },
+    "srednicki:ch035:equation:35.3": {
+      "owner_batch_id": "CH035-B01",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B01",
+        "CH035-B02",
+        "CH035-B03",
+        "CH035-B04"
+      ]
+    },
+    "srednicki:ch035:equation:35.19": {
+      "owner_batch_id": "CH035-B01",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B01",
+        "CH035-B02",
+        "CH035-B03",
+        "CH035-B04"
+      ]
+    },
+    "srednicki:ch035:equation:35.20": {
+      "owner_batch_id": "CH035-B01",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B01",
+        "CH035-B02",
+        "CH035-B03",
+        "CH035-B04"
+      ]
+    },
+    "srednicki:ch035:exercise:35.1": {
+      "owner_batch_id": "CH035-B01",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B01",
+        "CH035-B02",
+        "CH035-B03",
+        "CH035-B04"
+      ]
+    },
+    "srednicki:ch035:prose:p216-prerequisite": {
+      "owner_batch_id": "CH035-B01",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B01",
+        "CH035-B02",
+        "CH035-B03",
+        "CH035-B04"
+      ]
+    },
+    "srednicki:ch035:definition:p216-raise-lower-second-slot": {
+      "owner_batch_id": "CH035-B01",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B01",
+        "CH035-B02",
+        "CH035-B03",
+        "CH035-B04"
+      ]
+    },
+    "srednicki:ch035:definition:p218-suppressed-orders": {
+      "owner_batch_id": "CH035-B01",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B01",
+        "CH035-B02",
+        "CH035-B03",
+        "CH035-B04"
+      ]
+    },
+    "srednicki:ch035:prose:p220-ex35.1-hint": {
+      "owner_batch_id": "CH035-B01",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B01",
+        "CH035-B02",
+        "CH035-B03",
+        "CH035-B04"
+      ]
+    },
+    "srednicki:ch035:equation:35.4": {
+      "owner_batch_id": "CH035-B02",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B02",
+        "CH035-B03"
+      ]
+    },
+    "srednicki:ch035:equation:35.5": {
+      "owner_batch_id": "CH035-B02",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B02",
+        "CH035-B03"
+      ]
+    },
+    "srednicki:ch035:exercise:35.4": {
+      "owner_batch_id": "CH035-B02",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B02",
+        "CH035-B03"
+      ]
+    },
+    "srednicki:ch035:prose:p216-invariant-contraction": {
+      "owner_batch_id": "CH035-B02",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B02",
+        "CH035-B03"
+      ]
+    },
+    "srednicki:ch035:prose:p216-footnote-compatibility": {
+      "owner_batch_id": "CH035-B02",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B02",
+        "CH035-B03"
+      ]
+    },
+    "srednicki:ch035:prose:p217-vector-proportionality": {
+      "owner_batch_id": "CH035-B02",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B02",
+        "CH035-B03"
+      ]
+    },
+    "srednicki:ch035:equation:35.6": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.7": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.8": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.9": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.10": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.11": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.12": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.13": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.14": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.15": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.16": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.17": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.18": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.21": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.22": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:exercise:35.2": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:exercise:35.3": {
+      "owner_batch_id": "CH035-B03",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:prose:p217-generator-symmetry-left": {
+      "owner_batch_id": "CH035-B03",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:prose:p217-generator-symmetry-right": {
+      "owner_batch_id": "CH035-B03",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:p217-eq35.8-unlowered-step": {
+      "owner_batch_id": "CH035-B03",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:p217-infinitesimal-vector": {
+      "owner_batch_id": "CH035-B03",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:prose:p217-extract-generator-coefficient": {
+      "owner_batch_id": "CH035-B03",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:p218-epsilon-symmetric-zero": {
+      "owner_batch_id": "CH035-B03",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:p218-epsilon-trace-minus-two": {
+      "owner_batch_id": "CH035-B03",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:prose:p218-project-left-generator": {
+      "owner_batch_id": "CH035-B03",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:prose:p218-project-right-generator": {
+      "owner_batch_id": "CH035-B03",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:prose:p218-generator-slots": {
+      "owner_batch_id": "CH035-B03",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B03",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.23": {
+      "owner_batch_id": "CH035-B04",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.24": {
+      "owner_batch_id": "CH035-B04",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.25": {
+      "owner_batch_id": "CH035-B04",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.26": {
+      "owner_batch_id": "CH035-B04",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.27": {
+      "owner_batch_id": "CH035-B04",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.29": {
+      "owner_batch_id": "CH035-B04",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:prose:p218-statistics-premise": {
+      "owner_batch_id": "CH035-B04",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:p219-eq35.25-field-swap": {
+      "owner_batch_id": "CH035-B04",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:p219-eq35.25-epsilon-swap": {
+      "owner_batch_id": "CH035-B04",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:p219-eq35.26-adjoint-order": {
+      "owner_batch_id": "CH035-B04",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:prose:p219-dagger-bilinear-symmetry": {
+      "owner_batch_id": "CH035-B04",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:definition:p219-chirality-dagger": {
+      "owner_batch_id": "CH035-B04",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:p219-eq35.29-type-conjugation": {
+      "owner_batch_id": "CH035-B04",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:p219-eq35.29-hermiticity": {
+      "owner_batch_id": "CH035-B04",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:prose:p219-barsigma-hermitian": {
+      "owner_batch_id": "CH035-B04",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B04",
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:equation:35.28": {
+      "owner_batch_id": "CH035-B05",
+      "role": "primary",
+      "consumer_batch_ids": [
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:example:p219-vector-bilinear": {
+      "owner_batch_id": "CH035-B05",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B05"
+      ]
+    },
+    "srednicki:ch035:prose:p219-vector-arguments": {
+      "owner_batch_id": "CH035-B05",
+      "role": "supporting",
+      "consumer_batch_ids": [
+        "CH035-B05"
+      ]
+    }
+  },
+  "ownership_assurance": "Planning ownership and prerequisite consumption only; no implementation, proof or successful execution claim.",
+  "library_policy": "CH035 IDs group source/acceptance work. Implement capabilities once in shared Rust APIs; chapter fixture wrappers do not own solvers."
+}

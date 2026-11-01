@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mathphysics.local/contracts/v1/bundle.schema.json",
+  "title": "Mathematical metadata bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "mathphysics.contracts.v1"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "$ref": "definitions.schema.json#/$defs/definition"
+      },
+      "maxItems": 10000
+    },
+    "conventions": {
+      "type": "array",
+      "items": {
+        "$ref": "definitions.schema.json#/$defs/definition"
+      },
+      "maxItems": 10000
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "math-item.schema.json"
+      },
+      "maxItems": 10000
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "evidence.schema.json"
+      },
+      "maxItems": 10000
+    }
+  },
+  "required": [
+    "schema_version",
+    "assumptions",
+    "conventions",
+    "items",
+    "evidence"
+  ],
+  "$comment": "Rust checks aggregate record count <= 10000 and serialized input <= 1048576 bytes, registries, identity equality and backlinks."
+}

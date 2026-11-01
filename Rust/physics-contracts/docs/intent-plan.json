@@ -1,0 +1,65 @@
+{
+  "acceptance": {
+    "reasons": [
+      "user-visible behavior",
+      "critical boundary"
+    ],
+    "sentence": "Implement the first shared contract layer from the approved mathphysics Rust platform plan (F01).",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "rust-mathematical-item-and-evidence-contracts-9a1b05f4",
+  "original_request": "Implement the first shared contract layer from the approved mathphysics Rust platform plan (F01). Use Rust for a typed library and a JSON CLI that validate book-item, assumption, convention and evidence metadata. The user approved starting the complete plan and spawning subagents on 2026-10-31.\n\nThe implementation MUST keep equation, exercise, prose, diagram, example, definition and theorem identifiers distinct, including when printed numbers match. It MUST require explicit source digests and locators, stated domains, assumption and convention references, and separate implementation and evidence states. It MUST reject unknown references, invalid hashes, malformed IDs, duplicate identifiers, missing sources, mismatched statement/operation links, unsupported schema versions and inconsistent numerical/formal evidence metadata. It MUST use bounded inputs and return structured invalid-input errors rather than panic or silently ignore unknown fields. It MUST NOT treat successful metadata validation as a mathematical proof, a verified source transcription, a successful computation, or a claim that any evidence artifact was replayed. The output MUST state that assurance boundary explicitly. Frontend work and existing symbolic engines are out of scope for this first unit. Core runtime MUST be Rust with no Python, C++, external CAS or model invocation required. Preserve existing mathphysics code and source corpora.\n\nFor example, srednicki:ch035:equation:35.1 and srednicki:ch035:exercise:35.1 are distinct valid IDs. A record referring to an undeclared assumption is invalid. A numerical evidence claim cannot be labeled a kernel-checked formal proof.",
+  "original_request_sha256": "9a1b05f465e32b76715164e5f68a3746220eff43e7405f0b310a55199652526b",
+  "project": {
+    "adoption_scenario": "new_subproject_design",
+    "exists": false,
+    "kind": "greenfield",
+    "pdd_signals": [],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/physics-contracts",
+    "scope_kind": "subproject"
+  },
+  "recommended_workflow": "design_greenfield",
+  "review": {
+    "examples": [
+      "The implementation MUST keep equation, exercise, prose, diagram, example, definition and theorem identifiers distinct, including when printed numbers match.",
+      "For example, srednicki:ch035:equation:35.1 and srednicki:ch035:exercise:35.1 are distinct valid IDs."
+    ],
+    "must_preserve": [
+      "The implementation MUST keep equation, exercise, prose, diagram, example, definition and theorem identifiers distinct, including when printed numbers match.",
+      "It MUST require explicit source digests and locators, stated domains, assumption and convention references, and separate implementation and evidence states.",
+      "It MUST reject unknown references, invalid hashes, malformed IDs, duplicate identifiers, missing sources, mismatched statement/operation links, unsupported schema versions and inconsistent numerical/formal evidence metadata.",
+      "It MUST use bounded inputs and return structured invalid-input errors rather than panic or silently ignore unknown fields.",
+      "It MUST NOT treat successful metadata validation as a mathematical proof, a verified source transcription, a successful computation, or a claim that any evidence artifact was replayed."
+    ],
+    "open_decisions": [
+      "This sits inside a larger repository. Confirm we should only change this folder."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "user-visible behavior",
+      "critical boundary"
+    ],
+    "recommended": true
+  },
+  "title": "Rust mathematical item and evidence contracts",
+  "warnings": []
+}

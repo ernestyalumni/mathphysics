@@ -1,0 +1,277 @@
+[
+  {
+    "filename": "computation_rust.prompt",
+    "filepath": "src/computation.rs",
+    "description": "Bounded reusable arithmetic foundation; manual implementation",
+    "reason": "Approved F06/F07/LIB01 work; compatibility retained",
+    "dependencies": [],
+    "priority": 1,
+    "tags": [
+      "rust",
+      "arithmetic",
+      "manual-adoption"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "coefficient_rust.prompt",
+    "filepath": "src/coefficient.rs",
+    "description": "Bounded reusable arithmetic foundation; manual implementation",
+    "reason": "Approved F06/F07/LIB01 work; compatibility retained",
+    "dependencies": [
+      "computation_rust.prompt"
+    ],
+    "priority": 2,
+    "tags": [
+      "rust",
+      "arithmetic",
+      "manual-adoption"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "scalar_rust.prompt",
+    "filepath": "src/scalar.rs",
+    "description": "Bounded reusable arithmetic foundation; manual implementation",
+    "reason": "Approved F06/F07/LIB01 work; compatibility retained",
+    "dependencies": [
+      "computation_rust.prompt",
+      "coefficient_rust.prompt"
+    ],
+    "priority": 3,
+    "tags": [
+      "rust",
+      "arithmetic",
+      "manual-adoption"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "exact_rust.prompt",
+    "filepath": "src/exact.rs",
+    "description": "Bounded reusable arithmetic foundation; manual implementation",
+    "reason": "Approved F06/F07/LIB01 work; compatibility retained",
+    "dependencies": [
+      "computation_rust.prompt",
+      "coefficient_rust.prompt",
+      "scalar_rust.prompt"
+    ],
+    "priority": 4,
+    "tags": [
+      "rust",
+      "arithmetic",
+      "manual-adoption"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "polynomial_rust.prompt",
+    "filepath": "src/polynomial.rs",
+    "description": "Bounded reusable arithmetic foundation; manual implementation",
+    "reason": "Approved F06/F07/LIB01 work; compatibility retained",
+    "dependencies": [
+      "computation_rust.prompt",
+      "coefficient_rust.prompt",
+      "scalar_rust.prompt",
+      "exact_rust.prompt"
+    ],
+    "priority": 5,
+    "tags": [
+      "rust",
+      "arithmetic",
+      "manual-adoption"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "clifford_rust.prompt",
+    "filepath": "src/clifford.rs",
+    "description": "Bounded reusable arithmetic foundation; manual implementation",
+    "reason": "Approved F06/F07/LIB01 work; compatibility retained",
+    "dependencies": [
+      "computation_rust.prompt",
+      "polynomial_rust.prompt"
+    ],
+    "priority": 6,
+    "tags": [
+      "rust",
+      "arithmetic",
+      "manual-adoption"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "main_rust.prompt",
+    "filepath": "src/main.rs",
+    "description": "Native math CLI with checked rational/trace adapters",
+    "reason": "Approved reusable arithmetic foundation",
+    "dependencies": [
+      "exact_rust.prompt",
+      "clifford_rust.prompt",
+      "computation_rust.prompt"
+    ],
+    "priority": 7,
+    "tags": [
+      "rust",
+      "cli"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "checked_rust.prompt",
+    "filepath": "src/checked.rs",
+    "description": "Approved reusable research batches; bounded manual implementation",
+    "reason": "User approved checked arithmetic, conventions, typed expressions and independent replay",
+    "dependencies": [
+      "computation_rust.prompt",
+      "coefficient_rust.prompt",
+      "scalar_rust.prompt",
+      "exact_rust.prompt",
+      "polynomial_rust.prompt"
+    ],
+    "priority": 8,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "research-validation"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "expression_rust.prompt",
+    "filepath": "src/expression.rs",
+    "description": "Approved reusable research batches; bounded manual implementation",
+    "reason": "User approved checked arithmetic, conventions, typed expressions and independent replay",
+    "dependencies": [
+      "computation_rust.prompt",
+      "exact_rust.prompt"
+    ],
+    "priority": 9,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "research-validation"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "conventions_rust.prompt",
+    "filepath": "src/conventions.rs",
+    "description": "Approved reusable research batches; bounded manual implementation",
+    "reason": "User approved checked arithmetic, conventions, typed expressions and independent replay",
+    "dependencies": [
+      "computation_rust.prompt",
+      "coefficient_rust.prompt",
+      "polynomial_rust.prompt"
+    ],
+    "priority": 10,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "research-validation"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "replay_rust.prompt",
+    "filepath": "src/replay.rs",
+    "description": "Approved reusable research batches; bounded manual implementation",
+    "reason": "User approved checked arithmetic, conventions, typed expressions and independent replay",
+    "dependencies": [
+      "computation_rust.prompt",
+      "exact_rust.prompt",
+      "expression_rust.prompt"
+    ],
+    "priority": 11,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "research-validation"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "relativity_rust.prompt",
+    "filepath": "src/relativity.rs",
+    "description": "Reusable Lorentz/rapidity and bounded operator-calculus capability",
+    "reason": "User requested Chapter2 derivational capabilities and reusable rapidity",
+    "dependencies": [
+      "computation_rust.prompt",
+      "coefficient_rust.prompt",
+      "exact_rust.prompt",
+      "polynomial_rust.prompt",
+      "checked_rust.prompt"
+    ],
+    "priority": 12,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "lorentz"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "ordered_rust.prompt",
+    "filepath": "src/ordered.rs",
+    "description": "Reusable Lorentz/rapidity and bounded operator-calculus capability",
+    "reason": "User requested Chapter2 derivational capabilities and reusable rapidity",
+    "dependencies": [
+      "computation_rust.prompt",
+      "exact_rust.prompt",
+      "polynomial_rust.prompt"
+    ],
+    "priority": 13,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "lorentz"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "differential_rust.prompt",
+    "filepath": "src/differential.rs",
+    "description": "Reusable Lorentz/rapidity and bounded operator-calculus capability",
+    "reason": "User requested Chapter2 derivational capabilities and reusable rapidity",
+    "dependencies": [
+      "computation_rust.prompt",
+      "exact_rust.prompt",
+      "polynomial_rust.prompt"
+    ],
+    "priority": 14,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "lorentz"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  }
+]

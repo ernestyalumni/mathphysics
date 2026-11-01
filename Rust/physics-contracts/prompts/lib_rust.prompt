@@ -1,0 +1,60 @@
+<pdd-reason>Validate mathematical item and evidence metadata without claiming mathematical verification.</pdd-reason>
+<pdd-version>0.1.0</pdd-version>
+
+% Ownership and runtime
+Own only src/lib.rs for the physics-contracts Rust crate. Preserve its typed public
+Bundle/Definition/MathItem/Source/Locator/Evidence/Operation/Artifact/Checker/
+Numerical/Resources types and enums, serialized field names, SCHEMA_VERSION,
+MAX_INPUT_BYTES, MAX_RECORDS, ASSURANCE, valid_item_id, validate and validate_json.
+Use Rust and pinned serde/serde_json; no CAS, provider, shell, network or foreign
+runtime is part of metadata validation. Never edit independent tests or sources.
+
+% Approved parent meaning
+Implement F01 of the user-approved Rust mathematical physics platform plan.
+Item IDs are source:location:namespace:label; location can be chNNN, frontmatter or backmatter. Srednicki chapters are 001..097;
+namespaces equation/exercise/prose/diagram/example/definition/theorem are distinct.
+Return typed validation reports with record_valid or invalid_input, not PASS or
+proof claims. Successful validation MUST explicitly state metadata_validation_only
+and that no mathematical proof, source certification, digest verification,
+computation or artifact replay was performed. Declared digests are checked for
+format only; source-review and outcome fields remain declarations.
+
+% Required contracts
+Use schema version mathphysics.contracts.v1. JSON rejects unknown/duplicate fields,
+unknown enum values and missing required fields. Optional fields can be absent
+or null. Each source has a nonempty path, lowercase 64-hex SHA-256, a one-based
+PDF page or positive text-line range, and a declared source-review state.
+Items require statement, explicit domain, sources, declared assumption/convention
+references, separate implementation state and links to evidence IDs.
+Evidence must refer to a real item with exactly the same statement, domain,
+complete assumptions and convention. Links must be bidirectional and cannot
+attach the same evidence to another item. Reject duplicated identities/references.
+Require named operations with input/implementation digests, artifacts with
+paths/digests, and strictly positive resource declarations. Duplicate artifact paths in a single evidence snapshot are invalid. Runtime budgets in
+evidence are declarations, not OS resource enforcement. Never open source or
+artifact paths as part of validation.
+
+Numerical evidence uses approximate arithmetic with finite nonnegative tolerance
+components (at least one positive), positive precision and an error explanation.
+It cannot carry established as its outcome. Exact algebra, formal kernel and
+certificate replay metadata use exact arithmetic and no numerical tolerance.
+Formal/replay metadata require a versioned checker/digest referencing a declared
+artifact digest. Other evidence kinds do not accept checker metadata. Approximate arithmetic always requires numerical error metadata, including external comparisons; non-approximate arithmetic cannot carry it. External
+comparison and source derivation alone cannot claim established. Inconclusive,
+unsupported and invalid-input attempts require a nonempty reason.
+
+% Bounded behavior
+JSON input is at most 1 MiB; total top-level and nested reference/source/artifact
+records at most 10,000; per-record source/artifact/reference arrays at most 256;
+text fields bounded to 16,384 bytes; identifiers bounded; errors capped at 128.
+Use deterministic maps/sets and avoid quadratic cross-item backlink scans.
+Malformed JSON and exhaustion produce structured invalid_input reports.
+
+% Examples and evidence
+srednicki:ch035:equation:35.1 and srednicki:ch035:exercise:35.1 are different IDs.
+An undeclared assumption, mismatched statement or forged evidence link is invalid.
+A well-formed fake formal-proof record may be record_valid, but this MUST NOT
+assert the proof was checked. Preserve that assurance boundary everywhere.
+Run cargo test --offline --locked and cargo clippy --all-targets -- -D warnings;
+independent tests include real CLI calls, bad references, overclaims, tampered
+links, malformed input, nonfinite numerics through typed APIs and resource limits.

@@ -1,0 +1,153 @@
+{
+  "schema_version": "mathphysics.contracts.v1",
+  "assumptions": [
+    {
+      "id": "assumption.commuting-components.v1.0.0",
+      "statement": "Vector components multiply commutatively."
+    },
+    {
+      "id": "assumption.bounded-exact-arithmetic.v1.0.0",
+      "statement": "Q(i) arithmetic is exact only while all checked i128 intermediates and polynomial/word budgets are representable."
+    },
+    {
+      "id": "assumption.commuting-external-spinors.v1.0.0",
+      "statement": "External 2-component wavefunctions are commuting coordinate arrays."
+    },
+    {
+      "id": "assumption.four-dimensional.v1.0.0",
+      "statement": "Use exactly 4 component directions and the existing chiral 4x4 matrix representation."
+    },
+    {
+      "id": "assumption.formal-d-without-gamma5.v1.0.0",
+      "statement": "d is a commuting formal dimension in explicitly contracted Clifford identities without gamma5."
+    },
+    {
+      "id": "assumption.lorentzian-positive-energy-conjugacy.v1.0.0",
+      "statement": "For the specified real positive-energy massless slice, star components are conjugates of phi."
+    },
+    {
+      "id": "assumption.real-lie-symbols.v1.0.0",
+      "statement": "Every formal polynomial symbol used for compact real Lie coordinates/charts is assigned a real value."
+    },
+    {
+      "id": "assumption.angular-domain.v1.0.0",
+      "statement": "amplitude>0; sin_half,cos_half>=0 and sin_half^2+cos_half^2=1; cos_phi^2+sin_phi^2=1, each unit bounded."
+    },
+    {
+      "id": "assumption.nonzero-polarization-reference.v1.0.0",
+      "statement": "Helicity-specific bracket <qk> or [qk] must remain nonzero at every evaluation."
+    },
+    {
+      "id": "assumption.nonzero-denominators.v1.0.0",
+      "statement": "All original Ratio denominators are nonzero on the comparison/evaluation domain."
+    },
+    {
+      "id": "assumption.bare-amplitude.v1.0.0",
+      "statement": "Interpret output solely as color-ordered determinant-bracket rational structure."
+    },
+    {
+      "id": "assumption.smga-r1-domain.v1.0.0",
+      "statement": "Use conserved half-collinear (2,2) real rational frame data in the declared R1 sign chamber, off all evaluated walls."
+    },
+    {
+      "id": "assumption.typed-tensor-domain.v1.0.0",
+      "statement": "Each raw tensor term has valid space/variance signatures and at most two occurrences per dummy, opposite variance."
+    }
+  ],
+  "conventions": [
+    {
+      "id": "conv.minkowski-metric.v1.0.0",
+      "statement": "Coordinate order (0,1,2,3)=(time,x,y,z); eta=diag(-1,+1,+1,+1). Vector arrays in twistor/lorentz are contravariant. Lowering supplies eta signs; slash(p)=p_mu gamma^mu; timelike p^2 is negative. Book writes g where code writes eta."
+    },
+    {
+      "id": "conv.clifford-form.v1.0.0",
+      "statement": "Abstract Clifford form h=-eta for Srednicki; {gamma(a),gamma(b)}=2h(a,b), whereas explicit matrices satisfy {gamma^mu,gamma^nu}=-2eta^mu nu. h is not the Lorentz tensor metric."
+    },
+    {
+      "id": "conv.clifford-labels.v1.0.0",
+      "statement": "Plain Clifford labels are opaque free slots/components, never implicit sums. sandwich_srednicki is an explicitly contracted operation. Tr(empty)=4 fixes spinor trace normalization, including formal-d calculations."
+    },
+    {
+      "id": "conv.spinor-epsilon.v1.0.0",
+      "statement": "epsilon^12=+1, epsilon_12=-1 for dotted and undotted spaces. E_up=[[0,1],[-1,0]], E_down=-E_up. Raise/lower contracting epsilon second slot; raise(v)=(v1,-v0); E_down E_up=I."
+    },
+    {
+      "id": "conv.sigma-chiral-basis.v1.0.0",
+      "statement": "sigma^mu=(I,Pauli), barsigma^mu=(I,-Pauli). gamma^mu has off-diagonal blocks sigma^mu,barsigma^mu, in that order."
+    },
+    {
+      "id": "conv.spacetime-epsilon.v1.0.0",
+      "statement": "epsilon^0123=+1; eta lowering gives epsilon_0123=-1. epsilon_upper_covariant takes contravariant vector rows, lowers their components, and returns epsilon^mu nu rho sigma p_mu q_nu r_rho s_sigma = -det(rows)."
+    },
+    {
+      "id": "conv.gamma5-chirality.v1.0.0",
+      "statement": "gamma5=i gamma0 gamma1 gamma2 gamma3=diag(-1,-1,+1,+1) in the existing chiral basis; P_L=(1-gamma5)/2 selects upper block. Left four-slash trace has +2i epsilon^mu nu rho sigma p_mu q_nu r_rho s_sigma; right has opposite sign."
+    },
+    {
+      "id": "conv.formal-d.v1.0.0",
+      "statement": "sandwich_srednicki supports formal commuting dimension d in explicitly contracted identities: gamma^mu gamma_mu=-d. It does not define d-dimensional gamma5, epsilon, a matrix representation at d!=4, or a complete dimensional-regularization prescription."
+    },
+    {
+      "id": "conv.commuting-vs-grassmann.v1.0.0",
+      "statement": "spinor external wavefunctions/twistors and Poly variables commute; tensor factor kernel also commutes. Anticommuting Weyl fields in textbook are different objects, not represented by these commuting factor types."
+    },
+    {
+      "id": "conv.bracket-orientations.v1.0.0",
+      "statement": "spinor::bracket(a,b)=det(a,b). twistor::square(p,k)=-det(phi_p,phi_k); twistor::angle(p,k)=det(star_p,star_k). smga::bracket(a,b)=-det(a,b). Names alone do not permit mixing these sign conventions."
+    },
+    {
+      "id": "conv.twistor-momentum.v1.0.0",
+      "statement": "twistor bispinor p_(a,dota)=-phi_a star_dota; momentum() returns its contravariant 4-vector. By contrast spinor::momentum(lambda,tilde) returns the raw positive outer-product 2x2 matrix with no claim it uses the same phi/star mapping. For Srednicki massless spinors <pk>[kp]=-2p.k."
+    },
+    {
+      "id": "conv.spinor-reality.v1.0.0",
+      "statement": "Twistor::named creates independent phi and star symbols (complexified algebra). Lorentzian conjugacy star=conj(phi) is an additional real-slice assignment. Positive-energy real slice gives <pk>*=[kp]. All-outgoing negative-energy continuation adds energy-sign factors, as in book 60.17; generic symbolic APIs do not infer them."
+    },
+    {
+      "id": "conv.coefficient-conjugation.v1.0.0",
+      "statement": "Poly::conjugate_coefficients fixes every formal variable and conjugates only Q(i) coefficients. has_real_coefficients asserts coefficients only. Lie-group Conjugate for Poly uses the same operation; it represents adjoint conjugation of values only for real symbol assignments."
+    },
+    {
+      "id": "conv.angular-spinor-slice.v1.0.0",
+      "statement": "from_rational_angles takes positive rational amplitude=sqrt(2omega), nonnegative sin(theta/2),cos(theta/2) on the unit circle and a normalized rational phase. It is a restricted positive-energy real slice; it rejects amplitude0, negative amplitude and invalid normalizations."
+    },
+    {
+      "id": "conv.scaled-polarizations.v1.0.0",
+      "statement": "polarization() returns sqrt(2)*epsilon_+ = -<q|gamma^mu|k]/<qk> and sqrt(2)*epsilon_- = -[q|gamma^mu|k>/[qk]. Numerators omit denominators and sqrt(2); generic symbolic Ratio retains denominator restrictions. Pair products of API vectors have a factor2 relative to physical epsilon products."
+    },
+    {
+      "id": "conv.ratio-domain.v1.0.0",
+      "statement": "Ratio residual equality is by cross multiplication only on the common nonzero-denominator domain. Construction rejects identically zero denominators; evaluation also rejects poles. Cancellation/equality does not extend the original domain."
+    },
+    {
+      "id": "conv.bare-mhv-ratio.v1.0.0",
+      "statement": "parke_taylor returns determinant-bracket ratio <ij>^4/product consecutive brackets with n>=3, two distinct in-range negative legs and nonzero denominator. It includes no universal i, coupling power, color trace or sqrt(2) vertex factors; it is not a complete physical amplitude or derivation from Yang-Mills rules."
+    },
+    {
+      "id": "conv.smga-split-frame.v1.0.0",
+      "statement": "SMGA is half-collinear split-signature (2,2) with real rational two-component frame variables and sign chambers, not ordinary Lorentzian Yang-Mills Berends-Giele. R1 requires 3..12 conserved legs, first omega<0 and remaining omega>0; tested chamber walls are errors, not a guessed Theta(0)."
+    },
+    {
+      "id": "conv.tensor-index-domains.v1.0.0",
+      "statement": "Tensor kernel separates Lorentz,Undotted,Dotted spaces; raw free labels occur once, dummies twice with opposite variance. Hygiene freshens independent binders. Its symmetric Lorentz metric is not spinor epsilon; spinor epsilon raising/lowering is not an automatic tensor-metric operation."
+    },
+    {
+      "id": "conv.lie-active-rotation.v1.0.0",
+      "statement": "lie-groups uses column vectors and active right-handed rotations; hat(v)w=v cross w with epsilon(0,1,2)=+1. Its generic levi_civita is an alternating symbol, not a metric volume form. Goldstein R maps body to inertial and A_G=R^T."
+    },
+    {
+      "id": "conv.su2-generator-scale.v1.0.0",
+      "statement": "Su2Algebra coordinates are in T_i=-i sigma_i/2, with bracket equal to cross product and same-coordinate so3 differential map. PauliOverI is doubled generator basis; from_full_basis_coordinates doubles coordinates. Symbolic exp retains argument_scale=1/2 for half basis and1 for full basis."
+    },
+    {
+      "id": "conv.quaternion-charts.v1.0.0",
+      "statement": "Symbolic SU2 chart q=+/- (1-|t|^2,2t)/(1+|t|^2) uses real symbols; t=n*tan(theta/4), not matrix Cayley tan(theta/2). Opposite SU2 lifts give the same SO3 rotation. Goldstein Cayley-Klein K=U(q)^dagger."
+    },
+    {
+      "id": "conv.rotation-order.v1.0.0",
+      "statement": "Goldstein ZXZ/ZYZ arguments use (phi,theta,psi) in product order; ZYX uses (yaw psi,pitch theta,roll phi), R=Rz(psi)Ry(theta)Rx(phi). Intrinsic moving-axis products and passive transposes must be identified explicitly."
+    }
+  ],
+  "items": [],
+  "evidence": []
+}

@@ -1,0 +1,286 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mathphysics.local/contracts/v1/definitions.schema.json",
+  "title": "Shared metadata definitions",
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16384,
+      "pattern": "^[^\\u0000]*$",
+      "allOf": [
+        {
+          "pattern": "[^\\u0009-\\u000d\\u0020\\u0085\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000]"
+        }
+      ],
+      "$comment": "Rust additionally checks Unicode trim and UTF-8 byte length <= 16384."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9_.-]+(?![\\s\\S])"
+    },
+    "item_id": {
+      "type": "string",
+      "maxLength": 256,
+      "pattern": "^[a-z][a-z0-9-]{0,127}:(ch(?!000)[0-9]{3}|frontmatter|backmatter):(equation|exercise|prose|diagram|example|definition|theorem):[A-Za-z0-9_.-]{1,128}(?![\\s\\S])",
+      "allOf": [
+        {
+          "if": {
+            "pattern": "^srednicki:"
+          },
+          "then": {
+            "pattern": "^srednicki:(ch(00[1-9]|0[1-8][0-9]|09[0-7])|frontmatter|backmatter):"
+          }
+        }
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 256,
+      "uniqueItems": true
+    },
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "definitions.schema.json#/$defs/name"
+        },
+        "statement": {
+          "$ref": "definitions.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "id",
+        "statement"
+      ]
+    },
+    "locator": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "pdf"
+            },
+            "pdf_page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4294967295
+            },
+            "printed_page": {
+              "anyOf": [
+                {
+                  "$ref": "definitions.schema.json#/$defs/text"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "pdf_page"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "text"
+            },
+            "line_start": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4294967295
+            },
+            "line_end": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4294967295
+            }
+          },
+          "required": [
+            "kind",
+            "line_start",
+            "line_end"
+          ]
+        }
+      ],
+      "$comment": "Rust checks line_end >= line_start."
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "$ref": "definitions.schema.json#/$defs/text"
+        },
+        "sha256": {
+          "$ref": "definitions.schema.json#/$defs/sha256"
+        },
+        "locator": {
+          "$ref": "definitions.schema.json#/$defs/locator"
+        },
+        "review": {
+          "type": "string",
+          "enum": [
+            "candidate",
+            "text_checked",
+            "visually_checked"
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "locator",
+        "review"
+      ]
+    },
+    "operation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "definitions.schema.json#/$defs/name"
+        },
+        "input_sha256": {
+          "$ref": "definitions.schema.json#/$defs/sha256"
+        },
+        "implementation_sha256": {
+          "$ref": "definitions.schema.json#/$defs/sha256"
+        }
+      },
+      "required": [
+        "name",
+        "input_sha256",
+        "implementation_sha256"
+      ]
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "$ref": "definitions.schema.json#/$defs/text"
+        },
+        "sha256": {
+          "$ref": "definitions.schema.json#/$defs/sha256"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ]
+    },
+    "checker": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "definitions.schema.json#/$defs/text"
+        },
+        "version": {
+          "$ref": "definitions.schema.json#/$defs/text"
+        },
+        "implementation_sha256": {
+          "$ref": "definitions.schema.json#/$defs/sha256"
+        },
+        "artifact_sha256": {
+          "$ref": "definitions.schema.json#/$defs/sha256"
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "implementation_sha256",
+        "artifact_sha256"
+      ]
+    },
+    "numerical": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "absolute_tolerance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1.7976931348623157e+308
+        },
+        "relative_tolerance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1.7976931348623157e+308
+        },
+        "precision_bits": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967295
+        },
+        "error_note": {
+          "$ref": "definitions.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "absolute_tolerance",
+        "relative_tolerance",
+        "precision_bits",
+        "error_note"
+      ],
+      "anyOf": [
+        {
+          "properties": {
+            "absolute_tolerance": {
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        {
+          "properties": {
+            "relative_tolerance": {
+              "exclusiveMinimum": 0
+            }
+          }
+        }
+      ]
+    },
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wall_clock_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "memory_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "operation_limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        }
+      },
+      "required": [
+        "wall_clock_seconds",
+        "memory_bytes",
+        "operation_limit"
+      ]
+    }
+  }
+}

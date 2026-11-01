@@ -1,0 +1,180 @@
+{
+  "status": "isolated_refinement_only",
+  "resolves": [
+    "C1",
+    "C2",
+    "C3"
+  ],
+  "repository_root": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/docs/plans/rust-physics-platform",
+  "new_assumption_ids": [
+    "ch035-generator-independent-parameters",
+    "ch035-left-lowered-symmetry",
+    "ch035-right-lowered-symmetry",
+    "ch035-projection-relation",
+    "ch035-inherited-field-adjoint-compatibility"
+  ],
+  "changed_item_assumption_refs": [
+    {
+      "id": "srednicki:ch035:equation:35.7",
+      "added_refs": [
+        "ch035-generator-independent-parameters"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:equation:35.8",
+      "added_refs": [
+        "ch035-generator-independent-parameters"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:equation:35.10",
+      "added_refs": [
+        "ch035-generator-independent-parameters"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:equation:35.11",
+      "added_refs": [
+        "ch035-generator-independent-parameters"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:equation:35.12",
+      "added_refs": [
+        "ch035-generator-independent-parameters"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:equation:35.14",
+      "added_refs": [
+        "ch035-generator-independent-parameters"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:equation:35.17",
+      "added_refs": [
+        "ch035-right-lowered-symmetry",
+        "ch035-projection-relation"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:equation:35.18",
+      "added_refs": [
+        "ch035-left-lowered-symmetry",
+        "ch035-projection-relation"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:equation:35.28",
+      "added_refs": [
+        "ch035-inherited-field-adjoint-compatibility"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:prose:p217-generator-symmetry-left",
+      "added_refs": [
+        "ch035-generator-independent-parameters"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:prose:p217-generator-symmetry-right",
+      "added_refs": [
+        "ch035-generator-independent-parameters"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:equation:p217-eq35.8-unlowered-step",
+      "added_refs": [
+        "ch035-generator-independent-parameters"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:equation:p217-infinitesimal-vector",
+      "added_refs": [
+        "ch035-generator-independent-parameters"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:prose:p217-extract-generator-coefficient",
+      "added_refs": [
+        "ch035-generator-independent-parameters"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:equation:p218-epsilon-symmetric-zero",
+      "added_refs": [
+        "ch035-right-lowered-symmetry"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:prose:p218-project-left-generator",
+      "added_refs": [
+        "ch035-right-lowered-symmetry",
+        "ch035-projection-relation"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:prose:p218-project-right-generator",
+      "added_refs": [
+        "ch035-left-lowered-symmetry",
+        "ch035-projection-relation"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:example:p219-vector-bilinear",
+      "added_refs": [
+        "ch035-inherited-field-adjoint-compatibility"
+      ]
+    },
+    {
+      "id": "srednicki:ch035:prose:p219-vector-arguments",
+      "added_refs": [
+        "ch035-inherited-field-adjoint-compatibility"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "items/chapter-035.jsonl",
+      "original_sha256": "8d87e139a941c533f63dae6448708d2b4717ecde3f9b8c05ce8e58b7c8667c07",
+      "refined_sha256": "015344ee1d741bad864a68d8c5c8365d01b076202be10547f3090f7029dccf7d",
+      "changed": true
+    },
+    {
+      "path": "items/chapter-035-bundle.json",
+      "original_sha256": "41ee844eb590c191df91e878de2a1d24cf97f1ae673a49e4641177fd4bc47d2a",
+      "refined_sha256": "e63443c80412a89c387e4f8be002e3f65360142643f0815af7084d551fc4f5b2",
+      "changed": true
+    },
+    {
+      "path": "items/chapter-035-definitions.json",
+      "original_sha256": "86a6f85b154375e500ba1b424f4c884c95b20cd9756ecbb4ba087fc1d04e8718",
+      "refined_sha256": "f52a20881c0cc9e4ca550861b9265b08f6ab8370b63bc217b907e8aba19d0144",
+      "changed": true
+    },
+    {
+      "path": "item-coverage/chapter-035.json",
+      "original_sha256": "8fc2fdc9743239e908b398f7fe3be6001297bc4ee04c00f552ea2f84fcdd818b",
+      "refined_sha256": "fd9d2f88b08d4df1e20a3a1af59f627f2df274c60f84b3acd042693d1a24552f",
+      "changed": true
+    },
+    {
+      "path": "item-coverage/chapter-035-existing-crosswalk.json",
+      "original_sha256": "35d29d7eb270d1be5f4f8a49fe06b3d3b88a27d09c3ff3744c24062e1b94a709",
+      "refined_sha256": "35d29d7eb270d1be5f4f8a49fe06b3d3b88a27d09c3ff3744c24062e1b94a709",
+      "changed": false
+    },
+    {
+      "path": "proposed-batches/chapter-035.json",
+      "original_sha256": "3743cfdc758aa92c5c3bd094f6886d879e9428fe258727e2a41272fc4cc6bad3",
+      "refined_sha256": "1506e5ebbb45ec978443c2afb20a5bd15b269cb25d40230ff54ec4dea57586fa",
+      "changed": true
+    }
+  ],
+  "snapshots": "originals/ contains exact copies made before refinement",
+  "validation_files": [
+    "metadata-validation.json",
+    "structural-ownership-check.json"
+  ],
+  "assurance": "Conditional premises and planning dependencies only. No mathematical evidence, implementation or proof added. Existing validator executable invoked, not rebuilt."
+}

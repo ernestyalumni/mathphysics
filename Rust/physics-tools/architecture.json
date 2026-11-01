@@ -1,0 +1,22 @@
+[
+  {
+    "filename": "lib_rust.prompt",
+    "filepath": "src/lib.rs",
+    "description": "Strict bounded JSON discovery and exact existing Clifford trace bridge",
+    "reason": "One bounded protocol/kernel adapter; manual agent implementation, regeneration pending",
+    "dependencies": [],
+    "priority": 1,
+    "tags": ["rust", "bounded", "F12", "early-F13"],
+    "interface": {"type": "module"}
+  },
+  {
+    "filename": "main_rust.prompt",
+    "filepath": "src/main.rs",
+    "description": "One JSON stdin request and stdout outcome with semantic exit codes",
+    "reason": "Thin native transport over library; no shell or MCP",
+    "dependencies": ["lib_rust.prompt"],
+    "priority": 2,
+    "tags": ["rust", "cli"],
+    "interface": {"type": "module"}
+  }
+]

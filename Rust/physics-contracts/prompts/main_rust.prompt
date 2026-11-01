@@ -1,0 +1,9 @@
+<pdd-reason>Expose metadata validation through a bounded JSON stdin/file CLI.</pdd-reason>
+<pdd-version>0.1.0</pdd-version>
+% Deliverable: src/main.rs only; library dependency lib_rust.prompt.
+Implement physics-contracts validate [FILE|-], stdin by default. Limit reads to
+MAX_INPUT_BYTES+1 before calling the library's validator. JSON stdout always
+states the library's assurance boundary. Exit 0 for record_valid, 2 for invalid
+input, unknown command, unreadable input or exceeded size. Do not silently ignore
+extra arguments; do not open artifact/source references or execute commands.
+Preserve a Rust-only runtime. Independent tests exercise the actual binary.

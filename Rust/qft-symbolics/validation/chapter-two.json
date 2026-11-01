@@ -1,0 +1,479 @@
+{
+  "schema": "qft-symbolics.chapter-two.acceptance.v1",
+  "assessment_status": "executed_conditional_and_algebraic_checks_with_open_claims",
+  "all_operator_proof": false,
+  "whole_chapter_complete": false,
+  "source": {
+    "canonical_workspace_path": "workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/resolved.md",
+    "lines": [
+      596,
+      852
+    ],
+    "sha256": "98c3ae6f4f278701d15a164290c7c6dff071f38ef7922aa5808a6447625791f5",
+    "ocr_policy_read": [
+      "Monoclaw/Python/ocr-compare/README.md",
+      "Monoclaw/Python/ocr-compare/AGENTS.md"
+    ],
+    "independent_original_visual_check": {
+      "printed_pages": [
+        19,
+        20,
+        21
+      ],
+      "pdf_pages": [
+        43,
+        44,
+        45
+      ],
+      "images": [
+        {
+          "path": "/tmp/mathphysics-ch2-source-page19.png",
+          "sha256": "9482dea1fb6154884d080b98db436e9b0bf1f8ef097845d2a2ab30b6d79260fb"
+        },
+        {
+          "path": "/tmp/mathphysics-ch2-source-page20.png",
+          "sha256": "c1b9d50be7c8b6dc984e94c588aa3c6224ed1bbeaf5c3c00bae02580f87781dc"
+        },
+        {
+          "path": "/tmp/mathphysics-ch2-source-page21.png",
+          "sha256": "fef2fdb8431f9d5c7b3dc56cef6c6751f8293159a298f2045101cc0224368bca"
+        }
+      ],
+      "limits": "Requested exercise statements and scalar/rapidity anchors viewed; earlier (2.3)-(2.20) read in reconciled source only by this worker"
+    }
+  },
+  "conventions": {
+    "metric": [
+      -1,
+      1,
+      1,
+      1
+    ],
+    "commutator": "AB-BA",
+    "boost_generator": "K_i=M^{i0}",
+    "orbital": "hbar/i*(x^mu partial^nu-x^nu partial^mu)=-i hbar*(...)",
+    "hbar": "symbolic for coefficient/contraction derivations; 1,2,3 explicitly localized in differential/conjugation tests"
+  },
+  "execution": {
+    "location": "isolated staged crate; copied public production implementations",
+    "actual_repository_integration": "parent gate not assessed by this receipt",
+    "unique_test_count": 19,
+    "profiles_are_not_additional_unique_tests": true,
+    "commands": [
+      {
+        "profile": "debug",
+        "command": "CARGO_TARGET_DIR=/tmp/mathphysics-ch2-fixtures/build cargo test --offline --manifest-path /tmp/mathphysics-ch2-fixtures/Rust/qft-symbolics/Cargo.toml --test chapter_two",
+        "status": "executed_pass",
+        "exit_code": 0,
+        "tests_passed": 19,
+        "log": "/tmp/mathphysics-ch2-fixtures/debug.log",
+        "log_sha256": "d62f35f63e1ba58be05f3060e98492d5d34a9c44ccaad819e2141d1f356e49a9"
+      },
+      {
+        "profile": "release",
+        "command": "CARGO_TARGET_DIR=/tmp/mathphysics-ch2-fixtures/build cargo test --release --offline --manifest-path /tmp/mathphysics-ch2-fixtures/Rust/qft-symbolics/Cargo.toml --test chapter_two",
+        "status": "executed_pass",
+        "exit_code": 0,
+        "tests_passed": 19,
+        "log": "/tmp/mathphysics-ch2-fixtures/release.log",
+        "log_sha256": "45ea35fd2d017a6180fe24486685e5f4090db6d058fabb4c835c7e51b64c9210"
+      },
+      {
+        "profile": "clippy",
+        "command": "CARGO_TARGET_DIR=/tmp/mathphysics-ch2-fixtures/build cargo clippy --offline --manifest-path /tmp/mathphysics-ch2-fixtures/Rust/qft-symbolics/Cargo.toml --test chapter_two -- -D warnings",
+        "status": "executed_pass",
+        "exit_code": 0,
+        "tests_passed": null,
+        "log": "/tmp/mathphysics-ch2-fixtures/clippy.log",
+        "log_sha256": "b7db9adf0bbc33c21071a89fc2eb6c645688e61b066f75edd298cb33ce97d0f2"
+      }
+    ],
+    "tests": [
+      "first_order_conjugation_is_ordered_coefficient_identity",
+      "problem_2_8_a_orbital_sign_and_exact_normal_form_with_hbar",
+      "problem_2_7_exact_translation_group_law_requires_commuting_mixed_coefficients",
+      "problem_2_8_c_jacobi_in_free_associative_algebra",
+      "orbital_constructor_all_components_against_independent_sparse_maps",
+      "problem_2_8_b_ordered_double_action_includes_product_rule",
+      "problem_2_5_linearized_vector_matches_commutator_coefficients",
+      "problem_2_8_d_nested_commutator_preserves_action_order",
+      "reusable_rapidity_exact_finite_witness_and_conditional_symbolic_metric",
+      "translation_unitarity_alone_does_not_force_commutativity",
+      "reusable_rapidity_positive_boost_group_and_rejected_domains",
+      "problem_2_8_a_scalar_covariance_coefficient_derivation",
+      "problem_2_1_metric_first_order_forces_lowered_antisymmetry",
+      "problems_2_4_and_2_6_general_component_contractions_symbolic_hbar",
+      "problem_2_8_f_central_ambiguity_survives_field_actions",
+      "problem_2_3_linearized_tensor_matches_commutator_coefficients",
+      "problems_2_4_and_2_6_all_j_k_h_p_relations_in_differential_representation",
+      "problem_2_2_conditional_antisymmetric_coefficient_extraction",
+      "problem_2_8_e_orbital_brackets_all_indices_exact_normal_forms"
+    ]
+  },
+  "parts": [
+    {
+      "part": "2.1",
+      "source_equations": [
+        "2.3",
+        "2.7",
+        "2.8"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "general_first_order_polynomial_identity",
+      "tests": [
+        "problem_2_1_metric_first_order_forces_lowered_antisymmetry"
+      ],
+      "premises": [
+        "Metric preservation to first order",
+        "Characteristic zero"
+      ],
+      "limits": [
+        "Finite group topology/determinants not assessed"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    },
+    {
+      "part": "2.2",
+      "source_equations": [
+        "2.11",
+        "2.12",
+        "2.13",
+        "2.14"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "conditional_antisymmetric_coefficient_identity",
+      "tests": [
+        "problem_2_2_conditional_antisymmetric_coefficient_extraction",
+        "first_order_conjugation_is_ordered_coefficient_identity"
+      ],
+      "premises": [
+        "Exact representation group law",
+        "Metric invariance and inverse formula",
+        "Antisymmetric generators",
+        "Differentiable infinitesimal expansion"
+      ],
+      "limits": [
+        "Executable fixture starts from contracted identity; no general operator U or Hermiticity construction"
+      ],
+      "open_claims": [
+        "General invariant-conjugation step from group law to (2.13) not implemented as executable derivation"
+      ],
+      "formal_proof": false
+    },
+    {
+      "part": "2.3",
+      "source_equations": [
+        "2.12",
+        "2.14",
+        "2.16"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "conditional_linearized_tensor_coefficient_identity",
+      "tests": [
+        "problem_2_3_linearized_tensor_matches_commutator_coefficients",
+        "first_order_conjugation_is_ordered_coefficient_identity"
+      ],
+      "premises": [
+        "Tensor covariance (2.14)",
+        "hbar nonzero when solving conjugation coefficient"
+      ],
+      "limits": [
+        "Symbolic hbar;16 tensor components x6 independent perturbations"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    },
+    {
+      "part": "2.4",
+      "source_equations": [
+        "2.16",
+        "2.17"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "general_component_contraction_and_differential_representation_identity",
+      "tests": [
+        "problems_2_4_and_2_6_general_component_contractions_symbolic_hbar",
+        "problems_2_4_and_2_6_all_j_k_h_p_relations_in_differential_representation"
+      ],
+      "premises": [
+        "Input Lorentz bracket (2.16)",
+        "K_i=M^{i0}"
+      ],
+      "limits": [
+        "Symbolic hbar for component derivation; hbar=1 for differential witness"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    },
+    {
+      "part": "2.5",
+      "source_equations": [
+        "2.12",
+        "2.15",
+        "2.18"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "conditional_linearized_vector_coefficient_identity",
+      "tests": [
+        "problem_2_5_linearized_vector_matches_commutator_coefficients",
+        "first_order_conjugation_is_ordered_coefficient_identity"
+      ],
+      "premises": [
+        "Four-vector covariance (2.15) is assumed",
+        "hbar nonzero"
+      ],
+      "limits": [
+        "4 vector components x6 perturbations; covariance not inferred from naming"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    },
+    {
+      "part": "2.6",
+      "source_equations": [
+        "2.18",
+        "2.19"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "general_component_contraction_and_differential_representation_identity",
+      "tests": [
+        "problems_2_4_and_2_6_general_component_contractions_symbolic_hbar",
+        "problems_2_4_and_2_6_all_j_k_h_p_relations_in_differential_representation"
+      ],
+      "premises": [
+        "Input momentum/Lorentz bracket (2.18)",
+        "K_i=M^{i0}",
+        "H=P^0"
+      ],
+      "limits": [
+        "Symbolic hbar for component derivation; hbar=1 differential witness"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    },
+    {
+      "part": "2.7",
+      "source_equations": [
+        "2.20",
+        "2.23",
+        "2.25"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "conditional_mixed_translation_coefficient_identity",
+      "tests": [
+        "problem_2_7_exact_translation_group_law_requires_commuting_mixed_coefficients",
+        "translation_unitarity_alone_does_not_force_commutativity",
+        "problems_2_4_and_2_6_all_j_k_h_p_relations_in_differential_representation"
+      ],
+      "premises": [
+        "Exact T(a)T(b)=T(a+b)",
+        "Independent translation parameters",
+        "Differentiable formal expansion"
+      ],
+      "limits": [
+        "Unitarity does not imply commutativity",
+        "Projective central terms not excluded by code",
+        "No general quantum operator exponential theorem"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    },
+    {
+      "part": "2.8a",
+      "source_equations": [
+        "2.26",
+        "2.29",
+        "2.30"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "conditional_scalar_coefficient_identity_and_exact_normal_form",
+      "tests": [
+        "problem_2_8_a_scalar_covariance_coefficient_derivation",
+        "problem_2_8_a_orbital_sign_and_exact_normal_form_with_hbar",
+        "orbital_constructor_all_components_against_independent_sparse_maps"
+      ],
+      "premises": [
+        "Scalar covariance (2.26)",
+        "Formal first-order Taylor expansion"
+      ],
+      "limits": [
+        "hbar symbolic in coefficient derivation; hbar=3 normal forms"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    },
+    {
+      "part": "2.8b",
+      "source_equations": [
+        "2.29",
+        "2.30"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "conditional_ordered_differential_composition_identity",
+      "tests": [
+        "problem_2_8_b_ordered_double_action_includes_product_rule"
+      ],
+      "premises": [
+        "Coordinate coefficients commute with Hilbert-space M",
+        "Derivatives pass through commutation with M"
+      ],
+      "limits": [
+        "hbar=1 exact five-slot L01 L12 normal form and polynomial application"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    },
+    {
+      "part": "2.8c",
+      "source_equations": [],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "general_free_associative_algebra_identity",
+      "tests": [
+        "problem_2_8_c_jacobi_in_free_associative_algebra"
+      ],
+      "premises": [
+        "Associative products defined on common algebra/domain"
+      ],
+      "limits": [
+        "No theorem about undefined unbounded-operator products"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    },
+    {
+      "part": "2.8d",
+      "source_equations": [
+        "2.31"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "general_free_algebra_identity_with_conditional_orbital_substitution",
+      "tests": [
+        "problem_2_8_d_nested_commutator_preserves_action_order"
+      ],
+      "premises": [
+        "Associativity",
+        "Identification of field commutator with L action from a,b"
+      ],
+      "limits": [
+        "Nested commutator checked algebraically; physical substitution conditional"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    },
+    {
+      "part": "2.8e",
+      "source_equations": [
+        "2.30",
+        "2.31",
+        "2.16"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "exact_polynomial_differential_algebra_identity",
+      "tests": [
+        "problem_2_8_e_orbital_brackets_all_indices_exact_normal_forms",
+        "orbital_constructor_all_components_against_independent_sparse_maps"
+      ],
+      "premises": [
+        "Commuting coordinate partials",
+        "eta=(-+++)"
+      ],
+      "limits": [
+        "All256 index quadruples; independently constructed sparse inputs; hbar=2",
+        "No analytic operator-domain theorem"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    },
+    {
+      "part": "2.8f",
+      "source_equations": [
+        "2.16",
+        "2.31"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "conditional_derivation_modulo_field_commutant_and_central_witness",
+      "tests": [
+        "problem_2_8_f_central_ambiguity_survives_field_actions",
+        "problem_2_8_e_orbital_brackets_all_indices_exact_normal_forms",
+        "problem_2_8_d_nested_commutator_preserves_action_order"
+      ],
+      "premises": [
+        "Results of a-e",
+        "Scalar covariance/differentiation assumptions"
+      ],
+      "limits": [
+        "Nonzero7I commutes with sample field and derivatives and all orbital/momentum operators",
+        "No arbitrary consistent Lorentz central extension constructed"
+      ],
+      "open_claims": [
+        "Source parenthetical absence of Lorentz central charges not proved",
+        "Field commutant not identified with center of all operators"
+      ],
+      "formal_proof": false
+    },
+    {
+      "part": "reusable_rapidity",
+      "source_equations": [
+        "2.37",
+        "2.38"
+      ],
+      "assessment": "executed_assessed_with_declared_limits",
+      "evidence_kind": "exact_finite_representation_witness_conditional_symbolic_identity_and_numerical_witness",
+      "tests": [
+        "reusable_rapidity_exact_finite_witness_and_conditional_symbolic_metric",
+        "reusable_rapidity_positive_boost_group_and_rejected_domains"
+      ],
+      "premises": [
+        "Positive boost off-diagonal convention",
+        "Collinear rapidity addition",
+        "|beta|<1 for real finite rapidity"
+      ],
+      "limits": [
+        "Exact u=1/2 matrix; symbolic c\u00b2-s\u00b2-1 remains a premise",
+        "Numerical metric atol=rtol=1e-12; interval atol=1e-10",
+        "No proof of general operator exponential (2.38) or full2.9 coverage"
+      ],
+      "open_claims": [],
+      "formal_proof": false
+    }
+  ],
+  "inputs_sha256": {
+    "src/checked.rs": "063024083fe3000b68f96f2851de370092056ddc9888e98b3029825593ab3de5",
+    "src/clifford.rs": "5e2e9e52b5e6de8c285b86592b1cf993df6ba5ad6bdd75141aa49f501c8c2274",
+    "src/coefficient.rs": "6261c80bfdfd8459b44097b599205d522df88f68e83190660a816cff12c68db7",
+    "src/computation.rs": "f70e8ae453d87d3c8770e2925dea9731b1fa66579354c0d1f8661c2cfdb106f5",
+    "src/conventions.rs": "f03c6b27c02ad972e9149c3fa95227f511ade2855abebfb2d22ed4de8505d0b1",
+    "src/differential.rs": "5d12bdb4f74ed0c59928dc6b64ec738fb474ec1c193dc0bd2892d4eedb2850ec",
+    "src/exact.rs": "9922e2b0156d0bd0962bddd486001acff86d39ceb7c1586ed5788cdc017d8740",
+    "src/expression.rs": "f7afac0111912c003e64e6f8e3e8fa811e0a389eea1c6e2dc1048836956cfe5c",
+    "src/lib.rs": "fb0824009a254131dd6ff618c23acbebf643720d986b5277f4cfdcc4ce274361",
+    "src/lorentz.rs": "33f19b2a0ed6b499bc0a2bb06c68de4cde12640de5c28fd2fd00ef6b49ab8d94",
+    "src/main.rs": "89f69e6351923c73378f1c3a096dbd686e5fe01d74f76ee852b29136840b1d40",
+    "src/matrices.rs": "00db37909616bd35ef3b2faf1a31902ddb2dbbd48126b4d6419c9dfc726e9665",
+    "src/ordered.rs": "00d5029a9d4d0efb82b0e67ee677d45392193f07529ae9a579a24474e68cb527",
+    "src/polynomial.rs": "e23f2fbd1ca3f551169083aa0364fc29c865dc280ee5b18ed429c7bf527b11f7",
+    "src/relativity.rs": "d14b69870036944e601f82e23cb0e39764635355c9fd2cba0bb43c62047802ff",
+    "src/replay.rs": "67628f62e3fadc6f7b53242afb1a6bf7f266904a2d773d263d6f11f56934b20e",
+    "src/scalar.rs": "6babb2a9d4f6c51a404da0a64349919f7c3f9c528742a00a39e66cecb4acdcbe",
+    "src/smga.rs": "5e319eeff61ca5d7b52701937ca3cc85592351e22dd55834620c419cca70f6c6",
+    "src/spinor.rs": "4ce240dcf232e104f20fe4ed9edd4a0bf2a1409a35f71e2773da932083b9c478",
+    "src/tensor.rs": "7ff25532819e2b7838a8186ddf05eec6295cfbb57860d958971396584f516cf5",
+    "src/tensor_cases.rs": "a0dac5caef6b9b1566bd6411d6109b78d7091cf23294b521bbdebff698cb2818",
+    "src/twistor.rs": "a0139e3e1f9d9ccda6b6d8943e54d3d87cfdcc06fdf520695c75ef9cc2fdc17d"
+  },
+  "deliverables_sha256": {
+    "tests/chapter_two.rs": "b2062b1c4fc75da210d90a7022af4ce2a26c3ed173c8538f0b8d29b5abe619d9",
+    "docs/CHAPTER-TWO.md": "e8eff5d496eedd8b0ecc434190ffa24964d13f40daac84ae8093fadaaef12e45"
+  },
+  "budget": {
+    "max_operations_per_helper": 100000000,
+    "other_limits": "Budget default",
+    "end_to_end_budget_claim": false
+  },
+  "ownership": [
+    "tests/chapter_two.rs",
+    "docs/CHAPTER-TWO.md",
+    "validation/chapter-two.json"
+  ]
+}

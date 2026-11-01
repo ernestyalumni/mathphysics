@@ -1,0 +1,65 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Implement src/lib.rs for physics-tools 0.1.0, using pinned serde=1.0.228,
+serde_json=1.0.151 and existing qft-symbolics 0.1.0 path dependency.
+This specification governs only the bounded early F12/F13 bridge. General
+F09/F10 expression/proof engines and complete F13 acceptance are not implemented.
+No external runtime, arbitrary execution, provider, Python, C++, shell, MCP,
+proof certificate, formal proof, numeric fallback or PASS status is allowed.
+
+Public interface: INPUT_LIMIT=1048576, MAX_LABELS=12, MAX_LABEL_BYTES=64,
+MAX_PAIRINGS=10395, DOMAIN="formal_symmetric_h"; Outcome has response:
+serde_json::Value and exit_code:u8. Export error(status,code,message,exit_code),
+discovery()->Value, pairing_cost(usize)->Option<u64>,
+handle_bytes(&[u8])->Outcome and handle_reader(impl std::io::Read)->Outcome.
+
+One request object with command:string; optional labels:Vec<String>,
+domain:String, budget:u64. Strict serde typed object MUST deny unknown fields,
+duplicate fields (including null first occurrences), extra JSON, invalid UTF8,
+wrong types and nesting. All parsing failures produce invalid_input/malformed_json.
+Discovery accepts exactly {"command":"discover"}; any extra field, even null,
+is invalid_input/discovery_fields. Unknown command is unsupported/operation.
+gamma_trace requires all three labels/domain/budget, otherwise invalid_input/
+missing_fields. Empty/whitespace domain invalid_input/empty_domain; other than
+formal_symmetric_h unsupported/domain. Labels may form an empty word; otherwise
+<=12 labels each 1..64 ASCII bytes matching [A-Za-z_][A-Za-z0-9_]*.
+Too many labels over_budget/word_length; bad labels invalid_input/label.
+Budget zero invalid_input/zero_budget; budget >10395 or less than pairing cost
+is over_budget/pairing_budget. Cost=1 for empty/odd words, (n-1)!! for positive
+even words, checked multiplication and None for n>12. Bounds apply before kernel.
+
+Call existing qft_symbolics::clifford::trace on caller labels, never a fixed
+lookup. Entire trace AND serialization MUST catch unwinding kernel panic as
+inconclusive/kernel_panic (no success evidence). Leave default panic hook so
+stderr may have diagnostics. OOM, abort and OS failures are outside this boundary.
+Exact trace has integral real coefficients. Serialize canonical kernel display
+as structured polynomial terms: coefficient is signed decimal integer string,
+factors array contains exact h(byte_length:label;byte_length:label) variable
+strings. Zero polynomial empty terms. Retain display string for audit. Do not
+access private kernel data or modify kernel; unexpected display format must
+become inconclusive, never an invented result.
+
+Responses carry schema_version physics-tools.v1, status, formal_proof=false,
+evidence_kind exact_algebra only for computed, null otherwise. Success carries
+result; failure carries error:{code,message}. Exit 0 for discovered/computed,
+2 invalid_input, 3 unsupported, 4 over_budget, 5 inconclusive. No PASS.
+Computed result carries operation gamma_trace, exact input labels, domain,
+backend qft-symbolics 0.1.0, arithmetic checked_i128_exact, budget and pairing_bound,
+polynomial coefficient/factor encoding, display, terms, and explicit assumptions:
+four-component trace without gamma5; symmetric formal h; anticommutator=2h;
+h=-eta in Srednicki eta=(-,+,+,+); trace identity=4; labels free and never
+summed. Repeated labels mean same formal slot, not normalized diagonal entries,
+dimension contractions or an Einstein sum. Unknown domains unsupported.
+
+Discovery MUST enumerate discover and gamma_trace only; native_rust runtime,
+CLI stdin/stdout transport, no MCP; request schema and strict field behavior,
+all limits/statuses/exit codes; checked-i128 intermediates, polynomial term
+limit8192/degree64, unwind inconclusive; conventions and all capability limits.
+The 12-distinct-label pairing count can exceed kernel term limit: explicitly
+retain kernel bound rather than promising every length12 input computes.
+Read at most INPUT_LIMIT+1 bytes using Read::take; >limit is over_budget/input_limit;
+I/O failure invalid_input/input_io. Do not echo malformed bytes or panic payloads.
+Keep independent tests/test_lib.rs outside generated output. Verify 0/2/4 formulas,
+explicit matrix cases, new labels, repeated-label assumptions, strict parser,
+resource boundaries and injected panic behind actual production guard.
+Manual agent implementation is authorized; automated regeneration is pending.

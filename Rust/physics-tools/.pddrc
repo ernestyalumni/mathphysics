@@ -1,0 +1,18 @@
+version: "1.0"
+contexts:
+  lib:
+    paths: ["prompts/lib_rust.prompt", "src/lib.rs", "tests/test_lib.rs"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/lib.rs
+      test_output_path: tests/
+      example_output_path: examples/
+      default_language: rust
+  main:
+    paths: ["prompts/main_rust.prompt", "src/main.rs", "tests/test_main.rs"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/main.rs
+      test_output_path: tests/
+      example_output_path: examples/
+      default_language: rust

@@ -1,10 +1,89 @@
 # qft-symbolics — exact Rust starting point
 
-A small, dependency-free Rust library and JSON CLI for **verified QFT
-calculations**, started 2026-10-16. This is **not a full Rust translation of
+A small Rust library and JSON CLI for exact QFT calculations and independent checks, started 2026-10-16. This is **not a full Rust translation of
 Cadabra2**, not API-compatible with it, and not a replacement for the Python
 package yet. Existing Python, Cadabra source, manuscripts and book sources are
 unchanged.
+
+## Walk through the checks
+
+From the mathphysics root:
+
+```sh
+export CARGO_TARGET_DIR=/tmp/mathphysics-rust-target
+cargo run --offline --locked --manifest-path Rust/qft-symbolics/Cargo.toml --example checks_walkthrough
+```
+
+This is a runnable explanation, with real assertions. It checks two-gamma traces
+against explicit matrices, translates epsilon conventions, rejects evaluation at
+a rational pole, preserves operator order and dummy-index scope, and independently
+replays scalar identities with explicit nonzero assumptions. Deliberately wrong
+results and missing assumptions must be rejected. It never labels the result a
+formal QFT proof.
+
+For the actual Srednicki acceptance checks:
+
+```sh
+cargo test --offline --locked --manifest-path Rust/qft-symbolics/Cargo.toml --test textbook_research -- --nocapture
+cargo test --offline --locked --manifest-path Rust/qft-symbolics/Cargo.toml --test replay_checker
+cargo test --offline --locked --manifest-path Rust/qft-symbolics/Cargo.toml --test typed_expression
+cargo test --offline --locked --manifest-path Rust/qft-symbolics/Cargo.toml --test checked_research
+```
+
+Read [SREDNICKI-CHECKS.md](docs/SREDNICKI-CHECKS.md) alongside those tests: it
+explains each claim, public API, independent oracle, negative control and meaning
+of success. The ten new test functions include 5,461 exact component trace words;
+that count is not 5,461 textbook equations or completed book items.
+
+The new public capability modules are [checked arithmetic](docs/CHECKED-ARITHMETIC.md),
+[typed structural expressions](docs/EXPRESSION.md), and [independent algebra replay](docs/REPLAY.md).
+The replay checker independently expands a scalar ring rather than calling the
+production polynomial normalizer, but shares trusted BigC arithmetic. Its conditional
+algebra evidence is distinct from the numerical Python comparisons and from formal proof.
+The separately locked research consumer exercises all modules without a book,
+frontend, server or AI harness.
+
+Mono notes remain theory-only. Implementation mappings and test explanations live
+here near the code and use stable mathematical references. No general expression
+parser, tensor rewrite replay, gamma5 prescription, OS resource isolation, full CAS
+or all-book completion is claimed. Existing tensor expression arithmetic and legacy
+transport protocols retain their separately documented limits.
+
+## Lorentz invariance and rapidity
+
+```sh
+# From the mathphysics root, keeping build products outside the repository:
+export CARGO_TARGET_DIR=/tmp/mathphysics-rust-target
+cargo run --offline --locked --manifest-path Rust/qft-symbolics/Cargo.toml --example lorentz_walkthrough
+cargo test --offline --locked --manifest-path Rust/qft-symbolics/Cargo.toml --test chapter_two -- --nocapture
+```
+
+[The Chapter 2 guide](docs/CHAPTER-TWO.md) explains the per-problem premises,
+calculations, independent expectations and limits. It distinguishes algebraic
+coefficient derivations, representation checks, finite numerical witnesses and
+open upstream statements. In particular, the unitary group-law proof upstream
+of 2.2 is not automatically reconstructed, and 2.8(f)'s absent-central-charge
+statement is not inferred from a field-action calculation.
+
+Reusable modules:
+
+- [relativity](docs/RELATIVITY.md): rapidity/velocity conversion and collinear
+  composition, explicit positive-off-diagonal Srednicki boosts, metric/vector
+  operations, exact rational boosts and conditional symbolic boost matrices.
+- [ordered algebra](docs/ORDERED.md): noncommuting words with exact commuting
+  polynomial coefficients, commutators, Jacobi expansion, substitution and
+  selected-parameter degree truncation/coefficient extraction.
+- [differential operators](docs/DIFFERENTIAL.md): exact differentiation and
+  full multivariate Leibniz composition, with Lorentz/momentum representation
+  constructors and strict coordinate contexts.
+
+The metric is diag(-1,1,1,1); numerical boost sign follows (2.37).
+Rapidity is eta=atanh(beta). Numeric results retain declared tolerances and reject
+nonfinite/overflow/saturated velocity results. The exact boost parameter
+u=tanh(eta/2) can be rational even when eta is not; u=1/3 gives cosh(eta)=5/4
+and sinh(eta)=3/4. Symbolic c/s entries retain c^2-s^2-1=0 as a required condition,
+not a fact established from their names. No general transcendental parser,
+quantum-domain theorem, unitarity certificate or central-extension proof is claimed.
 
 ## Run
 
@@ -20,6 +99,32 @@ cargo run --offline -- schouten --wrong-sign  # intentionally FAIL, exit 1
 cargo run --offline -- gamma-trace a b c d
 cargo run --offline -- smga-fixture 6 0
 ```
+
+## Checked and arbitrary-precision arithmetic
+
+The optional `BigQ`/`BigC` coefficient types use the same generic polynomial and Clifford engine as the existing small types. Checked APIs return structured errors under explicit work limits. Legacy matrix/tensor arithmetic remains bounded.
+
+```sh
+CARGO_TARGET_DIR=/tmp/mathphysics-rust-target cargo run --offline --locked \
+  --manifest-path Rust/qft-symbolics/Cargo.toml --example arithmetic
+```
+
+See [the foundation audit and evidence](../../docs/plans/rust-physics-platform/ARITHMETIC-FOUNDATION.md) for domains, budgets, independent-client qualification and remaining migrations.
+
+## Reusable library example from the repository
+
+The source is [examples/reuse.rs](examples/reuse.rs). From the mathphysics root:
+
+```bash
+CARGO_TARGET_DIR=/tmp/mathphysics-rust-target cargo run --offline --locked \
+  --manifest-path Rust/qft-symbolics/Cargo.toml --example reuse
+```
+
+This compiles the repository’s library and example directly. Source remains in
+mathphysics; Cargo’s executables and intermediate build products stay outside it.
+The example calls shared Clifford/spinor operations with fresh inputs and does not
+require textbook files, a server or the frontend. The earlier outputs-directory
+client is an archived demonstration; this is the maintained example location.
 
 **Complete validation**, including release-mode tests, Clippy, real Cadabra
 transformations, and differential parity with the old Python package:

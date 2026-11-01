@@ -1,0 +1,13 @@
+[package]
+name = "physics-contracts"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Typed mathematical item and evidence metadata with explicit validation boundaries"
+
+[dependencies]
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.151"
+
+[profile.release]
+overflow-checks = true

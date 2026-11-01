@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/coefficient.rs. Coefficient: Clone+Default+Eq+Debug+Display; from_i64,is_zero,is_real,conjugate,bits and checked_add/sub/mul/div/neg taking sharedBudget and returning sharedResult. LegacyCopyC andBigC implement same contract. Maximum component numerator/denominator bit length is not total heap use. Laws require independent tests, not Rusttype assurances.

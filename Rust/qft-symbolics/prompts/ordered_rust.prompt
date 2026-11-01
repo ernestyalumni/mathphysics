@@ -1,0 +1,34 @@
+Implement reusable bounded free associative algebra over existing BigPoly commuting coefficients.
+Public OrderedPolynomial has private BTreeMap<Vec<String>,BigPoly>, canonical zero omission.
+API: scalar(BigPoly,&mut Budget), generator(&str,&mut Budget), terms() borrowed map;
+try_add/sub/mul(&self,&Self,&mut Budget), try_scale(&self,&BigPoly,&mut Budget),
+try_neg(&self,&mut Budget), commutator(&self,&Self,&mut Budget),
+truncate(&self,parameters:&[&str],max_degree:usize,&mut Budget),
+coefficient(&self,parameter:&str,power:usize,&mut Budget),
+substitute(&self,&BTreeMap<String,Self>,&mut Budget). All constructors and transformations
+return computation::Result<Self>. Derive Clone, Debug, Default, PartialEq, Eq.
+Words concatenate without sorting; scalars commute; commutator is XY-YX.
+Truncation selects total degree only in named commuting parameters; coefficient removes
+exact requested power of one commuting parameter. Substitution is simultaneous,
+nonrecursive, operator-only; missing replacements remain generators.
+Validate every raw name and replacement even for zero input. Names must be nonempty
+and contain no whitespace/control characters. Use only checked BigPoly arithmetic.
+Before allocating growing keys/maps, check aggregate word occurrences, coefficient
+monomials, symbol UTF8 bytes, coefficient bits, terms, degrees, and charged work.
+Bound words and coefficient degree with hard caps independent of caller limits to
+bound BTreeMap recursive key destruction stack. Operations are iterative. Reject
+conservatively before temporary growth; cancellation need not rescue an over-budget
+candidate. No implicit Lorentz relations or special problem letters. Test full word
+Jacobi expansion, noncommutativity, first-order inverse conjugation and signs,
+simultaneous substitution, invalid names/zero inputs, resource boundaries, >i128.
+Manual prompt-first implementation authorized after prior provider rejection;
+no model generation or successful automatic PDD synchronization claimed.
+Resource semantics: Terms counts aggregate coefficient monomials, InputBytes counts
+all stored operator and commuting symbol occurrences, CoefficientBits sums maximum
+component bits across Gaussian coefficients. WordLength is per word; aggregate word
+storage is bounded by max_terms*max_word_length as well as aggregate bytes/work.
+Hard word/commuting-degree cap is 256. Charge name byte scanning and parameter
+membership scans. Replacement map key bytes plus all replacement symbol bytes
+must fit one combined input-byte cap, even if the source expression is zero.
+Product admission may use a conservative four-times sum-of-component-bits estimate;
+reject temporary Cartesian expansion before growth even if cancellation would fit.

@@ -1,0 +1,14 @@
+<version>1.0.0</version>
+<language>Rust</language>
+<include>prompts/lib_rust.prompt</include>
+Generate only src/main.rs, a minimal native Rust physics-tools executable.
+Use physics_tools::handle_reader on locked stdin; reject any command-line
+arguments with physics_tools::error invalid_input/arguments exit2.
+Write exactly one library response JSON object plus newline to locked stdout;
+use result exit_code via std::process::ExitCode. Serialization or output I/O
+failure exits5. Diagnostics belong on stderr. No shell, external processes,
+provider, Python, C++, MCP, arbitrary execution, general expression or proof
+engine. Use only public library interface and std plus pinned serde_json.
+Retain tests/test_main.rs independently, testing real process discovery, caller
+supplied 0/2/4 words, semantic error exits, duplicate fields and input byte limit.
+This is manually agent implemented seed bridge, not a full PDD regeneration.

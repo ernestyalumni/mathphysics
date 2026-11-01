@@ -1,0 +1,8 @@
+% Bounded typed expression model F08/F09; manual implementation.
+R1 MUST expose Constant(BigC), Symbol(String), Sum(Vec<Expr>), Product(Vec<Expr>), OrderedProduct(Vec<Expr>), Quotient(Box<Expr>,Box<Expr>).
+R2 MUST validate all subtrees before any zero shortcut. Scalar products commute; ordered products preserve order. Reject mixed additive domains.
+R3 MUST preserve quotient nodes and expose canonical nonzero obligations; reject literal zero denominators and non-scalar denominators.
+R4 MUST reuse tensor Space/Variance; explicit bound/free indices, typed atom slots, matching sum signatures, and exactly two opposite-variance bound occurrences in each additive branch. Reject shadowed, dangling or malformed binders.
+R5 MUST serialize structurally, sort sums/scalar products, length-prefix arbitrary names and alpha-normalize binders. Do not implement tensor symmetry reduction or claim parser roundtrip.
+R6 MUST preflight AST depth using max_degree capped at 256, node count and sum arity using max_terms, aggregate conservative serialization bytes using max_input_bytes, coefficient bits and charged work before derived allocation. No new dependencies.
+R7 MUST prefix canonical strings and nonzero-predicate payloads with qft-expr.v1: to identify the representation version. Precharge signature copying/sorting work and aggregate obligation output bytes before allocating.

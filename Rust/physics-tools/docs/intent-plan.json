@@ -1,0 +1,61 @@
+{
+  "acceptance": {
+    "reasons": [
+      "critical boundary"
+    ],
+    "sentence": "Implement a bounded early F12/F13 Rust JSON CLI tool bridge in proposed mathphysics/Rust/physics-tools over the existing qft-symbolics exact Rust kernel.",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "implement-a-bounded-early-f12-f13-rust-json-cli--e8c6a92d",
+  "original_request": "Implement a bounded early F12/F13 Rust JSON CLI tool bridge in proposed mathphysics/Rust/physics-tools over the existing qft-symbolics exact Rust kernel. MUST support machine-readable discovery and caller-supplied gamma_trace words of at most 12 labels, each 1..64 ASCII identifier bytes, bounded JSON stdin at most 1 MiB, strict unknown/duplicate-field rejection, checked caller budget and nonempty declared domain. MUST distinguish computed/exact_algebra from malformed invalid_input, unsupported, over_budget and panic inconclusive with nonzero error exits. MUST state anticommutator=2h; h=-eta for Srednicki, four-component trace, free unsummed labels including repeated labels, checked-i128 bounds and no formal proof. MUST expose exact structured polynomial output and discovery limits/runtime/no-MCP. MUST NOT expose arbitrary execution, shell, provider, Python, C++, MCP, general F09/F10 engine or proof claims. MUST use pinned cached serde/serde_json with existing qft-symbolics path dependency, independent formula/matrix library and CLI tests, offline debug/release tests and Clippy. MUST preserve src/lib.rs and src/main.rs mappings via versioned lib_rust.prompt/main_rust.prompt, .pddrc and architecture.json plus scoped plan. This is manual agent implementation, not automatic intent apply, full regeneration or complete F13 acceptance. Work only in /tmp/mathphysics-wave1-tools with isolated build target /tmp/mathphysics-wave1-tools-target; final integration changes dependency to ../qft-symbolics. Do not change model/provider/auth config, install, download, commit, spawn agents or modify existing sources.",
+  "original_request_sha256": "e8c6a92d3e8a91ee060fa036bb399a6b6fd0afbaa34ae5f22e62e02957301c11",
+  "project": {
+    "adoption_scenario": "new_subproject_design",
+    "exists": false,
+    "kind": "greenfield",
+    "pdd_signals": [],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/physics-tools",
+    "scope_kind": "subproject"
+  },
+  "recommended_workflow": "design_greenfield",
+  "review": {
+    "examples": [],
+    "must_preserve": [
+      "MUST support machine-readable discovery and caller-supplied gamma_trace words of at most 12 labels, each 1..64 ASCII identifier bytes, bounded JSON stdin at most 1 MiB, strict unknown/duplicate-field rejection, checked caller budget and nonempty declared domain.",
+      "MUST distinguish computed/exact_algebra from malformed invalid_input, unsupported, over_budget and panic inconclusive with nonzero error exits.",
+      "MUST state anticommutator=2h; h=-eta for Srednicki, four-component trace, free unsummed labels including repeated labels, checked-i128 bounds and no formal proof.",
+      "MUST expose exact structured polynomial output and discovery limits/runtime/no-MCP.",
+      "MUST NOT expose arbitrary execution, shell, provider, Python, C++, MCP, general F09/F10 engine or proof claims."
+    ],
+    "open_decisions": [
+      "This sits inside a larger repository. Confirm we should only change this folder.",
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "file",
+    "ref": "/tmp/mathphysics-wave1-tools/docs/request.txt"
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "critical boundary"
+    ],
+    "recommended": true
+  },
+  "title": "Implement a bounded early F12/F13 Rust JSON CLI tool bridge in...",
+  "warnings": []
+}

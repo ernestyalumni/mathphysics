@@ -1,0 +1,98 @@
+chapter,title,printed_start,printed_end_before_next_chapter,prerequisites,wave,specialist_role,inventory_task,toc_source,toc_line,candidate_equation_records,existing_partial_exercise_checks,source_review_status,implementation_status
+1,Attempts at relativistic quantum mechanics,3,14,,W01,kinematics-fields,CH-001,book/ocr-compare/reconciled/merged.md,81,37,,requires_pdf_review,not_assessed
+2,Lorentz invariance,15,21,1,W01,kinematics-fields,CH-002,book/ocr-compare/reconciled/merged.md,82,37,,requires_pdf_review,not_assessed
+3,Canonical quantization of scalar fields,22,30,2,W01,kinematics-fields,CH-003,book/ocr-compare/reconciled/merged.md,83,37,,requires_pdf_review,not_assessed
+4,The spin-statistics theorem,31,34,3,W01,kinematics-fields,CH-004,book/ocr-compare/reconciled/merged.md,84,15,,requires_pdf_review,not_assessed
+5,The LSZ reduction formula,35,42,3,W01,kinematics-fields,CH-005,book/ocr-compare/reconciled/merged.md,85,27,,requires_pdf_review,not_assessed
+6,Path integrals in quantum mechanics,43,49,,W02,scalar-functionals,CH-006,book/ocr-compare/reconciled/merged.md,86,22,,requires_pdf_review,not_assessed
+7,The path integral for the harmonic oscillator,50,53,6,W02,scalar-functionals,CH-007,book/ocr-compare/reconciled/merged.md,87,18,,requires_pdf_review,not_assessed
+8,The path integral for free field theory,54,57,3;7,W02,scalar-functionals,CH-008,book/ocr-compare/reconciled/merged.md,88,18,,requires_pdf_review,not_assessed
+9,The path integral for interacting field theory,58,72,8,W02,scalar-functionals,CH-009,book/ocr-compare/reconciled/merged.md,89,40,,requires_pdf_review,not_assessed
+10,Scattering amplitudes and the Feynman rules,73,78,5;9,W02,scalar-functionals,CH-010,book/ocr-compare/reconciled/merged.md,90,16,,requires_pdf_review,not_assessed
+11,Cross sections and decay rates,79,89,10,W02,scalar-functionals,CH-011,book/ocr-compare/reconciled/merged.md,91,56,,requires_pdf_review,not_assessed
+12,Dimensional analysis with hbar = c = 1,90,92,3,W02,scalar-functionals,CH-012,book/ocr-compare/reconciled/merged.md,92,12,,requires_pdf_review,not_assessed
+13,The Lehmann–Källén form of the exact propagator,93,95,9,W03,loops-renormalization,CH-013,book/ocr-compare/reconciled/merged.md,93,18,,requires_pdf_review,not_assessed
+14,Loop corrections to the propagator,96,106,10;12;13,W03,loops-renormalization,CH-014,book/ocr-compare/reconciled/merged.md,94,54,,requires_pdf_review,not_assessed
+15,The one-loop correction in Lehmann–Källén form,107,110,14,W03,loops-renormalization,CH-015,book/ocr-compare/reconciled/merged.md,95,19,,requires_pdf_review,not_assessed
+16,Loop corrections to the vertex,111,114,14,W03,loops-renormalization,CH-016,book/ocr-compare/reconciled/merged.md,96,15,,requires_pdf_review,not_assessed
+17,Other 1PI vertices,115,116,16,W03,loops-renormalization,CH-017,book/ocr-compare/reconciled/merged.md,97,5,,requires_pdf_review,not_assessed
+18,Higher-order corrections and renormalizability,117,120,17,W03,loops-renormalization,CH-018,book/ocr-compare/reconciled/merged.md,98,8,,requires_pdf_review,not_assessed
+19,Perturbation theory to all orders,121,122,18,W03,loops-renormalization,CH-019,book/ocr-compare/reconciled/merged.md,99,0,,requires_pdf_review,not_assessed
+20,Two-particle elastic scattering at one loop,123,126,19,W03,loops-renormalization,CH-020,book/ocr-compare/reconciled/merged.md,100,19,,requires_pdf_review,not_assessed
+21,The quantum action,127,131,19,W03,loops-renormalization,CH-021,book/ocr-compare/reconciled/merged.md,101,27,,requires_pdf_review,not_assessed
+22,Continuous symmetries and conserved currents,132,139,8,W04,symmetry-rg,CH-022,book/ocr-compare/reconciled/merged.md,102,41,,requires_pdf_review,not_assessed
+23,"Discrete symmetries: P, T, C, and Z",140,145,22,W04,symmetry-rg,CH-023,book/ocr-compare/reconciled/merged.md,103,38,,requires_pdf_review,not_assessed
+24,Nonabelian symmetries,146,149,22,W04,symmetry-rg,CH-024,book/ocr-compare/reconciled/merged.md,104,16,,requires_pdf_review,not_assessed
+25,Unstable particles and resonances,150,156,14,W04,symmetry-rg,CH-025,book/ocr-compare/reconciled/merged.md,108,29,,requires_pdf_review,not_assessed
+26,Infrared divergences,157,161,20,W04,symmetry-rg,CH-026,book/ocr-compare/reconciled/merged.md,110,14,,requires_pdf_review,not_assessed
+27,Other renormalization schemes,162,168,26,W04,symmetry-rg,CH-027,book/ocr-compare/reconciled/merged.md,111,29,,requires_pdf_review,not_assessed
+28,The renormalization group,169,175,27,W04,symmetry-rg,CH-028,book/ocr-compare/reconciled/merged.md,112,46,,requires_pdf_review,not_assessed
+29,Effective field theory,176,187,28,W04,symmetry-rg,CH-029,book/ocr-compare/reconciled/merged.md,113,41,,requires_pdf_review,not_assessed
+30,Spontaneous symmetry breaking,188,191,21,W05,scalar-breaking,CH-030,book/ocr-compare/reconciled/merged.md,114,15,,requires_pdf_review,not_assessed
+31,Broken symmetry and loop corrections,192,197,30,W05,scalar-breaking,CH-031,book/ocr-compare/reconciled/merged.md,115,24,,requires_pdf_review,not_assessed
+32,Spontaneous breaking of continuous symmetries,198,204,22;30,W05,scalar-breaking,CH-032,book/ocr-compare/reconciled/merged.md,116,18,,requires_pdf_review,not_assessed
+33,Representations of the Lorentz group,205,208,2,W06,spinor-foundations,CH-033,book/ocr-compare/reconciled/merged.md,118,21,,requires_pdf_review,not_assessed
+34,Left- and right-handed spinor fields,209,215,3;33,W06,spinor-foundations,CH-034,book/ocr-compare/reconciled/merged.md,119,46,,requires_pdf_review,not_assessed
+35,Manipulating spinor indices,216,220,34,W06,spinor-foundations,CH-035,book/ocr-compare/reconciled/merged.md,120,29,35.1;35.2,requires_pdf_review,partial_selected_checks
+36,Lagrangians for spinor fields,221,231,22;35,W06,spinor-foundations,CH-036,book/ocr-compare/reconciled/merged.md,121,80,,requires_pdf_review,not_assessed
+37,Canonical quantization of spinor fields I,232,236,36,W06,spinor-foundations,CH-037,book/ocr-compare/reconciled/merged.md,122,31,,requires_pdf_review,not_assessed
+38,Spinor technology,237,243,37,W06,spinor-foundations,CH-038,book/ocr-compare/reconciled/merged.md,123,41,,requires_pdf_review,not_assessed
+39,Canonical quantization of spinor fields II,244,251,38,W06,spinor-foundations,CH-039,book/ocr-compare/reconciled/merged.md,124,42,,requires_pdf_review,not_assessed
+40,"Parity, time reversal, and charge conjugation",252,260,23;39,W06,spinor-foundations,CH-040,book/ocr-compare/reconciled/merged.md,125,48,,requires_pdf_review,not_assessed
+41,LSZ reduction for spin-one-half particles,261,266,5;39,W07,fermions-helicity,CH-041,book/ocr-compare/reconciled/merged.md,126,30,,requires_pdf_review,not_assessed
+42,The free fermion propagator,267,270,39,W07,fermions-helicity,CH-042,book/ocr-compare/reconciled/merged.md,127,24,,requires_pdf_review,not_assessed
+43,The path integral for fermion fields,271,274,9;42,W07,fermions-helicity,CH-043,book/ocr-compare/reconciled/merged.md,128,22,,requires_pdf_review,not_assessed
+44,Formal development of fermionic path integrals,275,281,43,W07,fermions-helicity,CH-044,book/ocr-compare/reconciled/merged.md,129,40,,requires_pdf_review,not_assessed
+45,The Feynman rules for Dirac fields,282,290,10;12;41;43,W07,fermions-helicity,CH-045,book/ocr-compare/reconciled/merged.md,130,24,,requires_pdf_review,not_assessed
+46,Spin sums,291,293,45,W07,fermions-helicity,CH-046,book/ocr-compare/reconciled/merged.md,131,13,,requires_pdf_review,not_assessed
+47,Gamma matrix technology,294,297,36,W07,fermions-helicity,CH-047,book/ocr-compare/reconciled/merged.md,132,21,47.1;47.2;47.3,requires_pdf_review,partial_selected_checks
+48,Spin-averaged cross sections,298,302,46;47,W07,fermions-helicity,CH-048,book/ocr-compare/reconciled/merged.md,133,28,,requires_pdf_review,not_assessed
+49,The Feynman rules for Majorana fields,303,307,45,W07,fermions-helicity,CH-049,book/ocr-compare/reconciled/merged.md,134,9,,requires_pdf_review,not_assessed
+50,Massless particles and spinor helicity,308,313,48,W07,fermions-helicity,CH-050,book/ocr-compare/reconciled/merged.md,135,44,50.1a;50.1b;50.2a;50.3;50.4,requires_pdf_review,partial_selected_checks
+51,Loop corrections in Yukawa theory,314,323,19;40;48,W08,yukawa-determinants,CH-051,book/ocr-compare/reconciled/merged.md,136,54,,requires_pdf_review,not_assessed
+52,Beta functions in Yukawa theory,324,326,28;51,W08,yukawa-determinants,CH-052,book/ocr-compare/reconciled/merged.md,137,16,,requires_pdf_review,not_assessed
+53,Functional determinants,327,334,44;45,W08,yukawa-determinants,CH-053,book/ocr-compare/reconciled/merged.md,138,31,,requires_pdf_review,not_assessed
+54,Maxwell's equations,335,338,3,W09,qed-tree,CH-054,book/ocr-compare/reconciled/merged.md,140,25,,requires_pdf_review,not_assessed
+55,Electrodynamics in Coulomb gauge,339,343,54,W09,qed-tree,CH-055,book/ocr-compare/reconciled/merged.md,141,25,,requires_pdf_review,not_assessed
+56,LSZ reduction for photons,344,348,5;55,W09,qed-tree,CH-056,book/ocr-compare/reconciled/merged.md,142,28,,requires_pdf_review,not_assessed
+57,The path integral for photons,349,350,8;56,W09,qed-tree,CH-057,book/ocr-compare/reconciled/merged.md,143,10,,requires_pdf_review,not_assessed
+58,Spinor electrodynamics,351,356,45;57,W09,qed-tree,CH-058,book/ocr-compare/reconciled/merged.md,144,20,,requires_pdf_review,not_assessed
+59,Scattering in spinor electrodynamics,357,361,48;58,W09,qed-tree,CH-059,book/ocr-compare/reconciled/merged.md,145,24,,requires_pdf_review,not_assessed
+60,Spinor helicity for spinor electrodynamics,362,370,50;59,W09,qed-tree,CH-060,book/ocr-compare/reconciled/merged.md,146,42,60.1a;60.1b;60.2a,requires_pdf_review,partial_selected_checks
+61,Scalar electrodynamics,371,375,58,W09,qed-tree,CH-061,book/ocr-compare/reconciled/merged.md,147,15,,requires_pdf_review,not_assessed
+62,Loop corrections in spinor electrodynamics,376,384,51;59,W10,qed-loops,CH-062,book/ocr-compare/reconciled/merged.md,151,49,,requires_pdf_review,not_assessed
+63,The vertex function in spinor electrodynamics,385,389,62,W10,qed-loops,CH-063,book/ocr-compare/reconciled/merged.md,153,23,,requires_pdf_review,not_assessed
+64,The magnetic moment of the electron,390,393,63,W10,qed-loops,CH-064,book/ocr-compare/reconciled/merged.md,154,17,,requires_pdf_review,not_assessed
+65,Loop corrections in scalar electrodynamics,394,402,61;62,W10,qed-loops,CH-065,book/ocr-compare/reconciled/merged.md,155,35,,requires_pdf_review,not_assessed
+66,Beta functions in quantum electrodynamics,403,407,52;62,W10,qed-loops,CH-066,book/ocr-compare/reconciled/merged.md,156,32,,requires_pdf_review,not_assessed
+67,Ward identities in quantum electrodynamics I,408,411,22;59,W10,qed-loops,CH-067,book/ocr-compare/reconciled/merged.md,157,12,,requires_pdf_review,not_assessed
+68,Ward identities in quantum electrodynamics II,412,415,63;67,W10,qed-loops,CH-068,book/ocr-compare/reconciled/merged.md,158,17,,requires_pdf_review,not_assessed
+69,Nonabelian gauge theory,416,420,24;58,W11,yang-mills-brst,CH-069,book/ocr-compare/reconciled/merged.md,159,25,,requires_pdf_review,not_assessed
+70,Group representations,421,429,69,W11,yang-mills-brst,CH-070,book/ocr-compare/reconciled/merged.md,160,40,,requires_pdf_review,not_assessed
+71,The path integral for nonabelian gauge theory,430,434,53;69,W11,yang-mills-brst,CH-071,book/ocr-compare/reconciled/merged.md,161,22,,requires_pdf_review,not_assessed
+72,The Feynman rules for nonabelian gauge theory,435,438,71,W11,yang-mills-brst,CH-072,book/ocr-compare/reconciled/merged.md,162,12,,requires_pdf_review,not_assessed
+73,The beta function in nonabelian gauge theory,439,447,70;72,W11,yang-mills-brst,CH-073,book/ocr-compare/reconciled/merged.md,163,41,,requires_pdf_review,not_assessed
+74,BRST symmetry,448,455,70;71,W11,yang-mills-brst,CH-074,book/ocr-compare/reconciled/merged.md,164,42,,requires_pdf_review,not_assessed
+75,Chiral gauge theories and anomalies,456,467,70;72,W12,anomalies-qcd,CH-075,book/ocr-compare/reconciled/merged.md,165,55,,requires_pdf_review,not_assessed
+76,Anomalies in global symmetries,468,471,75,W12,anomalies-qcd,CH-076,book/ocr-compare/reconciled/merged.md,166,27,,requires_pdf_review,not_assessed
+77,Anomalies and the path integral for fermions,472,477,76,W12,anomalies-qcd,CH-077,book/ocr-compare/reconciled/merged.md,167,36,,requires_pdf_review,not_assessed
+78,Background field gauge,478,485,73,W12,anomalies-qcd,CH-078,book/ocr-compare/reconciled/merged.md,168,42,,requires_pdf_review,not_assessed
+79,Gervais–Neveu gauge,486,488,78,W12,anomalies-qcd,CH-079,book/ocr-compare/reconciled/merged.md,169,15,,requires_pdf_review,not_assessed
+80,The Feynman rules for N × N matrix fields,489,494,10,W12,anomalies-qcd,CH-080,book/ocr-compare/reconciled/merged.md,170,19,,requires_pdf_review,not_assessed
+81,Scattering in quantum chromodynamics,495,506,60;79;80,W12,anomalies-qcd,CH-081,book/ocr-compare/reconciled/merged.md,171,59,,requires_pdf_review,not_assessed
+82,"Wilson loops, lattice theory, and confinement",507,515,29;73,W13,nonperturbative-higgs,CH-082,book/ocr-compare/reconciled/merged.md,172,41,,requires_pdf_review,not_assessed
+83,Chiral symmetry breaking,516,525,76;82,W13,nonperturbative-higgs,CH-083,book/ocr-compare/reconciled/merged.md,173,34,,requires_pdf_review,not_assessed
+84,Spontaneous breaking of gauge symmetries,526,530,32;70,W13,nonperturbative-higgs,CH-084,book/ocr-compare/reconciled/merged.md,174,18,,requires_pdf_review,not_assessed
+85,Spontaneously broken abelian gauge theory,531,537,61;84,W13,nonperturbative-higgs,CH-085,book/ocr-compare/reconciled/merged.md,175,38,,requires_pdf_review,not_assessed
+86,Spontaneously broken nonabelian gauge theory,538,542,85,W13,nonperturbative-higgs,CH-086,book/ocr-compare/reconciled/merged.md,176,27,,requires_pdf_review,not_assessed
+87,The Standard Model: gauge and Higgs sector,543,547,84,W14,standard-model,CH-087,book/ocr-compare/reconciled/merged.md,177,29,,requires_pdf_review,not_assessed
+88,The Standard Model: lepton sector,548,555,75;87,W14,standard-model,CH-088,book/ocr-compare/reconciled/merged.md,178,48,,requires_pdf_review,not_assessed
+89,The Standard Model: quark sector,556,561,88,W14,standard-model,CH-089,book/ocr-compare/reconciled/merged.md,179,37,,requires_pdf_review,not_assessed
+90,Electroweak interactions of hadrons,562,571,83;89,W14,standard-model,CH-090,book/ocr-compare/reconciled/merged.md,180,56,,requires_pdf_review,not_assessed
+91,Neutrino masses,572,575,89,W14,standard-model,CH-091,book/ocr-compare/reconciled/merged.md,181,13,,requires_pdf_review,not_assessed
+92,Solitons and monopoles,576,589,84,W15,solitons-topology,CH-092,book/ocr-compare/reconciled/merged.md,182,63,,requires_pdf_review,not_assessed
+93,Instantons and theta vacua,590,600,92,W15,solitons-topology,CH-093,book/ocr-compare/reconciled/merged.md,183,44,,requires_pdf_review,not_assessed
+94,Quarks and theta vacua,601,609,77;83;93,W15,solitons-topology,CH-094,book/ocr-compare/reconciled/merged.md,184,45,,requires_pdf_review,not_assessed
+95,Supersymmetry,610,621,69,W16,susy-unification,CH-095,book/ocr-compare/reconciled/merged.md,185,79,,requires_pdf_review,not_assessed
+96,The Minimal Supersymmetric Standard Model,622,624,89;95,W16,susy-unification,CH-096,book/ocr-compare/reconciled/merged.md,186,7,,requires_pdf_review,not_assessed
+97,Grand unification,625,635 (bibliography starts 636; verify),89,W16,susy-unification,CH-097,book/ocr-compare/reconciled/merged.md,187,46,,requires_pdf_review,not_assessed

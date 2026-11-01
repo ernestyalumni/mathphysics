@@ -1,0 +1,60 @@
+{
+  "role": "partial historical exercise crosswalk only",
+  "entries": [
+    {
+      "existing_corpus_label": "35.1",
+      "canonical_namespace": "exercise",
+      "item_id": "srednicki:ch035:exercise:35.1",
+      "not_equation_id": "srednicki:ch035:equation:35.1",
+      "existing_record_verbatim": {
+        "id": "35.1",
+        "task": "Exact evaluation of raised sigma matrices",
+        "file": "tests/algebra.rs",
+        "test": "ch35_1_raised_sigma_and_completeness",
+        "evidence": "exact_finite_components",
+        "source": "LaTeX_and_pdfs/Srednicki_QFT.tex:5644-5696; book marker:6164",
+        "classification": "known_result_reproduction",
+        "chapter_complete": false
+      },
+      "source_path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/corpus.json",
+      "source_sha256": "2483092534ea9d4e1043f6b9a20d51bb3916880766b37131ae84f1cc1abaf562",
+      "test_path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/tests/algebra.rs",
+      "test_sha256": "67229de57eb9db0329ecce3010ad2071bcec59c05920ccfdf1039fd5f2433a99",
+      "review": "test_source_inspected_not_executed",
+      "scope_observed": "Source test checks epsilon inverse, all four raised-sigma matrices and 16 components of sigma completeness (35.4).",
+      "limitations": [
+        "No test executed in this assignment; no runtime evidence attached.",
+        "Fixed finite components do not establish the whole chapter, arbitrary indexed Grassmann algebra or general field covariance."
+      ],
+      "chapter_complete": false
+    },
+    {
+      "existing_corpus_label": "35.2",
+      "canonical_namespace": "exercise",
+      "item_id": "srednicki:ch035:exercise:35.2",
+      "not_equation_id": "srednicki:ch035:equation:35.2",
+      "existing_record_verbatim": {
+        "id": "35.2",
+        "task": "Left Lorentz generators and all Lorentz commutators",
+        "file": "tests/algebra.rs",
+        "test": "ch35_2_lorentz_generators",
+        "evidence": "exact_finite_components",
+        "source": "LaTeX_and_pdfs/Srednicki_QFT.tex:5698-5718; book marker:6165",
+        "classification": "known_result_reproduction",
+        "chapter_complete": false
+      },
+      "source_path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/corpus.json",
+      "source_sha256": "2483092534ea9d4e1043f6b9a20d51bb3916880766b37131ae84f1cc1abaf562",
+      "test_path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/tests/algebra.rs",
+      "test_sha256": "67229de57eb9db0329ecce3010ad2071bcec59c05920ccfdf1039fd5f2433a99",
+      "review": "test_source_inspected_not_executed",
+      "scope_observed": "Source test compares boost/rotation components and loops over all Lorentz commutator index choices.",
+      "limitations": [
+        "No test executed in this assignment; no runtime evidence attached.",
+        "Fixed finite components do not establish the whole chapter, arbitrary indexed Grassmann algebra or general field covariance."
+      ],
+      "chapter_complete": false
+    }
+  ],
+  "all_inventory_items_remain_unassessed": true
+}

@@ -1,0 +1,65 @@
+{
+  "scope": "Read-only source audit; clean git status before/after; no builds, tests, network or repository edits. No repository/checked intermediate AGENTS.md or tracked PDD markers found. Parent owns story/architecture. Dates are git committer dates, not mtime.",
+  "commits": {
+    "9b467b83eaa3bfb5aef05cbde06762920ca7a333": "2026-06-01T17:52:33-07:00 test-path alignment and parser changes (HEAD)",
+    "05e8725c991554cc26cc839a4bd20ac01bd3b73b": "2026-06-01T12:02:14-07:00 UnionFind library addition",
+    "ea0880c4c95328ad438c8c098c7da7618d9e6ea9": "2026-06-01T12:02:25-07:00 dependency maintenance; author date 2026-05-31T22:26:35-07:00",
+    "26c1603257a2d0ee367ade48b83295991ab1a419": "2023-12-03T10:21:39-08:00 last HandleReturnValue header change",
+    "ce74fd6fca8a4a14b7f0dbbac28d385c237f0ccf": "2023-11-30T22:07:07-08:00 error implementation/tests"
+  },
+  "patterns": [
+    {
+      "pattern": "Capability libraries, independent of source chapters",
+      "evidence": [
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/DataStructures/UnionFind.h:9-24",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/DataStructures/UnionFind.cpp:12-58",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/DataStructures/CMakeLists.txt:1-15"
+      ],
+      "commit": "05e8725",
+      "adaptation": "Rust capability modules with cohesive public types/functions and private state. Chapters/papers supply examples, provenance and regression fixtures calling shared APIs. No functions-per-chapter; split crates only at meaningful API/dependency boundaries."
+    },
+    {
+      "pattern": "Tests mirror source capabilities and import public interfaces",
+      "evidence": [
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/UnitTests/QuestionsDEntrevue/Streams/FireAlertParser_tests.cpp:1-10",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/UnitTests/CMakeLists.txt:187-195",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/UnitTests/CMakeLists.txt:223-236",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/QuestionsDEntrevue/CMakeLists.txt:8-15"
+      ],
+      "commit": "9b467b8",
+      "adaptation": "Rust internal unit tests plus public-API integration tests, organized by mathematical capability and identities, with book/paper citations as provenance."
+    },
+    {
+      "pattern": "Separate error interpretation from underlying operations",
+      "evidence": [
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Constructicon/Source/Utilities/ErrorHandling/HandleReturnValue.h:25-37",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Constructicon/Source/Utilities/ErrorHandling/HandleReturnValue.cpp:17-31",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Constructicon/Source/UnitTests/Utilities/ErrorHandling/HandleReturnValue_tests.cpp:32-49"
+      ],
+      "commit": "ce74fd6 / 26c1603; older source, not June 2026 implementation",
+      "adaptation": "Result<T, DomainError> for preconditions, unsupported operations and computation limits; separate IO/CLI adapters. Do not port virtual functors, mutable last-error or errno literally."
+    }
+  ],
+  "cautions": [
+    {
+      "caution": "Source/test existence does not establish correctness or production readiness",
+      "evidence": [
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/QuestionsDEntrevue/Streams/FireAlertParser.cpp:81-124",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/UnitTests/QuestionsDEntrevue/Streams/FireAlertParser_tests.cpp:39-45",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/DataStructures/UnionFind.h:15-16",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/DataStructures/UnionFind.cpp:12-24"
+      ],
+      "finding": "Parser does not reset after pressure or a non-alert temperature; subsequent bytes accumulate. Test has TODO audit and expects false/READ_TEMPERATURE. UnionFind exposes state and unchecked indices. Static observations only; no tests executed. Require protected invariants and meaningful negative/control tests."
+    },
+    {
+      "caution": "Improve dependency and test isolation instead of translating CMake structure",
+      "evidence": [
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Constructicon/Source/CMakeLists.txt:70-89",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Constructicon/Source/CMakeLists.txt:97-101",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Constructicon/Source/UnitTests/Utilities/ErrorHandling/HandleReturnValue_tests.cpp:36-47",
+        "/home/propdev/.openclaw/workspace/workspace2/repos/HrdwCCppCUDA/Voltron/Source/UnitTests/CMakeLists.txt:223-240"
+      ],
+      "finding": "Unconditional fetched test/json dependencies and UnitTests; hardcoded errno 97/English error; broad aggregate Check linkage. Rust dev-dependencies, optional adapters/features, reproducible locks and portable domain-error assertions are better analogues. June dependency maintenance does not make 2023 source recent."
+    }
+  ]
+}

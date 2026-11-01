@@ -1,0 +1,70 @@
+{
+  "assumptions": [
+    {
+      "id": "ch003-free-real",
+      "statement": "Free real scalar field in flat 3+1-dimensional spacetime; the inverse-length Klein-Gordon parameter m_KG is nonnegative (including zero); it is not the initial positive nonrelativistic physical mass; classical fields and variations sufficiently regular for the stated formal manipulations. Quantum field values are operator-valued distributions, not bounded pointwise operators."
+    },
+    {
+      "id": "ch003-boundary",
+      "statement": "Surface contributions vanish: variations vanish at spacetime infinity for the action argument; spatial integration by parts and Fourier manipulations require suitable decay, smearing or regulated boundary conditions."
+    },
+    {
+      "id": "ch003-fourier",
+      "statement": "Fourier transforms and Dirac delta identities are understood distributionally, with sufficient test-function regularity. f(|k|) is real, even and nonzero where used. Positive frequency omega=sqrt(kvec squared+m squared); divisions by omega require omega>0 and separate treatment of a massless zero mode."
+    },
+    {
+      "id": "ch003-canonical-boson",
+      "statement": "For canonical scalar quantization use equal-time bosonic commutators: [phi,phi]=[Pi,Pi]=0 and [phi(x),Pi(y)]=i delta3(x-y). Products and integrals require a common invariant domain or a regulator; no operator-domain theorem is claimed."
+    },
+    {
+      "id": "ch003-fock-vacuum",
+      "statement": "Vacuum is annihilated by all annihilation modes; finite products of creation modes give generalized momentum eigenstates or their smeared counterparts. Vacuum energy is subtracted when explicitly stated."
+    },
+    {
+      "id": "ch003-volume-regulator",
+      "statement": "V and delta3(0) are finite-volume/regulated bookkeeping symbols, with (2pi)^3 delta3(0)=V in the stated Fourier convention; no product of distributions at zero is accepted as an ordinary finite number."
+    },
+    {
+      "id": "ch003-uv-cutoff",
+      "statement": "Vacuum energy density is regulated by a spherical spatial-momentum cutoff |k|<=Lambda. The displayed Lambda^4/(16pi^2) is the leading large-Lambda term for Lambda much greater than m (exact at m=0), not the exact massive integral."
+    },
+    {
+      "id": "ch003-lorentz",
+      "statement": "Lorentz transformations preserve eta; positive-energy mass-shell arguments use the orthochronous subgroup. Scalar-field transformations are unitary in the quantum exercise; the chosen vacuum is invariant when transforming particle states."
+    },
+    {
+      "id": "ch003-complex",
+      "statement": "Exercise3.5 uses a nonhermitian complex free scalar; phi and phi-dagger are varied independently, with independent conjugate momenta and two mode families. Canonical equal-time commutators are imposed only where requested."
+    },
+    {
+      "id": "ch003-fermion-test",
+      "statement": "The anticommutator substitution is an unresolved counterfactual scalar-field test, not a consistent scalar-fermion construction or spin-statistics proof. Disappearance of occupation dependence must be distinguished from a residual regulator-dependent identity term and any subtraction; the printed H=-Omega0*V is retained as an unadjudicated source claim."
+    },
+    {
+      "id": "ch003-interaction",
+      "statement": "Adding a local real scalar potential preserves classical Lorentz covariance; quantum stability, boundedness, renormalizability and existence are separate obligations not asserted here."
+    },
+    {
+      "id": "ch003-source-claim",
+      "statement": "This record preserves a source claim or source ambiguity for future assessment; visual confirmation establishes what is printed, not mathematical correctness."
+    },
+    {
+      "id": "ch003-nr-positive-physical-mass",
+      "statement": "The initial nonrelativistic kinetic energy pvec squared/(2m_NR) assumes strictly positive physical particle mass m_NR>0. The source prints this physical mass as m; it is distinct in interpretation and restored units from the later inverse-length Klein-Gordon parameter m_KG>=0. No massless nonrelativistic 1/m formula is asserted."
+    },
+    {
+      "id": "ch003-initial-annihilation",
+      "statement": "The initial a(x) and tilde-a(p) are complex annihilation operators/fields with distinct adjoints, not the later real classical Klein-Gordon scalar phi. Fourier and kinetic identities alone require no Fock-vacuum premise; a vacuum assumption is used only for vacuum or spectrum statements."
+    },
+    {
+      "id": "ch003-generic-kg-candidate",
+      "statement": "Before imposing field reality, use a generic classical two-frequency Klein-Gordon candidate with independent generally complex coefficients a(k),b(k), m_KG>=0 and sufficient Fourier regularity. It is intended to become a real scalar only after b-star(-k)=a(k) is imposed; the coefficients are not required individually to be real."
+    }
+  ],
+  "conventions": [
+    {
+      "id": "srednicki-ch003-local-v1",
+      "statement": "Chapter-local convention pending F04 normalization: eta=g=diag(-1,+1,+1,+1), x^mu=(t,xvec) in c=1 units, partial^2=-partial_t^2+Laplacian, kx=kvec dot xvec-omega*t, k^2=-m^2 on shell. hbar=1 from (3.3), c=1 from (3.8); earlier (3.6) retains explicit c. [A,B]=AB-BA and {A,B}=AB+BA; star is classical complex conjugation, dagger quantum adjoint. Invariant measure dtilde{k}=d3k/((2pi)^3*2omega); the tilde-a normalization instead has delta3(k-kprime) brackets. Heisenberg time evolution dO/dt=i[H,O] for no explicit time dependence, T(a)=exp(-i P^mu a_mu). Compatibility context from existing Rust README: Clifford {gamma^mu,gamma^nu}=-2eta^mu nu, or h=-eta; no Clifford operation is needed in this chapter."
+    }
+  ]
+}

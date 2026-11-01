@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mathphysics.local/contracts/v1/math-item.schema.json",
+  "title": "Mathematical item metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "definitions.schema.json#/$defs/item_id"
+    },
+    "statement": {
+      "$ref": "definitions.schema.json#/$defs/text"
+    },
+    "domain": {
+      "$ref": "definitions.schema.json#/$defs/text"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "definitions.schema.json#/$defs/source"
+      },
+      "minItems": 1,
+      "maxItems": 256
+    },
+    "assumption_refs": {
+      "$ref": "definitions.schema.json#/$defs/references"
+    },
+    "convention_ref": {
+      "type": "string"
+    },
+    "implementation": {
+      "type": "string",
+      "enum": [
+        "unassessed",
+        "specified",
+        "implemented",
+        "research_gap"
+      ]
+    },
+    "evidence_ids": {
+      "$ref": "definitions.schema.json#/$defs/references"
+    }
+  },
+  "required": [
+    "id",
+    "statement",
+    "domain",
+    "sources",
+    "assumption_refs",
+    "convention_ref",
+    "implementation",
+    "evidence_ids"
+  ]
+}

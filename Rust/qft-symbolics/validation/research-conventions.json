@@ -1,0 +1,147 @@
+{
+  "schema": "qft-symbolics-independent-research-checks-v1",
+  "chapter_completion_claim": false,
+  "ledger_integration": "parent-owned; corpus.json unchanged",
+  "test_file": "tests/textbook_research.rs",
+  "source": "Srednicki-QuantumFieldTheory/ocr-compare/reconciled/resolved.md",
+  "source_sha256": "98c3ae6f4f278701d15a164290c7c6dff071f38ef7922aa5808a6447625791f5",
+  "checks": [
+    {
+      "id": "ch35_profiles_preserve_components_and_expose_signs",
+      "equations": [
+        "35.1"
+      ],
+      "evidence_kind": "symbolic_and_component",
+      "assessment": {
+        "debug": "passed",
+        "release": "passed",
+        "scope": "individual named integration check; no aggregate book-completion inference"
+      }
+    },
+    {
+      "id": "ch35_sigma_contraction_all_components_independent_epsilon",
+      "equations": [
+        "35.4",
+        "35.19",
+        "35.20"
+      ],
+      "evidence_kind": "complete_finite_tensor_components",
+      "assessment": {
+        "debug": "passed",
+        "release": "passed",
+        "scope": "individual named integration check; no aggregate book-completion inference"
+      }
+    },
+    {
+      "id": "ch47_symbolic_four_trace_pairings_and_rename_control",
+      "equations": [
+        "47.13"
+      ],
+      "evidence_kind": "symbolic_polynomial",
+      "assessment": {
+        "debug": "passed",
+        "release": "passed",
+        "scope": "individual named integration check; no aggregate book-completion inference"
+      }
+    },
+    {
+      "id": "ch47_component_trace_words_through_six_pauli_oracle",
+      "equations": [
+        "47.1",
+        "47.4",
+        "47.6",
+        "47.8",
+        "47.13"
+      ],
+      "evidence_kind": "evaluated_component_words",
+      "assessment": {
+        "debug": "passed",
+        "release": "passed",
+        "scope": "individual named integration check; no aggregate book-completion inference"
+      }
+    },
+    {
+      "id": "ch47_formal_dimension_and_component_sandwiches",
+      "equations": [
+        "47.18",
+        "47.19",
+        "47.20",
+        "47.21"
+      ],
+      "evidence_kind": "formal_one_word_and_evaluated_sandwiches",
+      "assessment": {
+        "debug": "passed",
+        "release": "passed",
+        "scope": "individual named integration check; no aggregate book-completion inference"
+      }
+    },
+    {
+      "id": "ch50_schouten_symbolic_both_profiles_and_renamed_components",
+      "equations": [
+        "50.36"
+      ],
+      "evidence_kind": "symbolic_polynomial",
+      "assessment": {
+        "debug": "passed",
+        "release": "passed",
+        "scope": "individual named integration check; no aggregate book-completion inference"
+      }
+    },
+    {
+      "id": "ch50_exact_rational_boundary_and_invalid_domains",
+      "equations": [],
+      "evidence_kind": "arithmetic_and_domain_controls",
+      "assessment": {
+        "debug": "passed",
+        "release": "passed",
+        "scope": "individual named integration check; no aggregate book-completion inference"
+      }
+    },
+    {
+      "id": "ch50_massless_factorization_symbolic_and_rational_pauli_witness",
+      "equations": [
+        "50.12",
+        "50.15"
+      ],
+      "evidence_kind": "symbolic_null_and_evaluated_factorization",
+      "assessment": {
+        "debug": "passed",
+        "release": "passed",
+        "scope": "individual named integration check; no aggregate book-completion inference"
+      }
+    },
+    {
+      "id": "ch50_four_bracket_chiral_trace_rational_component_witness",
+      "equations": [
+        "50.37"
+      ],
+      "evidence_kind": "evaluated_chiral_trace",
+      "assessment": {
+        "debug": "passed",
+        "release": "passed",
+        "scope": "individual named integration check; no aggregate book-completion inference"
+      }
+    },
+    {
+      "id": "ch50_nonnull_determinant_sign_control",
+      "equations": [
+        "50.15"
+      ],
+      "evidence_kind": "nonnull_sign_control",
+      "assessment": {
+        "debug": "passed",
+        "release": "passed",
+        "scope": "individual named integration check; no aggregate book-completion inference"
+      }
+    }
+  ],
+  "verification": {
+    "target_dir": "/tmp/mathphysics-next-corpus",
+    "commands": [
+      "cargo test --offline --locked --manifest-path Rust/qft-symbolics/Cargo.toml --test textbook_research",
+      "cargo test --offline --locked --release --manifest-path Rust/qft-symbolics/Cargo.toml --test textbook_research --test conventions --test textbook --test textbook_extended"
+    ],
+    "source_import": "qft_symbolics::conventions::EpsilonConvention",
+    "provider_calls": false
+  }
+}

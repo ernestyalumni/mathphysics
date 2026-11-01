@@ -1,0 +1,439 @@
+{
+  "changed_items": [
+    {
+      "id": "srednicki:ch003:equation:3.1",
+      "fields_changed": [
+        "statement",
+        "domain",
+        "assumption_refs"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.2",
+      "fields_changed": [
+        "domain",
+        "assumption_refs"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.4",
+      "fields_changed": [
+        "domain",
+        "assumption_refs"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.5",
+      "fields_changed": [
+        "domain",
+        "assumption_refs"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.6",
+      "fields_changed": [
+        "domain",
+        "assumption_refs"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.7",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.9",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.10",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.11",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.12",
+      "fields_changed": [
+        "statement",
+        "domain",
+        "assumption_refs"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.13",
+      "fields_changed": [
+        "domain",
+        "assumption_refs"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.14",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.15",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.19",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.20",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.21",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.22",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.23",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.24",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.25",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.26",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.28",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.29",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.30",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.31",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.32",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.34",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:3.36",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p022-eq3.1-position",
+      "fields_changed": [
+        "statement",
+        "domain",
+        "assumption_refs"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p024-eq3.10-first-variation",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p024-eq3.10-boundary",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p025-eq3.13-dummy",
+      "fields_changed": [
+        "domain",
+        "assumption_refs"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p025-eq3.14-reality",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p025-eq3.14-relabel",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p026-eq3.20-field",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p026-eq3.21-linear-combination",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p027-eq3.26-mode-products",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p027-eq3.26-spatial-integral",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p027-eq3.26-prime-integral",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:equation:p027-eq3.26-onshell-cancel",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p022-creation-momentum",
+      "fields_changed": [
+        "domain",
+        "assumption_refs"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p023-additive-spectrum",
+      "fields_changed": [
+        "statement",
+        "domain",
+        "assumption_refs"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:definition:p023-real-scalar",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p023-field-not-wavefunction",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:definition:p024-action-density",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p024-scalar-contractions",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p024-fundamental-variation",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:example:p024-plane-wave",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p024-general-mode-scope",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p024-negative-frequency",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:definition:p025-reality-constraint",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:definition:p026-bidirectional-derivative",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p026-mode-time-independence",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p026-discrete-to-field-legendre",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p027-ordered-quantization",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p028-vacuum-divergence",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p028-vacuum-subtraction",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:prose:p029-fermion-obstruction",
+      "fields_changed": [
+        "statement",
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:definition:p029-translation-setup",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:exercise:3.1",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:exercise:3.3",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:exercise:3.4",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:exercise:3.4.a",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:exercise:3.4.b",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:exercise:3.4.c",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:exercise:3.4.d",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:exercise:3.4.e",
+      "fields_changed": [
+        "domain"
+      ]
+    },
+    {
+      "id": "srednicki:ch003:exercise:3.3.mode-laws",
+      "fields_changed": [
+        "domain"
+      ]
+    }
+  ],
+  "new_assumption_ids": [
+    "ch003-nr-positive-physical-mass",
+    "ch003-initial-annihilation",
+    "ch003-generic-kg-candidate"
+  ],
+  "existing_definition_changes": [
+    "ch003-free-real",
+    "ch003-fermion-test"
+  ],
+  "source_manuscripts_modified": false,
+  "mathematical_refinement": "pending"
+}

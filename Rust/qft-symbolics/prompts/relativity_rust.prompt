@@ -1,0 +1,23 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/relativity.rs; manual prompt-first implementation, no provider regeneration claim.
+Reusable Lorentz metric/vector/boost capabilities, time first, metric diag(-1,1,1,1).
+Rapidity holds finite eta; from_beta rejects nonfinite or |beta|>=1; beta returns
+error when tanh rounds to +/-1 (no clamping). Addition rejects overflow.
+Boost convention: L00=cosh eta, L0i=Li0=ni sinh eta,
+Lij=deltaij+ni nj (cosh eta-1). Axis explicitly validates unit length against
+finite tolerance <=1e-6, never normalizes. Compute cosh-1=2 sinh(eta/2)^2
+for tiny eta. Reject all nonfinite inputs/results, including diagnostic overflow.
+Numerical diagnostics expose absolute and scaled residuals, scale and declared
+absolute/relative tolerances; never assert floating point Lorentz exactness.
+Generic Coefficient exact metric/raise/lower/dot/apply reuse Budget and checked
+matrix operations. Validate inputs before cloning; deterministic budget failures.
+Exact axial rational boosts accept BigQ u=tanh(eta/2), |u|<1. Compute c=(1+u²)/(1-u²)
+and s=2u/(1-u²) with checked BigQ then BigC; no rational eta assertion.
+Symbolic axial boost uses BigPoly labels c,s, returning matrix AND explicit
+condition polynomial c²-s²-1=0. Distinct nonempty labels; checked constructors
+and polynomial arithmetic only; no transcendental parser or copied algorithms.
+Public API and tolerance semantics documented in docs/RELATIVITY.md.
+Independent tests cover sign/frame control, metric, inverse, interval, composition,
+3-4-5 rational boost, symbolic condition, tiny eta, invalid axis/beta/nonfinite,
+budget failure and overflow. Legacy files and mono-notes MUST remain untouched.

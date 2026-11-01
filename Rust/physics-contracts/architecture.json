@@ -1,0 +1,29 @@
+[
+  {
+    "filename": "lib_rust.prompt",
+    "filepath": "src/lib.rs",
+    "description": "Typed mathematical item/evidence metadata and consistency checks; no proof validation",
+    "reason": "Shared F01 schema and assurance boundary",
+    "dependencies": [],
+    "priority": 1,
+    "tags": [
+      "contracts",
+      "metadata",
+      "rust"
+    ]
+  },
+  {
+    "filename": "main_rust.prompt",
+    "filepath": "src/main.rs",
+    "description": "Bounded JSON file/stdin validator CLI",
+    "reason": "Usable agent-facing F01 validation entry point",
+    "dependencies": [
+      "lib_rust.prompt"
+    ],
+    "priority": 2,
+    "tags": [
+      "cli",
+      "rust"
+    ]
+  }
+]

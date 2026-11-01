@@ -1,0 +1,37 @@
+Generate src/checked.rs: additive reusable checked mathematical capabilities.
+Preserve all legacy modules and types. Depend only on existing Coefficient,
+Polynomial, computation Budget/Error, scalar and tensor contracts; no providers.
+All arithmetic must use checked coefficient/polynomial calls with shared Budget.
+Expose generic const-size matrix identity/add/sub/mul/scale/trace/transpose.
+Preflight matrix dimensions/work and coefficient bits before cloning output.
+Fallible sigma/barsigma/gamma validate indices before constructing constant
+entries; build constants directly and negate through checked coefficient calls.
+Generic RationalFunction<A> has private numerator and nonzero denominator;
+construction validates via existing polynomial engine. Add/sub/mul/div/neg,
+residual and evaluation retain original domains without cancelling factors.
+Division must retain the divisor denominator restriction by multiplying both
+result numerator and denominator by that denominator. Reject zero divisors.
+Residual zero is equality only on the common domain, never domain equality.
+Generic commuting polynomial spinor determinant bracket and Schouten; checked
+coefficient BCFW shift validates leg indices and stages updates atomically.
+Selected typed tensor wrapper: budgeted metric compatibility and declaration,
+delegating Context validation. Do not wrap tensor expression arithmetic, whose
+legacy coefficients still use panicking operators. No catch_unwind.
+Independent tests cover large BigC, explicit independent gamma matrices,
+Schouten component identities, poles including quotient domain preservation,
+invalid indices/zero divisors and resource failures. No chapter dispatch.
+Document limits: deterministic budgets not OOM/time limits, trusted Coefficient
+implementations must obey their trait contract; no full tensor migration/CAS.
+
+Tensor declaration MUST preflight conservative closure work and storage against
+shared Budget before Context::declare: rank<=8; None group bound=1, built-in
+symmetric/antisymmetric bound=n!, arbitrary signed generators bound=2*n!
+(identity with negative sign is legal). Charge closure comparison/permutation
+work and transient storage conservatively before allocation. Track aggregate
+successful declaration count, conservative group-entry count and retained
+name/slot/group storage bytes privately across calls, even with renewed budgets.
+Check combined declaration+group Terms and storage InputBytes before mutation.
+Only commit counters after successful underlying declaration. Failed preflight
+or Context validation/orbit exhaustion leaves registry and counters unchanged;
+Budget work already spent need not roll back. Existing orbit_steps is an
+additional per-declaration cap. No OS-allocation/time guarantee.

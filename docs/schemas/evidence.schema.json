@@ -1,0 +1,293 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mathphysics.local/contracts/v1/evidence.schema.json",
+  "title": "Evidence metadata; no proof or artifact replay",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "definitions.schema.json#/$defs/name"
+    },
+    "item_id": {
+      "type": "string"
+    },
+    "statement": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "assumption_refs": {
+      "$ref": "definitions.schema.json#/$defs/references"
+    },
+    "convention_ref": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "exact_algebra",
+        "numerical",
+        "formal_kernel",
+        "certificate_replay",
+        "external_comparison",
+        "source_derivation"
+      ]
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "established",
+        "computed",
+        "counterexample",
+        "inconclusive",
+        "unsupported",
+        "invalid_input"
+      ]
+    },
+    "arithmetic": {
+      "type": "string",
+      "enum": [
+        "exact",
+        "approximate",
+        "not_applicable"
+      ]
+    },
+    "operation": {
+      "$ref": "definitions.schema.json#/$defs/operation"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "definitions.schema.json#/$defs/artifact"
+      },
+      "minItems": 1,
+      "maxItems": 256
+    },
+    "checker": {
+      "anyOf": [
+        {
+          "$ref": "definitions.schema.json#/$defs/checker"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "numerical": {
+      "anyOf": [
+        {
+          "$ref": "definitions.schema.json#/$defs/numerical"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reason": {
+      "anyOf": [
+        {
+          "$ref": "definitions.schema.json#/$defs/text"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "resources": {
+      "$ref": "definitions.schema.json#/$defs/resources"
+    }
+  },
+  "required": [
+    "id",
+    "item_id",
+    "statement",
+    "domain",
+    "assumption_refs",
+    "convention_ref",
+    "kind",
+    "outcome",
+    "arithmetic",
+    "operation",
+    "artifacts",
+    "resources"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "enum": [
+              "inconclusive",
+              "unsupported",
+              "invalid_input"
+            ]
+          }
+        },
+        "required": [
+          "outcome"
+        ]
+      },
+      "then": {
+        "required": [
+          "reason"
+        ],
+        "properties": {
+          "reason": {
+            "$ref": "definitions.schema.json#/$defs/text"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "numerical"
+            ]
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "required": [
+          "numerical"
+        ],
+        "properties": {
+          "arithmetic": {
+            "const": "approximate"
+          },
+          "outcome": {
+            "not": {
+              "const": "established"
+            }
+          },
+          "numerical": {
+            "$ref": "definitions.schema.json#/$defs/numerical"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "exact_algebra",
+              "formal_kernel",
+              "certificate_replay"
+            ]
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "arithmetic": {
+            "const": "exact"
+          },
+          "numerical": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "external_comparison",
+              "source_derivation"
+            ]
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "outcome": {
+            "not": {
+              "const": "established"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "arithmetic": {
+            "enum": [
+              "approximate"
+            ]
+          }
+        },
+        "required": [
+          "arithmetic"
+        ]
+      },
+      "then": {
+        "required": [
+          "numerical"
+        ],
+        "properties": {
+          "numerical": {
+            "$ref": "definitions.schema.json#/$defs/numerical"
+          },
+          "outcome": {
+            "not": {
+              "const": "established"
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "numerical": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "formal_kernel",
+              "certificate_replay"
+            ]
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "required": [
+          "checker"
+        ],
+        "properties": {
+          "checker": {
+            "$ref": "definitions.schema.json#/$defs/checker"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "checker": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

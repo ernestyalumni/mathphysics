@@ -1,0 +1,67 @@
+Checking for updates...
+{
+  "acceptance": {
+    "reasons": [
+      "critical boundary"
+    ],
+    "sentence": "can you go ahead and do those tasks please?",
+    "story_recommended": true
+  },
+  "ask_the_human": [
+    "Which current behavior should we lock down with tests before changing anything?"
+  ],
+  "candidate_targets": [],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "reusable-exact-arithmetic-foundation-and-library-98053e72",
+  "original_request": "can you go ahead and do those tasks please? Implement approved LIB01/LIB02 boundary audit and independent consumer qualification, F06 first shared structured errors and bounded resource accounting, and F07 arbitrary-precision rational/Gaussian-rational backend with reusable polynomial/Clifford integration. Preserve existing Copy Q/C APIs and small-kernel/CLI conventions via explicit compatibility paths, never silent precision or sign changes. Extract gateway SU2 mathematics to a typed reusable lie-groups module. Keep source/examples in mathphysics, builds/evidence outside. Tests must independently cover large exact values, former i128 boundaries, zero denominators, errors/budgets, CLI and old callers. Do not claim all tensors/matrices migrated, formal proof, OS memory/time isolation or full research readiness. Use pinned pure-Rust numerical dependencies if needed; no provider calls or external repo edits.",
+  "original_request_sha256": "98053e72e8ba892bdbdf48ea0d8acd2bdcb77362688ba2142f653f5c196b1063",
+  "project": {
+    "adoption_scenario": "existing_subproject_adoption",
+    "exists": true,
+    "kind": "conventional_brownfield",
+    "pdd_signals": [],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/qft-symbolics",
+    "scope_kind": "subproject"
+  },
+  "recommended_workflow": "characterize_then_adopt",
+  "review": {
+    "examples": [],
+    "must_preserve": [
+      "Preserve existing Copy Q/C APIs and small-kernel/CLI conventions via explicit compatibility paths, never silent precision or sign changes.",
+      "Tests must independently cover large exact values, former i128 boundaries, zero denominators, errors/budgets, CLI and old callers.",
+      "Do not claim all tensors/matrices migrated, formal proof, OS memory/time isolation or full research readiness."
+    ],
+    "open_decisions": [
+      "Which current behavior should we lock down with tests before changing anything?",
+      "This sits inside a larger repository. Confirm we should only change this folder.",
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "critical boundary"
+    ],
+    "recommended": true
+  },
+  "title": "Reusable exact arithmetic foundation and library boundaries",
+  "warnings": []
+}
+
+--- Command Execution Summary ---
+  Context compression: off; fallback policy: full
+-------------------------------------

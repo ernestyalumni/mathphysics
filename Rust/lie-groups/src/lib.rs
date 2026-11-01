@@ -117,3 +117,5 @@ pub(crate) fn tolerance<T: Real>(value: T) -> Result<(), Error> {
     }
     Ok(())
 }
+
+pub mod su2_observation;

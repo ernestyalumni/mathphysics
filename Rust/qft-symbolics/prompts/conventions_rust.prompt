@@ -1,0 +1,20 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/conventions.rs. Manual implementation; provider regeneration unverified.
+Use existing Coefficient, Polynomial, Budget, computation::Result only.
+Expose EpsilonConvention::{Library,MonoNotes}; Copy,Clone,Debug,Eq,PartialEq.
+R1 MUST: upper12/lower12 return (+1,-1) for Library and (-1,+1) for MonoNotes.
+R2 MUST: raise and lower apply epsilon matrices to ordered (1,2) components;
+raise(v)=upper12*(v[1],-v[0]), lower(v)=lower12*(v[1],-v[0]).
+R3 MUST: bracket(a,c)=upper12*(a[0]*c[1]-a[1]*c[0]) for commuting components.
+R4 MUST: convert_lower(self,target,v,b) keeps lower components fixed;
+convert_upper multiplies upper components by self.upper12()*target.upper12().
+Lowering converted upper components with target recovers original lower components.
+R5 MUST: all polynomial APIs are generic over Coefficient and accept a mutable
+shared Budget, returning computation::Result. Even identity conversions validate
+resource limits. No panic arithmetic or backend narrowing.
+R6 MUST NOT: choose a default profile, migrate existing callers, edit notes, or
+interpret commuting determinants as Grassmann field bilinears.
+Signatures: upper12/lower12(self)->i64 (const); raise/lower/convert_lower/
+convert_upper -> Result<[Polynomial<A>;2]>; bracket -> Result<Polynomial<A>>.
+Vector parameters are borrowed arrays; conversion target follows self.

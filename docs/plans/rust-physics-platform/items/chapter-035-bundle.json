@@ -1,0 +1,1619 @@
+{
+  "schema_version": "mathphysics.contracts.v1",
+  "assumptions": [
+    {
+      "id": "ch035-finite-components",
+      "statement": "Undotted and dotted spinor spaces are distinct complex two-dimensional spaces; Lorentz indices have four components. Pauli and invariant tensors have commuting complex entries, independent of field statistics."
+    },
+    {
+      "id": "ch035-index-typing",
+      "statement": "Preserve dottedness, variance, slot order and free signatures. Contract epsilon on its second slot for raising/lowering. A first-slot contraction adds a minus sign; dummy changes must avoid capture."
+    },
+    {
+      "id": "ch035-lorentz",
+      "statement": "L and R are left/right Weyl representation matrices compatible with the sigma invariant and eta=(-,+,+,+). Covariance is considered in the connected proper orthochronous group and its spin cover, with inherited chapter34 representation conventions."
+    },
+    {
+      "id": "ch035-infinitesimal",
+      "statement": "Retain terms linear in antisymmetric delta-omega_mu_nu in the expansion 1+(i/2)delta-omega_mu_nu S^mu nu; repeated antisymmetric Lorentz pairs are summed in this convention. Drop O(delta-omega^2) only when deriving first-order identities."
+    },
+    {
+      "id": "ch035-grassmann",
+      "statement": "For the bilinear manipulations assume the indicated Weyl components are odd generators with anticommuting products. The printed (35.24) is used as an algebraic premise; it is not certified as an unrestricted unequal-time quantum-operator relation in every interacting or massive theory."
+    },
+    {
+      "id": "ch035-adjoint",
+      "statement": "Hermitian conjugation is an antilinear order-reversing operation, interchanges dotted and undotted spinor types, and conjugates complex matrix entries. It does not by itself introduce a Grassmann swap sign."
+    },
+    {
+      "id": "ch035-local-products",
+      "statement": "Same-point field bilinears are formal composite expressions here. Operator domains, smearing, renormalization of products and a full spin-statistics theorem are outside the present source inventory."
+    },
+    {
+      "id": "ch035-chapter34",
+      "statement": "Exercises35.2 and35.3 import (34.9),(34.10),(34.17). The imported statements were text-read on PDF234/235 (printed210/211); those prerequisite pages were not visually reviewed in this assignment."
+    },
+    {
+      "id": "ch035-generator-independent-parameters",
+      "statement": "Conditional inherited generator convention: S_L, S_R and S_V satisfy S^{mu nu}=-S^{nu mu}. Lowered delta-omega_mu_nu is antisymmetric with six independently variable entries mu<nu; the repeated ordered-pair sum in +(i/2)delta-omega*S counts both orders. Coefficient extraction is only at first order with O(delta-omega^2) discarded. These are premises for the source derivation, not a certified proof of generator antisymmetry."
+    },
+    {
+      "id": "ch035-left-lowered-symmetry",
+      "statement": "Conditional source premise: the two-lower-undotted generator is symmetric in its spinor slots, as stated by srednicki:ch035:prose:p217-generator-symmetry-left following srednicki:ch035:equation:35.8. Use this named source result conditionally; no proof artifact or independent verification is supplied."
+    },
+    {
+      "id": "ch035-right-lowered-symmetry",
+      "statement": "Conditional source premise: the two-lower-dotted generator is symmetric in its spinor slots, as stated by srednicki:ch035:prose:p217-generator-symmetry-right by the dotted analogue of epsilon invariance. Use this named source result conditionally; index typing alone does not establish it and no proof artifact is supplied."
+    },
+    {
+      "id": "ch035-projection-relation",
+      "statement": "Conditional source premise: the generator/sigma relation is exactly the ordered expression recorded by srednicki:ch035:equation:35.16, obtained in the source from srednicki:ch035:equation:35.15 using srednicki:ch035:equation:35.4. Projection consumes this relation, the appropriate lowered-generator symmetry and the ordered epsilon contraction. This names a derivation dependency, not an established theorem."
+    },
+    {
+      "id": "ch035-inherited-field-adjoint-compatibility",
+      "statement": "Conditional inherited chapter34 premises for srednicki:ch035:equation:35.28: the two left Weyl fields obey the same L field transformation at Lambda^-1 x; daggered fields obey the compatible conjugate/right Weyl transformation with explicit epsilon variance conversion and invariant sigma compatibility. U is invertible, implements the declared transformation by U^-1(.)U and this action respects products and the antilinear order-reversing adjoint. In a Hilbert-space realization require U dagger=U^-1 on a common invariant domain; no such realization, domain theorem or prerequisite proof is certified here. These inherited field/adjoint premises are distinct from checking finite sigma matrices."
+    }
+  ],
+  "conventions": [
+    {
+      "id": "srednicki-ch035-local-v1",
+      "statement": "Chapter35 local convention pending F04 normalization: eta=g=diag(-1,+1,+1,+1); epsilon^12=epsilon^(dot1 dot2)=epsilon_21=epsilon_(dot2 dot1)=+1, epsilon^21=epsilon^(dot2 dot1)=epsilon_12=epsilon_(dot1 dot2)=-1, diagonal epsilon entries zero. Raise/lower by contracting epsilon second slot. sigma^mu_(a dota)=(I,Pauli1,Pauli2,Pauli3); barsigma^(mu dota a)=epsilon^(ab) epsilon^(dota dotb) sigma^mu_(b dotb)=(I,-Pauli1,-Pauli2,-Pauli3). Suppressed undotted contraction is upper-then-lower, chi^a psi_a; suppressed dotted contraction is lower-then-upper, chi-dagger_dota psi-dagger^dota. Left-handed fields are written without daggers, right-handed fields as daggers. Lorentz generator expansion uses +(i/2)delta-omega*S. The mixed-index S_R in (35.22) has FIRST dotted index upper and SECOND lower, unlike the lower-upper S_R in (35.12); epsilon conversions must be explicit. Existing Rust context uses Clifford=-2eta, not +2eta; Clifford is not needed to state this chapter."
+    }
+  ],
+  "items": [
+    {
+      "id": "srednicki:ch035:equation:35.1",
+      "statement": "Fix antisymmetric spinor metrics with epsilon^12=+1 and epsilon_12=-1, identically for dotted indices; reverse index order reverses each sign.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 240,
+            "printed_page": "216"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.2",
+      "statement": "The invariant sigma tensor with lower undotted then lower dotted slot has time component I and spatial components the Pauli matrices.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 240,
+            "printed_page": "216"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.3",
+      "statement": "Choose Pauli matrices with off-diagonal entries (1,1) for sigma1, (-i,+i) for sigma2, and diagonal (+1,-1) for sigma3.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 240,
+            "printed_page": "216"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.4",
+      "statement": "Lorentz-contract two lower-lower sigma tensors to obtain -2 epsilon_ab epsilon_dota_dotb, with all four free spinor slots retained.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 240,
+            "printed_page": "216"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.5",
+      "statement": "Contract two sigma tensors with epsilon^ab and epsilon^dota_dotb to obtain -2g^mu nu, retaining both Lorentz indices free.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.6",
+      "statement": "Epsilon_ab is invariant under the product L_a^c L_b^d acting on its two undotted slots.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.7",
+      "statement": "Expand L near identity as delta_a^b+(i/2)delta-omega_mu_nu (S_L^mu nu)_a^b to first order.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-infinitesimal",
+        "ch035-generator-independent-parameters"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.8",
+      "statement": "First-order epsilon invariance gives an ordered generator-epsilon sum; lowering slots converts it to -(S_L)_ab+(S_L)_ba, which must vanish.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-infinitesimal",
+        "ch035-generator-independent-parameters"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.9",
+      "statement": "The sigma tensor is invariant under one vector Lorentz transformation together with L on the undotted slot and R on the dotted slot.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.10",
+      "statement": "Expand the vector representation as delta^rho_tau+(i/2)delta-omega_mu_nu(S_V^mu nu)^rho_tau.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-infinitesimal",
+        "ch035-generator-independent-parameters"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.11",
+      "statement": "For the sigma invariance calculation, use the same first-order L expansion with coefficient +i/2.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-infinitesimal",
+        "ch035-generator-independent-parameters"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.12",
+      "statement": "Expand R with lower first dotted slot and upper second dotted slot as identity plus (i/2)delta-omega_mu_nu S_R^mu nu.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-infinitesimal",
+        "ch035-generator-independent-parameters"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.13",
+      "statement": "The vector generator is (1/i)(g^mu rho delta^nu_tau-g^nu rho delta^mu_tau).",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.14",
+      "statement": "Linear sigma invariance gives the vector-generator metric/delta action on sigma plus i*S_L acting on its undotted slot plus i*S_R on its dotted slot, summing to zero.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-infinitesimal",
+        "ch035-generator-independent-parameters"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.15",
+      "statement": "Multiply the sigma invariance relation by sigma_(rho c dotc), yielding the antisymmetrized sigma^mu_(c dotc) sigma^nu_(a dota) terms and two contracted generator-sigma products.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.16",
+      "statement": "Use sigma completeness on both contracted pairs to reduce the generator terms to +2i(S_L)_ac epsilon_dota_dotc and +2i(S_R)_dota_dotc epsilon_ac.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.17",
+      "statement": "Solve for the two-lower-index S_L as (i/4)epsilon^(dota dotc) times [sigma^mu_(a dota)sigma^nu_(c dotc)-sigma^nu_(a dota)sigma^mu_(c dotc)].",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-right-lowered-symmetry",
+        "ch035-projection-relation"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.18",
+      "statement": "Solve analogously for two-lower-dotted-index S_R as (i/4)epsilon^ac times the same antisymmetrized sigma product.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-left-lowered-symmetry",
+        "ch035-projection-relation"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.19",
+      "statement": "Define barsigma with upper dotted then upper undotted slots by raising both lower sigma slots with two upper epsilons, preserving the displayed order.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.20",
+      "statement": "The numerically evaluated raised sigma tensor is barsigma^mu=(I,-Pauli1,-Pauli2,-Pauli3), with upper dotted/undotted row-column types.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.21",
+      "statement": "With lower-upper undotted generator slots, S_L^mu nu=+(i/4)(sigma^mu barsigma^nu-sigma^nu barsigma^mu).",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.22",
+      "statement": "With UPPER-LOWER dotted generator slots, S_R^mu nu=-(i/4)(barsigma^mu sigma^nu-barsigma^nu sigma^mu); do not identify its raw matrix entries with the lower-upper form without epsilon conversion.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.23",
+      "statement": "Define suppressed bilinears by chi psi=chi^a psi_a and chi-dagger psi-dagger=chi-dagger_dota psi-dagger^dota, using different undotted/dotted contraction orders.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; antilinear order-reversing adjoint with dotted-type interchange; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-adjoint",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.24",
+      "statement": "The source assumes chi_a(x)psi_b(y)=-psi_b(y)chi_a(x) for the Weyl-component manipulations. Record this as the stated anticommuting algebra premise, not a universal quantum-field locality theorem.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; formal odd anticommuting field components; not an unconditional unequal-time operator assertion; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-grassmann",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.25",
+      "statement": "For odd components, exchanging the fields gives one minus sign and reversing the epsilon contraction gives another, so the contracted bilinear chi psi equals psi chi.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; formal odd anticommuting field components; not an unconditional unequal-time operator assertion; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-grassmann",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.26",
+      "statement": "The adjoint of chi^a psi_a reverses factor order and changes spinor types, giving psi-dagger_dota chi-dagger^dota, abbreviated psi-dagger chi-dagger.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; antilinear order-reversing adjoint with dotted-type interchange; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-adjoint",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.27",
+      "statement": "Expand the mixed bilinear psi-dagger barsigma^mu chi as psi-dagger_dota barsigma^(mu dota c) chi_c, with both suppressed contractions restored.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; antilinear order-reversing adjoint with dotted-type interchange; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-adjoint",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.28",
+      "statement": "The mixed bilinear transforms as a Lorentz vector: U^-1 V^mu(x)U=Lambda^mu_nu V^nu(Lambda^-1 x), with the otherwise suppressed spacetime argument restored.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); antilinear order-reversing adjoint with dotted-type interchange; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-adjoint",
+        "ch035-local-products",
+        "ch035-inherited-field-adjoint-compatibility"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:35.29",
+      "statement": "The adjoint of psi-dagger barsigma^mu chi is chi-dagger barsigma^mu psi; reverse all factors, change dotted types and use Hermiticity of barsigma to reach this expression.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; antilinear order-reversing adjoint with dotted-type interchange; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-adjoint",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p216-prerequisite",
+      "statement": "Chapter34 is the declared prerequisite and supplies the left/right Weyl representations and invariant epsilon tensors.",
+      "domain": "proper orthochronous Lorentz spin representations with eta=(-,+,+,+); imported prerequisite formulas text-checked only",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 240,
+            "printed_page": "216"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-lorentz",
+        "ch035-chapter34"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:definition:p216-raise-lower-second-slot",
+      "statement": "Raise and lower spinor slots using epsilon second-index contraction; contracting its first index instead adds an explicit minus sign.",
+      "domain": "typed dottedness/variance with ordered epsilon contractions; complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 240,
+            "printed_page": "216"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-index-typing",
+        "ch035-finite-components"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p216-invariant-contraction",
+      "statement": "Contracting compatible slots of invariant symbols leaves an invariant tensor. The four-spinor-slot sigma contraction is proportional to the product of undotted and dotted epsilons; component evaluation determines the coefficient -2.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 240,
+            "printed_page": "216"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p216-footnote-compatibility",
+      "statement": "The footnote treats the sigma component assignment as viable only if it obeys the invariant-symbol contraction; a failed component check would invalidate that assignment.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 240,
+            "printed_page": "216"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-lorentz"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p217-vector-proportionality",
+      "statement": "The epsilon-contracted pair of sigma tensors must be proportional to the Lorentz metric; the claimed coefficient is -2.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p217-generator-symmetry-left",
+      "statement": "Since the first-order epsilon-invariance condition holds for arbitrary antisymmetric transformation parameters, the two-lower-spinor-index S_L is symmetric in those spinor slots.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-infinitesimal",
+        "ch035-generator-independent-parameters"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p217-generator-symmetry-right",
+      "statement": "Apply the dotted epsilon-invariance argument to conclude symmetry of the two-lower-dotted-index S_R.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-infinitesimal",
+        "ch035-generator-independent-parameters"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:p217-eq35.8-unlowered-step",
+      "statement": "Before lowering the second generator slots, retain the sum (S_L)_a^c epsilon_cb+(S_L)_b^d epsilon_ad; lowering produces the minus sign on the first term.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-infinitesimal",
+        "ch035-generator-independent-parameters"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:p217-infinitesimal-vector",
+      "statement": "The infinitesimal vector Lorentz matrix is delta^mu_nu+delta-omega^mu_nu before insertion of its generator representation.",
+      "domain": "proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-lorentz",
+        "ch035-infinitesimal",
+        "ch035-generator-independent-parameters"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p217-extract-generator-coefficient",
+      "statement": "Substitute the separate vector/L/R first-order expansions into sigma invariance and equate the coefficient of delta-omega to obtain (35.14).",
+      "domain": "proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 241,
+            "printed_page": "217"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-lorentz",
+        "ch035-infinitesimal",
+        "ch035-index-typing",
+        "ch035-generator-independent-parameters"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:p218-epsilon-symmetric-zero",
+      "statement": "The contraction epsilon^(dota dotc)(S_R)_dota_dotc vanishes because epsilon is antisymmetric and the lowered generator is symmetric.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-right-lowered-symmetry"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:p218-epsilon-trace-minus-two",
+      "statement": "The direct slotwise contraction epsilon^(dota dotc)epsilon_dota_dotc equals -2, rather than the sign associated with reversing a lower-index order.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p218-project-left-generator",
+      "statement": "Contract (35.16) with upper dotted epsilon to eliminate S_R and isolate S_L, including the -2 epsilon contraction factor.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-right-lowered-symmetry",
+        "ch035-projection-relation"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p218-project-right-generator",
+      "statement": "Contract (35.16) with upper undotted epsilon to isolate S_R by the analogous symmetry argument.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-left-lowered-symmetry",
+        "ch035-projection-relation"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:definition:p218-suppressed-orders",
+      "statement": "A suppressed undotted pair means upper then lower; a suppressed dotted pair means lower then upper. These are typed contraction conventions, not a license to commute factors.",
+      "domain": "typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p218-generator-slots",
+      "statement": "The suppressed inner undotted pair in (35.22) is upper-lower, whereas the inner dotted pair in (35.21) is lower-upper; external S_R slots have also changed variance relative to (35.12).",
+      "domain": "typed dottedness/variance with ordered epsilon contractions; complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-index-typing",
+        "ch035-finite-components"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p218-statistics-premise",
+      "statement": "The text motivates anticommuting Weyl fields by their spin-one-half interpretation and spin-statistics. This chapter uses that premise without proving the full spin-statistics theorem.",
+      "domain": "formal odd anticommuting field components; not an unconditional unequal-time operator assertion; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 242,
+            "printed_page": "218"
+          },
+          "review": "visually_checked"
+        },
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-grassmann",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:p219-eq35.25-field-swap",
+      "statement": "First exchange the two odd component fields in chi^a psi_a, obtaining -psi_a chi^a.",
+      "domain": "formal odd anticommuting field components; not an unconditional unequal-time operator assertion; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-grassmann",
+        "ch035-index-typing",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:p219-eq35.25-epsilon-swap",
+      "statement": "Then change from lower-upper to upper-lower undotted contraction order; its epsilon minus sign cancels the field-exchange minus sign.",
+      "domain": "formal odd anticommuting field components; not an unconditional unequal-time operator assertion; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-grassmann",
+        "ch035-index-typing",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:p219-eq35.26-adjoint-order",
+      "statement": "The intermediate adjoint step is (psi_a)-dagger (chi^a)-dagger; order reversal itself is not an additional fermion interchange.",
+      "domain": "antilinear order-reversing adjoint with dotted-type interchange; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-adjoint",
+        "ch035-index-typing",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p219-dagger-bilinear-symmetry",
+      "statement": "By the dotted counterpart of the odd-component argument, psi-dagger chi-dagger equals chi-dagger psi-dagger.",
+      "domain": "formal odd anticommuting field components; not an unconditional unequal-time operator assertion; antilinear order-reversing adjoint with dotted-type interchange; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-grassmann",
+        "ch035-adjoint",
+        "ch035-index-typing",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:definition:p219-chirality-dagger",
+      "statement": "When indices are hidden, the notation reserves undaggered fields for left-handed Weyl fields and daggered fields for right-handed ones; dottedness must still be tracked internally.",
+      "domain": "antilinear order-reversing adjoint with dotted-type interchange; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-adjoint",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:example:p219-vector-bilinear",
+      "statement": "The mixed bilinear supplies an explicit example of a Lorentz vector constructed from two Weyl fields and barsigma.",
+      "domain": "proper orthochronous Lorentz spin representations with eta=(-,+,+,+); typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-lorentz",
+        "ch035-index-typing",
+        "ch035-local-products",
+        "ch035-inherited-field-adjoint-compatibility"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p219-vector-arguments",
+      "statement": "Restore the spacetime arguments suppressed in (35.28): the transformed field is evaluated at x on the left and Lambda^-1 x on the right.",
+      "domain": "proper orthochronous Lorentz spin representations with eta=(-,+,+,+); formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-lorentz",
+        "ch035-local-products",
+        "ch035-inherited-field-adjoint-compatibility"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:p219-eq35.29-type-conjugation",
+      "statement": "In the second line of the adjoint derivation, reverse the spinor factors and complex-conjugate the barsigma component with an undotted a and dotted c before using Hermiticity.",
+      "domain": "antilinear order-reversing adjoint with dotted-type interchange; complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-adjoint",
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:equation:p219-eq35.29-hermiticity",
+      "statement": "Hermiticity identifies the complex-conjugated barsigma component with its transposed component, allowing the result to be written chi-dagger barsigma^mu psi.",
+      "domain": "antilinear order-reversing adjoint with dotted-type interchange; complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-adjoint",
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-local-products"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p219-barsigma-hermitian",
+      "statement": "Each of I,-sigma1,-sigma2,-sigma3 is Hermitian. The Pauli sigma2 entries are complex; using transpose without complex conjugation would give a wrong sign.",
+      "domain": "antilinear order-reversing adjoint with dotted-type interchange; complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 243,
+            "printed_page": "219"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-adjoint",
+        "ch035-finite-components"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:exercise:35.1",
+      "statement": "Evaluate the two-epsilon definition of barsigma starting from the lower-lower sigma components and obtain (I,-Pauli). Keep matrix row/column order and dottedness explicit.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 244,
+            "printed_page": "220"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:exercise:35.2",
+      "statement": "Compare the sigma-barsigma expression for S_L in (35.21) with chapter34 rotation and boost generators in (34.9) and (34.10).",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); imported prerequisite formulas text-checked only",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 244,
+            "printed_page": "220"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-chapter34"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:exercise:35.3",
+      "statement": "Check the upper-lower dotted S_R expression (35.22) against the lower-upper dotted conjugation relation (34.17), explicitly converting variance before comparing components.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); antilinear order-reversing adjoint with dotted-type interchange; imported prerequisite formulas text-checked only",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 244,
+            "printed_page": "220"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing",
+        "ch035-lorentz",
+        "ch035-adjoint",
+        "ch035-chapter34"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:exercise:35.4",
+      "statement": "Verify the fully spinor-contracted sigma identity (35.5), including the Lorentz metric sign and the -2 normalization.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 244,
+            "printed_page": "220"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    },
+    {
+      "id": "srednicki:ch035:prose:p220-ex35.1-hint",
+      "statement": "The hint recommends arranging tensors in ordinary matrix-multiplication order and using numerical epsilon-upper=-epsilon-lower=i*sigma2; index position and row/column order remain essential.",
+      "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
+      "sources": [
+        {
+          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+          "locator": {
+            "kind": "pdf",
+            "pdf_page": 244,
+            "printed_page": "220"
+          },
+          "review": "visually_checked"
+        }
+      ],
+      "assumption_refs": [
+        "ch035-finite-components",
+        "ch035-index-typing"
+      ],
+      "convention_ref": "srednicki-ch035-local-v1",
+      "implementation": "unassessed",
+      "evidence_ids": []
+    }
+  ],
+  "evidence": []
+}

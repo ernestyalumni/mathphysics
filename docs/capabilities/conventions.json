@@ -1,0 +1,1435 @@
+{
+  "schema_version": "mathphysics.f04.convention-snapshot.v1",
+  "task_id": "F04",
+  "version": "1.0.0",
+  "status": "frozen_characterization_snapshot_for_parent_integration",
+  "date_utc": "2026-10-31",
+  "integration_note": "Fields are proposed Definition-compatible records; F01 owns mapping to final Definition schema. Stable IDs+versions must be preserved or explicitly aliased. No source or scientific meaning changed.",
+  "sources": {
+    "Rust/qft-symbolics/src/matrices.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/matrices.rs",
+      "sha256": "00db37909616bd35ef3b2faf1a31902ddb2dbbd48126b4d6419c9dfc726e9665"
+    },
+    "Rust/qft-symbolics/src/clifford.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/clifford.rs",
+      "sha256": "999cd37618b7691f31193f407e948cfe0f16d30cf3dc208dae6b2b4646f951b0"
+    },
+    "Rust/qft-symbolics/src/lorentz.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/lorentz.rs",
+      "sha256": "33f19b2a0ed6b499bc0a2bb06c68de4cde12640de5c28fd2fd00ef6b49ab8d94"
+    },
+    "Rust/qft-symbolics/src/twistor.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/twistor.rs",
+      "sha256": "a0139e3e1f9d9ccda6b6d8943e54d3d87cfdcc06fdf520695c75ef9cc2fdc17d"
+    },
+    "Rust/qft-symbolics/src/spinor.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/spinor.rs",
+      "sha256": "4ce240dcf232e104f20fe4ed9edd4a0bf2a1409a35f71e2773da932083b9c478"
+    },
+    "Rust/qft-symbolics/src/smga.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/smga.rs",
+      "sha256": "5e319eeff61ca5d7b52701937ca3cc85592351e22dd55834620c419cca70f6c6"
+    },
+    "Rust/qft-symbolics/src/polynomial.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/polynomial.rs",
+      "sha256": "c21c535f026a05e0a7f6266306b3a30310908c8f3ebc042dee0fc34e59f22292"
+    },
+    "Rust/qft-symbolics/src/scalar.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/scalar.rs",
+      "sha256": "fafb7308662affb8427a8b6ab24e67147eeb08cf6540e3634e51f8db5d294297"
+    },
+    "Rust/qft-symbolics/src/tensor.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/tensor.rs",
+      "sha256": "7ff25532819e2b7838a8186ddf05eec6295cfbb57860d958971396584f516cf5"
+    },
+    "Rust/lie-groups/src/lib.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/lib.rs",
+      "sha256": "136c8998d9ff81eec7338d430f08bc284f8f013bcb2cd223e21c7d9bfac8d634"
+    },
+    "Rust/lie-groups/src/so3.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/so3.rs",
+      "sha256": "880e5481b7a2e7a3a5b0d24300377a9f4787d0604e5aa671bb3633bc11b0d979"
+    },
+    "Rust/lie-groups/src/su2.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/su2.rs",
+      "sha256": "aef2007515f422a74f42f09f5fd07973e6577915aef986161dc1ac28feae5d4e"
+    },
+    "Rust/lie-groups/src/symbolic.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/symbolic.rs",
+      "sha256": "c8ff5207b0235f8f97c5857aa90d3ab310a85a339bd397c4f2a996efa3b7a987"
+    },
+    "Rust/lie-groups/src/scalar.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/scalar.rs",
+      "sha256": "30f484814106083b98c36ceed9a2a127933121b7ed165924972753f8c97129e4"
+    },
+    "Rust/lie-groups/src/goldstein.rs": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/goldstein.rs",
+      "sha256": "173c83c5d483b9dbc5ef28998661dd769324859b60f5218e9cba23c418bae827"
+    },
+    "Rust/qft-symbolics/README.md": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/README.md",
+      "sha256": "50bdebb859aead2702a7e9c3443e5dc48761debcb75a64f61611e42d517ea3b9"
+    },
+    "Rust/qft-symbolics/docs/TENSOR.md": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/docs/TENSOR.md",
+      "sha256": "b27996716af5a65a4c666f003878450fae34f2e396d531f6088bbed33481a998"
+    },
+    "Rust/lie-groups/README.md": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/README.md",
+      "sha256": "ec14198e17f9f98e440be4da22e3bb3f514505996931f233bbf9bbf16e5c6609"
+    },
+    "Rust/qft-symbolics/corpus.json": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/corpus.json",
+      "sha256": "2483092534ea9d4e1043f6b9a20d51bb3916880766b37131ae84f1cc1abaf562"
+    },
+    "book": {
+      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+      "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
+      "page_numbering": "1-based PDF viewer page; printed folio explicitly recorded separately",
+      "new_visual_review_pdf_pages": [
+        39,
+        240,
+        320,
+        334,
+        387
+      ],
+      "text_layer_navigation_pdf_ranges": [
+        [
+          39,
+          40
+        ],
+        [
+          240,
+          246
+        ],
+        [
+          318,
+          321
+        ],
+        [
+          332,
+          337
+        ],
+        [
+          386,
+          391
+        ]
+      ],
+      "scope": "Selected convention anchors only; not chapter certification."
+    },
+    "staged:map.txt": {
+      "path": "/tmp/mathphysics-wave1-conventions/source-pages/map.txt",
+      "sha256": "30f24656f51bc6c1fb14093a91092018a179b9c6f08fa8f1903711629408e281",
+      "role": "original_PDF_text_layer_navigation_not_OCR_authority"
+    },
+    "staged:pdf-240-246.txt": {
+      "path": "/tmp/mathphysics-wave1-conventions/source-pages/pdf-240-246.txt",
+      "sha256": "ed2aa154107ef2b196ebcb922ec5f79b2071477f16045e29059b95510303d5a1",
+      "role": "original_PDF_text_layer_navigation_not_OCR_authority"
+    },
+    "staged:pdf-240.png": {
+      "path": "/tmp/mathphysics-wave1-conventions/source-pages/pdf-240.png",
+      "sha256": "44d073aca9ecc68754c28b009771c1e6e80fd3be4fb1e1427f9e653e8b48cd41",
+      "role": "original_PDF_render"
+    },
+    "staged:pdf-318-321.txt": {
+      "path": "/tmp/mathphysics-wave1-conventions/source-pages/pdf-318-321.txt",
+      "sha256": "a38df7056f54f3eca8f19e726e3dd96420fbb1ac60370540fb3bc6f5d39a329b",
+      "role": "original_PDF_text_layer_navigation_not_OCR_authority"
+    },
+    "staged:pdf-320.png": {
+      "path": "/tmp/mathphysics-wave1-conventions/source-pages/pdf-320.png",
+      "sha256": "45dade9aa25bdd4699ffb442ab9c536194a3ee8668dc750ca697c5740ac8c265",
+      "role": "original_PDF_render"
+    },
+    "staged:pdf-332-337.txt": {
+      "path": "/tmp/mathphysics-wave1-conventions/source-pages/pdf-332-337.txt",
+      "sha256": "76dce601318e3d1d2cf4a23f7d838227e3d8dd6cfa0ffb18f4da34a05d83f508",
+      "role": "original_PDF_text_layer_navigation_not_OCR_authority"
+    },
+    "staged:pdf-334.png": {
+      "path": "/tmp/mathphysics-wave1-conventions/source-pages/pdf-334.png",
+      "sha256": "8f3608628cb650b6e286d5681382d29732c1a571b02b484d364a766c85f2cd23",
+      "role": "original_PDF_render"
+    },
+    "staged:pdf-386-391.txt": {
+      "path": "/tmp/mathphysics-wave1-conventions/source-pages/pdf-386-391.txt",
+      "sha256": "f0072af7c58ac0b1bcb0a933dae3f91b181629aef157c544a0a660113affcfba",
+      "role": "original_PDF_text_layer_navigation_not_OCR_authority"
+    },
+    "staged:pdf-387.png": {
+      "path": "/tmp/mathphysics-wave1-conventions/source-pages/pdf-387.png",
+      "sha256": "347ff0eb1ba119b89f84035a0ca7e1dbfab06ab1ff3d0c3f751b7e986634d7e6",
+      "role": "original_PDF_render"
+    },
+    "staged:pdf-39-40.txt": {
+      "path": "/tmp/mathphysics-wave1-conventions/source-pages/pdf-39-40.txt",
+      "sha256": "37e3efbc2ff86a8fa89f154bd340815e987dd00a6998231c2e9828402c40b4b9",
+      "role": "original_PDF_text_layer_navigation_not_OCR_authority"
+    },
+    "staged:pdf-39.png": {
+      "path": "/tmp/mathphysics-wave1-conventions/source-pages/pdf-39.png",
+      "sha256": "5e0e6f25be44c47ba5c8b87b51174531af38107fa6f4642a8b642ee370a60c2c",
+      "role": "original_PDF_render"
+    }
+  },
+  "conventions": [
+    {
+      "id": "conv:minkowski-metric",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "Coordinate order (0,1,2,3)=(time,x,y,z); eta=diag(-1,+1,+1,+1). Vector arrays in twistor/lorentz are contravariant. Lowering supplies eta signs; slash(p)=p_mu gamma^mu; timelike p^2 is negative. Book writes g where code writes eta.",
+      "scope": "4D Lorentzian component API",
+      "assumption_ids": [
+        "assumption:commuting-components"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/matrices.rs",
+          "line_start": 25,
+          "selector": "pub const ETA",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/twistor.rs",
+          "line_start": 109,
+          "selector": "pub fn slash",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/twistor.rs",
+          "line_start": 120,
+          "selector": "pub fn dot",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 39,
+          "printed_page": 15,
+          "labels": [
+            "2.2",
+            "2.4"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [
+        "slash_metric_bridge_and_formal_dimension_are_distinct",
+        "spinor_raising_brackets_and_massless_vector_sign_bridge"
+      ],
+      "incompatible_interpretations": [
+        "mostly-minus metric without explicit conversion",
+        "contravariant arrays contracted as Euclidean components"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:clifford-form",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "Abstract Clifford form h=-eta for Srednicki; {gamma(a),gamma(b)}=2h(a,b), whereas explicit matrices satisfy {gamma^mu,gamma^nu}=-2eta^mu nu. h is not the Lorentz tensor metric.",
+      "scope": "abstract words and explicit chiral matrices",
+      "assumption_ids": [
+        "assumption:bounded-exact-arithmetic"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/clifford.rs",
+          "line_start": 2,
+          "selector": "//! h is",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/matrices.rs",
+          "line_start": 2,
+          "selector": "//! eta=",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 318,
+          "printed_page": 294,
+          "labels": [
+            "47.1"
+          ],
+          "review": "original_PDF_text_layer_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [
+        "slash_metric_bridge_and_formal_dimension_are_distinct"
+      ],
+      "incompatible_interpretations": [
+        "identify h with eta",
+        "replace tensor metric contraction by h contraction"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:clifford-labels",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "Plain Clifford labels are opaque free slots/components, never implicit sums. sandwich_srednicki is an explicitly contracted operation. Tr(empty)=4 fixes spinor trace normalization, including formal-d calculations.",
+      "scope": "clifford module",
+      "assumption_ids": [
+        "assumption:bounded-exact-arithmetic"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/clifford.rs",
+          "line_start": 3,
+          "selector": "//! Labels denote",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/clifford.rs",
+          "line_start": 55,
+          "selector": "pub fn sandwich_srednicki",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/clifford.rs",
+          "line_start": 79,
+          "selector": "pub fn trace",
+          "review": "code_inspected"
+        }
+      ],
+      "characterization_tests": [
+        "slash_metric_bridge_and_formal_dimension_are_distinct"
+      ],
+      "incompatible_interpretations": [
+        "infer Einstein sums from repeated plain labels",
+        "silently make Tr(1)=2^(d/2)"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:spinor-epsilon",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "epsilon^12=+1, epsilon_12=-1 for dotted and undotted spaces. E_up=[[0,1],[-1,0]], E_down=-E_up. Raise/lower contracting epsilon second slot; raise(v)=(v1,-v0); E_down E_up=I.",
+      "scope": "2-component index orientation",
+      "assumption_ids": [
+        "assumption:commuting-external-spinors"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/matrices.rs",
+          "line_start": 52,
+          "selector": "pub fn epsilon_upper",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/matrices.rs",
+          "line_start": 55,
+          "selector": "pub fn epsilon_lower",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/twistor.rs",
+          "line_start": 17,
+          "selector": "pub fn raise",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 240,
+          "printed_page": 216,
+          "labels": [
+            "35.1"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [
+        "spinor_raising_brackets_and_massless_vector_sign_bridge"
+      ],
+      "incompatible_interpretations": [
+        "identify upper and lower epsilon matrices",
+        "apply symmetric-metric raising to spinor epsilon"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:sigma-chiral-basis",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "sigma^mu=(I,Pauli), barsigma^mu=(I,-Pauli). gamma^mu has off-diagonal blocks sigma^mu,barsigma^mu, in that order.",
+      "scope": "fixed finite component matrices",
+      "assumption_ids": [
+        "assumption:bounded-exact-arithmetic"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/matrices.rs",
+          "line_start": 26,
+          "selector": "pub fn sigma",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/matrices.rs",
+          "line_start": 35,
+          "selector": "pub fn barsigma",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/matrices.rs",
+          "line_start": 38,
+          "selector": "pub fn gamma",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 240,
+          "printed_page": 216,
+          "labels": [
+            "35.2",
+            "35.3"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 242,
+          "printed_page": 218,
+          "labels": [
+            "35.19",
+            "35.20"
+          ],
+          "review": "original_PDF_text_layer_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [
+        "slash_metric_bridge_and_formal_dimension_are_distinct",
+        "spacetime_orientation_and_chirality_survive_a_parity_control"
+      ],
+      "incompatible_interpretations": [
+        "swap chiral blocks without also changing projectors"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:spacetime-epsilon",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "epsilon^0123=+1; eta lowering gives epsilon_0123=-1. epsilon_upper_covariant takes contravariant vector rows, lowers their components, and returns epsilon^mu nu rho sigma p_mu q_nu r_rho s_sigma = -det(rows).",
+      "scope": "oriented 4D Lorentz volume tensor",
+      "assumption_ids": [
+        "assumption:four-dimensional",
+        "assumption:commuting-components"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/lorentz.rs",
+          "line_start": 2,
+          "selector": "//! Arguments contain",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/lorentz.rs",
+          "line_start": 17,
+          "selector": "pub fn epsilon_upper_covariant",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 320,
+          "printed_page": 296,
+          "labels": [
+            "47.17"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [
+        "spacetime_orientation_and_chirality_survive_a_parity_control"
+      ],
+      "incompatible_interpretations": [
+        "use a +1 alternating symbol on contravariant rows as this contraction",
+        "identify Euclidean levi_civita with lowered Lorentz volume tensor"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:gamma5-chirality",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "gamma5=i gamma0 gamma1 gamma2 gamma3=diag(-1,-1,+1,+1) in the existing chiral basis; P_L=(1-gamma5)/2 selects upper block. Left four-slash trace has +2i epsilon^mu nu rho sigma p_mu q_nu r_rho s_sigma; right has opposite sign.",
+      "scope": "4D gamma5/chiral traces only",
+      "assumption_ids": [
+        "assumption:four-dimensional",
+        "assumption:commuting-components"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/lorentz.rs",
+          "line_start": 3,
+          "selector": "//! epsilon_",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/lorentz.rs",
+          "line_start": 43,
+          "selector": "pub fn chiral_four_slash",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 320,
+          "printed_page": 296,
+          "labels": [
+            "47.14",
+            "47.17"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 387,
+          "printed_page": 363,
+          "labels": [
+            "60.5"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [
+        "spacetime_orientation_and_chirality_survive_a_parity_control"
+      ],
+      "incompatible_interpretations": [
+        "swap chirality names with unchanged gamma5",
+        "extend gamma5 definition to arbitrary formal d"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:formal-d",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "sandwich_srednicki supports formal commuting dimension d in explicitly contracted identities: gamma^mu gamma_mu=-d. It does not define d-dimensional gamma5, epsilon, a matrix representation at d!=4, or a complete dimensional-regularization prescription.",
+      "scope": "formal polynomial contractions separated from 4D representation",
+      "assumption_ids": [
+        "assumption:formal-d-without-gamma5"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/clifford.rs",
+          "line_start": 53,
+          "selector": "/// This uses a formal dimension",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 320,
+          "printed_page": 296,
+          "labels": [
+            "47.18",
+            "47.19",
+            "47.20"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [
+        "slash_metric_bridge_and_formal_dimension_are_distinct"
+      ],
+      "incompatible_interpretations": [
+        "set d=5 and reuse 4x4 contraction as its representation",
+        "call formal-d identities a gamma5 regularization scheme"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:commuting-vs-grassmann",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "spinor external wavefunctions/twistors and Poly variables commute; tensor factor kernel also commutes. Anticommuting Weyl fields in textbook are different objects, not represented by these commuting factor types.",
+      "scope": "external algebra versus field statistics",
+      "assumption_ids": [
+        "assumption:commuting-external-spinors"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/spinor.rs",
+          "line_start": 1,
+          "selector": "//! Commuting external",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/tensor.rs",
+          "line_start": 1,
+          "selector": "//! Strict abstract",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 243,
+          "printed_page": 219,
+          "labels": [
+            "35.24",
+            "35.25"
+          ],
+          "review": "original_PDF_text_layer_review",
+          "not_equation_exercise_alias": true
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 334,
+          "printed_page": 310,
+          "labels": [
+            "50.17"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [],
+      "incompatible_interpretations": [
+        "apply commuting tensor reordering to Grassmann fields"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:bracket-orientations",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "spinor::bracket(a,b)=det(a,b). twistor::square(p,k)=-det(phi_p,phi_k); twistor::angle(p,k)=det(star_p,star_k). smga::bracket(a,b)=-det(a,b). Names alone do not permit mixing these sign conventions.",
+      "scope": "three explicit bracket interfaces",
+      "assumption_ids": [
+        "assumption:commuting-external-spinors"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/spinor.rs",
+          "line_start": 9,
+          "selector": "pub fn bracket",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/twistor.rs",
+          "line_start": 20,
+          "selector": "pub fn square",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/twistor.rs",
+          "line_start": 23,
+          "selector": "pub fn angle",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/smga.rs",
+          "line_start": 5,
+          "selector": "pub fn bracket",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 334,
+          "printed_page": 310,
+          "labels": [
+            "50.16",
+            "50.19"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [
+        "spinor_raising_brackets_and_massless_vector_sign_bridge",
+        "bare_amplitudes_and_split_signature_sign_chambers_are_not_physical_normalizations"
+      ],
+      "incompatible_interpretations": [
+        "use determinant convention as Srednicki square or SMGA bracket"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:twistor-momentum",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "twistor bispinor p_(a,dota)=-phi_a star_dota; momentum() returns its contravariant 4-vector. By contrast spinor::momentum(lambda,tilde) returns the raw positive outer-product 2x2 matrix with no claim it uses the same phi/star mapping. For Srednicki massless spinors <pk>[kp]=-2p.k.",
+      "scope": "massless factorization with explicit map",
+      "assumption_ids": [
+        "assumption:commuting-external-spinors"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/twistor.rs",
+          "line_start": 90,
+          "selector": "/// p_(a,dota)",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/spinor.rs",
+          "line_start": 49,
+          "selector": "pub fn momentum",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 334,
+          "printed_page": 310,
+          "labels": [
+            "50.15",
+            "50.16",
+            "50.19"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 387,
+          "printed_page": 363,
+          "labels": [
+            "60.4"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [
+        "spinor_raising_brackets_and_massless_vector_sign_bridge"
+      ],
+      "incompatible_interpretations": [
+        "identify raw outer product directly with p_(a,dota) without the minus sign"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:spinor-reality",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "Twistor::named creates independent phi and star symbols (complexified algebra). Lorentzian conjugacy star=conj(phi) is an additional real-slice assignment. Positive-energy real slice gives <pk>*=[kp]. All-outgoing negative-energy continuation adds energy-sign factors, as in book 60.17; generic symbolic APIs do not infer them.",
+      "scope": "complexified versus Lorentzian kinematics",
+      "assumption_ids": [
+        "assumption:lorentzian-positive-energy-conjugacy"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/twistor.rs",
+          "line_start": 2,
+          "selector": "//! The conjugate",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/twistor.rs",
+          "line_start": 60,
+          "selector": "pub fn named",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 334,
+          "printed_page": 310,
+          "labels": [
+            "50.20"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 389,
+          "printed_page": 365,
+          "labels": [
+            "60.17"
+          ],
+          "review": "original_PDF_text_layer_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [
+        "coefficient_conjugation_is_not_the_lorentzian_spinor_involution"
+      ],
+      "incompatible_interpretations": [
+        "treat independently named stars as an installed involution",
+        "apply positive-energy conjugacy to crossed energies without sign metadata"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:coefficient-conjugation",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "Poly::conjugate_coefficients fixes every formal variable and conjugates only Q(i) coefficients. has_real_coefficients asserts coefficients only. Lie-group Conjugate for Poly uses the same operation; it represents adjoint conjugation of values only for real symbol assignments.",
+      "scope": "formal coefficients and compact real Lie algebra interpretation",
+      "assumption_ids": [
+        "assumption:real-lie-symbols"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/polynomial.rs",
+          "line_start": 34,
+          "selector": "pub fn conjugate_coefficients",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/polynomial.rs",
+          "line_start": 38,
+          "selector": "pub fn has_real_coefficients",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/lie-groups/src/scalar.rs",
+          "line_start": 146,
+          "selector": "/// Coefficient conjugation",
+          "review": "code_inspected"
+        }
+      ],
+      "characterization_tests": [
+        "coefficient_conjugation_is_not_the_lorentzian_spinor_involution"
+      ],
+      "incompatible_interpretations": [
+        "conjugate complex symbol values merely by fixing symbols",
+        "infer real variables from real coefficients"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:angular-spinor-slice",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "from_rational_angles takes positive rational amplitude=sqrt(2omega), nonnegative sin(theta/2),cos(theta/2) on the unit circle and a normalized rational phase. It is a restricted positive-energy real slice; it rejects amplitude0, negative amplitude and invalid normalizations.",
+      "scope": "rational angle constructor",
+      "assumption_ids": [
+        "assumption:angular-domain",
+        "assumption:bounded-exact-arithmetic"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/twistor.rs",
+          "line_start": 32,
+          "selector": "pub fn from_rational_angles",
+          "review": "code_inspected"
+        }
+      ],
+      "characterization_tests": [
+        "coefficient_conjugation_is_not_the_lorentzian_spinor_involution"
+      ],
+      "incompatible_interpretations": [
+        "use it as unrestricted complex/negative-energy parameterization"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:scaled-polarizations",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "polarization() returns sqrt(2)*epsilon_+ = -<q|gamma^mu|k]/<qk> and sqrt(2)*epsilon_- = -[q|gamma^mu|k>/[qk]. Numerators omit denominators and sqrt(2); generic symbolic Ratio retains denominator restrictions. Pair products of API vectors have a factor2 relative to physical epsilon products.",
+      "scope": "polarization API normalization",
+      "assumption_ids": [
+        "assumption:nonzero-polarization-reference"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/twistor.rs",
+          "line_start": 135,
+          "selector": "/// Numerators of sqrt",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/twistor.rs",
+          "line_start": 144,
+          "selector": "pub fn polarization(",
+          "review": "code_inspected"
+        },
+        {
+          "source": "book",
+          "pdf_page_1based": 387,
+          "printed_page": 363,
+          "labels": [
+            "60.7",
+            "60.8",
+            "60.9"
+          ],
+          "review": "direct_render_visual_review",
+          "not_equation_exercise_alias": true
+        }
+      ],
+      "characterization_tests": [
+        "scaled_polarizations_retain_normalization_and_reference_domain"
+      ],
+      "incompatible_interpretations": [
+        "treat API vectors as unscaled physical polarizations",
+        "assume only pointer-identical q=k is singular"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:ratio-domain",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "Ratio residual equality is by cross multiplication only on the common nonzero-denominator domain. Construction rejects identically zero denominators; evaluation also rejects poles. Cancellation/equality does not extend the original domain.",
+      "scope": "rational functions and polarization denominators",
+      "assumption_ids": [
+        "assumption:nonzero-denominators"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/polynomial.rs",
+          "line_start": 120,
+          "selector": "/// Equality by cross",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/polynomial.rs",
+          "line_start": 50,
+          "selector": "pub fn eval(&self, values:",
+          "review": "code_inspected"
+        }
+      ],
+      "characterization_tests": [
+        "scaled_polarizations_retain_normalization_and_reference_domain"
+      ],
+      "incompatible_interpretations": [
+        "erase singular reference guards after zero residual"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:bare-mhv-ratio",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "parke_taylor returns determinant-bracket ratio <ij>^4/product consecutive brackets with n>=3, two distinct in-range negative legs and nonzero denominator. It includes no universal i, coupling power, color trace or sqrt(2) vertex factors; it is not a complete physical amplitude or derivation from Yang-Mills rules.",
+      "scope": "existing formula-level API",
+      "assumption_ids": [
+        "assumption:bare-amplitude",
+        "assumption:nonzero-denominators"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/spinor.rs",
+          "line_start": 18,
+          "selector": "pub fn parke_taylor",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/README.md",
+          "line_start": 77,
+          "selector": "without i, g,",
+          "review": "code_inspected"
+        }
+      ],
+      "characterization_tests": [
+        "bare_amplitudes_and_split_signature_sign_chambers_are_not_physical_normalizations"
+      ],
+      "incompatible_interpretations": [
+        "infer missing coupling/color/vertex normalization from a matching algebraic ratio"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:smga-split-frame",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "SMGA is half-collinear split-signature (2,2) with real rational two-component frame variables and sign chambers, not ordinary Lorentzian Yang-Mills Berends-Giele. R1 requires 3..12 conserved legs, first omega<0 and remaining omega>0; tested chamber walls are errors, not a guessed Theta(0).",
+      "scope": "smga module only",
+      "assumption_ids": [
+        "assumption:smga-r1-domain"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/smga.rs",
+          "line_start": 1,
+          "selector": "//! Exact port",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/smga.rs",
+          "line_start": 12,
+          "selector": "fn validate",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/src/smga.rs",
+          "line_start": 28,
+          "selector": "pub fn formula_r1",
+          "review": "code_inspected"
+        }
+      ],
+      "characterization_tests": [
+        "bare_amplitudes_and_split_signature_sign_chambers_are_not_physical_normalizations"
+      ],
+      "incompatible_interpretations": [
+        "transfer real (2,2) sign formula to real Lorentzian kinematics",
+        "equate independent real spinor factors with Lorentzian conjugacy"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:tensor-index-domains",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "Tensor kernel separates Lorentz,Undotted,Dotted spaces; raw free labels occur once, dummies twice with opposite variance. Hygiene freshens independent binders. Its symmetric Lorentz metric is not spinor epsilon; spinor epsilon raising/lowering is not an automatic tensor-metric operation.",
+      "scope": "bounded commuting abstract-index kernel",
+      "assumption_ids": [
+        "assumption:typed-tensor-domain"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/qft-symbolics/src/tensor.rs",
+          "line_start": 12,
+          "selector": "pub enum Space",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/docs/TENSOR.md",
+          "line_start": 12,
+          "selector": "Each index in a raw monomial",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/qft-symbolics/docs/TENSOR.md",
+          "line_start": 24,
+          "selector": "automatic epsilon",
+          "review": "code_inspected"
+        }
+      ],
+      "characterization_tests": [],
+      "incompatible_interpretations": [
+        "infer contraction for fourfold occurrences",
+        "infer that same scalar zero has arbitrary free signature"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:lie-active-rotation",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "lie-groups uses column vectors and active right-handed rotations; hat(v)w=v cross w with epsilon(0,1,2)=+1. Its generic levi_civita is an alternating symbol, not a metric volume form. Goldstein R maps body to inertial and A_G=R^T.",
+      "scope": "SO3 rotations and Euclidean index orientation",
+      "assumption_ids": [
+        "assumption:real-lie-symbols"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/lie-groups/src/lib.rs",
+          "line_start": 2,
+          "selector": "//! Column vectors",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/lie-groups/src/lib.rs",
+          "line_start": 79,
+          "selector": "/// Alternating symbol",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/lie-groups/src/so3.rs",
+          "line_start": 28,
+          "selector": "pub fn matrix",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/lie-groups/src/goldstein.rs",
+          "line_start": 2,
+          "selector": "//! R maps body",
+          "review": "code_inspected"
+        }
+      ],
+      "characterization_tests": [],
+      "incompatible_interpretations": [
+        "equate 3D alternating symbol with 4D lowered epsilon",
+        "use Goldstein passive A as active R without transpose"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:su2-generator-scale",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "Su2Algebra coordinates are in T_i=-i sigma_i/2, with bracket equal to cross product and same-coordinate so3 differential map. PauliOverI is doubled generator basis; from_full_basis_coordinates doubles coordinates. Symbolic exp retains argument_scale=1/2 for half basis and1 for full basis.",
+      "scope": "su2 basis and exponential interpretation",
+      "assumption_ids": [
+        "assumption:real-lie-symbols"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/lie-groups/src/su2.rs",
+          "line_start": 7,
+          "selector": "pub enum Su2Basis",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/lie-groups/src/su2.rs",
+          "line_start": 42,
+          "selector": "/// Coordinates in",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/lie-groups/src/su2.rs",
+          "line_start": 80,
+          "selector": "pub fn from_full_basis_coordinates",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/lie-groups/src/symbolic.rs",
+          "line_start": 128,
+          "selector": "pub argument_scale",
+          "review": "code_inspected"
+        }
+      ],
+      "characterization_tests": [],
+      "incompatible_interpretations": [
+        "drop argument_scale when comparing equal-looking trig matrices",
+        "use Hermitian sigma/2 as anti-Hermitian generators without -i"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:quaternion-charts",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "Symbolic SU2 chart q=+/- (1-|t|^2,2t)/(1+|t|^2) uses real symbols; t=n*tan(theta/4), not matrix Cayley tan(theta/2). Opposite SU2 lifts give the same SO3 rotation. Goldstein Cayley-Klein K=U(q)^dagger.",
+      "scope": "compact real group chart and double cover",
+      "assumption_ids": [
+        "assumption:real-lie-symbols"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/lie-groups/src/symbolic.rs",
+          "line_start": 226,
+          "selector": "/// Unit quaternion rational chart",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/lie-groups/src/goldstein.rs",
+          "line_start": 100,
+          "selector": "/// Goldstein K=",
+          "review": "code_inspected"
+        },
+        {
+          "source": "Rust/lie-groups/README.md",
+          "line_start": 111,
+          "selector": "not the usual matrix Cayley",
+          "review": "code_inspected"
+        }
+      ],
+      "characterization_tests": [],
+      "incompatible_interpretations": [
+        "drop double-cover sign for SU2 itself",
+        "treat complex symbolic chart assignments as compact real SU2"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    },
+    {
+      "id": "conv:rotation-order",
+      "version": "1.0.0",
+      "definition_kind": "convention",
+      "statement": "Goldstein ZXZ/ZYZ arguments use (phi,theta,psi) in product order; ZYX uses (yaw psi,pitch theta,roll phi), R=Rz(psi)Ry(theta)Rx(phi). Intrinsic moving-axis products and passive transposes must be identified explicitly.",
+      "scope": "Goldstein conversion APIs",
+      "assumption_ids": [
+        "assumption:real-lie-symbols"
+      ],
+      "source_anchors": [
+        {
+          "source": "Rust/lie-groups/src/goldstein.rs",
+          "line_start": 41,
+          "selector": "/// Explicit products:",
+          "review": "code_inspected"
+        }
+      ],
+      "characterization_tests": [],
+      "incompatible_interpretations": [
+        "read ZYX input array as (phi,theta,psi)",
+        "commute rotations from different axes"
+      ],
+      "status": "frozen_existing_behavior",
+      "new_scientific_meaning": false
+    }
+  ],
+  "assumption_definitions": [
+    {
+      "id": "assumption:commuting-components",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "Vector components multiply commutatively.",
+      "domain": "Q(i) polynomial four-vectors",
+      "required_conditions": [
+        "fixed coordinate order",
+        "explicit variance"
+      ],
+      "does_not_imply": [
+        "operator or Grassmann field commutativity"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:bounded-exact-arithmetic",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "Q(i) arithmetic is exact only while all checked i128 intermediates and polynomial/word budgets are representable.",
+      "domain": "existing scalar/polynomial/clifford APIs",
+      "required_conditions": [
+        "no overflow or budget panic",
+        "valid denominators"
+      ],
+      "does_not_imply": [
+        "arbitrary precision",
+        "PASS on process failure"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:commuting-external-spinors",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "External 2-component wavefunctions are commuting coordinate arrays.",
+      "domain": "spinor/twistor APIs",
+      "required_conditions": [
+        "distinct dotted/undotted interpretation"
+      ],
+      "does_not_imply": [
+        "anticommuting quantum fields"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:four-dimensional",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "Use exactly 4 component directions and the existing chiral 4x4 matrix representation.",
+      "domain": "lorentz and explicit gamma5",
+      "required_conditions": [
+        "eta=(-,+,+,+)",
+        "fixed orientation"
+      ],
+      "does_not_imply": [
+        "formal arbitrary-d gamma5 scheme"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:formal-d-without-gamma5",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "d is a commuting formal dimension in explicitly contracted Clifford identities without gamma5.",
+      "domain": "sandwich_srednicki",
+      "required_conditions": [
+        "h=-eta interpretation",
+        "Tr1=4 in existing trace API"
+      ],
+      "does_not_imply": [
+        "a finite-dimensional matrix representation at arbitrary d",
+        "a full regulator"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:lorentzian-positive-energy-conjugacy",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "For the specified real positive-energy massless slice, star components are conjugates of phi.",
+      "domain": "twistor coordinate assignments",
+      "required_conditions": [
+        "positive energy",
+        "consistent dotted conjugation"
+      ],
+      "does_not_imply": [
+        "generic named star variables satisfy this",
+        "crossed negative-energy continuation has unchanged conjugacy"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:real-lie-symbols",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "Every formal polynomial symbol used for compact real Lie coordinates/charts is assigned a real value.",
+      "domain": "lie-groups real forms",
+      "required_conditions": [
+        "explicit real symbol declaration",
+        "coefficient involution fixes symbols"
+      ],
+      "does_not_imply": [
+        "real coefficients force real assignments",
+        "complexified algebra automatically compact"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:angular-domain",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "amplitude>0; sin_half,cos_half>=0 and sin_half^2+cos_half^2=1; cos_phi^2+sin_phi^2=1, each unit bounded.",
+      "domain": "rational angular twistor constructor",
+      "required_conditions": [
+        "checked rational arithmetic"
+      ],
+      "does_not_imply": [
+        "all real/complex null momenta representable"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:nonzero-polarization-reference",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "Helicity-specific bracket <qk> or [qk] must remain nonzero at every evaluation.",
+      "domain": "polarization(k,q,helicity)",
+      "required_conditions": [
+        "bracket nonzero as polynomial",
+        "bracket nonzero at evaluation"
+      ],
+      "does_not_imply": [
+        "q!=k alone is sufficient"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:nonzero-denominators",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "All original Ratio denominators are nonzero on the comparison/evaluation domain.",
+      "domain": "rational function equality",
+      "required_conditions": [
+        "retained guards",
+        "reject evaluated poles"
+      ],
+      "does_not_imply": [
+        "cross multiplied zero residual fills removable holes"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:bare-amplitude",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "Interpret output solely as color-ordered determinant-bracket rational structure.",
+      "domain": "parke_taylor",
+      "required_conditions": [
+        "two distinct negative labels",
+        "nonzero adjacent brackets"
+      ],
+      "does_not_imply": [
+        "physical i,g,color,vertex constants included"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:smga-r1-domain",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "Use conserved half-collinear (2,2) real rational frame data in the declared R1 sign chamber, off all evaluated walls.",
+      "domain": "formula_r1",
+      "required_conditions": [
+        "3..12 legs",
+        "sum frame vectors=0",
+        "omega0<0",
+        "others omega>0",
+        "every queried sign nonzero"
+      ],
+      "does_not_imply": [
+        "ordinary Lorentzian momenta",
+        "Theta(0) convention"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    },
+    {
+      "id": "assumption:typed-tensor-domain",
+      "version": "1.0.0",
+      "definition_kind": "assumption",
+      "statement": "Each raw tensor term has valid space/variance signatures and at most two occurrences per dummy, opposite variance.",
+      "domain": "tensor Expr",
+      "required_conditions": [
+        "commuting factors",
+        "constant symmetric Lorentz metric",
+        "compatible immutable contexts"
+      ],
+      "does_not_imply": [
+        "Grassmann support",
+        "spinor epsilon is a symmetric metric"
+      ],
+      "parameters": [],
+      "status": "existing_semantics_definition_not_new_requirement"
+    }
+  ],
+  "characterization": {
+    "test_source": "/tmp/mathphysics-wave1-conventions/conventions.rs",
+    "sha256": "f044831888a9eac8e36b42bb332b35fe23e9d96efa7604b9d5ef24fdac4edfd0",
+    "tests": [
+      "slash_metric_bridge_and_formal_dimension_are_distinct",
+      "spacetime_orientation_and_chirality_survive_a_parity_control",
+      "spinor_raising_brackets_and_massless_vector_sign_bridge",
+      "scaled_polarizations_retain_normalization_and_reference_domain",
+      "coefficient_conjugation_is_not_the_lorentzian_spinor_involution",
+      "bare_amplitudes_and_split_signature_sign_chambers_are_not_physical_normalizations"
+    ],
+    "dependency_policy": "Only existing qft-symbolics crate and Rust std; lie-groups conventions source-inspected, not imported into copyable test.",
+    "claim": "Six finite cross-module convention witnesses, not proof of complete library correctness or textbook coverage.",
+    "executions": [
+      {
+        "profile": "debug",
+        "status": "passed",
+        "tests_passed": 6,
+        "tests_failed": 0,
+        "log": "/tmp/mathphysics-wave1-conventions/test-debug.log",
+        "sha256": "a4b89200f6a7e7fab6a6f47e1093d94700018539e8c2e71f1ac9333fcbdc91ab",
+        "command": "CARGO_TARGET_DIR=/tmp/mathphysics-wave1-conventions/target cargo test --offline --manifest-path /tmp/mathphysics-wave1-conventions/fixture/Cargo.toml --test conventions"
+      },
+      {
+        "profile": "release",
+        "status": "passed",
+        "tests_passed": 6,
+        "tests_failed": 0,
+        "log": "/tmp/mathphysics-wave1-conventions/test-release.log",
+        "sha256": "b90ff3c794b13b98f37da90eefea5236f21defb550531aa29771e832c165cad6",
+        "command": "CARGO_TARGET_DIR=/tmp/mathphysics-wave1-conventions/target cargo test --offline --release --manifest-path /tmp/mathphysics-wave1-conventions/fixture/Cargo.toml --test conventions"
+      }
+    ],
+    "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+    "cargo": "cargo 1.97.1 (c980f4866 2026-06-30)"
+  },
+  "remaining_limits": [
+    "Lie-group conventions are source-inspected here, not runtime-characterized by conventions.rs.",
+    "No generic gamma5+formal-d incompatibility type exists in current APIs; metadata must prevent that semantic combination.",
+    "No all-outgoing negative-energy twistor constructor or normalization-complete amplitude API was added.",
+    "Original PDF visually reviewed at five anchors only; remaining selected anchors use PDF text layer or code.",
+    "No exhaustive chapter convention audit, library changes, PDD apply, source manuscript edits or model/provider calls."
+  ],
+  "repository_head": "f1be4d993c21ed932045f3b36db69048963152bd"
+}
