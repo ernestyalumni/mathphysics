@@ -186,3 +186,6 @@ TSWLatexianTemp*
 # Python virtual environment directories.
 */venv/*
 venv/*
+litellm_cache.sqlite/
+Python/rotations/.pdd/core_dumps/
+Python/rotations/.agentic_prompt_*.txt

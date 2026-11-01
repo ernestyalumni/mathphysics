@@ -1,0 +1,10 @@
+version: "1.0"
+contexts:
+  default:
+    paths: ["prompts/rotations_python.prompt", "rotations.py", "tests/test_rotation*.py"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: ./
+      test_output_path: tests/
+      example_output_path: examples/
+      default_language: python

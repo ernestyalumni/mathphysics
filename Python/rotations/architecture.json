@@ -1,0 +1,98 @@
+[
+  {
+    "filename": "rotations_python.prompt",
+    "filepath": "rotations.py",
+    "description": "Standard-library SO(3), Euler, Hamilton quaternion and Goldstein Cayley\u2013Klein conversions with strict validation.",
+    "reason": "One cohesive existing module with a stable public interface and independent characterization tests.",
+    "dependencies": [],
+    "priority": 1,
+    "tags": [
+      "rotations",
+      "so3",
+      "goldstein"
+    ],
+    "interface": {
+      "type": "module",
+      "module": {
+        "functions": [
+          {
+            "name": "transpose",
+            "signature": "(a)"
+          },
+          {
+            "name": "multiply",
+            "signature": "(a, b)"
+          },
+          {
+            "name": "apply",
+            "signature": "(a, x)"
+          },
+          {
+            "name": "det",
+            "signature": "(a)"
+          },
+          {
+            "name": "validate_matrix",
+            "signature": "(a, tolerance=1e-10)"
+          },
+          {
+            "name": "hat",
+            "signature": "(x)"
+          },
+          {
+            "name": "elementary",
+            "signature": "(axis, phi)"
+          },
+          {
+            "name": "from_euler",
+            "signature": "(convention, first, middle, last)"
+          },
+          {
+            "name": "to_euler",
+            "signature": "(a, convention, singular_tolerance=1e-12)"
+          },
+          {
+            "name": "validate_quaternion",
+            "signature": "(q, tolerance=1e-10)"
+          },
+          {
+            "name": "quaternion_product",
+            "signature": "(q, p)"
+          },
+          {
+            "name": "from_quaternion",
+            "signature": "(q)"
+          },
+          {
+            "name": "to_quaternion",
+            "signature": "(a)"
+          },
+          {
+            "name": "from_axis_angle",
+            "signature": "(axis, phi)"
+          },
+          {
+            "name": "to_axis_angle",
+            "signature": "(a)"
+          },
+          {
+            "name": "quaternion_to_ck",
+            "signature": "(q)"
+          },
+          {
+            "name": "ck_to_quaternion",
+            "signature": "(parameters, tolerance=1e-10)"
+          },
+          {
+            "name": "ck_to_goldstein",
+            "signature": "(parameters)"
+          },
+          {
+            "name": "cayley_hamilton_residual",
+            "signature": "(a)"
+          }
+        ]
+      }
+    }
+  }
+]

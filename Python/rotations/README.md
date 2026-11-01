@@ -96,3 +96,11 @@ binaries, records interpreter/SymPy versions and Git HEAD. The receipt's
 logs and hashes identify actual executed artifacts; no generated receipt is
 committed. No general-purpose CAS, globally continuous Euler chart, dynamics
 integrator or complete textbook implementation is claimed.
+
+## Prompt-driven development
+
+`rotations.py` is specified by [the versioned prompt](prompts/rotations_python.prompt)
+and mapped by [architecture.json](architecture.json). See [the repository PDD guide](../../PDD.md)
+for scope, commands and adoption limits. Dynamics, server and independent validation
+remain outside the prompt graph. See [adoption evidence](docs/PDD_ADOPTION.md)
+for what has actually been verified.

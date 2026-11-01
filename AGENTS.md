@@ -122,3 +122,17 @@ Don't pre-create empty directories or files until they're needed.
 - A "discovery loop" without a verifier step is not a loop, just a brainstorm — do not log it under `agent/discoveries/`.
 
 Document significant decisions here (or in `agent/MEMORY.md`) so future runs have continuity.
+
+## Prompt-Driven Development
+
+Read [PDD.md](PDD.md) before product-intent or coding work. Registered nested
+scopes include Python rotations and the new Rust physics-contracts/physics-tools
+units as their configuration appears. Inspect actual ownership and verification
+before modifying code; an existing native library is not adopted implicitly.
+Ordinary user requests are sufficient intent input; agents own PDD mechanics.
+
+## Reusable mathematical library boundary
+
+For chapter/paper implementation read [the reusable Rust research-library story](user_stories/story__reusable-rust-research-library.md) and [architecture/dispatch policy](docs/plans/rust-physics-platform/REUSABLE-LIBRARY.md). Source subsections drive validation fixtures and capability gaps, not duplicated production solvers. Reuse or extend the owning mathematical library once; CLI/HTTP/UI are consumers. Preserve independent oracle implementations and compatibility/convention tests when extracting code.
+
+Maintained runnable demo/example source belongs in this repository (for Rust, prefer the owning crate’s `examples/`). Keep Cargo build products in an external `CARGO_TARGET_DIR`; outputs directories hold verification receipts, not the canonical maintained demo source. Disposable external-consumer probes may remain archived evidence.

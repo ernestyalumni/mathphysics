@@ -1,0 +1,99 @@
+<pdd-reason>Preserve the established SO(3), Euler, Hamilton quaternion and Goldstein Cayley–Klein convention dictionary.</pdd-reason>
+<pdd-version>0.1.0</pdd-version>
+
+% Deliverable and ownership
+Generate only `rotations.py`, a Python >=3.11 module using only the standard library.
+Do not generate or modify rigid_body.py, simulator_server.py, tests, validation
+oracles, notes, native libraries, pyproject.toml or this project configuration.
+No NumPy/SciPy/SymPy dependency in this module. No I/O or import-time side effects.
+
+% Approved requirements (complete request; do not truncate)
+As a researcher who uses the rotation library in Python/rotations to check Goldstein, Frankel and engineering attitude conventions, I want the library's conventions written down as the source it is regenerated from, so that a regenerated version gives the same rotations, angles and quaternions as the current one.
+
+The library MUST keep right-handed column vectors with x_I = R x_B, and Goldstein's coordinate matrix MUST be the transpose A_G = R.T.
+Euler angles MUST be given and returned in intrinsic product order: ZXZ and ZYZ as (phi, theta, psi), and ZYX as (heading, pitch, roll) meaning Rz(heading) Ry(pitch) Rx(roll).
+Extraction MUST return the middle angle in [0, pi] for ZXZ/ZYZ and in [-pi/2, pi/2] for ZYX; at gimbal lock it MUST set the last angle to zero and report singular=True.
+Quaternions MUST be scalar-first Hamilton quaternions, and matrix-to-quaternion extraction MUST return the representative with w >= 0.
+Axis-angle extraction MUST return an angle in [0, pi] and MUST use the axis (1, 0, 0) for the identity.
+Cayley-Klein parameters MUST satisfy gamma = -conj(beta) and delta = conj(alpha), with alpha = w + i z and beta = y + i x.
+The library MUST reject non-finite values, reflections, non-unit quaternions, non-unit axes and CK parameters that break the conjugacy constraints.
+The library MUST NOT silently project accepted data onto SO(3); the only normalization allowed is the documented one inside matrix-to-quaternion extraction.
+The rotation functions MUST NOT depend on anything outside the Python standard library.
+Never return a ZYX tuple in (roll, pitch, yaw) order.
+
+For example, from_euler('zyx', 0.4, 0.7, -0.3) followed by to_euler(R, 'zyx') returns (0.4, 0.7, -0.3) with singular=False.
+For example, a 90 degree turn about z maps the body x axis to the inertial y axis, and to_quaternion returns (cos(pi/4), 0, 0, sin(pi/4)).
+
+% Stable public interface
+Preserve the existing names, argument order and defaults:
+- `Matrix = tuple[tuple[float, ...], ...]`
+- `I3 = ((1., 0., 0.), (0., 1., 0.), (0., 0., 1.))`
+- `transpose(a)`
+- `multiply(a, b)`
+- `apply(a, x)`
+- `det(a)`
+- `validate_matrix(a, tolerance=1e-10)`
+- `hat(x)`
+- `elementary(axis, phi)`
+- `from_euler(convention, first, middle, last)`
+- Frozen dataclass `EulerAngles(first: float, middle: float, last: float, singular: bool)`, with read-only `values` property returning `(first, middle, last)`.
+- `to_euler(a, convention, singular_tolerance=1e-12)`
+- `validate_quaternion(q, tolerance=1e-10)`
+- `quaternion_product(q, p)`
+- `from_quaternion(q)`
+- `to_quaternion(a)`
+- `from_axis_angle(axis, phi)`
+- `to_axis_angle(a)`
+- `quaternion_to_ck(q)`
+- `ck_to_quaternion(parameters, tolerance=1e-10)`
+- `ck_to_goldstein(parameters)`
+- `cayley_hamilton_residual(a)`
+
+% Representation and validation
+Matrices are nested real sequences; return immutable tuples of tuples, and
+return tuples for vectors, quaternions and CK parameters. Never mutate inputs.
+transpose, multiply and apply accept nonempty rectangular matrices; reject
+ragged/empty matrices, incompatible dimensions and nonfinite components with
+ValueError. det requires a 3x3 matrix. hat requires a finite three-vector and
+returns the cross-product matrix, so hat(x)y = x cross y.
+
+validate_matrix requires 3x3 finite real values, R.T R = I and det(R) = +1
+within the supplied tolerance. Return the supplied components converted to
+float tuples, without re-orthogonalizing or projecting them. Tolerances must
+be finite and in (0, 1e-4]. Default matrix/quaternion/CK tolerance is 1e-10;
+the unit-axis check uses |norm(axis)-1| <= 1e-10. Quaternion validation uses
+|sum(q_i^2)-1| <= tolerance. Conversion outputs are validated too, so an input
+within one check's tolerance can still fail a tighter downstream check.
+All invalid domain values raise ValueError. Do not silently normalize imported
+quaternions, axes, matrices or CK parameters. to_quaternion first validates R,
+then normalizes the extracted quaternion to remove floating-point roundoff.
+
+% Constructions and branch behavior
+Use standard right-handed elementary matrices Rx, Ry, Rz. Axis names and
+conventions are lowercase and restricted to x/y/z and zxz/zyz/zyx respectively.
+Euler construction accepts any finite angles, composing exactly in product
+order. Extraction returns first/last via atan2 (principal representatives),
+with canonical middle ranges specified above. At/within singular_tolerance
+(default 1e-12), choose last=0 and singular=True; reconstruct within O(tolerance).
+At lock for ZXZ, first=atan2(R[1][0],R[0][0]); for ZYZ use the same
+unless R[2][2]<0, when first=atan2(-R[1][0],-R[0][0]); for ZYX use
+first=atan2(-R[0][1],R[1][1]). Away from lock singular=False. Cover both poles for each convention.
+Quaternion product is Hamilton q*p, corresponding to R(q)R(p); it validates
+both operands and the result. q and -q map to the same rotation.
+Use stable largest-diagonal quaternion extraction at/near pi, canonical w>=0.
+Rodrigues construction should use 2*sin(phi/2)^2 to avoid cancellation near zero.
+Axis-angle extraction through the quaternion must remain stable near pi.
+quaternion_to_ck returns (alpha,beta,-conj(beta),conj(alpha)); inverse extraction
+returns (Re(alpha),Im(beta),Re(beta),Im(alpha)) after checking conjugacy and norm.
+ck_to_goldstein returns transpose(from_quaternion(ck_to_quaternion(parameters))).
+cayley_hamilton_residual validates R then returns the actual polynomial matrix
+R^3 - tr(R)R^2 + tr(R)R - I, rather than an assumed zero matrix.
+
+% Independent acceptance
+Existing tests/test_rotations.py and tests/test_rotation_conventions.py are
+independent acceptance sources, not generated outputs. Preserve their ability
+to detect swapped Euler order, quaternion sign, CK conjugacy, reflection,
+nonfinite data, silent normalization, singular metadata and third-party imports.
+Run from this scope: python -m unittest discover -s tests -p 'test_rotation*.py'.
+Run the containing repository's full Python suite using its existing uv venv
+as documented in ../../PDD.md. Do not rewrite tests to make generation pass.
