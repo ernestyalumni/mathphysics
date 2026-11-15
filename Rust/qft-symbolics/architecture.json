@@ -273,5 +273,21 @@
     "interface": {
       "type": "module"
     }
+  },
+  {
+    "filename": "sphere_rust.prompt",
+    "filepath": "src/sphere.rs",
+    "description": "Exact unit-sphere monomial averages and rational multiples of powers of pi",
+    "reason": "Yang-Mills program unit T01 (intent yang-mills-construction-audit-rust-lattice-gauge-d3c6da77): one-loop angular averages and the slope 11C/(24 pi^2)",
+    "dependencies": [],
+    "priority": 15,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
   }
 ]

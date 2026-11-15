@@ -1,0 +1,11 @@
+[package]
+name = "lattice-gauge"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Exact lattice gauge theory on periodic tori: geometry, Z2 cochains, small-lattice enumeration"
+
+[dependencies]
+
+[profile.release]
+overflow-checks = true

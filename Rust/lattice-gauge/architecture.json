@@ -1,0 +1,70 @@
+[
+  {
+    "filename": "torus_rust.prompt",
+    "filepath": "src/torus.rs",
+    "description": "Sites, links, plaquettes and cubes of a periodic torus with stable index conventions",
+    "reason": "Yang-Mills program unit T05; intent yang-mills-construction-audit-rust-lattice-gauge-d3c6da77",
+    "dependencies": [],
+    "priority": 1,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "cochain_rust.prompt",
+    "filepath": "src/cochain.rs",
+    "description": "Z2 plaquette sets: twist surfaces, monopole counts, coboundary classes by GF(2) elimination",
+    "reason": "Yang-Mills program unit T05; intent yang-mills-construction-audit-rust-lattice-gauge-d3c6da77",
+    "dependencies": [
+      "torus_rust.prompt"
+    ],
+    "priority": 2,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "z2_gauge_rust.prompt",
+    "filepath": "src/z2_gauge.rs",
+    "description": "Exact density of states of Z2 lattice gauge theory on small tori, with twists",
+    "reason": "Yang-Mills program unit T10 (first slice); intent yang-mills-construction-audit-rust-lattice-gauge-d3c6da77",
+    "dependencies": [
+      "torus_rust.prompt"
+    ],
+    "priority": 3,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "spectral_rust.prompt",
+    "filepath": "src/spectral.rs",
+    "description": "Exact integer check of the purity bounds for a nonnegative transfer operator",
+    "reason": "Yang-Mills program unit M1 support; intent yang-mills-construction-audit-rust-lattice-gauge-d3c6da77",
+    "dependencies": [],
+    "priority": 4,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  }
+]

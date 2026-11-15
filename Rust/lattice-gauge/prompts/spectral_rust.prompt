@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/spectral.rs. Exact integer check of the purity bounds (mono-notes Proposition ym:prop:purity): for eigenvalues lambda_1>=...>=0, Z(n)=sum lambda_j^n, s_n=sum_{j>=2}(lambda_j/lambda_1)^n, P(n)=Z(2n)/Z(n)^2: s_n <= 1/P-1 <= 2 s_n+s_n^2 and s_2n <= s_n^2. trace_of_power(spectrum:&[u64],exponent)->Option<u128>; purity_bounds(spectrum,exponent)->Option<PurityBounds{excited_sum_below_defect,defect_below_quadratic,doubling_improves}> with denominators cleared (formulas in the doc comment), checked arithmetic, None on empty spectrum, zero maximum, zero exponent or overflow. Independent tests: tests/purity.rs (20,000 pseudo-random spectra, equality case, negative control, invalid inputs).

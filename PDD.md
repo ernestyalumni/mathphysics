@@ -3,8 +3,9 @@
 Registered PDD scopes use nested configuration and architecture files:
 
 - `Python/rotations`: rotation conversion module.
-- `Rust/qft-symbolics`: fourteen bounded arithmetic/operator/Lorentz/CLI units; manual adoption, full regeneration unverified. See its PDD.md.
+- `Rust/qft-symbolics`: fourteen bounded arithmetic/operator/Lorentz/CLI units plus the exact `sphere` unit; manual adoption, full regeneration unverified. See its PDD.md.
 - `Rust/physics-contracts`: typed metadata contracts and JSON validation CLI.
+- `Rust/lattice-gauge`: four exact units (torus geometry, Z2 cochains, Z2 enumeration, purity bounds); manual, prompt-first; see its PDD.md.
 - `Rust/physics-tools`: bounded JSON bridge to existing exact QFT operations.
 - `TypeScript/physics-workbench`: six bounded browser TS/CSS units, including PDF.js rendering; manually implemented, automated regeneration unverified. See its PDD.md.
 

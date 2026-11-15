@@ -1,0 +1,14 @@
+version: "1.0"
+contexts:
+  torus:
+    paths: ["prompts/torus_rust.prompt", "src/torus.rs", "tests/geometry.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/torus.rs, test_output_path: tests/, default_language: rust}
+  cochain:
+    paths: ["prompts/cochain_rust.prompt", "src/cochain.rs", "tests/twist_surfaces.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/cochain.rs, test_output_path: tests/, default_language: rust}
+  z2_gauge:
+    paths: ["prompts/z2_gauge_rust.prompt", "src/z2_gauge.rs", "tests/z2_enumeration.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/z2_gauge.rs, test_output_path: tests/, default_language: rust}
+  spectral:
+    paths: ["prompts/spectral_rust.prompt", "src/spectral.rs", "tests/purity.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/spectral.rs, test_output_path: tests/, default_language: rust}

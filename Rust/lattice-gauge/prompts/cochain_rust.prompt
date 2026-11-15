@@ -1,0 +1,4 @@
+<version>1.0.0</version>
+<language>Rust</language>
+<include>prompts/torus_rust.prompt</include>
+Output src/cochain.rs. Sets of plaquettes as Vec<bool> by plaquette index (Z2 2-cochains). symmetric_difference (None on length mismatch); link_coboundary_set; thooft_surface(torus,first,second): plaquettes in plane (first,second) at sites whose coordinates in those two directions are zero; odd_cube_count (cubes with an odd number of faces in the set: Z2 monopoles); plane_slice_intersection_count; link_coboundary_rank and is_sum_of_link_coboundaries by Gaussian elimination over GF(2) with packed u64 rows (None on wrong length). MUST decide membership by elimination, not by the parity argument, so that tests can compare the two methods. Independent tests: tests/twist_surfaces.rs (mono-notes Lemma ym:lem:thooft-class on 4D tori by both methods; negative control: one twisted plaquette makes 4 monopoles; translated surface differs by coboundaries).

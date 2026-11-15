@@ -98,3 +98,10 @@ contexts:
       generate_output_path: src/differential.rs
       test_output_path: tests/
       default_language: rust
+  sphere:
+    paths: ["prompts/sphere_rust.prompt", "src/sphere.rs", "tests/sphere_averages.rs"]
+    defaults:
+      prompts_dir: prompts
+      generate_output_path: src/sphere.rs
+      test_output_path: tests/
+      default_language: rust

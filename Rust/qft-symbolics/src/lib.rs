@@ -8,6 +8,8 @@ pub mod polynomial;
 pub mod scalar;
 pub mod smga;
 pub mod spinor;
+/// Exact sphere averages and rational multiples of powers of pi.
+pub mod sphere;
 pub mod tensor;
 pub mod tensor_cases;
 pub mod twistor;

@@ -28,6 +28,8 @@ pub mod multitrig;
 pub mod rigid_body;
 pub mod scalar;
 pub mod so3;
+/// su(N) with exact integer arithmetic: Killing form and Casimir constant.
+pub mod special_unitary;
 pub mod su2;
 pub mod symbolic;
 pub mod vector;
