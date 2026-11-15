@@ -1,0 +1,797 @@
+\section{Lattice Yang--Mills theory: the scaling limit and the mass gap}\label{ym:sec:lattice}
+The problem of Jaffe and Witten \cite{JaffeWitten2006}: for a compact simple
+gauge group $G$, construct a nontrivial quantum Yang--Mills theory on
+$\mathbb R^4$ and show that its Hamiltonian $H$ has
+\begin{equation}\label{ym:gap-statement}
+ \operatorname{spec}(H)\subset\{0\}\cup[\Delta,\infty),\qquad\Delta>0 .
+\end{equation}
+A formal proof \cite{OpenAIYM2026}, checked by the Lean kernel and reviewed in
+\cite{YMGroup2026}, constructs such a theory as a scaling limit of Wilson's
+lattice gauge theory, in the sense of Theorem~\ref{ym:thm:existence}. It does
+not assert Eq.~\eqref{ym:gap-statement}, and it does not assert that the limit
+is unique. This section fixes the objects, derives the constants, states what
+is proved, and reduces Eq.~\eqref{ym:gap-statement} to statements about
+partition functions on finite tori. The statement of
+Theorem~\ref{ym:thm:existence} follows the definition-by-definition account in
+\cite{Armstrong2026}.
+
+\subsection{Gauge group, inner product, Casimir constant}
+\begin{definition}\label{ym:def:gauge-group}
+A gauge group is a triple $(m,G,\mathfrak g)$: an integer $m\ge1$, a closed
+subgroup $G\subset U(m)$, and the real subspace
+\begin{equation}\label{ym:lie-algebra}
+ \mathfrak g=\{X\in M_m(\mathbb C):\ \exp(sX)\in G\ \text{for all }s\in\mathbb R\}.
+\end{equation}
+$\mathfrak g$ is simple if it is nonabelian and its only ideals are $\{0\}$
+and $\mathfrak g$.
+\end{definition}
+Every $X\in\mathfrak g$ is skew-Hermitian, $X^\dagger=-X$. On $\mathfrak g$ put
+\begin{equation}\label{ym:inner}
+ \langle X,Y\rangle_{\mathfrak g}=-\frac1m\operatorname{Re}\operatorname{tr}(XY),
+ \qquad \|X\|_{\mathfrak g}^2=\langle X,X\rangle_{\mathfrak g}
+ =\frac1m\operatorname{tr}(X^\dagger X)\ \ge0 .
+\end{equation}
+It is invariant: $\langle gXg^{-1},gYg^{-1}\rangle_{\mathfrak g}
+=\langle X,Y\rangle_{\mathfrak g}$ for $g\in G$, by cyclicity of the trace.
+With $\operatorname{ad}(X)Y=[X,Y]$ and the Killing form
+$K(X,Y)=\operatorname{tr}_{\mathfrak g}(\operatorname{ad}(X)\operatorname{ad}(Y))$,
+the Casimir constant $C_{\mathfrak g}$ of a simple $\mathfrak g$ is defined by
+\begin{equation}\label{ym:casimir}
+ K(X,Y)=-C_{\mathfrak g}\,\langle X,Y\rangle_{\mathfrak g}.
+\end{equation}
+Both sides are invariant symmetric bilinear forms on a simple Lie algebra, so
+they are proportional; $K$ is negative definite on a compact simple
+$\mathfrak g$, so $C_{\mathfrak g}>0$. If the inner product is rescaled,
+\begin{equation}\label{ym:casimir-rescale}
+ \langle\cdot,\cdot\rangle'=c\,\langle\cdot,\cdot\rangle_{\mathfrak g}
+ \quad\Longrightarrow\quad C'=\frac{C_{\mathfrak g}}{c},
+\end{equation}
+because $K$ does not depend on the inner product.
+
+\begin{proposition}\label{ym:prop:casimir-sun}
+For $G=SU(N)\subset U(N)$, $N\ge2$: $K(X,Y)=2N\operatorname{tr}(XY)$ and
+$C_{\mathfrak g}=2N^2$.
+\end{proposition}
+\begin{proof}
+For $A,B\in M_N(\mathbb C)$ the map $Z\mapsto AZB$ on $M_N(\mathbb C)$ has
+trace, in the basis of matrix units $E_{ij}$,
+\begin{equation}\label{ym:trace-AZB}
+ \sum_{i,j}(AE_{ij}B)_{ij}=\sum_{i,j}A_{ii}B_{jj}
+ =\operatorname{tr}(A)\operatorname{tr}(B).
+\end{equation}
+Expand the double commutator,
+\begin{equation}
+ \operatorname{ad}(X)\operatorname{ad}(Y)Z=[X,[Y,Z]]=XYZ-XZY-YZX+ZYX,
+\end{equation}
+and apply Eq.~\eqref{ym:trace-AZB} to each term, with
+$(A,B)=(XY,1),(X,Y),(Y,X),(1,YX)$ and $\operatorname{tr}(1)=N$:
+\begin{equation}\label{ym:killing-gl}
+ \operatorname{tr}_{M_N(\mathbb C)}\big(\operatorname{ad}(X)\operatorname{ad}(Y)\big)
+ =N\operatorname{tr}(XY)-\operatorname{tr}(X)\operatorname{tr}(Y)
+ -\operatorname{tr}(Y)\operatorname{tr}(X)+N\operatorname{tr}(YX)
+ =2N\operatorname{tr}(XY)-2\operatorname{tr}(X)\operatorname{tr}(Y).
+\end{equation}
+$M_N(\mathbb C)=\mathfrak{sl}_N(\mathbb C)\oplus\mathbb C1$;
+$\operatorname{ad}(X)\operatorname{ad}(Y)$ annihilates $1$ and preserves
+$\mathfrak{sl}_N(\mathbb C)$, so the trace over $\mathfrak{sl}_N(\mathbb C)$
+equals Eq.~\eqref{ym:killing-gl}. $\mathfrak{sl}_N(\mathbb C)$ is the
+complexification of $\mathfrak{su}(N)$, so for $X,Y\in\mathfrak{su}(N)$ the
+real trace over $\mathfrak{su}(N)$ equals the complex trace over
+$\mathfrak{sl}_N(\mathbb C)$. With $\operatorname{tr}X=\operatorname{tr}Y=0$,
+$K(X,Y)=2N\operatorname{tr}(XY)$. For skew-Hermitian $X,Y$,
+$\overline{\operatorname{tr}(XY)}=\operatorname{tr}(Y^\dagger X^\dagger)
+=\operatorname{tr}(YX)=\operatorname{tr}(XY)$, so $\operatorname{tr}(XY)$ is
+real and Eqs.~\eqref{ym:inner}, \eqref{ym:casimir} give
+\begin{equation}
+ 2N\operatorname{tr}(XY)=-C_{\mathfrak g}\Big(-\frac1N\operatorname{tr}(XY)\Big)
+ =\frac{C_{\mathfrak g}}{N}\operatorname{tr}(XY),\qquad C_{\mathfrak g}=2N^2 .
+\end{equation}
+\end{proof}
+So $C_{\mathfrak{su}(2)}=8$ and $C_{\mathfrak{su}(3)}=18$.
+
+\subsection{Links, plaquettes, Wilson measure}
+Let $\ell\ge1$ and $\Lambda_\ell=(\mathbb Z/\ell\mathbb Z)^4$, with unit
+vectors $e_1,\dots,e_4$. A link is a pair $(y,\mu)$, joining $y$ to $y+e_\mu$.
+A configuration is a map $U\colon\Lambda_\ell\times\{1,2,3,4\}\to G$. The
+plaquette variable and the Wilson energy are
+\begin{align}
+ U_{y;\mu\nu}&=U(y,\mu)\,U(y+e_\mu,\nu)\,U(y+e_\nu,\mu)^{-1}\,U(y,\nu)^{-1},
+ \label{ym:plaquette}\\
+ E_\ell(U)&=\sum_{y\in\Lambda_\ell}\ \sum_{1\le\mu<\nu\le4}
+ \Big(1-\frac1m\operatorname{Re}\operatorname{tr}U_{y;\mu\nu}\Big).
+ \label{ym:wilson-energy}
+\end{align}
+A unitary matrix has $|\operatorname{tr}U|\le m$, so each summand lies in
+$[0,2]$; there are $6\ell^4$ plaquettes, hence $0\le E_\ell\le12\ell^4$.
+
+A gauge transformation $\gamma\colon\Lambda_\ell\to G$ acts by
+$U^\gamma(y,\mu)=\gamma(y)U(y,\mu)\gamma(y+e_\mu)^{-1}$. Substituting in
+Eq.~\eqref{ym:plaquette},
+\begin{align}
+ U^\gamma_{y;\mu\nu}
+ &=\gamma(y)U(y,\mu)\gamma(y+e_\mu)^{-1}\cdot
+   \gamma(y+e_\mu)U(y+e_\mu,\nu)\gamma(y+e_\mu+e_\nu)^{-1}\notag\\
+ &\quad\cdot\gamma(y+e_\nu+e_\mu)U(y+e_\nu,\mu)^{-1}\gamma(y+e_\nu)^{-1}\cdot
+   \gamma(y+e_\nu)U(y,\nu)^{-1}\gamma(y)^{-1}\notag\\
+ &=\gamma(y)\,U_{y;\mu\nu}\,\gamma(y)^{-1},\label{ym:plaquette-gauge}
+\end{align}
+so $\operatorname{tr}U^\gamma_{y;\mu\nu}=\operatorname{tr}U_{y;\mu\nu}$ and
+$E_\ell(U^\gamma)=E_\ell(U)$.
+
+\begin{definition}\label{ym:def:wilson-measure}
+For $\beta\in\mathbb R$ and $h$ the normalized Haar measure on $G$, the Wilson
+measure on $G^{\Lambda_\ell\times\{1,\dots,4\}}$ is
+\begin{equation}\label{ym:wilson-measure}
+ \mu_{\ell,\beta}(dU)=\frac{1}{Z_{\ell,\beta}}e^{-\beta E_\ell(U)}
+ \prod_{(y,\mu)}h\big(dU(y,\mu)\big),\qquad
+ Z_{\ell,\beta}=\int e^{-\beta E_\ell(U)}\prod_{(y,\mu)}h\big(dU(y,\mu)\big).
+\end{equation}
+\end{definition}
+
+\subsection{Classical limit of the Wilson energy}
+Let $A_\mu\colon\mathbb R^4\to\mathfrak g$ be smooth, $a>0$ the lattice
+spacing, and $U(y,\mu)=\exp\big(aA_\mu(ay)\big)$. Write $A_\mu$ for
+$A_\mu(ay)$ and $\frac{\partial A_\nu}{\partial x^\mu}$ for its derivative at
+$ay$. Taylor expansion gives $A_\nu(ay+ae_\mu)=A_\nu
++a\frac{\partial A_\nu}{\partial x^\mu}+O(a^2)$. With
+$e^Xe^Y=\exp\big(X+Y+\frac12[X,Y]+\cdots\big)$, the first two and the last two
+factors of Eq.~\eqref{ym:plaquette} are $e^P$ and $e^Q$,
+\begin{align}
+ P&=a(A_\mu+A_\nu)+a^2\Big(\frac{\partial A_\nu}{\partial x^\mu}
+   +\frac12[A_\mu,A_\nu]\Big)+O(a^3),\\
+ Q&=-a(A_\mu+A_\nu)+a^2\Big(-\frac{\partial A_\mu}{\partial x^\nu}
+   +\frac12[A_\mu,A_\nu]\Big)+O(a^3),
+\end{align}
+where the commutator in $Q$ is $\frac12[-A_\mu,-A_\nu]$. Then
+$[P,Q]=-a^2[A_\mu+A_\nu,A_\mu+A_\nu]+O(a^3)=O(a^3)$ and
+\begin{equation}\label{ym:plaquette-expansion}
+ U_{y;\mu\nu}=e^Pe^Q=\exp\big(a^2F_{\mu\nu}+O(a^3)\big),\qquad
+ F_{\mu\nu}=\frac{\partial A_\nu}{\partial x^\mu}
+ -\frac{\partial A_\mu}{\partial x^\nu}+[A_\mu,A_\nu].
+\end{equation}
+The exponent $M=a^2F_{\mu\nu}+O(a^3)$ lies in $\mathfrak g$, so it is
+skew-Hermitian and $\operatorname{tr}M$ is imaginary:
+\begin{equation}\label{ym:plaquette-energy}
+ 1-\frac1m\operatorname{Re}\operatorname{tr}e^M
+ =1-\frac1m\operatorname{Re}\operatorname{tr}\Big(1+M+\frac12M^2+O(M^3)\Big)
+ =-\frac{a^4}{2m}\operatorname{Re}\operatorname{tr}F_{\mu\nu}^2+O(a^5)
+ =\frac{a^4}{2}\|F_{\mu\nu}\|_{\mathfrak g}^2+O(a^5).
+\end{equation}
+Summing over plaquettes with $a^4\sum_y\to\int d^4x$,
+\begin{equation}\label{ym:classical-action}
+ \beta E_\ell(U)\ \longrightarrow\ \frac{\beta}{2}\int_{\mathbb R^4}
+ \sum_{\mu<\nu}\|F_{\mu\nu}(x)\|_{\mathfrak g}^2\,d^4x
+ =\frac{1}{2g_0^2}\int\sum_{\mu<\nu}\|F_{\mu\nu}\|_{\mathfrak g}^2\,d^4x,
+ \qquad\beta=\frac{1}{g_0^2}.
+\end{equation}
+$\beta$ is the inverse squared bare coupling for the inner product
+\eqref{ym:inner}. Under the rescaling \eqref{ym:casimir-rescale} the same
+action reads $\frac{1}{2g_0'^2}\int\sum\|F\|'^2$ with $g_0'^2=c\,g_0^2$, so
+\begin{equation}\label{ym:invariant-combination}
+ g_0'^2\,C'=c\,g_0^2\,\frac{C_{\mathfrak g}}{c}=g_0^2\,C_{\mathfrak g}
+\end{equation}
+does not depend on the normalization of the inner product.
+
+\subsection{Asymptotic freedom and the bare coupling}
+Choose a basis $e_a=-iT^a$ of $\mathfrak g$ with $[T^a,T^b]=if^{abc}T^c$ and
+$f^{acd}f^{bcd}=T(A)\delta^{ab}$, as in Srednicki, Eq.~(70.9) for the adjoint
+representation \cite{MSrednicki2007}, and the inner product
+$\langle e_a,e_b\rangle'=\delta_{ab}$. Then $[e_a,e_b]=-[T^a,T^b]
+=-if^{abc}T^c=f^{abc}e_c$, the matrix of $\operatorname{ad}(e_a)$ is
+$(\operatorname{ad}e_a)_{cb}=f^{abc}$, and
+\begin{equation}\label{ym:killing-structure}
+ K(e_a,e_b)=(\operatorname{ad}e_a)_{cd}(\operatorname{ad}e_b)_{dc}
+ =f^{adc}f^{bcd}=-f^{acd}f^{bcd}=-T(A)\delta^{ab},\qquad C'=T(A).
+\end{equation}
+In this normalization Srednicki's Lagrangian
+$-\frac14F^{a\mu\nu}F^a_{\mu\nu}$, with the coupling $g$ absorbed into the
+field, has Euclidean action
+$\frac{1}{4g^2}\int\sum_{\mu,\nu}F^a_{\mu\nu}F^a_{\mu\nu}
+=\frac{1}{2g^2}\int\sum_{\mu<\nu}\|F_{\mu\nu}\|'^2$, so $g_0'=g$.
+For pure gauge theory, Srednicki, Eq.~(73.41), is
+\begin{equation}\label{ym:beta-function}
+ \mu\frac{dg}{d\mu}=-b_0'\,g^3+O(g^5),\qquad
+ b_0'=\frac{11}{3}\frac{T(A)}{16\pi^2}=\frac{11\,C'}{48\pi^2}.
+\end{equation}
+Divide by $-\frac12g^3$:
+\begin{equation}\label{ym:running-inverse}
+ \mu\frac{d}{d\mu}\frac{1}{g^2}=-\frac{2}{g^3}\,\mu\frac{dg}{d\mu}
+ =2b_0'+O(g^2),\qquad
+ \frac{1}{g^2(\mu)}=\frac{1}{g^2(\mu_0)}+2b_0'\log\frac{\mu}{\mu_0}
+ +\cdots .
+\end{equation}
+By Eq.~\eqref{ym:invariant-combination}, $C'/g_0'^2=C_{\mathfrak g}/g_0^2$,
+so in the normalization \eqref{ym:inner}, with $\mu=1/a$ and $\beta=1/g_0^2$,
+\begin{equation}\label{ym:slope}
+ a\frac{d\beta}{da}=-b_*+\cdots,\qquad
+ b_*=2b_0=\frac{11\,C_{\mathfrak g}}{24\pi^2},\qquad
+ b_0=\frac{11\,C_{\mathfrak g}}{48\pi^2}.
+\end{equation}
+For $SU(2)$, $b_*=\frac{11}{3\pi^2}$; for $SU(3)$, $b_*=\frac{33}{4\pi^2}$.
+
+The factor $\frac{1}{8\pi^2}$ per unit of $\log$ is the momentum-shell
+integral in four dimensions. The unit sphere $S^3$ has area $2\pi^2$, so for
+$L>1$
+\begin{equation}\label{ym:shell}
+ \int_{1/L\le|k|\le1}\frac{d^4k}{(2\pi)^4}\frac{1}{|k|^4}
+ =\frac{2\pi^2}{16\pi^4}\int_{1/L}^{1}\frac{k^3\,dk}{k^4}
+ =\frac{\log L}{8\pi^2},\qquad
+ b_*=\frac{11\,C_{\mathfrak g}}{3}\cdot\frac{1}{8\pi^2}.
+\end{equation}
+The angular averages that enter one-loop tensor integrals over $S^3$ follow
+from $\langle n_\mu n_\nu\rangle=\frac14\delta_{\mu\nu}$ and
+$\langle n_\mu n_\nu n_\rho n_\sigma\rangle=\frac{1}{24}
+(\delta_{\mu\nu}\delta_{\rho\sigma}+\delta_{\mu\rho}\delta_{\nu\sigma}
++\delta_{\mu\sigma}\delta_{\nu\rho})$: contracting the second with
+$\delta_{\mu\nu}\delta_{\rho\sigma}$ gives $\frac{1}{24}(16+4+4)=1$. In
+particular $\langle n_1^2\rangle=\frac14$,
+$\langle n_1^2n_2^2\rangle=\frac1{24}$, $\langle n_1^4\rangle=\frac18$.
+
+Integrating Eq.~\eqref{ym:slope}, a continuum limit $a\to0$ at fixed physics
+requires
+\begin{equation}\label{ym:scaling-law}
+ \beta(a)=b_*\log\frac1a+o\Big(\log\frac1a\Big),\qquad
+ a\,\Lambda=\exp\Big(-\frac{\beta(a)}{b_*}\Big)\ \text{to leading logarithm},
+\end{equation}
+where $\Lambda$ is the integration constant, a mass. A physical mass
+$m_{\mathrm{phys}}=c\,\Lambda$ corresponds to a lattice mass
+\begin{equation}\label{ym:lattice-mass}
+ m_{\mathrm{lat}}(\beta)=a\,m_{\mathrm{phys}}\approx c\,e^{-\beta/b_*},
+\end{equation}
+up to powers of $\beta$ from higher loops: exponentially small in $\beta$.
+
+\subsection{The existence theorem}
+\begin{definition}\label{ym:def:family}
+A Wilson family for $(m,G,\mathfrak g)$ consists of strictly increasing
+sequences of positive integers $(L_p)_{p\in\mathbb N}$ (physical sides) and
+$(D_N)_{N\in\mathbb N}$ (inverse spacings, $a_N=1/D_N$), couplings
+$\beta_{N,p}\in\mathbb R$, a set $\mathcal T$ of tokens, and for each
+$N,p$, $v\in\mathcal T$, $y\in\Lambda_{N,p}=\Lambda_{L_pD_N}$ an insertion
+$I_{N,p}(v,y;\cdot)\colon G^{\Lambda_{N,p}\times\{1,\dots,4\}}\to\mathbb C$.
+The family is regular if each insertion is continuous, gauge invariant and
+depends only on the links in a fixed finite stencil around $y$, and
+\begin{equation}\label{ym:reg1}
+ \exists\,b_*>0:\qquad
+ \lim_{N\to\infty}\ \sup_{p}\Big|\frac{\beta_{N,p}}{\log(1/a_N)}-b_*\Big|=0 .
+\end{equation}
+\end{definition}
+Write $\mu_{N,p}=\mu_{L_pD_N,\beta_{N,p}}$, and $\hat y\in(-L_p/2,L_p/2]^4$
+for the physical position of $y\in\Lambda_{N,p}$. For $v\in\mathcal T^n$ and
+$f\in C_c^\infty(\mathrm{Conf}_n)$, where $\mathrm{Conf}_n=\{x\in(\mathbb
+R^4)^n: x_i\ne x_j\ (i\ne j)\}$, the smeared moment is
+\begin{equation}\label{ym:smeared-moment}
+ C_{N,p}(v;f)=a_N^{4n}\sum_{y\in\Lambda_{N,p}^n}f(\hat y_1,\dots,\hat y_n)
+ \int\prod_{i=1}^nI_{N,p}(v_i,y_i;U)\,\mu_{N,p}(dU).
+\end{equation}
+\begin{definition}\label{ym:def:ordered}
+The family converges along $P\colon\mathbb N\to\mathbb N$ to kernels $K_n(v;x)$
+if for every $n,v,f$ there are numbers $R_p$ with
+\begin{equation}\label{ym:ordered-limit}
+ \lim_{N\to\infty}C_{N,p}(v;f)=R_p\ \ \text{whenever }
+ \operatorname{supp}f\subset\big((-\tfrac{L_p}{2},\tfrac{L_p}{2})^4\big)^n,
+ \qquad
+ \lim_{k\to\infty}R_{P(k)}=\int f(x)\,K_n(v;x)\,dx .
+\end{equation}
+\end{definition}
+The first limit is the ultraviolet limit at fixed volume along the whole
+sequence $N=0,1,2,\dots$; the second is the infinite-volume limit along $P$.
+
+\begin{theorem}[Existence; formal proof \cite{OpenAIYM2026}]\label{ym:thm:existence}
+Let $(m,G,\mathfrak g)$ be a gauge group with $\mathfrak g$ simple. There is a
+regular Wilson family such that for every strictly increasing
+$p\colon\mathbb N\to\mathbb N$ there are a strictly increasing
+$q\colon\mathbb N\to\mathbb N$ and the following data.
+\begin{enumerate}
+\item Finite-dimensional spaces $F_d$ of fields of degree $d$, a surjection
+ $\pi\colon\mathcal T\to\bigsqcup_dF_d$, a compact metric space $X$ of phases
+ with a probability measure $\nu$ of full support and a point $\xi_*\in X$,
+ and correlation functions $S^\xi$ ($\xi\in X$) and $S^{\mathrm{mix}}$,
+ smooth and permutation symmetric on $\mathrm{Conf}_n$, continuous in $\xi$,
+ with
+ \begin{equation}\label{ym:mixture}
+  S^{\mathrm{mix}}(a;x)=\int_XS^\xi(a;x)\,\nu(d\xi).
+ \end{equation}
+\item The family converges along $k\mapsto p(q(k))$, in the sense of
+ Eq.~\eqref{ym:ordered-limit}, to
+ $K_n(v;x)=S^{\mathrm{mix}}(\pi(v_1),\dots,\pi(v_n);x)$.
+\item A Hilbert space $\mathcal H$ with vacuum $\Omega$, fields
+ $\Phi(\ell,f)$, a unitary representation of the Poincar\'e group and an
+ energy--momentum measure supported in the closed forward cone, satisfying
+ the Wightman axioms with $\Omega$ the only translation-invariant vector up
+ to scalars. The Wightman functions are the boundary values of the analytic
+ continuation in the times of $S^{\xi_*}$.
+\item An operator product expansion for $S^\xi$ and $S^{\mathrm{mix}}$ with
+ coefficient and remainder bounds.
+\item A field $\Theta\in F_4$ with $\langle\Omega,\Phi(\Theta,f)\Omega\rangle=0$
+ whose two-point function at Euclidean time separation $r$,
+ $G_\Theta(r)=S^{\xi_*}(\Theta,\Theta;(0,-\tfrac r2),(0,\tfrac r2))$, satisfies
+ \begin{equation}\label{ym:trace-law}
+  \lim_{r\to0^+}r^8\Big(\log\frac1r\Big)^2G_\Theta(r)
+  =\frac{3\dim_{\mathbb R}\mathfrak g}{\pi^4},
+ \end{equation}
+ and $G_\Theta$ agrees near $r=0$ with no finite sum of products of
+ free-field mass-shell kernels.
+\end{enumerate}
+In the family of the proof, $b_*$ in Eq.~\eqref{ym:reg1} has the value
+\eqref{ym:slope}.
+\end{theorem}
+The quantifiers matter. The lattice data are chosen before $p$. The
+refinement $q$ and all of item~1 and items~3--5 are chosen after $p$ and may
+depend on it. The theorem does not assert: that the limit in
+Eq.~\eqref{ym:ordered-limit} exists along the full sequence of volumes; that
+two subsequences give the same $S^{\mathrm{mix}}$; that $X$ is a point; that
+$S^\xi=S^{\xi'}$; or Eq.~\eqref{ym:gap-statement}.
+
+The proof establishes more than the statement
+\cite{Armstrong2026,YMGroup2026}: a theory as in item~3 for every phase
+$\xi\in X$, with Hamiltonian $H_\xi\ge0$, projection $P_{0,\xi}$ onto
+$\mathbb C\Omega_\xi=\ker H_\xi$, and for every finite sum $A$ of products of
+smeared fields a constant $M_A$, independent of $\xi$, such that
+\begin{equation}\label{ym:low-energy}
+ \nu_{A\Omega_\xi}\big((0,u]\big)\le M_A\,u^2\quad(0<u\le1),
+\end{equation}
+where $\nu_\psi(B)=\langle\psi,E_{H_\xi}(B)\psi\rangle$ is the spectral
+measure of $H_\xi$ in the vector $\psi$.
+
+\subsection{Shape of the proof}
+The proof has an ultraviolet part and an infinite-volume part
+\cite{Armstrong2026}.
+
+\emph{Ultraviolet.} Levels $m=N,N-1,\dots,0$ carry lattices of spacing
+$a_m$ on the same torus of side $L_p$; level $N$ is the Wilson lattice and
+level $0$ has unit spacing and $L_p^4$ sites. One block-spin step integrates
+the fine configuration $U$ against a kernel $k(V,U)\ge0$ that is a
+probability density in the coarse configuration $V$:
+\begin{equation}\label{ym:block-step}
+ \rho_m(V)=\int k(V,U)\,\rho_{m+1}(U)\,dU,\qquad\int k(V,U)\,dV=1 .
+\end{equation}
+By Tonelli's theorem,
+\begin{equation}\label{ym:partition-preserved}
+ \int\rho_m(V)\,dV=\int\Big(\int k(V,U)\,dV\Big)\rho_{m+1}(U)\,dU
+ =\int\rho_{m+1}(U)\,dU,\qquad
+ \int\rho_0\,dV=\int\rho_N\,dU=Z_{L_pD_N,\beta_{N,p}} .
+\end{equation}
+The density at level $m$ is controlled in the form
+\begin{equation}\label{ym:effective-density}
+ \rho_m(U)=\exp\big(v|\Lambda_m|-\beta_{N,p,m}\,\mathcal K(U)-\mathcal L(U)
+ -\mathcal E(U)\big)\,\mathcal G(U),
+\end{equation}
+with $\mathcal K$ a gauge-invariant local action normalized so that its
+quadratic part at zero momentum is that of Eq.~\eqref{ym:classical-action},
+$\mathcal L$ the renormalized insertions, $\mathcal E$ irrelevant terms and
+$\mathcal G$ a large-field factor. The bare coupling $\beta_{N,p}$ is tuned
+so that the level-$0$ coupling is one fixed large number $\bar\beta$:
+\begin{equation}\label{ym:running}
+ \beta_{N,p,0}=\bar\beta,\qquad
+ \beta_{N,p,m}=\bar\beta+b_*\log\frac{1}{a_m}+o\Big(\log\frac{1}{a_m}\Big)
+ \quad\text{uniformly in }N\ge m\text{ and }p .
+\end{equation}
+At $m=N$ this is Eq.~\eqref{ym:reg1}. Bounds on moments of insertions that
+are uniform in $N$ and $p$ give the first limit in
+Eq.~\eqref{ym:ordered-limit}.
+
+\emph{Infinite volume.} The uniform bounds and their difference quotients
+give equicontinuity on compact subsets of $\mathrm{Conf}_n$; a diagonal
+Arzel\`a--Ascoli argument extracts $q$. Reflection positivity passes to the
+limit. The limit $S^{\mathrm{mix}}$ need not cluster; it is decomposed over
+the spectrum $X$ of a commuting family of operators as in
+Eq.~\eqref{ym:mixture}, and each $S^\xi$ is reconstructed.
+
+No estimate in the infinite-volume part depends on the dynamics at distances
+beyond the unit scale of level $0$. By Eqs.~\eqref{ym:lattice-mass} and
+\eqref{ym:running}, the level-$0$ system is a lattice gauge theory at
+coupling $\bar\beta$ whose expected mass in lattice units is of order
+$e^{-\bar\beta/b_*}$.
+
+\subsection{Spectral measures and the mass gap}
+Let $H\ge0$ be self-adjoint on $\mathcal H$ with spectral projections
+$E_H(B)$, $P_0=E_H(\{0\})$, and for $\psi\in\mathcal H$ let
+$\nu_\psi(B)=\langle\psi,E_H(B)\psi\rangle$ and
+$N_\psi(u)=\nu_\psi((0,u])$. For $s>0$,
+\begin{equation}\label{ym:laplace}
+ \big\langle\psi,(e^{-sH}-P_0)\psi\big\rangle
+ =\int_{(0,\infty)}e^{-sE}\,\nu_\psi(dE).
+\end{equation}
+\begin{lemma}\label{ym:lem:layer}
+$\displaystyle\int_{(0,\infty)}e^{-sE}\,\nu_\psi(dE)
+=\int_0^\infty s\,e^{-su}\,N_\psi(u)\,du$.
+\end{lemma}
+\begin{proof}
+$e^{-sE}=\int_E^\infty s\,e^{-su}\,du$. Insert this and exchange the
+integrals by Tonelli's theorem:
+\begin{equation}
+ \int_{(0,\infty)}\int_0^\infty\mathbf 1_{\{E\le u\}}\,s\,e^{-su}\,du\,
+ \nu_\psi(dE)
+ =\int_0^\infty s\,e^{-su}\,\nu_\psi\big((0,u]\big)\,du .
+\end{equation}
+\end{proof}
+\begin{proposition}[Polynomial decay from Eq.~\eqref{ym:low-energy}]
+\label{ym:prop:inverse-square}
+If $N_\psi(u)\le Du^2$ for all $u>0$, then
+$0\le\langle\psi,(e^{-sH}-P_0)\psi\rangle\le2D\,s^{-2}$ for all $s>0$.
+\end{proposition}
+\begin{proof}
+By Eq.~\eqref{ym:laplace} and Lemma~\ref{ym:lem:layer},
+\begin{equation}
+ \big\langle\psi,(e^{-sH}-P_0)\psi\big\rangle
+ \le D\,s\int_0^\infty u^2e^{-su}\,du
+ =D\,s\,\frac{\Gamma(3)}{s^3}=\frac{2D}{s^2}.
+\end{equation}
+\end{proof}
+The hypothesis follows from Eq.~\eqref{ym:low-energy} with
+$D=\max(M_A,\|A\Omega_\xi\|^2)$: for $u>1$,
+$N_\psi(u)\le\|\psi\|^2\le\|\psi\|^2u^2$.
+
+\begin{proposition}[Gap and exponential decay]\label{ym:prop:gap-decay}
+Let $\Delta>0$ and let $\mathcal D\subset\mathcal H$ be dense. The following
+are equivalent.
+\begin{enumerate}
+\item $\operatorname{spec}(H)\subset\{0\}\cup[\Delta,\infty)$.
+\item For every $\psi\in\mathcal D$ there are $C_\psi$ and $s_\psi$ with
+ $\langle\psi,(e^{-sH}-P_0)\psi\rangle\le C_\psi e^{-s\Delta}$ for all
+ $s\ge s_\psi$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(1)$\Rightarrow$(2): $\nu_\psi((0,\Delta))=0$, so Eq.~\eqref{ym:laplace} is
+at most $e^{-s\Delta}\nu_\psi([\Delta,\infty))\le e^{-s\Delta}\|\psi\|^2$.
+
+(2)$\Rightarrow$(1): let $0<\Delta'<\Delta$ and $\psi\in\mathcal D$. On
+$(0,\Delta']$, $e^{-sE}\ge e^{-s\Delta'}$, so for $s\ge s_\psi$
+\begin{equation}
+ e^{-s\Delta'}\,\nu_\psi\big((0,\Delta']\big)
+ \le\int_{(0,\infty)}e^{-sE}\,\nu_\psi(dE)\le C_\psi e^{-s\Delta},
+ \qquad
+ \nu_\psi\big((0,\Delta']\big)\le C_\psi e^{-s(\Delta-\Delta')}
+ \xrightarrow[s\to\infty]{}0 .
+\end{equation}
+Hence $\|E_H((0,\Delta'])\psi\|^2=0$ on the dense set $\mathcal D$; the
+projection is bounded, so $E_H((0,\Delta'])=0$ for every $\Delta'<\Delta$,
+and $E_H((0,\Delta))=0$.
+\end{proof}
+For $\psi=A\Omega$ with $A$ a product of fields smeared at times $\le0$,
+$\langle\psi,(e^{-sH}-P_0)\psi\rangle$ is a truncated Euclidean correlation
+function at time separation $s$. So Eq.~\eqref{ym:gap-statement} is
+exponential decay of truncated correlations of $S^\xi$, with one rate for
+all local fields.
+
+Eq.~\eqref{ym:low-energy} does not decide the question. A massless particle
+saturates it: for a one-particle state of a massless scalar field with
+momentum-space wave function $\hat f$, energy $E=|\mathbf p|$ and invariant
+measure $\frac{d^3p}{2|\mathbf p|}$,
+\begin{equation}\label{ym:massless-rate}
+ N_\psi(u)=\int_{|\mathbf p|\le u}|\hat f(\mathbf p)|^2
+ \frac{d^3p}{2|\mathbf p|}
+ \le\sup|\hat f|^2\cdot4\pi\int_0^u\frac{p^2\,dp}{2p}
+ =\pi\sup|\hat f|^2\,u^2 ,
+\end{equation}
+with equality in the limit $u\to0$ when $\hat f$ is continuous and
+$\hat f(0)\ne0$. A gapped theory has $N_\psi(u)=0$ for $u<\Delta$. Both
+satisfy Eq.~\eqref{ym:low-energy}.
+
+\subsection{Transfer operator and the purity of the trace}
+Consider the torus with sides $(n_1,n_2,n_3,n_4)$, the same $\beta\ge0$, and
+partition function $Z(n_1,n_2,n_3,n_4)$ as in
+Eq.~\eqref{ym:wilson-measure}. $E_\ell$ sums over all six planes, so
+relabelling the axes shows that $Z$ is symmetric in its four arguments.
+
+Split a configuration into time slices: spatial links
+$U_t=(U((\mathbf x,t),j))_{\mathbf x,j\le3}$ and temporal links
+$V_t(\mathbf x)=U((\mathbf x,t),4)$. Let $E_{\mathrm s}(U_t)$ be the sum of
+Eq.~\eqref{ym:wilson-energy} over the plaquettes in the planes $(j,k)$,
+$j<k\le3$, of slice $t$. By Eq.~\eqref{ym:plaquette} the plaquette in the
+plane $(j,4)$ at $(\mathbf x,t)$ is
+$U_t(\mathbf x,j)\,V_t(\mathbf x+e_j)\,U_{t+1}(\mathbf x,j)^{-1}\,V_t(\mathbf
+x)^{-1}$. Define the kernel
+\begin{align}
+ \mathsf T(U,U')&=e^{-\frac\beta2E_{\mathrm s}(U)}\,\mathsf K(U,U')\,
+ e^{-\frac\beta2E_{\mathrm s}(U')},\label{ym:transfer-kernel}\\
+ \mathsf K(U,U')&=\int\prod_{\mathbf x}h\big(dV(\mathbf x)\big)
+ \exp\Big(-\beta\sum_{\mathbf x,j}\Big(1-\frac1m\operatorname{Re}
+ \operatorname{tr}\,U(\mathbf x,j)V(\mathbf x+e_j)U'(\mathbf x,j)^{-1}
+ V(\mathbf x)^{-1}\Big)\Big).\notag
+\end{align}
+Each spatial plaquette of slice $t$ contributes
+$\frac\beta2+\frac\beta2$ through the two kernels adjacent to $U_t$, so
+\begin{equation}\label{ym:trace-formula}
+ Z(n_1,n_2,n_3,n)=\int\prod_{t\in\mathbb Z/n}dU_t\
+ \mathsf T(U_0,U_1)\mathsf T(U_1,U_2)\cdots\mathsf T(U_{n-1},U_0)
+ =\operatorname{Tr}\mathsf T^{\,n},
+\end{equation}
+where $\mathsf T$ acts on $L^2$ of the spatial configurations on the torus
+$(n_1,n_2,n_3)$. The kernel is real, continuous on a compact space, and
+symmetric. For the temporal plaquette
+$W=U(\mathbf x,j)V(\mathbf x+e_j)U'(\mathbf x,j)^{-1}V(\mathbf x)^{-1}$, which
+is unitary,
+\begin{equation}\label{ym:kernel-symmetry}
+ \operatorname{Re}\operatorname{tr}W=\operatorname{Re}\operatorname{tr}W^{-1}
+ =\operatorname{Re}\operatorname{tr}\,U'(\mathbf x,j)V(\mathbf x+e_j)^{-1}
+ U(\mathbf x,j)^{-1}V(\mathbf x),
+\end{equation}
+by cyclicity of the trace. The right side is the temporal plaquette of
+$\mathsf K(U',U)$ with $V$ replaced by $V^{-1}$, and Haar measure on a
+compact group is invariant under inversion; so
+$\mathsf K(U,U')=\mathsf K(U',U)$ and $\mathsf T$ is a self-adjoint
+trace-class operator.
+\begin{proposition}[Purity]\label{ym:prop:purity}
+Let $\mathsf T$ be a self-adjoint trace-class operator with eigenvalues
+$\lambda_1\ge\lambda_2\ge\dots\ge0$, $\lambda_1>0$, and $Z(n)=\operatorname{Tr}
+\mathsf T^{\,n}$. Put
+\begin{equation}\label{ym:purity-defs}
+ r_j=\Big(\frac{\lambda_j}{\lambda_1}\Big)^n\in[0,1],\qquad
+ s_n=\sum_{j\ge2}r_j,\qquad q_n=\sum_{j\ge2}r_j^2,\qquad
+ \mathsf P(n)=\frac{Z(2n)}{Z(n)^2}.
+\end{equation}
+Then
+\begin{equation}\label{ym:purity-bounds}
+ \mathsf P(n)=\frac{1+q_n}{(1+s_n)^2}\le1,\qquad
+ s_n\ \le\ \frac{1}{\mathsf P(n)}-1\ \le\ 2s_n+s_n^2,\qquad
+ s_{2n}\le s_n^2 .
+\end{equation}
+Consequently the gap $\mathsf m=\log(\lambda_1/\lambda_2)$ satisfies
+\begin{equation}\label{ym:gap-from-purity}
+ e^{-n\mathsf m}=r_2\le s_n\le\frac{1}{\mathsf P(n)}-1,\qquad
+ \mathsf m\ \ge\ \frac1n\log\frac{1}{\mathsf P(n)^{-1}-1}
+ \quad\text{when }\mathsf P(n)>\tfrac12 .
+\end{equation}
+\end{proposition}
+\begin{proof}
+$Z(n)=\sum_j\lambda_j^n=\lambda_1^n(1+s_n)$ and
+$Z(2n)=\lambda_1^{2n}(1+q_n)$ give the formula for $\mathsf P(n)$. Since
+$0\le r_j\le1$, $r_j^2\le r_j$ and $0\le q_n\le s_n$; hence
+$\mathsf P(n)\le\frac{1+s_n}{(1+s_n)^2}\le1$. Next,
+\begin{equation}
+ \frac{1}{\mathsf P(n)}-1-s_n
+ =\frac{(1+s_n)^2-(1+q_n)-s_n(1+q_n)}{1+q_n}
+ =\frac{s_n+s_n^2-q_n-s_nq_n}{1+q_n}
+ =\frac{(1+s_n)(s_n-q_n)}{1+q_n}\ \ge0,
+\end{equation}
+and $\frac{1}{\mathsf P(n)}-1=\frac{2s_n+s_n^2-q_n}{1+q_n}\le2s_n+s_n^2$.
+Finally $s_{2n}=\sum_{j\ge2}r_j^2=q_n\le\big(\sum_{j\ge2}r_j\big)^2=s_n^2$.
+\end{proof}
+The sum $s_n$ counts every excited state with its multiplicity, in every
+symmetry sector. At fixed $n$ it grows with the spatial volume. The defect of
+a hypercube controls it on the doubled spatial torus.
+\begin{definition}\label{ym:def:defect}
+The hypercubic defect at side $n$ is
+\begin{equation}\label{ym:defect}
+ \Delta_\beta(n)=16\log Z(n,n,n,n)-\log Z(2n,2n,2n,2n).
+\end{equation}
+\end{definition}
+This is the four-dimensional form of the square defect
+$4\log Z(n,n)-\log Z(2n,2n)$ of \cite{OpenAIO4Sharp2026}, Eq.~(1.6).
+\begin{proposition}[Defect and gap on the doubled torus]\label{ym:prop:defect}
+Assume that for every spatial torus the operator $\mathsf T$ of
+Eq.~\eqref{ym:transfer-kernel} is nonnegative. Let
+\begin{align}
+ \mathsf P_1&=\frac{Z(2n,n,n,n)}{Z(n,n,n,n)^2},&
+ \mathsf P_2&=\frac{Z(2n,2n,n,n)}{Z(2n,n,n,n)^2},\notag\\
+ \mathsf P_3&=\frac{Z(2n,2n,2n,n)}{Z(2n,2n,n,n)^2},&
+ \mathsf P_4&=\frac{Z(2n,2n,2n,2n)}{Z(2n,2n,2n,n)^2}.\label{ym:four-purities}
+\end{align}
+Then $0<\mathsf P_k\le1$,
+\begin{equation}\label{ym:defect-telescope}
+ e^{-\Delta_\beta(n)}=\mathsf P_1^{\,8}\,\mathsf P_2^{\,4}\,\mathsf P_3^{\,2}\,
+ \mathsf P_4,\qquad\Delta_\beta(n)\ge0,\qquad
+ \mathsf P_4\ge e^{-\Delta_\beta(n)},
+\end{equation}
+and the gap $\mathsf m(2n)$ of $\mathsf T$ on the spatial torus $(2n,2n,2n)$
+satisfies
+\begin{equation}\label{ym:gap-from-defect}
+ \mathsf m(2n)\ \ge\ \frac1n\log\frac{1}{e^{\Delta_\beta(n)}-1}
+ \qquad\text{when }\Delta_\beta(n)<\log2 .
+\end{equation}
+\end{proposition}
+\begin{proof}
+By the symmetry of $Z$ in its arguments, each $\mathsf P_k$ is a purity
+$Z(2n)/Z(n)^2$ of Eq.~\eqref{ym:purity-defs} for the transfer operator in the
+direction being doubled, on the torus formed by the other three sides; so
+$0<\mathsf P_k\le1$ by Eq.~\eqref{ym:purity-bounds}. Multiply:
+\begin{equation}
+ \mathsf P_1^{\,8}\mathsf P_2^{\,4}\mathsf P_3^{\,2}\mathsf P_4
+ =\frac{Z(2n,n,n,n)^8}{Z(n,n,n,n)^{16}}\cdot
+  \frac{Z(2n,2n,n,n)^4}{Z(2n,n,n,n)^{8}}\cdot
+  \frac{Z(2n,2n,2n,n)^2}{Z(2n,2n,n,n)^{4}}\cdot
+  \frac{Z(2n,2n,2n,2n)}{Z(2n,2n,2n,n)^{2}}
+ =\frac{Z(2n,2n,2n,2n)}{Z(n,n,n,n)^{16}} .
+\end{equation}
+All factors are at most $1$, so $\Delta_\beta(n)\ge0$ and
+$\mathsf P_4\ge\mathsf P_1^{\,8}\mathsf P_2^{\,4}\mathsf P_3^{\,2}\mathsf P_4
+=e^{-\Delta_\beta(n)}$. $\mathsf P_4$ is the purity at time extent $n$ on the
+spatial torus $(2n,2n,2n)$; Eq.~\eqref{ym:gap-from-purity} with
+$\mathsf P_4^{-1}-1\le e^{\Delta_\beta(n)}-1$ gives
+Eq.~\eqref{ym:gap-from-defect}.
+\end{proof}
+A bulk free energy $f\,n_1n_2n_3n_4$ in $\log Z$ cancels from
+Eq.~\eqref{ym:defect}: $16n^4-(2n)^4=0$. The defect measures only the
+deviation of $\log Z$ from extensivity.
+
+\subsection{What a proof of the gap requires}
+In two dimensions, \cite{OpenAIO4Sharp2026} states for the $O(4)$ model that
+the square defect obeys $\Delta_\beta(2n)\le64\,\Delta_\beta(n)^2$ and that
+$\Delta_\beta(n)\le2^{-10}$ implies $m_{\mathrm{lat}}(\beta)\ge\frac{\log2}{n}$
+at every larger circumference; a separate estimate makes the defect small on
+a box of bounded physical size, and the renormalization map carries the test
+to all cutoffs. For Yang--Mills theory the corresponding statements are open.
+\begin{conjecture}[Defect recurrence]\label{ym:conj:recurrence}
+There is a constant $c_1\ge2$, depending only on $G$, such that for the
+hypercubic defect \eqref{ym:defect} and all $\beta\ge0$, $n\ge1$:
+\begin{equation}\label{ym:recurrence}
+ \Delta_\beta(n)\le\eta_*:=\frac{1}{2c_1}\quad\Longrightarrow\quad
+ \Delta_\beta(2n)\le c_1\,\Delta_\beta(n)^2 .
+\end{equation}
+\end{conjecture}
+\begin{conjecture}[Small defect at a bounded physical scale]\label{ym:conj:defect}
+There is $\ell_*<\infty$ such that along the couplings of
+Eq.~\eqref{ym:scaling-law} there are integers $n(\beta)\le\ell_*\,
+e^{\beta/b_*}$ with $\Delta_\beta(n(\beta))\le\eta_*$.
+\end{conjecture}
+\begin{proposition}[Conditional lattice gap]\label{ym:prop:conditional-gap}
+Assume the hypothesis of Proposition~\ref{ym:prop:defect} and
+Eq.~\eqref{ym:recurrence}. If $\Delta_\beta(n)\le\eta_*$ for some $n$, then
+for every $k\ge0$ the transfer gap on the spatial torus of side $2^{k+1}n$
+satisfies
+\begin{equation}\label{ym:conditional-gap}
+ \mathsf m(2^{k+1}n)\ \ge\ \frac{\log2}{n}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Put $\delta_k=\Delta_\beta(2^kn)$. Then $c_1\delta_0\le\frac12$, and if
+$c_1\delta_k\le\frac12$ then $\delta_k\le\eta_*$ and
+Eq.~\eqref{ym:recurrence} gives
+\begin{equation}
+ c_1\delta_{k+1}\le c_1\cdot c_1\delta_k^2=(c_1\delta_k)^2\le\tfrac14 .
+\end{equation}
+By induction $c_1\delta_k\le(c_1\delta_0)^{2^k}\le2^{-2^k}$ for all $k$.
+For $0\le x\le1$, convexity of $e^x$ gives $e^x-1\le(e-1)x\le2x$. Apply
+Eq.~\eqref{ym:gap-from-defect} at side $2^kn$, with
+$\delta_k\le\frac{1}{2c_1}<\log2$:
+\begin{equation}
+ \mathsf m(2^{k+1}n)\ \ge\ \frac{1}{2^kn}\log\frac{1}{e^{\delta_k}-1}
+ \ \ge\ \frac{1}{2^kn}\log\frac{1}{2\delta_k}
+ \ \ge\ \frac{1}{2^kn}\log\frac{c_1\,2^{2^k}}{2}
+ =\frac{\log2}{n}+\frac{\log(c_1/2)}{2^kn}\ \ge\ \frac{\log2}{n},
+\end{equation}
+since $c_1\ge2$.
+\end{proof}
+The double-exponential decay of $\delta_k$ compensates the factor
+$\frac{1}{2^kn}$. With Conjecture~\ref{ym:conj:defect}, in physical units,
+\begin{equation}\label{ym:physical-gap}
+ \frac{\mathsf m}{a}\ \ge\ \frac{\log2}{a\,n(\beta)}
+ \ \ge\ \frac{\log2}{\ell_*\,a\,e^{\beta/b_*}}
+ =\frac{\log2}{\ell_*}\,\Lambda
+\end{equation}
+by Eq.~\eqref{ym:scaling-law}. Three further steps are then needed.
+\begin{enumerate}
+\item \emph{One coupling on both boxes.} $\Delta_\beta(n)$ compares tori at
+ the same $\beta$. In Theorem~\ref{ym:thm:existence} the bare coupling
+ $\beta_{N,p}$ depends on the volume index $p$ through the condition
+ $\beta_{N,p,0}=\bar\beta$ of Eq.~\eqref{ym:running}. The defect bound must
+ be stable under the difference $\beta_{N,p}-\beta_{N,p'}$, which
+ Eq.~\eqref{ym:reg1} controls only to $o(\log(1/a_N))$.
+\item \emph{Passage to the limit.} A transfer gap uniform in $N$ and $p$
+ gives exponential decay of truncated lattice correlations; with the
+ convergence \eqref{ym:ordered-limit} and
+ Proposition~\ref{ym:prop:gap-decay} this gives Eq.~\eqref{ym:gap-statement}
+ for the reconstructed theory, provided the decay holds for the renormalized
+ insertions with constants uniform in the cutoff.
+\item \emph{Uniqueness.} Exponential clustering of $S^{\mathrm{mix}}$ makes
+ $X$ a point for that limit. Independence of the subsequence $q$ requires in
+ addition that the infinite-volume limit of lattice correlations exists,
+ which a uniform gap with exponentially small finite-volume corrections
+ would give.
+\end{enumerate}
+Conjecture~\ref{ym:conj:defect} is the infrared content: by
+Eq.~\eqref{ym:lattice-mass} it concerns boxes of side $e^{\beta/b_*}$ in
+lattice units, where the effective coupling is of order one.
+
+\subsection{Centre twists}
+Suppose $-1\in G$ (for instance $G=SU(2)$, or $SU(N)$ with $N$ even); it is
+central. For a set $\Sigma$ of plaquettes define the twisted partition
+function by reversing the sign of the plaquette variable on $\Sigma$:
+\begin{equation}\label{ym:twisted-Z}
+ Z_\beta[\Sigma]=\int\exp\Big(-\beta\sum_{p\notin\Sigma}
+ \Big(1-\frac1m\operatorname{Re}\operatorname{tr}U_p\Big)
+ -\beta\sum_{p\in\Sigma}
+ \Big(1+\frac1m\operatorname{Re}\operatorname{tr}U_p\Big)\Big)
+ \prod_{(y,\mu)}h\big(dU(y,\mu)\big).
+\end{equation}
+Since $1+\frac1m\operatorname{Re}\operatorname{tr}U_p
+=\big(1-\frac1m\operatorname{Re}\operatorname{tr}U_p\big)
++\frac2m\operatorname{Re}\operatorname{tr}U_p$,
+\begin{equation}\label{ym:twist-ratio}
+ \frac{Z_\beta[\Sigma]}{Z_\beta[\emptyset]}
+ =\Big\langle\exp\Big(-\frac{2\beta}{m}\sum_{p\in\Sigma}
+ \operatorname{Re}\operatorname{tr}U_p\Big)\Big\rangle_{\beta},
+\end{equation}
+the expectation in the Wilson measure \eqref{ym:wilson-measure}.
+\begin{lemma}[Moving a twist]\label{ym:lem:twist-move}
+For a link $b$ let $\delta b$ be the set of plaquettes containing $b$. Then
+$Z_\beta[\Sigma\,\triangle\,\delta b]=Z_\beta[\Sigma]$, where $\triangle$ is
+the symmetric difference.
+\end{lemma}
+\begin{proof}
+Substitute $U(b)\to-U(b)$. Haar measure is invariant under multiplication by
+the group element $-1$. By Eq.~\eqref{ym:plaquette} a plaquette variable
+contains $U(b)$ or $U(b)^{-1}$ exactly once if $p\in\delta b$ and not at all
+otherwise, and $-1$ is central with $(-1)^{-1}=-1$; so $U_p\to-U_p$ for
+$p\in\delta b$ and $U_p\to U_p$ otherwise. This exchanges the two summands of
+Eq.~\eqref{ym:twisted-Z} exactly for the plaquettes in $\delta b$.
+\end{proof}
+So $Z_\beta[\Sigma]$ depends only on the class of $\Sigma$ modulo the sets
+$\delta b$. On the torus with sides $(n_1,n_2,n_3,n_4)$ let
+\begin{equation}\label{ym:thooft-surface}
+ \Sigma_{12}=\{\text{plaquettes in the plane }(1,2)\text{ at sites }y
+ \text{ with }y^1=y^2=0\}.
+\end{equation}
+\begin{lemma}\label{ym:lem:thooft-class}
+Every 3-cube contains an even number of plaquettes of $\Sigma_{12}$, and
+$\Sigma_{12}$ is not a symmetric difference of sets $\delta b$.
+\end{lemma}
+\begin{proof}
+A cube in the directions $(1,2,3)$ at $y$ contains two plaquettes in the
+plane $(1,2)$, at $y$ and $y+e_3$; both or neither have $y^1=y^2=0$. The same
+holds for $(1,2,4)$. Cubes in the directions $(1,3,4)$ and $(2,3,4)$ contain
+no plaquette in the plane $(1,2)$.
+
+Fix $(y^3,y^4)$ and let $\Pi$ be the set of all plaquettes in the plane
+$(1,2)$ at that $(y^3,y^4)$. Then $|\Sigma_{12}\cap\Pi|=1$. A link in
+direction $1$ or $2$ at that $(y^3,y^4)$ lies in exactly two plaquettes of
+$\Pi$; any other link lies in none. So $|\delta b\cap\Pi|$ is even for every
+$b$, and so is $|S\cap\Pi|$ for every symmetric difference $S$ of sets
+$\delta b$.
+\end{proof}
+The first property says that the twist creates no monopole: the product of
+the signs over the faces of each cube is $+1$. The twist free energy is
+\begin{equation}\label{ym:twist-free-energy}
+ F_\beta(n_1,n_2;n_3,n_4)=-\log\frac{Z_\beta[\Sigma_{12}]}{Z_\beta[\emptyset]}.
+\end{equation}
+\paragraph{Example: $G=\{\pm1\}$ in two dimensions.}
+Take $G=\{\pm1\}\subset U(1)$, $m=1$, on the two-dimensional torus with sides
+$(L,L)$: $P=L^2$ plaquettes, $2P$ links, each link in exactly two plaquettes.
+Write $\sigma_p=U_p=\pm1$ and $s_p=-1$ for $p\in\Sigma$, $s_p=+1$ otherwise.
+For $\sigma=\pm1$, $e^{\beta\sigma}=\cosh\beta+\sigma\sinh\beta$, so
+Eq.~\eqref{ym:twisted-Z} with normalized counting measure on the links is
+\begin{align}
+ Z_\beta[\Sigma]
+ &=e^{-\beta P}\,2^{-2P}\sum_{\sigma}\prod_p
+   \big(\cosh\beta+s_p\sigma_p\sinh\beta\big)\notag\\
+ &=e^{-\beta P}\sum_{S}\cosh^{P-|S|}\beta\,\sinh^{|S|}\beta\,
+   \Big(\prod_{p\in S}s_p\Big)\,
+   2^{-2P}\sum_{\sigma}\prod_{p\in S}\sigma_p ,
+ \label{ym:z2-expansion}
+\end{align}
+the sum over all sets $S$ of plaquettes. Let $n_b(S)\in\{0,1,2\}$ be the
+number of plaquettes of $S$ containing the link $b$. Then
+$\prod_{p\in S}\sigma_p=\prod_b\sigma_b^{\,n_b(S)}$, and the average over
+$\sigma_b=\pm1$ vanishes unless every $n_b(S)$ is even, in which case it is
+$1$. $n_b(S)$ even for every $b$ means that the two plaquettes at each link
+are both in $S$ or both outside; adjacency of plaquettes across links is
+connected, so $S=\emptyset$ or $S$ is the set of all plaquettes:
+\begin{equation}\label{ym:z2-closed}
+ Z_\beta[\Sigma]=e^{-\beta P}\Big(\cosh^P\beta+(-1)^{|\Sigma|}\sinh^P\beta\Big),
+ \qquad
+ \frac{Z_\beta[\Sigma]}{Z_\beta[\emptyset]}
+ =\frac{1-\tanh^{L^2}\beta}{1+\tanh^{L^2}\beta}\quad(|\Sigma|\text{ odd}).
+\end{equation}
+The twist free energy
+$\log\frac{1+\tanh^{L^2}\beta}{1-\tanh^{L^2}\beta}$ tends to $0$ as
+$L\to\infty$ for every $\beta$, like $2\tanh^{L^2}\beta$: exponentially in the
+area. The dependence on $\Sigma$ only through the parity of $|\Sigma|$ is
+Lemma~\ref{ym:lem:twist-move}: here $\delta b$ consists of two plaquettes.
+
+In the two-dimensional $O(n)$ models, $n\ge3$, the analogous ratio for a
+rotation by $\pi$ across an annulus tends to $1$ as the annulus grows, at
+every temperature, and this drives the exponential decay of correlations
+\cite{OpenAIOn2026}.
+\begin{conjecture}[Vanishing twist free energy]\label{ym:conj:twist}
+For $G=SU(2)$ and every $\beta\ge0$,
+$F_\beta(n,n;n,n)\to0$ as $n\to\infty$.
+\end{conjecture}
+The relation between Conjecture~\ref{ym:conj:twist}, with a rate, and
+Conjectures~\ref{ym:conj:recurrence}--\ref{ym:conj:defect} is open. Two
+differences from the spin model are already visible in
+Eq.~\eqref{ym:twist-ratio}. The signs of $\operatorname{tr}U_p$ are not
+those of a ferromagnetic system: a configuration can have an odd number of
+negative plaquettes on the faces of a cube. And the twist is carried by a
+surface, so the planar crossing arguments have no direct counterpart.

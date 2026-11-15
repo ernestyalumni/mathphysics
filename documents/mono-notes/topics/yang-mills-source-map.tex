@@ -1,0 +1,79 @@
+\section{Source map: the formal Yang--Mills construction}\label{ym:sec:source-map}
+Each entry gives a labelled statement of Section~\ref{ym:sec:lattice}, the
+declaration of the formal source \cite{OpenAIYM2026} that carries it, and its
+file and line at commit \path{3456e5e}. Entries marked $\circ$ were located
+through the table of \cite{Armstrong2026} and the declaration's signature;
+all others were read at the cited line. Names in the source are not
+descriptive; the mathematical reading is the one given here.
+
+\begin{description}
+\item[Definition~\ref{ym:def:gauge-group}, Eq.~\eqref{ym:lie-algebra}]
+ \path{YangMills.GaugeGroup}, \path{PublicTheory.lean:25};
+ simplicity \path{GaugeGroup.IsSimple}, \path{PublicTheory.lean:39}.
+ The source indexes $U(n+1)$, so $m=n+1$.
+\item[Eq.~\eqref{ym:casimir}] \path{YM.Gauge.casimir},
+ \path{YM/Gauge/Colors.lean:180}.
+\item[Eq.~\eqref{ym:slope}] $b_*$: \path{YM.Gauge.slopeConstant},
+ \path{YM/Gauge/Colors.lean:184}; $b_0$ and $2b_0=b_*$:
+ \path{YM.Pert.Asymptotics.b0}, \path{b0_normalizes},
+ \path{YM/Pert/Asymptotics/RawAxis.lean:13}.
+\item[Eqs.~\eqref{ym:plaquette}, \eqref{ym:wilson-energy}]
+ \path{YangMills.plaquette}, \path{YangMills.wilsonEnergy},
+ \path{PublicWilson.lean:20}, \path{:25}.
+\item[Eq.~\eqref{ym:wilson-measure}] \path{YangMills.wilsonLaw},
+ \path{PublicWilson.lean:29}.
+\item[Definition~\ref{ym:def:family}] \path{YangMills.WilsonFamily},
+ \path{PublicWilson.lean:35}; $a_N$: \path{WilsonFamily.mesh}, \path{:50}.
+\item[Eq.~\eqref{ym:reg1}] \path{YangMills.WilsonRegularity.running},
+ \path{ChallengeSpec.lean:13}.
+\item[Eq.~\eqref{ym:smeared-moment}] \path{WilsonFamily.smear},
+ \path{PublicWilson.lean:79}.
+\item[Definition~\ref{ym:def:ordered}, Eq.~\eqref{ym:ordered-limit}]
+ \path{WilsonFamily.Converges}, \path{PublicWilson.lean:85}.
+\item[Theorem~\ref{ym:thm:existence}] statement
+ \path{YangMills.JointExistence}, \path{ChallengeSpec.lean:186}; proof
+ \path{YangMills.jointExistence}, \path{Solution.lean:4}, a projection of
+ \path{YangMills.constructed}, \path{Construction.lean:15}. Items 1--5:
+ \path{Hierarchy}, \path{ChallengeSpec.lean:24};
+ \path{Hierarchy.Reconstructed}, \path{:117};
+ \path{Hierarchy.OperatorProductExpansion}, \path{:70};
+ \path{Hierarchy.TraceTest}, \path{:168};
+ \path{Hierarchy.Properties}, \path{:177}.
+\item[Eq.~\eqref{ym:mixture}] field \path{mixture} of
+ \path{Hierarchy.Reconstructed}, \path{ChallengeSpec.lean:117}.
+\item[Eq.~\eqref{ym:trace-law}] field \path{shortDistance} of
+ \path{Hierarchy.TraceTest}, \path{ChallengeSpec.lean:173}.
+\item[Wightman axioms in item 3 $\circ$]
+ \path{WightmanTheory.W0}--\path{W3}, \path{Axioms},
+ \path{PublicTheory.lean:270}--\path{315}.
+\item[$SU(2)$ $\circ$] \path{YangMills.su2Theory},
+ \path{ConcreteSU2.lean:15}.
+\item[Eq.~\eqref{ym:low-energy}, Proposition~\ref{ym:prop:inverse-square}]
+ \path{YM.EveryPhase.inverse_square}, \path{YM/EveryPhase/Decay.lean:173}.
+ Its constant is $D\,\Gamma(3)$ with $D$ the maximum of the two bounds, as in
+ the proof given here.
+\item[A theory for every phase $\circ$]
+ \path{YM.EveryPhase.all_characters},
+ \path{YM/EveryPhase/Extension.lean:75}.
+\item[Eq.~\eqref{ym:block-step}] step data \path{YM.RG.StepData},
+ \path{YM/RG/Block.lean:22}. The declaration carrying
+ Eq.~\eqref{ym:partition-preserved} has not been located.
+\item[Eq.~\eqref{ym:running}] leading-logarithm law
+ \path{YM.Pert.Asymptotics.comparison},
+ \path{YM/Pert/Asymptotics/RawAxis.lean:36}.
+\item[Nonnegative temporal step, used in Proposition~\ref{ym:prop:defect}]
+ \path{YM.Slice.step_positive}, \path{YM/Slice/Positive.lean:81}, for
+ $\beta\ge0$. Whether it gives nonnegativity of $\mathsf T$ in the form
+ \eqref{ym:transfer-kernel} for every spatial torus has not been checked.
+\item[Chessboard estimate] \path{YM.Cells.Tiling.tiles},
+ \path{YM/Cells/Chess.lean:80}.
+\item[Infinite-volume extraction] \path{YM.Extraction.Order.assembles},
+ \path{YM/Extraction/Harvest.lean:62}.
+\item[Phase decomposition] \path{YM.Spectral.Orbit.total},
+ \path{YM/SNAG/Escape.lean:52}.
+\end{description}
+Not in the formal source: Proposition~\ref{ym:prop:gap-decay},
+Eq.~\eqref{ym:massless-rate}, Propositions~\ref{ym:prop:purity} and
+\ref{ym:prop:defect}, Lemmas~\ref{ym:lem:twist-move} and
+\ref{ym:lem:thooft-class}, and
+Conjectures~\ref{ym:conj:recurrence}--\ref{ym:conj:twist}.
