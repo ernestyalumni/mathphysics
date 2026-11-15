@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Thin wrapper around Ernest's local PDD work-item tracker for the Yang-Mills program.
+# Always runs against the canonical mathphysics checkout so every worktree sees one tracker.
+set -euo pipefail
+MP="${YM_MATHPHYSICS_ROOT:-/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics}"
+PDD="${YM_PDD:-$MP/../PromptDrivenDevelopment/pdd/.venv/bin/pdd}"
+export PDD_LOCAL_ONLY=1 PDD_SKIP_UPDATE_CHECK=1
+command="${1:-list}"; shift || true
+body_file=""
+if [ "$command" = new ]; then body_file="$(realpath "$2")"; fi
+cd "$MP"
+case "$command" in
+  list) "$PDD" --no-core-dump work list --state "${1:-open}" ;;
+  show) "$PDD" --no-core-dump work show "$1" ;;
+  say)  number="$1"; session="$2"; shift 2; "$PDD" --no-core-dump work comment "$number" --author "$session" --text "$*" ;;
+  new)  "$PDD" --no-core-dump work new --title "$1" --body-file "$body_file" --label yang-mills ;;
+  close) "$PDD" --no-core-dump work close "$1" ;;
+  *) echo "usage: ym {list [open|closed|all] | show N | say N SESSION TEXT... | new TITLE PACKET_FILE | close N}" >&2; exit 2 ;;
+esac

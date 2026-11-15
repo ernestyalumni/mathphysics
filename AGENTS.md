@@ -131,6 +131,10 @@ units as their configuration appears. Inspect actual ownership and verification
 before modifying code; an existing native library is not adopted implicitly.
 Ordinary user requests are sufficient intent input; agents own PDD mechanics.
 
+## Yang–Mills program (started 2026-11-14)
+
+Audit of OpenAI's four-dimensional Yang–Mills construction, Rust lattice-gauge tooling, and mass-gap research. Entry point: [docs/plans/yang-mills-mass-gap/HANDOFF.md](docs/plans/yang-mills-mass-gap/HANDOFF.md). Workers follow [06-AGENT-PROTOCOL.md](docs/plans/yang-mills-mass-gap/06-AGENT-PROTOCOL.md) and take exactly one packet from [BOARD.md](docs/plans/yang-mills-mass-gap/BOARD.md). The source repositories under `../yang-mills-group`, `../scottnarmstrong`, `../hairer`, `../openai` are read-only. No claim of a mass-gap proof leaves red-team review; nothing is posted outside this machine without Ernest's approval.
+
 ## Reusable mathematical library boundary
 
 For chapter/paper implementation read [the reusable Rust research-library story](user_stories/story__reusable-rust-research-library.md) and [architecture/dispatch policy](docs/plans/rust-physics-platform/REUSABLE-LIBRARY.md). Source subsections drive validation fixtures and capability gaps, not duplicated production solvers. Reuse or extend the owning mathematical library once; CLI/HTTP/UI are consumers. Preserve independent oracle implementations and compatibility/convention tests when extracting code.

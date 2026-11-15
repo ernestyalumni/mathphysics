@@ -1,6 +1,15 @@
 # Current Execution Queue — TMP / MHV Discovery Engine
 
-**Last updated:** 2026-10-21
+**Last updated:** 2026-11-14
+
+## Active: Yang–Mills audit, tooling and mass-gap program (November 14)
+
+- Plan, strategy, agent protocol and 32 task packets at
+  [docs/plans/yang-mills-mass-gap](docs/plans/yang-mills-mass-gap/README.md);
+  resume from its HANDOFF.md. Branch `feat/yang-mills-mass-gap-program`.
+- Wave 1 (eight reading/analysis packets) is registered on the local tracker and
+  ready to launch. No packet has been executed; no Rust code written.
+- Blocked on Ernest: PDD intent approval, Lean install, network reads.
 
 ## Implemented: Frankel SO(3)/SU(2) tooling (October 17 request)
 
