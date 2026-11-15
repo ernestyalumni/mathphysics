@@ -1,0 +1,126 @@
+{
+  "acceptance": {
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "sentence": "Given our repo: /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics and our attempts to make AI tooling for symbolic computation for high energy particle physics, namely quantum...",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "research",
+        "rust"
+      ],
+      "output_path": "src/checked.rs",
+      "product_area": "Approved reusable research batches; bounded manual implementation",
+      "prompt_path": "Rust/qft-symbolics/prompts/checked_rust.prompt",
+      "score": 12
+    },
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "research",
+        "rust"
+      ],
+      "output_path": "src/conventions.rs",
+      "product_area": "Approved reusable research batches; bounded manual implementation",
+      "prompt_path": "Rust/qft-symbolics/prompts/conventions_rust.prompt",
+      "score": 12
+    },
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "research",
+        "rust"
+      ],
+      "output_path": "src/expression.rs",
+      "product_area": "Approved reusable research batches; bounded manual implementation",
+      "prompt_path": "Rust/qft-symbolics/prompts/expression_rust.prompt",
+      "score": 12
+    },
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "research",
+        "rust"
+      ],
+      "output_path": "src/replay.rs",
+      "product_area": "Approved reusable research batches; bounded manual implementation",
+      "prompt_path": "Rust/qft-symbolics/prompts/replay_rust.prompt",
+      "score": 12
+    },
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "computation",
+        "rust",
+        "work"
+      ],
+      "output_path": "src/computation.rs",
+      "product_area": "Bounded reusable arithmetic foundation; manual implementation",
+      "prompt_path": "Rust/qft-symbolics/prompts/computation_rust.prompt",
+      "score": 12
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "yang-mills-construction-audit-rust-lattice-gauge-d3c6da77",
+  "original_request": "Given our repo: /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics and our attempts to make AI tooling for symbolic computation for high energy particle physics, namely quantum field theory, from a Rust first replacement for Sage Math, sympy, Cadabra2, Mathematica, consider these 2 repos: /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/yang-mills-group/YM , /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/yang-mills-group/OpenAI-YM-20261028 and these 2 accompanying repos: /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/hairer/humanise-yang-mills and /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/scottnarmstrong/yang-mills-informalization so it appears they have a 4D Yang Mills proof. Your job is learn as much as you can about what OpenAI did where apparently they constructed 4D pure Yang-Mills theory as a scaling limit of Wilson lattice gauge theory. As a user, I'd like to take on this effort to explore and prove or disprove parts or as a whole this proof and adopt as AI tools the techniques here and to also further developer our tools, again the Rust first replacement for Sage Math, Cadabra2, etc. for symbolic computation. Double check me if it's true that this is only half of a Millenium Prize, and the other half is showing mass gap. If this is true then as a user (do all work in mathphysics, with PDD), I want to be able to pursue research of mass gap and win the prize and resolve the questions about mass gap. Please as you are working, think strategically about .md files, instruction files, instructions, commands out to other less powerful LLMs tasks they could do, help me break down the tasks so less powerful LLMs can take up the work in parallel and be talking to each other, checking each other, collaborating with each other on the work; you as Fable 5.2 is to think strategically and plan out the research to be done by the other AI agents. Keep writing down .md files for progress so in case usage limit is reached, work can be handled off",
+  "original_request_sha256": "d3c6da7729a2701804142b37f7dde46a425330cc15d8887606574980ae00f32a",
+  "project": {
+    "adoption_scenario": "existing_pdd_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      "Python/rotations/.pddrc",
+      "Rust/physics-contracts/.pddrc",
+      "Rust/physics-gateway/.pddrc",
+      "Rust/physics-tools/.pddrc",
+      "Rust/qft-symbolics/.pddrc",
+      "TypeScript/physics-workbench/.pddrc",
+      "Python/rotations/architecture.json",
+      "Rust/physics-contracts/architecture.json",
+      "Rust/physics-gateway/architecture.json",
+      "Rust/physics-tools/architecture.json",
+      "Rust/qft-symbolics/architecture.json",
+      "TypeScript/physics-workbench/architecture.json",
+      "38 prompt file(s)"
+    ],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "scope_kind": "repository"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [],
+    "must_preserve": [],
+    "open_decisions": [
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "recommended": true
+  },
+  "title": "Yang-Mills construction audit, Rust lattice-gauge tooling and mass-gap research program",
+  "warnings": []
+}
+
