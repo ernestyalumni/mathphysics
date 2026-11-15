@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Clone or verify the pinned source repositories of the Yang-Mills program. See SOURCES.md.
+set -euo pipefail
+declare -A URL=( [LEAN]=https://github.com/yang-mills-group/OpenAI-YM-20261028 [YM]=https://github.com/yang-mills-group/YM
+  [ARM]=https://github.com/scottnarmstrong/yang-mills-informalization [HAIRER]=https://github.com/hairer/humanise-yang-mills
+  [OAIMATH]=https://github.com/openai/math )
+declare -A PIN=( [LEAN]=3456e5e75cf8d4cd558955a5c7638fba2d68f464 [YM]=55ba9fc36293b3f4d52c6b1f813169a0be76ee98
+  [ARM]=daf1db452866dd773b17aa955d534e56196a4efc [HAIRER]=16b070a9f5ebf4c83c210d8ccffba3be2c711c48
+  [OAIMATH]=4eaee87548250b2682affda7d05d947c05554bae )
+declare -A DIR=( [LEAN]=yang-mills-group/OpenAI-YM-20261028 [YM]=yang-mills-group/YM
+  [ARM]=scottnarmstrong/yang-mills-informalization [HAIRER]=hairer/humanise-yang-mills [OAIMATH]=openai/math )
+command="${1:-}"; target="${2:-}"; shift 2 || { echo "usage: ym-sources {clone|verify} TARGET_DIRECTORY [NAMES...]" >&2; exit 2; }
+names=("$@"); [ ${#names[@]} -eq 0 ] && names=(LEAN YM ARM HAIRER)
+status=0
+for name in "${names[@]}"; do
+  [ -n "${URL[$name]:-}" ] || { echo "unknown name: $name" >&2; exit 2; }
+  path="$target/${DIR[$name]}"
+  case "$command" in
+    clone)
+      if [ ! -d "$path/.git" ]; then mkdir -p "$(dirname "$path")"; GIT_TERMINAL_PROMPT=0 git clone --no-checkout "${URL[$name]}" "$path"; fi
+      git -C "$path" checkout --detach "${PIN[$name]}" ;;
+    verify) ;;
+    *) echo "usage: ym-sources {clone|verify} TARGET_DIRECTORY [NAMES...]" >&2; exit 2 ;;
+  esac
+  head="$(git -C "$path" rev-parse HEAD 2>/dev/null || echo missing)"
+  if [ "$head" = "${PIN[$name]}" ]; then echo "OK        $name $path"; else echo "MISMATCH  $name $path (HEAD $head, pin ${PIN[$name]})"; status=1; fi
+done
+exit $status

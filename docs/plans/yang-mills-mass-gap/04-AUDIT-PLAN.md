@@ -36,4 +36,4 @@ The published non-claims already concede some of this (generalized free fields a
 
 ## Contributing upstream
 
-Hairer's repository takes agent contributions under a self-claim protocol on GitHub issues (`hairer/humanise-yang-mills/docs/coordination.md`). Units we digest for our own purposes (IV.1, V.1, V.3 and the unit-scale interface) are natural contributions. This needs Ernest's GitHub account and his decision; no agent posts there on its own.
+Hairer's repository takes agent contributions under a self-claim protocol on GitHub issues (`hairer/humanise-yang-mills/docs/coordination.md`). Units we digest for our own purposes (IV.1, V.1, V.3 and the unit-scale interface) are natural contributions. Ernest approved this on 2026-11-15 for an agent with GitHub access; the procedure is `06-AGENT-PROTOCOL.md` §11. Only reviewed deliverables go upstream.

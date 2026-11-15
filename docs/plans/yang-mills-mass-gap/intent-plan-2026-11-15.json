@@ -1,0 +1,104 @@
+{
+ "acceptance": {
+  "reasons": [
+   "critical boundary"
+  ],
+  "sentence": "Amendment by Ernest, 2026-11-15, to the Yang-Mills audit, tooling and mass-gap program in mathphysics.",
+  "story_recommended": true
+ },
+ "ask_the_human": [],
+ "candidate_targets": [
+  {
+   "architecture_path": "Rust/physics-tools/architecture.json",
+   "matched_terms": [
+    "and exact",
+    "discovery",
+    "discovery and",
+    "exact",
+    "one",
+    "rust"
+   ],
+   "output_path": "src/lib.rs",
+   "product_area": "Strict bounded JSON discovery and exact existing Clifford trace bridge",
+   "prompt_path": "Rust/physics-tools/prompts/lib_rust.prompt",
+   "score": 23
+  },
+  {
+   "architecture_path": "Rust/physics-gateway/architecture.json",
+   "matched_terms": [
+    "approved",
+    "build",
+    "build and",
+    "run"
+   ],
+   "output_path": "../../run_workbench.sh",
+   "product_area": "Offline external-cache workbench build and read-only local gateway launch",
+   "prompt_path": "Rust/physics-gateway/prompts/launcher_bash.prompt",
+   "score": 15
+  }
+ ],
+ "capabilities": {
+  "apply": false,
+  "apply_command_available": true,
+  "invokes_llm": false,
+  "planning": true,
+  "requires_github": false,
+  "writes_project_files": false
+ },
+ "intent_id": "yang-mills-program-amendment-local-network-agent-fb139368",
+ "original_request": "Amendment by Ernest, 2026-11-15, to the Yang-Mills audit, tooling and mass-gap program in mathphysics. The review card in docs/plans/yang-mills-mass-gap/05-TOOLING-ROADMAP.md is approved with these changes. Agents MUST be allowed to talk to other local agents, including agents running on other machines on the same local network, because Ernest runs AI agents on this endeavor on that network. Agents MUST NOT post, publish, upload or message outside the local network without Ernest's explicit approval, with one standing exception: an agent that Ernest has given GitHub access MAY contribute to Hairer's public repository hairer/humanise-yang-mills on its own branch, following that repository's coordination rules. The symbolic computation and other AI tools MUST be Rust first, and CUDA C++ MUST be used only where a measured data-parallel workload benefits. The program MUST NOT rely completely on Lean: new Rust symbolic and exact-computation tools are the discovery and falsification loop, and Lean is the final certification. Lean MUST run in a Docker image, with the toolchain and compiled build stored on the Expansion drive. Worker tiers use the harnesses Ernest has: Pi, Hermes Agent, Codex, Claude Code, Grok Build, and local Qwen3.5 models when he is away. For example, a Qwen3.5 worker on a second machine on the local network claims packet YM-T05 through the shared tracker, pushes its branch to the canonical mathphysics checkout over the local network, and a Codex reviewer on the desktop accepts or rejects it. A written account of the construction and of the mass-gap programme, with derivations, propositions and theorems and a map to the Lean declarations, belongs in documents/mono-notes.",
+ "original_request_sha256": "fb13936825374f389dc07030fee7f44e760392e37321e4be87750c078499d7b9",
+ "project": {
+  "adoption_scenario": "existing_pdd_change",
+  "exists": true,
+  "kind": "existing_pdd",
+  "pdd_signals": [
+   "Python/rotations/.pddrc",
+   "Rust/physics-contracts/.pddrc",
+   "Rust/physics-gateway/.pddrc",
+   "Rust/physics-tools/.pddrc",
+   "Rust/qft-symbolics/.pddrc",
+   "TypeScript/physics-workbench/.pddrc",
+   "Python/rotations/architecture.json",
+   "Rust/physics-contracts/architecture.json",
+   "Rust/physics-gateway/architecture.json",
+   "Rust/physics-tools/architecture.json",
+   "Rust/qft-symbolics/architecture.json",
+   "TypeScript/physics-workbench/architecture.json",
+   "38 prompt file(s)"
+  ],
+  "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+  "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+  "scope_kind": "repository"
+ },
+ "recommended_workflow": "change_existing_pdd",
+ "review": {
+  "examples": [
+   "Worker tiers use the harnesses Ernest has: Pi, Hermes Agent, Codex, Claude Code, Grok Build, and local Qwen3.5 models when he is away.",
+   "For example, a Qwen3.5 worker on a second machine on the local network claims packet YM-T05 through the shared tracker, pushes its branch to the canonical mathphysics checkout over the local network, and a Codex reviewer on the desktop accepts or rejects it."
+  ],
+  "must_preserve": [
+   "Agents MUST be allowed to talk to other local agents, including agents running on other machines on the same local network, because Ernest runs AI agents on this endeavor on that network.",
+   "Agents MUST NOT post, publish, upload or message outside the local network without Ernest's explicit approval, with one standing exception: an agent that Ernest has given GitHub access MAY contribute to Hairer's public repository hairer/humanise-yang-mills on its own branch, following that repository's coordination rules.",
+   "The symbolic computation and other AI tools MUST be Rust first, and CUDA C++ MUST be used only where a measured data-parallel workload benefits.",
+   "The program MUST NOT rely completely on Lean: new Rust symbolic and exact-computation tools are the discovery and falsification loop, and Lean is the final certification.",
+   "Lean MUST run in a Docker image, with the toolchain and compiled build stored on the Expansion drive."
+  ],
+  "open_decisions": []
+ },
+ "schema_version": "pdd.intent.plan.v1",
+ "source": {
+  "kind": "inline",
+  "ref": null
+ },
+ "story": {
+  "action": "create",
+  "matched": [],
+  "reasons": [
+   "critical boundary"
+  ],
+  "recommended": true
+ },
+ "title": "Yang-Mills program amendment: local-network agents, Rust-first discovery tools, Lean in Docker",
+ "warnings": []
+}

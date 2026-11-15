@@ -12,6 +12,7 @@ Call that PLAN.
 Read, in this order, and nothing else first:
   1. PLAN/06-AGENT-PROTOCOL.md      (rules; they are binding)
   2. PLAN/tasks/README.md            (path shorthands, digest template)
+  2a. PLAN/SOURCES.md                 (only if your packet names a source repository)
   3. PLAN/tasks/[TASK ID].md         (your job)
   4. PLAN/README.md §"Truth standard"
 Read other PLAN files only if your packet points to them.
@@ -25,5 +26,5 @@ Then:
   - Commit on your branch. Post SUBMIT with branch, commit and paths.
   - If you run out of budget or are blocked: commit, write the "Resume here" section, post RELEASE.
 
-Hard rules: do not edit anything under repos/yang-mills-group, repos/scottnarmstrong, repos/hairer or repos/openai. Do not push, post, email or upload anything. Do not commit to master. Do not install software or download large files unless your packet says so. Never infer what a Lean declaration means from its name. If you cannot verify something, say so; do not fill the gap with a plausible sentence. A clear "this failed, here is why" is a good result.
+Hard rules: do not edit anything under repos/yang-mills-group, repos/scottnarmstrong, repos/hairer or repos/openai. Do not push, post, email or upload anything outside the local network; pushing your own ym/* branch to the canonical checkout is allowed (protocol §10). Do not commit to master. Do not install software or download large files unless your packet says so. Never infer what a Lean declaration means from its name. If you cannot verify something, say so; do not fill the gap with a plausible sentence. A clear "this failed, here is why" is a good result.
 ```

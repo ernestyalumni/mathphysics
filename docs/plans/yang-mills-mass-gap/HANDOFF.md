@@ -1,48 +1,66 @@
 # HANDOFF — Yang–Mills program
 
-Last updated: 2026-11-14, end of session 1 (strategist: Fable 5.2). Branch `feat/yang-mills-mass-gap-program`, not pushed, not merged. Nothing is running in the background. No agents have been launched.
+Last updated: 2026-11-15, end of session 2 (strategist: Fable 5.2). Branch `feat/yang-mills-mass-gap-program`, not pushed, not merged. Nothing is running in the background. No agents have been launched.
+
+## Ernest's decisions of 2026-11-15 (all open questions from session 1 are closed)
+
+1. PDD review card approved, with the amendment that agents may talk to other local agents, including on other machines of the local network (`05` review card, `06` §10).
+2. Lean runs in Docker; installing on the Expansion drive is fine.
+3. An agent with GitHub access may contribute to Hairer's public repository (`06` §11). Not possible today: the `gh` token on this machine is invalid.
+4. Harnesses: Pi, Hermes Agent, Codex, Claude Code, Grok Build; local Qwen3.5 models when he is away (`06` §12, `prompts/launch.md`).
+5. Direction: win with new tools (Rust symbolic and exact computation), do not rely completely on Lean (`03` §11, `05` §"Tools as the discovery loop").
 
 ## State
 
-**Done this session**
+**Done in session 2**
 
-- Read at overview depth: the review group's assessment, Armstrong's statement / summary / provenance / FAQ, Hairer's coordination rules, the Lean repo's README, and the abstract and strategy sections of OpenAI's N1 and N2.
-- Written and committed: charter (`README.md`), digest (`01`), prize answer (`02`), mass-gap strategy (`03`), audit plan (`04`), tooling roadmap with PDD review card (`05`), agent protocol (`06`), board, 32 task packets, four launch prompts, claims ledger, tracker wrapper `bin/ym`.
-- Tracker: wave-1 packets registered as local work items 1–8 (`bin/ym list`). The tracker lives in `MP/.pdd/work_items/` and is not versioned.
-- Reproduced with SymPy: the one-loop arithmetic (κ_G = 11C/(24π²)) and C_𝔤 = 2N² for su(2), su(3). Script: `ledger/evidence/check_oneloop.py`.
-- `pdd intent plan` run (read-only). Intent ID `yang-mills-construction-audit-rust-lattice-gauge-d3c6da77`.
+- **Mathematical write-up** in the mono-notes: `documents/mono-notes/topics/yang-mills-lattice.tex` (Section "Lattice Yang–Mills theory: the scaling limit and the mass gap") and `topics/yang-mills-source-map.tex` (map from each labelled statement to a Lean declaration, file and line). Both PDF editions rebuilt (607 and 325 pages, no LaTeX warnings) and published in place.
+  - Derived: C_𝔤 = 2N² for su(N); classical limit of the Wilson energy, β = 1/g₀²; slope b_* = 11C/(24π²) from the textbook coefficient with the normalization conversion; s⁻² decay from the u² spectral bound; gap ⇔ exponential decay; the massless one-particle rate u².
+  - New, with proofs (unreviewed): purity bounds; the four-dimensional hypercubic defect and the gap bound on the doubled torus; a conditional lattice gap m ≥ log 2/n; the twist lemmas; the exact 2D Z₂ twist ratio.
+  - Stated as conjectures: defect recurrence; small defect at a bounded physical scale; vanishing twist free energy.
+- **Lean in Docker (YM-O01, in review).** Image `ym-lean:4.32.0`; working copy and compiled build under `REPOS/yang-mills-work/` (19 GB). Offline: `Build completed successfully (18126 jobs)`; `#print axioms YangMills.jointExistence` gives `[propext, Classical.choice, Quot.sound]`. This loads precompiled files; it is not an independent rebuild. Note: `notes/YM-O01-lean-setup.md`.
+- **Rust, first tooling slice (in review).** 28 new tests, all passing, offline and locked:
+  - `Rust/qft-symbolics/src/sphere.rs` (T01): exact sphere averages, sphere areas, shell coefficient 1/(8π²), slope 11C/(24π²).
+  - `Rust/lie-groups/src/special_unitary.rs` (T02, su(N) only): Killing form and Casimir constant from the definition, exact integers.
+  - `Rust/lattice-gauge` (new crate, no dependencies; T05 and the start of T10): torus geometry, Z₂ cochains with GF(2) elimination, exact Z₂ gauge density of states with twists, purity bounds. Its tests machine-check the two twist lemmas and the purity proposition of the notes.
+- **PDD.** Both intents recorded by `pdd intent apply` in `docs/PRODUCT_INTENT.md` and `docs/intents/`. The provider-backed architecture workflow that follows is a generic 19-step generator; it reached step 4 in 25 minutes and was stopped by a time limit (first intent), and was stopped at step 2 after 4 minutes (amendment). **It generated no prompts, stories or code.** The Rust units were written by hand, prompt first, with prompts and `architecture.json` entries in each crate, as `Rust/qft-symbolics` has always been done. No regeneration from prompts was attempted. No user story was written for this program.
+- **Coordination.** `SOURCES.md` and `bin/ym-sources` (pins verified OK for all five repositories); `bin/ym` works over SSH from other machines and locks writers; `bin/ym-lean`; protocol §10–§12; `prompts/launch.md`; new packet YM-T14.
+- **Corrections to session 1.** `03` §2 had the expected mass as e^{−β̄/(2κ_G)}; the exponent is −β̄/κ_G. Only N1 of OpenAI's two-dimensional papers is formalized. Both fixed in place and recorded as claims C19, C20.
 
 **Not done**
 
-- `pdd intent apply`: not run. Needs Ernest to approve the review card in `05-TOOLING-ROADMAP.md`. No Rust code written.
-- Lean toolchain: not installed. YM-O01 needs approval (disk).
-- No packet has been executed. No deliverable exists under `notes/`.
-- The strategist has **not** read: any Lean file beyond the top-level README; the unit outlines; N1 beyond §1 and the start of §2; N2 beyond §1; N3 at all; any of the classical literature (all citations in `03` §5 and §10 are from memory and flagged as such).
-
-## Waiting on Ernest
-
-1. Approve (or correct) the PDD review card in `05-TOOLING-ROADMAP.md` → unblocks all `T` and `N` packets.
-2. Say whether to install Lean and the 8.8 GB compiled archive on the Expansion drive → unblocks YM-O01, A01, A02.
-3. Say whether agents may fetch public papers (arXiv) and `git fetch` the upstream repos → unblocks R06, R07, W01, W02.
-4. Say which harnesses and models to use for T1–T3, and whether the strategist should launch wave 1 itself (it can spawn sub-agents on request) or he will start them with `prompts/worker.md`.
-5. Later: whether to contribute to Hairer's public repository under his GitHub account.
+- No packet has been executed by another agent; nothing has been reviewed by a second model. Everything from this session is labelled unreviewed.
+- YM-O01 step 4 (the three verification scripts) not run. No clean rebuild (YM-A01), no Comparator (YM-A02).
+- No SU(2) code, no Monte Carlo, no CUDA. T03, T04, T06–T11 not started.
+- `bin/ym-micro` (runner for tool-less local models) not written: packet YM-T14.
+- No LAN machine has been connected; §10 of the protocol is untested beyond the canonical host.
+- Nothing contributed upstream.
+- The strategist has still **not** read: N1 beyond §2's start, N2 beyond §1 (its Eq. (1.6) and the claims around it are quoted from §1), N3, the unit outlines, or the classical lattice literature. The statement that the Wilson transfer operator is nonnegative in the form used by Prop. `ym:prop:defect` is a hypothesis in the notes, not something we established.
 
 ## Next actions, in order
 
-1. Launch wave 1 (`BOARD.md` §"Suggested first launch"): eight packets, all reading and analysis, no approvals needed. Strongest model on YM-R01.
-2. Coordinator pass; assign cross-family reviewers.
-3. When R01 is accepted: open YM-G03 (twice, independently) and YM-G04. These decide the primary route.
-4. When R02, R03, R05, R08 are accepted: strategist writes YM-G01, the problem sheet (milestone G0).
-5. In parallel, once approved: YM-O01 → A01 → A02; YM-T01, T02, T05, T04.
+1. **Reviews first.** Give YM-G02 (the new proofs) to a T3 model of a different family with a red-team instruction; give the three Rust units and YM-O01 to T2 reviewers. Tracker items 9–13.
+2. **Wave 1** reading packets (items 1–8), strongest model on YM-R01, two families on YM-A03.
+3. **Tools on the critical path:** YM-N01 (SU(2) heat bath on `Rust/lattice-gauge`) → YM-N02 (twist ratios); YM-T10 (extend exact enumeration: transfer matrix, Z_N) → YM-N03 (defect in solvable models: compute Δ_β(n) exactly for 2D and 3D Z₂ gauge theory and test the recurrence numerically); YM-T11 after R01 → YM-G03.
+4. **Audit:** finish YM-O01, then YM-A01 in Docker (many hours of CPU; check disk first: 430 GB free at 97%).
+5. YM-T14 so that the local 9B models have something safe to do.
+
+## Things a successor must know
+
+- The mono-notes are a **public** manuscript with a strict style (`documents/mono-notes/STYLE.md`): algebra in displayed equations, terse prose, no implementation names in the exposition. The Lean map is a separate section for that reason. Extend the topic; do not append corrections.
+- `mathphysics` is a public repository. No local-network addresses, host names or credentials in it. They go in the untracked `MP/.pdd/ym-lan.env`.
+- The local model server and GPU Monte Carlo share the RTX 3060.
+- Do not rerun `pdd intent apply` expecting code: see "PDD" above. If Ernest wants the generator to run to the end, it needs a terminal session without a time limit and his say-so on provider usage.
 
 ## The strategic picture to preserve
 
 - OpenAI's proof is a complete **ultraviolet** construction. It stops at unit scale with a weakly coupled lattice gauge system and reaches infinite volume by compactness alone.
-- The mass gap is an **infrared** statement about that unit-scale system, uniform in volume. It is the classic open problem of lattice gauge theory at weak coupling, now in a precise setting.
-- OpenAI's own two-dimensional papers (N1–N3) show the shape of a full solution: one new infrared idea (N1: fourth variation in two non-commuting directions ⇒ twist ratio → 1 ⇒ exponential decay) plus transport by the renormalization group. The Yang–Mills Lean has the transport machinery and none of the infrared idea.
-- Our primary route is the gauge analogue of N1 (centre twists, vortex containers, embedded Z₂ gauge theory). Its known obstacles are frustration (Z₂ monopoles), loss of planarity, and the step from Wilson loops to local observables.
-- Independent of whether that works, the conditional theorem "infrared estimate ⇒ gap and uniqueness", the Linux isolation audit, and the Rust tools are each worth having.
+- The mass gap is an **infrared** statement, uniform in volume. In the notes it is now reduced to two conjectures about one explicit quantity, the hypercubic defect Δ_β(n) = 16 log Z(n⁴) − log Z((2n)⁴): a recurrence, and smallness on a box of bounded physical size. Then three further steps: one coupling on both boxes, passage to the limit, uniqueness.
+- OpenAI's two-dimensional papers show the shape of a full solution; only the first of them is formalized.
+- Our route to the infrared input is the gauge analogue of N1 (centre twists). Its obstacles: frustration, loss of planarity, Wilson loops versus local observables.
+- Our way of competing is computation before proof: exact small-lattice tests and Monte Carlo decide which mechanism is true before anyone tries to prove it. Lean certifies at the end.
 
 ## Log
 
-- 2026-11-14 — Session 1. Program created. See "State".
+- 2026-11-14 — Session 1. Program created: plan, strategy, protocol, 32 packets, tracker.
+- 2026-11-15 — Session 2. Decisions received. Mono-notes topic with proofs and Lean map; Lean in Docker with the compiled build; first Rust slice (28 tests); LAN protocol; PDD intents recorded, generator not completed.

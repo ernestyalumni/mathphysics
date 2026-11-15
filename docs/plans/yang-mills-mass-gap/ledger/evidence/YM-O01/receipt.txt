@@ -1,0 +1,32 @@
+# Receipt: YM-O01, Lean in Docker, 2026-11-15 (UTC times from the log)
+image: ym-lean:4.32.0 (sha256:9ea0c10d5dee)
+Lean (version 4.32.0, x86_64-unknown-linux-gnu, commit 8c9756b28d64dab099da31a4c09229a9e6a2ef35, Release)
+working copy HEAD: 3456e5e75cf8d4cd558955a5c7638fba2d68f464
+--- SHA256SUMS (release lean-build-3456e5e)
+07c145c36a45948ac55044a98d5626c201fe7ad6214d627a0739694c8e464707  ym-build-3456e5e.tgz
+1061107fcb4f20d1aec9e7d0991943c557bb9a5e6f269a402e29047a9de9a923  ym-build-3456e5e.tgz.part0
+205748bbc3c5ce9c207fd29c892cdbca1e04cff68ec6e728c9a6972a8c82b3ef  ym-build-3456e5e.tgz.part1
+--- log excerpts (yang-mills-work/logs/unpack-build.log)
+Sun Nov 15 03:07:14 PM UTC 2026
+07c145c36a45948ac55044a98d5626c201fe7ad6214d627a0739694c8e464707  ym-build-3456e5e.tgz
+07c145c36a45948ac55044a98d5626c201fe7ad6214d627a0739694c8e464707  ym-build-3456e5e.tgz
+== unpack
+unpack exit 0
+== build (offline)
+warning: YM/Independent/ConstructionRun.lean:15:36: Variable name `W` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Build completed successfully (18126 jobs).
+build exit 0
+== axioms
+YangMills.jointExistence : YangMills.JointExistence
+'YangMills.jointExistence' depends on axioms: [propext, Classical.choice, Quot.sound]
+axioms exit 0
+17G	/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/yang-mills-work/OpenAI-YM-20261028-build
+Sun Nov 15 03:51:25 PM UTC 2026
+--- lake exe cache get (last lines of yang-mills-work/logs/cache-get.log)
+Decompressed 8639 file(s)
+Already decompressed 8639 file(s)
+cache exit 0

@@ -1,19 +1,31 @@
 #!/usr/bin/env bash
-# Thin wrapper around Ernest's local PDD work-item tracker for the Yang-Mills program.
-# Always runs against the canonical mathphysics checkout so every worktree sees one tracker.
+# Tracker for the Yang-Mills program: a thin wrapper over Ernest's local PDD work items.
+# One tracker for all agents. It always acts on the canonical mathphysics checkout.
+#   On the canonical host:      ym list | show N | say N SESSION TEXT... | new TITLE PACKET_FILE | close N
+#   On another LAN machine:     set YM_HOST=user@host (and YM_REMOTE_YM=/path/to/bin/ym on that host if it differs);
+#                               the same commands then run over ssh. Put both in .pdd/ym-lan.env (untracked).
 set -euo pipefail
-MP="${YM_MATHPHYSICS_ROOT:-/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics}"
+here="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+MP="${YM_MATHPHYSICS_ROOT:-$(cd "$here/../../../.." && pwd)}"
+[ -f "$MP/.pdd/ym-lan.env" ] && . "$MP/.pdd/ym-lan.env"
+if [ -n "${YM_HOST:-}" ]; then
+  remote="${YM_REMOTE_YM:-$here/ym}"
+  [ "${1:-}" = new ] && { echo "ym new runs on the canonical host only" >&2; exit 2; }
+  quoted=""; for argument in "$@"; do quoted+=" $(printf '%q' "$argument")"; done
+  exec ssh -o BatchMode=yes "$YM_HOST" "YM_HOST= $(printf '%q' "$remote")$quoted"
+fi
 PDD="${YM_PDD:-$MP/../PromptDrivenDevelopment/pdd/.venv/bin/pdd}"
 export PDD_LOCAL_ONLY=1 PDD_SKIP_UPDATE_CHECK=1
 command="${1:-list}"; shift || true
 body_file=""
 if [ "$command" = new ]; then body_file="$(realpath "$2")"; fi
-cd "$MP"
+cd "$MP"; mkdir -p .pdd
+locked() { flock "$MP/.pdd/ym.lock" "$@"; }   # serialise writers: several agents may comment at once
 case "$command" in
   list) "$PDD" --no-core-dump work list --state "${1:-open}" ;;
   show) "$PDD" --no-core-dump work show "$1" ;;
-  say)  number="$1"; session="$2"; shift 2; "$PDD" --no-core-dump work comment "$number" --author "$session" --text "$*" ;;
-  new)  "$PDD" --no-core-dump work new --title "$1" --body-file "$body_file" --label yang-mills ;;
-  close) "$PDD" --no-core-dump work close "$1" ;;
+  say)  number="$1"; session="$2"; shift 2; locked "$PDD" --no-core-dump work comment "$number" --author "$session" --text "$*" ;;
+  new)  locked "$PDD" --no-core-dump work new --title "$1" --body-file "$body_file" --label yang-mills ;;
+  close) locked "$PDD" --no-core-dump work close "$1" ;;
   *) echo "usage: ym {list [open|closed|all] | show N | say N SESSION TEXT... | new TITLE PACKET_FILE | close N}" >&2; exit 2 ;;
 esac

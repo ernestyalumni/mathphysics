@@ -2,14 +2,19 @@
 
 **Last updated:** 2026-11-14
 
-## Active: Yang–Mills audit, tooling and mass-gap program (November 14)
+## Active: Yang–Mills audit, tooling and mass-gap program (November 14–15)
 
-- Plan, strategy, agent protocol and 32 task packets at
+- Plan, strategy, agent protocol and task packets at
   [docs/plans/yang-mills-mass-gap](docs/plans/yang-mills-mass-gap/README.md);
   resume from its HANDOFF.md. Branch `feat/yang-mills-mass-gap-program`.
-- Wave 1 (eight reading/analysis packets) is registered on the local tracker and
-  ready to launch. No packet has been executed; no Rust code written.
-- Blocked on Ernest: PDD intent approval, Lean install, network reads.
+- November 15: mathematical write-up with proofs and a Lean map in
+  `documents/mono-notes/topics/yang-mills-lattice.tex`; Lean 4.32.0 in Docker
+  with the pinned compiled build (axioms reproduced); first Rust slice
+  (`qft-symbolics::sphere`, `lie-groups::special_unitary`, new crate
+  `Rust/lattice-gauge`), 28 tests.
+- Everything from November 15 is unreviewed. Next: cross-family reviews
+  (tracker items 9–13), then wave 1 reading packets and the SU(2) Monte Carlo
+  baseline. No decisions are pending with Ernest.
 
 ## Implemented: Frankel SO(3)/SU(2) tooling (October 17 request)
 

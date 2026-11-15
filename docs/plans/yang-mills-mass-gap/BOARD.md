@@ -2,7 +2,7 @@
 
 Status values: `ready` (can be claimed now), `blocked:<reason>`, `claimed`, `in-review`, `done`. The tracker thread is authoritative for who holds a claim; this file is the summary. Updated by the coordinator or strategist only.
 
-Last updated: 2026-11-14.
+Last updated: 2026-11-15 (strategist, session 2).
 
 ## Wave 1 — ready now (reading and analysis; no installs, no code in the product crates)
 
@@ -19,20 +19,20 @@ Tracker items: YM-R01 = local:1, R02 = 2, R03 = 3, R04 = 4, R05 = 5, R08 = 6, A0
 | [YM-A03](tasks/YM-A03.md) | Red-team the formal statement (run twice, independently) | T3 | ready | — | all |
 | [YM-A04](tasks/YM-A04.md) | Independent transcription of the public theorem | T3 | ready | — | not the same agent as A03 |
 
-## Wave 1b — ready once Ernest allows network reads for public papers
+## Wave 1b — ready (reading public sources is allowed by the workspace rules; send nothing private in a request)
 
 | ID | Title | Tier | Status |
 |---|---|---|---|
-| [YM-R06](tasks/YM-R06.md) | Tomboulis 2007 and Ito–Seiler | T2 | blocked:network-ok |
-| [YM-R07](tasks/YM-R07.md) | Literature baseline table | T2 | blocked:network-ok |
-| [YM-W01](tasks/YM-W01.md) | Upstream watch (recurring) | T1 | blocked:network-ok |
-| [YM-W02](tasks/YM-W02.md) | Jaffe–Witten text and Clay rules, quoted | T1–T2 | blocked:network-ok |
+| [YM-R06](tasks/YM-R06.md) | Tomboulis 2007 and Ito–Seiler | T2 | ready |
+| [YM-R07](tasks/YM-R07.md) | Literature baseline table | T2 | ready |
+| [YM-W01](tasks/YM-W01.md) | Upstream watch (recurring) | T1 | ready |
+| [YM-W02](tasks/YM-W02.md) | Jaffe–Witten text and Clay rules, quoted | T1–T2 | ready |
 
 ## Wave 2 — after wave 1 deliverables
 
 | ID | Title | Tier | Status | Depends on |
 |---|---|---|---|---|
-| [YM-G02](tasks/YM-G02.md) | Defect ⇒ gap lemma for lattice gauge theory | T3 | blocked:YM-R02 | R02 |
+| [YM-G02](tasks/YM-G02.md) | Defect ⇒ gap lemma for lattice gauge theory | T3 | ready (see above) | — |
 | [YM-G03](tasks/YM-G03.md) | Gauge fourth variation: is there a positive square? (run twice) | T3 | blocked:YM-R01 | R01 |
 | [YM-G04](tasks/YM-G04.md) | Embedded Z₂ gauge theory and frustration | T3 | blocked:YM-R01 | R01 |
 | [YM-G05](tasks/YM-G05.md) | Warm-up lemma: clustering collapses the phases | T3+T2 | blocked:YM-R08 | R08 |
@@ -40,25 +40,34 @@ Tracker items: YM-R01 = local:1, R02 = 2, R03 = 3, R04 = 4, R05 = 5, R08 = 6, A0
 | [YM-A05](tasks/YM-A05.md) | Spot-check outlines III.9, III.12, IV.1, V.1, V.3 | T2 | blocked:YM-R05,R08 | R05, R08 |
 | [YM-G01](tasks/YM-G01.md) | Problem sheet (milestone G0) | T4+T3 | blocked:YM-R02,R03,R05,R08 | R02, R03, R05, R08 |
 
-## Needs Ernest's decision before it can start
+## Submitted by the strategist on 2026-11-15 — need review (reviewer: not Claude if possible)
 
-| ID | Title | Tier | Decision needed |
+Tracker items: YM-O01 = local:9, T01 = 10, T02 = 11, T05 = 12, G02 = 13.
+
+| ID | Title | Tier | Status | What to review |
+|---|---|---|---|---|
+| [YM-O01](tasks/YM-O01.md) | Lean in Docker + compiled build | T1–T2 | in-review; packet step 4 open | `notes/YM-O01-lean-setup.md`. Rerun the axiom print; run the three verification scripts. |
+| [YM-T01](tasks/YM-T01.md) | Exact sphere averages, one-loop slope | T2 | in-review | `Rust/qft-symbolics/src/sphere.rs`, `tests/sphere_averages.rs` |
+| [YM-T02](tasks/YM-T02.md) | Lie algebra constants | T2 | in-review; su(N) only, so(N)/sp(N)/exceptional open | `Rust/lie-groups/src/special_unitary.rs`, `tests/special_unitary_casimir.rs` |
+| [YM-T05](tasks/YM-T05.md) | Lattice geometry, exact | T2 | in-review; twisted boundary conditions and integer (not mod 2) coboundaries open | `Rust/lattice-gauge` (`torus`, `cochain`) |
+| [YM-G02](tasks/YM-G02.md) | Defect ⇒ gap lemma | T3 | **ready** (no longer blocked: proofs written) | Mono-notes Props. `ym:prop:purity`, `ym:prop:defect`, `ym:prop:conditional-gap`: check every line, compare with N2 §2, then attack the recurrence. Red-team pass required. |
+
+## Ready now, no approvals needed (all decisions were taken on 2026-11-15)
+
+| ID | Title | Tier | Status |
 |---|---|---|---|
-| [YM-O01](tasks/YM-O01.md) | Lean toolchain + compiled build | T1–T2 | Install on Expansion drive (~15 GB, drive is 97% full) |
-| [YM-A01](tasks/YM-A01.md) | Clean rebuild on Linux | T2 | after O01; a day of CPU |
-| [YM-A02](tasks/YM-A02.md) | Comparator with real isolation; second kernel | T2–T3 | after A01 |
-| [YM-T01](tasks/YM-T01.md) | Exact sphere averages, one-loop coefficient | T2 | PDD intent approval |
-| [YM-T02](tasks/YM-T02.md) | Lie algebra constants | T2 | PDD intent approval |
-| [YM-T04](tasks/YM-T04.md) | `lean-graph` query tool | T2 | PDD intent approval |
-| [YM-T05](tasks/YM-T05.md) | Lattice geometry, exact | T2 | PDD intent approval |
-| [YM-T10](tasks/YM-T10.md) | Exact small-lattice evaluation | T2–T3 | after T05 |
-| [YM-T11](tasks/YM-T11.md) | Calculus on words of group elements | T3 | PDD intent approval; after R01 |
-| [YM-N01](tasks/YM-N01.md) | SU(2) Monte Carlo baseline | T2 | after T05 |
-| [YM-N02](tasks/YM-N02.md) | Twist ratios on vortex containers | T3/T2 | after N01, G04 |
-| [YM-N03](tasks/YM-N03.md) | Defect criterion in solvable models | T2 | after R02, T10 |
-| [YM-N04](tasks/YM-N04.md) | Z₂ monopole density at weak coupling | T2 | after N01, G04 |
+| [YM-A01](tasks/YM-A01.md) | Clean rebuild on Linux, in Docker | T2 | ready (after O01 review); many hours of CPU |
+| [YM-A02](tasks/YM-A02.md) | Comparator with real isolation; second kernel | T2–T3 | blocked:YM-A01 |
+| [YM-T04](tasks/YM-T04.md) | `lean-graph` query tool | T2 | ready |
+| [YM-T10](tasks/YM-T10.md) | Exact small-lattice evaluation | T2–T3 | ready; first slice exists (`Rust/lattice-gauge/src/z2_gauge.rs`): extend to Z_N, transfer-matrix method, SU(2) characters |
+| [YM-T11](tasks/YM-T11.md) | Calculus on words of group elements | T3 | blocked:YM-R01 |
+| [YM-T14](tasks/YM-T14.md) | Micro-task runner for local 9B models | T2 | ready |
+| [YM-N01](tasks/YM-N01.md) | SU(2) Monte Carlo baseline | T2 | ready (builds on `Rust/lattice-gauge`) |
+| [YM-N02](tasks/YM-N02.md) | Twist ratios on vortex containers | T3/T2 | blocked:YM-N01,G04 |
+| [YM-N03](tasks/YM-N03.md) | Defect criterion in solvable models | T2 | ready for Z₂ (2D closed form is in the notes); R02 for the O(n) case |
+| [YM-N04](tasks/YM-N04.md) | Z₂ monopole density at weak coupling | T2 | blocked:YM-N01,G04 |
+| YM-R06, R07, W01, W02 | Literature and watch packets (wave 1b above) | T1–T2 | ready |
 
-Not yet written as packets (see `05-TOOLING-ROADMAP.md`): T03 free-field Wick engine, T06–T08 (covered by N01, N02 for now), T09 Haar integrals, T12 interval arithmetic, T13 CUDA.
 
 ## Suggested first launch
 

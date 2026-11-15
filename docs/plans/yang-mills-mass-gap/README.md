@@ -1,7 +1,7 @@
 # Yang–Mills program: audit the construction, build the tools, attack the mass gap
 
 Started 2026-11-14 by Ernest Yeung. Strategist: Fable 5.2 (Cyclonus). Branch: `feat/yang-mills-mass-gap-program`.
-Original request, verbatim: [request.txt](request.txt). PDD intent plan (read-only, not applied): [intent-plan.json](intent-plan.json), ID `yang-mills-construction-audit-rust-lattice-gauge-d3c6da77`.
+Original request, verbatim: [request.txt](request.txt). Amendment of 2026-11-15: [request-2026-11-15-amendment.txt](request-2026-11-15-amendment.txt). Both PDD intents are approved and recorded in `docs/PRODUCT_INTENT.md`; see [HANDOFF.md](HANDOFF.md) for what `pdd intent apply` did and did not do.
 
 **If you are resuming this work, read [HANDOFF.md](HANDOFF.md) first.** It says what is done, what is running, and what to do next.
 
@@ -19,6 +19,8 @@ Original request, verbatim: [request.txt](request.txt). PDD intent plan (read-on
 | # | File | What it gives you |
 |---|---|---|
 | 0 | [HANDOFF.md](HANDOFF.md) | Current state and next actions. Always current. |
+| 0a | [SOURCES.md](SOURCES.md) | The five source repositories, their pins, which task needs which, how to clone them, Lean in Docker. |
+| 0b | `documents/mono-notes/topics/yang-mills-lattice.tex` (Section "Lattice Yang–Mills theory" of `master.pdf`) | The mathematics: definitions, derivations, the theorem, the mass-gap reduction with proofs, conjectures, and a map to Lean declarations. |
 | 1 | [01-WHAT-OPENAI-PROVED.md](01-WHAT-OPENAI-PROVED.md) | The theorem, the proof architecture, the non-claims, where each piece lives in the four source repos. |
 | 2 | [02-MILLENNIUM-PRIZE-STATUS.md](02-MILLENNIUM-PRIZE-STATUS.md) | Answer to "is this half the prize?" and what a prize-grade result needs. |
 | 3 | [03-MASS-GAP-STRATEGY.md](03-MASS-GAP-STRATEGY.md) | The research plan: target statements, routes, ranking, kill criteria. |

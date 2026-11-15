@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Run Lean for the Yang-Mills audit inside Docker. Nothing is installed on the host.
+#   ym-lean build                 build the image (network: Debian packages, elan, the pinned toolchain)
+#   ym-lean prepare               make the writable working copy of the proof on the Expansion drive
+#   ym-lean shell                 interactive shell in the working copy, network on
+#   ym-lean run <cmd...>          run a command in the working copy, network on (needed for `lake exe cache get`)
+#   ym-lean offline <cmd...>      run a command with networking disabled (use for all checking)
+set -euo pipefail
+REPOS="${YM_REPOS:-/media/propdev/Expansion/openclaw/.openclaw/workspace/repos}"
+PLAN="$REPOS/mathphysics/docs/plans/yang-mills-mass-gap"
+SOURCE="$REPOS/yang-mills-group/OpenAI-YM-20261028"
+WORK="${YM_LEAN_WORK:-$REPOS/yang-mills-work/OpenAI-YM-20261028-build}"
+IMAGE="${YM_LEAN_IMAGE:-ym-lean:4.32.0}"
+command="${1:-}"; shift || true
+docker_run() { network="$1"; shift; docker run --rm ${YM_LEAN_TTY:-} --network "$network" -v "$WORK":/work -w /work "$IMAGE" "$@"; }
+case "$command" in
+  build)   docker build -t "$IMAGE" --build-arg UID="$(id -u)" --build-arg GID="$(id -g)" "$PLAN/docker/lean" ;;
+  prepare) [ -e "$WORK" ] && { echo "exists: $WORK"; exit 0; }
+           mkdir -p "$(dirname "$WORK")"; git clone --no-hardlinks "$SOURCE" "$WORK"
+           git -C "$WORK" checkout --detach 3456e5e; git -C "$WORK" rev-parse HEAD ;;
+  shell)   YM_LEAN_TTY="-it" docker_run bridge bash ;;
+  run)     docker_run bridge "$@" ;;
+  offline) docker_run none "$@" ;;
+  *) sed -n 2,8p "$0" >&2; exit 2 ;;
+esac

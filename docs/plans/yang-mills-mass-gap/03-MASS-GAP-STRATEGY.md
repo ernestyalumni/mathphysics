@@ -23,13 +23,13 @@ on a torus of side L_p (see [01-WHAT-OPENAI-PROVED.md](01-WHAT-OPENAI-PROVED.md)
 
 1. **β̄ is large and fixed.** The ultraviolet analysis needs weak coupling at every level including the last. So the unit-scale system is a weakly coupled four-dimensional lattice gauge theory with a Wilson-like action and small corrections.
 2. **The partition function is preserved exactly.** ∫ρ_m equals the Wilson partition function at every level m. Ratios of partition functions on different tori are therefore the same whether computed on the fine lattice or at unit scale.
-3. **Nothing has been integrated out above unit scale.** The physical mass in these units is expected to be of order exp(−β̄/(2κ_G)) up to powers of β̄ (physics expectation, not a theorem): exponentially small. The correlation length is exponentially large in β̄, and at that length the effective coupling is of order one.
+3. **Nothing has been integrated out above unit scale.** The physical mass in these units is expected to be of order exp(−β̄/κ_G) up to powers of β̄ (physics expectation, not a theorem; derivation in the mono-notes topic, Eq. `ym:lattice-mass`; an earlier version of this file had a spurious factor 2 in the exponent): exponentially small. The correlation length is exponentially large in β̄, and at that length the effective coupling is of order one.
 
 So (GAP) is equivalent in spirit to the classic open problem: **a mass gap for four-dimensional lattice gauge theory at weak coupling, uniformly in the volume**, for a class of actions close to Wilson's. Strong coupling (small β) has been understood since Osterwalder–Seiler. The renormalization group here controls large β at short distances. No method controls the crossover, where there is no small parameter. Any proposal that does not say how it crosses that region is not a proposal.
 
 ## 3. The template: OpenAI's two-dimensional papers
 
-Family 215 in `openai/math` does the whole job for sigma models. Label: **source-claims**; none of this is checked by us, and only part of the family is formalized.
+Family 215 in `openai/math` does the whole job for sigma models. Label: **source-claims**; none of this is checked by us. Only N1 is formalized: `openai/math` `lean/docs/215.md` says the Lean covers exponential decay for O(n≥3) and that "the infinite-volume limit and the separate O(4) spectral-gap claim are not included". N2 and N3 are papers without a kernel check.
 
 | Paper | Result | Role in a gap proof |
 |---|---|---|
@@ -80,6 +80,16 @@ because t_i ≤ 1. So D(n) := Z(n)²/Z(2n) − 1 ≥ Σ_{i≥1} (λ_i/λ_0)ⁿ �
     gap = log(λ_0/λ_1) ≥ (1/n) log(1/D(n)).
 
 The weakness is visible at once: at fixed n the sum s grows with the spatial volume, because the number of low-lying states does. N2 §2.2 ("Increasing the spatial volume") is where the two-dimensional proof deals with that, using reflection positivity in the space direction as well. Porting that step to four dimensions is M1.
+
+**Progress on M1 (2026-11-15, strategist; label: proved on paper, unreviewed, not formalized).** The mono-notes topic `documents/mono-notes/topics/yang-mills-lattice.tex` now contains, with full proofs:
+
+- the purity bounds s_n ≤ 1/P(n) − 1 ≤ 2s_n + s_n² (Prop. `ym:prop:purity`);
+- the four-dimensional hypercubic defect Δ_β(n) = 16 log Z(n⁴) − log Z((2n)⁴), its factorization into four purities, and the bound m(2n) ≥ (1/n) log(1/(e^Δ − 1)) for the transfer gap on the doubled spatial torus (Prop. `ym:prop:defect`), assuming a nonnegative transfer operator in every direction;
+- a conditional lattice gap: if Δ_β(2n) ≤ c₁Δ_β(n)² whenever Δ_β(n) ≤ 1/(2c₁), and Δ_β(n) ≤ 1/(2c₁) for one n, then m ≥ log 2 / n on all dyadic multiples (Prop. `ym:prop:conditional-gap`).
+
+So L-defect splits into two conjectures: the **recurrence** (`ym:conj:recurrence`) and **smallness at a bounded physical scale** (`ym:conj:defect`). YM-G02 is now: review these proofs, compare with N2 §2, and attack the recurrence.
+
+**A subtlety found while writing this (2026-11-15).** The defect compares tori at the *same* β. In the OpenAI family the bare coupling β_{N,p} depends on the volume index p, because each volume is tuned separately so that the unit-scale coupling equals β̄. So Z on the box L_p and Z on the box 2L_p are not at the same bare coupling within the family. M2 must show the defect bound is stable under that difference, or reformulate the test at the unit scale where the coupling is β̄ for every volume (but there the action is the effective one, not Wilson's, and its transfer positivity must be established). YM-R05 must record which of the two is feasible.
 
 ## 5. Routes to the infrared input (M3)
 
@@ -151,7 +161,8 @@ Cheap computations that can kill or sharpen a route before anyone spends weeks o
 | T4 strategist (Fable-class) | Chooses routes, writes and retires packets, adjudicates disputes, writes the weekly synthesis, attempts the key new arguments | Bulk reading, bulk coding |
 | T3 (Opus-class, or strongest Codex/Grok) | Mathematical digests of hard sources, derivations, proof attempts on bounded lemmas, red-team reviews | Decide strategy |
 | T2 (Sonnet-class, Codex) | Rust units with tests, Monte Carlo, literature tables, reviews of T2 work, Lean statement transcription | Unsupervised proof claims |
-| T1 (Haiku-class, local models) | Builds, reruns, extraction into fixed templates, watch tasks, formatting | Anything requiring a judgment about mathematics |
+| T1 (Haiku-class; local 9B models with tools) | Builds, reruns, extraction into fixed templates, watch tasks, formatting, one test at a time | Anything requiring a judgment about mathematics |
+| T0 (local 9B models without tools, `bin/ym-micro`) | One snippet in, one fixed template out, checked by a script | Anything that needs to open a second file |
 
 Every packet names its tier. A lower tier may attempt a higher-tier packet only as a *second opinion* whose output is labelled as such.
 
@@ -188,3 +199,20 @@ Every packet names its tier. A lower tier may attempt a higher-tier packet only 
 8. Chatterjee, *Yang–Mills for probabilists* and the confinement papers; Shen–Zhu–Zhu; Cao–Nissim–Sheffield.
 
 Items 5–8 are cited from memory. YM-R07 must locate each one, confirm the reference, and record exactly which pages were read. No citation enters a deliverable until that is done.
+
+## 11. Manoeuvre: where a small team can win (added 2026-11-15)
+
+Ernest's position: we can win this by using what we have and by building new tools, Rust symbolic computation above all, instead of relying completely on Lean. The strategist's assessment, as a plan:
+
+**What we cannot match.** Proof search and formalization at the scale that produced a million lines of Lean. If the gap falls to brute-force search over a known strategy, a large lab gets there first.
+
+**What we can do that the published record does not show anyone doing.**
+
+1. **Decide the mechanism by computation before proving anything.** The open step (M3) needs an idea, and ideas about lattice gauge theory can be tested exactly on small lattices. A symbolic engine for calculus on words of group elements (T11) plus exact small-lattice evaluation (T10) answers in minutes a question that costs days by hand: *does the gauge fourth variation have a sign-definite part?* (YM-G03). Monte Carlo twist ratios (T08, YM-N02) answer *does the twist free energy vanish with scale at weak coupling, and at what rate?* Neither OpenAI's submission nor the review group's assessment contains numerics of this kind.
+2. **State the missing theorem exactly.** The conditional chain "recurrence + small defect ⇒ lattice gap ⇒ continuum gap and uniqueness" (§4, milestone G5). Its first links are already written with proofs. Whoever proves the infrared input needs this chain; having it reviewed and formalized is a contribution that survives being scooped on M3.
+3. **Tools others adopt.** A Rust lattice-gauge and noncommutative-calculus kernel with exact arithmetic, and a declaration-graph query tool for the Lean, are useful to every reader of the proof, Hairer's project included.
+4. **Independent audit.** The Linux isolation run and the statement red-team (G1).
+
+**What does not change.** A mass gap is a theorem. Computation finds and tests the idea; it does not replace the proof, and for a claim of this size the proof has to end kernel-checked or accepted by named experts. So Lean stays as the last stage (see `05-TOOLING-ROADMAP.md` §"Tools as the discovery loop"), and the tools should emit certificates (exact rationals, intervals) in a form a Lean development can re-check.
+
+**Order of attack that follows.** T05 → T10 and T11 → YM-G03 (decides route R1) in parallel with T06 → T08 → YM-N02 (tests L-twist) and YM-N03 (tests the defect criterion where the answer is known). Reading packets R01–R05 feed these; they are no longer the critical path by themselves.

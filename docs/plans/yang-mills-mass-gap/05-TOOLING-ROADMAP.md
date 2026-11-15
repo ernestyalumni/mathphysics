@@ -2,7 +2,7 @@
 
 This extends the approved Rust mathematical-physics platform ([PRODUCT_INTENT.md](../../PRODUCT_INTENT.md), [REUSABLE-LIBRARY.md](../rust-physics-platform/REUSABLE-LIBRARY.md)). Same rules: capabilities are implemented once behind reusable public APIs; this program supplies **fixtures and requirements**, not a parallel engine. Language order: Rust, then justified C++/CUDA, then Python. Python (SymPy, the existing `.venv`) stays as an independent oracle.
 
-**PDD status: planned, not applied.** Intent `yang-mills-construction-audit-rust-lattice-gauge-d3c6da77`. No code is written until Ernest approves the meaning in §"Review card" below. After approval each unit gets its own prompt, `.pddrc` context and `architecture.json` entry in its crate, as in `Rust/qft-symbolics`.
+**PDD status: approved by Ernest on 2026-11-15, with amendments** (review card at the end). Intents: `yang-mills-construction-audit-rust-lattice-gauge-d3c6da77` (original request, `request.txt`) and `yang-mills-program-amendment-local-network-agent-fb139368` (amendment, `request-2026-11-15-amendment.txt`). What `pdd intent apply` did and did not do is recorded in `HANDOFF.md`; never mark a unit as generated or synchronized unless that file says so. Each unit gets its own prompt, `.pddrc` context and `architecture.json` entry in its crate, as in `Rust/qft-symbolics`.
 
 ## Why these tools
 
@@ -42,22 +42,58 @@ Order: T01, T02, T05 first (small, exact, unblock the rest). T04 in parallel (in
 - snake_case, spelled-out names. No abbreviations like `numel`.
 - Monte Carlo runs record seed, parameters, code revision and wall time in their output file. Outputs are not committed; a summary receipt is.
 
-## Review card for Ernest (PDD intent, awaiting approval)
+## Rust first, CUDA C++ where it pays
 
-- **Scope.** Repository `mathphysics`. New documentation under `docs/plans/yang-mills-mass-gap/`. New crates `Rust/lattice-gauge`, `Rust/lean-graph` (and possibly `Rust/haar`). Extensions to `Rust/qft-symbolics` and `Rust/lie-groups`. The four Yang–Mills repos and `openai/math` are read-only inputs.
+Ernest asked (2026-11-15) whether Rust-first tools with CUDA C++ for the parallel parts will work. Yes, with the split below. The rule: every capability has a Rust CPU reference path behind a public API; a CUDA path is added behind the same API only for a workload that is data-parallel **and measured** to be the bottleneck.
+
+| Workload | Shape | Rust CPU | CUDA C++ |
+|---|---|---|---|
+| Symbolic algebra: sphere averages, Wick contractions, calculus on words of group elements (T01, T03, T11) | Irregular trees, big rationals, hashing | Yes. Parallelize across independent terms with `std::thread::scope` | **No.** Branchy, allocation-heavy code does not vectorize |
+| Lie-algebra constants, Haar integrals, character coefficients (T02, T09) | Small exact linear algebra | Yes | No |
+| Lattice geometry, cochains (T05) | Integer index arithmetic | Yes | Shared index conventions only |
+| Monte Carlo: heat bath and over-relaxation (T06), observables (T07) | Checkerboard: all links of one direction and one parity are conditionally independent | Reference path, small lattices | **Yes.** The classic GPU workload. An SU(2) lattice of side 16 is 4 MB of link data |
+| Twist ratios by a chain of intermediate ensembles (T08, YM-N02) | Many replicas (β values, twist strengths, seeds), each a small lattice | Slow | **Yes, the best case:** batch the replicas, one kernel launch updates all of them |
+| Exact small lattices by transfer matrix (T10) | Matrix-free power iteration over 2^k slice states, bit operations | First version, threaded | Candidate later, if the state space is the limit |
+| Interval arithmetic, certified bounds (T12) | Needs controlled rounding | Yes | No. Rounding control on GPUs is not dependable |
+| Declaration-graph queries (T04) | Graph traversal on 77k nodes | Yes | No |
+
+Engineering constraints:
+
+- The same counter-based random number generator on both paths, keyed by (seed, replica, site, direction, sweep), so a GPU run can be compared with the CPU run configuration by configuration on a small lattice. Acceptance of any CUDA unit: that comparison, plus a measured speed-up on the YM-N02 workload written into the receipt.
+- Two GPUs are present: an RTX 3060 (12 GB) and a GTX 980 Ti (6 GB). **The local Qwen server also uses the RTX 3060.** Monte Carlo and local-model workers contend for it; do not run both without checking `nvidia-smi`. Whether the installed CUDA toolkit still supports the 980 Ti must be checked before planning on it.
+- CUDA C++ lives in its own directory with a C ABI; Rust calls it through a thin `extern "C"` layer. No Rust CUDA crates, no new crates.io dependencies, without Ernest's approval.
+- T13 stays deferred until T06–T08 exist on the CPU and a profile shows where the time goes.
+
+## Tools as the discovery loop
+
+Ernest's direction (2026-11-15): do not rely completely on Lean; win by having new tools. The division of labour between the tools:
+
+| Stage | Tool | Output |
+|---|---|---|
+| Conjecture | Rust symbolic and exact engines (T10, T11) | An identity or inequality tested exactly on small lattices, with a certificate file (exact rationals) |
+| Falsification | Rust and CUDA Monte Carlo (T06–T08) | Numbers with error bars, on sizes the exact engine cannot reach |
+| Proof | A strong model plus a human-readable argument in the mono-notes | LaTeX, reviewed by a second model family |
+| Certification | Lean, in Docker, on top of `OpenAI-YM-20261028` | A kernel-checked statement |
+
+A result is not called proved before the last row. It can be called **verified on lattices up to size n** after the first.
+
+## Review card (approved by Ernest 2026-11-15, with amendments)
+
+- **Scope.** Repository `mathphysics`. Documentation under `docs/plans/yang-mills-mass-gap/`. Mathematical account in `documents/mono-notes/topics/yang-mills-lattice.tex`. New crates `Rust/lattice-gauge`, `Rust/lean-graph` (and possibly `Rust/haar`). Extensions to `Rust/qft-symbolics` and `Rust/lie-groups`. The four Yang–Mills repositories and `openai/math` are read-only inputs (`SOURCES.md`).
 - **Durable requirements.**
   - The program MUST keep audit, tooling and mass-gap research as separate workstreams with separate evidence.
   - Every tool MUST be validated against an independent oracle and a named number or identity from the proof or the literature.
   - Mathematical capabilities MUST live in the reusable libraries; Yang–Mills material supplies fixtures only.
   - No result MUST be called proved unless it is kernel-checked or accepted by a named human expert.
-  - Agents MUST NOT post, publish, upload or message outside this machine without Ernest's explicit approval.
+  - The tools MUST be Rust first. CUDA C++ MUST be used only where a measured data-parallel workload benefits.
+  - The program MUST NOT rely completely on Lean: the Rust symbolic and exact-computation tools are the discovery and falsification loop; Lean is the final certification.
+  - Lean MUST run in a Docker image, with the toolchain and compiled build stored on the Expansion drive.
+  - **Agents MUST be allowed to talk to other local agents, including agents running on other machines on the same local network** (amendment; see `06-AGENT-PROTOCOL.md` §10).
+  - Agents MUST NOT post, publish, upload or message **outside the local network** without Ernest's explicit approval. One standing exception: an agent that Ernest has given GitHub access MAY contribute to Hairer's public repository `hairer/humanise-yang-mills` on its own branch, following that repository's coordination rules (`06-AGENT-PROTOCOL.md` §11).
   - Agents MUST NOT edit the pinned source repositories.
   - Work MUST be handed off through files in this directory so that any agent can resume it.
-- **For example**, a worker given packet YM-T01 implements exact S³ averages in `qft-symbolics`, shows ⟨n₁² n₀²⟩ = 1/24 and κ_G = 11C/(24π²) against the SymPy oracle, and a reviewer from a different model family confirms it before the board marks it done.
+- **For example**, a Qwen3.5 worker on a second machine on the local network claims packet YM-T05 through the shared tracker, pushes its branch to the canonical mathphysics checkout over the local network, and a Codex reviewer on the desktop accepts or rejects it.
+- **Worker harnesses.** Pi, Hermes Agent, Codex, Claude Code, Grok Build; local Qwen3.5 models (llama.cpp server profiles in `claw-work/Deployments/Scripts/llama-cpp-server`) when Ernest is away. Tier mapping in `06-AGENT-PROTOCOL.md` §12.
 - **Proposed prompt units.** T01–T11 above, one prompt each, in the crate that owns the capability.
 - **Story.** One user story, "Yang–Mills audit and mass-gap research workspace", with acceptance: (a) a newcomer agent can pick a packet and finish it using only the packet and the protocol; (b) every numerical constant quoted in `01-WHAT-OPENAI-PROVED.md` §1 is recomputed by a Rust test; (c) the twist-ratio experiment runs end to end and writes a receipt.
-- **Unresolved decisions for Ernest.**
-  1. Approve the meaning above so `pdd intent apply` can be run (it may call model providers and consume usage).
-  2. Whether agents may contribute to Hairer's public repository under his GitHub account.
-  3. Which agent harnesses and models to use for tiers T1–T3 (the protocol is harness-neutral).
-  4. Whether to install the Lean toolchain and the 8.8 GB compiled archive on the Expansion drive (449 GB free at 97% full).
+- **Decisions taken by Ernest on 2026-11-15.** (1) Meaning approved; run `pdd intent apply`. (2) Contributions to Hairer's public repository are allowed for an agent with GitHub access. (3) Harnesses as listed above. (4) Lean in Docker; install on the Expansion drive.
