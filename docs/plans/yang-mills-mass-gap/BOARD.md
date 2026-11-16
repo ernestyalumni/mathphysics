@@ -52,6 +52,13 @@ Tracker items: YM-O01 = local:9, T01 = 10, T02 = 11, T05 = 12, G02 = 13.
 | [YM-T05](tasks/YM-T05.md) | Lattice geometry, exact | T2 | in-review; twisted boundary conditions and integer (not mod 2) coboundaries open | `Rust/lattice-gauge` (`torus`, `cochain`) |
 | [YM-G02](tasks/YM-G02.md) | Defect ⇒ gap lemma | T3 | **ready** (no longer blocked: proofs written) | Mono-notes Props. `ym:prop:purity`, `ym:prop:defect`, `ym:prop:conditional-gap`: check every line, compare with N2 §2, then attack the recurrence. Red-team pass required. |
 
+## Added 2026-11-16 (strategist, session 6)
+
+| ID | Title | Tier | Status | Tracker |
+|---|---|---|---|---|
+| [YM-W04](tasks/YM-W04.md) | Read the Faizal–Shabir mass-gap claim (arXiv:2606.19362), locate its crossover step | T3 | ready | local:19 |
+| YM-G02 addendum | Review the transfer-positivity sketch (`notes/spectral-theory-study-route.md` §3, claim C23) together with the G02 proofs | T3, non-Claude | ready | local:13 |
+
 ## Ready now, no approvals needed (all decisions were taken on 2026-11-15)
 
 | ID | Title | Tier | Status |
