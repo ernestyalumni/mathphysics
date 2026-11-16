@@ -1,0 +1,135 @@
+{
+  "acceptance": {
+    "reasons": [],
+    "sentence": "If you can make a task to an AI agent, to help me a.",
+    "story_recommended": false
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": null,
+      "matched_terms": [
+        "docs",
+        "docs plans",
+        "gap",
+        "gap prompts",
+        "group",
+        "mass",
+        "mass gap",
+        "mills",
+        "mills mass",
+        "plans",
+        "plans yang",
+        "prompts",
+        "prompts wilson",
+        "trace",
+        "wilson",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": null,
+      "product_area": "Wilson Group Trace Contract",
+      "prompt_path": "docs/plans/yang-mills-mass-gap/prompts/wilson_group_trace_contract.prompt",
+      "score": 106
+    },
+    {
+      "architecture_path": null,
+      "matched_terms": [
+        "docs",
+        "docs plans",
+        "gap",
+        "gap prompts",
+        "mass",
+        "mass gap",
+        "mills",
+        "mills mass",
+        "plans",
+        "plans yang",
+        "prompts",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": null,
+      "product_area": "Ym Tracker Bash",
+      "prompt_path": "docs/plans/yang-mills-mass-gap/prompts/ym_tracker_bash.prompt",
+      "score": 83
+    },
+    {
+      "architecture_path": null,
+      "matched_terms": [
+        "docs",
+        "docs plans",
+        "gap",
+        "mass",
+        "mass gap",
+        "mills",
+        "mills mass",
+        "plans",
+        "plans yang",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": null,
+      "product_area": "Collector",
+      "prompt_path": "docs/plans/yang-mills-mass-gap/watch/collector_python.prompt",
+      "score": 70
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "matrix-integration-tutorial-and-reusable-symboli-69638281",
+  "original_request": "If you can make a task to an AI agent, to help me a. write up in mathphysics on how to or what it means to \"integrate\" a matrix (from theory to simple example calculations), its measure (what would be the measure to integrate matrices) and then Rust / CUDA C++ symbolic and numerical implementations, tathd' be great. I'm still reading through this: \"My one-book choice is Christof Gattringer and Christian B. Lang, Quantum Chromodynamics on the Lattice: An Introductory Presentation, Springer, 2010. It is written for newcomers with some continuum QFT background and develops calculations explicitly. That makes it a good fit for the style you want. Publisher.\n\nI didn\u2019t find that title in your local collection. Your Frankel connection/gauge-potential notes and Srednicki background provide a useful starting point.\n\nRead these first:\n\n| Sections | Printed pages | Purpose |\n|---|---:|---|\n| \u00a7\u00a72.2.2\u20132.4 | 33\u201341 | Link variables, plaquettes and the lattice action |\n| \u00a73.1 | 44\u201348 | Haar measure and gauge-field integration |\n| \u00a73.3 | 54\u201358 | Wilson-loop observables |\n\nThose locations are verified against the publisher\u2019s contents.\n\nYour pasted passage interleaves the screen PDF\u2019s columns. Let\u2019s begin with the finite-lattice measure; the beta-function calculation can follow.\n\nA configuration assigns a group matrix to every link. Here \u2113 counts sites per direction, while a is the physical spacing:\n\n\u039b_{\u2113}=(\u2124/\u2113\u2124)\u2074,  x=ay,  L=a\u2113.\n\nFor G\u2282 U(m), each positive link carries U(y,\u03bc)\u2208 G. Thus a configuration consists of 4\u2113\u2074 group matrices. The reverse direction uses the inverse of an existing matrix:\n\nU(y,-\u03bc)=U(y-e_{\u03bc},\u03bc)\u207b\u00b9.\n\nThe shifted origin matters.\n\nA plaquette follows one elementary square. Its four matrices multiply in path order:\n\nU\u209a=U\u2081U\u2082U\u2083\u207b\u00b9U\u2084\u207b\u00b9.\n\nThe inverses correspond to traversing the last two links backwards. For a nonabelian group, this order matters. Under a gauge transformation, the intermediate endpoint factors cancel, leaving\n\nU\u209a^{\u03b3}=\u03b3(y)U\u209a\u03b3(y)\u207b\u00b9.\n\nConsequently its trace is gauge invariant.\n\nThe Wilson measure tells us how to average configurations. Write\n\n                1\nS_{W}(U)=\u03b2\u2211 (1- \u2500RetrU\u209a).\n          p     m\n\nThen\n\n      e^{-S_{W}(U)}\nd\u03bc(U)=\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u220f\u2091 h(dU\u2091),   Z=\u222b e^{-S_{W}(U)}\u220f\u2091 h(dU\u2091).\n            Z\n\nHere h is normalized Haar measure\u2014the invariant probability measure on the compact group. At fixed lattice size, this is a finite-dimensional group integral. We integrate over matrices constrained to lie in G.\n\nAt \u03b2=0, the links are independently Haar distributed and Z=1. Positive \u03b2 favors plaquettes closer to the identity and generally couples neighboring links.\n\nAn observable is a function of the configuration:\n\n\u27e8\ud835\udcaa\u27e9=\u222b\ud835\udcaa(U) d\u03bc(U).\n\nA Wilson loop is one such observable: take the normalized trace of the ordered product around a closed path.\n\nFor defining SU(m), with tr(T\u1d43T\u1d47)=\u03b4\u1d43\u1d47/2, the coupling dictionary is\n\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502   2m   1  \u2502\n\u2502 \u03b2=\u2500\u2500= \u2500\u2500\u2500 \u2502.\n\u2502   g\u00b2  g\u2080\u00b2 \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\nThus the conventional coefficients are 4/g\u00b2 for SU(2) and 6/g\u00b2 for SU(3).\n\nI incorporated this lesson into both reading editions: page 532 of master.pdf (workspace2/repos/mathphysics/documents/mono-notes/master.pdf) and page 288 of screen.pdf (workspace2/repos/mathphysics/documents/mono-notes/screen.pdf).\n\nFor another agent, I prepared this complete worker prompt (workspace2/repos/mathphysics/docs/plans/yang-mills-mass-gap/prompts/wilson-symbolics-worker.md), registered as YM-T15 / local:17. Its first task is the reusable symbolic group-word/trace kernel. Lattice adapters, Haar integration and exact partition functions follow; CUDA is gated on a measured workload. No Rust/CUDA implementation was started in this step.\"",
+  "original_request_sha256": "69638281d9849132cfbd5bd6e244dbc2ebf308c2c10e1054681b0fa641c82719",
+  "project": {
+    "adoption_scenario": "existing_pdd_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      "Python/rotations/.pddrc",
+      "Rust/lattice-gauge/.pddrc",
+      "Rust/physics-contracts/.pddrc",
+      "Rust/physics-gateway/.pddrc",
+      "Rust/physics-tools/.pddrc",
+      "Rust/qft-symbolics/.pddrc",
+      "TypeScript/physics-workbench/.pddrc",
+      "Python/rotations/architecture.json",
+      "Rust/lattice-gauge/architecture.json",
+      "Rust/physics-contracts/architecture.json",
+      "Rust/physics-gateway/architecture.json",
+      "Rust/physics-tools/architecture.json",
+      "Rust/qft-symbolics/architecture.json",
+      "TypeScript/physics-workbench/architecture.json",
+      "47 prompt file(s)"
+    ],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-O02-codex-b7f4",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-O02-codex-b7f4",
+    "scope_kind": "repository"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [],
+    "must_preserve": [],
+    "open_decisions": [
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "file",
+    "ref": "/tmp/ym-matrix-integration-request.txt"
+  },
+  "story": {
+    "action": "none",
+    "matched": [],
+    "reasons": [],
+    "recommended": false
+  },
+  "title": "Matrix integration tutorial and reusable symbolic numerical tools",
+  "warnings": []
+}

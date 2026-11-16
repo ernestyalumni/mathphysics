@@ -150,3 +150,9 @@ at the appropriate subject location in `master.tex`, and add its citations to
 exercises and solutions inline, state assumptions before a derivation, show
 the algebra, and keep one clean line of development: when a topic replaces
 or corrects a legacy passage, delete that passage rather than annotating it.
+
+## Yang–Mills reading entry
+
+Both editions include the QFT foundations, lattice construction/mass-gap topic and formal-source map. A dated front reading/status page now distinguishes the assessed existence construction, unproved gap and infinite-volume uniqueness, unreviewed local conditional arguments, and Clay requirements. In the 16 November2026UTC build, start at PDF page10 in master.pdf or page6 in screen.pdf; the full lattice topic starts at530/287 and source map541/293. Both editions are609/328 pages; no reference/citation warnings. Existing overfull boxes remain47/3, unchanged by this addition.
+
+The expanded first Wilson-measure lesson starts on PDF page532 in master.pdf and288 in screen.pdf. It defines physical spacing versus site count, oriented links, plaquettes, Haar/Wilson laws, observables and the SU(m) coupling dictionary. Background: Gattringer–Lang, Quantum Chromodynamics on the Lattice(LNP788,2010), §§2.2.2–2.4 and3.1; the first reading guide and agent handoff are under docs/plans/yang-mills-mass-gap/. The ratio used in the earlier running-coupling justification has been replaced by the correct normalization scaling; the stated leading slope is unchanged.

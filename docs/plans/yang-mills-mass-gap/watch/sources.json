@@ -1,0 +1,42 @@
+[
+  {
+    "id": "group-assessment-index",
+    "url": "https://raw.githubusercontent.com/yang-mills-group/YM/main/README.md"
+  },
+  {
+    "id": "october-check-scope",
+    "url": "https://raw.githubusercontent.com/yang-mills-group/YM/main/submissions/openai-20261028/docs/checks.md"
+  },
+  {
+    "id": "formal-source-readme",
+    "url": "https://raw.githubusercontent.com/yang-mills-group/OpenAI-YM-20261028/main/README.md"
+  },
+  {
+    "id": "clay-problem-status",
+    "url": "https://www.claymath.org/millennium/yang-mills-the-maths-gap/"
+  },
+  {
+    "id": "clay-prize-rules",
+    "url": "https://www.claymath.org/millennium-problems/rules/"
+  },
+  {
+    "id": "openai-announcement",
+    "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/"
+  },
+  {
+    "id": "armstrong-statement",
+    "url": "https://raw.githubusercontent.com/scottnarmstrong/yang-mills-informalization/main/statement.md"
+  },
+  {
+    "id": "hairer-exposition",
+    "url": "https://raw.githubusercontent.com/hairer/humanise-yang-mills/main/README.md"
+  },
+  {
+    "id": "openai-math-commits",
+    "url": "https://api.github.com/repos/openai/math/commits?per_page=3"
+  },
+  {
+    "id": "arxiv-recent-leads",
+    "url": "https://export.arxiv.org/api/query?search_query=all%3A%22Yang-Mills%22%20AND%20all%3A%22mass%20gap%22&start=0&max_results=10&sortBy=submittedDate&sortOrder=descending"
+  }
+]

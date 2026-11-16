@@ -1,0 +1,7 @@
+# Track assessed Yang–Mills progress daily
+
+As Ernest, I want a daily local record of new primary-source Yang–Mills developments and the state of our own evidence, with versioned context for an AI reviewer, so I can resume research across model usage limits without confusing announcements, computations or conditional arguments with a solution.
+
+Source: request-2026-11-16-notes-watch.txt. Manually authored story; no generated contract or semantic PDD validation claimed.
+
+Acceptance: (1) At/after09:00 Los Angeles, collect at most once per local date on the Mac, preserve existing cron entries, and state sleep/offline limitations. (2) Record fixed primary URLs, hashes, local context revision and source errors; an unavailable source is unknown, never unchanged. (3) Save snapshots/reports outside the repository, with no credentials or private uploads. (4) No model call, provider fallback, automatic pin advancement, manuscript insertion or mathematical claim promotion occurs in the collector. A queued review prompt is not a completed AI review. (5) Versioned agent instructions distinguish the assessed October construction, unassessed submissions, mass-gap/infinite-volume questions and our independently reviewed evidence. No invented percentage or guaranteed prize. (6) Bound fetching in time/size; disable inherited proxy credentials; reject duplicate/empty source configurations and corrupt state. (7) Tests and live Mac collection/readback demonstrate these observations, while an independent reviewer assesses changes before deployment.

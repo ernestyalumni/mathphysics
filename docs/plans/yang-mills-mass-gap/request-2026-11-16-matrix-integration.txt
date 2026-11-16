@@ -1,0 +1,71 @@
+If you can make a task to an AI agent, to help me a. write up in mathphysics on how to or what it means to "integrate" a matrix (from theory to simple example calculations), its measure (what would be the measure to integrate matrices) and then Rust / CUDA C++ symbolic and numerical implementations, tathd' be great. I'm still reading through this: "My one-book choice is Christof Gattringer and Christian B. Lang, Quantum Chromodynamics on the Lattice: An Introductory Presentation, Springer, 2010. It is written for newcomers with some continuum QFT background and develops calculations explicitly. That makes it a good fit for the style you want. Publisher.
+
+I didn’t find that title in your local collection. Your Frankel connection/gauge-potential notes and Srednicki background provide a useful starting point.
+
+Read these first:
+
+| Sections | Printed pages | Purpose |
+|---|---:|---|
+| §§2.2.2–2.4 | 33–41 | Link variables, plaquettes and the lattice action |
+| §3.1 | 44–48 | Haar measure and gauge-field integration |
+| §3.3 | 54–58 | Wilson-loop observables |
+
+Those locations are verified against the publisher’s contents.
+
+Your pasted passage interleaves the screen PDF’s columns. Let’s begin with the finite-lattice measure; the beta-function calculation can follow.
+
+A configuration assigns a group matrix to every link. Here ℓ counts sites per direction, while a is the physical spacing:
+
+Λ_{ℓ}=(ℤ/ℓℤ)⁴,  x=ay,  L=aℓ.
+
+For G⊂ U(m), each positive link carries U(y,μ)∈ G. Thus a configuration consists of 4ℓ⁴ group matrices. The reverse direction uses the inverse of an existing matrix:
+
+U(y,-μ)=U(y-e_{μ},μ)⁻¹.
+
+The shifted origin matters.
+
+A plaquette follows one elementary square. Its four matrices multiply in path order:
+
+Uₚ=U₁U₂U₃⁻¹U₄⁻¹.
+
+The inverses correspond to traversing the last two links backwards. For a nonabelian group, this order matters. Under a gauge transformation, the intermediate endpoint factors cancel, leaving
+
+Uₚ^{γ}=γ(y)Uₚγ(y)⁻¹.
+
+Consequently its trace is gauge invariant.
+
+The Wilson measure tells us how to average configurations. Write
+
+                1
+S_{W}(U)=β∑ (1- ─RetrUₚ).
+          p     m
+
+Then
+
+      e^{-S_{W}(U)}
+dμ(U)=───────────── ∏ₑ h(dUₑ),   Z=∫ e^{-S_{W}(U)}∏ₑ h(dUₑ).
+            Z
+
+Here h is normalized Haar measure—the invariant probability measure on the compact group. At fixed lattice size, this is a finite-dimensional group integral. We integrate over matrices constrained to lie in G.
+
+At β=0, the links are independently Haar distributed and Z=1. Positive β favors plaquettes closer to the identity and generally couples neighboring links.
+
+An observable is a function of the configuration:
+
+⟨𝒪⟩=∫𝒪(U) dμ(U).
+
+A Wilson loop is one such observable: take the normalized trace of the ordered product around a closed path.
+
+For defining SU(m), with tr(TᵃTᵇ)=δᵃᵇ/2, the coupling dictionary is
+
+┌───────────┐
+│   2m   1  │
+│ β=──= ─── │.
+│   g²  g₀² │
+└───────────┘
+
+Thus the conventional coefficients are 4/g² for SU(2) and 6/g² for SU(3).
+
+I incorporated this lesson into both reading editions: page 532 of master.pdf (workspace2/repos/mathphysics/documents/mono-notes/master.pdf) and page 288 of screen.pdf (workspace2/repos/mathphysics/documents/mono-notes/screen.pdf).
+
+For another agent, I prepared this complete worker prompt (workspace2/repos/mathphysics/docs/plans/yang-mills-mass-gap/prompts/wilson-symbolics-worker.md), registered as YM-T15 / local:17. Its first task is the reusable symbolic group-word/trace kernel. Lattice adapters, Haar integration and exact partition functions follow; CUDA is gated on a measured workload. No Rust/CUDA implementation was started in this step."

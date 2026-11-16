@@ -1,0 +1,24 @@
+% Manual source specification for the Unix/macOS daily source collector.
+% Output: ym_watch.py. Operations utility, not a symbolic-physics kernel.
+% No automated PDD regeneration or generated contracts claimed.
+
+Implement a Python 3.9+ standard-library-only collector with CLI --repo,
+--state-dir, --sources, --daily-at HH:MM and --timezone America/Los_Angeles.
+MUST make only bounded anonymous HTTPS GETs to the fixed public-source allowlist,
+validate redirects, limit each response to 4 MiB, each fetch to a hard wall-clock 15s
+and the collection loop to 180s plus one in-flight fetch. MUST NOT invoke AI,
+provider CLIs, credentials, external posting, source-supplied commands, Git fetch,
+pin changes or manuscript edits. Keep software in version control and fetched
+snapshots/reports/state private and outside tracked source.
+MUST record first-seen/changed/unchanged/unavailable per source with URLs/hashes,
+Git context revision and context-file hashes, UTC time, local date and failures.
+Unavailable MUST NOT become unchanged. Preserve the last good hash on failure.
+MUST use a nonblocking Unix lock and atomic state/report pointers. A corrupt
+state MUST fail without silent overwrite. A daily invocation MUST perform no
+network before the configured local time or after one attempt on the same local
+date; timezone handling must not depend on cron supporting CRON_TZ.
+MUST write a local report explicitly saying semantic AI review has not run and
+queue the versioned agent prompt. Never infer a proof, prize percentage, award,
+or independent review from hash changes. All output states remain inspectable.
+
+Validate nonempty source schema/unique IDs and state hash/date structure before schedule skips. Reject output under the selected repository. Disable inherited HTTP proxy settings and proxy credentials. Test slow-drip subprocess termination, duplicate/empty configuration, structural state corruption, private output location and Los Angeles DST/date boundaries.

@@ -86,7 +86,14 @@ Eight agents in parallel, one per wave-1 row, T3 where marked. Put two **differe
 
 | ID | Title | Tracker | Status |
 |---|---|---|---|
-| [YM-O02](tasks/YM-O02.md) | First Mac Mini connection and Fable continuity | local:14 | blocked: Mac-side SSH access/key setup; portable launcher passes 7 regressions; no live Mac tracker round trip |
+| [YM-O02](tasks/YM-O02.md) | First Mac Mini connection and Fable continuity | local:14 | done: technical SSH/tracker acceptance independently checked; original Pi model acknowledgement not observed |
 | [YM-R09](tasks/YM-R09.md) | Srednicki-to-lattice source and mono-notes reading map | local:15 | ready; no worker claimed |
 
 Codex report for Fable: [CODEX-HANDOFF-2026-11-15.md](CODEX-HANDOFF-2026-11-15.md). These additions preserve the existing review-first research priorities. Private machine values are outside the public repository.
+
+Daily source watch: [YM-W03](tasks/YM-W03.md), local:16. Collector active at/after09:00 Los Angeles; AI review queued, not automatic. See [watch/README.md](watch/README.md) and [review baseline](notes/YM-W03-baseline-2026-11-16.md). Initial source coverage8/10 with explicit403/429 failures.
+
+Wilson-measure study handoff: [YM-T15](tasks/YM-T15.md), local:17, ready for scoped implementation planning; no worker claimed. Start with [the reading guide](notes/wilson-measure-reading-guide.md) and [the bounded symbolic plan](notes/wilson-symbolics-plan.md). Implementation contract is draft, not a generated/mapped unit.
+
+
+Matrix-integration learning/tooling handoff: [YM-T09](tasks/YM-T09.md), local:18, ready; no worker claimed or implementation started. [Pasteable agent prompt](prompts/matrix-integration-worker.md). First submission: entrywise versus matrix-domain integration tutorial and one bounded exact Rust unit; numerical Rust and profiled CUDA C++ are separate follow-on milestones. Reuses existing exact sphere moments; general word integration may follow T15 without blocking the first coordinate-polynomial unit.
