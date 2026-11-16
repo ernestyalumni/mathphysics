@@ -64,3 +64,7 @@ Every statement in this directory carries one of these labels, explicitly or by 
 - **inconclusive** — a check ran and could not decide.
 
 "Proved" without a label is not allowed. A natural-language proof of a new theorem is **conjectured** until it is kernel-checked or accepted by a named human expert.
+
+## Codex continuation, 2026-11-15
+
+For the Mac Mini first milestone, original continuation request, selective stories and Srednicki reading task, see [07-CONTINUATION-ROADMAP.md](07-CONTINUATION-ROADMAP.md). Claude Code/Fable restart report: [CODEX-HANDOFF-2026-11-15.md](CODEX-HANDOFF-2026-11-15.md). Mac-side prompt: [prompts/mac-mini-bootstrap.md](prompts/mac-mini-bootstrap.md).

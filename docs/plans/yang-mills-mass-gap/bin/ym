@@ -5,20 +5,33 @@
 #   On another LAN machine:     set YM_HOST=user@host (and YM_REMOTE_YM=/path/to/bin/ym on that host if it differs);
 #                               the same commands then run over ssh. Put both in .pdd/ym-lan.env (untracked).
 set -euo pipefail
-here="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+# BSD/macOS readlink has no -f; resolve symlink entries using plain readlink.
+source_path="${BASH_SOURCE[0]}"
+link_count=0
+while [ -L "$source_path" ]; do
+  link_count=$((link_count + 1))
+  [ "$link_count" -le 40 ] || { echo "ym: symlink loop" >&2; exit 2; }
+  source_dir="$(CDPATH= cd -P "$(dirname "$source_path")" && pwd)"
+  target_path="$(readlink "$source_path")"
+  case "$target_path" in
+    /*) source_path="$target_path" ;;
+    *) source_path="$source_dir/$target_path" ;;
+  esac
+done
+here="$(CDPATH= cd -P "$(dirname "$source_path")" && pwd)"
 MP="${YM_MATHPHYSICS_ROOT:-$(cd "$here/../../../.." && pwd)}"
 [ -f "$MP/.pdd/ym-lan.env" ] && . "$MP/.pdd/ym-lan.env"
 if [ -n "${YM_HOST:-}" ]; then
   remote="${YM_REMOTE_YM:-$here/ym}"
   [ "${1:-}" = new ] && { echo "ym new runs on the canonical host only" >&2; exit 2; }
   quoted=""; for argument in "$@"; do quoted+=" $(printf '%q' "$argument")"; done
-  exec ssh -o BatchMode=yes "$YM_HOST" "YM_HOST= $(printf '%q' "$remote")$quoted"
+  exec ssh -o BatchMode=yes -o ConnectTimeout=8 -o ServerAliveInterval=15 -o ServerAliveCountMax=2 "$YM_HOST" "YM_HOST= $(printf '%q' "$remote")$quoted"
 fi
 PDD="${YM_PDD:-$MP/../PromptDrivenDevelopment/pdd/.venv/bin/pdd}"
 export PDD_LOCAL_ONLY=1 PDD_SKIP_UPDATE_CHECK=1
 command="${1:-list}"; shift || true
 body_file=""
-if [ "$command" = new ]; then body_file="$(realpath "$2")"; fi
+if [ "$command" = new ]; then body_file="$(CDPATH= cd -P "$(dirname "$2")" && pwd)/$(basename "$2")"; fi
 cd "$MP"; mkdir -p .pdd
 locked() { flock "$MP/.pdd/ym.lock" "$@"; }   # serialise writers: several agents may comment at once
 case "$command" in

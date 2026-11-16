@@ -193,4 +193,6 @@ Facts about the local models that shape the packets (from `claw-work/Deployments
 - Local-model output is labelled `unreviewed` and cannot support a claim in `ledger/claims.md` until a T2+ reviewer accepts it.
 - One local server means local workers run one at a time. Parallelism comes from the cloud harnesses and from other machines.
 
-Launch recipes: `prompts/launch.md`.
+**Admission test for local models (added 2026-11-16).** Before a local model gets any packet, run `ledger/evidence/local-model-probe/probe.py` against it and record the result in `notes/local-models.md`. Measured so far: Qwythos 9B Q5 copies short excerpts accurately and catches simple planted errors, but miscalculates and misses bookkeeping errors. Hence the rule: from a T0/T1 model, an INCORRECT flag is worth checking, a CORRECT verdict is worth nothing, and its calculations are never evidence.
+
+Launch recipes: `prompts/launch.md`. Local model inventory, measurements and assignments: `notes/local-models.md`.

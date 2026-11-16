@@ -22,8 +22,10 @@ Check a command's flags with `<harness> --help` before scripting it; the table w
 
 From `claw-work/Deployments/Scripts/llama-cpp-server` (see its README):
 
-    ./launch.sh --dry-run qwen35-9b-distilled-q5
-    ./launch.sh qwen35-9b-distilled-q5         # http://127.0.0.1:8080/v1, alias qwen35-9b-q5-k-m, context 32768, one slot
+    ./run-recommended.sh --dry-run
+    ./run-recommended.sh                       # Qwythos 9B Q5: http://127.0.0.1:8080/v1, alias qwythos-9b-q5-k-m, context 65536, one slot
+
+**As of 2026-11-15 this fails on the desktop**: the NVIDIA container toolkit was purged on 2026-11-11 (`notes/local-models.md` §3a). Ernest has to reinstall it.
     ./launch.sh --status
     ./launch.sh --stop
 
@@ -33,7 +35,7 @@ The server uses the RTX 3060. Do not start it while a GPU Monte Carlo run is usi
 
 | Tier | Packets that fit today |
 |---|---|
-| T0/T1 local Qwen | One test at a time for an existing Rust function (the packet names the function, the oracle value and the test file); reruns of `cargo test` with a receipt; filling the digest template for **one** section of a paper that the prompt includes verbatim. Not: reading packets that span a whole paper; anything in workstream C. |
+| T0/T1 local 9B (use `qwythos-9b-q5`) | See `notes/local-models.md` §6, which is based on a measured probe: flagging referee, verbatim indexing, Lean signature cards, Rust tests with the expected **value** given, reruns. Not: digests, derivations, calculations, any review that closes a task. |
 | T2 | YM-T04 (`lean-graph`), YM-T14 (micro-task runner), YM-N01 (SU(2) Monte Carlo baseline, on top of `Rust/lattice-gauge`; read its README first), YM-R06–R08, YM-W01–W02, reviews of YM-T01, T02, T05, O01. |
 | T3 | YM-R01–R05, YM-A03 (twice, two families), YM-A04, YM-G02 (review the proofs in the mono-notes topic), YM-T11. |
 

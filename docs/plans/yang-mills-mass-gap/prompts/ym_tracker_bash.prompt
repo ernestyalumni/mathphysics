@@ -1,0 +1,32 @@
+% Manual source specification: portable Yang–Mills tracker launcher
+% Output: docs/plans/yang-mills-mass-gap/bin/ym
+% Existing conventional operations utility; not registered as a generated Rust unit.
+% No claim of automated PDD regeneration. Preserve approved LAN intent fb139368.
+
+Implement the existing ym list/show/say/new/close shell interface in Bash 3.2+.
+The canonical Linux host owns the PDD installation and serialized tracker. A LAN
+worker only needs Bash and OpenSSH; it forwards operations to the canonical host.
+
+<contract_rules>
+R1 (MUST): Resolve the launcher's physical repository path, including symlinked
+entry points and paths with spaces, using tools available on macOS and Linux.
+R2 (MUST NOT): Require GNU readlink -f or GNU realpath on a Mac worker.
+R3 (MUST): Read trusted machine-local .pdd/ym-lan.env for remote routing. When
+YM_HOST is set, preserve every argument as literal data over batch-mode SSH,
+including whitespace, quotes, dollars, semicolons and backticks. Bound connection
+setup time and retain host-key verification. Clear forwarding on the canonical
+invocation; the canonical config MUST leave YM_HOST unset to avoid a route loop.
+R4 (MUST NOT): Run local PDD, flock or create a local tracker for remote requests;
+reject remote new with exit 2 before SSH.
+R5 (MUST): Locally execute the existing PDD work commands in the canonical root,
+export local-only/update-skip settings and preserve flock serialization of writes.
+R6 (MUST): Resolve local packet filenames for new without GNU realpath.
+R7 (MUST NOT): Generate keys, accept host identities, disable SSH checks, launch
+models, edit peer configuration, or transmit anything except the requested
+tracker operation as a side effect of this launcher.
+</contract_rules>
+
+Verification: independent shell-process fixtures for local canonical routing,
+remote routing with no local PDD, trusted env routing, rejected remote creation,
+literal metacharacters, relative packet names and symlinked launcher entry points.
+Also require a separate live Mac/SSH/tracker receipt before calling the LAN done.

@@ -2,7 +2,7 @@
 
 Status values: `ready` (can be claimed now), `blocked:<reason>`, `claimed`, `in-review`, `done`. The tracker thread is authoritative for who holds a claim; this file is the summary. Updated by the coordinator or strategist only.
 
-Last updated: 2026-11-15 (strategist, session 2).
+Last updated: 2026-11-16 (strategist, session 3). Local GPU model serving on the desktop is blocked: `notes/local-models.md` §3a.
 
 ## Wave 1 — ready now (reading and analysis; no installs, no code in the product crates)
 
@@ -61,7 +61,7 @@ Tracker items: YM-O01 = local:9, T01 = 10, T02 = 11, T05 = 12, G02 = 13.
 | [YM-T04](tasks/YM-T04.md) | `lean-graph` query tool | T2 | ready |
 | [YM-T10](tasks/YM-T10.md) | Exact small-lattice evaluation | T2–T3 | ready; first slice exists (`Rust/lattice-gauge/src/z2_gauge.rs`): extend to Z_N, transfer-matrix method, SU(2) characters |
 | [YM-T11](tasks/YM-T11.md) | Calculus on words of group elements | T3 | blocked:YM-R01 |
-| [YM-T14](tasks/YM-T14.md) | Micro-task runner for local 9B models | T2 | ready |
+| [YM-T14](tasks/YM-T14.md) | Micro-task runner for local 9B models (`referee` and `index` types first; see `notes/local-models.md`) | T2 | ready |
 | [YM-N01](tasks/YM-N01.md) | SU(2) Monte Carlo baseline | T2 | ready (builds on `Rust/lattice-gauge`) |
 | [YM-N02](tasks/YM-N02.md) | Twist ratios on vortex containers | T3/T2 | blocked:YM-N01,G04 |
 | [YM-N03](tasks/YM-N03.md) | Defect criterion in solvable models | T2 | ready for Z₂ (2D closed form is in the notes); R02 for the O(n) case |
@@ -81,3 +81,12 @@ Eight agents in parallel, one per wave-1 row, T3 where marked. Put two **differe
     R02,R03,R05,R08 ──> G01 (problem sheet, G0) ──> conditional theorem G5
     R08 ───> G05 (first Lean extension)
     O01 ──> A01 ──> A02 (G1 with A03, A04)
+
+## Continuation requested 2026-11-15 — Mac first, then source reading
+
+| ID | Title | Tracker | Status |
+|---|---|---|---|
+| [YM-O02](tasks/YM-O02.md) | First Mac Mini connection and Fable continuity | local:14 | blocked: Mac-side SSH access/key setup; portable launcher passes 7 regressions; no live Mac tracker round trip |
+| [YM-R09](tasks/YM-R09.md) | Srednicki-to-lattice source and mono-notes reading map | local:15 | ready; no worker claimed |
+
+Codex report for Fable: [CODEX-HANDOFF-2026-11-15.md](CODEX-HANDOFF-2026-11-15.md). These additions preserve the existing review-first research priorities. Private machine values are outside the public repository.

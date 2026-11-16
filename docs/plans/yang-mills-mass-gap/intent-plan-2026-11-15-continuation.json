@@ -1,0 +1,159 @@
+{
+  "acceptance": {
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "sentence": "Can you take a look here?",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "first",
+        "gauge",
+        "gauge theory",
+        "intent",
+        "lattice",
+        "lattice gauge",
+        "mills",
+        "rust",
+        "theory",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/z2_gauge.rs",
+      "product_area": "Exact density of states of Z2 lattice gauge theory on small tori, with twists",
+      "prompt_path": "Rust/lattice-gauge/prompts/z2_gauge_rust.prompt",
+      "score": 62
+    },
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "gauge",
+        "intent",
+        "lattice",
+        "lattice gauge",
+        "mills",
+        "rust",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/spectral.rs",
+      "product_area": "Exact integer check of the purity bounds for a nonnegative transfer operator",
+      "prompt_path": "Rust/lattice-gauge/prompts/spectral_rust.prompt",
+      "score": 47
+    },
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "gauge",
+        "intent",
+        "lattice",
+        "lattice gauge",
+        "mills",
+        "rust",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/sphere.rs",
+      "product_area": "Exact unit-sphere monomial averages and rational multiples of powers of pi",
+      "prompt_path": "Rust/qft-symbolics/prompts/sphere_rust.prompt",
+      "score": 47
+    },
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "gauge",
+        "intent",
+        "lattice",
+        "lattice gauge",
+        "mills",
+        "rust",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/torus.rs",
+      "product_area": "Sites, links, plaquettes and cubes of a periodic torus with stable index conventions",
+      "prompt_path": "Rust/lattice-gauge/prompts/torus_rust.prompt",
+      "score": 47
+    },
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "gauge",
+        "intent",
+        "lattice",
+        "lattice gauge",
+        "mills",
+        "rust",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/cochain.rs",
+      "product_area": "Z2 plaquette sets: twist surfaces, monopole counts, coboundary classes by GF(2) elimination",
+      "prompt_path": "Rust/lattice-gauge/prompts/cochain_rust.prompt",
+      "score": 47
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "yang-mills-research-continuation-and-first-mac-m-1ca6bec7",
+  "original_request": "Can you take a look here? /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics So we had Claude Fable 5.2, given our limited usage limits, try to plan out and provide a \"breakdown\" of tasks, and a plan or roadmap for a. Understanding the context of what OpenAI was doing with getting 4D Yang Mills as a limit of Wilson lattice gauge theory, b. checking against the Millenium prize of whether this work from OpenAi, is audited by the yang mills group, is related directly or indirectly to a Millenium prize or any Mathematical Physics prize, c. whether there was still work to be done despite OpenAI's progress, such as finding the mass gap, d. Continuing work on a Rust first, then CUDA C++, AI tooling and replacement for symbolic computation of SageMath, sympy, Mathematica, Cadabra2, etc., because that's our unique and novel road compared to using only lean, e. some of the smaller tasks that other AI agents could do is just parsing out books and related references papers, getting more context, and doing a \"monolithic\" writeup to be part of our mega document here: /home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/documents/mono-notes mononotes, because i myself also have to get reacqainted with the research and with quantum field theory myself, based upon Mark Srednicki's book f. part of the effort is just \"connecting\" the 4 computers I have on this local network and have the respective AI agents be able to \"talk\" and collaborate with each other, and so if you could break down the task and execute on this that'd be great - first plan it out, and then we'll first, as a first step, try to establish connection to my Mac Mini on this Yang Mills research effort Take all that i've written, it's a real intent so maybe it should be recorded as colloquial intent? and then start breaking it down into user stories, plans, prompts, and then execute on it please, and drop me tell me what prompt or .md to tell another AI agent on another Mac Mini we have on here (is there a way to ping and ssh into it from here on this local network? Help me set it up",
+  "original_request_sha256": "1ca6bec7ac4244a6e32059f60b4f4df0f02218b41f3c67de6ad4f36b7a2db17d",
+  "project": {
+    "adoption_scenario": "existing_pdd_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      "Python/rotations/.pddrc",
+      "Rust/lattice-gauge/.pddrc",
+      "Rust/physics-contracts/.pddrc",
+      "Rust/physics-gateway/.pddrc",
+      "Rust/physics-tools/.pddrc",
+      "Rust/qft-symbolics/.pddrc",
+      "TypeScript/physics-workbench/.pddrc",
+      "Python/rotations/architecture.json",
+      "Rust/lattice-gauge/architecture.json",
+      "Rust/physics-contracts/architecture.json",
+      "Rust/physics-gateway/architecture.json",
+      "Rust/physics-tools/architecture.json",
+      "Rust/qft-symbolics/architecture.json",
+      "TypeScript/physics-workbench/architecture.json",
+      "44 prompt file(s)"
+    ],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
+    "scope_kind": "repository"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [
+      "whether there was still work to be done despite OpenAI's progress, such as finding the mass gap, d."
+    ],
+    "must_preserve": [],
+    "open_decisions": []
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "recommended": true
+  },
+  "title": "Yang-Mills research continuation and first Mac Mini connection",
+  "warnings": []
+}

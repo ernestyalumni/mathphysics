@@ -1,6 +1,15 @@
 # HANDOFF — Yang–Mills program
 
-Last updated: 2026-11-15, end of session 2 (strategist: Fable 5.2). Branch `feat/yang-mills-mass-gap-program`, not pushed, not merged. Nothing is running in the background. No agents have been launched.
+Last updated: 2026-11-16, session 3 (strategist: Fable 5.2). Branch `feat/yang-mills-mass-gap-program`, not pushed, not merged. Nothing is running in the background. No agents have been launched.
+
+## Session 3 (2026-11-15/16): local models — read `notes/local-models.md`
+
+- **Blocker for all local GPU work on the desktop:** `nvidia-container-toolkit` was purged on 2026-11-11, so no GPU container starts (the llama.cpp server included). Ernest must reinstall it. Not attempted by the strategist.
+- A known-answer probe of Qwythos 9B Q5 (on CPU) is recorded in the note, with the script in `ledger/evidence/local-model-probe/`. Outcome: usable for verbatim extraction and as a *flagging* referee; not for calculation, digests or closing reviews.
+- Context was never the limit: `qwythos-9b-q5` has 65k on the desktop; the Mac (M4 Pro, 64 GB) profiles have 262k.
+- Best next step for more local capability: a 27B-class model on the Mac (Qwen3.8-27B per web search, unverified), admitted only after running the probe on it.
+- New rule in `06` §12: admission test before any local model gets a packet. YM-T14 extended with `referee` and `index` task types.
+- If a container named `ym-probe-llama` is still running, it is the strategist's CPU probe server: `docker stop ym-probe-llama`.
 
 ## Ernest's decisions of 2026-11-15 (all open questions from session 1 are closed)
 
@@ -64,3 +73,6 @@ Last updated: 2026-11-15, end of session 2 (strategist: Fable 5.2). Branch `feat
 
 - 2026-11-14 — Session 1. Program created: plan, strategy, protocol, 32 packets, tracker.
 - 2026-11-15 — Session 2. Decisions received. Mono-notes topic with proofs and Lean map; Lean in Docker with the compiled build; first Rust slice (28 tests); LAN protocol; PDD intents recorded, generator not completed.
+- 2026-11-15 — Session 3 started. Ernest asked which local models (claw-work llama.cpp profiles, or others) can take which packets. Working note: `notes/local-models.md` (written incrementally; read it first if this session was cut off).
+
+- 2026-11-15 — Codex continuation requested by Ernest: first Mac Mini connection and complete reporting to Fable while its usage renews. Read [CODEX-HANDOFF-2026-11-15.md](CODEX-HANDOFF-2026-11-15.md) and [07-CONTINUATION-ROADMAP.md](07-CONTINUATION-ROADMAP.md). Existing local-model work preserved. Mac discovered and ping succeeds, but TCP/22 refuses; no authenticated LAN connection yet. Added O02/R09 packets, manual stories, Mac bootstrap prompt and portable tracker repair; no provider-backed regeneration.
