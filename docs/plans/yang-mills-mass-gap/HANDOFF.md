@@ -9,7 +9,8 @@ Last updated: 2026-11-16, session 3 (strategist: Fable 5.2). Branch `feat/yang-m
 - **Assignments:** local 9B models as *flagging* referees (union of the three; only INCORRECT flags count) and for verbatim indexing; Qwythos for tool use; nothing with calculation; no digests; no closing reviews. Section 6 of the note.
 - **More capability:** a 27B-class model on the Mac (M4 Pro, 64 GB); Qwen3.8-27B per web search, unverified. Run the probe on it first.
 - Protocol `06` §12: admission test before any local model gets a packet. YM-T14 extended with `referee` and `index` task types; that packet is now the way to put the local models to work.
-- No container was left running.
+- 2026-11-16: Ernest reinstalled the container toolkit; `launch.sh` works again. Tool-use and loop tests of Qwen3.8 distill Q5 (`agent_loop.py`, note section 4b): single tool calls and short plans 21/21, valid JSON always; long loops stop early with a false completion report about one run in three, so the harness must verify completion.
+- The strategist's containers are stopped; Ernest's `llama-cpp-server` on port 8080 was left as he started it.
 
 ## Ernest's decisions of 2026-11-15 (all open questions from session 1 are closed)
 

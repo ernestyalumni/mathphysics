@@ -83,6 +83,27 @@ Four runs per task (one on CPU, three on the GPU), temperature 0.2, reasoning bu
 
 With three runs per cell the differences are suggestive, not established. What they suggest: **Qwen3.8 distill Q5 is the best referee of the three** (the only one that ever caught the bookkeeping error, and it flagged the identity error every time), Qwen3.5 Q8 is the steadiest at arithmetic, and Qwythos, which wins claw-work's coding-and-tools benchmark, is the weakest of the three at mathematics. None raised a false alarm on a correct proof (18 of 18). None is reliable at computing.
 
+### 4b. Tool use and loops: Qwen3.8 distill Q5 through claw-work's own launcher (2026-11-16, after Ernest reinstalled the toolkit)
+
+Server: `./launch.sh qwen38-9b-distill-q5` on port 8080, profile defaults (temperature 0.6, reasoning auto). Harness: `ledger/evidence/local-model-probe/agent_loop.py`: OpenAI-style tool calls, fixed safe tools (exact add and multiply, one Collatz step, read or search two whitelisted Lean files, an exact sphere average, a hidden token chain), known answers, the harness counts the calls itself.
+
+| Test | Passed | Calls made | Note |
+|---|---:|---|---|
+| One tool call (9-digit multiplication) | 3/3 | 1 | 4–5 s |
+| Chain of additions, five numbers | 3/3 | 4–5 | |
+| Two tools, plan (12+30)·(5+9) | 3/3 | 3 | |
+| Read three lines of Lean, name the definition, count ∀ | 3/3 | 1 | |
+| Search a file, then read the line found | 3/3 | 2 | |
+| Get an exact value from a tool, then write the Rust assert | 3/3 | 1 | The task it failed without a tool (probe row g) |
+| Asked to read a file the tool refuses | 3/3 | 0 | Said "CANNOT READ", invented nothing |
+| Loop: follow a hidden token chain, 12 steps | 3/3 | 12 | Tokens copied exactly |
+| Loop: hidden token chain, 25 steps | 2/3 | 25, 25, **3** | Once stopped after 3 calls and reported that token as the last |
+| Loop: Collatz from 7 until 1 (16 steps) | 3/6 | 16 or **2, 3, 11** | Three times it stopped calling the tool, finished in its head, and still answered "STEPS: 16" |
+
+Every tool call had valid JSON arguments (0 malformed in about 250 calls). About 48 tok/s; a tool round trip takes 1–2 seconds.
+
+**What this means for packets.** Single tool calls and short fixed plans are dependable. Giving it a tool for anything numeric removes the calculation failures. Long loops usually complete, but roughly one run in three ends early with a confident, false report of completion. So the harness, never the model, decides whether a loop finished: count the calls, check the terminating condition, rerun on an early stop. A statement by the model about what it did is not evidence that it did it.
+
 **Reading.**
 
 - It copies accurately from a short excerpt. It follows a fixed answer template most of the time, not always.
@@ -98,7 +119,8 @@ With three runs per cell the differences are suggestive, not established. What t
 | **Flagging referee.** Feed each numbered step group of our proofs and of every digest, several runs each; collect INCORRECT flags for a T2+ reviewer | All three 9B models in turn on the desktop GPU (`bin/ym-local-llm`), union of flags | Probe rows d, e, i, k, and 4a; costs nothing; runs unattended | Only flags are used. Silence means nothing (row h). |
 | **Verbatim indexing.** For one excerpt at a time: list every numbered equation, definition and theorem statement exactly as printed, with its number | same; or any 9B at 262k context on the Mac for whole papers | Probe row a | Accept a line only if it occurs verbatim in the source (string match by script) |
 | **Lean signature cards** (packet YM-T14): kind, identifiers, one-sentence reading of one declaration | same | Row c shows it reads quantifiers but drifts from the format | Mechanical checks in YM-T14; label `unreviewed` |
-| **Rust tests with the expected value supplied by the packet** | same, through Pi or Hermes | Row g: it cannot derive the value | `cargo test` decides; never let it choose the oracle |
+| **Rust tests with the expected value supplied by the packet or by an exact tool** | same, through Pi or Hermes | Row g: it cannot derive the value; section 4b: with a tool it gets it right | `cargo test` decides; never let it choose the oracle |
+| **Short tool plans** (look up, read, one or two exact computations) | Qwen3.8 distill Q5 or Qwythos through Pi or Hermes | Section 4b: 21 of 21 on single calls and fixed plans | The harness checks loop completion; the model's own report of what it did is not trusted |
 | Reruns, formatting, receipts, watch tasks | any 9B | No judgment needed | — |
 | **Not for any local 9B:** digests of papers (YM-R01–R05), derivations, statement red-teaming (YM-A03), anything in workstream C, any review whose "accept" would close a task | — | Rows f, g, h, j | — |
 
@@ -132,4 +154,4 @@ None of this helps until two things are done by Ernest: (1) reinstall `nvidia-co
 
 ## Resume here
 
-Complete as of 2026-11-16: inventory, GPU workaround (`bin/ym-local-llm`), probes of all three 9B profiles, assignments, candidates. No container was left running. Open for others: reinstall the GPU container toolkit (Ernest); admission test of a 27B model on the Mac; build YM-T14 (`referee` and `index` first), then run the referee over the proofs in the mono-notes topic.
+Complete as of 2026-11-16: inventory, GPU workaround (`bin/ym-local-llm`, no longer needed: Ernest reinstalled the toolkit and claw-work's `launch.sh` works again), probes of all three 9B profiles, tool and loop tests (4b), assignments, candidates. The server Ernest started (`llama-cpp-server`, port 8080) was left running; the strategist's own containers are stopped. Open for others: reinstall the GPU container toolkit (Ernest); admission test of a 27B model on the Mac; build YM-T14 (`referee` and `index` first), then run the referee over the proofs in the mono-notes topic.
