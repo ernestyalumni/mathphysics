@@ -1,0 +1,353 @@
+\section{Galilean spacetime and the geometry of reference frames}
+
+Classical mechanics distinguishes the time of an event from its spatial
+location.  The distinction can be stated without first choosing an observer,
+a spatial origin, or coordinate axes.  We begin with the affine formulation
+of Prastaro, \emph{Geometry of PDEs and Mechanics}, Definition 3.1 and
+Remarks 3.1--3.3, pp.~307--309.  The affine assumptions made here are
+stronger than merely having a time-fibered manifold: they also supply the
+flat affine connection used below to identify inertial motion.
+
+\subsection{Events, absolute time, and simultaneous space}
+
+An affine space modeled on $V$ is a set on which $V$ acts freely and
+transitively by translations: for any two points $p,q$ there is a unique
+$v\in V$ with $p+v=q$.  Let $M$ be a four-dimensional affine space modeled
+on $V$, and let $T$ be a one-dimensional affine space modeled on $V_T$.  An
+\emph{event} is a point $p\in M$.  A point of an affine space is not itself
+a vector: for $p,q\in M$, the difference $q-p\in V$ is defined, but a
+position vector for $p$ requires a chosen origin.
+
+Absolute time is a surjective affine map
+\begin{equation}\label{eq:gal-time}
+ \tau:M\longrightarrow T,\qquad p\longmapsto\tau(p).
+\end{equation}
+Its linear part $D\tau:V\to V_T$ is independent of $p$.  Thus, for two
+events $p,q$,
+\begin{equation}\label{eq:gal-time-difference}
+ \tau(q)-\tau(p)=D\tau(q-p).
+\end{equation}
+The kernel
+\begin{equation}\label{eq:gal-spatial-vectors}
+ S=\ker D\tau\subset V,\qquad \dim S=3,
+\end{equation}
+is the vector space of spatial displacements.  The simultaneous space at
+$t\in T$ is the fiber $M_t=\tau^{-1}(t)$.  If $p,q\in M_t$, then
+\begin{equation}\label{eq:gal-simultaneity}
+ D\tau(q-p)=\tau(q)-\tau(p)=0,
+ \qquad q-p\in S.
+\end{equation}
+Conversely, if $p\in M_t$ and $\mathbf s\in S$, then
+$\tau(p+\mathbf s)=t$.  Therefore $M_t$ is an affine space modeled on $S$.
+The fibers at different times are distinct; the time map alone does not
+identify a point of one fiber with a point of another as being at rest.
+
+A positive-definite inner product $g:S\times S\to\mathbb R$ gives the
+spatial distance between simultaneous events:
+\begin{equation}\label{eq:gal-distance}
+ d_t(p,q)^2=g(q-p,q-p),\qquad p,q\in M_t.
+\end{equation}
+This is a metric on each spatial fiber, not a positive-definite spacetime
+metric.  In Prastaro's notation the affine model space is $\mathbf M$, the
+spatial model space is $\mathbf S$, and the constant Euclidean form is
+$\underline g$; our $V$, $S$, and $g$ denote those respective objects.
+The vertical bundle is $\ker D\tau\subset TM$; for this affine model it
+is naturally $M\times S$, with $g$ acting on its fibers.
+
+Choose a time origin and time unit, identifying $T$ with $\mathbb R$.
+Writing $\sigma=d\tau$, an adapted chart $(x^0,x^1,x^2,x^3)$ may be
+chosen with $x^0=\tau$ up to a constant.  Then
+\begin{equation}\label{eq:gal-adapted}
+ \sigma\!\left(\frac{\partial}{\partial x^0}\right)=1,
+ \qquad
+ \sigma\!\left(\frac{\partial}{\partial x^i}\right)=0,
+ \qquad i=1,2,3.
+\end{equation}
+The three coordinate vectors $\partial/\partial x^i$ are tangent to the
+simultaneous fiber.  They need not be orthonormal.  For an orthonormal
+Cartesian basis $\mathbf e_i$ of $S$, $g(\mathbf e_i,\mathbf e_j)=\delta_{ij}$,
+and the spatial line element in Eq.~\eqref{eq:gal-distance} becomes
+\begin{equation}\label{eq:gal-cartesian-metric}
+ d\ell^2=\delta_{ij}\,dx^i dx^j.
+\end{equation}
+This is the spatial Euclidean expression used by Zipfel, \emph{Modeling and
+Simulation of Aerospace Vehicle Dynamics}, 1st ed., \S2.1.1.  It is a
+specialization of the metric on simultaneous space, rather than a metric
+including time.
+
+\subsection{Worldlines and velocities}
+
+A section of a map $\pi:E\to B$ is a map $s:B\to E$ such that
+$\pi\circ s=\operatorname{id}_B$; the definition applies in particular to
+bundle projections.
+\begin{definition}[Motion]
+A motion is a smooth section $\gamma:T\to M$ of the time map:
+\begin{equation}\label{eq:gal-motion}
+ \tau\circ\gamma=\operatorname{id}_T.
+\end{equation}
+\end{definition}
+For $t\in T$, the derivative is a linear map
+\begin{equation}\label{eq:gal-derivative-map}
+ D\gamma(t):T_tT\longrightarrow T_{\gamma(t)}M.
+\end{equation}
+After choosing the time origin and unit, identify $T_tT$ with $\mathbb R$
+and $T_{\gamma(t)}M$ with the translation space $V$.  Evaluating the map
+in Eq.~\eqref{eq:gal-derivative-map} on $1\in\mathbb R$ gives
+\begin{equation}\label{eq:gal-tangent-lift}
+ \dot\gamma(t)=D\gamma(t)(1)\in V,\qquad
+ t\longmapsto(\gamma(t),\dot\gamma(t))\in TM\simeq M\times V.
+\end{equation}
+The first expression is the vector part; the second is the tangent lift,
+which also records its base event.  Prastaro denotes the motion by $m$
+and its lift by $\dot m$ (Remark 3.3, pp.~308--309).
+The chain rule applied to Eq.~\eqref{eq:gal-motion} gives
+\begin{equation}\label{eq:gal-velocity-normalization}
+ D\tau\bigl(\dot\gamma(t)\bigr)
+ =\frac{d}{dt}\bigl(\tau(\gamma(t))\bigr)=1.
+\end{equation}
+Thus the spacetime velocity lies in the affine hyperplane
+\begin{equation}\label{eq:gal-velocity-bundle}
+ I=\{v\in V:D\tau(v)=1\},\qquad
+ J_D(M)=M\times I\subset TM.
+\end{equation}
+This is Prastaro's space of velocities of motions (Definition 3.3); its
+fiber $I$ is affine, not the vector space $S$.  Indeed, if $v,w\in I$,
+then $D\tau(v-w)=1-1=0$, so $v-w\in S$; conversely $v+s\in I$ for
+$s\in S$.  For two motions at the same time,
+\begin{equation}\label{eq:gal-relative-velocity}
+ D\tau\bigl(\dot\gamma_1-\dot\gamma_2\bigr)=1-1=0,
+ \qquad \dot\gamma_1-\dot\gamma_2\in S.
+\end{equation}
+Their relative velocity is consequently a spatial vector.  This makes precise
+why a spatial velocity requires a reference motion even though a spacetime
+worldline has a tangent independently of that choice.
+
+\subsection{Reference frames and inertial motion}
+
+A reference frame may be described by a congruence of worldlines: through
+each event there passes one worldline representing a point at rest in that
+frame.  Equivalently, locally, it is a time-preserving identification of
+$M$ with $T\times\Sigma$, where $\Sigma$ labels the worldlines.  A frame
+therefore identifies spatial points at different times; it is more than a
+single worldline and does not by itself require numerical coordinates.
+Prastaro's frame $\psi$ supplies such a congruence (Definition 3.4 and
+Proposition 3.1, p.~309).  Zipfel's frame is a rigid set of mutually resting
+points (\S2.1.4, pp.~20--21), so a general congruence need not be a Zipfel
+frame: the latter additionally imposes rigidity.
+
+More explicitly, Prastaro's $\psi:T\times M\to M$ sends an event $p$
+to the event on its frame worldline at time $t$; the maps obey
+$\tau(\psi(t,p))=t$, $\psi(\tau(p),p)=p$, and
+$\psi(t',\psi(t,p))=\psi(t',p)$.  Thus $p\sim q$ if $q$ lies on the
+same worldline as $p$, and the set $\Sigma=M/{\sim}$ labels frame
+worldlines.  The splitting maps an event to
+$(\tau(p),[p])\in T\times\Sigma$.  For a smooth frame its normalized
+velocity field is
+\begin{equation}\label{eq:gal-frame-field}
+ U(p)=\left.\frac{d}{dt}\psi(t,p)\right|_{t=\tau(p)},
+ \qquad D\tau(U(p))=1.
+\end{equation}
+The spatial velocity of a motion relative to this frame is
+\begin{equation}\label{eq:gal-frame-relative}
+ \mathbf v_{\mathrm{rel}}(t)=\dot\gamma(t)-U(\gamma(t))\in S,
+\end{equation}
+by Eq.~\eqref{eq:gal-relative-velocity}.  A frame need not be rigid or
+inertial to define this subtraction.
+
+The affine structure of $M$ supplies a flat connection.  A worldline is
+inertial when it is an affine straight line, equivalently
+\begin{equation}\label{eq:gal-inertial}
+ \frac{d^2\gamma}{dt^2}=0,
+\end{equation}
+where the derivative is taken using that affine structure.  A standard global
+inertial frame consists of parallel such worldlines.  Neither the time map
+nor the spatial metric alone specifies this inertial structure on a general
+fibered manifold.  An accelerated or rotating rigid frame can be used to
+label events, but its coordinate expressions of the equations of motion
+contain the familiar noninertial terms.
+
+\subsection{The covariant derivative and ordinary mechanics}
+
+Prastaro's absolute differential $\nabla X$ is a covector-valued vector
+field: at each event it maps a direction $Y$ to $\nabla_YX$ (Definition 3.5
+and Proposition 3.2, p.~310).  In bundle language, $X$ is a
+section of $TM\to M$ and $DX$ takes values in $T(TM)$; the connection
+extracts the vertical change, identified with a vector in the original
+tangent fiber.  This makes derivatives of vectors at different points
+meaningful without treating those tangent spaces as identical by assumption.
+
+For coordinates $x^\alpha$, $\alpha=0,1,2,3$, define the connection
+coefficients by
+\begin{equation}\label{eq:gal-connection-basis}
+ \nabla_{\partial/\partial x^\alpha}
+ \frac{\partial}{\partial x^\gamma}
+ =\Gamma^\beta{}_{\alpha\gamma}
+ \frac{\partial}{\partial x^\beta}.
+\end{equation}
+For $X=X^\beta\partial/\partial x^\beta$ and
+$Y=Y^\alpha\partial/\partial x^\alpha$, the product rule and
+Eq.~\eqref{eq:gal-connection-basis} give
+\begin{align}\label{eq:gal-covariant-coordinate}
+ \nabla_YX
+ &=Y^\alpha\left(
+ \frac{\partial X^\beta}{\partial x^\alpha}
+ \frac{\partial}{\partial x^\beta}
+ +X^\gamma\Gamma^\beta{}_{\alpha\gamma}
+ \frac{\partial}{\partial x^\beta}\right)\\
+ &=Y^\alpha\left(
+ \frac{\partial X^\beta}{\partial x^\alpha}
+ +\Gamma^\beta{}_{\alpha\gamma}X^\gamma\right)
+ \frac{\partial}{\partial x^\beta}.\nonumber
+\end{align}
+This is Prastaro's formula with his coordinate derivatives written as
+explicit partial derivatives.  Along a motion, its acceleration is
+$\nabla_{\dot\gamma}\dot\gamma$, defined as the covariant derivative along
+the curve.  In components,
+\begin{equation}\label{eq:gal-curve-acceleration}
+ a^\beta=\frac{d^2x^\beta}{dt^2}
+ +\Gamma^\beta{}_{\alpha\gamma}
+ \frac{dx^\alpha}{dt}\frac{dx^\gamma}{dt}.
+\end{equation}
+For the affine connection in inertial Cartesian coordinates the connection
+coefficients vanish.  With $x^0=t$, Eq.~\eqref{eq:gal-curve-acceleration}
+then gives $a^0=0$ and $a^i=d^2x^i/dt^2$.
+
+This is the setting of the familiar particle equation in Goldstein-style
+classical mechanics.  Choose an inertial frame, an origin worldline, and
+fixed Cartesian axes; write the particle's spatial position as
+$\mathbf r=x^i\mathbf e_i$.  For constant mass $m$ and applied spatial force
+$\mathbf F$, Newton's equation becomes
+\begin{equation}\label{eq:gal-newton-goldstein}
+ m\mathbf a=m\frac{d^2\mathbf r}{dt^2}=\mathbf F.
+\end{equation}
+The familiar $\mathbf r$ depends on the chosen origin worldline, whereas
+the acceleration is the intrinsic acceleration for the chosen flat affine
+connection.  In curvilinear or moving coordinates, the connection terms in
+Eq.~\eqref{eq:gal-curve-acceleration} account for the changing coordinate
+basis; they do not by themselves introduce a new physical force.
+
+\subsection{Frames and coframes on a vector bundle}
+
+Choquet-Bruhat distinguishes a tangent-space frame at one point from a
+frame field on an open set (\S\S4.1--4.2, pp.~3--4).
+The distinction extends to any rank-$n$ vector bundle $\pi:E\to B$.
+A local frame over $U\subset B$ is a collection of smooth sections
+$e_1,\ldots,e_n$ such that $e_i(x)$ is a basis of the fiber $E_x$ at
+every $x\in U$.  The dual bundle $E^*$ has the coframe
+$\theta^1,\ldots,\theta^n$, uniquely defined by
+\begin{equation}\label{eq:gal-dual-frame}
+ \theta^i_x(e_j(x))=\delta^i{}_j.
+\end{equation}
+For $v\in E_x$ and $\alpha\in E_x^*$, their components and reconstruction
+are
+\begin{equation}\label{eq:gal-frame-reconstruction}
+ v^i=\theta^i_x(v),\quad v=v^i e_i(x),\qquad
+ \alpha_i=\alpha(e_i(x)),\quad \alpha=\alpha_i\theta^i_x.
+\end{equation}
+A frame field selects a basis separately in each fiber, with smooth dependence
+on the base point.  To compare vectors in distinct fibers geometrically,
+however, a frame alone does not select a preferred transport: a connection
+supplies that additional rule.  A metric permits us to say that frames are
+orthonormal and to interpret changes between them as rotations.
+
+For $E=TB$, the frame vectors are tangent vector fields and the coframe
+consists of one-forms.  In coordinates $(x^1,\ldots,x^n)$, the natural
+frame and coframe are
+\begin{equation}\label{eq:gal-natural-frame}
+ e_i=\frac{\partial}{\partial x^i},\qquad
+ \theta^i=dx^i,\qquad
+ dx^i\!\left(\frac{\partial}{\partial x^j}\right)=\delta^i{}_j.
+\end{equation}
+Not every frame field is a coordinate frame.  For example, on the plane
+with the origin removed, the orthonormal polar frame and its dual are
+\begin{equation}\label{eq:gal-polar-frame}
+ e_r=\frac{\partial}{\partial r},\quad
+ e_\phi=\frac{1}{r}\frac{\partial}{\partial\phi},\qquad
+ \theta^r=dr,\quad\theta^\phi=r\,d\phi.
+\end{equation}
+Here $[e_r,e_\phi]=-r^{-1}e_\phi\ne0$, whereas coordinate vector fields
+commute.  Thus a moving frame need not arise from a coordinate system.
+
+A global frame is a local frame defined on all of $B$.  It exists precisely
+when $E$ is isomorphic to the product bundle $B\times\mathbb R^n$: the
+isomorphism sends $(x,(a^1,\ldots,a^n))$ to $a^i e_i(x)$.  For $E=TB$
+this property is called parallelizability.  Choquet-Bruhat notes that not
+every manifold has a global tangent frame, while every smooth orientable
+three-manifold is parallelizable (p.~4); the latter is a theorem, not a
+consequence of orientability in arbitrary dimensions.  For example, the
+hairy-ball theorem rules out a global tangent frame on $S^2$.  This does not
+contradict orientability of $S^2$, nor does the three-manifold theorem say
+that every vector bundle over a three-manifold is trivial.
+
+\subsection{Moving axes in engineering mechanics}
+
+In the affine Galilean model, the spatial bundle is $M\times S$, so a fixed
+orthonormal basis of $S$ gives a global spatial frame.  A frame attached to a
+rotating vehicle may instead be chosen along its worldline.  Let
+$\mathbf e_i(t)$ be a differentiable right-handed orthonormal basis of $S$,
+and write a spatial vector along the motion as
+$\mathbf v(t)=v^i(t)\mathbf e_i(t)$.  The affine identification of the
+spatial fibers lets us differentiate these vectors in the common space $S$:
+\begin{equation}\label{eq:gal-moving-product}
+ \frac{d\mathbf v}{dt}
+ =\frac{dv^i}{dt}\mathbf e_i
+ +v^i\frac{d\mathbf e_i}{dt}.
+\end{equation}
+Differentiating $g(\mathbf e_i,\mathbf e_j)=\delta_{ij}$ shows that
+$\Omega_{ij}=g(\mathbf e_i,d\mathbf e_j/dt)$ is skew-symmetric.  In
+three-dimensional oriented Euclidean space there is a unique angular
+velocity vector $\boldsymbol\omega$ such that
+$d\mathbf e_i/dt=\boldsymbol\omega\times\mathbf e_i$.  Substitution in
+Eq.~\eqref{eq:gal-moving-product} gives the transport formula
+\begin{equation}\label{eq:gal-moving-transport}
+ \frac{d\mathbf v}{dt}
+ =\left(\frac{d\mathbf v}{dt}\right)_{\!\mathrm{axes}}
+ +\boldsymbol\omega\times\mathbf v,\qquad
+ \left(\frac{d\mathbf v}{dt}\right)_{\!\mathrm{axes}}
+ =\frac{dv^i}{dt}\mathbf e_i.
+\end{equation}
+The first term differentiates components in the moving axes; the second
+accounts for their rotation.  This is the geometric basis of the rotational
+derivative used in vehicle dynamics.  A spatial basis field and a
+reference-frame congruence are different choices: axes alone do not specify
+which worldlines represent rest, and the congruence alone does not choose
+axes.
+
+\subsection{Axes, components, and Zipfel's notation}
+
+At a given time let $\{\mathbf e_i\}$ and $\{\mathbf f_i\}$ be two
+orthonormal bases of $S$.  Define the matrix $R$ by
+\begin{equation}\label{eq:gal-basis-map}
+ \mathbf f_j=\mathbf e_i R^i{}_{j},\qquad R^i{}_{j}=g(\mathbf e_i,\mathbf f_j).
+\end{equation}
+For the same spatial vector $\mathbf v$,
+\begin{equation}\label{eq:gal-passive}
+ \mathbf v=\mathbf e_i v_E^i=\mathbf f_j v_F^j
+ =\mathbf e_i R^i{}_{j}v_F^j,
+ \qquad [\mathbf v]_E=R[\mathbf v]_F.
+\end{equation}
+Here the basis changes and the geometric vector does not: this is a passive
+component transformation.  Orthogonality gives
+$[\mathbf v]_F=R^{\mathsf T}[\mathbf v]_E$.  By contrast, an active rotation
+maps $\mathbf v$ to a generally different vector while a chosen basis is held
+fixed.  The same numerical matrix can represent either operation only after
+its domain, codomain, and basis conventions have been specified.
+
+Zipfel's brackets denote components in the indicated coordinate system, not
+a new physical vector (\S2.1.5, pp.~22--23).  His $\mathbf s_{AB}$ denotes
+position of point $A$ with respect to $B$, and $[s_{AB}]^E$ is its column
+of components in Earth coordinates.  For simultaneous event worldlines
+$\gamma_A$ and $\gamma_B$, our translation is
+\begin{equation}\label{eq:gal-zipfel-displacement}
+ \mathbf s_{AB}(t)=\gamma_A(t)-\gamma_B(t)\in S,
+ \qquad [s_{AB}]^E=[\mathbf s_{AB}]_E.
+\end{equation}
+Zipfel's $\mathbf v_B^I$ denotes velocity of point $B$ relative to inertial
+frame $I$, whereas $[v_B^I]^E$ expresses that \emph{same} relative velocity
+in Earth axes.  The reference frame determining velocity and the axes used
+to display its components are independent choices.  His $\boldsymbol\omega^{BI}$
+is angular velocity of frame $B$ relative to $I$; $[\omega^{BI}]^I$ is its
+component column in inertial axes.  These uppercase labels identify frames
+and axes, not tensor indices.  A transformation matrix must be defined by
+its direction before it can be identified with $R$ or $R^{\mathsf T}$ in
+Eq.~\eqref{eq:gal-passive}.
