@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# Start a llama.cpp server on the RTX 3060 WITHOUT the NVIDIA container toolkit, by passing the
+# GPU device files and the host driver libraries into the container by hand. Needs no sudo.
+# Written 2026-11-16 because nvidia-container-toolkit was purged from the canonical host; once
+# Ernest reinstalls it, use claw-work's own launch.sh instead and delete this workaround.
+#   ym-local-llm start <model path inside /models> [alias] [context]   e.g. empero-ai/.../X-Q5_K_M.gguf qwythos 65536
+#   ym-local-llm stop | status
+# Serves http://127.0.0.1:${YM_LLM_PORT:-8081}/v1 (loopback only). Container name: ym-local-llm.
+set -euo pipefail
+NAME=ym-local-llm; PORT="${YM_LLM_PORT:-8081}"
+CLAW="${YM_CLAW_LLAMA:-$(cd "$(dirname "$(readlink -f "$0")")/../../../../.." && pwd)/claw-work/Deployments/Scripts/llama-cpp-server}"
+case "${1:-}" in
+  stop) docker stop "$NAME" >/dev/null && echo stopped; exit 0 ;;
+  status) docker ps --filter "name=$NAME" --format '{{.Names}} {{.Status}}'; nvidia-smi --query-gpu=name,memory.used --format=csv,noheader; exit 0 ;;
+  start) ;;
+  *) sed -n 2,8p "$0" >&2; exit 2 ;;
+esac
+model="$2"; alias_name="${3:-local-model}"; context="${4:-32768}"
+# Image and model volumes come from claw-work's config.yml (not tracked there; machine-local).
+read -r IMAGE MODELS MODELS_NVME < <(python3 - "$CLAW/config.yml" <<'PY'
+import sys, yaml
+c = yaml.safe_load(open(sys.argv[1]))["docker"]
+v = {x["container"]: x["host"] for x in c["volumes"]}
+print(c["image"], v.get("/models", "/nonexistent"), v.get("/models-nvme", "/nonexistent"))
+PY
+)
+uuid="$(nvidia-smi --query-gpu=name,uuid --format=csv,noheader | grep 3060 | awk -F', ' '{print $2}')"
+[ -n "$uuid" ] || { echo "RTX 3060 not found" >&2; exit 1; }
+version="$(nvidia-smi --query-gpu=driver_version --format=csv,noheader | head -1)"
+lib=/usr/lib/x86_64-linux-gnu; mounts=()
+for pair in libcuda.so:libcuda.so.1 libnvidia-ml.so:libnvidia-ml.so.1 libnvidia-ptxjitcompiler.so:libnvidia-ptxjitcompiler.so.1 \
+            libnvidia-nvvm.so:libnvidia-nvvm.so.4 libnvidia-gpucomp.so:libnvidia-gpucomp.so."$version"; do
+  source_file="$lib/${pair%%:*}.$version"; [ -f "$source_file" ] && mounts+=(-v "$source_file:$lib/${pair##*:}:ro")
+done
+devices=(); for device in /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-uvm-tools /dev/nvidia0 /dev/nvidia1; do [ -e "$device" ] && devices+=(--device "$device"); done
+root=/models; [ -f "$MODELS/$model" ] || root=/models-nvme
+docker run -d --rm --name "$NAME" "${devices[@]}" "${mounts[@]}" -e CUDA_VISIBLE_DEVICES="$uuid" \
+  -p "127.0.0.1:$PORT:8080" -v "$MODELS":/models:ro -v "$MODELS_NVME":/models-nvme:ro "$IMAGE" \
+  -m "$root/$model" --alias "$alias_name" --host 0.0.0.0 --port 8080 -ngl 99 -c "$context" --parallel 1 \
+  --jinja --reasoning-budget "${YM_LLM_REASONING_BUDGET:-512}" -fa on -ctk q4_0 -ctv q4_0 >/dev/null
+for _ in $(seq 1 90); do curl -sf -m 2 "http://127.0.0.1:$PORT/health" >/dev/null && { echo "ready: http://127.0.0.1:$PORT/v1 alias $alias_name context $context"; exit 0; }; sleep 2; done
+echo "server did not become healthy; see: docker logs $NAME" >&2; exit 1

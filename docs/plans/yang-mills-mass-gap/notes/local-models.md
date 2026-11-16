@@ -35,38 +35,41 @@ Also on disk, not in GGUF form: Qwen3.5-2B, Nemotron-3-Nano-4B, Kearm/Meta8byo (
 
 Session 2 said "a 9B model with 32k context cannot do the reading packets". That overstated the context problem (the 65k and 262k profiles exist) and asserted the capability limit without testing it. The claim to test is narrower: *a 9B model cannot be trusted, unreviewed, on packets whose output is a mathematical digest.* Section 4 tests it.
 
-## 3a. BLOCKER found 2026-11-15: GPU containers cannot start on the desktop
+## 3a. GPU containers on the desktop: toolkit missing, workaround in place (2026-11-16)
 
-`./run-recommended.sh` fails with `docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]]`. Cause, from `/var/log/dpkg.log`: the package `nvidia-container-toolkit` was **purged on 2026-11-11 19:16**. `/etc/docker/daemon.json` still names the runtime `nvidia-container-runtime`, but that binary is gone; `apt-cache policy nvidia-container-toolkit` shows no candidate, so the NVIDIA apt repository is not configured either. Only `libnvidia-container1` and `libnvidia-container-tools` 1.17.8 remain. `nvidia-smi` on the host works.
+`./run-recommended.sh` fails with `could not select device driver "" with capabilities: [[gpu]]`. Cause, from `/var/log/dpkg.log`: `nvidia-container-toolkit` was **purged on 2026-11-11 19:16**; `apt-cache policy` shows no candidate, so the NVIDIA apt repository is not configured either. `daemon.json` still names `nvidia-container-runtime`, which no longer exists. The host driver is 580.178.04 and `nvidia-smi` works. Reinstalling needs sudo; the strategist has none and did not try.
 
-Consequence: **no local model server, and no other GPU container, can run on the desktop until Ernest reinstalls the toolkit** (needs sudo; the strategist did not attempt it, and the machine's apt/NVIDIA state is known to be fragile). The Mac deployment is native and is not affected.
+**Workaround, no sudo, no system change:** `bin/ym-local-llm` starts the same llama.cpp image with the GPU device files and five host driver libraries bind-mounted by hand, pinned to the RTX 3060 by UUID. Verified 2026-11-16: Qwythos 9B Q5 with 65,536 context loads in 16 s, 6.6 GB on the card, 47 tok/s generation, 870 tok/s prompt processing; the whole N1 paper (17k tokens) is read and answered in 22 s.
 
-Workaround used for the probe: the same model on CPU (slow, same answers in distribution).
+    bin/ym-local-llm start empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF/Qwythos-9B-Claude-Mythos-5-1M-Q5_K_M.gguf qwythos-9b-q5-k-m 65536
+    bin/ym-local-llm status
+    bin/ym-local-llm stop
 
-## 4. Probe results (Qwythos 9B Q5_K_M, the benchmark winner; one run per task, temperature 0.2, reasoning budget 512)
+It serves `http://127.0.0.1:8081/v1` (not 8080, so it never collides with claw-work's own launcher). Other GPU containers (Isaac, CuLLM images, …) are still broken until Ernest reinstalls the toolkit.
 
-Run on CPU because of the blocker in 3a (generation 5 tok/s, prompt processing 10 tok/s; on the GPU it would be about 40 tok/s). Script and tasks: `ledger/evidence/local-model-probe/probe.py`. Raw answers are outside git. **One sample per task: this is a smoke test, not a benchmark.**
+## 4. Probe results: Qwythos 9B Q5_K_M (claw-work's benchmark winner)
 
-| Task | What it tests | Result | Detail |
-|---|---|---|---|
-| a. Extract Eq. (1.6) and two inequalities from a 1,500-token excerpt of N2 | Verbatim extraction | **Correct** | Copied all three items exactly |
-| c. Quantifier order of `JointExistence` (3 lines of Lean) | Reading formal syntax | **2 of 3, format miss** | q after p, T depends on q: right. For C it answered "after g" instead of before/after p: true but not what was asked |
-| d. Referee a proof with a planted error (r² ≥ r on [0,1]) | Catching an easy error | **Correct** | Named step 2 and gave the right reason |
-| e. Referee the correct version | False alarms | **Correct** | "CORRECT, none" |
-| f. C for su(4); b_* for su(2) from given formulas | Two-step arithmetic | **1 of 2** | C = 32 right; b = "11/48π²", should be 11/(3π²) |
-| g. Write one Rust test, computing the expected value from a given formula | Applying a formula | **Wrong** | Denominator 6·8·10·12·14·16 instead of 6·8·10; test would fail against the real function |
+Four runs per task (one on CPU, three on the GPU), temperature 0.2, reasoning budget 512, tasks whose answers the strategist knows. Script: `ledger/evidence/local-model-probe/probe.py`. Raw answers are outside git. Small numbers: read the pattern, not the percentages.
 
-| h. Referee a telescoping product with one wrong exponent (P₁⁴ instead of P₁⁸) | Catching a bookkeeping error across four steps | **Missed** | Answered "CORRECT, none" |
-| i. Referee "convexity gives e^x − 1 ≤ x" | Catching a wrong inequality | **Correct** | Step 2, right reason |
-| j. Referee "tr(Z ↦ AZB) = tr(AB)" (error in step 3) | Catching a wrong identity | **Right verdict, wrong reason** | Blamed a correct step with an incorrect argument; missed the real error |
-| k. Referee a correct four-step Tonelli argument | False alarms | **Correct** | "CORRECT, none" |
-| b. Whole paper N1 (about 19k tokens) in context, two questions | Long-context retrieval | *pending: see end of note* | |
+| Task | What it tests | Right / 4 | What went wrong when it did |
+|---|---|---:|---|
+| a. Extract Eq. (1.6) and two inequalities from a 1,500-token excerpt of N2 | Verbatim extraction | 3 | Once the last line was cut short; never a wrong formula |
+| b. Whole paper N1 in context (17k tokens), two questions | Long-context retrieval | **4** | — ("n ≥ 3, every β"; "Z(π)/Z(0) ≥ 1 − C_β/log N") |
+| c. Quantifier order of `JointExistence` (3 lines of Lean) | Reading formal syntax | 3 | Once answered off-template |
+| d. Referee: planted error r² ≥ r on [0,1] | Easy one-line error | **4** | — |
+| i. Referee: "convexity gives e^x − 1 ≤ x" | Wrong inequality | **4** | — |
+| e, k. Referee two correct proofs | False alarms | **4, 4** | — |
+| j. Referee: "tr(Z ↦ AZB) = tr(AB)", error in step 3 | Wrong identity | **1** | Twice blamed a correct step; once said CORRECT |
+| h. Referee: telescoping product with P₁⁴ instead of P₁⁸ | Bookkeeping across four steps | **0** | Said CORRECT every time |
+| f. C for su(4), b_* for su(2) from given formulas | Two-step arithmetic | 1 | C = 4; b = 11/48π², 11/24π², 11/16π² |
+| g. One Rust test, expected value computed from a given formula | Applying a formula | 1 | Denominators 1,451,520; 5,760; 112,400,064,000 instead of 480 |
 
-**Reading of these twelve data points.**
+**Reading.**
 
 - It copies accurately from a short excerpt. It follows a fixed answer template most of the time, not always.
-- As a referee it caught two of four planted errors with the right reason, missed one that needs tracking exponents through several lines, and once condemned a correct step for a false reason. It raised no false alarm on two correct proofs.
-- It cannot be trusted to compute: both tasks that required applying a formula went wrong.
+- As a referee it reliably caught the two errors that are visible in a single line, never caught the one that needs tracking exponents through several lines, and was mostly wrong on the one that needs an identity it has to recall. It raised no false alarm on two correct proofs (8 of 8).
+- It cannot be trusted to compute: the two tasks that required applying a formula were right once in four tries each.
+- It reads a whole 20-page paper and answers a factual question about it correctly, in 22 seconds on the GPU. Context and speed are not the problem; judgment is.
 - So: **an INCORRECT verdict from this model is a cheap flag worth a stronger model's minute. A CORRECT verdict carries no weight at all.** Its own calculations are never evidence.
 
 ## 6. What to give which local model
@@ -109,4 +112,4 @@ None of this helps until two things are done by Ernest: (1) reinstall `nvidia-co
 
 ## Resume here
 
-State when this was written: probe rows a, c–k done; row b (whole-paper reading) running on the CPU container `ym-probe-llama` (port 8081). To finish: read `<probe out dir>/qwythos-9b-q5-k-m__b_extract_long.json`, fill row b, then `docker stop ym-probe-llama`. Open items for others: reinstall the GPU container toolkit (Ernest); run the admission test on the Mac with a 27B model; build YM-T14 with the "flagging referee" and "verbatim indexing" task types.
+Done: inventory, GPU workaround, probe of Qwythos Q5 (four runs per task), assignments, candidates. In progress when this line was written: the same probe on `qwen35-9b-distilled-q8` and `qwen38-9b-distill-q5` for comparison (section 4a, below, if present). If a container `ym-local-llm` or `ym-probe-llama-gpu` is running, stop it. Open for others: reinstall the GPU container toolkit (Ernest); admission test of a 27B model on the Mac; build YM-T14 (`referee`, `index` first).

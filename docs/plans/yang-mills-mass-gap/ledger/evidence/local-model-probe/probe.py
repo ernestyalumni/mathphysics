@@ -138,7 +138,7 @@ def main():
         request = urllib.request.Request(args.endpoint + "/chat/completions", data=body, headers={"Content-Type": "application/json"})
         started = time.time()
         try:
-            reply = json.load(urllib.request.urlopen(request, timeout=1800))
+            reply = json.load(urllib.request.urlopen(request, timeout=7200))
             message = reply["choices"][0]["message"]
             content = message.get("content") or ""
             usage = reply.get("usage", {})
