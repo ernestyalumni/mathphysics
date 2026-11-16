@@ -92,3 +92,5 @@ Eight agents in parallel, one per wave-1 row, T3 where marked. Put two **differe
 Codex report for Fable: [CODEX-HANDOFF-2026-11-15.md](CODEX-HANDOFF-2026-11-15.md). These additions preserve the existing review-first research priorities. Private machine values are outside the public repository.
 
 Daily source watch: [YM-W03](tasks/YM-W03.md), local:16. Collector active at/after09:00 Los Angeles; AI review queued, not automatic. See [watch/README.md](watch/README.md) and [review baseline](notes/YM-W03-baseline-2026-11-16.md). Initial source coverage8/10 with explicit403/429 failures.
+
+Wilson-measure study handoff: [YM-T15](tasks/YM-T15.md), local:17, ready for scoped implementation planning; no worker claimed. Start with [the reading guide](notes/wilson-measure-reading-guide.md) and [the bounded symbolic plan](notes/wilson-symbolics-plan.md). Implementation contract is draft, not a generated/mapped unit.

@@ -1,0 +1,32 @@
+I was curious, for this part: "63.2
+Links, plaquettes, Wilson measure
+163.4
+4
+Let ℓ ≥ 1 and Λℓ = (Z/ℓZ) , with unit vectors e1 , . . . , e4 . A link is a pair (y, µ), joining y to y + eµ . A configuration is a map
+U : Λℓ × {1, 2, 3, 4} → G. The plaquette variable and the Wilson energy are
+Uy;µν = U (y, µ) U (y + eµ , ν) U (y + eν , µ)−1 U (y, ν)−1 ,
+␑
+X
+X ␐
+1
+1−
+Eℓ (U ) =
+Re tr Uy;µν .
+m
+Asymptotic freedom and the bare coupling
+Choose a basis ea = −iT a of g with [T a , T b ] = if abc T c and f acd f bcd = T (A)δ ab , as in Srednicki, Eq. (70.9) for the adjoint
+representation [122], and the inner product ⟨ea , eb ⟩′ = δab . Then [ea , eb ] = −[T a , T b ] = −if abc T c = f abc ec , the matrix of ad(ea )
+is (ad ea )cb = f abc , and
+(911)
+K(ea , eb ) = (ad ea )cd (ad eb )dc = f adc f bcd = −f acd f bcd = −T (A)δ ab ,
+(912)
+A unitary matrix has | tr U | ≤ m, so each summand lies in [0, 2]; there are 6ℓ4 plaquettes, hence 0 ≤ Eℓ ≤ 12ℓ4 .
+A gauge transformation γ : Λℓ → G acts by U γ (y, µ) = γ(y)U (y, µ)γ(y + eµ )−1 . Substituting in Eq. (911),
+µ
+γ
+Uy;µν
+= γ(y)U (y, µ)γ(y + eµ )−1 · γ(y + eµ )U (y + eµ , ν)γ(y + eµ + eν )−1
+Divide by − 12 g 3 :
+· γ(y + eν + eµ )U (y + eν , µ)−1 γ(y + eν )−1 · γ(y + eν )U (y, ν)−1 γ(y)−1" are there any books we should be reading? You have what I've been reading from my mathphysics .tex files in that repo and /home/propdev/.openclaw/workspace/workspace2/Data/Public/books but what is 1 book to read for further background reading here? Something like Srednicki's style would be great. "Understanding the relevant Lean mathematics is worth the time. Initially, I would study:
+
+1. The Wilson measure, observables and coupling conventions." let's start there. also plan out so another AI agent could take it up if need be, to write our Rust/CUDA C++ tools for this, but coming at it with symbolic computation.

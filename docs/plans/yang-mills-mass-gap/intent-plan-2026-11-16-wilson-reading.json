@@ -1,0 +1,107 @@
+{
+  "acceptance": {
+    "reasons": [],
+    "sentence": "I was curious, for this part: \"63.2",
+    "story_recommended": false
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "conventions",
+        "gauge",
+        "links",
+        "links plaquettes",
+        "plaquettes",
+        "rust",
+        "unit"
+      ],
+      "output_path": "src/torus.rs",
+      "product_area": "Sites, links, plaquettes and cubes of a periodic torus with stable index conventions",
+      "prompt_path": "Rust/lattice-gauge/prompts/torus_rust.prompt",
+      "score": 23
+    },
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "gauge",
+        "rust",
+        "unit"
+      ],
+      "output_path": "src/z2_gauge.rs",
+      "product_area": "Exact density of states of Z2 lattice gauge theory on small tori, with twists",
+      "prompt_path": "Rust/lattice-gauge/prompts/z2_gauge_rust.prompt",
+      "score": 16
+    },
+    {
+      "architecture_path": "Rust/physics-gateway/architecture.json",
+      "matched_terms": [
+        "read",
+        "rust",
+        "tools"
+      ],
+      "output_path": "src/main.rs",
+      "product_area": "Loopback read-only file/static gateway and existing physics-tools bridge",
+      "prompt_path": "Rust/physics-gateway/prompts/gateway_rust.prompt",
+      "score": 14
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "wilson-measure-study-and-symbolic-tooling-handof-b9114617",
+  "original_request": "I was curious, for this part: \"63.2\nLinks, plaquettes, Wilson measure\n163.4\n4\nLet \u2113 \u2265 1 and \u039b\u2113 = (Z/\u2113Z) , with unit vectors e1 , . . . , e4 . A link is a pair (y, \u00b5), joining y to y + e\u00b5 . A configuration is a map\nU : \u039b\u2113 \u00d7 {1, 2, 3, 4} \u2192 G. The plaquette variable and the Wilson energy are\nUy;\u00b5\u03bd = U (y, \u00b5) U (y + e\u00b5 , \u03bd) U (y + e\u03bd , \u00b5)\u22121 U (y, \u03bd)\u22121 ,\n\u2411\nX\nX \u2410\n1\n1\u2212\nE\u2113 (U ) =\nRe tr Uy;\u00b5\u03bd .\nm\nAsymptotic freedom and the bare coupling\nChoose a basis ea = \u2212iT a of g with [T a , T b ] = if abc T c and f acd f bcd = T (A)\u03b4 ab , as in Srednicki, Eq. (70.9) for the adjoint\nrepresentation [122], and the inner product \u27e8ea , eb \u27e9\u2032 = \u03b4ab . Then [ea , eb ] = \u2212[T a , T b ] = \u2212if abc T c = f abc ec , the matrix of ad(ea )\nis (ad ea )cb = f abc , and\n(911)\nK(ea , eb ) = (ad ea )cd (ad eb )dc = f adc f bcd = \u2212f acd f bcd = \u2212T (A)\u03b4 ab ,\n(912)\nA unitary matrix has | tr U | \u2264 m, so each summand lies in [0, 2]; there are 6\u21134 plaquettes, hence 0 \u2264 E\u2113 \u2264 12\u21134 .\nA gauge transformation \u03b3 : \u039b\u2113 \u2192 G acts by U \u03b3 (y, \u00b5) = \u03b3(y)U (y, \u00b5)\u03b3(y + e\u00b5 )\u22121 . Substituting in Eq. (911),\n\u00b5\n\u03b3\nUy;\u00b5\u03bd\n= \u03b3(y)U (y, \u00b5)\u03b3(y + e\u00b5 )\u22121 \u00b7 \u03b3(y + e\u00b5 )U (y + e\u00b5 , \u03bd)\u03b3(y + e\u00b5 + e\u03bd )\u22121\nDivide by \u2212 12 g 3 :\n\u00b7 \u03b3(y + e\u03bd + e\u00b5 )U (y + e\u03bd , \u00b5)\u22121 \u03b3(y + e\u03bd )\u22121 \u00b7 \u03b3(y + e\u03bd )U (y, \u03bd)\u22121 \u03b3(y)\u22121\" are there any books we should be reading? You have what I've been reading from my mathphysics .tex files in that repo and /home/propdev/.openclaw/workspace/workspace2/Data/Public/books but what is 1 book to read for further background reading here? Something like Srednicki's style would be great. \"Understanding the relevant Lean mathematics is worth the time. Initially, I would study:\n\n1. The Wilson measure, observables and coupling conventions.\" let's start there. also plan out so another AI agent could take it up if need be, to write our Rust/CUDA C++ tools for this, but coming at it with symbolic computation.",
+  "original_request_sha256": "b9114617533ca7798daeac6895a57c7d80ab6b8f53f4bb27eb544eb437dbbea6",
+  "project": {
+    "adoption_scenario": "existing_pdd_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      "Python/rotations/.pddrc",
+      "Rust/lattice-gauge/.pddrc",
+      "Rust/physics-contracts/.pddrc",
+      "Rust/physics-gateway/.pddrc",
+      "Rust/physics-tools/.pddrc",
+      "Rust/qft-symbolics/.pddrc",
+      "TypeScript/physics-workbench/.pddrc",
+      "Python/rotations/architecture.json",
+      "Rust/lattice-gauge/architecture.json",
+      "Rust/physics-contracts/architecture.json",
+      "Rust/physics-gateway/architecture.json",
+      "Rust/physics-tools/architecture.json",
+      "Rust/qft-symbolics/architecture.json",
+      "TypeScript/physics-workbench/architecture.json",
+      "46 prompt file(s)"
+    ],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-O02-codex-b7f4",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-O02-codex-b7f4",
+    "scope_kind": "repository"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [],
+    "must_preserve": [],
+    "open_decisions": [
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "file",
+    "ref": "/tmp/ym-wilson-reading-request.txt"
+  },
+  "story": {
+    "action": "none",
+    "matched": [],
+    "reasons": [],
+    "recommended": false
+  },
+  "title": "Wilson measure study and symbolic tooling handoff",
+  "warnings": []
+}

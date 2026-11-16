@@ -8,6 +8,6 @@ Expressions that are traces of ordered products of group-valued symbols and expo
 ## Fixtures
 - O(3): reproduce N1 eqs. (2.10), (2.11), (2.12), including the cancellation of the mixed fourth-order coefficient for the pattern (a, b, a, b). Take the equations from `N1/build/sections/rotation.tex`.
 - d/dt tr(U exp(tX)) at 0 = tr(UX); second derivative = tr(UX²); for su(2) with |X| = 1 in the stated normalization this is −¼ tr U.
-- Negative control: swapping the order of two non-commuting factors must change the result.
+- Negative control: distinguish generic noncommuting order without violating trace cyclicity. For A=i sigma1, B=i sigma2, C=i sigma3, exact matrices give tr(ABC)=2 and tr(ACB)=-2. A two-factor trace is not a valid swapped-order negative control because tr(AB)=tr(BA). See notes/wilson-symbolics-plan.md; reversal of a path requires reversing order and inverting every factor.
 
 This is the unit that lets YM-G03 be done in our own tools instead of by hand.

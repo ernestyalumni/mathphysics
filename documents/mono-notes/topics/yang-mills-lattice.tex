@@ -93,11 +93,59 @@ real and Eqs.~\eqref{ym:inner}, \eqref{ym:casimir} give
 \end{proof}
 So $C_{\mathfrak{su}(2)}=8$ and $C_{\mathfrak{su}(3)}=18$.
 
-\subsection{Links, plaquettes, Wilson measure}
-Let $\ell\ge1$ and $\Lambda_\ell=(\mathbb Z/\ell\mathbb Z)^4$, with unit
-vectors $e_1,\dots,e_4$. A link is a pair $(y,\mu)$, joining $y$ to $y+e_\mu$.
-A configuration is a map $U\colon\Lambda_\ell\times\{1,2,3,4\}\to G$. The
-plaquette variable and the Wilson energy are
+\subsection{Links, plaquettes, Wilson measure}\label{ym:sec:wilson-measure}
+The finite-lattice formulation separates the space of configurations, the
+action, and the measure used to integrate observables. Background for this
+construction is given in \cite{GattringerLang2010}, Sections~2.2--2.4 and~3.1.
+
+\subsubsection{Sites, spacing and oriented links}
+Let $\ell\ge1$ and $\Lambda_\ell=(\mathbb Z/\ell\mathbb Z)^4$. A site $y$ is
+a four-tuple of integer coordinates, each taken modulo $\ell$. With lattice
+spacing $a$, its physical coordinate is $x=ay$, understood modulo the
+physical period $L=a\ell$ in each direction. Thus $\ell$ counts sites in one direction;
+$a$ carries length. The coordinate vectors $e_1,\dots,e_4$ specify lattice
+directions and are distinct from the Lie-algebra basis used later.
+
+A positive link $(y,\mu)$ connects $y$ to $y+e_\mu$. A configuration assigns
+one matrix in $G\subset U(m)$ to each positive link:
+\begin{equation}\label{ym:configuration-space}
+ U\colon\Lambda_\ell\times\{1,2,3,4\}\longrightarrow G,
+ \qquad \mathcal U_\ell=G^{4\ell^4}.
+\end{equation}
+Here $m$ is the matrix representation dimension, whereas $4\ell^4$ counts
+the independently assigned positive links. The reverse link is determined
+by the same matrix, with its origin shifted:
+\begin{equation}\label{ym:reverse-link}
+ U(y,-\mu):=U(y-e_\mu,\mu)^{-1}.
+\end{equation}
+In particular the reverse of the link starting at $y$ in direction $\mu$
+starts at $y+e_\mu$, and its matrix is
+$U(y+e_\mu,-\mu)=U(y,\mu)^{-1}$. There is no second independent matrix for
+this reverse orientation.
+
+Our transport convention is fixed by test vectors $\psi(y)\in\mathbb C^m$:
+$U(y,\mu)\psi(y+e_\mu)$ is compared with $\psi(y)$. These test vectors do
+not add a dynamical matter field to the configuration or action.
+If $\psi^\gamma(y)=\gamma(y)\psi(y)$, covariance requires
+\begin{align}
+ U^\gamma(y,\mu)&=\gamma(y)U(y,\mu)\gamma(y+e_\mu)^{-1},
+ \label{ym:link-gauge}\\
+ U^\gamma(y,\mu)\psi^\gamma(y+e_\mu)
+ &=\gamma(y)U(y,\mu)\gamma(y+e_\mu)^{-1}
+   \gamma(y+e_\mu)\psi(y+e_\mu)\notag\\
+ &=\gamma(y)U(y,\mu)\psi(y+e_\mu).
+ \label{ym:link-transport}
+\end{align}
+This convention determines the order of multiplication around a path.
+
+\subsubsection{Plaquettes and gauge transformations}
+For $\mu<\nu$, traverse the four sides of an elementary square in the order
+\begin{equation}\label{ym:plaquette-path}
+ y\ \longrightarrow\ y+e_\mu\ \longrightarrow\ y+e_\mu+e_\nu
+ \ \longrightarrow\ y+e_\nu\ \longrightarrow\ y.
+\end{equation}
+The matrices for the third and fourth steps follow from
+Eq.~\eqref{ym:reverse-link}. The plaquette variable and Wilson energy are
 \begin{align}
  U_{y;\mu\nu}&=U(y,\mu)\,U(y+e_\mu,\nu)\,U(y+e_\nu,\mu)^{-1}\,U(y,\nu)^{-1},
  \label{ym:plaquette}\\
@@ -105,32 +153,109 @@ plaquette variable and the Wilson energy are
  \Big(1-\frac1m\operatorname{Re}\operatorname{tr}U_{y;\mu\nu}\Big).
  \label{ym:wilson-energy}
 \end{align}
-A unitary matrix has $|\operatorname{tr}U|\le m$, so each summand lies in
-$[0,2]$; there are $6\ell^4$ plaquettes, hence $0\le E_\ell\le12\ell^4$.
+There are $\binom42=6$ choices of an unordered direction pair, hence
+$6\ell^4$ plaquettes. For a unitary matrix $V$, its eigenvalues have unit
+modulus, so $|\operatorname{tr}V|\le m$. Each energy term lies in $[0,2]$,
+giving $0\le E_\ell(U)\le12\ell^4$.
 
-A gauge transformation $\gamma\colon\Lambda_\ell\to G$ acts by
-$U^\gamma(y,\mu)=\gamma(y)U(y,\mu)\gamma(y+e_\mu)^{-1}$. Substituting in
-Eq.~\eqref{ym:plaquette},
+Apply Eq.~\eqref{ym:link-gauge} to the four factors in
+Eq.~\eqref{ym:plaquette}. The intermediate gauge matrices cancel:
 \begin{align}
  U^\gamma_{y;\mu\nu}
  &=\gamma(y)U(y,\mu)\gamma(y+e_\mu)^{-1}\cdot
    \gamma(y+e_\mu)U(y+e_\mu,\nu)\gamma(y+e_\mu+e_\nu)^{-1}\notag\\
  &\quad\cdot\gamma(y+e_\nu+e_\mu)U(y+e_\nu,\mu)^{-1}\gamma(y+e_\nu)^{-1}\cdot
    \gamma(y+e_\nu)U(y,\nu)^{-1}\gamma(y)^{-1}\notag\\
- &=\gamma(y)\,U_{y;\mu\nu}\,\gamma(y)^{-1},\label{ym:plaquette-gauge}
+ &=\gamma(y)\,U_{y;\mu\nu}\,\gamma(y)^{-1}.
+ \label{ym:plaquette-gauge}
 \end{align}
-so $\operatorname{tr}U^\gamma_{y;\mu\nu}=\operatorname{tr}U_{y;\mu\nu}$ and
-$E_\ell(U^\gamma)=E_\ell(U)$.
+Thus the plaquette matrix is gauge covariant. Cyclicity of the trace gives
+\begin{equation}\label{ym:plaquette-trace-invariant}
+ \operatorname{tr}U^\gamma_{y;\mu\nu}
+ =\operatorname{tr}\big(\gamma(y)U_{y;\mu\nu}\gamma(y)^{-1}\big)
+ =\operatorname{tr}\big(U_{y;\mu\nu}\gamma(y)^{-1}\gamma(y)\big)
+ =\operatorname{tr}U_{y;\mu\nu},
+ \qquad E_\ell(U^\gamma)=E_\ell(U).
+\end{equation}
+The trace is invariant, although the matrix need not be unchanged.
+
+\subsubsection{Haar measure, normalization and observables}
+Let $h$ be normalized Haar measure on the compact group $G$. It has
+$h(G)=1$ and is invariant under left and right multiplication. For an
+integrable $f$ and fixed $g_L,g_R\in G$,
+\begin{equation}\label{ym:haar-invariance}
+ \int_G f(g_LVg_R^{-1})\,h(dV)=\int_G f(V)\,h(dV).
+\end{equation}
+Assign this measure independently to the positive links before inserting
+the action, and write
+\begin{equation}\label{ym:product-haar}
+ \mathcal DU:=\prod_{(y,\mu)}h\big(dU(y,\mu)\big),
+ \qquad \int_{\mathcal U_\ell}\mathcal DU=1.
+\end{equation}
 
 \begin{definition}\label{ym:def:wilson-measure}
-For $\beta\in\mathbb R$ and $h$ the normalized Haar measure on $G$, the Wilson
-measure on $G^{\Lambda_\ell\times\{1,\dots,4\}}$ is
-\begin{equation}\label{ym:wilson-measure}
- \mu_{\ell,\beta}(dU)=\frac{1}{Z_{\ell,\beta}}e^{-\beta E_\ell(U)}
- \prod_{(y,\mu)}h\big(dU(y,\mu)\big),\qquad
- Z_{\ell,\beta}=\int e^{-\beta E_\ell(U)}\prod_{(y,\mu)}h\big(dU(y,\mu)\big).
-\end{equation}
+For $\beta\in\mathbb R$, the Wilson measure is
+\begin{align}
+ \mu_{\ell,\beta}(dU)&=\frac{1}{Z_{\ell,\beta}}
+             e^{-\beta E_\ell(U)}\,\mathcal DU,
+ \label{ym:wilson-measure}\\
+ Z_{\ell,\beta}&=\int_{\mathcal U_\ell}e^{-\beta E_\ell(U)}\,\mathcal DU.
+ \label{ym:wilson-partition}
+\end{align}
 \end{definition}
+For $\beta\ge0$, the energy bound gives
+\begin{equation}\label{ym:finite-partition-bounds}
+ 0<e^{-12\beta\ell^4}\le e^{-\beta E_\ell(U)}\le1,
+ \qquad e^{-12\beta\ell^4}\le Z_{\ell,\beta}\le1.
+\end{equation}
+Consequently $Z$ is a finite positive normalization. At $\beta=0$,
+$Z_{\ell,0}=1$ and the links have independent Haar laws. For nonzero
+$\beta$, the plaquette factors generally couple links; the product measure
+$\mathcal DU$ is the integration measure, not a claim of independence in
+the interacting law.
+
+For a bounded observable $\mathcal O\colon\mathcal U_\ell\to\mathbb C$,
+\begin{equation}\label{ym:observable-expectation}
+ \langle\mathcal O\rangle_{\ell,\beta}
+ =\frac{\int\mathcal O(U)e^{-\beta E_\ell(U)}\,\mathcal DU}
+        {\int e^{-\beta E_\ell(U)}\,\mathcal DU},
+ \qquad\langle1\rangle_{\ell,\beta}=1.
+\end{equation}
+For a fixed gauge transformation, define $\Gamma_\gamma(U)=U^\gamma$.
+Each link is multiplied by fixed group elements on its two ends. Equation~\eqref{ym:haar-invariance} gives
+$\mathcal D(U^\gamma)=\mathcal DU$, and
+Eq.~\eqref{ym:plaquette-trace-invariant} gives
+$E_\ell(U^\gamma)=E_\ell(U)$. Changing variables therefore yields
+\begin{equation}\label{ym:measure-gauge-invariance}
+ \int\mathcal O(U^\gamma)e^{-\beta E_\ell(U^\gamma)}\,\mathcal DU
+ =\int\mathcal O(V)e^{-\beta E_\ell(V)}\,\mathcal DV,
+ \qquad \langle\mathcal O\circ\Gamma_\gamma\rangle_{\ell,\beta}
+ =\langle\mathcal O\rangle_{\ell,\beta}.
+\end{equation}
+No gauge fixing is required to define this finite product of compact-group
+integrals.
+
+If $C$ is a closed lattice path based at $y_0$, the ordered product $U(C)$
+transforms as $\gamma(y_0)U(C)\gamma(y_0)^{-1}$, by the same cancellation
+as Eq.~\eqref{ym:plaquette-gauge}. The real normalized Wilson loop
+\begin{equation}\label{ym:wilson-loop-observable}
+ W_C(U)=\frac1m\operatorname{Re}\operatorname{tr}U(C)
+\end{equation}
+is therefore a gauge-invariant observable. Its expectation is obtained by
+substituting $\mathcal O=W_C$ in Eq.~\eqref{ym:observable-expectation}.
+
+As an elementary illustration of the integration measure, for $G=U(1)$
+write $U(y,\mu)=e^{i\theta_{y,\mu}}$. Then
+\begin{align}
+ \theta_{y;\mu\nu}
+ &=\theta_{y,\mu}+\theta_{y+e_\mu,\nu}
+       -\theta_{y+e_\nu,\mu}-\theta_{y,\nu},\\
+ 1-\operatorname{Re}U_{y;\mu\nu}&=1-\cos\theta_{y;\mu\nu},
+ \qquad h(dU)=\frac{d\theta}{2\pi}\quad(0\le\theta<2\pi).
+\end{align}
+This abelian example explains the measure but is outside the nonabelian
+simple-group target of the Millennium problem. For nonabelian groups the
+ordered matrix products must be retained.
 
 \subsection{Classical limit of the Wilson energy}
 Let $A_\mu\colon\mathbb R^4\to\mathfrak g$ be smooth, $a>0$ the lattice
@@ -176,6 +301,24 @@ action reads $\frac{1}{2g_0'^2}\int\sum\|F\|'^2$ with $g_0'^2=c\,g_0^2$, so
 \end{equation}
 does not depend on the normalization of the inner product.
 
+For $G=SU(m)$, choose Hermitian generators with
+$\operatorname{tr}(T^aT^b)=\tfrac12\delta^{ab}$ and put $e_a=-iT^a$.
+The inner product of Eq.~\eqref{ym:inner} gives
+\begin{equation}\label{ym:fundamental-normalization}
+ \langle e_a,e_b\rangle_{\mathfrak g}
+ =-\frac1m\operatorname{Re}\operatorname{tr}((-iT^a)(-iT^b))
+ =\frac{\delta^{ab}}{2m}.
+\end{equation}
+Thus the component inner product $\langle e_a,e_b\rangle'=\delta^{ab}$
+is obtained with $c=2m$. Denoting its coupling by $g=g_0'$, the same action
+has
+\begin{equation}\label{ym:coupling-dictionary}
+ g^2=2m\,g_0^2,\qquad \beta=\frac{1}{g_0^2}=\frac{2m}{g^2}.
+\end{equation}
+In particular $\beta=4/g^2$ for $SU(2)$ and $\beta=6/g^2$ for $SU(3)$.
+Coupling conventions must therefore be compared through the action and
+trace normalization, rather than the name of the coupling alone.
+
 \subsection{Asymptotic freedom and the bare coupling}
 Choose a basis $e_a=-iT^a$ of $\mathfrak g$ with $[T^a,T^b]=if^{abc}T^c$ and
 $f^{acd}f^{bcd}=T(A)\delta^{ab}$, as in Srednicki, Eq.~(70.9) for the adjoint
@@ -204,8 +347,16 @@ Divide by $-\frac12g^3$:
  \frac{1}{g^2(\mu)}=\frac{1}{g^2(\mu_0)}+2b_0'\log\frac{\mu}{\mu_0}
  +\cdots .
 \end{equation}
-By Eq.~\eqref{ym:invariant-combination}, $C'/g_0'^2=C_{\mathfrak g}/g_0^2$,
-so in the normalization \eqref{ym:inner}, with $\mu=1/a$ and $\beta=1/g_0^2$,
+The rescaling is $g^2=c\,g_0^2$ and $C'=C_{\mathfrak g}/c$.
+Since $c$ is independent of $\mu$, Eq.~\eqref{ym:running-inverse} gives
+\begin{equation}\label{ym:running-normalization}
+ \mu\frac{d\beta}{d\mu}
+ =c\,\mu\frac{d}{d\mu}\frac1{g^2}
+ =2c\,b_0'+O(g^2)
+ =\frac{11cC'}{24\pi^2}+O(g^2)
+ =\frac{11C_{\mathfrak g}}{24\pi^2}+O(g^2).
+\end{equation}
+Thus in the normalization \eqref{ym:inner}, with $\mu=1/a$ and $\beta=1/g_0^2$,
 \begin{equation}\label{ym:slope}
  a\frac{d\beta}{da}=-b_*+\cdots,\qquad
  b_*=2b_0=\frac{11\,C_{\mathfrak g}}{24\pi^2},\qquad
