@@ -1,0 +1,34 @@
+% DRAFT bounded mathematical contract for YM-T15.
+% Not yet registered in a crate architecture; no code generated from this file.
+% The implementing agent resolves the owning qft-symbolics unit and maps it.
+
+Implement a reusable bounded symbolic group-word/trace capability using caller
+supplied typed generators, inverse orientations, group/representation assumptions,
+positive matrix dimension and an explicit complex-trace vs normalized-real-trace kind.
+Reuse existing exact scalar, ordered-algebra and resource-budget infrastructure.
+
+<contract_rules>
+R1(MUST): Preserve factor order; reduce only justified adjacent inverse pairs.
+The inverse of a product reverses order and inverts each factor.
+R2(MUST): Support trace cyclicity and justified cyclic reductions. MUST NOT
+sort generic generators or equate arbitrary permutations. Equality is under
+declared rules; differing forms alone do not prove matrix-trace inequality.
+R3(MUST): Keep complex trace and normalized real trace distinct. Tr(I)=m;
+normalized ReTr(I)=1. For declared unitary words, Tr(W^-1)=conjugate(Tr(W));
+only real trace identifies those without conjugation. Real trace is real-linear,
+not complex-linear. First bounded scalar domain may be exact real rationals.
+R4(MUST): Retain unitarity/group/representation assumptions and explicit errors
+for invalid dimensions/domains or exhausted budgets. No silent numeric fallback.
+R5(MUST NOT): Hardcode a textbook equation, source filename, known expected
+answer or lattice size in production algebra. Geometry is a consumer.
+R6(MUST): A caller-supplied four-link gauge-transformation fixture reduces to
+basepoint conjugation; trace invariance applies to a closed path. No automatic
+open-path gauge-invariance assertion.
+R7(MUST NOT): Implement Haar integration, Monte Carlo, CUDA or proof claims in
+this unit. Source locators are provenance, not algorithmic input.
+</contract_rules>
+
+Independent fixtures:3-Pauli traces2 vs-2; SU3 diag(i,i,-1) complex trace and
+inverse; two-factor cyclicity; normalized/raw identity traces; fresh names;
+changed assumptions; invalid dimensions; resource limits; input nonmutation.
+Use explicit matrix arithmetic independent of the production rewrite engine.
