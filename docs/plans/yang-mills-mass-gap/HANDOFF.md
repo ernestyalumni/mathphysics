@@ -4,12 +4,12 @@ Last updated: 2026-11-16, session 3 (strategist: Fable 5.2). Branch `feat/yang-m
 
 ## Session 3 (2026-11-15/16): local models — read `notes/local-models.md`
 
-- **Blocker for all local GPU work on the desktop:** `nvidia-container-toolkit` was purged on 2026-11-11, so no GPU container starts (the llama.cpp server included). Ernest must reinstall it. Not attempted by the strategist.
-- A known-answer probe of Qwythos 9B Q5 (on CPU) is recorded in the note, with the script in `ledger/evidence/local-model-probe/`. Outcome: usable for verbatim extraction and as a *flagging* referee; not for calculation, digests or closing reviews.
-- Context was never the limit: `qwythos-9b-q5` has 65k on the desktop; the Mac (M4 Pro, 64 GB) profiles have 262k.
-- Best next step for more local capability: a 27B-class model on the Mac (Qwen3.8-27B per web search, unverified), admitted only after running the probe on it.
-- New rule in `06` §12: admission test before any local model gets a packet. YM-T14 extended with `referee` and `index` task types.
-- If a container named `ym-probe-llama` is still running, it is the strategist's CPU probe server: `docker stop ym-probe-llama`.
+- **GPU containers on the desktop:** `nvidia-container-toolkit` was purged on 2026-11-11, so claw-work's launcher and every other GPU container fail. Ernest must reinstall it (sudo). **Workaround that works today, no sudo:** `bin/ym-local-llm start <model> <alias> <context>` passes the RTX 3060 into the llama.cpp container by hand and serves `http://127.0.0.1:8081/v1`.
+- **Probe with known answers** of the three 9B profiles (`ledger/evidence/local-model-probe/probe.py`; results in the note, sections 4 and 4a). All three read a whole 20-page paper and answer factual questions correctly in about 20 seconds, catch one-line errors, and never flagged a correct proof. All miscalculate. Only Qwen3.8 distill Q5 sometimes caught a multi-step bookkeeping error.
+- **Assignments:** local 9B models as *flagging* referees (union of the three; only INCORRECT flags count) and for verbatim indexing; Qwythos for tool use; nothing with calculation; no digests; no closing reviews. Section 6 of the note.
+- **More capability:** a 27B-class model on the Mac (M4 Pro, 64 GB); Qwen3.8-27B per web search, unverified. Run the probe on it first.
+- Protocol `06` §12: admission test before any local model gets a packet. YM-T14 extended with `referee` and `index` task types; that packet is now the way to put the local models to work.
+- No container was left running.
 
 ## Ernest's decisions of 2026-11-15 (all open questions from session 1 are closed)
 

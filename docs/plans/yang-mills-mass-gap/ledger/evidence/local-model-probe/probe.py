@@ -70,7 +70,7 @@ def build_tasks(args):
             "1. The definition of the quantity Delta_beta(n) in equation (1.6).\n"
             "2. The recurrence inequality for Delta_beta(2n) that Section 2 proves.\n"
             "3. The threshold eta_* and the lower bound on m_lat(beta) that follows.",
-            keys=[r"4\s*log", r"64", r"2\s*\^?\s*\{?\s*[-−]\s*10|1/1024", r"log\s*2"],
+            keys=[r"4\s*\\?log", r"64", r"2\s*(\^|\*\*)?\s*[\{\(]?\s*[-−⁻]\s*(10|¹⁰)|1/1024", r"log\s*2\s*\)?\s*\}?\s*(/|\{)\s*n|log 2\}\{n\}"],
             expected="Delta = 4 log Z(n,n) - log Z(2n,2n); Delta(2n) <= 64 Delta(n)^2; eta_* = 2^-10 gives m_lat >= log 2 / n"),
         "b_extract_long": dict(
             prompt="Below is the full text of a mathematics paper (plain text extracted from a PDF).\n\n" + n1

@@ -64,6 +64,23 @@ Four runs per task (one on CPU, three on the GPU), temperature 0.2, reasoning bu
 | f. C for su(4), b_* for su(2) from given formulas | Two-step arithmetic | 1 | C = 4; b = 11/48π², 11/24π², 11/16π² |
 | g. One Rust test, expected value computed from a given formula | Applying a formula | 1 | Denominators 1,451,520; 5,760; 112,400,064,000 instead of 480 |
 
+### 4a. The three 9B profiles side by side (three GPU runs each, graded by hand where the keyword grader was fooled by formatting)
+
+| Task | Qwythos Q5 | Qwen3.5 distilled Q8 | Qwen3.8 distill Q5 |
+|---|---:|---:|---:|
+| a. Short extraction | 2 (one truncated) | 2 (one wrong: dropped "log 2 /") | 2 (one ran out of output tokens) |
+| b. Whole-paper retrieval | 3 | 3 | 3 |
+| c. Lean quantifier order | 3 | 3 | 3 |
+| d, i. Easy planted errors | 3, 3 | 3, 3 | 3, 3 |
+| e, k. Correct proofs passed (no false alarm) | 3, 3 | 3, 3 | 3, 3 |
+| j. Wrong identity: flagged / right step named | 2 / 1 | 2 / 2 | 3 / 1 |
+| h. Bookkeeping error across four steps | 0 | 0 | **2** |
+| f. Two-step arithmetic | 1 | **3** | 2 |
+| g. Formula → expected value | 1 | 1 | 2 |
+| Generation speed on the RTX 3060 | 47 tok/s | about 31 | about 41 |
+
+With three runs per cell the differences are suggestive, not established. What they suggest: **Qwen3.8 distill Q5 is the best referee of the three** (the only one that ever caught the bookkeeping error, and it flagged the identity error every time), Qwen3.5 Q8 is the steadiest at arithmetic, and Qwythos, which wins claw-work's coding-and-tools benchmark, is the weakest of the three at mathematics. None raised a false alarm on a correct proof (18 of 18). None is reliable at computing.
+
 **Reading.**
 
 - It copies accurately from a short excerpt. It follows a fixed answer template most of the time, not always.
@@ -76,18 +93,19 @@ Four runs per task (one on CPU, three on the GPU), temperature 0.2, reasoning bu
 
 | Use | Model and where | Why | Guard |
 |---|---|---|---|
-| **Flagging referee.** Feed each numbered step group of our proofs and of every digest, several seeds each; collect INCORRECT flags for a T2+ reviewer | `qwythos-9b-q5` on the desktop GPU (after the fix in 3a) | Probe rows d, e, i, k; costs nothing; runs unattended | Only flags are used. Silence means nothing (row h). |
+| **Flagging referee.** Feed each numbered step group of our proofs and of every digest, several runs each; collect INCORRECT flags for a T2+ reviewer | All three 9B models in turn on the desktop GPU (`bin/ym-local-llm`), union of flags | Probe rows d, e, i, k, and 4a; costs nothing; runs unattended | Only flags are used. Silence means nothing (row h). |
 | **Verbatim indexing.** For one excerpt at a time: list every numbered equation, definition and theorem statement exactly as printed, with its number | same; or any 9B at 262k context on the Mac for whole papers | Probe row a | Accept a line only if it occurs verbatim in the source (string match by script) |
 | **Lean signature cards** (packet YM-T14): kind, identifiers, one-sentence reading of one declaration | same | Row c shows it reads quantifiers but drifts from the format | Mechanical checks in YM-T14; label `unreviewed` |
 | **Rust tests with the expected value supplied by the packet** | same, through Pi or Hermes | Row g: it cannot derive the value | `cargo test` decides; never let it choose the oracle |
 | Reruns, formatting, receipts, watch tasks | any 9B | No judgment needed | — |
 | **Not for any local 9B:** digests of papers (YM-R01–R05), derivations, statement red-teaming (YM-A03), anything in workstream C, any review whose "accept" would close a task | — | Rows f, g, h, j | — |
 
-Which of the existing profiles:
+Which of the existing profiles, after section 4a:
 
-1. **`qwythos-9b-q5`** is the one to use on the desktop: best in claw-work's own benchmark (6/6), 65k context, 6.2 GB, about 41 tok/s on the GPU.
-2. `qwen35-9b-distilled-q8` or `qwen38-9b-distill-q5` as a **second voice** for the flagging referee (a flag raised by two different fine-tunes is worth more). They are fine-tunes of the same 9B base family, so this is weak independence. `gemma-4-e4b-it` is a different family and would be better for that, but it is smaller and unmeasured here.
-3. Not worth using here: Q8 of a model already run at Q5 (same parameters; claw-work measured no gain), the 4B Nemotron (failed claw-work's tool checks), the 2B Qwen.
+1. **Flagging referee: run all three and take the union of their INCORRECT flags.** Each check takes 10–25 seconds on the GPU, the models load in about 16 seconds, and they miss different things. If only one runs, use `qwen38-9b-distill-q5`.
+2. **Whole-paper indexing and anything through Pi or Hermes with tools: `qwythos-9b-q5`** (65k context, best tool use in claw-work's benchmark). All three answered the whole-paper question correctly; the other two profiles are set to 32k and would need a larger `ctx_size` for longer sources.
+3. **Anything with numbers in it: none of them.** Qwen3.5 Q8 did best, and still got one of three short extractions wrong.
+4. Not worth using here: the 4B Nemotron (failed claw-work's tool checks), the 2B Qwen. `gemma-4-e4b-it` has profiles but no weights were found on either model volume.
 
 What would actually raise the ceiling: a **27B-class model on the Mac** (section 5). Before giving any new model a packet, run the admission test:
 
@@ -112,4 +130,4 @@ None of this helps until two things are done by Ernest: (1) reinstall `nvidia-co
 
 ## Resume here
 
-Done: inventory, GPU workaround, probe of Qwythos Q5 (four runs per task), assignments, candidates. In progress when this line was written: the same probe on `qwen35-9b-distilled-q8` and `qwen38-9b-distill-q5` for comparison (section 4a, below, if present). If a container `ym-local-llm` or `ym-probe-llama-gpu` is running, stop it. Open for others: reinstall the GPU container toolkit (Ernest); admission test of a 27B model on the Mac; build YM-T14 (`referee`, `index` first).
+Complete as of 2026-11-16: inventory, GPU workaround (`bin/ym-local-llm`), probes of all three 9B profiles, assignments, candidates. No container was left running. Open for others: reinstall the GPU container toolkit (Ernest); admission test of a 27B model on the Mac; build YM-T14 (`referee` and `index` first), then run the referee over the proofs in the mono-notes topic.

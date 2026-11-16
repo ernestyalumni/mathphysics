@@ -186,13 +186,13 @@ State on 2026-11-15: the `gh` token on the canonical host is invalid, so no agen
 | T1 | Haiku-class; Qwythos or Qwen 9B **with tools** through Pi or Hermes | Pi, Hermes Agent against the local llama.cpp server | `pi -p --model <local alias>` | Builds, reruns, filling fixed templates, one Rust test at a time |
 | T0 | Qwen3.5 9B **without tools** | `bin/ym-micro` (plain HTTP to the local server; **planned**, packet YM-T14) | `ym-micro run …` | Micro-tasks: one snippet in, one template out |
 
-Facts about the local models that shape the packets (from `claw-work/Deployments/Scripts/llama-cpp-server`): context 32,768 tokens for the Qwen3.5 profile, one server slot (requests are serial), about 40 tokens per second on the RTX 3060. Therefore:
+Facts about the local models that shape the packets (measured 2026-11-16, `notes/local-models.md`): context 32,768 to 65,536 tokens on the desktop and 262,144 on the Mac, one server slot (requests are serial), 31–47 tokens per second and about 870 tokens per second of prompt processing on the RTX 3060. Context and speed are not the limit; judgment is. Therefore:
 
-- A T1 or T0 task must fit in about 6,000 tokens of input and 1,500 of output. The packet or the runner supplies the material; the model does not browse the repository.
+- A T0 task gets its material from the packet or the runner; the model does not browse the repository. A whole paper may be supplied when the task is retrieval or indexing. Keep outputs under 1,500 tokens.
 - A T1 or T0 task must have an acceptance check that a script can run (a test passes, a file has the required sections, quoted identifiers occur in the quoted snippet).
 - Local-model output is labelled `unreviewed` and cannot support a claim in `ledger/claims.md` until a T2+ reviewer accepts it.
 - One local server means local workers run one at a time. Parallelism comes from the cloud harnesses and from other machines.
 
-**Admission test for local models (added 2026-11-16).** Before a local model gets any packet, run `ledger/evidence/local-model-probe/probe.py` against it and record the result in `notes/local-models.md`. Measured so far: Qwythos 9B Q5 copies short excerpts accurately and catches simple planted errors, but miscalculates and misses bookkeeping errors. Hence the rule: from a T0/T1 model, an INCORRECT flag is worth checking, a CORRECT verdict is worth nothing, and its calculations are never evidence.
+**Admission test for local models (added 2026-11-16).** Before a local model gets any packet, run `ledger/evidence/local-model-probe/probe.py` against it and record the result in `notes/local-models.md`. Measured so far (three 9B profiles): all copy short excerpts and answer factual questions about a whole 20-page paper, catch errors visible in one line, and raise no false alarms on correct proofs; all miscalculate; only Qwen3.8 distill Q5 sometimes caught a bookkeeping error. Hence the rule: from a T0/T1 model, an INCORRECT flag is worth checking, a CORRECT verdict is worth nothing, and its calculations are never evidence.
 
 Launch recipes: `prompts/launch.md`. Local model inventory, measurements and assignments: `notes/local-models.md`.
