@@ -45,7 +45,9 @@ Session 2 said "a 9B model with 32k context cannot do the reading packets". That
     bin/ym-local-llm status
     bin/ym-local-llm stop
 
-It serves `http://127.0.0.1:8081/v1` (not 8080, so it never collides with claw-work's own launcher). Other GPU containers (Isaac, CuLLM images, …) are still broken until Ernest reinstalls the toolkit.
+It serves `http://127.0.0.1:8081/v1` (not 8080, so it never collides with claw-work's own launcher).
+
+**Root cause and fix status (2026-11-16).** `/var/log/apt/history.log` shows the command `apt purge nvidia-* -y` at 2026-11-11 19:16, during a driver change; the wildcard also matched `nvidia-container-toolkit`. The driver was then put back as Ubuntu's `nvidia-driver-580` 580.178.04, which is what runs now. Ernest is reinstalling the toolkit from NVIDIA's repository. An unprivileged simulation of the install guide's command (private apt state, nothing changed) reports: 2 new packages (`nvidia-container-toolkit`, `-base`), 2 upgraded (`libnvidia-container1`, `-tools`, 1.17.8 → 1.20.1), 0 removed, no driver, kernel or DKMS package touched; the four packages depend only on each other and on libc6, libcap2, libseccomp2. After it is installed and Docker is restarted, use claw-work's `launch.sh` again and retire `bin/ym-local-llm`. Other GPU containers (Isaac, CuLLM images, …) are still broken until Ernest reinstalls the toolkit.
 
 ## 4. Probe results: Qwythos 9B Q5_K_M (claw-work's benchmark winner)
 
