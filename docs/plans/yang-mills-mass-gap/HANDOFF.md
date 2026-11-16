@@ -1,6 +1,6 @@
 # HANDOFF — Yang–Mills program
 
-Last updated: 2026-11-16, session 3 (strategist: Fable 5.2). Branch `feat/yang-mills-mass-gap-program`, not pushed, not merged. Nothing is running in the background. No agents have been launched.
+Last updated: 2026-11-16 UTC, Codex follow-up. Shared checkout was master at 16e44a3; follow-up sources are on ym/YM-O02-codex-b7f4. One read-only research/review subagent ran at Ernest's request. The Mac daily source collector is scheduled; it does not launch a model.
 
 ## Session 3 (2026-11-15/16): local models — read `notes/local-models.md`
 
@@ -39,11 +39,11 @@ Last updated: 2026-11-16, session 3 (strategist: Fable 5.2). Branch `feat/yang-m
 
 **Not done**
 
-- No packet has been executed by another agent; nothing has been reviewed by a second model. Everything from this session is labelled unreviewed.
+- The session-2 mathematical arguments and Rust tooling still await the reviews listed below. The later O02 launcher/transport and W03 collector have separate independent reviews recorded in notes/YM-O02-W03-independent-review.md.
 - YM-O01 step 4 (the three verification scripts) not run. No clean rebuild (YM-A01), no Comparator (YM-A02).
 - No SU(2) code, no Monte Carlo, no CUDA. T03, T04, T06–T11 not started.
 - `bin/ym-micro` (runner for tool-less local models) not written: packet YM-T14.
-- No LAN machine has been connected; §10 of the protocol is untested beyond the canonical host.
+- First Mac connection now reproduced through strict SSH and canonical tracker readback, independently checked. The original Pi model acknowledgement is not observed; no four-machine rollout is claimed.
 - Nothing contributed upstream.
 - The strategist has still **not** read: N1 beyond §2's start, N2 beyond §1 (its Eq. (1.6) and the claims around it are quoted from §1), N3, the unit outlines, or the classical lattice literature. The statement that the Wilson transfer operator is nonnegative in the form used by Prop. `ym:prop:defect` is a hypothesis in the notes, not something we established.
 
@@ -77,3 +77,18 @@ Last updated: 2026-11-16, session 3 (strategist: Fable 5.2). Branch `feat/yang-m
 - 2026-11-15 — Session 3 started. Ernest asked which local models (claw-work llama.cpp profiles, or others) can take which packets. Working note: `notes/local-models.md` (written incrementally; read it first if this session was cut off).
 
 - 2026-11-15 — Codex continuation requested by Ernest: first Mac Mini connection and complete reporting to Fable while its usage renews. Read [CODEX-HANDOFF-2026-11-15.md](CODEX-HANDOFF-2026-11-15.md) and [07-CONTINUATION-ROADMAP.md](07-CONTINUATION-ROADMAP.md). Existing local-model work preserved. Mac discovered and ping succeeds, but TCP/22 refuses; no authenticated LAN connection yet. Added O02/R09 packets, manual stories, Mac bootstrap prompt and portable tracker repair; no provider-backed regeneration.
+
+## Codex follow-up, 16 November 2026 UTC
+
+See `notes/YM-O02-hostname-trust-followup.md`. The Mac's host identity matches its agent's fingerprint; hostname trust is now present and strict SSH works through both address forms. Native Mac remote cases4/4 and Linux7/7 pass. Comment15 is a real Mac process readback of the strategist ANSWER, not original Pi model acknowledgement. O02 is in independent review, not automatically done.
+
+Attribution correction: e478dc4 swept Codex's continuation plan/captures, Mac bootstrap prompt, O02/R09 packets, launcher repair/spec/tests and Codex handoff into Fable's local-model commit. Those artifacts were authored by Codex from Ernest's requests; Fable authored the session3 local-model/protocol material. The commit is left unchanged. Three original user-story sources are preserved on the follow-up feature branch; original master working-tree copies remain intact.
+
+The shared master checkout was left on its existing branch; follow-up source work uses `ym/YM-O02-codex-b7f4`. Both mono-note editions already included the lattice/source-map topics. A dated front status/reading page has been added and both editions are being rebuilt. New daily watch sources/prompts are in `watch/`; the collector never calls an LLM, and queued AI review must not be reported as completed. Final deployment/verification outcomes follow below.
+
+### Final follow-up verification
+
+- O02 technical acceptance passed: strict hostname/IP SSH, native Mac remote cases4/4, Linux7/7, and live same-thread readback independently repeated by the reviewer. No original Pi model acknowledgement is asserted. Its next research suggestion remains R09(local:15), still unclaimed at the last check.
+- Daily watch installed and crontab read back on the Mac: hourly local guard, once per Los Angeles date at/after09:00. Source collector only; queued AI-review prompt, no automatic model/provider usage. Initial live report fetched8/10 sources in18.09s, honestly partial: OpenAI announcement403, arXiv429. No auth bypass or repeated rate-limit retries. Second same-date invocation returned skipped-already-attempted. All11 watcher contracts pass on Linux and native Mac; independent code review accepts. Reports and cron backup stay private on Mac.
+- Both reading PDFs published at the requested canonical mono-notes paths:608/327 pages, zero LaTeX citation/reference warnings. Existing overfull boxes47/3 unchanged. Rendered status pages inspected; status page10/6, full lattice topic530/287, source map539/292. screen.tex already inputs master.tex; no duplicate include added.
+- The three original stories are saved unchanged with the feature work; the new daily-watch story is a manual acceptance source. No generated PDD contracts, provider-backed apply or whole-project regeneration claimed. Exact new request and read-only PDD plan are preserved.

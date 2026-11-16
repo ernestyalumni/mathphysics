@@ -150,3 +150,7 @@ at the appropriate subject location in `master.tex`, and add its citations to
 exercises and solutions inline, state assumptions before a derivation, show
 the algebra, and keep one clean line of development: when a topic replaces
 or corrects a legacy passage, delete that passage rather than annotating it.
+
+## Yang–Mills reading entry
+
+Both editions include the QFT foundations, lattice construction/mass-gap topic and formal-source map. A dated front reading/status page now distinguishes the assessed existence construction, unproved gap and infinite-volume uniqueness, unreviewed local conditional arguments, and Clay requirements. In the 16 November2026UTC build, start at PDF page10 in master.pdf or page6 in screen.pdf; the full lattice topic starts at530/287 and source map539/292. Both editions are608/327 pages; no reference/citation warnings. Existing overfull boxes remain47/3, unchanged by this addition.

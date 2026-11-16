@@ -68,3 +68,5 @@ Every statement in this directory carries one of these labels, explicitly or by 
 ## Codex continuation, 2026-11-15
 
 For the Mac Mini first milestone, original continuation request, selective stories and Srednicki reading task, see [07-CONTINUATION-ROADMAP.md](07-CONTINUATION-ROADMAP.md). Claude Code/Fable restart report: [CODEX-HANDOFF-2026-11-15.md](CODEX-HANDOFF-2026-11-15.md). Mac-side prompt: [prompts/mac-mini-bootstrap.md](prompts/mac-mini-bootstrap.md).
+
+Daily public-source collection and versioned AI-review context: [watch/README.md](watch/README.md). Current SSH follow-up and commit attribution: [notes/YM-O02-hostname-trust-followup.md](notes/YM-O02-hostname-trust-followup.md).

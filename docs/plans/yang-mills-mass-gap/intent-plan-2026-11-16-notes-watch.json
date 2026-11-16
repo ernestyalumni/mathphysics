@@ -1,0 +1,129 @@
+{
+  "acceptance": {
+    "reasons": [],
+    "sentence": "Also, while I'm waiting for my Fable 5.2 Claude code to reset, for our effort for Yang Mills, could you help \"incorporate\" any of the .tex write up so far into our...",
+    "story_recommended": false
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "mills",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/z2_gauge.rs",
+      "product_area": "Exact density of states of Z2 lattice gauge theory on small tori, with twists",
+      "prompt_path": "Rust/lattice-gauge/prompts/z2_gauge_rust.prompt",
+      "score": 28
+    },
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "mills",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/spectral.rs",
+      "product_area": "Exact integer check of the purity bounds for a nonnegative transfer operator",
+      "prompt_path": "Rust/lattice-gauge/prompts/spectral_rust.prompt",
+      "score": 28
+    },
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "mills",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/sphere.rs",
+      "product_area": "Exact unit-sphere monomial averages and rational multiples of powers of pi",
+      "prompt_path": "Rust/qft-symbolics/prompts/sphere_rust.prompt",
+      "score": 28
+    },
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "mills",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/torus.rs",
+      "product_area": "Sites, links, plaquettes and cubes of a periodic torus with stable index conventions",
+      "prompt_path": "Rust/lattice-gauge/prompts/torus_rust.prompt",
+      "score": 28
+    },
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "mills",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/cochain.rs",
+      "product_area": "Z2 plaquette sets: twist surfaces, monopole counts, coboundary classes by GF(2) elimination",
+      "prompt_path": "Rust/lattice-gauge/prompts/cochain_rust.prompt",
+      "score": 28
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "yang-mills-mono-notes-status-and-mac-daily-watch-1e5c15d3",
+  "original_request": "Also, while I'm waiting for my Fable 5.2 Claude code to reset, for our effort for Yang Mills, could you help \"incorporate\" any of the .tex write up so far into our /home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/documents/mono-notes/master.tex\n/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/documents/mono-notes/screen.tex please so I could see where we're at? Also like can you help see where we're at with the Millenium prize ? Maybe we could create a AI subagent with context shared or versioned in mathphysics repo as to \"how far are we\" against open AI's progress, from anything surfacing online, maybe we could have a daily cron job running on the Mac Mini (since I leave it always on),",
+  "original_request_sha256": "1e5c15d373360466d3506613526cbc1187da4eb86022fce880d542d934b38cdd",
+  "project": {
+    "adoption_scenario": "existing_pdd_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      "Python/rotations/.pddrc",
+      "Rust/lattice-gauge/.pddrc",
+      "Rust/physics-contracts/.pddrc",
+      "Rust/physics-gateway/.pddrc",
+      "Rust/physics-tools/.pddrc",
+      "Rust/qft-symbolics/.pddrc",
+      "TypeScript/physics-workbench/.pddrc",
+      "Python/rotations/architecture.json",
+      "Rust/lattice-gauge/architecture.json",
+      "Rust/physics-contracts/architecture.json",
+      "Rust/physics-gateway/architecture.json",
+      "Rust/physics-tools/architecture.json",
+      "Rust/qft-symbolics/architecture.json",
+      "TypeScript/physics-workbench/architecture.json",
+      "45 prompt file(s)"
+    ],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-O02-codex-b7f4",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-O02-codex-b7f4",
+    "scope_kind": "repository"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [],
+    "must_preserve": [
+      "Maybe we could create a AI subagent with context shared or versioned in mathphysics repo as to \"how far are we\" against open AI's progress, from anything surfacing online, maybe we could have a daily cron job running on the Mac Mini (since I leave it always on),"
+    ],
+    "open_decisions": [
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "file",
+    "ref": "/tmp/ym-notes-watch-request.txt"
+  },
+  "story": {
+    "action": "none",
+    "matched": [],
+    "reasons": [],
+    "recommended": false
+  },
+  "title": "Yang-Mills mono-notes status and Mac daily watch",
+  "warnings": []
+}
