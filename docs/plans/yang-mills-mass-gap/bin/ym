@@ -19,7 +19,16 @@ while [ -L "$source_path" ]; do
   esac
 done
 here="$(CDPATH= cd -P "$(dirname "$source_path")" && pwd)"
-MP="${YM_MATHPHYSICS_ROOT:-$(cd "$here/../../../.." && pwd)}"
+default_root="$(CDPATH= cd -P "$here/../../../.." && pwd)"
+# A git worktree carries its own copy of this script, but the tracker lives in the main checkout:
+# follow git's common directory to it. Outside git, or in the main checkout, this changes nothing.
+common_dir="$(git -C "$default_root" rev-parse --git-common-dir 2>/dev/null || true)"
+if [ -n "$common_dir" ]; then
+  case "$common_dir" in /*) ;; *) common_dir="$default_root/$common_dir" ;; esac
+  main_root="$(CDPATH= cd -P "$common_dir/.." 2>/dev/null && pwd || true)"
+  [ -n "$main_root" ] && default_root="$main_root"
+fi
+MP="${YM_MATHPHYSICS_ROOT:-$default_root}"
 [ -f "$MP/.pdd/ym-lan.env" ] && . "$MP/.pdd/ym-lan.env"
 if [ -n "${YM_HOST:-}" ]; then
   remote="${YM_REMOTE_YM:-$here/ym}"

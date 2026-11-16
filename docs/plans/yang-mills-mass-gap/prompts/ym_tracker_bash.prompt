@@ -18,6 +18,7 @@ setup time and retain host-key verification. Clear forwarding on the canonical
 invocation; the canonical config MUST leave YM_HOST unset to avoid a route loop.
 R4 (MUST NOT): Run local PDD, flock or create a local tracker for remote requests;
 reject remote new with exit 2 before SSH.
+R4a (MUST): When the launcher runs from a git worktree of the repository, the canonical root is the MAIN checkout (the parent of git's common directory), not the worktree: every worktree on the canonical host reads and writes the same tracker. Outside git, and in the main checkout, the root is the launcher's own repository root. YM_MATHPHYSICS_ROOT still overrides.
 R5 (MUST): Locally execute the existing PDD work commands in the canonical root,
 export local-only/update-skip settings and preserve flock serialization of writes.
 R6 (MUST): Resolve local packet filenames for new without GNU realpath.

@@ -90,6 +90,22 @@ class TrackerLauncher(unittest.TestCase):
         args = self.captured()['args']
         self.assertEqual(args[args.index('--body-file')+1], str(packet))
 
+    def test_worktree_launcher_uses_main_checkout(self):
+        git = ['git', '-c', 'user.name=t', '-c', 'user.email=t@example.invalid', '-C', str(self.root)]
+        subprocess.run(git + ['init', '-q'], check=True, env=self.env)
+        subprocess.run(git + ['commit', '-q', '--allow-empty', '-m', 'root'], check=True, env=self.env)
+        worktree = self.root.parent / (self.root.name + ' worktree')
+        self.addCleanup(lambda: subprocess.run(['rm', '-rf', str(worktree)]))
+        subprocess.run(git + ['worktree', 'add', '-q', '-b', 'ym-test-worktree', str(worktree)], check=True, env=self.env)
+        launcher = worktree / 'docs/plans/yang-mills-mass-gap/bin/ym'
+        launcher.parent.mkdir(parents=True)
+        launcher.write_bytes(SCRIPT.read_bytes())
+        r = subprocess.run(['/bin/bash', str(launcher), 'list'], env=self.env, cwd=worktree,
+                           text=True, capture_output=True, timeout=10)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertEqual(self.captured()['cwd'], str(self.root))
+        self.assertFalse((worktree / '.pdd').exists())
+
     def test_symlink_launcher_keeps_canonical_root(self):
         link = self.root / 'shortcut'
         link.symlink_to(self.launcher.relative_to(self.root))
