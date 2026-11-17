@@ -1,0 +1,867 @@
+#!/usr/bin/env python3
+"""ym-micro: micro-task runner for local models (packet YM-T14).
+
+Standard library only. It talks only to loopback or private-range OpenAI-compatible endpoints,
+never starts or reconfigures a model server, and treats every model answer as unreviewed raw
+material (06-AGENT-PROTOCOL.md section 12). Nothing a model writes is executed, with one bounded
+exception: a LaTeX fragment that passed a command blacklist is compiled by pdflatex with shell
+escape disabled and paranoid file access, in a temporary directory.
+
+    ym-micro prepare --state DIR                     build units, briefs and the two queues
+    ym-micro run --queue Q.jsonl --endpoint URL --out DIR --hours H [--dry-run]
+    ym-micro report --state DIR                      regenerate the markdown summaries
+    ym-micro status --state DIR
+
+Task types: referee (flags only), lean-reading, lean-compare (flags only), quote (verbatim-checked
+retrieval), tex-draft (compile-checked draft), draft-referee, pi (headless Pi, file checks), probe.
+All outputs go to the state directory, outside git.
+"""
+import argparse, hashlib, ipaddress, json, os, pathlib, re, shutil, subprocess, sys, tempfile, time
+import urllib.error, urllib.parse, urllib.request
+
+HERE = pathlib.Path(__file__).resolve().parent
+PLAN = HERE.parent
+MP = PLAN.parents[2]
+LABEL = "label: unreviewed (local model output; not evidence)"
+
+REVIEW_QUESTION = (
+    "\n\nYou are a referee. Check each step. Answer in exactly this form:\n"
+    "VERDICT: CORRECT or INCORRECT\nFIRST WRONG STEP: <number or none>\nREASON: <one sentence>"
+)
+
+
+# ---------------------------------------------------------------------------------------------
+# small utilities
+
+def find_repos():
+    configured = os.environ.get("YM_REPOS")
+    if configured:
+        return pathlib.Path(configured)
+    for candidate in (MP.parent, MP.parent.parent):
+        if (candidate / "openai" / "math").is_dir():
+            return candidate
+    return MP.parent
+
+
+def squash(text):
+    """Remove all whitespace: the comparison form for verbatim checks."""
+    return re.sub(r"\s+", "", text)
+
+
+def atomic_write(path, text):
+    path = pathlib.Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + ".tmp")
+    temporary.write_text(text)
+    os.replace(temporary, path)
+
+
+def check_endpoint(endpoint):
+    host = urllib.parse.urlparse(endpoint).hostname or ""
+    if host == "localhost":
+        return
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        raise SystemExit("ym-micro: endpoint host must be a loopback or private-range address")
+    if not (address.is_loopback or address.is_private):
+        raise SystemExit("ym-micro: refusing a non-local endpoint")
+
+
+class EndpointDown(Exception):
+    pass
+
+
+class Context:
+    def __init__(self, endpoint, out, model=None, dry_run=False, timeout=1800, state=None):
+        self.endpoint, self.out, self.dry_run, self.timeout = endpoint.rstrip("/"), pathlib.Path(out), dry_run, timeout
+        self.state = pathlib.Path(state) if state else self.out.parent
+        self.model = model
+        self.calls = 0
+        self.generated = 0
+
+    def resolve_model(self):
+        if self.model or self.dry_run:
+            self.model = self.model or "dry-run"
+            return self.model
+        try:
+            listing = json.load(urllib.request.urlopen(self.endpoint + "/models", timeout=20))
+        except (urllib.error.URLError, OSError, ValueError) as error:
+            raise EndpointDown(repr(error))
+        self.model = listing["data"][0]["id"]
+        return self.model
+
+    def chat(self, messages, temperature=0.2, max_tokens=1500, seed=0, think=True):
+        if self.dry_run:
+            return {"content": "", "reasoning": "", "finish": "dry-run", "seconds": 0.0, "usage": {}, "seed": seed}
+        payload = {"model": self.model, "messages": messages, "temperature": temperature,
+                   "max_tokens": max_tokens, "seed": seed, "cache_prompt": True}
+        if not think:
+            payload["chat_template_kwargs"] = {"enable_thinking": False}
+        request = urllib.request.Request(self.endpoint + "/chat/completions", data=json.dumps(payload).encode(),
+                                         headers={"Content-Type": "application/json"})
+        started = time.time()
+        try:
+            reply = json.load(urllib.request.urlopen(request, timeout=self.timeout))
+        except urllib.error.HTTPError as error:
+            detail = error.read().decode(errors="replace")[:400]
+            if error.code in (400, 413):
+                return {"content": "", "reasoning": "", "finish": "http-%d" % error.code, "error": detail,
+                        "seconds": round(time.time() - started, 1), "usage": {}, "seed": seed}
+            raise EndpointDown("HTTP %d %s" % (error.code, detail))
+        except (urllib.error.URLError, OSError, ValueError) as error:
+            raise EndpointDown(repr(error))
+        choice = reply["choices"][0]
+        message = choice.get("message", {})
+        usage = reply.get("usage", {})
+        self.calls += 1
+        self.generated += usage.get("completion_tokens", 0)
+        return {"content": message.get("content") or "", "reasoning": message.get("reasoning_content") or "",
+                "finish": choice.get("finish_reason"), "seconds": round(time.time() - started, 1),
+                "usage": usage, "seed": seed, "temperature": temperature}
+
+
+# ---------------------------------------------------------------------------------------------
+# LaTeX: steps, references, mutants
+
+DISPLAY_RE = re.compile(
+    r"\\begin\{(equation\*?|align\*?|multline\*?|gather\*?|eqnarray\*?|displaymath)\}.*?\\end\{\1\}"
+    r"|\\\[.*?\\\]|\$\$.*?\$\$", re.S)
+THEOREM_RE = re.compile(r"\\begin\{(theorem|proposition|lemma|corollary|claim)\}.*?\\end\{\1\}", re.S)
+PROOF_RE = re.compile(r"\\begin\{proof\}(?:\[[^\]]*\])?(.*?)\\end\{proof\}", re.S)
+ABBREVIATION_RE = re.compile(r"(?:\b(?:Eq|Eqs|Prop|Props|Thm|Lem|Sec|Secs|Fig|cf|resp|vs|No|Ref|Refs|i\.e|e\.g)\.)$")
+
+
+def strip_comments(tex):
+    return re.sub(r"(?<!\\)%.*", "", tex)
+
+
+def split_steps(body):
+    """Split a LaTeX argument into sentence-sized steps. A displayed equation stays inside its sentence."""
+    displays = []
+
+    def hold(match):
+        text = match.group(0)
+        displays.append(text)
+        inner = re.sub(r"(\\end\{[^}]*\}|\\\]|\$\$)\s*$", "", text).rstrip()
+        inner = re.sub(r"(\\(label\{[^}]*\}|notag|nonumber|qedhere)\s*)+$", "", inner).rstrip()
+        return " \x00%d\x00%s " % (len(displays) - 1, "\x01" if inner.endswith(".") else "")
+
+    held = DISPLAY_RE.sub(hold, body)
+
+    def restore(text):
+        text = text.replace("\x01", "")
+        return re.sub(r"\x00(\d+)\x00", lambda m: displays[int(m.group(1))], text).strip()
+
+    merged = []
+    for piece in re.split(r"(?<=[.?!\x01])\s+(?=[A-Z\\$(\x00])", held):
+        piece = restore(piece)
+        if not piece:
+            continue
+        if merged and (ABBREVIATION_RE.search(merged[-1]) or len(squash(piece)) < 12):
+            merged[-1] += " " + piece
+        else:
+            merged.append(piece)
+    return merged
+
+
+def label_index(tex):
+    """Map each label to the displayed equation or theorem-like statement that carries it."""
+    index = {}
+    for pattern in (THEOREM_RE, DISPLAY_RE):
+        for match in pattern.finditer(tex):
+            for label in re.findall(r"\\label\{([^}]+)\}", match.group(0)):
+                index[label] = match.group(0)
+    return index
+
+
+def referenced(text, index, limit=6000):
+    seen, blocks, used = [], [], 0
+    own = set(re.findall(r"\\label\{([^}]+)\}", text))
+    for label in re.findall(r"\\(?:eqref|ref)\{([^}]+)\}", text):
+        if label in seen or label in own or label not in index:
+            continue
+        block = index[label]
+        if used + len(block) > limit:
+            continue
+        seen.append(label)
+        used += len(block)
+        blocks.append("(%s)\n%s" % (label, block))
+    return blocks
+
+
+def plain_environments(tex):
+    """Replace theorem-like and proof environment markers by words, so that they do not litter the steps."""
+    tex = re.sub(r"\\begin\{(theorem|proposition|lemma|corollary|claim|definition|conjecture|remark|example|exercise)\}(?:\[([^\]]*)\])?",
+                 lambda m: "%s%s. " % (m.group(1).capitalize(), " (%s)" % m.group(2) if m.group(2) else ""), tex)
+    tex = re.sub(r"\\begin\{proof\}(?:\[([^\]]*)\])?", lambda m: "%s. " % (m.group(1) or "Proof"), tex)
+    return re.sub(r"\\end\{(theorem|proposition|lemma|corollary|claim|definition|conjecture|remark|example|exercise|proof)\}", " ", tex)
+
+
+def line_of(text, offset):
+    return text.count("\n", 0, offset) + 1
+
+
+def proof_units(tex_path, relative, prefix, truth="unknown"):
+    """One unit per proof environment, with its statement and the referenced earlier results."""
+    raw = pathlib.Path(tex_path).read_text(errors="replace")
+    tex = strip_comments(raw)
+    index = label_index(tex)
+    statements = list(THEOREM_RE.finditer(tex))
+    units = []
+    for number, proof in enumerate(PROOF_RE.finditer(tex), 1):
+        before = [s for s in statements if s.end() <= proof.start()]
+        statement = before[-1].group(0) if before and proof.start() - before[-1].end() < 2500 else ""
+        label = (re.findall(r"\\label\{([^}]+)\}", statement) or ["proof%d" % number])[0]
+        steps = split_steps(proof.group(1))
+        if not steps:
+            continue
+        name = "%s-%02d-%s" % (prefix, number, re.sub(r"[^A-Za-z0-9]+", "-", label).strip("-"))
+        units.append({"name": name, "source": "%s:%d" % (relative, line_of(tex, proof.start())), "truth": truth,
+                      "context": statement, "refs": referenced(statement + proof.group(1), index), "steps": steps})
+    return units
+
+
+def section_units(tex_path, relative, prefix):
+    """One unit per subsection: the running derivations outside proof environments are steps too."""
+    tex = strip_comments(pathlib.Path(tex_path).read_text(errors="replace"))
+    index = label_index(tex)
+    heads = list(re.finditer(r"\\subsection\{([^}]*)\}", tex))
+    units = []
+    for number, head in enumerate(heads):
+        end = heads[number + 1].start() if number + 1 < len(heads) else len(tex)
+        body = tex[head.end():end]
+        body = re.sub(r"\\label\{[^}]*\}", "", body, count=1) if body.lstrip().startswith("\\label") else body
+        steps = split_steps(plain_environments(re.sub(r"\\(sub)*section\{[^}]*\}", " ", body)))
+        if len(steps) < 3:
+            continue
+        slug = re.sub(r"[^A-Za-z0-9]+", "-", head.group(1)).strip("-").lower()[:40]
+        units.append({"name": "%s-s%02d-%s" % (prefix, number + 1, slug), "truth": "unknown",
+                      "source": "%s:%d" % (relative, line_of(tex, head.start())),
+                      "context": "", "refs": referenced(body, index), "steps": steps})
+    return units
+
+
+MUTATION_RULES = [
+    ("flip-le-to-ge", re.compile(r"\\le(?![a-zA-Z])"), "\\\\ge"),
+    ("flip-ge-to-le", re.compile(r"\\ge(?![a-zA-Z])"), "\\\\le"),
+    ("exponent-16-to-8", re.compile(r"\^\{16\}"), "^{8}"),
+    ("exponent-8-to-4", re.compile(r"\^\{\\,8\}|\^\{8\}|\^8"), "^{4}"),
+    ("exponent-4-to-2", re.compile(r"\^\{\\,4\}|\^\{4\}|\^4"), "^{2}"),
+    ("exponent-2-to-3", re.compile(r"\^\{\\,2\}|\^\{2\}|\^2"), "^{3}"),
+    ("coefficient-2-to-3", re.compile(r"(?<![\w^{.\\/])2(?=[a-zA-Z\\])"), "3"),
+]
+
+
+def mutants(unit, limit=6):
+    """Planted single errors at known steps, for calibration. Truth of a mutant is presumed, not proved."""
+    candidates = []
+    for step_number, step in enumerate(unit["steps"]):
+        for rule, pattern, replacement in MUTATION_RULES:
+            if pattern.search(step):
+                changed = pattern.sub(replacement, step, count=1)
+                key = hashlib.sha256(("%s|%d|%s" % (unit["name"], step_number, rule)).encode()).hexdigest()
+                candidates.append((key, step_number, rule, changed))
+    candidates.sort()
+    chosen, used_steps = [], set()
+    for key, step_number, rule, changed in candidates:
+        if step_number in used_steps or len(chosen) >= limit:
+            continue
+        used_steps.add(step_number)
+        steps = list(unit["steps"])
+        steps[step_number] = changed
+        chosen.append(dict(unit, name="%s--mut%d-%s" % (unit["name"], step_number + 1, rule), truth="mutant",
+                           mutated_step=step_number + 1, mutation=rule, steps=steps))
+    return chosen
+
+
+def clean_refs(text):
+    return re.sub(r"\\(?:eqref|ref)\{([^}]+)\}", r"(\1)", text)
+
+
+def referee_prompt(unit, window=None):
+    parts = []
+    if unit.get("context"):
+        parts.append("Statement to be proved (LaTeX):\n" + clean_refs(unit["context"]))
+    if unit.get("refs"):
+        parts.append("Earlier results that the argument may use without proof:\n" + clean_refs("\n\n".join(unit["refs"])))
+    parts.append("Argument, split into numbered steps:\n" + "\n".join(
+        "Step %d: %s" % (number, clean_refs(step)) for number, step in enumerate(unit["steps"], 1)))
+    question = REVIEW_QUESTION
+    if window:
+        question = "\n\nCheck only steps %d to %d; take the other steps as given." % window + REVIEW_QUESTION
+    return "\n\n".join(parts) + question
+
+
+def parse_verdict(content):
+    verdict = re.search(r"VERDICT:\W*(INCORRECT|CORRECT)", content, re.I)
+    step = re.search(r"FIRST WRONG STEP:\W*(\d+|none)", content, re.I)
+    reason = re.search(r"REASON:\s*(.+)", content, re.I | re.S)
+    return {"verdict": verdict.group(1).upper() if verdict else "UNPARSED",
+            "step": step.group(1).lower() if step else None,
+            "reason": " ".join(reason.group(1).split())[:600] if reason else ""}
+
+
+def windows_of(count, size=10, limit=14):
+    if count <= limit:
+        return [None]
+    return [(start + 1, min(start + size, count)) for start in range(0, count, size)]
+
+
+# ---------------------------------------------------------------------------------------------
+# executors
+
+def run_referee_unit(ctx, unit, seeds, max_tokens):
+    rows = []
+    for window in windows_of(len(unit["steps"])):
+        prompt = referee_prompt(unit, window)
+        for seed in seeds:
+            reply = ctx.chat([{"role": "user", "content": prompt}], temperature=0.2 if seed % 100 < 3 else 0.5,
+                             max_tokens=max_tokens, seed=seed)
+            rows.append(dict(parse_verdict(reply["content"]), window=window, seed=seed, seconds=reply["seconds"],
+                             finish=reply["finish"], raw=reply["content"][:1500]))
+    return rows
+
+
+def exec_referee(task, ctx, pass_number):
+    unit = json.loads(pathlib.Path(task["unit"]).read_text())
+    seeds = [seed + 100 * pass_number for seed in task.get("seeds", [0, 1, 2])]
+    rows = run_referee_unit(ctx, unit, seeds, task.get("max_tokens", 2500))
+    flags = [row for row in rows if row["verdict"] == "INCORRECT"]
+    return {"unit": unit["name"], "source": unit["source"], "truth": unit["truth"], "steps": len(unit["steps"]),
+            "mutated_step": unit.get("mutated_step"), "mutation": unit.get("mutation"),
+            "runs": len(rows), "flags": len(flags), "rows": rows}
+
+
+def lean_snippet(lean_root, link):
+    match = re.search(r"/blob/[0-9a-f]+/(.+?)#L(\d+)", link)
+    if not match:
+        return None
+    path, line = pathlib.Path(lean_root, match.group(1)), int(match.group(2))
+    if not path.is_file():
+        return None
+    lines = path.read_text(errors="replace").splitlines()
+    start, taken = max(0, line - 1 - 3), []
+    for position in range(start, min(len(lines), line - 1 + 30)):
+        taken.append(lines[position])
+        if position >= line - 1 and re.search(r":=\s*by\b|:=\s*$|\bwhere\s*$", lines[position]):
+            break
+    return {"path": match.group(1), "line": line, "text": "\n".join(taken)}
+
+
+LEAN_TEMPLATE = (
+    "\n\nFill in this template exactly. Use only identifiers that appear in the snippet.\n"
+    "KIND: <definition | structure | theorem | other>\n"
+    "STATEMENT: <one or two sentences saying what the declaration states or defines>\n"
+    "IDENTIFIERS: <comma-separated identifiers copied exactly from the snippet>"
+)
+
+
+def check_lean_reading(content, snippet):
+    kind = re.search(r"^\W*KIND:\s*(.+)$", content, re.M)
+    statement = re.search(r"^\W*STATEMENT:\s*(.+?)(?=^\W*IDENTIFIERS:|\Z)", content, re.M | re.S)
+    identifiers = re.search(r"^\W*IDENTIFIERS:\s*(.+)$", content, re.M)
+    if not (kind and statement and identifiers):
+        return False, "missing header", {}
+    names = [name.strip(" `.*") for name in identifiers.group(1).split(",") if name.strip(" `.*")]
+    if not names:
+        return False, "no identifiers", {}
+    missing = [name for name in names if name not in snippet]
+    if missing:
+        return False, "identifier not in snippet: " + ", ".join(missing[:3]), {}
+    text = " ".join(statement.group(1).split())
+    if len(text.split()) >= 80:
+        return False, "statement too long", {}
+    return True, "", {"kind": kind.group(1).strip(" *`"), "statement": text.strip("* "), "identifiers": names}
+
+
+def exec_lean_reading(task, ctx, pass_number):
+    snippet = lean_snippet(task["lean_root"], task["link"])
+    if snippet is None:
+        return {"accepted": False, "why": "snippet not found"}
+    prompt = "Here is a Lean 4 declaration with a few lines of context.\n\n" + snippet["text"] + LEAN_TEMPLATE
+    reply = ctx.chat([{"role": "user", "content": prompt}], temperature=0.2, max_tokens=400, seed=pass_number, think=False)
+    accepted, why, fields = check_lean_reading(reply["content"], snippet["text"])
+    return dict(fields, accepted=accepted, why=why, k_id=task["k_id"], lean_name=task["lean_name"],
+                path=snippet["path"], line=snippet["line"], snippet_sha256=hashlib.sha256(snippet["text"].encode()).hexdigest(),
+                seconds=reply["seconds"], raw=reply["content"][:1200])
+
+
+def exec_lean_compare(task, ctx, pass_number):
+    snippet = lean_snippet(task["lean_root"], task["link"])
+    if snippet is None:
+        return {"accepted": False, "why": "snippet not found"}
+    prompt = ("Here is a Lean 4 declaration with a few lines of context.\n\n" + snippet["text"]
+              + "\n\nA one-line informal summary of this declaration, written by someone else:\n" + task["summary"]
+              + "\n\nJudging only from the snippet, does the summary describe what the declaration states? "
+              "Answer in exactly this form:\nVERDICT: CONSISTENT or INCONSISTENT or CANNOT TELL\nREASON: <one sentence>")
+    reply = ctx.chat([{"role": "user", "content": prompt}], temperature=0.2, max_tokens=task.get("max_tokens", 3000), seed=pass_number)
+    verdict = re.search(r"VERDICT:\W*(INCONSISTENT|CONSISTENT|CANNOT TELL)", reply["content"], re.I)
+    reason = re.search(r"REASON:\s*(.+)", reply["content"], re.I | re.S)
+    return {"k_id": task["k_id"], "lean_name": task["lean_name"], "path": snippet["path"], "line": snippet["line"],
+            "verdict": verdict.group(1).upper() if verdict else "UNPARSED",
+            "reason": " ".join(reason.group(1).split())[:500] if reason else "", "seconds": reply["seconds"]}
+
+
+def load_source(paths):
+    """Concatenate source files with markers; return the text and a locator for squashed offsets."""
+    chunks, origin = [], []
+    for path in paths:
+        path = pathlib.Path(path)
+        chunks.append("%%%%%% FILE: %s\n" % path.name)
+        origin.append((path.name, 0))
+        for number, line in enumerate(path.read_text(errors="replace").splitlines(), 1):
+            chunks.append(line + "\n")
+            origin.append((path.name, number))
+    squashed_origin, squashed_parts = [], []
+    for chunk, where in zip(chunks, origin):
+        compact = squash(chunk)
+        squashed_parts.append(compact)
+        squashed_origin.extend([where] * len(compact))
+    return "".join(chunks), "".join(squashed_parts), squashed_origin
+
+
+def check_quotes(content, squashed, origin, minimum=25):
+    items = []
+    for match in re.finditer(r"ITEM:\s*(.+?)\s*QUOTE:\s*(.+?)(?=\n\s*ITEM:|\Z)", content, re.S):
+        quote = match.group(2).strip().strip("`").strip()
+        compact = squash(quote)
+        position = squashed.find(compact) if len(compact) >= minimum else -1
+        entry = {"item": " ".join(match.group(1).split())[:500], "quote": quote[:1200], "verbatim": position >= 0}
+        if position >= 0:
+            entry["file"], entry["line"] = origin[position]
+        items.append(entry)
+    return items
+
+
+def exec_quote(task, ctx, pass_number):
+    text, squashed, origin = load_source(task["sources"])
+    prompt = ("Below is the LaTeX source of a mathematics paper, or of part of one.\n\n<<<SOURCE\n" + text + "\nSOURCE>>>\n\n"
+              "Question: " + task["question"] + "\n\nAnswer from the source only. Give at most 6 items. "
+              "Each item must have exactly this form:\nITEM: <one sentence in your own words>\n"
+              "QUOTE: <an exact contiguous copy of one to three lines of the source that supports the item>\n"
+              "If the source does not answer the question, write only: NOT FOUND")
+    reply = ctx.chat([{"role": "user", "content": prompt}], temperature=0.2, max_tokens=task.get("max_tokens", 3000), seed=pass_number)
+    items = check_quotes(reply["content"], squashed, origin)
+    return {"question": task["question"], "packet": task.get("packet"), "sources": [pathlib.Path(p).name for p in task["sources"]],
+            "items": items, "verbatim": sum(item["verbatim"] for item in items), "not_found": "NOT FOUND" in reply["content"],
+            "finish": reply["finish"], "seconds": reply["seconds"], "usage": reply["usage"], "raw": reply["content"][:6000]}
+
+
+FORBIDDEN_TEX = re.compile(
+    r"\\(input|include|includeonly|usepackage|documentclass|write|immediate|openout|openin|read|catcode|csname|"
+    r"special|pdfobj|pdfliteral|directlua|lstinputlisting|verbatiminput|includegraphics|newwrite|newread|"
+    r"InputIfFileExists|IfFileExists|file|pdffiledump|pdfmdfivesum|pdfshellescape|ShellEscape)\b")
+WRAPPER_HEAD = r"""\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\newtheorem{theorem}{Theorem}\newtheorem{proposition}{Proposition}\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}\newtheorem{conjecture}{Conjecture}
+\theoremstyle{definition}\newtheorem{definition}{Definition}\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}\theoremstyle{remark}\newtheorem{remark}{Remark}
+\begin{document}
+"""
+STYLE_PROMPT = (
+    "You write LaTeX for a mathematical-physics manuscript whose reader is a differential geometer. Rules:\n"
+    "1. Output only a LaTeX fragment. No preamble, no \\documentclass, no \\usepackage, no markdown fences, no commentary.\n"
+    "2. Start with \\subsection{...}. Packages available: amsmath, amssymb, amsthm, mathtools, bm. Environments available: "
+    "definition, theorem, proposition, lemma, corollary, proof, remark, example, exercise, equation, align.\n"
+    "3. State every hypothesis of every statement.\n"
+    "4. Put every algebraic step in a displayed equation. Do not skip steps. Between displays write one short sentence.\n"
+    "5. Do not invent citations or reference numbers. You may name a theorem by its standard name.\n"
+    "6. Where you are not sure, write \\textbf{GAP:} and say what is missing. Do not fill a gap with a plausible sentence.\n"
+    "7. Plain, terse prose. Length: 500 to 900 words."
+)
+
+
+def extract_fragment(content):
+    fenced = re.search(r"```(?:latex|tex)?\s*\n(.*?)```", content, re.S)
+    text = (fenced.group(1) if fenced else content).strip()
+    start = text.find("\\subsection")
+    if start < 0:
+        start = text.find("\\section")
+    return text[start:].strip() if start >= 0 else text
+
+
+def check_fragment(fragment):
+    if len(fragment) < 1200:
+        return "too short"
+    if not fragment.lstrip().startswith(("\\subsection", "\\section")):
+        return "does not start with a sectioning command"
+    forbidden = FORBIDDEN_TEX.search(fragment)
+    if forbidden:
+        return "forbidden command " + forbidden.group(0)
+    begins, ends = re.findall(r"\\begin\{([^}]+)\}", fragment), re.findall(r"\\end\{([^}]+)\}", fragment)
+    if sorted(begins) != sorted(ends):
+        return "unbalanced environments"
+    return ""
+
+
+def compile_fragment(fragment, keep_pdf=None):
+    if shutil.which("pdflatex") is None:
+        return True, "pdflatex not available; compile check skipped"
+    with tempfile.TemporaryDirectory(prefix="ym-micro-tex-") as directory:
+        pathlib.Path(directory, "draft.tex").write_text(WRAPPER_HEAD + fragment + "\n\\end{document}\n")
+        environment = dict(os.environ, openin_any="p", openout_any="p", shell_escape="f")
+        try:
+            done = subprocess.run(["pdflatex", "-no-shell-escape", "-interaction=nonstopmode", "-halt-on-error", "draft.tex"],
+                                  cwd=directory, env=environment, capture_output=True, text=True, timeout=120, errors="replace")
+        except subprocess.TimeoutExpired:
+            return False, "pdflatex timed out"
+        if done.returncode != 0:
+            error = re.search(r"^! .*(?:\n.*){0,3}", done.stdout, re.M)
+            return False, (error.group(0) if error else done.stdout[-400:])[:500]
+        if keep_pdf:
+            shutil.copyfile(pathlib.Path(directory, "draft.pdf"), keep_pdf)
+        return True, ""
+
+
+def exec_tex_draft(task, ctx, pass_number):
+    material = "".join("\n\nMaterial (%s), for notation; do not copy it out:\n%s" % (pathlib.Path(path).name, pathlib.Path(path).read_text(errors="replace"))
+                       for path in task.get("material", []))
+    messages = [{"role": "system", "content": STYLE_PROMPT},
+                {"role": "user", "content": "Write the following subsection.\n\n" + task["brief"] + material}]
+    attempts, fragment, problem = [], "", "no attempt"
+    think = True
+    for attempt in range(2):
+        reply = ctx.chat(messages, temperature=0.4, max_tokens=task.get("max_tokens", 6000), seed=pass_number * 10 + attempt, think=think)
+        fragment = extract_fragment(reply["content"])
+        if reply["finish"] == "length" and not fragment.strip():
+            think = False  # the reasoning used the whole budget: write directly on the second attempt
+        problem = check_fragment(fragment)
+        compiled = False
+        if not problem:
+            compiled, problem = compile_fragment(fragment, keep_pdf=None)
+        attempts.append({"seconds": reply["seconds"], "finish": reply["finish"], "usage": reply["usage"], "problem": problem, "thinking": think})
+        if not problem or ctx.dry_run:
+            break
+        if not fragment.strip():
+            continue
+        messages = messages + [{"role": "assistant", "content": reply["content"]},
+                               {"role": "user", "content": "That fragment was rejected: %s. Output the corrected full fragment, following the rules." % problem}]
+    accepted = not problem or problem.startswith("pdflatex not available")
+    stem = "%s.p%d.%s" % (task["id"], pass_number, ctx.model)
+    folder = ctx.out / "tex-draft" / ("accepted" if accepted else "rejected")
+    header = "%% %s\n%% model: %s  brief: %s  time: %s\n" % (LABEL, ctx.model, task["id"], time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))
+    if fragment:
+        atomic_write(folder / (stem + ".tex"), header + fragment + "\n")
+        if accepted:
+            folder.mkdir(parents=True, exist_ok=True)
+            compile_fragment(fragment, keep_pdf=folder / (stem + ".pdf"))
+    oracle = {pattern: bool(re.search(pattern, fragment)) for pattern in task.get("oracle", [])}
+    return {"accepted": accepted, "problem": problem, "attempts": attempts, "file": str(folder / (stem + ".tex")) if fragment else None,
+            "chars": len(fragment), "gaps": fragment.count("GAP:"), "oracle": oracle}
+
+
+def exec_draft_referee(task, ctx, pass_number):
+    """Referee every accepted draft that has no flags file yet. Drafts may come from another machine's queue."""
+    reports = []
+    for folder in task["folders"]:
+        for path in sorted(pathlib.Path(folder).glob("*.tex")):
+            target = ctx.out / "draft-referee" / (path.stem + ".by-" + ctx.model + ".json")
+            if target.exists():
+                continue
+            body = strip_comments(path.read_text(errors="replace"))
+            steps = split_steps(plain_environments(re.sub(r"\\(sub)*section\{[^}]*\}", " ", body)))
+            if len(steps) < 2:
+                continue
+            unit = {"name": path.stem, "source": str(path), "truth": "unknown", "context": "", "refs": [], "steps": steps}
+            rows = run_referee_unit(ctx, unit, task.get("seeds", [0, 1, 2]), task.get("max_tokens", 2500))
+            report = {"unit": path.stem, "source": str(path), "truth": "unknown", "steps": len(steps), "step_text": steps,
+                      "runs": len(rows), "flags": sum(row["verdict"] == "INCORRECT" for row in rows), "rows": rows}
+            atomic_write(target, json.dumps(report, indent=1))
+            reports.append({"draft": path.name, "runs": report["runs"], "flags": report["flags"]})
+    return {"refereed": reports}
+
+
+def exec_pi(task, ctx, pass_number):
+    """One headless Pi run against the local model, with an isolated profile that has no cloud credentials."""
+    profile = pathlib.Path(task["profile"])
+    auth = profile / "auth.json"
+    if auth.exists() and auth.read_text().strip() not in ("", "{}", "[]"):
+        return {"accepted": False, "why": "profile contains credentials; refusing"}
+    output = pathlib.Path(task["output"])
+    output.parent.mkdir(parents=True, exist_ok=True)
+    command = ["pi", "--print", "--model", task["model"], "--no-extensions", "--no-mcp", "--no-skills", "--no-prompt-templates",
+               "--no-context-files", "--no-session", "--offline", "--tools", task.get("tools", "read,grep,find,ls"), task["prompt"]]
+    if ctx.dry_run:
+        return {"accepted": False, "why": "dry-run", "command": command[:-1]}
+    environment = dict(os.environ, PI_CODING_AGENT_DIR=str(profile), PI_OFFLINE="1")
+    for name in list(environment):
+        if name.endswith("_API_KEY") or name.endswith("_AUTH_TOKEN"):
+            del environment[name]
+    started = time.time()
+    try:
+        done = subprocess.run(command, cwd=task["cwd"], env=environment, capture_output=True, text=True,
+                              timeout=task.get("timeout", 1500), errors="replace", stdin=subprocess.DEVNULL)
+        stdout, code = done.stdout[-3000:], done.returncode
+        if done.stdout.strip():  # read-only tools: the model's printed answer is the deliverable
+            atomic_write(output, "<!-- %s -->\n" % LABEL + done.stdout)
+    except subprocess.TimeoutExpired:
+        stdout, code = "timeout", -1
+    checks = {"output exists": output.is_file()}
+    text = output.read_text(errors="replace") if output.is_file() else ""
+    for pattern in task.get("must_match", []):
+        checks["matches " + pattern] = bool(re.search(pattern, text))
+    cited = re.findall(r"`([^`\s]+\.(?:tex|md|mmd|pdf|rs|py))(?::(\d+))?`", text)
+    roots = [pathlib.Path(task["cwd"])] + [pathlib.Path(root) for root in task.get("search_roots", [])]
+    missing = []
+    for name, line in cited:
+        found = [root / name for root in roots if (root / name).is_file()] + ([pathlib.Path(name)] if pathlib.Path(name).is_file() else [])
+        if not found or (line and int(line) > len(found[0].read_text(errors="replace").splitlines())):
+            missing.append(name + (":" + line if line else ""))
+    checks["cited locators exist (%d cited)" % len(cited)] = not missing and len(cited) >= task.get("minimum_paths", 1)
+    return {"accepted": all(checks.values()), "checks": checks, "missing_paths": missing[:20], "exit_code": code,
+            "seconds": round(time.time() - started, 1), "stdout_tail": stdout, "output": str(output)}
+
+
+def exec_probe(task, ctx, pass_number):
+    target = ctx.out / "probe" / ("run-%s-p%d" % (task["id"], pass_number))
+    command = [sys.executable, "-I", str(PLAN / "ledger/evidence/local-model-probe/probe.py"), "--n1", task["n1"], "--n2", task["n2"],
+               "--lean", task["lean_root"], "--out", str(target), "--endpoint", ctx.endpoint, "--max-tokens", str(task.get("max_tokens", 4000))]
+    if ctx.dry_run:
+        return {"command": command}
+    done = subprocess.run(command, capture_output=True, text=True, timeout=task.get("timeout", 4 * 3600), errors="replace")
+    return {"exit_code": done.returncode, "stdout": done.stdout[-4000:], "stderr": done.stderr[-800:], "out": str(target)}
+
+
+EXECUTORS = {"referee": exec_referee, "lean-reading": exec_lean_reading, "lean-compare": exec_lean_compare, "quote": exec_quote,
+             "tex-draft": exec_tex_draft, "draft-referee": exec_draft_referee, "pi": exec_pi, "probe": exec_probe}
+
+
+# ---------------------------------------------------------------------------------------------
+# queue runner
+
+def run_queue(args):
+    check_endpoint(args.endpoint)
+    out = pathlib.Path(args.out)
+    out.mkdir(parents=True, exist_ok=True)
+    tasks = [json.loads(line) for line in pathlib.Path(args.queue).read_text().splitlines() if line.strip()]
+    ctx = Context(args.endpoint, out, model=args.model, dry_run=args.dry_run, timeout=args.timeout)
+    deadline = time.time() + args.hours * 3600
+    log = open(out / "run.log", "a", buffering=1)
+
+    def say(text):
+        log.write("%s %s\n" % (time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), text))
+
+    atomic_write(out / "runner.pid", str(os.getpid()))
+    say("start queue=%s tasks=%d hours=%s endpoint=%s dry_run=%s" % (args.queue, len(tasks), args.hours, args.endpoint, args.dry_run))
+    done_count, pass_number = 0, 0
+    while time.time() < deadline and pass_number < args.max_passes:
+        worked = 0
+        for task in tasks:
+            if time.time() >= deadline or (out / "STOP").exists():
+                break
+            if pass_number > 0 and not task.get("repeatable"):
+                continue
+            target = out / task["type"] / ("%s.p%d.json" % (task["id"], pass_number))
+            if target.exists():
+                continue
+            result, waited = None, 0
+            while result is None:
+                try:
+                    ctx.resolve_model()
+                    started = time.time()
+                    result = EXECUTORS[task["type"]](task, ctx, pass_number)
+                    result.update(task_id=task["id"], type=task["type"], model=ctx.model, pass_number=pass_number,
+                                  task_seconds=round(time.time() - started, 1), label=LABEL,
+                                  finished=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))
+                except EndpointDown as error:
+                    waited += 1
+                    say("endpoint down (%s); wait %d" % (str(error)[:160], waited))
+                    if waited > args.down_retries or time.time() + 60 >= deadline:
+                        result = {"task_id": task["id"], "type": task["type"], "error": "endpoint down: " + str(error)[:300], "skipped": True}
+                    else:
+                        time.sleep(0 if args.dry_run else 60)
+                except Exception as error:  # one bad task must not stop a ten-hour run
+                    result = {"task_id": task["id"], "type": task["type"], "error": repr(error)[:600]}
+            if result.get("skipped"):
+                say("skip %s: %s" % (task["id"], result["error"][:120]))
+                continue  # no result file: a later pass or a rerun picks it up
+            atomic_write(target, json.dumps(result, indent=1))
+            worked += 1
+            done_count += 1
+            say("done %s %s p%d %ss %s" % (task["type"], task["id"], pass_number, result.get("task_seconds"),
+                                            "error=" + result["error"][:100] if "error" in result else
+                                            " ".join("%s=%s" % (key, result[key]) for key in ("flags", "runs", "accepted", "verbatim", "verdict") if key in result)))
+            atomic_write(out / "heartbeat.json", json.dumps({
+                "time": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "pass": pass_number, "last": task["id"],
+                "done_this_run": done_count, "calls": ctx.calls, "generated_tokens": ctx.generated,
+                "deadline": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(deadline)), "model": ctx.model}))
+        if (out / "STOP").exists():
+            say("STOP file found")
+            break
+        say("pass %d finished, %d task(s) run" % (pass_number, worked))
+        pass_number += 1
+        if not any(task.get("repeatable") for task in tasks):
+            break
+    say("end done=%d calls=%d generated_tokens=%d" % (done_count, ctx.calls, ctx.generated))
+    return 0
+
+
+# ---------------------------------------------------------------------------------------------
+# prepare: units, briefs, queues
+
+def prepare(args):
+    sys.path.insert(0, str(HERE))
+    import importlib.util
+    plan_file = HERE / "ym_micro_plan.py"
+    spec = importlib.util.spec_from_file_location("ym_micro_plan", plan_file)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.build(sys.modules[__name__], pathlib.Path(args.state), find_repos())
+
+
+# ---------------------------------------------------------------------------------------------
+# report
+
+def results(folder):
+    for path in sorted(pathlib.Path(folder).glob("*.json")):
+        try:
+            yield path, json.loads(path.read_text())
+        except ValueError:
+            continue
+
+
+def report(args):
+    state = pathlib.Path(args.state)
+    lines = ["# Local-model overnight run: summary", "", LABEL, "",
+             "Generated %s by `bin/ym-micro report`. Rules: an INCORRECT flag is worth a reviewer's minute; "
+             "a CORRECT verdict is worth nothing; drafts are raw material." % time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()), ""]
+    for machine in ("desktop", "mac"):
+        out = state / machine
+        if not out.is_dir():
+            continue
+        lines += ["## %s" % machine, ""]
+        heartbeat = out / "heartbeat.json"
+        if heartbeat.exists():
+            lines += ["Heartbeat: `%s`" % " ".join(heartbeat.read_text().split()), ""]
+        # referee: flags on our own text and on source text; calibration on mutants
+        by_unit, mutant_runs, mutant_detected, mutant_exact = {}, 0, 0, 0
+        calibration, per_mutant = {}, {}
+        for folder in ("referee", "draft-referee"):
+            for path, result in results(out / folder):
+                if "rows" not in result:
+                    continue
+                if result.get("truth") == "mutant":
+                    per_mutant[result["unit"]] = (sum(row["verdict"] == "INCORRECT" for row in result["rows"]), len(result["rows"]))
+                    base = result["unit"].split("--mut")[0]
+                    entry = calibration.setdefault(base, [0, 0, 0])
+                    for row in result["rows"]:
+                        entry[0] += 1
+                        mutant_runs += 1
+                        if row["verdict"] == "INCORRECT":
+                            entry[1] += 1
+                            mutant_detected += 1
+                            if row["step"] == str(result.get("mutated_step")):
+                                entry[2] += 1
+                                mutant_exact += 1
+                    continue
+                entry = by_unit.setdefault((folder, result["unit"]), {"runs": 0, "flags": [], "source": result.get("source"), "truth": result.get("truth")})
+                entry["runs"] += result["runs"]
+                entry["flags"] += [row for row in result["rows"] if row["verdict"] == "INCORRECT"]
+        if by_unit:
+            lines += ["### Referee flags (INCORRECT verdicts only)", "",
+                      "| Unit | Source | Truth label | Runs | Flags |", "|---|---|---|---:|---:|"]
+            for (folder, name), entry in sorted(by_unit.items(), key=lambda item: -len(item[1]["flags"])):
+                lines.append("| %s | `%s` | %s | %d | %d |" % (name, entry["source"], entry["truth"], entry["runs"], len(entry["flags"])))
+            lines.append("")
+            for (folder, name), entry in sorted(by_unit.items(), key=lambda item: -len(item[1]["flags"])):
+                if not entry["flags"]:
+                    continue
+                lines += ["**%s** (`%s`)" % (name, entry["source"]), ""]
+                for row in entry["flags"]:
+                    window = " (window %s-%s)" % tuple(row["window"]) if row.get("window") else ""
+                    lines.append("- step %s%s, seed %s: %s" % (row["step"], window, row["seed"], row["reason"]))
+                lines.append("")
+        if calibration:
+            lines += ["### Calibration on planted errors", "",
+                      "Each mutant changes one token at one known step. Detection = verdict INCORRECT; exact = the mutated step was named. "
+                      "A mutant is presumed false, not proved false.", "",
+                      "Total: %d runs, %d detected, %d exact." % (mutant_runs, mutant_detected, mutant_exact), "",
+                      "| Unit | Mutant runs | Detected | Exact step |", "|---|---:|---:|---:|"]
+            for name, (runs, detected, exact) in sorted(calibration.items()):
+                lines.append("| %s | %d | %d | %d |" % (name, runs, detected, exact))
+            lines += ["", "Per mutant (detected/runs): " + "; ".join("%s %d/%d" % item for item in sorted(per_mutant.items())), ""]
+        # quotes
+        quotes = list(results(out / "quote"))
+        if quotes:
+            lines += ["### Quote sheets (only quotes that occur verbatim in the source are listed)", ""]
+            for path, result in quotes:
+                if "items" not in result:
+                    continue
+                lines += ["**%s — %s**" % (result.get("packet"), result["question"]), ""]
+                for item in result["items"]:
+                    if item["verbatim"]:
+                        lines.append("- %s  \n  `%s:%s`: `%s`" % (item["item"], item["file"], item["line"], " ".join(item["quote"].split())[:300]))
+                rejected = sum(not item["verbatim"] for item in result["items"])
+                lines += ["- (%d item(s) dropped: quote not found in the source)" % rejected if rejected else "", ""]
+        # drafts
+        drafts = list(results(out / "tex-draft"))
+        if drafts:
+            lines += ["### LaTeX drafts", "", "| Brief | Accepted (compiles) | Characters | GAP marks | Hidden oracle hits | File |", "|---|---|---:|---:|---|---|"]
+            for path, result in drafts:
+                if "attempts" not in result:
+                    continue
+                oracle = result.get("oracle", {})
+                lines.append("| %s | %s | %s | %s | %s | `%s` |" % (result["task_id"], "yes" if result["accepted"] else "no: " + str(result["problem"])[:60].replace("|", "/"),
+                                                                    result["chars"], result["gaps"], "%d/%d" % (sum(oracle.values()), len(oracle)) if oracle else "-", result["file"]))
+            lines.append("")
+        # lean
+        readings = [result for path, result in results(out / "lean-reading")]
+        if readings:
+            accepted = sum(bool(result.get("accepted")) for result in readings)
+            lines += ["### Lean reading cards", "", "%d attempted, %d accepted by the mechanical check." % (len(readings), accepted), ""]
+        compares = [result for path, result in results(out / "lean-compare") if "verdict" in result]
+        if compares:
+            flagged = [result for result in compares if result["verdict"] == "INCONSISTENT"]
+            lines += ["### Lean summary comparison (flags only)", "", "%d compared, %d flagged INCONSISTENT, %d CANNOT TELL." % (
+                len(compares), len(flagged), sum(result["verdict"] == "CANNOT TELL" for result in compares)), ""]
+            for result in flagged:
+                lines.append("- %s `%s` (`%s:%s`): %s" % (result["k_id"], result["lean_name"], result["path"], result["line"], result["reason"]))
+            lines.append("")
+        for path, result in results(out / "pi"):
+            lines += ["### Pi task %s" % result.get("task_id"), "", "accepted=%s checks=%s output=`%s`" % (result.get("accepted"), result.get("checks"), result.get("output")), ""]
+        errors = [(path, result) for folder in EXECUTORS for path, result in results(out / folder) if "error" in result]
+        if errors:
+            lines += ["### Errors", ""] + ["- `%s`: %s" % (path.name, result["error"][:200]) for path, result in errors] + [""]
+    atomic_write(state / "REPORT.md", "\n".join(lines) + "\n")
+    print(state / "REPORT.md")
+    return 0
+
+
+def status(args):
+    state = pathlib.Path(args.state)
+    for machine in ("desktop", "mac"):
+        out = state / machine
+        queue = state / ("queue-%s.jsonl" % machine)
+        total = len(queue.read_text().splitlines()) if queue.exists() else 0
+        counts = {folder: len(list((out / folder).glob("*.json"))) for folder in EXECUTORS if (out / folder).is_dir()}
+        heartbeat = (out / "heartbeat.json").read_text() if (out / "heartbeat.json").exists() else "none"
+        print("%s: queue %d task(s); results %s\n  heartbeat %s" % (machine, total, counts, " ".join(heartbeat.split())))
+    return 0
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    commands = parser.add_subparsers(dest="command", required=True)
+    one = commands.add_parser("prepare")
+    one.add_argument("--state", required=True)
+    one = commands.add_parser("run")
+    one.add_argument("--queue", required=True)
+    one.add_argument("--endpoint", default="http://127.0.0.1:8080/v1")
+    one.add_argument("--out", required=True)
+    one.add_argument("--hours", type=float, default=10.0)
+    one.add_argument("--model", default=None)
+    one.add_argument("--timeout", type=int, default=1800)
+    one.add_argument("--max-passes", type=int, default=8)
+    one.add_argument("--down-retries", type=int, default=30)
+    one.add_argument("--dry-run", action="store_true")
+    for name in ("report", "status"):
+        one = commands.add_parser(name)
+        one.add_argument("--state", required=True)
+    args = parser.parse_args()
+    return {"prepare": prepare, "run": run_queue, "report": report, "status": status}[args.command](args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
