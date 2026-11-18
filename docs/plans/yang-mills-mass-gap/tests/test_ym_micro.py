@@ -114,6 +114,26 @@ class LeanReading(unittest.TestCase):
         self.bad("KIND: theorem\nSTATEMENT: " + "word " * 90 + "\nIDENTIFIERS: Site")  # too long
 
 
+class LeanSnippet(unittest.TestCase):
+    def test_starts_at_target_with_its_doc_comment_only(self):
+        source = "\n".join([
+            "theorem helper (h : a = b) : b = a := by",  # 1
+            "  rw [h]",                                  # 2
+            "",                                          # 3
+            "/-- The answer. -/",                        # 4
+            "@[simp]",                                   # 5
+            "theorem answer (x : Nat) : x + 0 = x := by",  # 6
+            "  simp",                                    # 7
+        ])
+        with tempfile.TemporaryDirectory() as directory:
+            pathlib.Path(directory, "A.lean").write_text(source)
+            got = core.lean_snippet(directory, "https://x/blob/abc123/A.lean#L6")
+            plain = core.lean_snippet(directory, "https://x/blob/abc123/A.lean#L1")
+        self.assertEqual(got["text"].splitlines(), ["/-- The answer. -/", "@[simp]", "theorem answer (x : Nat) : x + 0 = x := by"])
+        self.assertNotIn("helper", got["text"])
+        self.assertEqual(plain["text"], "theorem helper (h : a = b) : b = a := by")
+
+
 class Quotes(unittest.TestCase):
     def test_only_verbatim_quotes_get_a_locator(self):
         with tempfile.TemporaryDirectory() as directory:
