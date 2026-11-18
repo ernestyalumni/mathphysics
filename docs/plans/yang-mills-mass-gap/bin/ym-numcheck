@@ -19,7 +19,7 @@ until a person reads the test.
 """
 import argparse, json, os, pathlib, re, subprocess, sys, tempfile, time, urllib.error, urllib.request
 
-IMAGE = "cpp-python-rust-ubuntu:24.04"   # Python 3.12.3, numpy 2.4.1; pinned by ID at run time
+IMAGE = os.environ.get("YM_NUMCHECK_IMAGE", "cpp-python-rust-ubuntu:24.04")  # default: numpy 2.4.1, no scipy; ID recorded per result
 TRIALS = 200
 
 PROMPT = """You are writing a numerical test for ONE step of a mathematical proof.
