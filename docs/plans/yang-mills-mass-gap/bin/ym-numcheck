@@ -6,8 +6,9 @@ instance satisfying the hypotheses and returns True when the step's claim holds 
 that function on many seeds inside a Docker container with no network, no capabilities and a read-only
 root. The model only writes the test; the verdict comes from running it.
 
-  ym-numcheck run   --units DIR --endpoint URL --out DIR [--only REGEX] [--mode pairs|all] [--seeds N]
+  ym-numcheck run   --units DIR --endpoint URL --out DIR [--only REGEX] [--mode pairs|all] [--seeds N] [--thinking]
   ym-numcheck score --units DIR --out DIR
+  ym-numcheck resandbox --out DIR      (re-run saved CRASH/ERROR tests after a harness fix)
 
 Mode `pairs` (calibration): for every planted mutant, test its mutated step and the same step of the
 unmodified unit. A detection is mutant FAIL with original PASS. Mode `all`: every step of every
@@ -56,6 +57,19 @@ RUNNER = r'''
 import json, math, sys
 import numpy as np
 np.math = math  # removed in numpy 2; models still write np.math.factorial etc.
+np.trapz = getattr(np, "trapz", None) or np.trapezoid  # renamed in numpy 2
+
+def _expm(a):  # models assume scipy's expm lives in numpy.linalg; scaling and squaring with Taylor terms
+    a = np.asarray(a, dtype=complex if np.iscomplexobj(a) else float)
+    s = max(0, int(np.ceil(np.log2(max(np.linalg.norm(a, 1), 1e-300)))) + 1)
+    b = a / 2.0 ** s
+    term = np.eye(a.shape[-1], dtype=a.dtype); r = term.copy()
+    for k in range(1, 30):
+        term = term @ b / k; r = r + term
+    for _ in range(s):
+        r = r @ r
+    return r
+np.linalg.expm = getattr(np.linalg, "expm", None) or _expm
 ns = {"np": np}
 exec(compile(open("/w/check.py").read(), "check.py", "exec"), ns)
 f = ns["check"]
@@ -74,6 +88,8 @@ out = {"pass": 0, "fail": 0, "error": 0, "errors": []}
 for i in range(int(sys.argv[1])):
     try:
         ok = f(Rng(np.random.default_rng(i)))
+        if ok is None:  # no verdict (truncated test, or the model decided NONE inside its code)
+            raise ValueError("check returned None")
         out["pass" if bool(ok) else "fail"] += 1
     except Exception as e:
         out["error"] += 1
@@ -83,9 +99,10 @@ print(json.dumps(out))
 '''
 
 
-def chat(endpoint, prompt, seed, timeout=900):
-    payload = {"messages": [{"role": "user", "content": prompt}], "temperature": 0.2, "max_tokens": 2000,
-               "seed": seed, "chat_template_kwargs": {"enable_thinking": False}}
+def chat(endpoint, prompt, seed, thinking=False, timeout=1800):
+    payload = {"messages": [{"role": "user", "content": prompt}], "temperature": 0.2,
+               "max_tokens": 12000 if thinking else 2000,
+               "seed": seed, "chat_template_kwargs": {"enable_thinking": thinking}}
     req = urllib.request.Request(endpoint + "/chat/completions", data=json.dumps(payload).encode(),
                                  headers={"Content-Type": "application/json"})
     reply = json.load(urllib.request.urlopen(req, timeout=timeout))
@@ -93,10 +110,10 @@ def chat(endpoint, prompt, seed, timeout=900):
 
 
 def extract(text):
-    m = re.search(r"```(?:python)?\s*\n(.*?)```", text, re.S)
+    m = re.search(r"```(?:python)?[ \t]*\n(.*?)(?:```|\Z)", text, re.S)  # closing fence may be missing
     if m and "def check" in m.group(1):
         return m.group(1)
-    if "def check" in text:
+    if "def check" in text and "```" not in text:
         return text
     return None
 
@@ -176,7 +193,7 @@ def run(args):
             target.parent.mkdir(parents=True, exist_ok=True)
             started = time.time()
             try:
-                text = chat(args.endpoint, prompt, seed)
+                text = chat(args.endpoint, prompt, seed, args.thinking)
             except (urllib.error.URLError, OSError) as e:
                 print("endpoint error %s; stopping" % e, flush=True)
                 return 1
@@ -191,6 +208,27 @@ def run(args):
             target.write_text(json.dumps(res, indent=1))
             print("%s %s s%d k%d %s %s" % (time.strftime("%H:%M:%SZ", time.gmtime()), name, k, seed, res["verdict"],
                                           "" if "pass" not in res else "%d/%d/%d" % (res["pass"], res["fail"], res["error"])), flush=True)
+    return 0
+
+
+def resandbox(args):
+    """Re-run saved tests whose verdict was CRASH or ERROR (after a harness fix), without asking the model again."""
+    out = pathlib.Path(args.out)
+    img = image_id()
+    for p in sorted(out.glob("*/s*.k*.json")):
+        r = json.loads(p.read_text())
+        py = p.with_suffix(".py")
+        if r["verdict"] not in ("CRASH", "ERROR", "FAIL") or not py.exists():
+            continue
+        code = extract(py.read_text())
+        if code is None:
+            continue
+        py.write_text(code)
+        new = sandbox(code)
+        print("%s s%d: %s -> %s" % (r["unit"], r["step"], r["verdict"], new["verdict"]), flush=True)
+        keep = {k: r[k] for k in ("unit", "step", "seed", "truth", "model_seconds", "label") if k in r}
+        new.update(keep, image=img, resandboxed=True)
+        p.write_text(json.dumps(new, indent=1))
     return 0
 
 
@@ -235,10 +273,13 @@ def main():
     r.add_argument("--units", required=True); r.add_argument("--endpoint", required=True); r.add_argument("--out", required=True)
     r.add_argument("--only", default=None); r.add_argument("--mode", choices=("pairs", "all"), default="pairs")
     r.add_argument("--seeds", type=int, default=1)
+    r.add_argument("--thinking", action="store_true", help="let the model reason before answering (slower)")
     s = sub.add_parser("score")
     s.add_argument("--units", required=True); s.add_argument("--out", required=True)
+    rs = sub.add_parser("resandbox")
+    rs.add_argument("--out", required=True)
     a = ap.parse_args()
-    sys.exit(run(a) if a.cmd == "run" else score(a))
+    sys.exit({"run": run, "score": score, "resandbox": resandbox}[a.cmd](a))
 
 
 if __name__ == "__main__":
