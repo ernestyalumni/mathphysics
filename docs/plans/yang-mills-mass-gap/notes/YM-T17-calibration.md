@@ -14,6 +14,11 @@ Label: unreviewed (claude-opus55-strat, 2026-11-18). Model: Qwen3.8-9B-Distill Q
 
 For comparison, the 9B referee located 94 of 333 planted errors (28%) in the overnight run.
 
+**Correction for non-errors.** Two of the 54 mutants are true statements: ym-04 mut4 (‖·‖² = 0 → ‖·‖³ = 0) and ym-05 mut2 (r_j² ≤ r_j → r_j³ ≤ r_j for 0 ≤ r_j ≤ 1). Both were confirmed by q7nd, who fixed the generator in YM-T14 fe6963f. Without them there are 52 real errors:
+
+- No thinking: both were untestable, so the result stays 6 detected and 6 missed.
+- Thinking: 12 detected and 7 missed. The ym-04 mut4 "detection" becomes a false alarm on a true statement, and the ym-05 mut2 "miss" is a correct PASS.
+
 ## Every FAIL on an unmodified step was read
 
 All 12 (6 per run) are wrong tests, not errors in the notes:
@@ -31,7 +36,7 @@ Spot check of 6 of the 13 thinking-run detections:
 - Genuine: s01 mut17 (3N = 2N), ym-02 mut2 (wrong indicator in Tonelli), ym-01 mut5.
 - Plausibly genuine, on an arbitrary instance: ym-03 mut1.
 - Right verdict from a wrong test: ym-04 mut1 (`≤` tested as equality), ym-07 mut4 (no-thinking run; same flaw).
-- Not an error at all: ym-04 mut4 changes `‖E_H((0,Δ'])ψ‖² = 0` to `‖…‖³ = 0`, which is equivalent. The mutant is a true statement, so its FAIL is a false alarm. The mutant generator (YM-T14) should skip exponent changes on expressions set equal to zero.
+- Not an error at all: ym-04 mut4 changes `‖E_H((0,Δ'])ψ‖² = 0` to `‖…‖³ = 0`, which is equivalent. The mutant is a true statement, so its FAIL is a false alarm. YM-T14 now skips such exponent changes (fe6963f). ym-05 mut2 is also true, and no text rule catches it.
 
 ## Harness defects found and fixed
 
