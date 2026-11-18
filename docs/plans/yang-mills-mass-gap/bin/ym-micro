@@ -11,6 +11,7 @@ escape disabled and paranoid file access, in a temporary directory.
     ym-micro run --queue Q.jsonl --endpoint URL --out DIR --hours H [--dry-run]
     ym-micro report --state DIR                      regenerate the markdown summaries
     ym-micro status --state DIR
+    ym-micro export-cases --state DIR --out DIR      frozen referee cases for claw-work weight-space runs (YM-T16)
 
 Task types: referee (flags only), lean-reading, lean-compare (flags only), quote (verbatim-checked
 retrieval), tex-draft (compile-checked draft), draft-referee, pi (headless Pi, file checks), probe.
@@ -785,6 +786,52 @@ def prepare(args):
 
 
 # ---------------------------------------------------------------------------------------------
+# export-cases: frozen referee cases for the claw-work weight-space experiment (packet YM-T16)
+
+def export_cases(args):
+    """Write discovery and held-out referee case files for `claw-wsp referee`.
+
+    Pre-registered rules: proof units with at most --max-steps steps (sections and proofs alike);
+    each original is expected CORRECT (a presumption: our own proofs are unreviewed) and each of
+    up to --mutants planted single errors is expected INCORRECT at its step. Units are split by
+    group: sorted by SHA-256 of the unit name, even positions go to discovery, odd to held-out.
+    All mutants of a unit stay with their original, so held-out proofs are never seen in discovery.
+    """
+    state = pathlib.Path(args.state)
+    out = pathlib.Path(args.out)
+    out.mkdir(parents=True, exist_ok=False)
+    units = []
+    for path in sorted((state / "units").glob("*.json")):
+        unit = json.loads(path.read_text())
+        if unit.get("truth") == "mutant" or not unit.get("steps"):
+            continue
+        if len(unit["steps"]) <= args.max_steps:
+            units.append(unit)
+    units.sort(key=lambda u: hashlib.sha256(u["name"].encode()).hexdigest())
+    files = {"discovery": [], "test": []}
+    split = {}
+    for position, unit in enumerate(units):
+        part = "discovery" if position % 2 == 0 else "test"
+        split[unit["name"]] = part
+        files[part].append({"id": unit["name"], "group": unit["name"], "prompt": referee_prompt(unit),
+                            "expected": "CORRECT", "step": None})
+        for mutant in mutants(unit, limit=args.mutants):
+            files[part].append({"id": mutant["name"], "group": unit["name"], "prompt": referee_prompt(mutant),
+                                "expected": "INCORRECT", "step": mutant["mutated_step"]})
+    summary = {"rules": export_cases.__doc__.split("\n\n")[1].split("\n\n")[0].strip(),
+               "max_steps": args.max_steps, "mutants_per_unit": args.mutants, "split": split}
+    for part, cases in files.items():
+        text = json.dumps(cases, indent=1, ensure_ascii=False) + "\n"
+        atomic_write(out / ("referee-%s.json" % part), text)
+        summary[part] = {"cases": len(cases), "mutants": sum(c["expected"] == "INCORRECT" for c in cases),
+                         "units": sum(c["expected"] == "CORRECT" for c in cases),
+                         "sha256": hashlib.sha256(text.encode()).hexdigest()}
+    atomic_write(out / "split.json", json.dumps(summary, indent=1) + "\n")
+    print(json.dumps({k: v for k, v in summary.items() if k != "split"}, indent=1))
+    return 0
+
+
+# ---------------------------------------------------------------------------------------------
 # report
 
 def results(folder):
@@ -932,8 +979,14 @@ def main():
     for name in ("report", "status"):
         one = commands.add_parser(name)
         one.add_argument("--state", required=True)
+    one = commands.add_parser("export-cases")
+    one.add_argument("--state", required=True)
+    one.add_argument("--out", required=True)
+    one.add_argument("--max-steps", type=int, default=25)
+    one.add_argument("--mutants", type=int, default=4)
     args = parser.parse_args()
-    return {"prepare": prepare, "run": run_queue, "report": report, "status": status}[args.command](args)
+    return {"prepare": prepare, "run": run_queue, "report": report, "status": status,
+            "export-cases": export_cases}[args.command](args)
 
 
 if __name__ == "__main__":

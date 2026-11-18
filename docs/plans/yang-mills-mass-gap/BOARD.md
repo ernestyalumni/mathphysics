@@ -69,6 +69,7 @@ Tracker items: YM-O01 = local:9, T01 = 10, T02 = 11, T05 = 12, G02 = 13.
 | [YM-T10](tasks/YM-T10.md) | Exact small-lattice evaluation | T2–T3 | ready; first slice exists (`Rust/lattice-gauge/src/z2_gauge.rs`): extend to Z_N, transfer-matrix method, SU(2) characters |
 | [YM-T11](tasks/YM-T11.md) | Calculus on words of group elements | T3 | blocked:YM-R01 |
 | [YM-T14](tasks/YM-T14.md) | Micro-task runner for local 9B models (`referee` and `index` types first; see `notes/local-models.md`) | T2 | merged (64c2c2b) |
+| [YM-T16](tasks/YM-T16.md) | Weight edit of the local 9B referee (claw-work `Rust/weight-space`, phase 2) | T2 | done: no difference established (`notes/YM-T16-weight-space-referee.md`) |
 | [YM-T17](tasks/YM-T17.md) | Proof steps as numeric tests written by a local model | T2 | merged (64c2c2b); verdict: local models are not reliable judges (best: 3-of-3 agreement, 0/54 false alarms, 15% recall; YM-O04 §5) |
 | [YM-T18](tasks/YM-T18.md) | Verified samplers (`ymlib`) and agreement voting for numeric tests | T2 | merged (fb9dcaa) |
 | [YM-N01](tasks/YM-N01.md) | SU(2) Monte Carlo baseline | T2 | merged (a18a4dc): Rust CPU + CUDA C++; 2D exact, C_V maximum, Creutz ratios, glueball and chi_t as cross-checks against published values (YM-O04 §3); also U(1), monopoles, vortices, topology |

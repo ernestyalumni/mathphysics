@@ -2,7 +2,7 @@
 
 Run: python3 -I -m unittest docs/plans/yang-mills-mass-gap/tests/test_ym_micro.py
 """
-import importlib.machinery, importlib.util, json, pathlib, re, tempfile, unittest
+import contextlib, importlib.machinery, importlib.util, io, json, pathlib, re, tempfile, unittest
 
 PLAN = pathlib.Path(__file__).resolve().parents[1]
 
@@ -203,6 +203,36 @@ class DryRun(unittest.TestCase):
             before = (root / "out/referee/u1.p0.json").stat().st_mtime_ns
             self.assertEqual(core.run_queue(arguments), 0)
             self.assertEqual((root / "out/referee/u1.p0.json").stat().st_mtime_ns, before)
+
+
+class ExportCases(unittest.TestCase):
+    def test_split_is_by_unit_and_mutants_stay_with_their_proof(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            (root / "state/units").mkdir(parents=True)
+            for k in range(4):
+                unit = {"name": "u%d" % k, "truth": "unknown", "context": "S", "refs": [],
+                        "steps": [r"$a\le b$ here.", r"so $x^{2}=y$.", "done."]}
+                (root / "state/units" / ("u%d.json" % k)).write_text(json.dumps(unit))
+            (root / "state/units/long.json").write_text(json.dumps(
+                {"name": "long", "truth": "unknown", "steps": ["s."] * 30}))
+            (root / "state/units/u0--mut1.json").write_text(json.dumps({"name": "u0--mut1", "truth": "mutant", "steps": ["x"]}))
+            arguments = type("A", (), dict(state=str(root / "state"), out=str(root / "out"), max_steps=25, mutants=4))
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(core.export_cases(arguments), 0)
+            parts = {name: json.loads((root / "out" / ("referee-%s.json" % name)).read_text()) for name in ("discovery", "test")}
+        groups = {name: {case["group"] for case in cases} for name, cases in parts.items()}
+        self.assertFalse(groups["discovery"] & groups["test"])
+        self.assertEqual(groups["discovery"] | groups["test"], {"u0", "u1", "u2", "u3"})
+        for cases in parts.values():
+            for case in cases:
+                if case["expected"] == "INCORRECT":
+                    self.assertTrue(case["id"].startswith(case["group"] + "--mut"))
+                    self.assertIn("Step %d:" % case["step"], case["prompt"])
+                else:
+                    self.assertIsNone(case["step"])
+                self.assertNotIn("#", case["id"])
+        self.assertEqual(sum(c["expected"] == "INCORRECT" for cs in parts.values() for c in cs), 8)
 
 
 if __name__ == "__main__":
