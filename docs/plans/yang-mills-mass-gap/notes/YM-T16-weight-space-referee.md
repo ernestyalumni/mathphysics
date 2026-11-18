@@ -12,6 +12,9 @@ No accuracy result yet: the GPU runs on the 9B have not started (the 3060 was he
 1. **Gate.** Within one mutant, are the samples that miss the planted error shorter than those that locate it? If not, "reasons too briefly" is the wrong target and the edit is not expected to help.
 2. **Held-out.** Mutants located, mutants flagged, false alarms on originals, for control weights, edited weights (4% of the 896 attention and DeltaNet heads, projected off the short-reasoning direction), and control weights with an instruction to check every step at length.
 
+## Context from the overnight run (not used to choose anything in this experiment)
+The strategist session hand-checked six INCORRECT flags that the desktop 9B (Qwythos, a different model from the one edited here) raised on presumed-correct proofs: all six were false alarms (ym-01 step 3, ym-07 step 5, ym-09 step 5, ym-s02 step 14, ym-s09 step 14, N2 squaring step 1), against about 28% recall on planted errors. So the held-out comparison must be read for false alarms on originals as much as for mutants located: an edit that makes the model reason longer may also make it flag more. Of these six, ym-07 and ym-09 are held-out units here; ym-s02 is excluded (50 steps).
+
 ## Labels
 All model output: `unreviewed (local model output; not evidence)`. Code and protocol: by the author, not reviewed by another family. Originals are presumed correct; a genuine error in one of our proofs would count against the model, and would be worth finding.
 
