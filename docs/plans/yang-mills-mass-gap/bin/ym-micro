@@ -781,7 +781,7 @@ def report(args):
                       "| Unit | Mutant runs | Detected | Exact step |", "|---|---:|---:|---:|"]
             for name, (runs, detected, exact) in sorted(calibration.items()):
                 lines.append("| %s | %d | %d | %d |" % (name, runs, detected, exact))
-            lines += ["", "Per mutant (detected/runs): " + "; ".join("%s %d/%d" % item for item in sorted(per_mutant.items())), ""]
+            lines += ["", "Per mutant (detected/runs): " + "; ".join("%s %d/%d" % (name, detected, runs) for name, (detected, runs) in sorted(per_mutant.items())), ""]
         # quotes
         quotes = list(results(out / "quote"))
         if quotes:
