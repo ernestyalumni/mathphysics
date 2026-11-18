@@ -21,6 +21,19 @@ Exploratory, not pre-registered:
 - So brevity goes with the model *passing* a mutant, not with it misplacing the error.
 - This reading was chosen after seeing the data. Only the held-out run can test it.
 
+**Mutants that are not errors.** The strategist found the first one; the second came from reading the rest of the exponent mutants by hand.
+- `ym-04 mut4` (discovery) changes ‖E_H((0,Δ'])ψ‖² = 0 to ‖…‖³ = 0. These say the same thing, so the "mutant" is true.
+  - Two of its three samples correctly answered CORRECT.
+  - The third, counted as "located", flagged step 4 after 7,071 tokens. That was a false alarm.
+- `ym-05 mut2` (discovery) changes r_j² ≤ r_j to r_j³ ≤ r_j under 0 ≤ r_j ≤ 1. This is still true; only the inference to q_n ≤ s_n gets weaker. All three samples answered CORRECT.
+- Effect of dropping both:
+  - Mutants located in discovery: 57 of 129.
+  - Gate: 29 of 50 pairs (58%), so the gate verdict is unchanged.
+- Held-out: none of the 11 exponent mutants is of this kind.
+  - The syntactic check also catches `ym-09 mut1`. There, y¹ = y² = 0 becomes y¹ = y³ = 0.
+  - The ² is a coordinate index, not an exponent, so that mutant is a real error and stays in.
+- The generator now skips an exponent change where the power is one whole side of a comparison with 0 (`compared_with_zero` in `bin/ym-micro`). The exported case files were not changed: the protocol was fixed before the run.
+
 The pipeline goes on to capture, discovery of the edit and the held-out arms unchanged. That was pre-registered: the edit's effect on held-out accuracy is the second, separate question.
 
 Before the run, the following existed:
