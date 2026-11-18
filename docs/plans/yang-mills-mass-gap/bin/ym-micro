@@ -253,12 +253,67 @@ MUTATION_RULES = [
 ]
 
 
+_RELATION = r"(?:=|<|>|\\le(?:q)?(?![a-zA-Z])|\\ge(?:q)?(?![a-zA-Z])|\\neq?(?![a-zA-Z]))"
+_SIDE_START = re.compile(r"\$|\\\[|\\\(|\\quad|" + _RELATION)
+_ZERO_AFTER = re.compile(r"(?:\s|\\,)*(" + _RELATION + r")\s*0(?![\w.])")
+_ZERO_BEFORE = re.compile(r"(?<![\w.^{])0\s*$")
+_NONNEGATIVE_BASE = re.compile(r"(?:\\\||\||\\rVert|\\rvert|\\right\s*\\?\|)\s*$")
+
+
+def _has_top_level_sign(term):
+    depth, norm, absolute = 0, False, False
+    index = 0
+    while index < len(term):
+        if term.startswith("\\|", index):
+            norm, index = not norm, index + 2
+            continue
+        character = term[index]
+        if character in "([{":
+            depth += 1
+        elif character in ")]}":
+            depth -= 1
+        elif character == "|":
+            absolute = not absolute
+        elif character in "+-" and depth <= 0 and not norm and not absolute:
+            return True
+        index += 1
+    return False
+
+
+def compared_with_zero(step, match):
+    """True when the power at `match` is one whole side of a comparison with 0 that the exponent cannot change.
+
+    ``a^p = 0`` and ``a^p \\ne 0`` do not depend on p for any base; ``a^p > 0``, ``a^p \\ge 0`` and the
+    reverse comparisons do not depend on p when the base is a norm or absolute value. Changing the exponent
+    there leaves a true statement, not a planted error.
+    """
+    starts = list(_SIDE_START.finditer(step, 0, match.start()))
+    side_start = starts[-1].end() if starts else 0
+    term = step[side_start:match.start()]
+    if not term.strip() or _has_top_level_sign(term):
+        return False
+    after = _ZERO_AFTER.match(step, match.end())
+    if after:
+        relation = after.group(1)
+    elif starts and re.fullmatch(_RELATION, starts[-1].group()) and _ZERO_BEFORE.search(step[:starts[-1].start()]):
+        relation = starts[-1].group()
+    else:
+        return False
+    return relation in ("=", "\\ne", "\\neq") or bool(_NONNEGATIVE_BASE.search(term))
+
+
 def mutants(unit, limit=6):
-    """Planted single errors at known steps, for calibration. Truth of a mutant is presumed, not proved."""
+    """Planted single errors at known steps, for calibration. Truth of a mutant is presumed, not proved.
+
+    An exponent is not changed where its power is compared with 0 (see `compared_with_zero`).
+    """
     candidates = []
     for step_number, step in enumerate(unit["steps"]):
         for rule, pattern, replacement in MUTATION_RULES:
-            if pattern.search(step):
+            found = pattern.search(step)
+            if found and rule.startswith("exponent") and compared_with_zero(step, found):
+                continue
+            if found:
                 changed = pattern.sub(replacement, step, count=1)
                 key = hashlib.sha256(("%s|%d|%s" % (unit["name"], step_number, rule)).encode()).hexdigest()
                 candidates.append((key, step_number, rule, changed))

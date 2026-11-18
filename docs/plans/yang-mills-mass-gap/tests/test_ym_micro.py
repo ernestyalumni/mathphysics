@@ -84,6 +84,19 @@ class Mutants(unittest.TestCase):
         self.assertTrue(any(r"\ge" in mutant["steps"][0] for mutant in found))
         self.assertTrue(all(mutant["steps"][2] == unit["steps"][2] for mutant in found))
 
+    def test_no_exponent_change_on_a_power_compared_with_zero(self):
+        # ||E psi||^2 = 0 and ||E psi||^3 = 0 are the same statement: not a planted error.
+        harmless = [r"Hence $\|E_H((0,\Delta'])\psi\|^2=0$ on the dense set.", r"so $\left|f\right|^{2}\ge 0$.",
+                    r"hence $0 < \|v\|^{4}$.", r"and $(a-b)^2 = 0$."]
+        for step in harmless:
+            found = core.mutants({"name": "u", "truth": "unknown", "steps": [step]})
+            self.assertFalse([m for m in found if m["mutation"].startswith("exponent")], step)
+        kept = [r"$\|v\|^2 = 2\|w\|$.", r"$\Delta_0 = c\,x^2$.", r"$x^{2} \le 10$.", r"and $(\lambda-\mu)^2>0$.",
+                r"$0=\bigl\langle H_2(g,g)+X((df)g)^2\bigr\rangle$.", r"$1 - x^2 = 0$."]
+        for step in kept:
+            self.assertTrue(any(m["mutation"].startswith("exponent") for m in
+                                core.mutants({"name": "u", "truth": "unknown", "steps": [step]})), step)
+
 
 class Verdicts(unittest.TestCase):
     def test_parse(self):
