@@ -1,0 +1,245 @@
+#!/usr/bin/env python3
+"""ym-numcheck: turn proof steps into numeric tests that a machine runs (YM-T17).
+
+A local model reads one step of a proof and writes `check(rng)`, a numpy function that samples a random
+instance satisfying the hypotheses and returns True when the step's claim holds on it. The harness runs
+that function on many seeds inside a Docker container with no network, no capabilities and a read-only
+root. The model only writes the test; the verdict comes from running it.
+
+  ym-numcheck run   --units DIR --endpoint URL --out DIR [--only REGEX] [--mode pairs|all] [--seeds N]
+  ym-numcheck score --units DIR --out DIR
+
+Mode `pairs` (calibration): for every planted mutant, test its mutated step and the same step of the
+unmodified unit. A detection is mutant FAIL with original PASS. Mode `all`: every step of every
+unmodified unit, to measure false alarms. Output: out/<unit>/s<step>.k<seed>.{py,json}.
+
+Label: unreviewed tooling. A PASS proves nothing (random tests can miss); a FAIL is a lead, not a refutation,
+until a person reads the test.
+"""
+import argparse, json, os, pathlib, re, subprocess, sys, tempfile, time, urllib.error, urllib.request
+
+IMAGE = "cpp-python-rust-ubuntu:24.04"   # Python 3.12.3, numpy 2.4.1; pinned by ID at run time
+TRIALS = 200
+
+PROMPT = """You are writing a numerical test for ONE step of a mathematical proof.
+
+Statement being proved:
+{context}
+
+Referenced equations:
+{refs}
+
+Earlier steps (for notation only):
+{earlier}
+
+THE STEP TO TEST (step {k}):
+{step}
+
+Task: if step {k} asserts an equation, identity or inequality that can be tested on random numeric
+instances (numbers, vectors or small matrices), write a Python function
+
+    def check(rng):
+        ...
+        return <bool>
+
+using only numpy (imported as np) and the standard library. `rng` is a numpy Generator.
+Rules:
+1. Test EXACTLY what step {k} asserts, with its constants and signs as written, even if you suspect it is wrong.
+2. Compute each side independently from the definitions. Never compute one side by using the formula being tested.
+3. Sample an instance that satisfies the hypotheses (for example su(N): M = A - A^dagger, then subtract trace(M)/N times the identity; SU(N): QR-decompose a complex Gaussian matrix and fix the phases and determinant). Use small sizes such as N in 2..4.
+4. Compare with a tolerance such as np.isclose(lhs, rhs, rtol=1e-7, atol=1e-9), or lhs <= rhs + 1e-9 for inequalities.
+5. If the step asserts nothing numerically testable (pure logic, citations, definitions, existence, limits), reply with the single word NONE.
+
+Reply with one ```python code block containing check, or with NONE. No explanation."""
+
+RUNNER = r'''
+import json, math, sys
+import numpy as np
+np.math = math  # removed in numpy 2; models still write np.math.factorial etc.
+ns = {"np": np}
+exec(compile(open("/w/check.py").read(), "check.py", "exec"), ns)
+f = ns["check"]
+
+class Rng:  # a Generator that also answers the legacy RandomState names models often write
+    def __init__(self, g):
+        self.g = g
+    def __getattr__(self, name):
+        sz = lambda a: a if a else None
+        legacy = {"randn": lambda *a: self.g.standard_normal(sz(a)), "rand": lambda *a: self.g.random(sz(a)),
+                  "randint": lambda lo, hi=None, size=None: self.g.integers(lo, hi, size),
+                  "random_sample": lambda size=None: self.g.random(size)}
+        return legacy[name] if name in legacy else getattr(self.g, name)
+
+out = {"pass": 0, "fail": 0, "error": 0, "errors": []}
+for i in range(int(sys.argv[1])):
+    try:
+        ok = f(Rng(np.random.default_rng(i)))
+        out["pass" if bool(ok) else "fail"] += 1
+    except Exception as e:
+        out["error"] += 1
+        if len(out["errors"]) < 3:
+            out["errors"].append(repr(e)[:200])
+print(json.dumps(out))
+'''
+
+
+def chat(endpoint, prompt, seed, timeout=900):
+    payload = {"messages": [{"role": "user", "content": prompt}], "temperature": 0.2, "max_tokens": 2000,
+               "seed": seed, "chat_template_kwargs": {"enable_thinking": False}}
+    req = urllib.request.Request(endpoint + "/chat/completions", data=json.dumps(payload).encode(),
+                                 headers={"Content-Type": "application/json"})
+    reply = json.load(urllib.request.urlopen(req, timeout=timeout))
+    return reply["choices"][0]["message"].get("content") or ""
+
+
+def extract(text):
+    m = re.search(r"```(?:python)?\s*\n(.*?)```", text, re.S)
+    if m and "def check" in m.group(1):
+        return m.group(1)
+    if "def check" in text:
+        return text
+    return None
+
+
+def image_id():
+    return subprocess.run(["docker", "image", "inspect", "-f", "{{.Id}}", IMAGE], capture_output=True, text=True).stdout.strip()
+
+
+def sandbox(code, trials=TRIALS):
+    with tempfile.TemporaryDirectory() as d:
+        pathlib.Path(d, "check.py").write_text(code)
+        pathlib.Path(d, "runner.py").write_text(RUNNER)
+        os.chmod(d, 0o755)
+        for f in ("check.py", "runner.py"):
+            os.chmod(os.path.join(d, f), 0o644)
+        cmd = ["docker", "run", "--rm", "--network", "none", "--read-only", "--user", "65534:65534",
+               "--memory", "1g", "--cpus", "1", "--pids-limit", "64", "--cap-drop", "ALL",
+               "--security-opt", "no-new-privileges", "-v", d + ":/w:ro", IMAGE,
+               "timeout", "60", "python3", "-I", "/w/runner.py", str(trials)]
+        try:
+            done = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        except subprocess.TimeoutExpired:
+            return {"verdict": "TIMEOUT"}
+        try:
+            res = json.loads(done.stdout.strip().splitlines()[-1])
+        except (IndexError, ValueError):
+            return {"verdict": "CRASH", "stderr": done.stderr[-400:]}
+    if res["error"] == trials:
+        res["verdict"] = "ERROR"
+    elif res["fail"] > 0:
+        res["verdict"] = "FAIL"
+    else:
+        res["verdict"] = "PASS"
+    return res
+
+
+def load_units(units_dir):
+    units = {}
+    for p in sorted(pathlib.Path(units_dir).glob("*.json")):
+        units[p.stem] = json.loads(p.read_text())
+    return units
+
+
+def jobs(units, mode, only):
+    pick = re.compile(only) if only else None
+    out = []
+    for name, u in units.items():
+        if pick and not pick.search(name):
+            continue
+        if mode == "pairs" and u.get("truth") == "mutant":
+            base = name.split("--mut")[0]
+            k = u["mutated_step"]
+            out.append((name, k))
+            if (base, k) not in out and base in units:
+                out.append((base, k))
+        elif mode == "all" and u.get("truth") != "mutant":
+            out += [(name, k) for k in range(1, len(u["steps"]) + 1)]
+    return out
+
+
+def run(args):
+    units = load_units(args.units)
+    out = pathlib.Path(args.out)
+    todo = jobs(units, args.mode, args.only)
+    img = image_id()
+    print("%d step(s) to test, image %s" % (len(todo), img[:19]), flush=True)
+    for name, k in todo:
+        u = units[name]
+        steps = u["steps"]
+        prompt = PROMPT.format(context=u.get("context") or "(see steps)", refs="\n\n".join(u.get("refs", [])) or "(none)",
+                               earlier="\n\n".join("%d. %s" % (i + 1, s) for i, s in enumerate(steps[:k - 1])) or "(none)",
+                               k=k, step=steps[k - 1])
+        for seed in range(args.seeds):
+            target = out / name / ("s%d.k%d.json" % (k, seed))
+            if target.exists():
+                continue
+            target.parent.mkdir(parents=True, exist_ok=True)
+            started = time.time()
+            try:
+                text = chat(args.endpoint, prompt, seed)
+            except (urllib.error.URLError, OSError) as e:
+                print("endpoint error %s; stopping" % e, flush=True)
+                return 1
+            code = extract(text)
+            if code is None:
+                res = {"verdict": "NONE" if text.strip().upper().startswith("NONE") else "NOCODE", "reply": text[:400]}
+            else:
+                (out / name / ("s%d.k%d.py" % (k, seed))).write_text(code)
+                res = sandbox(code)
+            res.update(unit=name, step=k, seed=seed, truth=u.get("truth"), image=img,
+                       model_seconds=round(time.time() - started, 1), label="unreviewed")
+            target.write_text(json.dumps(res, indent=1))
+            print("%s %s s%d k%d %s %s" % (time.strftime("%H:%M:%SZ", time.gmtime()), name, k, seed, res["verdict"],
+                                          "" if "pass" not in res else "%d/%d/%d" % (res["pass"], res["fail"], res["error"])), flush=True)
+    return 0
+
+
+def score(args):
+    units = load_units(args.units)
+    out = pathlib.Path(args.out)
+    res = {}
+    for p in out.glob("*/s*.k*.json"):
+        r = json.loads(p.read_text())
+        res.setdefault((r["unit"], r["step"]), []).append(r["verdict"])
+    def v(key):  # majority-free: FAIL if any seed's test failed
+        vs = res.get(key, [])
+        return "FAIL" if "FAIL" in vs else ("PASS" if "PASS" in vs else (vs[0] if vs else "-"))
+    rows, tally = [], {}
+    for name, u in sorted(units.items()):
+        if u.get("truth") != "mutant":
+            continue
+        k = u["mutated_step"]
+        mv, ov = v((name, k)), v((name.split("--mut")[0], k))
+        if mv == "-":
+            continue
+        outcome = ("detected" if mv == "FAIL" and ov == "PASS" else
+                   "false-alarm-on-original" if ov == "FAIL" else
+                   "missed" if mv == "PASS" else "untested")
+        tally[outcome] = tally.get(outcome, 0) + 1
+        rows.append((name, k, mv, ov, outcome))
+    for r in rows:
+        print("%-62s step %-3d mutant %-7s original %-7s %s" % r)
+    print("\nmutants:", len(rows), tally)
+    orig = [(key, v(key)) for key in res if units.get(key[0], {}).get("truth") != "mutant"]
+    t = {}
+    for _, verdict in orig:
+        t[verdict] = t.get(verdict, 0) + 1
+    print("original steps tested:", len(orig), t)
+    return 0
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    r = sub.add_parser("run")
+    r.add_argument("--units", required=True); r.add_argument("--endpoint", required=True); r.add_argument("--out", required=True)
+    r.add_argument("--only", default=None); r.add_argument("--mode", choices=("pairs", "all"), default="pairs")
+    r.add_argument("--seeds", type=int, default=1)
+    s = sub.add_parser("score")
+    s.add_argument("--units", required=True); s.add_argument("--out", required=True)
+    a = ap.parse_args()
+    sys.exit(run(a) if a.cmd == "run" else score(a))
+
+
+if __name__ == "__main__":
+    main()
