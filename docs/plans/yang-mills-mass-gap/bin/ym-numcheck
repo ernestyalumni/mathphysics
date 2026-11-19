@@ -8,6 +8,7 @@ root. The model only writes the test; the verdict comes from running it.
 
   ym-numcheck run   --units DIR --endpoint URL --out DIR [--only REGEX] [--mode pairs|all] [--seeds N] [--thinking]
   ym-numcheck score --units DIR --out DIR
+  ym-numcheck selftest                  (check ymlib.py, the samplers offered to tests with --ymlib)
   ym-numcheck resandbox --out DIR      (re-run saved CRASH/ERROR tests after a harness fix)
 
 Mode `pairs` (calibration): for every planted mutant, test its mutated step and the same step of the
@@ -21,6 +22,7 @@ import argparse, json, os, pathlib, re, subprocess, sys, tempfile, time, urllib.
 
 IMAGE = os.environ.get("YM_NUMCHECK_IMAGE", "cpp-python-rust-ubuntu:24.04")  # default: numpy 2.4.1, no scipy; ID recorded per result
 TRIALS = 200
+YMLIB = pathlib.Path(__file__).resolve().with_name("ymlib.py")
 
 PROMPT = """You are writing a numerical test for ONE step of a mathematical proof.
 
@@ -47,11 +49,28 @@ using only numpy (imported as np) and the standard library. `rng` is a numpy Gen
 Rules:
 1. Test EXACTLY what step {k} asserts, with its constants and signs as written, even if you suspect it is wrong.
 2. Compute each side independently from the definitions. Never compute one side by using the formula being tested.
-3. Sample an instance that satisfies the hypotheses (for example su(N): M = A - A^dagger, then subtract trace(M)/N times the identity; SU(N): QR-decompose a complex Gaussian matrix and fix the phases and determinant). Use small sizes such as N in 2..4.
+3. {sampling}
 4. Compare with a tolerance such as np.isclose(lhs, rhs, rtol=1e-7, atol=1e-9), or lhs <= rhs + 1e-9 for inequalities.
 5. If the step asserts nothing numerically testable (pure logic, citations, definitions, existence, limits), reply with the single word NONE.
 
 Reply with one ```python code block containing check, or with NONE. No explanation."""
+
+SAMPLING_PLAIN = ("Sample an instance that satisfies the hypotheses (for example su(N): M = A - A^dagger, then subtract "
+                  "trace(M)/N times the identity; SU(N): QR-decompose a complex Gaussian matrix and fix the phases and "
+                  "determinant). Use small sizes such as N in 2..4.")
+SAMPLING_YMLIB = """Sample an instance that satisfies the hypotheses. Use small sizes such as N in 2..4. A tested helper module
+   is available as `ym` (already imported); prefer it to building instances yourself:
+     ym.su_algebra(rng, N)        traceless anti-Hermitian N x N (an element of su(N))
+     ym.hermitian(rng, N, traceless=False)
+     ym.haar_su(rng, N), ym.haar_unitary(rng, N)   Haar-random SU(N) / U(N)
+     ym.gell_mann(N)              Hermitian generators T_a, tr(T_a T_b) = delta_ab / 2
+     ym.expm(A)                   matrix exponential
+     ym.prob_vector(rng, n, sort_desc=False)
+     ym.spectral_instance(rng, n, gap=None) -> (H, P0, psi, energies, V): H >= 0 with kernel = span of the vacuum,
+                                  P0 the vacuum projection, spectrum in {0} U [gap, inf), psi a unit vector
+     ym.spectral_measure(H, psi) -> (eigenvalues, weights) of the spectral measure nu_psi
+     ym.psd(rng, n, rank=None)    positive semidefinite
+     ym.close(a, b, rtol=1e-7, atol=1e-9)"""
 
 RUNNER = r'''
 import json, math, sys
@@ -71,6 +90,11 @@ def _expm(a):  # models assume scipy's expm lives in numpy.linalg; scaling and s
     return r
 np.linalg.expm = getattr(np.linalg, "expm", None) or _expm
 ns = {"np": np}
+import os
+if os.path.exists("/w/ymlib.py"):  # verified samplers (YM-T18), offered to tests as `ym`
+    sys.path.insert(0, "/w")
+    import ymlib
+    ns["ym"] = ymlib
 exec(compile(open("/w/check.py").read(), "check.py", "exec"), ns)
 f = ns["check"]
 
@@ -122,12 +146,16 @@ def image_id():
     return subprocess.run(["docker", "image", "inspect", "-f", "{{.Id}}", IMAGE], capture_output=True, text=True).stdout.strip()
 
 
-def sandbox(code, trials=TRIALS):
+def sandbox(code, trials=TRIALS, use_ymlib=False):
     with tempfile.TemporaryDirectory() as d:
         pathlib.Path(d, "check.py").write_text(code)
         pathlib.Path(d, "runner.py").write_text(RUNNER)
+        files = ["check.py", "runner.py"]
+        if use_ymlib and YMLIB.exists():
+            pathlib.Path(d, "ymlib.py").write_text(YMLIB.read_text())
+            files.append("ymlib.py")
         os.chmod(d, 0o755)
-        for f in ("check.py", "runner.py"):
+        for f in files:
             os.chmod(os.path.join(d, f), 0o644)
         cmd = ["docker", "run", "--rm", "--network", "none", "--read-only", "--user", "65534:65534",
                "--memory", "1g", "--cpus", "1", "--pids-limit", "64", "--cap-drop", "ALL",
@@ -187,7 +215,7 @@ def run(args):
         steps = u["steps"]
         prompt = PROMPT.format(context=u.get("context") or "(see steps)", refs="\n\n".join(u.get("refs", [])) or "(none)",
                                earlier="\n\n".join("%d. %s" % (i + 1, s) for i, s in enumerate(steps[:k - 1])) or "(none)",
-                               k=k, step=steps[k - 1])
+                               k=k, step=steps[k - 1], sampling=SAMPLING_YMLIB if args.ymlib else SAMPLING_PLAIN)
         for seed in range(args.seeds):
             target = out / name / ("s%d.k%d.json" % (k, seed))
             if target.exists():
@@ -204,8 +232,8 @@ def run(args):
                 res = {"verdict": "NONE" if text.strip().upper().startswith("NONE") else "NOCODE", "reply": text[:400]}
             else:
                 (out / name / ("s%d.k%d.py" % (k, seed))).write_text(code)
-                res = sandbox(code)
-            res.update(unit=name, step=k, seed=seed, truth=u.get("truth"), image=img,
+                res = sandbox(code, use_ymlib=args.ymlib)
+            res.update(unit=name, step=k, seed=seed, truth=u.get("truth"), image=img, ymlib=args.ymlib,
                        model_seconds=round(time.time() - started, 1), label="unreviewed")
             target.write_text(json.dumps(res, indent=1))
             print("%s %s s%d k%d %s %s" % (time.strftime("%H:%M:%SZ", time.gmtime()), name, k, seed, res["verdict"],
@@ -226,12 +254,22 @@ def resandbox(args):
         if code is None:
             continue
         py.write_text(code)
-        new = sandbox(code)
+        new = sandbox(code, use_ymlib=r.get("ymlib", False))
         print("%s s%d: %s -> %s" % (r["unit"], r["step"], r["verdict"], new["verdict"]), flush=True)
-        keep = {k: r[k] for k in ("unit", "step", "seed", "truth", "model_seconds", "label") if k in r}
+        keep = {k: r[k] for k in ("unit", "step", "seed", "truth", "model_seconds", "label", "ymlib") if k in r}
         new.update(keep, image=img, resandboxed=True)
         p.write_text(json.dumps(new, indent=1))
     return 0
+
+
+def selftest(args):
+    """Run ymlib_selftest.py on ymlib.py inside the same sandbox the tests use."""
+    d = str(YMLIB.parent)
+    cmd = ["docker", "run", "--rm", "--network", "none", "--read-only", "--user", "65534:65534", "--memory", "1g",
+           "--cpus", "1", "--pids-limit", "64", "--cap-drop", "ALL", "--security-opt", "no-new-privileges",
+           "-v", d + ":/w:ro", IMAGE, "timeout", "600", "python3", "-I", "/w/ymlib_selftest.py"]
+    print("image %s" % image_id()[:19], flush=True)
+    return subprocess.run(cmd).returncode
 
 
 def score(args):
@@ -282,13 +320,15 @@ def main():
     r.add_argument("--seeds", type=int, default=1)
     r.add_argument("--steps", default=None, help="file of \"unit step\" lines to test instead of --mode")
     r.add_argument("--thinking", action="store_true", help="let the model reason before answering (slower)")
+    r.add_argument("--ymlib", action="store_true", help="offer the verified samplers in ymlib.py to the tests as `ym`")
     s = sub.add_parser("score")
     s.add_argument("--units", required=True); s.add_argument("--out", required=True)
     s.add_argument("--vote", type=int, default=1, help="FAILs among seeds needed to call a step FAIL")
+    sub.add_parser("selftest")
     rs = sub.add_parser("resandbox")
     rs.add_argument("--out", required=True)
     a = ap.parse_args()
-    sys.exit({"run": run, "score": score, "resandbox": resandbox}[a.cmd](a))
+    sys.exit({"run": run, "score": score, "resandbox": resandbox, "selftest": selftest}[a.cmd](a))
 
 
 if __name__ == "__main__":
