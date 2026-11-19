@@ -1,8 +1,37 @@
-# YM-T16 — Weight-space edit of the local 9B referee: setup and status
+# YM-T16 — Weight-space edit of the local 9B referee
 
 Author: strategist (Claude Opus 5.5), 2026-11-18 UTC. Branch `ym/YM-T16-claude-opus55-wsp`. Code: claw-work `Rust/weight-space/` on branch `feat/weight-space-discovery` (a user of this repository is assumed to have claw-work as well).
 
-## Result so far
+## Result
+
+**Held-out (2026-11-19, 43 cases × 2 samples per arm, 0 protocol errors): no difference established.** The edit made the 9B reason longer and stop passing planted errors as CORRECT. The gain in errors located is not significant, and the cost is twice as many answers cut off at the token limit.
+
+| | control | edited | prompt |
+|---|---|---|---|
+| Located or passed (primary) | 39/86 | 46/86 | 48/86 |
+| Mutants located | 29/58 | 37/58 | 30/58 |
+| Mutants passed as CORRECT | 7 | 1 | 10 |
+| Originals passed | 10/28 | 9/28 | 18/28 |
+| Cut off at 12,288 tokens | 12 | 25 | 7 |
+| Mean reasoning tokens, answers not cut off | 5,615 | 8,104 | 4,854 |
+
+- **Edited against control:**
+  - Primary: 17 attempts rescued, 10 regressed (McNemar p = 0.25).
+  - Mutants located: 15 rescued, 7 regressed (p = 0.13).
+  - By case: 9 cases better, 3 worse (sign test p = 0.15).
+- **Prompt against control:**
+  - Primary: 14 rescued, 5 regressed (p = 0.064).
+  - The gain is in fewer false alarms on originals. Mutants located did not change.
+- **Edited against prompt:** on mutants located, the edit alone succeeded on 13 attempts and the prompt alone on 6 (p = 0.17).
+
+Samples of one case are not independent, so the attempt-level p-values overstate certainty.
+
+Both effects are pointing in the expected direction but small. As a referee for this program, the 9B remains a flagger whose output needs reading, not a checker. Details and the follow-ups are in claw-work `Rust/weight-space/docs/PHASE2.md`. Each follow-up would need its own pre-registered run:
+- A higher cap.
+- Edit and prompt combined.
+- A smaller alpha.
+
+## Discovery
 **Gate (discovery run, 2026-11-18, 180 answers, 0 protocol errors): not met as pre-registered.** Within the same mutant, a missed sample was shorter than a located one in 30 of 52 pairs (58%), which is not clearly more than half. Across all mutant samples, missed ones were on average *longer* (5,591 reasoning tokens) than located ones (5,177).
 
 Discovery totals, base model, 3 samples per case:
@@ -41,7 +70,7 @@ Before the run, the following existed:
 - **Cases** (`bin/ym-micro export-cases`, rules in its docstring): 31 of 35 YM-T14 units have at most 25 steps; 29 of them produced cases. Discovery: 15 units, 45 mutants, 60 cases, SHA-256 `530c25ab54a20733826e418641f53c784e1e311f499ef148f1a9db291a7a97db`. Held-out: 14 units, 29 mutants, 43 cases, SHA-256 `b90342fb05b0467c673bd7578018ad97c039d8fdfd668082b26cb6e3f06193fe`. Held-out units include C23 and six proofs of the mono-notes topic (`ym-02`, `ym-03`, `ym-06`, `ym-07`, `ym-08`, `ym-09`), two topic sections and five N1 lemmas. Files are outside git (the N1/N2 text is not ours to publish).
 - **Tools** (claw-work, verified there, see its `docs/PHASE2.md`): CUDA C++ dequantization of the 9B's Q5_K/Q6_K tensors equal to ggml's own routine in all 134 million values checked; an audited control/edited checkpoint pair on the real 9B; activation capture over reasoning spans with GPU sums.
 
-## What will be measured
+## What was measured
 1. **Gate.** Within one mutant, are the samples that miss the planted error shorter than those that locate it? If not, "reasons too briefly" is the wrong target and the edit is not expected to help.
 2. **Held-out.** Mutants located, mutants flagged, false alarms on originals, for control weights, edited weights (4% of the 896 attention and DeltaNet heads, projected off the short-reasoning direction), and control weights with an instruction to check every step at length.
 
@@ -52,4 +81,4 @@ The strategist session hand-checked six INCORRECT flags that the desktop 9B (Qwy
 All model output: `unreviewed (local model output; not evidence)`. Code and protocol: by the author, not reviewed by another family. Originals are presumed correct; a genuine error in one of our proofs would count against the model, and would be worth finding.
 
 ## Resume here
-Run claw-work `Rust/weight-space/scripts/referee-experiment.sh` with `WSP_CASES` pointing at the exported cases; the gate is recorded above. Fill in the held-out result from `compare-control-vs-edited.json` and `compare-control-vs-prompt.json`.
+The run is complete. A follow-up is a new pre-registered run of claw-work `Rust/weight-space/scripts/referee-experiment.sh` with a new `WSP_DATA` directory.
