@@ -48,6 +48,8 @@ All 35 are being re-tested by the 9B with thinking on 3 seeds; a step stays a le
 
 The 13 steps with 2 of 3 failing are about what the calibration predicts at K = 2 (10 false alarms on 54 unmodified steps). Five of them are the Killing-form steps: s01 steps 7, 11, 15 and 16, and ym-01 step 3. I checked those independently in the sandbox with `ymlib`. Over 200 instances with N from 2 to 5, the Killing form computed as a real trace over su(N) in the basis iT_a equals 2N tr(XY), so C = 2N² under ⟨X,Y⟩ = −(1/N) Re tr(XY), as the notes say.
 
+A second cause of wrong tests is in the cases themselves, as q7nd found in YM-T16 (note f19b370). `ym-micro export-cases` attaches only equations cited by `\eqref`, not the definitions of the symbols a step uses. In ym-s04 step 9, for example, the model sees b_* in terms of C_𝔤 but not the definition K = −C_𝔤⟨·,·⟩ that makes C_𝔤 = 2N². It then assumes C_𝔤 = N and tests the wrong constant. That step is among the 13 at 2 of 3 here. Attaching symbol definitions to the units would remove this class of false alarm for both the referee and the numeric tests.
+
 So the 27B sweep found no error in the notes that survives the filter. This is weak evidence of absence: at K = 3 the filter caught only 15% of planted errors.
 
 Raw output: `~/.local/state/mathphysics/ym-numcheck/{calib-27b,calib3-thinking-k3,sweep-27b,retest-27b-fails-9b-k3}/`.
