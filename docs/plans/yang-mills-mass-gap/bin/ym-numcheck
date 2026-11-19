@@ -157,7 +157,9 @@ def load_units(units_dir):
     return units
 
 
-def jobs(units, mode, only):
+def jobs(units, mode, only, steps_file=None):
+    if steps_file:  # explicit list, one "unit step" per line (e.g. the FAILs of an earlier sweep, for re-testing)
+        return [(n, int(k)) for n, k in (line.split() for line in open(steps_file) if line.strip()) if n in units]
     pick = re.compile(only) if only else None
     out = []
     for name, u in units.items():
@@ -177,7 +179,7 @@ def jobs(units, mode, only):
 def run(args):
     units = load_units(args.units)
     out = pathlib.Path(args.out)
-    todo = jobs(units, args.mode, args.only)
+    todo = jobs(units, args.mode, args.only, args.steps)
     img = image_id()
     print("%d step(s) to test, image %s" % (len(todo), img[:19]), flush=True)
     for name, k in todo:
@@ -239,9 +241,14 @@ def score(args):
     for p in out.glob("*/s*.k*.json"):
         r = json.loads(p.read_text())
         res.setdefault((r["unit"], r["step"]), []).append(r["verdict"])
-    def v(key):  # majority-free: FAIL if any seed's test failed
+    def v(key):  # FAIL if at least --vote seeds' tests failed (default 1: any); else PASS if any seed passed
         vs = res.get(key, [])
-        return "FAIL" if "FAIL" in vs else ("PASS" if "PASS" in vs else (vs[0] if vs else "-"))
+        if vs.count("FAIL") >= args.vote:
+            return "FAIL"
+        if "PASS" in vs:
+            return "PASS"
+        rest = [x for x in vs if x != "FAIL"]  # too few FAILs and no PASS: report why the others gave no verdict
+        return rest[0] if rest else ("-" if not vs else "SPLIT")
     rows, tally = [], {}
     for name, u in sorted(units.items()):
         if u.get("truth") != "mutant":
@@ -273,9 +280,11 @@ def main():
     r.add_argument("--units", required=True); r.add_argument("--endpoint", required=True); r.add_argument("--out", required=True)
     r.add_argument("--only", default=None); r.add_argument("--mode", choices=("pairs", "all"), default="pairs")
     r.add_argument("--seeds", type=int, default=1)
+    r.add_argument("--steps", default=None, help="file of \"unit step\" lines to test instead of --mode")
     r.add_argument("--thinking", action="store_true", help="let the model reason before answering (slower)")
     s = sub.add_parser("score")
     s.add_argument("--units", required=True); s.add_argument("--out", required=True)
+    s.add_argument("--vote", type=int, default=1, help="FAILs among seeds needed to call a step FAIL")
     rs = sub.add_parser("resandbox")
     rs.add_argument("--out", required=True)
     a = ap.parse_args()
