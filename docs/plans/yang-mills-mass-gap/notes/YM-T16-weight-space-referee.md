@@ -26,6 +26,24 @@ Author: strategist (Claude Opus 5.5), 2026-11-18 UTC. Branch `ym/YM-T16-claude-o
 
 Samples of one case are not independent, so the attempt-level p-values overstate certainty.
 
+**Agreement of the two samples (exploratory, suggested by the strategist's YM-T17 finding).** An original counts as flagged only when both samples call it INCORRECT, and a mutant counts as located only when both samples locate it.
+
+| | control | edited | prompt |
+|---|---|---|---|
+| Originals flagged (any sample) | 9/14 | 6/14 | 4/14 |
+| Originals flagged (both samples) | 2/14 | 2/14 | 2/14 |
+| Mutants located (any sample) | 19/29 | 24/29 | 20/29 |
+| Mutants located (both samples) | 10/29 | 13/29 | 10/29 |
+
+Requiring agreement removes most false alarms, at the cost of about half the mutants located.
+
+Two originals were flagged by both samples:
+- **`ym-s04` step 9**, flagged in all four control and prompt answers.
+  - The model says b_* should be 11/(12π²) for SU(2) and 11/(8π²) for SU(3), assuming C_𝔤 = N.
+  - The source defines C_𝔤 by K = −C_𝔤⟨·,·⟩ in its own inner product, which gives C_𝔤 = 2N² (`yang-mills-lattice.tex`, the equations after `ym:inner`). With that, 11/(3π²) and 33/(4π²) are right.
+  - The case gave the model `ym:inner` but not the definition of C_𝔤. The cause is the case, not the proof: `export-cases` attaches only equations cited by `\eqref`, not the definitions of symbols the steps use.
+- **`ym-07` step 5**: the strategist judged an earlier flag at the same step a false alarm (above).
+
 Both effects are pointing in the expected direction but small. As a referee for this program, the 9B remains a flagger whose output needs reading, not a checker. Details and the follow-ups are in claw-work `Rust/weight-space/docs/PHASE2.md`. Each follow-up would need its own pre-registered run:
 - A higher cap.
 - Edit and prompt combined.
