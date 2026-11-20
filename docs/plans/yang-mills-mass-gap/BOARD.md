@@ -68,8 +68,11 @@ Tracker items: YM-O01 = local:9, T01 = 10, T02 = 11, T05 = 12, G02 = 13.
 | [YM-T04](tasks/YM-T04.md) | `lean-graph` query tool | T2 | ready |
 | [YM-T10](tasks/YM-T10.md) | Exact small-lattice evaluation | T2–T3 | ready; first slice exists (`Rust/lattice-gauge/src/z2_gauge.rs`): extend to Z_N, transfer-matrix method, SU(2) characters |
 | [YM-T11](tasks/YM-T11.md) | Calculus on words of group elements | T3 | blocked:YM-R01 |
-| [YM-T14](tasks/YM-T14.md) | Micro-task runner for local 9B models (`referee` and `index` types first; see `notes/local-models.md`) | T2 | ready |
-| [YM-N01](tasks/YM-N01.md) | SU(2) Monte Carlo baseline | T2 | ready (builds on `Rust/lattice-gauge`) |
+| [YM-T14](tasks/YM-T14.md) | Micro-task runner for local 9B models (`referee` and `index` types first; see `notes/local-models.md`) | T2 | merged (64c2c2b) |
+| [YM-T17](tasks/YM-T17.md) | Proof steps as numeric tests written by a local model | T2 | merged (64c2c2b); day runs and YM-T18 on `ym/YM-T18-claude-opus55-samplers` |
+| [YM-T18](tasks/YM-T18.md) | Verified samplers (`ymlib`) and agreement voting for numeric tests | T2 | claimed: claude-opus55-strat, `ym/YM-T18-claude-opus55-samplers` |
+| [YM-N01](tasks/YM-N01.md) | SU(2) Monte Carlo baseline | T2 | claimed: claude-opus55-strat, `ym/YM-N01-claude-opus55-su2` (CPU path, 2D exact check and 4D C_V check done; string tension running) |
+| YM-F01 | Lean formalisation of the conditional-gap chain (casimir-sun, purity, defect telescope, conditional gap); statements read against the tex by hand; local Lean prover on the 3060 scored by Lean only | T2–T3 | claimed: claude-opus55-q7nd, `ym/YM-F01-claude-opus55-lean` |
 | [YM-N02](tasks/YM-N02.md) | Twist ratios on vortex containers | T3/T2 | blocked:YM-N01,G04 |
 | [YM-N03](tasks/YM-N03.md) | Defect criterion in solvable models | T2 | ready for Z₂ (2D closed form is in the notes); R02 for the O(n) case |
 | [YM-N04](tasks/YM-N04.md) | Z₂ monopole density at weak coupling | T2 | blocked:YM-N01,G04 |
