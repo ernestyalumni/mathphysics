@@ -2,7 +2,7 @@
 # Compile the YMFormal modules against Mathlib, in Docker, with no network.
 # Usage: formal/check.sh [MODULE ...]     (default: all modules, in dependency order)
 # Exit status is nonzero if any module fails. A `sorry` is reported as a warning by Lean;
-# `--strict` makes any `sorry` an error.
+# `--strict` makes any `sorry` an error and prints the axioms of the main theorems (Axioms.lean).
 set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd)
 image=${YM_FORMAL_IMAGE:-claw-work/lean-agent:lean4.35.0-mathlib}
@@ -30,4 +30,12 @@ for module in "$@"; do
   fi
   echo "OK   $module"
 done
+if [ "$strict" = 1 ] && [ $status -eq 0 ] && [ -f Axioms.lean ]; then
+  axioms=$(lean Axioms.lean 2>&1); printf "%s\n" "$axioms"
+  if grep -q "sorryAx" <<<"$axioms" || ! grep -q "depends on axioms" <<<"$axioms"; then
+    echo "FAIL axioms"; status=1
+  else
+    echo "OK   axioms (propext, Classical.choice, Quot.sound only)"
+  fi
+fi
 exit $status' check "$strict" "${modules[@]}"
