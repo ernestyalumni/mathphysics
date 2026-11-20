@@ -1,0 +1,7 @@
+Ernest, 2026-11-20: "Ok let's give 1,2,3 a try please", approving these three steps proposed by the agent:
+
+1. Pick 3-5 steps the Yang-Mills mass-gap argument actually depends on (in documents/mono-notes/topics/yang-mills-lattice.tex).
+2. Formalise them in Lean (Lean 4 + Mathlib, run in Docker, never on the host).
+3. Test whether a local Lean prover model on the RTX 3060 can fill in any of the proofs, with Lean as the only judge.
+
+Context he accepted: a compiled Lean proof checks the Lean statement, not the paper, so each statement must be read against the source by hand; expect a few verified steps, not broad coverage; the analytic core of the mass-gap argument is out of reach for now.

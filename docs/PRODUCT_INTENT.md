@@ -42,3 +42,21 @@ The [reusable Rust research library story](../user_stories/story__reusable-rust-
 ## Manually recorded research extension — 21 November 2026 UTC
 
 Ernest asks our agents to investigate Jaffe–Witten's isolated-particle, confinement, gauge–matter, infrared-dynamics and four-manifold extensions, and to write the Wightman axioms explicitly from local sources. [Research intent](intents/intent__yang-mills-extensions-2026-11-21.md), [independent story](../user_stories/story__yang-mills-extensions.md), and [bounded roadmap](plans/yang-mills-mass-gap/08-EXTENSIONS-ROADMAP.md). These extend our research goals, not the Millennium prize requirements. This manual record is outside generated intent markers; no provider-backed apply or generated contract is claimed.
+
+<!-- pdd-intent-entry:lean-formalisation-of-load-bearing-steps-and-a-l-3be8135f:start -->
+## Lean formalisation of load-bearing steps and a local-prover test
+
+- Intent event: [`docs/intents/intent__lean-formalisation-of-load-bearing-steps-and-a-l-3be8135f.md`](intents/intent__lean-formalisation-of-load-bearing-steps-and-a-l-3be8135f.md)
+- Change kind: `add`
+- Supersedes: none
+- Scope: `existing_pdd_change`
+- Technology: `docker`
+
+> Ernest, 2026-11-20: "Ok let's give 1,2,3 a try please", approving these three steps proposed by the agent:
+>
+> 1. Pick 3-5 steps the Yang-Mills mass-gap argument actually depends on (in documents/mono-notes/topics/yang-mills-lattice.tex).
+> 2. Formalise them in Lean (Lean 4 + Mathlib, run in Docker, never on the host).
+> 3. Test whether a local Lean prover model on the RTX 3060 can fill in any of the proofs, with Lean as the only judge.
+>
+> Context he accepted: a compiled Lean proof checks the Lean statement, not the paper, so each statement must be read against the source by hand; expect a few verified steps, not broad coverage; the analytic core of the mass-gap argument is out of reach for now.
+<!-- pdd-intent-entry:lean-formalisation-of-load-bearing-steps-and-a-l-3be8135f:end -->

@@ -1,0 +1,148 @@
+{
+  "acceptance": {
+    "reasons": [
+      "critical boundary"
+    ],
+    "sentence": "Ernest, 2026-11-20: \"Ok let's give 1,2,3 a try please\", approving these three steps proposed by the agent:",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": null,
+      "matched_terms": [
+        "gap",
+        "mass",
+        "mass gap",
+        "mills",
+        "mills mass",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": null,
+      "product_area": "Collector",
+      "prompt_path": "docs/plans/yang-mills-mass-gap/watch/collector_python.prompt",
+      "score": 44
+    },
+    {
+      "architecture_path": null,
+      "matched_terms": [
+        "gap",
+        "mass",
+        "mass gap",
+        "mills",
+        "mills mass",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": null,
+      "product_area": "Wilson Group Trace Contract",
+      "prompt_path": "docs/plans/yang-mills-mass-gap/prompts/wilson_group_trace_contract.prompt",
+      "score": 44
+    },
+    {
+      "architecture_path": null,
+      "matched_terms": [
+        "gap",
+        "mass",
+        "mass gap",
+        "mills",
+        "mills mass",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": null,
+      "product_area": "Ym Tracker Bash",
+      "prompt_path": "docs/plans/yang-mills-mass-gap/prompts/ym_tracker_bash.prompt",
+      "score": 44
+    },
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "lattice",
+        "mills",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/z2_gauge.rs",
+      "product_area": "Exact density of states of Z2 lattice gauge theory on small tori, with twists",
+      "prompt_path": "Rust/lattice-gauge/prompts/z2_gauge_rust.prompt",
+      "score": 30
+    },
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "lattice",
+        "mills",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/spectral.rs",
+      "product_area": "Exact integer check of the purity bounds for a nonnegative transfer operator",
+      "prompt_path": "Rust/lattice-gauge/prompts/spectral_rust.prompt",
+      "score": 30
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "lean-formalisation-of-load-bearing-steps-and-a-l-3be8135f",
+  "original_request": "Ernest, 2026-11-20: \"Ok let's give 1,2,3 a try please\", approving these three steps proposed by the agent:\n\n1. Pick 3-5 steps the Yang-Mills mass-gap argument actually depends on (in documents/mono-notes/topics/yang-mills-lattice.tex).\n2. Formalise them in Lean (Lean 4 + Mathlib, run in Docker, never on the host).\n3. Test whether a local Lean prover model on the RTX 3060 can fill in any of the proofs, with Lean as the only judge.\n\nContext he accepted: a compiled Lean proof checks the Lean statement, not the paper, so each statement must be read against the source by hand; expect a few verified steps, not broad coverage; the analytic core of the mass-gap argument is out of reach for now.",
+  "original_request_sha256": "3be8135f77a18262b8297122194e553e91c5383eeb962ae960a5f2919c96e6b4",
+  "project": {
+    "adoption_scenario": "existing_pdd_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      "Python/rotations/.pddrc",
+      "Rust/lattice-gauge/.pddrc",
+      "Rust/physics-contracts/.pddrc",
+      "Rust/physics-gateway/.pddrc",
+      "Rust/physics-tools/.pddrc",
+      "Rust/qft-symbolics/.pddrc",
+      "TypeScript/physics-workbench/.pddrc",
+      "Python/rotations/architecture.json",
+      "Rust/lattice-gauge/architecture.json",
+      "Rust/physics-contracts/architecture.json",
+      "Rust/physics-gateway/architecture.json",
+      "Rust/physics-tools/architecture.json",
+      "Rust/qft-symbolics/architecture.json",
+      "TypeScript/physics-workbench/architecture.json",
+      "47 prompt file(s)"
+    ],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-F01-claude-opus55-lean",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-F01-claude-opus55-lean",
+    "scope_kind": "repository"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [],
+    "must_preserve": [
+      "Formalise them in Lean (Lean 4 + Mathlib, run in Docker, never on the host).",
+      "Context he accepted: a compiled Lean proof checks the Lean statement, not the paper, so each statement must be read against the source by hand; expect a few verified steps, not broad coverage; the analytic core of the mass-gap argument is out of reach for now."
+    ],
+    "open_decisions": [
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "file",
+    "ref": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-F01-claude-opus55-lean/docs/plans/yang-mills-mass-gap/request-2026-11-20-lean-formalisation.txt"
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "critical boundary"
+    ],
+    "recommended": true
+  },
+  "title": "Lean formalisation of load-bearing steps and a local-prover test",
+  "warnings": []
+}
