@@ -99,8 +99,11 @@ def spectral_instance(rng, n, gap=None):
 
 
 def spectral_measure(h, psi):
-    """Atoms of the spectral measure nu_psi of a Hermitian h: (eigenvalues, weights |<v_i, psi>|^2)."""
+    """Atoms of the spectral measure nu_psi of a Hermitian h: (eigenvalues, weights |<v_i, psi>|^2).
+    Eigenvalues within 1e-12 * max|eigenvalue| of 0 are set to exactly 0, so the vacuum atom is never
+    counted in sets such as (0, u] because of rounding."""
     e, v = np.linalg.eigh(h)
+    e = np.where(np.abs(e) <= 1e-12 * max(1.0, np.abs(e).max()), 0.0, e)
     return e, np.abs(v.conj().T @ psi) ** 2
 
 

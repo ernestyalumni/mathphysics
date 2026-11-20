@@ -87,6 +87,8 @@ for n in (2, 4, 6):
     s_ = 0.37
     lhs = (psi.conj() @ (ym.expm(-s_ * h) - p0) @ psi).real
     rhs = np.sum(wt * np.exp(-s_ * lam)) - np.sum(wt[np.abs(lam) < 1e-9])
+    check("spectral_measure(%d): the vacuum eigenvalue is exactly 0 and nothing else lies in (0, gap)" % n,
+          np.sum(lam == 0.0) == 1 and not np.any((lam > 0) & (lam < 0.7 - 1e-10)))
     check("spectral_measure(%d): weights sum to |psi|^2, Laplace transform matches <psi,(e^-sH - P0)psi>" % n,
           abs(wt.sum() - 1) < 1e-10 and abs(lhs - rhs) < 1e-10)
 

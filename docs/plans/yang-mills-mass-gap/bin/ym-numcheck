@@ -94,6 +94,7 @@ import os
 if os.path.exists("/w/ymlib.py"):  # verified samplers (YM-T18), offered to tests as `ym`
     sys.path.insert(0, "/w")
     import ymlib
+    sys.modules["ym"] = ymlib  # models often write `import ym` although it is already in scope
     ns["ym"] = ymlib
 exec(compile(open("/w/check.py").read(), "check.py", "exec"), ns)
 f = ns["check"]
