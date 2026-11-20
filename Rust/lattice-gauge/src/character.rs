@@ -87,3 +87,28 @@ pub fn torus_plaquette_2d(beta: f64, plaquettes: u64) -> f64 {
     }
     num / den
 }
+
+/// Twisted 2D torus (one plaquette with coupling sign -1): with e^{-beta a0(U)} = sum_j c_j (-1)^{2j} chi_j(U),
+/// Z_tw = sum_n (-1)^{n-1} b_n^V, n = 2j+1. Returns (Z_tw / Z, <z_p a0(U_p)>_tw = (1/V) d log Z_tw / d beta).
+pub fn torus_twist_2d(beta: f64, plaquettes: u64) -> (f64, f64) {
+    let i1 = bessel_i_scaled(1, beta);
+    let (mut z, mut ztw, mut num) = (0.0, 0.0, 0.0);
+    let mut n = 1u32;
+    loop {
+        let i_n = bessel_i_scaled(n, beta);
+        let w = (i_n / i1).powf(plaquettes as f64);
+        if i_n == 0.0 || (n > 1 && w < 1e-18 * z) {
+            break;
+        }
+        let sign = if n % 2 == 1 { 1.0 } else { -1.0 };
+        let ratio = bessel_i_scaled(n + 1, beta) / i_n + (n as f64 - 1.0) / beta;
+        z += w;
+        ztw += sign * w;
+        num += sign * w * ratio;
+        n += 1;
+        if n > 2000 {
+            break;
+        }
+    }
+    (ztw / z, num / ztw)
+}

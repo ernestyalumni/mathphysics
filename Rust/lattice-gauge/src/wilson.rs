@@ -19,6 +19,9 @@ pub struct Lattice {
     pub sweep: u32,
     pub threads: usize,
     classes: Vec<Vec<usize>>, // link indices per (direction, parity)
+    /// Optional coupling sign z_p = +-1 per plaquette (Torus::plaquette_index): S = beta sum_p (1 - z_p a0(U_p)).
+    /// A centre twist sets z_p = -1 on one stack of plaquettes.
+    pub plaquette_sign: Option<Vec<f64>>,
 }
 
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
@@ -46,7 +49,7 @@ impl Lattice {
         }
         let threads = std::thread::available_parallelism().map(|n| n.get()).unwrap_or(1);
         let links = vec![Quaternion::IDENTITY; torus.link_count()];
-        Ok(Lattice { torus, links, beta, seed, replica, sweep: 0, threads, classes })
+        Ok(Lattice { torus, links, beta, seed, replica, sweep: 0, threads, classes, plaquette_sign: None })
     }
 
     /// Hot start: Haar-random links from the stream with sweep = u32::MAX.
@@ -80,9 +83,14 @@ impl Lattice {
             let x_mnu = t.neighbor(site, nu, false);
             let x_mu_mnu = t.neighbor(x_mu, nu, false);
             // upper: U(x+mu,nu) U(x+nu,mu)^dagger U(x,nu)^dagger
-            let up = self.link(x_mu, nu).mul(self.link(x_nu, mu).conj()).mul(self.link(site, nu).conj());
+            let mut up = self.link(x_mu, nu).mul(self.link(x_nu, mu).conj()).mul(self.link(site, nu).conj());
             // lower: U(x+mu-nu,nu)^dagger U(x-nu,mu)^dagger U(x-nu,nu)
-            let down = self.link(x_mu_mnu, nu).conj().mul(self.link(x_mnu, mu).conj()).mul(self.link(x_mnu, nu));
+            let mut down = self.link(x_mu_mnu, nu).conj().mul(self.link(x_mnu, mu).conj()).mul(self.link(x_mnu, nu));
+            if let Some(z) = &self.plaquette_sign {
+                let (a, b) = if mu < nu { (mu, nu) } else { (nu, mu) };
+                up = up.scale(z[t.plaquette_index(site, a, b)]);
+                down = down.scale(z[t.plaquette_index(x_mnu, a, b)]);
+            }
             w = w.add(up).add(down);
         }
         w
@@ -159,6 +167,38 @@ impl Lattice {
             }
         }
         sum / t.plaquette_count() as f64
+    }
+
+    /// Average of z_p a0(U_p): (1/N_P) d log Z / d beta. Equals `plaquette` without signs.
+    pub fn action_density(&self) -> f64 {
+        let Some(z) = &self.plaquette_sign else { return self.plaquette() };
+        let t = &self.torus;
+        let d = t.dimension();
+        let mut sum = 0.0;
+        for site in 0..t.site_count() {
+            for mu in 0..d {
+                let x_mu = t.neighbor(site, mu, true);
+                for nu in mu + 1..d {
+                    let x_nu = t.neighbor(site, nu, true);
+                    let p = self.link(site, mu).mul(self.link(x_mu, nu)).mul(self.link(x_nu, mu).conj()).mul(self.link(site, nu).conj());
+                    sum += z[t.plaquette_index(site, mu, nu)] * p.half_trace();
+                }
+            }
+        }
+        sum / t.plaquette_count() as f64
+    }
+
+    /// 't Hooft centre twist: z_p = -1 for the plaquettes in plane (first, second) at the sites with
+    /// coordinates x_first = 0 and x_second = 0 (one plaquette in every (first, second) plane).
+    pub fn set_twist(&mut self, first: usize, second: usize) {
+        let t = &self.torus;
+        let mut z = vec![1.0; t.plaquette_count()];
+        for site in 0..t.site_count() {
+            if t.site_coordinate(site, first) == 0 && t.site_coordinate(site, second) == 0 {
+                z[t.plaquette_index(site, first.min(second), first.max(second))] = -1.0;
+            }
+        }
+        self.plaquette_sign = Some(z);
     }
 
     /// Product of links along `steps` steps from `site` in direction `mu` (forward) and the end site.

@@ -25,7 +25,7 @@ contexts:
     paths: ["prompts/su2_rust.prompt", "src/su2.rs", "tests/su2.rs"]
     defaults: {prompts_dir: prompts, generate_output_path: src/su2.rs, test_output_path: tests/, default_language: rust}
   wilson:
-    paths: ["prompts/wilson_rust.prompt", "src/wilson.rs", "tests/wilson_2d.rs", "tests/wilson_4d.rs"]
+    paths: ["prompts/wilson_rust.prompt", "src/wilson.rs", "tests/wilson_2d.rs", "tests/wilson_4d.rs", "tests/twist_2d.rs"]
     defaults: {prompts_dir: prompts, generate_output_path: src/wilson.rs, test_output_path: tests/, default_language: rust}
   glueball:
     paths: ["prompts/glueball_rust.prompt", "src/glueball.rs", "tests/glueball.rs"]
