@@ -5,7 +5,15 @@ edition = "2021"
 license = "MIT"
 description = "Exact lattice gauge theory on periodic tori: geometry, Z2 cochains, small-lattice enumeration"
 
+[features]
+# CUDA C++ path for the SU(2) update (cuda/su2_update.cu, needs nvcc); off by default.
+cuda = []
+
 [dependencies]
 
 [profile.release]
 overflow-checks = true
+
+[[example]]
+name = "gpu_bench"
+required-features = ["cuda"]

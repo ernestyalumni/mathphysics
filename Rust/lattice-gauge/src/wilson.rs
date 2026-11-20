@@ -58,6 +58,11 @@ impl Lattice {
         Ok(l)
     }
 
+    /// Link indices of each update class, in sweep order: class 2 mu + parity.
+    pub fn update_classes(&self) -> &[Vec<usize>] {
+        &self.classes
+    }
+
     fn link(&self, site: usize, mu: usize) -> Quaternion {
         self.links[self.torus.link_index(site, mu)]
     }

@@ -7,6 +7,9 @@
 //! Computed evidence is not a formal proof; see README.md.
 /// Modified Bessel functions and the SU(2) character expansion; exact 2D results.
 pub mod character;
+/// GPU path for the SU(2) update (feature `cuda`).
+#[cfg(feature = "cuda")]
+pub mod cuda;
 /// Sets of plaquettes modulo 2: twist surfaces, monopole counts, coboundary classes.
 pub mod cochain;
 /// Philox4x32-10 counter-based random numbers, reproducible on CPU and GPU.

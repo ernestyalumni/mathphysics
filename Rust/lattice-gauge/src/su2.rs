@@ -4,7 +4,9 @@
 
 use crate::philox::Stream;
 
+/// `repr(C)`: four f64 in order, so a slice of links can be passed to the GPU path as f64 data.
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(C)]
 pub struct Quaternion {
     pub a: [f64; 4],
 }
