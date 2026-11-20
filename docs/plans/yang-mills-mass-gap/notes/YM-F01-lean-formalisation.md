@@ -55,6 +55,39 @@ Author: Claude Opus 5.5, 2026-11-20 UTC. Branch `ym/YM-F01-claude-opus55-lean`. 
 
 **Expected difficulty.** The model was trained on an older Mathlib, and some lemma names have changed since (`div_le_iff` → `div_le_iff₀`, `tsum_le_tsum` → `Summable.tsum_le_tsum`). Name errors count as failures; that cost is part of what is measured.
 
+## Follow-ups, pre-registered before running (Ernest, 2026-11-20: "pre register and run those 3 that order")
+
+All three start after the step-3 run above. Experiment 2 runs on the laptop, so it may overlap experiment 1. If any of these models proves effective, Ernest wants it deployed with our own Rust and CUDA C++ inference, not llama.cpp; nothing here depends on that.
+
+**Experiment 1: Goedel-Prover-V2-8B with Lean error feedback.** This is the model card's self-correction mode.
+- **Setup:**
+  - Same model file, server and 18 tasks (tasks file `304173d9…`). Context 32,768, at most 20,480 new tokens per answer.
+  - 4 attempts per theorem. After each failing answer, Lean's first three errors, each with the source line it points at, go back to the model, up to 2 revision rounds (`prover.py refine`, message `REVISE`). An answer with no usable code gets the `MISSING` message instead.
+  - Round 0 reuses the step-3 seeds, so it is paired with step 3 apart from the larger token limit.
+- **Judge:** unchanged.
+- **Primary outcome:** theorems solved by any attempt and round, out of 18, against step 3's pass@4.
+- **Secondary outcomes:** generations used, the round of each pass, and why attempts fail.
+- **Time:** at most 216 generations, likely 6–10 h.
+
+**Experiment 2: Goedel-Formalizer-V2-8B**, Q5_K_M, SHA-256 `123e5ad7…`, on the laptop's RTX 3070 with context 16,384.
+- **Input:** the 7 natural-language statements in `formal/informal-statements.json`. Each matches Lean statements in `YMFormal` that I checked by hand.
+- **Prompt and sampling:** the model card's prompt verbatim, temperature 0.9, top-k 20, top-p 0.95, at most 14,336 new tokens, 4 attempts each.
+- **Scoring:**
+  - **Compiles:** the last ```lean4 block compiles with `import Mathlib` in our Docker image (`formalizer.py judge`). `sorry` as the proof is expected.
+  - **Faithful:** graded by me against the informal statement and the reference, as equivalent, stronger hypotheses, weaker hypotheses, or wrong. A statement made vacuous by contradictory hypotheses counts as wrong. The grading is not blind; grades go in `grades.json` with a reason for each.
+- **Primary outcome:** statements with at least one attempt that compiles and is equivalent, out of 7.
+
+**Experiment 3: Phi-4-reasoning-plus (14B)** as an informal-referee control.
+- **Setup:**
+  - Q4_K_M from `bartowski/microsoft_Phi-4-reasoning-plus-GGUF`, SHA-256 `fcb2cdd1…`.
+  - The YM-T16 held-out cases (`referee-test.json`, `b90342fb…`), 2 samples each, run by claw-wsp `referee` with the YM-T16 protocol unchanged: temperature 0.6, top-k 20, top-p 0.95, cap 12,288, context 24,576, the same seeds.
+  - It is compared with the YM-T16 control arm, the base Qwen3.8-9B Q5, by `referee-compare` and per case.
+  - The model's recommended settings (temperature 0.8, top-k 50, up to 32K tokens) are not used, so that only the model changes. Cap hits are reported as the cost of that choice.
+  - First, a one-case smoke test checks that its chat template works with the referee: a single `</think>` token, and thinking on.
+- **Outcomes:**
+  - **Primary:** errors located plus originals passed.
+  - **Secondary:** mutants located, false alarms, cap hits, and two-sample agreement.
+
 ## Labels
 - The Lean proofs are machine-checked. The match between the Lean statements and the source is my own reading, listed above.
 - Model output is labelled `unreviewed (local model output; not evidence)`. The Lean verdict on it is a check, not a review.
