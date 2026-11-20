@@ -12,3 +12,18 @@ contexts:
   spectral:
     paths: ["prompts/spectral_rust.prompt", "src/spectral.rs", "tests/purity.rs"]
     defaults: {prompts_dir: prompts, generate_output_path: src/spectral.rs, test_output_path: tests/, default_language: rust}
+  philox:
+    paths: ["prompts/philox_rust.prompt", "src/philox.rs", "tests/philox.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/philox.rs, test_output_path: tests/, default_language: rust}
+  character:
+    paths: ["prompts/character_rust.prompt", "src/character.rs", "tests/character.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/character.rs, test_output_path: tests/, default_language: rust}
+  stats:
+    paths: ["prompts/stats_rust.prompt", "src/stats.rs", "tests/stats.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/stats.rs, test_output_path: tests/, default_language: rust}
+  su2:
+    paths: ["prompts/su2_rust.prompt", "src/su2.rs", "tests/su2.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/su2.rs, test_output_path: tests/, default_language: rust}
+  wilson:
+    paths: ["prompts/wilson_rust.prompt", "src/wilson.rs", "tests/wilson_2d.rs", "tests/wilson_4d.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/wilson.rs, test_output_path: tests/, default_language: rust}

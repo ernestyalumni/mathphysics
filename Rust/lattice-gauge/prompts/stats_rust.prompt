@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/stats.rs. std only. mean; jackknife over n_bins contiguous bins for a scalar function of the bin means (returns estimate and error); integrated autocorrelation time with the automatic window of Madras and Sokal (c = 6). Independent tests in tests/stats.rs: an AR(1) series with known tau_int = (1+r)/(2(1-r)).

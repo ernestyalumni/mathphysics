@@ -66,5 +66,91 @@
     "interface": {
       "type": "module"
     }
+  },
+  {
+    "filename": "philox_rust.prompt",
+    "filepath": "src/philox.rs",
+    "description": "Philox4x32-10 counter-based random numbers, bit-identical to Random123, keyed by (seed, sweep, link, replica)",
+    "reason": "Yang-Mills program task YM-N01 (roadmap T06, T09/T10 SU(2) slice); written by hand, prompt first",
+    "dependencies": [],
+    "priority": 5,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "character_rust.prompt",
+    "filepath": "src/character.rs",
+    "description": "Modified Bessel functions and the SU(2) character expansion; exact 2D torus and infinite-volume results",
+    "reason": "Yang-Mills program task YM-N01 (roadmap T06, T09/T10 SU(2) slice); written by hand, prompt first",
+    "dependencies": [],
+    "priority": 6,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "stats_rust.prompt",
+    "filepath": "src/stats.rs",
+    "description": "Jackknife errors and integrated autocorrelation times",
+    "reason": "Yang-Mills program task YM-N01 (roadmap T06, T09/T10 SU(2) slice); written by hand, prompt first",
+    "dependencies": [],
+    "priority": 7,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "su2_rust.prompt",
+    "filepath": "src/su2.rs",
+    "description": "SU(2) as unit quaternions: Haar measure, Kennedy-Pendleton heat bath, over-relaxation",
+    "reason": "Yang-Mills program task YM-N01 (roadmap T06, T09/T10 SU(2) slice); written by hand, prompt first",
+    "dependencies": [
+      "philox_rust.prompt"
+    ],
+    "priority": 8,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "wilson_rust.prompt",
+    "filepath": "src/wilson.rs",
+    "description": "SU(2) Wilson lattice gauge theory: checkerboard Monte Carlo, plaquette, Wilson loops, Creutz ratios",
+    "reason": "Yang-Mills program task YM-N01 (roadmap T06, T09/T10 SU(2) slice); written by hand, prompt first",
+    "dependencies": [
+      "torus_rust.prompt",
+      "su2_rust.prompt",
+      "philox_rust.prompt"
+    ],
+    "priority": 9,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
   }
 ]
