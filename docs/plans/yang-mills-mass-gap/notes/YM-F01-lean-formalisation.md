@@ -55,6 +55,40 @@ Author: Claude Opus 5.5, 2026-11-20 UTC. Branch `ym/YM-F01-claude-opus55-lean`. 
 
 **Expected difficulty.** The model was trained on an older Mathlib, and some lemma names have changed since (`div_le_iff` → `div_le_iff₀`, `tsum_le_tsum` → `Summable.tsum_le_tsum`). Name errors count as failures; that cost is part of what is measured.
 
+### Step 3 result (run 2026-11-20 13:04–18:08Z; unreviewed local model output, checked by Lean)
+
+**Primary outcome: 4 of 18 theorems solved (pass@4).** 13 of 72 attempts pass.
+
+| Solved | Passes | What the theorem is |
+|---|---|---|
+| `Casimir.casimir_of_killing` | 4/4 | solve `2Nt = C t/N` for `C` |
+| `Casimir.slope_values` | 4/4 | evaluate `11·C/(48π²)` for N = 2, 3 |
+| `Defect.defect_telescope` | 3/4 | `e^{-Δ} = z₅/z₁¹⁶` written as the product of the `𝖯_k` |
+| `Purity.excited_double` | 2/4 | `(x^{2n}) = (x^n)²` inside a `tsum` |
+
+**Unsolved, 14 theorems.**
+- **Every theorem that needs an inequality over a `tsum`, a chain of real inequalities, or the trace of a linear map.** That includes all four steps the conditional gap rests on: `purity_bounds`, `gap_from_purity`, `gap_from_defect` and `conditional_gap`.
+- **Why the 59 failing attempts fail:**
+
+  | Reason | Attempts | Detail |
+  |---|---|---|
+  | Lean error | 38 | 3 of them were cut off at 16,384 tokens |
+  | No code block | 15 | all cut off at 16,384 tokens |
+  | Target theorem missing | 6 | the answer proves a different statement, or stops before the target |
+
+- **Cut-offs:** 21 of 72 answers reached the token limit. The median answer used 6,366 tokens.
+
+**Name drift (exploratory, defined after seeing the data).**
+- **In 12 of the 38 Lean-error attempts, every reported error is an unknown identifier.** These are renamed or removed Mathlib lemmas: `le_div_iff` (9), `lt_div_iff` (8), `pow_le_one` (5), `div_le_div_iff` (4) and others.
+- **In 18 of the 38, the first error is an unknown name.**
+- **This does not mean those 12 proofs would compile under the old names.** Lean stops checking a branch at the first unknown name, so later errors stay hidden.
+- **Experiment 1 tests it directly:** it feeds those errors back to the model.
+
+**Reading.**
+- **The model proves the routine algebraic steps.** I could also do those by hand in a few lines.
+- **It proves none of the analytic steps of the chain.**
+- **Lean caught every failure.** No `sorry`, new axiom or false statement got through, because of the judge's design. That is the case for a prover over an informal referee: a failed proof is visibly a failure, not a false alarm.
+
 ## Follow-ups, pre-registered before running (Ernest, 2026-11-20: "pre register and run those 3 that order")
 
 All three start after the step-3 run above. Experiment 2 runs on the laptop, so it may overlap experiment 1. If any of these models proves effective, Ernest wants it deployed with our own Rust and CUDA C++ inference, not llama.cpp; nothing here depends on that.
