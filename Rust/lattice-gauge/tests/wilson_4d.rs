@@ -36,3 +36,19 @@ fn strong_coupling_slope() {
     let want = beta / 4.0 - beta.powi(3) / 96.0;
     assert!((m - want).abs() < 5.0 * e + 1e-5, "{m} +- {e} vs {want}");
 }
+
+#[test]
+fn loop_table_matches_single_loops_and_threads() {
+    let mut l = Lattice::hot(&[4, 4, 6, 4], 2.4, 8, 0).unwrap();
+    for _ in 0..5 { l.update(1); }
+    l.threads = 1;
+    let t1 = l.wilson_loop_table(3);
+    l.threads = 7;
+    let t7 = l.wilson_loop_table(3);
+    assert_eq!(t1, t7, "loop table depends on thread count");
+    for r in 1..=3 {
+        for t in 1..=3 {
+            assert!((t1[r - 1][t - 1] - l.wilson_loop(r, t)).abs() < 1e-12, "W({r},{t})");
+        }
+    }
+}

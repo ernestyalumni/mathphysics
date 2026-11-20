@@ -190,6 +190,79 @@ impl Lattice {
         sum / count as f64
     }
 
+    /// All rectangular Wilson loops W(r, t) for 1 <= r, t <= rmax, averaged as in `wilson_loop`;
+    /// entry [r-1][t-1]. Straight-line products L_a(x, l) for l <= rmax are built once per site and
+    /// direction, so each loop costs three products. Threads split the sites; the sum is reduced in a
+    /// fixed order, so the result does not depend on the thread count.
+    pub fn wilson_loop_table(&self, rmax: usize) -> Vec<Vec<f64>> {
+        let tor = &self.torus;
+        let d = tor.dimension();
+        let n = tor.site_count();
+        // lines[(site * d + a) * rmax + (l - 1)] = U(x,a) U(x+a,a) ... (l links)
+        let mut lines = vec![Quaternion::IDENTITY; n * d * rmax];
+        for site in 0..n {
+            for a in 0..d {
+                let mut q = Quaternion::IDENTITY;
+                let mut y = site;
+                for l in 0..rmax {
+                    q = q.mul(self.link(y, a));
+                    y = tor.neighbor(y, a, true);
+                    lines[(site * d + a) * rmax + l] = q;
+                }
+            }
+        }
+        let shift = |mut y: usize, a: usize, l: usize| {
+            for _ in 0..l {
+                y = tor.neighbor(y, a, true);
+            }
+            y
+        };
+        // Fixed-size chunks summed in chunk order: the result is independent of the thread count.
+        const CHUNK: usize = 512;
+        let chunks = (n + CHUNK - 1) / CHUNK;
+        let threads = self.threads.max(1).min(chunks);
+        let lines = &lines;
+        let mut partials: Vec<(usize, Vec<f64>)> = std::thread::scope(|s| {
+            let handles: Vec<_> = (0..threads)
+                .map(|tid| {
+                    s.spawn(move || {
+                        let mut out = Vec::new();
+                        for c in (tid..chunks).step_by(threads) {
+                        let mut acc = vec![0.0; rmax * rmax];
+                        for site in c * CHUNK..((c + 1) * CHUNK).min(n) {
+                            for mu in 0..d {
+                                for nu in mu + 1..d {
+                                    for &(a, b) in &[(mu, nu), (nu, mu)] {
+                                        for r in 1..=rmax {
+                                            let xr = shift(site, a, r);
+                                            let la = lines[(site * d + a) * rmax + r - 1];
+                                            for t in 1..=rmax {
+                                                let xt = shift(site, b, t);
+                                                let lb_end = lines[(xr * d + b) * rmax + t - 1];
+                                                let la_top = lines[(xt * d + a) * rmax + r - 1];
+                                                let lb = lines[(site * d + b) * rmax + t - 1];
+                                                acc[(r - 1) * rmax + t - 1] += la.mul(lb_end).mul(la_top.conj()).mul(lb.conj()).half_trace();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        out.push((c, acc));
+                        }
+                        out
+                    })
+                })
+                .collect();
+            handles.into_iter().flat_map(|h| h.join().expect("loop thread panicked")).collect()
+        });
+        partials.sort_by_key(|p| p.0);
+        let count = (n * d * (d - 1)) as f64; // sites x planes x 2 orientations
+        (0..rmax)
+            .map(|r| (0..rmax).map(|t| partials.iter().map(|p| p.1[r * rmax + t]).sum::<f64>() / count).collect())
+            .collect()
+    }
+
     /// Gauge transformation U(x,mu) -> g(x) U(x,mu) g(x+mu)^dagger (for invariance tests).
     pub fn gauge_transform(&mut self, g: &[Quaternion]) {
         let d = self.torus.dimension();
