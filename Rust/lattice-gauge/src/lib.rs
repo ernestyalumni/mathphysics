@@ -12,6 +12,8 @@ pub mod character;
 pub mod cuda;
 /// Sets of plaquettes modulo 2: twist surfaces, monopole counts, coboundary classes.
 pub mod cochain;
+/// Zero-momentum 0++ glueball operators (APE smearing) and correlators: the lattice mass gap.
+pub mod glueball;
 /// Philox4x32-10 counter-based random numbers, reproducible on CPU and GPU.
 pub mod philox;
 /// Purity of the trace of a nonnegative transfer operator, in exact integer arithmetic.

@@ -17,3 +17,7 @@ overflow-checks = true
 [[example]]
 name = "gpu_bench"
 required-features = ["cuda"]
+
+[[example]]
+name = "glueball_gpu"
+required-features = ["cuda"]

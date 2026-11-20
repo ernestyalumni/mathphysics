@@ -152,5 +152,24 @@
     "interface": {
       "type": "module"
     }
+  },
+  {
+    "filename": "glueball_rust.prompt",
+    "filepath": "src/glueball.rs",
+    "description": "Zero-momentum 0++ glueball operators (APE-smeared spatial plaquettes) and correlators: the lattice mass gap",
+    "reason": "Yang-Mills program task YM-N01 follow-on (lattice mass gap baseline); written by hand, prompt first",
+    "dependencies": [
+      "torus_rust.prompt",
+      "su2_rust.prompt"
+    ],
+    "priority": 10,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
   }
 ]
