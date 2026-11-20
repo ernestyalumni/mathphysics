@@ -112,3 +112,34 @@ pub fn torus_twist_2d(beta: f64, plaquettes: u64) -> (f64, f64) {
     }
     (ztw / z, num / ztw)
 }
+
+/// log Z of the untwisted 2D torus with V plaquettes, normalized so that Z = 1 at beta = 0 (Haar
+/// measure of mass 1): Z = sum_n b_n^V, b_n = 2 I_n(beta)/beta.
+pub fn torus_log_z_2d(beta: f64, plaquettes: u64) -> f64 {
+    if beta == 0.0 {
+        return 0.0;
+    }
+    // b_1 = 2 I_1(beta)/beta = 2 e^beta bessel_i_scaled(1, beta)/beta; factor b_1^V out.
+    let i1 = bessel_i_scaled(1, beta);
+    let log_b1 = beta + (2.0 * i1 / beta).ln();
+    let mut sum = 0.0;
+    let mut n = 1u32;
+    loop {
+        let w = (bessel_i_scaled(n, beta) / i1).powf(plaquettes as f64);
+        if n > 1 && w < 1e-18 * sum {
+            break;
+        }
+        sum += w;
+        n += 1;
+        if n > 2000 {
+            break;
+        }
+    }
+    plaquettes as f64 * log_b1 + sum.ln()
+}
+
+/// 2D square defect Delta_beta(n) = 4 log Z(n, n) - log Z(2n, 2n): the two-dimensional form of the
+/// hypercubic defect of yang-mills-lattice.tex (ym:defect). Exact; the b_1 factors cancel.
+pub fn square_defect_2d(beta: f64, n: u64) -> f64 {
+    4.0 * torus_log_z_2d(beta, n * n) - torus_log_z_2d(beta, 4 * n * n)
+}
