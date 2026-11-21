@@ -198,14 +198,42 @@ impl Lattice {
     /// 't Hooft centre twist: z_p = -1 for the plaquettes in plane (first, second) at the sites with
     /// coordinates x_first = 0 and x_second = 0 (one plaquette in every (first, second) plane).
     pub fn set_twist(&mut self, first: usize, second: usize) {
+        self.set_twist_strength(first, second, -1.0);
+    }
+
+    /// Plaquettes of the twist stack (same set as `set_twist`).
+    pub fn twist_stack(&self, first: usize, second: usize) -> Vec<usize> {
         let t = &self.torus;
-        let mut z = vec![1.0; t.plaquette_count()];
-        for site in 0..t.site_count() {
-            if t.site_coordinate(site, first) == 0 && t.site_coordinate(site, second) == 0 {
-                z[t.plaquette_index(site, first.min(second), first.max(second))] = -1.0;
-            }
+        (0..t.site_count())
+            .filter(|&s| t.site_coordinate(s, first) == 0 && t.site_coordinate(s, second) == 0)
+            .map(|s| t.plaquette_index(s, first.min(second), first.max(second)))
+            .collect()
+    }
+
+    /// Coupling z on the twist stack (z = 1: untwisted, z = -1: centre twist), 1 elsewhere. Interpolating z gives
+    /// ln(Z_tw/Z) = -beta int_{-1}^{1} <sum_stack a0(U_p)>_z dz, an integrand over L^{d-2} plaquettes only.
+    pub fn set_twist_strength(&mut self, first: usize, second: usize, z: f64) {
+        let mut sign = vec![1.0; self.torus.plaquette_count()];
+        for p in self.twist_stack(first, second) {
+            sign[p] = z;
         }
-        self.plaquette_sign = Some(z);
+        self.plaquette_sign = Some(sign);
+    }
+
+    /// Sum of a0(U_p) over the given plaquettes (by Torus::plaquette_index).
+    pub fn plaquette_sum(&self, plaquettes: &[usize]) -> f64 {
+        let t = &self.torus;
+        let planes = t.plane_count();
+        plaquettes
+            .iter()
+            .map(|&p| {
+                let site = p / planes;
+                let (mu, nu) = t.plane_directions(p % planes);
+                let x_mu = t.neighbor(site, mu, true);
+                let x_nu = t.neighbor(site, nu, true);
+                self.link(site, mu).mul(self.link(x_mu, nu)).mul(self.link(x_nu, mu).conj()).mul(self.link(site, nu).conj()).half_trace()
+            })
+            .sum()
     }
 
     /// Product of links along `steps` steps from `site` in direction `mu` (forward) and the end site.
