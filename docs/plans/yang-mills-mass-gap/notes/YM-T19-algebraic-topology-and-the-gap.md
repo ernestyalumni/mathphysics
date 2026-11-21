@@ -44,6 +44,7 @@ The vortex picture of confinement (Engelhardt, Faber, Greensite, Langfeld, Olejn
   | 2.8 | 1/19 | |
 
   On 8⁴ the obstruction switches off across the finite-volume deconfinement crossover (β_c ≈ 2.51 for N_t = 8), together with percolation. At β = 2.6 it returns on 12⁴, which is still confined (β_c ≈ 2.64 for N_t = 12). The invariant therefore tracks confinement, not the coupling. That is the behaviour a topological order parameter for confinement should have.
+- **Gribov-copy robustness.** Starting the gauge fixing from a random gauge transformation (`GRIBOV=1`) gives the obstruction in 18/20 configurations at β = 2.4 on 8⁴, against 20/20 and 10/10 from the default start. The signal is robust statistically but not copy-independent configuration by configuration, so any lemma must concern the ensemble or a canonical gauge.
 - Candidate lemma to formalize: in the confined phase the centre-projected vortex sheet has a percolating component whose H₁ carries Z₂ torsion; in the deconfined phase it does not.
 
 **Monopole worldlines** (lattice-gauge `monopole::worldline_topology`): integer 1-cycles on the dual lattice. Current conservation holds on every slice, which is a test. Compact U(1) on 6⁴ percolates in its confined phase (largest cluster 0.99 of the current at β = 0.8) and not in its Coulomb phase (0.22 at β = 1.2). MAG-projected SU(2) at β = 2.3 percolates (0.72). Full scans are chained on the Mac (SU(2)) and the laptop (U(1)).
