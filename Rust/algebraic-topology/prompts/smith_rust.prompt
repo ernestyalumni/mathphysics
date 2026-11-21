@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/smith.rs. std only. invariant_factors(rows, cols, entries) -> positive nonzero invariant factors of the Smith normal form, exact in i128 with checked arithmetic (panic on overflow): pivot on the smallest nonzero absolute value, clear row and column by Euclidean steps, repeat until both are clear, enforce divisibility by adding a row with a non-divisible entry. rank_mod_p by Gaussian elimination modulo a prime. Tested through tests/homology.rs (torsion Z_2 of RP^2 and of the Klein bottle).

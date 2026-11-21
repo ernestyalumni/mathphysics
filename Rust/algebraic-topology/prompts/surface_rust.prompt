@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/surface.rs. std only. analyze(squares as 4 cyclic vertex ids) -> per edge-connected component (largest first): squares, vertices, edges, euler = V - E + F, closed (every edge in an even number of squares), branching_edges (more than two squares), orientable (Some only without branching: propagate orientations so that squares traverse every shared edge oppositely). Tests: cube surface chi 2 orientable; square torus chi 0 orientable; square Klein bottle chi 0 non-orientable.

@@ -1,0 +1,89 @@
+[
+  {
+    "filename": "smith_rust.prompt",
+    "filepath": "src/smith.rs",
+    "description": "Smith normal form invariant factors and rank mod p",
+    "reason": "Yang-Mills program task YM-T19 (algebraic topology); written by hand, prompt first",
+    "dependencies": [],
+    "priority": 1,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "complex_rust.prompt",
+    "filepath": "src/complex.rs",
+    "description": "Chain complexes and homology over Z and Z_p",
+    "reason": "Yang-Mills program task YM-T19 (algebraic topology); written by hand, prompt first",
+    "dependencies": [
+      "smith_rust.prompt"
+    ],
+    "priority": 2,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "cubical_rust.prompt",
+    "filepath": "src/cubical.rs",
+    "description": "Cubical complex of the periodic d-torus",
+    "reason": "Yang-Mills program task YM-T19 (algebraic topology); written by hand, prompt first",
+    "dependencies": [
+      "complex_rust.prompt"
+    ],
+    "priority": 3,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "simplicial_rust.prompt",
+    "filepath": "src/simplicial.rs",
+    "description": "Simplicial complexes, cup product, Z_p cohomology, Freudenthal torus with seam cocycles",
+    "reason": "Yang-Mills program task YM-T19 (algebraic topology); written by hand, prompt first",
+    "dependencies": [
+      "complex_rust.prompt",
+      "smith_rust.prompt"
+    ],
+    "priority": 4,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  },
+  {
+    "filename": "surface_rust.prompt",
+    "filepath": "src/surface.rs",
+    "description": "Topology of square surfaces: components, Euler characteristic, orientability",
+    "reason": "Yang-Mills program task YM-T19 (algebraic topology); written by hand, prompt first",
+    "dependencies": [],
+    "priority": 5,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
+  }
+]

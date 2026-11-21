@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/cubical.rs. std only. CubicalTorus::new(sides >= 2): site index sum c_i stride_i with stride_0 = 1 (as Rust/lattice-gauge Torus); k-cell = (site, sorted k-subset of directions), index site * C(d,k) + lexicographic rank; boundary d[x; s_1<..<s_k] = sum_j (-1)^j ([x+e_{s_j}; S - s_j] - [x; S - s_j]). chain_complex(). Tests: dd = 0 and H_k(T^d) = Z^{C(d,k)} for d = 1..4, sides 2 and 3.

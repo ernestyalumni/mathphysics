@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/complex.rs. std only. ChainComplex { cell_counts, boundary[k][j] = sparse (face, coefficient) }; boundary_matrix (dense), is_complex (dd = 0), euler_characteristic, homology_z (Betti numbers and torsion from invariant factors: betti_k = n_k - rank d_k - rank d_{k+1}, torsion = factors of d_{k+1} > 1), betti_mod_p. Independent tests in tests/homology.rs.

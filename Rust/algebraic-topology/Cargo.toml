@@ -1,0 +1,11 @@
+[package]
+name = "algebraic-topology"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Exact homology, cohomology and cup products for cubical and simplicial complexes; surface topology (Yang-Mills program YM-T19)"
+
+[dependencies]
+
+[profile.release]
+overflow-checks = true

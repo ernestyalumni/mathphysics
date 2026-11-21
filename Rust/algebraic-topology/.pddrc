@@ -1,0 +1,17 @@
+version: "1.0"
+contexts:
+  smith:
+    paths: ["prompts/smith_rust.prompt", "src/smith.rs", "tests/homology.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/smith.rs, test_output_path: tests/, default_language: rust}
+  complex:
+    paths: ["prompts/complex_rust.prompt", "src/complex.rs", "tests/homology.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/complex.rs, test_output_path: tests/, default_language: rust}
+  cubical:
+    paths: ["prompts/cubical_rust.prompt", "src/cubical.rs", "tests/homology.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/cubical.rs, test_output_path: tests/, default_language: rust}
+  simplicial:
+    paths: ["prompts/simplicial_rust.prompt", "src/simplicial.rs", "tests/thooft.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/simplicial.rs, test_output_path: tests/, default_language: rust}
+  surface:
+    paths: ["prompts/surface_rust.prompt", "src/surface.rs", "tests/surface.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/surface.rs, test_output_path: tests/, default_language: rust}
