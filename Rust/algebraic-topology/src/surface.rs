@@ -89,3 +89,34 @@ pub fn analyze(squares: &[[usize; 4]]) -> Vec<ComponentTopology> {
     out.sort_by(|a, b| b.squares.cmp(&a.squares));
     out
 }
+
+/// The square surface as a 2-dimensional chain complex (vertices, edges, squares). Each square is oriented by its
+/// vertex cycle; an edge is stored as (min, max) and enters a square's boundary with +1 when traversed min -> max.
+/// Over Z_2 every closed surface is a 2-cycle; over Q (a large prime) only orientable closed sub-surfaces are, so
+/// betti_2 over Q = 0 with betti_2 over Z_2 > 0 is a certificate of non-orientability that tolerates branching.
+pub fn chain_complex(squares: &[[usize; 4]]) -> crate::complex::ChainComplex {
+    let mut vid: HashMap<usize, usize> = HashMap::new();
+    let mut eid: HashMap<(usize, usize), usize> = HashMap::new();
+    let mut edges_b: Vec<Vec<(usize, i64)>> = Vec::new();
+    let mut faces_b: Vec<Vec<(usize, i64)>> = Vec::new();
+    for q in squares {
+        for &v in q { let n = vid.len(); vid.entry(v).or_insert(n); }
+        let mut f = Vec::new();
+        for i in 0..4 {
+            let (a, b) = (q[i], q[(i + 1) % 4]);
+            let (key, sign) = if a < b { ((a, b), 1) } else { ((b, a), -1) };
+            let id = match eid.get(&key) {
+                Some(&id) => id,
+                None => {
+                    let id = eid.len();
+                    eid.insert(key, id);
+                    edges_b.push(vec![(vid[&key.1], 1), (vid[&key.0], -1)]);
+                    id
+                }
+            };
+            f.push((id, sign));
+        }
+        faces_b.push(f);
+    }
+    crate::complex::ChainComplex { cell_counts: vec![vid.len(), eid.len(), squares.len()], boundary: vec![vec![], edges_b, faces_b] }
+}
