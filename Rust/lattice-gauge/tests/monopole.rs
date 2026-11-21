@@ -54,3 +54,17 @@ fn mag_gauge_fixing() {
     let (r, sweeps) = fix_mag(&mut l, 1.7, 1e-12, 5000);
     assert!(sweeps < 5000 && r >= last - 1e-12, "MAG did not converge");
 }
+
+#[test]
+fn worldline_flux_is_conserved() {
+    let mut l = U1Lattice::hot(&[4, 6, 4, 4], 0.9, 15, 0).unwrap();
+    for _ in 0..10 { l.update(1); }
+    for mu in 0..4 {
+        let f0 = slice_flux(&l.torus, &l.theta, mu, 0);
+        for c in 1..l.torus.side_lengths()[mu] {
+            assert_eq!(slice_flux(&l.torus, &l.theta, mu, c), f0, "flux through slices of direction {mu} not conserved");
+        }
+    }
+    let (total, clusters, share, _) = worldline_topology(&l.torus, &l.theta);
+    assert!(total > 0 && clusters > 0 && share > 0.0 && share <= 1.0);
+}

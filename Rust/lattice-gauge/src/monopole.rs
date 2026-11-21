@@ -137,3 +137,44 @@ pub fn monopole_density(t: &Torus, theta: &[f64]) -> f64 {
     }
     s as f64 / count as f64
 }
+
+/// Monopole worldlines as an integer 1-cycle on the dual lattice (d = 4). The 3-cube at x spanned by the three
+/// directions other than mu carries the current m_mu(x) on the dual link from dual site x - e_mu to x (dual site of x
+/// labelled by x). Returns (total |current|, number of connected clusters of current-carrying links, share of the
+/// total in the largest cluster, winding numbers w_mu = sum of m_mu over the 3D slice x_mu = 0). By current
+/// conservation w_mu is the same on every slice; it is the homology class of the worldlines in H_1(T^4; Z).
+pub fn worldline_topology(t: &Torus, theta: &[f64]) -> (i64, usize, f64, [i64; 4]) {
+    assert_eq!(t.dimension(), 4);
+    let n = plaquette_integers(t, theta);
+    let mut parent: Vec<usize> = (0..t.site_count()).collect();
+    fn find(p: &mut Vec<usize>, x: usize) -> usize { let mut r = x; while p[r] != r { r = p[r]; } let mut y = x; while p[y] != r { let z = p[y]; p[y] = r; y = z; } r }
+    let mut links = Vec::new();
+    let mut wind = [0i64; 4];
+    for x in 0..t.site_count() {
+        for mu in 0..4 {
+            let o: Vec<usize> = (0..4).filter(|&d| d != mu).collect();
+            // orientation: sign of the permutation (mu, a, b, c) of (0, 1, 2, 3)
+            let sign = if mu % 2 == 0 { 1 } else { -1 };
+            let m = sign * cube_charge(t, &n, x, o[0], o[1], o[2]);
+            if m != 0 {
+                let y = t.neighbor(x, mu, false);
+                links.push((x, y, m.abs()));
+                if t.site_coordinate(x, mu) == 0 { wind[mu] += m; }
+            }
+        }
+    }
+    for &(x, y, _) in &links { let (a, b) = (find(&mut parent, x), find(&mut parent, y)); if a != b { parent[a] = b; } }
+    let mut size: std::collections::HashMap<usize, i64> = std::collections::HashMap::new();
+    for &(x, _, m) in &links { *size.entry(find(&mut parent, x)).or_insert(0) += m; }
+    let total: i64 = links.iter().map(|l| l.2).sum();
+    let largest = size.values().cloned().max().unwrap_or(0);
+    (total, size.len(), if total > 0 { largest as f64 / total as f64 } else { 0.0 }, wind)
+}
+
+/// Net current through the slice x_mu = c (for tests of conservation: independent of c).
+pub fn slice_flux(t: &Torus, theta: &[f64], mu: usize, c: usize) -> i64 {
+    let n = plaquette_integers(t, theta);
+    let o: Vec<usize> = (0..4).filter(|&d| d != mu).collect();
+    let sign = if mu % 2 == 0 { 1 } else { -1 };
+    (0..t.site_count()).filter(|&x| t.site_coordinate(x, mu) == c).map(|x| sign * cube_charge(t, &n, x, o[0], o[1], o[2])).sum()
+}
