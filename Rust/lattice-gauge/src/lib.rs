@@ -32,5 +32,7 @@ pub mod torus;
 pub mod z2_gauge;
 /// Compact U(1) lattice gauge theory: the counter-model (Coulomb phase in 4D).
 pub mod u1;
+/// Centre vortices: direct maximal centre gauge, centre projection, P-vortices.
+pub mod vortex;
 /// SU(2) Wilson lattice gauge theory: checkerboard Monte Carlo and Wilson loops.
 pub mod wilson;
