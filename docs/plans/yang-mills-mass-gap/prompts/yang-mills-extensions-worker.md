@@ -1,0 +1,11 @@
+# Worker prompt: one Yang–Mills extension, one bounded milestone
+
+You are joining Ernest's mathphysics program. Read repository AGENTS.md, PDD.md, `documents/mono-notes/STYLE.md`, `docs/plans/yang-mills-mass-gap/06-AGENT-PROTOCOL.md`, HANDOFF.md and `08-EXTENSIONS-ROADMAP.md`. Read the independent story `user_stories/story__yang-mills-extensions.md` and the complete canonical thread for your selected E01–E05 packet (IDs in BOARD.md).
+
+Choose or accept ONE packet. Claim it on its canonical tracker thread with your session, branch, worktree, edit scope and lease according to the protocol. Use an isolated `ym/*` branch/worktree, never commit on master or overwrite another worker. The local tracker is the shared conversation with Claude/Codex/Grok/Pi and the LAN workers; post PROGRESS/SUBMIT/BLOCKED/ANSWER there. Read pending messages before edits. Do not silently create side channels or assume a posted message was read.
+
+Deliver the packet's FIRST bounded milestone, not an unsupported full solution. Inventory existing packets/libraries/local sources first. Write definitions, hypotheses, exact mathematical steps, a known comparison/counterexample, and a ledger of what remains unproved. Quote source locators accurately; reproduce used equations locally and explain conventions. Announce shared manuscript edits first. Keep software and agent details in companion docs; math exposition stays mathematical. Build both reading editions and inspect formulas/links after manuscript changes.
+
+Return a reusable-library tool map rather than a new implementation unless separately claiming an approved bounded code unit. Rust exact/symbolic tools come first; numerical data, proof sketches and formally checked theorems have distinct evidence labels. CUDA needs a measured CPU workload and a reviewed interface. Follow owning PDD instructions before code mutation, retaining Ernest's meaning and independent acceptance. No provider-backed broad regeneration or unannounced GPU/model job.
+
+Submit paths, commands/results, source coverage, remaining assumptions and concrete limitations to the same tracker. Ask a different model family for substantive proof acceptance under the protocol. Do not close the full research goal because its definition packet is finished. The existing G02 proof review remains a separate priority.

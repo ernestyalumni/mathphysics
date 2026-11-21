@@ -715,6 +715,197 @@ The sign would change if the contracted index were lowered using $h=-\eta$
 instead. A contraction is therefore specified by both the algebraic
 relation and the bilinear form used to lower the index.
 
+\section{The Wightman axioms for a relativistic quantum field}
+\label{qft:sec:wightman-axioms}
+We state a vacuum formulation of the axioms using Streater and Wightman,
+Section~3-1, printed pp.~97--102 \cite{StreaterWightman1964}.
+The source calls the vacuum $\Psi_0$, the common domain $D$, the field
+components $\varphi_j$, and the finite-dimensional transformation matrix
+$S(A)$. Here their roles are
+\begin{equation}\label{qft:wightman-notation-map}
+ \Psi_0\mapsto\Omega,\qquad D\mapsto\mathcal D,\qquad
+ \varphi_j\mapsto\Phi_j,\qquad A\mapsto L,\qquad S(A)\mapsto\rho(L).
+\end{equation}
+The group element $L\in SL(2,\mathbb C)$ covers the proper orthochronous
+Lorentz matrix $\Lambda(L)$. The source's metric is opposite to
+Eq.~\eqref{qft:metric}; explicitly,
+\begin{equation}\label{qft:wightman-metric-map}
+ \eta_{\rm SW}=-\eta,\qquad
+ p^2_{\rm SW}=(p^0)^2-|\mathbf p|^2
+ =-\eta_{\mu\nu}p^\mu p^\nu.
+\end{equation}
+All the operator identities below hold on the specified common domain.
+
+\subsection{States, covariance group, and vacuum}
+There is a separable complex Hilbert space $\mathcal H$ with positive
+inner product and a strongly continuous unitary representation of
+$\mathbb R^4\rtimes SL(2,\mathbb C)$. Write
+\begin{align}
+ (a,L)(b,M)&=(a+\Lambda(L)b,LM),\notag\\
+ U(a,L)U(b,M)&=U(a+\Lambda(L)b,LM),\qquad U(a,L)^*U(a,L)=I,\notag\\
+ \lim_{g'\to g}\|U(g')\psi-U(g)\psi\|&=0
+ \qquad(\psi\in\mathcal H).
+ \label{qft:wightman-unitary-representation}
+\end{align}
+The normalized vacuum is invariant and unique up to phase in the
+Poincar\'e-invariant subspace:
+\begin{equation}\label{qft:wightman-vacuum}
+ \|\Omega\|=1,\qquad U(a,L)\Omega=\Omega,\qquad
+ \{\psi:U(a,L)\psi=\psi\ \text{for every }(a,L)\}
+ =\mathbb C\Omega.
+\end{equation}
+This states the uniqueness condition in the source's wording.
+Whenever the stronger translation-vacuum condition or
+$\ker H=\mathbb C\Omega$ is needed below, it is stated as a hypothesis
+at that use rather than substituted silently for
+Eq.~\eqref{qft:wightman-vacuum}.
+
+\subsection{Positive energy in every inertial frame}
+The translation subgroup has self-adjoint, strongly commuting generators
+$P^\mu=(H,\mathbf P)$. In the source's covariance convention,
+\begin{align}
+ U(a,1)&=\exp\!\left(i a^0H-i\mathbf a\cdot\mathbf P\right)\notag\\
+ &=\int_{\mathbb R^4}e^{i(p^0a^0-\mathbf p\cdot\mathbf a)}\,E_P(dp).
+ \label{qft:wightman-translations}
+\end{align}
+Here $E_P$ is the joint spectral projection measure, including continuous
+spectrum. The spectral condition is
+\begin{equation}\label{qft:wightman-spectrum}
+ \overline V_+=\{p\in\mathbb R^4:p^0\ge|\mathbf p|\},\qquad
+ E_P(\mathbb R^4\setminus\overline V_+)=0.
+\end{equation}
+It implies $H\ge0$ and
+\begin{equation}\label{qft:wightman-mass-operator}
+ M^2=H^2-|\mathbf P|^2=-\eta_{\mu\nu}P^\mu P^\nu\ge0.
+\end{equation}
+The field-covariance convention in Eq.~\eqref{qft:wightman-translations}
+uses $e^{itH}$ for a positive time translation. Schr\"odinger evolution
+of states is the inverse subgroup:
+\begin{equation}\label{qft:wightman-time-conventions}
+ U((t,\mathbf0),1)=e^{itH},\qquad
+ U((-t,\mathbf0),1)=e^{-itH}.
+\end{equation}
+Differentiating the vacuum invariance at the identity gives
+$H\Omega=0$ and $\mathbf P\Omega=0$, as in
+Eq.~\eqref{qft:vacuum-zero-energy}.
+
+\subsection{Fields, common domain, and temperedness}
+Let $\mathcal S(\mathbb R^4)$ be the Schwartz test-function space.
+For multi-indices $\alpha,\beta\in\mathbb N_0^4$, put
+\begin{equation}\label{qft:schwartz-seminorms}
+ p_N(f)=\sum_{|\alpha|+|\beta|\le N}
+ \sup_{x\in\mathbb R^4}\left|
+ x^\alpha\frac{\partial^{|\beta|}f}
+ {\partial(x^0)^{\beta_0}\partial(x^1)^{\beta_1}
+  \partial(x^2)^{\beta_2}\partial(x^3)^{\beta_3}}(x)\right|,
+ \qquad x^\alpha=\prod_{\mu=0}^3(x^\mu)^{\alpha_\mu}.
+\end{equation}
+Then $f\in\mathcal S$ means that $f$ is smooth and $p_N(f)<\infty$ for
+every $N$. Each field component is a linear operator-valued tempered
+distribution, written formally as
+\begin{equation}\label{qft:wightman-field-smearing}
+ \Phi_j(f)=\int d^4x\,f(x)\Phi_j(x),\qquad f\in\mathcal S(\mathbb R^4).
+\end{equation}
+The pairing defines the operator; pointwise operators $\Phi_j(x)$ are
+not required. There is a dense linear subspace $\mathcal D\subset\mathcal H$
+such that
+\begin{equation}\label{qft:wightman-common-domain}
+ \Omega\in\mathcal D,\qquad U(a,L)\mathcal D=\mathcal D,\qquad
+ \Phi_j(f)\mathcal D\subset\mathcal D,\qquad
+ \Phi_j(f)^*\mathcal D\subset\mathcal D.
+\end{equation}
+For every $\chi,\psi\in\mathcal D$ and component $j$, the map
+$f\mapsto\langle\chi,\Phi_j(f)\psi\rangle$ is a continuous linear
+functional on $\mathcal S$; equivalently, for some $C,N$ depending on
+$\chi,\psi,j$,
+\begin{equation}\label{qft:wightman-tempered-bound}
+ |\langle\chi,\Phi_j(f)\psi\rangle|\le C p_N(f)
+ \qquad(f\in\mathcal S).
+\end{equation}
+Take the field family to include its adjoint multiplets, with
+\begin{equation}\label{qft:wightman-adjoint-field}
+ \Phi_j^\dagger(f)
+ :=\left.\Phi_j(\overline f)^*\right|_{\mathcal D}.
+\end{equation}
+For a Hermitian field, $\Phi_j^\dagger=\Phi_j$, so real smearing gives
+a symmetric operator on $\mathcal D$. Essential self-adjointness is
+a further property; it is not asserted by this domain axiom.
+
+\subsection{Covariance of the fields}
+For the finite-dimensional component representation $\rho$, define
+\begin{align}
+ f_{a,L}(x)&=f\!\left(\Lambda(L)^{-1}(x-a)\right),\notag\\
+ U(a,L)\Phi_j(f)U(a,L)^{-1}
+ &=\sum_k\rho_{jk}(L^{-1})\Phi_k(f_{a,L})
+ \quad\text{on }\mathcal D.
+ \label{qft:wightman-field-covariance}
+\end{align}
+These are the source's Eqs.~(3-4)--(3-5), reproduced locally with the
+notation map in Eq.~\eqref{qft:wightman-notation-map}.
+For a scalar field $\rho=1$, the distributional shorthand is
+$U(a,L)\Phi(x)U(a,L)^{-1}=\Phi(\Lambda(L)x+a)$. The inverse in the
+smeared formula follows by the change of variables $y=\Lambda(L)x+a$:
+\begin{align}
+ U(a,L)\Phi(f)U(a,L)^{-1}
+ &=\int d^4x\,f(x)\Phi(\Lambda(L)x+a)\notag\\
+ &=\int d^4y\,f\!\left(\Lambda(L)^{-1}(y-a)\right)\Phi(y)
+ =\Phi(f_{a,L}).
+ \label{qft:wightman-scalar-covariance-check}
+\end{align}
+Here $\det\Lambda(L)=1$, so $d^4x=d^4y$.
+
+\subsection{Local commutativity and the Bose--Fermi grading}
+Two supports are spacelike separated when every pair of points in them
+satisfies
+\begin{equation}\label{qft:wightman-spacelike-supports}
+ \eta_{\mu\nu}(x-y)^\mu(x-y)^\nu>0,
+ \qquad x\in\operatorname{supp}f,\quad y\in\operatorname{supp}g.
+\end{equation}
+In the source's opposite signature the same condition is
+$(x-y)^2_{\rm SW}<0$. Assign each field a parity $\epsilon_j\in\{0,1\}$.
+For spacelike-separated supports, require
+\begin{equation}\label{qft:wightman-graded-locality}
+ \left[\Phi_j(f)\Phi_k(g)
+ -(-1)^{\epsilon_j\epsilon_k}\Phi_k(g)\Phi_j(f)\right]\psi=0
+ \qquad(\psi\in\mathcal D),
+\end{equation}
+including the corresponding relations for the adjoint fields. If both
+fields are bosonic, the bracket is $AB-BA$; if both are fermionic, it is
+$AB+BA$. Gauge-invariant bosonic observables obey the commutator version.
+
+\subsection{Cyclicity of the vacuum}
+Starting with the vacuum, the field polynomials generate vectors of the
+forms
+\begin{equation}\label{qft:wightman-polynomial-states}
+ \Omega,\qquad \Phi_j(f)\Omega,\qquad
+ \Phi_j(f)\Phi_k(g)\Omega,\qquad
+ \Phi_{j_1}(f_1)\cdots\Phi_{j_n}(f_n)\Omega.
+\end{equation}
+Cyclicity requires
+\begin{equation}\label{qft:wightman-cyclicity}
+ \mathcal D_0=\operatorname{span}
+ \{\Phi_{j_1}(f_1)\cdots\Phi_{j_n}(f_n)\Omega:n\ge0,\ f_i\in\mathcal S\},
+ \qquad\overline{\mathcal D_0}=\mathcal H,
+\end{equation}
+where the $n=0$ product is the identity and adjoint components are
+included in the field family. Thus the fields generate the state space;
+an unrelated additional Hilbert-space sector cannot be appended without
+checking this axiom.
+
+The source organizes the assumptions as~0, I, II, III and its definition
+of a field theory by cyclicity. On printed p.~102 it discusses the further
+scattering assumption
+\begin{equation}\label{qft:asymptotic-completeness-extra}
+ \mathcal H=\mathcal H^{\rm in}=\mathcal H^{\rm out},
+\end{equation}
+where the last two spaces are generated by incoming and outgoing
+scattering states. This is asymptotic completeness, an additional
+requirement. Neither it, a mass gap, an isolated particle, nor canonical
+equal-time commutation relations is inserted into the basic list above.
+For Yang--Mills, these axioms concern a positive physical Hilbert space
+and the appropriate gauge-invariant local fields; a gauge-fixed potential
+is not automatically a positive-metric observable satisfying this list.
+
 \section{Euclidean reconstruction and the Hamiltonian gap}
 \label{qft:sec:euclidean-reconstruction}
 Jaffe and Witten, Section~3, p.~5 \cite{JaffeWitten2006}, describe a route
@@ -1135,3 +1326,101 @@ generating the physical Hilbert space, Eq.~\eqref{qft:euclidean-decay-implies-ga
 excludes energies in $(0,\Delta_*)$. Reflection positivity supplies a
 positive-energy quantum theory; the uniform exponential estimate supplies
 the strictly positive gap.
+
+\section{Further Yang--Mills questions beyond the Millennium statement}
+\label{qft:sec:yang-mills-extensions}
+Jaffe and Witten, pp.~6--7 \cite{JaffeWitten2006}, distinguish the
+Millennium problem from the following extensions:
+\begin{quote}
+There are many natural extensions of the Millennium problem. Among other
+things, one would like to prove the existence of an isolated one-particle
+state (an upper gap, in addition to the mass gap), to prove confinement,
+to prove existence of other four-dimensional gauge theories
+(incorporating additional fields that preserve asymptotic freedom), to
+understand dynamical questions (such as the possible mass gap,
+confinement, and chiral symmetry breaking) in these more general
+theories, and to extend the existence theorems from $\mathbb R^4$ to an
+arbitrary $4$-manifold.
+\end{quote}
+The footnote about renormalization on these pages belongs to the earlier
+discussion of classical differential polynomials and quantum operators;
+it is separate from this list. In particular, it does not assert a
+canonical one-to-one correspondence between individual classical
+polynomials and renormalized quantum operators.
+
+\subsection{A lower energy gap and an isolated particle are different}
+Recall the joint translation spectrum in
+Eq.~\eqref{qft:wightman-spectrum} and define the nonnegative invariant
+mass operator
+\begin{equation}\label{qft:extension-mass-operator}
+ M=\sqrt{H^2-|\mathbf P|^2}.
+\end{equation}
+An isolated positive mass $m_{\rm p}$ requires a nonzero spectral projection onto
+that mass and a neighborhood containing no other invariant masses:
+\begin{equation}\label{qft:isolated-mass-target}
+ E_M(\{m_{\rm p}\})\ne0,\qquad
+ \operatorname{spec}(M)\cap(m_-,m_+)=\{m_{\rm p}\},\qquad
+ 0<m_-<m_{\rm p}<m_+.
+\end{equation}
+The corresponding subspace must carry the intended positive-energy
+one-particle Poincar\'e representation (including its spin and internal
+multiplicities). The spectral projection alone does not specify them.
+The particle's energy varies with momentum:
+\begin{align}
+ E^2-|\mathbf p|^2&=m_{\rm p}^2,\notag\\
+ E^2&=m_{\rm p}^2+|\mathbf p|^2,\notag\\
+ E(\mathbf p)&=\sqrt{m_{\rm p}^2+|\mathbf p|^2}.
+ \label{qft:one-particle-dispersion}
+\end{align}
+Thus an isolated mass shell is not an isolated eigenvalue of the full
+Hamiltonian on infinite space. The lower-gap condition
+$\operatorname{spec}(H)\subset\{0\}\cup[\Delta,\infty)$ by itself
+does not establish Eq.~\eqref{qft:isolated-mass-target}.
+
+\subsection{Confinement needs a specified probe and limit}
+For a rectangular Wilson loop in a chosen representation $R$, let
+$r$ be its spatial width and $T$ its Euclidean time extent. One possible
+criterion, when the renormalized loop expectation is positive and real
+and both limits exist, uses
+\begin{align}
+ V_R(r)&=-\lim_{T\to\infty}\frac1T
+              \log\langle W_R(r,T)\rangle,\notag\\
+ \sigma_R&=\lim_{r\to\infty}\frac{V_R(r)}r>0.
+ \label{qft:confinement-string-tension-target}
+\end{align}
+Here $V_R$ is the static-source potential after the necessary
+self-energy subtraction; $\sigma_R$ is its asymptotic linear slope.
+This is a proposed criterion for a specified theory and probe, not a
+definition that works unchanged for every compact simple group.
+The global form of the gauge group, screening of the representation,
+and dynamical matter all matter. For example, string breaking can
+invalidate an asymptotic Wilson area law for a probe screened by
+dynamical matter. Generalized symmetries help distinguish these
+questions \cite{GaiottoEtAl2015}. A vacuum mass gap alone is not a proof
+of Eq.~\eqref{qft:confinement-string-tension-target}.
+
+\subsection{Additional fields and curved space-time}
+For a selected gauge--matter theory one must first specify its fields,
+representations, interactions and consistency conditions. Asymptotic
+freedom of one coupling is an ultraviolet property; it does not by
+itself construct the quantum theory or determine its infrared phase.
+In particular, the questions of a gap, confinement and chiral symmetry
+breaking are to be investigated rather than imposed simultaneously.
+Spontaneous breaking of an exact continuous global symmetry, under
+the hypotheses of Goldstone's theorem, produces massless modes
+\cite{GoldstoneSalamWeinberg1962}; explicit breaking and anomalous
+symmetries must be treated separately.
+
+On a curved manifold the background data and the meaning of
+``existence'' must also be specified. A Riemannian manifold
+$(\mathcal M,g)$ with a chosen gauge bundle poses a Euclidean
+construction problem. A globally hyperbolic Lorentzian manifold poses
+a causal local-algebra problem, for example in the locally covariant
+framework \cite{BrunettiFredenhagenVerch2003}. A general manifold has
+neither the global translations used in
+Eq.~\eqref{qft:wightman-translations} nor a distinguished Hamiltonian.
+Reflection-positive constructions on suitable static curved
+backgrounds provide a useful comparison
+\cite{JaffeRitter2007Curved}; their geometric hypotheses and models
+must not be replaced by an assertion about arbitrary four-manifolds
+or interacting four-dimensional Yang--Mills theory.

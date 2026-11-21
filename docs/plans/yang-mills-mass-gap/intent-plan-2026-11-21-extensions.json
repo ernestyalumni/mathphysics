@@ -1,0 +1,147 @@
+{
+  "acceptance": {
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "sentence": "Please help me and us and our effort for Yang-Mills 4d these other things to prove as well: \"There are many natural extensions of the Millennium problem.",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": "Rust/lattice-gauge/architecture.json",
+      "matched_terms": [
+        "gauge",
+        "intent",
+        "mills",
+        "theory",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/z2_gauge.rs",
+      "product_area": "Exact density of states of Z2 lattice gauge theory on small tori, with twists",
+      "prompt_path": "Rust/lattice-gauge/prompts/z2_gauge_rust.prompt",
+      "score": 39
+    },
+    {
+      "architecture_path": null,
+      "matched_terms": [
+        "gap",
+        "mass",
+        "mass gap",
+        "mills",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": null,
+      "product_area": "Collector",
+      "prompt_path": "docs/plans/yang-mills-mass-gap/watch/collector_python.prompt",
+      "score": 36
+    },
+    {
+      "architecture_path": null,
+      "matched_terms": [
+        "gap",
+        "mass",
+        "mass gap",
+        "mills",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": null,
+      "product_area": "Wilson Group Trace Contract",
+      "prompt_path": "docs/plans/yang-mills-mass-gap/prompts/wilson_group_trace_contract.prompt",
+      "score": 36
+    },
+    {
+      "architecture_path": null,
+      "matched_terms": [
+        "gap",
+        "mass",
+        "mass gap",
+        "mills",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": null,
+      "product_area": "Ym Tracker Bash",
+      "prompt_path": "docs/plans/yang-mills-mass-gap/prompts/ym_tracker_bash.prompt",
+      "score": 36
+    },
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "gauge",
+        "intent",
+        "mills",
+        "one",
+        "yang",
+        "yang mills"
+      ],
+      "output_path": "src/sphere.rs",
+      "product_area": "Exact unit-sphere monomial averages and rational multiples of powers of pi",
+      "prompt_path": "Rust/qft-symbolics/prompts/sphere_rust.prompt",
+      "score": 34
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "yang-mills-extensions-and-explicit-wightman-foun-ac239509",
+  "original_request": "Please help me and us and our effort for Yang-Mills 4d these other things to prove as well: \"There are many natural extensions of the Millennium problem. Among other\nthings, one would like to prove the existence of an isolated one-particle state (an\nupper gap, in addition to the mass gap), to prove confinement, to prove existence of\n1A natural 1–1 correspondence between such classical ‘differential polynomials’ and quantized\noperators does not exist, since the correspondence has some standard subtleties involving renor-\nmalization [27]. One expects that the space of classical differential polynomials of dimension ≤ d\ndoes correspond to the space of local quantum operators of dimension ≤ d.QUANTUM YANG–MILLS THEORY\n7\nother four-dimensional gauge theories (incorporating additional fields that preserve\nasymptotic freedom), to understand dynamical questions (such as the possible mass\ngap, confinement, and chiral symmetry breaking) in these more general theories,\nand to extend the existence theorems from R4 to an arbitrary 4-manifold.\" as stated in pp. 7  of that Jaffe Witten write up. It could be another user story and intent: as a user, I'd like to also have our Ai agents explore research, and solve for these as well: \"There are many natural extensions of the Millennium problem. Among other\nthings, one would like to prove the existence of an isolated one-particle state (an\nupper gap, in addition to the mass gap), to prove confinement, to prove existence of\n1A natural 1–1 correspondence between such classical ‘differential polynomials’ and quantized\noperators does not exist, since the correspondence has some standard subtleties involving renor-\nmalization [27]. One expects that the space of classical differential polynomials of dimension ≤ d\ndoes correspond to the space of local quantum operators of dimension ≤ d.QUANTUM YANG–MILLS THEORY\n7\nother four-dimensional gauge theories (incorporating additional fields that preserve\nasymptotic freedom), to understand dynamical questions (such as the possible mass\ngap, confinement, and chiral symmetry breaking) in these more general theories,\nand to extend the existence theorems from R4 to an arbitrary 4-manifold.\"\n\nAlso, given our local copies of reference papers; let's just clearly right down what are the Wightman axioms",
+  "original_request_sha256": "ac2395093ddfa687569d02cf36b3e6b29f582e149bcae188412fb6dbd922e98b",
+  "project": {
+    "adoption_scenario": "existing_pdd_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      "Python/rotations/.pddrc",
+      "Rust/lattice-gauge/.pddrc",
+      "Rust/physics-contracts/.pddrc",
+      "Rust/physics-gateway/.pddrc",
+      "Rust/physics-tools/.pddrc",
+      "Rust/qft-symbolics/.pddrc",
+      "TypeScript/physics-workbench/.pddrc",
+      "Python/rotations/architecture.json",
+      "Rust/lattice-gauge/architecture.json",
+      "Rust/physics-contracts/architecture.json",
+      "Rust/physics-gateway/architecture.json",
+      "Rust/physics-tools/architecture.json",
+      "Rust/qft-symbolics/architecture.json",
+      "TypeScript/physics-workbench/architecture.json",
+      "47 prompt file(s)"
+    ],
+    "repository_root": "/home/propdev/.openclaw/workspace/mathphysics-reading-work",
+    "root": "/home/propdev/.openclaw/workspace/mathphysics-reading-work",
+    "scope_kind": "repository"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [
+      "asymptotic freedom), to understand dynamical questions (such as the possible mass",
+      "asymptotic freedom), to understand dynamical questions (such as the possible mass"
+    ],
+    "must_preserve": [],
+    "open_decisions": []
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "file",
+    "ref": "/tmp/ym-extensions-intent-request.txt"
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "user-visible behavior"
+    ],
+    "recommended": true
+  },
+  "title": "Yang–Mills extensions and explicit Wightman foundations",
+  "warnings": []
+}

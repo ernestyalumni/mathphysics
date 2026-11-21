@@ -107,3 +107,16 @@ Wilson-measure study handoff: [YM-T15](tasks/YM-T15.md), local:17, ready for sco
 
 
 Matrix-integration learning/tooling handoff: [YM-T09](tasks/YM-T09.md), local:18, ready; no worker claimed or implementation started. [Pasteable agent prompt](prompts/matrix-integration-worker.md). First submission: entrywise versus matrix-domain integration tutorial and one bounded exact Rust unit; numerical Rust and profiled CUDA C++ are separate follow-on milestones. Reuses existing exact sphere moments; general word integration may follow T15 without blocking the first coordinate-polynomial unit.
+
+
+## Jaffe–Witten extensions — 21 November 2026 UTC
+
+These extend the research agenda, not the Millennium prize conditions. [Roadmap](08-EXTENSIONS-ROADMAP.md), [shared worker prompt](prompts/yang-mills-extensions-worker.md). Core G02 reviews retain priority. No new proof worker claimed.
+
+| Packet | First bounded milestone | Tracker | Status |
+|---|---|---|---|
+| [YM-E01](tasks/YM-E01.md) | Isolated particle mass shell | local:22 | ready: definition/source milestone |
+| [YM-E02](tasks/YM-E02.md) | Specified confinement criterion | local:23 | ready: definition/source milestone |
+| [YM-E03](tasks/YM-E03.md) | Gauge–matter existence / ultraviolet assumptions | local:24 | ready: definition/source milestone |
+| [YM-E04](tasks/YM-E04.md) | Matter infrared phases / chiral symmetry | local:25 | ready: definition/source milestone |
+| [YM-E05](tasks/YM-E05.md) | Curved-manifold existence specification | local:26 | ready: definition/source milestone |

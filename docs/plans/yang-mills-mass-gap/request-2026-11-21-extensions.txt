@@ -1,0 +1,25 @@
+Please help me and us and our effort for Yang-Mills 4d these other things to prove as well: "There are many natural extensions of the Millennium problem. Among other
+things, one would like to prove the existence of an isolated one-particle state (an
+upper gap, in addition to the mass gap), to prove confinement, to prove existence of
+1A natural 1–1 correspondence between such classical ‘differential polynomials’ and quantized
+operators does not exist, since the correspondence has some standard subtleties involving renor-
+malization [27]. One expects that the space of classical differential polynomials of dimension ≤ d
+does correspond to the space of local quantum operators of dimension ≤ d.QUANTUM YANG–MILLS THEORY
+7
+other four-dimensional gauge theories (incorporating additional fields that preserve
+asymptotic freedom), to understand dynamical questions (such as the possible mass
+gap, confinement, and chiral symmetry breaking) in these more general theories,
+and to extend the existence theorems from R4 to an arbitrary 4-manifold." as stated in pp. 7  of that Jaffe Witten write up. It could be another user story and intent: as a user, I'd like to also have our Ai agents explore research, and solve for these as well: "There are many natural extensions of the Millennium problem. Among other
+things, one would like to prove the existence of an isolated one-particle state (an
+upper gap, in addition to the mass gap), to prove confinement, to prove existence of
+1A natural 1–1 correspondence between such classical ‘differential polynomials’ and quantized
+operators does not exist, since the correspondence has some standard subtleties involving renor-
+malization [27]. One expects that the space of classical differential polynomials of dimension ≤ d
+does correspond to the space of local quantum operators of dimension ≤ d.QUANTUM YANG–MILLS THEORY
+7
+other four-dimensional gauge theories (incorporating additional fields that preserve
+asymptotic freedom), to understand dynamical questions (such as the possible mass
+gap, confinement, and chiral symmetry breaking) in these more general theories,
+and to extend the existence theorems from R4 to an arbitrary 4-manifold."
+
+Also, given our local copies of reference papers; let's just clearly right down what are the Wightman axioms
