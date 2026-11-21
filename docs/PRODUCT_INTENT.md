@@ -60,3 +60,19 @@ Ernest asks our agents to investigate Jaffe–Witten's isolated-particle, confin
 >
 > Context he accepted: a compiled Lean proof checks the Lean statement, not the paper, so each statement must be read against the source by hand; expect a few verified steps, not broad coverage; the analytic core of the mass-gap argument is out of reach for now.
 <!-- pdd-intent-entry:lean-formalisation-of-load-bearing-steps-and-a-l-3be8135f:end -->
+
+<!-- pdd-intent-entry:automatic-lean-statement-checker-in-rust-3c8e1031:start -->
+## Automatic Lean statement checker in Rust
+
+- Intent event: [`docs/intents/intent__automatic-lean-statement-checker-in-rust-3c8e1031.md`](intents/intent__automatic-lean-statement-checker-in-rust-3c8e1031.md)
+- Change kind: `add`
+- Supersedes: none
+- Scope: `existing_pdd_change`
+- Technology: `Rust`
+
+> Ernest, 2026-11-21, after the Goedel-Formalizer result (4 of 9 compiling statements were false):
+> "what about writing enough symbolic computation tools to help out? tbh we've gotta automate this, really can't rely upon me"
+> "ok go ahead" (approving the agent's plan: an automatic checker that a Lean statement says what the paper says, by two independent translations - paper claim to an executable predicate, Lean statement mechanically from Lean's elaborated term - compared on random and edge-case instances; plus vacuity, counterexample and hypothesis-necessity checks; validated on the 28 graded formalizer statements and mutants of the 18 reference statements, pre-registered.)
+> "also anytime we use sympy / numpy we need to start writing a port of those tools into Rust / CUDA C++."
+> "i really want to banish the use of sympy/numpy because we have a full Rust port already"
+<!-- pdd-intent-entry:automatic-lean-statement-checker-in-rust-3c8e1031:end -->

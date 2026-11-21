@@ -1,0 +1,123 @@
+{
+  "acceptance": {
+    "reasons": [],
+    "sentence": "Ernest, 2026-11-21, after the Goedel-Formalizer result (4 of 9 compiling statements were false):",
+    "story_recommended": false
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "computation",
+        "rust"
+      ],
+      "output_path": "src/computation.rs",
+      "product_area": "Bounded reusable arithmetic foundation; manual implementation",
+      "prompt_path": "Rust/qft-symbolics/prompts/computation_rust.prompt",
+      "score": 10
+    },
+    {
+      "architecture_path": "Rust/physics-gateway/architecture.json",
+      "matched_terms": [
+        "full",
+        "rust",
+        "tools"
+      ],
+      "output_path": "src/main.rs",
+      "product_area": "Loopback read-only file/static gateway and existing physics-tools bridge",
+      "prompt_path": "Rust/physics-gateway/prompts/gateway_rust.prompt",
+      "score": 9
+    },
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "independent",
+        "rust"
+      ],
+      "output_path": "src/checked.rs",
+      "product_area": "Approved reusable research batches; bounded manual implementation",
+      "prompt_path": "Rust/qft-symbolics/prompts/checked_rust.prompt",
+      "score": 7
+    },
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "independent",
+        "rust"
+      ],
+      "output_path": "src/conventions.rs",
+      "product_area": "Approved reusable research batches; bounded manual implementation",
+      "prompt_path": "Rust/qft-symbolics/prompts/conventions_rust.prompt",
+      "score": 7
+    },
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "independent",
+        "rust"
+      ],
+      "output_path": "src/expression.rs",
+      "product_area": "Approved reusable research batches; bounded manual implementation",
+      "prompt_path": "Rust/qft-symbolics/prompts/expression_rust.prompt",
+      "score": 7
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "automatic-lean-statement-checker-in-rust-3c8e1031",
+  "original_request": "Ernest, 2026-11-21, after the Goedel-Formalizer result (4 of 9 compiling statements were false):\n\"what about writing enough symbolic computation tools to help out? tbh we've gotta automate this, really can't rely upon me\"\n\"ok go ahead\" (approving the agent's plan: an automatic checker that a Lean statement says what the paper says, by two independent translations - paper claim to an executable predicate, Lean statement mechanically from Lean's elaborated term - compared on random and edge-case instances; plus vacuity, counterexample and hypothesis-necessity checks; validated on the 28 graded formalizer statements and mutants of the 18 reference statements, pre-registered.)\n\"also anytime we use sympy / numpy we need to start writing a port of those tools into Rust / CUDA C++.\"\n\"i really want to banish the use of sympy/numpy because we have a full Rust port already\"",
+  "original_request_sha256": "3c8e1031cd1769e1cfc7b20c52516209828acc0fded863b8344b5c74da2139cc",
+  "project": {
+    "adoption_scenario": "existing_pdd_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      "Python/rotations/.pddrc",
+      "Rust/lattice-gauge/.pddrc",
+      "Rust/physics-contracts/.pddrc",
+      "Rust/physics-gateway/.pddrc",
+      "Rust/physics-tools/.pddrc",
+      "Rust/qft-symbolics/.pddrc",
+      "TypeScript/physics-workbench/.pddrc",
+      "Python/rotations/architecture.json",
+      "Rust/lattice-gauge/architecture.json",
+      "Rust/physics-contracts/architecture.json",
+      "Rust/physics-gateway/architecture.json",
+      "Rust/physics-tools/architecture.json",
+      "Rust/qft-symbolics/architecture.json",
+      "TypeScript/physics-workbench/architecture.json",
+      "47 prompt file(s)"
+    ],
+    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-F01-claude-opus55-lean",
+    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-F01-claude-opus55-lean",
+    "scope_kind": "repository"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [],
+    "must_preserve": [],
+    "open_decisions": [
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "inline",
+    "ref": null
+  },
+  "story": {
+    "action": "none",
+    "matched": [],
+    "reasons": [],
+    "recommended": false
+  },
+  "title": "Automatic Lean statement checker in Rust",
+  "warnings": []
+}

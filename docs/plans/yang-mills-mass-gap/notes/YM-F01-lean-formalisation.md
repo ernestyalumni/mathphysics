@@ -147,6 +147,59 @@ All three start after the step-3 run above. Experiment 2 runs on the laptop, so 
   - **Primary:** errors located plus originals passed.
   - **Secondary:** mutants located, false alarms, cap hits, and two-sample agreement.
 
+## Statement checker (pre-registered 2026-11-21, before the checker existed or ran on any graded statement)
+
+Ernest, 2026-11-21: "we've gotta automate this, really can't rely upon me", then "ok go ahead"; and "banish the use of sympy/numpy" (`request-2026-11-21-statement-checker.txt`, PDD intent `automatic-lean-statement-checker-in-rust-3c8e1031`).
+
+**Question.** Can a program decide, without a human reader, whether a Lean statement says what an informal statement says?
+
+**Method: two translations compared on instances.**
+- **Lean side, mechanical.** A Lean command (`formal/Audit/Export.lean`) exports the elaborated statement as JSON: binders, hypotheses, conclusion, with `YMFormal` definitions unfolded from their Lean values. The Rust evaluator applies Lean's own semantics: `x/0 = 0`, `log 0 = 0`, `log (-x) = log x`, truncated `ℕ` subtraction, and a `tsum` that is only decided for finitely supported terms. No text is parsed, so notation, precedence, coercions and `optParam` binders mean what Lean says they mean.
+- **Informal side, written by hand.** Executable predicates in Rust for the 7 statements of `formal/informal-statements.json`: their hypotheses, and their conclusion split into conjuncts. I wrote these, and I also wrote the reference Lean statements, so the two sides are not independent readers. That is a limit of this test.
+- **Arithmetic: exact or rigorous, never floating point.** All values are exact rationals (`qft-symbolics` `BigQ`/`BigC`), and `exp`/`log` are rigorous rational intervals. Each comparison is true, false or undecided. Crate `Rust/statement-audit`, CLI `ym-audit`; no SymPy, NumPy or Python.
+- **Instances.** Fixed-seed random and edge cases:
+  - finitely supported spectra with ties, zeros or a single nonzero term;
+  - doubly exponential sequences;
+  - small integer and Gaussian-rational matrices, N = 1–4;
+  - special reals (0, 1/4, log 2 bounds).
+
+  Universal statements over `ℕ` inside a statement are evaluated for the first 8 values.
+- **Variable matching.** Lean variables are matched to informal ones by name with fixed aliases (`λ`, `lam`: the spectrum; `m`, `gap`; `δ`; …). For sequences, index offsets 0 and 1 are both tried, and the mapping with the fewest disagreements is kept.
+  - Variables in the Lean statement only are searched for values that satisfy the Lean hypotheses.
+  - A variable fixed by a defining hypothesis (`v = e`, `∀ x, v x = e`) is set from it.
+- **Verdicts for each Lean statement.**
+  - **FALSE:** an instance satisfies the Lean hypotheses but not the Lean conclusion.
+  - **VACUOUS:** no instance found satisfying the Lean hypotheses.
+  - **STRONGER:** an instance satisfies the informal hypotheses, and no value of the Lean-only variables satisfies the Lean ones.
+  - **MISMATCH:** a Lean conclusion conjunct agrees with no informal conjunct on every instance where both are decided, including instances outside the hypotheses.
+  - **MISSING:** an informal conjunct has no Lean conjunct matching it (formalizer statements only; for the reference theorems, coverage is reported across the set).
+  - **UNMATCHED:** an informal variable has no Lean counterpart.
+  - **UNDECIDED:** fewer than 50 instances decided.
+  - **PASS:** none of the above. A note, **WEAKER**, records Lean hypotheses that hold where the informal ones fail.
+- **Hypothesis scan.** Each hypothesis of each informal statement is dropped in turn, and a counterexample is searched for. The result is compared with the hand list above: λ₂ > 0 is needed; `P(n) > 1/2` and `Δ < log 2` are not.
+- **Self-check of the informal statements.** Any instance satisfying an informal statement's hypotheses but not its conclusion is reported as an error in the statement (or in my predicate). For `casimir_su`, this tests `K(X,Y) = 2N tr(XY)` exactly on su(N), for N = 2–4, which none of the Lean theorems states.
+
+**Benchmark, all fixed now.**
+- **(a) The 28 Goedel-Formalizer statements, with my grades** (`grades.json`). `λ` is first renamed to `lam` automatically, and statements that still do not elaborate are excluded. Graded equivalent should PASS; graded weaker hypotheses should PASS with WEAKER; graded wrong should be flagged.
+- **(b) The 9 reference theorems with informal counterparts:** `purity_bounds`, `exp_neg_gap_le`, `gap_from_purity`, `defect_telescope`, `defect_nonneg_and_last`, `gap_from_defect`, `conditional_gap`, `trace_sandwich`, `trace_adjoint_comp`. All should PASS, and together they should cover every conjunct of their informal statements except `casimir_su`'s.
+- **(c) Mutants of (b)**, generated mechanically by single text edits to the statement:
+  - `≤`↔`<`;
+  - a numeral changed;
+  - one hypothesis dropped;
+  - an index shifted (`j + 1` → `j`, `lam 0` → `lam 1`, `k + 1` → `k`);
+  - a binary `-` swapped with `+`;
+  - the sign inside `exp (-…)` removed.
+
+  Mutants that fail to elaborate are discarded. A mutant counts as detected if its report differs from the unmutated statement's report in any flag or WEAKER note.
+
+**Primary outcome.**
+- On (a): misses (wrong but PASS) and false alarms (equivalent but flagged).
+- On (c): the detection rate.
+
+**Useful if:** (a) has no misses and at most one false alarm, (b) all pass, and (c) detects at least 90 %.
+
+**Allowed after this point:** fixes for constructs the evaluator does not support, or crashes, logged with the reason. **Not allowed:** changes to the verdict rules, the matching rule, the thresholds or the instance generators after any benchmark result is seen. The checker is developed on toy statements in `formal/Audit/Toy.lean`, not on the benchmark.
+
 ## Labels
 - The Lean proofs are machine-checked. The match between the Lean statements and the source is my own reading, listed above.
 - Model output is labelled `unreviewed (local model output; not evidence)`. The Lean verdict on it is a check, not a review.
