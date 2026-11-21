@@ -166,6 +166,32 @@ All three start after the step-3 run above. Experiment 2 runs on the laptop, so 
   - **Primary:** errors located plus originals passed.
   - **Secondary:** mutants located, false alarms, cap hits, and two-sample agreement.
 
+#### Experiment 3 result (run 2026-11-21 16:00–20:40Z; unreviewed local model output)
+
+**Two harness fixes were needed before the result could be read.** Both are in claw-work `feat/weight-space-discovery` (f01d4f6, 0a83cc0).
+- **Turn tags.** The referee looked only for Qwen's `<|im_start|>assistant`; Phi-4 renders `<|user|>…<|end|><|assistant|>`. The smoke test caught it.
+- **Answer split.** Phi-4 ends its thinking with a special `</think>` token (id 100351) that the server leaves out of the returned text. Under the text split, every answer was unparsed, although it closed its thinking in 79 of 86 generations.
+- **The fix.** The referee now takes the answer as the detokenized tokens after that token. `claw-wsp referee-regrade` applied it to the finished run, changing 79 rows and generating nothing new; Qwen runs, whose text contains `</think>`, parse as before.
+- **The comparison.** `referee-compare --cross-model` compared the runs. It requires the same cases, seeds, sampling, cap, context and runtime image, but allows a different model, `</think>` token and tool build.
+
+| 43 held-out cases × 2 samples | Qwen3.8-9B Q5 (YM-T16 control) | Phi-4-reasoning-plus Q4 |
+|---|---|---|
+| Correct (primary) | 39 / 86 | 53 / 86 |
+| Originals passed | 10 / 28 | 25 / 28 |
+| False alarms on originals | 11 | 2 |
+| Planted errors located | 29 / 58 | 28 / 58 |
+| Planted errors flagged | 46 / 58 | 30 / 58 |
+| Cap hits | 12 | 7 |
+
+**Primary difference: +16 points.** The 95 % bootstrap interval is 3–30 points and McNemar's p is 0.03. Both treat the two samples of a case as independent, which overstates certainty. By case:
+- Phi-4 is right on both samples where Qwen is wrong on both in 6 cases.
+- The reverse holds in 3.
+
+**Reading.**
+- **Where the gain comes from.** Phi-4 is a far less trigger-happy referee: 2 false alarms against 11.
+- **Errors found.** It locates no more planted errors than the 9B, 28 against 29 of 58, and flags only half of them.
+- **Caveats.** The q8_0 KV cache, and the chat template's built-in system prompt, differ from the control. A referee that misses half the planted errors still cannot certify a proof.
+
 ## Statement checker (pre-registered 2026-11-21, before the checker existed or ran on any graded statement)
 
 Ernest, 2026-11-21: "we've gotta automate this, really can't rely upon me", then "ok go ahead"; and "banish the use of sympy/numpy" (`request-2026-11-21-statement-checker.txt`, PDD intent `automatic-lean-statement-checker-in-rust-3c8e1031`).
