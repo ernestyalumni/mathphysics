@@ -14,6 +14,8 @@ pub mod cuda;
 pub mod cochain;
 /// Zero-momentum 0++ glueball operators (APE smearing) and correlators: the lattice mass gap.
 pub mod glueball;
+/// Maximal abelian gauge, abelian projection and DeGrand-Toussaint monopoles.
+pub mod monopole;
 /// Philox4x32-10 counter-based random numbers, reproducible on CPU and GPU.
 pub mod philox;
 /// Purity of the trace of a nonnegative transfer operator, in exact integer arithmetic.

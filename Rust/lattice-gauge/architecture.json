@@ -210,5 +210,25 @@
     "interface": {
       "type": "module"
     }
+  },
+  {
+    "filename": "monopole_rust.prompt",
+    "filepath": "src/monopole.rs",
+    "description": "Maximal abelian gauge, abelian projection and DeGrand-Toussaint monopole currents (SU(2) and U(1))",
+    "reason": "Yang-Mills program topology queue (monopoles, dual superconductor; U(1) counter-model); written by hand, prompt first",
+    "dependencies": [
+      "wilson_rust.prompt",
+      "u1_rust.prompt",
+      "torus_rust.prompt"
+    ],
+    "priority": 13,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
   }
 ]

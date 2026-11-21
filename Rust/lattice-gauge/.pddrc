@@ -36,3 +36,6 @@ contexts:
   topology:
     paths: ["prompts/topology_rust.prompt", "src/topology.rs", "tests/topology.rs"]
     defaults: {prompts_dir: prompts, generate_output_path: src/topology.rs, test_output_path: tests/, default_language: rust}
+  monopole:
+    paths: ["prompts/monopole_rust.prompt", "src/monopole.rs", "tests/monopole.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/monopole.rs, test_output_path: tests/, default_language: rust}
