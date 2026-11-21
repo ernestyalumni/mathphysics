@@ -32,7 +32,27 @@ The vortex picture of confinement (Engelhardt, Faber, Greensite, Langfeld, Olejn
 - Every component is closed, as the Bianchi identity requires; this is an end-to-end check.
 - Branching edges are frequent, so naive orientation fails. Homology decides anyway: b₂(Z₂) − b₂(Q) = 1 in all 10 configurations. In a 2-complex this difference counts the Z₂-torsion summands of H₁. The sheet contains many orientable closed sub-surfaces plus exactly one Z₂ obstruction, a homological "crosscap".
 - **Control.** Sheets from independent random Z₂ links at the same density on 8⁴ have 115–120 small components and b₂(Z₂) − b₂(Q) = 0 (4 of 4 samples). The obstruction is therefore a property of the dynamics, not of the construction.
-- Phase dependence (β = 2.2–2.8): running.
+- **Phase and volume dependence.** Configurations with the obstruction b₂(Z₂) − b₂(Q) = 1:
+
+  | β | 8⁴ | 12⁴ |
+  |---|---|---|
+  | 2.2 | 20/20 | |
+  | 2.3 | 20/20 | |
+  | 2.4 | 10/10 | |
+  | 2.5 | 7/20 | (running) |
+  | 2.6 | 4/20 (largest share 0.42) | **14/20** (largest share 0.68) |
+  | 2.8 | 1/19 | |
+
+  On 8⁴ the obstruction switches off across the finite-volume deconfinement crossover (β_c ≈ 2.51 for N_t = 8), together with percolation. At β = 2.6 it returns on 12⁴, which is still confined (β_c ≈ 2.64 for N_t = 12). The invariant therefore tracks confinement, not the coupling. That is the behaviour a topological order parameter for confinement should have.
+- Candidate lemma to formalize: in the confined phase the centre-projected vortex sheet has a percolating component whose H₁ carries Z₂ torsion; in the deconfined phase it does not.
+
+**Monopole worldlines** (lattice-gauge `monopole::worldline_topology`): integer 1-cycles on the dual lattice. Current conservation holds on every slice, which is a test. Compact U(1) on 6⁴ percolates in its confined phase (largest cluster 0.99 of the current at β = 0.8) and not in its Coulomb phase (0.22 at β = 1.2). MAG-projected SU(2) at β = 2.3 percolates (0.72). Full scans are chained on the Mac (SU(2)) and the laptop (U(1)).
+
+**Instantons by persistent homology** (`persistence`, `examples/instanton_persistence.rs`, cooled charge densities):
+- On 8⁴ at β = 2.4, the persistent peaks of q and −q give N_I − N_A = Q in 12/12 configurations, including one instanton–anti-instanton pair at Q = 0.
+- On 12⁴ this holds in only 8–13/30, both for peak-height persistence and for steepest-ascent basins with integrated charge. Lumps overlap and partly cancel, so the dilute-instanton-gas picture fails at this density. This agrees with instantons not being the gap mechanism.
+
+**Steenrod cup-1 and the Pontryagin square** (`tests/steenrod.rs`): cup-1 satisfies its coboundary identity on random cochains, and ∫P(w) mod 4 on T⁴ is a class invariant equal to 2 Pf(n) for constant twists. The plain cup square is not invariant for non-cocycle lifts, so the test is non-vacuous. Twist sectors of any representative can now be evaluated.
 
 **Centre dominance** (same configurations). The centre-projected Creutz ratio χ_cp(3,3) = 0.1357(28) at β = 2.3 reproduces the full string tension σa² = 0.1359 (Teper, hep-th/9812187, Table 10). At β = 2.4 it gives 82% of σ.
 
@@ -46,7 +66,7 @@ The vortex picture of confinement (Engelhardt, Faber, Greensite, Langfeld, Olejn
 
 ## Next
 
-1. Phase dependence of the vortex-sheet invariants (running), and the volume dependence at fixed β.
-2. The Pontryagin square for non-translation-invariant cochains. This needs the cup-1 product (Steenrod), which the library does not have yet.
-3. Monopole worldlines as integer 1-cycles: homology class and winding, MAG-projected SU(2) against U(1).
+1. Vortex obstruction at β = 2.5 on 12⁴ (running), then 16⁴. That needs a sparse rank (the dense mod-p rank is O(n³)).
+2. Monopole-worldline scans across β for SU(2) and U(1) (chained on the Mac and laptop).
+3. Twist-sector free energies (YM-N02) with P(w) to label sectors.
 4. Lüscher admissibility: the fraction of admissible configurations against β, and Q from bundle reconstruction compared with Q from cooling.
