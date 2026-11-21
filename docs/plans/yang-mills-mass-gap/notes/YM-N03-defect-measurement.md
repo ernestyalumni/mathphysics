@@ -105,3 +105,37 @@ n = 2 (2⁴ and 4⁴, 6 replicas each, β ∈ [0, 1.6] with h = 0.05, 5×10⁵ u
 - In the Coulomb phase the integrand stays large (17.8 at β = 1.6) instead of decaying: the massless photon keeps the finite-size effects.
 
 The decisive comparison is the n-dependence at fixed β. In SU(2) at β = 1.8 the defect collapses from Δ(2) ≈ 26 to Δ(4) ≈ 0. In U(1)'s Coulomb phase a massless theory should give Δ(4) ≳ Δ(2) (zero-mode terms ~ log n in log Z). If instead it collapsed, the criterion would not be detecting a gap. U(1) n = 4 (8⁴ scans on the laptop) is running. n = 2 on β ∈ [0, 1.6], and an 8⁴ scan for n = 4; U(1) has a massless Coulomb phase above β ≈ 1.0. Expectation: in the Coulomb phase Δ does not become small as n grows. If it did, the criterion would not be detecting a gap.
+
+## Strong-coupling expansion of the defect, and what the recurrence means
+
+In the SU(2) character expansion (u = I₂(β)/I₁(β)), log Z is a sum over closed surfaces of plaquettes. Surfaces that do not wrap the torus are extensive and cancel in Δ = 16 log Z(n⁴) − log Z((2n)⁴). The leading wrapping surfaces have Euler characteristic 0, so they carry no dimension factor:
+- flat 2-tori in a coordinate plane: area n², 6 planes × n² positions;
+- square tubes around one direction: area 4n, 4 directions × 3 cross-section planes × n³ positions.
+
+Hence
+
+  Δ_β(n) ≈ 16 (6 n² u^{n²} + 12 n³ u^{4n}),
+
+the doubled torus contributing only at areas 4n² and 8n. With no fitted parameter this matches the Monte Carlo:
+
+| n, β | u | strong coupling | measured |
+|---|---|---|---|
+| 2, 0.4 | 0.099 | 0.037 | 0.056(18) |
+| 2, 0.6 | 0.148 | 0.184 | 0.187(23) |
+| 2, 0.8 | 0.195 | 0.557 | 0.591(27) |
+| 2, 1.0 | 0.240 | 1.295 | 1.456(31) (higher orders) |
+| 4, 1.8 | 0.399 | 0.006 | −0.003(51) |
+| 4, 2.0 | 0.433 | 0.021 | 0.336(63) (crossover) |
+
+This independently validates the β-integration measurements.
+
+**The recurrence.** For large n the tubes dominate, so Δ(n) ≈ A n³ e^{−En} with A = 192 and E = −4 log u. Then Δ(2n)/Δ(n)² = 8/(A n³), small, and `ym:conj:recurrence` holds with room to spare. The same holds for any Δ(n) of the form A n³ e^{−En} with E > 0, whatever E is.
+
+The recurrence is therefore the statement that finite-volume corrections decay exponentially in the torus size, with constants uniform as β grows: in substance, a gap at the doubling scale. In a massless theory (U(1)'s Coulomb phase) finite-size effects decay only as powers, so the ratio grows with n and the recurrence fails.
+
+The conditional-gap theorem thus reformulates the problem as a renormalization-group-type inequality rather than reducing it. A proof of the recurrence uniform in β is of the same nature and difficulty as the gap.
+
+**Numerical outlook.** A direct test at n = 8 (8⁴ against 16⁴) is out of reach with our hardware:
+- β-integration would need about 67 GPU-hours;
+- the block-gluing estimator (`src/glued.rs`; exact in 2D, consistent at n = 2 and 4: −1.4(1.0) at β 1.8, 2.0(1.2) at β 2.0) is at most 2–3× cheaper;
+- multihit and a GPU path would still leave roughly 60–250 GPU-hours.
