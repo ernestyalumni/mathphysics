@@ -29,6 +29,45 @@ Author: Claude Opus 5.5, 2026-11-20 UTC. Branch `ym/YM-F01-claude-opus55-lean`. 
 - **What this establishes.** The finite and algebraic steps that carry the conditional gap are correct as stated. The source has no error in them.
 - **The `ym-s04` step 9 values.** The local 9B flagged them as wrong (YM-T16). Given `C_𝔤 = 2N²`, which is proved here up to the complexification step, the values are right.
 
+## Comparison with Codex's review (YM-O03 §1, fdaccd7 on `ym/YM-O03-codex-review`)
+
+Requested by Ernest, 2026-11-21: "compare §1 with F01, especially which hypotheses Lean assumes and how to cover the rank-one case at β=0".
+
+**The review's reading of the four modules agrees with the code.**
+
+**Hypotheses the Lean theorems assume:**
+- **Spectrum.** The Lean spectrum `lam` is only `Spectrum lam`: `0 < lam 0`, `0 ≤ lam j ≤ lam 0`, summable. The tail is not ordered. To read `lam 1` as the physical λ₂, enumerate the spectrum in decreasing order with multiplicity. That is a bridge hypothesis, added to the list above.
+- **Log forms.** These add `0 < lam 1`, `0 < Δ` or `0 < δ k`.
+- **Trace identifications.** Two are inputs, not theorems: `hP : exp (-Δ) ≤ purity lam n` and the `𝖯_k ≤ 1` bounds. No transfer operator is constructed.
+- **Conditional gap.** `conditional_gap` takes abstract sequences, `from_defect` at every k, and the recurrence.
+- **Casimir.** The Lean proves the matrix identities over any commutative ring. Restriction to sl and complexification of su are manuscript steps. The statement checker's self-check confirms `K(X,Y) = 2N tr(XY)` exactly on 1,066 random su(N) elements, N = 2–4. That is evidence, not a proof.
+
+**Rank one (β = 0) is now covered.** The log forms exclude it by hypothesis; they are not wrong there. `formal/YMFormal/RankOne.lean` (in `check.sh --strict` and `Axioms.lean`) restates the chain for `r = λ₂/λ₁` with no positivity assumptions:
+
+| Theorem | Statement |
+|---|---|
+| `ratio_pow_le_impurity` | `(λ₂/λ₁)ⁿ ≤ 𝖯⁻¹ - 1` |
+| `ratio_pow_le_defect` | `e^{-Δ} ≤ 𝖯(n) → (λ₂/λ₁)ⁿ ≤ e^Δ - 1`, for any Δ |
+| `rank_one_of_zero_defect` | Δ = 0 forces λ₂ = 0 |
+| `conditional_gap_ratio` | `0 ≤ δ_k`, recurrence, start, and `r_kᵉ ≤ e^{δ_k} - 1` with `e = 2ᵏ n` imply `r_kⁿ ≤ 1/2` for all k, with no `n ≥ 1` |
+
+The gap is `-log r` when `r > 0` and infinite when `r = 0`, so `log 2 / n ≤ 𝗆` follows. A zero defect propagates zero under the recurrence, as the review says.
+
+**Codex's rectangle recurrence, read against F01.** I checked it by hand. It is not formalised.
+- **Estimate 1 comes from `purity_bounds`.** The three bounds needed are `s ≤ 𝖯⁻¹ - 1`, `s₂ₙ ≤ sₙ²` and `𝖯⁻¹ - 1 ≤ 2s + s²`, the last giving `log 𝖯⁻¹ ≤ 2s`. Then `2s² ≤ 2p²e^{2p} ≤ 4p²` needs `e^{2p} ≤ 2`, which holds for `p ≤ 1/4`.
+- **Estimate 2 is an identity of F.** Both sides expand to `2F(Dⱼx) - F(DᵢDⱼx)`.
+- **The induction holds.**
+  - The path weights 8, 4, 2, 1 sum the edge costs to Δ(n), so each edge cost is at most δ.
+  - In the step, dropping `-2pₕ(y) ≤ 0` gives `pᵢ(x) ≤ 2pᵢ(y) + pₕ(Dᵢy)`.
+  - The second term is a doubling of a rectangle `z` with `zₕ = n` and j − 1 long sides, so Estimate 1 bounds it by `4A_{j-1}²`.
+  - That gives `A_j ≤ 3A_{j-1}`.
+  - The constant is `4(8 + 36 + 162 + 729) = 3740`.
+  - `δ ≤ 1/7480` implies `27δ ≤ 1/4`.
+- **The form matches F01's `recurrence` exactly.** With `c₁ = 3740` and threshold `δ ≤ 1/7480 = 1/(2c₁)`, it is `δ k ≤ 1/(2c₁) → δ (k+1) ≤ c₁ δ k²`. If the derivation stands, the open hypothesis is discharged.
+- **The cost: more spectral input than F01 now assumes.** F01 uses one spectral purity per scale. The rectangle argument needs every `pᵢ(x)` to be the log impurity of a positive transfer operator in direction i, for every rectangle with sides in {n, 2n, 4n}. That is reflection positivity in all four directions (C23).
+- **Formalising it.** With `F : (Fin 4 → ℕ) → ℝ` abstract and Estimate 1 and `pᵢ ≥ 0` as hypotheses, the induction is finite and could be checked in Lean. Not started.
+- **Unchanged.** A small defect at bounded physical size (`start`) remains open.
+
 ## Step 3: local prover (pre-registered before any generation)
 
 **Question.** Can a local Lean prover on the RTX 3060 fill in any of these proofs?
