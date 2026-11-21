@@ -1,9 +1,12 @@
 //! P-vortex density and centre-projected Creutz ratios after direct maximal centre gauge, against beta.
-//! Usage: vortex_scan <side> <betas> <therm> <configs> <every> <seed> <threads>
+//! Usage: vortex_scan <side> <betas> <therm> <configs> <every> <seed> <threads> [dump prefix]
+//! With a dump prefix, the pierced plaquettes of every configuration are written to <prefix>-<beta>.tsv as
+//! `config site mu nu` lines after a `# sides` header (input for algebraic-topology's vortex_surfaces).
 use lattice_gauge::stats::jackknife;
 use lattice_gauge::su2::Quaternion;
 use lattice_gauge::vortex::{centre_projection, fix_mcg, p_vortex_density};
 use lattice_gauge::wilson::Lattice;
+use std::io::Write;
 fn main() {
     let a: Vec<String> = std::env::args().collect();
     let side: usize = a[1].parse().unwrap();
@@ -12,6 +15,7 @@ fn main() {
     let seed: u64 = a[6].parse().unwrap();
     let threads: usize = a[7].parse().unwrap();
     let rmax = 3;
+    let dump = a.get(8).cloned();
     for (i, &beta) in betas.iter().enumerate() {
         let mut l = Lattice::hot(&[side; 4], beta, seed + i as u64, 0).unwrap();
         l.threads = threads;
@@ -19,7 +23,12 @@ fn main() {
         let mut dens = Vec::new();
         let mut w: Vec<Vec<f64>> = vec![Vec::new(); rmax * rmax];
         let mut mcg = 0.0;
-        for _ in 0..configs {
+        let mut out = dump.as_ref().map(|p| {
+            let mut f = std::io::BufWriter::new(std::fs::File::create(format!("{p}-{beta:.3}.tsv")).unwrap());
+            writeln!(f, "# sides {}", vec![side.to_string(); 4].join(",")).unwrap();
+            f
+        });
+        for cfg in 0..configs {
             for _ in 0..every { l.update(2); }
             l.reunitarize();
             let mut g = Lattice::cold(&[side; 4], beta, seed, 1).unwrap();
@@ -29,6 +38,13 @@ fn main() {
             mcg += r / configs as f64;
             let z = centre_projection(&g);
             dens.push(p_vortex_density(&g, &z));
+            if let Some(f) = out.as_mut() {
+                let t = &g.torus;
+                for x in 0..t.site_count() { for mu in 0..4 { for nu in mu + 1..4 {
+                    let prod = z[t.link_index(x, mu)] * z[t.link_index(t.neighbor(x, mu, true), nu)] * z[t.link_index(t.neighbor(x, nu, true), mu)] * z[t.link_index(x, nu)];
+                    if prod < 0 { writeln!(f, "{cfg}\t{x}\t{mu}\t{nu}").unwrap(); }
+                }}}
+            }
             let mut c = Lattice::cold(&[side; 4], beta, seed, 2).unwrap();
             c.threads = threads;
             c.links = z.iter().map(|&s| Quaternion::new(s as f64, 0.0, 0.0, 0.0)).collect();
