@@ -191,5 +191,24 @@
     "interface": {
       "type": "module"
     }
+  },
+  {
+    "filename": "topology_rust.prompt",
+    "filepath": "src/topology.rs",
+    "description": "Clover topological charge and cooling for SU(2) in d=4 (instantons)",
+    "reason": "Yang-Mills program topology queue (instantons first); written by hand, prompt first",
+    "dependencies": [
+      "wilson_rust.prompt",
+      "su2_rust.prompt"
+    ],
+    "priority": 12,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
   }
 ]

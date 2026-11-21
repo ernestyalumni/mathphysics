@@ -30,6 +30,9 @@ pub enum Update {
     /// Negative control: Kennedy-Pendleton without its accept step.
     HeatBathBroken,
     OverRelax,
+    /// Cooling: U -> W^dagger/|W|, the link that maximizes the local a0(U W). Deterministic; used to
+    /// expose instantons before measuring the topological charge.
+    Cool,
 }
 
 impl Lattice {
@@ -120,6 +123,10 @@ impl Lattice {
                                         Update::HeatBath => su2::heat_bath(w, this.beta, &mut stream),
                                         Update::HeatBathBroken => su2::heat_bath_broken(w, this.beta, &mut stream),
                                         Update::OverRelax => su2::overrelax(this.links[link], w),
+                                        Update::Cool => {
+                                            let n = w.norm_sq();
+                                            if n < 1e-300 { this.links[link] } else { w.conj().scale(1.0 / n.sqrt()) }
+                                        }
                                     };
                                     (link, u)
                                 })

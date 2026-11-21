@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/topology.rs. std only. SU(2), d = 4. Clover C_{mu nu}(x) = sum of the four same-orientation plaquette loops at x in plane (mu, nu); f = vec(C)/4; charge_density q(x) = (f01.f23 - f02.f13 + f03.f12)/(2 pi^2) (sign convention free); charge Q = sum_x q(x); cool(l, n) = n sweeps of wilson::Update::Cool (U -> W^dagger/|W|, deterministic, checkerboard). Independent tests in tests/topology.rs: Q = 0 on the cold configuration; q(x) gauge invariant to 1e-13; cooling never lowers the plaquette. examples/topo_check (Q after 0..40 cooling sweeps) and examples/topo_chi (a chi_t^{1/4} from Q after 20 sweeps, raw and integer-rounded; reference Teper hep-th/9812187 Table 15).

@@ -22,6 +22,8 @@ pub mod spectral;
 pub mod stats;
 /// SU(2) as unit quaternions: Haar measure, Kennedy-Pendleton heat bath, over-relaxation.
 pub mod su2;
+/// Topological charge (clover) and cooling for SU(2) in d = 4: instantons.
+pub mod topology;
 /// Sites, links, plaquettes and cubes of a periodic torus.
 pub mod torus;
 /// Exact enumeration of Z2 lattice gauge theory on small tori.

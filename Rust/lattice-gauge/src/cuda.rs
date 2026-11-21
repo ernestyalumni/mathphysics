@@ -71,7 +71,7 @@ impl GpuLattice {
         let kind = match update {
             Update::HeatBath => 0,
             Update::OverRelax => 1,
-            Update::HeatBathBroken => return Err("the broken update exists only on the CPU".into()),
+            Update::HeatBathBroken | Update::Cool => return Err("this update exists only on the CPU".into()),
         };
         check(unsafe { lg_cuda_sweep(self.handle, kind, self.beta, self.seed, self.sweep, self.replica) }, "sweep")?;
         self.sweep = self.sweep.wrapping_add(1);
