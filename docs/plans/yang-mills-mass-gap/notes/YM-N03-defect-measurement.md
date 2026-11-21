@@ -60,9 +60,27 @@ Consistency checks of the formal statements hold at every β, within errors: P_k
 
 The hypothesis "Δ small at some scale" is therefore about as strong as finite-size confinement at that scale, and the content of the conditional-gap theorem lies in the recursion from n to 2n (`ym:conj:recurrence` in the YM-F01 note). The test of this reading is n = 4: the prediction is that Δ_β(4) stays small up to β ≈ 2.2–2.3, near the N_t = 4 deconfinement coupling β_c ≈ 2.30.
 
-## 4D SU(2), n = 4
+## 4D SU(2), n = 4 (preliminary, 2026-11-21 07:00Z)
 
-Pending. 4⁴: 26 replicas on β ∈ [0, 2.6]. 8⁴: GPU replicas on β ∈ [1.0, 2.6], integrated from β₀ = 1.0, where the 4⁴ – 8⁴ integrand is checked to vanish within errors.
+Data so far:
+- 4⁴: 12 Mac replicas plus the laptop replicas, β ∈ [0, 2.6], h = 0.1, 5×10⁵ updates per point.
+- 8⁴: GPU replicas (3 on the desktop 3060, 2–3 on the laptop 3070) on β ∈ [1.0, 2.6], 10⁵ updates per point.
+
+The integral starts at β₀ = 1.0. The integrand N_P(8⁴)(⟨a₀⟩₄ − ⟨a₀⟩₈) is consistent with zero for β = 1.0–1.7 (|value| < 1σ, errors about 0.17–0.24), which justifies Δ(β₀) ≈ 0.
+
+| β | integrand | Δ_β(4) − Δ(1.0) | m(8) bound |
+|---|---|---|---|
+| 1.6 | −0.13(22) | 0.013(47) | — |
+| 1.8 | 0.87(31) | 0.023(59) | ≥ 0.94 |
+| 2.0 | 4.56(40) | 0.30(8) | ≥ 0.26 |
+| 2.1 | 32.6(4) | (Δ explodes) | — |
+
+**Reading.**
+- At n = 4 the defect stays below 1/4 up to β ≈ 1.95, against β ≈ 0.65 at n = 2. The threshold moves to weaker coupling as n grows, the predicted trend.
+- The thresholds lie below the deconfinement couplings of the small tori (β_c ≈ 1.88 for N_t = 2, ≈ 2.30 for N_t = 4). A confined small torus is necessary but not sufficient: the defect is extensive and picks up finite-size effects earlier.
+- In physical units, using a√σ ≈ 0.69 near β = 2.0 and √σ ≈ 440 MeV, the hypothesis holds at n = 4 for a torus about 1.2 fm across.
+- The resulting bounds (m(8) ≥ 0.94 at β = 1.8) are far below the actual lattice glueball mass, about 2 near β = 2.0.
+- Whether the threshold β*(n) keeps pace with the continuum limit, n·a(β*(n)) bounded as n grows, needs n = 8 (8⁴ against 16⁴). That is beyond the present statistics: the error is dominated by the small volume and grows like N_P(2n)/√N_P(n).
 
 ## U(1), the counter-model
 
