@@ -24,7 +24,7 @@ Author: Claude Opus 5.5, 2026-11-20 UTC. Branch `ym/YM-F01-claude-opus55-lean`. 
 - **Hypotheses, not proved here:**
   - **Spectrum.** That the spectrum is that of the transfer operator, and `Z(n) = Tr 𝖳ⁿ` (`ym:trace-formula`).
   - **Purities.** That each `𝖯_k` is a purity, which uses the symmetry of `Z`.
-  - **Recurrence.** The defect recurrence, Conjecture `ym:conj:recurrence`, which is open.
+  - **Recurrence.** The defect recurrence, Conjecture `ym:conj:recurrence`, which is open. The 4D SU(2) measurements in `notes/YM-N03-defect-measurement.md` (branch `ym/YM-N01-claude-opus55-su2`, be8e89a) find Δ small at n = 2 only at strong coupling, where the 2⁴ torus is confined. So the hypothesis "Δ small at some scale" is roughly finite-size confinement at that scale, and the theorem's content is the step n → 2n, which is this recurrence.
   - **Casimir.** For `casimir-sun`, that the real trace over `su(N)` equals the complex trace over `sl_N(ℂ)`. The strategist checked `K(X,Y) = 2N tr(XY)` on `su(N)` numerically for N = 2 to 5 (200 instances); that is evidence, not a proof.
 - **What this establishes.** The finite and algebraic steps that carry the conditional gap are correct as stated. The source has no error in them.
 - **The `ym-s04` step 9 values.** The local 9B flagged them as wrong (YM-T16). Given `C_𝔤 = 2N²`, which is proved here up to the complexification step, the values are right.
@@ -110,6 +110,31 @@ All three start after the step-3 run above. Experiment 2 runs on the laptop, so 
   - **Compiles:** the last ```lean4 block compiles with `import Mathlib` in our Docker image (`formalizer.py judge`). `sorry` as the proof is expected.
   - **Faithful:** graded by me against the informal statement and the reference, as equivalent, stronger hypotheses, weaker hypotheses, or wrong. A statement made vacuous by contradictory hypotheses counts as wrong. The grading is not blind; grades go in `grades.json` with a reason for each.
 - **Primary outcome:** statements with at least one attempt that compiles and is equivalent, out of 7.
+
+#### Experiment 2 result (run 2026-11-21 04:04–04:47Z on the RTX 3070; unreviewed local model output, graded by me)
+
+**Primary outcome: 2 of 7 statements** have an attempt that compiles and is equivalent: `conditional_gap` (4 of 4 attempts) and `defect_telescope` (1 of 4). 9 of 28 attempts compile; answers were short (median about 950 tokens, none cut off).
+
+| Statement | Compiles | Equivalent | Equivalent, ignoring compile failure |
+|---|---|---|---|
+| `casimir_su` | 0/4 | 0 | 0 |
+| `trace_ad_ad` | 1/4 | 0 | 1 |
+| `purity_bounds` | 0/4 | 0 | 2 |
+| `gap_from_purity` | 0/4 | 0 | 1 |
+| `defect_telescope` | 4/4 | 1 | 1 |
+| `gap_from_defect` | 0/4 | 0 | 1 (+1 with weaker hypotheses) |
+| `conditional_gap` | 4/4 | 4 | 4 |
+
+**How the equivalent ones were checked.** For `conditional_gap` attempts 0 and 3 and `defect_telescope` attempt 0, I derived the model's statement from my proved theorems in Lean (and `conditional_gap` attempt 0 also in the other direction). The rest are graded by reading.
+
+**How they go wrong.**
+- **`λ` as a variable name, 12 attempts.** It is reserved in Lean 4, so every statement about the spectrum fails to parse. Read as if renamed, 5 of these 12 are faithful.
+- **Optional parameters used as definitions, 7 attempts.** `(P₁ : ℝ := z₂ / z₁^2)` in a theorem header is a universally quantified variable with a default, not a definition. Three such `defect_telescope` statements compile and are false. Lean derives `False` from attempt 1 with P₁…P₄ = 0 and Δ = 1. A compile check alone would have passed them.
+- **A compiling statement that is false.** `trace_ad_ad` attempt 2 states that the trace of a commutator equals `2N tr(XY) − 2 tr X tr Y`.
+- **The Killing form of su(N) not stated in any attempt.** Every `casimir_su` attempt defines K as something other than a trace over su(N).
+- **Wrong index ranges and a precedence slip.** In the index ranges, `Z` summed over j = 0 with λ₀ unconstrained, or dropped λ₁. The precedence slip: `log(1/(P n)⁻¹ - 1)` is `log(P − 1)`.
+
+**Reading.** The formalizer states the simple real-number statements correctly, `conditional_gap` every time. For anything involving sequences, sums or linear maps, it needs a human to check each statement, and compiling is no evidence of faithfulness: 4 of the 9 compiling attempts are false statements. Grades and reasons: `grades.json` in the run directory (outside git).
 
 **Experiment 3: Phi-4-reasoning-plus (14B)** as an informal-referee control.
 - **Setup:**
