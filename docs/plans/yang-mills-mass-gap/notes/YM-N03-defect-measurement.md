@@ -60,28 +60,48 @@ Consistency checks of the formal statements hold at every β, within errors: P_k
 
 The hypothesis "Δ small at some scale" is therefore about as strong as finite-size confinement at that scale, and the content of the conditional-gap theorem lies in the recursion from n to 2n (`ym:conj:recurrence` in the YM-F01 note). The test of this reading is n = 4: the prediction is that Δ_β(4) stays small up to β ≈ 2.2–2.3, near the N_t = 4 deconfinement coupling β_c ≈ 2.30.
 
-## 4D SU(2), n = 4 (preliminary, 2026-11-21 07:00Z)
+## 4D SU(2), n = 4
 
-Data so far:
-- 4⁴: 12 Mac replicas plus the laptop replicas, β ∈ [0, 2.6], h = 0.1, 5×10⁵ updates per point.
-- 8⁴: GPU replicas (3 on the desktop 3060, 2–3 on the laptop 3070) on β ∈ [1.0, 2.6], 10⁵ updates per point.
+Data:
+- 4⁴: 12 replicas on β ∈ [0, 2.6], h = 0.1, 5×10⁵ updates per point (Mac mini).
+- 8⁴: 15 GPU replicas on β ∈ [1.0, 2.6], 10⁵ updates per point (3 on the desktop 3060, 12 on the laptop 3070).
 
-The integral starts at β₀ = 1.0. The integrand N_P(8⁴)(⟨a₀⟩₄ − ⟨a₀⟩₈) is consistent with zero for β = 1.0–1.7 (|value| < 1σ, errors about 0.17–0.24), which justifies Δ(β₀) ≈ 0.
+The integral starts at β₀ = 1.0. The integrand N_P(8⁴)(⟨a₀⟩₄ − ⟨a₀⟩₈) is consistent with zero for β = 1.0–1.7 (errors 0.15–0.20), which justifies Δ(β₀) ≈ 0.
 
-| β | integrand | Δ_β(4) − Δ(1.0) | m(8) bound |
+| β | integrand | Δ_β(4) | m(8) bound |
 |---|---|---|---|
-| 1.6 | −0.13(22) | 0.013(47) | — |
-| 1.8 | 0.87(31) | 0.023(59) | ≥ 0.94 |
-| 2.0 | 4.56(40) | 0.30(8) | ≥ 0.26 |
-| 2.1 | 32.6(4) | (Δ explodes) | — |
+| 1.6 | 0.03(19) | −0.012(41) | — |
+| 1.8 | 0.57(23) | −0.003(51) | positive (Δ ≈ 0) |
+| 2.0 | 4.77(29) | 0.336(63) | ≥ 0.24 |
+| 2.2 | 134.4(4) | 9.32(8) | — |
+| 2.4 | 107.1(2) | 40.89(9) | — |
+| 2.6 | 40.5(2) | 53.43(10) | — |
 
 **Reading.**
-- At n = 4 the defect stays below 1/4 up to β ≈ 1.95, against β ≈ 0.65 at n = 2. The threshold moves to weaker coupling as n grows, the predicted trend.
-- The thresholds lie below the deconfinement couplings of the small tori (β_c ≈ 1.88 for N_t = 2, ≈ 2.30 for N_t = 4). A confined small torus is necessary but not sufficient: the defect is extensive and picks up finite-size effects earlier.
-- In physical units, using a√σ ≈ 0.69 near β = 2.0 and √σ ≈ 440 MeV, the hypothesis holds at n = 4 for a torus about 1.2 fm across.
-- The resulting bounds (m(8) ≥ 0.94 at β = 1.8) are far below the actual lattice glueball mass, about 2 near β = 2.0.
-- Whether the threshold β*(n) keeps pace with the continuum limit, n·a(β*(n)) bounded as n grows, needs n = 8 (8⁴ against 16⁴). That is beyond the present statistics: the error is dominated by the small volume and grows like N_P(2n)/√N_P(n).
+- Δ_β(4) < 1/4 for β ≲ 1.97, against β ≲ 0.65 at n = 2. The threshold moves to weaker coupling as n grows.
+- The integrand peaks at β ≈ 2.3, the deconfinement coupling of an N_t = 4 lattice: the defect jumps where the small torus deconfines.
+- The thresholds lie below those deconfinement couplings (β_c ≈ 1.88 for N_t = 2, 2.30 for N_t = 4). A confined small torus is necessary but not sufficient.
+- In physical units (a√σ ≈ 0.69 near β = 2.0, √σ ≈ 440 MeV), the hypothesis holds at n = 4 for a torus about 1.2 fm across.
+- At fixed β the defect collapses with n: at β = 1.8, Δ(2) ≈ 26 but Δ(4) ≈ 0.
+- The gap bounds are far below the actual lattice glueball mass, about 2 near β = 2.0.
+- Whether β*(n) keeps pace with the continuum limit, n·a(β*(n)) bounded, needs n = 8 (8⁴ against 16⁴). That is beyond the present statistics: the small volume dominates the error, which grows like N_P(2n)/√N_P(n).
 
 ## U(1), the counter-model
 
-Pending. n = 2 on β ∈ [0, 1.6], and an 8⁴ scan for n = 4; U(1) has a massless Coulomb phase above β ≈ 1.0. Expectation: in the Coulomb phase Δ does not become small as n grows. If it did, the criterion would not be detecting a gap.
+n = 2 (2⁴ and 4⁴, 6 replicas each, β ∈ [0, 1.6] with h = 0.05, 5×10⁵ updates per point; Mac mini):
+
+| β | integrand | Δ_β(2) |
+|---|---|---|
+| 0.2 | 1.47(7) | 0.075(7) |
+| 0.3 | 5.03(7) | 0.383(9) |
+| 0.6 | 49.3(1) | 6.54(1) |
+| 0.9 | 249.0(2) | 50.23(2) |
+| 1.0 | 79.0(1) | 71.30(3) |
+| 1.2 | 29.08(6) | 79.56(3) |
+| 1.6 | 17.84(4) | 88.48(3) |
+
+- Δ crosses 1/4 at β ≈ 0.27, earlier than SU(2): U(1)'s strong-coupling parameter (≈ β/2) grows twice as fast as SU(2)'s (≈ β/4).
+- The integrand peaks near β ≈ 0.9, the deconfinement of the tiny torus.
+- In the Coulomb phase the integrand stays large (17.8 at β = 1.6) instead of decaying: the massless photon keeps the finite-size effects.
+
+The decisive comparison is the n-dependence at fixed β. In SU(2) at β = 1.8 the defect collapses from Δ(2) ≈ 26 to Δ(4) ≈ 0. In U(1)'s Coulomb phase a massless theory should give Δ(4) ≳ Δ(2) (zero-mode terms ~ log n in log Z). If instead it collapsed, the criterion would not be detecting a gap. U(1) n = 4 (8⁴ scans on the laptop) is running. n = 2 on β ∈ [0, 1.6], and an 8⁴ scan for n = 4; U(1) has a massless Coulomb phase above β ≈ 1.0. Expectation: in the Coulomb phase Δ does not become small as n grows. If it did, the criterion would not be detecting a gap.
