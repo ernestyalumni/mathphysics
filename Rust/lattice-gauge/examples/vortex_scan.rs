@@ -2,6 +2,7 @@
 //! Usage: vortex_scan <side> <betas> <therm> <configs> <every> <seed> <threads> [dump prefix]
 //! With a dump prefix, the pierced plaquettes of every configuration are written to <prefix>-<beta>.tsv as
 //! `config site mu nu` lines after a `# sides` header (input for algebraic-topology's vortex_surfaces).
+//! Environment GRIBOV=1: apply a random gauge transformation before gauge fixing (a different Gribov copy).
 use lattice_gauge::stats::jackknife;
 use lattice_gauge::su2::Quaternion;
 use lattice_gauge::vortex::{centre_projection, fix_mcg, p_vortex_density};
@@ -34,6 +35,11 @@ fn main() {
             let mut g = Lattice::cold(&[side; 4], beta, seed, 1).unwrap();
             g.threads = threads;
             g.links = l.links.clone();
+            if std::env::var("GRIBOV").is_ok() {
+                let mut st = lattice_gauge::philox::Stream::new(seed ^ 0xABCD, cfg as u32, 0, 7);
+                let gt: Vec<Quaternion> = (0..g.torus.site_count()).map(|_| lattice_gauge::su2::haar(&mut st)).collect();
+                g.gauge_transform(&gt);
+            }
             let (r, _) = fix_mcg(&mut g, 1e-9, 2000);
             mcg += r / configs as f64;
             let z = centre_projection(&g);
