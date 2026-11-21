@@ -100,6 +100,24 @@ on 2026-09-12 and will be refined with him.
   equation; they never replace one. Before finishing, check every verb of
   calculation in the prose against the displayed line that carries it out
   (Ernest, 2026-10-19).
+- When specializing a displayed formula, repeat the starting expression,
+  define the symbols being introduced, display the replacement assignments,
+  and write the intermediate substitutions and vanishing terms. For example,
+  `$A=B=\mathcal O$ and $\langle\mathcal O\rangle=0$` requires showing the
+  connected-correlator definition, replacing both operators at their respective
+  arguments, and evaluating the subtracted product as `$(0)(0)=0$`.
+  The accompanying sentence does not replace this calculation. Repeat a
+  useful earlier definition locally alongside its equation reference
+  (Ernest, 2026-11-20).
+- When an argument uses a formula cited from a paper or textbook, display
+  that formula in these notes with a stable local equation label and refer
+  to it with `\eqref` at the point of use. Retain the source citation and
+  original equation/page locator for attribution, but do not make the reader
+  leave the handbook to find the expression. A source citation is not a
+  substitute for either the mathematical expression or its local link.
+  For example, write out the Jaffe--Witten clustering inequality here and
+  link to that display rather than relying on "Jaffe--Witten Eq. (2)"
+  alone (Ernest, 2026-11-20).
 - State each result in one form, index or index-free, whichever the
   argument needs. Do not restate an index equation in matrix form, or the
   reverse; the reader converts between them (Ernest, 2026-10-19).

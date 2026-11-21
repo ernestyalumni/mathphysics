@@ -1,0 +1,85 @@
+{
+  "acceptance": {
+    "reasons": [
+      "user-visible behavior",
+      "critical boundary"
+    ],
+    "sentence": "In \"Clustering: distance local correlations factor\", \"For A = B = O and \u27e8O\u27e9\u03a9 = 0, the connected correlation is simply \u27e8\u03a9, O(x)O(y)\u03a9\u27e9, the expression in Jaffe\u2013Witten, Section 5, p.",
+    "story_recommended": true
+  },
+  "ask_the_human": [],
+  "candidate_targets": [
+    {
+      "architecture_path": "Rust/qft-symbolics/architecture.json",
+      "matched_terms": [
+        "expression"
+      ],
+      "output_path": "src/expression.rs",
+      "product_area": "Approved reusable research batches; bounded manual implementation",
+      "prompt_path": "Rust/qft-symbolics/prompts/expression_rust.prompt",
+      "score": 5
+    }
+  ],
+  "capabilities": {
+    "apply": false,
+    "apply_command_available": true,
+    "invokes_llm": false,
+    "planning": true,
+    "requires_github": false,
+    "writes_project_files": false
+  },
+  "intent_id": "self-contained-mathematical-exposition-with-expl-56ecbb87",
+  "original_request": "In \"Clustering: distance local correlations factor\", \"For A = B = O and \u27e8O\u27e9\u03a9 = 0, the connected correlation is simply \u27e8\u03a9, O(x)O(y)\u03a9\u27e9, the expression in Jaffe\u2013Witten, Section 5, p. 6, Eq. (2) [124].\" can you write it out? what the connected correlation is and like what is \\mathcal{O}? like which expression did you take and you took it and substituted A=B=\\mathcal{O} and got that? See be explicit about your math steps whenever there's a chance, don't rely on words like you did to describe it write it(it's ok to use these words but if you do, just show all the math steps for clarity; DO NOT do what other authors do all the time\n\nprefer that we also have a link to this equation where it's expressed explicitly than have the reader refer to this paper: \"Jaffe\u2013Witten Eq. (2)\" please fix elsewhere and follow what i'm saying, make it a user story alongside our meganotes if necessary",
+  "original_request_sha256": "56ecbb8766a901dd303171618352e4986945687d369c453818d32b56d3b19515",
+  "project": {
+    "adoption_scenario": "existing_pdd_change",
+    "exists": true,
+    "kind": "existing_pdd",
+    "pdd_signals": [
+      "Python/rotations/.pddrc",
+      "Rust/lattice-gauge/.pddrc",
+      "Rust/physics-contracts/.pddrc",
+      "Rust/physics-gateway/.pddrc",
+      "Rust/physics-tools/.pddrc",
+      "Rust/qft-symbolics/.pddrc",
+      "TypeScript/physics-workbench/.pddrc",
+      "Python/rotations/architecture.json",
+      "Rust/lattice-gauge/architecture.json",
+      "Rust/physics-contracts/architecture.json",
+      "Rust/physics-gateway/architecture.json",
+      "Rust/physics-tools/architecture.json",
+      "Rust/qft-symbolics/architecture.json",
+      "TypeScript/physics-workbench/architecture.json",
+      "47 prompt file(s)"
+    ],
+    "repository_root": "/home/propdev/.openclaw/workspace/mathphysics-reading-work",
+    "root": "/home/propdev/.openclaw/workspace/mathphysics-reading-work",
+    "scope_kind": "repository"
+  },
+  "recommended_workflow": "change_existing_pdd",
+  "review": {
+    "examples": [],
+    "must_preserve": [
+      "See be explicit about your math steps whenever there's a chance, don't rely on words like you did to describe it write it(it's ok to use these words but if you do, just show all the math steps for clarity; DO NOT do what other authors do all the time"
+    ],
+    "open_decisions": [
+      "No concrete example was stated; add one if different interpretations are possible."
+    ]
+  },
+  "schema_version": "pdd.intent.plan.v1",
+  "source": {
+    "kind": "file",
+    "ref": "/tmp/ym-explicit-exposition-request.txt"
+  },
+  "story": {
+    "action": "create",
+    "matched": [],
+    "reasons": [
+      "user-visible behavior",
+      "critical boundary"
+    ],
+    "recommended": true
+  },
+  "title": "Self-contained mathematical exposition with explicit substitutions and local equation links",
+  "warnings": []
+}

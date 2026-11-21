@@ -241,8 +241,21 @@ as Eq.~\eqref{ym:plaquette-gauge}. The real normalized Wilson loop
 \begin{equation}\label{ym:wilson-loop-observable}
  W_C(U)=\frac1m\operatorname{Re}\operatorname{tr}U(C)
 \end{equation}
-is therefore a gauge-invariant observable. Its expectation is obtained by
-substituting $\mathcal O=W_C$ in Eq.~\eqref{ym:observable-expectation}.
+is therefore a gauge-invariant observable. Set
+$\mathcal O(U)=W_C(U)$ in Eq.~\eqref{ym:observable-expectation}, then insert
+Eq.~\eqref{ym:wilson-loop-observable}:
+\begin{align}
+ \langle W_C\rangle_{\ell,\beta}
+ &=\frac{\int W_C(U)e^{-\beta E_\ell(U)}\,\mathcal DU}
+        {\int e^{-\beta E_\ell(U)}\,\mathcal DU}\notag\\
+ &=\frac{\int \frac1m\operatorname{Re}\operatorname{tr}U(C)
+            e^{-\beta E_\ell(U)}\,\mathcal DU}
+        {Z_{\ell,\beta}}\notag\\
+ &=\frac1{mZ_{\ell,\beta}}
+       \int\operatorname{Re}\operatorname{tr}U(C)
+             e^{-\beta E_\ell(U)}\,\mathcal DU.
+ \label{ym:wilson-loop-expectation}
+\end{align}
 
 As an elementary illustration of the integration measure, for $G=U(1)$
 write $U(y,\mu)=e^{i\theta_{y,\mu}}$. Then
@@ -320,9 +333,13 @@ Coupling conventions must therefore be compared through the action and
 trace normalization, rather than the name of the coupling alone.
 
 \subsection{Asymptotic freedom and the bare coupling}
-Choose a basis $e_a=-iT^a$ of $\mathfrak g$ with $[T^a,T^b]=if^{abc}T^c$ and
-$f^{acd}f^{bcd}=T(A)\delta^{ab}$, as in Srednicki, Eq.~(70.9) for the adjoint
-representation \cite{MSrednicki2007}, and the inner product
+Choose a basis and adjoint normalization
+\begin{equation}\label{ym:adjoint-generator-normalization}
+ e_a=-iT^a,\qquad [T^a,T^b]=if^{abc}T^c,\qquad
+ f^{acd}f^{bcd}=T(A)\delta^{ab}.
+\end{equation}
+Equation~\eqref{ym:adjoint-generator-normalization} records the adjoint
+convention of Srednicki, Eq.~(70.9) \cite{MSrednicki2007}. Choose the inner product
 $\langle e_a,e_b\rangle'=\delta_{ab}$. Then $[e_a,e_b]=-[T^a,T^b]
 =-if^{abc}T^c=f^{abc}e_c$, the matrix of $\operatorname{ad}(e_a)$ is
 $(\operatorname{ad}e_a)_{cb}=f^{abc}$, and
@@ -713,8 +730,15 @@ The hypercubic defect at side $n$ is
  \Delta_\beta(n)=16\log Z(n,n,n,n)-\log Z(2n,2n,2n,2n).
 \end{equation}
 \end{definition}
-This is the four-dimensional form of the square defect
-$4\log Z(n,n)-\log Z(2n,2n)$ of \cite{OpenAIO4Sharp2026}, Eq.~(1.6).
+For comparison, the square-defect expression of the two-dimensional
+model in \cite{OpenAIO4Sharp2026}, Eq.~(1.6), is
+\begin{equation}\label{ym:two-dimensional-square-defect}
+ 4\log Z(n,n)-\log Z(2n,2n).
+\end{equation}
+Equation~\eqref{ym:defect} is the four-dimensional counterpart of
+Eq.~\eqref{ym:two-dimensional-square-defect}: a doubled square has four
+original squares, whereas a doubled four-dimensional hypercube has
+$2^4=16$ original hypercubes.
 \begin{proposition}[Defect and gap on the doubled torus]\label{ym:prop:defect}
 Assume that for every spatial torus the operator $\mathsf T$ of
 Eq.~\eqref{ym:transfer-kernel} is nonnegative. Let

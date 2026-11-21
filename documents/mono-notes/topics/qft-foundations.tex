@@ -176,8 +176,19 @@ Reading off the functional derivatives, Hamilton's equations are
  =\sum_{i=1}^3\frac{\partial^2\varphi}{\partial(x^i)^2}-m^2\varphi.
  \label{qft:hamilton-field-equations}
 \end{align}
-Substituting the first equation into the second recovers
-Eq.~\eqref{qft:klein-gordon}. The nonnegative energy in
+Substitute $\pi=\frac{\partial\varphi}{\partial t}$ from
+Eq.~\eqref{qft:hamilton-field-equations} into its second equation:
+\begin{align}
+ \frac{\partial^2\varphi}{\partial t^2}
+ &=\frac{\partial\pi}{\partial t}
+  =\sum_{i=1}^3\frac{\partial^2\varphi}{\partial(x^i)^2}-m^2\varphi,
+  \notag\\
+ \frac{\partial^2\varphi}{\partial t^2}
+  -\sum_{i=1}^3\frac{\partial^2\varphi}{\partial(x^i)^2}
+  +m^2\varphi&=0.
+ \label{qft:hamilton-to-klein-gordon}
+\end{align}
+This is Eq.~\eqref{qft:klein-gordon}. The nonnegative energy in
 Eq.~\eqref{qft:scalar-hamiltonian} fixes the kinetic sign for this free
 scalar theory.
 
@@ -920,12 +931,83 @@ Clustering is the limit
  \longrightarrow\langle A\rangle_\Omega\langle B\rangle_\Omega,
  \qquad |\mathbf x-\mathbf y|\longrightarrow\infty.
 \end{equation}
-Translation invariance makes the one-point expectations independent of
-position. For $A=B=\mathcal O$ and $\langle\mathcal O\rangle_\Omega=0$,
-the connected correlation is simply
-$\langle\Omega,\mathcal O(\mathbf x)\mathcal O(\mathbf y)\Omega\rangle$,
-the expression in Jaffe--Witten, Section~5, p.~6, Eq.~(2)
-\cite{JaffeWitten2006}.
+Here $\mathcal O$ denotes a chosen local quantum observable acting on the
+physical Hilbert space. Its translates are the same kind of observable
+localized at different positions. As above, products of fields are
+understood with the requisite smearing and common-domain assumptions.
+Write $\mathcal O=\mathcal O(\mathbf0)$ and use the spatial-translation
+convention of Jaffe--Witten, Section~5, p.~6 \cite{JaffeWitten2006}:
+\begin{equation}\label{qft:local-observable-translation}
+ \mathcal O(\mathbf x)
+ =e^{-i\mathbf P\cdot\mathbf x}\mathcal O
+  e^{i\mathbf P\cdot\mathbf x}.
+\end{equation}
+The vacuum is translation invariant. Consequently, with
+$o=\langle\Omega,\mathcal O\Omega\rangle$,
+\begin{align}
+ e^{i\mathbf P\cdot\mathbf x}\Omega&=\Omega,\notag\\
+ \langle\Omega,\mathcal O(\mathbf x)\Omega\rangle
+ &=\langle\Omega,e^{-i\mathbf P\cdot\mathbf x}
+        \mathcal O e^{i\mathbf P\cdot\mathbf x}\Omega\rangle\notag\\
+ &=\langle e^{i\mathbf P\cdot\mathbf x}\Omega,
+         \mathcal O e^{i\mathbf P\cdot\mathbf x}\Omega\rangle\notag\\
+ &=\langle\Omega,\mathcal O\Omega\rangle=o.
+ \label{qft:translated-vacuum-mean}
+\end{align}
+To specialize the connected correlation, first recall its definition
+from Eq.~\eqref{qft:connected-spatial-correlation}, now with the vacuum
+expectations written out:
+\begin{equation}\label{qft:connected-vacuum-definition}
+ \begin{split}
+ G^c_{A,B}(\mathbf x,\mathbf y)
+ &=\langle\Omega,A(\mathbf x)B(\mathbf y)\Omega\rangle\\
+ &\quad-\langle\Omega,A(\mathbf x)\Omega\rangle
+          \langle\Omega,B(\mathbf y)\Omega\rangle.
+ \end{split}
+\end{equation}
+Choose both observables to be $\mathcal O$, retaining their independent
+positions:
+\begin{equation}\label{qft:observable-substitution}
+ A(\mathbf x)=\mathcal O(\mathbf x),\qquad
+ B(\mathbf y)=\mathcal O(\mathbf y).
+\end{equation}
+Substitute Eq.~\eqref{qft:observable-substitution} into
+Eq.~\eqref{qft:connected-vacuum-definition}, then apply
+Eq.~\eqref{qft:translated-vacuum-mean} at both positions:
+\begin{align}
+ G^c_{\mathcal O,\mathcal O}(\mathbf x,\mathbf y)
+ &=\langle\Omega,\mathcal O(\mathbf x)\mathcal O(\mathbf y)\Omega\rangle
+   \notag\\
+ &\quad-\langle\Omega,\mathcal O(\mathbf x)\Omega\rangle
+          \langle\Omega,\mathcal O(\mathbf y)\Omega\rangle\notag\\
+ &=\langle\Omega,\mathcal O(\mathbf x)\mathcal O(\mathbf y)\Omega\rangle
+     -o\,o.
+ \label{qft:identical-observable-connected}
+\end{align}
+For the clustering bound in Eq.~\eqref{qft:jaffe-witten-clustering-bound},
+the additional assumption on the chosen observable is
+$o=\langle\Omega,\mathcal O\Omega\rangle=0$. Inserting this value gives
+\begin{align}
+ G^c_{\mathcal O,\mathcal O}(\mathbf x,\mathbf y)
+ &=\langle\Omega,\mathcal O(\mathbf x)\mathcal O(\mathbf y)\Omega\rangle
+     -(0)(0)\notag\\
+ &=\langle\Omega,\mathcal O(\mathbf x)\mathcal O(\mathbf y)\Omega\rangle-0
+   \notag\\
+ &=\langle\Omega,\mathcal O(\mathbf x)\mathcal O(\mathbf y)\Omega\rangle.
+ \label{qft:zero-mean-connected-correlation}
+\end{align}
+Zero vacuum mean is a condition on the chosen observable. Given a local
+observable $Q$ with a finite vacuum mean, it can be arranged by defining
+\begin{align}
+ q&=\langle\Omega,Q\Omega\rangle,\qquad
+ \mathcal O=Q-qI,\qquad \langle\Omega,\Omega\rangle=1,\notag\\
+ \langle\Omega,\mathcal O\Omega\rangle
+ &=\langle\Omega,(Q-qI)\Omega\rangle\notag\\
+ &=\langle\Omega,Q\Omega\rangle
+   -q\langle\Omega,I\Omega\rangle
+   =q-q\cdot1=0.
+ \label{qft:observable-centering}
+\end{align}
 
 Local commutativity and clustering express different properties. At
 spacelike separation, locality requires
@@ -939,8 +1021,20 @@ Commuting observables can have a correlated joint state. Clustering
 describes their asymptotic factorization, not exact independence at every
 nonzero separation.
 
-The relativistic clustering consequence of a mass gap, stated in
-Jaffe--Witten Eq.~(2), gives for fixed localized observables
+With $\mathcal O(\mathbf x)$ defined in
+Eq.~\eqref{qft:local-observable-translation} and its zero-mean connected
+correlation given by Eq.~\eqref{qft:zero-mean-connected-correlation}, the
+large-distance bound of Jaffe--Witten, Section~5, p.~6, Eq.~(2)
+\cite{JaffeWitten2006}, is explicitly
+\begin{equation}\label{qft:jaffe-witten-clustering-bound}
+ \left|\langle\Omega,
+       \mathcal O(\mathbf x)\mathcal O(\mathbf y)\Omega\rangle\right|
+ \le e^{-C|\mathbf x-\mathbf y|},\qquad
+ 0<C<\Delta,
+\end{equation}
+for sufficiently large $|\mathbf x-\mathbf y|$ in the source's
+normalization. More generally, fixed localized observables obey the
+relativistic exponential-clustering estimate
 \begin{equation}\label{qft:spatial-exponential-clustering}
  |G^c_{A,B}(\mathbf x,\mathbf y)|
  \le K_{A,B,c}\,e^{-c r},\qquad
@@ -952,7 +1046,8 @@ light, which was set to one. More explicitly one may use fixed smooth
 spacetime smearings translated apart; a quantum field is an
 operator-valued distribution, so unsmeared products require care.
 The prefactor depends on the observables and their normalization.
-The paper suppresses this prefactor in its large-distance statement.
+Equation~\eqref{qft:jaffe-witten-clustering-bound} suppresses this
+observable-dependent prefactor in its large-distance normalization.
 For dimensionless normalized observables, if an estimate has prefactor
 $K$ and rate $c'>c$, it implies the displayed unit-prefactor form once
 \begin{equation}\label{qft:absorb-clustering-prefactor}
