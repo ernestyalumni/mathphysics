@@ -11,6 +11,7 @@ extern "C" {
     fn lg_cuda_upload(h: *mut c_void, links: *const f64) -> c_int;
     fn lg_cuda_download(h: *mut c_void, links: *mut f64) -> c_int;
     fn lg_cuda_sweep(h: *mut c_void, kind: c_int, beta: f64, seed: u64, sweep: u32, replica: u32) -> c_int;
+    fn lg_cuda_plaquette(h: *mut c_void, result: *mut f64) -> c_int;
     fn lg_cuda_free(h: *mut c_void);
 }
 
@@ -75,6 +76,13 @@ impl GpuLattice {
         check(unsafe { lg_cuda_sweep(self.handle, kind, self.beta, self.seed, self.sweep, self.replica) }, "sweep")?;
         self.sweep = self.sweep.wrapping_add(1);
         Ok(())
+    }
+
+    /// Average of a0 over all plaquettes, summed on the device.
+    pub fn plaquette(&self) -> Result<f64, String> {
+        let mut r = 0.0;
+        check(unsafe { lg_cuda_plaquette(self.handle, &mut r) }, "plaquette")?;
+        Ok(r)
     }
 
     pub fn update(&mut self, overrelax: usize) -> Result<(), String> {

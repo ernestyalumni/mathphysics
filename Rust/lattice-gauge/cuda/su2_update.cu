@@ -129,6 +129,23 @@ __global__ void update_class(Q *links, const int *nb, const int *class_links, in
     }
 }
 
+// Sum of a0 over all plaquettes; one thread per site, double atomics (sm_60+). Summation order varies,
+// so the result can differ from the CPU in the last bits; it never feeds back into the Markov chain.
+__global__ void plaquette_sum(const Q *links, const int *nb, int n_sites, int d, double *out) {
+    int site = blockIdx.x * blockDim.x + threadIdx.x;
+    if (site >= n_sites) return;
+    double s = 0.0;
+    for (int mu = 0; mu < d; ++mu) {
+        int x_mu = nb[(site * d + mu) * 2 + 1];
+        for (int nu = mu + 1; nu < d; ++nu) {
+            int x_nu = nb[(site * d + nu) * 2 + 1];
+            Q p = qmul(qmul(qmul(links[site * d + mu], links[x_mu * d + nu]), qconj(links[x_nu * d + mu])), qconj(links[site * d + nu]));
+            s += p.a0;
+        }
+    }
+    atomicAdd(out, s);
+}
+
 struct Handle {
     int n_links, d, n_classes;
     Q *links; int *nb; int *class_links;
@@ -174,6 +191,21 @@ int lg_cuda_sweep(void *hp, int kind, double beta, uint64_t seed, uint32_t sweep
                                           seed, sweep, replica);
     }
     return (int)cudaDeviceSynchronize();
+}
+
+// Average of a0 over all plaquettes.
+int lg_cuda_plaquette(void *hp, double *result) {
+    Handle *h = (Handle *)hp;
+    int n_sites = h->n_links / h->d;
+    double *dev; cudaError_t e;
+    if ((e = cudaMalloc(&dev, sizeof(double)))) return (int)e;
+    cudaMemset(dev, 0, sizeof(double));
+    plaquette_sum<<<(n_sites + 127) / 128, 128>>>(h->links, h->nb, n_sites, h->d, dev);
+    double sum = 0.0;
+    e = cudaMemcpy(&sum, dev, sizeof(double), cudaMemcpyDeviceToHost);
+    cudaFree(dev);
+    *result = sum / ((double)n_sites * h->d * (h->d - 1) / 2);
+    return (int)e;
 }
 
 void lg_cuda_free(void *hp) {

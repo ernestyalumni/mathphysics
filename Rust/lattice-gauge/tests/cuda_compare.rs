@@ -49,3 +49,11 @@ fn overrelaxation_is_bitwise() {
     }
     assert!(gpu.download().unwrap() == cpu.links, "over-relaxation differs bitwise");
 }
+
+#[test]
+fn device_plaquette_matches_cpu() {
+    let mut cpu = Lattice::hot(&[4, 6, 4, 4], 2.2, 3, 0).unwrap();
+    for _ in 0..3 { cpu.update(1); }
+    let gpu = GpuLattice::from_cpu(&cpu).unwrap();
+    assert!((gpu.plaquette().unwrap() - cpu.plaquette()).abs() < 1e-13);
+}

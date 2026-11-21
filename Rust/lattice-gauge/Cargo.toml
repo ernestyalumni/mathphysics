@@ -21,3 +21,7 @@ required-features = ["cuda"]
 [[example]]
 name = "glueball_gpu"
 required-features = ["cuda"]
+
+[[example]]
+name = "plaquette_scan_gpu"
+required-features = ["cuda"]
