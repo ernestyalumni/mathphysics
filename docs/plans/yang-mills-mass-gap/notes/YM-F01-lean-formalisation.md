@@ -143,6 +143,7 @@ All three start after the step-3 run above. Experiment 2 runs on the laptop, so 
   - It is compared with the YM-T16 control arm, the base Qwen3.8-9B Q5, by `referee-compare` and per case.
   - The model's recommended settings (temperature 0.8, top-k 50, up to 32K tokens) are not used, so that only the model changes. Cap hits are reported as the cost of that choice.
   - First, a one-case smoke test checks that its chat template works with the referee: a single `</think>` token, and thinking on.
+  - **Deviation, 2026-11-21, before any generation.** The first launch failed to load: the f16 KV cache at context 24,576 needs 4.8 GB on top of 8.6 GB of weights, more than the 3060's 11.9 GB free. My estimate of about 10.5 GB was wrong. The run uses a q8_0 KV cache instead (`claw-wsp referee --cache-type q8_0`, claw-work 2026-11-21); everything else is unchanged. The control arm used an f16 cache, so the comparison changes the cache precision as well as the model.
 - **Outcomes:**
   - **Primary:** errors located plus originals passed.
   - **Secondary:** mutants located, false alarms, cap hits, and two-sample agreement.
