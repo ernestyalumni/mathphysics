@@ -74,6 +74,35 @@ impl SimplicialComplex {
         }).collect()
     }
 
+    /// Steenrod cup-1 product of integer cochains a (degree p >= 1) and b (degree q >= 1), a (p+q-1)-cochain:
+    /// (a cup_1 b)[v_0..v_n] = sum_{i=0}^{p-1} (-1)^{(p-i)(q+1)} a[v_0..v_i, v_{i+q}..v_n] b[v_i..v_{i+q}], n = p+q-1.
+    /// It satisfies delta(a cup_1 b) = (-1)^{p+q-1} a cup b + (-1)^{p+q+pq} b cup a + delta a cup_1 b + (-1)^p a cup_1 delta b
+    /// (checked in tests/steenrod.rs).
+    pub fn cup1(&self, p: usize, a: &[i64], q: usize, b: &[i64]) -> Vec<i64> {
+        assert!(p >= 1 && q >= 1);
+        let n = p + q - 1;
+        self.simplices[n].iter().map(|s| {
+            let mut total = 0i64;
+            for i in 0..p {
+                let mut fa: Vec<usize> = s[..=i].to_vec();
+                fa.extend_from_slice(&s[i + q..]);
+                let fb: Vec<usize> = s[i..=i + q].to_vec();
+                let sign = if ((p - i) * (q + 1)) % 2 == 0 { 1 } else { -1 };
+                total += sign * a[self.index[p][&fa]] * b[self.index[q][&fb]];
+            }
+            total
+        }).collect()
+    }
+
+    /// Pontryagin square of a mod-2 2-cocycle given by an integer lift w (delta w = 0 mod 2):
+    /// P(w) = w cup w + w cup_1 delta w, a 4-cochain whose class mod 4 depends only on the class of w mod 2.
+    pub fn pontryagin_square(&self, w: &[i64]) -> Vec<i64> {
+        let dw = self.coboundary(2, w);
+        let a = self.cup(2, w, 2, w);
+        let b = self.cup1(2, w, 3, &dw);
+        a.iter().zip(b).map(|(x, y)| x + y).collect()
+    }
+
     /// Basis of H^k(X; Z_p) as cocycle representatives (values in 0..p), by linear algebra mod p:
     /// a basis of ker delta_k completed modulo im delta_{k-1}.
     pub fn cohomology_basis_mod_p(&self, k: usize, p: i64) -> Vec<Vec<i64>> {
