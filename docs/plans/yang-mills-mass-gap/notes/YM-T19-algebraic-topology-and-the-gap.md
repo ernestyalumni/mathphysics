@@ -39,7 +39,7 @@ The vortex picture of confinement (Engelhardt, Faber, Greensite, Langfeld, Olejn
   | 2.2 | 20/20 | |
   | 2.3 | 20/20 | |
   | 2.4 | 10/10 | |
-  | 2.5 | 7/20 | (running) |
+  | 2.5 | 7/20 (largest share 0.60) | **20/20** (largest share 0.90) |
   | 2.6 | 4/20 (largest share 0.42) | **14/20** (largest share 0.68) |
   | 2.8 | 1/19 | |
 
@@ -66,7 +66,7 @@ The vortex picture of confinement (Engelhardt, Faber, Greensite, Langfeld, Olejn
 
 ## Next
 
-1. Vortex obstruction at β = 2.5 on 12⁴ (running), then 16⁴. That needs a sparse rank (the dense mod-p rank is O(n³)).
+1. Vortex obstruction on 16⁴ at β = 2.6 and 2.7 (running; sparse rank now makes this cheap).
 2. Monopole-worldline scans across β for SU(2) and U(1) (chained on the Mac and laptop).
 3. Twist-sector free energies (YM-N02) with P(w) to label sectors.
 4. Lüscher admissibility: the fraction of admissible configurations against β, and Q from bundle reconstruction compared with Q from cooling.
