@@ -1,11 +1,11 @@
 //! Delta_beta(n) = N_P(2n) int [<a0>_{n^4} - <a0>_{(2n)^4}] dbeta from replica scans, integrated from beta0 = the first
 //! common grid point (Simpson), assuming Delta(beta0) ~ 0; the printed integrand lets one check that assumption.
-//! Usage: defect_window <small scans, comma-separated> <large scans, comma-separated>
+//! Usage: defect_window <small scans, colon-separated> <large scans, colon-separated>
 use std::collections::BTreeMap;
 fn avg(paths: &str) -> (BTreeMap<i64, (f64, f64)>, f64) {
     let mut acc: BTreeMap<i64, Vec<(f64, f64)>> = BTreeMap::new();
     let mut np = 0.0;
-    for p in paths.split(',') {
+    for p in paths.split(':') {
         for line in std::fs::read_to_string(p).unwrap().lines() {
             let c: Vec<f64> = line.split('\t').map(|x| x.parse().unwrap()).collect();
             acc.entry((c[0] * 1000.0).round() as i64).or_default().push((c[1], c[2]));
