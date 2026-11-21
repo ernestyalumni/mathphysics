@@ -85,5 +85,24 @@
     "interface": {
       "type": "module"
     }
+  },
+  {
+    "filename": "persistence_rust.prompt",
+    "filepath": "src/persistence.rs",
+    "description": "Persistent homology over Z_2 and lower-star cubical filtrations",
+    "reason": "Yang-Mills program task YM-T19 (topological data analysis of lattice fields); written by hand, prompt first",
+    "dependencies": [
+      "complex_rust.prompt",
+      "cubical_rust.prompt"
+    ],
+    "priority": 6,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
   }
 ]

@@ -15,3 +15,6 @@ contexts:
   surface:
     paths: ["prompts/surface_rust.prompt", "src/surface.rs", "tests/surface.rs"]
     defaults: {prompts_dir: prompts, generate_output_path: src/surface.rs, test_output_path: tests/, default_language: rust}
+  persistence:
+    paths: ["prompts/persistence_rust.prompt", "src/persistence.rs", "tests/persistence.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/persistence.rs, test_output_path: tests/, default_language: rust}

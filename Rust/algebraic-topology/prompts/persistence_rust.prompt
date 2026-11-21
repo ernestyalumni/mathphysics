@@ -1,0 +1,3 @@
+<version>1.0.0</version>
+<language>Rust</language>
+Output src/persistence.rs. std only. Persistent homology over Z_2: order cells by (value, dimension, index), require monotone filtrations, standard column reduction from the highest dimension down with clearing (a column whose cell is already a pivot row is zero), pairs (dim, birth, death) and essential classes; Persistence::bars(dim, min_persistence). lower_star_cubical(torus, f): each cell of the cubical torus gets the maximum of f over its vertices. Independent tests in tests/persistence.rs: essential classes equal the mod-2 Betti numbers of T^2, T^3, T^4 under random filtrations; 2 x pairs + essential = cells; three separated minima give two finite H_0 bars and one essential class.

@@ -6,11 +6,13 @@
 //! - `cubical`: the cubical complex of a periodic d-torus with the site conventions of `Rust/lattice-gauge`.
 //! - `simplicial`: simplicial complexes from facets, Z_p cohomology bases, the Alexander–Whitney cup product,
 //!   and the Freudenthal triangulation of a d-torus with integer seam cocycles.
+//! - `persistence`: persistent homology over Z_2 (column reduction with clearing) and lower-star cubical filtrations.
 //! - `surface`: components, Euler characteristic and orientability of square-complex surfaces (P-vortex sheets).
 //!
 //! Computed evidence is not a proof. Label: unreviewed.
 pub mod complex;
 pub mod cubical;
+pub mod persistence;
 pub mod simplicial;
 pub mod smith;
 pub mod surface;
