@@ -109,3 +109,38 @@ pub fn rank_mod_p(rows: usize, cols: usize, entries: &[i64], p: i64) -> usize {
     }
     rank
 }
+
+/// Rank over Z_p (p prime) of a sparse matrix given by columns of (row, value) entries: column reduction with
+/// pivots on the largest row index (as in persistence algorithms). Suited to boundary maps of large sparse complexes.
+pub fn rank_sparse_mod_p(columns: &[Vec<(usize, i64)>], p: i64) -> usize {
+    let inv = |x: i64| { let (mut b, mut e, mut r) = (x.rem_euclid(p), p - 2, 1i64); while e > 0 { if e & 1 == 1 { r = r * b % p; } b = b * b % p; e >>= 1; } r };
+    let mut pivot: std::collections::HashMap<usize, Vec<(usize, i64)>> = std::collections::HashMap::new();
+    let mut rank = 0;
+    for col in columns {
+        // normalize: sort by row, merge duplicates, reduce mod p
+        let mut c: std::collections::BTreeMap<usize, i64> = std::collections::BTreeMap::new();
+        for &(r, v) in col { let e = c.entry(r).or_insert(0); *e = (*e + v).rem_euclid(p); }
+        c.retain(|_, v| *v != 0);
+        loop {
+            let Some((&low, &val)) = c.iter().next_back() else { break };
+            match pivot.get(&low) {
+                Some(pc) => {
+                    // c -= (val / pc[low]) * pc, where pc is normalized so that its low entry is 1
+                    for &(r, v) in pc {
+                        let e = c.entry(r).or_insert(0);
+                        *e = (*e - val * v).rem_euclid(p);
+                        if *e == 0 { c.remove(&r); }
+                    }
+                }
+                None => {
+                    let iv = inv(val);
+                    let normalized: Vec<(usize, i64)> = c.iter().map(|(&r, &v)| (r, v * iv % p)).collect();
+                    pivot.insert(low, normalized);
+                    rank += 1;
+                    break;
+                }
+            }
+        }
+    }
+    rank
+}

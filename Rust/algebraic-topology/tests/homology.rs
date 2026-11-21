@@ -79,3 +79,22 @@ fn cup_products_mod_2() {
     let d1 = t.coboundary(0, &e);
     assert!(t.coboundary(1, &d1).iter().all(|&x| x == 0));
 }
+
+#[test]
+fn sparse_rank_matches_dense() {
+    use algebraic_topology::smith::{rank_mod_p, rank_sparse_mod_p};
+    let mut s: u64 = 99;
+    let mut rnd = || { s = s.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407); s >> 33 };
+    for _ in 0..50 {
+        let (rows, cols) = (1 + (rnd() % 30) as usize, 1 + (rnd() % 30) as usize);
+        let mut dense = vec![0i64; rows * cols];
+        let mut sparse = vec![Vec::new(); cols];
+        for c in 0..cols { for r in 0..rows { if rnd() % 4 == 0 { let v = (rnd() % 5) as i64 - 2; dense[r * cols + c] = v; sparse[c].push((r, v)); } } }
+        for p in [2i64, 3, 1_000_003] {
+            assert_eq!(rank_sparse_mod_p(&sparse, p), rank_mod_p(rows, cols, &dense, p));
+        }
+    }
+    // a big cubical torus through the sparse path: T^4 side 4 has 4096 x 1536 edge-square maps
+    let c = CubicalTorus::new(&[4, 4, 4, 4]).chain_complex();
+    assert_eq!(c.betti_mod_p(2), vec![1, 4, 6, 4, 1]);
+}

@@ -1,6 +1,6 @@
 //! Finite chain complexes C_d -> ... -> C_0 with sparse integer boundary maps, and their homology.
 
-use crate::smith::{invariant_factors, rank_mod_p};
+use crate::smith::{invariant_factors, rank_mod_p, rank_sparse_mod_p};
 
 /// boundary[k][j] = boundary of the j-th k-cell as (index of (k-1)-cell, coefficient); boundary[0] is empty.
 #[derive(Clone, Debug)]
@@ -71,7 +71,15 @@ impl ChainComplex {
     pub fn betti_mod_p(&self, p: i64) -> Vec<usize> {
         let d = self.dimension();
         let ranks: Vec<usize> = (0..=d + 1)
-            .map(|k| if k == 0 || k > d { 0 } else { let (r, c, m) = self.boundary_matrix(k); rank_mod_p(r, c, &m, p) })
+            .map(|k| {
+                if k == 0 || k > d { return 0; }
+                if self.cell_counts[k] * self.cell_counts[k - 1] > 4_000_000 {
+                    rank_sparse_mod_p(&self.boundary[k], p)
+                } else {
+                    let (r, c, m) = self.boundary_matrix(k);
+                    rank_mod_p(r, c, &m, p)
+                }
+            })
             .collect();
         (0..=d).map(|k| self.cell_counts[k] - ranks[k] - ranks[k + 1]).collect()
     }
