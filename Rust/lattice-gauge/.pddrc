@@ -39,3 +39,6 @@ contexts:
   monopole:
     paths: ["prompts/monopole_rust.prompt", "src/monopole.rs", "tests/monopole.rs"]
     defaults: {prompts_dir: prompts, generate_output_path: src/monopole.rs, test_output_path: tests/, default_language: rust}
+  glued:
+    paths: ["prompts/glued_rust.prompt", "src/glued.rs", "tests/glued.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/glued.rs, test_output_path: tests/, default_language: rust}

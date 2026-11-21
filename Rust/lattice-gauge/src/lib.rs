@@ -12,6 +12,8 @@ pub mod character;
 pub mod cuda;
 /// Sets of plaquettes modulo 2: twist surfaces, monopole counts, coboundary classes.
 pub mod cochain;
+/// Block gluing: defect estimator by integration over a gluing parameter.
+pub mod glued;
 /// Zero-momentum 0++ glueball operators (APE smearing) and correlators: the lattice mass gap.
 pub mod glueball;
 /// Maximal abelian gauge, abelian projection and DeGrand-Toussaint monopoles.

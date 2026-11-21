@@ -230,5 +230,25 @@
     "interface": {
       "type": "module"
     }
+  },
+  {
+    "filename": "glued_rust.prompt",
+    "filepath": "src/glued.rs",
+    "description": "Block-gluing estimator of the hypercubic defect (integration over a gluing parameter)",
+    "reason": "Yang-Mills program: test of the defect recurrence ym:conj:recurrence at n = 8; written by hand, prompt first",
+    "dependencies": [
+      "torus_rust.prompt",
+      "su2_rust.prompt",
+      "philox_rust.prompt"
+    ],
+    "priority": 14,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
   }
 ]
