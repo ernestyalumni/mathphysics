@@ -26,5 +26,7 @@ pub mod su2;
 pub mod torus;
 /// Exact enumeration of Z2 lattice gauge theory on small tori.
 pub mod z2_gauge;
+/// Compact U(1) lattice gauge theory: the counter-model (Coulomb phase in 4D).
+pub mod u1;
 /// SU(2) Wilson lattice gauge theory: checkerboard Monte Carlo and Wilson loops.
 pub mod wilson;

@@ -171,5 +171,25 @@
     "interface": {
       "type": "module"
     }
+  },
+  {
+    "filename": "u1_rust.prompt",
+    "filepath": "src/u1.rs",
+    "description": "Compact U(1) lattice gauge theory: the counter-model (4D Coulomb phase)",
+    "reason": "Yang-Mills program task YM-N03 counter-model experiment; written by hand, prompt first",
+    "dependencies": [
+      "torus_rust.prompt",
+      "philox_rust.prompt",
+      "character_rust.prompt"
+    ],
+    "priority": 11,
+    "tags": [
+      "rust",
+      "manual-adoption",
+      "yang-mills"
+    ],
+    "interface": {
+      "type": "module"
+    }
   }
 ]

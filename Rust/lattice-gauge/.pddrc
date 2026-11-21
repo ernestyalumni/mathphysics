@@ -30,3 +30,6 @@ contexts:
   glueball:
     paths: ["prompts/glueball_rust.prompt", "src/glueball.rs", "tests/glueball.rs"]
     defaults: {prompts_dir: prompts, generate_output_path: src/glueball.rs, test_output_path: tests/, default_language: rust}
+  u1:
+    paths: ["prompts/u1_rust.prompt", "src/u1.rs", "tests/u1.rs"]
+    defaults: {prompts_dir: prompts, generate_output_path: src/u1.rs, test_output_path: tests/, default_language: rust}
