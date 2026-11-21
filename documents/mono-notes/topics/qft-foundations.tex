@@ -703,3 +703,340 @@ Eq.~\eqref{qft:gamma-contraction}:
 The sign would change if the contracted index were lowered using $h=-\eta$
 instead. A contraction is therefore specified by both the algebraic
 relation and the bilinear form used to lower the index.
+
+\section{Euclidean reconstruction and the Hamiltonian gap}
+\label{qft:sec:euclidean-reconstruction}
+Jaffe and Witten, Section~3, p.~5 \cite{JaffeWitten2006}, describe a route
+from Euclidean correlation functions to a relativistic quantum field.
+The Osterwalder--Schrader reconstruction theorem supplies this route under
+its positivity, covariance, symmetry and regularity hypotheses
+\cite{OsterwalderSchrader1975}; a useful introductory account is
+Jaffe, Sections~III.1 and VII.1 \cite{Jaffe2007Relativity}.
+Euclidean invariance by itself does not supply these hypotheses.
+In particular, the regularity requirement includes bounds on the growth
+of the family of correlation functions, not merely the existence of each
+individual distribution; see Section~IV of \cite{OsterwalderSchrader1975}.
+
+\subsection{Reflection positivity and the physical inner product}
+Write a Euclidean event as $x=(\tau,\mathbf x)$ and reflect its time:
+\begin{equation}\label{qft:euclidean-reflection}
+ \theta(\tau,\mathbf x)=(-\tau,\mathbf x).
+\end{equation}
+To display the construction, suppose that a real scalar Euclidean field
+$\varphi$ is realized by a probability measure $\mu$ on distributions.
+For a smooth compactly supported test function $f$,
+\begin{equation}\label{qft:euclidean-smearing}
+ \varphi(f)=\int\varphi(x)f(x)\,d^4x,\qquad
+ (\theta\varphi)(f)=\varphi(f\circ\theta).
+\end{equation}
+The first expression denotes distributional pairing; a pointwise value
+$\varphi(x)$ need not exist. Let $\mathcal V_+$ consist of finite linear
+combinations of products of smeared fields supported in $\tau>0$, with
+the required moments finite. Define
+\begin{equation}\label{qft:os-inner-product}
+ (F,G)_{\rm OS}
+ =\int\overline{F(\theta\varphi)}G(\varphi)\,\mu(d\varphi).
+\end{equation}
+Reflection positivity is the condition
+\begin{equation}\label{qft:reflection-positivity}
+ (F,F)_{\rm OS}\ge0\qquad(F\in\mathcal V_+).
+\end{equation}
+It is different from the ordinary probability inequality
+$\int|F(\varphi)|^2\mu(d\varphi)\ge0$: in
+Eq.~\eqref{qft:reflection-positivity}, one factor is reflected.
+The form can have nonzero vectors of zero norm. Remove them and complete:
+\begin{equation}\label{qft:os-hilbert-space}
+ \mathcal N=\{F\in\mathcal V_+:(F,F)_{\rm OS}=0\},\qquad
+ \mathcal H=\overline{\mathcal V_+/\mathcal N},\qquad
+ \Omega=[1].
+\end{equation}
+Under the reconstruction hypotheses, positive Euclidean-time translations
+induce a strongly continuous semigroup of self-adjoint contractions on
+$\mathcal H$:
+\begin{equation}\label{qft:os-semigroup}
+ T(\tau)=e^{-\tau H},\quad \tau\ge0,\qquad H=H^*\ge0,
+ \qquad T(\tau)\Omega=\Omega.
+\end{equation}
+The same self-adjoint generator gives unitary real-time evolution of
+states. For $\epsilon>0$, the spectral theorem gives
+\begin{align}
+ T(\epsilon+it)
+ &=e^{-(\epsilon+it)H}
+   =\int_{[0,\infty)}e^{-\epsilon E}e^{-itE}\,E_H(dE),\notag\\
+ \lim_{\epsilon\downarrow0}T(\epsilon+it)\psi
+ &=e^{-itH}\psi\qquad(\psi\in\mathcal H).
+ \label{qft:os-real-time}
+\end{align}
+The limit is strong. Reconstruction also supplies the relativistic
+covariance and local fields; these require the full correlation-function
+hypotheses, not just this one-parameter semigroup. Clustering is the
+additional condition selecting a unique vacuum in the usual vacuum
+representation.
+
+\subsection{An exponential Euclidean decay rate is an energy threshold}
+Jaffe and Witten, Section~4, p.~6 \cite{JaffeWitten2006}, define the mass gap as
+follows:
+\begin{quote}
+Since the vacuum vector $\Omega$ is Poincar\'e invariant, it is an eigenstate
+with zero energy, namely $H\Omega=0$. The positive energy axiom asserts
+that in any quantum field theory, the spectrum of $H$ is supported in the
+region $[0,\infty)$. A quantum field theory has a mass gap $\Delta$ if $H$
+has no spectrum in the interval $(0,\Delta)$ for some $\Delta>0$. The
+supremum of such $\Delta$ is the mass $m$, and we require $m<\infty$.
+\end{quote}
+Here $\operatorname{spec}(H)$ means the full spectrum, including continuous
+spectrum. Invariance under time translations gives the first assertion
+directly:
+\begin{equation}\label{qft:vacuum-zero-energy}
+ e^{-itH}\Omega=\Omega
+ \quad\Longrightarrow\quad
+ \left.\frac{d}{dt}e^{-itH}\Omega\right|_{t=0}
+ =-iH\Omega=0
+ \quad\Longrightarrow\quad H\Omega=0.
+\end{equation}
+For a theory with a gap and a nonempty positive-energy spectrum, the
+definition is
+\begin{align}
+ \operatorname{spec}(H)&\subset\{0\}\cup[\Delta,\infty),
+ \qquad\Delta>0,\notag\\
+ m&=\sup\{\Delta>0:
+       \operatorname{spec}(H)\cap(0,\Delta)=\varnothing\}\notag\\
+  &=\inf\bigl(\operatorname{spec}(H)\cap(0,\infty)\bigr),
+  \qquad 0<m<\infty.
+ \label{qft:mass-gap-definition}
+\end{align}
+The symbol $m$ here is the spectral mass in this definition; it need not
+equal a bare parameter in a classical action. Any $0<\Delta\le m$ is an
+admissible gap bound. The threshold $m$ may be the edge of continuous
+spectrum and need not be an eigenvalue. If the spectrum were just $\{0\}$,
+every positive $\Delta$ would qualify and the supremum would be infinite;
+the requirement $m<\infty$ excludes that case.
+
+On the same page, their problem statement is:
+\begin{quote}
+\textbf{Yang--Mills Existence and Mass Gap.} Prove that for any compact simple
+gauge group $G$, a non-trivial quantum Yang--Mills theory exists on
+$\mathbb R^4$ and has a mass gap $\Delta>0$. Existence includes establishing
+axiomatic properties at least as strong as those cited in [45, 35].
+\end{quote}
+The numbers in this quotation are those of \cite{JaffeWitten2006}:
+[45] is Streater and Wightman, \emph{PCT, Spin and Statistics, and All That}
+\cite{StreaterWightman1964}; [35] comprises both papers
+\emph{Axioms for Euclidean Green's functions} (1973) and
+\emph{Axioms for Euclidean Green's functions II} (1975)
+\cite{OsterwalderSchrader1973,OsterwalderSchrader1975}.
+The second paper corrects and extends the reconstruction result of the
+first. The quantifier is every compact simple gauge group; proving a result
+only for $SU(2)$ does not discharge it. The positive bound may depend on
+$G$: the statement does not require one numerical gap common to all groups.
+The space $\mathbb R^4$ also requires a continuum, infinite-volume theory,
+rather than only a finite lattice.
+
+Assume $\ker H=\mathbb C\Omega$ and $\|\Omega\|=1$. For a bounded
+observable $A$, subtract its vacuum expectation:
+\begin{equation}\label{qft:vacuum-subtracted-state}
+ a_A=\langle\Omega,A\Omega\rangle,\qquad
+ \psi_A=(A-a_AI)\Omega,\qquad
+ \langle\Omega,\psi_A\rangle=a_A-a_A=0.
+\end{equation}
+An unbounded smeared field may also be used when the displayed products
+are defined on their common domain. The corresponding connected
+Euclidean-time correlation has the representation
+\begin{align}
+ C_A(\tau)
+ &=\langle\Omega,A^*e^{-\tau H}A\Omega\rangle-|a_A|^2\notag\\
+ &=\langle\psi_A+a_A\Omega,
+       e^{-\tau H}(\psi_A+a_A\Omega)\rangle-|a_A|^2\notag\\
+ &=\langle\psi_A,e^{-\tau H}\psi_A\rangle
+   +\overline{a_A}\langle\Omega,\psi_A\rangle
+   +a_A\langle\psi_A,\Omega\rangle
+   +|a_A|^2-|a_A|^2\notag\\
+ &=\langle\psi_A,e^{-\tau H}\psi_A\rangle
+   =\int_{(0,\infty)}e^{-\tau E}\,\nu_A(dE),\notag\\
+ \nu_A(B)&=\|E_H(B)\psi_A\|^2.
+ \label{qft:connected-spectral-laplace}
+\end{align}
+Here $E_H$ is the spectral projection measure of $H$, and $\nu_A$ is
+nonnegative. If $\operatorname{spec}(H)\subset\{0\}\cup[\Delta,\infty)$,
+then
+\begin{align}
+ 0\le C_A(\tau)
+ &=\int_{[\Delta,\infty)}e^{-\tau E}\,\nu_A(dE)\notag\\
+ &\le e^{-\tau\Delta}\nu_A([\Delta,\infty))
+ \le e^{-\tau\Delta}\|\psi_A\|^2.
+ \label{qft:gap-implies-euclidean-decay}
+\end{align}
+Conversely, suppose $C_A(\tau)\le K_Ae^{-\tau\Delta}$ for all sufficiently
+large $\tau$, with the same $\Delta>0$ for a family whose vectors
+$\psi_A$ span a dense subspace of $\Omega^\perp$. For $0<\delta<\Delta$,
+\begin{align}
+ e^{-\tau\delta}\nu_A((0,\delta])
+ &\le\int_{(0,\delta]}e^{-\tau E}\,\nu_A(dE)
+ \le C_A(\tau)\le K_Ae^{-\tau\Delta},\notag\\
+ \nu_A((0,\delta])
+ &\le K_Ae^{-\tau(\Delta-\delta)}
+ \xrightarrow[\tau\to\infty]{}0,\notag\\
+ \|E_H((0,\delta])\psi_A\|^2&=0.
+ \label{qft:euclidean-decay-implies-gap}
+\end{align}
+The bounded spectral projection therefore vanishes on
+$\Omega^\perp$, by density, and it vanishes on $\Omega$ since
+$H\Omega=0$. Taking $\delta\uparrow\Delta$ excludes the whole interval
+$(0,\Delta)$. This is the spectral argument of
+Proposition~\ref{ym:prop:gap-decay}, recalled here to make the role of
+Euclidean time explicit. Decay for a single observable only excludes
+low-energy states to which that observable couples.
+
+\subsection{Clustering: distant local correlations factor}
+\label{qft:sec:clustering}
+Write $\langle A\rangle_\Omega=\langle\Omega,A\Omega\rangle$.
+For two localized observables, their connected vacuum correlation is
+\begin{align}
+ G^c_{A,B}(\mathbf x,\mathbf y)
+ &=\langle A(\mathbf x)B(\mathbf y)\rangle_\Omega
+    -\langle A(\mathbf x)\rangle_\Omega
+     \langle B(\mathbf y)\rangle_\Omega,\notag\\
+ \delta A(\mathbf x)&=A(\mathbf x)-\langle A(\mathbf x)\rangle_\Omega I,
+ \qquad
+ \delta B(\mathbf y)=B(\mathbf y)-\langle B(\mathbf y)\rangle_\Omega I,
+ \notag\\
+ \langle\delta A(\mathbf x)\delta B(\mathbf y)\rangle_\Omega
+ &=\langle A(\mathbf x)B(\mathbf y)\rangle_\Omega
+  -\langle A(\mathbf x)\rangle_\Omega\langle B(\mathbf y)\rangle_\Omega
+  \notag\\
+ &\quad-\langle B(\mathbf y)\rangle_\Omega\langle A(\mathbf x)\rangle_\Omega
+  +\langle A(\mathbf x)\rangle_\Omega\langle B(\mathbf y)\rangle_\Omega
+ \notag\\
+ &=G^c_{A,B}(\mathbf x,\mathbf y).
+ \label{qft:connected-spatial-correlation}
+\end{align}
+The observables can fluctuate even in the vacuum. Subtracting their means
+asks whether those fluctuations remain correlated at a large separation.
+Clustering is the limit
+\begin{equation}\label{qft:clustering-factorization}
+ G^c_{A,B}(\mathbf x,\mathbf y)\longrightarrow0
+ \quad\Longleftrightarrow\quad
+ \langle A(\mathbf x)B(\mathbf y)\rangle_\Omega
+ \longrightarrow\langle A\rangle_\Omega\langle B\rangle_\Omega,
+ \qquad |\mathbf x-\mathbf y|\longrightarrow\infty.
+\end{equation}
+Translation invariance makes the one-point expectations independent of
+position. For $A=B=\mathcal O$ and $\langle\mathcal O\rangle_\Omega=0$,
+the connected correlation is simply
+$\langle\Omega,\mathcal O(\mathbf x)\mathcal O(\mathbf y)\Omega\rangle$,
+the expression in Jaffe--Witten, Section~5, p.~6, Eq.~(2)
+\cite{JaffeWitten2006}.
+
+Local commutativity and clustering express different properties. At
+spacelike separation, locality requires
+\begin{equation}\label{qft:locality-versus-clustering}
+ [A(\mathbf x),B(\mathbf y)]=0;
+ \qquad
+ [A(\mathbf x),B(\mathbf y)]=0
+ \ \not\Longrightarrow\ G^c_{A,B}(\mathbf x,\mathbf y)=0.
+\end{equation}
+Commuting observables can have a correlated joint state. Clustering
+describes their asymptotic factorization, not exact independence at every
+nonzero separation.
+
+The relativistic clustering consequence of a mass gap, stated in
+Jaffe--Witten Eq.~(2), gives for fixed localized observables
+\begin{equation}\label{qft:spatial-exponential-clustering}
+ |G^c_{A,B}(\mathbf x,\mathbf y)|
+ \le K_{A,B,c}\,e^{-c r},\qquad
+ r=|\mathbf x-\mathbf y|,\qquad 0<c<\Delta,
+\end{equation}
+at sufficiently large spacelike separation, with the usual domain and
+smearing assumptions. Here $c$ denotes a decay rate, not the speed of
+light, which was set to one. More explicitly one may use fixed smooth
+spacetime smearings translated apart; a quantum field is an
+operator-valued distribution, so unsmeared products require care.
+The prefactor depends on the observables and their normalization.
+The paper suppresses this prefactor in its large-distance statement.
+For dimensionless normalized observables, if an estimate has prefactor
+$K$ and rate $c'>c$, it implies the displayed unit-prefactor form once
+\begin{equation}\label{qft:absorb-clustering-prefactor}
+ K e^{-c'r}=e^{-cr}\bigl(K e^{-(c'-c)r}\bigr)\le e^{-cr},
+ \qquad
+ r\ge\frac{\log\max(1,K)}{c'-c}.
+\end{equation}
+The length $1/c$ is a correlation-decay scale. In units $\hbar=c_{\rm light}=1$,
+a spectral mass has inverse-length units, so $\Delta r$ is dimensionless.
+The time-decay calculation in
+Eqs.~\eqref{qft:connected-spectral-laplace}--\eqref{qft:euclidean-decay-implies-gap}
+explains the energy threshold directly. Spatial clustering additionally
+uses relativistic covariance and locality; it is not obtained by replacing
+$\tau$ with $r$ in a semigroup bound without those hypotheses.
+
+Clustering is an estimate, not a statement that a finite cutoff makes
+all distant correlations exactly zero. A massless theory may also
+cluster, with power-law rather than exponential decay. Thus the bare
+factorization limit in Eq.~\eqref{qft:clustering-factorization} does not
+by itself establish a strictly positive gap. For example, with the usual
+free massless scalar normalization, regulate the equal-time two-point
+function by $\epsilon>0$. Taking $p=|\mathbf p|$ and doing the angular
+integral,
+\begin{align}
+ G^c_\epsilon(r)
+ &=\int\frac{d^3p}{(2\pi)^3\,2|\mathbf p|}
+       e^{i\mathbf p\cdot(\mathbf x-\mathbf y)}e^{-\epsilon|\mathbf p|}
+   =\frac1{4\pi^2r}\int_0^\infty e^{-\epsilon p}\sin(pr)\,dp,
+   \notag\\
+ \int_0^\infty e^{-\epsilon p}\sin(pr)\,dp
+ &=\operatorname{Im}\frac1{\epsilon-ir}
+   =\frac{r}{\epsilon^2+r^2},\notag\\
+ G^c_0(r)
+ &=\lim_{\epsilon\downarrow0}\frac1{4\pi^2(\epsilon^2+r^2)}
+   =\frac1{4\pi^2r^2}\xrightarrow[r\to\infty]{}0,
+   \qquad r>0.
+ \label{qft:massless-power-law-clustering}
+\end{align}
+Yet $E_{\mathbf p}=|\mathbf p|$ can be arbitrarily small and positive,
+and for every $c>0$, $e^{cr}G^c_0(r)\to\infty$. The field clusters
+without any positive exponential decay rate.
+
+On the same page Jaffe and Witten describe the possible use of locality
+on more general four-manifolds as heuristic, with a supersymmetric
+extension as their example. Exponential suppression of distant
+correlations motivates separating local analysis from distant geometry;
+it does not by itself construct the theory on an arbitrary curved
+four-manifold. A metric, gauge-bundle data, and control of global topology
+and zero modes still have to enter such a construction.
+
+\subsection{What must survive the Yang--Mills limits}
+For Yang--Mills theory the relevant states are generated by gauge-invariant
+observables in the physical vacuum representation. The reflection acts on
+the appropriate gauge-field or link variables; the scalar illustration
+above does not assert positivity for arbitrary gauge-fixed potentials.
+At fixed lattice spacing and volume the Wilson law is an actual
+finite-dimensional probability measure, recalled from
+Eq.~\eqref{ym:wilson-measure}:
+\begin{equation}\label{qft:euclidean-wilson-probability}
+ d\mu_{a,L}(U)=Z_{a,L}^{-1}e^{-S_{a,L}(U)}\prod_e h(dU_e).
+\end{equation}
+Writing a continuum density as $e^{-S}\mathcal D A$ is formal until the
+measure or the corresponding correlation distributions have been
+constructed. In particular, $\mathcal D A$ is not a normalized
+infinite-dimensional Lebesgue measure.
+
+Let $a$ be the lattice spacing and $L$ the physical box size. If the
+positive, injective transfer operator $T_{a,L}$ has leading eigenvalues
+$\lambda_0>\lambda_1>0$, its first physical excitation energy is
+\begin{equation}\label{qft:transfer-physical-gap}
+ H_{a,L}=-\frac1a\log(T_{a,L}/\lambda_0),\qquad
+ \Delta_{a,L}=-\frac1a\log(\lambda_1/\lambda_0).
+\end{equation}
+A finite-volume inequality $\Delta_{a,L}>0$ permits
+$\Delta_{a,L}\to0$ in a limit. A route to a continuum gap is instead an
+estimate with one physical rate $\Delta_*>0$, uniform along the chosen
+cutoff and volume limits, for the appropriately renormalized observables:
+\begin{equation}\label{qft:uniform-physical-clustering}
+ 0\le C_{A;a,L}(na)\le K_Ae^{-\Delta_*na},\qquad n\in\mathbb N.
+\end{equation}
+The observables, their normalization, and $K_A$ must be controlled in
+these limits. After constructing limiting correlations, retaining the
+reconstruction hypotheses, and establishing this bound for a family
+generating the physical Hilbert space, Eq.~\eqref{qft:euclidean-decay-implies-gap}
+excludes energies in $(0,\Delta_*)$. Reflection positivity supplies a
+positive-energy quantum theory; the uniform exponential estimate supplies
+the strictly positive gap.
