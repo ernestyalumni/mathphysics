@@ -139,3 +139,7 @@ The conditional-gap theorem thus reformulates the problem as a renormalization-g
 - β-integration would need about 67 GPU-hours;
 - the block-gluing estimator (`src/glued.rs`; exact in 2D, consistent at n = 2 and 4: −1.4(1.0) at β 1.8, 2.0(1.2) at β 2.0) is at most 2–3× cheaper;
 - multihit and a GPU path would still leave roughly 60–250 GPU-hours.
+
+**U(1).** Characters e^{ikθ} with u = I₁(β)/I₀(β), and each wrapping surface carries the two orientations k = ±1, so Δ_U(1)(n) ≈ 32 (6 n² u^{n²} + 12 n³ u^{4n}). Against the n = 2 measurements: 0.0753 vs 0.0750(69) at β = 0.2, 0.373 vs 0.383(9) at β = 0.3, 1.14 vs 1.19(1) at β = 0.4 (higher orders begin).
+
+**A provable first instance.** In the strong-coupling regime, the polymer (cluster) expansion converges rigorously (Osterwalder–Seiler 1978; Kotecký–Preiss criterion, roadmap T12). There the bound Δ_β(n) ≤ C n³ u^{4n} (1 + O(u)) and the recurrence with a fixed c₁ should be provable. The conditional-gap chain would then reproduce the known strong-coupling gap. This is a consistency check of the chain, and a realistic Lean target (YM-F01 follow-up).
