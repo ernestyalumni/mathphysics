@@ -111,6 +111,24 @@ All three start after the step-3 run above. Experiment 2 runs on the laptop, so 
   - **Faithful:** graded by me against the informal statement and the reference, as equivalent, stronger hypotheses, weaker hypotheses, or wrong. A statement made vacuous by contradictory hypotheses counts as wrong. The grading is not blind; grades go in `grades.json` with a reason for each.
 - **Primary outcome:** statements with at least one attempt that compiles and is equivalent, out of 7.
 
+#### Experiment 1 result (run 2026-11-20 18:08 – 2026-11-21 11:08Z; unreviewed local model output, checked by Lean)
+
+**Primary outcome: 5 of 18 theorems solved, against 4 of 18 without feedback.** 16 passing answers from 189 generations; at most 216 were allowed, and attempts stop once they pass.
+
+**What feedback added.** `ConditionalGap.defect_double_exponential`, solved by one attempt in its second revision. It is the induction that carries the conditional gap: under the recurrence, `c₁ δ_k ≤ (1/2)^(2^k)`. It is the first step of the chain that is more than routine algebra to be proved by a local model.
+
+**Where passes came from.**
+
+| Round | Passing answers |
+|---|---|
+| 0, no feedback, 20,480 tokens instead of 16,384 | 12 |
+| 1 | 1 (`excited_double`) |
+| 2 | 2 (`defect_telescope`, `defect_double_exponential`) |
+
+**Unsolved: the 13 others.** These are every tsum inequality, the gap bounds, `conditional_gap` itself, `exp_sub_one_le_two_mul` and the trace lemmas. 56 of 189 generations reached the 20,480-token limit.
+
+**Reading.** Error feedback helps a little, at the margin. Nearly all the passes are first answers. One hard step fell after two rounds of Lean errors, out of 216 allowed generations. That is not a prover that can carry this chain.
+
 #### Experiment 2 result (run 2026-11-21 04:04–04:47Z on the RTX 3070; unreviewed local model output, graded by me)
 
 **Primary outcome: 2 of 7 statements** have an attempt that compiles and is equivalent: `conditional_gap` (4 of 4 attempts) and `defect_telescope` (1 of 4). 9 of 28 attempts compile; answers were short (median about 950 tokens, none cut off).

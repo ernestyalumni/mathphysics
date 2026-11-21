@@ -1,0 +1,19 @@
+[package]
+name = "statement-audit"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Checks that a Lean statement says what an informal statement says, by exact evaluation on instances"
+
+[[bin]]
+name = "ym-audit"
+path = "src/main.rs"
+
+[dependencies]
+qft-symbolics = { path = "../qft-symbolics" }
+num-bigint = "=0.4.6"
+num-traits = "=0.2.19"
+serde_json = "=1.0.151"
+
+[profile.release]
+overflow-checks = true
