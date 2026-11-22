@@ -186,7 +186,7 @@ impl V {
     pub fn as_tri(&self) -> Tri {
         match self {
             V::Prop(t) => *t,
-            _ => Tri::U,
+            _ => Tri::U, // includes opaque constants: undecided, never true or false
         }
     }
     pub fn as_usize(&self) -> Option<usize> {
@@ -256,6 +256,7 @@ pub fn apply(f: &V, x: V) -> R<V> {
             Ok(V::Seq(Rc::new(row)))
         }
         V::Undecided => Ok(V::Undecided),
+        V::Opaque => Err("cannot apply an opaque constant".into()),
         other => Err(format!("cannot apply {other:?}")),
     }
 }

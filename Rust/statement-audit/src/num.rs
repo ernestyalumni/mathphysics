@@ -292,13 +292,35 @@ fn exp_small(r: &BigQ) -> (BigQ, BigQ) {
     (round_to(&lo_sum, false, PRECISION), round_to(&hi_sum, true, PRECISION))
 }
 
-/// Rigorous bounds of `exp(x)` for rational `x`.
+thread_local! {
+    static EXP_CACHE: RefCell<std::collections::HashMap<(String, String), (BigQ, BigQ)>> = RefCell::new(Default::default());
+    static LOG_CACHE: RefCell<std::collections::HashMap<(String, String), (BigQ, BigQ)>> = RefCell::new(Default::default());
+}
+fn key(x: &BigQ) -> (String, String) {
+    (x.numerator().to_str_radix(32), x.denominator().to_str_radix(32))
+}
+/// Rigorous bounds of `exp(x)` for rational `x` (memoised: the same arguments recur across instances).
 pub fn exp_bounds(x: &BigQ) -> (BigQ, BigQ) {
+    let k = key(x);
+    if let Some(v) = EXP_CACHE.with(|c| c.borrow().get(&k).cloned()) {
+        return v;
+    }
+    let v = exp_bounds_uncached(x);
+    EXP_CACHE.with(|c| {
+        let mut c = c.borrow_mut();
+        if c.len() > 200_000 {
+            c.clear();
+        }
+        c.insert(k, v.clone());
+    });
+    v
+}
+fn exp_bounds_uncached(x: &BigQ) -> (BigQ, BigQ) {
     if x.is_zero() {
         return (qi(1), qi(1));
     }
     if sign(x) < 0 {
-        let (l, h) = exp_bounds(&neg(x));
+        let (l, h) = exp_bounds_uncached(&neg(x));
         return (round_to(&div(&qi(1), &h), false, PRECISION), round_to(&div(&qi(1), &l), true, PRECISION));
     }
     // x > 0: reduce to r = x / 2^s <= 1/2
@@ -357,9 +379,24 @@ pub fn log2_bounds() -> (BigQ, BigQ) {
     LOG2.with(|v| v.clone())
 }
 
-/// Rigorous bounds of `log(x)` for rational `x > 0`.
+/// Rigorous bounds of `log(x)` for rational `x > 0` (memoised).
 pub fn log_bounds(x: &BigQ) -> (BigQ, BigQ) {
     assert!(sign(x) > 0);
+    let k = key(x);
+    if let Some(v) = LOG_CACHE.with(|c| c.borrow().get(&k).cloned()) {
+        return v;
+    }
+    let v = log_bounds_uncached(x);
+    LOG_CACHE.with(|c| {
+        let mut c = c.borrow_mut();
+        if c.len() > 200_000 {
+            c.clear();
+        }
+        c.insert(k, v.clone());
+    });
+    v
+}
+fn log_bounds_uncached(x: &BigQ) -> (BigQ, BigQ) {
     // x = 2^e * y with y in [1/2, 2]
     let mut e = log2_estimate(x);
     let mut y = if e >= 0 {

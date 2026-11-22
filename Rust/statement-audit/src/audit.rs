@@ -215,7 +215,14 @@ fn lean_trial(st: &Statement, p: &Paper, links: &[Link], i: &Inst, r: &mut Rng) 
             Part::Var(b) => {
                 let ty = st.ev.ty(&b.ty, &env)?;
                 let val = if let Some(link) = links.iter().find(|l| l.lean_id == b.id) {
-                    lean_value(link, p, i, &ty, &slot).ok_or("informal value does not fit the Lean type")?
+                    let val = lean_value(link, p, i, &ty, &slot).ok_or("informal value does not fit the Lean type")?;
+                    // an instance whose matrices are not the shape their Lean type says is ill-typed: skip it
+                    if let (Ty::Matrix(r, c, _), V::Mat(m)) = (&ty, &val) {
+                        if r.size() != Some(m.rows) || c.size() != Some(m.cols) {
+                            return Err("ill-typed instance: matrix shape differs from its Lean type".into());
+                        }
+                    }
+                    val
                 } else if defined.contains(&b.id.as_str()) {
                     V::Undecided
                 } else {

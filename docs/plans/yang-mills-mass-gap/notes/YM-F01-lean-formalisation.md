@@ -284,6 +284,71 @@ Ernest, 2026-11-21: "we've gotta automate this, really can't rely upon me", then
 
 **Allowed after this point:** fixes for constructs the evaluator does not support, or crashes, logged with the reason. **Not allowed:** changes to the verdict rules, the matching rule, the thresholds or the instance generators after any benchmark result is seen. The checker is developed on toy statements in `formal/Audit/Toy.lean`, not on the benchmark.
 
+### Statement checker result (benchmark 2026-11-21 21:45–22:15Z, 900 instances per mapping, seed 20261121)
+
+**Against the pre-registered bar: not useful as it stands.** It fails two of the three criteria. **It passed no wrong statement.**
+
+| Part | Result | Bar |
+|---|---|---|
+| (a) 20 elaborating formalizer statements (8 do not elaborate even after `λ → lam`) | **0 misses**, 4 false alarms; 10 of 10 wrong statements flagged | 0 misses, ≤ 1 false alarm |
+| (b) 9 reference theorems | 8 pass; `gap_from_purity` flagged MISMATCH | all pass |
+| (c) 167 mutants (all elaborate) | 152 detected, 91 % | ≥ 90 % |
+
+**Coverage (b).** Together the references cover every informal conjunct except `gap_from_purity`'s second (`P > 1/2 → …`) and both of `casimir_su`'s. That matches the Lean.
+
+**Informal self-check and hypothesis scan.**
+- **Self-check.** No failures. `K(X,Y) = 2N tr(XY)` holds exactly on all 1,066 su(N) instances, N = 2–4.
+- **First run.** It reported 206 failures for `trace_ad_ad`. All came from ill-typed instances, where perturbation changed N but not the matrices; see fix 3 below.
+- **Hypothesis scan, compared with the hand list.**
+  - `Δ < log 2` is not needed.
+  - `0 ≤ λ_j ≤ λ₁`, `P(n) ≥ e^{-Δ}`, the start and the recurrence are needed.
+  - `λ₂ > 0` gives no counterexample, because without it the statement is undefined rather than false.
+  - `c₁ ≥ 2`, `n ≥ 1` and `δ_k > 0` were never violated alone by the instances, so they are untested.
+
+**Why the false alarms happen (post hoc, read off the report).** All three mechanisms are conservative: they make the checker refuse to vouch, never vouch for a false statement.
+1. **Defining hypotheses are re-checked: 3 false alarms.** `gap_from_purity#3` and `gap_from_defect#1/#2` define `Z` by `∀ m, Z m = ∑' j, …`. The checker sets `Z` from that equation, then also evaluates the equation for `m = 0…7`. At `m = 0` the sum `∑ λ_j⁰` diverges, so it is undecided, the Lean hypotheses are never true, and the statement is reported VACUOUS.
+2. **Random search for Lean-only values: 1 false alarm.** `purity_bounds#0` bounds an unused `λ₀` by `λ₁`. With `λ₁ ≈ 6 · 10⁻⁸`, 20 random tries did not find a value in `[0, λ₁]`, so it is reported STRONGER.
+3. **Conclusions must agree exactly: 1 reference flagged.** `gap_from_purity` proves the bound without the premise `P > 1/2`, a documented and legitimate strengthening. The rule compares truth values, so a stronger Lean conclusion is a mismatch.
+
+**Undetected mutants.** 15 of 167. Most make the statement weaker or strengthen a hypothesis only near a boundary:
+- `0 < Δ` → `0 ≤ Δ`;
+- dropping `hn`;
+- the recurrence threshold `1/(2c₁)` → `2/(2c₁)`.
+
+Either the instances rarely reach that boundary, or the parent already carried the WEAKER note, so the signature did not change.
+
+**What would fix it.** None of this is applied: the benchmark is spent, and a fixed checker needs a fresh pre-registered test set.
+- Treat a defining hypothesis as satisfied by construction.
+- Search Lean-only variables over boundary values (0, the endpoints, the informal values) before random ones.
+- Accept a Lean conclusion that implies the informal one under the informal hypotheses, reported as STRONGER-CONCLUSION.
+
+**Changes after pre-registration.** All are fixes for crashes, unsupported constructs or ill-typed instances; none changed a verdict rule, the matching rule, a threshold or the instance generators.
+1. **Mutant file imports.** The Defect mutant file lacked `import Audit.Export`.
+2. **Mutant line ranges.** These are used to attribute Lean errors; they were off by one.
+3. **Informal side, ill-typed matrices.** Instances whose matrices are not N × N are now undecided. Found by the self-check.
+4. **Unknown constants.** Instance arguments are now opaque placeholders instead of errors. Found after seeing 3 ERROR results, for `trace_adjoint_comp` mutants, in an aborted first benchmark run that produced 4 results.
+5. **`LinearMap.trace` module argument.** It is now located by type, not position.
+6. **Lean side, ill-typed matrices.** These instances are now skipped. Found after seeing reference `trace_sandwich` wrongly flagged FALSE on an N = 0 instance with 1 × 1 matrices, during development.
+7. **Memoised `exp`/`log`.** A performance fix with no effect on values.
+
+The 600-bit tie rule was set during development on toy statements, before the benchmark.
+
+## Rectangle recurrence in Lean (2026-11-21, Ernest: "ok sounds good go ahead please")
+
+**What is proved.** `formal/YMFormal/Rectangle.lean` proves Codex's derivation (YM-O03 §1), and `check.sh --strict` passes with axioms propext, Classical.choice and Quot.sound only. Boxes are indexed by exponents: `G e` is `log Z` of the box with sides `n·2^{e_k}`.
+- **Hypotheses.** `nonneg`: every doubling cost `pᵢ = 2G(e) - G(Dᵢe)` is at least 0. `estimate`, the review's Estimate 1: `pᵢ ≤ 1/4 → pᵢ(Dᵢe) ≤ 4pᵢ²`.
+- **`rectangle_recurrence`.** `Δ(n) ≤ 1/7480 → Δ(2n) ≤ 3740 Δ(n)²`. The steps:
+  - Estimate 2, `cost_swap`, is proved as an identity.
+  - The `{n, 2n}` base case uses a path potential, `φ(e) = 16G(e)/2^{Σe}`.
+  - The induction gives `pᵢ ≤ 3^j Δ(n)` for j sides of length 4n (`cost_le_pow_three`).
+  - The final path gives the constant `4(8 + 36 + 162 + 729) = 3740`.
+- **`box_recurrence`.** The same statement for side lengths, with the hypotheses required only for boxes with positive sides.
+- **`conditional_gap_of_boxes`.** The conditional gap with `ym:conj:recurrence` discharged. The inputs are `nonneg`, `estimate`, the ratio-form spectral bound at every scale, and the seed `Δ(n) ≤ 1/7480`. The output is `(λ₂/λ₁)ⁿ ≤ 1/2`, that is `𝗆 ≥ log 2 / n`, at every dyadic scale.
+
+**What is not proved.**
+- **The two hypotheses.** Both rest on reflection positivity in all four directions, with every box's `Z` the trace of a positive transfer operator (C23). From there Estimate 1 follows by `purity_bounds`, as noted above, but that identification is not formalised.
+- **The seed.** A small defect at bounded physical size is not proved either.
+
 ## Labels
 - The Lean proofs are machine-checked. The match between the Lean statements and the source is my own reading, listed above.
 - Model output is labelled `unreviewed (local model output; not evidence)`. The Lean verdict on it is a check, not a review.

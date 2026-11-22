@@ -3,6 +3,7 @@ import YMFormal.Defect
 import YMFormal.ConditionalGap
 import YMFormal.Casimir
 import YMFormal.RankOne
+import YMFormal.Rectangle
 #print axioms YMFormal.purity_bounds
 #print axioms YMFormal.gap_from_purity
 #print axioms YMFormal.defect_nonneg_and_last
@@ -14,3 +15,6 @@ import YMFormal.RankOne
 #print axioms YMFormal.ratio_pow_le_defect
 #print axioms YMFormal.conditional_gap_ratio
 #print axioms YMFormal.rank_one_of_zero_defect
+#print axioms YMFormal.rectangle_recurrence
+#print axioms YMFormal.box_recurrence
+#print axioms YMFormal.conditional_gap_of_boxes

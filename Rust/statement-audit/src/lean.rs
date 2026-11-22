@@ -465,7 +465,14 @@ impl Ev {
             "LinearMap.id" => Ok(V::Fun(Rc::new(Ok))),
             "LinearMap.trace" => {
                 let ring = self.ty(&args[0], env)?;
-                let m = self.ty(&args[1], env)?;
+                // `LinearMap.trace R [inst] M [insts]`: the module is the first matrix type after the ring
+                let m = args[1..]
+                    .iter()
+                    .find_map(|x| match self.ty(x, env) {
+                        Ok(t @ Ty::Matrix(..)) => Some(t),
+                        _ => None,
+                    })
+                    .ok_or("LinearMap.trace without a matrix module")?;
                 let Ty::Matrix(r, _, _) = &m else {
                     return Err(format!("LinearMap.trace on {m:?}"));
                 };
@@ -511,7 +518,9 @@ impl Ev {
                 }
                 Ok(V::Prop(acc))
             }
-            None => Err(format!("unsupported constant {c}")),
+            // Instance arguments and other constants with no numerical meaning: an opaque placeholder.
+            // Using one as a number, function or proposition is an error or undecided, never a wrong value.
+            None => Ok(V::Opaque),
         }
     }
 }
