@@ -53,7 +53,7 @@ After abelian projection, monopole currents are integer 1-cycles closed by latti
 
   At β = 2.8 the scan processed 20 configurations and configuration 19 had no pierced plaquettes. The dump writes only pierced plaquettes, so it does not appear; an empty sheet has difference 0.
 - The default-start and random-start runs at β = 2.4 are not paired configuration by configuration, so no per-configuration comparison is claimed.
-- **Reading.** At fixed β the count rises with the volume (β = 2.6: 4/20, 14/20, 19/20 on 8⁴, 12⁴, 16⁴). On each box it falls near that box's thermal coupling: on 8⁴ between β = 2.4 and 2.5 (N_t = 8: ≈ 2.51), and on 16⁴ between 2.7 and 2.8 (N_t = 16: ≈ 2.74). The fall on 8⁴ sits near the N_t = 8 thermal coupling (≈ 2.51), a finite-size crossover on a symmetric torus. This is an *association* with confinement, supported by three box sizes, four random controls and one gauge-fixing prescription. It does not isolate confinement, define an infinite-volume order parameter, or establish a per-component or per-configuration lemma.
+- **Reading.** At fixed β the count rises with the volume (β = 2.6: 4/20, 14/20, 19/20 on 8⁴, 12⁴, 16⁴). On 16⁴ the drop between β = 2.7 and 2.8 brackets the N_t = 16 thermal coupling β_c(16) = 2.7395(100); on 8⁴ the drop between 2.4 and 2.5 is near, but does not bracket, β_c(8) = 2.5115(40) (Teper, Table 14). Thermal criticality is defined at large spatial volume with fixed temporal extent; symmetric boxes have no such singularity, and the small rebound at 2.9 argues against fitting a critical point (YM-O04 §4). The fall on 8⁴ sits near the N_t = 8 thermal coupling (≈ 2.51), a finite-size crossover on a symmetric torus. This is an *association* with confinement, supported by three box sizes, four random controls and one gauge-fixing prescription. It does not isolate confinement, define an infinite-volume order parameter, or establish a per-component or per-configuration lemma.
 
 **Monopole worldlines** (lattice-gauge `monopole::worldline_topology`). Current conservation holds on every slice. The largest-cluster fraction of the current measures concentration; calling it percolation needs a winding or finite-size test, and no windings occurred in these runs.
 
@@ -69,7 +69,7 @@ On 12⁴ the fraction drops below one half at β = 2.5, where the vortex count i
 
 **Centre dominance.** The centre-projected Creutz ratio at β = 2.3 is χ_cp(3,3) = 0.1357(28) from the 200-configuration scan; the 20-configuration homology scan at the same parameters gives 0.1348(58). Teper's Table 10 gives a√σ = 0.3687(22), so a²σ ≈ 0.1359. At β = 2.4, 0.0584(32) is about 81% of a²σ = 0.0721 (a√σ = 0.2686(21)). A finite-loop ratio does not determine the asymptotic tension.
 
-**Topological susceptibility.** After 20 cooling sweeps at β = 2.4 on 12⁴: aχ_t^{1/4} = 0.1075(7) from the raw clover charge, and 0.1154(8) after rescaling by 1.149 and rounding to integers. Teper's 0.1163(13) is one method in his Table 15 (cooled charge).
+**Topological susceptibility.** After 20 cooling sweeps at β = 2.4 on 12⁴: aχ_t^{1/4} = 0.1075(7) from the raw clover charge, and 0.1154(8) after rescaling by 1.149 and rounding to integers. Teper's 0.1163(13) is one charge prescription in his Table 15; it is closer to the rescaled value, and the comparison is not normalization-independent.
 
 ## What this suggests for the program
 

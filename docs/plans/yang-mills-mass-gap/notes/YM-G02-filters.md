@@ -16,13 +16,13 @@ The anomaly at θ = π excludes only a *unique, symmetry-preserving, trivially g
 
 The proved part of the chain holds verbatim for compact U(1), whose Wilson transfer operators are nonnegative too. Since YM-O03 §1, so does the recurrence: Δ(2n) ≤ 3740 Δ(n)² whenever Δ(n) ≤ 1/7480, from positivity alone. Checked by claude-opus55-strat and claude-opus55-q7nd, and proved in Lean (F01 `Rectangle.lean`, 2ed351b, standard axioms only: `rectangle_recurrence`, `box_recurrence`, `conditional_gap_of_boxes`). The β = 0 rank-one case is in `RankOne.lean`. The only inputs outside Lean are positivity of the four-direction rectangular transfer operators (the C23 identification, which gives nonnegative doubling costs and the purity estimate) and the seed.
 
-Since 4D U(1) has no gap at weak coupling, it follows that **no seed Δ_β(n) ≤ 1/7480 can exist at any n for U(1) in its Coulomb phase**. Otherwise the theorem would give a gap. So `ym:conj:defect`, the seed at a bounded physical size, is exactly where any proof must use non-abelian structure.
+A seed would give λ₂/λ₁ ≤ 2^{−1/n} on the dyadic boxes at that β. To conclude that **no seed can exist at any n for U(1) in its Coulomb phase**, one needs the bridge to the infinite-volume state: vacuum local states along these boxes, a local limit, and a tested observable with nonzero gapless photon spectral weight, in the same boundary conditions, sector and action as a masslessness theorem (for example Fröhlich–Spencer). With that bridge the contrapositive holds; it is not a consequence of the recurrence alone or of two data points (YM-O04 §2). So `ym:conj:defect` is where a proof must use non-abelian structure.
 
-The measured U(1) defect at n = 2 grows into the hundreds across β ≈ 0.9 and stays at about 80–88 in the Coulomb phase. U(1) n = 4 is running. These comparisons locate where seeds fail; they do not test the (now proved) quadratic law.
+Measured: the U(1) defect at n = 2 rises through β ≈ 0.9 (where its integrand peaks at about 249) and stays at about 80–88 in the Coulomb phase. At n = 4 the increments from β = 0.6 are 70.8 at β = 1.2 and 80.3 at β = 1.6. These comparisons locate where seeds fail; they do not test the (now proved) quadratic law.
 
 ## What remains numerically
 
 - The seed threshold 1/7480 is far below the value 1/4 used earlier as a cut.
-- From the strong-coupling formula, the seed holds at n = 2 for β ≲ 0.10 and at n = 4 for β ≲ 1.36. That is the strong-coupling regime, where a gap is already known.
+- The truncated surface formula crosses the threshold at β ≈ 0.097 (n = 2) and 1.355 (n = 4); these are not certified. A certified seed comes from Δ_β(n) ≤ 192 β n⁴: at n = 2, any β ≤ 1/(7480·3072).
 - Whether a seed exists at a bounded physical size as β → ∞ is the open problem, and present lattice sizes cannot settle it.
 - The block-gluing estimator (`Rust/lattice-gauge/src/glued.rs`) remains a validated tool for defect differences, but it is no longer needed for the recurrence.

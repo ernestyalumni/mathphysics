@@ -115,7 +115,7 @@ n = 2 (2⁴ and 4⁴, 6 replicas each, β ∈ [0, 1.6] with h = 0.05, 5×10⁵ u
 
 ## Strong-coupling expansion of the defect, and what the recurrence means
 
-In the SU(2) character expansion (u = I₂(β)/I₁(β)), log Z is a sum over closed surfaces of plaquettes. Surfaces that do not wrap the torus are extensive and cancel in Δ = 16 log Z(n⁴) − log Z((2n)⁴). The leading wrapping surfaces have Euler characteristic 0, so they carry no dimension factor:
+In the SU(2) character expansion (u = I₂(β)/I₁(β)), log Z is a sum over connected clusters of plaquettes (YM-O04 §1 gives the precise counting: an embedded orientable fundamental sheet carries d^{F−E+V} u^F). Surfaces that do not wrap the torus are extensive and cancel in Δ = 16 log Z(n⁴) − log Z((2n)⁴). The leading wrapping surfaces have Euler characteristic 0, so they carry no dimension factor:
 - flat 2-tori in a coordinate plane: area n², 6 planes × n² positions;
 - square tubes around one direction: area 4n, 4 directions × 3 cross-section planes × n³ positions.
 
@@ -140,12 +140,16 @@ This independently validates the β-integration measurements.
 
 **Retraction.** An earlier version of this note said that the content of the conditional-gap theorem lies in the recursion, and that the recurrence is in substance gap-equivalent. Both are wrong. The recursion propagates a seed and costs nothing beyond positivity. The entire open content is the seed (`ym:conj:defect`): Δ_β(n(β)) ≤ 1/7480 at a torus of bounded physical size, uniformly as β → ∞.
 
+**The precise seed target (YM-O04 §2).** There is L < ∞ such that for all β along the chosen scaling trajectory, sufficiently far toward the continuum, some n ≥ 1 has a(β) n ≤ L and 16 log Z_β(n⁴) − log Z_β((2n)⁴) ≤ 1/7480, with the same bare parameters on both boxes. The candidate rate is then ≥ log 2/L in physical units. A continuum theorem also needs the passage from dyadic finite-volume spectral bounds to the infinite-volume state (vacuum local states, a local limit, cyclicity, vacuum subtraction): the seed is the outstanding estimate in this chain, not its only missing hypothesis.
+
 The strong-coupling form Δ(n) ≈ A n³ e^{−En} gives Δ(2n)/Δ(n)² ≈ 8/(A n³) ≪ 3740, consistent with the theorem.
 
-**Where the seed holds.** From the strong-coupling formula, the seed condition Δ ≤ 1/7480 holds at n = 2 for β ≲ 0.10 and at n = 4 for β ≲ 1.36 (an estimate; these are not measured values). Both lie in the strong-coupling regime, where a gap is already known (Osterwalder–Seiler). Toward the continuum the required n grows like the physical correlation length in lattice units. Whether a seed exists at a bounded physical size is the open question, which numerics at our scale cannot settle.
+**Where the seed might hold.** The truncated two-term surface formula crosses 1/7480 at β = 0.0972 (n = 2) and β = 1.3554 (n = 4). These are crossings of a truncated formula, not certified thresholds (YM-O04 §1). The expansion is not controlled: at n = 2 a spin-1 flat sheet enters at O(β⁸), the same order as the fundamental tube, and log Z also subtracts disconnected products.
+
+**A certified seed (YM-O04 §6).** With normalized Haar measure and |a₀| ≤ 1, e^{−βP} ≤ Z ≤ e^{βP} for a box with P plaquettes. Since P(2n) = 16 P(n) = 96 n⁴, Δ_β(n) ≤ 32 β P(n) = 192 β n⁴. At n = 2 every β ≤ 1/(7480·3072) is therefore a seed. This is weak but explicit, and with the Lean chain it gives a first end-to-end strong-coupling instance without a cluster expansion. Both lie in the strong-coupling regime, where a gap is already known (Osterwalder–Seiler). Toward the continuum the required n grows like the physical correlation length in lattice units. Whether a seed exists at a bounded physical size is the open question, which numerics at our scale cannot settle.
 
 **The block-gluing estimator** (`src/glued.rs`; exact in 2D, consistent at n = 2 and 4) remains a valid tool, but it is no longer needed to test the recurrence.
 
-**U(1).** Characters e^{ikθ} with u = I₁(β)/I₀(β), and each wrapping surface carries the two orientations k = ±1, so Δ_U(1)(n) ≈ 32 (6 n² u^{n²} + 12 n³ u^{4n}). Against the n = 2 measurements: 0.0753 vs 0.0750(69) at β = 0.2, 0.373 vs 0.383(9) at β = 0.3, 1.14 vs 1.19(1) at β = 0.4 (higher orders begin).
+**U(1).** Characters e^{ikθ} with u = I₁(β)/I₀(β), and each wrapping surface carries the two orientations k = ±1, so Δ_U(1)(n) ≈ 32 (6 n² u^{n²} + 12 n³ u^{4n}) (the factor 2 is the two signs of the unit flux on a connected sheet). Against the n = 2 measurements: 0.0753 vs 0.0750(69) at β = 0.2, 0.373 vs 0.383(9) at β = 0.3, 1.14 vs 1.19(1) at β = 0.4 (higher orders begin).
 
 **A provable first instance.** In the strong-coupling regime the polymer (cluster) expansion converges rigorously (Osterwalder–Seiler 1978; Kotecký–Preiss criterion, roadmap T12). There a bound like Δ_β(n) ≤ 16(6 n² u^{n²} + 12 n³ u^{4n})(1 + O(u)) should be provable, giving a seed at n = 4 for small β. With the recurrence theorem, the chain then reproduces the known strong-coupling gap: a consistency check, and a realistic Lean target (YM-F01 follow-up).

@@ -3,6 +3,8 @@
 //! corners at the dual sites x - a e_rho - b e_sigma, (a, b) = (0,0), (1,0), (1,1), (0,1) (dual site labelled by the
 //! original site index). Prints per configuration: components, the largest component's share of the vortex area, its
 //! Euler characteristic, closedness, branching edges and orientability; and totals over all components.
+//! Homology (HOMOLOGY=1): b2 over F_2 and over F_p with p = 1000003. Their difference is t_2 - t_p, the excess of
+//! 2-primary over p-primary torsion in H_1 (universal coefficients); it is not a count of Z_2 summands or of winding sheets.
 use algebraic_topology::surface::{analyze, chain_complex};
 use std::collections::BTreeMap;
 fn main() {
@@ -46,7 +48,7 @@ fn main() {
             let b2 = cc.betti_mod_p(2)[2];
             let bq = cc.betti_mod_p(1_000_003)[2];
             // each small closed orientable component contributes exactly 1 to b2 over Q and over Z2
-            println!("   homology: b2(Z2) = {b2}, b2(Q) = {bq}; giant component b2(Q) = {} (after removing {small_orientable} small orientable components) [{:.1}s]",
+            println!("   homology: b2(Z2) = {b2}, b2(F_1000003) = {bq}; giant component b2(F_1000003) = {} (after removing {small_orientable} small orientable components) [{:.1}s]",
                 bq as i64 - small_orientable as i64, t0.elapsed().as_secs_f64());
         }
     }
