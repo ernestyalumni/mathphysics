@@ -99,7 +99,19 @@ n = 2 (2⁴ and 4⁴, 6 replicas each, β ∈ [0, 1.6] with h = 0.05, 5×10⁵ u
 - Δ crosses 1/4 at β ≈ 0.27, earlier than SU(2): U(1)'s strong-coupling parameter (≈ β/2) grows twice as fast as SU(2)'s (≈ β/4).
 - The integrand peaks near β ≈ 0.9 and then falls, from about 249 to 18 at β = 1.6. Its nonzero value at the last point cannot identify its cause or its asymptotics.
 
-U(1) n = 4 (8⁴ scans on the laptop and Mac) is running. Since the recurrence is a theorem for any positive transfer spectrum (next section), it holds for U(1) too. So the U(1) filter now says, with certainty: for U(1) at weak coupling no seed Δ(n) ≤ 1/7480 can exist at any n, or the theorem would give a gap. Comparisons of Δ across n test where the seed fails. They do not test a quadratic law.
+**U(1) n = 4.** 4⁴: 6 replicas from the n = 2 run. 8⁴: 14 laptop replicas on β ∈ [0.6, 1.6], 10⁵ updates per point; 12 more Mac replicas are running. The values are increments from β₀ = 0.6. The strong-coupling estimate of Δ_U(1)(4) at 0.6 is 6×10⁻⁵, an estimate, not a bound.
+
+| β | Δ(2) | Δ(4) − Δ(4)(0.6) | integrand n = 2 | integrand n = 4 |
+|---|---|---|---|---|
+| 0.9 | 50.2 | 0.17(5) | 249.0(2) | 6.9(6) |
+| 1.0 | 71.3 | 34.3(1) | 79.0(1) | 1573(2) |
+| 1.2 | 79.6 | 70.8(1) | 29.08(6) | 33.1(3) |
+| 1.6 | 88.5 | 80.3(1) | 17.84(4) | 18.3(2) |
+
+- In the Coulomb phase, doubling the box barely changes the defect (about 80 at both sizes), and the finite-size integrand is the same at n = 2 and n = 4. That is the behaviour of massless modes.
+- SU(2) at β = 1.8 gives Δ(2) ≈ 26 against Δ(4) ≈ 0.
+- U(1) thus never approaches a seed, as the recurrence theorem requires for a gapless theory. This locates where the seed fails; it does not test the (proved) quadratic law.
+- The integrand spike near β = 1.0 is U(1)'s first-order transition on the larger lattice. Since the recurrence is a theorem for any positive transfer spectrum (next section), it holds for U(1) too. So the U(1) filter now says, with certainty: for U(1) at weak coupling no seed Δ(n) ≤ 1/7480 can exist at any n, or the theorem would give a gap. Comparisons of Δ across n test where the seed fails. They do not test a quadratic law.
 
 ## Strong-coupling expansion of the defect, and what the recurrence means
 
