@@ -48,11 +48,12 @@ After abelian projection, monopole currents are integer 1-cycles closed by latti
   | 2.5 | 7/20 (largest share 0.60) | 20/20 (0.90) | |
   | 2.6 | 4/20 (0.42) | 14/20 (0.68) | 19/20 (0.82) |
   | 2.7 | | | 15/20 (0.80) |
-  | 2.8 | 1/20 | | (running) |
+  | 2.8 | 1/20 | | 1/20 (0.33) |
+  | 2.9 | | | 3/20 (0.39) |
 
   At β = 2.8 the scan processed 20 configurations and configuration 19 had no pierced plaquettes. The dump writes only pierced plaquettes, so it does not appear; an empty sheet has difference 0.
 - The default-start and random-start runs at β = 2.4 are not paired configuration by configuration, so no per-configuration comparison is claimed.
-- **Reading.** At fixed β the count rises with the volume (β = 2.6: 4/20, 14/20, 19/20 on 8⁴, 12⁴, 16⁴). The fall on 8⁴ sits near the N_t = 8 thermal coupling (≈ 2.51), a finite-size crossover on a symmetric torus. This is an *association* with confinement, supported by three box sizes, four random controls and one gauge-fixing prescription. It does not isolate confinement, define an infinite-volume order parameter, or establish a per-component or per-configuration lemma.
+- **Reading.** At fixed β the count rises with the volume (β = 2.6: 4/20, 14/20, 19/20 on 8⁴, 12⁴, 16⁴). On each box it falls near that box's thermal coupling: on 8⁴ between β = 2.4 and 2.5 (N_t = 8: ≈ 2.51), and on 16⁴ between 2.7 and 2.8 (N_t = 16: ≈ 2.74). The fall on 8⁴ sits near the N_t = 8 thermal coupling (≈ 2.51), a finite-size crossover on a symmetric torus. This is an *association* with confinement, supported by three box sizes, four random controls and one gauge-fixing prescription. It does not isolate confinement, define an infinite-volume order parameter, or establish a per-component or per-configuration lemma.
 
 **Monopole worldlines** (lattice-gauge `monopole::worldline_topology`). Current conservation holds on every slice. The largest-cluster fraction of the current measures concentration; calling it percolation needs a winding or finite-size test, and no windings occurred in these runs.
 
