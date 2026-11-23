@@ -700,11 +700,9 @@ Then
  s_n\ \le\ \frac{1}{\mathsf P(n)}-1\ \le\ 2s_n+s_n^2,\qquad
  s_{2n}\le s_n^2 .
 \end{equation}
-Consequently the gap $\mathsf m=\log(\lambda_1/\lambda_2)$ satisfies
+Consequently the ratio of the two largest eigenvalues satisfies
 \begin{equation}\label{ym:gap-from-purity}
- e^{-n\mathsf m}=r_2\le s_n\le\frac{1}{\mathsf P(n)}-1,\qquad
- \mathsf m\ \ge\ \frac1n\log\frac{1}{\mathsf P(n)^{-1}-1}
- \quad\text{when }\mathsf P(n)>\tfrac12 .
+ \Big(\frac{\lambda_2}{\lambda_1}\Big)^n=r_2\le s_n\le\frac{1}{\mathsf P(n)}-1 .
 \end{equation}
 \end{proposition}
 \begin{proof}
@@ -720,7 +718,34 @@ $\mathsf P(n)\le\frac{1+s_n}{(1+s_n)^2}\le1$. Next,
 \end{equation}
 and $\frac{1}{\mathsf P(n)}-1=\frac{2s_n+s_n^2-q_n}{1+q_n}\le2s_n+s_n^2$.
 Finally $s_{2n}=\sum_{j\ge2}r_j^2=q_n\le\big(\sum_{j\ge2}r_j\big)^2=s_n^2$.
+For Eq.~\eqref{ym:gap-from-purity}, $r_2$ is one of the nonnegative terms of
+$s_n$, so $r_2\le s_n$, and $s_n\le\mathsf P(n)^{-1}-1$ was shown above.
 \end{proof}
+The transfer gap is
+\begin{equation}\label{ym:transfer-gap}
+ \mathsf m=\log\frac{\lambda_1}{\lambda_2}\quad(\lambda_2>0),\qquad
+ \mathsf m=+\infty\quad(\lambda_2=0).
+\end{equation}
+For $\lambda_2>0$ the right side of Eq.~\eqref{ym:gap-from-purity} is at least
+$r_2>0$, so both sides have logarithms:
+\begin{equation}\label{ym:gap-from-purity-log}
+ -n\,\mathsf m=n\log\frac{\lambda_2}{\lambda_1}\le
+ \log\Big(\frac{1}{\mathsf P(n)}-1\Big),\qquad
+ \mathsf m\ \ge\ \frac1n\log\frac{1}{\mathsf P(n)^{-1}-1},
+\end{equation}
+and the bound is positive when $\mathsf P(n)>\frac12$. The ratio form
+Eq.~\eqref{ym:gap-from-purity} also holds when $\lambda_2=0$, where the
+logarithm of the ratio does not exist. This happens at $\beta=0$: every
+exponential in Eq.~\eqref{ym:transfer-kernel} equals $1$, the Haar measures
+are normalized, and
+\begin{equation}\label{ym:rank-one}
+ \mathsf K(U,U')=\int\prod_{\mathbf x}h\big(dV(\mathbf x)\big)\cdot1=1,\qquad
+ \mathsf T(U,U')=1,\qquad
+ (\mathsf Tf)(U)=\int f(U')\,dU' .
+\end{equation}
+$\mathsf T$ is the projection onto constant functions: $\lambda_1=1$ and
+$\lambda_j=0$ for $j\ge2$. Then $s_n=q_n=0$, $\mathsf P(n)=1$ and both sides
+of Eq.~\eqref{ym:gap-from-purity} vanish, while $\mathsf m=+\infty$.
 The sum $s_n$ counts every excited state with its multiplicity, in every
 symmetry sector. At fixed $n$ it grows with the spatial volume. The defect of
 a hypercube controls it on the doubled spatial torus.
@@ -740,8 +765,9 @@ Eq.~\eqref{ym:two-dimensional-square-defect}: a doubled square has four
 original squares, whereas a doubled four-dimensional hypercube has
 $2^4=16$ original hypercubes.
 \begin{proposition}[Defect and gap on the doubled torus]\label{ym:prop:defect}
-Assume that for every spatial torus the operator $\mathsf T$ of
-Eq.~\eqref{ym:transfer-kernel} is nonnegative. Let
+On every spatial torus the operator $\mathsf T$ of
+Eq.~\eqref{ym:transfer-kernel} is nonnegative
+(Proposition~\ref{ym:sc-prop:positivity}). Let
 \begin{align}
  \mathsf P_1&=\frac{Z(2n,n,n,n)}{Z(n,n,n,n)^2},&
  \mathsf P_2&=\frac{Z(2n,2n,n,n)}{Z(2n,n,n,n)^2},\notag\\
@@ -754,11 +780,10 @@ Then $0<\mathsf P_k\le1$,
  \mathsf P_4,\qquad\Delta_\beta(n)\ge0,\qquad
  \mathsf P_4\ge e^{-\Delta_\beta(n)},
 \end{equation}
-and the gap $\mathsf m(2n)$ of $\mathsf T$ on the spatial torus $(2n,2n,2n)$
-satisfies
+and the two largest eigenvalues $\lambda_1(2n)\ge\lambda_2(2n)$ of $\mathsf T$
+on the spatial torus $(2n,2n,2n)$ satisfy
 \begin{equation}\label{ym:gap-from-defect}
- \mathsf m(2n)\ \ge\ \frac1n\log\frac{1}{e^{\Delta_\beta(n)}-1}
- \qquad\text{when }\Delta_\beta(n)<\log2 .
+ \Big(\frac{\lambda_2(2n)}{\lambda_1(2n)}\Big)^n\ \le\ e^{\Delta_\beta(n)}-1 .
 \end{equation}
 \end{proposition}
 \begin{proof}
@@ -777,45 +802,174 @@ $0<\mathsf P_k\le1$ by Eq.~\eqref{ym:purity-bounds}. Multiply:
 All factors are at most $1$, so $\Delta_\beta(n)\ge0$ and
 $\mathsf P_4\ge\mathsf P_1^{\,8}\mathsf P_2^{\,4}\mathsf P_3^{\,2}\mathsf P_4
 =e^{-\Delta_\beta(n)}$. $\mathsf P_4$ is the purity at time extent $n$ on the
-spatial torus $(2n,2n,2n)$; Eq.~\eqref{ym:gap-from-purity} with
-$\mathsf P_4^{-1}-1\le e^{\Delta_\beta(n)}-1$ gives
-Eq.~\eqref{ym:gap-from-defect}.
+spatial torus $(2n,2n,2n)$, and $\mathsf P_4\ge e^{-\Delta_\beta(n)}>0$ gives
+$\mathsf P_4^{-1}-1\le e^{\Delta_\beta(n)}-1$. Eq.~\eqref{ym:gap-from-purity}
+for this purity then gives Eq.~\eqref{ym:gap-from-defect}.
 \end{proof}
+When $\lambda_2(2n)>0$, taking logarithms in Eq.~\eqref{ym:gap-from-defect}
+as in Eq.~\eqref{ym:gap-from-purity-log} gives
+\begin{equation}\label{ym:gap-from-defect-log}
+ \mathsf m(2n)\ \ge\ \frac1n\log\frac{1}{e^{\Delta_\beta(n)}-1},
+\end{equation}
+which is positive when $\Delta_\beta(n)<\log2$. A vanishing defect forces
+$\lambda_2(2n)=0$: Eq.~\eqref{ym:gap-from-defect} reads
+$(\lambda_2/\lambda_1)^n\le e^0-1=0$.
 A bulk free energy $f\,n_1n_2n_3n_4$ in $\log Z$ cancels from
 Eq.~\eqref{ym:defect}: $16n^4-(2n)^4=0$. The defect measures only the
 deviation of $\log Z$ from extensivity.
 
 \subsection{What a proof of the gap requires}
-In two dimensions, \cite{OpenAIO4Sharp2026} states for the $O(4)$ model that
-the square defect obeys $\Delta_\beta(2n)\le64\,\Delta_\beta(n)^2$ and that
-$\Delta_\beta(n)\le2^{-10}$ implies $m_{\mathrm{lat}}(\beta)\ge\frac{\log2}{n}$
-at every larger circumference; a separate estimate makes the defect small on
+In two dimensions, \cite{OpenAIO4Sharp2026} proves for the $O(4)$ model that
+the square defect of Eq.~\eqref{ym:two-dimensional-square-defect} obeys
+$\Delta_\beta(2n)\le64\,\Delta_\beta(n)^2$ in the small-defect regime, and that
+for even $n\ge4$, $\Delta_\beta(n)\le2^{-10}$ implies
+$m_{\mathrm{lat}}(\beta)\ge\frac{\log2}{n}$ on the dyadic circumferences
+$2^kn$ and their local limits; a separate estimate makes the defect small on
 a box of bounded physical size, and the renormalization map carries the test
-to all cutoffs. For Yang--Mills theory the corresponding statements are open.
-\begin{conjecture}[Defect recurrence]\label{ym:conj:recurrence}
-There is a constant $c_1\ge2$, depending only on $G$, such that for the
-hypercubic defect \eqref{ym:defect} and all $\beta\ge0$, $n\ge1$:
-\begin{equation}\label{ym:recurrence}
- \Delta_\beta(n)\le\eta_*:=\frac{1}{2c_1}\quad\Longrightarrow\quad
- \Delta_\beta(2n)\le c_1\,\Delta_\beta(n)^2 .
+to all cutoffs. For Wilson lattice gauge theory the first statement holds in
+the four-dimensional form of Theorem~\ref{ym:thm:recurrence}; a small defect
+on a box of bounded physical size is open.
+
+\paragraph{Doubling costs.} For sides $x=(x_1,x_2,x_3,x_4)$ with
+$x_i\ge1$, write $F(x)=\log Z(x_1,x_2,x_3,x_4)$ and let $D_ix$ be $x$ with
+side $i$ doubled. The cost of doubling side $i$ is
+\begin{equation}\label{ym:doubling-cost}
+ p_i(x)=2F(x)-F(D_ix)=-\log\frac{Z(D_ix)}{Z(x)^2}.
 \end{equation}
-\end{conjecture}
+By the symmetry of $Z$, the ratio $Z(D_ix)/Z(x)^2$ is the purity
+$\mathsf P(t)=Z(2t)/Z(t)^2$ of Eq.~\eqref{ym:purity-defs} at time extent
+$t=x_i$ for the transfer operator in direction $i$ on the torus formed by the
+other three sides. That operator is nonnegative and trace class
+(Proposition~\ref{ym:sc-prop:positivity}), so Eq.~\eqref{ym:purity-bounds}
+applies and
+\begin{equation}\label{ym:cost-nonneg}
+ p_i(x)=-\log\mathsf P(x_i)\ \ge\ 0 .
+\end{equation}
+\begin{lemma}[One doubling]\label{ym:lem:one-doubling}
+If $p_i(x)\le\frac14$, then $p_i(D_ix)\le4\,p_i(x)^2$.
+\end{lemma}
+\begin{proof}
+Fix the transverse torus and write $t=x_i$, $p=p_i(x)$, $s=s_t$. By
+Eq.~\eqref{ym:purity-bounds},
+\begin{equation}
+ s\ \le\ \frac{1}{\mathsf P(t)}-1=e^{p}-1=\int_0^pe^u\,du\ \le\ p\,e^{p}.
+\end{equation}
+$D_ix$ has the same transverse torus and time extent $2t$, so
+$p_i(D_ix)=-\log\mathsf P(2t)$. Eq.~\eqref{ym:purity-bounds} at $2t$, and
+$s_{2t}\le s^2$ from Eq.~\eqref{ym:purity-bounds} at $t$, give
+\begin{align}
+ p_i(D_ix)=\log\frac{1}{\mathsf P(2t)}
+ &\le\log\big(1+2s_{2t}+s_{2t}^2\big)=2\log(1+s_{2t})\le2s_{2t}\notag\\
+ &\le2s^2\le2p^2e^{2p}\le4p^2,
+\end{align}
+the last step because $e^{2p}\le e^{1/2}<2$ for $p\le\frac14$.
+\end{proof}
+\begin{lemma}[Commuting doublings]\label{ym:lem:commuting}
+For $i\ne j$,
+\begin{equation}\label{ym:commuting-doublings}
+ p_i(D_jx)=2p_i(x)-2p_j(x)+p_j(D_ix).
+\end{equation}
+\end{lemma}
+\begin{proof}
+$D_iD_jx=D_jD_ix$. Insert Eq.~\eqref{ym:doubling-cost} on the right:
+\begin{align}
+ &2\big(2F(x)-F(D_ix)\big)-2\big(2F(x)-F(D_jx)\big)
+ +\big(2F(D_ix)-F(D_jD_ix)\big)\notag\\
+ &\quad=4F(x)-2F(D_ix)-4F(x)+2F(D_jx)+2F(D_ix)-F(D_iD_jx)\notag\\
+ &\quad=2F(D_jx)-F(D_i(D_jx))=p_i(D_jx).
+\end{align}
+\end{proof}
+\paragraph{The defect as a path sum.} Double the four sides of
+$x^0=(n,n,n,n)$ one at a time: $x^1=D_1x^0$, $x^2=D_2x^1$, $x^3=D_3x^2$,
+$x^4=D_4x^3=(2n,2n,2n,2n)$. With Eq.~\eqref{ym:doubling-cost},
+\begin{align}
+ &8p_1(x^0)+4p_2(x^1)+2p_3(x^2)+p_4(x^3)\notag\\
+ &\quad=16F(x^0)-8F(x^1)+8F(x^1)-4F(x^2)+4F(x^2)-2F(x^3)+2F(x^3)-F(x^4)
+ \notag\\
+ &\quad=16F(x^0)-F(x^4)=\Delta_\beta(n),\label{ym:defect-path}
+\end{align}
+and the same holds for the four directions taken in any order. Every term is
+nonnegative by Eq.~\eqref{ym:cost-nonneg} and every weight is at least $1$,
+so each doubling cost on such a path is at most $\Delta_\beta(n)$. A pair
+$(i,x)$ with $x_i=n$ and $x_j\in\{n,2n\}$ lies on such a path: first double
+the sides $j$ with $x_j=2n$, then side $i$, then the rest. Hence
+\begin{equation}\label{ym:cost-cube}
+ p_i(x)\le\Delta_\beta(n)\qquad\text{when }x_i=n\text{ and }x_j\in\{n,2n\}
+ \text{ for }j\ne i.
+\end{equation}
+\begin{theorem}[Defect recurrence]\label{ym:thm:recurrence}
+For every compact $G\subset U(m)$, $\beta\ge0$ and $n\ge1$,
+\begin{equation}\label{ym:recurrence}
+ \Delta_\beta(n)\le\eta_*:=\frac{1}{7480}\quad\Longrightarrow\quad
+ \Delta_\beta(2n)\le c_1\,\Delta_\beta(n)^2,\qquad c_1=3740=\frac{1}{2\eta_*}.
+\end{equation}
+\end{theorem}
+The argument extends the two-direction rectangle identity of
+\cite{OpenAIO4Sharp2026} to the four directions of the hypercube; it was
+first written out in an independent review of these notes.
+\begin{proof}
+Write $\delta=\Delta_\beta(n)$. We show: if $x_i=n$, every other side is $n$,
+$2n$ or $4n$, and exactly $j$ of them equal $4n$ ($0\le j\le3$), then
+\begin{equation}\label{ym:cost-induction}
+ p_i(x)\le A_j:=3^j\delta .
+\end{equation}
+For $j=0$ this is Eq.~\eqref{ym:cost-cube}. For $j\ge1$ choose $h$ with
+$x_h=4n$ and let $y$ be $x$ with side $h$ halved, so $x=D_hy$ and $y_h=2n$.
+Eq.~\eqref{ym:commuting-doublings} for the pair $(i,h)$ at $y$, with
+$p_h(y)\ge0$, gives
+\begin{equation}
+ p_i(x)=p_i(D_hy)=2p_i(y)-2p_h(y)+p_h(D_iy)\le2p_i(y)+p_h(D_iy).
+\end{equation}
+$y$ has $y_i=n$ and $j-1$ sides of length $4n$, so $p_i(y)\le A_{j-1}$. Side
+$h$ of $D_iy$ has length $2n$; let $z$ be $D_iy$ with side $h$ halved, so
+$D_iy=D_hz$, $z_h=n$, side $i$ of $z$ is $2n$, and $z$ has $j-1$ sides of
+length $4n$. Eq.~\eqref{ym:cost-induction} in direction $h$ gives
+$p_h(z)\le A_{j-1}$, and $A_{j-1}\le9\delta\le\frac14$, so by
+Lemma~\ref{ym:lem:one-doubling}
+\begin{equation}
+ p_h(D_iy)=p_h(D_hz)\le4p_h(z)^2\le4A_{j-1}^2\le A_{j-1}.
+\end{equation}
+Together, $p_i(x)\le2A_{j-1}+A_{j-1}=3A_{j-1}=A_j$.
+
+Now apply Eq.~\eqref{ym:defect-path} at side $2n$:
+$\Delta_\beta(2n)=8p_1(y^0)+4p_2(y^1)+2p_3(y^2)+p_4(y^3)$ with
+\begin{equation}
+ y^0=(2n,2n,2n,2n),\quad y^1=(4n,2n,2n,2n),\quad y^2=(4n,4n,2n,2n),\quad
+ y^3=(4n,4n,4n,2n).
+\end{equation}
+Side $k$ of $y^{k-1}$ has length $2n$, so $y^{k-1}=D_kw^{k-1}$ with
+\begin{equation}
+ w^0=(n,2n,2n,2n),\quad w^1=(4n,n,2n,2n),\quad w^2=(4n,4n,n,2n),\quad
+ w^3=(4n,4n,4n,n),
+\end{equation}
+which have $0,1,2,3$ sides of length $4n$. By Eq.~\eqref{ym:cost-induction},
+$p_k(w^{k-1})\le A_{k-1}\le27\delta\le\frac14$, since
+$27\eta_*=\frac{27}{7480}<\frac14$. Lemma~\ref{ym:lem:one-doubling} gives
+$p_k(y^{k-1})=p_k(D_kw^{k-1})\le4A_{k-1}^2$, and
+\begin{align}
+ \Delta_\beta(2n)&\le8\cdot4A_0^2+4\cdot4A_1^2+2\cdot4A_2^2+4A_3^2
+ =4\delta^2\big(8+4\cdot9+2\cdot81+729\big)\notag\\
+ &=4\cdot935\,\delta^2=3740\,\delta^2 .
+\end{align}
+\end{proof}
 \begin{conjecture}[Small defect at a bounded physical scale]\label{ym:conj:defect}
 There is $\ell_*<\infty$ such that along the couplings of
 Eq.~\eqref{ym:scaling-law} there are integers $n(\beta)\le\ell_*\,
-e^{\beta/b_*}$ with $\Delta_\beta(n(\beta))\le\eta_*$.
+e^{\beta/b_*}$ with $\Delta_\beta(n(\beta))\le\eta_*$, the same bare
+parameters entering both boxes of Eq.~\eqref{ym:defect}.
 \end{conjecture}
 \begin{proposition}[Conditional lattice gap]\label{ym:prop:conditional-gap}
-Assume the hypothesis of Proposition~\ref{ym:prop:defect} and
-Eq.~\eqref{ym:recurrence}. If $\Delta_\beta(n)\le\eta_*$ for some $n$, then
-for every $k\ge0$ the transfer gap on the spatial torus of side $2^{k+1}n$
-satisfies
+If $\Delta_\beta(n)\le\eta_*$ for some $n\ge1$, then for every $k\ge0$ the two
+largest eigenvalues of $\mathsf T$ on the spatial torus of side $2^{k+1}n$
+satisfy
 \begin{equation}\label{ym:conditional-gap}
+ \Big(\frac{\lambda_2(2^{k+1}n)}{\lambda_1(2^{k+1}n)}\Big)^n\le\frac12,
+ \qquad\text{that is}\qquad
  \mathsf m(2^{k+1}n)\ \ge\ \frac{\log2}{n}.
 \end{equation}
 \end{proposition}
 \begin{proof}
-Put $\delta_k=\Delta_\beta(2^kn)$. Then $c_1\delta_0\le\frac12$, and if
+Put $\delta_k=\Delta_\beta(2^kn)\ge0$. Then $c_1\delta_0\le\frac12$, and if
 $c_1\delta_k\le\frac12$ then $\delta_k\le\eta_*$ and
 Eq.~\eqref{ym:recurrence} gives
 \begin{equation}
@@ -823,18 +977,60 @@ Eq.~\eqref{ym:recurrence} gives
 \end{equation}
 By induction $c_1\delta_k\le(c_1\delta_0)^{2^k}\le2^{-2^k}$ for all $k$.
 For $0\le x\le1$, convexity of $e^x$ gives $e^x-1\le(e-1)x\le2x$. Apply
-Eq.~\eqref{ym:gap-from-defect} at side $2^kn$, with
-$\delta_k\le\frac{1}{2c_1}<\log2$:
+Eq.~\eqref{ym:gap-from-defect} at side $2^kn$, with $r=\lambda_2/\lambda_1$
+on the spatial torus of side $2^{k+1}n$:
 \begin{equation}
- \mathsf m(2^{k+1}n)\ \ge\ \frac{1}{2^kn}\log\frac{1}{e^{\delta_k}-1}
- \ \ge\ \frac{1}{2^kn}\log\frac{1}{2\delta_k}
- \ \ge\ \frac{1}{2^kn}\log\frac{c_1\,2^{2^k}}{2}
- =\frac{\log2}{n}+\frac{\log(c_1/2)}{2^kn}\ \ge\ \frac{\log2}{n},
+ \big(r^n\big)^{2^k}=r^{2^kn}\le e^{\delta_k}-1\le2\delta_k
+ \le\frac{2}{c_1}\,2^{-2^k}\le\Big(\frac12\Big)^{2^k},
 \end{equation}
-since $c_1\ge2$.
+since $c_1\ge2$. Both sides are nonnegative, so taking the $2^k$-th root gives
+$r^n\le\frac12$. If $\lambda_2>0$ this is $\mathsf m\ge\frac{\log2}{n}$ by
+Eq.~\eqref{ym:transfer-gap}; if $\lambda_2=0$, $\mathsf m=+\infty$.
 \end{proof}
 The double-exponential decay of $\delta_k$ compensates the factor
-$\frac{1}{2^kn}$. With Conjecture~\ref{ym:conj:defect}, in physical units,
+$\frac{1}{2^kn}$, and no positivity of the defects is needed.
+
+\paragraph{A seed at strong coupling.}
+\begin{proposition}[Strong-coupling seed]\label{ym:prop:strong-seed}
+For every compact $G\subset U(m)$, $\beta\ge0$ and $n\ge1$,
+\begin{equation}\label{ym:strong-seed}
+ \Delta_\beta(n)\le192\,\beta\,n^4 .
+\end{equation}
+Hence $\Delta_\beta(n)\le\eta_*$ for $0\le\beta\le\frac{1}{7480\cdot192\,n^4}$,
+and Eq.~\eqref{ym:conditional-gap} holds at those couplings.
+\end{proposition}
+\begin{proof}
+On the torus with sides $x$ there is one plaquette for each site and each of
+the $\binom42=6$ planes, so the action has
+$P(x)=6\,x_1x_2x_3x_4$ terms. For unitary $U_p$,
+$|\operatorname{Re}\operatorname{tr}U_p|\le m$, so each term satisfies
+\begin{equation}
+ 0\ \le\ 1-\frac1m\operatorname{Re}\operatorname{tr}U_p\ \le\ 2,
+ \qquad
+ e^{-2\beta P(x)}\ \le\ \exp\Big(-\beta\sum_p\Big(1-\frac1m
+ \operatorname{Re}\operatorname{tr}U_p\Big)\Big)\ \le\ 1 .
+\end{equation}
+Integrating against the normalized product Haar measure of
+Eq.~\eqref{ym:wilson-measure},
+\begin{equation}\label{ym:log-z-bounds}
+ -2\beta P(x)\ \le\ \log Z(x)\ \le\ 0 .
+\end{equation}
+In Eq.~\eqref{ym:defect}, bound $\log Z(n,n,n,n)\le0$ from above and
+$\log Z(2n,2n,2n,2n)\ge-2\beta P(2n,2n,2n,2n)$ from below:
+\begin{equation}
+ \Delta_\beta(n)\le16\cdot0+2\beta\cdot6\,(2n)^4=192\,\beta\,n^4 .
+\end{equation}
+For $\beta\le\frac{1}{7480\cdot192\,n^4}$ the right side is at most
+$\frac1{7480}=\eta_*$, and Proposition~\ref{ym:prop:conditional-gap} applies.
+\end{proof}
+This is the regime in which convergent strong-coupling expansions already give
+a mass gap \cite{OsterwalderSeiler1978}. Proposition~\ref{ym:prop:strong-seed}
+shows that the chain of Propositions~\ref{ym:prop:purity},
+\ref{ym:prop:defect}, \ref{ym:prop:conditional-gap} and
+Theorem~\ref{ym:thm:recurrence} closes there with no further input; it says
+nothing about boxes of bounded physical size as $\beta\to\infty$, which is
+Conjecture~\ref{ym:conj:defect}. With Conjecture~\ref{ym:conj:defect}, in
+physical units,
 \begin{equation}\label{ym:physical-gap}
  \frac{\mathsf m}{a}\ \ge\ \frac{\log2}{a\,n(\beta)}
  \ \ge\ \frac{\log2}{\ell_*\,a\,e^{\beta/b_*}}
@@ -847,13 +1043,40 @@ by Eq.~\eqref{ym:scaling-law}. Three further steps are then needed.
  $\beta_{N,p}$ depends on the volume index $p$ through the condition
  $\beta_{N,p,0}=\bar\beta$ of Eq.~\eqref{ym:running}. The defect bound must
  be stable under the difference $\beta_{N,p}-\beta_{N,p'}$, which
- Eq.~\eqref{ym:reg1} controls only to $o(\log(1/a_N))$.
-\item \emph{Passage to the limit.} A transfer gap uniform in $N$ and $p$
- gives exponential decay of truncated lattice correlations; with the
- convergence \eqref{ym:ordered-limit} and
- Proposition~\ref{ym:prop:gap-decay} this gives Eq.~\eqref{ym:gap-statement}
- for the reconstructed theory, provided the decay holds for the renormalized
- insertions with constants uniform in the cutoff.
+ Eq.~\eqref{ym:reg1} controls only to $o(\log(1/a_N))$. Leading-logarithm
+ scaling alone does not bound $a\,n(\beta)$: for example
+ $\beta/b_*=\log(1/a)+\log\log(1/a)$ has the asymptotics of
+ Eq.~\eqref{ym:scaling-law} while $a\,e^{\beta/b_*}=\log(1/a)\to\infty$.
+\item \emph{Passage to infinite volume.} On the spatial torus of side
+ $L_k=2^{k+1}n$, let $\Omega_k$ be a normalized eigenvector of $\lambda_1$,
+ $\psi_j$ an orthonormal eigenbasis with $\psi_1=\Omega_k$, and $r_k$ the
+ ratio $\lambda_2/\lambda_1$ there. For a bounded local observable $A$ of one
+ time slice, acting by multiplication, the centred time correlation is
+ \begin{equation}\label{ym:finite-correlation}
+  C_k(t)=\Big\langle A\Omega_k,\Big(\frac{\mathsf T}{\lambda_1}\Big)^tA\Omega_k
+  \Big\rangle-\langle\Omega_k,A\Omega_k\rangle^2
+  =\sum_{j\ge2}\Big(\frac{\lambda_j}{\lambda_1}\Big)^t
+  \big|\langle\psi_j,A\Omega_k\rangle\big|^2,
+ \end{equation}
+ where the $j=1$ term of the expansion of $A\Omega_k$ cancels the subtracted
+ square. Each ratio is at most $r_k$ and
+ $\sum_j|\langle\psi_j,A\Omega_k\rangle|^2=\|A\Omega_k\|^2\le\|A\|^2$, so
+ \begin{equation}\label{ym:finite-correlation-bound}
+  0\le C_k(t)\le\|A\|^2\,r_k^{\,t}\le\|A\|^2\,2^{-t/n}
+ \end{equation}
+ by Eq.~\eqref{ym:conditional-gap}. The infinite-volume statement needs a
+ hypothesis that is not proved here: for each fixed $t$ the limit
+ $C(t)=\lim_{k\to\infty}C_k(t)$ exists and is the centred correlation of $A$
+ in the infinite-volume state. Then
+ $|C(t)|\le\|A\|^2\,2^{-t/n}$, since the bound
+ \eqref{ym:finite-correlation-bound} is uniform in $k$. A gap for the whole
+ reconstructed theory needs in addition that such vectors $A\Omega$ be dense,
+ control of the vacuum subtraction, the identification of the limit state
+ with the one of Theorem~\ref{ym:thm:existence} through the convergence
+ \eqref{ym:ordered-limit}, and, with Proposition~\ref{ym:prop:gap-decay},
+ the decay for the renormalized insertions with constants uniform in the
+ cutoff; then Eq.~\eqref{ym:gap-statement} follows for the reconstructed
+ theory.
 \item \emph{Uniqueness.} Exponential clustering of $S^{\mathrm{mix}}$ makes
  $X$ a point for that limit. Independence of the subsequence $q$ requires in
  addition that the infinite-volume limit of lattice correlations exists,
@@ -968,7 +1191,7 @@ For $G=SU(2)$ and every $\beta\ge0$,
 $F_\beta(n,n;n,n)\to0$ as $n\to\infty$.
 \end{conjecture}
 The relation between Conjecture~\ref{ym:conj:twist}, with a rate, and
-Conjectures~\ref{ym:conj:recurrence}--\ref{ym:conj:defect} is open. Two
+Conjecture~\ref{ym:conj:defect} is open. Two
 differences from the spin model are already visible in
 Eq.~\eqref{ym:twist-ratio}. The signs of $\operatorname{tr}U_p$ are not
 those of a ferromagnetic system: a configuration can have an odd number of

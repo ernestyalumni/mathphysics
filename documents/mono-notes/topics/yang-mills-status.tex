@@ -3,7 +3,7 @@
 \section*{Yang--Mills: state of the problem}
 \addcontentsline{toc}{section}{Yang--Mills: state of the problem}
 \label{ym:sec:status}
-\textit{Status checked 16 November 2026 (UTC).}
+\textit{Status checked 23 November 2026 (UTC).}
 
 \paragraph{The mathematical target.}
 For every compact simple gauge group, the Jaffe--Witten problem asks for a
@@ -27,12 +27,26 @@ not an assessment of its claims \cite{YMGroupCurrent2026}.
 
 \paragraph{The conditional route developed here.}
 Section~\ref{ym:sec:lattice} develops the finite-torus defect and centre-twist
-arguments. The proposed purity, defect and conditional-gap arguments await
-independent review; they are not part of the assessed formal construction.
-Conjectures~\ref{ym:conj:recurrence} and \ref{ym:conj:defect} remain unproved.
-Even assuming them, the construction still requires compatible couplings
-across volumes, estimates uniform in the cutoff for renormalized
-correlations, and control of the infinite-volume limit. A finite-volume gap
+arguments. On every finite torus the transfer operator is nonnegative and
+trace class (Proposition~\ref{ym:sc-prop:positivity}); the purity, defect and
+conditional-gap propositions are stated in ratio form, so that they include
+the rank-one transfer operator at $\beta=0$; and the defect recurrence is
+a theorem (Theorem~\ref{ym:thm:recurrence}, with $c_1=3740$ and
+$\eta_*=\frac1{7480}$). The finite-volume steps and the recurrence have been reviewed
+independently; the strong-coupling seed (Proposition~\ref{ym:prop:strong-seed})
+was proposed in that review. All of these have also been checked in a proof
+assistant, with the trace formula and positivity of the transfer operators
+taken as stated hypotheses. They are not part of the assessed formal construction.
+
+At strong coupling, $\beta\le\frac{1}{7480\cdot192\,n^4}$, the chain closes
+and gives a lattice gap of at least $\frac{\log2}{n}$ on every dyadic torus;
+that regime already has a gap by convergent expansions. The open estimate in
+this chain is Conjecture~\ref{ym:conj:defect}: a small defect on a box of
+bounded physical size, with the same bare parameters on both boxes. Even
+assuming it, the construction still requires compatible couplings across
+volumes, estimates uniform in the cutoff for renormalized correlations, and
+control of the infinite-volume limit; the last is stated as an explicit
+hypothesis after Eq.~\eqref{ym:finite-correlation-bound}. A finite-volume gap
 or an exact check on a finite lattice does not establish
 Eq.~\eqref{ym:gap-statement} for the continuum theory. No positive continuum
 gap is claimed here.
