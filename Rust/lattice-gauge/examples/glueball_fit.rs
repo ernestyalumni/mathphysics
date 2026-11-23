@@ -10,9 +10,11 @@
 //! c(t) = v^T C(t) v is analysed with v held fixed.
 //!
 //! Output, all for the projected correlator: effective masses -ln c(t+1)/c(t) and the periodic (cosh) effective mass; then
-//! one-state fits c(t) = A [exp(-m t) + exp(-m (T - t))] over every window [t_min, t_max] with 1 <= t_min < t_max <= T/2,
-//! correlated chi^2 with the jackknife covariance, m and its jackknife error (refitted in every jackknife sample).
-//! Windows are all printed: choosing one afterwards is a decision to report, not a property of the data.
+//! one-state fits c(t) = A [exp(-m t) + exp(-m (T - t))] over windows [t_min, t_max] of 2 to 5 time points within [1, T/2],
+//! correlated chi^2 with the jackknife covariance, m and its jackknife error (refitted in every jackknife sample with v and
+//! the inverse covariance held fixed, so the error does not include their re-estimation). A trailing partial measurement
+//! group in a file, and measurements beyond the last full bin of a replica, are dropped.
+//! All these windows are printed: choosing one afterwards is a decision to report, not a property of the data.
 //! Pre-registered for YM-N05 (2026-11-21, before the new runs): primary window [2,5], check window [3,6].
 use std::io::BufRead;
 
