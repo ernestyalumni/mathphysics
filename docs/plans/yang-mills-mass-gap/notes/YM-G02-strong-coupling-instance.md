@@ -92,7 +92,7 @@ YM-O04 §2 lists this step as a separate hypothesis. Here is a proposed proof, t
 The precise target (YM-N03, "The precise seed target"): there is L < ∞ such that, along the scaling trajectory and sufficiently far toward the continuum, some n has a(β) n ≤ L and Δ_β(n) ≤ 1/7480, with the same bare parameters on both boxes.
 
 `01-WHAT-OPENAI-PROVED.md` §3 says the construction's renormalization group stops at unit scale. The bare coupling is tuned so that the level-0 coupling is one fixed large number β̄, for every N and every volume index p. Three questions decide whether that construction can supply or test a seed:
-1. **Is the bare tuning independent of the volume index p?** The defect compares two volumes at the same bare parameters. If the tuning depends on p, the n- and 2n-boxes are different theories, and Δ is not the defect of either.
+1. **Is the bare tuning independent of the volume index p?** No. The handbook (`yang-mills-lattice.tex`, "What a proof of the gap requires", item 1) records that the bare coupling β_{N,p} depends on p through the condition β_{N,p,0} = β̄, controlled only to o(log(1/a_N)). The defect compares two volumes at the same bare parameters, so any seed taken from that construction must be stable under the difference β_{N,p} − β_{N,p′}.
 2. **Is the level-0 effective theory reflection positive in all four directions, so that (H) holds for it?** The chain needs (H) for whatever theory the seed is stated in. The renormalized actions are not Wilson actions.
 3. **What is the error on log Z at unit scale?** Volume terms cancel in Δ, but an error of order the volume on each box is useless (YM-O04 §6.2). The seed needs a remainder below 1/7480 in absolute terms.
 
