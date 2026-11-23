@@ -974,3 +974,299 @@ Eq.~\eqref{ym:twist-ratio}. The signs of $\operatorname{tr}U_p$ are not
 those of a ferromagnetic system: a configuration can have an odd number of
 negative plaquettes on the faces of a cube. And the twist is carried by a
 surface, so the planar crossing arguments have no direct counterpart.
+
+\subsection{Positivity of the transfer operator}\label{ym:sc-positivity}
+Proposition~\ref{ym:prop:defect} assumes that the operator $\mathsf T$ of
+Eq.~\eqref{ym:transfer-kernel} is nonnegative on every spatial torus. This
+holds for every compact $G\subset U(m)$ and every $\beta\ge0$; the proof below
+uses only inner products and products of kernels.
+
+A real kernel $k\colon X\times X\to\mathbb R$ is \emph{positive semidefinite}
+if $\sum_{i,j}c_ic_j\,k(x_i,x_j)\ge0$ for all finite families of points
+$x_i\in X$ and reals $c_i$.
+\begin{lemma}[Products and exponentials]\label{ym:sc-lem:schur}
+\begin{enumerate}
+\item If $\phi\colon X\to\mathbb R^D$, then $k(x,x')=\phi(x)\cdot\phi(x')$ is
+ positive semidefinite.
+\item If $k_1,k_2$ are positive semidefinite on $X$, so is the pointwise
+ product $k_1k_2$; if $k_1$ is positive semidefinite on $X$ and $k_2$ on $X'$,
+ then $k_1(x,x')\,k_2(y,y')$ is positive semidefinite on $X\times X'$.
+\item If $k$ is positive semidefinite and $\beta\ge0$, then $e^{\beta k}$ is
+ positive semidefinite.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1) $\sum_{i,j}c_ic_j\,\phi(x_i)\cdot\phi(x_j)=\big|\sum_ic_i\phi(x_i)\big|^2$.
+(2) For finitely many points the matrices $A_{ij}=k_1(x_i,x_j)$ and
+$B_{ij}=k_2(x_i,x_j)$ are positive semidefinite. Write
+$B=\sum_r b_rb_r^{\mathsf T}$ with vectors $b_r$. Then
+$\sum_{i,j}c_ic_jA_{ij}B_{ij}=\sum_r\sum_{i,j}(c_ib_{r,i})(c_jb_{r,j})A_{ij}
+\ge0$ (Schur's product theorem). The second statement is the first applied on
+$X\times X'$ to the kernels $k_1(x,x')$ and $k_2(y,y')$, each positive
+semidefinite there. (3) By (2) every power $k^r$ is positive semidefinite, and
+$e^{\beta k}=\sum_{r\ge0}\frac{\beta^r}{r!}k^r$ is a pointwise limit of
+nonnegative combinations of them.
+\end{proof}
+On $m\times m$ complex matrices, $\langle A,B\rangle=\operatorname{Re}
+\operatorname{tr}(AB^\dagger)$ is the Euclidean inner product of
+$\mathbb R^{2m^2}$. For unitary $U'$, $U'^{-1}=U'^\dagger$, so the single-link
+factor of the temporal weight,
+\begin{equation}\label{ym:sc-link-kernel}
+ k(U,U')=\exp\Big(-\beta\Big(1-\frac1m\operatorname{Re}\operatorname{tr}\,
+ UU'^{-1}\Big)\Big)=e^{-\beta}\exp\Big(\frac\beta m\langle U,U'\rangle\Big),
+\end{equation}
+is positive semidefinite on $G$ by Lemma~\ref{ym:sc-lem:schur}. For
+$G=SU(2)$, $U=u^0+iu^k\sigma_k$ with $u\in S^3\subset\mathbb R^4$, and
+$\frac12\operatorname{Re}\operatorname{tr}UU'^{-1}=u\cdot u'$.
+\begin{proposition}\label{ym:sc-prop:positivity}
+Let $G\subset U(m)$ be compact and $\beta\ge0$. On every spatial torus the
+operator $\mathsf T$ of Eq.~\eqref{ym:transfer-kernel} on $L^2$ of the spatial
+configurations, with product Haar measure, is self-adjoint, nonnegative and
+trace class, and $\operatorname{Tr}\mathsf T>0$.
+\end{proposition}
+\begin{proof}
+Write $\mathcal U_{\mathrm s}$ for the spatial configurations of one slice.
+For a gauge transformation $\gamma\colon\mathbf x\mapsto\gamma(\mathbf x)\in G$
+on the slice, $U^\gamma$ is given by Eq.~\eqref{ym:link-gauge}, and
+$(R_\gamma f)(U)=f(U^\gamma)$ is unitary on $L^2(\mathcal U_{\mathrm s})$,
+because Haar measure is invariant under left and right multiplication.
+
+\emph{The gauge average.} In Eq.~\eqref{ym:transfer-kernel}, put
+$\gamma=V$. Then
+$V(\mathbf x)U'(\mathbf x,j)V(\mathbf x+e_j)^{-1}=U'^{V}(\mathbf x,j)$ and
+\begin{equation}
+ \operatorname{Re}\operatorname{tr}\,U(\mathbf x,j)V(\mathbf x+e_j)
+ U'(\mathbf x,j)^{-1}V(\mathbf x)^{-1}
+ =\operatorname{Re}\operatorname{tr}\,U(\mathbf x,j)\,
+ U'^{V}(\mathbf x,j)^{-1}.
+\end{equation}
+Hence, with $\mathsf K_0(U,U'')=\prod_{\mathbf x,j}k\big(U(\mathbf x,j),
+U''(\mathbf x,j)\big)$,
+\begin{equation}\label{ym:sc-gauge-average}
+ \mathsf K(U,U')=\int\prod_{\mathbf x}h\big(dV(\mathbf x)\big)\,
+ \mathsf K_0\big(U,U'^{V}\big).
+\end{equation}
+Since $U^\gamma(U''^\gamma)^{-1}=\gamma(\mathbf x)\,UU''^{-1}\gamma(\mathbf
+x)^{-1}$ link by link and the trace is invariant under conjugation,
+$\mathsf K_0(U^\gamma,U''^\gamma)=\mathsf K_0(U,U'')$: the operator
+$\mathsf K_0$ commutes with every $R_\gamma$. Substituting $U''=U'^V$ in
+$\int\mathsf K(U,U')f(U')\,dU'$, which preserves the measure, gives
+$\mathsf K=\mathsf K_0\mathsf P$ with
+$\mathsf P=\int\prod_{\mathbf x}h(d\gamma(\mathbf x))\,R_\gamma$, the orthogonal
+projection onto gauge-invariant functions. As $\mathsf P$ commutes with
+$\mathsf K_0$, $\mathsf K=\mathsf P\mathsf K_0\mathsf P$.
+
+\emph{Positivity.} By Lemma~\ref{ym:sc-lem:schur}(2) the kernel $\mathsf K_0$ is
+positive semidefinite on $\mathcal U_{\mathrm s}$. It is continuous, and
+$\mathcal U_{\mathrm s}$ is compact with a finite measure. Approximating
+$\int\int f(U)\mathsf K_0(U,U')f(U')\,dU\,dU'$ by Riemann sums over finite
+partitions shows $\langle f,\mathsf K_0f\rangle\ge0$ for continuous $f$, and by
+density for all $f\in L^2$. Hence
+$\langle f,\mathsf Kf\rangle=\langle\mathsf Pf,\mathsf K_0\mathsf Pf\rangle\ge0$.
+With $\mathsf M$ the multiplication by $e^{-\frac\beta2E_{\mathrm s}}$, a
+bounded positive self-adjoint operator, $\mathsf T=\mathsf M\mathsf K\mathsf M$
+and $\langle f,\mathsf Tf\rangle=\langle\mathsf Mf,\mathsf K\mathsf Mf\rangle
+\ge0$.
+
+\emph{Trace class.} By Mercer's theorem a continuous positive semidefinite
+kernel on a compact space with a finite Borel measure defines a trace-class
+operator whose trace is the integral of the diagonal \cite{Mercer1909}. For
+$\mathsf K_0$ the diagonal is $\prod k(U,U)=1$, so
+$\operatorname{Tr}\mathsf K_0=1$. Products of a trace-class operator with
+bounded operators are trace class, so $\mathsf T=\mathsf M\mathsf P\mathsf
+K_0\mathsf P\mathsf M$ is trace class. Finally
+$\operatorname{Tr}\mathsf T=Z(n_1,n_2,n_3,1)>0$ by
+Eq.~\eqref{ym:trace-formula}.
+\end{proof}
+The Wilson energy is symmetric under permutations of the four axes, so the
+same holds with any axis as time, and the hypothesis of
+Proposition~\ref{ym:prop:defect} holds for every rectangular torus. This is
+the positivity of the Wilson transfer matrix \cite{Luscher1977,
+OsterwalderSeiler1978}; the argument above replaces the character expansion
+by Lemma~\ref{ym:sc-lem:schur}. For a finite group such as
+$G=\{\pm1\}$, $L^2(\mathcal U_{\mathrm s})$ is finite-dimensional, $\mathsf T$
+is a positive semidefinite matrix, and Mercer's theorem is not needed.
+
+\subsection{Measurements of the defect}\label{ym:num-defect}
+The partition function of Eq.~\eqref{ym:wilson-partition} satisfies
+$Z(\beta=0)=1$ and
+$\frac{\partial\log Z}{\partial\beta}=-\langle E\rangle_\beta$. On a torus with
+$N_P$ plaquettes write
+$\langle a_0\rangle=\frac{1}{N_P}\sum_p\frac1m\langle\operatorname{Re}
+\operatorname{tr}U_p\rangle$. Since $N_P(2n,2n,2n,2n)=16\,N_P(n,n,n,n)$, the
+constant parts of the energy cancel in Eq.~\eqref{ym:defect}, and
+\begin{equation}\label{ym:num-integration}
+ \Delta_\beta(n)=N_P(2n,2n,2n,2n)\int_0^\beta\Big(\langle a_0\rangle_{n^4}
+ -\langle a_0\rangle_{(2n)^4}\Big)\,d\beta'.
+\end{equation}
+The defect is the large volume times the difference of plaquette averages
+between the torus and its double. Each $\log\mathsf P_k$ of
+Eq.~\eqref{ym:four-purities} has the same form between consecutive boxes.
+Simulations use heat-bath and over-relaxation updates for $G=SU(2)$, with
+Simpson integration on a grid of step $0.1$ in $\beta$ and jackknife errors.
+The code is \texttt{Rust/lattice-gauge}, with CUDA C++ updates.
+
+\paragraph{Check in two dimensions.} For $SU(2)$ on a two-dimensional torus with
+$V$ plaquettes, $Z=\sum_{j}\big(\frac{2I_{2j+1}(\beta)}{\beta}\big)^V$, normalized
+as in Eq.~\eqref{ym:num-integration}. The square defect
+$4\log Z(n,n)-\log Z(2n,2n)$ at $n=2$:
+\begin{center}
+\begin{tabular}{cccccc}
+$\beta$ & 1.2 & 2.0 & 2.4 & 3.2 & 4.0\\\hline
+Monte Carlo & 0.0204(49) & 0.1398(62) & 0.2342(66) & 0.4746(72) & 0.7375(77)\\
+exact & 0.0258 & 0.1396 & 0.2343 & 0.4718 & 0.7335
+\end{tabular}
+\end{center}
+
+\paragraph{$SU(2)$, $n=2$.} Two replicas of $4\times10^5$ updates per point
+and box:
+\begin{center}
+\begin{tabular}{ccccccc}
+$\beta$ & $\Delta_\beta(2)$ & $\log\mathsf P_1$ & $\log\mathsf P_2$ &
+ $\log\mathsf P_3$ & $\log\mathsf P_4$\\\hline
+0.4 & 0.056(18) & $-0.002(3)$ & $-0.010(4)$ & $-0.006(5)$ & 0.012(8)\\
+0.6 & 0.187(23) & $-0.010(3)$ & $-0.022(5)$ & $-0.015(7)$ & 0.010(9)\\
+0.8 & 0.591(27) & $-0.037(4)$ & $-0.053(6)$ & $-0.047(8)$ & 0.005(11)\\
+1.0 & 1.456(31) & $-0.093(5)$ & $-0.120(6)$ & $-0.113(9)$ & $-0.006(12)$\\
+1.6 & 13.14(4) & $-0.869(6)$ & $-1.019(9)$ & $-0.934(12)$ & $-0.248(16)$\\
+2.0 & 43.61(6) & $-2.430(8)$ & $-2.959(12)$ & $-3.428(16)$ & $-5.474(22)$\\
+2.4 & 69.54(6) & $-3.309(10)$ & $-3.861(14)$ & $-6.067(19)$ & $-15.49(3)$
+\end{tabular}
+\end{center}
+The inequalities $\mathsf P_k\le1$ and $\mathsf P_4\ge e^{-\Delta}$ of
+Proposition~\ref{ym:prop:defect} hold within errors at every $\beta$. The rapid
+growth between $\beta=1$ and $2$ lies near the coupling of the $N_t=2$
+thermal transition; a finite symmetric torus has no phase transition, so it is
+a finite-size crossover.
+
+\paragraph{$SU(2)$, $n=4$.} The $8^4$ scans start at $\beta_0=1$, so the
+measured quantity is the increment $\Delta_\beta(4)-\Delta_{1}(4)$:
+\begin{center}
+\begin{tabular}{ccccccc}
+$\beta$ & 1.6 & 1.8 & 2.0 & 2.2 & 2.4 & 2.6\\\hline
+$\Delta_\beta(4)-\Delta_1(4)$ & $-0.012(41)$ & $-0.003(51)$ & 0.336(63) &
+ 9.32(8) & 40.89(9) & 53.43(10)
+\end{tabular}
+\end{center}
+
+\paragraph{Strong coupling.} Expand each plaquette weight in characters,
+$e^{\frac\beta2\operatorname{tr}U}=c_0(\beta)\big(1+\sum_{j\ge\frac12}d_j\,
+u_j(\beta)\chi_j(U)\big)$ with $d_j=2j+1$ and $u_{1/2}=u=\frac{I_2(\beta)}
+{I_1(\beta)}$. Then $\log Z$ is a sum over connected clusters of plaquettes.
+An embedded orientable closed surface of $F$ fundamental plaquettes, $E$ links
+and $V$ sites carries $2^{F-E+V}u^F$: a factor $d_{1/2}=2$ per plaquette from
+the expansion, $\frac12$ per link from the integration
+$\int\chi_{1/2}(UW)\chi_{1/2}(U^{-1}W')\,h(dU)=\frac12\chi_{1/2}(WW')$, and $2$
+per closed index loop at a site. Clusters that lift with the same weight and
+density to the doubled torus cancel in $\Delta$. The leading survivors are
+surfaces of Euler characteristic $0$ that wind around the torus: the $6n^2$
+flat tori in coordinate planes, of area $n^2$, and the $12n^3$ square tubes
+around one axis, of area $4n$. With
+$S(n)=6n^2u^{n^2}+12n^3u^{4n}$ these give $16\,S(n)-S(2n)$, so
+\begin{equation}\label{ym:num-strong-coupling}
+ \Delta_\beta(n)\approx16\big(6n^2u^{n^2}+12n^3u^{4n}\big).
+\end{equation}
+The approximation is a truncation, not a controlled expansion: at $n=2$ a
+flat sheet in the representation $j=1$ has weight $(I_3/I_1)^4=O(\beta^8)$, the
+order of the tube, and the general remainder is not bounded here. Against the
+measurements:
+\begin{center}
+\begin{tabular}{cccc}
+$n$, $\beta$ & $u$ & Eq.~\eqref{ym:num-strong-coupling} & measured\\\hline
+2, 0.4 & 0.099 & 0.037 & 0.056(18)\\
+2, 0.6 & 0.148 & 0.184 & 0.187(23)\\
+2, 0.8 & 0.195 & 0.557 & 0.591(27)\\
+2, 1.0 & 0.240 & 1.295 & 1.456(31)
+\end{tabular}
+\end{center}
+Equation~\eqref{ym:num-strong-coupling} equals $\frac1{7480}$ at
+$\beta=0.0972$ for $n=2$ and $\beta=1.355$ for $n=4$.
+
+\paragraph{The abelian counter-model.} For $G=U(1)$ the same construction
+applies, and Proposition~\ref{ym:sc-prop:positivity} holds. At large $\beta$
+the four-dimensional theory has a massless photon. The measured defect,
+with the $8^4$ values as increments from $\beta_0=0.6$:
+\begin{center}
+\begin{tabular}{ccccc}
+$\beta$ & 0.9 & 1.0 & 1.2 & 1.6\\\hline
+$\Delta_\beta(2)$ & 50.23(2) & 71.30(3) & 79.56(3) & 88.48(3)\\
+$\Delta_\beta(4)-\Delta_{0.6}(4)$ & 0.17(5) & 34.3(1) & 70.8(1) & 80.3(1)
+\end{tabular}
+\end{center}
+In the Coulomb phase the defect does not decrease when the box doubles, and
+the integrand of Eq.~\eqref{ym:num-integration} is the same at $n=2$ and
+$n=4$ within $3\%$ ($17.84(4)$ and $18.3(2)$ at $\beta=1.6$). For $SU(2)$ at
+$\beta=1.6$--$2.0$, $\Delta_\beta(2)$ grows from $13$ to $44$ while
+$\Delta_\beta(4)-\Delta_1(4)$ is zero within errors up to $\beta=1.8$. A gapless theory admits no seed $\Delta_\beta(n)\le\frac1{7480}$,
+once the finite-volume bound of Proposition~\ref{ym:prop:defect} is carried to
+the infinite-volume state, so this is where an argument must use the
+non-abelian group.
+
+\subsection{The \texorpdfstring{$0^{++}$}{0++} glueball against the size of the box}\label{ym:num-glueball}
+On $L^3\times T$ with time along axis 4, the zero-momentum operators
+$O_i(t)$ are the averages of $\frac12\operatorname{tr}U_p$ over spatial
+plaquettes of slice $t$, after $0,4,8,16$ APE smearing steps of the spatial
+links. With $C_{ij}(t)=\langle O_i(t_0)O_j(t_0+t)\rangle-\langle O_i\rangle
+\langle O_j\rangle$, let $v$ be the eigenvector of $C(1)v=\lambda C(0)v$ with
+the largest $\lambda$, and $c(t)=v^{\mathsf T}C(t)v$. A one-state fit
+$c(t)=A\big(e^{-mt}+e^{-m(T-t)}\big)$ is made over each window, with the
+jackknife covariance. The window $[2,5]$ is used if its $\chi^2$ per degree of
+freedom is below $2$, otherwise $[3,6]$ under the same condition. At $\beta=2.5$
+(and the reference values of \cite{Teper1998}, Table~10):
+\begin{center}
+\begin{tabular}{cccc}
+$L^3\times T$ & $am$, $[2,5]$ ($\chi^2$/dof) & $am$, $[3,6]$ ($\chi^2$/dof) &
+ \cite{Teper1998}\\\hline
+$8^3\times16$ & 0.714(7) (31) & 0.630(12) (11) & \\
+$10^3\times16$ & 0.624(7) (31) & 0.565(9) (7.0) & \\
+$12^3\times16$ & 0.677(7) (11) & 0.636(12) (3.8) & \\
+$14^3\times16$ & 0.726(8) (3.6) & 0.687(18) (1.2) & \\
+$16^3\times16$ & 0.725(9) (4.4) & 0.691(17) (1.8) & 0.660(22)\\
+$20^3\times20$ & 0.730(11) (0.43) & 0.711(22) (0.02) & 0.723(23)
+\end{tabular}
+\end{center}
+At $\beta=2.4$ on $16^3\times16$ the window $[2,5]$ gives $0.927(30)$ against
+$0.936(23)$. For $L\le12$ no window passes and the effective masses keep
+decreasing with $t$: the lightest state the plaquette operator reaches there
+lies below the glueball.
+
+\subsection{Topology of centre vortices and monopoles}\label{ym:num-topology}
+\paragraph{Vortex sheets.} After direct maximal centre gauge
+\cite{DelDebbioEtAl1997} and projection $U\mapsto\operatorname{sign}
+\frac12\operatorname{tr}U$, the plaquettes with value $-1$ are dual to closed
+surfaces on the dual lattice (the dual P-vortex sheet), since the projected
+plaquette field is a coboundary. For a finite 2-complex $X$, $H_2(X;\mathbb Z)$
+is free, and by universal coefficients
+\begin{equation}\label{ym:num-betti}
+ b_2(X;\mathbb F_p)=\operatorname{rank}H_2(X;\mathbb Z)+t_p(H_1(X;\mathbb Z)),
+\end{equation}
+where $t_p$ counts the cyclic factors of $p$-power order. The difference
+$b_2(\mathbb F_2)-b_2(\mathbb F_p)$, $p=1\,000\,003$, is $t_2-t_p$; a value
+$1$ proves at least one factor of even order in $H_1$ of the whole sheet. The
+number of configurations, of $20$ (of $10$ for the entry marked $*$), with
+difference $1$:
+\begin{center}
+\begin{tabular}{cccc}
+$\beta$ & $8^4$ & $12^4$ & $16^4$\\\hline
+2.2 & 20 & & \\
+2.3 & 20 & & \\
+2.4 & $10^*$ & & \\
+2.5 & 7 & 20 & \\
+2.6 & 4 & 14 & 19\\
+2.7 & & & 15\\
+2.8 & 1 & & 1\\
+2.9 & & & 3
+\end{tabular}
+\end{center}
+Random sheets at the same density on $8^4$ give difference $0$ in four of four
+samples. On $16^4$ the drop lies between $\beta=2.7$ and $2.8$, around the
+$N_t=16$ thermal coupling $2.7395(100)$ \cite{Teper1998}, Table~14. This is an
+association with confinement, for one gauge-fixing prescription. It is not an
+infinite-volume order parameter.
+
+\paragraph{Monopole currents.} After maximal abelian gauge the
+DeGrand--Toussaint currents \cite{DeGrandToussaint1980} are integer 1-cycles.
+The fraction of the current in the largest cluster on $12^4$ is
+$0.55,0.35,0.18,0.15$ at $\beta=2.4$--$2.7$, below one half already at
+$\beta=2.5$, where the vortex count is still $20$ of $20$. For $U(1)$ on $6^4$
+it is $0.99$ at $\beta=0.8$ (confined) and $0.22$ at $\beta=1.2$ (Coulomb).
