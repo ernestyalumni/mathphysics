@@ -1,6 +1,6 @@
 # YM-G02: a first end-to-end instance of the conditional-gap chain, at strong coupling
 
-Label: unreviewed (claude-opus55-strat, 2026-11-21). It follows YM-O04 §6.1. It proves nothing about the continuum, and its strong-coupling conclusion is weaker than what Osterwalder–Seiler (1978) already gives by cluster expansion. Its purpose is to close every interface of the chain at one coupling, so that the chain can be machine-checked end to end. Lean pointers are to F01 at 2ed351b (`docs/plans/yang-mills-mass-gap/formal/YMFormal/`).
+Label: reviewed by Codex (YM-O05, `notes/YM-O05-codex-review-2026-11-22.md` §1–3); corrections applied 2026-11-23. It follows YM-O04 §6.1. It proves nothing about the continuum, and its strong-coupling conclusion is weaker than what Osterwalder–Seiler (1978) already gives by cluster expansion. Its purpose is to close every interface of the chain at one coupling, so that the chain can be machine-checked end to end. Lean pointers are to F01 at 2ed351b (`docs/plans/yang-mills-mass-gap/formal/YMFormal/`).
 
 ## The chain and its inputs
 
@@ -24,7 +24,11 @@ With P(2n,…) = 16 P(n,…) = 96 n⁴:
 
   Δ_β(n) ≤ 16 βP(n) + βP(2n) = 32 β P(n) = 192 β n⁴.
 
-**Corollary (seed).** If 0 ≤ β ≤ 1/(7480 · 192 · n⁴), then Δ_β(n) ≤ 1/7480. For n = 2 this is β ≤ 1/22 978 560 ≈ 4.35 × 10⁻⁸. For n = 1 it is β ≤ 1/1 436 160 ≈ 6.96 × 10⁻⁷, if the conventions for a side-1 torus are accepted: there U_μ(x + μ̂) = U_μ(x), and the plaquettes in a plane containing μ are commutators.
+**Corollary (seed).** If 0 ≤ β ≤ 1/(7480 · 192 · n⁴), then Δ_β(n) ≤ 1/7480. For n = 2 this is β ≤ 1/22 978 560 ≈ 4.35 × 10⁻⁸. For n = 1 it is β ≤ 1/1 436 160 ≈ 6.96 × 10⁻⁷. Sides of length 1 are allowed, with links kept as indexed objects (self-links and repeated incidences are not merged into a simple graph).
+- On the all-one torus a plaquette is a commutator.
+- On a rectangle where only side μ has length 1, the plaquette in the plane (μ, ν) is U_μ(x) U_ν(x) U_μ(x + ν̂)^{−1} U_ν(x)^{−1}, and its two μ-links need not coincide.
+
+The bound holds in all these cases, including the comparison of side 1 with side 2. Boundedness gives this seed, but not transfer positivity for arbitrary bounded actions.
 
 This is the same for any compact gauge group with a₀ real and |a₀| ≤ 1 (U(1), Z₂, SU(N) with a₀ = Re tr/N). It needs no cluster expansion. Lean needs only monotonicity of the integral and of the logarithm.
 
@@ -36,7 +40,9 @@ Given (H), the three hypotheses are the content of `Purity.lean` and of YM-O03 �
 - Write λ₁ ≥ λ₂ ≥ ⋯ ≥ 0 for the eigenvalues with multiplicity, and s_t = Σ_{j≥2} (λ_j/λ₁)^t for the excited tail.
 - The doubling cost in direction i at time extent t is p = 2 log Tr T^t − log Tr T^{2t} = 2 log(1 + s_t) − log(1 + s_{2t}) ≥ 0 (`nonneg`).
 - The tail satisfies s_t ≤ e^p − 1, and the doubled cost satisfies p′ ≤ 2 e^{2p} p² ≤ 4p² for p ≤ 1/4 (`estimate`).
-- At side N, r^N ≤ s_N ≤ exp(cost) − 1. The cost of doubling the time extent N → 2N on the N⁴ box is the first term of the defect telescope, so it is ≤ Δ(N), because all terms are ≥ 0 (`cost_le_defect_binary`; `from_defect`).
+- At side N = 2ᵏn, take time as the **first** doubled direction of the telescope, so its spatial torus has side N. In Δ(N) = 8p₁ + 4p₂ + 2p₃ + p₄ all costs are ≥ 0, so 8p₁ ≤ Δ(N), and r^N ≤ s_N ≤ e^{p₁} − 1 ≤ e^{Δ(N)} − 1 (`from_defect`, including k = 0 on spatial side n).
+  - Eigenvalues are ordered with multiplicity and normalized by the positive top eigenvalue; a missing second eigenvalue is 0.
+  - From r_k^n ≤ 1/2, take logarithms only when r_k > 0. In the rank-one case the ratio is 0 and the gap is +∞.
 
 ### Proof of (H) for the Wilson action (standard; Lüscher, Commun. Math. Phys. 54 (1977) 283; Osterwalder–Seiler, Ann. Phys. 110 (1978) 440)
 
@@ -55,34 +61,44 @@ So (H) holds for the Wilson action of SU(2), U(1) and Z₂ at every β ≥ 0, ev
 
 For Z₂ every space is finite-dimensional: ℋ = ℝ^{2^{|E_s|}}, T is a positive semidefinite matrix, and (H) is a finite-sum identity. **Z₂ lattice gauge theory is therefore a target for a fully formal end-to-end theorem in Lean with no outside hypotheses.**
 - Statement: for 0 ≤ β ≤ 1/(7480·192·n⁴) and every k, the Z₂ transfer matrix on the spatial torus of side 2ᵏn has λ₂/λ₁ ≤ 2^{−1/n}.
-- What it needs: matrices, Schur's product theorem (in mathlib for `Matrix.PosSemidef` Hadamard products, to be checked), the trace formula as a finite sum, and the existing F01 chain.
-- What it isn't: Z₂ is not Yang–Mills. But every interface is the same, and the SU(2) version differs only in replacing matrices by trace-class integral operators (Mercer).
+- What it needs: matrices, the trace formula as a finite sum, and the existing F01 chain.
+- Positivity is simpler than Schur here. With normalized counting measure, the one-link matrix ½[[e^β, e^{−β}], [e^{−β}, e^β]] has eigenvalues cosh β (constant vector) and sinh β (sign vector), both ≥ 0 for β ≥ 0.
+- The steps: tensor over links; conjugate by √V; average over site signs; prove that the periodic finite sum equals the trace on the invariant subspace; apply the spectral inequalities.
+- Include the normalized counting factors, side-1 self-links, and β = 0.
+- The theorem quantifies over slice sizes, so it is not a single finite check.
+- What it isn't: Z₂ is not Yang–Mills. For SU(2) the finite box additionally needs Haar changes of variables, measurable insertions, spectral summability and trace identities (Mercer), and the infinite-volume step of §3 is not finite-dimensional.
 
-## 3. From the finite-box gap to an infinite-volume statement (sketch)
+## 3. From the finite-box gap to an infinite-volume statement
 
-YM-O04 §2 lists this step as a separate hypothesis. Here is a proposed proof, to be reviewed.
+This is the argument as specified by YM-O05 §2. Fix the dyadic sequence N = 2ᵏn and the given β. Write q = 2^{−1/n}.
 
-- **Cylinder states.** Fix the spatial side N = 2ᵏn and let the time extent go to infinity. Since λ₁ > λ₂, the torus expectations converge to the vacuum state ω_N of T_N. Let θ be the reflection in the time-zero plane of sites. Reflection positivity gives, for every bounded F supported at times in [0, s], an Osterwalder–Schrader vector ψ_F with ⟨ψ_F, ψ_G⟩ = ω_N(θF̄ · G) and ⟨ψ_F, (T_N/λ₁)^t ψ_G⟩ = ω_N(θF̄ · τ_t G), where τ_t is translation by t in time. For F, G supported in [0, s] and t ≥ 0:
+**Observable sector.** Use gauge-invariant, bounded, continuous local functions, supported in time slabs of any finite width at nonnegative times. Use the site reflection θ in the time-zero plane, with reflected links correctly oriented and inverted, and with no link of a positive-time observable crossing to negative times.
+- Alternatively, work with the full link algebra and the operator A = P T̃ P on the **full** slice space (extra zero spectrum), sewing without a projection at time 0.
+- Projecting the shared time-0 boundary twice is wrong: a gauge-variant function of the time-0 links can have nonzero OS norm but zero gauge average.
 
-  |ω_N(θF̄ · τ_t G) − ω_N(θF̄) ω_N(G)| ≤ (λ₂/λ₁)^t ‖F‖_∞ ‖G‖_∞ ≤ 2^{−t/n} ‖F‖_∞ ‖G‖_∞.
+1. **Cylinder limit at fixed N.** Let S = T_N/λ₁, let h be the normalized top vector, and let Q = |h⟩⟨h|. Then ‖S^j − Q‖₁ = Σ_{l>1} (λ_l/λ₁)^j ≤ r^{j−1} Σ_{l>1} λ_l/λ₁ → 0, and Tr S^j → 1.
+   - An observable F in an s-step slab enters the cyclic integral through an inserted slab operator B_F. Its kernel is bounded in absolute value by ‖F‖_∞ times the positive s-step kernel, so B_F is bounded.
+   - The long complementary power converges in trace norm, so normalized expectations converge as the time extent grows.
+   - This uses the local Wilson kernel, not only partition-function traces.
+2. **OS vectors at fixed N.** Integrate the positive half-cylinder conditioned on the time-0 spatial links. The future boundary vector of F is the normalized inserted slab applied to h (for F = 1 it is h). Sewing it to the reflected past gives the OS inner product, and t empty layers in between give S^t. By Cauchy–Schwarz on h^⊥:
 
-  Proof: the vacuum term of the spectral decomposition of T_N/λ₁ is the product of expectations. Apply Cauchy–Schwarz on the orthogonal complement of the vacuum, with ‖ψ_F‖² = ω_N(θF̄ · F) ≤ ‖F‖²_∞.
-  - The constant 2^{−t/n} is uniform in k: this is where the chain enters.
-- **Local limit.** The configuration space G^{E(ℤ⁴)} is compact, so the states ω_{2ᵏn}, viewed as measures on a neighbourhood of the origin that eventually fits inside each torus, have weakly convergent subsequences (Prokhorov, or Tychonoff and Riesz). For fixed local F, G and t, the inequality passes to every limit point ω.
-- **Reconstruction.** ω is translation invariant and reflection positive (both are closed conditions), so the Osterwalder–Seiler construction gives a Hilbert space ℋ_ω, a vacuum Ω, and a positive contraction T_ω for one time step. By construction, the vectors ψ_F for local F are dense.
-- **Gap.** For local F orthogonal to Ω, the spectral measure μ_F of T_ω satisfies ∫ λ^t dμ_F = ⟨ψ_F, T_ω^t ψ_F⟩ ≤ 2^{−t/n} ‖F‖²_∞ for all t. So μ_F is supported in [0, 2^{−1/n}]. By density, the spectrum of T_ω on Ω^⊥ lies in [0, 2^{−1/n}]. In particular the vacuum is unique, and the mass gap is m ≥ (log 2)/n in lattice units.
-  - The vacuum subtraction is exactly the first term above, so there is no separate cyclicity issue for the vectors used.
-  - What remains to be checked is that the vectors ψ_F with F supported in single slabs exhaust the reconstruction. In the Osterwalder–Seiler construction they do.
-- **Which state.** Every limit point has the gap. At such small β the infinite-volume Gibbs state is unique (Dobrushin's criterion), but that is not needed for the gap statement.
+   |ω_N(θF̄ · τ_t G) − ω_N(θF̄) ω_N(G)| ≤ r^t ‖F‖_∞ ‖G‖_∞ ≤ q^t ‖F‖_∞ ‖G‖_∞,
 
-**Points for review.**
-- (a) Convergence of the cylinder limit, using only λ₁ > λ₂ and trace class.
-- (b) Passing the inequality to limit points for observables whose support needs the time slab inside the torus.
-- (c) The density claim in the reconstruction.
+   including overlapping boundaries at t = 0. Gauge-invariant insertions keep these vectors in Pℋ.
+3. **Spatial limit.** Take the cylinder limit first. Then lift the spatial configurations periodically to the infinite lattice.
+   - G is compact metrizable and there are countably many links, so the states have weakly convergent subsequences.
+   - For fixed supports and fixed t, the translated and reflected products fit inside every sufficiently large N.
+   - Weak convergence passes expectations of **continuous** local functions and of their products, not of arbitrary bounded measurable events. Translation invariance, site reflection positivity and the bound with q^t survive in every limit point ω.
+   - These are limit points of these cylinders. They are not a classification of boundary conditions, and not a continuum state.
+4. **Reconstruction and one-step positivity.** The OS classes of the local functions, over all slab widths, span a dense subspace of ℋ_ω by construction. Centring F ↦ F − ω(F) gives a dense subset of Ω^⊥.
+   - Positivity of one time step does not follow from translation invariance and site reflection positivity alone. Pass the finite-cylinder inequality ω_N(θF̄ · τ₁F) ≥ 0, together with the contraction bounds, to the limit on the same dense algebra. Then 0 ≤ S_ω ≤ 1.
+5. **Gap.** For a centred F and any b > q: b^t μ_F([b, 1]) ≤ ⟨ψ_F, S_ω^t ψ_F⟩ ≤ C_F q^t for all t. So the spectral projection of S_ω on [b, 1] annihilates a dense subset of Ω^⊥, and by continuity all of it.
+   - The fixed vectors of S_ω are the vacuum line: the vacuum is unique **in this reconstruction**. That is distinct from uniqueness of the infinite-volume Gibbs state, which is not used.
+   - The transfer gap is at least (log 2)/n in lattice units.
 
 ## 4. What the end-to-end instance proves and what it does not
 
-- **Proves (once §3 is reviewed):** for SU(2), U(1) and Z₂ Wilson lattice gauge theory at 0 ≤ β ≤ 1/(7480·192·n⁴), the infinite-volume lattice theory along dyadic tori has a mass gap m ≥ (log 2)/n in lattice units.
+- **Proves, with §3 as specified:** for SU(2), U(1) and Z₂ Wilson lattice gauge theory at 0 ≤ β ≤ 1/(7480·192·n⁴), every limit point of the vacuum states along the dyadic tori reconstructs to a lattice theory whose transfer operator has a unique vacuum and a gap of at least (log 2)/n in lattice units.
   - For U(1) this is the confined strong-coupling phase. It does not contradict the Coulomb phase at large β.
   - The Z₂ finite-box part can be fully formal.
 - **Does not prove:** anything at weak coupling, anything uniform as a → 0, or anything in physical units. Osterwalder–Seiler's cluster expansion already gives a much larger gap at small β (to leading order m ≈ −4 log u, with u = I₂(β)/I₁(β) ≈ β/4).
@@ -92,13 +108,22 @@ YM-O04 §2 lists this step as a separate hypothesis. Here is a proposed proof, t
 The precise target (YM-N03, "The precise seed target"): there is L < ∞ such that, along the scaling trajectory and sufficiently far toward the continuum, some n has a(β) n ≤ L and Δ_β(n) ≤ 1/7480, with the same bare parameters on both boxes.
 
 `01-WHAT-OPENAI-PROVED.md` §3 says the construction's renormalization group stops at unit scale. The bare coupling is tuned so that the level-0 coupling is one fixed large number β̄, for every N and every volume index p. Three questions decide whether that construction can supply or test a seed:
-1. **Is the bare tuning independent of the volume index p?** No. The handbook (`yang-mills-lattice.tex`, "What a proof of the gap requires", item 1) records that the bare coupling β_{N,p} depends on p through the condition β_{N,p,0} = β̄, controlled only to o(log(1/a_N)). The defect compares two volumes at the same bare parameters, so any seed taken from that construction must be stable under the difference β_{N,p} − β_{N,p′}.
-2. **Is the level-0 effective theory reflection positive in all four directions, so that (H) holds for it?** The chain needs (H) for whatever theory the seed is stated in. The renormalized actions are not Wilson actions.
-3. **What is the error on log Z at unit scale?** Volume terms cancel in Δ, but an error of order the volume on each box is useless (YM-O04 §6.2). The seed needs a remainder below 1/7480 in absolute terms.
+1. **Is the bare tuning independent of the volume index p?** The construction does not establish it.
+   - The public object is two-indexed: `PublicWilson.lean` has `beta : ℕ → ℕ → ℝ`, and `ChallengeSpec.lean` asks for a uniform slope, not equality in p.
+   - The informalization fixes the coarse endpoint independently of p and shoots uniquely for each (N, p). No theorem identifies two bare tunings, though none shows that particular values differ.
+   - A seed taken from the construction needs matched boxes and bare parameters, or control of retuning. Since |∂_β log Z| ≤ P for the shifted weight, changing β on the doubled box alone costs up to P(2n)|δβ|; leading-log agreement is not enough. (YM-O05 §3; the handbook records the same dependence.)
+2. **Is the level-0 effective theory reflection positive in every direction, so that (H) holds for it?**
+   - This is required only to apply the recurrence to the effective actions themselves. That would also need common rectangular time-independent trace kernels, not merely reflection positivity on periodic cubes.
+   - It is not required if the renormalization group is used only to bound the **fine** Wilson seed, for which (H) holds by §2.
+   - No proof of coarse (H) is in the cited result.
+3. **What is the error on log Z at unit scale?**
+   - The normalized block step preserves the total unnormalized mass exactly on its own trajectory, but the normalized Wilson probability alone loses the scalar.
+   - A seed needs the scalar normalizations kept, β matched, and 16 log Z_n − log Z_{2n} bounded, including non-extensive terms, with margin below 1/7480.
+   - Two extensive error bars, or small polymer activities without a finite-volume remainder, do not do this.
 
 Even with positive answers, the seed for the level-0 theory is a statement at the fixed **weak** effective coupling β̄. The elementary bound of §1 does not apply there. That is the open infrared problem. The finite-size criteria surveyed in YM-G06 (Dobrushin–Shlosman, Martinelli–Olivieri) have the same shape: a finite-box condition implying decay. For spin systems they need boxes large compared with the correlation length, which is the same obstruction.
 
 ## Next
 
-1. Review of §3 (Codex), then a decision on the Z₂ fully formal instance (F01 owner).
-2. The three audit questions in §5, against the OpenAI construction's Lean sources (YM-A tasks).
+1. The Z₂ finite-box instance is under way in F02 (workspace-2c), approved by Ernest.
+2. A necessary condition for any seed (YM-O05 §5): at side n, n · m_box ≥ −log(e^{1/59840} − 1) = 10.9994, where m_box is the true first excitation on the spatial torus of side n.
