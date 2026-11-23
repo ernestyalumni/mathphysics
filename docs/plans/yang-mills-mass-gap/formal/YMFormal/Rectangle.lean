@@ -95,7 +95,7 @@ theorem pot_down_from_zero (G : Exps → ℝ) (nonneg : ∀ i e, 0 ≤ cost G i 
     intro e he hs
     obtain ⟨k, -, hk⟩ : ∃ k ∈ Finset.univ, e k ≠ 0 := by
       by_contra hcon
-      push_neg at hcon
+      push Not at hcon
       rw [Finset.sum_eq_zero hcon] at hs
       omega
     have hk1 : e k = 1 := by have := he k; omega
@@ -136,7 +136,7 @@ theorem pot_up_to_one (G : Exps → ℝ) (nonneg : ∀ i e, 0 ≤ cost G i e) :
     intro e he hs
     obtain ⟨k, hk⟩ : ∃ k, e k = 0 := by
       by_contra hcon
-      push_neg at hcon
+      push Not at hcon
       have : ∀ x, e x = 1 := fun x => by have := he x; have := hcon x; omega
       have : ∑ x, e x = 4 := by simp [this]
       omega

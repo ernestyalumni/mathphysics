@@ -4,6 +4,7 @@ import YMFormal.ConditionalGap
 import YMFormal.Casimir
 import YMFormal.RankOne
 import YMFormal.Rectangle
+import YMFormal.Seed
 #print axioms YMFormal.purity_bounds
 #print axioms YMFormal.gap_from_purity
 #print axioms YMFormal.defect_nonneg_and_last
@@ -18,3 +19,9 @@ import YMFormal.Rectangle
 #print axioms YMFormal.rectangle_recurrence
 #print axioms YMFormal.box_recurrence
 #print axioms YMFormal.conditional_gap_of_boxes
+#print axioms YMFormal.log_partition_bound_plaquettes
+#print axioms YMFormal.log_partition_bound_wilson
+#print axioms YMFormal.seed_of_wilson_bound
+#print axioms YMFormal.seed_strong_coupling
+#print axioms YMFormal.conditional_gap_strong_coupling
+#print axioms YMFormal.LocalLimit.decay
