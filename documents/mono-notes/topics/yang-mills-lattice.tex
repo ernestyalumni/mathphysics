@@ -1226,9 +1226,9 @@ $20^3\times20$ & 0.730(11) (0.43) & 0.711(22) (0.02) & 0.723(23)
 \end{tabular}
 \end{center}
 At $\beta=2.4$ on $16^3\times16$ the window $[2,5]$ gives $0.927(30)$ against
-$0.936(23)$. For $L\le12$ no window passes and the effective masses keep
-decreasing with $t$: the lightest state the plaquette operator reaches there
-lies below the glueball.
+$0.936(23)$. These are comparisons at matched volumes; they do not validate
+the one-state fit model. For $L\le12$ both windows fail, and the periodic
+effective masses keep decreasing with $t$.
 
 A flux tube winding once around a spatial direction of length $L$ (a
 torelon) is created by the Polyakov loop
@@ -1236,9 +1236,10 @@ $\frac12\operatorname{tr}\prod_{k=0}^{L-1}U(\mathbf x+ke_j,j)$. Its energy
 $E_T(L)$ is measured from the zero-momentum correlator of that operator,
 averaged over the three spatial directions, with the same smearing, fit and
 rule. To leading order in $\frac1L$, $E_T(L)=\sigma L-\frac{\pi}{3L}$ with
-$\sigma$ the string tension. A pair of torelons winding in opposite
-directions has zero winding and zero momentum, and couples to the plaquette
-operator with energy near $2E_T(L)$:
+$\sigma$ the string tension. A single winding loop carries centre charge and
+does not mix with the plaquettes. A pair winding in opposite directions is
+centre neutral and has zero momentum, so it can mix with the scalar channel,
+with energy near $2E_T(L)$ if the two strings do not interact:
 \begin{center}
 \begin{tabular}{cccccc}
 $L$ & 8 & 10 & 12 & 14 & 16\\\hline
@@ -1247,13 +1248,29 @@ $2aE_T(L)$ & 0.385 & 0.474 & 0.625 & 0.805 & 0.970\\
 $a\sqrt\sigma$ & 0.201 & 0.185 & 0.183 & 0.185 & 0.186
 \end{tabular}
 \end{center}
-At $L=20$, $aE_T=0.660(17)$. The pair lies below the glueball for $L\le12$
-and above it from $L=14$. At $L=10$ the plaquette correlator over
-$t\in[5,8]$ gives $0.484(17)$, equal to $2aE_T$ within errors. For $L\ge10$,
-$a\sqrt\sigma\approx0.185$. So the lowest $0^{++}$ level of the box is the
-glueball only once $2E_T(L)>m$, at $L\sqrt\sigma\approx2.4$ here: the scale at
-which a box stops resembling infinite volume is set by flux tubes winding
-around it.
+At $L=20$, $aE_T=0.660(17)$. For $L\ge10$, $a\sqrt\sigma=0.183$--$0.189$;
+\cite{Teper1998}, Table~10, gives $0.1834(26)$ on $16^4$ and $0.1881(28)$ on
+$20^4$. The value $2aE_T$ lies below the glueball for $L\le12$ and above it
+from $L=14$, and at $L=10$ the plaquette correlator over $t\in[5,8]$ (a window
+chosen after the fact) gives $0.484(17)$, equal to $2aE_T$ within errors. That
+the failing fits at $L\le12$ come from this mixing is a hypothesis: the pair
+operator itself was not measured.
+
+No defect is measured here. The chain gives a necessary condition for a seed.
+In the telescope of Eq.~\eqref{ym:defect-telescope} at side $n$, take time
+as the first doubled direction, with weight $8$ in
+$\Delta_\beta(n)=-\log(\mathsf P_1^{\,8}\mathsf P_2^{\,4}\mathsf P_3^{\,2}
+\mathsf P_4)$, so $-8\log\mathsf P_1\le\Delta_\beta(n)$. By
+Eq.~\eqref{ym:purity-bounds},
+$e^{-n\mathsf m(n)}\le s_n\le\frac1{\mathsf P_1}-1$, where $\mathsf m(n)$ is
+the transfer gap on the spatial torus of side $n$. Hence
+$\Delta_\beta(n)\le\frac1{7480}$ requires
+\begin{equation}\label{ym:num-necessary}
+ n\,\mathsf m(n)\ \ge\ -\log\big(e^{1/59840}-1\big)=10.9994:
+\end{equation}
+a seed box is at least about eleven of its own correlation lengths wide. A
+certified upper bound on $\mathsf m(n)$ below $\frac{10.9994}{n}$ would exclude
+that $n$; effective masses from finite fits are not such a certificate.
 
 \subsection{Topology of centre vortices and monopoles}\label{ym:num-topology}
 \paragraph{Vortex sheets.} After direct maximal centre gauge
