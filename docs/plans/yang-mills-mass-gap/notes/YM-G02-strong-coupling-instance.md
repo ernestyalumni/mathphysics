@@ -72,6 +72,8 @@ For Z₂ every space is finite-dimensional: ℋ = ℝ^{2^{|E_s|}}, T is a positi
 
 This is the argument as specified by YM-O05 §2. Fix the dyadic sequence N = 2ᵏn and the given β. Write q = 2^{−1/n}.
 
+In Lean (F02, `LocalLimit`, workspace-2c), steps 1–2 supply the field `finite_bound` (|corr k t| ≤ normSq · r_k^t), and step 3 supplies `tendsto`. `LocalLimit.decay` is the resulting bound on the limit correlation. Steps 4–5, the reconstruction and its gap, are outside that structure.
+
 **Observable sector.** Use gauge-invariant, bounded, continuous local functions, supported in time slabs of any finite width at nonnegative times. Use the site reflection θ in the time-zero plane, with reflected links correctly oriented and inverted, and with no link of a positive-time observable crossing to negative times.
 - Alternatively, work with the full link algebra and the operator A = P T̃ P on the **full** slice space (extra zero spectrum), sewing without a projection at time 0.
 - Projecting the shared time-0 boundary twice is wrong: a gauge-variant function of the time-0 links can have nonzero OS norm but zero gauge average.
