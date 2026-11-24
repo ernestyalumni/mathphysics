@@ -57,3 +57,32 @@ The question was whether GPUs help with symbolic or exact computation, given tha
 | F | 8.0 × 10⁻⁸ | 7.9 × 10⁻⁴ | 0.078 | 0.565 | 2.08 | 6.61 | 14.61 |
 
 The rise is steepest between 0.4 and 0.5, near the self-dual coupling β_c = ½ log(1 + √2) ≈ 0.4407 of four-dimensional Z₂ gauge theory. On a box this small it is a crossover.
+
+## All 't Hooft sectors on 2⁴, and an exact duality certificate
+
+**The sectors.** The 64 twist sectors (classes of H²(T⁴; Z₂), one bit per plane) fall into 11 classes under permutations of the axes: the isomorphism classes of graphs on 4 vertices, with plane μν as edge μν. Each class was enumerated (2⁴⁵ codewords) on the RTX 3060, 11 015 s in total, and the laptop's RTX 3070 repeated the classes independently.
+
+**The certificate.** On the self-dual 2⁴ torus, the dual code C^⊥ = ker δᵀ consists of the mod-2 2-cycles. On the dual lattice these are the 2-cocycles, which form the union of the 64 cosets t + im δ. The MacWilliams identity therefore requires
+
+  Σ_w A_w K_v(w) = 2⁴⁵ Σ_{t ∈ H²} A^{(t)}_v   for v = 0, …, 96,
+
+where K_v is the Krawtchouk polynomial for n = 96, and the sum on the right uses the 11 class enumerators weighted by their multiplicities 1, 6, 12, 3, 4, 4, 12, 3, 12, 6, 1.
+
+`z2_duality` verifies this for all 97 weights, modulo three primes near 2⁶¹.
+- Both sides are integers of absolute value below 2¹⁴², and the product of the primes exceeds 2¹⁸², so the identity holds exactly.
+- It ties every twisted enumerator to the untwisted one. An error in any single class would break it.
+
+**Electric and magnetic flux free energies** (`z2_flux`, axis 0 as time).
+- F_m = −log(Z[one spatial plane]/Z[0]).
+- F_e(e) = −log(Ẑ(e)/Ẑ(0)), where Ẑ(e) = 2⁻³ Σ_k (−1)^{e·k} Z[k] is 't Hooft's Fourier transform over the temporal twists, at magnetic flux 0.
+
+| β | 0.05 | 0.2 | 0.4 | 0.42 | 0.44 | 0.46 | 0.6 | 1.0 |
+|---|---|---|---|---|---|---|---|---|
+| F_m | 5.0 × 10⁻⁵ | 0.013 | 0.565 | 0.833 | 1.150 | 1.478 | 3.21 | 6.61 |
+| F_e, one unit | 10.60 | 5.06 | 1.549 | 1.176 | 0.852 | 0.601 | 0.086 | 0.0027 |
+
+- **Strong coupling:** electric flux is costly and the magnetic twist is free, which is 't Hooft's confinement signature.
+- **Weak coupling:** the reverse, the deconfined Z₂ phase.
+- The two cross between β = 0.42 and 0.44, around the self-dual coupling 0.4407.
+
+On a box of side 2 these are finite-size values. They show that the criterion and the tools work exactly in a solvable control (YM-E02). They do not diagnose a phase.
