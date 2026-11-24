@@ -221,3 +221,41 @@ These are observations, not findings. Each may already be in `statement.md` or t
 12. **The OPE constants are 1.** Both OPE bounds are stated with constant 1, and "eventually in r" makes this equivalent to a constant ≤ r^{−ε′}.
 
 The candidates for YM-A03, the clause red-team, are 2, 3, 4 and 5. Of these, 4 is listed in `01-WHAT-OPENAI-PROVED.md` §2 as "no phase is shown to be a limit of lattice states". I have not checked whether 2 is listed.
+
+## 8. Comparison with `ARM/statement.md` (opened after the transcription commit)
+
+**Timeline.**
+- The transcription above was committed as d9dcb83 at 2026-11-23 20:46:25 −08:00.
+- `statement.md` (ARM at daf1db4) was first opened by this agent at 2026-11-23 20:46:50 −08:00.
+- It was compared section by section against §§1–7 above: its §3 Definitions 1.1–1.17, Theorem 2.1, Remarks 2.2–2.4, and §4.
+
+**Result: no discrepancy between `statement.md` and the Lean was found.**
+- Every clause of §§1–6 above has a counterpart in `statement.md` with the same content: Definitions 1.1–1.17, Theorem 2.1 and the quantifier order of Remark 2.2.
+- Index conventions differ only in wording. Axes are 1–4 there and 0–3 in the Lean; the group is U(m) there and U(n+1) in the Lean.
+
+| Item above | `statement.md` | Classification |
+|---|---|---|
+| §7.1: amplitude is vacuous | Def. 1.16, nonstandard features: "(T2) holds for every simple 𝔤" | agrees |
+| §7.2: running slope is free | Def. 1.6 nonstandard features; §4 item 9 | agrees. My parenthetical used another normalization; theirs is b* = 2b₀ = 11C_𝔤/(24π²) with β = 1/g₀², and C_𝔤 = 2N² for SU(N). My error, in wording only. |
+| §7.3: β depends on p | Def. 1.5 nonstandard features; construction note (RG trajectory reaching the reference coupling for every N and p) | agrees |
+| §7.4: lattice gives the mixture | Remark 1 after Def. 1.12; §4 item 4 ("…or that a phase is itself a limit of lattice states") | agrees, conceded |
+| §7.5: arbitrary insertions; π surjective | Def. 1.5 nonstandard features; (R6); §4 item 8 | agrees, conceded |
+| §7.6: strong temperedness and domain; J; labels | Def. 1.10, nonstandard features 3–4 | agrees |
+| §7.7: Euclidean spectral pairing | Def. 1.10, nonstandard feature 1 (P⁰ = p⁴, P⃗ = −p⃗) | agrees, same analysis |
+| §7.8: continuation determined by the selected phase | Remark 2 after Def. 1.12 | agrees |
+| §7.9: no condition at coincident points | Def. 1.2 nonstandard features; §4 item 3 | agrees |
+| §7.10: conjunct (i) automatic | Def. 1.8 nonstandard features | agrees |
+| §7.11: integer degrees | Def. 1.11: "not required to be a scaling dimension"; Def. 1.13 | agrees |
+| §7.12: OPE constants 1 | Def. 1.13: thresholds uniform in s, x, o, y | agrees |
+
+**What `statement.md` has that this transcription missed.**
+- **(R15) integrability** (Remark 4 after Def. 1.12). The formal statement does not assert that the integrand of the boundary-value limit is integrable for small r. Under Mathlib's convention a non-integrable integral is 0. I did not record this. **My omission.**
+- **Extra context outside the statement:** the construction notes (Def. 1.5, 1.11, 1.14), the detailed theorem (Remark 2.4, D1–D16), and the analyticity scope (§4 item 12: complex times only, product tests only). These are not part of the transcription target.
+
+**Findings against `statement.md`: none.**
+- Every observation of §7 is already recorded there, as a nonstandard feature or as a conceded non-claim.
+- Candidates for YM-A03, with the concessions already in place:
+  - the free slope (§4 item 9);
+  - the p-dependent coupling (Def. 1.5);
+  - the lattice limit being the mixture (§4 item 4);
+  - the free-field exclusion being only partial (§4 item 10; not reached independently here).
