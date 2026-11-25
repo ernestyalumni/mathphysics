@@ -42,11 +42,11 @@ The question was whether GPUs help with symbolic or exact computation, given tha
 
 **The defect.**
 - On 1⁴ every plaquette is a commutator of commuting elements, so Z(1⁴) = 1 and Δ_β(1) = −log Z(2⁴).
-- The mean frustration on 2⁴ at β = 0 is 48 = P/2, so Δ_β(1) = 96β + O(β²).
+- The mean frustration on 2⁴ at β = 0 is 48 = P/2, so Δ_β(1) = 96β − 48β² + O(β³) (E[w] = 48 and E[w²] = 2328), and Δ_β(1) < 96β for β > 0.
 - The exact seed threshold, Δ(1) = 1/7480, is at β = 1.3926034652 × 10⁻⁶.
-- The elementary bound Δ ≤ 192βn⁴ gives β = 6.9630124777 × 10⁻⁷: a ratio of **exactly 2**.
-- At n = 1 the bound is tight up to the factor 2, because the abelian side-1 torus is degenerate. This says nothing about n ≥ 2, where 4⁴ is out of reach of enumeration.
-- As β → ∞, Δ(1) → 45 log 2 = 31.19162: only the flat configuration survives.
+- The elementary bound Δ ≤ 192βn⁴ gives β = 6.9630124777 × 10⁻⁷: a ratio of **2.000001393**. The slopes 192 and 96 differ by exactly 2; the thresholds do not, because of the −48β² term (corrected after YM-O06).
+- At n = 1 the bound is tight up to a factor very close to 2, because the abelian side-1 torus is degenerate. This says nothing about n ≥ 2, where 4⁴ is out of reach of enumeration.
+- As β → ∞, Δ(1) → 45 log 2 = 31.19162: only the zero plaquette codeword survives (many link configurations, not one).
 
 **Purities.** The telescope 8 log P₁ + 4 log P₂ + 2 log P₃ + log P₄ = −Δ holds to machine precision at every β tested, with P_k ≤ 1 and P₄ ≥ e^{−Δ}.
 

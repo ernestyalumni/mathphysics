@@ -54,4 +54,5 @@ fn main() {
         all_ok &= bad == 0;
     }
     println!("{}", if all_ok { "DUALITY VERIFIED EXACTLY for all 97 weights" } else { "DUALITY FAILS" });
+    if !all_ok { std::process::exit(1); }
 }
