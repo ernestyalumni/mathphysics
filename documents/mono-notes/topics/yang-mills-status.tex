@@ -3,7 +3,7 @@
 \section*{Yang--Mills: state of the problem}
 \addcontentsline{toc}{section}{Yang--Mills: state of the problem}
 \label{ym:sec:status}
-\textit{Status checked 23 November 2026 (UTC).}
+\textit{Construction assessment as of 23 November 2026; finite-torus results updated 25 November 2026 (UTC).}
 
 \paragraph{The mathematical target.}
 For every compact simple gauge group, the Jaffe--Witten problem asks for a
@@ -34,9 +34,10 @@ the rank-one transfer operator at $\beta=0$; and the defect recurrence is
 a theorem (Theorem~\ref{ym:thm:recurrence}, with $c_1=3740$ and
 $\eta_*=\frac1{7480}$). The finite-volume steps and the recurrence have been reviewed
 independently; the strong-coupling seed (Proposition~\ref{ym:prop:strong-seed})
-was proposed in that review. All of these have also been checked in a proof
-assistant, with the trace formula and positivity of the transfer operators
-taken as stated hypotheses. They are not part of the assessed formal construction.
+was proposed in that review. The general formal argument takes spectral inputs. For the
+four-dimensional $\mathbb Z_2$ Wilson model the trace formula, positivity,
+seed and finite-volume conclusion have now been proved together and
+independently checked; see Section~\ref{ym:sec:finite-guide}. They are not part of the assessed formal construction.
 
 At strong coupling, $\beta\le\frac{1}{7480\cdot192\,n^4}$, the chain closes
 and gives a lattice gap of at least $\frac{\log2}{n}$ on every dyadic torus;
@@ -62,11 +63,12 @@ These are finite numerical checks, not estimates in the proof.
 \item \emph{A necessary condition for a seed.} A seed at side $n$ requires
  $n\,\mathsf m(n)\ge10.9994$ (Eq.~\eqref{ym:num-necessary}): the box must be
  at least about eleven of its own correlation lengths across.
-\item \emph{$U(1)$.} In the Coulomb phase the defect does not shrink when the
- box doubles ($\approx80$ at $n=2$ and $n=4$), as a gapless theory requires.
+\item \emph{$U(1)$.} At $\beta=1.6$ the defect at $n=2$ is $88.48(3)$;
+ at $n=4$ the measured \emph{increment} from $\beta=0.6$ is $80.3(1)$.
+ Neither is evidence for a small seed.
 \item \emph{Glueball.} At $\beta=2.5$ the $0^{++}$ mass is $0.730(11)$ on
  $20^4$ and $0.691(17)$ on $16^4$, against $0.723(23)$ and $0.660(22)$ in
- \cite{Teper1998}. For $L\le12$ no one-state fit passes; mixing with
+ \cite{Teper1998}. At $L=8,10,12$ neither designated fit window passes; mixing with
  torelon pairs is a hypothesis there. Single-torelon energies give
  $a\sqrt\sigma=0.183$--$0.189$, against $0.1834(26)$ and $0.1881(28)$
  (Section~\ref{ym:num-glueball}).
@@ -88,7 +90,10 @@ mathematically meaningful percentage of the prize established by the
 number of calculations or lemmas completed.
 
 \paragraph{Reading route.}
-Begin with relativistic fields in Section~\ref{qft:sec:scalar}
+For a route from holonomy through twist sectors to a finite-size spectral
+bound, start with Section~\ref{ym:sec:finite-guide}
+(p.~\pageref{ym:sec:finite-guide}). For the QFT background begin with
+relativistic fields in Section~\ref{qft:sec:scalar}
 (p.~\pageref{qft:sec:scalar}) and quantization in
 Section~\ref{qft:sec:quantization}
 (p.~\pageref{qft:sec:quantization}), using Srednicki
