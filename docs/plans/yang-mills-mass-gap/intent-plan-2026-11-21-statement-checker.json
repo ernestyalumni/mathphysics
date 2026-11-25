@@ -95,8 +95,8 @@
       "TypeScript/physics-workbench/architecture.json",
       "47 prompt file(s)"
     ],
-    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-F01-claude-opus55-lean",
-    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-F01-claude-opus55-lean",
+    "repository_root": "<repository>",
+    "root": "<repository>",
     "scope_kind": "repository"
   },
   "recommended_workflow": "change_existing_pdd",

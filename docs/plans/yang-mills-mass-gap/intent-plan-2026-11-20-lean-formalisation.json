@@ -115,8 +115,8 @@
       "TypeScript/physics-workbench/architecture.json",
       "47 prompt file(s)"
     ],
-    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-F01-claude-opus55-lean",
-    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-F01-claude-opus55-lean",
+    "repository_root": "<repository>",
+    "root": "<repository>",
     "scope_kind": "repository"
   },
   "recommended_workflow": "change_existing_pdd",
@@ -133,7 +133,7 @@
   "schema_version": "pdd.intent.plan.v1",
   "source": {
     "kind": "file",
-    "ref": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-F01-claude-opus55-lean/docs/plans/yang-mills-mass-gap/request-2026-11-20-lean-formalisation.txt"
+    "ref": "<repository>/docs/plans/yang-mills-mass-gap/request-2026-11-20-lean-formalisation.txt"
   },
   "story": {
     "action": "create",
