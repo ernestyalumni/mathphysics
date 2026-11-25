@@ -5,6 +5,8 @@ import YMFormal.Casimir
 import YMFormal.RankOne
 import YMFormal.Rectangle
 import YMFormal.Seed
+import YMFormal.Doubling
+import YMFormal.MatrixSpectrum
 #print axioms YMFormal.purity_bounds
 #print axioms YMFormal.gap_from_purity
 #print axioms YMFormal.defect_nonneg_and_last
@@ -25,3 +27,7 @@ import YMFormal.Seed
 #print axioms YMFormal.seed_strong_coupling
 #print axioms YMFormal.conditional_gap_strong_coupling
 #print axioms YMFormal.LocalLimit.decay
+#print axioms YMFormal.doubling_cost_nonneg
+#print axioms YMFormal.doubling_cost_estimate
+#print axioms YMFormal.partition_specSeq
+#print axioms YMFormal.spectrum_specSeq

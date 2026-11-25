@@ -10,7 +10,7 @@ strict=0
 if [ "${1:-}" = "--strict" ]; then strict=1; shift; fi
 modules=("$@")
 if [ ${#modules[@]} -eq 0 ]; then
-  modules=(YMFormal.Purity YMFormal.Defect YMFormal.ConditionalGap YMFormal.Casimir YMFormal.RankOne YMFormal.Rectangle YMFormal.Seed)
+  modules=(YMFormal.Purity YMFormal.Defect YMFormal.ConditionalGap YMFormal.Casimir YMFormal.RankOne YMFormal.Rectangle YMFormal.Seed YMFormal.Doubling YMFormal.MatrixSpectrum)
 fi
 docker run --rm --network none -u "$(id -u):$(id -g)" -v "$here":/work -w /work \
   --entrypoint bash "$image" -c '
