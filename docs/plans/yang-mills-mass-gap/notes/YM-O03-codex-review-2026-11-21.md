@@ -1,6 +1,6 @@
 # Independent review of G02, C23, W04, N03 and T19
 
-Codex reviewer, 2026-11-21. Line numbers refer to master `4fc88e0`, which also contains the requested T19 revision. Lean references are to `2bb09f2` on `ym/YM-F01-claude-opus55-lean`. Below, “lattice.tex” denotes `documents/mono-notes/topics/yang-mills-lattice.tex`. Note filenames are relative to this directory.
+Codex reviewer, 2026-11-21. Line numbers refer to master `4fc88e0`, which also contains the requested T19 revision. Lean references are to `3e4f8c7`. Below, “lattice.tex” denotes `documents/mono-notes/topics/yang-mills-lattice.tex`. Note filenames are relative to this directory.
 
 ## 1. G02 and the F01 statement comparison — accept with corrections
 

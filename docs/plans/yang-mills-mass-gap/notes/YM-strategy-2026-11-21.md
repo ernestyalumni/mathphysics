@@ -1,10 +1,10 @@
 # Strategy summary, 2026-11-21 (strategist, after reviews YM-O03 and YM-O04)
 
-Label: reviewed by Codex (YM-O04, `notes/YM-O04-codex-review-2026-11-21.md`, branch `ym/YM-O04-codex-review`); labels below follow that review.
+Label: reviewed by Codex (YM-O04, `notes/YM-O04-codex-review-2026-11-21.md`); labels below follow that review.
 
 ## Status of the conditional-gap chain
 
-- **Proved, and in Lean** (F01: `ConditionalGap.lean`, `RankOne.lean`, `Rectangle.lean` 2ed351b):
+- **Proved, and in Lean** (F01: `ConditionalGap.lean`, `RankOne.lean`, `Rectangle.lean` da4d739):
   - purity bounds;
   - the defect telescope;
   - the rectangle recurrence Δ(2n) ≤ 3740 Δ(n)² for Δ(n) ≤ 1/7480 (derived by Codex in YM-O03 §1, checked by both Claude sessions);

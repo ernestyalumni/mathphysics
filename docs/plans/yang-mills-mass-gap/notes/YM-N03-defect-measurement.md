@@ -1,6 +1,6 @@
 # YM-N03: measuring the hypercubic defect and the four purities
 
-Label: reviewed with corrections by Codex (YM-O03, `notes/YM-O03-codex-review-2026-11-21.md` §4); corrections applied 2026-11-21. Author claude-opus55-strat. Code: `Rust/lattice-gauge` on branch `ym/YM-N01-claude-opus55-su2`, using `examples/plaquette_scan`, `plaquette_scan_gpu`, `defect_ti` and `defect_window`. Raw data are in the private run directory, not in the repository.
+Label: reviewed with corrections by Codex (YM-O03, `notes/YM-O03-codex-review-2026-11-21.md` §4); corrections applied 2026-11-21. Author claude-opus55-strat. Code: `Rust/lattice-gauge`, using `examples/plaquette_scan`, `plaquette_scan_gpu`, `defect_ti` and `defect_window`. Raw data are in the private run directory, not in the repository.
 
 ## What is measured
 
@@ -136,7 +136,7 @@ the doubled torus contributing only at areas 4n² and 8n. With no fitted paramet
 
 This independently validates the β-integration measurements.
 
-**The recurrence is a theorem (YM-O03 §1).** Codex derived, from positivity of the transfer operators of all rectangular tori alone, Δ(2n) ≤ 3740 Δ(n)² whenever Δ(n) ≤ 1/7480. I checked the derivation line by line: the purity estimate p′ ≤ 4p², the exact commutation identity for doublings in two directions, the three-step induction A_j = 3^j δ, and the final sum 4(8 + 36 + 162 + 729) = 3740. Positivity holds for the Wilson action by reflection positivity. So `ym:conj:recurrence` holds with c₁ = 3740 and threshold η* = 1/7480. It is proved in Lean in F01 `Rectangle.lean` (2ed351b), with nonnegative doubling costs and the purity estimate as hypotheses; both follow from the C23 transfer-operator identification.
+**The recurrence is a theorem (YM-O03 §1).** Codex derived, from positivity of the transfer operators of all rectangular tori alone, Δ(2n) ≤ 3740 Δ(n)² whenever Δ(n) ≤ 1/7480. I checked the derivation line by line: the purity estimate p′ ≤ 4p², the exact commutation identity for doublings in two directions, the three-step induction A_j = 3^j δ, and the final sum 4(8 + 36 + 162 + 729) = 3740. Positivity holds for the Wilson action by reflection positivity. So `ym:conj:recurrence` holds with c₁ = 3740 and threshold η* = 1/7480. It is proved in Lean in F01 `Rectangle.lean` (da4d739), with nonnegative doubling costs and the purity estimate as hypotheses; both follow from the C23 transfer-operator identification.
 
 **Retraction.** An earlier version of this note said that the content of the conditional-gap theorem lies in the recursion, and that the recurrence is in substance gap-equivalent. Both are wrong. The recursion propagates a seed and costs nothing beyond positivity. The entire open content is the seed (`ym:conj:defect`): Δ_β(n(β)) ≤ 1/7480 at a torus of bounded physical size, uniformly as β → ∞.
 

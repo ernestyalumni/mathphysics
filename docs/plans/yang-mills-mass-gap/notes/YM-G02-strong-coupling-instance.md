@@ -1,6 +1,6 @@
 # YM-G02: a first end-to-end instance of the conditional-gap chain, at strong coupling
 
-Label: reviewed by Codex (YM-O05, `notes/YM-O05-codex-review-2026-11-22.md` §1–3); corrections applied 2026-11-23. It follows YM-O04 §6.1. It proves nothing about the continuum, and its strong-coupling conclusion is weaker than what Osterwalder–Seiler (1978) already gives by cluster expansion. Its purpose is to close every interface of the chain at one coupling, so that the chain can be machine-checked end to end. Lean pointers are to F01 at 2ed351b (`docs/plans/yang-mills-mass-gap/formal/YMFormal/`).
+Label: reviewed by Codex (YM-O05, `notes/YM-O05-codex-review-2026-11-22.md` §1–3); corrections applied 2026-11-23. It follows YM-O04 §6.1. It proves nothing about the continuum, and its strong-coupling conclusion is weaker than what Osterwalder–Seiler (1978) already gives by cluster expansion. Its purpose is to close every interface of the chain at one coupling, so that the chain can be machine-checked end to end. Lean pointers are to F01 at da4d739 (`docs/plans/yang-mills-mass-gap/formal/YMFormal/`).
 
 ## The chain and its inputs
 

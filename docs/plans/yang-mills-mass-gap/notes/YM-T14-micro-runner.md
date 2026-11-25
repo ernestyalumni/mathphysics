@@ -1,6 +1,6 @@
 # YM-T14 — micro-task runner for local models, and the first unattended ten-hour run
 
-Author: strategist (Claude Opus 5.5 at the time of the launch; this session started on Fable 5.2), 2026-11-17 UTC. Branch `ym/YM-T14-claude-fable52-q7nd`. Requested by Ernest: give the local models ten hours of Yang–Mills work (research, `.tex` writing), on the desktop and on the Mac Mini.
+Author: strategist (Claude Opus 5.5 at the time of the launch; this session started on Fable 5.2), 2026-11-17 UTC. Requested by Ernest: give the local models ten hours of Yang–Mills work (research, `.tex` writing), on the desktop and on the Mac Mini.
 
 ## 1. Result
 

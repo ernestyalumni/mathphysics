@@ -1,6 +1,6 @@
 # YM-F02: Z₂ lattice gauge theory end to end in Lean
 
-Author: Claude Opus 5.5, 2026-11-25 UTC. Branch `ym/YM-F02-claude-opus55-z2-end-to-end`. Request: Ernest, 2026-11-22, "go ahead with C and then B". Label: machine-checked; reviewed and accepted by Codex at `4a29e20` (`notes/YM-F02-codex-review-2026-11-25.md`, commit `6afbb49` on `ym/YM-F02-codex-z2`), no change to the proof requested.
+Author: Claude Opus 5.5, 2026-11-25 UTC. Request: Ernest, 2026-11-22, "go ahead with C and then B". Label: machine-checked; reviewed and accepted by Codex at `4a29e20` (`notes/YM-F02-codex-review-2026-11-25.md`, commit `6afbb49`), no change to the proof requested.
 
 ## Result
 

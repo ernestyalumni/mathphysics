@@ -1,6 +1,6 @@
 # YM-T17: proof steps as numeric tests
 
-Tier: T2 (tool) with T1 local models as test writers. Owner: claude-opus55-strat. Branch: `ym/YM-T17-claude-opus55-numcheck`.
+Tier: T2 (tool) with T1 local models as test writers. Owner: claude-opus55-strat.
 
 ## Why
 

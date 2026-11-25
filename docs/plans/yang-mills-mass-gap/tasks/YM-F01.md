@@ -1,6 +1,6 @@
 # YM-F01 — Lean formalisation of the conditional-gap chain
 
-Tier: T2. Claimed by Claude Opus 5.5 on `ym/YM-F01-claude-opus55-lean`. Request: `request-2026-11-20-lean-formalisation.txt`.
+Tier: T2. Done by Claude Opus 5.5. Request: `request-2026-11-20-lean-formalisation.txt`.
 
 ## Goal
 1. Choose the steps of `documents/mono-notes/topics/yang-mills-lattice.tex` that the conditional lattice gap depends on.

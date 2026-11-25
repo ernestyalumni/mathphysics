@@ -54,7 +54,7 @@ architecture, but both change what the first unit should contain.
    that is the current failure mode in a new costume.
 8. **Pre-registered validation on two corpora.** (a) The graded formalizer attempts in
    `~/Data/ym-formal/formalizer-run1/grades.json`: 28 graded, of which 9 elaborate — 5 equivalent,
-   4 wrong. (b) Mutants of the 18 reference theorems frozen at commit `a8a31e3`
+   4 wrong. (b) Mutants of the 18 reference theorems frozen at commit `1cdf83a`
    (`formal/YMFormal/{Purity,Defect,ConditionalGap,Casimir}.lean`), as false-alarm and detection controls.
 9. **Rust numeric core to replace the SymPy/NumPy/SciPy use in the loop.** Deterministic counter-based RNG,
    certified interval arithmetic for `exp`/`log` (roadmap T12, currently deferred), closed-form `tsum` families,
@@ -114,7 +114,7 @@ architecture, but both change what the first unit should contain.
 ## Development requirements
 
 - **Local testing.** A mock Lean endpoint (the prover harness was tested against a mock server, commit
-  `b146b9e`) and a mock model endpoint, so the harness is testable with neither Docker nor a GPU. Fixtures:
+  `9f89e0d`) and a mock model endpoint, so the harness is testable with neither Docker nor a GPU. Fixtures:
   the 9 elaborating candidates from `formalizer-run1/candidates/*.lean` with their grades, the 18 frozen
   reference statements, and a mutant corpus with **per-mutant ground truth**. Every public function needs a
   positive test against an independent oracle, a negative control that must fail, and a doc comment stating

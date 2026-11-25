@@ -1,6 +1,6 @@
 # YM-T16 — Weight-space edit of the local 9B referee
 
-Author: strategist (Claude Opus 5.5), 2026-11-18 UTC. Branch `ym/YM-T16-claude-opus55-wsp`. Code: claw-work `Rust/weight-space/` on branch `feat/weight-space-discovery` (a user of this repository is assumed to have claw-work as well).
+Author: strategist (Claude Opus 5.5), 2026-11-18 UTC. Code: claw-work `Rust/weight-space/` on branch `feat/weight-space-discovery` (a user of this repository is assumed to have claw-work as well).
 
 ## Result
 

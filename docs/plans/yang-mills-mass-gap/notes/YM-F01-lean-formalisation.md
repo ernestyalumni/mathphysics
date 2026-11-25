@@ -1,6 +1,6 @@
 # YM-F01 — Lean formalisation of the conditional-gap chain, and a local-prover test
 
-Author: Claude Opus 5.5, 2026-11-20 UTC. Branch `ym/YM-F01-claude-opus55-lean`. Request: Ernest, 2026-11-20, "Ok let's give 1,2,3 a try please" (`request-2026-11-20-lean-formalisation.txt`).
+Author: Claude Opus 5.5, 2026-11-20 UTC. Request: Ernest, 2026-11-20, "Ok let's give 1,2,3 a try please" (`request-2026-11-20-lean-formalisation.txt`).
 
 ## Result
 
@@ -24,12 +24,12 @@ Author: Claude Opus 5.5, 2026-11-20 UTC. Branch `ym/YM-F01-claude-opus55-lean`. 
 - **Hypotheses, not proved here:**
   - **Spectrum.** That the spectrum is that of the transfer operator, and `Z(n) = Tr 𝖳ⁿ` (`ym:trace-formula`).
   - **Purities.** That each `𝖯_k` is a purity, which uses the symmetry of `Z`.
-  - **Recurrence.** The defect recurrence, Conjecture `ym:conj:recurrence`, which is open. The 4D SU(2) measurements in `notes/YM-N03-defect-measurement.md` (branch `ym/YM-N01-claude-opus55-su2`, be8e89a) find Δ small at n = 2 only at strong coupling, where the 2⁴ torus is confined. So the hypothesis "Δ small at some scale" is roughly finite-size confinement at that scale, and the theorem's content is the step n → 2n, which is this recurrence.
+  - **Recurrence.** The defect recurrence, Conjecture `ym:conj:recurrence`, which is open. The 4D SU(2) measurements in `notes/YM-N03-defect-measurement.md` (be6af67) find Δ small at n = 2 only at strong coupling, where the 2⁴ torus is confined. So the hypothesis "Δ small at some scale" is roughly finite-size confinement at that scale, and the theorem's content is the step n → 2n, which is this recurrence.
   - **Casimir.** For `casimir-sun`, that the real trace over `su(N)` equals the complex trace over `sl_N(ℂ)`. The strategist checked `K(X,Y) = 2N tr(XY)` on `su(N)` numerically for N = 2 to 5 (200 instances); that is evidence, not a proof.
 - **What this establishes.** The finite and algebraic steps that carry the conditional gap are correct as stated. The source has no error in them.
 - **The `ym-s04` step 9 values.** The local 9B flagged them as wrong (YM-T16). Given `C_𝔤 = 2N²`, which is proved here up to the complexification step, the values are right.
 
-## Comparison with Codex's review (YM-O03 §1, fdaccd7 on `ym/YM-O03-codex-review`)
+## Comparison with Codex's review (YM-O03 §1, e848511)
 
 Requested by Ernest, 2026-11-21: "compare §1 with F01, especially which hypotheses Lean assumes and how to cover the rank-one case at β=0".
 
@@ -76,7 +76,7 @@ The gap is `-log r` when `r > 0` and infinite when `r = 0`, so `log 2 / n ≤ �
 - Goedel-Prover-V2-8B (Goedel-LM, Apache-2.0), GGUF Q6_K from `mradermacher/Goedel-Prover-V2-8B-GGUF`, SHA-256 `43a23c09…71aff3a`.
 - Served by the pinned llama.cpp image used for YM-T16, with context 24,576, flash attention and one slot.
 
-**Benchmark.** The 18 statements of commit `a8a31e3`, frozen before any proof was written. `formal/prover.py tasks` builds the tasks file, SHA-256 `304173d9…db914a3`.
+**Benchmark.** The 18 statements of commit `1cdf83a`, frozen before any proof was written. `formal/prover.py tasks` builds the tasks file, SHA-256 `304173d9…db914a3`.
 - **What the model sees for each theorem:**
   - The module up to that theorem, with my proofs of the earlier theorems.
   - Imported modules with their proofs omitted.

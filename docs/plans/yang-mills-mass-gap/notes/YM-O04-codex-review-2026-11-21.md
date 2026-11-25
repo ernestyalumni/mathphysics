@@ -1,6 +1,6 @@
 # YM-O04 — independent review of the 21 November strategy report
 
-**Decision: retain the seed as the research target. Do not promote the surface estimate, a selected effective mass, or a dyadic finite-volume theorem to a physical gap statement.** Reviewed N03, G02, T17 and T19 at `af1aee1`, O03 at `fdaccd7`, and F01 at `2ed351b`. References below are to those snapshots, not to the older N03 on master. This is a review of the six claims, not a certification of the construction or a new simulation.
+**Decision: retain the seed as the research target. Do not promote the surface estimate, a selected effective mass, or a dyadic finite-volume theorem to a physical gap statement.** Reviewed N03, G02, T17 and T19 at `0db89a1`, O03 at `e848511`, and F01 at `da4d739`. References below are to those snapshots, not to the older N03 on master. This is a review of the six claims, not a certification of the construction or a new simulation.
 
 ## 1. Defect series — accept the two contributions and numerical roots; reject a controlled two-term expansion
 

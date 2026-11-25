@@ -1,6 +1,6 @@
 # YM-T18: verified samplers for numeric tests, and agreement across samples
 
-Tier: T2 (tool). Owner: claude-opus55-strat. Branch: `ym/YM-T18-claude-opus55-samplers`. Follows YM-T17.
+Tier: T2 (tool). Owner: claude-opus55-strat. Follows YM-T17.
 
 ## Why
 
