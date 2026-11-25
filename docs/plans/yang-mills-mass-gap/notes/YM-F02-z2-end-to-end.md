@@ -1,12 +1,12 @@
 # YM-F02: Z₂ lattice gauge theory end to end in Lean
 
-Author: Claude Opus 5.5, 2026-11-25 UTC. Branch `ym/YM-F02-claude-opus55-z2-end-to-end`. Request: Ernest, 2026-11-22, "go ahead with C and then B". Label: machine-checked; the statements have not been read by another reviewer.
+Author: Claude Opus 5.5, 2026-11-25 UTC. Branch `ym/YM-F02-claude-opus55-z2-end-to-end`. Request: Ernest, 2026-11-22, "go ahead with C and then B". Label: machine-checked; reviewed and accepted by Codex at `4a29e20` (`notes/YM-F02-codex-review-2026-11-25.md`, commit `6afbb49` on `ym/YM-F02-codex-z2`), no change to the proof requested.
 
 ## Result
 
 `YMFormal.z2_gap`: for `0 ≤ β ≤ 1/(7480·192·n⁴)`, `n ≥ 1`, every direction `i` and every `k`, the transfer matrix in direction `i` on the transverse cube of side `2ᵏ n` satisfies `(λ₂/λ₁)ⁿ ≤ 1/2`. `z2_gap_log` is the form `log 2 / n ≤ -log(λ₂/λ₁)` when `λ₂ > 0`.
 
-There is no hypothesis beyond the range of β: the trace formula in every direction, positivity, the recurrence and the seed are all proved. `formal/check.sh --strict` passes (105 theorems in all, no `sorry`, axioms propext, Classical.choice and Quot.sound).
+There is no hypothesis beyond the range of β: the trace formula in every direction, positivity, the recurrence and the seed are all proved. `formal/check.sh --strict` passes (107 theorems, no `sorry`, axioms propext, Classical.choice and Quot.sound; the count of 105 in commit `4a29e20` missed two with attributes).
 
 **What it is not.** Z₂ is a toy gauge group, and the range of β is extremely strong coupling, where a gap has long been known. It is not a statement about SU(N), the continuum or the infinite-volume state. Its value is that every interface of the chain has been used once with nothing assumed.
 
@@ -26,8 +26,9 @@ There is no hypothesis beyond the range of β: the trace formula in every direct
 
 The spatial side is `2ᵏ n`. The handbook's `ym:prop:conditional-gap` uses the last doubled direction and side `2ᵏ⁺¹ n`.
 
-## Questions for a reviewer
+## Review outcome (Codex, 2026-11-25)
 
-1. Do `energy`, `z2Z` and `transfer` define Z₂ lattice gauge theory, including sides of length 1?
-2. `z2Ratio` is the ratio of the two largest eigenvalues with multiplicity, on all functions of the slice, not only gauge-invariant ones. Is that the intended λ₂? (On the orthogonal complement of the gauge-invariant functions `T` need not be the physical transfer matrix; the eigenvalue 0 occurs there.)
-3. Does anything in the statement make it vacuous or weaker than it reads?
+- **The lattice and `Z` are the intended ones,** including sides of length 1 and time extents 1 and 2. Independent enumeration in exact arithmetic agrees with the trace in all four directions on 1⁴, 2·1³ and 2²·1².
+- **λ₂.** For this energy `T = PTP` with `P` the gauge average, so functions orthogonal to the gauge-invariant ones contribute only zeros. That is a paper observation, not formalised. With transverse side 1 the ratio is `tanh β`.
+- **Not vacuous.** Positive β exist for every n, and entry 1 of the spectrum is a genuine eigenvalue.
+- **Checker defect, fixed.** The strict check's axiom banner only tested for `sorryAx`. `check.sh --strict` now audits every theorem of the modules against the allowlist and fails if any is missing; a planted axiom and `native_decide` both fail it.
