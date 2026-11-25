@@ -32,6 +32,8 @@ pub mod topology;
 pub mod torus;
 /// Exact enumeration of Z2 lattice gauge theory on small tori.
 pub mod z2_gauge;
+/// Exact Z2 gauge theory on small tori (sides >= 1) as a binary linear code: weight enumerators on CPU and GPU.
+pub mod z2_code;
 /// Compact U(1) lattice gauge theory: the counter-model (Coulomb phase in 4D).
 pub mod u1;
 /// Centre vortices: direct maximal centre gauge, centre projection, P-vortices.
