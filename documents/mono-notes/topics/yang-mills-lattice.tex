@@ -683,8 +683,10 @@ is unitary,
 by cyclicity of the trace. The right side is the temporal plaquette of
 $\mathsf K(U',U)$ with $V$ replaced by $V^{-1}$, and Haar measure on a
 compact group is invariant under inversion; so
-$\mathsf K(U,U')=\mathsf K(U',U)$ and $\mathsf T$ is a self-adjoint
-trace-class operator.
+$\mathsf K(U,U')=\mathsf K(U',U)$ and $\mathsf T$ is self-adjoint. It is
+nonnegative and trace class by Proposition~\ref{ym:sc-prop:positivity}, whose
+proof does not use the trace formula; in particular $\operatorname{Tr}\mathsf T$ in
+Eq.~\eqref{ym:trace-formula} with $n=1$ is the integral of the diagonal.
 \begin{proposition}[Purity]\label{ym:prop:purity}
 Let $\mathsf T$ be a self-adjoint trace-class operator with eigenvalues
 $\lambda_1\ge\lambda_2\ge\dots\ge0$, $\lambda_1>0$, and $Z(n)=\operatorname{Tr}
@@ -1199,14 +1201,14 @@ negative plaquettes on the faces of a cube. And the twist is carried by a
 surface, so the planar crossing arguments have no direct counterpart.
 
 \subsection{Positivity of the transfer operator}\label{ym:sc-positivity}
-Proposition~\ref{ym:prop:defect} assumes that the operator $\mathsf T$ of
+Proposition~\ref{ym:prop:defect} uses that the operator $\mathsf T$ of
 Eq.~\eqref{ym:transfer-kernel} is nonnegative on every spatial torus. This
 holds for every compact $G\subset U(m)$ and every $\beta\ge0$; the proof below
 uses only inner products and products of kernels.
 
 A real kernel $k\colon X\times X\to\mathbb R$ is \emph{positive semidefinite}
-if $\sum_{i,j}c_ic_j\,k(x_i,x_j)\ge0$ for all finite families of points
-$x_i\in X$ and reals $c_i$.
+if it is symmetric, $k(x,x')=k(x',x)$, and $\sum_{i,j}c_ic_j\,k(x_i,x_j)\ge0$
+for all finite families of points $x_i\in X$ and reals $c_i$.
 \begin{lemma}[Products and exponentials]\label{ym:sc-lem:schur}
 \begin{enumerate}
 \item If $\phi\colon X\to\mathbb R^D$, then $k(x,x')=\phi(x)\cdot\phi(x')$ is
@@ -1219,7 +1221,8 @@ $x_i\in X$ and reals $c_i$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-(1) $\sum_{i,j}c_ic_j\,\phi(x_i)\cdot\phi(x_j)=\big|\sum_ic_i\phi(x_i)\big|^2$.
+Each kernel constructed is symmetric because its factors are. (1)
+$\sum_{i,j}c_ic_j\,\phi(x_i)\cdot\phi(x_j)=\big|\sum_ic_i\phi(x_i)\big|^2$.
 (2) For finitely many points the matrices $A_{ij}=k_1(x_i,x_j)$ and
 $B_{ij}=k_2(x_i,x_j)$ are positive semidefinite. Write
 $B=\sum_r b_rb_r^{\mathsf T}$ with vectors $b_r$. Then
