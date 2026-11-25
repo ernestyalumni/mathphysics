@@ -286,7 +286,7 @@ Ernest, 2026-11-21: "we've gotta automate this, really can't rely upon me", then
 
 ### Statement checker result (benchmark 2026-11-21 21:45–22:15Z, 900 instances per mapping, seed 20261121)
 
-**Against the pre-registered bar: not useful as it stands.** It fails two of the three criteria. **It passed no wrong statement.**
+**Against the pre-registered bar: not useful as it stands.** It fails two of the three criteria. It passed none of the 10 wrong formalizer statements in (a). It did pass altered statements in (c): 27 of the 167 mutants got PASS, 8 of them without even a WEAKER note (7 of `conditional_gap`, 1 of `purity_bounds`), so a PASS is not evidence of an exact match.
 
 | Part | Result | Bar |
 |---|---|---|
@@ -310,12 +310,11 @@ Ernest, 2026-11-21: "we've gotta automate this, really can't rely upon me", then
 2. **Random search for Lean-only values: 1 false alarm.** `purity_bounds#0` bounds an unused `λ₀` by `λ₁`. With `λ₁ ≈ 6 · 10⁻⁸`, 20 random tries did not find a value in `[0, λ₁]`, so it is reported STRONGER.
 3. **Conclusions must agree exactly: 1 reference flagged.** `gap_from_purity` proves the bound without the premise `P > 1/2`, a documented and legitimate strengthening. The rule compares truth values, so a stronger Lean conclusion is a mismatch.
 
-**Undetected mutants.** 15 of 167. Most make the statement weaker or strengthen a hypothesis only near a boundary:
-- `0 < Δ` → `0 ≤ Δ`;
-- dropping `hn`;
-- the recurrence threshold `1/(2c₁)` → `2/(2c₁)`.
-
-Either the instances rarely reach that boundary, or the parent already carried the WEAKER note, so the signature did not change.
+**Undetected mutants.** 15 of 167. (Corrected 2026-11-25; the first version of this paragraph described most of them as boundary cases, and earlier commit messages said the checker passed no wrong statement.)
+- **`conditional_gap`, 7, verdict PASS:** `<`/`≤` changes in hypotheses or conclusion, the recurrence threshold `1/(2c₁)` changed to `2/(2c₁)` or `1/(3c₁)`, and a dropped hypothesis.
+- **`gap_from_defect`, 5, verdict PASS:** `<`/`≤` changes and dropped hypotheses. The parent already carried the WEAKER note, so a weaker statement does not change the signature.
+- **`gap_from_purity`, 2, verdict FLAGGED:** `1/𝖯 - 1` changed to `2/𝖯 - 1` or `1/𝖯 + 1`. The parent was itself flagged, so the signature did not change.
+- **`purity_bounds`, 1, verdict PASS:** the conclusion `1/𝖯 - 1 ≤ 2s + s²` changed to `1/𝖯 - 2 ≤ 2s + s²`, a weaker conclusion that no sampled instance distinguishes. This is a plain miss.
 
 **What would fix it.** None of this is applied: the benchmark is spent, and a fixed checker needs a fresh pre-registered test set.
 - Treat a defining hypothesis as satisfied by construction.
