@@ -7,6 +7,8 @@ import YMFormal.Rectangle
 import YMFormal.Seed
 import YMFormal.Doubling
 import YMFormal.MatrixSpectrum
+import YMFormal.Layer
+import YMFormal.Z2
 #print axioms YMFormal.purity_bounds
 #print axioms YMFormal.gap_from_purity
 #print axioms YMFormal.defect_nonneg_and_last
@@ -31,3 +33,9 @@ import YMFormal.MatrixSpectrum
 #print axioms YMFormal.doubling_cost_estimate
 #print axioms YMFormal.partition_specSeq
 #print axioms YMFormal.spectrum_specSeq
+#print axioms YMFormal.layerZ_eq_trace
+#print axioms YMFormal.transfer_posSemidef
+#print axioms YMFormal.z2Z_eq_partition
+#print axioms YMFormal.z2_gap
+#print axioms YMFormal.z2_gap_log
+#print axioms YMFormal.z2Z_one

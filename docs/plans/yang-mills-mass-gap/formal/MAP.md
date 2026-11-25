@@ -35,4 +35,4 @@ This file maps the Yang–Mills handbook to the Lean in this directory: `documen
 - **Conjecture `ym:conj:defect`.**
 - **The steps after `ym:physical-gap`.**
 
-Option B, Z₂ end to end, is to formalise the first two for the Z₂ gauge group.
+For the Z₂ gauge group all of the finite-volume steps are formalised, with no hypotheses: the trace formula in every direction (`z2Z_eq_partition`), positivity (`transfer_posSemidef`), the two doubling hypotheses (`doubling_cost_nonneg`, `doubling_cost_estimate`), the seed (`z2F_bounds`) and the conclusion (`z2_gap`). See `notes/YM-F02-z2-end-to-end.md`.
