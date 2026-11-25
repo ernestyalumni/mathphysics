@@ -71,23 +71,27 @@ Claim rules:
 
 ## 4. Workspace
 
-`master` is the one gold version. It is the only base for new work and the only version that notes and the handbook refer to. Every other branch is temporary.
+`master` is the one gold version: it is where all work ends up, and what notes and the handbook refer to. Worktrees and branches are the normal way to work. Use as many as the work needs, and keep them as long as the work needs. From time to time everything is gathered into `master` (below).
 
 Each session works in its own git worktree and branch, so parallel agents never share a working directory:
 
     cd $MP
     git worktree add ../mathphysics-wt/<ID>-<session> -b ym/<ID>-<session> master
 
-An agent on another machine clones the canonical checkout instead and pushes its `ym/...` branch back (§10). Commit to that branch only. Never commit to `master`. Never push anywhere unless the packet says so. Only Ernest merges into `master`, by fast-forward or merge commit, never by squash or rebase, so that cited hashes stay valid.
+An agent on another machine clones the canonical checkout instead and pushes its `ym/...` branch back (§10). Commit to that branch only. Never commit to `master`. Never push anywhere unless the packet says so. Start from `master`, or from another `ym/*` branch if you need work that is not on `master` yet; say which in your `CLAIM`. A finished branch does not have to be merged at once.
 
-- **Work not on `master` yet.** If the packet needs it, post a `QUESTION` asking for it to be merged first. Do not base a branch on another unmerged branch unless Ernest says so.
-- **After `SUBMIT`.** Do not add commits to a submitted branch without posting the new tip on the thread. A branch that moves after it was prepared for merging is how work gets left behind.
-- **After the merge.** Remove your worktree and delete your branch. From `$MP`, the first two commands are checks: the first must print `merged`, the second must print nothing. If not, or if a later command refuses, stop and say so on the thread; never use `--force` or `-D`:
+**Gathering into `master`.** Done when Ernest asks for it. If a lot of finished work has piled up, the strategist or coordinator suggests it. One agent prepares it:
 
-      git merge-base --is-ancestor ym/<ID>-<session> master && echo merged
-      git -C ../mathphysics-wt/<ID>-<session> status --porcelain
-      git worktree remove ../mathphysics-wt/<ID>-<session>
-      git branch -d ym/<ID>-<session>
+1. List every worktree and local branch (`git worktree list`, `git branch --no-merged master`) and what each holds. Work still in progress stays where it is; say so in the report.
+2. In its own worktree, on a new branch from `master`, merge the finished branches with merge commits, never squash or rebase, so that cited hashes stay valid. Resolve conflicts, rebuild the PDFs, run the tests.
+3. Check that every commit cited in the notes is on the gathered branch (§5), and look again at every merged branch for commits that arrived meanwhile.
+4. Ernest merges the gathered branch into `master` (`git merge --ff-only`) and pushes it.
+5. Clean up, when Ernest says to: remove the worktrees and branches whose work is now on `master`, and leave the ones still in use. From `$MP`, for each one, the first two commands are checks: the first must print `merged`, the second must print nothing. If not, or if a later command refuses, keep that worktree and report it. Never use `--force` or `-D`.
+
+       git merge-base --is-ancestor <branch> master && echo merged
+       git -C <worktree> status --porcelain
+       git worktree remove <worktree>
+       git branch -d <branch>
 
 Read-only inputs: the four Yang–Mills repositories and `openai/math` under `repos/`. Do not write in them, do not run build tools inside them unless the packet is a build packet (YM-O01, YM-A01, YM-A02).
 
@@ -104,7 +108,7 @@ Every `SUBMIT` points to a note `PLAN/notes/<ID>-<slug>.md` with these sections,
 Rules that reviewers enforce:
 
 - A citation means the author opened the source at that place. Remembered references are marked `(from memory, unverified)` and cannot support a result.
-- A commit of this repository cited in a note, packet, `BOARD.md` or the handbook is on `master`, or is an earlier commit on the branch being submitted. Check with `git merge-base --is-ancestor <commit> HEAD`. If you rebase, replace every hash you cited. Branch names belong on the tracker thread, not in notes. Citations of other repositories keep their pins.
+- A commit of this repository cited in a note, packet, `BOARD.md` or the handbook is on `master`, or is an earlier commit on the same branch (gathering brings it to `master` with the same hash). Check with `git merge-base --is-ancestor <commit> HEAD`. If you rebase, replace every hash you cited. Branch names belong on the tracker thread, not in notes. Citations of other repositories keep their pins.
 - A name in the Lean code is never evidence of what a declaration means. Unfold the definition.
 - A number is given with how it was computed. Two independent methods for anything another task will depend on.
 - A failed or inconclusive attempt is a valid deliverable. Say so plainly. Do not dress it up.
@@ -166,7 +170,7 @@ Ernest runs agents on several machines of one local network. All of them work on
 
 **Working.** Same protocol as §3–§8 with two differences:
 
-1. Branch from the remote: `git fetch origin && git checkout -b ym/<ID>-<session> origin/master`.
+1. Branch from the remote: `git fetch origin && git checkout -b ym/<ID>-<session> origin/master` (or from another `origin/ym/...` branch, §4).
 2. `SUBMIT` requires the branch to be on the canonical host: `git push origin ym/<ID>-<session>`. Push only `ym/*` branches. Never push `master`; git on the canonical host refuses a push to its checked-out branch, and that refusal is intended.
 
 **Talking.** Agent-to-agent conversation is the tracker thread: `QUESTION @<session>` and `ANSWER`, on the thread of the task the question is about. It works identically across machines. No side channels: a decision that is not on a thread or in a file did not happen.
