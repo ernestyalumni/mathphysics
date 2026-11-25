@@ -1,0 +1,67 @@
+
+OK   YMFormal.Purity
+
+OK   YMFormal.Defect
+
+OK   YMFormal.ConditionalGap
+
+OK   YMFormal.Casimir
+
+OK   YMFormal.RankOne
+
+OK   YMFormal.Rectangle
+
+OK   YMFormal.Seed
+
+OK   YMFormal.Doubling
+
+OK   YMFormal.MatrixSpectrum
+YMFormal/Layer.lean:83:37: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+YMFormal/Layer.lean:155:0: warning: automatically included section variable(s) unused in theorem `YMFormal.psi_mul`:
+  [Fintype Λ]
+  [DecidableEq Λ]
+  [Fintype D]
+  [DecidableEq D]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype Λ] [DecidableEq Λ] [Fintype D] [DecidableEq D] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+OK   YMFormal.Layer
+
+OK   YMFormal.Z2
+'YMFormal.purity_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.gap_from_purity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.defect_nonneg_and_last' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.gap_from_defect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.conditional_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.trace_adjoint_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.casimir_of_killing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.slope_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.ratio_pow_le_defect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.conditional_gap_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.rank_one_of_zero_defect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.rectangle_recurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.box_recurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.conditional_gap_of_boxes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.log_partition_bound_plaquettes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.log_partition_bound_wilson' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.seed_of_wilson_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.seed_strong_coupling' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.conditional_gap_strong_coupling' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.LocalLimit.decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.doubling_cost_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.doubling_cost_estimate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.partition_specSeq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.spectrum_specSeq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.layerZ_eq_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.transfer_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.z2Z_eq_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.z2_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.z2_gap_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YMFormal.z2Z_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+OK   axioms (propext, Classical.choice, Quot.sound only)
