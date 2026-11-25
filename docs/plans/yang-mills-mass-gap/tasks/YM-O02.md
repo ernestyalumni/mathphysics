@@ -8,7 +8,7 @@ Tier T2 · Operations · Current priority requested by Ernest · Review: indepen
 2. Keep machine-specific addresses/usernames/fingerprints in private workspace notes or untracked `.pdd/ym-lan.env` on the worker. Use the Linux canonical host for PDD/tracker writes.
 3. Establish discovery → ping → TCP/22 → verified host identity → key authentication → same tracker read. Either direction can bootstrap; Mac-to-Linux is enough for the canonical tracker. Linux-to-Mac needs Remote Login enabled on the Mac.
 4. Characterize and repair `bin/ym` portability without changing its tracker interface. No local Linux tools required on a remote Mac worker.
-5. Once SSH works, clone the existing program branch over the LAN into a separate directory; preserve existing clones. Never clone or upload home directories or private material. Copy any uncommitted onboarding files explicitly and mark them as a local overlay, or wait for a coordinator-approved commit; a clone transfers committed content only.
+5. Once SSH works, clone `master` over the LAN into a separate directory; preserve existing clones. Never clone or upload home directories or private material. Copy any uncommitted onboarding files explicitly and mark them as a local overlay, or wait for a coordinator-approved commit; a clone transfers committed content only.
 6. Post PROGRESS hello and ANSWER on this thread from distinct machines. Record receipt time and stages honestly. Independent review is still required before `done`.
 7. Update `CODEX-HANDOFF-2026-11-15.md` for Fable. Do not inject terminal keystrokes into an unidentified live Claude session or launch a billed model to deliver a report.
 

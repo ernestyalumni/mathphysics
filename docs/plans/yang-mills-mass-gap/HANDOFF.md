@@ -1,5 +1,7 @@
 # HANDOFF — Yang–Mills program
 
+**Branches (2026-11-25).** `master` is the one gold version and the only base for new work; all earlier program branches are merged or superseded and deleted. Only Ernest merges. Rules: [06-AGENT-PROTOCOL.md](06-AGENT-PROTOCOL.md) §4. Branch names in the log below are history.
+
 Last updated: 2026-11-16 UTC, Codex follow-up and strategist sessions 4–6 (see the log). At the time of the follow-up, the shared checkout was `master` at 16e44a3 with uncommitted published copies; follow-up sources were on `ym/YM-O02-codex-b7f4`. The program branch `feat/yang-mills-mass-gap-program` subsequently incorporated that branch through 38f0423 and the strategist's launcher fix. One read-only research/review subagent ran at Ernest's request. The Mac daily source collector was scheduled; it does not launch a model.
 
 ## Session 3 (2026-11-15/16): local models — read `notes/local-models.md`

@@ -1,6 +1,6 @@
 # Yang–Mills program: audit the construction, build the tools, attack the mass gap
 
-Started 2026-11-14 by Ernest Yeung. Strategist: Fable 5.2 (Cyclonus). Branch: `feat/yang-mills-mass-gap-program`.
+Started 2026-11-14 by Ernest Yeung. Strategist: Fable 5.2 (Cyclonus). Gold version: `master` (protocol [06](06-AGENT-PROTOCOL.md) §4).
 Original request, verbatim: [request.txt](request.txt). Amendment of 2026-11-15: [request-2026-11-15-amendment.txt](request-2026-11-15-amendment.txt). Both PDD intents are approved and recorded in `docs/PRODUCT_INTENT.md`; see [HANDOFF.md](HANDOFF.md) for what `pdd intent apply` did and did not do.
 
 **If you are resuming this work, read [HANDOFF.md](HANDOFF.md) first.** It says what is done, what is running, and what to do next.

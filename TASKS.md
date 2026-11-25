@@ -6,7 +6,7 @@
 
 - Plan, strategy, agent protocol and task packets at
   [docs/plans/yang-mills-mass-gap](docs/plans/yang-mills-mass-gap/README.md);
-  resume from its HANDOFF.md. Branch `feat/yang-mills-mass-gap-program`.
+  resume from its HANDOFF.md. Gold version: `master`.
 - November 15: mathematical write-up with proofs and a Lean map in
   `documents/mono-notes/topics/yang-mills-lattice.tex`; Lean 4.32.0 in Docker
   with the pinned compiled build (axioms reproduced); first Rust slice
