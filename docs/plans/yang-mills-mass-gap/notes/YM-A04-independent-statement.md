@@ -122,7 +122,7 @@ A hierarchy over a family C has these parts.
 
 **The Wightman part.**
 - A Hilbert space, labels and a Wightman theory.
-- For each d ∈ ℕ a finite-dimensional complex normed space F_d, the fields of scaling degree d, with linear maps ι_d: F_d → Λ.
+- For each d ∈ ℕ a finite-dimensional complex normed space F_d, the fields of index d (a natural number used as the exponent in the OPE; not asserted to be a scaling dimension), with linear maps ι_d: F_d → Λ.
 - A map π: 𝒯 → ⊔_d F_d from tokens to tagged fields.
 
 **Phases.**
@@ -140,9 +140,9 @@ A hierarchy over a family C has these parts.
 - **Labels.** Each ι_d is injective. Some φ(ι(a), f) is nonzero. Every label is some ι_d(a); π is surjective.
 - **Phase measure.** ν is a probability measure with full support (every open set has positive measure).
 - **Correlations.**
-  - corr is symmetric under permuting slots, and C^∞ on Sep_n for each s.
-  - s ↦ corr(s; a; x) is continuous.
-  - ∫ corr(s; a; x) dν(s) = corr(none; a; x): the **mixture**.
+  - For x ∈ Sep_n, corr is symmetric under permuting slots; corr is C^∞ on Sep_n for each s.
+  - For x ∈ Sep_n, s ↦ corr(s; a; x) is continuous.
+  - For x ∈ Sep_n, ∫ corr(s; a; x) dν(s) = corr(none; a; x): the **mixture**.
 - **Analyticity.**
   - For fixed spatial points, cont is holomorphic in z on the tube {Im z₁ < ⋯ < Im zₙ}.
   - **Root.** For x with strictly increasing real times, cont(a; i t; 𝐱) = corr(s₀; a; x).
@@ -214,10 +214,10 @@ These are observations, not findings. Each may already be in `statement.md` or t
    - J is not required to satisfy J² = 1.
    - Label transformations need no continuity and no finite-dimensionality. That is weaker than the usual finite-dimensional representation of SL(2, ℂ).
 7. **The spectral pairing is Euclidean** (W0(a)). This is equivalent to the Minkowski form, because V̄₊ is invariant under p_spatial ↦ −p_spatial. Positive energy corresponds to the convention T(a) = e^{iHa₀}⋯. This matches the boundary-value direction Im z₁ < ⋯ < Im zₙ and the pullback (g·f)(x) = f(Λ⁻¹(x − a)).
-8. **cont is determined by corr(s₀).** The root condition fixes it on {i t : t strictly increasing}, an open piece of a totally real n-dimensional subspace inside the connected tube. By the identity theorem, cont is determined there, so it carries no independent data.
+8. **cont is determined by corr(s₀).** The root condition fixes it on {i t : t strictly increasing}, an open piece of a totally real n-dimensional subspace inside the connected tube. By the identity theorem, cont is determined on the tube; its values outside the ordered tube are not determined.
 9. **No condition at coincident points.** Tests have compact support in Sep_n, so nothing is said there; this is standard.
 10. **Conjunct (i) of convergence is automatic**, since L(p_k) → ∞.
-11. **Scaling degrees are natural numbers.** The OPE uses integer degrees; anomalous dimensions must be absorbed by the ε in the exponents.
+11. **Scaling degrees are natural numbers.** The OPE uses integer degrees. The arbitrary ε can absorb logarithms, but not a fixed anomalous power, since the bounds hold for every ε > 0.
 12. **The OPE constants are 1.** Both OPE bounds are stated with constant 1, and "eventually in r" makes this equivalent to a constant ≤ r^{−ε′}.
 
 The candidates for YM-A03, the clause red-team, are 2, 3, 4 and 5. Of these, 4 is listed in `01-WHAT-OPENAI-PROVED.md` §2 as "no phase is shown to be a limit of lattice states". I have not checked whether 2 is listed.
@@ -259,3 +259,12 @@ The candidates for YM-A03, the clause red-team, are 2, 3, 4 and 5. Of these, 4 i
   - the p-dependent coupling (Def. 1.5);
   - the lattice limit being the mixture (§4 item 4);
   - the free-field exclusion being only partial (§4 item 10; not reached independently here).
+
+## 9. Corrections after YM-O06 (2026-11-25)
+
+The independent review (`YM-O06-codex-review-2026-11-25.md`, item 4) found §§5 and 7 imprecise in places. They were changed after the commits d9dcb83 and 0361301, which keep the original text.
+- **Separated points.** `permutation`, `characterContinuity` and `mixture` are asserted only for x ∈ `separated n` (`ChallengeSpec.lean:126–134`, read again for this correction). The first version omitted that.
+- **Index, not dimension.** The field index d is a natural number, not a proven scaling dimension.
+- **ε.** It can absorb logarithms but not a fixed anomalous power.
+- **Continuation.** It is determined on the ordered tube only.
+
