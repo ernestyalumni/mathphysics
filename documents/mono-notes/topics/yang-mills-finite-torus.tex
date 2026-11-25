@@ -1,0 +1,259 @@
+\section{What can a finite torus tell us about Yang--Mills theory?}\label{ym:sec:finite-guide}
+
+Parallel transport around a small square measures curvature. Parallel transport
+around a spatial circle can create a winding flux tube. Propagation through a
+long Euclidean time interval measures excitation energies. On a periodic
+lattice all three operations use the same link variables, but they answer
+different questions. The distinction matters if one wants to infer a property
+of an infinite-volume Hamiltonian from a calculation on a finite box.
+
+There are two useful comparisons of partition functions. A \emph{twist}
+changes the flux sector while keeping the box fixed. A \emph{doubling} changes
+the box while keeping the local action, the bare coupling and the untwisted
+boundary conditions fixed. The first measures the cost of imposing global
+flux. The second, if it is sufficiently close to an extensive-volume law,
+can certify suppression of \emph{all} excited transfer states. There is no
+known implication here from a small twist free energy to a sufficiently small
+doubling defect. A finite model in which both can be calculated exactly makes
+the difference visible.
+
+\subsection{From a connection to a probability law on links}
+Put a cubical cell structure on a four-torus with $n_\mu$ sites in direction
+$\mu$ and spacing $a$; the physical lengths are $a n_\mu$. A positive link
+$(x,\mu)$ carries a parallel transporter $U_\mu(x)\in G$. Reversing a link
+uses its inverse, not a second independent random variable. An elementary
+square is a \emph{plaquette}. Its holonomy is the ordered product
+\begin{equation}\label{ym:guide-holonomy}
+ U_p=U_\mu(x)U_\nu(x+e_\mu)
+ U_\mu(x+e_\nu)^{-1}U_\nu(x)^{-1}.
+\end{equation}
+Changing the frame at every vertex conjugates $U_p$ at the base point, so its
+trace does not depend on the frame. For a smooth connection,
+Eq.~\eqref{ym:plaquette-expansion} gives $U_p=\exp(a^2F_{\mu\nu}+O(a^3))$.
+Thus $1-\operatorname{Re}\operatorname{tr} U_p/m$, for $G\subset U(m)$,
+measures squared curvature to leading order, by Eq.~\eqref{ym:plaquette-energy}.
+This is the \emph{classical} reason for the local action; it does not say
+that typical configurations in the quantum integral are smooth connections.
+
+Write $E$ for the sum of these dimensionless plaquette energies, each based
+square in each of the six planes counted once. Integrate $e^{-\beta E}$ over
+independent normalized Haar measures on the positive links, as in
+Eq.~\eqref{ym:wilson-partition}. Dividing by this integral $Z$ gives the
+Wilson probability law. At $\beta=0$ all assignments have their original Haar
+weight and $Z=1$; at large $\beta$ the law favours small plaquette energy.
+Small $\beta$ is \emph{strong} bare coupling, not a fine-mesh approximation
+to a smooth field. A local observable accessible in a simulation is the mean
+normalized plaquette trace. One cannot read a mass from its value on one box.
+
+\subsection{Changing the flux: a worked example in cellular cohomology}
+Take $G=\mathbb Z_2=\{+1,-1\}$. Write $U_e=(-1)^{u_e}$, so $u$ is a
+cellular $1$-cochain over $\mathbb F_2$. A vertex gauge change adds the
+coboundary of a $0$-cochain. Equation~\eqref{ym:guide-holonomy} now says
+$U_p=(-1)^{(\delta u)_p}$: the plaquette field is an \emph{exact}
+$2$-cochain. In particular $\delta^2u=0$; around each cube the product
+of the six face signs is $+1$. The dual plaquettes of negative sign form
+a closed sheet modulo two, not necessarily a smooth or connected surface.
+Links are indexed by site and direction even on a side of length one;
+repeated occurrences in a boundary cancel in pairs. Replacing the cell
+structure by a simple graph would change the theory.
+
+To impose flux, prescribe a closed $2$-cochain $t$ and replace $\delta u$
+by $t+\delta u$ in the weight. Moving the chosen sheet by $\delta b$
+changes no partition function: $t+\delta b+\delta u=t+\delta(u+b)$, and
+$u\mapsto u+b$ permutes the integration variables. What cannot be changed
+this way is the pairing of $t$ with a closed coordinate two-torus $S$:
+\begin{equation}\label{ym:guide-flux-pairing}
+ \langle t+\delta b,S\rangle=\langle t,S\rangle+\langle b,\partial S\rangle
+ =\langle t,S\rangle\quad\text{in }\mathbb F_2.
+\end{equation}
+For example, mark the $12$-plaquettes based at $x^1=x^2=0$ for every
+$x^3,x^4$. Each $12$-torus at fixed $(x^3,x^4)$ meets the mark once. The
+marked plaquettes are dual to a sheet extending in directions $3,4$; its
+location is movable but its flux is not. The six independent plane pairings
+give $H^2(T^4;\mathbb F_2)\cong\mathbb F_2^6$, hence 64 twist sectors.
+This is a background flux, not the result of gauge fixing a sampled field.
+
+One can sum by plaquette patterns instead of link assignments. Let
+$C=\operatorname{im}(\delta:C^1\to C^2)$ have rank $d$, let $w(c)$ count the
+nonzero faces of $c$, and let $A_w^{(t)}$ count patterns of weight $w$ in
+$t+C$. With $N_1$ links there are $2^{N_1-d}$ preimages of each pattern.
+Each negative plaquette costs $1-(-1)=2$. The normalized integral is therefore
+\begin{align}
+ Z_\beta[t]&=2^{-N_1}\sum_u e^{-2\beta w(t+\delta u)}\notag\\
+ &=2^{-d}\sum_w A_w^{(t)}e^{-2\beta w}.\label{ym:guide-enumerator}
+\end{align}
+This is an exact finite sum at any $\beta$, not a sample of rare flux events.
+There is a check across sectors: the binary vectors orthogonal to $C$ are
+$2$-cycles since $\langle z,\delta u\rangle=\langle\partial z,u\rangle$.
+On the dual four-torus they are closed $2$-cochains, the disjoint union
+of all 64 cohomology classes. The check takes a simple polynomial form. For a set $B$ of patterns on
+$P$ faces put $W_B(X,Y)=\sum_{z\in B}X^{P-w(z)}Y^{w(z)}$. Orthogonality
+gives $\mathbf 1_{z\in C^\perp}=2^{-d}\sum_{c\in C}(-1)^{c\cdot z}$.
+In the sum over $z$, a face with $c_p=0$ then gives $X+Y$, and one with
+$c_p=1$ gives $X-Y$. Identifying the dual torus with the original yields
+\begin{equation}\label{ym:guide-duality}
+ \sum_{[t]\in H^2(T^4;\mathbb F_2)} W_{t+C}(X,Y)
+ = W_{C^\perp}(X,Y)=2^{-d}W_C(X+Y,X-Y).
+\end{equation}
+On the $2^4$ torus there are 96 faces and $d=45$; the two sides agree in
+all 97 integer coefficients after clearing $2^d$. This tests the
+\emph{sum} over sectors, not each sector against compensating errors.
+
+For one magnetic twist the dimensionless free-energy cost is
+$-\log(Z_\beta[t]/Z_\beta[0])$ (Eq.~\eqref{ym:twist-free-energy}). Choosing
+a time direction, an electric flux sector is selected instead by Fourier
+projection over the three temporal twist bits $k$ at zero magnetic twist:
+\begin{equation}\label{ym:guide-electric}
+ \widehat Z_\beta(e)=\tfrac18\sum_{k\in\mathbb F_2^3}(-1)^{e\cdot k}Z_\beta[k],
+ \qquad F_e=-\log\frac{\widehat Z_\beta(e)}{\widehat Z_\beta(0)} .
+\end{equation}
+For example, on $2^4$ at $\beta=0.2$, Eq.~\eqref{ym:guide-enumerator} gives
+a magnetic cost of about $0.013$ and Eq.~\eqref{ym:guide-electric} an electric
+cost of about $5.06$ for one unit; at $\beta=0.6$ the costs are about $3.21$
+and $0.086$, respectively. The relative cost reverses on the \emph{same}
+small torus. Confinement is a question about how such costs, or large Wilson
+loops, scale with size; a finite-box crossing does not settle it. A centre
+twist is available also in $SU(2)$, but an $SU(2)$ link is not a binary
+cochain and Eq.~\eqref{ym:guide-enumerator} does not apply to that group.
+
+\subsection{Changing the box: why a seed says something about a spectrum}
+Keep the transverse sizes fixed and call one direction time. Collecting the
+spatial links into a slice and integrating the temporal links gives a
+one-step operator $\mathsf T$. Closing a history after $t$ slices gives
+$Z(t)=\operatorname{Tr}\mathsf T^t$ (Eq.~\eqref{ym:trace-formula}). It is
+operator positivity, not just a pointwise positive Boltzmann factor, that
+lets us interpret this trace as a sum of nonnegative powers. In the sign
+model the identity $e^{\beta s}=\cosh\beta+s\sinh\beta$ for $s=\pm1$
+expands the temporal weight in products of link signs. Averaging temporal
+links kills a product odd at any vertex. Each surviving term is a
+nonnegative coefficient times the same slice function on the two ends
+(an outer product), so $\mathsf T$ is positive semidefinite. For compact
+matrix groups the corresponding argument is Proposition~\ref{ym:sc-prop:positivity}.
+
+Here is what a time doubling measures. If $\lambda_j$ are the eigenvalues
+with multiplicity, form the normalized weights $p_j=\lambda_j^t/Z(t)$.
+Then $\sum_j p_j=1$ and
+\begin{equation}\label{ym:guide-purity}
+ \frac{Z(2t)}{Z(t)^2}=\sum_j p_j^2\le p_1\sum_j p_j=p_1.
+\end{equation}
+Purity near one forces one state to dominate: if $\mathsf P$ denotes the
+left side, $\sum_{j>1}(\lambda_j/\lambda_1)^t=(1-p_1)/p_1\le
+\mathsf P^{-1}-1$. No choice of interpolating field was made. Unlike a
+single correlation measurement, the bound includes states to which a
+chosen observable might not couple at all.
+
+Now double \emph{all four} sides. The defect
+$\Delta_\beta(n)=16\log Z_\beta(n^4)-\log Z_\beta((2n)^4)$ compares
+boxes at the same $\beta$; here $n^4$ denotes the shape, not a time extent.
+A contribution to $\log Z$ proportional to the number of sites cancels.
+For one side-doubling the cost is $-\log\mathsf P\ge0$ by
+Eq.~\eqref{ym:guide-purity}. Doubling successive axes expresses the defect
+as the sum of four such costs with weights $8,4,2,1$
+(Eq.~\eqref{ym:defect-telescope}). Thus a small defect cannot conceal
+a large cost in one direction by cancellation against the others.
+
+A \emph{seed} is an inequality at one starting size, $\Delta_\beta(n)\le
+1/7480$, not an initial field configuration. What makes that particular
+test useful is Theorem~\ref{ym:thm:recurrence}. Put
+$h_k=3740\,\Delta_\beta(2^kn)$. In the seed range it gives
+\begin{equation}\label{ym:guide-iterate}
+ h_0\le\tfrac12,\qquad h_{k+1}\le h_k^2,
+ \qquad h_k\le(\tfrac12)^{2^k}.
+\end{equation}
+The speed of this decay matters: the time interval in the purity test
+also doubles. Take time as the \emph{first} doubled side of a cube of side
+$N=2^kn$. Its transverse side is still $N$. Equations~\eqref{ym:guide-purity}
+and \eqref{ym:defect-telescope} give, for $r_N=\lambda_2/\lambda_1$,
+\begin{equation}\label{ym:guide-first-axis}
+ r_N^N\le\mathsf P^{-1}-1\le e^{\Delta_\beta(N)/8}-1.
+\end{equation}
+Since $e^x-1\le2x$ for $0\le x\le1$, Eq.~\eqref{ym:guide-iterate}
+bounds the right side of Eq.~\eqref{ym:guide-first-axis} by
+$2^{-2^k}/(4\cdot3740)$. Taking the $2^k$-th root gives $r_N^n\le1/2$.
+The exponent in this last bound is the \emph{starting} side $n$ at every
+volume. Choosing time last instead gives the $2^{k+1}n$ transverse side
+in Eq.~\eqref{ym:conditional-gap}.
+
+\paragraph{A seed one can actually check.}
+On the $1^4$ sign torus every plaquette is a commutator of signs, hence $+1$
+and $Z_\beta(1^4)=1$. On $2^4$ the four links of each plaquette are distinct;
+at $\beta=0$ their signs are independent and unbiased. Consequently each of
+96 faces is negative with probability $1/2$ (the faces need not be independent).
+In Eq.~\eqref{ym:guide-enumerator}, $\langle w\rangle_0=48$. It follows that
+\begin{equation}\label{ym:guide-first-seed}
+ \Delta_0(1)=0,\qquad
+ \left.\frac{\partial\Delta_\beta(1)}{\partial\beta}\right|_{\beta=0}
+ =-\left.\frac{\partial\log Z_\beta(2^4)}{\partial\beta}\right|_{\beta=0}
+ =2\langle w\rangle_0=96.
+\end{equation}
+Evaluating the same finite sum gives the crossing $\Delta_\beta(1)=1/7480$
+at $\beta\simeq1.3926034652\times10^{-6}$. The much cheaper sufficient
+bound $\Delta_\beta(n)\le192\beta n^4$ of Eq.~\eqref{ym:strong-seed}
+certifies $\beta\le1/(7480\cdot192)$ at $n=1$. The bound has exactly twice
+the slope in Eq.~\eqref{ym:guide-first-seed}; the positive crossing
+couplings are only \emph{approximately} in that ratio.
+
+For the four-dimensional sign model the whole finite statement has an
+independently checked formal proof: for any integer $n\ge1$, a single
+$0\le\beta\le 1/(7480\cdot192\,n^4)$, every time direction and every
+$k\ge0$, $r_{2^kn}^{\,n}\le1/2$. The trace representation, positivity and
+seed are derived from the lattice rather than supplied as hypotheses.
+If $r_N>0$ this gives $-\log r_N\ge(\log2)/n$ in lattice units; if
+$r_N=0$ the ratio statement already applies without taking a logarithm.
+One can see which eigenvalue this means without diagonalizing a large
+matrix. On a spatial slice of side one there are three self-links. Their
+spatial plaquettes are trivial; the two occurrences of the temporal sign
+in each time-like plaquette cancel. If a spatial sign is unchanged on
+the next slice its weight is 1; if it flips its weight is
+$q=e^{-2\beta}$. With normalized counting measure the one-link matrix is
+\begin{equation}\label{ym:guide-one-link}
+ B=\tfrac12\begin{pmatrix}1&q\\q&1\end{pmatrix},\qquad
+ B\binom{1}{\pm1}=\frac{1\pm q}{2}\binom{1}{\pm1}.
+\end{equation}
+The full matrix is $B^{\otimes3}$: replacing one of the three even
+eigenvectors by the odd one gives $r_1=(1-q)/(1+q)=\tanh\beta$.
+At $\beta=0$ only the constant state propagates. At positive $\beta$ the
+second mode is real and nonzero. This is a control in a known
+strong-coupling regime, not a continuum result for a compact simple Lie group.
+
+\subsection{What is measured, and what must survive a limit?}
+For $SU(2)$ it is easier to sample a plaquette than to determine an absolute
+partition function. Equation~\eqref{ym:num-integration} integrates the
+\emph{difference} of mean plaquettes on two boxes to obtain the defect:
+the normalization is fixed by $Z_0=1$. If a scan starts instead at
+$\beta_0>0$, it measures $\Delta_\beta-\Delta_{\beta_0}$; an increment
+compatible with zero is not an upper bound on $\Delta_\beta$. Moreover,
+a seed at $n$ requires $n\,\mathsf m(n)\gtrsim 11$ by
+Eq.~\eqref{ym:num-necessary}. A fitted mass is not a certified upper bound
+on the lowest excitation, so this condition cannot be checked by simply
+inserting a fitted number.
+
+A contractible spatial loop summed over its position probes a scalar
+glueball channel when projected onto the scalar symmetries. A spatial loop
+winding once probes a \emph{torelon}, a flux tube wrapped around the box;
+a centre transformation distinguishes it from the scalar loop. A pair of
+winding tubes can be centre neutral and can enter the scalar channel.
+At $\beta=2.5$ and spatial side 10 the single-torelon energy is
+$aE_T=0.2368(13)$, so the \emph{noninteracting estimate} for a pair is
+$2aE_T\simeq0.474$. A late-time scalar fit gives $0.484(17)$ in a window
+chosen after examining the data (Section~\ref{ym:num-glueball}). This
+suggests what operator to measure next---a neutral pair alongside the
+scalar loop. Agreement is not a measurement of the pair interaction or
+of mixing. Likewise the homology of sheets obtained by centre projection
+in Section~\ref{ym:num-topology} describes the topology of a gauge-fixed
+ensemble; it is not the imposed, gauge-invariant flux pairing of
+Eq.~\eqref{ym:guide-flux-pairing}.
+
+Finally, a lattice energy is dimensionless. A bound $(\log2)/n$ gives a
+physical bound $(\log2)/(a n)$ only at that spacing. If $a n$ diverges
+along a sequence of refinements, the latter lower bound tends to zero.
+The missing estimate is a seed at \emph{bounded physical side} $a n$ as
+$a\to0$, with matched bare parameters on each pair of boxes. The
+small-$\beta$ calculation is at the opposite end of the coupling range.
+Even with a uniform seed, one must show that the centred, renormalized
+correlations converge to those of the proposed continuum state and that
+their vectors test the whole sector orthogonal to the vacuum. A theory can
+exist and have positive energy while admitting excitations arbitrarily
+close to zero. It is their exclusion, not the existence of the Euclidean
+measure or the observation of a flux tube, that Eq.~\eqref{ym:gap-statement}
+asks for.

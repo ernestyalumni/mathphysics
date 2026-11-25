@@ -683,10 +683,9 @@ is unitary,
 by cyclicity of the trace. The right side is the temporal plaquette of
 $\mathsf K(U',U)$ with $V$ replaced by $V^{-1}$, and Haar measure on a
 compact group is invariant under inversion; so
-$\mathsf K(U,U')=\mathsf K(U',U)$ and $\mathsf T$ is self-adjoint. It is
-nonnegative and trace class by Proposition~\ref{ym:sc-prop:positivity}, whose
-proof does not use the trace formula; in particular $\operatorname{Tr}\mathsf T$ in
-Eq.~\eqref{ym:trace-formula} with $n=1$ is the integral of the diagonal.
+$\mathsf K(U,U')=\mathsf K(U',U)$ and $\mathsf T$ is self-adjoint.
+Trace class, including the time-one case in Eq.~\eqref{ym:trace-formula},
+follows from positivity and Mercer's theorem in Proposition~\ref{ym:sc-prop:positivity}.
 \begin{proposition}[Purity]\label{ym:prop:purity}
 Let $\mathsf T$ be a self-adjoint trace-class operator with eigenvalues
 $\lambda_1\ge\lambda_2\ge\dots\ge0$, $\lambda_1>0$, and $Z(n)=\operatorname{Tr}
@@ -955,10 +954,10 @@ $p_k(y^{k-1})=p_k(D_kw^{k-1})\le4A_{k-1}^2$, and
 \end{align}
 \end{proof}
 \begin{conjecture}[Small defect at a bounded physical scale]\label{ym:conj:defect}
-There is $\ell_*<\infty$ such that along the couplings of
-Eq.~\eqref{ym:scaling-law} there are integers $n(\beta)\le\ell_*\,
-e^{\beta/b_*}$ with $\Delta_\beta(n(\beta))\le\eta_*$, the same bare
-parameters entering both boxes of Eq.~\eqref{ym:defect}.
+There is a finite physical length $\ell_*>0$ such that, for every
+sufficiently small spacing $a$ along the scaling trajectory, there is an
+integer $n\ge1$ with $a n\le\ell_*$ and $\Delta_{\beta(a)}(n)\le\eta_*$,
+the same bare parameters entering both boxes of Eq.~\eqref{ym:defect}.
 \end{conjecture}
 \begin{proposition}[Conditional lattice gap]\label{ym:prop:conditional-gap}
 If $\Delta_\beta(n)\le\eta_*$ for some $n\ge1$, then for every $k\ge0$ the two
@@ -1034,11 +1033,10 @@ nothing about boxes of bounded physical size as $\beta\to\infty$, which is
 Conjecture~\ref{ym:conj:defect}. With Conjecture~\ref{ym:conj:defect}, in
 physical units,
 \begin{equation}\label{ym:physical-gap}
- \frac{\mathsf m}{a}\ \ge\ \frac{\log2}{a\,n(\beta)}
- \ \ge\ \frac{\log2}{\ell_*\,a\,e^{\beta/b_*}}
- =\frac{\log2}{\ell_*}\,\Lambda
+ \frac{\mathsf m}{a}\ \ge\ \frac{\log2}{a n}
+ \ \ge\ \frac{\log2}{\ell_*}
 \end{equation}
-by Eq.~\eqref{ym:scaling-law}. Three further steps are then needed.
+by the stipulated physical-size bound, not by leading-logarithm scaling alone. Three further steps are then needed.
 \begin{enumerate}
 \item \emph{One coupling on both boxes.} $\Delta_\beta(n)$ compares tori at
  the same $\beta$. In Theorem~\ref{ym:thm:existence} the bare coupling
@@ -1110,15 +1108,16 @@ Since $1+\frac1m\operatorname{Re}\operatorname{tr}U_p
 \end{equation}
 the expectation in the Wilson measure \eqref{ym:wilson-measure}.
 \begin{lemma}[Moving a twist]\label{ym:lem:twist-move}
-For a link $b$ let $\delta b$ be the set of plaquettes containing $b$. Then
+For a link $b$ let $\delta b$ consist of the plaquettes whose boundary
+traverses $b$ an odd number of times, in either orientation. Then
 $Z_\beta[\Sigma\,\triangle\,\delta b]=Z_\beta[\Sigma]$, where $\triangle$ is
 the symmetric difference.
 \end{lemma}
 \begin{proof}
 Substitute $U(b)\to-U(b)$. Haar measure is invariant under multiplication by
 the group element $-1$. By Eq.~\eqref{ym:plaquette} a plaquette variable
-contains $U(b)$ or $U(b)^{-1}$ exactly once if $p\in\delta b$ and not at all
-otherwise, and $-1$ is central with $(-1)^{-1}=-1$; so $U_p\to-U_p$ for
+acquires one factor of $-1$ for each traversal of $b$, since $-1$ is
+central and $(-1)^{-1}=-1$. Even multiplicities cancel, so $U_p\to-U_p$ for
 $p\in\delta b$ and $U_p\to U_p$ otherwise. This exchanges the two summands of
 Eq.~\eqref{ym:twisted-Z} exactly for the plaquettes in $\delta b$.
 \end{proof}
@@ -1140,8 +1139,8 @@ no plaquette in the plane $(1,2)$.
 
 Fix $(y^3,y^4)$ and let $\Pi$ be the set of all plaquettes in the plane
 $(1,2)$ at that $(y^3,y^4)$. Then $|\Sigma_{12}\cap\Pi|=1$. A link in
-direction $1$ or $2$ at that $(y^3,y^4)$ lies in exactly two plaquettes of
-$\Pi$; any other link lies in none. So $|\delta b\cap\Pi|$ is even for every
+direction $1$ or $2$ at that $(y^3,y^4)$ occurs twice in the sum of the boundaries
+of $\Pi$, counting multiplicity; any other link occurs zero times. So $|\delta b\cap\Pi|$ is even for every
 $b$, and so is $|S\cap\Pi|$ for every symmetric difference $S$ of sets
 $\delta b$.
 \end{proof}
@@ -1152,7 +1151,7 @@ the signs over the faces of each cube is $+1$. The twist free energy is
 \end{equation}
 \paragraph{Example: $G=\{\pm1\}$ in two dimensions.}
 Take $G=\{\pm1\}\subset U(1)$, $m=1$, on the two-dimensional torus with sides
-$(L,L)$: $P=L^2$ plaquettes, $2P$ links, each link in exactly two plaquettes.
+$(L,L)$, $L\ge2$: $P=L^2$ plaquettes, $2P$ links, each link in exactly two plaquettes.
 Write $\sigma_p=U_p=\pm1$ and $s_p=-1$ for $p\in\Sigma$, $s_p=+1$ otherwise.
 For $\sigma=\pm1$, $e^{\beta\sigma}=\cosh\beta+\sigma\sinh\beta$, so
 Eq.~\eqref{ym:twisted-Z} with normalized counting measure on the links is
@@ -1207,8 +1206,8 @@ holds for every compact $G\subset U(m)$ and every $\beta\ge0$; the proof below
 uses only inner products and products of kernels.
 
 A real kernel $k\colon X\times X\to\mathbb R$ is \emph{positive semidefinite}
-if it is symmetric, $k(x,x')=k(x',x)$, and $\sum_{i,j}c_ic_j\,k(x_i,x_j)\ge0$
-for all finite families of points $x_i\in X$ and reals $c_i$.
+if it is symmetric and $\sum_{i,j}c_ic_j\,k(x_i,x_j)\ge0$ for all finite families of points
+$x_i\in X$ and reals $c_i$.
 \begin{lemma}[Products and exponentials]\label{ym:sc-lem:schur}
 \begin{enumerate}
 \item If $\phi\colon X\to\mathbb R^D$, then $k(x,x')=\phi(x)\cdot\phi(x')$ is
@@ -1285,9 +1284,10 @@ $\mathsf K_0$, $\mathsf K=\mathsf P\mathsf K_0\mathsf P$.
 \emph{Positivity.} By Lemma~\ref{ym:sc-lem:schur}(2) the kernel $\mathsf K_0$ is
 positive semidefinite on $\mathcal U_{\mathrm s}$. It is continuous, and
 $\mathcal U_{\mathrm s}$ is compact with a finite measure. Approximating
-$\int\int f(U)\mathsf K_0(U,U')f(U')\,dU\,dU'$ by Riemann sums over finite
+$\int\int \overline{f(U)}\mathsf K_0(U,U')f(U')\,dU\,dU'$ by Riemann sums over finite
 partitions shows $\langle f,\mathsf K_0f\rangle\ge0$ for continuous $f$, and by
-density for all $f\in L^2$. Hence
+density for all $f\in L^2$ (for complex tests apply the real bound to
+their real and imaginary parts; symmetry cancels the cross terms). Hence
 $\langle f,\mathsf Kf\rangle=\langle\mathsf Pf,\mathsf K_0\mathsf Pf\rangle\ge0$.
 With $\mathsf M$ the multiplication by $e^{-\frac\beta2E_{\mathrm s}}$, a
 bounded positive self-adjoint operator, $\mathsf T=\mathsf M\mathsf K\mathsf M$
@@ -1300,9 +1300,17 @@ operator whose trace is the integral of the diagonal \cite{Mercer1909}. For
 $\mathsf K_0$ the diagonal is $\prod k(U,U)=1$, so
 $\operatorname{Tr}\mathsf K_0=1$. Products of a trace-class operator with
 bounded operators are trace class, so $\mathsf T=\mathsf M\mathsf P\mathsf
-K_0\mathsf P\mathsf M$ is trace class. Finally
-$\operatorname{Tr}\mathsf T=Z(n_1,n_2,n_3,1)>0$ by
-Eq.~\eqref{ym:trace-formula}.
+K_0\mathsf P\mathsf M$ is trace class. For the time-one trace, the dressed
+kernel is continuous and its integral operator is nonnegative. Product Haar
+measure has full support on the compact slice, so Mercer's diagonal
+formula applies here also:
+\begin{equation}\label{ym:sc-trace-one}
+ \operatorname{Tr}\mathsf T=\int \mathsf T(U,U)\,dU
+ = Z(n_1,n_2,n_3,1)>0 .
+\end{equation}
+The equality with $Z$ is the one-slice Wilson integral itself: both spatial
+half-weights multiply on the diagonal, and the temporal links are integrated
+once. Its integrand is strictly positive.
 \end{proof}
 The Wilson energy is symmetric under permutations of the four axes, so the
 same holds with any axis as time, and the hypothesis of
@@ -1330,7 +1338,7 @@ between the torus and its double. Each $\log\mathsf P_k$ of
 Eq.~\eqref{ym:four-purities} has the same form between consecutive boxes.
 Simulations use heat-bath and over-relaxation updates for $G=SU(2)$, with
 Simpson integration on a grid of step $0.1$ in $\beta$ and jackknife errors.
-The code is \texttt{Rust/lattice-gauge}, with CUDA C++ updates.
+The quoted statistical errors do not bound integration bias from the finite grid.
 
 \paragraph{Check in two dimensions.} For $SU(2)$ on a two-dimensional torus with
 $V$ plaquettes, $Z=\sum_{j}\big(\frac{2I_{2j+1}(\beta)}{\beta}\big)^V$, normalized
@@ -1419,8 +1427,8 @@ $\Delta_\beta(2)$ & 50.23(2) & 71.30(3) & 79.56(3) & 88.48(3)\\
 $\Delta_\beta(4)-\Delta_{0.6}(4)$ & 0.17(5) & 34.3(1) & 70.8(1) & 80.3(1)
 \end{tabular}
 \end{center}
-In the Coulomb phase the defect does not decrease when the box doubles, and
-the integrand of Eq.~\eqref{ym:num-integration} is the same at $n=2$ and
+The larger-box increment is large at $\beta=1.6$; without its baseline
+this is not a measurement of the change under doubling. The integrand of Eq.~\eqref{ym:num-integration} is the same at $n=2$ and
 $n=4$ within $3\%$ ($17.84(4)$ and $18.3(2)$ at $\beta=1.6$). For $SU(2)$ at
 $\beta=1.6$--$2.0$, $\Delta_\beta(2)$ grows from $13$ to $44$ while
 $\Delta_\beta(4)-\Delta_1(4)$ is zero within errors up to $\beta=1.8$. A gapless theory admits no seed $\Delta_\beta(n)\le\frac1{7480}$,
