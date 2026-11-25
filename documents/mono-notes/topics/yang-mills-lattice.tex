@@ -98,7 +98,7 @@ The finite-lattice formulation separates the space of configurations, the
 action, and the measure used to integrate observables. Background for this
 construction is given in \cite{GattringerLang2010}, Sections~2.2--2.4 and~3.1.
 
-\subsubsection{Sites, spacing and oriented links}
+\subsubsection{Link variables: parallel transport on oriented edges}\label{ym:sec:link-variables}
 Let $\ell\ge1$ and $\Lambda_\ell=(\mathbb Z/\ell\mathbb Z)^4$. A site $y$ is
 a four-tuple of integer coordinates, each taken modulo $\ell$. With lattice
 spacing $a$, its physical coordinate is $x=ay$, understood modulo the
@@ -106,8 +106,15 @@ physical period $L=a\ell$ in each direction. Thus $\ell$ counts sites in one dir
 $a$ carries length. The coordinate vectors $e_1,\dots,e_4$ specify lattice
 directions and are distinct from the Lie-algebra basis used later.
 
-A positive link $(y,\mu)$ connects $y$ to $y+e_\mu$. A configuration assigns
-one matrix in $G\subset U(m)$ to each positive link:
+A \emph{link} is an oriented edge; a \emph{link variable} is the value of
+the gauge field on that edge. The link $(y,\mu)$ connects $y$ to $y+e_\mu$.
+Its variable $U(y,\mu)\in G$ records parallel transport between the
+fibres at these two sites. In the continuum a connection tells us how to
+transport along a path; on the lattice the elementary transporters are the
+variables we integrate over. For $SU(2)$ each is a unitary $2\times2$
+matrix of determinant one; for $\mathbb Z_2$ it is just $+1$ or $-1$.
+Choosing one value for every positively oriented link gives \emph{one}
+gauge-field configuration:
 \begin{equation}\label{ym:configuration-space}
  U\colon\Lambda_\ell\times\{1,2,3,4\}\longrightarrow G,
  \qquad \mathcal U_\ell=G^{4\ell^4}.
@@ -136,7 +143,28 @@ If $\psi^\gamma(y)=\gamma(y)\psi(y)$, covariance requires
  &=\gamma(y)U(y,\mu)\psi(y+e_\mu).
  \label{ym:link-transport}
 \end{align}
-This convention determines the order of multiplication around a path.
+Thus our matrix for the oriented edge compares a vector at its endpoint
+with one at its starting point. Successive comparisons multiply in path
+order. The same assignment $U$ enters three different constructions:
+\begin{itemize}
+\item \emph{An elementary square.} Multiply the four edge variables around
+its boundary, using inverses on backward steps as in Eq.~\eqref{ym:plaquette}.
+For four distinct $\mathbb Z_2$ links with signs $-1,+1,+1,+1$ in traversal
+order, the plaquette sign is $(-1)(+1)(+1)(+1)=-1$: there is no separate
+variable to assign to the face.
+\item \emph{A winding loop.} Take $\ell$ consecutive positive steps along
+one spatial axis $j$. Periodicity gives $y+\ell e_j=y$, so the ordered
+product $U(y,j)U(y+e_j,j)\cdots U(y+(\ell-1)e_j,j)$ is a holonomy around
+a noncontractible circle. Its trace defines a winding-loop observable;
+the trace around the elementary square probes local curvature instead.
+\item \emph{One step in Euclidean time.} Fix the spatial link variables on
+two adjacent slices. Integrate the Wilson weight for that layer over
+the temporal links connecting the slices, with half the spatial action
+from each boundary. This gives the transfer kernel
+$\mathsf T(U_t,U_{t+1})$ of Eq.~\eqref{ym:transfer-kernel}, not a product
+along one path. Composing the kernel propagates states through successive
+slices; its eigenvalue ratios determine excitation energies.
+\end{itemize}
 
 \subsubsection{Plaquettes and gauge transformations}
 For $\mu<\nu$, traverse the four sides of an elementary square in the order

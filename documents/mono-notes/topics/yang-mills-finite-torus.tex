@@ -2,10 +2,15 @@
 
 Parallel transport around a small square measures curvature. Parallel transport
 around a spatial circle can create a winding flux tube. Propagation through a
-long Euclidean time interval measures excitation energies. On a periodic
-lattice all three operations use the same link variables, but they answer
-different questions. The distinction matters if one wants to infer a property
-of an infinite-volume Hamiltonian from a calculation on a finite box.
+long Euclidean time interval measures excitation energies. All three use the
+same field: a \emph{link} is an oriented lattice edge, and its \emph{link
+variable} is the group element that records parallel transport along it.
+For $SU(2)$ this is a matrix; for $\mathbb Z_2$ it is a sign. Around a
+square or a spatial circle we multiply those elements along a path. For
+one step in time we instead hold the two spatial slices fixed and integrate
+over the links joining them. See \hyperref[ym:sec:link-variables]{Link variables:
+parallel transport on oriented edges} (p.~\pageref{ym:sec:link-variables})
+for the orientation convention and examples.
 
 There are two useful comparisons of partition functions. A \emph{twist}
 changes the flux sector while keeping the box fixed. A \emph{doubling} changes
