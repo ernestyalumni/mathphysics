@@ -100,6 +100,13 @@ on 2026-09-12 and will be refined with him.
   equation; they never replace one. Before finishing, check every verb of
   calculation in the prose against the displayed line that carries it out
   (Ernest, 2026-10-19).
+- Definitions follow the same rule as algebra. When prose describes an
+  object, display it: the index sets, the sum and its range, the measure
+  and its defining property, and a small explicit example. For example,
+  "each based square in each of the six planes counted once" comes with
+  `P=\{(x;\mu\nu):x\in\Lambda,\ 1\le\mu<\nu\le4\}` and
+  `E=\sum_{p\in P}e_p`. Keep the English beside the expression; it does not
+  replace it (Ernest, 2026-11-25).
 - When specializing a displayed formula, repeat the starting expression,
   define the symbols being introduced, display the replacement assignments,
   and write the intermediate substitutions and vanishing terms. For example,
