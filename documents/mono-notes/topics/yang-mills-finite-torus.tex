@@ -55,22 +55,212 @@ to a smooth field. A local observable accessible in a simulation is the mean
 normalized plaquette trace. One cannot read a mass from its value on one box.
 
 \subsection{Changing the flux: a worked example in cellular cohomology}
-Take $G=\mathbb Z_2=\{+1,-1\}$. Write $U_e=(-1)^{u_e}$, so $u$ is a
-cellular $1$-cochain over $\mathbb F_2$. A vertex gauge change adds the
-coboundary of a $0$-cochain. Equation~\eqref{ym:guide-holonomy} now says
-$U_p=(-1)^{(\delta u)_p}$: the plaquette field is an \emph{exact}
-$2$-cochain. In particular $\delta^2u=0$; around each cube the product
-of the six face signs is $+1$. The dual plaquettes of negative sign form
-a closed sheet modulo two, not necessarily a smooth or connected surface.
-Links are indexed by site and direction even on a side of length one;
-repeated occurrences in a boundary cancel in pairs. Replacing the cell
-structure by a simple graph would change the theory.
+Take $G=\mathbb Z_2=\{+1,-1\}$ under multiplication. Every element is its
+own inverse, $(+1)^{-1}=+1$ and $(-1)^{-1}=-1$, and the group is abelian.
+So the inverses and the order of the factors in
+Eq.~\eqref{ym:guide-holonomy} drop out:
+\begin{equation}\label{ym:guide-z2-holonomy}
+ U_p=U_\mu(x)\,U_\nu(x+e_\mu)\,U_\mu(x+e_\nu)\,U_\nu(x).
+\end{equation}
+A product of signs is $-1$ exactly when an odd number of its factors are
+$-1$. Counting modulo $2$ records this, and the rest of this subsection
+turns that count into linear algebra.
 
+\paragraph{Signs as bits.}
+$\mathbb F_2=\{0,1\}$ is the field with two elements. Multiplication is the
+ordinary one, and addition is modulo $2$:
+\begin{equation}\label{ym:guide-F2}
+ 0+0=0,\qquad 0+1=1+0=1,\qquad 1+1=0.
+\end{equation}
+In particular $-1=1$ in $\mathbb F_2$, so signs in front of terms do not
+matter. The map $b\mapsto(-1)^b$ turns addition of bits into
+multiplication of signs:
+\begin{equation}\label{ym:guide-bits-signs}
+ (-1)^{b+b'}=(-1)^b\,(-1)^{b'},\qquad b,b'\in\mathbb F_2 .
+\end{equation}
+This is consistent with $1+1=0$ because $(-1)(-1)=+1=(-1)^0$. Write each
+link variable as a bit,
+\begin{equation}\label{ym:guide-link-bit}
+ U_\mu(x)=(-1)^{u_\mu(x)},\qquad
+ u_\mu(x)=\begin{cases}0&\text{if }U_\mu(x)=+1,\\
+ 1&\text{if }U_\mu(x)=-1.\end{cases}
+\end{equation}
+
+\paragraph{Cochains.}
+The torus is assembled from cells of four kinds:
+\begin{itemize}
+\item $0$-cells, the sites $x$;
+\item $1$-cells, the links $(x,\mu)$ from $x$ to $x+e_\mu$;
+\item $2$-cells, the plaquettes $(x;\mu\nu)$ with $\mu<\nu$, the
+ squares with corners $x$, $x+e_\mu$, $x+e_\mu+e_\nu$, $x+e_\nu$;
+\item $3$-cells, the cubes $(x;\mu\nu\lambda)$ with $\mu<\nu<\lambda$.
+\end{itemize}
+A \emph{$k$-cochain over $\mathbb F_2$} is a function that assigns a bit to
+every $k$-cell; \emph{cellular} only says that the cells are these lattice
+cells. Write $C^k$ for the set of $k$-cochains. Adding two cochains cell by
+cell with Eq.~\eqref{ym:guide-F2} makes $C^k$ a vector space over
+$\mathbb F_2$, whose dimension is the number of $k$-cells. A $0$-cochain
+$g$ assigns a bit $g(x)$ to every site. By Eq.~\eqref{ym:guide-link-bit}
+the link field is the $1$-cochain $u\colon(x,\mu)\mapsto u_\mu(x)$, and it
+carries the same information as $U$.
+
+\paragraph{The coboundary.}
+The coboundary $\delta\colon C^k\to C^{k+1}$ gives each $(k+1)$-cell the sum
+of the values on the $k$-cells of its boundary. The boundary of a link is
+its two end points; the boundary of a plaquette is its four sides, the links
+of Eq.~\eqref{ym:guide-z2-holonomy}; the boundary of a cube is its six faces.
+For $g\in C^0$, $u\in C^1$ and $s\in C^2$:
+\begin{align}
+ (\delta g)_\mu(x)&=g(x)+g(x+e_\mu),\label{ym:guide-delta0}\\
+ (\delta u)_{x;\mu\nu}&=u_\mu(x)+u_\nu(x+e_\mu)+u_\mu(x+e_\nu)+u_\nu(x),
+ \label{ym:guide-delta1}\\
+ (\delta s)_{x;\mu\nu\lambda}&=s_{x;\mu\nu}+s_{x+e_\lambda;\mu\nu}
+ +s_{x;\mu\lambda}+s_{x+e_\nu;\mu\lambda}
+ +s_{x;\nu\lambda}+s_{x+e_\mu;\nu\lambda}.\label{ym:guide-delta2}
+\end{align}
+With integer values the boundary of an oriented cell carries signs, for
+example $g(x+e_\mu)-g(x)$; in $\mathbb F_2$, $-1=1$ and the signs disappear.
+A $k$-cochain $s$ is \emph{closed} if $\delta s=0$. It is \emph{exact} if
+$s=\delta r$ for some $(k-1)$-cochain $r$.
+
+\paragraph{The plaquette field is $\delta u$.}
+The plaquette field is the function $p\mapsto U_p$ on all plaquettes.
+Substitute Eq.~\eqref{ym:guide-link-bit} into
+Eq.~\eqref{ym:guide-z2-holonomy}, apply Eq.~\eqref{ym:guide-bits-signs}
+three times and compare with Eq.~\eqref{ym:guide-delta1}:
+\begin{align}
+ U_{x;\mu\nu}&=(-1)^{u_\mu(x)}(-1)^{u_\nu(x+e_\mu)}
+ (-1)^{u_\mu(x+e_\nu)}(-1)^{u_\nu(x)}\notag\\
+ &=(-1)^{u_\mu(x)+u_\nu(x+e_\mu)+u_\mu(x+e_\nu)+u_\nu(x)}
+ =(-1)^{(\delta u)_{x;\mu\nu}}.\label{ym:guide-plaquette-delta}
+\end{align}
+So the bit version of the plaquette field is the $2$-cochain $\delta u$.
+This is no coincidence. Both sides are built the same way: $\delta$ sums
+around the boundary, and for an abelian group the holonomy is the product
+around the boundary. Hence every plaquette field is exact. The converse
+fails. Every exact $2$-cochain is closed, by
+Eq.~\eqref{ym:guide-delta-delta-u} below, but the $2$-cochain equal to $1$ on one plaquette $p_0$ and $0$
+elsewhere is not closed: $p_0=(x;\mu\nu)$ is a face of four cubes (the two
+directions $\lambda\notin\{\mu,\nu\}$, each with the cube based at $x$ or
+$x-e_\lambda$), and in Eq.~\eqref{ym:guide-delta2} each of them receives
+exactly one $1$. No link assignment makes a single plaquette negative.
+
+\paragraph{Gauge changes add $\delta g$.}
+By Eq.~\eqref{ym:link-gauge} a gauge transformation $\gamma$ replaces
+$U_\mu(x)$ by $\gamma(x)U_\mu(x)\gamma(x+e_\mu)^{-1}$. For
+$G=\mathbb Z_2$ write $\gamma(x)=(-1)^{g(x)}$ with $g\in C^0$. Then
+$\gamma(x+e_\mu)^{-1}=\gamma(x+e_\mu)$, and by
+Eqs.~\eqref{ym:guide-bits-signs} and~\eqref{ym:guide-delta0}
+\begin{equation}\label{ym:guide-z2-gauge}
+ \gamma(x)\,U_\mu(x)\,\gamma(x+e_\mu)^{-1}
+ =(-1)^{g(x)+u_\mu(x)+g(x+e_\mu)}
+ =(-1)^{u_\mu(x)+(\delta g)_\mu(x)},
+ \qquad u\longmapsto u+\delta g .
+\end{equation}
+A gauge change adds the coboundary of the $0$-cochain $g$. For example, let
+$g=1$ at one site $x_0$ and $0$ elsewhere. By Eq.~\eqref{ym:guide-delta0},
+$(\delta g)_\mu(x)=1$ exactly when $x=x_0$ or $x+e_\mu=x_0$; on a torus
+with every side at least $2$ this flips the eight links that touch $x_0$.
+The plaquettes do not change. Substitute Eq.~\eqref{ym:guide-delta0} into
+each term of Eq.~\eqref{ym:guide-delta1}:
+\begin{align}
+ (\delta\delta g)_{x;\mu\nu}
+ &=\big[g(x)+g(x+e_\mu)\big]+\big[g(x+e_\mu)+g(x+e_\mu+e_\nu)\big]\notag\\
+ &\quad+\big[g(x+e_\nu)+g(x+e_\nu+e_\mu)\big]+\big[g(x)+g(x+e_\nu)\big]\notag\\
+ &=2g(x)+2g(x+e_\mu)+2g(x+e_\nu)+2g(x+e_\mu+e_\nu)=0 .
+ \label{ym:guide-delta-delta-g}
+\end{align}
+Each corner is an end point of two of the four sides. Therefore
+$\delta(u+\delta g)=\delta u+\delta\delta g=\delta u$, and every $U_p$ is
+gauge invariant, as Eq.~\eqref{ym:plaquette-trace-invariant} says for a
+general group.
+
+\paragraph{Around a cube: $\delta\delta u=0$.}
+Substitute Eq.~\eqref{ym:guide-delta1} into each of the six terms of
+Eq.~\eqref{ym:guide-delta2} for the cube $c=(x;\mu\nu\lambda)$. That gives
+$24$ link terms. The cube has $12$ sides, and each lies in exactly two of
+its faces:
+\begin{equation}\label{ym:guide-cube-sides}
+\begin{array}{lll}
+ \text{side of }c & \text{first face} & \text{second face}\\[2pt]
+ (x,\mu) & (x;\mu\nu) & (x;\mu\lambda)\\
+ (x+e_\nu,\mu) & (x;\mu\nu) & (x+e_\nu;\mu\lambda)\\
+ (x+e_\lambda,\mu) & (x+e_\lambda;\mu\nu) & (x;\mu\lambda)\\
+ (x+e_\nu+e_\lambda,\mu) & (x+e_\lambda;\mu\nu) & (x+e_\nu;\mu\lambda)\\
+ (x,\nu) & (x;\mu\nu) & (x;\nu\lambda)\\
+ (x+e_\mu,\nu) & (x;\mu\nu) & (x+e_\mu;\nu\lambda)\\
+ (x+e_\lambda,\nu) & (x+e_\lambda;\mu\nu) & (x;\nu\lambda)\\
+ (x+e_\mu+e_\lambda,\nu) & (x+e_\lambda;\mu\nu) & (x+e_\mu;\nu\lambda)\\
+ (x,\lambda) & (x;\mu\lambda) & (x;\nu\lambda)\\
+ (x+e_\mu,\lambda) & (x;\mu\lambda) & (x+e_\mu;\nu\lambda)\\
+ (x+e_\nu,\lambda) & (x+e_\nu;\mu\lambda) & (x;\nu\lambda)\\
+ (x+e_\mu+e_\nu,\lambda) & (x+e_\nu;\mu\lambda) & (x+e_\mu;\nu\lambda)
+\end{array}
+\end{equation}
+Hence each link variable of the cube appears twice:
+\begin{equation}\label{ym:guide-delta-delta-u}
+ (\delta\delta u)_c=\sum_{e\text{ a side of }c}2u_e=0,
+ \qquad
+ \prod_{p\text{ a face of }c}U_p=(-1)^{(\delta\delta u)_c}=+1 .
+\end{equation}
+The second equation follows from Eqs.~\eqref{ym:guide-plaquette-delta}
+and~\eqref{ym:guide-bits-signs}. So every cube has an even number, $0$,
+$2$, $4$ or $6$, of negative faces.
+
+For example, let $u=1$ on the single link $(x_0,1)$ and $0$ elsewhere. By
+Eq.~\eqref{ym:guide-delta1}, $(\delta u)_p=1$ exactly on the plaquettes
+that have $(x_0,1)$ as a side. These lie in the planes $(1,\nu)$,
+$\nu=2,3,4$, and are based at $x_0$ or $x_0-e_\nu$: six negative
+plaquettes. The cube $(x_0;123)$ contains two of them, $(x_0;12)$ and
+$(x_0;13)$, in agreement with Eq.~\eqref{ym:guide-delta-delta-u}.
+
+\paragraph{The negative plaquettes form a closed sheet.}
+The \emph{dual lattice} has its sites at the centres
+$x+\frac12(e_1+e_2+e_3+e_4)$ of the hypercubes. In four dimensions a
+plaquette $p=(x;\mu\nu)$ has a \emph{dual plaquette} $p^*$: the square
+through the centre of $p$ in the two remaining directions $\rho,\sigma$,
+\begin{equation}\label{ym:guide-dual-plaquette}
+ p^*\ \text{has corners}\
+ x+\tfrac12e_\mu+\tfrac12e_\nu\pm\tfrac12e_\rho\pm\tfrac12e_\sigma .
+\end{equation}
+A cube $c$ with centre $z_c$ has a \emph{dual link} $c^*$ in its one remaining
+direction $\kappa$, the segment from $z_c-\frac12e_\kappa$ to
+$z_c+\frac12e_\kappa$. The plaquette $p$ is a face of the cube $c$ exactly
+when the dual link $c^*$ is a side of the dual square $p^*$. Therefore the
+statement after Eq.~\eqref{ym:guide-delta-delta-u} becomes, on the dual
+lattice: every dual link is a side of an even number of negative dual
+plaquettes. A collection of squares with this property has no free edge
+modulo two. It is a closed surface modulo two, a \emph{sheet}. It may
+branch, with four squares along one dual link, and it may have several
+pieces, so it need not be a smooth or connected surface. In the example
+above, the six dual plaquettes are the six faces of the dual $3$-cube of
+the link $(x_0,1)$, centred at $x_0+\frac12e_1$ and extending
+$\pm\frac12$ in the directions $2,3,4$: the closed surface of a small cube.
+
+\paragraph{Small tori.}
+The site labels are taken modulo the sides $n_\mu$, and a link is labelled
+by its base site and direction, $(x,\mu)$, even when $n_\mu$ is $1$ or $2$.
+For $n_\mu=2$, $x+2e_\mu=x$. The links $(x,\mu)$ and $(x+e_\mu,\mu)$ then
+join the same two sites, but they are two links with independent
+variables. A simple graph, which has at most one edge between two
+vertices, would merge them; that changes the integration variables and $Z$.
+For $n_\mu=n_\nu=1$ the plaquette $(x;\mu\nu)$ has sides $(x,\mu)$,
+$(x,\nu)$, $(x,\mu)$, $(x,\nu)$, and Eq.~\eqref{ym:guide-delta1} gives
+$(\delta u)_{x;\mu\nu}=2u_\mu(x)+2u_\nu(x)=0$: a link that occurs twice in
+a boundary cancels.
+
+\paragraph{Imposing a flux.}
 To impose flux, prescribe a closed $2$-cochain $t$ and replace $\delta u$
 by $t+\delta u$ in the weight. Moving the chosen sheet by $\delta b$
 changes no partition function: $t+\delta b+\delta u=t+\delta(u+b)$, and
-$u\mapsto u+b$ permutes the integration variables. What cannot be changed
-this way is the pairing of $t$ with a closed coordinate two-torus $S$:
+$u\mapsto u+b$ permutes the integration variables. For a set $S$ of
+plaquettes, write $\langle s,S\rangle=\sum_{p\in S}s_p\in\mathbb F_2$, and
+let $\partial S$ be the set of links that are sides of an odd number of
+plaquettes of $S$; $S$ is \emph{closed} if $\partial S$ is empty. Grouping
+the terms of Eq.~\eqref{ym:guide-delta1} by link gives
+$\langle\delta b,S\rangle=\sum_{e\in\partial S}b_e=\langle b,\partial S\rangle$.
+What cannot be changed by $t\mapsto t+\delta b$ is the pairing of $t$ with a
+closed coordinate two-torus $S$:
 \begin{equation}\label{ym:guide-flux-pairing}
  \langle t+\delta b,S\rangle=\langle t,S\rangle+\langle b,\partial S\rangle
  =\langle t,S\rangle\quad\text{in }\mathbb F_2.
