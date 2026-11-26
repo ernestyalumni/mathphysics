@@ -1,6 +1,6 @@
 # YM-T20 evidence manifest
 
-Generated UTC 2026-11-26T16:21:47+00:00 by the strategist sync script.
+Generated UTC 2026-11-26T16:21:52+00:00 by the strategist sync script.
 
 Kept outside git (case text includes N1/N2 source text that is not ours to publish; raw responses stay private): the frozen case files, every per-attempt receipt with prompt hash and full model response, run logs. This manifest pins them. In copied files, `<private-run>` stands for the private run directory and `<workspace>` for the agent workspace.
 
