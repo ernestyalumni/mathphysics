@@ -40,17 +40,119 @@ measures squared curvature to leading order, by Eq.~\eqref{ym:plaquette-energy}.
 This is the \emph{classical} reason for the local action; it does not say
 that typical configurations in the quantum integral are smooth connections.
 
-Write $E$ for the sum of these dimensionless plaquette energies, each based
-square in each of the six planes counted once. Integrate $e^{-\beta E}$ over
-independent normalized Haar measures on the positive links, as in
-Eq.~\eqref{ym:wilson-partition}. Haar measure is the group average that is
-unchanged by left and right multiplication
-(Section~\ref{haar:sec:haar}, p.~\pageref{haar:sec:haar}): for
-$\mathbb Z_2$ each sign has weight $\tfrac12$, and for $SU(2)\approx S^3$
-it is the normalized round measure. Dividing by this integral $Z$ gives the
-Wilson probability law. At $\beta=0$ all assignments have their original Haar
-weight and $Z=1$; at large $\beta$ the law favours small plaquette energy.
-Small $\beta$ is \emph{strong} bare coupling, not a fine-mesh approximation
+\paragraph{Sites, links and plaquettes.}
+The sites, the positive links and the plaquettes of the torus are
+\begin{align}
+ \Lambda&=\mathbb Z/n_1\times\mathbb Z/n_2\times\mathbb Z/n_3\times\mathbb Z/n_4,
+ \label{ym:guide-sites}\\
+ L&=\{(x,\mu):x\in\Lambda,\ 1\le\mu\le4\},
+ &|L|&=4\,n_1n_2n_3n_4,\label{ym:guide-links}\\
+ P&=\{(x;\mu\nu):x\in\Lambda,\ 1\le\mu<\nu\le4\},
+ &|P|&=6\,n_1n_2n_3n_4.\label{ym:guide-plaquettes}
+\end{align}
+The plaquette $p=(x;\mu\nu)$ is the square with corners $x$, $x+e_\mu$,
+$x+e_\mu+e_\nu$, $x+e_\nu$. It is \emph{based} at $x$ and lies in the
+\emph{plane} $\mu\nu$. There are $\binom42=6$ planes,
+\begin{equation}\label{ym:guide-six-planes}
+ \mu\nu\in\{12,\,13,\,14,\,23,\,24,\,34\},
+\end{equation}
+and one square of each plane is based at each site. That is what ``each
+based square in each of the six planes counted once'' means: a sum over $P$
+takes each pair $(x;\mu\nu)$ with $\mu<\nu$ exactly once. The pair $\nu\mu$
+is not added again. It is the same square traversed the other way round,
+and by Eq.~\eqref{ym:guide-holonomy} its holonomy is the inverse,
+\begin{equation}\label{ym:guide-reversed-plaquette}
+ U_\nu(x)U_\mu(x+e_\nu)U_\nu(x+e_\mu)^{-1}U_\mu(x)^{-1}
+ =\big(U_\mu(x)U_\nu(x+e_\mu)U_\mu(x+e_\nu)^{-1}U_\nu(x)^{-1}\big)^{-1}
+ =U_p^{-1}.
+\end{equation}
+For unitary $V$, $\operatorname{tr}V^{-1}=\operatorname{tr}V^\dagger
+=\overline{\operatorname{tr}V}$, so $\operatorname{Re}\operatorname{tr}V^{-1}
+=\operatorname{Re}\operatorname{tr}V$. Counting both orientations would
+therefore only double every term.
+
+\paragraph{The energy.}
+A configuration $U$ assigns one group element $U_\mu(x)\in G$ to each
+positive link, so the space of configurations is $G^L$. For $G\subset U(m)$
+the energy of one plaquette and the total energy are
+\begin{align}
+ e_p(U)&=1-\frac1m\operatorname{Re}\operatorname{tr}U_p,
+ \qquad 0\le e_p(U)\le2,\label{ym:guide-plaquette-energy}\\
+ E(U)&=\sum_{p\in P}e_p(U)
+ =\sum_{x\in\Lambda}\ \sum_{1\le\mu<\nu\le4}
+ \Big(1-\frac1m\operatorname{Re}\operatorname{tr}U_{x;\mu\nu}\Big).
+ \label{ym:guide-energy}
+\end{align}
+The bounds on $e_p$ hold because the eigenvalues of a unitary $m\times m$
+matrix have modulus one, so $|\operatorname{tr}U_p|\le m$. Each $e_p$ is a
+pure number, with no factor of the spacing $a$; that is the sense of
+\emph{dimensionless}. For the two groups of this guide:
+\begin{equation}\label{ym:guide-energy-examples}
+ G=\mathbb Z_2\ (m=1):\quad e_p=1-U_p\in\{0,2\};
+ \qquad
+ G=SU(2)\ (m=2):\quad e_p=1-\tfrac12\operatorname{tr}U_p .
+\end{equation}
+For $SU(2)$ the trace is already real: $\operatorname{tr}V=a+\bar a$ for the
+matrix $V$ in Eq.~\eqref{ym:guide-su2-matrix} below.
+
+\paragraph{Haar measure on one link.}
+Normalized Haar measure $h$ on $G$ is the probability measure that is
+unchanged by left and right multiplication (Section~\ref{haar:sec:haar},
+p.~\pageref{haar:sec:haar}, Eq.~\eqref{haar:bi-invariance}): for every
+integrable $f$ and all fixed $g_L,g_R\in G$,
+\begin{equation}\label{ym:guide-haar}
+ \int_Gf(g_LVg_R)\,h(dV)=\int_Gf(V)\,h(dV),\qquad h(G)=\int_Gh(dV)=1 .
+\end{equation}
+For $\mathbb Z_2$ it is the average of Eq.~\eqref{haar:finite-average} with
+$|G|=2$, each sign having weight $\frac12$:
+\begin{equation}\label{ym:guide-haar-z2}
+ \int_{\mathbb Z_2}f(V)\,h(dV)=\tfrac12f(+1)+\tfrac12f(-1).
+\end{equation}
+For $SU(2)$, every element has the form
+\begin{equation}\label{ym:guide-su2-matrix}
+ V=\begin{bmatrix}a&-\bar b\\ b&\bar a\end{bmatrix},\qquad
+ (a,b)\in\mathbb C^2,\quad|a|^2+|b|^2=1,
+\end{equation}
+which identifies $SU(2)$ with the unit sphere $S^3\subset\mathbb C^2=\mathbb R^4$.
+By Eq.~\eqref{haar:SU2-round}, $h=\sigma/(2\pi^2)$, where $\sigma$ is the
+round surface measure of $S^3$ and $2\pi^2=\sigma(S^3)$ is its total area.
+
+\paragraph{Product Haar measure, partition function and Wilson law.}
+Take one independent copy of $h$ for every positive link:
+\begin{equation}\label{ym:guide-product-haar}
+ \mathcal DU=\prod_{(x,\mu)\in L}h\big(dU_\mu(x)\big),\qquad
+ \int_{G^L}\mathcal DU=1 .
+\end{equation}
+For $\mathbb Z_2$, Eq.~\eqref{ym:guide-haar-z2} on each of the $|L|$ links
+turns this into the average over all $2^{|L|}$ sign assignments,
+$\int F\,\mathcal DU=2^{-|L|}\sum_{U\in\{\pm1\}^L}F(U)$. The partition
+function and the Wilson probability law are
+\begin{align}
+ Z_\beta&=\int_{G^L}e^{-\beta E(U)}\,\mathcal DU,\label{ym:guide-partition}\\
+ \mu_\beta(dU)&=\frac1{Z_\beta}\,e^{-\beta E(U)}\,\mathcal DU,
+ \qquad \int_{G^L}\mu_\beta(dU)=\frac{Z_\beta}{Z_\beta}=1 .
+ \label{ym:guide-wilson-law}
+\end{align}
+Equation~\eqref{ym:guide-partition} is Eq.~\eqref{ym:wilson-partition} of
+Section~\ref{ym:sec:wilson-measure}. That section takes every side equal,
+writes the site as $y$ and the link variable as $U(y,\mu)$:
+\begin{equation}\label{ym:guide-partition-lattice}
+ Z_{\ell,\beta}=\int_{\mathcal U_\ell}e^{-\beta E_\ell(U)}\,\mathcal DU,
+ \qquad n_1=n_2=n_3=n_4=\ell,\quad
+ \mathcal U_\ell=G^L,\quad U(y,\mu)=U_\mu(y),\quad E_\ell=E .
+\end{equation}
+Two limits show what $\beta$ does. At $\beta=0$, $e^{-\beta E}=1$, so
+\begin{equation}\label{ym:guide-beta-zero}
+ Z_0=\int_{G^L}\mathcal DU=1,\qquad \mu_0=\mathcal DU :
+\end{equation}
+every link is an independent Haar-distributed group element. For $\beta>0$
+compare two configurations $U,U'$. The ratio of their densities
+with respect to $\mathcal DU$ is
+\begin{equation}\label{ym:guide-density-ratio}
+ \frac{e^{-\beta E(U)}}{e^{-\beta E(U')}}=e^{-\beta(E(U)-E(U'))},
+\end{equation}
+which tends to $0$ as $\beta\to\infty$ when $E(U)>E(U')$. So at large
+$\beta$ the law favours small plaquette energy. Small $\beta$ is \emph{strong} bare coupling, not a fine-mesh approximation
 to a smooth field. A local observable accessible in a simulation is the mean
 normalized plaquette trace. One cannot read a mass from its value on one box.
 
