@@ -1,26 +1,33 @@
 \section{Haar measure on a compact Lie group}\label{haar:sec:haar}
-On a finite group $G$ the average
+On a finite group $G$, with any function $f\colon G\to\mathbb C$, the average
 \begin{equation}\label{haar:finite-average}
  \int_G f\,dh:=\frac1{|G|}\sum_{V\in G}f(V)
 \end{equation}
-does not change when $f(V)$ is replaced by $f(gV)$ or $f(Vg)$ for a fixed
-$g\in G$: $V\mapsto gV$ and $V\mapsto Vg$ only permute the terms of the sum.
-Haar measure is the same average on a compact Lie group such as $U(1)$,
-$SU(2)$ or $SO(3)$. A lattice gauge integral is a product of these averages,
-one for each link. It is the left and right invariance that makes a gauge
+is a number. Here $|G|$ is the \emph{order} of $G$, the number of its
+elements. It is a positive integer, since $G$ contains at least the
+identity; Lee writes $k$ for it in the proof quoted in
+Proposition~\ref{haar:prop:lee-16-10}. The average does not change when
+$f(V)$ is replaced by $f(gV)$ or $f(Vg)$ for a fixed $g\in G$: the maps
+$V\mapsto gV$ and $V\mapsto Vg$ are bijections of $G$, so they only permute
+the $|G|$ terms of the sum. The scalar product of
+Definition~\ref{dgdt:Def:2.1scalarproductG} is this average applied to
+$\overline{f_1}f_2$. Haar measure is the same average on a compact Lie group
+such as $U(1)$, $SU(2)$ or $SO(3)$. A lattice gauge integral is a product of
+these averages, one for each link. Left and right invariance make a gauge
 transformation an ordinary change of variables there.
 
 \paragraph{Reading.} Lee constructs the invariant volume form in
 Proposition~16.10 and the Remark after it (pp.~410--411)
-\cite{dgdt:JLee2012}. Kosmann-Schwarzbach states existence, uniqueness and
-right invariance on a compact group in Chapter~3, \S2, Theorem~2.1 and
-Definition~2.2 (pp.~34--35), and computes $SU(2)$ and $SO(3)$ in
-Exercises~5.4--5.6 (pp.~79--80) \cite{dgdt:YKosmann-Schwarzbach2010}.
-Hall uses the form in \S4.4 (pp.~93--94) to make representations unitary,
-passes from the form to a measure in Appendix~D (pp.~435--436), gives the
-Weyl integral formula as Theorem~11.30 (p.~330) with the $SU(2)$ case in
-Example~11.33 (p.~332), and the orthonormality of characters as
-Theorem~12.15 (p.~352) \cite{BCHall2015}.
+\cite{dgdt:JLee2012}; both are quoted below. Kosmann-Schwarzbach states
+existence, uniqueness and right invariance on a compact group in Chapter~3,
+\S2, Theorem~2.1 and Definition~2.2 (pp.~34--35), and computes $O(2)$,
+$SU(2)$ and $SO(3)$ in Exercises~3.7 and 5.4--5.6 (pp.~45, 79--80)
+\cite{dgdt:YKosmann-Schwarzbach2010}. Hall uses the invariant integral to
+make representations unitary in \S4.4 (pp.~93--94). He passes from the form
+to a measure in Appendix~D (pp.~435--436). He states the Weyl integral formula
+as Theorem~11.30 (p.~330), with the $SU(2)$ case in Example~11.33 (p.~332),
+and proves orthonormality of characters as Theorem~12.15 (p.~352)
+\cite{BCHall2015}. Each statement and its derivation appears in this section.
 
 \subsection{What is being asked for}
 Let $G$ be a compact Lie group of dimension $n$ and write
@@ -37,17 +44,44 @@ A finite group is a Lie group of dimension zero, and
 Eq.~\eqref{haar:finite-average} is its Haar measure. For a Lie group of
 positive dimension, $\int_G f\,dh$ will be the integral of $f$ times a
 volume form, computed in charts as in Lee, Chapter~16. All integrands below
-are continuous. The Riesz representation theorem extends such an integral to
-a unique Borel measure (Hall, App.~D, p.~436); that extension is needed only
-to speak of the probability $h(A)$ of a set $A$.
+are continuous. The passage from an integral of continuous functions to a
+Borel measure is made in Section~\ref{haar:sec:riesz}; it is needed only to
+speak of the probability $h(A)$ of a set $A$.
 
+Kosmann-Schwarzbach states the general result for locally compact groups
+(Ch.~3, \S2, pp.~34--35):
+\begin{theorem}[Kosmann-Schwarzbach, Theorem~2.1, p.~34 \cite{dgdt:YKosmann-Schwarzbach2010}]\label{haar:thm:KS-2-1}
+Let $G$ be a locally compact group.
+\begin{enumerate}
+\item[(i)] There exists a positive measure on $G$, finite on compact sets
+and not identically zero, that is left-invariant, i.e., for each integrable
+function $f$ and for every $h\in G$,
+\[
+ \int_G f(hg)\,d\mu(g)=\int_G f(g)\,d\mu(g).
+\]
+Such a measure is unique up to multiplication by a positive real number. If
+$f$ is a continuous, nonnegative function, then $\int_G f(g)\,d\mu(g)=0$,
+implies $f=0$.
+\item[(ii)] If $G$ is compact, there is a unique left-invariant measure $\mu$
+such that $\int_G d\mu(g)=1$.
+\item[(iii)] On a compact group, every left-invariant measure is
+right-invariant.
+\end{enumerate}
+\end{theorem}
+\begin{definition}[Kosmann-Schwarzbach, Definition~2.2, p.~35 \cite{dgdt:YKosmann-Schwarzbach2010}]
+On a compact group, the unique left- and right-invariant measure of total
+mass $1$ is called the Haar measure.
+\end{definition}
+In her statement $h$ is a group element; in ours $h$ is the measure.
+Kosmann-Schwarzbach refers to Loomis for the proof of (i) on a general
+locally compact group. For a compact \emph{Lie} group the following
+theorem is proved completely in the next three subsections: a
+left-invariant form (existence), its right invariance (compactness), and
+uniqueness together with inversion (Fubini).
 \begin{theorem}\label{haar:thm:exist-unique}
 A compact Lie group has exactly one normalized Haar measure. It is also
 invariant under inversion: $\int_Gf(V^{-1})\,h(dV)=\int_Gf(V)\,h(dV)$.
 \end{theorem}
-The proof occupies the next three subsections: a left-invariant form
-(existence), its right invariance (compactness), and uniqueness together
-with inversion (Fubini).
 
 \subsection{Existence: a left-invariant volume form}
 Choose a basis $\varepsilon^1,\dots,\varepsilon^n$ of the dual
@@ -61,9 +95,16 @@ $(dL_{V^{-1}})_V(VX)=V^{-1}VX=X$, so
 \begin{equation}\label{haar:omega-matrix}
  \omega_V(VX_1,\dots,VX_n)=\omega_e(X_1,\dots,X_n).
 \end{equation}
-Equivalently, $\omega=\varepsilon^1(\theta)\wedge\cdots\wedge
-\varepsilon^n(\theta)$ for the Maurer--Cartan form $\theta=V^{-1}dV$, which
-is left invariant: $(gV)^{-1}d(gV)=V^{-1}g^{-1}g\,dV=V^{-1}dV$.
+Equivalently, write the Maurer--Cartan form as
+$\Theta=V^{-1}dV=\Theta^kX_k$ in a basis $X_k$ of $\mathfrak g$ dual to
+$\varepsilon^k$. Then
+\begin{equation}\label{haar:maurer-cartan}
+ \omega=\Theta^1\wedge\cdots\wedge\Theta^n,\qquad
+ (gV)^{-1}d(gV)=V^{-1}g^{-1}g\,dV=V^{-1}dV .
+\end{equation}
+The second equation shows that $\Theta$ is left invariant. This form of
+$\omega$ is the one used for the Euler-angle computations of
+Section~\ref{haar:sec:euler}.
 
 To check left invariance of $\omega$ directly, use the chain rule and
 $L_{(gV)^{-1}}\circ L_g=L_{V^{-1}g^{-1}g}=L_{V^{-1}}$:
@@ -73,10 +114,31 @@ $L_{(gV)^{-1}}\circ L_g=L_{V^{-1}g^{-1}g}=L_{V^{-1}}$:
  &=\big(d(L_{(gV)^{-1}}\circ L_g)\big)_V^*\,\omega_e
  =(dL_{V^{-1}})_V^*\,\omega_e=\omega_V .\label{haar:left-invariant-form}
 \end{align}
-Orient $G$ by $\omega$. Then $L_g$ is an orientation-preserving
-diffeomorphism, and the change of variables formula
-$\int_G L_g^*\eta=\int_G\eta$ for compactly supported $n$-forms $\eta$
-(Lee, Prop.~16.6) gives, with $\eta=f\omega$,
+Lee proves the same thing with a left-invariant frame $E_1,\dots,E_n$
+(a basis of the Lie algebra) and its dual coframe $\varepsilon^i$. Left
+invariance of $E_j$ gives
+$(L_g^*\varepsilon^i)(E_j)=\varepsilon^i(L_{g*}E_j)=\varepsilon^i(E_j)
+=\delta^i_j$, so $L_g^*\varepsilon^i=\varepsilon^i$, and then
+$L_g^*(\varepsilon^1\wedge\cdots\wedge\varepsilon^n)
+=L_g^*\varepsilon^1\wedge\cdots\wedge L_g^*\varepsilon^n
+=\varepsilon^1\wedge\cdots\wedge\varepsilon^n$ (p.~410).
+
+Orient $G$ by $\omega$. Lee's Proposition~15.19 says that a Lie group has
+exactly two left-invariant orientations, one for each orientation of
+$\mathfrak g$. The integral of a compactly supported $n$-form is invariant
+under diffeomorphisms:
+\begin{proposition}[Lee, Proposition~16.6(d), p.~407 \cite{dgdt:JLee2012}]\label{haar:prop:lee-16-6}
+Suppose $M$ and $N$ are non-empty oriented smooth $n$-manifolds with or
+without boundary, and $\omega$ is a compactly supported $n$-form on $M$.
+If $F\colon N\to M$ is an orientation-preserving or orientation-reversing
+diffeomorphism, then
+\[
+ \int_M\omega=\begin{cases}\int_NF^*\omega&\text{if $F$ is orientation-preserving,}\\
+ -\int_NF^*\omega&\text{if $F$ is orientation-reversing.}\end{cases}
+\]
+\end{proposition}
+By Eq.~\eqref{haar:left-invariant-form}, $L_g$ carries $\omega$ to itself, so
+it is orientation preserving. Take $F=L_g$ and replace $\omega$ by $f\omega$:
 \begin{equation}\label{haar:left-invariant-integral}
  \int_G(f\circ L_g)\,\omega
  =\int_G(f\circ L_g)\,L_g^*\omega
@@ -86,17 +148,65 @@ $\int_G L_g^*\eta=\int_G\eta$ for compactly supported $n$-forms $\eta$
 The first equality is Eq.~\eqref{haar:left-invariant-form}. Every
 left-invariant $n$-form is $c\,\omega$ for a constant $c$, since by
 Eq.~\eqref{haar:omega-def} it is determined by its value at $e$, an element
-of the one-dimensional space $\Lambda^n\mathfrak g^*$.
+of the one-dimensional space $\Lambda^n\mathfrak g^*$. Lee's statement is:
+\begin{proposition}[Lee, Proposition~16.10, p.~410 \cite{dgdt:JLee2012}]\label{haar:prop:lee-16-10}
+Let $G$ be a compact Lie group endowed with a left-invariant orientation.
+Then $G$ has a unique positively oriented left-invariant $n$-form
+$\omega_G$ with the property that $\int_G\omega_G=1$.
+\end{proposition}
+His proof starts: ``If $\dim G=0$, we just let $\omega_G$ be the constant
+function $1/k$, where $k$ is the cardinality of $G$'' (p.~410); that is
+Eq.~\eqref{haar:finite-average}. Otherwise it is the frame argument above,
+followed by $\omega_G=(\int_G\omega)^{-1}\omega$. He then remarks (p.~411):
+\begin{quote}
+The orientation form whose existence is asserted in this proposition is
+called the \emph{Haar volume form on $G$}. Similarly, the map
+$f\mapsto\int_Gf\omega_G$ is called the \emph{Haar integral}. Observe that
+the proof above did not use the fact that $G$ was compact until the last
+paragraph; thus every Lie group has a left-invariant orientation form that
+is uniquely defined up to a constant multiple. It is only in the compact
+case, however, that we can use the volume normalization to single out a
+unique one.
+\end{quote}
 
-\subsection{Right invariance: the modular function}
+\subsection{Right invariance: the modular function}\label{haar:sec:modular}
 Left and right translations commute, $L_a\circ R_g=R_g\circ L_a$, so
 $R_g^*\omega$ is again left invariant:
 \begin{equation}
  L_a^*(R_g^*\omega)=(R_g\circ L_a)^*\omega=(L_a\circ R_g)^*\omega
  =R_g^*(L_a^*\omega)=R_g^*\omega .
 \end{equation}
-Hence $R_g^*\omega=\Delta(g)\,\omega$ for a real number $\Delta(g)$.
-Evaluate at $e$, using Eq.~\eqref{haar:omega-def} at $V=g$ and
+Hence, by the uniqueness up to a constant,
+\begin{equation}\label{haar:modular-def}
+ R_g^*\omega=\Delta(g)\,\omega,\qquad \Delta(g)\in\mathbb R\setminus\{0\}.
+\end{equation}
+\emph{Compactness forces $|\Delta(g)|=1$.} Measure volume by the density
+$|\omega|$, which $R_g$ multiplies by $|\Delta(g)|$. The diffeomorphism $R_g$
+maps $G$ onto $G$, so the total volume is unchanged, and the total volume is
+finite and positive because $G$ is compact:
+\begin{equation}\label{haar:modular-one}
+ \int_G|\omega|=\int_GR_g^*|\omega|=|\Delta(g)|\int_G|\omega|
+ \quad\Longrightarrow\quad |\Delta(g)|=1 .
+\end{equation}
+This is Kosmann-Schwarzbach's proof of Theorem~\ref{haar:thm:KS-2-1}(iii),
+where $\mu_h(1)=\mu(1)=\Delta(h)\mu(1)$ (p.~35), and Hall's argument in
+Appendix~D (p.~435), quoted with $\alpha$ the normalized left-invariant form:
+\begin{quote}
+If we translate $\alpha$ on the right by some $x\in K$, the resulting form
+$\alpha^x$ is easily seen to be, again, a left-invariant volume form, which
+must agree with $\alpha$ up to a constant. On the other hand, $\alpha^x$ is
+still normalized, so it must actually agree with $\alpha$. Similarly, the
+pullback of $\alpha$ by the map $x\mapsto x^{-1}$ is easily seen to be
+left-invariant and normalized and thus coincides with $\alpha$. Thus,
+$\alpha$ is invariant under both left and right translations and under
+inversions.
+\end{quote}
+Hall's $K$ is connected. Then $\Delta$ is a continuous function with values
+in $\{\pm1\}$ and $\Delta(e)=1$, so $\Delta\equiv1$ and the form itself is
+bi-invariant.
+
+The constant can be computed. Evaluate Eq.~\eqref{haar:modular-def} at $e$,
+using Eq.~\eqref{haar:omega-def} at $V=g$ and
 $(L_{g^{-1}}\circ R_g)(V)=g^{-1}Vg$, whose derivative at $e$ is
 $\operatorname{Ad}_{g^{-1}}$:
 \begin{align}
@@ -107,21 +217,17 @@ $\operatorname{Ad}_{g^{-1}}$:
  =\det(\operatorname{Ad}_{g^{-1}})\,\omega_e .\label{haar:modular}
 \end{align}
 The last step is the action of a linear map on a top-degree form. Thus
-$\Delta(g)=\det\operatorname{Ad}_{g^{-1}}$. Since $\operatorname{Ad}$ is a
-homomorphism and $\det$ is multiplicative, $\Delta\colon G\to\mathbb
-R\setminus\{0\}$ is a continuous homomorphism.
+$\Delta(g)=\det\operatorname{Ad}_{g^{-1}}$, and since $\operatorname{Ad}$ is
+a homomorphism and $\det$ is multiplicative, $\Delta$ is a homomorphism,
+$\Delta(gg')=\Delta(g)\Delta(g')$. Kosmann-Schwarzbach calls it the
+\emph{modular function} and the group \emph{unimodular} when $\Delta=1$
+(p.~35).
 
-Compactness enters here. The image $\Delta(G)$ is a compact subgroup of the
-multiplicative group $\mathbb R\setminus\{0\}$. If $|x|\ne1$ for some $x$
-in it, the powers $x^k$ or $x^{-k}$ tend to infinity as $k\to\infty$,
-contradicting compactness. Therefore $|\Delta(g)|=1$.
-
-The sign of $\Delta(g)$ can be $-1$. In $O(2)$, a reflection $s$ acts on
-the one-dimensional $\mathfrak{so}(2)$ by $\operatorname{Ad}_sX=sXs^{-1}=-X$,
-so $\Delta(s)=-1$ and $R_s$ reverses the orientation fixed by $\omega$. For
-this reason the measure is defined by the density $|\omega|$ rather than by
-$\omega$. Change variables by the diffeomorphism $R_g$, which multiplies
-$|\omega|$ by $|\Delta(g)|$:
+The sign of $\Delta(g)$ can be $-1$ on a disconnected group. In $O(2)$, a
+reflection $s$ acts on the one-dimensional $\mathfrak{so}(2)$ by
+$\operatorname{Ad}_sX=sXs^{-1}=-X$, so $\Delta(s)=-1$ and $R_s$ reverses the
+orientation fixed by $\omega$. For this reason the measure is defined by the
+density $|\omega|$. Change variables by $R_g$:
 \begin{equation}\label{haar:right-invariant-integral}
  \int_G(f\circ R_g)\,|\omega|
  =\frac1{|\Delta(g)|}\int_G(f\circ R_g)\,R_g^*|\omega|
@@ -129,14 +235,13 @@ $|\omega|$ by $|\Delta(g)|$:
  =\int_Gf\,|\omega| .
 \end{equation}
 Equation~\eqref{haar:left-invariant-integral} holds with $|\omega|$ in place
-of $\omega$ by the same steps. On a compact $G$ the total volume
-$\int_G|\omega|$ is finite and positive, and
+of $\omega$ by the same steps, and
 \begin{equation}\label{haar:normalized}
  \int_Gf\,dh:=\frac{\int_Gf\,|\omega|}{\int_G|\omega|}
 \end{equation}
-satisfies Eq.~\eqref{haar:bi-invariance}. The noncompact group of affine maps
-$x\mapsto ax+b$, $a>0$, has $\Delta\ne1$ and no measure invariant on both
-sides; compactness is not a technicality.
+satisfies Eq.~\eqref{haar:bi-invariance}. Without compactness
+Eq.~\eqref{haar:modular-one} is unavailable and $\Delta$ can differ from
+$1$; the affine group of Exercise~3.7(b) below is an example.
 
 \subsection{Uniqueness and inversion}
 Let $h$ be the bi-invariant probability measure of
@@ -154,7 +259,8 @@ left invariance of $\mu$:
 \end{align}
 The left sides are equal, so $\int f\,d\mu=\int f\,dh$ for every continuous
 $f$, and $\mu=h$. A left-invariant normalized measure is automatically the
-bi-invariant one.
+bi-invariant one. This proves Theorem~\ref{haar:thm:KS-2-1}(ii) and (iii)
+for compact Lie groups.
 
 For inversion define $\mu(f)=\int_Gf(V^{-1})\,h(dV)$. Right invariance of
 $h$, applied with $g_R=g^{-1}$, shows that $\mu$ is left invariant:
@@ -167,17 +273,109 @@ By uniqueness $\mu=h$. This completes Theorem~\ref{haar:thm:exist-unique}.
 Uniqueness is what makes the examples below cheap: any left-invariant
 probability measure that one recognizes is \emph{the} Haar measure.
 
-\subsection{Three examples}
-\paragraph{$\mathbb Z_2=\{+1,-1\}$.} Eq.~\eqref{haar:finite-average} gives
-$h(\{+1\})=h(\{-1\})=\tfrac12$. For $N$ independent links the product is
-$2^{-N}$ times counting measure.
+\subsection{From an integral to a measure}\label{haar:sec:riesz}
+Hall continues in Appendix~D (pp.~435--436):
+\begin{quote}
+Now, integration of a smooth function $f$ against $\alpha$ satisfies
+\[
+ \Big|\int_Kf\alpha\Big|\le\sup_K|f|.
+\]
+Meanwhile, by the Stone--Weierstrass theorem (Theorem~7.33 in [Rud1]), every
+continuous function on $K$ can be uniformly approximated by smooth
+functions. Thus, the map $f\mapsto\int_Kf\alpha$ extends by continuity from
+smooth functions to continuous functions, and if $f$ is non-negative,
+$\int_Kf\alpha$ will be non-negative. It then follows from the Riesz
+representation theorem that there is a unique measure $\mu$ on the Borel
+$\sigma$-algebra in $K$ such that
+\[
+ \int_Kf\alpha=\int_Kf(x)\,d\mu(x)
+\]
+for all continuous functions $f$ on $K$. (See Theorems~2.14 and 2.18 in
+[Rud2]).
+\end{quote}
+The inequality is positivity and normalization. Since $\alpha$ is a
+positively oriented form, $\int_Kg\alpha\ge0$ for $g\ge0$ (Lee,
+Prop.~16.6(c)). Apply this to $g=\sup|f|-|f|\ge0$ and use $\int_K\alpha=1$:
+\begin{equation}
+ \Big|\int_Kf\alpha\Big|\le\int_K|f|\,\alpha\le\sup_K|f|\int_K\alpha=\sup_K|f| .
+\end{equation}
+The Riesz theorem converts the positive linear functional
+$f\mapsto\int_Kf\alpha$ with value $1$ at $f=1$ into the Borel probability
+measure of Definition~\ref{haar:def:haar}.
+
+\subsection{Examples: \texorpdfstring{$\mathbb Z_2$}{Z2}, \texorpdfstring{$U(1)$}{U(1)}, \texorpdfstring{$O(2)$}{O(2)}, the affine group, \texorpdfstring{$SU(2)$}{SU(2)}}
+\paragraph{$\mathbb Z_2=\{+1,-1\}$.} Here $|G|=2$, and
+Eq.~\eqref{haar:finite-average} gives $h(\{+1\})=h(\{-1\})=\tfrac12$. For
+$N$ independent links the product is $2^{-N}$ times counting measure.
 
 \paragraph{$U(1)$.} Write $V=e^{i\theta}$, $0\le\theta<2\pi$. Left
 multiplication by $e^{i\alpha}$ is $\theta\mapsto\theta+\alpha$ modulo
-$2\pi$, which preserves Lebesgue measure on the circle. Hence
+$2\pi$, which preserves Lebesgue measure on the circle. Kosmann-Schwarzbach
+writes the result in two ways (p.~35). With $z=e^{i\theta}$,
+$dz=ie^{i\theta}\,d\theta$, so
 \begin{equation}\label{haar:U1}
- h(dV)=\frac{d\theta}{2\pi}.
+ h(dV)=\frac{d\theta}{2\pi}=\frac{ie^{i\theta}\,d\theta}{2\pi i\,e^{i\theta}}
+ =\frac{dz}{2i\pi z}.
 \end{equation}
+
+\begin{exercise}[Kosmann-Schwarzbach, Exercise~3.7, p.~45 \cite{dgdt:YKosmann-Schwarzbach2010}]
+\emph{Haar measure.}
+(a) Find the Haar measure on $O(2)$.
+(b) Find the left-invariant and the right-invariant measures on the group of
+affine transformations of $\mathbb R$.
+\end{exercise}
+\begin{proof}[Solution]
+(a) Let $R_\theta$ be the rotation through $\theta$ and
+$s=\operatorname{diag}(1,-1)$. Every element of $O(2)$ is $R_\theta$ or
+$sR_\theta$, and $sR_\alpha s^{-1}=R_{-\alpha}$. The candidate is
+\begin{equation}\label{haar:O2}
+ \int_{O(2)}f\,dh=\frac12\int_0^{2\pi}\big(f(R_\theta)+f(sR_\theta)\big)
+ \frac{d\theta}{2\pi}.
+\end{equation}
+Left multiplication by $R_\alpha$ sends $R_\theta\mapsto R_{\theta+\alpha}$
+and $sR_\theta\mapsto R_\alpha sR_\theta=s\,(s^{-1}R_\alpha s)R_\theta
+=sR_{\theta-\alpha}$. Both are translations of $\theta$ modulo $2\pi$ and
+preserve $d\theta$. Left multiplication by $s$ sends $R_\theta\mapsto
+sR_\theta$ and $sR_\theta\mapsto R_\theta$, exchanging the two terms. These
+generate all left multiplications, so Eq.~\eqref{haar:O2} is a left-invariant
+probability measure, hence the Haar measure. The reflection $s$ reverses the
+orientation of $\omega$ (Section~\ref{haar:sec:modular}); the measure is
+unaffected because it is built from $|\omega|$.
+
+(b) Write $(a,b)$, $a\ne0$, for $x\mapsto ax+b$. Composition gives
+$(a,b)(c,d)\colon x\mapsto a(cx+d)+b$, that is
+\begin{equation}
+ (a,b)(c,d)=(ac,\ ad+b).
+\end{equation}
+\emph{Left.} Left multiplication by $(c,d)$ is
+$(a,b)\mapsto(ca,\ cb+d)$, with Jacobian determinant $c^2$. Substitute
+$a'=ca$, $b'=cb+d$, so $da'\,db'=c^2\,da\,db$ and $a'^2=c^2a^2$:
+\begin{equation}
+ \int f(ca,cb+d)\,\frac{da\,db}{a^2}
+ =\int f(a',b')\,\frac{c^{-2}\,da'\,db'}{c^{-2}a'^2}
+ =\int f(a',b')\,\frac{da'\,db'}{a'^2}.
+\end{equation}
+\emph{Right.} Right multiplication by $(c,d)$ is
+$(a,b)\mapsto(ac,\ ad+b)$, with Jacobian matrix
+$\begin{bmatrix}c&0\\d&1\end{bmatrix}$ and determinant $c$. Substitute
+$a'=ac$, $b'=ad+b$, so $da'\,db'=|c|\,da\,db$ and $|a'|=|c||a|$:
+\begin{equation}
+ \int f(ac,ad+b)\,\frac{da\,db}{|a|}
+ =\int f(a',b')\,\frac{|c|^{-1}\,da'\,db'}{|c|^{-1}|a'|}
+ =\int f(a',b')\,\frac{da'\,db'}{|a'|}.
+\end{equation}
+So $\frac{da\,db}{a^2}$ is left invariant and $\frac{da\,db}{|a|}$ is right
+invariant. They are not multiples of each other. In
+Kosmann-Schwarzbach's convention $\mu(f\circ r_h)=\Delta(h)\mu(f)$, right
+multiplication applied to the left measure gives, with the same substitution
+$a'=ac$, $b'=ad+b$,
+\begin{equation}
+ \int f(ac,ad+b)\,\frac{da\,db}{a^2}
+ =\int f(a',b')\,\frac{|c|^{-1}c^2}{a'^2}\,da'\,db'
+ =|c|\int f(a',b')\,\frac{da'\,db'}{a'^2},
+\end{equation}
+so $\Delta(c,d)=|c|$. The group is not unimodular.
+\end{proof}
 
 \paragraph{$SU(2)$.} By Eq.~\eqref{quat:su2-general}, $SU(2)$ is the set
 of matrices of norm one in the real four-dimensional space
@@ -295,12 +493,258 @@ alone. Integrate out $\theta_1$ and $\theta_2$ in (a):
  =\frac2\pi\int_0^\pi f(t)\sin^2t\,dt .
 \end{equation}
 \end{proof}
-Equation~\eqref{haar:weyl-SU2} is the $SU(2)$ case of the Weyl integral
-formula (Hall, Eq.~(11.16), p.~332, written over $[-\pi,\pi]$). The weight
-$\sin^2t$ vanishes at $t=0$ and $t=\pi$: conjugacy classes near $\pm1$ are
-small two-spheres, of radius $\sin t$ in Eq.~\eqref{haar:S3-metric}.
+The weight $\sin^2t$ vanishes at $t=0$ and $t=\pi$: the conjugacy class at
+fixed $t$ is the two-sphere $\{(\cos t,\sin t\,\mathbf n)\}$ of radius
+$\sin t$ in Eq.~\eqref{haar:S3-metric}, which shrinks to the points $\pm1$.
 
-\subsection{Three integrals on $SU(2)$}
+\subsection{Euler angles on \texorpdfstring{$SO(3)$}{SO(3)} and \texorpdfstring{$SU(2)$}{SU(2)}}\label{haar:sec:euler}
+Kosmann-Schwarzbach's $\eta_k$ are the matrices $E_k$ of
+Eq.~\eqref{quat:Ei-entries}, $\eta_k=\widehat{\mathbf e_k}$, so
+$\exp(t\eta_k)$ is the rotation through $t$ about $\mathbf e_k$ in
+Eq.~\eqref{quat:rotate-about-n}. Her $\xi_k$ are those of
+Eq.~\eqref{quat:KS-xi}, and $\varphi\colon SU(2)\to SO(3)$ is the covering
+map of Eq.~\eqref{quat:KS-phi}, with $d\varphi(\xi_k)=\eta_k$.
+
+\begin{exercise}[Kosmann-Schwarzbach, Exercise~5.5, p.~80 \cite{dgdt:YKosmann-Schwarzbach2010}]
+\emph{Euler angles and Haar measure on the group $SO(3)$.}
+(a) Show that each rotation $g\in SO(3)$ can be written
+\[
+ g=\exp(\alpha\eta_3)\exp(\beta\eta_1)\exp(\gamma\eta_3)
+\]
+with $0\le\alpha<2\pi$, $0\le\beta\le\pi$, $0\le\gamma<2\pi$, uniquely if
+$\beta\ne0$ and $\beta\ne\pi$. The angles $\alpha$, $\beta$, $\gamma$ are
+called the \emph{Euler angles} of the rotation.
+(b) Show that the Haar integral of $SO(3)$ can be written
+\[
+ I(f)=\frac1{8\pi^2}\int_{\Omega_0}f(\alpha,\beta,\gamma)\sin\beta\,
+ d\alpha\,d\beta\,d\gamma,
+\]
+where $\Omega_0=(0,2\pi)\times(0,\pi)\times(0,2\pi)$.
+\end{exercise}
+\begin{proof}[Solution]
+(a) By Eq.~\eqref{quat:rotate-about-n}, $\exp(\beta\eta_1)$ sends
+$\mathbf e_3\mapsto\cos\beta\,\mathbf e_3+\sin\beta\,\mathbf e_1\times\mathbf e_3
+=\cos\beta\,\mathbf e_3-\sin\beta\,\mathbf e_2$, and $\exp(\alpha\eta_3)$
+sends $\mathbf e_2\mapsto\cos\alpha\,\mathbf e_2-\sin\alpha\,\mathbf e_1$
+and fixes $\mathbf e_3$. Since $\exp(\gamma\eta_3)\mathbf e_3=\mathbf e_3$,
+\begin{equation}\label{haar:euler-axis}
+ \exp(\alpha\eta_3)\exp(\beta\eta_1)\exp(\gamma\eta_3)\,\mathbf e_3
+ =\cos\beta\,\mathbf e_3-\sin\beta\,(\cos\alpha\,\mathbf e_2-\sin\alpha\,\mathbf e_1)
+ =(\sin\beta\sin\alpha,\ -\sin\beta\cos\alpha,\ \cos\beta).
+\end{equation}
+Given $g$, let $\mathbf u=g\mathbf e_3$, a unit vector. Take
+$\beta=\arccos u^3\in[0,\pi]$. If $0<\beta<\pi$, then $\sin\beta>0$ and
+$(\sin\alpha,-\cos\alpha)=(u^1,u^2)/\sin\beta$ is a unit vector, which
+determines $\alpha\in[0,2\pi)$ uniquely. Put
+$k=\big(\exp(\alpha\eta_3)\exp(\beta\eta_1)\big)^{-1}g$. By
+Eq.~\eqref{haar:euler-axis} with $\gamma=0$, $k\mathbf e_3=\mathbf e_3$. So
+$k\in SO(3)$ maps the plane $\mathbf e_3^\perp$ to itself with determinant
+$1$, and is a rotation $\exp(\gamma\eta_3)$ for a unique $\gamma\in[0,2\pi)$.
+Conversely, any factorization has $g\mathbf e_3$ given by
+Eq.~\eqref{haar:euler-axis}, so for $0<\beta<\pi$ it fixes $\beta$, then
+$\alpha$, then $\gamma$. If $\beta=0$ or $\pi$ the vector
+$g\mathbf e_3=\pm\mathbf e_3$ does not determine $\alpha$, and only
+$\alpha\pm\gamma$ is determined.
+
+(b) Write $g=ABC$ with $A=\exp(\alpha\eta_3)$, $B=\exp(\beta\eta_1)$,
+$C=\exp(\gamma\eta_3)$. Then $A^{-1}dA=\eta_3\,d\alpha$,
+$B^{-1}dB=\eta_1\,d\beta$, $C^{-1}dC=\eta_3\,d\gamma$, and by the product
+rule
+\begin{align}
+ \Theta=g^{-1}dg
+ &=C^{-1}B^{-1}A^{-1}\big(dA\,BC+A\,dB\,C+AB\,dC\big)\notag\\
+ &=C^{-1}B^{-1}(A^{-1}dA)BC+C^{-1}(B^{-1}dB)C+C^{-1}dC\notag\\
+ &=\operatorname{Ad}_{C^{-1}}\big(\operatorname{Ad}_{B^{-1}}\eta_3\,d\alpha
+   +\eta_1\,d\beta+\eta_3\,d\gamma\big),\label{haar:euler-MC}
+\end{align}
+where $\operatorname{Ad}_{C^{-1}}\eta_3=\eta_3$ because $C$ commutes with
+$\eta_3$. For $R\in SO(3)$, $\operatorname{Ad}_R\eta_k=R\,\widehat{\mathbf e_k}
+\,R^{-1}=\widehat{R\mathbf e_k}$, so on coefficient vectors in the basis
+$\eta_k$, $\operatorname{Ad}_R$ acts as the matrix $R$. Here $B^{-1}$ is the
+rotation through $-\beta$ about $\mathbf e_1$, and by
+Eq.~\eqref{quat:rotate-about-n}
+\begin{equation}
+ B^{-1}\mathbf e_3=\cos\beta\,\mathbf e_3-\sin\beta\,\mathbf e_1\times\mathbf e_3
+ =\sin\beta\,\mathbf e_2+\cos\beta\,\mathbf e_3,
+ \qquad \operatorname{Ad}_{B^{-1}}\eta_3=\sin\beta\,\eta_2+\cos\beta\,\eta_3 .
+\end{equation}
+Write $\Theta=\Theta^k\eta_k$ and $\Theta^k=(C^{-1})^k{}_lM^l{}_j\,dq^j$ with
+$(q^1,q^2,q^3)=(\alpha,\beta,\gamma)$. The columns of $M$ are the
+coefficient vectors of $\operatorname{Ad}_{B^{-1}}\eta_3$, $\eta_1$ and
+$\eta_3$ in Eq.~\eqref{haar:euler-MC}:
+\begin{equation}\label{haar:euler-M}
+ M=\begin{bmatrix}0&1&0\\ \sin\beta&0&0\\ \cos\beta&0&1\end{bmatrix},
+ \qquad \det M=-1\cdot\det\begin{bmatrix}\sin\beta&0\\ \cos\beta&1\end{bmatrix}
+ =-\sin\beta ,
+\end{equation}
+expanding along the first row. By Eq.~\eqref{haar:maurer-cartan} and
+$\det C^{-1}=1$,
+\begin{equation}\label{haar:euler-volume}
+ \omega=\Theta^1\wedge\Theta^2\wedge\Theta^3
+ =\det(C^{-1})\det M\,d\alpha\wedge d\beta\wedge d\gamma
+ =-\sin\beta\,d\alpha\wedge d\beta\wedge d\gamma .
+\end{equation}
+By (a) the map $(\alpha,\beta,\gamma)\mapsto g$ is a diffeomorphism from
+$\Omega_0$ onto $SO(3)$ minus a set of measure zero, so $|\omega|$ integrates
+as $\int_{\Omega_0}f\sin\beta\,d\alpha\,d\beta\,d\gamma$ (Lee,
+Prop.~16.8). The total is
+$\int_0^{2\pi}d\alpha\int_0^\pi\sin\beta\,d\beta\int_0^{2\pi}d\gamma
+=2\pi\cdot2\cdot2\pi=8\pi^2$, and Eq.~\eqref{haar:normalized} gives $I(f)$.
+\end{proof}
+
+\begin{exercise}[Kosmann-Schwarzbach, Exercise~5.6, p.~80 \cite{dgdt:YKosmann-Schwarzbach2010}]
+\emph{Euler angles and Haar measure on the group $SU(2)$.}
+Let $\Omega=(0,2\pi)\times(0,\pi)\times(-2\pi,2\pi)$.
+(a) Show that for every pair of complex numbers $a$ and $b$ such that
+$|a|^2+|b|^2=1$, $\mathcal Im(a)\ne0$, and $\mathcal Re(b)\ne0$, there is a
+unique triple $(\phi,\theta,\psi)\in\Omega$ such that
+$a=\cos\frac\theta2e^{i\phi+\psi/2}$, $b=i\sin\frac\theta2e^{i\phi-\psi/2}$.
+Conclude that off a set of measure zero of $SU(2)$, each matrix
+$g=\left(\begin{smallmatrix}a&b\\-\bar b&\bar a\end{smallmatrix}\right)\in SU(2)$
+can be written in one and only one way as
+\[
+ g=\exp(\phi\xi_3)\exp(\theta\xi_1)\exp(\psi\xi_3),
+\]
+with $(\phi,\theta,\psi)\in\Omega$. Show that the image of
+$g(\phi,\theta,\psi)$ under the morphism $\varphi$ of $SO(3)$ onto $SU(2)$
+is the rotation with Euler angles $(\phi,\theta,\psi)$.
+(b) Show that the Haar integral on $SU(2)$ can be written
+\[
+ I(f)=\frac1{16\pi^2}\int_\Omega f(\phi,\theta,\psi)\sin\theta\,
+ d\phi\,d\theta\,d\psi.
+\]
+\end{exercise}
+\emph{Editorial corrections.} The printed exponents $i\phi\pm\psi/2$ should
+be $i(\phi\pm\psi)/2$, as the product below shows. Her $\varphi$ maps
+$SU(2)$ onto $SO(3)$ (Eq.~\eqref{quat:KS-phi}). The two conditions on $a$
+and $b$ do not exclude the boundary $\phi=0$ (for example
+$\arg a=\frac\pi4$, $\arg(b/i)=-\frac\pi4$); the solution states the
+exceptional set that the argument requires.
+\begin{proof}[Solution]
+(a) With $\xi_3=\frac i2\sigma_3$ and $\xi_1=\frac i2\sigma_1$ from
+Eq.~\eqref{quat:KS-xi}, and $\sigma_1^2=\mathbf 1$,
+$\exp(\phi\xi_3)=\operatorname{diag}(e^{i\phi/2},e^{-i\phi/2})$ and
+$\exp(\theta\xi_1)=\cos\frac\theta2\,\mathbf 1+i\sin\frac\theta2\,\sigma_1$.
+Write $c=\cos\frac\theta2$, $s=\sin\frac\theta2$. Multiplying on the left by
+the first diagonal matrix scales the rows, and on the right by the second
+scales the columns:
+\begin{align}
+ \exp(\phi\xi_3)\exp(\theta\xi_1)\exp(\psi\xi_3)
+ &=\begin{bmatrix}ce^{i\phi/2}&ise^{i\phi/2}\\ ise^{-i\phi/2}&ce^{-i\phi/2}\end{bmatrix}
+   \begin{bmatrix}e^{i\psi/2}&0\\0&e^{-i\psi/2}\end{bmatrix}\notag\\
+ &=\begin{bmatrix}ce^{i(\phi+\psi)/2}&ise^{i(\phi-\psi)/2}\\
+   ise^{-i(\phi-\psi)/2}&ce^{-i(\phi+\psi)/2}\end{bmatrix}.\label{haar:SU2-euler}
+\end{align}
+This has the form $\left(\begin{smallmatrix}a&b\\-\bar b&\bar a\end{smallmatrix}\right)$
+with
+\begin{equation}\label{haar:SU2-euler-ab}
+ a=\cos\tfrac\theta2\,e^{i(\phi+\psi)/2},\qquad
+ b=i\sin\tfrac\theta2\,e^{i(\phi-\psi)/2},\qquad
+ -\bar b=is\,e^{-i(\phi-\psi)/2}.
+\end{equation}
+Conversely let $ab\ne0$. Then $\cos\frac\theta2=|a|\in(0,1)$ fixes
+$\theta\in(0,\pi)$, and $\sin\frac\theta2=|b|$. Let $A=\arg a$ and
+$B=\arg(b/i)$, each defined modulo $2\pi$. We need
+$\frac{\phi+\psi}2\equiv A$ and $\frac{\phi-\psi}2\equiv B$ modulo $2\pi$.
+Adding, $\phi\equiv A+B$ modulo $2\pi$, which has one solution in
+$(0,2\pi)$ unless $A+B\equiv0$. Given $\phi$, the first condition reads
+$\psi\equiv2A-\phi$ modulo $4\pi$, which has one solution in $(-2\pi,2\pi)$
+unless $\psi\equiv2\pi$ modulo $4\pi$. This pair satisfies the second
+condition too: $\frac{\phi-\psi}2=\phi-\frac{\phi+\psi}2\equiv(A+B)-A=B$.
+The excluded set $\{ab=0\}\cup\{\phi=0\}\cup\{\psi=\pm2\pi\}$ is a finite
+union of lower-dimensional submanifolds, of measure zero.
+Finally $\varphi$ is a homomorphism with $d\varphi(\xi_k)=\eta_k$, so
+$\varphi(\exp(t\xi_k))=\exp(t\,d\varphi(\xi_k))=\exp(t\eta_k)$ and
+\begin{equation}
+ \varphi(g)=\exp(\phi\eta_3)\exp(\theta\eta_1)\exp(\psi\eta_3),
+\end{equation}
+the rotation with Euler angles $(\phi,\theta,\psi)$, with $\psi$ read modulo
+$2\pi$.
+
+(b) The computation of Eq.~\eqref{haar:euler-MC} applies with
+$(\alpha,\beta,\gamma,\eta_k)$ replaced by $(\phi,\theta,\psi,\xi_k)$. By
+the definition of $\varphi$ (\S\ref{quat:sec:KS-phi}), the matrix of
+$\operatorname{Ad}_u$ in the basis $\xi_k$ is $\varphi(u)$. Here
+$\varphi(B^{-1})=\exp(-\theta\eta_1)$, so
+$\operatorname{Ad}_{B^{-1}}\xi_3=\sin\theta\,\xi_2+\cos\theta\,\xi_3$ and the
+matrix $M$ is Eq.~\eqref{haar:euler-M} with $\beta\to\theta$. With
+$\det\varphi(C^{-1})=1$,
+\begin{equation}
+ \Theta^1\wedge\Theta^2\wedge\Theta^3=-\sin\theta\,d\phi\wedge d\theta\wedge d\psi,
+ \qquad
+ \int_\Omega\sin\theta\,d\phi\,d\theta\,d\psi=2\pi\cdot2\cdot4\pi=16\pi^2 .
+\end{equation}
+By (a) the parametrization covers $SU(2)$ once off a set of measure zero,
+and Eq.~\eqref{haar:normalized} gives $I(f)$.
+\end{proof}
+The two normalizations differ by the factor $2$ of the double cover. The
+range of $\psi$ is $4\pi$ in $SU(2)$ and $2\pi$ in $SO(3)$.
+
+\subsection{The Weyl integral formula}
+Hall integrates class functions over a maximal torus $T$, a maximal subgroup
+isomorphic to a product of circles (Definition~11.6, p.~312). The Weyl group
+is $W=N(T)/T$, with $N(T)=\{x\in K:xTx^{-1}=T\}$ (Definition~11.8, p.~313).
+Let $\mathfrak f$ be the orthogonal complement of $\mathfrak t$ in
+$\mathfrak k$ and
+\begin{equation}\label{haar:weyl-rho}
+ \rho(t)=\det\big(\operatorname{Ad}'_{t^{-1}}-I\big),
+\end{equation}
+where $\operatorname{Ad}'_{t^{-1}}$ is the restriction of
+$\operatorname{Ad}_{t^{-1}}$ to $\mathfrak f$ (Hall, Eq.~(11.12), p.~330).
+\begin{theorem}[Hall, Theorem~11.30, Weyl Integral Formula, p.~330 \cite{BCHall2015}]\label{haar:thm:weyl}
+For all continuous functions $f$ on $K$, we have
+\[
+ \int_Kf(x)\,dx=\frac1{|W|}\int_T\rho(t)\int_{K/T}f(yty^{-1})\,d[y]\,dt,
+\]
+where $dx$, $dt$, and $d[y]$ are the normalized, left-invariant volume forms
+on $K$, $T$, and $K/T$, respectively and $|W|$ is the order of the Weyl group.
+\end{theorem}
+Hall's proof up to the constant computes the pullback of $dx$ under
+$\Phi(t,[y])=yty^{-1}$, a map of degree $|W|$, and its Jacobian determinant is
+$\rho(t)$. He fixes the constant in \S12.4. For a class function
+(Definition~11.31, p.~331: $f(yxy^{-1})=f(x)$), $\int_{K/T}f(yty^{-1})\,d[y]=f(t)$
+and the formula becomes his Corollary~11.32,
+\begin{equation}\label{haar:weyl-class}
+ \int_Kf(x)\,dx=\frac1{|W|}\int_T\rho(t)f(t)\,dt .
+\end{equation}
+
+\paragraph{$SU(2)$ (Hall, Example~11.33, p.~332).} Take $T$ the diagonal
+subgroup, $t=\operatorname{diag}(e^{i\theta},e^{-i\theta})$. Under the
+Hilbert--Schmidt inner product the complement of $\mathfrak t$ is
+$\mathfrak f=\{X_z=\left(\begin{smallmatrix}0&z\\-\bar z&0\end{smallmatrix}\right):
+z=x+iy\in\mathbb C\}$. Conjugate:
+\begin{equation}
+ \operatorname{Ad}_{t^{-1}}X_z=\begin{bmatrix}e^{-i\theta}&0\\0&e^{i\theta}\end{bmatrix}
+ \begin{bmatrix}0&z\\-\bar z&0\end{bmatrix}
+ \begin{bmatrix}e^{i\theta}&0\\0&e^{-i\theta}\end{bmatrix}
+ =\begin{bmatrix}0&e^{-2i\theta}z\\-e^{2i\theta}\bar z&0\end{bmatrix}
+ =X_{e^{-2i\theta}z}.
+\end{equation}
+So $\operatorname{Ad}'_{t^{-1}}$ is the rotation through $-2\theta$ of
+$(x,y)\in\mathbb R^2$, and
+\begin{equation}\label{haar:rho-SU2}
+ \rho(t)=\det\begin{bmatrix}\cos2\theta-1&\sin2\theta\\-\sin2\theta&\cos2\theta-1\end{bmatrix}
+ =(\cos2\theta-1)^2+\sin^22\theta=2-2\cos2\theta=4\sin^2\theta .
+\end{equation}
+The Weyl group has order $|W|=2$, and $dt=\frac{d\theta}{2\pi}$ by
+Eq.~\eqref{haar:U1}. Equation~\eqref{haar:weyl-class} is Hall's
+\begin{equation}\label{haar:hall-11-16}
+ \int_{SU(2)}f(x)\,dx=\frac12\int_{-\pi}^{\pi}f\big(\operatorname{diag}(e^{i\theta},e^{-i\theta})\big)
+ \,4\sin^2\theta\,\frac{d\theta}{2\pi}.
+\end{equation}
+Conjugation by $\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\in SU(2)$
+exchanges $\operatorname{diag}(e^{i\theta},e^{-i\theta})$ and
+$\operatorname{diag}(e^{-i\theta},e^{i\theta})$, so a class function is even
+in $\theta$. With $\sin^2\theta$ also even,
+\begin{equation}
+ \frac12\int_{-\pi}^{\pi}f\,4\sin^2\theta\,\frac{d\theta}{2\pi}
+ =\frac1\pi\int_{-\pi}^{\pi}f\,\sin^2\theta\,d\theta
+ =\frac2\pi\int_0^\pi f\,\sin^2\theta\,d\theta ,
+\end{equation}
+which is Eq.~\eqref{haar:weyl-SU2}. The $S^3$ computation of Exercise~5.4
+fixed the constant directly.
+
+\subsection{Three integrals on \texorpdfstring{$SU(2)$}{SU(2)}}
 \begin{proposition}\label{haar:prop:SU2-integrals}
 For normalized Haar measure on $SU(2)$, every $X\in M_2(\mathbb C)$ and
 every continuous class function $\phi$,
@@ -348,12 +792,173 @@ For $W\in SU(2)$, $\operatorname{tr}W^{-1}=\operatorname{tr}W^\dagger
 =\overline{\operatorname{tr}W}=\operatorname{tr}W$, since the trace is real by
 Eq.~\eqref{haar:SU2-classes}.
 \end{proof}
-Equations~\eqref{haar:trace-zero} and \eqref{haar:trace-square} are two
-instances of the orthonormality of irreducible characters in
-$L^2(G,h)$ (Hall, Theorem~12.15, p.~352). For $SU(2)$ the character of
-spin~$j$ is $\chi_j(t)=\frac{\sin(2j+1)t}{\sin t}$; the trivial and defining
-characters are $\chi_0=1$ and $\chi_{1/2}=\frac{\sin2t}{\sin t}=2\cos t
-=\operatorname{tr}V$, so the two equations read
-$\langle\chi_0,\chi_{1/2}\rangle=0$ and $\langle\chi_{1/2},\chi_{1/2}\rangle=1$.
-The argument for Eq.~\eqref{haar:conjugation-average} is Schur's lemma for
-the defining representation, with the spanning set written out.
+Equations~\eqref{haar:trace-zero} and \eqref{haar:trace-square} are the
+statements $\langle\chi_0,\chi_{1/2}\rangle=0$ and
+$\langle\chi_{1/2},\chi_{1/2}\rangle=1$ of Theorem~\ref{haar:thm:hall-12-15}
+below. The argument for Eq.~\eqref{haar:conjugation-average} is Schur's
+lemma (Theorem~\ref{haar:thm:schur}) for the defining representation, with
+the spanning set written out.
+
+\subsection{Averaging representations: unitarity, Schur, characters}
+A finite-dimensional representation $\Pi$ of $K$ on $V$ is \emph{unitary}
+for an inner product if each $\Pi(x)$ preserves it, and \emph{completely
+reducible} if $V$ is a direct sum of irreducible invariant subspaces.
+
+\begin{proposition}[Hall, Proposition~4.27, p.~92 \cite{BCHall2015}]\label{haar:prop:hall-4-27}
+If $G$ is a matrix Lie group and $\Pi$ is a finite-dimensional unitary
+representation of $G$, then $\Pi$ is completely reducible.
+\end{proposition}
+\begin{proof}
+Let $W\subset V$ be invariant and $v\in W^\perp$. For $w\in W$,
+$w'=\Pi(A^{-1})w\in W$, and unitarity gives
+$\Pi(A)^*=\Pi(A)^{-1}=\Pi(A^{-1})$:
+\begin{equation}
+ \langle\Pi(A)v,w\rangle=\langle v,\Pi(A)^*w\rangle=\langle v,\Pi(A^{-1})w\rangle
+ =\langle v,w'\rangle=0 .
+\end{equation}
+So $W^\perp$ is invariant and $V=W\oplus W^\perp$. Repeat on $W$ and
+$W^\perp$; since $\dim V<\infty$ the process stops at irreducible summands.
+\end{proof}
+\begin{theorem}[Hall, Theorem~4.28, p.~92 \cite{BCHall2015}]\label{haar:thm:hall-4-28}
+If $G$ is a compact matrix Lie group, every finite dimensional
+representation of $G$ is completely reducible.
+\end{theorem}
+\begin{proof}
+Hall's proof, ``Weyl's unitarian trick'' (pp.~93--94), uses a
+right-invariant form $\alpha_A(Y_1,\dots,Y_k)=\alpha_I(Y_1A^{-1},\dots,Y_kA^{-1})$,
+the mirror image of Eq.~\eqref{haar:omega-matrix}; by
+Theorem~\ref{haar:thm:exist-unique} its normalization is $h$. Choose any
+inner product on $V$ and average it:
+\begin{equation}\label{haar:unitarian-trick}
+ \langle v,w\rangle_G=\int_G\langle\Pi(A)v,\Pi(A)w\rangle\,h(dA).
+\end{equation}
+It is an inner product: the integrand of $\langle v,v\rangle_G$ is positive
+and continuous for $v\ne0$. For $B\in G$, right invariance with $g_R=B$ gives
+\begin{align}
+ \langle\Pi(B)v,\Pi(B)w\rangle_G
+ &=\int_G\langle\Pi(A)\Pi(B)v,\Pi(A)\Pi(B)w\rangle\,h(dA)
+ =\int_G\langle\Pi(AB)v,\Pi(AB)w\rangle\,h(dA)\notag\\
+ &=\int_G\langle\Pi(A)v,\Pi(A)w\rangle\,h(dA)=\langle v,w\rangle_G .
+\end{align}
+So $\Pi$ is unitary for $\langle\cdot,\cdot\rangle_G$, and
+Proposition~\ref{haar:prop:hall-4-27} applies. Compactness makes the integral
+finite.
+\end{proof}
+A linear map $\phi\colon V\to W$ between representations $(\Pi,V)$,
+$(\Sigma,W)$ is \emph{intertwining} if $\phi\,\Pi(A)=\Sigma(A)\,\phi$ for all
+$A$.
+\begin{theorem}[Hall, Theorem~4.29, Schur's Lemma, p.~94 \cite{BCHall2015}]\label{haar:thm:schur}
+\begin{enumerate}
+\item Let $V$ and $W$ be irreducible real or complex representations of a
+group or Lie algebra and let $\phi\colon V\to W$ be an intertwining map.
+Then either $\phi=0$ or $\phi$ is an isomorphism.
+\item Let $V$ be an irreducible complex representation of a group or Lie
+algebra and let $\phi\colon V\to V$ be an intertwining map of $V$ with
+itself. Then $\phi=\lambda I$, for some $\lambda\in\mathbb C$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(1) If $v\in\ker\phi$, then $\phi(\Pi(A)v)=\Sigma(A)\phi(v)=0$, so
+$\ker\phi$ is invariant, hence $0$ or $V$. If $w=\phi(v)$, then
+$\Sigma(A)w=\phi(\Pi(A)v)$, so the image is invariant, hence $0$ or $W$.
+A nonzero $\phi$ is therefore injective and surjective.
+(2) Over $\mathbb C$, $\phi$ has an eigenvalue $\lambda$ with eigenspace
+$U\ne0$. For $u\in U$, $\phi\,\Pi(A)u=\Pi(A)\phi u=\lambda\Pi(A)u$, so $U$ is
+invariant, $U=V$, and $\phi=\lambda I$.
+\end{proof}
+Consequently the intertwiners $V\to W$ form a space of dimension $1$ if
+$V\cong W$ and $0$ otherwise. If $\phi_0\colon V\to W$ is an isomorphism and
+$A$ any intertwiner, $\phi_0^{-1}A$ intertwines $V$ with itself, so
+$\phi_0^{-1}A=\lambda I$ and $A=\lambda\phi_0$.
+
+The \emph{character} of $(\Pi,V)$ is $\chi_\Pi(x)=\operatorname{tr}\Pi(x)$
+(Hall, Definition~12.14, p.~351). It is a class function:
+$\chi_\Pi(yxy^{-1})=\operatorname{tr}(\Pi(y)\Pi(x)\Pi(y)^{-1})
+=\operatorname{tr}\Pi(x)$.
+\begin{lemma}[Hall, Lemma~12.16, p.~352 \cite{BCHall2015}]\label{haar:lem:hall-12-16}
+Suppose $(\Pi,V)$ is a finite-dimensional representation of $K$, and let
+$P$ be the operator on $V$ given by
+\[
+ P=\int_K\Pi(x)\,dx.
+\]
+Then $P$ is a projection onto $V^K$. That is to say, $P$ maps $V$ into $V^K$
+and $Pv=v$ for all $v\in V^K$.
+\end{lemma}
+Here $V^K=\{v\in V:\Pi(x)v=v\text{ for all }x\in K\}$.
+\begin{proof}
+For $y\in K$, left invariance gives
+$\Pi(y)Pv=\int_K\Pi(yx)v\,dx=\int_K\Pi(x)v\,dx=Pv$, so $Pv\in V^K$. If
+$v\in V^K$, then $Pv=\int_K\Pi(x)v\,dx=\big(\int_Kdx\big)v=v$ by the
+normalization.
+\end{proof}
+Since $P^2=P$, $P$ is diagonalizable with eigenvalues $0$ and $1$, and
+$\operatorname{tr}P=\dim V^K$.
+\begin{theorem}[Hall, Theorem~12.15, p.~352 \cite{BCHall2015}]\label{haar:thm:hall-12-15}
+If $(\Pi,V)$ and $(\Sigma,W)$ are irreducible representations of $K$, then
+\[
+ \int_K\overline{\operatorname{trace}(\Pi(x))}\operatorname{trace}(\Sigma(x))\,dx
+ =\begin{cases}1&\text{if }V\cong W\\ 0&\text{if }V\not\cong W\end{cases},
+\]
+where $dx$ is the normalized left-invariant volume form on $K$.
+\end{theorem}
+\begin{proof}
+Hall writes the integrand as the character of $V^*\otimes W$ and identifies
+$(V^*\otimes W)^K$ with intertwiners (pp.~353--354). The same argument,
+written directly on $\operatorname{Hom}(V,W)$, runs as follows. By the
+proof of Theorem~\ref{haar:thm:hall-4-28}, choose inner products for which
+$\Pi$ and $\Sigma$ are unitary. Let $K$ act on $\operatorname{Hom}(V,W)$ by
+\begin{equation}
+ \mathcal T(x)A=\Sigma(x)\,A\,\Pi(x)^{-1}.
+\end{equation}
+Its invariant vectors are the $A$ with $\Sigma(x)A=A\Pi(x)$, the
+intertwiners. In bases, the matrix unit $E_{ab}$ is sent to
+$\Sigma(x)E_{ab}\Pi(x)^{-1}$, whose $(a,b)$ entry is
+$\Sigma(x)_{aa}\,(\Pi(x)^{-1})_{bb}$ (no sum). Summing over $a$ and $b$, and
+using $\Pi(x)^{-1}=\Pi(x)^\dagger$,
+\begin{equation}
+ \operatorname{tr}\mathcal T(x)=\operatorname{tr}\Sigma(x)\,\operatorname{tr}\Pi(x)^{-1}
+ =\operatorname{tr}\Sigma(x)\,\overline{\operatorname{tr}\Pi(x)} .
+\end{equation}
+Integrate and apply Lemma~\ref{haar:lem:hall-12-16} to $\mathcal T$:
+\begin{equation}
+ \int_K\overline{\chi_\Pi}\,\chi_\Sigma\,dx
+ =\operatorname{tr}\int_K\mathcal T(x)\,dx=\operatorname{tr}P
+ =\dim\{\text{intertwiners }V\to W\},
+\end{equation}
+which is $1$ or $0$ by Schur's lemma.
+\end{proof}
+Hall's Theorem~12.18 (p.~354) adds completeness: a continuous class function
+orthogonal to every irreducible character is zero.
+
+\paragraph{The characters of $SU(2)$ (Hall, Examples~4.10 and 12.23).} Let
+$V_m$ be the homogeneous polynomials of degree $m$ in $z=(z_1,z_2)$, with
+$[\Pi_m(U)f](z)=f(U^{-1}z)$ (Hall, Eq.~(4.2), p.~82); this is a
+representation because $\Pi_m(U_1)\Pi_m(U_2)f(z)=f(U_2^{-1}U_1^{-1}z)
+=f((U_1U_2)^{-1}z)$. For $U=\operatorname{diag}(e^{i\theta},e^{-i\theta})$,
+$U^{-1}z=(e^{-i\theta}z_1,e^{i\theta}z_2)$, so the basis monomial
+$z_1^{m-k}z_2^k$ is multiplied by $e^{-i(m-k)\theta}e^{ik\theta}
+=e^{i(2k-m)\theta}$. Sum the geometric series, for $\sin\theta\ne0$:
+\begin{align}
+ \chi_m(\theta)&=\sum_{k=0}^me^{i(2k-m)\theta}
+ =e^{-im\theta}\,\frac{e^{2i(m+1)\theta}-1}{e^{2i\theta}-1}
+ =\frac{e^{-im\theta}e^{i(m+1)\theta}}{e^{i\theta}}\cdot
+   \frac{e^{i(m+1)\theta}-e^{-i(m+1)\theta}}{e^{i\theta}-e^{-i\theta}}\notag\\
+ &=\frac{\sin(m+1)\theta}{\sin\theta}.\label{haar:SU2-character}
+\end{align}
+For $m=1$, $\chi_1=\frac{\sin2\theta}{\sin\theta}=2\cos\theta
+=\operatorname{tr}U$. In spin notation $j=m/2$, $\chi_j(t)=\frac{\sin(2j+1)t}{\sin t}$.
+By Eq.~\eqref{haar:weyl-SU2},
+\begin{align}
+ \langle\chi_m,\chi_n\rangle
+ &=\frac2\pi\int_0^\pi\frac{\sin(m+1)t\,\sin(n+1)t}{\sin^2t}\,\sin^2t\,dt
+ =\frac1\pi\int_0^\pi\big(\cos(m-n)t-\cos(m+n+2)t\big)\,dt\notag\\
+ &=\begin{cases}1&m=n\\0&m\ne n\end{cases}.\label{haar:SU2-character-orthonormal}
+\end{align}
+For $m=n$ the first cosine is $1$ and the second integrates to $0$ since
+$m+n+2\ge2$. The norm $1$ shows that $V_m$ is irreducible. By
+Theorem~\ref{haar:thm:hall-4-28}, $V_m\cong\bigoplus_in_iW_i$ with distinct
+irreducible $W_i$, so $\chi_m=\sum_in_i\chi_{W_i}$, and
+Theorem~\ref{haar:thm:hall-12-15} gives
+$\langle\chi_m,\chi_m\rangle=\sum_in_i^2$. This equals $1$ only for a single
+summand with $n_i=1$. The $V_m$ are pairwise non-isomorphic since their
+characters are orthogonal.
