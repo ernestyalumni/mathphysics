@@ -4,6 +4,9 @@ Ernest's `LaTeXandpdfs/Propulsion.tex`, especially the Runge–Kutta discussion,
 is a guide to the exposition. These conventions were made explicit by Ernest
 on 2026-09-12 and will be refined with him.
 
+- Write American English: center, favor, labeled, canceled, analog,
+  normalize. Quotations and cited titles keep their original spelling
+  (Ernest, 2026-11-25).
 - Write the notes from first principles while reading. Ernest's earlier
   writing is the guide to style, notation and conventions; it is not an
   authority on content. When an earlier passage is correct, keep his
@@ -131,7 +134,7 @@ on 2026-09-12 and will be refined with him.
   convention and write the translation explicitly beside it, letter by
   letter: for example "Lee writes $F\colon N\to M$; his $N$ is our $M$
   and his $M$ is our $N$." Check every symbol that moves with the
-  relabelling, including which space carries the form or measure
+  relabeling, including which space carries the form or measure
   (Ernest, 2026-11-25).
 - State each result in one form, index or index-free, whichever the
   argument needs. Do not restate an index equation in matrix form, or the
