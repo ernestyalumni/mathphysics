@@ -23,11 +23,38 @@ doubling defect. A finite model in which both can be calculated exactly makes
 the difference visible.
 
 \subsection{From a connection to a probability law on links}
-Put a cubical cell structure on a four-torus with $n_\mu$ sites in direction
-$\mu$ and spacing $a$; the physical lengths are $a n_\mu$. A positive link
-$(x,\mu)$ carries a parallel transporter $U_\mu(x)\in G$. Reversing a link
-uses its inverse, not a second independent random variable. An elementary
-square is a \emph{plaquette}. Its holonomy is the ordered product
+\paragraph{Sites and directions.}
+A \emph{site} is a four-tuple of integers, each taken modulo the number of
+sites along its axis:
+\begin{equation}\label{ym:guide-sites}
+ x=(x^1,x^2,x^3,x^4)\in\Lambda
+ =\mathbb Z/n_1\times\mathbb Z/n_2\times\mathbb Z/n_3\times\mathbb Z/n_4 .
+\end{equation}
+A \emph{direction} is a number $\mu\in\{1,2,3,4\}$: it names one of the
+four coordinate axes. The direction becomes a displacement through the unit
+vector of that axis,
+\begin{equation}\label{ym:guide-unit-vectors}
+ e_1=(1,0,0,0),\quad e_2=(0,1,0,0),\quad e_3=(0,0,1,0),\quad
+ e_4=(0,0,0,1);\qquad (e_\mu)^\kappa=\delta_\mu^{\ \kappa}.
+\end{equation}
+So $x+e_\mu$ adds $1$ to coordinate $\mu$ of $x$ and leaves the other three
+unchanged, with $x^\mu+1$ taken modulo $n_\mu$. For example, with
+$n_1=n_2=n_3=n_4=3$ and $x=(0,2,1,0)$,
+\begin{equation}\label{ym:guide-step-example}
+ x+e_1=(1,2,1,0),\qquad x+e_2=(0,0,1,0),
+\end{equation}
+because $2+1=3\equiv0$ modulo $3$: a step off the end of an axis comes back
+at the start, which is what makes the box a torus. A plaquette needs two
+different directions, and the second one is written $\nu\in\{1,2,3,4\}$,
+$\nu\ne\mu$. Later, direction $4$ is chosen as Euclidean time.
+
+With spacing $a$ the site $x$ sits at the point $ax$, and the four sides of
+the torus have physical lengths $an_1,\dots,an_4$; $n_\mu$ is the number of
+sites along axis $\mu$. The \emph{positive link} $(x,\mu)$ is the edge from
+$x$ to $x+e_\mu$; it is positive because it points along $+e_\mu$. It
+carries a parallel transporter $U_\mu(x)\in G$. Reversing a link uses its
+inverse, not a second independent random variable. An elementary square is
+a \emph{plaquette}. Its holonomy is the ordered product
 \begin{equation}\label{ym:guide-holonomy}
  U_p=U_\mu(x)U_\nu(x+e_\mu)
  U_\mu(x+e_\nu)^{-1}U_\nu(x)^{-1}.
@@ -40,11 +67,10 @@ measures squared curvature to leading order, by Eq.~\eqref{ym:plaquette-energy}.
 This is the \emph{classical} reason for the local action; it does not say
 that typical configurations in the quantum integral are smooth connections.
 
-\paragraph{Sites, links and plaquettes.}
-The sites, the positive links and the plaquettes of the torus are
+\paragraph{Links and plaquettes.}
+With the sites $\Lambda$ of Eq.~\eqref{ym:guide-sites}, the positive links
+and the plaquettes of the torus are
 \begin{align}
- \Lambda&=\mathbb Z/n_1\times\mathbb Z/n_2\times\mathbb Z/n_3\times\mathbb Z/n_4,
- \label{ym:guide-sites}\\
  L&=\{(x,\mu):x\in\Lambda,\ 1\le\mu\le4\},
  &|L|&=4\,n_1n_2n_3n_4,\label{ym:guide-links}\\
  P&=\{(x;\mu\nu):x\in\Lambda,\ 1\le\mu<\nu\le4\},
@@ -129,21 +155,24 @@ $\int F\,\mathcal DU=2^{-|L|}\sum_{U\in\{\pm1\}^L}F(U)$. The partition
 function and the Wilson probability law are
 \begin{align}
  Z_\beta&=\int_{G^L}e^{-\beta E(U)}\,\mathcal DU,\label{ym:guide-partition}\\
- \mu_\beta(dU)&=\frac1{Z_\beta}\,e^{-\beta E(U)}\,\mathcal DU,
- \qquad \int_{G^L}\mu_\beta(dU)=\frac{Z_\beta}{Z_\beta}=1 .
+ \mathbb P_\beta(dU)&=\frac1{Z_\beta}\,e^{-\beta E(U)}\,\mathcal DU,
+ \qquad \int_{G^L}\mathbb P_\beta(dU)=\frac{Z_\beta}{Z_\beta}=1 .
  \label{ym:guide-wilson-law}
 \end{align}
 Equation~\eqref{ym:guide-partition} is Eq.~\eqref{ym:wilson-partition} of
 Section~\ref{ym:sec:wilson-measure}. That section takes every side equal,
-writes the site as $y$ and the link variable as $U(y,\mu)$:
+writes the site as $y$ and the link variable as $U(y,\mu)$, and calls the
+Wilson law $\mu_{\ell,\beta}$ (Eq.~\eqref{ym:wilson-measure}). Here
+$\mathbb P_\beta$ is used, so that $\mu$ only ever names a direction:
 \begin{equation}\label{ym:guide-partition-lattice}
  Z_{\ell,\beta}=\int_{\mathcal U_\ell}e^{-\beta E_\ell(U)}\,\mathcal DU,
  \qquad n_1=n_2=n_3=n_4=\ell,\quad
- \mathcal U_\ell=G^L,\quad U(y,\mu)=U_\mu(y),\quad E_\ell=E .
+ \mathcal U_\ell=G^L,\quad U(y,\mu)=U_\mu(y),\quad E_\ell=E,\quad
+ \mu_{\ell,\beta}=\mathbb P_\beta .
 \end{equation}
 Two limits show what $\beta$ does. At $\beta=0$, $e^{-\beta E}=1$, so
 \begin{equation}\label{ym:guide-beta-zero}
- Z_0=\int_{G^L}\mathcal DU=1,\qquad \mu_0=\mathcal DU :
+ Z_0=\int_{G^L}\mathcal DU=1,\qquad \mathbb P_0=\mathcal DU :
 \end{equation}
 every link is an independent Haar-distributed group element. For $\beta>0$
 compare two configurations $U,U'$. The ratio of their densities
