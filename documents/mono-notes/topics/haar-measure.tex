@@ -1,0 +1,359 @@
+\section{Haar measure on a compact Lie group}\label{haar:sec:haar}
+On a finite group $G$ the average
+\begin{equation}\label{haar:finite-average}
+ \int_G f\,dh:=\frac1{|G|}\sum_{V\in G}f(V)
+\end{equation}
+does not change when $f(V)$ is replaced by $f(gV)$ or $f(Vg)$ for a fixed
+$g\in G$: $V\mapsto gV$ and $V\mapsto Vg$ only permute the terms of the sum.
+Haar measure is the same average on a compact Lie group such as $U(1)$,
+$SU(2)$ or $SO(3)$. A lattice gauge integral is a product of these averages,
+one for each link. It is the left and right invariance that makes a gauge
+transformation an ordinary change of variables there.
+
+\paragraph{Reading.} Lee constructs the invariant volume form in
+Proposition~16.10 and the Remark after it (pp.~410--411)
+\cite{dgdt:JLee2012}. Kosmann-Schwarzbach states existence, uniqueness and
+right invariance on a compact group in Chapter~3, \S2, Theorem~2.1 and
+Definition~2.2 (pp.~34--35), and computes $SU(2)$ and $SO(3)$ in
+Exercises~5.4--5.6 (pp.~79--80) \cite{dgdt:YKosmann-Schwarzbach2010}.
+Hall uses the form in \S4.4 (pp.~93--94) to make representations unitary,
+passes from the form to a measure in Appendix~D (pp.~435--436), gives the
+Weyl integral formula as Theorem~11.30 (p.~330) with the $SU(2)$ case in
+Example~11.33 (p.~332), and the orthonormality of characters as
+Theorem~12.15 (p.~352) \cite{BCHall2015}.
+
+\subsection{What is being asked for}
+Let $G$ be a compact Lie group of dimension $n$ and write
+$L_g(V)=gV$ and $R_g(V)=Vg$.
+\begin{definition}\label{haar:def:haar}
+A \emph{normalized Haar measure} on $G$ is a Borel probability measure $h$
+such that, for every continuous $f\colon G\to\mathbb C$ and every
+$g_L,g_R\in G$,
+\begin{equation}\label{haar:bi-invariance}
+ \int_G f(g_LVg_R)\,h(dV)=\int_G f(V)\,h(dV),\qquad h(G)=1.
+\end{equation}
+\end{definition}
+A finite group is a Lie group of dimension zero, and
+Eq.~\eqref{haar:finite-average} is its Haar measure. For a Lie group of
+positive dimension, $\int_G f\,dh$ will be the integral of $f$ times a
+volume form, computed in charts as in Lee, Chapter~16. All integrands below
+are continuous. The Riesz representation theorem extends such an integral to
+a unique Borel measure (Hall, App.~D, p.~436); that extension is needed only
+to speak of the probability $h(A)$ of a set $A$.
+
+\begin{theorem}\label{haar:thm:exist-unique}
+A compact Lie group has exactly one normalized Haar measure. It is also
+invariant under inversion: $\int_Gf(V^{-1})\,h(dV)=\int_Gf(V)\,h(dV)$.
+\end{theorem}
+The proof occupies the next three subsections: a left-invariant form
+(existence), its right invariance (compactness), and uniqueness together
+with inversion (Fubini).
+
+\subsection{Existence: a left-invariant volume form}
+Choose a basis $\varepsilon^1,\dots,\varepsilon^n$ of the dual
+$\mathfrak g^*=T_e^*G$ and put $\omega_e=\varepsilon^1\wedge\cdots\wedge
+\varepsilon^n$. Transport it from the identity by left translation:
+\begin{equation}\label{haar:omega-def}
+ \omega_V:=(dL_{V^{-1}})_V^*\,\omega_e .
+\end{equation}
+For a matrix group, $T_VG=\{VX:X\in\mathfrak g\}$ and
+$(dL_{V^{-1}})_V(VX)=V^{-1}VX=X$, so
+\begin{equation}\label{haar:omega-matrix}
+ \omega_V(VX_1,\dots,VX_n)=\omega_e(X_1,\dots,X_n).
+\end{equation}
+Equivalently, $\omega=\varepsilon^1(\theta)\wedge\cdots\wedge
+\varepsilon^n(\theta)$ for the Maurer--Cartan form $\theta=V^{-1}dV$, which
+is left invariant: $(gV)^{-1}d(gV)=V^{-1}g^{-1}g\,dV=V^{-1}dV$.
+
+To check left invariance of $\omega$ directly, use the chain rule and
+$L_{(gV)^{-1}}\circ L_g=L_{V^{-1}g^{-1}g}=L_{V^{-1}}$:
+\begin{align}
+ (L_g^*\omega)_V&=(dL_g)_V^*\,\omega_{gV}
+ =(dL_g)_V^*\,(dL_{(gV)^{-1}})_{gV}^*\,\omega_e\notag\\
+ &=\big(d(L_{(gV)^{-1}}\circ L_g)\big)_V^*\,\omega_e
+ =(dL_{V^{-1}})_V^*\,\omega_e=\omega_V .\label{haar:left-invariant-form}
+\end{align}
+Orient $G$ by $\omega$. Then $L_g$ is an orientation-preserving
+diffeomorphism, and the change of variables formula
+$\int_G L_g^*\eta=\int_G\eta$ for compactly supported $n$-forms $\eta$
+(Lee, Prop.~16.6) gives, with $\eta=f\omega$,
+\begin{equation}\label{haar:left-invariant-integral}
+ \int_G(f\circ L_g)\,\omega
+ =\int_G(f\circ L_g)\,L_g^*\omega
+ =\int_GL_g^*(f\omega)
+ =\int_Gf\,\omega .
+\end{equation}
+The first equality is Eq.~\eqref{haar:left-invariant-form}. Every
+left-invariant $n$-form is $c\,\omega$ for a constant $c$, since by
+Eq.~\eqref{haar:omega-def} it is determined by its value at $e$, an element
+of the one-dimensional space $\Lambda^n\mathfrak g^*$.
+
+\subsection{Right invariance: the modular function}
+Left and right translations commute, $L_a\circ R_g=R_g\circ L_a$, so
+$R_g^*\omega$ is again left invariant:
+\begin{equation}
+ L_a^*(R_g^*\omega)=(R_g\circ L_a)^*\omega=(L_a\circ R_g)^*\omega
+ =R_g^*(L_a^*\omega)=R_g^*\omega .
+\end{equation}
+Hence $R_g^*\omega=\Delta(g)\,\omega$ for a real number $\Delta(g)$.
+Evaluate at $e$, using Eq.~\eqref{haar:omega-def} at $V=g$ and
+$(L_{g^{-1}}\circ R_g)(V)=g^{-1}Vg$, whose derivative at $e$ is
+$\operatorname{Ad}_{g^{-1}}$:
+\begin{align}
+ (R_g^*\omega)_e&=(dR_g)_e^*\,\omega_g
+ =(dR_g)_e^*\,(dL_{g^{-1}})_g^*\,\omega_e
+ =\big(d(L_{g^{-1}}\circ R_g)\big)_e^*\,\omega_e\notag\\
+ &=\operatorname{Ad}_{g^{-1}}^*\,\omega_e
+ =\det(\operatorname{Ad}_{g^{-1}})\,\omega_e .\label{haar:modular}
+\end{align}
+The last step is the action of a linear map on a top-degree form. Thus
+$\Delta(g)=\det\operatorname{Ad}_{g^{-1}}$. Since $\operatorname{Ad}$ is a
+homomorphism and $\det$ is multiplicative, $\Delta\colon G\to\mathbb
+R\setminus\{0\}$ is a continuous homomorphism.
+
+Compactness enters here. The image $\Delta(G)$ is a compact subgroup of the
+multiplicative group $\mathbb R\setminus\{0\}$. If $|x|\ne1$ for some $x$
+in it, the powers $x^k$ or $x^{-k}$ tend to infinity as $k\to\infty$,
+contradicting compactness. Therefore $|\Delta(g)|=1$.
+
+The sign of $\Delta(g)$ can be $-1$. In $O(2)$, a reflection $s$ acts on
+the one-dimensional $\mathfrak{so}(2)$ by $\operatorname{Ad}_sX=sXs^{-1}=-X$,
+so $\Delta(s)=-1$ and $R_s$ reverses the orientation fixed by $\omega$. For
+this reason the measure is defined by the density $|\omega|$ rather than by
+$\omega$. Change variables by the diffeomorphism $R_g$, which multiplies
+$|\omega|$ by $|\Delta(g)|$:
+\begin{equation}\label{haar:right-invariant-integral}
+ \int_G(f\circ R_g)\,|\omega|
+ =\frac1{|\Delta(g)|}\int_G(f\circ R_g)\,R_g^*|\omega|
+ =\frac1{|\Delta(g)|}\int_Gf\,|\omega|
+ =\int_Gf\,|\omega| .
+\end{equation}
+Equation~\eqref{haar:left-invariant-integral} holds with $|\omega|$ in place
+of $\omega$ by the same steps. On a compact $G$ the total volume
+$\int_G|\omega|$ is finite and positive, and
+\begin{equation}\label{haar:normalized}
+ \int_Gf\,dh:=\frac{\int_Gf\,|\omega|}{\int_G|\omega|}
+\end{equation}
+satisfies Eq.~\eqref{haar:bi-invariance}. The noncompact group of affine maps
+$x\mapsto ax+b$, $a>0$, has $\Delta\ne1$ and no measure invariant on both
+sides; compactness is not a technicality.
+
+\subsection{Uniqueness and inversion}
+Let $h$ be the bi-invariant probability measure of
+Eq.~\eqref{haar:normalized}, and let $\mu$ be any Borel probability measure
+that is only left invariant. For continuous $f$, the function
+$(V,W)\mapsto f(VW)$ is continuous on the compact space $G\times G$, so the
+iterated integrals of it against $h\otimes\mu$ agree (Fubini). Integrate
+first over $V$ with right invariance of $h$, then over $W$ with
+left invariance of $\mu$:
+\begin{align}
+ \int_G\Big(\int_Gf(VW)\,h(dV)\Big)\mu(dW)
+ &=\int_G\Big(\int_Gf(V)\,h(dV)\Big)\mu(dW)=\int_Gf\,dh,\\
+ \int_G\Big(\int_Gf(VW)\,\mu(dW)\Big)h(dV)
+ &=\int_G\Big(\int_Gf(W)\,\mu(dW)\Big)h(dV)=\int_Gf\,d\mu .
+\end{align}
+The left sides are equal, so $\int f\,d\mu=\int f\,dh$ for every continuous
+$f$, and $\mu=h$. A left-invariant normalized measure is automatically the
+bi-invariant one.
+
+For inversion define $\mu(f)=\int_Gf(V^{-1})\,h(dV)$. Right invariance of
+$h$, applied with $g_R=g^{-1}$, shows that $\mu$ is left invariant:
+\begin{equation}\label{haar:inversion}
+ \mu(f\circ L_g)=\int_Gf(gV^{-1})\,h(dV)
+ =\int_Gf\big((Vg^{-1})^{-1}\big)\,h(dV)
+ =\int_Gf(V^{-1})\,h(dV)=\mu(f).
+\end{equation}
+By uniqueness $\mu=h$. This completes Theorem~\ref{haar:thm:exist-unique}.
+Uniqueness is what makes the examples below cheap: any left-invariant
+probability measure that one recognizes is \emph{the} Haar measure.
+
+\subsection{Three examples}
+\paragraph{$\mathbb Z_2=\{+1,-1\}$.} Eq.~\eqref{haar:finite-average} gives
+$h(\{+1\})=h(\{-1\})=\tfrac12$. For $N$ independent links the product is
+$2^{-N}$ times counting measure.
+
+\paragraph{$U(1)$.} Write $V=e^{i\theta}$, $0\le\theta<2\pi$. Left
+multiplication by $e^{i\alpha}$ is $\theta\mapsto\theta+\alpha$ modulo
+$2\pi$, which preserves Lebesgue measure on the circle. Hence
+\begin{equation}\label{haar:U1}
+ h(dV)=\frac{d\theta}{2\pi}.
+\end{equation}
+
+\paragraph{$SU(2)$.} By Eq.~\eqref{quat:su2-general}, $SU(2)$ is the set
+of matrices of norm one in the real four-dimensional space
+\begin{equation}\label{haar:quaternion-space}
+ \mathcal M=\Big\{X=\begin{bmatrix}\alpha&-\bar\beta\\ \beta&\bar\alpha\end{bmatrix}
+ :\alpha,\beta\in\mathbb C\Big\},\qquad
+ \det X=|\alpha|^2+|\beta|^2=:|X|^2 ,
+\end{equation}
+and $|X|$ is the Euclidean norm of the real and imaginary parts of $\alpha$
+and $\beta$ in $\mathbb R^4$. The space $\mathcal M$ is closed under
+multiplication:
+\begin{equation}\label{haar:M-product}
+ \begin{bmatrix}\alpha&-\bar\beta\\ \beta&\bar\alpha\end{bmatrix}
+ \begin{bmatrix}\gamma&-\bar\delta\\ \delta&\bar\gamma\end{bmatrix}
+ =\begin{bmatrix}\alpha\gamma-\bar\beta\delta&-(\overline{\beta\gamma+\bar\alpha\delta})\\
+ \beta\gamma+\bar\alpha\delta&\overline{\alpha\gamma-\bar\beta\delta}\end{bmatrix}.
+\end{equation}
+In the upper right, $-\alpha\bar\delta-\bar\beta\bar\gamma
+=-(\overline{\bar\alpha\delta+\beta\gamma})$; in the lower right,
+$-\beta\bar\delta+\bar\alpha\bar\gamma=\overline{\alpha\gamma-\bar\beta\delta}$.
+For fixed $U\in SU(2)$ the maps $X\mapsto UX$ and $X\mapsto XU$ are
+therefore real-linear maps of $\mathcal M\cong\mathbb R^4$, and
+$|UX|^2=\det U\det X=|X|^2$. They are orthogonal maps of $\mathbb R^4$
+and restrict to isometries of the unit sphere $S^3$. An isometry preserves
+the Riemannian volume measure $\sigma$ of $S^3$, so $\sigma$ is invariant
+under left and right multiplication. By uniqueness,
+\begin{equation}\label{haar:SU2-round}
+ h=\frac{\sigma}{\sigma(S^3)}=\frac{\sigma}{2\pi^2}
+ \qquad\text{on }SU(2)\approx S^3 .
+\end{equation}
+The total volume $2\pi^2$ is computed in the next exercise.
+
+\begin{exercise}[Kosmann-Schwarzbach, Exercise~5.4, p.~79 \cite{dgdt:YKosmann-Schwarzbach2010}]
+\emph{Haar measure on the group $SU(2)$.}
+We parametrize $SU(2)$ off a set of measure zero by setting, for an element
+$g\in SU(2)$, $g=\begin{pmatrix}a&b\\-\bar b&\bar a\end{pmatrix}$,
+$a=a_1+ia_2$ and $b=b_1+ib_2$, and
+\[
+ a_1=\cos\theta_3,\quad a_2=\sin\theta_3\cos\theta_2,\quad
+ b_1=\sin\theta_3\sin\theta_2\cos\theta_1,\quad
+ b_2=\sin\theta_3\sin\theta_2\sin\theta_1,
+\]
+for $\theta_1\in(0,2\pi)$, $\theta_2\in(0,\pi)$, $\theta_3\in(0,\pi)$.
+
+(a) Show that the Haar integral on $SU(2)$ can be written
+\[
+ I(f)=\frac{1}{2\pi^2}\int_{\mathcal O}f(\theta_1,\theta_2,\theta_3)
+ \sin^2\theta_3\sin\theta_2\,d\theta_1\,d\theta_2\,d\theta_3,
+\]
+where $\mathcal O=(0,2\pi)\times(0,\pi)\times(0,\pi)$.
+
+(b) Set $\theta_3=t$. Show that the Haar integral of a class function $f$ is
+\[
+ \frac{2}{\pi}\int_0^\pi f(t)\sin^2t\,dt.
+\]
+\end{exercise}
+\begin{proof}[Solution]
+Kosmann-Schwarzbach's $g$ is our matrix of Eq.~\eqref{haar:quaternion-space}
+with $\alpha=a$ and $\beta=-\bar b$; the map $(a_1,a_2,b_1,b_2)\mapsto
+(\operatorname{Re}\alpha,\operatorname{Im}\alpha,\operatorname{Re}\beta,
+\operatorname{Im}\beta)=(a_1,a_2,-b_1,b_2)$ is orthogonal, so
+Eq.~\eqref{haar:SU2-round} holds in the coordinates
+$x=(a_1,a_2,b_1,b_2)\in S^3\subset\mathbb R^4$.
+
+(a) Write $x=(\cos\theta_3,\ \sin\theta_3\,\mathbf n)$ with
+$\mathbf n=(\cos\theta_2,\ \sin\theta_2\cos\theta_1,\ \sin\theta_2\sin\theta_1)\in S^2$.
+Differentiate, using $\mathbf n\cdot\mathbf n=1$:
+\begin{align}
+ dx&=\big(-\sin\theta_3\,d\theta_3,\ \cos\theta_3\,\mathbf n\,d\theta_3
+     +\sin\theta_3\,d\mathbf n\big),\qquad
+ \mathbf n\cdot d\mathbf n=\tfrac12d(\mathbf n\cdot\mathbf n)=0,\notag\\
+ dx\cdot dx&=\sin^2\theta_3\,d\theta_3^2+\cos^2\theta_3\,d\theta_3^2
+     +2\sin\theta_3\cos\theta_3\,d\theta_3\,(\mathbf n\cdot d\mathbf n)
+     +\sin^2\theta_3\,d\mathbf n\cdot d\mathbf n\notag\\
+ &=d\theta_3^2+\sin^2\theta_3\,d\mathbf n\cdot d\mathbf n .
+ \label{haar:S3-metric-1}
+\end{align}
+For the two-sphere,
+$\frac{\partial\mathbf n}{\partial\theta_2}=(-\sin\theta_2,\
+\cos\theta_2\cos\theta_1,\ \cos\theta_2\sin\theta_1)$ and
+$\frac{\partial\mathbf n}{\partial\theta_1}=(0,\ -\sin\theta_2\sin\theta_1,\
+\sin\theta_2\cos\theta_1)$ have squared lengths $1$ and $\sin^2\theta_2$, and
+their dot product is
+$-\cos\theta_2\sin\theta_2\cos\theta_1\sin\theta_1
++\cos\theta_2\sin\theta_2\sin\theta_1\cos\theta_1=0$. So
+\begin{equation}\label{haar:S3-metric}
+ dx\cdot dx=d\theta_3^2+\sin^2\theta_3\big(d\theta_2^2
+ +\sin^2\theta_2\,d\theta_1^2\big).
+\end{equation}
+The metric is diagonal, and the volume density is the product of the square
+roots of the diagonal entries:
+\begin{equation}\label{haar:S3-volume}
+ \sigma(dx)=\sin^2\theta_3\sin\theta_2\,d\theta_1\,d\theta_2\,d\theta_3,
+ \qquad
+ \sigma(S^3)=\int_0^{2\pi}d\theta_1\int_0^\pi\sin\theta_2\,d\theta_2
+ \int_0^\pi\sin^2\theta_3\,d\theta_3=2\pi\cdot2\cdot\frac\pi2=2\pi^2 .
+\end{equation}
+The last factor uses $\sin^2\theta_3=\frac12(1-\cos2\theta_3)$. The excluded
+coordinate boundaries have measure zero. Dividing by $2\pi^2$ as in
+Eq.~\eqref{haar:SU2-round} gives $I(f)$.
+
+(b) Every $g\in SU(2)$ is unitary, so $g=W\operatorname{diag}(\lambda_1,
+\lambda_2)W^{-1}$ with $W\in U(2)$ and $|\lambda_i|=1$. Replacing $W$ by
+$W/\sqrt{\det W}$ (either root) gives $W\in SU(2)$ and does not change the
+product, since a scalar commutes with the diagonal matrix. With
+$\lambda_1\lambda_2=\det g=1$ and $\operatorname{tr}g=a+\bar a=2a_1$ real,
+\begin{equation}\label{haar:SU2-classes}
+ \lambda_{1,2}=e^{\pm it},\qquad \operatorname{tr}g=2\cos t,\qquad
+ t=\theta_3\in[0,\pi].
+\end{equation}
+A class function is constant on conjugacy classes, hence a function of $t$
+alone. Integrate out $\theta_1$ and $\theta_2$ in (a):
+\begin{equation}\label{haar:weyl-SU2}
+ \int_{SU(2)}f\,dh=\frac{1}{2\pi^2}\cdot2\pi\cdot2\int_0^\pi f(t)\sin^2t\,dt
+ =\frac2\pi\int_0^\pi f(t)\sin^2t\,dt .
+\end{equation}
+\end{proof}
+Equation~\eqref{haar:weyl-SU2} is the $SU(2)$ case of the Weyl integral
+formula (Hall, Eq.~(11.16), p.~332, written over $[-\pi,\pi]$). The weight
+$\sin^2t$ vanishes at $t=0$ and $t=\pi$: conjugacy classes near $\pm1$ are
+small two-spheres, of radius $\sin t$ in Eq.~\eqref{haar:S3-metric}.
+
+\subsection{Three integrals on $SU(2)$}
+\begin{proposition}\label{haar:prop:SU2-integrals}
+For normalized Haar measure on $SU(2)$, every $X\in M_2(\mathbb C)$ and
+every continuous class function $\phi$,
+\begin{align}
+ \int\operatorname{tr}V\,h(dV)&=0,\label{haar:trace-zero}\\
+ \int(\operatorname{tr}V)^2\,h(dV)&=1,\label{haar:trace-square}\\
+ \int VXV^{-1}\,h(dV)&=\frac{\operatorname{tr}X}{2}\,\mathbf 1,
+ \label{haar:conjugation-average}\\
+ \int\phi(W)\,W^{-1}\,h(dW)&=\Big(\frac12\int\phi(W)\operatorname{tr}W\,h(dW)\Big)\mathbf 1 .
+ \label{haar:class-average}
+\end{align}
+\end{proposition}
+\begin{proof}
+Eq.~\eqref{haar:trace-zero}: $-\mathbf 1\in SU(2)$. Apply
+Eq.~\eqref{haar:bi-invariance} with $g_L=-\mathbf 1$, $g_R=\mathbf 1$:
+$\int\operatorname{tr}V\,h(dV)=\int\operatorname{tr}(-V)\,h(dV)
+=-\int\operatorname{tr}V\,h(dV)$.
+
+Eq.~\eqref{haar:trace-square}: insert $\operatorname{tr}V=2\cos t$ from
+Eq.~\eqref{haar:SU2-classes} into Eq.~\eqref{haar:weyl-SU2}, and use
+$4\cos^2t\sin^2t=\sin^22t=\frac12(1-\cos4t)$:
+\begin{equation}
+ \frac2\pi\int_0^\pi4\cos^2t\,\sin^2t\,dt
+ =\frac2\pi\int_0^\pi\frac{1-\cos4t}{2}\,dt=\frac2\pi\cdot\frac\pi2=1 .
+\end{equation}
+Eq.~\eqref{haar:conjugation-average}: call the left side $A$. For
+$U\in SU(2)$, substitute $V'=UV$, which is Eq.~\eqref{haar:bi-invariance}
+with $g_L=U$:
+\begin{equation}
+ UAU^{-1}=\int(UV)X(UV)^{-1}\,h(dV)=\int V'X{V'}^{-1}\,h(dV')=A .
+\end{equation}
+Thus $A$ commutes with $\mathbf 1,i\sigma_1,i\sigma_2,i\sigma_3\in SU(2)$.
+These span $M_2(\mathbb C)$ over $\mathbb C$, so $A$ commutes with every
+$2\times2$ matrix and is a scalar, $A=c\mathbf 1$. The trace of the integrand
+is $\operatorname{tr}(VXV^{-1})=\operatorname{tr}X$, so $2c=\operatorname{tr}X$.
+
+Eq.~\eqref{haar:class-average}: call the left side $B$. For $U\in SU(2)$
+substitute $W'=UWU^{-1}$ (Eq.~\eqref{haar:bi-invariance} with $g_L=U$,
+$g_R=U^{-1}$), and use $\phi(U^{-1}W'U)=\phi(W')$:
+\begin{equation}
+ UBU^{-1}=\int\phi(W)\,(UWU^{-1})^{-1}\,h(dW)=\int\phi(W')\,{W'}^{-1}\,h(dW')=B .
+\end{equation}
+As before $B=c\mathbf 1$, and $2c=\int\phi(W)\operatorname{tr}W^{-1}\,h(dW)$.
+For $W\in SU(2)$, $\operatorname{tr}W^{-1}=\operatorname{tr}W^\dagger
+=\overline{\operatorname{tr}W}=\operatorname{tr}W$, since the trace is real by
+Eq.~\eqref{haar:SU2-classes}.
+\end{proof}
+Equations~\eqref{haar:trace-zero} and \eqref{haar:trace-square} are two
+instances of the orthonormality of irreducible characters in
+$L^2(G,h)$ (Hall, Theorem~12.15, p.~352). For $SU(2)$ the character of
+spin~$j$ is $\chi_j(t)=\frac{\sin(2j+1)t}{\sin t}$; the trivial and defining
+characters are $\chi_0=1$ and $\chi_{1/2}=\frac{\sin2t}{\sin t}=2\cos t
+=\operatorname{tr}V$, so the two equations read
+$\langle\chi_0,\chi_{1/2}\rangle=0$ and $\langle\chi_{1/2},\chi_{1/2}\rangle=1$.
+The argument for Eq.~\eqref{haar:conjugation-average} is Schur's lemma for
+the defining representation, with the spanning set written out.

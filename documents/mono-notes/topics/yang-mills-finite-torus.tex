@@ -43,7 +43,11 @@ that typical configurations in the quantum integral are smooth connections.
 Write $E$ for the sum of these dimensionless plaquette energies, each based
 square in each of the six planes counted once. Integrate $e^{-\beta E}$ over
 independent normalized Haar measures on the positive links, as in
-Eq.~\eqref{ym:wilson-partition}. Dividing by this integral $Z$ gives the
+Eq.~\eqref{ym:wilson-partition}. Haar measure is the group average that is
+unchanged by left and right multiplication
+(Section~\ref{haar:sec:haar}, p.~\pageref{haar:sec:haar}): for
+$\mathbb Z_2$ each sign has weight $\tfrac12$, and for $SU(2)\approx S^3$
+it is the normalized round measure. Dividing by this integral $Z$ gives the
 Wilson probability law. At $\beta=0$ all assignments have their original Haar
 weight and $Z=1$; at large $\beta$ the law favours small plaquette energy.
 Small $\beta$ is \emph{strong} bare coupling, not a fine-mesh approximation
@@ -220,6 +224,167 @@ eigenvectors by the odd one gives $r_1=(1-q)/(1+q)=\tanh\beta$.
 At $\beta=0$ only the constant state propagates. At positive $\beta$ the
 second mode is real and nonzero. This is a control in a known
 strong-coupling regime, not a continuum result for a compact simple Lie group.
+
+\subsection{The same two calculations for \texorpdfstring{$SU(2)$}{SU(2)}}\label{ym:sec:guide-su2-haar}
+The factor $2^{-N_1}$ in Eq.~\eqref{ym:guide-enumerator} and the $\tfrac12$
+in Eq.~\eqref{ym:guide-one-link} are normalized Haar measure on
+$\mathbb Z_2$ (Section~\ref{haar:sec:haar}). For $SU(2)$, Haar measure is
+the normalized round measure on $S^3$ (Eq.~\eqref{haar:SU2-round}), and the
+counting arguments become the integrals of
+Proposition~\ref{haar:prop:SU2-integrals}. Both calculations of the
+previous subsection carry over. Here $m=2$ and
+$\operatorname{Re}\operatorname{tr}=\operatorname{tr}$ on $SU(2)$, because
+the trace is real (Eq.~\eqref{haar:SU2-classes}).
+
+\paragraph{The slope of the defect at $\beta=0$.}
+Differentiate the partition function of Eq.~\eqref{ym:wilson-partition}
+under the integral, which is allowed because $E$ is bounded and the
+measure is finite:
+\begin{equation}\label{ym:guide-logZ-slope}
+ \frac{\partial\log Z_\beta}{\partial\beta}
+ =\frac{1}{Z_\beta}\int(-E)\,e^{-\beta E}\,\mathcal DU
+ =-\langle E\rangle_\beta,
+ \qquad
+ \left.\frac{\partial\log Z_\beta}{\partial\beta}\right|_{\beta=0}
+ =-\int E\,\mathcal DU .
+\end{equation}
+At $\beta=0$ we need the Haar mean of each plaquette energy.
+
+\emph{A plaquette with four distinct links is Haar distributed.} Write
+Eq.~\eqref{ym:guide-holonomy} as $U_p=U_\mu(x)\,C$ with
+$C=U_\nu(x+e_\mu)U_\mu(x+e_\nu)^{-1}U_\nu(x)^{-1}$. When the four links are
+distinct, $C$ does not involve $U_\mu(x)$. By Fubini, integrate over
+$U_\mu(x)$ first with $C$ fixed. Right invariance,
+Eq.~\eqref{haar:bi-invariance} with $g_R=C$, gives for continuous $f$
+\begin{equation}\label{ym:guide-plaquette-haar}
+ \int f\big(U_\mu(x)\,C\big)\,h\big(dU_\mu(x)\big)=\int_G f\,dh ,
+\end{equation}
+independently of $C$. The remaining integrals have total mass $1$. With
+$f=\operatorname{tr}$ and Eq.~\eqref{haar:trace-zero},
+\begin{equation}\label{ym:guide-plaquette-mean}
+ \int\Big(1-\frac12\operatorname{tr}U_p\Big)\mathcal DU
+ =1-\frac12\int\operatorname{tr}V\,h(dV)=1-\frac12\cdot0=1 .
+\end{equation}
+On $2^4$ all 96 plaquettes have four distinct links, so
+Eq.~\eqref{ym:guide-logZ-slope} gives
+$\frac{\partial\log Z_\beta(2^4)}{\partial\beta}\big|_{\beta=0}=-96$. The
+sign model gives the same number: each face there has mean energy
+$\tfrac12\cdot0+\tfrac12\cdot2=1$, and $2\langle w\rangle_0=96$ in
+Eq.~\eqref{ym:guide-first-seed}.
+
+\emph{The $1^4$ box is where the groups differ.} With one site, the four
+links are $U_1,\dots,U_4$, the shifts in Eq.~\eqref{ym:guide-holonomy} return
+to the same site, and
+\begin{equation}\label{ym:guide-one-site-plaquette}
+ U_p=U_\mu U_\nu U_\mu^{-1}U_\nu^{-1}\qquad(\mu<\nu).
+\end{equation}
+For signs this commutator is $+1$, which is why $Z_\beta(1^4)=1$. For $SU(2)$
+it is not the identity. Let $A=U_\mu$ and $B=U_\nu$, two independent Haar
+variables. Integrate over $A$ first with Eq.~\eqref{haar:conjugation-average}
+($X=B$), then over $B$ with $\operatorname{tr}B^{-1}=\operatorname{tr}B$ and
+Eq.~\eqref{haar:trace-square}:
+\begin{align}
+ \int\!\!\int\operatorname{tr}\big(ABA^{-1}B^{-1}\big)\,h(dA)\,h(dB)
+ &=\int\operatorname{tr}\Big(\Big(\int ABA^{-1}\,h(dA)\Big)B^{-1}\Big)h(dB)
+ =\int\operatorname{tr}\Big(\frac{\operatorname{tr}B}{2}\,B^{-1}\Big)h(dB)\notag\\
+ &=\frac12\int\operatorname{tr}B\,\operatorname{tr}B^{-1}\,h(dB)
+ =\frac12\int(\operatorname{tr}B)^2\,h(dB)=\frac12 .
+ \label{ym:guide-commutator-mean}
+\end{align}
+Each of the six plaquettes therefore has mean energy
+$1-\frac12\cdot\frac12=\frac34$, and
+$\frac{\partial\log Z_\beta(1^4)}{\partial\beta}\big|_{\beta=0}
+=-6\cdot\frac34=-\frac92$. Insert both slopes into
+$\Delta_\beta(1)=16\log Z_\beta(1^4)-\log Z_\beta(2^4)$:
+\begin{equation}\label{ym:guide-su2-slope}
+ \left.\frac{\partial\Delta_\beta(1)}{\partial\beta}\right|_{\beta=0}
+ =16\Big(-\frac92\Big)-(-96)=-72+96=24
+ \qquad(G=SU(2)),
+\end{equation}
+against $96$ for the sign model in Eq.~\eqref{ym:guide-first-seed}. Both
+groups satisfy $\Delta_0(1)=0$, since $Z_0=1$ on every box. The nonabelian
+one-site box already carries curvature: its subtracted term $16\log Z(1^4)$
+is no longer zero. Equation~\eqref{ym:guide-su2-slope} is a derivative at
+one point. Each $\log Z_\beta$ is convex in $\beta$, but $\Delta_\beta$
+is a difference of convex functions. So the slope $24$ does not by itself
+bound $\Delta_\beta(1)$ at positive $\beta$. The certified bound remains
+Eq.~\eqref{ym:strong-seed}, whose constant $192$ applies to every compact
+$G$.
+
+\paragraph{The one-link transfer ratio.}
+The temporal factor of one spatial link is the kernel $k$ of
+Eq.~\eqref{ym:sc-link-kernel}. For $SU(2)$ it is a class function of
+$W=UU'^{-1}$,
+\begin{equation}\label{ym:guide-su2-kernel}
+ k(U,U')=\phi\big(UU'^{-1}\big),\qquad
+ \phi(W)=e^{-\beta}\exp\Big(\frac\beta2\operatorname{tr}W\Big),
+\end{equation}
+acting by $(\mathsf Kf)(U)=\int k(U,U')f(U')\,h(dU')$ on $L^2(SU(2),h)$.
+For signs, the same kernel with $h(\{\pm1\})=\tfrac12$ is the matrix $B$
+of Eq.~\eqref{ym:guide-one-link}. We need the analogues of its two
+eigenvectors $(1,1)$ and $(1,-1)$. They are the constant function and the
+matrix entries $f(U')=U'_{ab}$ of the defining representation. For fixed
+$U$, the map $U'\mapsto W=UU'^{-1}$ is an inversion followed by a left
+translation. It preserves $h$ by Theorem~\ref{haar:thm:exist-unique}, and
+$U'=W^{-1}U$. Hence
+\begin{align}
+ (\mathsf K1)(U)&=\int\phi(W)\,h(dW)=:\lambda_0,\notag\\
+ \int\phi\big(UU'^{-1}\big)\,U'\,h(dU')
+ &=\Big(\int\phi(W)\,W^{-1}\,h(dW)\Big)U=\lambda_{1/2}\,U,\qquad
+ \lambda_{1/2}=\frac12\int\phi(W)\operatorname{tr}W\,h(dW),
+ \label{ym:guide-su2-eigen}
+\end{align}
+where the last equality is Eq.~\eqref{haar:class-average}. Each of the four
+entries $U_{ab}$ is thus an eigenfunction with eigenvalue $\lambda_{1/2}$.
+Evaluate with Eq.~\eqref{haar:weyl-SU2} and $\operatorname{tr}W=2\cos t$.
+Use $\sin^2t=\frac{1-\cos2t}2$, $\cos t\sin^2t=\frac{\cos t-\cos3t}4$
+and the modified Bessel functions
+$I_n(\beta)=\frac1\pi\int_0^\pi e^{\beta\cos t}\cos nt\,dt$:
+\begin{align}
+ \lambda_0&=e^{-\beta}\,\frac2\pi\int_0^\pi e^{\beta\cos t}\sin^2t\,dt
+ =e^{-\beta}\,\frac2\pi\cdot\frac\pi2\big(I_0-I_2\big)
+ =e^{-\beta}\big(I_0-I_2\big),\notag\\
+ \lambda_{1/2}&=e^{-\beta}\,\frac2\pi\int_0^\pi e^{\beta\cos t}\cos t\,\sin^2t\,dt
+ =e^{-\beta}\,\frac2\pi\cdot\frac\pi4\big(I_1-I_3\big)
+ =\frac{e^{-\beta}}2\big(I_1-I_3\big).\label{ym:guide-su2-bessel}
+\end{align}
+The differences reduce by the recurrence
+$I_{n-1}-I_{n+1}=\frac{2n}\beta I_n$ for $\beta>0$. To obtain it, write
+$\cos(n-1)t-\cos(n+1)t=2\sin nt\sin t$ and
+$\sin t\,e^{\beta\cos t}=-\frac1\beta\frac{d}{dt}e^{\beta\cos t}$, and
+integrate by parts. The boundary term vanishes because $\sin nt=0$ at $t=0,\pi$:
+\begin{align}
+ I_{n-1}-I_{n+1}
+ &=\frac1\pi\int_0^\pi e^{\beta\cos t}\,2\sin nt\,\sin t\,dt
+ =-\frac{2}{\pi\beta}\int_0^\pi\frac{d}{dt}\big(e^{\beta\cos t}\big)\sin nt\,dt\notag\\
+ &=-\frac{2}{\pi\beta}\Big[e^{\beta\cos t}\sin nt\Big]_0^\pi
+   +\frac{2n}{\pi\beta}\int_0^\pi e^{\beta\cos t}\cos nt\,dt
+ =\frac{2n}\beta I_n .\label{ym:guide-bessel-recurrence}
+\end{align}
+With $n=1$ and $n=2$, Eq.~\eqref{ym:guide-su2-bessel} becomes
+\begin{equation}\label{ym:guide-su2-ratio}
+ \lambda_0=\frac{2e^{-\beta}}{\beta}I_1(\beta),\qquad
+ \lambda_{1/2}=\frac{2e^{-\beta}}{\beta}I_2(\beta),\qquad
+ \frac{\lambda_{1/2}}{\lambda_0}=\frac{I_2(\beta)}{I_1(\beta)}
+ =\frac\beta4+O(\beta^3).
+\end{equation}
+The small-$\beta$ form follows from
+$I_n(\beta)=\sum_{k\ge0}\frac{(\beta/2)^{2k+n}}{k!\,(k+n)!}$, so
+$I_1=\frac\beta2+\frac{\beta^3}{16}+\cdots$ and
+$I_2=\frac{\beta^2}8+\cdots$. Compare $r_1=\tanh\beta=\beta+O(\beta^3)$ for
+the sign model. The same series shows $I_n(\beta)>0$ for $\beta>0$, so
+both eigenvalues are positive, as Proposition~\ref{ym:sc-prop:positivity}
+requires of the whole operator. The constant function is the vacuum on one
+link; the matrix entries of the defining representation carry one unit of
+$SU(2)$ electric flux along it.
+
+This is a single-link statement. On an $SU(2)$ slice of side one the spatial
+plaquettes are the commutators of Eq.~\eqref{ym:guide-one-site-plaquette}.
+They do not cancel, so the full one-step operator is not
+$\mathsf K^{\otimes3}$, unlike $B^{\otimes3}$ for signs. Haar measure also
+moves an $SU(2)$ twist. Lemma~\ref{ym:lem:twist-move} substitutes
+$U(b)\to-U(b)$, which preserves $h$ because $-\mathbf 1$ is central. This is
+the counterpart of $u\mapsto u+b$ in Eq.~\eqref{ym:guide-flux-pairing}.
 
 \subsection{What is measured, and what must survive a limit?}
 For $SU(2)$ it is easier to sample a plaquette than to determine an absolute
