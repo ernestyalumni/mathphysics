@@ -13,6 +13,7 @@ CASES = json.loads((HERE.parent / 'frozen-test.json').read_text())
 META = json.loads((HERE / 'run-metadata.json').read_text())
 MODELS = dict(META['models'])
 MODELS['glm53'] = 'z-ai/glm-5.3'
+MODELS['minimax'] = 'MiniMax-M3'
 
 
 def usage_sum(receipts, key):
@@ -200,6 +201,14 @@ def main():
     (HERE / 'summary.json').write_text(json.dumps({'generated_utc': generated, 'complete': complete, 'models': summaries}, indent=2) + '\n')
     primary_routes = ['kimi', 'deepseek', 'glm53']
     primary_complete = all(summaries[route]['scheduled_samples'] == summaries[route]['terminal_samples'] + summaries[route]['transport_failure_samples'] for route in primary_routes)
+    frozen_primary_path = HERE / 'primary-summary.json'
+    frozen_primary = json.loads(frozen_primary_path.read_text()) if frozen_primary_path.exists() else None
+    if primary_complete and frozen_primary and frozen_primary.get('complete'):
+        current = {route: summaries[route] for route in primary_routes}
+        assert frozen_primary['models'] == current, 'Completed primary results differ from frozen publication'
+        # Do not refresh timestamps or let a later model rewrite this completed report.
+        print(json.dumps({route: {k: v for k, v in summaries[route].items() if k not in ('by_group', 'original_asserted_steps', 'reported_models')} for route in MODELS}, indent=2))
+        return
     (HERE / 'primary-summary.json').write_text(json.dumps({
         'generated_utc': generated, 'complete': primary_complete,
         'models': {route: summaries[route] for route in primary_routes},

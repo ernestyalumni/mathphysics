@@ -26,6 +26,8 @@ MODELS = {
     'kimi': ('moonshotai/kimi-k3.1-pro', 2),
     'flashx': ('z-ai/glm-5.3-flashx', 2),
     'glm53': ('z-ai/glm-5.3', 2),
+    'minimax': ('MiniMax-M3', 2),
+    'qwen38': ('qwen/qwen3.8-max', 2),
 }
 TIMEOUT = 240
 MAX_ATTEMPTS = 3
@@ -223,9 +225,27 @@ def main():
     if unknown:
         raise SystemExit(f'Unknown routes: {sorted(unknown)}')
     HERE.mkdir(parents=True, exist_ok=True)
-    glm_only = requested == ['glm53']
-    metadata_file = HERE / ('run-metadata-glm53.json' if glm_only else 'run-metadata.json')
-    preregistration_file = HERE / ('PREREGISTRATION-GLM53.md' if glm_only else 'PREREGISTRATION.md')
+    special = requested[0] if len(requested) == 1 and requested[0] in {'glm53', 'minimax', 'qwen38'} else None
+    metadata_name = f'run-metadata-{special}.json' if special else 'run-metadata.json'
+    prereg_name = f'PREREGISTRATION-{special.upper()}.md' if special else 'PREREGISTRATION.md'
+    metadata_file = HERE / metadata_name
+    preregistration_file = HERE / prereg_name
+    if special == 'qwen38':
+        # Local version checks only; execute no mathematical request in this preflight.
+        assert subprocess.check_output(['node', '--version'], text=True).strip() == 'v24.18.1'
+        assert subprocess.check_output([str(Path.home() / '.local/bin/pi'), '--version'], text=True).strip() == '1.6.0'
+    if special == 'qwen38' and metadata_file.exists():
+        prior = json.loads(metadata_file.read_text())
+        for key, expected in [('case_sha256', CASE_SHA), ('samples_per_case', 2),
+                              ('timeout_seconds', TIMEOUT),
+                              ('max_attempts_per_sample', MAX_ATTEMPTS),
+                              ('parser_sha256', sha256(PARSER_FILE)),
+                              ('runner_sha256', sha256(Path(__file__))),
+                              ('preregistration_sha256', sha256(preregistration_file))]:
+            assert prior[key] == expected, f'Qwen frozen field changed: {key}'
+        assert prior['requested_routes'] == ['qwen38']
+        assert prior['models']['qwen38'] == MODELS['qwen38'][0]
+        assert prior['concurrency']['qwen38'] == 2
     atomic_json(metadata_file, {
         'case_file': str(CASE_FILE), 'case_sha256': CASE_SHA,
         'case_count': len(cases), 'proof_groups': len({c['group'] for c in cases}),
@@ -238,6 +258,9 @@ def main():
         'preregistration_sha256': sha256(preregistration_file),
         'started_or_resumed_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
         'pid': os.getpid(), 'requested_routes': requested,
+        **({'runtime_node': 'v24.18.1', 'runtime_pi': '1.6.0',
+            'thinking': 'low', 'output_cap': 'provider_default',
+            'provider_catalog_context': '128K', 'provider_catalog_displayed_output': '16.4K'} if special == 'qwen38' else {}),
     })
     with concurrent.futures.ThreadPoolExecutor(max_workers=len(requested)) as pool:
         list(pool.map(lambda route: run_route(route, cases), requested))

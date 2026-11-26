@@ -1,6 +1,6 @@
 # Requested three-model planted-error referee comparison
 
-Generated UTC: 2026-11-26T06:04:44.542106+00:00. **Status: COMPLETE.**
+Generated UTC: 2026-11-26T07:39:55.124241+00:00. **Status: COMPLETE.**
 
 Routes: Kimi, free DeepSeek, and larger `z-ai/glm-5.3` (not FlashX). Exact per-case planted/returned steps are in `samples.csv` and `REPORT.md`; all raw responses and failures are in `receipts/`. Mathematical outcomes count terminal responses only.
 
