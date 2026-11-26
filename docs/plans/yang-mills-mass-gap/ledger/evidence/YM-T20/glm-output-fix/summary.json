@@ -1,0 +1,32 @@
+{
+  "generated_utc": "2026-11-26T06:59:27.930125+00:00",
+  "complete": true,
+  "arms": {
+    "off_original": {
+      "requests": 7,
+      "terminal_samples": 4,
+      "transport_failure_samples": 0,
+      "parseable": 1,
+      "primary_success": 0,
+      "truncated": 3,
+      "timeouts": 3,
+      "output_tokens": 78626,
+      "reasoning_tokens": 64896,
+      "seconds": 1568.7,
+      "cost_estimate_usd": 0.19474452800000003
+    },
+    "low_verdict_first": {
+      "requests": 7,
+      "terminal_samples": 3,
+      "transport_failure_samples": 1,
+      "parseable": 2,
+      "primary_success": 1,
+      "truncated": 1,
+      "timeouts": 4,
+      "output_tokens": 48193,
+      "reasoning_tokens": 47849,
+      "seconds": 1586.4,
+      "cost_estimate_usd": 0.11903350800000001
+    }
+  }
+}

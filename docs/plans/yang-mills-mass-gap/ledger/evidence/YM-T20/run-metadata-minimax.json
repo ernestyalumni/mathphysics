@@ -1,0 +1,31 @@
+{
+  "case_file": "frozen-test.json",
+  "case_sha256": "b90342fb05b0467c673bd7578018ad97c039d8fdfd668082b26cb6e3f06193fe",
+  "case_count": 43,
+  "proof_groups": 14,
+  "samples_per_case": 2,
+  "models": {
+    "deepseek": "deepseek/deepseek-v4.1-flash-1017-free",
+    "kimi": "moonshotai/kimi-k3.1-pro",
+    "flashx": "z-ai/glm-5.3-flashx",
+    "glm53": "z-ai/glm-5.3",
+    "minimax": "MiniMax-M3"
+  },
+  "concurrency": {
+    "deepseek": 8,
+    "kimi": 2,
+    "flashx": 2,
+    "glm53": 2,
+    "minimax": 2
+  },
+  "timeout_seconds": 240,
+  "max_attempts_per_sample": 3,
+  "parser_sha256": "70ebced082a4225e3c2e9c052e2a4f71f35f97a0209545af3dc96fdf4f60cf82",
+  "runner_sha256": "43deeef83af3e2d4a99c3c59b5118ac3e8f5bf08bdaa379354f3d7d735dfce7b",
+  "preregistration_file": "PREREGISTRATION-MINIMAX.md",
+  "preregistration_sha256": "0e175aa39fbe0fff3129bda608478109650ab2052b194427630399021df2a0b9",
+  "started_or_resumed_utc": "2026-11-26T06:31:14.781009+00:00",
+  "requested_routes": [
+    "minimax"
+  ]
+}

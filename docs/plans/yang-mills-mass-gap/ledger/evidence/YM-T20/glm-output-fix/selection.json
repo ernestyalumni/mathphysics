@@ -1,0 +1,54 @@
+{
+  "status": "blocked_no_eligible_configuration",
+  "original_arms": [
+    {
+      "arm": "off_original",
+      "stage": "provider_default",
+      "parseable": 1,
+      "primary_success": 0,
+      "output_tokens": 78626,
+      "token_truncated": 3,
+      "transport_failure_samples": 0,
+      "cost_estimate_usd": 0.19474452800000003,
+      "rank": [
+        1,
+        0,
+        -78626
+      ]
+    },
+    {
+      "arm": "low_verdict_first",
+      "stage": "provider_default",
+      "parseable": 2,
+      "primary_success": 1,
+      "output_tokens": 48193,
+      "token_truncated": 1,
+      "transport_failure_samples": 1,
+      "cost_estimate_usd": 0.11903350800000001,
+      "rank": [
+        2,
+        1,
+        -48193
+      ]
+    }
+  ],
+  "larger_budget_arm": {
+    "arm": "low_verdict_first",
+    "stage": "explicit_requested_32768",
+    "parseable": 0,
+    "primary_success": 0,
+    "output_tokens": 0,
+    "token_truncated": 0,
+    "transport_failure_samples": 4,
+    "cost_estimate_usd": 0,
+    "rank": [
+      0,
+      0,
+      0
+    ]
+  },
+  "larger_budget_called": true,
+  "rule": "No arm has >=3/4 parseable; no prospective run. Further configuration changes require a new addendum.",
+  "scope": "Output delivery unresolved; do not call these failures mathematical wrong answers.",
+  "generated_utc": "2026-11-26T07:00:26.723839+00:00"
+}

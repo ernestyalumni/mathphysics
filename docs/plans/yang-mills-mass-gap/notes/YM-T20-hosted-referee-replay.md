@@ -40,10 +40,22 @@ The pattern is the same throughout. The hosted models judge whether the argument
 
 ## Reliability
 
-- **GLM-5.3:** 1.22 M of 1.23 M output tokens were reasoning. The median answer used the full 16,384 tokens and took 168 s. The route does not honour `--thinking low`. To be usable here it needs a higher output limit or a reasoning-effort control that works.
+- **GLM-5.3:** 1.22 M of 1.23 M output tokens were reasoning. The median answer used the full 16,384 tokens and took 168 s. The route does not honor `--thinking low`. A follow-up diagnostic on four cut-off cases (`ledger/evidence/YM-T20/glm-output-fix/`) tried `--thinking off` (1/4 answers returned) and a verdict-first instruction (2/4). Both fell below the pre-registered 3/4 gate. The 32,768-token arm never reached the model: the isolated client ran under Node 12 and failed at startup. So the planned GLM run on the new 21-case adversarial set was blocked, as its pre-registration requires. A Node-24 recovery of that arm is pre-registered but had not run at this writing.
 - **DeepSeek free:** 57 timeouts in 132 requests. Seven of the 12 lost samples are `ym-s04`, the longest case: 3 of its 10 samples returned. The free route is the bottleneck, not the model.
 - **Kimi:** no timeouts, one cut-off (`c23`, original), median 4.7 k output tokens and 32 s per answer.
-- **GLM-5.3-FlashX** (supplementary, still running at this writing): 20 of 20 returned verdicts correct so far, with many timeouts and cut-offs. Its final row is in `REPORT.md`.
+- **GLM-5.3-FlashX** (supplementary, complete): 44 of 64 returned samples correct; 22 samples never returned and 17 were cut off. All three of its misses are cosmetic mutants: `ym-s01` mut5, `ym-09` mut4 and `ym-06` mut1.
+
+## Later routes
+
+Ernest added two more routes after the primary comparison. Each has its own pre-registration in `ledger/evidence/YM-T20/`.
+
+- **Qwen 3.8 Max (`qwen/qwen3.8-max`), complete:**
+  - 74/86 primary: 26/28 originals passed, 48/58 planted errors located, 0 transport failures, 3 cut-offs, $2.12 (`QWEN38-COMPARISON.md`, `qwen38-case-results.csv`).
+  - Its seven mutant passes and one wrong-step answer are on exactly the cases Kimi missed: `ym-06` mut1, `ym-09` mut4 and mut6, `ym-07` mut4.
+  - Its one false alarm, `n1-clusters-06` step 11, has not been checked.
+- **MiniMax-M3:** running at this writing. A comparison with Kimi, `MINIMAX-COMPARISON.md`, is written when its receipts resolve.
+
+Five models from four families (Kimi, DeepSeek, GLM-5.3 and FlashX, Qwen) miss the same few cosmetic mutants. That is a property of the case set, not of any one model.
 
 ## Consequences for the program
 
