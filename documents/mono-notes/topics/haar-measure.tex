@@ -129,16 +129,24 @@ $\mathfrak g$. The integral of a compactly supported $n$-form is invariant
 under diffeomorphisms:
 \begin{proposition}[Lee, Proposition~16.6(d), p.~407 \cite{dgdt:JLee2012}]\label{haar:prop:lee-16-6}
 Suppose $M$ and $N$ are non-empty oriented smooth $n$-manifolds with or
-without boundary, and $\omega$ is a compactly supported $n$-form on $M$.
-If $F\colon N\to M$ is an orientation-preserving or orientation-reversing
-diffeomorphism, then
-\[
- \int_M\omega=\begin{cases}\int_NF^*\omega&\text{if $F$ is orientation-preserving,}\\
- -\int_NF^*\omega&\text{if $F$ is orientation-reversing.}\end{cases}
-\]
+without boundary, $F\colon M\to N$ is an orientation-preserving or
+orientation-reversing diffeomorphism, and $\eta$ is a compactly supported
+$n$-form on $N$. Then $F^*\eta$ is a compactly supported $n$-form on $M$, and
+\begin{equation}\label{haar:diffeo-invariance}
+ \int_N\eta=\begin{cases}\int_MF^*\eta&\text{if $F$ is orientation-preserving,}\\
+ -\int_MF^*\eta&\text{if $F$ is orientation-reversing.}\end{cases}
+\end{equation}
 \end{proposition}
+Lee writes the map the other way, $F\colon N\to M$, with the form $\omega$ on
+his target $M$, and $\int_M\omega=\pm\int_NF^*\omega$. His domain $N$ is our
+$M$, his target $M$ is our $N$, and his $\omega$ is our $\eta$. In both
+versions the form lives on the target of $F$ and is pulled back to its
+domain. We write $\eta$ because $\omega$ is the invariant form of this
+section.
+
 By Eq.~\eqref{haar:left-invariant-form}, $L_g$ carries $\omega$ to itself, so
-it is orientation preserving. Take $F=L_g$ and replace $\omega$ by $f\omega$:
+it is orientation preserving. In Eq.~\eqref{haar:diffeo-invariance} take
+$M=N=G$, $F=L_g\colon G\to G$ and $\eta=f\omega$:
 \begin{equation}\label{haar:left-invariant-integral}
  \int_G(f\circ L_g)\,\omega
  =\int_G(f\circ L_g)\,L_g^*\omega

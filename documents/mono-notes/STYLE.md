@@ -118,6 +118,14 @@ on 2026-09-12 and will be refined with him.
   For example, write out the Jaffe--Witten clustering inequality here and
   link to that display rather than relying on "Jaffe--Witten Eq. (2)"
   alone (Ernest, 2026-11-20).
+- Name the spaces of a map in alphabetical order, domain first:
+  `F\colon M\to N`, with a form on the target $N$ pulled back to $M$.
+  When a source orders them differently, restate its result in this
+  convention and write the translation explicitly beside it, letter by
+  letter: for example "Lee writes $F\colon N\to M$; his $N$ is our $M$
+  and his $M$ is our $N$." Check every symbol that moves with the
+  relabelling, including which space carries the form or measure
+  (Ernest, 2026-11-25).
 - State each result in one form, index or index-free, whichever the
   argument needs. Do not restate an index equation in matrix form, or the
   reverse; the reader converts between them (Ernest, 2026-10-19).
