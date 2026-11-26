@@ -1,0 +1,953 @@
+{
+  "generated_utc": "2026-11-26T16:22:09.952287+00:00",
+  "complete": true,
+  "models": {
+    "deepseek": {
+      "route": "deepseek/deepseek-v4.1-flash-1017-free",
+      "scheduled_samples": 86,
+      "samples_with_any_request": 86,
+      "terminal_samples": 74,
+      "transport_failure_samples": 12,
+      "pending_samples": 0,
+      "retry_pending_samples": 0,
+      "request_attempts": 132,
+      "retry_attempts": 46,
+      "timeout_requests": 57,
+      "no_assistant_message_requests": 56,
+      "assistant_error_requests": 2,
+      "nonzero_exit_requests": 0,
+      "token_truncated_terminal_samples": 9,
+      "primary_success_terminal": 60,
+      "primary_success_all_scheduled_sensitivity": 60,
+      "originals_passed": 16,
+      "original_false_alarms": 2,
+      "mutants_exact_step": 44,
+      "mutants_passed_as_correct": 1,
+      "mutants_wrong_or_missing_step": 2,
+      "unparsed_terminal_samples": 9,
+      "original_asserted_steps": [
+        {
+          "case": "ym-07-ym-prop-conditional-gap",
+          "sample": 1,
+          "step": "5"
+        },
+        {
+          "case": "ym-07-ym-prop-conditional-gap",
+          "sample": 2,
+          "step": "5"
+        }
+      ],
+      "fully_observed_case_pairs": 34,
+      "same_verdict_pairs": 32,
+      "same_verdict_and_step_pairs": 32,
+      "both_samples_successful_cases": 28,
+      "split_success_cases": 2,
+      "request_seconds_sum": 22874.8,
+      "terminal_sample_seconds_mean": 192.11,
+      "input_tokens_all_requests": 19008,
+      "output_tokens_all_requests": 615867,
+      "reasoning_tokens_all_requests": 611374,
+      "total_tokens_all_requests": 686331,
+      "samples_missing_usage": 56,
+      "cost_estimate_usd_all_requests": 0,
+      "provider_reported_cost_total_requests": 0,
+      "reported_models": [
+        "deepseek/deepseek-v4.1-flash-1017-free"
+      ],
+      "by_group": [
+        {
+          "group": "c23-transfer-positivity",
+          "terminal": 3,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 3
+        },
+        {
+          "group": "n1-clusters-01-lem-association",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-clusters-02-lem-edge-correlation-inequalities",
+          "terminal": 8,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 8,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-clusters-04-lem-joint-association",
+          "terminal": 2,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-clusters-06-prop-crossings",
+          "terminal": 2,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 2
+        },
+        {
+          "group": "n1-rotation-01-lem-gradient",
+          "terminal": 5,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 4,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        },
+        {
+          "group": "ym-02-ym-lem-layer",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-03-ym-prop-inverse-square",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-06-ym-prop-defect",
+          "terminal": 10,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 7,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        },
+        {
+          "group": "ym-07-ym-prop-conditional-gap",
+          "terminal": 10,
+          "originals_passed": 0,
+          "false_alarms": 2,
+          "mutants_exact": 6,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 2,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-08-ym-lem-twist-move",
+          "terminal": 2,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-09-ym-lem-thooft-class",
+          "terminal": 7,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 3,
+          "mutants_passed": 1,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        },
+        {
+          "group": "ym-s01-gauge-group-inner-product-casimir-consta",
+          "terminal": 10,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 8,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-s04-asymptotic-freedom-and-the-bare-coupling",
+          "terminal": 3,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        }
+      ]
+    },
+    "kimi": {
+      "route": "moonshotai/kimi-k3.1-pro",
+      "scheduled_samples": 86,
+      "samples_with_any_request": 86,
+      "terminal_samples": 86,
+      "transport_failure_samples": 0,
+      "pending_samples": 0,
+      "retry_pending_samples": 0,
+      "request_attempts": 86,
+      "retry_attempts": 0,
+      "timeout_requests": 0,
+      "no_assistant_message_requests": 0,
+      "assistant_error_requests": 0,
+      "nonzero_exit_requests": 0,
+      "token_truncated_terminal_samples": 1,
+      "primary_success_terminal": 78,
+      "primary_success_all_scheduled_sensitivity": 78,
+      "originals_passed": 27,
+      "original_false_alarms": 0,
+      "mutants_exact_step": 51,
+      "mutants_passed_as_correct": 5,
+      "mutants_wrong_or_missing_step": 1,
+      "unparsed_terminal_samples": 2,
+      "original_asserted_steps": [],
+      "fully_observed_case_pairs": 43,
+      "same_verdict_pairs": 40,
+      "same_verdict_and_step_pairs": 39,
+      "both_samples_successful_cases": 37,
+      "split_success_cases": 4,
+      "request_seconds_sum": 3395.2,
+      "terminal_sample_seconds_mean": 39.48,
+      "input_tokens_all_requests": 72392,
+      "output_tokens_all_requests": 505715,
+      "reasoning_tokens_all_requests": 498328,
+      "total_tokens_all_requests": 600635,
+      "samples_missing_usage": 0,
+      "cost_estimate_usd_all_requests": 1.5619318800000002,
+      "provider_reported_cost_total_requests": 0,
+      "reported_models": [
+        "moonshotai/kimi-k3.1-pro"
+      ],
+      "by_group": [
+        {
+          "group": "c23-transfer-positivity",
+          "terminal": 4,
+          "originals_passed": 1,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        },
+        {
+          "group": "n1-clusters-01-lem-association",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-clusters-02-lem-edge-correlation-inequalities",
+          "terminal": 10,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 8,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-clusters-04-lem-joint-association",
+          "terminal": 2,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-clusters-06-prop-crossings",
+          "terminal": 2,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-rotation-01-lem-gradient",
+          "terminal": 6,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 3,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        },
+        {
+          "group": "ym-02-ym-lem-layer",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-03-ym-prop-inverse-square",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-06-ym-prop-defect",
+          "terminal": 10,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 6,
+          "mutants_passed": 2,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-07-ym-prop-conditional-gap",
+          "terminal": 10,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 7,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 1,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-08-ym-lem-twist-move",
+          "terminal": 2,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-09-ym-lem-thooft-class",
+          "terminal": 8,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 3,
+          "mutants_passed": 3,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-s01-gauge-group-inner-product-casimir-consta",
+          "terminal": 10,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 8,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-s04-asymptotic-freedom-and-the-bare-coupling",
+          "terminal": 10,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 8,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        }
+      ]
+    },
+    "flashx": {
+      "route": "z-ai/glm-5.3-flashx",
+      "scheduled_samples": 86,
+      "samples_with_any_request": 86,
+      "terminal_samples": 64,
+      "transport_failure_samples": 22,
+      "pending_samples": 0,
+      "retry_pending_samples": 0,
+      "request_attempts": 156,
+      "retry_attempts": 70,
+      "timeout_requests": 92,
+      "no_assistant_message_requests": 92,
+      "assistant_error_requests": 0,
+      "nonzero_exit_requests": 0,
+      "token_truncated_terminal_samples": 17,
+      "primary_success_terminal": 44,
+      "primary_success_all_scheduled_sensitivity": 44,
+      "originals_passed": 19,
+      "original_false_alarms": 0,
+      "mutants_exact_step": 25,
+      "mutants_passed_as_correct": 3,
+      "mutants_wrong_or_missing_step": 0,
+      "unparsed_terminal_samples": 17,
+      "original_asserted_steps": [],
+      "fully_observed_case_pairs": 25,
+      "same_verdict_pairs": 20,
+      "same_verdict_and_step_pairs": 20,
+      "both_samples_successful_cases": 18,
+      "split_success_cases": 5,
+      "request_seconds_sum": 30188.7,
+      "terminal_sample_seconds_mean": 223.86,
+      "input_tokens_all_requests": 63313,
+      "output_tokens_all_requests": 660772,
+      "reasoning_tokens_all_requests": 651778,
+      "total_tokens_all_requests": 728565,
+      "samples_missing_usage": 92,
+      "cost_estimate_usd_all_requests": 0.8497268100000002,
+      "provider_reported_cost_total_requests": 0,
+      "reported_models": [
+        "z-ai/glm-5.3-flashx"
+      ],
+      "by_group": [
+        {
+          "group": "c23-transfer-positivity",
+          "terminal": 3,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        },
+        {
+          "group": "n1-clusters-01-lem-association",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-clusters-02-lem-edge-correlation-inequalities",
+          "terminal": 10,
+          "originals_passed": 1,
+          "false_alarms": 0,
+          "mutants_exact": 7,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 2
+        },
+        {
+          "group": "n1-clusters-04-lem-joint-association",
+          "terminal": 2,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-clusters-06-prop-crossings",
+          "terminal": 1,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        },
+        {
+          "group": "n1-rotation-01-lem-gradient",
+          "terminal": 4,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 4
+        },
+        {
+          "group": "ym-02-ym-lem-layer",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-03-ym-prop-inverse-square",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-06-ym-prop-defect",
+          "terminal": 8,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 4,
+          "mutants_passed": 1,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        },
+        {
+          "group": "ym-07-ym-prop-conditional-gap",
+          "terminal": 6,
+          "originals_passed": 1,
+          "false_alarms": 0,
+          "mutants_exact": 1,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 4
+        },
+        {
+          "group": "ym-08-ym-lem-twist-move",
+          "terminal": 2,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-09-ym-lem-thooft-class",
+          "terminal": 3,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 1,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-s01-gauge-group-inner-product-casimir-consta",
+          "terminal": 8,
+          "originals_passed": 1,
+          "false_alarms": 0,
+          "mutants_exact": 6,
+          "mutants_passed": 1,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-s04-asymptotic-freedom-and-the-bare-coupling",
+          "terminal": 5,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 1,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 4
+        }
+      ]
+    },
+    "glm53": {
+      "route": "z-ai/glm-5.3",
+      "scheduled_samples": 86,
+      "samples_with_any_request": 86,
+      "terminal_samples": 86,
+      "transport_failure_samples": 0,
+      "pending_samples": 0,
+      "retry_pending_samples": 0,
+      "request_attempts": 87,
+      "retry_attempts": 1,
+      "timeout_requests": 1,
+      "no_assistant_message_requests": 1,
+      "assistant_error_requests": 0,
+      "nonzero_exit_requests": 0,
+      "token_truncated_terminal_samples": 58,
+      "primary_success_terminal": 27,
+      "primary_success_all_scheduled_sensitivity": 27,
+      "originals_passed": 9,
+      "original_false_alarms": 0,
+      "mutants_exact_step": 18,
+      "mutants_passed_as_correct": 1,
+      "mutants_wrong_or_missing_step": 0,
+      "unparsed_terminal_samples": 58,
+      "original_asserted_steps": [],
+      "fully_observed_case_pairs": 43,
+      "same_verdict_pairs": 34,
+      "same_verdict_and_step_pairs": 34,
+      "both_samples_successful_cases": 9,
+      "split_success_cases": 9,
+      "request_seconds_sum": 13679.8,
+      "terminal_sample_seconds_mean": 159.07,
+      "input_tokens_all_requests": 35530,
+      "output_tokens_all_requests": 1227044,
+      "reasoning_tokens_all_requests": 1222605,
+      "total_tokens_all_requests": 1321198,
+      "samples_missing_usage": 1,
+      "cost_estimate_usd_all_requests": 3.005187812000001,
+      "provider_reported_cost_total_requests": 0,
+      "reported_models": [
+        "z-ai/glm-5.3"
+      ],
+      "by_group": [
+        {
+          "group": "c23-transfer-positivity",
+          "terminal": 4,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 4
+        },
+        {
+          "group": "n1-clusters-01-lem-association",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-clusters-02-lem-edge-correlation-inequalities",
+          "terminal": 10,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 10
+        },
+        {
+          "group": "n1-clusters-04-lem-joint-association",
+          "terminal": 2,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 2
+        },
+        {
+          "group": "n1-clusters-06-prop-crossings",
+          "terminal": 2,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 2
+        },
+        {
+          "group": "n1-rotation-01-lem-gradient",
+          "terminal": 6,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 1,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 5
+        },
+        {
+          "group": "ym-02-ym-lem-layer",
+          "terminal": 4,
+          "originals_passed": 1,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        },
+        {
+          "group": "ym-03-ym-prop-inverse-square",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-06-ym-prop-defect",
+          "terminal": 10,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 8
+        },
+        {
+          "group": "ym-07-ym-prop-conditional-gap",
+          "terminal": 10,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 8
+        },
+        {
+          "group": "ym-08-ym-lem-twist-move",
+          "terminal": 2,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-09-ym-lem-thooft-class",
+          "terminal": 8,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 8
+        },
+        {
+          "group": "ym-s01-gauge-group-inner-product-casimir-consta",
+          "terminal": 10,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 6,
+          "mutants_passed": 1,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        },
+        {
+          "group": "ym-s04-asymptotic-freedom-and-the-bare-coupling",
+          "terminal": 10,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 1,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 9
+        }
+      ]
+    },
+    "minimax": {
+      "route": "MiniMax-M3",
+      "scheduled_samples": 86,
+      "samples_with_any_request": 86,
+      "terminal_samples": 82,
+      "transport_failure_samples": 4,
+      "pending_samples": 0,
+      "retry_pending_samples": 0,
+      "request_attempts": 97,
+      "retry_attempts": 11,
+      "timeout_requests": 15,
+      "no_assistant_message_requests": 15,
+      "assistant_error_requests": 0,
+      "nonzero_exit_requests": 0,
+      "token_truncated_terminal_samples": 30,
+      "primary_success_terminal": 46,
+      "primary_success_all_scheduled_sensitivity": 46,
+      "originals_passed": 15,
+      "original_false_alarms": 3,
+      "mutants_exact_step": 31,
+      "mutants_passed_as_correct": 11,
+      "mutants_wrong_or_missing_step": 6,
+      "unparsed_terminal_samples": 16,
+      "original_asserted_steps": [
+        {
+          "case": "n1-clusters-04-lem-joint-association",
+          "sample": 1,
+          "step": "7"
+        },
+        {
+          "case": "ym-07-ym-prop-conditional-gap",
+          "sample": 2,
+          "step": "5"
+        },
+        {
+          "case": "ym-s01-gauge-group-inner-product-casimir-consta",
+          "sample": 2,
+          "step": "13"
+        }
+      ],
+      "fully_observed_case_pairs": 41,
+      "same_verdict_pairs": 28,
+      "same_verdict_and_step_pairs": 23,
+      "both_samples_successful_cases": 17,
+      "split_success_cases": 12,
+      "request_seconds_sum": 12705.1,
+      "terminal_sample_seconds_mean": 119.81,
+      "input_tokens_all_requests": 40605,
+      "output_tokens_all_requests": 817725,
+      "reasoning_tokens_all_requests": 813749,
+      "total_tokens_all_requests": 910409,
+      "samples_missing_usage": 15,
+      "cost_estimate_usd_all_requests": 0.9965762399999999,
+      "provider_reported_cost_total_requests": 0,
+      "reported_models": [
+        "MiniMax-M3"
+      ],
+      "by_group": [
+        {
+          "group": "c23-transfer-positivity",
+          "terminal": 2,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 1,
+          "unparsed": 1
+        },
+        {
+          "group": "n1-clusters-01-lem-association",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-clusters-02-lem-edge-correlation-inequalities",
+          "terminal": 10,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 6,
+          "mutants_passed": 1,
+          "mutants_wrong_step": 1,
+          "unparsed": 0
+        },
+        {
+          "group": "n1-clusters-04-lem-joint-association",
+          "terminal": 2,
+          "originals_passed": 0,
+          "false_alarms": 1,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 1
+        },
+        {
+          "group": "n1-clusters-06-prop-crossings",
+          "terminal": 2,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 2
+        },
+        {
+          "group": "n1-rotation-01-lem-gradient",
+          "terminal": 6,
+          "originals_passed": 1,
+          "false_alarms": 0,
+          "mutants_exact": 1,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 4
+        },
+        {
+          "group": "ym-02-ym-lem-layer",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 2,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-03-ym-prop-inverse-square",
+          "terminal": 4,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 2,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-06-ym-prop-defect",
+          "terminal": 10,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 5,
+          "mutants_passed": 3,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-07-ym-prop-conditional-gap",
+          "terminal": 10,
+          "originals_passed": 1,
+          "false_alarms": 1,
+          "mutants_exact": 5,
+          "mutants_passed": 2,
+          "mutants_wrong_step": 1,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-08-ym-lem-twist-move",
+          "terminal": 2,
+          "originals_passed": 2,
+          "false_alarms": 0,
+          "mutants_exact": 0,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 0,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-09-ym-lem-thooft-class",
+          "terminal": 6,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 3,
+          "mutants_passed": 1,
+          "mutants_wrong_step": 0,
+          "unparsed": 2
+        },
+        {
+          "group": "ym-s01-gauge-group-inner-product-casimir-consta",
+          "terminal": 10,
+          "originals_passed": 1,
+          "false_alarms": 1,
+          "mutants_exact": 4,
+          "mutants_passed": 2,
+          "mutants_wrong_step": 2,
+          "unparsed": 0
+        },
+        {
+          "group": "ym-s04-asymptotic-freedom-and-the-bare-coupling",
+          "terminal": 10,
+          "originals_passed": 0,
+          "false_alarms": 0,
+          "mutants_exact": 3,
+          "mutants_passed": 0,
+          "mutants_wrong_step": 1,
+          "unparsed": 6
+        }
+      ]
+    }
+  }
+}

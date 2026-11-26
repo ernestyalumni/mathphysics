@@ -1,0 +1,19 @@
+{
+  "generated_utc": "2026-11-26T07:00:15.441733+00:00",
+  "complete": true,
+  "arms": {
+    "low_verdict_first": {
+      "requests": 12,
+      "terminal_samples": 0,
+      "transport_failure_samples": 4,
+      "parseable": 0,
+      "primary_success": 0,
+      "truncated": 0,
+      "timeouts": 0,
+      "output_tokens": 0,
+      "reasoning_tokens": 0,
+      "seconds": 1.2,
+      "cost_estimate_usd": 0
+    }
+  }
+}

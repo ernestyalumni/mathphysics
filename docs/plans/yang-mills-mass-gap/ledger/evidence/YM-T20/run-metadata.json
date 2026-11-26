@@ -1,0 +1,28 @@
+{
+  "case_file": "frozen-test.json",
+  "case_sha256": "b90342fb05b0467c673bd7578018ad97c039d8fdfd668082b26cb6e3f06193fe",
+  "case_count": 43,
+  "proof_groups": 14,
+  "samples_per_case": 2,
+  "models": {
+    "deepseek": "deepseek/deepseek-v4.1-flash-1017-free",
+    "kimi": "moonshotai/kimi-k3.1-pro",
+    "flashx": "z-ai/glm-5.3-flashx"
+  },
+  "concurrency": {
+    "deepseek": 8,
+    "kimi": 2,
+    "flashx": 2
+  },
+  "timeout_seconds": 240,
+  "max_attempts_per_sample": 3,
+  "parser_sha256": "70ebced082a4225e3c2e9c052e2a4f71f35f97a0209545af3dc96fdf4f60cf82",
+  "runner_sha256": "042afe23c34a035eb3d23a598dd0c94b17459c437084fbf2c245cdf8e7947a70",
+  "preregistration_sha256": "27b3ad1214488dd4db40832567a29766a276c3115ede72b66a4ecdd434c8c591",
+  "started_or_resumed_utc": "2026-11-26T03:44:11.476446+00:00",
+  "requested_routes": [
+    "deepseek",
+    "kimi",
+    "flashx"
+  ]
+}
