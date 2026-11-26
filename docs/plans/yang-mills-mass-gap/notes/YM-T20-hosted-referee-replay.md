@@ -53,9 +53,13 @@ Ernest added two more routes after the primary comparison. Each has its own pre-
   - 74/86 primary: 26/28 originals passed, 48/58 planted errors located, 0 transport failures, 3 cut-offs, $2.12 (`QWEN38-COMPARISON.md`, `qwen38-case-results.csv`).
   - Its seven mutant passes and one wrong-step answer are on exactly the cases Kimi missed: `ym-06` mut1, `ym-09` mut4 and mut6, `ym-07` mut4.
   - Its one false alarm, `n1-clusters-06` step 11, has not been checked.
-- **MiniMax-M3:** running at this writing. A comparison with Kimi, `MINIMAX-COMPARISON.md`, is written when its receipts resolve.
+- **MiniMax-M3 (the only MiniMax route on TokenRouter), complete:**
+  - 46/86 primary: 15/28 originals passed, 3 false alarms, 31/58 planted errors located, 11 mutants passed, 6 flagged at another step.
+  - 30 answers cut off and 4 samples never returned; $1.00 (`MINIMAX-COMPARISON.md`).
+  - Its misses go beyond the cosmetic mutants, for example both samples of `ym-02` mut2, a flipped inequality. Its false alarms are `ym-07` step 5 (the c₁ issue), `ym-s01` step 13 and `n1-clusters-04` step 7; the last two have not been checked.
+  - It is the weakest of the hosted routes here, close to the local Phi-4 on errors located (31 against 28) but with more false alarms.
 
-Five models from four families (Kimi, DeepSeek, GLM-5.3 and FlashX, Qwen) miss the same few cosmetic mutants. That is a property of the case set, not of any one model.
+Five models from four families (Kimi, DeepSeek, GLM-5.3 and FlashX, Qwen) miss the same few cosmetic mutants, and MiniMax misses them too. That is a property of the case set, not of any one model.
 
 ## Consequences for the program
 

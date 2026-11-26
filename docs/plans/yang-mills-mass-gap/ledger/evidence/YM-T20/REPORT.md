@@ -1,6 +1,6 @@
 # Frozen hosted-model referee replay: deterministic report
 
-Generated UTC: 2026-11-26T08:01:57.866707+00:00. **Status: IN PROGRESS.**
+Generated UTC: 2026-11-26T16:22:09.952287+00:00. **Status: COMPLETE.**
 
 Primary requested comparison: Kimi, free DeepSeek, and `z-ai/glm-5.3`. FlashX receipts are supplementary and are not substituted for the larger GLM model.
 
@@ -12,7 +12,7 @@ Primary success means an original is passed or a planted error is flagged at exa
 | moonshotai/kimi-k3.1-pro | 86 | 86 | 0 | 0 | 78/86 (90.7%) | 78/86 | 2 |
 | z-ai/glm-5.3-flashx | 86 | 64 | 22 | 0 | 44/64 (68.8%) | 44/86 | 17 |
 | z-ai/glm-5.3 | 86 | 86 | 0 | 0 | 27/86 (31.4%) | 27/86 | 58 |
-| MiniMax-M3 | 86 | 70 | 2 | 14 | 37/70 (52.9%) | 37/86 | 16 |
+| MiniMax-M3 | 86 | 82 | 4 | 0 | 46/82 (56.1%) | 46/86 | 16 |
 
 ## Mathematical outcomes (terminal responses)
 
@@ -22,7 +22,7 @@ Primary success means an original is passed or a planted error is flagged at exa
 | moonshotai/kimi-k3.1-pro | 27 | 0 | 51 | 5 | 1 | 2 |
 | z-ai/glm-5.3-flashx | 19 | 0 | 25 | 3 | 0 | 17 |
 | z-ai/glm-5.3 | 9 | 0 | 18 | 1 | 0 | 58 |
-| MiniMax-M3 | 11 | 3 | 26 | 8 | 6 | 16 |
+| MiniMax-M3 | 15 | 3 | 31 | 11 | 6 | 16 |
 
 ## Reliability, repeatability, usage, and cost
 
@@ -32,7 +32,7 @@ Primary success means an original is passed or a planted error is flagged at exa
 | moonshotai/kimi-k3.1-pro | 86 | 0 | 0 | 1 | 43 | 39 | 37 | 72392 | 505715 | 498328 | $1.561932 |
 | z-ai/glm-5.3-flashx | 156 | 70 | 92 | 17 | 25 | 20 | 18 | 63313 | 660772 | 651778 | $0.849727 |
 | z-ai/glm-5.3 | 87 | 1 | 1 | 58 | 43 | 34 | 9 | 35530 | 1227044 | 1222605 | $3.005188 |
-| MiniMax-M3 | 80 | 7 | 10 | 28 | 35 | 20 | 14 | 33105 | 725806 | 722704 | $0.883511 |
+| MiniMax-M3 | 97 | 11 | 15 | 30 | 41 | 23 | 17 | 40605 | 817725 | 813749 | $0.996576 |
 
 ## deepseek/deepseek-v4.1-flash-1017-free: proof groups
 
@@ -314,9 +314,9 @@ Primary success means an original is passed or a planted error is flagged at exa
 | n1-rotation-01-lem-gradient | 6 | 1 | 0 | 1 | 0 | 0 | 4 |
 | ym-02-ym-lem-layer | 4 | 2 | 0 | 0 | 2 | 0 | 0 |
 | ym-03-ym-prop-inverse-square | 4 | 2 | 0 | 2 | 0 | 0 | 0 |
-| ym-06-ym-prop-defect | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| ym-06-ym-prop-defect | 10 | 2 | 0 | 5 | 3 | 0 | 0 |
 | ym-07-ym-prop-conditional-gap | 10 | 1 | 1 | 5 | 2 | 1 | 0 |
-| ym-08-ym-lem-twist-move | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| ym-08-ym-lem-twist-move | 2 | 2 | 0 | 0 | 0 | 0 | 0 |
 | ym-09-ym-lem-thooft-class | 6 | 0 | 0 | 3 | 1 | 0 | 2 |
 | ym-s01-gauge-group-inner-product-casimir-consta | 10 | 1 | 1 | 4 | 2 | 2 | 0 |
 | ym-s04-asymptotic-freedom-and-the-bare-coupling | 10 | 0 | 0 | 3 | 0 | 1 | 6 |
@@ -361,10 +361,10 @@ Primary success means an original is passed or a planted error is flagged at exa
 | ym-09-ym-lem-thooft-class | CORRECT | — | unparsed / UNPARSED / none | unparsed / UNPARSED / — |
 | ym-09-ym-lem-thooft-class--mut6-exponent-4-to-2 | INCORRECT | 6 | mutant_exact_step / INCORRECT / 6 | mutant_passed / CORRECT / none |
 | ym-09-ym-lem-thooft-class--mut1-exponent-2-to-3 | INCORRECT | 1 | mutant_exact_step / INCORRECT / 1 | mutant_exact_step / INCORRECT / 1 |
-| ym-09-ym-lem-thooft-class--mut4-exponent-4-to-2 | INCORRECT | 4 | retry_pending / — / — | pending / — / — |
-| ym-06-ym-prop-defect | CORRECT | — | pending / — / — | pending / — / — |
-| ym-06-ym-prop-defect--mut3-flip-ge-to-le | INCORRECT | 3 | pending / — / — | pending / — / — |
-| ym-06-ym-prop-defect--mut4-coefficient-2-to-3 | INCORRECT | 4 | pending / — / — | pending / — / — |
-| ym-06-ym-prop-defect--mut1-coefficient-2-to-3 | INCORRECT | 1 | pending / — / — | pending / — / — |
-| ym-06-ym-prop-defect--mut2-exponent-4-to-2 | INCORRECT | 2 | pending / — / — | pending / — / — |
-| ym-08-ym-lem-twist-move | CORRECT | — | pending / — / — | pending / — / — |
+| ym-09-ym-lem-thooft-class--mut4-exponent-4-to-2 | INCORRECT | 4 | transport_failure / — / — | transport_failure / — / — |
+| ym-06-ym-prop-defect | CORRECT | — | original_passed / CORRECT / none | original_passed / CORRECT / none |
+| ym-06-ym-prop-defect--mut3-flip-ge-to-le | INCORRECT | 3 | mutant_exact_step / INCORRECT / 3 | mutant_exact_step / INCORRECT / 3 |
+| ym-06-ym-prop-defect--mut4-coefficient-2-to-3 | INCORRECT | 4 | mutant_passed / CORRECT / 4 | mutant_exact_step / INCORRECT / 4 |
+| ym-06-ym-prop-defect--mut1-coefficient-2-to-3 | INCORRECT | 1 | mutant_passed / CORRECT / none | mutant_exact_step / INCORRECT / 1 |
+| ym-06-ym-prop-defect--mut2-exponent-4-to-2 | INCORRECT | 2 | mutant_exact_step / INCORRECT / 2 | mutant_passed / CORRECT / 2 |
+| ym-08-ym-lem-twist-move | CORRECT | — | original_passed / CORRECT / none | original_passed / CORRECT / none |
