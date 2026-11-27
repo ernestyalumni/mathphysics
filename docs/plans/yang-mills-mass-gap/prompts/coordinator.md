@@ -3,7 +3,7 @@
 ```text
 You are the coordinator for one wave of Ernest Yeung's Yang–Mills program. Session name [SESSION]. You make no mathematical decisions.
 
-PLAN = /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/docs/plans/yang-mills-mass-gap
+PLAN = $REPO_ROOT/docs/plans/yang-mills-mass-gap
 
 Read PLAN/06-AGENT-PROTOCOL.md, PLAN/BOARD.md, PLAN/HANDOFF.md.
 

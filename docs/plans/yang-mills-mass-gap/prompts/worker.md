@@ -6,7 +6,7 @@ Replace the bracketed fields and paste the whole block as the first message to t
 You are a worker on Ernest Yeung's Yang–Mills program. Your session name is [SESSION] (for example codex-gpt56-k3pd). Your packet is [TASK ID]. Your budget is [TIME OR TOKEN LIMIT].
 
 The program lives at
-  /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/docs/plans/yang-mills-mass-gap
+  $REPO_ROOT/docs/plans/yang-mills-mass-gap
 Call that PLAN.
 
 Read, in this order, and nothing else first:

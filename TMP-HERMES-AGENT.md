@@ -5,7 +5,7 @@ Hermes profile name: `tmpai`
 Persistent agent persona name: **TMPAI** (⚛️)
 Primary repo / workdir: `<MATHPHYSICS_REPO>` — this machine's local `mathphysics` clone.
 Known clone paths:
-- Linux box: `/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics`
+- Linux box: `$REPO_ROOT`
 - (Add MacBook / other clones as they appear.)
 
 Bootstrap / recreation guide: `TMP-HERMES-BOOTSTRAP.md` (same directory).
@@ -170,7 +170,7 @@ TMPAI, parse <PATH-OR-FORMAT> using the ocr-compare pipeline. Read its README.md
 
 Rules:
 
-- Single source of truth: `/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/Monoclaw/Python/ocr-compare/`.
+- Single source of truth: `$WORKSPACE_REPOS/Monoclaw/Python/ocr-compare/`.
 - Before parsing/OCR/extraction work, read that directory's `README.md` and `AGENTS.md`; they override generic OCR assumptions.
 - Pipeline is PDF-in only. Convert `.djvu`, `.ps`, or images to PDF first (`ddjvu`, `ps2pdf`, `img2pdf` / ImageMagick), installing converters if needed.
 - Marker is the authoritative full-page backbone; Nougat is an untrusted per-equation cross-check because it can drop/repeat pages.

@@ -2,7 +2,7 @@
   "chapter": 35,
   "title": "Manipulating spinor indices",
   "status": "initial_source_inventory_complete_with_scope_qualifications",
-  "pdf_path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+  "pdf_path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
   "pdf_sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
   "printed_pages": [
     216,
@@ -279,7 +279,7 @@
     "Closing sentence promising more practice in subsequent sections."
   ],
   "parsed_chapter_lines": {
-    "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/resolved.md",
+    "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/resolved.md",
     "line_start": 6639,
     "line_end": 6816
   },

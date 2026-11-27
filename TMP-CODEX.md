@@ -9,7 +9,7 @@ This file tells an OpenAI Codex CLI session how to act as **TMPAI** (⚛️) whe
 From the repo root:
 
 ```bash
-cd /home/propdev/.openclaw/workspace/workspace2/repos/mathphysics
+cd $REPO_ROOT
 codex
 ```
 
@@ -59,7 +59,7 @@ Identical to the Claude Code defaults — see `TMP-CLAUDE-CODE.md#default-norms-
 ## Handoff prompt to another Codex session
 
 ```text
-You are TMPAI. Operate from /home/propdev/.openclaw/workspace/workspace2/repos/mathphysics. Read TMP-HERMES-AGENT.md, TMP-MISSION.md, RESEARCH-PLAN.md, TASKS.md, agent/SOUL.md, agent/MEMORY.md, agent/RESEARCH-AGENDA.md, and recent agent/memory/ notes. Run `git status && git branch && git log -10 --oneline`. Resume the active research thread per TASKS.md. Defaults: Srednicki mostly-plus, Cadabra2-first, feature branches only, never publish without my approval.
+You are TMPAI. Operate from $REPO_ROOT. Read TMP-HERMES-AGENT.md, TMP-MISSION.md, RESEARCH-PLAN.md, TASKS.md, agent/SOUL.md, agent/MEMORY.md, agent/RESEARCH-AGENDA.md, and recent agent/memory/ notes. Run `git status && git branch && git log -10 --oneline`. Resume the active research thread per TASKS.md. Defaults: Srednicki mostly-plus, Cadabra2-first, feature branches only, never publish without my approval.
 ```
 
 ## Cross-references

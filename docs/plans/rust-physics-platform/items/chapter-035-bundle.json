@@ -67,7 +67,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -91,7 +91,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -115,7 +115,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -139,7 +139,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -163,7 +163,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -187,7 +187,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -212,7 +212,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -239,7 +239,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -266,7 +266,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -291,7 +291,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -318,7 +318,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -345,7 +345,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -372,7 +372,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -397,7 +397,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -424,7 +424,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -449,7 +449,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -474,7 +474,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -501,7 +501,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -528,7 +528,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -552,7 +552,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -576,7 +576,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -600,7 +600,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -624,7 +624,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; antilinear order-reversing adjoint with dotted-type interchange; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -650,7 +650,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; formal odd anticommuting field components; not an unconditional unequal-time operator assertion; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -676,7 +676,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; formal odd anticommuting field components; not an unconditional unequal-time operator assertion; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -702,7 +702,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; antilinear order-reversing adjoint with dotted-type interchange; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -728,7 +728,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; antilinear order-reversing adjoint with dotted-type interchange; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -754,7 +754,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); antilinear order-reversing adjoint with dotted-type interchange; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -782,7 +782,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; antilinear order-reversing adjoint with dotted-type interchange; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -808,7 +808,7 @@
       "domain": "proper orthochronous Lorentz spin representations with eta=(-,+,+,+); imported prerequisite formulas text-checked only",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -832,7 +832,7 @@
       "domain": "typed dottedness/variance with ordered epsilon contractions; complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -856,7 +856,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -881,7 +881,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -905,7 +905,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+)",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -930,7 +930,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -957,7 +957,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -984,7 +984,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1010,7 +1010,7 @@
       "domain": "proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1035,7 +1035,7 @@
       "domain": "proper orthochronous Lorentz spin representations with eta=(-,+,+,+); linear order in antisymmetric delta-omega; O(delta-omega^2) discarded explicitly; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1061,7 +1061,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1086,7 +1086,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1110,7 +1110,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1136,7 +1136,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1162,7 +1162,7 @@
       "domain": "typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1185,7 +1185,7 @@
       "domain": "typed dottedness/variance with ordered epsilon contractions; complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1209,7 +1209,7 @@
       "domain": "formal odd anticommuting field components; not an unconditional unequal-time operator assertion; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1219,7 +1219,7 @@
           "review": "visually_checked"
         },
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1243,7 +1243,7 @@
       "domain": "formal odd anticommuting field components; not an unconditional unequal-time operator assertion; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1268,7 +1268,7 @@
       "domain": "formal odd anticommuting field components; not an unconditional unequal-time operator assertion; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1293,7 +1293,7 @@
       "domain": "antilinear order-reversing adjoint with dotted-type interchange; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1318,7 +1318,7 @@
       "domain": "formal odd anticommuting field components; not an unconditional unequal-time operator assertion; antilinear order-reversing adjoint with dotted-type interchange; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1344,7 +1344,7 @@
       "domain": "antilinear order-reversing adjoint with dotted-type interchange; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1368,7 +1368,7 @@
       "domain": "proper orthochronous Lorentz spin representations with eta=(-,+,+,+); typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1394,7 +1394,7 @@
       "domain": "proper orthochronous Lorentz spin representations with eta=(-,+,+,+); formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1419,7 +1419,7 @@
       "domain": "antilinear order-reversing adjoint with dotted-type interchange; complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1445,7 +1445,7 @@
       "domain": "antilinear order-reversing adjoint with dotted-type interchange; complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; formal local composites without a renormalized-operator existence claim",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1471,7 +1471,7 @@
       "domain": "antilinear order-reversing adjoint with dotted-type interchange; complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1495,7 +1495,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1519,7 +1519,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); imported prerequisite formulas text-checked only",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1545,7 +1545,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions; proper orthochronous Lorentz spin representations with eta=(-,+,+,+); antilinear order-reversing adjoint with dotted-type interchange; imported prerequisite formulas text-checked only",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1572,7 +1572,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1596,7 +1596,7 @@
       "domain": "complex 2D dotted and undotted spaces and 4D Lorentz indices; commuting matrix coefficients; typed dottedness/variance with ordered epsilon contractions",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",

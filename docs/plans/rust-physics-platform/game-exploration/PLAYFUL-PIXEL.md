@@ -17,7 +17,7 @@ The user liked the scene-first direction and requested continued intuitive/fun v
 
 Independent integration review passed12 targeted checks: actual Rust signs, optional Tips/direct access, whole-device mouse/touch grabbing, form-safe shortcuts, references/discovery exports, reduced-motion smoke, no observed runtime/CSP errors and all six mobile tools visible. Reviewer noted36px targets; these were enlarged afterward. A final actual launcher-root smoke then verified real2pi=-I, keep/reload, reduced motion and all six final targets exactly44px high/onscreen. Distinct audio was inspected in source, not fully audibly reviewed. Tiny decorative garden signs on narrow screens remain a minor visual issue; readable DOM title/instructions/direct entry do not depend on them.
 
-Durable logs, screenshots, scripts and source hashes: `/home/propdev/.openclaw/workspace/outputs/mathphysics-platform/20261031-explore-polish/`. The final mobile-target change received a targeted geometry/launcher check; the broader30-check suite was not needlessly repeated for that CSS-only change. Test browsers/owned servers are stopped at handoff.
+Durable logs, screenshots, scripts and source hashes: `$HOME/.openclaw/workspace/outputs/mathphysics-platform/20261031-explore-polish/`. The final mobile-target change received a targeted geometry/launcher check; the broader30-check suite was not needlessly repeated for that CSS-only change. Test browsers/owned servers are stopped at handoff.
 
 ## Design references and limits
 

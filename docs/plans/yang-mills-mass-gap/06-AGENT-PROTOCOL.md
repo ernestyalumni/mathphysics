@@ -2,7 +2,7 @@
 
 How many agents of different strengths work on this program at once without colliding, and how they check each other. Harness-neutral: it works for Claude Code, Codex, Grok Build, Hermes, Pi, or a local model, because it needs only a shell and files. Modelled on `hairer/humanise-yang-mills/docs/coordination.md`, adapted to one canonical machine plus other agents on the same local network, with no GitHub in the loop.
 
-Paths: `MP` = `/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics` (the canonical checkout). `PLAN` = `MP/docs/plans/yang-mills-mass-gap`.
+Paths: `MP` = this repository root (the canonical checkout). `PLAN` = `MP/docs/plans/yang-mills-mass-gap`.
 
 ## 1. Roles
 

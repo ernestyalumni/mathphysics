@@ -1,7 +1,7 @@
 {
   "chapter": 3,
   "status": "initial_inventory_complete_with_explicit_source_issues; mathematical_certification_not_performed",
-  "pdf_path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+  "pdf_path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
   "pdf_sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
   "pdf_pages_1based": [
     46,

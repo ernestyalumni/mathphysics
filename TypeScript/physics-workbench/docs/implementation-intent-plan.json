@@ -25,8 +25,8 @@
     "exists": false,
     "kind": "greenfield",
     "pdd_signals": [],
-    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
-    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/TypeScript/physics-workbench",
+    "repository_root": "$REPO_ROOT",
+    "root": "$REPO_ROOT/TypeScript/physics-workbench",
     "scope_kind": "subproject"
   },
   "recommended_workflow": "design_greenfield",

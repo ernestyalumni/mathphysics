@@ -4,7 +4,7 @@ Saved 2026-10-22 at Ernest's request before closing the session.
 
 ## Start here
 
-Repository: `/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics`
+Repository: `$REPO_ROOT`
 Branch: `feat/lie-groups-so3-su2`.
 Ernest requested a local feature-branch commit before closing. The relevant
 source, LaTeX notes, tests, documentation, and this handoff are included in the
@@ -15,7 +15,7 @@ left on disk outside the commit; rebuild them with
 changing branches, and preserve any local changes.
 
 ```sh
-cd /home/propdev/.openclaw/workspace/workspace2/repos/mathphysics
+cd $REPO_ROOT
 ./run_rigid_body_lab.sh
 ```
 

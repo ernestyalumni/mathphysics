@@ -75,7 +75,7 @@
       "domain": "Initial complex annihilation-operator construction in three spatial dimensions; a and its adjoint are distinct, not a real KG field. Fourier equalities are distributional with suitable boundary conditions. No vacuum/Fock premise is required for this operator/Fourier identity. Nonrelativistic m_NR>0; no massless 1/m_NR limit asserted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -101,7 +101,7 @@
       "domain": "Initial complex annihilation-operator construction in three spatial dimensions; a and its adjoint are distinct, not a real KG field. Fourier equalities are distributional with suitable boundary conditions. No vacuum/Fock premise is required for this operator/Fourier identity.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -125,7 +125,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -146,7 +146,7 @@
       "domain": "Initial complex annihilation-operator construction in three spatial dimensions; a and its adjoint are distinct, not a real KG field. Fourier equalities are distributional with suitable boundary conditions. No vacuum/Fock premise is required for this operator/Fourier identity.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -170,7 +170,7 @@
       "domain": "Initial complex annihilation-operator construction in three spatial dimensions; a and its adjoint are distinct, not a real KG field. Fourier equalities are distributional with suitable boundary conditions. Vacuum/Fock premises apply to this vacuum or spectrum statement.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -194,7 +194,7 @@
       "domain": "Initial complex annihilation-operator construction in three spatial dimensions; a and its adjoint are distinct, not a real KG field. Fourier equalities are distributional with suitable boundary conditions. No vacuum/Fock premise is required for this operator/Fourier identity.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -218,7 +218,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained).",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -241,7 +241,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -262,7 +262,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained).",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -285,7 +285,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); boundary terms vanish under variation/integration by parts.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -309,7 +309,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -333,7 +333,7 @@
       "domain": "Generic classical Klein-Gordon candidate in 3+1D with m_KG>=0, independent complex a,b and real even nonzero Fourier weight f; no field-reality constraint yet. Fourier/dummy-variable operations are distributional; omega>0 wherever inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -357,7 +357,7 @@
       "domain": "Generic classical Klein-Gordon candidate in 3+1D with m_KG>=0, independent complex a,b and real even nonzero Fourier weight f; no field-reality constraint yet. Fourier/dummy-variable operations are distributional; omega>0 wherever inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -381,7 +381,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -405,7 +405,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -429,7 +429,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -453,7 +453,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -476,7 +476,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -500,7 +500,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -524,7 +524,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -548,7 +548,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -572,7 +572,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained).",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -595,7 +595,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained).",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -618,7 +618,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained).",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -641,7 +641,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained).",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -664,7 +664,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -689,7 +689,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -712,7 +712,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -736,7 +736,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain; Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -761,7 +761,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -786,7 +786,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); regulated finite volume/delta-at-zero bookkeeping; spherical spatial cutoff Lambda; Lambda>>m for leading asymptotic only.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -811,7 +811,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); spherical spatial cutoff Lambda; Lambda>>m for leading asymptotic only.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -835,7 +835,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: bosonic equal-time operator-distribution commutators on a common formal domain; annihilated vacuum and generalized or smeared finite-particle states.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -859,7 +859,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -884,7 +884,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation; annihilated vacuum and generalized or smeared finite-particle states.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -908,7 +908,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain; boundary terms vanish under variation/integration by parts.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -933,7 +933,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: nonhermitian complex scalar; phi and adjoint independently varied.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -956,7 +956,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: nonhermitian complex scalar; phi and adjoint independently varied; Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -980,7 +980,7 @@
       "domain": "Initial complex annihilation-operator construction in three spatial dimensions; a and its adjoint are distinct, not a real KG field. Fourier equalities are distributional with suitable boundary conditions. No vacuum/Fock premise is required for this operator/Fourier identity. Nonrelativistic m_NR>0; no massless 1/m_NR limit asserted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1006,7 +1006,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1032,7 +1032,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1058,7 +1058,7 @@
       "domain": "Generic classical Klein-Gordon candidate in 3+1D with m_KG>=0, independent complex a,b and real even nonzero Fourier weight f; no field-reality constraint yet. Fourier/dummy-variable operations are distributional; omega>0 wherever inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1084,7 +1084,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1110,7 +1110,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1136,7 +1136,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1162,7 +1162,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1188,7 +1188,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1214,7 +1214,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1240,7 +1240,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1266,7 +1266,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1292,7 +1292,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1313,7 +1313,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1334,7 +1334,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: source assertion under review, not a mathematical certificate.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1357,7 +1357,7 @@
       "domain": "Initial complex annihilation-operator construction in three spatial dimensions; a and its adjoint are distinct, not a real KG field. Fourier equalities are distributional with suitable boundary conditions. Vacuum/Fock premises apply to this vacuum or spectrum statement.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1367,7 +1367,7 @@
           "review": "visually_checked"
         },
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1392,7 +1392,7 @@
       "domain": "Initial complex annihilation-operator construction in three spatial dimensions; a and its adjoint are distinct, not a real KG field. Fourier equalities are distributional with suitable boundary conditions. Vacuum/Fock premises apply to this vacuum or spectrum statement. Nonrelativistic m_NR>0; no massless 1/m_NR limit asserted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1418,7 +1418,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: source assertion under review, not a mathematical certificate.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1441,7 +1441,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation; source assertion under review, not a mathematical certificate.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1466,7 +1466,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained).",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1489,7 +1489,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); boundary terms vanish under variation/integration by parts.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1499,7 +1499,7 @@
           "review": "visually_checked"
         },
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1523,7 +1523,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation; boundary terms vanish under variation/integration by parts.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1547,7 +1547,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1571,7 +1571,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); boundary terms vanish under variation/integration by parts.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1595,7 +1595,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1619,7 +1619,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; source assertion under review, not a mathematical certificate.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1644,7 +1644,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained).",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1654,7 +1654,7 @@
           "review": "visually_checked"
         },
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1677,7 +1677,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1701,7 +1701,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1724,7 +1724,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1748,7 +1748,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation; source assertion under review, not a mathematical certificate.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1773,7 +1773,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1797,7 +1797,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained).",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1820,7 +1820,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1845,7 +1845,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained).",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1868,7 +1868,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1892,7 +1892,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: bosonic equal-time operator-distribution commutators on a common formal domain.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1902,7 +1902,7 @@
           "review": "visually_checked"
         },
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1925,7 +1925,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: bosonic equal-time operator-distribution commutators on a common formal domain.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1948,7 +1948,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: regulated finite volume/delta-at-zero bookkeeping; Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1972,7 +1972,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); spherical spatial cutoff Lambda; Lambda>>m for leading asymptotic only.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -1996,7 +1996,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); regulated finite volume/delta-at-zero bookkeeping; spherical spatial cutoff Lambda; Lambda>>m for leading asymptotic only; annihilated vacuum and generalized or smeared finite-particle states.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2022,7 +2022,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; bosonic equal-time operator-distribution commutators on a common formal domain; annihilated vacuum and generalized or smeared finite-particle states.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2032,7 +2032,7 @@
           "review": "visually_checked"
         },
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2057,7 +2057,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: source assertion under review, not a mathematical certificate.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2080,7 +2080,7 @@
       "domain": "Unresolved printed counterfactual claim; regulated ordered scalar-field/mode algebra. Occupation cancellation, identity constants and vacuum subtraction are separate pending mathematical questions.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2105,7 +2105,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: local classical Lorentz-scalar potential; quantum stability not assumed; eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2129,7 +2129,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: source assertion under review, not a mathematical certificate.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2152,7 +2152,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2162,7 +2162,7 @@
           "review": "visually_checked"
         },
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2186,7 +2186,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Real scalar; operator identities interpreted distributionally. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain; Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2211,7 +2211,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Real scalar; operator identities interpreted distributionally. Governing conditions: bosonic equal-time operator-distribution commutators on a common formal domain; annihilated vacuum and generalized or smeared finite-particle states; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2236,7 +2236,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Real scalar; operator identities interpreted distributionally. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation; annihilated vacuum and generalized or smeared finite-particle states.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2262,7 +2262,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Real scalar; operator identities interpreted distributionally. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain; Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; boundary terms vanish under variation/integration by parts.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2272,7 +2272,7 @@
           "review": "visually_checked"
         },
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2298,7 +2298,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Real scalar; operator identities interpreted distributionally. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2322,7 +2322,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Real scalar; operator identities interpreted distributionally. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2346,7 +2346,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Real scalar; operator identities interpreted distributionally. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain; boundary terms vanish under variation/integration by parts.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2371,7 +2371,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Real scalar; operator identities interpreted distributionally. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain; boundary terms vanish under variation/integration by parts.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2396,7 +2396,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Real scalar; operator identities interpreted distributionally. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); bosonic equal-time operator-distribution commutators on a common formal domain; Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; regulated finite volume/delta-at-zero bookkeeping.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2422,7 +2422,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Complex nonhermitian scalar with independent variational fields. Governing conditions: nonhermitian complex scalar; phi and adjoint independently varied; Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2446,7 +2446,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Complex nonhermitian scalar with independent variational fields. Governing conditions: nonhermitian complex scalar; phi and adjoint independently varied; boundary terms vanish under variation/integration by parts.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2470,7 +2470,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Complex nonhermitian scalar with independent variational fields. Governing conditions: nonhermitian complex scalar; phi and adjoint independently varied.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2493,7 +2493,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Complex nonhermitian scalar with independent variational fields. Governing conditions: nonhermitian complex scalar; phi and adjoint independently varied; Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2517,7 +2517,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Complex nonhermitian scalar with independent variational fields. Governing conditions: nonhermitian complex scalar; phi and adjoint independently varied; bosonic equal-time operator-distribution commutators on a common formal domain; Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2542,7 +2542,7 @@
       "domain": "Exercise obligation in free scalar QFT; no solution or verification evidence claimed. Complex nonhermitian scalar with independent variational fields. Governing conditions: nonhermitian complex scalar; phi and adjoint independently varied; bosonic equal-time operator-distribution commutators on a common formal domain; Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; regulated finite volume/delta-at-zero bookkeeping; spherical spatial cutoff Lambda; Lambda>>m for leading asymptotic only; annihilated vacuum and generalized or smeared finite-particle states.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2570,7 +2570,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: real free scalar in flat 3+1D; inverse-length m_KG>=0 (massless case retained); Fourier identities in a test-function/distribution setting; real even nonzero f where used; omega>0 when inverted; eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",
@@ -2595,7 +2595,7 @@
       "domain": "Formal classical/quantum scalar field theory in 3+1 dimensions; assumptions distinguish classical functions, operator distributions and regulated expressions. Governing conditions: eta-preserving transformations, orthochronous on positive mass shell; invariant vacuum for particle-state transformation; annihilated vacuum and generalized or smeared finite-particle states.",
       "sources": [
         {
-          "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+          "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
           "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
           "locator": {
             "kind": "pdf",

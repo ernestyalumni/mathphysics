@@ -5,7 +5,7 @@
     "C2",
     "C3"
   ],
-  "repository_root": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/docs/plans/rust-physics-platform",
+  "repository_root": "$REPO_ROOT/docs/plans/rust-physics-platform",
   "new_assumption_ids": [
     "ch035-generator-independent-parameters",
     "ch035-left-lowered-symmetry",

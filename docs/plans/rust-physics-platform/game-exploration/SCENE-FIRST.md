@@ -46,7 +46,7 @@ Independent Chrome QA verified actual touch slice-plane drag (c:0→0.56748…),
 
 The actual run_explore.sh launcher at its root URL passed an additional smoke: the user’s existing5.021rad state was retained, direct4pi manipulation worked, discovery save/reload and journal/Escape worked without a visible worksheet or runtime errors. Same exploration schema/key remains; no notebook data or saved discoveries were removed.
 
-Durable evidence and source hashes: `/home/propdev/.openclaw/workspace/outputs/mathphysics-platform/20261031-explore-scene/`. Verification servers are stopped at handoff. To load this update, stop/restart the running Explore process with `./run_explore.sh` and refresh http://127.0.0.1:8877.
+Durable evidence and source hashes: `$HOME/.openclaw/workspace/outputs/mathphysics-platform/20261031-explore-scene/`. Verification servers are stopped at handoff. To load this update, stop/restart the running Explore process with `./run_explore.sh` and refresh http://127.0.0.1:8877.
 
 The implementation is manual prompt-first work with explicit scene/layout output mappings. No provider-backed PDDapply, automatic regeneration or sync is claimed. Human playtesting, richer environments/challenges, general QFT simulations, GPU rendering and native desktop packages remain open. The updated stories require ongoing game-first iteration, not merely recoloring the former worksheet.
 

@@ -2,7 +2,7 @@
   "schema": "mathphysics.f03.preliminary-quarantine.v1",
   "original_equations_sha256": "1a6dfcc3fd2f61fd854cd9dcab16191d5f509813b99ea1c994221db54f7f90c9",
   "resolved_equations_sha256": "8438cff68f74fc52535a11222de46ef926f44053ef68916e0280668f50ae35da",
-  "raw_nougat_path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/nougat_out/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).mmd",
+  "raw_nougat_path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/nougat_out/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).mmd",
   "raw_nougat_sha256": "8b032c426be719f18ff2c1f545f04ee384e3f785e30471cceef5c10f199c1bcd",
   "coverage": {
     "original_records": 3011,
@@ -5235,7 +5235,7 @@
     {
       "tag": "2.4",
       "historical_page_unspecified_convention": 39,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_39_eq2.4.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_39_eq2.4.png",
       "exists": true,
       "sha256": "968cb4e49703f418211bb123f6463ff44471029b94dcf90064ab90b2705a1baa",
       "visually_reinspected_this_audit": false
@@ -5243,7 +5243,7 @@
     {
       "tag": "2.36",
       "historical_page_unspecified_convention": 45,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_45_eq2.36.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_45_eq2.36.png",
       "exists": true,
       "sha256": "09849ebcf28282d0c03b325473a79838e245e1bd8f9d38bde8d2af6ab1b13090",
       "visually_reinspected_this_audit": false
@@ -5251,7 +5251,7 @@
     {
       "tag": "2.37",
       "historical_page_unspecified_convention": 45,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_45_eq2.37.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_45_eq2.37.png",
       "exists": true,
       "sha256": "08e801650ca0fb4322408f96b34e75ffeffdd838f8943050ab7a84d9d6d1ebd8",
       "visually_reinspected_this_audit": false
@@ -5259,7 +5259,7 @@
     {
       "tag": "2.38",
       "historical_page_unspecified_convention": 45,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_45_eq2.38.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_45_eq2.38.png",
       "exists": true,
       "sha256": "f7bd16af8d81ebc3fc9a490165de54161fbaa3f444b97bff6eb0360a53061a81",
       "visually_reinspected_this_audit": false
@@ -5267,7 +5267,7 @@
     {
       "tag": "3.4",
       "historical_page_unspecified_convention": 46,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_46_eq3.4.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_46_eq3.4.png",
       "exists": true,
       "sha256": "04fd0800f684b51cd82feb8990713a6bb630cdbce20a9c8d8129eedfdf232e02",
       "visually_reinspected_this_audit": false
@@ -5275,7 +5275,7 @@
     {
       "tag": "3.13",
       "historical_page_unspecified_convention": 49,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_49_eq3.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_49_eq3.13.png",
       "exists": true,
       "sha256": "8ed255cf2201c4b44844ccba61d5fc6da093a486ff29c3bc2cff07c0335e3d81",
       "visually_reinspected_this_audit": false
@@ -5283,7 +5283,7 @@
     {
       "tag": "3.14",
       "historical_page_unspecified_convention": 49,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_49_eq3.14.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_49_eq3.14.png",
       "exists": true,
       "sha256": "09aa049492c78b1e50b7f6e012ab43dc87e7ba2c80809a4370f63fbeefde248e",
       "visually_reinspected_this_audit": false
@@ -5291,7 +5291,7 @@
     {
       "tag": "5.2",
       "historical_page_unspecified_convention": 59,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_59_eq5.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_59_eq5.2.png",
       "exists": true,
       "sha256": "1dcdbbc0676f1012af217371b42601d12358d19d8d67483a892e6adf63c5ecfe",
       "visually_reinspected_this_audit": false
@@ -5299,7 +5299,7 @@
     {
       "tag": "5.5",
       "historical_page_unspecified_convention": 59,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_59_eq5.5.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_59_eq5.5.png",
       "exists": true,
       "sha256": "c9501c9dad51f428e30ef113791c5b3159648993767c19ae0cd7cbd402509f61",
       "visually_reinspected_this_audit": false
@@ -5307,7 +5307,7 @@
     {
       "tag": "5.24",
       "historical_page_unspecified_convention": 65,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_65_eq5.24.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_65_eq5.24.png",
       "exists": true,
       "sha256": "9f93ef70b24480dd535c4220dd0a11210ae6afdf41e99a5da7506815db98b0e1",
       "visually_reinspected_this_audit": false
@@ -5315,7 +5315,7 @@
     {
       "tag": "5.27",
       "historical_page_unspecified_convention": 65,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_65_eq5.27.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_65_eq5.27.png",
       "exists": true,
       "sha256": "9f8be9d54d01f17d1897c4ee57565d79dc73277668133bcd7109ef05abdeefbc",
       "visually_reinspected_this_audit": false
@@ -5323,7 +5323,7 @@
     {
       "tag": "6.13",
       "historical_page_unspecified_convention": 69,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_69_eq6.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_69_eq6.13.png",
       "exists": true,
       "sha256": "aaa4075fb291b263583aa0adf4815c66830b69a033d5d00d771f1eefc1aa14ec",
       "visually_reinspected_this_audit": false
@@ -5331,7 +5331,7 @@
     {
       "tag": "6.22",
       "historical_page_unspecified_convention": 72,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_72_eq6.22.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_72_eq6.22.png",
       "exists": true,
       "sha256": "58c5fe521683fe715ed055e54a9ad3ad0092adc15f34fb38b83992aca3be7406",
       "visually_reinspected_this_audit": false
@@ -5339,7 +5339,7 @@
     {
       "tag": "6.23",
       "historical_page_unspecified_convention": 72,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_72_eq6.23.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_72_eq6.23.png",
       "exists": true,
       "sha256": "31b2010c064fd1df43803e71ab04b72505387b9b28a28f58c85e7c4c1070e0b2",
       "visually_reinspected_this_audit": false
@@ -5347,7 +5347,7 @@
     {
       "tag": "7.9",
       "historical_page_unspecified_convention": 75,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_75_eq7.9.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_75_eq7.9.png",
       "exists": true,
       "sha256": "2922cdd04efb327e04bad83f1ed19e89d5a507fc105075fa547145dbd3af8d46",
       "visually_reinspected_this_audit": false
@@ -5355,7 +5355,7 @@
     {
       "tag": "7.11",
       "historical_page_unspecified_convention": 75,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_75_eq7.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_75_eq7.11.png",
       "exists": true,
       "sha256": "6a64f76d8ca9283ae1145c6b930bf6055e2f4467e6f92812d8e0696763b0c471",
       "visually_reinspected_this_audit": false
@@ -5363,7 +5363,7 @@
     {
       "tag": "7.17",
       "historical_page_unspecified_convention": 76,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_76_eq7.17.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_76_eq7.17.png",
       "exists": true,
       "sha256": "debfc61c2158cb73e4d6a1c3f7b29f3b627b59d189dabd93392f01a7ca0af3e9",
       "visually_reinspected_this_audit": false
@@ -5371,7 +5371,7 @@
     {
       "tag": "8.3",
       "historical_page_unspecified_convention": 78,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_78_eq8.3.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_78_eq8.3.png",
       "exists": true,
       "sha256": "9f8598a257eadb7cfe7dbf4ed730efe9871216f37405b889296aabf80f1834b4",
       "visually_reinspected_this_audit": false
@@ -5379,7 +5379,7 @@
     {
       "tag": "9.3",
       "historical_page_unspecified_convention": 82,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_82_eq9.3.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_82_eq9.3.png",
       "exists": true,
       "sha256": "cfee97ca4703740cb11a904885e189d3aeb4fc13ac762ff1d036d253c9f6e06e",
       "visually_reinspected_this_audit": false
@@ -5387,7 +5387,7 @@
     {
       "tag": "10.8",
       "historical_page_unspecified_convention": 99,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_99_eq10.8.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_99_eq10.8.png",
       "exists": true,
       "sha256": "60b83a7605aeb02dc2cb39134dc4f13192b28d4aace8309b30a08c6916cc5d70",
       "visually_reinspected_this_audit": false
@@ -5395,7 +5395,7 @@
     {
       "tag": "11.19",
       "historical_page_unspecified_convention": 106,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_106_eq11.19.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_106_eq11.19.png",
       "exists": true,
       "sha256": "f46d175d88df3b69fc1f90cdd217ff1b2fa9b68d5f73c83a14ae380ac2223e93",
       "visually_reinspected_this_audit": false
@@ -5403,7 +5403,7 @@
     {
       "tag": "11.22",
       "historical_page_unspecified_convention": 106,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_106_eq11.22.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_106_eq11.22.png",
       "exists": true,
       "sha256": "26b7284cdc03179c93aec2eee0088632f1c0da396d962aae6703ad38050c4c69",
       "visually_reinspected_this_audit": false
@@ -5411,7 +5411,7 @@
     {
       "tag": "11.23",
       "historical_page_unspecified_convention": 106,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_106_eq11.23.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_106_eq11.23.png",
       "exists": true,
       "sha256": "9b25f3adc02261f336e3f6231aad41a0427e09a6bb4ae9fb1e208328a0ba8cdf",
       "visually_reinspected_this_audit": false
@@ -5419,7 +5419,7 @@
     {
       "tag": "11.31",
       "historical_page_unspecified_convention": 108,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_108_eq11.31.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_108_eq11.31.png",
       "exists": true,
       "sha256": "0564670e51911472819e3a273f6aedc2d5711507753b86a9d0834e6b85bb54f8",
       "visually_reinspected_this_audit": false
@@ -5427,7 +5427,7 @@
     {
       "tag": "11.38",
       "historical_page_unspecified_convention": 109,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_109_eq11.38.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_109_eq11.38.png",
       "exists": true,
       "sha256": "9549aeeda6eb7766cddb4097ebffb3f8d3f930e79552f89b79dab47e8b5dba1f",
       "visually_reinspected_this_audit": false
@@ -5435,7 +5435,7 @@
     {
       "tag": "11.39",
       "historical_page_unspecified_convention": 109,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_109_eq11.39.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_109_eq11.39.png",
       "exists": true,
       "sha256": "092e2d22d0426d77462f2c263729491a69ed751ef8205015e1dcfa9867822469",
       "visually_reinspected_this_audit": false
@@ -5443,7 +5443,7 @@
     {
       "tag": "11.42",
       "historical_page_unspecified_convention": 109,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_109_eq11.42.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_109_eq11.42.png",
       "exists": true,
       "sha256": "26b24ad614d79840d8ca18418304a0aadb8752735b4e4e069b456ca813db9348",
       "visually_reinspected_this_audit": false
@@ -5451,7 +5451,7 @@
     {
       "tag": "11.43",
       "historical_page_unspecified_convention": 109,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_109_eq11.43.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_109_eq11.43.png",
       "exists": true,
       "sha256": "c912c82554d3481c29f1a2c6a94b331240c7151ab6e5041d1a4c2563a9a8b2ae",
       "visually_reinspected_this_audit": false
@@ -5459,7 +5459,7 @@
     {
       "tag": "13.10",
       "historical_page_unspecified_convention": 118,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_118_eq13.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_118_eq13.10.png",
       "exists": true,
       "sha256": "52e2b70faa0e4ac262b09e2aeb477f821813d1a75355f192346f5cb0393ad2d8",
       "visually_reinspected_this_audit": false
@@ -5467,7 +5467,7 @@
     {
       "tag": "14.5",
       "historical_page_unspecified_convention": 121,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_121_eq14.5.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_121_eq14.5.png",
       "exists": true,
       "sha256": "8fa1711de60fd8913cb68bae8ac1ea35fdc5f61168a6a8249f86df18b7dfb8a0",
       "visually_reinspected_this_audit": false
@@ -5475,7 +5475,7 @@
     {
       "tag": "14.6",
       "historical_page_unspecified_convention": 121,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_121_eq14.6.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_121_eq14.6.png",
       "exists": true,
       "sha256": "d7e2282bcb178737cb588961e6953267c5daf416c8dc20088eaa120059427d9c",
       "visually_reinspected_this_audit": false
@@ -5483,7 +5483,7 @@
     {
       "tag": "14.47",
       "historical_page_unspecified_convention": 128,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_128_eq14.47.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_128_eq14.47.png",
       "exists": true,
       "sha256": "6fa2aa07e37c81f3aa84b1256f677a2bc76e32c1a2252f06271cebe60ef410ef",
       "visually_reinspected_this_audit": false
@@ -5491,7 +5491,7 @@
     {
       "tag": "16.2",
       "historical_page_unspecified_convention": 135,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_135_eq16.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_135_eq16.2.png",
       "exists": true,
       "sha256": "c9afb68ee626b7c9b0d6295cba9c51e8169f09034f11eddb903d6218e1bd8645",
       "visually_reinspected_this_audit": false
@@ -5499,7 +5499,7 @@
     {
       "tag": "16.8",
       "historical_page_unspecified_convention": 137,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_137_eq16.8.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_137_eq16.8.png",
       "exists": true,
       "sha256": "09d28b01ec4b8349362244cc494d5929bf799ad103a78194209e4b1e830cb441",
       "visually_reinspected_this_audit": false
@@ -5507,7 +5507,7 @@
     {
       "tag": "16.12",
       "historical_page_unspecified_convention": 137,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_137_eq16.12.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_137_eq16.12.png",
       "exists": true,
       "sha256": "42abcba57423c1eb93f53e35064bcd171d62f939afc61c6380a587a2b3fdf653",
       "visually_reinspected_this_audit": false
@@ -5515,7 +5515,7 @@
     {
       "tag": "17.3",
       "historical_page_unspecified_convention": 140,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_140_eq17.3.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_140_eq17.3.png",
       "exists": true,
       "sha256": "1c8bd2a150af7df6f85ab3261fb9feb29e1431bdf6d3d98a783b46fffabefe61",
       "visually_reinspected_this_audit": false
@@ -5523,7 +5523,7 @@
     {
       "tag": "22.12",
       "historical_page_unspecified_convention": 158,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_158_eq22.12.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_158_eq22.12.png",
       "exists": true,
       "sha256": "538d8e735e9cf7fa4e1e9ca9ca21a3d541f2d694c227bdaf4d2d64ffb93a3374",
       "visually_reinspected_this_audit": false
@@ -5531,7 +5531,7 @@
     {
       "tag": "22.15",
       "historical_page_unspecified_convention": 158,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_158_eq22.15.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_158_eq22.15.png",
       "exists": true,
       "sha256": "24cd7d8d777b8bb010536101241bff9dd735ab52213decd536e6158ee981ebda",
       "visually_reinspected_this_audit": false
@@ -5539,7 +5539,7 @@
     {
       "tag": "22.22",
       "historical_page_unspecified_convention": 160,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_160_eq22.22.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_160_eq22.22.png",
       "exists": true,
       "sha256": "ab577ec90f4c8b81ac99d9d177e2edf721819f9ca28065a2d388c5af8e2be75e",
       "visually_reinspected_this_audit": false
@@ -5547,7 +5547,7 @@
     {
       "tag": "23.1",
       "historical_page_unspecified_convention": 164,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_164_eq23.1.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_164_eq23.1.png",
       "exists": true,
       "sha256": "50b5f2daef29429ba42c00d65aeb8813fa029936580d554a50692b22de7b1bee",
       "visually_reinspected_this_audit": false
@@ -5555,7 +5555,7 @@
     {
       "tag": "23.2",
       "historical_page_unspecified_convention": 164,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_164_eq23.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_164_eq23.2.png",
       "exists": true,
       "sha256": "cc49567c93dcb3329f959c82358d53513fc8e4cf0f3d75b63941d79720c22e5e",
       "visually_reinspected_this_audit": false
@@ -5563,7 +5563,7 @@
     {
       "tag": "23.28",
       "historical_page_unspecified_convention": 168,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_168_eq23.28.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_168_eq23.28.png",
       "exists": true,
       "sha256": "5bdbc8204d0027d891851387ab63ef02bad9486d93a6b45b64cedd2393e91a2f",
       "visually_reinspected_this_audit": false
@@ -5571,7 +5571,7 @@
     {
       "tag": "23.30",
       "historical_page_unspecified_convention": 168,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_168_eq23.30.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_168_eq23.30.png",
       "exists": true,
       "sha256": "c4a6d8495d18c302796a498af2868d75912efd19caba5d34efc15ea2a9932075",
       "visually_reinspected_this_audit": false
@@ -5579,7 +5579,7 @@
     {
       "tag": "24.6",
       "historical_page_unspecified_convention": 171,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_171_eq24.6.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_171_eq24.6.png",
       "exists": true,
       "sha256": "11c66a01a3ca27fc0e0ac55c49ebda0f5a66909d67617640b6ff457d956bd4fa",
       "visually_reinspected_this_audit": false
@@ -5587,7 +5587,7 @@
     {
       "tag": "25.9",
       "historical_page_unspecified_convention": 175,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_175_eq25.9.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_175_eq25.9.png",
       "exists": true,
       "sha256": "44ddca198e3c0640dfbb5bd8fb7e06f8bd94e36795d0115f959b35ba64668bd9",
       "visually_reinspected_this_audit": false
@@ -5595,7 +5595,7 @@
     {
       "tag": "25.10",
       "historical_page_unspecified_convention": 176,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_176_eq25.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_176_eq25.10.png",
       "exists": true,
       "sha256": "b0693b058f8109538304b3d6f220654c7972b41fcc5582586b6acfd2cf39a450",
       "visually_reinspected_this_audit": false
@@ -5603,7 +5603,7 @@
     {
       "tag": "25.20",
       "historical_page_unspecified_convention": 178,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_178_eq25.20.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_178_eq25.20.png",
       "exists": true,
       "sha256": "3db0f2d4ef4bede501f73b2357bc4cb7279ead44c4bcd1c5a4fa9e4044f2c2ed",
       "visually_reinspected_this_audit": false
@@ -5611,7 +5611,7 @@
     {
       "tag": "27.1",
       "historical_page_unspecified_convention": 186,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_186_eq27.1.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_186_eq27.1.png",
       "exists": true,
       "sha256": "b7454cce7b1540f8491ebccdd5cbea7031cac4e8a58ac8c58e12a32a6a89176d",
       "visually_reinspected_this_audit": false
@@ -5619,7 +5619,7 @@
     {
       "tag": "27.11",
       "historical_page_unspecified_convention": 188,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_188_eq27.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_188_eq27.11.png",
       "exists": true,
       "sha256": "1ce7b2dc1c1f195d2f72dc716185211ec4e9172e10ec194ba87e92719d171df2",
       "visually_reinspected_this_audit": false
@@ -5627,7 +5627,7 @@
     {
       "tag": "27.15",
       "historical_page_unspecified_convention": 189,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_189_eq27.15.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_189_eq27.15.png",
       "exists": true,
       "sha256": "0d51d055cdac75ea5966c8008721524e15e9f6642242dc20593232db974e656f",
       "visually_reinspected_this_audit": false
@@ -5635,7 +5635,7 @@
     {
       "tag": "27.17",
       "historical_page_unspecified_convention": 189,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_189_eq27.17.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_189_eq27.17.png",
       "exists": true,
       "sha256": "0937a2b4b912cdef7394d81c1c732de4905f8842de466de996976c227714b7af",
       "visually_reinspected_this_audit": false
@@ -5643,7 +5643,7 @@
     {
       "tag": "27.18",
       "historical_page_unspecified_convention": 189,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_189_eq27.18.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_189_eq27.18.png",
       "exists": true,
       "sha256": "6f206a8fa9f01ba0f84a2e3837452a93a8c67c81e89b35b826ece4e2eaa828cd",
       "visually_reinspected_this_audit": false
@@ -5651,7 +5651,7 @@
     {
       "tag": "27.25",
       "historical_page_unspecified_convention": 190,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_190_eq27.25.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_190_eq27.25.png",
       "exists": true,
       "sha256": "0068e920272e306473f1066c59e243512a2b94f0e7bf297d4ff4de79b4127784",
       "visually_reinspected_this_audit": false
@@ -5659,7 +5659,7 @@
     {
       "tag": "28.25",
       "historical_page_unspecified_convention": 196,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_196_eq28.25.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_196_eq28.25.png",
       "exists": true,
       "sha256": "f5e5dbfee8d4bc3f61389d997426bc077b77c08c68ff65da89805cb76ee4fb92",
       "visually_reinspected_this_audit": false
@@ -5667,7 +5667,7 @@
     {
       "tag": "29.11",
       "historical_page_unspecified_convention": 201,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_201_eq29.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_201_eq29.11.png",
       "exists": true,
       "sha256": "7f88ce81c0a54e87285549dcc6e8f3fb78384027c279078c598dbf097fb59277",
       "visually_reinspected_this_audit": false
@@ -5675,7 +5675,7 @@
     {
       "tag": "31.2",
       "historical_page_unspecified_convention": 216,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_216_eq31.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_216_eq31.2.png",
       "exists": true,
       "sha256": "12b9a5f3ca97b2eabf99a6a39874c4eec3d4b14f643d0d9ec58778f0083ca50d",
       "visually_reinspected_this_audit": false
@@ -5683,7 +5683,7 @@
     {
       "tag": "31.4",
       "historical_page_unspecified_convention": 216,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_216_eq31.4.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_216_eq31.4.png",
       "exists": true,
       "sha256": "0d104ae9702ad587d1c824ca0d138ebb00723947f45e956f22f66e40dcec3caf",
       "visually_reinspected_this_audit": false
@@ -5691,7 +5691,7 @@
     {
       "tag": "31.8",
       "historical_page_unspecified_convention": 217,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_217_eq31.8.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_217_eq31.8.png",
       "exists": true,
       "sha256": "8e38ca9afbe91244586b4819617b17d010e81f72404fb3a015cb5ac7998ab738",
       "visually_reinspected_this_audit": false
@@ -5699,7 +5699,7 @@
     {
       "tag": "31.11",
       "historical_page_unspecified_convention": 218,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_218_eq31.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_218_eq31.11.png",
       "exists": true,
       "sha256": "55d1a3abf17187268ca1c309afbfd5b84f4e3a1088f643c33501345d1cdbe9d5",
       "visually_reinspected_this_audit": false
@@ -5707,7 +5707,7 @@
     {
       "tag": "31.15",
       "historical_page_unspecified_convention": 218,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_218_eq31.15.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_218_eq31.15.png",
       "exists": true,
       "sha256": "73be2dc3e684a65cfe281a0be40b6231b4fbacad362cfe6bbc983d64865b5c7f",
       "visually_reinspected_this_audit": false
@@ -5715,7 +5715,7 @@
     {
       "tag": "31.16",
       "historical_page_unspecified_convention": 219,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_219_eq31.16.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_219_eq31.16.png",
       "exists": true,
       "sha256": "7074fe11376ac9bf7789d52194521e2c25ccc16b10c2146d7e2815fd2f83d6cc",
       "visually_reinspected_this_audit": false
@@ -5723,7 +5723,7 @@
     {
       "tag": "33.13",
       "historical_page_unspecified_convention": 230,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_230_eq33.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_230_eq33.13.png",
       "exists": true,
       "sha256": "2f99777c20afb2df06316e0e73b9e0c0192e56b59293c0ce9de0d1c8d9b194dc",
       "visually_reinspected_this_audit": false
@@ -5731,7 +5731,7 @@
     {
       "tag": "34.3",
       "historical_page_unspecified_convention": 233,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_233_eq34.3.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_233_eq34.3.png",
       "exists": true,
       "sha256": "6775ed664394a19c5eac8b34322fc21d4389a22870a36eb58fb6f2616e5518bd",
       "visually_reinspected_this_audit": false
@@ -5739,7 +5739,7 @@
     {
       "tag": "34.4",
       "historical_page_unspecified_convention": 233,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_233_eq34.4.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_233_eq34.4.png",
       "exists": true,
       "sha256": "a22429e85ef1f011462738471145a614f0be3bb2f18c1e3d8cfa912de65389ba",
       "visually_reinspected_this_audit": false
@@ -5747,7 +5747,7 @@
     {
       "tag": "34.9",
       "historical_page_unspecified_convention": 234,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_234_eq34.9.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_234_eq34.9.png",
       "exists": true,
       "sha256": "33030ec5076b0acd29a6347be493dc42e5fb94447bb5e687d25634619cb0eb8b",
       "visually_reinspected_this_audit": false
@@ -5755,7 +5755,7 @@
     {
       "tag": "34.35",
       "historical_page_unspecified_convention": 238,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_238_eq34.35.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_238_eq34.35.png",
       "exists": true,
       "sha256": "c382df46d31289e2fc9e3c5cb27da4e65e3748c3d9717c818e77152997b0fdd5",
       "visually_reinspected_this_audit": false
@@ -5763,7 +5763,7 @@
     {
       "tag": "34.37",
       "historical_page_unspecified_convention": 238,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_238_eq34.37.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_238_eq34.37.png",
       "exists": true,
       "sha256": "c55e0721f3566701bd9a16df2f64c539ec3b806c0649dc58391ebecfed4cc930",
       "visually_reinspected_this_audit": false
@@ -5771,7 +5771,7 @@
     {
       "tag": "35.7",
       "historical_page_unspecified_convention": 241,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_241_eq35.7.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_241_eq35.7.png",
       "exists": true,
       "sha256": "20e9e00251d697613fc1da50b4ed0abfe5dd9dd22a641ba0923775e06d486b2f",
       "visually_reinspected_this_audit": false
@@ -5779,7 +5779,7 @@
     {
       "tag": "35.8",
       "historical_page_unspecified_convention": 241,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_241_eq35.8.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_241_eq35.8.png",
       "exists": true,
       "sha256": "dfd7270ca8ecad42703040eda89b44bcb58a8cf55eeb15ab29f6e877b2428c18",
       "visually_reinspected_this_audit": false
@@ -5787,7 +5787,7 @@
     {
       "tag": "35.13",
       "historical_page_unspecified_convention": 241,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_241_eq35.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_241_eq35.13.png",
       "exists": true,
       "sha256": "ccfa88379c7e61e03773d9c73128e1fc30595403f943987f737e0f1b9a5be828",
       "visually_reinspected_this_audit": false
@@ -5795,7 +5795,7 @@
     {
       "tag": "35.14",
       "historical_page_unspecified_convention": 241,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_241_eq35.14.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_241_eq35.14.png",
       "exists": true,
       "sha256": "a60b1fb828bf5209b676b014469ec6eaf099ecddbbd86c89396c7dcc3598b979",
       "visually_reinspected_this_audit": false
@@ -5803,7 +5803,7 @@
     {
       "tag": "35.22",
       "historical_page_unspecified_convention": 242,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_242_eq35.22.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_242_eq35.22.png",
       "exists": true,
       "sha256": "326a143d5447b8dd7a517fcda4eb4db344833833213b9c81abf996befba5f8b3",
       "visually_reinspected_this_audit": false
@@ -5811,7 +5811,7 @@
     {
       "tag": "36.1",
       "historical_page_unspecified_convention": 245,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_245_eq36.1.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_245_eq36.1.png",
       "exists": true,
       "sha256": "da0db5ec8b4298065431b1c2fbd874e9559fb1d395d5996ee3f84b770a71b744",
       "visually_reinspected_this_audit": false
@@ -5819,7 +5819,7 @@
     {
       "tag": "36.10",
       "historical_page_unspecified_convention": 247,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_247_eq36.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_247_eq36.10.png",
       "exists": true,
       "sha256": "746871a4bfaa1ea2037b7f8b1814b46c690d471c798b324598445b980116f106",
       "visually_reinspected_this_audit": false
@@ -5827,7 +5827,7 @@
     {
       "tag": "36.13",
       "historical_page_unspecified_convention": 247,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_247_eq36.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_247_eq36.13.png",
       "exists": true,
       "sha256": "2bd7213d7c5ba0d36741719371523eaa65516cb2549811e158495161a0be9e61",
       "visually_reinspected_this_audit": false
@@ -5835,7 +5835,7 @@
     {
       "tag": "36.18",
       "historical_page_unspecified_convention": 248,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_248_eq36.18.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_248_eq36.18.png",
       "exists": true,
       "sha256": "07f84d8faa2e88d6e65fe34fc78c9c71ac9fc509690d1969913b75450c5097ab",
       "visually_reinspected_this_audit": false
@@ -5843,7 +5843,7 @@
     {
       "tag": "36.19",
       "historical_page_unspecified_convention": 248,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_248_eq36.19.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_248_eq36.19.png",
       "exists": true,
       "sha256": "80b8a8c17cd5336951d9bb6fa4cd668b5897ccf09b1522c4faa503a9e3d809ef",
       "visually_reinspected_this_audit": false
@@ -5851,7 +5851,7 @@
     {
       "tag": "36.21",
       "historical_page_unspecified_convention": 248,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_248_eq36.21.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_248_eq36.21.png",
       "exists": true,
       "sha256": "00fccf20b68cbe5a666394b458071f5d25b946447306a308ee1e37df66914fff",
       "visually_reinspected_this_audit": false
@@ -5859,7 +5859,7 @@
     {
       "tag": "36.26",
       "historical_page_unspecified_convention": 248,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_248_eq36.26.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_248_eq36.26.png",
       "exists": true,
       "sha256": "cb7e090e5941ff1650a698acff45310c9229235c6f012f61dd69de5ce4159f09",
       "visually_reinspected_this_audit": false
@@ -5867,7 +5867,7 @@
     {
       "tag": "36.32",
       "historical_page_unspecified_convention": 249,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_249_eq36.32.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_249_eq36.32.png",
       "exists": true,
       "sha256": "9997b917679bcbdec58b179cb6356c3d0fe25dd58dda8d97602bbaa2a15a16e1",
       "visually_reinspected_this_audit": false
@@ -5875,7 +5875,7 @@
     {
       "tag": "36.35",
       "historical_page_unspecified_convention": 250,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_250_eq36.35.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_250_eq36.35.png",
       "exists": true,
       "sha256": "3e1a6abbb431e33219159aa7b0c7c59c9177684c89b9994de0a45c7cb42542c2",
       "visually_reinspected_this_audit": false
@@ -5883,7 +5883,7 @@
     {
       "tag": "36.39",
       "historical_page_unspecified_convention": 250,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_250_eq36.39.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_250_eq36.39.png",
       "exists": true,
       "sha256": "20b71bb8dadd99c97667d07649643a42a7622019bde60e24bdaf9d6089121e37",
       "visually_reinspected_this_audit": false
@@ -5891,7 +5891,7 @@
     {
       "tag": "36.43",
       "historical_page_unspecified_convention": 251,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_251_eq36.43.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_251_eq36.43.png",
       "exists": true,
       "sha256": "609d51bc5bfee3d9379e1a7cfcbe61b1799125823e45f2f0e542e6d644b00a51",
       "visually_reinspected_this_audit": false
@@ -5899,7 +5899,7 @@
     {
       "tag": "36.44",
       "historical_page_unspecified_convention": 251,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_251_eq36.44.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_251_eq36.44.png",
       "exists": true,
       "sha256": "f62c346575a33dc0a86564845b2b91603a60d7dae9b066bb45a1325d85c9e143",
       "visually_reinspected_this_audit": false
@@ -5907,7 +5907,7 @@
     {
       "tag": "36.45",
       "historical_page_unspecified_convention": 251,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_251_eq36.45.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_251_eq36.45.png",
       "exists": true,
       "sha256": "d9699c561d928699d17a3c43085c8dae988d8ce31d26922595cd76135efaaf9e",
       "visually_reinspected_this_audit": false
@@ -5915,7 +5915,7 @@
     {
       "tag": "36.53",
       "historical_page_unspecified_convention": 252,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_252_eq36.53.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_252_eq36.53.png",
       "exists": true,
       "sha256": "124bd473f5d8402e1570716621f0702c82cd75a6e2e5ba68f216e06263a76b5f",
       "visually_reinspected_this_audit": false
@@ -5923,7 +5923,7 @@
     {
       "tag": "37.9",
       "historical_page_unspecified_convention": 257,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_257_eq37.9.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_257_eq37.9.png",
       "exists": true,
       "sha256": "6ff76fce9d1bdf640bbb8ea6e62fddd1b86dfd095c7aafa3031134d5917503f1",
       "visually_reinspected_this_audit": false
@@ -5931,7 +5931,7 @@
     {
       "tag": "37.10",
       "historical_page_unspecified_convention": 257,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_257_eq37.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_257_eq37.10.png",
       "exists": true,
       "sha256": "f983b493d6ebececc43873673e489c7f6dc16c57c6f9d17bf7c5bf539a98ff2f",
       "visually_reinspected_this_audit": false
@@ -5939,7 +5939,7 @@
     {
       "tag": "37.11",
       "historical_page_unspecified_convention": 257,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_257_eq37.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_257_eq37.11.png",
       "exists": true,
       "sha256": "93f9da66c84ac726ca04ce15164e8a78dc2d84207fdf37b7a85182802ad5c480",
       "visually_reinspected_this_audit": false
@@ -5947,7 +5947,7 @@
     {
       "tag": "37.15",
       "historical_page_unspecified_convention": 257,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_257_eq37.15.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_257_eq37.15.png",
       "exists": true,
       "sha256": "4c7dabce1ea8fd6537cbe47a6d2d778efc2e01358c82c30b2a698636ec007021",
       "visually_reinspected_this_audit": false
@@ -5955,7 +5955,7 @@
     {
       "tag": "37.16",
       "historical_page_unspecified_convention": 258,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_258_eq37.16.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_258_eq37.16.png",
       "exists": true,
       "sha256": "32a32a8e1d5f41b705c22fea2e7144404cbe78ec6f13afdbd609f00c8a42797c",
       "visually_reinspected_this_audit": false
@@ -5963,7 +5963,7 @@
     {
       "tag": "37.19",
       "historical_page_unspecified_convention": 258,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_258_eq37.19.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_258_eq37.19.png",
       "exists": true,
       "sha256": "900687d2cd7de251ed6af6be5270e6d2c7d466c2a84646ca6286e74edb6a30bd",
       "visually_reinspected_this_audit": false
@@ -5971,7 +5971,7 @@
     {
       "tag": "37.24",
       "historical_page_unspecified_convention": 259,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_259_eq37.24.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_259_eq37.24.png",
       "exists": true,
       "sha256": "2c28fb93d28cba5d26a2fad8dd8ef825d2bd362fad9ef0a926b3befda605e9aa",
       "visually_reinspected_this_audit": false
@@ -5979,7 +5979,7 @@
     {
       "tag": "37.30",
       "historical_page_unspecified_convention": 259,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_259_eq37.30.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_259_eq37.30.png",
       "exists": true,
       "sha256": "43be548d9cd7752673ebd2ae05b7ca1fbeacc4d0aeb68d26e17d0957aa3c00ff",
       "visually_reinspected_this_audit": false
@@ -5987,7 +5987,7 @@
     {
       "tag": "38.2",
       "historical_page_unspecified_convention": 261,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_261_eq38.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_261_eq38.2.png",
       "exists": true,
       "sha256": "55b4b6f2040a76db14416e0be6e43085b65dfead828338cf5130b26547136bcf",
       "visually_reinspected_this_audit": false
@@ -5995,7 +5995,7 @@
     {
       "tag": "38.10",
       "historical_page_unspecified_convention": 262,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_262_eq38.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_262_eq38.10.png",
       "exists": true,
       "sha256": "90c5318f4659b2d13f2960f893f8e6a8c81e50c961ad832346ff73ae16a8f986",
       "visually_reinspected_this_audit": false
@@ -6003,7 +6003,7 @@
     {
       "tag": "38.13",
       "historical_page_unspecified_convention": 263,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_263_eq38.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_263_eq38.13.png",
       "exists": true,
       "sha256": "95db321b7ac9a49cff3dee009be85aa6f7241f2cb96c5837a8007b3248356cea",
       "visually_reinspected_this_audit": false
@@ -6011,7 +6011,7 @@
     {
       "tag": "38.16",
       "historical_page_unspecified_convention": 263,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_263_eq38.16.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_263_eq38.16.png",
       "exists": true,
       "sha256": "5fb9c64dbf6694cd994db626c6a27b99007db7c27eda1dab6462946d44078c68",
       "visually_reinspected_this_audit": false
@@ -6019,7 +6019,7 @@
     {
       "tag": "38.20",
       "historical_page_unspecified_convention": 264,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_264_eq38.20.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_264_eq38.20.png",
       "exists": true,
       "sha256": "c97a03496cce941f3db320ef611abab3ca0bc42fc654f031d29142c000095245",
       "visually_reinspected_this_audit": false
@@ -6027,7 +6027,7 @@
     {
       "tag": "38.22",
       "historical_page_unspecified_convention": 264,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_264_eq38.22.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_264_eq38.22.png",
       "exists": true,
       "sha256": "eebbfe18409411be47f6d52b45abd6fca98f5c8ce3eeb78fd9ab7afa1270eabd",
       "visually_reinspected_this_audit": false
@@ -6035,7 +6035,7 @@
     {
       "tag": "38.25",
       "historical_page_unspecified_convention": 265,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_265_eq38.25.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_265_eq38.25.png",
       "exists": true,
       "sha256": "5e58dfc8c611f72a7b9a391a2eafe1f4112ed9e1514418c9964cc01b3c92dd73",
       "visually_reinspected_this_audit": false
@@ -6043,7 +6043,7 @@
     {
       "tag": "38.27",
       "historical_page_unspecified_convention": 265,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_265_eq38.27.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_265_eq38.27.png",
       "exists": true,
       "sha256": "26e6602d12f0fbbdc3143c9ad1724794f94fd7f7dfa86b35803e61308360b3a3",
       "visually_reinspected_this_audit": false
@@ -6051,7 +6051,7 @@
     {
       "tag": "38.28",
       "historical_page_unspecified_convention": 265,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_265_eq38.28.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_265_eq38.28.png",
       "exists": true,
       "sha256": "ccbefa1b0cc8c87a3f37d3d782023123ae09e4c92ca8178f36c916b7f03a9673",
       "visually_reinspected_this_audit": false
@@ -6059,7 +6059,7 @@
     {
       "tag": "38.29",
       "historical_page_unspecified_convention": 265,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_265_eq38.29.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_265_eq38.29.png",
       "exists": true,
       "sha256": "cc354a541f8a54330cea586ae6d520ba092a14489392c074bc6cb0788a59e36c",
       "visually_reinspected_this_audit": false
@@ -6067,7 +6067,7 @@
     {
       "tag": "38.31",
       "historical_page_unspecified_convention": 266,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_266_eq38.31.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_266_eq38.31.png",
       "exists": true,
       "sha256": "32637fe8795571133dbe7c84034c2b7acea8ceaf9bd15545bec1f57ace983608",
       "visually_reinspected_this_audit": false
@@ -6075,7 +6075,7 @@
     {
       "tag": "38.33",
       "historical_page_unspecified_convention": 266,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_266_eq38.33.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_266_eq38.33.png",
       "exists": true,
       "sha256": "77f17ba5fbc571d7c47bca3c31d3cfeaa4b8171f580931b83b4fc7e5ee952060",
       "visually_reinspected_this_audit": false
@@ -6083,7 +6083,7 @@
     {
       "tag": "38.41",
       "historical_page_unspecified_convention": 267,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_267_eq38.41.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_267_eq38.41.png",
       "exists": true,
       "sha256": "6e58d50562c728017c484ef5f4fb87bdc8118a6e8df2895a71a059c3e848c6da",
       "visually_reinspected_this_audit": false
@@ -6091,7 +6091,7 @@
     {
       "tag": "39.6",
       "historical_page_unspecified_convention": 268,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_268_eq39.6.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_268_eq39.6.png",
       "exists": true,
       "sha256": "6576dab74f6bfc37cde4423c2e2a05251f5657db0428973350f5a871a842a68a",
       "visually_reinspected_this_audit": false
@@ -6099,7 +6099,7 @@
     {
       "tag": "39.17",
       "historical_page_unspecified_convention": 270,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_270_eq39.17.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_270_eq39.17.png",
       "exists": true,
       "sha256": "b349a49ac544a1d61953f72c7cdc534e076e4394fc8fbcb85f6b20f9cb771e39",
       "visually_reinspected_this_audit": false
@@ -6107,7 +6107,7 @@
     {
       "tag": "39.26",
       "historical_page_unspecified_convention": 273,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_273_eq39.26.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_273_eq39.26.png",
       "exists": true,
       "sha256": "397bb709dce9b923cf7af26608f0d5c718be704e10912b754f3bce2f6a131cb2",
       "visually_reinspected_this_audit": false
@@ -6115,7 +6115,7 @@
     {
       "tag": "39.27",
       "historical_page_unspecified_convention": 273,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_273_eq39.27.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_273_eq39.27.png",
       "exists": true,
       "sha256": "19ffb17a07abfbfb5586504df6ec272244a147ca3a3f3d0cc4d80fb6c175640e",
       "visually_reinspected_this_audit": false
@@ -6123,7 +6123,7 @@
     {
       "tag": "39.29",
       "historical_page_unspecified_convention": 273,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_273_eq39.29.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_273_eq39.29.png",
       "exists": true,
       "sha256": "247ee2ed909f10b1ab7fc7b6b5cb91725b1ce25506d3bd890b7a88683434454f",
       "visually_reinspected_this_audit": false
@@ -6131,7 +6131,7 @@
     {
       "tag": "39.31",
       "historical_page_unspecified_convention": 273,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_273_eq39.31.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_273_eq39.31.png",
       "exists": true,
       "sha256": "08e3c5b25127094e370be11f6c50324cb2bb34fb866d61024d5f408ec8820ffe",
       "visually_reinspected_this_audit": false
@@ -6139,7 +6139,7 @@
     {
       "tag": "39.35",
       "historical_page_unspecified_convention": 273,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_273_eq39.35.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_273_eq39.35.png",
       "exists": true,
       "sha256": "dd6f53aa8805215ec3255b97350421f16fa3362e4221723697caab9420e47a27",
       "visually_reinspected_this_audit": false
@@ -6147,7 +6147,7 @@
     {
       "tag": "39.36",
       "historical_page_unspecified_convention": 274,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_274_eq39.36.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_274_eq39.36.png",
       "exists": true,
       "sha256": "a45af431ce1e7fe280793f07e530125149aee80fdfac46a6237a6d31cee14971",
       "visually_reinspected_this_audit": false
@@ -6155,7 +6155,7 @@
     {
       "tag": "39.42",
       "historical_page_unspecified_convention": 275,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_275_eq39.42.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_275_eq39.42.png",
       "exists": true,
       "sha256": "2a3a4956680fdf850a8990a0e379453319239f480c1f7b4b7094d03524d54c51",
       "visually_reinspected_this_audit": false
@@ -6163,7 +6163,7 @@
     {
       "tag": "40.4",
       "historical_page_unspecified_convention": 276,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_276_eq40.4.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_276_eq40.4.png",
       "exists": true,
       "sha256": "6619f66d9c18d2cde6cd294b75f61f1d4137ac09dcb76ae491ce9afad37369bf",
       "visually_reinspected_this_audit": false
@@ -6171,7 +6171,7 @@
     {
       "tag": "40.11",
       "historical_page_unspecified_convention": 277,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_277_eq40.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_277_eq40.11.png",
       "exists": true,
       "sha256": "6256f2a070c9d71bfc42c2ea014bb40e4dd90e83e4671b4ae5b62404cac42ced",
       "visually_reinspected_this_audit": false
@@ -6179,7 +6179,7 @@
     {
       "tag": "40.16",
       "historical_page_unspecified_convention": 278,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_278_eq40.16.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_278_eq40.16.png",
       "exists": true,
       "sha256": "8bdf025ce6bdbd6d9e930557b961f6dd9f77536a328b3708e8af1ebda5a4d80d",
       "visually_reinspected_this_audit": false
@@ -6187,7 +6187,7 @@
     {
       "tag": "40.19",
       "historical_page_unspecified_convention": 279,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_279_eq40.19.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_279_eq40.19.png",
       "exists": true,
       "sha256": "b292e2a249b807997d2e0e5e78617bb391b2c226413d47958a7f89abb65995a8",
       "visually_reinspected_this_audit": false
@@ -6195,7 +6195,7 @@
     {
       "tag": "40.20",
       "historical_page_unspecified_convention": 279,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_279_eq40.20.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_279_eq40.20.png",
       "exists": true,
       "sha256": "2814605ad4baff7daea0c681c843535af7f0214c55e5833b2c20003a7e6eb838",
       "visually_reinspected_this_audit": false
@@ -6203,7 +6203,7 @@
     {
       "tag": "40.21",
       "historical_page_unspecified_convention": 279,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_279_eq40.21.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_279_eq40.21.png",
       "exists": true,
       "sha256": "90dcdfa55b1c1bd5d8640d946c9c1370737ce8fc572fa9e0ce38804a98f6bd3d",
       "visually_reinspected_this_audit": false
@@ -6211,7 +6211,7 @@
     {
       "tag": "40.30",
       "historical_page_unspecified_convention": 280,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_280_eq40.30.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_280_eq40.30.png",
       "exists": true,
       "sha256": "c1176a035d4660b1ab94a248444fe30340790e422fd2e36b97bc87e433f24596",
       "visually_reinspected_this_audit": false
@@ -6219,7 +6219,7 @@
     {
       "tag": "40.31",
       "historical_page_unspecified_convention": 280,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_280_eq40.31.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_280_eq40.31.png",
       "exists": true,
       "sha256": "9c5e2c5414ba3a52c5282f9e1e872f543ae69aeaa889f8f8ea40d98eac689505",
       "visually_reinspected_this_audit": false
@@ -6227,7 +6227,7 @@
     {
       "tag": "41.5",
       "historical_page_unspecified_convention": 285,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_285_eq41.5.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_285_eq41.5.png",
       "exists": true,
       "sha256": "073b10c5bf512231f38a8a294b3200a63eb3cfdf9ea548e624b7721c16d3f755",
       "visually_reinspected_this_audit": false
@@ -6235,7 +6235,7 @@
     {
       "tag": "41.18",
       "historical_page_unspecified_convention": 288,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_288_eq41.18.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_288_eq41.18.png",
       "exists": true,
       "sha256": "c58e3ac99f32c6266cbe6c4119fe5fb6f12c95cf40f330f19ee7f4b0c187157d",
       "visually_reinspected_this_audit": false
@@ -6243,7 +6243,7 @@
     {
       "tag": "41.21",
       "historical_page_unspecified_convention": 288,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_288_eq41.21.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_288_eq41.21.png",
       "exists": true,
       "sha256": "aede25d63d4c53da58c2f0659fcd0125e2933e55de813d42b53380ab4ac6d418",
       "visually_reinspected_this_audit": false
@@ -6251,7 +6251,7 @@
     {
       "tag": "42.10",
       "historical_page_unspecified_convention": 292,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_292_eq42.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_292_eq42.10.png",
       "exists": true,
       "sha256": "3cd31454f20a6ad8b97faff6238dcb6b97fcf8873c21d8dacd27997d792a29f1",
       "visually_reinspected_this_audit": false
@@ -6259,7 +6259,7 @@
     {
       "tag": "42.18",
       "historical_page_unspecified_convention": 293,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_293_eq42.18.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_293_eq42.18.png",
       "exists": true,
       "sha256": "c98314406076b7642bad31f7026bb9b9864f2addab9ed25f8e6aa7441cd02fd5",
       "visually_reinspected_this_audit": false
@@ -6267,7 +6267,7 @@
     {
       "tag": "42.22",
       "historical_page_unspecified_convention": 294,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_294_eq42.22.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_294_eq42.22.png",
       "exists": true,
       "sha256": "3db8f0868a76173bb4d54160633ff07512c510ea6fd67aad5992af0d60dc3c54",
       "visually_reinspected_this_audit": false
@@ -6275,7 +6275,7 @@
     {
       "tag": "43.2",
       "historical_page_unspecified_convention": 295,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_295_eq43.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_295_eq43.2.png",
       "exists": true,
       "sha256": "fe6e1b2cc83ef6468a054b0f4f6e8b5f88697e8f6f7064a251e53b383d0d7a9a",
       "visually_reinspected_this_audit": false
@@ -6283,7 +6283,7 @@
     {
       "tag": "43.7",
       "historical_page_unspecified_convention": 296,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_296_eq43.7.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_296_eq43.7.png",
       "exists": true,
       "sha256": "f92bf4ad27a77ce571b3f3bbb27288267abbe0825206eecd48f0123bbece378b",
       "visually_reinspected_this_audit": false
@@ -6291,7 +6291,7 @@
     {
       "tag": "43.15",
       "historical_page_unspecified_convention": 297,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_297_eq43.15.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_297_eq43.15.png",
       "exists": true,
       "sha256": "7fc0d0a80137a3c3f134636a85e9dbf4ccc83f4f7c17851fa277ec5996a45154",
       "visually_reinspected_this_audit": false
@@ -6299,7 +6299,7 @@
     {
       "tag": "43.20",
       "historical_page_unspecified_convention": 298,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_298_eq43.20.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_298_eq43.20.png",
       "exists": true,
       "sha256": "a2f7f4f440963e4e43b457e94e6953272d7ecaada1f40f1e0a5b7682a1dfaaf3",
       "visually_reinspected_this_audit": false
@@ -6307,7 +6307,7 @@
     {
       "tag": "43.22",
       "historical_page_unspecified_convention": 298,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_298_eq43.22.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_298_eq43.22.png",
       "exists": true,
       "sha256": "94d1bea555bd3ff16a45da18194b5a6fd45d26982ff115b2f16091bdb1a119d2",
       "visually_reinspected_this_audit": false
@@ -6315,7 +6315,7 @@
     {
       "tag": "44.29",
       "historical_page_unspecified_convention": 303,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_303_eq44.29.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_303_eq44.29.png",
       "exists": true,
       "sha256": "a69e29997afa4bfda9bd85bb78ad0d086998b0d1cb130ce2060c74ff445da21e",
       "visually_reinspected_this_audit": false
@@ -6323,7 +6323,7 @@
     {
       "tag": "44.40",
       "historical_page_unspecified_convention": 305,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_305_eq44.40.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_305_eq44.40.png",
       "exists": true,
       "sha256": "86b3327fb8c0bd0de583c6c6daf8a0842b7e7d9a0b377a7a68c68ea680cbb505",
       "visually_reinspected_this_audit": false
@@ -6331,7 +6331,7 @@
     {
       "tag": "45.11",
       "historical_page_unspecified_convention": 310,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_310_eq45.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_310_eq45.11.png",
       "exists": true,
       "sha256": "a4e450b8a01cf1ac8c621a21ca81578d6337fc595288e9b961b7ece47319b7ef",
       "visually_reinspected_this_audit": false
@@ -6339,7 +6339,7 @@
     {
       "tag": "46.4",
       "historical_page_unspecified_convention": 315,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_315_eq46.4.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_315_eq46.4.png",
       "exists": true,
       "sha256": "f0933b31d6401a4bf39877317a8f1a507a9c2148386f68aa0eb6c4c77035a086",
       "visually_reinspected_this_audit": false
@@ -6347,7 +6347,7 @@
     {
       "tag": "46.6",
       "historical_page_unspecified_convention": 316,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_316_eq46.6.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_316_eq46.6.png",
       "exists": true,
       "sha256": "668cac29181fad6782a105d34a7a675512c2c56acc29290badc77578f0875f62",
       "visually_reinspected_this_audit": false
@@ -6355,7 +6355,7 @@
     {
       "tag": "46.7",
       "historical_page_unspecified_convention": 316,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_316_eq46.7.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_316_eq46.7.png",
       "exists": true,
       "sha256": "54e2b00e29d483fbe508fd251ab4d4fa913d3db34717445a045f7a99ccb10e45",
       "visually_reinspected_this_audit": false
@@ -6363,7 +6363,7 @@
     {
       "tag": "46.10",
       "historical_page_unspecified_convention": 316,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_316_eq46.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_316_eq46.10.png",
       "exists": true,
       "sha256": "5e9cc08626e1e51ba371170eeacb97ff8f0ed739ed2b8b978cfed38e3b069655",
       "visually_reinspected_this_audit": false
@@ -6371,7 +6371,7 @@
     {
       "tag": "46.11",
       "historical_page_unspecified_convention": 316,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_316_eq46.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_316_eq46.11.png",
       "exists": true,
       "sha256": "d075e6721d52057fe45bfb7eefb79891d1d4eaa0d0c555c4596ad84a0d62554e",
       "visually_reinspected_this_audit": false
@@ -6379,7 +6379,7 @@
     {
       "tag": "46.13",
       "historical_page_unspecified_convention": 317,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_317_eq46.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_317_eq46.13.png",
       "exists": true,
       "sha256": "fd3b3dbba7eeed5c3e1616854466efe9b61b1db0bbd2e015ae90744a091739e6",
       "visually_reinspected_this_audit": false
@@ -6387,7 +6387,7 @@
     {
       "tag": "47.13",
       "historical_page_unspecified_convention": 319,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_319_eq47.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_319_eq47.13.png",
       "exists": true,
       "sha256": "508c82cce906a6777d981059f88aa1b11d4aecdde15674d2bc2ebac6b8c25651",
       "visually_reinspected_this_audit": false
@@ -6395,7 +6395,7 @@
     {
       "tag": "48.4",
       "historical_page_unspecified_convention": 322,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_322_eq48.4.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_322_eq48.4.png",
       "exists": true,
       "sha256": "82b0ae89f97caeb1d6da96a4803ca685a28b9cd1fdb76cd29c2edf0a9755d756",
       "visually_reinspected_this_audit": false
@@ -6403,7 +6403,7 @@
     {
       "tag": "48.6",
       "historical_page_unspecified_convention": 323,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_323_eq48.6.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_323_eq48.6.png",
       "exists": true,
       "sha256": "0f5bf6695144cf2a5751f6fd2df69ae2350d14c7f9c001c9c5e6c6a7f2fd199a",
       "visually_reinspected_this_audit": false
@@ -6411,7 +6411,7 @@
     {
       "tag": "48.12",
       "historical_page_unspecified_convention": 323,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_323_eq48.12.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_323_eq48.12.png",
       "exists": true,
       "sha256": "22d9397a62465ecb327b395d4afe449f9f0f6fcb414d1b5aa26e1a9594f9258c",
       "visually_reinspected_this_audit": false
@@ -6419,7 +6419,7 @@
     {
       "tag": "49.5",
       "historical_page_unspecified_convention": 327,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_327_eq49.5.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_327_eq49.5.png",
       "exists": true,
       "sha256": "5f8e25b05efe22d19437409958968aef00a3f3a527561b1dfa4fcc906b4b0344",
       "visually_reinspected_this_audit": false
@@ -6427,7 +6427,7 @@
     {
       "tag": "49.8",
       "historical_page_unspecified_convention": 331,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_331_eq49.8.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_331_eq49.8.png",
       "exists": true,
       "sha256": "cb37f79b81a7c6d9e34c10296bc1ef7e8bab071edeb54599e463dc722c4dae6b",
       "visually_reinspected_this_audit": false
@@ -6435,7 +6435,7 @@
     {
       "tag": "50.6",
       "historical_page_unspecified_convention": 333,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.6.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.6.png",
       "exists": true,
       "sha256": "e8f7e8cffce6f0bca79f8dfebbba5fa59defcc320f54843cd151002dd5e9fad0",
       "visually_reinspected_this_audit": false
@@ -6443,7 +6443,7 @@
     {
       "tag": "50.7",
       "historical_page_unspecified_convention": 333,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.7.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.7.png",
       "exists": true,
       "sha256": "8d364b94f5956c6c19a2b486b648ab00041ed9b0d96d934edcd20d78ef0788e8",
       "visually_reinspected_this_audit": false
@@ -6451,7 +6451,7 @@
     {
       "tag": "50.8",
       "historical_page_unspecified_convention": 333,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.8.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.8.png",
       "exists": true,
       "sha256": "8308b10aa17bf564b49f83e920281cb0465115ec16c6bcbeef31fdff61240ad1",
       "visually_reinspected_this_audit": false
@@ -6459,7 +6459,7 @@
     {
       "tag": "50.9",
       "historical_page_unspecified_convention": 333,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.9.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.9.png",
       "exists": true,
       "sha256": "fccde449ee1d30c0573d3c4a54aa0c49799963624fcfa719a0bc9028a830c4ad",
       "visually_reinspected_this_audit": false
@@ -6467,7 +6467,7 @@
     {
       "tag": "50.11",
       "historical_page_unspecified_convention": 333,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.11.png",
       "exists": true,
       "sha256": "1cc0a6a956cda23c4d5ac0b8d488ad9959b12caeb82a9b3c66d6c628518ae274",
       "visually_reinspected_this_audit": false
@@ -6475,7 +6475,7 @@
     {
       "tag": "50.13",
       "historical_page_unspecified_convention": 333,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_333_eq50.13.png",
       "exists": true,
       "sha256": "224b1568578f0905ef639801803c3f2c81c65fc78dfa373fad274f43c31f6a87",
       "visually_reinspected_this_audit": false
@@ -6483,7 +6483,7 @@
     {
       "tag": "50.15",
       "historical_page_unspecified_convention": 334,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_334_eq50.15.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_334_eq50.15.png",
       "exists": true,
       "sha256": "e59c791a1496cff83f8c354eab1529ea12a61f447541310a3dae53806ca85b41",
       "visually_reinspected_this_audit": false
@@ -6491,7 +6491,7 @@
     {
       "tag": "50.26",
       "historical_page_unspecified_convention": 335,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_335_eq50.26.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_335_eq50.26.png",
       "exists": true,
       "sha256": "b1e560bdf81ab58caa83dba6354a7d9ddb9f84bb0e397345e635ea1ec355264c",
       "visually_reinspected_this_audit": false
@@ -6499,7 +6499,7 @@
     {
       "tag": "50.27",
       "historical_page_unspecified_convention": 335,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_335_eq50.27.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_335_eq50.27.png",
       "exists": true,
       "sha256": "f31fa8e75f86e68c088aaf2a17686d5ba377b3add87f18e8cb80c52833dca5ef",
       "visually_reinspected_this_audit": false
@@ -6507,7 +6507,7 @@
     {
       "tag": "51.18",
       "historical_page_unspecified_convention": 342,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_342_eq51.18.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_342_eq51.18.png",
       "exists": true,
       "sha256": "79f7ea13b59f75e78b3ad88b10484465844b35bfbbb0da3149f8029b0aebe7b7",
       "visually_reinspected_this_audit": false
@@ -6515,7 +6515,7 @@
     {
       "tag": "51.19",
       "historical_page_unspecified_convention": 342,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_342_eq51.19.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_342_eq51.19.png",
       "exists": true,
       "sha256": "fb1199af70372511f39d72a200fff2e796729e7f0c53cd483a116e77c345e39a",
       "visually_reinspected_this_audit": false
@@ -6523,7 +6523,7 @@
     {
       "tag": "51.25",
       "historical_page_unspecified_convention": 342,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_342_eq51.25.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_342_eq51.25.png",
       "exists": true,
       "sha256": "76f019afa36e0866914011b864eb84fda18f5a529b88cdd2d743e65154fa9c05",
       "visually_reinspected_this_audit": false
@@ -6531,7 +6531,7 @@
     {
       "tag": "51.27",
       "historical_page_unspecified_convention": 343,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_343_eq51.27.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_343_eq51.27.png",
       "exists": true,
       "sha256": "dbeb4531dc00014bdbf40962e34ac5764a350665728439e1af6ff1e6675bb86f",
       "visually_reinspected_this_audit": false
@@ -6539,7 +6539,7 @@
     {
       "tag": "51.32",
       "historical_page_unspecified_convention": 344,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_344_eq51.32.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_344_eq51.32.png",
       "exists": true,
       "sha256": "b70b50be3ca88847043e170c25d981f221628a9bb8a72a8e9fe81744a8918348",
       "visually_reinspected_this_audit": false
@@ -6547,7 +6547,7 @@
     {
       "tag": "51.36",
       "historical_page_unspecified_convention": 344,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_344_eq51.36.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_344_eq51.36.png",
       "exists": true,
       "sha256": "d074e1c1e1512441d45b3c025cef2662411a255503767e656e62a142970b5c79",
       "visually_reinspected_this_audit": false
@@ -6555,7 +6555,7 @@
     {
       "tag": "51.38",
       "historical_page_unspecified_convention": 344,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_344_eq51.38.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_344_eq51.38.png",
       "exists": true,
       "sha256": "93c60c8a3b79ab70bddf2ed69736f39b1f290a7617bed980721ec23427bcd7dd",
       "visually_reinspected_this_audit": false
@@ -6563,7 +6563,7 @@
     {
       "tag": "51.39",
       "historical_page_unspecified_convention": 344,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_344_eq51.39.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_344_eq51.39.png",
       "exists": true,
       "sha256": "2aba107c187e4a55b6f0ca024a534b1eca47684e4d08258ef1a77c4ca60061c4",
       "visually_reinspected_this_audit": false
@@ -6571,7 +6571,7 @@
     {
       "tag": "51.40",
       "historical_page_unspecified_convention": 345,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_345_eq51.40.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_345_eq51.40.png",
       "exists": true,
       "sha256": "9c3983669012f43bd08b167f59ead4c527a5fa50f321d0e0586962dd82479a5b",
       "visually_reinspected_this_audit": false
@@ -6579,7 +6579,7 @@
     {
       "tag": "52.1",
       "historical_page_unspecified_convention": 348,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_348_eq52.1.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_348_eq52.1.png",
       "exists": true,
       "sha256": "640420a4b6d800f21dd54f47c3dc52fedc6ca0f987b8225bf1c0357e9f045105",
       "visually_reinspected_this_audit": false
@@ -6587,7 +6587,7 @@
     {
       "tag": "52.2",
       "historical_page_unspecified_convention": 348,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_348_eq52.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_348_eq52.2.png",
       "exists": true,
       "sha256": "84997c52e06e0d43c3df8ef5fff3741d1858d59777d6707ea00cc48eed6062de",
       "visually_reinspected_this_audit": false
@@ -6595,7 +6595,7 @@
     {
       "tag": "53.17",
       "historical_page_unspecified_convention": 354,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_354_eq53.17.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_354_eq53.17.png",
       "exists": true,
       "sha256": "40502f271e455a94a954047aa9bb8b99f2794e64f79b50895cf426296b4787c7",
       "visually_reinspected_this_audit": false
@@ -6603,7 +6603,7 @@
     {
       "tag": "55.5",
       "historical_page_unspecified_convention": 364,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_364_eq55.5.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_364_eq55.5.png",
       "exists": true,
       "sha256": "84b620f4b90766b8afbbee45310340b291adbcf170156fdcda4e545d032abd4a",
       "visually_reinspected_this_audit": false
@@ -6611,7 +6611,7 @@
     {
       "tag": "55.11",
       "historical_page_unspecified_convention": 365,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_365_eq55.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_365_eq55.11.png",
       "exists": true,
       "sha256": "c5d0dbcb03754b2cf1478e63d14cadb8acfb7c2d5f21348977ab9347f2e2c2e5",
       "visually_reinspected_this_audit": false
@@ -6619,7 +6619,7 @@
     {
       "tag": "55.16",
       "historical_page_unspecified_convention": 365,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_365_eq55.16.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_365_eq55.16.png",
       "exists": true,
       "sha256": "cb62e5e7c0eefa2625ff4160b86eaeed8ba66e1e8aaa02cb69b4ed875b2f2277",
       "visually_reinspected_this_audit": false
@@ -6627,7 +6627,7 @@
     {
       "tag": "55.17",
       "historical_page_unspecified_convention": 365,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_365_eq55.17.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_365_eq55.17.png",
       "exists": true,
       "sha256": "d7a718c0942482f484e4b1b4d01f1175f4908bec187e7d0a96a8f25878b7898a",
       "visually_reinspected_this_audit": false
@@ -6635,7 +6635,7 @@
     {
       "tag": "55.23",
       "historical_page_unspecified_convention": 366,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_366_eq55.23.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_366_eq55.23.png",
       "exists": true,
       "sha256": "0a767a25eba708fbc6eaae0972fb8779c6b67ac84a73360b7ccaa1686ec59c29",
       "visually_reinspected_this_audit": false
@@ -6643,7 +6643,7 @@
     {
       "tag": "56.24",
       "historical_page_unspecified_convention": 371,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_371_eq56.24.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_371_eq56.24.png",
       "exists": true,
       "sha256": "d4d7f0f99cf7b1437eda7128a7da753c0ade5b4b3320b70a6aa8e33151b5da2f",
       "visually_reinspected_this_audit": false
@@ -6651,7 +6651,7 @@
     {
       "tag": "56.28",
       "historical_page_unspecified_convention": 372,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_372_eq56.28.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_372_eq56.28.png",
       "exists": true,
       "sha256": "019071ac29d0cf210e8f873fe61507f50709772d5b8992b64d92fe1d7027d98d",
       "visually_reinspected_this_audit": false
@@ -6659,7 +6659,7 @@
     {
       "tag": "59.4",
       "historical_page_unspecified_convention": 381,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_381_eq59.4.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_381_eq59.4.png",
       "exists": true,
       "sha256": "20568205d4c03bc3e920adab46ef997e39d9ea6e147b6b02668dffab3ed8493e",
       "visually_reinspected_this_audit": false
@@ -6667,7 +6667,7 @@
     {
       "tag": "59.14",
       "historical_page_unspecified_convention": 383,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_383_eq59.14.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_383_eq59.14.png",
       "exists": true,
       "sha256": "382d92fc49e14f69efbd58cc8cc35cc679eb53a04977e3acd4393d89c4366a46",
       "visually_reinspected_this_audit": false
@@ -6675,7 +6675,7 @@
     {
       "tag": "59.16",
       "historical_page_unspecified_convention": 383,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_383_eq59.16.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_383_eq59.16.png",
       "exists": true,
       "sha256": "9efdcfe059b3d69d153713cdff4e62e4c71ae789bcb75ca957be324ed6dcc1bc",
       "visually_reinspected_this_audit": false
@@ -6683,7 +6683,7 @@
     {
       "tag": "59.17",
       "historical_page_unspecified_convention": 383,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_383_eq59.17.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_383_eq59.17.png",
       "exists": true,
       "sha256": "22d512803233042a2a6b913ca86420f3753024aa6e8c40ffc4fc1613ab1a1ae6",
       "visually_reinspected_this_audit": false
@@ -6691,7 +6691,7 @@
     {
       "tag": "60.10",
       "historical_page_unspecified_convention": 388,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_388_eq60.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_388_eq60.10.png",
       "exists": true,
       "sha256": "d574d384822fbff2493c66ff7d89f7ae043753c5b45a7e981002881e781a6868",
       "visually_reinspected_this_audit": false
@@ -6699,7 +6699,7 @@
     {
       "tag": "60.12",
       "historical_page_unspecified_convention": 388,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_388_eq60.12.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_388_eq60.12.png",
       "exists": true,
       "sha256": "c99e38c8ec773aea4200eaa09ccce9a48e2381507d9899ba0100d355b8f1288e",
       "visually_reinspected_this_audit": false
@@ -6707,7 +6707,7 @@
     {
       "tag": "60.13",
       "historical_page_unspecified_convention": 388,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_388_eq60.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_388_eq60.13.png",
       "exists": true,
       "sha256": "90e7c828036890d5847fa9d8da453a13be54c985d75c88811e1fa815b7558a18",
       "visually_reinspected_this_audit": false
@@ -6715,7 +6715,7 @@
     {
       "tag": "60.14",
       "historical_page_unspecified_convention": 388,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_388_eq60.14.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_388_eq60.14.png",
       "exists": true,
       "sha256": "d037e4eedb07706def9d5e7bef7857b93ebed72cf043c003396ce05ad834e1e1",
       "visually_reinspected_this_audit": false
@@ -6723,7 +6723,7 @@
     {
       "tag": "60.15",
       "historical_page_unspecified_convention": 388,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_388_eq60.15.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_388_eq60.15.png",
       "exists": true,
       "sha256": "5b36afe81c70f4965d327324fc7cbeb7d135509c11027651aff2a661a3dae772",
       "visually_reinspected_this_audit": false
@@ -6731,7 +6731,7 @@
     {
       "tag": "60.29",
       "historical_page_unspecified_convention": 392,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_392_eq60.29.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_392_eq60.29.png",
       "exists": true,
       "sha256": "5fbb9f899628164afcc5043ee9fa3c20704806cd5bb4596a0e52f131808e6a4c",
       "visually_reinspected_this_audit": false
@@ -6739,7 +6739,7 @@
     {
       "tag": "62.26",
       "historical_page_unspecified_convention": 404,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_404_eq62.26.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_404_eq62.26.png",
       "exists": true,
       "sha256": "b09d67aa6ec007e6261ab4a27399afcaa67d77a08e183695c42a7f276d716760",
       "visually_reinspected_this_audit": false
@@ -6747,7 +6747,7 @@
     {
       "tag": "62.27",
       "historical_page_unspecified_convention": 405,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_405_eq62.27.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_405_eq62.27.png",
       "exists": true,
       "sha256": "9e475519278c0231bd9efab01c6d1006c0b5746b00dc57318ca4a39c2041306a",
       "visually_reinspected_this_audit": false
@@ -6755,7 +6755,7 @@
     {
       "tag": "63.1",
       "historical_page_unspecified_convention": 409,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_409_eq63.1.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_409_eq63.1.png",
       "exists": true,
       "sha256": "5c4cfe7e963a16680b7bab35b945991b9e1f323ff0758e156c6420d64da9865e",
       "visually_reinspected_this_audit": false
@@ -6763,7 +6763,7 @@
     {
       "tag": "63.4",
       "historical_page_unspecified_convention": 410,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_410_eq63.4.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_410_eq63.4.png",
       "exists": true,
       "sha256": "c78856ac2fd58c65a1f38272a56a6f4cbb41d5cb477479c858475f31c9df4dfd",
       "visually_reinspected_this_audit": false
@@ -6771,7 +6771,7 @@
     {
       "tag": "63.8",
       "historical_page_unspecified_convention": 411,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_411_eq63.8.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_411_eq63.8.png",
       "exists": true,
       "sha256": "ce53b4bd7d466a07e8cc6a62b66335aefa6b907ca7dadf123c6935c5cb8bf926",
       "visually_reinspected_this_audit": false
@@ -6779,7 +6779,7 @@
     {
       "tag": "63.10",
       "historical_page_unspecified_convention": 411,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_411_eq63.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_411_eq63.10.png",
       "exists": true,
       "sha256": "f6bd5ec2e4475f182706d4b49c56d4cc0abdad46b960cc4df2f51e0489f5899d",
       "visually_reinspected_this_audit": false
@@ -6787,7 +6787,7 @@
     {
       "tag": "63.19",
       "historical_page_unspecified_convention": 413,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_413_eq63.19.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_413_eq63.19.png",
       "exists": true,
       "sha256": "7a7689988c39c9ab6ee7e2e720da5072adae2836e09174c3bb300769cf48b6d4",
       "visually_reinspected_this_audit": false
@@ -6795,7 +6795,7 @@
     {
       "tag": "65.13",
       "historical_page_unspecified_convention": 420,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_420_eq65.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_420_eq65.13.png",
       "exists": true,
       "sha256": "e3ef17d924c275443829e9e3f6cf1442b01136216484c9b877d46a0308a88add",
       "visually_reinspected_this_audit": false
@@ -6803,7 +6803,7 @@
     {
       "tag": "65.16",
       "historical_page_unspecified_convention": 420,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_420_eq65.16.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_420_eq65.16.png",
       "exists": true,
       "sha256": "900b8ec9da0a94e7bf8d43ea1be87feb16468b9e1973181dd65dfa50d50bf2d2",
       "visually_reinspected_this_audit": false
@@ -6811,7 +6811,7 @@
     {
       "tag": "65.21",
       "historical_page_unspecified_convention": 422,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_422_eq65.21.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_422_eq65.21.png",
       "exists": true,
       "sha256": "01e41d8fb8e5b9befecdde351a880268b79d7e189b04982a3933ebe3afe954f4",
       "visually_reinspected_this_audit": false
@@ -6819,7 +6819,7 @@
     {
       "tag": "65.24",
       "historical_page_unspecified_convention": 422,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_422_eq65.24.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_422_eq65.24.png",
       "exists": true,
       "sha256": "7526e9ac40c581b15056252852e127ba966317eb7a5acab8d799e7010c4906d7",
       "visually_reinspected_this_audit": false
@@ -6827,7 +6827,7 @@
     {
       "tag": "66.1",
       "historical_page_unspecified_convention": 427,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_427_eq66.1.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_427_eq66.1.png",
       "exists": true,
       "sha256": "b0c1a8e2387eede799ecdcf42dd59d37a0e21f1f32162932e7927bafb98a81d5",
       "visually_reinspected_this_audit": false
@@ -6835,7 +6835,7 @@
     {
       "tag": "66.2",
       "historical_page_unspecified_convention": 427,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_427_eq66.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_427_eq66.2.png",
       "exists": true,
       "sha256": "7aa0b40622e19d7b43bc7d0cf0b290ee97ace04b9d60d78157aae7508d24b473",
       "visually_reinspected_this_audit": false
@@ -6843,7 +6843,7 @@
     {
       "tag": "66.31",
       "historical_page_unspecified_convention": 431,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_431_eq66.31.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_431_eq66.31.png",
       "exists": true,
       "sha256": "bc4ad1b45b793c4e18f74f6d3c5457c03736012ed6fbfa4f25158097c420e7f5",
       "visually_reinspected_this_audit": false
@@ -6851,7 +6851,7 @@
     {
       "tag": "67.12",
       "historical_page_unspecified_convention": 434,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_434_eq67.12.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_434_eq67.12.png",
       "exists": true,
       "sha256": "a1c97a576a21be50fba24827e438a09d193f81595bc5d639d2986c2863224948",
       "visually_reinspected_this_audit": false
@@ -6859,7 +6859,7 @@
     {
       "tag": "68.7",
       "historical_page_unspecified_convention": 437,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_437_eq68.7.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_437_eq68.7.png",
       "exists": true,
       "sha256": "1dba3c382c763143ecca6ff41fb915609d59a0bcc5fac762612a9f51ec0d21b2",
       "visually_reinspected_this_audit": false
@@ -6867,7 +6867,7 @@
     {
       "tag": "68.10",
       "historical_page_unspecified_convention": 437,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_437_eq68.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_437_eq68.10.png",
       "exists": true,
       "sha256": "b99afffd2a3b5c0d568f61e93deec4ad3c6b606d33d46b52434bb3f99da5b100",
       "visually_reinspected_this_audit": false
@@ -6875,7 +6875,7 @@
     {
       "tag": "68.11",
       "historical_page_unspecified_convention": 437,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_437_eq68.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_437_eq68.11.png",
       "exists": true,
       "sha256": "c554542847856f44b0d659fb5b6bee18198681359069bcdc7362f82507b5dad6",
       "visually_reinspected_this_audit": false
@@ -6883,7 +6883,7 @@
     {
       "tag": "70.29",
       "historical_page_unspecified_convention": 450,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_450_eq70.29.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_450_eq70.29.png",
       "exists": true,
       "sha256": "0a1044873b0134f4de350811ac10e7595d7197ada69d162e94eef675b26c9537",
       "visually_reinspected_this_audit": false
@@ -6891,7 +6891,7 @@
     {
       "tag": "71.21",
       "historical_page_unspecified_convention": 457,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_457_eq71.21.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_457_eq71.21.png",
       "exists": true,
       "sha256": "f78d640247a2dc1fe20a5308214a884f776f33ad42928e188afa2adf9221618d",
       "visually_reinspected_this_audit": false
@@ -6899,7 +6899,7 @@
     {
       "tag": "73.2",
       "historical_page_unspecified_convention": 463,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_463_eq73.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_463_eq73.2.png",
       "exists": true,
       "sha256": "6a570d072ca4e9c9e3446bcb810fe558fef2b652cd1365b46f26de10103f5a5f",
       "visually_reinspected_this_audit": false
@@ -6907,7 +6907,7 @@
     {
       "tag": "73.24",
       "historical_page_unspecified_convention": 468,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_468_eq73.24.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_468_eq73.24.png",
       "exists": true,
       "sha256": "34d2886171bf2a412c7c41c6e1daec063374bdcac31bc69d04fc7552a384f1f5",
       "visually_reinspected_this_audit": false
@@ -6915,7 +6915,7 @@
     {
       "tag": "73.27",
       "historical_page_unspecified_convention": 469,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_469_eq73.27.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_469_eq73.27.png",
       "exists": true,
       "sha256": "e4f6ace7db0a602dadddfd174e48bac41b69267e992ac4640e34e9c08fa412ef",
       "visually_reinspected_this_audit": false
@@ -6923,7 +6923,7 @@
     {
       "tag": "73.33",
       "historical_page_unspecified_convention": 469,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_469_eq73.33.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_469_eq73.33.png",
       "exists": true,
       "sha256": "a06572d64442d45a47c723b4aac311b97a143542667f10464759eb44f376a11b",
       "visually_reinspected_this_audit": false
@@ -6931,7 +6931,7 @@
     {
       "tag": "73.35",
       "historical_page_unspecified_convention": 470,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_470_eq73.35.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_470_eq73.35.png",
       "exists": true,
       "sha256": "b695a1bfe8f77b911f2154b53cdf37aeaca3f29d0960ea6e88c83b4303c81f2d",
       "visually_reinspected_this_audit": false
@@ -6939,7 +6939,7 @@
     {
       "tag": "74.21",
       "historical_page_unspecified_convention": 475,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_475_eq74.21.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_475_eq74.21.png",
       "exists": true,
       "sha256": "e4f953332c9034aec59f1b32e654c4ea9ee27ae940d6d8bf7931231de09ec14d",
       "visually_reinspected_this_audit": false
@@ -6947,7 +6947,7 @@
     {
       "tag": "74.22",
       "historical_page_unspecified_convention": 475,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_475_eq74.22.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_475_eq74.22.png",
       "exists": true,
       "sha256": "a94743c883b8058d95be154c7c767066b892e05961a79c44571e85738acf004a",
       "visually_reinspected_this_audit": false
@@ -6955,7 +6955,7 @@
     {
       "tag": "74.24",
       "historical_page_unspecified_convention": 475,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_475_eq74.24.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_475_eq74.24.png",
       "exists": true,
       "sha256": "39fa0beea0c76fbadbb757f0944e17498100e838ed704f03fedc250d4487f574",
       "visually_reinspected_this_audit": false
@@ -6963,7 +6963,7 @@
     {
       "tag": "74.25",
       "historical_page_unspecified_convention": 476,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_476_eq74.25.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_476_eq74.25.png",
       "exists": true,
       "sha256": "4edc718a7cc1c45cc1ee3f0f3379755c08a54caaa3654f336532c23784eb4b3a",
       "visually_reinspected_this_audit": false
@@ -6971,7 +6971,7 @@
     {
       "tag": "74.33",
       "historical_page_unspecified_convention": 477,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_477_eq74.33.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_477_eq74.33.png",
       "exists": true,
       "sha256": "b7afd123a5d67d9c12bedfde60552643d60e4cf1c7f3638353af634d0edc14ab",
       "visually_reinspected_this_audit": false
@@ -6979,7 +6979,7 @@
     {
       "tag": "75.1",
       "historical_page_unspecified_convention": 480,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_480_eq75.1.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_480_eq75.1.png",
       "exists": true,
       "sha256": "c2e2204fa9843d92b0b3d1d7a2545d1941e43f15dd0543012b74906ff7486b15",
       "visually_reinspected_this_audit": false
@@ -6987,7 +6987,7 @@
     {
       "tag": "75.2",
       "historical_page_unspecified_convention": 480,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_480_eq75.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_480_eq75.2.png",
       "exists": true,
       "sha256": "60ff073ff577a0dfa104f8db5f41a778605d7c9e40661386ae151b2223a686dd",
       "visually_reinspected_this_audit": false
@@ -6995,7 +6995,7 @@
     {
       "tag": "75.5",
       "historical_page_unspecified_convention": 481,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_481_eq75.5.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_481_eq75.5.png",
       "exists": true,
       "sha256": "a6826d283268694bbbe50cadb22e253c19f46b6cf0b6a2107a8c431a678bbe00",
       "visually_reinspected_this_audit": false
@@ -7003,7 +7003,7 @@
     {
       "tag": "75.7",
       "historical_page_unspecified_convention": 481,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_481_eq75.7.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_481_eq75.7.png",
       "exists": true,
       "sha256": "51a7961f042b02d4243a9a61edfa6dd0406bd5c33c6a2aacea9d5fb285ff3bcc",
       "visually_reinspected_this_audit": false
@@ -7011,7 +7011,7 @@
     {
       "tag": "75.8",
       "historical_page_unspecified_convention": 481,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_481_eq75.8.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_481_eq75.8.png",
       "exists": true,
       "sha256": "9a38477f1b5c5e707049c818e966cc71e279e1b881b87401d4ff2a2d0115113b",
       "visually_reinspected_this_audit": false
@@ -7019,7 +7019,7 @@
     {
       "tag": "75.12",
       "historical_page_unspecified_convention": 483,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_483_eq75.12.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_483_eq75.12.png",
       "exists": true,
       "sha256": "daf3f32116f92ab32fb41f6cd784fc6eb56923a7ea59b429c67fe8217da92914",
       "visually_reinspected_this_audit": false
@@ -7027,7 +7027,7 @@
     {
       "tag": "75.16",
       "historical_page_unspecified_convention": 484,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_484_eq75.16.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_484_eq75.16.png",
       "exists": true,
       "sha256": "ec968617b20448125f646cf7a1c4ab61cd24ec60e62d9f56f2e2af965e8c2014",
       "visually_reinspected_this_audit": false
@@ -7035,7 +7035,7 @@
     {
       "tag": "75.18",
       "historical_page_unspecified_convention": 484,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_484_eq75.18.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_484_eq75.18.png",
       "exists": true,
       "sha256": "9d783a3f1924a4ac85afbc5e09f7b57e815917d945426aebb228e21bdee872a5",
       "visually_reinspected_this_audit": false
@@ -7043,7 +7043,7 @@
     {
       "tag": "75.29",
       "historical_page_unspecified_convention": 486,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_486_eq75.29.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_486_eq75.29.png",
       "exists": true,
       "sha256": "bb12e14deb3a753696d0262a010026a66db339caa55492cce092bc4efa452c8c",
       "visually_reinspected_this_audit": false
@@ -7051,7 +7051,7 @@
     {
       "tag": "75.30",
       "historical_page_unspecified_convention": 486,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_486_eq75.30.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_486_eq75.30.png",
       "exists": true,
       "sha256": "62138e628649be284d74980565e56c503c5e1da9f3b98213ef4d8e0e4e07ee20",
       "visually_reinspected_this_audit": false
@@ -7059,7 +7059,7 @@
     {
       "tag": "75.33",
       "historical_page_unspecified_convention": 486,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_486_eq75.33.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_486_eq75.33.png",
       "exists": true,
       "sha256": "615db3cfa4b6bb262c442966e65356fafcfbb2666d92ff9aee8ac7b9930db50e",
       "visually_reinspected_this_audit": false
@@ -7067,7 +7067,7 @@
     {
       "tag": "75.46",
       "historical_page_unspecified_convention": 489,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_489_eq75.46.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_489_eq75.46.png",
       "exists": true,
       "sha256": "bd8c9d37754321091cbffb90c942c79946d9b73fc520e477dd7fc3fe273495ab",
       "visually_reinspected_this_audit": false
@@ -7075,7 +7075,7 @@
     {
       "tag": "75.47",
       "historical_page_unspecified_convention": 489,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_489_eq75.47.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_489_eq75.47.png",
       "exists": true,
       "sha256": "371fcb7fba575f1ce645138d9feb09b7e104413863800bdf26f299dbb85b6dc3",
       "visually_reinspected_this_audit": false
@@ -7083,7 +7083,7 @@
     {
       "tag": "75.50",
       "historical_page_unspecified_convention": 489,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_489_eq75.50.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_489_eq75.50.png",
       "exists": true,
       "sha256": "a8db9c567bb2c39d387cebdcf7e981dcc0e8dd63daa274c4966b10b82f4659f7",
       "visually_reinspected_this_audit": false
@@ -7091,7 +7091,7 @@
     {
       "tag": "76.2",
       "historical_page_unspecified_convention": 492,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_492_eq76.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_492_eq76.2.png",
       "exists": true,
       "sha256": "8a85d5635b7e0a7d7cf64c687e9880badc51830fe81e4f08d562b83a249479a8",
       "visually_reinspected_this_audit": false
@@ -7099,7 +7099,7 @@
     {
       "tag": "77.14",
       "historical_page_unspecified_convention": 498,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_498_eq77.14.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_498_eq77.14.png",
       "exists": true,
       "sha256": "87091d42239d7e1973d9f231a75c3b7be4cd20c72d10d9c363f16853089670ab",
       "visually_reinspected_this_audit": false
@@ -7107,7 +7107,7 @@
     {
       "tag": "77.15",
       "historical_page_unspecified_convention": 498,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_498_eq77.15.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_498_eq77.15.png",
       "exists": true,
       "sha256": "8e09847594a30ebf95a2d51d4832c06b8369331e55f3354c774a2bb7976b075f",
       "visually_reinspected_this_audit": false
@@ -7115,7 +7115,7 @@
     {
       "tag": "77.30",
       "historical_page_unspecified_convention": 500,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_500_eq77.30.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_500_eq77.30.png",
       "exists": true,
       "sha256": "b595de7eeec06ee2a217ada37a533da00539812c3eaa73460c52f444e1c280f1",
       "visually_reinspected_this_audit": false
@@ -7123,7 +7123,7 @@
     {
       "tag": "78.16",
       "historical_page_unspecified_convention": 504,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_504_eq78.16.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_504_eq78.16.png",
       "exists": true,
       "sha256": "f28f2618bf3827bc67837f3044b2cb19385c5dadcb13a6ff9b360e70805f7066",
       "visually_reinspected_this_audit": false
@@ -7131,7 +7131,7 @@
     {
       "tag": "78.21",
       "historical_page_unspecified_convention": 505,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_505_eq78.21.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_505_eq78.21.png",
       "exists": true,
       "sha256": "d5e0bd332efc2e287d17ba8a667f5dbf0d6c5cbaa4c9c170b478cb8f7f560fe9",
       "visually_reinspected_this_audit": false
@@ -7139,7 +7139,7 @@
     {
       "tag": "78.25",
       "historical_page_unspecified_convention": 506,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_506_eq78.25.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_506_eq78.25.png",
       "exists": true,
       "sha256": "91d17e3867b79146da17702ec2ce87f86e7682279e9fb9123f49ccae946f4d7f",
       "visually_reinspected_this_audit": false
@@ -7147,7 +7147,7 @@
     {
       "tag": "78.27",
       "historical_page_unspecified_convention": 506,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_506_eq78.27.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_506_eq78.27.png",
       "exists": true,
       "sha256": "34a8d63c231feba0b2794861c14646556cf4a6041d082d4c9d32ae795f32571b",
       "visually_reinspected_this_audit": false
@@ -7155,7 +7155,7 @@
     {
       "tag": "78.34",
       "historical_page_unspecified_convention": 508,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_508_eq78.34.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_508_eq78.34.png",
       "exists": true,
       "sha256": "723580217721010de9c8eca7c91bed47846a6a27c901a1c6ebc0d7afe6135295",
       "visually_reinspected_this_audit": false
@@ -7163,7 +7163,7 @@
     {
       "tag": "78.35",
       "historical_page_unspecified_convention": 508,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_508_eq78.35.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_508_eq78.35.png",
       "exists": true,
       "sha256": "dfb32dc15ddd5dd89fb426b494fa0732837148d9d9cb83b2473d1315737d5771",
       "visually_reinspected_this_audit": false
@@ -7171,7 +7171,7 @@
     {
       "tag": "78.36",
       "historical_page_unspecified_convention": 508,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_508_eq78.36.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_508_eq78.36.png",
       "exists": true,
       "sha256": "2a697ade8cd1ce0aa9f00e14c0ce2fc8f5c81ab3c6cf07c0eb6961243b1bf1d1",
       "visually_reinspected_this_audit": false
@@ -7179,7 +7179,7 @@
     {
       "tag": "81.2",
       "historical_page_unspecified_convention": 519,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_519_eq81.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_519_eq81.2.png",
       "exists": true,
       "sha256": "ad4b051645960583eb5bd7e8f73a215454ab3ef87974d9b1ef06fd4575039aee",
       "visually_reinspected_this_audit": false
@@ -7187,7 +7187,7 @@
     {
       "tag": "81.17",
       "historical_page_unspecified_convention": 522,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_522_eq81.17.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_522_eq81.17.png",
       "exists": true,
       "sha256": "d838eb85c92972434259c5776d1ceb68a128b17ddce38d718ce615577d545b28",
       "visually_reinspected_this_audit": false
@@ -7195,7 +7195,7 @@
     {
       "tag": "81.43",
       "historical_page_unspecified_convention": 526,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_526_eq81.43.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_526_eq81.43.png",
       "exists": true,
       "sha256": "1e764f37440d9a6997b1e0c9521e2fe89ed26c56ef79e182400345ac9205ef6f",
       "visually_reinspected_this_audit": false
@@ -7203,7 +7203,7 @@
     {
       "tag": "81.44",
       "historical_page_unspecified_convention": 526,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_526_eq81.44.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_526_eq81.44.png",
       "exists": true,
       "sha256": "a0ab92af2170ffafb010e9690dc0836ef9cf6b97c65161e40d05e7c592a7f066",
       "visually_reinspected_this_audit": false
@@ -7211,7 +7211,7 @@
     {
       "tag": "83.2",
       "historical_page_unspecified_convention": 541,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_541_eq83.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_541_eq83.2.png",
       "exists": true,
       "sha256": "250b978e51288bb50d47a9d543cdb2457f01c991d459afdcd5f8989a3d9f17b7",
       "visually_reinspected_this_audit": false
@@ -7219,7 +7219,7 @@
     {
       "tag": "83.4",
       "historical_page_unspecified_convention": 541,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_541_eq83.4.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_541_eq83.4.png",
       "exists": true,
       "sha256": "b776730c129dad9a3bed6666e5fb21c1f263d6b0c66bd3a35528d286c5d44125",
       "visually_reinspected_this_audit": false
@@ -7227,7 +7227,7 @@
     {
       "tag": "83.9",
       "historical_page_unspecified_convention": 543,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_543_eq83.9.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_543_eq83.9.png",
       "exists": true,
       "sha256": "879ccf8f48188d249e47ba02c1675f2f09834ba180fff4a0e7d7f2ce2cf5b9ab",
       "visually_reinspected_this_audit": false
@@ -7235,7 +7235,7 @@
     {
       "tag": "83.15",
       "historical_page_unspecified_convention": 545,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_545_eq83.15.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_545_eq83.15.png",
       "exists": true,
       "sha256": "bd80fe90382160a62dc6240cb18c9a75949da23387218dafde3b12ba8f922468",
       "visually_reinspected_this_audit": false
@@ -7243,7 +7243,7 @@
     {
       "tag": "83.19",
       "historical_page_unspecified_convention": 546,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_546_eq83.19.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_546_eq83.19.png",
       "exists": true,
       "sha256": "4deac364816616b54995c0a0dfebdfbd98fff582a1fa66c125b46c899d131c73",
       "visually_reinspected_this_audit": false
@@ -7251,7 +7251,7 @@
     {
       "tag": "83.27",
       "historical_page_unspecified_convention": 547,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_547_eq83.27.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_547_eq83.27.png",
       "exists": true,
       "sha256": "1a9c089dc39137496b89bfd995bcb8e82f004731e5d34d24f590933d1d57cf5d",
       "visually_reinspected_this_audit": false
@@ -7259,7 +7259,7 @@
     {
       "tag": "84.13",
       "historical_page_unspecified_convention": 553,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_553_eq84.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_553_eq84.13.png",
       "exists": true,
       "sha256": "2fa1b1e6d7522fcdba1a0bee1aa96e8a205eda4685f57eb0c9b08886990d7d4c",
       "visually_reinspected_this_audit": false
@@ -7267,7 +7267,7 @@
     {
       "tag": "84.16",
       "historical_page_unspecified_convention": 553,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_553_eq84.16.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_553_eq84.16.png",
       "exists": true,
       "sha256": "076a701fb0cb60e0a451855bf44e0caac46fcc78b72b70a6c3b449ea44c98856",
       "visually_reinspected_this_audit": false
@@ -7275,7 +7275,7 @@
     {
       "tag": "85.12",
       "historical_page_unspecified_convention": 556,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_556_eq85.12.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_556_eq85.12.png",
       "exists": true,
       "sha256": "b211d55c6c14ae33a2c62423b76297bbc1cadb56a1a3d1e1a1bd514a732e1e62",
       "visually_reinspected_this_audit": false
@@ -7283,7 +7283,7 @@
     {
       "tag": "85.28",
       "historical_page_unspecified_convention": 558,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_558_eq85.28.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_558_eq85.28.png",
       "exists": true,
       "sha256": "8deb4ebff96ee4065871fc545eee51b5ae103957f6fd7917c6add79f036815ce",
       "visually_reinspected_this_audit": false
@@ -7291,7 +7291,7 @@
     {
       "tag": "86.14",
       "historical_page_unspecified_convention": 564,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_564_eq86.14.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_564_eq86.14.png",
       "exists": true,
       "sha256": "a434ac0cb66e08f294f8c415824c7e3428b1ef36787c391ed5472363d0d78107",
       "visually_reinspected_this_audit": false
@@ -7299,7 +7299,7 @@
     {
       "tag": "86.19",
       "historical_page_unspecified_convention": 564,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_564_eq86.19.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_564_eq86.19.png",
       "exists": true,
       "sha256": "1c3ca559acdea2bb58ca44227308f67ab798f5ace88c5400b0d4f701d6dc9af6",
       "visually_reinspected_this_audit": false
@@ -7307,7 +7307,7 @@
     {
       "tag": "86.20",
       "historical_page_unspecified_convention": 564,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_564_eq86.20.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_564_eq86.20.png",
       "exists": true,
       "sha256": "ca1bb109b059e0ae7c86685e092340696e465777d5e9d1c915ebeac18fbd401e",
       "visually_reinspected_this_audit": false
@@ -7315,7 +7315,7 @@
     {
       "tag": "86.23",
       "historical_page_unspecified_convention": 565,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_565_eq86.23.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_565_eq86.23.png",
       "exists": true,
       "sha256": "b4d05e8b9d1fa724304e32ff765f56dc679a779a91bb1c54836fd7865661c610",
       "visually_reinspected_this_audit": false
@@ -7323,7 +7323,7 @@
     {
       "tag": "87.2",
       "historical_page_unspecified_convention": 567,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_567_eq87.2.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_567_eq87.2.png",
       "exists": true,
       "sha256": "8db0c42d193e47a4aec2e232c9bc55aa189243552537af9009ec9dd0f6a3a070",
       "visually_reinspected_this_audit": false
@@ -7331,7 +7331,7 @@
     {
       "tag": "87.4",
       "historical_page_unspecified_convention": 568,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_568_eq87.4.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_568_eq87.4.png",
       "exists": true,
       "sha256": "ab479635d4aa96055d134c6d463a5116032addf6ba5efc3370f98091c8e0a4f6",
       "visually_reinspected_this_audit": false
@@ -7339,7 +7339,7 @@
     {
       "tag": "87.5",
       "historical_page_unspecified_convention": 568,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_568_eq87.5.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_568_eq87.5.png",
       "exists": true,
       "sha256": "9994ad3fca908a80655eb9fa90f4d795f9ce7a37c75e0128aba29fdbefbacfaa",
       "visually_reinspected_this_audit": false
@@ -7347,7 +7347,7 @@
     {
       "tag": "87.6",
       "historical_page_unspecified_convention": 568,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_568_eq87.6.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_568_eq87.6.png",
       "exists": true,
       "sha256": "b1cdcf0eeaafe48c2725c48ba24993f25b873d5adc2be1fed04eb55dca844dc1",
       "visually_reinspected_this_audit": false
@@ -7355,7 +7355,7 @@
     {
       "tag": "87.9",
       "historical_page_unspecified_convention": 568,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_568_eq87.9.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_568_eq87.9.png",
       "exists": true,
       "sha256": "7dca918702b2cb5837fa2dab08185e498da4cc99b0c26742ac3f6817352536ae",
       "visually_reinspected_this_audit": false
@@ -7363,7 +7363,7 @@
     {
       "tag": "87.13",
       "historical_page_unspecified_convention": 569,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_569_eq87.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_569_eq87.13.png",
       "exists": true,
       "sha256": "ae0e296d556abb0b4eead65c9dd3793bd34b83f69b7fa10f5c6a2cf2be1f8b61",
       "visually_reinspected_this_audit": false
@@ -7371,7 +7371,7 @@
     {
       "tag": "88.10",
       "historical_page_unspecified_convention": 574,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_574_eq88.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_574_eq88.10.png",
       "exists": true,
       "sha256": "4d4af14dfddd137629650f3f35674de3a94ac8f5c46e2d69455e57d3038817a9",
       "visually_reinspected_this_audit": false
@@ -7379,7 +7379,7 @@
     {
       "tag": "88.12",
       "historical_page_unspecified_convention": 574,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_574_eq88.12.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_574_eq88.12.png",
       "exists": true,
       "sha256": "70aba27623cc1cb4be203cdf62e2ac5837a2e73489288d2bf2515997bead91fc",
       "visually_reinspected_this_audit": false
@@ -7387,7 +7387,7 @@
     {
       "tag": "88.13",
       "historical_page_unspecified_convention": 574,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_574_eq88.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_574_eq88.13.png",
       "exists": true,
       "sha256": "161e560e854f1d4108e3b4b7936c186636d873caeff4969ea3570c2c2ebe6739",
       "visually_reinspected_this_audit": false
@@ -7395,7 +7395,7 @@
     {
       "tag": "88.14",
       "historical_page_unspecified_convention": 574,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_574_eq88.14.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_574_eq88.14.png",
       "exists": true,
       "sha256": "ecae3edc7bd91183cb7173b2439f29b257508a8a71fb9eab29522071e71f3f91",
       "visually_reinspected_this_audit": false
@@ -7403,7 +7403,7 @@
     {
       "tag": "88.21",
       "historical_page_unspecified_convention": 575,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_575_eq88.21.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_575_eq88.21.png",
       "exists": true,
       "sha256": "ad3fd2c2a7ab8e1e2b1467fed752d95b16ea2fd959bf8366422d99e55ca1c7f8",
       "visually_reinspected_this_audit": false
@@ -7411,7 +7411,7 @@
     {
       "tag": "88.23",
       "historical_page_unspecified_convention": 575,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_575_eq88.23.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_575_eq88.23.png",
       "exists": true,
       "sha256": "7871a215fc1aa670ae966c8ef63976416e519e6171f394b89b1443bb18e2dd36",
       "visually_reinspected_this_audit": false
@@ -7419,7 +7419,7 @@
     {
       "tag": "88.32",
       "historical_page_unspecified_convention": 576,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_576_eq88.32.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_576_eq88.32.png",
       "exists": true,
       "sha256": "1611141be1885fbd0d9daae9baefab52ae4491524591704d87394926c724e3d7",
       "visually_reinspected_this_audit": false
@@ -7427,7 +7427,7 @@
     {
       "tag": "88.33",
       "historical_page_unspecified_convention": 576,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_576_eq88.33.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_576_eq88.33.png",
       "exists": true,
       "sha256": "eb2cee80877a368c55b0890c06e92e8bde1e9695826ae33f147b3af6382fc226",
       "visually_reinspected_this_audit": false
@@ -7435,7 +7435,7 @@
     {
       "tag": "88.35",
       "historical_page_unspecified_convention": 577,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_577_eq88.35.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_577_eq88.35.png",
       "exists": true,
       "sha256": "df3c1bbad3860c263829b659b671e3015d1b3c0be1efad8e6d4c41a05312c56d",
       "visually_reinspected_this_audit": false
@@ -7443,7 +7443,7 @@
     {
       "tag": "88.36",
       "historical_page_unspecified_convention": 577,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_577_eq88.36.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_577_eq88.36.png",
       "exists": true,
       "sha256": "4ce38c8db2bc6508c1a72c29986cc5fa667af772b528ac285ba2f270c27a2c0e",
       "visually_reinspected_this_audit": false
@@ -7451,7 +7451,7 @@
     {
       "tag": "88.37",
       "historical_page_unspecified_convention": 577,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_577_eq88.37.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_577_eq88.37.png",
       "exists": true,
       "sha256": "c5c9ccfd223b0fb03e9eac1d2cdb1d892a13b47d0ae8979c1af5d79ba6c4d02c",
       "visually_reinspected_this_audit": false
@@ -7459,7 +7459,7 @@
     {
       "tag": "88.38",
       "historical_page_unspecified_convention": 577,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_577_eq88.38.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_577_eq88.38.png",
       "exists": true,
       "sha256": "ffcae3adf3f0506658b873dc3fae249a65d87b9483dce1b2e94ae25f9229c3ce",
       "visually_reinspected_this_audit": false
@@ -7467,7 +7467,7 @@
     {
       "tag": "88.40",
       "historical_page_unspecified_convention": 577,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_577_eq88.40.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_577_eq88.40.png",
       "exists": true,
       "sha256": "95fd7f7b6277cbb529d4d31c0c7d19a6e214e4fcb84d4038da5e24dfa7f51bac",
       "visually_reinspected_this_audit": false
@@ -7475,7 +7475,7 @@
     {
       "tag": "89.3",
       "historical_page_unspecified_convention": 580,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_580_eq89.3.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_580_eq89.3.png",
       "exists": true,
       "sha256": "9a759de6f0f55c76d310678659073da63412058fa364bf29696148e8ce16bdf6",
       "visually_reinspected_this_audit": false
@@ -7483,7 +7483,7 @@
     {
       "tag": "89.5",
       "historical_page_unspecified_convention": 581,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_581_eq89.5.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_581_eq89.5.png",
       "exists": true,
       "sha256": "c9d592bf4f37e3c9d1d6f40f67dd2609f6e3ed9b6da613271ac5be92de4061c0",
       "visually_reinspected_this_audit": false
@@ -7491,7 +7491,7 @@
     {
       "tag": "89.8",
       "historical_page_unspecified_convention": 581,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_581_eq89.8.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_581_eq89.8.png",
       "exists": true,
       "sha256": "bb7e6ce55b4cb92601d20f7069ad1c3f40f5bdaf5e532d93c716b0290489d732",
       "visually_reinspected_this_audit": false
@@ -7499,7 +7499,7 @@
     {
       "tag": "89.11",
       "historical_page_unspecified_convention": 581,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_581_eq89.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_581_eq89.11.png",
       "exists": true,
       "sha256": "3d4a31ad72c5db87882c9369ecf6fe3b2372f08e92c6970fe3524eb27e00fece",
       "visually_reinspected_this_audit": false
@@ -7507,7 +7507,7 @@
     {
       "tag": "89.13",
       "historical_page_unspecified_convention": 582,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_582_eq89.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_582_eq89.13.png",
       "exists": true,
       "sha256": "c172a37d1177b5a6d0d58193a41e0d7d110674f164d7e9d9396e38d32dc4a014",
       "visually_reinspected_this_audit": false
@@ -7515,7 +7515,7 @@
     {
       "tag": "89.21",
       "historical_page_unspecified_convention": 582,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_582_eq89.21.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_582_eq89.21.png",
       "exists": true,
       "sha256": "fc0fbe8b6b68c2477a8afd8ef3d31d9698d1defda13f001fc709ee325694aaad",
       "visually_reinspected_this_audit": false
@@ -7523,7 +7523,7 @@
     {
       "tag": "89.26",
       "historical_page_unspecified_convention": 582,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_582_eq89.26.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_582_eq89.26.png",
       "exists": true,
       "sha256": "276240af8ec6257101e00f55733667f958a778fac787115b974eb77bb6538981",
       "visually_reinspected_this_audit": false
@@ -7531,7 +7531,7 @@
     {
       "tag": "89.27",
       "historical_page_unspecified_convention": 583,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_583_eq89.27.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_583_eq89.27.png",
       "exists": true,
       "sha256": "c93349057d5f9b8013f7312dd274921533433b32d42f5ad3624c1c4082791d12",
       "visually_reinspected_this_audit": false
@@ -7539,7 +7539,7 @@
     {
       "tag": "89.28",
       "historical_page_unspecified_convention": 583,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_583_eq89.28.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_583_eq89.28.png",
       "exists": true,
       "sha256": "840e935926d11bc8be9bbd11779eed87c6a9e7c65f25f3fa791281bb63044ee2",
       "visually_reinspected_this_audit": false
@@ -7547,7 +7547,7 @@
     {
       "tag": "89.29",
       "historical_page_unspecified_convention": 583,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_583_eq89.29.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_583_eq89.29.png",
       "exists": true,
       "sha256": "74f59e3e328527ae1949cb9f2f7471242bf77e04766cfaf1512bf34f7169f620",
       "visually_reinspected_this_audit": false
@@ -7555,7 +7555,7 @@
     {
       "tag": "89.30",
       "historical_page_unspecified_convention": 583,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_583_eq89.30.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_583_eq89.30.png",
       "exists": true,
       "sha256": "65c60a4b4b4bdff632fc916e759bb0542819e89b741887d09a9d6b3b6a169c1f",
       "visually_reinspected_this_audit": false
@@ -7563,7 +7563,7 @@
     {
       "tag": "89.32",
       "historical_page_unspecified_convention": 583,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_583_eq89.32.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_583_eq89.32.png",
       "exists": true,
       "sha256": "907c8837372d2321063f990e22e7cab16a862ecd66c115941207f1bfe3a7d392",
       "visually_reinspected_this_audit": false
@@ -7571,7 +7571,7 @@
     {
       "tag": "89.34",
       "historical_page_unspecified_convention": 584,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_584_eq89.34.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_584_eq89.34.png",
       "exists": true,
       "sha256": "107384a237f652115c09c073304a6c651f28cebe298539ea016f437da824435f",
       "visually_reinspected_this_audit": false
@@ -7579,7 +7579,7 @@
     {
       "tag": "90.29",
       "historical_page_unspecified_convention": 589,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_589_eq90.29.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_589_eq90.29.png",
       "exists": true,
       "sha256": "98e726ca768eda0caaff938562954c7b995d5d127608e09aa2b741ce0235d13d",
       "visually_reinspected_this_audit": false
@@ -7587,7 +7587,7 @@
     {
       "tag": "90.30",
       "historical_page_unspecified_convention": 589,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_589_eq90.30.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_589_eq90.30.png",
       "exists": true,
       "sha256": "0337eff1a65a12109bf70313d8fa561b24bb356c22445b4087dae453c2f0a516",
       "visually_reinspected_this_audit": false
@@ -7595,7 +7595,7 @@
     {
       "tag": "90.38",
       "historical_page_unspecified_convention": 590,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_590_eq90.38.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_590_eq90.38.png",
       "exists": true,
       "sha256": "fc3e29c9c82f4e6ceddaad903446bf244a49128a32fbdbb0bfe615c650321ac1",
       "visually_reinspected_this_audit": false
@@ -7603,7 +7603,7 @@
     {
       "tag": "91.1",
       "historical_page_unspecified_convention": 596,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_596_eq91.1.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_596_eq91.1.png",
       "exists": true,
       "sha256": "6c5aa3ce116f9ac4a69ee5031c2b783d36b115d2a42694f0cbb4fd9397bc4905",
       "visually_reinspected_this_audit": false
@@ -7611,7 +7611,7 @@
     {
       "tag": "91.5",
       "historical_page_unspecified_convention": 597,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_597_eq91.5.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_597_eq91.5.png",
       "exists": true,
       "sha256": "6b391e05367948b0ab9b801eced856d8786cbac84f9fc366c3f9979a132df80b",
       "visually_reinspected_this_audit": false
@@ -7619,7 +7619,7 @@
     {
       "tag": "91.8",
       "historical_page_unspecified_convention": 598,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_598_eq91.8.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_598_eq91.8.png",
       "exists": true,
       "sha256": "f19a1b29a21df5fa4e5b96081b7312249a538a3465ab9f152687187989f51e77",
       "visually_reinspected_this_audit": false
@@ -7627,7 +7627,7 @@
     {
       "tag": "91.11",
       "historical_page_unspecified_convention": 598,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_598_eq91.11.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_598_eq91.11.png",
       "exists": true,
       "sha256": "dc689451979cb4fea297b5acc1e00e1404bb013dfe52723f93a21a02f1278fe3",
       "visually_reinspected_this_audit": false
@@ -7635,7 +7635,7 @@
     {
       "tag": "92.29",
       "historical_page_unspecified_convention": 606,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_606_eq92.29.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_606_eq92.29.png",
       "exists": true,
       "sha256": "328b0fbe454aba52c41d5389d721f53dfa75ffad7227984ac87d248839183270",
       "visually_reinspected_this_audit": false
@@ -7643,7 +7643,7 @@
     {
       "tag": "92.54",
       "historical_page_unspecified_convention": 610,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_610_eq92.54.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_610_eq92.54.png",
       "exists": true,
       "sha256": "846d3a7fa9e9e345d22ca008be8a14ac2081c6076d6cd0e674cb51f79ae1fb94",
       "visually_reinspected_this_audit": false
@@ -7651,7 +7651,7 @@
     {
       "tag": "93.31",
       "historical_page_unspecified_convention": 621,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_621_eq93.31.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_621_eq93.31.png",
       "exists": true,
       "sha256": "8a1a92ca433fa97b0ab45ff142c20f4e38fc906782657581dbf05d322a8297a2",
       "visually_reinspected_this_audit": false
@@ -7659,7 +7659,7 @@
     {
       "tag": "93.34",
       "historical_page_unspecified_convention": 621,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_621_eq93.34.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_621_eq93.34.png",
       "exists": true,
       "sha256": "b9df45ace71cfe30d57f7b37cd8014913285e54ddb4d6ae500e11c9f320b7b54",
       "visually_reinspected_this_audit": false
@@ -7667,7 +7667,7 @@
     {
       "tag": "93.39",
       "historical_page_unspecified_convention": 622,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_622_eq93.39.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_622_eq93.39.png",
       "exists": true,
       "sha256": "3c0f9192ee5bc36a26ee498ed70d86c44b26852674feb680847de79f20ed33c9",
       "visually_reinspected_this_audit": false
@@ -7675,7 +7675,7 @@
     {
       "tag": "93.40",
       "historical_page_unspecified_convention": 622,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_622_eq93.40.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_622_eq93.40.png",
       "exists": true,
       "sha256": "86f4a5255975f6a612aef9a8070fd66962228e01c9b9ef960f8fd92f92edfafb",
       "visually_reinspected_this_audit": false
@@ -7683,7 +7683,7 @@
     {
       "tag": "94.6",
       "historical_page_unspecified_convention": 626,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_626_eq94.6.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_626_eq94.6.png",
       "exists": true,
       "sha256": "07721e6485f70250de2c89704c37151f7bab996fbb6fba74ec176685cbc83b54",
       "visually_reinspected_this_audit": false
@@ -7691,7 +7691,7 @@
     {
       "tag": "94.29",
       "historical_page_unspecified_convention": 630,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_630_eq94.29.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_630_eq94.29.png",
       "exists": true,
       "sha256": "9f50c8346caf86eed3f69af2df4276b4cc74b0a30a107ca55c85026ba983253b",
       "visually_reinspected_this_audit": false
@@ -7699,7 +7699,7 @@
     {
       "tag": "94.34",
       "historical_page_unspecified_convention": 631,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_631_eq94.34.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_631_eq94.34.png",
       "exists": true,
       "sha256": "df5df1068158ee255b46d33ffcf20f9d30e79139e05313a9b2d2d492ca387348",
       "visually_reinspected_this_audit": false
@@ -7707,7 +7707,7 @@
     {
       "tag": "94.37",
       "historical_page_unspecified_convention": 631,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_631_eq94.37.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_631_eq94.37.png",
       "exists": true,
       "sha256": "6da6f678e2d10a583c9e3e6ef13b897ad688dee890866813d150e9514a985387",
       "visually_reinspected_this_audit": false
@@ -7715,7 +7715,7 @@
     {
       "tag": "94.38",
       "historical_page_unspecified_convention": 632,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_632_eq94.38.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_632_eq94.38.png",
       "exists": true,
       "sha256": "dd96ead931e4b7595912b382de469433de9d5cabf898e85bc36743af5c6446d6",
       "visually_reinspected_this_audit": false
@@ -7723,7 +7723,7 @@
     {
       "tag": "95.10",
       "historical_page_unspecified_convention": 635,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_635_eq95.10.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_635_eq95.10.png",
       "exists": true,
       "sha256": "e97d08c0bf6fc4545b51ac0b16844aa8eaf10e730f8e0df3ff84da452583c3e6",
       "visually_reinspected_this_audit": false
@@ -7731,7 +7731,7 @@
     {
       "tag": "95.13",
       "historical_page_unspecified_convention": 635,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_635_eq95.13.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_635_eq95.13.png",
       "exists": true,
       "sha256": "e27cb57ab64c595637be2117cb0b0a21fb9b7c2c3cd9755f46cbccefa6742766",
       "visually_reinspected_this_audit": false
@@ -7739,7 +7739,7 @@
     {
       "tag": "95.14",
       "historical_page_unspecified_convention": 635,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_635_eq95.14.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_635_eq95.14.png",
       "exists": true,
       "sha256": "89d7918525a0045bbf1b636cd0f10d29535aa02fc40b826573bc39a0f0c0598a",
       "visually_reinspected_this_audit": false
@@ -7747,7 +7747,7 @@
     {
       "tag": "95.16",
       "historical_page_unspecified_convention": 636,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_636_eq95.16.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_636_eq95.16.png",
       "exists": true,
       "sha256": "d4e106abcaccbb2594bdda10102b56081b4c4c42143f84d1a6cd676f12d3906f",
       "visually_reinspected_this_audit": false
@@ -7755,7 +7755,7 @@
     {
       "tag": "95.27",
       "historical_page_unspecified_convention": 637,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_637_eq95.27.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_637_eq95.27.png",
       "exists": true,
       "sha256": "0c02b4eff4672759b115d16833e8245390e235582f73ef56f4412a5947eac292",
       "visually_reinspected_this_audit": false
@@ -7763,7 +7763,7 @@
     {
       "tag": "95.29",
       "historical_page_unspecified_convention": 637,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_637_eq95.29.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_637_eq95.29.png",
       "exists": true,
       "sha256": "0cdd9606dcf80c35d904b6388d2c30881115b505e62e878a097c08ed25dd1910",
       "visually_reinspected_this_audit": false
@@ -7771,7 +7771,7 @@
     {
       "tag": "95.30",
       "historical_page_unspecified_convention": 637,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_637_eq95.30.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_637_eq95.30.png",
       "exists": true,
       "sha256": "fcb58221529086e110103e1b4a28ef4747140f83c0b7685b43b836828caaf64f",
       "visually_reinspected_this_audit": false
@@ -7779,7 +7779,7 @@
     {
       "tag": "95.41",
       "historical_page_unspecified_convention": 639,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_639_eq95.41.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_639_eq95.41.png",
       "exists": true,
       "sha256": "0782e11b5f30dfb5785ea2d52e8b0933c3058f5663c2db0440cff620cb5165e4",
       "visually_reinspected_this_audit": false
@@ -7787,7 +7787,7 @@
     {
       "tag": "95.42",
       "historical_page_unspecified_convention": 639,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_639_eq95.42.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_639_eq95.42.png",
       "exists": true,
       "sha256": "7780cafa158deb7be3a1b6ee9c36e4f407c78b5243ff66e43fd7cf442f80a37c",
       "visually_reinspected_this_audit": false
@@ -7795,7 +7795,7 @@
     {
       "tag": "95.46",
       "historical_page_unspecified_convention": 639,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_639_eq95.46.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_639_eq95.46.png",
       "exists": true,
       "sha256": "241e0e6dd7531258ee8e197ee24791a92b619511de285cbf40a646a7d15d2c0b",
       "visually_reinspected_this_audit": false
@@ -7803,7 +7803,7 @@
     {
       "tag": "95.73",
       "historical_page_unspecified_convention": 643,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_643_eq95.73.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_643_eq95.73.png",
       "exists": true,
       "sha256": "2c1922f9888a6a3e54e004ff91344a0942139f23e0f46bce6a7057cf72bcdbd8",
       "visually_reinspected_this_audit": false
@@ -7811,7 +7811,7 @@
     {
       "tag": "95.75",
       "historical_page_unspecified_convention": 643,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_643_eq95.75.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_643_eq95.75.png",
       "exists": true,
       "sha256": "33d84b1ef26bc078a98a024335d1cfa7307c4be62f5ec40da0b5f1e0491d4a31",
       "visually_reinspected_this_audit": false
@@ -7819,7 +7819,7 @@
     {
       "tag": "97.3",
       "historical_page_unspecified_convention": 650,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_650_eq97.3.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_650_eq97.3.png",
       "exists": true,
       "sha256": "5377a7f52a7766e34efc61eda9f961c1a1e7f091486820b8e79dd9f08f7572d5",
       "visually_reinspected_this_audit": false
@@ -7827,7 +7827,7 @@
     {
       "tag": "97.12",
       "historical_page_unspecified_convention": 651,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_651_eq97.12.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_651_eq97.12.png",
       "exists": true,
       "sha256": "17a44461d6fffb3e02ca21f74e70d7257de1fbcc29cf3f261d4229cdb150eb22",
       "visually_reinspected_this_audit": false
@@ -7835,7 +7835,7 @@
     {
       "tag": "97.15",
       "historical_page_unspecified_convention": 652,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_652_eq97.15.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_652_eq97.15.png",
       "exists": true,
       "sha256": "5ddf24ee5795127b2768a48de34a2208fbc983e35dd523259baf0b707b563673",
       "visually_reinspected_this_audit": false
@@ -7843,7 +7843,7 @@
     {
       "tag": "97.19",
       "historical_page_unspecified_convention": 653,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_653_eq97.19.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_653_eq97.19.png",
       "exists": true,
       "sha256": "83a6ac030f6da293e70a15ba8aa0eec4127c541c2e5df8547d8c944ee41e67e9",
       "visually_reinspected_this_audit": false
@@ -7851,7 +7851,7 @@
     {
       "tag": "97.20",
       "historical_page_unspecified_convention": 653,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_653_eq97.20.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_653_eq97.20.png",
       "exists": true,
       "sha256": "6f937703c100467646b699f17c35198c9950fb0a084e8e9381f8937e1c01392b",
       "visually_reinspected_this_audit": false
@@ -7859,7 +7859,7 @@
     {
       "tag": "97.30",
       "historical_page_unspecified_convention": 655,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_655_eq97.30.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_655_eq97.30.png",
       "exists": true,
       "sha256": "6815a0ee20f10fc196efcbf7539b83e1bfdb9bfbde3f09fc5b84724f21ceec5b",
       "visually_reinspected_this_audit": false
@@ -7867,7 +7867,7 @@
     {
       "tag": "97.32",
       "historical_page_unspecified_convention": 655,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_655_eq97.32.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_655_eq97.32.png",
       "exists": true,
       "sha256": "9f4cf312c773dd68f46ebe3b39968e73eff5e61493bdc1ee1cd42e37bcecb6d1",
       "visually_reinspected_this_audit": false
@@ -7875,7 +7875,7 @@
     {
       "tag": "97.38",
       "historical_page_unspecified_convention": 656,
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_656_eq97.38.png",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/ocr-compare/reconciled/pages/page_656_eq97.38.png",
       "exists": true,
       "sha256": "832ccc649dda3ebb71b51d0feb907bf6aa624a5c0faa90ec0ed91cd92f6305b4",
       "visually_reinspected_this_audit": false

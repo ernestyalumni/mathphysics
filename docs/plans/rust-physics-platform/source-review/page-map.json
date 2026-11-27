@@ -1,6 +1,6 @@
 {
   "schema": "mathphysics.f03.preliminary-page-map.v1",
-  "source_pdf": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+  "source_pdf": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
   "source_pdf_sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
   "pdf_pages": 665,
   "method": "pdftotext -layout; independently find chapter numeral/title/Prerequisite and bottom printed folio on each physical page; compare previous CSV afterwards",

@@ -24,7 +24,7 @@ build exit 0
 YangMills.jointExistence : YangMills.JointExistence
 'YangMills.jointExistence' depends on axioms: [propext, Classical.choice, Quot.sound]
 axioms exit 0
-17G	/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/yang-mills-work/OpenAI-YM-20261028-build
+17G	$WORKSPACE_REPOS/yang-mills-work/OpenAI-YM-20261028-build
 Sun Nov 15 03:51:25 PM UTC 2026
 --- lake exe cache get (last lines of yang-mills-work/logs/cache-get.log)
 Decompressed 8639 file(s)

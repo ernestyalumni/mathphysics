@@ -16,7 +16,7 @@
 
 ## Repo context (read at session start)
 
-- `mathphysics` repo root: `/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics`
+- `mathphysics` repo root: `$REPO_ROOT`
 - Current active paper: MHV amplitudes paper v2 (see `RESEARCH-PLAN.md`, `TASKS.md`).
 - Existing material:
   - `amplitudes/` — main paper draft.
