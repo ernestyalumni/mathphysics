@@ -79,6 +79,7 @@ Tracker items: YM-O01 = local:9, T01 = 10, T02 = 11, T05 = 12, G02 = 13.
 | [YM-N02](tasks/YM-N02.md) | Twist ratios on vortex containers | T3/T2 | blocked:G04; low priority (estimator ready: `examples/twist_z.rs`) |
 | [YM-N03](tasks/YM-N03.md) | Defect criterion in solvable models | T2 | SU(2) n = 2, 4 and U(1) n = 2, 4 measured; recurrence proved (YM-O03 §1); see `notes/YM-N03-defect-measurement.md` |
 | [YM-N04](tasks/YM-N04.md) | Z₂ monopole density at weak coupling | T2 | blocked:G04 (monopole tools in `Rust/lattice-gauge/src/monopole.rs`) |
+| [YM-N06](tasks/YM-N06.md) | Spectral lower bound on the short-side cost κ(n) from torelon and glueball energies, n = 4, 6, 8 | T2 | pre-registered 2026-11-27 (`notes/YM-N06-spectral-seed.md`); streams running, not analyzed |
 | YM-R06, R07, W01, W02 | Literature and watch packets (wave 1b above) | T1–T2 | ready |
 
 
