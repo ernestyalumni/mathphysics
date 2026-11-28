@@ -10,7 +10,7 @@
     "test:browser": "playwright test"
   },
   "dependencies": {
-    "dompurify": "3.4.13",
+    "dompurify": "3.4.17",
     "katex": "0.16.47",
     "marked": "18.0.11",
     "pdfjs-dist": "6.4.299"
