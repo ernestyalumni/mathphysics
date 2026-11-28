@@ -27,8 +27,8 @@ Checking for updates...
     "exists": true,
     "kind": "conventional_brownfield",
     "pdd_signals": [],
-    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
-    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/qft-symbolics",
+    "repository_root": "$REPO_ROOT",
+    "root": "$REPO_ROOT/Rust/qft-symbolics",
     "scope_kind": "subproject"
   },
   "recommended_workflow": "characterize_then_adopt",

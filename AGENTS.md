@@ -4,7 +4,7 @@ This file is the entry-point for AI agents working in this repo. It's auto-loade
 
 This repo is the persistent context for **TMPAI** (⚛️) — the Theoretical & Mathematical Physics discovery agent. The repo itself holds research artifacts (LaTeX, Cadabra2, Jupyter notebooks); the `agent/` subdirectory holds the persona, memory, and research-engine bookkeeping.
 
-Repo root: `/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics`
+Repo root: this repository (use `$REPO_ROOT` or repo-relative paths in scripts)
 Persona: TMPAI ⚛️
 Hermes profile: `tmpai` (see `TMP-HERMES-BOOTSTRAP.md`)
 OpenClaw agent: `tmpai` (see `TMP-OPENCLAW-AGENT.md`)
@@ -44,7 +44,7 @@ Don't dump large `.tex` bodies into chat. Use `read_file` with `offset` / `limit
 
 Whenever a task involves parsing, OCR'ing, or extracting text/equations from a document (PDF, `.djvu`, `.ps` / PostScript, scanned papers, textbooks) — or improving/debugging/extending that capability — use the Monoclaw `ocr-compare` pipeline as the single source of truth:
 
-`/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/Monoclaw/Python/ocr-compare/`
+`$WORKSPACE_REPOS/Monoclaw/Python/ocr-compare/`
 
 Before doing anything, read both files in that directory; they override assumptions:
 

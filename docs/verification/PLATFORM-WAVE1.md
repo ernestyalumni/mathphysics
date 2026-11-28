@@ -3,7 +3,7 @@
 User authorization: approved program execution and subagents on 2026-10-31. Existing branch: `feat/pdd-rotations-adoption`; earlier rotation setup, planning work and unrelated generated build report are preserved. No commits or pushes.
 
 Runtime evidence is retained outside the source repository:
-`/home/propdev/.openclaw/workspace/outputs/mathphysics-platform/20261031-wave1/`.
+`$HOME/.openclaw/workspace/outputs/mathphysics-platform/20261031-wave1/`.
 Subdirectories contain commands, logs, source/artifact hashes, source-review images and independent review reproductions. Temporary build targets remain outside Git; source manifests and curated data are versioned candidates in the repository.
 
 ## Existing mathematical kernels

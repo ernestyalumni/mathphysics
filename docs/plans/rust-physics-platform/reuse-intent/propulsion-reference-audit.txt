@@ -1,5 +1,5 @@
 Read-only Propulsion source audit for parent story/architecture guidance
-Root: /home/propdev/.openclaw/workspace/workspace2/repos/Propulsion
+Root: $WORKSPACE_REPOS/Propulsion
 HEAD 95249d8, 2026-10-27. Initial git status --short empty. No repository changes, builds, network, credentials or tests run. No AGENTS.md found at workspace2, workspace2/repos, repository root or scoped Cosmos/Stunticons search; supplied workspace instructions read. Dates are Git author dates (%cs), not mtimes. Listed commits are latest path changes, not necessarily line introductions. Recommendations below are architectural inferences.
 
 4 PATTERNS TO BORROW

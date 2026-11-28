@@ -7,83 +7,83 @@
   "integration_note": "Fields are proposed Definition-compatible records; F01 owns mapping to final Definition schema. Stable IDs+versions must be preserved or explicitly aliased. No source or scientific meaning changed.",
   "sources": {
     "Rust/qft-symbolics/src/matrices.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/matrices.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/matrices.rs",
       "sha256": "00db37909616bd35ef3b2faf1a31902ddb2dbbd48126b4d6419c9dfc726e9665"
     },
     "Rust/qft-symbolics/src/clifford.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/clifford.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/clifford.rs",
       "sha256": "999cd37618b7691f31193f407e948cfe0f16d30cf3dc208dae6b2b4646f951b0"
     },
     "Rust/qft-symbolics/src/lorentz.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/lorentz.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/lorentz.rs",
       "sha256": "33f19b2a0ed6b499bc0a2bb06c68de4cde12640de5c28fd2fd00ef6b49ab8d94"
     },
     "Rust/qft-symbolics/src/twistor.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/twistor.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/twistor.rs",
       "sha256": "a0139e3e1f9d9ccda6b6d8943e54d3d87cfdcc06fdf520695c75ef9cc2fdc17d"
     },
     "Rust/qft-symbolics/src/spinor.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/spinor.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/spinor.rs",
       "sha256": "4ce240dcf232e104f20fe4ed9edd4a0bf2a1409a35f71e2773da932083b9c478"
     },
     "Rust/qft-symbolics/src/smga.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/smga.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/smga.rs",
       "sha256": "5e319eeff61ca5d7b52701937ca3cc85592351e22dd55834620c419cca70f6c6"
     },
     "Rust/qft-symbolics/src/polynomial.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/polynomial.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/polynomial.rs",
       "sha256": "c21c535f026a05e0a7f6266306b3a30310908c8f3ebc042dee0fc34e59f22292"
     },
     "Rust/qft-symbolics/src/scalar.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/scalar.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/scalar.rs",
       "sha256": "fafb7308662affb8427a8b6ab24e67147eeb08cf6540e3634e51f8db5d294297"
     },
     "Rust/qft-symbolics/src/tensor.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/tensor.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/tensor.rs",
       "sha256": "7ff25532819e2b7838a8186ddf05eec6295cfbb57860d958971396584f516cf5"
     },
     "Rust/lie-groups/src/lib.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/lib.rs",
+      "path": "$REPO_ROOT/Rust/lie-groups/src/lib.rs",
       "sha256": "136c8998d9ff81eec7338d430f08bc284f8f013bcb2cd223e21c7d9bfac8d634"
     },
     "Rust/lie-groups/src/so3.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/so3.rs",
+      "path": "$REPO_ROOT/Rust/lie-groups/src/so3.rs",
       "sha256": "880e5481b7a2e7a3a5b0d24300377a9f4787d0604e5aa671bb3633bc11b0d979"
     },
     "Rust/lie-groups/src/su2.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/su2.rs",
+      "path": "$REPO_ROOT/Rust/lie-groups/src/su2.rs",
       "sha256": "aef2007515f422a74f42f09f5fd07973e6577915aef986161dc1ac28feae5d4e"
     },
     "Rust/lie-groups/src/symbolic.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/symbolic.rs",
+      "path": "$REPO_ROOT/Rust/lie-groups/src/symbolic.rs",
       "sha256": "c8ff5207b0235f8f97c5857aa90d3ab310a85a339bd397c4f2a996efa3b7a987"
     },
     "Rust/lie-groups/src/scalar.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/scalar.rs",
+      "path": "$REPO_ROOT/Rust/lie-groups/src/scalar.rs",
       "sha256": "30f484814106083b98c36ceed9a2a127933121b7ed165924972753f8c97129e4"
     },
     "Rust/lie-groups/src/goldstein.rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/src/goldstein.rs",
+      "path": "$REPO_ROOT/Rust/lie-groups/src/goldstein.rs",
       "sha256": "173c83c5d483b9dbc5ef28998661dd769324859b60f5218e9cba23c418bae827"
     },
     "Rust/qft-symbolics/README.md": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/README.md",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/README.md",
       "sha256": "50bdebb859aead2702a7e9c3443e5dc48761debcb75a64f61611e42d517ea3b9"
     },
     "Rust/qft-symbolics/docs/TENSOR.md": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/docs/TENSOR.md",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/docs/TENSOR.md",
       "sha256": "b27996716af5a65a4c666f003878450fae34f2e396d531f6088bbed33481a998"
     },
     "Rust/lie-groups/README.md": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/README.md",
+      "path": "$REPO_ROOT/Rust/lie-groups/README.md",
       "sha256": "ec14198e17f9f98e440be4da22e3bb3f514505996931f233bbf9bbf16e5c6609"
     },
     "Rust/qft-symbolics/corpus.json": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/corpus.json",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/corpus.json",
       "sha256": "2483092534ea9d4e1043f6b9a20d51bb3916880766b37131ae84f1cc1abaf562"
     },
     "book": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+      "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
       "sha256": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
       "page_numbering": "1-based PDF viewer page; printed folio explicitly recorded separately",
       "new_visual_review_pdf_pages": [

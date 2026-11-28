@@ -44,7 +44,7 @@ WORKBENCH_URL=http://127.0.0.1:8876 npm run test:browser
 
 The generator writes synthetic PDF/TeX/Markdown fixtures only; no source-corpus documents are required. The Playwright configuration uses `/usr/bin/google-chrome` by default (`CHROME_PATH` overrides it). A normal launcher without the `fixtures` root is insufficient for these tests.
 
-The durable browser log at `/home/propdev/.openclaw/workspace/outputs/mathphysics-platform/20261031-workbench/browser-tests.log` records **8 passed (6.4s)**, including nonwhite PDF canvas pixels, expected selectable text, PDF page preservation across styles and a local PDF rendered without uploading its bytes. These are maintained browser acceptance tests; independent PDF review remains pending.
+The durable browser log at `$HOME/.openclaw/workspace/outputs/mathphysics-platform/20261031-workbench/browser-tests.log` records **8 passed (6.4s)**, including nonwhite PDF canvas pixels, expected selectable text, PDF page preservation across styles and a local PDF rendered without uploading its bytes. These are maintained browser acceptance tests; independent PDF review remains pending.
 
 ## Explore Physics is a separate application
 

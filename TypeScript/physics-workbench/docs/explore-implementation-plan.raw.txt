@@ -31,8 +31,8 @@ Checking for updates...
       "architecture.json",
       "6 prompt file(s)"
     ],
-    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
-    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/TypeScript/physics-workbench",
+    "repository_root": "$REPO_ROOT",
+    "root": "$REPO_ROOT/TypeScript/physics-workbench",
     "scope_kind": "subproject"
   },
   "recommended_workflow": "change_existing_pdd",

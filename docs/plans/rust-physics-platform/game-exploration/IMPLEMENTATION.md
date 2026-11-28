@@ -14,7 +14,7 @@ Experience and style are independent: Explore has its own wider composition and 
 - Independent browser QA: **23/23 functional + 13/13 targeted layout/lifecycle checks pass**, with source attachment/reopening and notebook provenance checked separately. Final screenshots cover desktop/mobile, Notebook/Pixel and world/lab. No runtime/CSP/HTTP errors observed; readback performance warnings come from test pixel inspection.
 - Actual repository `./run_workbench.sh --port 18879` builds and serves from external caches. Launcher smoke verifies world, real 2π=-I calculation and Pixel switching.
 
-Durable evidence: `/home/propdev/.openclaw/workspace/outputs/mathphysics-platform/20261031-explore/`. Source hashes and logs/screenshots live there. Local verification servers are stopped at handoff; rerun ./run_workbench.sh and open http://127.0.0.1:8876.
+Durable evidence: `$HOME/.openclaw/workspace/outputs/mathphysics-platform/20261031-explore/`. Source hashes and logs/screenshots live there. Local verification servers are stopped at handoff; rerun ./run_workbench.sh and open http://127.0.0.1:8876.
 
 ## Limits and next work
 

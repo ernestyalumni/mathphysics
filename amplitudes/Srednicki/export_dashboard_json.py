@@ -308,7 +308,7 @@ def parse_tex_file(tex_path: Path) -> dict:
     # ── Build chapter dict ───────────────────────────────────────────────
     docker_base = (
         "docker run --rm -v "
-        "/home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw "
+        "$HOME/.openclaw/workspace/repos/Monoclaw:/Monoclaw "
         "cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki"
     )
 

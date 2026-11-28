@@ -6,7 +6,7 @@ ID prefixes: `R` reading and digests, `A` audit, `G` gap research, `T` Rust tool
 
 Path shorthands used in every packet:
 
-- `REPOS` = `/media/propdev/Expansion/openclaw/.openclaw/workspace/repos`
+- `REPOS` = `$WORKSPACE_REPOS` (the workspace repos directory)
 - `LEAN` = `REPOS/yang-mills-group/OpenAI-YM-20261028` (pin `3456e5e`)
 - `YMG` = `REPOS/yang-mills-group/YM` (pin `55ba9fc`)
 - `ARM` = `REPOS/scottnarmstrong/yang-mills-informalization` (pin `daf1db4`)

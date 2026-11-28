@@ -39,7 +39,7 @@ All Cadabra2 scripts run inside Docker:
 
 ```bash
 docker run --rm -it \
-  -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw \
+  -v $HOME/.openclaw/workspace/repos/Monoclaw:/Monoclaw \
   cadabra2-ubuntu:24.04 \
   python3 /Monoclaw/Python/Cadabra2/Srednicki/chNN_<topic>.py
 ```
@@ -48,7 +48,7 @@ For LaTeX export + PDF compile, same container:
 
 ```bash
 docker run --rm -it \
-  -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw \
+  -v $HOME/.openclaw/workspace/repos/Monoclaw:/Monoclaw \
   cadabra2-ubuntu:24.04 \
   python3 /Monoclaw/Python/Cadabra2/Srednicki/chNN_export_latex.py
 ```

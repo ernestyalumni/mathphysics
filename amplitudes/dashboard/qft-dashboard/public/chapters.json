@@ -166,7 +166,7 @@
         "West coast trace identity verified numerically: max error $0.0e+00$."
       ],
       "texFile": "ch34_left_right_spinors.tex",
-      "dockerCmd": "docker run --rm -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch34_left_right_spinors.py"
+      "dockerCmd": "docker run --rm -v $HOME/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch34_left_right_spinors.py"
     },
     {
       "id": "ch35",
@@ -338,7 +338,7 @@
         "Covariance condition [eq.~35.14] for all $(\\mu,\\nu,\\rho,\\alpha,\\dot\\alpha)$: max residual $0.0$\\textrm{e"
       ],
       "texFile": "ch35_sigma_algebra.tex",
-      "dockerCmd": "docker run --rm -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch35_sigma_algebra.py"
+      "dockerCmd": "docker run --rm -v $HOME/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch35_sigma_algebra.py"
     },
     {
       "id": "ch36",
@@ -526,7 +526,7 @@
         "$\\mathcal{C"
       ],
       "texFile": "ch36_weyl_lagrangian.tex",
-      "dockerCmd": "docker run --rm -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch36_weyl_lagrangian.py"
+      "dockerCmd": "docker run --rm -v $HOME/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch36_weyl_lagrangian.py"
     },
     {
       "id": "ch37",
@@ -685,7 +685,7 @@
         "$\\sum_s v_s\\bar v_s = -\\slashed{p"
       ],
       "texFile": "ch37_canonical_quantization.tex",
-      "dockerCmd": "docker run --rm -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch37_canonical_quantization.py"
+      "dockerCmd": "docker run --rm -v $HOME/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch37_canonical_quantization.py"
     },
     {
       "id": "ch38",
@@ -892,7 +892,7 @@
         "Massless chirality projectors: $P_Lu_- = u_-$, $P_Ru_+ = u_+$."
       ],
       "texFile": "ch38_spinor_technology.tex",
-      "dockerCmd": "docker run --rm -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch38_spinor_technology.py"
+      "dockerCmd": "docker run --rm -v $HOME/.openclaw/workspace/repos/Monoclaw:/Monoclaw cadabra2-ubuntu:24.04 python3 /Monoclaw/Python/Cadabra2/Srednicki/ch38_spinor_technology.py"
     },
     {
       "id": "ch39",

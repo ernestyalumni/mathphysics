@@ -50,7 +50,7 @@ instructions: `repos/Monoclaw/Deployments/DockerBuilds/Physics/Cadabra2/`).
 
    Example (on MS-7885 desktop):
    ```
-   MATHPHYSICS_DIR=/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics ./run.sh cli
+   MATHPHYSICS_DIR=$REPO_ROOT ./run.sh cli
    ```
 
 2. Inside the Docker container:

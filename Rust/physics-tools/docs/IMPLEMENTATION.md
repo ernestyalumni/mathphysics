@@ -17,9 +17,9 @@ Before Rust implementation, executed read-only planner:
 
 ```sh
 PDD_LOCAL_ONLY=1 PDD_SKIP_UPDATE_CHECK=1 \
-/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/PromptDrivenDevelopment/pdd/.venv/bin/pdd \
+$WORKSPACE_REPOS/PromptDrivenDevelopment/pdd/.venv/bin/pdd \
  --no-core-dump intent plan /tmp/mathphysics-wave1-tools/docs/request.txt \
- --project-root /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/physics-tools --json
+ --project-root $REPO_ROOT/Rust/physics-tools --json
 ```
 
 Exit0. ID implement-a-bounded-early-f12-f13-rust-json-cli--e8c6a92d. Exact input is

@@ -11,19 +11,19 @@
     "production_implementation": false
   },
   "repository": {
-    "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics",
+    "path": "$REPO_ROOT",
     "head": "f1be4d993c21ed932045f3b36db69048963152bd",
     "git_status_snapshot": " M .gitignore\n M AGENTS.md\n M Python/rotations/README.md\n?? PDD.md\n?? Python/rotations/.pdd/\n?? Python/rotations/.pddrc\n?? Python/rotations/architecture.json\n?? Python/rotations/docs/\n?? Python/rotations/prompts/\n?? Python/rotations/tests/test_rotation_conventions.py\n?? Python/rotations/user_stories/\n?? docs/\n?? documents/mono-notes/build-report.json\n",
     "snapshot_note": "Read-only observations; concurrent agents may change files. Per-source byte hashes identify inspected versions."
   },
   "upstream_sage": {
-    "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage",
+    "path": "$DATA_DIR/TQFT/sage",
     "commit": "36e49d91b0568f07ad4373362c15ce8970587e67",
     "version": "11.0.beta5",
     "runtime": "not_probed"
   },
   "book_source": {
-    "path": "/home/propdev/.openclaw/workspace/workspace2/Data/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
+    "path": "$DATA_DIR/Public/books/Physics/Srednicki-QuantumFieldTheory/[Mark_Srednicki]_Quantum_Field_Theory(BookSee.org).pdf",
     "sha256_recomputed": "cc4695eb418bf19d556a6a430af89509c290f3361802aee98a68ba83e75ccaa6",
     "matches_plan_manifest": true,
     "review": "Hash verification only; no new page or mathematical statement audit."
@@ -61,127 +61,127 @@
   },
   "source_references": {
     "plan": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/docs/plans/rust-physics-platform/README.md",
+      "path": "$REPO_ROOT/docs/plans/rust-physics-platform/README.md",
       "kind": "local_primary_plan",
       "sha256": "79d57f8dc2e7bb926a1023803b0201c254656add4675a7cf51273abb64ccf808",
       "bytes": 25546
     },
     "handoff": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/docs/plans/rust-physics-platform/HANDOFF.md",
+      "path": "$REPO_ROOT/docs/plans/rust-physics-platform/HANDOFF.md",
       "kind": "local_primary_plan",
       "sha256": "8b32c62b50a6ea1113c3b102c0c0dc84b8eb15fb4b1c2da871563aa20dd65826",
       "bytes": 8235
     },
     "chapters": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/docs/plans/rust-physics-platform/chapters.csv",
+      "path": "$REPO_ROOT/docs/plans/rust-physics-platform/chapters.csv",
       "kind": "provisional_source_map",
       "sha256": "b92a60f97a03ca920f654c2cab95f58ab01947401a2fef066b92666783debeec",
       "bytes": 15499
     },
     "inventory": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/docs/plans/rust-physics-platform/source-inventory.json",
+      "path": "$REPO_ROOT/docs/plans/rust-physics-platform/source-inventory.json",
       "kind": "local_provenance_manifest",
       "sha256": "c74a367bb4271a55e4aa24ffaab4a1ecfb04e61551c80db4e64ed701ff5dede2",
       "bytes": 3937
     },
     "corpus": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/corpus.json",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/corpus.json",
       "kind": "local_partial_coverage_manifest",
       "sha256": "2483092534ea9d4e1043f6b9a20d51bb3916880766b37131ae84f1cc1abaf562",
       "bytes": 10709
     },
     "qft": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/README.md",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/README.md",
       "kind": "implementation_documentation",
       "sha256": "50bdebb859aead2702a7e9c3443e5dc48761debcb75a64f61611e42d517ea3b9",
       "bytes": 7592
     },
     "tensor": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/docs/TENSOR.md",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/docs/TENSOR.md",
       "kind": "implementation_contract",
       "sha256": "b27996716af5a65a4c666f003878450fae34f2e396d531f6088bbed33481a998",
       "bytes": 4936
     },
     "lie": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/lie-groups/README.md",
+      "path": "$REPO_ROOT/Rust/lie-groups/README.md",
       "kind": "implementation_documentation",
       "sha256": "ec14198e17f9f98e440be4da22e3bb3f514505996931f233bbf9bbf16e5c6609",
       "bytes": 12147
     },
     "scalar_rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/scalar.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/scalar.rs",
       "kind": "implementation_source",
       "sha256": "fafb7308662affb8427a8b6ab24e67147eeb08cf6540e3634e51f8db5d294297",
       "bytes": 4532
     },
     "poly_rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/polynomial.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/polynomial.rs",
       "kind": "implementation_source",
       "sha256": "c21c535f026a05e0a7f6266306b3a30310908c8f3ebc042dee0fc34e59f22292",
       "bytes": 4956
     },
     "tensor_rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/tensor.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/tensor.rs",
       "kind": "implementation_source",
       "sha256": "7ff25532819e2b7838a8186ddf05eec6295cfbb57860d958971396584f516cf5",
       "bytes": 24623
     },
     "gamma_rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/clifford.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/clifford.rs",
       "kind": "implementation_source",
       "sha256": "999cd37618b7691f31193f407e948cfe0f16d30cf3dc208dae6b2b4646f951b0",
       "bytes": 3746
     },
     "twistor_rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/twistor.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/twistor.rs",
       "kind": "implementation_source",
       "sha256": "a0139e3e1f9d9ccda6b6d8943e54d3d87cfdcc06fdf520695c75ef9cc2fdc17d",
       "bytes": 5389
     },
     "spinor_rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/spinor.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/spinor.rs",
       "kind": "implementation_source",
       "sha256": "4ce240dcf232e104f20fe4ed9edd4a0bf2a1409a35f71e2773da932083b9c478",
       "bytes": 1948
     },
     "smga_rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/smga.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/smga.rs",
       "kind": "implementation_source",
       "sha256": "5e319eeff61ca5d7b52701937ca3cc85592351e22dd55834620c419cca70f6c6",
       "bytes": 5455
     },
     "cli_rs": {
-      "path": "/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/Rust/qft-symbolics/src/main.rs",
+      "path": "$REPO_ROOT/Rust/qft-symbolics/src/main.rs",
       "kind": "implementation_source",
       "sha256": "dd4a8b4fcb296203ee04b922073f54ca26de63c63a5567a15d8c93ddb8b718c1",
       "bytes": 5422
     },
     "sage_rational": {
-      "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage/src/sage/rings/rational.pyx",
+      "path": "$DATA_DIR/TQFT/sage/src/sage/rings/rational.pyx",
       "kind": "local_upstream_source",
       "sha256": "06146b02fc351c6200b312129dce7b6d00c358149e61269aad8d720bacd4198a",
       "bytes": 127552
     },
     "sage_ideals": {
-      "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage/src/sage/rings/polynomial/multi_polynomial_ideal.py",
+      "path": "$DATA_DIR/TQFT/sage/src/sage/rings/polynomial/multi_polynomial_ideal.py",
       "kind": "local_upstream_source",
       "sha256": "3aee3a8119c11f72c028e08c480e1f8cf971b041a7cbb3a939dc505ca1b75e19",
       "bytes": 233107
     },
     "sage_forms": {
-      "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage/src/sage/manifolds/differentiable/diff_form.py",
+      "path": "$DATA_DIR/TQFT/sage/src/sage/manifolds/differentiable/diff_form.py",
       "kind": "local_upstream_source",
       "sha256": "1c70ff2a738174e62ec11acaec8a61601e68462e471c697f9ab9ba7ef25bd89d",
       "bytes": 66487
     },
     "sage_chains": {
-      "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage/src/sage/homology/chain_complex.py",
+      "path": "$DATA_DIR/TQFT/sage/src/sage/homology/chain_complex.py",
       "kind": "local_upstream_source",
       "sha256": "622b1bf3f2d3cbfc4ed8423b4250d92da950853476ce8b4ca579023adda10902",
       "bytes": 81191
     },
     "sage_characters": {
-      "path": "/media/propdev/9dc1a908-7eff-4e1c-8231-ext4/home/propdev/TQFT/sage/src/sage/combinat/root_system/weyl_characters.py",
+      "path": "$DATA_DIR/TQFT/sage/src/sage/combinat/root_system/weyl_characters.py",
       "kind": "local_upstream_source",
       "sha256": "019209d171ea1ef2e919b0677e2c8c1512355532e3bc2104de4fec14203f87d1",
       "bytes": 80966

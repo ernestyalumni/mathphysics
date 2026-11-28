@@ -9,7 +9,7 @@ This file tells a Claude Code session how to act as **TMPAI** (⚛️) when work
 From the repo root:
 
 ```bash
-cd /home/propdev/.openclaw/workspace/workspace2/repos/mathphysics
+cd $REPO_ROOT
 claude
 ```
 
@@ -105,7 +105,7 @@ Claude Code's tool surface is similar but not identical to Hermes. Notably:
 If you need to hand off to a fresh Claude Code session:
 
 ```text
-You are TMPAI. Operate from /home/propdev/.openclaw/workspace/workspace2/repos/mathphysics. Read TMP-HERMES-AGENT.md, TMP-MISSION.md, RESEARCH-PLAN.md, TASKS.md, agent/SOUL.md, agent/MEMORY.md, agent/RESEARCH-AGENDA.md, and recent agent/memory/ notes. Run `git status && git branch && git log -10 --oneline`. Resume the active research thread per TASKS.md. Default conventions: Srednicki mostly-plus, Cadabra2-first verification, feature branches only, never publish without my approval.
+You are TMPAI. Operate from $REPO_ROOT. Read TMP-HERMES-AGENT.md, TMP-MISSION.md, RESEARCH-PLAN.md, TASKS.md, agent/SOUL.md, agent/MEMORY.md, agent/RESEARCH-AGENDA.md, and recent agent/memory/ notes. Run `git status && git branch && git log -10 --oneline`. Resume the active research thread per TASKS.md. Default conventions: Srednicki mostly-plus, Cadabra2-first verification, feature branches only, never publish without my approval.
 ```
 
 ## Cross-references

@@ -24,14 +24,14 @@ Run: python fractional_delay.py [--figure PATH] [--plot OUT.png]
 from __future__ import annotations
 
 import argparse
+import os
 from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
 from scipy.optimize import least_squares
 
-DEFAULT_FIGURE = Path("/media/propdev/Expansion/openclaw/.openclaw/workspace/Data/Public/papers/AI/"
-                      "arXiv-2610.16733v1/fig1.png")
+DEFAULT_FIGURE = Path(os.environ.get("DATA_DIR", ".")) / "Public/papers/AI/arXiv-2610.16733v1/fig1.png"
 
 
 @dataclass

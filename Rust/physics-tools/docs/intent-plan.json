@@ -24,8 +24,8 @@
     "exists": false,
     "kind": "greenfield",
     "pdd_signals": [],
-    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
-    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/physics-tools",
+    "repository_root": "$REPO_ROOT",
+    "root": "$REPO_ROOT/Rust/physics-tools",
     "scope_kind": "subproject"
   },
   "recommended_workflow": "design_greenfield",

@@ -92,7 +92,7 @@ The official keys are gated, so each answer here is **self-checked, not graded**
 Use the mathphysics uv venv (numpy, scipy, matplotlib, pillow, mpmath, pytest):
 
 ```bash
-PY=/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/.venv/bin/python
+PY=$REPO_ROOT/.venv/bin/python
 cd evals/theophyseval
 $PY extract_problems.py                    # problems.jsonl
 $PY make_references.py                     # references.local.json (~10 s)

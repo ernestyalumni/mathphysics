@@ -56,8 +56,8 @@
       "architecture.json",
       "2 prompt file(s)"
     ],
-    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
-    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/physics-gateway",
+    "repository_root": "$REPO_ROOT",
+    "root": "$REPO_ROOT/Rust/physics-gateway",
     "scope_kind": "subproject"
   },
   "recommended_workflow": "change_existing_pdd",

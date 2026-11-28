@@ -1,6 +1,6 @@
-/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/PromptDrivenDevelopment/pdd/pdd/llm_invoke.py:1425: UserWarning: Failed to configure LiteLLM disk cache: unable to open database file. Caching is disabled.
+$WORKSPACE_REPOS/PromptDrivenDevelopment/pdd/pdd/llm_invoke.py:1425: UserWarning: Failed to configure LiteLLM disk cache: unable to open database file. Caching is disabled.
   warnings.warn(f"Failed to configure LiteLLM disk cache: {e2}. Caching is disabled.")
-/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/PromptDrivenDevelopment/pdd/pdd/llm_invoke.py:1429: UserWarning: All LiteLLM cache configuration attempts failed. Caching is disabled.
+$WORKSPACE_REPOS/PromptDrivenDevelopment/pdd/pdd/llm_invoke.py:1429: UserWarning: All LiteLLM cache configuration attempts failed. Caching is disabled.
   warnings.warn("All LiteLLM cache configuration attempts failed. Caching is disabled.")
 Checking for updates...
 {
@@ -114,8 +114,8 @@ Checking for updates...
       "architecture.json",
       "11 prompt file(s)"
     ],
-    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics",
-    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/Rust/qft-symbolics",
+    "repository_root": "$REPO_ROOT",
+    "root": "$REPO_ROOT/Rust/qft-symbolics",
     "scope_kind": "subproject"
   },
   "recommended_workflow": "change_existing_pdd",

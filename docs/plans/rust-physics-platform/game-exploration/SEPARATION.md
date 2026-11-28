@@ -14,6 +14,6 @@ This is the independent foundation, not the final game design: the walkable obse
 
 ## Verified receipt
 
-21 browser acceptance tests pass. The actual run_explore.sh game-only root launch, refresh, Rust checkpoint and discovery reload pass. Evidence and screenshots: `/home/propdev/.openclaw/workspace/outputs/mathphysics-platform/20261031-explore-standalone`. Shared math was unchanged; the preceding eight Rust HTTP checks remain relevant to that unchanged kernel. The old 20-check shared-shell run is historical.
+21 browser acceptance tests pass. The actual run_explore.sh game-only root launch, refresh, Rust checkpoint and discovery reload pass. Evidence and screenshots: `$HOME/.openclaw/workspace/outputs/mathphysics-platform/20261031-explore-standalone`. Shared math was unchanged; the preceding eight Rust HTTP checks remain relevant to that unchanged kernel. The old 20-check shared-shell run is historical.
 
 The subsequent scene-first redesign supersedes the default worksheet. See [current scene-first evidence](SCENE-FIRST.md).

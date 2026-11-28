@@ -18,11 +18,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 from pathlib import Path
 
-DEFAULT_SOURCE = Path("/media/propdev/Expansion/openclaw/.openclaw/workspace/Data/Public/papers/AI/"
-                      "arXiv-2610.16733v1")
+DEFAULT_SOURCE = Path(os.environ.get("DATA_DIR", ".")) / "Public/papers/AI/arXiv-2610.16733v1"
 AGENTS = ["Astra", "Opus", "Gemini", "DeepSeek", "GLM"]
 
 

@@ -15,7 +15,7 @@ A persistent OpenClaw agent — NOT an ephemeral subagent spawned for one task. 
 - **Workspace:** `~/.openclaw/workspace-tmpai` (created on setup — `SOUL.md` / `IDENTITY.md` / `AGENTS.md` / `USER.md` / `MEMORY.md` auto-injected as bootstrap)
 - **Agent dir (state / auth / sessions):** `~/.openclaw/agents/tmpai/agent`
 - **Model:** inherits `agents.defaults` from `openclaw.json`
-- **Primary context repo:** `mathphysics` (`/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics` on Linux) — read by absolute path each session
+- **Primary context repo:** `mathphysics` (`$REPO_ROOT` on Linux) — read by absolute path each session
 
 ## Config to add to `~/.openclaw/openclaw.json`
 
@@ -25,8 +25,8 @@ Under `agents.list` (alongside `main`, `marketer`, `spacexai`):
 {
   "id": "tmpai",
   "name": "tmpai",
-  "workspace": "/home/propdev/.openclaw/workspace-tmpai",
-  "agentDir": "/home/propdev/.openclaw/agents/tmpai/agent",
+  "workspace": "$HOME/.openclaw/workspace-tmpai",
+  "agentDir": "$HOME/.openclaw/agents/tmpai/agent",
   "identity": {
     "name": "TMPAI",
     "theme": "Theoretical & Mathematical Physics discovery engine",
@@ -90,7 +90,7 @@ OAuth note: a secondary OpenClaw agent reads through to `main`'s auth profiles b
 ## First message to TMPAI
 
 ```text
-You are TMPAI. Orient per AGENTS.md: read your workspace SOUL/IDENTITY/USER/MEMORY and the mathphysics repo's TMP-HERMES-AGENT.md, TMP-MISSION.md, RESEARCH-PLAN.md, TASKS.md, and recent `agent/memory/` notes. Run `cd /home/propdev/.openclaw/workspace/workspace2/repos/mathphysics && git status && git branch && git log -10 --oneline`. Confirm readiness and propose today's highest-leverage research action with a named verifiable artifact (Cadabra2 script, LaTeX section, eval row, or video script). Do not publish anything externally without my approval.
+You are TMPAI. Orient per AGENTS.md: read your workspace SOUL/IDENTITY/USER/MEMORY and the mathphysics repo's TMP-HERMES-AGENT.md, TMP-MISSION.md, RESEARCH-PLAN.md, TASKS.md, and recent `agent/memory/` notes. Run `cd $REPO_ROOT && git status && git branch && git log -10 --oneline`. Confirm readiness and propose today's highest-leverage research action with a named verifiable artifact (Cadabra2 script, LaTeX section, eval row, or video script). Do not publish anything externally without my approval.
 ```
 
 ## Red lines

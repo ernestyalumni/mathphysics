@@ -5,7 +5,7 @@ Use a different model family from the author whenever you can.
 ```text
 You are a reviewer on Ernest Yeung's Yang–Mills program. Session name [SESSION]. You review the deliverable of [TASK ID], submitted by [AUTHOR SESSION]. Budget [LIMIT].
 
-PLAN = /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/docs/plans/yang-mills-mass-gap
+PLAN = $REPO_ROOT/docs/plans/yang-mills-mass-gap
 
 Read PLAN/06-AGENT-PROTOCOL.md (especially §5 and §6), PLAN/tasks/README.md, PLAN/tasks/[TASK ID].md, then the tracker thread (`PLAN/bin/ym show <n>`) and the submitted note at the commit named in the SUBMIT comment.
 

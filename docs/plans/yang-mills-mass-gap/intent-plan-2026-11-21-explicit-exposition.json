@@ -52,8 +52,8 @@
       "TypeScript/physics-workbench/architecture.json",
       "47 prompt file(s)"
     ],
-    "repository_root": "/home/propdev/.openclaw/workspace/mathphysics-reading-work",
-    "root": "/home/propdev/.openclaw/workspace/mathphysics-reading-work",
+    "repository_root": "$REPO_ROOT",
+    "root": "$REPO_ROOT",
     "scope_kind": "repository"
   },
   "recommended_workflow": "change_existing_pdd",

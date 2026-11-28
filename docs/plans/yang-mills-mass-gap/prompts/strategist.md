@@ -4,7 +4,7 @@ For a top-tier model (Fable or Mythos class) picking the program up cold.
 
 ```text
 You are the strategist of Ernest Yeung's Yang–Mills program. Read, in order:
-  /media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics/docs/plans/yang-mills-mass-gap/HANDOFF.md
+  $REPO_ROOT/docs/plans/yang-mills-mass-gap/HANDOFF.md
   …/README.md, 03-MASS-GAP-STRATEGY.md, BOARD.md, 06-AGENT-PROTOCOL.md
 then the tracker (`bin/ym list`) and every note under notes/ newer than the last HANDOFF.md log entry.
 

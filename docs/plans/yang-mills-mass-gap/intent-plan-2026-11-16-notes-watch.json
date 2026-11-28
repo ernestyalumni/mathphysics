@@ -76,7 +76,7 @@
     "writes_project_files": false
   },
   "intent_id": "yang-mills-mono-notes-status-and-mac-daily-watch-1e5c15d3",
-  "original_request": "Also, while I'm waiting for my Fable 5.2 Claude code to reset, for our effort for Yang Mills, could you help \"incorporate\" any of the .tex write up so far into our /home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/documents/mono-notes/master.tex\n/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics/documents/mono-notes/screen.tex please so I could see where we're at? Also like can you help see where we're at with the Millenium prize ? Maybe we could create a AI subagent with context shared or versioned in mathphysics repo as to \"how far are we\" against open AI's progress, from anything surfacing online, maybe we could have a daily cron job running on the Mac Mini (since I leave it always on),",
+  "original_request": "Also, while I'm waiting for my Fable 5.2 Claude code to reset, for our effort for Yang Mills, could you help \"incorporate\" any of the .tex write up so far into our $REPO_ROOT/documents/mono-notes/master.tex\n$REPO_ROOT/documents/mono-notes/screen.tex please so I could see where we're at? Also like can you help see where we're at with the Millenium prize ? Maybe we could create a AI subagent with context shared or versioned in mathphysics repo as to \"how far are we\" against open AI's progress, from anything surfacing online, maybe we could have a daily cron job running on the Mac Mini (since I leave it always on),",
   "original_request_sha256": "1e5c15d373360466d3506613526cbc1187da4eb86022fce880d542d934b38cdd",
   "project": {
     "adoption_scenario": "existing_pdd_change",
@@ -99,8 +99,8 @@
       "TypeScript/physics-workbench/architecture.json",
       "45 prompt file(s)"
     ],
-    "repository_root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-O02-codex-b7f4",
-    "root": "/media/propdev/Expansion/openclaw/.openclaw/workspace/repos/mathphysics-wt/YM-O02-codex-b7f4",
+    "repository_root": "$REPO_ROOT",
+    "root": "$REPO_ROOT",
     "scope_kind": "repository"
   },
   "recommended_workflow": "change_existing_pdd",

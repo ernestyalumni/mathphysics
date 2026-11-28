@@ -6,7 +6,7 @@
 #   ym-lean run <cmd...>          run a command in the working copy, network on (needed for `lake exe cache get`)
 #   ym-lean offline <cmd...>      run a command with networking disabled (use for all checking)
 set -euo pipefail
-REPOS="${YM_REPOS:-/media/propdev/Expansion/openclaw/.openclaw/workspace/repos}"
+REPOS="${YM_REPOS:-$WORKSPACE_REPOS}"
 PLAN="$REPOS/mathphysics/docs/plans/yang-mills-mass-gap"
 SOURCE="$REPOS/yang-mills-group/OpenAI-YM-20261028"
 WORK="${YM_LEAN_WORK:-$REPOS/yang-mills-work/OpenAI-YM-20261028-build}"

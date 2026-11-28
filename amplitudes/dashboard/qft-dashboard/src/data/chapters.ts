@@ -18,7 +18,7 @@ export interface Chapter {
 }
 
 const DOCKER_BASE = `docker run --rm -it \\
-  -v /home/propdev/.openclaw/workspace/repos/Monoclaw:/Monoclaw \\
+  -v $HOME/.openclaw/workspace/repos/Monoclaw:/Monoclaw \\
   cadabra2-ubuntu:24.04 \\
   python3 /Monoclaw/Python/Cadabra2/Srednicki`;
 

@@ -27,7 +27,7 @@ Known repo paths:
 
 ```bash
 # Linux box
-/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics
+$REPO_ROOT
 # MacBook (when set up)
 # /Users/ernestyeung/.openclaw/workspace/workspace2/repos/mathphysics
 ```
@@ -158,5 +158,5 @@ If enabled, cron prompts must be self-contained. They must NOT send external mes
 If another Hermes / Claude Code / Codex / OpenClaw session needs to create TMPAI, tell it:
 
 ```text
-Please create or recreate the persistent Hermes profile `tmpai` (persona TMPAI ⚛️) by reading `TMP-HERMES-BOOTSTRAP.md` at `<MATHPHYSICS_REPO>/TMP-HERMES-BOOTSTRAP.md` (use this machine's local mathphysics clone path — e.g. `/home/propdev/.openclaw/workspace/workspace2/repos/mathphysics` on the Linux box) and following it exactly. Use mathphysics as the primary repo/workdir. Do not modify OpenClaw `openclaw.json` for this — that is a separate setup documented in TMP-OPENCLAW-AGENT.md. Do not publish or post anything externally. Commit any repo markdown changes on a non-master branch.
+Please create or recreate the persistent Hermes profile `tmpai` (persona TMPAI ⚛️) by reading `TMP-HERMES-BOOTSTRAP.md` at `<MATHPHYSICS_REPO>/TMP-HERMES-BOOTSTRAP.md` (use this machine's local mathphysics clone path — e.g. `$REPO_ROOT` on the Linux box) and following it exactly. Use mathphysics as the primary repo/workdir. Do not modify OpenClaw `openclaw.json` for this — that is a separate setup documented in TMP-OPENCLAW-AGENT.md. Do not publish or post anything externally. Commit any repo markdown changes on a non-master branch.
 ```
